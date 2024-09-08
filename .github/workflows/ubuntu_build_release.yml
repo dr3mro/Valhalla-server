@@ -1,0 +1,50 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    name: Create Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget apt-transport-https gnupg  ninja-build g++ python3 libpq-dev
+
+      - name: Verify CMake Version
+        run: cmake --version
+
+      - name: Configure CMake
+        run: cmake -B ${{ github.workspace }}/build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build ${{ github.workspace }}/build
+
+      - name: Get Commit Message
+        id: get_commit_msg
+        run: echo "COMMIT_MESSAGE=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
+
+      - name: Compress release
+        run: |
+          tar -czvf ${{ github.workspace }}/server-x86_64.tar.gz -C ${{ github.workspace }}/build/ server
+
+      - name: Create and upload Release
+        id: create_release
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          body: |
+            - ${{ env.COMMIT_MESSAGE }}
+          draft: false
+          prerelease: true
+          artifacts: ${{ github.workspace }}/server-x86_64.tar.gz
