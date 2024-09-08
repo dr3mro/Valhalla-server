@@ -1,0 +1,22 @@
+
+* Implement GateKeeper middleware to check if user has access to a resource.
+* Implement changepassword, lostpassword.
+* json schema validation for all jsons.
+* "providers": {"Doctors","nurses","paramedics","assistants","admins","owners"}
+* access levels
+    for each provider.
+    * doctors: can view patients, can add/edit/delete patients, can view appointments, can add/edit/delete appointments, can view prescriptions, can add/edit/delete prescriptions, can view reports, can view financial reports.
+    * nurses: can view patients, can add/edit patients, can view appointments, can add/edit/delete appointments, can view prescriptions, can add/edit/delete prescriptions, can view reports, can view financial reports.
+    * paramedics: can view patients, can add/edit/delete patients, can view appointments, can add/edit/delete appointments, can view prescriptions, can add/edit/delete prescriptions, can view reports, can view financial reports.
+    * assistants: can view patients, can add/edit/delete patients, can view appointments, can add/edit/delete appointments, can view prescriptions, can add/edit/delete prescriptions, can view reports, can view financial reports.
+    * admins: can view patients, can add/edit/delete patients, can view appointments, can add/edit/delete appointments, can view prescriptions, can add/edit/delete prescriptions, can view reports, can view financial reports.
+    * owners: can view patients, can add/edit/delete patients, can view appointments, can add/edit/delete appointments, can view prescriptions, can add/edit/delete prescriptions, can view reports, can view financial reports.
+
+
+    providers:can be owner and admin at the same time.
+
+* use CTRACK
+* Implement a microservice to send emails with a docker container.
+* send email invite to add memeber to entity
+
+ps aux  | awk '{print $6/1024 " MB\t\t" $11}'  | sort -n

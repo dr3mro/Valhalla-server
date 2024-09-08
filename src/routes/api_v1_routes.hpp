@@ -1,0 +1,88 @@
+#pragma once
+#include <crow.h>
+#include <crow/middlewares/cors.h>
+
+#include <memory>
+
+#include "controllers/clientcontroller/clientcontroller.hpp"
+#include "controllers/servicecontroller/servicecontroller.hpp"
+#include "entities/people/provider.hpp"
+#include "entities/people/user.hpp"
+#include "entities/services/clinics/clinics.hpp"
+#include "entities/services/clinics/patient.hpp"
+#include "entities/services/laboratories.hpp"
+#include "entities/services/pharmacies.hpp"
+#include "entities/services/radiologycenters.hpp"
+#include "middlewares/authentication.hpp"
+#include "middlewares/authorization.hpp"
+#include "middlewares/brequest.hpp"
+#include "middlewares/dataintegrity.hpp"
+#include "middlewares/deauthentication.hpp"
+#include "middlewares/elapsedtime.hpp"
+#include "middlewares/ratelimit.hpp"
+#include "middlewares/search.hpp"
+#include "middlewares/xrequest.hpp"
+
+using APP = crow::App<crow::CORSHandler, RateLimit, ElapsedTime, Authentication, Deauthentication, Authorization, XRequest, Search,
+                      DataIntegrity, BRequest>;
+
+class API_V1_Routes
+{
+   public:
+    API_V1_Routes(std::shared_ptr<APP>& app);
+    ~API_V1_Routes() = default;
+
+   private:
+    // Define variant type
+    using ServiceVariant = std::variant<std::shared_ptr<ServiceController<Patient>>, std::shared_ptr<ServiceController<Clinics>>,
+                                        std::shared_ptr<ServiceController<Pharmacies>>, std::shared_ptr<ServiceController<Laboratories>>,
+                                        std::shared_ptr<ServiceController<RadiologyCenters>>>;
+    using ClientVariant  = std::variant<std::shared_ptr<ClientController<User>>, std::shared_ptr<ClientController<Provider>>>;
+
+    // Type mapping to determine the correct type from the string
+    // Map for type mapping
+    // Service handlers map
+    std::unordered_map<std::string_view, ServiceVariant> serviceRegistry = {
+        {"patients", Store::getObject<ServiceController<Patient>>()},
+        {"clinics", Store::getObject<ServiceController<Clinics>>()},
+        {"pharmacies", Store::getObject<ServiceController<Pharmacies>>()},
+        {"laboratories", Store::getObject<ServiceController<Laboratories>>()},
+        {"radiologycenters", Store::getObject<ServiceController<RadiologyCenters>>()}};
+
+    std::unordered_map<std::string_view, ClientVariant> clientRegistry = {{"users", Store::getObject<ClientController<User>>()},
+                                                                          {"providers", Store::getObject<ClientController<Provider>>()}};
+
+    template <typename Func, typename Registry, typename... Args>
+    void executeServiceMethod(const Registry& registry, const std::string_view key, Func method, const crow::request& req,
+                              crow::response& res, Args&&... args)
+    {
+        auto it = registry.find(key);
+        if (it != registry.end())
+        {
+            try
+            {
+                std::visit(
+                    [&](const auto& controller)
+                    {
+                        // Use std::invoke on the dereferenced controller object
+                        std::invoke(method, controller.get(), req, res, std::forward<Args>(args)...);
+                    },
+                    it->second);
+            }
+            catch (const std::exception& e)
+            {
+                std::cerr << "Exception: " << e.what() << std::endl;
+                res.code = 500;
+                res.body = "Internal Server Error";
+                res.end();
+            }
+        }
+        else
+        {
+            std::cerr << "Type mapping not found for: " << key << std::endl;
+            res.code = 400;
+            res.body = "Type mapping not found";
+            res.end();
+        }
+    }
+};
