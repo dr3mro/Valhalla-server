@@ -118,7 +118,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
 
     ////////////////////////////////////////////////////
     CROW_ROUTE((*app), URL("/services/<string>/staff/invite"))
-        .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, XRequest, Search)
+        .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, DataIntegrity, BRequest)
         .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
             {
@@ -127,7 +127,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
             });
 
     CROW_ROUTE((*app), URL("/services/<string>/staff/add"))
-        .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, XRequest, Search)
+        .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, DataIntegrity, BRequest)
         .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
             {
@@ -136,7 +136,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
             });
 
     CROW_ROUTE((*app), URL("/services/<string>/staff/remove"))
-        .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, XRequest, Search)
+        .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, DataIntegrity, BRequest)
         .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
             {
