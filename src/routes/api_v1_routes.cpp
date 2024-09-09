@@ -119,7 +119,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
     ////////////////////////////////////////////////////
     CROW_ROUTE((*app), URL("/services/<string>/staff/invite"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, XRequest, Search)
-        .methods(crow::HTTPMethod::SEARCH)(
+        .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
             {
                 executeServiceMethod(staffRegistry, serviceName, &StaffControllerBase::InviteStaffToEntity, std::cref(req), std::ref(res),
@@ -128,7 +128,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
 
     CROW_ROUTE((*app), URL("/services/<string>/staff/add"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, XRequest, Search)
-        .methods(crow::HTTPMethod::SEARCH)(
+        .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
             {
                 executeServiceMethod(staffRegistry, serviceName, &StaffControllerBase::AddStaffToEntity, std::cref(req), std::ref(res),
@@ -137,7 +137,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
 
     CROW_ROUTE((*app), URL("/services/<string>/staff/remove"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, XRequest, Search)
-        .methods(crow::HTTPMethod::SEARCH)(
+        .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
             {
                 executeServiceMethod(staffRegistry, serviceName, &StaffControllerBase::RemoveStaffFromEntity, std::cref(req), std::ref(res),
