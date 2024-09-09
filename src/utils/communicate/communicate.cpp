@@ -11,7 +11,9 @@
 std::optional<std::string> Communicate::sendRequest(const std::string& server, const int port, const std::string& path,
                                                     const crow::HTTPMethod& method, const std::string& data)
 {
-    CURL*       curl = nullptr;
+    CURL *curl = nullptr;
+    struct curl_slist *headers = NULL;
+    headers = curl_slist_append(headers, "Content-Type: application/json");
     std::string response;
 
     try
@@ -25,6 +27,7 @@ std::optional<std::string> Communicate::sendRequest(const std::string& server, c
         // Using std::format to construct the URL string
         std::string url = fmt::format("{}:{}{}", server, port, path);
         curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
 
         // Map of methods to their respective cURL options
         static const std::map<crow::HTTPMethod, std::function<void()>> methodMap = {

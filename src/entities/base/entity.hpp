@@ -334,25 +334,25 @@ class Entity : public Base
     */
     struct StaffData
     {
-        bool        parse_status;  // success or failure to parse the json
-        uint64_t    nomineeID;
-        uint64_t    entityID;
+        bool        parse_status=false;  // success or failure to parse the json
+        uint64_t    nominee_id;
+        uint64_t    entity_id;
         std::string role;
         std::string email;
-        std::string nomineeGroup;
-        std::string entityName;
+        std::string nominee_group;
+        std::string entity_name;
         std::string project_name;
 
         StaffData(const json &json)
         {
             try
             {
-                nomineeID    = json.at("NomineeID").as<uint64_t>();
-                entityID     = json.at("EntityID").as<uint64_t>();
-                role         = json.at("Role").as<std::string>();
-                email        = json.at("Email").as<std::string>();
-                nomineeGroup = json.at("NomineeGroup").as<std::string>();
-                entityName   = json.at("EntityName").as<std::string>();
+                nominee_id    = json.at("nominee_id").as<uint64_t>();
+                entity_id     = json.at("entity_id").as<uint64_t>();
+                role         = json.at("role").as<std::string>();
+                email        = json.at("email").as<std::string>();
+                nominee_group = json.at("nominee_group").as<std::string>();
+                entity_name   = json.at("entity_name").as<std::string>();
                 project_name = servercfg_.name;
                 parse_status = true;
             }
@@ -630,7 +630,7 @@ class Entity : public Base
             query      = fmt::format(
                 "UPDATE {} SET mjson = jsonb_set(mjson, '{{payload,providers,Doctors}}', ((mjson->'payload'->'providers'->'Doctors') || "
                      "'\"{}\"')::jsonb) WHERE ID={};",
-                tablename, idata.nomineeID, idata.nomineeGroup, idata.entityID);
+                tablename, idata.nominee_id, idata.nominee_group, idata.entity_id);
         }
         catch (const std::exception &e)
         {
@@ -652,7 +652,7 @@ class Entity : public Base
                      "(SELECT jsonb_agg(elem) FROM jsonb_array_elements(mjson->'payload'->'providers'->'Doctors') AS elem "
                      "WHERE elem <> '\"{}\"') "
                      ") WHERE ID={};",
-                tablename, idata.nomineeID, idata.entityID);
+                tablename, idata.nominee_id, idata.entity_id);
         }
         catch (const std::exception &e)
         {
