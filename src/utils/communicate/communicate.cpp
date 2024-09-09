@@ -9,7 +9,7 @@
 #include <string>
 
 std::optional<std::string> Communicate::sendRequest(const std::string& server, const int port, const std::string& path,
-                                                    const std::string& method, const std::string& data)
+                                                    const crow::HTTPMethod& method, const std::string& data)
 {
     CURL*       curl = nullptr;
     std::string response;
@@ -27,14 +27,14 @@ std::optional<std::string> Communicate::sendRequest(const std::string& server, c
         curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
 
         // Map of methods to their respective cURL options
-        static const std::map<std::string, std::function<void()>> methodMap = {
-            {"POST",
+        static const std::map<crow::HTTPMethod, std::function<void()>> methodMap = {
+            {crow::HTTPMethod::POST,
              [&curl, &data]()
              {
                  curl_easy_setopt(curl, CURLOPT_POST, 1L);
                  curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data.c_str());
              }},
-            {"GET", [&curl]() { curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L); }}};
+            {crow::HTTPMethod::GET, [&curl]() { curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L); }}};
 
         auto it = methodMap.find(method);
         if (it != methodMap.end())
@@ -43,7 +43,7 @@ std::optional<std::string> Communicate::sendRequest(const std::string& server, c
         }
         else
         {
-            throw std::invalid_argument("Unsupported HTTP method: " + method);
+            throw std::invalid_argument("Unsupported HTTP method: " + crow::method_name(method));
         }
 
         // Handle response and potential errors

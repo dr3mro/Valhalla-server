@@ -345,14 +345,14 @@ class Controller
     template <typename T>
     void addStaff(crow::response &res, T &entity)
     {
-        std::optional<std::string> (T::*sqlstatement)() = &T::getSqlAddMemberStatement;
+        std::optional<std::string> (T::*sqlstatement)() = &T::getSqlAddStaffStatement;
         cruds(std::ref(res), entity, sqlstatement, dbexec);
     }
 
     template <typename T>
     void removeStaff(crow::response &res, T &entity)
     {
-        std::optional<std::string> (T::*sqlstatement)() = &T::getSqlRemoveMemberStatement;
+        std::optional<std::string> (T::*sqlstatement)() = &T::getSqlRemoveStaffStatement;
         cruds(std::ref(res), entity, sqlstatement, dbexec);
     }
 };

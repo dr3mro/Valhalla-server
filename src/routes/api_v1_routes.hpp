@@ -6,6 +6,7 @@
 
 #include "controllers/clientcontroller/clientcontroller.hpp"
 #include "controllers/servicecontroller/servicecontroller.hpp"
+#include "controllers/staffcontroller/staffcontroller.hpp"
 #include "entities/people/provider.hpp"
 #include "entities/people/user.hpp"
 #include "entities/services/clinics/clinics.hpp"
@@ -39,6 +40,9 @@ class API_V1_Routes
                                         std::shared_ptr<ServiceController<RadiologyCenters>>>;
     using ClientVariant  = std::variant<std::shared_ptr<ClientController<User>>, std::shared_ptr<ClientController<Provider>>>;
 
+    using StaffVariant = std::variant<std::shared_ptr<StaffController<Clinics>>, std::shared_ptr<StaffController<Pharmacies>>,
+                                      std::shared_ptr<StaffController<Laboratories>>, std::shared_ptr<StaffController<RadiologyCenters>>>;
+
     // Type mapping to determine the correct type from the string
     // Map for type mapping
     // Service handlers map
@@ -51,6 +55,12 @@ class API_V1_Routes
 
     std::unordered_map<std::string_view, ClientVariant> clientRegistry = {{"users", Store::getObject<ClientController<User>>()},
                                                                           {"providers", Store::getObject<ClientController<Provider>>()}};
+
+    std::unordered_map<std::string_view, StaffVariant> staffRegistry = {
+        {"clinics", Store::getObject<StaffController<Clinics>>()},
+        {"pharmacies", Store::getObject<StaffController<Pharmacies>>()},
+        {"laboratories", Store::getObject<StaffController<Laboratories>>()},
+        {"radiologycenters", Store::getObject<StaffController<RadiologyCenters>>()}};
 
     template <typename Func, typename Registry, typename... Args>
     void executeServiceMethod(const Registry& registry, const std::string_view key, Func method, const crow::request& req,
