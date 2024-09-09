@@ -80,15 +80,16 @@ void StaffController<T>::InviteStaffToEntity(const crow::request &req, crow::res
         json              data(body);
         json              payload = data.at("payload");
         Entity::StaffData staffData(payload);
-
+        std::optional<std::string> response;
         T service(staffData);
-        if (staffData.parse_status && staffData.toInviteJson(data))
+        if (staffData.parse_status && staffData.toInviteJson(payload))
         {
-            auto status = Communicate::sendRequest(email_sender_daemon_config_.host.data(), email_sender_daemon_config_.port,
+            response = Communicate::sendRequest(email_sender_daemon_config_.host.data(), email_sender_daemon_config_.port,
                                                    email_sender_daemon_config_.message_queue_path.data(), crow::HTTPMethod::POST,
-                                                   data.to_string().c_str());
-            res.code    = 200;
-            res.write(data.to_string());
+                                                   payload.to_string().c_str());
+            res.code = 200;
+            std::string reply = response ? response.value() : "Failed to send invite";
+            res.write(std::format("{}", reply));
             res.end();
         }
         else

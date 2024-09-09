@@ -69,6 +69,6 @@ namespace Defaults
     {
         constexpr std::string_view HOST_       = "http://172.20.0.6";
         constexpr uint16_t         PORT_       = 5000;
-        constexpr std::string_view QUEUE_PATH_ = "/enqueue_email";
+        constexpr std::string_view QUEUE_PATH_ = "/enqueue";
     }  // namespace EmailSenderDaemon
 };  // namespace Defaults
