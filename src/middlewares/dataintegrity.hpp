@@ -16,8 +16,8 @@ struct DataIntegrity : crow::ILocalMiddleware
     DataIntegrity()  = default;
     ~DataIntegrity() = default;
 
-    template <typename BRequestContext>
-    void before_handle(crow::request &req, crow::response &res, context &ctx, BRequestContext &brequest_ctx)
+    template <typename AllContext>
+    void before_handle(crow::request &req, crow::response &res, context &ctx, AllContext &all_ctx)
     {
         (void)ctx;
 
@@ -26,7 +26,7 @@ struct DataIntegrity : crow::ILocalMiddleware
 
         try
         {
-            jsoncons::json &json = brequest_ctx.template get<BRequest>().criteria;
+            jsoncons::json &json = all_ctx.template get<BRequest>().criteria;
 
             if (!json.contains("xxh64sum") || !json.contains("payload"))
             {

@@ -62,3 +62,9 @@ void RestHelper::sendQueryResult(json &response_json, const json &query_results_
 {
     sendResponse(res, evaluateQueryResult(response_json, query_results_json), response_json);
 }
+
+void RestHelper::errorMessage(crow::response &res, const crow::status &status, const std::string &status_message)
+{
+    res.code = status;
+    res.end(fmt::format("error: {}", status_message));
+}

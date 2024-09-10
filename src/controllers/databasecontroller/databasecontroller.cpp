@@ -38,7 +38,7 @@ DatabaseController::DatabaseController()
  */
 std::optional<json> DatabaseController::executeQuery(const std::string &query)
 {
-    return executer<json>(&Database::executeQuery<pqxx::work>, query);
+    return executer<json>(&Database::executeQuery<json, pqxx::work>, query);
 }
 
 /**
@@ -51,7 +51,12 @@ std::optional<json> DatabaseController::executeQuery(const std::string &query)
  */
 std::optional<json> DatabaseController::executeReadQuery(const std::string &query)
 {
-    return executer<json>(&Database::executeQuery<pqxx::nontransaction>, query);
+    return executer<json>(&Database::executeQuery<json, pqxx::nontransaction>, query);
+}
+
+std::optional<json::array> DatabaseController::executeSearchQuery(const std::string &query)
+{
+    return executer<json::array>(&Database::executeQuery<json::array, pqxx::nontransaction>, query);
 }
 /**
  * Executes a read-only SQL query against the database and returns the result as
@@ -94,7 +99,7 @@ std::optional<std::string> DatabaseController::getPasswordHashForUserID(const ui
     // std::cout << fmt::format("SELECT password_hash FROM {} WHERE id = '{}'
     // LIMIT 1;\n", tablename, user_id);
     return executer<std::string>(&Database::doSimpleQuery<std::string>,
-                                 fmt::format("SELECT password_hash FROM {} WHERE id = '{}' LIMIT 1;", tablename, user_id));
+                                 fmt::format("SELECT password FROM {} WHERE id = '{}' LIMIT 1;", tablename, user_id));
 }
 /**
  * Finds the user ID for the specified username in the given database table and

@@ -6,6 +6,7 @@
 #include "configurator/configurator.hpp"
 #include "crow/utility.h"
 #include "entities/base/base.hpp"
+#include "entities/base/datatypes/clientdata.hpp"
 #include "fmt/format.h"
 #include "fmt/ranges.h"
 #include "jsoncons/basic_json.hpp"
@@ -22,7 +23,7 @@ using json = jsoncons::json;
  * nested structs to handle different types of data related to the entity,
  * including creation, reading, updating, deleting, and searching.
  *
- * The `UserData` struct represents the user-specific data, including username,
+ * The `ClientData` struct represents the user-specific data, including username,
  * password, email, role, and other optional fields. It also provides validation
  * methods for the username, password, and email.
  *
@@ -37,169 +38,20 @@ using json = jsoncons::json;
  * operations and search, which can be used by the application to interact with
  * the database.
  */
+
 class Entity : public Base
 {
    public:
-    /**
-     * @brief The UserData struct represents the user-specific data, including
-     * username, password, email, role, and other optional fields. It provides
-     * validation methods for the username, password, and email.
-     *
-     * The `username`, `password`, `password_hash`, `email`, `role`, `basic_data`,
-     * and `service_data` fields are stored in the `db_data` vector, which can be
-     * used to interact with the database.
-     *
-     * The `validateUsername()`, `validatePassowrd()`, and `validateEmail()`
-     * methods provide validation for the corresponding fields, ensuring they meet
-     * the specified patterns.
-     *
-     * The `UserData` struct is constructed from a JSON object, which is used to
-     * populate the fields and generate the `db_data` vector.
-     */
-
-    using UserData = struct UserData
-    {
-       private:
-        std::shared_ptr<PasswordCrypt> passwordCrypt = Store::getObject<PasswordCrypt>();
-
-       public:
-        std::vector<std::pair<std::string, std::string>> db_data;
-
-        json payload;
-
-        std::optional<std::string> username;
-        std::optional<std::string> password;
-        std::optional<std::string> password_hash;
-        std::optional<std::string> email;
-        std::optional<std::string> role;
-        std::optional<std::string> basic_data;
-        std::optional<std::string> service_data;
-
-        /**
-         * @brief Validates the username according to the specified pattern.
-         *
-         * The username must start with a lowercase letter and can only contain
-         * lowercase letters, digits, and underscores.
-         *
-         * @return `true` if the username is valid, `false` otherwise.
-         */
-
-        bool validateUsername() const
-        {
-            const std::regex pattern("^[a-z][a-z0-9_]*$");
-            return std::regex_match(username.value(), pattern);
-        }
-        /**
-         * @brief Validates the password according to the specified pattern.
-         *
-         * The password must be at least 8 characters long and contain at least one
-         * lowercase letter, one uppercase letter, one digit, and one special
-         * character.
-         *
-         * @return `true` if the password is valid, `false` otherwise.
-         */
-
-        bool validatePassowrd() const
-        {
-            const std::regex pattern(
-                "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*]"
-                ")[A-Za-z\\d!@#$%^&*]{8,}$");
-            return std::regex_match(password.value(), pattern);
-        }
-        /**
-         * @brief Validates the email address according to a standard email pattern.
-         *
-         * The email must contain a username, followed by an optional period,
-         * followed by a domain name with at least one period.
-         *
-         * @return `true` if the email is valid, `false` otherwise.
-         */
-
-        bool validateEmail() const
-        {
-            const std::regex pattern(R"((\w+)(\.\w+)*@(\w+)(\.\w+)+)");
-            return std::regex_match(email.value(), pattern);
-        }
-
-        UserData(const json &_data)
-        {
-            try
-            {
-                // Extract the username from the JSON
-                payload = _data["payload"];
-
-                username      = payload.at("username").as<std::string>();
-                password      = payload.at("password").as<std::string>();
-                password_hash = passwordCrypt->hashPassword(password.value()).value();
-                email         = payload.at("basic_data").at("contact").at("email").as<std::string>();
-                role          = payload.at("basic_data").at("role").as<std::string>();
-                basic_data    = payload.at("basic_data").as<std::string>();
-
-                if (payload.contains("service_data"))
-                {
-                    service_data = payload.at("service_data").as<std::string>();
-                }
-
-                db_data.push_back({"username", username.value()});
-                db_data.push_back({"password_hash", password_hash.value()});
-                db_data.push_back({"role", role.value()});
-                db_data.push_back({"basic_data", basic_data.value()});
-
-                if (service_data)
-                {
-                    db_data.push_back({"service_data", service_data.value()});
-                }
-
-                payload.erase("password");
-            }
-            catch (const std::exception &e)
-            {
-                std::cerr << fmt::format("failed to create user: {}\n", e.what());
-            }
-        }
-    };
-
-    /**
-     * @brief Represents a user's login credentials, including a username and
-     * password.
-     */
-    struct Credentials
-    {
-        std::string username;  ///< The user's username.
-        std::string password;  ///< The user's password.
-    };
-
-    /**
-     * @brief Represents data for creating a new entity.
-     *
-     * This struct contains the payload data and the next ID to be used for the
-     * new entity.
-     */
     struct CreateData
     {
-        json     payload;  ///< The payload data for the new entity.
-        uint64_t next_id;  ///< The next ID to be used for the new entity.
+        json     data_json;
+        uint64_t next_id;
 
-        /**
-         * @brief Constructs a new CreateData instance.
-         *
-         * @param _payload The payload data for the new entity.
-         * @param nid The next ID to be used for the new entity.
-         */
-        CreateData(const json &_payload, const uint64_t nid) : payload(_payload), next_id(nid) {}
+        CreateData(const json &data, const uint64_t nid) : data_json(data), next_id(nid) {}
 
-        /**
-         * @brief Default constructor for CreateData.
-         */
         CreateData() = default;
     };
 
-    /**
-     * @brief Represents data for reading an entity.
-     *
-     * This struct contains the schema of the entity and the ID of the entity to
-     * be read.
-     */
     struct ReadData
     {
         std::vector<std::string> schema;  ///< The schema of the entity.
@@ -255,8 +107,8 @@ class Entity : public Base
      */
     struct DeleteData
     {
-        json     payload;  ///< The payload data for the delete operation.
-        uint64_t user_id;  ///< The user ID associated with the delete operation.
+        json     data_json;  ///< The payload data for the delete operation.
+        uint64_t id;         ///< The user ID associated with the delete operation.
 
         /**
          * @brief Constructs a new DeleteData instance.
@@ -264,7 +116,11 @@ class Entity : public Base
          * @param _data The payload data for the delete operation.
          * @param id The user ID associated with the delete operation.
          */
-        DeleteData(const json &_data, const uint64_t id) : payload(_data), user_id(id) {}
+        DeleteData(const json &data)
+        {
+            this->data_json = data;
+            this->id        = data_json.find("id")->value().as<uint64_t>();
+        }
 
         /**
          * @brief Default constructor for DeleteData.
@@ -292,13 +148,22 @@ class Entity : public Base
         size_t      limit;
         size_t      offset;
 
-        SearchData(const json &search_json)
+        SearchData(const json &search_json, bool &success)
         {
-            keyword   = search_json.at("keyword").as<std::string>();
-            order_by  = search_json.at("order_by").as<std::string>();
-            direction = search_json.at("direction").as<short>() == 0 ? "ASC" : "DESC";
-            limit     = search_json.at("limit").as<size_t>();
-            offset    = search_json.at("offset").as<size_t>();
+            try
+            {
+                keyword   = search_json.at("keyword").as<std::string>();
+                order_by  = search_json.at("order_by").as<std::string>();
+                direction = search_json.at("direction").as<short>() == 0 ? "ASC" : "DESC";
+                limit     = search_json.at("limit").as<size_t>();
+                offset    = search_json.at("offset").as<size_t>();
+            }
+            catch (const std::exception &e)
+            {
+                success = false;
+                throw std::runtime_error(std::string(e.what()));
+            }
+            success = true;
         }
         SearchData() = default;
     };
@@ -316,25 +181,10 @@ class Entity : public Base
         std::optional<std::string> token;
         LogoutData(const std::optional<std::string> &_token) { token = _token; }
     };
-    /*
-        enum Role
-        {
-            OWNER,
-            ADMIN,
-            MEMBER,
-            GUEST,
-            DOCTOR,
-            NURSE,
-            ASSISTANT,
-            PHARMACST,
-            LABSTAFF,
-            RADIOLOGIST,
-            ACCOUNTANT
-        };
-    */
+
     struct StaffData
     {
-        bool        parse_status=false;  // success or failure to parse the json
+        bool        parse_status = false;  // success or failure to parse the json
         uint64_t    nominee_id;
         uint64_t    entity_id;
         std::string role;
@@ -349,12 +199,12 @@ class Entity : public Base
             {
                 nominee_id    = json.at("nominee_id").as<uint64_t>();
                 entity_id     = json.at("entity_id").as<uint64_t>();
-                role         = json.at("role").as<std::string>();
-                email        = json.at("email").as<std::string>();
+                role          = json.at("role").as<std::string>();
+                email         = json.at("email").as<std::string>();
                 nominee_group = json.at("nominee_group").as<std::string>();
                 entity_name   = json.at("entity_name").as<std::string>();
-                project_name = servercfg_.name;
-                parse_status = true;
+                project_name  = servercfg_.name;
+                parse_status  = true;
             }
             catch (const std::exception &e)
             {
@@ -369,8 +219,7 @@ class Entity : public Base
             {
                 invite_json["subject"]  = fmt::format("Invite to {}", project_name);
                 invite_json["template"] = "invite_staff_to_entity.txt";
-                invite_json["link"] =
-                    fmt::format("{}:{}/{}/{}", frontendcfg_.host, frontendcfg_.port, frontendcfg_.invite_path, encoded_invite_data);
+                invite_json["link"] = fmt::format("{}:{}/{}/{}", frontendcfg_.host, frontendcfg_.port, frontendcfg_.invite_path, encoded_invite_data);
                 invite_json["project_name"]  = project_name;
                 invite_json["generate_body"] = "";
                 return true;
@@ -387,17 +236,6 @@ class Entity : public Base
         std::shared_ptr<Configurator>       cfg_         = Store::getObject<Configurator>();
         const Configurator::ServerConfig   &servercfg_   = cfg_->get<Configurator::ServerConfig>();
         const Configurator::FrontEndConfig &frontendcfg_ = cfg_->get<Configurator::FrontEndConfig>();
-
-        // "to" : "m.eltawargy@gmail.com",                  ----- ------------------------------------------------ done
-        // "subject" : "Invite to {{ project_name }}",      ----- from configurator -------------------------------- constant
-        // "template_name" : "invite_staff_to_entity.txt",  ----- -------------------------------------------------constant
-        // "link" : "http://www.google.com",     fe:ip/ep/  ----- the original json base64 encoded string ----- done
-        // "entity_name" : "Healthy Clinic",                ------------------------------------------------------ done
-        // "role" : "Doctor",                                ----- to map
-        // "project_name": {{ project_name }},               ----- from configurator ------------------------------ done
-        // "generated_body" : ""                             empty
-
-        //// create endpoint of available roles
     };
 
     template <typename T>
@@ -437,15 +275,12 @@ class Entity : public Base
             std::vector<std::string> keys_arr;
             std::vector<std::string> values_arr;
 
-            json     payload = std::any_cast<CreateData>(data).payload;
-            uint64_t next_id = std::any_cast<CreateData>(data).next_id;
-            for (auto &it : payload.object_range())
-            {
-                if (it.key() == "basic_data" && it.value().contains("id"))
-                {
-                    it.value()["id"] = next_id;
-                }
+            json     data_json = std::any_cast<CreateData>(data).data_json;
+            uint64_t next_id   = std::any_cast<CreateData>(data).next_id;
+            data_json["id"]    = next_id;
 
+            for (auto &it : data_json.object_range())
+            {
                 keys_arr.push_back(it.key());
                 values_arr.push_back(it.value().as<std::string>());
             }
@@ -453,7 +288,8 @@ class Entity : public Base
             std::string columns = fmt::format("{}", fmt::join(keys_arr, ","));
             std::string values  = fmt::format("'{}'", fmt::join(values_arr, "','"));
 
-            query = fmt::format("INSERT INTO {} (id, {}) VALUES ({},{}) RETURNING id,{};", tablename, columns, next_id, values, columns);
+            query = fmt::format("INSERT INTO {} ({}) VALUES ({}) RETURNING id;", tablename, columns, values);
+            // std::cout << query.value() << std::endl;
         }
         catch (const std::exception &e)
         {
@@ -515,6 +351,7 @@ class Entity : public Base
      * @return An optional string containing the generated SQL query, or
      * `std::nullopt` if an exception occurs.
      */
+
     std::optional<std::string> getSqlUpdateStatement() override
     {
         std::optional<std::string> query;
@@ -524,7 +361,6 @@ class Entity : public Base
             json payload = std::any_cast<UpdateData>(data).payload;
 
             uint64_t id = std::any_cast<UpdateData>(data).user_id;
-            ;
 
             std::string update_column_values;
 
@@ -537,7 +373,7 @@ class Entity : public Base
                 }
             }
 
-            query = fmt::format("UPDATE {} set {} WHERE id={};", tablename, update_column_values, id);
+            query = fmt::format("UPDATE {} set {} WHERE id={} returning id;", tablename, update_column_values, id);
         }
         catch (const std::exception &e)
         {
@@ -546,7 +382,6 @@ class Entity : public Base
         }
         return query;
     }
-
     /**
      * Generates an SQL query for deleting a record from the database.
      *
@@ -570,12 +405,9 @@ class Entity : public Base
 
         try
         {
-            jsoncons::json payload    = std::any_cast<DeleteData>(data).payload;
-            jsoncons::json basic_data = payload.at("basic_data");
-            id                        = basic_data.at("id").as<uint64_t>();
-
+            id = std::any_cast<DeleteData>(data).id;
             // Construct SQL query using {fmt} for parameterized query
-            query = fmt::format("DELETE FROM {} where id={};", tablename, id);
+            query = fmt::format("DELETE FROM {} where id={} returning id;", tablename, id);
         }
         catch (const std::exception &e)
         {
@@ -611,6 +443,7 @@ class Entity : public Base
                 "SELECT basic_data FROM {} WHERE basic_data::text "
                                 "ILIKE '%{}%' ORDER BY {} {} LIMIT {} OFFSET {};",
                 tablename, searchdata.keyword, searchdata.order_by, searchdata.direction, searchdata.limit + 1, searchdata.offset);
+            std::cout << query.value() << std::endl;
         }
         catch (const std::exception &e)
         {
@@ -629,7 +462,7 @@ class Entity : public Base
             auto idata = std::any_cast<StaffData>(data);
             query      = fmt::format(
                 "UPDATE {} SET mjson = jsonb_set(mjson, '{{payload,providers,Doctors}}', ((mjson->'payload'->'providers'->'Doctors') || "
-                     "'\"{}\"')::jsonb) WHERE ID={};",
+                     "'\"{}\"')::jsonb) WHERE ID={} RETURNING id;",
                 tablename, idata.nominee_id, idata.nominee_group, idata.entity_id);
         }
         catch (const std::exception &e)
@@ -651,7 +484,7 @@ class Entity : public Base
                      "mjson, '{{payload,providers,Doctors}}', "
                      "(SELECT jsonb_agg(elem) FROM jsonb_array_elements(mjson->'payload'->'providers'->'Doctors') AS elem "
                      "WHERE elem <> '\"{}\"') "
-                     ") WHERE ID={};",
+                     ") WHERE ID={} RETURNING id;",
                 tablename, idata.nominee_id, idata.entity_id);
         }
         catch (const std::exception &e)

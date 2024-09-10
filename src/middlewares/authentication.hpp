@@ -3,6 +3,8 @@
 
 #include <jsoncons/json.hpp>
 #include <optional>
+
+#include "middlewares/brequest.hpp"
 struct Authentication : crow::ILocalMiddleware
 {
     struct context
@@ -16,33 +18,25 @@ struct Authentication : crow::ILocalMiddleware
     {
         try
         {
-            if (!req.headers.contains("Authentication"))
+            ctx.credentials = jsoncons::json::parse(req.body);
+
+            auto user = ctx.credentials["username"].as<std::string>();
+            auto pass = ctx.credentials["password"].as<std::string>();
+
+            if (user.empty())
             {
-                res.code = 403;
-                res.end("Authentication Header not provided");
-                return;
+                throw std::runtime_error("Username is empty");
             }
-
-            std::optional<std::string> encoded = req.get_header_value("Authentication");
-
-            if (!encoded)
+            else if (pass.empty())
             {
-                res.code = 403;
-                res.end("Authentication data not provided");
-                return;
+                throw std::runtime_error("Password is empty");
             }
-
-            std::string decoded;
-            jsoncons::decode_base64(encoded.value().begin(), encoded.value().end(), decoded);
-
-            ctx.credentials = jsoncons::json::parse(decoded);
-
             return;
         }
         catch (const std::exception &e)
         {
             res.code = 500;  // login denied
-            res.end("Authentication Denied");
+            res.end(fmt::format("Login Failure: {}", e.what()));
             return;
         }
     }
