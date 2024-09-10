@@ -49,6 +49,7 @@
 #include "controllers/clientcontroller/clientcontrollerbase.hpp"
 #include "controllers/databasecontroller/databasecontroller.hpp"
 #include "entities/base/client.hpp"
+#include "entities/base/datatypes/clientdata.hpp"
 #include "utils/passwordcrypt/passwordcrypt.hpp"
 #include "utils/resthelper/resthelper.hpp"
 #include "utils/sessionmanager/sessionmanager.hpp"
@@ -97,10 +98,10 @@ class ClientController : public ClientControllerBase, public Controller
     ~ClientController() override = default;
 
     // PUBLIC
-    void                    CreateClient(const crow::request& req, crow::response& res) override;
+    void                    CreateClient(const crow::request& req, crow::response& res, const json& criteria) override;
     std::optional<uint64_t> AuthenticateClient(const crow::request& req, crow::response& res, const jsoncons::json& credentials) override;
     void                    ReadClient(const crow::request& req, crow::response& res, const json& criteria) override;
-    void                    UpdateClient(const crow::request& req, crow::response& res) override;
+    void                    UpdateClient(const crow::request& req, crow::response& res, const json& criteria) override;
     void                    DeleteClient(const crow::request& req, crow::response& res, const json& delete_json) override;
     void                    SearchClient(const crow::request& req, crow::response& res, const json& search_json) override;
     void                    LogoutClient(const crow::request& req, crow::response& res, const std::optional<std::string>& token) override;
@@ -122,28 +123,29 @@ template <Client_t T>
  * @param req The Crow request object containing the user data.
  * @param res The Crow response object to send the result of the operation.
  */
-void ClientController<T>::CreateClient(const crow::request& req, crow::response& res)
+void ClientController<T>::CreateClient(const crow::request& req, crow::response& res, const json& criteria)
 {
+    (void)req;
     json response;
     try
     {
-        jsoncons::json       data = jsoncons::json::parse(req.body);
-        typename T::UserData user_data(data);
+        bool       success = false;
+        ClientData client_data(criteria, res, success);
 
-        T user(user_data);
-
-        auto result = user.validate();
-
-        if (!result.first)
+        if (success)
         {
-            RestHelper::sendErrorResponse(res, response, "Failure", fmt::format("Failed: {}", result.second), -1, 400);
-            return;
+            T client(client_data);
+            if (client.exists())
+            {
+                RestHelper::errorMessage(res, crow::status::CONFLICT, "User already exists");
+                return;
+            }
+            Create<T>(res, client);
         }
-        Create<T>(res, user);
     }
     catch (const std::exception& e)
     {
-        RestHelper::sendErrorResponse(res, response, "Failure", fmt::format("Failed: {}", e.what()), -2, 500);
+        RestHelper::errorMessage(res, crow::status::INTERNAL_SERVER_ERROR, fmt::format("Failed: {}", e.what()));
     }
 }
 
@@ -160,8 +162,7 @@ template <Client_t T>
  * @return std::optional<uint64_t> The user ID of the authenticated user, or
  * std::nullopt if authentication failed.
  */
-std::optional<uint64_t> ClientController<T>::AuthenticateClient(const crow::request& req, crow::response& res,
-                                                                const jsoncons::json& credentials)
+std::optional<uint64_t> ClientController<T>::AuthenticateClient(const crow::request& req, crow::response& res, const jsoncons::json& credentials)
 {
     (void)req;
     json                    response;
@@ -169,6 +170,7 @@ std::optional<uint64_t> ClientController<T>::AuthenticateClient(const crow::requ
     try
     {
         typename T::Credentials creds;
+
         creds.username = credentials.at("username").as<std::string>();
         creds.password = credentials.at("password").as<std::string>();
 
@@ -178,8 +180,7 @@ std::optional<uint64_t> ClientController<T>::AuthenticateClient(const crow::requ
 
         if (!client_id)
         {
-            RestHelper::sendErrorResponse(res, response, "Login Failure",
-                                          fmt::format("User '{}' not found or wrong password", creds.username), -1, 400);
+            RestHelper::errorMessage(res, crow::status::UNAUTHORIZED, fmt::format("User '{}' not found or wrong password", creds.username));
             return std::nullopt;
         }
 
@@ -188,8 +189,7 @@ std::optional<uint64_t> ClientController<T>::AuthenticateClient(const crow::requ
         loggedUserInfo.userID   = client_id;
         loggedUserInfo.userName = creds.username;
         loggedUserInfo.group    = client.getGroupName();
-        loggedUserInfo.llodt =
-            sessionManager->getLastLogoutTime(loggedUserInfo.userID.value(), loggedUserInfo.group.value()).value_or("first_login");
+        loggedUserInfo.llodt = sessionManager->getLastLogoutTime(loggedUserInfo.userID.value(), loggedUserInfo.group.value()).value_or("first_login");
 
         json token_object;
         token_object["token"]    = tokenManager->GenerateToken(loggedUserInfo);
@@ -197,15 +197,13 @@ std::optional<uint64_t> ClientController<T>::AuthenticateClient(const crow::requ
         token_object["user_id"]  = client_id;
         token_object["group"]    = loggedUserInfo.group;
 
-        RestHelper::buildResponse(response, 0, "success", token_object);
-        RestHelper::sendResponse(res, 200, response);
+        RestHelper::sendResponse(res, crow::status::OK, token_object);
         sessionManager->setNowLoginTime(client_id.value(), loggedUserInfo.group.value());
         return client_id;
     }
     catch (const std::exception& e)
     {
-        // Handle exception (log, etc.)
-        RestHelper::sendErrorResponse(res, response, "Failure", fmt::format("Failed: {}", e.what()), -2, 500);
+        RestHelper::errorMessage(res, crow::status::INTERNAL_SERVER_ERROR, fmt::format("Failed: {}", e.what()));
     }
     return std::nullopt;
 }
@@ -225,11 +223,10 @@ template <Client_t T>
 void ClientController<T>::ReadClient(const crow::request& req, crow::response& res, const json& criteria)
 {
     (void)req;
-    json response;
     try
     {
         uint64_t                 id     = criteria.at("id").as<uint64_t>();
-        std::vector<std::string> schema = criteria.at("schema").as<std::vector<std::string>>();
+        std::vector<std::string> schema = criteria.at("data").as<std::vector<std::string>>();
 
         Entity::ReadData readData(schema, id);
         T                client(readData);
@@ -237,7 +234,7 @@ void ClientController<T>::ReadClient(const crow::request& req, crow::response& r
     }
     catch (const std::exception& e)
     {
-        RestHelper::sendErrorResponse(std::ref(res), std::ref(response), "Failure", fmt::format("Failed: {}", e.what()), -2, 500);
+        RestHelper::errorMessage(std::ref(res), crow::status::INTERNAL_SERVER_ERROR, fmt::format("error: {}", e.what()));
     }
 }
 
@@ -252,23 +249,22 @@ template <Client_t T>
  * @param req The Crow request object containing the update data.
  * @param res The Crow response object to send the result of the operation.
  */
-void ClientController<T>::UpdateClient(const crow::request& req, crow::response& res)
+void ClientController<T>::UpdateClient(const crow::request& req, crow::response& res, const json& criteria)
 {
-    json response;
+    (void)req;
     try
     {
-        json     data(json::parse(req.body));
-        json     payload    = data.at("payload");
-        json     basic_data = payload.at("basic_data");
-        uint64_t user_id    = basic_data.at("id").as<uint64_t>();
-
-        Entity::UpdateData updateData(payload, user_id);
-        T                  client(updateData);
-        Controller::Update(std::ref(res), client);
+        bool       success = false;
+        ClientData client_data(criteria, res, success);
+        if (success)
+        {
+            T client(client_data);
+            Controller::Update(std::ref(res), client);
+        }
     }
     catch (const std::exception& e)
     {
-        RestHelper::sendErrorResponse(std::ref(res), std::ref(response), "Failure", fmt::format("Failed: {}", e.what()), -2, 500);
+        RestHelper::errorMessage(std::ref(res), crow::status::INTERNAL_SERVER_ERROR, fmt::format("error: {}", e.what()));
     }
 }
 
@@ -287,20 +283,15 @@ template <Client_t T>
 void ClientController<T>::DeleteClient(const crow::request& req, crow::response& res, const json& delete_json)
 {
     (void)req;
-    json response;
     try
     {
-        json     payload    = delete_json.at("payload");
-        json     basic_data = payload.at("basic_data");
-        uint64_t user_id    = basic_data.at("id").as<uint64_t>();
-
-        Entity::DeleteData deleteData(payload, user_id);
+        Entity::DeleteData deleteData(delete_json);
         T                  client(deleteData);
         Controller::Delete(std::ref(res), client);
     }
     catch (const std::exception& e)
     {
-        RestHelper::sendErrorResponse(std::ref(res), std::ref(response), "Failure", fmt::format("Failed: {}", e.what()), -2, 500);
+        RestHelper::errorMessage(std::ref(res), crow::status::INTERNAL_SERVER_ERROR, fmt::format("error: {}", e.what()));
     }
 }
 
@@ -320,16 +311,19 @@ template <Client_t T>
 void ClientController<T>::SearchClient(const crow::request& req, crow::response& res, const json& search_json)
 {
     (void)req;
-    json response;
     try
     {
-        Entity::SearchData searchData(search_json);
-        T                  client(searchData);
-        Controller::Search(std::ref(res), client);
+        bool                   success = false;
+        typename T::SearchData searchData(search_json, success);
+        if (success)
+        {
+            T client(searchData);
+            Controller::Search(std::ref(res), client);
+        }
     }
     catch (const std::exception& e)
     {
-        RestHelper::sendErrorResponse(std::ref(res), std::ref(response), "Failure", fmt::format("Failed: {}", e.what()), -2, 500);
+        RestHelper::errorMessage(std::ref(res), crow::status::INTERNAL_SERVER_ERROR, e.what());
     }
 }
 
@@ -349,7 +343,6 @@ template <Client_t T>
 void ClientController<T>::LogoutClient(const crow::request& req, crow::response& res, const std::optional<std::string>& token)
 {
     (void)req;
-    json response;
     try
     {
         Entity::LogoutData logoutData(token);
@@ -358,6 +351,6 @@ void ClientController<T>::LogoutClient(const crow::request& req, crow::response&
     }
     catch (const std::exception& e)
     {
-        RestHelper::sendErrorResponse(std::ref(res), std::ref(response), "Failure", fmt::format("Failed: {}", e.what()), -2, 500);
+        RestHelper::errorMessage(std::ref(res), crow::status::INTERNAL_SERVER_ERROR, fmt::format("Failed: {}", e.what()));
     }
 }

@@ -43,8 +43,8 @@ class ServiceController : public ServiceControllerBase, public Controller
     void SearchService(const crow::request &req, crow::response &res, const jsoncons::json &search_json) override;
 
    private:
-    T        service;
-    uint64_t getNextID() override
+    T                       service;
+    std::optional<uint64_t> getNextID() override
     {
         try
         {
@@ -52,22 +52,20 @@ class ServiceController : public ServiceControllerBase, public Controller
 
             if (json_nextval.empty())
             {
-                return 0;  // Or throw an exception if you prefer
+                std::cerr << fmt::format("json_nextval is empty\n") << std::endl;
             }
 
-            for (const auto &obj : json_nextval.array_range())
+            auto obj = json_nextval.find("nextval");
+            if (obj != json_nextval.object_range().end())
             {
-                if (obj.contains("nextval"))
-                {
-                    return obj["nextval"].as<uint64_t>();
-                }
+                return obj->value().as<uint64_t>();
             }
         }
         catch (const std::exception &e)
         {
             std::cerr << fmt::format("Failed: {}", e.what()) << std::endl;
         }
-        return 0;
+        return std::nullopt;
     }
 };
 
@@ -78,9 +76,13 @@ void ServiceController<T>::CreateService(const crow::request &req, crow::respons
     json response;
     try
     {
-        json               data(body);
-        json               payload = data.at("payload");
-        Entity::CreateData createData(payload, getNextID());
+        auto nextID = getNextID();
+        if (!nextID.has_value())
+        {
+            RestHelper::errorMessage(std::ref(res), crow::status::NOT_ACCEPTABLE, "Failed to generate next ID");
+            return;
+        }
+        Entity::CreateData createData(body, nextID.value());
 
         T service(createData);
         Controller::Create(std::ref(res), service);
@@ -98,16 +100,16 @@ void ServiceController<T>::ReadService(const crow::request &req, crow::response 
     json response;
     try
     {
-        uint64_t                 id     = criteria.at("id").as<uint64_t>();
-        std::vector<std::string> schema = criteria.at("schema").as<std::vector<std::string>>();
+        uint64_t                 id   = criteria.at("id").as<uint64_t>();
+        std::vector<std::string> data = criteria.at("schema").as<std::vector<std::string>>();
 
-        Entity::ReadData readData(schema, id);
+        Entity::ReadData readData(data, id);
         T                service(readData);
         Controller::Read(std::ref(res), service);
     }
     catch (const std::exception &e)
     {
-        RestHelper::sendErrorResponse(std::ref(res), std::ref(response), "Failure", fmt::format("Failed: {}", e.what()), -2, 500);
+        RestHelper::errorMessage(std::ref(res), crow::status::INTERNAL_SERVER_ERROR, e.what());
     }
 }
 
@@ -118,12 +120,14 @@ void ServiceController<T>::UpdateService(const crow::request &req, crow::respons
     json response;
     try
     {
-        json     data(body);
-        json     payload    = data.at("payload");
-        json     basic_data = payload.at("basic_data");
-        uint64_t user_id    = basic_data.at("id").as<uint64_t>();
-
-        Entity::UpdateData updateData(payload, user_id);
+        json                    data(body);
+        std::optional<uint64_t> id = data.find("id")->value().as<uint64_t>();
+        if (!id.has_value())
+        {
+            RestHelper::errorMessage(std::ref(res), crow::status::NOT_ACCEPTABLE, "No id provided");
+            return;
+        }
+        Entity::UpdateData updateData(data, id.value());
         T                  service(updateData);
         Controller::Update(std::ref(res), service);
     }
@@ -137,20 +141,15 @@ template <typename T>
 void ServiceController<T>::DeleteService(const crow::request &req, crow::response &res, const jsoncons::json &delete_json)
 {
     (void)req;
-    json response;
     try
     {
-        json     payload    = delete_json.at("payload");
-        json     basic_data = payload.at("basic_data");
-        uint64_t user_id    = basic_data.at("id").as<uint64_t>();
-
-        Entity::DeleteData deleteData(payload, user_id);
+        Entity::DeleteData deleteData(delete_json);
         T                  service(deleteData);
         Controller::Delete(std::ref(res), service);
     }
     catch (const std::exception &e)
     {
-        RestHelper::sendErrorResponse(std::ref(res), std::ref(response), "Failure", fmt::format("Failed: {}", e.what()), -2, 500);
+        RestHelper::errorMessage(std::ref(res), crow::status::INTERNAL_SERVER_ERROR, fmt::format("error: {}", e.what()));
     }
 }
 
@@ -161,12 +160,16 @@ void ServiceController<T>::SearchService(const crow::request &req, crow::respons
     json response;
     try
     {
-        Entity::SearchData searchData(search_json);
-        T                  service(searchData);
-        Controller::Search(std::ref(res), service);
+        bool               success = false;
+        Entity::SearchData searchData(search_json, success);
+        if (success)
+        {
+            T service(searchData);
+            Controller::Search(std::ref(res), service);
+        }
     }
     catch (const std::exception &e)
     {
-        RestHelper::sendErrorResponse(std::ref(res), std::ref(response), "Failure", fmt::format("Failed: {}", e.what()), -2, 500);
+        RestHelper::errorMessage(std::ref(res), crow::status::INTERNAL_SERVER_ERROR, fmt::format("error: {}", e.what()));
     }
 }

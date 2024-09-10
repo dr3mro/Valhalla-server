@@ -43,12 +43,12 @@ class DatabaseController
 
     std::optional<json>        executeQuery(const std::string &query);
     std::optional<json>        executeReadQuery(const std::string &query);
+    std::optional<json::array> executeSearchQuery(const std::string &query);
     std::optional<std::string> doReadQuery(const std::string &query);
     std::optional<bool>        checkItemExists(const std::string &table, const std::string &column, const std::string &value);
     std::optional<std::string> getPasswordHashForUserID(const uint64_t &user_id, const std::string &tablename);
-    std::optional<uint64_t>    findIfUserID(const std::string &username,
-                                            const std::string &tablename);  // check if user found and return 0 if not
-                                                                            // found or return ID if found
+    std::optional<uint64_t>    findIfUserID(const std::string &username, const std::string &tablename);  // check if user found and return 0 if not
+                                                                                                         // found or return ID if found
 
    private:
     std::shared_ptr<DatabaseConnectionPool> databaseConnectionPool;

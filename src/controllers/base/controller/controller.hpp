@@ -170,14 +170,14 @@ class Controller
 
             if (query)
             {
-                query_results_json   = databaseController->executeReadQuery(std::cref(query.value()));
+                query_results_json   = databaseController->executeSearchQuery(std::cref(query.value()));
                 size_t results_count = query_results_json.size();
 
-                if (results_count > std::any_cast<Entity::SearchData>(entity.getData()).limit)
+                if (results_count > std::any_cast<typename T::SearchData>(entity.getData()).limit)
                 {
                     response_json["more"]   = true;
-                    response_json["offset"] = std::any_cast<Entity::SearchData>(entity.getData()).offset +
-                                              std::any_cast<Entity::SearchData>(entity.getData()).limit;
+                    response_json["offset"] = std::any_cast<typename T::SearchData>(entity.getData()).offset +
+                                              std::any_cast<typename T::SearchData>(entity.getData()).limit;
                     query_results_json.erase(query_results_json.array_range().end() - 1);
                 }
                 else
@@ -189,11 +189,11 @@ class Controller
 
             if (query_results_json.empty())
             {
-                RestHelper::sendErrorResponse(res, std::ref(response_json), "failure: ", "not found", -1, 400);
+                RestHelper::errorMessage(res, crow::status::OK, "no results");
             }
             else
             {
-                RestHelper::buildResponse(response_json, 0, "success", query_results_json);
+                response_json["results"] = query_results_json;
                 RestHelper::sendResponse(res, 200, response_json);
             }
         }
@@ -203,7 +203,6 @@ class Controller
             RestHelper::sendErrorResponse(res, std::ref(response_json), "failure: ", fmt::format("failed: {}", e.what()), -2, 500);
         }
     }
-
     template <typename T>
     /**
      * @brief Logs out the user by validating the token, setting the logout time,
@@ -232,19 +231,15 @@ class Controller
             bool status = tokenManager->ValidateToken(loggedUserInfo);
             if (!status)
             {
-                res.code = 403;
-                res.end("Failed to logout");
+                RestHelper::errorMessage(res, crow::status::UNAUTHORIZED, "Failed to logout");
                 return;
             }
             sessionManager->setNowLogoutTime(loggedUserInfo.userID.value(), loggedUserInfo.group.value());
-            res.code = 200;
-            res.end("logout success");
+            RestHelper::sendResponse(res, crow::status::OK, "logout success");
         }
         catch (const std::exception &e)
         {
-            std::cerr << "Exception: " << e.what() << std::endl;
-            res.code = 500;
-            res.end("Failed to logout");
+            RestHelper::errorMessage(res, crow::status::INTERNAL_SERVER_ERROR, fmt::format("Error: {}", e.what()));
         }
     }
 
@@ -267,8 +262,9 @@ class Controller
      * These function pointers allow for easy invocation of the
      * DatabaseController's query execution methods.
      */
-    std::optional<json> (DatabaseController::*dbexec)(const std::string &)  = &DatabaseController::executeQuery;
-    std::optional<json> (DatabaseController::*dbrexec)(const std::string &) = &DatabaseController::executeReadQuery;
+    std::optional<json> (DatabaseController::*dbexec)(const std::string &)         = &DatabaseController::executeQuery;
+    std::optional<json> (DatabaseController::*dbrexec)(const std::string &)        = &DatabaseController::executeReadQuery;
+    std::optional<json::array> (DatabaseController::*dbsexec)(const std::string &) = &DatabaseController::executeSearchQuery;
 
     ///////////////////////////
     template <typename S, typename T>
@@ -291,14 +287,13 @@ class Controller
      * @return true if the SQL statement was successfully generated, false
      * otherwise.
      */
-    bool get_sql_statement(json &response_json, crow::response &res, std::optional<std::string> &query, T &entity, S &sqlstatement)
+    bool get_sql_statement(crow::response &res, std::optional<std::string> &query, T &entity, S &sqlstatement)
     {
         query = (entity.*sqlstatement)();
 
         if (!query)
         {
-            RestHelper::buildResponse(std::ref(response_json), -1, "failure", "failed to synthesize query");
-            RestHelper::sendResponse(std::ref(res), 400, std::ref(response_json));
+            RestHelper::errorMessage(res, crow::status::BAD_REQUEST, "failed to synthesize query");
             return false;
         }
         return true;
@@ -323,25 +318,36 @@ class Controller
      */
     void cruds(crow::response &res, T &entity, S &sqlstatement, std::optional<json> (DatabaseController::*f)(const std::string &))
     {
-        json                       response_json;
         std::optional<json>        query_results_json;
         std::optional<std::string> query;
         try
         {
-            if (get_sql_statement(response_json, res, query, entity, sqlstatement) && query.has_value())
+            if (get_sql_statement(res, query, entity, sqlstatement) && query.has_value())
             {
                 query_results_json = (*databaseController.*f)(query.value());
             }
-            RestHelper::sendQueryResult(response_json, query_results_json.value(), res);
+
+            if (query_results_json.has_value() && !query_results_json.value().empty())
+            {
+                res.code = crow::status::OK;
+                std::string result;
+                query_results_json.value().dump_pretty(result);
+                res.end(result);
+            }
+            else if (query_results_json.has_value() && query_results_json.value().empty())
+            {
+                RestHelper::errorMessage(res, crow::status::BAD_REQUEST, "empty query results");
+            }
+            else
+            {
+                RestHelper::errorMessage(res, crow::status::BAD_REQUEST, "failed to execute query");
+            }
         }
         catch (const std::exception &e)
         {
-            // Handle exception (log, etc.)
-            RestHelper::buildResponse(response_json, -2, "failure", fmt::format("failed: {}", e.what()));
-            RestHelper::sendResponse(res, 500, response_json);
+            RestHelper::errorMessage(res, crow::status::INTERNAL_SERVER_ERROR, fmt::format("failed to execute query: {}", e.what()));
         }
     }
-
     template <typename T>
     void addStaff(crow::response &res, T &entity)
     {

@@ -48,6 +48,41 @@ using json = jsoncons::json;
 class Client : public Entity
 {
    public:
+    struct Credentials
+    {
+        std::string username;  ///< The user's username.
+        std::string password;  ///< The user's password.
+    };
+
+    using SearchData = struct SearchData
+    {
+        std::string keyword;
+        std::string filter;
+        std::string order_by;
+        std::string direction;
+        size_t      limit;
+        size_t      offset;
+
+        SearchData(const json &search_json, bool &success)
+        {
+            try
+            {
+                keyword   = search_json.at("keyword").as<std::string>();
+                filter    = search_json.at("filter").as<std::string>();
+                order_by  = search_json.at("order_by").as<std::string>();
+                direction = search_json.at("direction").as<short>() == 0 ? "ASC" : "DESC";
+                limit     = search_json.at("limit").as<size_t>();
+                offset    = search_json.at("offset").as<size_t>();
+            }
+            catch (const std::exception &e)
+            {
+                success = false;
+                throw std::runtime_error(std::string(e.what()));
+            }
+            success = true;
+        }
+        SearchData() = default;
+    };
     template <typename T>
     /// Constructs a new `Client` object with the given data and table name.
     ///
@@ -72,15 +107,16 @@ class Client : public Entity
     ///
     /// @return An optional string containing the SQL query, or `std::nullopt` if
     /// an exception occurred.
-    std::optional<std::string> getSqlCreateStatement() override
+    std::optional<std::string> getSqlCreateStatement() final
     {
-        auto userdata = std::any_cast<Entity::UserData>(getData());
+        auto clientdata = std::any_cast<ClientData>(getData());
 
         try
         {
             std::vector<std::string> keys_arr;
             std::vector<std::string> values_arr;
-            for (auto &it : userdata.db_data)
+
+            for (auto &it : clientdata.get_db_data())
             {
                 keys_arr.push_back(it.first);
                 values_arr.push_back(it.second);
@@ -99,24 +135,86 @@ class Client : public Entity
         return std::nullopt;
     }
 
-    /// Checks if a client with the given username already exists in the database.
-    ///
-    /// @param username The username to check for.
-    /// @return An optional boolean indicating whether the client exists (true) or
-    /// not (false), or `std::nullopt` if an error occurred.
-    std::optional<bool> exists(const std::string &username) { return databaseController->checkItemExists(tablename, USERNAME, username); }
+    std::optional<std::string> getSqlUpdateStatement() final
+    {
+        std::optional<std::string> query;
 
-    /// Authenticates the client by checking the provided username and password
-    /// against the stored credentials.
-    ///
-    /// @return An optional `uint64_t` containing the client ID if the
-    /// authentication is successful, or `std::nullopt` if the authentication
-    /// fails or an error occurs.
+        try
+        {
+            auto                    clientdata = std::any_cast<ClientData>(getData()).get_db_data();
+            std::optional<uint64_t> id;
+            auto                    it = std::find_if(clientdata.begin(), clientdata.end(), [&](const auto &item) { return item.first == "id"; });
+
+            if (it != clientdata.end())
+            {
+                id = std::stoull(it->second);
+            }
+            else
+            {
+                throw std::runtime_error("id not found");
+                return std::nullopt;
+            }
+
+            std::string update_column_values;
+
+            for (auto it = clientdata.begin(); it != clientdata.end(); ++it)
+            {
+                update_column_values.append(fmt::format(" {} = '{}' ", it->first, it->second));
+                if (std::next(it) != clientdata.end())
+                {
+                    update_column_values.append(",");
+                }
+            }
+
+            query = fmt::format("UPDATE {} set {} WHERE id={} returning id;", tablename, update_column_values, id.value());
+        }
+        catch (const std::exception &e)
+        {
+            std::cerr << "failed to create query for update " << tablename << e.what() << std::endl;
+            return std::nullopt;
+        }
+        return query;
+    }
+
+    std::optional<std::string> getSqlSearchStatement() final
+    {
+        std::optional<std::string> query;
+        try
+        {
+            SearchData searchdata = std::any_cast<SearchData>(getData());
+            query = fmt::format("SELECT * FROM {}_safe WHERE {} ILIKE '%{}%' ORDER BY {} {} LIMIT {} OFFSET {};", tablename, searchdata.filter,
+                                searchdata.keyword, searchdata.order_by, searchdata.direction, searchdata.limit + 1, searchdata.offset);
+            std::cout << query.value() << std::endl;
+        }
+        catch (const std::exception &e)
+        {
+            std::cerr << "faild to create query for search " << tablename << e.what() << std::endl;
+            return std::nullopt;
+        }
+
+        return query;
+    }
+
+    bool exists()
+    {
+        auto client_data = std::any_cast<ClientData>(getData()).get_db_data();
+        auto it          = std::find_if(client_data.begin(), client_data.end(), [&](const auto &item) { return item.first == USERNAME; });
+
+        if (it != client_data.end())
+        {
+            std::string username = it->second;
+
+            auto result = databaseController->checkItemExists(tablename, USERNAME, username);
+            return result.value_or(false);
+        }
+        return false;
+    }
+
     std::optional<uint64_t> authenticate() const
     {
         try
         {
-            auto credentials = std::any_cast<Entity::Credentials>(getData());
+            auto credentials = std::any_cast<Credentials>(getData());
             auto client_id   = databaseController->findIfUserID(std::cref(credentials.username), std::cref(tablename));
 
             if (!client_id)
@@ -140,35 +238,7 @@ class Client : public Entity
         }
         return std::nullopt;
     }
-    /// Validates the client's user data, including the username, password, and
-    /// email.
-    ///
-    /// @return A pair containing a boolean indicating whether the validation was
-    /// successful, and an optional error message if the validation failed.
 
-    std::pair<bool, std::string> validate()
-    {
-        auto        userdata = std::any_cast<Entity::UserData>(getData());
-        std::string username = userdata.username.value();
-
-        if (exists(username).value())
-        {
-            return {false, fmt::format("username already exists in {}.", tablename)};
-        }
-        else if (!userdata.validateUsername())
-        {
-            return {false, "username is invalid"};
-        }
-        else if (!userdata.validatePassowrd())
-        {
-            return {false, "password is invalid"};
-        }
-        else if (!userdata.validateEmail())
-        {
-            return {false, "email format is invalid"};
-        }
-        return {true, "validation success"};
-    }
     ~Client() override = default;
 
    private:

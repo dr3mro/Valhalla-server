@@ -26,5 +26,5 @@ class ServiceControllerBase
     virtual void SearchService(const crow::request &req, crow::response &res, const jsoncons::json &search_json) = 0;
 
    private:
-    virtual uint64_t getNextID() = 0;
+    virtual std::optional<uint64_t> getNextID() = 0;
 };

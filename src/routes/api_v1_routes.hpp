@@ -9,6 +9,10 @@
 #include "controllers/staffcontroller/staffcontroller.hpp"
 #include "entities/people/provider.hpp"
 #include "entities/people/user.hpp"
+#include "entities/services/appointments/clinic.hpp"
+#include "entities/services/appointments/laboratory.hpp"
+#include "entities/services/appointments/pharmacy.hpp"
+#include "entities/services/appointments/radiologycenter.hpp"
 #include "entities/services/clinics/clinics.hpp"
 #include "entities/services/clinics/patient.hpp"
 #include "entities/services/laboratories.hpp"
@@ -24,8 +28,8 @@
 #include "middlewares/search.hpp"
 #include "middlewares/xrequest.hpp"
 
-using APP = crow::App<crow::CORSHandler, RateLimit, ElapsedTime, Authentication, Deauthentication, Authorization, XRequest, Search,
-                      DataIntegrity, BRequest>;
+using APP =
+    crow::App<crow::CORSHandler, RateLimit, ElapsedTime, Authentication, Deauthentication, Authorization, XRequest, Search, DataIntegrity, BRequest>;
 
 class API_V1_Routes
 {
@@ -35,10 +39,13 @@ class API_V1_Routes
 
    private:
     // Define variant type
-    using ServiceVariant = std::variant<std::shared_ptr<ServiceController<Patient>>, std::shared_ptr<ServiceController<Clinics>>,
-                                        std::shared_ptr<ServiceController<Pharmacies>>, std::shared_ptr<ServiceController<Laboratories>>,
-                                        std::shared_ptr<ServiceController<RadiologyCenters>>>;
-    using ClientVariant  = std::variant<std::shared_ptr<ClientController<User>>, std::shared_ptr<ClientController<Provider>>>;
+    using ServiceVariant =
+        std::variant<std::shared_ptr<ServiceController<Patient>>, std::shared_ptr<ServiceController<Clinics>>,
+                     std::shared_ptr<ServiceController<Pharmacies>>, std::shared_ptr<ServiceController<Laboratories>>,
+                     std::shared_ptr<ServiceController<RadiologyCenters>>, std::shared_ptr<ServiceController<ClinicAppointment>>,
+                     std::shared_ptr<ServiceController<PharmacyAppointment>>, std::shared_ptr<ServiceController<LaboratoryAppointment>>,
+                     std::shared_ptr<ServiceController<RadiologyCenterAppointment>>>;
+    using ClientVariant = std::variant<std::shared_ptr<ClientController<User>>, std::shared_ptr<ClientController<Provider>>>;
 
     using StaffVariant = std::variant<std::shared_ptr<StaffController<Clinics>>, std::shared_ptr<StaffController<Pharmacies>>,
                                       std::shared_ptr<StaffController<Laboratories>>, std::shared_ptr<StaffController<RadiologyCenters>>>;
@@ -53,18 +60,23 @@ class API_V1_Routes
         {"laboratories", Store::getObject<ServiceController<Laboratories>>()},
         {"radiologycenters", Store::getObject<ServiceController<RadiologyCenters>>()}};
 
+    std::unordered_map<std::string_view, ServiceVariant> appointmentRegistry = {
+        {"clinics", Store::getObject<ServiceController<ClinicAppointment>>()},
+        {"pharmacies", Store::getObject<ServiceController<PharmacyAppointment>>()},
+        {"laboratories", Store::getObject<ServiceController<LaboratoryAppointment>>()},
+        {"radiologycenters", Store::getObject<ServiceController<RadiologyCenterAppointment>>()}};
+
     std::unordered_map<std::string_view, ClientVariant> clientRegistry = {{"users", Store::getObject<ClientController<User>>()},
                                                                           {"providers", Store::getObject<ClientController<Provider>>()}};
 
-    std::unordered_map<std::string_view, StaffVariant> staffRegistry = {
-        {"clinics", Store::getObject<StaffController<Clinics>>()},
-        {"pharmacies", Store::getObject<StaffController<Pharmacies>>()},
-        {"laboratories", Store::getObject<StaffController<Laboratories>>()},
-        {"radiologycenters", Store::getObject<StaffController<RadiologyCenters>>()}};
+    std::unordered_map<std::string_view, StaffVariant> staffRegistry = {{"clinics", Store::getObject<StaffController<Clinics>>()},
+                                                                        {"pharmacies", Store::getObject<StaffController<Pharmacies>>()},
+                                                                        {"laboratories", Store::getObject<StaffController<Laboratories>>()},
+                                                                        {"radiologycenters", Store::getObject<StaffController<RadiologyCenters>>()}};
 
     template <typename Func, typename Registry, typename... Args>
-    void executeServiceMethod(const Registry& registry, const std::string_view key, Func method, const crow::request& req,
-                              crow::response& res, Args&&... args)
+    void executeServiceMethod(const Registry& registry, const std::string_view key, Func method, const crow::request& req, crow::response& res,
+                              Args&&... args)
     {
         auto it = registry.find(key);
         if (it != registry.end())

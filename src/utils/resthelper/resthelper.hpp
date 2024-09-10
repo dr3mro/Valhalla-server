@@ -18,4 +18,6 @@ class RestHelper
                                   short status, short code);
     static int  evaluateQueryResult(json& response_json, const json& query_results_json);
     static void sendQueryResult(json& response_json, const json& query_results_json, crow::response& res);
+
+    static void errorMessage(crow::response& res, const crow::status& status, const std::string& status_message);
 };

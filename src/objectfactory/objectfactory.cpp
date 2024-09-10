@@ -7,6 +7,10 @@
 #include "controllers/staffcontroller/staffcontroller.hpp"
 #include "entities/people/provider.hpp"
 #include "entities/people/user.hpp"
+#include "entities/services/appointments/clinic.hpp"
+#include "entities/services/appointments/laboratory.hpp"
+#include "entities/services/appointments/pharmacy.hpp"
+#include "entities/services/appointments/radiologycenter.hpp"
 #include "entities/services/clinics/clinics.hpp"
 #include "entities/services/clinics/patient.hpp"
 #include "entities/services/laboratories.hpp"
@@ -53,6 +57,10 @@ ObjectFactory::ObjectFactory()
     Store::registerObject<ServiceController<Pharmacies>>();
     Store::registerObject<ServiceController<Laboratories>>();
     Store::registerObject<ServiceController<RadiologyCenters>>();
+    Store::registerObject<ServiceController<ClinicAppointment>>();
+    Store::registerObject<ServiceController<PharmacyAppointment>>();
+    Store::registerObject<ServiceController<LaboratoryAppointment>>();
+    Store::registerObject<ServiceController<RadiologyCenterAppointment>>();
     Store::registerObject<ClientController<Provider>>();
     Store::registerObject<ClientController<User>>();
     Store::registerObject<DOSDetector>();
