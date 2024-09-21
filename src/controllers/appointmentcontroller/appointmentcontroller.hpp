@@ -5,50 +5,36 @@
 #include <functional>
 #include <jsoncons/json.hpp>
 
+#include "controllers/appointmentcontroller/appointmentcontrollerbase.hpp"
 #include "controllers/base/controller/controller.hpp"
-#include "controllers/servicecontroller/servicecontrollerbase.hpp"
 #include "entities/base/entity.hpp"
 #include "utils/resthelper/resthelper.hpp"
 
 using json = jsoncons::json;
 
 template <typename T>
-/**
- * @brief The ServiceController class is responsible for handling CRUD operations for a service entity.
- *
- * This class inherits from both ServiceControllerBase and Controller, allowing it to handle the specific
- * logic for creating, reading, updating, deleting, and searching service entities.
- *
- * The class provides the following methods:
- * - `CreateService`: Creates a new service entity based on the provided request data.
- * - `ReadService`: Retrieves a service entity based on the provided criteria.
- * - `UpdateService`: Updates an existing service entity based on the provided request data.
- * - `DeleteService`: Deletes a service entity based on the provided criteria.
- * - `SearchService`: Searches for service entities based on the provided criteria.
- *
- * The `getNextID` method is a private helper function that retrieves the next available ID for a new service entity.
- */
-class ServiceController : public ServiceControllerBase, public Controller
+
+class AppointmentController : public AppointmentControllerBase, public Controller
 {
    public:
-    explicit ServiceController() = default;
+    explicit AppointmentController() = default;
 
-    ~ServiceController() override = default;
+    ~AppointmentController() override = default;
 
     // CRUDS
-    void CreateService(const crow::request &req, crow::response &res, const jsoncons::json &body) override;
-    void ReadService(const crow::request &req, crow::response &res, const jsoncons::json &criteria) override;
-    void UpdateService(const crow::request &req, crow::response &res, const jsoncons::json &body) override;
-    void DeleteService(const crow::request &req, crow::response &res, const jsoncons::json &delete_json) override;
-    void SearchService(const crow::request &req, crow::response &res, const jsoncons::json &search_json) override;
+    void CreateAppointment(const crow::request &req, crow::response &res, const jsoncons::json &body) override;
+    void ReadAppointment(const crow::request &req, crow::response &res, const jsoncons::json &criteria) override;
+    void UpdateAppointment(const crow::request &req, crow::response &res, const jsoncons::json &body) override;
+    void DeleteAppointment(const crow::request &req, crow::response &res, const jsoncons::json &delete_json) override;
+    void SearchAppointment(const crow::request &req, crow::response &res, const jsoncons::json &search_json) override;
 
    private:
-    T                       service;
+    T                       entity;
     std::optional<uint64_t> getNextID() override
     {
         try
         {
-            json json_nextval = databaseController->executeQuery(fmt::format("SELECT NEXTVAL('{}_id_seq');", service.getTableName()));
+            json json_nextval = databaseController->executeQuery(fmt::format("SELECT NEXTVAL('{}_id_seq');", entity.getTableName()));
 
             if (json_nextval.empty())
             {
@@ -70,7 +56,7 @@ class ServiceController : public ServiceControllerBase, public Controller
 };
 
 template <typename T>
-void ServiceController<T>::CreateService(const crow::request &req, crow::response &res, const jsoncons::json &body)
+void AppointmentController<T>::CreateAppointment(const crow::request &req, crow::response &res, const jsoncons::json &body)
 {
     (void)req;
     json response;
@@ -84,8 +70,8 @@ void ServiceController<T>::CreateService(const crow::request &req, crow::respons
         }
         Entity::CreateData createData(body, nextID.value());
 
-        T service(createData);
-        Controller::Create(std::ref(res), service);
+        T entity(createData);
+        Controller::Create(std::ref(res), entity);
     }
     catch (const std::exception &e)
     {
@@ -94,7 +80,7 @@ void ServiceController<T>::CreateService(const crow::request &req, crow::respons
 }
 
 template <typename T>
-void ServiceController<T>::ReadService(const crow::request &req, crow::response &res, const json &criteria)
+void AppointmentController<T>::ReadAppointment(const crow::request &req, crow::response &res, const json &criteria)
 {
     (void)req;
     json response;
@@ -104,8 +90,8 @@ void ServiceController<T>::ReadService(const crow::request &req, crow::response 
         std::vector<std::string> data = criteria.at("schema").as<std::vector<std::string>>();
 
         Entity::ReadData readData(data, id);
-        T                service(readData);
-        Controller::Read(std::ref(res), service);
+        T                entity(readData);
+        Controller::Read(std::ref(res), entity);
     }
     catch (const std::exception &e)
     {
@@ -114,7 +100,7 @@ void ServiceController<T>::ReadService(const crow::request &req, crow::response 
 }
 
 template <typename T>
-void ServiceController<T>::UpdateService(const crow::request &req, crow::response &res, const jsoncons::json &body)
+void AppointmentController<T>::UpdateAppointment(const crow::request &req, crow::response &res, const jsoncons::json &body)
 {
     (void)req;
     json response;
@@ -128,8 +114,8 @@ void ServiceController<T>::UpdateService(const crow::request &req, crow::respons
             return;
         }
         Entity::UpdateData updateData(data, id.value());
-        T                  service(updateData);
-        Controller::Update(std::ref(res), service);
+        T                  entity(updateData);
+        Controller::Update(std::ref(res), entity);
     }
     catch (const std::exception &e)
     {
@@ -138,14 +124,14 @@ void ServiceController<T>::UpdateService(const crow::request &req, crow::respons
 }
 
 template <typename T>
-void ServiceController<T>::DeleteService(const crow::request &req, crow::response &res, const jsoncons::json &delete_json)
+void AppointmentController<T>::DeleteAppointment(const crow::request &req, crow::response &res, const jsoncons::json &delete_json)
 {
     (void)req;
     try
     {
         Entity::DeleteData deleteData(delete_json);
-        T                  service(deleteData);
-        Controller::Delete(std::ref(res), service);
+        T                  entity(deleteData);
+        Controller::Delete(std::ref(res), entity);
     }
     catch (const std::exception &e)
     {
@@ -154,7 +140,7 @@ void ServiceController<T>::DeleteService(const crow::request &req, crow::respons
 }
 
 template <typename T>
-void ServiceController<T>::SearchService(const crow::request &req, crow::response &res, const jsoncons::json &search_json)
+void AppointmentController<T>::SearchAppointment(const crow::request &req, crow::response &res, const jsoncons::json &search_json)
 {
     (void)req;
     json response;
@@ -164,8 +150,8 @@ void ServiceController<T>::SearchService(const crow::request &req, crow::respons
         Entity::SearchData searchData(search_json, success);
         if (success)
         {
-            T service(searchData);
-            Controller::Search(std::ref(res), service);
+            T entity(searchData);
+            Controller::Search(std::ref(res), entity);
         }
     }
     catch (const std::exception &e)

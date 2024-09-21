@@ -1,6 +1,7 @@
 #include "objectfactory.hpp"
 
 #include "configurator/configurator.hpp"
+#include "controllers/appointmentcontroller/appointmentcontroller.hpp"
 #include "controllers/clientcontroller/clientcontroller.hpp"
 #include "controllers/databasecontroller/databasecontroller.hpp"
 #include "controllers/servicecontroller/servicecontroller.hpp"
@@ -57,10 +58,10 @@ ObjectFactory::ObjectFactory()
     Store::registerObject<ServiceController<Pharmacies>>();
     Store::registerObject<ServiceController<Laboratories>>();
     Store::registerObject<ServiceController<RadiologyCenters>>();
-    Store::registerObject<ServiceController<ClinicAppointment>>();
-    Store::registerObject<ServiceController<PharmacyAppointment>>();
-    Store::registerObject<ServiceController<LaboratoryAppointment>>();
-    Store::registerObject<ServiceController<RadiologyCenterAppointment>>();
+    Store::registerObject<AppointmentController<ClinicAppointment>>();
+    Store::registerObject<AppointmentController<PharmacyAppointment>>();
+    Store::registerObject<AppointmentController<LaboratoryAppointment>>();
+    Store::registerObject<AppointmentController<RadiologyCenterAppointment>>();
     Store::registerObject<ClientController<Provider>>();
     Store::registerObject<ClientController<User>>();
     Store::registerObject<DOSDetector>();
