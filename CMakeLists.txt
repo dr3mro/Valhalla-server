@@ -1,6 +1,8 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.5...3.24)
 
+# Set the project name and version
 set(Target "server")
+
 project(${Target})
 
 # Set C++ standard
@@ -123,7 +125,7 @@ CPMAddPackage(
   URL_HASH MD5=94480849689e8b5dd41017a98e253544
 
   # disable tests and docs
-  OPTIONS "LIBCURL_DISABLE_TESTS ON" "LIBCURL_DISABLE_DOCS ON"
+  OPTIONS "LIBCURL_DISABLE_TESTS ON" "LIBCURL_DISABLE_DOCS ON" "CURL_USE_LIBPSL OFF"
 )
 
 # Suppress developer warnings and deprecated warnings
