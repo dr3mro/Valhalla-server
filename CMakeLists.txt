@@ -39,9 +39,9 @@ CPMAddPackage(
 
 CPMAddPackage(
   NAME asio
-  VERSION 1-30-2
-  URL https://github.com/chriskohlhoff/asio/archive/refs/tags/asio-1-30-2.zip
-  URL_HASH MD5=60b2439c456d0e0b2417765f097573ba
+  VERSION 1-31-0
+  URL https://github.com/chriskohlhoff/asio/archive/refs/tags/asio-1-31-0.tar.gz
+  URL_HASH MD5=83b1f73c102982761042126ec1a2ba41
 )
 
 CPMAddPackage(
@@ -85,17 +85,17 @@ CPMAddPackage(
 
 CPMAddPackage(
   NAME jsoncons
-  VERSION 0.176.0
-  URL https://github.com/danielaparker/jsoncons/archive/refs/tags/v0.176.0.tar.gz
-  URL_HASH MD5=3737f302fd6c9814d8e2741007d3bfdd
+  VERSION 0.177.0
+  URL https://github.com/danielaparker/jsoncons/archive/refs/tags/v0.177.0.tar.gz
+  URL_HASH MD5=fb04ce9c4c8877547332604975e83895
   OPTIONS "JSONCONS_BUILD_EXAMPLES OFF" "JSONCONS_BUILD_TESTS OFF"
 )
 
 CPMAddPackage(
   NAME Catch2
-  VERSION 3.6.0
-  URL https://github.com/catchorg/Catch2/archive/refs/tags/v3.6.0.tar.gz
-  URL_HASH MD5=86a9fec7afecaec687faaa988ac6818e
+  VERSION 3.7.1
+  URL https://github.com/catchorg/Catch2/archive/refs/tags/v3.7.1.tar.gz
+  URL_HASH MD5=9fcbec1dc95edcb31c6a0d6c5320e098
   OPTIONS "BUILD_TESTING OFF"
 )
 
@@ -118,8 +118,12 @@ CPMAddPackage(
 
 CPMAddPackage(
   NAME libcurl
-  URL https://github.com/curl/curl/releases/download/curl-8_9_1/curl-8.9.1.tar.gz
-  URL_HASH MD5=2570f590c998d65d52b93141edb521e1
+  VERSION 8.10.1
+  URL https://github.com/curl/curl/releases/download/curl-8_10_1/curl-8.10.1.tar.gz
+  URL_HASH MD5=94480849689e8b5dd41017a98e253544
+
+  # disable tests and docs
+  OPTIONS "LIBCURL_DISABLE_TESTS ON" "LIBCURL_DISABLE_DOCS ON"
 )
 
 # Suppress developer warnings and deprecated warnings

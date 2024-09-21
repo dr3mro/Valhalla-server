@@ -16,8 +16,8 @@
  */
 std::shared_ptr<Database> DatabaseConnectionPool::createDatabaseConnection()
 {
-    auto command = fmt::format("host= {}  dbname= {}  user= {} password= {} connect_timeout=2", config_.host, config_.name, config_.user,
-                               config_.pass);
+    auto command =
+        fmt::format("host= {}  dbname= {}  user= {} password= {} connect_timeout=2", config_.host, config_.name, config_.user, config_.pass);
 
     auto conn = std::make_shared<pqxx::connection>(command.c_str());
 
@@ -43,7 +43,7 @@ DatabaseConnectionPool::DatabaseConnectionPool()
             if (status == std::future_status::ready)
             {
                 databaseConnections.push(future.get());
-                std::cout << "Connection " << i + 1 << " created successfully." << std::endl;
+                std::cout << "Connection " << i + 1 << " created successfully." << '\n';
             }
             else
             {
@@ -53,7 +53,7 @@ DatabaseConnectionPool::DatabaseConnectionPool()
     }
     catch (const std::exception &e)
     {
-        std::cerr << "Exception caught during database connection pool initialization: " << e.what() << std::endl;
+        std::cerr << "Exception caught during database connection pool initialization: " << e.what() << '\n';
         throw std::runtime_error("Failed to initialize database connection pool");
     }
 }
