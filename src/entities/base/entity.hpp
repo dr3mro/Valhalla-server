@@ -135,6 +135,7 @@ class Entity : public Base
      * column, sort direction, limit, and offset, used to query an entity.
      *
      * @param keyword The search keyword.
+     * @param filter The filter to apply to the search.
      * @param order_by The column to order the results by.
      * @param direction The sort direction, either "ASC" or "DESC".
      * @param limit The maximum number of results to return.
@@ -143,6 +144,7 @@ class Entity : public Base
     using SearchData = struct SearchData
     {
         std::string keyword;
+        std::string filter;
         std::string order_by;
         std::string direction;
         size_t      limit;
@@ -153,6 +155,7 @@ class Entity : public Base
             try
             {
                 keyword   = search_json.at("keyword").as<std::string>();
+                filter    = search_json.at("filter").as<std::string>();
                 order_by  = search_json.at("order_by").as<std::string>();
                 direction = search_json.at("direction").as<short>() == 0 ? "ASC" : "DESC";
                 limit     = search_json.at("limit").as<size_t>();
