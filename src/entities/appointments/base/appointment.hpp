@@ -19,15 +19,15 @@ class Appointment : public Entity
 
     ~Appointment() = default;
 
-    std::optional<std::string> getSqlSearchStatement() override
+    std::optional<std::string> getSqlSearchStatement() final
     {
         std::optional<std::string> query;
         try
         {
             SearchData searchdata = std::any_cast<SearchData>(getData());
-            query = fmt::format("SELECT * FROM {}_safe WHERE {} ILIKE '%{}%' ORDER BY {} {} LIMIT {} OFFSET {};", tablename, searchdata.filter,
+            query = fmt::format("SELECT * FROM {}_safe WHERE {} = {} ORDER BY {} {} LIMIT {} OFFSET {};", tablename, searchdata.filter,
                                 searchdata.keyword, searchdata.order_by, searchdata.direction, searchdata.limit + 1, searchdata.offset);
-            // std::cout << query.value() << std::endl;
+            std::cout << query.value() << '\n';
         }
         catch (const std::exception &e)
         {

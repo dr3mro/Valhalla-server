@@ -146,8 +146,8 @@ void AppointmentController<T>::SearchAppointment(const crow::request &req, crow:
     json response;
     try
     {
-        bool               success = false;
-        Entity::SearchData searchData(search_json, success);
+        bool                   success = false;
+        typename T::SearchData searchData(search_json, success);
         if (success)
         {
             T entity(searchData);

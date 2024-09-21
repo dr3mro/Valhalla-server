@@ -15,7 +15,7 @@ class ClinicAppointment : public Appointment
     ClinicAppointment() : Appointment(TABLENAME) {}
 
     template <typename T>
-    ClinicAppointment(const T& _data) : Appointment(_data, TABLENAME)
+    ClinicAppointment(const T &_data) : Appointment(_data, TABLENAME)
     {
     }
     std::string getTableName() { return TABLENAME; }
