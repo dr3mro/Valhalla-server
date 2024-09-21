@@ -2,7 +2,7 @@
 
 #include <jsoncons/json.hpp>
 
-#include "entities/services/appointments/base/appointment.hpp"
+#include "entities/appointments/base/appointment.hpp"
 
 using json = jsoncons::json;
 
