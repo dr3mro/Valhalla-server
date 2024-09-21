@@ -1,4 +1,4 @@
-
+* Implement readappointment by user_id and entity_id.
 * Implement GateKeeper middleware to check if user has access to a resource.
 * Implement changepassword, lostpassword.
 * json schema validation for all jsons.
@@ -16,7 +16,5 @@
     providers:can be owner and admin at the same time.
 
 * use CTRACK
-* Implement a microservice to send emails with a docker container.
-* send email invite to add memeber to entity
 
 ps aux  | awk '{print $6/1024 " MB\t\t" $11}'  | sort -n
