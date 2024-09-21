@@ -22,7 +22,7 @@ struct Search : crow::ILocalMiddleware
 
         try
         {
-            std::vector<std::string> keys = {"keyword", "order_by", "direction", "limit", "offset"};
+            std::vector<std::string> keys = {"keyword", "filter", "order_by", "direction", "limit", "offset"};
 
             auto it = keys.begin();
 
