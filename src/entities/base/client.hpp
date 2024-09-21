@@ -54,35 +54,6 @@ class Client : public Entity
         std::string password;  ///< The user's password.
     };
 
-    using SearchData = struct SearchData
-    {
-        std::string keyword;
-        std::string filter;
-        std::string order_by;
-        std::string direction;
-        size_t      limit;
-        size_t      offset;
-
-        SearchData(const json &search_json, bool &success)
-        {
-            try
-            {
-                keyword   = search_json.at("keyword").as<std::string>();
-                filter    = search_json.at("filter").as<std::string>();
-                order_by  = search_json.at("order_by").as<std::string>();
-                direction = search_json.at("direction").as<short>() == 0 ? "ASC" : "DESC";
-                limit     = search_json.at("limit").as<size_t>();
-                offset    = search_json.at("offset").as<size_t>();
-            }
-            catch (const std::exception &e)
-            {
-                success = false;
-                throw std::runtime_error(std::string(e.what()));
-            }
-            success = true;
-        }
-        SearchData() = default;
-    };
     template <typename T>
     /// Constructs a new `Client` object with the given data and table name.
     ///
