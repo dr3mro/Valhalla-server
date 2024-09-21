@@ -4,8 +4,6 @@
 #include <cstdint>
 #include <jsoncons/json.hpp>
 
-#include "crow/http_request.h"
-
 /**
  * @brief Base class for service controllers that handle CRUD operations for a service.
  *

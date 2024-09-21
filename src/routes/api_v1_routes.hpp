@@ -4,6 +4,7 @@
 
 #include <memory>
 
+#include "controllers/appointmentcontroller/appointmentcontroller.hpp"
 #include "controllers/clientcontroller/clientcontroller.hpp"
 #include "controllers/servicecontroller/servicecontroller.hpp"
 #include "controllers/staffcontroller/staffcontroller.hpp"
@@ -39,12 +40,15 @@ class API_V1_Routes
 
    private:
     // Define variant type
-    using ServiceVariant =
-        std::variant<std::shared_ptr<ServiceController<Patient>>, std::shared_ptr<ServiceController<Clinics>>,
-                     std::shared_ptr<ServiceController<Pharmacies>>, std::shared_ptr<ServiceController<Laboratories>>,
-                     std::shared_ptr<ServiceController<RadiologyCenters>>, std::shared_ptr<ServiceController<ClinicAppointment>>,
-                     std::shared_ptr<ServiceController<PharmacyAppointment>>, std::shared_ptr<ServiceController<LaboratoryAppointment>>,
-                     std::shared_ptr<ServiceController<RadiologyCenterAppointment>>>;
+    using ServiceVariant = std::variant<std::shared_ptr<ServiceController<Patient>>, std::shared_ptr<ServiceController<Clinics>>,
+                                        std::shared_ptr<ServiceController<Pharmacies>>, std::shared_ptr<ServiceController<Laboratories>>,
+                                        std::shared_ptr<ServiceController<RadiologyCenters>>>;
+
+    using AppointmentVariant =
+        std::variant<std::shared_ptr<AppointmentController<ClinicAppointment>>, std::shared_ptr<AppointmentController<PharmacyAppointment>>,
+                     std::shared_ptr<AppointmentController<LaboratoryAppointment>>,
+                     std::shared_ptr<AppointmentController<RadiologyCenterAppointment>>>;
+
     using ClientVariant = std::variant<std::shared_ptr<ClientController<User>>, std::shared_ptr<ClientController<Provider>>>;
 
     using StaffVariant = std::variant<std::shared_ptr<StaffController<Clinics>>, std::shared_ptr<StaffController<Pharmacies>>,
@@ -60,11 +64,11 @@ class API_V1_Routes
         {"laboratories", Store::getObject<ServiceController<Laboratories>>()},
         {"radiologycenters", Store::getObject<ServiceController<RadiologyCenters>>()}};
 
-    std::unordered_map<std::string_view, ServiceVariant> appointmentRegistry = {
-        {"clinics", Store::getObject<ServiceController<ClinicAppointment>>()},
-        {"pharmacies", Store::getObject<ServiceController<PharmacyAppointment>>()},
-        {"laboratories", Store::getObject<ServiceController<LaboratoryAppointment>>()},
-        {"radiologycenters", Store::getObject<ServiceController<RadiologyCenterAppointment>>()}};
+    std::unordered_map<std::string_view, AppointmentVariant> appointmentRegistry = {
+        {"clinics", Store::getObject<AppointmentController<ClinicAppointment>>()},
+        {"pharmacies", Store::getObject<AppointmentController<PharmacyAppointment>>()},
+        {"laboratories", Store::getObject<AppointmentController<LaboratoryAppointment>>()},
+        {"radiologycenters", Store::getObject<AppointmentController<RadiologyCenterAppointment>>()}};
 
     std::unordered_map<std::string_view, ClientVariant> clientRegistry = {{"users", Store::getObject<ClientController<User>>()},
                                                                           {"providers", Store::getObject<ClientController<Provider>>()}};
@@ -75,8 +79,8 @@ class API_V1_Routes
                                                                         {"radiologycenters", Store::getObject<StaffController<RadiologyCenters>>()}};
 
     template <typename Func, typename Registry, typename... Args>
-    void executeServiceMethod(const Registry& registry, const std::string_view key, Func method, const crow::request& req, crow::response& res,
-                              Args&&... args)
+    void executeControllerMethod(const Registry& registry, const std::string_view key, Func method, const crow::request& req, crow::response& res,
+                                 Args&&... args)
     {
         auto it = registry.find(key);
         if (it != registry.end())
