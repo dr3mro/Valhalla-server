@@ -79,7 +79,7 @@ void ServiceController<T>::CreateService(const crow::request &req, crow::respons
         auto nextID = getNextID();
         if (!nextID.has_value())
         {
-            RestHelper::errorMessage(std::ref(res), crow::status::NOT_ACCEPTABLE, "Failed to generate next ID");
+            RestHelper::errorResponse(std::ref(res), crow::status::NOT_ACCEPTABLE, "Failed to generate next ID");
             return;
         }
         Entity::CreateData createData(body, nextID.value());
@@ -89,7 +89,7 @@ void ServiceController<T>::CreateService(const crow::request &req, crow::respons
     }
     catch (const std::exception &e)
     {
-        RestHelper::sendErrorResponse(std::ref(res), std::ref(response), "Failure", fmt::format("Failed: {}", e.what()), -2, 500);
+        RestHelper::failureResponse(std::ref(res), e.what());
     }
 }
 
@@ -109,7 +109,7 @@ void ServiceController<T>::ReadService(const crow::request &req, crow::response 
     }
     catch (const std::exception &e)
     {
-        RestHelper::errorMessage(std::ref(res), crow::status::INTERNAL_SERVER_ERROR, e.what());
+        RestHelper::failureResponse(std::ref(res), e.what());
     }
 }
 
@@ -124,7 +124,7 @@ void ServiceController<T>::UpdateService(const crow::request &req, crow::respons
         std::optional<uint64_t> id = data.find("id")->value().as<uint64_t>();
         if (!id.has_value())
         {
-            RestHelper::errorMessage(std::ref(res), crow::status::NOT_ACCEPTABLE, "No id provided");
+            RestHelper::errorResponse(std::ref(res), crow::status::NOT_ACCEPTABLE, "No id provided");
             return;
         }
         Entity::UpdateData updateData(data, id.value());
@@ -133,7 +133,7 @@ void ServiceController<T>::UpdateService(const crow::request &req, crow::respons
     }
     catch (const std::exception &e)
     {
-        RestHelper::sendErrorResponse(std::ref(res), std::ref(response), "Failure", fmt::format("Failed: {}", e.what()), -2, 500);
+        RestHelper::failureResponse(std::ref(res), e.what());
     }
 }
 
@@ -149,7 +149,7 @@ void ServiceController<T>::DeleteService(const crow::request &req, crow::respons
     }
     catch (const std::exception &e)
     {
-        RestHelper::errorMessage(std::ref(res), crow::status::INTERNAL_SERVER_ERROR, fmt::format("error: {}", e.what()));
+        RestHelper::failureResponse(std::ref(res), e.what());
     }
 }
 
@@ -170,6 +170,6 @@ void ServiceController<T>::SearchService(const crow::request &req, crow::respons
     }
     catch (const std::exception &e)
     {
-        RestHelper::errorMessage(std::ref(res), crow::status::INTERNAL_SERVER_ERROR, fmt::format("error: {}", e.what()));
+        RestHelper::failureResponse(std::ref(res), e.what());
     }
 }

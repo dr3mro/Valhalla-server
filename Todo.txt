@@ -1,4 +1,5 @@
 * Implement readappointment by user_id and entity_id.
+* Implement middleware for appointment search by user_id or entity_id.
 * Implement GateKeeper middleware to check if user has access to a resource.
 * Implement changepassword, lostpassword.
 * json schema validation for all jsons.

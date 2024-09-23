@@ -4,6 +4,7 @@
 #include <optional>
 
 #include "jsoncons/basic_json.hpp"
+#include "utils/resthelper/resthelper.hpp"
 
 using json = jsoncons::json;
 
@@ -22,8 +23,7 @@ struct Deauthentication : crow::ILocalMiddleware
         {
             if (!req.headers.contains("Deauthentication"))
             {
-                res.code = 403;
-                res.end("Deauthentication Header not provided");
+                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Deauthentication Header not provided.");
                 return;
             }
 
@@ -31,8 +31,7 @@ struct Deauthentication : crow::ILocalMiddleware
 
             if (!raw_token)
             {
-                res.code = 403;
-                res.end("Deauthentication data not provided");
+                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Deauthentication data not provided");
                 return;
             }
 
@@ -43,16 +42,14 @@ struct Deauthentication : crow::ILocalMiddleware
 
             if (!ctx.token)
             {
-                res.code = 403;  // login denied
-                res.end("Deauthentication token decoding failure");
+                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Deauthentication token decoding failure");
             }
 
             return;
         }
         catch (const std::exception &e)
         {
-            res.code = 500;  // login denied
-            res.end("Deauthentication Denied");
+            RestHelper::failureResponse(res, e.what());
             return;
         }
     }

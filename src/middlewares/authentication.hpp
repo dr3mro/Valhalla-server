@@ -5,6 +5,7 @@
 #include <optional>
 
 #include "middlewares/brequest.hpp"
+#include "utils/resthelper/resthelper.hpp"
 struct Authentication : crow::ILocalMiddleware
 {
     struct context
@@ -20,23 +21,22 @@ struct Authentication : crow::ILocalMiddleware
         {
             ctx.credentials = jsoncons::json::parse(req.body);
 
-            auto user = ctx.credentials["username"].as<std::string>();
-            auto pass = ctx.credentials["password"].as<std::string>();
+            std::optional<std::string> user = ctx.credentials["username"].as<std::string>();
+            std::optional<std::string> pass = ctx.credentials["password"].as<std::string>();
 
-            if (user.empty())
+            if (!user.has_value())
             {
-                throw std::runtime_error("Username is empty");
+                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Failed to extract username.");
             }
-            else if (pass.empty())
+            else if (!pass.has_value())
             {
-                throw std::runtime_error("Password is empty");
+                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Failed to extract password.");
             }
             return;
         }
         catch (const std::exception &e)
         {
-            res.code = 500;  // login denied
-            res.end(fmt::format("Login Failure: {}", e.what()));
+            RestHelper::failureResponse(res, fmt::format("Error (Login Failure) : {}", e.what()));
             return;
         }
     }

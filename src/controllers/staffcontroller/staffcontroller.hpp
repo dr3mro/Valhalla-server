@@ -46,7 +46,7 @@ void StaffController<T>::AddStaffToEntity(const crow::request &req, crow::respon
     }
     catch (const std::exception &e)
     {
-        RestHelper::sendErrorResponse(std::ref(res), std::ref(response), "Failure", fmt::format("Failed: {}", e.what()), -2, 500);
+        RestHelper::failureResponse(std::ref(res), e.what());
     }
 }
 template <typename T>
@@ -66,7 +66,7 @@ void StaffController<T>::RemoveStaffFromEntity(const crow::request &req, crow::r
         }
         catch (const std::exception &e)
         {
-            RestHelper::sendErrorResponse(std::ref(res), std::ref(response), "Failure", fmt::format("Failed: {}", e.what()), -2, 500);
+            RestHelper::failureResponse(std::ref(res), e.what());
         }
     }
 }
@@ -78,29 +78,31 @@ void StaffController<T>::InviteStaffToEntity(const crow::request &req, crow::res
     try
     {
         json                       data(body);
-        json                       payload = data.at("payload");
-        Entity::StaffData          staffData(payload);
+        Entity::StaffData          staffData(data);
         std::optional<std::string> response;
         T                          service(staffData);
-        if (staffData.parse_status && staffData.toInviteJson(payload))
+        if (staffData.parse_status && staffData.toInviteJson(data))
         {
             response =
                 Communicate::sendRequest(email_sender_daemon_config_.host.data(), email_sender_daemon_config_.port,
-                                         email_sender_daemon_config_.message_queue_path.data(), crow::HTTPMethod::POST, payload.to_string().c_str());
-            res.code          = 200;
-            std::string reply = response ? response.value() : "Failed to send invite";
-            res.write(fmt::format("{}", reply));
-            res.end();
+                                         email_sender_daemon_config_.message_queue_path.data(), crow::HTTPMethod::POST, data.to_string().c_str());
+
+            if (response.has_value())
+            {
+                RestHelper::successResponse(res, crow::status::OK, response.value());
+            }
+            else
+            {
+                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Failed to send invite.");
+            }
         }
         else
         {
-            res.code = 400;
-            res.write("Failed to create invite json");
-            res.end();
+            RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Failed to create invite json.");
         }
     }
     catch (const std::exception &e)
     {
-        RestHelper::sendErrorResponse(std::ref(res), std::ref(response), "Failure", fmt::format("Failed: {}", e.what()), -2, 500);
+        RestHelper::failureResponse(std::ref(res), e.what());
     }
 }

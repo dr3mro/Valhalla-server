@@ -7,6 +7,7 @@
 
 #include "fmt/format.h"
 #include "middlewares/brequest.hpp"
+#include "utils/resthelper/resthelper.hpp"
 
 struct DataIntegrity : crow::ILocalMiddleware
 {
@@ -30,8 +31,7 @@ struct DataIntegrity : crow::ILocalMiddleware
 
             if (!json.contains("xxh64sum") || !json.contains("payload"))
             {
-                res.code = 400;
-                res.end("xxh64sum or payload not provided, aborting.");
+                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "xxh64sum or payload not provided, aborting.");
                 return;
             }
 
@@ -41,15 +41,13 @@ struct DataIntegrity : crow::ILocalMiddleware
 
             if (checksum != fmt::format("{:016x}", hash))
             {
-                res.code = 400;
-                res.end("hash mismatch, aborting.");
+                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "hash mismatch, aborting.");
                 return;
             }
         }
         catch (const std::exception &e)
         {
-            res.code = 500;
-            res.end(fmt::format("Failure, {}", e.what()));
+            RestHelper::failureResponse(res, e.what());
             return;
         }
     }

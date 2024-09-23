@@ -28,6 +28,7 @@
 #include "middlewares/ratelimit.hpp"
 #include "middlewares/search.hpp"
 #include "middlewares/xrequest.hpp"
+#include "utils/resthelper/resthelper.hpp"
 
 using APP =
     crow::App<crow::CORSHandler, RateLimit, ElapsedTime, Authentication, Deauthentication, Authorization, XRequest, Search, DataIntegrity, BRequest>;
@@ -97,18 +98,12 @@ class API_V1_Routes
             }
             catch (const std::exception& e)
             {
-                std::cerr << "Exception: " << e.what() << std::endl;
-                res.code = 500;
-                res.body = "Internal Server Error";
-                res.end();
+                RestHelper::failureResponse(res, e.what());
             }
         }
         else
         {
-            std::cerr << "Type mapping not found for: " << key << std::endl;
-            res.code = 400;
-            res.body = "Type mapping not found";
-            res.end();
+            RestHelper::errorResponse(res, crow::status::BAD_REQUEST, fmt::format("Type mapping not found for: {}", key));
         }
     }
 };

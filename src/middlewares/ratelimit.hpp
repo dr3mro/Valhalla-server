@@ -7,6 +7,7 @@
 
 #include "store/store.hpp"
 #include "utils/dosdetector/dosdetector.hpp"
+#include "utils/resthelper/resthelper.hpp"
 struct RateLimit : crow::ILocalMiddleware
 {
    public:
@@ -28,24 +29,19 @@ struct RateLimit : crow::ILocalMiddleware
             case DOSDetector::Status::WHITELISTED:
                 break;
             case DOSDetector::Status::BLACKLISTED:
-                res.code = 403;
-                res.end("IP is blacklisted.");
+                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "IP is blacklisted.");
                 break;
             case DOSDetector::Status::RATELIMITED:
-                res.code = 429;
-                res.end("IP is ratelimited.");
+                RestHelper::errorResponse(res, crow::status::TOO_MANY_REQUESTS, "IP is ratelimited.");
                 break;
             case DOSDetector::Status::BANNED:
-                res.code = 403;
-                res.end("IP is banned.");
+                RestHelper::errorResponse(res, crow::status::SERVICE_UNAVAILABLE, "IP is banned.");
                 break;
             case DOSDetector::Status::ERROR:
-                res.code = 500;
-                res.end("Server Error");
+                RestHelper::failureResponse(res, "Server error.");
                 break;
             default:
-                res.code = 500;
-                res.end("Unknown Error");
+                RestHelper::failureResponse(res, "Unknown error.");
                 break;
         }
     }

@@ -4,7 +4,9 @@
 #include <jsoncons/json.hpp>
 
 #include "store/store.hpp"
+#include "utils/resthelper/resthelper.hpp"
 #include "utils/tokenmanager/tokenmanager.hpp"
+
 struct Authorization : crow::ILocalMiddleware
 {
     struct context
@@ -23,8 +25,7 @@ struct Authorization : crow::ILocalMiddleware
 
             if (!authorization)
             {
-                res.code = 403;
-                res.end("Authorization Header not found");
+                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Authorization Header not found");
                 return;
             }
 
@@ -35,29 +36,22 @@ struct Authorization : crow::ILocalMiddleware
 
             if (!ctx.userInfo.token)
             {
-                // Respond with a 400 Bad Request if shasum parsing failed
-                res.code = 403;
-                res.end("Authorization Token not found");
+                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Authorization token not found");
                 return;
             }
 
             if (!tokenManager->ValidateToken(ctx.userInfo))
             {
-                res.code = 403;
-                res.end("Authorization denied");
+                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Authorization Denied");
                 return;
             }
             return;
         }
         catch (const std::exception &e)
         {
-            res.code = 500;  // login denied
-            res.end();
+            RestHelper::failureResponse(res, e.what());
             return;
         }
-
-        res.code = 403;  // login denied
-        res.end();
     }
     void after_handle(crow::request &req, crow::response &res, context &ctx)
     {

@@ -4,6 +4,8 @@
 
 #include <jsoncons/json.hpp>
 
+#include "utils/resthelper/resthelper.hpp"
+
 struct BRequest : crow::ILocalMiddleware
 {
    public:
@@ -23,8 +25,7 @@ struct BRequest : crow::ILocalMiddleware
         }
         catch (const std::exception &e)
         {
-            res.code = 500;
-            res.end("Error parsing request body");
+            RestHelper::failureResponse(res, "Error parsing request body");
             return;
         }
     }

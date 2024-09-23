@@ -4,6 +4,8 @@
 
 #include <jsoncons/json.hpp>
 
+#include "utils/resthelper/resthelper.hpp"
+
 struct XRequest : crow::ILocalMiddleware
 {
    private:
@@ -22,8 +24,7 @@ struct XRequest : crow::ILocalMiddleware
     {
         if (!(req.headers.contains(xRequestHeader) && !req.get_header_value(xRequestHeader).empty()))
         {
-            res.code = 400;
-            res.end("Missing proper request");
+            RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Missing proper X-Request in header.");
             return;
         }
         try
@@ -33,8 +34,7 @@ struct XRequest : crow::ILocalMiddleware
 
             if (!encoded)
             {
-                res.code = 400;
-                res.end("no request provided");
+                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "X-Request header not provided.");
                 return;
             }
 
@@ -44,8 +44,7 @@ struct XRequest : crow::ILocalMiddleware
         }
         catch (const std::exception &e)
         {
-            res.code = 500;
-            res.end("error parsing Xrequest header");
+            RestHelper::failureResponse(res, e.what());
             return;
         }
     }
