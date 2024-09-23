@@ -1,7 +1,5 @@
 #include "clientdata.hpp"
 
-#include "store/store.hpp"
-#include "utils/passwordcrypt/passwordcrypt.hpp"
 #include "utils/resthelper/resthelper.hpp"
 
 ClientData::ClientData(const json &_data, crow::response &res, bool &success)
@@ -35,7 +33,7 @@ ClientData::ClientData(const json &_data, crow::response &res, bool &success)
         }
         catch (const std::exception &e)
         {
-            RestHelper::errorMessage(res, crow::status::INTERNAL_SERVER_ERROR, fmt::format("Error ({}) : {}", item.key(), e.what()));
+            RestHelper::failureResponse(std::ref(res), e.what());
             return;
         }
     }

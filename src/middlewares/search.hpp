@@ -5,6 +5,7 @@
 
 #include <jsoncons/json.hpp>
 
+#include "utils/resthelper/resthelper.hpp"
 #include "xrequest.hpp"
 struct Search : crow::ILocalMiddleware
 {
@@ -30,8 +31,7 @@ struct Search : crow::ILocalMiddleware
             {
                 if (!ctx.search_json.contains(*it))
                 {
-                    res.code = 400;
-                    res.end(fmt::format("{} not found", *it));
+                    RestHelper::errorResponse(res, crow::status::BAD_REQUEST, fmt::format("{} not provided.", *it));
                     return;
                 }
                 it++;
@@ -40,8 +40,7 @@ struct Search : crow::ILocalMiddleware
         }
         catch (const std::exception &e)
         {
-            res.code = 400;
-            res.end("Inconsistent search data");
+            RestHelper::failureResponse(res, e.what());
             return;
         }
     }

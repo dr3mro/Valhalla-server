@@ -90,7 +90,7 @@ class ClientController : public ClientControllerBase, public Controller
         }
         catch (const std::exception& e)
         {
-            std::cerr << "Exception in ClientController constructor: " << e.what() << std::endl;
+            std::cerr << fmt::format("Exception in ClientController constructor: {}\n", e.what());
             exit(EXIT_FAILURE);
         }
     }
@@ -137,7 +137,7 @@ void ClientController<T>::CreateClient(const crow::request& req, crow::response&
             T client(client_data);
             if (client.exists())
             {
-                RestHelper::errorMessage(res, crow::status::CONFLICT, "User already exists");
+                RestHelper::errorResponse(res, crow::status::CONFLICT, "User already exists");
                 return;
             }
             Create<T>(res, client);
@@ -145,7 +145,7 @@ void ClientController<T>::CreateClient(const crow::request& req, crow::response&
     }
     catch (const std::exception& e)
     {
-        RestHelper::errorMessage(res, crow::status::INTERNAL_SERVER_ERROR, fmt::format("Failed: {}", e.what()));
+        RestHelper::failureResponse(std::ref(res), e.what());
     }
 }
 
@@ -166,6 +166,7 @@ std::optional<uint64_t> ClientController<T>::AuthenticateClient(const crow::requ
 {
     (void)req;
     json                    response;
+    std::string             reponse_string;
     std::optional<uint64_t> client_id;
     try
     {
@@ -180,7 +181,7 @@ std::optional<uint64_t> ClientController<T>::AuthenticateClient(const crow::requ
 
         if (!client_id)
         {
-            RestHelper::errorMessage(res, crow::status::UNAUTHORIZED, fmt::format("User '{}' not found or wrong password", creds.username));
+            RestHelper::errorResponse(res, crow::status::UNAUTHORIZED, fmt::format("User '{}' not found or wrong password", creds.username));
             return std::nullopt;
         }
 
@@ -197,13 +198,14 @@ std::optional<uint64_t> ClientController<T>::AuthenticateClient(const crow::requ
         token_object["user_id"]  = client_id;
         token_object["group"]    = loggedUserInfo.group;
 
-        RestHelper::sendResponse(res, crow::status::OK, token_object);
+        token_object.dump_pretty(reponse_string);
+        RestHelper::successResponse(res, crow::status::OK, reponse_string);
         sessionManager->setNowLoginTime(client_id.value(), loggedUserInfo.group.value());
         return client_id;
     }
     catch (const std::exception& e)
     {
-        RestHelper::errorMessage(res, crow::status::INTERNAL_SERVER_ERROR, fmt::format("Failed: {}", e.what()));
+        RestHelper::failureResponse(std::ref(res), e.what());
     }
     return std::nullopt;
 }
@@ -234,7 +236,7 @@ void ClientController<T>::ReadClient(const crow::request& req, crow::response& r
     }
     catch (const std::exception& e)
     {
-        RestHelper::errorMessage(std::ref(res), crow::status::INTERNAL_SERVER_ERROR, fmt::format("error: {}", e.what()));
+        RestHelper::failureResponse(std::ref(res), e.what());
     }
 }
 
@@ -264,7 +266,7 @@ void ClientController<T>::UpdateClient(const crow::request& req, crow::response&
     }
     catch (const std::exception& e)
     {
-        RestHelper::errorMessage(std::ref(res), crow::status::INTERNAL_SERVER_ERROR, fmt::format("error: {}", e.what()));
+        RestHelper::failureResponse(std::ref(res), e.what());
     }
 }
 
@@ -291,7 +293,7 @@ void ClientController<T>::DeleteClient(const crow::request& req, crow::response&
     }
     catch (const std::exception& e)
     {
-        RestHelper::errorMessage(std::ref(res), crow::status::INTERNAL_SERVER_ERROR, fmt::format("error: {}", e.what()));
+        RestHelper::failureResponse(std::ref(res), e.what());
     }
 }
 
@@ -323,7 +325,7 @@ void ClientController<T>::SearchClient(const crow::request& req, crow::response&
     }
     catch (const std::exception& e)
     {
-        RestHelper::errorMessage(std::ref(res), crow::status::INTERNAL_SERVER_ERROR, e.what());
+        RestHelper::failureResponse(std::ref(res), e.what());
     }
 }
 
@@ -351,6 +353,6 @@ void ClientController<T>::LogoutClient(const crow::request& req, crow::response&
     }
     catch (const std::exception& e)
     {
-        RestHelper::errorMessage(std::ref(res), crow::status::INTERNAL_SERVER_ERROR, fmt::format("Failed: {}", e.what()));
+        RestHelper::failureResponse(std::ref(res), e.what());
     }
 }

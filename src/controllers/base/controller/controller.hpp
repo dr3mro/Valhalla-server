@@ -60,7 +60,7 @@ class Controller
         }
         catch (const std::exception &e)
         {
-            std::cout << "Exception in Controller constructor: " << e.what() << std::endl;
+            std::cerr << fmt::format("Exception in Controller constructor: {}\n", e.what());
             exit(EXIT_FAILURE);
         }
     }
@@ -162,6 +162,7 @@ class Controller
     {
         json                       response_json;
         json                       query_results_json;
+        std::string                results;
         std::optional<std::string> query;
 
         try
@@ -189,18 +190,23 @@ class Controller
 
             if (query_results_json.empty())
             {
-                RestHelper::errorMessage(res, crow::status::OK, "no results");
+                response_json["results"] = jsoncons::json();
+                response_json.dump_pretty(results);
+                RestHelper::successResponse(res, crow::status::OK, results);
             }
             else
             {
                 response_json["results"] = query_results_json;
-                RestHelper::sendResponse(res, 200, response_json);
+                response_json.dump_pretty(results);
+                RestHelper::successResponse(res, crow::status::OK, results);
             }
         }
         catch (const std::exception &e)
         {
-            // Handle exception (log, etc.)
-            RestHelper::sendErrorResponse(res, std::ref(response_json), "failure: ", fmt::format("failed: {}", e.what()), -2, 500);
+            response_json["results"] = jsoncons::json();
+            response_json["error"]   = e.what();
+            response_json.dump_pretty(results);
+            RestHelper::failureResponse(res, results);
         }
     }
     template <typename T>
@@ -231,15 +237,15 @@ class Controller
             bool status = tokenManager->ValidateToken(loggedUserInfo);
             if (!status)
             {
-                RestHelper::errorMessage(res, crow::status::UNAUTHORIZED, "Failed to logout");
+                RestHelper::errorResponse(res, crow::status::UNAUTHORIZED, "Logout failure.");
                 return;
             }
             sessionManager->setNowLogoutTime(loggedUserInfo.userID.value(), loggedUserInfo.group.value());
-            RestHelper::sendResponse(res, crow::status::OK, "logout success");
+            RestHelper::successResponse(res, crow::status::OK, "Logout success");
         }
         catch (const std::exception &e)
         {
-            RestHelper::errorMessage(res, crow::status::INTERNAL_SERVER_ERROR, fmt::format("Error: {}", e.what()));
+            RestHelper::failureResponse(std::ref(res), e.what());
         }
     }
 
@@ -293,7 +299,7 @@ class Controller
 
         if (!query)
         {
-            RestHelper::errorMessage(res, crow::status::BAD_REQUEST, "failed to synthesize query");
+            RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Failed to synthesize query");
             return false;
         }
         return true;
@@ -320,6 +326,7 @@ class Controller
     {
         std::optional<json>        query_results_json;
         std::optional<std::string> query;
+        std::string                result;
         try
         {
             if (get_sql_statement(res, query, entity, sqlstatement) && query.has_value())
@@ -329,23 +336,21 @@ class Controller
 
             if (query_results_json.has_value() && !query_results_json.value().empty())
             {
-                res.code = crow::status::OK;
-                std::string result;
                 query_results_json.value().dump_pretty(result);
-                res.end(result);
+                RestHelper::successResponse(res, crow::status::OK, result);
             }
             else if (query_results_json.has_value() && query_results_json.value().empty())
             {
-                RestHelper::errorMessage(res, crow::status::BAD_REQUEST, "empty query results");
+                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Empty query results");
             }
             else
             {
-                RestHelper::errorMessage(res, crow::status::BAD_REQUEST, "failed to execute query");
+                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Failed to execute query");
             }
         }
         catch (const std::exception &e)
         {
-            RestHelper::errorMessage(res, crow::status::INTERNAL_SERVER_ERROR, fmt::format("failed to execute query: {}", e.what()));
+            RestHelper::failureResponse(res, e.what());
         }
     }
     template <typename T>

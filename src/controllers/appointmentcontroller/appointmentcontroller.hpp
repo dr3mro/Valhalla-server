@@ -65,7 +65,7 @@ void AppointmentController<T>::CreateAppointment(const crow::request &req, crow:
         auto nextID = getNextID();
         if (!nextID.has_value())
         {
-            RestHelper::errorMessage(std::ref(res), crow::status::NOT_ACCEPTABLE, "Failed to generate next ID");
+            RestHelper::errorResponse(std::ref(res), crow::status::NOT_ACCEPTABLE, "Failed to generate next ID");
             return;
         }
         Entity::CreateData createData(body, nextID.value());
@@ -75,7 +75,7 @@ void AppointmentController<T>::CreateAppointment(const crow::request &req, crow:
     }
     catch (const std::exception &e)
     {
-        RestHelper::sendErrorResponse(std::ref(res), std::ref(response), "Failure", fmt::format("Failed: {}", e.what()), -2, 500);
+        RestHelper::failureResponse(std::ref(res), e.what());
     }
 }
 
@@ -95,7 +95,7 @@ void AppointmentController<T>::ReadAppointment(const crow::request &req, crow::r
     }
     catch (const std::exception &e)
     {
-        RestHelper::errorMessage(std::ref(res), crow::status::INTERNAL_SERVER_ERROR, e.what());
+        RestHelper::failureResponse(std::ref(res), e.what());
     }
 }
 
@@ -110,7 +110,7 @@ void AppointmentController<T>::UpdateAppointment(const crow::request &req, crow:
         std::optional<uint64_t> id = data.find("id")->value().as<uint64_t>();
         if (!id.has_value())
         {
-            RestHelper::errorMessage(std::ref(res), crow::status::NOT_ACCEPTABLE, "No id provided");
+            RestHelper::errorResponse(std::ref(res), crow::status::NOT_ACCEPTABLE, "No ID provided");
             return;
         }
         Entity::UpdateData updateData(data, id.value());
@@ -119,7 +119,7 @@ void AppointmentController<T>::UpdateAppointment(const crow::request &req, crow:
     }
     catch (const std::exception &e)
     {
-        RestHelper::sendErrorResponse(std::ref(res), std::ref(response), "Failure", fmt::format("Failed: {}", e.what()), -2, 500);
+        RestHelper::failureResponse(std::ref(res), e.what());
     }
 }
 
@@ -135,7 +135,7 @@ void AppointmentController<T>::DeleteAppointment(const crow::request &req, crow:
     }
     catch (const std::exception &e)
     {
-        RestHelper::errorMessage(std::ref(res), crow::status::INTERNAL_SERVER_ERROR, fmt::format("error: {}", e.what()));
+        RestHelper::failureResponse(std::ref(res), e.what());
     }
 }
 
@@ -156,6 +156,6 @@ void AppointmentController<T>::SearchAppointment(const crow::request &req, crow:
     }
     catch (const std::exception &e)
     {
-        RestHelper::errorMessage(std::ref(res), crow::status::INTERNAL_SERVER_ERROR, fmt::format("error: {}", e.what()));
+        RestHelper::failureResponse(std::ref(res), e.what());
     }
 }

@@ -2,6 +2,8 @@
 
 #include <functional>
 
+#include "utils/resthelper/resthelper.hpp"
+
 // Define the base URL as a macro
 #define PREFIX "/api/v1"
 // Macro to concatenate the base URL with a path
@@ -204,7 +206,8 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
             [](const crow::request &req, crow::response &res)
             {
                 (void)req;
-                res.code = crow::OK;
-                res.end("{\n\"Message\" : \"Welcome to ASGARD.\"\n}");
+                jsoncons::json reply;
+                reply["Message"] = "Welcome to ASGARD.";
+                RestHelper::successResponse(res, crow::status::OK, reply.to_string());
             });
 }
