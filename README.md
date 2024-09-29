@@ -58,7 +58,7 @@ curl -X POST -H "Content-Type: application/json" -d @api/users/create_user.json 
 </details>
 
 ### 🚪 Login a User
-- do a `POST` request on `/api/v1/clients/users/login` with a `header` contains a `BASE64` encoded JSON with data from `api/users/login_user.json` in header key `Authentication`
+- do a `POST` request on `/api/v1/clients/users/login` with JSON with data from `api/users/login_user.json` in body.
 
 <details>
 
@@ -146,7 +146,7 @@ curl -X POST -H "Content-Type: application/json" -d @api/providers/create_provid
 
 ### 🚪 Login a Provider
 
-- do a `POST` request on `/api/v1/clients/providers/login` with a `header` contains a `BASE64` encoded `JSON` with data from `api/providers/login_provider.json` in header key `Authentication`
+- do a `POST` request on `/api/v1/clients/providers/login` with `JSON` with data from `api/providers/login_provider.json` in body.
 
 <details>
 <summary>More</summary>
