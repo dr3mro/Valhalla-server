@@ -21,17 +21,11 @@ struct Deauthentication : crow::ILocalMiddleware
     {
         try
         {
-            if (!req.headers.contains("Deauthentication"))
-            {
-                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Deauthentication Header not provided.");
-                return;
-            }
-
-            std::optional<std::string> raw_token = req.get_header_value("Deauthentication");
+            std::optional<std::string> raw_token = jsoncons::json::parse(req.body).at("token").as<std::string>();
 
             if (!raw_token)
             {
-                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Deauthentication data not provided");
+                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "logout token not provided.");
                 return;
             }
 
@@ -42,7 +36,7 @@ struct Deauthentication : crow::ILocalMiddleware
 
             if (!ctx.token)
             {
-                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Deauthentication token decoding failure");
+                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "token parsing failure.");
             }
 
             return;
