@@ -376,6 +376,53 @@ Connection: Keep-Alive
 
 </details>
 
+### » Appointments
+all appointments are in `/api/v1/appointments`
+### ⚙️ Appointments
+<details>
+    <summary> Clinics </summary>
+
+
+  * `POST` request to `/api/v1/appointments/clinics` with a `body` contains `JSON` like `api/appointments/create.json`
+  * `GET` request to `/api/v1/appointments/clinics` with a `header` contains `X-Request` with `base64` encoded `JSON` like `api/appointments/read.json`
+  * `GET` request to `/api/v1/appointments/clinics` with a `header` contains `X-Request` with `base64` encoded `JSON` like `api/appointments/read.json`
+  * `PUT` request to `/api/v1/appointments/clinics` with a `body` contains `JSON` like `api/appointments/update.json`
+  * `DELETE` request to `/api/v1/appointments/clinics` with a `header` contains `X-Request` with `base64` encoded `JSON` like `api/appointments/delete.json`
+  * `SEARCH` request to `/api/v1/appointments/clinics` with a `header` contains `X-Request` with `base64` encoded `JSON` like `api/appointments/search.json`
+
+</details>
+
+<details>
+    <summary> Pharmacies </summary>
+
+  * `POST` request to `/api/v1/appointments/pharmacies` with a `body` contains `JSON` like `api/appointments/create.json`
+  * `GET` request to `/api/v1/appointments/pharmacies` with a `header` contains `X-Request` with `base64` encoded `JSON` like `api/appointments/read.json`
+  * `PUT` request to `/api/v1/appointments/pharmacies` with a `body` contains `JSON` like `api/appointments/update.json`
+  * `DELETE` request to `/api/v1/appointments/pharmacies` with a `header` contains `X-Request` with `base64` encoded `JSON` like `api/appointments/delete.json`
+  * `SEARCH` request to `/api/v1/appointments/pharmacies` with a `header` contains `X-Request` with `base64` encoded `JSON` like `api/appointments/search.json`
+
+</details>
+<details>
+    <summary> Laboratories </summary>
+
+  * `POST` request to `/api/v1/appointments/laboratories` with a `body` contains `JSON` like `api/appointments/create.json`
+  * `GET` request to `/api/v1/appointments/laboratories` with a `header` contains `X-Request` with `base64` encoded `JSON` like `api/appointments/read.json`
+  * `PUT` request to `/api/v1/appointments/laboratories` with a `body` contains `JSON` like `api/appointments/update.json`
+  * `DELETE` request to `/api/v1/appointments/laboratories` with a `header` contains `X-Request` with `base64` encoded `JSON` like `api/appointments/delete.json`
+  * `SEARCH` request to `/api/v1/appointmentslaboratories` with a `header` contains `X-Request` with `base64` encoded `JSON` like `api/appointments/search.json`
+
+</details>
+<details>
+    <summary> Radiologycenters </summary>
+
+  * `POST` request to `/api/v1/appointments/radiologycenters` with a `body` contains `JSON` like `api/appointments/create.json`
+  * `GET` request to `/api/v1/appointments/radiologycenters` with a `header` contains `X-Request` with `base64` encoded `JSON` like `api/appointments/read.json`
+  * `PUT` request to `/api/v1/appointments/radiologycenters` with a `body` contains `JSON` like `api/appointments/update.json`
+  * `DELETE` request to `/api/v1/appointments/radiologycenters` with a `header` contains `X-Request` with `base64` encoded `JSON` like `api/appointments/delete.json`
+  * `SEARCH` request to `/api/v1/appointments/radiologycenters` with a `header` contains `X-Request` with `base64` encoded `JSON` like `api/appointments/search.json`
+
+</details>
+
 
 ### ⚙️ Services
 
@@ -398,11 +445,11 @@ available services:
 <details>
     <summary> Pharmacies </summary>
 
-  * `POST` request to `/api/v1/services/pharmacies` with a `body` contains `JSON` like `api/services/create.json`
-  * `GET` request to `/api/v1/services/pharmacies` with a `header` contains `X-Request` with `base64` encoded `JSON` like `api/services/read.json`
-  * `PUT` request to `/api/v1/services/pharmacies` with a `body` contains `JSON` like `api/services/update.json`
-  * `DELETE` request to `/api/v1/services/pharmacies` with a `header` contains `X-Request` with `base64` encoded `JSON` like `api/services/delete.json`
-  * `SEARCH` request to `/api/v1/services/pharmacies` with a `header` contains `X-Request` with `base64` encoded `JSON` like `api/services/search.json`
+  * `POST` request to `/api/v1/appointments/pharmacies` with a `body` contains `JSON` like `api/services/create.json`
+  * `GET` request to `/api/v1/appointments/pharmacies` with a `header` contains `X-Request` with `base64` encoded `JSON` like `api/services/read.json`
+  * `PUT` request to `/api/v1/appointments/pharmacies` with a `body` contains `JSON` like `api/services/update.json`
+  * `DELETE` request to `/api/v1/appointments/pharmacies` with a `header` contains `X-Request` with `base64` encoded `JSON` like `api/services/delete.json`
+  * `SEARCH` request to `/api/v1/appointments/pharmacies` with a `header` contains `X-Request` with `base64` encoded `JSON` like `api/services/search.json`
 
 </details>
 <details>
