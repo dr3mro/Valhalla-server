@@ -78,7 +78,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MjMxNzQ3M
 </details>
 
 ### 🚪  Logout a User
-- To logout just send `POST` with the last valid token to `/api/v1/clients/users/logout` under header key `Deauthentication`
+- To logout just send `POST` with the last valid token to `/api/v1/clients/users/logout` with body contains `JSON` with data from `api/users/logout.json`
 <details>
 <summary>More</summary>
 
@@ -161,8 +161,7 @@ curl -X POST -H "Authentication: $(cat api/providers/login_provider.json | base6
 </details>
 
 ### 🚪 Logout a Provider
-- To logout just send the last valid token to `/api/v1/clients/providers/logout` under header key `Deauthentication`
-
+- To logout just send the last valid token to `/api/v1/clients/providers/logout` with body `JSON` with data from `api/providers/logout.json`
 <details>
 <summary>More</summary>
 
