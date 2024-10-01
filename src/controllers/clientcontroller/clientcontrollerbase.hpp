@@ -22,4 +22,6 @@ class ClientControllerBase
     virtual void                    DeleteClient(const crow::request& req, crow::response& res, const json& delete_json)                 = 0;
     virtual void                    SearchClient(const crow::request& req, crow::response& res, const json& search_json)                 = 0;
     virtual void                    LogoutClient(const crow::request& req, crow::response& res, const std::optional<std::string>& token) = 0;
+    virtual void                    SuspendClient(const crow::request& req, crow::response& res, const json& criteria)                   = 0;
+    virtual void                    ActivateClient(const crow::request& req, crow::response& res, const json& criteria)                  = 0;
 };

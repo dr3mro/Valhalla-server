@@ -249,6 +249,20 @@ class Controller
         }
     }
 
+    template <typename T>
+    void Suspend(crow::response &res, T &entity)
+    {
+        std::optional<std::string> (T::*sqlstatement)() = &T::getSqlSuspendStatement;
+        cruds(std::ref(res), entity, sqlstatement, dbexec);
+    }
+
+    template <typename T>
+    void Unsuspend(crow::response &res, T &entity)
+    {
+        std::optional<std::string> (T::*sqlstatement)() = &T::getSqlActivateStatement;
+        cruds(std::ref(res), entity, sqlstatement, dbexec);
+    }
+
    protected:
     /**
      * @brief Shared pointers to the DatabaseController, SessionManager, and

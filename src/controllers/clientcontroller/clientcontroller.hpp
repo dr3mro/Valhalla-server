@@ -105,6 +105,8 @@ class ClientController : public ClientControllerBase, public Controller
     void                    DeleteClient(const crow::request& req, crow::response& res, const json& delete_json) override;
     void                    SearchClient(const crow::request& req, crow::response& res, const json& search_json) override;
     void                    LogoutClient(const crow::request& req, crow::response& res, const std::optional<std::string>& token) override;
+    void                    SuspendClient(const crow::request& req, crow::response& res, const json& criteria) override;
+    void                    ActivateClient(const crow::request& req, crow::response& res, const json& criteria) override;
 
    protected:
     std::shared_ptr<TokenManager>   tokenManager;
@@ -350,6 +352,40 @@ void ClientController<T>::LogoutClient(const crow::request& req, crow::response&
         Entity::LogoutData logoutData(token);
         T                  client(logoutData);
         Controller::Logout(std::ref(res), client);
+    }
+    catch (const std::exception& e)
+    {
+        RestHelper::failureResponse(std::ref(res), e.what());
+    }
+}
+
+template <Client_t T>
+void ClientController<T>::SuspendClient(const crow::request& req, crow::response& res, const json& criteria)
+{
+    (void)req;
+    try
+    {
+        uint64_t            client_id = criteria.at("id").as<uint64_t>();
+        Entity::SuspendData suspendData(client_id);
+        T                   client(suspendData);
+        Controller::Suspend(std::ref(res), client);
+    }
+    catch (const std::exception& e)
+    {
+        RestHelper::failureResponse(std::ref(res), e.what());
+    }
+}
+
+template <Client_t T>
+void ClientController<T>::ActivateClient(const crow::request& req, crow::response& res, const json& criteria)
+{
+    (void)req;
+    try
+    {
+        uint64_t            client_id = criteria.at("id").as<uint64_t>();
+        Entity::SuspendData suspendData(client_id);
+        T                   client(suspendData);
+        Controller::Unsuspend(std::ref(res), client);
     }
     catch (const std::exception& e)
     {

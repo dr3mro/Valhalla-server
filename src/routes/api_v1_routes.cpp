@@ -42,6 +42,24 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
                                         std::cref(app->get_context<Deauthentication>(std::cref(req)).token));
             });
 
+    CROW_ROUTE((*app), URL("/clients/<string>/suspend"))
+        .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Deauthentication)
+        .methods(crow::HTTPMethod::POST)(
+            [this, app](const crow::request &req, crow::response &res, const std::string_view clientType)
+            {
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::SuspendClient, std::cref(req), std::ref(res),
+                                        std::cref(app->get_context<BRequest>(std::cref(req)).criteria));
+            });
+
+    CROW_ROUTE((*app), URL("/clients/<string>/activate"))
+        .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Deauthentication)
+        .methods(crow::HTTPMethod::POST)(
+            [this, app](const crow::request &req, crow::response &res, const std::string_view clientType)
+            {
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::ActivateClient, std::cref(req), std::ref(res),
+                                        std::cref(app->get_context<BRequest>(std::cref(req)).criteria));
+            });
+
     CROW_ROUTE((*app), URL("/clients/<string>"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, XRequest)
         .methods(crow::HTTPMethod::GET)(
