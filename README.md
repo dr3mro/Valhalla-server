@@ -63,7 +63,7 @@ curl -X POST -H "Content-Type: application/json" -d @api/users/create_user.json 
 <details>
 
 ```
-curl -X POST -H "Authentication: $(cat api/users/login_user.json | base64 -w0)" http://172.20.0.10:80/api/v1/clients/users/login
+curl -X POST -d @api/users/login_user.json http://172.20.0.10:80/api/v1/clients/users/login
 ```
 
 <summary>More</summary>
@@ -83,10 +83,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MjMxNzQ3M
 <summary>More</summary>
 
 ```
-curl -X POST -H "Deauthentication: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MjUyMTAxMTcsImdyb3VwIjoidXNlcnMiLCJpYXQiOjE3MjI2MTgxMTcsImlzcyI6InZhbGhhbGxhIiwianRpIjoiMTAxNiIsImxsb2R0IjoiMjAyNC0wOC0wMiAxNjo1ODozNSswMCIsInN1YiI6InVzZXIifQ.faC_aadCWNqY67_tTYGM2DZuRPTy12Rma_6bwdITrN0"  http://172.20.0.10:80/api/v1/clients/users/logout
+curl -X POST -d @api/users/logout.json  http://172.20.0.10:80/api/v1/clients/users/logout
 ```
 
 </details>
+
+### 🚪  Suspend a User
+- To suspend just send `POST` with the last valid token to `/api/v1/clients/users/suspend` with body contains `JSON` with data from `api/users/suspend_user.json`
+
 
 ### 🤓 Get a User
 - do a `GET` request on `/api/v1/clients/users/` with a header `X-Request` contains a `BASE64` encoded `JSON` with data from `api/users/read_user.json`
@@ -152,7 +156,7 @@ curl -X POST -H "Content-Type: application/json" -d @api/providers/create_provid
 <summary>More</summary>
 
 ```
-curl -X POST -H "Authentication: $(cat api/providers/login_provider.json | base64 -w0)" http://172.20.0.10:80/api/v1/clients/providers/login
+curl -X POST -d @api/providers/login_provider.json  http://172.20.0.10:80/api/v1/clients/providers/login
 ```
 
 - the username should be in lowercase and/or numbers and never contains spaces or symbols.
@@ -166,9 +170,15 @@ curl -X POST -H "Authentication: $(cat api/providers/login_provider.json | base6
 <summary>More</summary>
 
 ```
-curl -X POST -H "Deauthentication: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MjUyMTAxMTcsImdyb3VwIjoidXNlcnMiLCJpYXQiOjE3MjI2MTgxMTcsImlzcyI6InZhbGhhbGxhIiwianRpIjoiMTAxNiIsImxsb2R0IjoiMjAyNC0wOC0wMiAxNjo1ODozNSswMCIsInN1YiI6InVzZXIifQ.faC_aadCWNqY67_tTYGM2DZuRPTy12Rma_6bwdITrN0"  http://172.20.0.10:80/api/v1/clients/providers/logout
+curl -X POST -d @api/providers/logout.json  http://172.20.0.10:80/api/v1/clients/providers/logout
 ```
 </details>
+
+
+### 🚪  Suspend a Provider
+- To suspend just send `POST` with the last valid token to `/api/v1/clients/providers/suspend` with body contains `JSON` with data from `api/providers/suspend_provider.json`
+
+
 
 ### 🤓 Get a Provider
 - do a `GET` request on `/api/v1/clients/providers` with a header `X-Request` contains a `BASE64` encoded `JSON` data from `api/Providers/read_provider.json`
