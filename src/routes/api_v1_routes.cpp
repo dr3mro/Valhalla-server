@@ -43,7 +43,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
             });
 
     CROW_ROUTE((*app), URL("/clients/<string>/suspend"))
-        .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Deauthentication)
+        .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, DataIntegrity, BRequest)
         .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view clientType)
             {
@@ -52,7 +52,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
             });
 
     CROW_ROUTE((*app), URL("/clients/<string>/activate"))
-        .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Deauthentication)
+        .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, DataIntegrity, BRequest)
         .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view clientType)
             {
