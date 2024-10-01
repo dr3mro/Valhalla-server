@@ -107,6 +107,7 @@ class ClientController : public ClientControllerBase, public Controller
     void                    LogoutClient(const crow::request& req, crow::response& res, const std::optional<std::string>& token) override;
     void                    SuspendClient(const crow::request& req, crow::response& res, const json& criteria) override;
     void                    ActivateClient(const crow::request& req, crow::response& res, const json& criteria) override;
+    void                    ResetPassword(const crow::request& req, crow::response& res, const json& reset_json) override;
 
    protected:
     std::shared_ptr<TokenManager>   tokenManager;
@@ -391,4 +392,12 @@ void ClientController<T>::ActivateClient(const crow::request& req, crow::respons
     {
         RestHelper::failureResponse(std::ref(res), e.what());
     }
+}
+
+template <Client_t T>
+void ClientController<T>::ResetPassword(const crow::request& req, crow::response& res, const json& reset_json)
+{
+    (void)req;
+    (void)res;
+    (void)reset_json;
 }
