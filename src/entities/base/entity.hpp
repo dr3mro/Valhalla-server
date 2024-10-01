@@ -332,9 +332,9 @@ class Entity : public Base
             auto user_id = std::any_cast<ReadData>(data).id;
             auto schema  = std::any_cast<ReadData>(data).schema;
 
-            std::string columns = fmt::format("{}", fmt::join(schema, ", "));
+            std::string columns = schema.empty() ? "*" : fmt::format("{}", fmt::join(schema, ", "));
 
-            query = fmt::format("SELECT {} FROM {} WHERE id={} LIMIT 1;", columns, tablename, user_id);
+            query = fmt::format("SELECT {} FROM {}_safe WHERE id={} LIMIT 1;", columns, tablename, user_id);
         }
         catch (const std::exception &e)
         {
