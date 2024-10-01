@@ -155,7 +155,6 @@ class Client : public Entity
             SearchData searchdata = std::any_cast<SearchData>(getData());
             query = fmt::format("SELECT * FROM {}_safe WHERE {} ILIKE '%{}%' ORDER BY {} {} LIMIT {} OFFSET {};", tablename, searchdata.filter,
                                 searchdata.keyword, searchdata.order_by, searchdata.direction, searchdata.limit + 1, searchdata.offset);
-            std::cout << query.value() << std::endl;
         }
         catch (const std::exception &e)
         {
@@ -165,6 +164,28 @@ class Client : public Entity
 
         return query;
     }
+
+    inline std::optional<std::string> getSqlToggleSuspendStatement(bool state)
+    {
+        std::optional<std::string> query;
+        try
+        {
+            SuspendData suspenddata = std::any_cast<SuspendData>(getData());
+            query =
+                fmt::format("UPDATE {} SET active={} where id={} returning id,active;", tablename, state ? "true" : "false", suspenddata.client_id);
+        }
+        catch (const std::exception &e)
+        {
+            std::cerr << fmt::format("faild to create query for suspend {}: {} \n", tablename, e.what());
+            return std::nullopt;
+        }
+
+        return query;
+    }
+
+    std::optional<std::string> getSqlSuspendStatement() { return getSqlToggleSuspendStatement(false); }
+
+    std::optional<std::string> getSqlActivateStatement() { return getSqlToggleSuspendStatement(true); }
 
     bool exists()
     {
