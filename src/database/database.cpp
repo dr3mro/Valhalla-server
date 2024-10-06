@@ -40,7 +40,7 @@ Database::Database(std::shared_ptr<pqxx::connection> conn) : connection(std::mov
  *
  * @return true if the database connection is open, false otherwise.
  */
-bool Database::isConnected() { return connection->is_open(); }
+bool Database::isConnected() { return connection && connection->is_open(); }
 
 /**
  * Checks if a record exists in the specified table and column with the given value.
