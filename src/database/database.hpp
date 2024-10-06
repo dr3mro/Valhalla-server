@@ -134,7 +134,7 @@ class Database
         {
             pqxx::nontransaction txn(*connection);
             pqxx::result         result = txn.exec(query);
-            return result[0][0].as<std::optional<T>>();
+            return result.empty() ? std::nullopt : result[0][0].as<std::optional<T>>();
         }
         catch (const std::exception &e)
         {
