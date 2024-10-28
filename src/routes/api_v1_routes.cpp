@@ -94,6 +94,15 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
                                         app->get_context<Search>(req).search_json);
             });
 
+    CROW_ROUTE((*app), URL("/clients/<string>/services"))
+        .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization)
+        .methods(crow::HTTPMethod::GET)(
+            [this, app](const crow::request &req, crow::response &res, const std::string_view clientType)
+            {
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::GetServices, req, res,
+                                        app->get_context<Authorization>(req).userInfo.userID);
+            });
+
     ///////////////////---------------- Service--------------------////////////////////
     CROW_ROUTE((*app), URL("/services/<string>"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, DataIntegrity, BRequest)
