@@ -1,7 +1,6 @@
 #pragma once
 
 #include <any>
-#include <regex>
 
 #include "configurator/configurator.hpp"
 #include "crow/utility.h"
@@ -302,7 +301,7 @@ class Entity : public Base
         }
         catch (const std::exception &e)
         {
-            std::cerr << "faild to create query for create " << tablename << e.what() << std::endl;
+            std::cerr << "faild to create query for create " << tablename << e.what() << '\n';
             return std::nullopt;
         }
         return query;
@@ -338,7 +337,7 @@ class Entity : public Base
         }
         catch (const std::exception &e)
         {
-            std::cerr << "faild to create query for read " << tablename << e.what() << std::endl;
+            std::cerr << "faild to create query for read " << tablename << e.what() << '\n';
             return std::nullopt;
         }
         return query;
@@ -386,7 +385,7 @@ class Entity : public Base
         }
         catch (const std::exception &e)
         {
-            std::cerr << "faild to create query for update " << tablename << e.what() << std::endl;
+            std::cerr << "faild to create query for update " << tablename << e.what() << '\n';
             return std::nullopt;
         }
         return query;
@@ -420,7 +419,7 @@ class Entity : public Base
         }
         catch (const std::exception &e)
         {
-            std::cerr << "faild to create query for delete " << tablename << e.what() << std::endl;
+            std::cerr << "faild to create query for delete " << tablename << e.what() << '\n';
             return std::nullopt;
         }
         return query;
@@ -452,11 +451,11 @@ class Entity : public Base
                 "SELECT basic_data FROM {} WHERE basic_data::text "
                                 "ILIKE '%{}%' ORDER BY {} {} LIMIT {} OFFSET {};",
                 tablename, searchdata.keyword, searchdata.order_by, searchdata.direction, searchdata.limit + 1, searchdata.offset);
-            std::cout << query.value() << std::endl;
+            std::cout << query.value() << '\n';
         }
         catch (const std::exception &e)
         {
-            std::cerr << "faild to create query for search " << tablename << e.what() << std::endl;
+            std::cerr << "faild to create query for search " << tablename << e.what() << '\n';
             return std::nullopt;
         }
 
@@ -476,7 +475,7 @@ class Entity : public Base
         }
         catch (const std::exception &e)
         {
-            std::cerr << "faild to create query for add member " << tablename << e.what() << std::endl;
+            std::cerr << "faild to create query for add member " << tablename << e.what() << '\n';
             return std::nullopt;
         }
         return query;
@@ -498,7 +497,7 @@ class Entity : public Base
         }
         catch (const std::exception &e)
         {
-            std::cerr << "faild to create query for remove member " << tablename << e.what() << std::endl;
+            std::cerr << "faild to create query for remove member " << tablename << e.what() << '\n';
             return std::nullopt;
         }
         return query;
