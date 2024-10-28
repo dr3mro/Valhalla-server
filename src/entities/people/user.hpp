@@ -11,6 +11,22 @@ class User : public Client
     {
     }
     ~User() = default;
+    std::optional<std::string> getSqlGetServicesStatement()
+    {
+        std::optional<std::string> query;
+        try
+        {
+            uint64_t user_id = std::any_cast<uint64_t>(getData());
+            query            = fmt::format("SELECT id from users WHERE id = {}", user_id);
+        }
+        catch (const std::exception &e)
+        {
+            std::cerr << "faild to create query for GetServicesStatement " << tablename << e.what() << '\n';
+            return std::nullopt;
+        }
+
+        return query;
+    }
 
    private:
     static constexpr auto TABLENAME = "users";

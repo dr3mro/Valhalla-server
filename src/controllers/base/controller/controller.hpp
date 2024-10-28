@@ -263,6 +263,31 @@ class Controller
         cruds(res, entity, sqlstatement, dbexec);
     }
 
+    template <typename T>
+    void GetServices(crow::response &res, T &entity)
+    {
+        json                       services;
+        std::string                response;
+        std::optional<std::string> query;
+
+        try
+        {
+            query = entity.getSqlGetServicesStatement();
+
+            if (query)
+            {
+                services = databaseController->executeSearchQuery(query.value());
+            }
+
+            services.dump_pretty(response);
+            RestHelper::successResponse(res, crow::status::OK, response);
+        }
+        catch (const std::exception &e)
+        {
+            RestHelper::failureResponse(res, e.what());
+        }
+    }
+
    protected:
     /**
      * @brief Shared pointers to the DatabaseController, SessionManager, and
