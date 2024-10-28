@@ -108,6 +108,7 @@ class ClientController : public ClientControllerBase, public Controller
     void                    SuspendClient(const crow::request& req, crow::response& res, const json& criteria) override;
     void                    ActivateClient(const crow::request& req, crow::response& res, const json& criteria) override;
     void                    ResetPassword(const crow::request& req, crow::response& res, const json& reset_json) override;
+    void                    GetServices(const crow::request& req, crow::response& res, std::optional<uint64_t> client_id) override;
 
    protected:
     std::shared_ptr<TokenManager>   tokenManager;
@@ -400,4 +401,24 @@ void ClientController<T>::ResetPassword(const crow::request& req, crow::response
     (void)req;
     (void)res;
     (void)reset_json;
+}
+
+template <Client_t T>
+void ClientController<T>::GetServices(const crow::request& req, crow::response& res, const std::optional<uint64_t> client_id)
+{
+    (void)req;
+    try
+    {
+        if (!client_id.has_value())
+        {
+            RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "client_id extraction failed");
+            return;
+        }
+        T client(client_id.value());
+        Controller::GetServices(res, client);
+    }
+    catch (const std::exception& e)
+    {
+        RestHelper::failureResponse(res, e.what());
+    }
 }
