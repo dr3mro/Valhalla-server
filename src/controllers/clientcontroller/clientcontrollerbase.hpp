@@ -25,4 +25,5 @@ class ClientControllerBase
     virtual void                    SuspendClient(const crow::request& req, crow::response& res, const json& criteria)                   = 0;
     virtual void                    ActivateClient(const crow::request& req, crow::response& res, const json& criteria)                  = 0;
     virtual void                    ResetPassword(const crow::request& req, crow::response& res, const json& reset_json)                 = 0;
+    virtual void                    GetServices(const crow::request& req, crow::response& res, std::optional<uint64_t> client_id)        = 0;
 };
