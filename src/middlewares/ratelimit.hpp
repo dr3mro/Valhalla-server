@@ -21,7 +21,7 @@ struct RateLimit : crow::ILocalMiddleware
     {
         (void)ctx;
 
-        DOSDetector::Status status = dos_detector->is_dos_attack(std::cref(req));
+        DOSDetector::Status status = dos_detector->is_dos_attack(req);
 
         switch (status)
         {
