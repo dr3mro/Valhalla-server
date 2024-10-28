@@ -1,7 +1,5 @@
 #include "api_v1_routes.hpp"
 
-#include <functional>
-
 #include "utils/resthelper/resthelper.hpp"
 
 // Define the base URL as a macro
@@ -20,8 +18,8 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view clientType)
             {
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::CreateClient, std::cref(req), std::ref(res),
-                                        std::cref(app->get_context<BRequest>(std::cref(req)).criteria));
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::CreateClient, req, res,
+                                        app->get_context<BRequest>(req).criteria);
             });
 
     CROW_ROUTE((*app), URL("/clients/<string>/login"))
@@ -29,8 +27,8 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view clientType)
             {
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::AuthenticateClient, std::cref(req), std::ref(res),
-                                        std::cref(app->get_context<Authentication>(std::cref(req)).credentials));
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::AuthenticateClient, req, res,
+                                        app->get_context<Authentication>(req).credentials);
             });
 
     CROW_ROUTE((*app), URL("/clients/<string>/logout"))
@@ -38,8 +36,8 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view clientType)
             {
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::LogoutClient, std::cref(req), std::ref(res),
-                                        std::cref(app->get_context<Deauthentication>(std::cref(req)).token));
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::LogoutClient, req, res,
+                                        app->get_context<Deauthentication>(req).token);
             });
 
     CROW_ROUTE((*app), URL("/clients/<string>/suspend"))
@@ -47,8 +45,8 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view clientType)
             {
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::SuspendClient, std::cref(req), std::ref(res),
-                                        std::cref(app->get_context<BRequest>(std::cref(req)).criteria));
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::SuspendClient, req, res,
+                                        app->get_context<BRequest>(req).criteria);
             });
 
     CROW_ROUTE((*app), URL("/clients/<string>/activate"))
@@ -56,8 +54,8 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view clientType)
             {
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::ActivateClient, std::cref(req), std::ref(res),
-                                        std::cref(app->get_context<BRequest>(std::cref(req)).criteria));
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::ActivateClient, req, res,
+                                        app->get_context<BRequest>(req).criteria);
             });
 
     CROW_ROUTE((*app), URL("/clients/<string>"))
@@ -65,8 +63,8 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::GET)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view clientType)
             {
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::ReadClient, std::cref(req), std::ref(res),
-                                        std::cref(app->get_context<XRequest>(std::cref(req)).criteria));
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::ReadClient, req, res,
+                                        app->get_context<XRequest>(req).criteria);
             });
 
     CROW_ROUTE((*app), URL("/clients/<string>"))
@@ -74,8 +72,8 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::PUT)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view clientType)
             {
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::UpdateClient, std::cref(req), std::ref(res),
-                                        std::cref(app->get_context<BRequest>(std::cref(req)).criteria));
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::UpdateClient, req, res,
+                                        app->get_context<BRequest>(req).criteria);
             });
 
     CROW_ROUTE((*app), URL("/clients/<string>"))
@@ -83,8 +81,8 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::DELETE)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view clientType)
             {
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::DeleteClient, std::cref(req), std::ref(res),
-                                        std::cref(app->get_context<XRequest>(std::cref(req)).criteria));
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::DeleteClient, req, res,
+                                        app->get_context<XRequest>(req).criteria);
             });
 
     CROW_ROUTE((*app), URL("/clients/<string>"))
@@ -92,8 +90,8 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::SEARCH)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view clientType)
             {
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::SearchClient, std::cref(req), std::ref(res),
-                                        std::cref(app->get_context<Search>(std::cref(req)).search_json));
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::SearchClient, req, res,
+                                        app->get_context<Search>(req).search_json);
             });
 
     ///////////////////---------------- Service--------------------////////////////////
@@ -102,8 +100,8 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
             {
-                executeControllerMethod(serviceRegistry, serviceName, &ServiceControllerBase::CreateService, std::cref(req), std::ref(res),
-                                        std::cref(app->get_context<BRequest>(std::cref(req)).criteria));
+                executeControllerMethod(serviceRegistry, serviceName, &ServiceControllerBase::CreateService, req, res,
+                                        app->get_context<BRequest>(req).criteria);
             });
 
     CROW_ROUTE((*app), URL("/services/<string>"))
@@ -111,8 +109,8 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::GET)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
             {
-                executeControllerMethod(serviceRegistry, serviceName, &ServiceControllerBase::ReadService, std::cref(req), std::ref(res),
-                                        std::cref(app->get_context<XRequest>(std::cref(req)).criteria));
+                executeControllerMethod(serviceRegistry, serviceName, &ServiceControllerBase::ReadService, req, res,
+                                        app->get_context<XRequest>(req).criteria);
             });
 
     CROW_ROUTE((*app), URL("/services/<string>"))
@@ -120,8 +118,8 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::PUT)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
             {
-                executeControllerMethod(serviceRegistry, serviceName, &ServiceControllerBase::UpdateService, std::cref(req), std::ref(res),
-                                        std::cref(app->get_context<BRequest>(std::cref(req)).criteria));
+                executeControllerMethod(serviceRegistry, serviceName, &ServiceControllerBase::UpdateService, req, res,
+                                        app->get_context<BRequest>(req).criteria);
             });
 
     CROW_ROUTE((*app), URL("/services/<string>"))
@@ -129,8 +127,8 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::DELETE)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
             {
-                executeControllerMethod(serviceRegistry, serviceName, &ServiceControllerBase::DeleteService, std::cref(req), std::ref(res),
-                                        std::cref(app->get_context<XRequest>(std::cref(req)).criteria));
+                executeControllerMethod(serviceRegistry, serviceName, &ServiceControllerBase::DeleteService, req, res,
+                                        app->get_context<XRequest>(req).criteria);
             });
 
     CROW_ROUTE((*app), URL("/services/<string>"))
@@ -138,8 +136,8 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::SEARCH)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
             {
-                executeControllerMethod(serviceRegistry, serviceName, &ServiceControllerBase::SearchService, std::cref(req), std::ref(res),
-                                        std::cref(app->get_context<Search>(std::cref(req)).search_json));
+                executeControllerMethod(serviceRegistry, serviceName, &ServiceControllerBase::SearchService, req, res,
+                                        app->get_context<Search>(req).search_json);
             });
 
     ////////////////////////////////////////////////////
@@ -149,8 +147,8 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view entityType)
             {
-                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::CreateAppointment, std::cref(req), std::ref(res),
-                                        std::cref(app->get_context<BRequest>(std::cref(req)).criteria));
+                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::CreateAppointment, req, res,
+                                        app->get_context<BRequest>(req).criteria);
             });
 
     CROW_ROUTE((*app), URL("/appointments/<string>"))
@@ -158,8 +156,8 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::GET)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view entityType)
             {
-                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::ReadAppointment, std::cref(req), std::ref(res),
-                                        std::cref(app->get_context<XRequest>(std::cref(req)).criteria));
+                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::ReadAppointment, req, res,
+                                        app->get_context<XRequest>(req).criteria);
             });
 
     CROW_ROUTE((*app), URL("/appointments/<string>"))
@@ -167,8 +165,8 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::PUT)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view entityType)
             {
-                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::UpdateAppointment, std::cref(req), std::ref(res),
-                                        std::cref(app->get_context<BRequest>(std::cref(req)).criteria));
+                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::UpdateAppointment, req, res,
+                                        app->get_context<BRequest>(req).criteria);
             });
 
     CROW_ROUTE((*app), URL("/appointments/<string>"))
@@ -176,8 +174,8 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::DELETE)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view entityType)
             {
-                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::DeleteAppointment, std::cref(req), std::ref(res),
-                                        std::cref(app->get_context<XRequest>(std::cref(req)).criteria));
+                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::DeleteAppointment, req, res,
+                                        app->get_context<XRequest>(req).criteria);
             });
 
     CROW_ROUTE((*app), URL("/appointments/<string>"))
@@ -185,8 +183,8 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::SEARCH)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view entityType)
             {
-                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::SearchAppointment, std::cref(req), std::ref(res),
-                                        std::cref(app->get_context<Search>(std::cref(req)).search_json));
+                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::SearchAppointment, req, res,
+                                        app->get_context<Search>(req).search_json);
             });
 
     ////////////////////////////////////////////////////
@@ -195,8 +193,8 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
             {
-                executeControllerMethod(staffRegistry, serviceName, &StaffControllerBase::InviteStaffToEntity, std::cref(req), std::ref(res),
-                                        std::cref(app->get_context<BRequest>(std::cref(req)).criteria));
+                executeControllerMethod(staffRegistry, serviceName, &StaffControllerBase::InviteStaffToEntity, req, res,
+                                        app->get_context<BRequest>(req).criteria);
             });
 
     CROW_ROUTE((*app), URL("/services/<string>/staff/add"))
@@ -204,8 +202,8 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
             {
-                executeControllerMethod(staffRegistry, serviceName, &StaffControllerBase::AddStaffToEntity, std::cref(req), std::ref(res),
-                                        std::cref(app->get_context<BRequest>(std::cref(req)).criteria));
+                executeControllerMethod(staffRegistry, serviceName, &StaffControllerBase::AddStaffToEntity, req, res,
+                                        app->get_context<BRequest>(req).criteria);
             });
 
     CROW_ROUTE((*app), URL("/services/<string>/staff/remove"))
@@ -213,8 +211,8 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
             {
-                executeControllerMethod(staffRegistry, serviceName, &StaffControllerBase::RemoveStaffFromEntity, std::cref(req), std::ref(res),
-                                        std::cref(app->get_context<BRequest>(std::cref(req)).criteria));
+                executeControllerMethod(staffRegistry, serviceName, &StaffControllerBase::RemoveStaffFromEntity, req, res,
+                                        app->get_context<BRequest>(req).criteria);
             });
     ///////////////////----------------
     /// HELLO--------------------////////////////////

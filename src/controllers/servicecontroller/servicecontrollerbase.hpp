@@ -5,6 +5,7 @@
 #include <jsoncons/json.hpp>
 
 #include "crow/http_request.h"
+#include "crow/http_response.h"
 
 /**
  * @brief Base class for service controllers that handle CRUD operations for a service.

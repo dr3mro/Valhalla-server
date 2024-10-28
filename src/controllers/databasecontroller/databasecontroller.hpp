@@ -85,12 +85,12 @@ class DatabaseController
         }
         catch (const std::exception &e)
         {
-            std::cerr << "Exception occurred during query execution: " << e.what() << std::endl;
+            std::cerr << "Exception occurred during query execution: " << e.what() << '\n';
             throw;
         }
         catch (...)
         {
-            std::cerr << "Unknown exception occurred during query execution." << std::endl;
+            std::cerr << "Unknown exception occurred during query execution." << '\n';
             throw;
         }
         return std::nullopt;

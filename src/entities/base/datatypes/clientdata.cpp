@@ -33,7 +33,7 @@ ClientData::ClientData(const json &_data, crow::response &res, bool &success)
         }
         catch (const std::exception &e)
         {
-            RestHelper::failureResponse(std::ref(res), e.what());
+            RestHelper::failureResponse(res, e.what());
             return;
         }
     }

@@ -70,7 +70,7 @@ class Client : public Entity
         }
         catch (const std::exception &e)
         {
-            std::cerr << "Exception caught in Client constructor: " << e.what() << std::endl;
+            std::cerr << "Exception caught in Client constructor: " << e.what() << '\n';
             exit(EXIT_FAILURE);
         }
     }
@@ -100,7 +100,7 @@ class Client : public Entity
         }
         catch (const std::exception &e)
         {
-            std::cerr << "faild to create query for create " << tablename << e.what() << std::endl;
+            std::cerr << "faild to create query for create " << tablename << e.what() << '\n';
             return std::nullopt;
         }
         return std::nullopt;
@@ -141,7 +141,7 @@ class Client : public Entity
         }
         catch (const std::exception &e)
         {
-            std::cerr << "failed to create query for update " << tablename << e.what() << std::endl;
+            std::cerr << "failed to create query for update " << tablename << e.what() << '\n';
             return std::nullopt;
         }
         return query;
@@ -158,7 +158,7 @@ class Client : public Entity
         }
         catch (const std::exception &e)
         {
-            std::cerr << "faild to create query for search " << tablename << e.what() << std::endl;
+            std::cerr << "faild to create query for search " << tablename << e.what() << '\n';
             return std::nullopt;
         }
 
@@ -207,12 +207,12 @@ class Client : public Entity
         try
         {
             auto credentials = std::any_cast<Credentials>(getData());
-            auto client_id   = databaseController->findIfUserID(std::cref(credentials.username), std::cref(tablename));
+            auto client_id   = databaseController->findIfUserID(credentials.username, tablename);
 
             if (!client_id)
                 return std::nullopt;
 
-            auto hash = databaseController->getPasswordHashForUserID(std::cref(client_id.value()), std::cref(tablename));
+            auto hash = databaseController->getPasswordHashForUserID(client_id.value(), tablename);
 
             if (!hash)
             {
@@ -226,7 +226,7 @@ class Client : public Entity
         }
         catch (const std::exception &e)
         {
-            std::cerr << "Error authenticating user : " << e.what() << std::endl;
+            std::cerr << "Error authenticating user : " << e.what() << '\n';
         }
         return std::nullopt;
     }

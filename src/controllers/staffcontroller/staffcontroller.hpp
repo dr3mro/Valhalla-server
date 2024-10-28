@@ -42,11 +42,11 @@ void StaffController<T>::AddStaffToEntity(const crow::request &req, crow::respon
         Entity::StaffData staffData(payload);
 
         T service(staffData);
-        Controller::addStaff(std::ref(res), service);
+        Controller::addStaff(res, service);
     }
     catch (const std::exception &e)
     {
-        RestHelper::failureResponse(std::ref(res), e.what());
+        RestHelper::failureResponse(res, e.what());
     }
 }
 template <typename T>
@@ -62,11 +62,11 @@ void StaffController<T>::RemoveStaffFromEntity(const crow::request &req, crow::r
             Entity::StaffData staffData(payload);
 
             T service(staffData);
-            Controller::removeStaff(std::ref(res), service);
+            Controller::removeStaff(res, service);
         }
         catch (const std::exception &e)
         {
-            RestHelper::failureResponse(std::ref(res), e.what());
+            RestHelper::failureResponse(res, e.what());
         }
     }
 }
@@ -103,6 +103,6 @@ void StaffController<T>::InviteStaffToEntity(const crow::request &req, crow::res
     }
     catch (const std::exception &e)
     {
-        RestHelper::failureResponse(std::ref(res), e.what());
+        RestHelper::failureResponse(res, e.what());
     }
 }

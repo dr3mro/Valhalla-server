@@ -52,7 +52,7 @@ DOSDetector::Status DOSDetector::is_dos_attack(const crow::request &req)
 
         if (isRateLimited(remote_ip))
         {
-            processRequest<const crow::request &>(std::cref(req));
+            processRequest<const crow::request &>(req);
             return Status::RATELIMITED;
         }
 
@@ -61,7 +61,7 @@ DOSDetector::Status DOSDetector::is_dos_attack(const crow::request &req)
             return Status::BANNED;
         }
 
-        return processRequest<const crow::request &>(std::cref(req));
+        return processRequest<const crow::request &>(req);
     }
     catch (const std::exception &e)
     {

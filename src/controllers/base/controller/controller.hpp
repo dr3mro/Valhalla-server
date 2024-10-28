@@ -83,7 +83,7 @@ class Controller
     void Create(crow::response &res, T &entity)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlCreateStatement;
-        cruds(std::ref(res), entity, sqlstatement, dbexec);
+        cruds(res, entity, sqlstatement, dbexec);
     }
 
     template <typename T>
@@ -102,7 +102,7 @@ class Controller
     void Read(crow::response &res, T &entity)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlReadStatement;
-        cruds(std::ref(res), entity, sqlstatement, dbrexec);
+        cruds(res, entity, sqlstatement, dbrexec);
     }
     template <typename T>
     /**
@@ -120,7 +120,7 @@ class Controller
     void Update(crow::response &res, T &entity)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlUpdateStatement;
-        cruds(std::ref(res), entity, sqlstatement, dbexec);
+        cruds(res, entity, sqlstatement, dbexec);
     }
     template <typename T>
     /**
@@ -138,7 +138,7 @@ class Controller
     void Delete(crow::response &res, T &entity)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlDeleteStatement;
-        cruds(std::ref(res), entity, sqlstatement, dbexec);
+        cruds(res, entity, sqlstatement, dbexec);
     }
     template <typename T>
     /**
@@ -171,7 +171,7 @@ class Controller
 
             if (query)
             {
-                query_results_json   = databaseController->executeSearchQuery(std::cref(query.value()));
+                query_results_json   = databaseController->executeSearchQuery(query.value());
                 size_t results_count = query_results_json.size();
 
                 if (results_count > std::any_cast<typename T::SearchData>(entity.getData()).limit)
@@ -245,7 +245,7 @@ class Controller
         }
         catch (const std::exception &e)
         {
-            RestHelper::failureResponse(std::ref(res), e.what());
+            RestHelper::failureResponse(res, e.what());
         }
     }
 
@@ -253,14 +253,14 @@ class Controller
     void Suspend(crow::response &res, T &entity)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlSuspendStatement;
-        cruds(std::ref(res), entity, sqlstatement, dbexec);
+        cruds(res, entity, sqlstatement, dbexec);
     }
 
     template <typename T>
     void Unsuspend(crow::response &res, T &entity)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlActivateStatement;
-        cruds(std::ref(res), entity, sqlstatement, dbexec);
+        cruds(res, entity, sqlstatement, dbexec);
     }
 
    protected:
@@ -371,13 +371,13 @@ class Controller
     void addStaff(crow::response &res, T &entity)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlAddStaffStatement;
-        cruds(std::ref(res), entity, sqlstatement, dbexec);
+        cruds(res, entity, sqlstatement, dbexec);
     }
 
     template <typename T>
     void removeStaff(crow::response &res, T &entity)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlRemoveStaffStatement;
-        cruds(std::ref(res), entity, sqlstatement, dbexec);
+        cruds(res, entity, sqlstatement, dbexec);
     }
 };

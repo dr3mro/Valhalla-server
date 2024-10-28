@@ -2,7 +2,6 @@
 #pragma once
 #include <fmt/format.h>
 
-#include <functional>
 #include <jsoncons/json.hpp>
 
 #include "controllers/appointmentcontroller/appointmentcontrollerbase.hpp"
@@ -65,17 +64,17 @@ void AppointmentController<T>::CreateAppointment(const crow::request &req, crow:
         auto nextID = getNextID();
         if (!nextID.has_value())
         {
-            RestHelper::errorResponse(std::ref(res), crow::status::NOT_ACCEPTABLE, "Failed to generate next ID");
+            RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "Failed to generate next ID");
             return;
         }
         Entity::CreateData createData(body, nextID.value());
 
         T entity(createData);
-        Controller::Create(std::ref(res), entity);
+        Controller::Create(res, entity);
     }
     catch (const std::exception &e)
     {
-        RestHelper::failureResponse(std::ref(res), e.what());
+        RestHelper::failureResponse(res, e.what());
     }
 }
 
@@ -91,11 +90,11 @@ void AppointmentController<T>::ReadAppointment(const crow::request &req, crow::r
 
         Entity::ReadData readData(data, id);
         T                entity(readData);
-        Controller::Read(std::ref(res), entity);
+        Controller::Read(res, entity);
     }
     catch (const std::exception &e)
     {
-        RestHelper::failureResponse(std::ref(res), e.what());
+        RestHelper::failureResponse(res, e.what());
     }
 }
 
@@ -110,16 +109,16 @@ void AppointmentController<T>::UpdateAppointment(const crow::request &req, crow:
         std::optional<uint64_t> id = data.find("id")->value().as<uint64_t>();
         if (!id.has_value())
         {
-            RestHelper::errorResponse(std::ref(res), crow::status::NOT_ACCEPTABLE, "No ID provided");
+            RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "No ID provided");
             return;
         }
         Entity::UpdateData updateData(data, id.value());
         T                  entity(updateData);
-        Controller::Update(std::ref(res), entity);
+        Controller::Update(res, entity);
     }
     catch (const std::exception &e)
     {
-        RestHelper::failureResponse(std::ref(res), e.what());
+        RestHelper::failureResponse(res, e.what());
     }
 }
 
@@ -131,11 +130,11 @@ void AppointmentController<T>::DeleteAppointment(const crow::request &req, crow:
     {
         Entity::DeleteData deleteData(delete_json);
         T                  entity(deleteData);
-        Controller::Delete(std::ref(res), entity);
+        Controller::Delete(res, entity);
     }
     catch (const std::exception &e)
     {
-        RestHelper::failureResponse(std::ref(res), e.what());
+        RestHelper::failureResponse(res, e.what());
     }
 }
 
@@ -151,11 +150,11 @@ void AppointmentController<T>::SearchAppointment(const crow::request &req, crow:
         if (success)
         {
             T entity(searchData);
-            Controller::Search(std::ref(res), entity);
+            Controller::Search(res, entity);
         }
     }
     catch (const std::exception &e)
     {
-        RestHelper::failureResponse(std::ref(res), e.what());
+        RestHelper::failureResponse(res, e.what());
     }
 }

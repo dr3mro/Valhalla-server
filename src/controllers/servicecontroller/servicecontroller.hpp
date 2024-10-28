@@ -2,7 +2,6 @@
 #pragma once
 #include <fmt/format.h>
 
-#include <functional>
 #include <jsoncons/json.hpp>
 
 #include "controllers/base/controller/controller.hpp"
@@ -79,17 +78,17 @@ void ServiceController<T>::CreateService(const crow::request &req, crow::respons
         auto nextID = getNextID();
         if (!nextID.has_value())
         {
-            RestHelper::errorResponse(std::ref(res), crow::status::NOT_ACCEPTABLE, "Failed to generate next ID");
+            RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "Failed to generate next ID");
             return;
         }
         Entity::CreateData createData(body, nextID.value());
 
         T service(createData);
-        Controller::Create(std::ref(res), service);
+        Controller::Create(res, service);
     }
     catch (const std::exception &e)
     {
-        RestHelper::failureResponse(std::ref(res), e.what());
+        RestHelper::failureResponse(res, e.what());
     }
 }
 
@@ -105,11 +104,11 @@ void ServiceController<T>::ReadService(const crow::request &req, crow::response 
 
         Entity::ReadData readData(data, id);
         T                service(readData);
-        Controller::Read(std::ref(res), service);
+        Controller::Read(res, service);
     }
     catch (const std::exception &e)
     {
-        RestHelper::failureResponse(std::ref(res), e.what());
+        RestHelper::failureResponse(res, e.what());
     }
 }
 
@@ -124,16 +123,16 @@ void ServiceController<T>::UpdateService(const crow::request &req, crow::respons
         std::optional<uint64_t> id = data.find("id")->value().as<uint64_t>();
         if (!id.has_value())
         {
-            RestHelper::errorResponse(std::ref(res), crow::status::NOT_ACCEPTABLE, "No id provided");
+            RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "No id provided");
             return;
         }
         Entity::UpdateData updateData(data, id.value());
         T                  service(updateData);
-        Controller::Update(std::ref(res), service);
+        Controller::Update(res, service);
     }
     catch (const std::exception &e)
     {
-        RestHelper::failureResponse(std::ref(res), e.what());
+        RestHelper::failureResponse(res, e.what());
     }
 }
 
@@ -145,11 +144,11 @@ void ServiceController<T>::DeleteService(const crow::request &req, crow::respons
     {
         Entity::DeleteData deleteData(delete_json);
         T                  service(deleteData);
-        Controller::Delete(std::ref(res), service);
+        Controller::Delete(res, service);
     }
     catch (const std::exception &e)
     {
-        RestHelper::failureResponse(std::ref(res), e.what());
+        RestHelper::failureResponse(res, e.what());
     }
 }
 
@@ -165,11 +164,11 @@ void ServiceController<T>::SearchService(const crow::request &req, crow::respons
         if (success)
         {
             T service(searchData);
-            Controller::Search(std::ref(res), service);
+            Controller::Search(res, service);
         }
     }
     catch (const std::exception &e)
     {
-        RestHelper::failureResponse(std::ref(res), e.what());
+        RestHelper::failureResponse(res, e.what());
     }
 }

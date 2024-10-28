@@ -148,7 +148,7 @@ void ClientController<T>::CreateClient(const crow::request& req, crow::response&
     }
     catch (const std::exception& e)
     {
-        RestHelper::failureResponse(std::ref(res), e.what());
+        RestHelper::failureResponse(res, e.what());
     }
 }
 
@@ -208,7 +208,7 @@ std::optional<uint64_t> ClientController<T>::AuthenticateClient(const crow::requ
     }
     catch (const std::exception& e)
     {
-        RestHelper::failureResponse(std::ref(res), e.what());
+        RestHelper::failureResponse(res, e.what());
     }
     return std::nullopt;
 }
@@ -235,11 +235,11 @@ void ClientController<T>::ReadClient(const crow::request& req, crow::response& r
 
         Entity::ReadData readData(schema, id);
         T                client(readData);
-        Controller::Read(std::ref(res), client);
+        Controller::Read(res, client);
     }
     catch (const std::exception& e)
     {
-        RestHelper::failureResponse(std::ref(res), e.what());
+        RestHelper::failureResponse(res, e.what());
     }
 }
 
@@ -264,12 +264,12 @@ void ClientController<T>::UpdateClient(const crow::request& req, crow::response&
         if (success)
         {
             T client(client_data);
-            Controller::Update(std::ref(res), client);
+            Controller::Update(res, client);
         }
     }
     catch (const std::exception& e)
     {
-        RestHelper::failureResponse(std::ref(res), e.what());
+        RestHelper::failureResponse(res, e.what());
     }
 }
 
@@ -292,11 +292,11 @@ void ClientController<T>::DeleteClient(const crow::request& req, crow::response&
     {
         Entity::DeleteData deleteData(delete_json);
         T                  client(deleteData);
-        Controller::Delete(std::ref(res), client);
+        Controller::Delete(res, client);
     }
     catch (const std::exception& e)
     {
-        RestHelper::failureResponse(std::ref(res), e.what());
+        RestHelper::failureResponse(res, e.what());
     }
 }
 
@@ -323,12 +323,12 @@ void ClientController<T>::SearchClient(const crow::request& req, crow::response&
         if (success)
         {
             T client(searchData);
-            Controller::Search(std::ref(res), client);
+            Controller::Search(res, client);
         }
     }
     catch (const std::exception& e)
     {
-        RestHelper::failureResponse(std::ref(res), e.what());
+        RestHelper::failureResponse(res, e.what());
     }
 }
 
@@ -352,11 +352,11 @@ void ClientController<T>::LogoutClient(const crow::request& req, crow::response&
     {
         Entity::LogoutData logoutData(token);
         T                  client(logoutData);
-        Controller::Logout(std::ref(res), client);
+        Controller::Logout(res, client);
     }
     catch (const std::exception& e)
     {
-        RestHelper::failureResponse(std::ref(res), e.what());
+        RestHelper::failureResponse(res, e.what());
     }
 }
 
@@ -369,11 +369,11 @@ void ClientController<T>::SuspendClient(const crow::request& req, crow::response
         uint64_t            client_id = criteria.at("id").as<uint64_t>();
         Entity::SuspendData suspendData(client_id);
         T                   client(suspendData);
-        Controller::Suspend(std::ref(res), client);
+        Controller::Suspend(res, client);
     }
     catch (const std::exception& e)
     {
-        RestHelper::failureResponse(std::ref(res), e.what());
+        RestHelper::failureResponse(res, e.what());
     }
 }
 
@@ -386,11 +386,11 @@ void ClientController<T>::ActivateClient(const crow::request& req, crow::respons
         uint64_t            client_id = criteria.at("id").as<uint64_t>();
         Entity::SuspendData suspendData(client_id);
         T                   client(suspendData);
-        Controller::Unsuspend(std::ref(res), client);
+        Controller::Unsuspend(res, client);
     }
     catch (const std::exception& e)
     {
-        RestHelper::failureResponse(std::ref(res), e.what());
+        RestHelper::failureResponse(res, e.what());
     }
 }
 
