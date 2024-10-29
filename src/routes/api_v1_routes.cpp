@@ -235,4 +235,14 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
                 reply["Message"] = "Welcome to ASGARD.";
                 RestHelper::successResponse(res, crow::status::OK, reply.to_string());
             });
+
+    // Catch-all route for unmatched paths
+    CROW_ROUTE((*app), URL("/<string>"))
+    (
+        [](const crow::request &req, crow::response &res, const std::string_view path)
+        {
+            (void)req;
+            RestHelper::errorResponse(res, crow::status::NOT_FOUND, fmt::format("{}/{} is not implemented yet.", PREFIX, path));
+            return;
+        });
 }
