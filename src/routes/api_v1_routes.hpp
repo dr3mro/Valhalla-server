@@ -52,11 +52,11 @@ class API_V1_Routes
     using ServiceVariant = std::variant<std::shared_ptr<ServiceController<Clinics>>, std::shared_ptr<ServiceController<Pharmacies>>,
                                         std::shared_ptr<ServiceController<Laboratories>>, std::shared_ptr<ServiceController<RadiologyCenters>>>;
 
-    using ClinicVariant = std::variant<std::shared_ptr<ServiceController<Patient>>, std::shared_ptr<ServiceController<Clinics>>,
-                                       std::shared_ptr<ServiceController<Visits>>, std::shared_ptr<ServiceController<VisitDrugs>>,
-                                       std::shared_ptr<ServiceController<Requests>>, std::shared_ptr<ServiceController<Prescriptions>>,
-                                       std::shared_ptr<ServiceController<PaidServices>>, std::shared_ptr<ServiceController<Reports>>,
-                                       std::shared_ptr<ServiceController<PatientDrugs>>, std::shared_ptr<ServiceController<Health>>>;
+    using ClinicVariant = std::variant<std::shared_ptr<ServiceController<Patient>>, std::shared_ptr<ServiceController<Visits>>,
+                                       std::shared_ptr<ServiceController<VisitDrugs>>, std::shared_ptr<ServiceController<Requests>>,
+                                       std::shared_ptr<ServiceController<Prescriptions>>, std::shared_ptr<ServiceController<PaidServices>>,
+                                       std::shared_ptr<ServiceController<Reports>>, std::shared_ptr<ServiceController<PatientDrugs>>,
+                                       std::shared_ptr<ServiceController<Health>>>;
 
     using AppointmentVariant =
         std::variant<std::shared_ptr<AppointmentController<ClinicAppointment>>, std::shared_ptr<AppointmentController<PharmacyAppointment>>,
