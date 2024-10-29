@@ -15,7 +15,7 @@
 #include "entities/people/provider.hpp"
 #include "entities/people/user.hpp"
 #include "entities/services/clinics/clinics.hpp"
-#include "entities/services/clinics/patient.hpp"
+#include "entities/services/clinics/patient/patient.hpp"
 #include "entities/services/laboratories.hpp"
 #include "entities/services/pharmacies.hpp"
 #include "entities/services/radiologycenters.hpp"
