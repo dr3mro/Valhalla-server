@@ -147,24 +147,6 @@ class Client : public Entity
         return query;
     }
 
-    std::optional<std::string> getSqlSearchStatement() final
-    {
-        std::optional<std::string> query;
-        try
-        {
-            SearchData searchdata = std::any_cast<SearchData>(getData());
-            query = fmt::format("SELECT * FROM {}_safe WHERE {} ILIKE '%{}%' ORDER BY {} {} LIMIT {} OFFSET {};", tablename, searchdata.filter,
-                                searchdata.keyword, searchdata.order_by, searchdata.direction, searchdata.limit + 1, searchdata.offset);
-        }
-        catch (const std::exception &e)
-        {
-            std::cerr << "faild to create query for search " << tablename << e.what() << '\n';
-            return std::nullopt;
-        }
-
-        return query;
-    }
-
     inline std::optional<std::string> getSqlToggleSuspendStatement(bool state)
     {
         std::optional<std::string> query;

@@ -255,26 +255,6 @@ class Entity : public Base
 
     ~Entity() override = default;
 
-    /**
-     * Generates an SQL query for creating a new record in the database.
-     *
-     * This method is part of the `Entity` class, which is responsible for
-     * managing database interactions for a specific table. The
-     * `getSqlCreateStatement()` method generates an SQL `INSERT INTO` query based
-     * on the data provided in the `CreateData` struct.
-     *
-     * The method extracts the payload and next_id from the `CreateData` struct,
-     * iterates through the payload object, and constructs the SQL query with the
-     * appropriate column names and values. If the payload contains an "id" field
-     * in the "basic_data" object, the method updates the "id" value with the
-     * provided `next_id`.
-     *
-     * The generated SQL query is returned as an optional string, or
-     * `std::nullopt` if an exception occurs during the query construction.
-     *
-     * @return An optional string containing the generated SQL query, or
-     * `std::nullopt` if an exception occurs.
-     */
     std::optional<std::string> getSqlCreateStatement() override
     {
         std::optional<std::string> query;
@@ -424,34 +404,15 @@ class Entity : public Base
         }
         return query;
     }
-    /**
-     * Generates an SQL query for searching records in the database.
-     *
-     * This method is part of the `Entity` class, which is responsible for
-     * managing database interactions for a specific table. The
-     * `getSqlSearchStatement()` method generates an SQL `SELECT` query based on
-     * the data provided in the `SearchData` struct.
-     *
-     * The method extracts the search parameters (keyword, order_by, direction,
-     * limit, offset) from the `SearchData` struct, and constructs the SQL query
-     * to search for records in the table that match the provided criteria. The
-     * generated SQL query is returned as an optional string, or `std::nullopt` if
-     * an exception occurs during the query construction.
-     *
-     * @return An optional string containing the generated SQL query, or
-     * `std::nullopt` if an exception occurs.
-     */
+
     std::optional<std::string> getSqlSearchStatement() override
     {
         std::optional<std::string> query;
         try
         {
-            SearchData searchdata = std::any_cast<SearchData>(data);
-            query                 = fmt::format(
-                "SELECT basic_data FROM {} WHERE basic_data::text "
-                                "ILIKE '%{}%' ORDER BY {} {} LIMIT {} OFFSET {};",
-                tablename, searchdata.keyword, searchdata.order_by, searchdata.direction, searchdata.limit + 1, searchdata.offset);
-            std::cout << query.value() << '\n';
+            SearchData searchdata = std::any_cast<SearchData>(getData());
+            query = fmt::format("SELECT * FROM {}_safe WHERE {} ILIKE '%{}%' ORDER BY {} {} LIMIT {} OFFSET {};", tablename, searchdata.filter,
+                                searchdata.keyword, searchdata.order_by, searchdata.direction, searchdata.limit + 1, searchdata.offset);
         }
         catch (const std::exception &e)
         {
