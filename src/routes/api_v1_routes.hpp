@@ -15,7 +15,15 @@
 #include "entities/people/provider.hpp"
 #include "entities/people/user.hpp"
 #include "entities/services/clinics/clinics.hpp"
+#include "entities/services/clinics/patient/health.hpp"
 #include "entities/services/clinics/patient/patient.hpp"
+#include "entities/services/clinics/patient/patientdrugs.hpp"
+#include "entities/services/clinics/patient/reports.hpp"
+#include "entities/services/clinics/visits/paidservices.hpp"
+#include "entities/services/clinics/visits/prescriptions.hpp"
+#include "entities/services/clinics/visits/requests.hpp"
+#include "entities/services/clinics/visits/visitdrugs.hpp"
+#include "entities/services/clinics/visits/visits.hpp"
 #include "entities/services/laboratories.hpp"
 #include "entities/services/pharmacies.hpp"
 #include "entities/services/radiologycenters.hpp"
@@ -42,6 +50,10 @@ class API_V1_Routes
    private:
     // Define variant type
     using ServiceVariant = std::variant<std::shared_ptr<ServiceController<Patient>>, std::shared_ptr<ServiceController<Clinics>>,
+                                        std::shared_ptr<ServiceController<Visits>>, std::shared_ptr<ServiceController<VisitDrugs>>,
+                                        std::shared_ptr<ServiceController<Requests>>, std::shared_ptr<ServiceController<Prescriptions>>,
+                                        std::shared_ptr<ServiceController<PaidServices>>, std::shared_ptr<ServiceController<Reports>>,
+                                        std::shared_ptr<ServiceController<PatientDrugs>>, std::shared_ptr<ServiceController<Health>>,
                                         std::shared_ptr<ServiceController<Pharmacies>>, std::shared_ptr<ServiceController<Laboratories>>,
                                         std::shared_ptr<ServiceController<RadiologyCenters>>>;
 
@@ -61,6 +73,14 @@ class API_V1_Routes
     std::unordered_map<std::string_view, ServiceVariant> serviceRegistry = {
         {"patients", Store::getObject<ServiceController<Patient>>()},
         {"clinics", Store::getObject<ServiceController<Clinics>>()},
+        {"visits", Store::getObject<ServiceController<Visits>>()},
+        {"visitDrugs", Store::getObject<ServiceController<VisitDrugs>>()},
+        {"requests", Store::getObject<ServiceController<Requests>>()},
+        {"prescriptions", Store::getObject<ServiceController<Prescriptions>>()},
+        {"paidservices", Store::getObject<ServiceController<PaidServices>>()},
+        {"reports", Store::getObject<ServiceController<Reports>>()},
+        {"patientdrugs", Store::getObject<ServiceController<PatientDrugs>>()},
+        {"health", Store::getObject<ServiceController<Health>>()},
         {"pharmacies", Store::getObject<ServiceController<Pharmacies>>()},
         {"laboratories", Store::getObject<ServiceController<Laboratories>>()},
         {"radiologycenters", Store::getObject<ServiceController<RadiologyCenters>>()}};
