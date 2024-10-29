@@ -13,7 +13,15 @@
 #include "entities/people/provider.hpp"
 #include "entities/people/user.hpp"
 #include "entities/services/clinics/clinics.hpp"
+#include "entities/services/clinics/patient/health.hpp"
 #include "entities/services/clinics/patient/patient.hpp"
+#include "entities/services/clinics/patient/patientdrugs.hpp"
+#include "entities/services/clinics/patient/reports.hpp"
+#include "entities/services/clinics/visits/paidservices.hpp"
+#include "entities/services/clinics/visits/prescriptions.hpp"
+#include "entities/services/clinics/visits/requests.hpp"
+#include "entities/services/clinics/visits/visitdrugs.hpp"
+#include "entities/services/clinics/visits/visits.hpp"
 #include "entities/services/laboratories.hpp"
 #include "entities/services/pharmacies.hpp"
 #include "entities/services/radiologycenters.hpp"
@@ -53,6 +61,14 @@ ObjectFactory::ObjectFactory()
     Store::registerObject<SessionManager>();
     Store::registerObject<TokenManager>();
     Store::registerObject<PasswordCrypt>();
+    Store::registerObject<ServiceController<Health>>();
+    Store::registerObject<ServiceController<PatientDrugs>>();
+    Store::registerObject<ServiceController<Reports>>();
+    Store::registerObject<ServiceController<PaidServices>>();
+    Store::registerObject<ServiceController<Prescriptions>>();
+    Store::registerObject<ServiceController<Requests>>();
+    Store::registerObject<ServiceController<VisitDrugs>>();
+    Store::registerObject<ServiceController<Visits>>();
     Store::registerObject<ServiceController<Patient>>();
     Store::registerObject<ServiceController<Clinics>>();
     Store::registerObject<ServiceController<Pharmacies>>();
