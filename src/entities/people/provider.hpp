@@ -25,16 +25,16 @@ class Provider : public Client
                         )
                         SELECT combined.id, combined.name, combined.type  -- Qualify "id" with "combined"
                         FROM (
-                            SELECT id, name, staff, admin_id, owner_id, 'clinic' AS type
+                            SELECT id, name, staff, admin_id, owner_id, 'Clinic' AS type
                             FROM clinics
                             UNION ALL
-                            SELECT id, name, staff, admin_id, owner_id, 'pharmacy' AS type
+                            SELECT id, name, staff, admin_id, owner_id, 'Pharmacy' AS type
                             FROM pharmacies
                             UNION ALL
-                            SELECT id, name, staff, admin_id, owner_id, 'radiologycenter' AS type
+                            SELECT id, name, staff, admin_id, owner_id, 'RadiologyCenter' AS type
                             FROM radiologycenters
                             UNION ALL
-                            SELECT id, name, staff, admin_id, owner_id, 'laboratory' AS type
+                            SELECT id, name, staff, admin_id, owner_id, 'Laboratory' AS type
                             FROM laboratories
                         ) AS combined
                         JOIN vars ON jsonb_path_exists(combined.staff, '$.** ? (@ == "1000")'::jsonpath)
