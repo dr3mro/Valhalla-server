@@ -6,20 +6,20 @@
 
 using json = jsoncons::json;
 
-class PatientDrugs : public Entity
+class VisitDrugs : public Entity
 {
    private:
     static constexpr auto TABLENAME = "visitdrugs";
 
    public:
-    PatientDrugs() : Entity(TABLENAME) {}
+    VisitDrugs() : Entity(TABLENAME) {}
 
     template <typename T>
-    PatientDrugs(const T &_data) : Entity(_data, TABLENAME)
+    VisitDrugs(const T &_data) : Entity(_data, TABLENAME)
     {
     }
 
     std::string getTableName() { return TABLENAME; }
 
-    ~PatientDrugs() override = default;
+    ~VisitDrugs() override = default;
 };
