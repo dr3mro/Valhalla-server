@@ -186,12 +186,12 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
                                         app->get_context<XRequest>(req).criteria);
             });
 
-    CROW_ROUTE((*app), URL("/services/clinics/<string>"))
+    CROW_ROUTE((*app), URL("/services/clinics/patients"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, XRequest, Search)
         .methods(crow::HTTPMethod::SEARCH)(
-            [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
+            [this, app](const crow::request &req, crow::response &res)
             {
-                executeControllerMethod(clinicRegistry, serviceName, &ServiceControllerBase::SearchService, req, res,
+                executeControllerMethod(clinicRegistry, "patients", &ServiceControllerBase::SearchService, req, res,
                                         app->get_context<Search>(req).search_json);
             });
 
