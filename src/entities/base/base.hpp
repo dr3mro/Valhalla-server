@@ -18,6 +18,4 @@ class Base
     virtual std::optional<std::string> getSqlUpdateStatement() = 0;
     virtual std::optional<std::string> getSqlDeleteStatement() = 0;
     virtual std::optional<std::string> getSqlSearchStatement() = 0;
-    // virtual std::optional<std::string> getSqlAddStaffStatement()    = 0;
-    // virtual std::optional<std::string> getSqlRemoveStaffStatement() = 0;
 };
