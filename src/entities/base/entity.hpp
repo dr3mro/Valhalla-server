@@ -13,31 +13,6 @@
 #include "utils/passwordcrypt/passwordcrypt.hpp"
 using json = jsoncons::json;
 
-/**
- * @brief The Entity class represents a base entity in the application,
- * providing functionality for CRUD operations and search.
- *
- * The Entity class serves as a base class for various entities in the
- * application, such as users, providers and services, etc. It provides a set of
- * nested structs to handle different types of data related to the entity,
- * including creation, reading, updating, deleting, and searching.
- *
- * The `ClientData` struct represents the user-specific data, including username,
- * password, email, role, and other optional fields. It also provides validation
- * methods for the username, password, and email.
- *
- * The `Credentials` struct represents the user's login credentials, including
- * the username and password.
- *
- * The `CreateData`, `ReadData`, `UpdateData`, `DeleteData`, and `SearchData`
- * structs represent the data required for the corresponding CRUD operations and
- * search functionality.
- *
- * The Entity class provides methods to generate SQL statements for these CRUD
- * operations and search, which can be used by the application to interact with
- * the database.
- */
-
 class Entity : public Base
 {
    public:

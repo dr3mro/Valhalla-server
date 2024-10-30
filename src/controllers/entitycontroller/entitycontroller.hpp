@@ -5,8 +5,7 @@
 #include <jsoncons/json.hpp>
 
 #include "controllers/base/controller/controller.hpp"
-#include "controllers/entitycontroller/entitycontroller.hpp"
-#include "controllers/servicecontroller/servicecontrollerbase.hpp"
+#include "controllers/entitycontroller/entitycontrollerbase.hpp"
 #include "entities/base/entity.hpp"
 #include "entities/services/clinics/patient/patient.hpp"
 #include "utils/resthelper/resthelper.hpp"
@@ -14,20 +13,20 @@
 using json = jsoncons::json;
 
 template <typename T>
-
-class ServiceController : public EntityController<T>, public ServiceControllerBase
+class EntityController : public Controller, public EntityControllerBase
 {
+   private:
+    T entity;
+
    public:
-    explicit ServiceController() = default;
-
-    ~ServiceController() override = default;
-
+    EntityController()           = default;
+    ~EntityController() override = default;
     // CRUDS
-    void Create(const crow::request &req, crow::response &res, const jsoncons::json &body) final;
-    void Read(const crow::request &req, crow::response &res, const jsoncons::json &criteria) final;
-    void Update(const crow::request &req, crow::response &res, const jsoncons::json &body) final;
-    void Delete(const crow::request &req, crow::response &res, const jsoncons::json &delete_json) final;
-    void Search(const crow::request &req, crow::response &res, const jsoncons::json &search_json) final;
+    void Create(const crow::request &req, crow::response &res, const jsoncons::json &body) override;
+    void Read(const crow::request &req, crow::response &res, const jsoncons::json &criteria) override;
+    void Update(const crow::request &req, crow::response &res, const jsoncons::json &body) override;
+    void Delete(const crow::request &req, crow::response &res, const jsoncons::json &delete_json) override;
+    void Search(const crow::request &req, crow::response &res, const jsoncons::json &search_json) override;
     // Only enable GetVisits if T is of type Patient
     template <typename U = T>
     typename std::enable_if<std::is_same<U, Patient>::value, void>::type GetVisits(const crow::request &req, crow::response &res,
@@ -45,16 +44,41 @@ class ServiceController : public EntityController<T>, public ServiceControllerBa
             RestHelper::failureResponse(res, e.what());
         }
     }
+
+   protected:
+    std::optional<uint64_t> getNextID() override
+    {
+        try
+        {
+            json json_nextval = databaseController->executeQuery(fmt::format("SELECT NEXTVAL('{}_id_seq');", entity.getTableName()));
+
+            if (json_nextval.empty())
+            {
+                std::cerr << fmt::format("json_nextval is empty\n");
+            }
+
+            auto obj = json_nextval.find("nextval");
+            if (obj != json_nextval.object_range().end())
+            {
+                return obj->value().as<uint64_t>();
+            }
+        }
+        catch (const std::exception &e)
+        {
+            std::cerr << fmt::format("Failed: {}\n", e.what());
+        }
+        return std::nullopt;
+    }
 };
 
 template <typename T>
-void ServiceController<T>::Create(const crow::request &req, crow::response &res, const jsoncons::json &body)
+void EntityController<T>::Create(const crow::request &req, crow::response &res, const jsoncons::json &body)
 {
     (void)req;
     json response;
     try
     {
-        auto nextID = this->getNextID();
+        auto nextID = getNextID();
         if (!nextID.has_value())
         {
             RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "Failed to generate next ID");
@@ -70,8 +94,9 @@ void ServiceController<T>::Create(const crow::request &req, crow::response &res,
         RestHelper::failureResponse(res, e.what());
     }
 }
+
 template <typename T>
-void ServiceController<T>::Read(const crow::request &req, crow::response &res, const json &criteria)
+void EntityController<T>::Read(const crow::request &req, crow::response &res, const json &criteria)
 {
     (void)req;
     json response;
@@ -91,7 +116,7 @@ void ServiceController<T>::Read(const crow::request &req, crow::response &res, c
 }
 
 template <typename T>
-void ServiceController<T>::Update(const crow::request &req, crow::response &res, const jsoncons::json &body)
+void EntityController<T>::Update(const crow::request &req, crow::response &res, const jsoncons::json &body)
 {
     (void)req;
     json response;
@@ -115,7 +140,7 @@ void ServiceController<T>::Update(const crow::request &req, crow::response &res,
 }
 
 template <typename T>
-void ServiceController<T>::Delete(const crow::request &req, crow::response &res, const jsoncons::json &delete_json)
+void EntityController<T>::Delete(const crow::request &req, crow::response &res, const jsoncons::json &delete_json)
 {
     (void)req;
     try
@@ -131,7 +156,7 @@ void ServiceController<T>::Delete(const crow::request &req, crow::response &res,
 }
 
 template <typename T>
-void ServiceController<T>::Search(const crow::request &req, crow::response &res, const jsoncons::json &search_json)
+void EntityController<T>::Search(const crow::request &req, crow::response &res, const jsoncons::json &search_json)
 {
     (void)req;
     json response;
