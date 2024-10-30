@@ -10,7 +10,9 @@ class User : public Client
     User(const T &data) : Client(data, TABLENAME)
     {
     }
+    User() : Client(std::string(TABLENAME)) {}
     ~User() = default;
+    std::string                getTableName() { return TABLENAME; }
     std::optional<std::string> getSqlGetServicesStatement()
     {
         std::optional<std::string> query;

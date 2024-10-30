@@ -4,6 +4,7 @@
 #include <memory>
 #include <utility>
 
+#include "controllers/databasecontroller/databasecontroller.hpp"
 #include "entities/base/entity.hpp"
 #include "fmt/format.h"
 
@@ -11,37 +12,6 @@
 
 using json = jsoncons::json;
 
-/// Represents a client entity in the application. The `Client` class inherits
-/// from the `Entity` class and provides functionality for managing
-/// client-related data, including authentication, validation, and database
-/// operations.
-///
-/// The `Client` class has the following key features:
-/// - Retrieves the `DatabaseController` and `PasswordCrypt` instances from the
-/// `Store` to handle database operations and password encryption/decryption.
-/// - Provides a `getSqlCreateStatement()` method to generate an SQL query for
-/// creating a new client record in the database.
-/// - Implements an `exists()` method to check if a client with a given username
-/// already exists in the database.
-/// - Provides an `authenticate()` method to authenticate a client using their
-/// username and password.
-/// - Implements a `validate()` method to validate the client's data, including
-/// username, password, and email. Represents a client entity in the
-/// application. The `Client` class inherits from the `Entity` class and
-/// provides functionality for managing client-related data, including
-/// authentication, validation, and database operations.
-///
-/// The `Client` class has the following key features:
-/// - Retrieves the `DatabaseController` and `PasswordCrypt` instances from the
-/// `Store` to handle database operations and password encryption/decryption.
-/// - Provides a `getSqlCreateStatement()` method to generate an SQL query for
-/// creating a new client record in the database.
-/// - Implements an `exists()` method to check if a client with a given username
-/// already exists in the database.
-/// - Provides an `authenticate()` method to authenticate a client using their
-/// username and password.
-/// - Implements a `validate()` method to validate the client's data, including
-/// username, password, and email.
 class Client : public Entity
 {
    public:
@@ -62,14 +32,10 @@ class Client : public Entity
         std::string password;  ///< The user's password.
     };
 
-    template <typename T>
-    /// Constructs a new `Client` object with the given data and table name.
-    ///
-    /// @param data The data to initialize the `Client` object with.
-    /// @param tablename The name of the database table associated with the
-    /// `Client` object.
-    Client(const T &data, const std::string &tablename) : Entity(data, tablename)
+    Client(const std::string &tablename) : Entity(tablename) {};
 
+    template <typename T>
+    Client(const T &data, const std::string &tablename) : Entity(data, tablename)
     {
         try
         {

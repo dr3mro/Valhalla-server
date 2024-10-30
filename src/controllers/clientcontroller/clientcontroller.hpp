@@ -45,9 +45,9 @@
 #include <memory>
 #include <type_traits>
 
-#include "controllers/base/controller/controller.hpp"
 #include "controllers/clientcontroller/clientcontrollerbase.hpp"
 #include "controllers/databasecontroller/databasecontroller.hpp"
+#include "controllers/entitycontroller/entitycontroller.hpp"
 #include "entities/base/client.hpp"
 #include "entities/base/datatypes/clientdata.hpp"
 #include "utils/passwordcrypt/passwordcrypt.hpp"
@@ -61,23 +61,8 @@ template <typename T>
 concept Client_t = std::is_base_of_v<Client, T>;
 
 template <Client_t T>
-/**
- * @brief The ClientController class is responsible for handling client-related
- * operations, such as creating, authenticating, reading, updating, deleting,
- * and searching clients.
- *
- * The ClientController class is a template class that takes a type parameter
- * `T`, which is expected to be a client entity class that inherits from the
- * `Entity` class. The class provides various member functions to perform CRUD
- * (Create, Read, Update, Delete) operations on clients, as well as
- * authentication and logout functionality.
- *
- * The constructor of the ClientController class initializes the necessary
- * dependencies, such as the TokenManager, PasswordCrypt, and SessionManager, by
- * retrieving them from the global Store.
- */
 
-class ClientController : public ClientControllerBase, public Controller
+class ClientController : public EntityController<T>, public ClientControllerBase
 {
    public:
     ClientController()
@@ -98,17 +83,17 @@ class ClientController : public ClientControllerBase, public Controller
     ~ClientController() override = default;
 
     // PUBLIC
-    void                    CreateClient(const crow::request& req, crow::response& res, const json& criteria) override;
-    std::optional<uint64_t> AuthenticateClient(const crow::request& req, crow::response& res, const jsoncons::json& credentials) override;
-    void                    ReadClient(const crow::request& req, crow::response& res, const json& criteria) override;
-    void                    UpdateClient(const crow::request& req, crow::response& res, const json& criteria) override;
-    void                    DeleteClient(const crow::request& req, crow::response& res, const json& delete_json) override;
-    void                    SearchClient(const crow::request& req, crow::response& res, const json& search_json) override;
-    void                    LogoutClient(const crow::request& req, crow::response& res, const std::optional<std::string>& token) override;
-    void                    SuspendClient(const crow::request& req, crow::response& res, const json& criteria) override;
-    void                    ActivateClient(const crow::request& req, crow::response& res, const json& criteria) override;
-    void                    ResetPassword(const crow::request& req, crow::response& res, const json& reset_json) override;
-    void                    GetServices(const crow::request& req, crow::response& res, std::optional<uint64_t> client_id) override;
+    void                    Create(const crow::request& req, crow::response& res, const json& criteria) final;
+    std::optional<uint64_t> Authenticate(const crow::request& req, crow::response& res, const jsoncons::json& credentials) final;
+    void                    Read(const crow::request& req, crow::response& res, const json& criteria) final;
+    void                    Update(const crow::request& req, crow::response& res, const json& criteria) final;
+    void                    Delete(const crow::request& req, crow::response& res, const json& delete_json) final;
+    void                    Search(const crow::request& req, crow::response& res, const json& search_json) final;
+    void                    Logout(const crow::request& req, crow::response& res, const std::optional<std::string>& token) final;
+    void                    Suspend(const crow::request& req, crow::response& res, const json& criteria) final;
+    void                    Activate(const crow::request& req, crow::response& res, const json& criteria) final;
+    void                    ResetPassword(const crow::request& req, crow::response& res, const json& reset_json) final;
+    void                    GetServices(const crow::request& req, crow::response& res, std::optional<uint64_t> client_id) final;
 
    protected:
     std::shared_ptr<TokenManager>   tokenManager;
@@ -117,17 +102,8 @@ class ClientController : public ClientControllerBase, public Controller
 };
 
 template <Client_t T>
-/**
- * @brief Creates a new client user.
- *
- * This function is responsible for creating a new client user. It takes the
- * request body as a JSON object, parses it into the appropriate user data type,
- * validates the user data, and then creates the new user.
- *
- * @param req The Crow request object containing the user data.
- * @param res The Crow response object to send the result of the operation.
- */
-void ClientController<T>::CreateClient(const crow::request& req, crow::response& res, const json& criteria)
+
+void ClientController<T>::Create(const crow::request& req, crow::response& res, const json& criteria)
 {
     (void)req;
     json response;
@@ -144,7 +120,7 @@ void ClientController<T>::CreateClient(const crow::request& req, crow::response&
                 RestHelper::errorResponse(res, crow::status::CONFLICT, "User already exists");
                 return;
             }
-            Create<T>(res, client);
+            Controller::Create(res, client);
         }
     }
     catch (const std::exception& e)
@@ -154,19 +130,8 @@ void ClientController<T>::CreateClient(const crow::request& req, crow::response&
 }
 
 template <Client_t T>
-/**
- * @brief Authenticates a user and generates a token.
- *
- * This function is responsible for authenticating a user by verifying their
- * credentials, and if successful, generating an authentication token that can
- * be used for subsequent requests.
- *
- * @param res The Crow response object to send the result of the operation.
- * @param credentials A JSON object containing the user's username and password.
- * @return std::optional<uint64_t> The user ID of the authenticated user, or
- * std::nullopt if authentication failed.
- */
-std::optional<uint64_t> ClientController<T>::AuthenticateClient(const crow::request& req, crow::response& res, const jsoncons::json& credentials)
+
+std::optional<uint64_t> ClientController<T>::Authenticate(const crow::request& req, crow::response& res, const jsoncons::json& credentials)
 {
     (void)req;
     json                    response;
@@ -215,18 +180,8 @@ std::optional<uint64_t> ClientController<T>::AuthenticateClient(const crow::requ
 }
 
 template <Client_t T>
-/**
- * @brief Reads a client entity based on the provided criteria.
- *
- * This function is responsible for reading a client entity from the underlying
- * data source based on the provided criteria. The criteria includes the client
- * ID and a list of schema fields to include in the response.
- *
- * @param res The Crow response object to send the result of the operation.
- * @param criteria A JSON object containing the client ID and the list of schema
- * fields to include.
- */
-void ClientController<T>::ReadClient(const crow::request& req, crow::response& res, const json& criteria)
+
+void ClientController<T>::Read(const crow::request& req, crow::response& res, const json& criteria)
 {
     (void)req;
     try
@@ -245,17 +200,8 @@ void ClientController<T>::ReadClient(const crow::request& req, crow::response& r
 }
 
 template <Client_t T>
-/**
- * @brief Updates a client entity based on the provided data.
- *
- * This function is responsible for updating a client entity in the underlying
- * data source based on the provided data. The data includes the client ID and a
- * JSON payload containing the updated fields.
- *
- * @param req The Crow request object containing the update data.
- * @param res The Crow response object to send the result of the operation.
- */
-void ClientController<T>::UpdateClient(const crow::request& req, crow::response& res, const json& criteria)
+
+void ClientController<T>::Update(const crow::request& req, crow::response& res, const json& criteria)
 {
     (void)req;
     try
@@ -275,18 +221,8 @@ void ClientController<T>::UpdateClient(const crow::request& req, crow::response&
 }
 
 template <Client_t T>
-/**
- * @brief Deletes a client entity based on the provided data.
- *
- * This function is responsible for deleting a client entity from the underlying
- * data source based on the provided data. The data includes the client ID.
- *
- * @param req The Crow request object containing the delete data.
- * @param res The Crow response object to send the result of the operation.
- * @param delete_json A JSON object containing the client ID and other data
- * required for the delete operation.
- */
-void ClientController<T>::DeleteClient(const crow::request& req, crow::response& res, const json& delete_json)
+
+void ClientController<T>::Delete(const crow::request& req, crow::response& res, const json& delete_json)
 {
     (void)req;
     try
@@ -302,19 +238,8 @@ void ClientController<T>::DeleteClient(const crow::request& req, crow::response&
 }
 
 template <Client_t T>
-/**
- * @brief Searches for a client entity based on the provided data.
- *
- * This function is responsible for searching for a client entity in the
- * underlying data source based on the provided search data. The search data is
- * provided in a JSON object.
- *
- * @param req The Crow request object containing the search data.
- * @param res The Crow response object to send the result of the search
- * operation.
- * @param search_json A JSON object containing the search criteria.
- */
-void ClientController<T>::SearchClient(const crow::request& req, crow::response& res, const json& search_json)
+
+void ClientController<T>::Search(const crow::request& req, crow::response& res, const json& search_json)
 {
     (void)req;
     try
@@ -334,19 +259,8 @@ void ClientController<T>::SearchClient(const crow::request& req, crow::response&
 }
 
 template <Client_t T>
-/**
- * @brief Logs out a client by invalidating the provided token.
- *
- * This function is responsible for logging out a client by invalidating the
- * provided token. It uses the `Entity::LogoutData` class to encapsulate the
- * token data and the `Controller::Logout` function to perform the logout
- * operation.
- *
- * @param res The Crow response object to send the result of the logout
- * operation.
- * @param token The optional token to be invalidated.
- */
-void ClientController<T>::LogoutClient(const crow::request& req, crow::response& res, const std::optional<std::string>& token)
+
+void ClientController<T>::Logout(const crow::request& req, crow::response& res, const std::optional<std::string>& token)
 {
     (void)req;
     try
@@ -362,7 +276,7 @@ void ClientController<T>::LogoutClient(const crow::request& req, crow::response&
 }
 
 template <Client_t T>
-void ClientController<T>::SuspendClient(const crow::request& req, crow::response& res, const json& criteria)
+void ClientController<T>::Suspend(const crow::request& req, crow::response& res, const json& criteria)
 {
     (void)req;
     try
@@ -379,7 +293,7 @@ void ClientController<T>::SuspendClient(const crow::request& req, crow::response
 }
 
 template <Client_t T>
-void ClientController<T>::ActivateClient(const crow::request& req, crow::response& res, const json& criteria)
+void ClientController<T>::Activate(const crow::request& req, crow::response& res, const json& criteria)
 {
     (void)req;
     try

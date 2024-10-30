@@ -10,8 +10,9 @@ class Provider : public Client
     Provider(const T &data) : Client(data, TABLENAME)
     {
     }
+    Provider() : Client(std::string(TABLENAME)) {}
     ~Provider() = default;
-
+    std::string                getTableName() { return TABLENAME; }
     std::optional<std::string> getSqlGetServicesStatement()
     {
         std::optional<std::string> query;

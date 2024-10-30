@@ -23,11 +23,11 @@ class ServiceController : public EntityController<T>, public ServiceControllerBa
     ~ServiceController() override = default;
 
     // CRUDS
-    void Create(const crow::request &req, crow::response &res, const jsoncons::json &body) final;
-    void Read(const crow::request &req, crow::response &res, const jsoncons::json &criteria) final;
-    void Update(const crow::request &req, crow::response &res, const jsoncons::json &body) final;
-    void Delete(const crow::request &req, crow::response &res, const jsoncons::json &delete_json) final;
-    void Search(const crow::request &req, crow::response &res, const jsoncons::json &search_json) final;
+    void Create(const crow::request &req, crow::response &res, const jsoncons::json &body) override;
+    void Read(const crow::request &req, crow::response &res, const jsoncons::json &criteria) override;
+    void Update(const crow::request &req, crow::response &res, const jsoncons::json &body) override;
+    void Delete(const crow::request &req, crow::response &res, const jsoncons::json &delete_json) override;
+    void Search(const crow::request &req, crow::response &res, const jsoncons::json &search_json) override;
     // Only enable GetVisits if T is of type Patient
     template <typename U = T>
     typename std::enable_if<std::is_same<U, Patient>::value, void>::type GetVisits(const crow::request &req, crow::response &res,
@@ -70,6 +70,7 @@ void ServiceController<T>::Create(const crow::request &req, crow::response &res,
         RestHelper::failureResponse(res, e.what());
     }
 }
+
 template <typename T>
 void ServiceController<T>::Read(const crow::request &req, crow::response &res, const json &criteria)
 {
