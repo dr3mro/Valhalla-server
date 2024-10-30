@@ -34,9 +34,8 @@ class ServiceController : public EntityController<T>, public ServiceControllerBa
         (void)req;
         try
         {
-            typename T::PatientData patientData(request_json);
-            T                       patient(patientData);
-            Controller::GetVisits(res, patient);
+            T entity((typename T::Data(request_json)));
+            Controller::GetVisits(res, entity);
         }
         catch (const std::exception &e)
         {
