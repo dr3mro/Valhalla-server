@@ -15,7 +15,7 @@ class Patient : public Entity
     struct PatientData
     {
         uint64_t patient_id;
-        PatientData(const jsoncons::json& criteria) { patient_id = criteria.at("patient_id").as<uint64_t>(); }
+        PatientData(const jsoncons::json& criteria) { patient_id = criteria.at("id").as<uint64_t>(); }
     };
 
     Patient() : Entity(TABLENAME) {}
