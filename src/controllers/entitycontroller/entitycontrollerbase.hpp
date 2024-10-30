@@ -20,13 +20,6 @@ class EntityControllerBase
     virtual void Update(const crow::request &req, crow::response &res, const jsoncons::json &body)        = 0;
     virtual void Delete(const crow::request &req, crow::response &res, const jsoncons::json &delete_json) = 0;
     virtual void Search(const crow::request &req, crow::response &res, const jsoncons::json &search_json) = 0;
-    virtual void GetVisits(const crow::request &req, crow::response &res, const jsoncons::json &criteria)
-    {
-        (void)req;
-        (void)res;
-        (void)criteria;
-        throw std::runtime_error("Not implemented");
-    };
 
    protected:
     virtual std::optional<uint64_t> getNextID() = 0;

@@ -1,12 +1,16 @@
 #pragma once
 
+#include <crow.h>
+
 #include <jsoncons/json.hpp>
 #include <memory>
+#include <regex>
 #include <utility>
 
 #include "controllers/databasecontroller/databasecontroller.hpp"
 #include "entities/base/entity.hpp"
 #include "fmt/format.h"
+#include "utils/resthelper/resthelper.hpp"
 
 #define USERNAME "username"
 
@@ -30,6 +34,61 @@ class Client : public Entity
     {
         std::string username;  ///< The user's username.
         std::string password;  ///< The user's password.
+    };
+
+    struct ClientData
+    {
+       public:
+        explicit ClientData(const json &data, crow::response &res, bool &success)
+        {
+            for (const auto &item : data.object_range())
+            {
+                try
+                {
+                    std::optional<std::string> value = item.value().as<std::string>();
+                    if (value.has_value() && !value->empty())
+                    {
+                        auto pattern_item =
+                            std::find_if(validators.begin(), validators.end(), [&](const auto &validator) { return validator.first == item.key(); });
+
+                        if (pattern_item != validators.end())
+                        {
+                            std::regex pattern(pattern_item->second);
+                            if (!std::regex_match(value.value(), pattern))
+                            {
+                                throw std::runtime_error(fmt::format("Value({}) is invalid.", value.value(), item.key()));
+                            }
+                        }
+
+                        if (item.key() == "password")
+                        {
+                            value = passwordCrypt->hashPassword(value.value());
+                        }
+
+                        db_data.push_back({item.key(), value.value()});
+                    }
+                }
+                catch (const std::exception &e)
+                {
+                    RestHelper::failureResponse(res, e.what());
+                    return;
+                }
+            }
+            success = true;
+        }
+        const std::vector<std::pair<std::string, std::string>> &get_data() const { return db_data; }
+
+       private:
+        std::vector<std::pair<std::string, std::string>> db_data;
+        std::shared_ptr<PasswordCrypt>                   passwordCrypt = Store::getObject<PasswordCrypt>();
+        const std::map<std::string, std::string>         validators    = {
+            {"username", "^[a-z][a-z0-9_]*$"},
+            {"password", "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{8,}$"},
+            {"phone", R"(^\+?(\d{1,3})?[-.\s]?(\(?\d{3}\)?)?[-.\s]?\d{3}[-.\s]?\d{4}$)"},
+            {"email", R"((\w+)(\.\w+)*@(\w+)(\.\w+)+)"},
+            {"dob", R"(^(0[1-9]|[12]\d|3[01])-(0[1-9]|1[0-2])-\d{4}$)"},
+            {"gender", "^(male|female)$"},
+        };
     };
 
     Client(const std::string &tablename) : Entity(tablename) {};
@@ -61,7 +120,7 @@ class Client : public Entity
             std::vector<std::string> keys_arr;
             std::vector<std::string> values_arr;
 
-            for (auto &it : clientdata.get_db_data())
+            for (auto &it : clientdata.get_data())
             {
                 keys_arr.push_back(it.first);
                 values_arr.push_back(it.second);
@@ -86,7 +145,7 @@ class Client : public Entity
 
         try
         {
-            auto                    clientdata = std::any_cast<ClientData>(getData()).get_db_data();
+            auto                    clientdata = std::any_cast<ClientData>(getData()).get_data();
             std::optional<uint64_t> id;
             auto                    it = std::find_if(clientdata.begin(), clientdata.end(), [&](const auto &item) { return item.first == "id"; });
 
@@ -145,7 +204,7 @@ class Client : public Entity
 
     bool exists()
     {
-        auto client_data = std::any_cast<ClientData>(getData()).get_db_data();
+        auto client_data = std::any_cast<ClientData>(getData()).get_data();
         auto it          = std::find_if(client_data.begin(), client_data.end(), [&](const auto &item) { return item.first == USERNAME; });
 
         if (it != client_data.end())

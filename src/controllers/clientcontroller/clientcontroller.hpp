@@ -1,41 +1,3 @@
-/**
- * @brief The ClientController class is responsible for handling client-related
- * operations, such as creating, authenticating, reading, updating, deleting,
- * and searching clients.
- *
- * The ClientController class is a template class that takes a type parameter
- * `T`, which is expected to be a client entity class that inherits from the
- * `Entity` class. The class provides various member functions to perform CRUD
- * (Create, Read, Update, Delete) operations on clients, as well as
- * authentication and logout functionality.
- *
- * The constructor of the ClientController class initializes the necessary
- * dependencies, such as the TokenManager, PasswordCrypt, and SessionManager, by
- * retrieving them from the global Store.
- *
- * The public member functions of the ClientController class are:
- *
- * - `CreateUser`: Creates a new client user based on the provided data in the
- * request body.
- * - `AuthenticateUser`: Authenticates a client user based on the provided
- * credentials and returns the client ID if successful.
- * - `ReadClient`: Reads a client based on the provided criteria (e.g., ID and
- * schema).
- * - `UpdateClient`: Updates a client based on the provided payload in the
- * request body.
- * - `DeleteClient`: Deletes a client based on the provided payload in the
- * request body.
- * - `SearchClient`: Searches for clients based on the provided search criteria.
- * - `LogoutClient`: Logs out a client based on the provided token.
- *
- * The protected member variables of the ClientController class are:
- *
- * - `tokenManager`: A shared pointer to the TokenManager instance.
- * - `passwordCrypt`: A shared pointer to the PasswordCrypt instance.
- * - `sessionManager`: A shared pointer to the SessionManager instance.
- */
-// clientcontroller.hpp
-
 #pragma once
 
 #include <crow.h>
@@ -49,13 +11,10 @@
 #include "controllers/databasecontroller/databasecontroller.hpp"
 #include "controllers/entitycontroller/entitycontroller.hpp"
 #include "entities/base/client.hpp"
-#include "entities/base/datatypes/clientdata.hpp"
 #include "utils/passwordcrypt/passwordcrypt.hpp"
 #include "utils/resthelper/resthelper.hpp"
 #include "utils/sessionmanager/sessionmanager.hpp"
 #include "utils/tokenmanager/tokenmanager.hpp"
-
-using json = jsoncons::json;
 
 template <typename T>
 concept Client_t = std::is_base_of_v<Client, T>;
@@ -109,8 +68,8 @@ void ClientController<T>::Create(const crow::request& req, crow::response& res, 
     json response;
     try
     {
-        bool       success = false;
-        ClientData client_data(criteria, res, success);
+        bool                   success = false;
+        typename T::ClientData client_data(criteria, res, success);
 
         if (success)
         {
@@ -206,8 +165,8 @@ void ClientController<T>::Update(const crow::request& req, crow::response& res, 
     (void)req;
     try
     {
-        bool       success = false;
-        ClientData client_data(criteria, res, success);
+        bool                   success = false;
+        typename T::ClientData client_data(criteria, res, success);
         if (success)
         {
             T client(client_data);
