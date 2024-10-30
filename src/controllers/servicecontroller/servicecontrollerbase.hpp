@@ -1,18 +1,12 @@
 
 #pragma once
 
+#include <crow.h>
+
 #include <jsoncons/json.hpp>
 
-#include "crow/http_request.h"
-#include "crow/http_response.h"
 #include "utils/resthelper/resthelper.hpp"
 
-/**
- * @brief Base class for service controllers that handle CRUD operations for a service.
- *
- * This abstract base class provides the interface for creating, reading, updating, deleting, and searching services.
- * Derived classes must implement the pure virtual functions to provide the specific implementation for a service.
- */
 class ServiceControllerBase
 {
    public:
@@ -29,8 +23,7 @@ class ServiceControllerBase
     virtual void GetVisits(const crow::request &req, crow::response &res, const json &request_json)
     {
         (void)req;
-        (void)res;
         (void)request_json;
-        RestHelper::failureResponse(res, "Not implemented");
+        RestHelper::failureResponse(res, "GetVisits is NOT implemented for this entity");
     };
 };
