@@ -30,6 +30,8 @@
 
 #include "controllers/databasecontroller/databasecontroller.hpp"
 #include "entities/base/entity.hpp"
+#include "entities/people/provider.hpp"
+#include "entities/people/user.hpp"
 #include "entities/services/clinics/patient/patient.hpp"
 #include "utils/resthelper/resthelper.hpp"
 #include "utils/sessionmanager/sessionmanager.hpp"
@@ -226,7 +228,7 @@ class Controller
      * @param entity The entity object of type T containing the logout data,
      * including the token.
      */
-    void Logout(crow::response &res, T &entity)
+    typename std::enable_if<std::is_same<T, User>::value || std::is_same<T, Provider>::value, void>::type Logout(crow::response &res, T &entity)
     {
         TokenManager::LoggedUserInfo loggedUserInfo;
 
@@ -251,21 +253,21 @@ class Controller
     }
 
     template <typename T>
-    void Suspend(crow::response &res, T &entity)
+    typename std::enable_if<std::is_same<T, User>::value || std::is_same<T, Provider>::value, void>::type Suspend(crow::response &res, T &entity)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlSuspendStatement;
         cruds(res, entity, sqlstatement, dbexec);
     }
 
     template <typename T>
-    void Unsuspend(crow::response &res, T &entity)
+    typename std::enable_if<std::is_same<T, User>::value || std::is_same<T, Provider>::value, void>::type Unsuspend(crow::response &res, T &entity)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlActivateStatement;
         cruds(res, entity, sqlstatement, dbexec);
     }
 
     template <typename T>
-    void GetServices(crow::response &res, T &entity)
+    typename std::enable_if<std::is_same<T, User>::value || std::is_same<T, Provider>::value, void>::type GetServices(crow::response &res, T &entity)
     {
         json                       services;
         std::string                response;
