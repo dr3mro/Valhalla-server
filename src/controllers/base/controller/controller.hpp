@@ -41,18 +41,6 @@ using json = jsoncons::json;
 class Controller
 {
    public:
-    /**
-     * @brief Constructs a new `Controller` object.
-     *
-     * The `Controller` class is the base class for handling CRUD (Create, Read,
-     * Update, Delete) and search operations for entities. This constructor
-     * initializes the necessary dependencies, such as the `DatabaseController`,
-     * `SessionManager`, and `TokenManager` objects, which are used by the CRUD
-     * and search operations.
-     *
-     * If any of the dependencies cannot be retrieved from the `Store`, an
-     * exception is thrown and the program exits with a failure status.
-     */
     Controller()
     {
         try
@@ -71,18 +59,7 @@ class Controller
 
     // CRUDS
     template <typename T>
-    /**
-     * @brief Creates a new entity of type T in the database.
-     *
-     * This method uses the SQL create statement provided by the entity type T to
-     * insert a new record into the database. The `cruds` helper function is
-     * called with the appropriate parameters to execute the SQL statement and
-     * handle the response.
-     *
-     * @param res The Crow response object to send the result of the create
-     * operation.
-     * @param entity The entity object of type T to be created.
-     */
+
     void Create(crow::response &res, T &entity)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlCreateStatement;
@@ -90,77 +67,24 @@ class Controller
     }
 
     template <typename T>
-    /**
-     * @brief Reads an entity of type T from the database.
-     *
-     * This method uses the SQL read statement provided by the entity type T to
-     * retrieve a record from the database. The `cruds` helper function is called
-     * with the appropriate parameters to execute the SQL statement and handle the
-     * response.
-     *
-     * @param res The Crow response object to send the result of the read
-     * operation.
-     * @param entity The entity object of type T to be read.
-     */
     void Read(crow::response &res, T &entity)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlReadStatement;
         cruds(res, entity, sqlstatement, dbrexec);
     }
     template <typename T>
-    /**
-     * @brief Updates an entity of type T in the database.
-     *
-     * This method uses the SQL update statement provided by the entity type T to
-     * modify an existing record in the database. The `cruds` helper function is
-     * called with the appropriate parameters to execute the SQL statement and
-     * handle the response.
-     *
-     * @param res The Crow response object to send the result of the update
-     * operation.
-     * @param entity The entity object of type T to be updated.
-     */
     void Update(crow::response &res, T &entity)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlUpdateStatement;
         cruds(res, entity, sqlstatement, dbexec);
     }
     template <typename T>
-    /**
-     * @brief Deletes an entity of type T from the database.
-     *
-     * This method uses the SQL delete statement provided by the entity type T to
-     * remove a record from the database. The `cruds` helper function is called
-     * with the appropriate parameters to execute the SQL statement and handle the
-     * response.
-     *
-     * @param res The Crow response object to send the result of the delete
-     * operation.
-     * @param entity The entity object of type T to be deleted.
-     */
     void Delete(crow::response &res, T &entity)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlDeleteStatement;
         cruds(res, entity, sqlstatement, dbexec);
     }
     template <typename T>
-    /**
-     * @brief Searches for entities of type T in the database.
-     *
-     * This method uses the SQL search statement provided by the entity type T to
-     * retrieve records from the database that match the search criteria. The
-     * `databaseController` is used to execute the SQL statement and handle the
-     * response.
-     *
-     * The method will return a JSON object with the search results. If the number
-     * of results exceeds the limit specified in the `Entity::SearchData` object,
-     * the JSON object will include a `"more"` flag set to `true` and an
-     * `"offset"` value to be used for pagination.
-     *
-     * @param res The Crow response object to send the result of the search
-     * operation.
-     * @param entity The entity object of type T containing the search criteria.
-     */
     void Search(crow::response &res, T &entity)
     {
         json                       response_json;
@@ -206,10 +130,7 @@ class Controller
         }
         catch (const std::exception &e)
         {
-            response_json["results"] = jsoncons::json();
-            response_json["error"]   = e.what();
-            response_json.dump_pretty(results);
-            RestHelper::failureResponse(res, results);
+            RestHelper::failureResponse(res, e.what());
         }
     }
     template <typename T>
