@@ -42,12 +42,12 @@ class ClientController : public EntityController<T>, public ClientControllerBase
     ~ClientController() override = default;
 
     // PUBLIC
-    void                    Create(const crow::request& req, crow::response& res, const json& criteria) final;
+    void                    Create(const crow::request& req, crow::response& res, const json& request_json) final;
+    void                    Read(const crow::request& req, crow::response& res, const json& request_json) final;
+    void                    Update(const crow::request& req, crow::response& res, const json& request_json) final;
+    void                    Delete(const crow::request& req, crow::response& res, const json& request_json) final;
+    void                    Search(const crow::request& req, crow::response& res, const json& request_json) final;
     std::optional<uint64_t> Authenticate(const crow::request& req, crow::response& res, const jsoncons::json& credentials) final;
-    void                    Read(const crow::request& req, crow::response& res, const json& criteria) final;
-    void                    Update(const crow::request& req, crow::response& res, const json& criteria) final;
-    void                    Delete(const crow::request& req, crow::response& res, const json& delete_json) final;
-    void                    Search(const crow::request& req, crow::response& res, const json& search_json) final;
     void                    Logout(const crow::request& req, crow::response& res, const std::optional<std::string>& token) final;
     void                    Suspend(const crow::request& req, crow::response& res, const json& criteria) final;
     void                    Activate(const crow::request& req, crow::response& res, const json& criteria) final;
@@ -62,14 +62,14 @@ class ClientController : public EntityController<T>, public ClientControllerBase
 
 template <Client_t T>
 
-void ClientController<T>::Create(const crow::request& req, crow::response& res, const json& criteria)
+void ClientController<T>::Create(const crow::request& req, crow::response& res, const json& request_json)
 {
     (void)req;
     json response;
     try
     {
         bool                   success = false;
-        typename T::ClientData client_data(criteria, res, success);
+        typename T::ClientData client_data(request_json, res, success);
 
         if (success)
         {
@@ -140,13 +140,13 @@ std::optional<uint64_t> ClientController<T>::Authenticate(const crow::request& r
 
 template <Client_t T>
 
-void ClientController<T>::Read(const crow::request& req, crow::response& res, const json& criteria)
+void ClientController<T>::Read(const crow::request& req, crow::response& res, const json& request_json)
 {
     (void)req;
     try
     {
-        uint64_t                 id     = criteria.at("id").as<uint64_t>();
-        std::vector<std::string> schema = criteria.at("data").as<std::vector<std::string>>();
+        uint64_t                 id     = request_json.at("id").as<uint64_t>();
+        std::vector<std::string> schema = request_json.at("data").as<std::vector<std::string>>();
 
         typename T::ReadData readData(schema, id);
         T                    client(readData);
@@ -160,13 +160,13 @@ void ClientController<T>::Read(const crow::request& req, crow::response& res, co
 
 template <Client_t T>
 
-void ClientController<T>::Update(const crow::request& req, crow::response& res, const json& criteria)
+void ClientController<T>::Update(const crow::request& req, crow::response& res, const json& request_json)
 {
     (void)req;
     try
     {
         bool                   success = false;
-        typename T::ClientData client_data(criteria, res, success);
+        typename T::ClientData client_data(request_json, res, success);
         if (success)
         {
             T client(client_data);
@@ -181,12 +181,12 @@ void ClientController<T>::Update(const crow::request& req, crow::response& res, 
 
 template <Client_t T>
 
-void ClientController<T>::Delete(const crow::request& req, crow::response& res, const json& delete_json)
+void ClientController<T>::Delete(const crow::request& req, crow::response& res, const json& request_json)
 {
     (void)req;
     try
     {
-        typename T::DeleteData deleteData(delete_json);
+        typename T::DeleteData deleteData(request_json);
         T                      client(deleteData);
         Controller::Delete(res, client);
     }
@@ -198,13 +198,13 @@ void ClientController<T>::Delete(const crow::request& req, crow::response& res, 
 
 template <Client_t T>
 
-void ClientController<T>::Search(const crow::request& req, crow::response& res, const json& search_json)
+void ClientController<T>::Search(const crow::request& req, crow::response& res, const json& request_json)
 {
     (void)req;
     try
     {
         bool                   success = false;
-        typename T::SearchData searchData(search_json, success);
+        typename T::SearchData searchData(request_json, success);
         if (success)
         {
             T client(searchData);
