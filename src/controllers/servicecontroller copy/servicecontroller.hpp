@@ -60,7 +60,7 @@ void ServiceController<T>::Create(const crow::request &req, crow::response &res,
             RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "Failed to generate next ID");
             return;
         }
-        Entity::CreateData createData(body, nextID.value());
+        typename T::CreateData createData(body, nextID.value());
 
         T service(createData);
         Controller::Create(res, service);
@@ -81,8 +81,8 @@ void ServiceController<T>::Read(const crow::request &req, crow::response &res, c
         uint64_t                 id   = criteria.at("id").as<uint64_t>();
         std::vector<std::string> data = criteria.at("schema").as<std::vector<std::string>>();
 
-        Entity::ReadData readData(data, id);
-        T                service(readData);
+        typename T::ReadData readData(data, id);
+        T                    service(readData);
         Controller::Read(res, service);
     }
     catch (const std::exception &e)
@@ -105,8 +105,8 @@ void ServiceController<T>::Update(const crow::request &req, crow::response &res,
             RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "No id provided");
             return;
         }
-        Entity::UpdateData updateData(data, id.value());
-        T                  service(updateData);
+        typename T::UpdateData updateData(data, id.value());
+        T                      service(updateData);
         Controller::Update(res, service);
     }
     catch (const std::exception &e)
@@ -121,8 +121,8 @@ void ServiceController<T>::Delete(const crow::request &req, crow::response &res,
     (void)req;
     try
     {
-        Entity::DeleteData deleteData(delete_json);
-        T                  service(deleteData);
+        typename T::DeleteData deleteData(delete_json);
+        T                      service(deleteData);
         Controller::Delete(res, service);
     }
     catch (const std::exception &e)
@@ -138,8 +138,8 @@ void ServiceController<T>::Search(const crow::request &req, crow::response &res,
     json response;
     try
     {
-        bool               success = false;
-        Entity::SearchData searchData(search_json, success);
+        bool                   success = false;
+        typename T::SearchData searchData(search_json, success);
         if (success)
         {
             T service(searchData);

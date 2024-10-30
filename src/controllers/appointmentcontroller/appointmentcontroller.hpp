@@ -67,7 +67,7 @@ void AppointmentController<T>::CreateAppointment(const crow::request &req, crow:
             RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "Failed to generate next ID");
             return;
         }
-        Entity::CreateData createData(body, nextID.value());
+        typename T::CreateData createData(body, nextID.value());
 
         T entity(createData);
         Controller::Create(res, entity);
@@ -88,8 +88,8 @@ void AppointmentController<T>::ReadAppointment(const crow::request &req, crow::r
         uint64_t                 id   = criteria.at("id").as<uint64_t>();
         std::vector<std::string> data = criteria.at("schema").as<std::vector<std::string>>();
 
-        Entity::ReadData readData(data, id);
-        T                entity(readData);
+        typename T::ReadData readData(data, id);
+        T                    entity(readData);
         Controller::Read(res, entity);
     }
     catch (const std::exception &e)
@@ -112,8 +112,8 @@ void AppointmentController<T>::UpdateAppointment(const crow::request &req, crow:
             RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "No ID provided");
             return;
         }
-        Entity::UpdateData updateData(data, id.value());
-        T                  entity(updateData);
+        typename T::UpdateData updateData(data, id.value());
+        T                      entity(updateData);
         Controller::Update(res, entity);
     }
     catch (const std::exception &e)
@@ -128,8 +128,8 @@ void AppointmentController<T>::DeleteAppointment(const crow::request &req, crow:
     (void)req;
     try
     {
-        Entity::DeleteData deleteData(delete_json);
-        T                  entity(deleteData);
+        typename T::DeleteData deleteData(delete_json);
+        T                      entity(deleteData);
         Controller::Delete(res, entity);
     }
     catch (const std::exception &e)

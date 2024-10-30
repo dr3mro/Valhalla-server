@@ -148,8 +148,8 @@ void ClientController<T>::Read(const crow::request& req, crow::response& res, co
         uint64_t                 id     = criteria.at("id").as<uint64_t>();
         std::vector<std::string> schema = criteria.at("data").as<std::vector<std::string>>();
 
-        Entity::ReadData readData(schema, id);
-        T                client(readData);
+        typename T::ReadData readData(schema, id);
+        T                    client(readData);
         Controller::Read(res, client);
     }
     catch (const std::exception& e)
@@ -186,8 +186,8 @@ void ClientController<T>::Delete(const crow::request& req, crow::response& res, 
     (void)req;
     try
     {
-        Entity::DeleteData deleteData(delete_json);
-        T                  client(deleteData);
+        typename T::DeleteData deleteData(delete_json);
+        T                      client(deleteData);
         Controller::Delete(res, client);
     }
     catch (const std::exception& e)
