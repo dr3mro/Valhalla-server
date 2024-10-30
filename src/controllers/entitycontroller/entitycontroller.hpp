@@ -27,23 +27,6 @@ class EntityController : public Controller, public EntityControllerBase
     void Update(const crow::request &req, crow::response &res, const jsoncons::json &body) override;
     void Delete(const crow::request &req, crow::response &res, const jsoncons::json &delete_json) override;
     void Search(const crow::request &req, crow::response &res, const jsoncons::json &search_json) override;
-    // Only enable GetVisits if T is of type Patient
-    template <typename U = T>
-    typename std::enable_if<std::is_same<U, Patient>::value, void>::type GetVisits(const crow::request &req, crow::response &res,
-                                                                                   const jsoncons::json &criteria)
-    {
-        (void)req;
-        try
-        {
-            typename T::PatientData patientData(criteria);
-            T                       patient(patientData);
-            Controller::GetVisits(res, patient);
-        }
-        catch (const std::exception &e)
-        {
-            RestHelper::failureResponse(res, e.what());
-        }
-    }
 
    protected:
     std::optional<uint64_t> getNextID() override
@@ -86,8 +69,8 @@ void EntityController<T>::Create(const crow::request &req, crow::response &res, 
         }
         Entity::CreateData createData(body, nextID.value());
 
-        T service(createData);
-        Controller::Create(res, service);
+        T entity(createData);
+        Controller::Create(res, entity);
     }
     catch (const std::exception &e)
     {

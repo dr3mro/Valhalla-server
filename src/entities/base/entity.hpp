@@ -5,7 +5,6 @@
 #include "configurator/configurator.hpp"
 #include "crow/utility.h"
 #include "entities/base/base.hpp"
-#include "entities/base/datatypes/clientdata.hpp"
 #include "fmt/format.h"
 #include "fmt/ranges.h"
 #include "jsoncons/basic_json.hpp"
