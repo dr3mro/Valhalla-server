@@ -2,24 +2,22 @@
 
 #include <jsoncons/json.hpp>
 
-#include "entities/base/entity.hpp"
-
+#include "entities/base/service.hpp"
 using json = jsoncons::json;
 
-class Clinics : public Entity
+class Clinics : public Service
 {
    private:
     static constexpr auto TABLENAME = "clinics";
 
    public:
-    Clinics() : Entity(TABLENAME) {}
-
     template <typename T>
-    Clinics(const T &_data) : Entity(_data, TABLENAME)
+    Clinics(const T &_data) : Service(_data, TABLENAME)
     {
     }
+    Clinics() : Service(TABLENAME) {}
 
     std::string getTableName() { return TABLENAME; }
 
-    ~Clinics() override = default;
+    ~Clinics() = default;
 };
