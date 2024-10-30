@@ -134,21 +134,6 @@ class Controller
         }
     }
     template <typename T>
-    /**
-     * @brief Logs out the user by validating the token, setting the logout time,
-     * and returning a success or failure response.
-     *
-     * This method is responsible for handling the logout process for a user. It
-     * first validates the token provided in the `Entity::LogoutData` object. If
-     * the token is valid, it sets the logout time for the user's session using
-     * the `sessionManager`. Finally, it sends a response back to the client
-     * indicating whether the logout was successful or not.
-     *
-     * @param res The Crow response object to send the result of the logout
-     * operation.
-     * @param entity The entity object of type T containing the logout data,
-     * including the token.
-     */
     typename std::enable_if<std::is_same<T, User>::value || std::is_same<T, Provider>::value, void>::type Logout(crow::response &res, T &entity)
     {
         TokenManager::LoggedUserInfo loggedUserInfo;
