@@ -22,11 +22,11 @@ class EntityController : public Controller, public EntityControllerBase
     EntityController()           = default;
     ~EntityController() override = default;
     // CRUDS
-    void Create(const crow::request &req, crow::response &res, const jsoncons::json &body) override;
-    void Read(const crow::request &req, crow::response &res, const jsoncons::json &criteria) override;
-    void Update(const crow::request &req, crow::response &res, const jsoncons::json &body) override;
-    void Delete(const crow::request &req, crow::response &res, const jsoncons::json &delete_json) override;
-    void Search(const crow::request &req, crow::response &res, const jsoncons::json &search_json) override;
+    void Create(const crow::request &req, crow::response &res, const json &request_json) override;
+    void Read(const crow::request &req, crow::response &res, const json &request_json) override;
+    void Update(const crow::request &req, crow::response &res, const json &request_json) override;
+    void Delete(const crow::request &req, crow::response &res, const json &request_json) override;
+    void Search(const crow::request &req, crow::response &res, const json &request_json) override;
 
    protected:
     std::optional<uint64_t> getNextID() override
@@ -55,7 +55,7 @@ class EntityController : public Controller, public EntityControllerBase
 };
 
 template <typename T>
-void EntityController<T>::Create(const crow::request &req, crow::response &res, const jsoncons::json &body)
+void EntityController<T>::Create(const crow::request &req, crow::response &res, const json &request_json)
 {
     (void)req;
     json response;
@@ -67,7 +67,7 @@ void EntityController<T>::Create(const crow::request &req, crow::response &res, 
             RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "Failed to generate next ID");
             return;
         }
-        typename T::CreateData createData(body, nextID.value());
+        typename T::CreateData createData(request_json, nextID.value());
 
         T entity(createData);
         Controller::Create(res, entity);
@@ -79,14 +79,14 @@ void EntityController<T>::Create(const crow::request &req, crow::response &res, 
 }
 
 template <typename T>
-void EntityController<T>::Read(const crow::request &req, crow::response &res, const json &criteria)
+void EntityController<T>::Read(const crow::request &req, crow::response &res, const json &request_json)
 {
     (void)req;
     json response;
     try
     {
-        uint64_t                 id   = criteria.at("id").as<uint64_t>();
-        std::vector<std::string> data = criteria.at("schema").as<std::vector<std::string>>();
+        uint64_t                 id   = request_json.at("id").as<uint64_t>();
+        std::vector<std::string> data = request_json.at("schema").as<std::vector<std::string>>();
 
         typename T::ReadData readData(data, id);
         T                    service(readData);
@@ -99,13 +99,13 @@ void EntityController<T>::Read(const crow::request &req, crow::response &res, co
 }
 
 template <typename T>
-void EntityController<T>::Update(const crow::request &req, crow::response &res, const jsoncons::json &body)
+void EntityController<T>::Update(const crow::request &req, crow::response &res, const json &request_json)
 {
     (void)req;
     json response;
     try
     {
-        json                    data(body);
+        json                    data(request_json);
         std::optional<uint64_t> id = data.find("id")->value().as<uint64_t>();
         if (!id.has_value())
         {
@@ -123,12 +123,12 @@ void EntityController<T>::Update(const crow::request &req, crow::response &res, 
 }
 
 template <typename T>
-void EntityController<T>::Delete(const crow::request &req, crow::response &res, const jsoncons::json &delete_json)
+void EntityController<T>::Delete(const crow::request &req, crow::response &res, const json &request_json)
 {
     (void)req;
     try
     {
-        typename T::DeleteData deleteData(delete_json);
+        typename T::DeleteData deleteData(request_json);
         T                      service(deleteData);
         Controller::Delete(res, service);
     }
@@ -139,14 +139,14 @@ void EntityController<T>::Delete(const crow::request &req, crow::response &res, 
 }
 
 template <typename T>
-void EntityController<T>::Search(const crow::request &req, crow::response &res, const jsoncons::json &search_json)
+void EntityController<T>::Search(const crow::request &req, crow::response &res, const json &request_json)
 {
     (void)req;
     json response;
     try
     {
         bool                   success = false;
-        typename T::SearchData searchData(search_json, success);
+        typename T::SearchData searchData(request_json, success);
         if (success)
         {
             T service(searchData);
