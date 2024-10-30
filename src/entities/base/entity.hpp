@@ -178,17 +178,6 @@ class Entity : public Base
      *
      * @param token The optional token value for the logout operation.
      */
-    struct LogoutData
-    {
-        std::optional<std::string> token;
-        LogoutData(const std::optional<std::string> &_token) { token = _token; }
-    };
-
-    struct SuspendData
-    {
-        uint64_t client_id;
-        SuspendData(const uint64_t _client_id) { client_id = _client_id; }
-    };
 
     struct StaffData
     {

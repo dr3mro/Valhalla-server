@@ -351,8 +351,8 @@ void ClientController<T>::LogoutClient(const crow::request& req, crow::response&
     (void)req;
     try
     {
-        Entity::LogoutData logoutData(token);
-        T                  client(logoutData);
+        typename T::LogoutData logoutData(token);
+        T                      client(logoutData);
         Controller::Logout(res, client);
     }
     catch (const std::exception& e)
@@ -367,9 +367,9 @@ void ClientController<T>::SuspendClient(const crow::request& req, crow::response
     (void)req;
     try
     {
-        uint64_t            client_id = criteria.at("id").as<uint64_t>();
-        Entity::SuspendData suspendData(client_id);
-        T                   client(suspendData);
+        uint64_t                client_id = criteria.at("id").as<uint64_t>();
+        typename T::SuspendData suspendData(client_id);
+        T                       client(suspendData);
         Controller::Suspend(res, client);
     }
     catch (const std::exception& e)
@@ -384,9 +384,9 @@ void ClientController<T>::ActivateClient(const crow::request& req, crow::respons
     (void)req;
     try
     {
-        uint64_t            client_id = criteria.at("id").as<uint64_t>();
-        Entity::SuspendData suspendData(client_id);
-        T                   client(suspendData);
+        uint64_t                client_id = criteria.at("id").as<uint64_t>();
+        typename T::SuspendData suspendData(client_id);
+        T                       client(suspendData);
         Controller::Unsuspend(res, client);
     }
     catch (const std::exception& e)

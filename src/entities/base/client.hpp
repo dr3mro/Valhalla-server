@@ -48,6 +48,17 @@ using json = jsoncons::json;
 class Client : public Entity
 {
    public:
+    struct LogoutData
+    {
+        std::optional<std::string> token;
+        LogoutData(const std::optional<std::string> &_token) { token = _token; }
+    };
+
+    struct SuspendData
+    {
+        uint64_t client_id;
+        SuspendData(const uint64_t _client_id) { client_id = _client_id; }
+    };
     struct Credentials
     {
         std::string username;  ///< The user's username.
