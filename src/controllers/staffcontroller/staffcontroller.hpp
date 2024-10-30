@@ -2,7 +2,6 @@
 #pragma once
 #include <fmt/format.h>
 
-#include <functional>
 #include <jsoncons/json.hpp>
 
 #include "controllers/base/controller/controller.hpp"
