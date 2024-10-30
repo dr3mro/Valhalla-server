@@ -12,6 +12,12 @@ class Patient : public Entity
     static constexpr auto TABLENAME = "patients";
 
    public:
+    struct PatientData
+    {
+        uint64_t patient_id;
+        PatientData(const jsoncons::json& criteria) { patient_id = criteria.at("patient_id").as<uint64_t>(); }
+    };
+
     Patient() : Entity(TABLENAME) {}
     template <typename T>
     Patient(const T& _data) : Entity(_data, TABLENAME)
@@ -19,4 +25,6 @@ class Patient : public Entity
     }
     std::string getTableName() { return TABLENAME; }
     ~Patient() override = default;
+
+    std::string getSqlGetVisitsStatement(const uint64_t patient_id) { return fmt::format("SELECT * FROM visits WHERE id = {} ;", patient_id); }
 };

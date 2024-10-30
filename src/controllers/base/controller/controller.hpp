@@ -30,6 +30,7 @@
 
 #include "controllers/databasecontroller/databasecontroller.hpp"
 #include "entities/base/entity.hpp"
+#include "entities/services/clinics/patient/patient.hpp"
 #include "utils/resthelper/resthelper.hpp"
 #include "utils/sessionmanager/sessionmanager.hpp"
 #include "utils/tokenmanager/tokenmanager.hpp"
@@ -280,6 +281,31 @@ class Controller
             }
 
             services.dump_pretty(response);
+            RestHelper::successResponse(res, crow::status::OK, response);
+        }
+        catch (const std::exception &e)
+        {
+            RestHelper::failureResponse(res, e.what());
+        }
+    }
+
+    template <typename T>
+    typename std::enable_if<std::is_same<T, Patient>::value, void>::type GetVisits(crow::response &res, T &entity)
+    {
+        json                       visits;
+        std::string                response;
+        std::optional<std::string> query;
+
+        try
+        {
+            query = entity.getSqlGetVisitsStatement();
+
+            if (query)
+            {
+                visits = databaseController->executeSearchQuery(query.value());
+            }
+
+            visits.dump_pretty(response);
             RestHelper::successResponse(res, crow::status::OK, response);
         }
         catch (const std::exception &e)
