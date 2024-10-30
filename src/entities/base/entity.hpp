@@ -182,7 +182,6 @@ class Entity : public Base
     template <typename T>
     Entity(const T &_data, const std::string &_tablename) : tablename(_tablename), data(_data)
     {
-        passwordCrypt = Store::getObject<PasswordCrypt>();
     }
     Entity(const std::string &_tablename) : tablename(_tablename) {}
 
@@ -382,6 +381,5 @@ class Entity : public Base
     std::string tablename;
 
    private:
-    std::any                       data;
-    std::shared_ptr<PasswordCrypt> passwordCrypt;
+    std::any data;
 };
