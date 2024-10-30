@@ -12,19 +12,20 @@ class Patient : public Entity
     static constexpr auto TABLENAME = "patients";
 
    public:
-    struct PatientData
+    struct Data
     {
-        uint64_t patient_id;
-        PatientData(const jsoncons::json& criteria) { patient_id = criteria.at("id").as<uint64_t>(); }
+        uint64_t id;
+        Data(const jsoncons::json& criteria) { id = criteria.at("id").as<uint64_t>(); }
     };
 
     Patient() : Entity(TABLENAME) {}
+    ~Patient() override = default;
+
     template <typename T>
     Patient(const T& _data) : Entity(_data, TABLENAME)
     {
     }
-    std::string getTableName() { return TABLENAME; }
-    ~Patient() override = default;
 
-    std::string getSqlGetVisitsStatement(const uint64_t patient_id) { return fmt::format("SELECT * FROM visits WHERE id = {} ;", patient_id); }
+    std::string getTableName() { return TABLENAME; }
+    std::string getSqlGetVisitsStatement(const uint64_t id) { return fmt::format("SELECT * FROM visits WHERE id = {} ;", id); }
 };
