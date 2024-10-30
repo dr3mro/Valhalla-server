@@ -155,7 +155,7 @@ class Controller
 
         try
         {
-            loggedUserInfo.token = std::any_cast<Entity::LogoutData>(entity.getData()).token;
+            loggedUserInfo.token = std::any_cast<Client::LogoutData>(entity.getData()).token;
             loggedUserInfo.group = entity.getGroupName();
 
             bool status = tokenManager->ValidateToken(loggedUserInfo);
