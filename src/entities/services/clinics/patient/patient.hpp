@@ -12,12 +12,6 @@ class Patient : public Entity
     static constexpr auto TABLENAME = "patients";
 
    public:
-    struct Data
-    {
-        uint64_t id;
-        Data(const jsoncons::json& criteria) { id = criteria.at("id").as<uint64_t>(); }
-    };
-
     Patient() : Entity(TABLENAME) {}
     ~Patient() override = default;
 
