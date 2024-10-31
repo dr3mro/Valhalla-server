@@ -1,16 +1,10 @@
 
 #pragma once
 
-#include <cstdint>
+#include <crow.h>
+
 #include <jsoncons/json.hpp>
 
-#include "crow.h"
-/**
- * @brief Base class for service controllers that handle CRUD operations for a service.
- *
- * This abstract base class provides the interface for creating, reading, updating, deleting, and searching services.
- * Derived classes must implement the pure virtual functions to provide the specific implementation for a service.
- */
 class AppointmentControllerBase
 {
    public:
