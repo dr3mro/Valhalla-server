@@ -25,30 +25,6 @@ class EntityController : public Controller, public EntityControllerBase
     void Search(const crow::request &req, crow::response &res, const json &request_json) override;
 
    protected:
-    std::optional<uint64_t> getNextID() override
-    {
-        try
-        {
-            T    entity;
-            json json_nextval = databaseController->executeQuery(fmt::format("SELECT NEXTVAL('{}_id_seq');", entity.getTableName()));
-
-            if (json_nextval.empty())
-            {
-                std::cerr << fmt::format("json_nextval is empty\n");
-            }
-
-            auto obj = json_nextval.find("nextval");
-            if (obj != json_nextval.object_range().end())
-            {
-                return obj->value().as<uint64_t>();
-            }
-        }
-        catch (const std::exception &e)
-        {
-            std::cerr << fmt::format("Failed: {}\n", e.what());
-        }
-        return std::nullopt;
-    }
 };
 
 template <typename T>
@@ -57,7 +33,7 @@ void EntityController<T>::Create(const crow::request &req, crow::response &res, 
     (void)req;
     try
     {
-        auto next_id = getNextID();
+        auto next_id = this->template getNextID<T>();
         if (!next_id.has_value())
         {
             RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "Failed to generate next ID");
