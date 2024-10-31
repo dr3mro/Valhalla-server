@@ -128,7 +128,7 @@ class Controller
                 return;
             }
             sessionManager->setNowLogoutTime(loggedUserInfo.userID.value(), loggedUserInfo.group.value());
-            RestHelper::successResponse(res, crow::status::OK, "Logout success");
+            RestHelper::successResponseJsoned(res, crow::status::OK, "Logout success.");
         }
         catch (const std::exception &e)
         {
