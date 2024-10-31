@@ -291,12 +291,13 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
             });
 
     // Catch-all route for unmatched paths
-    CROW_ROUTE((*app), URL("/<string>"))
+    CROW_ROUTE((*app), "/<path>")
     (
         [](const crow::request &req, crow::response &res, const std::string_view path)
         {
-            (void)req;
-            RestHelper::errorResponse(res, crow::status::NOT_FOUND, fmt::format("{}/{} is not implemented yet.", PREFIX, path));
+            RestHelper::errorResponse(
+                res, crow::status::NOT_FOUND,
+                fmt::format("The endpoint ({}) is not implemented yet with method {}, Please read the manual.", path, crow::method_name(req.method)));
             return;
         });
 }
