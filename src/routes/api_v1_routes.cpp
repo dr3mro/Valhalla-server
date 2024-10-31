@@ -27,7 +27,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view clientType)
             {
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Authenticate, req, res,
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Login, req, res,
                                         app->get_context<Authentication>(req).credentials);
             });
 
@@ -210,7 +210,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view entityType)
             {
-                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::CreateAppointment, req, res,
+                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Create, req, res,
                                         app->get_context<BRequest>(req).criteria);
             });
 
@@ -219,7 +219,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::GET)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view entityType)
             {
-                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::ReadAppointment, req, res,
+                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Read, req, res,
                                         app->get_context<XRequest>(req).criteria);
             });
 
@@ -228,7 +228,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::PUT)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view entityType)
             {
-                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::UpdateAppointment, req, res,
+                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Update, req, res,
                                         app->get_context<BRequest>(req).criteria);
             });
 
@@ -237,7 +237,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::DELETE)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view entityType)
             {
-                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::DeleteAppointment, req, res,
+                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Delete, req, res,
                                         app->get_context<XRequest>(req).criteria);
             });
 
@@ -246,7 +246,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::SEARCH)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view entityType)
             {
-                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::SearchAppointment, req, res,
+                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Search, req, res,
                                         app->get_context<Search>(req).search_json);
             });
 

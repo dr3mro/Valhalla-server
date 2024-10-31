@@ -101,11 +101,11 @@ class Controller
                 query_results_json   = databaseController->executeSearchQuery(query.value());
                 size_t results_count = query_results_json.size();
 
-                if (results_count > std::any_cast<typename T::SearchData>(entity.getData()).limit)
+                if (results_count > std::any_cast<typename T::Search_t>(entity.getData()).limit)
                 {
-                    response_json["more"]   = true;
-                    response_json["offset"] = std::any_cast<typename T::SearchData>(entity.getData()).offset +
-                                              std::any_cast<typename T::SearchData>(entity.getData()).limit;
+                    response_json["more"] = true;
+                    response_json["offset"] =
+                        std::any_cast<typename T::Search_t>(entity.getData()).offset + std::any_cast<typename T::Search_t>(entity.getData()).limit;
                     query_results_json.erase(query_results_json.array_range().end() - 1);
                 }
                 else

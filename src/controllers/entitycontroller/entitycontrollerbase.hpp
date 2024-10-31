@@ -3,7 +3,6 @@
 
 #include <crow.h>
 
-#include <cstdint>
 #include <jsoncons/json.hpp>
 
 using json = jsoncons::json;

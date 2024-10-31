@@ -7,7 +7,6 @@
 #include "controllers/base/controller/controller.hpp"
 #include "controllers/entitycontroller/entitycontrollerbase.hpp"
 #include "entities/base/entity.hpp"
-#include "entities/services/clinics/patient/patient.hpp"
 #include "utils/resthelper/resthelper.hpp"
 
 using json = jsoncons::json;
@@ -15,9 +14,6 @@ using json = jsoncons::json;
 template <typename T>
 class EntityController : public Controller, public EntityControllerBase
 {
-   private:
-    T entity;
-
    public:
     EntityController()           = default;
     ~EntityController() override = default;
@@ -33,6 +29,7 @@ class EntityController : public Controller, public EntityControllerBase
     {
         try
         {
+            T    entity;
             json json_nextval = databaseController->executeQuery(fmt::format("SELECT NEXTVAL('{}_id_seq');", entity.getTableName()));
 
             if (json_nextval.empty())
@@ -58,18 +55,15 @@ template <typename T>
 void EntityController<T>::Create(const crow::request &req, crow::response &res, const json &request_json)
 {
     (void)req;
-    json response;
     try
     {
-        auto nextID = getNextID();
-        if (!nextID.has_value())
+        auto next_id = getNextID();
+        if (!next_id.has_value())
         {
             RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "Failed to generate next ID");
             return;
         }
-        typename T::CreateData createData(request_json, nextID.value());
-
-        T entity(createData);
+        T entity((typename T::Create_t(request_json, next_id.value())));
         Controller::Create(res, entity);
     }
     catch (const std::exception &e)
@@ -85,12 +79,11 @@ void EntityController<T>::Read(const crow::request &req, crow::response &res, co
     json response;
     try
     {
-        uint64_t                 id   = request_json.at("id").as<uint64_t>();
-        std::vector<std::string> data = request_json.at("schema").as<std::vector<std::string>>();
+        uint64_t                 id     = request_json.at("id").as<uint64_t>();
+        std::vector<std::string> schema = request_json.at("schema").as<std::vector<std::string>>();
 
-        typename T::ReadData readData(data, id);
-        T                    service(readData);
-        Controller::Read(res, service);
+        T entity((typename T::Read_t(schema, id)));
+        Controller::Read(res, entity);
     }
     catch (const std::exception &e)
     {
@@ -102,19 +95,18 @@ template <typename T>
 void EntityController<T>::Update(const crow::request &req, crow::response &res, const json &request_json)
 {
     (void)req;
-    json response;
     try
     {
-        json                    data(request_json);
-        std::optional<uint64_t> id = data.find("id")->value().as<uint64_t>();
+        json                    data_j(request_json);
+        std::optional<uint64_t> id = data_j.find("id")->value().as<uint64_t>();
         if (!id.has_value())
         {
             RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "No id provided");
             return;
         }
-        typename T::UpdateData updateData(data, id.value());
-        T                      service(updateData);
-        Controller::Update(res, service);
+
+        T entity((typename T::Update_t(data_j, id.value())));
+        Controller::Update(res, entity);
     }
     catch (const std::exception &e)
     {
@@ -128,9 +120,16 @@ void EntityController<T>::Delete(const crow::request &req, crow::response &res, 
     (void)req;
     try
     {
-        typename T::DeleteData deleteData(request_json);
-        T                      service(deleteData);
-        Controller::Delete(res, service);
+        json                    data_j(request_json);
+        std::optional<uint64_t> id = data_j.find("id")->value().as<uint64_t>();
+        if (!id.has_value())
+        {
+            RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "No id provided");
+            return;
+        }
+
+        T entity((typename T::Delete_t(id.value())));
+        Controller::Delete(res, entity);
     }
     catch (const std::exception &e)
     {
@@ -145,12 +144,12 @@ void EntityController<T>::Search(const crow::request &req, crow::response &res, 
     json response;
     try
     {
-        bool                   success = false;
-        typename T::SearchData searchData(request_json, success);
+        bool success = false;
+        T    entity((typename T::Search_t(request_json, success)));
+
         if (success)
         {
-            T service(searchData);
-            Controller::Search(res, service);
+            Controller::Search(res, entity);
         }
     }
     catch (const std::exception &e)
