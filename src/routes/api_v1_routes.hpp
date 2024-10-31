@@ -31,15 +31,13 @@
 #include "middlewares/authorization.hpp"
 #include "middlewares/brequest.hpp"
 #include "middlewares/dataintegrity.hpp"
-#include "middlewares/deauthentication.hpp"
 #include "middlewares/elapsedtime.hpp"
 #include "middlewares/ratelimit.hpp"
 #include "middlewares/search.hpp"
 #include "middlewares/xrequest.hpp"
 #include "utils/resthelper/resthelper.hpp"
 
-using APP =
-    crow::App<crow::CORSHandler, RateLimit, ElapsedTime, Authentication, Deauthentication, Authorization, XRequest, Search, DataIntegrity, BRequest>;
+using APP = crow::App<crow::CORSHandler, RateLimit, ElapsedTime, Authentication, Authorization, XRequest, Search, DataIntegrity, BRequest>;
 
 class API_V1_Routes
 {

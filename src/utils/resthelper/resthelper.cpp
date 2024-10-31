@@ -35,3 +35,12 @@ void RestHelper::successResponse(crow::response& res, const crow::status& status
     res.code = status;
     res.end(result);
 }
+
+void RestHelper::successResponseJsoned(crow::response& res, const crow::status& status, const std::string& message)
+{
+    std::string results;
+    json        response_json;
+    response_json["Message"] = message;
+    response_json.dump_pretty(results);
+    successResponse(res, status, results);
+}

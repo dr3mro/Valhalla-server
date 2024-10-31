@@ -1,3 +1,63 @@
+
+
+## Providers
+
+
+| Description                | Method | endpoint                            | Data   | Code  | Response                                  |
+| -------------------------- | ------ | ----------------------------------- | ------ | ----- | ----------------------------------------- |
+| [Create](#create_provider) | `POST` | `/api/v1/clients/providers`         | `body` | `200` | `{"id":1000}`                             |
+| [Login](#login_provider)   | `POST` | `/api/v1/clients/providers/login`   | `body` | `200` | [LoginResponse](#provider_login_response) |
+| Logout                     | `POST` | `/api/v1/clients/providers/logout`  | -      | `200` | `{"message":"logged out"}`                |
+| Suspend                    | `POST` | `/api/v1/clients/providers/suspend` | -      | `200` | `{"message":"suspended"}`                 |
+
+
+
+
+
+## Providers
+#### create_provider
+```
+{
+  "avatar": "http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200",
+  "active": true,
+  "language": "en",
+  "username": "provider",
+  "password": "1234@Abc!",
+  "fullname": "Amr Nasr",
+  "phone": "+201299999999",
+  "email": "amr@mail.com",
+  "country": "Egypt",
+  "city": "Damietta",
+  "address": "portsaid street",
+  "dob": "17-02-1985",
+  "gender": "male",
+  "position": "Doctor",
+  "speciality": "Cardiology"
+}
+```
+
+#### login_provider
+```
+{
+    "username" : "provider",
+    "password" : "1234@Abc!"
+}
+```
+
+#### provider_login_response
+```
+{
+    "group": "providers",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MzI5NzU0MTIsImdyb3VwIjoicHJvdmlkZXJzIiwiaWF0IjoxNzMwMzgzNDEyLCJpc3MiOiJQcm9qZWN0VmFsaGFsbGEiLCJqdGkiOiIxMDAyIiwibGxvZHQiOiIyMDI0LTEwLTMxIDEyOjM0OjQ3KzAwIiwic3ViIjoicHJvdmlkZXIifQ.n39YGxac2iDJ0iBNCJ_LEOvsYMV0eOAdgeKNvOIb1wQ",
+    "user_id": 1002,
+    "username": "provider"
+}
+```
+
+
+
+
+
 # 🚀 PROJECT VALHALLA
 ![alt text](https://github.com/dr3mro/ProjectValhalla/blob/a4162ecba8c1b9684f540fe0ef75a554b1308bb3/Screenshot.png?raw=true)
 
@@ -39,6 +99,8 @@ jq -Sjc '.payload' api/patient/create_patient.json | xxh64sum
 curl -X GET -H "Accept-Encoding:gzip" -H "X-Request: $(cat api/patient/read_patient.json | base64 -w0)"  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MjUxODIwNDAsImdyb3VwIjoidXNlcnMiLCJpYXQiOjE3MjI1OTAwNDAsImlzcyI6InZhbGhhbGxhIiwianRpIjoiMTAxMSIsImxsb2R0IjoiMjAyNC0wOC0wMSAyMzoxMzoxNiswMCIsInN1YiI6InVzZXIxIn0.fNF0YvJ1zcrxFzMbZ1Mf2DS4BXq9cV0lDhNatSMbxnA"  http://172.20.0.10:80/v1/patient --compressed --include  --output -
 ```
 </details>
+
+
 
 ### 🎉 Create a new User
 

@@ -32,12 +32,12 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
             });
 
     CROW_ROUTE((*app), URL("/clients/<string>/logout"))
-        .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Deauthentication)
+        .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization)
         .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view clientType)
             {
                 executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Logout, req, res,
-                                        app->get_context<Deauthentication>(req).token);
+                                        app->get_context<Authorization>(req).userInfo.token.value());
             });
 
     CROW_ROUTE((*app), URL("/clients/<string>/suspend"))
