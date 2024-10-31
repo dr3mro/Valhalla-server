@@ -1,24 +1,3 @@
-/**
- * @class Controller
- * @brief Base class for handling CRUD (Create, Read, Update, Delete) and search
- * operations for entities.
- *
- * The `Controller` class provides a set of template methods for performing CRUD
- * and search operations on entities. It uses the `DatabaseController`,
- * `SessionManager`, and `TokenManager` classes to interact with the database
- * and manage user sessions and tokens.
- *
- * The `Create`, `Read`, `Update`, `Delete`, and `Search` methods are templates
- * that take an entity type `T` as a parameter. These methods use the SQL
- * statements provided by the entity type to execute the corresponding CRUD or
- * search operation.
- *
- * The `Logout` method is used to log out a user by validating the provided
- * token and updating the session information.
- *
- * The `Controller` class is designed to be a base class for more specialized
- * controllers that handle specific entity types.
- */
 
 #pragma once
 #include <crow.h>

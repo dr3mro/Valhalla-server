@@ -19,6 +19,11 @@ void ClientController<T>::Create(const crow::request& req, crow::response& res, 
             }
             Controller::Create(res, client);
         }
+        else
+        {
+            RestHelper::errorResponse(res, crow::status::CONFLICT, "ClientData parsing error");
+            return;
+        }
     }
     catch (const std::exception& e)
     {
