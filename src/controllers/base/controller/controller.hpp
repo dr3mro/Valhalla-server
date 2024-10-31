@@ -29,9 +29,8 @@
 #include <jsoncons/json.hpp>
 
 #include "controllers/databasecontroller/databasecontroller.hpp"
+#include "entities/base/client.hpp"
 #include "entities/base/entity.hpp"
-#include "entities/people/provider.hpp"
-#include "entities/people/user.hpp"
 #include "entities/services/clinics/patient/patient.hpp"
 #include "utils/resthelper/resthelper.hpp"
 #include "utils/sessionmanager/sessionmanager.hpp"
@@ -134,7 +133,7 @@ class Controller
         }
     }
     template <typename T>
-    typename std::enable_if<std::is_same<T, User>::value || std::is_same<T, Provider>::value, void>::type Logout(crow::response &res, T &entity)
+    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Logout(crow::response &res, T &entity)
     {
         TokenManager::LoggedUserInfo loggedUserInfo;
 
