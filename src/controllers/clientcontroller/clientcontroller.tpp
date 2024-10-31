@@ -40,7 +40,28 @@ void ClientController<T>::Read(const crow::request& req, crow::response& res, co
 template <Client_t T>
 void ClientController<T>::Update(const crow::request& req, crow::response& res, const json& request_json)
 {
-    EntityController<T>::Update(req, res, request_json);
+    (void)req;
+    json response;
+    try
+    {
+        bool                   success = false;
+        typename T::ClientData client_data(request_json, res, success);
+
+        if (success)
+        {
+            T client(client_data);
+            Controller::Update(res, client);
+        }
+        else
+        {
+            RestHelper::errorResponse(res, crow::status::CONFLICT, "ClientData parsing error");
+            return;
+        }
+    }
+    catch (const std::exception& e)
+    {
+        RestHelper::failureResponse(res, e.what());
+    }
 }
 
 template <Client_t T>
