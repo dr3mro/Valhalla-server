@@ -159,21 +159,21 @@ class Controller
     }
 
     template <typename T>
-    typename std::enable_if<std::is_same<T, User>::value || std::is_same<T, Provider>::value, void>::type Suspend(crow::response &res, T &entity)
+    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Suspend(crow::response &res, T &entity)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlSuspendStatement;
         cruds(res, entity, sqlstatement, dbexec);
     }
 
     template <typename T>
-    typename std::enable_if<std::is_same<T, User>::value || std::is_same<T, Provider>::value, void>::type Unsuspend(crow::response &res, T &entity)
+    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Unsuspend(crow::response &res, T &entity)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlActivateStatement;
         cruds(res, entity, sqlstatement, dbexec);
     }
 
     template <typename T>
-    typename std::enable_if<std::is_same<T, User>::value || std::is_same<T, Provider>::value, void>::type GetServices(crow::response &res, T &entity)
+    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> GetServices(crow::response &res, T &entity)
     {
         json                       services;
         std::string                response;
@@ -223,6 +223,31 @@ class Controller
     }
 
    protected:
+    template <typename T>
+    std::optional<uint64_t> getNextID()
+    {
+        try
+        {
+            T    entity;
+            json json_nextval = databaseController->executeQuery(fmt::format("SELECT NEXTVAL('{}_id_seq');", entity.getTableName()));
+
+            if (json_nextval.empty())
+            {
+                std::cerr << fmt::format("json_nextval is empty\n");
+            }
+
+            auto obj = json_nextval.find("nextval");
+            if (obj != json_nextval.object_range().end())
+            {
+                return obj->value().as<uint64_t>();
+            }
+        }
+        catch (const std::exception &e)
+        {
+            std::cerr << fmt::format("Failed: {}\n", e.what());
+        }
+        return std::nullopt;
+    }
     /**
      * @brief Shared pointers to the DatabaseController, SessionManager, and
      * TokenManager instances.
