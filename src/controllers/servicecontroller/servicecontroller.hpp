@@ -20,7 +20,7 @@ class ServiceController : public EntityController<T>, public ServiceControllerBa
     void Create(const crow::request &req, crow::response &res, const json &request_json) final;
     void Read(const crow::request &req, crow::response &res, const json &request_json) final;
     void Update(const crow::request &req, crow::response &res, const json &request_json) final;
-    void Delete(const crow::request &req, crow::response &res, const json &request_json) final;
+    void Delete(const crow::request &req, crow::response &res, const std::unordered_map<std::string, std::string> &params) final;
     void Search(const crow::request &req, crow::response &res, const json &request_json) final;
     // Only enable GetVisits if T is of type Patient
     template <typename U = T>

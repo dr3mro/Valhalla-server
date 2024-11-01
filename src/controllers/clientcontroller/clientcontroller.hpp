@@ -44,13 +44,13 @@ class ClientController : public EntityController<T>, public ClientControllerBase
     void Create(const crow::request& req, crow::response& res, const json& request_json) final;
     void Read(const crow::request& req, crow::response& res, const json& request_json) final;
     void Update(const crow::request& req, crow::response& res, const json& request_json) final;
-    void Delete(const crow::request& req, crow::response& res, const json& request_json) final;
+    void Delete(const crow::request& req, crow::response& res, const std::unordered_map<std::string, std::string>& params) final;
     void Search(const crow::request& req, crow::response& res, const json& request_json) final;
 
     std::optional<uint64_t> Login(const crow::request& req, crow::response& res, const jsoncons::json& credentials) final;
     void                    Logout(const crow::request& req, crow::response& res, const std::optional<std::string>& token) final;
-    void                    Suspend(const crow::request& req, crow::response& res, const json& criteria) final;
-    void                    Activate(const crow::request& req, crow::response& res, const json& criteria) final;
+    void                    Suspend(const crow::request& req, crow::response& res, const std::unordered_map<std::string, std::string>& params) final;
+    void                    Activate(const crow::request& req, crow::response& res, const std::unordered_map<std::string, std::string>& params) final;
     void                    ResetPassword(const crow::request& req, crow::response& res, const json& reset_json) final;
     void                    GetServices(const crow::request& req, crow::response& res, std::optional<uint64_t> client_id) final;
 

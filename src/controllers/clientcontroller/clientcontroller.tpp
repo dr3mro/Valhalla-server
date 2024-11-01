@@ -65,9 +65,9 @@ void ClientController<T>::Update(const crow::request& req, crow::response& res, 
 }
 
 template <Client_t T>
-void ClientController<T>::Delete(const crow::request& req, crow::response& res, const json& request_json)
+void ClientController<T>::Delete(const crow::request& req, crow::response& res, const std::unordered_map<std::string, std::string>& params)
 {
-    EntityController<T>::Delete(req, res, request_json);
+    EntityController<T>::Delete(req, res, params);
 }
 
 template <Client_t T>
@@ -142,13 +142,26 @@ void ClientController<T>::Logout(const crow::request& req, crow::response& res, 
 }
 
 template <Client_t T>
-void ClientController<T>::Suspend(const crow::request& req, crow::response& res, const json& criteria)
+void ClientController<T>::Suspend(const crow::request& req, crow::response& res, const std::unordered_map<std::string, std::string>& params)
 {
     (void)req;
     try
     {
-        uint64_t                client_id = criteria.at("id").as<uint64_t>();
-        typename T::SuspendData suspendData(client_id);
+        auto it = params.find("id");
+        if (it == params.end())
+        {
+            RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "No id provided");
+            return;
+        }
+
+        std::optional<uint64_t> client_id = std::stoull(it->second);
+        if (!client_id.has_value())
+        {
+            RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "Invalid id provided");
+            return;
+        }
+
+        typename T::SuspendData suspendData(client_id.value());
         T                       client(suspendData);
         Controller::Suspend(res, client);
     }
@@ -159,13 +172,25 @@ void ClientController<T>::Suspend(const crow::request& req, crow::response& res,
 }
 
 template <Client_t T>
-void ClientController<T>::Activate(const crow::request& req, crow::response& res, const json& criteria)
+void ClientController<T>::Activate(const crow::request& req, crow::response& res, const std::unordered_map<std::string, std::string>& params)
 {
     (void)req;
     try
     {
-        uint64_t                client_id = criteria.at("id").as<uint64_t>();
-        typename T::SuspendData suspendData(client_id);
+        auto it = params.find("id");
+        if (it == params.end())
+        {
+            RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "No id provided");
+            return;
+        }
+
+        std::optional<uint64_t> client_id = std::stoull(it->second);
+        if (!client_id.has_value())
+        {
+            RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "Invalid id provided");
+            return;
+        }
+        typename T::SuspendData suspendData(client_id.value());
         T                       client(suspendData);
         Controller::Unsuspend(res, client);
     }

@@ -18,9 +18,9 @@ void ServiceController<T>::Update(const crow::request &req, crow::response &res,
 }
 
 template <typename T>
-void ServiceController<T>::Delete(const crow::request &req, crow::response &res, const json &request_json)
+void ServiceController<T>::Delete(const crow::request &req, crow::response &res, const std::unordered_map<std::string, std::string> &params)
 {
-    EntityController<T>::Delete(req, res, request_json);
+    EntityController<T>::Delete(req, res, params);
 }
 
 template <typename T>
