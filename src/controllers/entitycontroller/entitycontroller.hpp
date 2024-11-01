@@ -21,7 +21,7 @@ class EntityController : public Controller, public EntityControllerBase
     void Create(const crow::request &req, crow::response &res, const json &request_json) override;
     void Read(const crow::request &req, crow::response &res, const json &request_json) override;
     void Update(const crow::request &req, crow::response &res, const json &request_json) override;
-    void Delete(const crow::request &req, crow::response &res, const json &request_json) override;
+    void Delete(const crow::request &req, crow::response &res, const std::unordered_map<std::string, std::string> &params) override;
     void Search(const crow::request &req, crow::response &res, const json &request_json) override;
 
    protected:
@@ -91,20 +91,26 @@ void EntityController<T>::Update(const crow::request &req, crow::response &res, 
 }
 
 template <typename T>
-void EntityController<T>::Delete(const crow::request &req, crow::response &res, const json &request_json)
+void EntityController<T>::Delete(const crow::request &req, crow::response &res, const std::unordered_map<std::string, std::string> &params)
 {
     (void)req;
     try
     {
-        json                    data_j(request_json);
-        std::optional<uint64_t> id = data_j.find("id")->value().as<uint64_t>();
-        if (!id.has_value())
+        auto it = params.find("id");
+        if (it == params.end())
         {
             RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "No id provided");
             return;
         }
 
-        T entity((typename T::Delete_t(id.value())));
+        std::optional<uint64_t> id = std::stoull(it->second);
+        if (!id.has_value())
+        {
+            RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "Invalid id provided");
+            return;
+        }
+
+        T entity(typename T::Delete_t(id.value()));
         Controller::Delete(res, entity);
     }
     catch (const std::exception &e)

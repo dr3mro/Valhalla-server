@@ -17,9 +17,9 @@ void AppointmentController<T>::Update(const crow::request &req, crow::response &
 }
 
 template <typename T>
-void AppointmentController<T>::Delete(const crow::request &req, crow::response &res, const jsoncons::json &request_json)
+void AppointmentController<T>::Delete(const crow::request &req, crow::response &res, const std::unordered_map<std::string, std::string> &params)
 {
-    EntityController<T>::Delete(req, res, request_json);
+    EntityController<T>::Delete(req, res, params);
 }
 
 template <typename T>

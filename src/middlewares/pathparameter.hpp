@@ -6,30 +6,34 @@
 
 #include "utils/resthelper/resthelper.hpp"
 
-struct BRequest : crow::ILocalMiddleware
+struct PathParameter : crow::ILocalMiddleware
 {
    public:
     struct context
     {
-        jsoncons::json payload;
+        std::unordered_map<std::string, std::string> params;
     };
 
-    BRequest()  = default;
-    ~BRequest() = default;
+    PathParameter()  = default;
+    ~PathParameter() = default;
 
     void before_handle(crow::request &req, crow::response &res, context &ctx)
     {
         try
         {
-            ctx.payload = jsoncons::json::parse(req.body);
+            for (const auto &p : req.url_params.keys())
+            {
+                std::string key   = p;
+                std::string value = req.url_params.get(key);
+                ctx.params[key]   = value;
+            }
         }
         catch (const std::exception &e)
         {
-            RestHelper::failureResponse(res, "Error parsing request body");
+            RestHelper::failureResponse(res, "Error parsing path parameter");
             return;
         }
     }
-
     void after_handle(crow::request &req, crow::response &res, context &ctx)
     {
         (void)req;

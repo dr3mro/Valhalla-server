@@ -27,7 +27,7 @@ struct DataIntegrity : crow::ILocalMiddleware
 
         try
         {
-            jsoncons::json &json = all_ctx.template get<BRequest>().criteria;
+            jsoncons::json &json = all_ctx.template get<BRequest>().payload;
 
             if (!json.contains("xxh64sum") || !json.contains("payload"))
             {

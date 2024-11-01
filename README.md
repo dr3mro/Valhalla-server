@@ -3,19 +3,159 @@
 ## Providers
 
 
-| Description                | Method | endpoint                            | Data   | Code  | Response                                  |
-| -------------------------- | ------ | ----------------------------------- | ------ | ----- | ----------------------------------------- |
-| [Create](#create_provider) | `POST` | `/api/v1/clients/providers`         | `body` | `200` | `{"id":1000}`                             |
-| [Login](#login_provider)   | `POST` | `/api/v1/clients/providers/login`   | `body` | `200` | [LoginResponse](#provider_login_response) |
-| Logout                     | `POST` | `/api/v1/clients/providers/logout`  | -      | `200` | `{"message":"logged out"}`                |
-| Suspend                    | `POST` | `/api/v1/clients/providers/suspend` | -      | `200` | `{"message":"suspended"}`                 |
+| Description | Payload                      | Method   | endpoint                             | Data   | Code  | Response                                  |
+| ----------- | ---------------------------- | -------- | ------------------------------------ | ------ | ----- | ----------------------------------------- |
+| Create      | [Create](#--create_provider) | `POST`   | `/api/v1/clients/providers/create`   | `body` | `200` | `{"id":1000}`                             |
+| Read        | [Read](#--read_provider)     | `POST`   | `/api/v1/clients/providers/read`     | `body` | `200` | [Response](#--provider_read_response)     |
+| Update      | [Update](#--update_provider) | `PUT`    | `/api/v1/clients/providers/update`   | `body` | `200` | `{"id":1000}`                             |
+| Delete      | `{url}?id=1000`              | `DELETE` | `/api/v1/clients/providers/delete`   | `URL`  | `200` | `{"id":1000}`                             |
+| Search      | [Search](#--search_provider) | `POST`   | `/api/v1/clients/providers/search`   | `body` | `200` | [Response](#--provider_search_response)   |
+| Login       | [Login](#--login_provider)   | `POST`   | `/api/v1/clients/providers/login`    | `body` | `200` | [Response](#--provider_login_response)    |
+| Logout      | `NA`                         | `POST`   | `/api/v1/clients/providers/logout`   | `NA`   | `200` | `{ "message" : "Logout success" }`        |
+| Suspend     | `{url}?id=1000`              | `POST`   | `/api/v1/clients/providers/suspend`  | `URL`  | `200` | [Response](#--prov-sus-res)               |
+| Activate    | `{url}?id=1000`              | `POST`   | `/api/v1/clients/providers/activate` | `URL`  | `200` | [Response](#--prov-act-res)               |
+| Services    | `NA`                         | `GET`    | `/api/v1/clients/providers/services` | `NA`   | `200` | [Response](#--provider_services_response) |
+
+
+## Users
+
+
+| Description | Payload                  | Method   | endpoint                         | Data   | Code  | Response                               |
+| ----------- | ------------------------ | -------- | -------------------------------- | ------ | ----- | -------------------------------------- |
+| Create      | [Create](#--create_user) | `POST`   | `/api/v1/clients/users/create`   | `body` | `200` | `{"id":1000}`                          |
+| Read        | [Read](#--read_user)     | `POST`   | `/api/v1/clients/users/read`     | `body` | `200` | [Response](#--users_read_response)     |
+| Update      | [Update](#--update_user) | `PUT`    | `/api/v1/clients/users/update`   | `body` | `200` | `{"id":1000}`                          |
+| Delete      | `{url}?id=1000`          | `DELETE` | `/api/v1/clients/users/delete`   | `URL`  | `200` | `{"id":1000}`                          |
+| Search      | [Search](#--search_user) | `POST`   | `/api/v1/clients/users/search`   | `body` | `200` | [Response](#--users_search_response)   |
+| Login       | [Login](#--login_user)   | `POST`   | `/api/v1/clients/users/login`    | `body` | `200` | [Response](#--users_login_response)    |
+| Logout      | `NA`                     | `POST`   | `/api/v1/clients/users/logout`   | `NA`   | `200` | `{ "message" : "Logout success" }`     |
+| Suspend     | `{url}?id=1000`          | `POST`   | `/api/v1/clients/users/suspend`  | `URL`  | `200` | [Response](#--users-sus-res)           |
+| Activate    | `{url}?id=1000`          | `POST`   | `/api/v1/clients/users/activate` | `URL`  | `200` | [Response](#--users-act-res)           |
+| Services    | `NA`                     | `GET`    | `/api/v1/clients/users/services` | `NA`   | `200` | [Response](#--users_services_response) |
+
+
+## Services
+### Clinics
+
+| Description | Payload                     | Method   | endpoint                          | Data   | Code  | Response                               |
+| ----------- | --------------------------- | -------- | --------------------------------- | ------ | ----- | -------------------------------------- |
+| Create      | [Create](#--create_clinics) | `POST`   | `/api/v1/services/clinics/create` | `body` | `200` | `{"id":1000}`                          |
+| Read        | [Read](#--read_clinics)     | `POST`   | `/api/v1/services/clinics/read`   | `body` | `200` | [Response](#--clinics_read_response)   |
+| Update      | [Update](#--update_clinics) | `PUT`    | `/api/v1/services/clinics/update` | `body` | `200` | `{"id":1000}`                          |
+| Delete      | `{url}?id=1000`             | `DELETE` | `/api/v1/services/clinics/delete` | `URL`  | `200` | `{"id":1000}`                          |
+| Search      | [Search](#--search_clinics) | `POST`   | `/api/v1/services/clinics/search` | `body` | `200` | [Response](#--clinics_search_response) |
+
+#### patient [in clinic dashboard]
+
+| Description | Payload                     | Method   | endpoint                                   | Data   | Code  | Response                                 |
+| ----------- | --------------------------- | -------- | ------------------------------------------ | ------ | ----- | ---------------------------------------- |
+| Create      | [Create](#--create_patient) | `POST`   | `/api/v1/services/clinics/patients/create` | `body` | `200` | `{"id":1000}`                            |
+| Read        | [Read](#--read_patient)     | `POST`   | `/api/v1/services/clinics/patients/read`   | `body` | `200` | [Response](#--patient_read_response)     |
+| Update      | [Update](#--update_patient) | `PUT`    | `/api/v1/services/clinics/patients/update` | `body` | `200` | `{"id":1000}`                            |
+| Delete      | `{url}?id=1000`             | `DELETE` | `/api/v1/services/clinics/patients/delete` | `URL`  | `200` | `{"id":1000}`                            |
+| Search      | [Search](#--search_patient) | `POST`   | `/api/v1/services/clinics/patients/search` | `body` | `200` | [Response](#--patient_search_response)   |
+| Visits      | `{url}?id=1000`             | `GET`    | `/services/clinics/patients/getvisits`     | `URL`  | `200` | [Response](#--patient_services_response) |
+
+#### health [in clinic dashboard]
+| Description | Payload                    | Method   | endpoint                                 | Data   | Code  | Response                            |
+| ----------- | -------------------------- | -------- | ---------------------------------------- | ------ | ----- | ----------------------------------- |
+| Create      | [Create](#--create_health) | `POST`   | `/api/v1/services/clinics/health/create` | `body` | `200` | `{"id":1000}`                       |
+| Read        | [Read](#--read_health)     | `POST`   | `/api/v1/services/clinics/health/read`   | `body` | `200` | [Response](#--health_read_response) |
+| Update      | [Update](#--update_health) | `PUT`    | `/api/v1/services/clinics/health/update` | `body` | `200` | `{"id":1000}`                       |
+| Delete      | `{url}?id=1000`            | `DELETE` | `/api/v1/services/clinics/health/delete` | `URL`  | `200` | `{"id":1000}`                       |
+
+#### patientdrugs [in clinic dashboard]
+| Description | Payload                     | Method   | endpoint                                       | Data   | Code  | Response                             |
+| ----------- | --------------------------- | -------- | ---------------------------------------------- | ------ | ----- | ------------------------------------ |
+| Create      | [Create](#--create_ptdrugs) | `POST`   | `/api/v1/services/clinics/patientdrugs/create` | `body` | `200` | `{"id":1000}`                        |
+| Read        | [Read](#--read_ptdrugs)     | `POST`   | `/api/v1/services/clinics/patientdrugs/read`   | `body` | `200` | [Response](#--ptdrugs_read_response) |
+| Update      | [Update](#--update_ptdrugs) | `PUT`    | `/api/v1/services/clinics/patientdrugs/update` | `body` | `200` | `{"id":1000}`                        |
+| Delete      | `{url}?id=1000`             | `DELETE` | `/api/v1/services/clinics/patientdrugs/delete` | `URL`  | `200` | `{"id":1000}`                        |
+
+#### reports [in clinic dashboard]
+| Description | Payload                     | Method   | endpoint                                  | Data   | Code  | Response                             |
+| ----------- | --------------------------- | -------- | ----------------------------------------- | ------ | ----- | ------------------------------------ |
+| Create      | [Create](#--create_reports) | `POST`   | `/api/v1/services/clinics/reports/create` | `body` | `200` | `{"id":1000}`                        |
+| Read        | [Read](#--read_reports)     | `POST`   | `/api/v1/services/clinics/reports/read`   | `body` | `200` | [Response](#--reports_read_response) |
+| Update      | [Update](#--update_reports) | `PUT`    | `/api/v1/services/clinics/reports/update` | `body` | `200` | `{"id":1000}`                        |
+| Delete      | `{url}?id=1000`             | `DELETE` | `/api/v1/services/clinics/reports/delete` | `URL`  | `200` | `{"id":1000}`                        |
+
+#### visits [in clinic dashboard]
+| Description | Payload                    | Method   | endpoint                                 | Data   | Code  | Response                            |
+| ----------- | -------------------------- | -------- | ---------------------------------------- | ------ | ----- | ----------------------------------- |
+| Create      | [Create](#--create_visits) | `POST`   | `/api/v1/services/clinics/visits/create` | `body` | `200` | `{"id":1000}`                       |
+| Read        | [Read](#--read_visits)     | `POST`   | `/api/v1/services/clinics/visits/read`   | `body` | `200` | [Response](#--visits_read_response) |
+| Update      | [Update](#--update_visits) | `PUT`    | `/api/v1/services/clinics/visits/update` | `body` | `200` | `{"id":1000}`                       |
+| Delete      | `{url}?id=1000`            | `DELETE` | `/api/v1/services/clinics/visits/delete` | `URL`  | `200` | `{"id":1000}`                       |
+
+#### requests [in clinic dashboard] ie lab or imaging
+| Description | Payload                 | Method   | endpoint                                   | Data   | Code  | Response                         |
+| ----------- | ----------------------- | -------- | ------------------------------------------ | ------ | ----- | -------------------------------- |
+| Create      | [Create](#--create_req) | `POST`   | `/api/v1/services/clinics/requests/create` | `body` | `200` | `{"id":1000}`                    |
+| Read        | [Read](#--read_req)     | `POST`   | `/api/v1/services/clinics/requests/read`   | `body` | `200` | [Response](#--req_read_response) |
+| Update      | [Update](#--update_req) | `PUT`    | `/api/v1/services/clinics/requests/update` | `body` | `200` | `{"id":1000}`                    |
+| Delete      | `{url}?id=1000`         | `DELETE` | `/api/v1/services/clinics/requests/delete` | `URL`  | `200` | `{"id":1000}`                    |
+
+#### visitdrugs [in clinic dashboard]
+| Description | Payload                 | Method   | endpoint                                   | Data   | Code  | Response                         |
+| ----------- | ----------------------- | -------- | ------------------------------------------ | ------ | ----- | -------------------------------- |
+| Create      | [Create](#--create_req) | `POST`   | `/api/v1/services/clinics/requests/create` | `body` | `200` | `{"id":1000}`                    |
+| Read        | [Read](#--read_req)     | `POST`   | `/api/v1/services/clinics/requests/read`   | `body` | `200` | [Response](#--req_read_response) |
+| Update      | [Update](#--update_req) | `PUT`    | `/api/v1/services/clinics/requests/update` | `body` | `200` | `{"id":1000}`                    |
+| Delete      | `{url}?id=1000`         | `DELETE` | `/api/v1/services/clinics/requests/delete` | `URL`  | `200` | `{"id":1000}`                    |
+
+#### Paid Services [in clinic dashboard]
+| Description | Payload                          | Method   | endpoint                                       | Data   | Code  | Response                                  |
+| ----------- | -------------------------------- | -------- | ---------------------------------------------- | ------ | ----- | ----------------------------------------- |
+| Create      | [Create](#--create_paidservices) | `POST`   | `/api/v1/services/clinics/paidservices/create` | `body` | `200` | `{"id":1000}`                             |
+| Read        | [Read](#--read_paidservices)     | `POST`   | `/api/v1/services/clinics/paidservices/read`   | `body` | `200` | [Response](#--paidservices_read_response) |
+| Update      | [Update](#--update_paidservices) | `PUT`    | `/api/v1/services/clinics/paidservices/update` | `body` | `200` | `{"id":1000}`                             |
+| Delete      | `{url}?id=1000`                  | `DELETE` | `/api/v1/services/clinics/paidservices/delete` | `URL`  | `200` | `{"id":1000}`                             |
+
+#### Prescriptions [in clinic dashboard]
+| Description | Payload                           | Method   | endpoint                                        | Data   | Code  | Response                                   |
+| ----------- | --------------------------------- | -------- | ----------------------------------------------- | ------ | ----- | ------------------------------------------ |
+| Create      | [Create](#--create_prescriptions) | `POST`   | `/api/v1/services/clinics/prescriptions/create` | `body` | `200` | `{"id":1000}`                              |
+| Read        | [Read](#--read_prescriptions)     | `POST`   | `/api/v1/services/clinics/prescriptions/read`   | `body` | `200` | [Response](#--prescriptions_read_response) |
+| Update      | [Update](#--update_prescriptions) | `PUT`    | `/api/v1/services/clinics/prescriptions/update` | `body` | `200` | `{"id":1000}`                              |
+| Delete      | `{url}?id=1000`                   | `DELETE` | `/api/v1/services/clinics/prescriptions/delete` | `URL`  | `200` | `{"id":1000}`                              |
 
 
 
+
+
+### Pharmacies
+| Description | Payload                        | Method   | endpoint                             | Data   | Code  | Response                                  |
+| ----------- | ------------------------------ | -------- | ------------------------------------ | ------ | ----- | ----------------------------------------- |
+| Create      | [Create](#--create_pharmacies) | `POST`   | `/api/v1/services/pharmacies/create` | `body` | `200` | `{"id":1000}`                             |
+| Read        | [Read](#--read_pharmacies)     | `POST`   | `/api/v1/services/pharmacies/read`   | `body` | `200` | [Response](#--pharmacies_read_response)   |
+| Update      | [Update](#--update_pharmacies) | `PUT`    | `/api/v1/services/pharmacies/update` | `body` | `200` | `{"id":1000}`                             |
+| Delete      | `{url}?id=1000`                | `DELETE` | `/api/v1/services/pharmacies/delete` | `URL`  | `200` | `{"id":1000}`                             |
+| Search      | [Search](#--search_pharmacies) | `POST`   | `/api/v1/services/pharmacies/search` | `body` | `200` | [Response](#--pharmacies_search_response) |
+
+
+### RadiologyCenters
+| Description | Payload                              | Method   | endpoint                                   | Data   | Code  | Response                                        |
+| ----------- | ------------------------------------ | -------- | ------------------------------------------ | ------ | ----- | ----------------------------------------------- |
+| Create      | [Create](#--create_radiologycenters) | `POST`   | `/api/v1/services/radiologycenters/create` | `body` | `200` | `{"id":1000}`                                   |
+| Read        | [Read](#--read_radiologycenters)     | `POST`   | `/api/v1/services/radiologycenters/read`   | `body` | `200` | [Response](#--radiologycenters_read_response)   |
+| Update      | [Update](#--update_radiologycenters) | `PUT`    | `/api/v1/services/radiologycenters/update` | `body` | `200` | `{"id":1000}`                                   |
+| Delete      | `{url}?id=1000`                      | `DELETE` | `/api/v1/services/radiologycenters/delete` | `URL`  | `200` | `{"id":1000}`                                   |
+| Search      | [Search](#--search_radiologycenters) | `POST`   | `/api/v1/services/radiologycenters/search` | `body` | `200` | [Response](#--radiologycenters_search_response) |
+
+
+### Laboratories
+| Description | Payload                          | Method   | endpoint                               | Data   | Code  | Response                                    |
+| ----------- | -------------------------------- | -------- | -------------------------------------- | ------ | ----- | ------------------------------------------- |
+| Create      | [Create](#--create_laboratories) | `POST`   | `/api/v1/services/laboratories/create` | `body` | `200` | `{"id":1000}`                               |
+| Read        | [Read](#--read_laboratories)     | `POST`   | `/api/v1/services/laboratories/read`   | `body` | `200` | [Response](#--laboratories_read_response)   |
+| Update      | [Update](#--update_laboratories) | `PUT`    | `/api/v1/services/laboratories/update` | `body` | `200` | `{"id":1000}`                               |
+| Delete      | `{url}?id=1000`                  | `DELETE` | `/api/v1/services/laboratories/delete` | `URL`  | `200` | `{"id":1000}`                               |
+| Search      | [Search](#--search_laboratories) | `POST`   | `/api/v1/services/laboratories/search` | `body` | `200` | [Response](#--laboratories_search_response) |
 
 
 ## Providers
-#### create_provider
+#### --create_provider
 ```
 {
   "avatar": "http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200",
@@ -36,7 +176,7 @@
 }
 ```
 
-#### login_provider
+#### --login_provider
 ```
 {
     "username" : "provider",
@@ -44,15 +184,29 @@
 }
 ```
 
-#### provider_login_response
+#### --provider_login_response
 ```
 {
     "group": "providers",
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MzI5NzU0MTIsImdyb3VwIjoicHJvdmlkZXJzIiwiaWF0IjoxNzMwMzgzNDEyLCJpc3MiOiJQcm9qZWN0VmFsaGFsbGEiLCJqdGkiOiIxMDAyIiwibGxvZHQiOiIyMDI0LTEwLTMxIDEyOjM0OjQ3KzAwIiwic3ViIjoicHJvdmlkZXIifQ.n39YGxac2iDJ0iBNCJ_LEOvsYMV0eOAdgeKNvOIb1wQ",
-    "user_id": 1002,
+    "user_id": 1000,
     "username": "provider"
 }
 ```
+#### --prov-sus-res
+```
+{
+    "active": false,
+    "id": 1000
+}
+```
+
+#### --prov-act-res
+```
+{
+    "active": true,
+    "id": 1000
+}
 
 
 
