@@ -1,3 +1,6 @@
+* fix integrity middleware
+* add jsons example + crate db for missing tables
+* Implement list appointment for user and service and provider
 * Implement readappointment by user_id and entity_id.
 * Implement middleware for appointment search by user_id or entity_id.
 * Implement GateKeeper middleware to check if user has access to a resource.
