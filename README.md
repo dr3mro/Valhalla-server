@@ -113,12 +113,12 @@
 | Delete      | `{url}?id=1000`                  | `DELETE` | `/api/v1/services/clinics/paidservices/delete` | `URL`  | `200` | `{"id":1000}`                             |
 
 #### Prescriptions [in clinic dashboard]
-| Description | Payload                           | Method   | endpoint                                        | Data   | Code  | Response                                   |
-| ----------- | --------------------------------- | -------- | ----------------------------------------------- | ------ | ----- | ------------------------------------------ |
-| Create      | [Create](#--create_prescriptions) | `POST`   | `/api/v1/services/clinics/prescriptions/create` | `body` | `200` | `{"id":1000}`                              |
-| Read        | [Read](#--read_prescriptions)     | `POST`   | `/api/v1/services/clinics/prescriptions/read`   | `body` | `200` | [Response](#--prescriptions_read_response) |
-| Update      | [Update](#--update_prescriptions) | `PUT`    | `/api/v1/services/clinics/prescriptions/update` | `body` | `200` | `{"id":1000}`                              |
-| Delete      | `{url}?id=1000`                   | `DELETE` | `/api/v1/services/clinics/prescriptions/delete` | `URL`  | `200` | `{"id":1000}`                              |
+| Description | Payload                           | Method   | endpoint                                        | Data   | Code  | Response                        |
+| ----------- | --------------------------------- | -------- | ----------------------------------------------- | ------ | ----- | ------------------------------- |
+| Create      | [Create](#--create_prescriptions) | `POST`   | `/api/v1/services/clinics/prescriptions/create` | `body` | `200` | `{"id":1000}`                   |
+| Read        | [Read](#--read_prescriptions)     | `POST`   | `/api/v1/services/clinics/prescriptions/read`   | `body` | `200` | [Response](#--rx_read_response) |
+| Update      | [Update](#--update_prescriptions) | `PUT`    | `/api/v1/services/clinics/prescriptions/update` | `body` | `200` | `{"id":1000}`                   |
+| Delete      | `{url}?id=1000`                   | `DELETE` | `/api/v1/services/clinics/prescriptions/delete` | `URL`  | `200` | `{"id":1000}`                   |
 
 
 
@@ -152,6 +152,70 @@
 | Update      | [Update](#--update_laboratories) | `PUT`    | `/api/v1/services/laboratories/update` | `body` | `200` | `{"id":1000}`                               |
 | Delete      | `{url}?id=1000`                  | `DELETE` | `/api/v1/services/laboratories/delete` | `URL`  | `200` | `{"id":1000}`                               |
 | Search      | [Search](#--search_laboratories) | `POST`   | `/api/v1/services/laboratories/search` | `body` | `200` | [Response](#--laboratories_search_response) |
+
+## Appointments
+### clinics
+| Description | Payload                          | Method   | endpoint                                       | Data   | Code  | Response                                  |
+| ----------- | -------------------------------- | -------- | ---------------------------------------------- | ------ | ----- | ----------------------------------------- |
+| Create      | [Create](#--create_appointments) | `POST`   | `/api/v1/services/clinics/appointments/create` | `body` | `200` | `{"id":1000}`                             |
+| Read        | [Read](#--read_appointments)     | `POST`   | `/api/v1/services/clinics/appointments/read`   | `body` | `200` | [Response](#--appointments_read_response) |
+| Update      | [Update](#--update_appointments) | `PUT`    | `/api/v1/services/clinics/appointments/update` | `body` | `200` | `{"id":1000}`                             |
+| Delete      | `{url}?id=1000`                  | `DELETE` | `/api/v1/services/clinics/appointments/delete` | `URL`  | `200` | `{"id":1000}`                             |
+
+### pharmacies
+| Description | Payload                          | Method   | endpoint                                          | Data   | Code  | Response                                  |
+| ----------- | -------------------------------- | -------- | ------------------------------------------------- | ------ | ----- | ----------------------------------------- |
+| Create      | [Create](#--create_appointments) | `POST`   | `/api/v1/services/pharmacies/appointments/create` | `body` | `200` | `{"id":1000}`                             |
+| Read        | [Read](#--read_appointments)     | `POST`   | `/api/v1/services/pharmacies/appointments/read`   | `body` | `200` | [Response](#--appointments_read_response) |
+| Update      | [Update](#--update_appointments) | `PUT`    | `/api/v1/services/pharmacies/appointments/update` | `body` | `200` | `{"id":1000}`                             |
+| Delete      | `{url}?id=1000`                  | `DELETE` | `/api/v1/services/pharmacies/appointments/delete` | `URL`  | `200` | `{"id":1000}`                             |
+
+### radiologycenters
+| Description | Payload                          | Method   | endpoint                                                | Data   | Code  | Response                                  |
+| ----------- | -------------------------------- | -------- | ------------------------------------------------------- | ------ | ----- | ----------------------------------------- |
+| Create      | [Create](#--create_appointments) | `POST`   | `/api/v1/services/radiologycenters/appointments/create` | `body` | `200` | `{"id":1000}`                             |
+| Read        | [Read](#--read_appointments)     | `POST`   | `/api/v1/services/radiologycenters/appointments/read`   | `body` | `200` | [Response](#--appointments_read_response) |
+| Update      | [Update](#--update_appointments) | `PUT`    | `/api/v1/services/radiologycenters/appointments/update` | `body` | `200` | `{"id":1000}`                             |
+| Delete      | `{url}?id=1000`                  | `DELETE` | `/api/v1/services/radiologycenters/appointments/delete` | `URL`  | `200` | `{"id":1000}`                             |
+
+### laboratories
+| Description | Payload                          | Method   | endpoint                                            | Data   | Code  | Response                                  |
+| ----------- | -------------------------------- | -------- | --------------------------------------------------- | ------ | ----- | ----------------------------------------- |
+| Create      | [Create](#--create_appointments) | `POST`   | `/api/v1/services/laboratories/appointments/create` | `body` | `200` | `{"id":1000}`                             |
+| Read        | [Read](#--read_appointments)     | `POST`   | `/api/v1/services/laboratories/appointments/read`   | `body` | `200` | [Response](#--appointments_read_response) |
+| Update      | [Update](#--update_appointments) | `PUT`    | `/api/v1/serivces/laboratories/appointments/update` | `body` | `200` | `{"id":1000}`                             |
+| Delete      | `{url}?id=1000`                  | `DELETE` | `/api/v1/services/laboratories/appointments/delete` | `URL`  | `200` | `{"id":1000}`                             |
+
+
+## Staff
+### clinics
+| Description | Payload                   | Method | endpoint                         | Data   | Code  | Response      |
+| ----------- | ------------------------- | ------ | -------------------------------- | ------ | ----- | ------------- |
+| invite      | [Create](#--create_staff) | `POST` | `/services/clinics/staff/invite` | `body` | `200` | `{"id":1000}` |
+| Add         | [Read](#--read_staff)     | `POST` | `/services/clinics/staff/add`    | `body` | `200` | `{"id":1000}` |
+| Remove      | [Remove](#--remove-staff) | `POST` | `/services/clinics/staff/remove` | `body` | `200` | `{"id":1000}` |
+
+### pharmacies
+| Description | Payload                   | Method | endpoint                            | Data   | Code  | Response      |
+| ----------- | ------------------------- | ------ | ----------------------------------- | ------ | ----- | ------------- |
+| invite      | [Create](#--create_staff) | `POST` | `/services/pharmacies/staff/invite` | `body` | `200` | `{"id":1000}` |
+| Add         | [Read](#--read_staff)     | `POST` | `/services/pharmacies/staff/add`    | `body` | `200` | `{"id":1000}` |
+| Remove      | [Remove](#--remove-staff) | `POST` | `/services/pharmacies/staff/remove` | `body` | `200` | `{"id":1000}` |
+
+### radiologycenters
+| Description | Payload                   | Method | endpoint                                  | Data   | Code  | Response      |
+| ----------- | ------------------------- | ------ | ----------------------------------------- | ------ | ----- | ------------- |
+| invite      | [Create](#--create_staff) | `POST` | `/services/radiologycenters/staff/invite` | `body` | `200` | `{"id":1000}` |
+| Add         | [Read](#--read_staff)     | `POST` | `/services/radiologycenters/staff/add`    | `body` | `200` | `{"id":1000}` |
+| Remove      | [Remove](#--remove-staff) | `POST` | `/services/radiologycenters/staff/remove` | `body` | `200` | `{"id":1000}` |
+
+### laboratories
+| Description | Payload                   | Method | endpoint                              | Data   | Code  | Response      |
+| ----------- | ------------------------- | ------ | ------------------------------------- | ------ | ----- | ------------- |
+| invite      | [Create](#--create_staff) | `POST` | `/services/laboratories/staff/invite` | `body` | `200` | `{"id":1000}` |
+| Add         | [Read](#--read_staff)     | `POST` | `/services/laboratories/staff/add`    | `body` | `200` | `{"id":1000}` |
+| Remove      | [Remove](#--remove-staff) | `POST` | `/services/laboratories/staff/remove` | `body` | `200` | `{"id":1000}` |
+
 
 
 ## Providers
