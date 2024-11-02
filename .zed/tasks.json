@@ -1,0 +1,189 @@
+[
+  {
+    "label": "Configure Debug (GCC)",
+    "command": "cmake",
+    "args": [
+      "-S",
+      ".",
+      "-B",
+      "build/debug",
+      "-DCMAKE_BUILD_TYPE=Debug",
+      "-DCMAKE_C_COMPILER=gcc",
+      "-DCMAKE_CXX_COMPILER=g++",
+      "-G",
+      "Ninja"
+    ],
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never",
+    "shell": "system",
+    "group": {
+      "kind": "configure",
+      "isDefault": true
+    }
+  },
+  {
+    "label": "Configure Release (GCC)",
+    "command": "cmake",
+    "args": [
+      "-S",
+      ".",
+      "-B",
+      "build/release",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DCMAKE_C_COMPILER=gcc",
+      "-DCMAKE_CXX_COMPILER=g++",
+      "-G",
+      "Ninja"
+    ],
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never",
+    "shell": "system",
+    "group": {
+      "kind": "configure"
+    }
+  },
+  {
+    "label": "Configure Debug (Clang)",
+    "command": "cmake",
+    "args": [
+      "-S",
+      ".",
+      "-B",
+      "build/debug",
+      "-DCMAKE_BUILD_TYPE=Debug",
+      "-DCMAKE_C_COMPILER=clang",
+      "-DCMAKE_CXX_COMPILER=clang++",
+      "-G",
+      "Ninja"
+    ],
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never",
+    "shell": "system",
+    "group": {
+      "kind": "configure"
+    }
+  },
+  {
+    "label": "Configure Release (Clang)",
+    "command": "cmake",
+    "args": [
+      "-S",
+      ".",
+      "-B",
+      "build/release",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DCMAKE_C_COMPILER=clang",
+      "-DCMAKE_CXX_COMPILER=clang++",
+      "-G",
+      "Ninja"
+    ],
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never",
+    "shell": "system",
+    "group": {
+      "kind": "configure"
+    }
+  },
+  {
+    "label": "Build Debug",
+    "command": "cmake",
+    "args": ["--build", "build/debug"],
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never",
+    "shell": "system",
+    "dependsOn": "Configure Debug (Clang)",
+    "group": {
+      "kind": "build"
+    }
+  },
+  {
+    "label": "Build Release",
+    "command": "cmake",
+    "args": ["--build", "build/release"],
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never",
+    "shell": "system",
+    "dependsOn": "Configure Release (Clang)",
+    "group": {
+      "kind": "build"
+    }
+  },
+  {
+    "label": "Run Debug",
+    "command": "${workspaceFolder}/build/debug/server", // Replace with your actual executable name
+    "args": [],
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never",
+    "shell": "system",
+    "group": {
+      "kind": "run"
+    }
+  },
+  {
+    "label": "Run Release",
+    "command": "${workspaceFolder}/build/release/server", // Replace with your actual executable name
+    "args": [],
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never",
+    "shell": "system",
+    "group": {
+      "kind": "run"
+    }
+  },
+  {
+    "label": "Debug (gdb)",
+    "command": "gdb",
+    "args": ["${workspaceFolder}/build/debug/server"],
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never",
+    "shell": "system",
+    "dependsOn": "Build Debug (GCC)",
+    "group": {
+      "kind": "debug"
+    }
+  },
+  {
+    "label": "Debug (lldb)",
+    "command": "lldb",
+    "args": ["${workspaceFolder}/build/debug/server"],
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never",
+    "shell": "system",
+    "group": {
+      "kind": "debug"
+    }
+  },
+  {
+    "label": "Clean Build Directory",
+    "command": "rm",
+    "args": ["-rf", "build/"],
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never",
+    "shell": "system",
+    "group": {
+      "kind": "clean"
+    }
+  }
+]
