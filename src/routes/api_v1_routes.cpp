@@ -1,5 +1,6 @@
 #include "api_v1_routes.hpp"
 
+#include "crow/common.h"
 #include "utils/resthelper/resthelper.hpp"
 
 // Define the base URL as a macro
@@ -271,9 +272,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
             [](const crow::request &req, crow::response &res)
             {
                 (void)req;
-                jsoncons::json reply;
-                reply["Message"] = "Welcome to ASGARD.";
-                RestHelper::successResponse(res, crow::status::OK, reply.to_string());
+                RestHelper::successResponseJsoned(res, crow::status::OK, "Welcome to ASGARD.");
             });
 
     // Catch-all route for unmatched paths
