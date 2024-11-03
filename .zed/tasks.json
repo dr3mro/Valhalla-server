@@ -1,6 +1,7 @@
 [
   {
     "label": "Configure Debug (GCC)",
+    "cwd": "$ZED_WORKTREE_ROOT",
     "command": "cmake",
     "args": [
       "-S",
@@ -13,18 +14,15 @@
       "-G",
       "Ninja"
     ],
-    "use_new_terminal": true,
+    "use_new_terminal": false,
     "allow_concurrent_runs": false,
     "reveal": "always",
-    "hide": "never",
-    "shell": "system",
-    "group": {
-      "kind": "configure",
-      "isDefault": true
-    }
+    "hide": "on_success",
+    "shell": "system"
   },
   {
     "label": "Configure Release (GCC)",
+    "cwd": "$ZED_WORKTREE_ROOT",
     "command": "cmake",
     "args": [
       "-S",
@@ -40,14 +38,12 @@
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
     "reveal": "always",
-    "hide": "never",
-    "shell": "system",
-    "group": {
-      "kind": "configure"
-    }
+    "hide": "on_success",
+    "shell": "system"
   },
   {
     "label": "Configure Debug (Clang)",
+    "cwd": "$ZED_WORKTREE_ROOT",
     "command": "cmake",
     "args": [
       "-S",
@@ -63,14 +59,12 @@
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
     "reveal": "always",
-    "hide": "never",
-    "shell": "system",
-    "group": {
-      "kind": "configure"
-    }
+    "hide": "on_success",
+    "shell": "system"
   },
   {
     "label": "Configure Release (Clang)",
+    "cwd": "$ZED_WORKTREE_ROOT",
     "command": "cmake",
     "args": [
       "-S",
@@ -86,104 +80,84 @@
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
     "reveal": "always",
-    "hide": "never",
-    "shell": "system",
-    "group": {
-      "kind": "configure"
-    }
+    "hide": "on_success",
+    "shell": "system"
   },
   {
     "label": "Build Debug",
     "command": "cmake",
+    "cwd": "$ZED_WORKTREE_ROOT",
     "args": ["--build", "build/debug"],
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
     "reveal": "always",
-    "hide": "never",
-    "shell": "system",
-    "dependsOn": "Configure Debug (Clang)",
-    "group": {
-      "kind": "build"
-    }
+    "hide": "on_success",
+    "shell": "system"
   },
   {
     "label": "Build Release",
     "command": "cmake",
+    "cwd": "$ZED_WORKTREE_ROOT",
     "args": ["--build", "build/release"],
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
     "reveal": "always",
-    "hide": "never",
-    "shell": "system",
-    "dependsOn": "Configure Release (Clang)",
-    "group": {
-      "kind": "build"
-    }
+    "hide": "on_success",
+    "shell": "system"
   },
   {
     "label": "Run Debug",
-    "command": "${workspaceFolder}/build/debug/server", // Replace with your actual executable name
+    "command": "${ZED_WORKTREE_ROOT}/build/debug/server", // Replace with your actual executable name
+    "cwd": "$ZED_WORKTREE_ROOT",
     "args": [],
-    "use_new_terminal": true,
+    "use_new_terminal": false,
     "allow_concurrent_runs": false,
     "reveal": "always",
-    "hide": "never",
-    "shell": "system",
-    "group": {
-      "kind": "run"
-    }
+    "hide": "on_success",
+    "shell": "system"
   },
   {
     "label": "Run Release",
-    "command": "${workspaceFolder}/build/release/server", // Replace with your actual executable name
+    "command": "${ZED_WORKTREE_ROOT}/build/release/server", // Replace with your actual executable name
+    "cwd": "$ZED_WORKTREE_ROOT",
     "args": [],
-    "use_new_terminal": true,
+    "use_new_terminal": false,
     "allow_concurrent_runs": false,
     "reveal": "always",
-    "hide": "never",
-    "shell": "system",
-    "group": {
-      "kind": "run"
-    }
+    "hide": "on_success",
+    "shell": "system"
   },
   {
     "label": "Debug (gdb)",
     "command": "gdb",
-    "args": ["${workspaceFolder}/build/debug/server"],
-    "use_new_terminal": true,
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "args": ["${ZED_WORKTREE_ROOT}/build/debug/server"],
+    "use_new_terminal": false,
     "allow_concurrent_runs": false,
     "reveal": "always",
-    "hide": "never",
-    "shell": "system",
-    "dependsOn": "Build Debug (GCC)",
-    "group": {
-      "kind": "debug"
-    }
+    "hide": "on_success",
+    "shell": "system"
   },
   {
     "label": "Debug (lldb)",
-    "command": "lldb",
-    "args": ["${workspaceFolder}/build/debug/server"],
-    "use_new_terminal": true,
+    "command": "sudo lldb",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "args": ["$ZED_WORKTREE_ROOT/build/debug/server"],
+    "use_new_terminal": false,
     "allow_concurrent_runs": false,
     "reveal": "always",
-    "hide": "never",
-    "shell": "system",
-    "group": {
-      "kind": "debug"
-    }
+    "hide": "on_success",
+    "shell": "system"
   },
   {
     "label": "Clean Build Directory",
+    "cwd": "$ZED_WORKTREE_ROOT",
     "command": "rm",
     "args": ["-rf", "build/"],
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
     "reveal": "always",
-    "hide": "never",
-    "shell": "system",
-    "group": {
-      "kind": "clean"
-    }
+    "hide": "on_success",
+    "shell": "system"
   }
 ]
