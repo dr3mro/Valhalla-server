@@ -9,7 +9,7 @@ using json = jsoncons::json;
 class Prescriptions : public Entity
 {
    private:
-    static constexpr auto TABLENAME = "prescriptions";
+    static constexpr auto TABLENAME = "clinics_prescriptions";
 
    public:
     Prescriptions() : Entity(TABLENAME) {}
