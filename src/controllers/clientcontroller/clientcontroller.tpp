@@ -110,7 +110,7 @@ std::optional<uint64_t> ClientController<T>::Login(const crow::request& req, cro
         json token_object;
         token_object["token"]    = tokenManager->GenerateToken(loggedUserInfo);
         token_object["username"] = creds.username;
-        token_object["user_id"]  = client_id;
+        token_object["client_id"]  = client_id;
         token_object["group"]    = loggedUserInfo.group;
 
         token_object.dump_pretty(reponse_string);
