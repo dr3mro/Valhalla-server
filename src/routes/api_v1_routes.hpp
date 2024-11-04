@@ -39,7 +39,7 @@
 #include "utils/resthelper/resthelper.hpp"
 
 using APP =
-    crow::App<crow::CORSHandler, RateLimit, ElapsedTime, Authentication, Authorization, PathParameter, XRequest, Search, DataIntegrity, BRequest>;
+    crow::App<crow::CORSHandler, RateLimit, ElapsedTime, PathParameter, XRequest, BRequest, Authentication, Authorization, Search, DataIntegrity>;
 
 class API_V1_Routes
 {

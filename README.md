@@ -3,7 +3,7 @@
 | Description | Payload                      | Method   | endpoint                             | Data   | Code  | Response                                  |
 | ----------- | ---------------------------- | -------- | ------------------------------------ | ------ | ----- | ----------------------------------------- |
 | Create      | [Create](#--create-provider) | `POST`   | `/api/v1/clients/providers/create`   | `body` | `200` | `{"id":1000}`                             |
-| Read        | [Read](#--read_provider)     | `POST`   | `/api/v1/clients/providers/read`     | `body` | `200` | [Response](#--provider_read_response)     |
+| Read        | [Read](#--read-provider)     | `POST`   | `/api/v1/clients/providers/read`     | `body` | `200` | [Response](#--provider_read_response)     |
 | Update      | [Update](#--update_provider) | `PUT`    | `/api/v1/clients/providers/update`   | `body` | `200` | `{"id":1000}`                             |
 | Delete      | `{url}?id=1000`              | `DELETE` | `/api/v1/clients/providers/delete`   | `URL`  | `200` | `{"id":1000}`                             |
 | Search      | [Search](#--search_provider) | `POST`   | `/api/v1/clients/providers/search`   | `body` | `200` | [Response](#--provider_search_response)   |
@@ -269,7 +269,14 @@
     "username": "provider"
 }
 ```
+#### --read-provider
+```
+{
+  "id": 1000,
+  "schema": []
+}
 
+```
 #### --prov-sus-res
 
 ```
