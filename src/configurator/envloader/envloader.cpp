@@ -2,8 +2,6 @@
 
 #include <fmt/core.h>
 
-#include <functional>
-#include <iostream>
 #include <sstream>
 #include <thread>
 

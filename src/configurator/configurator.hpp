@@ -191,10 +191,9 @@ class Configurator
 
         EmailSenderConfig()
         {
-            host = getEnvironmentVariable(std::string_view("EMAIL_SENDER_HOST"), Defaults::EmailSenderDaemon::HOST_);
-            port = getEnvironmentVariable(std::string_view("EMAIL_SENDER_PORT"), Defaults::EmailSenderDaemon::PORT_);
-            message_queue_path =
-                getEnvironmentVariable(std::string_view("EMAIL_SENDER_QUEUE_PATH"), Defaults::EmailSenderDaemon::QUEUE_PATH_);
+            host               = getEnvironmentVariable(std::string_view("EMAIL_SENDER_HOST"), Defaults::EmailSenderDaemon::HOST_);
+            port               = getEnvironmentVariable(std::string_view("EMAIL_SENDER_PORT"), Defaults::EmailSenderDaemon::PORT_);
+            message_queue_path = getEnvironmentVariable(std::string_view("EMAIL_SENDER_QUEUE_PATH"), Defaults::EmailSenderDaemon::QUEUE_PATH_);
         }
 
         void printValues() const override

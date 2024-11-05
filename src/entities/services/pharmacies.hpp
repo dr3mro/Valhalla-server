@@ -2,20 +2,20 @@
 
 #include <jsoncons/json.hpp>
 
-#include "entities/base/entity.hpp"
+#include "entities/base/service.hpp"
 
 using json = jsoncons::json;
 
-class Pharmacies : public Entity
+class Pharmacies : public Service
 {
    private:
     static constexpr auto TABLENAME = "pharmacies";
 
    public:
-    Pharmacies() : Entity(TABLENAME) {}
+    Pharmacies() : Service(TABLENAME) {}
 
     template <typename T>
-    Pharmacies(const T &_data) : Entity(_data, TABLENAME)
+    Pharmacies(const T &_data) : Service(_data, TABLENAME)
     {
     }
     std::string getTableName() { return TABLENAME; }

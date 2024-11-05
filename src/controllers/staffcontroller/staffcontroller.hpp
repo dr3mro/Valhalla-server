@@ -2,7 +2,6 @@
 #pragma once
 #include <fmt/format.h>
 
-#include <functional>
 #include <jsoncons/json.hpp>
 
 #include "controllers/base/controller/controller.hpp"
@@ -37,9 +36,9 @@ void StaffController<T>::AddStaffToEntity(const crow::request &req, crow::respon
     json response;
     try
     {
-        json              data(body);
-        json              payload = data.at("payload");
-        Entity::StaffData staffData(payload);
+        json                  data(body);
+        json                  payload = data.at("payload");
+        typename T::StaffData staffData(payload);
 
         T service(staffData);
         Controller::addStaff(res, service);
@@ -57,9 +56,9 @@ void StaffController<T>::RemoveStaffFromEntity(const crow::request &req, crow::r
         json response;
         try
         {
-            json              data(body);
-            json              payload = data.at("payload");
-            Entity::StaffData staffData(payload);
+            json                  data(body);
+            json                  payload = data.at("payload");
+            typename T::StaffData staffData(payload);
 
             T service(staffData);
             Controller::removeStaff(res, service);
@@ -78,7 +77,7 @@ void StaffController<T>::InviteStaffToEntity(const crow::request &req, crow::res
     try
     {
         json                       data(body);
-        Entity::StaffData          staffData(data);
+        typename T::StaffData      staffData(data);
         std::optional<std::string> response;
         T                          service(staffData);
         if (staffData.parse_status && staffData.toInviteJson(data))
