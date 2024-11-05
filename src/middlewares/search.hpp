@@ -5,8 +5,8 @@
 
 #include <jsoncons/json.hpp>
 
+#include "brequest.hpp"
 #include "utils/resthelper/resthelper.hpp"
-#include "xrequest.hpp"
 struct Search : crow::ILocalMiddleware
 {
     struct context
@@ -15,11 +15,11 @@ struct Search : crow::ILocalMiddleware
     };
     Search()  = default;
     ~Search() = default;
-    template <typename XRequestContext>
-    void before_handle(crow::request &req, crow::response &res, context &ctx, XRequestContext &xrequest_ctx)
+    template <typename BRequestContext>
+    void before_handle(crow::request &req, crow::response &res, context &ctx, BRequestContext &brequest_ctx)
     {
         (void)req;
-        ctx.search_json = xrequest_ctx.template get<XRequest>().criteria;
+        ctx.search_json = brequest_ctx.template get<BRequest>().payload;
 
         try
         {

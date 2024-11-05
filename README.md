@@ -1,3 +1,303 @@
+## Providers
+
+| Description | Payload                      | Method   | endpoint                             | Data   | Code  | Response                                  |
+| ----------- | ---------------------------- | -------- | ------------------------------------ | ------ | ----- | ----------------------------------------- |
+| Create      | [Create](#--create-provider) | `POST`   | `/api/v1/clients/providers/create`   | `body` | `200` | `{"id":1000}`                             |
+| Read        | [Read](#--read-provider)     | `POST`   | `/api/v1/clients/providers/read`     | `body` | `200` | [Response](#--provider_read_response)     |
+| Update      | [Update](#--update_provider) | `PUT`    | `/api/v1/clients/providers/update`   | `body` | `200` | `{"id":1000}`                             |
+| Delete      | `{url}?id=1000`              | `DELETE` | `/api/v1/clients/providers/delete`   | `URL`  | `200` | `{"id":1000}`                             |
+| Search      | [Search](#--search_provider) | `POST`   | `/api/v1/clients/providers/search`   | `body` | `200` | [Response](#--provider_search_response)   |
+| Login       | [Login](#--login_provider)   | `POST`   | `/api/v1/clients/providers/login`    | `body` | `200` | [Response](#--provider_login_response)    |
+| Logout      | `NA`                         | `POST`   | `/api/v1/clients/providers/logout`   | `NA`   | `200` | `{ "message" : "Logout success" }`        |
+| Suspend     | `{url}?id=1000`              | `POST`   | `/api/v1/clients/providers/suspend`  | `URL`  | `200` | [Response](#--prov-sus-res)               |
+| Activate    | `{url}?id=1000`              | `POST`   | `/api/v1/clients/providers/activate` | `URL`  | `200` | [Response](#--prov-act-res)               |
+| Services    | `NA`                         | `GET`    | `/api/v1/clients/providers/services` | `NA`   | `200` | [Response](#--provider_services_response) |
+
+## Users
+
+| Description | Payload                  | Method   | endpoint                         | Data   | Code  | Response                               |
+| ----------- | ------------------------ | -------- | -------------------------------- | ------ | ----- | -------------------------------------- |
+| Create      | [Create](#--create_user) | `POST`   | `/api/v1/clients/users/create`   | `body` | `200` | `{"id":1000}`                          |
+| Read        | [Read](#--read_user)     | `POST`   | `/api/v1/clients/users/read`     | `body` | `200` | [Response](#--users_read_response)     |
+| Update      | [Update](#--update_user) | `PUT`    | `/api/v1/clients/users/update`   | `body` | `200` | `{"id":1000}`                          |
+| Delete      | `{url}?id=1000`          | `DELETE` | `/api/v1/clients/users/delete`   | `URL`  | `200` | `{"id":1000}`                          |
+| Search      | [Search](#--search_user) | `POST`   | `/api/v1/clients/users/search`   | `body` | `200` | [Response](#--users_search_response)   |
+| Login       | [Login](#--login_user)   | `POST`   | `/api/v1/clients/users/login`    | `body` | `200` | [Response](#--users_login_response)    |
+| Logout      | `NA`                     | `POST`   | `/api/v1/clients/users/logout`   | `NA`   | `200` | `{ "message" : "Logout success" }`     |
+| Suspend     | `{url}?id=1000`          | `POST`   | `/api/v1/clients/users/suspend`  | `URL`  | `200` | [Response](#--users-sus-res)           |
+| Activate    | `{url}?id=1000`          | `POST`   | `/api/v1/clients/users/activate` | `URL`  | `200` | [Response](#--users-act-res)           |
+| Services    | `NA`                     | `GET`    | `/api/v1/clients/users/services` | `NA`   | `200` | [Response](#--users_services_response) |
+
+## Services
+
+### Clinics
+
+| Description | Payload                     | Method   | endpoint                          | Data   | Code  | Response                               |
+| ----------- | --------------------------- | -------- | --------------------------------- | ------ | ----- | -------------------------------------- |
+| Create      | [Create](#--create_clinics) | `POST`   | `/api/v1/services/clinics/create` | `body` | `200` | `{"id":1000}`                          |
+| Read        | [Read](#--read_clinics)     | `POST`   | `/api/v1/services/clinics/read`   | `body` | `200` | [Response](#--clinics_read_response)   |
+| Update      | [Update](#--update_clinics) | `PUT`    | `/api/v1/services/clinics/update` | `body` | `200` | `{"id":1000}`                          |
+| Delete      | `{url}?id=1000`             | `DELETE` | `/api/v1/services/clinics/delete` | `URL`  | `200` | `{"id":1000}`                          |
+| Search      | [Search](#--search_clinics) | `POST`   | `/api/v1/services/clinics/search` | `body` | `200` | [Response](#--clinics_search_response) |
+
+#### patient [in clinic dashboard]
+
+| Description | Payload                     | Method   | endpoint                                   | Data   | Code  | Response                                 |
+| ----------- | --------------------------- | -------- | ------------------------------------------ | ------ | ----- | ---------------------------------------- |
+| Create      | [Create](#--create_patient) | `POST`   | `/api/v1/services/clinics/patients/create` | `body` | `200` | `{"id":1000}`                            |
+| Read        | [Read](#--read_patient)     | `POST`   | `/api/v1/services/clinics/patients/read`   | `body` | `200` | [Response](#--patient_read_response)     |
+| Update      | [Update](#--update_patient) | `PUT`    | `/api/v1/services/clinics/patients/update` | `body` | `200` | `{"id":1000}`                            |
+| Delete      | `{url}?id=1000`             | `DELETE` | `/api/v1/services/clinics/patients/delete` | `URL`  | `200` | `{"id":1000}`                            |
+| Search      | [Search](#--search_patient) | `POST`   | `/api/v1/services/clinics/patients/search` | `body` | `200` | [Response](#--patient_search_response)   |
+| Visits      | `{url}?id=1000`             | `GET`    | `/services/clinics/patients/getvisits`     | `URL`  | `200` | [Response](#--patient_services_response) |
+
+#### health [in clinic dashboard]
+
+| Description | Payload                    | Method   | endpoint                                 | Data   | Code  | Response                            |
+| ----------- | -------------------------- | -------- | ---------------------------------------- | ------ | ----- | ----------------------------------- |
+| Create      | [Create](#--create_health) | `POST`   | `/api/v1/services/clinics/health/create` | `body` | `200` | `{"id":1000}`                       |
+| Read        | [Read](#--read_health)     | `POST`   | `/api/v1/services/clinics/health/read`   | `body` | `200` | [Response](#--health_read_response) |
+| Update      | [Update](#--update_health) | `PUT`    | `/api/v1/services/clinics/health/update` | `body` | `200` | `{"id":1000}`                       |
+| Delete      | `{url}?id=1000`            | `DELETE` | `/api/v1/services/clinics/health/delete` | `URL`  | `200` | `{"id":1000}`                       |
+
+#### patientdrugs [in clinic dashboard]
+
+| Description | Payload                     | Method   | endpoint                                       | Data   | Code  | Response                             |
+| ----------- | --------------------------- | -------- | ---------------------------------------------- | ------ | ----- | ------------------------------------ |
+| Create      | [Create](#--create_ptdrugs) | `POST`   | `/api/v1/services/clinics/patientdrugs/create` | `body` | `200` | `{"id":1000}`                        |
+| Read        | [Read](#--read_ptdrugs)     | `POST`   | `/api/v1/services/clinics/patientdrugs/read`   | `body` | `200` | [Response](#--ptdrugs_read_response) |
+| Update      | [Update](#--update_ptdrugs) | `PUT`    | `/api/v1/services/clinics/patientdrugs/update` | `body` | `200` | `{"id":1000}`                        |
+| Delete      | `{url}?id=1000`             | `DELETE` | `/api/v1/services/clinics/patientdrugs/delete` | `URL`  | `200` | `{"id":1000}`                        |
+
+#### reports [in clinic dashboard]
+
+| Description | Payload                     | Method   | endpoint                                  | Data   | Code  | Response                             |
+| ----------- | --------------------------- | -------- | ----------------------------------------- | ------ | ----- | ------------------------------------ |
+| Create      | [Create](#--create_reports) | `POST`   | `/api/v1/services/clinics/reports/create` | `body` | `200` | `{"id":1000}`                        |
+| Read        | [Read](#--read_reports)     | `POST`   | `/api/v1/services/clinics/reports/read`   | `body` | `200` | [Response](#--reports_read_response) |
+| Update      | [Update](#--update_reports) | `PUT`    | `/api/v1/services/clinics/reports/update` | `body` | `200` | `{"id":1000}`                        |
+| Delete      | `{url}?id=1000`             | `DELETE` | `/api/v1/services/clinics/reports/delete` | `URL`  | `200` | `{"id":1000}`                        |
+
+#### visits [in clinic dashboard]
+
+| Description | Payload                    | Method   | endpoint                                 | Data   | Code  | Response                            |
+| ----------- | -------------------------- | -------- | ---------------------------------------- | ------ | ----- | ----------------------------------- |
+| Create      | [Create](#--create_visits) | `POST`   | `/api/v1/services/clinics/visits/create` | `body` | `200` | `{"id":1000}`                       |
+| Read        | [Read](#--read_visits)     | `POST`   | `/api/v1/services/clinics/visits/read`   | `body` | `200` | [Response](#--visits_read_response) |
+| Update      | [Update](#--update_visits) | `PUT`    | `/api/v1/services/clinics/visits/update` | `body` | `200` | `{"id":1000}`                       |
+| Delete      | `{url}?id=1000`            | `DELETE` | `/api/v1/services/clinics/visits/delete` | `URL`  | `200` | `{"id":1000}`                       |
+
+#### requests [in clinic dashboard] ie lab or imaging
+
+| Description | Payload                 | Method   | endpoint                                   | Data   | Code  | Response                         |
+| ----------- | ----------------------- | -------- | ------------------------------------------ | ------ | ----- | -------------------------------- |
+| Create      | [Create](#--create_req) | `POST`   | `/api/v1/services/clinics/requests/create` | `body` | `200` | `{"id":1000}`                    |
+| Read        | [Read](#--read_req)     | `POST`   | `/api/v1/services/clinics/requests/read`   | `body` | `200` | [Response](#--req_read_response) |
+| Update      | [Update](#--update_req) | `PUT`    | `/api/v1/services/clinics/requests/update` | `body` | `200` | `{"id":1000}`                    |
+| Delete      | `{url}?id=1000`         | `DELETE` | `/api/v1/services/clinics/requests/delete` | `URL`  | `200` | `{"id":1000}`                    |
+
+#### visitdrugs [in clinic dashboard]
+
+| Description | Payload                 | Method   | endpoint                                   | Data   | Code  | Response                         |
+| ----------- | ----------------------- | -------- | ------------------------------------------ | ------ | ----- | -------------------------------- |
+| Create      | [Create](#--create_req) | `POST`   | `/api/v1/services/clinics/requests/create` | `body` | `200` | `{"id":1000}`                    |
+| Read        | [Read](#--read_req)     | `POST`   | `/api/v1/services/clinics/requests/read`   | `body` | `200` | [Response](#--req_read_response) |
+| Update      | [Update](#--update_req) | `PUT`    | `/api/v1/services/clinics/requests/update` | `body` | `200` | `{"id":1000}`                    |
+| Delete      | `{url}?id=1000`         | `DELETE` | `/api/v1/services/clinics/requests/delete` | `URL`  | `200` | `{"id":1000}`                    |
+
+#### Paid Services [in clinic dashboard]
+
+| Description | Payload                          | Method   | endpoint                                       | Data   | Code  | Response                                  |
+| ----------- | -------------------------------- | -------- | ---------------------------------------------- | ------ | ----- | ----------------------------------------- |
+| Create      | [Create](#--create_paidservices) | `POST`   | `/api/v1/services/clinics/paidservices/create` | `body` | `200` | `{"id":1000}`                             |
+| Read        | [Read](#--read_paidservices)     | `POST`   | `/api/v1/services/clinics/paidservices/read`   | `body` | `200` | [Response](#--paidservices_read_response) |
+| Update      | [Update](#--update_paidservices) | `PUT`    | `/api/v1/services/clinics/paidservices/update` | `body` | `200` | `{"id":1000}`                             |
+| Delete      | `{url}?id=1000`                  | `DELETE` | `/api/v1/services/clinics/paidservices/delete` | `URL`  | `200` | `{"id":1000}`                             |
+
+#### Prescriptions [in clinic dashboard]
+
+| Description | Payload                           | Method   | endpoint                                        | Data   | Code  | Response                        |
+| ----------- | --------------------------------- | -------- | ----------------------------------------------- | ------ | ----- | ------------------------------- |
+| Create      | [Create](#--create_prescriptions) | `POST`   | `/api/v1/services/clinics/prescriptions/create` | `body` | `200` | `{"id":1000}`                   |
+| Read        | [Read](#--read_prescriptions)     | `POST`   | `/api/v1/services/clinics/prescriptions/read`   | `body` | `200` | [Response](#--rx_read_response) |
+| Update      | [Update](#--update_prescriptions) | `PUT`    | `/api/v1/services/clinics/prescriptions/update` | `body` | `200` | `{"id":1000}`                   |
+| Delete      | `{url}?id=1000`                   | `DELETE` | `/api/v1/services/clinics/prescriptions/delete` | `URL`  | `200` | `{"id":1000}`                   |
+
+### Pharmacies
+
+| Description | Payload                        | Method   | endpoint                             | Data   | Code  | Response                                  |
+| ----------- | ------------------------------ | -------- | ------------------------------------ | ------ | ----- | ----------------------------------------- |
+| Create      | [Create](#--create_pharmacies) | `POST`   | `/api/v1/services/pharmacies/create` | `body` | `200` | `{"id":1000}`                             |
+| Read        | [Read](#--read_pharmacies)     | `POST`   | `/api/v1/services/pharmacies/read`   | `body` | `200` | [Response](#--pharmacies_read_response)   |
+| Update      | [Update](#--update_pharmacies) | `PUT`    | `/api/v1/services/pharmacies/update` | `body` | `200` | `{"id":1000}`                             |
+| Delete      | `{url}?id=1000`                | `DELETE` | `/api/v1/services/pharmacies/delete` | `URL`  | `200` | `{"id":1000}`                             |
+| Search      | [Search](#--search_pharmacies) | `POST`   | `/api/v1/services/pharmacies/search` | `body` | `200` | [Response](#--pharmacies_search_response) |
+
+### RadiologyCenters
+
+| Description | Payload                              | Method   | endpoint                                   | Data   | Code  | Response                                        |
+| ----------- | ------------------------------------ | -------- | ------------------------------------------ | ------ | ----- | ----------------------------------------------- |
+| Create      | [Create](#--create_radiologycenters) | `POST`   | `/api/v1/services/radiologycenters/create` | `body` | `200` | `{"id":1000}`                                   |
+| Read        | [Read](#--read_radiologycenters)     | `POST`   | `/api/v1/services/radiologycenters/read`   | `body` | `200` | [Response](#--radiologycenters_read_response)   |
+| Update      | [Update](#--update_radiologycenters) | `PUT`    | `/api/v1/services/radiologycenters/update` | `body` | `200` | `{"id":1000}`                                   |
+| Delete      | `{url}?id=1000`                      | `DELETE` | `/api/v1/services/radiologycenters/delete` | `URL`  | `200` | `{"id":1000}`                                   |
+| Search      | [Search](#--search_radiologycenters) | `POST`   | `/api/v1/services/radiologycenters/search` | `body` | `200` | [Response](#--radiologycenters_search_response) |
+
+### Laboratories
+
+| Description | Payload                          | Method   | endpoint                               | Data   | Code  | Response                                    |
+| ----------- | -------------------------------- | -------- | -------------------------------------- | ------ | ----- | ------------------------------------------- |
+| Create      | [Create](#--create_laboratories) | `POST`   | `/api/v1/services/laboratories/create` | `body` | `200` | `{"id":1000}`                               |
+| Read        | [Read](#--read_laboratories)     | `POST`   | `/api/v1/services/laboratories/read`   | `body` | `200` | [Response](#--laboratories_read_response)   |
+| Update      | [Update](#--update_laboratories) | `PUT`    | `/api/v1/services/laboratories/update` | `body` | `200` | `{"id":1000}`                               |
+| Delete      | `{url}?id=1000`                  | `DELETE` | `/api/v1/services/laboratories/delete` | `URL`  | `200` | `{"id":1000}`                               |
+| Search      | [Search](#--search_laboratories) | `POST`   | `/api/v1/services/laboratories/search` | `body` | `200` | [Response](#--laboratories_search_response) |
+
+## Appointments
+
+### clinics
+
+| Description | Payload                          | Method   | endpoint                                       | Data   | Code  | Response                                  |
+| ----------- | -------------------------------- | -------- | ---------------------------------------------- | ------ | ----- | ----------------------------------------- |
+| Create      | [Create](#--create_appointments) | `POST`   | `/api/v1/services/clinics/appointments/create` | `body` | `200` | `{"id":1000}`                             |
+| Read        | [Read](#--read_appointments)     | `POST`   | `/api/v1/services/clinics/appointments/read`   | `body` | `200` | [Response](#--appointments_read_response) |
+| Update      | [Update](#--update_appointments) | `PUT`    | `/api/v1/services/clinics/appointments/update` | `body` | `200` | `{"id":1000}`                             |
+| Delete      | `{url}?id=1000`                  | `DELETE` | `/api/v1/services/clinics/appointments/delete` | `URL`  | `200` | `{"id":1000}`                             |
+
+### pharmacies
+
+| Description | Payload                          | Method   | endpoint                                          | Data   | Code  | Response                                  |
+| ----------- | -------------------------------- | -------- | ------------------------------------------------- | ------ | ----- | ----------------------------------------- |
+| Create      | [Create](#--create_appointments) | `POST`   | `/api/v1/services/pharmacies/appointments/create` | `body` | `200` | `{"id":1000}`                             |
+| Read        | [Read](#--read_appointments)     | `POST`   | `/api/v1/services/pharmacies/appointments/read`   | `body` | `200` | [Response](#--appointments_read_response) |
+| Update      | [Update](#--update_appointments) | `PUT`    | `/api/v1/services/pharmacies/appointments/update` | `body` | `200` | `{"id":1000}`                             |
+| Delete      | `{url}?id=1000`                  | `DELETE` | `/api/v1/services/pharmacies/appointments/delete` | `URL`  | `200` | `{"id":1000}`                             |
+
+### radiologycenters
+
+| Description | Payload                          | Method   | endpoint                                                | Data   | Code  | Response                                  |
+| ----------- | -------------------------------- | -------- | ------------------------------------------------------- | ------ | ----- | ----------------------------------------- |
+| Create      | [Create](#--create_appointments) | `POST`   | `/api/v1/services/radiologycenters/appointments/create` | `body` | `200` | `{"id":1000}`                             |
+| Read        | [Read](#--read_appointments)     | `POST`   | `/api/v1/services/radiologycenters/appointments/read`   | `body` | `200` | [Response](#--appointments_read_response) |
+| Update      | [Update](#--update_appointments) | `PUT`    | `/api/v1/services/radiologycenters/appointments/update` | `body` | `200` | `{"id":1000}`                             |
+| Delete      | `{url}?id=1000`                  | `DELETE` | `/api/v1/services/radiologycenters/appointments/delete` | `URL`  | `200` | `{"id":1000}`                             |
+
+### laboratories
+
+| Description | Payload                          | Method   | endpoint                                            | Data   | Code  | Response                                  |
+| ----------- | -------------------------------- | -------- | --------------------------------------------------- | ------ | ----- | ----------------------------------------- |
+| Create      | [Create](#--create_appointments) | `POST`   | `/api/v1/services/laboratories/appointments/create` | `body` | `200` | `{"id":1000}`                             |
+| Read        | [Read](#--read_appointments)     | `POST`   | `/api/v1/services/laboratories/appointments/read`   | `body` | `200` | [Response](#--appointments_read_response) |
+| Update      | [Update](#--update_appointments) | `PUT`    | `/api/v1/serivces/laboratories/appointments/update` | `body` | `200` | `{"id":1000}`                             |
+| Delete      | `{url}?id=1000`                  | `DELETE` | `/api/v1/services/laboratories/appointments/delete` | `URL`  | `200` | `{"id":1000}`                             |
+
+## Staff
+
+### clinics
+
+| Description | Payload                   | Method | endpoint                         | Data   | Code  | Response      |
+| ----------- | ------------------------- | ------ | -------------------------------- | ------ | ----- | ------------- |
+| invite      | [Create](#--create_staff) | `POST` | `/services/clinics/staff/invite` | `body` | `200` | `{"id":1000}` |
+| Add         | [Read](#--read_staff)     | `POST` | `/services/clinics/staff/add`    | `body` | `200` | `{"id":1000}` |
+| Remove      | [Remove](#--remove-staff) | `POST` | `/services/clinics/staff/remove` | `body` | `200` | `{"id":1000}` |
+
+### pharmacies
+
+| Description | Payload                   | Method | endpoint                            | Data   | Code  | Response      |
+| ----------- | ------------------------- | ------ | ----------------------------------- | ------ | ----- | ------------- |
+| invite      | [Create](#--create_staff) | `POST` | `/services/pharmacies/staff/invite` | `body` | `200` | `{"id":1000}` |
+| Add         | [Read](#--read_staff)     | `POST` | `/services/pharmacies/staff/add`    | `body` | `200` | `{"id":1000}` |
+| Remove      | [Remove](#--remove-staff) | `POST` | `/services/pharmacies/staff/remove` | `body` | `200` | `{"id":1000}` |
+
+### radiologycenters
+
+| Description | Payload                   | Method | endpoint                                  | Data   | Code  | Response      |
+| ----------- | ------------------------- | ------ | ----------------------------------------- | ------ | ----- | ------------- |
+| invite      | [Create](#--create_staff) | `POST` | `/services/radiologycenters/staff/invite` | `body` | `200` | `{"id":1000}` |
+| Add         | [Read](#--read_staff)     | `POST` | `/services/radiologycenters/staff/add`    | `body` | `200` | `{"id":1000}` |
+| Remove      | [Remove](#--remove-staff) | `POST` | `/services/radiologycenters/staff/remove` | `body` | `200` | `{"id":1000}` |
+
+### laboratories
+
+| Description | Payload                   | Method | endpoint                              | Data   | Code  | Response      |
+| ----------- | ------------------------- | ------ | ------------------------------------- | ------ | ----- | ------------- |
+| invite      | [Create](#--create_staff) | `POST` | `/services/laboratories/staff/invite` | `body` | `200` | `{"id":1000}` |
+| Add         | [Read](#--read_staff)     | `POST` | `/services/laboratories/staff/add`    | `body` | `200` | `{"id":1000}` |
+| Remove      | [Remove](#--remove-staff) | `POST` | `/services/laboratories/staff/remove` | `body` | `200` | `{"id":1000}` |
+
+## Providers
+
+#### --create-provider
+
+```
+{
+  "avatar": "http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200",
+  "active": true,
+  "language": "en",
+  "username": "provider",
+  "password": "1234@Abc!",
+  "fullname": "Amr Nasr",
+  "phone": "+201299999999",
+  "email": "amr@mail.com",
+  "country": "Egypt",
+  "city": "Damietta",
+  "address": "portsaid street",
+  "dob": "17-02-1985",
+  "gender": "male",
+  "position": "Doctor",
+  "speciality": "Cardiology"
+}
+
+```
+
+#### --login_provider
+
+```
+{
+    "username" : "provider",
+    "password" : "1234@Abc!"
+}
+```
+
+#### --provider_login_response
+
+```
+{
+    "group": "providers",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MzI5NzU0MTIsImdyb3VwIjoicHJvdmlkZXJzIiwiaWF0IjoxNzMwMzgzNDEyLCJpc3MiOiJQcm9qZWN0VmFsaGFsbGEiLCJqdGkiOiIxMDAyIiwibGxvZHQiOiIyMDI0LTEwLTMxIDEyOjM0OjQ3KzAwIiwic3ViIjoicHJvdmlkZXIifQ.n39YGxac2iDJ0iBNCJ_LEOvsYMV0eOAdgeKNvOIb1wQ",
+    "user_id": 1000,
+    "username": "provider"
+}
+```
+#### --read-provider
+```
+{
+  "id": 1000,
+  "schema": []
+}
+
+```
+#### --prov-sus-res
+
+```
+{
+    "active": false,
+    "id": 1000
+}
+```
+
+#### --prov-act-res
+
+```
+{
+    "active": true,
+    "id": 1000
+}
+
+
+
+
+
 # 🚀 PROJECT VALHALLA
 ![alt text](https://github.com/dr3mro/ProjectValhalla/blob/a4162ecba8c1b9684f540fe0ef75a554b1308bb3/Screenshot.png?raw=true)
 
@@ -7,38 +307,52 @@
 
 ### 🐳 Run docker
 ```
+
 git clone git@github.com:dr3mro/ProjectValhalla.git
 cd ProjectValhalla/docker/
 docker compose --profile run up --build --remove-orphans
+
 ```
 if you want to try the dev version
 ```
+
 docker compose --profile dev up --build --remove-orphans
+
 ```
 ### 🧪 Verify the server is running
 
 ```
+
 curl http://172.20.0.10:80/api/v1/hello
+
 ```
 - if you get this reply
 ```
+
 {
 "Message" : "Welcome to ASGARD."
 }%
+
 ```
 that means the server is up and running
 
 ### 🧮 to create the xxh64sum of the payload use this command
 ```
+
 jq -Sjc '.payload' api/patient/create_patient.json | xxh64sum
+
 ```
 - DataIntegrity protection is disabled by default and can be enabled anytime to verify payload by setting header value:
 - `"Enable-data-integrity-check : true"`
 ### 📦 Test GZIP
 ```
-curl -X GET -H "Accept-Encoding:gzip" -H "X-Request: $(cat api/patient/read_patient.json | base64 -w0)"  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MjUxODIwNDAsImdyb3VwIjoidXNlcnMiLCJpYXQiOjE3MjI1OTAwNDAsImlzcyI6InZhbGhhbGxhIiwianRpIjoiMTAxMSIsImxsb2R0IjoiMjAyNC0wOC0wMSAyMzoxMzoxNiswMCIsInN1YiI6InVzZXIxIn0.fNF0YvJ1zcrxFzMbZ1Mf2DS4BXq9cV0lDhNatSMbxnA"  http://172.20.0.10:80/v1/patient --compressed --include  --output -
+
+curl -X GET -H "Accept-Encoding:gzip" -H "X-Request: $(cat api/patient/read_patient.json | base64 -w0)" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MjUxODIwNDAsImdyb3VwIjoidXNlcnMiLCJpYXQiOjE3MjI1OTAwNDAsImlzcyI6InZhbGhhbGxhIiwianRpIjoiMTAxMSIsImxsb2R0IjoiMjAyNC0wOC0wMSAyMzoxMzoxNiswMCIsInN1YiI6InVzZXIxIn0.fNF0YvJ1zcrxFzMbZ1Mf2DS4BXq9cV0lDhNatSMbxnA" http://172.20.0.10:80/v1/patient --compressed --include --output -
+
 ```
 </details>
+
+
 
 ### 🎉 Create a new User
 
@@ -46,7 +360,9 @@ curl -X GET -H "Accept-Encoding:gzip" -H "X-Request: $(cat api/patient/read_pati
  <details>
 
 ```
+
 curl -X POST -H "Content-Type: application/json" -d @api/users/create_user.json http://172.20.0.10:80/api/v1/clients/users
+
 ```
 <summary>More</summary>
 - the "payload" value is optionally verified on the server against xxh64sum that might be generated and added to the JSON in xxh64sum key.
@@ -63,7 +379,9 @@ curl -X POST -H "Content-Type: application/json" -d @api/users/create_user.json 
 <details>
 
 ```
+
 curl -X POST -d @api/users/login_user.json http://172.20.0.10:80/api/v1/clients/users/login
+
 ```
 
 <summary>More</summary>
@@ -73,7 +391,9 @@ curl -X POST -d @api/users/login_user.json http://172.20.0.10:80/api/v1/clients/
 
 ### example of header Authorization
 ```
+
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MjMxNzQ3MjMsImlhdCI6MTcyMDU4MjcyMywiaXNzIjoiUHJvamVjdFZhbGhhbGxhIiwic3ViIjoiYW1yX25hc3IifQ.rI_u7GV9AtaGIawHzPJXEHOm_8wtz_2OKL0_wTAkgGc
+
 ```
 </details>
 
@@ -83,7 +403,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MjMxNzQ3M
 <summary>More</summary>
 
 ```
-curl -X POST -d @api/users/logout.json  http://172.20.0.10:80/api/v1/clients/users/logout
+
+curl -X POST -d @api/users/logout.json http://172.20.0.10:80/api/v1/clients/users/logout
+
 ```
 
 </details>
@@ -99,7 +421,9 @@ curl -X POST -d @api/users/logout.json  http://172.20.0.10:80/api/v1/clients/use
 <summary>More</summary>
 
 ```
+
 curl -X GET -H "X-Request: $(cat api/users/read_user.json | base64 -w0)" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MjUyMTcyNDksImdyb3VwIjoidXNlcnMiLCJpYXQiOjE3MjI2MjUyNDksImlzcyI6InZhbGhhbGxhIiwianRpIjoiMTAxNyIsImxsb2R0IjoiMjAyNC0wOC0wMiAxOTowMDo0MCswMCIsInN1YiI6InVzZXIifQ.1Wz9jFiBhzfe6svyB8dQZeMwfgxKZzaCjsQnQkUn1L0" http://172.20.0.10:80/api/v1/clients/users/
+
 ```
 </details>
 
@@ -110,7 +434,9 @@ curl -X GET -H "X-Request: $(cat api/users/read_user.json | base64 -w0)" -H "Aut
 <summary>More</summary>
 
 ```
+
 curl -X PUT -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MjUyMTc1MDgsImdyb3VwIjoidXNlcnMiLCJpYXQiOjE3MjI2MjU1MDgsImlzcyI6InZhbGhhbGxhIiwianRpIjoiMTAxNyIsImxsb2R0IjoiMjAyNC0wOC0wMiAxOTowMDo0MCswMCIsInN1YiI6InVzZXIifQ.AXQzdnCRqIEC96LrSOH2NNMwQrALlOhH2xxWqESF_fA" -d @api/users/update_user.json http://172.20.0.10:80/v1/api/v1/clients/users/ -i
+
 ```
 
 </details>
@@ -122,7 +448,9 @@ curl -X PUT -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJle
 <summary>More</summary>
 
 ```
-curl -X DELETE -H "X-Request: $(cat api/users/delete_user.json | base64 -w0)" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MjUyMTExNTQsImdyb3VwIjoidXNlcnMiLCJpYXQiOjE3MjI2MTkxNTQsImlzcyI6InZhbGhhbGxhIiwianRpIjoiMTAxNiIsImxsb2R0IjoiMjAyNC0wOC0wMiAxNzoxNDo1MyswMCIsInN1YiI6InVzZXIifQ.UCKJeblAPzcERZcsVL1cFXPIJwsdDRCVdvY8jBlP7Pw"  http://172.20.0.10:80/api/v1/clients/users/
+
+curl -X DELETE -H "X-Request: $(cat api/users/delete_user.json | base64 -w0)" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MjUyMTExNTQsImdyb3VwIjoidXNlcnMiLCJpYXQiOjE3MjI2MTkxNTQsImlzcyI6InZhbGhhbGxhIiwianRpIjoiMTAxNiIsImxsb2R0IjoiMjAyNC0wOC0wMiAxNzoxNDo1MyswMCIsInN1YiI6InVzZXIifQ.UCKJeblAPzcERZcsVL1cFXPIJwsdDRCVdvY8jBlP7Pw" http://172.20.0.10:80/api/v1/clients/users/
+
 ```
 </details>
 
@@ -135,7 +463,9 @@ curl -X DELETE -H "X-Request: $(cat api/users/delete_user.json | base64 -w0)" -H
 <summary>More</summary>
 
 ```
+
 curl -X POST -H "Content-Type: application/json" -d @api/providers/create_provider.json http://172.20.0.10:80/api/v1/clients/providers
+
 ```
 
 
@@ -156,7 +486,9 @@ curl -X POST -H "Content-Type: application/json" -d @api/providers/create_provid
 <summary>More</summary>
 
 ```
-curl -X POST -d @api/providers/login_provider.json  http://172.20.0.10:80/api/v1/clients/providers/login
+
+curl -X POST -d @api/providers/login_provider.json http://172.20.0.10:80/api/v1/clients/providers/login
+
 ```
 
 - the username should be in lowercase and/or numbers and never contains spaces or symbols.
@@ -170,7 +502,9 @@ curl -X POST -d @api/providers/login_provider.json  http://172.20.0.10:80/api/v1
 <summary>More</summary>
 
 ```
-curl -X POST -d @api/providers/logout.json  http://172.20.0.10:80/api/v1/clients/providers/logout
+
+curl -X POST -d @api/providers/logout.json http://172.20.0.10:80/api/v1/clients/providers/logout
+
 ```
 </details>
 
@@ -186,7 +520,9 @@ curl -X POST -d @api/providers/logout.json  http://172.20.0.10:80/api/v1/clients
 <summary>More</summary>
 
 ```
+
 curl -X GET -H "X-Request: $(cat api/Providers/read_provider.json | base64 -w0)" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MjUyMTcyNDksImdyb3VwIjoidXNlcnMiLCJpYXQiOjE3MjI2MjUyNDksImlzcyI6InZhbGhhbGxhIiwianRpIjoiMTAxNyIsImxsb2R0IjoiMjAyNC0wOC0wMiAxOTowMDo0MCswMCIsInN1YiI6InVzZXIifQ.1Wz9jFiBhzfe6svyB8dQZeMwfgxKZzaCjsQnQkUn1L0" http://172.20.0.10:80/api/v1/clients/providers
+
 ```
 </details>
 
@@ -197,7 +533,9 @@ curl -X GET -H "X-Request: $(cat api/Providers/read_provider.json | base64 -w0)"
 <summary>More</summary>
 
 ```
+
 curl -X PUT -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MjUyMTc1MDgsImdyb3VwIjoidXNlcnMiLCJpYXQiOjE3MjI2MjU1MDgsImlzcyI6InZhbGhhbGxhIiwianRpIjoiMTAxNyIsImxsb2R0IjoiMjAyNC0wOC0wMiAxOTowMDo0MCswMCIsInN1YiI6InVzZXIifQ.AXQzdnCRqIEC96LrSOH2NNMwQrALlOhH2xxWqESF_fA" -d @api/providers/update_provider.json http://172.20.0.10:80/api/v1/clients/providers -i
+
 ```
 
 </details>
@@ -210,7 +548,9 @@ curl -X PUT -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJle
 <summary>More</summary>
 
 ```
-curl -X DELETE -H "X-Request: $(cat api/providers/delete_provider.json | base64 -w0)" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MjUyMTExNTQsImdyb3VwIjoidXNlcnMiLCJpYXQiOjE3MjI2MTkxNTQsImlzcyI6InZhbGhhbGxhIiwianRpIjoiMTAxNiIsImxsb2R0IjoiMjAyNC0wOC0wMiAxNzoxNDo1MyswMCIsInN1YiI6InVzZXIifQ.UCKJeblAPzcERZcsVL1cFXPIJwsdDRCVdvY8jBlP7Pw"  http://172.20.0.10:80/api/v1/clients/providers
+
+curl -X DELETE -H "X-Request: $(cat api/providers/delete_provider.json | base64 -w0)" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MjUyMTExNTQsImdyb3VwIjoidXNlcnMiLCJpYXQiOjE3MjI2MTkxNTQsImlzcyI6InZhbGhhbGxhIiwianRpIjoiMTAxNiIsImxsb2R0IjoiMjAyNC0wOC0wMiAxNzoxNDo1MyswMCIsInN1YiI6InVzZXIifQ.UCKJeblAPzcERZcsVL1cFXPIJwsdDRCVdvY8jBlP7Pw" http://172.20.0.10:80/api/v1/clients/providers
+
 ```
 </details>
 
@@ -221,7 +561,9 @@ curl -X DELETE -H "X-Request: $(cat api/providers/delete_provider.json | base64 
 <summary>More</summary>
 
 ```
+
 curl -X POST -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MjUyMTg2NzAsImdyb3VwIjoidXNlcnMiLCJpYXQiOjE3MjI2MjY2NzAsImlzcyI6InZhbGhhbGxhIiwianRpIjoiMTAxNyIsImxsb2R0IjoiMjAyNC0wOC0wMiAxOTowMDo0MCswMCIsInN1YiI6InVzZXIifQ.VkWRvZ-CI97vRq0hYy4Ibb-EX4FbT_MSuE-A_550Lvg" -d @api/patient/create_patient.json http://172.20.0.10:80/api/v1/services/patients
+
 ```
 - In order to add a new patient do a `POST` request in `/api/v1/services/patients` with a `body` contains JSON like `api/patient/create_patient.json`.
 
@@ -241,7 +583,9 @@ curl -X POST -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJl
 <summary>More</summary>
 
 ```
+
 curl -X GET -H "X-Request: $(cat api/patient/read_patient.json | base64 -w0)" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MjUyMTg2NzAsImdyb3VwIjoidXNlcnMiLCJpYXQiOjE3MjI2MjY2NzAsImlzcyI6InZhbGhhbGxhIiwianRpIjoiMTAxNyIsImxsb2R0IjoiMjAyNC0wOC0wMiAxOTowMDo0MCswMCIsInN1YiI6InVzZXIifQ.VkWRvZ-CI97vRq0hYy4Ibb-EX4FbT_MSuE-A_550Lvg" http://172.20.0.10:80/api/v1/services/patients -i
+
 ```
 
 
@@ -256,7 +600,9 @@ curl -X GET -H "X-Request: $(cat api/patient/read_patient.json | base64 -w0)" -H
 <summary>More</summary>
 
 ```
+
 curl -X PUT -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MjUyMTg2NzAsImdyb3VwIjoidXNlcnMiLCJpYXQiOjE3MjI2MjY2NzAsImlzcyI6InZhbGhhbGxhIiwianRpIjoiMTAxNyIsImxsb2R0IjoiMjAyNC0wOC0wMiAxOTowMDo0MCswMCIsInN1YiI6InVzZXIifQ.VkWRvZ-CI97vRq0hYy4Ibb-EX4FbT_MSuE-A_550Lvg" -d @api/patient/update_patient.json http://172.20.0.10:80/api/v1/services/patients
+
 ```
 </details>
 
@@ -268,7 +614,9 @@ curl -X PUT -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJle
 <summary>More</summary>
 
 ```
-curl -X DELETE -H "X-Request: $(cat api/patient/delete_patient.json | base64 -w0)" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MjUyMTg2NzAsImdyb3VwIjoidXNlcnMiLCJpYXQiOjE3MjI2MjY2NzAsImlzcyI6InZhbGhhbGxhIiwianRpIjoiMTAxNyIsImxsb2R0IjoiMjAyNC0wOC0wMiAxOTowMDo0MCswMCIsInN1YiI6InVzZXIifQ.VkWRvZ-CI97vRq0hYy4Ibb-EX4FbT_MSuE-A_550Lvg"  http://172.20.0.10:80/api/v1/services/patients
+
+curl -X DELETE -H "X-Request: $(cat api/patient/delete_patient.json | base64 -w0)" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MjUyMTg2NzAsImdyb3VwIjoidXNlcnMiLCJpYXQiOjE3MjI2MjY2NzAsImlzcyI6InZhbGhhbGxhIiwianRpIjoiMTAxNyIsImxsb2R0IjoiMjAyNC0wOC0wMiAxOTowMDo0MCswMCIsInN1YiI6InVzZXIifQ.VkWRvZ-CI97vRq0hYy4Ibb-EX4FbT_MSuE-A_550Lvg" http://172.20.0.10:80/api/v1/services/patients
+
 ```
 </details>
 
@@ -281,19 +629,23 @@ curl -X DELETE -H "X-Request: $(cat api/patient/delete_patient.json | base64 -w0
 <summary>More</summary>
 
 ```
+
 curl -X SEARCH -H "X-Request: ewogICAgImtleXdvcmQiIDogIkpvaG4iLAogICAgImxpbWl0IiA6IDUsCiAgICAib2Zmc2V0IiA6IDAsCiAgICAib3JkZXJfYnkiIDogImlkIiwKICAgICJkaXJlY3Rpb24iIDogMCAKfQo=" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3MjM0MDkxODgsImlhdCI6MTcyMDgxNzE4OCwiaXNzIjoiUHJvamVjdFZhbGhhbGxhIiwianRpIjoiMTAwMCIsInN1YiI6ImFtcl9uYXNyIn0.lKjlzKtTd19DjpO4sBjDs-Z7JuDUha4p8OOzziJcgPo" http://172.20.0.10:80/api/v1/services/patients-i
-```
-
-
 
 ```
+
+
+
+```
+
 {
-    "keyword" : "John",
-    "limit" : 5,
-    "offset" : 0,
-    "order_by" : "id",
-    "direction" : 0
+"keyword" : "John",
+"limit" : 5,
+"offset" : 0,
+"order_by" : "id",
+"direction" : 0
 }
+
 ```
  - explanation:
 
@@ -305,6 +657,7 @@ curl -X SEARCH -H "X-Request: ewogICAgImtleXdvcmQiIDogIkpvaG4iLAogICAgImxpbWl0Ii
 
 - a reply would look like this
 ```
+
 HTTP/1.1 200 OK
 Content-Length: 2034
 Server: ProjectValhalla
@@ -312,73 +665,74 @@ Date: Mon, 01 Jul 2024 13:23:47 GMT
 Connection: Keep-Alive
 
 {
-    "more": true,
-    "offset": 3,
-    "payload": [
-        {
-            "basic_data": {
-                "address": "123 Main St, Anytown, USA",
-                "contact": [
-                    {
-                        "email": "john.doe@example.com"
-                    },
-                    {
-                        "phone": "+1987654321"
-                    }
-                ],
-                "date_of_birth": "1990-01-01",
-                "firstname": "John",
-                "gender": "Male",
-                "id": 100009,
-                "lastname": "Doe",
-                "occupation": "Engineer",
-                "place_of_birth": "New York"
-            }
-        },
-        {
-            "basic_data": {
-                "address": "123 Main St, Anytown, USA",
-                "contact": [
-                    {
-                        "email": "john.doe@example.com"
-                    },
-                    {
-                        "phone": "+1987654321"
-                    }
-                ],
-                "date_of_birth": "1990-01-01",
-                "firstname": "John",
-                "gender": "Male",
-                "id": 100008,
-                "lastname": "Doe",
-                "occupation": "Engineer",
-                "place_of_birth": "New York"
-            }
-        },
-        {
-            "basic_data": {
-                "address": "123 Main St, Anytown, USA",
-                "contact": [
-                    {
-                        "email": "john.doe@example.com"
-                    },
-                    {
-                        "phone": "+1987654321"
-                    }
-                ],
-                "date_of_birth": "1990-01-01",
-                "firstname": "John",
-                "gender": "Male",
-                "id": 100007,
-                "lastname": "Doe",
-                "occupation": "Engineer",
-                "place_of_birth": "New York"
-            }
-        }
-    ],
-    "status_id": 0,
-    "status_message": "success"
+"more": true,
+"offset": 3,
+"payload": [
+{
+"basic_data": {
+"address": "123 Main St, Anytown, USA",
+"contact": [
+{
+"email": "john.doe@example.com"
+},
+{
+"phone": "+1987654321"
+}
+],
+"date_of_birth": "1990-01-01",
+"firstname": "John",
+"gender": "Male",
+"id": 100009,
+"lastname": "Doe",
+"occupation": "Engineer",
+"place_of_birth": "New York"
+}
+},
+{
+"basic_data": {
+"address": "123 Main St, Anytown, USA",
+"contact": [
+{
+"email": "john.doe@example.com"
+},
+{
+"phone": "+1987654321"
+}
+],
+"date_of_birth": "1990-01-01",
+"firstname": "John",
+"gender": "Male",
+"id": 100008,
+"lastname": "Doe",
+"occupation": "Engineer",
+"place_of_birth": "New York"
+}
+},
+{
+"basic_data": {
+"address": "123 Main St, Anytown, USA",
+"contact": [
+{
+"email": "john.doe@example.com"
+},
+{
+"phone": "+1987654321"
+}
+],
+"date_of_birth": "1990-01-01",
+"firstname": "John",
+"gender": "Male",
+"id": 100007,
+"lastname": "Doe",
+"occupation": "Engineer",
+"place_of_birth": "New York"
+}
+}
+],
+"status_id": 0,
+"status_message": "success"
 }%
+
 ```
 
 - check the `more` key to see if there is any more results
@@ -496,6 +850,9 @@ available services:
 
 ### Test memory leaks
 ```
+
 ASAN_OPTIONS=detect_leaks=1 ./server
+
 ```
 </details>
+```

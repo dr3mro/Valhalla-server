@@ -5,14 +5,13 @@
 
 #include <jsoncons/json.hpp>
 
-#include "utils/resthelper/resthelper.hpp"
-
-class ServiceControllerBase
+using json = jsoncons::json;
+class EntityControllerBase
 {
    public:
-    explicit ServiceControllerBase() = default;
+    explicit EntityControllerBase() = default;
 
-    virtual ~ServiceControllerBase() = default;
+    virtual ~EntityControllerBase() = default;
 
     // CRUDS
     virtual void Create(const crow::request& req, crow::response& res, const json& request_json)                                   = 0;
@@ -20,10 +19,4 @@ class ServiceControllerBase
     virtual void Update(const crow::request& req, crow::response& res, const json& request_json)                                   = 0;
     virtual void Delete(const crow::request& req, crow::response& res, const std::unordered_map<std::string, std::string>& params) = 0;
     virtual void Search(const crow::request& req, crow::response& res, const json& request_json)                                   = 0;
-    virtual void GetVisits(const crow::request& req, crow::response& res, const json& request_json)
-    {
-        (void)req;
-        (void)request_json;
-        RestHelper::failureResponse(res, "GetVisits is NOT implemented for this entity");
-    };
 };

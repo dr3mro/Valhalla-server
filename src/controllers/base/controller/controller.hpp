@@ -1,24 +1,3 @@
-/**
- * @class Controller
- * @brief Base class for handling CRUD (Create, Read, Update, Delete) and search
- * operations for entities.
- *
- * The `Controller` class provides a set of template methods for performing CRUD
- * and search operations on entities. It uses the `DatabaseController`,
- * `SessionManager`, and `TokenManager` classes to interact with the database
- * and manage user sessions and tokens.
- *
- * The `Create`, `Read`, `Update`, `Delete`, and `Search` methods are templates
- * that take an entity type `T` as a parameter. These methods use the SQL
- * statements provided by the entity type to execute the corresponding CRUD or
- * search operation.
- *
- * The `Logout` method is used to log out a user by validating the provided
- * token and updating the session information.
- *
- * The `Controller` class is designed to be a base class for more specialized
- * controllers that handle specific entity types.
- */
 
 #pragma once
 #include <crow.h>
@@ -29,7 +8,9 @@
 #include <jsoncons/json.hpp>
 
 #include "controllers/databasecontroller/databasecontroller.hpp"
+#include "entities/base/client.hpp"
 #include "entities/base/entity.hpp"
+#include "entities/services/clinics/patient/patient.hpp"
 #include "utils/resthelper/resthelper.hpp"
 #include "utils/sessionmanager/sessionmanager.hpp"
 #include "utils/tokenmanager/tokenmanager.hpp"
@@ -38,18 +19,6 @@ using json = jsoncons::json;
 class Controller
 {
    public:
-    /**
-     * @brief Constructs a new `Controller` object.
-     *
-     * The `Controller` class is the base class for handling CRUD (Create, Read,
-     * Update, Delete) and search operations for entities. This constructor
-     * initializes the necessary dependencies, such as the `DatabaseController`,
-     * `SessionManager`, and `TokenManager` objects, which are used by the CRUD
-     * and search operations.
-     *
-     * If any of the dependencies cannot be retrieved from the `Store`, an
-     * exception is thrown and the program exits with a failure status.
-     */
     Controller()
     {
         try
@@ -68,18 +37,7 @@ class Controller
 
     // CRUDS
     template <typename T>
-    /**
-     * @brief Creates a new entity of type T in the database.
-     *
-     * This method uses the SQL create statement provided by the entity type T to
-     * insert a new record into the database. The `cruds` helper function is
-     * called with the appropriate parameters to execute the SQL statement and
-     * handle the response.
-     *
-     * @param res The Crow response object to send the result of the create
-     * operation.
-     * @param entity The entity object of type T to be created.
-     */
+
     void Create(crow::response &res, T &entity)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlCreateStatement;
@@ -87,77 +45,24 @@ class Controller
     }
 
     template <typename T>
-    /**
-     * @brief Reads an entity of type T from the database.
-     *
-     * This method uses the SQL read statement provided by the entity type T to
-     * retrieve a record from the database. The `cruds` helper function is called
-     * with the appropriate parameters to execute the SQL statement and handle the
-     * response.
-     *
-     * @param res The Crow response object to send the result of the read
-     * operation.
-     * @param entity The entity object of type T to be read.
-     */
     void Read(crow::response &res, T &entity)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlReadStatement;
         cruds(res, entity, sqlstatement, dbrexec);
     }
     template <typename T>
-    /**
-     * @brief Updates an entity of type T in the database.
-     *
-     * This method uses the SQL update statement provided by the entity type T to
-     * modify an existing record in the database. The `cruds` helper function is
-     * called with the appropriate parameters to execute the SQL statement and
-     * handle the response.
-     *
-     * @param res The Crow response object to send the result of the update
-     * operation.
-     * @param entity The entity object of type T to be updated.
-     */
     void Update(crow::response &res, T &entity)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlUpdateStatement;
         cruds(res, entity, sqlstatement, dbexec);
     }
     template <typename T>
-    /**
-     * @brief Deletes an entity of type T from the database.
-     *
-     * This method uses the SQL delete statement provided by the entity type T to
-     * remove a record from the database. The `cruds` helper function is called
-     * with the appropriate parameters to execute the SQL statement and handle the
-     * response.
-     *
-     * @param res The Crow response object to send the result of the delete
-     * operation.
-     * @param entity The entity object of type T to be deleted.
-     */
     void Delete(crow::response &res, T &entity)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlDeleteStatement;
         cruds(res, entity, sqlstatement, dbexec);
     }
     template <typename T>
-    /**
-     * @brief Searches for entities of type T in the database.
-     *
-     * This method uses the SQL search statement provided by the entity type T to
-     * retrieve records from the database that match the search criteria. The
-     * `databaseController` is used to execute the SQL statement and handle the
-     * response.
-     *
-     * The method will return a JSON object with the search results. If the number
-     * of results exceeds the limit specified in the `Entity::SearchData` object,
-     * the JSON object will include a `"more"` flag set to `true` and an
-     * `"offset"` value to be used for pagination.
-     *
-     * @param res The Crow response object to send the result of the search
-     * operation.
-     * @param entity The entity object of type T containing the search criteria.
-     */
     void Search(crow::response &res, T &entity)
     {
         json                       response_json;
@@ -174,11 +79,11 @@ class Controller
                 query_results_json   = databaseController->executeSearchQuery(query.value());
                 size_t results_count = query_results_json.size();
 
-                if (results_count > std::any_cast<typename T::SearchData>(entity.getData()).limit)
+                if (results_count > std::any_cast<typename T::Search_t>(entity.getData()).limit)
                 {
-                    response_json["more"]   = true;
-                    response_json["offset"] = std::any_cast<typename T::SearchData>(entity.getData()).offset +
-                                              std::any_cast<typename T::SearchData>(entity.getData()).limit;
+                    response_json["more"] = true;
+                    response_json["offset"] =
+                        std::any_cast<typename T::Search_t>(entity.getData()).offset + std::any_cast<typename T::Search_t>(entity.getData()).limit;
                     query_results_json.erase(query_results_json.array_range().end() - 1);
                 }
                 else
@@ -203,35 +108,17 @@ class Controller
         }
         catch (const std::exception &e)
         {
-            response_json["results"] = jsoncons::json();
-            response_json["error"]   = e.what();
-            response_json.dump_pretty(results);
-            RestHelper::failureResponse(res, results);
+            RestHelper::failureResponse(res, e.what());
         }
     }
     template <typename T>
-    /**
-     * @brief Logs out the user by validating the token, setting the logout time,
-     * and returning a success or failure response.
-     *
-     * This method is responsible for handling the logout process for a user. It
-     * first validates the token provided in the `Entity::LogoutData` object. If
-     * the token is valid, it sets the logout time for the user's session using
-     * the `sessionManager`. Finally, it sends a response back to the client
-     * indicating whether the logout was successful or not.
-     *
-     * @param res The Crow response object to send the result of the logout
-     * operation.
-     * @param entity The entity object of type T containing the logout data,
-     * including the token.
-     */
-    void Logout(crow::response &res, T &entity)
+    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Logout(crow::response &res, T &entity)
     {
         TokenManager::LoggedUserInfo loggedUserInfo;
 
         try
         {
-            loggedUserInfo.token = std::any_cast<Entity::LogoutData>(entity.getData()).token;
+            loggedUserInfo.token = std::any_cast<Client::LogoutData>(entity.getData()).token;
             loggedUserInfo.group = entity.getGroupName();
 
             bool status = tokenManager->ValidateToken(loggedUserInfo);
@@ -241,7 +128,7 @@ class Controller
                 return;
             }
             sessionManager->setNowLogoutTime(loggedUserInfo.userID.value(), loggedUserInfo.group.value());
-            RestHelper::successResponse(res, crow::status::OK, "Logout success");
+            RestHelper::successResponseJsoned(res, crow::status::OK, "Logout success.");
         }
         catch (const std::exception &e)
         {
@@ -250,21 +137,21 @@ class Controller
     }
 
     template <typename T>
-    void Suspend(crow::response &res, T &entity)
+    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Suspend(crow::response &res, T &entity)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlSuspendStatement;
         cruds(res, entity, sqlstatement, dbexec);
     }
 
     template <typename T>
-    void Unsuspend(crow::response &res, T &entity)
+    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Unsuspend(crow::response &res, T &entity)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlActivateStatement;
         cruds(res, entity, sqlstatement, dbexec);
     }
 
     template <typename T>
-    void GetServices(crow::response &res, T &entity)
+    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> GetServices(crow::response &res, T &entity)
     {
         json                       services;
         std::string                response;
@@ -288,7 +175,57 @@ class Controller
         }
     }
 
+    template <typename T>
+    typename std::enable_if<std::is_same<T, Patient>::value, void>::type GetVisits(crow::response &res, T &entity)
+    {
+        json                       visits;
+        std::string                response;
+        std::optional<std::string> query;
+
+        try
+        {
+            query = entity.getSqlGetVisitsStatement();
+
+            if (query)
+            {
+                visits = databaseController->executeSearchQuery(query.value());
+            }
+
+            visits.dump_pretty(response);
+            RestHelper::successResponse(res, crow::status::OK, response);
+        }
+        catch (const std::exception &e)
+        {
+            RestHelper::failureResponse(res, e.what());
+        }
+    }
+
    protected:
+    template <typename T>
+    std::optional<uint64_t> getNextID()
+    {
+        try
+        {
+            T    entity;
+            json json_nextval = databaseController->executeQuery(fmt::format("SELECT NEXTVAL('{}_id_seq');", entity.getTableName()));
+
+            if (json_nextval.empty())
+            {
+                std::cerr << fmt::format("json_nextval is empty\n");
+            }
+
+            auto obj = json_nextval.find("nextval");
+            if (obj != json_nextval.object_range().end())
+            {
+                return obj->value().as<uint64_t>();
+            }
+        }
+        catch (const std::exception &e)
+        {
+            std::cerr << fmt::format("Failed: {}\n", e.what());
+        }
+        return std::nullopt;
+    }
     /**
      * @brief Shared pointers to the DatabaseController, SessionManager, and
      * TokenManager instances.
