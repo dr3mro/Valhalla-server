@@ -7,7 +7,7 @@
       "-S",
       ".",
       "-B",
-      "build/debug",
+      "build/Debug",
       "-DCMAKE_BUILD_TYPE=Debug",
       "-DCMAKE_C_COMPILER=gcc",
       "-DCMAKE_CXX_COMPILER=g++",
@@ -49,7 +49,7 @@
       "-S",
       ".",
       "-B",
-      "build/debug",
+      "build/Debug",
       "-DCMAKE_BUILD_TYPE=Debug",
       "-DCMAKE_C_COMPILER=clang",
       "-DCMAKE_CXX_COMPILER=clang++",
@@ -86,7 +86,7 @@
   {
     "label": "Build Debug",
     "command": "ninja",
-    "cwd": "$ZED_WORKTREE_ROOT/build/debug",
+    "cwd": "$ZED_WORKTREE_ROOT/build/Debug",
     "args": ["-j", "8"],
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
@@ -107,7 +107,7 @@
   },
   {
     "label": "Run Debug",
-    "command": "${ZED_WORKTREE_ROOT}/build/debug/server", // Replace with your actual executable name
+    "command": "${ZED_WORKTREE_ROOT}/build/Debug/server", // Replace with your actual executable name
     "cwd": "$ZED_WORKTREE_ROOT",
     "args": [],
     "use_new_terminal": false,
@@ -131,7 +131,7 @@
     "label": "Debug (gdb)",
     "command": "gdb",
     "cwd": "$ZED_WORKTREE_ROOT",
-    "args": ["${ZED_WORKTREE_ROOT}/build/debug/server"],
+    "args": ["${ZED_WORKTREE_ROOT}/build/Debug/server"],
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
     "reveal": "always",
@@ -142,7 +142,7 @@
     "label": "Debug (lldb)",
     "command": "sudo lldb",
     "cwd": "$ZED_WORKTREE_ROOT",
-    "args": ["$ZED_WORKTREE_ROOT/build/debug/server"],
+    "args": ["$ZED_WORKTREE_ROOT/build/Debug/server"],
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
     "reveal": "always",
