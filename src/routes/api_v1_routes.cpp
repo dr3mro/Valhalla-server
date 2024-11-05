@@ -138,7 +138,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
 
     CROW_ROUTE((*app), URL("/services/<string>/search"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest, Search)
-        .methods(crow::HTTPMethod::SEARCH)(
+        .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
             {
                 executeControllerMethod(serviceRegistry, serviceName, &ServiceControllerBase::Search, req, res,
@@ -183,7 +183,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
 
     CROW_ROUTE((*app), URL("/services/clinics/patients/search"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest, Search)
-        .methods(crow::HTTPMethod::SEARCH)(
+        .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res)
             {
                 executeControllerMethod(clinicRegistry, "patients", &ServiceControllerBase::Search, req, res,
