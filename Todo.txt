@@ -1,4 +1,5 @@
 * safe vs unsafe types
+* add append method to endpoints
 * fix integrity middleware
 * add jsons example + crate db for missing tables
 * Implement list appointment for user and service and provider
