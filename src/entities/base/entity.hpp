@@ -18,8 +18,8 @@ class Entity : public Base
     using Create_t = struct Create_t
     {
         json     data_j;
-        uint64_t next_id;
-        Create_t(const json &_data, const uint64_t _id) : data_j(_data), next_id(_id) {}
+        uint64_t id;
+        Create_t(const json &_data, const uint64_t _id) : data_j(_data), id(_id) {}
     };
 
     using Read_t = struct Read_t
@@ -88,7 +88,7 @@ class Entity : public Base
             std::vector<std::string> values_arr;
 
             json     data_json = std::any_cast<Create_t>(data).data_j;
-            uint64_t next_id   = std::any_cast<Create_t>(data).next_id;
+            uint64_t next_id   = std::any_cast<Create_t>(data).id;
             data_json["id"]    = next_id;
 
             for (auto &it : data_json.object_range())

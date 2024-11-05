@@ -2,20 +2,20 @@
 
 #include <jsoncons/json.hpp>
 
-#include "entities/base/entity.hpp"
+#include "entities/base/case.hpp"
 
 using json = jsoncons::json;
 
-class Reports : public Entity
+class Reports : public Case
 {
    private:
     static constexpr auto TABLENAME = "patients_reports";
 
    public:
-    Reports() : Entity(TABLENAME) {}
+    Reports() : Case(TABLENAME) {}
 
     template <typename T>
-    Reports(const T &_data) : Entity(_data, TABLENAME)
+    Reports(const T &_data) : Case(_data, TABLENAME)
     {
     }
 

@@ -3,6 +3,7 @@
 #include "configurator/configurator.hpp"
 #include "controllers/appointmentcontroller/appointmentcontroller.hpp"
 #include "controllers/clientcontroller/clientcontroller.hpp"
+#include "controllers/cliniccontroller/cliniccontroller.hpp"
 #include "controllers/databasecontroller/databasecontroller.hpp"
 #include "controllers/servicecontroller/servicecontroller.hpp"
 #include "controllers/staffcontroller/staffcontroller.hpp"
@@ -61,15 +62,15 @@ ObjectFactory::ObjectFactory()
     Store::registerObject<SessionManager>();
     Store::registerObject<TokenManager>();
     Store::registerObject<PasswordCrypt>();
-    Store::registerObject<ServiceController<Health>>();
-    Store::registerObject<ServiceController<PatientDrugs>>();
-    Store::registerObject<ServiceController<Reports>>();
-    Store::registerObject<ServiceController<PaidServices>>();
-    Store::registerObject<ServiceController<Prescriptions>>();
-    Store::registerObject<ServiceController<Requests>>();
-    Store::registerObject<ServiceController<VisitDrugs>>();
-    Store::registerObject<ServiceController<Visits>>();
-    Store::registerObject<ServiceController<Patient>>();
+    Store::registerObject<ClinicController<Health>>();
+    Store::registerObject<ClinicController<PatientDrugs>>();
+    Store::registerObject<ClinicController<Reports>>();
+    Store::registerObject<ClinicController<PaidServices>>();
+    Store::registerObject<ClinicController<Prescriptions>>();
+    Store::registerObject<ClinicController<Requests>>();
+    Store::registerObject<ClinicController<VisitDrugs>>();
+    Store::registerObject<ClinicController<Visits>>();
+    Store::registerObject<ClinicController<Patient>>();
     Store::registerObject<ServiceController<Clinics>>();
     Store::registerObject<ServiceController<Pharmacies>>();
     Store::registerObject<ServiceController<Laboratories>>();

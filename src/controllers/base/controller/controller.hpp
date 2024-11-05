@@ -176,7 +176,7 @@ class Controller
     }
 
     template <typename T>
-    typename std::enable_if<std::is_same<T, Patient>::value, void>::type GetVisits(crow::response &res, T &entity)
+    std::enable_if_t<std::is_same<T, Patient>::value, void> GetVisits(crow::response &res, T &entity)
     {
         json                       visits;
         std::string                response;

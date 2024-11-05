@@ -6,6 +6,7 @@
 
 #include "controllers/appointmentcontroller/appointmentcontroller.hpp"
 #include "controllers/clientcontroller/clientcontroller.hpp"
+#include "controllers/cliniccontroller/cliniccontroller.hpp"
 #include "controllers/servicecontroller/servicecontroller.hpp"
 #include "controllers/staffcontroller/staffcontroller.hpp"
 #include "entities/appointments/clinic.hpp"
@@ -52,11 +53,11 @@ class API_V1_Routes
     using ServiceVariant = std::variant<std::shared_ptr<ServiceController<Clinics>>, std::shared_ptr<ServiceController<Pharmacies>>,
                                         std::shared_ptr<ServiceController<Laboratories>>, std::shared_ptr<ServiceController<RadiologyCenters>>>;
 
-    using ClinicVariant = std::variant<std::shared_ptr<ServiceController<Patient>>, std::shared_ptr<ServiceController<Visits>>,
-                                       std::shared_ptr<ServiceController<VisitDrugs>>, std::shared_ptr<ServiceController<Requests>>,
-                                       std::shared_ptr<ServiceController<Prescriptions>>, std::shared_ptr<ServiceController<PaidServices>>,
-                                       std::shared_ptr<ServiceController<Reports>>, std::shared_ptr<ServiceController<PatientDrugs>>,
-                                       std::shared_ptr<ServiceController<Health>>>;
+    using ClinicVariant = std::variant<std::shared_ptr<ClinicController<Patient>>, std::shared_ptr<ClinicController<Visits>>,
+                                       std::shared_ptr<ClinicController<VisitDrugs>>, std::shared_ptr<ClinicController<Requests>>,
+                                       std::shared_ptr<ClinicController<Prescriptions>>, std::shared_ptr<ClinicController<PaidServices>>,
+                                       std::shared_ptr<ClinicController<Reports>>, std::shared_ptr<ClinicController<PatientDrugs>>,
+                                       std::shared_ptr<ClinicController<Health>>>;
 
     using AppointmentVariant =
         std::variant<std::shared_ptr<AppointmentController<ClinicAppointment>>, std::shared_ptr<AppointmentController<PharmacyAppointment>>,
@@ -77,15 +78,15 @@ class API_V1_Routes
         {"laboratories", Store::getObject<ServiceController<Laboratories>>()},
         {"radiologycenters", Store::getObject<ServiceController<RadiologyCenters>>()}};
 
-    std::unordered_map<std::string_view, ClinicVariant> clinicRegistry = {{"patients", Store::getObject<ServiceController<Patient>>()},
-                                                                          {"visits", Store::getObject<ServiceController<Visits>>()},
-                                                                          {"visitDrugs", Store::getObject<ServiceController<VisitDrugs>>()},
-                                                                          {"requests", Store::getObject<ServiceController<Requests>>()},
-                                                                          {"prescriptions", Store::getObject<ServiceController<Prescriptions>>()},
-                                                                          {"paidservices", Store::getObject<ServiceController<PaidServices>>()},
-                                                                          {"reports", Store::getObject<ServiceController<Reports>>()},
-                                                                          {"patientdrugs", Store::getObject<ServiceController<PatientDrugs>>()},
-                                                                          {"health", Store::getObject<ServiceController<Health>>()}};
+    std::unordered_map<std::string_view, ClinicVariant> clinicRegistry = {{"patients", Store::getObject<ClinicController<Patient>>()},
+                                                                          {"visits", Store::getObject<ClinicController<Visits>>()},
+                                                                          {"visitDrugs", Store::getObject<ClinicController<VisitDrugs>>()},
+                                                                          {"requests", Store::getObject<ClinicController<Requests>>()},
+                                                                          {"prescriptions", Store::getObject<ClinicController<Prescriptions>>()},
+                                                                          {"paidservices", Store::getObject<ClinicController<PaidServices>>()},
+                                                                          {"reports", Store::getObject<ClinicController<Reports>>()},
+                                                                          {"patientdrugs", Store::getObject<ClinicController<PatientDrugs>>()},
+                                                                          {"health", Store::getObject<ClinicController<Health>>()}};
 
     std::unordered_map<std::string_view, AppointmentVariant> appointmentRegistry = {
         {"clinics", Store::getObject<AppointmentController<ClinicAppointment>>()},
