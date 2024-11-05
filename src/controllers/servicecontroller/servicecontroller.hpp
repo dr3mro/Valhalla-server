@@ -3,7 +3,6 @@
 
 #include "controllers/entitycontroller/entitycontroller.hpp"
 #include "controllers/servicecontroller/servicecontrollerbase.hpp"
-#include "entities/services/clinics/patient/patient.hpp"
 #include "utils/resthelper/resthelper.hpp"
 
 using json = jsoncons::json;
@@ -22,22 +21,6 @@ class ServiceController : public EntityController<T>, public ServiceControllerBa
     void Update(const crow::request &req, crow::response &res, const json &request_json) final;
     void Delete(const crow::request &req, crow::response &res, const std::unordered_map<std::string, std::string> &params) final;
     void Search(const crow::request &req, crow::response &res, const json &request_json) final;
-    // Only enable GetVisits if T is of type Patient
-    template <typename U = T>
-    typename std::enable_if<std::is_same<U, Patient>::value, void>::type GetVisits(const crow::request &req, crow::response &res,
-                                                                                   const jsoncons::json &request_json)
-    {
-        (void)req;
-        try
-        {
-            T entity((typename T::Data(request_json)));
-            Controller::GetVisits(res, entity);
-        }
-        catch (const std::exception &e)
-        {
-            RestHelper::failureResponse(res, e.what());
-        }
-    }
 };
 
 #include "controllers/servicecontroller/servicecontroller.tpp"

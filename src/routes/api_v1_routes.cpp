@@ -151,7 +151,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
             {
-                executeControllerMethod(clinicRegistry, serviceName, &ServiceControllerBase::Create, req, res,
+                executeControllerMethod(clinicRegistry, serviceName, &ClinicControllerBase::Create, req, res,
                                         app->get_context<BRequest>(req).payload);
             });
 
@@ -160,7 +160,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
             {
-                executeControllerMethod(clinicRegistry, serviceName, &ServiceControllerBase::Read, req, res, app->get_context<BRequest>(req).payload);
+                executeControllerMethod(clinicRegistry, serviceName, &ClinicControllerBase::Read, req, res, app->get_context<BRequest>(req).payload);
             });
 
     CROW_ROUTE((*app), URL("/services/clinics/<string>/update"))
@@ -168,7 +168,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::PUT)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
             {
-                executeControllerMethod(clinicRegistry, serviceName, &ServiceControllerBase::Update, req, res,
+                executeControllerMethod(clinicRegistry, serviceName, &ClinicControllerBase::Update, req, res,
                                         app->get_context<BRequest>(req).payload);
             });
 
@@ -177,7 +177,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::DELETE)(
             [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
             {
-                executeControllerMethod(clinicRegistry, serviceName, &ServiceControllerBase::Delete, req, res,
+                executeControllerMethod(clinicRegistry, serviceName, &ClinicControllerBase::Delete, req, res,
                                         app->get_context<PathParameter>(req).params);
             });
 
@@ -186,7 +186,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::POST)(
             [this, app](const crow::request &req, crow::response &res)
             {
-                executeControllerMethod(clinicRegistry, "patients", &ServiceControllerBase::Search, req, res,
+                executeControllerMethod(clinicRegistry, "patients", &ClinicControllerBase::Search, req, res,
                                         app->get_context<Search>(req).search_json);
             });
 
@@ -195,7 +195,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
         .methods(crow::HTTPMethod::GET)(
             [this, app](const crow::request &req, crow::response &res)
             {
-                executeControllerMethod(clinicRegistry, "patients", &ServiceControllerBase::GetVisits, req, res,
+                executeControllerMethod(clinicRegistry, "patients", &ClinicControllerBase::GetVisits, req, res,
                                         app->get_context<PathParameter>(req).params);
             });
 
