@@ -59,6 +59,11 @@ class Controller
     template <typename T>
     void Delete(crow::response &res, T &entity)
     {
+        if (!entity.template check_id_exists<Entity::Delete_t>())
+        {
+            RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "ID does not exist");
+            return;
+        }
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlDeleteStatement;
         cruds(res, entity, sqlstatement, dbexec);
     }
