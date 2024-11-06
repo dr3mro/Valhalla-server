@@ -24,8 +24,6 @@ class Entity : public Base
         ClientData(const json &data, const uint64_t id) : data_j(data), id(id) {}
         ClientData(const json &data, crow::response &res, bool &success) : data_j(data)  // clients
         {
-            std::cout << "works!" << std::endl;
-
             for (const auto &item : data.object_range())
             {
                 try
@@ -152,7 +150,6 @@ class Entity : public Base
     std::optional<std::string> getSqlCreateStatement() override
     {
         std::optional<std::string> query;
-        std::cout << "Ok1\n";
         try
         {
             std::vector<std::string> keys_arr;
@@ -172,7 +169,6 @@ class Entity : public Base
             std::string values  = fmt::format("'{}'", fmt::join(values_arr, "','"));
 
             query = fmt::format("INSERT INTO {} ({}) VALUES ({}) RETURNING id;", tablename, columns, values);
-            std::cout << query.value() << std::endl;
         }
         catch (const std::exception &e)
         {

@@ -29,7 +29,6 @@ class ClientController : public EntityController<T>, public ClientControllerBase
         try
         {
             tokenManager   = Store::getObject<TokenManager>();
-            passwordCrypt  = Store::getObject<PasswordCrypt>();
             sessionManager = Store::getObject<SessionManager>();
         }
         catch (const std::exception& e)
@@ -56,7 +55,6 @@ class ClientController : public EntityController<T>, public ClientControllerBase
 
    private:
     std::shared_ptr<TokenManager>   tokenManager;
-    std::shared_ptr<PasswordCrypt>  passwordCrypt;
     std::shared_ptr<SessionManager> sessionManager;
 };
 
