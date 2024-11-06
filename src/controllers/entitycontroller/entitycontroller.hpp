@@ -3,7 +3,6 @@
 #include <fmt/format.h>
 
 #include <jsoncons/json.hpp>
-#include <type_traits>
 
 #include "controllers/base/controller/controller.hpp"
 #include "controllers/entitycontroller/entitycontrollerbase.hpp"
@@ -41,17 +40,9 @@ void EntityController<T>::Create(const crow::request &req, crow::response &res, 
             RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "Failed to generate next ID");
             return;
         }
-        bool success = false;
-        if constexpr (std::is_base_of_v<T, Client>)
-        {
-            T entity((typename T::Create_t(request_json, res, success)));
-            Controller::Create(res, entity);
-        }
-        else
-        {
-            T entity((typename T::Create_t(request_json, next_id.value())));
-            Controller::Create(res, entity);
-        }
+
+        T entity((typename T::Create_t(request_json, next_id.value())));
+        Controller::Create(res, entity);
     }
     catch (const std::exception &e)
     {
