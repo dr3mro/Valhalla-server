@@ -13,7 +13,7 @@ class Case : public Entity
     }
     Case(const std::string &tablename) : Entity(tablename) {};
 
-    ~Case() = default;
+    virtual ~Case() = default;
 
     bool check_id_exists()
     {

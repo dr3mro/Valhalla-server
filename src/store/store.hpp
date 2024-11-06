@@ -8,8 +8,8 @@
 class Store
 {
    public:
-    Store()  = default;
-    ~Store() = default;
+    Store()          = default;
+    virtual ~Store() = default;
 
     template <typename T, typename... Args>
     static void registerObject(Args &&...args)

@@ -15,8 +15,8 @@ template <typename T>
 class EntityController : public Controller, public EntityControllerBase
 {
    public:
-    EntityController()           = default;
-    ~EntityController() override = default;
+    EntityController()          = default;
+    virtual ~EntityController() = default;
     // CRUDS
     void Create(const crow::request &req, crow::response &res, const json &request_json) override;
     void Read(const crow::request &req, crow::response &res, const json &request_json) override;

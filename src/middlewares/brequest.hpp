@@ -14,8 +14,8 @@ struct BRequest : crow::ILocalMiddleware
         jsoncons::json payload;
     };
 
-    BRequest()  = default;
-    ~BRequest() = default;
+    BRequest()          = default;
+    virtual ~BRequest() = default;
 
     void before_handle(crow::request &req, crow::response &res, context &ctx)
     {

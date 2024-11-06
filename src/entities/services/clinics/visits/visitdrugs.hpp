@@ -21,5 +21,5 @@ class VisitDrugs : public Case
 
     std::string getTableName() { return TABLENAME; }
 
-    ~VisitDrugs() override = default;
+    virtual ~VisitDrugs() override = default;
 };

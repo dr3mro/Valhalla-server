@@ -19,8 +19,8 @@ concept Config = std::is_base_of_v<EnvLoader, T>;
 class Configurator
 {
    public:
-    Configurator()  = default;
-    ~Configurator() = default;
+    Configurator()          = default;
+    virtual ~Configurator() = default;
 
     void printValues() const
     {

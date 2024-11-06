@@ -15,7 +15,7 @@ struct Authorization : crow::ILocalMiddleware
     };
     Authorization() { tokenManager = Store::getObject<TokenManager>(); }
 
-    ~Authorization() = default;
+    virtual ~Authorization() = default;
 
     void before_handle(crow::request &req, crow::response &res, context &ctx)
     {

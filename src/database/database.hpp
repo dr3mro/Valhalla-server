@@ -50,7 +50,7 @@ class Database
 {
    public:
     Database(std::shared_ptr<pqxx::connection> conn);
-    ~Database() = default;
+    virtual ~Database() = default;
 
     bool isConnected();
     bool checkExists(const std::string &table, const std::string &column, const std::string &value);

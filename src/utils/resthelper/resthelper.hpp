@@ -9,8 +9,8 @@ using json = jsoncons::json;
 class RestHelper
 {
    public:
-    RestHelper()  = default;
-    ~RestHelper() = default;
+    RestHelper()          = default;
+    virtual ~RestHelper() = default;
     // static bool isQuerySuccessful(const json& response);
     // static void buildResponse(json& response_json, short status, const std::string& status_message, const json& results);
     // static void sendResponse(crow::response& res, const int& code, const json& response_json);

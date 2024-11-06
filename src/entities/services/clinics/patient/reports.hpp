@@ -21,5 +21,5 @@ class Reports : public Case
 
     std::string getTableName() { return TABLENAME; }
 
-    ~Reports() override = default;
+    virtual ~Reports() override = default;
 };

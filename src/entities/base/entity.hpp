@@ -77,7 +77,7 @@ class Entity : public Base
     }
     Entity(const std::string &_tablename) : tablename(_tablename) {}
 
-    ~Entity() override = default;
+    virtual ~Entity() override = default;
 
     std::optional<std::string> getSqlCreateStatement() override
     {

@@ -19,5 +19,5 @@ class Laboratories : public Service
     {
     }
     std::string getTableName() { return TABLENAME; }
-    ~Laboratories() = default;
+    virtual ~Laboratories() = default;
 };

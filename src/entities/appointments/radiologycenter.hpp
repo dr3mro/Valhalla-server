@@ -19,5 +19,5 @@ class RadiologyCenterAppointment : public Appointment
     {
     }
     std::string getTableName() { return TABLENAME; }
-    ~RadiologyCenterAppointment() override = default;
+    virtual ~RadiologyCenterAppointment() override = default;
 };

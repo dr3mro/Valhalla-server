@@ -11,7 +11,7 @@ class Provider : public Client
     {
     }
     Provider() : Client(std::string(TABLENAME)) {}
-    ~Provider() = default;
+    virtual ~Provider() = default;
     std::string                getTableName() { return TABLENAME; }
     std::optional<std::string> getSqlGetServicesStatement()
     {

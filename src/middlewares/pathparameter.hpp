@@ -14,8 +14,8 @@ struct PathParameter : crow::ILocalMiddleware
         std::unordered_map<std::string, std::string> params;
     };
 
-    PathParameter()  = default;
-    ~PathParameter() = default;
+    PathParameter()          = default;
+    virtual ~PathParameter() = default;
 
     void before_handle(crow::request &req, crow::response &res, context &ctx)
     {

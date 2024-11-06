@@ -13,5 +13,5 @@ class Appointment : public Entity
 
     Appointment(const std::string &_tablename) : Entity(_tablename) {}
 
-    ~Appointment() = default;
+    virtual ~Appointment() = default;
 };

@@ -70,7 +70,7 @@ class Service : public Entity
     {
     }
     Service(const std::string &tablename) : Entity(tablename) {};
-    ~Service() override = default;
+    virtual ~Service() override = default;
     std::optional<std::string> getSqlAddStaffStatement()
     {
         std::optional<std::string> query;
