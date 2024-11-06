@@ -31,9 +31,9 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
                 return;
             }
 
-            T entity((typename U::Create_t(request_json, id.value())));
+            T entity(typename U::Create_t(request_json, id.value()));
 
-            if (entity.check_id_exists())
+            if (entity.template check_id_exists<Entity::Create_t>())
             {
                 RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "id already exists.");
                 return;

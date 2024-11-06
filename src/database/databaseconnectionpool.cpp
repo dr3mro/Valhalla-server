@@ -53,8 +53,10 @@ DatabaseConnectionPool::DatabaseConnectionPool()
     }
     catch (const std::exception &e)
     {
-        std::cerr << "Exception caught during database connection pool initialization: " << e.what() << '\n';
-        throw std::runtime_error("Failed to initialize database connection pool");
+        std::cerr << "\033[31m" << "Exception caught during database connection pool initialization:\n" << "\033[35m" << e.what() << '\n';
+        std::cerr << "\033[33m" << "Make sure the database server is running and reachable and the connection parameters are correct.\n";
+        std::cerr << "\033[31m" << "Failed to initialize database connection pool\n" << "\033[36m" << "Exiting ...\n" << "\033[0m";
+        exit(EXIT_FAILURE);
     }
 }
 

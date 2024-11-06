@@ -7,7 +7,7 @@ void ClientController<T>::Create(const crow::request& req, crow::response& res, 
     try
     {
         bool                   success = false;
-        typename T::ClientData client_data(request_json, res, success);
+        typename T::Create_t client_data(request_json, res, success);
 
         if (success)
         {
@@ -45,7 +45,7 @@ void ClientController<T>::Update(const crow::request& req, crow::response& res, 
     try
     {
         bool                   success = false;
-        typename T::ClientData client_data(request_json, res, success);
+        typename T::Update_t client_data(request_json, res, success);
 
         if (success)
         {
