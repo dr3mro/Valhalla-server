@@ -1,4 +1,7 @@
 
+#include "utils/passwordcrypt/passwordcrypt.hpp"
+#include "utils/resthelper/resthelper.hpp"
+
 template <Client_t T>
 void ClientController<T>::Create(const crow::request& req, crow::response& res, const json& request_json)
 {
@@ -6,7 +9,7 @@ void ClientController<T>::Create(const crow::request& req, crow::response& res, 
     json response;
     try
     {
-        bool                   success = false;
+        bool                 success = false;
         typename T::Create_t client_data(request_json, res, success);
 
         if (success)
@@ -44,7 +47,7 @@ void ClientController<T>::Update(const crow::request& req, crow::response& res, 
     json response;
     try
     {
-        bool                   success = false;
+        bool                 success = false;
         typename T::Update_t client_data(request_json, res, success);
 
         if (success)
@@ -108,10 +111,10 @@ std::optional<uint64_t> ClientController<T>::Login(const crow::request& req, cro
         loggedUserInfo.llodt = sessionManager->getLastLogoutTime(loggedUserInfo.userID.value(), loggedUserInfo.group.value()).value_or("first_login");
 
         json token_object;
-        token_object["token"]    = tokenManager->GenerateToken(loggedUserInfo);
-        token_object["username"] = creds.username;
-        token_object["client_id"]  = client_id;
-        token_object["group"]    = loggedUserInfo.group;
+        token_object["token"]     = tokenManager->GenerateToken(loggedUserInfo);
+        token_object["username"]  = creds.username;
+        token_object["client_id"] = client_id;
+        token_object["group"]     = loggedUserInfo.group;
 
         token_object.dump_pretty(reponse_string);
         RestHelper::successResponse(res, crow::status::OK, reponse_string);

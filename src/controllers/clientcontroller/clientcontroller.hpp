@@ -5,14 +5,11 @@
 
 #include <jsoncons/json.hpp>
 #include <memory>
-#include <type_traits>
 
 #include "controllers/clientcontroller/clientcontrollerbase.hpp"
-#include "controllers/databasecontroller/databasecontroller.hpp"
 #include "controllers/entitycontroller/entitycontroller.hpp"
 #include "entities/base/client.hpp"
-#include "utils/passwordcrypt/passwordcrypt.hpp"
-#include "utils/resthelper/resthelper.hpp"
+#include "utils/message/message.hpp"
 #include "utils/sessionmanager/sessionmanager.hpp"
 #include "utils/tokenmanager/tokenmanager.hpp"
 
@@ -33,7 +30,7 @@ class ClientController : public EntityController<T>, public ClientControllerBase
         }
         catch (const std::exception& e)
         {
-            std::cerr << fmt::format("Exception in ClientController constructor: {}\n", e.what());
+            Message::FailureMessage(fmt::format("Exception in ClientController constructor: {}\n", e.what()));
             exit(EXIT_FAILURE);
         }
     }
