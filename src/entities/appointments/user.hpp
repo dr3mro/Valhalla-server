@@ -19,5 +19,5 @@ class ClinicAppointment : public Appointment
     {
     }
     std::string getTableName() { return TABLENAME; }
-    ~ClinicAppointment() override = default;
+    virtual ~ClinicAppointment() override = default;
 };

@@ -17,8 +17,8 @@ struct XRequest : crow::ILocalMiddleware
         jsoncons::json criteria;
     };
 
-    XRequest()  = default;
-    ~XRequest() = default;
+    XRequest()          = default;
+    virtual ~XRequest() = default;
 
     void before_handle(crow::request &req, crow::response &res, context &ctx)
     {

@@ -46,7 +46,7 @@ class API_V1_Routes
 {
    public:
     API_V1_Routes(std::shared_ptr<APP>& app);
-    ~API_V1_Routes() = default;
+    virtual ~API_V1_Routes() = default;
 
    private:
     // Define variant type

@@ -21,5 +21,5 @@ class Requests : public Case
 
     std::string getTableName() { return TABLENAME; }
 
-    ~Requests() override = default;
+    virtual ~Requests() override = default;
 };

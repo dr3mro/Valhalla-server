@@ -20,5 +20,5 @@ class RadiologyCenters : public Service
     {
     }
     std::string getTableName() { return TABLENAME; }
-    ~RadiologyCenters() override = default;
+    virtual ~RadiologyCenters() override = default;
 };

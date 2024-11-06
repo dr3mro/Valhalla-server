@@ -39,7 +39,7 @@ class ClientController : public EntityController<T>, public ClientControllerBase
         }
     }
 
-    ~ClientController() override = default;
+    virtual ~ClientController() override = default;
 
     void Create(const crow::request& req, crow::response& res, const json& request_json) final;
     void Read(const crow::request& req, crow::response& res, const json& request_json) final;

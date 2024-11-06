@@ -11,7 +11,7 @@ class User : public Client
     {
     }
     User() : Client(std::string(TABLENAME)) {}
-    ~User() = default;
+    virtual ~User() = default;
     std::string                getTableName() { return TABLENAME; }
     std::optional<std::string> getSqlGetServicesStatement()
     {

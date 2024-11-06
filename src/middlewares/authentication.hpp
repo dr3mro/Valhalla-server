@@ -12,8 +12,8 @@ struct Authentication : crow::ILocalMiddleware
     {
         jsoncons::json credentials;
     };
-    Authentication()  = default;
-    ~Authentication() = default;
+    Authentication()          = default;
+    virtual ~Authentication() = default;
 
     void before_handle(crow::request &req, crow::response &res, context &ctx)
     {

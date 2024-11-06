@@ -19,5 +19,5 @@ class Clinics : public Service
 
     std::string getTableName() { return TABLENAME; }
 
-    ~Clinics() = default;
+    virtual ~Clinics() = default;
 };

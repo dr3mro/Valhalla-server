@@ -6,7 +6,7 @@ class PasswordCrypt
 {
    public:
     PasswordCrypt();
-    ~PasswordCrypt() = default;
+    virtual ~PasswordCrypt() = default;
 
     std::optional<std::string> hashPassword(const std::string &password);
     bool                       verifyPassword(const std::string &password, const std::string &hash) const;

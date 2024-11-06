@@ -27,7 +27,7 @@ class DOSDetector
     };
 
     DOSDetector();
-    ~DOSDetector();
+    virtual ~DOSDetector();
     DOSDetector::Status is_dos_attack(const crow::request &req);
 
    private:
@@ -55,8 +55,7 @@ class DOSDetector
     inline std::optional<std::string> __attribute((always_inline)) generateRequestFingerprint(const crow::request &req);
     inline bool __attribute((always_inline))                       isWhitelisted(std::string_view remote_ip);
     inline bool __attribute((always_inline))                       isBlacklisted(std::string_view remote_ip);
-    inline bool __attribute((always_inline)) regexFind(std::string_view remote_ip, const std::unordered_set<std::string> &list,
-                                                       std::mutex &mtx);
+    inline bool __attribute((always_inline)) regexFind(std::string_view remote_ip, const std::unordered_set<std::string> &list, std::mutex &mtx);
     inline bool __attribute((always_inline)) isBanned(std::string_view remote_ip);
     inline bool __attribute((always_inline)) isRateLimited(std::string_view remote_ip);
     template <typename Map, typename Mutex>

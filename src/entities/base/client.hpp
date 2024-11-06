@@ -246,7 +246,7 @@ class Client : public Entity
         return std::nullopt;
     }
 
-    ~Client() override = default;
+    virtual ~Client() override = default;
 
    private:
     std::shared_ptr<DatabaseController> databaseController;

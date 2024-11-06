@@ -117,7 +117,7 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
    public:
     explicit ClinicController() = default;
 
-    ~ClinicController() override = default;
+    virtual ~ClinicController() override = default;
 
     void Create(const crow::request &req, crow::response &res, const json &request_json) final
     {

@@ -15,8 +15,8 @@ template <typename T>
 class StaffController : public StaffControllerBase, public Controller
 {
    public:
-    explicit StaffController()  = default;
-    ~StaffController() override = default;
+    explicit StaffController()          = default;
+    virtual ~StaffController() override = default;
 
     // CRUDS
     void AddStaffToEntity(const crow::request &req, crow::response &res, const jsoncons::json &body) override;

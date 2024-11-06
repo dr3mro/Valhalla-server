@@ -19,5 +19,5 @@ class Pharmacies : public Service
     {
     }
     std::string getTableName() { return TABLENAME; }
-    ~Pharmacies() override = default;
+    virtual ~Pharmacies() override = default;
 };

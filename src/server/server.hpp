@@ -9,7 +9,7 @@ class Server
 {
    public:
     Server();
-    ~Server() = default;
+    virtual ~Server() = default;
 
     int run();
 

@@ -13,8 +13,8 @@ struct Search : crow::ILocalMiddleware
     {
         jsoncons::json search_json;
     };
-    Search()  = default;
-    ~Search() = default;
+    Search()          = default;
+    virtual ~Search() = default;
     template <typename BRequestContext>
     void before_handle(crow::request &req, crow::response &res, context &ctx, BRequestContext &brequest_ctx)
     {

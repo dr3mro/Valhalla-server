@@ -21,5 +21,5 @@ class PaidServices : public Case
 
     std::string getTableName() { return TABLENAME; }
 
-    ~PaidServices() override = default;
+    virtual ~PaidServices() override = default;
 };

@@ -19,7 +19,7 @@ class Patient : public Case
     };
 
     Patient() : Case(TABLENAME) {}
-    ~Patient() override = default;
+    virtual ~Patient() override = default;
 
     template <typename T>
     Patient(const T& _data) : Case(_data, TABLENAME)

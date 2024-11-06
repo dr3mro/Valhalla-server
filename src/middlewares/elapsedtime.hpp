@@ -12,8 +12,8 @@ struct ElapsedTime : crow::ILocalMiddleware
         std::chrono::steady_clock::time_point start_time;
     };
 
-    ElapsedTime()  = default;
-    ~ElapsedTime() = default;
+    ElapsedTime()          = default;
+    virtual ~ElapsedTime() = default;
 
     void before_handle(crow::request &req, crow::response &res, context &ctx)
     {

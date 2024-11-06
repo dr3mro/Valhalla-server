@@ -13,7 +13,7 @@ class AppointmentController : public EntityController<T>, public AppointmentCont
    public:
     explicit AppointmentController() = default;
 
-    ~AppointmentController() override = default;
+    virtual ~AppointmentController() override = default;
 
     // CRUDS
     void Create(const crow::request &req, crow::response &res, const jsoncons::json &request_json) override;

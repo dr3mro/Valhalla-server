@@ -39,7 +39,7 @@ class DatabaseController
 {
    public:
     DatabaseController();
-    ~DatabaseController() = default;
+    virtual ~DatabaseController() = default;
 
     std::optional<json>        executeQuery(const std::string &query);
     std::optional<json>        executeReadQuery(const std::string &query);

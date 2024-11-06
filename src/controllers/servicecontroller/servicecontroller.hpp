@@ -13,7 +13,7 @@ class ServiceController : public EntityController<T>, public ServiceControllerBa
    public:
     explicit ServiceController() = default;
 
-    ~ServiceController() override = default;
+    virtual ~ServiceController() override = default;
 
     // CRUDS
     void Create(const crow::request &req, crow::response &res, const json &request_json) final;
