@@ -143,7 +143,7 @@ string(STRIP "${GIT_TAG_MACRO}" GIT_TAG_MACRO)
 add_compile_definitions(${GIT_TAG_MACRO})
 
 # Find all source files
-file(GLOB_RECURSE SRC "src/*.cpp")
+file(GLOB_RECURSE SRC "src/*.cpp" "src/*.tpp")
 
 # Find OpenSSL package
 find_package(OpenSSL REQUIRED)

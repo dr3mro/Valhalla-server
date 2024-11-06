@@ -283,6 +283,7 @@ class Entity : public Base
      *
      * @return The name of the table associated with this entity.
      */
+    //   TODO:
     std::string getGroupName() const  // ie. tablename
     {
         return tablename;
