@@ -1,6 +1,9 @@
 #include "resthelper.hpp"
 
+#include <jsoncons/json.hpp>
+
 #include "fmt/core.h"
+using json = jsoncons::json;
 
 void RestHelper::failureResponse(crow::response& res, const std::string& status_message)
 {

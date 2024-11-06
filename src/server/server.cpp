@@ -42,8 +42,6 @@ void Server::print_banner()
     fmt::color random_color = colors[std::rand() % num_colors];
 
     // Clean screen
-    // std::cout << "\033[2J\033[1;1H" << std::endl;
-
     // Print Config
     PRINTLINE()
     PRINT("Configuration:", config_.desc, light_blue, yellow)

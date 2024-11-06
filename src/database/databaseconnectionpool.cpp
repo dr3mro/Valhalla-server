@@ -1,19 +1,10 @@
 #include "databaseconnectionpool.hpp"
 
 #include <future>
-#include <iostream>
 #include <pqxx/pqxx>
-/**
- * Initializes a database connection pool with the specified number of
- * connections.
- *
- * This constructor creates a pool of database connections using the provided
- * database connection parameters. It attempts to establish a connection for
- * each connection in the pool, and adds the successful connections to the pool.
- * If any connection fails to open, an exception is thrown.
- *
- * @param pool_size The number of database connections to create in the pool.
- */
+
+#include "utils/message/message.hpp"
+
 std::shared_ptr<Database> DatabaseConnectionPool::createDatabaseConnection()
 {
     auto command =
@@ -43,34 +34,26 @@ DatabaseConnectionPool::DatabaseConnectionPool()
             if (status == std::future_status::ready)
             {
                 databaseConnections.push(future.get());
-                std::cout << "Connection " << i + 1 << " created successfully." << '\n';
+                Message::SuccessMessage(fmt::format("Connection {} created successfully.\n", i + 1));
             }
             else
             {
+                Message::ErrorMessage("Connection attempt timed out, failed to open database connection\n");
                 throw std::runtime_error("Connection attempt timed out, failed to open database connection");
             }
         }
     }
     catch (const std::exception &e)
     {
-        std::cerr << "\033[31m" << "Exception caught during database connection pool initialization:\n" << "\033[35m" << e.what() << '\n';
-        std::cerr << "\033[33m" << "Make sure the database server is running and reachable and the connection parameters are correct.\n";
-        std::cerr << "\033[31m" << "Failed to initialize database connection pool\n" << "\033[36m" << "Exiting ...\n" << "\033[0m";
+        Message::ErrorMessage("Exception caught during database connection pool initialization");
+        Message::FailureMessage(e.what());
+        Message::InfoMessage("Make sure the database server is running and reachable and the connection parameters are correct");
+        Message::WarningMessage("Failed to initialize database connection pool\n");
+        Message::DebugMessage("Exiting ...\n");
         exit(EXIT_FAILURE);
     }
 }
 
-// Get a connection from the pool
-/**
- * Retrieves a database connection from the connection pool.
- *
- * This function acquires a lock on the connection pool mutex and waits for a
- * connection to become available in the pool. Once a connection is available,
- * it is removed from the pool and returned.
- *
- * @return A shared pointer to a Database object representing the retrieved
- * database connection.
- */
 std::shared_ptr<Database> DatabaseConnectionPool::get_connection()
 {
     std::unique_lock<std::mutex> lock(mutex);
@@ -80,26 +63,12 @@ std::shared_ptr<Database> DatabaseConnectionPool::get_connection()
     }
     auto db = databaseConnections.front();
     databaseConnections.pop();
-    // std::cout << "Database connection retrieved from pool. Connections
-    // remaining: " << databaseConnections.size() << std::endl;
     return db;
 }
 
-// Return a connection to the pool
-/**
- * Returns a database connection to the connection pool.
- *
- * This function acquires a lock on the connection pool mutex and adds the
- * provided database connection back to the pool. It then notifies any waiting
- * threads that a connection is available.
- *
- * @param db The database connection to return to the pool.
- */
 void DatabaseConnectionPool::return_connection(std::shared_ptr<Database> db)
 {
     std::lock_guard<std::mutex> lock(mutex);
     databaseConnections.push(std::move(db));
     cv.notify_one();
-    // std::cout << "Database connection returned to pool. Connections available:
-    // " << databaseConnections.size() << std::endl;
 }
