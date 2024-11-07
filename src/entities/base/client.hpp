@@ -8,6 +8,7 @@
 
 #include "entities/base/entity.hpp"
 #include "fmt/format.h"
+#include "utils/message/message.hpp"
 
 #define USERNAME "username"
 
@@ -123,7 +124,8 @@ class Client : public Entity
         }
         catch (const std::exception &e)
         {
-            std::cerr << "faild to create query for create " << tablename << e.what() << '\n';
+            Message::ErrorMessage(fmt::format("Failed to create Sql create statement for table {}.", tablename));
+            Message::FailureMessage(e.what());
             return std::nullopt;
         }
         return std::nullopt;
@@ -146,7 +148,6 @@ class Client : public Entity
             else
             {
                 throw std::runtime_error("id not found");
-                return std::nullopt;
             }
 
             std::string update_column_values;
@@ -164,7 +165,8 @@ class Client : public Entity
         }
         catch (const std::exception &e)
         {
-            std::cerr << "failed to create query for update " << tablename << e.what() << '\n';
+            Message::ErrorMessage(fmt::format("Failed to create Sql update statement for table {}.", tablename));
+            Message::FailureMessage(e.what());
             return std::nullopt;
         }
         return query;
@@ -181,7 +183,8 @@ class Client : public Entity
         }
         catch (const std::exception &e)
         {
-            std::cerr << fmt::format("faild to create query for suspend {}: {} \n", tablename, e.what());
+            Message::ErrorMessage(fmt::format("Failed to create Sql suspend statement for table {}.", tablename));
+            Message::FailureMessage(e.what());
             return std::nullopt;
         }
 
@@ -209,10 +212,12 @@ class Client : public Entity
 
     std::optional<uint64_t> authenticate() const
     {
+        Credentials             credentials;
+        std::optional<uint64_t> client_id;
         try
         {
-            auto credentials = std::any_cast<Credentials>(getData());
-            auto client_id   = databaseController->findIfUserID(credentials.username, tablename);
+            credentials = std::any_cast<Credentials>(getData());
+            client_id   = databaseController->findIfUserID(credentials.username, tablename);
 
             if (!client_id)
                 return std::nullopt;
@@ -231,7 +236,9 @@ class Client : public Entity
         }
         catch (const std::exception &e)
         {
-            std::cerr << "Error authenticating user : " << e.what() << '\n';
+            Message::ErrorMessage(fmt::format("Error authenticating client: USERNAME: {} ID: {}", credentials.username,
+                                              client_id.has_value() ? std::to_string(client_id.value()) : "N/A"));
+            Message::FailureMessage(e.what());
         }
         return std::nullopt;
     }

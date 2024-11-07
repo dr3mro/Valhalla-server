@@ -30,7 +30,8 @@ class ClientController : public EntityController<T>, public ClientControllerBase
         }
         catch (const std::exception& e)
         {
-            Message::FailureMessage(fmt::format("Exception in ClientController constructor: {}\n", e.what()));
+            Message::ErrorMessage(fmt::format("Exception in ClientController constructor."));
+            Message::FatalMessage(e.what());
             exit(EXIT_FAILURE);
         }
     }

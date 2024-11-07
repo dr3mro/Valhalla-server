@@ -1,5 +1,6 @@
 #pragma once
 #include "entities/base/client.hpp"
+#include "utils/message/message.hpp"
 
 class Provider : public Client
 {
@@ -46,7 +47,8 @@ class Provider : public Client
         }
         catch (const std::exception &e)
         {
-            std::cerr << "failed to create query for GetServicesStatement " << tablename << e.what() << '\n';
+            Message::ErrorMessage(fmt::format("Failed to create query for GetServicesStatement {}.", tablename));
+            Message::FailureMessage(e.what());
             return std::nullopt;
         }
 

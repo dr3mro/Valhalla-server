@@ -5,8 +5,6 @@
 #include "store/store.hpp"
 #include "utils/message/message.hpp"
 
-using std::cerr;
-
 DatabaseController::DatabaseController()
 {
     try
@@ -15,9 +13,8 @@ DatabaseController::DatabaseController()
     }
     catch (const std::exception &e)
     {
-        Message::ErrorMessage("Exception in DatabaseController constructor");
-        Message::FailureMessage(e.what());
-        Message::WarningMessage("\nExiting ...\n");
+        Message::ErrorMessage("Exception in DatabaseController constructor.");
+        Message::FatalMessage(e.what());
         exit(EXIT_FAILURE);
     }
 }

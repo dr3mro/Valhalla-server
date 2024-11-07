@@ -8,6 +8,8 @@
 #include <map>
 #include <string>
 
+#include "utils/message/message.hpp"
+
 std::optional<std::string> Communicate::sendRequest(const std::string& server, const int port, const std::string& path,
                                                     const crow::HTTPMethod& method, const std::string& data)
 {
@@ -15,6 +17,7 @@ std::optional<std::string> Communicate::sendRequest(const std::string& server, c
     struct curl_slist* headers = NULL;
     headers                    = curl_slist_append(headers, "Content-Type: application/json");
     std::string response;
+    std::string url;
 
     try
     {
@@ -25,7 +28,7 @@ std::optional<std::string> Communicate::sendRequest(const std::string& server, c
         }
 
         // Using fmt::format to construct the URL string
-        std::string url = fmt::format("{}:{}{}", server, port, path);
+        url = fmt::format("{}:{}{}", server, port, path);
         curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
 
@@ -60,7 +63,8 @@ std::optional<std::string> Communicate::sendRequest(const std::string& server, c
     }
     catch (const std::exception& e)
     {
-        std::cerr << "Exception occurred: " << e.what() << std::endl;
+        Message::ErrorMessage(fmt::format("Failed to send request to {}.", url));
+        Message::FailureMessage(e.what());
         if (curl)
         {
             curl_easy_cleanup(curl);
@@ -87,7 +91,8 @@ std::optional<std::string> Communicate::handleResponse(CURL* curl)
     }
     catch (const std::exception& e)
     {
-        std::cerr << "Exception occurred: " << e.what() << std::endl;
+        Message::ErrorMessage(fmt::format("Failed to handle request."));
+        Message::FailureMessage(e.what());
         response.clear();  // Clear the response to indicate failure
     }
 

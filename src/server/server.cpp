@@ -28,7 +28,8 @@ int Server::run()
     }
     catch (const std::exception &e)
     {
-        std::cerr << "Exception caught in main: " << e.what() << std::endl;
+        Message::ErrorMessage(fmt::format("Failed to start server on {}:{}.", config_.host, config_.port));
+        Message::FatalMessage(e.what());
         return EXIT_FAILURE;  // Exit with error code
     }
 

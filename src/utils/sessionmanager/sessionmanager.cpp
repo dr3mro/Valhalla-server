@@ -7,6 +7,7 @@
 #include <string>
 
 #include "fmt/core.h"
+#include "utils/message/message.hpp"
 
 void SessionManager::setNowLoginTime(uint64_t id, const std::string &group)
 {
@@ -23,7 +24,8 @@ void SessionManager::setNowLoginTime(uint64_t id, const std::string &group)
     }
     catch (const std::exception &e)
     {
-        std::cerr << "Error updating login time: " << e.what() << std::endl;
+        Message::ErrorMessage("Error updating login time.");
+        Message::FailureMessage(e.what());
     }
 }
 
@@ -42,7 +44,8 @@ void SessionManager::setNowLogoutTime(uint64_t id, const std::string &group)
     }
     catch (const std::exception &e)
     {
-        std::cerr << "Error updating logout time: " << e.what() << std::endl;
+        Message::ErrorMessage("Error updating logout time.");
+        Message::FailureMessage(e.what());
     }
 }
 
