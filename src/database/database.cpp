@@ -3,8 +3,9 @@
 #include <fmt/core.h>
 
 #include <cstdlib>
-#include <iostream>
 #include <utility>
+
+#include "utils/message/message.hpp"
 
 /**
  * Constructs a Database object with the provided connection.
@@ -23,14 +24,14 @@ Database::Database(std::shared_ptr<pqxx::connection> conn) : connection(std::mov
         }
         else
         {
-            std::cerr << "Failed to open database" << std::endl;
+            Message::FatalMessage("Failed to open database connection.");
             exit(EXIT_FAILURE);
         }
     }
     catch (const std::exception &e)
     {
-        std::cerr << "Exception caught during database connection: " << e.what() << std::endl;
-        throw std::runtime_error("Failed to initialize database connection");
+        Message::ErrorMessage("Exception caught during database connection.");
+        Message::FatalMessage(e.what());
         exit(EXIT_FAILURE);
     }
 }
@@ -61,7 +62,8 @@ bool Database::checkExists(const std::string &table, const std::string &column, 
     }
     catch (const std::exception &e)
     {
-        std::cerr << "Error executing query: " << e.what() << std::endl;
-        throw;  // Rethrow the exception to indicate failure
+        Message::ErrorMessage("Error executing query.");
+        Message::FailureMessage(e.what());
+        return false;
     }
 }

@@ -7,9 +7,17 @@
 using std::cout;
 
 const std::unordered_map<Message::Level, std::string> Message::color_map = {
-    {Level::Failure, "\033[1;31m"}, {Level::Error, "\033[1;31m"}, {Level::Warning, "\033[1;33m"},
-    {Level::Success, "\033[1;32m"}, {Level::Info, "\033[1;34m"},  {Level::Debug, "\033[1;35m"},
+    {Level::Fatal, "\033[1;91m"},    // Bright Red
+    {Level::Failure, "\033[31m"},    // Dark Red
+    {Level::Error, "\033[1;31m"},    // Bold Red
+    {Level::Warning, "\033[1;33m"},  // Bold Yellow
+    {Level::Success, "\033[1;32m"},  // Bold Green
+    {Level::Info, "\033[1;36m"},     // Bold Cyan
+    {Level::Debug, "\033[1;35m"},    // Bold Magenta
+    {Level::Reset, "\033[0m"}        // Reset
 };
+
+void Message::FatalMessage(const std::string& status_message) { MessageImpl(status_message, Level::Fatal); }
 
 void Message::FailureMessage(const std::string& status_message) { MessageImpl(status_message, Level::Failure); }
 
@@ -25,6 +33,5 @@ void Message::DebugMessage(const std::string& status_message) { MessageImpl(stat
 
 void Message::MessageImpl(const std::string& status_message, Level level)
 {
-    std::string message = fmt::format("{}{}{}", color_map.at(level), status_message, color_map.at(Level::Info));
-    cout << message << '\n';
+    fmt::print("{}{}{}\n", color_map.at(level), status_message, color_map.at(Level::Reset));
 }

@@ -8,19 +8,21 @@ class Message
    public:
     enum class Level
     {
+        Fatal,
         Failure,
         Error,
         Warning,
         Success,
         Info,
-        Debug
+        Debug,
+        Reset
     };
 
     static const std::unordered_map<Level, std::string> color_map;
 
     Message()          = default;
     virtual ~Message() = default;
-
+    static void FatalMessage(const std::string& status_message);
     static void FailureMessage(const std::string& status_message);
     static void ErrorMessage(const std::string& status_message);
     static void WarningMessage(const std::string& status_message);

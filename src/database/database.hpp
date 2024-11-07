@@ -5,6 +5,8 @@
 
 #include <jsoncons/json.hpp>
 #include <pqxx/pqxx>  // Include the libpqxx header for PostgreSQL
+
+#include "utils/message/message.hpp"
 using json = jsoncons::json;
 
 /**
@@ -122,11 +124,14 @@ class Database
         }
         catch (const std::exception &e)
         {
-            std::cerr << "Error executing query: " << e.what() << std::endl;
+            Message::ErrorMessage("Error executing query:");
+            Message::InfoMessage(query);
+            Message::FailureMessage(e.what());
             throw;  // Rethrow the exception to indicate failure
         }
         return std::nullopt;
     }
+
     template <typename T>
     std::optional<T> doSimpleQuery(const std::string &query)
     {
@@ -138,7 +143,9 @@ class Database
         }
         catch (const std::exception &e)
         {
-            std::cerr << "Error executing query: " << e.what() << std::endl;
+            Message::ErrorMessage("Error executing query:");
+            Message::InfoMessage(query);
+            Message::FailureMessage(e.what());
             throw;  // Rethrow the exception to indicate failure
         }
     }

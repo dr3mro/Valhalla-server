@@ -1,5 +1,7 @@
 #include "tokenmanager.hpp"
 
+#include "utils/message/message.hpp"
+
 using jwt::error::token_verification_exception;
 /* Function to generate JWT token
  *
@@ -30,7 +32,8 @@ std::optional<std::string> TokenManager::GenerateToken(const LoggedUserInfo &log
     }
     catch (const std::exception &e)
     {
-        std::cerr << "Error generating token: " << e.what() << std::endl;
+        Message::ErrorMessage("Error generating token.");
+        Message::FailureMessage(e.what());
     }
     return std::nullopt;
 }
@@ -74,11 +77,13 @@ bool TokenManager::ValidateToken(LoggedUserInfo &loggedinUserInfo) const
     }
     catch (const token_verification_exception &e)
     {
-        std::cerr << "Token verification failed: " << e.what() << std::endl;
+        Message::ErrorMessage("Token verification failed.");
+        Message::FailureMessage(e.what());
     }
     catch (const std::exception &e)
     {
-        std::cerr << "Error validating token: " << e.what() << std::endl;
+        Message::ErrorMessage("Error validating token.");
+        Message::FailureMessage(e.what());
     }
     return false;
 }
@@ -90,8 +95,7 @@ bool TokenManager::ValidateToken(LoggedUserInfo &loggedinUserInfo) const
  * to be verified.
  * @return A JWT verifier that can be used to verify the token.
  */
-jwt::verifier<jwt::default_clock, jwt::traits::kazuho_picojson> TokenManager::createTokenVerifier(
-    const LoggedUserInfo &loggedinUserInfo) const
+jwt::verifier<jwt::default_clock, jwt::traits::kazuho_picojson> TokenManager::createTokenVerifier(const LoggedUserInfo &loggedinUserInfo) const
 {
     return jwt::verify()
         .allow_algorithm(jwt::algorithm::hs256{tokenManagerParameters_.secret.data()})
@@ -144,6 +148,5 @@ void TokenManager::fillUserInfo(LoggedUserInfo &loggedinUserInfo, const jwt::dec
  */
 bool TokenManager::validateUserInDatabase(const LoggedUserInfo &loggedinUserInfo) const
 {
-    return databaseController->findIfUserID(loggedinUserInfo.userName.value(), loggedinUserInfo.group.value()) ==
-           loggedinUserInfo.userID.value();
+    return databaseController->findIfUserID(loggedinUserInfo.userName.value(), loggedinUserInfo.group.value()) == loggedinUserInfo.userID.value();
 }

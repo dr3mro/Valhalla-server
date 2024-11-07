@@ -3,6 +3,7 @@
 #include <jsoncons/json.hpp>
 
 #include "entities/base/entity.hpp"
+#include "utils/message/message.hpp"
 
 using json = jsoncons::json;
 
@@ -84,7 +85,8 @@ class Service : public Entity
         }
         catch (const std::exception &e)
         {
-            std::cerr << "faild to create query for add member " << tablename << e.what() << '\n';
+            Message::ErrorMessage("Error creating query for add member.");
+            Message::FailureMessage(e.what());
             return std::nullopt;
         }
         return query;
@@ -106,7 +108,8 @@ class Service : public Entity
         }
         catch (const std::exception &e)
         {
-            std::cerr << "faild to create query for remove member " << tablename << e.what() << '\n';
+            Message::ErrorMessage("Error creating query for remove member.");
+            Message::FailureMessage(e.what());
             return std::nullopt;
         }
         return query;

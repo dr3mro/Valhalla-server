@@ -34,22 +34,21 @@ DatabaseConnectionPool::DatabaseConnectionPool()
             if (status == std::future_status::ready)
             {
                 databaseConnections.push(future.get());
-                Message::SuccessMessage(fmt::format("Connection {} created successfully.\n", i + 1));
+                Message::SuccessMessage(fmt::format("Connection {} created successfully.", i + 1));
             }
             else
             {
-                Message::ErrorMessage("Connection attempt timed out, failed to open database connection\n");
-                throw std::runtime_error("Connection attempt timed out, failed to open database connection");
+                Message::ErrorMessage("Connection attempt timedout, failed to open database connection.");
+                throw std::runtime_error("Database connection pool initialization failed");
             }
         }
     }
     catch (const std::exception &e)
     {
-        Message::ErrorMessage("Exception caught during database connection pool initialization");
+        Message::ErrorMessage("Exception caught during database connection pool initialization.");
         Message::FailureMessage(e.what());
-        Message::InfoMessage("Make sure the database server is running and reachable and the connection parameters are correct");
-        Message::WarningMessage("Failed to initialize database connection pool\n");
-        Message::DebugMessage("Exiting ...\n");
+        Message::InfoMessage("Make sure the database server is running and reachable and the connection parameters are correct.");
+        Message::FatalMessage("Failed to initialize database connection pool.");
         exit(EXIT_FAILURE);
     }
 }

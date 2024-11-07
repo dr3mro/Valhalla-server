@@ -11,8 +11,10 @@
 #include "fmt/ranges.h"
 #include "jsoncons/basic_json.hpp"
 #include "store/store.hpp"
+#include "utils/message/message.hpp"
 #include "utils/passwordcrypt/passwordcrypt.hpp"
 #include "utils/resthelper/resthelper.hpp"
+
 using json = jsoncons::json;
 
 class Entity : public Base
@@ -109,7 +111,8 @@ class Entity : public Base
         }
         catch (const std::exception &e)
         {
-            std::cerr << "faild to create query for create " << tablename << e.what() << '\n';
+            Message::ErrorMessage(fmt::format("Failed to create Sql create statement for table {}.", tablename));
+            Message::FailureMessage(e.what());
             return std::nullopt;
         }
         return query;
@@ -129,7 +132,8 @@ class Entity : public Base
         }
         catch (const std::exception &e)
         {
-            std::cerr << "faild to create query for read " << tablename << e.what() << '\n';
+            Message::ErrorMessage(fmt::format("Failed to create Sql read statement for table {}.", tablename));
+            Message::FailureMessage(e.what());
             return std::nullopt;
         }
         return query;
@@ -160,7 +164,8 @@ class Entity : public Base
         }
         catch (const std::exception &e)
         {
-            std::cerr << "faild to create query for update " << tablename << e.what() << '\n';
+            Message::ErrorMessage(fmt::format("Failed to create Sql update statement for table {}.", tablename));
+            Message::FailureMessage(e.what());
             return std::nullopt;
         }
         return query;
@@ -179,7 +184,8 @@ class Entity : public Base
         }
         catch (const std::exception &e)
         {
-            std::cerr << "faild to create query for delete " << tablename << e.what() << '\n';
+            Message::ErrorMessage(fmt::format("Failed to create Sql delete statement for table {}.", tablename));
+            Message::FailureMessage(e.what());
             return std::nullopt;
         }
         return query;
@@ -196,7 +202,8 @@ class Entity : public Base
         }
         catch (const std::exception &e)
         {
-            std::cerr << "faild to create query for search " << tablename << e.what() << '\n';
+            Message::ErrorMessage(fmt::format("Failed to create Sql search statement for table {}.", tablename));
+            Message::FailureMessage(e.what());
             return std::nullopt;
         }
 

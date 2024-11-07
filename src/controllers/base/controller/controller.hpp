@@ -11,6 +11,7 @@
 #include "entities/base/client.hpp"
 #include "entities/base/entity.hpp"
 #include "entities/services/clinics/patient/patient.hpp"
+#include "utils/message/message.hpp"
 #include "utils/resthelper/resthelper.hpp"
 #include "utils/sessionmanager/sessionmanager.hpp"
 #include "utils/tokenmanager/tokenmanager.hpp"
@@ -29,7 +30,8 @@ class Controller
         }
         catch (const std::exception &e)
         {
-            std::cerr << fmt::format("Exception in Controller constructor: {}\n", e.what());
+            Message::ErrorMessage(fmt::format("Exception in Controller constructor."));
+            Message::FatalMessage(e.what());
             exit(EXIT_FAILURE);
         }
     }
@@ -216,7 +218,7 @@ class Controller
 
             if (json_nextval.empty())
             {
-                std::cerr << fmt::format("json_nextval is empty\n");
+                Message::ErrorMessage("json_nextval is empty.");
             }
 
             auto obj = json_nextval.find("nextval");
@@ -227,7 +229,7 @@ class Controller
         }
         catch (const std::exception &e)
         {
-            std::cerr << fmt::format("Failed: {}\n", e.what());
+            Message::FailureMessage(fmt::format("Failed: {}.", e.what()));
         }
         return std::nullopt;
     }

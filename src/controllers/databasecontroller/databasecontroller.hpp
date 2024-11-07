@@ -3,7 +3,7 @@
 
 #include "database/database.hpp"
 #include "database/databaseconnectionpool.hpp"
-
+#include "utils/message/message.hpp"
 using json = jsoncons::json;
 
 class DatabaseController
@@ -41,13 +41,12 @@ class DatabaseController
         }
         catch (const std::exception &e)
         {
-            std::cerr << "Exception occurred during query execution: " << e.what() << '\n';
-            throw;
+            Message::ErrorMessage("Exception occurred during query execution.");
+            Message::FailureMessage(e.what());
         }
         catch (...)
         {
-            std::cerr << "Unknown exception occurred during query execution." << '\n';
-            throw;
+            Message::FailureMessage("Unknown exception occurred during query execution.");
         }
         return std::nullopt;
     }
