@@ -1,9 +1,11 @@
 #pragma once
 
+#include <sys/types.h>
+
 #include <any>
+#include <cstddef>
 #include <cstdint>
-#include <regex>
-#include <utility>
+#include <type_traits>
 
 #include "controllers/databasecontroller/databasecontroller.hpp"
 #include "entities/base/base.hpp"
@@ -13,40 +15,45 @@
 #include "store/store.hpp"
 #include "utils/message/message.hpp"
 #include "utils/passwordcrypt/passwordcrypt.hpp"
-#include "utils/resthelper/resthelper.hpp"
 
 using json = jsoncons::json;
 
 class Entity : public Base
 {
    public:
-    using Create_t = struct Create_t
+    template <typename S>
+    struct Entity_t
     {
        public:
-        jsoncons::json data_j;
-        uint64_t       id;
-        Create_t(const json &data, const uint64_t id) : data_j(data), id(id) {}
-    };
-
-    using Read_t = struct Read_t
-    {
-        std::vector<std::string> schema;
-        uint64_t                 id;
-        Read_t(const std::vector<std::string> &_schema, const uint64_t _id) : schema(_schema), id(_id) {}
-    };
-
-    using Update_t = struct Update_t
-    {
-       public:
-        jsoncons::json data_j;
-        uint64_t       id;
-        Update_t(const json &data, const uint64_t id) : data_j(data), id(id) {}
-    };
-
-    using Delete_t = struct Delete_t
-    {
+        Entity_t(const S &_data, const uint64_t _id) : data(_data), id(_id) {}
+        Entity_t(const uint64_t _id) : id(_id) {}
+        virtual ~Entity_t() = default;
+        S        data;
         uint64_t id;
-        Delete_t(const uint64_t _id) : id(_id) {}
+    };
+
+    using Create_t = struct Create_t : public Entity_t<jsoncons::json>
+    {
+        Create_t(const json &data, const uint64_t id) : Entity_t(data, id) {}
+        ~Create_t() override = default;
+    };
+
+    using Read_t = struct Read_t : public Entity_t<const std::vector<std::string>>
+    {
+        Read_t(const std::vector<std::string> &_data, const uint64_t _id) : Entity_t(_data, _id) {}
+        ~Read_t() override = default;
+    };
+
+    using Update_t = struct Update_t : public Entity_t<jsoncons::json>
+    {
+        Update_t(const json &_data, const uint64_t _id) : Entity_t(_data, _id) {}
+        ~Update_t() override = default;
+    };
+
+    using Delete_t = struct Delete_t : public Entity_t<char>
+    {
+        Delete_t(const uint64_t _id) : Entity_t(_id) {}
+        ~Delete_t() override = default;
     };
 
     using Search_t = struct Search_t
@@ -94,7 +101,7 @@ class Entity : public Base
             std::vector<std::string> keys_arr;
             std::vector<std::string> values_arr;
 
-            json     data_json = std::any_cast<Create_t>(data).data_j;
+            json     data_json = std::any_cast<Create_t>(data).data;
             uint64_t next_id   = std::any_cast<Create_t>(data).id;
             data_json["id"]    = next_id;
 
@@ -124,7 +131,7 @@ class Entity : public Base
         try
         {
             auto user_id = std::any_cast<Read_t>(data).id;
-            auto schema  = std::any_cast<Read_t>(data).schema;
+            auto schema  = std::any_cast<Read_t>(data).data;
 
             std::string columns = schema.empty() ? "*" : fmt::format("{}", fmt::join(schema, ", "));
 
@@ -145,7 +152,7 @@ class Entity : public Base
 
         try
         {
-            json payload = std::any_cast<Update_t>(data).data_j;
+            json payload = std::any_cast<Update_t>(data).data;
 
             uint64_t id = std::any_cast<Update_t>(data).id;
 

@@ -4,7 +4,7 @@
 
 #include <jsoncons/json.hpp>
 
-#include "utils/resthelper/resthelper.hpp"
+using json = jsoncons::json;
 
 class ClinicControllerBase
 {

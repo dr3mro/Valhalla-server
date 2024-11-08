@@ -5,10 +5,13 @@
 #include <cstdint>
 #include <jsoncons/json.hpp>
 #include <memory>
+#include <regex>
+#include <utility>
 
 #include "entities/base/entity.hpp"
 #include "fmt/format.h"
 #include "utils/message/message.hpp"
+#include "utils/resthelper/resthelper.hpp"
 
 #define USERNAME "username"
 
