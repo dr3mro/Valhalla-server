@@ -9,45 +9,6 @@
 #include "utils/message/message.hpp"
 using json = jsoncons::json;
 
-/**
- * @class Database
- * @brief Provides an interface for interacting with a PostgreSQL database.
- *
- * The `Database` class is responsible for managing the connection to a PostgreSQL
- * database and executing SQL queries. It provides methods for checking if the
- * connection is established, checking if a table and column combination exists,
- * and executing both simple and complex queries.
- *
- * The `executeQuery` method allows executing arbitrary SQL queries and returns
- * the results as a JSON array. The `doSimpleQuery` method is a convenience
- * function for executing simple queries that return a single value.
- */
-/**
- * @class Database
- * @brief Provides an interface for interacting with a PostgreSQL database.
- *
- * The `Database` class is responsible for managing the connection to a PostgreSQL
- * database and executing SQL queries. It provides methods for checking if the
- * connection is established, checking if a table and column combination exists,
- * and executing both simple and complex queries.
- *
- * The `executeQuery` method allows executing arbitrary SQL queries and returns
- * the results as a JSON array. The `doSimpleQuery` method is a convenience
- * function for executing simple queries that return a single value.
- */
-/**
- * @class Database
- * @brief Provides an interface for interacting with a PostgreSQL database.
- *
- * The `Database` class is responsible for managing the connection to a PostgreSQL
- * database and executing SQL queries. It provides methods for checking if the
- * connection is established, checking if a table and column combination exists,
- * and executing both simple and complex queries.
- *
- * The `executeQuery` method allows executing arbitrary SQL queries and returns
- * the results as a JSON array. The `doSimpleQuery` method is a convenience
- * function for executing simple queries that return a single value.
- */
 class Database
 {
    public:
@@ -127,7 +88,8 @@ class Database
             Message::ErrorMessage("Error executing query:");
             Message::InfoMessage(query);
             Message::FailureMessage(e.what());
-            throw;  // Rethrow the exception to indicate failure
+            return std::nullopt;
+            // throw;  // Rethrow the exception to indicate failure
         }
         return std::nullopt;
     }
@@ -146,7 +108,8 @@ class Database
             Message::ErrorMessage("Error executing query:");
             Message::InfoMessage(query);
             Message::FailureMessage(e.what());
-            throw;  // Rethrow the exception to indicate failure
+            return std::nullopt;
+            // throw;  // Rethrow the exception to indicate failure
         }
     }
 
