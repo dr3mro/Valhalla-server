@@ -7,11 +7,6 @@
 
 #include "utils/message/message.hpp"
 
-/**
- * Constructs a Database object with the provided connection.
- *
- * @param conn A shared pointer to the PostgreSQL connection to use for database operations.
- */
 Database::Database(std::shared_ptr<pqxx::connection> conn) : connection(std::move(conn))
 {
     try
@@ -36,22 +31,8 @@ Database::Database(std::shared_ptr<pqxx::connection> conn) : connection(std::mov
     }
 }
 
-/**
- * Checks if the database connection is open.
- *
- * @return true if the database connection is open, false otherwise.
- */
 bool Database::isConnected() { return connection && connection->is_open(); }
 
-/**
- * Checks if a record exists in the specified table and column with the given value.
- *
- * @param table The name of the table to check.
- * @param column The name of the column to check.
- * @param value The value to search for in the specified column.
- * @return true if a record exists, false otherwise.
- * @throws std::exception if there is an error executing the query.
- */
 bool Database::checkExists(const std::string &table, const std::string &column, const std::string &value)
 {
     try
