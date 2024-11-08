@@ -13,12 +13,12 @@ class RadiologyCenters : public Service
     static constexpr auto TABLENAME = "radiologycenters";
 
    public:
-    RadiologyCenters() : Service(TABLENAME) {}
+    // RadiologyCenters() : Service(TABLENAME) {}
 
     template <typename T>
     RadiologyCenters(const T &_data) : Service(_data, TABLENAME)
     {
     }
-    std::string getTableName() { return TABLENAME; }
+    static constexpr auto getTableName() { return TABLENAME; }
     virtual ~RadiologyCenters() override = default;
 };

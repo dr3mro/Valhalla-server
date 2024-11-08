@@ -12,14 +12,14 @@ class Requests : public Case
     static constexpr auto TABLENAME = "clinics_requests";
 
    public:
-    Requests() : Case(TABLENAME) {}
+    // Requests() : Case(TABLENAME) {}
 
     template <typename T>
     Requests(const T &_data) : Case(_data, TABLENAME)
     {
     }
 
-    std::string getTableName() { return TABLENAME; }
+    static constexpr auto getTableName() { return TABLENAME; }
 
     virtual ~Requests() override = default;
 };

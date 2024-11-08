@@ -15,7 +15,7 @@ template <typename T>
 class StaffController : public StaffControllerBase, public Controller
 {
    public:
-    explicit StaffController()          = default;
+    StaffController() : cfg_(Store::getObject<Configurator>()), email_sender_daemon_config_(cfg_->get<Configurator::EmailSenderConfig>()) {}
     virtual ~StaffController() override = default;
 
     // CRUDS
@@ -24,9 +24,8 @@ class StaffController : public StaffControllerBase, public Controller
     void InviteStaffToEntity(const crow::request &req, crow::response &res, const jsoncons::json &body) override;
 
    private:
-    T                               service;
-    std::shared_ptr<Configurator>   cfg_                        = Store::getObject<Configurator>();
-    Configurator::EmailSenderConfig email_sender_daemon_config_ = cfg_->get<Configurator::EmailSenderConfig>();
+    std::shared_ptr<Configurator>   cfg_;
+    Configurator::EmailSenderConfig email_sender_daemon_config_;
 };
 
 template <typename T>
@@ -36,9 +35,9 @@ void StaffController<T>::AddStaffToEntity(const crow::request &req, crow::respon
     json response;
     try
     {
-        json                  data(body);
-        json                  payload = data.at("payload");
-        typename T::StaffData staffData(payload);
+        json             data(body);
+        json             payload = data.at("payload");
+        Types::StaffData staffData(payload);
 
         T service(staffData);
         Controller::addStaff(res, service);
@@ -56,9 +55,9 @@ void StaffController<T>::RemoveStaffFromEntity(const crow::request &req, crow::r
         json response;
         try
         {
-            json                  data(body);
-            json                  payload = data.at("payload");
-            typename T::StaffData staffData(payload);
+            json             data(body);
+            json             payload = data.at("payload");
+            Types::StaffData staffData(payload);
 
             T service(staffData);
             Controller::removeStaff(res, service);
@@ -77,7 +76,7 @@ void StaffController<T>::InviteStaffToEntity(const crow::request &req, crow::res
     try
     {
         json                       data(body);
-        typename T::StaffData      staffData(data);
+        Types::StaffData           staffData(data);
         std::optional<std::string> response;
         T                          service(staffData);
         if (staffData.parse_status && staffData.toInviteJson(data))

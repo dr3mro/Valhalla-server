@@ -12,12 +12,12 @@ class Laboratories : public Service
     static constexpr auto TABLENAME = "laboratories";
 
    public:
-    Laboratories() : Service(TABLENAME) {}
+    // Laboratories() : Service(TABLENAME) {}
 
     template <typename T>
     Laboratories(const T& _data) : Service(_data, TABLENAME)
     {
     }
-    std::string getTableName() { return TABLENAME; }
+    static constexpr auto getTableName() { return TABLENAME; }
     virtual ~Laboratories() = default;
 };
