@@ -12,12 +12,12 @@ class PharmacyAppointment : public Appointment
     static constexpr auto TABLENAME = "pharmacies_appointments";
 
    public:
-    PharmacyAppointment() : Appointment(TABLENAME) {}
+    // PharmacyAppointment() : Appointment(TABLENAME) {}
 
     template <typename T>
     PharmacyAppointment(const T &_data) : Appointment(_data, TABLENAME)
     {
     }
-    std::string getTableName() { return TABLENAME; }
+    static constexpr auto getTableName() { return TABLENAME; }
     virtual ~PharmacyAppointment() override = default;
 };

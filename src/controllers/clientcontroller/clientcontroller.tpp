@@ -1,4 +1,5 @@
 
+#include "entities/base/types.hpp"
 #include "utils/passwordcrypt/passwordcrypt.hpp"
 #include "utils/resthelper/resthelper.hpp"
 
@@ -9,8 +10,8 @@ void ClientController<T>::Create(const crow::request& req, crow::response& res, 
     json response;
     try
     {
-        bool                   success = false;
-        typename T::ClientData client_data(request_json, res, success);
+        bool              success = false;
+        Types::ClientData client_data(request_json, res, success);
 
         if (success)
         {
@@ -47,8 +48,8 @@ void ClientController<T>::Update(const crow::request& req, crow::response& res, 
     json response;
     try
     {
-        bool                   success = false;
-        typename T::ClientData client_data(request_json, res, success);
+        bool              success = false;
+        Types::ClientData client_data(request_json, res, success);
 
         if (success)
         {
@@ -88,7 +89,7 @@ std::optional<uint64_t> ClientController<T>::Login(const crow::request& req, cro
     std::optional<uint64_t> client_id;
     try
     {
-        typename T::Credentials creds;
+        Types::Credentials creds;
 
         creds.username = credentials.at("username").as<std::string>();
         creds.password = credentials.at("password").as<std::string>();
@@ -134,8 +135,8 @@ void ClientController<T>::Logout(const crow::request& req, crow::response& res, 
     (void)req;
     try
     {
-        typename T::LogoutData logoutData(token);
-        T                      client(logoutData);
+        Types::LogoutData logoutData(token);
+        T                 client(logoutData);
         Controller::Logout(res, client);
     }
     catch (const std::exception& e)
@@ -164,8 +165,8 @@ void ClientController<T>::Suspend(const crow::request& req, crow::response& res,
             return;
         }
 
-        typename T::SuspendData suspendData(client_id.value());
-        T                       client(suspendData);
+        Types::SuspendData suspendData(client_id.value());
+        T                  client(suspendData);
         Controller::Suspend(res, client);
     }
     catch (const std::exception& e)
@@ -193,8 +194,8 @@ void ClientController<T>::Activate(const crow::request& req, crow::response& res
             RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "Invalid id provided");
             return;
         }
-        typename T::SuspendData suspendData(client_id.value());
-        T                       client(suspendData);
+        Types::SuspendData suspendData(client_id.value());
+        T                  client(suspendData);
         Controller::Unsuspend(res, client);
     }
     catch (const std::exception& e)
@@ -222,7 +223,8 @@ void ClientController<T>::GetServices(const crow::request& req, crow::response& 
             RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "client_id extraction failed");
             return;
         }
-        T client(client_id.value());
+
+        T client(Types::Data_t(client_id.value()));
         Controller::GetServices(res, client);
     }
     catch (const std::exception& e)

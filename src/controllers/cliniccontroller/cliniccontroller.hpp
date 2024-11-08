@@ -31,9 +31,9 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
                 return;
             }
 
-            T entity(typename U::Create_t(request_json, id.value()));
+            T entity(Types::Create_t(request_json, id.value()));
 
-            if (entity.template check_id_exists<Entity::Create_t>())
+            if (entity.template check_id_exists<Types::Create_t>())
             {
                 RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "id already exists.");
                 return;
@@ -95,7 +95,7 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
         try
         {
             uint64_t id = std::stoull(params.at("id"));
-            T        entity((typename T::Data_t(id)));
+            T        entity((Types::Data_t(id)));
             Controller::GetVisits(res, entity);
         }
         catch (const std::exception &e)

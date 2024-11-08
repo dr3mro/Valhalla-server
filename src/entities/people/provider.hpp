@@ -5,21 +5,21 @@
 class Provider : public Client
 {
    public:
-    Provider(const ClientData &user_data) : Client(user_data, TABLENAME) {}
-    Provider(const Credentials &credentials) : Client(credentials, TABLENAME) {}
+    Provider(const Types::ClientData &user_data) : Client(user_data, TABLENAME) {}
+    Provider(const Types::Credentials &credentials) : Client(credentials, TABLENAME) {}
     template <typename T>
     Provider(const T &data) : Client(data, TABLENAME)
     {
     }
-    Provider() : Client(std::string(TABLENAME)) {}
+    // Provider() : Client(std::string(TABLENAME)) {}
     virtual ~Provider() = default;
-    std::string                getTableName() { return TABLENAME; }
+    static constexpr auto      getTableName() { return TABLENAME; }
     std::optional<std::string> getSqlGetServicesStatement()
     {
         std::optional<std::string> query;
         try
         {
-            uint64_t provider_id = std::any_cast<uint64_t>(getData());
+            uint64_t provider_id = std::get<Types::Data_t>(getData()).id;
             query                = fmt::format(
                 R"(
                         WITH vars AS (

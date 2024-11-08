@@ -15,9 +15,9 @@ class Clinics : public Service
     Clinics(const T &_data) : Service(_data, TABLENAME)
     {
     }
-    Clinics() : Service(TABLENAME) {}
+    // Clinics() : Service(TABLENAME) {}
 
-    std::string getTableName() { return TABLENAME; }
+    static constexpr auto getTableName() { return TABLENAME; }
 
     virtual ~Clinics() = default;
 };

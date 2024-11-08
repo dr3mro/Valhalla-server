@@ -41,7 +41,7 @@ void EntityController<T>::Create(const crow::request &req, crow::response &res, 
             return;
         }
 
-        T entity((typename T::Create_t(request_json, next_id.value())));
+        T entity((Types::Create_t(request_json, next_id.value())));
         Controller::Create(res, entity);
     }
     catch (const std::exception &e)
@@ -60,7 +60,7 @@ void EntityController<T>::Read(const crow::request &req, crow::response &res, co
         uint64_t                 id     = request_json.at("id").as<uint64_t>();
         std::vector<std::string> schema = request_json.at("schema").as<std::vector<std::string>>();
 
-        T entity((typename T::Read_t(schema, id)));
+        T entity((Types::Read_t(schema, id)));
         Controller::Read(res, entity);
     }
     catch (const std::exception &e)
@@ -83,7 +83,7 @@ void EntityController<T>::Update(const crow::request &req, crow::response &res, 
             return;
         }
 
-        T entity((typename T::Update_t(data_j, id.value())));
+        T entity((Types::Update_t(data_j, id.value())));
         Controller::Update(res, entity);
     }
     catch (const std::exception &e)
@@ -112,7 +112,7 @@ void EntityController<T>::Delete(const crow::request &req, crow::response &res, 
             return;
         }
 
-        T entity(typename T::Delete_t(id.value()));
+        T entity(Types::Delete_t(id.value()));
         Controller::Delete(res, entity);
     }
     catch (const std::exception &e)
@@ -129,7 +129,7 @@ void EntityController<T>::Search(const crow::request &req, crow::response &res, 
     try
     {
         bool success = false;
-        T    entity((typename T::Search_t(request_json, success)));
+        T    entity((Types::Search_t(request_json, success)));
 
         if (success)
         {

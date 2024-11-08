@@ -61,7 +61,7 @@ class Controller
     template <typename T>
     void Delete(crow::response &res, T &entity)
     {
-        if (!entity.template check_id_exists<Entity::Delete_t>())
+        if (!entity.template check_id_exists<Types::Delete_t>())
         {
             RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "ID does not exist");
             return;
@@ -86,11 +86,10 @@ class Controller
                 query_results_json   = databaseController->executeSearchQuery(query.value());
                 size_t results_count = query_results_json.size();
 
-                if (results_count > std::any_cast<typename T::Search_t>(entity.getData()).limit)
+                if (results_count > std::get<Types::Search_t>(entity.getData()).limit)
                 {
-                    response_json["more"] = true;
-                    response_json["offset"] =
-                        std::any_cast<typename T::Search_t>(entity.getData()).offset + std::any_cast<typename T::Search_t>(entity.getData()).limit;
+                    response_json["more"]   = true;
+                    response_json["offset"] = std::get<Types::Search_t>(entity.getData()).offset + std::get<Types::Search_t>(entity.getData()).limit;
                     query_results_json.erase(query_results_json.array_range().end() - 1);
                 }
                 else
@@ -125,7 +124,7 @@ class Controller
 
         try
         {
-            loggedUserInfo.token = std::any_cast<Client::LogoutData>(entity.getData()).token;
+            loggedUserInfo.token = std::get<Types::LogoutData>(entity.getData()).token;
             loggedUserInfo.group = entity.getGroupName();
 
             bool status = tokenManager->ValidateToken(loggedUserInfo);
@@ -213,8 +212,7 @@ class Controller
     {
         try
         {
-            T    entity;
-            json json_nextval = databaseController->executeQuery(fmt::format("SELECT NEXTVAL('{}_id_seq');", entity.getTableName()));
+            json json_nextval = databaseController->executeQuery(fmt::format("SELECT NEXTVAL('{}_id_seq');", T::getTableName()));
 
             if (json_nextval.empty())
             {

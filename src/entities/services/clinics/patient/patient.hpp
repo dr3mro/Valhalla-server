@@ -2,6 +2,7 @@
 
 #include <jsoncons/json.hpp>
 
+#include "entities/appointments/base/appointment.hpp"
 #include "entities/base/case.hpp"
 
 using json = jsoncons::json;
@@ -12,13 +13,7 @@ class Patient : public Case
     static constexpr auto TABLENAME = "patients";
 
    public:
-    using Data_t = struct Data_t
-    {
-        uint64_t id;
-        Data_t(const uint64_t _id) : id(_id) {}
-    };
-
-    Patient() : Case(TABLENAME) {}
+    // Patient() : Case(TABLENAME) {}
     virtual ~Patient() override = default;
 
     template <typename T>
@@ -26,9 +21,9 @@ class Patient : public Case
     {
     }
 
-    std::string getTableName() { return TABLENAME; }
-    std::string getSqlGetVisitsStatement()
+    static constexpr auto getTableName() { return TABLENAME; }
+    std::string           getSqlGetVisitsStatement()
     {
-        return fmt::format("SELECT visits FROM clinics_visits WHERE patient_id = {} ;", std::any_cast<Data_t>(getData()).id);
+        return fmt::format("SELECT visits FROM clinics_visits WHERE patient_id = {} ;", std::get<Types::Data_t>(getData()).id);
     }
 };

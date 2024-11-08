@@ -12,12 +12,12 @@ class Pharmacies : public Service
     static constexpr auto TABLENAME = "pharmacies";
 
    public:
-    Pharmacies() : Service(TABLENAME) {}
+    // Pharmacies() : Service(TABLENAME) {}
 
     template <typename T>
     Pharmacies(const T &_data) : Service(_data, TABLENAME)
     {
     }
-    std::string getTableName() { return TABLENAME; }
+    static constexpr auto getTableName() { return TABLENAME; }
     virtual ~Pharmacies() override = default;
 };

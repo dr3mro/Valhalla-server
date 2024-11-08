@@ -2,94 +2,27 @@
 
 #include <sys/types.h>
 
-#include <any>
-#include <cstddef>
 #include <cstdint>
-#include <type_traits>
 
 #include "controllers/databasecontroller/databasecontroller.hpp"
 #include "entities/base/base.hpp"
+#include "entities/base/types.hpp"
 #include "fmt/format.h"
 #include "fmt/ranges.h"
 #include "jsoncons/basic_json.hpp"
 #include "store/store.hpp"
 #include "utils/message/message.hpp"
-#include "utils/passwordcrypt/passwordcrypt.hpp"
 
 using json = jsoncons::json;
 
 class Entity : public Base
 {
    public:
-    template <typename S>
-    struct Entity_t
-    {
-       public:
-        Entity_t(const S &_data, const uint64_t _id) : data(_data), id(_id) {}
-        Entity_t(const uint64_t _id) : id(_id) {}
-        virtual ~Entity_t() = default;
-        S        data;
-        uint64_t id;
-    };
-
-    using Create_t = struct Create_t : public Entity_t<jsoncons::json>
-    {
-        Create_t(const json &data, const uint64_t id) : Entity_t(data, id) {}
-        ~Create_t() override = default;
-    };
-
-    using Read_t = struct Read_t : public Entity_t<const std::vector<std::string>>
-    {
-        Read_t(const std::vector<std::string> &_data, const uint64_t _id) : Entity_t(_data, _id) {}
-        ~Read_t() override = default;
-    };
-
-    using Update_t = struct Update_t : public Entity_t<jsoncons::json>
-    {
-        Update_t(const json &_data, const uint64_t _id) : Entity_t(_data, _id) {}
-        ~Update_t() override = default;
-    };
-
-    using Delete_t = struct Delete_t : public Entity_t<char>
-    {
-        Delete_t(const uint64_t _id) : Entity_t(_id) {}
-        ~Delete_t() override = default;
-    };
-
-    using Search_t = struct Search_t
-    {
-        std::string keyword;
-        std::string filter;
-        std::string order_by;
-        std::string direction;
-        size_t      limit;
-        size_t      offset;
-
-        Search_t(const json &search_j, bool &success)
-        {
-            try
-            {
-                keyword   = search_j.at("keyword").as<std::string>();
-                filter    = search_j.at("filter").as<std::string>();
-                order_by  = search_j.at("order_by").as<std::string>();
-                direction = search_j.at("direction").as<short>() == 0 ? "ASC" : "DESC";
-                limit     = search_j.at("limit").as<size_t>();
-                offset    = search_j.at("offset").as<size_t>();
-            }
-            catch (const std::exception &e)
-            {
-                success = false;
-                throw std::runtime_error(std::string(e.what()));
-            }
-            success = true;
-        }
-    };
-
     template <typename T>
-    Entity(const T &_data, const std::string &_tablename) : tablename(_tablename), data(_data)
+    Entity(const T &_data, const std::string &_tablename) : tablename(_tablename), data(Types::EntityType(_data))
     {
     }
-    Entity(const std::string &_tablename) : tablename(_tablename) {}
+    // Entity(const std::string &_tablename) : tablename(_tablename) {}
 
     virtual ~Entity() override = default;
 
@@ -101,8 +34,8 @@ class Entity : public Base
             std::vector<std::string> keys_arr;
             std::vector<std::string> values_arr;
 
-            json     data_json = std::any_cast<Create_t>(data).data;
-            uint64_t next_id   = std::any_cast<Create_t>(data).id;
+            json     data_json = std::get<Types::Create_t>(data).data;
+            uint64_t next_id   = std::get<Types::Create_t>(data).id;
             data_json["id"]    = next_id;
 
             for (auto &it : data_json.object_range())
@@ -130,8 +63,8 @@ class Entity : public Base
         std::optional<std::string> query;
         try
         {
-            auto user_id = std::any_cast<Read_t>(data).id;
-            auto schema  = std::any_cast<Read_t>(data).data;
+            auto user_id = std::get<Types::Read_t>(data).id;
+            auto schema  = std::get<Types::Read_t>(data).data;
 
             std::string columns = schema.empty() ? "*" : fmt::format("{}", fmt::join(schema, ", "));
 
@@ -152,9 +85,9 @@ class Entity : public Base
 
         try
         {
-            json payload = std::any_cast<Update_t>(data).data;
+            json payload = std::get<Types::Update_t>(data).data;
 
-            uint64_t id = std::any_cast<Update_t>(data).id;
+            uint64_t id = std::get<Types::Update_t>(data).id;
 
             std::string update_column_values;
 
@@ -185,7 +118,7 @@ class Entity : public Base
 
         try
         {
-            id = std::any_cast<Delete_t>(data).id;
+            id = std::get<Types::Delete_t>(data).id;
             // Construct SQL query using {fmt} for parameterized query
             query = fmt::format("DELETE FROM {} where id={} returning id;", tablename, id);
         }
@@ -203,7 +136,7 @@ class Entity : public Base
         std::optional<std::string> query;
         try
         {
-            Search_t searchdata = std::any_cast<Search_t>(getData());
+            Types::Search_t searchdata = std::get<Types::Search_t>(getData());
             query = fmt::format("SELECT * FROM {}_safe WHERE {} ILIKE '%{}%' ORDER BY {} {} LIMIT {} OFFSET {};", tablename, searchdata.filter,
                                 searchdata.keyword, searchdata.order_by, searchdata.direction, searchdata.limit + 1, searchdata.offset);
         }
@@ -217,24 +150,8 @@ class Entity : public Base
         return query;
     }
 
-    /**
-     * Gets the data associated with this entity.
-     *
-     * This method returns the data associated with the current entity instance.
-     * The data is stored in a `std::any` object, which can hold any type of data.
-     *
-     * @return The data associated with this entity.
-     */
-    std::any getData() const { return data; }
-    /**
-     * Gets the name of the table associated with this entity.
-     *
-     * This method returns the name of the database table that this entity
-     * represents.
-     *
-     * @return The name of the table associated with this entity.
-     */
-    //   TODO:
+    const Types::EntityType &getData() const { return data; }
+
     std::string getGroupName() const  // ie. tablename
     {
         return tablename;
@@ -243,7 +160,7 @@ class Entity : public Base
     template <typename T>
     bool check_id_exists()
     {
-        uint64_t id     = std::any_cast<T>(getData()).id;
+        uint64_t id     = std::get<T>(getData()).id;
         auto     result = databaseController->checkItemExists(tablename, "id", std::to_string(id));
         return result.value_or(false);
     }
@@ -251,8 +168,7 @@ class Entity : public Base
    protected:
     std::string                         tablename;
     std::shared_ptr<DatabaseController> databaseController = Store::getObject<DatabaseController>();
-    std::shared_ptr<PasswordCrypt>      passwordCrypt      = Store::getObject<PasswordCrypt>();
 
    private:
-    std::any data;
+    const Types::EntityType data;
 };
