@@ -34,7 +34,7 @@ DatabaseConnectionPool::DatabaseConnectionPool()
             if (status == std::future_status::ready)
             {
                 databaseConnections.push(future.get());
-                Message::SuccessMessage(fmt::format("Connection {} created successfully.", i + 1));
+                Message::InfoMessage(fmt::format("Connection {} created successfully.", i + 1));
             }
             else
             {
@@ -46,9 +46,9 @@ DatabaseConnectionPool::DatabaseConnectionPool()
     catch (const std::exception &e)
     {
         Message::ErrorMessage("Exception caught during database connection pool initialization.");
-        Message::FailureMessage(e.what());
+        Message::CriticalMessage(e.what());
         Message::InfoMessage("Make sure the database server is running and reachable and the connection parameters are correct.");
-        Message::FatalMessage("Failed to initialize database connection pool.");
+        Message::CriticalMessage("Failed to initialize database connection pool.");
         exit(EXIT_FAILURE);
     }
 }

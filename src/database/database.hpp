@@ -87,7 +87,7 @@ class Database
         {
             Message::ErrorMessage("Error executing query:");
             Message::InfoMessage(query);
-            Message::FailureMessage(e.what());
+            Message::CriticalMessage(e.what());
             return std::nullopt;
             // throw;  // Rethrow the exception to indicate failure
         }
@@ -107,7 +107,7 @@ class Database
         {
             Message::ErrorMessage("Error executing query:");
             Message::InfoMessage(query);
-            Message::FailureMessage(e.what());
+            Message::CriticalMessage(e.what());
             return std::nullopt;
             // throw;  // Rethrow the exception to indicate failure
         }

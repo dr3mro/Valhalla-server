@@ -10,7 +10,8 @@
             "name": "Debug",
             "program": "${workspaceFolder}/build/Debug/server",
             "args": [],
-            "cwd": "${workspaceFolder}"
+            "cwd": "${workspaceFolder}",
+            "console": "externalTerminal"
         }
     ]
 }

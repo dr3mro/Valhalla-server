@@ -48,7 +48,7 @@ class Provider : public Client
         catch (const std::exception &e)
         {
             Message::ErrorMessage(fmt::format("Failed to create query for GetServicesStatement {}.", tablename));
-            Message::FailureMessage(e.what());
+            Message::CriticalMessage(e.what());
             return std::nullopt;
         }
 

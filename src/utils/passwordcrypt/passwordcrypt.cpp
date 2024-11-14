@@ -12,7 +12,7 @@ PasswordCrypt::PasswordCrypt()
 {
     if (sodium_init() < 0)
     {
-        Message::FailureMessage("Failed to initialize libsodium.");
+        Message::CriticalMessage("Failed to initialize libsodium.");
     }
 }
 
@@ -32,7 +32,7 @@ std::optional<std::string> PasswordCrypt::hashPassword(const std::string &passwo
                                                crypto_pwhash_scryptsalsa208sha256_OPSLIMIT_MIN, crypto_pwhash_scryptsalsa208sha256_MEMLIMIT_MIN) != 0)
     {
         // out of memory
-        Message::FailureMessage("Failed to hash password.");
+        Message::CriticalMessage("Failed to hash password.");
         return std::nullopt;
     }
 

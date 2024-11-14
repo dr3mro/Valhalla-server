@@ -52,7 +52,7 @@ class Entity : public Base
         catch (const std::exception &e)
         {
             Message::ErrorMessage(fmt::format("Failed to create Sql create statement for table {}.", tablename));
-            Message::FailureMessage(e.what());
+            Message::CriticalMessage(e.what());
             return std::nullopt;
         }
         return query;
@@ -73,7 +73,7 @@ class Entity : public Base
         catch (const std::exception &e)
         {
             Message::ErrorMessage(fmt::format("Failed to create Sql read statement for table {}.", tablename));
-            Message::FailureMessage(e.what());
+            Message::CriticalMessage(e.what());
             return std::nullopt;
         }
         return query;
@@ -105,7 +105,7 @@ class Entity : public Base
         catch (const std::exception &e)
         {
             Message::ErrorMessage(fmt::format("Failed to create Sql update statement for table {}.", tablename));
-            Message::FailureMessage(e.what());
+            Message::CriticalMessage(e.what());
             return std::nullopt;
         }
         return query;
@@ -125,7 +125,7 @@ class Entity : public Base
         catch (const std::exception &e)
         {
             Message::ErrorMessage(fmt::format("Failed to create Sql delete statement for table {}.", tablename));
-            Message::FailureMessage(e.what());
+            Message::CriticalMessage(e.what());
             return std::nullopt;
         }
         return query;
@@ -143,7 +143,7 @@ class Entity : public Base
         catch (const std::exception &e)
         {
             Message::ErrorMessage(fmt::format("Failed to create Sql search statement for table {}.", tablename));
-            Message::FailureMessage(e.what());
+            Message::CriticalMessage(e.what());
             return std::nullopt;
         }
 

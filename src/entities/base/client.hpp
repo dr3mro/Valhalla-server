@@ -48,7 +48,7 @@ class Client : public Entity
         catch (const std::exception &e)
         {
             Message::ErrorMessage(fmt::format("Failed to create Sql create statement for table {}.", tablename));
-            Message::FailureMessage(e.what());
+            Message::CriticalMessage(e.what());
             return std::nullopt;
         }
         return std::nullopt;
@@ -89,7 +89,7 @@ class Client : public Entity
         catch (const std::exception &e)
         {
             Message::ErrorMessage(fmt::format("Failed to create Sql update statement for table {}.", tablename));
-            Message::FailureMessage(e.what());
+            Message::CriticalMessage(e.what());
             return std::nullopt;
         }
         return query;
@@ -107,7 +107,7 @@ class Client : public Entity
         catch (const std::exception &e)
         {
             Message::ErrorMessage(fmt::format("Failed to create Sql suspend statement for table {}.", tablename));
-            Message::FailureMessage(e.what());
+            Message::CriticalMessage(e.what());
             return std::nullopt;
         }
 
@@ -161,7 +161,7 @@ class Client : public Entity
         {
             Message::ErrorMessage(fmt::format("Error authenticating client: USERNAME: {} ID: {}", credentials.username,
                                               client_id.has_value() ? std::to_string(client_id.value()) : "N/A"));
-            Message::FailureMessage(e.what());
+            Message::CriticalMessage(e.what());
         }
         return std::nullopt;
     }

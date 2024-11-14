@@ -31,7 +31,7 @@ class Controller
         catch (const std::exception &e)
         {
             Message::ErrorMessage(fmt::format("Exception in Controller constructor."));
-            Message::FatalMessage(e.what());
+            Message::CriticalMessage(e.what());
             exit(EXIT_FAILURE);
         }
     }
@@ -227,7 +227,7 @@ class Controller
         }
         catch (const std::exception &e)
         {
-            Message::FailureMessage(fmt::format("Failed: {}.", e.what()));
+            Message::CriticalMessage(fmt::format("Failed: {}.", e.what()));
         }
         return std::nullopt;
     }

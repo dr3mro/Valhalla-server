@@ -25,7 +25,7 @@ void SessionManager::setNowLoginTime(uint64_t id, const std::string &group)
     catch (const std::exception &e)
     {
         Message::ErrorMessage("Error updating login time.");
-        Message::FailureMessage(e.what());
+        Message::CriticalMessage(e.what());
     }
 }
 
@@ -45,7 +45,7 @@ void SessionManager::setNowLogoutTime(uint64_t id, const std::string &group)
     catch (const std::exception &e)
     {
         Message::ErrorMessage("Error updating logout time.");
-        Message::FailureMessage(e.what());
+        Message::CriticalMessage(e.what());
     }
 }
 

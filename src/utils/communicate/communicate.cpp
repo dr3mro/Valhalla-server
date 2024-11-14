@@ -64,7 +64,7 @@ std::optional<std::string> Communicate::sendRequest(const std::string& server, c
     catch (const std::exception& e)
     {
         Message::ErrorMessage(fmt::format("Failed to send request to {}.", url));
-        Message::FailureMessage(e.what());
+        Message::CriticalMessage(e.what());
         if (curl)
         {
             curl_easy_cleanup(curl);
@@ -92,7 +92,7 @@ std::optional<std::string> Communicate::handleResponse(CURL* curl)
     catch (const std::exception& e)
     {
         Message::ErrorMessage(fmt::format("Failed to handle request."));
-        Message::FailureMessage(e.what());
+        Message::CriticalMessage(e.what());
         response.clear();  // Clear the response to indicate failure
     }
 
