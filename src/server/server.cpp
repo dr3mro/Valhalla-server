@@ -4,6 +4,7 @@
 #include <fmt/core.h>
 
 #include "server/extras/banner.hpp"
+#include "utils/Logger/logger.hpp"
 
 #ifndef GIT_TAG
 #    define GIT_TAG "unknown"
@@ -15,9 +16,11 @@ int Server::run()
 {
     print_banner();
 
+    // auto logger = Store::getObject<Logger>();
+    // crow::logger::setHandler(logger.get());
     try
     {
-        app->loglevel(static_cast<crow::LogLevel>(config_.verbose_level))
+        app->loglevel(static_cast<crow::LogLevel>(config_.debug_level))
             .use_compression(crow::compression::algorithm::GZIP)
             .port(config_.port)
             .multithreaded()
@@ -29,7 +32,7 @@ int Server::run()
     catch (const std::exception &e)
     {
         Message::ErrorMessage(fmt::format("Failed to start server on {}:{}.", config_.host, config_.port));
-        Message::FatalMessage(e.what());
+        Message::CriticalMessage(e.what());
         return EXIT_FAILURE;  // Exit with error code
     }
 

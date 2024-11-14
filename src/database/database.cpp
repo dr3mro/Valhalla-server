@@ -19,14 +19,14 @@ Database::Database(std::shared_ptr<pqxx::connection> conn) : connection(std::mov
         }
         else
         {
-            Message::FatalMessage("Failed to open database connection.");
+            Message::CriticalMessage("Failed to open database connection.");
             exit(EXIT_FAILURE);
         }
     }
     catch (const std::exception &e)
     {
         Message::ErrorMessage("Exception caught during database connection.");
-        Message::FatalMessage(e.what());
+        Message::CriticalMessage(e.what());
         exit(EXIT_FAILURE);
     }
 }
@@ -44,7 +44,7 @@ bool Database::checkExists(const std::string &table, const std::string &column, 
     catch (const std::exception &e)
     {
         Message::ErrorMessage("Error executing query.");
-        Message::FailureMessage(e.what());
+        Message::CriticalMessage(e.what());
         return false;
     }
 }

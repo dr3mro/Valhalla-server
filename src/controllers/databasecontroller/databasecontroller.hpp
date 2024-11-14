@@ -42,11 +42,11 @@ class DatabaseController
         catch (const std::exception &e)
         {
             Message::ErrorMessage("Exception occurred during query execution.");
-            Message::FailureMessage(e.what());
+            Message::CriticalMessage(e.what());
         }
         catch (...)
         {
-            Message::FailureMessage("Unknown exception occurred during query execution.");
+            Message::CriticalMessage("Unknown exception occurred during query execution.");
         }
         return std::nullopt;
     }

@@ -33,7 +33,7 @@ std::optional<std::string> TokenManager::GenerateToken(const LoggedUserInfo &log
     catch (const std::exception &e)
     {
         Message::ErrorMessage("Error generating token.");
-        Message::FailureMessage(e.what());
+        Message::CriticalMessage(e.what());
     }
     return std::nullopt;
 }
@@ -78,12 +78,12 @@ bool TokenManager::ValidateToken(LoggedUserInfo &loggedinUserInfo) const
     catch (const token_verification_exception &e)
     {
         Message::ErrorMessage("Token verification failed.");
-        Message::FailureMessage(e.what());
+        Message::CriticalMessage(e.what());
     }
     catch (const std::exception &e)
     {
         Message::ErrorMessage("Error validating token.");
-        Message::FailureMessage(e.what());
+        Message::CriticalMessage(e.what());
     }
     return false;
 }

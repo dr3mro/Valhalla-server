@@ -1,5 +1,6 @@
 
 #include "configurator.hpp"
+
 // Specialization for DODDetectorConfig
 template <>
 Configurator::DOSDetectorConfig& Configurator::get<Configurator::DOSDetectorConfig>()

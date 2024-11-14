@@ -39,13 +39,17 @@ namespace Defaults
         /*
          * Default values for Server configuration.
          */
-        constexpr uint16_t         SERVER_THREADS_       = 4;
-        constexpr uint16_t         SERVER_PORT_          = 8080;
-        constexpr std::string_view SERVER_NAME_          = std::string_view("ProjectValhalla");
-        constexpr std::string_view SERVER_VER_           = std::string_view("1.0.0");
-        constexpr std::string_view SERVER_DESC_          = std::string_view("ProjectValhalla API");
-        constexpr std::string_view SERVER_HOST_          = std::string_view("0.0.0.0");
-        constexpr uint8_t          SERVER_VERBOSE_LEVEL_ = 1;
+        constexpr uint16_t         SERVER_THREADS_        = 4;
+        constexpr uint16_t         SERVER_PORT_           = 8080;
+        constexpr std::string_view SERVER_NAME_           = std::string_view("ProjectValhalla");
+        constexpr std::string_view SERVER_VER_            = std::string_view("1.0.0");
+        constexpr std::string_view SERVER_DESC_           = std::string_view("ProjectValhalla API");
+        constexpr std::string_view SERVER_HOST_           = std::string_view("0.0.0.0");
+        constexpr uint8_t          SERVER_DEBUG_LEVEL_    = 3;
+        constexpr bool             SERVER_LOG_TO_CONSOLE_ = true;
+        constexpr bool             SERVER_LOG_TO_FILE_    = true;
+        constexpr std::string_view SERVER_LOG_DIR_        = std::string_view("./logs/");
+        constexpr std::string_view SERVER_LOG_FILE_       = std::string_view("server.log");
 
     }  // namespace Server
 

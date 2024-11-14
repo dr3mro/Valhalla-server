@@ -25,7 +25,6 @@ class Types
     {
        public:
         Entity_t(const S &_data, const uint64_t _id) : data(_data), id(_id) {}
-        Entity_t(const uint64_t _id) : id(_id) {}
         virtual ~Entity_t() = default;
         S        data;
         uint64_t id;
@@ -51,13 +50,13 @@ class Types
 
     using Delete_t = struct Delete_t : public Entity_t<char>
     {
-        Delete_t(const uint64_t _id) : Entity_t(_id) {}
+        Delete_t(const uint64_t _id) : Entity_t('\0', _id) {}
         ~Delete_t() override = default;
     };
 
     using Data_t = struct Data_t : public Entity_t<char>
     {
-        Data_t(const uint64_t _id) : Entity_t(_id) {}
+        Data_t(const uint64_t _id) : Entity_t('\0', _id) {}
         ~Data_t() override = default;
     };
 

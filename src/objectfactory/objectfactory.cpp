@@ -27,6 +27,7 @@
 #include "entities/services/pharmacies.hpp"
 #include "entities/services/radiologycenters.hpp"
 #include "store/store.hpp"
+#include "utils/Logger/logger.hpp"
 #include "utils/dosdetector/dosdetector.hpp"
 #include "utils/passwordcrypt/passwordcrypt.hpp"
 #include "utils/sessionmanager/sessionmanager.hpp"
@@ -57,6 +58,7 @@
 ObjectFactory::ObjectFactory()
 {
     Store::registerObject<Configurator>();
+    Store::registerObject<Logger>();
     Store::registerObject<DatabaseConnectionPool>();
     Store::registerObject<DatabaseController>();
     Store::registerObject<SessionManager>();

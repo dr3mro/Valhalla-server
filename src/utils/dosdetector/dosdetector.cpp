@@ -19,7 +19,7 @@ DOSDetector::DOSDetector()
     catch (const std::exception &e)
     {
         Message::ErrorMessage("Exception during DOSDetector initialization.");
-        Message::FailureMessage(e.what());
+        Message::CriticalMessage(e.what());
     }
 }
 
@@ -36,7 +36,7 @@ DOSDetector::~DOSDetector()
     catch (const std::exception &e)
     {
         Message::ErrorMessage("Exception during DOSDetector destruction.");
-        Message::FailureMessage(e.what());
+        Message::CriticalMessage(e.what());
     }
 }
 
@@ -70,7 +70,7 @@ DOSDetector::Status DOSDetector::is_dos_attack(const crow::request &req)
     catch (const std::exception &e)
     {
         Message::ErrorMessage("Failure in is_dos_attack.");
-        Message::FailureMessage(e.what());
+        Message::CriticalMessage(e.what());
         return Status::ERROR;
     }
 }
@@ -157,7 +157,7 @@ void DOSDetector::cleanUpTask()
     catch (const std::exception &e)
     {
         Message::ErrorMessage("Exception in cleanUpTask.");
-        Message::FailureMessage(e.what());
+        Message::CriticalMessage(e.what());
     }
 }
 
@@ -184,7 +184,7 @@ inline std::optional<std::string> __attribute((always_inline)) DOSDetector::gene
     catch (const std::exception &e)
     {
         Message::ErrorMessage("Exception in generateRequestFingerprint.");
-        Message::FailureMessage(e.what());
+        Message::CriticalMessage(e.what());
         return std::nullopt;
     }
 }
@@ -198,7 +198,7 @@ inline bool __attribute((always_inline)) DOSDetector::isWhitelisted(std::string_
     catch (const std::exception &e)
     {
         Message::ErrorMessage("Exception in isWhitelisted");
-        Message::FailureMessage(e.what());
+        Message::CriticalMessage(e.what());
         return false;
     }
 }
@@ -212,7 +212,7 @@ inline bool __attribute((always_inline)) DOSDetector::isBlacklisted(std::string_
     catch (const std::exception &e)
     {
         Message::ErrorMessage("Exception in isBlacklisted.");
-        Message::FailureMessage(e.what());
+        Message::CriticalMessage(e.what());
         return false;
     }
 }
@@ -235,7 +235,7 @@ inline bool __attribute((always_inline)) DOSDetector::regexFind(std::string_view
                                catch (const std::regex_error &e)
                                {
                                    Message::ErrorMessage("Exception due to invalid regex pattern.");
-                                   Message::FailureMessage(e.what());
+                                   Message::CriticalMessage(e.what());
 
                                    return false;
                                }
@@ -244,7 +244,7 @@ inline bool __attribute((always_inline)) DOSDetector::regexFind(std::string_view
     catch (const std::exception &e)
     {
         Message::ErrorMessage("Exception in regexFind.");
-        Message::FailureMessage(e.what());
+        Message::CriticalMessage(e.what());
 
         return false;
     }
@@ -259,7 +259,7 @@ inline bool __attribute((always_inline)) DOSDetector::isBanned(std::string_view 
     catch (const std::exception &e)
     {
         Message::ErrorMessage("Exception in isBanned.");
-        Message::FailureMessage(e.what());
+        Message::CriticalMessage(e.what());
 
         return false;
     }
@@ -274,7 +274,7 @@ inline bool __attribute((always_inline)) DOSDetector::isRateLimited(std::string_
     catch (const std::exception &e)
     {
         Message::ErrorMessage(fmt::format("Exception in isRateLimited."));
-        Message::FailureMessage(e.what());
+        Message::CriticalMessage(e.what());
 
         return false;
     }
@@ -305,7 +305,7 @@ inline bool __attribute((always_inline)) DOSDetector::checkStatus(std::string_vi
     catch (const std::exception &e)
     {
         Message::ErrorMessage("Exception in checkStatus.");
-        Message::FailureMessage(e.what());
+        Message::CriticalMessage(e.what());
 
         return false;
     }
@@ -375,7 +375,7 @@ DOSDetector::Status DOSDetector::processRequest(Req &&req)
     catch (const std::exception &e)
     {
         Message::ErrorMessage("Failure in processRequest.");
-        Message::FailureMessage(e.what());
+        Message::CriticalMessage(e.what());
         return Status::ERROR;
     }
     return Status::ALLOWED;

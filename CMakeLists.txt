@@ -129,6 +129,13 @@ CPMAddPackage(
   OPTIONS "LIBCURL_DISABLE_TESTS ON" "LIBCURL_DISABLE_DOCS ON" "CURL_USE_LIBPSL OFF"
 )
 
+CPMAddPackage(
+  NAME spdlog
+  VERSION v1.15.0
+  URL https://github.com/gabime/spdlog/archive/refs/tags/v1.15.0.zip
+  URL_HASH MD5=02cdc10dffaf9b2387f4ca516a852429
+)
+
 # Suppress developer warnings and deprecated warnings
 set(CMAKE_SUPPRESS_DEVELOPER_WARNINGS 1 CACHE INTERNAL "No dev warnings")
 set(CMAKE_WARN_DEPRECATED OFF)
@@ -167,6 +174,7 @@ target_include_directories(${Target}
   ${libsodium_SOURCE_DIR}/src/libsodium/include
   ${OPENSSL_INCLUDE_DIR}
   ${libcurl_SOURCE_DIR}/include
+  ${spdlog_SOURCE_DIR}/include
 )
 
 # Compile definitions

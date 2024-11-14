@@ -30,7 +30,7 @@ class Service : public Entity
         catch (const std::exception &e)
         {
             Message::ErrorMessage("Error creating query for add member.");
-            Message::FailureMessage(e.what());
+            Message::CriticalMessage(e.what());
             return std::nullopt;
         }
         return query;
@@ -53,7 +53,7 @@ class Service : public Entity
         catch (const std::exception &e)
         {
             Message::ErrorMessage("Error creating query for remove member.");
-            Message::FailureMessage(e.what());
+            Message::CriticalMessage(e.what());
             return std::nullopt;
         }
         return query;

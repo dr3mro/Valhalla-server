@@ -14,7 +14,7 @@ DatabaseController::DatabaseController()
     catch (const std::exception &e)
     {
         Message::ErrorMessage("Exception in DatabaseController constructor.");
-        Message::FatalMessage(e.what());
+        Message::CriticalMessage(e.what());
         exit(EXIT_FAILURE);
     }
 }
