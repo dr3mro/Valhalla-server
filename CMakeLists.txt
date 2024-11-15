@@ -42,9 +42,9 @@ CPMAddPackage(
 
 CPMAddPackage(
   NAME asio
-  VERSION 1-31-0
-  URL https://github.com/chriskohlhoff/asio/archive/refs/tags/asio-1-31-0.tar.gz
-  URL_HASH MD5=83b1f73c102982761042126ec1a2ba41
+  VERSION 1-32-0
+  URL https://github.com/chriskohlhoff/asio/archive/refs/tags/asio-1-32-0.tar.gz
+  URL_HASH MD5=3107aaf56723e15fccadc63049f4c1a2
 )
 
 CPMAddPackage(
@@ -88,9 +88,9 @@ CPMAddPackage(
 
 CPMAddPackage(
   NAME jsoncons
-  VERSION 0.177.0
-  URL https://github.com/danielaparker/jsoncons/archive/refs/tags/v0.177.0.tar.gz
-  URL_HASH MD5=fb04ce9c4c8877547332604975e83895
+  VERSION 0.178.0
+  URL https://github.com/danielaparker/jsoncons/archive/refs/tags/v0.178.0.tar.gz
+  URL_HASH MD5=bdacd07abf3ae4782df83a21f51e8315
   OPTIONS "JSONCONS_BUILD_EXAMPLES OFF" "JSONCONS_BUILD_TESTS OFF"
 )
 
@@ -121,9 +121,9 @@ CPMAddPackage(
 
 CPMAddPackage(
   NAME libcurl
-  VERSION 8.10.1
-  URL https://github.com/curl/curl/releases/download/curl-8_10_1/curl-8.10.1.tar.gz
-  URL_HASH MD5=94480849689e8b5dd41017a98e253544
+  VERSION 8.11.0
+  URL https://github.com/curl/curl/releases/download/curl-8_11_0/curl-8.11.0.tar.gz
+  URL_HASH MD5=7b6b3613ed9be7b6c010e0750b2c48bb
 
   # disable tests and docs
   OPTIONS "LIBCURL_DISABLE_TESTS ON" "LIBCURL_DISABLE_DOCS ON" "CURL_USE_LIBPSL OFF"
