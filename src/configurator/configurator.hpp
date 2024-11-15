@@ -11,7 +11,7 @@
 
 #include "configurator/envloader/envloader.hpp"
 #include "defaults.hpp"
-#include "fmt/color.h"
+#include "utils/message/message.hpp"
 
 template <typename T>
 concept Config = std::is_base_of_v<EnvLoader, T>;
@@ -32,7 +32,7 @@ class Configurator
         email_sender_config_.printValues();
     }
 
-    using DOSDetectorConfig = struct DODDetectorConfig : public EnvLoader
+    using DOSDetectorConfig = struct DOSDetectorConfig : public EnvLoader
     {
         uint32_t                        max_requests;
         uint32_t                        clean_freq;
@@ -43,7 +43,7 @@ class Configurator
         std::unordered_set<std::string> whitelist;
         std::unordered_set<std::string> blacklist;
 
-        DODDetectorConfig()
+        DOSDetectorConfig()
         {
             max_requests       = getEnvironmentVariable("MAX_REQUESTS", Defaults::DosDetector::MAX_REQUESTS_);
             period             = getEnvironmentVariable("PERIOD", std::chrono::seconds(Defaults::DosDetector::PERIOD_));
@@ -57,14 +57,17 @@ class Configurator
 
         void printValues() const override
         {
-            print_config(fmt::format("Max Requests: {}", max_requests));
-            print_config(fmt::format("Period: {} seconds", period.count()));
-            print_config(fmt::format("Max FPS: {}", max_fingerprints));
-            print_config(fmt::format("Rate Limit Duration: {} seconds", ratelimit_duration.count()));
-            print_config(fmt::format("Ban Duration: {} seconds", ban_duration.count()));
-            print_config(fmt::format("Cleanup Frequency: {} seconds", clean_freq));
-            print_config(fmt::format("Whitelist: {}", fmt::join(whitelist, ", ")));
-            print_config(fmt::format("Blacklist: {}", fmt::join(blacklist, ", ")));
+            Message::ConfMessage("------------------------------------------------");
+            Message::ConfMessage("---------------DOS Detector Config--------------");
+            Message::ConfMessage("------------------------------------------------");
+            Message::ConfMessage(fmt::format("Max Requests: {}", max_requests));
+            Message::ConfMessage(fmt::format("Period: {} seconds", period.count()));
+            Message::ConfMessage(fmt::format("Max FPS: {}", max_fingerprints));
+            Message::ConfMessage(fmt::format("Rate Limit Duration: {} seconds", ratelimit_duration.count()));
+            Message::ConfMessage(fmt::format("Ban Duration: {} seconds", ban_duration.count()));
+            Message::ConfMessage(fmt::format("Cleanup Frequency: {} seconds", clean_freq));
+            Message::ConfMessage(fmt::format("Whitelist: {}", fmt::join(whitelist, ", ")));
+            Message::ConfMessage(fmt::format("Blacklist: {}", fmt::join(blacklist, ", ")));
         }
     };
 
@@ -93,13 +96,16 @@ class Configurator
 
         void printValues() const override
         {
-            print_config(fmt::format("Host: {}", host));
-            print_config(fmt::format("Port: {}", port));
-            print_config(fmt::format("Name: {}", name));
-            print_config(fmt::format("User: {}", user));
-            print_config(fmt::format("Pass: {}", pass));
-            print_config(fmt::format("SSL: {}", ssl));
-            print_config(fmt::format("Max Connections: {}", max_conn));
+            Message::ConfMessage("------------------------------------------------");
+            Message::ConfMessage("-----------------Database Config----------------");
+            Message::ConfMessage("------------------------------------------------");
+            Message::ConfMessage(fmt::format("Host: {}", host));
+            Message::ConfMessage(fmt::format("Port: {}", port));
+            Message::ConfMessage(fmt::format("Name: {}", name));
+            Message::ConfMessage(fmt::format("User: {}", user));
+            Message::ConfMessage(fmt::format("Pass: {}", pass));
+            Message::ConfMessage(fmt::format("SSL: {}", ssl));
+            Message::ConfMessage(fmt::format("Max Connections: {}", max_conn));
         }
     };
 
@@ -136,17 +142,20 @@ class Configurator
 
         void printValues() const override
         {
-            print_config(fmt::format("Host: {}", host));
-            print_config(fmt::format("Port: {}", port));
-            print_config(fmt::format("Name: {}", name));
-            print_config(fmt::format("Version: {}", ver));
-            print_config(fmt::format("Description: {}", desc));
-            print_config(fmt::format("Threads: {}", threads));
-            print_config(fmt::format("Debug Level: {}", debug_level));
-            print_config(fmt::format("Log to console: {}", log_to_console));
-            print_config(fmt::format("Log to file: {}", log_to_file));
-            print_config(fmt::format("Log directory: {}", log_dir));
-            print_config(fmt::format("Log file: {}", log_file));
+            Message::ConfMessage("------------------------------------------------");
+            Message::ConfMessage("-------------------ServerConfig-----------------");
+            Message::ConfMessage("------------------------------------------------");
+            Message::ConfMessage(fmt::format("Host: {}", host));
+            Message::ConfMessage(fmt::format("Port: {}", port));
+            Message::ConfMessage(fmt::format("Name: {}", name));
+            Message::ConfMessage(fmt::format("Version: {}", ver));
+            Message::ConfMessage(fmt::format("Description: {}", desc));
+            Message::ConfMessage(fmt::format("Threads: {}", threads));
+            Message::ConfMessage(fmt::format("Debug Level: {}", debug_level));
+            Message::ConfMessage(fmt::format("Log to console: {}", log_to_console));
+            Message::ConfMessage(fmt::format("Log to file: {}", log_to_file));
+            Message::ConfMessage(fmt::format("Log directory: {}", log_dir));
+            Message::ConfMessage(fmt::format("Log file: {}", log_file));
         }
     };
 
@@ -167,10 +176,13 @@ class Configurator
 
         void printValues() const override
         {
-            print_config(fmt::format("Issuer: {}", issuer));
-            print_config(fmt::format("Type: {}", type));
-            print_config(fmt::format("Validity: {} minutes", validity));
-            print_config(fmt::format("Secret: {}", secret));
+            Message::ConfMessage("------------------------------------------------");
+            Message::ConfMessage("-------------TokenManagerParameters-------------");
+            Message::ConfMessage("------------------------------------------------");
+            Message::ConfMessage(fmt::format("Issuer: {}", issuer));
+            Message::ConfMessage(fmt::format("Type: {}", type));
+            Message::ConfMessage(fmt::format("Validity: {} minutes", validity));
+            Message::ConfMessage(fmt::format("Secret: {}", secret));
         }
     };
 
@@ -189,9 +201,12 @@ class Configurator
 
         void printValues() const override
         {
-            print_config(fmt::format("Frontend host: {}", host));
-            print_config(fmt::format("Frontend port: {}", port));
-            print_config(fmt::format("Frontend invite path: {}", invite_path));
+            Message::ConfMessage("------------------------------------------------");
+            Message::ConfMessage("------------------FrontEnd Config----------------");
+            Message::ConfMessage("------------------------------------------------");
+            Message::ConfMessage(fmt::format("Frontend host: {}", host));
+            Message::ConfMessage(fmt::format("Frontend port: {}", port));
+            Message::ConfMessage(fmt::format("Frontend invite path: {}", invite_path));
         }
     };
 
@@ -210,9 +225,12 @@ class Configurator
 
         void printValues() const override
         {
-            print_config(fmt::format("EmailSender host: {}", host));
-            print_config(fmt::format("EmailSender port: {}", port));
-            print_config(fmt::format("EmailSender queue path: {}", message_queue_path));
+            Message::ConfMessage("------------------------------------------------");
+            Message::ConfMessage("----------------EmailSender Config--------------");
+            Message::ConfMessage("------------------------------------------------");
+            Message::ConfMessage(fmt::format("EmailSender host: {}", host));
+            Message::ConfMessage(fmt::format("EmailSender port: {}", port));
+            Message::ConfMessage(fmt::format("EmailSender queue path: {}", message_queue_path));
         }
     };
 
@@ -228,10 +246,4 @@ class Configurator
     TokenManagerParameters token_manager_parameters_;
     FrontEndConfig         frontend_config_;
     EmailSenderConfig      email_sender_config_;
-
-    static void print_config(const std::string& conf)
-    {
-        fmt::print("{}{}{}{}{}\n", fmt::format(fmt::fg(fmt::color::indian_red), "[Project Valhalla]"), fmt::format(fmt::fg(fmt::color::white), " ["),
-                   fmt::format(fmt::fg(fmt::color::green), "config"), fmt::format(fmt::fg(fmt::color::white), "] "), conf);
-    }
 };
