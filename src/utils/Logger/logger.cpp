@@ -20,12 +20,12 @@ Logger::Logger()
 
         // Console sink setup with custom pattern
         auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
-        console_sink->set_level(spdlog::level::info);  // Set console level to warn
+        console_sink->set_level(spdlog::level::debug);  // Set console level to warn
         console_sink->set_pattern(fmt::format("{}[Project Valhalla]{} [%^%l%$] %v", color_map.at(Color::Red), color_map.at(Color::Reset)));
 
         // File sink setup
         auto file_sink = std::make_shared<spdlog::sinks::rotating_file_sink_mt>(fmt::format("{}", file_path.data()), 5 * 1024 * 1024, 3);
-        file_sink->set_level(spdlog::level::info);  // Set file level to trace
+        file_sink->set_level(spdlog::level::debug);  // Set file level to trace
 
         std::vector<std::shared_ptr<spdlog::sinks::sink>> sinks;
         if (server_config.log_to_console)
@@ -58,7 +58,6 @@ void Logger::log(std::string message, crow::LogLevel level)
 {
     switch (level)
     {
-        // std::cout << "Logging message: " << message << std::endl;
         case crow::LogLevel::DEBUG:
             logger->debug(message);
             break;
@@ -75,6 +74,6 @@ void Logger::log(std::string message, crow::LogLevel level)
             logger->critical(message);
             break;
         default:
-            logger->info(message);  // Default to INFO level if unknown
+            break;
     }
 }

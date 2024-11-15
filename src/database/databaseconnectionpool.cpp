@@ -34,7 +34,7 @@ DatabaseConnectionPool::DatabaseConnectionPool()
             if (status == std::future_status::ready)
             {
                 databaseConnections.push(future.get());
-                Message::InfoMessage(fmt::format("Connection {} created successfully.", i + 1));
+                Message::InitMessage(fmt::format("Connection {} created successfully.", i + 1));
             }
             else
             {

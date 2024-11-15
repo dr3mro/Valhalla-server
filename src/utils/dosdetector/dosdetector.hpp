@@ -32,7 +32,7 @@ class DOSDetector
 
    private:
     std::shared_ptr<Configurator>          configurator_ = Store::getObject<Configurator>();
-    const Configurator::DODDetectorConfig &config_       = configurator_->get<Configurator::DODDetectorConfig>();
+    const Configurator::DOSDetectorConfig &config_       = configurator_->get<Configurator::DOSDetectorConfig>();
 
     //                     // IP                       // Hash of Request // times
     //                     of requests

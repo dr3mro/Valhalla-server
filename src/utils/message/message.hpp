@@ -17,8 +17,10 @@ class Message
     static void WarningMessage(const std::string& status_message);
     static void ErrorMessage(const std::string& status_message);
     static void CriticalMessage(const std::string& status_message);
+    static void ConfMessage(const std::string& status_message);
+    static void InitMessage(const std::string& status_message);
 
    private:
-    static void           MessageImpl(const std::string& status_message, crow::LogLevel level);
-    static constexpr char RESET[] = "\033[0m";  // Reset
+    static void MessageImpl(const std::string& status_message, crow::LogLevel level);
+    static void MessageImpl(const std::string& status_messageconst, const std::string& type);
 };
