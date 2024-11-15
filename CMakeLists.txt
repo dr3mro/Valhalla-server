@@ -186,7 +186,7 @@ target_compile_definitions(${Target} PUBLIC CROW_ENABLE_COMPRESSION)
 target_link_libraries(${Target}
   PRIVATE
   fmt
-  ZLIB::ZLIB
+  zlib
   pqxx
   yaml-cpp
   jwt-cpp
