@@ -74,7 +74,6 @@ class Controller
     {
         json                       response_json;
         json                       query_results_json;
-        std::string                results;
         std::optional<std::string> query;
 
         try
@@ -99,18 +98,8 @@ class Controller
                 }
             }
 
-            if (query_results_json.empty())
-            {
-                response_json["results"] = jsoncons::json();
-                response_json.dump_pretty(results);
-                RestHelper::successResponse(res, crow::status::OK, results);
-            }
-            else
-            {
-                response_json["results"] = query_results_json;
-                response_json.dump_pretty(results);
-                RestHelper::successResponse(res, crow::status::OK, results);
-            }
+            response_json["results"] = query_results_json;
+            RestHelper::successResponse(res, RestHelper::stringify(response_json));
         }
         catch (const std::exception &e)
         {
@@ -134,7 +123,7 @@ class Controller
                 return;
             }
             sessionManager->setNowLogoutTime(loggedUserInfo.userID.value(), loggedUserInfo.group.value());
-            RestHelper::successResponse(res, crow::status::OK, RestHelper::stringify(RestHelper::jsonify("Logout success.")));
+            RestHelper::successResponse(res, RestHelper::stringify(RestHelper::jsonify("Logout success.")));
         }
         catch (const std::exception &e)
         {
@@ -160,7 +149,6 @@ class Controller
     typename std::enable_if_t<std::is_base_of_v<Client, T>, void> GetServices(crow::response &res, T &entity)
     {
         json                       services;
-        std::string                response;
         std::optional<std::string> query;
 
         try
@@ -172,8 +160,7 @@ class Controller
                 services = databaseController->executeSearchQuery(query.value());
             }
 
-            services.dump_pretty(response);
-            RestHelper::successResponse(res, crow::status::OK, response);
+            RestHelper::successResponse(res, RestHelper::stringify(services));
         }
         catch (const std::exception &e)
         {
@@ -185,7 +172,6 @@ class Controller
     std::enable_if_t<std::is_same<T, Patient>::value, void> GetVisits(crow::response &res, T &entity)
     {
         json                       visits;
-        std::string                response;
         std::optional<std::string> query;
 
         try
@@ -197,8 +183,7 @@ class Controller
                 visits = databaseController->executeSearchQuery(query.value());
             }
 
-            visits.dump_pretty(response);
-            RestHelper::successResponse(res, crow::status::OK, response);
+            RestHelper::successResponse(res, RestHelper::stringify(visits));
         }
         catch (const std::exception &e)
         {
@@ -307,7 +292,6 @@ class Controller
     {
         std::optional<json>        query_results_json;
         std::optional<std::string> query;
-        std::string                result;
         try
         {
             if (get_sql_statement(res, query, entity, sqlstatement) && query.has_value())
@@ -317,8 +301,7 @@ class Controller
 
             if (query_results_json.has_value() && !query_results_json.value().empty())
             {
-                query_results_json.value().dump_pretty(result);
-                RestHelper::successResponse(res, crow::status::OK, result);
+                RestHelper::successResponse(res, RestHelper::stringify(query_results_json.value()));
             }
             else if (query_results_json.has_value() && query_results_json.value().empty())
             {

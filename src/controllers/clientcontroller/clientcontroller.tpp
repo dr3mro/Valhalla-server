@@ -85,7 +85,6 @@ std::optional<uint64_t> ClientController<T>::Login(const crow::request& req, cro
 {
     (void)req;
     json                    response;
-    std::string             reponse_string;
     std::optional<uint64_t> client_id;
     try
     {
@@ -117,8 +116,7 @@ std::optional<uint64_t> ClientController<T>::Login(const crow::request& req, cro
         token_object["client_id"] = client_id;
         token_object["group"]     = loggedUserInfo.group;
 
-        token_object.dump_pretty(reponse_string);
-        RestHelper::successResponse(res, crow::status::OK, reponse_string);
+        RestHelper::successResponse(res, RestHelper::stringify(token_object));
         sessionManager->setNowLoginTime(client_id.value(), loggedUserInfo.group.value());
         return client_id;
     }

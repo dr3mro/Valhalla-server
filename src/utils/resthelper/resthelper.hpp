@@ -10,7 +10,7 @@ class RestHelper
     virtual ~RestHelper() = default;
     static void           failureResponse(crow::response& res, const std::string& message);
     static void           errorResponse(crow::response& res, const crow::status& status, const std::string& message);
-    static void           successResponse(crow::response& res, const crow::status& status, const std::string& message);
+    static void           successResponse(crow::response& res, const std::string& message);
     static jsoncons::json jsonify(const std::string& message);
     static std::string    stringify(const jsoncons::json& json);
 

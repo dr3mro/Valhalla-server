@@ -16,7 +16,7 @@ void RestHelper::errorResponse(crow::response& res, const crow::status& status, 
     reply(res, status, prepare(ERROR, message));
 }
 
-void RestHelper::successResponse(crow::response& res, const crow::status& status, const std::string& message) { reply(res, status, message); }
+void RestHelper::successResponse(crow::response& res, const std::string& message) { reply(res, crow::status::OK, message); }
 
 jsoncons::json RestHelper::jsonify(const std::string& message)
 {

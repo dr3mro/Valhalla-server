@@ -152,11 +152,6 @@ add_compile_definitions(${GIT_TAG_MACRO})
 # Find all source files
 file(GLOB_RECURSE SRC "src/*.cpp" "src/*.tpp")
 
-# Find OpenSSL package
-find_package(OpenSSL REQUIRED)
-
-find_package(ZLIB)
-
 # Add the executable
 add_executable(${Target} ${SRC})
 
@@ -178,6 +173,12 @@ target_include_directories(${Target}
   ${libcurl_SOURCE_DIR}/include
   ${spdlog_SOURCE_DIR}/include
 )
+
+# Find OpenSSL package
+find_package(OpenSSL REQUIRED)
+
+# Find ZLIB package
+find_package(ZLIB)
 
 # Compile definitions
 target_compile_definitions(${Target} PUBLIC CROW_ENABLE_COMPRESSION)
