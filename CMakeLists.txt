@@ -177,9 +177,6 @@ target_include_directories(${Target}
 # Find OpenSSL package
 find_package(OpenSSL REQUIRED)
 
-# Find ZLIB package
-find_package(ZLIB)
-
 # Compile definitions
 target_compile_definitions(${Target} PUBLIC CROW_ENABLE_COMPRESSION)
 
