@@ -87,7 +87,7 @@ void StaffController<T>::InviteStaffToEntity(const crow::request &req, crow::res
 
             if (response.has_value())
             {
-                RestHelper::successResponse(res, crow::status::OK, response.value());
+                RestHelper::successResponse(res, response.value());
             }
             else
             {
