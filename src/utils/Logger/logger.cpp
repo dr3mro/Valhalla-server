@@ -16,7 +16,7 @@ Logger::Logger()
         auto file_path     = fmt::format("{}{}", server_config.log_dir, server_config.log_file);
 
         // Initialize thread pool for async logging
-        spdlog::init_thread_pool(8192, 1);
+        spdlog::init_thread_pool(32768, 2);
 
         // Console sink setup with custom pattern
         auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
