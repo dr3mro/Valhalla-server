@@ -155,6 +155,8 @@ file(GLOB_RECURSE SRC "src/*.cpp" "src/*.tpp")
 # Find OpenSSL package
 find_package(OpenSSL REQUIRED)
 
+find_package(ZLIB)
+
 # Add the executable
 add_executable(${Target} ${SRC})
 
@@ -184,7 +186,7 @@ target_compile_definitions(${Target} PUBLIC CROW_ENABLE_COMPRESSION)
 target_link_libraries(${Target}
   PRIVATE
   fmt
-  zlib
+  ZLIB::ZLIB
   pqxx
   yaml-cpp
   jwt-cpp

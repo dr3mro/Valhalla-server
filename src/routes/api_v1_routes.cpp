@@ -17,16 +17,14 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
     CROW_ROUTE((*app), URL("/clients/<string>/create"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, BRequest, DataIntegrity)
         .methods(crow::HTTPMethod::POST)(
-            [this, app](const crow::request &req, crow::response &res, const std::string_view clientType)
-            {
+            [this, app](const crow::request &req, crow::response &res, const std::string_view clientType) {
                 executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Create, req, res, app->get_context<BRequest>(req).payload);
             });
 
     CROW_ROUTE((*app), URL("/clients/<string>/login"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authentication)
         .methods(crow::HTTPMethod::POST)(
-            [this, app](const crow::request &req, crow::response &res, const std::string_view clientType)
-            {
+            [this, app](const crow::request &req, crow::response &res, const std::string_view clientType) {
                 executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Login, req, res,
                                         app->get_context<Authentication>(req).credentials);
             });
@@ -43,8 +41,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
     CROW_ROUTE((*app), URL("/clients/<string>/suspend"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, PathParameter)
         .methods(crow::HTTPMethod::POST)(
-            [this, app](const crow::request &req, crow::response &res, const std::string_view clientType)
-            {
+            [this, app](const crow::request &req, crow::response &res, const std::string_view clientType) {
                 executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Suspend, req, res,
                                         app->get_context<PathParameter>(req).params);
             });
@@ -52,8 +49,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
     CROW_ROUTE((*app), URL("/clients/<string>/activate"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, PathParameter)
         .methods(crow::HTTPMethod::POST)(
-            [this, app](const crow::request &req, crow::response &res, const std::string_view clientType)
-            {
+            [this, app](const crow::request &req, crow::response &res, const std::string_view clientType) {
                 executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Activate, req, res,
                                         app->get_context<PathParameter>(req).params);
             });
@@ -67,16 +63,14 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
     CROW_ROUTE((*app), URL("/clients/<string>/update"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest, DataIntegrity)
         .methods(crow::HTTPMethod::PUT)(
-            [this, app](const crow::request &req, crow::response &res, const std::string_view clientType)
-            {
+            [this, app](const crow::request &req, crow::response &res, const std::string_view clientType) {
                 executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Update, req, res, app->get_context<BRequest>(req).payload);
             });
 
     CROW_ROUTE((*app), URL("/clients/<string>/delete"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, PathParameter)
         .methods(crow::HTTPMethod::DELETE)(
-            [this, app](const crow::request &req, crow::response &res, const std::string_view clientType)
-            {
+            [this, app](const crow::request &req, crow::response &res, const std::string_view clientType) {
                 executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Delete, req, res,
                                         app->get_context<PathParameter>(req).params);
             });
@@ -84,8 +78,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
     CROW_ROUTE((*app), URL("/clients/<string>/search"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest, Search)
         .methods(crow::HTTPMethod::POST)(
-            [this, app](const crow::request &req, crow::response &res, const std::string_view clientType)
-            {
+            [this, app](const crow::request &req, crow::response &res, const std::string_view clientType) {
                 executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Search, req, res,
                                         app->get_context<Search>(req).search_json);
             });
@@ -103,8 +96,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
     CROW_ROUTE((*app), URL("/services/<string>/create"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest, DataIntegrity)
         .methods(crow::HTTPMethod::POST)(
-            [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
-            {
+            [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName) {
                 executeControllerMethod(serviceRegistry, serviceName, &ServiceControllerBase::Create, req, res,
                                         app->get_context<BRequest>(req).payload);
             });
@@ -112,8 +104,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
     CROW_ROUTE((*app), URL("/services/<string>/read"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest)
         .methods(crow::HTTPMethod::POST)(
-            [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
-            {
+            [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName) {
                 executeControllerMethod(serviceRegistry, serviceName, &ServiceControllerBase::Read, req, res,
                                         app->get_context<BRequest>(req).payload);
             });
@@ -121,8 +112,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
     CROW_ROUTE((*app), URL("/services/<string>/update"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest, DataIntegrity)
         .methods(crow::HTTPMethod::PUT)(
-            [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
-            {
+            [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName) {
                 executeControllerMethod(serviceRegistry, serviceName, &ServiceControllerBase::Update, req, res,
                                         app->get_context<BRequest>(req).payload);
             });
@@ -130,8 +120,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
     CROW_ROUTE((*app), URL("/services/<string>/delete"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, PathParameter)
         .methods(crow::HTTPMethod::DELETE)(
-            [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
-            {
+            [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName) {
                 executeControllerMethod(serviceRegistry, serviceName, &ServiceControllerBase::Delete, req, res,
                                         app->get_context<PathParameter>(req).params);
             });
@@ -139,8 +128,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
     CROW_ROUTE((*app), URL("/services/<string>/search"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest, Search)
         .methods(crow::HTTPMethod::POST)(
-            [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
-            {
+            [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName) {
                 executeControllerMethod(serviceRegistry, serviceName, &ServiceControllerBase::Search, req, res,
                                         app->get_context<Search>(req).search_json);
             });
@@ -149,8 +137,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
     CROW_ROUTE((*app), URL("/services/clinics/<string>/create"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest, DataIntegrity)
         .methods(crow::HTTPMethod::POST)(
-            [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
-            {
+            [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName) {
                 executeControllerMethod(clinicRegistry, serviceName, &ClinicControllerBase::Create, req, res,
                                         app->get_context<BRequest>(req).payload);
             });
@@ -158,16 +145,14 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
     CROW_ROUTE((*app), URL("/services/clinics/<string>/read"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest)
         .methods(crow::HTTPMethod::POST)(
-            [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
-            {
+            [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName) {
                 executeControllerMethod(clinicRegistry, serviceName, &ClinicControllerBase::Read, req, res, app->get_context<BRequest>(req).payload);
             });
 
     CROW_ROUTE((*app), URL("/services/clinics/<string>/update"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest, DataIntegrity)
         .methods(crow::HTTPMethod::PUT)(
-            [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
-            {
+            [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName) {
                 executeControllerMethod(clinicRegistry, serviceName, &ClinicControllerBase::Update, req, res,
                                         app->get_context<BRequest>(req).payload);
             });
@@ -175,8 +160,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
     CROW_ROUTE((*app), URL("/services/clinics/<string>/delete"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, PathParameter)
         .methods(crow::HTTPMethod::DELETE)(
-            [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
-            {
+            [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName) {
                 executeControllerMethod(clinicRegistry, serviceName, &ClinicControllerBase::Delete, req, res,
                                         app->get_context<PathParameter>(req).params);
             });
@@ -184,8 +168,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
     CROW_ROUTE((*app), URL("/services/clinics/patients/search"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest, Search)
         .methods(crow::HTTPMethod::POST)(
-            [this, app](const crow::request &req, crow::response &res)
-            {
+            [this, app](const crow::request &req, crow::response &res) {
                 executeControllerMethod(clinicRegistry, "patients", &ClinicControllerBase::Search, req, res,
                                         app->get_context<Search>(req).search_json);
             });
@@ -193,8 +176,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
     CROW_ROUTE((*app), URL("/services/clinics/patients/getvisits"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, PathParameter)
         .methods(crow::HTTPMethod::GET)(
-            [this, app](const crow::request &req, crow::response &res)
-            {
+            [this, app](const crow::request &req, crow::response &res) {
                 executeControllerMethod(clinicRegistry, "patients", &ClinicControllerBase::GetVisits, req, res,
                                         app->get_context<PathParameter>(req).params);
             });
@@ -204,8 +186,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
     CROW_ROUTE((*app), URL("/services/<string>/appointments/create"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest, DataIntegrity)
         .methods(crow::HTTPMethod::POST)(
-            [this, app](const crow::request &req, crow::response &res, const std::string_view entityType)
-            {
+            [this, app](const crow::request &req, crow::response &res, const std::string_view entityType) {
                 executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Create, req, res,
                                         app->get_context<BRequest>(req).payload);
             });
@@ -213,8 +194,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
     CROW_ROUTE((*app), URL("/services/<string>/appointments/read"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest)
         .methods(crow::HTTPMethod::POST)(
-            [this, app](const crow::request &req, crow::response &res, const std::string_view entityType)
-            {
+            [this, app](const crow::request &req, crow::response &res, const std::string_view entityType) {
                 executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Read, req, res,
                                         app->get_context<BRequest>(req).payload);
             });
@@ -222,8 +202,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
     CROW_ROUTE((*app), URL("/services/<string>/appointments/update"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest, DataIntegrity)
         .methods(crow::HTTPMethod::PUT)(
-            [this, app](const crow::request &req, crow::response &res, const std::string_view entityType)
-            {
+            [this, app](const crow::request &req, crow::response &res, const std::string_view entityType) {
                 executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Update, req, res,
                                         app->get_context<BRequest>(req).payload);
             });
@@ -250,8 +229,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
     CROW_ROUTE((*app), URL("/services/<string>/staff/add"))
         .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest, DataIntegrity)
         .methods(crow::HTTPMethod::POST)(
-            [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
-            {
+            [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName) {
                 executeControllerMethod(staffRegistry, serviceName, &StaffControllerBase::AddStaffToEntity, req, res,
                                         app->get_context<BRequest>(req).payload);
             });
@@ -272,7 +250,7 @@ API_V1_Routes::API_V1_Routes(std::shared_ptr<APP> &app)
             [](const crow::request &req, crow::response &res)
             {
                 (void)req;
-                RestHelper::successResponseJsoned(res, crow::status::OK, "Welcome to ASGARD.");
+                RestHelper::successResponse(res, crow::status::OK, RestHelper::stringify(RestHelper::jsonify("Welcome to ASGARD.")));
             });
 
     // Catch-all route for unmatched paths
