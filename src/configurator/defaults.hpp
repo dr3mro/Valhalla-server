@@ -48,7 +48,7 @@ namespace Defaults
         constexpr uint8_t          SERVER_DEBUG_LEVEL_    = 3;
         constexpr bool             SERVER_LOG_TO_CONSOLE_ = true;
         constexpr bool             SERVER_LOG_TO_FILE_    = true;
-        constexpr std::string_view SERVER_LOG_DIR_        = std::string_view("./logs/");
+        constexpr std::string_view SERVER_LOG_DIR_        = std::string_view("./build/");
         constexpr std::string_view SERVER_LOG_FILE_       = std::string_view("server.log");
 
     }  // namespace Server
