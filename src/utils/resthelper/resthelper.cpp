@@ -1,49 +1,47 @@
 #include "resthelper.hpp"
 
-#include <jsoncons/json.hpp>
-
 #include "fmt/core.h"
 using json = jsoncons::json;
 
-void RestHelper::failureResponse(crow::response& res, const std::string& status_message)
+constexpr std::string FAILURE = "Failure";
+constexpr std::string ERROR   = "Error";
+
+void RestHelper::failureResponse(crow::response& res, const std::string& message)
 {
-    res.code = crow::status::INTERNAL_SERVER_ERROR;
-
-    jsoncons::json error_json;
-    std::string    response;
-
-    error_json["Status"]  = "Failure";
-    error_json["Message"] = status_message;
-    error_json.dump_pretty(response);
-
-    res.end(response);
+    reply(res, crow::status::INTERNAL_SERVER_ERROR, prepare(FAILURE, message));
 }
 
-void RestHelper::errorResponse(crow::response& res, const crow::status& status, const std::string& status_message)
+void RestHelper::errorResponse(crow::response& res, const crow::status& status, const std::string& message)
+{
+    reply(res, status, prepare(ERROR, message));
+}
+
+void RestHelper::successResponse(crow::response& res, const crow::status& status, const std::string& message) { reply(res, status, message); }
+
+jsoncons::json RestHelper::jsonify(const std::string& message)
+{
+    jsoncons::json object;
+    object["Message"] = message;
+    return object;
+}
+
+std::string RestHelper::stringify(const jsoncons::json& json)
+{
+    std::string reply;
+    json.dump_pretty(reply);
+    return reply;
+}
+
+void RestHelper::reply(crow::response& res, const crow::status& status, const std::string& message)
 {
     res.code = status;
-
-    jsoncons::json error_json;
-    std::string    response;
-
-    error_json["Status"]  = "Error";
-    error_json["Message"] = status_message;
-    error_json.dump_pretty(response);
-
-    res.end(response);
+    res.add_header("Content-Type", "application/json");
+    res.end(message);
 }
 
-void RestHelper::successResponse(crow::response& res, const crow::status& status, const std::string& result)
+std::string RestHelper::prepare(const std::string& status, const std::string& message)
 {
-    res.code = status;
-    res.end(result);
-}
-
-void RestHelper::successResponseJsoned(crow::response& res, const crow::status& status, const std::string& message)
-{
-    std::string results;
-    json        response_json;
-    response_json["Message"] = message;
-    response_json.dump_pretty(results);
-    successResponse(res, status, results);
+    jsoncons::json object = jsonify(message);
+    object["Status"]      = status;
+    return stringify(object);
 }
