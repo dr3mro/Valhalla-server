@@ -19,6 +19,6 @@ class Message
     static void CriticalMessage(const std::string& status_message);
 
    private:
-    static void                  MessageImpl(const std::string& status_message, crow::LogLevel level);
-    static constexpr std::string RESET = "\033[0m";  // Reset
+    static void           MessageImpl(const std::string& status_message, crow::LogLevel level);
+    static constexpr char RESET[] = "\033[0m";  // Reset
 };
