@@ -5,6 +5,8 @@
 
 #include <chrono>
 
+#include "utils/message/message.hpp"
+
 struct ElapsedTime : crow::ILocalMiddleware
 {
     struct context
@@ -31,6 +33,6 @@ struct ElapsedTime : crow::ILocalMiddleware
         auto end_time = std::chrono::steady_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - ctx.start_time).count();
         // Log the request duration
-        CROW_LOG_INFO << "ElapsedTime: Request to " << req.url << " took " << duration << "ms";
+        Message::InfoMessage(fmt::format("ElapsedTime: Request to {} took {} ms. ", req.url, duration));
     }
 };
