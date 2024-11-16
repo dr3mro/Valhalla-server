@@ -28,17 +28,37 @@ DatabaseConnectionPool::DatabaseConnectionPool()
     {
         for (uint16_t i = 0; i < config_.max_conn; ++i)
         {
-            auto future = std::async(std::launch::async, &DatabaseConnectionPool::createDatabaseConnection, this);
+            const int MAX_RETRIES           = 3;
+            int       retryCount            = 0;
+            bool      connectionEstablished = false;
 
-            auto status = future.wait_for(std::chrono::seconds(30));  // Set a timeout of 30 seconds
-            if (status == std::future_status::ready)
+            while (retryCount < MAX_RETRIES && !connectionEstablished)
             {
-                databaseConnections.push(future.get());
-                Message::InitMessage(fmt::format("Connection {} created successfully.", i + 1));
+                auto future = std::async(std::launch::async, &DatabaseConnectionPool::createDatabaseConnection, this);
+                auto status = future.wait_for(std::chrono::seconds(30));
+
+                if (status == std::future_status::ready)
+                {
+                    databaseConnections.push(future.get());
+                    Message::InitMessage(fmt::format("Connection {}/{} created successfully.", i + 1, config_.max_conn));
+                    connectionEstablished = true;
+                }
+                else
+                {
+                    // std::this_thread::sleep_for(std::chrono::seconds(1));
+                    retryCount++;
+                    if (retryCount < MAX_RETRIES)
+                    {
+                        Message::WarningMessage(fmt::format("Connection attempt {} timed out, retrying... ({}/{})", i + 1, retryCount, MAX_RETRIES));
+                        // Exponential backoff
+                        std::this_thread::sleep_for(std::chrono::seconds(1 << retryCount));
+                    }
+                }
             }
-            else
+
+            if (!connectionEstablished)
             {
-                Message::ErrorMessage("Connection attempt timedout, failed to open database connection.");
+                Message::ErrorMessage(fmt::format("Failed to establish connection {} after {} attempts.", i + 1, MAX_RETRIES));
                 throw std::runtime_error("Database connection pool initialization failed");
             }
         }

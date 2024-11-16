@@ -17,15 +17,15 @@ std::optional<std::string> TokenManager::GenerateToken(const LoggedUserInfo &log
     {
         // Create JWT token with payload
         std::optional<std::string> token =
-            jwt::create()
+            jwt::create<jwt::traits::kazuho_picojson>()
                 .set_issuer(tokenManagerParameters_.issuer.data())
                 .set_type(tokenManagerParameters_.type.data())
                 .set_subject(loggedinUserInfo.userName.value())
                 .set_id(std::to_string(loggedinUserInfo.userID.value()))
                 .set_issued_at(std::chrono::system_clock::now())
                 .set_expires_at(std::chrono::system_clock::now() + std::chrono::minutes{tokenManagerParameters_.validity})
-                .set_payload_claim("llodt", jwt::claim(loggedinUserInfo.llodt.value()))
-                .set_payload_claim("group", jwt::claim(loggedinUserInfo.group.value()))
+                .set_payload_claim("llodt", jwt::basic_claim<jwt::traits::kazuho_picojson>(loggedinUserInfo.llodt.value()))
+                .set_payload_claim("group", jwt::basic_claim<jwt::traits::kazuho_picojson>(loggedinUserInfo.group.value()))
                 .sign(jwt::algorithm::hs256{tokenManagerParameters_.secret.data()});
 
         return token;
@@ -37,7 +37,6 @@ std::optional<std::string> TokenManager::GenerateToken(const LoggedUserInfo &log
     }
     return std::nullopt;
 }
-
 /**
  * Validates the provided JWT token and updates the user information from the
  * token.
@@ -50,7 +49,7 @@ bool TokenManager::ValidateToken(LoggedUserInfo &loggedinUserInfo) const
 {
     try
     {
-        auto token = jwt::decode(loggedinUserInfo.token.value());
+        auto token = jwt::decode<jwt::traits::kazuho_picojson>(loggedinUserInfo.token.value());
 
         // Validate token expiration
         auto now      = std::chrono::system_clock::now().time_since_epoch();
@@ -97,14 +96,14 @@ bool TokenManager::ValidateToken(LoggedUserInfo &loggedinUserInfo) const
  */
 jwt::verifier<jwt::default_clock, jwt::traits::kazuho_picojson> TokenManager::createTokenVerifier(const LoggedUserInfo &loggedinUserInfo) const
 {
-    return jwt::verify()
+    return jwt::verify<jwt::traits::kazuho_picojson>()
         .allow_algorithm(jwt::algorithm::hs256{tokenManagerParameters_.secret.data()})
         .with_issuer(tokenManagerParameters_.issuer.data())
         .with_type(tokenManagerParameters_.type.data())
         .with_subject(loggedinUserInfo.userName.value())
         .with_id(std::to_string(loggedinUserInfo.userID.value()))
-        .with_claim("group", jwt::claim(loggedinUserInfo.group.value()))
-        .with_claim("llodt", jwt::claim(loggedinUserInfo.llodt.value_or("first_login")));
+        .with_claim("group", jwt::basic_claim<jwt::traits::kazuho_picojson>(loggedinUserInfo.group.value()))
+        .with_claim("llodt", jwt::basic_claim<jwt::traits::kazuho_picojson>(loggedinUserInfo.llodt.value_or("first_login")));
 }
 
 /**
