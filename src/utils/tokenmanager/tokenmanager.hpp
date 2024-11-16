@@ -1,5 +1,6 @@
 #pragma once
 #include <jwt-cpp/jwt.h>
+#include <jwt-cpp/traits/kazuho-picojson/traits.h>
 
 #include <optional>
 

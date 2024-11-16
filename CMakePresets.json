@@ -1,0 +1,19 @@
+{
+    "version": 8,
+    "buildPresets": [
+        {
+            "name": "conan-release",
+            "description": "",
+            "displayName": "",
+
+            "configurePreset": "conan-release"
+        },
+        {
+            "name": "conan-debug",
+            "description": "",
+            "displayName": "",
+
+            "configurePreset": "conan-debug"
+        }
+    ]
+}
