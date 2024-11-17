@@ -13,6 +13,11 @@ libsodium/cci.20220430
 libcurl/8.10.1
 spdlog/1.15.0
 fmt/11.0.2
+drogon/1.9.8
+
 [generators]
 CMakeDeps
 CMakeToolchain
+
+[layout]
+cmake_layout
