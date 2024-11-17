@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.30)
 
-set(CMAKE_TOOLCHAIN_FILE "${CMAKE_BINARY_DIR}/conan_toolchain.cmake")
+set(CMAKE_TOOLCHAIN_FILE "${CMAKE_BINARY_DIR}/generators/conan_toolchain.cmake")
 
 # Set the project name and version
 set(Target "server")
@@ -63,6 +63,7 @@ set(CONAN_PACKAGES
   CURL
   ZLIB
   spdlog
+  Drogon
   OpenSSL
 )
 
