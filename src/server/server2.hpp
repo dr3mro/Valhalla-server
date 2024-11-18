@@ -4,7 +4,7 @@
 #include <memory>
 
 #include "configurator/configurator.hpp"
-#include "routes/v2_routes.hpp"
+#include "routes/v2_routes.hpp"  // IWYU pragma: keep
 #include "store/store.hpp"
 
 class Server2
@@ -19,6 +19,6 @@ class Server2
     std::shared_ptr<Configurator>       configurator_ = Store::getObject<Configurator>();
     const Configurator::ServerConfig   &config_       = configurator_->get<Configurator::ServerConfig>();
     const Configurator::DatabaseConfig &db_config_    = configurator_->get<Configurator::DatabaseConfig>();
-
-    void print_banner();
+    auto                                get_err404_json() -> Json::Value;
+    void                                print_banner();
 };
