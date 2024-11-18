@@ -4,7 +4,6 @@
 #include <fmt/core.h>
 
 #include "server/extras/banner.hpp"
-#include "utils/Logger/logger.hpp"
 
 #ifndef GIT_TAG
 #    define GIT_TAG "unknown"
@@ -42,8 +41,8 @@ void Server::print_banner()
 {
     std::srand(std::time(0));
     // Select a random color
-    int        num_colors   = sizeof(colors) / sizeof(colors[0]);
-    fmt::color random_color = colors[std::rand() % num_colors];
+    int        num_colors   = sizeof(Banner::colors) / sizeof(Banner::colors[0]);
+    fmt::color random_color = Banner::colors[std::rand() % num_colors];
 
     // Clean screen
     // Print Config
