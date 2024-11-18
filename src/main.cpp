@@ -1,5 +1,5 @@
 #include "objectfactory/objectfactory.hpp"
-#include "server/server.hpp"
+#include "server/server2.hpp"
 
 int main(int argc, char **argv)
 {
@@ -8,7 +8,7 @@ int main(int argc, char **argv)
 
     ObjectFactory factory;
 
-    Server server;
+    Server2 server;
 
     server.run();
 
