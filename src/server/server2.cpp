@@ -15,13 +15,9 @@ int Server2::run()
 
     try
     {
-        Json::Value json_404;
-        json_404["Message"] = "Not Implemented yet!";
-
         drogon::app()
             .addListener(config_.host.data(), config_.port)
-            //.setLogLevel(static_cast<trantor::Logger::LogLevel>(config_.debug_level))
-            .setLogLevel(trantor::Logger::LogLevel::kDebug)
+            .setLogLevel(static_cast<trantor::Logger::LogLevel>(config_.debug_level))
             .setThreadNum(config_.threads)
             .registerPreRoutingAdvice(
                 [](const drogon::HttpRequestPtr& req, drogon::AdviceCallback&& cb, drogon::AdviceChainCallback&& ccb)
@@ -49,7 +45,7 @@ int Server2::run()
                     resp->addHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
                     resp->addHeader("Access-Control-Allow-Credentials", "true");
                 })
-            .setCustom404Page(drogon::HttpResponse::newHttpJsonResponse(json_404))
+            .setCustom404Page(drogon::HttpResponse::newHttpJsonResponse(get_err404_json()))
             .run();
     }
     catch (const std::exception& e)
@@ -60,6 +56,13 @@ int Server2::run()
     }
 
     return EXIT_SUCCESS;  // Exit with success code
+}
+
+auto Server2::get_err404_json() -> Json::Value
+{
+    Json::Value json_404;
+    json_404["Message"] = "Not Implemented yet!";
+    return json_404;
 }
 void Server2::print_banner()
 {
