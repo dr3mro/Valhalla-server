@@ -6,11 +6,7 @@
 
 #include "controllers/base/controller/controller.hpp"
 #include "controllers/entitycontroller/entitycontrollerbase.hpp"
-#include "entities/base/client.hpp"
-#include "entities/base/entity.hpp"
 #include "utils/helper/helper.hpp"
-
-using json = jsoncons::json;
 
 template <typename T>
 class EntityController : public Controller, public EntityControllerBase
@@ -19,11 +15,12 @@ class EntityController : public Controller, public EntityControllerBase
     EntityController()          = default;
     virtual ~EntityController() = default;
     // CRUDS
+
     void Create(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data) override;
-    // void Read(const crow::request &req, crow::response &res, const json &request_json) override;
-    // void Update(const crow::request &req, crow::response &res, const json &request_json) override;
-    // void Delete(const crow::request &req, crow::response &res, const std::unordered_map<std::string, std::string> &params) override;
-    // void Search(const crow::request &req, crow::response &res, const json &request_json) override;
+    void Read(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data) override;
+    void Update(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data) override;
+    void Delete(std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::unordered_map<std::string, std::string> &params) override;
+    void Search(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data) override;
 
    protected:
 };
@@ -49,94 +46,94 @@ void EntityController<T>::Create(std::function<void(const drogon::HttpResponsePt
     }
 }
 
-// template <typename T>
-// void EntityController<T>::Read(const crow::request &req, crow::response &res, const json &request_json)
-// {
-//     (void)req;
-//     json response;
-//     try
-//     {
-//         uint64_t                 id     = request_json.at("id").as<uint64_t>();
-//         std::vector<std::string> schema = request_json.at("schema").as<std::vector<std::string>>();
+template <typename T>
+void EntityController<T>::Read(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data)
+{
+    jsoncons::json request_json;
+    try
+    {
+        request_json                    = jsoncons::json::parse(data);
+        uint64_t                 id     = request_json.at("id").as<uint64_t>();
+        std::vector<std::string> schema = request_json.at("schema").as<std::vector<std::string>>();
 
-//         T entity((Types::Read_t(schema, id)));
-//         Controller::Read(res, entity);
-//     }
-//     catch (const std::exception &e)
-//     {
-//         RestHelper::failureResponse(res, e.what());
-//     }
-// }
+        T entity((Types::Read_t(schema, id)));
+        Controller::Read(entity, callback);
+    }
+    catch (const std::exception &e)
+    {
+        Helper::failureResponse(e.what(), callback);
+    }
+}
 
-// template <typename T>
-// void EntityController<T>::Update(const crow::request &req, crow::response &res, const json &request_json)
-// {
-//     (void)req;
-//     try
-//     {
-//         json                    data_j(request_json);
-//         std::optional<uint64_t> id = data_j.find("id")->value().as<uint64_t>();
-//         if (!id.has_value())
-//         {
-//             RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "No id provided");
-//             return;
-//         }
+template <typename T>
+void EntityController<T>::Update(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data)
+{
+    jsoncons::json request_json;
+    try
+    {
+        request_json               = jsoncons::json::parse(data);
+        std::optional<uint64_t> id = request_json.find("id")->value().as<uint64_t>();
+        if (!id.has_value())
+        {
+            Helper::errorResponse(drogon::k400BadRequest, "No id provided", callback);
+            return;
+        }
 
-//         T entity((Types::Update_t(data_j, id.value())));
-//         Controller::Update(res, entity);
-//     }
-//     catch (const std::exception &e)
-//     {
-//         RestHelper::failureResponse(res, e.what());
-//     }
-// }
+        T entity((Types::Update_t(request_json, id.value())));
+        Controller::Update(entity, callback);
+    }
+    catch (const std::exception &e)
+    {
+        Helper::failureResponse(e.what(), callback);
+    }
+}
 
-// template <typename T>
-// void EntityController<T>::Delete(const crow::request &req, crow::response &res, const std::unordered_map<std::string, std::string> &params)
-// {
-//     (void)req;
-//     try
-//     {
-//         auto it = params.find("id");
-//         if (it == params.end())
-//         {
-//             RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "No id provided");
-//             return;
-//         }
+template <typename T>
+void EntityController<T>::Delete(std::function<void(const drogon::HttpResponsePtr &)> &&callback,
+                                 const std::unordered_map<std::string, std::string>    &params)
+{
+    try
+    {
+        auto it = params.find("id");
+        if (it == params.end())
+        {
+            Helper::errorResponse(drogon::k406NotAcceptable, "No id provided", callback);
+            return;
+        }
 
-//         std::optional<uint64_t> id = std::stoull(it->second);
-//         if (!id.has_value())
-//         {
-//             RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "Invalid id provided");
-//             return;
-//         }
+        std::optional<uint64_t> id = std::stoull(it->second);
+        if (!id.has_value())
+        {
+            Helper::errorResponse(drogon::k406NotAcceptable, "Invalid id provided", callback);
+            return;
+        }
 
-//         T entity(Types::Delete_t(id.value()));
-//         Controller::Delete(res, entity);
-//     }
-//     catch (const std::exception &e)
-//     {
-//         RestHelper::failureResponse(res, e.what());
-//     }
-// }
+        T entity(Types::Delete_t(id.value()));
+        Controller::Delete(entity, callback);
+    }
+    catch (const std::exception &e)
+    {
+        Helper::failureResponse(e.what(), callback);
+    }
+}
 
-// template <typename T>
-// void EntityController<T>::Search(const crow::request &req, crow::response &res, const json &request_json)
-// {
-//     (void)req;
-//     json response;
-//     try
-//     {
-//         bool success = false;
-//         T    entity((Types::Search_t(request_json, success)));
+template <typename T>
+void EntityController<T>::Search(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data)
+{
+    jsoncons::json request_json;
+    try
+    {
+        request_json = jsoncons::json::parse(data);
+        bool success = false;
+        T    entity((Types::Search_t(request_json, success)));
 
-//         if (success)
-//         {
-//             Controller::Search(res, entity);
-//         }
-//     }
-//     catch (const std::exception &e)
-//     {
-//         RestHelper::failureResponse(res, e.what());
-//     }
-// }
+        if (success)
+        {
+            Controller::Search(entity, callback);
+        }
+    }
+    catch (const std::exception &e)
+    {
+        Helper::failureResponse(e.what(), callback);
+    }
+}

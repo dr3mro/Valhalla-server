@@ -203,7 +203,7 @@ class Types
         }
         bool toInviteJson(json &invite_json)
         {
-            std::string encoded_invite_data = crow::utility::base64encode(invite_json.to_string(), invite_json.to_string().size());
+            std::string encoded_invite_data = drogon::utils::base64Encode(invite_json.to_string(), invite_json.to_string().size());
             try
             {
                 invite_json["subject"]  = fmt::format("Invite to {}", project_name);

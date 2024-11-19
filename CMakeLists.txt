@@ -50,11 +50,8 @@ add_executable(${Target} ${SRC})
 # Define all your packages in a list
 set(CONAN_PACKAGES
   picojson
-  asio
   fmt
-  Crow
   libpqxx
-  yaml-cpp
   jwt-cpp
   jsoncons
   Catch2
@@ -64,7 +61,6 @@ set(CONAN_PACKAGES
   ZLIB
   spdlog
   Drogon
-  OpenSSL
 )
 
 # Find all packages at once

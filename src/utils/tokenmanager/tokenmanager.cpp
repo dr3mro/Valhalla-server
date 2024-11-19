@@ -37,14 +37,7 @@ std::optional<std::string> TokenManager::GenerateToken(const LoggedUserInfo &log
     }
     return std::nullopt;
 }
-/**
- * Validates the provided JWT token and updates the user information from the
- * token.
- *
- * @param loggedinUserInfo The user information, including the token to be
- * validated.
- * @return `true` if the token is valid, `false` otherwise.
- */
+
 bool TokenManager::ValidateToken(LoggedUserInfo &loggedinUserInfo) const
 {
     try
@@ -87,13 +80,6 @@ bool TokenManager::ValidateToken(LoggedUserInfo &loggedinUserInfo) const
     return false;
 }
 
-/**
- * Creates a JWT verifier for validating the provided token.
- *
- * @param loggedinUserInfo The logged-in user information, including the token
- * to be verified.
- * @return A JWT verifier that can be used to verify the token.
- */
 jwt::verifier<jwt::default_clock, jwt::traits::kazuho_picojson> TokenManager::createTokenVerifier(const LoggedUserInfo &loggedinUserInfo) const
 {
     return jwt::verify<jwt::traits::kazuho_picojson>()
@@ -106,17 +92,6 @@ jwt::verifier<jwt::default_clock, jwt::traits::kazuho_picojson> TokenManager::cr
         .with_claim("llodt", jwt::basic_claim<jwt::traits::kazuho_picojson>(loggedinUserInfo.llodt.value_or("first_login")));
 }
 
-/**
- * Fills the user information in the provided LoggedUserInfo object using the
- * claims from the decoded JWT token.
- *
- * @param loggedinUserInfo The LoggedUserInfo object to be filled with user
- * information.
- * @param token The decoded JWT token containing the user information.
- * @throws std::runtime_error if the required user information is missing from
- * the token or if the group claim does not match the existing group in the
- * LoggedUserInfo object.
- */
 void TokenManager::fillUserInfo(LoggedUserInfo &loggedinUserInfo, const jwt::decoded_jwt<jwt::traits::kazuho_picojson> &token) const
 {
     if (!loggedinUserInfo.group)

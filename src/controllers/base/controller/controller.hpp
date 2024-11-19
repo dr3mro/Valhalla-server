@@ -15,7 +15,6 @@
 #include "utils/message/message.hpp"
 #include "utils/sessionmanager/sessionmanager.hpp"
 #include "utils/tokenmanager/tokenmanager.hpp"
-using json = jsoncons::json;
 
 class Controller
 {
@@ -222,9 +221,9 @@ class Controller
     std::shared_ptr<SessionManager>     sessionManager;
     std::shared_ptr<TokenManager>       tokenManager;
 
-    std::optional<json> (DatabaseController::*dbexec)(const std::string &)         = &DatabaseController::executeQuery;
-    std::optional<json> (DatabaseController::*dbrexec)(const std::string &)        = &DatabaseController::executeReadQuery;
-    std::optional<json::array> (DatabaseController::*dbsexec)(const std::string &) = &DatabaseController::executeSearchQuery;
+    std::optional<jsoncons::json> (DatabaseController::*dbexec)(const std::string &)  = &DatabaseController::executeQuery;
+    std::optional<jsoncons::json> (DatabaseController::*dbrexec)(const std::string &) = &DatabaseController::executeReadQuery;
+    std::optional<json::array> (DatabaseController::*dbsexec)(const std::string &)    = &DatabaseController::executeSearchQuery;
 
     ///////////////////////////
     template <typename S, typename T>

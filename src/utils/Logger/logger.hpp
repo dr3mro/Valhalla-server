@@ -1,5 +1,6 @@
 #pragma once
-#include <crow.h>
+
+#include <drogon/drogon.h>
 #include <spdlog/async.h>
 #include <spdlog/spdlog.h>
 
@@ -7,11 +8,11 @@
 #include <string>
 
 // Custom Logger that inherits from crow::ILogHandler
-class Logger : public crow::ILogHandler
+class Logger
 {
    public:
     Logger();
-    void log(std::string message, crow::LogLevel level) override;
+    void log(const std::string& message, trantor::Logger::LogLevel level);
 
    private:
     std::shared_ptr<spdlog::async_logger> logger;

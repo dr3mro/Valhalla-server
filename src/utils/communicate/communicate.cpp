@@ -3,15 +3,12 @@
 #include <curl/curl.h>
 #include <fmt/format.h>
 
-#include <functional>
-#include <iostream>
-#include <map>
 #include <string>
 
 #include "utils/message/message.hpp"
 
 std::optional<std::string> Communicate::sendRequest(const std::string& server, const int port, const std::string& path,
-                                                    const crow::HTTPMethod& method, const std::string& data)
+                                                    const drogon::HttpMethod& method, const std::string& data)
 {
     CURL*              curl    = nullptr;
     struct curl_slist* headers = NULL;
@@ -33,14 +30,14 @@ std::optional<std::string> Communicate::sendRequest(const std::string& server, c
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
 
         // Map of methods to their respective cURL options
-        static const std::map<crow::HTTPMethod, std::function<void()>> methodMap = {
-            {crow::HTTPMethod::POST,
+        static const std::map<drogon::HttpMethod, std::function<void()>> methodMap = {
+            {drogon::HttpMethod::Post,
              [&curl, &data]()
              {
                  curl_easy_setopt(curl, CURLOPT_POST, 1L);
                  curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data.c_str());
              }},
-            {crow::HTTPMethod::GET, [&curl]() { curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L); }}};
+            {drogon::HttpMethod::Get, [&curl]() { curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L); }}};
 
         auto it = methodMap.find(method);
         if (it != methodMap.end())
@@ -49,7 +46,7 @@ std::optional<std::string> Communicate::sendRequest(const std::string& server, c
         }
         else
         {
-            throw std::invalid_argument("Unsupported HTTP method: " + crow::method_name(method));
+            throw std::invalid_argument("Unsupported HTTP method: " + drogon::to_string(method));
         }
 
         // Handle response and potential errors
