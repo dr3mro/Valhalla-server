@@ -10,10 +10,11 @@
 
 #include "configurator/configurator.hpp"
 #include "store/store.hpp"
+#include "utils/helper/helper.hpp"
 #include "utils/passwordcrypt/passwordcrypt.hpp"
+
 using json = jsoncons::json;
 
-#include "utils/resthelper/resthelper.hpp"
 class Types
 {
    public:
@@ -92,11 +93,18 @@ class Types
     struct ClientData
     {
        public:
-        ClientData(const json &data, crow::response &res, bool &success)
+        ClientData(std::string_view data, std::function<void(const drogon::HttpResponsePtr &)> &callback, bool &success)
         {
-            for (const auto &item : data.object_range())
+            try
             {
-                try
+                std::optional<jsoncons::json> json_data = jsoncons::json::parse(data);
+                if (!json_data.has_value())
+                {
+                    Helper::errorResponse(drogon::k400BadRequest, "Failed to parse body.", callback);
+                    return;
+                }
+
+                for (const auto &item : json_data.value().object_range())
                 {
                     std::optional<std::string> value = item.value().as<std::string>();
                     if (value.has_value() && !value->empty())
@@ -121,12 +129,13 @@ class Types
                         db_data.push_back({item.key(), value.value()});
                     }
                 }
-                catch (const std::exception &e)
-                {
-                    RestHelper::failureResponse(res, e.what());
-                    return;
-                }
             }
+            catch (const std::exception &e)
+            {
+                Helper::failureResponse(e.what(), callback);
+                return;
+            }
+
             success = true;
         }
         const std::vector<std::pair<std::string, std::string>> &get_data() const { return db_data; }

@@ -5,15 +5,14 @@
 
 #include <string_view>
 
-#include "typemaps.hpp"  // IWYU pragma: keep
 #include "utils/helper/helper.hpp"
 namespace api
 {
     namespace v2
     {
         template <typename Func, typename Registry, typename... Args>
-        static void executeControllerMethod(const Registry& registry, const std::string_view key, Func method, const drogon::HttpRequestPtr& req,
-                                            Args&&... args, std::function<void(const drogon::HttpResponsePtr&)>&& callback)
+        static void executeControllerMethod(const Registry& registry, const std::string_view key, Func method,
+                                            std::function<void(const drogon::HttpResponsePtr&)>&& callback, Args&&... args)
         {
             auto resp = drogon::HttpResponse::newHttpResponse();
 
@@ -26,7 +25,7 @@ namespace api
                         [&](const auto& controller)
                         {
                             // Use std::invoke on the dereferenced controller object
-                            std::invoke(method, controller.get(), req, callback, std::forward<Args>(args)...);
+                            std::invoke(method, controller.get(), std::move(callback), std::forward<Args>(args)...);
                         },
                         it->second);
                 }
