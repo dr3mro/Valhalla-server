@@ -19,6 +19,5 @@ class Server2
     std::shared_ptr<Configurator>       configurator_ = Store::getObject<Configurator>();
     const Configurator::ServerConfig   &config_       = configurator_->get<Configurator::ServerConfig>();
     const Configurator::DatabaseConfig &db_config_    = configurator_->get<Configurator::DatabaseConfig>();
-    auto                                get_err404_json() -> Json::Value;
     void                                print_banner();
 };

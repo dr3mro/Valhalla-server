@@ -1,6 +1,6 @@
 
 #include "entities/base/types.hpp"
-#include "utils/helper/helper.hpp"
+#include "utils/helper/helper.hpp"  // remove warnings
 #include "utils/passwordcrypt/passwordcrypt.hpp"
 
 template <Client_t T>
@@ -24,7 +24,7 @@ void ClientController<T>::Create(std::function<void(const drogon::HttpResponsePt
     }
     catch (const std::exception& e)
     {
-        Helper::failureResponse(fmt::format("XXX{}", e.what()), callback);
+        Helper::failureResponse(e.what(), callback);
     }
 }
 
