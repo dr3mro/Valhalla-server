@@ -50,8 +50,6 @@
 
 //    private:
 //     // Define variant type
-//     using ServiceVariant = std::variant<std::shared_ptr<ServiceController<Clinics>>, std::shared_ptr<ServiceController<Pharmacies>>,
-//                                         std::shared_ptr<ServiceController<Laboratories>>, std::shared_ptr<ServiceController<RadiologyCenters>>>;
 
 //     using ClinicVariant = std::variant<std::shared_ptr<ClinicController<Patient>>, std::shared_ptr<ClinicController<Visits>>,
 //                                        std::shared_ptr<ClinicController<VisitDrugs>>, std::shared_ptr<ClinicController<Requests>>,
@@ -72,11 +70,6 @@
 //     // Type mapping to determine the correct type from the string
 //     // Map for type mapping
 //     // Service handlers map
-//     std::unordered_map<std::string_view, ServiceVariant> serviceRegistry = {
-//         {"clinics", Store::getObject<ServiceController<Clinics>>()},
-//         {"pharmacies", Store::getObject<ServiceController<Pharmacies>>()},
-//         {"laboratories", Store::getObject<ServiceController<Laboratories>>()},
-//         {"radiologycenters", Store::getObject<ServiceController<RadiologyCenters>>()}};
 
 //     std::unordered_map<std::string_view, ClinicVariant> clinicRegistry = {{"patients", Store::getObject<ClinicController<Patient>>()},
 //                                                                           {"visits", Store::getObject<ClinicController<Visits>>()},
