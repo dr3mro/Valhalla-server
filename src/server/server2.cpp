@@ -45,7 +45,7 @@ int Server2::run()
                     resp->addHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
                     resp->addHeader("Access-Control-Allow-Credentials", "true");
                 })
-            .setCustom404Page(drogon::HttpResponse::newHttpJsonResponse(get_err404_json()))
+            .setCustom404Page(drogon::HttpResponse::newHttpJsonResponse(Helper::jsonify("Not Implemented yet!")))
             .run();
     }
     catch (const std::exception& e)
@@ -58,12 +58,6 @@ int Server2::run()
     return EXIT_SUCCESS;  // Exit with success code
 }
 
-auto Server2::get_err404_json() -> Json::Value
-{
-    Json::Value json_404;
-    json_404["Message"] = "Not Implemented yet!";
-    return json_404;
-}
 void Server2::print_banner()
 {
     std::srand(std::time(0));
