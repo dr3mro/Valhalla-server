@@ -36,20 +36,19 @@ class ClientController : public EntityController<T>, public ClientControllerBase
         }
     }
 
-    virtual ~ClientController() override = default;
+    virtual ~ClientController() final = default;
 
     void Create(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data) final;
-    // void Read(const crow::request& req, crow::response& res, const json& request_json) final;
-    // void Update(const crow::request& req, crow::response& res, const json& request_json) final;
-    // void Delete(const crow::request& req, crow::response& res, const std::unordered_map<std::string, std::string>& params) final;
-    // void Search(const crow::request& req, crow::response& res, const json& request_json) final;
-
-    // std::optional<uint64_t> Login(const crow::request& req, crow::response& res, const jsoncons::json& credentials) final;
-    // void                    Logout(const crow::request& req, crow::response& res, const std::optional<std::string>& token) final;
-    // void                    Suspend(const crow::request& req, crow::response& res, const std::unordered_map<std::string, std::string>& params)
-    // final; void                    Activate(const crow::request& req, crow::response& res, const std::unordered_map<std::string, std::string>&
-    // params) final; void                    ResetPassword(const crow::request& req, crow::response& res, const json& reset_json) final; void
-    // GetServices(const crow::request& req, crow::response& res, std::optional<uint64_t> client_id) final;
+    void Read(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data) final;
+    void Update(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data) final;
+    void Delete(std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::unordered_map<std::string, std::string>& params) final;
+    void Search(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data) final;
+    std::optional<uint64_t> Login(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data) final;
+    void                    Logout(std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::optional<std::string>& token) final;
+    void Suspend(std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::unordered_map<std::string, std::string>& params) final;
+    void Activate(std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::unordered_map<std::string, std::string>& params) final;
+    void ResetPassword(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data) final;
+    void GetServices(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::optional<uint64_t> client_id) final;
 
    private:
     std::shared_ptr<TokenManager>   tokenManager;

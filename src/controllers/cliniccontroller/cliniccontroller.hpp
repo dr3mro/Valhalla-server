@@ -18,7 +18,7 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
     // Primary template for other entities
     template <typename U = T>
     std::enable_if_t<!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value, void> CreateImpl(
-        std::function<void(const drogon::HttpResponsePtr &)> &callback, std::string_view data)
+        std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data)
     {
         jsoncons::json request_json = jsoncons::json::parse(data);
         try
@@ -38,7 +38,7 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
                 return;
             }
 
-            Controller::Create(callback, entity, callback);
+            Controller::Create(entity, callback);
         }
         catch (const std::exception &e)
         {
@@ -50,107 +50,102 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
     std::enable_if_t<std::is_same<U, Patient>::value || std::is_same<U, Visits>::value, void> CreateImpl(
         std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data)
     {
-        EntityController<T>::Create(callback, data);
+        EntityController<T>::Create(std::move(callback), data);
     }
 
-    //     template <typename U = T>
-    //     std::enable_if_t<std::is_same<U, Patient>::value || std::is_same<U, Visits>::value, void> DeleteImpl(
-    //         const crow::request &req, crow::response &res, const std::unordered_map<std::string, std::string> &params)
-    //     {
-    //         EntityController<T>::Delete(req, res, params);
-    //     }
+    template <typename U = T>
+    std::enable_if_t<std::is_same<U, Patient>::value || std::is_same<U, Visits>::value, void> DeleteImpl(
+        std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::unordered_map<std::string, std::string> &params)
+    {
+        EntityController<T>::Delete(std::move(callback), params);
+    }
 
-    //     template <typename U = T>
-    //     std::enable_if_t<!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value, void> DeleteImpl(
-    //         const crow::request &req, crow::response &res, const std::unordered_map<std::string, std::string> &params)
-    //     {
-    //         (void)req;
-    //         (void)params;
-    //         RestHelper::failureResponse(res, "Delete is NOT implemented for this entity");
-    //     }
+    template <typename U = T>
+    std::enable_if_t<!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value, void> DeleteImpl(
+        std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::unordered_map<std::string, std::string> &params)
+    {
+        (void)params;
+        Helper::failureResponse(fmt::format("Delete is NOT implemented for entity type {}", T::getTableName()), callback);
+    }
 
-    //     // Only enable GetVisits if T is of type Patient
-    //     template <typename U = T>
-    //     std::enable_if_t<std::is_same<U, Patient>::value, void> SearchImpl(const crow::request &req, crow::response &res, const json &request_json)
-    //     {
-    //         EntityController<T>::Search(req, res, request_json);
-    //     }
+    // Only enable GetVisits if T is of type Patient
+    template <typename U = T>
+    std::enable_if_t<std::is_same<U, Patient>::value, void> SearchImpl(std::function<void(const drogon::HttpResponsePtr &)> &&callback,
+                                                                       std::string_view                                       data)
+    {
+        EntityController<T>::Search(std::move(callback), data);
+    }
 
-    //     template <typename U = T>
-    //     std::enable_if_t<!std::is_same<U, Patient>::value, void> SearchImpl(const crow::request &req, crow::response &res, const json
-    //     &request_json)
-    //     {
-    //         (void)req;
-    //         (void)request_json;
-    //         RestHelper::failureResponse(res, "Search is NOT implemented for this entity");
-    //     }
+    template <typename U = T>
+    std::enable_if_t<!std::is_same<U, Patient>::value, void> SearchImpl(std::function<void(const drogon::HttpResponsePtr &)> &&callback,
+                                                                        std::string_view                                       data)
+    {
+        (void)data;
+        Helper::failureResponse(fmt::format("Search is NOT implemented for entity type {}", T::getTableName()), callback);
+    }
 
-    //     // Only enable GetVisits if T is of type Patient
-    //     template <typename U = T>
-    //     std::enable_if_t<std::is_same<U, Patient>::value, void> GetVisitsImpl(const crow::request &req, crow::response &res,
-    //                                                                           const std::unordered_map<std::string, std::string> &params)
-    //     {
-    //         (void)req;
-    //         try
-    //         {
-    //             uint64_t id = std::stoull(params.at("id"));
-    //             T        entity((Types::Data_t(id)));
-    //             Controller::GetVisits(res, entity);
-    //         }
-    //         catch (const std::exception &e)
-    //         {
-    //             RestHelper::failureResponse(e.what(),callback);
-    //         }
-    //     }
+    // Only enable GetVisits if T is of type Patient
+    template <typename U = T>
+    std::enable_if_t<std::is_same<U, Patient>::value, void> GetVisitsImpl(std::function<void(const drogon::HttpResponsePtr &)> &&callback,
+                                                                          const std::unordered_map<std::string, std::string>    &params)
+    {
+        try
+        {
+            uint64_t id = std::stoull(params.at("id"));
+            T        entity((Types::Data_t(id)));
+            Controller::GetVisits(entity, callback);
+        }
+        catch (const std::exception &e)
+        {
+            Helper::failureResponse(e.what(), callback);
+        }
+    }
 
-    //     // Only enable GetVisits if T is of type Patient
-    //     template <typename U = T>
-    //     typename std::enable_if<!std::is_same<U, Patient>::value, void>::type GetVisitsImpl(const crow::request &req, crow::response &res,
-    //                                                                                         const std::unordered_map<std::string, std::string>
-    //                                                                                         &params)
-    //     {
-    //         (void)req;
-    //         (void)params;
-    //         Helper::failureResponse("GetVisits is NOT implemented for this entity", callback);
-    //     }
+    // Only enable GetVisits if T is of type Patient
+    template <typename U = T>
+    typename std::enable_if<!std::is_same<U, Patient>::value, void>::type GetVisitsImpl(
+        std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::unordered_map<std::string, std::string> &params)
+    {
+        (void)params;
+        Helper::failureResponse(fmt::format("GetVisit is NOT implemented for entity type {}", T::getTableName()), callback);
+    }
 
-    //    public:
-    //     explicit ClinicController() = default;
+   public:
+    explicit ClinicController() = default;
 
-    //     virtual ~ClinicController() override = default;
+    virtual ~ClinicController() override = default;
 
-    //     void Create(const crow::request &req, crow::response &res, const json &request_json) final
-    //     {
-    //         // here we call the actual implementation of the Create method
-    //         CreateImpl(req, res, request_json);
-    //     }
+    void Create(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data) final
+    {
+        // here we call the actual implementation of the Create method
+        CreateImpl(std::move(callback), data);
+    }
 
-    // void Read(const crow::request &req, crow::response &res, const json &request_json) final
-    // {
-    //     // Read for all clinic entities
-    //     EntityController<T>::Read(req, res, request_json);
-    // }
-    // void Update(const crow::request &req, crow::response &res, const json &request_json) final
-    // {
-    //     // Update for all clinic entities
-    //     EntityController<T>::Update(req, res, request_json);
-    // }
+    void Read(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data) final
+    {
+        // Read for all clinic entities
+        EntityController<T>::Read(std::move(callback), data);
+    }
+    void Update(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data) final
+    {
+        // Update for all clinic entities
+        EntityController<T>::Update(std::move(callback), data);
+    }
 
-    // void Delete(const crow::request &req, crow::response &res, const std::unordered_map<std::string, std::string> &params) final
-    // {
-    //     DeleteImpl(req, res, params);
-    // }
+    void Delete(std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::unordered_map<std::string, std::string> &params) final
+    {
+        DeleteImpl(std::move(callback), params);
+    }
 
-    // void Search(const crow::request &req, crow::response &res, const json &request_json) final
-    // {
-    //     // search only for Patient
+    void Search(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data) final
+    {
+        // search only for Patient
+        SearchImpl(std::move(callback), data);
+    }
 
-    //     SearchImpl(req, res, request_json);
-    // }
-
-    // void GetVisits(const crow::request &req, crow::response &res, const std::unordered_map<std::string, std::string> &params) final
-    // {
-    //     // GetVisits only for Patient
-    //     GetVisitsImpl(req, res, params);
-    // }
+    void GetVisits(std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::unordered_map<std::string, std::string> &params)
+    {
+        // GetVisits only for Patient
+        GetVisitsImpl(std::move(callback), params);
+    }
 };

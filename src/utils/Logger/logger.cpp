@@ -46,7 +46,6 @@ Logger::Logger()
 
         // Optional: set as the default logger
         spdlog::set_default_logger(logger);
-        crow::logger::setHandler(this);
     }
     catch (const spdlog::spdlog_ex& e)
     {
@@ -54,23 +53,23 @@ Logger::Logger()
     }
 }
 // Override the log function from crow::ILogHandler
-void Logger::log(std::string message, crow::LogLevel level)
+void Logger::log(const std::string& message, trantor::Logger::LogLevel level)
 {
     switch (level)
     {
-        case crow::LogLevel::DEBUG:
+        case trantor::Logger::LogLevel::kDebug:
             logger->debug(message);
             break;
-        case crow::LogLevel::INFO:
+        case trantor::Logger::LogLevel::kInfo:
             logger->info(message);
             break;
-        case crow::LogLevel::WARNING:
+        case trantor::Logger::LogLevel::kWarn:
             logger->warn(message);
             break;
-        case crow::LogLevel::ERROR:
+        case trantor::Logger::LogLevel::kError:
             logger->error(message);
             break;
-        case crow::LogLevel::CRITICAL:
+        case trantor::Logger::LogLevel::kFatal:
             logger->critical(message);
             break;
         default:

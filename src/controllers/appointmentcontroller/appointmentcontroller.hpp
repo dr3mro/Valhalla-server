@@ -7,7 +7,6 @@
 using json = jsoncons::json;
 
 template <typename T>
-
 class AppointmentController : public EntityController<T>, public AppointmentControllerBase
 {
    public:
@@ -16,11 +15,11 @@ class AppointmentController : public EntityController<T>, public AppointmentCont
     virtual ~AppointmentController() override = default;
 
     // CRUDS
-    void Create(const crow::request &req, crow::response &res, const jsoncons::json &request_json) override;
-    void Read(const crow::request &req, crow::response &res, const json &request_json) override;
-    void Update(const crow::request &req, crow::response &res, const jsoncons::json &request_json) override;
-    void Delete(const crow::request &req, crow::response &res, const std::unordered_map<std::string, std::string> &params) override;
-    void Search(const crow::request &req, crow::response &res, const jsoncons::json &request_json) override;
+    void Create(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data) override;
+    void Read(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data) override;
+    void Update(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data) override;
+    void Delete(std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::unordered_map<std::string, std::string>& params) override;
+    void Search(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data) override;
 };
 
 #include "controllers/appointmentcontroller/appointmentcontroller.tpp"
