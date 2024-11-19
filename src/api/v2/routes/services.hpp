@@ -3,8 +3,8 @@
 #include <drogon/HttpController.h>
 #include <fmt/format.h>
 
-#include "routes/api/v2/common.hpp"  // IWYU pragma: keep
-#include "routes/api/v2/types.hpp"   // IWYU pragma: keep
+#include "api/v2/basic/common.hpp"  // IWYU pragma: keep
+#include "api/v2/basic/types.hpp"   // IWYU pragma: keep
 #include "store/store.hpp"
 
 namespace api
@@ -17,30 +17,30 @@ namespace api
             void Create(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                         const std::string &serviceType)
             {
-                executeControllerMethod(serviceRegistry, serviceType, &ClientControllerBase::Create, std::move(callback), req->body());
+                executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Create, std::move(callback), req->body());
             }
 
             void Read(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                       const std::string &serviceType)
             {
-                executeControllerMethod(serviceRegistry, serviceType, &ClientControllerBase::Read, std::move(callback), req->body());
+                executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Read, std::move(callback), req->body());
             }
 
             void Update(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                         const std::string &serviceType)
             {
-                executeControllerMethod(serviceRegistry, serviceType, &ClientControllerBase::Update, std::move(callback), req->body());
+                executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Update, std::move(callback), req->body());
             }
             void Delete(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                         const std::string &serviceType)
             {
-                executeControllerMethod(serviceRegistry, serviceType, &ClientControllerBase::Delete, std::move(callback),
+                executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Delete, std::move(callback),
                                         stoll(req->getParameter("id")));
             }
             void Search(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                         const std::string &serviceType)
             {
-                executeControllerMethod(serviceRegistry, serviceType, &ClientControllerBase::Search, std::move(callback), req->body());
+                executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Search, std::move(callback), req->body());
             }
 
             METHOD_LIST_BEGIN

@@ -3,8 +3,8 @@
 #include <drogon/HttpController.h>
 #include <fmt/format.h>
 
-#include "routes/api/v2/common.hpp"  // IWYU pragma: keep
-#include "routes/api/v2/types.hpp"   // IWYU pragma: keep
+#include "api/v2/basic/common.hpp"  // IWYU pragma: keep
+#include "api/v2/basic/types.hpp"   // IWYU pragma: keep
 #include "store/store.hpp"
 
 namespace api
