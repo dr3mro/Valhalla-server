@@ -2,8 +2,8 @@
 
 #include <memory>
 
+#include "api/v2/all_routes.hpp"  // IWYU pragma: keep
 #include "configurator/configurator.hpp"
-#include "routes/v2_routes.hpp"  // IWYU pragma: keep
 #include "store/store.hpp"
 
 class Server2
