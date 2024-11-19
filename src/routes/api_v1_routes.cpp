@@ -1,51 +1,5 @@
 
 
-// ///////////////////---------------- Service--------------------////////////////////
-// CROW_ROUTE((*app), URL("/services/<string>/create"))
-//     .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest, DataIntegrity)
-//     .methods(crow::HTTPMethod::POST)(
-//         [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
-//         {
-//             executeControllerMethod(serviceRegistry, serviceName, &ServiceControllerBase::Create, req, res,
-//                                     app->get_context<BRequest>(req).payload);
-//         });
-
-// CROW_ROUTE((*app), URL("/services/<string>/read"))
-//     .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest)
-//     .methods(crow::HTTPMethod::POST)(
-//         [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
-//         {
-//             executeControllerMethod(serviceRegistry, serviceName, &ServiceControllerBase::Read, req, res,
-//                                     app->get_context<BRequest>(req).payload);
-//         });
-
-// CROW_ROUTE((*app), URL("/services/<string>/update"))
-//     .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest, DataIntegrity)
-//     .methods(crow::HTTPMethod::PUT)(
-//         [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
-//         {
-//             executeControllerMethod(serviceRegistry, serviceName, &ServiceControllerBase::Update, req, res,
-//                                     app->get_context<BRequest>(req).payload);
-//         });
-
-// CROW_ROUTE((*app), URL("/services/<string>/delete"))
-//     .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, PathParameter)
-//     .methods(crow::HTTPMethod::DELETE)(
-//         [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
-//         {
-//             executeControllerMethod(serviceRegistry, serviceName, &ServiceControllerBase::Delete, req, res,
-//                                     app->get_context<PathParameter>(req).params);
-//         });
-
-// CROW_ROUTE((*app), URL("/services/<string>/search"))
-//     .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest, Search)
-//     .methods(crow::HTTPMethod::POST)(
-//         [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
-//         {
-//             executeControllerMethod(serviceRegistry, serviceName, &ServiceControllerBase::Search, req, res,
-//                                     app->get_context<Search>(req).search_json);
-//         });
-
 // ///////////////////---------------- Clinics --------------------////////////////////
 // CROW_ROUTE((*app), URL("/services/clinics/<string>/create"))
 //     .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest, DataIntegrity)
