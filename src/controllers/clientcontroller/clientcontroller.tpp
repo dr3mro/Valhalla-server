@@ -62,10 +62,9 @@ void ClientController<T>::Update(std::function<void(const drogon::HttpResponsePt
 }
 
 template <Client_t T>
-void ClientController<T>::Delete(std::function<void(const drogon::HttpResponsePtr&)>&& callback,
-                                 const std::unordered_map<std::string, std::string>&   params)
+void ClientController<T>::Delete(std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::optional<uint64_t> client_id)
 {
-    EntityController<T>::Delete(std::move(callback), params);
+    EntityController<T>::Delete(std::move(callback), client_id);
 }
 
 template <Client_t T>
@@ -137,19 +136,10 @@ void ClientController<T>::Logout(std::function<void(const drogon::HttpResponsePt
 }
 
 template <Client_t T>
-void ClientController<T>::Suspend(std::function<void(const drogon::HttpResponsePtr&)>&& callback,
-                                  const std::unordered_map<std::string, std::string>&   params)
+void ClientController<T>::Suspend(std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::optional<uint64_t> client_id)
 {
     try
     {
-        auto it = params.find("id");
-        if (it == params.end())
-        {
-            Helper::errorResponse(drogon::k406NotAcceptable, "No id provided", callback);
-            return;
-        }
-
-        std::optional<uint64_t> client_id = std::stoull(it->second);
         if (!client_id.has_value())
         {
             Helper::errorResponse(drogon::k406NotAcceptable, "Invalid id provided", callback);
@@ -167,19 +157,10 @@ void ClientController<T>::Suspend(std::function<void(const drogon::HttpResponseP
 }
 
 template <Client_t T>
-void ClientController<T>::Activate(std::function<void(const drogon::HttpResponsePtr&)>&& callback,
-                                   const std::unordered_map<std::string, std::string>&   params)
+void ClientController<T>::Activate(std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::optional<uint64_t> client_id)
 {
     try
     {
-        auto it = params.find("id");
-        if (it == params.end())
-        {
-            Helper::errorResponse(drogon::k406NotAcceptable, "No id provided", callback);
-            return;
-        }
-
-        std::optional<uint64_t> client_id = std::stoull(it->second);
         if (!client_id.has_value())
         {
             Helper::errorResponse(drogon::k406NotAcceptable, "Invalid id provided", callback);

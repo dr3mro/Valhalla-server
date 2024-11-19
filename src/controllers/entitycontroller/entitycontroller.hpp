@@ -19,7 +19,7 @@ class EntityController : public Controller, public EntityControllerBase
     void Create(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data) override;
     void Read(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data) override;
     void Update(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data) override;
-    void Delete(std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::unordered_map<std::string, std::string> &params) override;
+    void Delete(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::optional<uint64_t> id) override;
     void Search(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data) override;
 
    protected:
@@ -89,19 +89,10 @@ void EntityController<T>::Update(std::function<void(const drogon::HttpResponsePt
 }
 
 template <typename T>
-void EntityController<T>::Delete(std::function<void(const drogon::HttpResponsePtr &)> &&callback,
-                                 const std::unordered_map<std::string, std::string>    &params)
+void EntityController<T>::Delete(std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::optional<uint64_t> id)
 {
     try
     {
-        auto it = params.find("id");
-        if (it == params.end())
-        {
-            Helper::errorResponse(drogon::k406NotAcceptable, "No id provided", callback);
-            return;
-        }
-
-        std::optional<uint64_t> id = std::stoull(it->second);
         if (!id.has_value())
         {
             Helper::errorResponse(drogon::k406NotAcceptable, "Invalid id provided", callback);

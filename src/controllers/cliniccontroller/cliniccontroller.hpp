@@ -55,16 +55,16 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
 
     template <typename U = T>
     std::enable_if_t<std::is_same<U, Patient>::value || std::is_same<U, Visits>::value, void> DeleteImpl(
-        std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::unordered_map<std::string, std::string> &params)
+        std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::optional<uint64_t> id)
     {
-        EntityController<T>::Delete(std::move(callback), params);
+        EntityController<T>::Delete(std::move(callback), id);
     }
 
     template <typename U = T>
     std::enable_if_t<!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value, void> DeleteImpl(
-        std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::unordered_map<std::string, std::string> &params)
+        std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::optional<uint64_t> id)
     {
-        (void)params;
+        (void)id;
         Helper::failureResponse(fmt::format("Delete is NOT implemented for entity type {}", T::getTableName()), callback);
     }
 
@@ -132,9 +132,9 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
         EntityController<T>::Update(std::move(callback), data);
     }
 
-    void Delete(std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::unordered_map<std::string, std::string> &params) final
+    void Delete(std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::optional<uint64_t> id) final
     {
-        DeleteImpl(std::move(callback), params);
+        DeleteImpl(std::move(callback), id);
     }
 
     void Search(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data) final
