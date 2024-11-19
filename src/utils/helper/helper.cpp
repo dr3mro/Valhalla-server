@@ -25,6 +25,12 @@ Json::Value Helper::jsonify(const std::string& message)
     object["Message"] = message;
     return object;
 }
+std::string Helper::stringify(const jsoncons::json& json)
+{
+    std::string json_string;
+    json.dump_pretty(json_string);
+    return json_string;
+}
 
 std::string Helper::stringify(const Json::Value& json) { return json.toStyledString(); }
 

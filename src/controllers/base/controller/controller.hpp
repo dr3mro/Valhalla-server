@@ -1,6 +1,6 @@
 
 #pragma once
-#include <crow.h>
+#include <drogon/drogon.h>
 #include <fmt/core.h>  // Include fmt library for string formatting
 #include <fmt/format.h>
 #include <fmt/ranges.h>
@@ -11,8 +11,8 @@
 #include "entities/base/client.hpp"
 #include "entities/base/entity.hpp"
 #include "entities/services/clinics/patient/patient.hpp"
+#include "utils/helper/helper.hpp"
 #include "utils/message/message.hpp"
-#include "utils/resthelper/resthelper.hpp"
 #include "utils/sessionmanager/sessionmanager.hpp"
 #include "utils/tokenmanager/tokenmanager.hpp"
 using json = jsoncons::json;
@@ -40,39 +40,39 @@ class Controller
     // CRUDS
     template <typename T>
 
-    void Create(crow::response &res, T &entity)
+    void Create(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlCreateStatement;
-        cruds(res, entity, sqlstatement, dbexec);
+        cruds(entity, sqlstatement, dbexec, callback);
     }
 
     template <typename T>
-    void Read(crow::response &res, T &entity)
+    void Read(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlReadStatement;
-        cruds(res, entity, sqlstatement, dbrexec);
+        cruds(entity, sqlstatement, dbrexec, callback);
     }
     template <typename T>
-    void Update(crow::response &res, T &entity)
+    void Update(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlUpdateStatement;
-        cruds(res, entity, sqlstatement, dbexec);
+        cruds(entity, sqlstatement, dbexec, callback);
     }
     template <typename T>
-    void Delete(crow::response &res, T &entity)
+    void Delete(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
     {
         if (!entity.template check_id_exists<Types::Delete_t>())
         {
-            RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "ID does not exist");
+            Helper::errorResponse(drogon::k400BadRequest, "ID does not exist", callback);
             return;
         }
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlDeleteStatement;
-        cruds(res, entity, sqlstatement, dbexec);
+        cruds(entity, sqlstatement, dbexec, callback);
     }
     template <typename T>
-    void Search(crow::response &res, T &entity)
+    void Search(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
     {
-        json                       response_json;
+        jsoncons::json             response_json;
         json                       query_results_json;
         std::optional<std::string> query;
 
@@ -99,15 +99,15 @@ class Controller
             }
 
             response_json["results"] = query_results_json;
-            RestHelper::successResponse(res, RestHelper::stringify(response_json));
+            Helper::successResponse(Helper::stringify(response_json), callback);
         }
         catch (const std::exception &e)
         {
-            RestHelper::failureResponse(res, e.what());
+            Helper::failureResponse(e.what(), callback);
         }
     }
     template <typename T>
-    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Logout(crow::response &res, T &entity)
+    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Logout(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
     {
         TokenManager::LoggedUserInfo loggedUserInfo;
 
@@ -119,34 +119,35 @@ class Controller
             bool status = tokenManager->ValidateToken(loggedUserInfo);
             if (!status)
             {
-                RestHelper::errorResponse(res, crow::status::UNAUTHORIZED, "Logout failure.");
+                Helper::errorResponse(drogon::k401Unauthorized, "Logout failure.", callback);
                 return;
             }
             sessionManager->setNowLogoutTime(loggedUserInfo.userID.value(), loggedUserInfo.group.value());
-            RestHelper::successResponse(res, RestHelper::stringify(RestHelper::jsonify("Logout success.")));
+            Helper::successResponse(Helper::stringify(Helper::jsonify("Logout success.")), callback);
         }
         catch (const std::exception &e)
         {
-            RestHelper::failureResponse(res, e.what());
+            Helper::failureResponse(e.what(), callback);
         }
     }
 
     template <typename T>
-    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Suspend(crow::response &res, T &entity)
+    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Suspend(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlSuspendStatement;
-        cruds(res, entity, sqlstatement, dbexec);
+        cruds(entity, sqlstatement, dbexec, callback);
     }
 
     template <typename T>
-    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Unsuspend(crow::response &res, T &entity)
+    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Unsuspend(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlActivateStatement;
-        cruds(res, entity, sqlstatement, dbexec);
+        cruds(entity, sqlstatement, dbexec, callback);
     }
 
     template <typename T>
-    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> GetServices(crow::response &res, T &entity)
+    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> GetServices(T                                                    &entity,
+                                                                              std::function<void(const drogon::HttpResponsePtr &)> &callback)
     {
         json                       services;
         std::optional<std::string> query;
@@ -160,16 +161,16 @@ class Controller
                 services = databaseController->executeSearchQuery(query.value());
             }
 
-            RestHelper::successResponse(res, RestHelper::stringify(services));
+            Helper::successResponse(Helper::stringify(services), callback);
         }
         catch (const std::exception &e)
         {
-            RestHelper::failureResponse(res, e.what());
+            Helper::failureResponse(e.what(), callback);
         }
     }
 
     template <typename T>
-    std::enable_if_t<std::is_same<T, Patient>::value, void> GetVisits(crow::response &res, T &entity)
+    std::enable_if_t<std::is_same<T, Patient>::value, void> GetVisits(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
     {
         json                       visits;
         std::optional<std::string> query;
@@ -183,11 +184,11 @@ class Controller
                 visits = databaseController->executeSearchQuery(query.value());
             }
 
-            RestHelper::successResponse(res, RestHelper::stringify(visits));
+            Helper::successResponse(Helper::stringify(visits), callback);
         }
         catch (const std::exception &e)
         {
-            RestHelper::failureResponse(res, e.what());
+            Helper::failureResponse(e.what(), callback);
         }
     }
 
@@ -216,118 +217,72 @@ class Controller
         }
         return std::nullopt;
     }
-    /**
-     * @brief Shared pointers to the DatabaseController, SessionManager, and
-     * TokenManager instances.
-     *
-     * These shared pointers provide access to the database controller, session
-     * manager, and token manager components used throughout the application.
-     */
+
     std::shared_ptr<DatabaseController> databaseController;
     std::shared_ptr<SessionManager>     sessionManager;
     std::shared_ptr<TokenManager>       tokenManager;
 
-    /**
-     * @brief Function pointers to the DatabaseController's executeQuery and
-     * executeReadQuery methods.
-     *
-     * These function pointers allow for easy invocation of the
-     * DatabaseController's query execution methods.
-     */
     std::optional<json> (DatabaseController::*dbexec)(const std::string &)         = &DatabaseController::executeQuery;
     std::optional<json> (DatabaseController::*dbrexec)(const std::string &)        = &DatabaseController::executeReadQuery;
     std::optional<json::array> (DatabaseController::*dbsexec)(const std::string &) = &DatabaseController::executeSearchQuery;
 
     ///////////////////////////
     template <typename S, typename T>
-    /**
-     * @brief Generates the SQL statement for a CRUD operation based on the
-     * provided entity and SQL statement.
-     *
-     * This function is responsible for generating the SQL statement to be
-     * executed by the DatabaseController. It takes the entity object and the SQL
-     * statement function, and returns the generated SQL statement. If the SQL
-     * statement cannot be generated, it builds an error response and sends it
-     * back to the client.
-     *
-     * @param response_json The JSON object to store the response data.
-     * @param res The Crow response object to send the error response if the SQL
-     * statement cannot be generated.
-     * @param query The optional string to store the generated SQL statement.
-     * @param entity The entity object of type T.
-     * @param sqlstatement The SQL statement function of type S.
-     * @return true if the SQL statement was successfully generated, false
-     * otherwise.
-     */
-    bool get_sql_statement(crow::response &res, std::optional<std::string> &query, T &entity, S &sqlstatement)
+    bool get_sql_statement(std::optional<std::string> &query, T &entity, S &sqlstatement,
+                           std::function<void(const drogon::HttpResponsePtr &)> &callback)
     {
         query = (entity.*sqlstatement)();
 
         if (!query)
         {
-            RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Failed to synthesize query");
+            Helper::errorResponse(drogon::k400BadRequest, "Failed to synthesize query", callback);
             return false;
         }
         return true;
     }
 
     template <typename S, typename T>
-    /**
-     * @brief Executes a CRUD operation using the provided entity, SQL statement,
-     * and database controller.
-     *
-     * This function is responsible for generating the SQL statement, executing
-     * the query, and sending the response back to the client. It first generates
-     * the SQL statement using the `get_sql_statement` function, and then executes
-     * the query using the provided database controller function pointer. If the
-     * SQL statement generation or query execution fails, it builds an error
-     * response and sends it back to the client.
-     *
-     * @param res The Crow response object to send the response to the client.
-     * @param entity The entity object of type T.
-     * @param sqlstatement The SQL statement function of type S.
-     * @param f The database controller function pointer to execute the query.
-     */
-    void cruds(crow::response &res, T &entity, S &sqlstatement, std::optional<json> (DatabaseController::*f)(const std::string &))
+    void cruds(T &entity, S &sqlstatement, std::optional<json> (DatabaseController::*f)(const std::string &),
+               std::function<void(const drogon::HttpResponsePtr &)> &callback)
     {
-        std::optional<json>        query_results_json;
-        std::optional<std::string> query;
+        std::optional<jsoncons::json> query_results_json;
+        std::optional<std::string>    query;
         try
         {
-            if (get_sql_statement(res, query, entity, sqlstatement) && query.has_value())
+            if (get_sql_statement(query, entity, sqlstatement, callback) && query.has_value())
             {
                 query_results_json = (*databaseController.*f)(query.value());
             }
 
             if (query_results_json.has_value() && !query_results_json.value().empty())
             {
-                RestHelper::successResponse(res, RestHelper::stringify(query_results_json.value()));
+                Helper::successResponse(Helper::stringify(query_results_json.value()), callback);
             }
             else if (query_results_json.has_value() && query_results_json.value().empty())
             {
-                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Empty query results");
+                Helper::errorResponse(drogon::k400BadRequest, "Empty query results", callback);
             }
             else
             {
-                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Failed to execute query");
+                Helper::errorResponse(drogon::k400BadRequest, "Failed to execute query", callback);
             }
         }
         catch (const std::exception &e)
         {
-            RestHelper::failureResponse(res, e.what());
+            Helper::failureResponse(e.what(), callback);
         }
     }
     template <typename T>
-    void addStaff(crow::response &res, T &entity)
+    void addStaff(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlAddStaffStatement;
-        cruds(res, entity, sqlstatement, dbexec);
+        cruds(entity, sqlstatement, dbexec, callback);
     }
 
     template <typename T>
-    void removeStaff(crow::response &res, T &entity)
+    void removeStaff(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlRemoveStaffStatement;
-        cruds(res, entity, sqlstatement, dbexec);
+        cruds(entity, sqlstatement, dbexec, callback);
     }
 };

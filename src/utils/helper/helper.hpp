@@ -2,6 +2,8 @@
 #include <drogon/drogon.h>
 #include <json/value.h>
 
+#include <jsoncons/json.hpp>
+
 class Helper
 {
    public:
@@ -13,6 +15,7 @@ class Helper
     static void        successResponse(const std::string& message, std::function<void(const drogon::HttpResponsePtr&)>& callback);
     static Json::Value jsonify(const std::string& message);
     static std::string stringify(const Json::Value& json);
+    static std::string stringify(const jsoncons::json& json);
 
    private:
     static void reply(std::function<void(const drogon::HttpResponsePtr&)>& callback, const drogon::HttpStatusCode& code, const std::string& message);
