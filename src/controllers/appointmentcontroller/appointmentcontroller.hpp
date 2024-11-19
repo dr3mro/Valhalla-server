@@ -18,7 +18,7 @@ class AppointmentController : public EntityController<T>, public AppointmentCont
     void Create(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data) override;
     void Read(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data) override;
     void Update(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data) override;
-    void Delete(std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::unordered_map<std::string, std::string>& params) override;
+    void Delete(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::optional<uint64_t> id) override;
     void Search(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data) override;
 };
 

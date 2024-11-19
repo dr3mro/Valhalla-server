@@ -18,10 +18,9 @@ void ServiceController<T>::Update(std::function<void(const drogon::HttpResponseP
 }
 
 template <typename T>
-void ServiceController<T>::Delete(std::function<void(const drogon::HttpResponsePtr &)> &&callback,
-                                  const std::unordered_map<std::string, std::string>    &params)
+void ServiceController<T>::Delete(std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::optional<uint64_t> id)
 {
-    EntityController<T>::Delete(std::move(callback), params);
+    EntityController<T>::Delete(std::move(callback), id);
 }
 
 template <typename T>
