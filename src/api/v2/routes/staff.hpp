@@ -1,36 +1,55 @@
-// ////////////////////////////////////////////////////
-// CROW_ROUTE((*app), URL("/services/<string>/staff/invite"))
-//     .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest, DataIntegrity)
-//     .methods(crow::HTTPMethod::POST)(
-//         [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
-//         {
-//             executeControllerMethod(staffRegistry, serviceName, &StaffControllerBase::InviteStaffToEntity, req, res,
-//                                     app->get_context<BRequest>(req).payload);
-//         });
 
-// CROW_ROUTE((*app), URL("/services/<string>/staff/add"))
-//     .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest, DataIntegrity)
-//     .methods(crow::HTTPMethod::POST)(
-//         [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
-//         {
-//             executeControllerMethod(staffRegistry, serviceName, &StaffControllerBase::AddStaffToEntity, req, res,
-//                                     app->get_context<BRequest>(req).payload);
-//         });
+#pragma once
+#include <drogon/HttpController.h>
 
-// CROW_ROUTE((*app), URL("/services/<string>/staff/remove"))
-//     .CROW_MIDDLEWARES(*app, RateLimit, ElapsedTime, Authorization, BRequest, DataIntegrity)
-//     .methods(crow::HTTPMethod::POST)(
-//         [this, app](const crow::request &req, crow::response &res, const std::string_view serviceName)
-//         {
-//             executeControllerMethod(staffRegistry, serviceName, &StaffControllerBase::RemoveStaffFromEntity, req, res,
-//                                     app->get_context<BRequest>(req).payload);
-//         });
+#include "api/v2/basic/common.hpp"  // IWYU pragma: keep
+#include "controllers/staffcontroller/staffcontroller.hpp"
+#include "entities/services/clinics/clinics.hpp"
+#include "entities/services/laboratories.hpp"
+#include "entities/services/pharmacies.hpp"
+#include "entities/services/radiologycenters.hpp"
 
-//     using StaffVariant = std::variant<std::shared_ptr<StaffController<Clinics>>, std::shared_ptr<StaffController<Pharmacies>>,
-//                                       std::shared_ptr<StaffController<Laboratories>>, std::shared_ptr<StaffController<RadiologyCenters>>>;
+namespace api
+{
+    namespace v2
+    {
+        class Staff : public drogon::HttpController<Staff>
+        {
+           public:
+            void Invite(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
+                        const std::string &serviceType)
+            {
+                executeControllerMethod(staffRegistry, serviceType, &StaffControllerBase::InviteStaffToEntity, std::move(callback), req->body());
+            }
 
-//     std::unordered_map<std::string_view, StaffVariant> staffRegistry = {{"clinics", Store::getObject<StaffController<Clinics>>()},
-//                                                                         {"pharmacies", Store::getObject<StaffController<Pharmacies>>()},
-//                                                                         {"laboratories", Store::getObject<StaffController<Laboratories>>()},
-//                                                                         {"radiologycenters",
-//                                                                         Store::getObject<StaffController<RadiologyCenters>>()}};
+            void Add(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
+                     const std::string &serviceType)
+            {
+                executeControllerMethod(staffRegistry, serviceType, &StaffControllerBase::AddStaffToEntity, std::move(callback), req->body());
+            }
+
+            void Remove(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
+                        const std::string &serviceType)
+            {
+                executeControllerMethod(staffRegistry, serviceType, &StaffControllerBase::RemoveStaffFromEntity, std::move(callback), req->body());
+            }
+
+            METHOD_LIST_BEGIN
+            METHOD_ADD(Staff::Invite, "/services/{serviceType}/staff/invite", drogon::Post);
+            METHOD_ADD(Staff::Add, "/services/{serviceType}/staff/add", drogon::Post);
+            METHOD_ADD(Staff::Remove, "/services/{serviceType}/staff/remove", drogon::Post);
+            METHOD_LIST_END
+
+           private:
+            using StaffVariant = std::variant<std::shared_ptr<StaffController<Clinics>>, std::shared_ptr<StaffController<Pharmacies>>,
+                                              std::shared_ptr<StaffController<Laboratories>>, std::shared_ptr<StaffController<RadiologyCenters>>>;
+
+            std::unordered_map<std::string_view, StaffVariant> staffRegistry = {
+                {"clinics", Store::getObject<StaffController<Clinics>>()},
+                {"pharmacies", Store::getObject<StaffController<Pharmacies>>()},
+                {"laboratories", Store::getObject<StaffController<Laboratories>>()},
+                {"radiologycenters", Store::getObject<StaffController<RadiologyCenters>>()}};
+        };
+
+    }  // namespace v2
+}  // namespace api

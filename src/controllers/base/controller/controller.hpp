@@ -169,7 +169,7 @@ class Controller
     }
 
     template <typename T>
-    std::enable_if_t<std::is_same<T, Patient>::value, void> GetVisits(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
+    std::enable_if_t<std::is_same<T, Patient>::value, void> GetVisits(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &&callback)
     {
         json                       visits;
         std::optional<std::string> query;
