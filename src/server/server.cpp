@@ -16,38 +16,13 @@ int Server::run()
 
     try
     {
-        // auto
+        enable_cors();
+
         drogon::app()
             .addListener(config_.host.data(), config_.port)
             .setLogLevel(static_cast<trantor::Logger::LogLevel>(config_.debug_level))
             .setThreadNum(config_.threads)
-            .registerPreRoutingAdvice(
-                [](const drogon::HttpRequestPtr& req, drogon::AdviceCallback&& cb, drogon::AdviceChainCallback&& ccb)
-                {
-                    if (req->method() == drogon::Options)
-                    {
-                        auto resp = drogon::HttpResponse::newHttpResponse();
-                        resp->setStatusCode(drogon::k204NoContent);
-                        resp->addHeader("Access-Control-Allow-Origin", "*");
-                        resp->addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-                        resp->addHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-                        resp->addHeader("Access-Control-Allow-Credentials", "true");
-                        cb(resp);
-                    }
-                    else
-                    {
-                        ccb();
-                    }
-                })
             .disableSigtermHandling()
-            .registerPostHandlingAdvice(
-                [](const drogon::HttpRequestPtr&, const drogon::HttpResponsePtr& resp)
-                {
-                    resp->addHeader("Access-Control-Allow-Origin", "*");
-                    resp->addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-                    resp->addHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-                    resp->addHeader("Access-Control-Allow-Credentials", "true");
-                })
             .setCustom404Page(drogon::HttpResponse::newHttpJsonResponse(Helper::jsonify("Not Implemented yet!")))
             .run();
     }
@@ -60,7 +35,36 @@ int Server::run()
 
     return EXIT_SUCCESS;  // Exit with success code
 }
+void Server::enable_cors()
+{
+    drogon::app().registerPreRoutingAdvice(
+        [](const drogon::HttpRequestPtr& req, drogon::AdviceCallback&& cb, drogon::AdviceChainCallback&& ccb)
+        {
+            if (req->method() == drogon::Options)
+            {
+                auto resp = drogon::HttpResponse::newHttpResponse();
+                resp->setStatusCode(drogon::k204NoContent);
+                resp->addHeader("Access-Control-Allow-Origin", "*");
+                resp->addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+                resp->addHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+                resp->addHeader("Access-Control-Allow-Credentials", "true");
+                cb(resp);
+            }
+            else
+            {
+                ccb();
+            }
+        });
 
+    drogon::app().registerPostHandlingAdvice(
+        [](const drogon::HttpRequestPtr&, const drogon::HttpResponsePtr& resp)
+        {
+            resp->addHeader("Access-Control-Allow-Origin", "*");
+            resp->addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+            resp->addHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+            resp->addHeader("Access-Control-Allow-Credentials", "true");
+        });
+}
 void Server::print_banner()
 {
     std::srand(std::time(0));

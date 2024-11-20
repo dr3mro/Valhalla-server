@@ -76,16 +76,16 @@ namespace api
             }
 
             METHOD_LIST_BEGIN
-            METHOD_ADD(Clients::create, "/{clientType}/create", drogon::Post, RATELIMIT, ELAPSED);
-            METHOD_ADD(Clients::login, "/{clientType}/login", drogon::Post, RATELIMIT, ELAPSED);
-            METHOD_ADD(Clients::logout, "/{clientType}/logout", drogon::Post, RATELIMIT, ELAPSED, AUTH);
-            METHOD_ADD(Clients::suspend, "/{clientType}/suspend", drogon::Post, RATELIMIT, ELAPSED, AUTH);
-            METHOD_ADD(Clients::activate, "/{clientType}/activate", drogon::Post, RATELIMIT, ELAPSED, AUTH);
-            METHOD_ADD(Clients::read, "/{clientType}/read", drogon::Post, RATELIMIT, ELAPSED, AUTH);
-            METHOD_ADD(Clients::update, "/{clientType}/update", drogon::Put, RATELIMIT, ELAPSED, AUTH);
-            METHOD_ADD(Clients::delete_, "/{clientType}/delete", drogon::Delete, RATELIMIT, ELAPSED, AUTH);
-            METHOD_ADD(Clients::search, "/{clientType}/search", drogon::Post, RATELIMIT, ELAPSED, AUTH);
-            METHOD_ADD(Clients::getservices, "/{clientType}/services", drogon::Get, RATELIMIT, ELAPSED, AUTH);
+            METHOD_ADD(Clients::create, "/{clientType}/create", drogon::Post, INSECURE);
+            METHOD_ADD(Clients::login, "/{clientType}/login", drogon::Post, INSECURE);
+            METHOD_ADD(Clients::logout, "/{clientType}/logout", drogon::Post, SECURE);
+            METHOD_ADD(Clients::suspend, "/{clientType}/suspend", drogon::Post, SECURE);
+            METHOD_ADD(Clients::activate, "/{clientType}/activate", drogon::Post, SECURE);
+            METHOD_ADD(Clients::read, "/{clientType}/read", drogon::Post, SECURE);
+            METHOD_ADD(Clients::update, "/{clientType}/update", drogon::Put, SECURE);
+            METHOD_ADD(Clients::delete_, "/{clientType}/delete", drogon::Delete, SECURE);
+            METHOD_ADD(Clients::search, "/{clientType}/search", drogon::Post, SECURE);
+            METHOD_ADD(Clients::getservices, "/{clientType}/services", drogon::Get, SECURE);
             METHOD_LIST_END
 
            private:
