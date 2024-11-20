@@ -84,7 +84,7 @@ namespace api
             METHOD_ADD(Clients::read, "/{clientType}/read", drogon::Post);
             METHOD_ADD(Clients::update, "/{clientType}/update", drogon::Put);
             METHOD_ADD(Clients::delete_, "/{clientType}/delete", drogon::Delete);
-            METHOD_ADD(Clients::search, "/{clientType}/search", drogon::HttpMethod::Post);
+            METHOD_ADD(Clients::search, "/{clientType}/search", drogon::Post);
             METHOD_ADD(Clients::getservices, "/{clientType}/services", drogon::Get);
             METHOD_LIST_END
 

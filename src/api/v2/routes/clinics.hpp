@@ -1,6 +1,6 @@
 
 #pragma once
-#include <drogon/HttpController.h>
+#include <drogon/drogon.h>
 
 #include "api/v2/basic/common.hpp"
 #include "controllers/cliniccontroller/cliniccontroller.hpp"

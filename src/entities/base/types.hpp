@@ -80,13 +80,18 @@ class Types
                 direction = search_j.at("direction").as<short>() == 0 ? "ASC" : "DESC";
                 limit     = search_j.at("limit").as<size_t>();
                 offset    = search_j.at("offset").as<size_t>();
+                success   = validate(search_j);
             }
             catch (const std::exception &e)
             {
                 success = false;
                 throw std::runtime_error(std::string(e.what()));
             }
-            success = true;
+        }
+        bool validate(const jsoncons::json &search_j)
+        {
+            std::vector<std::string> keys = {"keyword", "filter", "order_by", "direction", "limit", "offset"};
+            return std::all_of(keys.begin(), keys.end(), [&search_j](const std::string &key) { return search_j.find(key).has_value(); });
         }
     };
 
