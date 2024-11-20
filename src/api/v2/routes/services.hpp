@@ -1,11 +1,13 @@
 
 #pragma once
 #include <drogon/HttpController.h>
-#include <fmt/format.h>
 
 #include "api/v2/basic/common.hpp"  // IWYU pragma: keep
-#include "api/v2/basic/types.hpp"   // IWYU pragma: keep
-#include "store/store.hpp"
+#include "controllers/servicecontroller/servicecontroller.hpp"
+#include "entities/services/clinics/clinics.hpp"
+#include "entities/services/laboratories.hpp"
+#include "entities/services/pharmacies.hpp"
+#include "entities/services/radiologycenters.hpp"
 
 namespace api
 {

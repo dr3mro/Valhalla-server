@@ -12,8 +12,6 @@ class RadiologyCenterAppointment : public Appointment
     static constexpr auto TABLENAME = "radiologycenters_appointments";
 
    public:
-    // RadiologyCenterAppointment() : Appointment(TABLENAME) {}
-
     template <typename T>
     RadiologyCenterAppointment(const T &_data) : Appointment(_data, TABLENAME)
     {

@@ -87,13 +87,17 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
     // Only enable GetVisits if T is of type Patient
     template <typename U = T>
     std::enable_if_t<std::is_same<U, Patient>::value, void> GetVisitsImpl(std::function<void(const drogon::HttpResponsePtr &)> &&callback,
-                                                                          const std::unordered_map<std::string, std::string>    &params)
+                                                                          const std::optional<uint64_t>                          id)
     {
         try
         {
-            uint64_t id = std::stoull(params.at("id"));
-            T        entity((Types::Data_t(id)));
-            Controller::GetVisits(entity, callback);
+            if (!id.has_value())
+            {
+                Helper::errorResponse(drogon::k400BadRequest, "Missing patient id.", callback);
+                return;
+            }
+            T entity((Types::Data_t(id.value())));
+            Controller::GetVisits(entity, std::move(callback));
         }
         catch (const std::exception &e)
         {
@@ -104,9 +108,9 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
     // Only enable GetVisits if T is of type Patient
     template <typename U = T>
     typename std::enable_if<!std::is_same<U, Patient>::value, void>::type GetVisitsImpl(
-        std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::unordered_map<std::string, std::string> &params)
+        std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::optional<uint64_t> id)
     {
-        (void)params;
+        (void)id;
         Helper::failureResponse(fmt::format("GetVisit is NOT implemented for entity type {}", T::getTableName()), callback);
     }
 
@@ -143,9 +147,9 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
         SearchImpl(std::move(callback), data);
     }
 
-    void GetVisits(std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::unordered_map<std::string, std::string> &params)
+    void GetVisits(std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::optional<uint64_t> id) final
     {
         // GetVisits only for Patient
-        GetVisitsImpl(std::move(callback), params);
+        GetVisitsImpl(std::move(callback), id);
     }
 };
