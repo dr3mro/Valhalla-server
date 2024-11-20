@@ -18,7 +18,7 @@ namespace api
             }
 
             METHOD_LIST_BEGIN
-            METHOD_ADD(Hello::hello, "", drogon::Get);
+            METHOD_ADD(Hello::hello, "", drogon::Get, "api::v2::Filters::Auth");
             METHOD_LIST_END
         };
 

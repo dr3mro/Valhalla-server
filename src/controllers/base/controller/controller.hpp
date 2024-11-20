@@ -108,20 +108,20 @@ class Controller
     template <typename T>
     typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Logout(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
     {
-        TokenManager::LoggedUserInfo loggedUserInfo;
+        TokenManager::LoggedClientInfo loggedClientInfo;
 
         try
         {
-            loggedUserInfo.token = std::get<Types::LogoutData>(entity.getData()).token;
-            loggedUserInfo.group = entity.getGroupName();
+            loggedClientInfo.token = std::get<Types::LogoutData>(entity.getData()).token;
+            loggedClientInfo.group = entity.getGroupName();
 
-            bool status = tokenManager->ValidateToken(loggedUserInfo);
+            bool status = tokenManager->ValidateToken(loggedClientInfo);
             if (!status)
             {
                 Helper::errorResponse(drogon::k401Unauthorized, "Logout failure.", callback);
                 return;
             }
-            sessionManager->setNowLogoutTime(loggedUserInfo.userID.value(), loggedUserInfo.group.value());
+            sessionManager->setNowLogoutTime(loggedClientInfo.userID.value(), loggedClientInfo.group.value());
             Helper::successResponse(Helper::stringify(Helper::jsonify("Logout success.")), callback);
         }
         catch (const std::exception &e)

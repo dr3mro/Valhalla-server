@@ -1,24 +1,23 @@
-// #pragma once
-// #include <crow.h>
+#pragma once
 
-// #include <memory>
+#include <memory>
 
-// #include "configurator/configurator.hpp"
-// #include "store/store.hpp"
-// class Server
-// {
-//    public:
-//     Server();
-//     virtual ~Server() = default;
+#include "api/v2/all_routes.hpp"  // IWYU pragma: keep
+#include "configurator/configurator.hpp"
+#include "filters/auth.hpp"
+#include "store/store.hpp"
+class Server
+{
+   public:
+    Server()          = default;
+    virtual ~Server() = default;
 
-//     int run();
+    int run();
 
-//    private:
-//     std::shared_ptr<Configurator>       configurator_ = Store::getObject<Configurator>();
-//     const Configurator::ServerConfig   &config_       = configurator_->get<Configurator::ServerConfig>();
-//     const Configurator::DatabaseConfig &db_config_    = configurator_->get<Configurator::DatabaseConfig>();
-//     // std::shared_ptr<APP>                app;
-//     // std::shared_ptr<API_V1_Routes>      routes;
-
-//     void print_banner();
-// };
+   private:
+    std::shared_ptr<Configurator>           configurator_ = Store::getObject<Configurator>();
+    const Configurator::ServerConfig       &config_       = configurator_->get<Configurator::ServerConfig>();
+    const Configurator::DatabaseConfig     &db_config_    = configurator_->get<Configurator::DatabaseConfig>();
+    void                                    print_banner();
+    std::shared_ptr<api::v2::Filters::Auth> auth_filter_ = std::make_shared<api::v2::Filters::Auth>();
+};

@@ -150,21 +150,22 @@ std::optional<uint64_t> ClientController<T>::Login(std::function<void(const drog
             return std::nullopt;
         }
 
-        TokenManager::LoggedUserInfo loggedUserInfo;
+        TokenManager::LoggedClientInfo loggedClientInfo;
 
-        loggedUserInfo.userID   = client_id;
-        loggedUserInfo.userName = credentials.username;
-        loggedUserInfo.group    = client.getGroupName();
-        loggedUserInfo.llodt = sessionManager->getLastLogoutTime(loggedUserInfo.userID.value(), loggedUserInfo.group.value()).value_or("first_login");
+        loggedClientInfo.userID   = client_id;
+        loggedClientInfo.userName = credentials.username;
+        loggedClientInfo.group    = client.getGroupName();
+        loggedClientInfo.llodt =
+            sessionManager->getLastLogoutTime(loggedClientInfo.userID.value(), loggedClientInfo.group.value()).value_or("first_login");
 
         json token_object;
-        token_object["token"]     = tokenManager->GenerateToken(loggedUserInfo);
+        token_object["token"]     = tokenManager->GenerateToken(loggedClientInfo);
         token_object["username"]  = credentials.username;
         token_object["client_id"] = client_id;
-        token_object["group"]     = loggedUserInfo.group;
+        token_object["group"]     = loggedClientInfo.group;
 
         Helper::successResponse(Helper::stringify(token_object), callback);
-        sessionManager->setNowLoginTime(client_id.value(), loggedUserInfo.group.value());
+        sessionManager->setNowLoginTime(client_id.value(), loggedClientInfo.group.value());
         return client_id;
     }
     catch (const std::exception& e)
