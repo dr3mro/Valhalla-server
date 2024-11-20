@@ -14,9 +14,12 @@ namespace api
                 Auth() = default;
                 void doFilter(const drogon::HttpRequestPtr &req, drogon::FilterCallback &&fcb, drogon::FilterChainCallback &&fccb) override
                 {
-                    std::optional<std::string> auth_header = req->getHeader("Authorization");
+                    // Directly get the authorization header value to avoid multiple dereferences
+                    const auto &auth_header = req->getHeader("Authorization");
 
-                    if (!auth_header || !auth_header.value().starts_with("Bearer"))
+                    // Check for "Bearer " prefix using a fast substring comparison
+                    if (auth_header.empty() || auth_header.size() <= 7 || auth_header[6] != ' ' ||
+                        !std::equal(auth_header.begin(), auth_header.begin() + 7, "Bearer "))
                     {
                         auto resp = drogon::HttpResponse::newHttpResponse();
                         resp->setStatusCode(drogon::HttpStatusCode::k401Unauthorized);
@@ -25,9 +28,14 @@ namespace api
                         return;
                     }
 
-                    clientInfo.token  = auth_header.value().substr(7);
+                    // Extract the token
+                    TokenManager::LoggedClientInfo clientInfo;
+                    clientInfo.token = auth_header.substr(7);  // Efficient token extraction
+
+                    // Get TokenManager object
                     auto tokenManager = Store::getObject<TokenManager>();
 
+                    // Validate token in a single step
                     if (!tokenManager->ValidateToken(clientInfo))
                     {
                         auto resp = drogon::HttpResponse::newHttpResponse();
@@ -36,14 +44,12 @@ namespace api
                         fcb(resp);
                         return;
                     }
+
+                    // Token is valid, pass control to the next filter/handler
                     fccb();
                 }
-
-                TokenManager::LoggedClientInfo getClientInfo() { return clientInfo; }
-
-               private:
-                TokenManager::LoggedClientInfo clientInfo;
             };
+
         }  // namespace Filters
 
     }  // namespace v2
