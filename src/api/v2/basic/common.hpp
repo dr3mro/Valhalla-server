@@ -6,6 +6,10 @@
 #include <string_view>
 
 #include "utils/helper/helper.hpp"
+
+#define AUTH "api::v2::Filters::Auth"
+#define ELAPSED "api::v2::MiddleWares::ElapsedTime"
+
 namespace api
 {
     namespace v2
