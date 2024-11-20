@@ -55,12 +55,12 @@ namespace api
             }
 
             METHOD_LIST_BEGIN
-            METHOD_ADD(Clinic::Create, "/{serviceType}/create", drogon::Post, ELAPSED, AUTH);
-            METHOD_ADD(Clinic::Read, "/{serviceType}/read", drogon::Post, ELAPSED, AUTH);
-            METHOD_ADD(Clinic::Update, "/{serviceType}/update", drogon::Put, ELAPSED, AUTH);
-            METHOD_ADD(Clinic::Delete, "/{serviceType}/delete", drogon::Delete, ELAPSED, AUTH);
-            METHOD_ADD(Clinic::Search, "/patients/search", drogon::HttpMethod::Post, ELAPSED, AUTH);
-            METHOD_ADD(Clinic::GetVisits, "/patients/getvisits", drogon::Get, ELAPSED, AUTH);
+            METHOD_ADD(Clinic::Create, "/{serviceType}/create", drogon::Post, RATELIMIT, ELAPSED, AUTH);
+            METHOD_ADD(Clinic::Read, "/{serviceType}/read", drogon::Post, RATELIMIT, ELAPSED, AUTH);
+            METHOD_ADD(Clinic::Update, "/{serviceType}/update", drogon::Put, RATELIMIT, ELAPSED, AUTH);
+            METHOD_ADD(Clinic::Delete, "/{serviceType}/delete", drogon::Delete, RATELIMIT, ELAPSED, AUTH);
+            METHOD_ADD(Clinic::Search, "/patients/search", drogon::HttpMethod::Post, RATELIMIT, ELAPSED, AUTH);
+            METHOD_ADD(Clinic::GetVisits, "/patients/getvisits", drogon::Get, RATELIMIT, ELAPSED, AUTH);
             METHOD_LIST_END
 
            private:

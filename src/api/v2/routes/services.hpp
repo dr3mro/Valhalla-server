@@ -46,11 +46,11 @@ namespace api
             }
 
             METHOD_LIST_BEGIN
-            METHOD_ADD(Services::Create, "/{serviceType}/create", drogon::Post, ELAPSED, AUTH);
-            METHOD_ADD(Services::Read, "/{serviceType}/read", drogon::Post, ELAPSED, AUTH);
-            METHOD_ADD(Services::Update, "/{serviceType}/update", drogon::Put, ELAPSED, AUTH);
-            METHOD_ADD(Services::Delete, "/{serviceType}/delete", drogon::Delete, ELAPSED, AUTH);
-            METHOD_ADD(Services::Search, "/{serviceType}/search", drogon::HttpMethod::Post, ELAPSED, AUTH);
+            METHOD_ADD(Services::Create, "/{serviceType}/create", drogon::Post, RATELIMIT, ELAPSED, AUTH);
+            METHOD_ADD(Services::Read, "/{serviceType}/read", drogon::Post, RATELIMIT, ELAPSED, AUTH);
+            METHOD_ADD(Services::Update, "/{serviceType}/update", drogon::Put, RATELIMIT, ELAPSED, AUTH);
+            METHOD_ADD(Services::Delete, "/{serviceType}/delete", drogon::Delete, RATELIMIT, ELAPSED, AUTH);
+            METHOD_ADD(Services::Search, "/{serviceType}/search", drogon::HttpMethod::Post, RATELIMIT, ELAPSED, AUTH);
             METHOD_LIST_END
 
            private:

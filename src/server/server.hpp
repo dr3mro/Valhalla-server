@@ -5,6 +5,7 @@
 #include "api/v2/all_routes.hpp"  // IWYU pragma: keep
 #include "configurator/configurator.hpp"
 #include "filters/auth.hpp"
+#include "filters/ratelimit.hpp"
 #include "middlewares/elapsedtime.hpp"
 #include "store/store.hpp"
 class Server
@@ -22,4 +23,5 @@ class Server
     void                                               print_banner();
     std::shared_ptr<api::v2::Filters::Auth>            auth_filter_  = std::make_shared<api::v2::Filters::Auth>();
     std::shared_ptr<api::v2::MiddleWares::ElapsedTime> elapsed_time_ = std::make_shared<api::v2::MiddleWares::ElapsedTime>();
+    std::shared_ptr<api::v2::Filters::RateLimit>       rate_limit_   = std::make_shared<api::v2::Filters::RateLimit>();
 };

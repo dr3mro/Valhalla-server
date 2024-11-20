@@ -46,10 +46,10 @@ namespace api
             }
 
             METHOD_LIST_BEGIN
-            METHOD_ADD(Appointments::Create, "/services/{entityType}/appointments/create", drogon::Post, ELAPSED, AUTH);
-            METHOD_ADD(Appointments::Read, "/services/{entityType}/appointments/read", drogon::Post, ELAPSED, AUTH);
-            METHOD_ADD(Appointments::Update, "/services/{entityType}/appointments/update", drogon::Put, ELAPSED, AUTH);
-            METHOD_ADD(Appointments::Delete, "/services/{entityType}/appointments/delete", drogon::Delete, ELAPSED, AUTH);
+            METHOD_ADD(Appointments::Create, "/services/{entityType}/appointments/create", drogon::Post, RATELIMIT, ELAPSED, AUTH);
+            METHOD_ADD(Appointments::Read, "/services/{entityType}/appointments/read", drogon::Post, RATELIMIT, ELAPSED, AUTH);
+            METHOD_ADD(Appointments::Update, "/services/{entityType}/appointments/update", drogon::Put, RATELIMIT, ELAPSED, AUTH);
+            METHOD_ADD(Appointments::Delete, "/services/{entityType}/appointments/delete", drogon::Delete, RATELIMIT, ELAPSED, AUTH);
             METHOD_LIST_END
 
            private:

@@ -19,7 +19,7 @@ namespace api
             }
 
             METHOD_LIST_BEGIN
-            METHOD_ADD(Hello::hello, "", drogon::Get, ELAPSED);
+            METHOD_ADD(Hello::hello, "", drogon::Get, RATELIMIT, ELAPSED);
             METHOD_LIST_END
         };
 
