@@ -122,6 +122,10 @@ void EntityController<T>::Search(std::function<void(const drogon::HttpResponsePt
         {
             Controller::Search(entity, callback);
         }
+        else
+        {
+            Helper::errorResponse(drogon::k406NotAcceptable, "Failed to search", callback);
+        }
     }
     catch (const std::exception &e)
     {
