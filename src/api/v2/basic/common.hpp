@@ -10,6 +10,7 @@ namespace api
 {
     namespace v2
     {
+
         template <typename Func, typename Registry, typename... Args>
         static void executeControllerMethod(const Registry& registry, const std::string_view key, Func method,
                                             std::function<void(const drogon::HttpResponsePtr&)>&& callback, Args&&... args)

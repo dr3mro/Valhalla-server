@@ -76,16 +76,16 @@ namespace api
             }
 
             METHOD_LIST_BEGIN
-            METHOD_ADD(Clients::create, "/{clientType}/create", drogon::Post);
-            METHOD_ADD(Clients::login, "/{clientType}/login", drogon::Post);
-            METHOD_ADD(Clients::logout, "/{clientType}/logout", drogon::Post, "api::v2::Filters::Auth");
-            METHOD_ADD(Clients::suspend, "/{clientType}/suspend", drogon::Post, "api::v2::Filters::Auth");
-            METHOD_ADD(Clients::activate, "/{clientType}/activate", drogon::Post, "api::v2::Filters::Auth");
-            METHOD_ADD(Clients::read, "/{clientType}/read", drogon::Post, "api::v2::Filters::Auth");
-            METHOD_ADD(Clients::update, "/{clientType}/update", drogon::Put, "api::v2::Filters::Auth");
-            METHOD_ADD(Clients::delete_, "/{clientType}/delete", drogon::Delete, "api::v2::Filters::Auth");
-            METHOD_ADD(Clients::search, "/{clientType}/search", drogon::Post, "api::v2::Filters::Auth");
-            METHOD_ADD(Clients::getservices, "/{clientType}/services", drogon::Get, "api::v2::Filters::Auth");
+            METHOD_ADD(Clients::create, "/{clientType}/create", drogon::Post, "api::v2::MiddleWares::ElapsedTime");
+            METHOD_ADD(Clients::login, "/{clientType}/login", drogon::Post, "api::v2::MiddleWares::ElapsedTime");
+            METHOD_ADD(Clients::logout, "/{clientType}/logout", drogon::Post, "api::v2::MiddleWares::ElapsedTime", "api::v2::Filters::Auth");
+            METHOD_ADD(Clients::suspend, "/{clientType}/suspend", drogon::Post, "api::v2::MiddleWares::ElapsedTime", "api::v2::Filters::Auth");
+            METHOD_ADD(Clients::activate, "/{clientType}/activate", drogon::Post, "api::v2::MiddleWares::ElapsedTime", "api::v2::Filters::Auth");
+            METHOD_ADD(Clients::read, "/{clientType}/read", drogon::Post, "api::v2::MiddleWares::ElapsedTime", "api::v2::Filters::Auth");
+            METHOD_ADD(Clients::update, "/{clientType}/update", drogon::Put, "api::v2::MiddleWares::ElapsedTime", "api::v2::Filters::Auth");
+            METHOD_ADD(Clients::delete_, "/{clientType}/delete", drogon::Delete, "api::v2::MiddleWares::ElapsedTime", "api::v2::Filters::Auth");
+            METHOD_ADD(Clients::search, "/{clientType}/search", drogon::Post, "api::v2::MiddleWares::ElapsedTime", "api::v2::Filters::Auth");
+            METHOD_ADD(Clients::getservices, "/{clientType}/services", drogon::Get, "api::v2::MiddleWares::ElapsedTime", "api::v2::Filters::Auth");
             METHOD_LIST_END
 
            private:
