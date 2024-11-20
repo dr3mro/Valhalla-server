@@ -18,7 +18,7 @@ int Server2::run()
     {
         drogon::app()
             .addListener(config_.host.data(), config_.port)
-            .setLogLevel(static_cast<trantor::Logger::LogLevel>(config_.debug_level))
+            //.setLogLevel(static_cast<trantor::Logger::LogLevel>(config_.debug_level))
             .setThreadNum(config_.threads)
             .registerPreRoutingAdvice(
                 [](const drogon::HttpRequestPtr& req, drogon::AdviceCallback&& cb, drogon::AdviceChainCallback&& ccb)
@@ -38,6 +38,7 @@ int Server2::run()
                         ccb();
                     }
                 })
+            .disableSigtermHandling()
             .registerPostHandlingAdvice(
                 [](const drogon::HttpRequestPtr&, const drogon::HttpResponsePtr& resp)
                 {
