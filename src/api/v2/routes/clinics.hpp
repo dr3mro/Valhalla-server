@@ -17,7 +17,7 @@ namespace api
 {
     namespace v2
     {
-        class Clinics : public drogon::HttpController<Clinics>
+        class Clinic : public drogon::HttpController<Clinic>
         {
            public:
             void Create(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
@@ -54,12 +54,13 @@ namespace api
                                         stoll(req->getParameter("id")));
             }
 
-            METHOD_LIST_BEGIN METHOD_ADD(Clinics::Create, "/services/clinics/{serviceType}/create", drogon::Post);
-            METHOD_ADD(Clinics::Read, "/services/clinics/{serviceType}/read", drogon::Post);
-            METHOD_ADD(Clinics::Update, "/services/clinics/{serviceType}/update", drogon::Put);
-            METHOD_ADD(Clinics::Delete, "/services/clinics/{serviceType}/delete", drogon::Delete);
-            METHOD_ADD(Clinics::Search, "/services/clinics/patients/search", drogon::HttpMethod::Post);
-            METHOD_ADD(Clinics::GetVisits, "/services/clinics/patients/getvisits", drogon::Get);
+            METHOD_LIST_BEGIN
+            METHOD_ADD(Clinic::Create, "/{serviceType}/create", drogon::Post);
+            METHOD_ADD(Clinic::Read, "/{serviceType}/read", drogon::Post);
+            METHOD_ADD(Clinic::Update, "/{serviceType}/update", drogon::Put);
+            METHOD_ADD(Clinic::Delete, "/{serviceType}/delete", drogon::Delete);
+            METHOD_ADD(Clinic::Search, "/patients/search", drogon::HttpMethod::Post);
+            METHOD_ADD(Clinic::GetVisits, "/patients/getvisits", drogon::Get);
             METHOD_LIST_END
 
            private:
