@@ -35,9 +35,9 @@ namespace api
             }
 
             METHOD_LIST_BEGIN
-            METHOD_ADD(Staff::Invite, "/services/{serviceType}/staff/invite", drogon::Post);
-            METHOD_ADD(Staff::Add, "/services/{serviceType}/staff/add", drogon::Post);
-            METHOD_ADD(Staff::Remove, "/services/{serviceType}/staff/remove", drogon::Post);
+            METHOD_ADD(Staff::Invite, "/services/{serviceType}/staff/invite", drogon::Post, "api::v2::Filters::Auth");
+            METHOD_ADD(Staff::Add, "/services/{serviceType}/staff/add", drogon::Post, "api::v2::Filters::Auth");
+            METHOD_ADD(Staff::Remove, "/services/{serviceType}/staff/remove", drogon::Post, "api::v2::Filters::Auth");
             METHOD_LIST_END
 
            private:

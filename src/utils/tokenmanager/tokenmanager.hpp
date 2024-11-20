@@ -10,7 +10,7 @@
 class TokenManager
 {
    public:
-    using LoggedUserInfo = struct LoggedUserInfo
+    using LoggedClientInfo = struct LoggedClientInfo
     {
         std::optional<std::string> token;
         std::optional<std::string> userName;
@@ -26,8 +26,8 @@ class TokenManager
     }
     virtual ~TokenManager() = default;
 
-    std::optional<std::string> GenerateToken(const LoggedUserInfo &loggedinUserInfo) const;
-    bool                       ValidateToken(LoggedUserInfo &loggedinUserInfo) const;
+    std::optional<std::string> GenerateToken(const LoggedClientInfo &loggedinClientInfo) const;
+    bool                       ValidateToken(LoggedClientInfo &loggedinClientInfo) const;
 
    private:
     std::shared_ptr<Configurator>               configurator_           = Store::getObject<Configurator>();
@@ -35,7 +35,7 @@ class TokenManager
 
     std::shared_ptr<DatabaseController>                             databaseController;
     std::shared_ptr<SessionManager>                                 sessionManager;
-    jwt::verifier<jwt::default_clock, jwt::traits::kazuho_picojson> createTokenVerifier(const LoggedUserInfo &loggedinUserInfo) const;
-    void fillUserInfo(LoggedUserInfo &loggedinUserInfo, const jwt::decoded_jwt<jwt::traits::kazuho_picojson> &token) const;
-    bool validateUserInDatabase(const LoggedUserInfo &loggedinUserInfo) const;
+    jwt::verifier<jwt::default_clock, jwt::traits::kazuho_picojson> createTokenVerifier(const LoggedClientInfo &loggedinClientInfo) const;
+    void fillUserInfo(LoggedClientInfo &loggedinClientInfo, const jwt::decoded_jwt<jwt::traits::kazuho_picojson> &token) const;
+    bool validateUserInDatabase(const LoggedClientInfo &loggedinClientInfo) const;
 };

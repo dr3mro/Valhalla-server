@@ -3,15 +3,8 @@
 #include "utils/message/message.hpp"
 
 using jwt::error::token_verification_exception;
-/* Function to generate JWT token
- *
- * Generates a JWT token with the provided user information.
- *
- * @param loggedinUserInfo The user information to include in the token.
- * @return An optional string containing the generated JWT token, or
- * std::nullopt if an error occurred.
- */
-std::optional<std::string> TokenManager::GenerateToken(const LoggedUserInfo &loggedinUserInfo) const
+
+std::optional<std::string> TokenManager::GenerateToken(const LoggedClientInfo &loggedinClientInfo) const
 {
     try
     {
@@ -20,12 +13,12 @@ std::optional<std::string> TokenManager::GenerateToken(const LoggedUserInfo &log
             jwt::create<jwt::traits::kazuho_picojson>()
                 .set_issuer(tokenManagerParameters_.issuer.data())
                 .set_type(tokenManagerParameters_.type.data())
-                .set_subject(loggedinUserInfo.userName.value())
-                .set_id(std::to_string(loggedinUserInfo.userID.value()))
+                .set_subject(loggedinClientInfo.userName.value())
+                .set_id(std::to_string(loggedinClientInfo.userID.value()))
                 .set_issued_at(std::chrono::system_clock::now())
                 .set_expires_at(std::chrono::system_clock::now() + std::chrono::minutes{tokenManagerParameters_.validity})
-                .set_payload_claim("llodt", jwt::basic_claim<jwt::traits::kazuho_picojson>(loggedinUserInfo.llodt.value()))
-                .set_payload_claim("group", jwt::basic_claim<jwt::traits::kazuho_picojson>(loggedinUserInfo.group.value()))
+                .set_payload_claim("llodt", jwt::basic_claim<jwt::traits::kazuho_picojson>(loggedinClientInfo.llodt.value()))
+                .set_payload_claim("group", jwt::basic_claim<jwt::traits::kazuho_picojson>(loggedinClientInfo.group.value()))
                 .sign(jwt::algorithm::hs256{tokenManagerParameters_.secret.data()});
 
         return token;
@@ -38,11 +31,11 @@ std::optional<std::string> TokenManager::GenerateToken(const LoggedUserInfo &log
     return std::nullopt;
 }
 
-bool TokenManager::ValidateToken(LoggedUserInfo &loggedinUserInfo) const
+bool TokenManager::ValidateToken(LoggedClientInfo &loggedinClientInfo) const
 {
     try
     {
-        auto token = jwt::decode<jwt::traits::kazuho_picojson>(loggedinUserInfo.token.value());
+        auto token = jwt::decode<jwt::traits::kazuho_picojson>(loggedinClientInfo.token.value());
 
         // Validate token expiration
         auto now      = std::chrono::system_clock::now().time_since_epoch();
@@ -53,14 +46,14 @@ bool TokenManager::ValidateToken(LoggedUserInfo &loggedinUserInfo) const
         }
 
         // Update user info from token
-        fillUserInfo(loggedinUserInfo, token);
+        fillUserInfo(loggedinClientInfo, token);
 
         // Validate token claims
-        auto verifier = createTokenVerifier(loggedinUserInfo);
+        auto verifier = createTokenVerifier(loggedinClientInfo);
         verifier.verify(token);
 
         // Validate user in database
-        if (!validateUserInDatabase(loggedinUserInfo))
+        if (!validateUserInDatabase(loggedinClientInfo))
         {
             return false;
         }
@@ -80,47 +73,42 @@ bool TokenManager::ValidateToken(LoggedUserInfo &loggedinUserInfo) const
     return false;
 }
 
-jwt::verifier<jwt::default_clock, jwt::traits::kazuho_picojson> TokenManager::createTokenVerifier(const LoggedUserInfo &loggedinUserInfo) const
+jwt::verifier<jwt::default_clock, jwt::traits::kazuho_picojson> TokenManager::createTokenVerifier(const LoggedClientInfo &loggedinClientInfo) const
 {
     return jwt::verify<jwt::traits::kazuho_picojson>()
         .allow_algorithm(jwt::algorithm::hs256{tokenManagerParameters_.secret.data()})
         .with_issuer(tokenManagerParameters_.issuer.data())
         .with_type(tokenManagerParameters_.type.data())
-        .with_subject(loggedinUserInfo.userName.value())
-        .with_id(std::to_string(loggedinUserInfo.userID.value()))
-        .with_claim("group", jwt::basic_claim<jwt::traits::kazuho_picojson>(loggedinUserInfo.group.value()))
-        .with_claim("llodt", jwt::basic_claim<jwt::traits::kazuho_picojson>(loggedinUserInfo.llodt.value_or("first_login")));
+        .with_subject(loggedinClientInfo.userName.value())
+        .with_id(std::to_string(loggedinClientInfo.userID.value()))
+        .with_claim("group", jwt::basic_claim<jwt::traits::kazuho_picojson>(loggedinClientInfo.group.value()))
+        .with_claim("llodt", jwt::basic_claim<jwt::traits::kazuho_picojson>(loggedinClientInfo.llodt.value_or("first_login")));
 }
 
-void TokenManager::fillUserInfo(LoggedUserInfo &loggedinUserInfo, const jwt::decoded_jwt<jwt::traits::kazuho_picojson> &token) const
+void TokenManager::fillUserInfo(LoggedClientInfo &loggedinClientInfo, const jwt::decoded_jwt<jwt::traits::kazuho_picojson> &token) const
 {
-    if (!loggedinUserInfo.group)
+    if (!loggedinClientInfo.group)
     {
-        loggedinUserInfo.group = token.get_payload_claim("group").as_string();
+        loggedinClientInfo.group = token.get_payload_claim("group").as_string();
     }
-    else if (loggedinUserInfo.group != token.get_payload_claim("group").as_string())
+    else if (loggedinClientInfo.group != token.get_payload_claim("group").as_string())
     {
         throw std::runtime_error("Group mismatch in token");
     }
 
-    loggedinUserInfo.userID   = std::stoull(token.get_id());
-    loggedinUserInfo.userName = token.get_subject();
+    loggedinClientInfo.userID   = std::stoull(token.get_id());
+    loggedinClientInfo.userName = token.get_subject();
 
-    if (!loggedinUserInfo.group || !loggedinUserInfo.userID || !loggedinUserInfo.userName)
+    if (!loggedinClientInfo.group || !loggedinClientInfo.userID || !loggedinClientInfo.userName)
     {
         throw std::runtime_error("Missing required user information in token");
     }
     // Get last logout time
-    loggedinUserInfo.llodt = sessionManager->getLastLogoutTime(loggedinUserInfo.userID.value(), loggedinUserInfo.group.value());
+    loggedinClientInfo.llodt = sessionManager->getLastLogoutTime(loggedinClientInfo.userID.value(), loggedinClientInfo.group.value());
 }
 
-/**
- * Validates if the provided user information matches the user in the database.
- *
- * @param loggedinUserInfo The logged-in user information to be validated.
- * @return True if the user information matches the database, false otherwise.
- */
-bool TokenManager::validateUserInDatabase(const LoggedUserInfo &loggedinUserInfo) const
+bool TokenManager::validateUserInDatabase(const LoggedClientInfo &loggedinClientInfo) const
 {
-    return databaseController->findIfUserID(loggedinUserInfo.userName.value(), loggedinUserInfo.group.value()) == loggedinUserInfo.userID.value();
+    return databaseController->findIfUserID(loggedinClientInfo.userName.value(), loggedinClientInfo.group.value()) ==
+           loggedinClientInfo.userID.value();
 }
