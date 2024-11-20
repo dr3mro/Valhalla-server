@@ -21,6 +21,7 @@ class Server
     const Configurator::ServerConfig                  &config_       = configurator_->get<Configurator::ServerConfig>();
     const Configurator::DatabaseConfig                &db_config_    = configurator_->get<Configurator::DatabaseConfig>();
     void                                               print_banner();
+    void                                               enable_cors();
     std::shared_ptr<api::v2::Filters::Auth>            auth_filter_  = std::make_shared<api::v2::Filters::Auth>();
     std::shared_ptr<api::v2::MiddleWares::ElapsedTime> elapsed_time_ = std::make_shared<api::v2::MiddleWares::ElapsedTime>();
     std::shared_ptr<api::v2::Filters::RateLimit>       rate_limit_   = std::make_shared<api::v2::Filters::RateLimit>();

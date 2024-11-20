@@ -11,6 +11,9 @@
 #define AUTH "api::v2::Filters::Auth"
 #define ELAPSED "api::v2::MiddleWares::ElapsedTime"
 
+#define INSECURE RATELIMIT, ELAPSED
+#define SECURE INSECURE, AUTH
+
 namespace api
 {
     namespace v2
