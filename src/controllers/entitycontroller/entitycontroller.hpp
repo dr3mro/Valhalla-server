@@ -37,7 +37,7 @@ void EntityController<T>::Create(std::function<void(const drogon::HttpResponsePt
             return;
         }
 
-        T entity((Types::Create_t(data, next_id.value())));
+        T entity((Types::Create_t(jsoncons::json::parse(data), next_id.value())));
         Controller::Create(entity, callback);
     }
     catch (const std::exception &e)

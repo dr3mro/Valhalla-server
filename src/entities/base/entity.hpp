@@ -13,8 +13,6 @@
 #include "store/store.hpp"
 #include "utils/message/message.hpp"
 
-using json = jsoncons::json;
-
 class Entity : public Base
 {
    public:
@@ -34,9 +32,8 @@ class Entity : public Base
             std::vector<std::string> keys_arr;
             std::vector<std::string> values_arr;
 
-            json     data_json = std::get<Types::Create_t>(data).data;
-            uint64_t next_id   = std::get<Types::Create_t>(data).id;
-            data_json["id"]    = next_id;
+            jsoncons::json data_json = std::get<Types::Create_t>(data).data;
+            data_json["id"]          = std::get<Types::Create_t>(data).id;
 
             for (auto &it : data_json.object_range())
             {
