@@ -130,13 +130,13 @@ void ClientController<T>::Search(std::function<void(const drogon::HttpResponsePt
 template <Client_t T>
 std::optional<uint64_t> ClientController<T>::Login(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data)
 {
-    json                    response;
     jsoncons::json          credentials_j;
     std::optional<uint64_t> client_id;
     Types::Credentials      credentials;
     try
     {
-        credentials_j        = jsoncons::json::parse(data);
+        credentials_j = jsoncons::json::parse(data);
+
         credentials.username = credentials_j.at("username").as<std::string>();
         credentials.password = credentials_j.at("password").as<std::string>();
 
