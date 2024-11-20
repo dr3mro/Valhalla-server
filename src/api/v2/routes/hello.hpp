@@ -1,6 +1,7 @@
 #pragma once
 #include <drogon/HttpController.h>
 
+#include "api/v2/basic/common.hpp"
 #include "utils/helper/helper.hpp"
 namespace api
 {
@@ -18,7 +19,7 @@ namespace api
             }
 
             METHOD_LIST_BEGIN
-            METHOD_ADD(Hello::hello, "", drogon::Get, "api::v2::MiddleWares::ElapsedTime");
+            METHOD_ADD(Hello::hello, "", drogon::Get, ELAPSED);
             METHOD_LIST_END
         };
 

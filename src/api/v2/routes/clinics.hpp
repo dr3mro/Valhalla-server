@@ -55,12 +55,12 @@ namespace api
             }
 
             METHOD_LIST_BEGIN
-            METHOD_ADD(Clinic::Create, "/{serviceType}/create", drogon::Post, "api::v2::Filters::Auth");
-            METHOD_ADD(Clinic::Read, "/{serviceType}/read", drogon::Post, "api::v2::Filters::Auth");
-            METHOD_ADD(Clinic::Update, "/{serviceType}/update", drogon::Put, "api::v2::Filters::Auth");
-            METHOD_ADD(Clinic::Delete, "/{serviceType}/delete", drogon::Delete, "api::v2::Filters::Auth");
-            METHOD_ADD(Clinic::Search, "/patients/search", drogon::HttpMethod::Post, "api::v2::Filters::Auth");
-            METHOD_ADD(Clinic::GetVisits, "/patients/getvisits", drogon::Get, "api::v2::Filters::Auth");
+            METHOD_ADD(Clinic::Create, "/{serviceType}/create", drogon::Post, ELAPSED, AUTH);
+            METHOD_ADD(Clinic::Read, "/{serviceType}/read", drogon::Post, ELAPSED, AUTH);
+            METHOD_ADD(Clinic::Update, "/{serviceType}/update", drogon::Put, ELAPSED, AUTH);
+            METHOD_ADD(Clinic::Delete, "/{serviceType}/delete", drogon::Delete, ELAPSED, AUTH);
+            METHOD_ADD(Clinic::Search, "/patients/search", drogon::HttpMethod::Post, ELAPSED, AUTH);
+            METHOD_ADD(Clinic::GetVisits, "/patients/getvisits", drogon::Get, ELAPSED, AUTH);
             METHOD_LIST_END
 
            private:
