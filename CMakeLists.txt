@@ -42,7 +42,7 @@ string(STRIP "${GIT_TAG_MACRO}" GIT_TAG_MACRO)
 add_compile_definitions(${GIT_TAG_MACRO})
 
 # Find all source files
-file(GLOB_RECURSE SRC "src/*.cpp" "src/*.tpp")
+file(GLOB_RECURSE SRC "src/*.cpp")
 
 # Add the executable
 add_executable(${Target} ${SRC})
