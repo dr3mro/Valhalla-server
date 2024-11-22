@@ -71,15 +71,21 @@ void EntityController<T, CALLBACK>::Update(CALLBACK &&callback, std::string_view
     jsoncons::json request_json;
     try
     {
-        request_json               = jsoncons::json::parse(data);
-        std::optional<uint64_t> id = request_json.find("id")->value().as<uint64_t>();
-        if (!id.has_value())
+        request_json   = jsoncons::json::parse(data);
+        auto id_object = request_json.find("id");
+
+        if (id_object == request_json.object_range().end())
         {
-            callback(400, "No id provided");
+            callback(400, "No id provided.");
+            return;
+        }
+        else if (!id_object->value().is_number())
+        {
+            callback(400, "ID not valid.");
             return;
         }
 
-        T entity((Types::Update_t(request_json, id.value())));
+        T entity((Types::Update_t(request_json, id_object->value().as<uint64_t>())));
         Controller::Update(entity, callback);
     }
     catch (const std::exception &e)
