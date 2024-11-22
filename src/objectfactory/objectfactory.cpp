@@ -29,11 +29,11 @@
 #include "entities/services/radiologycenters.hpp"
 #include "store/store.hpp"
 #include "utils/Logger/logger.hpp"
+#include "utils/databaseschema/databaseschema.hpp"
 #include "utils/dosdetector/dosdetector.hpp"
 #include "utils/passwordcrypt/passwordcrypt.hpp"
 #include "utils/sessionmanager/sessionmanager.hpp"
 #include "utils/tokenmanager/tokenmanager.hpp"
-
 ObjectFactory::ObjectFactory()
 {
     Store::registerObject<Configurator>();
@@ -67,4 +67,5 @@ ObjectFactory::ObjectFactory()
     Store::registerObject<StaffController<Pharmacies, CALLBACKSIGNATURE>>();
     Store::registerObject<StaffController<Laboratories, CALLBACKSIGNATURE>>();
     Store::registerObject<StaffController<RadiologyCenters, CALLBACKSIGNATURE>>();
+    Store::registerObject<DatabaseSchema>();
 }

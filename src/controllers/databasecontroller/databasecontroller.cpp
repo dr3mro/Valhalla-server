@@ -55,3 +55,10 @@ std::optional<uint64_t> DatabaseController::findIfUserID(const std::string &user
     return executer<uint64_t>(&Database::doSimpleQuery<uint64_t>,
                               fmt::format("SELECT id FROM {} WHERE username = '{}' LIMIT 1;", tablename, username));
 }
+
+std::optional<std::vector<Database::ColumnInfo>> DatabaseController::getTableSchema(const std::string &tableName)
+{
+    return executer<std::vector<Database::ColumnInfo>>(&Database::getTableSchema, tableName);
+}
+
+std::optional<std::vector<std::string>> DatabaseController::getAllTables() { return executer<std::vector<std::string>>(&Database::getAllTables); }

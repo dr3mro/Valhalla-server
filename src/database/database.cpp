@@ -48,3 +48,57 @@ bool Database::checkExists(const std::string &table, const std::string &column, 
         return false;
     }
 }
+
+std::optional<std::vector<Database::ColumnInfo>> Database::getTableSchema(const std::string &tableName)
+{
+    std::string query;
+    try
+    {
+        pqxx::nontransaction ntxn(*connection);
+        query = fmt::format("SELECT column_name, data_type, column_default, is_nullable FROM information_schema.columns WHERE table_name = '{}';",
+                            tableName);
+
+        pqxx::result result = ntxn.exec(query);
+
+        std::vector<ColumnInfo> schema;
+
+        for (const auto &row : result)
+        {
+            ColumnInfo column;
+            column.Name       = row["column_name"].as<std::string>();
+            column.DataType   = row["data_type"].as<std::string>();
+            column.Constraint = row["column_default"].is_null() ? "None" : row["column_default"].as<std::string>();
+            column.isNullable = row["is_nullable"].as<std::string>() == "YES";
+            schema.push_back(column);
+        }
+        return schema;
+    }
+    catch (const std::exception &e)
+    {
+        Message::ErrorMessage(fmt::format("Error executing query:", query));
+        Message::CriticalMessage(fmt::format("Failue:", e.what()));
+        return std::nullopt;
+        // throw;  // Rethrow the exception to indicate failure
+    }
+}
+
+std::optional<std::vector<std::string>> Database::getAllTables()
+{
+    try
+    {
+        pqxx::work               txn(*connection);
+        pqxx::result             result = txn.exec("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';");
+        std::vector<std::string> tables;
+        for (const auto &row : result)
+        {
+            tables.push_back(row["table_name"].as<std::string>());
+        }
+        return tables;
+    }
+    catch (const std::exception &e)
+    {
+        Message::ErrorMessage("Error executing query.");
+        Message::CriticalMessage(e.what());
+        return std::nullopt;
+    }
+}
