@@ -6,34 +6,34 @@
 
 #include "controllers/base/controller/controller.hpp"
 #include "controllers/entitycontroller/entitycontrollerbase.hpp"
-#include "utils/helper/helper.hpp"
 
-template <typename T>
-class EntityController : public Controller, public EntityControllerBase
+template <typename T, typename CALLBACK>
+class EntityController : public Controller, public EntityControllerBase<CALLBACK>
 {
    public:
     EntityController()          = default;
     virtual ~EntityController() = default;
     // CRUDS
 
-    void Create(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data) override;
-    void Read(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data) override;
-    void Update(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data) override;
-    void Delete(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::optional<uint64_t> id) override;
-    void Search(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data) override;
+    void Create(CALLBACK &&callback, std::string_view data) override;
+    void Read(CALLBACK &&callback, std::string_view data) override;
+    void Update(CALLBACK &&callback, std::string_view data) override;
+    void Delete(CALLBACK &&callback, std::optional<uint64_t> id) override;
+    void Search(CALLBACK &&callback, std::string_view data) override;
 
    protected:
 };
 
-template <typename T>
-void EntityController<T>::Create(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data)
+template <typename T, typename CALLBACK>
+void EntityController<T, CALLBACK>::Create(CALLBACK &&callback, std::string_view data)
 {
     try
     {
-        auto next_id = this->template getNextID<T>();
+        std::string error;
+        auto        next_id = this->template getNextID<T>(error);
         if (!next_id.has_value())
         {
-            Helper::errorResponse(drogon::k406NotAcceptable, "Failed to generate next ID", callback);
+            callback(406, fmt::format("Failed to generate next ID, {}.", error));
             return;
         }
 
@@ -42,12 +42,12 @@ void EntityController<T>::Create(std::function<void(const drogon::HttpResponsePt
     }
     catch (const std::exception &e)
     {
-        Helper::failureResponse(e.what(), callback);
+        CRITICALMESSAGERESPONSE
     }
 }
 
-template <typename T>
-void EntityController<T>::Read(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data)
+template <typename T, typename CALLBACK>
+void EntityController<T, CALLBACK>::Read(CALLBACK &&callback, std::string_view data)
 {
     jsoncons::json request_json;
     try
@@ -57,16 +57,16 @@ void EntityController<T>::Read(std::function<void(const drogon::HttpResponsePtr 
         std::vector<std::string> schema = request_json.at("schema").as<std::vector<std::string>>();
 
         T entity((Types::Read_t(schema, id)));
-        Controller::Read(entity, callback);
+        Controller::Read(entity, std::move(callback));
     }
     catch (const std::exception &e)
     {
-        Helper::failureResponse(e.what(), callback);
+        CRITICALMESSAGERESPONSE
     }
 }
 
-template <typename T>
-void EntityController<T>::Update(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data)
+template <typename T, typename CALLBACK>
+void EntityController<T, CALLBACK>::Update(CALLBACK &&callback, std::string_view data)
 {
     jsoncons::json request_json;
     try
@@ -75,7 +75,7 @@ void EntityController<T>::Update(std::function<void(const drogon::HttpResponsePt
         std::optional<uint64_t> id = request_json.find("id")->value().as<uint64_t>();
         if (!id.has_value())
         {
-            Helper::errorResponse(drogon::k400BadRequest, "No id provided", callback);
+            callback(400, "No id provided");
             return;
         }
 
@@ -84,32 +84,32 @@ void EntityController<T>::Update(std::function<void(const drogon::HttpResponsePt
     }
     catch (const std::exception &e)
     {
-        Helper::failureResponse(e.what(), callback);
+        CRITICALMESSAGERESPONSE
     }
 }
 
-template <typename T>
-void EntityController<T>::Delete(std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::optional<uint64_t> id)
+template <typename T, typename CALLBACK>
+void EntityController<T, CALLBACK>::Delete(CALLBACK &&callback, const std::optional<uint64_t> id)
 {
     try
     {
         if (!id.has_value())
         {
-            Helper::errorResponse(drogon::k406NotAcceptable, "Invalid id provided", callback);
+            callback(406, "Invalid id provided");
             return;
         }
 
         T entity(Types::Delete_t(id.value()));
-        Controller::Delete(entity, callback);
+        Controller::Delete(entity, std::move(callback));
     }
     catch (const std::exception &e)
     {
-        Helper::failureResponse(e.what(), callback);
+        CRITICALMESSAGERESPONSE
     }
 }
 
-template <typename T>
-void EntityController<T>::Search(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data)
+template <typename T, typename CALLBACK>
+void EntityController<T, CALLBACK>::Search(CALLBACK &&callback, std::string_view data)
 {
     jsoncons::json request_json;
     try
@@ -124,11 +124,11 @@ void EntityController<T>::Search(std::function<void(const drogon::HttpResponsePt
         }
         else
         {
-            Helper::errorResponse(drogon::k406NotAcceptable, "Failed to search", callback);
+            callback(406, "Failed to search");
         }
     }
     catch (const std::exception &e)
     {
-        Helper::failureResponse(e.what(), callback);
+        CRITICALMESSAGERESPONSE
     }
 }

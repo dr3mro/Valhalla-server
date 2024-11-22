@@ -19,30 +19,34 @@ namespace api
             void Create(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                         const std::string &serviceType)
             {
-                executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Create, std::move(callback), req->body());
+                executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase<CALLBACKSIGNATURE>::Create, std::move(callback),
+                                        req->body());
             }
 
             void Read(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                       const std::string &serviceType)
             {
-                executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Read, std::move(callback), req->body());
+                executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase<CALLBACKSIGNATURE>::Read, std::move(callback),
+                                        req->body());
             }
 
             void Update(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                         const std::string &serviceType)
             {
-                executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Update, std::move(callback), req->body());
+                executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase<CALLBACKSIGNATURE>::Update, std::move(callback),
+                                        req->body());
             }
             void Delete(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                         const std::string &serviceType)
             {
-                executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Delete, std::move(callback),
+                executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase<CALLBACKSIGNATURE>::Delete, std::move(callback),
                                         stoll(req->getParameter("id")));
             }
             void Search(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                         const std::string &serviceType)
             {
-                executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Search, std::move(callback), req->body());
+                executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase<CALLBACKSIGNATURE>::Search, std::move(callback),
+                                        req->body());
             }
             METHOD_LIST_BEGIN
             METHOD_ADD(Services::Create, "/{serviceType}/create", drogon::Post, SECURE);
@@ -53,15 +57,16 @@ namespace api
             METHOD_LIST_END
 
            private:
-            using ServiceVariant =
-                std::variant<std::shared_ptr<ServiceController<Clinics>>, std::shared_ptr<ServiceController<Pharmacies>>,
-                             std::shared_ptr<ServiceController<Laboratories>>, std::shared_ptr<ServiceController<RadiologyCenters>>>;
+            using ServiceVariant = std::variant<std::shared_ptr<ServiceController<Clinics, CALLBACKSIGNATURE>>,
+                                                std::shared_ptr<ServiceController<Pharmacies, CALLBACKSIGNATURE>>,
+                                                std::shared_ptr<ServiceController<Laboratories, CALLBACKSIGNATURE>>,
+                                                std::shared_ptr<ServiceController<RadiologyCenters, CALLBACKSIGNATURE>>>;
 
             std::unordered_map<std::string_view, ServiceVariant> serviceRegistry = {
-                {"clinics", Store::getObject<ServiceController<Clinics>>()},
-                {"pharmacies", Store::getObject<ServiceController<Pharmacies>>()},
-                {"laboratories", Store::getObject<ServiceController<Laboratories>>()},
-                {"radiologycenters", Store::getObject<ServiceController<RadiologyCenters>>()}};
+                {"clinics", Store::getObject<ServiceController<Clinics, CALLBACKSIGNATURE>>()},
+                {"pharmacies", Store::getObject<ServiceController<Pharmacies, CALLBACKSIGNATURE>>()},
+                {"laboratories", Store::getObject<ServiceController<Laboratories, CALLBACKSIGNATURE>>()},
+                {"radiologycenters", Store::getObject<ServiceController<RadiologyCenters, CALLBACKSIGNATURE>>()}};
         };
     }  // namespace v2
 }  // namespace api

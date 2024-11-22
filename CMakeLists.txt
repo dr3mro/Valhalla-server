@@ -49,6 +49,7 @@ add_executable(${Target} ${SRC})
 
 # Define all your packages in a list
 set(CONAN_PACKAGES
+  cppcodec
   picojson
   fmt
   libpqxx

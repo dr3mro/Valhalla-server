@@ -1,6 +1,5 @@
 #pragma once
 
-#include <drogon/drogon.h>
 #include <fmt/core.h>
 
 #include <jsoncons/json.hpp>
@@ -10,17 +9,16 @@
 #include "controllers/entitycontroller/entitycontroller.hpp"
 #include "entities/base/client.hpp"
 #include "entities/base/types.hpp"
-#include "utils/helper/helper.hpp"  // remove warnings
-#include "utils/message/message.hpp"
+#include "utils/global/global.hpp"
+#include "utils/jsonhelper/jsonhelper.hpp"
 #include "utils/sessionmanager/sessionmanager.hpp"
 #include "utils/tokenmanager/tokenmanager.hpp"
 
 template <typename T>
 concept Client_t = std::is_base_of_v<Client, T>;
 
-template <Client_t T>
-
-class ClientController : public EntityController<T>, public ClientControllerBase
+template <Client_t T, typename CALLBACK>
+class ClientController : public EntityController<T, CALLBACK>, public ClientControllerBase<CALLBACK>
 {
    public:
     ClientController()
@@ -32,71 +30,71 @@ class ClientController : public EntityController<T>, public ClientControllerBase
         }
         catch (const std::exception& e)
         {
-            Message::ErrorMessage(fmt::format("Exception in ClientController constructor."));
-            Message::CriticalMessage(e.what());
+            CRITICALMESSAGE
             exit(EXIT_FAILURE);
         }
     }
 
     virtual ~ClientController() final = default;
-
-    void                    Create(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data) final;
-    void                    Read(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data) final;
-    void                    Update(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data) final;
-    void                    Delete(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::optional<uint64_t> client_id) final;
-    void                    Search(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data) final;
-    std::optional<uint64_t> Login(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data) final;
-    void                    Logout(std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::optional<std::string>& token) final;
-    void                    Suspend(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::optional<uint64_t> client_id) final;
-    void                    Activate(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::optional<uint64_t> client_id) final;
-    void                    ResetPassword(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data) final;
-    void                    GetServices(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::optional<uint64_t> client_id) final;
+    void                    Create(CALLBACK&& callback, std::string_view data) final;
+    void                    Read(CALLBACK&& callback, std::string_view data) final;
+    void                    Update(CALLBACK&& callback, std::string_view data) final;
+    void                    Delete(CALLBACK&& callback, std::optional<uint64_t> client_id) final;
+    void                    Search(CALLBACK&& callback, std::string_view data) final;
+    std::optional<uint64_t> Login(CALLBACK&& callback, std::string_view data) final;
+    void                    Logout(CALLBACK&& callback, const std::optional<std::string>& token) final;
+    void                    Suspend(CALLBACK&& callback, std::optional<uint64_t> client_id) final;
+    void                    Activate(CALLBACK&& callback, std::optional<uint64_t> client_id) final;
+    void                    ResetPassword(CALLBACK&& callback, std::string_view data) final;
+    void                    GetServices(CALLBACK&& callback, std::optional<uint64_t> client_id) final;
 
    private:
     std::shared_ptr<TokenManager>   tokenManager;
     std::shared_ptr<SessionManager> sessionManager;
 };
 
-template <Client_t T>
-void ClientController<T>::Create(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data)
+template <Client_t T, typename CALLBACK>
+void ClientController<T, CALLBACK>::Create(CALLBACK&& callback, std::string_view data)
 {
     try
     {
         bool              success = false;
-        Types::ClientData client_data(data, callback, success);
+        Types::HttpError  error;
+        Types::ClientData client_data(data, error, success);
 
         if (success)
         {
             T client(client_data);
             if (client.exists())
             {
-                Helper::errorResponse(drogon::k409Conflict, "User already exists", callback);
+                callback(409, "User already exists");
                 return;
             }
-            Controller::Create(client, callback);
+            Controller::Create(client, std::move(callback));
         }
     }
     catch (const std::exception& e)
     {
-        Helper::failureResponse(e.what(), callback);
+        CRITICALMESSAGERESPONSE
     }
 }
 
-template <Client_t T>
-void ClientController<T>::Read(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data)
+template <Client_t T, typename CALLBACK>
+void ClientController<T, CALLBACK>::Read(CALLBACK&& callback, std::string_view data)
 {
-    EntityController<T>::Read(std::move(callback), data);
+    EntityController<T, CALLBACK>::Read(std::move(callback), data);
 }
 
-template <Client_t T>
-void ClientController<T>::Update(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data)
+template <Client_t T, typename CALLBACK>
+void ClientController<T, CALLBACK>::Update(CALLBACK&& callback, std::string_view data)
 {
     jsoncons::json json_data;
     try
     {
         json_data                 = jsoncons::json::parse(data);
         bool              success = false;
-        Types::ClientData client_data(data, callback, success);
+        Types::HttpError  error;
+        Types::ClientData client_data(data, error, success);
 
         if (success)
         {
@@ -105,30 +103,30 @@ void ClientController<T>::Update(std::function<void(const drogon::HttpResponsePt
         }
         else
         {
-            Helper::errorResponse(drogon::k409Conflict, "ClientData parsing error", callback);
+            callback(error.code, fmt::format("ClientData parsing error: {}.", error.message));
             return;
         }
     }
     catch (const std::exception& e)
     {
-        Helper::failureResponse(e.what(), callback);
+        CRITICALMESSAGERESPONSE
     }
 }
 
-template <Client_t T>
-void ClientController<T>::Delete(std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::optional<uint64_t> client_id)
+template <Client_t T, typename CALLBACK>
+void ClientController<T, CALLBACK>::Delete(CALLBACK&& callback, const std::optional<uint64_t> client_id)
 {
-    EntityController<T>::Delete(std::move(callback), client_id);
+    EntityController<T, CALLBACK>::Delete(std::move(callback), client_id);
 }
 
-template <Client_t T>
-void ClientController<T>::Search(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data)
+template <Client_t T, typename CALLBACK>
+void ClientController<T, CALLBACK>::Search(CALLBACK&& callback, std::string_view data)
 {
-    EntityController<T>::Search(std::move(callback), data);
+    EntityController<T, CALLBACK>::Search(std::move(callback), data);
 }
 
-template <Client_t T>
-std::optional<uint64_t> ClientController<T>::Login(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data)
+template <Client_t T, typename CALLBACK>
+std::optional<uint64_t> ClientController<T, CALLBACK>::Login(CALLBACK&& callback, std::string_view data)
 {
     jsoncons::json          credentials_j;
     std::optional<uint64_t> client_id;
@@ -146,7 +144,7 @@ std::optional<uint64_t> ClientController<T>::Login(std::function<void(const drog
 
         if (!client_id)
         {
-            Helper::errorResponse(drogon::k401Unauthorized, fmt::format("User '{}' not found or wrong password", credentials.username), callback);
+            callback(401, fmt::format("User '{}' not found or wrong password", credentials.username));
             return std::nullopt;
         }
 
@@ -164,19 +162,19 @@ std::optional<uint64_t> ClientController<T>::Login(std::function<void(const drog
         token_object["client_id"] = client_id;
         token_object["group"]     = loggedClientInfo.group;
 
-        Helper::successResponse(Helper::stringify(token_object), callback);
+        callback(200, token_object.as<std::string>());
         sessionManager->setNowLoginTime(client_id.value(), loggedClientInfo.group.value());
         return client_id;
     }
     catch (const std::exception& e)
     {
-        Helper::failureResponse(e.what(), callback);
+        CRITICALMESSAGERESPONSE
     }
     return std::nullopt;
 }
 
-template <Client_t T>
-void ClientController<T>::Logout(std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::optional<std::string>& token)
+template <Client_t T, typename CALLBACK>
+void ClientController<T, CALLBACK>::Logout(CALLBACK&& callback, const std::optional<std::string>& token)
 {
     try
     {
@@ -186,18 +184,18 @@ void ClientController<T>::Logout(std::function<void(const drogon::HttpResponsePt
     }
     catch (const std::exception& e)
     {
-        Helper::failureResponse(e.what(), callback);
+        CRITICALMESSAGERESPONSE
     }
 }
 
-template <Client_t T>
-void ClientController<T>::Suspend(std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::optional<uint64_t> client_id)
+template <Client_t T, typename CALLBACK>
+void ClientController<T, CALLBACK>::Suspend(CALLBACK&& callback, const std::optional<uint64_t> client_id)
 {
     try
     {
         if (!client_id.has_value())
         {
-            Helper::errorResponse(drogon::k406NotAcceptable, "Invalid id provided", callback);
+            callback(406, api::v2::JsonHelper::jsonify("Invalid id provided").as<std::string>());
             return;
         }
 
@@ -207,18 +205,18 @@ void ClientController<T>::Suspend(std::function<void(const drogon::HttpResponseP
     }
     catch (const std::exception& e)
     {
-        Helper::failureResponse(e.what(), callback);
+        CRITICALMESSAGERESPONSE
     }
 }
 
-template <Client_t T>
-void ClientController<T>::Activate(std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::optional<uint64_t> client_id)
+template <Client_t T, typename CALLBACK>
+void ClientController<T, CALLBACK>::Activate(CALLBACK&& callback, const std::optional<uint64_t> client_id)
 {
     try
     {
         if (!client_id.has_value())
         {
-            Helper::errorResponse(drogon::k406NotAcceptable, "Invalid id provided", callback);
+            callback(406, api::v2::JsonHelper::jsonify("Invalid id provided").as<std::string>());
             return;
         }
         Types::SuspendData suspendData(client_id.value());
@@ -227,25 +225,25 @@ void ClientController<T>::Activate(std::function<void(const drogon::HttpResponse
     }
     catch (const std::exception& e)
     {
-        Helper::failureResponse(e.what(), callback);
+        CRITICALMESSAGERESPONSE
     }
 }
 
-template <Client_t T>
-void ClientController<T>::ResetPassword(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::string_view data)
+template <Client_t T, typename CALLBACK>
+void ClientController<T, CALLBACK>::ResetPassword(CALLBACK&& callback, std::string_view data)
 {
     (void)callback;
     (void)data;
 }
 
-template <Client_t T>
-void ClientController<T>::GetServices(std::function<void(const drogon::HttpResponsePtr&)>&& callback, std::optional<uint64_t> client_id)
+template <Client_t T, typename CALLBACK>
+void ClientController<T, CALLBACK>::GetServices(CALLBACK&& callback, std::optional<uint64_t> client_id)
 {
     try
     {
         if (!client_id.has_value())
         {
-            Helper::errorResponse(drogon::k400BadRequest, "client_id extraction failed", callback);
+            callback(400, api::v2::JsonHelper::jsonify("client_id extraction failed").as<std::string>());
             return;
         }
 
@@ -254,6 +252,6 @@ void ClientController<T>::GetServices(std::function<void(const drogon::HttpRespo
     }
     catch (const std::exception& e)
     {
-        Helper::failureResponse(e.what(), callback);
+        CRITICALMESSAGERESPONSE
     }
 }
