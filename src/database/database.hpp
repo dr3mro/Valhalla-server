@@ -12,6 +12,14 @@ using json = jsoncons::json;
 class Database
 {
    public:
+    using ColumnInfo = struct ColumnInfo
+    {
+        std::string Name;
+        std::string DataType;
+        std::string Constraint;
+        bool        isNullable;
+    };
+
     Database(std::shared_ptr<pqxx::connection> conn);
     virtual ~Database() = default;
 
@@ -112,6 +120,9 @@ class Database
             // throw;  // Rethrow the exception to indicate failure
         }
     }
+
+    std::optional<std::vector<ColumnInfo>>  getTableSchema(const std::string &tableName);
+    std::optional<std::vector<std::string>> getAllTables();
 
    private:
     std::shared_ptr<pqxx::connection> connection;

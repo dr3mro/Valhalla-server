@@ -1,8 +1,8 @@
 #pragma once
 
 #include <cstdint>
-#include <string>
-#include <unordered_set>
+#include <string_view>
+
 namespace Defaults
 {
     namespace DosDetector
