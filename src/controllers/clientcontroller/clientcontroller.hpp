@@ -72,6 +72,11 @@ void ClientController<T, CALLBACK>::Create(CALLBACK&& callback, std::string_view
             }
             Controller::Create(client, std::move(callback));
         }
+        else
+        {
+            callback(error.code, fmt::format("ClientData parsing error: {}.", error.message));
+            return;
+        }
     }
     catch (const std::exception& e)
     {
