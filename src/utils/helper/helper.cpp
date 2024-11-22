@@ -3,18 +3,18 @@
 constexpr std::string FAILURE = "Failure";
 constexpr std::string ERROR   = "Error";
 
-void Helper::failureResponse(const std::string& message, std::function<void(const drogon::HttpResponsePtr&)>& callback)
+void Helper::failureResponse(const std::string& message, std::function<void(const drogon::HttpResponsePtr&)>&& callback)
 {
     reply(callback, drogon::k500InternalServerError, prepare(FAILURE, message));
 }
 
 void Helper::errorResponse(const drogon::HttpStatusCode& code, const std::string& message,
-                           std::function<void(const drogon::HttpResponsePtr&)>& callback)
+                           std::function<void(const drogon::HttpResponsePtr&)>&& callback)
 {
     reply(callback, code, prepare(ERROR, message));
 }
 
-void Helper::successResponse(const std::string& message, std::function<void(const drogon::HttpResponsePtr&)>& callback)
+void Helper::successResponse(const std::string& message, std::function<void(const drogon::HttpResponsePtr&)>&& callback)
 {
     reply(callback, drogon::k200OK, message);
 }
@@ -34,7 +34,7 @@ std::string Helper::stringify(const jsoncons::json& json)
 
 std::string Helper::stringify(const Json::Value& json) { return json.toStyledString(); }
 
-void Helper::reply(std::function<void(const drogon::HttpResponsePtr&)>& callback, const drogon::HttpStatusCode& code, const std::string& message)
+void Helper::reply(std::function<void(const drogon::HttpResponsePtr&)>&& callback, const drogon::HttpStatusCode& code, const std::string& message)
 {
     auto res = drogon::HttpResponse::newHttpResponse();
     res->setStatusCode(code);

@@ -81,6 +81,5 @@ namespace api
                 {"patientdrugs", Store::getObject<ClinicController<PatientDrugs>>()},
                 {"health", Store::getObject<ClinicController<Health>>()}};
         };
-
     }  // namespace v2
 }  // namespace api

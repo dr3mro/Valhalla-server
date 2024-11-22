@@ -44,7 +44,6 @@ namespace api
             {
                 executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Search, std::move(callback), req->body());
             }
-
             METHOD_LIST_BEGIN
             METHOD_ADD(Services::Create, "/{serviceType}/create", drogon::Post, SECURE);
             METHOD_ADD(Services::Read, "/{serviceType}/read", drogon::Post, SECURE);
@@ -64,6 +63,5 @@ namespace api
                 {"laboratories", Store::getObject<ServiceController<Laboratories>>()},
                 {"radiologycenters", Store::getObject<ServiceController<RadiologyCenters>>()}};
         };
-
     }  // namespace v2
 }  // namespace api
