@@ -25,8 +25,7 @@ Database::Database(std::shared_ptr<pqxx::connection> conn) : connection(std::mov
     }
     catch (const std::exception &e)
     {
-        Message::ErrorMessage("Exception caught during database connection.");
-        Message::CriticalMessage(e.what());
+        Message::CriticalMessage(fmt::format("Exception caught during database connection: {}", e.what()));
         exit(EXIT_FAILURE);
     }
 }
@@ -43,8 +42,7 @@ bool Database::checkExists(const std::string &table, const std::string &column, 
     }
     catch (const std::exception &e)
     {
-        Message::ErrorMessage("Error executing query.");
-        Message::CriticalMessage(e.what());
+        Message::CriticalMessage(fmt::format("Error executing query: {}", e.what()));
         return false;
     }
 }
@@ -75,8 +73,7 @@ std::optional<std::vector<Database::ColumnInfo>> Database::getTableSchema(const 
     }
     catch (const std::exception &e)
     {
-        Message::ErrorMessage(fmt::format("Error executing query:", query));
-        Message::CriticalMessage(fmt::format("Failue:", e.what()));
+        Message::CriticalMessage(fmt::format("Error executing query: {}", e.what()));
         return std::nullopt;
         // throw;  // Rethrow the exception to indicate failure
     }
@@ -97,8 +94,7 @@ std::optional<std::vector<std::string>> Database::getAllTables()
     }
     catch (const std::exception &e)
     {
-        Message::ErrorMessage("Error executing query.");
-        Message::CriticalMessage(e.what());
+        Message::CriticalMessage(fmt::format("Error executing query: {}", e.what()));
         return std::nullopt;
     }
 }

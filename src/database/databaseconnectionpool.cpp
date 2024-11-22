@@ -59,16 +59,14 @@ DatabaseConnectionPool::DatabaseConnectionPool()
             if (!connectionEstablished)
             {
                 Message::ErrorMessage(fmt::format("Failed to establish connection {} after {} attempts.", i + 1, MAX_RETRIES));
-                throw std::runtime_error("Database connection pool initialization failed");
+                throw std::runtime_error("Database connection pool initialization failure.\n");
             }
         }
     }
     catch (const std::exception &e)
     {
-        Message::ErrorMessage("Exception caught during database connection pool initialization.");
-        Message::CriticalMessage(e.what());
-        Message::InfoMessage("Make sure the database server is running and reachable and the connection parameters are correct.");
-        Message::CriticalMessage("Failed to initialize database connection pool.");
+        Message::CriticalMessage(fmt::format(
+            "Failed to initialize database connection pool, Exception caught during database connection pool initialization:\n{}", e.what()));
         exit(EXIT_FAILURE);
     }
 }
