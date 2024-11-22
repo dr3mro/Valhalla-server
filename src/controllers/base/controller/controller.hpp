@@ -9,7 +9,6 @@
 
 #include "controllers/databasecontroller/databasecontroller.hpp"
 #include "entities/base/client.hpp"
-#include "entities/base/entity.hpp"
 #include "entities/services/clinics/patient/patient.hpp"
 #include "utils/helper/helper.hpp"
 #include "utils/message/message.hpp"
@@ -244,22 +243,17 @@ class Controller
     void cruds(T &entity, S &sqlstatement, std::optional<json> (DatabaseController::*f)(const std::string &),
                std::function<void(const drogon::HttpResponsePtr &)> &callback)
     {
-        std::optional<jsoncons::json> query_results_json;
+        std::optional<jsoncons::json> results_j;
         std::optional<std::string>    query;
         try
         {
-            if (get_sql_statement(query, entity, sqlstatement, callback) && query.has_value())
-            {
-                query_results_json = (*databaseController.*f)(query.value());
-            }
+            if (!get_sql_statement(query, entity, sqlstatement, callback))
+                return;
 
-            if (query_results_json.has_value() && !query_results_json.value().empty())
+            if (query.has_value())
             {
-                Helper::successResponse(Helper::stringify(query_results_json.value()), callback);
-            }
-            else if (query_results_json.has_value() && query_results_json.value().empty())
-            {
-                Helper::errorResponse(drogon::k400BadRequest, "Empty query results", callback);
+                results_j = (*databaseController.*f)(query.value());
+                Helper::successResponse(Helper::stringify(results_j.value()), callback);
             }
             else
             {
@@ -271,6 +265,7 @@ class Controller
             Helper::failureResponse(e.what(), callback);
         }
     }
+
     template <typename T>
     void addStaff(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
     {

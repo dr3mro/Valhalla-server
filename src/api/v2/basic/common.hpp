@@ -25,6 +25,22 @@ namespace api
         {
             auto resp = drogon::HttpResponse::newHttpResponse();
 
+            auto mcb = [&callback](int code, const std::string& content)
+            {
+                switch (code)
+                {
+                    case 200:
+                        Helper::successResponse(content, std::move(callback));
+                        break;
+                    case 500:
+                        Helper::failureResponse(content, std::move(callback));
+                        break;
+                    default:
+                        Helper::errorResponse(static_cast<drogon::HttpStatusCode>(code), content, std::move(callback));
+                        break;
+                }
+            };
+
             auto it = registry.find(key);
             if (it != registry.end())
             {
@@ -34,7 +50,7 @@ namespace api
                         [&](const auto& controller)
                         {
                             // Use std::invoke on the dereferenced controller object
-                            std::invoke(method, controller.get(), std::move(callback), std::forward<Args>(args)...);
+                            std::invoke(method, controller.get(), std::move(mcb), std::forward<Args>(args)...);
                         },
                         it->second);
                 }

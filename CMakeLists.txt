@@ -79,10 +79,6 @@ target_include_directories(${Target} PRIVATE
 # Link libraries
 target_link_libraries(${Target} PRIVATE ${PACKAGE_LIBS})
 
-# Compile definitions
-target_compile_definitions(${Target} PUBLIC SPDLOG_FMT_EXTERNAL)
-target_compile_definitions(${Target} PUBLIC CROW_ENABLE_COMPRESSION)
-
 # Enable AddressSanitizer only for Debug build type
 if(CMAKE_BUILD_TYPE MATCHES Debug)
   target_compile_options(${Target} PRIVATE -g)

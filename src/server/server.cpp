@@ -16,15 +16,15 @@ int Server::run()
 
     try
     {
-        enable_cors();
-
         drogon::app()
             .addListener(config_.host.data(), config_.port)
-            .setLogLevel(static_cast<trantor::Logger::LogLevel>(config_.debug_level))
             .setThreadNum(config_.threads)
             .disableSigtermHandling()
-            .setCustom404Page(drogon::HttpResponse::newHttpJsonResponse(Helper::jsonify("Not Implemented yet!")))
-            .run();
+            .setCustom404Page(drogon::HttpResponse::newHttpJsonResponse(Helper::jsonify("Not Implemented yet!")));
+
+        enable_cors();
+
+        drogon::app().run();
     }
     catch (const std::exception& e)
     {

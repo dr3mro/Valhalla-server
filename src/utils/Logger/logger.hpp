@@ -15,7 +15,8 @@ class Logger
     void log(const std::string& message, trantor::Logger::LogLevel level);
 
    private:
-    std::shared_ptr<spdlog::async_logger> logger;
+    std::shared_ptr<spdlog::async_logger> logger_;
+
     enum Color
     {
         Red,
