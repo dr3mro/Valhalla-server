@@ -6,29 +6,28 @@
 
 #include "controllers/base/controller/controller.hpp"
 #include "controllers/staffcontroller/staffcontrollerBase.hpp"
-#include "entities/base/entity.hpp"
 #include "utils/communicate/communicate.hpp"
-#include "utils/helper/helper.hpp"
+#include "utils/global/global.hpp"
 
-template <typename T>
-class StaffController : public StaffControllerBase, public Controller
+template <typename T, typename CALLBACK>
+class StaffController : public StaffControllerBase<CALLBACK>, public Controller
 {
    public:
     StaffController() : cfg_(Store::getObject<Configurator>()), email_sender_daemon_config_(cfg_->get<Configurator::EmailSenderConfig>()) {}
     virtual ~StaffController() override = default;
 
     // CRUDS
-    void AddStaffToEntity(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data) override;
-    void RemoveStaffFromEntity(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data) override;
-    void InviteStaffToEntity(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data) override;
+    void AddStaffToEntity(CALLBACK &&callback, std::string_view data) override;
+    void RemoveStaffFromEntity(CALLBACK &&callback, std::string_view data) override;
+    void InviteStaffToEntity(CALLBACK &&callback, std::string_view data) override;
 
    private:
     std::shared_ptr<Configurator>   cfg_;
     Configurator::EmailSenderConfig email_sender_daemon_config_;
 };
 
-template <typename T>
-void StaffController<T>::AddStaffToEntity(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data)
+template <typename T, typename CALLBACK>
+void StaffController<T, CALLBACK>::AddStaffToEntity(CALLBACK &&callback, std::string_view data)
 {
     jsoncons::json staff_j;
 
@@ -39,15 +38,15 @@ void StaffController<T>::AddStaffToEntity(std::function<void(const drogon::HttpR
         Types::StaffData staffData(payload);
 
         T staff(staffData);
-        Controller::addStaff(staff, callback);
+        Controller::addStaff(staff, std::move(callback));
     }
     catch (const std::exception &e)
     {
-        Helper::failureResponse(e.what(), callback);
+        CRITICALMESSAGERESPONSE
     }
 }
-template <typename T>
-void StaffController<T>::RemoveStaffFromEntity(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data)
+template <typename T, typename CALLBACK>
+void StaffController<T, CALLBACK>::RemoveStaffFromEntity(CALLBACK &&callback, std::string_view data)
 {
     jsoncons::json staff_j;
 
@@ -62,11 +61,11 @@ void StaffController<T>::RemoveStaffFromEntity(std::function<void(const drogon::
     }
     catch (const std::exception &e)
     {
-        Helper::failureResponse(e.what(), callback);
+        CRITICALMESSAGERESPONSE
     }
 }
-template <typename T>
-void StaffController<T>::InviteStaffToEntity(std::function<void(const drogon::HttpResponsePtr &)> &&callback, std::string_view data)
+template <typename T, typename CALLBACK>
+void StaffController<T, CALLBACK>::InviteStaffToEntity(CALLBACK &&callback, std::string_view data)
 {
     jsoncons::json staff_j;
     try
@@ -83,20 +82,20 @@ void StaffController<T>::InviteStaffToEntity(std::function<void(const drogon::Ht
 
             if (response.has_value())
             {
-                Helper::successResponse(response.value(), callback);
+                callback(200, response.value());
             }
             else
             {
-                Helper::errorResponse(drogon::k400BadRequest, "Failed to send invite.", callback);
+                callback(400, "Failed to send invite.");
             }
         }
         else
         {
-            Helper::errorResponse(drogon::k400BadRequest, "Failed to create invite json.", callback);
+            callback(400, "Failed to create invite json.");
         }
     }
     catch (const std::exception &e)
     {
-        Helper::failureResponse(e.what(), callback);
+        CRITICALMESSAGERESPONSE
     }
 }

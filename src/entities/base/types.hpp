@@ -1,6 +1,7 @@
 #pragma once
 #include <fmt/format.h>
 
+#include <cppcodec/base64_rfc4648.hpp>
 #include <cstddef>
 #include <jsoncons/json.hpp>
 #include <regex>
@@ -10,7 +11,6 @@
 
 #include "configurator/configurator.hpp"
 #include "store/store.hpp"
-#include "utils/helper/helper.hpp"
 #include "utils/passwordcrypt/passwordcrypt.hpp"
 
 using json = jsoncons::json;
@@ -20,6 +20,12 @@ class Types
    public:
     Types()          = default;
     virtual ~Types() = default;
+
+    using HttpError = struct HttpError
+    {
+        int         code;
+        std::string message;
+    };
 
     template <typename S>
     struct Entity_t
@@ -98,14 +104,16 @@ class Types
     struct ClientData
     {
        public:
-        ClientData(std::string_view data, std::function<void(const drogon::HttpResponsePtr &)> &callback, bool &success)
+        ClientData(std::string_view data, HttpError &error, bool &success)
         {
             try
             {
                 std::optional<jsoncons::json> json_data = jsoncons::json::parse(data);
                 if (!json_data.has_value())
                 {
-                    Helper::errorResponse(drogon::k400BadRequest, "Failed to parse body.", callback);
+                    error = {.code = 400, .message = "Failed to parse body."};
+                    Message::ErrorMessage(error.message);
+                    success = false;
                     return;
                 }
 
@@ -122,7 +130,10 @@ class Types
                             std::regex pattern(pattern_item->second);
                             if (!std::regex_match(value.value(), pattern))
                             {
-                                throw std::runtime_error(fmt::format("Value({}) is invalid.", value.value(), item.key()));
+                                error = {.code = 400, .message = fmt::format("Value({}) is invalid.", value.value(), item.key())};
+                                Message::ErrorMessage(error.message);
+                                success = false;
+                                return;
                             }
                         }
 
@@ -137,12 +148,15 @@ class Types
             }
             catch (const std::exception &e)
             {
-                Helper::failureResponse(e.what(), callback);
+                error   = {.code = 500, .message = fmt::format("Failed while parsing client data: {}.", e.what())};
+                success = false;
+                Message::CriticalMessage(error.message);
                 return;
             }
 
             success = true;
         }
+
         const std::vector<std::pair<std::string, std::string>> &get_data() const { return db_data; }
 
        protected:
@@ -206,13 +220,14 @@ class Types
                 parse_status = false;
             }
         }
+
         bool toInviteJson(json &invite_json)
         {
-            std::string encoded_invite_data = drogon::utils::base64Encode(invite_json.to_string(), invite_json.to_string().size());
             try
             {
-                invite_json["subject"]  = fmt::format("Invite to {}", project_name);
-                invite_json["template"] = "invite_staff_to_entity.txt";
+                std::string encoded_invite_data = cppcodec::base64_rfc4648::encode(invite_json.to_string());
+                invite_json["subject"]          = fmt::format("Invite to {}", project_name);
+                invite_json["template"]         = "invite_staff_to_entity.txt";
                 invite_json["link"] = fmt::format("{}:{}/{}/{}", frontendcfg_.host, frontendcfg_.port, frontendcfg_.invite_path, encoded_invite_data);
                 invite_json["project_name"]  = project_name;
                 invite_json["generate_body"] = "";

@@ -8,7 +8,6 @@
 #include "entities/base/base.hpp"
 #include "entities/base/types.hpp"
 #include "fmt/format.h"
-#include "fmt/ranges.h"
 #include "jsoncons/basic_json.hpp"
 #include "store/store.hpp"
 #include "utils/message/message.hpp"

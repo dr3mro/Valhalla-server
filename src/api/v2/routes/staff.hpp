@@ -19,19 +19,22 @@ namespace api
             void Invite(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                         const std::string &serviceType)
             {
-                executeControllerMethod(staffRegistry, serviceType, &StaffControllerBase::InviteStaffToEntity, std::move(callback), req->body());
+                executeControllerMethod(staffRegistry, serviceType, &StaffControllerBase<CALLBACKSIGNATURE>::InviteStaffToEntity, std::move(callback),
+                                        req->body());
             }
 
             void Add(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                      const std::string &serviceType)
             {
-                executeControllerMethod(staffRegistry, serviceType, &StaffControllerBase::AddStaffToEntity, std::move(callback), req->body());
+                executeControllerMethod(staffRegistry, serviceType, &StaffControllerBase<CALLBACKSIGNATURE>::AddStaffToEntity, std::move(callback),
+                                        req->body());
             }
 
             void Remove(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                         const std::string &serviceType)
             {
-                executeControllerMethod(staffRegistry, serviceType, &StaffControllerBase::RemoveStaffFromEntity, std::move(callback), req->body());
+                executeControllerMethod(staffRegistry, serviceType, &StaffControllerBase<CALLBACKSIGNATURE>::RemoveStaffFromEntity,
+                                        std::move(callback), req->body());
             }
 
             METHOD_LIST_BEGIN
@@ -41,14 +44,16 @@ namespace api
             METHOD_LIST_END
 
            private:
-            using StaffVariant = std::variant<std::shared_ptr<StaffController<Clinics>>, std::shared_ptr<StaffController<Pharmacies>>,
-                                              std::shared_ptr<StaffController<Laboratories>>, std::shared_ptr<StaffController<RadiologyCenters>>>;
+            using StaffVariant = std::variant<std::shared_ptr<StaffController<Clinics, CALLBACKSIGNATURE>>,
+                                              std::shared_ptr<StaffController<Pharmacies, CALLBACKSIGNATURE>>,
+                                              std::shared_ptr<StaffController<Laboratories, CALLBACKSIGNATURE>>,
+                                              std::shared_ptr<StaffController<RadiologyCenters, CALLBACKSIGNATURE>>>;
 
             std::unordered_map<std::string_view, StaffVariant> staffRegistry = {
-                {"clinics", Store::getObject<StaffController<Clinics>>()},
-                {"pharmacies", Store::getObject<StaffController<Pharmacies>>()},
-                {"laboratories", Store::getObject<StaffController<Laboratories>>()},
-                {"radiologycenters", Store::getObject<StaffController<RadiologyCenters>>()}};
+                {"clinics", Store::getObject<StaffController<Clinics, CALLBACKSIGNATURE>>()},
+                {"pharmacies", Store::getObject<StaffController<Pharmacies, CALLBACKSIGNATURE>>()},
+                {"laboratories", Store::getObject<StaffController<Laboratories, CALLBACKSIGNATURE>>()},
+                {"radiologycenters", Store::getObject<StaffController<RadiologyCenters, CALLBACKSIGNATURE>>()}};
         };
 
     }  // namespace v2

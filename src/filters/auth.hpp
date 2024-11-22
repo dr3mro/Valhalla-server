@@ -1,6 +1,6 @@
 #include <drogon/drogon.h>
 
-#include "utils/helper/helper.hpp"
+#include "utils/jsonhelper/jsonhelper.hpp"
 #include "utils/tokenmanager/tokenmanager.hpp"
 namespace api
 {
@@ -23,7 +23,7 @@ namespace api
                     {
                         auto resp = drogon::HttpResponse::newHttpResponse();
                         resp->setStatusCode(drogon::HttpStatusCode::k401Unauthorized);
-                        resp->setBody(Helper::stringify(Helper::jsonify("failed to extract token, or not a bearer token")));
+                        resp->setBody(JsonHelper::stringify(JsonHelper::jsonify("failed to extract token, or not a bearer token")));
                         fcb(resp);
                         return;
                     }

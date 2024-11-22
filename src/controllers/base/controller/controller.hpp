@@ -1,16 +1,15 @@
 
 #pragma once
-#include <drogon/drogon.h>
+
 #include <fmt/core.h>  // Include fmt library for string formatting
 #include <fmt/format.h>
 #include <fmt/ranges.h>
 
-#include <jsoncons/json.hpp>
-
 #include "controllers/databasecontroller/databasecontroller.hpp"
 #include "entities/base/client.hpp"
 #include "entities/services/clinics/patient/patient.hpp"
-#include "utils/helper/helper.hpp"
+#include "utils/global/global.hpp"
+#include "utils/jsonhelper/jsonhelper.hpp"
 #include "utils/message/message.hpp"
 #include "utils/sessionmanager/sessionmanager.hpp"
 #include "utils/tokenmanager/tokenmanager.hpp"
@@ -28,47 +27,45 @@ class Controller
         }
         catch (const std::exception &e)
         {
-            Message::ErrorMessage(fmt::format("Exception in Controller constructor."));
-            Message::CriticalMessage(e.what());
+            CRITICALMESSAGE
             exit(EXIT_FAILURE);
         }
     }
     virtual ~Controller() = default;
 
     // CRUDS
-    template <typename T>
-
-    void Create(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
+    template <typename T, typename CALLBACK>
+    void Create(T &entity, CALLBACK &&callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlCreateStatement;
-        cruds(entity, sqlstatement, dbexec, callback);
+        cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK>(callback));
     }
 
-    template <typename T>
-    void Read(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
+    template <typename T, typename CALLBACK>
+    void Read(T &entity, CALLBACK &&callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlReadStatement;
-        cruds(entity, sqlstatement, dbrexec, callback);
+        cruds(entity, sqlstatement, dbrexec, std::forward<CALLBACK>(callback));
     }
-    template <typename T>
-    void Update(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
+    template <typename T, typename CALLBACK>
+    void Update(T &entity, CALLBACK &&callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlUpdateStatement;
-        cruds(entity, sqlstatement, dbexec, callback);
+        cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK>(callback));
     }
-    template <typename T>
-    void Delete(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
+    template <typename T, typename CALLBACK>
+    void Delete(T &entity, CALLBACK &&callback)
     {
         if (!entity.template check_id_exists<Types::Delete_t>())
         {
-            Helper::errorResponse(drogon::k400BadRequest, "ID does not exist", callback);
+            callback(400, "ID does not exist");
             return;
         }
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlDeleteStatement;
-        cruds(entity, sqlstatement, dbexec, callback);
+        cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK>(callback));
     }
-    template <typename T>
-    void Search(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
+    template <typename T, typename CALLBACK>
+    void Search(T &entity, CALLBACK &&callback)
     {
         jsoncons::json             response_json;
         json                       query_results_json;
@@ -97,15 +94,15 @@ class Controller
             }
 
             response_json["results"] = query_results_json;
-            Helper::successResponse(Helper::stringify(response_json), callback);
+            callback(200, response_json.as<std::string>());
         }
         catch (const std::exception &e)
         {
-            Helper::failureResponse(e.what(), callback);
+            CRITICALMESSAGERESPONSE
         }
     }
-    template <typename T>
-    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Logout(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
+    template <typename T, typename CALLBACK>
+    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Logout(T &entity, CALLBACK &&callback)
     {
         TokenManager::LoggedClientInfo loggedClientInfo;
 
@@ -117,35 +114,36 @@ class Controller
             bool status = tokenManager->ValidateToken(loggedClientInfo);
             if (!status)
             {
-                Helper::errorResponse(drogon::k401Unauthorized, "Logout failure.", callback);
+                callback(401, "Logout failure.");
+                Message::ErrorMessage("Logout failure.");
                 return;
             }
             sessionManager->setNowLogoutTime(loggedClientInfo.userID.value(), loggedClientInfo.group.value());
-            Helper::successResponse(Helper::stringify(Helper::jsonify("Logout success.")), callback);
+            callback(200, api::v2::JsonHelper::stringify(api::v2::JsonHelper::jsonify("Logout success.")));
         }
         catch (const std::exception &e)
         {
-            Helper::failureResponse(e.what(), callback);
+            callback(500, e.what());
+            CRITICALMESSAGE
         }
     }
 
-    template <typename T>
-    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Suspend(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
+    template <typename T, typename CALLBACK>
+    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Suspend(T &entity, CALLBACK &&callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlSuspendStatement;
         cruds(entity, sqlstatement, dbexec, callback);
     }
 
-    template <typename T>
-    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Unsuspend(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
+    template <typename T, typename CALLBACK>
+    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Unsuspend(T &entity, CALLBACK &&callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlActivateStatement;
         cruds(entity, sqlstatement, dbexec, callback);
     }
 
-    template <typename T>
-    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> GetServices(T                                                    &entity,
-                                                                              std::function<void(const drogon::HttpResponsePtr &)> &callback)
+    template <typename T, typename CALLBACK>
+    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> GetServices(T &entity, CALLBACK &&callback)
     {
         json                       services;
         std::optional<std::string> query;
@@ -159,16 +157,16 @@ class Controller
                 services = databaseController->executeSearchQuery(query.value());
             }
 
-            Helper::successResponse(Helper::stringify(services), callback);
+            callback(200, api::v2::JsonHelper::stringify(services));
         }
         catch (const std::exception &e)
         {
-            Helper::failureResponse(e.what(), callback);
+            CRITICALMESSAGE
         }
     }
 
-    template <typename T>
-    std::enable_if_t<std::is_same<T, Patient>::value, void> GetVisits(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &&callback)
+    template <typename T, typename CALLBACK>
+    std::enable_if_t<std::is_same<T, Patient>::value, void> GetVisits(T &entity, CALLBACK &&callback)
     {
         json                       visits;
         std::optional<std::string> query;
@@ -182,17 +180,17 @@ class Controller
                 visits = databaseController->executeSearchQuery(query.value());
             }
 
-            Helper::successResponse(Helper::stringify(visits), callback);
+            callback(200, api::v2::JsonHelper::stringify(visits));
         }
         catch (const std::exception &e)
         {
-            Helper::failureResponse(e.what(), callback);
+            CRITICALMESSAGE
         }
     }
 
    protected:
     template <typename T>
-    std::optional<uint64_t> getNextID()
+    std::optional<uint64_t> getNextID(std::string &error)
     {
         try
         {
@@ -200,7 +198,9 @@ class Controller
 
             if (json_nextval.empty())
             {
-                Message::ErrorMessage("json_nextval is empty.");
+                error = fmt::format("nextID from seq function of {} failed, could not create a new ID.", T::getTableName());
+                Message::ErrorMessage(error);
+                return std::nullopt;
             }
 
             auto obj = json_nextval.find("nextval");
@@ -211,7 +211,7 @@ class Controller
         }
         catch (const std::exception &e)
         {
-            Message::CriticalMessage(fmt::format("Failed: {}.", e.what()));
+            CRITICALMESSAGE
         }
         return std::nullopt;
     }
@@ -226,55 +226,61 @@ class Controller
 
     ///////////////////////////
     template <typename S, typename T>
-    bool get_sql_statement(std::optional<std::string> &query, T &entity, S &sqlstatement,
-                           std::function<void(const drogon::HttpResponsePtr &)> &callback)
+    bool get_sql_statement(std::optional<std::string> &query, T &entity, S &sqlstatement, std::string &error)
     {
         query = (entity.*sqlstatement)();
-
-        if (!query)
+        if (!query.has_value())
         {
-            Helper::errorResponse(drogon::k400BadRequest, "Failed to synthesize query", callback);
+            error = fmt::format("Failed to get SQL statement for {}.", entity.getTableName());
             return false;
         }
+
         return true;
     }
 
-    template <typename S, typename T>
-    void cruds(T &entity, S &sqlstatement, std::optional<json> (DatabaseController::*f)(const std::string &),
-               std::function<void(const drogon::HttpResponsePtr &)> &callback)
+    template <typename S, typename T, typename CALLBACK>
+    void cruds(T &entity, S &sqlstatement, std::optional<json> (DatabaseController::*f)(const std::string &), CALLBACK &&callback)
     {
         std::optional<jsoncons::json> results_j;
         std::optional<std::string>    query;
         try
         {
-            if (!get_sql_statement(query, entity, sqlstatement, callback))
+            std::string error;
+            if (!get_sql_statement(query, entity, sqlstatement, error))
+            {
+                callback(400, error);
                 return;
+            }
 
             if (query.has_value())
             {
                 results_j = (*databaseController.*f)(query.value());
-                Helper::successResponse(Helper::stringify(results_j.value()), callback);
-            }
-            else
-            {
-                Helper::errorResponse(drogon::k400BadRequest, "Failed to execute query", callback);
+                if (results_j.has_value())
+                {
+                    callback(200, results_j.value().as<std::string>());
+                    return;
+                }
+                else
+                {
+                    callback(400, "Failed to execute query");
+                }
             }
         }
         catch (const std::exception &e)
         {
-            Helper::failureResponse(e.what(), callback);
+            CRITICALMESSAGE
         }
     }
 
-    template <typename T>
-    void addStaff(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
+    template <typename T, typename CALLBACK>
+    void addStaff(T &entity, CALLBACK &&callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlAddStaffStatement;
         cruds(entity, sqlstatement, dbexec, callback);
     }
 
-    template <typename T>
-    void removeStaff(T &entity, std::function<void(const drogon::HttpResponsePtr &)> &callback)
+    template <typename T, typename CALLBACK>
+    void removeStaff(T &entity, CALLBACK &&callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlRemoveStaffStatement;
         cruds(entity, sqlstatement, dbexec, callback);
