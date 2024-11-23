@@ -2,8 +2,20 @@
 
 #include <fmt/format.h>
 
+#include <regex>
+
 #include "store/store.hpp"
 #include "utils/databaseschema/databaseschema.hpp"
+#include "utils/passwordcrypt/passwordcrypt.hpp"
+
+const std::unordered_map<std::string, std::string> Validator::regex_client_validators = {
+    {"username", "^[a-z][a-z0-9_]*$"},
+    {"password", "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{8,}$"},
+    {"phone", R"(^\+?(\d{1,3})?[-.\s]?(\(?\d{3}\)?)?[-.\s]?\d{3}[-.\s]?\d{4}$)"},
+    {"email", R"((\w+)(\.\w+)*@(\w+)(\.\w+)+)"},
+    {"dob", R"(^(0[1-9]|[12]\d|3[01])-(0[1-9]|1[0-2])-\d{4}$)"},
+    {"gender", "^(male|female)$"},
+};
 
 bool Validator::validateDatabaseSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Global::HttpError &error,
                                        const std::unordered_set<std::string> &exclude)
@@ -74,6 +86,44 @@ bool Validator::ensureAllKeysExist(const std::unordered_set<std::string> &keys, 
         }
     }
 
+    return true;
+}
+bool Validator::clientValidationAndHashPasswd(const jsoncons::json &data, api::v2::Global::HttpError &error,
+                                              std::unordered_set<std::pair<std::string, std::string>> &db_data)
+{
+    std::shared_ptr<PasswordCrypt> passwordCrypt = Store::getObject<PasswordCrypt>();
+    for (const auto &item : data.object_range())
+    {
+        std::optional<std::string> value = item.value().as<std::string>();
+        if (value.has_value() && !value->empty())
+        {
+            auto pattern_item = std::find_if(regex_client_validators.begin(), regex_client_validators.end(),
+                                             [&](const auto &validator) { return validator.first == item.key(); });
+
+            if (pattern_item != regex_client_validators.end())
+            {
+                std::regex pattern(pattern_item->second);
+                if (!std::regex_match(value.value(), pattern))
+                {
+                    error = {.code = 400, .message = fmt::format("Key ({}) Value({}) is invalid.", item.key(), value.value())};
+                    return false;
+                }
+            }
+
+            if (item.key() == "password")
+            {
+                value = passwordCrypt->hashPassword(value.value());
+            }
+
+            db_data.insert({item.key(), value.value()});
+        }
+        else
+        {
+            error.message = "Value is empty for key " + item.key();
+            error.code    = 400;
+            return false;
+        }
+    }
     return true;
 }
 
