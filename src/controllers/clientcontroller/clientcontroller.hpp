@@ -64,7 +64,7 @@ void ClientController<T, CALLBACK>::Create(CALLBACK&& callback, std::string_view
         std::unordered_set<std::string> exclude;
         jsoncons::json                  json_data = jsoncons::json::parse(data);
 
-        Types::ClientData client_data(data, std::nullopt, error, success, T::getTableName(), exclude);
+        Types::ClientData client_data(data, std::nullopt, error, success, T::getTableName(), exclude, false);
 
         if (success)
         {
@@ -104,7 +104,7 @@ void ClientController<T, CALLBACK>::Update(CALLBACK&& callback, std::string_view
         bool                            success = false;
         std::unordered_set<std::string> exclude{"password"};
         api::v2::Global::HttpError      error;
-        Types::ClientData               client_data(data, id, error, success, T::getTableName(), exclude);
+        Types::ClientData               client_data(data, id, error, success, T::getTableName(), exclude, true);
 
         if (success)
         {

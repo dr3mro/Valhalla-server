@@ -18,7 +18,7 @@ const std::unordered_map<std::string, std::string> Validator::regex_client_valid
 };
 
 bool Validator::validateDatabaseSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Global::HttpError &error,
-                                       const std::unordered_set<std::string> &exclude)
+                                       const std::unordered_set<std::string> &exclude, const bool isUpdate)
 {
     try
     {
@@ -37,12 +37,13 @@ bool Validator::validateDatabaseSchema(const std::string &tablename, const jsonc
 
         // now lets go through the data and check if the keys are in the schema
 
-        if (!checkColumns(data, table_schema, exclude, error))
+        if (!isUpdate && !checkColumns(data, table_schema, exclude, error))
         {
             return false;
         }
 
         // Ensure all keys in the schema are present in the data
+        // in case of update we dont need to check for all keys
         if (!ensureAllKeysExist(data, table_schema, error, exclude))
         {
             return false;

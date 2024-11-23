@@ -47,7 +47,7 @@ void EntityController<T, CALLBACK>::Create(CALLBACK &&callback, std::string_view
             return;
         }
 
-        success = Validator::validateDatabaseSchema(T::getTableName(), request_json.value(), error, exclude);
+        success = Validator::validateDatabaseSchema(T::getTableName(), request_json.value(), error, exclude, false);
 
         if (!success)
         {
@@ -116,7 +116,7 @@ void EntityController<T, CALLBACK>::Update(CALLBACK &&callback, std::string_view
             return;
         }
 
-        success = Validator::validateDatabaseSchema(T::getTableName(), request_json.value(), error, exclude);
+        success = Validator::validateDatabaseSchema(T::getTableName(), request_json.value(), error, exclude, true);
 
         if (!success)
         {

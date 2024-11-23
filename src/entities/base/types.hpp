@@ -102,7 +102,7 @@ class Types
     {
        public:
         ClientData(std::string_view _data, const std::optional<uint64_t> _id, api::v2::Global::HttpError &error, bool &success,
-                   const std::string &tablename, const std::unordered_set<std::string> &exclude)
+                   const std::string &tablename, const std::unordered_set<std::string> &exclude, bool isUpdate)
             : id(_id)
         {
             try
@@ -116,7 +116,7 @@ class Types
                     return;
                 }
 
-                success = Validator::validateDatabaseSchema(tablename, json_data.value(), error, exclude);
+                success = Validator::validateDatabaseSchema(tablename, json_data.value(), error, exclude, isUpdate);
                 if (!success)
                 {
                     Message::ErrorMessage(error.message);
