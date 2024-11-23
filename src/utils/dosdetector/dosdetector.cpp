@@ -3,8 +3,6 @@
 #include <fmt/format.h>
 #include <xxhash.h>
 
-#include <functional>
-#include <iostream>
 #include <regex>
 #include <thread>
 
@@ -40,9 +38,9 @@ DOSDetector::~DOSDetector()
     }
 }
 
-DOSDetector::Status DOSDetector::is_dos_attack(const crow::request &req)
+DOSDetector::Status DOSDetector::is_dos_attack(const drogon::HttpRequestPtr &req)
 {
-    const std::string_view remote_ip = req.remote_ip_address;
+    const std::string remote_ip = req->getPeerAddr().toIp();
     try
     {
         if (isWhitelisted(remote_ip))
@@ -56,7 +54,7 @@ DOSDetector::Status DOSDetector::is_dos_attack(const crow::request &req)
 
         if (isRateLimited(remote_ip))
         {
-            processRequest<const crow::request &>(req);
+            processRequest<const drogon::HttpRequestPtr &>(req);
             return Status::RATELIMITED;
         }
 
@@ -65,7 +63,7 @@ DOSDetector::Status DOSDetector::is_dos_attack(const crow::request &req)
             return Status::BANNED;
         }
 
-        return processRequest<const crow::request &>(req);
+        return processRequest<const drogon::HttpRequestPtr &>(req);
     }
     catch (const std::exception &e)
     {
@@ -161,19 +159,19 @@ void DOSDetector::cleanUpTask()
     }
 }
 
-inline std::optional<std::string> __attribute((always_inline)) DOSDetector::generateRequestFingerprint(const crow::request &req)
+inline std::optional<std::string> __attribute((always_inline)) DOSDetector::generateRequestFingerprint(const drogon::HttpRequestPtr &req)
 {
     try
     {
         std::string data;
         data.reserve(4096);
 
-        for (const auto &header : req.headers)
+        for (const auto &header : req->getHeaders())
         {
             data.append(header.second);
         }
 
-        data.append(req.body);
+        data.append(req->getBody());
 
         XXH64_hash_t hashed_key = XXH3_64bits(data.c_str(), data.size());
 
@@ -317,7 +315,7 @@ DOSDetector::Status DOSDetector::processRequest(Req &&req)
     try
     {
         auto                       now                 = std::chrono::steady_clock::now();
-        std::optional<std::string> remote_ip           = req.remote_ip_address;
+        std::optional<std::string> remote_ip           = req->getPeerAddr().toIp();
         std::optional<std::string> request_fingerprint = generateRequestFingerprint(req);
 
         if (!remote_ip)

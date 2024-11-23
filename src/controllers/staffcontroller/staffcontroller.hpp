@@ -6,101 +6,96 @@
 
 #include "controllers/base/controller/controller.hpp"
 #include "controllers/staffcontroller/staffcontrollerBase.hpp"
-#include "entities/base/entity.hpp"
 #include "utils/communicate/communicate.hpp"
-#include "utils/resthelper/resthelper.hpp"
-using json = jsoncons::json;
+#include "utils/global/global.hpp"
 
-template <typename T>
-class StaffController : public StaffControllerBase, public Controller
+template <typename T, typename CALLBACK>
+class StaffController : public StaffControllerBase<CALLBACK>, public Controller
 {
    public:
     StaffController() : cfg_(Store::getObject<Configurator>()), email_sender_daemon_config_(cfg_->get<Configurator::EmailSenderConfig>()) {}
     virtual ~StaffController() override = default;
 
     // CRUDS
-    void AddStaffToEntity(const crow::request &req, crow::response &res, const jsoncons::json &body) override;
-    void RemoveStaffFromEntity(const crow::request &req, crow::response &res, const jsoncons::json &body) override;
-    void InviteStaffToEntity(const crow::request &req, crow::response &res, const jsoncons::json &body) override;
+    void AddStaffToEntity(CALLBACK &&callback, std::string_view data) override;
+    void RemoveStaffFromEntity(CALLBACK &&callback, std::string_view data) override;
+    void InviteStaffToEntity(CALLBACK &&callback, std::string_view data) override;
 
    private:
     std::shared_ptr<Configurator>   cfg_;
     Configurator::EmailSenderConfig email_sender_daemon_config_;
 };
 
-template <typename T>
-void StaffController<T>::AddStaffToEntity(const crow::request &req, crow::response &res, const jsoncons::json &body)
+template <typename T, typename CALLBACK>
+void StaffController<T, CALLBACK>::AddStaffToEntity(CALLBACK &&callback, std::string_view data)
 {
-    (void)req;
-    json response;
+    jsoncons::json staff_j;
+
     try
     {
-        json             data(body);
-        json             payload = data.at("payload");
+        staff_j                  = jsoncons::json::parse(data);
+        json             payload = staff_j.at("payload");
         Types::StaffData staffData(payload);
 
-        T service(staffData);
-        Controller::addStaff(res, service);
+        T staff(staffData);
+        Controller::addStaff(staff, std::move(callback));
     }
     catch (const std::exception &e)
     {
-        RestHelper::failureResponse(res, e.what());
+        CRITICALMESSAGERESPONSE
     }
 }
-template <typename T>
-void StaffController<T>::RemoveStaffFromEntity(const crow::request &req, crow::response &res, const jsoncons::json &body)
+template <typename T, typename CALLBACK>
+void StaffController<T, CALLBACK>::RemoveStaffFromEntity(CALLBACK &&callback, std::string_view data)
 {
-    {
-        (void)req;
-        json response;
-        try
-        {
-            json             data(body);
-            json             payload = data.at("payload");
-            Types::StaffData staffData(payload);
+    jsoncons::json staff_j;
 
-            T service(staffData);
-            Controller::removeStaff(res, service);
-        }
-        catch (const std::exception &e)
-        {
-            RestHelper::failureResponse(res, e.what());
-        }
-    }
-}
-template <typename T>
-void StaffController<T>::InviteStaffToEntity(const crow::request &req, crow::response &res, const jsoncons::json &body)
-{
-    (void)req;
-    json response;
     try
     {
-        json                       data(body);
-        Types::StaffData           staffData(data);
+        staff_j                  = jsoncons::json::parse(data);
+        json             payload = staff_j.at("payload");
+        Types::StaffData staffData(payload);
+
+        T staff(staffData);
+        Controller::removeStaff(staff, callback);
+    }
+    catch (const std::exception &e)
+    {
+        CRITICALMESSAGERESPONSE
+    }
+}
+template <typename T, typename CALLBACK>
+void StaffController<T, CALLBACK>::InviteStaffToEntity(CALLBACK &&callback, std::string_view data)
+{
+    jsoncons::json staff_j;
+    try
+    {
+        staff_j = jsoncons::json::parse(data);
+        Types::StaffData           staffData(staff_j);
         std::optional<std::string> response;
-        T                          service(staffData);
-        if (staffData.parse_status && staffData.toInviteJson(data))
+        T                          staff(staffData);
+        if (staffData.parse_status && staffData.toInviteJson(staff_j))
         {
-            response =
-                Communicate::sendRequest(email_sender_daemon_config_.host.data(), email_sender_daemon_config_.port,
-                                         email_sender_daemon_config_.message_queue_path.data(), crow::HTTPMethod::POST, data.to_string().c_str());
+            response = Communicate::sendRequest(email_sender_daemon_config_.host.data(), email_sender_daemon_config_.port,
+                                                email_sender_daemon_config_.message_queue_path.data(), drogon::HttpMethod::Post,
+                                                staff_j.to_string().c_str());
 
             if (response.has_value())
             {
-                RestHelper::successResponse(res, response.value());
+                callback(200, response.value());
             }
             else
             {
-                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Failed to send invite.");
+                callback(400, "Failed to send invite.");
             }
         }
         else
         {
-            RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Failed to create invite json.");
+            callback(400, "Failed to create invite json.");
         }
     }
     catch (const std::exception &e)
     {
-        RestHelper::failureResponse(res, e.what());
+        CRITICALMESSAGERESPONSE
     }
 }

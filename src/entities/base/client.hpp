@@ -1,7 +1,5 @@
 #pragma once
 
-#include <crow.h>
-
 #include <cstdint>
 #include <jsoncons/json.hpp>
 #include <memory>
@@ -61,18 +59,12 @@ class Client : public Entity
         try
         {
             auto                    clientdata = std::get<Types::ClientData>(getData()).get_data();
-            std::optional<uint64_t> id;
-            auto                    it = std::find_if(clientdata.begin(), clientdata.end(), [&](const auto &item) { return item.first == "id"; });
-
-            if (it != clientdata.end())
+            std::optional<uint64_t> id         = std::get<Types::ClientData>(getData()).get_id();
+            if (!id.has_value())
             {
-                id = std::stoull(it->second);
+                Message::ErrorMessage(fmt::format("Failed to update client data. No id provided."));
+                return std::nullopt;
             }
-            else
-            {
-                throw std::runtime_error("id not found");
-            }
-
             std::string update_column_values;
 
             for (auto it = clientdata.begin(); it != clientdata.end(); ++it)

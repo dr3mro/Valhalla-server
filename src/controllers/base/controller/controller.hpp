@@ -1,21 +1,18 @@
 
 #pragma once
-#include <crow.h>
+
 #include <fmt/core.h>  // Include fmt library for string formatting
 #include <fmt/format.h>
 #include <fmt/ranges.h>
 
-#include <jsoncons/json.hpp>
-
 #include "controllers/databasecontroller/databasecontroller.hpp"
 #include "entities/base/client.hpp"
-#include "entities/base/entity.hpp"
 #include "entities/services/clinics/patient/patient.hpp"
+#include "utils/global/global.hpp"
+#include "utils/jsonhelper/jsonhelper.hpp"
 #include "utils/message/message.hpp"
-#include "utils/resthelper/resthelper.hpp"
 #include "utils/sessionmanager/sessionmanager.hpp"
 #include "utils/tokenmanager/tokenmanager.hpp"
-using json = jsoncons::json;
 
 class Controller
 {
@@ -30,49 +27,47 @@ class Controller
         }
         catch (const std::exception &e)
         {
-            Message::ErrorMessage(fmt::format("Exception in Controller constructor."));
-            Message::CriticalMessage(e.what());
+            CRITICALMESSAGE
             exit(EXIT_FAILURE);
         }
     }
     virtual ~Controller() = default;
 
     // CRUDS
-    template <typename T>
-
-    void Create(crow::response &res, T &entity)
+    template <typename T, typename CALLBACK>
+    void Create(T &entity, CALLBACK &&callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlCreateStatement;
-        cruds(res, entity, sqlstatement, dbexec);
+        cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK>(callback));
     }
 
-    template <typename T>
-    void Read(crow::response &res, T &entity)
+    template <typename T, typename CALLBACK>
+    void Read(T &entity, CALLBACK &&callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlReadStatement;
-        cruds(res, entity, sqlstatement, dbrexec);
+        cruds(entity, sqlstatement, dbrexec, std::forward<CALLBACK>(callback));
     }
-    template <typename T>
-    void Update(crow::response &res, T &entity)
+    template <typename T, typename CALLBACK>
+    void Update(T &entity, CALLBACK &&callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlUpdateStatement;
-        cruds(res, entity, sqlstatement, dbexec);
+        cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK>(callback));
     }
-    template <typename T>
-    void Delete(crow::response &res, T &entity)
+    template <typename T, typename CALLBACK>
+    void Delete(T &entity, CALLBACK &&callback)
     {
         if (!entity.template check_id_exists<Types::Delete_t>())
         {
-            RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "ID does not exist");
+            callback(400, "ID does not exist");
             return;
         }
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlDeleteStatement;
-        cruds(res, entity, sqlstatement, dbexec);
+        cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK>(callback));
     }
-    template <typename T>
-    void Search(crow::response &res, T &entity)
+    template <typename T, typename CALLBACK>
+    void Search(T &entity, CALLBACK &&callback)
     {
-        json                       response_json;
+        jsoncons::json             response_json;
         json                       query_results_json;
         std::optional<std::string> query;
 
@@ -99,54 +94,56 @@ class Controller
             }
 
             response_json["results"] = query_results_json;
-            RestHelper::successResponse(res, RestHelper::stringify(response_json));
+            callback(200, response_json.as<std::string>());
         }
         catch (const std::exception &e)
         {
-            RestHelper::failureResponse(res, e.what());
+            CRITICALMESSAGERESPONSE
         }
     }
-    template <typename T>
-    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Logout(crow::response &res, T &entity)
+    template <typename T, typename CALLBACK>
+    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Logout(T &entity, CALLBACK &&callback)
     {
-        TokenManager::LoggedUserInfo loggedUserInfo;
+        TokenManager::LoggedClientInfo loggedClientInfo;
 
         try
         {
-            loggedUserInfo.token = std::get<Types::LogoutData>(entity.getData()).token;
-            loggedUserInfo.group = entity.getGroupName();
+            loggedClientInfo.token = std::get<Types::LogoutData>(entity.getData()).token;
+            loggedClientInfo.group = entity.getGroupName();
 
-            bool status = tokenManager->ValidateToken(loggedUserInfo);
+            bool status = tokenManager->ValidateToken(loggedClientInfo);
             if (!status)
             {
-                RestHelper::errorResponse(res, crow::status::UNAUTHORIZED, "Logout failure.");
+                callback(401, "Logout failure.");
+                Message::ErrorMessage("Logout failure.");
                 return;
             }
-            sessionManager->setNowLogoutTime(loggedUserInfo.userID.value(), loggedUserInfo.group.value());
-            RestHelper::successResponse(res, RestHelper::stringify(RestHelper::jsonify("Logout success.")));
+            sessionManager->setNowLogoutTime(loggedClientInfo.userID.value(), loggedClientInfo.group.value());
+            callback(200, api::v2::JsonHelper::stringify(api::v2::JsonHelper::jsonify("Logout success.")));
         }
         catch (const std::exception &e)
         {
-            RestHelper::failureResponse(res, e.what());
+            callback(500, e.what());
+            CRITICALMESSAGE
         }
     }
 
-    template <typename T>
-    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Suspend(crow::response &res, T &entity)
+    template <typename T, typename CALLBACK>
+    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Suspend(T &entity, CALLBACK &&callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlSuspendStatement;
-        cruds(res, entity, sqlstatement, dbexec);
+        cruds(entity, sqlstatement, dbexec, callback);
     }
 
-    template <typename T>
-    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Unsuspend(crow::response &res, T &entity)
+    template <typename T, typename CALLBACK>
+    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Unsuspend(T &entity, CALLBACK &&callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlActivateStatement;
-        cruds(res, entity, sqlstatement, dbexec);
+        cruds(entity, sqlstatement, dbexec, callback);
     }
 
-    template <typename T>
-    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> GetServices(crow::response &res, T &entity)
+    template <typename T, typename CALLBACK>
+    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> GetServices(T &entity, CALLBACK &&callback)
     {
         json                       services;
         std::optional<std::string> query;
@@ -160,16 +157,16 @@ class Controller
                 services = databaseController->executeSearchQuery(query.value());
             }
 
-            RestHelper::successResponse(res, RestHelper::stringify(services));
+            callback(200, api::v2::JsonHelper::stringify(services));
         }
         catch (const std::exception &e)
         {
-            RestHelper::failureResponse(res, e.what());
+            CRITICALMESSAGE
         }
     }
 
-    template <typename T>
-    std::enable_if_t<std::is_same<T, Patient>::value, void> GetVisits(crow::response &res, T &entity)
+    template <typename T, typename CALLBACK>
+    std::enable_if_t<std::is_same<T, Patient>::value, void> GetVisits(T &entity, CALLBACK &&callback)
     {
         json                       visits;
         std::optional<std::string> query;
@@ -183,17 +180,17 @@ class Controller
                 visits = databaseController->executeSearchQuery(query.value());
             }
 
-            RestHelper::successResponse(res, RestHelper::stringify(visits));
+            callback(200, api::v2::JsonHelper::stringify(visits));
         }
         catch (const std::exception &e)
         {
-            RestHelper::failureResponse(res, e.what());
+            CRITICALMESSAGE
         }
     }
 
    protected:
     template <typename T>
-    std::optional<uint64_t> getNextID()
+    std::optional<uint64_t> getNextID(api::v2::Global::HttpError &error)
     {
         try
         {
@@ -201,7 +198,10 @@ class Controller
 
             if (json_nextval.empty())
             {
-                Message::ErrorMessage("json_nextval is empty.");
+                error.message = fmt::format("nextID from seq function of {} failed, could not create a new ID.", T::getTableName());
+                error.code    = 406;
+                Message::ErrorMessage(error.message);
+                return std::nullopt;
             }
 
             auto obj = json_nextval.find("nextval");
@@ -212,122 +212,78 @@ class Controller
         }
         catch (const std::exception &e)
         {
-            Message::CriticalMessage(fmt::format("Failed: {}.", e.what()));
+            CRITICALMESSAGE
         }
         return std::nullopt;
     }
-    /**
-     * @brief Shared pointers to the DatabaseController, SessionManager, and
-     * TokenManager instances.
-     *
-     * These shared pointers provide access to the database controller, session
-     * manager, and token manager components used throughout the application.
-     */
+
     std::shared_ptr<DatabaseController> databaseController;
     std::shared_ptr<SessionManager>     sessionManager;
     std::shared_ptr<TokenManager>       tokenManager;
 
-    /**
-     * @brief Function pointers to the DatabaseController's executeQuery and
-     * executeReadQuery methods.
-     *
-     * These function pointers allow for easy invocation of the
-     * DatabaseController's query execution methods.
-     */
-    std::optional<json> (DatabaseController::*dbexec)(const std::string &)         = &DatabaseController::executeQuery;
-    std::optional<json> (DatabaseController::*dbrexec)(const std::string &)        = &DatabaseController::executeReadQuery;
-    std::optional<json::array> (DatabaseController::*dbsexec)(const std::string &) = &DatabaseController::executeSearchQuery;
+    std::optional<jsoncons::json> (DatabaseController::*dbexec)(const std::string &)  = &DatabaseController::executeQuery;
+    std::optional<jsoncons::json> (DatabaseController::*dbrexec)(const std::string &) = &DatabaseController::executeReadQuery;
+    std::optional<json::array> (DatabaseController::*dbsexec)(const std::string &)    = &DatabaseController::executeSearchQuery;
 
     ///////////////////////////
     template <typename S, typename T>
-    /**
-     * @brief Generates the SQL statement for a CRUD operation based on the
-     * provided entity and SQL statement.
-     *
-     * This function is responsible for generating the SQL statement to be
-     * executed by the DatabaseController. It takes the entity object and the SQL
-     * statement function, and returns the generated SQL statement. If the SQL
-     * statement cannot be generated, it builds an error response and sends it
-     * back to the client.
-     *
-     * @param response_json The JSON object to store the response data.
-     * @param res The Crow response object to send the error response if the SQL
-     * statement cannot be generated.
-     * @param query The optional string to store the generated SQL statement.
-     * @param entity The entity object of type T.
-     * @param sqlstatement The SQL statement function of type S.
-     * @return true if the SQL statement was successfully generated, false
-     * otherwise.
-     */
-    bool get_sql_statement(crow::response &res, std::optional<std::string> &query, T &entity, S &sqlstatement)
+    bool get_sql_statement(std::optional<std::string> &query, T &entity, S &sqlstatement, std::string &error)
     {
         query = (entity.*sqlstatement)();
-
-        if (!query)
+        if (!query.has_value())
         {
-            RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Failed to synthesize query");
+            error = fmt::format("Failed to get SQL statement for {}.", entity.getTableName());
             return false;
         }
+
         return true;
     }
 
-    template <typename S, typename T>
-    /**
-     * @brief Executes a CRUD operation using the provided entity, SQL statement,
-     * and database controller.
-     *
-     * This function is responsible for generating the SQL statement, executing
-     * the query, and sending the response back to the client. It first generates
-     * the SQL statement using the `get_sql_statement` function, and then executes
-     * the query using the provided database controller function pointer. If the
-     * SQL statement generation or query execution fails, it builds an error
-     * response and sends it back to the client.
-     *
-     * @param res The Crow response object to send the response to the client.
-     * @param entity The entity object of type T.
-     * @param sqlstatement The SQL statement function of type S.
-     * @param f The database controller function pointer to execute the query.
-     */
-    void cruds(crow::response &res, T &entity, S &sqlstatement, std::optional<json> (DatabaseController::*f)(const std::string &))
+    template <typename S, typename T, typename CALLBACK>
+    void cruds(T &entity, S &sqlstatement, std::optional<json> (DatabaseController::*f)(const std::string &), CALLBACK &&callback)
     {
-        std::optional<json>        query_results_json;
-        std::optional<std::string> query;
+        std::optional<jsoncons::json> results_j;
+        std::optional<std::string>    query;
         try
         {
-            if (get_sql_statement(res, query, entity, sqlstatement) && query.has_value())
+            std::string error;
+            if (!get_sql_statement(query, entity, sqlstatement, error))
             {
-                query_results_json = (*databaseController.*f)(query.value());
+                callback(400, error);
+                return;
             }
 
-            if (query_results_json.has_value() && !query_results_json.value().empty())
+            if (query.has_value())
             {
-                RestHelper::successResponse(res, RestHelper::stringify(query_results_json.value()));
-            }
-            else if (query_results_json.has_value() && query_results_json.value().empty())
-            {
-                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Empty query results");
-            }
-            else
-            {
-                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "Failed to execute query");
+                results_j = (*databaseController.*f)(query.value());
+                if (results_j.has_value())
+                {
+                    callback(200, results_j.value().as<std::string>());
+                    return;
+                }
+                else
+                {
+                    callback(400, "Failed to execute query");
+                }
             }
         }
         catch (const std::exception &e)
         {
-            RestHelper::failureResponse(res, e.what());
+            CRITICALMESSAGE
         }
     }
-    template <typename T>
-    void addStaff(crow::response &res, T &entity)
+
+    template <typename T, typename CALLBACK>
+    void addStaff(T &entity, CALLBACK &&callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlAddStaffStatement;
-        cruds(res, entity, sqlstatement, dbexec);
+        cruds(entity, sqlstatement, dbexec, callback);
     }
 
-    template <typename T>
-    void removeStaff(crow::response &res, T &entity)
+    template <typename T, typename CALLBACK>
+    void removeStaff(T &entity, CALLBACK &&callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlRemoveStaffStatement;
-        cruds(res, entity, sqlstatement, dbexec);
+        cruds(entity, sqlstatement, dbexec, callback);
     }
 };

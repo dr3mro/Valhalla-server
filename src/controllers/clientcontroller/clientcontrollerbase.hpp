@@ -1,12 +1,11 @@
 #pragma once
 
-#include <crow.h>
 #include <stdint.h>
 
-#include <jsoncons/json.hpp>
 #include <optional>
+#include <string_view>
 
-using json = jsoncons::json;
+template <typename CALLBACK>
 class ClientControllerBase
 {
    public:
@@ -15,16 +14,15 @@ class ClientControllerBase
     virtual ~ClientControllerBase() = default;
 
     // PUBLIC
-    virtual void Create(const crow::request& req, crow::response& res, const json& request_json)                                   = 0;
-    virtual void Read(const crow::request& req, crow::response& res, const json& request_json)                                     = 0;
-    virtual void Update(const crow::request& req, crow::response& res, const json& request_json)                                   = 0;
-    virtual void Delete(const crow::request& req, crow::response& res, const std::unordered_map<std::string, std::string>& params) = 0;
-    virtual void Search(const crow::request& req, crow::response& res, const json& request_json)                                   = 0;
-
-    virtual std::optional<uint64_t> Login(const crow::request& req, crow::response& res, const json& credentials)                    = 0;
-    virtual void                    Logout(const crow::request& req, crow::response& res, const std::optional<std::string>& token)   = 0;
-    virtual void Suspend(const crow::request& req, crow::response& res, const std::unordered_map<std::string, std::string>& params)  = 0;
-    virtual void Activate(const crow::request& req, crow::response& res, const std::unordered_map<std::string, std::string>& params) = 0;
-    virtual void ResetPassword(const crow::request& req, crow::response& res, const json& reset_json)                                = 0;
-    virtual void GetServices(const crow::request& req, crow::response& res, std::optional<uint64_t> client_id)                       = 0;
+    virtual void                    Create(CALLBACK&& callback, std::string_view data)                             = 0;
+    virtual void                    Read(CALLBACK&& callback, std::string_view data)                               = 0;
+    virtual void                    Update(CALLBACK&& callback, std::string_view data, std::optional<uint64_t> id) = 0;
+    virtual void                    Delete(CALLBACK&& callback, std::optional<uint64_t> client_id)                 = 0;
+    virtual void                    Search(CALLBACK&& callback, std::string_view data)                             = 0;
+    virtual std::optional<uint64_t> Login(CALLBACK&& callback, std::string_view data)                              = 0;
+    virtual void                    Logout(CALLBACK&& callback, const std::optional<std::string>& token)           = 0;
+    virtual void                    Suspend(CALLBACK&& callback, std::optional<uint64_t> client_id)                = 0;
+    virtual void                    Activate(CALLBACK&& callback, std::optional<uint64_t> client_id)               = 0;
+    virtual void                    ResetPassword(CALLBACK&& callback, std::string_view data)                      = 0;
+    virtual void                    GetServices(CALLBACK&& callback, std::optional<uint64_t> client_id)            = 0;
 };

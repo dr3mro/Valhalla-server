@@ -20,13 +20,14 @@ Logger::Logger()
 
         // Console sink setup with custom pattern
         auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
-        console_sink->set_level(spdlog::level::debug);  // Set console level to warn
-        console_sink->set_pattern(fmt::format("{}[Project Valhalla]{} [%^%l%$] %v", color_map.at(Color::Red), color_map.at(Color::Reset)));
+        console_sink->set_pattern(fmt::format("{}[%Y-%m-%d %H:%M:%S]{} {}[Project Valhalla]{} %^[%l]%$ %v", color_map.at(Color::Magenta),
+                                              color_map.at(Color::Reset), color_map.at(Color::Red), color_map.at(Color::Reset)));
 
         // File sink setup
         auto file_sink = std::make_shared<spdlog::sinks::rotating_file_sink_mt>(fmt::format("{}", file_path.data()), 5 * 1024 * 1024, 3);
-        file_sink->set_level(spdlog::level::debug);  // Set file level to trace
 
+        file_sink->set_pattern(fmt::format("{}[%Y-%m-%d %H:%M:%S]{} {}[Project Valhalla]{} %^[%l]%$ %v", color_map.at(Color::Magenta),
+                                           color_map.at(Color::Reset), color_map.at(Color::Red), color_map.at(Color::Reset)));
         std::vector<std::shared_ptr<spdlog::sinks::sink>> sinks;
         if (server_config.log_to_console)
             sinks.push_back(console_sink);
@@ -35,18 +36,14 @@ Logger::Logger()
             sinks.push_back(file_sink);
 
         // Create the async logger with the thread pool and sinks
-        logger = std::make_shared<spdlog::async_logger>("Project Valhalla", sinks.begin(), sinks.end(), spdlog::thread_pool(),
-                                                        spdlog::async_overflow_policy::overrun_oldest);
-
-        // Set logger level to debug
-        logger->set_level(spdlog::level::debug);
+        logger_ = std::make_shared<spdlog::async_logger>("Project Valhalla", sinks.begin(), sinks.end(), spdlog::thread_pool(),
+                                                         spdlog::async_overflow_policy::overrun_oldest);
 
         // Register logger
-        spdlog::register_logger(logger);
-
+        spdlog::register_logger(logger_);
         // Optional: set as the default logger
-        spdlog::set_default_logger(logger);
-        crow::logger::setHandler(this);
+        spdlog::set_default_logger(logger_);
+        trantor::Logger::enableSpdLog(logger_);
     }
     catch (const spdlog::spdlog_ex& e)
     {
@@ -54,24 +51,24 @@ Logger::Logger()
     }
 }
 // Override the log function from crow::ILogHandler
-void Logger::log(std::string message, crow::LogLevel level)
+void Logger::log(const std::string& message, trantor::Logger::LogLevel level)
 {
     switch (level)
     {
-        case crow::LogLevel::DEBUG:
-            logger->debug(message);
+        case trantor::Logger::LogLevel::kDebug:
+            logger_->debug(message);
             break;
-        case crow::LogLevel::INFO:
-            logger->info(message);
+        case trantor::Logger::LogLevel::kInfo:
+            logger_->info(message);
             break;
-        case crow::LogLevel::WARNING:
-            logger->warn(message);
+        case trantor::Logger::LogLevel::kWarn:
+            logger_->warn(message);
             break;
-        case crow::LogLevel::ERROR:
-            logger->error(message);
+        case trantor::Logger::LogLevel::kError:
+            logger_->error(message);
             break;
-        case crow::LogLevel::CRITICAL:
-            logger->critical(message);
+        case trantor::Logger::LogLevel::kFatal:
+            logger_->critical(message);
             break;
         default:
             break;

@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "conan-install Debug",
+            "type": "shell",
+            "command": "conan install . --build=missing --output-folder=build/Debug -s build_type=Debug --profile:build=gcc142D",
+            "group": "build"
+        },
+        {
+            "label": "conan-install Release",
+            "type": "shell",
+            "command": "conan install . --build=missing --output-folder=build/Release -s build_type=Release --profile:build=gcc142R",
+            "group": "build"
+        }
+    ]
+}
