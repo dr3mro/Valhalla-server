@@ -6,138 +6,176 @@
 
 #include "controllers/base/controller/controller.hpp"
 #include "controllers/entitycontroller/entitycontrollerbase.hpp"
-#include "entities/base/client.hpp"
-#include "entities/base/entity.hpp"
-#include "utils/resthelper/resthelper.hpp"
-
-using json = jsoncons::json;
-
-template <typename T>
-class EntityController : public Controller, public EntityControllerBase
+#include "utils/global/types.hpp"
+template <typename T, typename CALLBACK>
+class EntityController : public Controller, public EntityControllerBase<CALLBACK>
 {
    public:
     EntityController()          = default;
     virtual ~EntityController() = default;
     // CRUDS
-    void Create(const crow::request &req, crow::response &res, const json &request_json) override;
-    void Read(const crow::request &req, crow::response &res, const json &request_json) override;
-    void Update(const crow::request &req, crow::response &res, const json &request_json) override;
-    void Delete(const crow::request &req, crow::response &res, const std::unordered_map<std::string, std::string> &params) override;
-    void Search(const crow::request &req, crow::response &res, const json &request_json) override;
+
+    void Create(CALLBACK &&callback, std::string_view data) override;
+    void Read(CALLBACK &&callback, std::string_view data) override;
+    void Update(CALLBACK &&callback, std::string_view data, std::optional<uint64_t> id) override;
+    void Delete(CALLBACK &&callback, std::optional<uint64_t> id) override;
+    void Search(CALLBACK &&callback, std::string_view data) override;
 
    protected:
 };
 
-template <typename T>
-void EntityController<T>::Create(const crow::request &req, crow::response &res, const json &request_json)
+template <typename T, typename CALLBACK>
+void EntityController<T, CALLBACK>::Create(CALLBACK &&callback, std::string_view data)
 {
-    (void)req;
     try
     {
-        auto next_id = this->template getNextID<T>();
+        bool                            success = false;
+        api::v2::Global::HttpError      error;
+        std::unordered_set<std::string> exclude;
+        auto                            next_id = this->template getNextID<T>(error);
         if (!next_id.has_value())
         {
-            RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "Failed to generate next ID");
+            callback(error.code, fmt::format("Failed to generate next ID, {}.", error.message));
             return;
         }
 
-        T entity((Types::Create_t(request_json, next_id.value())));
-        Controller::Create(res, entity);
+        std::optional<jsoncons::json> request_json = jsoncons::json::parse(data);
+
+        if (!request_json.has_value())
+        {
+            callback(400, "Invalid request body.");
+            return;
+        }
+
+        success = Validator::validateDatabaseSchema(T::getTableName(), request_json.value(), error, exclude, false);
+
+        if (!success)
+        {
+            callback(error.code, fmt::format("Failed to validate request body, {}.", error.message));
+            return;
+        }
+
+        Types::Create_t entity_data = Types::Create_t(request_json.value(), next_id.value());
+
+        T entity(entity_data);
+
+        Controller::Create(entity, callback);
     }
     catch (const std::exception &e)
     {
-        RestHelper::failureResponse(res, e.what());
+        CRITICALMESSAGERESPONSE
     }
 }
 
-template <typename T>
-void EntityController<T>::Read(const crow::request &req, crow::response &res, const json &request_json)
+template <typename T, typename CALLBACK>
+void EntityController<T, CALLBACK>::Read(CALLBACK &&callback, std::string_view data)
 {
-    (void)req;
-    json response;
+    jsoncons::json request_json;
     try
     {
-        uint64_t                 id     = request_json.at("id").as<uint64_t>();
-        std::vector<std::string> schema = request_json.at("schema").as<std::vector<std::string>>();
+        request_json                           = jsoncons::json::parse(data);
+        uint64_t                        id     = request_json.at("id").as<uint64_t>();
+        std::unordered_set<std::string> schema = request_json.at("schema").as<std::unordered_set<std::string>>();
+        api::v2::Global::HttpError      error;
+
+        if (!Validator::ensureAllKeysExist(schema, std::format("{}_safe", T::getTableName()), error))
+        {
+            callback(error.code, fmt::format("Failed to validate request body, {}.", error.message));
+            return;
+        }
 
         T entity((Types::Read_t(schema, id)));
-        Controller::Read(res, entity);
+        Controller::Read(entity, std::move(callback));
     }
     catch (const std::exception &e)
     {
-        RestHelper::failureResponse(res, e.what());
+        CRITICALMESSAGERESPONSE
     }
 }
 
-template <typename T>
-void EntityController<T>::Update(const crow::request &req, crow::response &res, const json &request_json)
+template <typename T, typename CALLBACK>
+void EntityController<T, CALLBACK>::Update(CALLBACK &&callback, std::string_view data, const std::optional<uint64_t> id)
 {
-    (void)req;
     try
     {
-        json                    data_j(request_json);
-        std::optional<uint64_t> id = data_j.find("id")->value().as<uint64_t>();
+        bool                            success = false;
+        api::v2::Global::HttpError      error;
+        std::unordered_set<std::string> exclude{};
+
         if (!id.has_value())
         {
-            RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "No id provided");
+            callback(400, "No id provided.");
             return;
         }
 
-        T entity((Types::Update_t(data_j, id.value())));
-        Controller::Update(res, entity);
+        std::optional<jsoncons::json> request_json = jsoncons::json::parse(data);
+
+        if (!request_json.has_value())
+        {
+            callback(400, "Invalid request body.");
+            return;
+        }
+
+        success = Validator::validateDatabaseSchema(T::getTableName(), request_json.value(), error, exclude, true);
+
+        if (!success)
+        {
+            callback(error.code, fmt::format("Failed to validate request body, {}.", error.message));
+            return;
+        }
+
+        Types::Update_t entity_data = Types::Update_t(request_json.value(), id.value());
+        T               entity(entity_data);
+
+        Controller::Update(entity, callback);
     }
     catch (const std::exception &e)
     {
-        RestHelper::failureResponse(res, e.what());
+        CRITICALMESSAGERESPONSE
     }
 }
 
-template <typename T>
-void EntityController<T>::Delete(const crow::request &req, crow::response &res, const std::unordered_map<std::string, std::string> &params)
+template <typename T, typename CALLBACK>
+void EntityController<T, CALLBACK>::Delete(CALLBACK &&callback, const std::optional<uint64_t> id)
 {
-    (void)req;
     try
     {
-        auto it = params.find("id");
-        if (it == params.end())
-        {
-            RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "No id provided");
-            return;
-        }
-
-        std::optional<uint64_t> id = std::stoull(it->second);
         if (!id.has_value())
         {
-            RestHelper::errorResponse(res, crow::status::NOT_ACCEPTABLE, "Invalid id provided");
+            callback(406, "Invalid id provided");
             return;
         }
 
         T entity(Types::Delete_t(id.value()));
-        Controller::Delete(res, entity);
+        Controller::Delete(entity, std::move(callback));
     }
     catch (const std::exception &e)
     {
-        RestHelper::failureResponse(res, e.what());
+        CRITICALMESSAGERESPONSE
     }
 }
 
-template <typename T>
-void EntityController<T>::Search(const crow::request &req, crow::response &res, const json &request_json)
+template <typename T, typename CALLBACK>
+void EntityController<T, CALLBACK>::Search(CALLBACK &&callback, std::string_view data)
 {
-    (void)req;
-    json response;
+    jsoncons::json request_json;
     try
     {
+        request_json = jsoncons::json::parse(data);
         bool success = false;
         T    entity((Types::Search_t(request_json, success)));
 
         if (success)
         {
-            Controller::Search(res, entity);
+            Controller::Search(entity, callback);
+        }
+        else
+        {
+            callback(406, "Failed to search");
         }
     }
     catch (const std::exception &e)
     {
-        RestHelper::failureResponse(res, e.what());
+        CRITICALMESSAGERESPONSE
     }
 }

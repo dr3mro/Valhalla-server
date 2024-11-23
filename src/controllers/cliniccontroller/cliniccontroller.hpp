@@ -7,111 +7,117 @@
 #include "controllers/entitycontroller/entitycontroller.hpp"
 #include "entities/services/clinics/patient/patient.hpp"
 #include "entities/services/clinics/visits/visits.hpp"
-#include "utils/resthelper/resthelper.hpp"
+#include "utils/global/global.hpp"
 
 using json = jsoncons::json;
 
-template <typename T>
-class ClinicController : public EntityController<T>, public ClinicControllerBase
+template <typename T, typename CALLBACK>
+class ClinicController : public EntityController<T, CALLBACK>, public ClinicControllerBase<CALLBACK>
 {
    private:
     // Primary template for other entities
     template <typename U = T>
-    std::enable_if_t<!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value, void> CreateImpl(const crow::request &req,
-                                                                                                           crow::response      &res,
-                                                                                                           const json          &request_json)
+    std::enable_if_t<!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value, void> CreateImpl(CALLBACK &&callback, std::string_view data)
     {
-        (void)req;
+        jsoncons::json                  request_json = jsoncons::json::parse(data);
+        bool                            success      = false;
+        std::unordered_set<std::string> exclude{"id"};
+        api::v2::Global::HttpError      error;
         try
         {
             std::optional<uint64_t> id = request_json.at("id").as<uint64_t>();
             if (!id.has_value())
             {
-                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "id not provided.");
+                callback(400, "id not provided.");
                 return;
             }
 
-            T entity(Types::Create_t(request_json, id.value()));
+            success = Validator::validateDatabaseSchema(T::getTableName(), request_json, error, exclude, false);
+            if (!success)
+            {
+                callback(400, error.message);
+                return;
+            }
+
+            Types::Create_t clinic_create_data = Types::Create_t(request_json, id.value());
+
+            T entity(clinic_create_data);
 
             if (entity.template check_id_exists<Types::Create_t>())
             {
-                RestHelper::errorResponse(res, crow::status::BAD_REQUEST, "id already exists.");
+                callback(409, "id already exists.");
                 return;
             }
 
-            Controller::Create(res, entity);
+            Controller::Create(entity, std::move(callback));
         }
         catch (const std::exception &e)
         {
-            RestHelper::failureResponse(res, e.what());
+            CRITICALMESSAGERESPONSE
         }
     }
 
     template <typename U = T>
-    std::enable_if_t<std::is_same<U, Patient>::value || std::is_same<U, Visits>::value, void> CreateImpl(const crow::request &req,
-                                                                                                         crow::response      &res,
-                                                                                                         const json          &request_json)
+    std::enable_if_t<std::is_same<U, Patient>::value || std::is_same<U, Visits>::value, void> CreateImpl(CALLBACK &&callback, std::string_view data)
     {
-        EntityController<T>::Create(req, res, request_json);
+        EntityController<T, CALLBACK>::Create(std::move(callback), data);
     }
 
     template <typename U = T>
-    std::enable_if_t<std::is_same<U, Patient>::value || std::is_same<U, Visits>::value, void> DeleteImpl(
-        const crow::request &req, crow::response &res, const std::unordered_map<std::string, std::string> &params)
+    std::enable_if_t<std::is_same<U, Patient>::value || std::is_same<U, Visits>::value, void> DeleteImpl(CALLBACK                    &&callback,
+                                                                                                         const std::optional<uint64_t> id)
     {
-        EntityController<T>::Delete(req, res, params);
+        EntityController<T, CALLBACK>::Delete(std::move(callback), id);
     }
 
     template <typename U = T>
-    std::enable_if_t<!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value, void> DeleteImpl(
-        const crow::request &req, crow::response &res, const std::unordered_map<std::string, std::string> &params)
+    std::enable_if_t<!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value, void> DeleteImpl(CALLBACK                    &&callback,
+                                                                                                           const std::optional<uint64_t> id)
     {
-        (void)req;
-        (void)params;
-        RestHelper::failureResponse(res, "Delete is NOT implemented for this entity");
+        (void)id;
+        callback(400, fmt::format("Delete is NOT implemented for entity type {}", T::getTableName()));
     }
 
     // Only enable GetVisits if T is of type Patient
     template <typename U = T>
-    std::enable_if_t<std::is_same<U, Patient>::value, void> SearchImpl(const crow::request &req, crow::response &res, const json &request_json)
+    std::enable_if_t<std::is_same<U, Patient>::value, void> SearchImpl(CALLBACK &&callback, std::string_view data)
     {
-        EntityController<T>::Search(req, res, request_json);
+        EntityController<T, CALLBACK>::Search(std::move(callback), data);
     }
 
     template <typename U = T>
-    std::enable_if_t<!std::is_same<U, Patient>::value, void> SearchImpl(const crow::request &req, crow::response &res, const json &request_json)
+    std::enable_if_t<!std::is_same<U, Patient>::value, void> SearchImpl(CALLBACK &&callback, std::string_view data)
     {
-        (void)req;
-        (void)request_json;
-        RestHelper::failureResponse(res, "Search is NOT implemented for this entity");
+        (void)data;
+        callback(400, fmt::format("Search is NOT implemented for entity type {}", T::getTableName()));
     }
 
     // Only enable GetVisits if T is of type Patient
     template <typename U = T>
-    std::enable_if_t<std::is_same<U, Patient>::value, void> GetVisitsImpl(const crow::request &req, crow::response &res,
-                                                                          const std::unordered_map<std::string, std::string> &params)
+    std::enable_if_t<std::is_same<U, Patient>::value, void> GetVisitsImpl(CALLBACK &&callback, const std::optional<uint64_t> id)
     {
-        (void)req;
         try
         {
-            uint64_t id = std::stoull(params.at("id"));
-            T        entity((Types::Data_t(id)));
-            Controller::GetVisits(res, entity);
+            if (!id.has_value())
+            {
+                callback(400, "Missing patient id.");
+                return;
+            }
+            T entity((Types::Data_t(id.value())));
+            Controller::GetVisits(entity, std::move(callback));
         }
         catch (const std::exception &e)
         {
-            RestHelper::failureResponse(res, e.what());
+            CRITICALMESSAGERESPONSE
         }
     }
 
     // Only enable GetVisits if T is of type Patient
     template <typename U = T>
-    typename std::enable_if<!std::is_same<U, Patient>::value, void>::type GetVisitsImpl(const crow::request &req, crow::response &res,
-                                                                                        const std::unordered_map<std::string, std::string> &params)
+    typename std::enable_if<!std::is_same<U, Patient>::value, void>::type GetVisitsImpl(CALLBACK &&callback, const std::optional<uint64_t> id)
     {
-        (void)req;
-        (void)params;
-        RestHelper::failureResponse(res, "GetVisits is NOT implemented for this entity");
+        (void)id;
+        callback(400, fmt::format("GetVisit is NOT implemented for entity type {}", T::getTableName()));
     }
 
    public:
@@ -119,38 +125,34 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
 
     virtual ~ClinicController() override = default;
 
-    void Create(const crow::request &req, crow::response &res, const json &request_json) final
+    void Create(CALLBACK &&callback, std::string_view data) final
     {
         // here we call the actual implementation of the Create method
-        CreateImpl(req, res, request_json);
+        CreateImpl(std::move(callback), data);
     }
 
-    void Read(const crow::request &req, crow::response &res, const json &request_json) final
+    void Read(CALLBACK &&callback, std::string_view data) final
     {
         // Read for all clinic entities
-        EntityController<T>::Read(req, res, request_json);
+        EntityController<T, CALLBACK>::Read(std::move(callback), data);
     }
-    void Update(const crow::request &req, crow::response &res, const json &request_json) final
+    void Update(CALLBACK &&callback, std::string_view data, const std::optional<uint64_t> id) final
     {
         // Update for all clinic entities
-        EntityController<T>::Update(req, res, request_json);
+        EntityController<T, CALLBACK>::Update(std::move(callback), data, id);
     }
 
-    void Delete(const crow::request &req, crow::response &res, const std::unordered_map<std::string, std::string> &params) final
-    {
-        DeleteImpl(req, res, params);
-    }
+    void Delete(CALLBACK &&callback, const std::optional<uint64_t> id) final { DeleteImpl(std::move(callback), id); }
 
-    void Search(const crow::request &req, crow::response &res, const json &request_json) final
+    void Search(CALLBACK &&callback, std::string_view data) final
     {
         // search only for Patient
-
-        SearchImpl(req, res, request_json);
+        SearchImpl(std::move(callback), data);
     }
 
-    void GetVisits(const crow::request &req, crow::response &res, const std::unordered_map<std::string, std::string> &params) final
+    void GetVisits(CALLBACK &&callback, const std::optional<uint64_t> id) final
     {
         // GetVisits only for Patient
-        GetVisitsImpl(req, res, params);
+        GetVisitsImpl(std::move(callback), id);
     }
 };

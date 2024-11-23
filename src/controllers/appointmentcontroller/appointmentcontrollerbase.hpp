@@ -1,11 +1,8 @@
-
 #pragma once
 
-#include <crow.h>
+#include <string_view>
 
-#include <jsoncons/json.hpp>
-
-using json = jsoncons::json;
+template <typename CALLBACK>
 class AppointmentControllerBase
 {
    public:
@@ -14,9 +11,9 @@ class AppointmentControllerBase
     virtual ~AppointmentControllerBase() = default;
 
     // CRUDS
-    virtual void Create(const crow::request& req, crow::response& res, const json& request_json)                                   = 0;
-    virtual void Read(const crow::request& req, crow::response& res, const json& request_json)                                     = 0;
-    virtual void Update(const crow::request& req, crow::response& res, const json& request_json)                                   = 0;
-    virtual void Delete(const crow::request& req, crow::response& res, const std::unordered_map<std::string, std::string>& params) = 0;
-    virtual void Search(const crow::request& req, crow::response& res, const json& request_json)                                   = 0;
+    virtual void Create(CALLBACK &&callback, std::string_view data)                             = 0;
+    virtual void Read(CALLBACK &&callback, std::string_view data)                               = 0;
+    virtual void Update(CALLBACK &&callback, std::string_view data, std::optional<uint64_t> id) = 0;
+    virtual void Delete(CALLBACK &&callback, std::optional<uint64_t> id)                        = 0;
+    virtual void Search(CALLBACK &&callback, std::string_view data)                             = 0;
 };

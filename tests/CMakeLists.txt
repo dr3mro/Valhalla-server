@@ -8,7 +8,7 @@ include_directories(
 # Add test executable
 add_executable(tests test_main.cpp)
 
-# Link Catch2
+# # Link Catch2
 target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)
 
 target_compile_features(tests PRIVATE cxx_std_20)

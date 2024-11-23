@@ -1,19 +1,19 @@
 #pragma once
 #include <fmt/format.h>
 
+#include <cppcodec/base64_rfc4648.hpp>
 #include <cstddef>
 #include <jsoncons/json.hpp>
-#include <regex>
 #include <utility>
 #include <variant>
-#include <vector>
 
 #include "configurator/configurator.hpp"
 #include "store/store.hpp"
-#include "utils/passwordcrypt/passwordcrypt.hpp"
+#include "utils/global/types.hpp"
+#include "utils/validator/validator.hpp"
+
 using json = jsoncons::json;
 
-#include "utils/resthelper/resthelper.hpp"
 class Types
 {
    public:
@@ -25,20 +25,24 @@ class Types
     {
        public:
         Entity_t(const S &_data, const uint64_t _id) : data(_data), id(_id) {}
+        std::optional<uint64_t> get_id() const { return id; }
+        const S                &get_data() const { return this->data; }
         virtual ~Entity_t() = default;
-        S        data;
-        uint64_t id;
+
+       private:
+        const S        data;
+        const uint64_t id;
     };
 
     using Create_t = struct Create_t : public Entity_t<jsoncons::json>
     {
-        Create_t(const json &data, const uint64_t id) : Entity_t(data, id) {}
+        Create_t(const json &_data, const uint64_t id) : Entity_t(_data, id) {}
         ~Create_t() override = default;
     };
 
-    using Read_t = struct Read_t : public Entity_t<const std::vector<std::string>>
+    using Read_t = struct Read_t : public Entity_t<const std::unordered_set<std::string>>
     {
-        Read_t(const std::vector<std::string> &_data, const uint64_t _id) : Entity_t(_data, _id) {}
+        Read_t(const std::unordered_set<std::string> &_data, const uint64_t _id) : Entity_t(_data, _id) {}
         ~Read_t() override = default;
     };
 
@@ -79,71 +83,71 @@ class Types
                 direction = search_j.at("direction").as<short>() == 0 ? "ASC" : "DESC";
                 limit     = search_j.at("limit").as<size_t>();
                 offset    = search_j.at("offset").as<size_t>();
+                success   = validate(search_j);
             }
             catch (const std::exception &e)
             {
                 success = false;
                 throw std::runtime_error(std::string(e.what()));
             }
-            success = true;
+        }
+        bool validate(const jsoncons::json &search_j)
+        {
+            std::unordered_set<std::string> keys = {"keyword", "filter", "order_by", "direction", "limit", "offset"};
+            return std::all_of(keys.begin(), keys.end(), [&search_j](const std::string &key) { return search_j.find(key).has_value(); });
         }
     };
 
     struct ClientData
     {
        public:
-        ClientData(const json &data, crow::response &res, bool &success)
+        ClientData(std::string_view _data, const std::optional<uint64_t> _id, api::v2::Global::HttpError &error, bool &success,
+                   const std::string &tablename, const std::unordered_set<std::string> &exclude, bool isUpdate)
+            : id(_id)
         {
-            for (const auto &item : data.object_range())
+            try
             {
-                try
+                std::optional<jsoncons::json> json_data = jsoncons::json::parse(_data);
+                if (!json_data.has_value())
                 {
-                    std::optional<std::string> value = item.value().as<std::string>();
-                    if (value.has_value() && !value->empty())
-                    {
-                        auto pattern_item =
-                            std::find_if(validators.begin(), validators.end(), [&](const auto &validator) { return validator.first == item.key(); });
-
-                        if (pattern_item != validators.end())
-                        {
-                            std::regex pattern(pattern_item->second);
-                            if (!std::regex_match(value.value(), pattern))
-                            {
-                                throw std::runtime_error(fmt::format("Value({}) is invalid.", value.value(), item.key()));
-                            }
-                        }
-
-                        if (item.key() == "password")
-                        {
-                            value = passwordCrypt->hashPassword(value.value());
-                        }
-
-                        db_data.push_back({item.key(), value.value()});
-                    }
+                    error = {.code = 400, .message = "Failed to parse body."};
+                    Message::ErrorMessage(error.message);
+                    success = false;
+                    return;
                 }
-                catch (const std::exception &e)
+
+                success = Validator::validateDatabaseSchema(tablename, json_data.value(), error, exclude, isUpdate);
+                if (!success)
                 {
-                    RestHelper::failureResponse(res, e.what());
+                    Message::ErrorMessage(error.message);
+                    return;
+                }
+
+                success = Validator::clientValidationAndHashPasswd(json_data.value(), error, db_data);
+                if (!success)
+                {
+                    Message::ErrorMessage(error.message);
                     return;
                 }
             }
+            catch (const std::exception &e)
+            {
+                error   = {.code = 500, .message = fmt::format("Failed while parsing client data: {}.", e.what())};
+                success = false;
+                Message::CriticalMessage(error.message);
+                return;
+            }
+
             success = true;
         }
-        const std::vector<std::pair<std::string, std::string>> &get_data() const { return db_data; }
+
+        const std::unordered_set<std::pair<std::string, std::string>> &get_data() const { return db_data; }
+        std::optional<uint64_t>                                        get_id() const { return id; }
 
        protected:
        private:
-        std::shared_ptr<PasswordCrypt>                   passwordCrypt = Store::getObject<PasswordCrypt>();
-        std::vector<std::pair<std::string, std::string>> db_data;
-
-        const std::map<std::string, std::string> validators = {
-            {"username", "^[a-z][a-z0-9_]*$"},
-            {"password", "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{8,}$"},
-            {"phone", R"(^\+?(\d{1,3})?[-.\s]?(\(?\d{3}\)?)?[-.\s]?\d{3}[-.\s]?\d{4}$)"},
-            {"email", R"((\w+)(\.\w+)*@(\w+)(\.\w+)+)"},
-            {"dob", R"(^(0[1-9]|[12]\d|3[01])-(0[1-9]|1[0-2])-\d{4}$)"},
-            {"gender", "^(male|female)$"},
-        };
+        std::unordered_set<std::pair<std::string, std::string>> db_data;
+        std::optional<uint64_t>                                 id;
     };
 
     struct LogoutData
@@ -192,13 +196,14 @@ class Types
                 parse_status = false;
             }
         }
+
         bool toInviteJson(json &invite_json)
         {
-            std::string encoded_invite_data = crow::utility::base64encode(invite_json.to_string(), invite_json.to_string().size());
             try
             {
-                invite_json["subject"]  = fmt::format("Invite to {}", project_name);
-                invite_json["template"] = "invite_staff_to_entity.txt";
+                std::string encoded_invite_data = cppcodec::base64_rfc4648::encode(invite_json.to_string());
+                invite_json["subject"]          = fmt::format("Invite to {}", project_name);
+                invite_json["template"]         = "invite_staff_to_entity.txt";
                 invite_json["link"] = fmt::format("{}:{}/{}/{}", frontendcfg_.host, frontendcfg_.port, frontendcfg_.invite_path, encoded_invite_data);
                 invite_json["project_name"]  = project_name;
                 invite_json["generate_body"] = "";

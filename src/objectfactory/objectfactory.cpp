@@ -1,5 +1,6 @@
 #include "objectfactory.hpp"
 
+#include "api/v2/basic/common.hpp"
 #include "configurator/configurator.hpp"
 #include "controllers/appointmentcontroller/appointmentcontroller.hpp"
 #include "controllers/clientcontroller/clientcontroller.hpp"
@@ -28,33 +29,11 @@
 #include "entities/services/radiologycenters.hpp"
 #include "store/store.hpp"
 #include "utils/Logger/logger.hpp"
+#include "utils/databaseschema/databaseschema.hpp"
 #include "utils/dosdetector/dosdetector.hpp"
 #include "utils/passwordcrypt/passwordcrypt.hpp"
 #include "utils/sessionmanager/sessionmanager.hpp"
 #include "utils/tokenmanager/tokenmanager.hpp"
-/**
- * @brief Initializes the application's factory, which is responsible for
- * creating and managing various components and services used throughout the
- * application.
- *
- * The factory registers several objects with the application's store,
- * including:
- * - DatabaseConnectionPool: Manages a pool of database connections.
- * - DatabaseController: Provides an interface for interacting with the
- * database.
- * - SessionManager: Manages user sessions.
- * - TokenManager: Manages authentication tokens.
- * - PasswordCrypt: Provides password hashing and encryption functionality.
- * - PatientController: Manages patient-related data and operations.
- * - ServiceControllers: Manage data and operations for various service types
- * (clinics, pharmacies, laboratories, radiology centers).
- * - UserController: Manages user-related data and operations.
- * - ProviderController: Manages provider-related data and operations.
- * - DOSDetector: Provides functionality for detecting denial-of-service
- * attacks.
- *
- * @param pool_size The size of the database connection pool to be created.
- */
 ObjectFactory::ObjectFactory()
 {
     Store::registerObject<Configurator>();
@@ -64,28 +43,29 @@ ObjectFactory::ObjectFactory()
     Store::registerObject<SessionManager>();
     Store::registerObject<TokenManager>();
     Store::registerObject<PasswordCrypt>();
-    Store::registerObject<ClinicController<Health>>();
-    Store::registerObject<ClinicController<PatientDrugs>>();
-    Store::registerObject<ClinicController<Reports>>();
-    Store::registerObject<ClinicController<PaidServices>>();
-    Store::registerObject<ClinicController<Prescriptions>>();
-    Store::registerObject<ClinicController<Requests>>();
-    Store::registerObject<ClinicController<VisitDrugs>>();
-    Store::registerObject<ClinicController<Visits>>();
-    Store::registerObject<ClinicController<Patient>>();
-    Store::registerObject<ServiceController<Clinics>>();
-    Store::registerObject<ServiceController<Pharmacies>>();
-    Store::registerObject<ServiceController<Laboratories>>();
-    Store::registerObject<ServiceController<RadiologyCenters>>();
-    Store::registerObject<AppointmentController<ClinicAppointment>>();
-    Store::registerObject<AppointmentController<PharmacyAppointment>>();
-    Store::registerObject<AppointmentController<LaboratoryAppointment>>();
-    Store::registerObject<AppointmentController<RadiologyCenterAppointment>>();
-    Store::registerObject<ClientController<Provider>>();
-    Store::registerObject<ClientController<User>>();
+    Store::registerObject<ClinicController<Health, CALLBACKSIGNATURE>>();
+    Store::registerObject<ClinicController<PatientDrugs, CALLBACKSIGNATURE>>();
+    Store::registerObject<ClinicController<Reports, CALLBACKSIGNATURE>>();
+    Store::registerObject<ClinicController<PaidServices, CALLBACKSIGNATURE>>();
+    Store::registerObject<ClinicController<Prescriptions, CALLBACKSIGNATURE>>();
+    Store::registerObject<ClinicController<Requests, CALLBACKSIGNATURE>>();
+    Store::registerObject<ClinicController<VisitDrugs, CALLBACKSIGNATURE>>();
+    Store::registerObject<ClinicController<Visits, CALLBACKSIGNATURE>>();
+    Store::registerObject<ClinicController<Patient, CALLBACKSIGNATURE>>();
+    Store::registerObject<ServiceController<Clinics, CALLBACKSIGNATURE>>();
+    Store::registerObject<ServiceController<Pharmacies, CALLBACKSIGNATURE>>();
+    Store::registerObject<ServiceController<Laboratories, CALLBACKSIGNATURE>>();
+    Store::registerObject<ServiceController<RadiologyCenters, CALLBACKSIGNATURE>>();
+    Store::registerObject<AppointmentController<ClinicAppointment, CALLBACKSIGNATURE>>();
+    Store::registerObject<AppointmentController<PharmacyAppointment, CALLBACKSIGNATURE>>();
+    Store::registerObject<AppointmentController<LaboratoryAppointment, CALLBACKSIGNATURE>>();
+    Store::registerObject<AppointmentController<RadiologyCenterAppointment, CALLBACKSIGNATURE>>();
+    Store::registerObject<ClientController<Provider, CALLBACKSIGNATURE>>();
+    Store::registerObject<ClientController<User, CALLBACKSIGNATURE>>();
     Store::registerObject<DOSDetector>();
-    Store::registerObject<StaffController<Clinics>>();
-    Store::registerObject<StaffController<Pharmacies>>();
-    Store::registerObject<StaffController<Laboratories>>();
-    Store::registerObject<StaffController<RadiologyCenters>>();
+    Store::registerObject<StaffController<Clinics, CALLBACKSIGNATURE>>();
+    Store::registerObject<StaffController<Pharmacies, CALLBACKSIGNATURE>>();
+    Store::registerObject<StaffController<Laboratories, CALLBACKSIGNATURE>>();
+    Store::registerObject<StaffController<RadiologyCenters, CALLBACKSIGNATURE>>();
+    Store::registerObject<DatabaseSchema>();
 }

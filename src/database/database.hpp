@@ -5,9 +5,10 @@
 
 #include <jsoncons/json.hpp>
 #include <pqxx/pqxx>  // Include the libpqxx header for PostgreSQL
+#include <string>
 
+#include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
-using json = jsoncons::json;
 
 class Database
 {
@@ -31,8 +32,8 @@ class Database
                 txn.commit();
             }
 
-            jsonType reply;
-            json     object;
+            jsonType       reply;
+            jsoncons::json object;
 
             for (const auto &row : res)
             {
@@ -44,6 +45,7 @@ class Database
                     if (field.is_null())
                     {
                         object[field_name] = nullptr;
+                        LOG_WARN << "Field " << field_name << " is null";
                     }
                     else
                     {
@@ -72,7 +74,7 @@ class Database
                         }
                     }
                 }
-                if constexpr (std::is_same_v<jsonType, json::array>)
+                if constexpr (std::is_same_v<jsonType, jsoncons::json::array>)
                 {
                     reply.push_back(object);
                 }
@@ -112,6 +114,9 @@ class Database
             // throw;  // Rethrow the exception to indicate failure
         }
     }
+
+    std::optional<std::unordered_set<api::v2::ColumnInfo>> getTableSchema(const std::string &tableName);
+    std::optional<std::unordered_set<std::string>>         getAllTables();
 
    private:
     std::shared_ptr<pqxx::connection> connection;

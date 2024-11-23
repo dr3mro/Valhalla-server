@@ -1,35 +1,33 @@
 #include "server.hpp"
 
+#include <drogon/drogon.h>
 #include <fmt/color.h>
 #include <fmt/core.h>
 
 #include "server/extras/banner.hpp"
-#include "utils/Logger/logger.hpp"
 
 #ifndef GIT_TAG
 #    define GIT_TAG "unknown"
 #endif
 
-Server::Server() : app(std::make_shared<APP>()), routes(std::make_shared<API_V1_Routes>(app)) {}
-
 int Server::run()
 {
     print_banner();
 
-    // auto logger = Store::getObject<Logger>();
-    // crow::logger::setHandler(logger.get());
     try
     {
-        app->loglevel(static_cast<crow::LogLevel>(config_.debug_level))
-            .use_compression(crow::compression::algorithm::GZIP)
-            .port(config_.port)
-            .multithreaded()
-            .concurrency(config_.threads)
-            .bindaddr(config_.host.data())
-            .server_name(config_.name.data())
-            .run();
+        drogon::app()
+            .addListener(config_.host.data(), config_.port)
+            .setThreadNum(config_.threads)
+            .disableSigtermHandling()
+            .setLogLevel(static_cast<trantor::Logger::LogLevel>(config_.debug_level))
+            .setCustom404Page(drogon::HttpResponse::newHttpJsonResponse(api::v2::JsonHelper::jsonify("Not Implemented yet!")));
+
+        enable_cors();
+
+        drogon::app().run();
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         Message::ErrorMessage(fmt::format("Failed to start server on {}:{}.", config_.host, config_.port));
         Message::CriticalMessage(e.what());
@@ -38,12 +36,42 @@ int Server::run()
 
     return EXIT_SUCCESS;  // Exit with success code
 }
+void Server::enable_cors()
+{
+    drogon::app().registerPreRoutingAdvice(
+        [](const drogon::HttpRequestPtr& req, drogon::AdviceCallback&& cb, drogon::AdviceChainCallback&& ccb)
+        {
+            if (req->method() == drogon::Options)
+            {
+                auto resp = drogon::HttpResponse::newHttpResponse();
+                resp->setStatusCode(drogon::k204NoContent);
+                resp->addHeader("Access-Control-Allow-Origin", "*");
+                resp->addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+                resp->addHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+                resp->addHeader("Access-Control-Allow-Credentials", "true");
+                cb(resp);
+            }
+            else
+            {
+                ccb();
+            }
+        });
+
+    drogon::app().registerPostHandlingAdvice(
+        [](const drogon::HttpRequestPtr&, const drogon::HttpResponsePtr& resp)
+        {
+            resp->addHeader("Access-Control-Allow-Origin", "*");
+            resp->addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+            resp->addHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+            resp->addHeader("Access-Control-Allow-Credentials", "true");
+        });
+}
 void Server::print_banner()
 {
     std::srand(std::time(0));
     // Select a random color
-    int        num_colors   = sizeof(colors) / sizeof(colors[0]);
-    fmt::color random_color = colors[std::rand() % num_colors];
+    int        num_colors   = sizeof(Banner::colors) / sizeof(Banner::colors[0]);
+    fmt::color random_color = Banner::colors[std::rand() % num_colors];
 
     // Clean screen
     // Print Config

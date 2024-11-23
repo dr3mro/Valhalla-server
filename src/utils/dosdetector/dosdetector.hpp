@@ -1,5 +1,5 @@
 #pragma once
-#include <crow.h>
+#include <drogon/drogon.h>
 
 #include <atomic>
 #include <chrono>
@@ -28,7 +28,7 @@ class DOSDetector
 
     DOSDetector();
     virtual ~DOSDetector();
-    DOSDetector::Status is_dos_attack(const crow::request &req);
+    DOSDetector::Status is_dos_attack(const drogon::HttpRequestPtr &req);
 
    private:
     std::shared_ptr<Configurator>          configurator_ = Store::getObject<Configurator>();
@@ -52,7 +52,7 @@ class DOSDetector
     std::atomic<bool> running_clean_{true};
 
     void                                                           cleanUpTask();
-    inline std::optional<std::string> __attribute((always_inline)) generateRequestFingerprint(const crow::request &req);
+    inline std::optional<std::string> __attribute((always_inline)) generateRequestFingerprint(const drogon::HttpRequestPtr &req);
     inline bool __attribute((always_inline))                       isWhitelisted(std::string_view remote_ip);
     inline bool __attribute((always_inline))                       isBlacklisted(std::string_view remote_ip);
     inline bool __attribute((always_inline)) regexFind(std::string_view remote_ip, const std::unordered_set<std::string> &list, std::mutex &mtx);

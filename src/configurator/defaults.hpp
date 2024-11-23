@@ -1,8 +1,8 @@
 #pragma once
 
 #include <cstdint>
-#include <string>
-#include <unordered_set>
+#include <string_view>
+
 namespace Defaults
 {
     namespace DosDetector
@@ -27,7 +27,7 @@ namespace Defaults
         constexpr bool             DB_SSL_      = false;
         constexpr uint8_t          DB_MAX_CONN_ = 10;
         constexpr uint16_t         DB_PORT_     = 5432;
-        constexpr std::string_view DB_HOST_     = std::string_view("172.20.0.2");
+        constexpr std::string_view DB_HOST_     = std::string_view("127.0.0.1");
         constexpr std::string_view DB_NAME_     = std::string_view("postgres");
         constexpr std::string_view DB_USER_     = std::string_view("postgres");
         constexpr std::string_view DB_PASS_     = std::string_view("postgres");
@@ -48,7 +48,7 @@ namespace Defaults
         constexpr uint8_t          SERVER_DEBUG_LEVEL_    = 1;
         constexpr bool             SERVER_LOG_TO_CONSOLE_ = true;
         constexpr bool             SERVER_LOG_TO_FILE_    = true;
-        constexpr std::string_view SERVER_LOG_DIR_        = std::string_view("./build/");
+        constexpr std::string_view SERVER_LOG_DIR_        = std::string_view("./");
         constexpr std::string_view SERVER_LOG_FILE_       = std::string_view("server.log");
 
     }  // namespace Server

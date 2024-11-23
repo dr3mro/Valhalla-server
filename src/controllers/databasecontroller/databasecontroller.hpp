@@ -19,7 +19,8 @@ class DatabaseController
     std::optional<bool>        checkItemExists(const std::string &table, const std::string &column, const std::string &value);
     std::optional<std::string> getPasswordHashForUserID(const uint64_t &user_id, const std::string &tablename);
     std::optional<uint64_t>    findIfUserID(const std::string &username, const std::string &tablename);  // check if user found and return 0 if not
-                                                                                                         // found or return ID if found
+    std::optional<std::unordered_set<api::v2::ColumnInfo>> getTableSchema(const std::string &tableName);
+    std::optional<std::unordered_set<std::string>>         getAllTables();
 
    private:
     std::shared_ptr<DatabaseConnectionPool> databaseConnectionPool;
