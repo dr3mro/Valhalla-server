@@ -4,15 +4,12 @@
 #include <cppcodec/base64_rfc4648.hpp>
 #include <cstddef>
 #include <jsoncons/json.hpp>
-#include <regex>
 #include <utility>
 #include <variant>
-#include <vector>
 
 #include "configurator/configurator.hpp"
 #include "store/store.hpp"
 #include "utils/global/types.hpp"
-#include "utils/passwordcrypt/passwordcrypt.hpp"
 #include "utils/validator/validator.hpp"
 
 using json = jsoncons::json;
@@ -126,33 +123,11 @@ class Types
                     return;
                 }
 
-                for (const auto &item : json_data.value().object_range())
+                success = Validator::clientValidationAndHashPasswd(json_data.value(), error, db_data);
+                if (!success)
                 {
-                    std::optional<std::string> value = item.value().as<std::string>();
-                    if (value.has_value() && !value->empty())
-                    {
-                        auto pattern_item =
-                            std::find_if(validators.begin(), validators.end(), [&](const auto &validator) { return validator.first == item.key(); });
-
-                        if (pattern_item != validators.end())
-                        {
-                            std::regex pattern(pattern_item->second);
-                            if (!std::regex_match(value.value(), pattern))
-                            {
-                                error = {.code = 400, .message = fmt::format("Value({}) is invalid.", value.value(), item.key())};
-                                Message::ErrorMessage(error.message);
-                                success = false;
-                                return;
-                            }
-                        }
-
-                        if (item.key() == "password")
-                        {
-                            value = passwordCrypt->hashPassword(value.value());
-                        }
-
-                        db_data.insert({item.key(), value.value()});
-                    }
+                    Message::ErrorMessage(error.message);
+                    return;
                 }
             }
             catch (const std::exception &e)
@@ -171,18 +146,8 @@ class Types
 
        protected:
        private:
-        std::shared_ptr<PasswordCrypt>                          passwordCrypt = Store::getObject<PasswordCrypt>();
         std::unordered_set<std::pair<std::string, std::string>> db_data;
         std::optional<uint64_t>                                 id;
-
-        const std::map<std::string, std::string> validators = {
-            {"username", "^[a-z][a-z0-9_]*$"},
-            {"password", "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{8,}$"},
-            {"phone", R"(^\+?(\d{1,3})?[-.\s]?(\(?\d{3}\)?)?[-.\s]?\d{3}[-.\s]?\d{4}$)"},
-            {"email", R"((\w+)(\.\w+)*@(\w+)(\.\w+)+)"},
-            {"dob", R"(^(0[1-9]|[12]\d|3[01])-(0[1-9]|1[0-2])-\d{4}$)"},
-            {"gender", "^(male|female)$"},
-        };
     };
 
     struct LogoutData
