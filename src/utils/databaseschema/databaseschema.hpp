@@ -2,10 +2,11 @@
 
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 
-#include "database/database.hpp"
+#include "utils/global/types.hpp"
 
-#define SCHEMA_t std::unordered_map<std::string, std::vector<Database::ColumnInfo>>
+#define SCHEMA_t std::unordered_map<std::string, std::unordered_set<api::v2::ColumnInfo>>
 class DatabaseSchema
 {
    public:

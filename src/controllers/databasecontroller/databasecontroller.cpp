@@ -56,9 +56,12 @@ std::optional<uint64_t> DatabaseController::findIfUserID(const std::string &user
                               fmt::format("SELECT id FROM {} WHERE username = '{}' LIMIT 1;", tablename, username));
 }
 
-std::optional<std::vector<Database::ColumnInfo>> DatabaseController::getTableSchema(const std::string &tableName)
+std::optional<std::unordered_set<api::v2::ColumnInfo>> DatabaseController::getTableSchema(const std::string &tableName)
 {
-    return executer<std::vector<Database::ColumnInfo>>(&Database::getTableSchema, tableName);
+    return executer<std::unordered_set<api::v2::ColumnInfo>>(&Database::getTableSchema, tableName);
 }
 
-std::optional<std::vector<std::string>> DatabaseController::getAllTables() { return executer<std::vector<std::string>>(&Database::getAllTables); }
+std::optional<std::unordered_set<std::string>> DatabaseController::getAllTables()
+{
+    return executer<std::unordered_set<std::string>>(&Database::getAllTables);
+}

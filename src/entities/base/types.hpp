@@ -43,9 +43,9 @@ class Types
         ~Create_t() override = default;
     };
 
-    using Read_t = struct Read_t : public Entity_t<const std::vector<std::string>>
+    using Read_t = struct Read_t : public Entity_t<const std::unordered_set<std::string>>
     {
-        Read_t(const std::vector<std::string> &_data, const uint64_t _id) : Entity_t(_data, _id) {}
+        Read_t(const std::unordered_set<std::string> &_data, const uint64_t _id) : Entity_t(_data, _id) {}
         ~Read_t() override = default;
     };
 
@@ -96,7 +96,7 @@ class Types
         }
         bool validate(const jsoncons::json &search_j)
         {
-            std::vector<std::string> keys = {"keyword", "filter", "order_by", "direction", "limit", "offset"};
+            std::unordered_set<std::string> keys = {"keyword", "filter", "order_by", "direction", "limit", "offset"};
             return std::all_of(keys.begin(), keys.end(), [&search_j](const std::string &key) { return search_j.find(key).has_value(); });
         }
     };
@@ -105,7 +105,7 @@ class Types
     {
        public:
         ClientData(std::string_view _data, const std::optional<uint64_t> _id, api::v2::Global::HttpError &error, bool &success,
-                   const std::string &tablename, const std::unordered_set<std::string> exclude)
+                   const std::string &tablename, const std::unordered_set<std::string> &exclude)
             : id(_id)
         {
             try
@@ -151,7 +151,7 @@ class Types
                             value = passwordCrypt->hashPassword(value.value());
                         }
 
-                        db_data.push_back({item.key(), value.value()});
+                        db_data.insert({item.key(), value.value()});
                     }
                 }
             }
@@ -166,14 +166,14 @@ class Types
             success = true;
         }
 
-        const std::vector<std::pair<std::string, std::string>> &get_data() const { return db_data; }
-        std::optional<uint64_t>                                 get_id() const { return id; }
+        const std::unordered_set<std::pair<std::string, std::string>> &get_data() const { return db_data; }
+        std::optional<uint64_t>                                        get_id() const { return id; }
 
        protected:
        private:
-        std::shared_ptr<PasswordCrypt>                   passwordCrypt = Store::getObject<PasswordCrypt>();
-        std::vector<std::pair<std::string, std::string>> db_data;
-        std::optional<uint64_t>                          id;
+        std::shared_ptr<PasswordCrypt>                          passwordCrypt = Store::getObject<PasswordCrypt>();
+        std::unordered_set<std::pair<std::string, std::string>> db_data;
+        std::optional<uint64_t>                                 id;
 
         const std::map<std::string, std::string> validators = {
             {"username", "^[a-z][a-z0-9_]*$"},

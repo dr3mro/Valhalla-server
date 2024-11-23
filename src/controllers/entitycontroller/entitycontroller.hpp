@@ -73,9 +73,16 @@ void EntityController<T, CALLBACK>::Read(CALLBACK &&callback, std::string_view d
     jsoncons::json request_json;
     try
     {
-        request_json                    = jsoncons::json::parse(data);
-        uint64_t                 id     = request_json.at("id").as<uint64_t>();
-        std::vector<std::string> schema = request_json.at("schema").as<std::vector<std::string>>();
+        request_json                           = jsoncons::json::parse(data);
+        uint64_t                        id     = request_json.at("id").as<uint64_t>();
+        std::unordered_set<std::string> schema = request_json.at("schema").as<std::unordered_set<std::string>>();
+        api::v2::Global::HttpError      error;
+
+        if (!Validator::ensureAllKeysExist(schema, std::format("{}_safe", T::getTableName()), error))
+        {
+            callback(error.code, fmt::format("Failed to validate request body, {}.", error.message));
+            return;
+        }
 
         T entity((Types::Read_t(schema, id)));
         Controller::Read(entity, std::move(callback));

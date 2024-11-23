@@ -47,7 +47,7 @@ bool Database::checkExists(const std::string &table, const std::string &column, 
     }
 }
 
-std::optional<std::vector<Database::ColumnInfo>> Database::getTableSchema(const std::string &tableName)
+std::optional<std::unordered_set<api::v2::ColumnInfo>> Database::getTableSchema(const std::string &tableName)
 {
     std::string query;
     try
@@ -60,16 +60,16 @@ std::optional<std::vector<Database::ColumnInfo>> Database::getTableSchema(const 
 
         pqxx::result result = ntxn.exec(query);
 
-        std::vector<ColumnInfo> schema;
+        std::unordered_set<api::v2::ColumnInfo> schema;
 
         for (const auto &row : result)
         {
-            ColumnInfo column;
+            api::v2::ColumnInfo column;
             column.Name       = row["column_name"].as<std::string>();
             column.DataType   = row["data_type"].as<std::string>();
             column.Constraint = row["column_default"].is_null() ? "None" : row["column_default"].as<std::string>();
             column.isNullable = row["is_nullable"].as<std::string>() == "YES";
-            schema.push_back(column);
+            schema.insert(column);
         }
         return schema;
     }
@@ -81,16 +81,16 @@ std::optional<std::vector<Database::ColumnInfo>> Database::getTableSchema(const 
     }
 }
 
-std::optional<std::vector<std::string>> Database::getAllTables()
+std::optional<std::unordered_set<std::string>> Database::getAllTables()
 {
     try
     {
-        pqxx::work               txn(*connection);
-        pqxx::result             result = txn.exec("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';");
-        std::vector<std::string> tables;
+        pqxx::work                      txn(*connection);
+        pqxx::result                    result = txn.exec("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';");
+        std::unordered_set<std::string> tables;
         for (const auto &row : result)
         {
-            tables.push_back(row["table_name"].as<std::string>());
+            tables.insert(row["table_name"].as<std::string>());
         }
         return tables;
     }
