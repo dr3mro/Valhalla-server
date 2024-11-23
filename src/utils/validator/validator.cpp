@@ -1,6 +1,9 @@
 #include "validator.hpp"
 
+#include <fmt/format.h>
+
 #include "store/store.hpp"
+#include "utils/databaseschema/databaseschema.hpp"
 
 bool Validator::validateDatabaseSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Global::HttpError &error,
                                        const std::unordered_set<std::string> &exclude)
@@ -44,6 +47,36 @@ bool Validator::validateDatabaseSchema(const std::string &tablename, const jsonc
     return true;
 }
 
+bool Validator::ensureAllKeysExist(const std::unordered_set<std::string> &keys, const std::string &table_name, api::v2::Global::HttpError &error)
+{
+    bool found = false;
+
+    // Retrieve the schema for the given table
+    auto columns = getDatabaseSchemaForTable(table_name, error, found);
+    if (!found)
+    {
+        error.message = "Table not found";
+        error.code    = 404;
+        return false;
+    }
+
+    // Check if all keys exist in the schema
+    for (const auto &key : keys)
+    {
+        // Use std::find_if to check if a column with the given name exists
+        auto it = std::find_if(columns.begin(), columns.end(), [&](const api::v2::ColumnInfo &column) { return column.Name == key; });
+
+        if (it == columns.end())
+        {
+            error.message = "Key not found in schema: " + key;
+            error.code    = 400;
+            return false;
+        }
+    }
+
+    return true;
+}
+
 bool Validator::nullCheck(const jsoncons::json &data, api::v2::Global::HttpError &error)
 {
     if (data.is_null() || data.empty())
@@ -55,19 +88,21 @@ bool Validator::nullCheck(const jsoncons::json &data, api::v2::Global::HttpError
     return false;
 }
 
-std::vector<Database::ColumnInfo> Validator::getDatabaseSchemaForTable(const std::string &tablename, api::v2::Global::HttpError &error, bool &found)
+std::unordered_set<api::v2::ColumnInfo> Validator::getDatabaseSchemaForTable(const std::string &tablename, api::v2::Global::HttpError &error,
+                                                                             bool &found)
 {
     auto     db_schema = Store::getObject<DatabaseSchema>();
     SCHEMA_t schema    = db_schema->getDatabaseSchema();
 
     // Ensure the table schema exists
     auto table_schema_it = schema.find(tablename);
-    if (table_schema_it == schema.end() || table_schema_it->second.empty())
+    if ((table_schema_it == schema.end()) || table_schema_it->second.empty())
     {
         error.message = "Table not found";
         error.code    = 400;
         found         = false;
     }
+    found = true;
     return table_schema_it->second;
 }
 bool Validator::validateType(const jsoncons::json &value, const std::string &expectedType)
@@ -87,7 +122,7 @@ bool Validator::validateType(const jsoncons::json &value, const std::string &exp
     return false;                  // Unknown type
 }
 
-bool Validator::checkColumns(const jsoncons::json &data, const std::vector<Database::ColumnInfo> &table_schema,
+bool Validator::checkColumns(const jsoncons::json &data, const std::unordered_set<api::v2::ColumnInfo> &table_schema,
                              const std::unordered_set<std::string> &exclude, api::v2::Global::HttpError &error)
 {
     for (const auto &column : table_schema)
@@ -117,7 +152,7 @@ bool Validator::checkColumns(const jsoncons::json &data, const std::vector<Datab
     return true;
 }
 
-bool Validator::ensureAllKeysExist(const jsoncons::json &data, const std::vector<Database::ColumnInfo> &table_schema,
+bool Validator::ensureAllKeysExist(const jsoncons::json &data, const std::unordered_set<api::v2::ColumnInfo> &table_schema,
                                    api::v2::Global::HttpError &error, const std::unordered_set<std::string> &exclude)
 {
     // Create a set of column names for fast key lookup

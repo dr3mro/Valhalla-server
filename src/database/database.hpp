@@ -5,21 +5,14 @@
 
 #include <jsoncons/json.hpp>
 #include <pqxx/pqxx>  // Include the libpqxx header for PostgreSQL
+#include <string>
 
+#include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
-using json = jsoncons::json;
 
 class Database
 {
    public:
-    using ColumnInfo = struct ColumnInfo
-    {
-        std::string Name;
-        std::string DataType;
-        std::string Constraint;
-        bool        isNullable;
-    };
-
     Database(std::shared_ptr<pqxx::connection> conn);
     virtual ~Database() = default;
 
@@ -39,8 +32,8 @@ class Database
                 txn.commit();
             }
 
-            jsonType reply;
-            json     object;
+            jsonType       reply;
+            jsoncons::json object;
 
             for (const auto &row : res)
             {
@@ -80,7 +73,7 @@ class Database
                         }
                     }
                 }
-                if constexpr (std::is_same_v<jsonType, json::array>)
+                if constexpr (std::is_same_v<jsonType, jsoncons::json::array>)
                 {
                     reply.push_back(object);
                 }
@@ -121,8 +114,8 @@ class Database
         }
     }
 
-    std::optional<std::vector<ColumnInfo>>  getTableSchema(const std::string &tableName);
-    std::optional<std::vector<std::string>> getAllTables();
+    std::optional<std::unordered_set<api::v2::ColumnInfo>> getTableSchema(const std::string &tableName);
+    std::optional<std::unordered_set<std::string>>         getAllTables();
 
    private:
     std::shared_ptr<pqxx::connection> connection;
