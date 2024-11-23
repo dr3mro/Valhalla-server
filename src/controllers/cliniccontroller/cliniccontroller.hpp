@@ -19,9 +19,10 @@ class ClinicController : public EntityController<T, CALLBACK>, public ClinicCont
     template <typename U = T>
     std::enable_if_t<!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value, void> CreateImpl(CALLBACK &&callback, std::string_view data)
     {
-        jsoncons::json             request_json = jsoncons::json::parse(data);
-        bool                       success      = false;
-        api::v2::Global::HttpError error;
+        jsoncons::json                  request_json = jsoncons::json::parse(data);
+        bool                            success      = false;
+        std::unordered_set<std::string> exclude{"id"};
+        api::v2::Global::HttpError      error;
         try
         {
             std::optional<uint64_t> id = request_json.at("id").as<uint64_t>();
@@ -31,13 +32,14 @@ class ClinicController : public EntityController<T, CALLBACK>, public ClinicCont
                 return;
             }
 
-            Types::Create_t clinic_create_data = Types::Create_t(request_json, id.value());
-
+            success = Validator::validateDatabaseSchema(T::getTableName(), request_json, error, exclude);
             if (!success)
             {
                 callback(400, error.message);
                 return;
             }
+
+            Types::Create_t clinic_create_data = Types::Create_t(request_json, id.value());
 
             T entity(clinic_create_data);
 

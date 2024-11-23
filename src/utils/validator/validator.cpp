@@ -44,8 +44,8 @@ bool Validator::validateDatabaseSchema(const std::string &tablename, const jsonc
             if (expectedType == "boolean")
                 return value.is_bool();
             if (expectedType == "jsonb")
-                return value.is_object();
-            if (expectedType == "timestamp with time zone" || expectedType == "time without time zone" || expectedType == "data")
+                return (value.is_object() || value.is_array());
+            if (expectedType == "timestamp with time zone" || expectedType == "time without time zone" || expectedType == "date")
                 return value.is_string();  // Assuming dates are strings
             return false;                  // Unknown type
         };
@@ -69,7 +69,7 @@ bool Validator::validateDatabaseSchema(const std::string &tablename, const jsonc
                 const auto &value = data.at(column.Name);
                 if (!validateType(value, column.DataType))
                 {
-                    error.message = "Data type mismatch for column: " + column.Name;
+                    error.message = fmt::format("Data type mismatch for column: {} ,expected: {} ", column.Name, column.DataType);
                     error.code    = 400;
                     return false;
                 }
@@ -80,7 +80,7 @@ bool Validator::validateDatabaseSchema(const std::string &tablename, const jsonc
         for (const auto &entry : data.object_range())
         {
             const auto &key = entry.key();
-            if (schema_columns.find(key) == schema_columns.end())  // Key not in schema
+            if (schema_columns.find(key) == schema_columns.end() && !exclude.contains(key))  // Key not in schema
             {
                 error.message = "Key not found in schema: " + key;
                 error.code    = 400;

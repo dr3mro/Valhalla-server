@@ -29,24 +29,36 @@ void EntityController<T, CALLBACK>::Create(CALLBACK &&callback, std::string_view
 {
     try
     {
-        bool                       success = false;
-        api::v2::Global::HttpError error;
-
-        auto next_id = this->template getNextID<T>(error);
+        bool                            success = false;
+        api::v2::Global::HttpError      error;
+        std::unordered_set<std::string> exclude;
+        auto                            next_id = this->template getNextID<T>(error);
         if (!next_id.has_value())
         {
             callback(error.code, fmt::format("Failed to generate next ID, {}.", error.message));
             return;
         }
 
-        Types::Create_t entity_data = Types::Create_t(jsoncons::json::parse(data), next_id.value());
-        if (!success)
+        std::optional<jsoncons::json> request_json = jsoncons::json::parse(data);
+
+        if (!request_json.has_value())
         {
-            callback(error.code, fmt::format("Failed to create entity, {}.", error.message));
+            callback(400, "Invalid request body.");
             return;
         }
 
+        success = Validator::validateDatabaseSchema(T::getTableName(), request_json.value(), error, exclude);
+
+        if (!success)
+        {
+            callback(error.code, fmt::format("Failed to validate request body, {}.", error.message));
+            return;
+        }
+
+        Types::Create_t entity_data = Types::Create_t(request_json.value(), next_id.value());
+
         T entity(entity_data);
+
         Controller::Create(entity, callback);
     }
     catch (const std::exception &e)
@@ -77,10 +89,11 @@ void EntityController<T, CALLBACK>::Read(CALLBACK &&callback, std::string_view d
 template <typename T, typename CALLBACK>
 void EntityController<T, CALLBACK>::Update(CALLBACK &&callback, std::string_view data, const std::optional<uint64_t> id)
 {
-    jsoncons::json request_json;
     try
     {
-        request_json = jsoncons::json::parse(data);
+        bool                            success = false;
+        api::v2::Global::HttpError      error;
+        std::unordered_set<std::string> exclude{};
 
         if (!id.has_value())
         {
@@ -88,7 +101,25 @@ void EntityController<T, CALLBACK>::Update(CALLBACK &&callback, std::string_view
             return;
         }
 
-        T entity((Types::Update_t(request_json, id.value())));
+        std::optional<jsoncons::json> request_json = jsoncons::json::parse(data);
+
+        if (!request_json.has_value())
+        {
+            callback(400, "Invalid request body.");
+            return;
+        }
+
+        success = Validator::validateDatabaseSchema(T::getTableName(), request_json.value(), error, exclude);
+
+        if (!success)
+        {
+            callback(error.code, fmt::format("Failed to validate request body, {}.", error.message));
+            return;
+        }
+
+        Types::Update_t entity_data = Types::Update_t(request_json.value(), id.value());
+        T               entity(entity_data);
+
         Controller::Update(entity, callback);
     }
     catch (const std::exception &e)
