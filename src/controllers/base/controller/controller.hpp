@@ -190,7 +190,7 @@ class Controller
 
    protected:
     template <typename T>
-    std::optional<uint64_t> getNextID(std::string &error)
+    std::optional<uint64_t> getNextID(api::v2::Global::HttpError &error)
     {
         try
         {
@@ -198,8 +198,9 @@ class Controller
 
             if (json_nextval.empty())
             {
-                error = fmt::format("nextID from seq function of {} failed, could not create a new ID.", T::getTableName());
-                Message::ErrorMessage(error);
+                error.message = fmt::format("nextID from seq function of {} failed, could not create a new ID.", T::getTableName());
+                error.code    = 406;
+                Message::ErrorMessage(error.message);
                 return std::nullopt;
             }
 

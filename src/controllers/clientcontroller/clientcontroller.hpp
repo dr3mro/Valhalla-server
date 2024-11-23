@@ -4,6 +4,7 @@
 
 #include <jsoncons/json.hpp>
 #include <memory>
+#include <optional>
 
 #include "controllers/clientcontroller/clientcontrollerbase.hpp"
 #include "controllers/entitycontroller/entitycontroller.hpp"
@@ -38,7 +39,7 @@ class ClientController : public EntityController<T, CALLBACK>, public ClientCont
     virtual ~ClientController() final = default;
     void                    Create(CALLBACK&& callback, std::string_view data) final;
     void                    Read(CALLBACK&& callback, std::string_view data) final;
-    void                    Update(CALLBACK&& callback, std::string_view data) final;
+    void                    Update(CALLBACK&& callback, std::string_view data, std::optional<uint64_t> id) final;
     void                    Delete(CALLBACK&& callback, std::optional<uint64_t> client_id) final;
     void                    Search(CALLBACK&& callback, std::string_view data) final;
     std::optional<uint64_t> Login(CALLBACK&& callback, std::string_view data) final;
@@ -58,9 +59,12 @@ void ClientController<T, CALLBACK>::Create(CALLBACK&& callback, std::string_view
 {
     try
     {
-        bool              success = false;
-        Types::HttpError  error;
-        Types::ClientData client_data(data, error, success);
+        bool                            success = false;
+        api::v2::Global::HttpError      error;
+        std::unordered_set<std::string> exclude;
+        jsoncons::json                  json_data = jsoncons::json::parse(data);
+
+        Types::ClientData client_data(data, std::nullopt, error, success, T::getTableName(), exclude);
 
         if (success)
         {
@@ -91,15 +95,16 @@ void ClientController<T, CALLBACK>::Read(CALLBACK&& callback, std::string_view d
 }
 
 template <Client_t T, typename CALLBACK>
-void ClientController<T, CALLBACK>::Update(CALLBACK&& callback, std::string_view data)
+void ClientController<T, CALLBACK>::Update(CALLBACK&& callback, std::string_view data, const std::optional<uint64_t> id)
 {
     jsoncons::json json_data;
     try
     {
-        json_data                 = jsoncons::json::parse(data);
-        bool              success = false;
-        Types::HttpError  error;
-        Types::ClientData client_data(data, error, success);
+        json_data                               = jsoncons::json::parse(data);
+        bool                            success = false;
+        std::unordered_set<std::string> exclude{"password"};
+        api::v2::Global::HttpError      error;
+        Types::ClientData               client_data(data, id, error, success, T::getTableName(), exclude);
 
         if (success)
         {

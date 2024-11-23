@@ -53,8 +53,10 @@ std::optional<std::vector<Database::ColumnInfo>> Database::getTableSchema(const 
     try
     {
         pqxx::nontransaction ntxn(*connection);
-        query = fmt::format("SELECT column_name, data_type, column_default, is_nullable FROM information_schema.columns WHERE table_name = '{}';",
-                            tableName);
+        query = fmt::format(
+            "SELECT column_name, data_type, column_default, is_nullable FROM information_schema.columns WHERE table_name = '{}' AND column_name != "
+            "'id';",
+            tableName);
 
         pqxx::result result = ntxn.exec(query);
 

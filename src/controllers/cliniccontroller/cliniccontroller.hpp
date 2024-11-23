@@ -19,7 +19,9 @@ class ClinicController : public EntityController<T, CALLBACK>, public ClinicCont
     template <typename U = T>
     std::enable_if_t<!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value, void> CreateImpl(CALLBACK &&callback, std::string_view data)
     {
-        jsoncons::json request_json = jsoncons::json::parse(data);
+        jsoncons::json             request_json = jsoncons::json::parse(data);
+        bool                       success      = false;
+        api::v2::Global::HttpError error;
         try
         {
             std::optional<uint64_t> id = request_json.at("id").as<uint64_t>();
@@ -29,7 +31,15 @@ class ClinicController : public EntityController<T, CALLBACK>, public ClinicCont
                 return;
             }
 
-            T entity(Types::Create_t(request_json, id.value()));
+            Types::Create_t clinic_create_data = Types::Create_t(request_json, id.value());
+
+            if (!success)
+            {
+                callback(400, error.message);
+                return;
+            }
+
+            T entity(clinic_create_data);
 
             if (entity.template check_id_exists<Types::Create_t>())
             {
@@ -37,7 +47,7 @@ class ClinicController : public EntityController<T, CALLBACK>, public ClinicCont
                 return;
             }
 
-            Controller::Create(entity, callback);
+            Controller::Create(entity, std::move(callback));
         }
         catch (const std::exception &e)
         {
@@ -124,10 +134,10 @@ class ClinicController : public EntityController<T, CALLBACK>, public ClinicCont
         // Read for all clinic entities
         EntityController<T, CALLBACK>::Read(std::move(callback), data);
     }
-    void Update(CALLBACK &&callback, std::string_view data) final
+    void Update(CALLBACK &&callback, std::string_view data, const std::optional<uint64_t> id) final
     {
         // Update for all clinic entities
-        EntityController<T, CALLBACK>::Update(std::move(callback), data);
+        EntityController<T, CALLBACK>::Update(std::move(callback), data, id);
     }
 
     void Delete(CALLBACK &&callback, const std::optional<uint64_t> id) final { DeleteImpl(std::move(callback), id); }

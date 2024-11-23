@@ -19,8 +19,15 @@ class Provider : public Client
         std::optional<std::string> query;
         try
         {
-            uint64_t provider_id = std::get<Types::Data_t>(getData()).id;
-            query                = fmt::format(
+            auto provider_id = std::get<Types::Data_t>(getData()).get_id();
+
+            if (!provider_id.has_value())
+            {
+                Message::ErrorMessage(fmt::format("Failed to get services for provider with id {}.", provider_id.value()));
+                return std::nullopt;
+            }
+
+            query = fmt::format(
                 R"(
                         WITH vars AS (
                             SELECT {} AS id  -- Convert integer to JSONB
@@ -43,7 +50,7 @@ class Provider : public Client
                                 OR combined.admin_id = vars.id
                                 OR combined.owner_id = vars.id;
                         )",
-                provider_id);
+                provider_id.value());
         }
         catch (const std::exception &e)
         {
