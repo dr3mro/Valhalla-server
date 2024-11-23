@@ -14,7 +14,7 @@ const std::unordered_map<std::string, std::string> Validator::regex_client_valid
     {"phone", R"(^\+?(\d{1,3})?[-.\s]?(\(?\d{3}\)?)?[-.\s]?\d{3}[-.\s]?\d{4}$)"},
     {"email", R"((\w+)(\.\w+)*@(\w+)(\.\w+)+)"},
     {"dob", R"(^(0[1-9]|[12]\d|3[01])-(0[1-9]|1[0-2])-\d{4}$)"},
-    {"gender", "^(male|female)$"},
+    {"gender", "^(Male|Female)$"},
 };
 
 bool Validator::validateDatabaseSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Global::HttpError &error,
