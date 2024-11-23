@@ -34,7 +34,7 @@ namespace api
                         const std::string &entityType)
             {
                 executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase<CALLBACKSIGNATURE>::Update, std::move(callback),
-                                        req->body());
+                                        req->body(), stoll(req->getParameter("id")));
             }
             void Delete(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                         const std::string &entityType)

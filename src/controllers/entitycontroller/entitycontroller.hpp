@@ -6,7 +6,7 @@
 
 #include "controllers/base/controller/controller.hpp"
 #include "controllers/entitycontroller/entitycontrollerbase.hpp"
-
+#include "utils/global/types.hpp"
 template <typename T, typename CALLBACK>
 class EntityController : public Controller, public EntityControllerBase<CALLBACK>
 {
@@ -17,7 +17,7 @@ class EntityController : public Controller, public EntityControllerBase<CALLBACK
 
     void Create(CALLBACK &&callback, std::string_view data) override;
     void Read(CALLBACK &&callback, std::string_view data) override;
-    void Update(CALLBACK &&callback, std::string_view data) override;
+    void Update(CALLBACK &&callback, std::string_view data, std::optional<uint64_t> id) override;
     void Delete(CALLBACK &&callback, std::optional<uint64_t> id) override;
     void Search(CALLBACK &&callback, std::string_view data) override;
 
@@ -29,15 +29,24 @@ void EntityController<T, CALLBACK>::Create(CALLBACK &&callback, std::string_view
 {
     try
     {
-        std::string error;
-        auto        next_id = this->template getNextID<T>(error);
+        bool                       success = false;
+        api::v2::Global::HttpError error;
+
+        auto next_id = this->template getNextID<T>(error);
         if (!next_id.has_value())
         {
-            callback(406, fmt::format("Failed to generate next ID, {}.", error));
+            callback(error.code, fmt::format("Failed to generate next ID, {}.", error.message));
             return;
         }
 
-        T entity((Types::Create_t(jsoncons::json::parse(data), next_id.value())));
+        Types::Create_t entity_data = Types::Create_t(jsoncons::json::parse(data), next_id.value());
+        if (!success)
+        {
+            callback(error.code, fmt::format("Failed to create entity, {}.", error.message));
+            return;
+        }
+
+        T entity(entity_data);
         Controller::Create(entity, callback);
     }
     catch (const std::exception &e)
@@ -66,26 +75,20 @@ void EntityController<T, CALLBACK>::Read(CALLBACK &&callback, std::string_view d
 }
 
 template <typename T, typename CALLBACK>
-void EntityController<T, CALLBACK>::Update(CALLBACK &&callback, std::string_view data)
+void EntityController<T, CALLBACK>::Update(CALLBACK &&callback, std::string_view data, const std::optional<uint64_t> id)
 {
     jsoncons::json request_json;
     try
     {
-        request_json   = jsoncons::json::parse(data);
-        auto id_object = request_json.find("id");
+        request_json = jsoncons::json::parse(data);
 
-        if (id_object == request_json.object_range().end())
+        if (!id.has_value())
         {
             callback(400, "No id provided.");
             return;
         }
-        else if (!id_object->value().is_number())
-        {
-            callback(400, "ID not valid.");
-            return;
-        }
 
-        T entity((Types::Update_t(request_json, id_object->value().as<uint64_t>())));
+        T entity((Types::Update_t(request_json, id.value())));
         Controller::Update(entity, callback);
     }
     catch (const std::exception &e)

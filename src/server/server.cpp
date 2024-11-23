@@ -20,6 +20,7 @@ int Server::run()
             .addListener(config_.host.data(), config_.port)
             .setThreadNum(config_.threads)
             .disableSigtermHandling()
+            .setLogLevel(static_cast<trantor::Logger::LogLevel>(config_.debug_level))
             .setCustom404Page(drogon::HttpResponse::newHttpJsonResponse(api::v2::JsonHelper::jsonify("Not Implemented yet!")));
 
         enable_cors();

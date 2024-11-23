@@ -15,7 +15,7 @@ class ServiceController : public EntityController<T, CALLBACK>, public ServiceCo
     // CRUDS
     void Create(CALLBACK &&callback, std::string_view data) override;
     void Read(CALLBACK &&callback, std::string_view data) override;
-    void Update(CALLBACK &&callback, std::string_view data) override;
+    void Update(CALLBACK &&callback, std::string_view data, std::optional<uint64_t> id) override;
     void Delete(CALLBACK &&callback, std::optional<uint64_t> id) override;
     void Search(CALLBACK &&callback, std::string_view data) override;
 };
@@ -32,9 +32,9 @@ void ServiceController<T, CALLBACK>::Read(CALLBACK &&callback, std::string_view 
 }
 
 template <typename T, typename CALLBACK>
-void ServiceController<T, CALLBACK>::Update(CALLBACK &&callback, std::string_view data)
+void ServiceController<T, CALLBACK>::Update(CALLBACK &&callback, std::string_view data, const std::optional<uint64_t> id)
 {
-    EntityController<T, CALLBACK>::Update(std::move(callback), data);
+    EntityController<T, CALLBACK>::Update(std::move(callback), data, id);
 }
 
 template <typename T, typename CALLBACK>

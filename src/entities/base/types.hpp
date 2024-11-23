@@ -11,7 +11,9 @@
 
 #include "configurator/configurator.hpp"
 #include "store/store.hpp"
+#include "utils/global/types.hpp"
 #include "utils/passwordcrypt/passwordcrypt.hpp"
+#include "utils/validator/validator.hpp"
 
 using json = jsoncons::json;
 
@@ -21,25 +23,23 @@ class Types
     Types()          = default;
     virtual ~Types() = default;
 
-    using HttpError = struct HttpError
-    {
-        int         code;
-        std::string message;
-    };
-
     template <typename S>
     struct Entity_t
     {
        public:
         Entity_t(const S &_data, const uint64_t _id) : data(_data), id(_id) {}
+        std::optional<uint64_t> get_id() const { return id; }
+        const S                &get_data() const { return this->data; }
         virtual ~Entity_t() = default;
-        S        data;
-        uint64_t id;
+
+       private:
+        const S        data;
+        const uint64_t id;
     };
 
     using Create_t = struct Create_t : public Entity_t<jsoncons::json>
     {
-        Create_t(const json &data, const uint64_t id) : Entity_t(data, id) {}
+        Create_t(const json &_data, const uint64_t id) : Entity_t(_data, id) {}
         ~Create_t() override = default;
     };
 
@@ -104,16 +104,25 @@ class Types
     struct ClientData
     {
        public:
-        ClientData(std::string_view data, HttpError &error, bool &success)
+        ClientData(std::string_view _data, const std::optional<uint64_t> _id, api::v2::Global::HttpError &error, bool &success,
+                   const std::string &tablename, const std::unordered_set<std::string> exclude)
+            : id(_id)
         {
             try
             {
-                std::optional<jsoncons::json> json_data = jsoncons::json::parse(data);
+                std::optional<jsoncons::json> json_data = jsoncons::json::parse(_data);
                 if (!json_data.has_value())
                 {
                     error = {.code = 400, .message = "Failed to parse body."};
                     Message::ErrorMessage(error.message);
                     success = false;
+                    return;
+                }
+
+                success = Validator::validateDatabaseSchema(tablename, json_data.value(), error, exclude);
+                if (!success)
+                {
+                    Message::ErrorMessage(error.message);
                     return;
                 }
 
@@ -158,11 +167,13 @@ class Types
         }
 
         const std::vector<std::pair<std::string, std::string>> &get_data() const { return db_data; }
+        std::optional<uint64_t>                                 get_id() const { return id; }
 
        protected:
        private:
         std::shared_ptr<PasswordCrypt>                   passwordCrypt = Store::getObject<PasswordCrypt>();
         std::vector<std::pair<std::string, std::string>> db_data;
+        std::optional<uint64_t>                          id;
 
         const std::map<std::string, std::string> validators = {
             {"username", "^[a-z][a-z0-9_]*$"},

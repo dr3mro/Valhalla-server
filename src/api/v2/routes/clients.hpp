@@ -58,7 +58,7 @@ namespace api
                         const std::string &clientType)
             {
                 executeControllerMethod(clientRegistry, clientType, &ClientControllerBase<CALLBACKSIGNATURE>::Update, std::move(callback),
-                                        req->body());
+                                        req->body(), stoll(req->getParameter("id")));
             }
             void delete_(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                          const std::string &clientType)
