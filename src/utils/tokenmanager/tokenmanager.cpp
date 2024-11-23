@@ -53,10 +53,10 @@ bool TokenManager::ValidateToken(LoggedClientInfo &loggedinClientInfo) const
         verifier.verify(token);
 
         // Validate user in database
-        // if (!validateUserInDatabase(loggedinClientInfo))
-        // {
-        //     return false;
-        // }
+        if (!validateUserInDatabase(loggedinClientInfo))
+        {
+            return false;
+        }
 
         return true;
     }

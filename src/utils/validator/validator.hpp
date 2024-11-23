@@ -9,7 +9,7 @@ class Validator
     Validator()          = default;
     virtual ~Validator() = default;
     static bool validateDatabaseSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Global::HttpError &error,
-                                       const std::unordered_set<std::string> &exclude);
+                                       const std::unordered_set<std::string> &exclude, bool isUpdate);
     static bool ensureAllKeysExist(const std::unordered_set<std::string> &keys, const std::string &table_name, api::v2::Global::HttpError &error);
 
     static bool clientValidationAndHashPasswd(const jsoncons::json &data, api::v2::Global::HttpError &error,
