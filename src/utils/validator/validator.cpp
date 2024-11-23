@@ -1,92 +1,38 @@
 #include "validator.hpp"
 
 #include "store/store.hpp"
-#include "utils/databaseschema/databaseschema.hpp"
+
 bool Validator::validateDatabaseSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Global::HttpError &error,
                                        const std::unordered_set<std::string> &exclude)
 {
     try
     {
-        if (data.is_null() || data.empty())
+        if (nullCheck(data, error))
         {
-            error.message = "Data is empty";
-            error.code    = 400;
+            return false;
+        }
+        // Get the schema for the table
+        bool found        = false;
+        auto table_schema = getDatabaseSchemaForTable(tablename, error, found);
+
+        if (!found)
+        {
             return false;
         }
 
-        auto     db_schema = Store::getObject<DatabaseSchema>();
-        SCHEMA_t schema    = db_schema->getDatabaseSchema();
+        // now lets go through the data and check if the keys are in the schema
 
-        // Ensure the table schema exists
-        auto table_schema_it = schema.find(tablename);
-        if (table_schema_it == schema.end() || table_schema_it->second.empty())
+        if (!checkColumns(data, table_schema, exclude, error))
         {
-            error.message = "Table not found";
-            error.code    = 400;
             return false;
         }
 
-        const auto &table_schema = table_schema_it->second;
-
-        // Create a set of column names for fast key lookup
-        std::unordered_set<std::string> schema_columns;
-        for (const auto &column : table_schema) schema_columns.insert(column.Name);
-
-        // Lambda for type validation
-        auto validateType = [](const jsoncons::json &value, const std::string &expectedType) -> bool
+        // Ensure all keys in the schema are present in the data
+        if (!ensureAllKeysExist(data, table_schema, error, exclude))
         {
-            if (expectedType == "integer")
-                return value.is_int64();
-            if (expectedType == "float" || expectedType == "double" || expectedType == "real")
-                return value.is_double();
-            if (expectedType == "character varying")
-                return value.is_string();
-            if (expectedType == "boolean")
-                return value.is_bool();
-            if (expectedType == "jsonb")
-                return (value.is_object() || value.is_array());
-            if (expectedType == "timestamp with time zone" || expectedType == "time without time zone" || expectedType == "date")
-                return value.is_string();  // Assuming dates are strings
-            return false;                  // Unknown type
-        };
-
-        // Validate each column in the schema
-        for (const auto &column : table_schema)
-        {
-            bool column_exists = data.contains(column.Name);
-
-            // Check for missing non-nullable columns
-            if (!column.isNullable && !column_exists && !exclude.contains(column.Name))
-            {
-                error.message = "Non-nullable column missing in data: " + column.Name;
-                error.code    = 400;
-                return false;
-            }
-
-            // Validate data type if column exists
-            if (column_exists)
-            {
-                const auto &value = data.at(column.Name);
-                if (!validateType(value, column.DataType))
-                {
-                    error.message = fmt::format("Data type mismatch for column: {} ,expected: {} ", column.Name, column.DataType);
-                    error.code    = 400;
-                    return false;
-                }
-            }
+            return false;
         }
-
-        // Ensure all keys in `data` exist in the schema
-        for (const auto &entry : data.object_range())
-        {
-            const auto &key = entry.key();
-            if (schema_columns.find(key) == schema_columns.end() && !exclude.contains(key))  // Key not in schema
-            {
-                error.message = "Key not found in schema: " + key;
-                error.code    = 400;
-                return false;
-            }
-        }
+        return true;
     }
     catch (const std::exception &e)
     {
@@ -95,5 +41,99 @@ bool Validator::validateDatabaseSchema(const std::string &tablename, const jsonc
         return false;
     }
 
+    return true;
+}
+
+bool Validator::nullCheck(const jsoncons::json &data, api::v2::Global::HttpError &error)
+{
+    if (data.is_null() || data.empty())
+    {
+        error.message = "Data is empty";
+        error.code    = 400;
+        return true;
+    }
+    return false;
+}
+
+std::vector<Database::ColumnInfo> Validator::getDatabaseSchemaForTable(const std::string &tablename, api::v2::Global::HttpError &error, bool &found)
+{
+    auto     db_schema = Store::getObject<DatabaseSchema>();
+    SCHEMA_t schema    = db_schema->getDatabaseSchema();
+
+    // Ensure the table schema exists
+    auto table_schema_it = schema.find(tablename);
+    if (table_schema_it == schema.end() || table_schema_it->second.empty())
+    {
+        error.message = "Table not found";
+        error.code    = 400;
+        found         = false;
+    }
+    return table_schema_it->second;
+}
+bool Validator::validateType(const jsoncons::json &value, const std::string &expectedType)
+{
+    if (expectedType == "integer")
+        return value.is_int64();
+    if (expectedType == "float" || expectedType == "double" || expectedType == "real")
+        return value.is_double();
+    if (expectedType == "character varying")
+        return value.is_string();
+    if (expectedType == "boolean")
+        return value.is_bool();
+    if (expectedType == "jsonb")
+        return (value.is_object() || value.is_array());
+    if (expectedType == "timestamp with time zone" || expectedType == "time without time zone" || expectedType == "date")
+        return value.is_string();  // Assuming dates are strings
+    return false;                  // Unknown type
+}
+
+bool Validator::checkColumns(const jsoncons::json &data, const std::vector<Database::ColumnInfo> &table_schema,
+                             const std::unordered_set<std::string> &exclude, api::v2::Global::HttpError &error)
+{
+    for (const auto &column : table_schema)
+    {
+        bool column_exists = data.contains(column.Name);
+
+        // Check for missing non-nullable columns
+        if (!column.isNullable && !column_exists && !exclude.contains(column.Name))
+        {
+            error.message = "Non-nullable column missing in data: " + column.Name;
+            error.code    = 400;
+            return false;
+        }
+
+        // Validate data type if column exists
+        if (column_exists)
+        {
+            const auto &value = data.at(column.Name);
+            if (!validateType(value, column.DataType))
+            {
+                error.message = fmt::format("Data type mismatch for column: {} ,expected: {} ", column.Name, column.DataType);
+                error.code    = 400;
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+bool Validator::ensureAllKeysExist(const jsoncons::json &data, const std::vector<Database::ColumnInfo> &table_schema,
+                                   api::v2::Global::HttpError &error, const std::unordered_set<std::string> &exclude)
+{
+    // Create a set of column names for fast key lookup
+    std::unordered_set<std::string> schema_columns;
+    for (const auto &column : table_schema) schema_columns.insert(column.Name);
+
+    // Ensure all keys in `data` exist in the schema
+    for (const auto &entry : data.object_range())
+    {
+        const auto &key = entry.key();
+        if (schema_columns.find(key) == schema_columns.end() && !exclude.contains(key))  // Key not in schema
+        {
+            error.message = "Key not found in schema: " + key;
+            error.code    = 400;
+            return false;
+        }
+    }
     return true;
 }
