@@ -45,6 +45,7 @@ class Database
                     if (field.is_null())
                     {
                         object[field_name] = nullptr;
+                        LOG_WARN << "Field " << field_name << " is null";
                     }
                     else
                     {
