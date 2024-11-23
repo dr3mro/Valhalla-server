@@ -40,7 +40,7 @@ namespace api
                     {
                         auto resp = drogon::HttpResponse::newHttpResponse();
                         resp->setStatusCode(drogon::HttpStatusCode::k401Unauthorized);
-                        resp->setBody("Invalid token");
+                        resp->setBody(JsonHelper::stringify(JsonHelper::jsonify("Access Denied.")));
                         fcb(resp);
                         return;
                     }
