@@ -100,7 +100,7 @@ void ClientController<T>::Update(CALLBACK_&& callback, std::string_view data, co
     try
     {
         bool                            success = false;
-        std::unordered_set<std::string> exclude{"password"};
+        std::unordered_set<std::string> exclude{"password", "username"};
         api::v2::Global::HttpError      error;
         Types::UpdateClient_t           client_data(data, id, T::getTableName(), error, success, exclude);
 

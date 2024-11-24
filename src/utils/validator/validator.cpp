@@ -36,6 +36,7 @@ bool Validator::validateDatabaseCreateSchema(const std::string &tablename, const
         }
 
         // now lets go through the data and check if the keys are in the schema
+        // check for type and nullable
 
         if (!checkColumns(data, table_schema, error))
         {
@@ -43,7 +44,6 @@ bool Validator::validateDatabaseCreateSchema(const std::string &tablename, const
         }
 
         // Ensure all keys in the schema are present in the data
-        // in case of update we dont need to check for all keys
         if (!ensureAllKeysExist(data, table_schema, error))
         {
             return false;
@@ -240,10 +240,18 @@ bool Validator::ensureAllKeysExist(const jsoncons::json &data, const std::unorde
     // Ensure all keys in `data` exist in the schema
     for (const auto &entry : data.object_range())
     {
-        const auto &key = entry.key();
-        if (schema_columns.find(key) == schema_columns.end() && !exclude.contains(key))  // Key not in schema
+        // check if the key is in the exclude list
+        if (exclude.contains(entry.key()))
         {
-            error.message = "Key not found in schema: " + key;
+            error.message = "Key: [" + entry.key() + "] is not allowed to be changed.";
+            error.code    = 400;
+            return false;
+        }
+
+        const auto &key = entry.key();
+        if (schema_columns.find(key) == schema_columns.end())  // Key not in schema
+        {
+            error.message = "Key: [" + key + "] is not found in schema";
             error.code    = 400;
             return false;
         }
