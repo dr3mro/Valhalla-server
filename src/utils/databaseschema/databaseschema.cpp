@@ -21,7 +21,7 @@ DatabaseSchema::DatabaseSchema()
     {
         populateSchema(table);
     }
-    printSchema();
+    // printSchema();
 }
 
 void DatabaseSchema::populateSchema(const std::string& tableName)
