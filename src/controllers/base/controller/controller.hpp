@@ -171,7 +171,8 @@ class Controller
     }
 
     template <typename T>
-    std::enable_if_t<std::is_same<T, Patient>::value, void> GetVisits(T &entity, CALLBACK_ &&callback)
+    void GetVisits(T &entity, CALLBACK_ &&callback)
+        requires std::is_same<T, Patient>::value
     {
         json                       visits;
         std::optional<std::string> query;
