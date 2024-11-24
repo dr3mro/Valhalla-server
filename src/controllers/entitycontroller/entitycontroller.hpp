@@ -47,7 +47,7 @@ void EntityController<T>::Create(CALLBACK_ &&callback, std::string_view data)
             return;
         }
 
-        success = Validator::validateDatabaseSchema(T::getTableName(), request_json.value(), error, exclude, false);
+        success = Validator::validateDatabaseCreateSchema(T::getTableName(), request_json, error);
 
         if (!success)
         {
@@ -78,7 +78,7 @@ void EntityController<T>::Read(CALLBACK_ &&callback, std::string_view data)
         std::unordered_set<std::string> schema = request_json.at("schema").as<std::unordered_set<std::string>>();
         api::v2::Global::HttpError      error;
 
-        if (!Validator::ensureAllKeysExist(schema, std::format("{}_safe", T::getTableName()), error))
+        if (!Validator::validateDatabaseReadSchema(schema, std::format("{}_safe", T::getTableName()), error))
         {
             callback(error.code, fmt::format("Failed to validate request body, {}.", error.message));
             return;
@@ -116,7 +116,7 @@ void EntityController<T>::Update(CALLBACK_ &&callback, std::string_view data, co
             return;
         }
 
-        success = Validator::validateDatabaseSchema(T::getTableName(), request_json.value(), error, exclude, true);
+        success = Validator::validateDatabaseUpdateSchema(T::getTableName(), request_json, error, exclude);
 
         if (!success)
         {

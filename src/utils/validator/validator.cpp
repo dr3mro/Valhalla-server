@@ -2,6 +2,7 @@
 
 #include <fmt/format.h>
 
+#include <algorithm>
 #include <regex>
 
 #include "store/store.hpp"
@@ -17,8 +18,7 @@ const std::unordered_map<std::string, std::string> Validator::regex_client_valid
     {"gender", "^(Male|Female)$"},
 };
 
-bool Validator::validateDatabaseSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Global::HttpError &error,
-                                       const std::unordered_set<std::string> &exclude, const bool isUpdate)
+bool Validator::validateDatabaseCreateSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Global::HttpError &error)
 {
     try
     {
@@ -37,11 +37,46 @@ bool Validator::validateDatabaseSchema(const std::string &tablename, const jsonc
 
         // now lets go through the data and check if the keys are in the schema
 
-        if (!isUpdate && !checkColumns(data, table_schema, exclude, error))
+        if (!checkColumns(data, table_schema, error))
         {
             return false;
         }
 
+        // Ensure all keys in the schema are present in the data
+        // in case of update we dont need to check for all keys
+        if (!ensureAllKeysExist(data, table_schema, error))
+        {
+            return false;
+        }
+        return true;
+    }
+    catch (const std::exception &e)
+    {
+        error.message = e.what();
+        error.code    = 500;
+        return false;
+    }
+
+    return true;
+}
+
+bool Validator::validateDatabaseUpdateSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Global::HttpError &error,
+                                             const std::unordered_set<std::string> &exclude)
+{
+    try
+    {
+        if (nullCheck(data, error))
+        {
+            return false;
+        }
+        // Get the schema for the table
+        bool found        = false;
+        auto table_schema = getDatabaseSchemaForTable(tablename, error, found);
+
+        if (!found)
+        {
+            return false;
+        }
         // Ensure all keys in the schema are present in the data
         // in case of update we dont need to check for all keys
         if (!ensureAllKeysExist(data, table_schema, error, exclude))
@@ -60,7 +95,8 @@ bool Validator::validateDatabaseSchema(const std::string &tablename, const jsonc
     return true;
 }
 
-bool Validator::ensureAllKeysExist(const std::unordered_set<std::string> &keys, const std::string &table_name, api::v2::Global::HttpError &error)
+bool Validator::validateDatabaseReadSchema(const std::unordered_set<std::string> &keys, const std::string &table_name,
+                                           api::v2::Global::HttpError &error)
 {
     bool found = false;
 
@@ -77,7 +113,7 @@ bool Validator::ensureAllKeysExist(const std::unordered_set<std::string> &keys, 
     for (const auto &key : keys)
     {
         // Use std::find_if to check if a column with the given name exists
-        auto it = std::find_if(columns.begin(), columns.end(), [&](const api::v2::ColumnInfo &column) { return column.Name == key; });
+        auto it = std::ranges::find_if(columns, [&](const api::v2::ColumnInfo &column) { return column.Name == key; });
 
         if (it == columns.end())
         {
@@ -89,17 +125,15 @@ bool Validator::ensureAllKeysExist(const std::unordered_set<std::string> &keys, 
 
     return true;
 }
-bool Validator::clientValidationAndHashPasswd(const jsoncons::json &data, api::v2::Global::HttpError &error,
-                                              std::unordered_set<std::pair<std::string, std::string>> &db_data)
+bool Validator::clientRegexValidation(const jsoncons::json &data, api::v2::Global::HttpError &error,
+                                      std::unordered_set<std::pair<std::string, std::string>> &db_data)
 {
-    std::shared_ptr<PasswordCrypt> passwordCrypt = Store::getObject<PasswordCrypt>();
     for (const auto &item : data.object_range())
     {
         std::optional<std::string> value = item.value().as<std::string>();
         if (value.has_value() && !value->empty())
         {
-            auto pattern_item = std::find_if(regex_client_validators.begin(), regex_client_validators.end(),
-                                             [&](const auto &validator) { return validator.first == item.key(); });
+            auto pattern_item = std::ranges::find_if(regex_client_validators, [&](const auto &validator) { return validator.first == item.key(); });
 
             if (pattern_item != regex_client_validators.end())
             {
@@ -110,12 +144,6 @@ bool Validator::clientValidationAndHashPasswd(const jsoncons::json &data, api::v
                     return false;
                 }
             }
-
-            if (item.key() == "password")
-            {
-                value = passwordCrypt->hashPassword(value.value());
-            }
-
             db_data.insert({item.key(), value.value()});
         }
         else
@@ -142,8 +170,7 @@ bool Validator::nullCheck(const jsoncons::json &data, api::v2::Global::HttpError
 std::unordered_set<api::v2::ColumnInfo> Validator::getDatabaseSchemaForTable(const std::string &tablename, api::v2::Global::HttpError &error,
                                                                              bool &found)
 {
-    auto     db_schema = Store::getObject<DatabaseSchema>();
-    SCHEMA_t schema    = db_schema->getDatabaseSchema();
+    SCHEMA_t schema = DatabaseSchema::getDatabaseSchema();
 
     // Ensure the table schema exists
     auto table_schema_it = schema.find(tablename);
@@ -174,7 +201,7 @@ bool Validator::validateType(const jsoncons::json &value, const std::string &exp
 }
 
 bool Validator::checkColumns(const jsoncons::json &data, const std::unordered_set<api::v2::ColumnInfo> &table_schema,
-                             const std::unordered_set<std::string> &exclude, api::v2::Global::HttpError &error)
+                             api::v2::Global::HttpError &error, const std::unordered_set<std::string> &exclude)
 {
     for (const auto &column : table_schema)
     {

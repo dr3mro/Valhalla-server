@@ -10,6 +10,7 @@
 #include "configurator/configurator.hpp"
 #include "store/store.hpp"
 #include "utils/global/types.hpp"
+#include "utils/passwordcrypt/passwordcrypt.hpp"
 #include "utils/validator/validator.hpp"
 
 class Types
@@ -28,8 +29,8 @@ class Types
         virtual ~Entity_t() = default;
 
        private:
-        const S        data;
-        const uint64_t id;
+        const S                       data;
+        const std::optional<uint64_t> id;
     };
 
     using Create_t = struct Create_t : public Entity_t<jsoncons::json>
@@ -96,32 +97,115 @@ class Types
         }
     };
 
-    struct ClientData
+    struct ClientData_t
     {
        public:
-        ClientData(std::string_view _data, const std::optional<uint64_t> _id, api::v2::Global::HttpError &error, bool &success,
-                   const std::string &tablename, const std::unordered_set<std::string> &exclude, bool isUpdate)
-            : id(_id)
+        ClientData_t(std::string_view _data, const std::optional<uint64_t> _id, api::v2::Global::HttpError &error, bool &success) : id(_id)
         {
             try
             {
-                std::optional<jsoncons::json> json_data = jsoncons::json::parse(_data);
-                if (!json_data.has_value())
+                data_j = jsoncons::json::parse(_data);
+                if (!data_j.has_value())
                 {
                     error = {.code = 400, .message = "Failed to parse body."};
                     Message::ErrorMessage(error.message);
                     success = false;
                     return;
                 }
+            }
+            catch (const std::exception &e)
+            {
+                error   = {.code = 500, .message = fmt::format("Failed while parsing client data: {}.", e.what())};
+                success = false;
+                Message::CriticalMessage(error.message);
+                return;
+            }
 
-                success = Validator::validateDatabaseSchema(tablename, json_data.value(), error, exclude, isUpdate);
+            success = true;
+        }
+
+        bool hashPassword()
+        {
+            auto passwd_itr = std::find_if(data_set.begin(), data_set.end(), [&](const auto &item) { return item.first == "password"; });
+            if (passwd_itr != data_set.end())
+            {
+                std::string                password_raw    = passwd_itr->second;
+                std::optional<std::string> hashed_password = passwordCrypt->hashPassword(password_raw);
+                if (!hashed_password.has_value())
+                {
+                    return false;
+                }
+                data_set.erase(passwd_itr);
+                data_set.emplace("password", hashed_password.value());
+                return true;
+            }
+            return false;
+        }
+        const std::optional<jsoncons::json> &get_data_json() const { return data_j; }
+        std::optional<uint64_t>              get_id() const { return id; }
+
+       protected:
+        std::unordered_set<std::pair<std::string, std::string>> data_set;
+        std::optional<jsoncons::json>                           data_j;
+        std::optional<uint64_t>                                 id;
+
+       private:
+        std::shared_ptr<PasswordCrypt> passwordCrypt = Store::getObject<PasswordCrypt>();
+    };
+
+    struct CreateClient_t : public ClientData_t
+    {
+       public:
+        CreateClient_t(std::string_view _data, const std::string &tablename, api::v2::Global::HttpError &error, bool &success)
+            : ClientData_t(_data, std::nullopt, error, success)
+        {
+            try
+            {
+                success = Validator::validateDatabaseCreateSchema(tablename, data_j, error);
                 if (!success)
                 {
                     Message::ErrorMessage(error.message);
                     return;
                 }
 
-                success = Validator::clientValidationAndHashPasswd(json_data.value(), error, db_data);
+                success = Validator::clientRegexValidation(data_j, error, data_set);
+                if (!success)
+                {
+                    Message::ErrorMessage(error.message);
+                    return;
+                }
+                hashPassword();
+            }
+            catch (const std::exception &e)
+            {
+                error   = {.code = 500, .message = fmt::format("Failed while parsing client data: {}.", e.what())};
+                success = false;
+                Message::CriticalMessage(error.message);
+                return;
+            }
+
+            success = true;
+        }
+        const std::unordered_set<std::pair<std::string, std::string>> &get_data_set() const { return data_set; }
+    };
+
+    struct UpdateClient_t : public ClientData_t
+    {
+       public:
+        UpdateClient_t(std::string_view _data, const std::optional<uint64_t> _id, const std::string &tablename, api::v2::Global::HttpError &error,
+                       bool &success, const std::unordered_set<std::string> &exclude)
+            : ClientData_t(_data, _id, error, success)
+        {
+            try
+            {
+                success = Validator::validateDatabaseUpdateSchema(tablename, get_data_json(), error, exclude);
+                if (!success)
+                {
+                    Message::ErrorMessage(error.message);
+                    return;
+                }
+
+                success = Validator::clientRegexValidation(data_j, error, data_set);
                 if (!success)
                 {
                     Message::ErrorMessage(error.message);
@@ -138,14 +222,7 @@ class Types
 
             success = true;
         }
-
-        const std::unordered_set<std::pair<std::string, std::string>> &get_data() const { return db_data; }
-        std::optional<uint64_t>                                        get_id() const { return id; }
-
-       protected:
-       private:
-        std::unordered_set<std::pair<std::string, std::string>> db_data;
-        std::optional<uint64_t>                                 id;
+        const std::unordered_set<std::pair<std::string, std::string>> &get_data_set() const { return data_set; }
     };
 
     struct LogoutData
@@ -221,6 +298,6 @@ class Types
         const Configurator::FrontEndConfig &frontendcfg_ = cfg_->get<Configurator::FrontEndConfig>();
     };
 
-    using EntityType =
-        std::variant<Create_t, Read_t, Update_t, Delete_t, Data_t, Search_t, ClientData, LogoutData, SuspendData, Credentials, StaffData>;
+    using EntityType = std::variant<Create_t, Read_t, Update_t, Delete_t, Data_t, Search_t, CreateClient_t, UpdateClient_t, LogoutData, SuspendData,
+                                    Credentials, StaffData>;
 };

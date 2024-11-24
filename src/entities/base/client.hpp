@@ -11,7 +11,10 @@
 #include "utils/passwordcrypt/passwordcrypt.hpp"
 #define USERNAME "username"
 
-using json = jsoncons::json;
+template <typename T>
+concept ClientData_t =
+    std::is_same<T, Types::CreateClient_t>::value || std::is_same<T, Types::UpdateClient_t>::value || std::is_same<T, Types::Credentials>::value ||
+    std::is_same<T, Types::SuspendData>::value || std::is_same<T, Types::LogoutData>::value || std::is_same<T, Types::Data_t>::value;
 
 class Client : public Entity
 {
@@ -25,14 +28,14 @@ class Client : public Entity
 
     std::optional<std::string> getSqlCreateStatement() final
     {
-        auto clientdata = std::get<Types::ClientData>(getData());
+        auto clientdata = std::get<Types::CreateClient_t>(getData());
 
         try
         {
             std::vector<std::string> keys_arr;
             std::vector<std::string> values_arr;
 
-            for (auto &it : clientdata.get_data())
+            for (auto &it : clientdata.get_data_set())
             {
                 keys_arr.push_back(it.first);
                 values_arr.push_back(it.second);
@@ -58,8 +61,8 @@ class Client : public Entity
 
         try
         {
-            auto                    clientdata = std::get<Types::ClientData>(getData()).get_data();
-            std::optional<uint64_t> id         = std::get<Types::ClientData>(getData()).get_id();
+            auto                    clientdata = std::get<Types::UpdateClient_t>(getData()).get_data_set();
+            std::optional<uint64_t> id         = std::get<Types::UpdateClient_t>(getData()).get_id();
             if (!id.has_value())
             {
                 Message::ErrorMessage(fmt::format("Failed to update client data. No id provided."));
@@ -87,7 +90,7 @@ class Client : public Entity
         return query;
     }
 
-    inline std::optional<std::string> getSqlToggleSuspendStatement(bool state)
+    std::optional<std::string> getSqlToggleSuspendStatement(bool state)
     {
         std::optional<std::string> query;
         try
@@ -110,9 +113,10 @@ class Client : public Entity
 
     std::optional<std::string> getSqlActivateStatement() { return getSqlToggleSuspendStatement(true); }
 
+    template <typename T>
     bool exists()
     {
-        auto client_data = std::get<Types::ClientData>(getData()).get_data();
+        auto client_data = std::get<T>(getData()).get_data_set();
         auto it          = std::find_if(client_data.begin(), client_data.end(), [&](const auto &item) { return item.first == USERNAME; });
 
         if (it != client_data.end())

@@ -5,10 +5,8 @@
 class User : public Client
 {
    public:
-    User(const Types::ClientData &user_data) : Client(user_data, TABLENAME) {}
-    User(const Types::Credentials &credentials) : Client(credentials, TABLENAME) {}
-    template <typename T>
-    User(const T &data) : Client(data, TABLENAME)
+    template <typename ClientData_t>
+    User(const ClientData_t &data) : Client(data, TABLENAME)
     {
     }
     // User() : Client(std::string(TABLENAME)) {}

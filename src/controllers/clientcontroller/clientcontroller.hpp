@@ -64,12 +64,12 @@ void ClientController<T>::Create(CALLBACK_&& callback, std::string_view data)
         std::unordered_set<std::string> exclude;
         jsoncons::json                  json_data = jsoncons::json::parse(data);
 
-        Types::ClientData client_data(data, std::nullopt, error, success, T::getTableName(), exclude, false);
+        Types::CreateClient_t client_data(data, T::getTableName(), error, success);
 
         if (success)
         {
             T client(client_data);
-            if (client.exists())
+            if (client.template exists<Types::CreateClient_t>())
             {
                 callback(409, "User already exists");
                 return;
@@ -97,14 +97,12 @@ void ClientController<T>::Read(CALLBACK_&& callback, std::string_view data)
 template <Client_t T>
 void ClientController<T>::Update(CALLBACK_&& callback, std::string_view data, const std::optional<uint64_t> id)
 {
-    jsoncons::json json_data;
     try
     {
-        json_data                               = jsoncons::json::parse(data);
         bool                            success = false;
         std::unordered_set<std::string> exclude{"password"};
         api::v2::Global::HttpError      error;
-        Types::ClientData               client_data(data, id, error, success, T::getTableName(), exclude, true);
+        Types::UpdateClient_t           client_data(data, id, T::getTableName(), error, success, exclude);
 
         if (success)
         {
