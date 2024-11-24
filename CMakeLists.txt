@@ -60,7 +60,9 @@ set(CONAN_PACKAGES
   libsodium
   CURL
   ZLIB
+  c-ares
   spdlog
+  Trantor
   Drogon
 )
 
@@ -92,4 +94,3 @@ if(CMAKE_BUILD_TYPE MATCHES Debug)
 endif()
 
 add_subdirectory(tests)
-
