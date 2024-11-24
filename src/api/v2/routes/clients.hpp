@@ -17,65 +17,62 @@ namespace api
             void create(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                         const std::string &clientType)
             {
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase<CALLBACKSIGNATURE>::Create, std::move(callback),
-                                        req->body());
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Create, std::move(callback), req->body());
             }
 
             void login(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                        const std::string &clientType)
             {
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase<CALLBACKSIGNATURE>::Login, std::move(callback),
-                                        req->body());
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Login, std::move(callback), req->body());
             }
             void logout(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                         const std::string &clientType)
             {
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase<CALLBACKSIGNATURE>::Logout, std::move(callback),
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Logout, std::move(callback),
                                         req->getHeader("Authorization").substr(7));
             }
 
             void suspend(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                          const std::string &clientType)
             {
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase<CALLBACKSIGNATURE>::Suspend, std::move(callback),
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Suspend, std::move(callback),
                                         stoll(req->getParameter("id")));
             }
 
             void activate(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                           const std::string &clientType)
             {
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase<CALLBACKSIGNATURE>::Activate, std::move(callback),
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Activate, std::move(callback),
                                         stoll(req->getParameter("id")));
             }
 
             void read(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                       const std::string &clientType)
             {
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase<CALLBACKSIGNATURE>::Read, std::move(callback), req->body());
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Read, std::move(callback), req->body());
             }
 
             void update(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                         const std::string &clientType)
             {
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase<CALLBACKSIGNATURE>::Update, std::move(callback),
-                                        req->body(), stoll(req->getParameter("id")));
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Update, std::move(callback), req->body(),
+                                        stoll(req->getParameter("id")));
             }
             void delete_(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                          const std::string &clientType)
             {
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase<CALLBACKSIGNATURE>::Delete, std::move(callback),
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Delete, std::move(callback),
                                         stoll(req->getParameter("id")));
             }
             void search(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                         const std::string &clientType)
             {
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase<CALLBACKSIGNATURE>::Search, std::move(callback),
-                                        req->body());
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Search, std::move(callback), req->body());
             }
             void getservices(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                              const std::string &clientType)
             {
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase<CALLBACKSIGNATURE>::GetServices, std::move(callback),
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::GetServices, std::move(callback),
                                         stoll(req->getParameter("id")));
             }
 
@@ -93,12 +90,10 @@ namespace api
             METHOD_LIST_END
 
            private:
-            using ClientVariant = std::variant<std::shared_ptr<ClientController<User, CALLBACKSIGNATURE>>,
-                                               std::shared_ptr<ClientController<Provider, CALLBACKSIGNATURE>>>;
+            using ClientVariant = std::variant<std::shared_ptr<ClientController<User>>, std::shared_ptr<ClientController<Provider>>>;
 
-            std::unordered_map<std::string_view, ClientVariant> clientRegistry = {
-                {"users", Store::getObject<ClientController<User, CALLBACKSIGNATURE>>()},
-                {"providers", Store::getObject<ClientController<Provider, CALLBACKSIGNATURE>>()}};
+            std::unordered_map<std::string_view, ClientVariant> clientRegistry = {{"users", Store::getObject<ClientController<User>>()},
+                                                                                  {"providers", Store::getObject<ClientController<Provider>>()}};
         };
 
     }  // namespace v2

@@ -18,8 +18,8 @@
 template <typename T>
 concept Client_t = std::is_base_of_v<Client, T>;
 
-template <Client_t T, typename CALLBACK>
-class ClientController : public EntityController<T, CALLBACK>, public ClientControllerBase<CALLBACK>
+template <Client_t T>
+class ClientController : public EntityController<T>, public ClientControllerBase
 {
    public:
     ClientController()
@@ -37,25 +37,25 @@ class ClientController : public EntityController<T, CALLBACK>, public ClientCont
     }
 
     virtual ~ClientController() final = default;
-    void                    Create(CALLBACK&& callback, std::string_view data) final;
-    void                    Read(CALLBACK&& callback, std::string_view data) final;
-    void                    Update(CALLBACK&& callback, std::string_view data, std::optional<uint64_t> id) final;
-    void                    Delete(CALLBACK&& callback, std::optional<uint64_t> client_id) final;
-    void                    Search(CALLBACK&& callback, std::string_view data) final;
-    std::optional<uint64_t> Login(CALLBACK&& callback, std::string_view data) final;
-    void                    Logout(CALLBACK&& callback, const std::optional<std::string>& token) final;
-    void                    Suspend(CALLBACK&& callback, std::optional<uint64_t> client_id) final;
-    void                    Activate(CALLBACK&& callback, std::optional<uint64_t> client_id) final;
-    void                    ResetPassword(CALLBACK&& callback, std::string_view data) final;
-    void                    GetServices(CALLBACK&& callback, std::optional<uint64_t> client_id) final;
+    void                    Create(CALLBACK_&& callback, std::string_view data) final;
+    void                    Read(CALLBACK_&& callback, std::string_view data) final;
+    void                    Update(CALLBACK_&& callback, std::string_view data, std::optional<uint64_t> id) final;
+    void                    Delete(CALLBACK_&& callback, std::optional<uint64_t> client_id) final;
+    void                    Search(CALLBACK_&& callback, std::string_view data) final;
+    std::optional<uint64_t> Login(CALLBACK_&& callback, std::string_view data) final;
+    void                    Logout(CALLBACK_&& callback, const std::optional<std::string>& token) final;
+    void                    Suspend(CALLBACK_&& callback, std::optional<uint64_t> client_id) final;
+    void                    Activate(CALLBACK_&& callback, std::optional<uint64_t> client_id) final;
+    void                    ResetPassword(CALLBACK_&& callback, std::string_view data) final;
+    void                    GetServices(CALLBACK_&& callback, std::optional<uint64_t> client_id) final;
 
    private:
     std::shared_ptr<TokenManager>   tokenManager;
     std::shared_ptr<SessionManager> sessionManager;
 };
 
-template <Client_t T, typename CALLBACK>
-void ClientController<T, CALLBACK>::Create(CALLBACK&& callback, std::string_view data)
+template <Client_t T>
+void ClientController<T>::Create(CALLBACK_&& callback, std::string_view data)
 {
     try
     {
@@ -88,14 +88,14 @@ void ClientController<T, CALLBACK>::Create(CALLBACK&& callback, std::string_view
     }
 }
 
-template <Client_t T, typename CALLBACK>
-void ClientController<T, CALLBACK>::Read(CALLBACK&& callback, std::string_view data)
+template <Client_t T>
+void ClientController<T>::Read(CALLBACK_&& callback, std::string_view data)
 {
-    EntityController<T, CALLBACK>::Read(std::move(callback), data);
+    EntityController<T>::Read(std::move(callback), data);
 }
 
-template <Client_t T, typename CALLBACK>
-void ClientController<T, CALLBACK>::Update(CALLBACK&& callback, std::string_view data, const std::optional<uint64_t> id)
+template <Client_t T>
+void ClientController<T>::Update(CALLBACK_&& callback, std::string_view data, const std::optional<uint64_t> id)
 {
     jsoncons::json json_data;
     try
@@ -109,7 +109,7 @@ void ClientController<T, CALLBACK>::Update(CALLBACK&& callback, std::string_view
         if (success)
         {
             T client(client_data);
-            Controller::Update(client, callback);
+            Controller::Update(client, std::move(callback));
         }
         else
         {
@@ -123,20 +123,20 @@ void ClientController<T, CALLBACK>::Update(CALLBACK&& callback, std::string_view
     }
 }
 
-template <Client_t T, typename CALLBACK>
-void ClientController<T, CALLBACK>::Delete(CALLBACK&& callback, const std::optional<uint64_t> client_id)
+template <Client_t T>
+void ClientController<T>::Delete(CALLBACK_&& callback, const std::optional<uint64_t> client_id)
 {
-    EntityController<T, CALLBACK>::Delete(std::move(callback), client_id);
+    EntityController<T>::Delete(std::move(callback), client_id);
 }
 
-template <Client_t T, typename CALLBACK>
-void ClientController<T, CALLBACK>::Search(CALLBACK&& callback, std::string_view data)
+template <Client_t T>
+void ClientController<T>::Search(CALLBACK_&& callback, std::string_view data)
 {
-    EntityController<T, CALLBACK>::Search(std::move(callback), data);
+    EntityController<T>::Search(std::move(callback), data);
 }
 
-template <Client_t T, typename CALLBACK>
-std::optional<uint64_t> ClientController<T, CALLBACK>::Login(CALLBACK&& callback, std::string_view data)
+template <Client_t T>
+std::optional<uint64_t> ClientController<T>::Login(CALLBACK_&& callback, std::string_view data)
 {
     jsoncons::json          credentials_j;
     std::optional<uint64_t> client_id;
@@ -183,14 +183,14 @@ std::optional<uint64_t> ClientController<T, CALLBACK>::Login(CALLBACK&& callback
     return std::nullopt;
 }
 
-template <Client_t T, typename CALLBACK>
-void ClientController<T, CALLBACK>::Logout(CALLBACK&& callback, const std::optional<std::string>& token)
+template <Client_t T>
+void ClientController<T>::Logout(CALLBACK_&& callback, const std::optional<std::string>& token)
 {
     try
     {
         Types::LogoutData logoutData(token);
         T                 client(logoutData);
-        Controller::Logout(client, callback);
+        Controller::Logout(client, std::move(callback));
     }
     catch (const std::exception& e)
     {
@@ -198,8 +198,8 @@ void ClientController<T, CALLBACK>::Logout(CALLBACK&& callback, const std::optio
     }
 }
 
-template <Client_t T, typename CALLBACK>
-void ClientController<T, CALLBACK>::Suspend(CALLBACK&& callback, const std::optional<uint64_t> client_id)
+template <Client_t T>
+void ClientController<T>::Suspend(CALLBACK_&& callback, const std::optional<uint64_t> client_id)
 {
     try
     {
@@ -211,7 +211,7 @@ void ClientController<T, CALLBACK>::Suspend(CALLBACK&& callback, const std::opti
 
         Types::SuspendData suspendData(client_id.value());
         T                  client(suspendData);
-        Controller::Suspend(client, callback);
+        Controller::Suspend(client, std::move(callback));
     }
     catch (const std::exception& e)
     {
@@ -219,8 +219,8 @@ void ClientController<T, CALLBACK>::Suspend(CALLBACK&& callback, const std::opti
     }
 }
 
-template <Client_t T, typename CALLBACK>
-void ClientController<T, CALLBACK>::Activate(CALLBACK&& callback, const std::optional<uint64_t> client_id)
+template <Client_t T>
+void ClientController<T>::Activate(CALLBACK_&& callback, const std::optional<uint64_t> client_id)
 {
     try
     {
@@ -231,7 +231,7 @@ void ClientController<T, CALLBACK>::Activate(CALLBACK&& callback, const std::opt
         }
         Types::SuspendData suspendData(client_id.value());
         T                  client(suspendData);
-        Controller::Unsuspend(client, callback);
+        Controller::Unsuspend(client, std::move(callback));
     }
     catch (const std::exception& e)
     {
@@ -239,15 +239,15 @@ void ClientController<T, CALLBACK>::Activate(CALLBACK&& callback, const std::opt
     }
 }
 
-template <Client_t T, typename CALLBACK>
-void ClientController<T, CALLBACK>::ResetPassword(CALLBACK&& callback, std::string_view data)
+template <Client_t T>
+void ClientController<T>::ResetPassword(CALLBACK_&& callback, std::string_view data)
 {
     (void)callback;
     (void)data;
 }
 
-template <Client_t T, typename CALLBACK>
-void ClientController<T, CALLBACK>::GetServices(CALLBACK&& callback, std::optional<uint64_t> client_id)
+template <Client_t T>
+void ClientController<T>::GetServices(CALLBACK_&& callback, std::optional<uint64_t> client_id)
 {
     try
     {
@@ -258,7 +258,7 @@ void ClientController<T, CALLBACK>::GetServices(CALLBACK&& callback, std::option
         }
 
         T client(Types::Data_t(client_id.value()));
-        Controller::GetServices(client, callback);
+        Controller::GetServices(client, std::move(callback));
     }
     catch (const std::exception& e)
     {

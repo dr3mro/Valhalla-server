@@ -23,38 +23,35 @@ namespace api
             void Create(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                         const std::string &serviceType)
             {
-                executeControllerMethod(clinicRegistry, serviceType, &ClinicControllerBase<CALLBACKSIGNATURE>::Create, std::move(callback),
-                                        req->body());
+                executeControllerMethod(clinicRegistry, serviceType, &ClinicControllerBase::Create, std::move(callback), req->body());
             }
 
             void Read(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                       const std::string &serviceType)
             {
-                executeControllerMethod(clinicRegistry, serviceType, &ClinicControllerBase<CALLBACKSIGNATURE>::Read, std::move(callback),
-                                        req->body());
+                executeControllerMethod(clinicRegistry, serviceType, &ClinicControllerBase::Read, std::move(callback), req->body());
             }
 
             void Update(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                         const std::string &serviceType)
             {
-                executeControllerMethod(clinicRegistry, serviceType, &ClinicControllerBase<CALLBACKSIGNATURE>::Update, std::move(callback),
-                                        req->body(), stoll(req->getParameter("id")));
+                executeControllerMethod(clinicRegistry, serviceType, &ClinicControllerBase::Update, std::move(callback), req->body(),
+                                        stoll(req->getParameter("id")));
             }
             void Delete(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                         const std::string &serviceType)
             {
-                executeControllerMethod(clinicRegistry, serviceType, &ClinicControllerBase<CALLBACKSIGNATURE>::Delete, std::move(callback),
+                executeControllerMethod(clinicRegistry, serviceType, &ClinicControllerBase::Delete, std::move(callback),
                                         stoll(req->getParameter("id")));
             }
             void Search(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback)
             {
-                executeControllerMethod(clinicRegistry, "patients", &ClinicControllerBase<CALLBACKSIGNATURE>::Search, std::move(callback),
-                                        req->body());
+                executeControllerMethod(clinicRegistry, "patients", &ClinicControllerBase::Search, std::move(callback), req->body());
             }
 
             void GetVisits(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback)
             {
-                executeControllerMethod(clinicRegistry, "patients", &ClinicControllerBase<CALLBACKSIGNATURE>::GetVisits, std::move(callback),
+                executeControllerMethod(clinicRegistry, "patients", &ClinicControllerBase::GetVisits, std::move(callback),
                                         stoll(req->getParameter("id")));
             }
 
@@ -68,23 +65,22 @@ namespace api
             METHOD_LIST_END
 
            private:
-            using ClinicVariant = std::variant<
-                std::shared_ptr<ClinicController<Patient, CALLBACKSIGNATURE>>, std::shared_ptr<ClinicController<Visits, CALLBACKSIGNATURE>>,
-                std::shared_ptr<ClinicController<VisitDrugs, CALLBACKSIGNATURE>>, std::shared_ptr<ClinicController<Requests, CALLBACKSIGNATURE>>,
-                std::shared_ptr<ClinicController<Prescriptions, CALLBACKSIGNATURE>>,
-                std::shared_ptr<ClinicController<PaidServices, CALLBACKSIGNATURE>>, std::shared_ptr<ClinicController<Reports, CALLBACKSIGNATURE>>,
-                std::shared_ptr<ClinicController<PatientDrugs, CALLBACKSIGNATURE>>, std::shared_ptr<ClinicController<Health, CALLBACKSIGNATURE>>>;
+            using ClinicVariant = std::variant<std::shared_ptr<ClinicController<Patient>>, std::shared_ptr<ClinicController<Visits>>,
+                                               std::shared_ptr<ClinicController<VisitDrugs>>, std::shared_ptr<ClinicController<Requests>>,
+                                               std::shared_ptr<ClinicController<Prescriptions>>, std::shared_ptr<ClinicController<PaidServices>>,
+                                               std::shared_ptr<ClinicController<Reports>>, std::shared_ptr<ClinicController<PatientDrugs>>,
+                                               std::shared_ptr<ClinicController<Health>>>;
 
             std::unordered_map<std::string_view, ClinicVariant> clinicRegistry = {
-                {"patients", Store::getObject<ClinicController<Patient, CALLBACKSIGNATURE>>()},
-                {"visits", Store::getObject<ClinicController<Visits, CALLBACKSIGNATURE>>()},
-                {"visitDrugs", Store::getObject<ClinicController<VisitDrugs, CALLBACKSIGNATURE>>()},
-                {"requests", Store::getObject<ClinicController<Requests, CALLBACKSIGNATURE>>()},
-                {"prescriptions", Store::getObject<ClinicController<Prescriptions, CALLBACKSIGNATURE>>()},
-                {"paidservices", Store::getObject<ClinicController<PaidServices, CALLBACKSIGNATURE>>()},
-                {"reports", Store::getObject<ClinicController<Reports, CALLBACKSIGNATURE>>()},
-                {"patientdrugs", Store::getObject<ClinicController<PatientDrugs, CALLBACKSIGNATURE>>()},
-                {"health", Store::getObject<ClinicController<Health, CALLBACKSIGNATURE>>()}};
+                {"patients", Store::getObject<ClinicController<Patient>>()},
+                {"visits", Store::getObject<ClinicController<Visits>>()},
+                {"visitDrugs", Store::getObject<ClinicController<VisitDrugs>>()},
+                {"requests", Store::getObject<ClinicController<Requests>>()},
+                {"prescriptions", Store::getObject<ClinicController<Prescriptions>>()},
+                {"paidservices", Store::getObject<ClinicController<PaidServices>>()},
+                {"reports", Store::getObject<ClinicController<Reports>>()},
+                {"patientdrugs", Store::getObject<ClinicController<PatientDrugs>>()},
+                {"health", Store::getObject<ClinicController<Health>>()}};
         };
     }  // namespace v2
 }  // namespace api
