@@ -122,6 +122,7 @@ class Configurator
         bool             log_to_file;
         std::string_view log_dir;
         std::string_view log_file;
+        std::string      upload_dir;
 
         ServerConfig()
         {
@@ -136,6 +137,7 @@ class Configurator
             log_to_file    = getEnvironmentVariable(std::string_view("SERVER_LOG_TO_FILE"), Defaults::Server::SERVER_LOG_TO_FILE_);
             log_dir        = getEnvironmentVariable(std::string_view("SERVER_LOG_DIR"), Defaults::Server::SERVER_LOG_DIR_);
             log_file       = getEnvironmentVariable(std::string_view("SERVER_LOG_FILE"), Defaults::Server::SERVER_LOG_FILE_);
+            upload_dir     = getEnvironmentVariable(std::string_view("SERVER_UPLOAD_DIR"), Defaults::Server::SERVER_UPLOAD_DIR_);
 
             optimize_performance(threads, 4);
         }
@@ -156,6 +158,7 @@ class Configurator
             Message::ConfMessage(fmt::format("Log to file: {}", log_to_file));
             Message::ConfMessage(fmt::format("Log directory: {}", log_dir));
             Message::ConfMessage(fmt::format("Log file: {}", log_file));
+            Message::ConfMessage(fmt::format("Upload directory: {}", upload_dir));
         }
     };
 
