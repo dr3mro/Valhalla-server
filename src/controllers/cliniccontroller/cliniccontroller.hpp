@@ -33,10 +33,10 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
                 return;
             }
 
-            success = Validator::validateDatabaseSchema(T::getTableName(), request_json, error, exclude, false);
+            success = Validator::validateDatabaseCreateSchema(T::getTableName(), request_json, error);
             if (!success)
             {
-                callback(400, error.message);
+                callback(error.code, error.message);
                 return;
             }
 

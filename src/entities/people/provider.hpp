@@ -5,10 +5,8 @@
 class Provider : public Client
 {
    public:
-    Provider(const Types::ClientData &user_data) : Client(user_data, TABLENAME) {}
-    Provider(const Types::Credentials &credentials) : Client(credentials, TABLENAME) {}
-    template <typename T>
-    Provider(const T &data) : Client(data, TABLENAME)
+    template <typename ClientData_t>
+    Provider(const ClientData_t &data) : Client(data, TABLENAME)
     {
     }
     // Provider() : Client(std::string(TABLENAME)) {}
