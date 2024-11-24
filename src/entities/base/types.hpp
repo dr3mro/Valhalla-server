@@ -12,8 +12,6 @@
 #include "utils/global/types.hpp"
 #include "utils/validator/validator.hpp"
 
-using json = jsoncons::json;
-
 class Types
 {
    public:
@@ -36,7 +34,7 @@ class Types
 
     using Create_t = struct Create_t : public Entity_t<jsoncons::json>
     {
-        Create_t(const json &_data, const uint64_t id) : Entity_t(_data, id) {}
+        Create_t(const jsoncons::json &_data, const uint64_t id) : Entity_t(_data, id) {}
         ~Create_t() override = default;
     };
 
@@ -48,7 +46,7 @@ class Types
 
     using Update_t = struct Update_t : public Entity_t<jsoncons::json>
     {
-        Update_t(const json &_data, const uint64_t _id) : Entity_t(_data, _id) {}
+        Update_t(const jsoncons::json &_data, const uint64_t _id) : Entity_t(_data, _id) {}
         ~Update_t() override = default;
     };
 
@@ -73,7 +71,7 @@ class Types
         size_t      limit;
         size_t      offset;
 
-        Search_t(const json &search_j, bool &success)
+        Search_t(const jsoncons::json &search_j, bool &success)
         {
             try
             {
@@ -94,7 +92,7 @@ class Types
         bool validate(const jsoncons::json &search_j)
         {
             std::unordered_set<std::string> keys = {"keyword", "filter", "order_by", "direction", "limit", "offset"};
-            return std::all_of(keys.begin(), keys.end(), [&search_j](const std::string &key) { return search_j.find(key).has_value(); });
+            return std::ranges::all_of(keys, [&search_j](const std::string &key) { return search_j.find(key).has_value(); });
         }
     };
 
@@ -177,7 +175,7 @@ class Types
         std::string entity_name;
         std::string project_name;
 
-        StaffData(const json &json)
+        StaffData(const jsoncons::json &json)
         {
             try
             {
@@ -197,7 +195,7 @@ class Types
             }
         }
 
-        bool toInviteJson(json &invite_json)
+        bool toInviteJson(jsoncons::json &invite_json)
         {
             try
             {
