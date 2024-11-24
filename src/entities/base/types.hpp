@@ -124,6 +124,14 @@ class Types
             success = true;
         }
 
+        const std::optional<jsoncons::json> &get_data_json() const { return data_j; }
+        std::optional<uint64_t>              get_id() const { return id; }
+
+       protected:
+        std::unordered_set<std::pair<std::string, std::string>> data_set;
+        std::optional<jsoncons::json>                           data_j;
+        std::optional<uint64_t>                                 id;
+
         bool hashPassword()
         {
             auto passwd_itr = std::find_if(data_set.begin(), data_set.end(), [&](const auto &item) { return item.first == "password"; });
@@ -141,13 +149,6 @@ class Types
             }
             return false;
         }
-        const std::optional<jsoncons::json> &get_data_json() const { return data_j; }
-        std::optional<uint64_t>              get_id() const { return id; }
-
-       protected:
-        std::unordered_set<std::pair<std::string, std::string>> data_set;
-        std::optional<jsoncons::json>                           data_j;
-        std::optional<uint64_t>                                 id;
 
        private:
         std::shared_ptr<PasswordCrypt> passwordCrypt = Store::getObject<PasswordCrypt>();
