@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 
 # Try to get the exact tag
 current_tag=$(git describe --tags --exact-match 2>/dev/null)
