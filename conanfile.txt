@@ -12,6 +12,7 @@ libsodium/cci.20220430
 libcurl/8.10.1
 spdlog/1.13.0
 fmt/10.2.1
+c-ares/1.25.0
 trantor/1.5.21
 drogon/1.9.8
 
@@ -25,5 +26,9 @@ cmake_layout
 [options]
 trantor/*:with_spdlog=True
 drogon/*:with_spdlog=True
+drogon/*:with_boost=False
 spdlog/*:header_only=True
+c-ares/*:tools=False
+
+
 
