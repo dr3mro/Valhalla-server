@@ -19,7 +19,7 @@ int Server::run()
         drogon::app()
             .addListener(config_.host.data(), config_.port)
             .setThreadNum(config_.threads)
-            .setUploadPath("./uploads")
+            .setUploadPath(config_.upload_dir)
             .disableSigtermHandling()
             .setLogLevel(static_cast<trantor::Logger::LogLevel>(config_.debug_level))
             .registerPreRoutingAdvice(
