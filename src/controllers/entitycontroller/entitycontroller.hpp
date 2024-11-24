@@ -7,25 +7,25 @@
 #include "controllers/base/controller/controller.hpp"
 #include "controllers/entitycontroller/entitycontrollerbase.hpp"
 #include "utils/global/types.hpp"
-template <typename T, typename CALLBACK>
-class EntityController : public Controller, public EntityControllerBase<CALLBACK>
+template <typename T>
+class EntityController : public Controller, public EntityControllerBase
 {
    public:
     EntityController()          = default;
     virtual ~EntityController() = default;
     // CRUDS
 
-    void Create(CALLBACK &&callback, std::string_view data) override;
-    void Read(CALLBACK &&callback, std::string_view data) override;
-    void Update(CALLBACK &&callback, std::string_view data, std::optional<uint64_t> id) override;
-    void Delete(CALLBACK &&callback, std::optional<uint64_t> id) override;
-    void Search(CALLBACK &&callback, std::string_view data) override;
+    void Create(CALLBACK_ &&callback, std::string_view data) override;
+    void Read(CALLBACK_ &&callback, std::string_view data) override;
+    void Update(CALLBACK_ &&callback, std::string_view data, std::optional<uint64_t> id) override;
+    void Delete(CALLBACK_ &&callback, std::optional<uint64_t> id) override;
+    void Search(CALLBACK_ &&callback, std::string_view data) override;
 
    protected:
 };
 
-template <typename T, typename CALLBACK>
-void EntityController<T, CALLBACK>::Create(CALLBACK &&callback, std::string_view data)
+template <typename T>
+void EntityController<T>::Create(CALLBACK_ &&callback, std::string_view data)
 {
     try
     {
@@ -59,7 +59,7 @@ void EntityController<T, CALLBACK>::Create(CALLBACK &&callback, std::string_view
 
         T entity(entity_data);
 
-        Controller::Create(entity, callback);
+        Controller::Create(entity, std::move(callback));
     }
     catch (const std::exception &e)
     {
@@ -67,8 +67,8 @@ void EntityController<T, CALLBACK>::Create(CALLBACK &&callback, std::string_view
     }
 }
 
-template <typename T, typename CALLBACK>
-void EntityController<T, CALLBACK>::Read(CALLBACK &&callback, std::string_view data)
+template <typename T>
+void EntityController<T>::Read(CALLBACK_ &&callback, std::string_view data)
 {
     jsoncons::json request_json;
     try
@@ -93,8 +93,8 @@ void EntityController<T, CALLBACK>::Read(CALLBACK &&callback, std::string_view d
     }
 }
 
-template <typename T, typename CALLBACK>
-void EntityController<T, CALLBACK>::Update(CALLBACK &&callback, std::string_view data, const std::optional<uint64_t> id)
+template <typename T>
+void EntityController<T>::Update(CALLBACK_ &&callback, std::string_view data, const std::optional<uint64_t> id)
 {
     try
     {
@@ -127,7 +127,7 @@ void EntityController<T, CALLBACK>::Update(CALLBACK &&callback, std::string_view
         Types::Update_t entity_data = Types::Update_t(request_json.value(), id.value());
         T               entity(entity_data);
 
-        Controller::Update(entity, callback);
+        Controller::Update(entity, std::move(callback));
     }
     catch (const std::exception &e)
     {
@@ -135,8 +135,8 @@ void EntityController<T, CALLBACK>::Update(CALLBACK &&callback, std::string_view
     }
 }
 
-template <typename T, typename CALLBACK>
-void EntityController<T, CALLBACK>::Delete(CALLBACK &&callback, const std::optional<uint64_t> id)
+template <typename T>
+void EntityController<T>::Delete(CALLBACK_ &&callback, const std::optional<uint64_t> id)
 {
     try
     {
@@ -155,8 +155,8 @@ void EntityController<T, CALLBACK>::Delete(CALLBACK &&callback, const std::optio
     }
 }
 
-template <typename T, typename CALLBACK>
-void EntityController<T, CALLBACK>::Search(CALLBACK &&callback, std::string_view data)
+template <typename T>
+void EntityController<T>::Search(CALLBACK_ &&callback, std::string_view data)
 {
     jsoncons::json request_json;
     try
@@ -167,7 +167,7 @@ void EntityController<T, CALLBACK>::Search(CALLBACK &&callback, std::string_view
 
         if (success)
         {
-            Controller::Search(entity, callback);
+            Controller::Search(entity, std::move(callback));
         }
         else
         {

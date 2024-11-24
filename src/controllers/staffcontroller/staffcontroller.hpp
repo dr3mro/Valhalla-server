@@ -9,25 +9,25 @@
 #include "utils/communicate/communicate.hpp"
 #include "utils/global/global.hpp"
 
-template <typename T, typename CALLBACK>
-class StaffController : public StaffControllerBase<CALLBACK>, public Controller
+template <typename T>
+class StaffController : public StaffControllerBase, public Controller
 {
    public:
     StaffController() : cfg_(Store::getObject<Configurator>()), email_sender_daemon_config_(cfg_->get<Configurator::EmailSenderConfig>()) {}
     virtual ~StaffController() override = default;
 
     // CRUDS
-    void AddStaffToEntity(CALLBACK &&callback, std::string_view data) override;
-    void RemoveStaffFromEntity(CALLBACK &&callback, std::string_view data) override;
-    void InviteStaffToEntity(CALLBACK &&callback, std::string_view data) override;
+    void AddStaffToEntity(CALLBACK_ &&callback, std::string_view data) override;
+    void RemoveStaffFromEntity(CALLBACK_ &&callback, std::string_view data) override;
+    void InviteStaffToEntity(CALLBACK_ &&callback, std::string_view data) override;
 
    private:
     std::shared_ptr<Configurator>   cfg_;
     Configurator::EmailSenderConfig email_sender_daemon_config_;
 };
 
-template <typename T, typename CALLBACK>
-void StaffController<T, CALLBACK>::AddStaffToEntity(CALLBACK &&callback, std::string_view data)
+template <typename T>
+void StaffController<T>::AddStaffToEntity(CALLBACK_ &&callback, std::string_view data)
 {
     jsoncons::json staff_j;
 
@@ -45,8 +45,8 @@ void StaffController<T, CALLBACK>::AddStaffToEntity(CALLBACK &&callback, std::st
         CRITICALMESSAGERESPONSE
     }
 }
-template <typename T, typename CALLBACK>
-void StaffController<T, CALLBACK>::RemoveStaffFromEntity(CALLBACK &&callback, std::string_view data)
+template <typename T>
+void StaffController<T>::RemoveStaffFromEntity(CALLBACK_ &&callback, std::string_view data)
 {
     jsoncons::json staff_j;
 
@@ -57,15 +57,15 @@ void StaffController<T, CALLBACK>::RemoveStaffFromEntity(CALLBACK &&callback, st
         Types::StaffData staffData(payload);
 
         T staff(staffData);
-        Controller::removeStaff(staff, callback);
+        Controller::removeStaff(staff, std::move(callback));
     }
     catch (const std::exception &e)
     {
         CRITICALMESSAGERESPONSE
     }
 }
-template <typename T, typename CALLBACK>
-void StaffController<T, CALLBACK>::InviteStaffToEntity(CALLBACK &&callback, std::string_view data)
+template <typename T>
+void StaffController<T>::InviteStaffToEntity(CALLBACK_ &&callback, std::string_view data)
 {
     jsoncons::json staff_j;
     try

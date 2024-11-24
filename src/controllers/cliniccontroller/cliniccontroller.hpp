@@ -11,13 +11,14 @@
 
 using json = jsoncons::json;
 
-template <typename T, typename CALLBACK>
-class ClinicController : public EntityController<T, CALLBACK>, public ClinicControllerBase<CALLBACK>
+template <typename T>
+class ClinicController : public EntityController<T>, public ClinicControllerBase
 {
    private:
     // Primary template for other entities
     template <typename U = T>
-    std::enable_if_t<!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value, void> CreateImpl(CALLBACK &&callback, std::string_view data)
+    std::enable_if_t<!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value, void> CreateImpl(CALLBACK_      &&callback,
+                                                                                                           std::string_view data)
     {
         jsoncons::json                  request_json = jsoncons::json::parse(data);
         bool                            success      = false;
@@ -58,20 +59,20 @@ class ClinicController : public EntityController<T, CALLBACK>, public ClinicCont
     }
 
     template <typename U = T>
-    std::enable_if_t<std::is_same<U, Patient>::value || std::is_same<U, Visits>::value, void> CreateImpl(CALLBACK &&callback, std::string_view data)
+    std::enable_if_t<std::is_same<U, Patient>::value || std::is_same<U, Visits>::value, void> CreateImpl(CALLBACK_ &&callback, std::string_view data)
     {
-        EntityController<T, CALLBACK>::Create(std::move(callback), data);
+        EntityController<T>::Create(std::move(callback), data);
     }
 
     template <typename U = T>
-    std::enable_if_t<std::is_same<U, Patient>::value || std::is_same<U, Visits>::value, void> DeleteImpl(CALLBACK                    &&callback,
+    std::enable_if_t<std::is_same<U, Patient>::value || std::is_same<U, Visits>::value, void> DeleteImpl(CALLBACK_                   &&callback,
                                                                                                          const std::optional<uint64_t> id)
     {
-        EntityController<T, CALLBACK>::Delete(std::move(callback), id);
+        EntityController<T>::Delete(std::move(callback), id);
     }
 
     template <typename U = T>
-    std::enable_if_t<!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value, void> DeleteImpl(CALLBACK                    &&callback,
+    std::enable_if_t<!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value, void> DeleteImpl(CALLBACK_                   &&callback,
                                                                                                            const std::optional<uint64_t> id)
     {
         (void)id;
@@ -80,13 +81,13 @@ class ClinicController : public EntityController<T, CALLBACK>, public ClinicCont
 
     // Only enable GetVisits if T is of type Patient
     template <typename U = T>
-    std::enable_if_t<std::is_same<U, Patient>::value, void> SearchImpl(CALLBACK &&callback, std::string_view data)
+    std::enable_if_t<std::is_same<U, Patient>::value, void> SearchImpl(CALLBACK_ &&callback, std::string_view data)
     {
-        EntityController<T, CALLBACK>::Search(std::move(callback), data);
+        EntityController<T>::Search(std::move(callback), data);
     }
 
     template <typename U = T>
-    std::enable_if_t<!std::is_same<U, Patient>::value, void> SearchImpl(CALLBACK &&callback, std::string_view data)
+    std::enable_if_t<!std::is_same<U, Patient>::value, void> SearchImpl(CALLBACK_ &&callback, std::string_view data)
     {
         (void)data;
         callback(400, fmt::format("Search is NOT implemented for entity type {}", T::getTableName()));
@@ -94,7 +95,7 @@ class ClinicController : public EntityController<T, CALLBACK>, public ClinicCont
 
     // Only enable GetVisits if T is of type Patient
     template <typename U = T>
-    std::enable_if_t<std::is_same<U, Patient>::value, void> GetVisitsImpl(CALLBACK &&callback, const std::optional<uint64_t> id)
+    std::enable_if_t<std::is_same<U, Patient>::value, void> GetVisitsImpl(CALLBACK_ &&callback, const std::optional<uint64_t> id)
     {
         try
         {
@@ -114,7 +115,7 @@ class ClinicController : public EntityController<T, CALLBACK>, public ClinicCont
 
     // Only enable GetVisits if T is of type Patient
     template <typename U = T>
-    typename std::enable_if<!std::is_same<U, Patient>::value, void>::type GetVisitsImpl(CALLBACK &&callback, const std::optional<uint64_t> id)
+    typename std::enable_if<!std::is_same<U, Patient>::value, void>::type GetVisitsImpl(CALLBACK_ &&callback, const std::optional<uint64_t> id)
     {
         (void)id;
         callback(400, fmt::format("GetVisit is NOT implemented for entity type {}", T::getTableName()));
@@ -125,32 +126,32 @@ class ClinicController : public EntityController<T, CALLBACK>, public ClinicCont
 
     virtual ~ClinicController() override = default;
 
-    void Create(CALLBACK &&callback, std::string_view data) final
+    void Create(CALLBACK_ &&callback, std::string_view data) final
     {
         // here we call the actual implementation of the Create method
         CreateImpl(std::move(callback), data);
     }
 
-    void Read(CALLBACK &&callback, std::string_view data) final
+    void Read(CALLBACK_ &&callback, std::string_view data) final
     {
         // Read for all clinic entities
-        EntityController<T, CALLBACK>::Read(std::move(callback), data);
+        EntityController<T>::Read(std::move(callback), data);
     }
-    void Update(CALLBACK &&callback, std::string_view data, const std::optional<uint64_t> id) final
+    void Update(CALLBACK_ &&callback, std::string_view data, const std::optional<uint64_t> id) final
     {
         // Update for all clinic entities
-        EntityController<T, CALLBACK>::Update(std::move(callback), data, id);
+        EntityController<T>::Update(std::move(callback), data, id);
     }
 
-    void Delete(CALLBACK &&callback, const std::optional<uint64_t> id) final { DeleteImpl(std::move(callback), id); }
+    void Delete(CALLBACK_ &&callback, const std::optional<uint64_t> id) final { DeleteImpl(std::move(callback), id); }
 
-    void Search(CALLBACK &&callback, std::string_view data) final
+    void Search(CALLBACK_ &&callback, std::string_view data) final
     {
         // search only for Patient
         SearchImpl(std::move(callback), data);
     }
 
-    void GetVisits(CALLBACK &&callback, const std::optional<uint64_t> id) final
+    void GetVisits(CALLBACK_ &&callback, const std::optional<uint64_t> id) final
     {
         // GetVisits only for Patient
         GetVisitsImpl(std::move(callback), id);

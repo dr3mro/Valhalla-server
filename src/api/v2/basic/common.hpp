@@ -6,6 +6,7 @@
 #include <string_view>
 
 #include "api/v2/helper/helper.hpp"
+#include "utils/global/callback.hpp"
 
 #define RATELIMIT "api::v2::Filters::RateLimit"
 #define AUTH "api::v2::Filters::Auth"
@@ -14,8 +15,6 @@
 #define INSECURE RATELIMIT, ELAPSED
 #define SECURE INSECURE, AUTH
 
-#define CALLBACKSIGNATURE std::function<void(int, const std::string&)>
-#
 namespace api
 {
     namespace v2
@@ -33,7 +32,7 @@ namespace api
                     std::visit(
                         [&](const auto& controller)
                         {
-                            CALLBACKSIGNATURE mcb = [&callback](int code, const std::string& content)
+                            CALLBACK_ mcb = [&callback](int code, const std::string& content)
                             {
                                 switch (code)
                                 {

@@ -8,6 +8,7 @@
 #include "controllers/databasecontroller/databasecontroller.hpp"
 #include "entities/base/client.hpp"
 #include "entities/services/clinics/patient/patient.hpp"
+#include "utils/global/callback.hpp"
 #include "utils/global/global.hpp"
 #include "utils/jsonhelper/jsonhelper.hpp"
 #include "utils/message/message.hpp"
@@ -34,27 +35,27 @@ class Controller
     virtual ~Controller() = default;
 
     // CRUDS
-    template <typename T, typename CALLBACK>
-    void Create(T &entity, CALLBACK &&callback)
+    template <typename T>
+    void Create(T &entity, CALLBACK_ &&callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlCreateStatement;
-        cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK>(callback));
+        cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK_>(callback));
     }
 
-    template <typename T, typename CALLBACK>
-    void Read(T &entity, CALLBACK &&callback)
+    template <typename T>
+    void Read(T &entity, CALLBACK_ &&callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlReadStatement;
-        cruds(entity, sqlstatement, dbrexec, std::forward<CALLBACK>(callback));
+        cruds(entity, sqlstatement, dbrexec, std::forward<CALLBACK_>(callback));
     }
-    template <typename T, typename CALLBACK>
-    void Update(T &entity, CALLBACK &&callback)
+    template <typename T>
+    void Update(T &entity, CALLBACK_ &&callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlUpdateStatement;
-        cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK>(callback));
+        cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK_>(callback));
     }
-    template <typename T, typename CALLBACK>
-    void Delete(T &entity, CALLBACK &&callback)
+    template <typename T>
+    void Delete(T &entity, CALLBACK_ &&callback)
     {
         if (!entity.template check_id_exists<Types::Delete_t>())
         {
@@ -62,10 +63,10 @@ class Controller
             return;
         }
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlDeleteStatement;
-        cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK>(callback));
+        cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK_>(callback));
     }
-    template <typename T, typename CALLBACK>
-    void Search(T &entity, CALLBACK &&callback)
+    template <typename T>
+    void Search(T &entity, CALLBACK_ &&callback)
     {
         jsoncons::json             response_json;
         json                       query_results_json;
@@ -101,8 +102,9 @@ class Controller
             CRITICALMESSAGERESPONSE
         }
     }
-    template <typename T, typename CALLBACK>
-    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Logout(T &entity, CALLBACK &&callback)
+    template <typename T>
+    void Logout(T &entity, CALLBACK_ &&callback)
+        requires(std::is_base_of_v<Client, T>)
     {
         TokenManager::LoggedClientInfo loggedClientInfo;
 
@@ -128,22 +130,25 @@ class Controller
         }
     }
 
-    template <typename T, typename CALLBACK>
-    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Suspend(T &entity, CALLBACK &&callback)
+    template <typename T>
+    void Suspend(T &entity, CALLBACK_ &&callback)
+        requires(std::is_base_of_v<Client, T>)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlSuspendStatement;
-        cruds(entity, sqlstatement, dbexec, callback);
+        cruds(entity, sqlstatement, dbexec, std::move(callback));
     }
 
-    template <typename T, typename CALLBACK>
-    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> Unsuspend(T &entity, CALLBACK &&callback)
+    template <typename T>
+    void Unsuspend(T &entity, CALLBACK_ &&callback)
+        requires(std::is_base_of_v<Client, T>)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlActivateStatement;
-        cruds(entity, sqlstatement, dbexec, callback);
+        cruds(entity, sqlstatement, dbexec, std::move(callback));
     }
 
-    template <typename T, typename CALLBACK>
-    typename std::enable_if_t<std::is_base_of_v<Client, T>, void> GetServices(T &entity, CALLBACK &&callback)
+    template <typename T>
+    void GetServices(T &entity, CALLBACK_ &&callback)
+        requires(std::is_base_of_v<Client, T>)
     {
         json                       services;
         std::optional<std::string> query;
@@ -165,8 +170,8 @@ class Controller
         }
     }
 
-    template <typename T, typename CALLBACK>
-    std::enable_if_t<std::is_same<T, Patient>::value, void> GetVisits(T &entity, CALLBACK &&callback)
+    template <typename T>
+    std::enable_if_t<std::is_same<T, Patient>::value, void> GetVisits(T &entity, CALLBACK_ &&callback)
     {
         json                       visits;
         std::optional<std::string> query;
@@ -239,8 +244,8 @@ class Controller
         return true;
     }
 
-    template <typename S, typename T, typename CALLBACK>
-    void cruds(T &entity, S &sqlstatement, std::optional<json> (DatabaseController::*f)(const std::string &), CALLBACK &&callback)
+    template <typename S, typename T>
+    void cruds(T &entity, S &sqlstatement, std::optional<json> (DatabaseController::*f)(const std::string &), CALLBACK_ &&callback)
     {
         std::optional<jsoncons::json> results_j;
         std::optional<std::string>    query;
@@ -273,17 +278,17 @@ class Controller
         }
     }
 
-    template <typename T, typename CALLBACK>
-    void addStaff(T &entity, CALLBACK &&callback)
+    template <typename T>
+    void addStaff(T &entity, CALLBACK_ &&callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlAddStaffStatement;
-        cruds(entity, sqlstatement, dbexec, callback);
+        cruds(entity, sqlstatement, dbexec, std::move(callback));
     }
 
-    template <typename T, typename CALLBACK>
-    void removeStaff(T &entity, CALLBACK &&callback)
+    template <typename T>
+    void removeStaff(T &entity, CALLBACK_ &&callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlRemoveStaffStatement;
-        cruds(entity, sqlstatement, dbexec, callback);
+        cruds(entity, sqlstatement, dbexec, std::move(callback));
     }
 };
