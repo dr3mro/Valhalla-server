@@ -3,8 +3,8 @@
 #include "utils/jsonhelper/jsonhelper.hpp"
 
 using namespace api::v2;
-constexpr std::string FAILURE = "Failure";
-constexpr std::string ERROR   = "Error";
+constexpr char FAILURE[] = "Failure";
+constexpr char ERROR[]   = "Error";
 
 void Helper::failureResponse(const std::string& message, std::function<void(const drogon::HttpResponsePtr&)>&& callback)
 {
