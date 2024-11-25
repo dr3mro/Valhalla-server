@@ -106,5 +106,6 @@ jobs:
 
       - name: Push Docker Image
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/valhalla-server-run:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/valhalla-server-run:${{ github.ref_name }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/valhalla-server-run:latest
+
