@@ -1,10 +1,9 @@
 # Use a lightweight base image
-FROM ubuntu:20.04
+FROM ubuntu:24.04
 
 # Update and install runtime dependencies
 RUN apt-get update && apt-get install -y \
-    libpq5 \
-    ca-certificates && \
+    libpq5 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
