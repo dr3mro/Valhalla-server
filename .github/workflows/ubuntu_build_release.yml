@@ -84,8 +84,8 @@ jobs:
 
       - name: Install needed tools
         run: |
-          sudo apt update \
-          sudo apt upgrade -y \
+          sudo apt update &&
+          sudo apt upgrade -y &&
           sudo apt install -y wget gnupg lsb-release ca-certificates gpg software-properties-common apt-transport-https curl wget jq
 
       - name: Download Release Artifact
@@ -94,7 +94,6 @@ jobs:
         run: |
           chmod +x ${{ github.workspace }}/.github/workflows/docker/download.sh
           bash ${{ github.workspace }}/.github/workflows/docker/download.sh ${{ github.ref_name }}
-          tar -xvf server-x86_64.tar.gz
 
       - name: Build Docker Image
         run: |
