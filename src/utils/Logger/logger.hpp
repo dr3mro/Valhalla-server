@@ -17,7 +17,7 @@ class Logger
    private:
     std::shared_ptr<spdlog::async_logger> logger_;
     static constexpr uint64_t             MAX_LOG_SIZE  = 1024 * 1024 * 5;
-    static constexpr uint64_t             THREADPOOL    = 1024 * 1024 * 32;
+    static constexpr uint64_t             THREADPOOL    = 8;
     static constexpr uint64_t             THREADS       = 2;
     static constexpr uint64_t             MAX_LOG_FILES = 3;
     enum Color
