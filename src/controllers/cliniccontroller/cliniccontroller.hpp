@@ -21,13 +21,13 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
         jsoncons::json                  request_json = jsoncons::json::parse(data);
         bool                            success      = false;
         std::unordered_set<std::string> exclude{"id"};
-        api::v2::Global::HttpError      error;
+        api::v2::Http::Error            error;
         try
         {
             std::optional<uint64_t> id = request_json.at("id").as<uint64_t>();
             if (!id.has_value())
             {
-                callback(HttpStatus::Code::BAD_REQUEST, "id not provided.");
+                callback(api::v2::Http::Status::BAD_REQUEST, "id not provided.");
                 return;
             }
 
@@ -44,7 +44,7 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
 
             if (entity.template check_id_exists<Types::Create_t>())
             {
-                callback(HttpStatus::Code::CONFLICT, "id already exists.");
+                callback(api::v2::Http::Status::CONFLICT, "id already exists.");
                 return;
             }
 
@@ -75,7 +75,7 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
         requires(!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value)
     {
         (void)id;
-        callback(HttpStatus::Code::BAD_REQUEST, fmt::format("Delete is NOT implemented for entity type {}", T::getTableName()));
+        callback(api::v2::Http::Status::BAD_REQUEST, fmt::format("Delete is NOT implemented for entity type {}", T::getTableName()));
     }
 
     template <typename U = T>
@@ -90,7 +90,7 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
         requires(!std::is_same<U, Patient>::value)
     {
         (void)data;
-        callback(HttpStatus::Code::BAD_REQUEST, fmt::format("Search is NOT implemented for entity type {}", T::getTableName()));
+        callback(api::v2::Http::Status::BAD_REQUEST, fmt::format("Search is NOT implemented for entity type {}", T::getTableName()));
     }
 
     // Only enable GetVisits if T is of type Patient
@@ -102,7 +102,7 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
         {
             if (!id.has_value())
             {
-                callback(HttpStatus::Code::BAD_REQUEST, "Missing patient id.");
+                callback(api::v2::Http::Status::BAD_REQUEST, "Missing patient id.");
                 return;
             }
             T entity((Types::Data_t(id.value())));
@@ -120,7 +120,7 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
         requires(!std::is_same<U, Patient>::value)
     {
         (void)id;
-        callback(HttpStatus::Code::BAD_REQUEST, fmt::format("GetVisit is NOT implemented for entity type {}", T::getTableName()));
+        callback(api::v2::Http::Status::BAD_REQUEST, fmt::format("GetVisit is NOT implemented for entity type {}", T::getTableName()));
     }
 
    public:

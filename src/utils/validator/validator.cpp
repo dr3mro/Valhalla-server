@@ -6,7 +6,6 @@
 #include <regex>
 
 #include "utils/databaseschema/databaseschema.hpp"
-#include "utils/global/httpcodes.hpp"
 
 const std::unordered_map<std::string, std::string> Validator::regex_client_validators = {
     {"username", "^[a-z][a-z0-9_]*$"},
@@ -17,7 +16,7 @@ const std::unordered_map<std::string, std::string> Validator::regex_client_valid
     {"gender", "^(Male|Female)$"},
 };
 
-bool Validator::validateDatabaseCreateSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Global::HttpError &error)
+bool Validator::validateDatabaseCreateSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Http::Error &error)
 {
     try
     {
@@ -52,14 +51,14 @@ bool Validator::validateDatabaseCreateSchema(const std::string &tablename, const
     catch (const std::exception &e)
     {
         error.message = e.what();
-        error.code    = HttpStatus::Code::INTERNAL_SERVER_ERROR;
+        error.code    = api::v2::Http::Status::INTERNAL_SERVER_ERROR;
         return false;
     }
 
     return true;
 }
 
-bool Validator::validateDatabaseUpdateSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Global::HttpError &error,
+bool Validator::validateDatabaseUpdateSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Http::Error &error,
                                              const std::unordered_set<std::string> &exclude)
 {
     try
@@ -87,15 +86,14 @@ bool Validator::validateDatabaseUpdateSchema(const std::string &tablename, const
     catch (const std::exception &e)
     {
         error.message = e.what();
-        error.code    = HttpStatus::Code::INTERNAL_SERVER_ERROR;
+        error.code    = api::v2::Http::Status::INTERNAL_SERVER_ERROR;
         return false;
     }
 
     return true;
 }
 
-bool Validator::validateDatabaseReadSchema(const std::unordered_set<std::string> &keys, const std::string &table_name,
-                                           api::v2::Global::HttpError &error)
+bool Validator::validateDatabaseReadSchema(const std::unordered_set<std::string> &keys, const std::string &table_name, api::v2::Http::Error &error)
 {
     bool found = false;
 
@@ -104,7 +102,7 @@ bool Validator::validateDatabaseReadSchema(const std::unordered_set<std::string>
     if (!found)
     {
         error.message = "Table not found";
-        error.code    = HttpStatus::Code::NOT_FOUND;
+        error.code    = api::v2::Http::Status::NOT_FOUND;
         return false;
     }
 
@@ -117,14 +115,14 @@ bool Validator::validateDatabaseReadSchema(const std::unordered_set<std::string>
         if (it == columns.end())
         {
             error.message = "Key not found in schema: " + key;
-            error.code    = HttpStatus::Code::BAD_REQUEST;
+            error.code    = api::v2::Http::Status::BAD_REQUEST;
             return false;
         }
     }
 
     return true;
 }
-bool Validator::clientRegexValidation(const jsoncons::json &data, api::v2::Global::HttpError &error,
+bool Validator::clientRegexValidation(const jsoncons::json &data, api::v2::Http::Error &error,
                                       std::unordered_set<std::pair<std::string, std::string>> &db_data)
 {
     for (const auto &item : data.object_range())
@@ -139,7 +137,7 @@ bool Validator::clientRegexValidation(const jsoncons::json &data, api::v2::Globa
                 std::regex pattern(pattern_item->second);
                 if (!std::regex_match(value.value(), pattern))
                 {
-                    error = {.code    = HttpStatus::Code::BAD_REQUEST,
+                    error = {.code    = api::v2::Http::Status::BAD_REQUEST,
                              .message = fmt::format("Key ({}) Value({}) is invalid.", item.key(), value.value())};
                     return false;
                 }
@@ -149,26 +147,25 @@ bool Validator::clientRegexValidation(const jsoncons::json &data, api::v2::Globa
         else
         {
             error.message = "Value is empty for key " + item.key();
-            error.code    = HttpStatus::Code::BAD_REQUEST;
+            error.code    = api::v2::Http::Status::BAD_REQUEST;
             return false;
         }
     }
     return true;
 }
 
-bool Validator::nullCheck(const jsoncons::json &data, api::v2::Global::HttpError &error)
+bool Validator::nullCheck(const jsoncons::json &data, api::v2::Http::Error &error)
 {
     if (data.is_null() || data.empty())
     {
         error.message = "Data is empty";
-        error.code    = HttpStatus::Code::BAD_REQUEST;
+        error.code    = api::v2::Http::Status::BAD_REQUEST;
         return true;
     }
     return false;
 }
 
-std::unordered_set<api::v2::ColumnInfo> Validator::getDatabaseSchemaForTable(const std::string &tablename, api::v2::Global::HttpError &error,
-                                                                             bool &found)
+std::unordered_set<api::v2::ColumnInfo> Validator::getDatabaseSchemaForTable(const std::string &tablename, api::v2::Http::Error &error, bool &found)
 {
     SCHEMA_t schema = DatabaseSchema::getDatabaseSchema();
 
@@ -177,7 +174,7 @@ std::unordered_set<api::v2::ColumnInfo> Validator::getDatabaseSchemaForTable(con
     if ((table_schema_it == schema.end()) || table_schema_it->second.empty())
     {
         error.message = "Table not found";
-        error.code    = HttpStatus::Code::BAD_REQUEST;
+        error.code    = api::v2::Http::Status::BAD_REQUEST;
         found         = false;
     }
     found = true;
@@ -200,8 +197,8 @@ bool Validator::validateType(const jsoncons::json &value, const std::string &exp
     return false;                  // Unknown type
 }
 
-bool Validator::checkColumns(const jsoncons::json &data, const std::unordered_set<api::v2::ColumnInfo> &table_schema,
-                             api::v2::Global::HttpError &error, const std::unordered_set<std::string> &exclude)
+bool Validator::checkColumns(const jsoncons::json &data, const std::unordered_set<api::v2::ColumnInfo> &table_schema, api::v2::Http::Error &error,
+                             const std::unordered_set<std::string> &exclude)
 {
     for (const auto &column : table_schema)
     {
@@ -211,7 +208,7 @@ bool Validator::checkColumns(const jsoncons::json &data, const std::unordered_se
         if (!column.isNullable && !column_exists && !exclude.contains(column.Name))
         {
             error.message = "Non-nullable column missing in data: " + column.Name;
-            error.code    = HttpStatus::Code::BAD_REQUEST;
+            error.code    = api::v2::Http::Status::BAD_REQUEST;
             return false;
         }
 
@@ -222,7 +219,7 @@ bool Validator::checkColumns(const jsoncons::json &data, const std::unordered_se
             if (!validateType(value, column.DataType))
             {
                 error.message = fmt::format("Data type mismatch for column: {} ,expected: {} ", column.Name, column.DataType);
-                error.code    = HttpStatus::Code::BAD_REQUEST;
+                error.code    = api::v2::Http::Status::BAD_REQUEST;
                 return false;
             }
         }
@@ -231,7 +228,7 @@ bool Validator::checkColumns(const jsoncons::json &data, const std::unordered_se
 }
 
 bool Validator::ensureAllKeysExist(const jsoncons::json &data, const std::unordered_set<api::v2::ColumnInfo> &table_schema,
-                                   api::v2::Global::HttpError &error, const std::unordered_set<std::string> &exclude)
+                                   api::v2::Http::Error &error, const std::unordered_set<std::string> &exclude)
 {
     // Create a set of column names for fast key lookup
     std::unordered_set<std::string> schema_columns;
@@ -244,15 +241,15 @@ bool Validator::ensureAllKeysExist(const jsoncons::json &data, const std::unorde
         if (exclude.contains(entry.key()))
         {
             error.message = "Key: [" + entry.key() + "] is not allowed to be changed.";
-            error.code    = HttpStatus::Code::BAD_REQUEST;
+            error.code    = api::v2::Http::Status::BAD_REQUEST;
             return false;
         }
 
         const auto &key = entry.key();
         if (schema_columns.find(key) == schema_columns.end())  // Key not in schema
         {
-            error.message = "Key: [" + key + "] is not found in schema";
-            error.code    = HttpStatus::Code::BAD_REQUEST;
+            error.message = "Key: [" + key + "] is not found in database schema";
+            error.code    = api::v2::Http::Status::BAD_REQUEST;
             return false;
         }
     }

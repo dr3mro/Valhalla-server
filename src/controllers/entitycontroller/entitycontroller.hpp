@@ -30,7 +30,7 @@ void EntityController<T>::Create(CALLBACK_ &&callback, std::string_view data)
     try
     {
         bool                            success = false;
-        api::v2::Global::HttpError      error;
+        api::v2::Http::Error            error;
         std::unordered_set<std::string> exclude;
         auto                            next_id = this->template getNextID<T>(error);
 
@@ -44,7 +44,7 @@ void EntityController<T>::Create(CALLBACK_ &&callback, std::string_view data)
 
         if (!request_j.has_value())
         {
-            callback(HttpStatus::Code::BAD_REQUEST, "Invalid request body.");
+            callback(api::v2::Http::Status::BAD_REQUEST, "Invalid request body.");
             return;
         }
 
@@ -76,7 +76,7 @@ void EntityController<T>::Read(CALLBACK_ &&callback, std::string_view data)
         jsoncons::json                  request_j = jsoncons::json::parse(data);
         uint64_t                        id        = request_j.at("id").as<uint64_t>();
         std::unordered_set<std::string> schema    = request_j.at("schema").as<std::unordered_set<std::string>>();
-        api::v2::Global::HttpError      error;
+        api::v2::Http::Error            error;
 
         if (!Validator::validateDatabaseReadSchema(schema, std::format("{}_safe", T::getTableName()), error))
         {
@@ -99,12 +99,12 @@ void EntityController<T>::Update(CALLBACK_ &&callback, std::string_view data, co
     try
     {
         bool                            success = false;
-        api::v2::Global::HttpError      error;
+        api::v2::Http::Error            error;
         std::unordered_set<std::string> exclude{};
 
         if (!id.has_value())
         {
-            callback(HttpStatus::Code::BAD_REQUEST, "No id provided.");
+            callback(api::v2::Http::Status::BAD_REQUEST, "No id provided.");
             return;
         }
 
@@ -112,7 +112,7 @@ void EntityController<T>::Update(CALLBACK_ &&callback, std::string_view data, co
 
         if (!request_json.has_value())
         {
-            callback(HttpStatus::Code::BAD_REQUEST, "Invalid request body.");
+            callback(api::v2::Http::Status::BAD_REQUEST, "Invalid request body.");
             return;
         }
 
@@ -130,7 +130,7 @@ void EntityController<T>::Update(CALLBACK_ &&callback, std::string_view data, co
 
         if (!entity.template check_id_exists<Types::Update_t>())
         {
-            callback(HttpStatus::BAD_REQUEST, "ID does not exist");
+            callback(api::v2::Http::Status::BAD_REQUEST, "ID does not exist");
             return;
         }
 
@@ -149,7 +149,7 @@ void EntityController<T>::Delete(CALLBACK_ &&callback, const std::optional<uint6
     {
         if (!id.has_value())
         {
-            callback(HttpStatus::Code::NOT_ACCEPTABLE, "Invalid id provided");
+            callback(api::v2::Http::Status::NOT_ACCEPTABLE, "Invalid id provided");
             return;
         }
 
@@ -178,7 +178,7 @@ void EntityController<T>::Search(CALLBACK_ &&callback, std::string_view data)
         }
         else
         {
-            callback(HttpStatus::Code::NOT_ACCEPTABLE, "Failed to search");
+            callback(api::v2::Http::Status::NOT_ACCEPTABLE, "Failed to search");
         }
     }
     catch (const std::exception &e)

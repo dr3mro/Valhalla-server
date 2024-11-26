@@ -3,4 +3,4 @@
     Message::CriticalMessage(critical_error);
 #define CRITICALMESSAGERESPONSE \
     CRITICALMESSAGE             \
-    callback(HttpStatus::INTERNAL_SERVER_ERROR, critical_error);
+    callback(api::v2::Http::Status::INTERNAL_SERVER_ERROR, critical_error);

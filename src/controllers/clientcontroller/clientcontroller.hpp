@@ -60,7 +60,7 @@ void ClientController<T>::Create(CALLBACK_&& callback, std::string_view data)
     try
     {
         bool                            success = false;
-        api::v2::Global::HttpError      error;
+        api::v2::Http::Error            error;
         std::unordered_set<std::string> exclude;
         jsoncons::json                  json_data = jsoncons::json::parse(data);
 
@@ -71,7 +71,7 @@ void ClientController<T>::Create(CALLBACK_&& callback, std::string_view data)
             T client(client_data);
             if (client.template exists<Types::CreateClient_t>())
             {
-                callback(HttpStatus::CONFLICT, "User already exists");
+                callback(api::v2::Http::Status::CONFLICT, "User already exists");
                 return;
             }
             Controller::Create(client, std::move(callback));
@@ -101,7 +101,7 @@ void ClientController<T>::Update(CALLBACK_&& callback, std::string_view data, co
     {
         bool                            success = false;
         std::unordered_set<std::string> exclude{"password", "username"};
-        api::v2::Global::HttpError      error;
+        api::v2::Http::Error            error;
         Types::UpdateClient_t           client_data(data, id, T::getTableName(), error, success, exclude);
 
         if (success)
@@ -110,7 +110,7 @@ void ClientController<T>::Update(CALLBACK_&& callback, std::string_view data, co
 
             if (!client.template check_id_exists<Types::UpdateClient_t>())
             {
-                callback(HttpStatus::BAD_REQUEST, "ID does not exist");
+                callback(api::v2::Http::Status::BAD_REQUEST, "ID does not exist");
                 return;
             }
 
@@ -159,7 +159,7 @@ std::optional<uint64_t> ClientController<T>::Login(CALLBACK_&& callback, std::st
 
         if (!client_id)
         {
-            callback(HttpStatus::UNAUTHORIZED, fmt::format("User '{}' not found or wrong password", credentials.username));
+            callback(api::v2::Http::Status::UNAUTHORIZED, fmt::format("User '{}' not found or wrong password", credentials.username));
             return std::nullopt;
         }
 
@@ -177,7 +177,7 @@ std::optional<uint64_t> ClientController<T>::Login(CALLBACK_&& callback, std::st
         token_object["client_id"] = client_id;
         token_object["group"]     = loggedClientInfo.group;
 
-        callback(HttpStatus::OK, token_object.as<std::string>());
+        callback(api::v2::Http::Status::OK, token_object.as<std::string>());
         sessionManager->setNowLoginTime(client_id.value(), loggedClientInfo.group.value());
         return client_id;
     }
@@ -210,7 +210,7 @@ void ClientController<T>::Suspend(CALLBACK_&& callback, const std::optional<uint
     {
         if (!client_id.has_value())
         {
-            callback(HttpStatus::Code::NOT_ACCEPTABLE, api::v2::JsonHelper::jsonify("Invalid id provided").as<std::string>());
+            callback(api::v2::Http::Status::NOT_ACCEPTABLE, api::v2::JsonHelper::jsonify("Invalid id provided").as<std::string>());
             return;
         }
 
@@ -231,7 +231,7 @@ void ClientController<T>::Activate(CALLBACK_&& callback, const std::optional<uin
     {
         if (!client_id.has_value())
         {
-            callback(HttpStatus::Code::NOT_ACCEPTABLE, api::v2::JsonHelper::jsonify("Invalid id provided").as<std::string>());
+            callback(api::v2::Http::Status::NOT_ACCEPTABLE, api::v2::JsonHelper::jsonify("Invalid id provided").as<std::string>());
             return;
         }
         Types::SuspendData suspendData(client_id.value());
@@ -258,7 +258,7 @@ void ClientController<T>::GetServices(CALLBACK_&& callback, std::optional<uint64
     {
         if (!client_id.has_value())
         {
-            callback(HttpStatus::Code::BAD_REQUEST, api::v2::JsonHelper::jsonify("client_id extraction failed").as<std::string>());
+            callback(api::v2::Http::Status::BAD_REQUEST, api::v2::JsonHelper::jsonify("client_id extraction failed").as<std::string>());
             return;
         }
 

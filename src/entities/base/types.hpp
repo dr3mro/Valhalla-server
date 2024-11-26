@@ -9,8 +9,7 @@
 
 #include "configurator/configurator.hpp"
 #include "store/store.hpp"
-#include "utils/global/httpcodes.hpp"
-#include "utils/global/types.hpp"
+#include "utils/global/http.hpp"
 #include "utils/passwordcrypt/passwordcrypt.hpp"
 #include "utils/validator/validator.hpp"
 
@@ -101,14 +100,14 @@ class Types
     struct ClientData_t
     {
        public:
-        ClientData_t(std::string_view _data, const std::optional<uint64_t> _id, api::v2::Global::HttpError &error, bool &success) : id(_id)
+        ClientData_t(std::string_view _data, const std::optional<uint64_t> _id, api::v2::Http::Error &error, bool &success) : id(_id)
         {
             try
             {
                 data_j = jsoncons::json::parse(_data);
                 if (!data_j.has_value())
                 {
-                    error = {.code = HttpStatus::BAD_REQUEST, .message = "Failed to parse body."};
+                    error = {.code = api::v2::Http::Status::BAD_REQUEST, .message = "Failed to parse body."};
                     Message::ErrorMessage(error.message);
                     success = false;
                     return;
@@ -116,7 +115,8 @@ class Types
             }
             catch (const std::exception &e)
             {
-                error   = {.code = HttpStatus::INTERNAL_SERVER_ERROR, .message = fmt::format("Failed while parsing client data: {}.", e.what())};
+                error   = {.code    = api::v2::Http::Status::INTERNAL_SERVER_ERROR,
+                           .message = fmt::format("Failed while parsing client data: {}.", e.what())};
                 success = false;
                 Message::CriticalMessage(error.message);
                 return;
@@ -158,7 +158,7 @@ class Types
     struct CreateClient_t : public ClientData_t
     {
        public:
-        CreateClient_t(std::string_view _data, const std::string &tablename, api::v2::Global::HttpError &error, bool &success)
+        CreateClient_t(std::string_view _data, const std::string &tablename, api::v2::Http::Error &error, bool &success)
             : ClientData_t(_data, std::nullopt, error, success)
         {
             try
@@ -180,7 +180,8 @@ class Types
             }
             catch (const std::exception &e)
             {
-                error   = {.code = HttpStatus::INTERNAL_SERVER_ERROR, .message = fmt::format("Failed while parsing client data: {}.", e.what())};
+                error   = {.code    = api::v2::Http::Status::INTERNAL_SERVER_ERROR,
+                           .message = fmt::format("Failed while parsing client data: {}.", e.what())};
                 success = false;
                 Message::CriticalMessage(error.message);
                 return;
@@ -194,7 +195,7 @@ class Types
     struct UpdateClient_t : public ClientData_t
     {
        public:
-        UpdateClient_t(std::string_view _data, const std::optional<uint64_t> _id, const std::string &tablename, api::v2::Global::HttpError &error,
+        UpdateClient_t(std::string_view _data, const std::optional<uint64_t> _id, const std::string &tablename, api::v2::Http::Error &error,
                        bool &success, const std::unordered_set<std::string> &exclude)
             : ClientData_t(_data, _id, error, success)
         {
@@ -216,7 +217,8 @@ class Types
             }
             catch (const std::exception &e)
             {
-                error   = {.code = HttpStatus::INTERNAL_SERVER_ERROR, .message = fmt::format("Failed while parsing client data: {}.", e.what())};
+                error   = {.code    = api::v2::Http::Status::INTERNAL_SERVER_ERROR,
+                           .message = fmt::format("Failed while parsing client data: {}.", e.what())};
                 success = false;
                 Message::CriticalMessage(error.message);
                 return;
