@@ -45,6 +45,11 @@ class Controller
     template <typename T>
     void Read(T &entity, CALLBACK_ &&callback)
     {
+        if (!entity.template check_id_exists<Types::Read_t>())
+        {
+            callback(HttpStatus::BAD_REQUEST, "ID does not exist");
+            return;
+        }
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlReadStatement;
         cruds(entity, sqlstatement, dbrexec, std::forward<CALLBACK_>(callback));
     }

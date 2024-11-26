@@ -79,7 +79,7 @@ void StaffController<T>::InviteStaffToEntity(CALLBACK_ &&callback, std::string_v
 
             if (response.has_value())
             {
-                callback(200, response.value());
+                callback(HttpStatus::Code::OK, response.value());
             }
             else
             {

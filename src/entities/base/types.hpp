@@ -295,7 +295,7 @@ class Types
         StaffData() = default;
 
        private:
-        std::shared_ptr<Configurator>       cfg_         = Store::getObject<Configurator>();
+        const std::shared_ptr<Configurator> cfg_         = Store::getObject<Configurator>();
         const Configurator::ServerConfig   &servercfg_   = cfg_->get<Configurator::ServerConfig>();
         const Configurator::FrontEndConfig &frontendcfg_ = cfg_->get<Configurator::FrontEndConfig>();
     };

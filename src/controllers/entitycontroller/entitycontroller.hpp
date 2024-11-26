@@ -33,21 +33,22 @@ void EntityController<T>::Create(CALLBACK_ &&callback, std::string_view data)
         api::v2::Global::HttpError      error;
         std::unordered_set<std::string> exclude;
         auto                            next_id = this->template getNextID<T>(error);
+
         if (!next_id.has_value())
         {
             callback(error.code, fmt::format("Failed to generate next ID, {}.", error.message));
             return;
         }
 
-        std::optional<jsoncons::json> request_json = jsoncons::json::parse(data);
+        std::optional<jsoncons::json> request_j = jsoncons::json::parse(data);
 
-        if (!request_json.has_value())
+        if (!request_j.has_value())
         {
             callback(HttpStatus::Code::BAD_REQUEST, "Invalid request body.");
             return;
         }
 
-        success = Validator::validateDatabaseCreateSchema(T::getTableName(), request_json, error);
+        success = Validator::validateDatabaseCreateSchema(T::getTableName(), request_j, error);
 
         if (!success)
         {
@@ -55,7 +56,7 @@ void EntityController<T>::Create(CALLBACK_ &&callback, std::string_view data)
             return;
         }
 
-        Types::Create_t entity_data = Types::Create_t(request_json.value(), next_id.value());
+        Types::Create_t entity_data = Types::Create_t(request_j.value(), next_id.value());
 
         T entity(entity_data);
 
@@ -70,12 +71,11 @@ void EntityController<T>::Create(CALLBACK_ &&callback, std::string_view data)
 template <typename T>
 void EntityController<T>::Read(CALLBACK_ &&callback, std::string_view data)
 {
-    jsoncons::json request_json;
     try
     {
-        request_json                           = jsoncons::json::parse(data);
-        uint64_t                        id     = request_json.at("id").as<uint64_t>();
-        std::unordered_set<std::string> schema = request_json.at("schema").as<std::unordered_set<std::string>>();
+        jsoncons::json                  request_j = jsoncons::json::parse(data);
+        uint64_t                        id        = request_j.at("id").as<uint64_t>();
+        std::unordered_set<std::string> schema    = request_j.at("schema").as<std::unordered_set<std::string>>();
         api::v2::Global::HttpError      error;
 
         if (!Validator::validateDatabaseReadSchema(schema, std::format("{}_safe", T::getTableName()), error))
@@ -125,7 +125,14 @@ void EntityController<T>::Update(CALLBACK_ &&callback, std::string_view data, co
         }
 
         Types::Update_t entity_data = Types::Update_t(request_json.value(), id.value());
-        T               entity(entity_data);
+
+        T entity(entity_data);
+
+        if (!entity.template check_id_exists<Types::Update_t>())
+        {
+            callback(HttpStatus::BAD_REQUEST, "ID does not exist");
+            return;
+        }
 
         Controller::Update(entity, std::move(callback));
     }
