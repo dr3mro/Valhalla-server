@@ -13,9 +13,9 @@ class DatabaseSchema
     DatabaseSchema();
     virtual ~DatabaseSchema() = default;
 
-    void            populateSchema(const std::string& tableName);
-    static SCHEMA_t getDatabaseSchema();
-    void            printSchema();
+    void                   populateSchema(const std::string& tableName);
+    static const SCHEMA_t& getDatabaseSchema();
+    void                   printSchema();
 
    private:
     static SCHEMA_t databaseSchema;

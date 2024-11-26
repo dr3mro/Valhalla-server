@@ -44,15 +44,15 @@ class Configurator
         std::unordered_set<std::string> blacklist;
 
         DOSDetectorConfig()
+            : max_requests(getEnvironmentVariable("MAX_REQUESTS", Defaults::DosDetector::MAX_REQUESTS_)),
+              clean_freq(getEnvironmentVariable("CLN_FRQ", Defaults::DosDetector::CLN_FRQ_)),
+              max_fingerprints(getEnvironmentVariable("MAX_FPS", Defaults::DosDetector::MAX_FPS_)),
+              period(getEnvironmentVariable("PERIOD", std::chrono::seconds(Defaults::DosDetector::PERIOD_))),
+              ratelimit_duration(getEnvironmentVariable("RL_DURATION", std::chrono::seconds(Defaults::DosDetector::RL_DURATION_))),
+              ban_duration(getEnvironmentVariable("BAN_DURATION", std::chrono::seconds(Defaults::DosDetector::BAN_DURATION_))),
+              whitelist(getEnvironmentVariable("WHITELIST")),
+              blacklist(getEnvironmentVariable("BLACKLIST"))
         {
-            max_requests       = getEnvironmentVariable("MAX_REQUESTS", Defaults::DosDetector::MAX_REQUESTS_);
-            period             = getEnvironmentVariable("PERIOD", std::chrono::seconds(Defaults::DosDetector::PERIOD_));
-            max_fingerprints   = getEnvironmentVariable("MAX_FPS", Defaults::DosDetector::MAX_FPS_);
-            ratelimit_duration = getEnvironmentVariable("RL_DURATION", std::chrono::seconds(Defaults::DosDetector::RL_DURATION_));
-            ban_duration       = getEnvironmentVariable("BAN_DURATION", std::chrono::seconds(Defaults::DosDetector::BAN_DURATION_));
-            clean_freq         = getEnvironmentVariable("CLN_FRQ", Defaults::DosDetector::CLN_FRQ_);
-            whitelist          = getEnvironmentVariable("WHITELIST");
-            blacklist          = getEnvironmentVariable("BLACKLIST");
         }
 
         void printValues() const override
@@ -82,15 +82,14 @@ class Configurator
         std::string_view host;
 
         DatabaseConfig()
+            : ssl(getEnvironmentVariable(std::string_view("DB_SSL"), Defaults::Database::DB_SSL_)),
+              max_conn(getEnvironmentVariable(std::string_view("DB_MAX_CONN"), Defaults::Database::DB_MAX_CONN_)),
+              port(getEnvironmentVariable(std::string_view("DB_PORT"), Defaults::Database::DB_PORT_)),
+              name(getEnvironmentVariable(std::string_view("DB_NAME"), Defaults::Database::DB_NAME_)),
+              user(getEnvironmentVariable(std::string_view("DB_USER"), Defaults::Database::DB_USER_)),
+              pass(getEnvironmentVariable(std::string_view("DB_PASS"), Defaults::Database::DB_PASS_)),
+              host(getEnvironmentVariable(std::string_view("DB_HOST"), Defaults::Database::DB_HOST_))
         {
-            host     = getEnvironmentVariable(std::string_view("DB_HOST"), Defaults::Database::DB_HOST_);
-            port     = getEnvironmentVariable(std::string_view("DB_PORT"), Defaults::Database::DB_PORT_);
-            name     = getEnvironmentVariable(std::string_view("DB_NAME"), Defaults::Database::DB_NAME_);
-            user     = getEnvironmentVariable(std::string_view("DB_USER"), Defaults::Database::DB_USER_);
-            pass     = getEnvironmentVariable(std::string_view("DB_PASS"), Defaults::Database::DB_PASS_);
-            ssl      = getEnvironmentVariable(std::string_view("DB_SSL"), Defaults::Database::DB_SSL_);
-            max_conn = getEnvironmentVariable(std::string_view("DB_MAX_CONN"), Defaults::Database::DB_MAX_CONN_);
-
             optimize_performance(max_conn, 5);
         }
 
@@ -125,20 +124,19 @@ class Configurator
         std::string      upload_dir;
 
         ServerConfig()
+            : host(getEnvironmentVariable(std::string_view("SERVER_HOST"), Defaults::Server::SERVER_HOST_)),
+              name(getEnvironmentVariable(std::string_view("SERVER_NAME"), Defaults::Server::SERVER_NAME_)),
+              ver(getEnvironmentVariable(std::string_view("SERVER_VERSION"), Defaults::Server::SERVER_VER_)),
+              desc(getEnvironmentVariable(std::string_view("SERVER_DESCRIPTION"), Defaults::Server::SERVER_DESC_)),
+              port(getEnvironmentVariable(std::string_view("SERVER_PORT"), Defaults::Server::SERVER_PORT_)),
+              threads(getEnvironmentVariable(std::string_view("SERVER_THREADS"), Defaults::Server::SERVER_THREADS_)),
+              debug_level(getEnvironmentVariable(std::string_view("SERVER_DEBUG_LEVEL"), Defaults::Server::SERVER_DEBUG_LEVEL_)),
+              log_to_console(getEnvironmentVariable(std::string_view("SERVER_LOG_TO_CONSOLE"), Defaults::Server::SERVER_LOG_TO_CONSOLE_)),
+              log_to_file(getEnvironmentVariable(std::string_view("SERVER_LOG_TO_FILE"), Defaults::Server::SERVER_LOG_TO_FILE_)),
+              log_dir(getEnvironmentVariable(std::string_view("SERVER_LOG_DIR"), Defaults::Server::SERVER_LOG_DIR_)),
+              log_file(getEnvironmentVariable(std::string_view("SERVER_LOG_FILE"), Defaults::Server::SERVER_LOG_FILE_)),
+              upload_dir(getEnvironmentVariable(std::string_view("SERVER_UPLOAD_DIR"), Defaults::Server::SERVER_UPLOAD_DIR_))
         {
-            host           = getEnvironmentVariable(std::string_view("SERVER_HOST"), Defaults::Server::SERVER_HOST_);
-            port           = getEnvironmentVariable(std::string_view("SERVER_PORT"), Defaults::Server::SERVER_PORT_);
-            name           = getEnvironmentVariable(std::string_view("SERVER_NAME"), Defaults::Server::SERVER_NAME_);
-            ver            = getEnvironmentVariable(std::string_view("SERVER_VERSION"), Defaults::Server::SERVER_VER_);
-            desc           = getEnvironmentVariable(std::string_view("SERVER_DESCRIPTION"), Defaults::Server::SERVER_DESC_);
-            threads        = getEnvironmentVariable(std::string_view("SERVER_THREADS"), Defaults::Server::SERVER_THREADS_);
-            debug_level    = getEnvironmentVariable(std::string_view("SERVER_DEBUG_LEVEL"), Defaults::Server::SERVER_DEBUG_LEVEL_);
-            log_to_console = getEnvironmentVariable(std::string_view("SERVER_LOG_TO_CONSOLE"), Defaults::Server::SERVER_LOG_TO_CONSOLE_);
-            log_to_file    = getEnvironmentVariable(std::string_view("SERVER_LOG_TO_FILE"), Defaults::Server::SERVER_LOG_TO_FILE_);
-            log_dir        = getEnvironmentVariable(std::string_view("SERVER_LOG_DIR"), Defaults::Server::SERVER_LOG_DIR_);
-            log_file       = getEnvironmentVariable(std::string_view("SERVER_LOG_FILE"), Defaults::Server::SERVER_LOG_FILE_);
-            upload_dir     = getEnvironmentVariable(std::string_view("SERVER_UPLOAD_DIR"), Defaults::Server::SERVER_UPLOAD_DIR_);
-
             optimize_performance(threads, 4);
         }
 
@@ -170,11 +168,11 @@ class Configurator
         std::string_view secret;
 
         TokenManagerParameters()
+            : validity(getEnvironmentVariable(std::string_view("TOKEN_VALIDITY"), Defaults::TokenParameters::TOKEN_VALIDITY_)),
+              issuer(getEnvironmentVariable(std::string_view("TOKEN_ISSUER"), Defaults::TokenParameters::TOKEN_ISSUER_)),
+              type(getEnvironmentVariable(std::string_view("TOKEN_TYPE"), Defaults::TokenParameters::TOKEN_TYPE_)),
+              secret(getEnvironmentVariable(std::string_view("TOKEN_SECRET"), Defaults::TokenParameters::TOKEN_SECRET_))
         {
-            issuer   = getEnvironmentVariable(std::string_view("TOKEN_ISSUER"), Defaults::TokenParameters::TOKEN_ISSUER_);
-            type     = getEnvironmentVariable(std::string_view("TOKEN_TYPE"), Defaults::TokenParameters::TOKEN_TYPE_);
-            validity = getEnvironmentVariable(std::string_view("TOKEN_VALIDITY"), Defaults::TokenParameters::TOKEN_VALIDITY_);
-            secret   = getEnvironmentVariable(std::string_view("TOKEN_SECRET"), Defaults::TokenParameters::TOKEN_SECRET_);
         }
 
         void printValues() const override
@@ -196,10 +194,10 @@ class Configurator
         std::string_view invite_path;
 
         FrontEndConfig()
+            : port(getEnvironmentVariable(std::string_view("FRONTEND_PORT"), Defaults::FrontEnd::PORT_)),
+              host(getEnvironmentVariable(std::string_view("FRONTEND_HOST"), Defaults::FrontEnd::HOST_)),
+              invite_path(getEnvironmentVariable(std::string_view("FRONTEND_INVITE_PATH"), Defaults::FrontEnd::INVITE_PATH_))
         {
-            host        = getEnvironmentVariable(std::string_view("FRONTEND_HOST"), Defaults::FrontEnd::HOST_);
-            port        = getEnvironmentVariable(std::string_view("FRONTEND_PORT"), Defaults::FrontEnd::PORT_);
-            invite_path = getEnvironmentVariable(std::string_view("FRONTEND_INVITE_PATH"), Defaults::FrontEnd::INVITE_PATH_);
         }
 
         void printValues() const override
@@ -220,10 +218,10 @@ class Configurator
         std::string_view message_queue_path;
 
         EmailSenderConfig()
+            : port(getEnvironmentVariable(std::string_view("EMAIL_SENDER_PORT"), Defaults::EmailSenderDaemon::PORT_)),
+              host(getEnvironmentVariable(std::string_view("EMAIL_SENDER_HOST"), Defaults::EmailSenderDaemon::HOST_)),
+              message_queue_path(getEnvironmentVariable(std::string_view("EMAIL_SENDER_QUEUE_PATH"), Defaults::EmailSenderDaemon::QUEUE_PATH_))
         {
-            host               = getEnvironmentVariable(std::string_view("EMAIL_SENDER_HOST"), Defaults::EmailSenderDaemon::HOST_);
-            port               = getEnvironmentVariable(std::string_view("EMAIL_SENDER_PORT"), Defaults::EmailSenderDaemon::PORT_);
-            message_queue_path = getEnvironmentVariable(std::string_view("EMAIL_SENDER_QUEUE_PATH"), Defaults::EmailSenderDaemon::QUEUE_PATH_);
         }
 
         void printValues() const override

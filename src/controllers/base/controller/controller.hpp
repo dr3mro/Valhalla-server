@@ -10,11 +10,11 @@
 #include "entities/services/clinics/patient/patient.hpp"
 #include "utils/global/callback.hpp"
 #include "utils/global/global.hpp"
+#include "utils/global/httpcodes.hpp"
 #include "utils/jsonhelper/jsonhelper.hpp"
 #include "utils/message/message.hpp"
 #include "utils/sessionmanager/sessionmanager.hpp"
 #include "utils/tokenmanager/tokenmanager.hpp"
-
 class Controller
 {
    public:
@@ -59,7 +59,7 @@ class Controller
     {
         if (!entity.template check_id_exists<Types::Delete_t>())
         {
-            callback(400, "ID does not exist");
+            callback(HttpStatus::BAD_REQUEST, "ID does not exist");
             return;
         }
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlDeleteStatement;
@@ -69,7 +69,7 @@ class Controller
     void Search(T &entity, CALLBACK_ &&callback)
     {
         jsoncons::json             response_json;
-        json                       query_results_json;
+        jsoncons::json             query_results_json;
         std::optional<std::string> query;
 
         try
@@ -95,7 +95,7 @@ class Controller
             }
 
             response_json["results"] = query_results_json;
-            callback(200, response_json.as<std::string>());
+            callback(HttpStatus::OK, response_json.as<std::string>());
         }
         catch (const std::exception &e)
         {
@@ -116,16 +116,16 @@ class Controller
             bool status = tokenManager->ValidateToken(loggedClientInfo);
             if (!status)
             {
-                callback(401, "Logout failure.");
+                callback(HttpStatus::UNAUTHORIZED, "Logout failure.");
                 Message::ErrorMessage("Logout failure.");
                 return;
             }
             sessionManager->setNowLogoutTime(loggedClientInfo.userID.value(), loggedClientInfo.group.value());
-            callback(200, api::v2::JsonHelper::stringify(api::v2::JsonHelper::jsonify("Logout success.")));
+            callback(HttpStatus::OK, api::v2::JsonHelper::stringify(api::v2::JsonHelper::jsonify("Logout success.")));
         }
         catch (const std::exception &e)
         {
-            callback(500, e.what());
+            callback(HttpStatus::INTERNAL_SERVER_ERROR, e.what());
             CRITICALMESSAGE
         }
     }
@@ -150,7 +150,7 @@ class Controller
     void GetServices(T &entity, CALLBACK_ &&callback)
         requires(std::is_base_of_v<Client, T>)
     {
-        json                       services;
+        jsoncons::json             services;
         std::optional<std::string> query;
 
         try
@@ -162,7 +162,7 @@ class Controller
                 services = databaseController->executeSearchQuery(query.value());
             }
 
-            callback(200, api::v2::JsonHelper::stringify(services));
+            callback(HttpStatus::OK, api::v2::JsonHelper::stringify(services));
         }
         catch (const std::exception &e)
         {
@@ -174,7 +174,7 @@ class Controller
     void GetVisits(T &entity, CALLBACK_ &&callback)
         requires std::is_same<T, Patient>::value
     {
-        json                       visits;
+        jsoncons::json             visits;
         std::optional<std::string> query;
 
         try
@@ -186,7 +186,7 @@ class Controller
                 visits = databaseController->executeSearchQuery(query.value());
             }
 
-            callback(200, api::v2::JsonHelper::stringify(visits));
+            callback(HttpStatus::OK, api::v2::JsonHelper::stringify(visits));
         }
         catch (const std::exception &e)
         {
@@ -200,12 +200,12 @@ class Controller
     {
         try
         {
-            json json_nextval = databaseController->executeQuery(fmt::format("SELECT NEXTVAL('{}_id_seq');", T::getTableName()));
+            jsoncons::json json_nextval = databaseController->executeQuery(fmt::format("SELECT NEXTVAL('{}_id_seq');", T::getTableName()));
 
             if (json_nextval.empty())
             {
                 error.message = fmt::format("nextID from seq function of {} failed, could not create a new ID.", T::getTableName());
-                error.code    = 406;
+                error.code    = HttpStatus::NOT_ACCEPTABLE;
                 Message::ErrorMessage(error.message);
                 return std::nullopt;
             }
@@ -227,9 +227,9 @@ class Controller
     std::shared_ptr<SessionManager>     sessionManager;
     std::shared_ptr<TokenManager>       tokenManager;
 
-    std::optional<jsoncons::json> (DatabaseController::*dbexec)(const std::string &)  = &DatabaseController::executeQuery;
-    std::optional<jsoncons::json> (DatabaseController::*dbrexec)(const std::string &) = &DatabaseController::executeReadQuery;
-    std::optional<json::array> (DatabaseController::*dbsexec)(const std::string &)    = &DatabaseController::executeSearchQuery;
+    std::optional<jsoncons::json> (DatabaseController::*dbexec)(const std::string &)         = &DatabaseController::executeQuery;
+    std::optional<jsoncons::json> (DatabaseController::*dbrexec)(const std::string &)        = &DatabaseController::executeReadQuery;
+    std::optional<jsoncons::json::array> (DatabaseController::*dbsexec)(const std::string &) = &DatabaseController::executeSearchQuery;
 
     ///////////////////////////
     template <typename S, typename T>
@@ -246,7 +246,7 @@ class Controller
     }
 
     template <typename S, typename T>
-    void cruds(T &entity, S &sqlstatement, std::optional<json> (DatabaseController::*f)(const std::string &), CALLBACK_ &&callback)
+    void cruds(T &entity, S &sqlstatement, std::optional<jsoncons::json> (DatabaseController::*f)(const std::string &), CALLBACK_ &&callback)
     {
         std::optional<jsoncons::json> results_j;
         std::optional<std::string>    query;
@@ -255,7 +255,7 @@ class Controller
             std::string error;
             if (!get_sql_statement(query, entity, sqlstatement, error))
             {
-                callback(400, error);
+                callback(HttpStatus::BAD_REQUEST, error);
                 return;
             }
 
@@ -264,12 +264,12 @@ class Controller
                 results_j = (*databaseController.*f)(query.value());
                 if (results_j.has_value())
                 {
-                    callback(200, results_j.value().as<std::string>());
+                    callback(HttpStatus::OK, results_j.value().as<std::string>());
                     return;
                 }
                 else
                 {
-                    callback(400, "Failed to execute query");
+                    callback(HttpStatus::BAD_REQUEST, "Failed to execute query");
                 }
             }
         }

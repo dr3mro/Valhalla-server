@@ -1,7 +1,6 @@
 #pragma once
 #include "entities/base/entity.hpp"
 #include "jsoncons/basic_json.hpp"
-using json = jsoncons::json;
 
 class Appointment : public Entity
 {

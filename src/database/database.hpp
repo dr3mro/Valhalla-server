@@ -13,7 +13,7 @@
 class Database
 {
    public:
-    Database(std::shared_ptr<pqxx::connection> conn);
+    explicit Database(std::shared_ptr<pqxx::connection> conn);
     virtual ~Database() = default;
 
     bool isConnected();

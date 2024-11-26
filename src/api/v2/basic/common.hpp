@@ -7,7 +7,7 @@
 
 #include "api/v2/helper/helper.hpp"
 #include "utils/global/callback.hpp"
-
+#include "utils/global/httpcodes.hpp"
 #define RATELIMIT "api::v2::Filters::RateLimit"
 #define AUTH "api::v2::Filters::Auth"
 #define ELAPSED "api::v2::MiddleWares::ElapsedTime"
@@ -36,10 +36,10 @@ namespace api
                             {
                                 switch (code)
                                 {
-                                    case 200:
+                                    case HttpStatus::OK:
                                         Helper::successResponse(content, std::move(callback));
                                         break;
-                                    case 500:
+                                    case HttpStatus::INTERNAL_SERVER_ERROR:
                                         Helper::failureResponse(content, std::move(callback));
                                         break;
                                     default:

@@ -19,11 +19,7 @@ class TokenManager
         std::optional<std::string> llodt;  // used to invalidate tokens on logout
     };
 
-    TokenManager()
-    {
-        databaseController = Store::getObject<DatabaseController>();
-        sessionManager     = Store::getObject<SessionManager>();
-    }
+    TokenManager() : databaseController(Store::getObject<DatabaseController>()), sessionManager(Store::getObject<SessionManager>()) {}
     virtual ~TokenManager() = default;
 
     std::optional<std::string> GenerateToken(const LoggedClientInfo &loggedinClientInfo) const;

@@ -4,8 +4,6 @@
 
 #include "entities/appointments/base/appointment.hpp"
 
-using json = jsoncons::json;
-
 class RadiologyCenterAppointment : public Appointment
 {
    private:

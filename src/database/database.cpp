@@ -49,13 +49,12 @@ bool Database::checkExists(const std::string &table, const std::string &column, 
 
 std::optional<std::unordered_set<api::v2::ColumnInfo>> Database::getTableSchema(const std::string &tableName)
 {
-    std::string query;
     try
     {
         pqxx::nontransaction ntxn(*connection);
-        query = fmt::format(
+        std::string          query = fmt::format(
             "SELECT column_name, data_type, column_default, is_nullable FROM information_schema.columns WHERE table_name = '{}' AND column_name != "
-            "'id';",
+                     "'id';",
             tableName);
 
         pqxx::result result = ntxn.exec(query);

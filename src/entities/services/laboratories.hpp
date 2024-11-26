@@ -4,8 +4,6 @@
 
 #include "entities/base/service.hpp"
 
-using json = jsoncons::json;
-
 class Laboratories : public Service
 {
    private:

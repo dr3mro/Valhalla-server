@@ -4,8 +4,6 @@
 
 #include "entities/base/case.hpp"
 
-using json = jsoncons::json;
-
 class Prescriptions : public Case
 {
    private:
