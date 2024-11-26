@@ -6,7 +6,7 @@
 
 #include "controllers/base/controller/controller.hpp"
 #include "controllers/entitycontroller/entitycontrollerbase.hpp"
-#include "utils/global/types.hpp"
+
 template <typename T>
 class EntityController : public Controller, public EntityControllerBase
 {
@@ -25,7 +25,7 @@ class EntityController : public Controller, public EntityControllerBase
 };
 
 template <typename T>
-void EntityController<T>::Create(CALLBACK_ &&callback, std::string_view data)
+inline void __attribute((always_inline)) EntityController<T>::Create(CALLBACK_ &&callback, std::string_view data)
 {
     try
     {
@@ -69,7 +69,7 @@ void EntityController<T>::Create(CALLBACK_ &&callback, std::string_view data)
 }
 
 template <typename T>
-void EntityController<T>::Read(CALLBACK_ &&callback, std::string_view data)
+inline void __attribute((always_inline)) EntityController<T>::Read(CALLBACK_ &&callback, std::string_view data)
 {
     try
     {
@@ -94,7 +94,7 @@ void EntityController<T>::Read(CALLBACK_ &&callback, std::string_view data)
 }
 
 template <typename T>
-void EntityController<T>::Update(CALLBACK_ &&callback, std::string_view data, const std::optional<uint64_t> id)
+inline void __attribute((always_inline)) EntityController<T>::Update(CALLBACK_ &&callback, std::string_view data, const std::optional<uint64_t> id)
 {
     try
     {
@@ -143,7 +143,7 @@ void EntityController<T>::Update(CALLBACK_ &&callback, std::string_view data, co
 }
 
 template <typename T>
-void EntityController<T>::Delete(CALLBACK_ &&callback, const std::optional<uint64_t> id)
+inline void __attribute((always_inline)) EntityController<T>::Delete(CALLBACK_ &&callback, const std::optional<uint64_t> id)
 {
     try
     {
@@ -163,7 +163,7 @@ void EntityController<T>::Delete(CALLBACK_ &&callback, const std::optional<uint6
 }
 
 template <typename T>
-void EntityController<T>::Search(CALLBACK_ &&callback, std::string_view data)
+inline void __attribute((always_inline)) EntityController<T>::Search(CALLBACK_ &&callback, std::string_view data)
 {
     jsoncons::json request_json;
     try
