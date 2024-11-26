@@ -10,7 +10,7 @@
 #include "entities/services/clinics/patient/patient.hpp"
 #include "utils/global/callback.hpp"
 #include "utils/global/global.hpp"
-#include "utils/global/httpcodes.hpp"
+#include "utils/global/http.hpp"
 #include "utils/jsonhelper/jsonhelper.hpp"
 #include "utils/message/message.hpp"
 #include "utils/sessionmanager/sessionmanager.hpp"
@@ -47,7 +47,7 @@ class Controller
     {
         if (!entity.template check_id_exists<Types::Read_t>())
         {
-            callback(HttpStatus::BAD_REQUEST, "ID does not exist");
+            callback(api::v2::Http::Status::BAD_REQUEST, "ID does not exist");
             return;
         }
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlReadStatement;
@@ -64,7 +64,7 @@ class Controller
     {
         if (!entity.template check_id_exists<Types::Delete_t>())
         {
-            callback(HttpStatus::BAD_REQUEST, "ID does not exist");
+            callback(api::v2::Http::Status::BAD_REQUEST, "ID does not exist");
             return;
         }
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlDeleteStatement;
@@ -100,7 +100,7 @@ class Controller
             }
 
             response_json["results"] = query_results_json;
-            callback(HttpStatus::OK, response_json.as<std::string>());
+            callback(api::v2::Http::Status::OK, response_json.as<std::string>());
         }
         catch (const std::exception &e)
         {
@@ -121,16 +121,16 @@ class Controller
             bool status = tokenManager->ValidateToken(loggedClientInfo);
             if (!status)
             {
-                callback(HttpStatus::UNAUTHORIZED, "Logout failure.");
+                callback(api::v2::Http::Status::UNAUTHORIZED, "Logout failure.");
                 Message::ErrorMessage("Logout failure.");
                 return;
             }
             sessionManager->setNowLogoutTime(loggedClientInfo.userID.value(), loggedClientInfo.group.value());
-            callback(HttpStatus::OK, api::v2::JsonHelper::stringify(api::v2::JsonHelper::jsonify("Logout success.")));
+            callback(api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(api::v2::JsonHelper::jsonify("Logout success.")));
         }
         catch (const std::exception &e)
         {
-            callback(HttpStatus::INTERNAL_SERVER_ERROR, e.what());
+            callback(api::v2::Http::Status::INTERNAL_SERVER_ERROR, e.what());
             CRITICALMESSAGE
         }
     }
@@ -167,7 +167,7 @@ class Controller
                 services = databaseController->executeSearchQuery(query.value());
             }
 
-            callback(HttpStatus::OK, api::v2::JsonHelper::stringify(services));
+            callback(api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(services));
         }
         catch (const std::exception &e)
         {
@@ -191,7 +191,7 @@ class Controller
                 visits = databaseController->executeSearchQuery(query.value());
             }
 
-            callback(HttpStatus::OK, api::v2::JsonHelper::stringify(visits));
+            callback(api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(visits));
         }
         catch (const std::exception &e)
         {
@@ -201,7 +201,7 @@ class Controller
 
    protected:
     template <typename T>
-    std::optional<uint64_t> getNextID(api::v2::Global::HttpError &error)
+    std::optional<uint64_t> getNextID(api::v2::Http::Error &error)
     {
         try
         {
@@ -210,7 +210,7 @@ class Controller
             if (json_nextval.empty())
             {
                 error.message = fmt::format("nextID from seq function of {} failed, could not create a new ID.", T::getTableName());
-                error.code    = HttpStatus::NOT_ACCEPTABLE;
+                error.code    = api::v2::Http::Status::NOT_ACCEPTABLE;
                 Message::ErrorMessage(error.message);
                 return std::nullopt;
             }
@@ -260,7 +260,7 @@ class Controller
             std::string error;
             if (!get_sql_statement(query, entity, sqlstatement, error))
             {
-                callback(HttpStatus::BAD_REQUEST, error);
+                callback(api::v2::Http::Status::BAD_REQUEST, error);
                 return;
             }
 
@@ -269,12 +269,12 @@ class Controller
                 results_j = (*databaseController.*f)(query.value());
                 if (results_j.has_value())
                 {
-                    callback(HttpStatus::OK, results_j.value().as<std::string>());
+                    callback(api::v2::Http::Status::OK, results_j.value().as<std::string>());
                     return;
                 }
                 else
                 {
-                    callback(HttpStatus::BAD_REQUEST, "Failed to execute query");
+                    callback(api::v2::Http::Status::BAD_REQUEST, "Failed to execute query");
                 }
             }
         }

@@ -4,15 +4,6 @@ namespace api
 {
     namespace v2
     {
-        class Global
-        {
-           public:
-            using HttpError = struct HttpError
-            {
-                int         code;
-                std::string message;
-            };
-        };
         using ColumnInfo = struct ColumnInfo
         {
             std::string Name;

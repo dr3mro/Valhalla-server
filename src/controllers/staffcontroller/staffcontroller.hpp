@@ -79,16 +79,16 @@ void StaffController<T>::InviteStaffToEntity(CALLBACK_ &&callback, std::string_v
 
             if (response.has_value())
             {
-                callback(HttpStatus::Code::OK, response.value());
+                callback(api::v2::Http::Status::OK, response.value());
             }
             else
             {
-                callback(HttpStatus::Code::BAD_REQUEST, "Failed to send invite.");
+                callback(api::v2::Http::Status::BAD_REQUEST, "Failed to send invite.");
             }
         }
         else
         {
-            callback(HttpStatus::Code::BAD_REQUEST, "Failed to create invite json.");
+            callback(api::v2::Http::Status::BAD_REQUEST, "Failed to create invite json.");
         }
     }
     catch (const std::exception &e)
