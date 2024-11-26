@@ -72,6 +72,69 @@ DOSDetector::Status DOSDetector::is_dos_attack(const drogon::HttpRequestPtr &req
         return Status::ERROR;
     }
 }
+inline void __attribute((always_inline)) DOSDetector::clean_requests(
+    const std::chrono::time_point<std::chrono::steady_clock> &window)  // Cleanup requests and blocked IPs
+{
+    std::lock_guard<std::mutex> request_lock(request_mutex_);
+    // Cleanup requests
+    for (auto &request : requests_)
+    {
+        auto &requests = request.second;
+
+        for (auto it = requests.begin(); it != requests.end();
+             /* no increment here */)
+        {
+            auto &times = it->second;
+
+            while (!times.empty() && times.front() < window)
+            {
+                times.pop_front();
+            }
+
+            if (times.empty())
+            {
+                it = requests.erase(it);
+            }
+            else
+            {
+                ++it;
+            }
+        }
+    }
+}
+inline void __attribute((always_inline)) DOSDetector::clean_ratelimited_ips(const std::chrono::time_point<std::chrono::steady_clock> &now)
+{
+    std::lock_guard<std::mutex> block_lock(ratelimit_mutex_);
+    for (auto it = ratelimited_ips_.begin(); it != ratelimited_ips_.end();
+         /* no increment here */)
+    {
+        if (now >= it->second)
+        {
+            // fmt::print("Removing ratelimited IP : {}\n", it->first);
+            it = ratelimited_ips_.erase(it);  // Unblock IP
+        }
+        else
+        {
+            ++it;
+        }
+    }
+}
+inline void __attribute((always_inline)) DOSDetector::clean_banned_ips(const std::chrono::time_point<std::chrono::steady_clock> &now)
+{
+    std::lock_guard<std::mutex> ban_lock(ban_mutex_);
+    for (auto it = banned_ips_.begin(); it != banned_ips_.end();
+         /* no increment here */)
+    {
+        if (now >= it->second)
+        {
+            it = banned_ips_.erase(it);  // Unblock IP
+        }
+        else
+        {
+            ++it;
+        }
+    }
+}
 void DOSDetector::cleanUpTask()
 {
     try
@@ -83,71 +146,9 @@ void DOSDetector::cleanUpTask()
             auto next   = now + std::chrono::seconds(config_.clean_freq);
             auto window = now - config_.period;
 
-            // Cleanup requests and blocked IPs
-            {
-                std::lock_guard<std::mutex> request_lock(request_mutex_);
-                // Cleanup requests
-                for (auto &ot : requests_)
-                {
-                    auto &requests = ot.second;
-
-                    for (auto it = requests.begin(); it != requests.end();
-                         /* no increment here */)
-                    {
-                        auto &times = it->second;
-
-                        while (!times.empty() && times.front() < window)
-                        {
-                            times.pop_front();
-                            // fmt::print("Removing old request from {}\n", ot.first);
-                        }
-
-                        if (times.empty())
-                        {
-                            it = requests.erase(it);
-                            // fmt::print("Removing empty request from {}\n", ot.first);
-                        }
-                        else
-                        {
-                            ++it;
-                        }
-                    }
-                }
-            }
-
-            {
-                std::lock_guard<std::mutex> block_lock(ratelimit_mutex_);
-                for (auto it = ratelimited_ips_.begin(); it != ratelimited_ips_.end();
-                     /* no increment here */)
-                {
-                    if (now >= it->second)
-                    {
-                        // fmt::print("Removing ratelimited IP : {}\n", it->first);
-                        it = ratelimited_ips_.erase(it);  // Unblock IP
-                    }
-                    else
-                    {
-                        ++it;
-                    }
-                }
-            }
-
-            {
-                std::lock_guard<std::mutex> ban_lock(ban_mutex_);
-                for (auto it = banned_ips_.begin(); it != banned_ips_.end();
-                     /* no increment here */)
-                {
-                    if (now >= it->second)
-                    {
-                        // fmt::print("Removing banned IP :{}\n", it->first);
-                        it = banned_ips_.erase(it);  // Unblock IP
-                    }
-                    else
-                    {
-                        ++it;
-                    }
-                }
-            }
+            clean_requests(window);      // clean up requests older than time window
+            clean_ratelimited_ips(now);  // clean up ratelimited ips [time stored in ratelimited_ips_ equals time to unblock]
+            clean_banned_ips(now);       // clean up banned ips [time stored in banned_ips_ equals time to unblock]
 
             std::this_thread::sleep_until(next);
         }
@@ -164,7 +165,7 @@ inline std::optional<std::string> __attribute((always_inline)) DOSDetector::gene
     try
     {
         std::string data;
-        data.reserve(4096);
+        data.reserve(REQUEST_BUFFER_SIZE);
 
         for (const auto &header : req->getHeaders())
         {
@@ -174,8 +175,6 @@ inline std::optional<std::string> __attribute((always_inline)) DOSDetector::gene
         data.append(req->getBody());
 
         XXH64_hash_t hashed_key = XXH3_64bits(data.c_str(), data.size());
-
-        // fmt::print("Request fingerprint: {}\n", hashed_key);
 
         return fmt::format("{}", hashed_key);
     }
@@ -293,10 +292,8 @@ inline bool __attribute((always_inline)) DOSDetector::checkStatus(std::string_vi
             {
                 return true;
             }
-            else
-            {
-                ip_map.erase(remote_ip.data());
-            }
+
+            ip_map.erase(remote_ip.data());
         }
         return false;
     }

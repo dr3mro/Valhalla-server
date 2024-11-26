@@ -43,7 +43,7 @@ void EntityController<T>::Create(CALLBACK_ &&callback, std::string_view data)
 
         if (!request_json.has_value())
         {
-            callback(400, "Invalid request body.");
+            callback(HttpStatus::Code::BAD_REQUEST, "Invalid request body.");
             return;
         }
 
@@ -104,7 +104,7 @@ void EntityController<T>::Update(CALLBACK_ &&callback, std::string_view data, co
 
         if (!id.has_value())
         {
-            callback(400, "No id provided.");
+            callback(HttpStatus::Code::BAD_REQUEST, "No id provided.");
             return;
         }
 
@@ -112,7 +112,7 @@ void EntityController<T>::Update(CALLBACK_ &&callback, std::string_view data, co
 
         if (!request_json.has_value())
         {
-            callback(400, "Invalid request body.");
+            callback(HttpStatus::Code::BAD_REQUEST, "Invalid request body.");
             return;
         }
 
@@ -142,7 +142,7 @@ void EntityController<T>::Delete(CALLBACK_ &&callback, const std::optional<uint6
     {
         if (!id.has_value())
         {
-            callback(406, "Invalid id provided");
+            callback(HttpStatus::Code::NOT_ACCEPTABLE, "Invalid id provided");
             return;
         }
 
@@ -171,7 +171,7 @@ void EntityController<T>::Search(CALLBACK_ &&callback, std::string_view data)
         }
         else
         {
-            callback(406, "Failed to search");
+            callback(HttpStatus::Code::NOT_ACCEPTABLE, "Failed to search");
         }
     }
     catch (const std::exception &e)

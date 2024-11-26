@@ -9,6 +9,7 @@
 
 #include "configurator/configurator.hpp"
 #include "store/store.hpp"
+#include "utils/global/httpcodes.hpp"
 #include "utils/global/types.hpp"
 #include "utils/passwordcrypt/passwordcrypt.hpp"
 #include "utils/validator/validator.hpp"
@@ -107,7 +108,7 @@ class Types
                 data_j = jsoncons::json::parse(_data);
                 if (!data_j.has_value())
                 {
-                    error = {.code = 400, .message = "Failed to parse body."};
+                    error = {.code = HttpStatus::BAD_REQUEST, .message = "Failed to parse body."};
                     Message::ErrorMessage(error.message);
                     success = false;
                     return;
@@ -115,7 +116,7 @@ class Types
             }
             catch (const std::exception &e)
             {
-                error   = {.code = 500, .message = fmt::format("Failed while parsing client data: {}.", e.what())};
+                error   = {.code = HttpStatus::INTERNAL_SERVER_ERROR, .message = fmt::format("Failed while parsing client data: {}.", e.what())};
                 success = false;
                 Message::CriticalMessage(error.message);
                 return;
@@ -179,7 +180,7 @@ class Types
             }
             catch (const std::exception &e)
             {
-                error   = {.code = 500, .message = fmt::format("Failed while parsing client data: {}.", e.what())};
+                error   = {.code = HttpStatus::INTERNAL_SERVER_ERROR, .message = fmt::format("Failed while parsing client data: {}.", e.what())};
                 success = false;
                 Message::CriticalMessage(error.message);
                 return;
@@ -215,7 +216,7 @@ class Types
             }
             catch (const std::exception &e)
             {
-                error   = {.code = 500, .message = fmt::format("Failed while parsing client data: {}.", e.what())};
+                error   = {.code = HttpStatus::INTERNAL_SERVER_ERROR, .message = fmt::format("Failed while parsing client data: {}.", e.what())};
                 success = false;
                 Message::CriticalMessage(error.message);
                 return;

@@ -9,7 +9,7 @@
 class SessionManager
 {
    public:
-    SessionManager() { databaseController = Store::getObject<DatabaseController>(); }
+    SessionManager() : databaseController(Store::getObject<DatabaseController>()) {}
 
     virtual ~SessionManager() = default;
     void                       setNowLoginTime(uint64_t id, const std::string &group);

@@ -34,7 +34,7 @@ void StaffController<T>::AddStaffToEntity(CALLBACK_ &&callback, std::string_view
     try
     {
         staff_j                  = jsoncons::json::parse(data);
-        json             payload = staff_j.at("payload");
+        jsoncons::json   payload = staff_j.at("payload");
         Types::StaffData staffData(payload);
 
         T staff(staffData);
@@ -48,12 +48,10 @@ void StaffController<T>::AddStaffToEntity(CALLBACK_ &&callback, std::string_view
 template <typename T>
 void StaffController<T>::RemoveStaffFromEntity(CALLBACK_ &&callback, std::string_view data)
 {
-    jsoncons::json staff_j;
-
     try
     {
-        staff_j                  = jsoncons::json::parse(data);
-        json             payload = staff_j.at("payload");
+        jsoncons::json   staff_j = jsoncons::json::parse(data);
+        jsoncons::json   payload = staff_j.at("payload");
         Types::StaffData staffData(payload);
 
         T staff(staffData);
@@ -67,10 +65,9 @@ void StaffController<T>::RemoveStaffFromEntity(CALLBACK_ &&callback, std::string
 template <typename T>
 void StaffController<T>::InviteStaffToEntity(CALLBACK_ &&callback, std::string_view data)
 {
-    jsoncons::json staff_j;
     try
     {
-        staff_j = jsoncons::json::parse(data);
+        jsoncons::json             staff_j = jsoncons::json::parse(data);
         Types::StaffData           staffData(staff_j);
         std::optional<std::string> response;
         T                          staff(staffData);
@@ -86,12 +83,12 @@ void StaffController<T>::InviteStaffToEntity(CALLBACK_ &&callback, std::string_v
             }
             else
             {
-                callback(400, "Failed to send invite.");
+                callback(HttpStatus::Code::BAD_REQUEST, "Failed to send invite.");
             }
         }
         else
         {
-            callback(400, "Failed to create invite json.");
+            callback(HttpStatus::Code::BAD_REQUEST, "Failed to create invite json.");
         }
     }
     catch (const std::exception &e)

@@ -4,7 +4,6 @@
 #include "database/database.hpp"
 #include "database/databaseconnectionpool.hpp"
 #include "utils/message/message.hpp"
-using json = jsoncons::json;
 
 class DatabaseController
 {
@@ -12,13 +11,13 @@ class DatabaseController
     DatabaseController();
     virtual ~DatabaseController() = default;
 
-    std::optional<json>        executeQuery(const std::string &query);
-    std::optional<json>        executeReadQuery(const std::string &query);
-    std::optional<json::array> executeSearchQuery(const std::string &query);
-    std::optional<std::string> doReadQuery(const std::string &query);
-    std::optional<bool>        checkItemExists(const std::string &table, const std::string &column, const std::string &value);
-    std::optional<std::string> getPasswordHashForUserID(const uint64_t &user_id, const std::string &tablename);
-    std::optional<uint64_t>    findIfUserID(const std::string &username, const std::string &tablename);  // check if user found and return 0 if not
+    std::optional<jsoncons::json>        executeQuery(const std::string &query);
+    std::optional<jsoncons::json>        executeReadQuery(const std::string &query);
+    std::optional<jsoncons::json::array> executeSearchQuery(const std::string &query);
+    std::optional<std::string>           doReadQuery(const std::string &query);
+    std::optional<bool>                  checkItemExists(const std::string &table, const std::string &column, const std::string &value);
+    std::optional<std::string>           getPasswordHashForUserID(const uint64_t &user_id, const std::string &tablename);
+    std::optional<uint64_t> findIfUserID(const std::string &username, const std::string &tablename);  // check if user found and return 0 if not
     std::optional<std::unordered_set<api::v2::ColumnInfo>> getTableSchema(const std::string &tableName);
     std::optional<std::unordered_set<std::string>>         getAllTables();
 

@@ -34,12 +34,12 @@ void DatabaseSchema::populateSchema(const std::string& tableName)
     }
     else
     {
-        throw std::runtime_error(fmt::format("Table not found.\n", tableName));
+        Message::WarningMessage(fmt::format("Table not found.\n", tableName));
         exit(EXIT_FAILURE);
     }
 }
 
-SCHEMA_t DatabaseSchema::getDatabaseSchema() { return databaseSchema; }
+const SCHEMA_t& DatabaseSchema::getDatabaseSchema() { return databaseSchema; }
 
 void DatabaseSchema::printSchema()
 {

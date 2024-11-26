@@ -3,17 +3,22 @@
 #include <fmt/format.h>
 
 #include <cstdlib>
-#include <iostream>
 
 #include "utils/message/message.hpp"
 
-std::optional<std::string_view> EnvVars::get(std::string_view key) const
+std::optional<std::string_view> EnvVars::get(std::string_view key)
 {
-    const char *value = std::getenv(key.data());
-    if (value)
+    // Retrieve the value associated with the environment variable key
+    const char *_key  = key.data();
+    const char *value = std::getenv(_key);
+
+    // If the value exists, return it as a string_view
+    if (value != nullptr)
     {
-        return value;
+        return std::string_view(value);
     }
+
+    // Otherwise, return an empty optional
     return std::nullopt;
 }
 

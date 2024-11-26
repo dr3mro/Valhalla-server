@@ -31,8 +31,12 @@ class DOSDetector
     DOSDetector::Status is_dos_attack(const drogon::HttpRequestPtr &req);
 
    private:
-    std::shared_ptr<Configurator>          configurator_ = Store::getObject<Configurator>();
-    const Configurator::DOSDetectorConfig &config_       = configurator_->get<Configurator::DOSDetectorConfig>();
+    std::shared_ptr<Configurator>            configurator_       = Store::getObject<Configurator>();
+    const Configurator::DOSDetectorConfig   &config_             = configurator_->get<Configurator::DOSDetectorConfig>();
+    static constexpr int                     REQUEST_BUFFER_SIZE = 4096;
+    inline void __attribute((always_inline)) clean_requests(const std::chrono::time_point<std::chrono::steady_clock> &window);
+    inline void __attribute((always_inline)) clean_ratelimited_ips(const std::chrono::time_point<std::chrono::steady_clock> &now);
+    inline void __attribute((always_inline)) clean_banned_ips(const std::chrono::time_point<std::chrono::steady_clock> &now);
 
     //                     // IP                       // Hash of Request // times
     //                     of requests

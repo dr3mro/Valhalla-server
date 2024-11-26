@@ -82,7 +82,7 @@ class Entity : public Base
 
         try
         {
-            json payload = std::get<Types::Update_t>(data).get_data();
+            jsoncons::json payload = std::get<Types::Update_t>(data).get_data();
 
             auto id = std::get<Types::Update_t>(data).get_id();
             if (!id.has_value())

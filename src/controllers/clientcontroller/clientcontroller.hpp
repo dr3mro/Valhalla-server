@@ -71,7 +71,7 @@ void ClientController<T>::Create(CALLBACK_&& callback, std::string_view data)
             T client(client_data);
             if (client.template exists<Types::CreateClient_t>())
             {
-                callback(409, "User already exists");
+                callback(HttpStatus::CONFLICT, "User already exists");
                 return;
             }
             Controller::Create(client, std::move(callback));
@@ -152,7 +152,7 @@ std::optional<uint64_t> ClientController<T>::Login(CALLBACK_&& callback, std::st
 
         if (!client_id)
         {
-            callback(401, fmt::format("User '{}' not found or wrong password", credentials.username));
+            callback(HttpStatus::UNAUTHORIZED, fmt::format("User '{}' not found or wrong password", credentials.username));
             return std::nullopt;
         }
 
@@ -164,13 +164,13 @@ std::optional<uint64_t> ClientController<T>::Login(CALLBACK_&& callback, std::st
         loggedClientInfo.llodt =
             sessionManager->getLastLogoutTime(loggedClientInfo.userID.value(), loggedClientInfo.group.value()).value_or("first_login");
 
-        json token_object;
+        jsoncons::json token_object;
         token_object["token"]     = tokenManager->GenerateToken(loggedClientInfo);
         token_object["username"]  = credentials.username;
         token_object["client_id"] = client_id;
         token_object["group"]     = loggedClientInfo.group;
 
-        callback(200, token_object.as<std::string>());
+        callback(HttpStatus::OK, token_object.as<std::string>());
         sessionManager->setNowLoginTime(client_id.value(), loggedClientInfo.group.value());
         return client_id;
     }
@@ -203,7 +203,7 @@ void ClientController<T>::Suspend(CALLBACK_&& callback, const std::optional<uint
     {
         if (!client_id.has_value())
         {
-            callback(406, api::v2::JsonHelper::jsonify("Invalid id provided").as<std::string>());
+            callback(HttpStatus::Code::NOT_ACCEPTABLE, api::v2::JsonHelper::jsonify("Invalid id provided").as<std::string>());
             return;
         }
 
@@ -224,7 +224,7 @@ void ClientController<T>::Activate(CALLBACK_&& callback, const std::optional<uin
     {
         if (!client_id.has_value())
         {
-            callback(406, api::v2::JsonHelper::jsonify("Invalid id provided").as<std::string>());
+            callback(HttpStatus::Code::NOT_ACCEPTABLE, api::v2::JsonHelper::jsonify("Invalid id provided").as<std::string>());
             return;
         }
         Types::SuspendData suspendData(client_id.value());
@@ -251,7 +251,7 @@ void ClientController<T>::GetServices(CALLBACK_&& callback, std::optional<uint64
     {
         if (!client_id.has_value())
         {
-            callback(400, api::v2::JsonHelper::jsonify("client_id extraction failed").as<std::string>());
+            callback(HttpStatus::Code::BAD_REQUEST, api::v2::JsonHelper::jsonify("client_id extraction failed").as<std::string>());
             return;
         }
 

@@ -5,8 +5,6 @@
 #include "entities/base/entity.hpp"
 #include "utils/message/message.hpp"
 
-using json = jsoncons::json;
-
 class Service : public Entity
 {
    public:

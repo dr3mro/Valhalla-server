@@ -17,13 +17,13 @@ int Server::run()
     try
     {
         drogon::app()
-            .addListener(config_.host.data(), config_.port)
+            .addListener(std::string(config_.host), config_.port)
             .setThreadNum(config_.threads)
             .setUploadPath(config_.upload_dir)
             .disableSigtermHandling()
             .setLogLevel(static_cast<trantor::Logger::LogLevel>(config_.debug_level))
             .registerPreRoutingAdvice(
-                [](const drogon::HttpRequestPtr& req, drogon::AdviceCallback&& cb, drogon::AdviceChainCallback&& ccb)
+                [](const drogon::HttpRequestPtr& req, drogon::AdviceCallback&& callback, drogon::AdviceChainCallback&& chainedcallback)
                 {
                     if (req->method() == drogon::Options)
                     {
@@ -33,11 +33,11 @@ int Server::run()
                         resp->addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
                         resp->addHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
                         resp->addHeader("Access-Control-Allow-Credentials", "true");
-                        cb(resp);
+                        callback(resp);
                     }
                     else
                     {
-                        ccb();
+                        chainedcallback();
                     }
                 })
             .registerPostHandlingAdvice(

@@ -6,6 +6,7 @@
 #include <regex>
 
 #include "utils/databaseschema/databaseschema.hpp"
+#include "utils/global/httpcodes.hpp"
 
 const std::unordered_map<std::string, std::string> Validator::regex_client_validators = {
     {"username", "^[a-z][a-z0-9_]*$"},
@@ -51,7 +52,7 @@ bool Validator::validateDatabaseCreateSchema(const std::string &tablename, const
     catch (const std::exception &e)
     {
         error.message = e.what();
-        error.code    = 500;
+        error.code    = HttpStatus::Code::INTERNAL_SERVER_ERROR;
         return false;
     }
 
@@ -86,7 +87,7 @@ bool Validator::validateDatabaseUpdateSchema(const std::string &tablename, const
     catch (const std::exception &e)
     {
         error.message = e.what();
-        error.code    = 500;
+        error.code    = HttpStatus::Code::INTERNAL_SERVER_ERROR;
         return false;
     }
 
@@ -103,7 +104,7 @@ bool Validator::validateDatabaseReadSchema(const std::unordered_set<std::string>
     if (!found)
     {
         error.message = "Table not found";
-        error.code    = 404;
+        error.code    = HttpStatus::Code::NOT_FOUND;
         return false;
     }
 
@@ -116,7 +117,7 @@ bool Validator::validateDatabaseReadSchema(const std::unordered_set<std::string>
         if (it == columns.end())
         {
             error.message = "Key not found in schema: " + key;
-            error.code    = 400;
+            error.code    = HttpStatus::Code::BAD_REQUEST;
             return false;
         }
     }
@@ -138,7 +139,8 @@ bool Validator::clientRegexValidation(const jsoncons::json &data, api::v2::Globa
                 std::regex pattern(pattern_item->second);
                 if (!std::regex_match(value.value(), pattern))
                 {
-                    error = {.code = 400, .message = fmt::format("Key ({}) Value({}) is invalid.", item.key(), value.value())};
+                    error = {.code    = HttpStatus::Code::BAD_REQUEST,
+                             .message = fmt::format("Key ({}) Value({}) is invalid.", item.key(), value.value())};
                     return false;
                 }
             }
@@ -147,7 +149,7 @@ bool Validator::clientRegexValidation(const jsoncons::json &data, api::v2::Globa
         else
         {
             error.message = "Value is empty for key " + item.key();
-            error.code    = 400;
+            error.code    = HttpStatus::Code::BAD_REQUEST;
             return false;
         }
     }
@@ -159,7 +161,7 @@ bool Validator::nullCheck(const jsoncons::json &data, api::v2::Global::HttpError
     if (data.is_null() || data.empty())
     {
         error.message = "Data is empty";
-        error.code    = 400;
+        error.code    = HttpStatus::Code::BAD_REQUEST;
         return true;
     }
     return false;
@@ -175,7 +177,7 @@ std::unordered_set<api::v2::ColumnInfo> Validator::getDatabaseSchemaForTable(con
     if ((table_schema_it == schema.end()) || table_schema_it->second.empty())
     {
         error.message = "Table not found";
-        error.code    = 400;
+        error.code    = HttpStatus::Code::BAD_REQUEST;
         found         = false;
     }
     found = true;
@@ -209,7 +211,7 @@ bool Validator::checkColumns(const jsoncons::json &data, const std::unordered_se
         if (!column.isNullable && !column_exists && !exclude.contains(column.Name))
         {
             error.message = "Non-nullable column missing in data: " + column.Name;
-            error.code    = 400;
+            error.code    = HttpStatus::Code::BAD_REQUEST;
             return false;
         }
 
@@ -220,7 +222,7 @@ bool Validator::checkColumns(const jsoncons::json &data, const std::unordered_se
             if (!validateType(value, column.DataType))
             {
                 error.message = fmt::format("Data type mismatch for column: {} ,expected: {} ", column.Name, column.DataType);
-                error.code    = 400;
+                error.code    = HttpStatus::Code::BAD_REQUEST;
                 return false;
             }
         }
@@ -242,7 +244,7 @@ bool Validator::ensureAllKeysExist(const jsoncons::json &data, const std::unorde
         if (exclude.contains(entry.key()))
         {
             error.message = "Key: [" + entry.key() + "] is not allowed to be changed.";
-            error.code    = 400;
+            error.code    = HttpStatus::Code::BAD_REQUEST;
             return false;
         }
 
@@ -250,7 +252,7 @@ bool Validator::ensureAllKeysExist(const jsoncons::json &data, const std::unorde
         if (schema_columns.find(key) == schema_columns.end())  // Key not in schema
         {
             error.message = "Key: [" + key + "] is not found in schema";
-            error.code    = 400;
+            error.code    = HttpStatus::Code::BAD_REQUEST;
             return false;
         }
     }

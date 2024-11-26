@@ -19,19 +19,19 @@ DatabaseController::DatabaseController()
     }
 }
 
-std::optional<json> DatabaseController::executeQuery(const std::string &query)
+std::optional<jsoncons::json> DatabaseController::executeQuery(const std::string &query)
 {
-    return executer<json>(&Database::executeQuery<json, pqxx::work>, query);
+    return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::work>, query);
 }
 
-std::optional<json> DatabaseController::executeReadQuery(const std::string &query)
+std::optional<jsoncons::json> DatabaseController::executeReadQuery(const std::string &query)
 {
-    return executer<json>(&Database::executeQuery<json, pqxx::nontransaction>, query);
+    return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::nontransaction>, query);
 }
 
-std::optional<json::array> DatabaseController::executeSearchQuery(const std::string &query)
+std::optional<jsoncons::json ::array> DatabaseController::executeSearchQuery(const std::string &query)
 {
-    return executer<json::array>(&Database::executeQuery<json::array, pqxx::nontransaction>, query);
+    return executer<jsoncons::json ::array>(&Database::executeQuery<jsoncons::json ::array, pqxx::nontransaction>, query);
 }
 
 std::optional<std::string> DatabaseController::doReadQuery(const std::string &query)
