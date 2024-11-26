@@ -135,7 +135,7 @@ class Types
 
         bool hashPassword()
         {
-            auto passwd_itr = std::find_if(data_set.begin(), data_set.end(), [&](const auto &item) { return item.first == "password"; });
+            auto passwd_itr = std::ranges::find_if(data_set, [&](const auto &item) { return item.first == "password"; });
             if (passwd_itr != data_set.end())
             {
                 std::string                password_raw    = passwd_itr->second;

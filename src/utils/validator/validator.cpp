@@ -111,7 +111,7 @@ bool Validator::validateDatabaseReadSchema(const std::unordered_set<std::string>
     // Check if all keys exist in the schema
     for (const auto &key : keys)
     {
-        // Use std::find_if to check if a column with the given name exists
+        // Use std::ranges::find_if to check if a column with the given name exists
         auto it = std::ranges::find_if(columns, [&](const api::v2::ColumnInfo &column) { return column.Name == key; });
 
         if (it == columns.end())
