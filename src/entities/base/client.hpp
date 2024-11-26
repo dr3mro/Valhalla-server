@@ -117,7 +117,7 @@ class Client : public Entity
     bool exists()
     {
         auto client_data = std::get<T>(getData()).get_data_set();
-        auto it          = std::find_if(client_data.begin(), client_data.end(), [&](const auto &item) { return item.first == USERNAME; });
+        auto it          = std::ranges::find_if(client_data, [&](const auto &item) { return item.first == USERNAME; });
 
         if (it != client_data.end())
         {
