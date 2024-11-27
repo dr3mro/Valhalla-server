@@ -24,7 +24,6 @@ namespace api
         static void executeControllerMethod(const Registry& registry, const std::string_view key, Func method,
                                             std::function<void(const drogon::HttpResponsePtr&)>&& callback, Args&&... args)
         {
-            CTRACK;
             auto it = registry.find(key);
             if (it != registry.end())
             {

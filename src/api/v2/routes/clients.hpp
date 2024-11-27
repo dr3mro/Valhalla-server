@@ -49,7 +49,6 @@ namespace api
             void read(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                       const std::string &clientType)
             {
-                CTRACK;
                 executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Read, std::move(callback), req->body());
             }
 
