@@ -79,6 +79,7 @@ set(CONAN_PACKAGES
   spdlog
   Trantor
   Drogon
+  ctrack
 )
 
 # Find all packages at once
@@ -93,6 +94,8 @@ target_include_directories(${Target} PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/src
   ${PACKAGE_INCLUDES}
 )
+
+include(variables.cmake)
 
 # Link libraries
 target_link_libraries(${Target} PRIVATE ${PACKAGE_LIBS})
