@@ -107,13 +107,6 @@ void ClientController<T>::Update(CALLBACK_&& callback, std::string_view data, co
         if (success)
         {
             T client(client_data);
-
-            if (!client.template check_id_exists<Types::UpdateClient_t>())
-            {
-                callback(api::v2::Http::Status::BAD_REQUEST, "ID does not exist");
-                return;
-            }
-
             Controller::Update(client, std::move(callback));
         }
         else

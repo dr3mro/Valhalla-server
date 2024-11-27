@@ -41,13 +41,6 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
             Types::Create_t clinic_create_data = Types::Create_t(request_json, id.value());
 
             T entity(clinic_create_data);
-
-            if (entity.template check_id_exists<Types::Create_t>())
-            {
-                callback(api::v2::Http::Status::CONFLICT, "id already exists.");
-                return;
-            }
-
             Controller::Create(entity, std::move(callback));
         }
         catch (const std::exception &e)

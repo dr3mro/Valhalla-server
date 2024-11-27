@@ -1,7 +1,6 @@
 #include <drogon/drogon.h>
 
 #include "utils/dosdetector/dosdetector.hpp"
-
 namespace api
 {
     namespace v2
