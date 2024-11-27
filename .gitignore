@@ -4,3 +4,5 @@ build
 
 build_
 server.log
+logs
+uploads

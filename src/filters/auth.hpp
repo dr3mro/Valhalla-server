@@ -1,5 +1,7 @@
 #include <drogon/drogon.h>
 
+#include <ctrack.hpp>
+
 #include "utils/jsonhelper/jsonhelper.hpp"
 #include "utils/tokenmanager/tokenmanager.hpp"
 namespace api
@@ -14,6 +16,7 @@ namespace api
                 Auth() = default;
                 void doFilter(const drogon::HttpRequestPtr &req, drogon::FilterCallback &&fcb, drogon::FilterChainCallback &&fccb) override
                 {
+                    CTRACK;
                     // Directly get the authorization header value to avoid multiple dereferences
                     const auto &auth_header = req->getHeader("Authorization");
 
