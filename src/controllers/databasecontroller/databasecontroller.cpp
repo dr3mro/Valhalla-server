@@ -44,16 +44,15 @@ std::optional<bool> DatabaseController::checkItemExists(const std::string &table
     return executer<bool>(&Database::checkExists, table, column, value).value();
 }
 
-std::optional<std::string> DatabaseController::getPasswordHashForUserID(const uint64_t &user_id, const std::string &tablename)
+std::optional<jsoncons::json> DatabaseController::getPasswordHashForUserName(const std::string &username, const std::string &tablename)
 {
-    return executer<std::string>(&Database::doSimpleQuery<std::string>,
-                                 fmt::format("SELECT password FROM {} WHERE id = '{}' LIMIT 1;", tablename, user_id));
+    std::string query = fmt::format("SELECT id,password,active FROM {} WHERE username = '{}' LIMIT 1;", tablename, username);
+    return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::nontransaction>, query);
 }
 
 std::optional<uint64_t> DatabaseController::findIfUserID(const std::string &username, const std::string &tablename)
 {
-    return executer<uint64_t>(&Database::doSimpleQuery<uint64_t>,
-                              fmt::format("SELECT id FROM {} WHERE username = '{}' LIMIT 1;", tablename, username));
+    return executer<uint64_t>(&Database::doSimpleQuery<uint64_t>, fmt::format("SELECT id FROM {} WHERE id = '{}' LIMIT 1;", tablename, username));
 }
 
 std::optional<std::unordered_set<api::v2::ColumnInfo>> DatabaseController::getTableSchema(const std::string &tableName)

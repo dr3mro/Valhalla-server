@@ -16,11 +16,16 @@ void SessionManager::setNowLoginTime(uint64_t id, const std::string &group)
         std::string login_time = current_time_to_utc_string();
 
         std::string query = fmt::format(
-            "INSERT INTO {}_sessions (id, last_login) VALUES ({}, '{}') "
+            "INSERT INTO {}_sessions (id, last_login,last_logout) VALUES ({}, '{}', '{}') "
             "ON CONFLICT (id) DO UPDATE SET last_login = EXCLUDED.last_login;",
-            group, id, login_time);
+            group, id, login_time, login_time);
 
-        databaseController->executeQuery(query);
+        auto result = databaseController->executeQuery(query);
+        if (!result.has_value())
+        {
+            Message::ErrorMessage("Error updating login time.");
+            Message::CriticalMessage(result.value().to_string());
+        }
     }
     catch (const std::exception &e)
     {
@@ -40,7 +45,12 @@ void SessionManager::setNowLogoutTime(uint64_t id, const std::string &group)
             "ON CONFLICT (id) DO UPDATE SET last_logout = EXCLUDED.last_logout;",
             group, id, logout_time);
 
-        databaseController->executeQuery(query);
+        auto result = databaseController->executeQuery(query);
+        if (!result.has_value())
+        {
+            Message::ErrorMessage("Error updating login time.");
+            Message::CriticalMessage(result.value().to_string());
+        }
     }
     catch (const std::exception &e)
     {
