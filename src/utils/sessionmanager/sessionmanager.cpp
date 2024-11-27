@@ -6,10 +6,11 @@
 #include <ctime>
 #include <string>
 
+#include "controllers/clientcontroller/clientcontroller.hpp"
 #include "fmt/core.h"
 #include "utils/message/message.hpp"
 
-void SessionManager::setNowLoginTime(uint64_t id, const std::string &group)
+std::optional<std::string> SessionManager::setNowLoginTime(uint64_t id, const std::string &group)
 {
     try
     {
@@ -17,7 +18,7 @@ void SessionManager::setNowLoginTime(uint64_t id, const std::string &group)
 
         std::string query = fmt::format(
             "INSERT INTO {}_sessions (id, last_login,last_logout) VALUES ({}, '{}', '{}') "
-            "ON CONFLICT (id) DO UPDATE SET last_login = EXCLUDED.last_login;",
+            "ON CONFLICT (id) DO UPDATE SET last_login = EXCLUDED.last_login RETURNING last_logout;",
             group, id, login_time, login_time);
 
         auto result = databaseController->executeQuery(query);
@@ -26,12 +27,18 @@ void SessionManager::setNowLoginTime(uint64_t id, const std::string &group)
             Message::ErrorMessage("Error updating login time.");
             Message::CriticalMessage(result.value().to_string());
         }
+        else if (!result->empty())
+        {
+            return result.value().at("last_logout").as_string();
+        }
+        return std::nullopt;
     }
     catch (const std::exception &e)
     {
         Message::ErrorMessage("Error updating login time.");
         Message::CriticalMessage(e.what());
     }
+    return std::nullopt;
 }
 
 void SessionManager::setNowLogoutTime(uint64_t id, const std::string &group)
@@ -64,10 +71,35 @@ std::optional<std::string> SessionManager::getLastLoginTime(uint64_t id, const s
     std::string query = fmt::format("SELECT last_login FROM {}_sessions WHERE id = {};", group, id);
     return databaseController->doReadQuery(query);
 }
-std::optional<std::string> SessionManager::getLastLogoutTime(uint64_t id, const std::string &group)
+
+bool SessionManager::getLastLogoutTimeIfActive(LoggedClientInfo &loggedClientInfo)
 {
-    std::string query = fmt::format("SELECT last_logout FROM {}_sessions WHERE id = {};", group, id);
-    return databaseController->doReadQuery(query);
+    try
+    {
+        std::string query = fmt::format(
+            "WITH client_data AS (SELECT ses.id, ses.last_logout, client.active FROM {}_sessions ses\
+            LEFT JOIN {} client ON ses.id = client.id) \
+            SELECT id,\
+            last_logout, active FROM client_data WHERE id = {};",
+            loggedClientInfo.group.value(), loggedClientInfo.group.value(), loggedClientInfo.clientId.value());
+
+        auto results = databaseController->executeReadQuery(query);
+        if (results.has_value())
+        {
+            if (!results.value().empty())
+            {
+                loggedClientInfo.is_active = results.value().at("active").as_bool();
+                loggedClientInfo.llodt     = results.value().at("last_logout").as_string();
+                return true;
+            }
+        }
+        return false;
+    }
+    catch (std::exception &e)
+    {
+        CRITICALMESSAGE
+    }
+    return false;
 }
 
 std::string SessionManager::current_time_to_utc_string()

@@ -101,7 +101,7 @@ class Controller
     void Logout(T &entity, CALLBACK_ &&callback)
         requires(std::is_base_of_v<Client, T>)
     {
-        TokenManager::LoggedClientInfo loggedClientInfo;
+        SessionManager::LoggedClientInfo loggedClientInfo;
 
         try
         {

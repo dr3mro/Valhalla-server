@@ -29,7 +29,7 @@ namespace api
                     }
 
                     // Extract the token
-                    TokenManager::LoggedClientInfo clientInfo;
+                    SessionManager::LoggedClientInfo clientInfo;
                     clientInfo.token = auth_header.substr(7);  // Efficient token extraction
 
                     // Get TokenManager object
@@ -38,9 +38,10 @@ namespace api
                     // Validate token in a single step
                     if (!tokenManager->ValidateToken(clientInfo))
                     {
-                        auto resp = drogon::HttpResponse::newHttpResponse();
+                        auto message = clientInfo.is_active ? "Token is invalid or expired" : "User is suspended";
+                        auto resp    = drogon::HttpResponse::newHttpResponse();
                         resp->setStatusCode(drogon::HttpStatusCode::k401Unauthorized);
-                        resp->setBody(JsonHelper::stringify(JsonHelper::jsonify("Access Denied.")));
+                        resp->setBody(JsonHelper::stringify(JsonHelper::jsonify(message)));
                         fcb(resp);
                         return;
                     }

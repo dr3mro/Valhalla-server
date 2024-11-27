@@ -152,13 +152,24 @@ void ClientController<T>::Login(CALLBACK_&& callback, std::string_view data)
 
         if (success)
         {
-            TokenManager::LoggedClientInfo loggedClientInfo;
+            SessionManager::LoggedClientInfo loggedClientInfo;
 
             loggedClientInfo.clientId = client_id;
             loggedClientInfo.userName = credentials.username;
             loggedClientInfo.group    = client.getGroupName();
-            sessionManager->setNowLoginTime(client_id.value(), loggedClientInfo.group.value());
-            loggedClientInfo.llodt = sessionManager->getLastLogoutTime(loggedClientInfo.clientId.value(), loggedClientInfo.group.value()).value();
+
+            std::optional<std::string> last_logout = sessionManager->setNowLoginTime(client_id.value(), loggedClientInfo.group.value());
+            if (last_logout.has_value())
+            {
+                loggedClientInfo.llodt = last_logout.value();
+                LOG_TRACE << loggedClientInfo.llodt.value();
+            }
+            else
+            {
+                Message::ErrorMessage("Failed to set login time and get last logout time");
+                callback(api::v2::Http::Status::UNAUTHORIZED, "Failed to set login time");
+                return;
+            }
 
             jsoncons::json token_object;
             token_object["token"]     = tokenManager->GenerateToken(loggedClientInfo);
