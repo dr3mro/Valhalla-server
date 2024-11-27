@@ -15,6 +15,7 @@ fmt/10.2.1
 c-ares/1.25.0
 trantor/1.5.21
 drogon/1.9.8
+ctrack/1.0.2
 
 [generators]
 CMakeDeps
@@ -29,6 +30,3 @@ drogon/*:with_spdlog=True
 drogon/*:with_boost=False
 spdlog/*:header_only=True
 c-ares/*:tools=False
-
-
-

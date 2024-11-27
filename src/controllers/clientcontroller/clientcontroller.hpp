@@ -2,6 +2,7 @@
 
 #include <fmt/core.h>
 
+#include <ctrack.hpp>
 #include <jsoncons/json.hpp>
 #include <memory>
 #include <optional>
@@ -91,6 +92,7 @@ void ClientController<T>::Create(CALLBACK_&& callback, std::string_view data)
 template <Client_t T>
 void ClientController<T>::Read(CALLBACK_&& callback, std::string_view data)
 {
+    CTRACK;
     EntityController<T>::Read(std::move(callback), data);
 }
 

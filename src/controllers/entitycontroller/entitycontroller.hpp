@@ -2,6 +2,7 @@
 #pragma once
 #include <fmt/format.h>
 
+#include <ctrack.hpp>
 #include <jsoncons/json.hpp>
 
 #include "controllers/base/controller/controller.hpp"
@@ -71,6 +72,7 @@ inline void __attribute((always_inline)) EntityController<T>::Create(CALLBACK_ &
 template <typename T>
 inline void __attribute((always_inline)) EntityController<T>::Read(CALLBACK_ &&callback, std::string_view data)
 {
+    CTRACK;
     try
     {
         jsoncons::json                  request_j = jsoncons::json::parse(data);

@@ -3,6 +3,7 @@
 #include <drogon/drogon.h>
 #include <fmt/format.h>
 
+#include <ctrack.hpp>
 #include <string_view>
 
 #include "api/v2/helper/helper.hpp"
@@ -24,6 +25,7 @@ namespace api
         static void executeControllerMethod(const Registry& registry, const std::string_view key, Func method,
                                             std::function<void(const drogon::HttpResponsePtr&)>&& callback, Args&&... args)
         {
+            CTRACK;
             auto it = registry.find(key);
             if (it != registry.end())
             {
@@ -47,7 +49,9 @@ namespace api
                                         break;
                                 }
                             };
+
                             std::invoke(method, controller.get(), std::move(mcb), std::forward<Args>(args)...);
+                            ctrack::result_print();
                             return;
                         },
                         it->second);
