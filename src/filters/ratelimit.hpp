@@ -1,7 +1,5 @@
 #include <drogon/drogon.h>
 
-#include <ctrack.hpp>
-
 #include "utils/dosdetector/dosdetector.hpp"
 
 namespace api

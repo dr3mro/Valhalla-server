@@ -5,8 +5,6 @@
 #include <fmt/format.h>
 #include <fmt/ranges.h>
 
-#include <ctrack.hpp>
-
 #include "controllers/databasecontroller/databasecontroller.hpp"
 #include "entities/base/client.hpp"
 #include "entities/services/clinics/patient/patient.hpp"

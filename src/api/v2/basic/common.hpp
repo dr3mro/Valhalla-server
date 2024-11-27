@@ -3,7 +3,6 @@
 #include <drogon/drogon.h>
 #include <fmt/format.h>
 
-#include <ctrack.hpp>
 #include <string_view>
 
 #include "api/v2/helper/helper.hpp"
@@ -51,7 +50,6 @@ namespace api
                             };
 
                             std::invoke(method, controller.get(), std::move(mcb), std::forward<Args>(args)...);
-                            ctrack::result_print();
                             return;
                         },
                         it->second);
