@@ -1,5 +1,7 @@
 #include <drogon/drogon.h>
 
+#include <ctrack.hpp>
+
 #include "utils/dosdetector/dosdetector.hpp"
 
 namespace api
@@ -14,6 +16,7 @@ namespace api
                 RateLimit() = default;
                 void doFilter(const drogon::HttpRequestPtr &req, drogon::FilterCallback &&fcb, drogon::FilterChainCallback &&fccb) override
                 {
+                    CTRACK;
                     std::shared_ptr<DOSDetector> dos_detector = Store::getObject<DOSDetector>();
                     DOSDetector::Status          status       = dos_detector->is_dos_attack(req);
 
