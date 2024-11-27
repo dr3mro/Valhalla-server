@@ -45,11 +45,6 @@ class Controller
     template <typename T>
     void Read(T &entity, CALLBACK_ &&callback)
     {
-        if (!entity.template check_id_exists<Types::Read_t>())
-        {
-            callback(api::v2::Http::Status::BAD_REQUEST, "ID does not exist");
-            return;
-        }
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlReadStatement;
         cruds(entity, sqlstatement, dbrexec, std::forward<CALLBACK_>(callback));
     }
@@ -62,11 +57,6 @@ class Controller
     template <typename T>
     void Delete(T &entity, CALLBACK_ &&callback)
     {
-        if (!entity.template check_id_exists<Types::Delete_t>())
-        {
-            callback(api::v2::Http::Status::BAD_REQUEST, "ID does not exist");
-            return;
-        }
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlDeleteStatement;
         cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK_>(callback));
     }
@@ -269,8 +259,17 @@ class Controller
                 results_j = (*databaseController.*f)(query.value());
                 if (results_j.has_value())
                 {
-                    callback(api::v2::Http::Status::OK, results_j.value().as<std::string>());
-                    return;
+                    if (!results_j->empty())
+                    {
+                        callback(api::v2::Http::Status::OK, results_j.value().as<std::string>());
+                        return;
+                    }
+                    else
+                    {
+                        callback(api::v2::Http::Status::BAD_REQUEST,
+                                 "Query returned no results, please check ID as it might not exist or be invalid.");
+                        return;
+                    }
                 }
                 else
                 {

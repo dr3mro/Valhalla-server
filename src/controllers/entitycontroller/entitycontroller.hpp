@@ -128,12 +128,6 @@ inline void __attribute((always_inline)) EntityController<T>::Update(CALLBACK_ &
 
         T entity(entity_data);
 
-        if (!entity.template check_id_exists<Types::Update_t>())
-        {
-            callback(api::v2::Http::Status::BAD_REQUEST, "ID does not exist");
-            return;
-        }
-
         Controller::Update(entity, std::move(callback));
     }
     catch (const std::exception &e)
