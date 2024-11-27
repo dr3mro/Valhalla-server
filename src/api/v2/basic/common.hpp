@@ -47,6 +47,7 @@ namespace api
                                         break;
                                 }
                             };
+
                             std::invoke(method, controller.get(), std::move(mcb), std::forward<Args>(args)...);
                             return;
                         },
