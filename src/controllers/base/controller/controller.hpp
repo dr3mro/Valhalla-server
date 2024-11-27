@@ -5,6 +5,8 @@
 #include <fmt/format.h>
 #include <fmt/ranges.h>
 
+#include <ctrack.hpp>
+
 #include "controllers/databasecontroller/databasecontroller.hpp"
 #include "entities/base/client.hpp"
 #include "entities/services/clinics/patient/patient.hpp"
@@ -45,6 +47,7 @@ class Controller
     template <typename T>
     void Read(T &entity, CALLBACK_ &&callback)
     {
+        CTRACK;
         if (!entity.template check_id_exists<Types::Read_t>())
         {
             callback(api::v2::Http::Status::BAD_REQUEST, "ID does not exist");
@@ -253,6 +256,7 @@ class Controller
     template <typename S, typename T>
     void cruds(T &entity, S &sqlstatement, std::optional<jsoncons::json> (DatabaseController::*f)(const std::string &), CALLBACK_ &&callback)
     {
+        CTRACK;
         std::optional<jsoncons::json> results_j;
         std::optional<std::string>    query;
         try
