@@ -115,7 +115,7 @@ class Controller
                 Message::ErrorMessage("Logout failure.");
                 return;
             }
-            sessionManager->setNowLogoutTime(loggedClientInfo.userID.value(), loggedClientInfo.group.value());
+            sessionManager->setNowLogoutTime(loggedClientInfo.clientId.value(), loggedClientInfo.group.value());
             callback(api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(api::v2::JsonHelper::jsonify("Logout success.")));
         }
         catch (const std::exception &e)

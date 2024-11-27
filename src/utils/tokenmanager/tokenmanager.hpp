@@ -15,7 +15,7 @@ class TokenManager
         std::optional<std::string> token;
         std::optional<std::string> userName;
         std::optional<std::string> group;
-        std::optional<uint64_t>    userID;
+        std::optional<uint64_t>    clientId;
         std::optional<std::string> llodt;  // used to invalidate tokens on logout
     };
 

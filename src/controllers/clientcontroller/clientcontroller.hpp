@@ -37,17 +37,17 @@ class ClientController : public EntityController<T>, public ClientControllerBase
     }
 
     virtual ~ClientController() final = default;
-    void                    Create(CALLBACK_&& callback, std::string_view data) final;
-    void                    Read(CALLBACK_&& callback, std::string_view data) final;
-    void                    Update(CALLBACK_&& callback, std::string_view data, std::optional<uint64_t> id) final;
-    void                    Delete(CALLBACK_&& callback, std::optional<uint64_t> client_id) final;
-    void                    Search(CALLBACK_&& callback, std::string_view data) final;
-    std::optional<uint64_t> Login(CALLBACK_&& callback, std::string_view data) final;
-    void                    Logout(CALLBACK_&& callback, const std::optional<std::string>& token) final;
-    void                    Suspend(CALLBACK_&& callback, std::optional<uint64_t> client_id) final;
-    void                    Activate(CALLBACK_&& callback, std::optional<uint64_t> client_id) final;
-    void                    ResetPassword(CALLBACK_&& callback, std::string_view data) final;
-    void                    GetServices(CALLBACK_&& callback, std::optional<uint64_t> client_id) final;
+    void Create(CALLBACK_&& callback, std::string_view data) final;
+    void Read(CALLBACK_&& callback, std::string_view data) final;
+    void Update(CALLBACK_&& callback, std::string_view data, std::optional<uint64_t> id) final;
+    void Delete(CALLBACK_&& callback, std::optional<uint64_t> client_id) final;
+    void Search(CALLBACK_&& callback, std::string_view data) final;
+    void Login(CALLBACK_&& callback, std::string_view data) final;
+    void Logout(CALLBACK_&& callback, const std::optional<std::string>& token) final;
+    void Suspend(CALLBACK_&& callback, std::optional<uint64_t> client_id) final;
+    void Activate(CALLBACK_&& callback, std::optional<uint64_t> client_id) final;
+    void ResetPassword(CALLBACK_&& callback, std::string_view data) final;
+    void GetServices(CALLBACK_&& callback, std::optional<uint64_t> client_id) final;
 
    private:
     std::shared_ptr<TokenManager>   tokenManager;
@@ -134,7 +134,7 @@ void ClientController<T>::Search(CALLBACK_&& callback, std::string_view data)
 }
 
 template <Client_t T>
-std::optional<uint64_t> ClientController<T>::Login(CALLBACK_&& callback, std::string_view data)
+void ClientController<T>::Login(CALLBACK_&& callback, std::string_view data)
 {
     jsoncons::json          credentials_j;
     std::optional<uint64_t> client_id;
@@ -146,39 +146,33 @@ std::optional<uint64_t> ClientController<T>::Login(CALLBACK_&& callback, std::st
         credentials.username = credentials_j.at("username").as<std::string>();
         credentials.password = credentials_j.at("password").as<std::string>();
 
-        T client(credentials);
+        T    client(credentials);
+        bool success = false;
+        client_id    = client.authenticate(std::move(callback), success);
 
-        client_id = client.authenticate();
-
-        if (!client_id)
+        if (success)
         {
-            callback(api::v2::Http::Status::UNAUTHORIZED, fmt::format("User '{}' not found or wrong password", credentials.username));
-            return std::nullopt;
+            TokenManager::LoggedClientInfo loggedClientInfo;
+
+            loggedClientInfo.clientId = client_id;
+            loggedClientInfo.userName = credentials.username;
+            loggedClientInfo.group    = client.getGroupName();
+            sessionManager->setNowLoginTime(client_id.value(), loggedClientInfo.group.value());
+            loggedClientInfo.llodt = sessionManager->getLastLogoutTime(loggedClientInfo.clientId.value(), loggedClientInfo.group.value()).value();
+
+            jsoncons::json token_object;
+            token_object["token"]     = tokenManager->GenerateToken(loggedClientInfo);
+            token_object["username"]  = credentials.username;
+            token_object["client_id"] = client_id;
+            token_object["group"]     = loggedClientInfo.group;
+
+            callback(api::v2::Http::Status::OK, token_object.as<std::string>());
         }
-
-        TokenManager::LoggedClientInfo loggedClientInfo;
-
-        loggedClientInfo.userID   = client_id;
-        loggedClientInfo.userName = credentials.username;
-        loggedClientInfo.group    = client.getGroupName();
-        loggedClientInfo.llodt =
-            sessionManager->getLastLogoutTime(loggedClientInfo.userID.value(), loggedClientInfo.group.value()).value_or("first_login");
-
-        jsoncons::json token_object;
-        token_object["token"]     = tokenManager->GenerateToken(loggedClientInfo);
-        token_object["username"]  = credentials.username;
-        token_object["client_id"] = client_id;
-        token_object["group"]     = loggedClientInfo.group;
-
-        callback(api::v2::Http::Status::OK, token_object.as<std::string>());
-        sessionManager->setNowLoginTime(client_id.value(), loggedClientInfo.group.value());
-        return client_id;
     }
     catch (const std::exception& e)
     {
         CRITICALMESSAGERESPONSE
     }
-    return std::nullopt;
 }
 
 template <Client_t T>

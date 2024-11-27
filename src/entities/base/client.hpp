@@ -7,6 +7,8 @@
 #include "entities/base/entity.hpp"
 #include "entities/base/types.hpp"
 #include "fmt/format.h"
+#include "utils/global/callback.hpp"
+#include "utils/global/global.hpp"
 #include "utils/message/message.hpp"
 #include "utils/passwordcrypt/passwordcrypt.hpp"
 #define USERNAME "username"
@@ -129,35 +131,60 @@ class Client : public Entity
         return false;
     }
 
-    std::optional<uint64_t> authenticate() const
+    std::optional<uint64_t> authenticate(CALLBACK_ &&callback, bool &success) const
     {
-        Types::Credentials      credentials;
-        std::optional<uint64_t> client_id;
+        Types::Credentials         credentials;
+        std::optional<uint64_t>    client_id;
+        std::optional<std::string> password_hash;
         try
         {
             credentials = std::get<Types::Credentials>(getData());
-            client_id   = databaseController->findIfUserID(credentials.username, tablename);
 
-            if (!client_id)
-                return std::nullopt;
+            auto client_object = databaseController->getPasswordHashForUserName(credentials.username, tablename);
 
-            auto hash = databaseController->getPasswordHashForUserID(client_id.value(), tablename);
-
-            if (!hash)
+            if (!client_object.has_value() || client_object.value().empty())
             {
+                callback(api::v2::Http::UNAUTHORIZED, "Failure: user might not exist, please try again");
                 return std::nullopt;
             }
 
-            if (passwordCrypt->verifyPassword(credentials.password, hash.value()))
+            jsoncons::json &hash_ = client_object.value();
+
+            client_id = hash_.at("id").as<uint64_t>();
+            if (!client_id.has_value())
             {
+                callback(api::v2::Http::UNAUTHORIZED, "Failed to find client id from database, please try again");
+                return std::nullopt;
+            }
+
+            password_hash = hash_.at("password").as_string();
+
+            if (!password_hash.has_value())
+            {
+                callback(api::v2::Http::UNAUTHORIZED, "Failed to find password hash from database, please try again");
+                return std::nullopt;
+            }
+
+            if (hash_.at("active").as<bool>() == false)
+            {
+                callback(api::v2::Http::UNAUTHORIZED, "User is suspended,  please contact your administrator");
+                return std::nullopt;
+            }
+
+            if (passwordCrypt->verifyPassword(credentials.password, password_hash.value()))
+            {
+                success = true;
                 return client_id;
+            }
+            else
+            {
+                callback(api::v2::Http::UNAUTHORIZED, "Invalid username/password, please try again");
+                return std::nullopt;
             }
         }
         catch (const std::exception &e)
         {
-            Message::ErrorMessage(fmt::format("Error authenticating client: USERNAME: {} ID: {}", credentials.username,
-                                              client_id.has_value() ? std::to_string(client_id.value()) : "N/A"));
-            Message::CriticalMessage(e.what());
+            CRITICALMESSAGERESPONSE
         }
         return std::nullopt;
     }
