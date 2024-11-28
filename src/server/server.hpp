@@ -3,11 +3,12 @@
 #include <memory>
 
 #include "api/v2/all_routes.hpp"  // IWYU pragma: keep
+#include "api/v2/filters/auth.hpp"
+#include "api/v2/filters/ratelimit.hpp"
+#include "api/v2/middlewares/elapsedtime.hpp"
 #include "configurator/configurator.hpp"
-#include "filters/auth.hpp"
-#include "filters/ratelimit.hpp"
-#include "middlewares/elapsedtime.hpp"
 #include "store/store.hpp"
+
 class Server
 {
    public:
