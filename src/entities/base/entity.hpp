@@ -12,6 +12,8 @@
 #include "store/store.hpp"
 #include "utils/message/message.hpp"
 
+using namespace api::v2;
+
 class Entity : public Base
 {
    public:

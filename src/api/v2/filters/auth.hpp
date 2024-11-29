@@ -1,13 +1,19 @@
 #include <drogon/drogon.h>
 
+#include <ranges>
+
+#include "entities/people/provider.hpp"
+#include "entities/people/user.hpp"
+#include "gatekeeper/gatekeeper.hpp"
+#include "gatekeeper/types.hpp"
 #include "utils/jsonhelper/jsonhelper.hpp"
-#include "utils/tokenmanager/tokenmanager.hpp"
 namespace api
 {
     namespace v2
     {
         namespace Filters
         {
+
             class Auth : public drogon::HttpFilter<Auth>
             {
                public:
@@ -29,17 +35,14 @@ namespace api
                     }
 
                     // Extract the token
-                    SessionManager::LoggedClientInfo clientInfo;
-                    clientInfo.token = auth_header.substr(7);  // Efficient token extraction
-
-                    // Get TokenManager object
-                    auto tokenManager = Store::getObject<TokenManager>();
-
-                    // Validate token in a single step
-                    if (!tokenManager->ValidateToken(clientInfo))
+                    std::optional<Types::ClientLoginData> clientLoginData = Types::ClientLoginData{};
+                    clientLoginData->token                                = auth_header.substr(7);
+                    clientLoginData->group                                = req->getRoutingParameters().front();
+                    std::string message;
+                    // Validate token
+                    if (!gateKeeper->isAuthenticationValid(clientLoginData, message))
                     {
-                        auto message = clientInfo.is_active ? "Token is invalid or expired" : "User is suspended";
-                        auto resp    = drogon::HttpResponse::newHttpResponse();
+                        auto resp = drogon::HttpResponse::newHttpResponse();
                         resp->setStatusCode(drogon::HttpStatusCode::k401Unauthorized);
                         resp->setBody(JsonHelper::stringify(JsonHelper::jsonify(message)));
                         fcb(resp);
@@ -49,6 +52,9 @@ namespace api
                     // Token is valid, pass control to the next filter/handler
                     fccb();
                 }
+
+               private:
+                std::shared_ptr<GateKeeper> gateKeeper = Store::getObject<GateKeeper>();
             };
 
         }  // namespace Filters

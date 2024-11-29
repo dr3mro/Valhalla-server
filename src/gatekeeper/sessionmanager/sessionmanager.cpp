@@ -1,5 +1,185 @@
-#include "sessionmanager.hpp"
+#include "gatekeeper/sessionmanager/sessionmanager.hpp"
+
+#include <fmt/core.h>
+#include <fmt/format.h>
+
+#include <ctime>
+#include <utils/jsonhelper/jsonhelper.hpp>
+
 using namespace api::v2;
-void SessionManager::login(CALLBACK_&& callback, std::string_view data) {}
-void SessionManager::logout(CALLBACK_&& callback, std::string_view data) {}
-void SessionManager::isSessionValid(CALLBACK_&& callback, std::string_view data) {}
+
+bool SessionManager::login(CALLBACK_&& callback, const std::optional<Types::Credentials>& credentials,
+                           std::optional<Types::ClientLoginData>& clientLoginData)
+{
+    std::optional<std::string> password_hash;
+    try
+    {
+        auto client_object = databaseController->getPasswordHashForUserName(credentials->username, clientLoginData->group.value());
+
+        if (!client_object.has_value() || client_object.value().empty())
+        {
+            callback(Http::UNAUTHORIZED, "Failure: user might not exist, please try again");
+            return false;
+        }
+
+        jsoncons::json& client_j = client_object.value();
+
+        clientLoginData->clientId = client_j.at("id").as<uint64_t>();
+
+        if (!clientLoginData->clientId.has_value())
+        {
+            callback(Http::UNAUTHORIZED, "Failed to find client id from database, please try again");
+            return false;
+        }
+
+        clientLoginData->username  = credentials->username;
+        clientLoginData->is_active = client_j.at("active").as<bool>();
+
+        if (!clientLoginData->is_active)
+        {
+            callback(Http::UNAUTHORIZED, fmt::format("username: [{}] is suspended, please contact the administrator", credentials->username));
+            return false;
+        }
+
+        bool success = setNowLoginTimeGetLastLogoutTime(clientLoginData);
+
+        if (!success)
+        {
+            callback(Http::UNAUTHORIZED, "Failed to set now login and get last logout times , please try again");
+            return false;
+        }
+
+        password_hash = client_j.at("password").as_string();
+
+        if (!password_hash.has_value())
+        {
+            callback(Http::UNAUTHORIZED, "Failed to find password hash from database, please try again");
+            return false;
+        }
+
+        if (!passwordCrypt->verifyPassword(credentials->password, password_hash.value()))
+        {
+            callback(Http::UNAUTHORIZED, "Invalid username/password, please try again");
+            return false;
+        }
+    }
+    catch (const std::exception& e)
+    {
+        CRITICALMESSAGERESPONSE
+        return false;
+    }
+    return true;
+}
+
+void SessionManager::logout(CALLBACK_&& callback, std::optional<Types::ClientLoginData>& clientLoginData)
+{
+    try
+    {
+        auto        decodedToken = jwt::decode<jwt::traits::kazuho_picojson>(clientLoginData->token.value());
+        std::string message;
+
+        if (!decodeToken(clientLoginData, message, decodedToken))
+        {
+            callback(Http::Status::OK, JsonHelper::stringify(JsonHelper::jsonify(message)));
+            return;
+        }
+
+        // bool status = tokenManager->ValidateToken(loggedClientInfo);
+        // if (!status)
+        // {
+        //     callback(api::v2::Http::Status::UNAUTHORIZED, "Logout failure.");
+        //     Message::ErrorMessage("Logout failure.");
+        //     return;
+        // }
+        setNowLogoutTime(clientLoginData->clientId.value(), clientLoginData->group.value());
+        removeSession(clientLoginData);
+        callback(api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(api::v2::JsonHelper::jsonify("Logout success.")));
+    }
+    catch (const std::exception& e)
+    {
+        callback(api::v2::Http::Status::INTERNAL_SERVER_ERROR, e.what());
+        CRITICALMESSAGE
+    }
+}
+
+bool SessionManager::clientHasValidSession(std::optional<Types::ClientLoginData>& clientLoginData, std::string& message)
+{
+    try
+    {
+        auto decodedToken = jwt::decode<jwt::traits::kazuho_picojson>(clientLoginData->token.value());
+
+        if (!decodeToken(clientLoginData, message, decodedToken))
+        {
+            message = fmt::format("Token is not valid: {}", message);
+            return false;
+        }
+
+        std::string key = fmt::format("{}_{}", clientLoginData->group.value(), clientLoginData->clientId.value());
+
+        auto session = clientsSessionsList->get(key);
+        if (session.has_value())
+        {
+            return true;
+        }
+    }
+    catch (const std::exception& e)
+    {
+        message = fmt::format("Error storing session:{}", e.what());
+        Message::CriticalMessage(message);
+    }
+    return false;
+}
+
+bool SessionManager::storeSession(std::optional<Types::ClientLoginData>& clientLoginData, std::string& message)
+{
+    try
+    {
+        if (!clientLoginData.has_value())
+        {
+            message = "clientLoginData is empty";
+            return false;
+        }
+        std::string key = fmt::format("{}_{}", clientLoginData->group.value(), clientLoginData->clientId.value());
+        clientsSessionsList->insert(key, clientLoginData.value(), std::chrono::duration_cast<std::chrono::seconds>(clientLoginData->expireTime));
+        return true;
+    }
+    catch (const std::exception& e)
+    {
+        message = fmt::format("Error storing session:{}", e.what());
+        Message::CriticalMessage(message);
+    }
+    return false;
+}
+
+bool SessionManager::removeSession(std::optional<Types::ClientLoginData>& clientLoginData)
+{
+    std::string message;
+    try
+    {
+        if (!clientLoginData.has_value())
+        {
+            message = "clientLoginData is empty";
+            return false;
+        }
+        if (!clientLoginData->clientId.has_value())
+        {
+            message = "clientId has no value";
+            return false;
+        }
+        if (!clientLoginData->group.has_value())
+        {
+            message = "group has no value";
+            return false;
+        }
+
+        std::string key = fmt::format("{}_{}", clientLoginData->group.value(), clientLoginData->clientId.value());
+        clientsSessionsList->remove(key);
+        return true;
+    }
+    catch (const std::exception& e)
+    {
+        message = fmt::format("Error storing session:{}", e.what());
+        Message::CriticalMessage(message);
+    }
+    return false;
+}
