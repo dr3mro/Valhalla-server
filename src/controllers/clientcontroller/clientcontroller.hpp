@@ -9,33 +9,15 @@
 #include "controllers/clientcontroller/clientcontrollerbase.hpp"
 #include "controllers/entitycontroller/entitycontroller.hpp"
 #include "entities/base/client.hpp"
-#include "entities/base/types.hpp"
+#include "gatekeeper/gatekeeper.hpp"
 #include "utils/global/global.hpp"
 #include "utils/jsonhelper/jsonhelper.hpp"
-#include "utils/sessionmanager/sessionmanager.hpp"
-#include "utils/tokenmanager/tokenmanager.hpp"
-
-template <typename T>
-concept Client_t = std::is_base_of_v<Client, T>;
 
 template <Client_t T>
 class ClientController : public EntityController<T>, public ClientControllerBase
 {
    public:
-    ClientController()
-    {
-        try
-        {
-            tokenManager   = Store::getObject<TokenManager>();
-            sessionManager = Store::getObject<SessionManager>();
-        }
-        catch (const std::exception& e)
-        {
-            CRITICALMESSAGE
-            exit(EXIT_FAILURE);
-        }
-    }
-
+    ClientController()                = default;
     virtual ~ClientController() final = default;
     void Create(CALLBACK_&& callback, std::string_view data) final;
     void Read(CALLBACK_&& callback, std::string_view data) final;
@@ -50,8 +32,7 @@ class ClientController : public EntityController<T>, public ClientControllerBase
     void GetServices(CALLBACK_&& callback, std::optional<uint64_t> client_id) final;
 
    private:
-    std::shared_ptr<TokenManager>   tokenManager;
-    std::shared_ptr<SessionManager> sessionManager;
+    std::shared_ptr<GateKeeper> gateKeeper = Store::getObject<GateKeeper>();
 };
 
 template <Client_t T>
@@ -125,6 +106,7 @@ template <Client_t T>
 void ClientController<T>::Delete(CALLBACK_&& callback, const std::optional<uint64_t> client_id)
 {
     EntityController<T>::Delete(std::move(callback), client_id);
+    gateKeeper->removeSession(client_id, T::getTableName());
 }
 
 template <Client_t T>
@@ -136,69 +118,13 @@ void ClientController<T>::Search(CALLBACK_&& callback, std::string_view data)
 template <Client_t T>
 void ClientController<T>::Login(CALLBACK_&& callback, std::string_view data)
 {
-    jsoncons::json          credentials_j;
-    std::optional<uint64_t> client_id;
-    Types::Credentials      credentials;
-    try
-    {
-        credentials_j = jsoncons::json::parse(data);
-
-        credentials.username = credentials_j.at("username").as<std::string>();
-        credentials.password = credentials_j.at("password").as<std::string>();
-
-        T    client(credentials);
-        bool success = false;
-        client_id    = client.authenticate(std::move(callback), success);
-
-        if (success)
-        {
-            SessionManager::LoggedClientInfo loggedClientInfo;
-
-            loggedClientInfo.clientId = client_id;
-            loggedClientInfo.userName = credentials.username;
-            loggedClientInfo.group    = client.getGroupName();
-
-            std::optional<std::string> last_logout = sessionManager->setNowLoginTime(client_id.value(), loggedClientInfo.group.value());
-            if (last_logout.has_value())
-            {
-                loggedClientInfo.llodt = last_logout.value();
-                LOG_TRACE << loggedClientInfo.llodt.value();
-            }
-            else
-            {
-                Message::ErrorMessage("Failed to set login time and get last logout time");
-                callback(api::v2::Http::Status::UNAUTHORIZED, "Failed to set login time");
-                return;
-            }
-
-            jsoncons::json token_object;
-            token_object["token"]     = tokenManager->GenerateToken(loggedClientInfo);
-            token_object["username"]  = credentials.username;
-            token_object["client_id"] = client_id;
-            token_object["group"]     = loggedClientInfo.group;
-
-            callback(api::v2::Http::Status::OK, token_object.as<std::string>());
-        }
-    }
-    catch (const std::exception& e)
-    {
-        CRITICALMESSAGERESPONSE
-    }
+    gateKeeper->login(std::move(callback), data, T::getTableName());
 }
 
 template <Client_t T>
 void ClientController<T>::Logout(CALLBACK_&& callback, const std::optional<std::string>& token)
 {
-    try
-    {
-        Types::LogoutData logoutData(token);
-        T                 client(logoutData);
-        Controller::Logout(client, std::move(callback));
-    }
-    catch (const std::exception& e)
-    {
-        CRITICALMESSAGERESPONSE
-    }
+    gateKeeper->logout(std::move(callback), token, T::getTableName());
 }
 
 template <Client_t T>
@@ -215,6 +141,7 @@ void ClientController<T>::Suspend(CALLBACK_&& callback, const std::optional<uint
         Types::SuspendData suspendData(client_id.value());
         T                  client(suspendData);
         Controller::Suspend(client, std::move(callback));
+        gateKeeper->removeSession(client_id, T::getTableName());
     }
     catch (const std::exception& e)
     {

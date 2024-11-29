@@ -31,17 +31,18 @@
 #include "utils/databaseschema/databaseschema.hpp"
 #include "utils/dosdetector/dosdetector.hpp"
 #include "utils/passwordcrypt/passwordcrypt.hpp"
-#include "utils/sessionmanager/sessionmanager.hpp"
-#include "utils/tokenmanager/tokenmanager.hpp"
+
 ObjectFactory::ObjectFactory()
 {
     Store::registerObject<Configurator>();
     Store::registerObject<Logger>();
+    Store::registerObject<MemCache<api::v2::Types::ClientLoginData>>(4096, std::chrono::seconds(3600));
     Store::registerObject<DatabaseConnectionPool>();
     Store::registerObject<DatabaseController>();
+    Store::registerObject<PasswordCrypt>();
     Store::registerObject<SessionManager>();
     Store::registerObject<TokenManager>();
-    Store::registerObject<PasswordCrypt>();
+    Store::registerObject<GateKeeper>();
     Store::registerObject<ClinicController<Health>>();
     Store::registerObject<ClinicController<PatientDrugs>>();
     Store::registerObject<ClinicController<Reports>>();

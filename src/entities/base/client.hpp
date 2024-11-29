@@ -7,190 +7,131 @@
 #include "entities/base/entity.hpp"
 #include "entities/base/types.hpp"
 #include "fmt/format.h"
-#include "utils/global/callback.hpp"
 #include "utils/global/global.hpp"
 #include "utils/message/message.hpp"
-#include "utils/passwordcrypt/passwordcrypt.hpp"
 #define USERNAME "username"
 
-template <typename T>
-concept ClientData_t =
-    std::is_same<T, Types::CreateClient_t>::value || std::is_same<T, Types::UpdateClient_t>::value || std::is_same<T, Types::Credentials>::value ||
-    std::is_same<T, Types::SuspendData>::value || std::is_same<T, Types::LogoutData>::value || std::is_same<T, Types::Data_t>::value;
-
-class Client : public Entity
+namespace api
 {
-   public:
-    // Client(const std::string &tablename) : Entity(tablename) {};
-
-    template <typename T>
-    Client(const T &data, const std::string &tablename) : Entity(data, tablename)
+    namespace v2
     {
-    }
+        template <typename T>
+        concept ClientData_t = std::is_same<T, Types::CreateClient_t>::value || std::is_same<T, Types::UpdateClient_t>::value ||
+                               std::is_same<T, Types::SuspendData>::value || std::is_same<T, Types::Data_t>::value;
 
-    std::optional<std::string> getSqlCreateStatement() final
-    {
-        auto clientdata = std::get<Types::CreateClient_t>(getData());
-
-        try
+        class Client : public Entity
         {
-            std::vector<std::string> keys_arr;
-            std::vector<std::string> values_arr;
+           public:
+            // Client(const std::string &tablename) : Entity(tablename) {};
 
-            for (auto &it : clientdata.get_data_set())
+            template <typename T>
+            Client(const T &data, const std::string &tablename) : Entity(data, tablename)
             {
-                keys_arr.push_back(it.first);
-                values_arr.push_back(it.second);
             }
 
-            std::string columns = fmt::format("{}", fmt::join(keys_arr, ","));
-            std::string values  = fmt::format("'{}'", fmt::join(values_arr, "','"));
-
-            return fmt::format("INSERT INTO {} ({}) VALUES ({}) RETURNING id;", tablename, columns, values);
-        }
-        catch (const std::exception &e)
-        {
-            Message::ErrorMessage(fmt::format("Failed to create Sql create statement for table {}.", tablename));
-            Message::CriticalMessage(e.what());
-            return std::nullopt;
-        }
-        return std::nullopt;
-    }
-
-    std::optional<std::string> getSqlUpdateStatement() final
-    {
-        std::optional<std::string> query;
-
-        try
-        {
-            auto                    clientdata = std::get<Types::UpdateClient_t>(getData()).get_data_set();
-            std::optional<uint64_t> id         = std::get<Types::UpdateClient_t>(getData()).get_id();
-            if (!id.has_value())
+            std::optional<std::string> getSqlCreateStatement() final
             {
-                Message::ErrorMessage(fmt::format("Failed to update client data. No id provided."));
-                return std::nullopt;
-            }
-            std::string update_column_values;
+                auto clientdata = std::get<Types::CreateClient_t>(getData());
 
-            for (auto it = clientdata.begin(); it != clientdata.end(); ++it)
-            {
-                update_column_values.append(fmt::format(" {} = '{}' ", it->first, it->second));
-                if (std::next(it) != clientdata.end())
+                try
                 {
-                    update_column_values.append(",");
+                    std::vector<std::string> keys_arr;
+                    std::vector<std::string> values_arr;
+
+                    for (auto &it : clientdata.get_data_set())
+                    {
+                        keys_arr.push_back(it.first);
+                        values_arr.push_back(it.second);
+                    }
+
+                    std::string columns = fmt::format("{}", fmt::join(keys_arr, ","));
+                    std::string values  = fmt::format("'{}'", fmt::join(values_arr, "','"));
+
+                    return fmt::format("INSERT INTO {} ({}) VALUES ({}) RETURNING id;", tablename, columns, values);
                 }
-            }
-
-            query = fmt::format("UPDATE {} set {} WHERE id={} returning id;", tablename, update_column_values, id.value());
-        }
-        catch (const std::exception &e)
-        {
-            Message::ErrorMessage(fmt::format("Failed to create Sql update statement for table {}.", tablename));
-            Message::CriticalMessage(e.what());
-            return std::nullopt;
-        }
-        return query;
-    }
-
-    std::optional<std::string> getSqlToggleSuspendStatement(bool state)
-    {
-        std::optional<std::string> query;
-        try
-        {
-            Types::SuspendData suspenddata = std::get<Types::SuspendData>(getData());
-            query =
-                fmt::format("UPDATE {} SET active={} where id={} returning id,active;", tablename, state ? "true" : "false", suspenddata.client_id);
-        }
-        catch (const std::exception &e)
-        {
-            Message::ErrorMessage(fmt::format("Failed to create Sql suspend statement for table {}.", tablename));
-            Message::CriticalMessage(e.what());
-            return std::nullopt;
-        }
-
-        return query;
-    }
-
-    std::optional<std::string> getSqlSuspendStatement() { return getSqlToggleSuspendStatement(false); }
-
-    std::optional<std::string> getSqlActivateStatement() { return getSqlToggleSuspendStatement(true); }
-
-    template <typename T>
-    bool exists()
-    {
-        auto client_data = std::get<T>(getData()).get_data_set();
-        auto it          = std::ranges::find_if(client_data, [&](const auto &item) { return item.first == USERNAME; });
-
-        if (it != client_data.end())
-        {
-            std::string username = it->second;
-
-            auto result = databaseController->checkItemExists(tablename, USERNAME, username);
-            return result.value_or(false);
-        }
-        return false;
-    }
-
-    std::optional<uint64_t> authenticate(CALLBACK_ &&callback, bool &success) const
-    {
-        Types::Credentials         credentials;
-        std::optional<uint64_t>    client_id;
-        std::optional<std::string> password_hash;
-        try
-        {
-            credentials = std::get<Types::Credentials>(getData());
-
-            auto client_object = databaseController->getPasswordHashForUserName(credentials.username, tablename);
-
-            if (!client_object.has_value() || client_object.value().empty())
-            {
-                callback(api::v2::Http::UNAUTHORIZED, "Failure: user might not exist, please try again");
+                catch (const std::exception &e)
+                {
+                    Message::ErrorMessage(fmt::format("Failed to create Sql create statement for table {}.", tablename));
+                    Message::CriticalMessage(e.what());
+                    return std::nullopt;
+                }
                 return std::nullopt;
             }
 
-            jsoncons::json &hash_ = client_object.value();
-
-            client_id = hash_.at("id").as<uint64_t>();
-            if (!client_id.has_value())
+            std::optional<std::string> getSqlUpdateStatement() final
             {
-                callback(api::v2::Http::UNAUTHORIZED, "Failed to find client id from database, please try again");
-                return std::nullopt;
+                std::optional<std::string> query;
+
+                try
+                {
+                    auto                    clientdata = std::get<Types::UpdateClient_t>(getData()).get_data_set();
+                    std::optional<uint64_t> id         = std::get<Types::UpdateClient_t>(getData()).get_id();
+                    if (!id.has_value())
+                    {
+                        Message::ErrorMessage(fmt::format("Failed to update client data. No id provided."));
+                        return std::nullopt;
+                    }
+                    std::string update_column_values;
+
+                    for (auto it = clientdata.begin(); it != clientdata.end(); ++it)
+                    {
+                        update_column_values.append(fmt::format(" {} = '{}' ", it->first, it->second));
+                        if (std::next(it) != clientdata.end())
+                        {
+                            update_column_values.append(",");
+                        }
+                    }
+
+                    query = fmt::format("UPDATE {} set {} WHERE id={} returning id;", tablename, update_column_values, id.value());
+                }
+                catch (const std::exception &e)
+                {
+                    Message::ErrorMessage(fmt::format("Failed to create Sql update statement for table {}.", tablename));
+                    Message::CriticalMessage(e.what());
+                    return std::nullopt;
+                }
+                return query;
             }
 
-            password_hash = hash_.at("password").as_string();
-
-            if (!password_hash.has_value())
+            std::optional<std::string> getSqlToggleSuspendStatement(bool state)
             {
-                callback(api::v2::Http::UNAUTHORIZED, "Failed to find password hash from database, please try again");
-                return std::nullopt;
+                std::optional<std::string> query;
+                try
+                {
+                    Types::SuspendData suspenddata = std::get<Types::SuspendData>(getData());
+                    query = fmt::format("UPDATE {} SET active={} where id={} returning id,active;", tablename, state ? "true" : "false",
+                                        suspenddata.client_id);
+                }
+                catch (const std::exception &e)
+                {
+                    Message::ErrorMessage(fmt::format("Failed to create Sql suspend statement for table {}.", tablename));
+                    Message::CriticalMessage(e.what());
+                    return std::nullopt;
+                }
+
+                return query;
             }
 
-            if (hash_.at("active").as<bool>() == false)
-            {
-                callback(api::v2::Http::UNAUTHORIZED, "User is suspended,  please contact your administrator");
-                return std::nullopt;
-            }
+            std::optional<std::string> getSqlSuspendStatement() { return getSqlToggleSuspendStatement(false); }
 
-            if (passwordCrypt->verifyPassword(credentials.password, password_hash.value()))
-            {
-                success = true;
-                return client_id;
-            }
-            else
-            {
-                callback(api::v2::Http::UNAUTHORIZED, "Invalid username/password, please try again");
-                return std::nullopt;
-            }
-        }
-        catch (const std::exception &e)
-        {
-            CRITICALMESSAGERESPONSE
-        }
-        return std::nullopt;
-    }
+            std::optional<std::string> getSqlActivateStatement() { return getSqlToggleSuspendStatement(true); }
 
-    virtual ~Client() override = default;
+            template <typename T>
+            bool exists()
+            {
+                auto client_data = std::get<T>(getData()).get_data_set();
+                auto it          = std::ranges::find_if(client_data, [&](const auto &item) { return item.first == USERNAME; });
 
-   private:
-    std::shared_ptr<PasswordCrypt> passwordCrypt = Store::getObject<PasswordCrypt>();
-};
+                if (it != client_data.end())
+                {
+                    std::string username = it->second;
+
+                    auto result = databaseController->checkItemExists(tablename, USERNAME, username);
+                    return result.value_or(false);
+                }
+                return false;
+            }
+            virtual ~Client() override = default;
+        };
+    }  // namespace v2
+}  // namespace api

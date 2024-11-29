@@ -1,19 +1,17 @@
 #pragma once
-#include <optional>
-#include <string>
-#include <string_view>
 
+#include "gatekeeper/keeprbase/keeprbase.hpp"
 namespace api
 {
     namespace v2
     {
-        class TokenManager
+        class TokenManager : public KeeprBase
         {
            public:
             TokenManager()          = default;
             virtual ~TokenManager() = default;
-            std::optional<std::string> generateToken(std::string_view data);
-            bool                       isTokenValid(std::string_view token);
+            bool generateToken(std::optional<Types::ClientLoginData>& clientLoginData);
+            bool isTokenValid(std::optional<Types::ClientLoginData>& clientLoginData, std::string& message);
         };
     }  // namespace v2
 }  // namespace api

@@ -13,8 +13,8 @@
 #include "utils/global/http.hpp"
 #include "utils/jsonhelper/jsonhelper.hpp"
 #include "utils/message/message.hpp"
-#include "utils/sessionmanager/sessionmanager.hpp"
-#include "utils/tokenmanager/tokenmanager.hpp"
+
+using namespace api::v2;
 class Controller
 {
    public:
@@ -23,8 +23,6 @@ class Controller
         try
         {
             databaseController = Store::getObject<DatabaseController>();
-            sessionManager     = Store::getObject<SessionManager>();
-            tokenManager       = Store::getObject<TokenManager>();
         }
         catch (const std::exception &e)
         {
@@ -95,33 +93,6 @@ class Controller
         catch (const std::exception &e)
         {
             CRITICALMESSAGERESPONSE
-        }
-    }
-    template <typename T>
-    void Logout(T &entity, CALLBACK_ &&callback)
-        requires(std::is_base_of_v<Client, T>)
-    {
-        SessionManager::LoggedClientInfo loggedClientInfo;
-
-        try
-        {
-            loggedClientInfo.token = std::get<Types::LogoutData>(entity.getData()).token;
-            loggedClientInfo.group = entity.getGroupName();
-
-            bool status = tokenManager->ValidateToken(loggedClientInfo);
-            if (!status)
-            {
-                callback(api::v2::Http::Status::UNAUTHORIZED, "Logout failure.");
-                Message::ErrorMessage("Logout failure.");
-                return;
-            }
-            sessionManager->setNowLogoutTime(loggedClientInfo.clientId.value(), loggedClientInfo.group.value());
-            callback(api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(api::v2::JsonHelper::jsonify("Logout success.")));
-        }
-        catch (const std::exception &e)
-        {
-            callback(api::v2::Http::Status::INTERNAL_SERVER_ERROR, e.what());
-            CRITICALMESSAGE
         }
     }
 
@@ -219,8 +190,6 @@ class Controller
     }
 
     std::shared_ptr<DatabaseController> databaseController;
-    std::shared_ptr<SessionManager>     sessionManager;
-    std::shared_ptr<TokenManager>       tokenManager;
 
     std::optional<jsoncons::json> (DatabaseController::*dbexec)(const std::string &)         = &DatabaseController::executeQuery;
     std::optional<jsoncons::json> (DatabaseController::*dbrexec)(const std::string &)        = &DatabaseController::executeReadQuery;

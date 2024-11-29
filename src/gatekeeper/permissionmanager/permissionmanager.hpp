@@ -14,7 +14,7 @@ namespace api
            public:
             PermissionManager()          = default;
             virtual ~PermissionManager() = default;
-            bool hasPermission(CALLBACK_&& callback, std::string_view data);
+            // bool hasPermission(CALLBACK_&& callback, std::string_view data); //TODO:
         };
     }  // namespace v2
 }  // namespace api

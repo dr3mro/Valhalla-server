@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <memory>
 #include <stdexcept>
 #include <typeindex>
@@ -24,6 +25,7 @@ class Store
         {
             return std::static_pointer_cast<T>(it->second);
         }
+        std::cout << typeid(T).name();
         throw std::runtime_error("Object not found");
     }
 
