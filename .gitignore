@@ -1,8 +1,9 @@
 .cache
 .cpm_cache
 build
-
 build_
 server.log
 logs
 uploads
+.DS_Store
+src/.DS_Store
