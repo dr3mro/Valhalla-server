@@ -26,7 +26,13 @@ void GateKeeper::login(CALLBACK_&& callback, std::string_view data, std::string_
 
         success = sessionManager_->login(std::move(callback), credentials, clientLoginData);
 
-        if (!success || !clientLoginData.has_value())
+        if (!success)
+        {
+            // Message already sent in login function
+            return;
+        }
+
+        if (!clientLoginData.has_value())
         {
             callback(Http::Status::UNAUTHORIZED, "login failed");
             return;
@@ -72,13 +78,10 @@ bool GateKeeper::isAuthenticationValid(std::optional<Types::ClientLoginData>& cl
 {
     if (sessionManager_->clientHasValidSession(clientLoginData, message))
     {
-        std::cout << "Session is valid" << std::endl;
         return true;
     }
     else if (tokenManager_->isTokenValid(clientLoginData, message))
     {
-        std::cout << "Token is valid" << std::endl;
-        std::cout << "storing session" << std::endl;
         return sessionManager_->storeSession(clientLoginData, message);
     }
     return false;
