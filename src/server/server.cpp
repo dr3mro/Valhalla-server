@@ -33,6 +33,9 @@ int Server::run()
                         resp->addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
                         resp->addHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
                         resp->addHeader("Access-Control-Allow-Credentials", "true");
+                        resp->addHeader("Access-Control-Max-Age", "86400");
+                        resp->addHeader("X-Powered-By", "Valhalla-Team");
+
                         callback(resp);
                     }
                     else
@@ -47,6 +50,8 @@ int Server::run()
                     resp->addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
                     resp->addHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
                     resp->addHeader("Access-Control-Allow-Credentials", "true");
+                    resp->addHeader("Access-Control-Max-Age", "86400");
+                    resp->addHeader("X-Powered-By", "Valhalla-Team");
                 })
             .setCustom404Page(drogon::HttpResponse::newHttpJsonResponse(api::v2::JsonHelper::jsonify("Endpoint not found.")))
             .run();
