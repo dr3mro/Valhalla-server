@@ -1,4 +1,5 @@
 #include "store.hpp"
 
-// Define the static member variable
+// Static member definitions
 std::unordered_map<std::type_index, std::shared_ptr<void>> Store::inventory;
+std::mutex                                                 Store::inventoryMutex;

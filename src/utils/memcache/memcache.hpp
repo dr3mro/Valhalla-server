@@ -18,7 +18,7 @@ class MemCache
     {
         cleanerThread_ = std::thread(&MemCache::cleanExpiredEntries, this);
     }
-
+    MemCache() = delete;
     ~MemCache()
     {
         {
