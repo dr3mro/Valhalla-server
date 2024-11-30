@@ -55,6 +55,7 @@ string(STRIP "${GIT_TAG_MACRO}" GIT_TAG_MACRO)
 
 # Add the Git tag macro to the compile definitions
 add_compile_definitions(${GIT_TAG_MACRO})
+add_compile_options(-ftemplate-backtrace-limit=0)
 
 # Find all source files
 file(GLOB_RECURSE SRC "src/*.cpp")
