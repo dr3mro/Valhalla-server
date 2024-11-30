@@ -1,4 +1,4 @@
-* add setting for upload path
+
 * safe vs unsafe types
 * add append method to endpoints
 * Implement list appointment for user and service and provider
@@ -15,10 +15,6 @@
     * assistants: can view patients, can add/edit/delete patients, can view appointments, can add/edit/delete appointments, can view prescriptions, can add/edit/delete prescriptions, can view reports, can view financial reports.
     * admins: can view patients, can add/edit/delete patients, can view appointments, can add/edit/delete appointments, can view prescriptions, can add/edit/delete prescriptions, can view reports, can view financial reports.
     * owners: can view patients, can add/edit/delete patients, can view appointments, can add/edit/delete appointments, can view prescriptions, can add/edit/delete prescriptions, can view reports, can view financial reports.
-
-
     providers:can be owner and admin at the same time.
-
-* use CTRACK
 
 ps aux  | awk '{print $6/1024 " MB\t\t" $11}'  | sort -n
