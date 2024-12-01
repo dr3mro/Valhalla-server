@@ -27,8 +27,8 @@ namespace api
             // bool isDosAttack(CALLBACK_&& callback, std::string_view data);    // TODO: implement
 
            private:
-            std::optional<jsoncons::json>     parse_data(CALLBACK_&& callback, std::string_view data, bool& success);
-            std::optional<Types::Credentials> parse_credentials(CALLBACK_&& callback, std::string_view data, bool& success);
+            std::optional<jsoncons::json>     parse_data(std::string_view data, std::string& message, bool& success);
+            std::optional<Types::Credentials> parse_credentials(std::string_view data, std::string& message, bool& success);
             std::shared_ptr<SessionManager>   sessionManager_ = Store::getObject<SessionManager>();
             std::shared_ptr<TokenManager>     tokenManager_   = Store::getObject<TokenManager>();
         };
