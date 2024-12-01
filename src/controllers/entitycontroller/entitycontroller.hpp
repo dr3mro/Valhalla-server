@@ -31,9 +31,10 @@ inline void __attribute((always_inline)) EntityController<T>::Create(CALLBACK_ &
     {
         bool                 success = false;
         api::v2::Http::Error error;
-        Validator::Rule      exclude = {.action = (Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE | Validator::Rule::Action::IGNORE_IF_MISSING),
-                                        .keys   = {"id"}};
-        auto                 next_id = this->template getNextID<T>(error);
+        Validator::Rule      exclude = {
+                 .action = (Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA | Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA),
+                 .keys   = {"id"}};
+        auto next_id = this->template getNextID<T>(error);
 
         if (!next_id.has_value())
         {
@@ -79,7 +80,10 @@ inline void __attribute((always_inline)) EntityController<T>::Read(CALLBACK_ &&c
         std::unordered_set<std::string> schema    = request_j.at("schema").as<std::unordered_set<std::string>>();
         api::v2::Http::Error            error;
 
-        if (!Validator::validateDatabaseReadSchema(schema, std::format("{}_safe", T::getTableName()), error))
+        Validator::Rule exclude = {.action = (Validator::Rule::Action::ASSERT_NOT_PRESENT),
+                                   .keys   = {"id", "username", "password", "created_at", "updated_at"}};
+
+        if (!Validator::validateDatabaseReadSchema(schema, std::format("{}_safe", T::getTableName()), error, exclude))
         {
             callback(error.code, fmt::format("Failed to validate request body, {}.", error.message));
             return;

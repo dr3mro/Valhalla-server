@@ -92,7 +92,8 @@ bool Validator::validateDatabaseUpdateSchema(const std::string &tablename, const
     return true;
 }
 
-bool Validator::validateDatabaseReadSchema(const std::unordered_set<std::string> &keys, const std::string &table_name, api::v2::Http::Error &error)
+bool Validator::validateDatabaseReadSchema(const std::unordered_set<std::string> &keys, const std::string &table_name, api::v2::Http::Error &error,
+                                           const Rule &rule)
 {
     bool found = false;
 
@@ -108,6 +109,13 @@ bool Validator::validateDatabaseReadSchema(const std::unordered_set<std::string>
     // Check if all keys exist in the schema
     for (const auto &key : keys)
     {
+        bool blacklisted_key_present = (rule.action & Rule::ASSERT_NOT_PRESENT) && rule.keys.contains(key);
+        if (blacklisted_key_present)
+        {
+            error.message = "Key not allowed: " + key;
+            error.code    = api::v2::Http::Status::BAD_REQUEST;
+            return false;
+        }
         // Use std::ranges::find_if to check if a column with the given name exists
         auto it = std::ranges::find_if(columns, [&](const api::v2::ColumnInfo &column) { return column.Name == key; });
 
@@ -201,8 +209,9 @@ bool Validator::checkColumns(const jsoncons::json &data, const std::unordered_se
 {
     for (const auto &column : table_schema)
     {
-        bool column_exists   = data.contains(column.Name);
-        bool ignored_if_null = (((rule.action & Rule::Action::IGNORE_IF_NOT_NULLABLE) != Rule::Action::NONE) && rule.keys.contains(column.Name));
+        bool column_exists = data.contains(column.Name);
+        bool ignored_if_null =
+            (((rule.action & Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA) != Rule::Action::NONE) && rule.keys.contains(column.Name));
 
         // Check for missing non-nullable columns
         if (!column_exists && !column.isNullable && !ignored_if_null)
@@ -247,7 +256,7 @@ bool Validator::ensureAllKeysExist(const jsoncons::json &data, const std::unorde
             return false;
         }
 
-        bool ignore_if_missing = (((rule.action & Rule::Action::IGNORE_IF_MISSING) != Rule::Action::NONE) && rule.keys.contains(key));
+        bool ignore_if_missing = (((rule.action & Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA) != Rule::Action::NONE) && rule.keys.contains(key));
 
         if (schema_columns.find(key) == schema_columns.end() && !ignore_if_missing)  // Key not in schema
         {
