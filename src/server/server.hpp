@@ -8,7 +8,7 @@
 #include "api/v2/middlewares/elapsedtime.hpp"
 #include "configurator/configurator.hpp"
 #include "store/store.hpp"
-#include "utils/databaseschema/databaseschema.hpp"
+#include "validator/databaseschema/databaseschema.hpp"
 class Server
 {
    public:
