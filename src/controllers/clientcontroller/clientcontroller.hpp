@@ -8,7 +8,6 @@
 
 #include "controllers/clientcontroller/clientcontrollerbase.hpp"
 #include "controllers/entitycontroller/entitycontroller.hpp"
-#include "entities/base/client.hpp"
 #include "gatekeeper/gatekeeper.hpp"
 #include "utils/global/global.hpp"
 #include "utils/jsonhelper/jsonhelper.hpp"
@@ -80,10 +79,11 @@ void ClientController<T>::Update(CALLBACK_&& callback, std::string_view data, co
 {
     try
     {
-        bool                            success = false;
-        std::unordered_set<std::string> exclude{"password", "username"};
-        api::v2::Http::Error            error;
-        Types::UpdateClient_t           client_data(data, id, T::getTableName(), error, success, exclude);
+        bool            success = false;
+        Validator::Rule exclude = {.action = (Validator::Rule::Action::ASSERT_IMMUTABLE), .keys = {"username", "password"}};
+
+        api::v2::Http::Error  error;
+        Types::UpdateClient_t client_data(data, id, T::getTableName(), error, success, exclude);
 
         if (success)
         {

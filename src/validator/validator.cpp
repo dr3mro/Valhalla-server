@@ -16,7 +16,7 @@ const std::unordered_map<std::string, std::string> Validator::regex_client_valid
     {"gender", "^(Male|Female)$"},
 };
 
-bool Validator::validateDatabaseCreateSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Http::Error &error)
+bool Validator::validateDatabaseCreateSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Http::Error &error, const Rule &rule)
 {
     try
     {
@@ -36,13 +36,13 @@ bool Validator::validateDatabaseCreateSchema(const std::string &tablename, const
         // now lets go through the data and check if the keys are in the schema
         // check for type and nullable
 
-        if (!checkColumns(data, table_schema, error))
+        if (!checkColumns(data, table_schema, error, rule))
         {
             return false;
         }
 
         // Ensure all keys in the schema are present in the data
-        if (!ensureAllKeysExist(data, table_schema, error))
+        if (!ensureAllKeysExist(data, table_schema, error, rule))
         {
             return false;
         }
@@ -58,8 +58,7 @@ bool Validator::validateDatabaseCreateSchema(const std::string &tablename, const
     return true;
 }
 
-bool Validator::validateDatabaseUpdateSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Http::Error &error,
-                                             const std::unordered_set<std::string> &exclude)
+bool Validator::validateDatabaseUpdateSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Http::Error &error, const Rule &rule)
 {
     try
     {
@@ -77,7 +76,7 @@ bool Validator::validateDatabaseUpdateSchema(const std::string &tablename, const
         }
         // Ensure all keys in the schema are present in the data
         // in case of update we dont need to check for all keys
-        if (!ensureAllKeysExist(data, table_schema, error, exclude))
+        if (!ensureAllKeysExist(data, table_schema, error, rule))
         {
             return false;
         }
@@ -198,14 +197,15 @@ bool Validator::validateType(const jsoncons::json &value, const std::string &exp
 }
 
 bool Validator::checkColumns(const jsoncons::json &data, const std::unordered_set<api::v2::ColumnInfo> &table_schema, api::v2::Http::Error &error,
-                             const std::unordered_set<std::string> &exclude)
+                             const Rule &rule)
 {
     for (const auto &column : table_schema)
     {
-        bool column_exists = data.contains(column.Name);
+        bool column_exists   = data.contains(column.Name);
+        bool ignored_if_null = (((rule.action & Rule::Action::IGNORE_IF_NOT_NULLABLE) != Rule::Action::NONE) && rule.keys.contains(column.Name));
 
         // Check for missing non-nullable columns
-        if (!column.isNullable && !column_exists && !exclude.contains(column.Name))
+        if (!column_exists && !column.isNullable && !ignored_if_null)
         {
             error.message = "Non-nullable column missing in data: " + column.Name;
             error.code    = api::v2::Http::Status::BAD_REQUEST;
@@ -226,9 +226,8 @@ bool Validator::checkColumns(const jsoncons::json &data, const std::unordered_se
     }
     return true;
 }
-
 bool Validator::ensureAllKeysExist(const jsoncons::json &data, const std::unordered_set<api::v2::ColumnInfo> &table_schema,
-                                   api::v2::Http::Error &error, const std::unordered_set<std::string> &exclude)
+                                   api::v2::Http::Error &error, const Rule &rule)
 {
     // Create a set of column names for fast key lookup
     std::unordered_set<std::string> schema_columns;
@@ -237,16 +236,20 @@ bool Validator::ensureAllKeysExist(const jsoncons::json &data, const std::unorde
     // Ensure all keys in `data` exist in the schema
     for (const auto &entry : data.object_range())
     {
+        const auto &key = entry.key();
+
+        bool assert_immutable = (((rule.action & Rule::Action::ASSERT_IMMUTABLE) != Rule::Action::NONE) && rule.keys.contains(key));
         // check if the key is in the exclude list
-        if (exclude.contains(entry.key()))
+        if (assert_immutable)
         {
-            error.message = "Key: [" + entry.key() + "] is not allowed to be changed.";
+            error.message = "Key: [" + key + "] is not allowed to be changed.";
             error.code    = api::v2::Http::Status::BAD_REQUEST;
             return false;
         }
 
-        const auto &key = entry.key();
-        if (schema_columns.find(key) == schema_columns.end())  // Key not in schema
+        bool ignore_if_missing = (((rule.action & Rule::Action::IGNORE_IF_MISSING) != Rule::Action::NONE) && rule.keys.contains(key));
+
+        if (schema_columns.find(key) == schema_columns.end() && !ignore_if_missing)  // Key not in schema
         {
             error.message = "Key: [" + key + "] is not found in database schema";
             error.code    = api::v2::Http::Status::BAD_REQUEST;

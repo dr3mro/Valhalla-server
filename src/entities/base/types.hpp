@@ -162,7 +162,8 @@ namespace api
                 {
                     try
                     {
-                        success = Validator::validateDatabaseCreateSchema(tablename, data_j, error);
+                        Validator::Rule exclude = {.action = (Validator::Rule::Action::NONE), .keys = {}};
+                        success                 = Validator::validateDatabaseCreateSchema(tablename, data_j, error, exclude);
                         if (!success)
                         {
                             Message::ErrorMessage(error.message);
@@ -195,7 +196,7 @@ namespace api
             {
                public:
                 UpdateClient_t(std::string_view _data, const std::optional<uint64_t> _id, const std::string &tablename, api::v2::Http::Error &error,
-                               bool &success, const std::unordered_set<std::string> &exclude)
+                               bool &success, const Validator::Rule &exclude)
                     : ClientData_t(_data, _id, error, success)
                 {
                     try
