@@ -2,9 +2,6 @@
 
 #include <cstdint>
 
-#include "entities/base/types.hpp"
-#include "entities/people/provider.hpp"
-#include "entities/people/user.hpp"
 #include "utils/global/global.hpp"
 
 using namespace api::v2;
@@ -13,31 +10,25 @@ void GateKeeper::login(CALLBACK_&& callback, std::string_view data, const std::s
 {
     try
     {
-        bool                              success     = false;
-        std::optional<Types::Credentials> credentials = parse_credentials(std::move(callback), data, success);
+        bool                              success = false;
+        std::string                       message;
+        std::optional<Types::Credentials> credentials = parse_credentials(data, message, success);
 
         if (!success || !credentials.has_value())
         {
-            // FIXME: send error message into method instead of callbacks and use append to protecect against message overwriting
-            // callback(api::v2::Http::Status::BAD_REQUEST, "credentials parse error");
+            callback(api::v2::Http::Status::BAD_REQUEST, "credentials parse error : " + message);
             return;
         }
+
         std::optional<Types::ClientLoginData> clientLoginData = Types::ClientLoginData{};
         clientLoginData->group                                = group;
         clientLoginData->ip_address                           = ip_address;
 
-        success = sessionManager_->login(std::move(callback), credentials, clientLoginData);
+        success = sessionManager_->login(credentials, clientLoginData, message);
 
-        // TODO: combine those two if statements
-        if (!success)
+        if (!success || !clientLoginData.has_value())
         {
-            // Message already sent in login function
-            return;
-        }
-
-        if (!clientLoginData.has_value())
-        {
-            callback(Http::Status::UNAUTHORIZED, "login failed");
+            callback(Http::Status::UNAUTHORIZED, "login failed: " + message);
             return;
         }
 
@@ -102,7 +93,7 @@ void GateKeeper::removeSession(std::optional<uint64_t> client_id, const std::str
 
 // bool GateKeeper::isDosAttack(CALLBACK_&& callback, std::string_view data) { return false; }
 
-std::optional<jsoncons::json> GateKeeper::parse_data(CALLBACK_&& callback, std::string_view data, bool& success)
+std::optional<jsoncons::json> GateKeeper::parse_data(std::string_view data, std::string& message, bool& success)
 {
     success = false;
     jsoncons::json j;
@@ -112,18 +103,18 @@ std::optional<jsoncons::json> GateKeeper::parse_data(CALLBACK_&& callback, std::
     }
     catch (const std::exception& e)
     {
-        CRITICALMESSAGERESPONSE
+        message = fmt::format("Json parsing error : {} - {}", message, e.what());
         return false;
     }
     success = true;
     return j;
 }
 
-std::optional<Types::Credentials> GateKeeper::parse_credentials(CALLBACK_&& callback, std::string_view data, bool& success)
+std::optional<Types::Credentials> GateKeeper::parse_credentials(std::string_view data, std::string& message, bool& success)
 {
     success = false;
 
-    std::optional<jsoncons::json> credentials_j = parse_data(std::move(callback), data, success);
+    std::optional<jsoncons::json> credentials_j = parse_data(data, message, success);
     if (!success || !credentials_j.has_value())
         return std::nullopt;
 
@@ -135,7 +126,7 @@ std::optional<Types::Credentials> GateKeeper::parse_credentials(CALLBACK_&& call
     }
     catch (const std::exception& e)
     {
-        CRITICALMESSAGERESPONSE
+        message = fmt::format("Credentials parsing error : {} - {}", message, e.what());
         return std::nullopt;
     }
     success = true;

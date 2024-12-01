@@ -8,8 +8,8 @@
 
 using namespace api::v2;
 
-bool SessionManager::login(CALLBACK_&& callback, const std::optional<Types::Credentials>& credentials,
-                           std::optional<Types::ClientLoginData>& clientLoginData)
+bool SessionManager::login(const std::optional<Types::Credentials>& credentials, std::optional<Types::ClientLoginData>& clientLoginData,
+                           std::string& message)
 {
     std::optional<std::string> password_hash;
     try
@@ -18,7 +18,7 @@ bool SessionManager::login(CALLBACK_&& callback, const std::optional<Types::Cred
 
         if (!client_object.has_value() || client_object.value().empty())
         {
-            callback(Http::UNAUTHORIZED, "Failure: user might not exist, please try again");
+            message += "Failure: user might not exist, please try again";
             return false;
         }
 
@@ -28,7 +28,7 @@ bool SessionManager::login(CALLBACK_&& callback, const std::optional<Types::Cred
 
         if (!clientLoginData->clientId.has_value())
         {
-            callback(Http::UNAUTHORIZED, "Failed to find client id from database, please try again");
+            message += "Failed to find client id from database, please try again";
             return false;
         }
 
@@ -37,7 +37,7 @@ bool SessionManager::login(CALLBACK_&& callback, const std::optional<Types::Cred
 
         if (!clientLoginData->is_active)
         {
-            callback(Http::UNAUTHORIZED, fmt::format("username: [{}] is suspended, please contact the administrator", credentials->username));
+            message += fmt::format("username: [{}] is suspended, please contact the administrator", credentials->username);
             return false;
         }
 
@@ -45,7 +45,7 @@ bool SessionManager::login(CALLBACK_&& callback, const std::optional<Types::Cred
 
         if (!success)
         {
-            callback(Http::UNAUTHORIZED, "Failed to set now login and get last logout times , please try again");
+            message += "Failed to set now login and get last logout times , please try again";
             return false;
         }
 
@@ -53,19 +53,19 @@ bool SessionManager::login(CALLBACK_&& callback, const std::optional<Types::Cred
 
         if (!password_hash.has_value())
         {
-            callback(Http::UNAUTHORIZED, "Failed to find password hash from database, please try again");
+            message += "Failed to find password hash from database, please try again";
             return false;
         }
 
         if (!passwordCrypt->verifyPassword(credentials->password, password_hash.value()))
         {
-            callback(Http::UNAUTHORIZED, "Invalid username/password, please try again");
+            message += "Invalid username/password, please try again";
             return false;
         }
     }
     catch (const std::exception& e)
     {
-        CRITICALMESSAGERESPONSE
+        message += fmt::format("Error: {}", e.what());
         return false;
     }
     return true;
