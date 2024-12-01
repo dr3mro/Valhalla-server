@@ -134,18 +134,13 @@ bool KeeprBase::decodeToken(std::optional<Types::ClientLoginData>& clientLoginDa
             return false;
         }
 
-        if (clientLoginData->group != decoedToken.get_payload_claim("group").as_string())
-        {
-            message = "Token group does not match user group";
-            return false;
-        }
-
         if (clientLoginData->ip_address != decoedToken.get_payload_claim("ip_address").as_string())
         {
             message = "Token ip address does not match user ip address";
             return false;
         }
 
+        clientLoginData->group    = decoedToken.get_payload_claim("group").as_string();
         clientLoginData->clientId = std::stoull(decoedToken.get_id());
         clientLoginData->username = decoedToken.get_subject();
 

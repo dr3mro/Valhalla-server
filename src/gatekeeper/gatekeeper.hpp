@@ -20,7 +20,7 @@ namespace api
             GateKeeper()          = default;
             virtual ~GateKeeper() = default;
             void login(CALLBACK_&& callback, std::string_view data, const std::string& ip_address, std::string_view group);
-            void logout(CALLBACK_&& callback, const std::optional<std::string>& token, const std::string& group);
+            void logout(CALLBACK_&& callback, const std::optional<std::string>& token, const std::string& ip_address, const std::string& group);
 
             bool isAuthenticationValid(std::optional<Types::ClientLoginData>& clientLoginData, std::string& message);
             void removeSession(std::optional<uint64_t> client_id, const std::string& group);
