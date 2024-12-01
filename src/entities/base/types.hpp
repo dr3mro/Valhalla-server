@@ -11,7 +11,7 @@
 #include "gatekeeper/passwordcrypt/passwordcrypt.hpp"
 #include "store/store.hpp"
 #include "utils/global/http.hpp"
-#include "utils/validator/validator.hpp"
+#include "validator/validator.hpp"
 namespace api
 {
     namespace v2

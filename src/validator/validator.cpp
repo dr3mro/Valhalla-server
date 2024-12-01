@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <regex>
 
-#include "utils/databaseschema/databaseschema.hpp"
+#include "validator/databaseschema/databaseschema.hpp"
 
 const std::unordered_map<std::string, std::string> Validator::regex_client_validators = {
     {"username", "^[a-z][a-z0-9_]*$"},
