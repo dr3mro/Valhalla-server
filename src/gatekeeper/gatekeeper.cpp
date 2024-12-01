@@ -54,13 +54,14 @@ void GateKeeper::login(CALLBACK_&& callback, std::string_view data, const std::s
     }
 }
 
-void GateKeeper::logout(CALLBACK_&& callback, const std::optional<std::string>& token, const std::string& group)
+void GateKeeper::logout(CALLBACK_&& callback, const std::optional<std::string>& token, const std::string& ip_address, const std::string& group)
 {
     try
     {
         std::optional<Types::ClientLoginData> clientLoginData = Types::ClientLoginData{};
         clientLoginData->token                                = token;
         clientLoginData->group                                = group;
+        clientLoginData->ip_address                           = ip_address;
         sessionManager_->logout(std::move(callback), clientLoginData);
     }
     catch (const std::exception& e)

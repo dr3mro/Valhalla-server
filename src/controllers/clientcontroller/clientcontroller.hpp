@@ -25,7 +25,7 @@ class ClientController : public EntityController<T>, public ClientControllerBase
     void Delete(CALLBACK_&& callback, std::optional<uint64_t> client_id) final;
     void Search(CALLBACK_&& callback, std::string_view data) final;
     void Login(CALLBACK_&& callback, std::string_view data, const std::string& ip_address) final;
-    void Logout(CALLBACK_&& callback, const std::optional<std::string>& token) final;
+    void Logout(CALLBACK_&& callback, const std::optional<std::string>& token, const std::string& ip_address) final;
     void Suspend(CALLBACK_&& callback, std::optional<uint64_t> client_id) final;
     void Activate(CALLBACK_&& callback, std::optional<uint64_t> client_id) final;
     void ResetPassword(CALLBACK_&& callback, std::string_view data) final;
@@ -122,9 +122,9 @@ void ClientController<T>::Login(CALLBACK_&& callback, std::string_view data, con
 }
 
 template <Client_t T>
-void ClientController<T>::Logout(CALLBACK_&& callback, const std::optional<std::string>& token)
+void ClientController<T>::Logout(CALLBACK_&& callback, const std::optional<std::string>& token, const std::string& ip_address)
 {
-    gateKeeper->logout(std::move(callback), token, T::getTableName());
+    gateKeeper->logout(std::move(callback), token, ip_address, T::getTableName());
 }
 
 template <Client_t T>

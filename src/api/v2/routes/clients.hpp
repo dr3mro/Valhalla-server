@@ -30,7 +30,7 @@ namespace api
                         const std::string &clientType)
             {
                 executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Logout, std::move(callback),
-                                        req->getHeader("Authorization").substr(7));
+                                        req->getHeader("Authorization").substr(7), req->peerAddr().toIp());
             }
 
             void suspend(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
