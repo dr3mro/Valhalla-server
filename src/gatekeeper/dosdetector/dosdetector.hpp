@@ -1,5 +1,4 @@
 #pragma once
-#include <drogon/drogon.h>
 
 #include <atomic>
 #include <chrono>
@@ -25,10 +24,18 @@ class DOSDetector
         BANNED,
         ERROR
     };
+    using Request = struct Request
+    {
+        std::string                                  ip;
+        std::string                                  method;
+        std::string                                  path;
+        std::unordered_map<std::string, std::string> headers;
+        std::string_view                             body;
+    };
 
     DOSDetector();
     virtual ~DOSDetector();
-    DOSDetector::Status is_dos_attack(const drogon::HttpRequestPtr &req);
+    DOSDetector::Status is_dos_attack(const Request &request);
 
    private:
     std::shared_ptr<Configurator>            configurator_       = Store::getObject<Configurator>();
@@ -56,7 +63,7 @@ class DOSDetector
     std::atomic<bool> running_clean_{true};
 
     void                                                           cleanUpTask();
-    inline std::optional<std::string> __attribute((always_inline)) generateRequestFingerprint(const drogon::HttpRequestPtr &req);
+    inline std::optional<std::string> __attribute((always_inline)) generateRequestFingerprint(const DOSDetector::Request &request);
     inline bool __attribute((always_inline))                       isWhitelisted(std::string_view remote_ip);
     inline bool __attribute((always_inline))                       isBlacklisted(std::string_view remote_ip);
     inline bool __attribute((always_inline)) regexFind(std::string_view remote_ip, const std::unordered_set<std::string> &list, std::mutex &mtx);
@@ -65,6 +72,6 @@ class DOSDetector
     template <typename Map, typename Mutex>
     inline bool __attribute((always_inline)) checkStatus(std::string_view remote_ip, Map &ip_map, Mutex &mtx);
 
-    template <typename Req>
-    DOSDetector::Status processRequest(Req &&req);
+    template <typename Request>
+    DOSDetector::Status processRequest(const Request &&request);
 };

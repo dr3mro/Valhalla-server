@@ -38,32 +38,31 @@ DOSDetector::~DOSDetector()
     }
 }
 
-DOSDetector::Status DOSDetector::is_dos_attack(const drogon::HttpRequestPtr &req)
+DOSDetector::Status DOSDetector::is_dos_attack(const Request &request)
 {
-    const std::string remote_ip = req->getPeerAddr().toIp();
     try
     {
-        if (isWhitelisted(remote_ip))
+        if (isWhitelisted(request.ip))
         {
             return Status::WHITELISTED;
         }
-        if (isBlacklisted(remote_ip))
+        if (isBlacklisted(request.ip))
         {
             return Status::BLACKLISTED;
         }
 
-        if (isRateLimited(remote_ip))
+        if (isRateLimited(request.ip))
         {
-            processRequest<const drogon::HttpRequestPtr &>(req);
+            processRequest<const DOSDetector::Request &>(request);
             return Status::RATELIMITED;
         }
 
-        if (isBanned(remote_ip))
+        if (isBanned(request.ip))
         {
             return Status::BANNED;
         }
 
-        return processRequest<const drogon::HttpRequestPtr &>(req);
+        return processRequest<const DOSDetector::Request &>(request);
     }
     catch (const std::exception &e)
     {
@@ -160,19 +159,19 @@ void DOSDetector::cleanUpTask()
     }
 }
 
-inline std::optional<std::string> __attribute((always_inline)) DOSDetector::generateRequestFingerprint(const drogon::HttpRequestPtr &req)
+inline std::optional<std::string> __attribute((always_inline)) DOSDetector::generateRequestFingerprint(const DOSDetector::Request &req)
 {
     try
     {
         std::string data;
         data.reserve(REQUEST_BUFFER_SIZE);
 
-        for (const auto &header : req->getHeaders())
+        for (const auto &header : req.headers)
         {
             data.append(header.second);
         }
 
-        data.append(req->getBody());
+        data.append(req.body);
 
         XXH64_hash_t hashed_key = XXH3_64bits(data.c_str(), data.size());
 
@@ -306,14 +305,14 @@ inline bool __attribute((always_inline)) DOSDetector::checkStatus(std::string_vi
     }
 }
 
-template <typename Req>
-DOSDetector::Status DOSDetector::processRequest(Req &&req)
+template <typename Request>
+DOSDetector::Status DOSDetector::processRequest(const Request &&request)
 {
     try
     {
         auto                       now                 = std::chrono::steady_clock::now();
-        std::optional<std::string> remote_ip           = req->getPeerAddr().toIp();
-        std::optional<std::string> request_fingerprint = generateRequestFingerprint(req);
+        std::optional<std::string> remote_ip           = request.ip;
+        std::optional<std::string> request_fingerprint = generateRequestFingerprint(request);
 
         if (!remote_ip)
         {

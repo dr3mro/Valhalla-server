@@ -91,7 +91,7 @@ void GateKeeper::removeSession(std::optional<uint64_t> client_id, const std::str
 }
 // bool GateKeeper::hasPermission(CALLBACK_&& callback, std::string_view data) { return false; }
 
-// bool GateKeeper::isDosAttack(CALLBACK_&& callback, std::string_view data) { return false; }
+DOSDetector::Status GateKeeper::isDosAttack(const DOSDetector::Request& request) { return dosDetector_->is_dos_attack(request); }
 
 std::optional<jsoncons::json> GateKeeper::parse_data(std::string_view data, std::string& message, bool& success)
 {
