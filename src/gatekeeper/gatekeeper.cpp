@@ -9,7 +9,7 @@
 
 using namespace api::v2;
 
-void GateKeeper::login(CALLBACK_&& callback, std::string_view data, std::string_view group)
+void GateKeeper::login(CALLBACK_&& callback, std::string_view data, const std::string& ip_address, std::string_view group)
 {
     try
     {
@@ -18,14 +18,17 @@ void GateKeeper::login(CALLBACK_&& callback, std::string_view data, std::string_
 
         if (!success || !credentials.has_value())
         {
-            callback(api::v2::Http::Status::BAD_REQUEST, "credentials parse error");
+            // FIXME: send error message into method instead of callbacks and use append to protecect against message overwriting
+            // callback(api::v2::Http::Status::BAD_REQUEST, "credentials parse error");
             return;
         }
         std::optional<Types::ClientLoginData> clientLoginData = Types::ClientLoginData{};
         clientLoginData->group                                = group;
+        clientLoginData->ip_address                           = ip_address;
 
         success = sessionManager_->login(std::move(callback), credentials, clientLoginData);
 
+        // TODO: combine those two if statements
         if (!success)
         {
             // Message already sent in login function
@@ -50,6 +53,7 @@ void GateKeeper::login(CALLBACK_&& callback, std::string_view data, std::string_
         token_object["username"]  = clientLoginData->username;
         token_object["client_id"] = clientLoginData->clientId;
         token_object["group"]     = clientLoginData->group;
+        token_object["ipAdress"]  = clientLoginData->ip_address;
 
         callback(Http::Status::OK, token_object.as<std::string>());
     }
@@ -109,6 +113,7 @@ std::optional<jsoncons::json> GateKeeper::parse_data(CALLBACK_&& callback, std::
     catch (const std::exception& e)
     {
         CRITICALMESSAGERESPONSE
+        return false;
     }
     success = true;
     return j;
@@ -131,6 +136,7 @@ std::optional<Types::Credentials> GateKeeper::parse_credentials(CALLBACK_&& call
     catch (const std::exception& e)
     {
         CRITICALMESSAGERESPONSE
+        return std::nullopt;
     }
     success = true;
     return credentials;

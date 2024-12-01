@@ -23,7 +23,8 @@ namespace api
             void login(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                        const std::string &clientType)
             {
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Login, std::move(callback), req->body());
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Login, std::move(callback), req->body(),
+                                        req->peerAddr().toIp());
             }
             void logout(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
                         const std::string &clientType)

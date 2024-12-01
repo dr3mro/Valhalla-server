@@ -24,6 +24,7 @@ namespace api
                 bool                                passwordMatch;
                 std::optional<std::string>          passwordHash;
                 std::chrono::system_clock::duration expireTime;
+                std::optional<std::string>          ip_address;
             };
 
             using Credentials = struct Credentials

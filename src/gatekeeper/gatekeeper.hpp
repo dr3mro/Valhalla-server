@@ -18,7 +18,7 @@ namespace api
            public:
             GateKeeper()          = default;
             virtual ~GateKeeper() = default;
-            void login(CALLBACK_&& callback, std::string_view data, std::string_view group);
+            void login(CALLBACK_&& callback, std::string_view data, const std::string& ip_address, std::string_view group);
             void logout(CALLBACK_&& callback, const std::optional<std::string>& token, const std::string& group);
 
             bool isAuthenticationValid(std::optional<Types::ClientLoginData>& clientLoginData, std::string& message);

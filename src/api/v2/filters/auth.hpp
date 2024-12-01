@@ -38,6 +38,7 @@ namespace api
                     std::optional<Types::ClientLoginData> clientLoginData = Types::ClientLoginData{};
                     clientLoginData->token                                = auth_header.substr(7);
                     clientLoginData->group                                = req->getRoutingParameters().front();
+                    clientLoginData->ip_address                           = req->getPeerAddr().toIp();
                     std::string message;
                     // Validate token
                     if (!gateKeeper->isAuthenticationValid(clientLoginData, message))
