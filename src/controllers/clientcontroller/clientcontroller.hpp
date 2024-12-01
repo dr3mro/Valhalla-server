@@ -24,7 +24,7 @@ class ClientController : public EntityController<T>, public ClientControllerBase
     void Update(CALLBACK_&& callback, std::string_view data, std::optional<uint64_t> id) final;
     void Delete(CALLBACK_&& callback, std::optional<uint64_t> client_id) final;
     void Search(CALLBACK_&& callback, std::string_view data) final;
-    void Login(CALLBACK_&& callback, std::string_view data) final;
+    void Login(CALLBACK_&& callback, std::string_view data, const std::string& ip_address) final;
     void Logout(CALLBACK_&& callback, const std::optional<std::string>& token) final;
     void Suspend(CALLBACK_&& callback, std::optional<uint64_t> client_id) final;
     void Activate(CALLBACK_&& callback, std::optional<uint64_t> client_id) final;
@@ -116,9 +116,9 @@ void ClientController<T>::Search(CALLBACK_&& callback, std::string_view data)
 }
 
 template <Client_t T>
-void ClientController<T>::Login(CALLBACK_&& callback, std::string_view data)
+void ClientController<T>::Login(CALLBACK_&& callback, std::string_view data, const std::string& ip_address)
 {
-    gateKeeper->login(std::move(callback), data, T::getTableName());
+    gateKeeper->login(std::move(callback), data, ip_address, T::getTableName());
 }
 
 template <Client_t T>

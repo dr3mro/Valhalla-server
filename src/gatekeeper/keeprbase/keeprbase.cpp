@@ -140,6 +140,12 @@ bool KeeprBase::decodeToken(std::optional<Types::ClientLoginData>& clientLoginDa
             return false;
         }
 
+        if (clientLoginData->ip_address != decoedToken.get_payload_claim("ip_address").as_string())
+        {
+            message = "Token ip address does not match user ip address";
+            return false;
+        }
+
         clientLoginData->clientId = std::stoull(decoedToken.get_id());
         clientLoginData->username = decoedToken.get_subject();
 
@@ -207,6 +213,7 @@ jwt::verifier<jwt::default_clock, jwt::traits::kazuho_picojson> KeeprBase::creat
         .with_type(std::string(tokenManagerParameters_.type))
         .with_subject(clientLoginData->username.value())
         .with_id(std::to_string(clientLoginData->clientId.value()))
+        .with_claim("ip_address", jwt::basic_claim<jwt::traits::kazuho_picojson>(clientLoginData->ip_address.value()))
         .with_claim("group", jwt::basic_claim<jwt::traits::kazuho_picojson>(clientLoginData->group.value()))
         .with_claim("llodt", jwt::basic_claim<jwt::traits::kazuho_picojson>(clientLoginData->lastLogoutTime.value()));
 }
