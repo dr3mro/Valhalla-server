@@ -162,7 +162,7 @@ namespace api
                 {
                     try
                     {
-                        Validator::Rule exclude = {.action = (Validator::Rule::Action::NONE), .keys = {}};
+                        Validator::Rule exclude = {.action = (Validator::Rule::Action::ASSERT_IMMUTABLE), .keys = {"id"}};
                         success                 = Validator::validateDatabaseCreateSchema(tablename, data_j, error, exclude);
                         if (!success)
                         {
