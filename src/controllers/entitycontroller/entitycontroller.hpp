@@ -29,10 +29,11 @@ inline void __attribute((always_inline)) EntityController<T>::Create(CALLBACK_ &
 {
     try
     {
-        bool                            success = false;
-        api::v2::Http::Error            error;
-        std::unordered_set<std::string> exclude;
-        auto                            next_id = this->template getNextID<T>(error);
+        bool                 success = false;
+        api::v2::Http::Error error;
+        Validator::Rule      exclude = {.action = (Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE | Validator::Rule::Action::IGNORE_IF_MISSING),
+                                        .keys   = {"id"}};
+        auto                 next_id = this->template getNextID<T>(error);
 
         if (!next_id.has_value())
         {
@@ -48,7 +49,7 @@ inline void __attribute((always_inline)) EntityController<T>::Create(CALLBACK_ &
             return;
         }
 
-        success = Validator::validateDatabaseCreateSchema(T::getTableName(), request_j, error);
+        success = Validator::validateDatabaseCreateSchema(T::getTableName(), request_j, error, exclude);
 
         if (!success)
         {
@@ -98,9 +99,9 @@ inline void __attribute((always_inline)) EntityController<T>::Update(CALLBACK_ &
 {
     try
     {
-        bool                            success = false;
-        api::v2::Http::Error            error;
-        std::unordered_set<std::string> exclude{};
+        bool                 success = false;
+        api::v2::Http::Error error;
+        Validator::Rule      exclude = {.action = (Validator::Rule::Action::NONE), .keys = {}};
 
         if (!id.has_value())
         {

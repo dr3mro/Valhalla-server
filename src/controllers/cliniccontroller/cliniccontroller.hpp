@@ -18,10 +18,14 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
     void CreateImpl(CALLBACK_ &&callback, std::string_view data)
         requires(!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value)
     {
-        jsoncons::json                  request_json = jsoncons::json::parse(data);
-        bool                            success      = false;
-        std::unordered_set<std::string> exclude{"id"};
-        api::v2::Http::Error            error;
+        jsoncons::json request_json = jsoncons::json::parse(data);
+        bool           success      = false;
+
+        Validator::Rule clinic_rule;
+        clinic_rule.action = Validator::Rule::Action::IGNORE_IF_MISSING | Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE;
+        clinic_rule.keys   = {"id"};
+
+        api::v2::Http::Error error;
         try
         {
             std::optional<uint64_t> id = request_json.at("id").as<uint64_t>();
@@ -31,7 +35,7 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
                 return;
             }
 
-            success = Validator::validateDatabaseCreateSchema(T::getTableName(), request_json, error);
+            success = Validator::validateDatabaseCreateSchema(T::getTableName(), request_json, error, clinic_rule);
             if (!success)
             {
                 callback(error.code, error.message);
