@@ -3,6 +3,7 @@
 #include <fmt/format.h>
 #include <xxhash.h>
 
+#include <algorithm>
 #include <regex>
 #include <thread>
 
@@ -38,7 +39,7 @@ DOSDetector::~DOSDetector()
     }
 }
 
-DOSDetector::Status DOSDetector::is_dos_attack(const Request &request)
+DOSDetector::Status DOSDetector::is_dos_attack(const Request &&request)
 {
     try
     {
@@ -53,7 +54,7 @@ DOSDetector::Status DOSDetector::is_dos_attack(const Request &request)
 
         if (isRateLimited(request.ip))
         {
-            processRequest<const DOSDetector::Request &>(request);
+            processRequest(request);
             return Status::RATELIMITED;
         }
 
@@ -62,7 +63,7 @@ DOSDetector::Status DOSDetector::is_dos_attack(const Request &request)
             return Status::BANNED;
         }
 
-        return processRequest<const DOSDetector::Request &>(request);
+        return processRequest(request);
     }
     catch (const std::exception &e)
     {
@@ -220,22 +221,22 @@ inline bool __attribute((always_inline)) DOSDetector::regexFind(std::string_view
     {
         std::lock_guard<std::mutex> lock(mtx);
 
-        return std::any_of(list.begin(), list.end(),
-                           [&remote_ip](const std::string_view &pattern)
-                           {
-                               try
-                               {
-                                   std::regex regex_pattern(pattern.data());
-                                   return std::regex_search(remote_ip.data(), regex_pattern);
-                               }
-                               catch (const std::regex_error &e)
-                               {
-                                   Message::ErrorMessage("Exception due to invalid regex pattern.");
-                                   Message::CriticalMessage(e.what());
+        return std::ranges::any_of(list,
+                                   [&remote_ip](const std::string_view &pattern)
+                                   {
+                                       try
+                                       {
+                                           std::regex regex_pattern((std::string(pattern)));
+                                           return std::regex_search((std::string(remote_ip)), regex_pattern);
+                                       }
+                                       catch (const std::regex_error &e)
+                                       {
+                                           Message::ErrorMessage("Exception due to invalid regex pattern.");
+                                           Message::CriticalMessage(e.what());
 
-                                   return false;
-                               }
-                           });
+                                           return false;
+                                       }
+                                   });
     }
     catch (const std::exception &e)
     {
@@ -305,8 +306,7 @@ inline bool __attribute((always_inline)) DOSDetector::checkStatus(std::string_vi
     }
 }
 
-template <typename Request>
-DOSDetector::Status DOSDetector::processRequest(const Request &&request)
+DOSDetector::Status DOSDetector::processRequest(const Request &request)
 {
     try
     {

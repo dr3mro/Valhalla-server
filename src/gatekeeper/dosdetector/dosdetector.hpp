@@ -35,7 +35,7 @@ class DOSDetector
 
     DOSDetector();
     virtual ~DOSDetector();
-    DOSDetector::Status is_dos_attack(const Request &request);
+    DOSDetector::Status is_dos_attack(const Request &&request);
 
    private:
     std::shared_ptr<Configurator>            configurator_       = Store::getObject<Configurator>();
@@ -72,6 +72,5 @@ class DOSDetector
     template <typename Map, typename Mutex>
     inline bool __attribute((always_inline)) checkStatus(std::string_view remote_ip, Map &ip_map, Mutex &mtx);
 
-    template <typename Request>
-    DOSDetector::Status processRequest(const Request &&request);
+    Status processRequest(const Request &request);
 };
