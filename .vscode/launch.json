@@ -2,12 +2,12 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "(gdb) Launch",
             "type": "lldb",
             "request": "launch",
-            "name": "Debug",
-            "program": "${workspaceFolder}/build/Debug/server",
-            "cwd": "${workspaceFolder}/build",
+            "program": "${command:cmake.launchTargetPath}",
             "args": [],
+            "cwd": "${workspaceFolder}/build",
             "env": {
                 "DB_HOST": "127.0.0.1"
             }

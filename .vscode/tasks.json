@@ -5,13 +5,49 @@
             "label": "conan-install Debug",
             "type": "shell",
             "command": "conan install . --build=missing --output-folder=build/Debug -s build_type=Debug --profile:build=clangDebug",
-            "group": "build"
+            "group": "build",
+            "problemMatcher": []
         },
         {
             "label": "conan-install Release",
             "type": "shell",
             "command": "conan install . --build=missing --output-folder=build/Release -s build_type=Release --profile:build=clangRelease",
-            "group": "build"
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "cmake configure Debug",
+            "type": "shell",
+            "command": "cmake -S . -B build/Debug -DCMAKE_BUILD_TYPE=Debug",
+            "group": "build",
+            "dependsOn": "conan-install Debug",
+            "problemMatcher": []
+        },
+        {
+            "label": "cmake configure Release",
+            "type": "shell",
+            "command": "cmake -S . -B build/Release -DCMAKE_BUILD_TYPE=Release",
+            "group": "build",
+            "dependsOn": "conan-install Release",
+            "problemMatcher": []
+        },
+        {
+            "label": "build Debug",
+            "type": "shell",
+            "command": "cmake --build build/Debug --config Debug",
+            "group": "build",
+            "dependsOn": "cmake configure Debug",
+            "problemMatcher": ["$gcc"],
+            "detail": "Build Debug configuration"
+        },
+        {
+            "label": "build Release",
+            "type": "shell",
+            "command": "cmake --build build/Release --config Release",
+            "group": "build",
+            "dependsOn": "cmake configure Release",
+            "problemMatcher": ["$gcc"],
+            "detail": "Build Release configuration"
         }
     ]
 }
