@@ -109,8 +109,7 @@ bool Validator::validateDatabaseReadSchema(const std::unordered_set<std::string>
     // Check if all keys exist in the schema
     for (const auto &key : keys)
     {
-        bool blacklisted_key_present = (rule.action & Rule::ASSERT_NOT_PRESENT) && rule.keys.contains(key);
-        if (blacklisted_key_present)
+        if (rule.check(Rule::Action::ASSERT_NOT_PRESENT, key))
         {
             error.message = "Key not allowed: " + key;
             error.code    = api::v2::Http::Status::BAD_REQUEST;
@@ -210,11 +209,9 @@ bool Validator::checkColumns(const jsoncons::json &data, const std::unordered_se
     for (const auto &column : table_schema)
     {
         bool column_exists = data.contains(column.Name);
-        bool ignored_if_null =
-            (((rule.action & Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA) != Rule::Action::NONE) && rule.keys.contains(column.Name));
 
         // Check for missing non-nullable columns
-        if (!column_exists && !column.isNullable && !ignored_if_null)
+        if (!column_exists && !column.isNullable && !rule.check(Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA, column.Name))
         {
             error.message = "Non-nullable column missing in data: " + column.Name;
             error.code    = api::v2::Http::Status::BAD_REQUEST;
@@ -247,18 +244,16 @@ bool Validator::ensureAllKeysExist(const jsoncons::json &data, const std::unorde
     {
         const auto &key = entry.key();
 
-        bool assert_immutable = (((rule.action & Rule::Action::ASSERT_IMMUTABLE) != Rule::Action::NONE) && rule.keys.contains(key));
         // check if the key is in the exclude list
-        if (assert_immutable)
+        if (rule.check(Rule::Action::ASSERT_IMMUTABLE, key))
         {
             error.message = "Key: [" + key + "] is not allowed to be changed.";
             error.code    = api::v2::Http::Status::BAD_REQUEST;
             return false;
         }
 
-        bool ignore_if_missing = (((rule.action & Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA) != Rule::Action::NONE) && rule.keys.contains(key));
-
-        if (schema_columns.find(key) == schema_columns.end() && !ignore_if_missing)  // Key not in schema
+        bool ignore_if_missing_from_database_schema = rule.check(Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA, key);
+        if (schema_columns.find(key) == schema_columns.end() && !ignore_if_missing_from_database_schema)  // Key not in schema
         {
             error.message = "Key: [" + key + "] is not found in database schema";
             error.code    = api::v2::Http::Status::BAD_REQUEST;

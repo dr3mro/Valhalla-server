@@ -21,9 +21,8 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
         jsoncons::json request_json = jsoncons::json::parse(data);
         bool           success      = false;
 
-        Validator::Rule clinic_rule;
-        clinic_rule.action = Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA | Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA;
-        clinic_rule.keys   = {"id"};
+        Validator::Rule rule((Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA | Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA),
+        {"id"});
 
         api::v2::Http::Error error;
         try
@@ -35,7 +34,7 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
                 return;
             }
 
-            success = Validator::validateDatabaseCreateSchema(T::getTableName(), request_json, error, clinic_rule);
+            success = Validator::validateDatabaseCreateSchema(T::getTableName(), request_json, error, rule);
             if (!success)
             {
                 callback(error.code, error.message);
