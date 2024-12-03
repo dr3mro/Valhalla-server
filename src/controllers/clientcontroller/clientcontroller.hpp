@@ -16,8 +16,8 @@ template <Client_t T>
 class ClientController : public EntityController<T>, public ClientControllerBase
 {
    public:
-    ClientController()                = default;
-    virtual ~ClientController() final = default;
+    ClientController()          = default;
+    virtual ~ClientController() = default;
     void Create(CALLBACK_&& callback, std::string_view data) final;
     void Read(CALLBACK_&& callback, std::string_view data) final;
     void Update(CALLBACK_&& callback, std::string_view data, std::optional<uint64_t> id) final;
