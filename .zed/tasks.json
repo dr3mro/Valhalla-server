@@ -1,48 +1,44 @@
 [
   {
-    "label": "Configure Debug (GCC)",
+    "label": "Conan install dependencies Debug",
     "cwd": "$ZED_WORKTREE_ROOT",
-    "command": "cmake",
+    "command": "conan",
     "args": [
-      "-S",
-      ".",
-      "-B",
-      "build/Debug",
-      "-DCMAKE_BUILD_TYPE=Debug",
-      "-DCMAKE_C_COMPILER=gcc",
-      "-DCMAKE_CXX_COMPILER=g++",
-      "-G",
-      "Ninja"
+      "install",
+      ".", 
+      "--build=missing", 
+      "--output-folder=build/Debug", 
+      "-s", 
+      "build_type=Debug", 
+      "--profile:build=clangDebug"
     ],
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "on_success",
     "shell": "system"
-  },
+  },  
   {
-    "label": "Configure Release (GCC)",
+    "label": "Conan install dependencies Release",
     "cwd": "$ZED_WORKTREE_ROOT",
-    "command": "cmake",
+    "command": "conan",
     "args": [
-      "-S",
-      ".",
-      "-B",
-      "build/release",
-      "-DCMAKE_BUILD_TYPE=Release",
-      "-DCMAKE_C_COMPILER=gcc",
-      "-DCMAKE_CXX_COMPILER=g++",
-      "-G",
-      "Ninja"
+      "install",
+      ".", 
+      "--build=missing", 
+      "--output-folder=build/Release", 
+      "-s", 
+      "build_type=Release", 
+      "--profile:build=clangRelease"
     ],
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "on_success",
     "shell": "system"
-  },
+  },  
   {
-    "label": "Configure Debug (Clang)",
+    "label": "Configure Debug",
     "cwd": "$ZED_WORKTREE_ROOT",
     "command": "cmake",
     "args": [
@@ -60,10 +56,11 @@
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "on_success",
-    "shell": "system"
+    "shell": "system",
+    "dependsOn": "Conan install dependencies Debug"
   },
   {
-    "label": "Configure Release (Clang)",
+    "label": "Configure Release",
     "cwd": "$ZED_WORKTREE_ROOT",
     "command": "cmake",
     "args": [
@@ -81,7 +78,8 @@
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "on_success",
-    "shell": "system"
+    "shell": "system",
+    "dependsOn": "Conan install dependencies Release"
   },
   {
     "label": "Build Debug",
@@ -92,7 +90,8 @@
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "never", //on_success",
-    "shell": "system"
+    "shell": "system",
+    "dependsOn": "Configure Debug"
   },
   {
     "label": "Build Release",
@@ -103,7 +102,8 @@
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "on_success",
-    "shell": "system"
+    "shell": "system",
+    "dependsOn": "Configure Release"
   },
   {
     "label": "Run Debug",
@@ -114,7 +114,8 @@
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "on_success",
-    "shell": "system"
+    "shell": "system",
+    "dependsOn": "Build Debug"
   },
   {
     "label": "Run Release",
@@ -125,7 +126,8 @@
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "on_success",
-    "shell": "system"
+    "shell": "system",
+    "dependsOn": "Build Release"
   },
   {
     "label": "Debug (gdb)",
@@ -136,7 +138,8 @@
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "on_success",
-    "shell": "system"
+    "shell": "system",
+    "dependsOn": "Build Debug"
   },
   {
     "label": "Debug (lldb)",
@@ -147,7 +150,8 @@
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "on_success",
-    "shell": "system"
+    "shell": "system",
+    "dependsOn": "Build Debug"
   },
   {
     "label": "Clean Build Directory",
