@@ -96,7 +96,7 @@ target_include_directories(${Target} PRIVATE
   ${PACKAGE_INCLUDES}
 )
 
-include(conan/variables.cmake)
+include(tools/conan/variables.cmake)
 
 # Link libraries
 target_link_libraries(${Target} PRIVATE ${PACKAGE_LIBS})
