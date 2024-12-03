@@ -1,6 +1,8 @@
 #pragma once
 
+#include <algorithm>
 #include <jsoncons/basic_json.hpp>
+#include <unordered_map>
 
 #include "utils/global/http.hpp"
 #include "utils/global/types.hpp"
@@ -18,8 +20,25 @@ class Validator
             ASSERT_NOT_PRESENT               = 1 << 3,  // Assert that key is not present in json
         };
 
-        Action                          action;
-        std::unordered_set<std::string> keys;
+        Action                                                      action;
+        std::unordered_map<Action, std::unordered_set<std::string>> keys;
+
+        bool check(const Action &check, const std::string &key) const
+        {
+            bool isMatch = hasMatch(check);
+            bool isKey   = hasKey(check, key);
+            return isMatch && isKey;
+            // return hasMatch(check) && hasKey(check, key);
+        }
+
+        // constructor for rule
+        explicit Rule(Action action, const std::unordered_set<std::string> &&keys)
+        {
+            this->action       = action;
+            this->keys[action] = keys;
+        }
+
+        Rule() = delete;
 
         // Overload | operator
         friend Action operator|(Action a, Action b) { return static_cast<Action>(static_cast<int>(a) | static_cast<int>(b)); }
@@ -46,6 +65,24 @@ class Validator
 
         // Check if any flag is set
         explicit operator bool() const { return static_cast<int>(action) != 0; }
+
+       private:
+        // check if rule is set
+        bool hasMatch(const Action &check) const { return (action & check) != NONE; }
+        bool hasMatch(const Action &key, const Action &check) const { return (key & check) != NONE; }
+
+        // check if key exists in rule for and action
+        bool hasKey(const Action &check, const std::string &element) const
+        {
+            return std::ranges::find_if(this->keys,
+                                        [&](const auto &key)
+                                        {
+                                            bool isMatch = hasMatch(key.first, check);
+                                            bool isKey   = key.second.contains(element);
+                                            return isMatch && isKey;
+                                            // return (hasMatch(key.first, check)) && key.second.contains(element);
+                                        }) != this->keys.end();
+        }
     };
 
     Validator()          = default;

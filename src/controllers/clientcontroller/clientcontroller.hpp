@@ -80,10 +80,10 @@ void ClientController<T>::Update(CALLBACK_&& callback, std::string_view data, co
     try
     {
         bool            success = false;
-        Validator::Rule exclude = {.action = (Validator::Rule::Action::ASSERT_IMMUTABLE), .keys = {"username", "password"}};
+        Validator::Rule rule(Validator::Rule::Action::ASSERT_IMMUTABLE, {"username", "password"});
 
         api::v2::Http::Error  error;
-        Types::UpdateClient_t client_data(data, id, T::getTableName(), error, success, exclude);
+        Types::UpdateClient_t client_data(data, id, T::getTableName(), error, success, rule);
 
         if (success)
         {
