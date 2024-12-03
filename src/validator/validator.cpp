@@ -247,7 +247,7 @@ bool Validator::ensureAllKeysExist(const jsoncons::json &data, const std::unorde
         // check if the key is in the exclude list
         if (rule.check(Rule::Action::ASSERT_IMMUTABLE, key))
         {
-            error.message = "Key: [" + key + "] is not allowed to be changed.";
+            error.message = "Key: [" + key + "] is not allowed to be changed";
             error.code    = api::v2::Http::Status::BAD_REQUEST;
             return false;
         }
