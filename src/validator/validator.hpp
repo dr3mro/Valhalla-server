@@ -74,14 +74,8 @@ class Validator
         // check if key exists in rule for and action
         bool hasKey(const Action &check, const std::string &element) const
         {
-            return std::ranges::find_if(this->keys,
-                                        [&](const auto &key)
-                                        {
-                                            bool isMatch = hasMatch(key.first, check);
-                                            bool isKey   = key.second.contains(element);
-                                            return isMatch && isKey;
-                                            // return (hasMatch(key.first, check)) && key.second.contains(element);
-                                        }) != this->keys.end();
+            return std::ranges::find_if(this->keys, [&](const auto &key)
+                                        { return (hasMatch(key.first, check)) && (key.second.contains(element)); }) != this->keys.end();
         }
     };
 
