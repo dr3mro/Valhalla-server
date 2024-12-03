@@ -9,8 +9,7 @@
       "--build=missing", 
       "--output-folder=build/Debug", 
       "-s", 
-      "build_type=Debug", 
-      "--profile:build=clangDebug"
+      "build_type=Debug"
     ],
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
@@ -28,8 +27,7 @@
       "--build=missing", 
       "--output-folder=build/Release", 
       "-s", 
-      "build_type=Release", 
-      "--profile:build=clangRelease"
+      "build_type=Release"
     ],
     "use_new_terminal": false,
     "allow_concurrent_runs": false,

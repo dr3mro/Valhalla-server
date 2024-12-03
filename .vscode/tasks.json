@@ -4,14 +4,14 @@
         {
             "label": "conan-install Debug",
             "type": "shell",
-            "command": "conan install . --build=missing --output-folder=build/Debug -s build_type=Debug --profile:build=clangDebug",
+            "command": "conan install . --build=missing --output-folder=build/Debug -s build_type=Debug",
             "group": "build",
             "problemMatcher": []
         },
         {
             "label": "conan-install Release",
             "type": "shell",
-            "command": "conan install . --build=missing --output-folder=build/Release -s build_type=Release --profile:build=clangRelease",
+            "command": "conan install . --build=missing --output-folder=build/Release -s build_type=Release",
             "group": "build",
             "problemMatcher": []
         },
