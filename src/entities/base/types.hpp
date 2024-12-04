@@ -162,8 +162,8 @@ namespace api
                 {
                     try
                     {
-                        Validator::Rule exclude(Validator::Rule::Action::ASSERT_IMMUTABLE, {"id"});
-                        success                 = Validator::validateDatabaseCreateSchema(tablename, data_j, error, exclude);
+                        Validator::Rule rule(Validator::Rule::Action::ASSERT_NOT_PRESENT, {"id"});
+                        success = Validator::validateDatabaseCreateSchema(tablename, data_j, error, rule);
                         if (!success)
                         {
                             Message::ErrorMessage(error.message);
@@ -196,12 +196,12 @@ namespace api
             {
                public:
                 UpdateClient_t(std::string_view _data, const std::optional<uint64_t> _id, const std::string &tablename, api::v2::Http::Error &error,
-                               bool &success, const Validator::Rule &exclude)
+                               bool &success, const Validator::Rule &rule)
                     : ClientData_t(_data, _id, error, success)
                 {
                     try
                     {
-                        success = Validator::validateDatabaseUpdateSchema(tablename, get_data_json(), error, exclude);
+                        success = Validator::validateDatabaseUpdateSchema(tablename, get_data_json(), error, rule);
                         if (!success)
                         {
                             Message::ErrorMessage(error.message);

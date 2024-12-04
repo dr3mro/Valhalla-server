@@ -3,6 +3,7 @@
 #include <fmt/format.h>
 
 #include <algorithm>
+#include <jsoncons/pretty_print.hpp>
 #include <regex>
 
 #include "validator/databaseschema/databaseschema.hpp"
@@ -24,6 +25,13 @@ bool Validator::validateDatabaseCreateSchema(const std::string &tablename, const
         {
             return false;
         }
+        // TODO: I found this is never called as json parser already checks for duplicate keys
+        // if (hasDuplicateKeys(data, error))
+        // {
+        //     error.message = fmt::format("Duplicate key found: {}", error.message);
+        //     return false;
+        // }
+
         // Get the schema for the table
         bool found        = false;
         auto table_schema = getDatabaseSchemaForTable(tablename, error, found);
@@ -66,6 +74,13 @@ bool Validator::validateDatabaseUpdateSchema(const std::string &tablename, const
         {
             return false;
         }
+
+        // if (hasDuplicateKeys(data, error))
+        // {
+        //     error.message = fmt::format("Duplicate key found: {}", error.message);
+        //     return false;
+        // }
+
         // Get the schema for the table
         bool found        = false;
         auto table_schema = getDatabaseSchemaForTable(tablename, error, found);
@@ -160,6 +175,23 @@ bool Validator::clientRegexValidation(const jsoncons::json &data, api::v2::Http:
     return true;
 }
 
+// Add this method declaration in the private section
+bool Validator::hasDuplicateKeys(const jsoncons::json &data, api::v2::Http::Error &error)
+{
+    std::unordered_set<std::string> keys;
+
+    for (const auto &item : data.object_range())
+    {
+        if (!keys.insert(item.key()).second)
+        {
+            error.message = item.key();
+            error.code    = api::v2::Http::Status::BAD_REQUEST;
+            return true;
+        }
+    }
+    return false;
+}
+
 bool Validator::nullCheck(const jsoncons::json &data, api::v2::Http::Error &error)
 {
     if (data.is_null() || data.empty())
@@ -244,6 +276,13 @@ bool Validator::ensureAllKeysExist(const jsoncons::json &data, const std::unorde
     {
         const auto &key = entry.key();
 
+        // Check for missing not allowed keys
+        if (rule.check(Rule::Action::ASSERT_NOT_PRESENT, key))
+        {
+            error.message = "A prohibited key was found: [" + key + "]";
+            error.code    = api::v2::Http::Status::BAD_REQUEST;
+            return false;
+        }
         // check if the key is in the exclude list
         if (rule.check(Rule::Action::ASSERT_IMMUTABLE, key))
         {

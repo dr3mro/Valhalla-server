@@ -87,6 +87,8 @@ class Validator
                                            const Rule &rule);
     static bool clientRegexValidation(const jsoncons::json &data, api::v2::Http::Error &error,
                                       std::unordered_set<std::pair<std::string, std::string>> &db_data);
+    // Add this method declaration in the private section
+    static bool hasDuplicateKeys(const jsoncons::json &data, api::v2::Http::Error &error);
 
    private:
     static bool                                    nullCheck(const jsoncons::json &data, api::v2::Http::Error &error);
@@ -98,5 +100,3 @@ class Validator
                                    api::v2::Http::Error &error, const Rule &rule);
     static const std::unordered_map<std::string, std::string> regex_client_validators;
 };
-
-// TODO: Add douplicate check for data json

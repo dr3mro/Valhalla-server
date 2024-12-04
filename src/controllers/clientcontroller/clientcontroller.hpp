@@ -39,10 +39,9 @@ void ClientController<T>::Create(CALLBACK_&& callback, std::string_view data)
 {
     try
     {
-        bool                            success = false;
-        api::v2::Http::Error            error;
-        std::unordered_set<std::string> exclude;
-        jsoncons::json                  json_data = jsoncons::json::parse(data);
+        bool                 success = false;
+        api::v2::Http::Error error;
+        jsoncons::json       json_data = jsoncons::json::parse(data);
 
         Types::CreateClient_t client_data(data, T::getTableName(), error, success);
 
