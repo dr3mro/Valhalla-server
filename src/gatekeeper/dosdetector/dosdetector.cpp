@@ -39,7 +39,7 @@ DOSDetector::~DOSDetector()
     }
 }
 
-DOSDetector::Status DOSDetector::is_dos_attack(const Request &&request)
+DOSDetector::Status DOSDetector::is_dos_attack(const Request &request)
 {
     try
     {
@@ -72,8 +72,8 @@ DOSDetector::Status DOSDetector::is_dos_attack(const Request &&request)
         return Status::ERROR;
     }
 }
-inline void __attribute((always_inline))
-DOSDetector::clean_requests(const std::chrono::time_point<std::chrono::steady_clock> &window)  // Cleanup requests and blocked IPs
+inline void __attribute((always_inline)) DOSDetector::clean_requests(
+    const std::chrono::time_point<std::chrono::steady_clock> &window)  // Cleanup requests and blocked IPs
 {
     std::lock_guard<std::mutex> request_lock(request_mutex_);
     // Cleanup requests
@@ -214,8 +214,8 @@ inline bool __attribute((always_inline)) DOSDetector::isBlacklisted(std::string_
     }
 }
 
-inline bool __attribute((always_inline))
-DOSDetector::regexFind(std::string_view remote_ip, const std::unordered_set<std::string> &list, std::mutex &mtx)
+inline bool __attribute((always_inline)) DOSDetector::regexFind(std::string_view remote_ip, const std::unordered_set<std::string> &list,
+                                                                std::mutex &mtx)
 {
     try
     {
