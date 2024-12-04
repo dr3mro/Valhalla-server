@@ -71,7 +71,7 @@ void Server::print_banner()
     std::srand(std::time(0));
     // Select a random color
     int        num_colors   = sizeof(Banner::colors) / sizeof(Banner::colors[0]);
-    fmt::color random_color = Banner::colors[std::rand() % num_colors];
+    fmt::color random_color = Banner::colors[arc4random() % num_colors];
 
     // Clean screen
     // Print Config

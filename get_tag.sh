@@ -4,12 +4,12 @@
 current_tag=$(git describe --tags --exact-match 2>/dev/null)
 
 # If the exact tag is not found, get the closest tag
-if [ -z "$current_tag" ]; then
+if [[ -z "${current_tag}" ]]; then
 	current_tag=$(git describe --tags 2>/dev/null)
 fi
 
 # If no tag is found, list all tags pointing to the current commit
-if [ -z "$current_tag" ]; then
+if [[ -z "${current_tag}" ]]; then
 	current_tag=$(git tag --points-at HEAD)
 fi
 
