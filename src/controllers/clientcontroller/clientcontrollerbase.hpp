@@ -2,7 +2,6 @@
 
 #include <stdint.h>
 
-#include <functional>
 #include <optional>
 #include <string_view>
 

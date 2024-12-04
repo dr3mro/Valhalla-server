@@ -1,9 +1,7 @@
 #pragma once
-#include <functional>
 #include <jsoncons/json.hpp>
 #include <string_view>
 
-#include "entities/base/types.hpp"
 #include "gatekeeper/dosdetector/dosdetector.hpp"
 #include "gatekeeper/sessionmanager/sessionmanager.hpp"
 #include "gatekeeper/tokenmanager/tokenmanager.hpp"

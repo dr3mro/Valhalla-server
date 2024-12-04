@@ -34,7 +34,7 @@
         {
             "label": "build Debug",
             "type": "shell",
-            "command": "cmake --build build/Debug --config Debug",
+            "command": "cmake --build build/Debug",
             "group": "build",
             "dependsOn": "cmake configure Debug",
             "problemMatcher": ["$gcc"],
@@ -43,7 +43,7 @@
         {
             "label": "build Release",
             "type": "shell",
-            "command": "cmake --build build/Release --config Release",
+            "command": "cmake --build build/Release",
             "group": "build",
             "dependsOn": "cmake configure Release",
             "problemMatcher": ["$gcc"],

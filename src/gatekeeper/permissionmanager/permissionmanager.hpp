@@ -1,6 +1,4 @@
 #pragma once
-#include <functional>
-#include <optional>
 #include <string_view>
 
 #include "utils/global/callback.hpp"
