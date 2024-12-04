@@ -9,8 +9,8 @@
 class Communicate
 {
    public:
-    static std::optional<std::string> sendRequest(const std::string& server, int port, const std::string& path, const drogon::HttpMethod& method,
-                                                  const std::string& data);
+    static std::optional<std::string> sendRequest(const std::string& server, int port, const std::string& path,
+                                                  const drogon::HttpMethod& method, const std::string& data);
 
    private:
     static std::optional<std::string> handleResponse(CURL* curl);

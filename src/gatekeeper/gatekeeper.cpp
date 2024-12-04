@@ -1,12 +1,14 @@
 #include "gatekeeper.hpp"
 
 #include <cstdint>
+#include <utility>
 
 #include "utils/global/global.hpp"
 
 using namespace api::v2;
 
-void GateKeeper::login(CALLBACK_&& callback, std::string_view data, const std::string& ip_address, std::string_view group)
+void GateKeeper::login(
+    CALLBACK_&& callback, std::string_view data, const std::string& ip_address, std::string_view group)
 {
     try
     {
@@ -44,7 +46,7 @@ void GateKeeper::login(CALLBACK_&& callback, std::string_view data, const std::s
         token_object["username"]  = clientLoginData->username;
         token_object["client_id"] = clientLoginData->clientId;
         token_object["group"]     = clientLoginData->group;
-        token_object["ipAdress"]  = clientLoginData->ip_address;
+        token_object["ipAddress"] = clientLoginData->ip_address;
 
         callback(Http::Status::OK, token_object.as<std::string>());
     }
@@ -54,7 +56,8 @@ void GateKeeper::login(CALLBACK_&& callback, std::string_view data, const std::s
     }
 }
 
-void GateKeeper::logout(CALLBACK_&& callback, const std::optional<std::string>& token, const std::string& ip_address, const std::string& group)
+void GateKeeper::logout(CALLBACK_&& callback, const std::optional<std::string>& token, const std::string& ip_address,
+    const std::string& group)
 {
     try
     {
@@ -90,9 +93,11 @@ void GateKeeper::removeSession(std::optional<uint64_t> client_id, const std::str
     clientLoginData->group                                = group;
     sessionManager_->removeSession(clientLoginData);
 }
-// bool GateKeeper::hasPermission(CALLBACK_&& callback, std::string_view data) { return false; }
 
-DOSDetector::Status GateKeeper::isDosAttack(const DOSDetector::Request& request) { return dosDetector_->is_dos_attack(std::move(request)); }
+DOSDetector::Status GateKeeper::isDosAttack(const DOSDetector::Request& request)
+{
+    return dosDetector_->is_dos_attack(request);
+}
 
 std::optional<jsoncons::json> GateKeeper::parse_data(std::string_view data, std::string& message, bool& success)
 {
@@ -111,7 +116,8 @@ std::optional<jsoncons::json> GateKeeper::parse_data(std::string_view data, std:
     return j;
 }
 
-std::optional<Types::Credentials> GateKeeper::parse_credentials(std::string_view data, std::string& message, bool& success)
+std::optional<Types::Credentials> GateKeeper::parse_credentials(
+    std::string_view data, std::string& message, bool& success)
 {
     success = false;
 
@@ -133,3 +139,5 @@ std::optional<Types::Credentials> GateKeeper::parse_credentials(std::string_view
     success = true;
     return credentials;
 }
+
+bool GateKeeper::hasPermission(const Context& context) { return permissionManager_->hasPermission(context); }

@@ -14,7 +14,8 @@ class MemCache
     using Clock     = std::chrono::steady_clock;
     using TimePoint = std::chrono::time_point<Clock>;
 
-    MemCache(size_t maxSize, std::chrono::seconds defaultTTL) : maxSize_(maxSize), defaultTTL_(defaultTTL), stopCleaner_(false)
+    MemCache(size_t maxSize, std::chrono::seconds defaultTTL)
+        : maxSize_(maxSize), defaultTTL_(defaultTTL), stopCleaner_(false)
     {
         cleanerThread_ = std::thread(&MemCache::cleanExpiredEntries, this);
     }
@@ -31,7 +32,7 @@ class MemCache
 
     void insert(const std::string& key, const T& value, std::chrono::seconds ttl = std::chrono::seconds::zero())
     {
-        TimePoint                   expiration = Clock::now() + (ttl == std::chrono::seconds::zero() ? defaultTTL_ : ttl);
+        TimePoint expiration = Clock::now() + (ttl == std::chrono::seconds::zero() ? defaultTTL_ : ttl);
         std::lock_guard<std::mutex> lock(mutex_);
 
         if (cacheMap_.find(key) != cacheMap_.end())
@@ -100,7 +101,10 @@ class MemCache
     bool                                                                      stopCleaner_;
     std::thread                                                               cleanerThread_;
 
-    void moveToFront(typename std::list<CacheEntry>::iterator& it) { cacheList_.splice(cacheList_.begin(), cacheList_, it); }
+    void moveToFront(typename std::list<CacheEntry>::iterator& it)
+    {
+        cacheList_.splice(cacheList_.begin(), cacheList_, it);
+    }
 
     void evictOldest()
     {

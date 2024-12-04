@@ -19,9 +19,9 @@ class EnvLoader : public EnvVars
         return value ? std::stoi(value.value().data()) : defaultValue;
     }
 
-    std::string_view                getEnvironmentVariable(std::string_view key, std::string_view defaultValue);
-    bool                            getEnvironmentVariable(std::string_view key, bool defaultValue);
-    std::chrono::seconds            getEnvironmentVariable(std::string_view key, const std::chrono::seconds &defaultValue);
+    std::string_view     getEnvironmentVariable(std::string_view key, std::string_view defaultValue);
+    bool                 getEnvironmentVariable(std::string_view key, bool defaultValue);
+    std::chrono::seconds getEnvironmentVariable(std::string_view key, const std::chrono::seconds &defaultValue);
     std::unordered_set<std::string> getEnvironmentVariable(std::string_view key);
 
     virtual void printValues() const = 0;

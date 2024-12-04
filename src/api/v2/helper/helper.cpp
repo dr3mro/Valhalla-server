@@ -22,7 +22,8 @@ void Helper::successResponse(const std::string& message, std::function<void(cons
     reply(std::move(callback), drogon::k200OK, message);
 }
 
-void Helper::reply(std::function<void(const drogon::HttpResponsePtr&)>&& callback, const drogon::HttpStatusCode& code, const std::string& message)
+void Helper::reply(std::function<void(const drogon::HttpResponsePtr&)>&& callback, const drogon::HttpStatusCode& code,
+                   const std::string& message)
 {
     auto res = drogon::HttpResponse::newHttpResponse();
     res->setStatusCode(code);

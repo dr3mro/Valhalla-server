@@ -21,8 +21,9 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
         jsoncons::json request_json = jsoncons::json::parse(data);
         bool           success      = false;
 
-        Validator::Rule rule((Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA | Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA),
-        {"id"});
+        Validator::Rule rule((Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA |
+                              Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA),
+                             {"id"});
 
         api::v2::Http::Error error;
         try
@@ -71,7 +72,8 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
         requires(!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value)
     {
         (void)id;
-        callback(api::v2::Http::Status::BAD_REQUEST, fmt::format("Delete is NOT implemented for entity type {}", T::getTableName()));
+        callback(api::v2::Http::Status::BAD_REQUEST,
+                 fmt::format("Delete is NOT implemented for entity type {}", T::getTableName()));
     }
 
     template <typename U = T>
@@ -86,7 +88,8 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
         requires(!std::is_same<U, Patient>::value)
     {
         (void)data;
-        callback(api::v2::Http::Status::BAD_REQUEST, fmt::format("Search is NOT implemented for entity type {}", T::getTableName()));
+        callback(api::v2::Http::Status::BAD_REQUEST,
+                 fmt::format("Search is NOT implemented for entity type {}", T::getTableName()));
     }
 
     // Only enable GetVisits if T is of type Patient
@@ -116,7 +119,8 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
         requires(!std::is_same<U, Patient>::value)
     {
         (void)id;
-        callback(api::v2::Http::Status::BAD_REQUEST, fmt::format("GetVisit is NOT implemented for entity type {}", T::getTableName()));
+        callback(api::v2::Http::Status::BAD_REQUEST,
+                 fmt::format("GetVisit is NOT implemented for entity type {}", T::getTableName()));
     }
 
    public:

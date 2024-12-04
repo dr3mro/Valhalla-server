@@ -29,7 +29,8 @@ std::optional<std::string> PasswordCrypt::hashPassword(const std::string &passwo
 
     // Hash the password using the scrypt algorithm
     if (crypto_pwhash_scryptsalsa208sha256_str((char *)hashed_password, password.c_str(), password.length(),
-                                               crypto_pwhash_scryptsalsa208sha256_OPSLIMIT_MIN, crypto_pwhash_scryptsalsa208sha256_MEMLIMIT_MIN) != 0)
+                                               crypto_pwhash_scryptsalsa208sha256_OPSLIMIT_MIN,
+                                               crypto_pwhash_scryptsalsa208sha256_MEMLIMIT_MIN) != 0)
     {
         // out of memory
         Message::CriticalMessage("Failed to hash password.");

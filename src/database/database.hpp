@@ -69,7 +69,8 @@ class Database
                                 break;
 
                             default:                                 // Handle unknown or unhandled types
-                                object[field_name] = field.c_str();  // Default to string representation
+                                object[field_name] = field.c_str();  // Default to string
+                                                                     // representation
                                 break;
                         }
                     }

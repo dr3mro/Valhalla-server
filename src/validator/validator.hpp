@@ -41,10 +41,16 @@ class Validator
         Rule() = delete;
 
         // Overload | operator
-        friend Action operator|(Action a, Action b) { return static_cast<Action>(static_cast<int>(a) | static_cast<int>(b)); }
+        friend Action operator|(Action a, Action b)
+        {
+            return static_cast<Action>(static_cast<int>(a) | static_cast<int>(b));
+        }
 
         // Overload & operator
-        friend Action operator&(Action a, Action b) { return static_cast<Action>(static_cast<int>(a) & static_cast<int>(b)); }
+        friend Action operator&(Action a, Action b)
+        {
+            return static_cast<Action>(static_cast<int>(a) & static_cast<int>(b));
+        }
 
         // Overload |= operator
         friend Action &operator|=(Action &a, Action b)
@@ -75,16 +81,19 @@ class Validator
         bool hasKey(const Action &check, const std::string &element) const
         {
             return std::ranges::find_if(this->keys, [&](const auto &key)
-                                        { return (hasMatch(key.first, check)) && (key.second.contains(element)); }) != this->keys.end();
+                                        { return (hasMatch(key.first, check)) && (key.second.contains(element)); }) !=
+                   this->keys.end();
         }
     };
 
     Validator()          = default;
     virtual ~Validator() = default;
-    static bool validateDatabaseCreateSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Http::Error &error, const Rule &rule);
-    static bool validateDatabaseUpdateSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Http::Error &error, const Rule &rule);
-    static bool validateDatabaseReadSchema(const std::unordered_set<std::string> &keys, const std::string &table_name, api::v2::Http::Error &error,
-                                           const Rule &rule);
+    static bool validateDatabaseCreateSchema(const std::string &tablename, const jsoncons::json &data,
+                                             api::v2::Http::Error &error, const Rule &rule);
+    static bool validateDatabaseUpdateSchema(const std::string &tablename, const jsoncons::json &data,
+                                             api::v2::Http::Error &error, const Rule &rule);
+    static bool validateDatabaseReadSchema(const std::unordered_set<std::string> &keys, const std::string &table_name,
+                                           api::v2::Http::Error &error, const Rule &rule);
     static bool clientRegexValidation(const jsoncons::json &data, api::v2::Http::Error &error,
                                       std::unordered_set<std::pair<std::string, std::string>> &db_data);
     // Add this method declaration in the private section
@@ -92,11 +101,13 @@ class Validator
 
    private:
     static bool                                    nullCheck(const jsoncons::json &data, api::v2::Http::Error &error);
-    static std::unordered_set<api::v2::ColumnInfo> getDatabaseSchemaForTable(const std::string &tablename, api::v2::Http::Error &error, bool &found);
-    static bool                                    validateType(const jsoncons::json &value, const std::string &expectedType);
-    static bool checkColumns(const jsoncons::json &data, const std::unordered_set<api::v2::ColumnInfo> &table_schema, api::v2::Http::Error &error,
-                             const Rule &rule);
-    static bool ensureAllKeysExist(const jsoncons::json &data, const std::unordered_set<api::v2::ColumnInfo> &table_schema,
+    static std::unordered_set<api::v2::ColumnInfo> getDatabaseSchemaForTable(const std::string    &tablename,
+                                                                             api::v2::Http::Error &error, bool &found);
+    static bool validateType(const jsoncons::json &value, const std::string &expectedType);
+    static bool checkColumns(const jsoncons::json &data, const std::unordered_set<api::v2::ColumnInfo> &table_schema,
+                             api::v2::Http::Error &error, const Rule &rule);
+    static bool ensureAllKeysExist(const jsoncons::json                          &data,
+                                   const std::unordered_set<api::v2::ColumnInfo> &table_schema,
                                    api::v2::Http::Error &error, const Rule &rule);
     static const std::unordered_map<std::string, std::string> regex_client_validators;
 };

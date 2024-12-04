@@ -91,15 +91,19 @@ namespace api
                 }
                 bool validate(const jsoncons::json &search_j)
                 {
-                    std::unordered_set<std::string> keys = {"keyword", "filter", "order_by", "direction", "limit", "offset"};
-                    return std::ranges::all_of(keys, [&search_j](const std::string &key) { return search_j.find(key).has_value(); });
+                    std::unordered_set<std::string> keys = {"keyword",   "filter", "order_by",
+                                                            "direction", "limit",  "offset"};
+                    return std::ranges::all_of(
+                        keys, [&search_j](const std::string &key) { return search_j.find(key).has_value(); });
                 }
             };
 
             struct ClientData_t
             {
                public:
-                ClientData_t(std::string_view _data, const std::optional<uint64_t> _id, api::v2::Http::Error &error, bool &success) : id(_id)
+                ClientData_t(std::string_view _data, const std::optional<uint64_t> _id, api::v2::Http::Error &error,
+                             bool &success)
+                    : id(_id)
                 {
                     try
                     {
@@ -134,7 +138,8 @@ namespace api
 
                 bool hashPassword()
                 {
-                    auto passwd_itr = std::ranges::find_if(data_set, [&](const auto &item) { return item.first == "password"; });
+                    auto passwd_itr =
+                        std::ranges::find_if(data_set, [&](const auto &item) { return item.first == "password"; });
                     if (passwd_itr != data_set.end())
                     {
                         std::string                password_raw    = passwd_itr->second;
@@ -157,7 +162,8 @@ namespace api
             struct CreateClient_t : public ClientData_t
             {
                public:
-                CreateClient_t(std::string_view _data, const std::string &tablename, api::v2::Http::Error &error, bool &success)
+                CreateClient_t(std::string_view _data, const std::string &tablename, api::v2::Http::Error &error,
+                               bool &success)
                     : ClientData_t(_data, std::nullopt, error, success)
                 {
                     try
@@ -195,8 +201,8 @@ namespace api
             struct UpdateClient_t : public ClientData_t
             {
                public:
-                UpdateClient_t(std::string_view _data, const std::optional<uint64_t> _id, const std::string &tablename, api::v2::Http::Error &error,
-                               bool &success, const Validator::Rule &rule)
+                UpdateClient_t(std::string_view _data, const std::optional<uint64_t> _id, const std::string &tablename,
+                               api::v2::Http::Error &error, bool &success, const Validator::Rule &rule)
                     : ClientData_t(_data, _id, error, success)
                 {
                     try
@@ -273,8 +279,8 @@ namespace api
                         std::string encoded_invite_data = cppcodec::base64_rfc4648::encode(invite_json.to_string());
                         invite_json["subject"]          = fmt::format("Invite to {}", project_name);
                         invite_json["template"]         = "invite_staff_to_entity.txt";
-                        invite_json["link"] =
-                            fmt::format("{}:{}/{}/{}", frontendcfg_.host, frontendcfg_.port, frontendcfg_.invite_path, encoded_invite_data);
+                        invite_json["link"]          = fmt::format("{}:{}/{}/{}", frontendcfg_.host, frontendcfg_.port,
+                                                                   frontendcfg_.invite_path, encoded_invite_data);
                         invite_json["project_name"]  = project_name;
                         invite_json["generate_body"] = "";
                         return true;
@@ -293,8 +299,8 @@ namespace api
                 const Configurator::FrontEndConfig &frontendcfg_ = cfg_->get<Configurator::FrontEndConfig>();
             };
 
-            using EntityType =
-                std::variant<Create_t, Read_t, Update_t, Delete_t, Data_t, Search_t, CreateClient_t, UpdateClient_t, SuspendData, StaffData>;
+            using EntityType = std::variant<Create_t, Read_t, Update_t, Delete_t, Data_t, Search_t, CreateClient_t,
+                                            UpdateClient_t, SuspendData, StaffData>;
         }  // namespace Types
     }  // namespace v2
 }  // namespace api

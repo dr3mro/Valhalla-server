@@ -21,7 +21,9 @@ class Service : public Entity
         {
             auto idata = std::get<Types::StaffData>(getData());
             query      = fmt::format(
-                "UPDATE {} SET mjson = jsonb_set(mjson, '{{payload,providers,Doctors}}', ((mjson->'payload'->'providers'->'Doctors') || "
+                "UPDATE {} SET mjson = jsonb_set(mjson, "
+                     "'{{payload,providers,Doctors}}', "
+                     "((mjson->'payload'->'providers'->'Doctors') || "
                      "'\"{}\"')::jsonb) WHERE ID={} RETURNING id;",
                 tablename, idata.nominee_id, idata.nominee_group, idata.entity_id);
         }
@@ -43,7 +45,9 @@ class Service : public Entity
             query      = fmt::format(
                 "UPDATE {} SET mjson = jsonb_set("
                      "mjson, '{{payload,providers,Doctors}}', "
-                     "(SELECT jsonb_agg(elem) FROM jsonb_array_elements(mjson->'payload'->'providers'->'Doctors') AS elem "
+                     "(SELECT jsonb_agg(elem) FROM "
+                     "jsonb_array_elements(mjson->'payload'->'providers'->'Doctors')"
+                     " AS elem "
                      "WHERE elem <> '\"{}\"') "
                      ") WHERE ID={} RETURNING id;",
                 tablename, idata.nominee_id, idata.entity_id);

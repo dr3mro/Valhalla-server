@@ -157,9 +157,10 @@ class Banner
 #endif
 
 #ifndef PRINTLINE
-#    define PRINTLINE()                                                 \
-        fmt::print(fmt::emphasis::bold | fg(fmt::color::red), "{}\n\n", \
-                   "______________________________________________________________________________________");
+#    define PRINTLINE()                                                        \
+        fmt::print(fmt::emphasis::bold | fg(fmt::color::red), "{}\n\n",        \
+                   "_________________________________________________________" \
+                   "_____________________________");
 
 const std::string LOGO = R"(
                           ,--,     ,---,                 ,--,    ,--,

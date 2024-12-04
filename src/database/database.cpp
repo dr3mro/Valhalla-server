@@ -37,7 +37,8 @@ bool Database::checkExists(const std::string &table, const std::string &column, 
     try
     {
         pqxx::nontransaction txn(*connection);
-        pqxx::result         result = txn.exec(fmt::format("SELECT EXISTS ( SELECT 1 FROM {} WHERE {} = '{}');", table, column, value));
+        pqxx::result         result =
+            txn.exec(fmt::format("SELECT EXISTS ( SELECT 1 FROM {} WHERE {} = '{}');", table, column, value));
         return result[0][0].as<bool>();
     }
     catch (const std::exception &e)
@@ -53,7 +54,9 @@ std::optional<std::unordered_set<api::v2::ColumnInfo>> Database::getTableSchema(
     {
         pqxx::nontransaction ntxn(*connection);
         std::string          query = fmt::format(
-            "SELECT column_name, data_type, column_default, is_nullable FROM information_schema.columns WHERE table_name = '{}' AND column_name != "
+            "SELECT column_name, data_type, column_default, is_nullable FROM "
+                     "information_schema.columns WHERE table_name = '{}' AND "
+                     "column_name != "
                      "'id';",
             tableName);
 
@@ -84,8 +87,10 @@ std::optional<std::unordered_set<std::string>> Database::getAllTables()
 {
     try
     {
-        pqxx::work                      txn(*connection);
-        pqxx::result                    result = txn.exec("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';");
+        pqxx::work   txn(*connection);
+        pqxx::result result = txn.exec(
+            "SELECT table_name FROM information_schema.tables WHERE "
+            "table_schema = 'public';");
         std::unordered_set<std::string> tables;
         for (const auto &row : result)
         {

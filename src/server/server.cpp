@@ -23,7 +23,8 @@ int Server::run()
             .disableSigtermHandling()
             .setLogLevel(static_cast<trantor::Logger::LogLevel>(config_.debug_level))
             .registerPreRoutingAdvice(
-                [](const drogon::HttpRequestPtr& req, drogon::AdviceCallback&& callback, drogon::AdviceChainCallback&& chainedcallback)
+                [](const drogon::HttpRequestPtr& req, drogon::AdviceCallback&& callback,
+                   drogon::AdviceChainCallback&& chainedcallback)
                 {
                     if (req->method() == drogon::Options)
                     {
@@ -53,7 +54,8 @@ int Server::run()
                     resp->addHeader("Access-Control-Max-Age", "86400");
                     resp->addHeader("X-Powered-By", "Valhalla-Team");
                 })
-            .setCustom404Page(drogon::HttpResponse::newHttpJsonResponse(api::v2::JsonHelper::jsonify("Endpoint not found.")))
+            .setCustom404Page(
+                drogon::HttpResponse::newHttpJsonResponse(api::v2::JsonHelper::jsonify("Endpoint not found.")))
             .run();
     }
     catch (const std::exception& e)
@@ -71,7 +73,7 @@ void Server::print_banner()
     std::srand(std::time(0));
     // Select a random color
     int        num_colors   = sizeof(Banner::colors) / sizeof(Banner::colors[0]);
-    fmt::color random_color = Banner::colors[std::rand() % num_colors];
+    fmt::color random_color = Banner::colors[arc4random() % num_colors];
 
     // Clean screen
     // Print Config

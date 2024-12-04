@@ -1,7 +1,11 @@
 # .clang-format
 BasedOnStyle: Google
+ColumnLimit: 120
+BinPackArguments: true
+PenaltyBreakBeforeFirstCallParameter: 2000
+AlignAfterOpenBracket: DontAlign
 IndentWidth: 4
-ColumnLimit: 150
+
 UseTab: Never
 AllowShortIfStatementsOnASingleLine: false
 BreakBeforeBraces: Allman
@@ -14,3 +18,4 @@ NamespaceIndentation: All  # Options: None, Inner, All
 IndentPPDirectives: AfterHash
 AlignConsecutiveDeclarations: true
 AlignConsecutiveBitFields: true
+

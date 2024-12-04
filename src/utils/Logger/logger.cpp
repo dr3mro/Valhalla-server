@@ -20,14 +20,17 @@ Logger::Logger()
 
         // Console sink setup with custom pattern
         auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
-        console_sink->set_pattern(fmt::format("{}[%Y-%m-%d %H:%M:%S]{} {}[Project Valhalla]{} %^[%l]%$ %v", color_map.at(Color::Magenta),
-                                              color_map.at(Color::Reset), color_map.at(Color::Red), color_map.at(Color::Reset)));
+        console_sink->set_pattern(fmt::format("{}[%Y-%m-%d %H:%M:%S]{} {}[Project Valhalla]{} %^[%l]%$ %v",
+                                              color_map.at(Color::Magenta), color_map.at(Color::Reset),
+                                              color_map.at(Color::Red), color_map.at(Color::Reset)));
 
         // File sink setup
-        auto file_sink = std::make_shared<spdlog::sinks::rotating_file_sink_mt>(fmt::format("{}", file_path.data()), MAX_LOG_SIZE, MAX_LOG_FILES);
+        auto file_sink = std::make_shared<spdlog::sinks::rotating_file_sink_mt>(fmt::format("{}", file_path.data()),
+                                                                                MAX_LOG_SIZE, MAX_LOG_FILES);
 
-        file_sink->set_pattern(fmt::format("{}[%Y-%m-%d %H:%M:%S]{} {}[Project Valhalla]{} %^[%l]%$ %v", color_map.at(Color::Magenta),
-                                           color_map.at(Color::Reset), color_map.at(Color::Red), color_map.at(Color::Reset)));
+        file_sink->set_pattern(fmt::format("{}[%Y-%m-%d %H:%M:%S]{} {}[Project Valhalla]{} %^[%l]%$ %v",
+                                           color_map.at(Color::Magenta), color_map.at(Color::Reset),
+                                           color_map.at(Color::Red), color_map.at(Color::Reset)));
         std::vector<std::shared_ptr<spdlog::sinks::sink>> sinks;
         if (server_config.log_to_console)
         {
@@ -40,7 +43,8 @@ Logger::Logger()
         }
 
         // Create the async logger with the thread pool and sinks
-        logger_ = std::make_shared<spdlog::async_logger>("Project Valhalla", sinks.begin(), sinks.end(), spdlog::thread_pool(),
+        logger_ = std::make_shared<spdlog::async_logger>("Project Valhalla", sinks.begin(), sinks.end(),
+                                                         spdlog::thread_pool(),
                                                          spdlog::async_overflow_policy::overrun_oldest);
 
         // Register logger

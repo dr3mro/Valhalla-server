@@ -13,7 +13,11 @@ template <typename T>
 class StaffController : public StaffControllerBase, public Controller
 {
    public:
-    StaffController() : cfg_(Store::getObject<Configurator>()), email_sender_daemon_config_(cfg_->get<Configurator::EmailSenderConfig>()) {}
+    StaffController()
+        : cfg_(Store::getObject<Configurator>()),
+          email_sender_daemon_config_(cfg_->get<Configurator::EmailSenderConfig>())
+    {
+    }
     virtual ~StaffController() override = default;
 
     // CRUDS
@@ -73,9 +77,10 @@ void StaffController<T>::InviteStaffToEntity(CALLBACK_ &&callback, std::string_v
         T                          staff(staffData);
         if (staffData.parse_status && staffData.toInviteJson(staff_j))
         {
-            response = Communicate::sendRequest(email_sender_daemon_config_.host.data(), email_sender_daemon_config_.port,
-                                                email_sender_daemon_config_.message_queue_path.data(), drogon::HttpMethod::Post,
-                                                staff_j.to_string().c_str());
+            response =
+                Communicate::sendRequest(email_sender_daemon_config_.host.data(), email_sender_daemon_config_.port,
+                                         email_sender_daemon_config_.message_queue_path.data(),
+                                         drogon::HttpMethod::Post, staff_j.to_string().c_str());
 
             if (response.has_value())
             {

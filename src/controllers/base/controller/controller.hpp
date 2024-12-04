@@ -77,7 +77,8 @@ class Controller
                 if (results_count > std::get<Types::Search_t>(entity.getData()).limit)
                 {
                     response_json["more"]   = true;
-                    response_json["offset"] = std::get<Types::Search_t>(entity.getData()).offset + std::get<Types::Search_t>(entity.getData()).limit;
+                    response_json["offset"] = std::get<Types::Search_t>(entity.getData()).offset +
+                                              std::get<Types::Search_t>(entity.getData()).limit;
                     query_results_json.erase(query_results_json.array_range().end() - 1);
                 }
                 else
@@ -166,12 +167,16 @@ class Controller
     {
         try
         {
-            jsoncons::json json_nextval = databaseController->executeQuery(fmt::format("SELECT NEXTVAL('{}_id_seq');", T::getTableName()));
+            jsoncons::json json_nextval =
+                databaseController->executeQuery(fmt::format("SELECT NEXTVAL('{}_id_seq');", T::getTableName()));
 
             if (json_nextval.empty())
             {
-                error.message = fmt::format("nextID from seq function of {} failed, could not create a new ID.", T::getTableName());
-                error.code    = api::v2::Http::Status::NOT_ACCEPTABLE;
+                error.message = fmt::format(
+                    "nextID from seq function of {} failed, could not create a "
+                    "new ID.",
+                    T::getTableName());
+                error.code = api::v2::Http::Status::NOT_ACCEPTABLE;
                 Message::ErrorMessage(error.message);
                 return std::nullopt;
             }
@@ -191,9 +196,12 @@ class Controller
 
     std::shared_ptr<DatabaseController> databaseController;
 
-    std::optional<jsoncons::json> (DatabaseController::*dbexec)(const std::string &)         = &DatabaseController::executeQuery;
-    std::optional<jsoncons::json> (DatabaseController::*dbrexec)(const std::string &)        = &DatabaseController::executeReadQuery;
-    std::optional<jsoncons::json::array> (DatabaseController::*dbsexec)(const std::string &) = &DatabaseController::executeSearchQuery;
+    std::optional<jsoncons::json> (DatabaseController::*dbexec)(const std::string &) =
+        &DatabaseController::executeQuery;
+    std::optional<jsoncons::json> (DatabaseController::*dbrexec)(const std::string &) =
+        &DatabaseController::executeReadQuery;
+    std::optional<jsoncons::json::array> (DatabaseController::*dbsexec)(const std::string &) =
+        &DatabaseController::executeSearchQuery;
 
     ///////////////////////////
     template <typename S, typename T>
@@ -210,7 +218,8 @@ class Controller
     }
 
     template <typename S, typename T>
-    void cruds(T &entity, S &sqlstatement, std::optional<jsoncons::json> (DatabaseController::*f)(const std::string &), CALLBACK_ &&callback)
+    void cruds(T &entity, S &sqlstatement, std::optional<jsoncons::json> (DatabaseController::*f)(const std::string &),
+               CALLBACK_ &&callback)
     {
         std::optional<jsoncons::json> results_j;
         std::optional<std::string>    query;
@@ -236,7 +245,8 @@ class Controller
                     else
                     {
                         callback(api::v2::Http::Status::BAD_REQUEST,
-                                 "Query returned no results, please check ID as it might not exist or be invalid.");
+                                 "Query returned no results, please check ID "
+                                 "as it might not exist or be invalid.");
                         return;
                     }
                 }

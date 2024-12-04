@@ -16,34 +16,42 @@ namespace api
         class Appointments : public drogon::HttpController<Appointments>
         {
            public:
-            void Create(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
-                        const std::string &entityType)
+            void Create(const drogon::HttpRequestPtr                  &req,
+                std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &entityType)
             {
-                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Create, std::move(callback), req->body());
+                auto ctx = createContext(req, Context::Type::WRITE, entityType);
+                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Create,
+                    std::move(ctx), std::move(callback), req->body());
             }
 
-            void Read(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
-                      const std::string &entityType)
+            void Read(const drogon::HttpRequestPtr                    &req,
+                std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &entityType)
             {
-                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Read, std::move(callback), req->body());
+                auto ctx = createContext(req, Context::Type::READ, entityType);
+                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Read,
+                    std::move(ctx), std::move(callback), req->body());
             }
 
-            void Update(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
-                        const std::string &entityType)
+            void Update(const drogon::HttpRequestPtr                  &req,
+                std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &entityType)
             {
-                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Update, std::move(callback), req->body(),
-                                        stoll(req->getParameter("id")));
+                auto ctx = createContext(req, Context::Type::WRITE, entityType);
+                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Update,
+                    std::move(ctx), std::move(callback), req->body(), stoll(req->getParameter("id")));
             }
-            void Delete(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
-                        const std::string &entityType)
+            void Delete(const drogon::HttpRequestPtr                  &req,
+                std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &entityType)
             {
-                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Delete, std::move(callback),
-                                        stoll(req->getParameter("id")));
+                auto ctx = createContext(req, Context::Type::DELETE, entityType);
+                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Delete,
+                    std::move(ctx), std::move(callback), stoll(req->getParameter("id")));
             }
-            void Search(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
-                        const std::string &entityType)
+            void Search(const drogon::HttpRequestPtr                  &req,
+                std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &entityType)
             {
-                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Search, std::move(callback), req->body());
+                auto ctx = createContext(req, Context::Type::READ, entityType);
+                executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Search,
+                    std::move(ctx), std::move(callback), req->body());
             }
 
             METHOD_LIST_BEGIN
@@ -54,10 +62,10 @@ namespace api
             METHOD_LIST_END
 
            private:
-            using AppointmentVariant =
-                std::variant<std::shared_ptr<AppointmentController<ClinicAppointment>>, std::shared_ptr<AppointmentController<PharmacyAppointment>>,
-                             std::shared_ptr<AppointmentController<LaboratoryAppointment>>,
-                             std::shared_ptr<AppointmentController<RadiologyCenterAppointment>>>;
+            using AppointmentVariant = std::variant<std::shared_ptr<AppointmentController<ClinicAppointment>>,
+                std::shared_ptr<AppointmentController<PharmacyAppointment>>,
+                std::shared_ptr<AppointmentController<LaboratoryAppointment>>,
+                std::shared_ptr<AppointmentController<RadiologyCenterAppointment>>>;
 
             std::unordered_map<std::string_view, AppointmentVariant> appointmentRegistry = {
                 {"clinics", Store::getObject<AppointmentController<ClinicAppointment>>()},
