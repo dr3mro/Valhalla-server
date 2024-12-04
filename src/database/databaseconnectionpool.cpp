@@ -7,8 +7,8 @@
 
 std::shared_ptr<Database> DatabaseConnectionPool::createDatabaseConnection()
 {
-    auto command =
-        fmt::format("host= {}  dbname= {}  user= {} password= {} connect_timeout=2", config_.host, config_.name, config_.user, config_.pass);
+    auto command = fmt::format("host= {}  dbname= {}  user= {} password= {} connect_timeout=2", config_.host,
+                               config_.name, config_.user, config_.pass);
 
     auto conn = std::make_shared<pqxx::connection>(command.c_str());
 
@@ -40,7 +40,8 @@ DatabaseConnectionPool::DatabaseConnectionPool()
                 if (status == std::future_status::ready)
                 {
                     databaseConnections.push(future.get());
-                    Message::InitMessage(fmt::format("Connection {}/{} created successfully.", i + 1, config_.max_conn));
+                    Message::InitMessage(
+                        fmt::format("Connection {}/{} created successfully.", i + 1, config_.max_conn));
                     connectionEstablished = true;
                 }
                 else
@@ -49,7 +50,10 @@ DatabaseConnectionPool::DatabaseConnectionPool()
                     retryCount++;
                     if (retryCount < MAX_RETRIES)
                     {
-                        Message::WarningMessage(fmt::format("Connection attempt {} timed out, retrying... ({}/{})", i + 1, retryCount, MAX_RETRIES));
+                        Message::WarningMessage(
+                            fmt::format("Connection attempt {} timed out, "
+                                        "retrying... ({}/{})",
+                                        i + 1, retryCount, MAX_RETRIES));
                         // Exponential backoff
                         std::this_thread::sleep_for(std::chrono::seconds(1 << retryCount));
                     }
@@ -58,15 +62,18 @@ DatabaseConnectionPool::DatabaseConnectionPool()
 
             if (!connectionEstablished)
             {
-                Message::ErrorMessage(fmt::format("Failed to establish connection {} after {} attempts.", i + 1, MAX_RETRIES));
+                Message::ErrorMessage(
+                    fmt::format("Failed to establish connection {} after {} attempts.", i + 1, MAX_RETRIES));
                 throw std::runtime_error("Database connection pool initialization failure.\n");
             }
         }
     }
     catch (const std::exception &e)
     {
-        Message::CriticalMessage(fmt::format(
-            "Failed to initialize database connection pool, Exception caught during database connection pool initialization:\n{}", e.what()));
+        Message::CriticalMessage(
+            fmt::format("Failed to initialize database connection pool, Exception caught "
+                        "during database connection pool initialization:\n{}",
+                        e.what()));
         exit(EXIT_FAILURE);
     }
 }

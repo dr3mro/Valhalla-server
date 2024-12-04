@@ -10,7 +10,8 @@ namespace api
         class Hello : public drogon::HttpController<Hello>
         {
            public:
-            void hello(const drogon::HttpRequestPtr & /*req*/, std::function<void(const drogon::HttpResponsePtr &)> &&callback)
+            void hello(const drogon::HttpRequestPtr & /*req*/,
+                       std::function<void(const drogon::HttpResponsePtr &)> &&callback)
             {
                 drogon::HttpResponsePtr response = drogon::HttpResponse::newHttpResponse();
                 response->setBody(JsonHelper::jsonify("Welcome to the API!").toStyledString());

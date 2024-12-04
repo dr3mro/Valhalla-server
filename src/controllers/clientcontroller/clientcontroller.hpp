@@ -121,7 +121,8 @@ void ClientController<T>::Login(CALLBACK_&& callback, std::string_view data, con
 }
 
 template <Client_t T>
-void ClientController<T>::Logout(CALLBACK_&& callback, const std::optional<std::string>& token, const std::string& ip_address)
+void ClientController<T>::Logout(CALLBACK_&& callback, const std::optional<std::string>& token,
+                                 const std::string& ip_address)
 {
     gateKeeper->logout(std::move(callback), token, ip_address, T::getTableName());
 }
@@ -133,7 +134,8 @@ void ClientController<T>::Suspend(CALLBACK_&& callback, const std::optional<uint
     {
         if (!client_id.has_value())
         {
-            callback(api::v2::Http::Status::NOT_ACCEPTABLE, api::v2::JsonHelper::jsonify("Invalid id provided").as<std::string>());
+            callback(api::v2::Http::Status::NOT_ACCEPTABLE,
+                     api::v2::JsonHelper::jsonify("Invalid id provided").as<std::string>());
             return;
         }
 
@@ -155,7 +157,8 @@ void ClientController<T>::Activate(CALLBACK_&& callback, const std::optional<uin
     {
         if (!client_id.has_value())
         {
-            callback(api::v2::Http::Status::NOT_ACCEPTABLE, api::v2::JsonHelper::jsonify("Invalid id provided").as<std::string>());
+            callback(api::v2::Http::Status::NOT_ACCEPTABLE,
+                     api::v2::JsonHelper::jsonify("Invalid id provided").as<std::string>());
             return;
         }
         Types::SuspendData suspendData(client_id.value());
@@ -182,7 +185,8 @@ void ClientController<T>::GetServices(CALLBACK_&& callback, std::optional<uint64
     {
         if (!client_id.has_value())
         {
-            callback(api::v2::Http::Status::BAD_REQUEST, api::v2::JsonHelper::jsonify("client_id extraction failed").as<std::string>());
+            callback(api::v2::Http::Status::BAD_REQUEST,
+                     api::v2::JsonHelper::jsonify("client_id extraction failed").as<std::string>());
             return;
         }
 

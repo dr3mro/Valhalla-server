@@ -15,9 +15,10 @@ class DatabaseController
     std::optional<jsoncons::json>        executeReadQuery(const std::string &query);
     std::optional<jsoncons::json::array> executeSearchQuery(const std::string &query);
     std::optional<std::string>           doReadQuery(const std::string &query);
-    std::optional<bool>                  checkItemExists(const std::string &table, const std::string &column, const std::string &value);
-    std::optional<jsoncons::json>        getPasswordHashForUserName(const std::string &username, const std::string &tablename);
-    std::optional<uint64_t> findIfUserID(const std::string &username, const std::string &tablename);  // check if user found and return 0 if not
+    std::optional<bool> checkItemExists(const std::string &table, const std::string &column, const std::string &value);
+    std::optional<jsoncons::json> getPasswordHashForUserName(const std::string &username, const std::string &tablename);
+    std::optional<uint64_t>       findIfUserID(const std::string &username,
+                                               const std::string &tablename);  // check if user found and return 0 if not
     std::optional<std::unordered_set<api::v2::ColumnInfo>> getTableSchema(const std::string &tableName);
     std::optional<std::unordered_set<std::string>>         getAllTables();
 

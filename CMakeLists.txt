@@ -32,23 +32,27 @@ add_compile_options(-fdiagnostics-color=always -fdiagnostics-show-option)
 
 # option(CPPCHECK "Run CppCheck static code analysis" ON)
 
-# if(CPPCHECK)
-# message("Running CppCheck static code analysis...")
-# find_program(cppcheck_exe NAMES cppcheck REQUIRED)
-# set(cppcheck_opts --enable=all --inline-suppr --suppressions-list=${PROJECT_SOURCE_DIR}/cppcheck.supp)
-# set(CMAKE_C_CPPCHECK ${cppcheck_exe} --std=c11 ${cppcheck_opts})
-# set(CMAKE_CXX_CPPCHECK ${cppcheck_exe} --std=c++20 ${cppcheck_opts})
-# endif()
+# if(CPPCHECK) message("Running CppCheck static code analysis...")
+# find_program(cppcheck_exe NAMES cppcheck REQUIRED) set(cppcheck_opts
+# --enable=all --inline-suppr
+# --suppressions-list=${PROJECT_SOURCE_DIR}/cppcheck.supp) set(CMAKE_C_CPPCHECK
+# ${cppcheck_exe} --std=c11 ${cppcheck_opts}) set(CMAKE_CXX_CPPCHECK
+# ${cppcheck_exe} --std=c++20 ${cppcheck_opts}) endif()
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/src")
 
 # Suppress developer warnings and deprecated warnings
-set(CMAKE_SUPPRESS_DEVELOPER_WARNINGS 1 CACHE INTERNAL "No dev warnings")
+set(CMAKE_SUPPRESS_DEVELOPER_WARNINGS
+    1
+    CACHE INTERNAL "No dev warnings")
 set(CMAKE_WARN_DEPRECATED OFF)
 set(CMAKE_COLOR_DIAGNOSTICS ON)
 
 # Get the current Git tag using the script
-execute_process(COMMAND ${CMAKE_SOURCE_DIR}/get_tag.sh OUTPUT_VARIABLE GIT_TAG_MACRO OUTPUT_STRIP_TRAILING_WHITESPACE)
+execute_process(
+  COMMAND ${CMAKE_SOURCE_DIR}/get_tag.sh
+  OUTPUT_VARIABLE GIT_TAG_MACRO
+  OUTPUT_STRIP_TRAILING_WHITESPACE)
 
 # Ensure the output variable is trimmed
 string(STRIP "${GIT_TAG_MACRO}" GIT_TAG_MACRO)
@@ -65,23 +69,22 @@ add_executable(${Target} ${SRC})
 
 # Define all your packages in a list
 set(CONAN_PACKAGES
-  cppcodec
-  picojson
-  fmt
-  libpqxx
-  jwt-cpp
-  jsoncons
-  Catch2
-  xxHash
-  libsodium
-  CURL
-  ZLIB
-  c-ares
-  spdlog
-  Trantor
-  Drogon
-  ctrack
-)
+    cppcodec
+    picojson
+    fmt
+    libpqxx
+    jwt-cpp
+    jsoncons
+    Catch2
+    xxHash
+    libsodium
+    CURL
+    ZLIB
+    c-ares
+    spdlog
+    Trantor
+    Drogon
+    ctrack)
 
 # Find all packages at once
 foreach(PACKAGE ${CONAN_PACKAGES})
@@ -91,25 +94,29 @@ foreach(PACKAGE ${CONAN_PACKAGES})
 endforeach()
 
 # Add includes
-target_include_directories(${Target} PRIVATE
-  ${CMAKE_CURRENT_SOURCE_DIR}/src
-  ${PACKAGE_INCLUDES}
-)
+target_include_directories(${Target} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src
+                                             ${PACKAGE_INCLUDES})
 
 include(tools/conan/variables.cmake)
 
 # Link libraries
 target_link_libraries(${Target} PRIVATE ${PACKAGE_LIBS})
 
-# Enable AddressSanitizer only for Debug build type
-if(CMAKE_BUILD_TYPE MATCHES Debug)
-  target_compile_options(${Target} PRIVATE -g)
-
+# Enable AddressSanitizer only for Debug build type on Linux for now
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
   if(LINUX)
     message("Enabling AddressSanitizer for Debug builds on Linux")
-    target_compile_options(${Target} PRIVATE -fsanitize=address -fsanitize=undefined -fsanitize=leak -fno-sanitize=thread -fno-omit-frame-pointer)
-    target_link_options(${Target} PRIVATE -fsanitize=address -fsanitize=undefined -fsanitize=leak -fno-sanitize=thread -fno-omit-frame-pointer)
+    target_compile_options(
+      ${Target} PRIVATE -fsanitize=address -fsanitize=undefined -fsanitize=leak
+                        -fno-sanitize=thread -fno-omit-frame-pointer)
+    target_link_options(
+      ${Target}
+      PRIVATE
+      -fsanitize=address
+      -fsanitize=undefined
+      -fsanitize=leak
+      -fno-sanitize=thread
+      -fno-omit-frame-pointer)
   endif()
 endif()
-
 add_subdirectory(tests)

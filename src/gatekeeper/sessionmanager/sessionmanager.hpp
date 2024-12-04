@@ -15,8 +15,8 @@ namespace api
             SessionManager()          = default;
             virtual ~SessionManager() = default;
 
-            bool login(const std::optional<Types::Credentials>& credentials, std::optional<Types::ClientLoginData>& clientLoginData,
-                       std::string& message);
+            bool login(const std::optional<Types::Credentials>& credentials,
+                       std::optional<Types::ClientLoginData>& clientLoginData, std::string& message);
             void logout(CALLBACK_&& callback, std::optional<Types::ClientLoginData>& clientLoginData);
             bool clientHasValidSession(std::optional<Types::ClientLoginData>& clientLoginData, std::string& message);
             bool storeSession(std::optional<Types::ClientLoginData>& clientLoginData, std::string& message);

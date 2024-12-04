@@ -1,4 +1,10 @@
-#include "permissionmanager.hpp"
+#include "gatekeeper/permissionmanager/permissionmanager.hpp"
+
+#include "gatekeeper/permissionmanager/permissions.hpp"
+
+using PowerLevel = Permissions::PowerLevel;
 
 using namespace api::v2;
-// bool PermissionManager::hasPermission(CALLBACK_&& callback, std::string_view data) { return false; } //TODO:
+bool PermissionManager::hasPermission([[maybe_unused]] const Context& context) { return true; }
+
+// TODO: Implement this

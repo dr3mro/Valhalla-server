@@ -39,7 +39,7 @@ DOSDetector::~DOSDetector()
     }
 }
 
-DOSDetector::Status DOSDetector::is_dos_attack(const Request &&request)
+DOSDetector::Status DOSDetector::is_dos_attack(const Request &request)
 {
     try
     {
@@ -102,7 +102,8 @@ inline void __attribute((always_inline)) DOSDetector::clean_requests(
         }
     }
 }
-inline void __attribute((always_inline)) DOSDetector::clean_ratelimited_ips(const std::chrono::time_point<std::chrono::steady_clock> &now)
+inline void __attribute((always_inline)) DOSDetector::clean_ratelimited_ips(
+    const std::chrono::time_point<std::chrono::steady_clock> &now)
 {
     std::lock_guard<std::mutex> block_lock(ratelimit_mutex_);
     for (auto it = ratelimited_ips_.begin(); it != ratelimited_ips_.end();
@@ -119,7 +120,8 @@ inline void __attribute((always_inline)) DOSDetector::clean_ratelimited_ips(cons
         }
     }
 }
-inline void __attribute((always_inline)) DOSDetector::clean_banned_ips(const std::chrono::time_point<std::chrono::steady_clock> &now)
+inline void __attribute((always_inline)) DOSDetector::clean_banned_ips(
+    const std::chrono::time_point<std::chrono::steady_clock> &now)
 {
     std::lock_guard<std::mutex> ban_lock(ban_mutex_);
     for (auto it = banned_ips_.begin(); it != banned_ips_.end();
@@ -147,8 +149,10 @@ void DOSDetector::cleanUpTask()
             auto window = now - config_.period;
 
             clean_requests(window);      // clean up requests older than time window
-            clean_ratelimited_ips(now);  // clean up ratelimited ips [time stored in ratelimited_ips_ equals time to unblock]
-            clean_banned_ips(now);       // clean up banned ips [time stored in banned_ips_ equals time to unblock]
+            clean_ratelimited_ips(now);  // clean up ratelimited ips [time stored in
+                                         // ratelimited_ips_ equals time to unblock]
+            clean_banned_ips(now);       // clean up banned ips [time stored in
+                                         // banned_ips_ equals time to unblock]
 
             std::this_thread::sleep_until(next);
         }
@@ -160,7 +164,8 @@ void DOSDetector::cleanUpTask()
     }
 }
 
-inline std::optional<std::string> __attribute((always_inline)) DOSDetector::generateRequestFingerprint(const DOSDetector::Request &req)
+inline std::optional<std::string> __attribute((always_inline)) DOSDetector::generateRequestFingerprint(
+    const DOSDetector::Request &req)
 {
     try
     {
@@ -214,8 +219,9 @@ inline bool __attribute((always_inline)) DOSDetector::isBlacklisted(std::string_
     }
 }
 
-inline bool __attribute((always_inline)) DOSDetector::regexFind(std::string_view remote_ip, const std::unordered_set<std::string> &list,
-                                                                std::mutex &mtx)
+inline bool __attribute((always_inline)) DOSDetector::regexFind(std::string_view                       remote_ip,
+                                                                const std::unordered_set<std::string> &list,
+                                                                std::mutex                            &mtx)
 {
     try
     {
@@ -331,10 +337,12 @@ DOSDetector::Status DOSDetector::processRequest(const Request &request)
             // fmt::print("Checking request from {}\n", remote_ip.value());
             std::lock_guard<std::mutex> request_lock(request_mutex_);
 
-            // fmt::print("get the requests for the ip: {}\n", remote_ip.value());
+            // fmt::print("get the requests for the ip: {}\n",
+            // remote_ip.value());
             auto &ip_requests = requests_[remote_ip.value()];
 
-            // fmt::print("get the fingerprint for the ip: {} :: {}\n", remote_ip.value(), request_fingerprint.value());
+            // fmt::print("get the fingerprint for the ip: {} :: {}\n",
+            // remote_ip.value(), request_fingerprint.value());
             auto &fp_requests = ip_requests[request_fingerprint.value()];
 
             const auto window = now - config_.period;
@@ -343,12 +351,14 @@ DOSDetector::Status DOSDetector::processRequest(const Request &request)
             while (!fp_requests.empty() && fp_requests.front() < window)
             {
                 fp_requests.pop_front();
-                // fmt::print("Removing old request from {}\n", remote_ip.value());
+                // fmt::print("Removing old request from {}\n",
+                // remote_ip.value());
             }
 
             fp_requests.push_back(now);
 
-            // fmt::print("size: fp :{} r:{}\n", fp_requests.size(), ip_requests.size());
+            // fmt::print("size: fp :{} r:{}\n", fp_requests.size(),
+            // ip_requests.size());
 
             if (ip_requests.size() > config_.max_fingerprints)
             {
@@ -363,7 +373,8 @@ DOSDetector::Status DOSDetector::processRequest(const Request &request)
                 banned_ips_[remote_ip.value()] = now + config_.ban_duration;
                 return Status::BANNED;
             }
-            // fmt::print("request from {}: {}\n", remote_ip.value(), request_fingerprint.value());
+            // fmt::print("request from {}: {}\n", remote_ip.value(),
+            // request_fingerprint.value());
         }
     }
     catch (const std::exception &e)

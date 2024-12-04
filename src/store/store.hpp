@@ -33,7 +33,8 @@ class Store
     }
 
     template <typename T, typename... Args>
-    static std::shared_ptr<T> getObject(Args&&... args)
+    [[nodiscard("Warning: You should never discard the returned object")]] static std::shared_ptr<T> getObject(
+        Args&&... args)
     {
         {
             std::lock_guard<std::mutex> lock(inventoryMutex);

@@ -5,10 +5,10 @@
     "command": "conan",
     "args": [
       "install",
-      ".", 
-      "--build=missing", 
-      "--output-folder=build/Debug", 
-      "-s", 
+      ".",
+      "--build=missing",
+      "--output-folder=build/Debug",
+      "-s",
       "build_type=Debug"
     ],
     "use_new_terminal": false,
@@ -16,17 +16,17 @@
     "reveal": "always",
     "hide": "on_success",
     "shell": "system"
-  },  
+  },
   {
     "label": "Conan install dependencies Release",
     "cwd": "$ZED_WORKTREE_ROOT",
     "command": "conan",
     "args": [
       "install",
-      ".", 
-      "--build=missing", 
-      "--output-folder=build/Release", 
-      "-s", 
+      ".",
+      "--build=missing",
+      "--output-folder=build/Release",
+      "-s",
       "build_type=Release"
     ],
     "use_new_terminal": false,
@@ -34,7 +34,7 @@
     "reveal": "always",
     "hide": "on_success",
     "shell": "system"
-  },  
+  },
   {
     "label": "Configure Debug",
     "cwd": "$ZED_WORKTREE_ROOT",

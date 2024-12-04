@@ -1,4 +1,6 @@
 #pragma once
+#include <cstdint>
+
 #include "entities/base/client.hpp"
 #include "utils/message/message.hpp"
 
@@ -21,9 +23,12 @@ class Provider : public Client
 
             if (!provider_id.has_value())
             {
-                Message::ErrorMessage(fmt::format("Failed to get services for provider with id {}.", provider_id.value()));
+                Message::ErrorMessage(
+                    fmt::format("Failed to get services for provider with id {}.", provider_id.value()));
                 return std::nullopt;
             }
+
+            uint64_t _id = provider_id.value();
 
             query = fmt::format(
                 R"(
@@ -44,11 +49,11 @@ class Provider : public Client
                             SELECT id, name, staff, admin_id, owner_id, 'Laboratory' AS type
                             FROM laboratories
                         ) AS combined
-                        JOIN vars ON jsonb_path_exists(combined.staff, '$.** ? (@ == "1000")'::jsonpath)
+                        JOIN vars ON jsonb_path_exists(combined.staff, '$.** ? (@ == "{}")'::jsonpath)
                                 OR combined.admin_id = vars.id
                                 OR combined.owner_id = vars.id;
                         )",
-                provider_id.value());
+                _id, _id);
         }
         catch (const std::exception &e)
         {

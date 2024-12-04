@@ -101,7 +101,8 @@ class Entity : public Base
                 }
             }
 
-            query = fmt::format("UPDATE {} set {} WHERE id={} returning id;", tablename, update_column_values, id.value());
+            query =
+                fmt::format("UPDATE {} set {} WHERE id={} returning id;", tablename, update_column_values, id.value());
         }
         catch (const std::exception &e)
         {
@@ -143,8 +144,11 @@ class Entity : public Base
         try
         {
             Types::Search_t searchdata = std::get<Types::Search_t>(getData());
-            query = fmt::format("SELECT * FROM {}_safe WHERE {} ILIKE '%{}%' ORDER BY {} {} LIMIT {} OFFSET {};", tablename, searchdata.filter,
-                                searchdata.keyword, searchdata.order_by, searchdata.direction, searchdata.limit + 1, searchdata.offset);
+            query                      = fmt::format(
+                "SELECT * FROM {}_safe WHERE {} ILIKE '%{}%' ORDER BY {} {} "
+                                     "LIMIT {} OFFSET {};",
+                tablename, searchdata.filter, searchdata.keyword, searchdata.order_by, searchdata.direction,
+                searchdata.limit + 1, searchdata.offset);
         }
         catch (const std::exception &e)
         {
@@ -156,9 +160,13 @@ class Entity : public Base
         return query;
     }
 
-    const Types::EntityType &getData() const { return data; }
+    [[nodiscard("Warning: You should never discard the returned object")]] const Types::EntityType &getData() const
+    {
+        return data;
+    }
 
-    std::string getGroupName() const  // ie. tablename
+    [[nodiscard("Warning: You should never discard the returned object")]] std::string getGroupName()
+        const  // ie. tablename
     {
         return tablename;
     }
