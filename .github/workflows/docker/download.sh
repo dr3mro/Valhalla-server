@@ -34,7 +34,7 @@ alias errcho='>&2 echo'
 function gh_curl() {
 	curl -H "Authorization: token ${TOKEN}" \
 		-H "Accept: application/vnd.github.v3.raw" \
-		$@
+		"$@"
 }
 
 if [[ ${VERSION} == "latest" ]]; then
