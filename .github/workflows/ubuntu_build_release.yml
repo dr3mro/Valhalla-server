@@ -3,7 +3,7 @@ name: Create Release and Deploy Docker
 on:
   push:
     tags:
-      - '*'  # Trigger on any tag creation.
+      - "*" # Trigger on any tag creation.
 
 jobs:
   build-and-release:
@@ -32,10 +32,10 @@ jobs:
 
       - name: Install Dependencies with Conan
         run: |
-            conan install ${{ github.workspace }} -s arch=x86_64 -s build_type=Release -s compiler=gcc \
-              -s compiler.cppstd=gnu20 -s compiler.version=14.2 -s os=Linux \
-              -s compiler.libcxx=libstdc++11 \
-              -c tools.cmake.cmaketoolchain:generator=Ninja --build=missing
+          conan install ${{ github.workspace }} -s arch=x86_64 -s build_type=Release -s compiler=gcc \
+            -s compiler.cppstd=gnu20 -s compiler.version=14.2 -s os=Linux \
+            -s compiler.libcxx=libstdc++11 \
+            -c tools.cmake.cmaketoolchain:generator=Ninja --build=missing
 
       - name: Verify CMake Version
         run: cmake --version
@@ -69,7 +69,7 @@ jobs:
 
   build-and-push-docker:
     name: Build and Push Docker
-    needs: build-and-release  # Run only after the `build-and-release` job is successful.
+    needs: build-and-release # Run only after the `build-and-release` job is successful.
     runs-on: ubuntu-24.04
 
     steps:
@@ -108,4 +108,3 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/valhalla-server-run:${{ github.ref_name }}
           docker push ${{ secrets.DOCKER_USERNAME }}/valhalla-server-run:latest
-

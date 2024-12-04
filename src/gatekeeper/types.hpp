@@ -33,5 +33,5 @@ namespace api
                 std::string password;  ///< The user's password.
             };
         }  // namespace Types
-    }  // namespace v2
+    }      // namespace v2
 }  // namespace api

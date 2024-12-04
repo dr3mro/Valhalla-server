@@ -31,9 +31,9 @@ inline void __attribute((always_inline)) EntityController<T>::Create(CALLBACK_ &
     {
         bool                 success = false;
         api::v2::Http::Error error;
-        Validator::Rule      rule((Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA | Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA)
-                 , {"id"});
-        auto next_id = this->template getNextID<T>(error);
+        Validator::Rule rule((Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA | Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA),
+                             {"id"});
+        auto            next_id = this->template getNextID<T>(error);
 
         if (!next_id.has_value())
         {
@@ -79,8 +79,7 @@ inline void __attribute((always_inline)) EntityController<T>::Read(CALLBACK_ &&c
         std::unordered_set<std::string> schema    = request_j.at("schema").as<std::unordered_set<std::string>>();
         api::v2::Http::Error            error;
 
-        Validator::Rule rule (Validator::Rule::Action::ASSERT_NOT_PRESENT
-                                   ,{"id", "username", "password", "created_at", "updated_at"});
+        Validator::Rule rule(Validator::Rule::Action::ASSERT_NOT_PRESENT, {"id", "username", "password", "created_at", "updated_at"});
 
         if (!Validator::validateDatabaseReadSchema(schema, std::format("{}_safe", T::getTableName()), error, rule))
         {
@@ -119,7 +118,7 @@ inline void __attribute((always_inline)) EntityController<T>::Update(CALLBACK_ &
             return;
         }
 
-        Validator::Rule      rule(Validator::Rule::Action::NONE, {});
+        Validator::Rule rule(Validator::Rule::Action::NONE, {});
         success = Validator::validateDatabaseUpdateSchema(T::getTableName(), request_json, error, rule);
 
         if (!success)

@@ -114,6 +114,6 @@ namespace api
                 return "Unknown Status Code";
             }
         }  // namespace Http
-    }  // namespace v2
+    }      // namespace v2
 
 }  // namespace api

@@ -22,7 +22,7 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
         bool           success      = false;
 
         Validator::Rule rule((Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA | Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA),
-        {"id"});
+                             {"id"});
 
         api::v2::Http::Error error;
         try

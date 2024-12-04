@@ -76,4 +76,4 @@ namespace Defaults
         constexpr uint16_t         PORT_       = 5000;
         constexpr std::string_view QUEUE_PATH_ = "/enqueue";
     }  // namespace EmailSenderDaemon
-};  // namespace Defaults
+};     // namespace Defaults

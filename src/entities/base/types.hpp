@@ -296,5 +296,5 @@ namespace api
             using EntityType =
                 std::variant<Create_t, Read_t, Update_t, Delete_t, Data_t, Search_t, CreateClient_t, UpdateClient_t, SuspendData, StaffData>;
         }  // namespace Types
-    }  // namespace v2
+    }      // namespace v2
 }  // namespace api

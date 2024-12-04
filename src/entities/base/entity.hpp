@@ -156,9 +156,9 @@ class Entity : public Base
         return query;
     }
 
-    const Types::EntityType &getData() const { return data; }
+    [[nodiscard("Warning: You should never discard the returned object")]] const Types::EntityType &getData() const { return data; }
 
-    std::string getGroupName() const  // ie. tablename
+    [[nodiscard("Warning: You should never discard the returned object")]] std::string getGroupName() const  // ie. tablename
     {
         return tablename;
     }

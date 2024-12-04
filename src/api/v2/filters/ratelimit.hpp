@@ -59,5 +59,5 @@ namespace api
                 }
             };
         }  // namespace Filters
-    }  // namespace v2
+    }      // namespace v2
 }  // namespace api

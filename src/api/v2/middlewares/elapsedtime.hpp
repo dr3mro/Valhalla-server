@@ -40,5 +40,5 @@ namespace api
                 }
             };
         }  // namespace MiddleWares
-    }  // namespace v2
+    }      // namespace v2
 }  // namespace api

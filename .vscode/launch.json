@@ -1,16 +1,16 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "(gdb) Launch",
-            "type": "lldb",
-            "request": "launch",
-            "program": "${command:cmake.launchTargetPath}",
-            "args": [],
-            "cwd": "${workspaceFolder}/build",
-            "env": {
-                "DB_HOST": "127.0.0.1"
-            }
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "(gdb) Launch",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${command:cmake.launchTargetPath}",
+      "args": [],
+      "cwd": "${workspaceFolder}/build",
+      "env": {
+        "DB_HOST": "127.0.0.1"
+      }
+    }
+  ]
 }
