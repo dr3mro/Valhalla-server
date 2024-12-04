@@ -37,7 +37,9 @@
             "command": "cmake --build build/Debug",
             "group": "build",
             "dependsOn": "cmake configure Debug",
-            "problemMatcher": ["$gcc"],
+            "problemMatcher": [
+                "$gcc"
+            ],
             "detail": "Build Debug configuration"
         },
         {
@@ -46,7 +48,9 @@
             "command": "cmake --build build/Release",
             "group": "build",
             "dependsOn": "cmake configure Release",
-            "problemMatcher": ["$gcc"],
+            "problemMatcher": [
+                "$gcc"
+            ],
             "detail": "Build Release configuration"
         }
     ]
