@@ -1,5 +1,4 @@
 #pragma once
-#include <functional>
 
 #include "gatekeeper/keeprbase/keeprbase.hpp"
 #include "utils/global/callback.hpp"

@@ -2,7 +2,6 @@
 #pragma once
 
 #include <cstdint>
-#include <functional>
 #include <string_view>
 
 #include "utils/global/callback.hpp"
