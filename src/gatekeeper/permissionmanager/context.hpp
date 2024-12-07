@@ -175,6 +175,7 @@ struct Context
     }
     Context()          = delete;
     virtual ~Context() = default;
+    bool hasPower(const Type& check) const { return (taskType & check) != Type::NONE; }
 
     Type        taskType;
     Source      taskSource;

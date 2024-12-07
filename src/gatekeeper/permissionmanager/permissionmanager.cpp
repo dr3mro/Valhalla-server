@@ -8,18 +8,17 @@ using PowerLevel = Permissions::PowerLevel;
 using namespace api::v2;
 bool PermissionManager::hasPermission(const Context& context)
 {
-    Context::Type taskType = context.taskType;
-    if ((taskType & Context::Type::SUPER) != Context::Type::NONE)
+    if (context.hasPower(Context::Type::SUPER))
     {
         return true;
     }
 
-    if ((taskType & Context::Type::ADMIN) != Context::Type::NONE)
+    if (context.hasPower(Context::Type::ADMIN))
     {
         return true;
     }
 
-    if ((taskType & Context::Type::OWNER) != Context::Type::NONE)
+    if (context.hasPower(Context::Type::OWNER))
     {
         return true;
     }
