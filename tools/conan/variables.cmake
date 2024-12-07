@@ -1,7 +1,5 @@
 message(STATUS "Injecting custom CMake variables for dependencies")
 
-set(CMAKE_CXX_COMPILER clang++)
-set(CMAKE_C_COMPILER clang)
 set(ZLIB_BUILD_EXAMPLES OFF)
 set(SKIP_BUILD_TEST ON)
 set(BUILD_SHARED_LIBS OFF)

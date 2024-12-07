@@ -17,8 +17,8 @@ class User : public Client
         std::optional<std::string> query;
         try
         {
-            std::optional<uint64_t> user_id = std::get<Types::Data_t>(getData()).get_id();
-            query                           = fmt::format("SELECT id from users WHERE id = {}", user_id.value());
+            client_id = std::get<Types::Data_t>(getData()).get_id();
+            query     = fmt::format("SELECT id from users WHERE id = {}", client_id.value());
         }
         catch (const std::exception &e)
         {

@@ -1,6 +1,5 @@
 #pragma once
 #include "entities/base/entity.hpp"
-#include "jsoncons/basic_json.hpp"
 
 class Appointment : public Entity
 {

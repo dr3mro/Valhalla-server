@@ -1,6 +1,8 @@
 #pragma once
 
+#include <cstdint>
 #include <jsoncons/json.hpp>
+#include <optional>
 
 #include "entities/base/entity.hpp"
 #include "utils/message/message.hpp"

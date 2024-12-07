@@ -18,28 +18,28 @@ namespace api
         class Staff : public drogon::HttpController<Staff>
         {
            public:
-            void Invite(const drogon::HttpRequestPtr                          &req,
-                        std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
+            void Invite(const drogon::HttpRequestPtr                  &req,
+                std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
             {
-                auto ctx = createContext(req, Context::Type::WRITE, serviceType);
-                executeControllerMethod(staffRegistry, serviceType, &StaffControllerBase::InviteStaffToEntity,
-                                        std::move(ctx), std::move(callback), req->body());
+                // auto ctx = createContext(req, Context::Type::WRITE, serviceType);
+                executeControllerMethod(staffRegistry, serviceType, &StaffControllerBase::InviteStaffToEntity, req,
+                    std::move(callback), req->body());
             }
 
             void Add(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback,
-                     const std::string &serviceType)
+                const std::string &serviceType)
             {
-                auto ctx = createContext(req, Context::Type::WRITE, serviceType);
-                executeControllerMethod(staffRegistry, serviceType, &StaffControllerBase::AddStaffToEntity,
-                                        std::move(ctx), std::move(callback), req->body());
+                // auto ctx = createContext(req, Context::Type::WRITE, serviceType);
+                executeControllerMethod(staffRegistry, serviceType, &StaffControllerBase::AddStaffToEntity, req,
+                    std::move(callback), req->body());
             }
 
-            void Remove(const drogon::HttpRequestPtr                          &req,
-                        std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
+            void Remove(const drogon::HttpRequestPtr                  &req,
+                std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
             {
-                auto ctx = createContext(req, Context::Type::DELETE, serviceType);
-                executeControllerMethod(staffRegistry, serviceType, &StaffControllerBase::RemoveStaffFromEntity,
-                                        std::move(ctx), std::move(callback), req->body());
+                // auto ctx = createContext(req, Context::Type::DELETE, serviceType);
+                executeControllerMethod(staffRegistry, serviceType, &StaffControllerBase::RemoveStaffFromEntity, req,
+                    std::move(callback), req->body());
             }
 
             METHOD_LIST_BEGIN
@@ -51,8 +51,7 @@ namespace api
            private:
             using StaffVariant =
                 std::variant<std::shared_ptr<StaffController<Clinics>>, std::shared_ptr<StaffController<Pharmacies>>,
-                             std::shared_ptr<StaffController<Laboratories>>,
-                             std::shared_ptr<StaffController<RadiologyCenters>>>;
+                    std::shared_ptr<StaffController<Laboratories>>, std::shared_ptr<StaffController<RadiologyCenters>>>;
 
             std::unordered_map<std::string_view, StaffVariant> staffRegistry = {
                 {"clinics", Store::getObject<StaffController<Clinics>>()},

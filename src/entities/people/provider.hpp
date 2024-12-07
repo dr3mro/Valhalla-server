@@ -19,16 +19,15 @@ class Provider : public Client
         std::optional<std::string> query;
         try
         {
-            auto provider_id = std::get<Types::Data_t>(getData()).get_id();
+            client_id = std::get<Types::Data_t>(getData()).get_id();
 
-            if (!provider_id.has_value())
+            if (!client_id.has_value())
             {
-                Message::ErrorMessage(
-                    fmt::format("Failed to get services for provider with id {}.", provider_id.value()));
+                Message::ErrorMessage(fmt::format("Failed to get services for provider with id {}.", client_id.value()));
                 return std::nullopt;
             }
 
-            uint64_t _id = provider_id.value();
+            uint64_t _id = client_id.value();
 
             query = fmt::format(
                 R"(

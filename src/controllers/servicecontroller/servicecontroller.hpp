@@ -4,7 +4,7 @@
 #include "controllers/entitycontroller/entitycontroller.hpp"
 #include "controllers/servicecontroller/servicecontrollerbase.hpp"
 
-template <typename T>
+template <Service_t T>
 class ServiceController : public EntityController<T>, public ServiceControllerBase
 {
    public:
@@ -13,38 +13,38 @@ class ServiceController : public EntityController<T>, public ServiceControllerBa
     virtual ~ServiceController() override = default;
 
     // CRUDS
-    void Create(CALLBACK_ &&callback, std::string_view data) override;
-    void Read(CALLBACK_ &&callback, std::string_view data) override;
-    void Update(CALLBACK_ &&callback, std::string_view data, std::optional<uint64_t> id) override;
-    void Delete(CALLBACK_ &&callback, std::optional<uint64_t> id) override;
-    void Search(CALLBACK_ &&callback, std::string_view data) override;
+    void Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
+    void Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
+    void Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> id) override;
+    void Delete(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id) override;
+    void Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
 };
 
-template <typename T>
-void ServiceController<T>::Create(CALLBACK_ &&callback, std::string_view data)
+template <Service_t T>
+void ServiceController<T>::Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
 {
-    EntityController<T>::Create(std::move(callback), data);
+    EntityController<T>::Create(std::move(callback), std::move(requester), data);
 }
-template <typename T>
-void ServiceController<T>::Read(CALLBACK_ &&callback, std::string_view data)
+template <Service_t T>
+void ServiceController<T>::Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
 {
-    EntityController<T>::Read(std::move(callback), data);
-}
-
-template <typename T>
-void ServiceController<T>::Update(CALLBACK_ &&callback, std::string_view data, const std::optional<uint64_t> id)
-{
-    EntityController<T>::Update(std::move(callback), data, id);
+    EntityController<T>::Read(std::move(callback), std::move(requester), data);
 }
 
-template <typename T>
-void ServiceController<T>::Delete(CALLBACK_ &&callback, const std::optional<uint64_t> id)
+template <Service_t T>
+void ServiceController<T>::Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, const std::optional<uint64_t> id)
 {
-    EntityController<T>::Delete(std::move(callback), id);
+    EntityController<T>::Update(std::move(callback), std::move(requester), data, id);
 }
 
-template <typename T>
-void ServiceController<T>::Search(CALLBACK_ &&callback, std::string_view data)
+template <Service_t T>
+void ServiceController<T>::Delete(CALLBACK_&& callback, const Requester&& requester, const std::optional<uint64_t> id)
 {
-    EntityController<T>::Search(std::move(callback), data);
+    EntityController<T>::Delete(std::move(callback), std::move(requester), id);
+}
+
+template <Service_t T>
+void ServiceController<T>::Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+{
+    EntityController<T>::Search(std::move(callback), std::move(requester), data);
 }

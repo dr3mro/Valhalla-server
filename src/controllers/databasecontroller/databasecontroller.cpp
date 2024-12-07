@@ -2,6 +2,8 @@
 
 #include <fmt/core.h>
 
+#include <jsoncons/basic_json.hpp>
+
 #include "store/store.hpp"
 #include "utils/message/message.hpp"
 
@@ -31,8 +33,7 @@ std::optional<jsoncons::json> DatabaseController::executeReadQuery(const std::st
 
 std::optional<jsoncons::json ::array> DatabaseController::executeSearchQuery(const std::string &query)
 {
-    return executer<jsoncons::json ::array>(&Database::executeQuery<jsoncons::json ::array, pqxx::nontransaction>,
-                                            query);
+    return executer<jsoncons::json ::array>(&Database::executeQuery<jsoncons::json ::array, pqxx::nontransaction>, query);
 }
 
 std::optional<std::string> DatabaseController::doReadQuery(const std::string &query)
@@ -40,24 +41,20 @@ std::optional<std::string> DatabaseController::doReadQuery(const std::string &qu
     return executer<std::string>(&Database::doSimpleQuery<std::string>, query);
 }
 
-std::optional<bool> DatabaseController::checkItemExists(const std::string &table, const std::string &column,
-                                                        const std::string &value)
+std::optional<bool> DatabaseController::checkItemExists(const std::string &table, const std::string &column, const std::string &value)
 {
     return executer<bool>(&Database::checkExists, table, column, value).value();
 }
 
-std::optional<jsoncons::json> DatabaseController::getPasswordHashForUserName(const std::string &username,
-                                                                             const std::string &tablename)
+std::optional<jsoncons::json> DatabaseController::getPasswordHashForUserName(const std::string &username, const std::string &tablename)
 {
-    std::string query =
-        fmt::format("SELECT id,password,active FROM {} WHERE username = '{}' LIMIT 1;", tablename, username);
+    std::string query = fmt::format("SELECT id,password,active FROM {} WHERE username = '{}' LIMIT 1;", tablename, username);
     return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::nontransaction>, query);
 }
 
 std::optional<uint64_t> DatabaseController::findIfUserID(const std::string &username, const std::string &tablename)
 {
-    return executer<uint64_t>(&Database::doSimpleQuery<uint64_t>,
-                              fmt::format("SELECT id FROM {} WHERE id = '{}' LIMIT 1;", tablename, username));
+    return executer<uint64_t>(&Database::doSimpleQuery<uint64_t>, fmt::format("SELECT id FROM {} WHERE id = '{}' LIMIT 1;", tablename, username));
 }
 
 std::optional<std::unordered_set<api::v2::ColumnInfo>> DatabaseController::getTableSchema(const std::string &tableName)
@@ -65,7 +62,10 @@ std::optional<std::unordered_set<api::v2::ColumnInfo>> DatabaseController::getTa
     return executer<std::unordered_set<api::v2::ColumnInfo>>(&Database::getTableSchema, tableName);
 }
 
-std::optional<std::unordered_set<std::string>> DatabaseController::getAllTables()
+std::optional<std::unordered_set<std::string>> DatabaseController::getAllTables() { return executer<std::unordered_set<std::string>>(&Database::getAllTables); }
+
+std::optional<jsoncons::json> DatabaseController::getServicePermissions(const std::string &service_name, uint64_t service_id)
 {
-    return executer<std::unordered_set<std::string>>(&Database::getAllTables);
+    std::string query = fmt::format("SELECT owner_id,admin_id,staff FROM {} WHERE id = '{}' LIMIT 1;", service_name, service_id);
+    return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::nontransaction>, query);
 }

@@ -6,7 +6,6 @@
 #include "controllers/clientcontroller/clientcontroller.hpp"
 #include "entities/people/provider.hpp"
 #include "entities/people/user.hpp"
-#include "gatekeeper/permissionmanager/context.hpp"
 
 namespace api
 {
@@ -15,80 +14,64 @@ namespace api
         class Clients : public drogon::HttpController<Clients>
         {
            public:
-            void create(const drogon::HttpRequestPtr                  &req,
-                std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
+            void create(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
             {
-                auto ctx = createContext(req, Context::Type::NONE, clientType);
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Create, std::move(ctx),
-                    std::move(callback), req->body());
+                // auto ctx = createContext(req, Context::Type::NONE, clientType);
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Create, req, std::move(callback), req->body());
             }
 
-            void login(const drogon::HttpRequestPtr                   &req,
-                std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
+            void login(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
             {
-                auto ctx = createContext(req, Context::Type::NONE, clientType);
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Login, std::move(ctx),
-                    std::move(callback), req->body(), req->peerAddr().toIp());
+                // auto ctx = createContext(req, Context::Type::NONE, clientType);
+                executeControllerMethod(
+                    clientRegistry, clientType, &ClientControllerBase::Login, req, std::move(callback), req->body(), req->peerAddr().toIp());
             }
-            void logout(const drogon::HttpRequestPtr                  &req,
-                std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
+            void logout(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
             {
-                auto ctx = createContext(req, Context::Type::NONE, clientType);
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Logout, std::move(ctx),
-                    std::move(callback), req->getHeader("Authorization").substr(7), req->peerAddr().toIp());
+                // auto ctx = createContext(req, Context::Type::NONE, clientType);
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Logout, req, std::move(callback),
+                    req->getHeader("Authorization").substr(7), req->peerAddr().toIp());
             }
 
-            void suspend(const drogon::HttpRequestPtr                 &req,
-                std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
+            void suspend(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
             {
-                auto ctx = createContext(req, Context::Type::WRITE, clientType);
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Suspend, std::move(ctx),
-                    std::move(callback), stoll(req->getParameter("id")));
+                // auto ctx = createContext(req, Context::Type::WRITE, clientType);
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Suspend, req, std::move(callback), stoll(req->getParameter("id")));
             }
 
-            void activate(const drogon::HttpRequestPtr                &req,
-                std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
+            void activate(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
             {
-                auto ctx = createContext(req, Context::Type::WRITE, clientType);
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Activate, std::move(ctx),
-                    std::move(callback), stoll(req->getParameter("id")));
+                // auto ctx = createContext(req, Context::Type::WRITE, clientType);
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Activate, req, std::move(callback), stoll(req->getParameter("id")));
             }
 
-            void read(const drogon::HttpRequestPtr                    &req,
-                std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
+            void read(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
             {
-                auto ctx = createContext(req, Context::Type::READ, clientType);
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Read, std::move(ctx),
-                    std::move(callback), req->body());
+                // auto ctx = createContext(req, Context::Type::READ, clientType);
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Read, req, std::move(callback), req->body());
             }
 
-            void update(const drogon::HttpRequestPtr                  &req,
-                std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
+            void update(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
             {
-                auto ctx = createContext(req, Context::Type::WRITE, clientType);
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Update, std::move(ctx),
-                    std::move(callback), req->body(), stoll(req->getParameter("id")));
+                // auto ctx = createContext(req, Context::Type::WRITE, clientType);
+                executeControllerMethod(
+                    clientRegistry, clientType, &ClientControllerBase::Update, req, std::move(callback), req->body(), stoll(req->getParameter("id")));
             }
-            void delete_(const drogon::HttpRequestPtr                 &req,
-                std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
+            void delete_(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
             {
-                auto ctx = createContext(req, Context::Type::DELETE, clientType);
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Delete, std::move(ctx),
-                    std::move(callback), stoll(req->getParameter("id")));
+                // auto ctx = createContext(req, Context::Type::DELETE, clientType);
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Delete, req, std::move(callback), stoll(req->getParameter("id")));
             }
-            void search(const drogon::HttpRequestPtr                  &req,
-                std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
+            void search(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
             {
-                auto ctx = createContext(req, Context::Type::READ, clientType);
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Search, std::move(ctx),
-                    std::move(callback), req->body());
+                // auto ctx = createContext(req, Context::Type::READ, clientType);
+                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Search, req, std::move(callback), req->body());
             }
-            void getservices(const drogon::HttpRequestPtr             &req,
-                std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
+            void getservices(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
             {
-                auto ctx = createContext(req, Context::Type::READ, clientType);
-                executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::GetServices, std::move(ctx),
-                    std::move(callback), stoll(req->getParameter("id")));
+                // auto ctx = createContext(req, Context::Type::READ, clientType);
+                executeControllerMethod(
+                    clientRegistry, clientType, &ClientControllerBase::GetServices, req, std::move(callback), stoll(req->getParameter("id")));
             }
 
             METHOD_LIST_BEGIN
@@ -105,12 +88,10 @@ namespace api
             METHOD_LIST_END
 
            private:
-            using ClientVariant =
-                std::variant<std::shared_ptr<ClientController<User>>, std::shared_ptr<ClientController<Provider>>>;
+            using ClientVariant = std::variant<std::shared_ptr<ClientController<User>>, std::shared_ptr<ClientController<Provider>>>;
 
             std::unordered_map<std::string_view, ClientVariant> clientRegistry = {
-                {"users", Store::getObject<ClientController<User>>()},
-                {"providers", Store::getObject<ClientController<Provider>>()}};
+                {"users", Store::getObject<ClientController<User>>()}, {"providers", Store::getObject<ClientController<Provider>>()}};
         };
 
     }  // namespace v2

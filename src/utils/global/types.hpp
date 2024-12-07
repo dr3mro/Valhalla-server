@@ -16,7 +16,6 @@ namespace api
                 return Name == other.Name && DataType == other.DataType && isNullable == other.isNullable;
             }
         };
-
     }  // namespace v2
 }  // namespace api
 

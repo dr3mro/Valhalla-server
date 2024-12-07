@@ -1,6 +1,6 @@
 # .clang-format
 BasedOnStyle: Google
-ColumnLimit: 120
+ColumnLimit: 160
 BinPackArguments: true
 PenaltyBreakBeforeFirstCallParameter: 2000
 AlignAfterOpenBracket: DontAlign

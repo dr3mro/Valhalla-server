@@ -1,8 +1,11 @@
 #pragma once
 
+#include <sys/types.h>
+
 #include <cstdint>
 #include <jsoncons/json.hpp>
 #include <memory>
+#include <optional>
 
 #include "entities/base/entity.hpp"
 #include "entities/base/types.hpp"
@@ -16,9 +19,8 @@ namespace api
     namespace v2
     {
         template <typename T>
-        concept ClientData_t =
-            std::is_same<T, Types::CreateClient_t>::value || std::is_same<T, Types::UpdateClient_t>::value ||
-            std::is_same<T, Types::SuspendData>::value || std::is_same<T, Types::Data_t>::value;
+        concept ClientData_t = std::is_same<T, Types::CreateClient_t>::value || std::is_same<T, Types::UpdateClient_t>::value ||
+                               std::is_same<T, Types::SuspendData>::value || std::is_same<T, Types::Data_t>::value;
 
         class Client : public Entity
         {
@@ -52,8 +54,7 @@ namespace api
                 }
                 catch (const std::exception &e)
                 {
-                    Message::ErrorMessage(
-                        fmt::format("Failed to create Sql create statement for table {}.", tablename));
+                    Message::ErrorMessage(fmt::format("Failed to create Sql create statement for table {}.", tablename));
                     Message::CriticalMessage(e.what());
                     return std::nullopt;
                 }
@@ -66,9 +67,9 @@ namespace api
 
                 try
                 {
-                    auto                    clientdata = std::get<Types::UpdateClient_t>(getData()).get_data_set();
-                    std::optional<uint64_t> id         = std::get<Types::UpdateClient_t>(getData()).get_id();
-                    if (!id.has_value())
+                    auto clientdata = std::get<Types::UpdateClient_t>(getData()).get_data_set();
+                    client_id       = std::get<Types::UpdateClient_t>(getData()).get_id();
+                    if (!client_id.has_value())
                     {
                         Message::ErrorMessage(fmt::format("Failed to update client data. No id provided."));
                         return std::nullopt;
@@ -84,13 +85,11 @@ namespace api
                         }
                     }
 
-                    query = fmt::format("UPDATE {} set {} WHERE id={} returning id;", tablename, update_column_values,
-                                        id.value());
+                    query = fmt::format("UPDATE {} set {} WHERE id={} returning id;", tablename, update_column_values, client_id.value());
                 }
                 catch (const std::exception &e)
                 {
-                    Message::ErrorMessage(
-                        fmt::format("Failed to create Sql update statement for table {}.", tablename));
+                    Message::ErrorMessage(fmt::format("Failed to create Sql update statement for table {}.", tablename));
                     Message::CriticalMessage(e.what());
                     return std::nullopt;
                 }
@@ -103,15 +102,15 @@ namespace api
                 try
                 {
                     Types::SuspendData suspenddata = std::get<Types::SuspendData>(getData());
+                    client_id                      = suspenddata.client_id;
                     query                          = fmt::format(
                         "UPDATE {} SET active={} where id={} returning "
                                                  "id,active;",
-                        tablename, state ? "true" : "false", suspenddata.client_id);
+                        tablename, state ? "true" : "false", client_id.value());
                 }
                 catch (const std::exception &e)
                 {
-                    Message::ErrorMessage(
-                        fmt::format("Failed to create Sql suspend statement for table {}.", tablename));
+                    Message::ErrorMessage(fmt::format("Failed to create Sql suspend statement for table {}.", tablename));
                     Message::CriticalMessage(e.what());
                     return std::nullopt;
                 }
@@ -123,11 +122,13 @@ namespace api
 
             std::optional<std::string> getSqlActivateStatement() { return getSqlToggleSuspendStatement(true); }
 
+            std::optional<uint64_t> getClientId() const { return client_id; }
+
             template <typename T>
             bool exists()
             {
                 auto client_data = std::get<T>(getData()).get_data_set();
-                auto it = std::ranges::find_if(client_data, [&](const auto &item) { return item.first == USERNAME; });
+                auto it          = std::ranges::find_if(client_data, [&](const auto &item) { return item.first == USERNAME; });
 
                 if (it != client_data.end())
                 {
@@ -139,6 +140,9 @@ namespace api
                 return false;
             }
             virtual ~Client() override = default;
+
+           protected:
+            std::optional<uint64_t> client_id;
         };
     }  // namespace v2
 }  // namespace api
