@@ -144,6 +144,31 @@ struct Context
         SUPER  = 1 << 6   // 01000000
     };
 
+    friend Type operator|(Type a, Type b) { return static_cast<Type>(static_cast<int>(a) | static_cast<int>(b)); }
+
+    // Overload & operator
+    friend Type operator&(Type a, Type b) { return static_cast<Type>(static_cast<int>(a) & static_cast<int>(b)); }
+
+    // Overload |= operator
+    friend Type& operator|=(Type& a, Type b)
+    {
+        a = a | b;
+        return a;
+    }
+
+    // Overload &= operator
+    friend Type& operator&=(Type& a, Type b)
+    {
+        a = a & b;
+        return a;
+    }
+
+    // Invert operator
+    friend Type operator~(Type a) { return static_cast<Type>(~static_cast<int>(a)); }
+
+    // Check if any flag is set
+    explicit operator bool() const { return static_cast<int>(taskType) != 0; }
+
     explicit Context(const Type type, const Source& source, const Destination& destination)
         : taskType(type), taskSource(source), taskDestination(destination)
     {
