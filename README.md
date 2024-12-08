@@ -1,6 +1,11 @@
 # Project Valhalla
 
 ```
+pipx install conan 
+pipx ensurepath 
+
+conan profile detect --force
+
 conan install . --build=missing  -s build_type=Debug
 conan install . --build=missing  -s build_type=Release
 
