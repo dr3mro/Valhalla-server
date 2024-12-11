@@ -7,3 +7,6 @@ logs
 uploads
 .DS_Store
 src/.DS_Store
+CMakePresets.json
+CMakeUserPresets.json
+compile_commands.json
