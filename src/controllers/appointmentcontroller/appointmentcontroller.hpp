@@ -12,9 +12,9 @@ class AppointmentController : public EntityController<T>, public AppointmentCont
     virtual ~AppointmentController() override = default;
 
     // CRUDS
-    void Create(CALLBACK_&& callback, Requester&& requester, std::string_view data) override;
-    void Read(CALLBACK_&& callback, Requester&& requester, std::string_view data) override;
-    void Update(CALLBACK_&& callback, Requester&& requester, std::string_view data, std::optional<uint64_t> id) override;
-    void Delete(CALLBACK_&& callback, Requester&& requester, std::optional<uint64_t> id) override;
-    void Search(CALLBACK_&& callback, Requester&& requester, std::string_view data) override;
+    void Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
+    void Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
+    void Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> id) override;
+    void Delete(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id) override;
+    void Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
 };
