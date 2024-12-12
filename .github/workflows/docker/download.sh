@@ -23,7 +23,7 @@
 #
 # If your version/tag doesn't match, the script will exit with error.
 set -x
-TOKEN="${DL_TOKEN}"
+TOKEN="$GHDL_TOKEN"
 REPO="dr3mro/Valhalla-server"
 FILE="server-x86_64.tar.gz" # the name of your release asset file, e.g. build.tar.gz
 VERSION="latest"            # tag name or the word "latest"

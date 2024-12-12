@@ -90,7 +90,7 @@ jobs:
 
       - name: Download Release Artifact
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GHDL_TOKEN: ${{ secrets.GHDL_TOKEN }}
         run: |
           chmod +x ${{ github.workspace }}/.github/workflows/docker/download.sh
           bash ${{ github.workspace }}/.github/workflows/docker/download.sh ${{ github.ref_name }}
