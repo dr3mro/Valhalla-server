@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdint>
 #include <jsoncons/basic_json.hpp>
 #include <memory>
 
@@ -19,9 +20,9 @@ namespace api
             virtual ~PermissionManager() = default;
             bool hasPermission(const Requester& requester, const jsoncons::json& permissions_j, const Permissions::PowerLevel& powerlevel, Http::Error& error);
 
-            bool isOwnerOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error);
-            bool isAdminOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error);
-            bool isStaffOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error);
+            bool                                        isOwnerOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error);
+            bool                                        isAdminOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error);
+            std::optional<Permissions::StaffPermission> isStaffOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error);
 
             template <Client_t T>
             bool canCreate(const Requester& requester, const std::string& group, const std::optional<jsoncons::json>& data_j, Http::Error& error);
@@ -80,7 +81,7 @@ namespace api
             template <Appointment_t T>
             bool canDelete(const Requester& requester, const std::string& group, uint64_t id, Http::Error& error);
 
-            //    private:
+           private:
             //     bool isSameClient(const uint64_t clientID);
             //     bool hasPower(std::string_view data, const uint64_t clientID);
             //     bool isServiceOwner(std::string_view data, const uint64_t clientID);
