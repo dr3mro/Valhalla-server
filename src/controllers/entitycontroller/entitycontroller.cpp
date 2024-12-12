@@ -77,12 +77,6 @@ inline void __attribute((always_inline)) EntityController<T>::Read(CALLBACK_ &&c
 
         T entity((Types::Read_t(schema, id)));
 
-        if (!gateKeeper->canRead<T>(requester, entity.getGroupName(), id, error))
-        {
-            callback(error.code, error.message);
-            return;
-        }
-
         Controller::Read(entity, std::move(callback));
     }
     catch (const std::exception &e)
@@ -122,15 +116,15 @@ inline void __attribute((always_inline)) EntityController<T>::Update(
             return;
         }
 
-        Types::Update_t entity_data = Types::Update_t(request_json.value(), id.value());
-
-        T entity(entity_data);
-
-        if (!gateKeeper->canUpdate<T>(requester, entity.getGroupName(), id.value(), error))
+        if (!gateKeeper->canUpdate<T>(requester, T::getTableName(), id.value(), error))
         {
             callback(error.code, error.message);
             return;
         }
+
+        Types::Update_t entity_data = Types::Update_t(request_json.value(), id.value());
+
+        T entity(entity_data);
 
         Controller::Update(entity, std::move(callback));
     }
@@ -151,14 +145,15 @@ inline void __attribute((always_inline)) EntityController<T>::Delete(CALLBACK_ &
             return;
         }
 
-        T entity(Types::Delete_t(id.value()));
-
         Http::Error error;
+
         if (!gateKeeper->canDelete<T>(requester, T::getTableName(), id.value(), error))
         {
             callback(error.code, error.message);
             return;
         }
+
+        T entity(Types::Delete_t(id.value()));
 
         Controller::Delete(entity, std::move(callback));
     }
