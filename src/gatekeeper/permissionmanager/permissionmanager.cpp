@@ -1,7 +1,9 @@
 #include "gatekeeper/permissionmanager/permissionmanager.hpp"
 
 #include <cstdint>
+#include <exception>
 #include <jsoncons/basic_json.hpp>
+#include <memory>
 #include <optional>
 
 #include "gatekeeper/permissionmanager/permissions.hpp"
@@ -36,8 +38,40 @@ bool PermissionManager::isAdminOfService(const Requester& requester, const jsonc
     }
     return true;
 }
-bool PermissionManager::isStaffOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error) { return true; }
+std::optional<Permissions::StaffPermission> PermissionManager::isStaffOfService(
+    const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error)
+{
+    try
+    {
+        const auto& staff = permissions_j["staff"];
 
+        for (const auto& [role, members] : staff.object_range())
+        {
+            for (const auto& member : members.array_range())
+            {
+                if (!member.as<std::string>().empty())
+                {
+                    auto        raw_str = member.as<std::string>();
+                    size_t      pos     = raw_str.find(':');
+                    std::string left    = raw_str.substr(0, pos);
+                    std::string right   = raw_str.substr(pos + 1);
+
+                    if (left == std::to_string(requester.id))
+                    {
+                        return std::optional<Permissions::StaffPermission>(Permissions::StaffPermission{
+                            .id = static_cast<uint64_t>(std::stoull(left)), .power = static_cast<PowerLevel>(std::stoi(right)), .isMember = true});
+                    }
+                }
+            }
+        }
+    }
+    catch (const std::exception& e)
+    {
+        error.code    = Http::Status::BAD_REQUEST;
+        error.message = std::string("Invalid staff permission: ") + e.what();
+    }
+    return std::nullopt;
+}
 template <Client_t T>
 bool PermissionManager::canCreate([[maybe_unused]] const Requester& requester, [[maybe_unused]] const std::string& group,
     [[maybe_unused]] const std::optional<jsoncons::json>& data_j, [[maybe_unused]] Http::Error& error)
