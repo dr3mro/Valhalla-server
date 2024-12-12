@@ -211,7 +211,7 @@ bool PermissionManager::canCreate(const Requester& requester, const std::string&
 
     uint64_t clinic_id = case_j->at("clinic_id").as<uint64_t>();
 
-    std::optional<jsoncons::json> permissions_j = db_ctl->getServicePermissions(group, clinic_id);
+    std::optional<jsoncons::json> permissions_j = db_ctl->getServicePermissions(T::getOrgName(), clinic_id);
     if (!permissions_j.has_value())
     {
         error.code    = Http::Status::BAD_REQUEST;
@@ -237,7 +237,7 @@ bool PermissionManager::canCreate(const Requester& requester, const std::string&
 template <Case_t T>
 bool PermissionManager::canRead(const Requester& requester, const std::string& group, uint64_t service_id, Http::Error& error)
 {
-    std::optional<jsoncons::json> permissions_j = db_ctl->getServicePermissions(group, service_id);
+    std::optional<jsoncons::json> permissions_j = db_ctl->getServicePermissions(T::getOrgName(), service_id);
 
     if (isOwnerOfService(requester, permissions_j.value(), error))
     {
@@ -258,7 +258,7 @@ bool PermissionManager::canRead(const Requester& requester, const std::string& g
 template <Case_t T>
 bool PermissionManager::canUpdate(const Requester& requester, const std::string& group, const uint64_t service_id, Http::Error& error)
 {
-    std::optional<jsoncons::json> permissions_j = db_ctl->getServicePermissions(group, service_id);
+    std::optional<jsoncons::json> permissions_j = db_ctl->getServicePermissions(T::getOrgName(), service_id);
 
     if (isOwnerOfService(requester, permissions_j.value(), error))
     {
@@ -279,7 +279,7 @@ bool PermissionManager::canUpdate(const Requester& requester, const std::string&
 template <Case_t T>
 bool PermissionManager::canDelete(const Requester& requester, const std::string& group, uint64_t service_id, Http::Error& error)
 {
-    std::optional<jsoncons::json> permissions_j = db_ctl->getServicePermissions(group, service_id);
+    std::optional<jsoncons::json> permissions_j = db_ctl->getServicePermissions(T::getOrgName(), service_id);
 
     if (isOwnerOfService(requester, permissions_j.value(), error))
     {

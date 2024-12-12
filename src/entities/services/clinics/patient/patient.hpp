@@ -8,6 +8,7 @@ class Patient : public Case
 {
    private:
     static constexpr auto TABLENAME = "patients";
+    static constexpr auto ORGNAME   = "clinics";
 
    public:
     template <typename T>
@@ -17,9 +18,9 @@ class Patient : public Case
     virtual ~Patient() override = default;
 
     static constexpr auto getTableName() { return TABLENAME; }
+    static constexpr auto getOrgName() { return ORGNAME; }
     std::string           getSqlGetVisitsStatement()
     {
-        return fmt::format("SELECT visits FROM clinics_visits WHERE patient_id = {} ;",
-                           std::get<Types::Data_t>(getData()).get_id().value());
+        return fmt::format("SELECT visits FROM clinics_visits WHERE patient_id = {} ;", std::get<Types::Data_t>(getData()).get_id().value());
     }
 };

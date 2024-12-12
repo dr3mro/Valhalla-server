@@ -8,6 +8,7 @@ class Requests : public Case
 {
    private:
     static constexpr auto TABLENAME = "clinics_requests";
+    static constexpr auto ORGNAME   = "clinics";
 
    public:
     // Requests() : Case(TABLENAME) {}
@@ -18,6 +19,7 @@ class Requests : public Case
     }
 
     static constexpr auto getTableName() { return TABLENAME; }
+    static constexpr auto getOrgName() { return ORGNAME; }
 
     virtual ~Requests() override = default;
 };

@@ -8,6 +8,7 @@ class Health : public Case
 {
    private:
     static constexpr auto TABLENAME = "patients_health";
+    static constexpr auto ORGNAME   = "clinics";
 
    public:
     // Health() : Case(TABLENAME) {}
@@ -18,6 +19,7 @@ class Health : public Case
     }
 
     static constexpr auto getTableName() { return TABLENAME; }
+    static constexpr auto getOrgName() { return ORGNAME; }
 
     virtual ~Health() override = default;
 };
