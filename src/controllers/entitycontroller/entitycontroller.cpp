@@ -10,12 +10,6 @@ inline void __attribute((always_inline)) EntityController<T>::Create(CALLBACK_ &
         Validator::Rule      rule((Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA | Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA), {"id"});
         auto                 next_id = this->template getNextID<T>(error);
 
-        if (!next_id.has_value())
-        {
-            callback(error.code, fmt::format("Failed to generate next ID, {}.", error.message));
-            return;
-        }
-
         std::optional<jsoncons::json> request_j = jsoncons::json::parse(data);
 
         if (!request_j.has_value())
@@ -32,15 +26,21 @@ inline void __attribute((always_inline)) EntityController<T>::Create(CALLBACK_ &
             return;
         }
 
-        Types::Create_t entity_data = Types::Create_t(request_j.value(), next_id.value());
-
-        T entity(entity_data);
-
-        if (!gateKeeper->canCreate<T>(requester, entity.getGroupName(), request_j, error))
+        if (!gateKeeper->canCreate<T>(requester, T::getTableName(), request_j, error))
         {
             callback(error.code, error.message);
             return;
         }
+
+        if (!next_id.has_value())
+        {
+            callback(error.code, fmt::format("Failed to generate next ID, {}.", error.message));
+            return;
+        }
+
+        Types::Create_t entity_data = Types::Create_t(request_j.value(), next_id.value());
+
+        T entity(entity_data);
 
         Controller::Create(entity, std::move(callback));
     }
