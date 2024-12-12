@@ -5,6 +5,7 @@
 #include <optional>
 
 #include "gatekeeper/permissionmanager/permissions.hpp"
+#include "utils/global/http.hpp"
 
 using PowerLevel = Permissions::PowerLevel;
 
@@ -14,8 +15,27 @@ bool PermissionManager::hasPermission(
 {
     return true;
 }
-bool PermissionManager::isOwnerOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error) { return true; }
-bool PermissionManager::isAdminOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error) { return true; }
+bool PermissionManager::isOwnerOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error)
+{
+    if (requester.id != permissions_j["owner_id"].as<uint64_t>())
+    {
+        error.code = Http::Status::FORBIDDEN;
+        error.message += "You are not the owner of this service ";
+        return false;
+    }
+    return true;
+}
+
+bool PermissionManager::isAdminOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error)
+{
+    if (requester.id != permissions_j["admin_id"].as<uint64_t>())
+    {
+        error.code = Http::Status::FORBIDDEN;
+        error.message += "You are not the admin of this service ";
+        return false;
+    }
+    return true;
+}
 bool PermissionManager::isStaffOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error) { return true; }
 
 template <Client_t T>
