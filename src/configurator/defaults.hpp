@@ -27,7 +27,7 @@ namespace Defaults
         constexpr bool             DB_SSL_      = false;
         constexpr uint8_t          DB_MAX_CONN_ = 10;
         constexpr uint16_t         DB_PORT_     = 5432;
-        constexpr std::string_view DB_HOST_     = std::string_view("127.0.0.1");
+        constexpr std::string_view DB_HOST_     = std::string_view("172.20.0.2");
         constexpr std::string_view DB_NAME_     = std::string_view("postgres");
         constexpr std::string_view DB_USER_     = std::string_view("postgres");
         constexpr std::string_view DB_PASS_     = std::string_view("postgres");

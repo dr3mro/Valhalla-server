@@ -4,8 +4,8 @@
 class Case : public Entity
 {
    public:
-    template <typename T>
-    Case(const T &data, const std::string &tablename) : Entity(data, tablename)
+    template <typename Data>
+    Case(const Data &data, const std::string &tablename) : Entity(data, tablename)
     {
     }
     // Case(const std::string &tablename) : Entity(tablename) {};

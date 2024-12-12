@@ -9,7 +9,7 @@
       "args": [],
       "cwd": "${workspaceFolder}/build",
       "env": {
-        "DB_HOST": "127.0.0.1"
+        "DB_HOST": "172.20.0.2"
       }
     }
   ]
