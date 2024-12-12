@@ -85,7 +85,6 @@ jobs:
       - name: Install needed tools
         run: |
           sudo apt update &&
-          sudo apt upgrade -y &&
           sudo apt install -y wget gnupg lsb-release ca-certificates gpg software-properties-common apt-transport-https curl wget jq
 
       - name: Download Release Artifact
