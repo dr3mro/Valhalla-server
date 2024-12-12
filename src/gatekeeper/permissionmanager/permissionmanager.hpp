@@ -18,7 +18,7 @@ namespace api
            public:
             PermissionManager()          = default;
             virtual ~PermissionManager() = default;
-            bool hasPermission(const Requester& requester, const jsoncons::json& permissions_j, const Permissions::PowerLevel& powerlevel, Http::Error& error);
+            bool hasPermission(const std::optional<Permissions::StaffPermission>& entityStaffPermissions, const Permissions::PowerLevel& powerlevel);
 
             bool                                        isOwnerOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error);
             bool                                        isAdminOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error);

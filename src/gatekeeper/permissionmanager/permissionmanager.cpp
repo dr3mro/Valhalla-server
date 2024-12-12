@@ -12,10 +12,9 @@
 using PowerLevel = Permissions::PowerLevel;
 
 using namespace api::v2;
-bool PermissionManager::hasPermission(
-    const Requester& requester, const jsoncons::json& permissions_j, const Permissions::PowerLevel& powerlevel, Http::Error& error)
+bool PermissionManager::hasPermission(const std::optional<Permissions::StaffPermission>& entityStaffPermissions, const Permissions::PowerLevel& powerlevel)
 {
-    return true;
+    return (bool(entityStaffPermissions->power & powerlevel) == 0);
 }
 bool PermissionManager::isOwnerOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error)
 {
@@ -94,17 +93,10 @@ bool PermissionManager::canRead(const Requester& requester, const std::string& g
 template <Client_t T>
 bool PermissionManager::canUpdate(const Requester& requester, const std::string& group, uint64_t id, Http::Error& error)
 {
-    if (requester.id != id)
+    if (requester.id != id || requester.group != group)
     {
         error.code    = Http::Status::FORBIDDEN;
         error.message = "You are not allowed to update this client";
-        return false;
-    }
-
-    if (requester.group != group)
-    {
-        error.code    = Http::Status::FORBIDDEN;
-        error.message = "You are not allowed to update this client, you are not a member of this group";
         return false;
     }
     return true;
@@ -162,24 +154,17 @@ bool PermissionManager::canCreate(
     uint64_t owner_id = service_j->at("owner_id").as<uint64_t>();
     uint64_t admin_id = service_j->at("admin_id").as<uint64_t>();
 
-    if (owner_id != admin_id)
+    if (owner_id != requester.id || admin_id != requester.id)
     {
         error.code    = Http::Status::BAD_REQUEST;
-        error.message = "Owner ID and Admin ID must be the same.";
+        error.message = "Initial service admin_id and owner_id should be equal to that of provider_id";
         return false;
     }
 
     if (requester.group != "providers")
     {
         error.code    = Http::Status::BAD_REQUEST;
-        error.message = "You are not allowed to create a service.";
-        return false;
-    }
-
-    if (requester.id != owner_id || requester.id != admin_id)
-    {
-        error.code    = Http::Status::BAD_REQUEST;
-        error.message = "You are not allowed to create a service not your own.";
+        error.message = "You are not allowed to create a service, you are not a provider.";
         return false;
     }
     return true;
@@ -189,42 +174,49 @@ template <Service_t T>
 bool PermissionManager::canRead(const Requester& requester, const std::string& service_name, uint64_t service_id, Http::Error& error)
 {
     const jsoncons::json permissions_j = db_ctl->getServicePermissions(service_name, service_id);
-    if (!isOwnerOfService(requester, permissions_j, error))
+    if (isOwnerOfService(requester, permissions_j, error))
     {
+        return true;
+    }
+    if (isAdminOfService(requester, permissions_j, error))
+    {
+        return true;
+    }
+    auto serviceStaff = isStaffOfService(requester, permissions_j, error);
+    if (!serviceStaff.has_value())
+    {
+        error.code    = Http::Status::BAD_REQUEST;
+        error.message = "Error reading service staff " + service_name;
         return false;
     }
-    if (!isAdminOfService(requester, permissions_j, error))
-    {
-        return false;
-    }
-    if (!isStaffOfService(requester, permissions_j, error))
-    {
-        return false;
-    }
-    if (!hasPermission(requester, permissions_j, Permissions::PowerLevel::CAN_READ, error))
-    {
-        return false;
-    }
-    return true;
+
+    return hasPermission(serviceStaff, Permissions::PowerLevel::CAN_READ);
 }
 template <Service_t T>
 bool PermissionManager::canUpdate(const Requester& requester, const std::string& service_name, uint64_t service_id, Http::Error& error)
 {
     const jsoncons::json permissions_j = db_ctl->getServicePermissions(service_name, service_id);
-    if (!isOwnerOfService(requester, permissions_j, error))
+    if (isOwnerOfService(requester, permissions_j, error))
     {
+        return true;
+    }
+    if (isAdminOfService(requester, permissions_j, error))
+    {
+        return true;
+    }
+
+    auto serviceStaff = isStaffOfService(requester, permissions_j, error);
+    if (!serviceStaff.has_value())
+    {
+        error.code    = Http::Status::BAD_REQUEST;
+        error.message = "You are not a staff of this service";
         return false;
     }
-    if (!isAdminOfService(requester, permissions_j, error))
+
+    if (!hasPermission(serviceStaff, Permissions::PowerLevel::CAN_READ))
     {
-        return false;
-    }
-    if (!isStaffOfService(requester, permissions_j, error))
-    {
-        return false;
-    }
-    if (!hasPermission(requester, permissions_j, Permissions::PowerLevel::CAN_WRITE, error))
-    {
+        error.code    = Http::Status::FORBIDDEN;
+        error.message = "You don't have the permission to update this service";
         return false;
     }
     return true;
@@ -244,7 +236,7 @@ template <typename T>
 bool PermissionManager::canManageStaff(const Requester& requester, const std::string& service_name, uint64_t service_id, Http::Error& error)
 {
     const jsoncons::json permissions_j = db_ctl->getServicePermissions(service_name, service_id);
-    if (isOwnerOfService(requester, permissions_j, error) || isOwnerOfService(requester, permissions_j, error))
+    if (isOwnerOfService(requester, permissions_j, error) || isAdminOfService(requester, permissions_j, error))
     {
         return true;
     }
@@ -257,7 +249,7 @@ bool PermissionManager::canCreate(const Requester& requester, const std::string&
     if (!case_j.has_value())
     {
         error.code    = Http::Status::BAD_REQUEST;
-        error.message = "Service is not provided.";
+        error.message = "proper data is not provided: " + group;
         return false;
     }
 
@@ -269,7 +261,7 @@ bool PermissionManager::canCreate(const Requester& requester, const std::string&
     if (!permissions_j.has_value())
     {
         error.code    = Http::Status::BAD_REQUEST;
-        error.message = "clinic_id is not provided.";
+        error.message = "clinic_id is not provided. " + group;
         return false;
     }
     if (isOwnerOfService(requester, permissions_j.value(), error))
@@ -280,12 +272,21 @@ bool PermissionManager::canCreate(const Requester& requester, const std::string&
     {
         return true;
     }
-    if (isStaffOfService(requester, permissions_j.value(), error) && hasPermission(requester, permissions_j.value(), Permissions::PowerLevel::CAN_WRITE, error))
+    auto serviceStaff = isStaffOfService(requester, permissions_j, error);
+    if (!serviceStaff.has_value())
     {
-        return true;
+        error.code    = Http::Status::FORBIDDEN;
+        error.message = "You are not a staff of this service";
+        return false;
     }
 
-    return false;
+    if (!hasPermission(serviceStaff, Permissions::PowerLevel::CAN_WRITE))
+    {
+        error.code    = Http::Status::FORBIDDEN;
+        error.message = "You don't have the permission to create " + std::string(T::getTableName());
+        return false;
+    }
+    return true;
 }
 
 template <Case_t T>
@@ -301,12 +302,21 @@ bool PermissionManager::canRead(const Requester& requester, const std::string& g
     {
         return true;
     }
-    if (isStaffOfService(requester, permissions_j.value(), error) && hasPermission(requester, permissions_j.value(), Permissions::PowerLevel::CAN_READ, error))
+    auto serviceStaff = isStaffOfService(requester, permissions_j, error);
+    if (!serviceStaff.has_value())
     {
-        return true;
+        error.code    = Http::Status::BAD_REQUEST;
+        error.message = fmt::format("{}:{}", "Error reading service staff ", group);
+        return false;
     }
 
-    return false;
+    if (!hasPermission(serviceStaff, Permissions::PowerLevel::CAN_READ))
+    {
+        error.code    = Http::Status::FORBIDDEN;
+        error.message = "You don't have the permission to read " + std::string(T::getTableName());
+        return false;
+    }
+    return true;
 }
 
 template <Case_t T>
@@ -322,12 +332,22 @@ bool PermissionManager::canUpdate(const Requester& requester, const std::string&
     {
         return true;
     }
-    if (isStaffOfService(requester, permissions_j.value(), error) && hasPermission(requester, permissions_j.value(), Permissions::PowerLevel::CAN_WRITE, error))
+    auto serviceStaff = isStaffOfService(requester, permissions_j, error);
+
+    if (!serviceStaff.has_value())
     {
-        return true;
+        error.code    = Http::Status::BAD_REQUEST;
+        error.message = fmt::format("{}:{}", "Error reading service staff ", group);
+        return false;
     }
 
-    return false;
+    if (!hasPermission(serviceStaff, Permissions::PowerLevel::CAN_WRITE))
+    {
+        error.code    = Http::Status::FORBIDDEN;
+        error.message = "You don't have the permission to update " + std::string(T::getTableName());
+        return false;
+    }
+    return true;
 }
 
 template <Case_t T>
@@ -343,13 +363,21 @@ bool PermissionManager::canDelete(const Requester& requester, const std::string&
     {
         return true;
     }
-    if (isStaffOfService(requester, permissions_j.value(), error) &&
-        hasPermission(requester, permissions_j.value(), Permissions::PowerLevel::CAN_DELETE, error))
+    auto serviceStaff = isStaffOfService(requester, permissions_j, error);
+    if (!serviceStaff.has_value())
     {
-        return true;
+        error.code    = Http::Status::BAD_REQUEST;
+        error.message = fmt::format("{}:{}", "Error reading service staff ", group);
+        return false;
     }
 
-    return false;
+    if (!hasPermission(serviceStaff, Permissions::PowerLevel::CAN_DELETE))
+    {
+        error.code    = Http::Status::FORBIDDEN;
+        error.message = "You don't have the permission to delete " + std::string(T::getTableName());
+        return false;
+    }
+    return true;
 }
 
 template <Appointment_t T>
@@ -381,12 +409,21 @@ bool PermissionManager::canCreate(const Requester& requester, const std::string&
     {
         return true;
     }
-    if (isStaffOfService(requester, permissions_j.value(), error) && hasPermission(requester, permissions_j.value(), Permissions::PowerLevel::CAN_WRITE, error))
+    auto serviceStaff = isStaffOfService(requester, permissions_j, error);
+    if (!serviceStaff.has_value())
     {
-        return true;
+        error.code    = Http::Status::BAD_REQUEST;
+        error.message = "Error reading service staff " + group;
+        return false;
     }
 
-    return false;
+    if (!hasPermission(serviceStaff, Permissions::PowerLevel::CAN_WRITE))
+    {
+        error.code    = Http::Status::FORBIDDEN;
+        error.message = "You don't have the permission to create " + std::string(T::getTableName());
+        return false;
+    }
+    return true;
 }
 
 template <Appointment_t T>
@@ -402,12 +439,21 @@ bool PermissionManager::canRead(const Requester& requester, const std::string& g
     {
         return true;
     }
-    if (isStaffOfService(requester, permissions_j.value(), error) && hasPermission(requester, permissions_j.value(), Permissions::PowerLevel::CAN_READ, error))
+    auto serviceStaff = isStaffOfService(requester, permissions_j, error);
+    if (!serviceStaff.has_value())
     {
-        return true;
+        error.code    = Http::Status::BAD_REQUEST;
+        error.message = "Error reading service staff" + group;
+        return false;
     }
 
-    return false;
+    if (!hasPermission(serviceStaff, Permissions::PowerLevel::CAN_READ))
+    {
+        error.code    = Http::Status::FORBIDDEN;
+        error.message = "You don't have the permission to read " + std::string(T::getTableName());
+        return false;
+    }
+    return true;
 }
 
 template <Appointment_t T>
@@ -423,12 +469,21 @@ bool PermissionManager::canUpdate(const Requester& requester, const std::string&
     {
         return true;
     }
-    if (isStaffOfService(requester, permissions_j.value(), error) && hasPermission(requester, permissions_j.value(), Permissions::PowerLevel::CAN_WRITE, error))
+    auto serviceStaff = isStaffOfService(requester, permissions_j, error);
+    if (!serviceStaff.has_value())
     {
-        return true;
+        error.code    = Http::Status::BAD_REQUEST;
+        error.message = "Error reading service staff" + group;
+        return false;
     }
 
-    return false;
+    if (!hasPermission(serviceStaff, Permissions::PowerLevel::CAN_WRITE))
+    {
+        error.code    = Http::Status::FORBIDDEN;
+        error.message = "You don't have the permission to update " + std::string(T::getTableName());
+        return false;
+    }
+    return true;
 }
 
 template <Appointment_t T>
@@ -444,13 +499,21 @@ bool PermissionManager::canDelete(const Requester& requester, const std::string&
     {
         return true;
     }
-    if (isStaffOfService(requester, permissions_j.value(), error) &&
-        hasPermission(requester, permissions_j.value(), Permissions::PowerLevel::CAN_DELETE, error))
+    auto serviceStaff = isStaffOfService(requester, permissions_j, error);
+    if (!serviceStaff.has_value())
     {
-        return true;
+        error.code    = Http::Status::BAD_REQUEST;
+        error.message = "Error reading service staff" + group;
+        return false;
     }
 
-    return false;
+    if (!hasPermission(serviceStaff, Permissions::PowerLevel::CAN_DELETE))
+    {
+        error.code    = Http::Status::FORBIDDEN;
+        error.message = "You don't have the permission to delete " + std::string(T::getTableName());
+        return false;
+    }
+    return true;
 }
 
 #include "gatekeeper/includes.hpp"  // IWYU pragma: keep
