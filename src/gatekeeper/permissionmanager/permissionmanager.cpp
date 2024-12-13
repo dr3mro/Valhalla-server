@@ -14,7 +14,7 @@ using PowerLevel = Permissions::PowerLevel;
 using namespace api::v2;
 bool PermissionManager::hasPermission(const std::optional<Permissions::StaffPermission>& entityStaffPermissions, const Permissions::PowerLevel& powerlevel)
 {
-    return (bool(entityStaffPermissions->power & powerlevel) == 0);
+    return (bool(entityStaffPermissions->power & powerlevel) != 0);
 }
 bool PermissionManager::isOwnerOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error)
 {
@@ -54,7 +54,6 @@ std::optional<Permissions::StaffPermission> PermissionManager::isStaffOfService(
                     size_t      pos     = raw_str.find(':');
                     std::string left    = raw_str.substr(0, pos);
                     std::string right   = raw_str.substr(pos + 1);
-
                     if (left == std::to_string(requester.id))
                     {
                         return std::optional<Permissions::StaffPermission>(Permissions::StaffPermission{
@@ -189,8 +188,13 @@ bool PermissionManager::canRead(const Requester& requester, const std::string& s
         error.message = "Error reading service staff " + service_name;
         return false;
     }
-
-    return hasPermission(serviceStaff, Permissions::PowerLevel::CAN_READ);
+    if (!hasPermission(serviceStaff, Permissions::PowerLevel::CAN_READ))
+    {
+        error.code    = Http::Status::FORBIDDEN;
+        error.message = "You don't have the permission to read this service";
+        return false;
+    }
+    return true;
 }
 template <Service_t T>
 bool PermissionManager::canUpdate(const Requester& requester, const std::string& service_name, uint64_t service_id, Http::Error& error)
