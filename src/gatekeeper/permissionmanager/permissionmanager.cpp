@@ -217,7 +217,7 @@ bool PermissionManager::canUpdate(const Requester& requester, const std::string&
         return false;
     }
 
-    if (!hasPermission(serviceStaff, Permissions::PowerLevel::CAN_READ))
+    if (!hasPermission(serviceStaff, Permissions::PowerLevel::CAN_WRITE))
     {
         error.code    = Http::Status::FORBIDDEN;
         error.message = "You don't have the permission to update this service";
