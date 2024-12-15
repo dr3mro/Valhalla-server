@@ -170,7 +170,57 @@ void ClinicController<T>::Read(CALLBACK_ &&callback, const Requester &&requester
 template <typename T>
 void ClinicController<T>::Update(CALLBACK_ &&callback, const Requester &&requester, std::string_view data, const std::optional<uint64_t> id)
 {
-    EntityController<T>::Update(std::move(callback), std::move(requester), data, id);
+    try
+    {
+        bool                 success = false;
+        api::v2::Http::Error error;
+
+        if (!id.has_value())
+        {
+            callback(api::v2::Http::Status::BAD_REQUEST, "No id provided.");
+            return;
+        }
+
+        std::optional<jsoncons::json> request_json = jsoncons::json::parse(data);
+        std::optional<uint64_t>       clinic_id    = request_json->at("clinic_id").as<uint64_t>();
+
+        if (!clinic_id.has_value())
+        {
+            callback(api::v2::Http::Status::BAD_REQUEST, "No clinic id provided.");
+            return;
+        }
+
+        if (!request_json.has_value())
+        {
+            callback(api::v2::Http::Status::BAD_REQUEST, "Invalid request body.");
+            return;
+        }
+
+        Validator::Rule rule(Validator::Rule::Action::NONE, {});
+        success = Validator::validateDatabaseUpdateSchema(T::getTableName(), request_json, error, rule);
+
+        if (!success)
+        {
+            callback(error.code, fmt::format("Failed to validate request body, {}.", error.message));
+            return;
+        }
+
+        if (!gateKeeper->canUpdate<T>(requester, T::getTableName(), clinic_id.value(), error))
+        {
+            callback(error.code, error.message);
+            return;
+        }
+
+        Types::Update_t entity_data = Types::Update_t(request_json.value(), id.value());
+
+        T entity(entity_data);
+
+        Controller::Update(entity, std::move(callback));
+    }
+    catch (const std::exception &e)
+    {
+        CRITICALMESSAGERESPONSE
+    }
 }
 
 template <typename T>
