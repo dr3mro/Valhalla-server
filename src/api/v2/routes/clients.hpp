@@ -96,3 +96,4 @@ namespace api
 
     }  // namespace v2
 }  // namespace api
+// [ ] create endpoint to check the token is valid.

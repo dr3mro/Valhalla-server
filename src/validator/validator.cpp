@@ -11,16 +11,15 @@
 const std::unordered_map<std::string, std::string> Validator::regex_client_validators = {
     {"username", "^[a-z][a-z0-9_]*$"},
     {"password",
-     "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{"
-     "8,}$"},
+        "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{"
+        "8,}$"},
     {"phone", R"(^\+?(\d{1,3})?[-.\s]?(\(?\d{3}\)?)?[-.\s]?\d{3}[-.\s]?\d{4}$)"},
     {"email", R"((\w+)(\.\w+)*@(\w+)(\.\w+)+)"},
     {"dob", R"(^(0[1-9]|[12]\d|3[01])-(0[1-9]|1[0-2])-\d{4}$)"},
     {"gender", "^(Male|Female)$"},
 };
 
-bool Validator::validateDatabaseCreateSchema(const std::string &tablename, const jsoncons::json &data,
-                                             api::v2::Http::Error &error, const Rule &rule)
+bool Validator::validateDatabaseCreateSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Http::Error &error, const Rule &rule)
 {
     try
     {
@@ -28,7 +27,7 @@ bool Validator::validateDatabaseCreateSchema(const std::string &tablename, const
         {
             return false;
         }
-        // NOTE: I found this is never called as json parser already checks for
+        // [ ] I found this is never called as json parser already checks for
         // duplicate keys if (hasDuplicateKeys(data, error))
         // {
         //     error.message = fmt::format("Duplicate key found: {}",
@@ -69,8 +68,7 @@ bool Validator::validateDatabaseCreateSchema(const std::string &tablename, const
     return true;
 }
 
-bool Validator::validateDatabaseUpdateSchema(const std::string &tablename, const jsoncons::json &data,
-                                             api::v2::Http::Error &error, const Rule &rule)
+bool Validator::validateDatabaseUpdateSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Http::Error &error, const Rule &rule)
 {
     try
     {
@@ -78,7 +76,7 @@ bool Validator::validateDatabaseUpdateSchema(const std::string &tablename, const
         {
             return false;
         }
-        // NOTE: I found this is never called as json parser already checks for
+        // [ ] I found this is never called as json parser already checks for
         // if (hasDuplicateKeys(data, error))
         // {
         //     error.message = fmt::format("Duplicate key found: {}",
@@ -111,8 +109,8 @@ bool Validator::validateDatabaseUpdateSchema(const std::string &tablename, const
     return true;
 }
 
-bool Validator::validateDatabaseReadSchema(const std::unordered_set<std::string> &keys, const std::string &table_name,
-                                           api::v2::Http::Error &error, const Rule &rule)
+bool Validator::validateDatabaseReadSchema(
+    const std::unordered_set<std::string> &keys, const std::string &table_name, api::v2::Http::Error &error, const Rule &rule)
 {
     bool found = false;
 
@@ -148,24 +146,21 @@ bool Validator::validateDatabaseReadSchema(const std::unordered_set<std::string>
 
     return true;
 }
-bool Validator::clientRegexValidation(const jsoncons::json &data, api::v2::Http::Error &error,
-                                      std::unordered_set<std::pair<std::string, std::string>> &db_data)
+bool Validator::clientRegexValidation(const jsoncons::json &data, api::v2::Http::Error &error, std::unordered_set<std::pair<std::string, std::string>> &db_data)
 {
     for (const auto &item : data.object_range())
     {
         std::optional<std::string> value = item.value().as<std::string>();
         if (value.has_value() && !value->empty())
         {
-            auto pattern_item = std::ranges::find_if(
-                regex_client_validators, [&](const auto &validator) { return validator.first == item.key(); });
+            auto pattern_item = std::ranges::find_if(regex_client_validators, [&](const auto &validator) { return validator.first == item.key(); });
 
             if (pattern_item != regex_client_validators.end())
             {
                 std::regex pattern(pattern_item->second);
                 if (!std::regex_match(value.value(), pattern))
                 {
-                    error = {.code    = api::v2::Http::Status::BAD_REQUEST,
-                             .message = fmt::format("Key ({}) Value({}) is invalid.", item.key(), value.value())};
+                    error = {.code = api::v2::Http::Status::BAD_REQUEST, .message = fmt::format("Key ({}) Value({}) is invalid.", item.key(), value.value())};
                     return false;
                 }
             }
@@ -209,8 +204,7 @@ bool Validator::nullCheck(const jsoncons::json &data, api::v2::Http::Error &erro
     return false;
 }
 
-std::unordered_set<api::v2::ColumnInfo> Validator::getDatabaseSchemaForTable(const std::string    &tablename,
-                                                                             api::v2::Http::Error &error, bool &found)
+std::unordered_set<api::v2::ColumnInfo> Validator::getDatabaseSchemaForTable(const std::string &tablename, api::v2::Http::Error &error, bool &found)
 {
     SCHEMA_t schema = DatabaseSchema::getDatabaseSchema();
 
@@ -237,22 +231,20 @@ bool Validator::validateType(const jsoncons::json &value, const std::string &exp
         return value.is_bool();
     if (expectedType == "jsonb")
         return (value.is_object() || value.is_array());
-    if (expectedType == "timestamp with time zone" || expectedType == "time without time zone" ||
-        expectedType == "date")
+    if (expectedType == "timestamp with time zone" || expectedType == "time without time zone" || expectedType == "date")
         return value.is_string();  // Assuming dates are strings
     return false;                  // Unknown type
 }
 
-bool Validator::checkColumns(const jsoncons::json &data, const std::unordered_set<api::v2::ColumnInfo> &table_schema,
-                             api::v2::Http::Error &error, const Rule &rule)
+bool Validator::checkColumns(
+    const jsoncons::json &data, const std::unordered_set<api::v2::ColumnInfo> &table_schema, api::v2::Http::Error &error, const Rule &rule)
 {
     for (const auto &column : table_schema)
     {
         bool column_exists = data.contains(column.Name);
 
         // Check for missing non-nullable columns
-        if (!column_exists && !column.isNullable &&
-            !rule.check(Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA, column.Name))
+        if (!column_exists && !column.isNullable && !rule.check(Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA, column.Name))
         {
             error.message = "Non-nullable column missing in data: " + column.Name;
             error.code    = api::v2::Http::Status::BAD_REQUEST;
@@ -265,18 +257,16 @@ bool Validator::checkColumns(const jsoncons::json &data, const std::unordered_se
             const auto &value = data.at(column.Name);
             if (!validateType(value, column.DataType))
             {
-                error.message =
-                    fmt::format("Data type mismatch for column: {} ,expected: {} ", column.Name, column.DataType);
-                error.code = api::v2::Http::Status::BAD_REQUEST;
+                error.message = fmt::format("Data type mismatch for column: {} ,expected: {} ", column.Name, column.DataType);
+                error.code    = api::v2::Http::Status::BAD_REQUEST;
                 return false;
             }
         }
     }
     return true;
 }
-bool Validator::ensureAllKeysExist(const jsoncons::json                          &data,
-                                   const std::unordered_set<api::v2::ColumnInfo> &table_schema,
-                                   api::v2::Http::Error &error, const Rule &rule)
+bool Validator::ensureAllKeysExist(
+    const jsoncons::json &data, const std::unordered_set<api::v2::ColumnInfo> &table_schema, api::v2::Http::Error &error, const Rule &rule)
 {
     // Create a set of column names for fast key lookup
     std::unordered_set<std::string> schema_columns;
@@ -303,8 +293,7 @@ bool Validator::ensureAllKeysExist(const jsoncons::json                         
         }
 
         bool ignore_if_missing_from_database_schema = rule.check(Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA, key);
-        if (schema_columns.find(key) == schema_columns.end() &&
-            !ignore_if_missing_from_database_schema)  // Key not in schema
+        if (schema_columns.find(key) == schema_columns.end() && !ignore_if_missing_from_database_schema)  // Key not in schema
         {
             error.message = "Key: [" + key + "] is not found in database schema";
             error.code    = api::v2::Http::Status::BAD_REQUEST;

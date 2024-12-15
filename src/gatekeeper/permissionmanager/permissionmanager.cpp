@@ -257,7 +257,7 @@ bool PermissionManager::canCreate(const Requester& requester, const std::string&
         return false;
     }
 
-    // TODO: change the clinic_id to service_id in all sql schema.
+    // [ ] change the clinic_id to service_id in all sql schema.
 
     uint64_t clinic_id = case_j->at("clinic_id").as<uint64_t>();
 
@@ -394,7 +394,7 @@ bool PermissionManager::canCreate(const Requester& requester, const std::string&
         return false;
     }
 
-    // TODO: change the clinic_id to service_id in all sql schema.
+    // [ ] change the clinic_id to service_id in all sql schema.
 
     uint64_t clinic_id = service_j->at("clinic_id").as<uint64_t>();
 
@@ -563,3 +563,25 @@ INSTANTIATE_PERMISSION_CRUD(LaboratoryAppointment)
 INSTANTIATE_PERMISSION_CRUD(RadiologyCenterAppointment)
 
 //[ ] create a cache for permissions and make update or delete cause invalidation.
+//[ ] check if patient belongs to the service using union !
+/*
+
+SELECT
+    c.owner_id,
+    c.admin_id,
+    c.staff,
+    p.id AS patient_id,
+    p.clinic_id AS patient_clinic_id
+FROM clinics c
+LEFT JOIN patients p
+ON c.id = p.clinic_id
+WHERE c.id = '1000' AND (p.id = '100000' OR p.id IS NULL);
+-[ RECORD 1 ]-----+-------------------------------------------------------------------
+owner_id          | 1000
+admin_id          | 1000
+staff             | {"nurses": [""], "Doctors": ["1008:12"], "assistants": ["1000:1"]}
+patient_id        | 100000
+patient_clinic_id | 1000
+
+
+*/
