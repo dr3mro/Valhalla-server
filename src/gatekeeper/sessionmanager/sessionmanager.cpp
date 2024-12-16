@@ -6,16 +6,17 @@
 #include <ctime>
 #include <utils/jsonhelper/jsonhelper.hpp>
 
+#include "utils/global/global.hpp"
+#include "utils/global/http.hpp"
+
 using namespace api::v2;
 
-bool SessionManager::login(const std::optional<Types::Credentials>& credentials,
-                           std::optional<Types::ClientLoginData>& clientLoginData, std::string& message)
+bool SessionManager::login(const std::optional<Types::Credentials>& credentials, std::optional<Types::ClientLoginData>& clientLoginData, std::string& message)
 {
     std::optional<std::string> password_hash;
     try
     {
-        auto client_object =
-            databaseController->getPasswordHashForUserName(credentials->username, clientLoginData->group.value());
+        auto client_object = databaseController->getPasswordHashForUserName(credentials->username, clientLoginData->group.value());
 
         if (!client_object.has_value() || client_object.value().empty())
         {
@@ -38,8 +39,7 @@ bool SessionManager::login(const std::optional<Types::Credentials>& credentials,
 
         if (!clientLoginData->is_active)
         {
-            message +=
-                fmt::format("username: [{}] is suspended, please contact the administrator", credentials->username);
+            message += fmt::format("username: [{}] is suspended, please contact the administrator", credentials->username);
             return false;
         }
 
@@ -97,8 +97,7 @@ void SessionManager::logout(CALLBACK_&& callback, std::optional<Types::ClientLog
         // }
         setNowLogoutTime(clientLoginData->clientId.value(), clientLoginData->group.value());
         removeSession(clientLoginData);
-        callback(api::v2::Http::Status::OK,
-                 api::v2::JsonHelper::stringify(api::v2::JsonHelper::jsonify("Logout success.")));
+        callback(api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(api::v2::JsonHelper::jsonify("Logout success.")));
     }
     catch (const std::exception& e)
     {
@@ -145,8 +144,7 @@ bool SessionManager::storeSession(std::optional<Types::ClientLoginData>& clientL
             return false;
         }
         std::string key = fmt::format("{}_{}", clientLoginData->group.value(), clientLoginData->clientId.value());
-        clientsSessionsList->insert(key, clientLoginData.value(),
-                                    std::chrono::duration_cast<std::chrono::seconds>(clientLoginData->expireTime));
+        clientsSessionsList->insert(key, clientLoginData.value(), std::chrono::duration_cast<std::chrono::seconds>(clientLoginData->expireTime));
         return true;
     }
     catch (const std::exception& e)

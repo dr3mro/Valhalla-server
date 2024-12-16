@@ -2,10 +2,14 @@
 #include <cstdint>
 #include <jsoncons/basic_json.hpp>
 #include <jsoncons/json.hpp>
+#include <optional>
 
 #include "database/database.hpp"
 #include "database/databaseconnectionpool.hpp"
 #include "utils/message/message.hpp"
+class Case;
+class Service;
+class Appointment;
 
 class DatabaseController
 {
@@ -23,7 +27,11 @@ class DatabaseController
                                        const std::string                                  &tablename);  // check if user found and return 0 if not
     std::optional<std::unordered_set<api::v2::ColumnInfo>> getTableSchema(const std::string &tableName);
     std::optional<std::unordered_set<std::string>>         getAllTables();
-    std::optional<jsoncons::json>                          getServicePermissions(const std::string &service_name, uint64_t service_id);
+
+    std::optional<jsoncons::json> getPermissions(const std::string &query)
+    {
+        return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::nontransaction>, query);
+    }
 
    private:
     std::shared_ptr<DatabaseConnectionPool> databaseConnectionPool;

@@ -39,11 +39,11 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
         requires(std::is_same<U, Patient>::value);
 
     template <typename U = T>
-    void GetVisitsImpl(CALLBACK_ &&callback, const Requester &&requester, std::optional<uint64_t> patient_id, std::optional<uint64_t> clinic_id)
+    void GetVisitsImpl(CALLBACK_ &&callback, const Requester &&requester, std::optional<uint64_t> patient_id)
         requires(std::is_same<U, Patient>::value);
 
     template <typename U = T>
-    void GetVisitsImpl(CALLBACK_ &&callback, const Requester &&requester, std::optional<uint64_t> patient_id, std::optional<uint64_t> clinic_id)
+    void GetVisitsImpl(CALLBACK_ &&callback, const Requester &&requester, std::optional<uint64_t> patient_id)
         requires(!std::is_same<U, Patient>::value);
 
    public:
@@ -55,5 +55,5 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
     void Update(CALLBACK_ &&callback, const Requester &&requester, std::string_view data, std::optional<uint64_t> id) final;
     void Delete(CALLBACK_ &&callback, const Requester &&requester, std::optional<uint64_t> id) final;
     void Search(CALLBACK_ &&callback, const Requester &&requester, std::string_view data) final;
-    void GetVisits(CALLBACK_ &&callback, const Requester &&requester, std::optional<uint64_t> patient_id, std::optional<uint64_t> clinic_id) final;
+    void GetVisits(CALLBACK_ &&callback, const Requester &&requester, std::optional<uint64_t> patient_id) final;
 };

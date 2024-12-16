@@ -23,7 +23,7 @@ void ClientController<T>::Create(CALLBACK_&& callback, [[maybe_unused]] const Re
                 return;
             }
 
-            if (!gateKeeper->canCreate<T>(requester, T::getTableName(), json_data, error))
+            if (!gateKeeper->canCreate<T>(requester, json_data, error))
             {
                 callback(error.code, error.message);
                 return;
@@ -63,7 +63,7 @@ void ClientController<T>::Update(CALLBACK_&& callback, const Requester&& request
         if (success)
         {
             T client(client_data);
-            if (!gateKeeper->canUpdate<T>(requester, T::getTableName(), id.value(), error))
+            if (!gateKeeper->canUpdate<T>(requester, id.value(), error))
             {
                 callback(error.code, error.message);
                 return;
@@ -123,7 +123,7 @@ void ClientController<T>::Suspend(CALLBACK_&& callback, const Requester&& reques
         T                  client(suspendData);
         Http::Error        error;
 
-        if (!gateKeeper->canToggleActive<T>(requester, T::getTableName(), client_id.value(), error))
+        if (!gateKeeper->canToggleActive<T>(requester, client_id.value(), error))
         {
             callback(error.code, error.message);
             return;
@@ -153,7 +153,7 @@ void ClientController<T>::Activate(CALLBACK_&& callback, const Requester&& reque
         T client(suspendData);
 
         Http::Error error;
-        if (!gateKeeper->canToggleActive<T>(requester, T::getTableName(), client_id.value(), error))
+        if (!gateKeeper->canToggleActive<T>(requester, client_id.value(), error))
         {
             callback(error.code, error.message);
             return;
@@ -188,7 +188,7 @@ void ClientController<T>::GetServices(CALLBACK_&& callback, const Requester&& re
         T client(Types::Data_t(client_id.value()));
 
         Http::Error error;
-        if (!gateKeeper->canGetServices<T>(requester, T::getTableName(), client_id.value(), error))
+        if (!gateKeeper->canGetServices<T>(requester, client_id.value(), error))
         {
             callback(error.code, error.message);
             return;

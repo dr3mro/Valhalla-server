@@ -43,7 +43,7 @@ void StaffController<T>::RemoveStaffFromEntity(CALLBACK_&& callback, const Reque
         Types::StaffData staffData(payload);
 
         T staff(staffData);
-        if (!gateKeeper->canManageStaff<T>(requester, T::getTableName(), id, error))
+        if (!gateKeeper->canManageStaff<T>(requester, id, error))
         {
             callback(error.code, error.message);
             return;
@@ -67,7 +67,7 @@ void StaffController<T>::InviteStaffToEntity(CALLBACK_&& callback, const Request
         std::optional<std::string> response;
         T                          staff(staffData);
 
-        if (!gateKeeper->canManageStaff<T>(requester, T::getTableName(), id, error))
+        if (!gateKeeper->canManageStaff<T>(requester, id, error))
         {
             callback(error.code, error.message);
             return;

@@ -1,9 +1,13 @@
 #include "gatekeeper.hpp"
 
 #include <cstdint>
+#include <pqxx/internal/libpq-forward.hxx>
 #include <utility>
 
+#include "gatekeeper/includes.hpp"  // IWYU pragma: keep
+#include "utils/global/concepts.hpp"
 #include "utils/global/global.hpp"
+#include "utils/global/requester.hpp"
 
 using namespace api::v2;
 
@@ -135,64 +139,62 @@ std::optional<Types::Credentials> GateKeeper::parse_credentials(std::string_view
 }
 
 template <typename T>
-bool GateKeeper::canCreate(const Requester& requester, const std::string& group, const std::optional<jsoncons::json>& data_j, Http::Error& error)
+bool GateKeeper::canCreate(const Requester& requester, const std::optional<jsoncons::json>& data_j, Http::Error& error)
 {
-    return permissionManager_->canCreate<T>(requester, group, data_j, error);
+    return permissionManager_->canCreate<T>(requester, data_j, error);
 }
 
 template <typename T>
-bool GateKeeper::canRead(const Requester& requester, const std::string& group, const uint64_t entity_id, Http::Error& error)
+bool GateKeeper::canRead(const Requester& requester, const uint64_t entity_id, Http::Error& error)
 {
-    return permissionManager_->canRead<T>(requester, group, entity_id, error);
+    return permissionManager_->canRead<T>(requester, entity_id, error);
 }
 
 template <typename T>
-bool GateKeeper::canUpdate(const Requester& requester, const std::string& group, const uint64_t id, Http::Error& error)
+bool GateKeeper::canUpdate(const Requester& requester, const uint64_t entity_id, Http::Error& error)
 {
-    return permissionManager_->canUpdate<T>(requester, group, id, error);
+    return permissionManager_->canUpdate<T>(requester, entity_id, error);
 }
 
 template <typename T>
-bool GateKeeper::canDelete(const Requester& requester, const std::string& group, const uint64_t id, Http::Error& error)
+bool GateKeeper::canDelete(const Requester& requester, const uint64_t entity_id, Http::Error& error)
 {
-    return permissionManager_->canDelete<T>(requester, group, id, error);
+    return permissionManager_->canDelete<T>(requester, entity_id, error);
 }
 
 template <typename T>
-bool GateKeeper::canManageStaff(const Requester& requester, const std::string& group, uint64_t id, Http::Error& error)
+bool GateKeeper::canManageStaff(const Requester& requester, uint64_t id, Http::Error& error)
 {
-    return permissionManager_->canManageStaff<T>(requester, group, id, error);
+    return permissionManager_->canManageStaff<T>(requester, id, error);
 }
 
 template <Client_t T>
-bool GateKeeper::canToggleActive(const Requester& requester, const std::string& group, const uint64_t id, Http::Error& error)
+bool GateKeeper::canToggleActive(const Requester& requester, const uint64_t id, Http::Error& error)
 {
-    return permissionManager_->canToggleActive<T>(requester, group, id, error);
+    return permissionManager_->canToggleActive<T>(requester, id, error);
 }
 
 template <Client_t T>
-bool GateKeeper::canGetServices(const Requester& requester, const std::string& group, const uint64_t id, Http::Error& error)
+bool GateKeeper::canGetServices(const Requester& requester, const uint64_t id, Http::Error& error)
 {
-    return permissionManager_->canGetServices<T>(requester, group, id, error);
+    return permissionManager_->canGetServices<T>(requester, id, error);
 }
-
-#include "gatekeeper/includes.hpp"  // IWYU pragma: keep
 
 // canCreate specializations
-#define INSTANTIATE_GATEKEEPER_CRUD(TYPE)                                                                                                \
-    template bool GateKeeper::canCreate<TYPE>(const Requester&, const std::string&, const std::optional<jsoncons::json>&, Http::Error&); \
-    template bool GateKeeper::canRead<TYPE>(const Requester&, const std::string&, const uint64_t entity_id, Http::Error&);               \
-    template bool GateKeeper::canUpdate<TYPE>(const Requester&, const std::string&, const uint64_t entity_id, Http::Error&);             \
-    template bool GateKeeper::canDelete<TYPE>(const Requester&, const std::string&, const uint64_t entity_id, Http::Error&);
+#define INSTANTIATE_GATEKEEPER_CRUD(TYPE)                                                                            \
+    template bool GateKeeper::canCreate<TYPE>(const Requester&, const std::optional<jsoncons::json>&, Http::Error&); \
+    template bool GateKeeper::canRead<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);               \
+    template bool GateKeeper::canUpdate<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);             \
+    template bool GateKeeper::canDelete<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);
 
-#define INSTANTIATE_GATEKEEPER_CLIENT(TYPE)                                                                                                      \
-    INSTANTIATE_GATEKEEPER_CRUD(TYPE)                                                                                                            \
-    template bool GateKeeper::canGetServices<TYPE>(const Requester& requester, const std::string& group, const uint64_t id, Http::Error& error); \
-    template bool GateKeeper::canToggleActive<TYPE>(const Requester& requester, const std::string& group, const uint64_t id, Http::Error& error);
+#define INSTANTIATE_GATEKEEPER_CLIENT(TYPE)                                                                            \
+    INSTANTIATE_GATEKEEPER_CRUD(TYPE)                                                                                  \
+    template bool GateKeeper::canGetServices<TYPE>(const Requester& requester, const uint64_t id, Http::Error& error); \
+    template bool GateKeeper::canToggleActive<TYPE>(const Requester& requester, const uint64_t id, Http::Error& error);
 
 #define INSTANTIATE_GATEKEEPER_ENTITY(TYPE) \
     INSTANTIATE_GATEKEEPER_CRUD(TYPE)       \
-    template bool GateKeeper::canManageStaff<TYPE>(const Requester&, const std::string&, const uint64_t entity_id, Http::Error&);
+    template bool GateKeeper::canManageStaff<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);
 
 // Usage:
 INSTANTIATE_GATEKEEPER_CLIENT(User)

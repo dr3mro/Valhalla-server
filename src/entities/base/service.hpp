@@ -62,6 +62,10 @@ class Service : public Entity
         }
         return query;
     }
+    static std::optional<std::string> getServicePermissionsQuery(const std::string &service_name, std::uint64_t service_id)
+    {
+        return fmt::format("SELECT owner_id,admin_id,staff FROM {} WHERE id = '{}' LIMIT 1;", service_name, service_id);
+    }
 
    private:
 };
