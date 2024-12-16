@@ -53,7 +53,7 @@ struct Permissions
     explicit operator bool() const { return static_cast<int>(powerLevel) != 0; }
     using StaffPermission = struct staffPermission
     {
-        uint64_t   id       = 0;
+        uint64_t   staff_id = 0;
         PowerLevel power    = PowerLevel::NONE;
         bool       isMember = false;
     };

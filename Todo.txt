@@ -4,3 +4,13 @@
 * Implement middleware for appointment search by user_id or entity_id.
 * Implement changepassword, lostpassword.
 ps aux  | awk '{print $6/1024 " MB\t\t" $11}'  | sort -n
+
+
+* add patient -> set time and date for visit schedule ..
+* visit return all data ..
+* endpoints for recent visits [{name,age,sex,photo}]
+* endpoints for queue visits [{name,age,sex,photo}]
+* agenda by date 
+
+* array for clinic patients, name, id only 
+* number for clinic patients 

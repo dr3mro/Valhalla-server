@@ -10,8 +10,8 @@
 #include "gatekeeper/permissionmanager/permissionmanager.hpp"
 #include "gatekeeper/sessionmanager/sessionmanager.hpp"
 #include "gatekeeper/tokenmanager/tokenmanager.hpp"
-#include "types.hpp"
 #include "utils/global/callback.hpp"
+#include "utils/global/concepts.hpp"
 #include "utils/global/http.hpp"
 #include "utils/global/requester.hpp"
 
@@ -31,25 +31,25 @@ namespace api
             void removeSession(std::optional<uint64_t> client_id, const std::string& group);
 
             template <typename T>
-            bool canCreate(const Requester& requester, const std::string& group, const std::optional<jsoncons::json>& data_j, Http::Error& error);
+            bool canCreate(const Requester& requester, const std::optional<jsoncons::json>& data_j, Http::Error& error);
 
             template <typename T>
-            bool canRead(const Requester& requester, const std::string& group, uint64_t entity_id, Http::Error& error);
+            bool canRead(const Requester& requester, uint64_t entity_id, Http::Error& error);
 
             template <typename T>
-            bool canUpdate(const Requester& requester, const std::string& group, uint64_t entity_id, Http::Error& error);
+            bool canUpdate(const Requester& requester, uint64_t entity_id, Http::Error& error);
 
             template <typename T>
-            bool canDelete(const Requester& requester, const std::string& group, uint64_t id, Http::Error& error);
+            bool canDelete(const Requester& requester, uint64_t entity_id, Http::Error& error);
 
             template <typename T>
-            bool canManageStaff(const Requester& requester, const std::string& group, uint64_t id, Http::Error& error);
+            bool canManageStaff(const Requester& requester, uint64_t id, Http::Error& error);
 
             template <Client_t T>
-            bool canToggleActive(const Requester& requester, const std::string& group, uint64_t id, Http::Error& error);
+            bool canToggleActive(const Requester& requester, uint64_t id, Http::Error& error);
 
             template <Client_t T>
-            bool canGetServices(const Requester& requester, const std::string& group, uint64_t id, Http::Error& error);
+            bool canGetServices(const Requester& requester, uint64_t id, Http::Error& error);
 
             DOSDetector::Status isDosAttack(const DOSDetector::Request& request);
 

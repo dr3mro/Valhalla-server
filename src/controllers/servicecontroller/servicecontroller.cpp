@@ -2,6 +2,11 @@
 
 #include "controllers/servicecontroller/servicecontroller.hpp"
 
+#include "entities/services/clinics/clinics.hpp"   // IWYU pragma: keep
+#include "entities/services/laboratories.hpp"      // IWYU pragma: keep
+#include "entities/services/pharmacies.hpp"        // IWYU pragma: keep
+#include "entities/services/radiologycenters.hpp"  // IWYU pragma: keep
+
 template <Service_t T>
 void ServiceController<T>::Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
 {
@@ -28,6 +33,7 @@ void ServiceController<T>::Delete(CALLBACK_&& callback, const Requester&& reques
 template <Service_t T>
 void ServiceController<T>::Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
 {
+    // [ ] Fix search
     EntityController<T>::Search(std::move(callback), std::move(requester), data);
 }
 
@@ -38,10 +44,6 @@ void ServiceController<T>::Search(CALLBACK_&& callback, const Requester&& reques
     template void ServiceController<TYPE>::Delete(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id);                        \
     template void ServiceController<TYPE>::Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data);
 
-#include "entities/services/clinics/clinics.hpp"   // IWYU pragma : keep
-#include "entities/services/laboratories.hpp"      // IWYU pragma : keep
-#include "entities/services/pharmacies.hpp"        // IWYU pragma: keep
-#include "entities/services/radiologycenters.hpp"  // IWYU pragma : keep
 // Instantiate for all entity types
 
 INSTANTIATE_SERVICE_CONTROLLER(Clinics)

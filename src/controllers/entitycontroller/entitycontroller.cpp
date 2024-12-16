@@ -26,7 +26,7 @@ inline void __attribute((always_inline)) EntityController<T>::Create(CALLBACK_ &
             return;
         }
 
-        if (!gateKeeper->canCreate<T>(requester, T::getTableName(), request_j, error))
+        if (!gateKeeper->canCreate<T>(requester, request_j, error))
         {
             callback(error.code, error.message);
             return;
@@ -59,7 +59,7 @@ inline void __attribute((always_inline)) EntityController<T>::Read(CALLBACK_ &&c
         uint64_t       id        = request_j.at("id").as<uint64_t>();
         Http::Error    error;
 
-        if (!gateKeeper->canRead<T>(requester, T::getTableName(), id, error))
+        if (!gateKeeper->canRead<T>(requester, id, error))
         {
             callback(error.code, error.message);
             return;
@@ -116,7 +116,7 @@ inline void __attribute((always_inline)) EntityController<T>::Update(
             return;
         }
 
-        if (!gateKeeper->canUpdate<T>(requester, T::getTableName(), id.value(), error))
+        if (!gateKeeper->canUpdate<T>(requester, id.value(), error))
         {
             callback(error.code, error.message);
             return;
@@ -147,7 +147,7 @@ inline void __attribute((always_inline)) EntityController<T>::Delete(CALLBACK_ &
 
         Http::Error error;
 
-        if (!gateKeeper->canDelete<T>(requester, T::getTableName(), id.value(), error))
+        if (!gateKeeper->canDelete<T>(requester, id.value(), error))
         {
             callback(error.code, error.message);
             return;

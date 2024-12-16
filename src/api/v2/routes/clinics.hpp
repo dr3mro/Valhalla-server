@@ -52,8 +52,8 @@ namespace api
             void GetVisits(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback)
             {
                 // auto ctx = createContext(req, Context::Type::READ, "patients");
-                executeControllerMethod(clinicRegistry, "patients", &ClinicControllerBase::GetVisits, req, std::move(callback),
-                    stoll(req->getParameter("patient_id")), stoll(req->getParameter("clinic_id")));
+                executeControllerMethod(
+                    clinicRegistry, "patients", &ClinicControllerBase::GetVisits, req, std::move(callback), stoll(req->getParameter("patient_id")));
             }
 
             METHOD_LIST_BEGIN

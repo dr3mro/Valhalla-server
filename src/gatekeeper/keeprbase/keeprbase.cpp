@@ -1,5 +1,6 @@
 #include "gatekeeper/keeprbase/keeprbase.hpp"
 
+#include "utils/global/global.hpp"
 using namespace api::v2;
 
 bool KeeprBase::getLastLogoutTimeIfActive(std::optional<Types::ClientLoginData>& clientLoginData)
@@ -48,8 +49,7 @@ bool KeeprBase::setNowLoginTimeGetLastLogoutTime(std::optional<Types::ClientLogi
             "'{}', '{}') "
             "ON CONFLICT (id) DO UPDATE SET last_login = EXCLUDED.last_login "
             "RETURNING last_logout;",
-            clientLoginData->group.value(), clientLoginData->clientId.value(), clientLoginData->nowLoginTime.value(),
-            clientLoginData->nowLoginTime.value());
+            clientLoginData->group.value(), clientLoginData->clientId.value(), clientLoginData->nowLoginTime.value(), clientLoginData->nowLoginTime.value());
 
         auto result = databaseController->executeQuery(query);
         if (!result.has_value())
@@ -116,14 +116,14 @@ std::string KeeprBase::current_time_to_utc_string()
     std::tm tm = *std::gmtime(&now_t);
 
     // Format the time using fmt::format
-    std::string formatted_time = fmt::format("{:04}-{:02}-{:02} {:02}:{:02}:{:02} +0000", tm.tm_year + 1900,
-                                             tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
+    std::string formatted_time =
+        fmt::format("{:04}-{:02}-{:02} {:02}:{:02}:{:02} +0000", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
 
     return formatted_time;
 }
 
-bool KeeprBase::decodeToken(std::optional<Types::ClientLoginData>& clientLoginData, std::string& message,
-                            jwt::decoded_jwt<jwt::traits::kazuho_picojson>& decoedToken)
+bool KeeprBase::decodeToken(
+    std::optional<Types::ClientLoginData>& clientLoginData, std::string& message, jwt::decoded_jwt<jwt::traits::kazuho_picojson>& decoedToken)
 {
     try
     {
@@ -156,8 +156,8 @@ bool KeeprBase::decodeToken(std::optional<Types::ClientLoginData>& clientLoginDa
     }
     return false;
 }
-bool KeeprBase::validateToken(std::optional<Types::ClientLoginData>& clientLoginData, std::string& message,
-                              jwt::decoded_jwt<jwt::traits::kazuho_picojson>& decodedToken)
+bool KeeprBase::validateToken(
+    std::optional<Types::ClientLoginData>& clientLoginData, std::string& message, jwt::decoded_jwt<jwt::traits::kazuho_picojson>& decodedToken)
 {
     try
     {
@@ -197,8 +197,7 @@ bool KeeprBase::validateToken(std::optional<Types::ClientLoginData>& clientLogin
     return false;
 }
 
-jwt::verifier<jwt::default_clock, jwt::traits::kazuho_picojson> KeeprBase::createTokenVerifier(
-    const std::optional<Types::ClientLoginData>& clientLoginData)
+jwt::verifier<jwt::default_clock, jwt::traits::kazuho_picojson> KeeprBase::createTokenVerifier(const std::optional<Types::ClientLoginData>& clientLoginData)
 {
     if (!clientLoginData || !clientLoginData->username || !clientLoginData->clientId || !clientLoginData->group)
     {

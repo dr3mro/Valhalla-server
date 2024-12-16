@@ -1,22 +1,6 @@
 #pragma once
 #include <optional>
-
-#include "entities/appointments/base/appointment.hpp"
-#include "entities/base/case.hpp"
-#include "entities/base/client.hpp"
-#include "entities/base/service.hpp"
-
-template <typename T>
-concept Client_t = std::is_base_of_v<Client, T>;
-
-template <typename T>
-concept Service_t = std::is_base_of_v<Service, T>;
-
-template <typename T>
-concept Case_t = std::is_base_of_v<Case, T>;
-
-template <typename T>
-concept Appointment_t = std::is_base_of_v<Appointment, T>;
+#include <string>
 
 namespace api
 {

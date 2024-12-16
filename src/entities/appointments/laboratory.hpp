@@ -6,6 +6,7 @@ class LaboratoryAppointment : public Appointment
 {
    private:
     static constexpr auto TABLENAME = "laboratories_appointments";
+    static constexpr auto ORGNAME   = "laboratories";
 
    public:
     template <typename T>
@@ -14,4 +15,8 @@ class LaboratoryAppointment : public Appointment
     }
     static constexpr auto getTableName() { return TABLENAME; }
     virtual ~LaboratoryAppointment() override = default;
+    static std::optional<std::string> getServicePermissionsQuery(const std::string &service_name, std::uint64_t service_id)
+    {
+        return getServicePermissionsQueryImpl(ORGNAME, service_name, service_id);
+    }
 };
