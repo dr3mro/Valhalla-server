@@ -19,6 +19,8 @@ namespace api
             bool                                        isAdminOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error);
             std::optional<Permissions::StaffPermission> isStaffOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error);
 
+            bool assert_group_id_match(const Requester& requester, const std::string& groupname, uint64_t client_id, Http::Error& error);
+
            private:
             std::shared_ptr<DatabaseController> db_ctl = Store::getObject<DatabaseController>();
         };
