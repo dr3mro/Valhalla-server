@@ -1,5 +1,7 @@
 #pragma once
 
+#include <optional>
+
 #include "controllers/databasecontroller/databasecontroller.hpp"
 #include "gatekeeper/permissionmanager/permissions.hpp"
 #include "utils/global/http.hpp"
@@ -13,13 +15,52 @@ namespace api
            public:
             PermissionManagerPrivate()          = default;
             virtual ~PermissionManagerPrivate() = default;
-            bool hasPermission(const std::optional<Permissions::StaffPermission>& entityStaffPermissions, const Permissions::PowerLevel& powerlevel);
+            bool hasPermission(const Requester& requester, const std::optional<jsoncons::json>& permissions_j, const Permissions::PowerLevel& powerlevel,
+                const std::string& service_name, Http::Error& error);
 
-            bool                                        isOwnerOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error);
-            bool                                        isAdminOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error);
-            std::optional<Permissions::StaffPermission> isStaffOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error);
+            bool isOwnerOfService(
+                const Requester& requester, const std::optional<jsoncons::json>& permissions_j, const std::string& service_name, Http::Error& error);
+
+            bool isAdminOfService(
+                const Requester& requester, const std::optional<jsoncons::json>& permissions_j, const std::string& service_name, Http::Error& error);
+
+            std::optional<Permissions::StaffPermission> isStaffOfService(
+                const Requester& requester, const std::optional<jsoncons::json>& permissions_j, const std::string& service_name, Http::Error& error);
 
             bool assert_group_id_match(const Requester& requester, const std::string& groupname, uint64_t client_id, Http::Error& error);
+
+            bool preServiceCreateChecks(const Requester& requester, const std::optional<jsoncons::json>& service_j, Http::Error& error);
+
+            bool isOwnerOrAdminOrHasPermission(
+                const Requester& requester, const std::optional<jsoncons::json>& permissions_j, const std::string& service_name, Http::Error& error);
+
+            bool isOwnerOrAdmin(
+                const Requester& requester, const std::optional<jsoncons::json>& permissions_j, const std::string& service_name, Http::Error& error);
+
+            template <typename T>
+            std::optional<T> extract_json_value_safely(
+                const std::optional<jsoncons::json>& service_j, const std::string& key, const std::string& service_name, Http::Error& error)
+            {
+                if (!service_j.has_value() || service_j->empty())
+                {
+                    error.code    = Http::Status::BAD_REQUEST;
+                    error.message = "Service data is not provided for " + service_name;
+                    return std::nullopt;
+                }
+
+                T value;
+                try
+                {
+                    value = service_j->at(key).as<T>();
+                }
+                catch (const std::exception& e)
+                {
+                    error.message = "Failed to extract " + key;
+                    error.code    = Http::Status::BAD_REQUEST;
+                    return std::nullopt;
+                }
+                return value;
+            }
 
             template <typename Func, typename... Args>
             std::optional<jsoncons::json> getPermissionsOfEntity(Func&& func, Args&... args)

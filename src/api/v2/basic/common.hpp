@@ -6,16 +6,14 @@
 #include <fmt/format.h>
 
 #include <memory>
-#include <optional>
 #include <string>
 #include <string_view>
 
 #include "api/v2/helper/helper.hpp"
-#include "utils/global/requester.hpp"
-// #include "gatekeeper/gatekeeper.hpp"
-// #include "gatekeeper/permissionmanager/context.hpp"
 #include "utils/global/callback.hpp"
 #include "utils/global/http.hpp"
+#include "utils/global/requester.hpp"
+
 #define RATELIMIT "api::v2::Filters::RateLimit"
 #define AUTH "api::v2::Filters::Auth"
 #define ELAPSED "api::v2::MiddleWares::ElapsedTime"
