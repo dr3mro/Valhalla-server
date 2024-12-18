@@ -144,7 +144,7 @@ class Entity : public Base
         {
             Types::Search_t searchdata = std::get<Types::Search_t>(getData());
             query                      = fmt::format(
-                "SELECT * FROM {}_safe WHERE {} ILIKE '%{}%' ORDER BY {} {} "
+                "SELECT * FROM {}_safe WHERE {}::text ILIKE '%{}%' ORDER BY {} {} "
                                      "LIMIT {} OFFSET {};",
                 tablename, searchdata.filter, searchdata.keyword, searchdata.order_by, searchdata.direction, searchdata.limit + 1, searchdata.offset);
         }
