@@ -94,16 +94,7 @@ bool PermissionManager::canRead(const Requester& requester, uint64_t service_id,
 {
     const std::string service_name = T::getTableName();
 
-    std::optional<std::string> query = T::getServicePermissionsQuery(service_name, service_id);
-
-    if (!query.has_value() || query->empty())
-    {
-        error.message = fmt::format("Failed to create query for service {} canRead", service_name);
-        error.code    = Http::Status::BAD_REQUEST;
-        return false;
-    }
-
-    const jsoncons::json permissions_j = db_ctl->getPermissions(query.value());
+    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
     if (pm_priv->isOwnerOfService(requester, permissions_j, error) || pm_priv->isAdminOfService(requester, permissions_j, error))
     {
@@ -132,16 +123,7 @@ bool PermissionManager::canUpdate(const Requester& requester, uint64_t service_i
 {
     const std::string service_name = T::getTableName();
 
-    std::optional<std::string> query = T::getServicePermissionsQuery(service_name, service_id);
-
-    if (!query.has_value() || query->empty())
-    {
-        error.message = fmt::format("Failed to create query for service {} update", service_name);
-        error.code    = Http::Status::BAD_REQUEST;
-        return false;
-    }
-
-    const jsoncons::json permissions_j = db_ctl->getPermissions(query.value());
+    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
     if (pm_priv->isOwnerOfService(requester, permissions_j, error) || pm_priv->isAdminOfService(requester, permissions_j, error))
     {
@@ -169,16 +151,9 @@ bool PermissionManager::canUpdate(const Requester& requester, uint64_t service_i
 template <Service_t T>
 bool PermissionManager::canDelete(const Requester& requester, const uint64_t service_id, Http::Error& error)
 {
-    const std::string          service_name = T::getTableName();
-    std::optional<std::string> query        = T::getServicePermissionsQuery(service_name, service_id);
-    if (!query.has_value() || query->empty())
-    {
-        error.message = fmt::format("Failed to create query for service {} update", service_name);
-        error.code    = Http::Status::BAD_REQUEST;
-        return false;
-    }
+    const std::string service_name = T::getTableName();
 
-    const jsoncons::json permissions_j = db_ctl->getPermissions(query.value());
+    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
     if (pm_priv->isOwnerOfService(requester, permissions_j, error))
     {
@@ -192,15 +167,7 @@ bool PermissionManager::canManageStaff(const Requester& requester, uint64_t serv
 {
     std::string service_name = T::getTableName();
 
-    std::optional<std::string> query = T::getServicePermissionsQuery(service_name, service_id);
-    if (!query.has_value() || query->empty())
-    {
-        error.message = "Failed to create query to get service permissions.";
-        error.code    = api::v2::Http::BAD_REQUEST;
-        return false;
-    }
-
-    const std::optional<jsoncons::json> permissions_j = db_ctl->getPermissions(query.value());
+    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
     if (!permissions_j.has_value() || permissions_j->empty())
     {
@@ -221,14 +188,7 @@ bool PermissionManager::canCreate(const Requester& requester, const std::optiona
 {
     std::string service_name = T::getTableName();
 
-    std::optional<std::string> query = T::getPermissionsQueryForCreate(data_j);
-
-    if (!query.has_value() || query->empty())
-    {
-        return false;
-    }
-
-    std::optional<jsoncons::json> permissions_j = db_ctl->getPermissions(query.value());
+    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getPermissionsQueryForCreate, data_j);
 
     if (!permissions_j.has_value() || permissions_j->empty())
     {
@@ -264,13 +224,7 @@ bool PermissionManager::canRead(const Requester& requester, const uint64_t id, H
 {
     std::string service_name = T::getTableName();
 
-    std::optional<std::string> query = T::getPermissionsQueryForRead(id);
-    if (!query.has_value() || query->empty())
-    {
-        return false;
-    }
-
-    std::optional<jsoncons::json> permissions_j = db_ctl->getPermissions(query.value());
+    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getPermissionsQueryForRead, id);
 
     if (!permissions_j.has_value() || permissions_j->empty())
     {
@@ -305,14 +259,7 @@ bool PermissionManager::canUpdate(const Requester& requester, const uint64_t id,
 {
     std::string service_name = T::getTableName();
 
-    std::optional<std::string> query = T::getPermissionsQueryForUpdate(id);
-
-    if (!query.has_value() || query->empty())
-    {
-        return false;
-    }
-
-    std::optional<jsoncons::json> permissions_j = db_ctl->getPermissions(query.value());
+    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(&T::getPermissionsQueryForUpdate, id);
 
     if (!permissions_j.has_value() || permissions_j->empty())
     {
@@ -344,17 +291,8 @@ bool PermissionManager::canUpdate(const Requester& requester, const uint64_t id,
 template <Case_t T>
 bool PermissionManager::canDelete(const Requester& requester, const uint64_t id, Http::Error& error)
 {
-    std::string                service_name = T::getTableName();
-    std::optional<std::string> query        = T::getPermissionsQueryForDelete(id);
-
-    if (!query.has_value() || query->empty())
-    {
-        error.message = "Failed to create delete query for" + service_name;
-        error.code    = Http::Status::BAD_REQUEST;
-        return false;
-    }
-
-    std::optional<jsoncons::json> permissions_j = db_ctl->getPermissions(query.value());
+    std::string                   service_name  = T::getTableName();
+    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(&T::getPermissionsQueryForDelete, id);
 
     if (!permissions_j.has_value() || permissions_j->empty())
     {
@@ -408,16 +346,7 @@ bool PermissionManager::canCreate(const Requester& requester, const std::optiona
         return false;
     }
 
-    std::optional<std::string> query = T::getServicePermissionsQuery(service_name, clinic_id);
-
-    if (!query.has_value() || query->empty())
-    {
-        error.message = "Failed to create delete query for" + service_name;
-        error.code    = Http::Status::BAD_REQUEST;
-        return false;
-    }
-
-    std::optional<jsoncons::json> permissions_j = db_ctl->getPermissions(query.value());
+    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, clinic_id);
 
     if (!permissions_j.has_value() || permissions_j->empty())
     {
@@ -450,17 +379,9 @@ bool PermissionManager::canCreate(const Requester& requester, const std::optiona
 template <Appointment_t T>
 bool PermissionManager::canRead(const Requester& requester, uint64_t service_id, Http::Error& error)
 {
-    std::string                service_name = T::getTableName();
-    std::optional<std::string> query        = T::getServicePermissionsQuery(service_name, service_id);
+    std::string service_name = T::getTableName();
 
-    if (!query.has_value() || query->empty())
-    {
-        error.message = "Failed to create delete query for" + service_name;
-        error.code    = Http::Status::BAD_REQUEST;
-        return false;
-    }
-
-    std::optional<jsoncons::json> permissions_j = db_ctl->getPermissions(query.value());
+    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
     if (!permissions_j.has_value() || permissions_j->empty())
     {
@@ -495,17 +416,9 @@ bool PermissionManager::canRead(const Requester& requester, uint64_t service_id,
 template <Appointment_t T>
 bool PermissionManager::canUpdate(const Requester& requester, const uint64_t service_id, Http::Error& error)
 {
-    std::string                service_name = T::getTableName();
-    std::optional<std::string> query        = T::getServicePermissionsQuery(service_name, service_id);
+    std::string service_name = T::getTableName();
 
-    if (!query.has_value() || query->empty())
-    {
-        error.message = "Failed to create update query for" + service_name;
-        error.code    = Http::Status::BAD_REQUEST;
-        return false;
-    }
-
-    std::optional<jsoncons::json> permissions_j = db_ctl->getPermissions(query.value());
+    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
     if (!permissions_j.has_value() || permissions_j->empty())
     {
@@ -540,17 +453,9 @@ bool PermissionManager::canUpdate(const Requester& requester, const uint64_t ser
 template <Appointment_t T>
 bool PermissionManager::canDelete(const Requester& requester, uint64_t service_id, Http::Error& error)
 {
-    std::string                service_name = T::getTableName();
-    std::optional<std::string> query        = T::getServicePermissionsQuery(service_name, service_id);
+    std::string service_name = T::getTableName();
 
-    if (!query.has_value() || query->empty())
-    {
-        error.message = "Failed to create delete query for" + service_name;
-        error.code    = Http::Status::BAD_REQUEST;
-        return false;
-    }
-
-    std::optional<jsoncons::json> permissions_j = db_ctl->getPermissions(query.value());
+    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
     if (!permissions_j.has_value() || permissions_j->empty())
     {

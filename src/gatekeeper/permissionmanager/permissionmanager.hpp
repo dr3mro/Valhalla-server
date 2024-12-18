@@ -4,7 +4,6 @@
 #include <jsoncons/basic_json.hpp>
 #include <memory>
 
-#include "controllers/databasecontroller/databasecontroller.hpp"
 #include "gatekeeper/permissionmanager/permissionmanager_private.hpp"
 #include "utils/global/concepts.hpp"
 #include "utils/global/http.hpp"
@@ -81,7 +80,6 @@ namespace api
             bool canDelete(const Requester& requester, uint64_t id, Http::Error& error);
 
            private:
-            std::shared_ptr<DatabaseController>       db_ctl  = Store::getObject<DatabaseController>();
             std::shared_ptr<PermissionManagerPrivate> pm_priv = Store::getObject<PermissionManagerPrivate>();
         };
     }  // namespace v2
