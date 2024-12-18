@@ -1,6 +1,7 @@
 #include "gatekeeper/permissionmanager/permissionmanager_private.hpp"
 
 #include <jsoncons/json.hpp>
+#include <string>
 
 #include "gatekeeper/permissionmanager/permissions.hpp"
 #include "utils/global/http.hpp"
@@ -62,8 +63,20 @@ std::optional<Permissions::StaffPermission> PermissionManagerPrivate::isStaffOfS
     }
     catch (const std::exception& e)
     {
-        error.code    = Http::Status::BAD_REQUEST;
+        error.code    = Http::Status::FORBIDDEN;
         error.message = std::string("Invalid staff permission: ") + e.what();
     }
     return std::nullopt;
+}
+
+bool PermissionManagerPrivate::assert_group_id_match(const Requester& requester, const std::string& groupname, uint64_t client_id, Http::Error& error)
+{
+    if (requester.group != groupname || requester.id != client_id)
+    {
+        error.code    = Http::Status::FORBIDDEN;
+        error.message = "You are not allowed to manage client with id: " + std::to_string(client_id) + " and group: " + groupname;
+        return false;
+    }
+
+    return true;
 }

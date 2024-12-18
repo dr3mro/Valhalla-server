@@ -18,7 +18,7 @@ namespace api
            public:
             PermissionManager()          = default;
             virtual ~PermissionManager() = default;
-
+            // client is either user or provider
             template <Client_t T>
             bool canCreate(const Requester& requester, const std::optional<jsoncons::json>& data_j, Http::Error& error);
 
@@ -26,7 +26,7 @@ namespace api
             bool canRead(const Requester& requester, uint64_t client_id, Http::Error& error);
 
             template <Client_t T>
-            bool canUpdate(const Requester& requester, uint64_t entity_id, Http::Error& error);
+            bool canUpdate(const Requester& requester, uint64_t client_id, Http::Error& error);
 
             template <Client_t T>
             bool canDelete(const Requester& requester, uint64_t client_id, Http::Error& error);
@@ -37,6 +37,7 @@ namespace api
             template <Client_t T>
             bool canGetServices(const Requester& requester, uint64_t client_id, Http::Error& error);
 
+            // Service is either a clinic, pharmacy, lab or rad center
             template <Service_t T>
             bool canCreate(const Requester& requester, const std::optional<jsoncons::json>& service_j, Http::Error& error);
 
@@ -52,6 +53,8 @@ namespace api
             template <typename T>
             bool canManageStaff(const Requester& requester, uint64_t service_id, Http::Error& error);
 
+            // case is a data set inside clinic workflow
+
             template <Case_t T>
             bool canCreate(const Requester& requester, const std::optional<jsoncons::json>& data_j, Http::Error& error);
 
@@ -64,6 +67,7 @@ namespace api
             template <Case_t T>
             bool canDelete(const Requester& requester, uint64_t id, Http::Error& error);
 
+            // appointment is either for any service
             template <Appointment_t T>
             bool canCreate(const Requester& requester, const std::optional<jsoncons::json>& service_j, Http::Error& error);
 
