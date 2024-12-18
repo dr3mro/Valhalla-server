@@ -8,7 +8,6 @@
 #include <optional>
 
 #include "gatekeeper/includes.hpp"  // IWYU pragma: keep
-#include "gatekeeper/permissionmanager/permissions.hpp"
 #include "utils/global/concepts.hpp"
 #include "utils/global/http.hpp"
 
@@ -50,43 +49,7 @@ bool PermissionManager::canGetServices(const Requester& requester, const uint64_
 template <Service_t T>
 bool PermissionManager::canCreate(const Requester& requester, const std::optional<jsoncons::json>& service_j, Http::Error& error)
 {
-    if (!service_j.has_value())
-    {
-        error.code    = Http::Status::BAD_REQUEST;
-        error.message = "Service data is not provided.";
-        return false;
-    }
-
-    uint64_t owner_id;
-    uint64_t admin_id;
-
-    try
-    {
-        owner_id = service_j->at("owner_id").as<uint64_t>();
-        admin_id = service_j->at("admin_id").as<uint64_t>();
-    }
-    catch (const std::exception& e)
-    {
-        error.code    = Http::Status::BAD_REQUEST;
-        error.message = std::string("failed to extract id ") + e.what();
-        return false;
-    }
-
-    if (owner_id != requester.id || admin_id != requester.id)
-    {
-        error.code    = Http::Status::BAD_REQUEST;
-        error.message = "Initial service admin_id and owner_id should be equal to that of provider_id";
-        return false;
-    }
-
-    if (requester.group != "providers")
-    {
-        error.code    = Http::Status::BAD_REQUEST;
-        error.message = "You are not allowed to create a service, you are not a provider.";
-        return false;
-    }
-
-    return true;
+    return pm_priv->preServiceCreateChecks(requester, service_j, error);
 }
 
 template <Service_t T>
@@ -96,26 +59,7 @@ bool PermissionManager::canRead(const Requester& requester, uint64_t service_id,
 
     std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
-    if (pm_priv->isOwnerOfService(requester, permissions_j, error) || pm_priv->isAdminOfService(requester, permissions_j, error))
-    {
-        return true;
-    }
-    auto serviceStaff = pm_priv->isStaffOfService(requester, permissions_j, error);
-
-    if (!serviceStaff.has_value())
-    {
-        error.code    = Http::Status::BAD_REQUEST;
-        error.message = fmt::format("Error reading service staff {} : {}", service_name, error.message);
-        return false;
-    }
-
-    if (!pm_priv->hasPermission(serviceStaff, Permissions::PowerLevel::CAN_READ))
-    {
-        error.code    = Http::Status::FORBIDDEN;
-        error.message = "You don't have the permission to read this service";
-        return false;
-    }
-    return true;
+    return pm_priv->isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }
 
 template <Service_t T>
@@ -125,27 +69,7 @@ bool PermissionManager::canUpdate(const Requester& requester, uint64_t service_i
 
     std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
-    if (pm_priv->isOwnerOfService(requester, permissions_j, error) || pm_priv->isAdminOfService(requester, permissions_j, error))
-    {
-        return true;
-    }
-
-    auto serviceStaff = pm_priv->isStaffOfService(requester, permissions_j, error);
-
-    if (!serviceStaff.has_value())
-    {
-        error.code    = Http::Status::BAD_REQUEST;
-        error.message = fmt::format("Error reading service staff {} : {}", service_name, error.message);
-        return false;
-    }
-
-    if (!pm_priv->hasPermission(serviceStaff, Permissions::PowerLevel::CAN_WRITE))
-    {
-        error.code    = Http::Status::FORBIDDEN;
-        error.message = "You don't have the permission to update this service";
-        return false;
-    }
-    return true;
+    return pm_priv->isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }
 
 template <Service_t T>
@@ -155,7 +79,7 @@ bool PermissionManager::canDelete(const Requester& requester, const uint64_t ser
 
     std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
-    if (pm_priv->isOwnerOfService(requester, permissions_j, error))
+    if (pm_priv->isOwnerOfService(requester, permissions_j, service_name, error))
     {
         return true;
     }
@@ -169,18 +93,7 @@ bool PermissionManager::canManageStaff(const Requester& requester, uint64_t serv
 
     std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
-    if (!permissions_j.has_value() || permissions_j->empty())
-    {
-        error.message = "Failed get service permissions.";
-        error.code    = api::v2::Http::BAD_REQUEST;
-        return false;
-    }
-
-    if (pm_priv->isOwnerOfService(requester, permissions_j, error) || pm_priv->isAdminOfService(requester, permissions_j, error))
-    {
-        return true;
-    }
-    return false;
+    return pm_priv->isOwnerOrAdmin(requester, permissions_j, service_name, error);
 }
 
 template <Case_t T>
@@ -190,33 +103,7 @@ bool PermissionManager::canCreate(const Requester& requester, const std::optiona
 
     std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getPermissionsQueryForCreate, data_j);
 
-    if (!permissions_j.has_value() || permissions_j->empty())
-    {
-        error.code    = Http::Status::BAD_REQUEST;
-        error.message = "failed to get permissions for " + service_name;
-        return false;
-    }
-
-    if (pm_priv->isOwnerOfService(requester, permissions_j.value(), error) || pm_priv->isAdminOfService(requester, permissions_j.value(), error))
-    {
-        return true;
-    }
-
-    auto serviceStaff = pm_priv->isStaffOfService(requester, permissions_j, error);
-    if (!serviceStaff.has_value())
-    {
-        error.code    = Http::Status::FORBIDDEN;
-        error.message = "You are not a staff of this service" + error.message;
-        return false;
-    }
-
-    if (!pm_priv->hasPermission(serviceStaff, Permissions::PowerLevel::CAN_WRITE))
-    {
-        error.code    = Http::Status::FORBIDDEN;
-        error.message = "You don't have the permission to create " + service_name;
-        return false;
-    }
-    return true;
+    return pm_priv->isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }
 
 template <Case_t T>
@@ -226,32 +113,7 @@ bool PermissionManager::canRead(const Requester& requester, const uint64_t id, H
 
     std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getPermissionsQueryForRead, id);
 
-    if (!permissions_j.has_value() || permissions_j->empty())
-    {
-        error.code    = Http::Status::BAD_REQUEST;
-        error.message = "failed to get permissions for " + service_name;
-        return false;
-    }
-
-    if (pm_priv->isOwnerOfService(requester, permissions_j.value(), error) || pm_priv->isAdminOfService(requester, permissions_j.value(), error))
-    {
-        return true;
-    }
-
-    auto serviceStaff = pm_priv->isStaffOfService(requester, permissions_j, error);
-
-    if (!serviceStaff.has_value())
-    {
-        return false;
-    }
-
-    if (!pm_priv->hasPermission(serviceStaff, Permissions::PowerLevel::CAN_READ))
-    {
-        error.code    = Http::Status::FORBIDDEN;
-        error.message = "You don't have the permission to read " + service_name;
-        return false;
-    }
-    return true;
+    return pm_priv->isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }
 
 template <Case_t T>
@@ -261,31 +123,7 @@ bool PermissionManager::canUpdate(const Requester& requester, const uint64_t id,
 
     std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(&T::getPermissionsQueryForUpdate, id);
 
-    if (!permissions_j.has_value() || permissions_j->empty())
-    {
-        error.code    = Http::Status::BAD_REQUEST;
-        error.message = "failed to get permissions for " + service_name;
-        return false;
-    }
-    if (pm_priv->isOwnerOfService(requester, permissions_j.value(), error) || pm_priv->isAdminOfService(requester, permissions_j.value(), error))
-    {
-        return true;
-    }
-
-    auto serviceStaff = pm_priv->isStaffOfService(requester, permissions_j, error);
-
-    if (!serviceStaff.has_value())
-    {
-        return false;
-    }
-
-    if (!pm_priv->hasPermission(serviceStaff, Permissions::PowerLevel::CAN_WRITE))
-    {
-        error.code    = Http::Status::FORBIDDEN;
-        error.message = "You don't have the permission to update " + service_name;
-        return false;
-    }
-    return true;
+    return pm_priv->isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }
 
 template <Case_t T>
@@ -294,86 +132,23 @@ bool PermissionManager::canDelete(const Requester& requester, const uint64_t id,
     std::string                   service_name  = T::getTableName();
     std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(&T::getPermissionsQueryForDelete, id);
 
-    if (!permissions_j.has_value() || permissions_j->empty())
-    {
-        error.message = "Failed to read permissions for" + service_name;
-        error.code    = Http::Status::BAD_REQUEST;
-        return false;
-    }
-
-    if (pm_priv->isOwnerOfService(requester, permissions_j.value(), error) || pm_priv->isAdminOfService(requester, permissions_j.value(), error))
-    {
-        return true;
-    }
-    auto serviceStaff = pm_priv->isStaffOfService(requester, permissions_j, error);
-
-    if (!serviceStaff.has_value())
-    {
-        error.code    = Http::Status::BAD_REQUEST;
-        error.message = fmt::format("Error reading service staff for {}", T::getOrgName());
-        return false;
-    }
-
-    if (!pm_priv->hasPermission(serviceStaff, Permissions::PowerLevel::CAN_DELETE))
-    {
-        error.code    = Http::Status::FORBIDDEN;
-        error.message = "You don't have the permission to delete " + service_name;
-        return false;
-    }
-    return true;
+    return pm_priv->isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }
 
 template <Appointment_t T>
 bool PermissionManager::canCreate(const Requester& requester, const std::optional<jsoncons::json>& service_j, Http::Error& error)
 {
     std::string service_name = T::getTableName();
-    if (!service_j.has_value() || service_j->empty())
+
+    auto service_id = pm_priv->extract_json_value_safely<uint64_t>(service_j, "clinic_id", service_name, error);
+
+    if (!service_id.has_value())
     {
-        error.code    = Http::Status::BAD_REQUEST;
-        error.message = "Service is not provided.";
         return false;
     }
+    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id.value());
 
-    uint64_t clinic_id;
-    try
-    {
-        clinic_id = service_j->at("clinic_id").as<uint64_t>();
-    }
-    catch (const std::exception& e)
-    {
-        error.message = "Failed to extract clinic_id";
-        error.code    = Http::Status::BAD_REQUEST;
-        return false;
-    }
-
-    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, clinic_id);
-
-    if (!permissions_j.has_value() || permissions_j->empty())
-    {
-        error.message = "Failed to read permissions for" + service_name;
-        error.code    = Http::Status::BAD_REQUEST;
-        return false;
-    }
-
-    if (pm_priv->isOwnerOfService(requester, permissions_j.value(), error) || pm_priv->isAdminOfService(requester, permissions_j.value(), error))
-    {
-        return true;
-    }
-    auto serviceStaff = pm_priv->isStaffOfService(requester, permissions_j, error);
-    if (!serviceStaff.has_value())
-    {
-        error.code    = Http::Status::BAD_REQUEST;
-        error.message = "Error reading service staff " + service_name;
-        return false;
-    }
-
-    if (!pm_priv->hasPermission(serviceStaff, Permissions::PowerLevel::CAN_WRITE))
-    {
-        error.code    = Http::Status::FORBIDDEN;
-        error.message = "You don't have the permission to create " + service_name;
-        return false;
-    }
-    return true;
+    return pm_priv->isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }
 
 template <Appointment_t T>
@@ -383,34 +158,7 @@ bool PermissionManager::canRead(const Requester& requester, uint64_t service_id,
 
     std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
-    if (!permissions_j.has_value() || permissions_j->empty())
-    {
-        error.message = "Failed to read permissions for" + service_name;
-        error.code    = Http::Status::BAD_REQUEST;
-        return false;
-    }
-
-    if (pm_priv->isOwnerOfService(requester, permissions_j.value(), error) || pm_priv->isAdminOfService(requester, permissions_j.value(), error))
-    {
-        return true;
-    }
-
-    auto serviceStaff = pm_priv->isStaffOfService(requester, permissions_j, error);
-
-    if (!serviceStaff.has_value())
-    {
-        error.code    = Http::Status::BAD_REQUEST;
-        error.message = "Error reading service staff" + service_name;
-        return false;
-    }
-
-    if (!pm_priv->hasPermission(serviceStaff, Permissions::PowerLevel::CAN_READ))
-    {
-        error.code    = Http::Status::FORBIDDEN;
-        error.message = "You don't have the permission to read " + service_name;
-        return false;
-    }
-    return true;
+    return pm_priv->isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }
 
 template <Appointment_t T>
@@ -420,34 +168,7 @@ bool PermissionManager::canUpdate(const Requester& requester, const uint64_t ser
 
     std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
-    if (!permissions_j.has_value() || permissions_j->empty())
-    {
-        error.message = "Failed to update permissions for" + service_name;
-        error.code    = Http::Status::BAD_REQUEST;
-        return false;
-    }
-
-    if (pm_priv->isOwnerOfService(requester, permissions_j.value(), error) || pm_priv->isAdminOfService(requester, permissions_j.value(), error))
-    {
-        return true;
-    }
-
-    auto serviceStaff = pm_priv->isStaffOfService(requester, permissions_j, error);
-
-    if (!serviceStaff.has_value())
-    {
-        error.code    = Http::Status::BAD_REQUEST;
-        error.message = "Error reading service staff" + service_name;
-        return false;
-    }
-
-    if (!pm_priv->hasPermission(serviceStaff, Permissions::PowerLevel::CAN_WRITE))
-    {
-        error.code    = Http::Status::FORBIDDEN;
-        error.message = "You don't have the permission to update " + service_name;
-        return false;
-    }
-    return true;
+    return pm_priv->isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }
 
 template <Appointment_t T>
@@ -457,33 +178,7 @@ bool PermissionManager::canDelete(const Requester& requester, uint64_t service_i
 
     std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
-    if (!permissions_j.has_value() || permissions_j->empty())
-    {
-        error.message = "Failed to read permissions for" + service_name;
-        error.code    = Http::Status::BAD_REQUEST;
-        return false;
-    }
-
-    if (pm_priv->isOwnerOfService(requester, permissions_j.value(), error) || pm_priv->isAdminOfService(requester, permissions_j.value(), error))
-    {
-        return true;
-    }
-    auto serviceStaff = pm_priv->isStaffOfService(requester, permissions_j, error);
-
-    if (!serviceStaff.has_value())
-    {
-        error.code    = Http::Status::BAD_REQUEST;
-        error.message = "Error reading service staff" + service_name;
-        return false;
-    }
-
-    if (!pm_priv->hasPermission(serviceStaff, Permissions::PowerLevel::CAN_DELETE))
-    {
-        error.code    = Http::Status::FORBIDDEN;
-        error.message = "You don't have the permission to delete " + service_name;
-        return false;
-    }
-    return true;
+    return pm_priv->isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }
 
 #define INSTANTIATE_PERMISSION_CRUD(TYPE)                                                                                   \
