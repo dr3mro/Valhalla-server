@@ -5,7 +5,7 @@
 #include <memory>
 
 #include "controllers/databasecontroller/databasecontroller.hpp"
-#include "gatekeeper/permissionmanager/permissions.hpp"
+#include "gatekeeper/permissionmanager/permissionmanager_private.hpp"
 #include "utils/global/concepts.hpp"
 #include "utils/global/http.hpp"
 #include "utils/global/requester.hpp"
@@ -18,11 +18,6 @@ namespace api
            public:
             PermissionManager()          = default;
             virtual ~PermissionManager() = default;
-            bool hasPermission(const std::optional<Permissions::StaffPermission>& entityStaffPermissions, const Permissions::PowerLevel& powerlevel);
-
-            bool                                        isOwnerOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error);
-            bool                                        isAdminOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error);
-            std::optional<Permissions::StaffPermission> isStaffOfService(const Requester& requester, const jsoncons::json& permissions_j, Http::Error& error);
 
             template <Client_t T>
             bool canCreate(const Requester& requester, const std::optional<jsoncons::json>& data_j, Http::Error& error);
@@ -82,7 +77,8 @@ namespace api
             bool canDelete(const Requester& requester, uint64_t id, Http::Error& error);
 
            private:
-            std::shared_ptr<DatabaseController> db_ctl = Store::getObject<DatabaseController>();
+            std::shared_ptr<DatabaseController>       db_ctl  = Store::getObject<DatabaseController>();
+            std::shared_ptr<PermissionManagerPrivate> pm_priv = Store::getObject<PermissionManagerPrivate>();
         };
     }  // namespace v2
 }  // namespace api
