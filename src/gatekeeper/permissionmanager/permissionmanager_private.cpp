@@ -159,11 +159,15 @@ bool api::v2::PermissionManagerPrivate::preServiceCreateChecks(const Requester& 
 bool api::v2::PermissionManagerPrivate::isOwnerOrAdminOrHasPermission(
     const Requester& requester, const std::optional<jsoncons::json>& permissions_j, const std::string& service_name, Http::Error& error)
 {
-    if (!this->isOwnerOrAdmin(requester, permissions_j, service_name, error) ||
-        !this->hasPermission(requester, permissions_j, Permissions::PowerLevel::CAN_DELETE, service_name, error))
+    if (this->isOwnerOrAdmin(requester, permissions_j, service_name, error))
+    {
+        return true;
+    }
+
+    if (!this->hasPermission(requester, permissions_j, Permissions::PowerLevel::CAN_DELETE, service_name, error))
     {
         error.code    = Http::Status::FORBIDDEN;
-        error.message = fmt::format("You don't have the permission to delete  {} {}", service_name, error.message);
+        error.message = fmt::format("You don't have the permission to manage  {} {}", service_name, error.message);
         return false;
     }
     return true;

@@ -44,7 +44,7 @@ class Entity : public Base
             std::string columns = fmt::format("{}", fmt::join(keys_arr, ","));
             std::string values  = fmt::format("'{}'", fmt::join(values_arr, "','"));
 
-            query = fmt::format("INSERT INTO {} ({}) VALUES ({}) RETURNING id;", tablename, columns, values);
+            query = fmt::format("INSERT INTO {} ({}) VALUES ({}) RETURNING *;", tablename, columns, values);
         }
         catch (const std::exception &e)
         {
@@ -101,7 +101,7 @@ class Entity : public Base
                 }
             }
 
-            query = fmt::format("UPDATE {} set {} WHERE id={} returning id;", tablename, update_column_values, id.value());
+            query = fmt::format("UPDATE {} set {} WHERE id={} returning *;", tablename, update_column_values, id.value());
         }
         catch (const std::exception &e)
         {
