@@ -48,7 +48,7 @@ class DatabaseController
             databaseConnectionPool->return_connection(std::move(db));
             if (results)
             {
-                return results.value();
+                return results;
             }
         }
         catch (const std::exception &e)

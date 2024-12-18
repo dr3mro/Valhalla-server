@@ -43,7 +43,7 @@ std::optional<std::string> DatabaseController::doReadQuery(const std::string &qu
 
 std::optional<bool> DatabaseController::checkItemExists(const std::string &table, const std::string &column, const std::string &value)
 {
-    return executer<bool>(&Database::checkExists, table, column, value).value();
+    return executer<bool>(&Database::checkExists, table, column, value);
 }
 
 std::optional<jsoncons::json> DatabaseController::getPasswordHashForUserName(const std::string &username, const std::string &tablename)
