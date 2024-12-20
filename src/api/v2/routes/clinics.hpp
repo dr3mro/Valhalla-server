@@ -22,36 +22,30 @@ namespace api
            public:
             void Create(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
             {
-                // auto ctx = createContext(req, Context::Type::WRITE, serviceType);
                 executeControllerMethod(clinicRegistry, serviceType, &ClinicControllerBase::Create, req, std::move(callback), req->body());
             }
 
             void Read(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
             {
-                // auto ctx = createContext(req, Context::Type::READ, serviceType);
                 executeControllerMethod(clinicRegistry, serviceType, &ClinicControllerBase::Read, req, std::move(callback), req->body());
             }
 
             void Update(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
             {
-                // auto ctx = createContext(req, Context::Type::WRITE, serviceType);
                 executeControllerMethod(
                     clinicRegistry, serviceType, &ClinicControllerBase::Update, req, std::move(callback), req->body(), stoll(req->getParameter("id")));
             }
             void Delete(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
             {
-                // auto ctx = createContext(req, Context::Type::DELETE, serviceType);
                 executeControllerMethod(clinicRegistry, serviceType, &ClinicControllerBase::Delete, req, std::move(callback), stoll(req->getParameter("id")));
             }
             void Search(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback)
             {
-                // auto ctx = createContext(req, Context::Type::READ, "patients");
                 executeControllerMethod(clinicRegistry, "patients", &ClinicControllerBase::Search, req, std::move(callback), req->body());
             }
 
             void GetVisits(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback)
             {
-                // auto ctx = createContext(req, Context::Type::READ, "patients");
                 executeControllerMethod(
                     clinicRegistry, "patients", &ClinicControllerBase::GetVisits, req, std::move(callback), stoll(req->getParameter("patient_id")));
             }

@@ -19,42 +19,28 @@ namespace api
         class Services : public drogon::HttpController<Services>
         {
            public:
-            void Create(const drogon::HttpRequestPtr                  &req,
-                std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
+            void Create(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
             {
-                // auto ctx = createContext(req, Context::Type::WRITE, serviceType);
-                executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Create, req,
-                    std::move(callback), req->body());
+                executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Create, req, std::move(callback), req->body());
             }
 
-            void Read(const drogon::HttpRequestPtr                    &req,
-                std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
+            void Read(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
             {
-                // auto ctx = createContext(req, Context::Type::READ, serviceType);
+                executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Read, req, std::move(callback), req->body());
+            }
+
+            void Update(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
+            {
                 executeControllerMethod(
-                    serviceRegistry, serviceType, &ServiceControllerBase::Read, req, std::move(callback), req->body());
+                    serviceRegistry, serviceType, &ServiceControllerBase::Update, req, std::move(callback), req->body(), stoll(req->getParameter("id")));
             }
-
-            void Update(const drogon::HttpRequestPtr                  &req,
-                std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
+            void Delete(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
             {
-                // auto ctx = createContext(req, Context::Type::WRITE, serviceType);
-                executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Update, req,
-                    std::move(callback), req->body(), stoll(req->getParameter("id")));
+                executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Delete, req, std::move(callback), stoll(req->getParameter("id")));
             }
-            void Delete(const drogon::HttpRequestPtr                  &req,
-                std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
+            void Search(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
             {
-                // auto ctx = createContext(req, Context::Type::DELETE, serviceType);
-                executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Delete, req,
-                    std::move(callback), stoll(req->getParameter("id")));
-            }
-            void Search(const drogon::HttpRequestPtr                  &req,
-                std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
-            {
-                // auto ctx = createContext(req, Context::Type::READ, serviceType);
-                executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Search, req,
-                    std::move(callback), req->body());
+                executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Search, req, std::move(callback), req->body());
             }
             METHOD_LIST_BEGIN
             METHOD_ADD(Services::Create, "/{serviceType}/create", drogon::Post, SECURE);
@@ -65,14 +51,11 @@ namespace api
             METHOD_LIST_END
 
            private:
-            using ServiceVariant = std::variant<std::shared_ptr<ServiceController<Clinics>>,
-                std::shared_ptr<ServiceController<Pharmacies>>, std::shared_ptr<ServiceController<Laboratories>>,
-                std::shared_ptr<ServiceController<RadiologyCenters>>>;
+            using ServiceVariant = std::variant<std::shared_ptr<ServiceController<Clinics>>, std::shared_ptr<ServiceController<Pharmacies>>,
+                std::shared_ptr<ServiceController<Laboratories>>, std::shared_ptr<ServiceController<RadiologyCenters>>>;
 
-            std::unordered_map<std::string_view, ServiceVariant> serviceRegistry = {
-                {"clinics", Store::getObject<ServiceController<Clinics>>()},
-                {"pharmacies", Store::getObject<ServiceController<Pharmacies>>()},
-                {"laboratories", Store::getObject<ServiceController<Laboratories>>()},
+            std::unordered_map<std::string_view, ServiceVariant> serviceRegistry = {{"clinics", Store::getObject<ServiceController<Clinics>>()},
+                {"pharmacies", Store::getObject<ServiceController<Pharmacies>>()}, {"laboratories", Store::getObject<ServiceController<Laboratories>>()},
                 {"radiologycenters", Store::getObject<ServiceController<RadiologyCenters>>()}};
         };
     }  // namespace v2
