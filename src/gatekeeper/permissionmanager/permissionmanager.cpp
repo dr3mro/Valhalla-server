@@ -138,7 +138,7 @@ bool PermissionManager::canDelete(const Requester& requester, const uint64_t id,
 template <Appointment_t T>
 bool PermissionManager::canCreate(const Requester& requester, const std::optional<jsoncons::json>& service_j, Http::Error& error)
 {
-    std::string service_name = T::getTableName();
+    std::string service_name = T::getOrgName();
 
     auto service_id = pm_priv->extract_json_value_safely<uint64_t>(service_j, "clinic_id", service_name, error);
 
@@ -154,7 +154,7 @@ bool PermissionManager::canCreate(const Requester& requester, const std::optiona
 template <Appointment_t T>
 bool PermissionManager::canRead(const Requester& requester, uint64_t service_id, Http::Error& error)
 {
-    std::string service_name = T::getTableName();
+    std::string service_name = T::getOrgName();
 
     std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
@@ -164,7 +164,7 @@ bool PermissionManager::canRead(const Requester& requester, uint64_t service_id,
 template <Appointment_t T>
 bool PermissionManager::canUpdate(const Requester& requester, const uint64_t service_id, Http::Error& error)
 {
-    std::string service_name = T::getTableName();
+    std::string service_name = T::getOrgName();
 
     std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
@@ -174,7 +174,7 @@ bool PermissionManager::canUpdate(const Requester& requester, const uint64_t ser
 template <Appointment_t T>
 bool PermissionManager::canDelete(const Requester& requester, uint64_t service_id, Http::Error& error)
 {
-    std::string service_name = T::getTableName();
+    std::string service_name = T::getOrgName();
 
     std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 

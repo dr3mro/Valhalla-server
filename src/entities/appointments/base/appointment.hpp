@@ -12,22 +12,17 @@ class Appointment : public Entity
     virtual ~Appointment() = default;
 
    protected:
-    static std::optional<std::string> getServicePermissionsQueryImpl(const std::string &orgname, const std::string &service_name, std::uint64_t service_id)
+    static std::optional<std::string> getServicePermissionsQueryImpl(const std::string &service_name, std::uint64_t service_id)
     {
         return fmt::format(R"(
         SELECT
-        c.owner_id,
-        c.admin_id,
-        c.staff,
-        p.id AS patient_id,
-        p.clinic_id AS clinic_id,
-        x.clinic_id AS service_id
+        owner_id,
+        admin_id,
+        staff
         FROM
-        {} c
-        LEFT JOIN patients p ON c.id = p.clinic_id
-        LEFT JOIN {} x ON c.id = x.clinic_id
+        {}
         WHERE
-        x.id = {};)",
-            orgname, service_name, service_id);
+        id = {};)",
+            service_name, service_id);
     }
 };
