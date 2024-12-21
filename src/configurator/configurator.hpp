@@ -48,10 +48,8 @@ class Configurator
               clean_freq(getEnvironmentVariable("CLN_FRQ", Defaults::DosDetector::CLN_FRQ_)),
               max_fingerprints(getEnvironmentVariable("MAX_FPS", Defaults::DosDetector::MAX_FPS_)),
               period(getEnvironmentVariable("PERIOD", std::chrono::seconds(Defaults::DosDetector::PERIOD_))),
-              ratelimit_duration(
-                  getEnvironmentVariable("RL_DURATION", std::chrono::seconds(Defaults::DosDetector::RL_DURATION_))),
-              ban_duration(
-                  getEnvironmentVariable("BAN_DURATION", std::chrono::seconds(Defaults::DosDetector::BAN_DURATION_))),
+              ratelimit_duration(getEnvironmentVariable("RL_DURATION", std::chrono::seconds(Defaults::DosDetector::RL_DURATION_))),
+              ban_duration(getEnvironmentVariable("BAN_DURATION", std::chrono::seconds(Defaults::DosDetector::BAN_DURATION_))),
               whitelist(getEnvironmentVariable("WHITELIST")),
               blacklist(getEnvironmentVariable("BLACKLIST"))
         {
@@ -75,22 +73,22 @@ class Configurator
 
     using DatabaseConfig = struct DatabaseConfig : public EnvLoader
     {
-        bool             ssl;
-        uint16_t         max_conn;
-        uint16_t         port;
-        std::string_view name;
-        std::string_view user;
-        std::string_view pass;
-        std::string_view host;
+        bool        ssl;
+        uint16_t    max_conn;
+        uint16_t    port;
+        std::string name;
+        std::string user;
+        std::string pass;
+        std::string host;
 
         DatabaseConfig()
-            : ssl(getEnvironmentVariable(std::string_view("DB_SSL"), Defaults::Database::DB_SSL_)),
-              max_conn(getEnvironmentVariable(std::string_view("DB_MAX_CONN"), Defaults::Database::DB_MAX_CONN_)),
-              port(getEnvironmentVariable(std::string_view("DB_PORT"), Defaults::Database::DB_PORT_)),
-              name(getEnvironmentVariable(std::string_view("DB_NAME"), Defaults::Database::DB_NAME_)),
-              user(getEnvironmentVariable(std::string_view("DB_USER"), Defaults::Database::DB_USER_)),
-              pass(getEnvironmentVariable(std::string_view("DB_PASS"), Defaults::Database::DB_PASS_)),
-              host(getEnvironmentVariable(std::string_view("DB_HOST"), Defaults::Database::DB_HOST_))
+            : ssl(getEnvironmentVariable("DB_SSL", Defaults::Database::DB_SSL_)),
+              max_conn(getEnvironmentVariable("DB_MAX_CONN", Defaults::Database::DB_MAX_CONN_)),
+              port(getEnvironmentVariable("DB_PORT", Defaults::Database::DB_PORT_)),
+              name(getEnvironmentVariable("DB_NAME", Defaults::Database::DB_NAME_)),
+              user(getEnvironmentVariable("DB_USER", Defaults::Database::DB_USER_)),
+              pass(getEnvironmentVariable("DB_PASS", Defaults::Database::DB_PASS_)),
+              host(getEnvironmentVariable("DB_HOST", Defaults::Database::DB_HOST_))
         {
             optimize_performance(max_conn, 5);
         }
@@ -112,36 +110,32 @@ class Configurator
 
     using ServerConfig = struct ServerConfig : public EnvLoader
     {
-        std::string_view host;
-        std::string_view name;
-        std::string_view ver;
-        std::string_view desc;
-        uint16_t         port;
-        uint16_t         threads;
-        uint8_t          debug_level;  // 0 Debug 1 info 2 warning 3 error 4 critical
-        bool             log_to_console;
-        bool             log_to_file;
-        std::string_view log_dir;
-        std::string_view log_file;
-        std::string      upload_dir;
+        std::string host;
+        std::string name;
+        std::string ver;
+        std::string desc;
+        uint16_t    port;
+        uint16_t    threads;
+        uint8_t     debug_level;  // 0 Debug 1 info 2 warning 3 error 4 critical
+        bool        log_to_console;
+        bool        log_to_file;
+        std::string log_dir;
+        std::string log_file;
+        std::string upload_dir;
 
         ServerConfig()
-            : host(getEnvironmentVariable(std::string_view("SERVER_HOST"), Defaults::Server::SERVER_HOST_)),
-              name(getEnvironmentVariable(std::string_view("SERVER_NAME"), Defaults::Server::SERVER_NAME_)),
-              ver(getEnvironmentVariable(std::string_view("SERVER_VERSION"), Defaults::Server::SERVER_VER_)),
-              desc(getEnvironmentVariable(std::string_view("SERVER_DESCRIPTION"), Defaults::Server::SERVER_DESC_)),
-              port(getEnvironmentVariable(std::string_view("SERVER_PORT"), Defaults::Server::SERVER_PORT_)),
-              threads(getEnvironmentVariable(std::string_view("SERVER_THREADS"), Defaults::Server::SERVER_THREADS_)),
-              debug_level(getEnvironmentVariable(std::string_view("SERVER_DEBUG_LEVEL"),
-                                                 Defaults::Server::SERVER_DEBUG_LEVEL_)),
-              log_to_console(getEnvironmentVariable(std::string_view("SERVER_LOG_TO_CONSOLE"),
-                                                    Defaults::Server::SERVER_LOG_TO_CONSOLE_)),
-              log_to_file(getEnvironmentVariable(std::string_view("SERVER_LOG_TO_FILE"),
-                                                 Defaults::Server::SERVER_LOG_TO_FILE_)),
-              log_dir(getEnvironmentVariable(std::string_view("SERVER_LOG_DIR"), Defaults::Server::SERVER_LOG_DIR_)),
-              log_file(getEnvironmentVariable(std::string_view("SERVER_LOG_FILE"), Defaults::Server::SERVER_LOG_FILE_)),
-              upload_dir(
-                  getEnvironmentVariable(std::string_view("SERVER_UPLOAD_DIR"), Defaults::Server::SERVER_UPLOAD_DIR_))
+            : host(getEnvironmentVariable("SERVER_HOST", Defaults::Server::SERVER_HOST_)),
+              name(getEnvironmentVariable("SERVER_NAME", Defaults::Server::SERVER_NAME_)),
+              ver(getEnvironmentVariable("SERVER_VERSION", Defaults::Server::SERVER_VER_)),
+              desc(getEnvironmentVariable("SERVER_DESCRIPTION", Defaults::Server::SERVER_DESC_)),
+              port(getEnvironmentVariable("SERVER_PORT", Defaults::Server::SERVER_PORT_)),
+              threads(getEnvironmentVariable("SERVER_THREADS", Defaults::Server::SERVER_THREADS_)),
+              debug_level(getEnvironmentVariable("SERVER_DEBUG_LEVEL", Defaults::Server::SERVER_DEBUG_LEVEL_)),
+              log_to_console(getEnvironmentVariable("SERVER_LOG_TO_CONSOLE", Defaults::Server::SERVER_LOG_TO_CONSOLE_)),
+              log_to_file(getEnvironmentVariable("SERVER_LOG_TO_FILE", Defaults::Server::SERVER_LOG_TO_FILE_)),
+              log_dir(getEnvironmentVariable("SERVER_LOG_DIR", Defaults::Server::SERVER_LOG_DIR_)),
+              log_file(getEnvironmentVariable("SERVER_LOG_FILE", Defaults::Server::SERVER_LOG_FILE_)),
+              upload_dir(getEnvironmentVariable("SERVER_UPLOAD_DIR", Defaults::Server::SERVER_UPLOAD_DIR_))
         {
             optimize_performance(threads, 4);
         }
@@ -168,18 +162,16 @@ class Configurator
 
     using TokenManagerParameters = struct TokenManagerParameters : public EnvLoader
     {
-        uint64_t         validity;
-        std::string_view issuer;
-        std::string_view type;
-        std::string_view secret;
+        uint64_t    validity;
+        std::string issuer;
+        std::string type;
+        std::string secret;
 
         TokenManagerParameters()
-            : validity(getEnvironmentVariable(std::string_view("TOKEN_VALIDITY"),
-                                              Defaults::TokenParameters::TOKEN_VALIDITY_)),
-              issuer(
-                  getEnvironmentVariable(std::string_view("TOKEN_ISSUER"), Defaults::TokenParameters::TOKEN_ISSUER_)),
-              type(getEnvironmentVariable(std::string_view("TOKEN_TYPE"), Defaults::TokenParameters::TOKEN_TYPE_)),
-              secret(getEnvironmentVariable(std::string_view("TOKEN_SECRET"), Defaults::TokenParameters::TOKEN_SECRET_))
+            : validity(getEnvironmentVariable("TOKEN_VALIDITY", Defaults::TokenParameters::TOKEN_VALIDITY_)),
+              issuer(getEnvironmentVariable("TOKEN_ISSUER", Defaults::TokenParameters::TOKEN_ISSUER_)),
+              type(getEnvironmentVariable("TOKEN_TYPE", Defaults::TokenParameters::TOKEN_TYPE_)),
+              secret(getEnvironmentVariable("TOKEN_SECRET", Defaults::TokenParameters::TOKEN_SECRET_))
         {
         }
 
@@ -197,15 +189,14 @@ class Configurator
 
     using FrontEndConfig = struct FrontEndConfig : public EnvLoader
     {
-        uint16_t         port;
-        std::string_view host;
-        std::string_view invite_path;
+        uint16_t    port;
+        std::string host;
+        std::string invite_path;
 
         FrontEndConfig()
-            : port(getEnvironmentVariable(std::string_view("FRONTEND_PORT"), Defaults::FrontEnd::PORT_)),
-              host(getEnvironmentVariable(std::string_view("FRONTEND_HOST"), Defaults::FrontEnd::HOST_)),
-              invite_path(
-                  getEnvironmentVariable(std::string_view("FRONTEND_INVITE_PATH"), Defaults::FrontEnd::INVITE_PATH_))
+            : port(getEnvironmentVariable("FRONTEND_PORT", Defaults::FrontEnd::PORT_)),
+              host(getEnvironmentVariable("FRONTEND_HOST", Defaults::FrontEnd::HOST_)),
+              invite_path(getEnvironmentVariable("FRONTEND_INVITE_PATH", Defaults::FrontEnd::INVITE_PATH_))
         {
         }
 
@@ -222,15 +213,14 @@ class Configurator
 
     using EmailSenderConfig = struct EmailSenderConfig : public EnvLoader
     {
-        uint16_t         port;
-        std::string_view host;
-        std::string_view message_queue_path;
+        uint16_t    port;
+        std::string host;
+        std::string message_queue_path;
 
         EmailSenderConfig()
-            : port(getEnvironmentVariable(std::string_view("EMAIL_SENDER_PORT"), Defaults::EmailSenderDaemon::PORT_)),
-              host(getEnvironmentVariable(std::string_view("EMAIL_SENDER_HOST"), Defaults::EmailSenderDaemon::HOST_)),
-              message_queue_path(getEnvironmentVariable(std::string_view("EMAIL_SENDER_QUEUE_PATH"),
-                                                        Defaults::EmailSenderDaemon::QUEUE_PATH_))
+            : port(getEnvironmentVariable("EMAIL_SENDER_PORT", Defaults::EmailSenderDaemon::PORT_)),
+              host(getEnvironmentVariable("EMAIL_SENDER_HOST", Defaults::EmailSenderDaemon::HOST_)),
+              message_queue_path(getEnvironmentVariable("EMAIL_SENDER_QUEUE_PATH", Defaults::EmailSenderDaemon::QUEUE_PATH_))
         {
         }
 
