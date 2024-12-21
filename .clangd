@@ -1,0 +1,63 @@
+CompileFlags:
+  CompilationDatabase: ${workspaceFolder}  # --compile-commands-dir=${workspaceFolder}
+  Add: 
+    - -Wall
+    - -Wextra
+    - -Wpedantic
+  Remove: 
+    - -fno-access-control
+    - -fno-inline
+    - -fno-omit-frame-pointer
+    - -fno-optimize-sibling-calls
+    - -fsanitize=address
+    - -fsanitize=thread
+
+Index:
+  Background: true  # --background-index
+
+ClangTidy:
+  Add: "*"  # --clang-tidy
+  CheckOptions:
+    readability-identifier-naming.VariableCase: camelBack
+    readability-identifier-naming.FunctionCase: camelBack
+    readability-identifier-naming.ClassCase: CamelCase
+
+Diagnostics:
+  UnusedIncludes: Strict
+  Suppress: 
+    - unused-variable
+    - unused-parameter
+  ClangTidy:
+    Add: 
+      - modernize*
+      - performance*
+      - bugprone*
+      - readability*
+    Remove:
+      - modernize-use-trailing-return-type
+
+Completion:
+  AllScopes: true
+  DetailLevel: Detailed  # --completion-style=detailed
+  Timer: false
+  IncludeMaxPathSize: 40
+  IncludeGranularity: Detailed
+  IncludeIndicator:
+    System: true
+    AfterHeader: true
+
+HeaderInsertion:
+  Mode: Never  # --header-insertion=never
+
+InlayHints:
+  Enabled: true
+  ParameterNames: true
+  DeducedTypes: true
+  TypeNameLimit: 32
+  BlockEnd: true
+
+Hover:
+  ShowAKA: true
+
+CrossFileRename: true  # --cross-file-rename
+FunctionArgPlaceholders: true  # --function-arg-placeholders
