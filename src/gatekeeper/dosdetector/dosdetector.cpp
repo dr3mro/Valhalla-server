@@ -82,7 +82,7 @@ inline void __attribute((always_inline)) DOSDetector::clean_requests(
         auto &requests = request.second;
 
         for (auto it = requests.begin(); it != requests.end();
-             /* no increment here */)
+            /* no increment here */)
         {
             auto &times = it->second;
 
@@ -102,12 +102,11 @@ inline void __attribute((always_inline)) DOSDetector::clean_requests(
         }
     }
 }
-inline void __attribute((always_inline)) DOSDetector::clean_ratelimited_ips(
-    const std::chrono::time_point<std::chrono::steady_clock> &now)
+inline void __attribute((always_inline)) DOSDetector::clean_ratelimited_ips(const std::chrono::time_point<std::chrono::steady_clock> &now)
 {
     std::lock_guard<std::mutex> block_lock(ratelimit_mutex_);
     for (auto it = ratelimited_ips_.begin(); it != ratelimited_ips_.end();
-         /* no increment here */)
+        /* no increment here */)
     {
         if (now >= it->second)
         {
@@ -120,12 +119,11 @@ inline void __attribute((always_inline)) DOSDetector::clean_ratelimited_ips(
         }
     }
 }
-inline void __attribute((always_inline)) DOSDetector::clean_banned_ips(
-    const std::chrono::time_point<std::chrono::steady_clock> &now)
+inline void __attribute((always_inline)) DOSDetector::clean_banned_ips(const std::chrono::time_point<std::chrono::steady_clock> &now)
 {
     std::lock_guard<std::mutex> ban_lock(ban_mutex_);
     for (auto it = banned_ips_.begin(); it != banned_ips_.end();
-         /* no increment here */)
+        /* no increment here */)
     {
         if (now >= it->second)
         {
@@ -164,8 +162,7 @@ void DOSDetector::cleanUpTask()
     }
 }
 
-inline std::optional<std::string> __attribute((always_inline)) DOSDetector::generateRequestFingerprint(
-    const DOSDetector::Request &req)
+inline std::optional<std::string> __attribute((always_inline)) DOSDetector::generateRequestFingerprint(const DOSDetector::Request &req)
 {
     try
     {
@@ -191,7 +188,7 @@ inline std::optional<std::string> __attribute((always_inline)) DOSDetector::gene
     }
 }
 
-inline bool __attribute((always_inline)) DOSDetector::isWhitelisted(std::string_view remote_ip)
+inline bool __attribute((always_inline)) DOSDetector::isWhitelisted(const std::string &remote_ip)
 {
     try
     {
@@ -205,7 +202,7 @@ inline bool __attribute((always_inline)) DOSDetector::isWhitelisted(std::string_
     }
 }
 
-inline bool __attribute((always_inline)) DOSDetector::isBlacklisted(std::string_view remote_ip)
+inline bool __attribute((always_inline)) DOSDetector::isBlacklisted(const std::string &remote_ip)
 {
     try
     {
@@ -219,30 +216,28 @@ inline bool __attribute((always_inline)) DOSDetector::isBlacklisted(std::string_
     }
 }
 
-inline bool __attribute((always_inline)) DOSDetector::regexFind(std::string_view                       remote_ip,
-                                                                const std::unordered_set<std::string> &list,
-                                                                std::mutex                            &mtx)
+inline bool __attribute((always_inline)) DOSDetector::regexFind(const std::string &remote_ip, const std::unordered_set<std::string> &list, std::mutex &mtx)
 {
     try
     {
         std::lock_guard<std::mutex> lock(mtx);
 
         return std::ranges::any_of(list,
-                                   [&remote_ip](const std::string_view &pattern)
-                                   {
-                                       try
-                                       {
-                                           std::regex regex_pattern((std::string(pattern)));
-                                           return std::regex_search((std::string(remote_ip)), regex_pattern);
-                                       }
-                                       catch (const std::regex_error &e)
-                                       {
-                                           Message::ErrorMessage("Exception due to invalid regex pattern.");
-                                           Message::CriticalMessage(e.what());
+            [&remote_ip](const std::string &pattern)
+            {
+                try
+                {
+                    std::regex regex_pattern((pattern));
+                    return std::regex_search((remote_ip), regex_pattern);
+                }
+                catch (const std::regex_error &e)
+                {
+                    Message::ErrorMessage("Exception due to invalid regex pattern.");
+                    Message::CriticalMessage(e.what());
 
-                                           return false;
-                                       }
-                                   });
+                    return false;
+                }
+            });
     }
     catch (const std::exception &e)
     {
@@ -253,7 +248,7 @@ inline bool __attribute((always_inline)) DOSDetector::regexFind(std::string_view
     }
 }
 
-inline bool __attribute((always_inline)) DOSDetector::isBanned(std::string_view remote_ip)
+inline bool __attribute((always_inline)) DOSDetector::isBanned(const std::string &remote_ip)
 {
     try
     {
@@ -268,7 +263,7 @@ inline bool __attribute((always_inline)) DOSDetector::isBanned(std::string_view 
     }
 }
 
-inline bool __attribute((always_inline)) DOSDetector::isRateLimited(std::string_view remote_ip)
+inline bool __attribute((always_inline)) DOSDetector::isRateLimited(const std::string &remote_ip)
 {
     try
     {
@@ -284,22 +279,22 @@ inline bool __attribute((always_inline)) DOSDetector::isRateLimited(std::string_
 }
 
 template <typename Map, typename Mutex>
-inline bool __attribute((always_inline)) DOSDetector::checkStatus(std::string_view remote_ip, Map &ip_map, Mutex &mtx)
+inline bool __attribute((always_inline)) DOSDetector::checkStatus(const std::string &remote_ip, Map &ip_map, Mutex &mtx)
 {
     try
     {
         auto                   now = std::chrono::steady_clock::now();
         std::lock_guard<Mutex> lock(mtx);
 
-        if (ip_map.find(remote_ip.data()) != ip_map.end())
+        if (ip_map.find(remote_ip) != ip_map.end())
         {
-            auto forget_time = ip_map.at(remote_ip.data());
+            auto forget_time = ip_map.at(remote_ip);
             if (now < forget_time)
             {
                 return true;
             }
 
-            ip_map.erase(remote_ip.data());
+            ip_map.erase(remote_ip);
         }
         return false;
     }

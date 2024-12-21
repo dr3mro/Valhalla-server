@@ -5,34 +5,34 @@
 #include <sstream>
 #include <thread>
 
-std::string_view EnvLoader::getEnvironmentVariable(std::string_view key, std::string_view defaultValue)
+std::string EnvLoader::getEnvironmentVariable(const std::string &key, const std::string &defaultValue)
 {
     auto value = get(key);
-    return value ? value.value() : defaultValue;
+    return value.has_value() ? value.value() : defaultValue;
 }
 
-bool EnvLoader::getEnvironmentVariable(std::string_view key, bool defaultValue)
+bool EnvLoader::getEnvironmentVariable(const std::string &key, bool defaultValue)
 {
     auto value = get(key);
-    return value ? value.value() == "true" : defaultValue;
+    return value.has_value() ? value.value() == "true" : defaultValue;
 }
 
-std::chrono::seconds EnvLoader::getEnvironmentVariable(std::string_view key, const std::chrono::seconds &defaultValue)
+std::chrono::seconds EnvLoader::getEnvironmentVariable(const std::string &key, const std::chrono::seconds &defaultValue)
 {
     auto value = get(key);
-    return value ? std::chrono::seconds(std::stoi(value.value().data())) : defaultValue;
+    return value.has_value() ? std::chrono::seconds(std::stoull(value.value())) : defaultValue;
 }
 
-std::unordered_set<std::string> EnvLoader::getEnvironmentVariable(std::string_view key)
+std::unordered_set<std::string> EnvLoader::getEnvironmentVariable(const std::string &key)
 {
     auto value = get(key);
-    return value ? parseSet(value.value()) : parseSet("");
+    return value.has_value() ? parseSet(value.value()) : parseSet("");
 }
 
-std::unordered_set<std::string> EnvLoader::parseSet(const std::string_view &str)
+std::unordered_set<std::string> EnvLoader::parseSet(const std::string &str)
 {
     std::unordered_set<std::string> result;
-    std::stringstream               ss(str.data());
+    std::stringstream               ss(str);
     std::string                     item;
     while (std::getline(ss, item, ','))
     {

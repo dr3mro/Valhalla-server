@@ -1,14 +1,14 @@
 #pragma once
 
 #include <optional>
-#include <string_view>
+#include <string>
 
 class EnvVars
 {
    protected:
     // Method to get an environment variable by name
-    static std::optional<std::string_view> get(std::string_view key);
+    static std::optional<std::string> get(const std::string& key);
 
     // Method to set an environment variable
-    static void set(std::string_view key, std::string_view value);
+    static void set(const std::string& key, const std::string& value);
 };
