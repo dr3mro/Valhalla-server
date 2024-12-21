@@ -41,10 +41,10 @@ namespace api
                     std::vector<std::string> keys_arr;
                     std::vector<std::string> values_arr;
 
-                    for (auto &it : clientdata.get_data_set())
+                    for (const auto &item : clientdata.get_data_set())
                     {
-                        keys_arr.push_back(it.first);
-                        values_arr.push_back(it.second);
+                        keys_arr.push_back(item.first);
+                        values_arr.push_back(item.second);
                     }
 
                     std::string columns = fmt::format("{}", fmt::join(keys_arr, ","));
