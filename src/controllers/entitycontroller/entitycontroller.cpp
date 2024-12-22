@@ -56,10 +56,10 @@ inline void __attribute((always_inline)) EntityController<T>::Read(CALLBACK_ &&c
     try
     {
         jsoncons::json request_j = jsoncons::json::parse(data);
-        uint64_t       id        = request_j.at("id").as<uint64_t>();
+        uint64_t       _id       = request_j.at("id").as<uint64_t>();
         Http::Error    error;
 
-        if (!gateKeeper->canRead<T>(requester, id, error))
+        if (!gateKeeper->canRead<T>(requester, _id, error))
         {
             callback(error.code, error.message);
             return;
@@ -75,7 +75,7 @@ inline void __attribute((always_inline)) EntityController<T>::Read(CALLBACK_ &&c
             return;
         }
 
-        T entity((Types::Read_t(schema, id)));
+        T entity((Types::Read_t(schema, _id)));
 
         Controller::Read(entity, std::move(callback));
     }
@@ -86,14 +86,14 @@ inline void __attribute((always_inline)) EntityController<T>::Read(CALLBACK_ &&c
 }
 template <typename T>
 inline void __attribute((always_inline)) EntityController<T>::Update(
-    CALLBACK_ &&callback, const Requester &&requester, std::string_view data, const std::optional<uint64_t> id)
+    CALLBACK_ &&callback, const Requester &&requester, std::string_view data, const std::optional<uint64_t> _id)
 {
     try
     {
         bool                 success = false;
         api::v2::Http::Error error;
 
-        if (!id.has_value())
+        if (!_id.has_value())
         {
             callback(api::v2::Http::Status::BAD_REQUEST, "No id provided.");
             return;
@@ -116,13 +116,13 @@ inline void __attribute((always_inline)) EntityController<T>::Update(
             return;
         }
 
-        if (!gateKeeper->canUpdate<T>(requester, id.value(), error))
+        if (!gateKeeper->canUpdate<T>(requester, _id.value(), error))
         {
             callback(error.code, error.message);
             return;
         }
 
-        Types::Update_t entity_data = Types::Update_t(request_json.value(), id.value());
+        Types::Update_t entity_data = Types::Update_t(request_json.value(), _id.value());
 
         T entity(entity_data);
 
@@ -135,11 +135,11 @@ inline void __attribute((always_inline)) EntityController<T>::Update(
 }
 
 template <typename T>
-inline void __attribute((always_inline)) EntityController<T>::Delete(CALLBACK_ &&callback, const Requester &&requester, const std::optional<uint64_t> id)
+inline void __attribute((always_inline)) EntityController<T>::Delete(CALLBACK_ &&callback, const Requester &&requester, const std::optional<uint64_t> _id)
 {
     try
     {
-        if (!id.has_value())
+        if (!_id.has_value())
         {
             callback(api::v2::Http::Status::NOT_ACCEPTABLE, "Invalid id provided");
             return;
@@ -147,13 +147,13 @@ inline void __attribute((always_inline)) EntityController<T>::Delete(CALLBACK_ &
 
         Http::Error error;
 
-        if (!gateKeeper->canDelete<T>(requester, id.value(), error))
+        if (!gateKeeper->canDelete<T>(requester, _id.value(), error))
         {
             callback(error.code, error.message);
             return;
         }
 
-        T entity(Types::Delete_t(id.value()));
+        T entity(Types::Delete_t(_id.value()));
 
         Controller::Delete(entity, std::move(callback));
     }
