@@ -2,7 +2,11 @@
 #include <jwt-cpp/jwt.h>
 #include <jwt-cpp/traits/kazuho-picojson/traits.h>
 
+#include <cstdint>
+#include <jsoncons/basic_json.hpp>
+#include <memory>
 #include <optional>
+#include <string>
 
 #include "configurator/configurator.hpp"
 #include "controllers/databasecontroller/databasecontroller.hpp"
