@@ -20,14 +20,14 @@ Logger::Logger()
 
         // Console sink setup with custom pattern
         auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
-        console_sink->set_pattern(fmt::format("{}[%Y-%m-%d %H:%M:%S]{} {}[Project Valhalla]{} %^[%l]%$ %v", color_map.at(Color::Magenta),
-            color_map.at(Color::Reset), color_map.at(Color::Red), color_map.at(Color::Reset)));
+        console_sink->set_pattern(fmt::format("{}[%Y-%m-%d %H:%M:%S]{} {}[Project Valhalla]{} %^[%l]%$ %v", get_color(Color::Magenta), get_color(Color::Reset),
+            get_color(Color::Red), get_color(Color::Reset)));
 
         // File sink setup
         auto file_sink = std::make_shared<spdlog::sinks::rotating_file_sink_mt>(fmt::format("{}", file_path), MAX_LOG_SIZE, MAX_LOG_FILES);
 
-        file_sink->set_pattern(fmt::format("{}[%Y-%m-%d %H:%M:%S]{} {}[Project Valhalla]{} %^[%l]%$ %v", color_map.at(Color::Magenta),
-            color_map.at(Color::Reset), color_map.at(Color::Red), color_map.at(Color::Reset)));
+        file_sink->set_pattern(fmt::format("{}[%Y-%m-%d %H:%M:%S]{} {}[Project Valhalla]{} %^[%l]%$ %v", get_color(Color::Magenta), get_color(Color::Reset),
+            get_color(Color::Red), get_color(Color::Reset)));
         std::vector<std::shared_ptr<spdlog::sinks::sink>> sinks;
         if (server_config.log_to_console)
         {
@@ -77,4 +77,19 @@ void Logger::log(const std::string& message, trantor::Logger::LogLevel level)
         default:
             break;
     }
+}
+
+std::string Logger::get_color(Color color)
+{
+    static const std::unordered_map<Logger::Color, std::string> color_map = {
+        {Logger::Color::Red, "\033[1;91m"},          // Bright Red for errors
+        {Logger::Color::Green, "\033[1;92m"},        // Bright Green for success
+        {Logger::Color::Yellow, "\033[1;93m"},       // Bright Yellow for warnings
+        {Logger::Color::Blue, "\033[1;34m"},         // Bold Blue for informational messages
+        {Logger::Color::Magenta, "\033[38;5;140m"},  // Soft Purple for debug messages
+        {Logger::Color::White, "\033[1;97m"},        // Bright White for general or unspecified messages
+        {Logger::Color::Cyan, "\033[1;96m"},         // Bold Cyan for optional info or context
+        {Logger::Color::Reset, "\033[0m"}            // Reset
+    };
+    return color_map.at(color);
 }
