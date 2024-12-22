@@ -6,13 +6,13 @@
 #include "gatekeeper/permissionmanager/permissions.hpp"
 #include "utils/global/http.hpp"
 
-using PowerLevel = Permissions::PowerLevel;
+using PermissionManagerPrivate = api::v2::PermissionManagerPrivate;
+using PowerLevel               = Permissions::PowerLevel;
 
-using namespace api::v2;
 bool PermissionManagerPrivate::hasPermission(const Requester& requester, const std::optional<jsoncons::json>& permissions_j,
     const Permissions::PowerLevel& powerlevel, const std::string& service_name, Http::Error& error)
 {
-    auto entityStaffPermissions = this->isStaffOfService(requester, permissions_j, service_name, error);
+    auto entityStaffPermissions = isStaffOfService(requester, permissions_j, service_name, error);
 
     if (!entityStaffPermissions.has_value())
     {
@@ -21,7 +21,7 @@ bool PermissionManagerPrivate::hasPermission(const Requester& requester, const s
         return false;
     }
 
-    return (bool(entityStaffPermissions->power & powerlevel) != 0);
+    return ((entityStaffPermissions->power & powerlevel) != PowerLevel::NONE);
 }
 bool PermissionManagerPrivate::isOwnerOfService(
     const Requester& requester, const std::optional<jsoncons::json>& permissions_j, const std::string& service_name, Http::Error& error)
@@ -33,7 +33,7 @@ bool PermissionManagerPrivate::isOwnerOfService(
         return false;
     }
 
-    if (requester.id != permissions_j.value()["owner_id"].as<uint64_t>())
+    if (!requester.idMatch(permissions_j.value()["owner_id"].as<uint64_t>()))
     {
         error.code = Http::Status::FORBIDDEN;
         error.message += "You are not the owner of " + service_name;
@@ -52,7 +52,7 @@ bool PermissionManagerPrivate::isAdminOfService(
         return false;
     }
 
-    if (requester.id != permissions_j.value()["admin_id"].as<uint64_t>())
+    if (!requester.idMatch(permissions_j.value()["admin_id"].as<uint64_t>()))
     {
         error.code = Http::Status::FORBIDDEN;
         error.message += "You are not the admin of " + service_name;
@@ -84,7 +84,7 @@ std::optional<Permissions::StaffPermission> PermissionManagerPrivate::isStaffOfS
                     size_t      pos     = raw_str.find(':');
                     std::string left    = raw_str.substr(0, pos);
                     std::string right   = raw_str.substr(pos + 1);
-                    if (left == std::to_string(requester.id))
+                    if (left == std::to_string(requester.getId()))
                     {
                         return std::optional<Permissions::StaffPermission>(Permissions::StaffPermission{
                             .staff_id = static_cast<uint64_t>(std::stoull(left)), .power = static_cast<PowerLevel>(std::stoi(right)), .isMember = true});
@@ -106,7 +106,7 @@ std::optional<Permissions::StaffPermission> PermissionManagerPrivate::isStaffOfS
 
 bool PermissionManagerPrivate::assert_group_id_match(const Requester& requester, const std::string& groupname, uint64_t client_id, Http::Error& error)
 {
-    if (requester.group != groupname || requester.id != client_id)
+    if (!requester.groupMatch(groupname) || !requester.idMatch(client_id))
     {
         error.code    = Http::Status::FORBIDDEN;
         error.message = "You are not allowed to manage client with id: " + std::to_string(client_id) + " and group: " + groupname;
@@ -124,8 +124,8 @@ bool api::v2::PermissionManagerPrivate::preServiceCreateChecks(const Requester& 
         return false;
     }
 
-    uint64_t owner_id;
-    uint64_t admin_id;
+    uint64_t owner_id = 0;
+    uint64_t admin_id = 0;
 
     try
     {
@@ -139,14 +139,14 @@ bool api::v2::PermissionManagerPrivate::preServiceCreateChecks(const Requester& 
         return false;
     }
 
-    if (owner_id != requester.id || admin_id != requester.id)
+    if (!requester.idMatch(owner_id) || !requester.idMatch(admin_id))
     {
         error.code    = Http::Status::BAD_REQUEST;
         error.message = "Initial service admin_id and owner_id should be equal to that of provider_id";
         return false;
     }
 
-    if (requester.group != "providers")
+    if (!requester.isProvider())
     {
         error.code    = Http::Status::BAD_REQUEST;
         error.message = "You are not allowed to create a service, you are not a provider.";
@@ -159,12 +159,12 @@ bool api::v2::PermissionManagerPrivate::preServiceCreateChecks(const Requester& 
 bool api::v2::PermissionManagerPrivate::isOwnerOrAdminOrHasPermission(
     const Requester& requester, const std::optional<jsoncons::json>& permissions_j, const std::string& service_name, Http::Error& error)
 {
-    if (this->isOwnerOrAdmin(requester, permissions_j, service_name, error))
+    if (isOwnerOrAdmin(requester, permissions_j, service_name, error))
     {
         return true;
     }
 
-    if (!this->hasPermission(requester, permissions_j, Permissions::PowerLevel::CAN_DELETE, service_name, error))
+    if (!hasPermission(requester, permissions_j, Permissions::PowerLevel::CAN_DELETE, service_name, error))
     {
         error.code    = Http::Status::FORBIDDEN;
         error.message = fmt::format("You don't have the permission to manage  {} {}", service_name, error.message);
@@ -176,5 +176,5 @@ bool api::v2::PermissionManagerPrivate::isOwnerOrAdminOrHasPermission(
 bool api::v2::PermissionManagerPrivate::isOwnerOrAdmin(
     const Requester& requester, const std::optional<jsoncons::json>& permissions_j, const std::string& service_name, Http::Error& error)
 {
-    return (this->isOwnerOfService(requester, permissions_j, service_name, error) || this->isAdminOfService(requester, permissions_j, service_name, error));
+    return (isOwnerOfService(requester, permissions_j, service_name, error) || isAdminOfService(requester, permissions_j, service_name, error));
 }

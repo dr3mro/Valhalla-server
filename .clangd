@@ -1,3 +1,56 @@
-
 CompileFlags:
-  CompilationDatabase: build  # Points to the directory with compile_commands.json
+  CompilationDatabase: build
+  # Add:
+  #   - "--background-index"
+  #   - "--clang-tidy"
+  #   - "--header-insertion=never"
+  #   - "--completion-style=detailed"
+  #   - "--cross-file-rename"
+  #   - "--function-arg-placeholders"
+  #   - "--compile-commands-dir=${workspaceFolder}/build"
+  #   - "-j=1"  
+
+Diagnostics:
+  UnusedIncludes: true
+  MissingIncludes: true
+  
+      
+  ClangTidy:
+    Add: 
+      # Modern C++ checks
+      - modernize-*
+      - performance-*
+      - bugprone-*
+      - readability-*
+      - cppcoreguidelines-*
+      - cert-*
+      - concurrency-*
+      - darwin-*
+      - google-*
+      - hicpp-*
+      - llvm-*
+      - misc-*
+      - portability-*
+      
+    Remove:
+      - modernize-use-trailing-return-type
+      - readability-named-parameter
+      - readability-magic-numbers
+      - google-readability-namespace-comments
+      - cppcoreguidelines-pro-type-union-access
+
+Index:
+  StandardLibrary: true
+
+Completion:
+  AllScopes: true
+
+InlayHints:
+  Enabled: true
+  ParameterNames: true
+  DeducedTypes: true
+  Designators: true
+
+Hover:
+  ShowAKA: true
+  
