@@ -7,11 +7,11 @@
 
 #include "utils/message/message.hpp"
 
-std::optional<std::string> Communicate::sendRequest(const std::string& server, const int port, const std::string& path,
-                                                    const drogon::HttpMethod& method, const std::string& data)
+std::optional<std::string> Communicate::sendRequest(
+    const std::string& server, const int port, const std::string& path, const drogon::HttpMethod& method, const std::string& data)
 {
     CURL*              curl    = nullptr;
-    struct curl_slist* headers = NULL;
+    struct curl_slist* headers = nullptr;
     headers                    = curl_slist_append(headers, "Content-Type: application/json");
     std::string response;
     std::string url;
@@ -19,7 +19,7 @@ std::optional<std::string> Communicate::sendRequest(const std::string& server, c
     try
     {
         curl = curl_easy_init();
-        if (!curl)
+        if (curl == nullptr)
         {
             throw std::runtime_error("Failed to initialize cURL.");
         }
@@ -30,19 +30,18 @@ std::optional<std::string> Communicate::sendRequest(const std::string& server, c
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
 
         // Map of methods to their respective cURL options
-        static const std::map<drogon::HttpMethod, std::function<void()>> methodMap = {
-            {drogon::HttpMethod::Post,
-             [&curl, &data]()
-             {
-                 curl_easy_setopt(curl, CURLOPT_POST, 1L);
-                 curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data.c_str());
-             }},
+        static const std::map<drogon::HttpMethod, std::function<void()>> methodMap = {{drogon::HttpMethod::Post,
+                                                                                          [&curl, &data]()
+                                                                                          {
+                                                                                              curl_easy_setopt(curl, CURLOPT_POST, 1L);
+                                                                                              curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data.c_str());
+                                                                                          }},
             {drogon::HttpMethod::Get, [&curl]() { curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L); }}};
 
-        auto it = methodMap.find(method);
-        if (it != methodMap.end())
+        auto method_opt = methodMap.find(method);
+        if (method_opt != methodMap.end())
         {
-            it->second();  // Call the appropriate method
+            method_opt->second();  // Call the appropriate method
         }
         else
         {
@@ -62,7 +61,8 @@ std::optional<std::string> Communicate::sendRequest(const std::string& server, c
     {
         Message::ErrorMessage(fmt::format("Failed to send request to {}.", url));
         Message::CriticalMessage(e.what());
-        if (curl)
+
+        if (curl != nullptr)
         {
             curl_easy_cleanup(curl);
         }
