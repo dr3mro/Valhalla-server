@@ -9,8 +9,8 @@ template <typename T>
 class ThreadSafeQueue
 {
    public:
-    ThreadSafeQueue()  = default;
-    ~ThreadSafeQueue() = default;
+    ThreadSafeQueue()          = default;
+    virtual ~ThreadSafeQueue() = default;
 
     // Add an element to the queue
     void push(const T& value);

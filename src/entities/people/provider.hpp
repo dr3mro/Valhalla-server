@@ -12,7 +12,7 @@ class Provider : public Client
     {
     }
     // Provider() : Client(std::string(TABLENAME)) {}
-    virtual ~Provider() = default;
+    ~Provider() override = default;
     static constexpr auto      getTableName() { return TABLENAME; }
     std::optional<std::string> getSqlGetServicesStatement()
     {

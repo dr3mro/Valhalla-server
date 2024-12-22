@@ -22,7 +22,7 @@ class VisitDrugs : public Case
     static constexpr auto getTableName() { return TABLENAME; }
     static constexpr auto getCreateKey() { return CREATE_KEY; }
 
-    virtual ~VisitDrugs() override = default;
+    ~VisitDrugs() override = default;
 
     static std::optional<std::string> getPermissionsQueryForCreate(const std::optional<jsoncons::json>& data_j)
     {

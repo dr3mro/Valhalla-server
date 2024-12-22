@@ -15,7 +15,7 @@ class LaboratoryAppointment : public Appointment
     }
     static constexpr auto getTableName() { return TABLENAME; }
     static constexpr auto getOrgName() { return ORGNAME; }
-    virtual ~LaboratoryAppointment() override = default;
+    ~LaboratoryAppointment() override = default;
     static std::optional<std::string> getServicePermissionsQuery(const std::string &service_name, std::uint64_t service_id)
     {
         return getServicePermissionsQueryImpl(service_name, service_id);

@@ -17,5 +17,5 @@ class Pharmacies : public Service
     {
     }
     static constexpr auto getTableName() { return TABLENAME; }
-    virtual ~Pharmacies() override = default;
+    ~Pharmacies() override = default;
 };

@@ -18,5 +18,5 @@ class RadiologyCenters : public Service
     {
     }
     static constexpr auto getTableName() { return TABLENAME; }
-    virtual ~RadiologyCenters() override = default;
+    ~RadiologyCenters() override = default;
 };

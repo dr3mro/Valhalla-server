@@ -22,7 +22,7 @@ class Entity : public Base
     {
     }
 
-    virtual ~Entity() override = default;
+    virtual ~Entity() = default;
 
     std::optional<std::string> getSqlCreateStatement() override
     {
