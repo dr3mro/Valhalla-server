@@ -10,7 +10,7 @@ class User : public Client
     {
     }
     // User() : Client(std::string(TABLENAME)) {}
-    virtual ~User() = default;
+    ~User() override = default;
     static constexpr auto      getTableName() { return TABLENAME; }
     std::optional<std::string> getSqlGetServicesStatement()
     {

@@ -139,7 +139,7 @@ namespace api
                 }
                 return false;
             }
-            virtual ~Client() override = default;
+            virtual ~Client() = default;
 
            protected:
             std::optional<uint64_t> client_id;

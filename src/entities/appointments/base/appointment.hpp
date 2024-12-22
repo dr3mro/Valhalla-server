@@ -9,7 +9,7 @@ class Appointment : public Entity
     {
     }
 
-    virtual ~Appointment() = default;
+    ~Appointment() override = default;
 
    protected:
     static std::optional<std::string> getServicePermissionsQueryImpl(const std::string &service_name, std::uint64_t service_id)

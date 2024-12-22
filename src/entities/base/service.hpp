@@ -15,7 +15,7 @@ class Service : public Entity
     {
     }
     // Service(const std::string &tablename) : Entity(tablename) {};
-    virtual ~Service() override = default;
+    ~Service() override = default;
     std::optional<std::string> getSqlAddStaffStatement()
     {
         std::optional<std::string> query;

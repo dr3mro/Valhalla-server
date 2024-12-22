@@ -15,5 +15,5 @@ class ClinicAppointment : public Appointment
     {
     }
     static constexpr auto getTableName() { return TABLENAME; }
-    virtual ~ClinicAppointment() override = default;
+    ~ClinicAppointment() override = default;
 };

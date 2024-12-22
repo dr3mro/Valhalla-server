@@ -17,5 +17,5 @@ class Laboratories : public Service
     {
     }
     static constexpr auto getTableName() { return TABLENAME; }
-    virtual ~Laboratories() = default;
+    ~Laboratories() override = default;
 };

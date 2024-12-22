@@ -18,8 +18,8 @@ template <Client_t T>
 class ClientController : public EntityController<T>, public ClientControllerBase
 {
    public:
-    ClientController()          = default;
-    virtual ~ClientController() = default;
+    ClientController()           = default;
+    ~ClientController() override = default;
 
     void Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data) final;
     void Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data) final;

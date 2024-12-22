@@ -17,7 +17,7 @@ class Patient : public Case
     Patient(const T& _data) : Case(_data, TABLENAME)
     {
     }
-    virtual ~Patient() override = default;
+    ~Patient() override = default;
 
     static constexpr auto getTableName() { return TABLENAME; }
     static constexpr auto getCreateKey() { return CREATE_KEY; }

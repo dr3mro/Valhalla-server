@@ -10,7 +10,7 @@ class ServiceController : public EntityController<T>, public ServiceControllerBa
    public:
     explicit ServiceController() = default;
 
-    virtual ~ServiceController() override = default;
+    ~ServiceController() override = default;
 
     // CRUDS
     void Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;

@@ -55,7 +55,7 @@ class MemCache
         return *this;
     }
 
-    ~MemCache()
+    virtual ~MemCache()
     {
         {
             std::lock_guard<std::mutex> lock(mutex_);

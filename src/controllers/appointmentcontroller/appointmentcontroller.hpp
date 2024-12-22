@@ -13,7 +13,7 @@ class AppointmentController : public EntityController<T>, public AppointmentCont
     AppointmentController(const AppointmentController&)            = default;
     AppointmentController& operator=(AppointmentController&&)      = default;
     AppointmentController& operator=(const AppointmentController&) = default;
-    virtual ~AppointmentController() override                      = default;
+    ~AppointmentController() override                              = default;
 
     // CRUDS
     void Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;

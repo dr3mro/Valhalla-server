@@ -22,7 +22,7 @@ class Reports : public Case
     static constexpr auto getTableName() { return TABLENAME; }
     static constexpr auto getCreateKey() { return CREATE_KEY; }
 
-    virtual ~Reports() override = default;
+    ~Reports() override = default;
 
     static std::optional<std::string> getPermissionsQueryForCreate(const std::optional<jsoncons::json>& data_j)
     {

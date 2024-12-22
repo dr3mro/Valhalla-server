@@ -10,7 +10,7 @@ class StaffController : public StaffControllerBase, public Controller
 {
    public:
     StaffController() : cfg_(Store::getObject<Configurator>()), email_sender_daemon_config_(cfg_->get<Configurator::EmailSenderConfig>()) {}
-    virtual ~StaffController() override = default;
+    ~StaffController() override = default;
 
     // CRUDS
     void AddStaffToEntity(CALLBACK_ &&callback, const Requester &&requester, std::string_view data) override;

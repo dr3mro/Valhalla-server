@@ -15,5 +15,5 @@ class Clinics : public Service
 
     static constexpr auto getTableName() { return TABLENAME; }
 
-    virtual ~Clinics() = default;
+    ~Clinics() override = default;
 };

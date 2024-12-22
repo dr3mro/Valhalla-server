@@ -47,8 +47,8 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
         requires(!std::is_same<U, Patient>::value);
 
    public:
-    explicit ClinicController()          = default;
-    virtual ~ClinicController() override = default;
+    explicit ClinicController()  = default;
+    ~ClinicController() override = default;
 
     void Create(CALLBACK_ &&callback, const Requester &&requester, std::string_view data) final;
     void Read(CALLBACK_ &&callback, const Requester &&requester, std::string_view data) final;

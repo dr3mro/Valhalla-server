@@ -8,15 +8,14 @@ CompileFlags:
   #   - "--cross-file-rename"
   #   - "--function-arg-placeholders"
   #   - "--compile-commands-dir=${workspaceFolder}/build"
-  #   - "-j=1"  
+  #   - "-j=1"
 
 Diagnostics:
-  UnusedIncludes: true
-  MissingIncludes: true
-  
-      
+  MissingIncludes: Strict
+  UnusedIncludes: Strict
+
   ClangTidy:
-    Add: 
+    Add:
       # Modern C++ checks
       - modernize-*
       - performance-*
@@ -31,7 +30,7 @@ Diagnostics:
       - llvm-*
       - misc-*
       - portability-*
-      
+
     Remove:
       - modernize-use-trailing-return-type
       - readability-named-parameter
@@ -53,4 +52,3 @@ InlayHints:
 
 Hover:
   ShowAKA: true
-  
