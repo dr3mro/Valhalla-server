@@ -1,5 +1,9 @@
 #pragma once
 
+#include <cstdint>
+#include <optional>
+#include <string>
+
 #include "entities/appointments/base/appointment.hpp"
 
 class PharmacyAppointment : public Appointment
@@ -10,11 +14,17 @@ class PharmacyAppointment : public Appointment
 
    public:
     template <typename T>
-    PharmacyAppointment(const T &_data) : Appointment(_data, TABLENAME)
+    explicit PharmacyAppointment(const T &_data) : Appointment(_data, TABLENAME)
     {
     }
+    PharmacyAppointment(const PharmacyAppointment &)            = delete;
+    PharmacyAppointment(PharmacyAppointment &&)                 = delete;
+    PharmacyAppointment &operator=(const PharmacyAppointment &) = delete;
+    PharmacyAppointment &operator=(PharmacyAppointment &&)      = delete;
+
     static constexpr auto getTableName() { return TABLENAME; }
     static constexpr auto getOrgName() { return ORGNAME; }
+
     ~PharmacyAppointment() override = default;
 
     static std::optional<std::string> getServicePermissionsQuery(const std::string &service_name, std::uint64_t service_id)
