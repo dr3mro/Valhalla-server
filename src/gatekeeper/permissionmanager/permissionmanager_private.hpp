@@ -1,9 +1,15 @@
 #pragma once
 
+#include <cstdint>
+#include <exception>
+#include <jsoncons/basic_json.hpp>
+#include <memory>
 #include <optional>
+#include <string>
 
 #include "controllers/databasecontroller/databasecontroller.hpp"
 #include "gatekeeper/permissionmanager/permissions.hpp"
+#include "store/store.hpp"
 #include "utils/global/http.hpp"
 #include "utils/global/requester.hpp"
 namespace api::v2
@@ -41,7 +47,7 @@ namespace api::v2
             const Requester& requester, const std::optional<jsoncons::json>& permissions_j, const std::string& service_name, Http::Error& error);
 
         template <typename T>
-        std::optional<T> extract_json_value_safely(
+        static std::optional<T> extract_json_value_safely(
             const std::optional<jsoncons::json>& service_j, const std::string& key, const std::string& service_name, Http::Error& error)
         {
             if (!service_j.has_value() || service_j->empty())
@@ -66,9 +72,10 @@ namespace api::v2
         }
 
         template <typename Func, typename... Args>
-        std::optional<jsoncons::json> getPermissionsOfEntity(Func&& func, Args&... args)
+        static std::optional<jsoncons::json> getPermissionsOfEntity(Func&& func, Args&... args)
         {
-            std::optional<std::string> query = std::invoke(std::forward<Func>(func), std::forward<Args>(args)...);
+            static std::shared_ptr<DatabaseController> db_ctl = Store::getObject<DatabaseController>();
+            std::optional<std::string>                 query  = std::invoke(std::forward<Func>(func), std::forward<Args>(args)...);
 
             if (!query.has_value() || query->empty())
             {
@@ -86,7 +93,6 @@ namespace api::v2
         }
 
        private:
-        std::shared_ptr<DatabaseController> db_ctl = Store::getObject<DatabaseController>();
     };
 
 }  // namespace api::v2

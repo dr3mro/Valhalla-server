@@ -1,10 +1,16 @@
 #include "gatekeeper/permissionmanager/permissionmanager_private.hpp"
 
+#include <cstddef>
+#include <cstdint>
+#include <exception>
+#include <jsoncons/basic_json.hpp>
 #include <jsoncons/json.hpp>
+#include <optional>
 #include <string>
 
 #include "gatekeeper/permissionmanager/permissions.hpp"
 #include "utils/global/http.hpp"
+#include "utils/global/requester.hpp"
 
 using PermissionManagerPrivate = api::v2::PermissionManagerPrivate;
 using PowerLevel               = Permissions::PowerLevel;
