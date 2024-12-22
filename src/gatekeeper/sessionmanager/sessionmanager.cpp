@@ -9,14 +9,14 @@
 #include "utils/global/global.hpp"
 #include "utils/global/http.hpp"
 
-using namespace api::v2;
+using SessionManager = api::v2::SessionManager;
 
 bool SessionManager::login(const std::optional<Types::Credentials>& credentials, std::optional<Types::ClientLoginData>& clientLoginData, std::string& message)
 {
     std::optional<std::string> password_hash;
     try
     {
-        auto client_object = databaseController->getPasswordHashForUserName(credentials->username, clientLoginData->group.value());
+        auto client_object = getPasswordHashForUserName(credentials->username, clientLoginData->group.value());
 
         if (!client_object.has_value() || client_object.value().empty())
         {
@@ -84,7 +84,7 @@ void SessionManager::logout(CALLBACK_&& callback, std::optional<Types::ClientLog
 
         if (!decodeToken(clientLoginData, message, decodedToken))
         {
-            callback(Http::Status::OK, JsonHelper::stringify(JsonHelper::jsonify(message)));
+            std::move(callback)(Http::Status::OK, JsonHelper::stringify(JsonHelper::jsonify(message)));
             return;
         }
 
@@ -97,11 +97,11 @@ void SessionManager::logout(CALLBACK_&& callback, std::optional<Types::ClientLog
         // }
         setNowLogoutTime(clientLoginData->clientId.value(), clientLoginData->group.value());
         removeSession(clientLoginData);
-        callback(api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(api::v2::JsonHelper::jsonify("Logout success.")));
+        std::move(callback)(api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(api::v2::JsonHelper::jsonify("Logout success.")));
     }
     catch (const std::exception& e)
     {
-        callback(api::v2::Http::Status::INTERNAL_SERVER_ERROR, e.what());
+        std::move(callback)(api::v2::Http::Status::INTERNAL_SERVER_ERROR, e.what());
         CRITICALMESSAGE
     }
 }

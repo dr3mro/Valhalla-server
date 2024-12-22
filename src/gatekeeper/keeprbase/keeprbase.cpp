@@ -1,7 +1,8 @@
 #include "gatekeeper/keeprbase/keeprbase.hpp"
 
 #include "utils/global/global.hpp"
-using namespace api::v2;
+#include "utils/message/message.hpp"
+using KeeprBase = api::v2::KeeprBase;
 
 bool KeeprBase::getLastLogoutTimeIfActive(std::optional<Types::ClientLoginData>& clientLoginData)
 {
@@ -52,13 +53,15 @@ bool KeeprBase::setNowLoginTimeGetLastLogoutTime(std::optional<Types::ClientLogi
             clientLoginData->group.value(), clientLoginData->clientId.value(), clientLoginData->nowLoginTime.value(), clientLoginData->nowLoginTime.value());
 
         auto result = databaseController->executeQuery(query);
+
         if (!result.has_value())
         {
             Message::ErrorMessage("Error updating login time.");
             Message::CriticalMessage(result.value().to_string());
             return false;
         }
-        else if (!result->empty())
+
+        if (!result->empty())
         {
             clientLoginData->lastLogoutTime = result->at("last_logout").as_string();
         }
@@ -72,7 +75,7 @@ bool KeeprBase::setNowLoginTimeGetLastLogoutTime(std::optional<Types::ClientLogi
     return false;
 }
 
-void KeeprBase::setNowLogoutTime(uint64_t id, const std::string& group)
+void KeeprBase::setNowLogoutTime(uint64_t _id, const std::string& _group)
 {
     try
     {
@@ -82,7 +85,7 @@ void KeeprBase::setNowLogoutTime(uint64_t id, const std::string& group)
             "INSERT INTO {}_sessions (id, last_logout) VALUES ({}, '{}') "
             "ON CONFLICT (id) DO UPDATE SET last_logout = "
             "EXCLUDED.last_logout;",
-            group, id, logout_time);
+            _group, _id, logout_time);
 
         auto result = databaseController->executeQuery(query);
         if (!result.has_value())
@@ -98,14 +101,15 @@ void KeeprBase::setNowLogoutTime(uint64_t id, const std::string& group)
     }
 }
 
-std::optional<std::string> KeeprBase::getLastLoginTime(uint64_t id, const std::string& group)
+std::optional<std::string> KeeprBase::getLastLoginTime(uint64_t _id, const std::string& _group)
 {
-    std::string query = fmt::format("SELECT last_login FROM {}_sessions WHERE id = {};", group, id);
+    std::string query = fmt::format("SELECT last_login FROM {}_sessions WHERE id = {};", _group, _id);
     return databaseController->doReadQuery(query);
 }
 
 std::string KeeprBase::current_time_to_utc_string()
 {
+    constexpr int YEAR_OFFSET = 1900;
     // Get current time as a time_point
     auto now = std::chrono::system_clock::now();
 
@@ -113,11 +117,15 @@ std::string KeeprBase::current_time_to_utc_string()
     auto now_t = std::chrono::system_clock::to_time_t(now);
 
     // Convert time_t to tm structure in UTC
-    std::tm tm = *std::gmtime(&now_t);
+    std::tm mtime{};
+    if (gmtime_r(&now_t, &mtime) == nullptr)
+    {
+        throw std::runtime_error("Failed to convert time to UTC");
+    }
 
     // Format the time using fmt::format
-    std::string formatted_time =
-        fmt::format("{:04}-{:02}-{:02} {:02}:{:02}:{:02} +0000", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
+    std::string formatted_time = fmt::format(
+        "{:04}-{:02}-{:02} {:02}:{:02}:{:02} +0000", mtime.tm_year + YEAR_OFFSET, mtime.tm_mon + 1, mtime.tm_mday, mtime.tm_hour, mtime.tm_min, mtime.tm_sec);
 
     return formatted_time;
 }
@@ -170,7 +178,7 @@ bool KeeprBase::validateToken(
 
         if (!clientLoginData->is_active)
         {
-            message = "Account is suspened, please contact the administrator.";
+            message = "Account is suspend, please contact the administrator.";
             return false;
         }
 
@@ -197,7 +205,8 @@ bool KeeprBase::validateToken(
     return false;
 }
 
-jwt::verifier<jwt::default_clock, jwt::traits::kazuho_picojson> KeeprBase::createTokenVerifier(const std::optional<Types::ClientLoginData>& clientLoginData)
+jwt::verifier<jwt::default_clock, jwt::traits::kazuho_picojson> KeeprBase::createTokenVerifier(
+    const std::optional<Types::ClientLoginData>& clientLoginData) const
 {
     if (!clientLoginData || !clientLoginData->username || !clientLoginData->clientId || !clientLoginData->group)
     {
@@ -213,4 +222,9 @@ jwt::verifier<jwt::default_clock, jwt::traits::kazuho_picojson> KeeprBase::creat
         .with_claim("ip_address", jwt::basic_claim<jwt::traits::kazuho_picojson>(clientLoginData->ip_address.value()))
         .with_claim("group", jwt::basic_claim<jwt::traits::kazuho_picojson>(clientLoginData->group.value()))
         .with_claim("llodt", jwt::basic_claim<jwt::traits::kazuho_picojson>(clientLoginData->lastLogoutTime.value()));
+}
+
+std::optional<jsoncons::json> api::v2::KeeprBase::getPasswordHashForUserName(const std::string& username, const std::string& _group)
+{
+    return databaseController->getPasswordHashForUserName(username, _group);
 }

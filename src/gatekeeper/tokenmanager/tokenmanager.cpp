@@ -2,29 +2,26 @@
 
 #include <jwt-cpp/jwt.h>
 #include <jwt-cpp/traits/kazuho-picojson/traits.h>
-using namespace api::v2;
+using TokenManager = api::v2::TokenManager;
 
 bool TokenManager::generateToken(std::optional<Types::ClientLoginData> &clientLoginData)
 {
     try
     {
+        auto tokenManagerParameters = getTokenManagerParameters();
         // Create JWT token with payload
         std::optional<std::string> token =
             jwt::create<jwt::traits::kazuho_picojson>()
-                .set_issuer(std::string(tokenManagerParameters_.issuer))
-                .set_type(std::string(tokenManagerParameters_.type))
+                .set_issuer(std::string(tokenManagerParameters.issuer))
+                .set_type(std::string(tokenManagerParameters.type))
                 .set_subject(clientLoginData->username.value())
                 .set_id(std::to_string(clientLoginData->clientId.value()))
                 .set_issued_at(std::chrono::system_clock::now())
-                .set_expires_at(std::chrono::system_clock::now() +
-                                std::chrono::minutes{tokenManagerParameters_.validity})
-                .set_payload_claim("ip_address",
-                                   jwt::basic_claim<jwt::traits::kazuho_picojson>(clientLoginData->ip_address.value()))
-                .set_payload_claim(
-                    "llodt", jwt::basic_claim<jwt::traits::kazuho_picojson>(clientLoginData->lastLogoutTime.value()))
-                .set_payload_claim("group",
-                                   jwt::basic_claim<jwt::traits::kazuho_picojson>(clientLoginData->group.value()))
-                .sign(jwt::algorithm::hs256{std::string(tokenManagerParameters_.secret)});
+                .set_expires_at(std::chrono::system_clock::now() + std::chrono::minutes{tokenManagerParameters.validity})
+                .set_payload_claim("ip_address", jwt::basic_claim<jwt::traits::kazuho_picojson>(clientLoginData->ip_address.value()))
+                .set_payload_claim("llodt", jwt::basic_claim<jwt::traits::kazuho_picojson>(clientLoginData->lastLogoutTime.value()))
+                .set_payload_claim("group", jwt::basic_claim<jwt::traits::kazuho_picojson>(clientLoginData->group.value()))
+                .sign(jwt::algorithm::hs256{std::string(tokenManagerParameters.secret)});
 
         if (token.has_value())
         {
@@ -42,8 +39,7 @@ bool TokenManager::isTokenValid(std::optional<Types::ClientLoginData> &clientLog
 {
     try
     {
-        jwt::decoded_jwt<jwt::traits::kazuho_picojson> decodedToken =
-            jwt::decode<jwt::traits::kazuho_picojson>(clientLoginData->token.value());
+        jwt::decoded_jwt<jwt::traits::kazuho_picojson> decodedToken = jwt::decode<jwt::traits::kazuho_picojson>(clientLoginData->token.value());
         if (!decodeToken(clientLoginData, message, decodedToken))
         {
             message = fmt::format("Token is not valid: {}", message);

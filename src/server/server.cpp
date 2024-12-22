@@ -4,8 +4,8 @@
 #include <fmt/color.h>
 #include <fmt/core.h>
 
+#include "api/v2/all_routes.hpp"  // IWYU pragma: keep
 #include "server/extras/banner.hpp"
-
 #ifndef GIT_TAG
 #    define GIT_TAG "unknown"
 #endif
@@ -36,11 +36,11 @@ int Server::run()
                         resp->addHeader("Access-Control-Max-Age", "86400");
                         resp->addHeader("X-Powered-By", "Valhalla-Team");
 
-                        callback(resp);
+                        std::move(callback)(resp);
                     }
                     else
                     {
-                        chainedcallback();
+                        std::move(chainedcallback)();
                     }
                 })
             .registerPostHandlingAdvice(
@@ -68,26 +68,19 @@ int Server::run()
 
 void Server::print_banner()
 {
-    std::srand(std::time(0));
-    // Select a random color
-    int        num_colors   = sizeof(Banner::colors) / sizeof(Banner::colors[0]);
-    fmt::color random_color = Banner::colors[arc4random() % num_colors];
-
-    // Clean screen
     // Print Config
-    PRINTLINE()
-    PRINT("Configuration:", config_.desc, light_blue, yellow)
-    PRINTLINE()
+    Banner::print_line();
+    Banner::print("Configuration:", config_.desc, fmt::color::light_blue, fmt::color::yellow);
+    Banner::print_line();
     configurator_->printValues();
 
     // Show ASCII Art
-    PRINTLINE()
-    PRINT_LOGO(random_color)
-    PRINTLINE()
-    PRINT(" - Version", GIT_TAG, light_green, yellow)
-    PRINT(" - Port", config_.port, light_green, yellow)
-    PRINT(" - Threads", config_.threads, light_green, yellow)
-    PRINT(" - Database", fmt::format("{} {}", db_config_.max_conn, "connections"), light_green, yellow)
-    PRINTLINE()
-    std::cout << std::endl;
+    Banner::print_line();
+    Banner::print_logo(Banner::get_random_color());
+    Banner::print_line();
+    Banner::print(" - Version", GIT_TAG, fmt::color::light_green, fmt::color::yellow);
+    Banner::print(" - Port", config_.port, fmt::color::light_green, fmt::color::yellow);
+    Banner::print(" - Threads", config_.threads, fmt::color::light_green, fmt::color::yellow);
+    Banner::print(" - Database", fmt::format("{} {}", db_config_.max_conn, "connections"), fmt::color::light_green, fmt::color::yellow);
+    Banner::print_line();
 }

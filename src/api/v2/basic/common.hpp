@@ -8,6 +8,7 @@
 #include <memory>
 #include <string>
 #include <string_view>
+#include <utility>
 
 #include "api/v2/helper/helper.hpp"
 #include "utils/global/callback.hpp"
@@ -21,58 +22,51 @@
 #define INSECURE RATELIMIT, ELAPSED
 #define SECURE INSECURE, AUTH
 
-namespace api
+namespace api::v2
 {
-    namespace v2
+    template <typename Func, typename Registry, typename... Args>
+    static void executeControllerMethod(const Registry& registry, const std::string_view key, Func method, const drogon::HttpRequestPtr& req,
+        std::function<void(const drogon::HttpResponsePtr&)>&& callback, Args&&... args)
     {
-
-        template <typename Func, typename Registry, typename... Args>
-        static void executeControllerMethod(const Registry& registry, const std::string_view key, Func method, const drogon::HttpRequestPtr& req,
-            std::function<void(const drogon::HttpResponsePtr&)>&& callback, Args&&... args)
+        auto ctl = registry.find(key);
+        if (ctl != registry.end())
         {
-            auto it = registry.find(key);
-            if (it != registry.end())
+            try
             {
-                try
-                {
-                    std::visit(
-                        [&](const auto& controller)
+                std::visit(
+                    [&](const auto& controller)
+                    {
+                        CALLBACK_ mcb = [&callback](int code, const std::string& content)
                         {
-                            CALLBACK_ mcb = [&callback](int code, const std::string& content)
+                            switch (code)
                             {
-                                switch (code)
-                                {
-                                    case api::v2::Http::Status::OK:
-                                        Helper::successResponse(content, std::move(callback));
-                                        break;
-                                    case api::v2::Http::Status::INTERNAL_SERVER_ERROR:
-                                        Helper::failureResponse(content, std::move(callback));
-                                        break;
-                                    default:
-                                        Helper::errorResponse(static_cast<drogon::HttpStatusCode>(code), content, std::move(callback));
-                                        break;
-                                }
-                            };
+                                case api::v2::Http::Status::OK:
+                                    Helper::successResponse(content, std::move(callback));
+                                    break;
+                                case api::v2::Http::Status::INTERNAL_SERVER_ERROR:
+                                    Helper::failureResponse(content, std::move(callback));
+                                    break;
+                                default:
+                                    Helper::errorResponse(static_cast<drogon::HttpStatusCode>(code), content, std::move(callback));
+                                    break;
+                            }
+                        };
 
-                            Requester requester{
-                                .id = req->getAttributes()->get<uint64_t>("clientID"), .group = req->getAttributes()->get<std::string>("clientGroup")};
+                        Requester requester(req->getAttributes()->get<uint64_t>("clientID"), req->getAttributes()->get<std::string>("clientGroup"));
 
-                            std::invoke(method, controller.get(), std::move(mcb), std::move(requester), std::forward<Args>(args)...);
-                            return;
-                        },
-                        it->second);
-                }
-                catch (const std::exception& e)
-                {
-                    Helper::failureResponse(e.what(), std::move(callback));
-                }
+                        std::invoke(method, controller.get(), std::move(mcb), std::move(requester), std::forward<Args>(args)...);
+                        return;
+                    },
+                    ctl->second);
             }
-            else
+            catch (const std::exception& e)
             {
-                Helper::errorResponse(drogon::k400BadRequest, fmt::format("Type mapping not found for: {}", key), std::move(callback));
+                Helper::failureResponse(e.what(), std::move(callback));
             }
         }
-
-    }  // namespace v2
-
-}  // namespace api
+        else
+        {
+            Helper::errorResponse(drogon::k400BadRequest, fmt::format("Type mapping not found for: {}", key), std::move(callback));
+        }
+    }
+}  // namespace api::v2
