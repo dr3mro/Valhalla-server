@@ -1,13 +1,24 @@
 #pragma once
+#include <fmt/core.h>
+
+#include <cstdint>
+#include <optional>
+#include <string>
+
 #include "entities/base/entity.hpp"
 
 class Appointment : public Entity
 {
    public:
     template <typename T>
-    Appointment(const T &_data, const std::string &_tablename) : Entity(_data, _tablename)
+    explicit Appointment(const T &_data, const std::string &_tablename) : Entity(_data, _tablename)
     {
     }
+
+    Appointment(const Appointment &)            = delete;
+    Appointment(Appointment &&)                 = delete;
+    Appointment &operator=(const Appointment &) = delete;
+    Appointment &operator=(Appointment &&)      = delete;
 
     ~Appointment() override = default;
 

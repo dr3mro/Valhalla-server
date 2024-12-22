@@ -1,5 +1,9 @@
 #pragma once
 
+#include <cstdint>
+#include <optional>
+#include <string>
+
 #include "entities/appointments/base/appointment.hpp"
 
 class LaboratoryAppointment : public Appointment
@@ -10,9 +14,15 @@ class LaboratoryAppointment : public Appointment
 
    public:
     template <typename T>
-    LaboratoryAppointment(const T &_data) : Appointment(_data, TABLENAME)
+    explicit LaboratoryAppointment(const T &_data) : Appointment(_data, TABLENAME)
     {
     }
+
+    LaboratoryAppointment(const LaboratoryAppointment &)            = delete;
+    LaboratoryAppointment(LaboratoryAppointment &&)                 = delete;
+    LaboratoryAppointment &operator=(const LaboratoryAppointment &) = delete;
+    LaboratoryAppointment &operator=(LaboratoryAppointment &&)      = delete;
+
     static constexpr auto getTableName() { return TABLENAME; }
     static constexpr auto getOrgName() { return ORGNAME; }
     ~LaboratoryAppointment() override = default;
