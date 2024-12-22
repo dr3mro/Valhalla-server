@@ -4,7 +4,7 @@
 namespace api::v2
 {
     class Client;
-}
+}  // namespace api::v2
 
 class Service;
 class Case;
