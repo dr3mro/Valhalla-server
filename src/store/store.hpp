@@ -11,6 +11,14 @@ class Store
     Store()          = default;
     virtual ~Store() = default;
 
+    // Delete copy constructor and copy assignment operator
+    Store(const Store&)            = delete;
+    Store& operator=(const Store&) = delete;
+
+    // Default move constructor and move assignment operator
+    Store(Store&&)            = default;
+    Store& operator=(Store&&) = default;
+
     template <typename T, typename... Args>
     static std::shared_ptr<T> registerObject(Args&&... args)
     {
@@ -33,15 +41,14 @@ class Store
     }
 
     template <typename T, typename... Args>
-    [[nodiscard("Warning: You should never discard the returned object")]] static std::shared_ptr<T> getObject(
-        Args&&... args)
+    [[nodiscard("Warning: You should never discard the returned object")]] static std::shared_ptr<T> getObject(Args&&... args)
     {
         {
             std::lock_guard<std::mutex> lock(inventoryMutex);
-            auto                        it = inventory.find(typeid(T));
-            if (it != inventory.end())
+            auto                        object = inventory.find(typeid(T));
+            if (object != inventory.end())
             {
-                return std::static_pointer_cast<T>(it->second);
+                return std::static_pointer_cast<T>(object->second);
             }
         }
         return registerObject<T>(std::forward<Args>(args)...);
