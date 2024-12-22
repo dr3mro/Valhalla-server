@@ -14,16 +14,20 @@ template <typename T>
 class EntityController : public Controller, public EntityControllerBase
 {
    public:
-    EntityController()          = default;
-    virtual ~EntityController() = default;
+    EntityController()                                    = default;
+    EntityController(const EntityController &)            = default;
+    EntityController(EntityController &&)                 = default;
+    EntityController &operator=(const EntityController &) = default;
+    EntityController &operator=(EntityController &&)      = default;
+    virtual ~EntityController()                           = default;
     // CRUDS
 
     void Create(CALLBACK_ &&callback, const Requester &&requester, std::string_view data) override;
     void Read(CALLBACK_ &&callback, const Requester &&requester, std::string_view data) override;
-    void Update(CALLBACK_ &&callback, const Requester &&requester, std::string_view data, std::optional<uint64_t> id) override;
-    void Delete(CALLBACK_ &&callback, const Requester &&requester, std::optional<uint64_t> id) override;
+    void Update(CALLBACK_ &&callback, const Requester &&requester, std::string_view data, std::optional<uint64_t> _id) override;
+    void Delete(CALLBACK_ &&callback, const Requester &&requester, std::optional<uint64_t> _id) override;
     void Search(CALLBACK_ &&callback, const Requester &&requester, std::string_view data) override;
 
-   protected:
+   private:
     std::shared_ptr<GateKeeper> gateKeeper = Store::getObject<GateKeeper>();
 };
