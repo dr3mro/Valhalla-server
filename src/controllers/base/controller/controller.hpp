@@ -14,7 +14,6 @@
 #include "utils/jsonhelper/jsonhelper.hpp"
 #include "utils/message/message.hpp"
 
-using namespace api::v2;
 class Controller
 {
    public:
@@ -27,9 +26,15 @@ class Controller
         catch (const std::exception &e)
         {
             CRITICALMESSAGE
-            exit(EXIT_FAILURE);
+            throw std::runtime_error("Failed to initialize database controller");
         }
     }
+
+    Controller &operator=(const Controller &) = default;
+    Controller(const Controller &)            = default;
+    Controller &operator=(Controller &&)      = default;
+    Controller(Controller &&)                 = default;
+
     virtual ~Controller() = default;
 
     // CRUDS
@@ -37,26 +42,26 @@ class Controller
     void Create(T &entity, CALLBACK_ &&callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlCreateStatement;
-        cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK_>(callback));
+        cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK_>(std::move(callback)));
     }
 
     template <typename T>
     void Read(T &entity, CALLBACK_ &&callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlReadStatement;
-        cruds(entity, sqlstatement, dbrexec, std::forward<CALLBACK_>(callback));
+        cruds(entity, sqlstatement, dbrexec, std::forward<CALLBACK_>(std::move(callback)));
     }
     template <typename T>
     void Update(T &entity, CALLBACK_ &&callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlUpdateStatement;
-        cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK_>(callback));
+        cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK_>(std::move(callback)));
     }
     template <typename T>
     void Delete(T &entity, CALLBACK_ &&callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlDeleteStatement;
-        cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK_>(callback));
+        cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK_>(std::move(callback)));
     }
     template <typename T>
     void Search(T &entity, CALLBACK_ &&callback)
@@ -77,8 +82,7 @@ class Controller
                 if (results_count > std::get<Types::Search_t>(entity.getData()).limit)
                 {
                     response_json["more"]   = true;
-                    response_json["offset"] = std::get<Types::Search_t>(entity.getData()).offset +
-                                              std::get<Types::Search_t>(entity.getData()).limit;
+                    response_json["offset"] = std::get<Types::Search_t>(entity.getData()).offset + std::get<Types::Search_t>(entity.getData()).limit;
                     query_results_json.erase(query_results_json.array_range().end() - 1);
                 }
                 else
@@ -89,7 +93,7 @@ class Controller
             }
 
             response_json["results"] = query_results_json;
-            callback(api::v2::Http::Status::OK, response_json.as<std::string>());
+            std::move(callback)(api::v2::Http::Status::OK, response_json.as<std::string>());
         }
         catch (const std::exception &e)
         {
@@ -129,7 +133,7 @@ class Controller
                 services = databaseController->executeSearchQuery(query.value());
             }
 
-            callback(api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(services));
+            std::move(callback)(api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(services));
         }
         catch (const std::exception &e)
         {
@@ -153,7 +157,7 @@ class Controller
                 visits = databaseController->executeSearchQuery(query.value());
             }
 
-            callback(api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(visits));
+            std::move(callback)(api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(visits));
         }
         catch (const std::exception &e)
         {
@@ -161,14 +165,18 @@ class Controller
         }
     }
 
+   private:
+    std::shared_ptr<DatabaseController> databaseController;
+    std::optional<jsoncons::json> (DatabaseController::*dbexec)(const std::string &)  = &DatabaseController::executeQuery;
+    std::optional<jsoncons::json> (DatabaseController::*dbrexec)(const std::string &) = &DatabaseController::executeReadQuery;
+
    protected:
     template <typename T>
     std::optional<uint64_t> getNextID(api::v2::Http::Error &error)
     {
         try
         {
-            jsoncons::json json_nextval =
-                databaseController->executeQuery(fmt::format("SELECT NEXTVAL('{}_id_seq');", T::getTableName()));
+            jsoncons::json json_nextval = databaseController->executeQuery(fmt::format("SELECT NEXTVAL('{}_id_seq');", T::getTableName()));
 
             if (json_nextval.empty())
             {
@@ -194,15 +202,6 @@ class Controller
         return std::nullopt;
     }
 
-    std::shared_ptr<DatabaseController> databaseController;
-
-    std::optional<jsoncons::json> (DatabaseController::*dbexec)(const std::string &) =
-        &DatabaseController::executeQuery;
-    std::optional<jsoncons::json> (DatabaseController::*dbrexec)(const std::string &) =
-        &DatabaseController::executeReadQuery;
-    std::optional<jsoncons::json::array> (DatabaseController::*dbsexec)(const std::string &) =
-        &DatabaseController::executeSearchQuery;
-
     ///////////////////////////
     template <typename S, typename T>
     bool get_sql_statement(std::optional<std::string> &query, T &entity, S &sqlstatement, std::string &error)
@@ -218,8 +217,7 @@ class Controller
     }
 
     template <typename S, typename T>
-    void cruds(T &entity, S &sqlstatement, std::optional<jsoncons::json> (DatabaseController::*f)(const std::string &),
-               CALLBACK_ &&callback)
+    void cruds(T &entity, S &sqlstatement, std::optional<jsoncons::json> (DatabaseController::*func)(const std::string &), CALLBACK_ &&callback)
     {
         std::optional<jsoncons::json> results_j;
         std::optional<std::string>    query;
@@ -228,32 +226,28 @@ class Controller
             std::string error;
             if (!get_sql_statement(query, entity, sqlstatement, error))
             {
-                callback(api::v2::Http::Status::BAD_REQUEST, error);
+                std::move(callback)(api::v2::Http::Status::BAD_REQUEST, error);
                 return;
             }
 
             if (query.has_value())
             {
-                results_j = (*databaseController.*f)(query.value());
+                results_j = (*databaseController.*func)(query.value());
                 if (results_j.has_value())
                 {
                     if (!results_j->empty())
                     {
-                        callback(api::v2::Http::Status::OK, results_j.value().as<std::string>());
+                        std::move(callback)(api::v2::Http::Status::OK, results_j.value().as<std::string>());
                         return;
                     }
-                    else
-                    {
-                        callback(api::v2::Http::Status::BAD_REQUEST,
-                                 "Query returned no results, please check ID "
-                                 "as it might not exist or be invalid.");
-                        return;
-                    }
+
+                    std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
+                        "Query returned no results, please check ID "
+                        "as it might not exist or be invalid.");
+                    return;
                 }
-                else
-                {
-                    callback(api::v2::Http::Status::BAD_REQUEST, "Failed to execute query");
-                }
+
+                std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Failed to execute query");
             }
         }
         catch (const std::exception &e)
