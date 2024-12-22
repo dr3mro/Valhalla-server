@@ -4,13 +4,15 @@
 
 #include <cstdint>
 #include <jsoncons/basic_json.hpp>
-#include <memory>
 #include <optional>
+#include <string>
 
 #include "gatekeeper/includes.hpp"  // IWYU pragma: keep
+#include "gatekeeper/permissionmanager/permissionmanager_private.hpp"
 #include "utils/global/concepts.hpp"
 #include "utils/global/http.hpp"
-
+#include "utils/global/requester.hpp"
+using pm_priv = api::v2::PermissionManagerPrivate;
 template <Client_t T>
 bool PermissionManager::canCreate(
     [[maybe_unused]] const Requester& requester, [[maybe_unused]] const std::optional<jsoncons::json>& data_j, [[maybe_unused]] Http::Error& error)
@@ -21,35 +23,35 @@ bool PermissionManager::canCreate(
 template <Client_t T>
 bool PermissionManager::canRead(const Requester& requester, uint64_t client_id, Http::Error& error)
 {
-    return pm_priv->assert_group_id_match(requester, T::getTableName(), client_id, error);
+    return pm_priv::assert_group_id_match(requester, T::getTableName(), client_id, error);
 }
 template <Client_t T>
 bool PermissionManager::canUpdate(const Requester& requester, uint64_t client_id, Http::Error& error)
 {
-    return pm_priv->assert_group_id_match(requester, T::getTableName(), client_id, error);
+    return pm_priv::assert_group_id_match(requester, T::getTableName(), client_id, error);
 }
 template <Client_t T>
 bool PermissionManager::canDelete(const Requester& requester, const uint64_t client_id, Http::Error& error)
 {
-    return pm_priv->assert_group_id_match(requester, T::getTableName(), client_id, error);
+    return pm_priv::assert_group_id_match(requester, T::getTableName(), client_id, error);
 }
 
 template <Client_t T>
 bool PermissionManager::canToggleActive(const Requester& requester, const uint64_t client_id, Http::Error& error)
 {
-    return pm_priv->assert_group_id_match(requester, T::getTableName(), client_id, error);
+    return pm_priv::assert_group_id_match(requester, T::getTableName(), client_id, error);
 }
 
 template <Client_t T>
 bool PermissionManager::canGetServices(const Requester& requester, const uint64_t client_id, Http::Error& error)
 {
-    return pm_priv->assert_group_id_match(requester, T::getTableName(), client_id, error);
+    return pm_priv::assert_group_id_match(requester, T::getTableName(), client_id, error);
 }
 
 template <Service_t T>
 bool PermissionManager::canCreate(const Requester& requester, const std::optional<jsoncons::json>& service_j, Http::Error& error)
 {
-    return pm_priv->preServiceCreateChecks(requester, service_j, error);
+    return pm_priv::preServiceCreateChecks(requester, service_j, error);
 }
 
 template <Service_t T>
@@ -57,9 +59,9 @@ bool PermissionManager::canRead(const Requester& requester, uint64_t service_id,
 {
     const std::string service_name = T::getTableName();
 
-    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
+    std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
-    return pm_priv->isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
+    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }
 
 template <Service_t T>
@@ -67,9 +69,9 @@ bool PermissionManager::canUpdate(const Requester& requester, uint64_t service_i
 {
     const std::string service_name = T::getTableName();
 
-    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
+    std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
-    return pm_priv->isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
+    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }
 
 template <Service_t T>
@@ -77,13 +79,9 @@ bool PermissionManager::canDelete(const Requester& requester, const uint64_t ser
 {
     const std::string service_name = T::getTableName();
 
-    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
+    std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
-    if (pm_priv->isOwnerOfService(requester, permissions_j, service_name, error))
-    {
-        return true;
-    }
-    return false;
+    return pm_priv::isOwnerOfService(requester, permissions_j, service_name, error);
 }
 
 template <typename T>
@@ -91,9 +89,9 @@ bool PermissionManager::canManageStaff(const Requester& requester, uint64_t serv
 {
     std::string service_name = T::getTableName();
 
-    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
+    std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
-    return pm_priv->isOwnerOrAdmin(requester, permissions_j, service_name, error);
+    return pm_priv::isOwnerOrAdmin(requester, permissions_j, service_name, error);
 }
 
 template <Case_t T>
@@ -101,38 +99,38 @@ bool PermissionManager::canCreate(const Requester& requester, const std::optiona
 {
     std::string service_name = T::getTableName();
 
-    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getPermissionsQueryForCreate, data_j);
+    std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getPermissionsQueryForCreate, data_j);
 
-    return pm_priv->isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
+    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }
 
 template <Case_t T>
-bool PermissionManager::canRead(const Requester& requester, const uint64_t id, Http::Error& error)
+bool PermissionManager::canRead(const Requester& requester, const uint64_t _id, Http::Error& error)
 {
     std::string service_name = T::getTableName();
 
-    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getPermissionsQueryForRead, id);
+    std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getPermissionsQueryForRead, _id);
 
-    return pm_priv->isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
+    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }
 
 template <Case_t T>
-bool PermissionManager::canUpdate(const Requester& requester, const uint64_t id, Http::Error& error)
+bool PermissionManager::canUpdate(const Requester& requester, const uint64_t _id, Http::Error& error)
 {
     std::string service_name = T::getTableName();
 
-    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(&T::getPermissionsQueryForUpdate, id);
+    std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(&T::getPermissionsQueryForUpdate, _id);
 
-    return pm_priv->isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
+    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }
 
 template <Case_t T>
-bool PermissionManager::canDelete(const Requester& requester, const uint64_t id, Http::Error& error)
+bool PermissionManager::canDelete(const Requester& requester, const uint64_t _id, Http::Error& error)
 {
     std::string                   service_name  = T::getTableName();
-    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(&T::getPermissionsQueryForDelete, id);
+    std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(&T::getPermissionsQueryForDelete, _id);
 
-    return pm_priv->isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
+    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }
 
 template <Appointment_t T>
@@ -140,15 +138,15 @@ bool PermissionManager::canCreate(const Requester& requester, const std::optiona
 {
     std::string service_name = T::getOrgName();
 
-    auto service_id = pm_priv->extract_json_value_safely<uint64_t>(service_j, "clinic_id", service_name, error);
+    auto service_id = pm_priv::extract_json_value_safely<uint64_t>(service_j, "clinic_id", service_name, error);
 
     if (!service_id.has_value())
     {
         return false;
     }
-    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id.value());
+    std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id.value());
 
-    return pm_priv->isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
+    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }
 
 template <Appointment_t T>
@@ -156,9 +154,9 @@ bool PermissionManager::canRead(const Requester& requester, uint64_t service_id,
 {
     std::string service_name = T::getOrgName();
 
-    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
+    std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
-    return pm_priv->isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
+    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }
 
 template <Appointment_t T>
@@ -166,9 +164,9 @@ bool PermissionManager::canUpdate(const Requester& requester, const uint64_t ser
 {
     std::string service_name = T::getOrgName();
 
-    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
+    std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
-    return pm_priv->isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
+    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }
 
 template <Appointment_t T>
@@ -176,9 +174,9 @@ bool PermissionManager::canDelete(const Requester& requester, uint64_t service_i
 {
     std::string service_name = T::getOrgName();
 
-    std::optional<jsoncons::json> permissions_j = pm_priv->getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
+    std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
-    return pm_priv->isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
+    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }
 
 #define INSTANTIATE_PERMISSION_CRUD(TYPE)                                                                                   \
