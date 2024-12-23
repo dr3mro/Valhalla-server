@@ -2,10 +2,14 @@
 
 #include <atomic>
 #include <chrono>
+#include <cstdint>
 #include <deque>
 #include <future>
+#include <memory>
 #include <mutex>
+#include <optional>
 #include <string>
+#include <string_view>
 #include <unordered_map>
 #include <unordered_set>
 
@@ -34,6 +38,10 @@ class DOSDetector
     };
 
     DOSDetector();
+    DOSDetector(const DOSDetector &)            = delete;
+    DOSDetector(DOSDetector &&)                 = delete;
+    DOSDetector &operator=(const DOSDetector &) = delete;
+    DOSDetector &operator=(DOSDetector &&)      = delete;
     virtual ~DOSDetector();
     DOSDetector::Status is_dos_attack(const Request &request);
 
