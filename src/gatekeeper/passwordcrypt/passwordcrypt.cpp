@@ -22,15 +22,15 @@ std::optional<std::string> PasswordCrypt::hashPassword(const std::string &passwo
     std::optional<std::string> hash;
 
     // Salt for the hashing (must be random)
-    unsigned char salt[crypto_pwhash_scryptsalsa208sha256_SALTBYTES];  // NOLINT
+    char salt[crypto_pwhash_scryptsalsa208sha256_SALTBYTES];  // NOLINT
     randombytes_buf(static_cast<void *>(salt), sizeof salt);
 
     // Buffer to store the hashed password
-    unsigned char hashed_password[crypto_pwhash_scryptsalsa208sha256_STRBYTES];  // NOLINT
+    char hashed_password[crypto_pwhash_scryptsalsa208sha256_STRBYTES];  // NOLINT
 
     // Hash the password using the scrypt algorithm
 
-    if (crypto_pwhash_scryptsalsa208sha256_str(reinterpret_cast<char *>(hashed_password), password.c_str(), password.length(),
+    if (crypto_pwhash_scryptsalsa208sha256_str(static_cast<char *>(hashed_password), password.c_str(), password.length(),
             crypto_pwhash_scryptsalsa208sha256_OPSLIMIT_MIN,
             crypto_pwhash_scryptsalsa208sha256_MEMLIMIT_MIN) != 0)  // NOLINT
     {
