@@ -1,7 +1,26 @@
 #include "controllers/clientcontroller/clientcontroller.hpp"
 
+#include <fmt/core.h>
+
+#include <cstdint>
+#include <exception>
+#include <jsoncons/basic_json.hpp>
+#include <optional>
+#include <string>
+#include <string_view>
+#include <utility>
+
+#include "controllers/base/controller/controller.hpp"
+#include "controllers/entitycontroller/entitycontroller.hpp"
+#include "controllers/entitycontroller/entitycontrollerbase.hpp"
+#include "entities/base/types.hpp"
 #include "entities/people/provider.hpp"
 #include "entities/people/user.hpp"
+#include "utils/global/callback.hpp"
+#include "utils/global/concepts.hpp"
+#include "utils/global/http.hpp"
+#include "utils/jsonhelper/jsonhelper.hpp"
+#include "validator/validator.hpp"
 
 template <Client_t T>
 void ClientController<T>::Create(CALLBACK_&& callback, [[maybe_unused]] const Requester&& requester, std::string_view data)
@@ -50,7 +69,7 @@ void ClientController<T>::Read(CALLBACK_&& callback, const Requester&& requester
 }
 
 template <Client_t T>
-void ClientController<T>::Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, const std::optional<uint64_t> id)
+void ClientController<T>::Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, const std::optional<uint64_t> _id)
 {
     try
     {
@@ -58,12 +77,12 @@ void ClientController<T>::Update(CALLBACK_&& callback, const Requester&& request
         Validator::Rule rule(Validator::Rule::Action::ASSERT_IMMUTABLE, {"username", "password"});
 
         api::v2::Http::Error  error;
-        Types::UpdateClient_t client_data(data, id, T::getTableName(), error, success, rule);
+        Types::UpdateClient_t client_data(data, _id, T::getTableName(), error, success, rule);
 
         if (success)
         {
             T client(client_data);
-            if (!gateKeeper->canUpdate<T>(requester, id.value(), error))
+            if (!gateKeeper->canUpdate<T>(requester, _id.value(), error))
             {
                 callback(error.code, error.message);
                 return;
@@ -170,7 +189,7 @@ void ClientController<T>::Activate(CALLBACK_&& callback, const Requester&& reque
 template <Client_t T>
 void ClientController<T>::ResetPassword(CALLBACK_&& callback, [[maybe_unused]] const Requester&& requester, std::string_view data)
 {
-    (void)callback;
+    (void)std::move(callback);
     (void)data;
 }
 
@@ -202,7 +221,7 @@ void ClientController<T>::GetServices(CALLBACK_&& callback, const Requester&& re
     }
 }
 
-#define INSTANTIATE_CLIENT_CONTROLLER(TYPE)                                                                                                               \
+#define INSTANTIATE_CLIENT_CONTROLLER(TYPE) /* NOLINT(cppcoreguidelines-macro-usage)*/                                                                    \
     template void ClientController<TYPE>::Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                               \
     template void ClientController<TYPE>::Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                                 \
     template void ClientController<TYPE>::Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> id);   \
@@ -216,6 +235,5 @@ void ClientController<T>::GetServices(CALLBACK_&& callback, const Requester&& re
     template void ClientController<TYPE>::ResetPassword(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                        \
     template void ClientController<TYPE>::GetServices(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id);
 
-// Then use it like this:
 INSTANTIATE_CLIENT_CONTROLLER(User)
 INSTANTIATE_CLIENT_CONTROLLER(Provider)
