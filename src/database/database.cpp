@@ -2,11 +2,13 @@
 
 #include <fmt/core.h>
 
+#include <chrono>
 #include <cstdlib>
 #include <exception>
 #include <memory>
 #include <optional>
 #include <string>
+#include <thread>
 #include <unordered_set>
 #include <utility>
 
@@ -22,6 +24,9 @@ Database::Database(std::shared_ptr<pqxx::connection> conn) : connection(std::mov
             // Execute a simple query to test the connection
             pqxx::nontransaction ntxn(*connection);
             ntxn.exec("SELECT 1");
+
+            connection_info = connection->connection_string();
+            startConnectionMonitor();
         }
         else
         {
@@ -34,7 +39,27 @@ Database::Database(std::shared_ptr<pqxx::connection> conn) : connection(std::mov
     }
 }
 
-bool Database::isConnected() { return connection != nullptr && connection->is_open(); }
+bool Database::isConnected()
+{
+    if (connection == nullptr)
+    {
+        return false;
+    }
+    try
+    {
+        pqxx::nontransaction ntxn(*connection);
+
+        ntxn.exec("SELECT 1");
+    }
+    catch (const std::exception &e)
+    {
+        Message::ErrorMessage("Database connection lost:");
+        Message::CriticalMessage(e.what());
+        return false;
+    }
+
+    return connection->is_open();
+}
 
 bool Database::checkExists(const std::string &table, const std::string &column, const std::string &value)
 {
@@ -100,5 +125,78 @@ std::optional<std::unordered_set<std::string>> Database::getAllTables()
     {
         Message::CriticalMessage(fmt::format("Error executing query: {}", e.what()));
         return std::nullopt;
+    }
+}
+
+void Database::startConnectionMonitor()  // NOLINT
+{
+    if (monitor_thread.joinable())
+    {
+        return;
+    }
+
+    should_monitor = true;
+    monitor_thread = std::thread(
+        [this]()
+        {
+            int                  retry_count = 0;
+            std::chrono::seconds current_backoff{1};
+
+            while (should_monitor)
+            {
+                if (!isConnected())
+                {
+                    Message::WarningMessage("Database connection lost. Attempting to reconnect...");
+
+                    while (!isConnected() && retry_count < config.max_retry_attempts)
+                    {
+                        try
+                        {
+                            // Create a new connection
+                            auto new_connection = std::make_shared<pqxx::connection>(connection_info);
+
+                            if (new_connection->is_open())
+                            {
+                                connection = new_connection;
+                                Message::InfoMessage("Successfully reconnected to database");
+                                retry_count     = 0;
+                                current_backoff = std::chrono::seconds{1};
+                                break;
+                            }
+                        }
+                        catch (const std::exception &e)
+                        {
+                            Message::ErrorMessage(fmt::format("Reconnection attempt {} failed:", retry_count + 1));
+                            Message::CriticalMessage(e.what());
+
+                            retry_count++;
+                            std::this_thread::sleep_for(current_backoff);
+
+                            // Implement exponential backoff
+                            current_backoff *= 2;
+                            if (current_backoff > config.max_backoff)
+                            {
+                                current_backoff = config.max_backoff;
+                            }
+                        }
+                    }
+
+                    if (retry_count >= config.max_retry_attempts)
+                    {
+                        Message::CriticalMessage("Maximum retry attempts reached. Stopping connection monitor.");
+                        should_monitor = false;
+                        break;
+                    }
+                }
+                std::this_thread::sleep_for(config.check_interval);
+            }
+        });
+}
+void Database::stopConnectionMonitor()
+{
+    should_monitor = false;
+    if (monitor_thread.joinable())
+    {
+        monitor_thread.join();
     }
 }

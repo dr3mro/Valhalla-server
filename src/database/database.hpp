@@ -4,6 +4,8 @@
 #include <fmt/format.h>
 #include <trantor/utils/Logger.h>
 
+#include <atomic>
+#include <chrono>
 #include <cstdint>
 #include <exception>
 #include <jsoncons/basic_json.hpp>
@@ -12,6 +14,7 @@
 #include <optional>
 #include <pqxx/pqxx>  // Include the libpqxx header for PostgreSQL
 #include <string>
+#include <thread>
 #include <unordered_set>
 
 #include "utils/global/types.hpp"
@@ -20,12 +23,19 @@
 class Database
 {
    public:
-    Database(const Database &)            = default;
+    using MonitorConfig = struct MonitorConfig
+    {
+        std::chrono::seconds check_interval{10};     // NOLINT
+        std::chrono::seconds max_backoff{300};       // NOLINT // 5 minutes
+        int                  max_retry_attempts{5};  // NOLINT
+    };
+
+    Database(const Database &)            = delete;
     Database(Database &&)                 = delete;
-    Database &operator=(const Database &) = default;
+    Database &operator=(const Database &) = delete;
     Database &operator=(Database &&)      = delete;
     explicit Database(std::shared_ptr<pqxx::connection> conn);
-    virtual ~Database() = default;
+    virtual ~Database() { stopConnectionMonitor(); }
 
     bool isConnected();
     bool checkExists(const std::string &table, const std::string &column, const std::string &value);
@@ -131,7 +141,15 @@ class Database
     std::optional<std::unordered_set<std::string>>         getAllTables();
 
    private:
+    void startConnectionMonitor();
+    void stopConnectionMonitor();
+
+    std::thread       monitor_thread;
+    std::atomic<bool> should_monitor{false};
+    std::string       connection_info;  // Store connection parameters
+
     std::shared_ptr<pqxx::connection> connection;
+    MonitorConfig                     config;
 
     static const std::uint16_t TEXT    = 1043;
     static const std::uint16_t INTEGER = 23;
