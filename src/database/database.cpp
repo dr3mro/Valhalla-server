@@ -10,6 +10,7 @@
 #include <unordered_set>
 #include <utility>
 
+#include "database/connectionmonitor.hpp"
 #include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
 
@@ -17,15 +18,13 @@ Database::Database(std::shared_ptr<pqxx::connection> conn) : connection(std::mov
 {
     try
     {
-        if (connection->is_open())
+        if (connection != nullptr)
         {
-            // Execute a simple query to test the connection
             pqxx::nontransaction ntxn(*connection);
+
             ntxn.exec("SELECT 1");
-        }
-        else
-        {
-            Message::CriticalMessage("Failed to open database connection.");
+
+            connection_info = connection->connection_string();
         }
     }
     catch (const std::exception &e)
@@ -34,7 +33,11 @@ Database::Database(std::shared_ptr<pqxx::connection> conn) : connection(std::mov
     }
 }
 
-bool Database::isConnected() { return connection != nullptr && connection->is_open(); }
+void Database::initializeConnectionMonitor()
+{
+    connectionMonitor = std::make_shared<ConnectionMonitor>(shared_from_this());
+    connectionMonitor->start();
+}
 
 bool Database::checkExists(const std::string &table, const std::string &column, const std::string &value)
 {
@@ -49,6 +52,49 @@ bool Database::checkExists(const std::string &table, const std::string &column, 
         Message::CriticalMessage(fmt::format("Error executing query: {}", e.what()));
         return false;
     }
+}
+
+std::shared_ptr<pqxx::connection> Database::get_connection() { return connection; }
+
+bool Database::check_connection()
+{
+    if (connection == nullptr)
+    {
+        return false;
+    }
+    try
+    {
+        pqxx::nontransaction ntxn(*connection);
+        ntxn.exec("SELECT 1");
+    }
+    catch (const std::exception &e)
+    {
+        Message::ErrorMessage("Database connection lost:");
+        Message::CriticalMessage(e.what());
+        return false;
+    }
+
+    return connection->is_open();
+}
+
+bool Database::reconnect()
+{
+    try
+    {
+        auto new_connection = std::make_shared<pqxx::connection>(connection_info);
+
+        if (new_connection != nullptr)
+        {
+            connection = new_connection;
+            return true;
+        }
+    }
+    catch (const std::exception &e)
+    {
+        Message::CriticalMessage(fmt::format("Failed to reconnect to database,{}", e.what()));
+        return false;
+    }
+    return false;
 }
 
 std::optional<std::unordered_set<api::v2::ColumnInfo>> Database::getTableSchema(const std::string &tableName)
