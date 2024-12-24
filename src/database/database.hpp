@@ -2,10 +2,17 @@
 #define DATABASE_HPP
 
 #include <fmt/format.h>
+#include <trantor/utils/Logger.h>
 
+#include <cstdint>
+#include <exception>
+#include <jsoncons/basic_json.hpp>
 #include <jsoncons/json.hpp>
+#include <memory>
+#include <optional>
 #include <pqxx/pqxx>  // Include the libpqxx header for PostgreSQL
 #include <string>
+#include <unordered_set>
 
 #include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
@@ -13,6 +20,10 @@
 class Database
 {
    public:
+    Database(const Database &)            = default;
+    Database(Database &&)                 = delete;
+    Database &operator=(const Database &) = default;
+    Database &operator=(Database &&)      = delete;
     explicit Database(std::shared_ptr<pqxx::connection> conn);
     virtual ~Database() = default;
 
@@ -39,8 +50,8 @@ class Database
             {
                 for (const auto &field : row)
                 {
-                    std::string field_name = field.name();
-                    int         field_type = field.type();
+                    std::string  field_name = field.name();
+                    unsigned int field_type = field.type();
 
                     if (field.is_null())
                     {
@@ -51,20 +62,20 @@ class Database
                     {
                         switch (field_type)
                         {
-                            case 1043:  // TEXT or VARCHAR
+                            case TEXT:  // TEXT or VARCHAR
                                 object[field_name] = field.as<std::string>();
                                 break;
 
-                            case 23:  // INTEGER
+                            case INTEGER:  // INTEGER
                                 object[field_name] = field.as<int>();
                                 break;
 
-                            case 16:  // BOOLEAN
+                            case BOOLEAN:  // BOOLEAN
                                 object[field_name] = field.as<bool>();
                                 break;
 
-                            case 114:   // JSON
-                            case 3802:  // JSONB
+                            case JSON:   // JSON
+                            case JSONB:  // JSONB
                                 object[field_name] = jsoncons::json::parse(field.as<std::string>());
                                 break;
 
@@ -121,6 +132,12 @@ class Database
 
    private:
     std::shared_ptr<pqxx::connection> connection;
+
+    static const std::uint16_t TEXT    = 1043;
+    static const std::uint16_t INTEGER = 23;
+    static const std::uint16_t BOOLEAN = 16;
+    static const std::uint16_t JSON    = 114;
+    static const std::uint16_t JSONB   = 3802;
 };
 
 #endif  // DATABASE_HPP

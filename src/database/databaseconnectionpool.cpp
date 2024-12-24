@@ -21,19 +21,13 @@ std::shared_ptr<Database> DatabaseConnectionPool::createDatabaseConnection()
 {
     auto command = fmt::format("host= {}  dbname= {}  user= {} password= {} connect_timeout=2", config_.host, config_.name, config_.user, config_.pass);
 
-    try
+    auto conn = std::make_shared<pqxx::connection>(command.c_str());
+
+    if (conn->is_open())
     {
-        auto conn = std::make_shared<pqxx::connection>(command.c_str());
-        if (conn->is_open())
-        {
-            return std::make_shared<Database>(conn);
-        }
+        return std::make_shared<Database>(conn);
     }
-    catch (const std::exception &e)
-    {
-        throw std::runtime_error(fmt::format("Failed to open database connection, {}", e.what()));
-    }
-    // throw;
+
     return nullptr;
 }
 
@@ -43,7 +37,6 @@ DatabaseConnectionPool::DatabaseConnectionPool()
     {
         for (uint16_t i = 0; i < config_.max_conn; ++i)
         {
-            const int    MAX_RETRIES           = 3;
             unsigned int retryCount            = 0;
             bool         connectionEstablished = false;
 
@@ -52,41 +45,45 @@ DatabaseConnectionPool::DatabaseConnectionPool()
                 auto future = std::async(std::launch::async, &DatabaseConnectionPool::createDatabaseConnection, this);
                 auto status = future.wait_for(std::chrono::seconds(TIMEOUT));
 
-                if (status == std::future_status::ready && future.get() != nullptr)
+                if (status == std::future_status::ready)
                 {
-                    databaseConnections.push(future.get());
-                    Message::InitMessage(fmt::format("Connection {}/{} created successfully.", i + 1, config_.max_conn));
-                    connectionEstablished = true;
-                    return;
+                    auto conn = future.get();
+                    if (conn != nullptr)
+                    {
+                        databaseConnections.push(conn);
+                        Message::InitMessage(fmt::format("Connection {}/{} created successfully.", i + 1, config_.max_conn));
+                        connectionEstablished = true;
+                        break;  // Break from while loop, not function
+                    }
                 }
 
-                // std::this_thread::sleep_for(std::chrono::seconds(1));
                 retryCount++;
                 if (retryCount < MAX_RETRIES)
                 {
-                    Message::WarningMessage(
-                        fmt::format("Connection attempt {} timed out, "
-                                    "retrying... ({}/{})",
-                            i + 1, retryCount, MAX_RETRIES));
-                    // Exponential backoff
+                    Message::WarningMessage(fmt::format("Connection attempt {} timed out, retrying... ({}/{})", i + 1, retryCount, MAX_RETRIES));
                     std::this_thread::sleep_for(std::chrono::seconds(1U << retryCount));
                 }
             }
 
             if (!connectionEstablished)
             {
+                // Clean up any connections we've already created
+                while (!databaseConnections.empty())
+                {
+                    auto conn = databaseConnections.front();
+                    databaseConnections.pop();
+                    // Assuming connections are heap-allocated
+                }
+
                 Message::ErrorMessage(fmt::format("Failed to establish connection {} after {} attempts.", i + 1, MAX_RETRIES));
-                throw std::runtime_error("Database connection pool initialization failure.\n");
+                throw std::runtime_error("Database connection pool initialization failure.");
             }
         }
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
-        Message::CriticalMessage(
-            fmt::format("Failed to initialize database connection pool, Exception caught "
-                        "during database connection pool initialization:\n{}",
-                e.what()));
-        // throw;
+        Message::CriticalMessage(fmt::format("Failed to initialize database connection pool: {}", e.what()));
+        throw;  // Re-throw the exception
     }
 }
 

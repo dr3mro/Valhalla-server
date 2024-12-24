@@ -32,5 +32,6 @@ class DatabaseConnectionPool
     std::queue<std::shared_ptr<Database>> databaseConnections;
     std::mutex                            mutex;
     std::condition_variable               cv;
-    static constexpr std::uint16_t        TIMEOUT = 30;
+    static constexpr std::uint16_t        TIMEOUT     = 30;
+    const unsigned int                    MAX_RETRIES = 3;
 };
