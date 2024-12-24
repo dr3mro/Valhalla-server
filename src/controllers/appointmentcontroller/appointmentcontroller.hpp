@@ -1,8 +1,14 @@
 
 #pragma once
 
+#include <cstdint>
+#include <optional>
+#include <string_view>
+
 #include "controllers/appointmentcontroller/appointmentcontrollerbase.hpp"
 #include "controllers/entitycontroller/entitycontroller.hpp"
+#include "utils/global/callback.hpp"
+#include "utils/global/concepts.hpp"
 
 template <Appointment_t T>
 class AppointmentController : public EntityController<T>, public AppointmentControllerBase

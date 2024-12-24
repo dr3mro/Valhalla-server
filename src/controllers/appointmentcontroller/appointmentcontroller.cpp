@@ -2,6 +2,20 @@
 
 #include "controllers/appointmentcontroller/appointmentcontroller.hpp"
 
+#include <cstdint>
+#include <optional>
+#include <string_view>
+#include <utility>
+
+#include "controllers/appointmentcontroller/appointmentcontrollerbase.hpp"
+#include "controllers/entitycontroller/entitycontroller.hpp"
+#include "entities/appointments/clinic.hpp"           // IWYU pragma: keep
+#include "entities/appointments/laboratory.hpp"       // IWYU pragma: keep
+#include "entities/appointments/pharmacy.hpp"         // IWYU pragma: keep
+#include "entities/appointments/radiologycenter.hpp"  // IWYU pragma: keep
+#include "utils/global/callback.hpp"
+#include "utils/global/concepts.hpp"
+
 template <Appointment_t T>
 void AppointmentController<T>::Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
 {
@@ -31,19 +45,13 @@ void AppointmentController<T>::Search(CALLBACK_&& callback, const Requester&& re
 {
     EntityController<T>::Search(std::move(callback), std::move(requester), data);
 }
-#include "entities/appointments/clinic.hpp"           // IWYU pragma: keep
-#include "entities/appointments/laboratory.hpp"       // IWYU pragma: keep
-#include "entities/appointments/pharmacy.hpp"         // IWYU pragma: keep
-#include "entities/appointments/radiologycenter.hpp"  // IWYU pragma: keep
 
-#define INSTANTIATE_APPOINTMENT_CONTROLLER(TYPE)                                                                                                              \
+#define INSTANTIATE_APPOINTMENT_CONTROLLER(TYPE) /* NOLINT ( -readability-macro-expansion) */                                                                 \
     template void AppointmentController<TYPE>::Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                              \
     template void AppointmentController<TYPE>::Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                                \
     template void AppointmentController<TYPE>::Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> _id); \
     template void AppointmentController<TYPE>::Delete(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> _id);                        \
     template void AppointmentController<TYPE>::Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data);
-
-// Instantiate for all entity types
 
 INSTANTIATE_APPOINTMENT_CONTROLLER(ClinicAppointment)
 INSTANTIATE_APPOINTMENT_CONTROLLER(PharmacyAppointment)
