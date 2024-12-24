@@ -3,8 +3,14 @@
 #include <fmt/core.h>
 
 #include <cstdlib>
+#include <exception>
+#include <memory>
+#include <optional>
+#include <string>
+#include <unordered_set>
 #include <utility>
 
+#include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
 
 Database::Database(std::shared_ptr<pqxx::connection> conn) : connection(std::move(conn))
@@ -20,25 +26,22 @@ Database::Database(std::shared_ptr<pqxx::connection> conn) : connection(std::mov
         else
         {
             Message::CriticalMessage("Failed to open database connection.");
-            exit(EXIT_FAILURE);
         }
     }
     catch (const std::exception &e)
     {
         Message::CriticalMessage(fmt::format("Exception caught during database connection: {}", e.what()));
-        exit(EXIT_FAILURE);
     }
 }
 
-bool Database::isConnected() { return connection && connection->is_open(); }
+bool Database::isConnected() { return connection != nullptr && connection->is_open(); }
 
 bool Database::checkExists(const std::string &table, const std::string &column, const std::string &value)
 {
     try
     {
         pqxx::nontransaction txn(*connection);
-        pqxx::result         result =
-            txn.exec(fmt::format("SELECT EXISTS ( SELECT 1 FROM {} WHERE {} = '{}');", table, column, value));
+        pqxx::result         result = txn.exec(fmt::format("SELECT EXISTS ( SELECT 1 FROM {} WHERE {} = '{}');", table, column, value));
         return result[0][0].as<bool>();
     }
     catch (const std::exception &e)
