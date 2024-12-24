@@ -14,21 +14,24 @@
 #include <string>
 #include <unordered_set>
 
+#include "database/connectionmonitor.hpp"
 #include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
 
-class Database
+class Database : public std::enable_shared_from_this<Database>
 {
    public:
-    Database(const Database &)            = default;
+    Database(const Database &)            = delete;
     Database(Database &&)                 = delete;
-    Database &operator=(const Database &) = default;
+    Database &operator=(const Database &) = delete;
     Database &operator=(Database &&)      = delete;
     explicit Database(std::shared_ptr<pqxx::connection> conn);
-    virtual ~Database() = default;
-
-    bool isConnected();
-    bool checkExists(const std::string &table, const std::string &column, const std::string &value);
+    virtual ~Database() { connectionMonitor->stop(); }
+    void                              initializeConnectionMonitor();
+    bool                              checkExists(const std::string &table, const std::string &column, const std::string &value);
+    std::shared_ptr<pqxx::connection> get_connection();
+    bool                              check_connection();
+    bool                              reconnect();
 
     template <typename jsonType, typename TransactionType>
     std::optional<jsonType> executeQuery(const std::string &query)
@@ -131,13 +134,14 @@ class Database
     std::optional<std::unordered_set<std::string>>         getAllTables();
 
    private:
-    std::shared_ptr<pqxx::connection> connection;
-
-    static const std::uint16_t TEXT    = 1043;
-    static const std::uint16_t INTEGER = 23;
-    static const std::uint16_t BOOLEAN = 16;
-    static const std::uint16_t JSON    = 114;
-    static const std::uint16_t JSONB   = 3802;
+    std::shared_ptr<pqxx::connection>  connection;
+    std::shared_ptr<ConnectionMonitor> connectionMonitor;
+    std::string                        connection_info;  // Store connection parameters
+    static const std::uint16_t         TEXT    = 1043;
+    static const std::uint16_t         INTEGER = 23;
+    static const std::uint16_t         BOOLEAN = 16;
+    static const std::uint16_t         JSON    = 114;
+    static const std::uint16_t         JSONB   = 3802;
 };
 
 #endif  // DATABASE_HPP

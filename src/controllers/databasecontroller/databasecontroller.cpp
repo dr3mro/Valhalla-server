@@ -2,9 +2,17 @@
 
 #include <fmt/core.h>
 
+#include <cstdint>
+#include <exception>
 #include <jsoncons/basic_json.hpp>
+#include <optional>
+#include <string>
+#include <unordered_set>
 
+#include "database/database.hpp"
+#include "database/databaseconnectionpool.hpp"
 #include "store/store.hpp"
+#include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
 
 DatabaseController::DatabaseController()
@@ -17,7 +25,6 @@ DatabaseController::DatabaseController()
     {
         Message::ErrorMessage("Exception in DatabaseController constructor.");
         Message::CriticalMessage(e.what());
-        exit(EXIT_FAILURE);
     }
 }
 
