@@ -2,28 +2,36 @@
 
 #include <fmt/core.h>
 
+#include <cstdint>
 #include <jsoncons/json.hpp>
 #include <memory>
 #include <optional>
+#include <string>
+#include <string_view>
 
 #include "controllers/clientcontroller/clientcontrollerbase.hpp"
 #include "controllers/entitycontroller/entitycontroller.hpp"
+#include "controllers/entitycontroller/entitycontrollerbase.hpp"
 #include "gatekeeper/gatekeeper.hpp"
+#include "store/store.hpp"
+#include "utils/global/callback.hpp"
+#include "utils/global/concepts.hpp"
 #include "utils/global/global.hpp"
-#include "utils/global/http.hpp"
-#include "utils/global/requester.hpp"
-#include "utils/jsonhelper/jsonhelper.hpp"
 
 template <Client_t T>
 class ClientController : public EntityController<T>, public ClientControllerBase
 {
    public:
-    ClientController()           = default;
-    ~ClientController() override = default;
+    ClientController()                                   = default;
+    ClientController(const ClientController&)            = default;
+    ClientController(ClientController&&)                 = default;
+    ClientController& operator=(const ClientController&) = default;
+    ClientController& operator=(ClientController&&)      = default;
+    ~ClientController() override                         = default;
 
     void Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data) final;
     void Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data) final;
-    void Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> id) final;
+    void Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> _id) final;
     void Delete(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id) final;
     void Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data) final;
     void Login(CALLBACK_&& callback, const Requester&& requester, std::string_view data, const std::string& ip_address) final;
