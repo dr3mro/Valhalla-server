@@ -1,11 +1,17 @@
 #pragma once
 #include <cstdint>
+#include <exception>
 #include <jsoncons/basic_json.hpp>
 #include <jsoncons/json.hpp>
+#include <memory>
 #include <optional>
+#include <string>
+#include <unordered_set>
+#include <utility>
 
 #include "database/database.hpp"
 #include "database/databaseconnectionpool.hpp"
+#include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
 class Case;
 class Service;
@@ -36,17 +42,16 @@ class DatabaseController
    private:
     std::shared_ptr<DatabaseConnectionPool> databaseConnectionPool;
 
-    template <typename R, typename F, typename... Args>
-    std::optional<R> executer(const F &f, Args &&...args)
+    template <typename Result, typename Func, typename... Args>
+    std::optional<Result> executer(const Func &func, Args &&...args)
     {
-        std::shared_ptr<Database> db = nullptr;
         try
         {
-            db                       = databaseConnectionPool->get_connection();
-            std::optional<R> results = std::invoke(f, db.get(), std::forward<Args>(args)...);
-            //(db.get()->*f)(std::forward<Args>(args)...);
-            databaseConnectionPool->return_connection(std::move(db));
-            if (results)
+            std::shared_ptr<Database> db_ptr  = databaseConnectionPool->get_connection();
+            std::optional<Result>     results = std::invoke(func, db_ptr.get(), std::forward<Args>(args)...);
+
+            databaseConnectionPool->return_connection(std::move(db_ptr));
+            if (results.has_value())
             {
                 return results;
             }

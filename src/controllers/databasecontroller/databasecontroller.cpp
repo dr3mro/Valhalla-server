@@ -63,5 +63,3 @@ std::optional<std::unordered_set<api::v2::ColumnInfo>> DatabaseController::getTa
 }
 
 std::optional<std::unordered_set<std::string>> DatabaseController::getAllTables() { return executer<std::unordered_set<std::string>>(&Database::getAllTables); }
-
-// [ ] make entity return the query for getpermission and use T template here.
