@@ -15,7 +15,6 @@
 #include <string>
 #include <unordered_set>
 
-#include "database/connectionmonitor.hpp"
 #include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
 
@@ -27,16 +26,10 @@ class Database : public std::enable_shared_from_this<Database>
     Database &operator=(const Database &) = delete;
     Database &operator=(Database &&)      = delete;
     explicit Database(std::shared_ptr<pqxx::connection> conn);
-    virtual ~Database()
-    {
-        connectionMonitor->stop();
-        Message::InfoMessage("Database connection closed");
-    }
-    void                              initializeConnectionMonitor();
-    bool                              checkExists(const std::string &table, const std::string &column, const std::string &value);
-    std::shared_ptr<pqxx::connection> get_connection();
-    bool                              check_connection();
-    bool                              reconnect();
+    virtual ~Database() { Message::InfoMessage("Database connection closed"); }
+    bool checkExists(const std::string &table, const std::string &column, const std::string &value);
+    bool check_connection();
+    bool reconnect();
 
     template <typename jsonType, typename TransactionType>
     std::optional<jsonType> executeQuery(const std::string &query)
@@ -150,10 +143,10 @@ class Database : public std::enable_shared_from_this<Database>
     std::optional<std::unordered_set<std::string>>         getAllTables();
 
    private:
-    std::shared_ptr<pqxx::connection>  connection;
-    std::shared_ptr<ConnectionMonitor> connectionMonitor;
-    std::string                        connection_info;  // Store connection parameters
-    std::mutex                         connection_mutex;
+    std::shared_ptr<pqxx::connection> connection;
+
+    std::string connection_info;  // Store connection parameters
+    std::mutex  connection_mutex;
 
     static const std::uint16_t TEXT    = 1043;
     static const std::uint16_t INTEGER = 23;

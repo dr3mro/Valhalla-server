@@ -3,86 +3,81 @@
 #include <fmt/core.h>
 #include <fmt/format.h>
 
+#include <algorithm>
 #include <chrono>
 #include <exception>
 #include <memory>
+#include <stdexcept>
 #include <thread>
 
 #include "database/database.hpp"  // IWYU pragma: keep
 #include "utils/message/message.hpp"
-
-void ConnectionMonitor::start()  // NOLINT
+ConnectionMonitor::ConnectionMonitor()  // NOLINT
 {
     if (monitor_thread.joinable())
     {
-        return;
+        throw std::logic_error("Monitor thread already running!");
     }
 
-    should_monitor = true;
+    // Start the monitoring thread
     monitor_thread = std::thread(
-        [this]()  // NOLINT
+        [this]()
         {
-            int                  retry_count = 0;
-            std::chrono::seconds current_backoff{10};  // NOLINT
+            std::chrono::seconds current_backoff{1};
+            bool                 isConnected = false;
 
             while (should_monitor)
             {
-                if (!db_ptr->check_connection())
+                try
                 {
-                    Message::WarningMessage("Database connection lost. Attempting to reconnect...");
+                    auto db_ptr = databaseConnectionPool->get_connection();
+                    isConnected = db_ptr->check_connection();
 
-                    while (!db_ptr->check_connection() && retry_count < config.max_retry_attempts)
+                    if (!isConnected)
                     {
-                        try
+                        Message::ErrorMessage("Database connection lost. Attempting to reconnect...");
+
+                        // Attempt to reconnect
+                        while (!isConnected && should_monitor)
                         {
-                            db_ptr->reconnect();
-                            if (db_ptr->get_connection()->is_open())
+                            try
                             {
-                                // connection = new_connection;
-                                if (db_ptr->check_connection())
+                                std::this_thread::sleep_for(current_backoff);
+                                isConnected = db_ptr->reconnect();
+
+                                if (isConnected)
                                 {
-                                    Message::InfoMessage("Successfully reconnected to database");
-                                    retry_count     = 0;
-                                    current_backoff = std::chrono::seconds{10};  // NOLINT
+                                    current_backoff = std::chrono::seconds{1};  // Reset backoff
+                                    Message::InfoMessage("Database connection re-established");
                                     break;
                                 }
 
                                 Message::ErrorMessage("Failed to reconnect to database");
-                                current_backoff *= 2;
-                                std::this_thread::sleep_for(current_backoff);
                             }
-                        }
-                        catch (const std::exception &e)
-                        {
-                            Message::ErrorMessage(fmt::format("Reconnection attempt {} failed:", retry_count + 1));
-                            Message::CriticalMessage(e.what());
-
-                            retry_count++;
-                            std::this_thread::sleep_for(current_backoff);
-
-                            // Implement exponential backoff
-                            current_backoff *= 2;
-                            if (current_backoff > config.max_backoff)
+                            catch (const std::exception &e)
                             {
-                                current_backoff = config.max_backoff;
+                                Message::CriticalMessage(fmt::format("Reconnect exception: {}", e.what()));
                             }
+
+                            // Exponential backoff
+                            current_backoff = std::min(current_backoff * 2, config.max_backoff);
                         }
                     }
 
-                    if (retry_count >= config.max_retry_attempts)
-                    {
-                        Message::CriticalMessage("Maximum retry attempts reached. Stopping connection monitor.");
-                        should_monitor = false;
-                        break;
-                    }
+                    databaseConnectionPool->return_connection(db_ptr);
+                    std::this_thread::sleep_for(config.check_interval);
                 }
-                std::this_thread::sleep_for(config.check_interval);
+                catch (const std::exception &e)
+                {
+                    Message::CriticalMessage(fmt::format("Monitoring exception: {}", e.what()));
+                }
             }
         });
 }
 
-void ConnectionMonitor::stop()
+ConnectionMonitor::~ConnectionMonitor()
 {
+    // Ensure proper cleanup
     should_monitor = false;
     if (monitor_thread.joinable())
     {

@@ -9,6 +9,7 @@
 #include <unordered_set>
 #include <utility>
 
+#include "database/connectionmonitor.hpp"
 #include "database/database.hpp"
 #include "database/databaseconnectionpool.hpp"
 #include "store/store.hpp"
@@ -46,6 +47,7 @@ class DatabaseController
 
    private:
     std::shared_ptr<DatabaseConnectionPool> databaseConnectionPool = Store::getObject<DatabaseConnectionPool>();
+    std::shared_ptr<ConnectionMonitor>      connectionMonitor      = Store::getObject<ConnectionMonitor>();
 
     template <typename Result, typename Func, typename... Args>
     std::optional<Result> executer(const Func &func, Args &&...args)
