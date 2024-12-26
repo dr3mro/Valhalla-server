@@ -3,8 +3,6 @@
 #include <fmt/core.h>
 #include <fmt/format.h>
 
-#include <algorithm>
-#include <chrono>
 #include <exception>
 #include <memory>
 #include <stdexcept>
@@ -23,49 +21,34 @@ ConnectionMonitor::ConnectionMonitor()  // NOLINT
     monitor_thread = std::thread(
         [this]()
         {
-            std::chrono::seconds current_backoff{1};
-            bool                 isConnected = false;
-
             while (should_monitor)
             {
                 try
                 {
                     auto db_ptr = databaseConnectionPool->get_connection();
-                    isConnected = db_ptr->check_connection();
 
-                    if (!isConnected)
+                    if (!db_ptr->check_connection())
                     {
-                        Message::ErrorMessage("Database connection lost. Attempting to reconnect...");
-
-                        // Attempt to reconnect
-                        while (!isConnected && should_monitor)
+                        Message::WarningMessage("Database connection lost. Attempting to reconnect...");
+                        try
                         {
-                            try
+                            if (db_ptr->reconnect())
                             {
-                                std::this_thread::sleep_for(current_backoff);
-                                isConnected = db_ptr->reconnect();
-
-                                if (isConnected)
-                                {
-                                    current_backoff = std::chrono::seconds{1};  // Reset backoff
-                                    Message::InfoMessage("Database connection re-established");
-                                    break;
-                                }
-
+                                Message::InfoMessage("Database connection re-established");
+                            }
+                            else
+                            {
                                 Message::ErrorMessage("Failed to reconnect to database");
                             }
-                            catch (const std::exception &e)
-                            {
-                                Message::CriticalMessage(fmt::format("Reconnect exception: {}", e.what()));
-                            }
-
-                            // Exponential backoff
-                            current_backoff = std::min(current_backoff * 2, config.max_backoff);
+                        }
+                        catch (const std::exception &e)
+                        {
+                            Message::CriticalMessage(fmt::format("Reconnect exception: {}", e.what()));
                         }
                     }
 
                     databaseConnectionPool->return_connection(db_ptr);
-                    std::this_thread::sleep_for(config.check_interval);
+                    std::this_thread::sleep_for(check_interval);
                 }
                 catch (const std::exception &e)
                 {
