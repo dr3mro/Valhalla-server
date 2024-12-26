@@ -1,7 +1,14 @@
 #pragma once
 
+#include <chrono>
+#include <memory>
+#include <optional>
+#include <string>
+
 #include "gatekeeper/keeprbase/keeprbase.hpp"
 #include "gatekeeper/passwordcrypt/passwordcrypt.hpp"
+#include "gatekeeper/types.hpp"
+#include "store/store.hpp"
 #include "utils/global/callback.hpp"
 #include "utils/memcache/memcache.hpp"
 
@@ -13,8 +20,12 @@ namespace api
         class SessionManager : public KeeprBase
         {
            public:
-            SessionManager()          = default;
-            virtual ~SessionManager() = default;
+            SessionManager()                                 = default;
+            SessionManager(const SessionManager&)            = default;
+            SessionManager(SessionManager&&)                 = delete;
+            SessionManager& operator=(const SessionManager&) = delete;
+            SessionManager& operator=(SessionManager&&)      = delete;
+            ~SessionManager() override                       = default;
 
             bool login(const std::optional<Types::Credentials>& credentials, std::optional<Types::ClientLoginData>& clientLoginData, std::string& message);
             void logout(CALLBACK_&& callback, std::optional<Types::ClientLoginData>& clientLoginData);
