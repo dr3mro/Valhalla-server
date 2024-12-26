@@ -27,9 +27,7 @@ std::shared_ptr<Database> DatabaseConnectionPool::createDatabaseConnection()
 
         if (conn->is_open())
         {
-            auto database = std::make_shared<Database>(conn);
-            database->initializeConnectionMonitor();
-            return database;
+            return std::make_shared<Database>(conn);
         }
 
         Message::CriticalMessage("Failed to open database connection.");

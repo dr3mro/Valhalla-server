@@ -11,7 +11,6 @@
 #include <unordered_set>
 #include <utility>
 
-#include "database/connectionmonitor.hpp"
 #include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
 
@@ -34,12 +33,6 @@ Database::Database(std::shared_ptr<pqxx::connection> conn) : connection(std::mov
     }
 }
 
-void Database::initializeConnectionMonitor()
-{
-    connectionMonitor = std::make_shared<ConnectionMonitor>(shared_from_this());
-    connectionMonitor->start();
-}
-
 bool Database::checkExists(const std::string &table, const std::string &column, const std::string &value)
 {
     try
@@ -56,8 +49,6 @@ bool Database::checkExists(const std::string &table, const std::string &column, 
     }
 }
 
-std::shared_ptr<pqxx::connection> Database::get_connection() { return connection; }
-
 bool Database::check_connection()
 {
     std::lock_guard<std::mutex> guard(connection_mutex);
@@ -72,8 +63,7 @@ bool Database::check_connection()
     }
     catch (const std::exception &e)
     {
-        Message::ErrorMessage("Database connection lost:");
-        Message::CriticalMessage(e.what());
+        Message::CriticalMessage(fmt::format("Database connection lost: {}, {}", static_cast<const void *>(this), e.what()));
         return false;
     }
 
@@ -84,10 +74,12 @@ bool Database::reconnect()
 {
     try
     {
-        std::lock_guard<std::mutex> guard(connection_mutex);
-        // connection.reset();
-        connection = std::make_shared<pqxx::connection>(connection_info);
-        return true;
+        {
+            std::lock_guard<std::mutex> guard(connection_mutex);
+            connection = std::make_shared<pqxx::connection>(connection_info);
+        }
+
+        return check_connection();
     }
     catch (const std::exception &e)
     {
