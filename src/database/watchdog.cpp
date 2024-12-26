@@ -9,13 +9,16 @@
 #include <thread>
 #include <utility>
 
-#include "database/database.hpp"  // IWYU pragma: keep
+#include "database/database.hpp"
+#include "database/databaseconnectionpool.hpp"
+#include "store/store.hpp"
 #include "utils/message/message.hpp"
-WatchDog::WatchDog()  // NOLINT
+
+WatchDog::WatchDog() : databaseConnectionPool(Store::getObject<DatabaseConnectionPool>())
 {
     if (monitor_thread.joinable())
     {
-        throw std::logic_error("Monitor thread already running!");
+        throw std::logic_error("WatchDog thread already running!");
     }
 
     // Start the monitoring thread
@@ -26,7 +29,7 @@ WatchDog::WatchDog()  // NOLINT
             {
                 try
                 {
-                    auto db_ptr = databaseConnectionPool->get_connection();
+                    std::shared_ptr<Database> db_ptr = databaseConnectionPool->get_connection();
 
                     if (!db_ptr->check_connection())
                     {

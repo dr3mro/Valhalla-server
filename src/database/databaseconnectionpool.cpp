@@ -2,6 +2,7 @@
 
 #include <fmt/core.h>
 
+#include <algorithm>
 #include <chrono>
 #include <cstdint>
 #include <cstdlib>
@@ -11,17 +12,22 @@
 #include <mutex>
 #include <pqxx/pqxx>
 #include <stdexcept>
+#include <string>
 #include <thread>
 #include <utility>
 
+#include "configurator/configurator.hpp"
+#include "database.hpp"
 #include "database/database.hpp"
+#include "store/store.hpp"
 #include "utils/message/message.hpp"
 
-std::shared_ptr<Database> DatabaseConnectionPool::createDatabaseConnection()
+std::shared_ptr<Database> DatabaseConnectionPool::createDatabaseConnection(const auto& config)
+
 {
     try
     {
-        auto command = fmt::format("host={} dbname={} user={} password={} connect_timeout=2", config_.host, config_.name, config_.user, config_.pass);
+        auto command = fmt::format("host={} dbname={} user={} password={} connect_timeout=2", config.host, config.name, config.user, config.pass);
 
         auto conn = std::make_shared<pqxx::connection>(command.c_str());
 
@@ -34,24 +40,25 @@ std::shared_ptr<Database> DatabaseConnectionPool::createDatabaseConnection()
     }
     catch (const std::exception& e)
     {
-        Message::CriticalMessage(fmt::format("Exception caught during database connection initialization: {}", e.what()));
+        Message::CriticalMessage(fmt::format("Database connection initialization failure : {}", e.what()));
     }
-
     return nullptr;
 }
 
-DatabaseConnectionPool::DatabaseConnectionPool()
+DatabaseConnectionPool::DatabaseConnectionPool() : configurator_(Store::getObject<Configurator>())
 {
     try
     {
-        for (uint16_t i = 0; i < config_.max_conn; ++i)
+        const Configurator::DatabaseConfig& config = configurator_->get<Configurator::DatabaseConfig>();
+
+        for (uint16_t i = 0; i < config.max_conn; ++i)
         {
             unsigned int retryCount            = 0;
             bool         connectionEstablished = false;
 
             while (retryCount < MAX_RETRIES && !connectionEstablished)
             {
-                auto future = std::async(std::launch::async, &DatabaseConnectionPool::createDatabaseConnection, this);
+                auto future = std::async(std::launch::async, [this, &config]() { return this->createDatabaseConnection(config); });
                 auto status = future.wait_for(std::chrono::seconds(TIMEOUT));
 
                 if (status == std::future_status::ready)
@@ -60,18 +67,16 @@ DatabaseConnectionPool::DatabaseConnectionPool()
                     if (conn != nullptr)
                     {
                         databaseConnections.push(conn);
-                        Message::InitMessage(fmt::format("Connection {}/{} created successfully.", i + 1, config_.max_conn));
+                        Message::InitMessage(fmt::format("Connection {}/{} created successfully.", i + 1, config.max_conn));
                         connectionEstablished = true;
                         break;
                     }
                 }
 
                 retryCount++;
-                if (retryCount < MAX_RETRIES)
-                {
-                    Message::WarningMessage(fmt::format("Connection attempt {} timed out, retrying... ({}/{})", i + 1, retryCount, MAX_RETRIES));
-                    std::this_thread::sleep_for(std::chrono::seconds(1U << retryCount));
-                }
+
+                Message::WarningMessage(fmt::format("Connection attempt {} timed out, retrying... ({}/{})", i + 1, retryCount, MAX_RETRIES));
+                std::this_thread::sleep_for(std::chrono::seconds(1U << retryCount));
             }
 
             if (!connectionEstablished)

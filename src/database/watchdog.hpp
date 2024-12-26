@@ -6,10 +6,9 @@
 #include <pqxx/pqxx>
 #include <thread>
 
-#include "database/databaseconnectionpool.hpp"
-#include "store/store.hpp"
-
+class DatabaseConnectionPool;
 class Database;
+
 class WatchDog
 {
    public:
@@ -23,8 +22,8 @@ class WatchDog
    private:
     void reconnect_all();
 
-    std::shared_ptr<DatabaseConnectionPool> databaseConnectionPool = Store::getObject<DatabaseConnectionPool>();
-    std::chrono::seconds                    check_interval{1};
     std::atomic<bool>                       should_monitor{true};
+    std::shared_ptr<DatabaseConnectionPool> databaseConnectionPool;
+    std::chrono::seconds                    check_interval{1};
     std::thread                             monitor_thread;
 };

@@ -5,18 +5,16 @@
 #include <trantor/utils/Logger.h>
 
 #include <cstdint>
-#include <exception>
 #include <jsoncons/basic_json.hpp>
 #include <jsoncons/json.hpp>
 #include <memory>
 #include <mutex>
 #include <optional>
-#include <pqxx/pqxx>  // Include the libpqxx header for PostgreSQL
+#include <pqxx/pqxx>
 #include <string>
 #include <unordered_set>
 
 #include "utils/global/types.hpp"
-#include "utils/message/message.hpp"
 
 class Database
 {
@@ -27,117 +25,16 @@ class Database
     Database &operator=(Database &&)      = delete;
     explicit Database(std::shared_ptr<pqxx::connection> &&conn);
     virtual ~Database();
+
     bool checkExists(const std::string &table, const std::string &column, const std::string &value);
     bool check_connection();
     bool reconnect();
 
     template <typename jsonType, typename TransactionType>
-    std::optional<jsonType> executeQuery(const std::string &query)
-    {
-        try
-        {
-            pqxx::result results;
-
-            {
-                std::lock_guard<std::mutex> guard(connection_mutex);
-                TransactionType             txn(*connection);
-
-                results = txn.exec(query);
-
-                if constexpr (std::is_same_v<TransactionType, pqxx::work>)
-                {
-                    txn.commit();
-                }
-            }
-
-            jsonType       reply;
-            jsoncons::json object;
-
-            for (const auto &row : results)
-            {
-                for (const auto &field : row)
-                {
-                    std::string  field_name = field.name();
-                    unsigned int field_type = field.type();
-
-                    if (field.is_null())
-                    {
-                        object[field_name] = nullptr;
-                        LOG_WARN << "Field " << field_name << " is null";
-                    }
-                    else
-                    {
-                        switch (field_type)
-                        {
-                            case TEXT:  // TEXT or VARCHAR
-                                object[field_name] = field.as<std::string>();
-                                break;
-
-                            case INTEGER:  // INTEGER
-                                object[field_name] = field.as<int>();
-                                break;
-
-                            case BOOLEAN:  // BOOLEAN
-                                object[field_name] = field.as<bool>();
-                                break;
-
-                            case JSON:   // JSON
-                            case JSONB:  // JSONB
-                                object[field_name] = jsoncons::json::parse(field.as<std::string>());
-                                break;
-
-                            default:                                 // Handle unknown or unhandled types
-                                object[field_name] = field.c_str();  // Default to string
-                                                                     // representation
-                                break;
-                        }
-                    }
-                }
-                if constexpr (std::is_same_v<jsonType, jsoncons::json::array>)
-                {
-                    reply.push_back(object);
-                }
-                else
-                {
-                    return object;
-                }
-            }
-            return reply;
-        }
-        catch (const std::exception &e)
-        {
-            Message::ErrorMessage("Error executing query:");
-            Message::InfoMessage(query);
-            Message::CriticalMessage(e.what());
-            return std::nullopt;
-            // throw;  // Rethrow the exception to indicate failure
-        }
-        return std::nullopt;
-    }
+    std::optional<jsonType> executeQuery(const std::string &query);
 
     template <typename T>
-    std::optional<T> doSimpleQuery(const std::string &query)
-    {
-        try
-        {
-            pqxx::result result;
-
-            {
-                std::lock_guard<std::mutex> guard(connection_mutex);
-                pqxx::nontransaction        txn(*connection);
-                result = txn.exec(query);
-            }
-            return result.empty() ? std::nullopt : result[0][0].as<std::optional<T>>();
-        }
-        catch (const std::exception &e)
-        {
-            Message::ErrorMessage("Error executing query:");
-            Message::InfoMessage(query);
-            Message::CriticalMessage(e.what());
-            return std::nullopt;
-            // throw;  // Rethrow the exception to indicate failure
-        }
-    }
+    std::optional<T> doSimpleQuery(const std::string &query);
 
     std::optional<std::unordered_set<api::v2::ColumnInfo>> getTableSchema(const std::string &tableName);
     std::optional<std::unordered_set<std::string>>         getAllTables();
