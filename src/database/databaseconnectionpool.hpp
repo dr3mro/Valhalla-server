@@ -26,7 +26,7 @@ class DatabaseConnectionPool
     virtual ~DatabaseConnectionPool() = default;
 
     std::shared_ptr<Database> get_connection();
-    void                      return_connection(std::shared_ptr<Database> db_ptr);
+    void                      return_connection(std::shared_ptr<Database> &&db_ptr);
 
    private:
     std::shared_ptr<Database>             createDatabaseConnection();
@@ -34,5 +34,5 @@ class DatabaseConnectionPool
     std::mutex                            mutex;
     std::condition_variable               cv;
     static constexpr std::uint16_t        TIMEOUT     = 30;
-    const unsigned int                    MAX_RETRIES = 3;
+    static constexpr unsigned int         MAX_RETRIES = 5;
 };

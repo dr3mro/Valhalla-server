@@ -10,15 +10,15 @@
 #include "store/store.hpp"
 
 class Database;
-class ConnectionMonitor
+class WatchDog
 {
    public:
-    ConnectionMonitor();
-    ConnectionMonitor(const ConnectionMonitor &)            = delete;
-    ConnectionMonitor(ConnectionMonitor &&)                 = delete;
-    ConnectionMonitor &operator=(const ConnectionMonitor &) = delete;
-    ConnectionMonitor &operator=(ConnectionMonitor &&)      = delete;
-    virtual ~ConnectionMonitor();
+    WatchDog();
+    WatchDog(const WatchDog &)            = delete;
+    WatchDog(WatchDog &&)                 = delete;
+    WatchDog &operator=(const WatchDog &) = delete;
+    WatchDog &operator=(WatchDog &&)      = delete;
+    virtual ~WatchDog();
 
    private:
     void reconnect_all();
