@@ -1,23 +1,22 @@
 #include "validator.hpp"
 
+#include <fmt/core.h>
 #include <fmt/format.h>
 
 #include <algorithm>
+#include <exception>
+#include <jsoncons/basic_json.hpp>
 #include <jsoncons/pretty_print.hpp>
+#include <optional>
 #include <regex>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <utility>
 
+#include "utils/global/http.hpp"
+#include "utils/global/types.hpp"
 #include "validator/databaseschema/databaseschema.hpp"
-
-const std::unordered_map<std::string, std::string> Validator::regex_client_validators = {
-    {"username", "^[a-z][a-z0-9_]*$"},
-    {"password",
-        "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{"
-        "8,}$"},
-    {"phone", R"(^\+?(\d{1,3})?[-.\s]?(\(?\d{3}\)?)?[-.\s]?\d{3}[-.\s]?\d{4}$)"},
-    {"email", R"((\w+)(\.\w+)*@(\w+)(\.\w+)+)"},
-    {"dob", R"(^(0[1-9]|[12]\d|3[01])-(0[1-9]|1[0-2])-\d{4}$)"},
-    {"gender", "^(Male|Female)$"},
-};
 
 bool Validator::validateDatabaseCreateSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Http::Error &error, const Rule &rule)
 {
@@ -134,9 +133,9 @@ bool Validator::validateDatabaseReadSchema(
         }
         // Use std::ranges::find_if to check if a column with the given name
         // exists
-        auto it = std::ranges::find_if(columns, [&](const api::v2::ColumnInfo &column) { return column.Name == key; });
+        auto col = std::ranges::find_if(columns, [&](const api::v2::ColumnInfo &column) { return column.Name == key; });
 
-        if (it == columns.end())
+        if (col == columns.end())
         {
             error.message = "Key not found in schema: " + key;
             error.code    = api::v2::Http::Status::BAD_REQUEST;
@@ -148,6 +147,17 @@ bool Validator::validateDatabaseReadSchema(
 }
 bool Validator::clientRegexValidation(const jsoncons::json &data, api::v2::Http::Error &error, std::unordered_set<std::pair<std::string, std::string>> &db_data)
 {
+    static const std::unordered_map<std::string, std::string> regex_client_validators = {
+        {"username", "^[a-z][a-z0-9_]*$"},
+        {"password",
+            "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{"
+            "8,}$"},
+        {"phone", R"(^\+?(\d{1,3})?[-.\s]?(\(?\d{3}\)?)?[-.\s]?\d{3}[-.\s]?\d{4}$)"},
+        {"email", R"((\w+)(\.\w+)*@(\w+)(\.\w+)+)"},
+        {"dob", R"(^(0[1-9]|[12]\d|3[01])-(0[1-9]|1[0-2])-\d{4}$)"},
+        {"gender", "^(Male|Female)$"},
+    };
+
     for (const auto &item : data.object_range())
     {
         std::optional<std::string> value = item.value().as<std::string>();
@@ -222,18 +232,30 @@ std::unordered_set<api::v2::ColumnInfo> Validator::getDatabaseSchemaForTable(con
 bool Validator::validateType(const jsoncons::json &value, const std::string &expectedType)
 {
     if (expectedType == "integer")
+    {
         return value.is_int64();
+    }
     if (expectedType == "float" || expectedType == "double" || expectedType == "real")
+    {
         return value.is_double();
+    }
     if (expectedType == "character varying")
+    {
         return value.is_string();
+    }
     if (expectedType == "boolean")
+    {
         return value.is_bool();
+    }
     if (expectedType == "jsonb")
+    {
         return (value.is_object() || value.is_array());
+    }
     if (expectedType == "timestamp with time zone" || expectedType == "time without time zone" || expectedType == "date")
+    {
         return value.is_string();  // Assuming dates are strings
-    return false;                  // Unknown type
+    }
+    return false;  // Unknown type
 }
 
 bool Validator::checkColumns(
@@ -270,7 +292,10 @@ bool Validator::ensureAllKeysExist(
 {
     // Create a set of column names for fast key lookup
     std::unordered_set<std::string> schema_columns;
-    for (const auto &column : table_schema) schema_columns.insert(column.Name);
+    for (const auto &column : table_schema)
+    {
+        schema_columns.insert(column.Name);
+    }
 
     // Ensure all keys in `data` exist in the schema
     for (const auto &entry : data.object_range())

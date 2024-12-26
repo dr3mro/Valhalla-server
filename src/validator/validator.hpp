@@ -107,6 +107,4 @@ class Validator
     static bool ensureAllKeysExist(
         const jsoncons::json &data, const std::unordered_set<api::v2::ColumnInfo> &table_schema, api::v2::Http::Error &error, const Rule &rule);
     static bool hasDuplicateKeys(const jsoncons::json &data, api::v2::Http::Error &error);
-
-    static const std::unordered_map<std::string, std::string> regex_client_validators;
 };
