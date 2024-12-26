@@ -9,6 +9,7 @@
 #include <jsoncons/basic_json.hpp>
 #include <jsoncons/json.hpp>
 #include <memory>
+#include <mutex>
 #include <optional>
 #include <pqxx/pqxx>  // Include the libpqxx header for PostgreSQL
 #include <string>
@@ -26,7 +27,11 @@ class Database : public std::enable_shared_from_this<Database>
     Database &operator=(const Database &) = delete;
     Database &operator=(Database &&)      = delete;
     explicit Database(std::shared_ptr<pqxx::connection> conn);
-    virtual ~Database() { connectionMonitor->stop(); }
+    virtual ~Database()
+    {
+        connectionMonitor->stop();
+        Message::InfoMessage("Database connection closed");
+    }
     void                              initializeConnectionMonitor();
     bool                              checkExists(const std::string &table, const std::string &column, const std::string &value);
     std::shared_ptr<pqxx::connection> get_connection();
@@ -38,18 +43,24 @@ class Database : public std::enable_shared_from_this<Database>
     {
         try
         {
-            TransactionType txn(*connection);
-            pqxx::result    res = txn.exec(query);
+            pqxx::result results;
 
-            if constexpr (std::is_same_v<TransactionType, pqxx::work>)
             {
-                txn.commit();
+                std::lock_guard<std::mutex> guard(connection_mutex);
+                TransactionType             txn(*connection);
+
+                results = txn.exec(query);
+
+                if constexpr (std::is_same_v<TransactionType, pqxx::work>)
+                {
+                    txn.commit();
+                }
             }
 
             jsonType       reply;
             jsoncons::json object;
 
-            for (const auto &row : res)
+            for (const auto &row : results)
             {
                 for (const auto &field : row)
                 {
@@ -116,8 +127,13 @@ class Database : public std::enable_shared_from_this<Database>
     {
         try
         {
-            pqxx::nontransaction txn(*connection);
-            pqxx::result         result = txn.exec(query);
+            pqxx::result result;
+
+            {
+                std::lock_guard<std::mutex> guard(connection_mutex);
+                pqxx::nontransaction        txn(*connection);
+                result = txn.exec(query);
+            }
             return result.empty() ? std::nullopt : result[0][0].as<std::optional<T>>();
         }
         catch (const std::exception &e)
@@ -137,11 +153,13 @@ class Database : public std::enable_shared_from_this<Database>
     std::shared_ptr<pqxx::connection>  connection;
     std::shared_ptr<ConnectionMonitor> connectionMonitor;
     std::string                        connection_info;  // Store connection parameters
-    static const std::uint16_t         TEXT    = 1043;
-    static const std::uint16_t         INTEGER = 23;
-    static const std::uint16_t         BOOLEAN = 16;
-    static const std::uint16_t         JSON    = 114;
-    static const std::uint16_t         JSONB   = 3802;
+    std::mutex                         connection_mutex;
+
+    static const std::uint16_t TEXT    = 1043;
+    static const std::uint16_t INTEGER = 23;
+    static const std::uint16_t BOOLEAN = 16;
+    static const std::uint16_t JSON    = 114;
+    static const std::uint16_t JSONB   = 3802;
 };
 
 #endif  // DATABASE_HPP

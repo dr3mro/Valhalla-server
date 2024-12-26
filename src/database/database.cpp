@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <exception>
 #include <memory>
+#include <mutex>
 #include <optional>
 #include <string>
 #include <unordered_set>
@@ -43,8 +44,9 @@ bool Database::checkExists(const std::string &table, const std::string &column, 
 {
     try
     {
-        pqxx::nontransaction txn(*connection);
-        pqxx::result         result = txn.exec(fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = '{}');", table, column, value));
+        std::lock_guard<std::mutex> guard(connection_mutex);
+        pqxx::nontransaction        txn(*connection);
+        pqxx::result                result = txn.exec(fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = '{}');", table, column, value));
         return result[0][0].as<bool>();
     }
     catch (const std::exception &e)
@@ -58,6 +60,7 @@ std::shared_ptr<pqxx::connection> Database::get_connection() { return connection
 
 bool Database::check_connection()
 {
+    std::lock_guard<std::mutex> guard(connection_mutex);
     if (connection == nullptr)
     {
         return false;
@@ -81,33 +84,34 @@ bool Database::reconnect()
 {
     try
     {
-        auto new_connection = std::make_shared<pqxx::connection>(connection_info);
-
-        if (new_connection != nullptr)
-        {
-            connection = new_connection;
-            return true;
-        }
+        std::lock_guard<std::mutex> guard(connection_mutex);
+        // connection.reset();
+        connection = std::make_shared<pqxx::connection>(connection_info);
+        return true;
     }
     catch (const std::exception &e)
     {
         Message::CriticalMessage(fmt::format("Failed to reconnect to database,{}", e.what()));
         return false;
     }
-    return false;
 }
 
 std::optional<std::unordered_set<api::v2::ColumnInfo>> Database::getTableSchema(const std::string &tableName)
 {
     try
     {
-        pqxx::nontransaction ntxn(*connection);
-        std::string          query = fmt::format(
-            "SELECT column_name, data_type, column_default, is_nullable FROM "
-                     "information_schema.columns WHERE table_name = '{}' AND column_name != 'id';",
-            tableName);
+        pqxx::result result;
 
-        pqxx::result result = ntxn.exec(query);
+        {
+            std::lock_guard<std::mutex> guard(connection_mutex);
+            pqxx::nontransaction        ntxn(*connection);
+            std::string                 query = fmt::format(
+                "SELECT column_name, data_type, column_default, is_nullable FROM "
+                                "information_schema.columns WHERE table_name = '{}' AND column_name != 'id';",
+                tableName);
+
+            result = ntxn.exec(query);
+        }
 
         std::unordered_set<api::v2::ColumnInfo> schema;
 
@@ -133,9 +137,16 @@ std::optional<std::unordered_set<std::string>> Database::getAllTables()
 {
     try
     {
-        pqxx::work                      txn(*connection);
-        pqxx::result                    result = txn.exec("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';");
+        pqxx::result result;
+
+        {
+            std::lock_guard<std::mutex> guard(connection_mutex);
+            pqxx::work                  txn(*connection);
+            result = txn.exec("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';");
+        }
+
         std::unordered_set<std::string> tables;
+
         for (const auto &row : result)
         {
             tables.insert(row["table_name"].as<std::string>());
