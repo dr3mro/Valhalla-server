@@ -1,16 +1,38 @@
 #include "gatekeeper.hpp"
 
+#include <fmt/core.h>
+
 #include <cstdint>
+#include <exception>
+#include <jsoncons/basic_json.hpp>
+#include <optional>
 #include <pqxx/internal/libpq-forward.hxx>
+#include <string>
+#include <string_view>
 #include <utility>
 
+#include "gatekeeper/dosdetector/dosdetector.hpp"
 #include "gatekeeper/includes.hpp"  // IWYU pragma: keep
+#include "gatekeeper/permissionmanager/permissionmanager.hpp"
+#include "gatekeeper/sessionmanager/sessionmanager.hpp"
+#include "gatekeeper/tokenmanager/tokenmanager.hpp"
+#include "gatekeeper/types.hpp"
+#include "store/store.hpp"
+#include "utils/global/callback.hpp"
 #include "utils/global/concepts.hpp"
 #include "utils/global/global.hpp"
+#include "utils/global/http.hpp"
 #include "utils/global/requester.hpp"
 
-using namespace api::v2;
+using GateKeeper = api::v2::GateKeeper;
 
+GateKeeper::GateKeeper()
+    : sessionManager_(Store::getObject<SessionManager>()),
+      tokenManager_(Store::getObject<api::v2::TokenManager>()),
+      dosDetector_(Store::getObject<DOSDetector>()),
+      permissionManager_(Store::getObject<api::v2::PermissionManager>())
+{
+}
 void GateKeeper::login(CALLBACK_&& callback, std::string_view data, const std::string& ip_address, std::string_view group)
 {
     try
@@ -21,7 +43,7 @@ void GateKeeper::login(CALLBACK_&& callback, std::string_view data, const std::s
 
         if (!success || !credentials.has_value())
         {
-            callback(api::v2::Http::Status::BAD_REQUEST, "credentials parse error : " + message);
+            std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "credentials parse error : " + message);
             return;
         }
 
@@ -33,14 +55,14 @@ void GateKeeper::login(CALLBACK_&& callback, std::string_view data, const std::s
 
         if (!success || !clientLoginData.has_value())
         {
-            callback(Http::Status::UNAUTHORIZED, "login failed: " + message);
+            std::move(callback)(Http::Status::UNAUTHORIZED, "login failed: " + message);
             return;
         }
 
         success = tokenManager_->generateToken(clientLoginData);
         if (!success)
         {
-            callback(Http::Status::INTERNAL_SERVER_ERROR, "failed to generate token");
+            std::move(callback)(Http::Status::INTERNAL_SERVER_ERROR, "failed to generate token");
             return;
         }
 
@@ -51,7 +73,7 @@ void GateKeeper::login(CALLBACK_&& callback, std::string_view data, const std::s
         token_object["group"]     = clientLoginData->group;
         token_object["ipAddress"] = clientLoginData->ip_address;
 
-        callback(Http::Status::OK, token_object.as<std::string>());
+        std::move(callback)(Http::Status::OK, token_object.as<std::string>());
     }
     catch (const std::exception& e)
     {
@@ -81,7 +103,8 @@ bool GateKeeper::isAuthenticationValid(std::optional<Types::ClientLoginData>& cl
     {
         return true;
     }
-    else if (tokenManager_->isTokenValid(clientLoginData, message))
+
+    if (tokenManager_->isTokenValid(clientLoginData, message))
     {
         return sessionManager_->storeSession(clientLoginData, message);
     }
@@ -98,13 +121,14 @@ void GateKeeper::removeSession(std::optional<uint64_t> client_id, const std::str
 
 DOSDetector::Status GateKeeper::isDosAttack(const DOSDetector::Request& request) { return dosDetector_->is_dos_attack(request); }
 
-std::optional<jsoncons::json> GateKeeper::parse_data(std::string_view data, std::string& message, bool& success)
+std::optional<jsoncons::json> GateKeeper::parse_data(/* NOLINT(readability-convert-member-functions-to-static)*/
+    std::string_view data, std::string& message, bool& success)
 {
     success = false;
-    jsoncons::json j;
+    jsoncons::json object_j;
     try
     {
-        j = jsoncons::json::parse(data);
+        object_j = jsoncons::json::parse(data);
     }
     catch (const std::exception& e)
     {
@@ -112,7 +136,7 @@ std::optional<jsoncons::json> GateKeeper::parse_data(std::string_view data, std:
         return false;
     }
     success = true;
-    return j;
+    return object_j;
 }
 
 std::optional<Types::Credentials> GateKeeper::parse_credentials(std::string_view data, std::string& message, bool& success)
@@ -121,7 +145,9 @@ std::optional<Types::Credentials> GateKeeper::parse_credentials(std::string_view
 
     std::optional<jsoncons::json> credentials_j = parse_data(data, message, success);
     if (!success || !credentials_j.has_value())
+    {
         return std::nullopt;
+    }
 
     Types::Credentials credentials;
     try
@@ -163,37 +189,37 @@ bool GateKeeper::canDelete(const Requester& requester, const uint64_t entity_id,
 }
 
 template <typename T>
-bool GateKeeper::canManageStaff(const Requester& requester, uint64_t id, Http::Error& error)
+bool GateKeeper::canManageStaff(const Requester& requester, uint64_t _id, Http::Error& error)
 {
-    return permissionManager_->canManageStaff<T>(requester, id, error);
+    return permissionManager_->canManageStaff<T>(requester, _id, error);
 }
 
 template <Client_t T>
-bool GateKeeper::canToggleActive(const Requester& requester, const uint64_t id, Http::Error& error)
+bool GateKeeper::canToggleActive(const Requester& requester, const uint64_t _id, Http::Error& error)
 {
-    return permissionManager_->canToggleActive<T>(requester, id, error);
+    return permissionManager_->canToggleActive<T>(requester, _id, error);
 }
 
 template <Client_t T>
-bool GateKeeper::canGetServices(const Requester& requester, const uint64_t id, Http::Error& error)
+bool GateKeeper::canGetServices(const Requester& requester, const uint64_t _id, Http::Error& error)
 {
-    return permissionManager_->canGetServices<T>(requester, id, error);
+    return permissionManager_->canGetServices<T>(requester, _id, error);
 }
 
 // canCreate specializations
-#define INSTANTIATE_GATEKEEPER_CRUD(TYPE)                                                                            \
+#define INSTANTIATE_GATEKEEPER_CRUD(TYPE) /* NOLINT  */                                                              \
     template bool GateKeeper::canCreate<TYPE>(const Requester&, const std::optional<jsoncons::json>&, Http::Error&); \
     template bool GateKeeper::canRead<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);               \
     template bool GateKeeper::canUpdate<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);             \
     template bool GateKeeper::canDelete<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);
 
-#define INSTANTIATE_GATEKEEPER_CLIENT(TYPE)                                                                            \
-    INSTANTIATE_GATEKEEPER_CRUD(TYPE)                                                                                  \
-    template bool GateKeeper::canGetServices<TYPE>(const Requester& requester, const uint64_t id, Http::Error& error); \
-    template bool GateKeeper::canToggleActive<TYPE>(const Requester& requester, const uint64_t id, Http::Error& error);
+#define INSTANTIATE_GATEKEEPER_CLIENT(TYPE) /* NOLINT  */                                                               \
+    INSTANTIATE_GATEKEEPER_CRUD(TYPE)                                                                                   \
+    template bool GateKeeper::canGetServices<TYPE>(const Requester& requester, const uint64_t _id, Http::Error& error); \
+    template bool GateKeeper::canToggleActive<TYPE>(const Requester& requester, const uint64_t _id, Http::Error& error);
 
-#define INSTANTIATE_GATEKEEPER_ENTITY(TYPE) \
-    INSTANTIATE_GATEKEEPER_CRUD(TYPE)       \
+#define INSTANTIATE_GATEKEEPER_ENTITY(TYPE) /* NOLINT  */ \
+    INSTANTIATE_GATEKEEPER_CRUD(TYPE)                     \
     template bool GateKeeper::canManageStaff<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);
 
 // Usage:
