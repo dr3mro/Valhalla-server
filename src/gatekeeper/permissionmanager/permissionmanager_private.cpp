@@ -1,5 +1,8 @@
 #include "gatekeeper/permissionmanager/permissionmanager_private.hpp"
 
+#include <fmt/core.h>
+#include <fmt/format.h>
+
 #include <cstddef>
 #include <cstdint>
 #include <exception>

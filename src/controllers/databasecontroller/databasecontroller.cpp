@@ -9,7 +9,12 @@
 #include <unordered_set>
 
 #include "database/database.hpp"
+#include "database/databaseconnectionpool.hpp"
+#include "database/watchdog.hpp"
+#include "store/store.hpp"
 #include "utils/global/types.hpp"
+
+DatabaseController::DatabaseController() : databaseConnectionPool(Store::getObject<DatabaseConnectionPool>()), watchDog(Store::getObject<WatchDog>()) {}
 
 std::optional<jsoncons::json> DatabaseController::executeQuery(const std::string &query)
 {
@@ -53,3 +58,8 @@ std::optional<std::unordered_set<api::v2::ColumnInfo>> DatabaseController::getTa
 }
 
 std::optional<std::unordered_set<std::string>> DatabaseController::getAllTables() { return executer<std::unordered_set<std::string>>(&Database::getAllTables); }
+
+std::optional<jsoncons::json> DatabaseController::getPermissions(const std::string &query)
+{
+    return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::nontransaction>, query);
+}
