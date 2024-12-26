@@ -18,15 +18,15 @@
 #include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
 
-class Database : public std::enable_shared_from_this<Database>
+class Database
 {
    public:
     Database(const Database &)            = delete;
     Database(Database &&)                 = delete;
     Database &operator=(const Database &) = delete;
     Database &operator=(Database &&)      = delete;
-    explicit Database(std::shared_ptr<pqxx::connection> conn);
-    virtual ~Database() { Message::InfoMessage("Database connection closed"); }
+    explicit Database(std::shared_ptr<pqxx::connection> &&conn);
+    virtual ~Database();
     bool checkExists(const std::string &table, const std::string &column, const std::string &value);
     bool check_connection();
     bool reconnect();
