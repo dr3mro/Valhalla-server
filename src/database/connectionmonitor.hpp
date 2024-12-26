@@ -12,12 +12,6 @@
 class Database;
 class ConnectionMonitor
 {
-    using MonitorConfig = struct MonitorConfig
-    {
-        std::chrono::seconds check_interval{1};  // NOLINT
-        std::chrono::seconds max_backoff{32};    // NOLINT
-    };
-
    public:
     ConnectionMonitor();
     ConnectionMonitor(const ConnectionMonitor &)            = delete;
@@ -28,7 +22,7 @@ class ConnectionMonitor
 
    private:
     std::shared_ptr<DatabaseConnectionPool> databaseConnectionPool = Store::getObject<DatabaseConnectionPool>();
-    MonitorConfig                           config;
-    std::thread                             monitor_thread;
+    std::chrono::seconds                    check_interval{1};
     std::atomic<bool>                       should_monitor{true};
+    std::thread                             monitor_thread;
 };
