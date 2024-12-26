@@ -11,6 +11,7 @@
 
 #include "database/database.hpp"
 #include "database/databaseconnectionpool.hpp"
+#include "store/store.hpp"
 #include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
 class Case;
@@ -20,8 +21,12 @@ class Appointment;
 class DatabaseController
 {
    public:
-    DatabaseController();
-    virtual ~DatabaseController() = default;
+    DatabaseController()                                      = default;
+    DatabaseController(const DatabaseController &)            = default;
+    DatabaseController(DatabaseController &&)                 = delete;
+    DatabaseController &operator=(const DatabaseController &) = default;
+    DatabaseController &operator=(DatabaseController &&)      = delete;
+    virtual ~DatabaseController()                             = default;
 
     std::optional<jsoncons::json>                          executeQuery(const std::string &query);
     std::optional<jsoncons::json>                          executeReadQuery(const std::string &query);
@@ -40,7 +45,7 @@ class DatabaseController
     }
 
    private:
-    std::shared_ptr<DatabaseConnectionPool> databaseConnectionPool;
+    std::shared_ptr<DatabaseConnectionPool> databaseConnectionPool = Store::getObject<DatabaseConnectionPool>();
 
     template <typename Result, typename Func, typename... Args>
     std::optional<Result> executer(const Func &func, Args &&...args)
