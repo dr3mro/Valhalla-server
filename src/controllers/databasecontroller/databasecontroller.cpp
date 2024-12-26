@@ -8,7 +8,6 @@
 #include <string>
 #include <unordered_set>
 
-#include "database/connectionmonitor.hpp"
 #include "database/database.hpp"
 #include "utils/global/types.hpp"
 

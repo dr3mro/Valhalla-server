@@ -1,4 +1,4 @@
-#include "database/connectionmonitor.hpp"
+#include "database/watchdog.hpp"
 
 #include <fmt/core.h>
 #include <fmt/format.h>
@@ -7,10 +7,11 @@
 #include <memory>
 #include <stdexcept>
 #include <thread>
+#include <utility>
 
 #include "database/database.hpp"  // IWYU pragma: keep
 #include "utils/message/message.hpp"
-ConnectionMonitor::ConnectionMonitor()  // NOLINT
+WatchDog::WatchDog()  // NOLINT
 {
     if (monitor_thread.joinable())
     {
@@ -49,7 +50,7 @@ ConnectionMonitor::ConnectionMonitor()  // NOLINT
                         }
                     }
 
-                    databaseConnectionPool->return_connection(db_ptr);
+                    databaseConnectionPool->return_connection(std::move(db_ptr));
                     std::this_thread::sleep_for(check_interval);
                 }
                 catch (const std::exception &e)
@@ -60,7 +61,7 @@ ConnectionMonitor::ConnectionMonitor()  // NOLINT
         });
 }
 
-ConnectionMonitor::~ConnectionMonitor()
+WatchDog::~WatchDog()
 {
     // Ensure proper cleanup
     should_monitor = false;
@@ -70,7 +71,7 @@ ConnectionMonitor::~ConnectionMonitor()
     }
 }
 
-void ConnectionMonitor::reconnect_all()
+void WatchDog::reconnect_all()
 {
     auto db_ptr = databaseConnectionPool->get_connection();
 
@@ -80,9 +81,9 @@ void ConnectionMonitor::reconnect_all()
         {
             Message::InfoMessage(fmt::format("Database connection id: {} link is re-established", static_cast<void *>(db_ptr.get())));
         }
-        databaseConnectionPool->return_connection(db_ptr);
+        databaseConnectionPool->return_connection(std::move(db_ptr));
         db_ptr = databaseConnectionPool->get_connection();
     };
 
-    databaseConnectionPool->return_connection(db_ptr);
+    databaseConnectionPool->return_connection(std::move(db_ptr));
 }

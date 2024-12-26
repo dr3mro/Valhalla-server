@@ -34,7 +34,7 @@ std::shared_ptr<Database> DatabaseConnectionPool::createDatabaseConnection()
     }
     catch (const std::exception& e)
     {
-        Message::CriticalMessage(fmt::format("Exception caught during database connection creation: {}", e.what()));
+        Message::CriticalMessage(fmt::format("Exception caught during database connection initialization: {}", e.what()));
     }
 
     return nullptr;
@@ -105,7 +105,7 @@ std::shared_ptr<Database> DatabaseConnectionPool::get_connection()
     return db_ptr;
 }
 
-void DatabaseConnectionPool::return_connection(std::shared_ptr<Database> db_ptr)
+void DatabaseConnectionPool::return_connection(std::shared_ptr<Database>&& db_ptr)
 {
     std::lock_guard<std::mutex> lock(mutex);
     databaseConnections.push(std::move(db_ptr));
