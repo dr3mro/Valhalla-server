@@ -6,15 +6,14 @@
 #include <mutex>
 #include <queue>
 
-#include "configurator/configurator.hpp"
-#include "database.hpp"
-#include "store/store.hpp"
+class Database;
+class Configurator;
+class DatabaseConfig;
 
 class DatabaseConnectionPool
 {
    private:
-    std::shared_ptr<Configurator>       configurator_ = Store::getObject<Configurator>();
-    const Configurator::DatabaseConfig &config_       = configurator_->get<Configurator::DatabaseConfig>();
+    std::shared_ptr<Configurator> configurator_;
 
    public:
     DatabaseConnectionPool();
@@ -29,7 +28,7 @@ class DatabaseConnectionPool
     void                      return_connection(std::shared_ptr<Database> &&db_ptr);
 
    private:
-    std::shared_ptr<Database>             createDatabaseConnection();
+    std::shared_ptr<Database>             createDatabaseConnection(const auto &config_);
     std::queue<std::shared_ptr<Database>> databaseConnections;
     std::mutex                            mutex;
     std::condition_variable               cv;

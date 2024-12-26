@@ -5,9 +5,22 @@
 #include <fmt/format.h>
 #include <fmt/ranges.h>
 
+#include <cstddef>
+#include <cstdint>
+#include <exception>
+#include <jsoncons/basic_json.hpp>
+#include <memory>
+#include <optional>
+#include <stdexcept>
+#include <string>
+#include <type_traits>
+#include <utility>
+
 #include "controllers/databasecontroller/databasecontroller.hpp"
 #include "entities/base/client.hpp"
+#include "entities/base/types.hpp"
 #include "entities/services/clinics/patient/patient.hpp"
+#include "store/store.hpp"
 #include "utils/global/callback.hpp"
 #include "utils/global/global.hpp"
 #include "utils/global/http.hpp"

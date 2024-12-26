@@ -23,7 +23,7 @@ std::optional<jsoncons::json> DatabaseController::executeReadQuery(const std::st
 
 std::optional<jsoncons::json ::array> DatabaseController::executeSearchQuery(const std::string &query)
 {
-    return executer<jsoncons::json ::array>(&Database::executeQuery<jsoncons::json ::array, pqxx::nontransaction>, query);
+    return executer<jsoncons::json::array>(&Database::executeQuery<jsoncons::json::array, pqxx::nontransaction>, query);
 }
 
 std::optional<std::string> DatabaseController::doReadQuery(const std::string &query)
