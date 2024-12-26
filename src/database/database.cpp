@@ -63,7 +63,6 @@ bool Database::check_connection()
     }
     catch (const std::exception &e)
     {
-        Message::CriticalMessage(fmt::format("Database connection lost: {}, {}", static_cast<const void *>(this), e.what()));
         return false;
     }
 

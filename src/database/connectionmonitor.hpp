@@ -21,6 +21,8 @@ class ConnectionMonitor
     virtual ~ConnectionMonitor();
 
    private:
+    void reconnect_all();
+
     std::shared_ptr<DatabaseConnectionPool> databaseConnectionPool = Store::getObject<DatabaseConnectionPool>();
     std::chrono::seconds                    check_interval{1};
     std::atomic<bool>                       should_monitor{true};

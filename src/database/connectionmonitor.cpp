@@ -30,11 +30,13 @@ ConnectionMonitor::ConnectionMonitor()  // NOLINT
                     if (!db_ptr->check_connection())
                     {
                         Message::WarningMessage("Database connection lost. Attempting to reconnect...");
+                        Message::CriticalMessage(fmt::format("Database connection {} link is lost.", static_cast<const void *>(db_ptr.get())));
                         try
                         {
                             if (db_ptr->reconnect())
                             {
-                                Message::InfoMessage("Database connection re-established");
+                                Message::InfoMessage(fmt::format("Database connection id: {} link is re-established", static_cast<void *>(db_ptr.get())));
+                                reconnect_all();
                             }
                             else
                             {
@@ -66,4 +68,21 @@ ConnectionMonitor::~ConnectionMonitor()
     {
         monitor_thread.join();
     }
+}
+
+void ConnectionMonitor::reconnect_all()
+{
+    auto db_ptr = databaseConnectionPool->get_connection();
+
+    while (!db_ptr->check_connection())
+    {
+        if (db_ptr->reconnect())
+        {
+            Message::InfoMessage(fmt::format("Database connection id: {} link is re-established", static_cast<void *>(db_ptr.get())));
+        }
+        databaseConnectionPool->return_connection(db_ptr);
+        db_ptr = databaseConnectionPool->get_connection();
+    };
+
+    databaseConnectionPool->return_connection(db_ptr);
 }
