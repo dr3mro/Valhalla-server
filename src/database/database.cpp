@@ -14,7 +14,7 @@
 #include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
 
-Database::Database(std::shared_ptr<pqxx::connection> conn) : connection(std::move(conn))
+Database::Database(std::shared_ptr<pqxx::connection> &&conn) : connection(std::move(conn))
 {
     try
     {
@@ -32,6 +32,7 @@ Database::Database(std::shared_ptr<pqxx::connection> conn) : connection(std::mov
         Message::CriticalMessage(fmt::format("Exception caught during database connection: {}", e.what()));
     }
 }
+Database::~Database() { Message::InfoMessage(fmt::format("Database connection {} is now exterminated.", static_cast<const void *>(this))); }
 
 bool Database::checkExists(const std::string &table, const std::string &column, const std::string &value)
 {
