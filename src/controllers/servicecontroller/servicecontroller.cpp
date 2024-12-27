@@ -2,10 +2,19 @@
 
 #include "controllers/servicecontroller/servicecontroller.hpp"
 
+#include <cstdint>
+#include <optional>
+#include <string_view>
+#include <utility>
+
+#include "controllers/appointmentcontroller/appointmentcontrollerbase.hpp"
+#include "controllers/entitycontroller/entitycontroller.hpp"
 #include "entities/services/clinics/clinics.hpp"   // IWYU pragma: keep
 #include "entities/services/laboratories.hpp"      // IWYU pragma: keep
 #include "entities/services/pharmacies.hpp"        // IWYU pragma: keep
 #include "entities/services/radiologycenters.hpp"  // IWYU pragma: keep
+#include "utils/global/callback.hpp"
+#include "utils/global/concepts.hpp"
 
 template <Service_t T>
 void ServiceController<T>::Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
@@ -19,15 +28,15 @@ void ServiceController<T>::Read(CALLBACK_&& callback, const Requester&& requeste
 }
 
 template <Service_t T>
-void ServiceController<T>::Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, const std::optional<uint64_t> id)
+void ServiceController<T>::Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, const std::optional<uint64_t> _id)
 {
-    EntityController<T>::Update(std::move(callback), std::move(requester), data, id);
+    EntityController<T>::Update(std::move(callback), std::move(requester), data, _id);
 }
 
 template <Service_t T>
-void ServiceController<T>::Delete(CALLBACK_&& callback, const Requester&& requester, const std::optional<uint64_t> id)
+void ServiceController<T>::Delete(CALLBACK_&& callback, const Requester&& requester, const std::optional<uint64_t> _id)
 {
-    EntityController<T>::Delete(std::move(callback), std::move(requester), id);
+    EntityController<T>::Delete(std::move(callback), std::move(requester), _id);
 }
 
 template <Service_t T>
@@ -37,7 +46,7 @@ void ServiceController<T>::Search(CALLBACK_&& callback, const Requester&& reques
     EntityController<T>::Search(std::move(callback), std::move(requester), data);
 }
 
-#define INSTANTIATE_SERVICE_CONTROLLER(TYPE)                                                                                                             \
+#define INSTANTIATE_SERVICE_CONTROLLER(TYPE) /*NOLINT*/                                                                                                  \
     template void ServiceController<TYPE>::Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                             \
     template void ServiceController<TYPE>::Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                               \
     template void ServiceController<TYPE>::Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> id); \
