@@ -1,11 +1,24 @@
 #include "server.hpp"
 
+#include <drogon/HttpAppFramework.h>
+#include <drogon/HttpRequest.h>
+#include <drogon/HttpResponse.h>
+#include <drogon/HttpTypes.h>
 #include <drogon/drogon.h>
+#include <drogon/drogon_callbacks.h>
 #include <fmt/color.h>
 #include <fmt/core.h>
+#include <trantor/utils/Logger.h>
+
+#include <cstdlib>
+#include <exception>
+#include <string>
+#include <utility>
 
 #include "api/v2/all_routes.hpp"  // IWYU pragma: keep
 #include "server/extras/banner.hpp"
+#include "utils/jsonhelper/jsonhelper.hpp"
+#include "utils/message/message.hpp"
 #ifndef GIT_TAG
 #    define GIT_TAG "unknown"
 #endif
