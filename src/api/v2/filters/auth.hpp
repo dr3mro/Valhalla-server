@@ -1,7 +1,19 @@
+#include <drogon/HttpFilter.h>
+#include <drogon/HttpRequest.h>
+#include <drogon/HttpResponse.h>
+#include <drogon/HttpTypes.h>
 #include <drogon/drogon.h>
+#include <drogon/drogon_callbacks.h>
+
+#include <cstddef>
+#include <memory>
+#include <optional>
+#include <string>
+#include <utility>
 
 #include "gatekeeper/gatekeeper.hpp"
 #include "gatekeeper/types.hpp"
+#include "store/store.hpp"
 #include "utils/jsonhelper/jsonhelper.hpp"
 namespace api::v2::Filters
 {

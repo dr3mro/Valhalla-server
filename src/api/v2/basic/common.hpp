@@ -1,10 +1,15 @@
 #pragma once
 
 #include <drogon/HttpRequest.h>
+#include <drogon/HttpResponse.h>
 #include <drogon/HttpTypes.h>
 #include <drogon/drogon.h>
+#include <fmt/core.h>
 #include <fmt/format.h>
 
+#include <cstdint>
+#include <exception>
+#include <functional>
 #include <memory>
 #include <string>
 #include <string_view>
