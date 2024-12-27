@@ -23,7 +23,6 @@
 #include "utils/message/message.hpp"
 
 std::shared_ptr<Database> DatabaseConnectionPool::createDatabaseConnection(const auto& config)
-
 {
     try
     {
