@@ -1,7 +1,9 @@
 #pragma once
+#include <_stdlib.h>
 #include <fmt/color.h>
 #include <fmt/format.h>
 
+#include <cstdlib>
 #include <random>
 #include <string>
 #include <vector>
