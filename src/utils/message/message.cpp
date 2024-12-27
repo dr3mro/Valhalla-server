@@ -2,7 +2,12 @@
 
 #include <drogon/drogon.h>
 #include <fmt/color.h>
+#include <fmt/core.h>
 #include <fmt/format.h>
+#include <trantor/utils/Logger.h>
+
+#include <string>
+#include <unordered_map>
 
 void Message::DebugMessage(const std::string& status_message) { MessageImpl(status_message, trantor::Logger::LogLevel::kDebug); }
 void Message::InfoMessage(const std::string& status_message) { MessageImpl(status_message, trantor::Logger::LogLevel::kInfo); }
