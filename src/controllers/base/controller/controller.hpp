@@ -79,33 +79,32 @@ class Controller
     template <typename T>
     void Search(T &entity, CALLBACK_ &&callback)
     {
-        jsoncons::json             response_json;
-        jsoncons::json             query_results_json;
-        std::optional<std::string> query;
+        jsoncons::json response_json;
+        response_json["more"]   = false;
+        response_json["offset"] = 0;
+
+        std::optional<jsoncons::json> query_results_json_array;
+        std::optional<std::string>    query;
 
         try
         {
             query = entity.getSqlSearchStatement();
 
-            if (query)
+            if (query.has_value())
             {
-                query_results_json   = databaseController->executeSearchQuery(query.value());
-                size_t results_count = query_results_json.size();
-
-                if (results_count > std::get<Types::Search_t>(entity.getData()).limit)
+                query_results_json_array = databaseController->executeSearchQuery(query.value());
+                if (query_results_json_array.has_value() && !query_results_json_array->empty())
                 {
-                    response_json["more"]   = true;
-                    response_json["offset"] = std::get<Types::Search_t>(entity.getData()).offset + std::get<Types::Search_t>(entity.getData()).limit;
-                    query_results_json.erase(query_results_json.array_range().end() - 1);
-                }
-                else
-                {
-                    response_json["more"]   = false;
-                    response_json["offset"] = 0;
+                    size_t results_count = query_results_json_array->size();
+                    if (results_count > std::get<Types::Search_t>(entity.getData()).limit)
+                    {
+                        response_json["more"]   = true;
+                        response_json["offset"] = std::get<Types::Search_t>(entity.getData()).offset + std::get<Types::Search_t>(entity.getData()).limit;
+                        query_results_json_array->erase(query_results_json_array->array_range().end() - 1);
+                    }
                 }
             }
-
-            response_json["results"] = query_results_json;
+            response_json["results"] = query_results_json_array.value();
             std::move(callback)(api::v2::Http::Status::OK, response_json.as<std::string>());
         }
         catch (const std::exception &e)
@@ -134,19 +133,23 @@ class Controller
     void GetServices(T &entity, CALLBACK_ &&callback)
         requires(std::is_base_of_v<Client, T>)
     {
-        jsoncons::json             services;
-        std::optional<std::string> query;
+        std::optional<jsoncons::json> services;
+        std::optional<std::string>    query;
 
         try
         {
             query = entity.getSqlGetServicesStatement();
 
-            if (query)
+            if (query.has_value())
             {
                 services = databaseController->executeSearchQuery(query.value());
+                if (services.has_value())
+                {
+                    std::move(callback)(api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(services.value()));
+                    return;
+                }
+                std::move(callback)(api::v2::Http::Status::OK, "[]");
             }
-
-            std::move(callback)(api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(services));
         }
         catch (const std::exception &e)
         {
@@ -189,21 +192,21 @@ class Controller
     {
         try
         {
-            jsoncons::json json_nextval = databaseController->executeQuery(fmt::format("SELECT NEXTVAL('{}_id_seq');", T::getTableName()));
+            std::optional<jsoncons::json> json_nextval = databaseController->executeQuery(fmt::format("SELECT NEXTVAL('{}_id_seq');", T::getTableName()));
 
-            if (json_nextval.empty())
+            if (!json_nextval.has_value() || json_nextval->empty())
             {
                 error.message = fmt::format(
                     "nextID from seq function of {} failed, could not create a "
                     "new ID.",
                     T::getTableName());
-                error.code = api::v2::Http::Status::NOT_ACCEPTABLE;
+                error.code = api::v2::Http::Status::CONFLICT;
                 Message::ErrorMessage(error.message);
                 return std::nullopt;
             }
 
-            auto obj = json_nextval.find("nextval");
-            if (obj != json_nextval.object_range().end())
+            auto obj = json_nextval->find("nextval");
+            if (obj != json_nextval->object_range().end())
             {
                 return obj->value().as<uint64_t>();
             }
@@ -254,13 +257,11 @@ class Controller
                         return;
                     }
 
-                    std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
-                        "Query returned no results, please check ID "
-                        "as it might not exist or be invalid.");
+                    std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Query returned empty result, please recheck your parameters.");
                     return;
                 }
 
-                std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Failed to execute query");
+                std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Failed to create sql query");
             }
         }
         catch (const std::exception &e)

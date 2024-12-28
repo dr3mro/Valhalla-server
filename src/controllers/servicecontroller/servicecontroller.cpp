@@ -42,7 +42,6 @@ void ServiceController<T>::Delete(CALLBACK_&& callback, const Requester&& reques
 template <Service_t T>
 void ServiceController<T>::Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
 {
-    // [ ] Fix search
     EntityController<T>::Search(std::move(callback), std::move(requester), data);
 }
 

@@ -47,10 +47,17 @@ class DatabaseController
     {
         try
         {
-            std::shared_ptr<Database> db_ptr  = databaseConnectionPool->get_connection();
-            std::optional<Result>     results = std::invoke(func, db_ptr.get(), std::forward<Args>(args)...);
+            std::shared_ptr<Database> db_ptr = databaseConnectionPool->get_connection();
+
+            if (db_ptr == nullptr)
+            {
+                return std::nullopt;
+            }
+
+            std::optional<Result> results = std::invoke(func, db_ptr.get(), std::forward<Args>(args)...);
 
             databaseConnectionPool->return_connection(std::move(db_ptr));
+
             if (results.has_value())
             {
                 return results;

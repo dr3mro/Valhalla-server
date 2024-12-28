@@ -1,5 +1,24 @@
 #include "controllers/entitycontroller/entitycontroller.hpp"
 
+#include <fmt/core.h>
+
+#include <cstdint>
+#include <exception>
+#include <format>
+#include <jsoncons/basic_json.hpp>
+#include <optional>
+#include <string>
+#include <string_view>
+#include <unordered_set>
+#include <utility>
+
+#include "controllers/base/controller/controller.hpp"
+#include "controllers/entitycontroller/entitycontrollerbase.hpp"
+#include "entities/base/types.hpp"
+#include "utils/global/callback.hpp"
+#include "utils/global/http.hpp"
+#include "validator/validator.hpp"
+
 template <typename T>
 inline void __attribute((always_inline)) EntityController<T>::Create(CALLBACK_ &&callback, const Requester &&requester, std::string_view data)
 {
@@ -14,7 +33,7 @@ inline void __attribute((always_inline)) EntityController<T>::Create(CALLBACK_ &
 
         if (!request_j.has_value())
         {
-            callback(api::v2::Http::Status::BAD_REQUEST, "Invalid request body.");
+            std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Invalid request body.");
             return;
         }
 
@@ -22,19 +41,19 @@ inline void __attribute((always_inline)) EntityController<T>::Create(CALLBACK_ &
 
         if (!success)
         {
-            callback(error.code, fmt::format("Failed to validate request body, {}.", error.message));
+            std::move(callback)(error.code, fmt::format("Failed to validate request body, {}.", error.message));
             return;
         }
 
         if (!gateKeeper->canCreate<T>(requester, request_j, error))
         {
-            callback(error.code, error.message);
+            std::move(callback)(error.code, error.message);
             return;
         }
 
         if (!next_id.has_value())
         {
-            callback(error.code, fmt::format("Failed to generate next ID, {}.", error.message));
+            std::move(callback)(error.code, fmt::format("Failed to generate next ID, {}.", error.message));
             return;
         }
 
@@ -61,7 +80,7 @@ inline void __attribute((always_inline)) EntityController<T>::Read(CALLBACK_ &&c
 
         if (!gateKeeper->canRead<T>(requester, _id, error))
         {
-            callback(error.code, error.message);
+            std::move(callback)(error.code, error.message);
             return;
         }
 
@@ -71,7 +90,7 @@ inline void __attribute((always_inline)) EntityController<T>::Read(CALLBACK_ &&c
 
         if (!Validator::validateDatabaseReadSchema(schema, std::format("{}_safe", T::getTableName()), error, rule))
         {
-            callback(error.code, fmt::format("Failed to validate request body, {}.", error.message));
+            std::move(callback)(error.code, fmt::format("Failed to validate request body, {}.", error.message));
             return;
         }
 
@@ -95,7 +114,7 @@ inline void __attribute((always_inline)) EntityController<T>::Update(
 
         if (!_id.has_value())
         {
-            callback(api::v2::Http::Status::BAD_REQUEST, "No id provided.");
+            std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "No id provided.");
             return;
         }
 
@@ -103,7 +122,7 @@ inline void __attribute((always_inline)) EntityController<T>::Update(
 
         if (!request_json.has_value())
         {
-            callback(api::v2::Http::Status::BAD_REQUEST, "Invalid request body.");
+            std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Invalid request body.");
             return;
         }
 
@@ -112,13 +131,13 @@ inline void __attribute((always_inline)) EntityController<T>::Update(
 
         if (!success)
         {
-            callback(error.code, fmt::format("Failed to validate request body, {}.", error.message));
+            std::move(callback)(error.code, fmt::format("Failed to validate request body, {}.", error.message));
             return;
         }
 
         if (!gateKeeper->canUpdate<T>(requester, _id.value(), error))
         {
-            callback(error.code, error.message);
+            std::move(callback)(error.code, error.message);
             return;
         }
 
@@ -141,7 +160,7 @@ inline void __attribute((always_inline)) EntityController<T>::Delete(CALLBACK_ &
     {
         if (!_id.has_value())
         {
-            callback(api::v2::Http::Status::NOT_ACCEPTABLE, "Invalid id provided");
+            std::move(callback)(api::v2::Http::Status::NOT_ACCEPTABLE, "Invalid id provided");
             return;
         }
 
@@ -149,7 +168,7 @@ inline void __attribute((always_inline)) EntityController<T>::Delete(CALLBACK_ &
 
         if (!gateKeeper->canDelete<T>(requester, _id.value(), error))
         {
-            callback(error.code, error.message);
+            std::move(callback)(error.code, error.message);
             return;
         }
 
@@ -179,7 +198,7 @@ inline void __attribute((always_inline)) EntityController<T>::Search(CALLBACK_ &
         }
         else
         {
-            callback(api::v2::Http::Status::NOT_ACCEPTABLE, "Failed to search");
+            std::move(callback)(api::v2::Http::Status::NOT_ACCEPTABLE, "Failed to search");
         }
     }
     catch (const std::exception &e)
@@ -188,7 +207,7 @@ inline void __attribute((always_inline)) EntityController<T>::Search(CALLBACK_ &
     }
 }
 
-#define INSTANTIATE_ENTITY_CONTROLLER(TYPE)                                                                                                             \
+#define INSTANTIATE_ENTITY_CONTROLLER(TYPE) /*NOLINT*/                                                                                                  \
     template void EntityController<TYPE>::Create(CALLBACK_ &&callback, const Requester &&requester, std::string_view data);                             \
     template void EntityController<TYPE>::Read(CALLBACK_ &&callback, const Requester &&requester, std::string_view data);                               \
     template void EntityController<TYPE>::Update(CALLBACK_ &&callback, const Requester &&requester, std::string_view data, std::optional<uint64_t> id); \
