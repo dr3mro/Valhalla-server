@@ -5,10 +5,14 @@
 #include <cstdint>
 #include <jsoncons/json.hpp>
 #include <memory>
+#include <optional>
+#include <string_view>
 
 #include "controllers/base/controller/controller.hpp"
 #include "controllers/entitycontroller/entitycontrollerbase.hpp"
 #include "gatekeeper/gatekeeper.hpp"
+#include "store/store.hpp"
+#include "utils/global/callback.hpp"
 
 template <typename T>
 class EntityController : public Controller, public EntityControllerBase
@@ -19,7 +23,7 @@ class EntityController : public Controller, public EntityControllerBase
     EntityController(EntityController &&)                 = default;
     EntityController &operator=(const EntityController &) = default;
     EntityController &operator=(EntityController &&)      = default;
-    virtual ~EntityController()                           = default;
+    ~EntityController() override                          = default;
     // CRUDS
 
     void Create(CALLBACK_ &&callback, const Requester &&requester, std::string_view data) override;

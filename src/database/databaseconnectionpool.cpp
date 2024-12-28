@@ -100,18 +100,26 @@ DatabaseConnectionPool::DatabaseConnectionPool() : configurator_(Store::getObjec
 std::shared_ptr<Database> DatabaseConnectionPool::get_connection()
 {
     std::unique_lock<std::mutex> lock(mutex);
-    while (databaseConnections.empty())
+
+    if (!cv.wait_for(lock, std::chrono::seconds(1), [this] { return !databaseConnections.empty(); }))
     {
-        cv.wait(lock);
+        Message::CriticalMessage("Timeout while waiting for a connection");
+        return nullptr;
     }
-    auto db_ptr = databaseConnections.front();
+
+    std::shared_ptr<Database> db_ptr = std::move(databaseConnections.front());
+
     databaseConnections.pop();
+
     return db_ptr;
 }
 
 void DatabaseConnectionPool::return_connection(std::shared_ptr<Database>&& db_ptr)
 {
-    std::lock_guard<std::mutex> lock(mutex);
-    databaseConnections.push(std::move(db_ptr));
-    cv.notify_one();
+    if (db_ptr != nullptr)
+    {
+        std::lock_guard<std::mutex> lock(mutex);
+        databaseConnections.push(std::move(db_ptr));
+        cv.notify_one();
+    }
 }

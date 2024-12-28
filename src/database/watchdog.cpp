@@ -31,7 +31,7 @@ WatchDog::WatchDog() : databaseConnectionPool(Store::getObject<DatabaseConnectio
                 {
                     std::shared_ptr<Database> db_ptr = databaseConnectionPool->get_connection();
 
-                    if (!db_ptr->check_connection())
+                    if (db_ptr != nullptr && !db_ptr->check_connection())
                     {
                         Message::WarningMessage("Database connection lost. Attempting to reconnect...");
                         Message::CriticalMessage(fmt::format("Database connection {} link is lost.", static_cast<const void *>(db_ptr.get())));
