@@ -2,18 +2,19 @@
 
 #include <memory>
 
-// IWYU pragma: keep
 #include "api/v2/filters/auth.hpp"
 #include "api/v2/filters/ratelimit.hpp"
 #include "api/v2/middlewares/elapsedtime.hpp"
 #include "configurator/configurator.hpp"
-#include "store/store.hpp"
-#include "utils/Logger/logger.hpp"
-#include "validator/databaseschema/databaseschema.hpp"
+
+class Logger;
+class DatabaseSchema;
+
 class Server
 {
    public:
-    Server()                         = default;
+    Server();
+
     virtual ~Server()                = default;
     Server(const Server&)            = delete;
     Server& operator=(const Server&) = delete;
@@ -25,12 +26,12 @@ class Server
    private:
     void print_banner();
 
-    std::shared_ptr<Logger>                            logger_       = Store::getObject<Logger>();
-    std::shared_ptr<Configurator>                      configurator_ = Store::getObject<Configurator>();
-    Configurator::ServerConfig                         config_       = configurator_->get<Configurator::ServerConfig>();
-    Configurator::DatabaseConfig                       db_config_    = configurator_->get<Configurator::DatabaseConfig>();
-    std::shared_ptr<DatabaseSchema>                    database      = Store::getObject<DatabaseSchema>();
-    std::shared_ptr<api::v2::Filters::Auth>            auth_filter_  = std::make_shared<api::v2::Filters::Auth>();
-    std::shared_ptr<api::v2::MiddleWares::ElapsedTime> elapsed_time_ = std::make_shared<api::v2::MiddleWares::ElapsedTime>();
-    std::shared_ptr<api::v2::Filters::RateLimit>       rate_limit_   = std::make_shared<api::v2::Filters::RateLimit>();
+    std::shared_ptr<Logger>                            logger_;
+    std::shared_ptr<Configurator>                      configurator_;
+    Configurator::ServerConfig                         config_;
+    Configurator::DatabaseConfig                       db_config_;
+    std::shared_ptr<DatabaseSchema>                    databaseSchema_;
+    std::shared_ptr<api::v2::Filters::Auth>            auth_filter_;
+    std::shared_ptr<api::v2::MiddleWares::ElapsedTime> elapsed_time_;
+    std::shared_ptr<api::v2::Filters::RateLimit>       rate_limit_;
 };

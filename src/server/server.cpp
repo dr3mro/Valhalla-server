@@ -12,17 +12,33 @@
 
 #include <cstdlib>
 #include <exception>
+#include <memory>
 #include <string>
 #include <utility>
 
 #include "api/v2/all_routes.hpp"  // IWYU pragma: keep
+#include "api/v2/middlewares/elapsedtime.hpp"
+#include "configurator/configurator.hpp"
 #include "server/extras/banner.hpp"
+#include "store/store.hpp"
+#include "utils/Logger/logger.hpp"
 #include "utils/jsonhelper/jsonhelper.hpp"
 #include "utils/message/message.hpp"
+#include "validator/databaseschema/databaseschema.hpp"
 #ifndef GIT_TAG
 #    define GIT_TAG "unknown"
 #endif
-
+Server::Server()
+    : logger_(Store::getObject<Logger>()),
+      configurator_(Store::getObject<Configurator>()),
+      config_(configurator_->get<Configurator::ServerConfig>()),
+      db_config_(configurator_->get<Configurator::DatabaseConfig>()),
+      databaseSchema_(Store::getObject<DatabaseSchema>()),
+      auth_filter_(std::make_shared<api::v2::Filters::Auth>()),
+      elapsed_time_(std::make_shared<api::v2::MiddleWares::ElapsedTime>()),
+      rate_limit_(std::make_shared<api::v2::Filters::RateLimit>())
+{
+}
 int Server::run()
 {
     print_banner();
