@@ -11,11 +11,15 @@ class DatabaseSchema
 {
    public:
     DatabaseSchema();
-    virtual ~DatabaseSchema() = default;
+    DatabaseSchema(const DatabaseSchema&)            = default;
+    DatabaseSchema(DatabaseSchema&&)                 = delete;
+    DatabaseSchema& operator=(const DatabaseSchema&) = default;
+    DatabaseSchema& operator=(DatabaseSchema&&)      = delete;
+    virtual ~DatabaseSchema()                        = default;
 
-    void                   populateSchema(const std::string& tableName);
+    static void            populateSchema(const std::string& tableName);
     static const SCHEMA_t& getDatabaseSchema();
-    void                   printSchema();
+    static void            printSchema();
 
    private:
     static SCHEMA_t databaseSchema;

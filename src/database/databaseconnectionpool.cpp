@@ -26,7 +26,7 @@ std::shared_ptr<Database> DatabaseConnectionPool::createDatabaseConnection(const
 {
     try
     {
-        auto command = fmt::format("host={} dbname={} user={} password={} connect_timeout=2", config.host, config.name, config.user, config.pass);
+        auto command = fmt::format("host={} dbname={} user={} password={} connect_timeout={}", config.host, config.name, config.user, config.pass, TIMEOUT);
 
         auto conn = std::make_shared<pqxx::connection>(command.c_str());
 
@@ -58,7 +58,7 @@ DatabaseConnectionPool::DatabaseConnectionPool() : configurator_(Store::getObjec
             while (retryCount < MAX_RETRIES && !connectionEstablished)
             {
                 auto future = std::async(std::launch::async, [this, &config]() { return this->createDatabaseConnection(config); });
-                auto status = future.wait_for(std::chrono::seconds(TIMEOUT));
+                auto status = future.wait_for(std::chrono::seconds(TIMEOUT + 1));
 
                 if (status == std::future_status::ready)
                 {
@@ -75,7 +75,11 @@ DatabaseConnectionPool::DatabaseConnectionPool() : configurator_(Store::getObjec
                 retryCount++;
 
                 Message::WarningMessage(fmt::format("Connection attempt {} timed out, retrying... ({}/{})", i + 1, retryCount, MAX_RETRIES));
-                std::this_thread::sleep_for(std::chrono::seconds(1U << retryCount));
+
+                if (retryCount < MAX_RETRIES)
+                {
+                    std::this_thread::sleep_for(std::chrono::seconds(1U << retryCount));
+                }
             }
 
             if (!connectionEstablished)
@@ -93,7 +97,8 @@ DatabaseConnectionPool::DatabaseConnectionPool() : configurator_(Store::getObjec
     catch (const std::exception& e)
     {
         Message::CriticalMessage(fmt::format("Failed to initialize database connection pool: {}", e.what()));
-        std::exit(EXIT_FAILURE);  // NOLINT
+        Message::ErrorMessage("Exiting...");
+        exit(EXIT_FAILURE); /*NOLINT*/
     }
 }
 
