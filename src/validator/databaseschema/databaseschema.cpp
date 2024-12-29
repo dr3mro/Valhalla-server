@@ -1,9 +1,16 @@
 #include "databaseschema.hpp"
 
+#include <fmt/core.h>
 #include <fmt/format.h>
+
+#include <cstdlib>
+#include <stdexcept>
+#include <string>
 
 #include "controllers/databasecontroller/databasecontroller.hpp"
 #include "store/store.hpp"
+#include "utils/message/message.hpp"
+
 SCHEMA_t DatabaseSchema::databaseSchema;
 
 DatabaseSchema::DatabaseSchema()
@@ -14,7 +21,8 @@ DatabaseSchema::DatabaseSchema()
     if (!tables.has_value() || tables.value().empty())
     {
         throw std::runtime_error("No tables found in database.\n");
-        exit(EXIT_FAILURE);
+        Message::ErrorMessage("Exiting...");
+        exit(EXIT_FAILURE); /*NOLINT*/
     }
 
     for (const auto& table : tables.value())
@@ -35,7 +43,8 @@ void DatabaseSchema::populateSchema(const std::string& tableName)
     else
     {
         Message::WarningMessage(fmt::format("Table not found.\n", tableName));
-        exit(EXIT_FAILURE);
+        Message::ErrorMessage("Exiting...");
+        exit(EXIT_FAILURE); /*NOLINT*/
     }
 }
 
@@ -47,8 +56,7 @@ void DatabaseSchema::printSchema()
     {
         for (const auto& column : columns)
         {
-            fmt::print("{} : {} - {} - {} - {} \n", tableName, column.Name, column.DataType, column.Constraint,
-                       column.isNullable);
+            fmt::print("{} : {} - {} - {} - {} \n", tableName, column.Name, column.DataType, column.Constraint, column.isNullable);
         }
     }
 }
