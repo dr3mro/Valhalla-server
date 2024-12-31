@@ -4,6 +4,7 @@
 #include <fmt/format.h>
 #include <trantor/utils/Logger.h>
 
+#include <atomic>
 #include <cstdint>
 #include <jsoncons/basic_json.hpp>
 #include <jsoncons/json.hpp>
@@ -13,8 +14,9 @@
 #include <string>
 #include <unordered_set>
 
-#include "database/connectionguard.hpp"
 #include "utils/global/types.hpp"
+
+#define CONNECTION_GUARD ConnectionGuard connection_guard(connection, isConnectionReady, isConnectionInUse);
 
 class Database
 {
@@ -40,11 +42,11 @@ class Database
     std::optional<std::unordered_set<std::string>>         getAllTables();
 
    private:
-    void waitForConnection();
-
     std::shared_ptr<pqxx::connection> connection;
     std::string                       connection_info;  // Store connection parameters
-    std::unique_ptr<ConnectionGuard>  connectionGuard;
+
+    std::atomic<bool> isConnectionReady;
+    std::atomic<bool> isConnectionInUse;
 
     static const std::uint16_t TEXT    = 1043;
     static const std::uint16_t INTEGER = 23;
