@@ -13,6 +13,7 @@
 #include <string>
 #include <unordered_set>
 
+#include "database/connectionguard.hpp"
 #include "utils/global/types.hpp"
 
 class Database
@@ -39,9 +40,11 @@ class Database
     std::optional<std::unordered_set<std::string>>         getAllTables();
 
    private:
-    std::shared_ptr<pqxx::connection> connection;
+    void waitForConnection();
 
-    std::string connection_info;  // Store connection parameters
+    std::shared_ptr<pqxx::connection> connection;
+    std::string                       connection_info;  // Store connection parameters
+    std::unique_ptr<ConnectionGuard>  connectionGuard;
 
     static const std::uint16_t TEXT    = 1043;
     static const std::uint16_t INTEGER = 23;
