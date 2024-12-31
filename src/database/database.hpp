@@ -8,7 +8,6 @@
 #include <jsoncons/basic_json.hpp>
 #include <jsoncons/json.hpp>
 #include <memory>
-#include <mutex>
 #include <optional>
 #include <pqxx/pqxx>
 #include <string>
@@ -43,7 +42,6 @@ class Database
     std::shared_ptr<pqxx::connection> connection;
 
     std::string connection_info;  // Store connection parameters
-    std::mutex  connection_mutex;
 
     static const std::uint16_t TEXT    = 1043;
     static const std::uint16_t INTEGER = 23;

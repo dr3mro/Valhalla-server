@@ -3,6 +3,7 @@
 #include <memory>
 #include <mutex>
 #include <stdexcept>
+#include <string>
 #include <typeindex>
 #include <unordered_map>
 class Store
