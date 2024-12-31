@@ -14,10 +14,11 @@
 #include <unordered_set>
 #include <utility>
 
+#include "database/connectionguard.hpp"
 #include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
 
-Database::Database(std::shared_ptr<pqxx::connection> &&conn) : connection(std::move(conn))
+Database::Database(std::shared_ptr<pqxx::connection> &&conn) : connection(std::move(conn)), connectionGuard(std::make_unique<ConnectionGuard>(connection))
 {
     try
     {
@@ -41,6 +42,7 @@ bool Database::checkExists(const std::string &table, const std::string &column, 
 {
     try
     {
+        connectionGuard->waitForConnection();
         pqxx::nontransaction txn(*connection);
         pqxx::result         result = txn.exec(fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = '{}');", table, column, value));
         return result[0][0].as<bool>();
@@ -54,13 +56,21 @@ bool Database::checkExists(const std::string &table, const std::string &column, 
 
 bool Database::check_connection()
 {
+    waitForConnection();
+
     if (connection == nullptr)
     {
         return false;
     }
     try
     {
+        if (!isConnectionReady.load())
+        {
+            return false;
+        }
+
         pqxx::nontransaction ntxn(*connection);
+
         ntxn.exec("SELECT 1");
     }
     catch (const std::exception &e)
@@ -75,7 +85,12 @@ bool Database::reconnect()
 {
     try
     {
+        isConnectionReady.store(false);
+
         connection = std::make_shared<pqxx::connection>(connection_info);
+
+        isConnectionReady.store(true);
+
         return check_connection();
     }
     catch (const std::exception &e)
@@ -153,6 +168,8 @@ std::optional<jsonType> Database::executeQuery(const std::string &query)
     try
     {
         pqxx::result results;
+
+        waitForConnection();
 
         TransactionType txn(*connection);
 
