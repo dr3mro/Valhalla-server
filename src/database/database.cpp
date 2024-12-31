@@ -1,12 +1,13 @@
 #include "database.hpp"
 
 #include <fmt/core.h>
+#include <trantor/utils/Logger.h>
 
 #include <cstdlib>
 #include <exception>
+#include <jsoncons/basic_json.hpp>
 #include <jsoncons/json.hpp>
 #include <memory>
-#include <mutex>
 #include <optional>
 #include <string>
 #include <type_traits>
@@ -40,9 +41,8 @@ bool Database::checkExists(const std::string &table, const std::string &column, 
 {
     try
     {
-        std::lock_guard<std::mutex> guard(connection_mutex);
-        pqxx::nontransaction        txn(*connection);
-        pqxx::result                result = txn.exec(fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = '{}');", table, column, value));
+        pqxx::nontransaction txn(*connection);
+        pqxx::result         result = txn.exec(fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = '{}');", table, column, value));
         return result[0][0].as<bool>();
     }
     catch (const std::exception &e)
@@ -54,7 +54,6 @@ bool Database::checkExists(const std::string &table, const std::string &column, 
 
 bool Database::check_connection()
 {
-    std::lock_guard<std::mutex> guard(connection_mutex);
     if (connection == nullptr)
     {
         return false;
@@ -76,11 +75,7 @@ bool Database::reconnect()
 {
     try
     {
-        {
-            std::lock_guard<std::mutex> guard(connection_mutex);
-            connection = std::make_shared<pqxx::connection>(connection_info);
-        }
-
+        connection = std::make_shared<pqxx::connection>(connection_info);
         return check_connection();
     }
     catch (const std::exception &e)
@@ -97,11 +92,10 @@ std::optional<std::unordered_set<api::v2::ColumnInfo>> Database::getTableSchema(
         pqxx::result result;
 
         {
-            std::lock_guard<std::mutex> guard(connection_mutex);
-            pqxx::nontransaction        ntxn(*connection);
-            std::string                 query = fmt::format(
+            pqxx::nontransaction ntxn(*connection);
+            std::string          query = fmt::format(
                 "SELECT column_name, data_type, column_default, is_nullable FROM "
-                                "information_schema.columns WHERE table_name = '{}' AND column_name != 'id';",
+                         "information_schema.columns WHERE table_name = '{}' AND column_name != 'id';",
                 tableName);
 
             result = ntxn.exec(query);
@@ -133,11 +127,8 @@ std::optional<std::unordered_set<std::string>> Database::getAllTables()
     {
         pqxx::result result;
 
-        {
-            std::lock_guard<std::mutex> guard(connection_mutex);
-            pqxx::work                  txn(*connection);
-            result = txn.exec("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';");
-        }
+        pqxx::work txn(*connection);
+        result = txn.exec("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';");
 
         std::unordered_set<std::string> tables;
 
@@ -157,20 +148,19 @@ std::optional<std::unordered_set<std::string>> Database::getAllTables()
 template <typename jsonType, typename TransactionType>
 std::optional<jsonType> Database::executeQuery(const std::string &query)
 {
+    static_assert(std::is_same_v<jsonType, jsoncons::json> || std::is_same_v<jsonType, jsoncons::json::array>, "Unsupported jsonType specialization");
+
     try
     {
         pqxx::result results;
 
+        TransactionType txn(*connection);
+
+        results = txn.exec(query);
+
+        if constexpr (std::is_same_v<TransactionType, pqxx::work>)
         {
-            std::lock_guard<std::mutex> guard(connection_mutex);
-            TransactionType             txn(*connection);
-
-            results = txn.exec(query);
-
-            if constexpr (std::is_same_v<TransactionType, pqxx::work>)
-            {
-                txn.commit();
-            }
+            txn.commit();
         }
 
         jsonType       reply;
@@ -245,11 +235,10 @@ std::optional<T> Database::doSimpleQuery(const std::string &query)
     {
         pqxx::result result;
 
-        {
-            std::lock_guard<std::mutex> guard(connection_mutex);
-            pqxx::nontransaction        txn(*connection);
-            result = txn.exec(query);
-        }
+        pqxx::nontransaction txn(*connection);
+
+        result = txn.exec(query);
+
         return result.empty() ? std::nullopt : result[0][0].as<std::optional<T>>();
     }
     catch (const std::exception &e)
