@@ -3,7 +3,6 @@
 #include <fmt/core.h>
 #include <trantor/utils/Logger.h>
 
-#include <chrono>
 #include <cstdlib>
 #include <exception>
 #include <jsoncons/basic_json.hpp>
@@ -11,7 +10,6 @@
 #include <memory>
 #include <optional>
 #include <string>
-#include <thread>
 #include <type_traits>
 #include <unordered_set>
 #include <utility>
@@ -44,9 +42,12 @@ bool Database::checkExists(const std::string &table, const std::string &column, 
 {
     try
     {
-        IUGUARD
-        pqxx::nontransaction txn(*connection);
-        pqxx::result         result = txn.exec(fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = '{}');", table, column, value));
+        pqxx::result result;
+        {
+            IUGUARD
+            pqxx::nontransaction txn(*connection);
+            result = txn.exec(fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = '{}');", table, column, value));
+        }
         return result[0][0].as<bool>();
     }
     catch (const std::exception &e)
