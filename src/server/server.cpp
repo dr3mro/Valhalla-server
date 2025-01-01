@@ -12,6 +12,7 @@
 
 #include <cstdlib>
 #include <exception>
+#include <iostream>
 #include <memory>
 #include <string>
 #include <utility>
@@ -112,4 +113,5 @@ void Server::print_banner()
     Banner::print(" - Threads", config_.threads, fmt::color::light_green, fmt::color::yellow);
     Banner::print(" - Database", fmt::format("{} {}", db_config_.max_conn, "connections"), fmt::color::light_green, fmt::color::yellow);
     Banner::print_line();
+    std::flush(std::cout);
 }
