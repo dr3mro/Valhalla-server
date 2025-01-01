@@ -14,6 +14,7 @@ class DatabaseHanndler
     virtual ~DatabaseHanndler();
 
     std::shared_ptr<Database> get_connection();
+    void                      reconnect_all();
 
    private:
     std::shared_ptr<DatabaseConnectionPool> databaseConnectionPool;
