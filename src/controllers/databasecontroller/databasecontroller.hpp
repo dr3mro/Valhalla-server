@@ -1,4 +1,7 @@
 #pragma once
+#include <fmt/core.h>
+#include <fmt/format.h>
+
 #include <cstdint>
 #include <exception>
 #include <jsoncons/basic_json.hpp>
@@ -45,32 +48,38 @@ class DatabaseController
     template <typename Result, typename Func, typename... Args>
     std::optional<Result> executer(const Func &func, Args &&...args)
     {
+        std::optional<Result>     results;
+        std::shared_ptr<Database> db_ptr;
+
         try
         {
-            std::shared_ptr<Database> db_ptr = databaseConnectionPool->get_connection();
+            db_ptr = databaseConnectionPool->get_connection();
 
             if (db_ptr == nullptr)
             {
                 return std::nullopt;
             }
 
-            std::optional<Result> results = std::invoke(func, db_ptr.get(), std::forward<Args>(args)...);
-
-            databaseConnectionPool->return_connection(std::move(db_ptr));
-
-            if (results.has_value())
-            {
-                return results;
-            }
+            results = std::invoke(func, db_ptr.get(), std::forward<Args>(args)...);
         }
         catch (const std::exception &e)
         {
-            Message::ErrorMessage("Exception occurred during query execution.");
-            Message::CriticalMessage(e.what());
+            Message::CriticalMessage(fmt::format("Exception occurred during query execution.", e.what()));
+            databaseConnectionPool->return_connection(std::move(db_ptr));
+            return std::nullopt;
         }
         catch (...)
         {
             Message::CriticalMessage("Unknown exception occurred during query execution.");
+            databaseConnectionPool->return_connection(std::move(db_ptr));
+            return std::nullopt;
+        }
+
+        databaseConnectionPool->return_connection(std::move(db_ptr));
+
+        if (results.has_value())
+        {
+            return results;
         }
         return std::nullopt;
     }
