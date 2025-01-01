@@ -16,7 +16,7 @@
 
 #include "utils/global/types.hpp"
 
-#define CONNECTION_GUARD ConnectionGuard connection_guard(connection, isConnectionReady, isConnectionInUse);
+#define IUGUARD InUseGuard connection_guard(isConnectionInUse);
 
 class Database
 {
@@ -45,7 +45,6 @@ class Database
     std::shared_ptr<pqxx::connection> connection;
     std::string                       connection_info;  // Store connection parameters
 
-    std::atomic<bool> isConnectionReady;
     std::atomic<bool> isConnectionInUse;
 
     static const std::uint16_t TEXT    = 1043;

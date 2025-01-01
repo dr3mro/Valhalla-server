@@ -3,6 +3,7 @@
 #include <fmt/core.h>
 #include <trantor/utils/Logger.h>
 
+#include <chrono>
 #include <cstdlib>
 #include <exception>
 #include <jsoncons/basic_json.hpp>
@@ -10,15 +11,16 @@
 #include <memory>
 #include <optional>
 #include <string>
+#include <thread>
 #include <type_traits>
 #include <unordered_set>
 #include <utility>
 
-#include "database/connectionguard.hpp"  // IWYU pragma: keep
+#include "database/inuseguard.hpp"  // IWYU pragma: keep
 #include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
 
-Database::Database(std::shared_ptr<pqxx::connection> &&conn) : connection(std::move(conn)), isConnectionReady(connection->is_open())
+Database::Database(std::shared_ptr<pqxx::connection> &&conn) : connection(std::move(conn))
 {
     try
     {
@@ -42,7 +44,7 @@ bool Database::checkExists(const std::string &table, const std::string &column, 
 {
     try
     {
-        CONNECTION_GUARD
+        IUGUARD
         pqxx::nontransaction txn(*connection);
         pqxx::result         result = txn.exec(fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = '{}');", table, column, value));
         return result[0][0].as<bool>();
@@ -62,6 +64,7 @@ bool Database::check_connection()
     }
     try
     {
+        IUGUARD
         pqxx::nontransaction ntxn(*connection);
         ntxn.exec("SELECT 1");
     }
@@ -76,10 +79,11 @@ bool Database::reconnect()
 {
     try
     {
-        isConnectionReady.store(false);
-        connection = std::make_shared<pqxx::connection>(connection_info);
-        isConnectionReady.store(check_connection());
-        return isConnectionReady.load();
+        {
+            IUGUARD
+            connection = std::make_shared<pqxx::connection>(connection_info);
+        }
+        return check_connection();
     }
     catch (const std::exception &e)
     {
@@ -94,13 +98,16 @@ std::optional<std::unordered_set<api::v2::ColumnInfo>> Database::getTableSchema(
     {
         pqxx::result result;
 
-        pqxx::nontransaction ntxn(*connection);
-        std::string          query = fmt::format(
-            "SELECT column_name, data_type, column_default, is_nullable FROM "
-                     "information_schema.columns WHERE table_name = '{}' AND column_name != 'id';",
-            tableName);
+        {
+            IUGUARD
+            pqxx::nontransaction ntxn(*connection);
+            std::string          query = fmt::format(
+                "SELECT column_name, data_type, column_default, is_nullable FROM "
+                         "information_schema.columns WHERE table_name = '{}' AND column_name != 'id';",
+                tableName);
 
-        result = ntxn.exec(query);
+            result = ntxn.exec(query);
+        }
 
         std::unordered_set<api::v2::ColumnInfo> schema;
 
@@ -128,8 +135,11 @@ std::optional<std::unordered_set<std::string>> Database::getAllTables()
     {
         pqxx::result result;
 
-        pqxx::work txn(*connection);
-        result = txn.exec("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';");
+        {
+            IUGUARD
+            pqxx::work txn(*connection);
+            result = txn.exec("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';");
+        }
 
         std::unordered_set<std::string> tables;
 
@@ -156,7 +166,7 @@ std::optional<jsonType> Database::executeQuery(const std::string &query)
         pqxx::result results;
 
         {
-            CONNECTION_GUARD
+            IUGUARD
 
             TransactionType txn(*connection);
 
@@ -241,7 +251,7 @@ std::optional<T> Database::doSimpleQuery(const std::string &query)
         pqxx::result result;
 
         {
-            CONNECTION_GUARD
+            IUGUARD
 
             pqxx::nontransaction txn(*connection);
 
