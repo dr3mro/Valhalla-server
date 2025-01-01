@@ -24,9 +24,9 @@ class DatabaseConnectionPool
 
     virtual ~DatabaseConnectionPool() = default;
 
-    std::shared_ptr<Database> get_connection();
-    void                      return_connection(std::shared_ptr<Database> &&db_ptr);
-    void                      reconnect_all();
+    [[nodiscard]] std::shared_ptr<Database> get_connection();
+    void                                    return_connection(std::shared_ptr<Database> &&db_ptr);
+    void                                    reconnect_all();
 
    private:
     std::shared_ptr<Database>             createDatabaseConnection(const auto &config_);

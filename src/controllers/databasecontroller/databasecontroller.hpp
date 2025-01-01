@@ -12,6 +12,7 @@
 #include <unordered_set>
 #include <utility>
 
+#include "database/connectionhandler.hpp"
 #include "database/databaseconnectionpool.hpp"
 #include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
@@ -48,34 +49,28 @@ class DatabaseController
     template <typename Result, typename Func, typename... Args>
     std::optional<Result> executer(const Func &func, Args &&...args)
     {
-        std::optional<Result>     results;
-        std::shared_ptr<Database> db_ptr;
+        std::optional<Result> results;
+        ConnectionHanndler    con_handler(databaseConnectionPool);
 
         try
         {
-            db_ptr = databaseConnectionPool->get_connection();
-
-            if (db_ptr == nullptr)
+            if (con_handler.get_connection() == nullptr)
             {
                 return std::nullopt;
             }
 
-            results = std::invoke(func, db_ptr.get(), std::forward<Args>(args)...);
+            results = std::invoke(func, con_handler.get_connection(), std::forward<Args>(args)...);
         }
         catch (const std::exception &e)
         {
             Message::CriticalMessage(fmt::format("Exception occurred during query execution.", e.what()));
-            databaseConnectionPool->return_connection(std::move(db_ptr));
             return std::nullopt;
         }
         catch (...)
         {
             Message::CriticalMessage("Unknown exception occurred during query execution.");
-            databaseConnectionPool->return_connection(std::move(db_ptr));
             return std::nullopt;
         }
-
-        databaseConnectionPool->return_connection(std::move(db_ptr));
 
         if (results.has_value())
         {
