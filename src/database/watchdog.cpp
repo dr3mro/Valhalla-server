@@ -7,10 +7,10 @@
 #include <memory>
 #include <stdexcept>
 #include <thread>
-#include <utility>
 
-#include "database/database.hpp"
+#include "database/database.hpp"  //IWYU pragma: keep
 #include "database/databaseconnectionpool.hpp"
+#include "database/databasehandler.hpp"
 #include "store/store.hpp"
 #include "utils/message/message.hpp"
 
@@ -29,24 +29,26 @@ WatchDog::WatchDog() : databaseConnectionPool(Store::getObject<DatabaseConnectio
             {
                 try
                 {
-                    std::shared_ptr<Database> db_ptr = databaseConnectionPool->get_connection();
+                    std::unique_ptr<DatabaseHanndler> connectionHanndler = std::make_unique<DatabaseHanndler>();
 
-                    if (db_ptr == nullptr)
+                    if (connectionHanndler->get_connection() == nullptr)
                     {
                         Message::WarningMessage("WatchDog could not acquire a database connection within timeout.");
                         std::this_thread::sleep_for(check_interval);
                         continue;
                     }
 
-                    if (!db_ptr->check_connection())
+                    if (!connectionHanndler->get_connection()->check_connection())
                     {
                         Message::WarningMessage("Database connection lost. Attempting to reconnect...");
-                        Message::CriticalMessage(fmt::format("Database connection {} link is lost.", static_cast<const void *>(db_ptr.get())));
+                        Message::CriticalMessage(
+                            fmt::format("Database connection {} link is lost.", static_cast<const void *>(connectionHanndler->get_connection().get())));
                         try
                         {
-                            if (db_ptr->reconnect())
+                            if (connectionHanndler->get_connection()->reconnect())
                             {
-                                Message::InfoMessage(fmt::format("Database connection id: {} link is re-established", static_cast<void *>(db_ptr.get())));
+                                Message::InfoMessage(fmt::format(
+                                    "Database connection id: {} link is re-established", static_cast<void *>(connectionHanndler->get_connection().get())));
                                 databaseConnectionPool->reconnect_all();
                             }
                             else
@@ -60,7 +62,6 @@ WatchDog::WatchDog() : databaseConnectionPool(Store::getObject<DatabaseConnectio
                         }
                     }
 
-                    databaseConnectionPool->return_connection(std::move(db_ptr));
                     std::this_thread::sleep_for(check_interval);
                 }
                 catch (const std::exception &e)
