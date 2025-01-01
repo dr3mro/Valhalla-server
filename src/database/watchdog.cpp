@@ -8,13 +8,11 @@
 #include <stdexcept>
 #include <thread>
 
-#include "database/database.hpp"  //IWYU pragma: keep
-#include "database/databaseconnectionpool.hpp"
+#include "database/database.hpp"
 #include "database/databasehandler.hpp"
-#include "store/store.hpp"
 #include "utils/message/message.hpp"
 
-WatchDog::WatchDog() : databaseConnectionPool(Store::getObject<DatabaseConnectionPool>())
+WatchDog::WatchDog()
 {
     if (monitor_thread.joinable())
     {
@@ -29,27 +27,26 @@ WatchDog::WatchDog() : databaseConnectionPool(Store::getObject<DatabaseConnectio
             {
                 try
                 {
-                    std::unique_ptr<DatabaseHanndler> connectionHanndler = std::make_unique<DatabaseHanndler>();
+                    std::unique_ptr<DatabaseHanndler> dbHandler = std::make_unique<DatabaseHanndler>();
+                    std::shared_ptr<Database>         db_ptr    = dbHandler->get_connection();
 
-                    if (connectionHanndler->get_connection() == nullptr)
+                    if (db_ptr == nullptr)
                     {
                         Message::WarningMessage("WatchDog could not acquire a database connection within timeout.");
                         std::this_thread::sleep_for(check_interval);
                         continue;
                     }
 
-                    if (!connectionHanndler->get_connection()->check_connection())
+                    if (!db_ptr->check_connection())
                     {
                         Message::WarningMessage("Database connection lost. Attempting to reconnect...");
-                        Message::CriticalMessage(
-                            fmt::format("Database connection {} link is lost.", static_cast<const void *>(connectionHanndler->get_connection().get())));
+                        Message::CriticalMessage(fmt::format("Database connection {} link is lost.", static_cast<const void *>(db_ptr.get())));
                         try
                         {
-                            if (connectionHanndler->get_connection()->reconnect())
+                            if (db_ptr->reconnect())
                             {
-                                Message::InfoMessage(fmt::format(
-                                    "Database connection id: {} link is re-established", static_cast<void *>(connectionHanndler->get_connection().get())));
-                                databaseConnectionPool->reconnect_all();
+                                Message::InfoMessage(fmt::format("Database connection id: {} link is re-established", static_cast<void *>(db_ptr.get())));
+                                dbHandler->reconnect_all();
                             }
                             else
                             {

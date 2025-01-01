@@ -12,13 +12,14 @@
 #include <unordered_set>
 #include <utility>
 
-#include "database/databaseconnectionpool.hpp"
 #include "database/databasehandler.hpp"
 #include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
 class Case;
 class Service;
 class Appointment;
+
+class Database;
 class WatchDog;
 
 class DatabaseController
@@ -43,22 +44,22 @@ class DatabaseController
     std::optional<jsoncons::json>                          getPermissions(const std::string &query);
 
    private:
-    std::shared_ptr<DatabaseConnectionPool> databaseConnectionPool;
-    std::shared_ptr<WatchDog>               watchDog;
+    std::shared_ptr<WatchDog> watchDog;
 
     template <typename Result, typename Func, typename... Args>
     std::optional<Result> executer(const Func &func, Args &&...args)
     {
         try
         {
-            std::unique_ptr<DatabaseHanndler> connectionHanndler = std::make_unique<DatabaseHanndler>();
+            std::unique_ptr<DatabaseHanndler> dbHandler = std::make_unique<DatabaseHanndler>();
+            std::shared_ptr<Database>         db_ptr    = dbHandler->get_connection();
 
-            if (connectionHanndler->get_connection() == nullptr)
+            if (db_ptr == nullptr)
             {
                 return std::nullopt;
             }
 
-            std::optional<Result> results = std::invoke(func, connectionHanndler->get_connection().get(), std::forward<Args>(args)...);
+            std::optional<Result> results = std::invoke(func, db_ptr.get(), std::forward<Args>(args)...);
 
             if (results.has_value())
             {

@@ -17,3 +17,5 @@ DatabaseHanndler::~DatabaseHanndler()
 }
 
 std::shared_ptr<Database> DatabaseHanndler::get_connection() { return db_ptr; }
+
+void DatabaseHanndler::reconnect_all() { databaseConnectionPool->reconnect_all(); }
