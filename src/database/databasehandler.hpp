@@ -2,7 +2,9 @@
 
 #include <memory>
 
-#include "database/databaseconnectionpool.hpp"
+class DatabaseConnectionPool;
+class Database;
+
 class DatabaseHanndler
 {
    public:

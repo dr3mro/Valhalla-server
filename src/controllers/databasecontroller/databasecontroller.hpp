@@ -18,10 +18,8 @@
 class Case;
 class Service;
 class Appointment;
-
 class Database;
 class WatchDog;
-
 class DatabaseController
 {
    public:
@@ -44,7 +42,8 @@ class DatabaseController
     std::optional<jsoncons::json>                          getPermissions(const std::string &query);
 
    private:
-    std::shared_ptr<WatchDog> watchDog;
+    std::shared_ptr<DatabaseConnectionPool> databaseConnectionPool_;
+    std::shared_ptr<WatchDog>               watchDog_;
 
     template <typename Result, typename Func, typename... Args>
     std::optional<Result> executer(const Func &func, Args &&...args)
