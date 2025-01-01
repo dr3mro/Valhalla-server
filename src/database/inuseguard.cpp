@@ -10,14 +10,14 @@ InUseGuard::InUseGuard(std::atomic<bool>& in_use, std::mutex& mtx, std::conditio
 
     conditionVar_.wait(lock, [this] { return !isConnectionInUse_.load(); });
 
-    isConnectionInUse_.store(true, std::memory_order_relaxed);
+    isConnectionInUse_.store(true);
 }
 
 InUseGuard::~InUseGuard()
 {
     {
         std::lock_guard<std::mutex> lock(mutex_);
-        isConnectionInUse_.store(false, std::memory_order_relaxed);
+        isConnectionInUse_.store(false);
     }
     conditionVar_.notify_all();
 }
