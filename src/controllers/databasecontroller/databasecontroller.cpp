@@ -9,12 +9,12 @@
 #include <unordered_set>
 
 #include "database/database.hpp"
+#include "database/databaseconnectionpool.hpp"
 #include "database/watchdog.hpp"
 #include "store/store.hpp"
 #include "utils/global/types.hpp"
 
-DatabaseController::DatabaseController() : watchDog(Store::getObject<WatchDog>()) {}
-
+DatabaseController::DatabaseController() : databaseConnectionPool_(Store::getObject<DatabaseConnectionPool>()), watchDog_(Store::getObject<WatchDog>()) {}
 std::optional<jsoncons::json> DatabaseController::executeQuery(const std::string &query)
 {
     return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::work>, query);
