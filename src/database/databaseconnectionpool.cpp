@@ -65,7 +65,7 @@ DatabaseConnectionPool::DatabaseConnectionPool() : configurator_(Store::getObjec
                     auto conn = future.get();
                     if (conn != nullptr)
                     {
-                        databaseConnections.push(conn);
+                        databaseConnections.push_back(conn);
                         Message::InitMessage(fmt::format("Connection {}/{} created successfully.", i + 1, config.max_conn));
                         connectionEstablished = true;
                         break;
@@ -86,7 +86,7 @@ DatabaseConnectionPool::DatabaseConnectionPool() : configurator_(Store::getObjec
             {
                 while (!databaseConnections.empty())
                 {
-                    databaseConnections.pop();
+                    databaseConnections.pop_front();
                 }
 
                 Message::ErrorMessage(fmt::format("Failed to establish connection {} after {} attempts.", i + 1, MAX_RETRIES));
@@ -114,7 +114,7 @@ std::shared_ptr<Database> DatabaseConnectionPool::get_connection()
 
     std::shared_ptr<Database> db_ptr = std::move(databaseConnections.front());
 
-    databaseConnections.pop();
+    databaseConnections.pop_front();
 
     return db_ptr;
 }
@@ -124,7 +124,33 @@ void DatabaseConnectionPool::return_connection(std::shared_ptr<Database>&& db_pt
     if (db_ptr != nullptr)
     {
         std::lock_guard<std::mutex> lock(mutex);
-        databaseConnections.push(std::move(db_ptr));
+        databaseConnections.push_back(std::move(db_ptr));
         cv.notify_one();
+    }
+}
+
+void DatabaseConnectionPool::reconnect_all()
+{
+    std::lock_guard<std::mutex> lock(mutex);
+    auto                        connection = databaseConnections.begin();
+    while (connection != databaseConnections.end())
+    {
+        try
+        {
+            if ((*connection)->reconnect())
+            {
+                Message::InfoMessage(fmt::format("Database connection id: {} link is re-established", static_cast<void*>(connection->get())));
+            }
+            else
+            {
+                Message::ErrorMessage(fmt::format("Failed to reconnect to database {}", static_cast<void*>(connection->get())));
+            }
+        }
+        catch (const std::exception& e)
+        {
+            Message::CriticalMessage(fmt::format("Reconnect exception: {}", e.what()));
+        }
+
+        connection++;
     }
 }

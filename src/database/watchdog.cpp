@@ -47,7 +47,7 @@ WatchDog::WatchDog() : databaseConnectionPool(Store::getObject<DatabaseConnectio
                             if (db_ptr->reconnect())
                             {
                                 Message::InfoMessage(fmt::format("Database connection id: {} link is re-established", static_cast<void *>(db_ptr.get())));
-                                reconnect_all();
+                                databaseConnectionPool->reconnect_all();
                             }
                             else
                             {
@@ -79,21 +79,4 @@ WatchDog::~WatchDog()
     {
         monitor_thread.join();
     }
-}
-
-void WatchDog::reconnect_all()
-{
-    auto db_ptr = databaseConnectionPool->get_connection();
-
-    while (!db_ptr->check_connection())
-    {
-        if (db_ptr->reconnect())
-        {
-            Message::InfoMessage(fmt::format("Database connection id: {} link is re-established", static_cast<void *>(db_ptr.get())));
-        }
-        databaseConnectionPool->return_connection(std::move(db_ptr));
-        db_ptr = databaseConnectionPool->get_connection();
-    };
-
-    databaseConnectionPool->return_connection(std::move(db_ptr));
 }
