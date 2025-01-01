@@ -2,9 +2,9 @@
 
 #include <condition_variable>
 #include <cstdint>
+#include <deque>
 #include <memory>
 #include <mutex>
-#include <queue>
 
 class Database;
 class Configurator;
@@ -26,10 +26,11 @@ class DatabaseConnectionPool
 
     std::shared_ptr<Database> get_connection();
     void                      return_connection(std::shared_ptr<Database> &&db_ptr);
+    void                      reconnect_all();
 
    private:
     std::shared_ptr<Database>             createDatabaseConnection(const auto &config_);
-    std::queue<std::shared_ptr<Database>> databaseConnections;
+    std::deque<std::shared_ptr<Database>> databaseConnections;
     std::mutex                            mutex;
     std::condition_variable               cv;
     static constexpr std::uint16_t        TIMEOUT     = 2;

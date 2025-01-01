@@ -20,8 +20,6 @@ class WatchDog
     virtual ~WatchDog();
 
    private:
-    void reconnect_all();
-
     std::atomic<bool>                       should_monitor{true};
     std::shared_ptr<DatabaseConnectionPool> databaseConnectionPool;
     std::chrono::seconds                    check_interval{1};
