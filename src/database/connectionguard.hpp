@@ -19,7 +19,7 @@ class ConnectionGuard
 
    private:
     std::shared_ptr<pqxx::connection> connection;
-    static constexpr std::uint64_t    CONNECTION_READY_TIMEOUT = 50;
+    static constexpr std::uint64_t    CONNECTION_READY_TIMEOUT = 1;
 
     std::atomic<bool> &isConnectionInUse;
 };

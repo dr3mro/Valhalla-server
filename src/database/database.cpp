@@ -94,16 +94,13 @@ std::optional<std::unordered_set<api::v2::ColumnInfo>> Database::getTableSchema(
     {
         pqxx::result result;
 
-        {
-            CONNECTION_GUARD
-            pqxx::nontransaction ntxn(*connection);
-            std::string          query = fmt::format(
-                "SELECT column_name, data_type, column_default, is_nullable FROM "
-                         "information_schema.columns WHERE table_name = '{}' AND column_name != 'id';",
-                tableName);
+        pqxx::nontransaction ntxn(*connection);
+        std::string          query = fmt::format(
+            "SELECT column_name, data_type, column_default, is_nullable FROM "
+                     "information_schema.columns WHERE table_name = '{}' AND column_name != 'id';",
+            tableName);
 
-            result = ntxn.exec(query);
-        }
+        result = ntxn.exec(query);
 
         std::unordered_set<api::v2::ColumnInfo> schema;
 
@@ -131,11 +128,8 @@ std::optional<std::unordered_set<std::string>> Database::getAllTables()
     {
         pqxx::result result;
 
-        {
-            CONNECTION_GUARD
-            pqxx::work txn(*connection);
-            result = txn.exec("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';");
-        }
+        pqxx::work txn(*connection);
+        result = txn.exec("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';");
 
         std::unordered_set<std::string> tables;
 

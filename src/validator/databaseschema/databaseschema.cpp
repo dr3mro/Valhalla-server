@@ -18,7 +18,7 @@ DatabaseSchema::DatabaseSchema()
     auto dbctl  = Store::getObject<DatabaseController>();
     auto tables = dbctl->getAllTables();
 
-    if (!tables.has_value() || tables.value().empty())
+    if (!tables.has_value() || tables->empty())
     {
         throw std::runtime_error("No tables found in database.\n");
         Message::ErrorMessage("Exiting...");
