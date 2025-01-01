@@ -14,7 +14,7 @@ class InUseGuard
     ~InUseGuard();
 
    private:
-    std::atomic<bool>&       isConnectionInUse_;
-    std::mutex&              mutex_;
-    std::condition_variable& conditionVar_;
+    std::atomic<bool>&       isConnectionInUse_; /*NOLINT*/
+    std::mutex&              mutex_;             /*NOLINT*/
+    std::condition_variable& conditionVar_;      /*NOLINT*/
 };
