@@ -1,16 +1,23 @@
 #include "database/inuseguard.hpp"
 
 #include <atomic>
-#include <chrono>
-#include <thread>
+#include <condition_variable>
+#include <mutex>
 
-InUseGuard::InUseGuard(std::atomic<bool>& in_use) : isConnectionInUse(in_use)
+InUseGuard::InUseGuard(std::atomic<bool>& in_use, std::mutex& mtx, std::condition_variable& _cv) : isConnectionInUse_(in_use), mutex_(mtx), conditionVar_(_cv)
 {
-    while (isConnectionInUse.load())
-    {
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
-    }
-    isConnectionInUse.store(true);
+    std::unique_lock<std::mutex> lock(mutex_);
+
+    conditionVar_.wait(lock, [this] { return !isConnectionInUse_.load(); });
+
+    isConnectionInUse_.store(true, std::memory_order_relaxed);
 }
 
-InUseGuard::~InUseGuard() { isConnectionInUse.store(false); }
+InUseGuard::~InUseGuard()
+{
+    {
+        std::lock_guard<std::mutex> lock(mutex_);
+        isConnectionInUse_.store(false, std::memory_order_relaxed);
+    }
+    conditionVar_.notify_all();
+}
