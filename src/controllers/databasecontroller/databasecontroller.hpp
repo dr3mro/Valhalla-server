@@ -12,8 +12,8 @@
 #include <unordered_set>
 #include <utility>
 
-#include "database/connectionhandler.hpp"
 #include "database/databaseconnectionpool.hpp"
+#include "database/databasehandler.hpp"
 #include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
 class Case;
@@ -49,17 +49,23 @@ class DatabaseController
     template <typename Result, typename Func, typename... Args>
     std::optional<Result> executer(const Func &func, Args &&...args)
     {
-        std::optional<Result> results;
-        ConnectionHanndler    con_handler(databaseConnectionPool);
-
         try
         {
-            if (con_handler.get_connection() == nullptr)
+            std::unique_ptr<DatabaseHanndler> connectionHanndler = std::make_unique<DatabaseHanndler>();
+
+            if (connectionHanndler->get_connection() == nullptr)
             {
                 return std::nullopt;
             }
 
-            results = std::invoke(func, con_handler.get_connection(), std::forward<Args>(args)...);
+            std::optional<Result> results = std::invoke(func, connectionHanndler->get_connection().get(), std::forward<Args>(args)...);
+
+            if (results.has_value())
+            {
+                return results;
+            }
+
+            return std::nullopt;
         }
         catch (const std::exception &e)
         {
@@ -71,11 +77,5 @@ class DatabaseController
             Message::CriticalMessage("Unknown exception occurred during query execution.");
             return std::nullopt;
         }
-
-        if (results.has_value())
-        {
-            return results;
-        }
-        return std::nullopt;
     }
 };
