@@ -32,7 +32,7 @@ bool KeeprBase::getLastLogoutTimeIfActive(std::optional<Types::ClientLoginData>&
         auto results = databaseController->executeReadQuery(query);
         if (results.has_value())
         {
-            if (!results.value().empty())
+            if (!results->empty())
             {
                 clientLoginData->is_active      = results.value().at("active").as_bool();
                 clientLoginData->lastLogoutTime = results.value().at("last_logout").as_string();
