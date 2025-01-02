@@ -26,9 +26,8 @@ std::shared_ptr<Database> DatabaseConnectionPool::createDatabaseConnection(const
 {
     try
     {
-        auto command = fmt::format("host={} dbname={} user={} password={} connect_timeout={}", config.host, config.name, config.user, config.pass, TIMEOUT);
-
-        auto conn = std::make_shared<pqxx::connection>(command.c_str());
+        auto conn = std::make_shared<pqxx::connection>(
+            fmt::format("host={} dbname={} user={} password={} connect_timeout={}", config.host, config.name, config.user, config.pass, TIMEOUT).c_str());
 
         if (conn->is_open())
         {
@@ -65,7 +64,7 @@ DatabaseConnectionPool::DatabaseConnectionPool() : configurator_(Store::getObjec
                     auto conn = future.get();
                     if (conn != nullptr)
                     {
-                        databaseConnections.push_back(conn);
+                        databaseConnections_.push_back(conn);
                         Message::InitMessage(fmt::format("Connection {}/{} created successfully.", i + 1, config.max_conn));
                         connectionEstablished = true;
                         break;
@@ -84,9 +83,9 @@ DatabaseConnectionPool::DatabaseConnectionPool() : configurator_(Store::getObjec
 
             if (!connectionEstablished)
             {
-                while (!databaseConnections.empty())
+                while (!databaseConnections_.empty())
                 {
-                    databaseConnections.pop_front();
+                    databaseConnections_.pop_front();
                 }
 
                 Message::ErrorMessage(fmt::format("Failed to establish connection {} after {} attempts.", i + 1, MAX_RETRIES));
@@ -104,17 +103,17 @@ DatabaseConnectionPool::DatabaseConnectionPool() : configurator_(Store::getObjec
 
 std::shared_ptr<Database> DatabaseConnectionPool::get_connection()
 {
-    std::unique_lock<std::mutex> lock(mutex);
+    std::unique_lock<std::mutex> lock(mutex_);
 
-    if (!cv.wait_for(lock, std::chrono::seconds(1), [this] { return !databaseConnections.empty(); }))
+    if (!cv_.wait_for(lock, std::chrono::seconds(1), [this] { return !databaseConnections_.empty(); }))
     {
         Message::CriticalMessage("Timeout while waiting for a connection");
         return nullptr;
     }
 
-    std::shared_ptr<Database> db_ptr = std::move(databaseConnections.front());
+    std::shared_ptr<Database> db_ptr = std::move(databaseConnections_.front());
 
-    databaseConnections.pop_front();
+    databaseConnections_.pop_front();
 
     return db_ptr;
 }
@@ -123,17 +122,17 @@ void DatabaseConnectionPool::return_connection(std::shared_ptr<Database>&& db_pt
 {
     if (db_ptr != nullptr)
     {
-        std::lock_guard<std::mutex> lock(mutex);
-        databaseConnections.push_back(std::move(db_ptr));
-        cv.notify_one();
+        std::lock_guard<std::mutex> lock(mutex_);
+        databaseConnections_.push_back(std::move(db_ptr));
+        cv_.notify_one();
     }
 }
 
 void DatabaseConnectionPool::reconnect_all()
 {
-    std::lock_guard<std::mutex> lock(mutex);
-    auto                        connection = databaseConnections.begin();
-    while (connection != databaseConnections.end())
+    std::lock_guard<std::mutex> lock(mutex_);
+    auto                        connection = databaseConnections_.begin();
+    while (connection != databaseConnections_.end())
     {
         try
         {
