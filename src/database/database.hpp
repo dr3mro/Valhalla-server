@@ -43,8 +43,6 @@ class Database
     std::optional<std::unordered_set<api::v2::ColumnInfo>> getTableSchema(const std::string &tableName);
     std::optional<std::unordered_set<std::string>>         getAllTables();
 
-    static bool isSafeQuery(const std::string &query);
-
    private:
     std::shared_ptr<pqxx::connection> connection;
     std::string                       connection_info;  // Store connection parameters

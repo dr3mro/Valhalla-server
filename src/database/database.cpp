@@ -9,13 +9,13 @@
 #include <jsoncons/json.hpp>
 #include <memory>
 #include <optional>
-#include <regex>
 #include <string>
 #include <type_traits>
 #include <unordered_set>
 #include <utility>
 
 #include "database/inuseguard.hpp"  // IWYU pragma: keep
+#include "database/sqlinjectiondetector.hpp"
 #include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
 
@@ -50,7 +50,7 @@ bool Database::checkExists(const std::string &table, const std::string &column, 
             pqxx::nontransaction txn(*connection);
             std::string          query = fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = '{}');", table, column, value);
 
-            if (isSafeQuery(query))
+            if (SqlInjectionDetector::isSafeQuery(query))
             {
                 result = txn.exec(query);
             }
@@ -168,17 +168,6 @@ std::optional<std::unordered_set<std::string>> Database::getAllTables()
     }
 }
 
-bool Database::isSafeQuery(const std::string &query)
-{
-    // List of SQL injection patterns to check
-    static const std::regex sqlInjectionPatterns(
-        R"((\b(UNION|SELECT|INSERT|DELETE|UPDATE|DROP|ALTER|CREATE|REPLACE)\b\s+(.*;|--|\/\*|#))|(--|;|\/\*|#\s+)|(\bOR\s+1=1\b)|(\bAND\s+1=1\b)|(\bOR\s+'.*'\s*=\s*'.*'\b))",
-        std::regex::icase);
-
-    // Check if the query matches any known SQL injection patterns
-    return !std::regex_search(query, sqlInjectionPatterns);
-}
-
 template <typename jsonType, typename TransactionType>
 std::optional<jsonType> Database::executeQuery(const std::string &query)
 {
@@ -193,7 +182,7 @@ std::optional<jsonType> Database::executeQuery(const std::string &query)
 
             TransactionType txn(*connection);
 
-            if (isSafeQuery(query))
+            if (SqlInjectionDetector::isSafeQuery(query))
             {
                 results = txn.exec(query);
             }
@@ -285,7 +274,7 @@ std::optional<T> Database::doSimpleQuery(const std::string &query)
 
             pqxx::nontransaction txn(*connection);
 
-            if (isSafeQuery(query))
+            if (SqlInjectionDetector::isSafeQuery(query))
             {
                 result = txn.exec(query);
             }
