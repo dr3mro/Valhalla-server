@@ -24,6 +24,7 @@ class Message
     static std::string get_color(trantor::Logger::LogLevel level);
 
    private:
-    static void MessageImpl(const std::string& status_message, trantor::Logger::LogLevel level);
-    static void MessageImpl(const std::string& status_messageconst, const std::string& type);
+    static void        MessageImpl(const std::string& _status_message, trantor::Logger::LogLevel _level);
+    static void        MessageImpl(const std::string& _status_message, const std::string& _type);
+    static std::string removeNewLine(const std::string& _str);
 };
