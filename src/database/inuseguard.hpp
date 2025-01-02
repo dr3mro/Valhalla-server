@@ -5,13 +5,13 @@
 class InUseGuard
 {
    public:
+    explicit InUseGuard(std::atomic<bool>& in_use, std::mutex& mtx, std::condition_variable& _cv);
+    InUseGuard()                             = delete;
     InUseGuard(const InUseGuard&)            = default;
     InUseGuard(InUseGuard&&)                 = delete;
     InUseGuard& operator=(const InUseGuard&) = delete;
     InUseGuard& operator=(InUseGuard&&)      = delete;
-    InUseGuard(std::atomic<bool>& in_use, std::mutex& mtx, std::condition_variable& _cv);
-
-    ~InUseGuard();
+    virtual ~InUseGuard();
 
    private:
     std::atomic<bool>&       isConnectionInUse_; /*NOLINT*/

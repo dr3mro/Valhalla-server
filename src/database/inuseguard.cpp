@@ -1,6 +1,7 @@
 #include "database/inuseguard.hpp"
 
 #include <atomic>
+#include <chrono>
 #include <condition_variable>
 #include <mutex>
 
@@ -8,7 +9,7 @@ InUseGuard::InUseGuard(std::atomic<bool>& in_use, std::mutex& mtx, std::conditio
 {
     std::unique_lock<std::mutex> lock(mutex_);
 
-    conditionVar_.wait(lock, [this] { return !isConnectionInUse_.load(); });
+    conditionVar_.wait_for(lock, std::chrono::seconds(1), [this]() { return !isConnectionInUse_.load(); });
 
     isConnectionInUse_.store(true);
 }
