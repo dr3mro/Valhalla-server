@@ -45,7 +45,7 @@ WatchDog::WatchDog()
                         {
                             if (db_ptr->reconnect())
                             {
-                                Message::InfoMessage(fmt::format("Database connection id: {} link is re-established", static_cast<void *>(db_ptr.get())));
+                                Message::InfoMessage(fmt::format("Database connection {} is re-established successfully", static_cast<void *>(db_ptr.get())));
                                 dbHandler->reconnect_all();
                             }
                             else
