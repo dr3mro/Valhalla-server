@@ -9,6 +9,7 @@
 #include <jsoncons/json.hpp>
 #include <memory>
 #include <optional>
+#include <regex>
 #include <string>
 #include <type_traits>
 #include <unordered_set>
@@ -45,8 +46,18 @@ bool Database::checkExists(const std::string &table, const std::string &column, 
         pqxx::result result;
         {
             IUGUARD
+
             pqxx::nontransaction txn(*connection);
-            result = txn.exec(fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = '{}');", table, column, value));
+            std::string          query = fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = '{}');", table, column, value);
+
+            if (isSafeQuery(query))
+            {
+                result = txn.exec(query);
+            }
+            else
+            {
+                return false;
+            }
         }
         return result[0][0].as<bool>();
     }
@@ -157,6 +168,17 @@ std::optional<std::unordered_set<std::string>> Database::getAllTables()
     }
 }
 
+bool Database::isSafeQuery(const std::string &query)
+{
+    // List of SQL injection patterns to check
+    static const std::regex sqlInjectionPatterns(
+        R"((\b(UNION|SELECT|INSERT|DELETE|UPDATE|DROP|ALTER|CREATE|REPLACE)\b\s+(.*;|--|\/\*|#))|(--|;|\/\*|#\s+)|(\bOR\s+1=1\b)|(\bAND\s+1=1\b)|(\bOR\s+'.*'\s*=\s*'.*'\b))",
+        std::regex::icase);
+
+    // Check if the query matches any known SQL injection patterns
+    return !std::regex_search(query, sqlInjectionPatterns);
+}
+
 template <typename jsonType, typename TransactionType>
 std::optional<jsonType> Database::executeQuery(const std::string &query)
 {
@@ -171,7 +193,14 @@ std::optional<jsonType> Database::executeQuery(const std::string &query)
 
             TransactionType txn(*connection);
 
-            results = txn.exec(query);
+            if (isSafeQuery(query))
+            {
+                results = txn.exec(query);
+            }
+            else
+            {
+                return std::nullopt;
+            }
 
             if constexpr (std::is_same_v<TransactionType, pqxx::work>)
             {
@@ -256,7 +285,14 @@ std::optional<T> Database::doSimpleQuery(const std::string &query)
 
             pqxx::nontransaction txn(*connection);
 
-            result = txn.exec(query);
+            if (isSafeQuery(query))
+            {
+                result = txn.exec(query);
+            }
+            else
+            {
+                return std::nullopt;
+            }
         }
 
         return result.empty() ? std::nullopt : result[0][0].as<std::optional<T>>();
