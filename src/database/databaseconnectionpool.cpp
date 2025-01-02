@@ -128,26 +128,43 @@ void DatabaseConnectionPool::return_connection(std::shared_ptr<Database>&& db_pt
 
 void DatabaseConnectionPool::reconnect_all()
 {
-    std::lock_guard<std::mutex> lock(mutex_);
-    auto                        connection = databaseConnections_.begin();
-    while (connection != databaseConnections_.end())
-    {
-        try
-        {
-            if ((*connection)->reconnect())
-            {
-                Message::InfoMessage(fmt::format("Database connection id: {} link is re-established", static_cast<void*>(connection->get())));
-            }
-            else
-            {
-                Message::ErrorMessage(fmt::format("Database connection id: {} link failed to re-establish", static_cast<void*>(connection->get())));
-            }
-        }
-        catch (const std::exception& e)
-        {
-            Message::CriticalMessage(fmt::format("Reconnect exception: {}", e.what()));
-        }
+    const Configurator::DatabaseConfig& config = configurator_->get<Configurator::DatabaseConfig>();
 
-        connection++;
+    std::vector<std::future<void>> futures;
+    futures.reserve(config.max_conn);
+
+    {
+        // Lock the database connections during the iteration
+        std::lock_guard<std::mutex> lock(mutex_);
+
+        for (auto& connection : databaseConnections_)
+        {
+            // Launch reconnection tasks asynchronously
+            futures.push_back(std::async(std::launch::async,
+                [&connection]()
+                {
+                    try
+                    {
+                        if (connection->reconnect())
+                        {
+                            Message::InfoMessage(fmt::format("Database connection {} is re-established successfully", static_cast<void*>(connection.get())));
+                        }
+                        else
+                        {
+                            Message::ErrorMessage(fmt::format("Database connection {} failed to re-establish", static_cast<void*>(connection.get())));
+                        }
+                    }
+                    catch (const std::exception& e)
+                    {
+                        Message::CriticalMessage(fmt::format("Reconnect exception: {}", e.what()));
+                    }
+                }));
+        }
+    }
+
+    // Wait for all futures to complete
+    for (auto& future : futures)
+    {
+        future.wait();
     }
 }
