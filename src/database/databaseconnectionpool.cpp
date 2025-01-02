@@ -67,7 +67,7 @@ DatabaseConnectionPool::DatabaseConnectionPool() : configurator_(Store::getObjec
                             return conn;
                         }
                         std::this_thread::sleep_for(std::chrono::seconds(1U << retryCount));
-                        Message::WarningMessage(fmt::format("Retrying connection to database {}/{} retries.", ++retryCount, MAX_RETRIES));
+                        Message::WarningMessage(fmt::format("Failed to create a database connection. Attempt {}/{}...", ++retryCount, MAX_RETRIES));
                     }
                     return nullptr;
                 }));
@@ -140,7 +140,7 @@ void DatabaseConnectionPool::reconnect_all()
             }
             else
             {
-                Message::ErrorMessage(fmt::format("Failed to reconnect to database {}", static_cast<void*>(connection->get())));
+                Message::ErrorMessage(fmt::format("Database connection id: {} link failed to re-establish", static_cast<void*>(connection->get())));
             }
         }
         catch (const std::exception& e)
