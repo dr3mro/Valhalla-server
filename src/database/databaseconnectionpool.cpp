@@ -79,8 +79,10 @@ DatabaseConnectionPool::DatabaseConnectionPool() : configurator_(Store::getObjec
             auto conn = future.get();  // Blocks only on completion of the individual task
             if (conn != nullptr)
             {
-                std::lock_guard<std::mutex> lock(mutex_);
-                databaseConnections_.push_back(conn);
+                {
+                    std::lock_guard<std::mutex> lock(mutex_);
+                    databaseConnections_.push_back(conn);
+                }
                 Message::InitMessage(fmt::format("Connection {}/{} created successfully.", databaseConnections_.size(), config.max_conn));
             }
             else
@@ -151,7 +153,7 @@ void DatabaseConnectionPool::reconnect_all()
                         }
                         else
                         {
-                            Message::ErrorMessage(fmt::format("Database connection {} failed to re-establish", static_cast<void*>(connection.get())));
+                            Message::ErrorMessage(fmt::format("Database connection {} failed to be re-established", static_cast<void*>(connection.get())));
                         }
                     }
                     catch (const std::exception& e)
