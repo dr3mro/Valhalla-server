@@ -20,26 +20,26 @@ bool SqlInjectionDetector::isSafeQuery(const std::string& query)
 
     // More comprehensive SQL injection patterns
     static const std::vector<std::regex> sqlInjectionPatterns = {// Comment patterns
-        std::regex(R"((--|#|\/\*|\*\/);?)", std::regex::icase),
+        // Malicious comment patterns with SQL commands
+        std::regex(R"((--|\/*)\s*((select|union|delete|drop|insert|update)\s|$))", std::regex::icase),
 
-        // Stacked queries
-        std::regex(R"(;.*?([a-z]|$))", std::regex::icase),
+        // Malicious stacked queries
+        std::regex(R"(;\s*(select|union|delete|drop|insert|update)\s)", std::regex::icase),
 
-        // Common SQL injection patterns
-        std::regex(R"(\b(union\s+all|union\s+select|load_file|outfile|dumpfile)\b)", std::regex::icase),
+        // Dangerous combinations
+        std::regex(R"(union\s+all\s+select\s)", std::regex::icase),
 
-        // Dangerous SQL commands
-        std::regex(R"(\b(alter|create|delete|drop|exec(ute)?|insert|merge|select|update|upsert)\b\s*\(?)", std::regex::icase),
+        // SQL command injection attempts
+        std::regex(R"(\b(drop|delete)\s+table\b)", std::regex::icase),
 
-        // Common tautologies and boolean-based injections
-        std::regex(
-            R"(\b(is\s+null|is\s+not\s+null|like\s+\'%|or\s+\'\'=\'|\'\s+or\s+\'|\'\s+or\s+1=1|or\s+1=1|\'=\'|\'or\'\'=\'|1\s*=\s*1))", std::regex::icase),
+        // Common attack patterns with boundaries
+        std::regex(R"(\'\s+or\s+\'1\'\s*=\s*\'1\'|\'\s+or\s+1\s*=\s*1\s+--)", std::regex::icase),
 
-        // Time-based and sleep-based attacks
-        std::regex(R"(\b(benchmark|delay|sleep|waitfor)\b.*?\([^\)]*\))", std::regex::icase),
+        // Time-based attacks with specific context
+        std::regex(R"(waitfor\s+delay\s+\')", std::regex::icase),
 
-        // System command execution attempts
-        std::regex(R"(\b(sys|system|user|database|current|contains|convert|version)\b\s*\()", std::regex::icase)};
+        // System command execution with context
+        std::regex(R"(exec(\s|\+)+(xp|sp)_)", std::regex::icase)};
 
     // Additional security checks
     if (containsHexEncoding(lowerQuery) || containsUrlEncoding(lowerQuery) || containsUnbalancedQuotes(query) || containsSuspiciousChars(query))
@@ -54,6 +54,7 @@ bool SqlInjectionDetector::isSafeQuery(const std::string& query)
         if (std::regex_search(lowerQuery, pattern))
         {
             logSecurityEvent("SQL injection pattern matched", query);
+            fmt::print("{}",;
             return false;
         }
     }
