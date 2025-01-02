@@ -6,6 +6,7 @@
 #include <fmt/format.h>
 #include <trantor/utils/Logger.h>
 
+#include <algorithm>
 #include <string>
 #include <unordered_map>
 
@@ -30,18 +31,25 @@ std::string Message::get_color(trantor::Logger::LogLevel level)
     return color_map.at(level);
 }
 
-void Message::MessageImpl(const std::string& status_message, trantor::Logger::LogLevel level)
+void Message::MessageImpl(const std::string& _status_message, trantor::Logger::LogLevel _level)
 {
-    trantor::Logger(level).stream() << fmt::format("{}{}{}", get_color(level), status_message, "\033[0m");
+    trantor::Logger(_level).stream() << fmt::format("{}{}{}", get_color(_level), removeNewLine(_status_message), "\033[0m");
 }
-void Message::MessageImpl(const std::string& status_message, const std::string& type)
+void Message::MessageImpl(const std::string& _status_message, const std::string& _type) /*NOLINT */
 {
     fmt::print("{}{}{}{}{}\n",
         fmt::format(fg(fmt::color::indian_red),
             "[Project Valhalla]"),                 // The server name in red
         fmt::format(fg(fmt::color::white), " ["),  // the left square bracket
         fmt::format("{}", fmt::format(fg(fmt::color::green), "{}",
-                              type)),              // The message type in green
+                              _type)),             // The message type in green
         fmt::format(fg(fmt::color::white), "] "),  // the right square bracket
-        status_message);                           // the message
+        removeNewLine(_status_message));           // The message
+}
+
+std::string Message::removeNewLine(const std::string& _str)
+{
+    std::string status_message = _str;
+    std::ranges::replace(status_message, '\n', ' ');
+    return status_message;
 }

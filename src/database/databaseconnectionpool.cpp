@@ -15,6 +15,7 @@
 #include <string>
 #include <thread>
 #include <utility>
+#include <vector>
 
 #include "configurator/configurator.hpp"
 #include "database.hpp"
@@ -38,7 +39,7 @@ std::shared_ptr<Database> DatabaseConnectionPool::createDatabaseConnection(const
     }
     catch (const std::exception& e)
     {
-        Message::CriticalMessage(fmt::format("Database connection initialization failure : {}", e.what()));
+        Message::CriticalMessage(fmt::format("Failed to create a Database connection: {}", e.what()));
     }
     return nullptr;
 }
@@ -49,53 +50,50 @@ DatabaseConnectionPool::DatabaseConnectionPool() : configurator_(Store::getObjec
     {
         const Configurator::DatabaseConfig& config = configurator_->get<Configurator::DatabaseConfig>();
 
+        std::vector<std::future<std::shared_ptr<Database>>> futures;
+
+        futures.reserve(config.max_conn);
         for (uint16_t i = 0; i < config.max_conn; ++i)
         {
-            unsigned int retryCount            = 0;
-            bool         connectionEstablished = false;
-
-            while (retryCount < MAX_RETRIES && !connectionEstablished)
-            {
-                auto future = std::async(std::launch::async, [this, &config]() { return this->createDatabaseConnection(config); });
-                auto status = future.wait_for(std::chrono::seconds(TIMEOUT + 1));
-
-                if (status == std::future_status::ready)
+            futures.push_back(std::async(std::launch::async,
+                [this, config]() -> std::shared_ptr<Database>
                 {
-                    auto conn = future.get();
-                    if (conn != nullptr)
+                    unsigned int retryCount = 0;
+                    while (retryCount < MAX_RETRIES)
                     {
-                        databaseConnections_.push_back(conn);
-                        Message::InitMessage(fmt::format("Connection {}/{} created successfully.", i + 1, config.max_conn));
-                        connectionEstablished = true;
-                        break;
+                        auto conn = createDatabaseConnection(config);
+                        if (conn)
+                        {
+                            return conn;
+                        }
+                        std::this_thread::sleep_for(std::chrono::seconds(1U << retryCount));
+                        Message::WarningMessage(fmt::format("Retrying connection to database {}/{} retries.", ++retryCount, MAX_RETRIES));
                     }
-                }
+                    return nullptr;
+                }));
+        }
 
-                retryCount++;
-
-                Message::WarningMessage(fmt::format("Connection attempt {} timed out, retrying... ({}/{})", i + 1, retryCount, MAX_RETRIES));
-
-                if (retryCount < MAX_RETRIES)
-                {
-                    std::this_thread::sleep_for(std::chrono::seconds(1U << retryCount));
-                }
-            }
-
-            if (!connectionEstablished)
+        // Wait for all futures
+        for (auto& future : futures)
+        {
+            auto conn = future.get();  // Blocks only on completion of the individual task
+            if (conn != nullptr)
             {
-                while (!databaseConnections_.empty())
-                {
-                    databaseConnections_.pop_front();
-                }
-
-                Message::ErrorMessage(fmt::format("Failed to establish connection {} after {} attempts.", i + 1, MAX_RETRIES));
+                std::lock_guard<std::mutex> lock(mutex_);
+                databaseConnections_.push_back(conn);
+                Message::InitMessage(fmt::format("Connection {}/{} created successfully.", databaseConnections_.size(), config.max_conn));
+            }
+            else
+            {
+                Message::ErrorMessage("Failed to establish one or more connections after maximum retries.");
                 throw std::runtime_error("Database connection pool initialization failure.");
             }
         }
     }
     catch (const std::exception& e)
     {
-        Message::CriticalMessage(fmt::format("Failed to initialize database connection pool: {}", e.what()));
+        std::string what = e.what();
+        Message::CriticalMessage(fmt::format("Failed to initialize database connection pool: {}", what.substr(0, -4)));
         Message::ErrorMessage("Exiting...");
         exit(EXIT_FAILURE); /*NOLINT*/
     }
