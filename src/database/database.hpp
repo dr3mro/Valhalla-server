@@ -16,6 +16,7 @@
 #include <string>
 #include <unordered_set>
 
+#include "controllers/staffcontroller/staffcontroller.hpp"
 #include "utils/global/types.hpp"
 
 #define IUGUARD InUseGuard connection_guard(isConnectionInUse_, mtx_, cv_);
@@ -46,6 +47,7 @@ class Database
    private:
     std::shared_ptr<pqxx::connection> connection;
     std::string                       connection_info;  // Store connection parameters
+    std::shared_ptr<GateKeeper>       gatekeeper_;
 
     std::atomic<bool>       isConnectionInUse_;
     std::mutex              mtx_;

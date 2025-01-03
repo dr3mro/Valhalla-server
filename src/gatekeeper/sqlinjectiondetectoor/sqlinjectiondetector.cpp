@@ -1,4 +1,4 @@
-#include "database/sqlinjectiondetector.hpp"
+#include "gatekeeper/sqlinjectiondetectoor/sqlinjectiondetector.hpp"
 
 #include <algorithm>
 #include <cctype>
@@ -57,7 +57,7 @@ void SqlInjectionDetector::initialize()
     riskyKeywords = {"EXEC", "EXECUTE", "SLEEP", "DELAY", "BENCHMARK", "WAITFOR", "XP_CMDSHELL", "SYSTEM", "SHUTDOWN"};
 }
 
-bool SqlInjectionDetector::isSafeQuery(const std::string& query)
+bool SqlInjectionDetector::isQuerySqlInjection(const std::string& query)
 {
     std::vector<std::string> detectedPatterns;
     bool                     isSqlInjection = (containsSuspiciousPattern(query, detectedPatterns) || hasUnbalancedQuotes(query) || hasCommentTokens(query) ||
@@ -83,7 +83,7 @@ bool SqlInjectionDetector::isSafeQuery(const std::string& query)
         }
     }
 
-    return !isSqlInjection;
+    return isSqlInjection;
 }
 
 void SqlInjectionDetector::addCustomPattern(const std::string& pattern)

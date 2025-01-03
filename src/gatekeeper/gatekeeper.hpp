@@ -60,6 +60,8 @@ namespace api::v2
 
         DOSDetector::Status isDosAttack(const DOSDetector::Request& request);
 
+        [[nodiscard]] bool isQuerySqlInjection(const std::string& query) const;
+
        private:
         std::optional<jsoncons::json>     parse_data(std::string_view data, std::string& message, bool& success);
         std::optional<Types::Credentials> parse_credentials(std::string_view data, std::string& message, bool& success);
