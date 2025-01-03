@@ -1,11 +1,19 @@
 #include "dosdetector.hpp"
 
+#include <fmt/core.h>
 #include <fmt/format.h>
 #include <xxhash.h>
 
 #include <algorithm>
+#include <chrono>
+#include <exception>
+#include <future>
+#include <mutex>
+#include <optional>
 #include <regex>
+#include <string>
 #include <thread>
+#include <unordered_set>
 
 #include "utils/message/message.hpp"
 
