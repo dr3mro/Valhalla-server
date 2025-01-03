@@ -1,118 +1,184 @@
 #include "database/sqlinjectiondetector.hpp"
 
-#include <fmt/core.h>
-#include <fmt/format.h>
-
 #include <algorithm>
 #include <cctype>
-#include <cstdint>
+#include <cstddef>
 #include <regex>
 #include <string>
 #include <vector>
 
-#include "utils/message/message.hpp"
+// Define static members
+std::vector<std::string> SqlInjectionDetector::customPatterns;
+std::vector<std::regex>  SqlInjectionDetector::suspiciousPatterns;
+std::vector<std::string> SqlInjectionDetector::riskyKeywords;
+
+void SqlInjectionDetector::initialize()
+{
+    // Initialize common SQL injection patterns
+    suspiciousPatterns = {std::regex(R"('\s*OR\s+'1'\s*=\s*'1)", std::regex_constants::icase), std::regex(R"('\s*OR\s+1\s*=\s*1)", std::regex_constants::icase),
+        std::regex(R"('\s*OR\s+'a'\s*=\s*'a)", std::regex_constants::icase), std::regex("--\\s*$"),
+        std::regex(";\\s*DROP\\s+TABLE", std::regex_constants::icase), std::regex("UNION\\s+ALL\\s+SELECT", std::regex_constants::icase),
+        std::regex("UNION\\s+SELECT", std::regex_constants::icase), std::regex("INTO\\s+OUTFILE", std::regex_constants::icase),
+        std::regex("LOAD_FILE", std::regex_constants::icase)};
+
+    // Initialize risky keywords
+    riskyKeywords = {"EXEC", "EXECUTE", "SLEEP", "DELAY", "BENCHMARK", "WAITFOR", "XP_CMDSHELL", "SYSTEM", "SHUTDOWN"};
+}
 
 bool SqlInjectionDetector::isSafeQuery(const std::string& query)
 {
-    // Convert query to lowercase for case-insensitive matching
-    std::string lowerQuery = query;
-    std::ranges::transform(lowerQuery, lowerQuery.begin(), ::tolower);
+    std::vector<std::string> detectedPatterns;
+    return !(containsSuspiciousPattern(query, detectedPatterns) || hasUnbalancedQuotes(query) || hasCommentTokens(query) || hasMultipleQueries(query) ||
+             hasRiskyKeywords(query));
+}
 
-    // More comprehensive SQL injection patterns
-    static const std::vector<std::regex> sqlInjectionPatterns = {// Comment patterns
-        // Malicious comment patterns with SQL commands
-        std::regex(R"((--|\/*)\s*((select|union|delete|drop|insert|update)\s|$))", std::regex::icase),
+void SqlInjectionDetector::addCustomPattern(const std::string& pattern)
+{
+    customPatterns.push_back(pattern);
+    suspiciousPatterns.emplace_back(pattern, std::regex_constants::icase);
+}
 
-        // Malicious stacked queries
-        std::regex(R"(;\s*(select|union|delete|drop|insert|update)\s)", std::regex::icase),
+std::vector<std::string> SqlInjectionDetector::getDetectedPatterns(const std::string& query)
+{
+    std::vector<std::string> detectedPatterns;
+    containsSuspiciousPattern(query, detectedPatterns);
 
-        // Dangerous combinations
-        std::regex(R"(union\s+all\s+select\s)", std::regex::icase),
-
-        // SQL command injection attempts
-        std::regex(R"(\b(drop|delete)\s+table\b)", std::regex::icase),
-
-        // Common attack patterns with boundaries
-        std::regex(R"(\'\s+or\s+\'1\'\s*=\s*\'1\'|\'\s+or\s+1\s*=\s*1\s+--)", std::regex::icase),
-
-        // Time-based attacks with specific context
-        std::regex(R"(waitfor\s+delay\s+\')", std::regex::icase),
-
-        // System command execution with context
-        std::regex(R"(exec(\s|\+)+(xp|sp)_)", std::regex::icase)};
-
-    // Additional security checks
-    if (containsHexEncoding(lowerQuery) || containsUrlEncoding(lowerQuery) || containsUnbalancedQuotes(query) || containsSuspiciousChars(query))
+    if (hasUnbalancedQuotes(query))
     {
-        logSecurityEvent("Suspicious query detected", query);
-        return false;
+        detectedPatterns.emplace_back("Unbalanced quotes detected");
+    }
+    if (hasCommentTokens(query))
+    {
+        detectedPatterns.emplace_back("SQL comment tokens detected");
+    }
+    if (hasMultipleQueries(query))
+    {
+        detectedPatterns.emplace_back("Multiple queries detected");
+    }
+    if (hasRiskyKeywords(query))
+    {
+        detectedPatterns.emplace_back("Risky SQL keywords detected");
     }
 
-    // Check against all patterns
-    for (const auto& pattern : sqlInjectionPatterns)
+    return detectedPatterns;
+}
+
+bool SqlInjectionDetector::containsSuspiciousPattern(const std::string& query, std::vector<std::string>& detectedPatterns)
+{
+    bool found = false;
+
+    for (size_t i = 0; i < suspiciousPatterns.size(); ++i)
     {
-        if (std::regex_search(lowerQuery, pattern))
+        if (std::regex_search(query, suspiciousPatterns[i]))
         {
-            logSecurityEvent("SQL injection pattern matched", query);
-            fmt::print("{}",;
-            return false;
+            found = true;
+            if (i < customPatterns.size())
+            {
+                detectedPatterns.push_back("Custom pattern matched: " + customPatterns[i]);
+            }
+            else
+            {
+                detectedPatterns.emplace_back("Built-in suspicious pattern detected");
+            }
         }
     }
 
-    // Check for batch query attempts
-    if (countOccurrences(lowerQuery, ';') > 1)
+    return found;
+}
+
+bool SqlInjectionDetector::hasUnbalancedQuotes(const std::string& query)
+{
+    int  singleQuotes  = 0;
+    int  doubleQuotes  = 0;
+    bool inSingleQuote = false;
+    bool inDoubleQuote = false;
+
+    for (size_t i = 0; i < query.length(); ++i)
     {
-        logSecurityEvent("Multiple query execution attempt detected", query);
-        return false;
-    }
-
-    return true;
-}
-
-bool SqlInjectionDetector::containsHexEncoding(const std::string& query)
-{
-    static const std::regex hexPattern(R"(0x[0-9a-f]+)", std::regex::icase);
-    return std::regex_search(query, hexPattern);
-}
-
-bool SqlInjectionDetector::containsUrlEncoding(const std::string& query)
-{
-    static const std::regex urlPattern(R"(%[0-9a-f]{2})", std::regex::icase);
-    return std::regex_search(query, urlPattern);
-}
-
-bool SqlInjectionDetector::containsUnbalancedQuotes(const std::string& query)
-{
-    int singleQuotes = 0;
-    int doubleQuotes = 0;
-    for (char _char : query)
-    {
-        if (_char == '\'')
+        if (query[i] == '\'' && !inDoubleQuote)
         {
-            singleQuotes++;
+            if (i == 0 || query[i - 1] != '\\')
+            {
+                singleQuotes++;
+                inSingleQuote = !inSingleQuote;
+            }
         }
-        if (_char == '"')
+        else if (query[i] == '"' && !inSingleQuote)
         {
-            doubleQuotes++;
+            if (i == 0 || query[i - 1] != '\\')
+            {
+                doubleQuotes++;
+                inDoubleQuote = !inDoubleQuote;
+            }
         }
     }
+
     return (singleQuotes % 2 != 0) || (doubleQuotes % 2 != 0);
 }
 
-bool SqlInjectionDetector::containsSuspiciousChars(const std::string& query)
+bool SqlInjectionDetector::hasCommentTokens(const std::string& query)
 {
-    static const std::string suspiciousChars = "\\<>~!$%^&*|";
-    return query.find_first_of(suspiciousChars) != std::string::npos;
+    return query.find("--") != std::string::npos || query.find("/*") != std::string::npos || query.find('#') != std::string::npos;
 }
 
-uint32_t SqlInjectionDetector::countOccurrences(const std::string& str, char _char)
+bool SqlInjectionDetector::hasMultipleQueries(const std::string& query)
 {
-    uint32_t count = std::count(str.begin(), str.end(), _char);
-    return count;
+    bool inString   = false;
+    char stringChar = 0;
+
+    for (size_t i = 0; i < query.length(); ++i)
+    {
+        if (query[i] == '\'' || query[i] == '"')
+        {
+            if (!inString)
+            {
+                inString   = true;
+                stringChar = query[i];
+            }
+            else if (query[i] == stringChar)
+            {
+                if (i == 0 || query[i - 1] != '\\')
+                {
+                    inString = false;
+                }
+            }
+        }
+        else if (query[i] == ';' && !inString)
+        {
+            // Check if there's any non-whitespace after the semicolon
+            for (size_t j = i + 1; j < query.length(); ++j)
+            {
+                if (std::isspace(query[j]) == 0)
+                {
+                    return true;
+                }
+            }
+        }
+    }
+
+    return false;
 }
 
-void SqlInjectionDetector::logSecurityEvent(const std::string& message, const std::string& query)
+bool SqlInjectionDetector::hasRiskyKeywords(const std::string& query)
 {
-    // Replace with your actual logging mechanism
-    Message::InfoMessage(fmt::format("[Security Alert] {}: {}", message, query));
+    std::string upperQuery = query;
+    std::ranges::transform(upperQuery, upperQuery.begin(), ::toupper);
+
+    for (const auto& keyword : riskyKeywords)
+    {
+        size_t pos = upperQuery.find(keyword);
+        if (pos != std::string::npos)
+        {
+            // Check if the keyword is a complete word
+            bool isWordStart = (pos == 0 || (std::isalnum(upperQuery[pos - 1]) == 0));
+            bool isWordEnd   = (pos + keyword.length() == upperQuery.length() || (std::isalnum(upperQuery[pos + keyword.length()]) == 0));
+
+            if (isWordStart && isWordEnd)
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }

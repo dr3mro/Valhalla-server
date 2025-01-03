@@ -17,6 +17,7 @@
 #include <utility>
 
 #include "controllers/databasecontroller/databasecontroller.hpp"
+#include "database/sqlinjectiondetector.hpp"
 #include "entities/base/client.hpp"
 #include "entities/base/types.hpp"
 #include "entities/services/clinics/patient/patient.hpp"
@@ -168,7 +169,7 @@ class Controller
         {
             query = entity.getSqlGetVisitsStatement();
 
-            if (query)
+            if (query.has_value())
             {
                 visits = databaseController->executeSearchQuery(query.value());
             }
@@ -223,6 +224,11 @@ class Controller
     bool get_sql_statement(std::optional<std::string> &query, T &entity, S &sqlstatement, std::string &error)
     {
         query = (entity.*sqlstatement)();
+        if (query.has_value() && SqlInjectionDetector::isSafeQuery(query.value()))
+        {
+            error = "A Sql Injection pattern is detected in generated query.";
+            return false;
+        }
         if (!query.has_value())
         {
             error = fmt::format("Failed to get SQL statement for {}.", entity.getTableName());
