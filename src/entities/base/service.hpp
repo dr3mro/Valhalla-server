@@ -1,15 +1,27 @@
 #pragma once
 
+#include <fmt/core.h>
+
 #include <cstdint>
+#include <exception>
 #include <jsoncons/json.hpp>
 #include <optional>
+#include <string>
 
 #include "entities/base/entity.hpp"
+#include "entities/base/types.hpp"
 #include "utils/message/message.hpp"
+
+using StaffData = api::v2::Types::StaffData;
 
 class Service : public Entity
 {
    public:
+    Service(const Service &)            = delete;
+    Service(Service &&)                 = delete;
+    Service &operator=(const Service &) = delete;
+    Service &operator=(Service &&)      = delete;
+
     template <typename T>
     Service(const T &data, const std::string &tablename) : Entity(data, tablename)
     {
@@ -21,7 +33,7 @@ class Service : public Entity
         std::optional<std::string> query;
         try
         {
-            auto idata = std::get<Types::StaffData>(getData());
+            auto idata = std::get<StaffData>(getData());
             query      = fmt::format(
                 "UPDATE {} SET mjson = jsonb_set(mjson, "
                      "'{{payload,providers,Doctors}}', "
@@ -43,7 +55,7 @@ class Service : public Entity
         std::optional<std::string> query;
         try
         {
-            auto idata = std::get<Types::StaffData>(getData());
+            auto idata = std::get<StaffData>(getData());
             query      = fmt::format(
                 "UPDATE {} SET mjson = jsonb_set("
                      "mjson, '{{payload,providers,Doctors}}', "

@@ -7,6 +7,8 @@
 #include <string>
 #include <vector>
 
+#include "utils/message/message.hpp"
+
 // Define static members
 std::vector<std::string> SqlInjectionDetector::customPatterns;
 std::vector<std::regex>  SqlInjectionDetector::suspiciousPatterns;
@@ -28,8 +30,16 @@ void SqlInjectionDetector::initialize()
 bool SqlInjectionDetector::isSafeQuery(const std::string& query)
 {
     std::vector<std::string> detectedPatterns;
-    return !(containsSuspiciousPattern(query, detectedPatterns) || hasUnbalancedQuotes(query) || hasCommentTokens(query) || hasMultipleQueries(query) ||
-             hasRiskyKeywords(query));
+    bool                     isSqlInjection = (containsSuspiciousPattern(query, detectedPatterns) || hasUnbalancedQuotes(query) || hasCommentTokens(query) ||
+                           hasMultipleQueries(query) || hasRiskyKeywords(query));
+
+    if (isSqlInjection)
+    {
+        Message::WarningMessage("A Sql Injection pattern is detected in generated query.");
+        Message::WarningMessage(query);
+    }
+
+    return !isSqlInjection;
 }
 
 void SqlInjectionDetector::addCustomPattern(const std::string& pattern)

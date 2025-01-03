@@ -39,25 +39,25 @@ Database::Database(std::shared_ptr<pqxx::connection> &&conn) : connection(std::m
 }
 Database::~Database() { Message::InfoMessage(fmt::format("Database connection {} is now exterminated.", static_cast<const void *>(this))); }
 
-bool Database::checkExists(const std::string &table, const std::string &column, const std::string &value)
+bool Database::checkExists(const std::string &table, const std::string &column, const std::string &value, bool &isSqlInjection)
 {
     try
     {
+        std::string query = fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = '{}');", table, column, value);
+        isSqlInjection    = !SqlInjectionDetector::isSafeQuery(query);
+
+        if (isSqlInjection)
+        {
+            return false;
+        }
+
         pqxx::result result;
         {
             IUGUARD
 
             pqxx::nontransaction txn(*connection);
-            std::string          query = fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = '{}');", table, column, value);
 
-            if (SqlInjectionDetector::isSafeQuery(query))
-            {
-                result = txn.exec(query);
-            }
-            else
-            {
-                return false;
-            }
+            result = txn.exec(query);
         }
         return result[0][0].as<bool>();
     }
@@ -169,12 +169,19 @@ std::optional<std::unordered_set<std::string>> Database::getAllTables()
 }
 
 template <typename jsonType, typename TransactionType>
-std::optional<jsonType> Database::executeQuery(const std::string &query)
+std::optional<jsonType> Database::executeQuery(const std::string &query, bool &isSqlInjection)
 {
     static_assert(std::is_same_v<jsonType, jsoncons::json> || std::is_same_v<jsonType, jsoncons::json::array>, "Unsupported jsonType specialization");
 
     try
     {
+        isSqlInjection = !SqlInjectionDetector::isSafeQuery(query);
+
+        if (isSqlInjection)
+        {
+            return std::nullopt;
+        }
+
         pqxx::result results;
 
         {
@@ -182,14 +189,7 @@ std::optional<jsonType> Database::executeQuery(const std::string &query)
 
             TransactionType txn(*connection);
 
-            if (SqlInjectionDetector::isSafeQuery(query))
-            {
-                results = txn.exec(query);
-            }
-            else
-            {
-                return std::nullopt;
-            }
+            results = txn.exec(query);
 
             if constexpr (std::is_same_v<TransactionType, pqxx::work>)
             {
@@ -263,10 +263,17 @@ std::optional<jsonType> Database::executeQuery(const std::string &query)
 }
 
 template <typename T>
-std::optional<T> Database::doSimpleQuery(const std::string &query)
+std::optional<T> Database::doSimpleQuery(const std::string &query, bool &isSqlInjection)
 {
     try
     {
+        isSqlInjection = !SqlInjectionDetector::isSafeQuery(query);
+
+        if (isSqlInjection)
+        {
+            return std::nullopt;
+        }
+
         pqxx::result result;
 
         {
@@ -274,14 +281,7 @@ std::optional<T> Database::doSimpleQuery(const std::string &query)
 
             pqxx::nontransaction txn(*connection);
 
-            if (SqlInjectionDetector::isSafeQuery(query))
-            {
-                result = txn.exec(query);
-            }
-            else
-            {
-                return std::nullopt;
-            }
+            result = txn.exec(query);
         }
 
         return result.empty() ? std::nullopt : result[0][0].as<std::optional<T>>();
@@ -296,8 +296,8 @@ std::optional<T> Database::doSimpleQuery(const std::string &query)
     }
 }
 
-template std::optional<uint64_t>              Database::doSimpleQuery<uint64_t>(const std::string &);
-template std::optional<std::string>           Database::doSimpleQuery<std::string>(const std::string &);
-template std::optional<jsoncons::json>        Database::executeQuery<jsoncons::json, pqxx::nontransaction>(const std::string &);
-template std::optional<jsoncons::json>        Database::executeQuery<jsoncons::json, pqxx::work>(const std::string &);
-template std::optional<jsoncons::json::array> Database::executeQuery<jsoncons::json::array, pqxx::nontransaction>(const std::string &);
+template std::optional<uint64_t>              Database::doSimpleQuery<uint64_t>(const std::string &, bool &);
+template std::optional<std::string>           Database::doSimpleQuery<std::string>(const std::string &, bool &);
+template std::optional<jsoncons::json>        Database::executeQuery<jsoncons::json, pqxx::nontransaction>(const std::string &, bool &);
+template std::optional<jsoncons::json>        Database::executeQuery<jsoncons::json, pqxx::work>(const std::string &, bool &);
+template std::optional<jsoncons::json::array> Database::executeQuery<jsoncons::json::array, pqxx::nontransaction>(const std::string &, bool &);

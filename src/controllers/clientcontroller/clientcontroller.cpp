@@ -22,21 +22,27 @@
 #include "utils/jsonhelper/jsonhelper.hpp"
 #include "validator/validator.hpp"
 
+using HttpError      = api::v2::Http::Error;
+using CreateClient_t = api::v2::Types::CreateClient_t;
+using UpdateClient_t = api::v2::Types::UpdateClient_t;
+using SuspendData    = api::v2::Types::SuspendData;
+using Data_t         = api::v2::Types::Data_t;
+
 template <Client_t T>
 void ClientController<T>::Create(CALLBACK_&& callback, [[maybe_unused]] const Requester&& requester, std::string_view data)
 {
     try
     {
-        bool                 success = false;
-        api::v2::Http::Error error;
-        jsoncons::json       json_data = jsoncons::json::parse(data);
+        bool           success = false;
+        HttpError      error;
+        jsoncons::json json_data = jsoncons::json::parse(data);
 
-        Types::CreateClient_t client_data(data, T::getTableName(), error, success);
+        CreateClient_t client_data(data, T::getTableName(), error, success);
 
         if (success)
         {
             T client(client_data);
-            if (client.template exists<Types::CreateClient_t>())
+            if (client.template exists<CreateClient_t>())
             {
                 callback(api::v2::Http::Status::CONFLICT, "Client already exists");
                 return;
@@ -76,8 +82,8 @@ void ClientController<T>::Update(CALLBACK_&& callback, const Requester&& request
         bool            success = false;
         Validator::Rule rule(Validator::Rule::Action::ASSERT_IMMUTABLE, {"username", "password"});
 
-        api::v2::Http::Error  error;
-        Types::UpdateClient_t client_data(data, _id, T::getTableName(), error, success, rule);
+        HttpError      error;
+        UpdateClient_t client_data(data, _id, T::getTableName(), error, success, rule);
 
         if (success)
         {
@@ -134,13 +140,13 @@ void ClientController<T>::Suspend(CALLBACK_&& callback, const Requester&& reques
     {
         if (!client_id.has_value())
         {
-            callback(Http::Status::NOT_ACCEPTABLE, "Invalid id provided");
+            callback(api::v2::Http::Status::NOT_ACCEPTABLE, "Invalid id provided");
             return;
         }
 
-        Types::SuspendData suspendData(client_id.value());
-        T                  client(suspendData);
-        Http::Error        error;
+        SuspendData suspendData(client_id.value());
+        T           client(suspendData);
+        HttpError   error;
 
         if (!gateKeeper->canToggleActive<T>(requester, client_id.value(), error))
         {
@@ -167,11 +173,11 @@ void ClientController<T>::Activate(CALLBACK_&& callback, const Requester&& reque
             callback(api::v2::Http::Status::NOT_ACCEPTABLE, api::v2::JsonHelper::jsonify("Invalid id provided").as<std::string>());
             return;
         }
-        Types::SuspendData suspendData(client_id.value());
+        SuspendData suspendData(client_id.value());
 
         T client(suspendData);
 
-        Http::Error error;
+        HttpError error;
         if (!gateKeeper->canToggleActive<T>(requester, client_id.value(), error))
         {
             callback(error.code, error.message);
@@ -204,9 +210,9 @@ void ClientController<T>::GetServices(CALLBACK_&& callback, const Requester&& re
             return;
         }
 
-        T client(Types::Data_t(client_id.value()));
+        T client(Data_t(client_id.value()));
 
-        Http::Error error;
+        HttpError error;
         if (!gateKeeper->canGetServices<T>(requester, client_id.value(), error))
         {
             callback(error.code, error.message);

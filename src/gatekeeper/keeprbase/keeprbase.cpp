@@ -29,7 +29,14 @@ bool KeeprBase::getLastLogoutTimeIfActive(std::optional<Types::ClientLoginData>&
             last_logout, active FROM client_data WHERE id = {};",
             clientLoginData->group.value(), clientLoginData->group.value(), clientLoginData->clientId.value());
 
-        auto results = databaseController->executeReadQuery(query);
+        bool isSqlInjection = false;
+        auto results        = databaseController->executeReadQuery(query, isSqlInjection);
+        if (isSqlInjection)
+        {
+            Message::ErrorMessage("A SQL Injection attack was detected. You will be blocked.");
+            return false;
+        }
+
         if (results.has_value())
         {
             if (!results->empty())
@@ -66,7 +73,13 @@ bool KeeprBase::setNowLoginTimeGetLastLogoutTime(std::optional<Types::ClientLogi
             "RETURNING last_logout;",
             clientLoginData->group.value(), clientLoginData->clientId.value(), clientLoginData->nowLoginTime.value(), clientLoginData->nowLoginTime.value());
 
-        auto result = databaseController->executeQuery(query);
+        bool isSqlInjection = false;
+        auto result         = databaseController->executeQuery(query, isSqlInjection);
+        if (isSqlInjection)
+        {
+            Message::ErrorMessage("A SQL Injection attack was detected. You will be blocked.");
+            return false;
+        }
 
         if (!result.has_value())
         {
@@ -101,7 +114,15 @@ void KeeprBase::setNowLogoutTime(uint64_t _id, const std::string& _group)
             "EXCLUDED.last_logout;",
             _group, _id, logout_time);
 
-        auto result = databaseController->executeQuery(query);
+        bool isSqlInjection = false;
+        auto result         = databaseController->executeQuery(query, isSqlInjection);
+
+        if (isSqlInjection)
+        {
+            Message::ErrorMessage("A SQL Injection attack was detected. You will be blocked.");
+            return;
+        }
+
         if (!result.has_value())
         {
             Message::ErrorMessage("Error updating login time.");
@@ -117,8 +138,16 @@ void KeeprBase::setNowLogoutTime(uint64_t _id, const std::string& _group)
 
 std::optional<std::string> KeeprBase::getLastLoginTime(uint64_t _id, const std::string& _group)
 {
-    std::string query = fmt::format("SELECT last_login FROM {}_sessions WHERE id = {};", _group, _id);
-    return databaseController->doReadQuery(query);
+    std::string query          = fmt::format("SELECT last_login FROM {}_sessions WHERE id = {};", _group, _id);
+    bool        isSqlInjection = false;
+
+    std::optional<std::string> result = databaseController->doReadQuery(query, isSqlInjection);
+    if (isSqlInjection)
+    {
+        Message::ErrorMessage("A SQL Injection attack was detected. You will be blocked.");
+        return std::nullopt;
+    }
+    return result;
 }
 
 std::string KeeprBase::current_time_to_utc_string()
@@ -238,7 +267,7 @@ jwt::verifier<jwt::default_clock, jwt::traits::kazuho_picojson> KeeprBase::creat
         .with_claim("llodt", jwt::basic_claim<jwt::traits::kazuho_picojson>(clientLoginData->lastLogoutTime.value()));
 }
 
-std::optional<jsoncons::json> api::v2::KeeprBase::getPasswordHashForUserName(const std::string& username, const std::string& _group)
+std::optional<jsoncons::json> api::v2::KeeprBase::getPasswordHashForUserName(const std::string& username, const std::string& _group, bool& isSqlInjection)
 {
-    return databaseController->getPasswordHashForUserName(username, _group);
+    return databaseController->getPasswordHashForUserName(username, _group, isSqlInjection);
 }

@@ -13,6 +13,7 @@ namespace api::v2
     class GateKeeper;
 }  // namespace api::v2
 
+using GateKeeper = api::v2::GateKeeper;
 class Configurator;
 
 template <typename T>

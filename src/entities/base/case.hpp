@@ -1,6 +1,10 @@
 #pragma once
 
+#include <fmt/core.h>
+
 #include <cstdint>
+#include <optional>
+#include <string>
 
 #include "entities/base/entity.hpp"
 #include "utils/global/global.hpp"
@@ -8,12 +12,16 @@ class Case : public Entity
 {
    public:
     static constexpr auto ORGNAME = "clinics";
+    Case(const Case&)             = delete;
+    Case(Case&&)                  = delete;
+    Case& operator=(const Case&)  = delete;
+    Case& operator=(Case&&)       = delete;
     template <typename Data>
     Case(const Data& data, const std::string& tablename) : Entity(data, tablename)
     {
     }
     static constexpr auto getOrgName() { return ORGNAME; }
-    virtual ~Case() = default;
+    ~Case() override = default;
 
    protected:
     static std::optional<std::string> getPermissionsQueryForCreatePatientImpl(const uint64_t id)

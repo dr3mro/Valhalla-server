@@ -24,6 +24,10 @@
 #include "utils/global/global.hpp"
 #include "utils/global/http.hpp"
 
+using GateKeeper = api::v2::GateKeeper;
+using HttpError  = api::v2::Http::Error;
+using StaffData  = api::v2::Types::StaffData;
+
 template <typename T>
 StaffController<T>::StaffController()
     : cfg_(Store::getObject<Configurator>()),
@@ -36,12 +40,12 @@ template <typename T>
 void StaffController<T>::AddStaffToEntity(CALLBACK_&& callback, [[maybe_unused]] const Requester&& requester, std::string_view data)
 {
     jsoncons::json staff_j;
-    Http::Error    error;
+    HttpError      error;
     try
     {
-        staff_j                  = jsoncons::json::parse(data);
-        jsoncons::json   payload = staff_j.at("payload");
-        Types::StaffData staffData(payload);
+        staff_j                = jsoncons::json::parse(data);
+        jsoncons::json payload = staff_j.at("payload");
+        StaffData      staffData(payload);
 
         T staff(staffData);
 
@@ -57,11 +61,11 @@ void StaffController<T>::RemoveStaffFromEntity(CALLBACK_&& callback, const Reque
 {
     try
     {
-        Http::Error      error;
-        jsoncons::json   staff_j = jsoncons::json::parse(data);
-        jsoncons::json   payload = staff_j.at("payload");
-        uint64_t         _id     = staff_j.at("id").as<uint64_t>();
-        Types::StaffData staffData(payload);
+        HttpError      error;
+        jsoncons::json staff_j = jsoncons::json::parse(data);
+        jsoncons::json payload = staff_j.at("payload");
+        uint64_t       _id     = staff_j.at("id").as<uint64_t>();
+        StaffData      staffData(payload);
 
         T staff(staffData);
         if (!gateKeeper->canManageStaff<T>(requester, _id, error))
@@ -81,10 +85,10 @@ void StaffController<T>::InviteStaffToEntity(CALLBACK_&& callback, const Request
 {
     try
     {
-        Http::Error                error;
+        HttpError                  error;
         jsoncons::json             staff_j = jsoncons::json::parse(data);
         uint64_t                   _id     = staff_j.at("nominee_id").as<uint64_t>();
-        Types::StaffData           staffData(staff_j);
+        StaffData                  staffData(staff_j);
         std::optional<std::string> response;
         T                          staff(staffData);
 

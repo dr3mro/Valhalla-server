@@ -30,16 +30,17 @@ class DatabaseController
     DatabaseController &operator=(DatabaseController &&)      = delete;
     virtual ~DatabaseController()                             = default;
 
-    std::optional<jsoncons::json>        executeQuery(const std::string &query);
-    std::optional<jsoncons::json>        executeReadQuery(const std::string &query);
-    std::optional<jsoncons::json::array> executeSearchQuery(const std::string &query);
-    std::optional<std::string>           doReadQuery(const std::string &query);
-    std::optional<bool>                  checkItemExists(const std::string &table, const std::string &column, const std::string &value);
-    std::optional<jsoncons::json>        getPasswordHashForUserName(const std::string &username, const std::string &tablename);
-    std::optional<uint64_t>              findIfUserID(const std::string &username, const std::string &tablename);  // check if user found and return 0 if not
+    std::optional<jsoncons::json>        executeQuery(const std::string &query, bool &isSqlInjection);
+    std::optional<jsoncons::json>        executeReadQuery(const std::string &query, bool &isSqlInjection);
+    std::optional<jsoncons::json::array> executeSearchQuery(const std::string &query, bool &isSqlInjection);
+    std::optional<std::string>           doReadQuery(const std::string &query, bool &isSqlInjection);
+    std::optional<bool>                  checkItemExists(const std::string &table, const std::string &column, const std::string &value, bool &isSqlInjection);
+    std::optional<jsoncons::json>        getPasswordHashForUserName(const std::string &username, const std::string &tablename, bool &isSqlInjection);
+    std::optional<uint64_t>              findIfUserID(
+                     const std::string &username, const std::string &tablename, bool &isSqlInjection);  // check if user found and return 0 if not
     std::optional<std::unordered_set<api::v2::ColumnInfo>> getTableSchema(const std::string &tableName);
     std::optional<std::unordered_set<std::string>>         getAllTables();
-    std::optional<jsoncons::json>                          getPermissions(const std::string &query);
+    std::optional<jsoncons::json>                          getPermissions(const std::string &query, bool &isSqlInjection);
 
    private:
     std::shared_ptr<DatabaseConnectionPool> databaseConnectionPool_;

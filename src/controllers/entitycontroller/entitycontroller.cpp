@@ -19,15 +19,21 @@
 #include "utils/global/http.hpp"
 #include "validator/validator.hpp"
 
+using HttpError = api::v2::Http::Error;
+using Create_t  = api::v2::Types::Create_t;
+using Update_t  = api::v2::Types::Update_t;
+using Delete_t  = api::v2::Types::Delete_t;
+using Read_t    = api::v2::Types::Read_t;
+
 template <typename T>
 inline void __attribute((always_inline)) EntityController<T>::Create(CALLBACK_ &&callback, const Requester &&requester, std::string_view data)
 {
     try
     {
-        bool                 success = false;
-        api::v2::Http::Error error;
-        Validator::Rule      rule((Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA | Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA), {"id"});
-        auto                 next_id = this->template getNextID<T>(error);
+        bool            success = false;
+        HttpError       error;
+        Validator::Rule rule((Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA | Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA), {"id"});
+        auto            next_id = this->template getNextID<T>(error);
 
         std::optional<jsoncons::json> request_j = jsoncons::json::parse(data);
 
@@ -57,7 +63,7 @@ inline void __attribute((always_inline)) EntityController<T>::Create(CALLBACK_ &
             return;
         }
 
-        Types::Create_t entity_data = Types::Create_t(request_j.value(), next_id.value());
+        Create_t entity_data = Create_t(request_j.value(), next_id.value());
 
         T entity(entity_data);
 
@@ -76,7 +82,7 @@ inline void __attribute((always_inline)) EntityController<T>::Read(CALLBACK_ &&c
     {
         jsoncons::json request_j = jsoncons::json::parse(data);
         uint64_t       _id       = request_j.at("id").as<uint64_t>();
-        Http::Error    error;
+        HttpError      error;
 
         if (!gateKeeper->canRead<T>(requester, _id, error))
         {
@@ -94,7 +100,7 @@ inline void __attribute((always_inline)) EntityController<T>::Read(CALLBACK_ &&c
             return;
         }
 
-        T entity((Types::Read_t(schema, _id)));
+        T entity((Read_t(schema, _id)));
 
         Controller::Read(entity, std::move(callback));
     }
@@ -141,7 +147,7 @@ inline void __attribute((always_inline)) EntityController<T>::Update(
             return;
         }
 
-        Types::Update_t entity_data = Types::Update_t(request_json.value(), _id.value());
+        Update_t entity_data = Update_t(request_json.value(), _id.value());
 
         T entity(entity_data);
 
@@ -164,7 +170,7 @@ inline void __attribute((always_inline)) EntityController<T>::Delete(CALLBACK_ &
             return;
         }
 
-        Http::Error error;
+        HttpError error;
 
         if (!gateKeeper->canDelete<T>(requester, _id.value(), error))
         {
@@ -172,7 +178,7 @@ inline void __attribute((always_inline)) EntityController<T>::Delete(CALLBACK_ &
             return;
         }
 
-        T entity(Types::Delete_t(_id.value()));
+        T entity(Delete_t(_id.value()));
 
         Controller::Delete(entity, std::move(callback));
     }
@@ -190,7 +196,7 @@ inline void __attribute((always_inline)) EntityController<T>::Search(CALLBACK_ &
     {
         request_json = jsoncons::json::parse(data);
         bool success = false;
-        T    entity((Types::Search_t(request_json, success)));
+        T    entity((Search_t(request_json, success)));
 
         if (success)
         {
