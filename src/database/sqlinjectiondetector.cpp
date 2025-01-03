@@ -17,11 +17,41 @@ std::vector<std::string> SqlInjectionDetector::riskyKeywords;
 void SqlInjectionDetector::initialize()
 {
     // Initialize common SQL injection patterns
-    suspiciousPatterns = {std::regex(R"('\s*OR\s+'1'\s*=\s*'1)", std::regex_constants::icase), std::regex(R"('\s*OR\s+1\s*=\s*1)", std::regex_constants::icase),
+    std::vector<std::regex> suspiciousPatterns = {
+        // Existing patterns
+        std::regex(R"('\s*OR\s+'1'\s*=\s*'1)", std::regex_constants::icase), std::regex(R"('\s*OR\s+1\s*=\s*1)", std::regex_constants::icase),
         std::regex(R"('\s*OR\s+'a'\s*=\s*'a)", std::regex_constants::icase), std::regex("--\\s*$"),
         std::regex(";\\s*DROP\\s+TABLE", std::regex_constants::icase), std::regex("UNION\\s+ALL\\s+SELECT", std::regex_constants::icase),
         std::regex("UNION\\s+SELECT", std::regex_constants::icase), std::regex("INTO\\s+OUTFILE", std::regex_constants::icase),
-        std::regex("LOAD_FILE", std::regex_constants::icase)};
+        std::regex("LOAD_FILE", std::regex_constants::icase),
+
+        // Additional patterns
+        std::regex("';\\s*--", std::regex_constants::icase),                             // Single quote followed by comment
+        std::regex("';\\s*DROP\\s+TABLE", std::regex_constants::icase),                  // Drop table attempt
+        std::regex("';\\s*INSERT\\s+INTO", std::regex_constants::icase),                 // Insert into statement
+        std::regex("';\\s*SELECT\\s+FROM", std::regex_constants::icase),                 // Select from injection
+        std::regex("';\\s*UPDATE\\s+SET", std::regex_constants::icase),                  // Update table query
+        std::regex("';\\s*DELETE\\s+FROM", std::regex_constants::icase),                 // Delete from query
+        std::regex(R"(';\s*AND\s*1\s*=\s*1)", std::regex_constants::icase),              // AND 1=1 condition
+        std::regex(R"(';\s*AND\s*1\s*<>\s*0)", std::regex_constants::icase),             // AND 1<>0 condition
+        std::regex(R"(';\s*OR\s*1\s*<>\s*0)", std::regex_constants::icase),              // OR 1<>0 condition
+        std::regex("';\\s*EXEC", std::regex_constants::icase),                           // EXEC command
+        std::regex("';\\s*XP_CMDSHELL", std::regex_constants::icase),                    // SQL Server's xp_cmdshell
+        std::regex("';\\s*WAITFOR", std::regex_constants::icase),                        // Waitfor delay
+        std::regex("';\\s*BENCHMARK", std::regex_constants::icase),                      // Benchmark function (MySQL)
+        std::regex("';\\s*GROUP\\s+BY", std::regex_constants::icase),                    // GROUP BY clause used in injection
+        std::regex("';\\s*HAVING", std::regex_constants::icase),                         // HAVING clause used in injection
+        std::regex("';\\s*NULL\\s+UNION", std::regex_constants::icase),                  // UNION SELECT NULL
+        std::regex("';\\s*ORDER\\s+BY", std::regex_constants::icase),                    // ORDER BY clause injection
+        std::regex("';\\s*REVOKE\\s+ALL", std::regex_constants::icase),                  // REVOKE command
+        std::regex("';\\s*TRUNCATE\\s+TABLE", std::regex_constants::icase),              // TRUNCATE TABLE command
+        std::regex(R"(';\s*LOAD\s+DATA\s+INFILE)", std::regex_constants::icase),         // LOAD DATA INFILE command (MySQL)
+        std::regex("';\\s*--", std::regex_constants::icase),                             // Double hyphen as comment syntax
+        std::regex("SELECT.*FROM\\s+INFORMATION_SCHEMA", std::regex_constants::icase),   // Information schema query
+        std::regex(R"(SELECT\s+.*\s+FROM\s+mysql\.user)", std::regex_constants::icase),  // MySQL user table
+        std::regex("';\\s*SHUTDOWN", std::regex_constants::icase),                       // Database shutdown attempt
+        std::regex(R"(';\s*XOR\s+1\s*=\s*1)", std::regex_constants::icase)               // XOR condition attack
+    };
 
     // Initialize risky keywords
     riskyKeywords = {"EXEC", "EXECUTE", "SLEEP", "DELAY", "BENCHMARK", "WAITFOR", "XP_CMDSHELL", "SYSTEM", "SHUTDOWN"};
@@ -37,6 +67,20 @@ bool SqlInjectionDetector::isSafeQuery(const std::string& query)
     {
         Message::WarningMessage("A Sql Injection pattern is detected in generated query.");
         Message::WarningMessage(query);
+
+        // Print the reasons for SQL injection detection
+        if (!detectedPatterns.empty())
+        {
+            Message::WarningMessage("Detected patterns: ");
+            for (const auto& pattern : detectedPatterns)
+            {
+                Message::WarningMessage(pattern);
+            }
+        }
+        else
+        {
+            Message::WarningMessage("No specific patterns were matched, but other suspicious conditions were detected.");
+        }
     }
 
     return !isSqlInjection;

@@ -46,9 +46,9 @@ class Provider : public Client
             query = fmt::format(
                 R"(
                         WITH vars AS (
-                            SELECT {} AS id  -- Convert integer to JSONB
+                            SELECT {} AS id 
                         )
-                        SELECT combined.id, combined.name, combined.type  -- Qualify "id" with "combined"
+                        SELECT combined.id, combined.name, combined.type 
                         FROM (
                             SELECT id, name, staff, admin_id, owner_id, 'Clinic' AS type
                             FROM clinics
