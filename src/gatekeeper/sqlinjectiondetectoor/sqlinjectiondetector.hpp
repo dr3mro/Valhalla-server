@@ -8,7 +8,7 @@ class SqlInjectionDetector
 {
    public:
     static void                                   initialize();
-    [[nodiscard]] static bool                     isSafeQuery(const std::string& query);
+    [[nodiscard]] static bool                     isQuerySqlInjection(const std::string& query);
     static void                                   addCustomPattern(const std::string& pattern);
     [[nodiscard]] static std::vector<std::string> getDetectedPatterns(const std::string& query);
 

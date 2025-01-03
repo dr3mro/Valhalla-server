@@ -17,10 +17,10 @@
 #include <utility>
 
 #include "controllers/databasecontroller/databasecontroller.hpp"
-#include "database/sqlinjectiondetector.hpp"
 #include "entities/base/client.hpp"
 #include "entities/base/types.hpp"
 #include "entities/services/clinics/patient/patient.hpp"
+#include "gatekeeper/gatekeeper.hpp"
 #include "store/store.hpp"
 #include "utils/global/callback.hpp"
 #include "utils/global/global.hpp"
@@ -28,8 +28,9 @@
 #include "utils/jsonhelper/jsonhelper.hpp"
 #include "utils/message/message.hpp"
 
-using Search_t = api::v2::Types::Search_t;
-using Client   = api::v2::Client;
+using Search_t   = api::v2::Types::Search_t;
+using Client     = api::v2::Client;
+using GateKeeper = api::v2::GateKeeper;
 
 class Controller
 {
@@ -210,6 +211,7 @@ class Controller
 
    private:
     std::shared_ptr<DatabaseController> databaseController;
+    std::shared_ptr<GateKeeper>         gateKeeper_                                           = Store::getObject<GateKeeper>();
     std::optional<jsoncons::json> (DatabaseController::*dbexec)(const std::string &, bool &)  = &DatabaseController::executeQuery;
     std::optional<jsoncons::json> (DatabaseController::*dbrexec)(const std::string &, bool &) = &DatabaseController::executeReadQuery;
 
@@ -259,7 +261,7 @@ class Controller
     bool get_sql_statement(std::optional<std::string> &query, T &entity, S &sqlstatement, std::string &error)
     {
         query = (entity.*sqlstatement)();
-        if (query.has_value() && !SqlInjectionDetector::isSafeQuery(query.value()))
+        if (query.has_value() && gateKeeper_->isQuerySqlInjection(query.value()))
         {
             error = "A Sql Injection pattern is detected in generated query.";
             return false;

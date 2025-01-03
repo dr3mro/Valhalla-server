@@ -14,12 +14,13 @@
 #include <unordered_set>
 #include <utility>
 
+#include "controllers/staffcontroller/staffcontroller.hpp"
 #include "database/inuseguard.hpp"  // IWYU pragma: keep
-#include "database/sqlinjectiondetector.hpp"
+#include "store/store.hpp"
 #include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
 
-Database::Database(std::shared_ptr<pqxx::connection> &&conn) : connection(std::move(conn))
+Database::Database(std::shared_ptr<pqxx::connection> &&conn) : connection(std::move(conn)), gatekeeper_(Store::getObject<GateKeeper>())
 {
     try
     {
@@ -44,7 +45,7 @@ bool Database::checkExists(const std::string &table, const std::string &column, 
     try
     {
         std::string query = fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = '{}');", table, column, value);
-        isSqlInjection    = !SqlInjectionDetector::isSafeQuery(query);
+        isSqlInjection    = gatekeeper_->isQuerySqlInjection(query);
 
         if (isSqlInjection)
         {
@@ -175,7 +176,7 @@ std::optional<jsonType> Database::executeQuery(const std::string &query, bool &i
 
     try
     {
-        isSqlInjection = !SqlInjectionDetector::isSafeQuery(query);
+        isSqlInjection = gatekeeper_->isQuerySqlInjection(query);
 
         if (isSqlInjection)
         {
@@ -267,7 +268,7 @@ std::optional<T> Database::doSimpleQuery(const std::string &query, bool &isSqlIn
 {
     try
     {
-        isSqlInjection = !SqlInjectionDetector::isSafeQuery(query);
+        isSqlInjection = gatekeeper_->isQuerySqlInjection(query);
 
         if (isSqlInjection)
         {

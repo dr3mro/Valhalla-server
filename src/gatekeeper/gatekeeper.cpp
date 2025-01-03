@@ -15,6 +15,7 @@
 #include "gatekeeper/includes.hpp"  // IWYU pragma: keep
 #include "gatekeeper/permissionmanager/permissionmanager.hpp"
 #include "gatekeeper/sessionmanager/sessionmanager.hpp"
+#include "gatekeeper/sqlinjectiondetectoor/sqlinjectiondetector.hpp"
 #include "gatekeeper/tokenmanager/tokenmanager.hpp"
 #include "gatekeeper/types.hpp"
 #include "store/store.hpp"
@@ -23,7 +24,6 @@
 #include "utils/global/global.hpp"
 #include "utils/global/http.hpp"
 #include "utils/global/requester.hpp"
-
 using GateKeeper        = api::v2::GateKeeper;
 using Credentials       = api::v2::Types::Credentials;
 using ClientLoginData   = api::v2::Types::ClientLoginData;
@@ -142,6 +142,8 @@ std::optional<jsoncons::json> GateKeeper::parse_data(/* NOLINT(readability-conve
     success = true;
     return object_j;
 }
+
+[[nodiscard]] bool GateKeeper::isQuerySqlInjection(const std::string& query) const { return SqlInjectionDetector::isQuerySqlInjection(query); }
 
 std::optional<Credentials> GateKeeper::parse_credentials(std::string_view data, std::string& message, bool& success)
 {
