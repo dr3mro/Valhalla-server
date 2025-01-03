@@ -12,7 +12,9 @@
 #include "utils/global/concepts.hpp"
 #include "utils/global/http.hpp"
 #include "utils/global/requester.hpp"
-using pm_priv = api::v2::PermissionManagerPrivate;
+using pm_priv           = api::v2::PermissionManagerPrivate;
+using PermissionManager = api::v2::PermissionManager;
+using HttpError         = api::v2::Http::Error;
 template <Client_t T>
 bool PermissionManager::canCreate(
     [[maybe_unused]] const Requester& requester, [[maybe_unused]] const std::optional<jsoncons::json>& data_j, [[maybe_unused]] Http::Error& error)
@@ -21,17 +23,17 @@ bool PermissionManager::canCreate(
 }
 
 template <Client_t T>
-bool PermissionManager::canRead(const Requester& requester, uint64_t client_id, Http::Error& error)
+bool PermissionManager::canRead(const Requester& requester, uint64_t client_id, HttpError& error)
 {
     return pm_priv::assert_group_id_match(requester, T::getTableName(), client_id, error);
 }
 template <Client_t T>
-bool PermissionManager::canUpdate(const Requester& requester, uint64_t client_id, Http::Error& error)
+bool PermissionManager::canUpdate(const Requester& requester, uint64_t client_id, HttpError& error)
 {
     return pm_priv::assert_group_id_match(requester, T::getTableName(), client_id, error);
 }
 template <Client_t T>
-bool PermissionManager::canDelete(const Requester& requester, const uint64_t client_id, Http::Error& error)
+bool PermissionManager::canDelete(const Requester& requester, const uint64_t client_id, HttpError& error)
 {
     return pm_priv::assert_group_id_match(requester, T::getTableName(), client_id, error);
 }
@@ -179,20 +181,20 @@ bool PermissionManager::canDelete(const Requester& requester, uint64_t service_i
     return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }
 
-#define INSTANTIATE_PERMISSION_CRUD(TYPE)                                                                                   \
-    template bool PermissionManager::canCreate<TYPE>(const Requester&, const std::optional<jsoncons::json>&, Http::Error&); \
-    template bool PermissionManager::canRead<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);               \
-    template bool PermissionManager::canUpdate<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);             \
-    template bool PermissionManager::canDelete<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);
+#define INSTANTIATE_PERMISSION_CRUD(TYPE)                                                                                 \
+    template bool PermissionManager::canCreate<TYPE>(const Requester&, const std::optional<jsoncons::json>&, HttpError&); \
+    template bool PermissionManager::canRead<TYPE>(const Requester&, const uint64_t entity_id, HttpError&);               \
+    template bool PermissionManager::canUpdate<TYPE>(const Requester&, const uint64_t entity_id, HttpError&);             \
+    template bool PermissionManager::canDelete<TYPE>(const Requester&, const uint64_t entity_id, HttpError&);
 
-#define INSTANTIATE_PERMISSION_CLIENT(TYPE)                                                                                   \
-    INSTANTIATE_PERMISSION_CRUD(TYPE)                                                                                         \
-    template bool PermissionManager::canGetServices<TYPE>(const Requester& requester, const uint64_t id, Http::Error& error); \
-    template bool PermissionManager::canToggleActive<TYPE>(const Requester& requester, const uint64_t id, Http::Error& error);
+#define INSTANTIATE_PERMISSION_CLIENT(TYPE)                                                                                 \
+    INSTANTIATE_PERMISSION_CRUD(TYPE)                                                                                       \
+    template bool PermissionManager::canGetServices<TYPE>(const Requester& requester, const uint64_t id, HttpError& error); \
+    template bool PermissionManager::canToggleActive<TYPE>(const Requester& requester, const uint64_t id, HttpError& error);
 
 #define INSTANTIATE_PERMISSION_ENTITY(TYPE) \
     INSTANTIATE_PERMISSION_CRUD(TYPE)       \
-    template bool PermissionManager::canManageStaff<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);
+    template bool PermissionManager::canManageStaff<TYPE>(const Requester&, const uint64_t entity_id, HttpError&);
 
 // Client types
 INSTANTIATE_PERMISSION_CLIENT(User)

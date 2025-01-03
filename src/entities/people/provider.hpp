@@ -1,14 +1,28 @@
 #pragma once
+#include <fmt/core.h>
+
 #include <cstdint>
+#include <exception>
+#include <optional>
+#include <string>
 
 #include "entities/base/client.hpp"
+#include "entities/base/types.hpp"
 #include "utils/message/message.hpp"
+
+using Data_t = api::v2::Types::Data_t;
+using Client = api::v2::Client;
 
 class Provider : public Client
 {
    public:
+    Provider(const Provider &)            = delete;
+    Provider(Provider &&)                 = delete;
+    Provider &operator=(const Provider &) = delete;
+    Provider &operator=(Provider &&)      = delete;
+
     template <typename ClientData_t>
-    Provider(const ClientData_t &data) : Client(data, TABLENAME)
+    explicit Provider(const ClientData_t &data) : Client(data, TABLENAME)
     {
     }
     // Provider() : Client(std::string(TABLENAME)) {}
@@ -19,7 +33,7 @@ class Provider : public Client
         std::optional<std::string> query;
         try
         {
-            client_id = std::get<Types::Data_t>(getData()).get_id();
+            client_id = std::get<Data_t>(getData()).get_id();
 
             if (!client_id.has_value())
             {

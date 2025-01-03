@@ -1,10 +1,18 @@
 #pragma once
 
+#include <fmt/core.h>
+
 #include <cstdint>
+#include <exception>
+#include <jsoncons/basic_json.hpp>
 #include <jsoncons/json.hpp>
 #include <optional>
+#include <string>
 
 #include "entities/base/case.hpp"
+#include "entities/base/types.hpp"
+
+using Data_t = api::v2::Types::Data_t;
 
 class Patient : public Case
 {
@@ -13,8 +21,13 @@ class Patient : public Case
     static constexpr auto CREATE_KEY = "clinic_id";
 
    public:
+    Patient(const Patient&)            = delete;
+    Patient(Patient&&)                 = delete;
+    Patient& operator=(const Patient&) = delete;
+    Patient& operator=(Patient&&)      = delete;
+
     template <typename T>
-    Patient(const T& _data) : Case(_data, TABLENAME)
+    explicit Patient(const T& _data) : Case(_data, TABLENAME)
     {
     }
     ~Patient() override = default;
@@ -24,7 +37,7 @@ class Patient : public Case
 
     std::string getSqlGetVisitsStatement()
     {
-        return fmt::format("SELECT * FROM clinics_visits WHERE patient_id = {} ;", std::get<Types::Data_t>(getData()).get_id().value());
+        return fmt::format("SELECT * FROM clinics_visits WHERE patient_id = {} ;", std::get<Data_t>(getData()).get_id().value());
     }
 
     static std::optional<std::string> getPermissionsQueryForCreate(const std::optional<jsoncons::json>& data_j)

@@ -1,11 +1,18 @@
 #pragma once
 
+#include <fmt/core.h>
 #include <sys/types.h>
 
+#include <algorithm>
 #include <cstdint>
+#include <exception>
+#include <iterator>
 #include <jsoncons/json.hpp>
 #include <memory>
 #include <optional>
+#include <string>
+#include <type_traits>
+#include <vector>
 
 #include "entities/base/entity.hpp"
 #include "entities/base/types.hpp"
@@ -25,6 +32,10 @@ namespace api
         class Client : public Entity
         {
            public:
+            Client(const Client &)            = delete;
+            Client(Client &&)                 = delete;
+            Client &operator=(const Client &) = delete;
+            Client &operator=(Client &&)      = delete;
             // Client(const std::string &tablename) : Entity(tablename) {};
 
             template <typename T>
@@ -128,21 +139,26 @@ namespace api
             bool exists()
             {
                 auto client_data = std::get<T>(getData()).get_data_set();
-                auto it          = std::ranges::find_if(client_data, [&](const auto &item) { return item.first == USERNAME; });
+                auto iterator    = std::ranges::find_if(client_data, [&](const auto &item) { return item.first == USERNAME; });
 
-                if (it != client_data.end())
+                if (iterator != client_data.end())
                 {
-                    std::string username = it->second;
-
-                    auto result = databaseController->checkItemExists(tablename, USERNAME, username);
+                    std::string username       = iterator->second;
+                    bool        isSqlInjection = false;
+                    auto        result         = databaseController->checkItemExists(tablename, USERNAME, username, isSqlInjection);
+                    if (isSqlInjection)
+                    {
+                        Message::ErrorMessage("A Sql Injection pattern is detected in generated query.");
+                        return false;
+                    }
                     return result.value_or(false);
                 }
                 return false;
             }
-            virtual ~Client() = default;
+            ~Client() override = default;
 
            protected:
-            std::optional<uint64_t> client_id;
+            std::optional<uint64_t> client_id; /*NOLINT*/
         };
     }  // namespace v2
 }  // namespace api

@@ -28,6 +28,9 @@
 #include "utils/jsonhelper/jsonhelper.hpp"
 #include "utils/message/message.hpp"
 
+using Search_t = api::v2::Types::Search_t;
+using Client   = api::v2::Client;
+
 class Controller
 {
    public:
@@ -93,14 +96,22 @@ class Controller
 
             if (query.has_value())
             {
-                query_results_json_array = databaseController->executeSearchQuery(query.value());
+                bool isSqlInjection      = false;
+                query_results_json_array = databaseController->executeSearchQuery(query.value(), isSqlInjection);
+
+                if (isSqlInjection)
+                {
+                    std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "A Sql Injection pattern is detected in generated query.");
+                    return;
+                }
+
                 if (query_results_json_array.has_value() && !query_results_json_array->empty())
                 {
                     size_t results_count = query_results_json_array->size();
-                    if (results_count > std::get<Types::Search_t>(entity.getData()).limit)
+                    if (results_count > std::get<Search_t>(entity.getData()).limit)
                     {
                         response_json["more"]   = true;
-                        response_json["offset"] = std::get<Types::Search_t>(entity.getData()).offset + std::get<Types::Search_t>(entity.getData()).limit;
+                        response_json["offset"] = std::get<Search_t>(entity.getData()).offset + std::get<Search_t>(entity.getData()).limit;
                         query_results_json_array->erase(query_results_json_array->array_range().end() - 1);
                     }
                 }
@@ -143,7 +154,15 @@ class Controller
 
             if (query.has_value())
             {
-                services = databaseController->executeSearchQuery(query.value());
+                bool isSqlInjection = false;
+
+                services = databaseController->executeSearchQuery(query.value(), isSqlInjection);
+                if (isSqlInjection)
+                {
+                    std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "A Sql Injection pattern is detected in generated query.");
+                    return;
+                }
+
                 if (services.has_value())
                 {
                     std::move(callback)(api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(services.value()));
@@ -171,7 +190,14 @@ class Controller
 
             if (query.has_value())
             {
-                visits = databaseController->executeSearchQuery(query.value());
+                bool isSqlInjection = false;
+                visits              = databaseController->executeSearchQuery(query.value(), isSqlInjection);
+
+                if (isSqlInjection)
+                {
+                    std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "A Sql Injection pattern is detected in generated query.");
+                    return;
+                }
             }
 
             std::move(callback)(api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(visits));
@@ -184,8 +210,8 @@ class Controller
 
    private:
     std::shared_ptr<DatabaseController> databaseController;
-    std::optional<jsoncons::json> (DatabaseController::*dbexec)(const std::string &)  = &DatabaseController::executeQuery;
-    std::optional<jsoncons::json> (DatabaseController::*dbrexec)(const std::string &) = &DatabaseController::executeReadQuery;
+    std::optional<jsoncons::json> (DatabaseController::*dbexec)(const std::string &, bool &)  = &DatabaseController::executeQuery;
+    std::optional<jsoncons::json> (DatabaseController::*dbrexec)(const std::string &, bool &) = &DatabaseController::executeReadQuery;
 
    protected:
     template <typename T>
@@ -193,7 +219,16 @@ class Controller
     {
         try
         {
-            std::optional<jsoncons::json> json_nextval = databaseController->executeQuery(fmt::format("SELECT NEXTVAL('{}_id_seq');", T::getTableName()));
+            bool                          isSqlInjection = false;
+            std::optional<jsoncons::json> json_nextval =
+                databaseController->executeQuery(fmt::format("SELECT NEXTVAL('{}_id_seq');", T::getTableName()), isSqlInjection);
+
+            if (isSqlInjection)
+            {
+                error.message = "A Sql Injection pattern is detected in generated query.";
+                error.code    = api::v2::Http::Status::BAD_REQUEST;
+                return std::nullopt;
+            }
 
             if (!json_nextval.has_value() || json_nextval->empty())
             {
@@ -224,7 +259,7 @@ class Controller
     bool get_sql_statement(std::optional<std::string> &query, T &entity, S &sqlstatement, std::string &error)
     {
         query = (entity.*sqlstatement)();
-        if (query.has_value() && SqlInjectionDetector::isSafeQuery(query.value()))
+        if (query.has_value() && !SqlInjectionDetector::isSafeQuery(query.value()))
         {
             error = "A Sql Injection pattern is detected in generated query.";
             return false;
@@ -239,7 +274,7 @@ class Controller
     }
 
     template <typename S, typename T>
-    void cruds(T &entity, S &sqlstatement, std::optional<jsoncons::json> (DatabaseController::*func)(const std::string &), CALLBACK_ &&callback)
+    void cruds(T &entity, S &sqlstatement, std::optional<jsoncons::json> (DatabaseController::*func)(const std::string &, bool &), CALLBACK_ &&callback)
     {
         std::optional<jsoncons::json> results_j;
         std::optional<std::string>    query;
@@ -254,7 +289,8 @@ class Controller
 
             if (query.has_value())
             {
-                results_j = (*databaseController.*func)(query.value());
+                bool isSqlInjection = false;
+                results_j           = (*databaseController.*func)(query.value(), isSqlInjection);
                 if (results_j.has_value())
                 {
                     if (!results_j->empty())

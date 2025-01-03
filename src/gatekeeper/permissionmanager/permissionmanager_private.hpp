@@ -12,6 +12,7 @@
 #include "store/store.hpp"
 #include "utils/global/http.hpp"
 #include "utils/global/requester.hpp"
+#include "utils/message/message.hpp"
 namespace api::v2
 {
     class PermissionManagerPrivate
@@ -82,7 +83,14 @@ namespace api::v2
                 return std::nullopt;
             }
 
-            std::optional<jsoncons::json> permissions_j = db_ctl->getPermissions(query.value());
+            bool                          isSqlInjection = false;
+            std::optional<jsoncons::json> permissions_j  = db_ctl->getPermissions(query.value(), isSqlInjection);
+
+            if (isSqlInjection)
+            {
+                Message::ErrorMessage("A SQL Injection attack was detected. You will be blocked.");
+                return std::nullopt;
+            }
 
             if (!permissions_j.has_value() || permissions_j->empty())
             {

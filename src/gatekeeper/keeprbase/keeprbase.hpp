@@ -31,7 +31,7 @@ namespace api::v2
         static std::string            current_time_to_utc_string();
         void                          setNowLogoutTime(uint64_t _id, const std::string& _group);
         std::optional<std::string>    getLastLoginTime(uint64_t _id, const std::string& _group);
-        std::optional<jsoncons::json> getPasswordHashForUserName(const std::string& username, const std::string& _group);
+        std::optional<jsoncons::json> getPasswordHashForUserName(const std::string& username, const std::string& _group, bool& isSqlInjection);
         static bool                   decodeToken(
                               std::optional<Types::ClientLoginData>& clientLoginData, std::string& message, jwt::decoded_jwt<jwt::traits::kazuho_picojson>& decoedToken);
         bool validateToken(

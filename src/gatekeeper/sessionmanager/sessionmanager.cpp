@@ -2,12 +2,26 @@
 
 #include <fmt/core.h>
 #include <fmt/format.h>
+#include <jwt-cpp/jwt.h>
+#include <jwt-cpp/traits/kazuho-picojson/traits.h>
 
+#include <chrono>
+#include <cstdint>
 #include <ctime>
+#include <exception>
+#include <iostream>
+#include <jsoncons/basic_json.hpp>
+#include <optional>
+#include <ostream>
+#include <string>
+#include <utility>
 #include <utils/jsonhelper/jsonhelper.hpp>
 
+#include "gatekeeper/types.hpp"
+#include "utils/global/callback.hpp"
 #include "utils/global/global.hpp"
 #include "utils/global/http.hpp"
+#include "utils/message/message.hpp"
 
 using SessionManager = api::v2::SessionManager;
 
@@ -16,11 +30,17 @@ bool SessionManager::login(const std::optional<Types::Credentials>& credentials,
     std::optional<std::string> password_hash;
     try
     {
-        auto client_object = getPasswordHashForUserName(credentials->username, clientLoginData->group.value());
+        bool isSqlInjection = false;
+        auto client_object  = getPasswordHashForUserName(credentials->username, clientLoginData->group.value(), isSqlInjection);
 
+        if (isSqlInjection)
+        {
+            message = "A SQL Injection attack was detected. You will be blocked.";
+            return false;
+        }
         if (!client_object.has_value() || client_object.value().empty())
         {
-            message += "Failure: user might not exist, please try again";
+            message = fmt::format("Failure: username {} does not exist, please try again.", credentials->username);
             return false;
         }
 

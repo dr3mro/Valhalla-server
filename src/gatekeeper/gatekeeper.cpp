@@ -24,7 +24,11 @@
 #include "utils/global/http.hpp"
 #include "utils/global/requester.hpp"
 
-using GateKeeper = api::v2::GateKeeper;
+using GateKeeper        = api::v2::GateKeeper;
+using Credentials       = api::v2::Types::Credentials;
+using ClientLoginData   = api::v2::Types::ClientLoginData;
+using PermissionManager = api::v2::PermissionManager;
+using HttpStatus        = api::v2::Http::Status;
 
 GateKeeper::GateKeeper()
     : sessionManager_(Store::getObject<SessionManager>()),
@@ -43,7 +47,7 @@ void GateKeeper::login(CALLBACK_&& callback, std::string_view data, const std::s
 
         if (!success || !credentials.has_value())
         {
-            std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "credentials parse error : " + message);
+            std::move(callback)(HttpStatus::BAD_REQUEST, "credentials parse error : " + message);
             return;
         }
 
@@ -55,7 +59,7 @@ void GateKeeper::login(CALLBACK_&& callback, std::string_view data, const std::s
 
         if (!success || !clientLoginData.has_value())
         {
-            std::move(callback)(Http::Status::UNAUTHORIZED, "login failed: " + message);
+            std::move(callback)(Http::Status::UNAUTHORIZED, "Login failure: " + message);
             return;
         }
 
@@ -85,10 +89,10 @@ void GateKeeper::logout(CALLBACK_&& callback, const std::optional<std::string>& 
 {
     try
     {
-        std::optional<Types::ClientLoginData> clientLoginData = Types::ClientLoginData{};
-        clientLoginData->token                                = token;
-        clientLoginData->group                                = group;
-        clientLoginData->ip_address                           = ip_address;
+        std::optional<ClientLoginData> clientLoginData = ClientLoginData{};
+        clientLoginData->token                         = token;
+        clientLoginData->group                         = group;
+        clientLoginData->ip_address                    = ip_address;
         sessionManager_->logout(std::move(callback), clientLoginData);
     }
     catch (const std::exception& e)
@@ -113,9 +117,9 @@ bool GateKeeper::isAuthenticationValid(std::optional<Types::ClientLoginData>& cl
 
 void GateKeeper::removeSession(std::optional<uint64_t> client_id, const std::string& group)
 {
-    std::optional<Types::ClientLoginData> clientLoginData = Types::ClientLoginData{};
-    clientLoginData->clientId                             = client_id;
-    clientLoginData->group                                = group;
+    std::optional<ClientLoginData> clientLoginData = ClientLoginData{};
+    clientLoginData->clientId                      = client_id;
+    clientLoginData->group                         = group;
     sessionManager_->removeSession(clientLoginData);
 }
 
@@ -139,7 +143,7 @@ std::optional<jsoncons::json> GateKeeper::parse_data(/* NOLINT(readability-conve
     return object_j;
 }
 
-std::optional<Types::Credentials> GateKeeper::parse_credentials(std::string_view data, std::string& message, bool& success)
+std::optional<Credentials> GateKeeper::parse_credentials(std::string_view data, std::string& message, bool& success)
 {
     success = false;
 

@@ -14,6 +14,8 @@
 #include "store/store.hpp"
 #include "utils/global/callback.hpp"
 
+using GateKeeper = api::v2::GateKeeper;
+
 template <typename T>
 class EntityController : public Controller, public EntityControllerBase
 {
