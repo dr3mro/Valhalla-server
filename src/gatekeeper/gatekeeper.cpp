@@ -143,7 +143,7 @@ std::optional<jsoncons::json> GateKeeper::parse_data(/* NOLINT(readability-conve
     return object_j;
 }
 
-[[nodiscard]] bool GateKeeper::isQuerySqlInjection(const std::string& query) const { return SqlInjectionDetector::isQuerySqlInjection(query); }
+[[nodiscard]] bool GateKeeper::isQuerySqlInjection(const std::string& query) { return SqlInjectionDetector::isQuerySqlInjection(query); }
 
 std::optional<Credentials> GateKeeper::parse_credentials(std::string_view data, std::string& message, bool& success)
 {
