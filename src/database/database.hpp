@@ -16,7 +16,6 @@
 #include <string>
 #include <unordered_set>
 
-#include "controllers/staffcontroller/staffcontroller.hpp"
 #include "utils/global/types.hpp"
 
 #define IUGUARD InUseGuard connection_guard(isConnectionInUse_, mtx_, cv_);
