@@ -20,6 +20,7 @@
 #include "configurator/configurator.hpp"
 #include "database.hpp"
 #include "database/database.hpp"
+#include "database/sqlinjectiondetector.hpp"
 #include "store/store.hpp"
 #include "utils/message/message.hpp"
 
@@ -99,6 +100,7 @@ DatabaseConnectionPool::DatabaseConnectionPool() : configurator_(Store::getObjec
         Message::ErrorMessage("Exiting...");
         exit(EXIT_FAILURE); /*NOLINT*/
     }
+    SqlInjectionDetector::initialize();
 }
 
 std::shared_ptr<Database> DatabaseConnectionPool::get_connection()
