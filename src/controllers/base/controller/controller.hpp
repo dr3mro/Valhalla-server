@@ -211,7 +211,6 @@ class Controller
 
    private:
     std::shared_ptr<DatabaseController> databaseController;
-    std::shared_ptr<GateKeeper>         gateKeeper_                                           = Store::getObject<GateKeeper>();
     std::optional<jsoncons::json> (DatabaseController::*dbexec)(const std::string &, bool &)  = &DatabaseController::executeQuery;
     std::optional<jsoncons::json> (DatabaseController::*dbrexec)(const std::string &, bool &) = &DatabaseController::executeReadQuery;
 
@@ -261,7 +260,7 @@ class Controller
     bool get_sql_statement(std::optional<std::string> &query, T &entity, S &sqlstatement, std::string &error)
     {
         query = (entity.*sqlstatement)();
-        if (query.has_value() && gateKeeper_->isQuerySqlInjection(query.value()))
+        if (query.has_value() && GateKeeper::isQuerySqlInjection(query.value()))
         {
             error = "A Sql Injection pattern is detected in generated query.";
             return false;

@@ -20,7 +20,7 @@
 #include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
 
-Database::Database(std::shared_ptr<pqxx::connection> &&conn) : connection(std::move(conn)), gatekeeper_(Store::getObject<GateKeeper>())
+Database::Database(std::shared_ptr<pqxx::connection> &&conn) : connection(std::move(conn))
 {
     try
     {
@@ -45,7 +45,7 @@ bool Database::checkExists(const std::string &table, const std::string &column, 
     try
     {
         std::string query = fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = '{}');", table, column, value);
-        isSqlInjection    = gatekeeper_->isQuerySqlInjection(query);
+        isSqlInjection    = GateKeeper::isQuerySqlInjection(query);
 
         if (isSqlInjection)
         {
@@ -176,7 +176,7 @@ std::optional<jsonType> Database::executeQuery(const std::string &query, bool &i
 
     try
     {
-        isSqlInjection = gatekeeper_->isQuerySqlInjection(query);
+        isSqlInjection = GateKeeper::isQuerySqlInjection(query);
 
         if (isSqlInjection)
         {
@@ -268,7 +268,7 @@ std::optional<T> Database::doSimpleQuery(const std::string &query, bool &isSqlIn
 {
     try
     {
-        isSqlInjection = gatekeeper_->isQuerySqlInjection(query);
+        isSqlInjection = GateKeeper::isQuerySqlInjection(query);
 
         if (isSqlInjection)
         {
