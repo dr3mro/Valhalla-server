@@ -35,7 +35,7 @@ bool SessionManager::login(const std::optional<Types::Credentials>& credentials,
 
         if (isSqlInjection)
         {
-            message = "A SQL Injection attack was detected. You will be blocked.";
+            message = "A Sql Injection pattern is detected in generated query.";
             return false;
         }
         if (!client_object.has_value() || client_object.value().empty())

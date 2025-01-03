@@ -33,7 +33,7 @@ bool KeeprBase::getLastLogoutTimeIfActive(std::optional<Types::ClientLoginData>&
         auto results        = databaseController->executeReadQuery(query, isSqlInjection);
         if (isSqlInjection)
         {
-            Message::ErrorMessage("A SQL Injection attack was detected. You will be blocked.");
+            Message::ErrorMessage("A Sql Injection pattern is detected in generated query.");
             return false;
         }
 
@@ -77,7 +77,7 @@ bool KeeprBase::setNowLoginTimeGetLastLogoutTime(std::optional<Types::ClientLogi
         auto result         = databaseController->executeQuery(query, isSqlInjection);
         if (isSqlInjection)
         {
-            Message::ErrorMessage("A SQL Injection attack was detected. You will be blocked.");
+            Message::ErrorMessage("A Sql Injection pattern is detected in generated query.");
             return false;
         }
 
@@ -119,7 +119,7 @@ void KeeprBase::setNowLogoutTime(uint64_t _id, const std::string& _group)
 
         if (isSqlInjection)
         {
-            Message::ErrorMessage("A SQL Injection attack was detected. You will be blocked.");
+            Message::ErrorMessage("A Sql Injection pattern is detected in generated query.");
             return;
         }
 
@@ -144,7 +144,7 @@ std::optional<std::string> KeeprBase::getLastLoginTime(uint64_t _id, const std::
     std::optional<std::string> result = databaseController->doReadQuery(query, isSqlInjection);
     if (isSqlInjection)
     {
-        Message::ErrorMessage("A SQL Injection attack was detected. You will be blocked.");
+        Message::ErrorMessage("A Sql Injection pattern is detected in generated query.");
         return std::nullopt;
     }
     return result;

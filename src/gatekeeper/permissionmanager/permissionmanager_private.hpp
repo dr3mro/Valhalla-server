@@ -88,7 +88,7 @@ namespace api::v2
 
             if (isSqlInjection)
             {
-                Message::ErrorMessage("A SQL Injection attack was detected. You will be blocked.");
+                Message::ErrorMessage("A Sql Injection pattern is detected in generated query.");
                 return std::nullopt;
             }
 
