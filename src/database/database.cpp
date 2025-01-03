@@ -16,7 +16,6 @@
 
 #include "controllers/staffcontroller/staffcontroller.hpp"
 #include "database/inuseguard.hpp"  // IWYU pragma: keep
-#include "store/store.hpp"
 #include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
 
