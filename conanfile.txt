@@ -2,14 +2,14 @@
 cppcodec/0.2
 picojson/cci.20210117
 zlib/1.3.1
-libpqxx/7.9.2
+libpqxx/7.10.0
 yaml-cpp/0.8.0
 jwt-cpp/0.7.0
 jsoncons/0.178.0
 catch2/3.7.1
 xxhash/0.8.2
 libsodium/cci.20220430
-libcurl/8.10.1
+libcurl/8.11.1
 spdlog/1.13.0
 fmt/10.2.1
 c-ares/1.25.0
