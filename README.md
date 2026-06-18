@@ -304,9 +304,6 @@ ctest --test-dir build/Debug
 
 Contributions are welcome. Please open an issue to discuss substantial changes first, keep commits focused, and run `clang-format` before submitting a pull request. See [`Todo.txt`](Todo.txt) for current work in progress.
 
-## License
-
-No license file is currently included in this repository. Until one is added, the work is "all rights reserved" by default — please contact the author before reuse. Consider adding a `LICENSE` file (e.g. MIT, Apache-2.0, or GPL-3.0) to clarify usage terms.
 
 # Project Valhalla
 
