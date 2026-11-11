@@ -8,6 +8,7 @@
 #include <jsoncons/json.hpp>
 #include <memory>
 #include <optional>
+#include <pqxx/pqxx>
 #include <string>
 #include <unordered_set>
 #include <utility>
@@ -30,9 +31,9 @@ class DatabaseController
     DatabaseController &operator=(DatabaseController &&)      = delete;
     virtual ~DatabaseController()                             = default;
 
-    std::optional<jsoncons::json>        executeQuery(const std::string &query, bool &isSqlInjection);
-    std::optional<jsoncons::json>        executeReadQuery(const std::string &query, bool &isSqlInjection);
-    std::optional<jsoncons::json::array> executeSearchQuery(const std::string &query, bool &isSqlInjection);
+    std::optional<jsoncons::json>        executeQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params = {});
+    std::optional<jsoncons::json>        executeReadQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params = {});
+    std::optional<jsoncons::json::array> executeSearchQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params = {});
     std::optional<std::string>           doReadQuery(const std::string &query, bool &isSqlInjection);
     std::optional<bool>                  checkItemExists(const std::string &table, const std::string &column, const std::string &value, bool &isSqlInjection);
     std::optional<jsoncons::json>        getPasswordHashForUserName(const std::string &username, const std::string &tablename, bool &isSqlInjection);

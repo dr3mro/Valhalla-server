@@ -43,7 +43,7 @@ class Entity : public Base
 
     std::optional<std::string> getSqlCreateStatement() override
     {
-        std::optional<std::string> query;
+        sql_params_ = {};
         try
         {
             std::vector<std::string> keys_arr;
@@ -58,10 +58,14 @@ class Entity : public Base
                 values_arr.push_back(iterator.value().as<std::string>());
             }
 
-            std::string columns = fmt::format("{}", fmt::join(keys_arr, ","));
-            std::string values  = fmt::format("'{}'", fmt::join(values_arr, "','"));
+            std::vector<std::string> placeholders;
+            for (size_t i = 1; i <= values_arr.size(); ++i)
+                placeholders.push_back(fmt::format("${}", i));
+            for (const auto &v : values_arr)
+                sql_params_.append(v);
 
-            query = fmt::format("INSERT INTO {} ({}) VALUES ({}) RETURNING *;", tablename, columns, values);
+            std::string columns = fmt::format("{}", fmt::join(keys_arr, ","));
+            return fmt::format("INSERT INTO {} ({}) VALUES ({}) RETURNING *;", tablename, columns, fmt::join(placeholders, ","));
         }
         catch (const std::exception &e)
         {
@@ -69,11 +73,11 @@ class Entity : public Base
             Message::CriticalMessage(e.what());
             return std::nullopt;
         }
-        return query;
     };
 
     std::optional<std::string> getSqlReadStatement() override
     {
+        sql_params_ = {};
         std::optional<std::string> query;
         try
         {
@@ -99,8 +103,7 @@ class Entity : public Base
 
     std::optional<std::string> getSqlUpdateStatement() override
     {
-        std::optional<std::string> query;
-
+        sql_params_ = {};
         try
         {
             jsoncons::json payload = std::get<Update_t>(data).get_data();
@@ -112,18 +115,16 @@ class Entity : public Base
                 Message::ErrorMessage(fmt::format("Failed to update data from table {}. No id provided.", tablename));
             }
 
-            std::string update_column_values;
+            std::vector<std::string> set_clauses;
+            size_t                   param_idx = 1;
 
             for (auto it = payload.object_range().begin(); it != payload.object_range().end(); ++it)
             {
-                update_column_values.append(fmt::format(" {} = '{}' ", it->key(), it->value().as<std::string>()));
-                if (std::next(it) != payload.object_range().end())
-                {
-                    update_column_values.append(",");
-                }
+                set_clauses.push_back(fmt::format("{} = ${}", it->key(), param_idx++));
+                sql_params_.append(it->value().as<std::string>());
             }
 
-            query = fmt::format("UPDATE {} set {} WHERE id={} returning *;", tablename, update_column_values, _id.value());
+            return fmt::format("UPDATE {} SET {} WHERE id={} RETURNING *;", tablename, fmt::join(set_clauses, ", "), _id.value());
         }
         catch (const std::exception &e)
         {
@@ -131,11 +132,11 @@ class Entity : public Base
             Message::CriticalMessage(e.what());
             return std::nullopt;
         }
-        return query;
     }
 
     std::optional<std::string> getSqlDeleteStatement() override
     {
+        sql_params_ = {};
         std::optional<std::string> query;
         std::optional<uint64_t>    _id;
 
@@ -161,14 +162,15 @@ class Entity : public Base
 
     std::optional<std::string> getSqlSearchStatement() override
     {
-        std::optional<std::string> query;
+        sql_params_ = {};
         try
         {
             Search_t searchdata = std::get<Search_t>(getData());
-            query               = fmt::format(
-                "SELECT * FROM {}_safe WHERE {}::text ILIKE '%{}%' ORDER BY {} {} "
-                              "LIMIT {} OFFSET {};",
-                tablename, searchdata.filter, searchdata.keyword, searchdata.order_by, searchdata.direction, searchdata.limit + 1, searchdata.offset);
+            sql_params_.append(fmt::format("%{}%", searchdata.keyword));
+            return fmt::format(
+                "SELECT * FROM {}_safe WHERE {}::text ILIKE $1 ORDER BY {} {} "
+                "LIMIT {} OFFSET {};",
+                tablename, searchdata.filter, searchdata.order_by, searchdata.direction, searchdata.limit + 1, searchdata.offset);
         }
         catch (const std::exception &e)
         {
@@ -176,8 +178,6 @@ class Entity : public Base
             Message::CriticalMessage(e.what());
             return std::nullopt;
         }
-
-        return query;
     }
 
     [[nodiscard("Warning: You should never discard the returned object")]] const EntityType &getData() const { return data; }

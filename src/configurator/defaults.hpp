@@ -27,7 +27,7 @@ namespace Defaults
         const bool        DB_SSL_      = false;
         const uint8_t     DB_MAX_CONN_ = 10;
         const uint16_t    DB_PORT_     = 5432;
-        const std::string DB_HOST_     = "172.20.0.2";
+        const std::string DB_HOST_     = "127.0.0.1";
         const std::string DB_NAME_     = "postgres";
         const std::string DB_USER_     = "postgres";
         const std::string DB_PASS_     = "postgres";

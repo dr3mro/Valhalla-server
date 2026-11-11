@@ -30,4 +30,9 @@ class LaboratoryAppointment : public Appointment
     {
         return getServicePermissionsQueryImpl(service_name, service_id);
     }
+
+    static std::optional<std::string> getPermissionsQueryForRead(std::uint64_t appointment_id)
+    {
+        return getPermissionsQueryForReadImpl(ORGNAME, TABLENAME, appointment_id);
+    }
 };

@@ -152,31 +152,31 @@ bool PermissionManager::canCreate(const Requester& requester, const std::optiona
 }
 
 template <Appointment_t T>
-bool PermissionManager::canRead(const Requester& requester, uint64_t service_id, Http::Error& error)
+bool PermissionManager::canRead(const Requester& requester, uint64_t appointment_id, Http::Error& error)
 {
     std::string service_name = T::getOrgName();
 
-    std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
+    std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getPermissionsQueryForRead, appointment_id);
 
     return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }
 
 template <Appointment_t T>
-bool PermissionManager::canUpdate(const Requester& requester, const uint64_t service_id, Http::Error& error)
+bool PermissionManager::canUpdate(const Requester& requester, const uint64_t appointment_id, Http::Error& error)
 {
     std::string service_name = T::getOrgName();
 
-    std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
+    std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getPermissionsQueryForRead, appointment_id);
 
     return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }
 
 template <Appointment_t T>
-bool PermissionManager::canDelete(const Requester& requester, uint64_t service_id, Http::Error& error)
+bool PermissionManager::canDelete(const Requester& requester, uint64_t appointment_id, Http::Error& error)
 {
     std::string service_name = T::getOrgName();
 
-    std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
+    std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getPermissionsQueryForRead, appointment_id);
 
     return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
 }

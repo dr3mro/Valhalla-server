@@ -45,6 +45,7 @@ namespace api
 
             std::optional<std::string> getSqlCreateStatement() final
             {
+                sql_params_ = {};
                 auto clientdata = std::get<Types::CreateClient_t>(getData());
 
                 try
@@ -58,10 +59,14 @@ namespace api
                         values_arr.push_back(item.second);
                     }
 
-                    std::string columns = fmt::format("{}", fmt::join(keys_arr, ","));
-                    std::string values  = fmt::format("'{}'", fmt::join(values_arr, "','"));
+                    std::vector<std::string> placeholders;
+                    for (size_t i = 1; i <= values_arr.size(); ++i)
+                        placeholders.push_back(fmt::format("${}", i));
+                    for (const auto &v : values_arr)
+                        sql_params_.append(v);
 
-                    return fmt::format("INSERT INTO {} ({}) VALUES ({}) RETURNING id;", tablename, columns, values);
+                    std::string columns = fmt::format("{}", fmt::join(keys_arr, ","));
+                    return fmt::format("INSERT INTO {} ({}) VALUES ({}) RETURNING id;", tablename, columns, fmt::join(placeholders, ","));
                 }
                 catch (const std::exception &e)
                 {
@@ -69,13 +74,11 @@ namespace api
                     Message::CriticalMessage(e.what());
                     return std::nullopt;
                 }
-                return std::nullopt;
             }
 
             std::optional<std::string> getSqlUpdateStatement() final
             {
-                std::optional<std::string> query;
-
+                sql_params_ = {};
                 try
                 {
                     auto clientdata = std::get<Types::UpdateClient_t>(getData()).get_data_set();
@@ -85,18 +88,17 @@ namespace api
                         Message::ErrorMessage(fmt::format("Failed to update client data. No id provided."));
                         return std::nullopt;
                     }
-                    std::string update_column_values;
+
+                    std::vector<std::string> set_clauses;
+                    size_t                   param_idx = 1;
 
                     for (auto it = clientdata.begin(); it != clientdata.end(); ++it)
                     {
-                        update_column_values.append(fmt::format(" {} = '{}' ", it->first, it->second));
-                        if (std::next(it) != clientdata.end())
-                        {
-                            update_column_values.append(",");
-                        }
+                        set_clauses.push_back(fmt::format("{} = ${}", it->first, param_idx++));
+                        sql_params_.append(it->second);
                     }
 
-                    query = fmt::format("UPDATE {} set {} WHERE id={} returning id;", tablename, update_column_values, client_id.value());
+                    return fmt::format("UPDATE {} SET {} WHERE id={} RETURNING id;", tablename, fmt::join(set_clauses, ", "), client_id.value());
                 }
                 catch (const std::exception &e)
                 {
@@ -104,7 +106,6 @@ namespace api
                     Message::CriticalMessage(e.what());
                     return std::nullopt;
                 }
-                return query;
             }
 
             std::optional<std::string> getSqlToggleSuspendStatement(bool state)

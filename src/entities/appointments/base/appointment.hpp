@@ -36,4 +36,21 @@ class Appointment : public Entity
         id = {};)",
             service_name, service_id);
     }
+
+    static std::optional<std::string> getPermissionsQueryForReadImpl(const std::string &org_name, const std::string &appointments_table, std::uint64_t appointment_id)
+    {
+        // org_name is plural (e.g. "clinics") but the FK column is singular (e.g. "clinic_id")
+        std::string fk_col = org_name.back() == 's' ? org_name.substr(0, org_name.size() - 1) + "_id" : org_name + "_id";
+        return fmt::format(R"(
+        SELECT
+        s.owner_id,
+        s.admin_id,
+        s.staff
+        FROM
+        {} s
+        JOIN {} a ON a.{} = s.id
+        WHERE
+        a.id = {};)",
+            org_name, appointments_table, fk_col, appointment_id);
+    }
 };

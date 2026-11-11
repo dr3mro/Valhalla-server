@@ -35,10 +35,10 @@ class Database
     bool reconnect();
 
     template <typename jsonType, typename TransactionType>
-    std::optional<jsonType> executeQuery(const std::string &query, bool &isSqlInjection);
+    std::optional<jsonType> executeQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params = {});
 
     template <typename T>
-    std::optional<T> doSimpleQuery(const std::string &query, bool &isSqlInjection);
+    std::optional<T> doSimpleQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params = {});
 
     std::optional<std::unordered_set<api::v2::ColumnInfo>> getTableSchema(const std::string &tableName);
     std::optional<std::unordered_set<std::string>>         getAllTables();

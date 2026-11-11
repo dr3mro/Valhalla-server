@@ -1,0 +1,23 @@
+[
+  {
+    "label": "Debug Server",
+    "adapter": "CodeLLDB",
+    "request": "launch",
+    "program": "$ZED_WORKTREE_ROOT/build/Debug/server",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "args": [],
+    "env": {
+      "DB_HOST": "127.0.0.1",
+      "DB_PORT": "5432",
+      "DB_NAME": "postgres",
+      "DB_USER": "postgres",
+      "DB_PASS": "postgres",
+    },
+    "build": {
+      "label": "Build Debug",
+      "command": "make",
+      "args": ["-C", "$ZED_WORKTREE_ROOT/build/Debug", "-j", "8"],
+      "cwd": "$ZED_WORKTREE_ROOT",
+    },
+  },
+]

@@ -98,7 +98,7 @@ class Controller
             if (query.has_value())
             {
                 bool isSqlInjection      = false;
-                query_results_json_array = databaseController->executeSearchQuery(query.value(), isSqlInjection);
+                query_results_json_array = databaseController->executeSearchQuery(query.value(), isSqlInjection, entity.getSqlParams());
 
                 if (isSqlInjection)
                 {
@@ -211,8 +211,8 @@ class Controller
 
    private:
     std::shared_ptr<DatabaseController> databaseController;
-    std::optional<jsoncons::json> (DatabaseController::*dbexec)(const std::string &, bool &)  = &DatabaseController::executeQuery;
-    std::optional<jsoncons::json> (DatabaseController::*dbrexec)(const std::string &, bool &) = &DatabaseController::executeReadQuery;
+    std::optional<jsoncons::json> (DatabaseController::*dbexec)(const std::string &, bool &, const pqxx::params &)  = &DatabaseController::executeQuery;
+    std::optional<jsoncons::json> (DatabaseController::*dbrexec)(const std::string &, bool &, const pqxx::params &) = &DatabaseController::executeReadQuery;
 
    protected:
     template <typename T>
@@ -275,7 +275,7 @@ class Controller
     }
 
     template <typename S, typename T>
-    void cruds(T &entity, S &sqlstatement, std::optional<jsoncons::json> (DatabaseController::*func)(const std::string &, bool &), CALLBACK_ &&callback)
+    void cruds(T &entity, S &sqlstatement, std::optional<jsoncons::json> (DatabaseController::*func)(const std::string &, bool &, const pqxx::params &), CALLBACK_ &&callback)
     {
         std::optional<jsoncons::json> results_j;
         std::optional<std::string>    query;
@@ -291,7 +291,7 @@ class Controller
             if (query.has_value())
             {
                 bool isSqlInjection = false;
-                results_j           = (*databaseController.*func)(query.value(), isSqlInjection);
+                results_j           = (*databaseController.*func)(query.value(), isSqlInjection, entity.getSqlParams());
                 if (results_j.has_value())
                 {
                     if (!results_j->empty())
