@@ -42,8 +42,9 @@ namespace api::v2
 
         static bool preServiceCreateChecks(const Requester& requester, const std::optional<jsoncons::json>& service_j, Http::Error& error);
 
-        static bool isOwnerOrAdminOrHasPermission(
-            const Requester& requester, const std::optional<jsoncons::json>& permissions_j, const std::string& service_name, Http::Error& error);
+        // Owner and admin always pass; other staff need the `required` bit (CAN_READ for reads, CAN_WRITE for create/update, CAN_DELETE for deletes).
+        static bool isOwnerOrAdminOrHasPermission(const Requester& requester, const std::optional<jsoncons::json>& permissions_j, const std::string& service_name,
+            Http::Error& error, Permissions::PowerLevel required = Permissions::PowerLevel::CAN_DELETE);
 
         static bool isOwnerOrAdmin(
             const Requester& requester, const std::optional<jsoncons::json>& permissions_j, const std::string& service_name, Http::Error& error);

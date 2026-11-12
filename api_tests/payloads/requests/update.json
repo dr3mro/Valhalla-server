@@ -1,0 +1,16 @@
+{
+  "requests": [
+    {
+      "name": "Chest Xray",
+      "date": "2020-01-01",
+      "result": "Positive for lung cancer",
+      "media": "url"
+    },
+    {
+      "name": "CBC",
+      "date": "2020-01-01",
+      "result": "Anemia",
+      "media": "url"
+    }
+  ]
+}

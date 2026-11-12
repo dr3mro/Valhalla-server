@@ -63,7 +63,7 @@ bool PermissionManager::canRead(const Requester& requester, uint64_t service_id,
 
     std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
-    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
+    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error, Permissions::PowerLevel::CAN_READ);
 }
 
 template <Service_t T>
@@ -73,7 +73,7 @@ bool PermissionManager::canUpdate(const Requester& requester, uint64_t service_i
 
     std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id);
 
-    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
+    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error, Permissions::PowerLevel::CAN_WRITE);
 }
 
 template <Service_t T>
@@ -103,7 +103,7 @@ bool PermissionManager::canCreate(const Requester& requester, const std::optiona
 
     std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getPermissionsQueryForCreate, data_j);
 
-    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
+    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error, Permissions::PowerLevel::CAN_WRITE);
 }
 
 template <Case_t T>
@@ -113,7 +113,7 @@ bool PermissionManager::canRead(const Requester& requester, const uint64_t _id, 
 
     std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getPermissionsQueryForRead, _id);
 
-    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
+    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error, Permissions::PowerLevel::CAN_READ);
 }
 
 template <Case_t T>
@@ -123,7 +123,7 @@ bool PermissionManager::canUpdate(const Requester& requester, const uint64_t _id
 
     std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(&T::getPermissionsQueryForUpdate, _id);
 
-    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
+    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error, Permissions::PowerLevel::CAN_WRITE);
 }
 
 template <Case_t T>
@@ -132,7 +132,7 @@ bool PermissionManager::canDelete(const Requester& requester, const uint64_t _id
     std::string                   service_name  = T::getTableName();
     std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(&T::getPermissionsQueryForDelete, _id);
 
-    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
+    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error, Permissions::PowerLevel::CAN_DELETE);
 }
 
 template <Appointment_t T>
@@ -148,7 +148,7 @@ bool PermissionManager::canCreate(const Requester& requester, const std::optiona
     }
     std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getServicePermissionsQuery, service_name, service_id.value());
 
-    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
+    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error, Permissions::PowerLevel::CAN_WRITE);
 }
 
 template <Appointment_t T>
@@ -158,7 +158,7 @@ bool PermissionManager::canRead(const Requester& requester, uint64_t appointment
 
     std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getPermissionsQueryForRead, appointment_id);
 
-    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
+    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error, Permissions::PowerLevel::CAN_READ);
 }
 
 template <Appointment_t T>
@@ -168,7 +168,7 @@ bool PermissionManager::canUpdate(const Requester& requester, const uint64_t app
 
     std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getPermissionsQueryForRead, appointment_id);
 
-    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
+    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error, Permissions::PowerLevel::CAN_WRITE);
 }
 
 template <Appointment_t T>
@@ -178,7 +178,7 @@ bool PermissionManager::canDelete(const Requester& requester, uint64_t appointme
 
     std::optional<jsoncons::json> permissions_j = pm_priv::getPermissionsOfEntity(T::getPermissionsQueryForRead, appointment_id);
 
-    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error);
+    return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error, Permissions::PowerLevel::CAN_DELETE);
 }
 
 #define INSTANTIATE_PERMISSION_CRUD(TYPE)                                                                                 \

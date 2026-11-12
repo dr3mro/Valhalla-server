@@ -3,10 +3,12 @@
 #include <fmt/core.h>
 
 #include <cstdint>
+#include <cstdlib>
 #include <jsoncons/basic_json.hpp>
 #include <optional>
 #include <pqxx/pqxx>
 #include <string>
+#include <string_view>
 #include <unordered_set>
 
 #include "database/database.hpp"
@@ -15,7 +17,37 @@
 #include "store/store.hpp"
 #include "utils/global/types.hpp"
 
-DatabaseController::DatabaseController() : databaseConnectionPool_(Store::getObject<DatabaseConnectionPool>()), watchDog_(Store::getObject<WatchDog>()) {}
+DatabaseController::DatabaseController() {}
+
+void DatabaseController::ensureBackends()
+{
+    // Lazily create the connection pool and watchdog on first use instead of
+    // in the constructor: the pool constructor calls exit(EXIT_FAILURE) when
+    // PostgreSQL is unreachable, which made the whole class unconstructible in
+    // hermetic unit tests. The server still connects at startup, because
+    // Server's constructor eagerly creates DatabaseSchema, which constructs
+    // the (singleton) DatabaseController through Store and then performs the
+    // first query (schema population) during boot.
+    static std::mutex backendInitMutex;
+    std::lock_guard<std::mutex> lock(backendInitMutex);
+    if (!databaseConnectionPool_)
+    {
+        // Hermetic unit-test seam: when VALHALLA_TEST_NO_DB is set (the unit
+        // test binary sets it before any Configurator is created), the pool
+        // and watchdog are never created. Every query path then reports
+        // "database unavailable" (std::nullopt) deterministically, with no
+        // sockets opened and no retries. Production never sets the variable,
+        // so behaviour is unchanged there.
+        const char *const noDb = std::getenv("VALHALLA_TEST_NO_DB");
+        if (noDb != nullptr && noDb[0] != '\0' && std::string_view(noDb) != "0")
+        {
+            return;
+        }
+        databaseConnectionPool_ = Store::getObject<DatabaseConnectionPool>();
+        watchDog_               = Store::getObject<WatchDog>();
+    }
+}
+
 std::optional<jsoncons::json> DatabaseController::executeQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params)
 {
     return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::work>, query, isSqlInjection, params);

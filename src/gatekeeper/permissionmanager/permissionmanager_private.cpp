@@ -166,14 +166,14 @@ bool api::v2::PermissionManagerPrivate::preServiceCreateChecks(const Requester& 
 }
 
 bool api::v2::PermissionManagerPrivate::isOwnerOrAdminOrHasPermission(
-    const Requester& requester, const std::optional<jsoncons::json>& permissions_j, const std::string& service_name, Http::Error& error)
+    const Requester& requester, const std::optional<jsoncons::json>& permissions_j, const std::string& service_name, Http::Error& error, Permissions::PowerLevel required)
 {
     if (isOwnerOrAdmin(requester, permissions_j, service_name, error))
     {
         return true;
     }
 
-    if (!hasPermission(requester, permissions_j, Permissions::PowerLevel::CAN_DELETE, service_name, error))
+    if (!hasPermission(requester, permissions_j, required, service_name, error))
     {
         error.code    = Http::Status::FORBIDDEN;
         error.message = fmt::format("You don't have the permission to manage  {} {}", service_name, error.message);

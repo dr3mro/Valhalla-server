@@ -7,6 +7,7 @@
 #include <jsoncons/basic_json.hpp>
 #include <jsoncons/json.hpp>
 #include <memory>
+#include <mutex>
 #include <optional>
 #include <pqxx/pqxx>
 #include <string>
@@ -47,11 +48,23 @@ class DatabaseController
     std::shared_ptr<DatabaseConnectionPool> databaseConnectionPool_;
     std::shared_ptr<WatchDog>               watchDog_;
 
+    void ensureBackends();  // lazily creates the connection pool and watchdog
+
     template <typename Result, typename Func, typename... Args>
     std::optional<Result> executer(const Func &func, Args &&...args)
     {
         try
         {
+            ensureBackends();
+
+            // Hermetic test mode: no backends were created, so report the
+            // database as unavailable without constructing a handler (which
+            // would create a pool via Store and exit() on init failure).
+            if (!databaseConnectionPool_)
+            {
+                return std::nullopt;
+            }
+
             std::unique_ptr<DatabaseHanndler> dbHandler = std::make_unique<DatabaseHanndler>();
             std::shared_ptr<Database>         db_ptr    = dbHandler->get_connection();
 

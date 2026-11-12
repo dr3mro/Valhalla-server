@@ -1,0 +1,23 @@
+{
+  "patient_id": {{PATIENT_ID}},
+  "clinic_id": {{CLINIC_ID}},
+  "visit_date": "2020-01-01",
+  "visit_time": "10:00",
+  "complaints": "Headache",
+  "symptoms": "Rhinorhea, sorethroat",
+  "examination": {
+    "BP": "120/80",
+    "pulse": "100",
+    "temperature": "98.6",
+    "respiration": "18",
+    "oxygen_saturation": "98",
+    "weight": "80",
+    "height": "180",
+    "comments": "No",
+    "Examination": "",
+    "Other": "",
+    "Notes": ""
+  },
+  "diagnosis": "Flu",
+  "comments": "None"
+}

@@ -1,0 +1,16 @@
+{
+  "id": {{VISIT_ID}},
+  "clinic_id": {{CLINIC_ID}},
+  "paidservices": [
+    {
+      "name": "Service 1",
+      "date": "2020-01-01",
+      "amount": "100.00"
+    },
+    {
+      "name": "Service 2",
+      "date": "2020-01-01",
+      "amount": "100.00"
+    }
+  ]
+}

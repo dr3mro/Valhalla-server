@@ -1,0 +1,21 @@
+{
+  "visit_date": "2020-01-02",
+  "visit_time": "11:00",
+  "complaints": "Headache and fever",
+  "symptoms": "Rhinorhea, sorethroat",
+  "examination": {
+    "BP": "125/85",
+    "pulse": "90",
+    "temperature": "99.1",
+    "respiration": "18",
+    "oxygen_saturation": "98",
+    "weight": "80",
+    "height": "180",
+    "comments": "No",
+    "Examination": "",
+    "Other": "",
+    "Notes": ""
+  },
+  "diagnosis": "Flu",
+  "comments": "Updated"
+}

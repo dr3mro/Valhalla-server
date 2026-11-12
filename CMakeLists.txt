@@ -81,8 +81,17 @@ add_compile_options(-ftemplate-backtrace-limit=0)
 # Find all source files
 file(GLOB_RECURSE SRC "src/*.cpp")
 
-# Add the executable
-add_executable(${Target} ${SRC})
+# Collect the main() translation unit separately so that the rest of the code
+# can be linked into the test executable as well.
+set(SRC_MAIN "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
+list(FILTER SRC EXCLUDE REGEX "src/main\\.cpp$")
+
+# Core library: everything except main(). Tests link against this.
+add_library(server_core STATIC ${SRC})
+
+# Executable: main() + core. Output name/path unchanged (build/<type>/server).
+add_executable(${Target} ${SRC_MAIN})
+target_link_libraries(${Target} PRIVATE server_core)
 
 # Define all your packages in a list
 set(CONAN_PACKAGES
@@ -110,30 +119,46 @@ foreach(PACKAGE ${CONAN_PACKAGES})
   list(APPEND PACKAGE_LIBS ${${PACKAGE}_LIBRARIES})
 endforeach()
 
-# Add includes
-target_include_directories(${Target} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src
-                                             ${PACKAGE_INCLUDES})
+# Add includes (PUBLIC so the unit tests inherit them via server_core)
+target_include_directories(server_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src
+                                              ${PACKAGE_INCLUDES})
+
+# Embed the API docs page (docs/api.html) into the binary as a constexpr string_view.
+# Generates ${CMAKE_BINARY_DIR}/generated/api_html.hpp, included by src/api/v2/routes/doc.hpp.
+include(tools/cmake/embed_html.cmake)
+embed_html(
+  INPUT docs/api.html
+  OUTPUT ${CMAKE_BINARY_DIR}/generated/api_html.hpp
+  VARIABLE kApiHtml
+  NAMESPACE api::v2::docs)
+target_include_directories(server_core PUBLIC ${CMAKE_BINARY_DIR}/generated)
 
 include(tools/conan/variables.cmake)
 
-# Link libraries
-target_link_libraries(${Target} PRIVATE ${PACKAGE_LIBS})
+# Link libraries (PUBLIC: static lib deps are propagated to consumers)
+target_link_libraries(server_core PUBLIC ${PACKAGE_LIBS})
 
-# Enable AddressSanitizer only for Debug build type on Linux for now
+# Enable AddressSanitizer only for Debug build type on Linux for now.
+# Applied globally so the server binary, server_core and the unit tests all
+# get instrumented (ASan/UBSan/LSan enforced on test runs on Linux Debug).
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
   if(LINUX)
     message("Enabling AddressSanitizer for Debug builds on Linux")
-    target_compile_options(
-      ${Target} PRIVATE -fsanitize=address -fsanitize=undefined -fsanitize=leak
+    add_compile_options(-fsanitize=address -fsanitize=undefined -fsanitize=leak
                         -fno-sanitize=thread -fno-omit-frame-pointer)
-    target_link_options(
-      ${Target}
-      PRIVATE
-      -fsanitize=address
-      -fsanitize=undefined
-      -fsanitize=leak
-      -fno-sanitize=thread
-      -fno-omit-frame-pointer)
+    add_link_options(-fsanitize=address -fsanitize=undefined -fsanitize=leak
+                     -fno-sanitize=thread -fno-omit-frame-pointer)
   endif()
 endif()
-add_subdirectory(tests)
+
+# Unit tests. ON by default; CI/Docker release builds may pass -DENABLE_TESTS=OFF.
+option(ENABLE_TESTS "Build the Catch2 unit test suite and register it with CTest" ON)
+if(ENABLE_TESTS)
+  # enable_testing() here creates build/<type>/CTestTestfile.cmake at the root,
+  # which ctest needs to descend into tests/. (tools/conan/variables.cmake sets
+  # BUILD_TESTING OFF above, which would otherwise suppress it.)
+  enable_testing()
+  add_subdirectory(tests)
+else()
+  message(STATUS "Tests disabled (ENABLE_TESTS=OFF)")
+endif()

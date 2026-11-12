@@ -2,8 +2,10 @@
 
 #include <atomic>
 #include <chrono>
+#include <condition_variable>
 #include <cstdint>
 #include <deque>
+#include <functional>
 #include <future>
 #include <memory>
 #include <mutex>
@@ -37,7 +39,14 @@ class DOSDetector
         std::string_view                             body;
     };
 
+    /// Injectable clock (test seam). Returns a steady_clock time point.
+    using ClockFn = std::function<std::chrono::time_point<std::chrono::steady_clock>()>;
+
     DOSDetector();
+    /// Test seam: fully specified config + clock. Production behaviour is
+    /// unchanged; the default constructor still reads the Store Configurator
+    /// and uses the real steady clock.
+    DOSDetector(Configurator::DOSDetectorConfig config, ClockFn clock);
     DOSDetector(const DOSDetector &)            = delete;
     DOSDetector(DOSDetector &&)                 = delete;
     DOSDetector &operator=(const DOSDetector &) = delete;
@@ -46,9 +55,11 @@ class DOSDetector
     DOSDetector::Status is_dos_attack(const Request &request);
 
    private:
-    std::shared_ptr<Configurator>            configurator_       = Store::getObject<Configurator>();
-    const Configurator::DOSDetectorConfig   &config_             = configurator_->get<Configurator::DOSDetectorConfig>();
-    static constexpr int                     REQUEST_BUFFER_SIZE = 4096;
+    std::shared_ptr<Configurator>                        configurator_ = Store::getObject<Configurator>();
+    std::optional<Configurator::DOSDetectorConfig>       owned_config_;
+    const Configurator::DOSDetectorConfig               &config_       = configurator_->get<Configurator::DOSDetectorConfig>();
+    ClockFn                                              clock_        = [] { return std::chrono::steady_clock::now(); };
+    static constexpr int                                 REQUEST_BUFFER_SIZE = 4096;
     inline void __attribute((always_inline)) clean_requests(const std::chrono::time_point<std::chrono::steady_clock> &window);
     inline void __attribute((always_inline)) clean_ratelimited_ips(const std::chrono::time_point<std::chrono::steady_clock> &now);
     inline void __attribute((always_inline)) clean_banned_ips(const std::chrono::time_point<std::chrono::steady_clock> &now);
@@ -69,6 +80,8 @@ class DOSDetector
 
     std::future<void> async_task_clean_;
     std::atomic<bool> running_clean_{true};
+    std::mutex        clean_mutex_;  // guards the cleanup-thread wait
+    std::condition_variable clean_cv_;  // lets the destructor wake the cleanup thread promptly
 
     void                                                           cleanUpTask();
     inline std::optional<std::string> __attribute((always_inline)) generateRequestFingerprint(const DOSDetector::Request &request);

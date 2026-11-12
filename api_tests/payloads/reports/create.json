@@ -1,0 +1,18 @@
+{
+  "id": {{PATIENT_ID}},
+  "clinic_id": {{CLINIC_ID}},
+  "reports": [
+    {
+      "report_type": "Clinical",
+      "name": "Preoperative",
+      "date": "2020-01-01",
+      "result": "Text"
+    },
+    {
+      "report_type": "Clinical",
+      "name": "Preoccupation",
+      "date": "2020-01-01",
+      "result": "Text"
+    }
+  ]
+}

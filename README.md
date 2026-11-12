@@ -14,9 +14,14 @@ A high-performance, multi-tenant healthcare backend written in modern C++20. Val
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Build from Source](#build-from-source)
+    - [Debian / Ubuntu](#debian--ubuntu)
+    - [Fedora](#fedora)
+  - [Database setup](#database-setup)
+  - [Run the server](#run-the-server)
   - [Run with Docker](#run-with-docker)
 - [Configuration](#configuration)
 - [API Overview](#api-overview)
+  - [Interactive API docs](#interactive-api-docs)
 - [Project Layout](#project-layout)
 - [Development](#development)
 - [Contributing](#contributing)
@@ -97,26 +102,61 @@ Database controller  ──►  Connection pool  ──►  PostgreSQL
 ### Prerequisites
 
 - A C++20-capable compiler (GCC 13+ / Clang 17+)
-- [CMake](https://cmake.org/) ≥ 3.30
+- [CMake](https://cmake.org/) ≥ 3.30 and [Ninja](https://ninja-build.org/) (used by `build.sh`)
 - [Conan](https://conan.io/) 2.x (package manager)
 - A reachable [PostgreSQL](https://www.postgresql.org/) instance
 - *(optional)* `ccache` — used automatically if found, to speed up rebuilds
 - *(optional)* Docker + Docker Compose for containerized runs
 
+Tested distributions: **Debian 13 (trixie)+ / Ubuntu 24.04+** and **Fedora 40+**. Older releases ship GCC < 13 or CMake < 3.30; see the notes below for workarounds.
+
 ### Build from Source
 
-Install Conan and detect a build profile:
+#### Debian / Ubuntu
+
+```bash
+# 1. Toolchain and build helpers (Conan compiles most dependencies from source)
+sudo apt update
+sudo apt install -y build-essential git curl zip unzip tar pkg-config \
+    cmake ninja-build ccache make autoconf automake libtool bison flex perl \
+    uuid-dev libssl-dev python3 python3-pip pipx \
+    postgresql postgresql-client
+
+# 2. Check versions: you need GCC >= 13 and CMake >= 3.30
+g++ --version | head -1
+cmake --version | head -1
+```
+
+> If `cmake` is older than 3.30 (e.g. Ubuntu 22.04/Debian 12), install a newer one with `pipx install cmake` (or from the [Kitware APT repository](https://apt.kitware.com/)). If `g++` is older than 13, install `g++-13` (`sudo apt install g++-13`) and export `CC=gcc-13 CXX=g++-13` before the steps below.
+
+#### Fedora
+
+```bash
+# 1. Toolchain and build helpers
+sudo dnf install -y gcc gcc-c++ make git curl zip unzip tar pkgconf-pkg-config \
+    cmake ninja-build ccache autoconf automake libtool bison flex perl-core \
+    libuuid-devel openssl-devel python3 python3-pip pipx \
+    postgresql-server postgresql
+
+# 2. Check versions: you need GCC >= 13 and CMake >= 3.30
+g++ --version | head -1
+cmake --version | head -1
+```
+
+#### Install Conan and build (both distributions)
 
 ```bash
 pipx install conan
-pipx ensurepath
+pipx ensurepath          # then open a new shell so ~/.local/bin is on PATH
 conan profile detect --force
 ```
+
+`conan profile detect` produces a profile with `compiler.libcxx=libstdc++11`, which is what you want on Linux. The project requires C++20; if Conan complains about the language standard, set `compiler.cppstd=20` in `~/.conan2/profiles/default`.
 
 Install dependencies and configure both build types:
 
 ```bash
-# Resolve and build third-party dependencies
+# Resolve and build third-party dependencies (the first run takes a while)
 conan install . --build=missing -s build_type=Debug
 conan install . --build=missing -s build_type=Release
 
@@ -125,17 +165,80 @@ cmake -S . -B build/Debug   -DCMAKE_BUILD_TYPE=Debug
 cmake -S . -B build/Release -DCMAKE_BUILD_TYPE=Release
 
 # Compile
-cmake --build build/Debug   -j8
-cmake --build build/Release -j8
+cmake --build build/Debug   -j"$(nproc)"
+cmake --build build/Release -j"$(nproc)"
 ```
 
-Or just run the convenience script, which performs all of the above:
+Or just run the convenience script, which performs all of the above (it uses Ninja):
 
 ```bash
 ./build.sh
 ```
 
-The resulting binary is named `server` and is placed in the corresponding build directory.
+The resulting binary is named `server` and is placed in the corresponding build directory (`build/Release/server`).
+
+### Database setup
+
+The server needs a PostgreSQL database initialised with `init.sql`. Skip this section if you already have a database, or if you use Docker Compose.
+
+**Debian / Ubuntu** — the service is created and started by the package:
+
+```bash
+sudo systemctl enable --now postgresql
+```
+
+**Fedora** — initialise the cluster first, then allow password logins over TCP:
+
+```bash
+sudo postgresql-setup --initdb
+sudo systemctl enable --now postgresql
+# Fedora's default pg_hba.conf uses "ident" for 127.0.0.1; switch it to a password method:
+sudo sed -i 's/\(127.0.0.1\/32\s\+\)ident/\1scram-sha-256/; s/\(::1\/128\s\+\)ident/\1scram-sha-256/' /var/lib/pgsql/data/pg_hba.conf
+sudo systemctl restart postgresql
+```
+
+**Both** — set a password for the `postgres` role and load the schema:
+
+```bash
+sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"   # choose a real password outside local dev
+PGPASSWORD=postgres ./db_init.sh                                      # runs init.sql against 127.0.0.1
+```
+
+`db_init.sh` connects as `postgres` to the `postgres` database on `127.0.0.1`. To use another database or user, run `psql -h <host> -U <user> -d <db> -f init.sql` yourself.
+
+### Run the server
+
+Create a `.env` file in the project root (it is read by `run_release.sh`; see [Configuration](#configuration) for every variable):
+
+```bash
+cat > .env <<'EOF'
+SERVER_HOST=0.0.0.0
+SERVER_PORT=8080
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_NAME=postgres
+DB_USER=postgres
+DB_PASS=postgres
+TOKEN_SECRET=change-me-to-a-long-random-string
+EOF
+```
+
+Then start it:
+
+```bash
+./run_release.sh            # run build/Release/server with the .env loaded
+./run_release.sh --build    # rebuild Release first, then run
+```
+
+Or run the binary directly with the variables exported in your shell: `./build/Release/server`.
+
+Verify it is up:
+
+```bash
+curl http://127.0.0.1:8080/api/v2/hello
+```
+
+Then open the interactive API docs at <http://127.0.0.1:8080/api/v2/doc>. If the port is not reachable from another machine, open it in the firewall (`sudo ufw allow 8080/tcp` on Debian/Ubuntu, `sudo firewall-cmd --add-port=8080/tcp --permanent && sudo firewall-cmd --reload` on Fedora).
 
 ### Run with Docker
 
@@ -164,7 +267,7 @@ All configuration is supplied through environment variables. Defaults (see `src/
 
 | Variable       | Default        | Description |
 |----------------|----------------|-------------|
-| `DB_HOST`      | `172.20.0.2`   | Database host |
+| `DB_HOST`      | `127.0.0.1`    | Database host (`172.20.0.2` in the Docker Compose network) |
 | `DB_PORT`      | `5432`         | Database port |
 | `DB_NAME`      | `postgres`     | Database name |
 | `DB_USER`      | `postgres`     | Database user |
@@ -205,68 +308,94 @@ All configuration is supplied through environment variables. Defaults (see `src/
 
 ## API Overview
 
-All endpoints live under the `api/v2` namespace. Routes are marked **`SECURE`** (require a valid `Authorization: Bearer <token>` header) or **`INSECURE`** (public).
+All endpoints live under the `/api/v2` prefix (for example `http://127.0.0.1:8080/api/v2/hello`). Routes marked 🔒 require a valid `Authorization: Bearer <token>` header (obtained from `/clients/{type}/login`); 🔓 routes are public. Request and response bodies are JSON.
 
-### Clients — `/{clientType}/...`  (`clientType` ∈ `users`, `providers`)
+### Interactive API docs
 
-| Method | Path                        | Auth | Description |
-|--------|-----------------------------|------|-------------|
-| POST   | `/{clientType}/create`      | 🔓   | Register a client |
-| POST   | `/{clientType}/login`       | 🔓   | Authenticate, receive a token |
-| POST   | `/{clientType}/logout`      | 🔒   | Invalidate the session |
-| POST   | `/{clientType}/suspend`     | 🔒   | Suspend a client |
-| POST   | `/{clientType}/activate`    | 🔒   | Re-activate a client |
-| POST   | `/{clientType}/read`        | 🔒   | Read client data |
-| PUT    | `/{clientType}/update`      | 🔒   | Update a client |
-| DELETE | `/{clientType}/delete`      | 🔒   | Delete a client |
-| POST   | `/{clientType}/search`      | 🔒   | Search clients |
-| GET    | `/{clientType}/services`    | 🔒   | List a client's services |
+The server ships its own API documentation, compiled into the binary:
 
-### Services — `/{serviceType}/...`  (`serviceType` ∈ `laboratories`, `pharmacies`, `radiologycenters`)
+| URL | What it is |
+|-----|------------|
+| `http://<host>:<port>/api/v2/doc` | Swagger UI for every endpoint, plus an **API Guide** panel (permissions, data model, validation, errors, rate limiting, recipes, troubleshooting) and a **Test console** that runs all endpoints in order against the live server with dummy data |
 
-| Method | Path                      | Auth | Description |
-|--------|---------------------------|------|-------------|
-| POST   | `/{serviceType}/create`   | 🔒   | Create a service |
-| POST   | `/{serviceType}/read`     | 🔒   | Read a service |
-| PUT    | `/{serviceType}/update`   | 🔒   | Update a service |
-| DELETE | `/{serviceType}/delete`   | 🔒   | Delete a service |
-| POST   | `/{serviceType}/search`   | 🔒   | Search services |
+With the defaults that is <http://127.0.0.1:8080/api/v2/doc>; the startup banner prints the exact URL. From the page you can also download the **OpenAPI 3** spec and a **Postman collection** (also kept in `docs/openapi.json` and `docs/valhalla.postman_collection.json`).
 
-### Clinics — `/clinics/...`
+Because the page is embedded at build time, **rebuild the server after changing the docs**. The page is generated from `tools/docs/` (needs Node.js/npm and the Python `markdown` package):
 
-| Method | Path                       | Auth | Description |
-|--------|----------------------------|------|-------------|
-| POST   | `/{serviceType}/create`    | 🔒   | Create a clinic record |
-| POST   | `/{serviceType}/read`      | 🔒   | Read a clinic record |
-| PUT    | `/{serviceType}/update`    | 🔒   | Update a clinic record |
-| DELETE | `/{serviceType}/delete`    | 🔒   | Delete a clinic record |
-| POST   | `/patients/search`         | 🔒   | Search patients |
-| GET    | `/patients/getvisits`      | 🔒   | List a patient's visits |
+```bash
+tools/docs/build.sh        # regenerates docs/api.html, openapi.json and the Postman collection
+./run_release.sh --build   # re-embed the page and restart
+```
 
-### Appointments — `/{entityType}/...`
+To include real response samples in the docs, run `SAMPLES_OUT=api_tests/samples.jsonl ./test_api.sh` against a running server before `tools/docs/build.sh`.
 
-| Method | Path                      | Auth | Description |
-|--------|---------------------------|------|-------------|
-| POST   | `/{entityType}/create`    | 🔒   | Create an appointment |
-| POST   | `/{entityType}/read`      | 🔒   | Read an appointment |
-| PUT    | `/{entityType}/update`    | 🔒   | Update an appointment |
-| DELETE | `/{entityType}/delete`    | 🔒   | Delete an appointment |
+### Clients — `/clients/{clientType}/...`  (`clientType` ∈ `users`, `providers`)
+
+| Method | Path                               | Auth | Description |
+|--------|------------------------------------|------|-------------|
+| POST   | `/clients/{clientType}/create`     | 🔓   | Register an account |
+| POST   | `/clients/{clientType}/login`      | 🔓   | Authenticate, receive a token |
+| POST   | `/clients/{clientType}/logout`     | 🔒   | Invalidate the session |
+| POST   | `/clients/{clientType}/suspend`    | 🔒   | Suspend an account |
+| POST   | `/clients/{clientType}/activate`   | 🔒   | Re-activate an account |
+| POST   | `/clients/{clientType}/read`       | 🔒   | Read account data |
+| PUT    | `/clients/{clientType}/update`     | 🔒   | Update an account |
+| DELETE | `/clients/{clientType}/delete`     | 🔒   | Delete an account |
+| POST   | `/clients/{clientType}/search`     | 🔒   | Search accounts |
+| GET    | `/clients/{clientType}/services`   | 🔒   | List the account's services |
+
+### Services — `/services/{serviceType}/...`  (`serviceType` ∈ `clinics`, `pharmacies`, `laboratories`, `radiologycenters`)
+
+| Method | Path                              | Auth | Description |
+|--------|-----------------------------------|------|-------------|
+| POST   | `/services/{serviceType}/create`  | 🔒   | Create a service |
+| POST   | `/services/{serviceType}/read`    | 🔒   | Read a service |
+| PUT    | `/services/{serviceType}/update`  | 🔒   | Update a service |
+| DELETE | `/services/{serviceType}/delete`  | 🔒   | Delete a service (owner only) |
+| POST   | `/services/{serviceType}/search`  | 🔒   | Search services |
 
 ### Staff — `/services/{serviceType}/staff/...`
 
 | Method | Path                                    | Auth | Description |
 |--------|-----------------------------------------|------|-------------|
-| POST   | `/services/{serviceType}/staff/invite`  | 🔒   | Invite a staff member |
+| POST   | `/services/{serviceType}/staff/invite`  | 🔒   | Invite someone to the staff |
 | POST   | `/services/{serviceType}/staff/add`     | 🔒   | Add a staff member |
 | POST   | `/services/{serviceType}/staff/remove`  | 🔒   | Remove a staff member |
 
+### Clinic records — `/clinic/{resource}/...`
+
+Each resource supports `create` (POST), `read` (POST), `update` (PUT) and `delete` (DELETE) under `/clinic/{resource}/`, all 🔒. Resources:
+
+| Resource        | Description |
+|-----------------|-------------|
+| `patients`      | Patient records (also `POST /clinic/patients/search` and `GET /clinic/patients/getvisits`) |
+| `health`        | A patient's health history |
+| `patientdrugs`  | A patient's drug list |
+| `reports`       | A patient's reports |
+| `visits`        | Visits |
+| `requests`      | Investigation requests for a visit |
+| `prescriptions` | Prescriptions for a visit |
+| `paidservices`  | Paid services for a visit |
+
+`delete` is not supported for `health`, `patientdrugs`, `reports`, `requests`, `prescriptions` and `paidservices`; they are removed with their parent record.
+
+### Appointments — `/appointments/clinics/...`
+
+| Method | Path                              | Auth | Description |
+|--------|-----------------------------------|------|-------------|
+| POST   | `/appointments/clinics/create`    | 🔒   | Create an appointment |
+| POST   | `/appointments/clinics/read`      | 🔒   | Read an appointment |
+| PUT    | `/appointments/clinics/update`    | 🔒   | Update an appointment |
+| DELETE | `/appointments/clinics/delete`    | 🔒   | Delete an appointment |
+
 ### Misc
 
-| Method | Path  | Auth | Description |
-|--------|-------|------|-------------|
-| GET    | `/`   | 🔓   | Health/hello check |
+| Method | Path     | Auth | Description |
+|--------|----------|------|-------------|
+| GET    | `/hello` | 🔓   | Health check |
+| GET    | `/doc`   | 🔓   | Interactive API documentation (Swagger UI) |
 
-> Unknown routes return a JSON `404` (`"Endpoint not found."`).
+> Unknown routes return a JSON `404` (`"Endpoint not found."`). Rate-limit, ban and blacklist replies from the DoS filter are plain text.
 
 ## Project Layout
 

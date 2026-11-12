@@ -25,10 +25,10 @@ namespace api::v2
         static void errorResponse(
             const drogon::HttpStatusCode& code, const std::string& message, std::function<void(const drogon::HttpResponsePtr&)>&& callback);
         static void successResponse(const std::string& message, std::function<void(const drogon::HttpResponsePtr&)>&& callback);
+        static std::string prepare(const std::string& status, const std::string& message);
 
        private:
         static void reply(std::function<void(const drogon::HttpResponsePtr&)>&& callback, const drogon::HttpStatusCode& code, const std::string& message);
-        static std::string prepare(const std::string& status, const std::string& message);
 
         static constexpr const char* FAILURE = "Failure";
         static constexpr const char* ERROR   = "Error";

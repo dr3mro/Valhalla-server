@@ -6,6 +6,7 @@
 
 #include <algorithm>
 #include <chrono>
+#include <condition_variable>
 #include <exception>
 #include <future>
 #include <mutex>
@@ -14,10 +15,25 @@
 #include <string>
 #include <thread>
 #include <unordered_set>
+#include <utility>
 
 #include "utils/message/message.hpp"
 
 DOSDetector::DOSDetector()
+{
+    try
+    {
+        async_task_clean_ = std::async(std::launch::async, &DOSDetector::cleanUpTask, this);
+    }
+    catch (const std::exception &e)
+    {
+        Message::ErrorMessage("Exception during DOSDetector initialization.");
+        Message::CriticalMessage(e.what());
+    }
+}
+
+DOSDetector::DOSDetector(Configurator::DOSDetectorConfig config, ClockFn clock)
+    : owned_config_(std::move(config)), config_(owned_config_.value()), clock_(std::move(clock))
 {
     try
     {
@@ -35,6 +51,7 @@ DOSDetector::~DOSDetector()
     try
     {
         running_clean_.store(false);
+        clean_cv_.notify_all();
         if (async_task_clean_.valid())
         {
             async_task_clean_.wait();
@@ -149,9 +166,7 @@ void DOSDetector::cleanUpTask()
     {
         while (running_clean_.load())
         {
-            // fmt::print("Starting clean up task\n");
-            auto now    = std::chrono::steady_clock::now();
-            auto next   = now + std::chrono::seconds(config_.clean_freq);
+            auto now    = clock_();
             auto window = now - config_.period;
 
             clean_requests(window);      // clean up requests older than time window
@@ -160,7 +175,12 @@ void DOSDetector::cleanUpTask()
             clean_banned_ips(now);       // clean up banned ips [time stored in
                                          // banned_ips_ equals time to unblock]
 
-            std::this_thread::sleep_until(next);
+            // Sleep for the cleanup frequency (real time), but wake up
+            // immediately when the destructor asks us to stop. Equivalent to
+            // the previous sleep_until(now + clean_freq) for the real clock,
+            // and safe with an injected (test) clock.
+            std::unique_lock<std::mutex> lock(clean_mutex_);
+            clean_cv_.wait_for(lock, std::chrono::seconds(config_.clean_freq), [this] { return !running_clean_.load(); });
         }
     }
     catch (const std::exception &e)
@@ -291,7 +311,7 @@ inline bool __attribute((always_inline)) DOSDetector::checkStatus(const std::str
 {
     try
     {
-        auto                   now = std::chrono::steady_clock::now();
+        auto                   now = clock_();
         std::lock_guard<Mutex> lock(mtx);
 
         if (ip_map.find(remote_ip) != ip_map.end())
@@ -319,7 +339,7 @@ DOSDetector::Status DOSDetector::processRequest(const Request &request)
 {
     try
     {
-        auto                       now                 = std::chrono::steady_clock::now();
+        auto                       now                 = clock_();
         std::optional<std::string> remote_ip           = request.ip;
         std::optional<std::string> request_fingerprint = generateRequestFingerprint(request);
 

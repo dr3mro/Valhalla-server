@@ -1,0 +1,8 @@
+{
+  "keyword": "pharma",
+  "filter": "name",
+  "limit": 5,
+  "offset": 0,
+  "order_by": "id",
+  "direction": 0
+}

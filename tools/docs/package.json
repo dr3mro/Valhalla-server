@@ -1,0 +1,9 @@
+{
+  "name": "valhalla-docs",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Builds docs/api.html from tools/docs",
+  "dependencies": {
+    "swagger-ui-dist": "^5.34.1"
+  }
+}

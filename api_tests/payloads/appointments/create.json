@@ -1,0 +1,20 @@
+{
+  "clinic_id": {{CLINIC_ID}},
+  "user_id": {{USER_ID}},
+  "provider_id": {{PROVIDER_ID}},
+  "appointment_date": "2026-05-25",
+  "appointment_time": "10:00:00",
+  "appointment_duration": 30,
+  "appointment_reason": "Check-up",
+  "appointment_note": "No notes",
+  "appointment_payment_transaction_id": "1000",
+  "appointment_payment_transaction_status": "pending",
+  "appointment_payment_method": "amount",
+  "appointment_payment_currency": "currency",
+  "appointment_payment_date": "2026-05-25",
+  "appointment_payment_time": "10:00:00",
+  "appointment_payment_amount": 100,
+  "appointment_payment_status": "pending",
+  "appointment_type": "regular",
+  "appointment_status": "pending"
+}

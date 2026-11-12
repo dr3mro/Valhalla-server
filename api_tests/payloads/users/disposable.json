@@ -1,0 +1,18 @@
+{
+  "avatar": "http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200",
+  "language": "en",
+  "active": true,
+  "parent": "0",
+  "username": "{{DISPOSABLE_NAME}}",
+  "email": "{{DISPOSABLE_NAME}}@mail.com",
+  "password": "{{USER_PASSWORD}}",
+  "fullname": "Suspend Test",
+  "phone": "+201299999999",
+  "country": "Egypt",
+  "city": "Damietta",
+  "address": "12 valhalla Street ",
+  "dob": "10-10-1990",
+  "gender": "Male",
+  "marital": "single",
+  "job": "Doctor"
+}

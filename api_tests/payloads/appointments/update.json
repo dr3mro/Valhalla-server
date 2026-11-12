@@ -1,0 +1,20 @@
+{
+  "user_id": {{USER_ID}},
+  "clinic_id": {{CLINIC_ID}},
+  "provider_id": {{PROVIDER_ID}},
+  "appointment_date": "2021-05-20",
+  "appointment_time": "10:00:00",
+  "appointment_duration": 30,
+  "appointment_reason": "Check-up",
+  "appointment_note": "No notes",
+  "appointment_payment_status": "pending",
+  "appointment_payment_method": "credit_card",
+  "appointment_payment_amount": 100,
+  "appointment_payment_currency": "USD",
+  "appointment_payment_date": "2021-05-20",
+  "appointment_payment_time": "10:00:00",
+  "appointment_payment_transaction_id": "1234567890",
+  "appointment_payment_transaction_status": "completed",
+  "appointment_type": "online",
+  "appointment_status": "pending"
+}

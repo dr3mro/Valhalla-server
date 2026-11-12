@@ -1,0 +1,4417 @@
+{
+  "info": {
+    "name": "Valhalla Server API v2",
+    "description": "Run the folders top to bottom (Collection Runner). Generated from docs/api.html.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "if (!pm.collectionVariables.get('RUN')) {",
+          "  const run = String(Date.now()).slice(-6);",
+          "  pm.collectionVariables.set('RUN', run);",
+          "  pm.collectionVariables.set('PROVIDER_USERNAME', 'provider' + run);",
+          "  pm.collectionVariables.set('USER_USERNAME', 'user' + run);",
+          "  pm.collectionVariables.set('DISP_PROVIDER', 'providerx' + run);",
+          "  pm.collectionVariables.set('DISP_USER', 'userx' + run);",
+          "}"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:8080/api/v2"
+    },
+    {
+      "key": "PROVIDER_PASSWORD",
+      "value": "1234@Abc!"
+    },
+    {
+      "key": "USER_PASSWORD",
+      "value": "123Mm@p0"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health check",
+      "item": [
+        {
+          "name": "hello",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/hello",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "hello"
+              ],
+              "query": []
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Provider",
+      "item": [
+        {
+          "name": "providers create",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/providers/create",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "providers",
+                "create"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"avatar\": \"http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200\",\n  \"active\": true,\n  \"language\": \"en\",\n  \"username\": \"{{PROVIDER_USERNAME}}\",\n  \"password\": \"{{PROVIDER_PASSWORD}}\",\n  \"fullname\": \"Amr Nasr\",\n  \"phone\": \"+201299999999\",\n  \"email\": \"provider{{RUN}}@mail.com\",\n  \"country\": \"Egypt\",\n  \"city\": \"Damietta\",\n  \"address\": \"portsaid street\",\n  \"dob\": \"17-02-1985\",\n  \"gender\": \"Male\",\n  \"position\": \"Doctor\",\n  \"speciality\": \"Cardiology\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"PROVIDER_ID\", String(pm.response.json()[\"id\"])); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "providers login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/providers/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "providers",
+                "login"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"{{LOGIN_USERNAME}}\",\n  \"password\": \"{{LOGIN_PASSWORD}}\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"LOGIN_USERNAME\", pm.collectionVariables.get('PROVIDER_USERNAME'));",
+                  "pm.collectionVariables.set(\"LOGIN_PASSWORD\", pm.collectionVariables.get('PROVIDER_PASSWORD'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"PROVIDER_TOKEN\", String(pm.response.json()[\"token\"])); }",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"PROVIDER_ID\", String(pm.response.json()[\"client_id\"])); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "providers read",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/providers/read",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "providers",
+                "read"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{ID}},\n  \"schema\": []\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"ID\", pm.collectionVariables.get('PROVIDER_ID'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "providers update",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/providers/update?id={{PROVIDER_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "providers",
+                "update"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{PROVIDER_ID}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"avatar\": \"http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200\",\n  \"language\": \"en\",\n  \"fullname\": \"Amr Nasr Osman\",\n  \"phone\": \"+201299999999\",\n  \"email\": \"provider{{RUN}}@mail.com\",\n  \"country\": \"Egypt\",\n  \"city\": \"Damietta\",\n  \"address\": \"portsaid street\",\n  \"dob\": \"17-02-1985\",\n  \"gender\": \"Male\",\n  \"position\": \"Doctor\",\n  \"speciality\": \"Cardiology\",\n  \"services\": {\n    \"clinics\": 1000\n  }\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "providers search",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/providers/search",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "providers",
+                "search"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"keyword\": \"cardiology\",\n  \"filter\": \"speciality\",\n  \"limit\": 5,\n  \"offset\": 0,\n  \"order_by\": \"id\",\n  \"direction\": 0\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "providers services",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/providers/services?id={{PROVIDER_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "providers",
+                "services"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{PROVIDER_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "providers activate",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/providers/activate?id={{PROVIDER_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "providers",
+                "activate"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{PROVIDER_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "users create",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/users/create",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "users",
+                "create"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"avatar\": \"http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200\",\n  \"language\": \"en\",\n  \"active\": true,\n  \"parent\": \"0\",\n  \"username\": \"{{USER_USERNAME}}\",\n  \"email\": \"user{{RUN}}@mail.com\",\n  \"password\": \"{{USER_PASSWORD}}\",\n  \"fullname\": \"Amr Nasr\",\n  \"phone\": \"+201299999999\",\n  \"country\": \"Egypt\",\n  \"city\": \"Damietta\",\n  \"address\": \"12 valhalla Street \",\n  \"dob\": \"10-10-1990\",\n  \"gender\": \"Male\",\n  \"marital\": \"single\",\n  \"job\": \"Doctor\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"USER_ID\", String(pm.response.json()[\"id\"])); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "users login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/users/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "users",
+                "login"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"{{LOGIN_USERNAME}}\",\n  \"password\": \"{{LOGIN_PASSWORD}}\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"LOGIN_USERNAME\", pm.collectionVariables.get('USER_USERNAME'));",
+                  "pm.collectionVariables.set(\"LOGIN_PASSWORD\", pm.collectionVariables.get('USER_PASSWORD'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"USER_TOKEN\", String(pm.response.json()[\"token\"])); }",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"USER_ID\", String(pm.response.json()[\"client_id\"])); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "users read",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{USER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/users/read",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "users",
+                "read"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{ID}},\n  \"schema\": []\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"ID\", pm.collectionVariables.get('USER_ID'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "users update",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{USER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/users/update?id={{USER_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "users",
+                "update"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{USER_ID}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"avatar\": \"http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200\",\n  \"language\": \"en\",\n  \"active\": true,\n  \"parent\": \"0\",\n  \"email\": \"user{{RUN}}@mail.com\",\n  \"fullname\": \"Amr Nasr\",\n  \"phone\": \"+201299999999\",\n  \"country\": \"Egypt\",\n  \"city\": \"Damietta\",\n  \"address\": \"12 valhalla Street \",\n  \"dob\": \"10-10-1990\",\n  \"gender\": \"Male\",\n  \"marital\": \"married\",\n  \"job\": \"Doctor\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "users search",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{USER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/users/search",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "users",
+                "search"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"keyword\": \"amr\",\n  \"filter\": \"fullname\",\n  \"limit\": 5,\n  \"offset\": 0,\n  \"order_by\": \"id\",\n  \"direction\": 0\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "users services",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{USER_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/users/services?id={{USER_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "users",
+                "services"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{USER_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "users activate",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{USER_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/users/activate?id={{USER_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "users",
+                "activate"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{USER_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Services: clinic",
+      "item": [
+        {
+          "name": "clinics create",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/services/clinics/create",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "services",
+                "clinics",
+                "create"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"logo\": \"https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png\",\n  \"name\": \"Clinic0\",\n  \"country\": \"Egypt\",\n  \"city\": \"Damietta\",\n  \"address\": \"11 street Ras elbar\",\n  \"phone\": [\n    \"+1987654321\"\n  ],\n  \"admin_id\": {{PROVIDER_ID}},\n  \"owner_id\": {{PROVIDER_ID}},\n  \"specialities\": [\n    \"Cardiology\",\n    \"Medicine\"\n  ],\n  \"staff\": {\n    \"Doctors\": [\n      \"{{PROVIDER_ID}}:62\"\n    ],\n    \"nurses\": [\n      \"\"\n    ],\n    \"assistants\": [\n      \"\"\n    ]\n  }\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"CLINIC_ID\", String(pm.response.json()[\"id\"])); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "clinics read",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/services/clinics/read",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "services",
+                "clinics",
+                "read"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{ID}},\n  \"schema\": []\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"ID\", pm.collectionVariables.get('CLINIC_ID'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "clinics update",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/services/clinics/update?id={{CLINIC_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "services",
+                "clinics",
+                "update"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{CLINIC_ID}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"logo\": \"https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png\",\n  \"name\": \"Mount Sinai Clinics\",\n  \"country\": \"Egypt\",\n  \"city\": \"Damietta\",\n  \"address\": \"11 street Ras elbar\",\n  \"phone\": [\n    \"+1987654321\"\n  ],\n  \"admin_id\": {{PROVIDER_ID}},\n  \"owner_id\": {{PROVIDER_ID}},\n  \"specialities\": [\n    \"Cardiology\"\n  ],\n  \"staff\": {\n    \"Doctors\": [\n      \"{{PROVIDER_ID}}:62\"\n    ],\n    \"nurses\": [\n      \"\"\n    ],\n    \"assistants\": [\n      \"1000:1\"\n    ]\n  }\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "clinics search",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/services/clinics/search",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "services",
+                "clinics",
+                "search"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"keyword\": \"cardiology\",\n  \"filter\": \"specialities\",\n  \"limit\": 5,\n  \"offset\": 0,\n  \"order_by\": \"id\",\n  \"direction\": 0\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Services: pharmacy, laboratory, radiology center",
+      "item": [
+        {
+          "name": "pharmacies create",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/services/pharmacies/create",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "services",
+                "pharmacies",
+                "create"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"logo\": \"https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png\",\n  \"name\": \"Pharmacy 101\",\n  \"country\": \"Egypt\",\n  \"city\": \"Damietta\",\n  \"address\": \"11 street Ras elbar\",\n  \"phone\": [\n    \"+1987654321\"\n  ],\n  \"admin_id\": {{PROVIDER_ID}},\n  \"owner_id\": {{PROVIDER_ID}},\n  \"staff\": {\n    \"Doctors\": [\n      \"1001\",\n      \"1921\"\n    ],\n    \"nurses\": [\n      \"\"\n    ],\n    \"assistants\": [\n      \"1000\"\n    ]\n  }\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"PHARMACY_ID\", String(pm.response.json()[\"id\"])); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "pharmacies read",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/services/pharmacies/read",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "services",
+                "pharmacies",
+                "read"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{ID}},\n  \"schema\": []\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"ID\", pm.collectionVariables.get('PHARMACY_ID'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "pharmacies update",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/services/pharmacies/update?id={{PHARMACY_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "services",
+                "pharmacies",
+                "update"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{PHARMACY_ID}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"logo\": \"https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png\",\n  \"name\": \"Pharmastan\",\n  \"country\": \"Egypt\",\n  \"city\": \"Damietta\",\n  \"address\": \"11 street Ras elbar\",\n  \"phone\": [\n    \"+1987654321\"\n  ],\n  \"admin_id\": {{PROVIDER_ID}},\n  \"owner_id\": {{PROVIDER_ID}},\n  \"staff\": {\n    \"Doctors\": [\n      \"1001\",\n      \"1921\"\n    ],\n    \"nurses\": [\n      \"\"\n    ],\n    \"assistants\": [\n      \"1000\"\n    ]\n  }\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "pharmacies search",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/services/pharmacies/search",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "services",
+                "pharmacies",
+                "search"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"keyword\": \"pharma\",\n  \"filter\": \"name\",\n  \"limit\": 5,\n  \"offset\": 0,\n  \"order_by\": \"id\",\n  \"direction\": 0\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "laboratories create",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/services/laboratories/create",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "services",
+                "laboratories",
+                "create"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"logo\": \"https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png\",\n  \"name\": \"Clinical Lab 101\",\n  \"country\": \"Egypt\",\n  \"city\": \"Damietta\",\n  \"address\": \"11 street Ras elbar\",\n  \"phone\": [\n    \"+1987654321\"\n  ],\n  \"admin_id\": {{PROVIDER_ID}},\n  \"owner_id\": {{PROVIDER_ID}},\n  \"staff\": {\n    \"Doctors\": [\n      \"1001\",\n      \"1921\"\n    ],\n    \"nurses\": [\n      \"\"\n    ],\n    \"assistants\": [\n      \"1000\"\n    ]\n  }\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"LAB_ID\", String(pm.response.json()[\"id\"])); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "laboratories read",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/services/laboratories/read",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "services",
+                "laboratories",
+                "read"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{ID}},\n  \"schema\": []\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"ID\", pm.collectionVariables.get('LAB_ID'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "laboratories update",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/services/laboratories/update?id={{LAB_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "services",
+                "laboratories",
+                "update"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{LAB_ID}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"logo\": \"https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png\",\n  \"name\": \"Clinical Lab 102\",\n  \"country\": \"Egypt\",\n  \"city\": \"Damietta\",\n  \"address\": \"11 street Ras elbar\",\n  \"phone\": [\n    \"+1987654321\"\n  ],\n  \"admin_id\": {{PROVIDER_ID}},\n  \"owner_id\": {{PROVIDER_ID}},\n  \"staff\": {\n    \"Doctors\": [\n      \"1001\",\n      \"1921\"\n    ],\n    \"nurses\": [\n      \"\"\n    ],\n    \"assistants\": [\n      \"1000\"\n    ]\n  }\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "laboratories search",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/services/laboratories/search",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "services",
+                "laboratories",
+                "search"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"keyword\": \"102\",\n  \"filter\": \"name\",\n  \"limit\": 5,\n  \"offset\": 0,\n  \"order_by\": \"id\",\n  \"direction\": 0\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "radiologycenters create",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/services/radiologycenters/create",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "services",
+                "radiologycenters",
+                "create"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"logo\": \"https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png\",\n  \"name\": \"RadiologyCenter 101\",\n  \"country\": \"Egypt\",\n  \"city\": \"Damietta\",\n  \"address\": \"11 street Ras elbar\",\n  \"phone\": [\n    \"+1987654321\"\n  ],\n  \"admin_id\": {{PROVIDER_ID}},\n  \"owner_id\": {{PROVIDER_ID}},\n  \"staff\": {\n    \"Doctors\": [\n      \"1001\",\n      \"1921\"\n    ],\n    \"nurses\": [\n      \"\"\n    ],\n    \"assistants\": [\n      \"1000\"\n    ]\n  }\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"RAD_ID\", String(pm.response.json()[\"id\"])); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "radiologycenters read",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/services/radiologycenters/read",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "services",
+                "radiologycenters",
+                "read"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{ID}},\n  \"schema\": []\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"ID\", pm.collectionVariables.get('RAD_ID'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "radiologycenters update",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/services/radiologycenters/update?id={{RAD_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "services",
+                "radiologycenters",
+                "update"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{RAD_ID}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"logo\": \"https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png\",\n  \"name\": \"RadiologyCenter 102\",\n  \"country\": \"Egypt\",\n  \"city\": \"Damietta\",\n  \"address\": \"11 street Ras elbar\",\n  \"phone\": [\n    \"+1987654321\"\n  ],\n  \"admin_id\": {{PROVIDER_ID}},\n  \"owner_id\": {{PROVIDER_ID}},\n  \"staff\": {\n    \"Doctors\": [\n      \"1001\",\n      \"1921\"\n    ],\n    \"nurses\": [\n      \"\"\n    ],\n    \"assistants\": [\n      \"1000\"\n    ]\n  }\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "radiologycenters search",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/services/radiologycenters/search",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "services",
+                "radiologycenters",
+                "search"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"keyword\": \"101\",\n  \"filter\": \"name\",\n  \"limit\": 5,\n  \"offset\": 0,\n  \"order_by\": \"id\",\n  \"direction\": 0\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Clinic: patient",
+      "item": [
+        {
+          "name": "patients create",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/patients/create",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "patients",
+                "create"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"patient{{RUN}}@mail.com\",\n  \"clinic_id\": {{CLINIC_ID}},\n  \"fullname\": \"Amr Nasr\",\n  \"phone\": \"+201299999999\",\n  \"city\": \"Damietta\",\n  \"address\": \"11 Valhalla street\",\n  \"dob\": \"17-02-1985\",\n  \"gender\": \"Male\",\n  \"marital\": \"Single\",\n  \"job\": \"Doctor\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"PATIENT_ID\", String(pm.response.json()[\"id\"])); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "patients read",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/patients/read",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "patients",
+                "read"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{ID}},\n  \"schema\": []\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"ID\", pm.collectionVariables.get('PATIENT_ID'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "patients update",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/patients/update?id={{PATIENT_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "patients",
+                "update"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{PATIENT_ID}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"patient{{RUN}}@mail.com\",\n  \"fullname\": \"Amr Nasr Osman\",\n  \"phone\": \"+201299999999\",\n  \"city\": \"Damietta\",\n  \"address\": \"11 Valhalla street\",\n  \"dob\": \"22-10-1990\",\n  \"gender\": \"male\",\n  \"marital\": \"single\",\n  \"job\": \"Doctor\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "patients search",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/patients/search",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "patients",
+                "search"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"keyword\": \"amr\",\n  \"filter\": \"fullname\",\n  \"limit\": 5,\n  \"offset\": 0,\n  \"order_by\": \"id\",\n  \"direction\": 0\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "patients getvisits",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/patients/getvisits?patient_id={{PATIENT_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "patients",
+                "getvisits"
+              ],
+              "query": [
+                {
+                  "key": "patient_id",
+                  "value": "{{PATIENT_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Clinic: patient health, drugs, reports",
+      "item": [
+        {
+          "name": "health create",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/health/create",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "health",
+                "create"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{PATIENT_ID}},\n  \"clinic_id\": {{CLINIC_ID}},\n  \"health\": {\n    \"past_medical_history\": \"No\",\n    \"allergies\": \"No\",\n    \"medications\": \"No\",\n    \"surgeries\": \"No\",\n    \"pregnancy\": \"No\",\n    \"breastfeeding\": \"No\",\n    \"mammogram\": \"No\",\n    \"blood_pressure\": \"No\",\n    \"blood_sugar\": \"No\",\n    \"family_planning\": \"No\",\n    \"hiv\": \"No\",\n    \"hepatitis\": \"No\",\n    \"renal_disease\": \"No\",\n    \"tuberculosis\": \"No\",\n    \"cancer\": \"No\",\n    \"diabetes\": \"No\",\n    \"asthma\": \"No\",\n    \"hypertension\": \"No\",\n    \"chronic_cardiac_disease\": \"No\",\n    \"stroke\": \"No\",\n    \"kidney_disease\": \"No\",\n    \"liver_disease\": \"No\",\n    \"immunizations\": \"No\",\n    \"nutrition\": \"No\",\n    \"physical_exam\": \"No\",\n    \"sleep_apnea\": \"No\",\n    \"mental_health\": \"No\",\n    \"tobacco_smoking\": \"No\",\n    \"alcohol\": \"No\",\n    \"drugs\": \"No\",\n    \"other\": \"No\",\n    \"pregnancy_complications\": \"No\",\n    \"past_treatments\": \"No\",\n    \"family_history\": \"No\",\n    \"vaccinations\": \"No\",\n    \"other_treatments\": \"No\",\n    \"comments\": \"No\"\n  }\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"HEALTH_ID\", String(pm.response.json()[\"id\"])); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "health read",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/health/read",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "health",
+                "read"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{ID}},\n  \"schema\": []\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"ID\", pm.collectionVariables.get('PATIENT_ID'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "health update",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/health/update?id={{PATIENT_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "health",
+                "update"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{PATIENT_ID}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"health\": {\n    \"past_medical_history\": \"No\",\n    \"allergies\": \"No\",\n    \"medications\": \"No\",\n    \"surgeries\": \"No\",\n    \"pregnancy\": \"No\",\n    \"breastfeeding\": \"No\",\n    \"mammogram\": \"No\",\n    \"blood_pressure\": \"No\",\n    \"blood_sugar\": \"No\",\n    \"family_planning\": \"No\",\n    \"hiv\": \"No\",\n    \"hepatitis\": \"No\",\n    \"renal_disease\": \"No\",\n    \"tuberculosis\": \"No\",\n    \"cancer\": \"No\",\n    \"diabetes\": \"No\",\n    \"asthma\": \"No\",\n    \"hypertension\": \"No\",\n    \"chronic_cardiac_disease\": \"No\",\n    \"stroke\": \"No\",\n    \"kidney_disease\": \"No\",\n    \"liver_disease\": \"No\",\n    \"immunizations\": \"No\",\n    \"nutrition\": \"No\",\n    \"physical_exam\": \"No\",\n    \"sleep_apnea\": \"No\",\n    \"mental_health\": \"No\",\n    \"tobacco_smoking\": \"No\",\n    \"alcohol\": \"No\",\n    \"drugs\": \"No\",\n    \"other\": \"No\",\n    \"pregnancy_complications\": \"No\",\n    \"past_treatments\": \"No\",\n    \"family_history\": \"No\",\n    \"vaccinations\": \"No\",\n    \"other_treatments\": \"No\",\n    \"comments\": \"No\"\n  }\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "patientdrugs create",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/patientdrugs/create",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "patientdrugs",
+                "create"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{PATIENT_ID}},\n  \"clinic_id\": {{CLINIC_ID}},\n  \"drugs\": [\n    {\n      \"name\": \"Aspirin\",\n      \"dosage\": \"1 tablet\",\n      \"frequency\": \"daily\",\n      \"duration\": \"7 days\",\n      \"route\": \"oral\",\n      \"quantity\": \"1\",\n      \"start_date\": \"2020-01-01\",\n      \"end_date\": \"2020-01-31\",\n      \"prescription\": \"No\",\n      \"dispense\": \"No\",\n      \"other\": \"No\",\n      \"comments\": \"No\"\n    },\n    {\n      \"name\": \"Paracetamol\",\n      \"dosage\": \"1 tablet\",\n      \"frequency\": \"daily\",\n      \"duration\": \"7 days\",\n      \"route\": \"oral\",\n      \"quantity\": \"1\",\n      \"start_date\": \"2020-01-01\",\n      \"end_date\": \"2020-01-31\",\n      \"prescription\": \"No\",\n      \"dispense\": \"No\",\n      \"other\": \"No\",\n      \"comments\": \"No\"\n    }\n  ]\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"DRUGS_ID\", String(pm.response.json()[\"id\"])); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "patientdrugs read",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/patientdrugs/read",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "patientdrugs",
+                "read"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{ID}},\n  \"schema\": []\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"ID\", pm.collectionVariables.get('PATIENT_ID'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "patientdrugs update",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/patientdrugs/update?id={{PATIENT_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "patientdrugs",
+                "update"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{PATIENT_ID}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"drugs\": [\n    {\n      \"name\": \"Aspirin\",\n      \"dosage\": \"1 tablet\",\n      \"frequency\": \"daily\",\n      \"duration\": \"7 days\",\n      \"route\": \"oral\",\n      \"quantity\": \"1\",\n      \"start_date\": \"2020-01-01\",\n      \"end_date\": \"2020-01-31\",\n      \"prescription\": \"No\",\n      \"dispense\": \"No\",\n      \"other\": \"No\",\n      \"comments\": \"No\"\n    },\n    {\n      \"name\": \"Paracetamol\",\n      \"dosage\": \"1 tablet\",\n      \"frequency\": \"daily\",\n      \"duration\": \"7 days\",\n      \"route\": \"oral\",\n      \"quantity\": \"1\",\n      \"start_date\": \"2020-01-01\",\n      \"end_date\": \"2020-01-31\",\n      \"prescription\": \"No\",\n      \"dispense\": \"No\",\n      \"other\": \"No\",\n      \"comments\": \"No\"\n    }\n  ]\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "reports create",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/reports/create",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "reports",
+                "create"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{PATIENT_ID}},\n  \"clinic_id\": {{CLINIC_ID}},\n  \"reports\": [\n    {\n      \"report_type\": \"Clinical\",\n      \"name\": \"Preoperative\",\n      \"date\": \"2020-01-01\",\n      \"result\": \"Text\"\n    },\n    {\n      \"report_type\": \"Clinical\",\n      \"name\": \"Preoccupation\",\n      \"date\": \"2020-01-01\",\n      \"result\": \"Text\"\n    }\n  ]\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"REPORTS_ID\", String(pm.response.json()[\"id\"])); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "reports read",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/reports/read",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "reports",
+                "read"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{ID}},\n  \"schema\": []\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"ID\", pm.collectionVariables.get('PATIENT_ID'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "reports update",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/reports/update?id={{PATIENT_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "reports",
+                "update"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{PATIENT_ID}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reports\": [\n    {\n      \"report_type\": \"Clinical\",\n      \"name\": \"Preoperative\",\n      \"date\": \"2020-01-01\",\n      \"result\": \"Text\"\n    },\n    {\n      \"report_type\": \"Clinical\",\n      \"name\": \"Preoccupation\",\n      \"date\": \"2020-01-01\",\n      \"result\": \"Text\"\n    }\n  ]\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Clinic: visit and its requests, prescriptions, paid services",
+      "item": [
+        {
+          "name": "visits create",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/visits/create",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "visits",
+                "create"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"patient_id\": {{PATIENT_ID}},\n  \"clinic_id\": {{CLINIC_ID}},\n  \"visit_date\": \"2020-01-01\",\n  \"visit_time\": \"10:00\",\n  \"complaints\": \"Headache\",\n  \"symptoms\": \"Rhinorhea, sorethroat\",\n  \"examination\": {\n    \"BP\": \"120/80\",\n    \"pulse\": \"100\",\n    \"temperature\": \"98.6\",\n    \"respiration\": \"18\",\n    \"oxygen_saturation\": \"98\",\n    \"weight\": \"80\",\n    \"height\": \"180\",\n    \"comments\": \"No\",\n    \"Examination\": \"\",\n    \"Other\": \"\",\n    \"Notes\": \"\"\n  },\n  \"diagnosis\": \"Flu\",\n  \"comments\": \"None\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"VISIT_ID\", String(pm.response.json()[\"id\"])); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "visits read",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/visits/read",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "visits",
+                "read"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{ID}},\n  \"schema\": []\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"ID\", pm.collectionVariables.get('VISIT_ID'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "visits update",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/visits/update?id={{VISIT_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "visits",
+                "update"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{VISIT_ID}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"visit_date\": \"2020-01-02\",\n  \"visit_time\": \"11:00\",\n  \"complaints\": \"Headache and fever\",\n  \"symptoms\": \"Rhinorhea, sorethroat\",\n  \"examination\": {\n    \"BP\": \"125/85\",\n    \"pulse\": \"90\",\n    \"temperature\": \"99.1\",\n    \"respiration\": \"18\",\n    \"oxygen_saturation\": \"98\",\n    \"weight\": \"80\",\n    \"height\": \"180\",\n    \"comments\": \"No\",\n    \"Examination\": \"\",\n    \"Other\": \"\",\n    \"Notes\": \"\"\n  },\n  \"diagnosis\": \"Flu\",\n  \"comments\": \"Updated\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "requests create",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/requests/create",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "requests",
+                "create"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{VISIT_ID}},\n  \"clinic_id\": {{CLINIC_ID}},\n  \"requests\": [\n    {\n      \"name\": \"Chest Xray\",\n      \"date\": \"2020-01-01\",\n      \"result\": \"Positive for lung cancer\",\n      \"media\": \"url\"\n    },\n    {\n      \"name\": \"CBC\",\n      \"date\": \"2020-01-01\",\n      \"result\": \"Anemia\",\n      \"media\": \"url\"\n    }\n  ]\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"REQUEST_ID\", String(pm.response.json()[\"id\"])); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "requests read",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/requests/read",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "requests",
+                "read"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{ID}},\n  \"schema\": []\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"ID\", pm.collectionVariables.get('VISIT_ID'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "requests update",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/requests/update?id={{VISIT_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "requests",
+                "update"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{VISIT_ID}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requests\": [\n    {\n      \"name\": \"Chest Xray\",\n      \"date\": \"2020-01-01\",\n      \"result\": \"Positive for lung cancer\",\n      \"media\": \"url\"\n    },\n    {\n      \"name\": \"CBC\",\n      \"date\": \"2020-01-01\",\n      \"result\": \"Anemia\",\n      \"media\": \"url\"\n    }\n  ]\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "prescriptions create",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/prescriptions/create",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "prescriptions",
+                "create"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{VISIT_ID}},\n  \"clinic_id\": {{CLINIC_ID}},\n  \"prescriptions\": [\n    {\n      \"name\": \"Aspirin\",\n      \"dosage\": \"1 tablet\",\n      \"frequency\": \"daily\",\n      \"duration\": \"7 days\",\n      \"route\": \"oral\",\n      \"quantity\": \"1\",\n      \"start_date\": \"2020-01-01\",\n      \"end_date\": \"2020-01-31\",\n      \"prescription\": \"No\",\n      \"dispense\": \"No\",\n      \"other\": \"No\",\n      \"comments\": \"No\"\n    },\n    {\n      \"name\": \"Paracetamol\",\n      \"dosage\": \"1 tablet\",\n      \"frequency\": \"daily\",\n      \"duration\": \"7 days\",\n      \"route\": \"oral\",\n      \"quantity\": \"1\",\n      \"start_date\": \"2020-01-01\",\n      \"end_date\": \"2020-01-31\",\n      \"prescription\": \"No\",\n      \"dispense\": \"No\",\n      \"other\": \"No\",\n      \"comments\": \"No\"\n    }\n  ]\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"PRESCRIPTION_ID\", String(pm.response.json()[\"id\"])); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "prescriptions read",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/prescriptions/read",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "prescriptions",
+                "read"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{ID}},\n  \"schema\": []\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"ID\", pm.collectionVariables.get('VISIT_ID'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "prescriptions update",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/prescriptions/update?id={{VISIT_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "prescriptions",
+                "update"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{VISIT_ID}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prescriptions\": [\n    {\n      \"name\": \"Aspirin\",\n      \"dosage\": \"1 tablet\",\n      \"frequency\": \"daily\",\n      \"duration\": \"7 days\",\n      \"route\": \"oral\",\n      \"quantity\": \"1\",\n      \"start_date\": \"2020-01-01\",\n      \"end_date\": \"2020-01-31\",\n      \"prescription\": \"No\",\n      \"dispense\": \"No\",\n      \"other\": \"No\",\n      \"comments\": \"No\"\n    },\n    {\n      \"name\": \"Paracetamol\",\n      \"dosage\": \"1 tablet\",\n      \"frequency\": \"daily\",\n      \"duration\": \"7 days\",\n      \"route\": \"oral\",\n      \"quantity\": \"1\",\n      \"start_date\": \"2020-01-01\",\n      \"end_date\": \"2020-01-31\",\n      \"prescription\": \"No\",\n      \"dispense\": \"No\",\n      \"other\": \"No\",\n      \"comments\": \"No\"\n    }\n  ]\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "paidservices create",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/paidservices/create",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "paidservices",
+                "create"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{VISIT_ID}},\n  \"clinic_id\": {{CLINIC_ID}},\n  \"paidservices\": [\n    {\n      \"name\": \"Service 1\",\n      \"date\": \"2020-01-01\",\n      \"amount\": \"100.00\"\n    },\n    {\n      \"name\": \"Service 2\",\n      \"date\": \"2020-01-01\",\n      \"amount\": \"100.00\"\n    }\n  ]\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"PAIDSERVICE_ID\", String(pm.response.json()[\"id\"])); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "paidservices read",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/paidservices/read",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "paidservices",
+                "read"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{ID}},\n  \"schema\": []\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"ID\", pm.collectionVariables.get('VISIT_ID'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "paidservices update",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/paidservices/update?id={{VISIT_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "paidservices",
+                "update"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{VISIT_ID}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"paidservices\": [\n    {\n      \"name\": \"Service 1 xxx\",\n      \"date\": \"2020-01-01\",\n      \"amount\": \"120.00\"\n    },\n    {\n      \"name\": \"Service 2\",\n      \"date\": \"2020-01-01\",\n      \"amount\": \"100.00\"\n    }\n  ]\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Appointments (needs clinic, user and provider)",
+      "item": [
+        {
+          "name": "appointments create",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/appointments/clinics/create",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "appointments",
+                "clinics",
+                "create"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clinic_id\": {{CLINIC_ID}},\n  \"user_id\": {{USER_ID}},\n  \"provider_id\": {{PROVIDER_ID}},\n  \"appointment_date\": \"2026-05-25\",\n  \"appointment_time\": \"10:00:00\",\n  \"appointment_duration\": 30,\n  \"appointment_reason\": \"Check-up\",\n  \"appointment_note\": \"No notes\",\n  \"appointment_payment_transaction_id\": \"1000\",\n  \"appointment_payment_transaction_status\": \"pending\",\n  \"appointment_payment_method\": \"amount\",\n  \"appointment_payment_currency\": \"currency\",\n  \"appointment_payment_date\": \"2026-05-25\",\n  \"appointment_payment_time\": \"10:00:00\",\n  \"appointment_payment_amount\": 100,\n  \"appointment_payment_status\": \"pending\",\n  \"appointment_type\": \"regular\",\n  \"appointment_status\": \"pending\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"APPOINTMENT_ID\", String(pm.response.json()[\"id\"])); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "appointments read",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/appointments/clinics/read?id={{APPOINTMENT_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "appointments",
+                "clinics",
+                "read"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{APPOINTMENT_ID}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{APPOINTMENT_ID}},\n  \"provider_id\": {{PROVIDER_ID}},\n  \"clinic_id\": {{CLINIC_ID}},\n  \"schema\": []\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "appointments update",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/appointments/clinics/update?id={{APPOINTMENT_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "appointments",
+                "clinics",
+                "update"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{APPOINTMENT_ID}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": {{USER_ID}},\n  \"clinic_id\": {{CLINIC_ID}},\n  \"provider_id\": {{PROVIDER_ID}},\n  \"appointment_date\": \"2021-05-20\",\n  \"appointment_time\": \"10:00:00\",\n  \"appointment_duration\": 30,\n  \"appointment_reason\": \"Check-up\",\n  \"appointment_note\": \"No notes\",\n  \"appointment_payment_status\": \"pending\",\n  \"appointment_payment_method\": \"credit_card\",\n  \"appointment_payment_amount\": 100,\n  \"appointment_payment_currency\": \"USD\",\n  \"appointment_payment_date\": \"2021-05-20\",\n  \"appointment_payment_time\": \"10:00:00\",\n  \"appointment_payment_transaction_id\": \"1234567890\",\n  \"appointment_payment_transaction_status\": \"completed\",\n  \"appointment_type\": \"online\",\n  \"appointment_status\": \"pending\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Suspend (disposable accounts, left suspended)",
+      "item": [
+        {
+          "name": "providers create (disposable)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/providers/create",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "providers",
+                "create"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"avatar\": \"http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200\",\n  \"active\": true,\n  \"language\": \"en\",\n  \"username\": \"{{DISPOSABLE_NAME}}\",\n  \"password\": \"{{USER_PASSWORD}}\",\n  \"fullname\": \"Suspend Test\",\n  \"phone\": \"+201299999999\",\n  \"email\": \"{{DISPOSABLE_NAME}}@mail.com\",\n  \"country\": \"Egypt\",\n  \"city\": \"Damietta\",\n  \"address\": \"portsaid street\",\n  \"dob\": \"17-02-1985\",\n  \"gender\": \"Male\",\n  \"position\": \"Doctor\",\n  \"speciality\": \"Cardiology\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"DISPOSABLE_NAME\", pm.collectionVariables.get('DISP_PROVIDER'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"PD_ID\", String(pm.response.json()[\"id\"])); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "providers login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/providers/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "providers",
+                "login"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"{{LOGIN_USERNAME}}\",\n  \"password\": \"{{LOGIN_PASSWORD}}\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"LOGIN_USERNAME\", pm.collectionVariables.get('DISP_PROVIDER'));",
+                  "pm.collectionVariables.set(\"LOGIN_PASSWORD\", pm.collectionVariables.get('USER_PASSWORD'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"PD_TOKEN\", String(pm.response.json()[\"token\"])); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "providers activate",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PD_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/providers/activate?id={{PD_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "providers",
+                "activate"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{PD_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "providers suspend",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PD_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/providers/suspend?id={{PD_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "providers",
+                "suspend"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{PD_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "providers blocked while suspended",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PD_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/providers/read",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "providers",
+                "read"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{ID}},\n  \"schema\": []\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"ID\", pm.collectionVariables.get('PD_ID'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 401\", function () { pm.response.to.have.status(401); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "users create (disposable)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/users/create",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "users",
+                "create"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"avatar\": \"http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200\",\n  \"language\": \"en\",\n  \"active\": true,\n  \"parent\": \"0\",\n  \"username\": \"{{DISPOSABLE_NAME}}\",\n  \"email\": \"{{DISPOSABLE_NAME}}@mail.com\",\n  \"password\": \"{{USER_PASSWORD}}\",\n  \"fullname\": \"Suspend Test\",\n  \"phone\": \"+201299999999\",\n  \"country\": \"Egypt\",\n  \"city\": \"Damietta\",\n  \"address\": \"12 valhalla Street \",\n  \"dob\": \"10-10-1990\",\n  \"gender\": \"Male\",\n  \"marital\": \"single\",\n  \"job\": \"Doctor\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"DISPOSABLE_NAME\", pm.collectionVariables.get('DISP_USER'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"UD_ID\", String(pm.response.json()[\"id\"])); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "users login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/users/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "users",
+                "login"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"{{LOGIN_USERNAME}}\",\n  \"password\": \"{{LOGIN_PASSWORD}}\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"LOGIN_USERNAME\", pm.collectionVariables.get('DISP_USER'));",
+                  "pm.collectionVariables.set(\"LOGIN_PASSWORD\", pm.collectionVariables.get('USER_PASSWORD'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"UD_TOKEN\", String(pm.response.json()[\"token\"])); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "users activate",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{UD_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/users/activate?id={{UD_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "users",
+                "activate"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{UD_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "users suspend",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{UD_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/users/suspend?id={{UD_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "users",
+                "suspend"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{UD_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "users blocked while suspended",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{UD_TOKEN}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/users/read",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "users",
+                "read"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{ID}},\n  \"schema\": []\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"ID\", pm.collectionVariables.get('UD_ID'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 401\", function () { pm.response.to.have.status(401); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Clean-up (reverse order)",
+      "item": [
+        {
+          "name": "paidservices delete (not implemented by design)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/paidservices/delete?id={{VISIT_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "paidservices",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{VISIT_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 400\", function () { pm.response.to.have.status(400); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "prescriptions delete (not implemented by design)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/prescriptions/delete?id={{VISIT_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "prescriptions",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{VISIT_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 400\", function () { pm.response.to.have.status(400); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "requests delete (not implemented by design)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/requests/delete?id={{VISIT_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "requests",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{VISIT_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 400\", function () { pm.response.to.have.status(400); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "visits delete",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/visits/delete?id={{VISIT_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "visits",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{VISIT_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "reports delete (not implemented by design)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/reports/delete?id={{PATIENT_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "reports",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{PATIENT_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 400\", function () { pm.response.to.have.status(400); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "patientdrugs delete (not implemented by design)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/patientdrugs/delete?id={{PATIENT_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "patientdrugs",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{PATIENT_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 400\", function () { pm.response.to.have.status(400); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "health delete (not implemented by design)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/health/delete?id={{PATIENT_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "health",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{PATIENT_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 400\", function () { pm.response.to.have.status(400); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "patients delete",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clinic/patients/delete?id={{PATIENT_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clinic",
+                "patients",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{PATIENT_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "appointments delete",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/appointments/clinics/delete?id={{APPOINTMENT_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "appointments",
+                "clinics",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{APPOINTMENT_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "clinics delete",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/services/clinics/delete?id={{CLINIC_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "services",
+                "clinics",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{CLINIC_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "pharmacies delete",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/services/pharmacies/delete?id={{PHARMACY_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "services",
+                "pharmacies",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{PHARMACY_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "laboratories delete",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/services/laboratories/delete?id={{LAB_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "services",
+                "laboratories",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{LAB_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "radiologycenters delete",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/services/radiologycenters/delete?id={{RAD_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "services",
+                "radiologycenters",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{RAD_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "users logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{USER_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/users/logout",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "users",
+                "logout"
+              ],
+              "query": []
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "users login (fresh token)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/users/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "users",
+                "login"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"{{LOGIN_USERNAME}}\",\n  \"password\": \"{{LOGIN_PASSWORD}}\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"LOGIN_USERNAME\", pm.collectionVariables.get('USER_USERNAME'));",
+                  "pm.collectionVariables.set(\"LOGIN_PASSWORD\", pm.collectionVariables.get('USER_PASSWORD'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"USER_TOKEN\", String(pm.response.json()[\"token\"])); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "users delete",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{USER_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/users/delete?id={{USER_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "users",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{USER_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "providers logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/providers/logout",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "providers",
+                "logout"
+              ],
+              "query": []
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "providers login (fresh token)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/providers/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "providers",
+                "login"
+              ],
+              "query": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"{{LOGIN_USERNAME}}\",\n  \"password\": \"{{LOGIN_PASSWORD}}\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"LOGIN_USERNAME\", pm.collectionVariables.get('PROVIDER_USERNAME'));",
+                  "pm.collectionVariables.set(\"LOGIN_PASSWORD\", pm.collectionVariables.get('PROVIDER_PASSWORD'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });",
+                  "if (pm.response.code === 200) { pm.collectionVariables.set(\"PROVIDER_TOKEN\", String(pm.response.json()[\"token\"])); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "providers delete",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{PROVIDER_TOKEN}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/clients/providers/delete?id={{PROVIDER_ID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "clients",
+                "providers",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "{{PROVIDER_ID}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

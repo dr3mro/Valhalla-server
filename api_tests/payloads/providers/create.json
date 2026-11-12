@@ -1,0 +1,17 @@
+{
+  "avatar": "http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200",
+  "active": true,
+  "language": "en",
+  "username": "{{PROVIDER_USERNAME}}",
+  "password": "{{PROVIDER_PASSWORD}}",
+  "fullname": "Amr Nasr",
+  "phone": "+201299999999",
+  "email": "provider{{RUN}}@mail.com",
+  "country": "Egypt",
+  "city": "Damietta",
+  "address": "portsaid street",
+  "dob": "17-02-1985",
+  "gender": "Male",
+  "position": "Doctor",
+  "speciality": "Cardiology"
+}

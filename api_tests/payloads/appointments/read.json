@@ -1,0 +1,6 @@
+{
+  "id": {{APPOINTMENT_ID}},
+  "provider_id": {{PROVIDER_ID}},
+  "clinic_id": {{CLINIC_ID}},
+  "schema": []
+}

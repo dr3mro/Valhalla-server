@@ -1,0 +1,12 @@
+{
+  "email": "patient{{RUN}}@mail.com",
+  "clinic_id": {{CLINIC_ID}},
+  "fullname": "Amr Nasr",
+  "phone": "+201299999999",
+  "city": "Damietta",
+  "address": "11 Valhalla street",
+  "dob": "17-02-1985",
+  "gender": "Male",
+  "marital": "Single",
+  "job": "Doctor"
+}

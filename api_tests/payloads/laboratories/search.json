@@ -1,0 +1,8 @@
+{
+  "keyword": "102",
+  "filter": "name",
+  "limit": 5,
+  "offset": 0,
+  "order_by": "id",
+  "direction": 0
+}

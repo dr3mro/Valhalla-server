@@ -1,0 +1,27 @@
+{
+  "logo": "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+  "name": "Clinic0",
+  "country": "Egypt",
+  "city": "Damietta",
+  "address": "11 street Ras elbar",
+  "phone": [
+    "+1987654321"
+  ],
+  "admin_id": {{PROVIDER_ID}},
+  "owner_id": {{PROVIDER_ID}},
+  "specialities": [
+    "Cardiology",
+    "Medicine"
+  ],
+  "staff": {
+    "Doctors": [
+      "{{PROVIDER_ID}}:62"
+    ],
+    "nurses": [
+      ""
+    ],
+    "assistants": [
+      ""
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "email": "patient{{RUN}}@mail.com",
+  "fullname": "Amr Nasr Osman",
+  "phone": "+201299999999",
+  "city": "Damietta",
+  "address": "11 Valhalla street",
+  "dob": "22-10-1990",
+  "gender": "male",
+  "marital": "single",
+  "job": "Doctor"
+}

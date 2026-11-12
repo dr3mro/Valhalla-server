@@ -1,0 +1,8 @@
+{
+  "keyword": "cardiology",
+  "filter": "speciality",
+  "limit": 5,
+  "offset": 0,
+  "order_by": "id",
+  "direction": 0
+}

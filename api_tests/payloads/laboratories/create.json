@@ -1,0 +1,24 @@
+{
+  "logo": "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+  "name": "Clinical Lab 101",
+  "country": "Egypt",
+  "city": "Damietta",
+  "address": "11 street Ras elbar",
+  "phone": [
+    "+1987654321"
+  ],
+  "admin_id": {{PROVIDER_ID}},
+  "owner_id": {{PROVIDER_ID}},
+  "staff": {
+    "Doctors": [
+      "1001",
+      "1921"
+    ],
+    "nurses": [
+      ""
+    ],
+    "assistants": [
+      "1000"
+    ]
+  }
+}
