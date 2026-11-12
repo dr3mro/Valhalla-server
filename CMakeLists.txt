@@ -46,6 +46,16 @@ add_compile_options(-fdiagnostics-color=always -fdiagnostics-show-option)
 # ${cppcheck_exe} --std=c11 ${cppcheck_opts}) set(CMAKE_CXX_CPPCHECK
 # ${cppcheck_exe} --std=c++20 ${cppcheck_opts}) endif()
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# Copy compile_commands.json to project root so clangd/LSP can find it
+add_custom_target(copy_compile_commands ALL
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${CMAKE_BINARY_DIR}/compile_commands.json
+        ${CMAKE_SOURCE_DIR}/build/compile_commands.json
+    COMMENT "Copying compile_commands.json to project build dir"
+)
+
+
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/src")
 
 # Suppress developer warnings and deprecated warnings
