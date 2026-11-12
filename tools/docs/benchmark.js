@@ -51,21 +51,8 @@
   let running = false;
   let stop = false;
 
-  /* ---------- rate-limit budget: the server's DoS filter allows 10 000 requests / 30 s by default ---------- */
-  const sentLog = [];
-  const BUDGET = 8000, WINDOW = 30000;
-  async function reserve(n) {
-    if (n > BUDGET) return;
-    for (;;) {
-      const now = performance.now();
-      while (sentLog.length && now - sentLog[0][0] > WINDOW) sentLog.shift();
-      const used = sentLog.reduce((a, x) => a + x[1], 0);
-      if (used + n <= BUDGET || stop) break;
-      setStatus('Pausing so the server\'s rate limit (10 000 requests / 30 s) is not hit: ' + used + ' requests sent in the last 30 s…');
-      await sleep(1000);
-    }
-    sentLog.push([performance.now(), n]);
-  }
+  /* no client-side rate-limit budget: requests are sent as fast as possible (raise or disable the server's DoS filter MAX_REQUESTS / PERIOD when benchmarking) */
+  async function reserve() {}
 
   /* ---------- engine ---------- */
   const pct = (sorted, p) => sorted[Math.min(sorted.length - 1, Math.max(0, Math.ceil((p / 100) * sorted.length) - 1))];
@@ -294,7 +281,7 @@
       el('b', { text: 'Reading the numbers. ' }),
       'Times are measured in your browser, so they include network time, and browsers allow only a handful of parallel connections per host (about 6 over HTTP/1.1). A request is OK when it returns the status the test console expects (usually 200). ',
       el('b', { text: 'Rate limit: ' }),
-      'the server\'s DoS filter allows 10 000 requests per 30 s by default (MAX_REQUESTS / PERIOD); the benchmark pauses when it gets close, so a long run waits between endpoints. The Base URL is the one set in the Test console.'));
+      'the benchmark does not throttle itself: the server\'s DoS filter (MAX_REQUESTS / PERIOD, 10 000 per 30 s by default) must be raised or disabled for long runs. The Base URL is the one set in the Test console.'));
 
   host.append(el('div', { class: 'vb-backdrop vc-backdrop', onclick: () => close() }), root);
   if (document.documentElement.classList.contains('vc-light') || host.classList.contains('light')) host.classList.add('light');
