@@ -39,12 +39,16 @@ namespace api::v2
 
         void Update(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
         {
+            auto id = parseIdParam(req, "id", callback);
+            if (!id) return;
             executeControllerMethod(
-                serviceRegistry, serviceType, &ServiceControllerBase::Update, req, std::move(callback), req->body(), stoll(req->getParameter("id")));
+                serviceRegistry, serviceType, &ServiceControllerBase::Update, req, std::move(callback), req->body(), *id);
         }
         void Delete(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
         {
-            executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Delete, req, std::move(callback), stoll(req->getParameter("id")));
+            auto id = parseIdParam(req, "id", callback);
+            if (!id) return;
+            executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Delete, req, std::move(callback), *id);
         }
         void Search(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
         {

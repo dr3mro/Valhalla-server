@@ -35,7 +35,16 @@ inline void __attribute((always_inline)) EntityController<T>::Create(CALLBACK_ &
         Validator::Rule rule((Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA | Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA), {"id"});
         auto            next_id = this->template getNextID<T>(error);
 
-        std::optional<jsoncons::json> request_j = jsoncons::json::parse(data);
+        std::optional<jsoncons::json> request_j;
+        try
+        {
+            request_j = jsoncons::json::parse(data);
+        }
+        catch (const std::exception &)
+        {
+            std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Invalid request body: malformed JSON.");
+            return;
+        }
 
         if (!request_j.has_value())
         {
@@ -80,8 +89,20 @@ inline void __attribute((always_inline)) EntityController<T>::Read(CALLBACK_ &&c
 {
     try
     {
-        jsoncons::json request_j = jsoncons::json::parse(data);
-        uint64_t       _id       = request_j.at("id").as<uint64_t>();
+        jsoncons::json request_j;
+        uint64_t       _id;
+        std::unordered_set<std::string> schema;
+        try
+        {
+            request_j = jsoncons::json::parse(data);
+            _id       = request_j.at("id").as<uint64_t>();
+            schema    = request_j.at("schema").as<std::unordered_set<std::string>>();
+        }
+        catch (const std::exception &)
+        {
+            std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Invalid request body: malformed JSON or missing/invalid 'id'/'schema'.");
+            return;
+        }
         HttpError      error;
 
         if (!gateKeeper->canRead<T>(requester, _id, error))
@@ -89,8 +110,6 @@ inline void __attribute((always_inline)) EntityController<T>::Read(CALLBACK_ &&c
             std::move(callback)(error.code, error.message);
             return;
         }
-
-        std::unordered_set<std::string> schema = request_j.at("schema").as<std::unordered_set<std::string>>();
 
         Validator::Rule rule(Validator::Rule::Action::ASSERT_NOT_PRESENT, {"id", "username", "password", "created_at", "updated_at"});
 
@@ -124,7 +143,16 @@ inline void __attribute((always_inline)) EntityController<T>::Update(
             return;
         }
 
-        std::optional<jsoncons::json> request_json = jsoncons::json::parse(data);
+        std::optional<jsoncons::json> request_json;
+        try
+        {
+            request_json = jsoncons::json::parse(data);
+        }
+        catch (const std::exception &)
+        {
+            std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Invalid request body: malformed JSON.");
+            return;
+        }
 
         if (!request_json.has_value())
         {
@@ -195,6 +223,14 @@ inline void __attribute((always_inline)) EntityController<T>::Search(CALLBACK_ &
     try
     {
         request_json = jsoncons::json::parse(data);
+    }
+    catch (const std::exception &)
+    {
+        std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Invalid request body: malformed JSON.");
+        return;
+    }
+    try
+    {
         bool success = false;
         T    entity((Search_t(request_json, success)));
 

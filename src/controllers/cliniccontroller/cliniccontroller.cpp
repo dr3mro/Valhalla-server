@@ -7,8 +7,17 @@ template <typename U>
 void ClinicController<T>::CreateImpl(CALLBACK_ &&callback, const Requester &&requester, std::string_view data)
     requires(!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value)
 {
-    jsoncons::json request_json = jsoncons::json::parse(data);
-    bool           success      = false;
+    jsoncons::json request_json;
+    try
+    {
+        request_json = jsoncons::json::parse(data);
+    }
+    catch (const std::exception &)
+    {
+        callback(api::v2::Http::Status::BAD_REQUEST, "Invalid request body: malformed JSON.");
+        return;
+    }
+    bool success = false;
 
     Validator::Rule rule((Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA | Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA), {"id"});
 

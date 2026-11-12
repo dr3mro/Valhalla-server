@@ -36,6 +36,7 @@ namespace api::v2::Filters
             {
                 auto resp = drogon::HttpResponse::newHttpResponse();
                 resp->setStatusCode(drogon::HttpStatusCode::k401Unauthorized);
+                resp->setContentTypeCode(drogon::CT_APPLICATION_JSON);
                 resp->setBody(JsonHelper::stringify(JsonHelper::jsonify("failed to extract token, or not a bearer token")));
                 std::move(fcb)(resp);
                 return;
@@ -51,6 +52,7 @@ namespace api::v2::Filters
             {
                 auto resp = drogon::HttpResponse::newHttpResponse();
                 resp->setStatusCode(drogon::HttpStatusCode::k401Unauthorized);
+                resp->setContentTypeCode(drogon::CT_APPLICATION_JSON);
                 resp->setBody(JsonHelper::stringify(JsonHelper::jsonify(message)));
                 std::move(fcb)(resp);
                 return;

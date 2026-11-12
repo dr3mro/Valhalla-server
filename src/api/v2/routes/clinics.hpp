@@ -45,12 +45,16 @@ namespace api::v2
 
         void Update(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
         {
+            auto id = parseIdParam(req, "id", callback);
+            if (!id) return;
             executeControllerMethod(
-                clinicRegistry, serviceType, &ClinicControllerBase::Update, req, std::move(callback), req->body(), stoll(req->getParameter("id")));
+                clinicRegistry, serviceType, &ClinicControllerBase::Update, req, std::move(callback), req->body(), *id);
         }
         void Delete(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
         {
-            executeControllerMethod(clinicRegistry, serviceType, &ClinicControllerBase::Delete, req, std::move(callback), stoll(req->getParameter("id")));
+            auto id = parseIdParam(req, "id", callback);
+            if (!id) return;
+            executeControllerMethod(clinicRegistry, serviceType, &ClinicControllerBase::Delete, req, std::move(callback), *id);
         }
         void Search(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback)
         {
@@ -59,8 +63,10 @@ namespace api::v2
 
         void GetVisits(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback)
         {
+            auto patient_id = parseIdParam(req, "patient_id", callback);
+            if (!patient_id) return;
             executeControllerMethod(
-                clinicRegistry, "patients", &ClinicControllerBase::GetVisits, req, std::move(callback), stoll(req->getParameter("patient_id")));
+                clinicRegistry, "patients", &ClinicControllerBase::GetVisits, req, std::move(callback), *patient_id);
         }
 
         METHOD_LIST_BEGIN

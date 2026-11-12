@@ -9,6 +9,7 @@
 
 #include <cstdint>
 #include <exception>
+#include <optional>
 #include <functional>
 #include <memory>
 #include <string>
@@ -29,6 +30,27 @@
 
 namespace api::v2
 {
+    // stoll(req->getParameter(name)) throws std::invalid_argument/out_of_range when the parameter is
+    // missing or non-numeric. That throw happens in the route handler's argument list, BEFORE
+    // executeControllerMethod's own try/catch is ever entered, so it used to escape all the way up
+    // through Drogon's dispatch as a raw, empty-body 500. This parses the id parameter safely and
+    // replies with a normal 400 instead; callers must check the returned optional and return early
+    // (without calling executeControllerMethod) when it is empty.
+    inline std::optional<int64_t> parseIdParam(
+        const drogon::HttpRequestPtr& req, const std::string& name, std::function<void(const drogon::HttpResponsePtr&)>& callback)
+    {
+        const std::string& raw = req->getParameter(name);
+        try
+        {
+            return std::stoll(raw);
+        }
+        catch (const std::exception&)
+        {
+            Helper::errorResponse(drogon::k400BadRequest, fmt::format("Missing or invalid '{}' parameter.", name), std::move(callback));
+            return std::nullopt;
+        }
+    }
+
     template <typename Func, typename Registry, typename... Args>
     static void executeControllerMethod(const Registry& registry, const std::string_view key, Func method, const drogon::HttpRequestPtr& req,
         std::function<void(const drogon::HttpResponsePtr&)>&& callback, Args&&... args)

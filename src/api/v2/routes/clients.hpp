@@ -42,12 +42,16 @@ namespace api::v2
 
         void suspend(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
         {
-            executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Suspend, req, std::move(callback), stoll(req->getParameter("id")));
+            auto id = parseIdParam(req, "id", callback);
+            if (!id) return;
+            executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Suspend, req, std::move(callback), *id);
         }
 
         void activate(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
         {
-            executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Activate, req, std::move(callback), stoll(req->getParameter("id")));
+            auto id = parseIdParam(req, "id", callback);
+            if (!id) return;
+            executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Activate, req, std::move(callback), *id);
         }
 
         void read(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
@@ -57,12 +61,16 @@ namespace api::v2
 
         void update(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
         {
+            auto id = parseIdParam(req, "id", callback);
+            if (!id) return;
             executeControllerMethod(
-                clientRegistry, clientType, &ClientControllerBase::Update, req, std::move(callback), req->body(), stoll(req->getParameter("id")));
+                clientRegistry, clientType, &ClientControllerBase::Update, req, std::move(callback), req->body(), *id);
         }
         void delete_(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
         {
-            executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Delete, req, std::move(callback), stoll(req->getParameter("id")));
+            auto id = parseIdParam(req, "id", callback);
+            if (!id) return;
+            executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Delete, req, std::move(callback), *id);
         }
         void search(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
         {
@@ -70,7 +78,9 @@ namespace api::v2
         }
         void getservices(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &clientType)
         {
-            executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::GetServices, req, std::move(callback), stoll(req->getParameter("id")));
+            auto id = parseIdParam(req, "id", callback);
+            if (!id) return;
+            executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::GetServices, req, std::move(callback), *id);
         }
 
         METHOD_LIST_BEGIN

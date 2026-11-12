@@ -112,6 +112,11 @@ namespace api::v2::Types
 
         Search_t(const jsoncons::json &search_j, bool &success)
         {
+            // A missing/malformed field here (e.g. an empty "{}" body) is a client error, not a
+            // server error. success=false tells the caller (EntityController::Search) to reply with
+            // a normal "Failed to search" response instead of throwing - rethrowing after setting
+            // success=false used to defeat that signal and escape uncaught into the generic 500
+            // handler, leaking the server's file path in the response body.
             try
             {
                 keyword   = search_j.at("keyword").as<std::string>();
@@ -122,10 +127,9 @@ namespace api::v2::Types
                 offset    = search_j.at("offset").as<size_t>();
                 success   = validate(search_j);
             }
-            catch (const std::exception &e)
+            catch (const std::exception &)
             {
                 success = false;
-                throw std::runtime_error(std::string(e.what()));
             }
         }
         bool validate(const jsoncons::json &search_j)
