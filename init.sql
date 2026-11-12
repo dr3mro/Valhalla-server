@@ -172,9 +172,9 @@ FROM radiologycenters;
 -- Create the table with correct usage of sequence for id column
 CREATE TABLE IF NOT EXISTS clinics_appointments (
     id INTEGER PRIMARY KEY DEFAULT nextval('clinics_appointments_id_seq'),
-    user_id INTEGER REFERENCES users(id),
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
     clinic_id INTEGER REFERENCES clinics(id) ON DELETE CASCADE,
-    provider_id INTEGER REFERENCES providers(id),
+    provider_id INTEGER REFERENCES providers(id) ON DELETE CASCADE,
     appointment_date DATE NOT NULL,
     appointment_time TIME NOT NULL,
     appointment_duration INTEGER NOT NULL,
@@ -201,9 +201,9 @@ FROM clinics_appointments;
 -- Create the table with correct usage of sequence for id column
 CREATE TABLE IF NOT EXISTS pharmacies_appointments (
     id INTEGER PRIMARY KEY DEFAULT nextval('pharmacies_appointments_id_seq'),
-    user_id INTEGER REFERENCES users(id),
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
     pharmacy_id INTEGER REFERENCES pharmacies(id) ON DELETE CASCADE,
-    provider_id INTEGER REFERENCES providers(id),
+    provider_id INTEGER REFERENCES providers(id) ON DELETE CASCADE,
     appointment_date DATE NOT NULL,
     appointment_time TIME NOT NULL,
     appointment_duration INTEGER NOT NULL,
@@ -230,9 +230,9 @@ FROM pharmacies_appointments;
 -- Create the table with correct usage of sequence for id column
 CREATE TABLE IF NOT EXISTS laboratories_appointments (
     id INTEGER PRIMARY KEY DEFAULT nextval('laboratories_appointments_id_seq'),
-    user_id INTEGER REFERENCES users(id),
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
     laboratory_id INTEGER REFERENCES laboratories(id) ON DELETE CASCADE,
-    provider_id INTEGER REFERENCES providers(id),
+    provider_id INTEGER REFERENCES providers(id) ON DELETE CASCADE,
     appointment_date DATE NOT NULL,
     appointment_time TIME NOT NULL,
     appointment_duration INTEGER NOT NULL,
@@ -259,9 +259,9 @@ FROM laboratories_appointments;
 -- Create the table with correct usage of sequence for id column
 CREATE TABLE IF NOT EXISTS radiologycenters_appointments (
     id INTEGER PRIMARY KEY DEFAULT nextval('radiologycenters_appointments_id_seq'),
-    user_id INTEGER REFERENCES users(id),
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
     radiologycenter_id INTEGER REFERENCES radiologycenters(id) ON DELETE CASCADE,
-    provider_id INTEGER REFERENCES providers(id),
+    provider_id INTEGER REFERENCES providers(id) ON DELETE CASCADE,
     appointment_date DATE NOT NULL,
     appointment_time TIME NOT NULL,
     appointment_duration INTEGER NOT NULL,
