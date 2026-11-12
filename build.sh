@@ -6,3 +6,9 @@ cmake -S. -Bbuild/Release -DCMAKE_BUILD_TYPE=Release -G Ninja
 cmake -S. -Bbuild/Debug -DCMAKE_BUILD_TYPE=Debug -G Ninja
 cmake --build build/Release -j 10
 cmake --build build/Debug -j 10
+
+ctest --preset conan-release
+ctest --preset conan-debug
+
+./run_release.sh&
+./test_api.sh

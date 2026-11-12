@@ -179,7 +179,7 @@ void ClientController<T>::Activate(CALLBACK_&& callback, const Requester&& reque
     {
         if (!client_id.has_value())
         {
-            callback(api::v2::Http::Status::NOT_ACCEPTABLE, api::v2::JsonHelper::jsonify("Invalid id provided").as<std::string>());
+            callback(api::v2::Http::Status::NOT_ACCEPTABLE, "Invalid id provided");
             return;
         }
         SuspendData suspendData(client_id.value());
@@ -215,7 +215,7 @@ void ClientController<T>::GetServices(CALLBACK_&& callback, const Requester&& re
     {
         if (!client_id.has_value())
         {
-            callback(api::v2::Http::Status::BAD_REQUEST, api::v2::JsonHelper::jsonify("client_id extraction failed").as<std::string>());
+            callback(api::v2::Http::Status::BAD_REQUEST, "client_id extraction failed");
             return;
         }
 

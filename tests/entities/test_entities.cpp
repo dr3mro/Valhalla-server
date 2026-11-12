@@ -8,9 +8,11 @@
 
 #include "entities/base/client.hpp"
 #include "entities/base/entity.hpp"
+#include "entities/base/service.hpp"
 #include "entities/base/types.hpp"
 #include "entities/people/provider.hpp"
 #include "entities/people/user.hpp"
+#include "entities/services/clinics/clinics.hpp"
 
 using namespace api::v2;
 
@@ -309,3 +311,122 @@ TEST_CASE("Entity getSqlSearchStatement inlines the keyword", "[entities][sql]")
     CHECK(statement->find("ORDER BY id DESC") != std::string::npos);
     CHECK(statement->find("LIMIT 6 OFFSET 0;") != std::string::npos);
 }
+
+// ── Service SQL builders ────────────────────────────────────────────────────
+
+namespace
+{
+    Types::StaffData makeStaffData(uint64_t nominee_id = 42, uint64_t entity_id = 7,
+        const std::string &nominee_group = "providers")
+    {
+        jsoncons::json j;
+        j["nominee_id"]    = nominee_id;
+        j["entity_id"]     = entity_id;
+        j["role"]          = "Doctor";
+        j["email"]         = "doc@example.com";
+        j["nominee_group"] = nominee_group;
+        j["entity_name"]   = "City Clinic";
+        return Types::StaffData(j);
+    }
+}  // namespace
+
+TEST_CASE("Service getSqlAddStaffStatement builds an UPDATE with the correct table and id", "[entities][sql][service]")
+{
+    const auto sd = makeStaffData(42, 7, "providers");
+    Service    svc(sd, "clinics");
+    const auto stmt = svc.getSqlAddStaffStatement();
+
+    REQUIRE(stmt.has_value());
+    CHECK(stmt->find("UPDATE clinics") == 0);
+    CHECK(stmt->find("42") != std::string::npos);   // nominee_id embedded
+    CHECK(stmt->find("RETURNING id;") != std::string::npos);
+}
+
+TEST_CASE("Service getSqlRemoveStaffStatement builds a filtered jsonb_agg UPDATE", "[entities][sql][service]")
+{
+    const auto sd = makeStaffData(99, 5, "providers");
+    Service    svc(sd, "laboratories");
+    const auto stmt = svc.getSqlRemoveStaffStatement();
+
+    REQUIRE(stmt.has_value());
+    CHECK(stmt->find("UPDATE laboratories") == 0);
+    CHECK(stmt->find("99") != std::string::npos);   // nominee_id being removed
+    CHECK(stmt->find("jsonb_agg") != std::string::npos);
+    CHECK(stmt->find("RETURNING id;") != std::string::npos);
+}
+
+TEST_CASE("Service::getServicePermissionsQuery returns a SELECT for the given service and id", "[entities][sql][service]")
+{
+    const auto stmt = Service::getServicePermissionsQuery("clinics", 13);
+
+    REQUIRE(stmt.has_value());
+    CHECK(stmt->find("SELECT owner_id,admin_id,staff FROM clinics") == 0);
+    CHECK(stmt->find("13") != std::string::npos);
+    CHECK(stmt->find("LIMIT 1;") != std::string::npos);
+}
+
+TEST_CASE("Service getSqlAddStaffStatement returns nullopt when data variant is wrong type", "[entities][sql][service]")
+{
+    // Constructing a Service with Create_t (not StaffData) makes getData() hold
+    // the wrong variant — std::get<StaffData> throws and the method returns nullopt.
+    const jsoncons::json payload = makeJsonObject({{"name", "test"}});
+    const Types::Create_t create(payload, 1);
+    Service svc(create, "clinics");
+    CHECK_FALSE(svc.getSqlAddStaffStatement().has_value());
+}
+
+TEST_CASE("Service getSqlRemoveStaffStatement returns nullopt when data variant is wrong type", "[entities][sql][service]")
+{
+    const Types::Delete_t del(1);
+    Service svc(del, "pharmacies");
+    CHECK_FALSE(svc.getSqlRemoveStaffStatement().has_value());
+}
+
+// ── Types direct construction ───────────────────────────────────────────────
+
+TEST_CASE("Types::Create_t stores the payload and id", "[entities][types]")
+{
+    const jsoncons::json payload = makeJsonObject({{"field", "value"}});
+    const Types::Create_t create(payload, 77);
+
+    REQUIRE(create.get_id().has_value());
+    CHECK(create.get_id().value() == 77);
+    CHECK(create.get_data().contains("field"));
+}
+
+TEST_CASE("Types::Read_t stores the schema set and id", "[entities][types]")
+{
+    const std::unordered_set<std::string> schema = {"name", "dob", "email"};
+    const Types::Read_t read(schema, 55);
+
+    REQUIRE(read.get_id().has_value());
+    CHECK(read.get_id().value() == 55);
+    CHECK(read.get_data().count("name") == 1);
+    CHECK(read.get_data().count("email") == 1);
+}
+
+TEST_CASE("Types::Update_t stores the payload and id", "[entities][types]")
+{
+    const jsoncons::json payload = makeJsonObject({{"status", "active"}});
+    const Types::Update_t update(payload, 11);
+
+    REQUIRE(update.get_id().has_value());
+    CHECK(update.get_id().value() == 11);
+    CHECK(update.get_data()["status"].as_string() == "active");
+}
+
+TEST_CASE("Types::Delete_t stores the id", "[entities][types]")
+{
+    const Types::Delete_t del(999);
+    REQUIRE(del.get_id().has_value());
+    CHECK(del.get_id().value() == 999);
+}
+
+TEST_CASE("Types::Data_t stores the id", "[entities][types]")
+{
+    const Types::Data_t data(123);
+    REQUIRE(data.get_id().has_value());
+    CHECK(data.get_id().value() == 123);
+}
+
+// PermissionManager Service_t canCreate is tested in test_permissions.cpp

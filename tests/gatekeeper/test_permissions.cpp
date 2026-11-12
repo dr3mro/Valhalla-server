@@ -444,3 +444,41 @@ TEST_CASE("PermissionManagerPrivate isOwnerOrAdminOrHasPermission checks the bit
         CHECK_FALSE(allowed(99, PowerLevel::CAN_READ));
     }
 }
+
+TEST_CASE("PermissionManager canCreate<Service_t> delegates to preServiceCreateChecks", "[gatekeeper][permissions][service]")
+{
+    using valhalla_test::json;
+    PermissionManager manager;
+
+    const auto makeService = [](uint64_t owner, uint64_t admin) {
+        json j;
+        j["owner_id"] = owner;
+        j["admin_id"] = admin;
+        return std::optional<json>(j);
+    };
+
+    SECTION("provider owning and administering the service is allowed")
+    {
+        HttpError error;
+        CHECK(manager.canCreate<Laboratories>(valhalla_test::makeRequester(4, "providers"), makeService(4, 4), error));
+    }
+
+    SECTION("non-provider is rejected")
+    {
+        HttpError error;
+        CHECK_FALSE(manager.canCreate<Laboratories>(valhalla_test::makeRequester(4, "users"), makeService(4, 4), error));
+        CHECK(error.code == api::v2::Http::Status::BAD_REQUEST);
+    }
+
+    SECTION("owner id mismatch is rejected")
+    {
+        HttpError error;
+        CHECK_FALSE(manager.canCreate<Laboratories>(valhalla_test::makeRequester(4, "providers"), makeService(99, 4), error));
+    }
+
+    SECTION("no data is rejected")
+    {
+        HttpError error;
+        CHECK_FALSE(manager.canCreate<Laboratories>(valhalla_test::makeRequester(4, "providers"), std::nullopt, error));
+    }
+}
