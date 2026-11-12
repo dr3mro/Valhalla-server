@@ -15,7 +15,7 @@
     },
     "build": {
       "label": "Build Debug",
-      "command": "make",
+      "command": "ninja",
       "args": ["-C", "$ZED_WORKTREE_ROOT/build/Debug", "-j", "8"],
       "cwd": "$ZED_WORKTREE_ROOT",
     },

@@ -8,7 +8,7 @@
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "on_success",
-    "shell": "system"
+    "shell": "system",
   },
   {
     "label": "Conan install dependencies Release",
@@ -19,41 +19,49 @@
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "on_success",
-    "shell": "system"
+    "shell": "system",
   },
   {
     "label": "Configure Debug",
     "cwd": "$ZED_WORKTREE_ROOT",
     "command": "cmake",
     "args": [
-      "-S", ".", "-B", "build/Debug",
+      "-S",
+      ".",
+      "-B",
+      "build/Debug",
       "-DCMAKE_BUILD_TYPE=Debug",
       "-DCMAKE_C_COMPILER=clang",
       "-DCMAKE_CXX_COMPILER=clang++",
-      "-G", "Ninja"
+      "-G",
+      "Ninja",
     ],
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "on_success",
-    "shell": "system"
+    "shell": "system",
   },
   {
     "label": "Configure Release",
     "cwd": "$ZED_WORKTREE_ROOT",
     "command": "cmake",
     "args": [
-      "-S", ".", "-B", "build/Release",
+      "-S",
+      ".",
+      "-B",
+      "build/Release",
       "-DCMAKE_BUILD_TYPE=Release",
       "-DCMAKE_C_COMPILER=clang",
       "-DCMAKE_CXX_COMPILER=clang++",
-      "-G", "Ninja"
+      "-G",
+      "Ninja",
     ],
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "on_success",
-    "shell": "system"
+    "shell": "system",
   },
   {
     "label": "Build Debug",
@@ -64,7 +72,7 @@
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "on_success",
-    "shell": "system"
+    "shell": "system",
   },
   {
     "label": "Build Release",
@@ -75,7 +83,7 @@
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "on_success",
-    "shell": "system"
+    "shell": "system",
   },
   {
     "label": "Run Debug",
@@ -86,7 +94,7 @@
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "never",
-    "shell": "system"
+    "shell": "system",
   },
   {
     "label": "Run Release",
@@ -97,7 +105,7 @@
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "never",
-    "shell": "system"
+    "shell": "system",
   },
   {
     "label": "Debug (lldb)",
@@ -108,7 +116,7 @@
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "never",
-    "shell": "system"
+    "shell": "system",
   },
   {
     "label": "Clean Build Directory",
@@ -119,17 +127,26 @@
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "on_success",
-    "shell": "system"
+    "shell": "system",
   },
   {
     "label": "Init Database",
     "cwd": "$ZED_WORKTREE_ROOT",
     "command": "psql",
-    "args": ["-h", "127.0.0.1", "-U", "postgres", "-d", "postgres", "-f", "init.sql"],
+    "args": [
+      "-h",
+      "127.0.0.1",
+      "-U",
+      "postgres",
+      "-d",
+      "postgres",
+      "-f",
+      "init.sql",
+    ],
     "use_new_terminal": true,
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "never",
-    "shell": "system"
-  }
+    "shell": "system",
+  },
 ]
