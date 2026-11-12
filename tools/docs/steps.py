@@ -50,8 +50,8 @@ def build_steps(payload_dir):
     def rec(sec, seg, parent, saveid):
         b = "/clinic/" + seg
         S(sec, seg + " create", "POST", b + "/create", auth=PT, body=tpl(seg + "/create"), saves={saveid: "id"})
-        S(sec, seg + " read", "POST", b + "/read", auth=PT, **READ(parent))
-        S(sec, seg + " update", "PUT", b + "/update", query="id={{%s}}" % parent, auth=PT, body=tpl(seg + "/update"))
+        S(sec, seg + " read", "POST", b + "/read", auth=PT, needs=[saveid], **READ(parent))
+        S(sec, seg + " update", "PUT", b + "/update", query="id={{%s}}" % parent, auth=PT, body=tpl(seg + "/update"), needs=[saveid])
     sec = "Clinic: patient health, drugs, reports"
     rec(sec, "health", "PATIENT_ID", "HEALTH_ID")
     rec(sec, "patientdrugs", "PATIENT_ID", "DRUGS_ID")

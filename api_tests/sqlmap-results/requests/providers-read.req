@@ -1,0 +1,6 @@
+POST /api/v2/clients/providers/read HTTP/1.1
+Host: 127.0.0.1:8080
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3OTQ0OTM1NzEsImdyb3VwIjoicHJvdmlkZXJzIiwiaWF0IjoxNzk0NDU3NTcxLCJpcF9hZGRyZXNzIjoiMTI3LjAuMC4xIiwiaXNzIjoiUHJvamVjdFZhbGhhbGxhIiwianRpIjoiMjAxNiIsImxsb2R0IjoiMjAyNi0xMS0xMSAyMzoyNjoxMS0wNSIsInN1YiI6InNxbG1hcDQ1NzU3MSJ9.LL6UGVjtV_WI3X_Ye2Fc-fqJQ4qcNKPdsV-nrtw6-Tk
+
+{"id":2016*,"schema":[]}

@@ -125,6 +125,39 @@
     return finish(s, out);
   }
 
+  /* ---------- request builder for the benchmark panel: runs missing prerequisites, then returns a ready request ---------- */
+  async function prepare(id) {
+    const s = byId[id];
+    if (!s) return { error: 'unknown step ' + id };
+    for (const v of needsOf(s)) {
+      if (state[v] !== undefined) continue;
+      const p = producer[v];
+      if (!p || p === id) return { error: 'needs ' + v };
+      await runStep(p, { auto: true });
+      if (state[v] === undefined) return { error: 'could not get ' + v + ' (see ' + byId[p].name + ')' };
+    }
+    try {
+      const local = {};
+      Object.entries(s.set || {}).forEach(([k, t]) => { local[k] = sub(t, local); });
+      const url = baseUrl() + sub(s.path, local) + (s.query ? '?' + sub(s.query, local) : '');
+      const headers = {};
+      let body;
+      if (s.auth) headers.Authorization = 'Bearer ' + state[s.auth];
+      if (s.body === '@empty') headers['Content-Type'] = 'application/json';
+      else if (s.body) { headers['Content-Type'] = 'application/json'; body = JSON.stringify(JSON.parse(sub(s.body, local))); }
+      return { method: s.method, url, headers, body, expect: s.expect || 200, step: s };
+    } catch (e) {
+      return { error: e instanceof Missing ? 'missing value ' + e.v : 'invalid payload template: ' + e.message };
+    }
+  }
+
+  /* delete everything the steps created (the clean-up steps, in order), then start a fresh session */
+  async function cleanup() {
+    const was = busy; busy = true;
+    try { for (const s of STEPS.filter((x) => x.cleanup)) await runStep(s.id, { auto: false }); } finally { busy = was; }
+    newSession();
+  }
+
   function finish(s, r) {
     results[s.id] = r;
     paintRow(s, r);
@@ -330,7 +363,7 @@
   const backdrop = el('div', { class: 'vc-backdrop', onclick: () => closePanel() });
   host.append(backdrop, root);
   function setTheme(t) {
-    document.querySelectorAll('#vc-root,#vg-root').forEach((r) => r.classList.toggle('light', t === 'light'));
+    document.querySelectorAll('#vc-root,#vg-root,#vb-root').forEach((r) => r.classList.toggle('light', t === 'light'));
     document.documentElement.classList.toggle('vc-light', t === 'light');
     try { localStorage.setItem('vc.theme', t); } catch (e) { /* ignore */ }
   }
@@ -338,7 +371,7 @@
   if (!dark) { host.classList.add('light'); document.documentElement.classList.add('vc-light'); } // light is the default
   const launch = el('button', { id: 'vc-launch', type: 'button', onclick: () => openPanel() }, '▶ Test console', el('span', { class: 'vc-dot', text: '' }));
   document.body.append(launch);
-  function openPanel() { const g = document.getElementById('vg-root'); if (g) g.classList.remove('open'); host.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function openPanel() { ['vg-root', 'vb-root'].forEach((i) => { const o = document.getElementById(i); if (o) o.classList.remove('open'); }); host.classList.add('open'); document.body.style.overflow = 'hidden'; }
   function closePanel() { host.classList.remove('open'); document.body.style.overflow = ''; }
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePanel(); });
 
@@ -354,6 +387,6 @@
     runOne(id);
   }, true);
 
-  window.valhallaConsole = { open: openPanel, close: closePanel, runAll, runStep: runOne, reset: newSession, state: () => state, results: () => results, steps: STEPS };
+  window.valhallaConsole = { setTheme, prepare, cleanup, baseUrl, isBusy: () => busy, open: openPanel, close: closePanel, runAll, runStep: runOne, reset: newSession, state: () => state, results: () => results, steps: STEPS };
   newSession();
 })();

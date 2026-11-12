@@ -316,11 +316,11 @@ The server ships its own API documentation, compiled into the binary:
 
 | URL | What it is |
 |-----|------------|
-| `http://<host>:<port>/api/v2/doc` | Swagger UI for every endpoint, plus an **API Guide** panel (permissions, data model, validation, errors, rate limiting, recipes, troubleshooting) and a **Test console** that runs all endpoints in order against the live server with dummy data |
+| `http://<host>:<port>/api/v2/doc` | Swagger UI for every endpoint, plus an **API Guide** panel (permissions, data model, validation, errors, rate limiting, recipes, troubleshooting) and a **Test console** that runs all endpoints in order against the live server with dummy data, and a **Benchmark** panel (latency percentiles and requests/s per endpoint; writes are created with unique data and deleted afterwards) |
 
 With the defaults that is <http://127.0.0.1:8080/api/v2/doc>; the startup banner prints the exact URL. From the page you can also download the **OpenAPI 3** spec and a **Postman collection** (also kept in `docs/openapi.json` and `docs/valhalla.postman_collection.json`).
 
-Because the page is embedded at build time, **rebuild the server after changing the docs**. The page is generated from `tools/docs/` (needs Node.js/npm and the Python `markdown` package):
+The page is embedded into the binary, and every `cmake --build` regenerates it from `tools/docs/` first (the `valhalla_docs` target) (this needs `bash`, `python3` and Node.js/`npm`; if one is missing, the committed `docs/api.html` is embedded as is). Pass `-DVALHALLA_BUILD_DOCS=OFF` to skip regeneration. To regenerate by hand:
 
 ```bash
 tools/docs/build.sh        # regenerates docs/api.html, openapi.json and the Postman collection

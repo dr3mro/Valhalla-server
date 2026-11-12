@@ -1,0 +1,5 @@
+POST /api/v2/clients/users/login HTTP/1.1
+Host: 127.0.0.1:8080
+Content-Type: application/json
+
+{"username":"nonexistent-user*","password":"whatever"}

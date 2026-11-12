@@ -1,0 +1,5 @@
+PASS     providers-login        username
+PASS     users-login            username
+PASS     providers-read         id
+CHECK    providers-search-keyword keyword
+CHECK    providers-search-order_by order_by

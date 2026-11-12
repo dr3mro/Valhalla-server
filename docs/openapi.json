@@ -284,7 +284,7 @@
                   "$ref": "#/components/schemas/CreatedId"
                 },
                 "example": {
-                  "id": 1000
+                  "id": 1033
                 }
               }
             }
@@ -452,8 +452,11 @@
                   "$ref": "#/components/schemas/LoginResponse"
                 },
                 "example": {
-                  "token": "eyJhbGciOiJIUzI1NiIs...",
-                  "client_id": 1000
+                  "client_id": 1033,
+                  "group": "providers",
+                  "ipAddress": "127.0.0.1",
+                  "token": "<jwt>",
+                  "username": "provider451240"
                 }
               }
             }
@@ -599,7 +602,18 @@
         "description": "Invalidates the current token (sent in the `Authorization` header). The body is empty.\n\n**Example**\n\n```bash\ncurl -sS -X POST 'http://127.0.0.1:8080/api/v2/clients/providers/logout' \\\n  -H \"Authorization: Bearer $TOKEN\"\n```",
         "responses": {
           "200": {
-            "description": "Logged out."
+            "description": "Logged out.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "Message": "Logout success."
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -842,6 +856,25 @@
                 "schema": {
                   "type": "object",
                   "additionalProperties": true
+                },
+                "example": {
+                  "active": true,
+                  "address": "portsaid street",
+                  "avatar": "http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200",
+                  "city": "Damietta",
+                  "country": "Egypt",
+                  "created_on": "2026-11-11 21:40:40.838968-05",
+                  "dob": "17-02-1985",
+                  "email": "provider451240@mail.com",
+                  "fullname": "Amr Nasr",
+                  "gender": "Male",
+                  "id": 1033,
+                  "language": "en",
+                  "phone": "+201299999999",
+                  "position": "Doctor",
+                  "services": [],
+                  "speciality": "Cardiology",
+                  "updated_on": "2026-11-11 21:40:40.838968-05"
                 }
               }
             }
@@ -1107,7 +1140,18 @@
         },
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "id": 1033
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -1343,7 +1387,18 @@
         ],
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "id": 1033
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -1597,6 +1652,71 @@
                       "items": {}
                     }
                   ]
+                },
+                "example": {
+                  "more": true,
+                  "offset": 5,
+                  "results": [
+                    {
+                      "active": false,
+                      "address": "portsaid street",
+                      "avatar": "http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200",
+                      "city": "Damietta",
+                      "country": "Egypt",
+                      "created_on": "2026-11-11 20:39:02.082416-05",
+                      "dob": "17-02-1985",
+                      "email": "provider447542@mail.com",
+                      "fullname": "Amr Nasr Osman",
+                      "gender": "Male",
+                      "id": 1000,
+                      "language": "en",
+                      "phone": "+201299999999",
+                      "position": "Doctor",
+                      "services": {
+                        "clinics": 1000
+                      },
+                      "speciality": "Cardiology",
+                      "updated_on": "2026-11-11 20:39:02.082416-05"
+                    },
+                    {
+                      "active": false,
+                      "address": "12 valhalla Street ",
+                      "avatar": "http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200",
+                      "city": "Damietta",
+                      "country": "Egypt",
+                      "created_on": "2026-11-11 20:40:04.417332-05",
+                      "dob": "10-10-1990",
+                      "email": "providerx447603@mail.com",
+                      "fullname": "Suspend Test",
+                      "gender": "Male",
+                      "id": 1002,
+                      "language": "en",
+                      "phone": "+201299999999",
+                      "position": "Doctor",
+                      "services": [],
+                      "speciality": "Cardiology",
+                      "updated_on": "2026-11-11 20:40:04.417332-05"
+                    },
+                    {
+                      "active": false,
+                      "address": "12 valhalla Street ",
+                      "avatar": "http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200",
+                      "city": "Damietta",
+                      "country": "Egypt",
+                      "created_on": "2026-11-11 20:41:11.000903-05",
+                      "dob": "10-10-1990",
+                      "email": "providerx447670@mail.com",
+                      "fullname": "Suspend Test",
+                      "gender": "Male",
+                      "id": 1004,
+                      "language": "en",
+                      "phone": "+201299999999",
+                      "position": "Doctor",
+                      "services": [],
+                      "speciality": "Cardiology",
+                      "updated_on": "2026-11-11 20:41:11.000903-05"
+                    }
+                  ]
                 }
               }
             }
@@ -1841,7 +1961,8 @@
                 "schema": {
                   "type": "object",
                   "additionalProperties": true
-                }
+                },
+                "example": []
               }
             }
           },
@@ -2079,7 +2200,19 @@
         ],
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "active": true,
+                  "id": 1033
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -2315,7 +2448,19 @@
         ],
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "active": false,
+                  "id": 1034
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -2574,7 +2719,7 @@
                   "$ref": "#/components/schemas/CreatedId"
                 },
                 "example": {
-                  "id": 1000
+                  "id": 1033
                 }
               }
             }
@@ -2742,8 +2887,11 @@
                   "$ref": "#/components/schemas/LoginResponse"
                 },
                 "example": {
-                  "token": "eyJhbGciOiJIUzI1NiIs...",
-                  "client_id": 1000
+                  "client_id": 1033,
+                  "group": "users",
+                  "ipAddress": "127.0.0.1",
+                  "token": "<jwt>",
+                  "username": "user451240"
                 }
               }
             }
@@ -2889,7 +3037,18 @@
         "description": "Invalidates the current token (sent in the `Authorization` header). The body is empty.\n\n**Example**\n\n```bash\ncurl -sS -X POST 'http://127.0.0.1:8080/api/v2/clients/users/logout' \\\n  -H \"Authorization: Bearer $TOKEN\"\n```",
         "responses": {
           "200": {
-            "description": "Logged out."
+            "description": "Logged out.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "Message": "Logout success."
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -3132,6 +3291,25 @@
                 "schema": {
                   "type": "object",
                   "additionalProperties": true
+                },
+                "example": {
+                  "active": true,
+                  "address": "12 valhalla Street ",
+                  "avatar": "http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200",
+                  "city": "Damietta",
+                  "country": "Egypt",
+                  "created_on": "2026-11-11 21:40:40.961369-05",
+                  "dob": "10-10-1990",
+                  "email": "user451240@mail.com",
+                  "fullname": "Amr Nasr",
+                  "gender": "Male",
+                  "id": 1033,
+                  "job": "Doctor",
+                  "language": "en",
+                  "marital": "single",
+                  "parent": "0",
+                  "phone": "+201299999999",
+                  "updated_on": "2026-11-11 21:40:40.961369-05"
                 }
               }
             }
@@ -3396,7 +3574,18 @@
         },
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "id": 1033
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -3632,7 +3821,18 @@
         ],
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "id": 1033
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -3886,6 +4086,50 @@
                       "items": {}
                     }
                   ]
+                },
+                "example": {
+                  "more": false,
+                  "offset": 0,
+                  "results": [
+                    {
+                      "active": false,
+                      "address": "12 valhalla Street ",
+                      "avatar": "http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200",
+                      "city": "Damietta",
+                      "country": "Egypt",
+                      "created_on": "2026-11-11 20:39:02.184094-05",
+                      "dob": "10-10-1990",
+                      "email": "user447542@mail.com",
+                      "fullname": "Amr Nasr",
+                      "gender": "Male",
+                      "id": 1000,
+                      "job": "Doctor",
+                      "language": "en",
+                      "marital": "married",
+                      "parent": "0",
+                      "phone": "+201299999999",
+                      "updated_on": "2026-11-11 20:39:02.184094-05"
+                    },
+                    {
+                      "active": true,
+                      "address": "12 valhalla Street ",
+                      "avatar": "http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200",
+                      "city": "Damietta",
+                      "country": "Egypt",
+                      "created_on": "2026-11-11 21:40:40.961369-05",
+                      "dob": "10-10-1990",
+                      "email": "user451240@mail.com",
+                      "fullname": "Amr Nasr",
+                      "gender": "Male",
+                      "id": 1033,
+                      "job": "Doctor",
+                      "language": "en",
+                      "marital": "married",
+                      "parent": "0",
+                      "phone": "+201299999999",
+                      "updated_on": "2026-11-11 21:40:40.961369-05"
+                    }
+                  ]
                 }
               }
             }
@@ -4130,7 +4374,12 @@
                 "schema": {
                   "type": "object",
                   "additionalProperties": true
-                }
+                },
+                "example": [
+                  {
+                    "id": 1033
+                  }
+                ]
               }
             }
           },
@@ -4368,7 +4617,19 @@
         ],
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "active": true,
+                  "id": 1033
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -4604,7 +4865,19 @@
         ],
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "active": false,
+                  "id": 1034
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -4871,7 +5144,32 @@
                   "$ref": "#/components/schemas/CreatedId"
                 },
                 "example": {
-                  "id": 1000
+                  "address": "11 street Ras elbar",
+                  "admin_id": 1033,
+                  "city": "Damietta",
+                  "country": "Egypt",
+                  "id": 1021,
+                  "logo": "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+                  "name": "Clinic0",
+                  "owner_id": 1033,
+                  "phone": [
+                    "+1987654321"
+                  ],
+                  "specialities": [
+                    "Cardiology",
+                    "Medicine"
+                  ],
+                  "staff": {
+                    "Doctors": [
+                      "1033:62"
+                    ],
+                    "assistants": [
+                      ""
+                    ],
+                    "nurses": [
+                      ""
+                    ]
+                  }
                 }
               }
             }
@@ -5117,6 +5415,34 @@
                 "schema": {
                   "type": "object",
                   "additionalProperties": true
+                },
+                "example": {
+                  "address": "11 street Ras elbar",
+                  "admin_id": 1033,
+                  "city": "Damietta",
+                  "country": "Egypt",
+                  "id": 1021,
+                  "logo": "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+                  "name": "Clinic0",
+                  "owner_id": 1033,
+                  "phone": [
+                    "+1987654321"
+                  ],
+                  "specialities": [
+                    "Cardiology",
+                    "Medicine"
+                  ],
+                  "staff": {
+                    "Doctors": [
+                      "1033:62"
+                    ],
+                    "assistants": [
+                      ""
+                    ],
+                    "nurses": [
+                      ""
+                    ]
+                  }
                 }
               }
             }
@@ -5391,7 +5717,42 @@
         },
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "address": "11 street Ras elbar",
+                  "admin_id": 1033,
+                  "city": "Damietta",
+                  "country": "Egypt",
+                  "id": 1021,
+                  "logo": "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+                  "name": "Mount Sinai Clinics",
+                  "owner_id": 1033,
+                  "phone": [
+                    "+1987654321"
+                  ],
+                  "specialities": [
+                    "Cardiology"
+                  ],
+                  "staff": {
+                    "Doctors": [
+                      "1033:62"
+                    ],
+                    "assistants": [
+                      "1000:1"
+                    ],
+                    "nurses": [
+                      ""
+                    ]
+                  }
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -5627,7 +5988,18 @@
         ],
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "id": 1021
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -5879,6 +6251,39 @@
                     {
                       "type": "array",
                       "items": {}
+                    }
+                  ]
+                },
+                "example": {
+                  "more": false,
+                  "offset": 0,
+                  "results": [
+                    {
+                      "address": "11 street Ras elbar",
+                      "admin_id": 1033,
+                      "city": "Damietta",
+                      "country": "Egypt",
+                      "id": 1021,
+                      "logo": "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+                      "name": "Mount Sinai Clinics",
+                      "owner_id": 1033,
+                      "phone": [
+                        "+1987654321"
+                      ],
+                      "specialities": [
+                        "Cardiology"
+                      ],
+                      "staff": {
+                        "Doctors": [
+                          "1033:62"
+                        ],
+                        "assistants": [
+                          "1000:1"
+                        ],
+                        "nurses": [
+                          ""
+                        ]
+                      }
                     }
                   ]
                 }
@@ -6147,7 +6552,29 @@
                   "$ref": "#/components/schemas/CreatedId"
                 },
                 "example": {
-                  "id": 1000
+                  "address": "11 street Ras elbar",
+                  "admin_id": 1033,
+                  "city": "Damietta",
+                  "country": "Egypt",
+                  "id": 1021,
+                  "logo": "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+                  "name": "Pharmacy 101",
+                  "owner_id": 1033,
+                  "phone": [
+                    "+1987654321"
+                  ],
+                  "staff": {
+                    "Doctors": [
+                      "1001",
+                      "1921"
+                    ],
+                    "assistants": [
+                      "1000"
+                    ],
+                    "nurses": [
+                      ""
+                    ]
+                  }
                 }
               }
             }
@@ -6393,6 +6820,31 @@
                 "schema": {
                   "type": "object",
                   "additionalProperties": true
+                },
+                "example": {
+                  "address": "11 street Ras elbar",
+                  "admin_id": 1033,
+                  "city": "Damietta",
+                  "country": "Egypt",
+                  "id": 1021,
+                  "logo": "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+                  "name": "Pharmacy 101",
+                  "owner_id": 1033,
+                  "phone": [
+                    "+1987654321"
+                  ],
+                  "staff": {
+                    "Doctors": [
+                      "1001",
+                      "1921"
+                    ],
+                    "assistants": [
+                      "1000"
+                    ],
+                    "nurses": [
+                      ""
+                    ]
+                  }
                 }
               }
             }
@@ -6665,7 +7117,40 @@
         },
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "address": "11 street Ras elbar",
+                  "admin_id": 1033,
+                  "city": "Damietta",
+                  "country": "Egypt",
+                  "id": 1021,
+                  "logo": "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+                  "name": "Pharmastan",
+                  "owner_id": 1033,
+                  "phone": [
+                    "+1987654321"
+                  ],
+                  "staff": {
+                    "Doctors": [
+                      "1001",
+                      "1921"
+                    ],
+                    "assistants": [
+                      "1000"
+                    ],
+                    "nurses": [
+                      ""
+                    ]
+                  }
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -6901,7 +7386,18 @@
         ],
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "id": 1021
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -7153,6 +7649,37 @@
                     {
                       "type": "array",
                       "items": {}
+                    }
+                  ]
+                },
+                "example": {
+                  "more": false,
+                  "offset": 0,
+                  "results": [
+                    {
+                      "address": "11 street Ras elbar",
+                      "admin_id": 1033,
+                      "city": "Damietta",
+                      "country": "Egypt",
+                      "id": 1021,
+                      "logo": "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+                      "name": "Pharmastan",
+                      "owner_id": 1033,
+                      "phone": [
+                        "+1987654321"
+                      ],
+                      "staff": {
+                        "Doctors": [
+                          "1001",
+                          "1921"
+                        ],
+                        "assistants": [
+                          "1000"
+                        ],
+                        "nurses": [
+                          ""
+                        ]
+                      }
                     }
                   ]
                 }
@@ -7421,7 +7948,29 @@
                   "$ref": "#/components/schemas/CreatedId"
                 },
                 "example": {
-                  "id": 1000
+                  "address": "11 street Ras elbar",
+                  "admin_id": 1033,
+                  "city": "Damietta",
+                  "country": "Egypt",
+                  "id": 1021,
+                  "logo": "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+                  "name": "Clinical Lab 101",
+                  "owner_id": 1033,
+                  "phone": [
+                    "+1987654321"
+                  ],
+                  "staff": {
+                    "Doctors": [
+                      "1001",
+                      "1921"
+                    ],
+                    "assistants": [
+                      "1000"
+                    ],
+                    "nurses": [
+                      ""
+                    ]
+                  }
                 }
               }
             }
@@ -7667,6 +8216,31 @@
                 "schema": {
                   "type": "object",
                   "additionalProperties": true
+                },
+                "example": {
+                  "address": "11 street Ras elbar",
+                  "admin_id": 1033,
+                  "city": "Damietta",
+                  "country": "Egypt",
+                  "id": 1021,
+                  "logo": "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+                  "name": "Clinical Lab 101",
+                  "owner_id": 1033,
+                  "phone": [
+                    "+1987654321"
+                  ],
+                  "staff": {
+                    "Doctors": [
+                      "1001",
+                      "1921"
+                    ],
+                    "assistants": [
+                      "1000"
+                    ],
+                    "nurses": [
+                      ""
+                    ]
+                  }
                 }
               }
             }
@@ -7939,7 +8513,40 @@
         },
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "address": "11 street Ras elbar",
+                  "admin_id": 1033,
+                  "city": "Damietta",
+                  "country": "Egypt",
+                  "id": 1021,
+                  "logo": "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+                  "name": "Clinical Lab 102",
+                  "owner_id": 1033,
+                  "phone": [
+                    "+1987654321"
+                  ],
+                  "staff": {
+                    "Doctors": [
+                      "1001",
+                      "1921"
+                    ],
+                    "assistants": [
+                      "1000"
+                    ],
+                    "nurses": [
+                      ""
+                    ]
+                  }
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -8175,7 +8782,18 @@
         ],
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "id": 1021
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -8427,6 +9045,37 @@
                     {
                       "type": "array",
                       "items": {}
+                    }
+                  ]
+                },
+                "example": {
+                  "more": false,
+                  "offset": 0,
+                  "results": [
+                    {
+                      "address": "11 street Ras elbar",
+                      "admin_id": 1033,
+                      "city": "Damietta",
+                      "country": "Egypt",
+                      "id": 1021,
+                      "logo": "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+                      "name": "Clinical Lab 102",
+                      "owner_id": 1033,
+                      "phone": [
+                        "+1987654321"
+                      ],
+                      "staff": {
+                        "Doctors": [
+                          "1001",
+                          "1921"
+                        ],
+                        "assistants": [
+                          "1000"
+                        ],
+                        "nurses": [
+                          ""
+                        ]
+                      }
                     }
                   ]
                 }
@@ -8695,7 +9344,29 @@
                   "$ref": "#/components/schemas/CreatedId"
                 },
                 "example": {
-                  "id": 1000
+                  "address": "11 street Ras elbar",
+                  "admin_id": 1033,
+                  "city": "Damietta",
+                  "country": "Egypt",
+                  "id": 1021,
+                  "logo": "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+                  "name": "RadiologyCenter 101",
+                  "owner_id": 1033,
+                  "phone": [
+                    "+1987654321"
+                  ],
+                  "staff": {
+                    "Doctors": [
+                      "1001",
+                      "1921"
+                    ],
+                    "assistants": [
+                      "1000"
+                    ],
+                    "nurses": [
+                      ""
+                    ]
+                  }
                 }
               }
             }
@@ -8941,6 +9612,31 @@
                 "schema": {
                   "type": "object",
                   "additionalProperties": true
+                },
+                "example": {
+                  "address": "11 street Ras elbar",
+                  "admin_id": 1033,
+                  "city": "Damietta",
+                  "country": "Egypt",
+                  "id": 1021,
+                  "logo": "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+                  "name": "RadiologyCenter 101",
+                  "owner_id": 1033,
+                  "phone": [
+                    "+1987654321"
+                  ],
+                  "staff": {
+                    "Doctors": [
+                      "1001",
+                      "1921"
+                    ],
+                    "assistants": [
+                      "1000"
+                    ],
+                    "nurses": [
+                      ""
+                    ]
+                  }
                 }
               }
             }
@@ -9213,7 +9909,40 @@
         },
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "address": "11 street Ras elbar",
+                  "admin_id": 1033,
+                  "city": "Damietta",
+                  "country": "Egypt",
+                  "id": 1021,
+                  "logo": "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+                  "name": "RadiologyCenter 102",
+                  "owner_id": 1033,
+                  "phone": [
+                    "+1987654321"
+                  ],
+                  "staff": {
+                    "Doctors": [
+                      "1001",
+                      "1921"
+                    ],
+                    "assistants": [
+                      "1000"
+                    ],
+                    "nurses": [
+                      ""
+                    ]
+                  }
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -9449,7 +10178,18 @@
         ],
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "id": 1021
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -9703,6 +10443,11 @@
                       "items": {}
                     }
                   ]
+                },
+                "example": {
+                  "more": false,
+                  "offset": 0,
+                  "results": []
                 }
               }
             }
@@ -9957,7 +10702,19 @@
                   "$ref": "#/components/schemas/CreatedId"
                 },
                 "example": {
-                  "id": 1000
+                  "address": "11 Valhalla street",
+                  "city": "Damietta",
+                  "clinic_id": 1021,
+                  "created_on": "2026-11-11 21:40:41.379252-05",
+                  "dob": "1985-02-17",
+                  "email": "patient451240@mail.com",
+                  "fullname": "Amr Nasr",
+                  "gender": "Male",
+                  "id": 100021,
+                  "job": "Doctor",
+                  "marital": "Single",
+                  "phone": "+201299999999",
+                  "updated_on": "2026-11-11 21:40:41.379252-05"
                 }
               }
             }
@@ -10203,6 +10960,21 @@
                 "schema": {
                   "type": "object",
                   "additionalProperties": true
+                },
+                "example": {
+                  "address": "11 Valhalla street",
+                  "city": "Damietta",
+                  "clinic_id": 1021,
+                  "created_on": "2026-11-11 21:40:41.379252-05",
+                  "dob": "1985-02-17",
+                  "email": "patient451240@mail.com",
+                  "fullname": "Amr Nasr",
+                  "gender": "Male",
+                  "id": 100021,
+                  "job": "Doctor",
+                  "marital": "Single",
+                  "phone": "+201299999999",
+                  "updated_on": "2026-11-11 21:40:41.379252-05"
                 }
               }
             }
@@ -10462,7 +11234,30 @@
         },
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "address": "11 Valhalla street",
+                  "city": "Damietta",
+                  "clinic_id": 1021,
+                  "created_on": "2026-11-11 21:40:41.379252-05",
+                  "dob": "1990-10-22",
+                  "email": "patient451240@mail.com",
+                  "fullname": "Amr Nasr Osman",
+                  "gender": "male",
+                  "id": 100021,
+                  "job": "Doctor",
+                  "marital": "single",
+                  "phone": "+201299999999",
+                  "updated_on": "2026-11-11 21:40:41.422377-05"
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -10698,7 +11493,18 @@
         ],
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "id": 100021
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -10952,6 +11758,27 @@
                       "items": {}
                     }
                   ]
+                },
+                "example": {
+                  "more": false,
+                  "offset": 0,
+                  "results": [
+                    {
+                      "address": "11 Valhalla street",
+                      "city": "Damietta",
+                      "clinic_id": 1021,
+                      "created_on": "2026-11-11 21:40:41.379252-05",
+                      "dob": "1990-10-22",
+                      "email": "patient451240@mail.com",
+                      "fullname": "Amr Nasr Osman",
+                      "gender": "male",
+                      "id": 100021,
+                      "job": "Doctor",
+                      "marital": "single",
+                      "phone": "+201299999999",
+                      "updated_on": "2026-11-11 21:40:41.422377-05"
+                    }
+                  ]
                 }
               }
             }
@@ -11203,7 +12030,8 @@
                       "items": {}
                     }
                   ]
-                }
+                },
+                "example": []
               }
             }
           },
@@ -11488,7 +12316,49 @@
                   "$ref": "#/components/schemas/CreatedId"
                 },
                 "example": {
-                  "id": 1000
+                  "clinic_id": 1021,
+                  "created_on": "2026-11-11 21:40:41.474237-05",
+                  "health": {
+                    "alcohol": "No",
+                    "allergies": "No",
+                    "asthma": "No",
+                    "blood_pressure": "No",
+                    "blood_sugar": "No",
+                    "breastfeeding": "No",
+                    "cancer": "No",
+                    "chronic_cardiac_disease": "No",
+                    "comments": "No",
+                    "diabetes": "No",
+                    "drugs": "No",
+                    "family_history": "No",
+                    "family_planning": "No",
+                    "hepatitis": "No",
+                    "hiv": "No",
+                    "hypertension": "No",
+                    "immunizations": "No",
+                    "kidney_disease": "No",
+                    "liver_disease": "No",
+                    "mammogram": "No",
+                    "medications": "No",
+                    "mental_health": "No",
+                    "nutrition": "No",
+                    "other": "No",
+                    "other_treatments": "No",
+                    "past_medical_history": "No",
+                    "past_treatments": "No",
+                    "physical_exam": "No",
+                    "pregnancy": "No",
+                    "pregnancy_complications": "No",
+                    "renal_disease": "No",
+                    "sleep_apnea": "No",
+                    "stroke": "No",
+                    "surgeries": "No",
+                    "tobacco_smoking": "No",
+                    "tuberculosis": "No",
+                    "vaccinations": "No"
+                  },
+                  "id": 100021,
+                  "updated_on": "2026-11-11 21:40:41.474237-05"
                 }
               }
             }
@@ -11734,6 +12604,51 @@
                 "schema": {
                   "type": "object",
                   "additionalProperties": true
+                },
+                "example": {
+                  "clinic_id": 1021,
+                  "created_on": "2026-11-11 21:40:41.474237-05",
+                  "health": {
+                    "alcohol": "No",
+                    "allergies": "No",
+                    "asthma": "No",
+                    "blood_pressure": "No",
+                    "blood_sugar": "No",
+                    "breastfeeding": "No",
+                    "cancer": "No",
+                    "chronic_cardiac_disease": "No",
+                    "comments": "No",
+                    "diabetes": "No",
+                    "drugs": "No",
+                    "family_history": "No",
+                    "family_planning": "No",
+                    "hepatitis": "No",
+                    "hiv": "No",
+                    "hypertension": "No",
+                    "immunizations": "No",
+                    "kidney_disease": "No",
+                    "liver_disease": "No",
+                    "mammogram": "No",
+                    "medications": "No",
+                    "mental_health": "No",
+                    "nutrition": "No",
+                    "other": "No",
+                    "other_treatments": "No",
+                    "past_medical_history": "No",
+                    "past_treatments": "No",
+                    "physical_exam": "No",
+                    "pregnancy": "No",
+                    "pregnancy_complications": "No",
+                    "renal_disease": "No",
+                    "sleep_apnea": "No",
+                    "stroke": "No",
+                    "surgeries": "No",
+                    "tobacco_smoking": "No",
+                    "tuberculosis": "No",
+                    "vaccinations": "No"
+                  },
+                  "id": 100021,
+                  "updated_on": "2026-11-11 21:40:41.474237-05"
                 }
               }
             }
@@ -12023,7 +12938,60 @@
         },
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "clinic_id": 1021,
+                  "created_on": "2026-11-11 21:40:41.474237-05",
+                  "health": {
+                    "alcohol": "No",
+                    "allergies": "No",
+                    "asthma": "No",
+                    "blood_pressure": "No",
+                    "blood_sugar": "No",
+                    "breastfeeding": "No",
+                    "cancer": "No",
+                    "chronic_cardiac_disease": "No",
+                    "comments": "No",
+                    "diabetes": "No",
+                    "drugs": "No",
+                    "family_history": "No",
+                    "family_planning": "No",
+                    "hepatitis": "No",
+                    "hiv": "No",
+                    "hypertension": "No",
+                    "immunizations": "No",
+                    "kidney_disease": "No",
+                    "liver_disease": "No",
+                    "mammogram": "No",
+                    "medications": "No",
+                    "mental_health": "No",
+                    "nutrition": "No",
+                    "other": "No",
+                    "other_treatments": "No",
+                    "past_medical_history": "No",
+                    "past_treatments": "No",
+                    "physical_exam": "No",
+                    "pregnancy": "No",
+                    "pregnancy_complications": "No",
+                    "renal_disease": "No",
+                    "sleep_apnea": "No",
+                    "stroke": "No",
+                    "surgeries": "No",
+                    "tobacco_smoking": "No",
+                    "tuberculosis": "No",
+                    "vaccinations": "No"
+                  },
+                  "id": 100021,
+                  "updated_on": "2026-11-11 21:40:41.474237-05"
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -12533,7 +13501,40 @@
                   "$ref": "#/components/schemas/CreatedId"
                 },
                 "example": {
-                  "id": 1000
+                  "clinic_id": 1021,
+                  "created_on": "2026-11-11 21:40:41.535545-05",
+                  "drugs": [
+                    {
+                      "comments": "No",
+                      "dispense": "No",
+                      "dosage": "1 tablet",
+                      "duration": "7 days",
+                      "end_date": "2020-01-31",
+                      "frequency": "daily",
+                      "name": "Aspirin",
+                      "other": "No",
+                      "prescription": "No",
+                      "quantity": "1",
+                      "route": "oral",
+                      "start_date": "2020-01-01"
+                    },
+                    {
+                      "comments": "No",
+                      "dispense": "No",
+                      "dosage": "1 tablet",
+                      "duration": "7 days",
+                      "end_date": "2020-01-31",
+                      "frequency": "daily",
+                      "name": "Paracetamol",
+                      "other": "No",
+                      "prescription": "No",
+                      "quantity": "1",
+                      "route": "oral",
+                      "start_date": "2020-01-01"
+                    }
+                  ],
+                  "id": 100021,
+                  "updated_on": "2026-11-11 21:40:41.535545-05"
                 }
               }
             }
@@ -12779,6 +13780,42 @@
                 "schema": {
                   "type": "object",
                   "additionalProperties": true
+                },
+                "example": {
+                  "clinic_id": 1021,
+                  "created_on": "2026-11-11 21:40:41.535545-05",
+                  "drugs": [
+                    {
+                      "comments": "No",
+                      "dispense": "No",
+                      "dosage": "1 tablet",
+                      "duration": "7 days",
+                      "end_date": "2020-01-31",
+                      "frequency": "daily",
+                      "name": "Aspirin",
+                      "other": "No",
+                      "prescription": "No",
+                      "quantity": "1",
+                      "route": "oral",
+                      "start_date": "2020-01-01"
+                    },
+                    {
+                      "comments": "No",
+                      "dispense": "No",
+                      "dosage": "1 tablet",
+                      "duration": "7 days",
+                      "end_date": "2020-01-31",
+                      "frequency": "daily",
+                      "name": "Paracetamol",
+                      "other": "No",
+                      "prescription": "No",
+                      "quantity": "1",
+                      "route": "oral",
+                      "start_date": "2020-01-01"
+                    }
+                  ],
+                  "id": 100021,
+                  "updated_on": "2026-11-11 21:40:41.535545-05"
                 }
               }
             }
@@ -13059,7 +14096,51 @@
         },
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "clinic_id": 1021,
+                  "created_on": "2026-11-11 21:40:41.535545-05",
+                  "drugs": [
+                    {
+                      "comments": "No",
+                      "dispense": "No",
+                      "dosage": "1 tablet",
+                      "duration": "7 days",
+                      "end_date": "2020-01-31",
+                      "frequency": "daily",
+                      "name": "Aspirin",
+                      "other": "No",
+                      "prescription": "No",
+                      "quantity": "1",
+                      "route": "oral",
+                      "start_date": "2020-01-01"
+                    },
+                    {
+                      "comments": "No",
+                      "dispense": "No",
+                      "dosage": "1 tablet",
+                      "duration": "7 days",
+                      "end_date": "2020-01-31",
+                      "frequency": "daily",
+                      "name": "Paracetamol",
+                      "other": "No",
+                      "prescription": "No",
+                      "quantity": "1",
+                      "route": "oral",
+                      "start_date": "2020-01-01"
+                    }
+                  ],
+                  "id": 100021,
+                  "updated_on": "2026-11-11 21:40:41.535545-05"
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -13553,7 +14634,24 @@
                   "$ref": "#/components/schemas/CreatedId"
                 },
                 "example": {
-                  "id": 1000
+                  "clinic_id": 1021,
+                  "created_on": "2026-11-11 21:40:41.591352-05",
+                  "id": 100021,
+                  "reports": [
+                    {
+                      "date": "2020-01-01",
+                      "name": "Preoperative",
+                      "report_type": "Clinical",
+                      "result": "Text"
+                    },
+                    {
+                      "date": "2020-01-01",
+                      "name": "Preoccupation",
+                      "report_type": "Clinical",
+                      "result": "Text"
+                    }
+                  ],
+                  "updated_on": "2026-11-11 21:40:41.591352-05"
                 }
               }
             }
@@ -13799,6 +14897,26 @@
                 "schema": {
                   "type": "object",
                   "additionalProperties": true
+                },
+                "example": {
+                  "clinic_id": 1021,
+                  "created_on": "2026-11-11 21:40:41.591352-05",
+                  "id": 100021,
+                  "reports": [
+                    {
+                      "date": "2020-01-01",
+                      "name": "Preoperative",
+                      "report_type": "Clinical",
+                      "result": "Text"
+                    },
+                    {
+                      "date": "2020-01-01",
+                      "name": "Preoccupation",
+                      "report_type": "Clinical",
+                      "result": "Text"
+                    }
+                  ],
+                  "updated_on": "2026-11-11 21:40:41.591352-05"
                 }
               }
             }
@@ -14063,7 +15181,35 @@
         },
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "clinic_id": 1021,
+                  "created_on": "2026-11-11 21:40:41.591352-05",
+                  "id": 100021,
+                  "reports": [
+                    {
+                      "date": "2020-01-01",
+                      "name": "Preoperative",
+                      "report_type": "Clinical",
+                      "result": "Text"
+                    },
+                    {
+                      "date": "2020-01-01",
+                      "name": "Preoccupation",
+                      "report_type": "Clinical",
+                      "result": "Text"
+                    }
+                  ],
+                  "updated_on": "2026-11-11 21:40:41.591352-05"
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -14562,7 +15708,30 @@
                   "$ref": "#/components/schemas/CreatedId"
                 },
                 "example": {
-                  "id": 1000
+                  "clinic_id": 1021,
+                  "comments": "None",
+                  "complaints": "Headache",
+                  "created_on": "2026-11-11 21:40:41.652732-05",
+                  "diagnosis": "Flu",
+                  "examination": {
+                    "BP": "120/80",
+                    "Examination": "",
+                    "Notes": "",
+                    "Other": "",
+                    "comments": "No",
+                    "height": "180",
+                    "oxygen_saturation": "98",
+                    "pulse": "100",
+                    "respiration": "18",
+                    "temperature": "98.6",
+                    "weight": "80"
+                  },
+                  "id": 100021,
+                  "patient_id": 100021,
+                  "symptoms": "Rhinorhea, sorethroat",
+                  "updated_on": "2026-11-11 21:40:41.652732-05",
+                  "visit_date": "2020-01-01",
+                  "visit_time": "10:00:00"
                 }
               }
             }
@@ -14808,6 +15977,32 @@
                 "schema": {
                   "type": "object",
                   "additionalProperties": true
+                },
+                "example": {
+                  "clinic_id": 1021,
+                  "comments": "None",
+                  "complaints": "Headache",
+                  "created_on": "2026-11-11 21:40:41.652732-05",
+                  "diagnosis": "Flu",
+                  "examination": {
+                    "BP": "120/80",
+                    "Examination": "",
+                    "Notes": "",
+                    "Other": "",
+                    "comments": "No",
+                    "height": "180",
+                    "oxygen_saturation": "98",
+                    "pulse": "100",
+                    "respiration": "18",
+                    "temperature": "98.6",
+                    "weight": "80"
+                  },
+                  "id": 100021,
+                  "patient_id": 100021,
+                  "symptoms": "Rhinorhea, sorethroat",
+                  "updated_on": "2026-11-11 21:40:41.652732-05",
+                  "visit_date": "2020-01-01",
+                  "visit_time": "10:00:00"
                 }
               }
             }
@@ -15077,7 +16272,41 @@
         },
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "clinic_id": 1021,
+                  "comments": "Updated",
+                  "complaints": "Headache and fever",
+                  "created_on": "2026-11-11 21:40:41.652732-05",
+                  "diagnosis": "Flu",
+                  "examination": {
+                    "BP": "125/85",
+                    "Examination": "",
+                    "Notes": "",
+                    "Other": "",
+                    "comments": "No",
+                    "height": "180",
+                    "oxygen_saturation": "98",
+                    "pulse": "90",
+                    "respiration": "18",
+                    "temperature": "99.1",
+                    "weight": "80"
+                  },
+                  "id": 100021,
+                  "patient_id": 100021,
+                  "symptoms": "Rhinorhea, sorethroat",
+                  "updated_on": "2026-11-11 21:40:41.652732-05",
+                  "visit_date": "2020-01-02",
+                  "visit_time": "11:00:00"
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -15313,7 +16542,18 @@
         ],
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "id": 100021
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -15571,7 +16811,24 @@
                   "$ref": "#/components/schemas/CreatedId"
                 },
                 "example": {
-                  "id": 1000
+                  "clinic_id": 1021,
+                  "created_on": "2026-11-11 21:40:41.709697-05",
+                  "id": 100021,
+                  "requests": [
+                    {
+                      "date": "2020-01-01",
+                      "media": "url",
+                      "name": "Chest Xray",
+                      "result": "Positive for lung cancer"
+                    },
+                    {
+                      "date": "2020-01-01",
+                      "media": "url",
+                      "name": "CBC",
+                      "result": "Anemia"
+                    }
+                  ],
+                  "updated_on": "2026-11-11 21:40:41.709697-05"
                 }
               }
             }
@@ -15817,6 +17074,26 @@
                 "schema": {
                   "type": "object",
                   "additionalProperties": true
+                },
+                "example": {
+                  "clinic_id": 1021,
+                  "created_on": "2026-11-11 21:40:41.709697-05",
+                  "id": 100021,
+                  "requests": [
+                    {
+                      "date": "2020-01-01",
+                      "media": "url",
+                      "name": "Chest Xray",
+                      "result": "Positive for lung cancer"
+                    },
+                    {
+                      "date": "2020-01-01",
+                      "media": "url",
+                      "name": "CBC",
+                      "result": "Anemia"
+                    }
+                  ],
+                  "updated_on": "2026-11-11 21:40:41.709697-05"
                 }
               }
             }
@@ -16081,7 +17358,35 @@
         },
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "clinic_id": 1021,
+                  "created_on": "2026-11-11 21:40:41.709697-05",
+                  "id": 100021,
+                  "requests": [
+                    {
+                      "date": "2020-01-01",
+                      "media": "url",
+                      "name": "Chest Xray",
+                      "result": "Positive for lung cancer"
+                    },
+                    {
+                      "date": "2020-01-01",
+                      "media": "url",
+                      "name": "CBC",
+                      "result": "Anemia"
+                    }
+                  ],
+                  "updated_on": "2026-11-11 21:40:41.709697-05"
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -16591,7 +17896,40 @@
                   "$ref": "#/components/schemas/CreatedId"
                 },
                 "example": {
-                  "id": 1000
+                  "clinic_id": 1021,
+                  "created_on": "2026-11-11 21:40:41.768434-05",
+                  "id": 100021,
+                  "prescriptions": [
+                    {
+                      "comments": "No",
+                      "dispense": "No",
+                      "dosage": "1 tablet",
+                      "duration": "7 days",
+                      "end_date": "2020-01-31",
+                      "frequency": "daily",
+                      "name": "Aspirin",
+                      "other": "No",
+                      "prescription": "No",
+                      "quantity": "1",
+                      "route": "oral",
+                      "start_date": "2020-01-01"
+                    },
+                    {
+                      "comments": "No",
+                      "dispense": "No",
+                      "dosage": "1 tablet",
+                      "duration": "7 days",
+                      "end_date": "2020-01-31",
+                      "frequency": "daily",
+                      "name": "Paracetamol",
+                      "other": "No",
+                      "prescription": "No",
+                      "quantity": "1",
+                      "route": "oral",
+                      "start_date": "2020-01-01"
+                    }
+                  ],
+                  "updated_on": "2026-11-11 21:40:41.768434-05"
                 }
               }
             }
@@ -16837,6 +18175,42 @@
                 "schema": {
                   "type": "object",
                   "additionalProperties": true
+                },
+                "example": {
+                  "clinic_id": 1021,
+                  "created_on": "2026-11-11 21:40:41.768434-05",
+                  "id": 100021,
+                  "prescriptions": [
+                    {
+                      "comments": "No",
+                      "dispense": "No",
+                      "dosage": "1 tablet",
+                      "duration": "7 days",
+                      "end_date": "2020-01-31",
+                      "frequency": "daily",
+                      "name": "Aspirin",
+                      "other": "No",
+                      "prescription": "No",
+                      "quantity": "1",
+                      "route": "oral",
+                      "start_date": "2020-01-01"
+                    },
+                    {
+                      "comments": "No",
+                      "dispense": "No",
+                      "dosage": "1 tablet",
+                      "duration": "7 days",
+                      "end_date": "2020-01-31",
+                      "frequency": "daily",
+                      "name": "Paracetamol",
+                      "other": "No",
+                      "prescription": "No",
+                      "quantity": "1",
+                      "route": "oral",
+                      "start_date": "2020-01-01"
+                    }
+                  ],
+                  "updated_on": "2026-11-11 21:40:41.768434-05"
                 }
               }
             }
@@ -17117,7 +18491,51 @@
         },
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "clinic_id": 1021,
+                  "created_on": "2026-11-11 21:40:41.768434-05",
+                  "id": 100021,
+                  "prescriptions": [
+                    {
+                      "comments": "No",
+                      "dispense": "No",
+                      "dosage": "1 tablet",
+                      "duration": "7 days",
+                      "end_date": "2020-01-31",
+                      "frequency": "daily",
+                      "name": "Aspirin",
+                      "other": "No",
+                      "prescription": "No",
+                      "quantity": "1",
+                      "route": "oral",
+                      "start_date": "2020-01-01"
+                    },
+                    {
+                      "comments": "No",
+                      "dispense": "No",
+                      "dosage": "1 tablet",
+                      "duration": "7 days",
+                      "end_date": "2020-01-31",
+                      "frequency": "daily",
+                      "name": "Paracetamol",
+                      "other": "No",
+                      "prescription": "No",
+                      "quantity": "1",
+                      "route": "oral",
+                      "start_date": "2020-01-01"
+                    }
+                  ],
+                  "updated_on": "2026-11-11 21:40:41.768434-05"
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -17609,7 +19027,22 @@
                   "$ref": "#/components/schemas/CreatedId"
                 },
                 "example": {
-                  "id": 1000
+                  "clinic_id": 1021,
+                  "created_on": "2026-11-11 21:40:41.823722-05",
+                  "id": 100021,
+                  "paidservices": [
+                    {
+                      "amount": "100.00",
+                      "date": "2020-01-01",
+                      "name": "Service 1"
+                    },
+                    {
+                      "amount": "100.00",
+                      "date": "2020-01-01",
+                      "name": "Service 2"
+                    }
+                  ],
+                  "updated_on": "2026-11-11 21:40:41.823722-05"
                 }
               }
             }
@@ -17855,6 +19288,24 @@
                 "schema": {
                   "type": "object",
                   "additionalProperties": true
+                },
+                "example": {
+                  "clinic_id": 1021,
+                  "created_on": "2026-11-11 21:40:41.823722-05",
+                  "id": 100021,
+                  "paidservices": [
+                    {
+                      "amount": "100.00",
+                      "date": "2020-01-01",
+                      "name": "Service 1"
+                    },
+                    {
+                      "amount": "100.00",
+                      "date": "2020-01-01",
+                      "name": "Service 2"
+                    }
+                  ],
+                  "updated_on": "2026-11-11 21:40:41.823722-05"
                 }
               }
             }
@@ -18117,7 +19568,33 @@
         },
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "clinic_id": 1021,
+                  "created_on": "2026-11-11 21:40:41.823722-05",
+                  "id": 100021,
+                  "paidservices": [
+                    {
+                      "amount": "120.00",
+                      "date": "2020-01-01",
+                      "name": "Service 1 xxx"
+                    },
+                    {
+                      "amount": "100.00",
+                      "date": "2020-01-01",
+                      "name": "Service 2"
+                    }
+                  ],
+                  "updated_on": "2026-11-11 21:40:41.823722-05"
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -18613,7 +20090,27 @@
                   "$ref": "#/components/schemas/CreatedId"
                 },
                 "example": {
-                  "id": 1000
+                  "appointment_date": "2026-05-25",
+                  "appointment_duration": 30,
+                  "appointment_note": "No notes",
+                  "appointment_payment_amount": 100,
+                  "appointment_payment_currency": "currency",
+                  "appointment_payment_date": "2026-05-25",
+                  "appointment_payment_method": "amount",
+                  "appointment_payment_status": "pending",
+                  "appointment_payment_time": "10:00:00",
+                  "appointment_payment_transaction_id": "1000",
+                  "appointment_payment_transaction_status": "pending",
+                  "appointment_reason": "Check-up",
+                  "appointment_status": "pending",
+                  "appointment_time": "10:00:00",
+                  "appointment_type": "regular",
+                  "clinic_id": 1021,
+                  "created_on": "2026-11-11 21:40:41.886573-05",
+                  "id": 1021,
+                  "provider_id": 1033,
+                  "updated_on": "2026-11-11 21:40:41.886573-05",
+                  "user_id": 1033
                 }
               }
             }
@@ -18874,6 +20371,27 @@
                 "schema": {
                   "type": "object",
                   "additionalProperties": true
+                },
+                "example": {
+                  "appointment_date": "2026-05-25",
+                  "appointment_duration": 30,
+                  "appointment_note": "No notes",
+                  "appointment_payment_amount": 100,
+                  "appointment_payment_currency": "currency",
+                  "appointment_payment_date": "2026-05-25",
+                  "appointment_payment_method": "amount",
+                  "appointment_payment_status": "pending",
+                  "appointment_payment_time": "10:00:00",
+                  "appointment_payment_transaction_id": "1000",
+                  "appointment_payment_transaction_status": "pending",
+                  "appointment_reason": "Check-up",
+                  "appointment_status": "pending",
+                  "appointment_time": "10:00:00",
+                  "appointment_type": "regular",
+                  "clinic_id": 1021,
+                  "id": 1021,
+                  "provider_id": 1033,
+                  "user_id": 1033
                 }
               }
             }
@@ -19142,7 +20660,38 @@
         },
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "appointment_date": "2021-05-20",
+                  "appointment_duration": 30,
+                  "appointment_note": "No notes",
+                  "appointment_payment_amount": 100,
+                  "appointment_payment_currency": "USD",
+                  "appointment_payment_date": "2021-05-20",
+                  "appointment_payment_method": "credit_card",
+                  "appointment_payment_status": "pending",
+                  "appointment_payment_time": "10:00:00",
+                  "appointment_payment_transaction_id": "1234567890",
+                  "appointment_payment_transaction_status": "completed",
+                  "appointment_reason": "Check-up",
+                  "appointment_status": "pending",
+                  "appointment_time": "10:00:00",
+                  "appointment_type": "online",
+                  "clinic_id": 1021,
+                  "created_on": "2026-11-11 21:40:41.886573-05",
+                  "id": 1021,
+                  "provider_id": 1033,
+                  "updated_on": "2026-11-11 21:40:41.886573-05",
+                  "user_id": 1033
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -19378,7 +20927,18 @@
         ],
         "responses": {
           "200": {
-            "description": "Success."
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "example": {
+                  "id": 1021
+                }
+              }
+            }
           },
           "400": {
             "description": "**Bad request** - the body or an id is wrong, or the operation is not implemented. Body: `{\"Message\", \"Status\": \"Error\"}`.",
@@ -22602,7 +24162,8 @@
       "bearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "bearerFormat": "JWT"
+        "bearerFormat": "JWT",
+        "description": "The JWT returned by a login endpoint. **Run a login with Try it out and this fills in by itself**; you can also paste a token here."
       }
     }
   },

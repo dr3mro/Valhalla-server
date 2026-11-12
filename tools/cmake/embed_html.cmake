@@ -4,7 +4,7 @@
 #   inline constexpr std::string_view <VARIABLE>   (backed by a constexpr char array <VARIABLE>Data)
 # so the server binary carries the page and does not read anything from disk at run time.
 #
-# The header is regenerated at configure time, and CMake re-runs automatically when INPUT changes.
+# Called at configure time (so the header exists) and again at build time by tools/cmake/build_docs.cmake.
 # The output file is only rewritten when its content changes, so unchanged pages do not trigger a rebuild.
 include_guard(GLOBAL)
 
@@ -21,8 +21,6 @@ function(embed_html)
   endif()
 
   get_filename_component(input_abs "${ARG_INPUT}" ABSOLUTE BASE_DIR "${CMAKE_SOURCE_DIR}")
-  # Re-run CMake (and so regenerate the header) whenever the page changes, even if it is missing now.
-  set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS "${input_abs}")
 
   if(EXISTS "${input_abs}")
     file(READ "${input_abs}" content)

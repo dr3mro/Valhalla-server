@@ -4,6 +4,18 @@ import json, os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from steps import build_steps
 
+
+def write_if_changed(path, text):
+    """Leave the file (and its mtime) alone when the content is identical, so CMake does not reconfigure needlessly."""
+    try:
+        if open(path, encoding="utf-8").read() == text:
+            return
+    except OSError:
+        pass
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(text)
+
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 PROJECT = sys.argv[1] if len(sys.argv) > 1 else os.path.abspath(os.path.join(HERE, "..", ".."))
 PAYLOADS = os.path.join(PROJECT, "api_tests", "payloads")
@@ -368,7 +380,7 @@ def postman(steps):
             "item": [{"name": n, "item": it} for n, it in folders.items()]}
 POSTMAN = postman(VC_STEPS)
 os.makedirs(OUT, exist_ok=True)
-json.dump(POSTMAN, open(os.path.join(OUT, "valhalla.postman_collection.json"), "w"), indent=2)
+write_if_changed(os.path.join(OUT, "valhalla.postman_collection.json"), json.dumps(POSTMAN, indent=2))
 
 spec = {
     "openapi": "3.0.3",
@@ -377,7 +389,7 @@ spec = {
                                                                            "host": {"default": "127.0.0.1"}, "port": {"default": "8080"}}}],
     "tags": [{"name": t} for t in tag_list],
     "paths": paths,
-    "components": {"schemas": schemas, "securitySchemes": {"bearerAuth": {"type": "http", "scheme": "bearer", "bearerFormat": "JWT"}}},
+    "components": {"schemas": schemas, "securitySchemes": {"bearerAuth": {"type": "http", "scheme": "bearer", "bearerFormat": "JWT", "description": "The JWT returned by a login endpoint. **Run a login with Try it out and this fills in by itself**; you can also paste a token here."}}},
     "security": [{"bearerAuth": []}],
 }
 tag_descr = {
@@ -406,7 +418,7 @@ for t in spec["tags"]:
     t["description"] = (tag_descr.get(t["name"], "") + ("\n\n" + PERM[t["name"]] if t["name"] in PERM else "")).strip()
 
 os.makedirs(OUT, exist_ok=True)
-json.dump(spec, open(os.path.join(OUT, "openapi.json"), "w"), indent=2, ensure_ascii=False)
+write_if_changed(os.path.join(OUT, "openapi.json"), json.dumps(spec, indent=2, ensure_ascii=False))
 
 def read(p): return open(os.path.join(UI, p), encoding="utf-8").read()
 spec_js = json.dumps(spec, ensure_ascii=False).replace("</", "<\\/")
@@ -473,8 +485,9 @@ html = f"""<!doctype html>
 <style>body{{margin:0}} .swagger-ui .info .title small.version-stamp{{display:none}} .swagger-ui .markdown pre{{white-space:pre-wrap}}</style>
 </head>
 <body>
-<header id="vh-header"><span class="vh-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f8cff"/><stop offset="1" stop-color="#2e9e6b"/></linearGradient></defs><path d="M32 3 56 12v18c0 14-10 26-24 31C18 56 8 44 8 30V12z" fill="url(#g)"/><path d="M20 20h7l5 15 5-15h7L35 46h-6z" fill="#fff"/></svg></span><span class="vh-name">Valhalla</span><span class="vh-sub">Healthcare Server API</span><button id="vh-theme" type="button" title="Switch dark / light">&#9680; Theme</button><span class="vh-ver">v2</span></header>
+<header id="vh-header"><span class="vh-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f8cff"/><stop offset="1" stop-color="#2e9e6b"/></linearGradient></defs><path d="M32 3 56 12v18c0 14-10 26-24 31C18 56 8 44 8 30V12z" fill="url(#g)"/><path d="M20 20h7l5 15 5-15h7L35 46h-6z" fill="#fff"/></svg></span><span class="vh-name">Valhalla</span><span class="vh-sub">Healthcare Server API</span><span id="vh-ids" style="display:none"></span><button id="vh-theme" type="button" title="Switch dark / light">&#9680; Theme</button><span class="vh-ver">v2</span></header>
 <div id="vc-root"></div>
+<div id="vb-root"></div>
 <div id="vg-root"><div class="vg-backdrop" style="position:absolute;inset:0;background:rgba(0,0,0,.55)"></div>
 <div class="vg-panel"><div class="vg-bar"><h2>API Guide<small>Valhalla Server v2</small></h2><div class="vc-tools">
 <button class="vc-btn vg-dl" data-kind="openapi" type="button" title="Download the OpenAPI 3 spec">&#11015; OpenAPI</button><button class="vc-btn vg-dl" data-kind="postman" type="button" title="Download a Postman collection (also imports into Insomnia)">&#11015; Postman</button>
@@ -485,23 +498,67 @@ html = f"""<!doctype html>
 <script>{read("swagger-ui-bundle.js")}</script>
 <script>window.__VC_STEPS__ = {steps_js};</script>
 <script>window.__VG_POSTMAN__ = {postman_js};</script>
+<script>{open(os.path.join(HERE, "swagger-ids.js"), encoding="utf-8").read()}</script>
 <script>
 const spec = {spec_js};
 window.__VG_SPEC__ = spec;
+window.vhToast = vhToast;
+function vhToast(text) {{
+  var t = document.getElementById('vh-toast');
+  if (!t) {{ t = document.createElement('div'); t.id = 'vh-toast'; document.body.appendChild(t); }}
+  t.textContent = text; t.className = 'show';
+  clearTimeout(vhToast.h); vhToast.h = setTimeout(function () {{ t.className = ''; }}, 3500);
+}}
 window.onload = () => {{
   window.ui = SwaggerUIBundle({{
     spec, dom_id: '#swagger-ui', deepLinking: true, docExpansion: 'none', defaultModelsExpandDepth: -1,
     displayRequestDuration: true, filter: true, persistAuthorization: true, tryItOutEnabled: false,
-    presets: [SwaggerUIBundle.presets.apis], layout: 'BaseLayout'
+    presets: [SwaggerUIBundle.presets.apis], layout: 'BaseLayout',
+    // A successful login through "Try it out" fills the Authorize button with its JWT; logout clears it again.
+    requestInterceptor: function (req) {{ return window.vhIds ? window.vhIds.fill(req) : req; }},
+    responseInterceptor: function (res) {{
+      try {{
+        if (window.vhIds) window.vhIds.capture(res);
+        var login = /\/clients\/(users|providers)\/login(\?|$)/.test(res.url);
+        var logout = /\/clients\/(users|providers)\/logout(\?|$)/.test(res.url);
+        if (login && res.status === 200) {{
+          var j = res.body && typeof res.body === 'object' ? res.body : JSON.parse(res.text);
+          if (j && j.token && window.ui) {{
+            window.ui.authActions.authorize({{ bearerAuth: {{ name: 'bearerAuth', schema: {{ type: 'http', scheme: 'bearer' }}, value: j.token }} }});
+            vhToast('Authorized: the token from this login is now used for every endpoint.');
+          }}
+        }} else if (logout && res.status === 200 && window.ui) {{
+          window.ui.authActions.logout(['bearerAuth']);
+          vhToast('Logged out: the token was removed from Authorize.');
+        }}
+      }} catch (e) {{ /* never break the response */ }}
+      return res;
+    }}
   }});
 }};
 </script>
 <script>{open(os.path.join(HERE, "console.js"), encoding="utf-8").read()}</script>
 <script>{open(os.path.join(HERE, "guide.js"), encoding="utf-8").read()}</script>
+<script>{open(os.path.join(HERE, "benchmark.js"), encoding="utf-8").read()}</script>
 <script>
 // Swagger shows "Cancel" after "Try it out"; label it "Close" instead.
 (function () {{
-  function relabel() {{ document.querySelectorAll('#swagger-ui .try-out__btn.cancel').forEach(function (b) {{ if (b.textContent !== 'Close') b.textContent = 'Close'; }}); }}
+  var KIND = {{ 2: ['ok', 'Success'], 3: ['redir', 'Redirect'], 4: ['client', 'Client error'], 5: ['server', 'Server error'] }};
+  function colorResponses() {{
+    document.querySelectorAll('#swagger-ui .live-responses-table').forEach(function (t) {{
+      var cell = t.querySelector('tr.response .response-col_status');
+      if (!cell) return;
+      var m = (cell.firstChild && cell.firstChild.textContent || cell.textContent).trim().match(/^\d{{3}}/);
+      var k = m ? KIND[m[0].charAt(0)] : null;
+      var cls = 'vh-resp vh-r-' + (k ? k[0] : 'none');
+      if (t.className.indexOf(cls) < 0) {{ t.className = t.className.replace(/\s*vh-resp\S*|\s*vh-r-\S+/g, '') + ' ' + cls; }}
+      var label = k ? k[1] : 'No response (network or CORS error)';
+      var b = cell.querySelector('.vh-badge');
+      if (!b) {{ b = document.createElement('span'); b.className = 'vh-badge'; cell.appendChild(b); }}
+      if (b.textContent !== label) b.textContent = label;
+    }});
+  }}
+  function relabel() {{ colorResponses(); document.querySelectorAll('#swagger-ui .try-out__btn.cancel').forEach(function (b) {{ if (b.textContent !== 'Close') b.textContent = 'Close'; }}); }}
   new MutationObserver(relabel).observe(document.documentElement, {{ childList: true, subtree: true, characterData: true }});
 }})();
 </script>
@@ -509,6 +566,6 @@ window.onload = () => {{
 </body>
 </html>
 """
-open(os.path.join(OUT, "api.html"), "w", encoding="utf-8").write(html)
+write_if_changed(os.path.join(OUT, "api.html"), html)
 n_ops = sum(len(v) for v in paths.values())
 print("paths:", len(paths), "operations:", n_ops, "schemas:", len(schemas), "html KB:", len(html) // 1024)

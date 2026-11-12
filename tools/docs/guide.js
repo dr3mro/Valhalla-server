@@ -29,14 +29,14 @@
     pre.append(b);
   });
   function setTheme(t) {
-    document.querySelectorAll('#vc-root,#vg-root').forEach((r) => r.classList.toggle('light', t === 'light'));
+    document.querySelectorAll('#vc-root,#vg-root,#vb-root').forEach((r) => r.classList.toggle('light', t === 'light'));
     document.documentElement.classList.toggle('vc-light', t === 'light');
     try { localStorage.setItem('vc.theme', t); } catch (e) { /* ignore */ }
   }
   let dark = false; try { dark = localStorage.getItem('vc.theme') === 'dark'; } catch (e) { /* ignore */ }
   if (!dark) { host.classList.add('light'); document.documentElement.classList.add('vc-light'); } // light is the default
   function open(section) {
-    const vc = document.getElementById('vc-root'); if (vc) vc.classList.remove('open');
+    ['vc-root', 'vb-root'].forEach((i) => { const o = document.getElementById(i); if (o) o.classList.remove('open'); });
     host.classList.add('open'); document.body.style.overflow = 'hidden';
     if (section) { const h = content.querySelector('#' + section); if (h) goto(h, false); }
   }

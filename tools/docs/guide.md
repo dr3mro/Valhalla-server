@@ -251,7 +251,8 @@ curl -X POST $BASE/clinic/patients/search -H "Authorization: Bearer $TOKEN" -H '
 
 ## Testing tools
 
-- **Test console** (button bottom right): runs every endpoint in order with dummy data, shows request and response, copies curl.
+- **Benchmark** (purple button, bottom right, below the test console): measures requests/s and p50/p90/p95/p99 latency for one endpoint, or for all 89 test steps in one table. Reads and searches are repeated as they are; updates, activate, login and the not-implemented deletes are repeated; creates make a new record with unique dummy data on every request and the matching delete row is the clean-up (timed too); logout closes the sessions that were just opened; health, drugs, reports, requests, prescriptions and paid services each get a fresh patient or visit. Suspend only runs when ticked, because suspended accounts cannot be deleted through the API. Untick *Delete what was written afterwards* to keep the data, or *Include write endpoints* to only read. Times are measured in the browser, so they include network time; the panel pauses to stay under the DoS filter limit (10 000 requests / 30 s by default).
+- **Test console** (button bottom right, above Benchmark): runs every endpoint in order with dummy data, shows request and response, copies curl.
 - **`test_api.sh`**: the same flow with curl (89 checks). Payloads live in `api_tests/payloads/**` as JSON templates; use `VERBOSE=1` to see responses and `SKIP_SUSPEND=1` to avoid leaving suspended accounts.
 - **Try it out** on any operation below: use **Authorize** (top right) to paste a token first.
 
@@ -261,4 +262,7 @@ curl -X POST $BASE/clinic/patients/search -H "Authorization: Bearer $TOKEN" -H '
 |---|---|
 | 2026-11 | API guide panel, permissions explained, full error reference, data model, validation rules, configuration, recipes. |
 | 2026-11 | Test console: run every endpoint with dummy data from this page. |
+| 2026-11 | Try it out reuses ids returned by earlier responses (provider, user, clinic, patient, visit, ...) in place of the example ids, written into the editable body and parameter boxes; shown as chips in the header. |
+| 2026-11 | Authorize fills itself from a successful login (and clears on logout). |
+| 2026-11 | Benchmark panel: latency percentiles and throughput for every endpoint, writes included, with automatic clean-up. |
 | 2026-11 | OpenAPI spec and Postman collection generated from the same source as the page (`tools/docs`). |
