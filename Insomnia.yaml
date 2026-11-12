@@ -1,0 +1,3912 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Valhalla Project
+meta:
+  id: wrk_f155d31114ea4cc0a875fe1167899fa3
+  created: 1730732466798
+  modified: 1792730877632
+  description: ""
+collection:
+  - url: "{{host}}{{port}}{{api_base}}/hello"
+    name: hello
+    meta:
+      id: req_7746a0c94a6a492bb7da33a3458ee357
+      created: 1730732503241
+      modified: 1792731183570
+      isPrivate: false
+      description: ""
+      sortKey: -1730736244169
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/10.1.1
+    scripts:
+      afterResponse: |+
+        
+        insomnia.test('Check if status is 200', () => {
+            insomnia.expect(insomnia.response.code).to.eql(200);
+        });
+
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - name: Clients
+    meta:
+      id: fld_e6e3745bd709418d9d2faab7bc96a6ed
+      created: 1730736244069
+      modified: 1794441787827
+      sortKey: -1730736244144
+      description: ""
+    children:
+      - name: Provider
+        meta:
+          id: fld_a66c979c13294bdf82ed66507cddb99a
+          created: 1730733822881
+          modified: 1794441787827
+          sortKey: -1730736249703
+          description: ""
+        children:
+          - url: "{{host}}{{port}}{{api_base}}/clients/providers/create"
+            name: Create
+            meta:
+              id: req_c9baa3c004644b2a9d51e91d0caffea9
+              created: 1730733826011
+              modified: 1794437131903
+              isPrivate: false
+              description: ""
+              sortKey: -1730734259913
+            method: POST
+            body:
+              mimeType: application/json
+              text: >-
+                {
+                  "avatar": "http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200",
+                  "active": true,
+                  "language": "en",
+                  "username": "provider",
+                  "password": "1234@Abc!",
+                  "fullname": "Amr Nasr",
+                  "phone": "+201299999999",
+                  "email": "amr@mail.com",
+                  "country": "Egypt",
+                  "city": "Damietta",
+                  "address": "portsaid street",
+                  "dob": "17-02-1985",
+                  "gender": "Male",
+                  "position": "Doctor",
+                  "speciality": "Cardiology"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/10.1.1
+            scripts:
+              afterResponse: |+
+                const body = insomnia.response.json();
+                insomnia.environment.set("provider_id",body.id);
+
+                insomnia.test('Check if status is 200', () => {
+                    insomnia.expect(insomnia.response.code).to.eql(200);
+                });
+
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}{{port}}{{api_base}}/clients/providers/login"
+            name: Login
+            meta:
+              id: req_2be3e703e8ac4487962004211b4495d5
+              created: 1730733899199
+              modified: 1794440196354
+              isPrivate: false
+              description: ""
+              sortKey: -1730734259863
+            method: POST
+            body:
+              mimeType: application/json
+              text: |
+                {
+                    "username" : "provider",
+                    "password" : "1234@Abc!"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/10.1.1
+            scripts:
+              afterResponse: |+
+                const body = insomnia.response.json();
+                insomnia.environment.set("provider_token", body.token);
+                insomnia.environment.set("provider_id",body.client_id)
+
+                insomnia.test('Check if status is 200', () => {
+                    insomnia.expect(insomnia.response.code).to.eql(200);
+                });
+
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}{{port}}{{api_base}}/clients/providers/read"
+            name: Read
+            meta:
+              id: req_ece59e962ad64c0d8435323002ca2f94
+              created: 1730734259813
+              modified: 1792730877631
+              isPrivate: false
+              description: ""
+              sortKey: -1730734259813
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"id": {{provider_id}},
+                	"schema": []
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/10.1.1
+            authentication:
+              type: bearer
+              token: "{{provider_token}}"
+            scripts:
+              afterResponse: |+
+                insomnia.test('Check if status is 200', () => {
+                    insomnia.expect(insomnia.response.code).to.eql(200);
+                });
+
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}{{port}}{{api_base}}/clients/providers/update"
+            name: Update
+            meta:
+              id: req_766ded8ecd384b33b67fc62f1e5ac386
+              created: 1730734370148
+              modified: 1794436561261
+              isPrivate: false
+              description: ""
+              sortKey: -1730734259713
+            method: PUT
+            body:
+              mimeType: application/json
+              text: >-
+                {
+                  "avatar": "http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200",
+                  "language": "en",
+                  "fullname": "Amr Nasr Osman",
+                  "phone": "+201299999999",
+                  "email": "amr@mail.com",
+                  "country": "Egypt",
+                  "city": "Damietta",
+                  "address": "portsaid street",
+                  "dob": "17-02-1985",
+                  "gender": "Male",
+                  "position": "Doctor",
+                  "speciality": "Cardiology",
+                  "services": {
+                    "clinics": 1000
+                  }
+                }
+            parameters:
+              - name: id
+                value: "{{provider_id}}"
+                description: ""
+                disabled: false
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/10.1.1
+            authentication:
+              type: bearer
+              token: "{{provider_token}}"
+            scripts:
+              afterResponse: |+
+                insomnia.test('Check if status is 200', () => {
+                    insomnia.expect(insomnia.response.code).to.eql(200);
+                });
+
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}{{port}}{{api_base}}/clients/providers/activate"
+            name: Activate
+            meta:
+              id: req_4284d1b1c8404aeaafc8d9b2d574cfa6
+              created: 1730734472082
+              modified: 1792730877625
+              isPrivate: false
+              description: ""
+              sortKey: -1730734259850.5
+            method: POST
+            parameters:
+              - name: id
+                value: "{{provider_id}}"
+                description: ""
+                disabled: false
+            headers:
+              - name: User-Agent
+                value: insomnia/10.1.1
+            authentication:
+              type: bearer
+              token: "{{provider_token}}"
+            scripts:
+              afterResponse: |+
+                
+                insomnia.test('Check if status is 200', () => {
+                    insomnia.expect(insomnia.response.code).to.eql(200);
+                });
+
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}{{port}}{{api_base}}/clients/providers/suspend"
+            name: Suspend
+            meta:
+              id: req_5ca042ff6e4c4c8b8a2118ee8a6f7c71
+              created: 1730734688474
+              modified: 1792730877627
+              isPrivate: false
+              description: ""
+              sortKey: -1730734259856.75
+            method: POST
+            parameters:
+              - name: id
+                value: "{{provider_id}}"
+                description: ""
+                disabled: false
+            headers:
+              - name: User-Agent
+                value: insomnia/10.1.1
+            authentication:
+              type: bearer
+              token: "{{provider_token}}"
+            scripts:
+              afterResponse: |+
+                insomnia.test('Check if status is 200', () => {
+                    insomnia.expect(insomnia.response.code).to.eql(200);
+                });
+
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}{{port}}{{api_base}}/clients/providers/delete"
+            name: Delete
+            meta:
+              id: req_b9c380c3f66848c19d4f336429916314
+              created: 1730734766572
+              modified: 1792730877630
+              isPrivate: false
+              description: ""
+              sortKey: -1730734259613
+            method: DELETE
+            parameters:
+              - name: id
+                value: "{{ _.provider_id }}"
+                description: ""
+                disabled: false
+            headers:
+              - name: User-Agent
+                value: insomnia/10.1.1
+            authentication:
+              type: bearer
+              token: "{{ _.provider_token }}"
+            scripts:
+              afterResponse: |+
+                insomnia.test('Check if status is 200', () => {
+                    insomnia.expect(insomnia.response.code).to.eql(200);
+                });
+
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}{{port}}{{api_base}}/clients/providers/search"
+            name: Search
+            meta:
+              id: req_b94c6ec04e244874a44f8cac8e80268e
+              created: 1730734993081
+              modified: 1792730877630
+              isPrivate: false
+              description: ""
+              sortKey: -1730734259663
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"keyword": "cardiology",
+                	"filter": "speciality",
+                	"limit": 5,
+                	"offset": 0,
+                	"order_by": "id",
+                	"direction": 0
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/10.1.1
+            authentication:
+              type: bearer
+              token: "{{provider_token}}"
+            scripts:
+              afterResponse: |+
+                insomnia.test('Check if status is 200', () => {
+                    insomnia.expect(insomnia.response.code).to.eql(200);
+                });
+
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}{{port}}{{api_base}}/clients/providers/services"
+            name: Services
+            meta:
+              id: req_181b403030514c3ca5748e1f4b49b887
+              created: 1730738148357
+              modified: 1792730877624
+              isPrivate: false
+              description: ""
+              sortKey: -1730734259638
+            method: GET
+            parameters:
+              - name: id
+                value: "{{ _.provider_id }}"
+                description: ""
+                disabled: false
+            headers:
+              - name: User-Agent
+                value: insomnia/10.1.1
+            authentication:
+              type: bearer
+              token: "{{provider_token}}"
+            scripts:
+              afterResponse: |+
+                insomnia.test('Check if status is 200', () => {
+                    insomnia.expect(insomnia.response.code).to.eql(200);
+                });
+
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}{{port}}{{api_base}}/clients/providers/logout"
+            name: Logout
+            meta:
+              id: req_d6bee179eb3d42d2bb32ae7c3a1c7424
+              created: 1732409519462
+              modified: 1792730877631
+              isPrivate: false
+              description: ""
+              sortKey: -1730734259859.875
+            method: POST
+            body:
+              mimeType: application/json
+              text: ""
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/10.1.1
+            authentication:
+              type: bearer
+              token: "{{ _.provider_token }}"
+            scripts:
+              afterResponse: |+
+                
+                insomnia.test('Check if status is 200', () => {
+                    insomnia.expect(insomnia.response.code).to.eql(200);
+                });
+
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Users
+        meta:
+          id: fld_f1aae2a219414ddfb37ec3d0d91bdff1
+          created: 1730736265795
+          modified: 1794441780330
+          sortKey: -1730736246886
+          description: ""
+        children:
+          - url: "{{host}}{{port}}{{api_base}}/clients/users/create"
+            name: Create
+            meta:
+              id: req_88ced9e2e9304e22a6486fc0b65f865c
+              created: 1730736265798
+              modified: 1792730877628
+              isPrivate: false
+              description: ""
+              sortKey: -1730734259913
+            method: POST
+            body:
+              mimeType: application/json
+              text: >-
+                {
+                  "avatar": "http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200",
+                  "language": "en",
+                  "active": true,
+                  "parent": "0",
+                  "username": "user1",
+                  "email": "amr@mail.com",
+                  "password": "123Mm@p0",
+                  "fullname": "Amr Nasr",
+                  "phone": "+201299999999",
+                  "country": "Egypt",
+                  "city": "Damietta",
+                  "address": "12 valhalla Street ",
+                  "dob": "10-10-1990",
+                  "gender": "Male",
+                  "marital": "single",
+                  "job": "Doctor"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/10.1.1
+            scripts:
+              afterResponse: |+
+                const body = insomnia.response.json();
+                insomnia.environment.set("user_id",body.id);
+                insomnia.test('Check if status is 200', () => {
+                    insomnia.expect(insomnia.response.code).to.eql(200);
+                });
+
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}{{port}}{{api_base}}/clients/users/login"
+            name: Login
+            meta:
+              id: req_9d1a2686234c44798e5a49b00e6d1634
+              created: 1730736265799
+              modified: 1792730877629
+              isPrivate: false
+              description: ""
+              sortKey: -1730734259863
+            method: POST
+            body:
+              mimeType: application/json
+              text: |
+                {
+                    "username" : "user1",
+                    "password" : "123Mm@p0"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/10.1.1
+            scripts:
+              afterResponse: |+
+                const body = insomnia.response.json();
+                insomnia.environment.set("user_token", body.token);
+                insomnia.environment.set("user_id",body.client_id)
+
+                insomnia.test('Check if status is 200', () => {
+                    insomnia.expect(insomnia.response.code).to.eql(200);
+                });
+
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}{{port}}{{api_base}}/clients/users/read"
+            name: Read
+            meta:
+              id: req_4bc84f64a7fd40a89e0cd198e1e07d09
+              created: 1730736265800
+              modified: 1792730877626
+              isPrivate: false
+              description: ""
+              sortKey: -1730734259813
+            method: POST
+            body:
+              mimeType: application/json
+              text: |
+                {
+                  "id": {{user_id}},
+                  "schema": []
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/10.1.1
+            authentication:
+              type: bearer
+              token: "{{user_token}}"
+            scripts:
+              afterResponse: |+
+                insomnia.test('Check if status is 200', () => {
+                    insomnia.expect(insomnia.response.code).to.eql(200);
+                });
+
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}{{port}}{{api_base}}/clients/users/update"
+            name: Update
+            meta:
+              id: req_240ae485c72e4919a6acd920f8b5bcb4
+              created: 1730736265801
+              modified: 1792730877625
+              isPrivate: false
+              description: ""
+              sortKey: -1730734259713
+            method: PUT
+            body:
+              mimeType: application/json
+              text: >-
+                {
+                  "avatar": "http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200",
+                  "language": "en",
+                  "active": true,
+                  "parent": "0",
+                  "email": "amr@mail.com",
+                  "fullname": "Amr Nasr",
+                  "phone": "+201299999999",
+                  "country": "Egypt",
+                  "city": "Damietta",
+                  "address": "12 valhalla Street ",
+                  "dob": "10-10-1990",
+                  "gender": "Male",
+                  "marital": "married",
+                  "job": "Doctor"
+                }
+            parameters:
+              - name: id
+                value: "{{user_id}}"
+                description: ""
+                disabled: false
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/10.1.1
+            authentication:
+              type: bearer
+              token: "{{user_token}}"
+            scripts:
+              afterResponse: |+
+                insomnia.test('Check if status is 200', () => {
+                    insomnia.expect(insomnia.response.code).to.eql(200);
+                });
+
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}{{port}}{{api_base}}/clients/users/activate"
+            name: Activate
+            meta:
+              id: req_8b4e64a086ff48c390898215029654e7
+              created: 1730736265802
+              modified: 1792730877629
+              isPrivate: false
+              description: ""
+              sortKey: -1730734259850.5
+            method: POST
+            parameters:
+              - name: id
+                value: "{{user_id}}"
+                description: ""
+                disabled: false
+            headers:
+              - name: User-Agent
+                value: insomnia/10.1.1
+            authentication:
+              type: bearer
+              token: "{{user_token}}"
+            scripts:
+              afterResponse: |+
+                insomnia.test('Check if status is 200', () => {
+                    insomnia.expect(insomnia.response.code).to.eql(200);
+                });
+
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}{{port}}{{api_base}}/clients/users/suspend"
+            name: Suspend
+            meta:
+              id: req_acae300f62434bb7a7ce570daa6c1bf0
+              created: 1730736265803
+              modified: 1792730877630
+              isPrivate: false
+              description: ""
+              sortKey: -1730734259856.75
+            method: POST
+            parameters:
+              - name: id
+                value: "{{user_id}}"
+                description: ""
+                disabled: false
+            headers:
+              - name: User-Agent
+                value: insomnia/10.1.1
+            authentication:
+              type: bearer
+              token: "{{user_token}}"
+            scripts:
+              afterResponse: |+
+                insomnia.test('Check if status is 200', () => {
+                    insomnia.expect(insomnia.response.code).to.eql(200);
+                });
+
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}{{port}}{{api_base}}/clients/users/search"
+            name: Search
+            meta:
+              id: req_35ef519fc8f3442195747a2741a43647
+              created: 1730736265804
+              modified: 1792730877625
+              isPrivate: false
+              description: ""
+              sortKey: -1730734259663
+            method: POST
+            body:
+              mimeType: application/json
+              text: |
+                {
+                    "keyword" : "amr",
+                    "filter" : "fullname",
+                    "limit" : 5,
+                    "offset" : 0,
+                    "order_by" : "id",
+                    "direction" : 0
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/10.1.1
+            authentication:
+              type: bearer
+              token: "{{user_token}}"
+            scripts:
+              afterResponse: |+
+                insomnia.test('Check if status is 200', () => {
+                    insomnia.expect(insomnia.response.code).to.eql(200);
+                });
+
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}{{port}}{{api_base}}/clients/users/delete"
+            name: Delete
+            meta:
+              id: req_f6b3215487cf4501b84151d30a74cf79
+              created: 1730736265804
+              modified: 1792730877632
+              isPrivate: false
+              description: ""
+              sortKey: -1730734259613
+            method: DELETE
+            parameters:
+              - name: id
+                value: "{{user_id}}"
+                description: ""
+                disabled: false
+            headers:
+              - name: User-Agent
+                value: insomnia/10.1.1
+            authentication:
+              type: bearer
+              token: "{{user_token}}"
+            scripts:
+              afterResponse: |+
+                insomnia.test('Check if status is 200', () => {
+                    insomnia.expect(insomnia.response.code).to.eql(200);
+                });
+
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}{{port}}{{api_base}}/clients/users/services"
+            name: Services
+            meta:
+              id: req_c3a68a8f0e0a4c2680f8e549ae12d36b
+              created: 1730738234984
+              modified: 1792730877630
+              isPrivate: false
+              description: ""
+              sortKey: -1730734259638
+            method: GET
+            parameters:
+              - name: id
+                value: "{{ _.user_id }}"
+                description: ""
+                disabled: false
+            headers:
+              - name: User-Agent
+                value: insomnia/10.1.1
+            authentication:
+              type: bearer
+              token: "{{user_token}}"
+            scripts:
+              afterResponse: |+
+                insomnia.test('Check if status is 200', () => {
+                    insomnia.expect(insomnia.response.code).to.eql(200);
+                });
+
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}{{port}}{{api_base}}/clients/users/logout"
+            name: Logout
+            meta:
+              id: req_59dc6c0b5e344441b6630d6cb17f2867
+              created: 1732409572257
+              modified: 1792730877627
+              isPrivate: false
+              description: ""
+              sortKey: -1730734259861.4375
+            method: POST
+            body:
+              mimeType: application/json
+              text: ""
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/10.1.1
+            authentication:
+              type: bearer
+              token: "{{ _.user_token }}"
+            scripts:
+              afterResponse: |+
+                
+
+                insomnia.test('Check if status is 200', () => {
+                    insomnia.expect(insomnia.response.code).to.eql(200);
+                });
+
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+  - name: Services
+    meta:
+      id: fld_5ac9b540e74f48cd89104c0160790efa
+      created: 1730737728322
+      modified: 1794441645607
+      sortKey: -1730736244119
+      description: ""
+    children:
+      - name: Clinics
+        meta:
+          id: fld_6b0522fe537b46ccbea1b8af3112bdae
+          created: 1730737756663
+          modified: 1794441645607
+          sortKey: -1730737786370
+          description: ""
+        children:
+          - name: Clinic
+            meta:
+              id: fld_50a258e436554b1ebe78d535a08b3f9e
+              created: 1730737807151
+              modified: 1794441607643
+              sortKey: -1730737827245
+              description: ""
+            children:
+              - url: "{{host}}{{port}}{{api_base}}/services/clinics/create"
+                name: Create
+                meta:
+                  id: req_100a8c59236148e3ad653790c18c238f
+                  created: 1730738046047
+                  modified: 1794437488548
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1730738447092
+                method: POST
+                body:
+                  mimeType: application/json
+                  text: >
+                    {
+                      "logo" : "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+                      "name": "Clinic0",
+                      "specialities": ["Cardiology","Medicine"],  
+                      "country": "Egypt",
+                      "city": "Damietta",
+                      "address": "11 street Ras elbar",
+                      "phone": ["+1987654321"],
+                      "admin_id" : {{provider_id}},
+                      "owner_id" : {{provider_id}},
+                      "staff": {
+                        "Doctors": ["{{provider_id}}:62"],
+                        "nurses": [""],
+                        "assistants": [""]
+                      }
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                  - name: User-Agent
+                    value: insomnia/10.1.1
+                authentication:
+                  type: bearer
+                  token: "{{provider_token}}"
+                scripts:
+                  afterResponse: |+
+                    insomnia.test('Check if status is 200', () => {
+                    		const body = insomnia.response.json();
+                    		insomnia.environment.set("clinic_id",body.id);
+                        insomnia.expect(insomnia.response.code).to.eql(200);
+                    });
+
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: "{{host}}{{port}}{{api_base}}/services/clinics/read"
+                name: Read
+                meta:
+                  id: req_011984690bd74ccc9ac1556f1ca59c14
+                  created: 1730738446992
+                  modified: 1792730877623
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1730738446992
+                method: POST
+                body:
+                  mimeType: application/json
+                  text: |
+                    {
+                      "id": {{clinic_id}},  
+                      "schema": []
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                  - name: User-Agent
+                    value: insomnia/10.1.1
+                authentication:
+                  type: bearer
+                  token: "{{provider_token}}"
+                scripts:
+                  afterResponse: |+
+                    
+                    insomnia.test('Check if status is 200', () => {
+                        insomnia.expect(insomnia.response.code).to.eql(200);
+                    });
+
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: "{{host}}{{port}}{{api_base}}/services/clinics/update"
+                name: Update
+                meta:
+                  id: req_51464c29a222444480ba4d8d52fe8c29
+                  created: 1730738699757
+                  modified: 1794437365650
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1730738446892
+                method: PUT
+                body:
+                  mimeType: application/json
+                  text: >
+                    {
+                      "logo" : "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+                      "name": "Mount Sinai Clinics",
+                      "specialities": ["Cardiology"],
+                      "country": "Egypt",
+                      "city": "Damietta",
+                      "address": "11 street Ras elbar",
+                      "phone": ["+1987654321"],
+                      "admin_id" : 1000,
+                      "owner_id" : 1000,
+                      "staff": {
+                        "Doctors": ["{{ provider_id }}:62"],
+                        "nurses": [""],
+                        "assistants": ["1000:1"]
+                      }
+                    }
+                parameters:
+                  - name: id
+                    value: "{{clinic_id}}"
+                    description: ""
+                    disabled: false
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                  - name: User-Agent
+                    value: insomnia/10.1.1
+                authentication:
+                  type: bearer
+                  token: "{{provider_token}}"
+                scripts:
+                  afterResponse: |+
+                    
+                    insomnia.test('Check if status is 200', () => {
+                        insomnia.expect(insomnia.response.code).to.eql(200);
+                    });
+
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: "{{host}}{{port}}{{api_base}}/services/clinics/delete"
+                name: Delete
+                meta:
+                  id: req_f40be444e3834c988998f9fda92628d7
+                  created: 1730738861178
+                  modified: 1792730877632
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1730738446792
+                method: DELETE
+                parameters:
+                  - name: id
+                    value: "{{clinic_id}}"
+                    description: ""
+                    disabled: false
+                headers:
+                  - name: User-Agent
+                    value: insomnia/10.1.1
+                authentication:
+                  type: bearer
+                  token: "{{provider_token}}"
+                scripts:
+                  afterResponse: |+
+                    
+                    insomnia.test('Check if status is 200', () => {
+                        insomnia.expect(insomnia.response.code).to.eql(200);
+                    });
+
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: "{{host}}{{port}}{{api_base}}/services/clinics/search"
+                name: Search
+                meta:
+                  id: req_e45c446ae21d4477a52a5f0202428bb8
+                  created: 1730738955992
+                  modified: 1792730877631
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1730738446842
+                method: POST
+                body:
+                  mimeType: application/json
+                  text: |
+                    {
+                        "keyword" : "cardiology",
+                        "filter" : "specialities",
+                        "limit" : 5,
+                        "offset" : 0,
+                        "order_by" : "id",
+                        "direction" : 0
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                  - name: User-Agent
+                    value: insomnia/10.1.1
+                authentication:
+                  type: bearer
+                  token: "{{provider_token}}"
+                scripts:
+                  afterResponse: |+
+                    
+                    insomnia.test('Check if status is 200', () => {
+                        insomnia.expect(insomnia.response.code).to.eql(200);
+                    });
+
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+          - name: Patients
+            meta:
+              id: fld_f44facf8064a419cb22c8b4246e98b9d
+              created: 1730737814423
+              modified: 1794441616333
+              sortKey: -1730737827232.5
+              description: ""
+            children:
+              - name: Patient
+                meta:
+                  id: fld_6e61fab420a446d6b599b73ce6721cf0
+                  created: 1730739219976
+                  modified: 1794441616333
+                  sortKey: -1730739157207
+                  description: ""
+                children:
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/patients/create"
+                    name: Create
+                    meta:
+                      id: req_89f919739f954cc6bbe6cf1fc2bfe94b
+                      created: 1730739219977
+                      modified: 1792730877629
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738447092
+                    method: POST
+                    body:
+                      mimeType: application/json
+                      text: |-
+                        {
+                          "email": "amr@mail.com",
+                          "clinic_id": {{clinic_id}},
+                          "fullname": "Amr Nasr",
+                          "phone": "+201299999999",
+                          "city": "Damietta",
+                          "address": "11 Valhalla street",
+                          "dob": "17-02-1985",
+                          "gender": "Male",
+                          "marital": "Single",
+                          "job": "Doctor"
+                        }
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        const body = insomnia.response.json();
+                        insomnia.environment.set("patient_id",body.id);
+
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/patients/read"
+                    name: Read
+                    meta:
+                      id: req_8792d9ecf6a5468eb4b1250267eea9c9
+                      created: 1730739219978
+                      modified: 1792730877628
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446992
+                    method: POST
+                    body:
+                      mimeType: application/json
+                      text: |
+                        {
+                          "id": {{patient_id}},
+                          "schema": []
+                        }
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/patients/update"
+                    name: Update
+                    meta:
+                      id: req_639c51fdd7cc428aa97d432e2e25979b
+                      created: 1730739219979
+                      modified: 1792730877627
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446892
+                    method: PUT
+                    body:
+                      mimeType: application/json
+                      text: |-
+                        {
+                          "email": "amr@mail.com",
+                          "fullname": "Amr Nasr Osman",
+                          "phone": "+201299999999",
+                          "city": "Damietta",
+                          "address": "11 Valhalla street",
+                          "dob": "22-10-1990",
+                          "gender": "male",
+                          "marital": "single",
+                          "job": "Doctor"
+                        }
+                    parameters:
+                      - name: id
+                        value: "{{patient_id}}"
+                        description: ""
+                        disabled: false
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/patients/delete"
+                    name: Delete
+                    meta:
+                      id: req_21f43738c4a6405bb286177b9e173b02
+                      created: 1730739219981
+                      modified: 1792730877625
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446592
+                    method: DELETE
+                    parameters:
+                      - name: id
+                        value: "{{patient_id}}"
+                        description: ""
+                        disabled: false
+                    headers:
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/patients/search"
+                    name: Search
+                    meta:
+                      id: req_568776256e96476dbc7f25f08977e11f
+                      created: 1730739219982
+                      modified: 1792730877626
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446692
+                    method: POST
+                    body:
+                      mimeType: application/json
+                      text: |
+                        {
+                            "keyword" : "amr",
+                            "filter" : "fullname",
+                            "limit" : 5,
+                            "offset" : 0,
+                            "order_by" : "id",
+                            "direction" : 0
+                        }
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/patients/getvisits"
+                    name: GetVisits
+                    meta:
+                      id: req_62db39942fdb4782b8ca91544e4cfe70
+                      created: 1730846823959
+                      modified: 1792730877627
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446642
+                    method: GET
+                    parameters:
+                      - name: patient_id
+                        value: "{{patient_id}}"
+                        description: ""
+                        disabled: false
+                    headers:
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+              - name: Health
+                meta:
+                  id: fld_52ee88697e124068ac328788fc00176e
+                  created: 1730747333383
+                  modified: 1794434749506
+                  sortKey: -1730739157157
+                  description: ""
+                children:
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/health/create"
+                    name: Create
+                    meta:
+                      id: req_7b738d027a4542ccbf53008147f08e9e
+                      created: 1730747333385
+                      modified: 1792730877628
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738447092
+                    method: POST
+                    body:
+                      mimeType: application/json
+                      text: |
+                        {
+                        	"id": {{patient_id}},
+                        	"clinic_id": {{clinic_id}},
+                          "health": {
+                            "past_medical_history": "No",
+                            "allergies": "No",
+                            "medications": "No",
+                            "surgeries": "No",
+                            "pregnancy": "No",
+                            "breastfeeding": "No",
+                            "mammogram": "No",
+                            "blood_pressure": "No",
+                            "blood_sugar": "No",
+                            "family_planning": "No",
+                            "hiv": "No",
+                            "hepatitis": "No",
+                            "renal_disease": "No",
+                            "tuberculosis": "No",
+                            "cancer": "No",
+                            "diabetes": "No",
+                            "asthma": "No",
+                            "hypertension": "No",
+                            "chronic_cardiac_disease": "No",
+                            "stroke": "No",
+                            "kidney_disease": "No",
+                            "liver_disease": "No",
+                            "immunizations": "No",
+                            "nutrition": "No",
+                            "physical_exam": "No",
+                            "sleep_apnea": "No",
+                            "mental_health": "No",
+                            "tobacco_smoking": "No",
+                            "alcohol": "No",
+                            "drugs": "No",
+                            "other": "No",
+                            "pregnancy_complications": "No",
+                            "past_treatments": "No",
+                            "family_history": "No",
+                            "vaccinations": "No",
+                            "other_treatments": "No",
+                            "comments": "No"
+                          }
+                        }
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        const body = insomnia.response.json();
+                        insomnia.environment.set("health_id",body.id);
+
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/health/read"
+                    name: Read
+                    meta:
+                      id: req_ce4c73298fe245529529826e5c1ea7b2
+                      created: 1730747333386
+                      modified: 1792730877631
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446992
+                    method: POST
+                    body:
+                      mimeType: application/json
+                      text: |
+                        {
+                          "id": {{patient_id}}, 
+                          "schema": []
+                        }
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/health/update"
+                    name: Update
+                    meta:
+                      id: req_79401e349e88457fb708724705d2ce03
+                      created: 1730747333387
+                      modified: 1792730877628
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446892
+                    method: PUT
+                    body:
+                      mimeType: application/json
+                      text: |
+                        {  
+                          "health": {
+                            "past_medical_history": "No",
+                            "allergies": "No",
+                            "medications": "No",
+                            "surgeries": "No",
+                            "pregnancy": "No",
+                            "breastfeeding": "No",
+                            "mammogram": "No",
+                            "blood_pressure": "No",
+                            "blood_sugar": "No",
+                            "family_planning": "No",
+                            "hiv": "No",
+                            "hepatitis": "No",
+                            "renal_disease": "No",
+                            "tuberculosis": "No",
+                            "cancer": "No",
+                            "diabetes": "No",
+                            "asthma": "No",
+                            "hypertension": "No",
+                            "chronic_cardiac_disease": "No",
+                            "stroke": "No",
+                            "kidney_disease": "No",
+                            "liver_disease": "No",
+                            "immunizations": "No",
+                            "nutrition": "No",
+                            "physical_exam": "No",
+                            "sleep_apnea": "No",
+                            "mental_health": "No",
+                            "tobacco_smoking": "No",
+                            "alcohol": "No",
+                            "drugs": "No",
+                            "other": "No",
+                            "pregnancy_complications": "No",
+                            "past_treatments": "No",
+                            "family_history": "No",
+                            "vaccinations": "No",
+                            "other_treatments": "No",
+                            "comments": "No"
+                          }
+                        }
+                    parameters:
+                      - name: id
+                        value: "{{patient_id}}"
+                        description: ""
+                        disabled: false
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/health/delete"
+                    name: Delete
+                    meta:
+                      id: req_a7928222c01d4ddd95980cd1d92098a2
+                      created: 1730747333387
+                      modified: 1792730877629
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446592
+                    method: DELETE
+                    parameters:
+                      - name: id
+                        value: "{{patient_id}}"
+                        description: ""
+                        disabled: false
+                    headers:
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+              - name: Drugs
+                meta:
+                  id: fld_d7f90748b60a4cfbafa88924d7b307c7
+                  created: 1730760370439
+                  modified: 1794434792775
+                  sortKey: -1730739157107
+                  description: ""
+                children:
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/patientdrugs/create"
+                    name: Create
+                    meta:
+                      id: req_20faa02f98dd47b794453d06142fca49
+                      created: 1730760370441
+                      modified: 1792730877624
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738447092
+                    method: POST
+                    body:
+                      mimeType: application/json
+                      text: |
+                        {
+                        	"id": {{patient_id}},
+                          "clinic_id" : {{clinic_id}},
+                          "drugs": [
+                            {
+                              "name": "Aspirin",
+                              "dosage": "1 tablet",
+                              "frequency": "daily",
+                              "duration": "7 days",
+                              "route": "oral",
+                              "quantity": "1",
+                              "start_date": "2020-01-01",
+                              "end_date": "2020-01-31",
+                              "prescription": "No",
+                              "dispense": "No",
+                              "other": "No",
+                              "comments": "No"
+                            },
+                            {
+                              "name": "Paracetamol",
+                              "dosage": "1 tablet",
+                              "frequency": "daily",
+                              "duration": "7 days",
+                              "route": "oral",
+                              "quantity": "1",
+                              "start_date": "2020-01-01",
+                              "end_date": "2020-01-31",
+                              "prescription": "No",
+                              "dispense": "No",
+                              "other": "No",
+                              "comments": "No"
+                            }
+                          ]
+                        }
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        const body = insomnia.response.json();
+                        insomnia.environment.set("patientdrugs_id",body.id);
+
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/patientdrugs/read"
+                    name: Read
+                    meta:
+                      id: req_696d10e69c464ec18fdcb04772bbbf95
+                      created: 1730760370444
+                      modified: 1792730877627
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446992
+                    method: POST
+                    body:
+                      mimeType: application/json
+                      text: |
+                        {
+                          "id": {{patient_id}},  
+                          "schema": []
+                        }
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/patientdrugs/update"
+                    name: Update
+                    meta:
+                      id: req_4d3b15c7021d457690efc3a96e2baf48
+                      created: 1730760370446
+                      modified: 1792730877626
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446892
+                    method: PUT
+                    body:
+                      mimeType: application/json
+                      text: |
+                        {
+                          "drugs": [
+                            {
+                              "name": "Aspirin",
+                              "dosage": "1 tablet",
+                              "frequency": "daily",
+                              "duration": "7 days",
+                              "route": "oral",
+                              "quantity": "1",
+                              "start_date": "2020-01-01",
+                              "end_date": "2020-01-31",
+                              "prescription": "No",
+                              "dispense": "No",
+                              "other": "No",
+                              "comments": "No"
+                            },
+                            {
+                              "name": "Paracetamol",
+                              "dosage": "1 tablet",
+                              "frequency": "daily",
+                              "duration": "7 days",
+                              "route": "oral",
+                              "quantity": "1",
+                              "start_date": "2020-01-01",
+                              "end_date": "2020-01-31",
+                              "prescription": "No",
+                              "dispense": "No",
+                              "other": "No",
+                              "comments": "No"
+                            }
+                          ]
+                        }
+                    parameters:
+                      - name: id
+                        value: "{{patient_id}}"
+                        description: ""
+                        disabled: false
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/patientdrugs/delete"
+                    name: Delete
+                    meta:
+                      id: req_3741c3878b22417b953de39cb28c6be8
+                      created: 1730760370447
+                      modified: 1792730877625
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446592
+                    method: DELETE
+                    parameters:
+                      - name: id
+                        value: "{{patient_id}}"
+                        description: ""
+                        disabled: false
+                    headers:
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+              - name: Reports
+                meta:
+                  id: fld_6d4031fd93ca4c049045d94632d9d49d
+                  created: 1730761029726
+                  modified: 1792730877621
+                  sortKey: -1730738492176
+                  description: ""
+                children:
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/reports/create"
+                    name: Create
+                    meta:
+                      id: req_5e9c46a355074ca6807c7ccdd0411b04
+                      created: 1730761029728
+                      modified: 1792730877627
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738447092
+                    method: POST
+                    body:
+                      mimeType: application/json
+                      text: |
+                        {
+                        	"id": {{patient_id}},
+                          "clinic_id" : {{clinic_id}},
+                          "reports": [
+                            {
+                              "report_type": "Clinical",
+                              "name": "Preoperative",
+                              "date": "2020-01-01",
+                              "result": "Text"
+                            },
+                            {
+                              "report_type": "Clinical",
+                              "name": "Preoccupation",
+                              "date": "2020-01-01",
+                              "result": "Text"
+                            }
+                          ]
+                        }
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        const body = insomnia.response.json();
+                        insomnia.environment.set("reports_id",body.id);
+
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/reports/read"
+                    name: Read
+                    meta:
+                      id: req_e3db8598c85d42e79bab4aa9c2ce5bdf
+                      created: 1730761029730
+                      modified: 1792730877631
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446992
+                    method: POST
+                    body:
+                      mimeType: application/json
+                      text: |
+                        {
+                          "id": {{patient_id}},  
+                          "schema": []
+                        }
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/reports/update"
+                    name: Update
+                    meta:
+                      id: req_f41fa59dde854156a3cf3634db734bc7
+                      created: 1730761029730
+                      modified: 1792730877632
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446892
+                    method: PUT
+                    body:
+                      mimeType: application/json
+                      text: |
+                        {
+                          "reports": [
+                            {
+                              "report_type": "Clinical",
+                              "name": "Preoperative",
+                              "date": "2020-01-01",
+                              "result": "Text"
+                            },
+                            {
+                              "report_type": "Clinical",
+                              "name": "Preoccupation",
+                              "date": "2020-01-01",
+                              "result": "Text"
+                            }
+                          ]
+                        }
+                    parameters:
+                      - name: id
+                        value: "{{patient_id}}"
+                        description: ""
+                        disabled: false
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/reports/delete"
+                    name: Delete
+                    meta:
+                      id: req_94a05adaeb76479b9484d5fe8c51a56d
+                      created: 1730761029731
+                      modified: 1792730877629
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446592
+                    method: DELETE
+                    parameters:
+                      - name: id
+                        value: "{{patient_id}}"
+                        description: ""
+                        disabled: false
+                    headers:
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+          - name: Visits
+            meta:
+              id: fld_4af8bef39d324f888c1b0afe69bea68b
+              created: 1730737827145
+              modified: 1794441645607
+              sortKey: -1730737827220
+              description: ""
+            children:
+              - name: Visit
+                meta:
+                  id: fld_2ff29ed602ab4e9db41ea9703d1c87a9
+                  created: 1730761402658
+                  modified: 1794441645607
+                  sortKey: -1730761409013
+                  description: ""
+                children:
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/visits/create"
+                    name: Create
+                    meta:
+                      id: req_a7da4e1ccfab4ec8ab9684dc097b47b6
+                      created: 1730761402660
+                      modified: 1792730877630
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738447092
+                    method: POST
+                    body:
+                      mimeType: application/json
+                      text: |
+                        {
+                          "patient_id": {{patient_id}},
+                          "clinic_id" : {{clinic_id}},
+                        	"visit_date": "2020-01-01",
+                        	"visit_time": "10:00",
+                        	"complaints": "Headache",
+                        	"symptoms": "Rhinorhea, sorethroat",
+                        	"examination": {
+                        		"BP": "120/80",
+                        		"pulse": "100",
+                        		"temperature": "98.6",
+                        		"respiration": "18",
+                        		"oxygen_saturation": "98",
+                        		"weight": "80",
+                        		"height": "180",
+                        		"comments": "No",
+                        		"Examination": "",
+                        		"Other": "",
+                        		"Notes": ""
+                        	},
+                        	"diagnosis": "Flu",
+                        	"comments": "None"
+                        }
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        const body = insomnia.response.json();
+                        insomnia.environment.set("visit_id",body.id);
+
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/visits/read"
+                    name: Read
+                    meta:
+                      id: req_ae8601b198e44e89ac56ffc539898693
+                      created: 1730761402662
+                      modified: 1792730877630
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446992
+                    method: POST
+                    body:
+                      mimeType: application/json
+                      text: |
+                        {
+                          "id": {{visit_id}},  
+                          "schema": []
+                        }
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/visits/update"
+                    name: Update
+                    meta:
+                      id: req_2f54e4d19b40464dae3cf9ac4e38a716
+                      created: 1730761402663
+                      modified: 1792730877625
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446892
+                    method: PUT
+                    body:
+                      mimeType: application/json
+                      text: |
+                        {
+                          "visits": [
+                            {
+                              "visit_date": "2020-01-01",
+                              "visit_time": "10:00",
+                              "completed": "No",
+                              "complaint": "Headache",
+                              "symptoms": "No",
+                              "examination": {
+                                "BP": {
+                                  "systolic": "120",
+                                  "diastolic": "80"
+                                },
+                                "pulse": "100",
+                                "temperature": "98.6",
+                                "respiration": "18",
+                                "oxygen_saturation": "98",
+                                "weight": "80",
+                                "height": "180",
+                                "comments": "No",
+                                "Examination": "",
+                                "Other": "",
+                                "Notes": ""
+                              },
+                              "diagnosis": "No",
+                              "prescription_id": 1000,
+                              "request_id": 1000,
+                              "referral_id": 1000,
+                              "other": "No",
+                              "comments": "No"
+                            },
+                            {
+                              "visit_date": "2020-01-01",
+                              "visit_time": "10:00",
+                              "completed": "No",
+                              "complaint": "Headache",
+                              "symptoms": "No",
+                              "examination": {
+                                "BP": {
+                                  "systolic": "120",
+                                  "diastolic": "80"
+                                },
+                                "pulse": "100",
+                                "temperature": "98.6",
+                                "respiration": "18",
+                                "oxygen_saturation": "98",
+                                "weight": "80",
+                                "height": "180",
+                                "comments": "No",
+                                "Examination": "",
+                                "Other": "",
+                                "Notes": ""
+                              },
+                              "diagnosis": "No",
+                              "prescription_id": 1000,
+                              "request_id": 1000,
+                              "referral_id": 1000,
+                              "other": "No",
+                              "comments": "No"
+                            }
+                          ]
+                        }
+                    parameters:
+                      - name: id
+                        value: "{{visit_id}}"
+                        description: ""
+                        disabled: false
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/visits/delete"
+                    name: Delete
+                    meta:
+                      id: req_513fbf8fb6304b38aac5d9e81545fa0b
+                      created: 1730761402663
+                      modified: 1792730877626
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446592
+                    method: DELETE
+                    parameters:
+                      - name: id
+                        value: "{{visit_id}}"
+                        description: ""
+                        disabled: false
+                    headers:
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+              - name: Requests
+                meta:
+                  id: fld_68416aeb4cbb4e16b5e3f89f89605077
+                  created: 1730762108592
+                  modified: 1792731410362
+                  sortKey: -1730750283110
+                  description: ""
+                children:
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/requests/create"
+                    name: Create
+                    meta:
+                      id: req_4de331d423744ae8b2af9d6570360e9a
+                      created: 1730762108594
+                      modified: 1792730877626
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738447092
+                    method: POST
+                    body:
+                      mimeType: application/json
+                      text: |
+                        {
+                        	"id": {{visit_id}},
+                        	"clinic_id" : {{clinic_id}},
+                          "requests": [
+                            {
+                              "name": "Chest Xray",
+                              "date": "2020-01-01",
+                              "result": "Positive for lung cancer",
+                        			"media" : "url"
+                            },
+                            {
+                              "name": "CBC",
+                              "date": "2020-01-01",
+                              "result": "Anemia",
+                        			"media" : "url"
+                            }
+                          ]
+                        }
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        const body = insomnia.response.json();
+                        insomnia.environment.set("request_id",body.id);
+
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/requests/read"
+                    name: Read
+                    meta:
+                      id: req_8c1ca68b7840464e85cd3fb9d6ccc940
+                      created: 1730762108595
+                      modified: 1792730877629
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446992
+                    method: POST
+                    body:
+                      mimeType: application/json
+                      text: |
+                        {
+                          "id": {{visit_id}},  
+                          "schema": []
+                        }
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/requests/update"
+                    name: Update
+                    meta:
+                      id: req_c182c8433ea94cd5a4c7dac8f64186c3
+                      created: 1730762108596
+                      modified: 1792730877630
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446892
+                    method: PUT
+                    body:
+                      mimeType: application/json
+                      text: |
+                        {
+                          "requests": [
+                            {
+                              "name": "Chest Xray",
+                              "date": "2020-01-01",
+                              "result": "Positive for lung cancer",
+                        			"media" : "url"
+                            },
+                            {
+                              "name": "CBC",
+                              "date": "2020-01-01",
+                              "result": "Anemia",
+                        			"media" : "url"
+                            }
+                          ]
+                        }
+                    parameters:
+                      - name: id
+                        value: "{{visit_id}}"
+                        description: ""
+                        disabled: false
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/requests/delete"
+                    name: Delete
+                    meta:
+                      id: req_0397322b590345778548d1e6626129e0
+                      created: 1730762108597
+                      modified: 1792730877624
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446592
+                    method: DELETE
+                    parameters:
+                      - name: id
+                        value: "{{visit_id}}"
+                        description: ""
+                        disabled: false
+                    headers:
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+              - name: Prescriptions
+                meta:
+                  id: fld_a9e9f66c08b841ffa87b415f2ebaec04
+                  created: 1730763078007
+                  modified: 1794441383589
+                  sortKey: -1730744720158.5
+                  description: ""
+                children:
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/prescriptions/create"
+                    name: Create
+                    meta:
+                      id: req_888c7460027a40c5ac81570da63007ee
+                      created: 1730763078009
+                      modified: 1792730877628
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738447092
+                    method: POST
+                    body:
+                      mimeType: application/json
+                      text: |
+                        {
+                        	"id": {{visit_id}},
+                        	"clinic_id" : {{clinic_id}},
+                          "prescriptions": [
+                            {
+                              "name": "Aspirin",
+                              "dosage": "1 tablet",
+                              "frequency": "daily",
+                              "duration": "7 days",
+                              "route": "oral",
+                              "quantity": "1",
+                              "start_date": "2020-01-01",
+                              "end_date": "2020-01-31",
+                              "prescription": "No",
+                              "dispense": "No",
+                              "other": "No",
+                              "comments": "No"
+                            },
+                            {
+                              "name": "Paracetamol",
+                              "dosage": "1 tablet",
+                              "frequency": "daily",
+                              "duration": "7 days",
+                              "route": "oral",
+                              "quantity": "1",
+                              "start_date": "2020-01-01",
+                              "end_date": "2020-01-31",
+                              "prescription": "No",
+                              "dispense": "No",
+                              "other": "No",
+                              "comments": "No"
+                            }
+                          ]
+                        }
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        const body = insomnia.response.json();
+                        insomnia.environment.set("prescription_id",body.id);
+
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/prescriptions/read"
+                    name: Read
+                    meta:
+                      id: req_c75d6dd6284442a890fc27fe63028236
+                      created: 1730763078011
+                      modified: 1794441383388
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446992
+                    method: POST
+                    body:
+                      mimeType: application/json
+                      text: |
+                        {
+                          "id": {{visit_id}},  
+                          "schema": []
+                        }
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/prescriptions/update"
+                    name: Update
+                    meta:
+                      id: req_295dbdd45bd448328e875b856f73abd6
+                      created: 1730763078013
+                      modified: 1792730877625
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446892
+                    method: PUT
+                    body:
+                      mimeType: application/json
+                      text: |
+                        {
+                          "prescriptions": [
+                            {
+                              "name": "Aspirin",
+                              "dosage": "1 tablet",
+                              "frequency": "daily",
+                              "duration": "7 days",
+                              "route": "oral",
+                              "quantity": "1",
+                              "start_date": "2020-01-01",
+                              "end_date": "2020-01-31",
+                              "prescription": "No",
+                              "dispense": "No",
+                              "other": "No",
+                              "comments": "No"
+                            },
+                            {
+                              "name": "Paracetamol",
+                              "dosage": "1 tablet",
+                              "frequency": "daily",
+                              "duration": "7 days",
+                              "route": "oral",
+                              "quantity": "1",
+                              "start_date": "2020-01-01",
+                              "end_date": "2020-01-31",
+                              "prescription": "No",
+                              "dispense": "No",
+                              "other": "No",
+                              "comments": "No"
+                            }
+                          ]
+                        }
+                    parameters:
+                      - name: id
+                        value: "{{visit_id}}"
+                        description: ""
+                        disabled: false
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/prescriptions/delete"
+                    name: Delete
+                    meta:
+                      id: req_c4e54c13dbfc4dc59ae2282f9d20854f
+                      created: 1730763078014
+                      modified: 1792730877631
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446592
+                    method: DELETE
+                    parameters:
+                      - name: id
+                        value: "{{visit_id}}"
+                        description: ""
+                        disabled: false
+                    headers:
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+              - name: Paidservices
+                meta:
+                  id: fld_0b3378ae048249d4824df8ebf3efcb52
+                  created: 1730763138610
+                  modified: 1794441376900
+                  sortKey: -1730741938682.75
+                  description: ""
+                children:
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/paidservices/create"
+                    name: Create
+                    meta:
+                      id: req_a953c8e493b748ae9f57774def45c6cc
+                      created: 1730763138611
+                      modified: 1792730877630
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738447092
+                    method: POST
+                    body:
+                      mimeType: application/json
+                      text: |
+                        {
+                        	"id": {{visit_id}},
+                        	"clinic_id" : {{clinic_id}},
+                          "paidservices": [
+                            {
+                              "name": "Service 1",
+                              "date": "2020-01-01",
+                              "amount": "100.00"
+                            },
+                            {
+                              "name": "Service 2",
+                              "date": "2020-01-01",
+                              "amount": "100.00"
+                            }
+                          ]
+                        }
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        const body = insomnia.response.json();
+                        insomnia.environment.set("paidservice_id",body.id);
+
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/paidservices/read"
+                    name: Read
+                    meta:
+                      id: req_55122efbc0194b2ab5405ead4e3f1fe4
+                      created: 1730763138613
+                      modified: 1792730877626
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446992
+                    method: POST
+                    body:
+                      mimeType: application/json
+                      text: |
+                        {
+                          "id": {{visit_id}},  
+                          "schema": []
+                        }
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/paidservices/update"
+                    name: Update
+                    meta:
+                      id: req_e55606acea0f4922a6b1c6b5c41311cc
+                      created: 1730763138615
+                      modified: 1792730877631
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446892
+                    method: PUT
+                    body:
+                      mimeType: application/json
+                      text: |
+                        {
+                          "paidservices": [
+                            {
+                              "name": "Service 1 xxx",
+                              "date": "2020-01-01",
+                              "amount": "120.00"
+                            },
+                            {
+                              "name": "Service 2",
+                              "date": "2020-01-01",
+                              "amount": "100.00"
+                            }
+                          ]
+                        }
+                    parameters:
+                      - name: id
+                        value: "{{visit_id}}"
+                        description: ""
+                        disabled: false
+                    headers:
+                      - name: Content-Type
+                        value: application/json
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+                  - url: "{{host}}{{port}}{{api_base}}/clinic/paidservices/delete"
+                    name: Delete
+                    meta:
+                      id: req_539fcd580b0c4bd09773d43f38c09573
+                      created: 1730763138616
+                      modified: 1792730877626
+                      isPrivate: false
+                      description: ""
+                      sortKey: -1730738446592
+                    method: DELETE
+                    parameters:
+                      - name: id
+                        value: "{{visit_id}}"
+                        description: ""
+                        disabled: false
+                    headers:
+                      - name: User-Agent
+                        value: insomnia/10.1.1
+                    authentication:
+                      type: bearer
+                      token: "{{provider_token}}"
+                    scripts:
+                      afterResponse: |+
+                        
+                        insomnia.test('Check if status is 200', () => {
+                            insomnia.expect(insomnia.response.code).to.eql(200);
+                        });
+
+                    settings:
+                      renderRequestBody: true
+                      encodeUrl: true
+                      followRedirects: global
+                      cookies:
+                        send: true
+                        store: true
+                      rebuildPath: true
+      - name: Pharmacies
+        meta:
+          id: fld_2ac389e09079486b88b586b262b381a0
+          created: 1730737767670
+          modified: 1792730877616
+          sortKey: -1730737767670
+          description: ""
+        children:
+          - name: Pharmacy
+            meta:
+              id: fld_83400bae5c31466ab1d3a21c0e9c48d1
+              created: 1730764043510
+              modified: 1792730877622
+              sortKey: -1730764047108
+              description: ""
+            children:
+              - url: "{{host}}{{port}}{{api_base}}/services/pharmacies/create"
+                name: Create
+                meta:
+                  id: req_e31394c1b8544f1ba02777df7eda3c6c
+                  created: 1730764043664
+                  modified: 1792730877631
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1730738447092
+                method: POST
+                body:
+                  mimeType: application/json
+                  text: >
+                    {
+                      "logo" : "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+                      "name": "Pharmacy 101",
+                      "country": "Egypt",
+                      "city": "Damietta",
+                      "address": "11 street Ras elbar",
+                      "phone": ["+1987654321"],
+                      "admin_id" : {{provider_id}},
+                      "owner_id" : {{provider_id}},
+                      "staff": {
+                        "Doctors": ["1001","1921"],
+                        "nurses": [""],
+                        "assistants": ["1000"]
+                      }
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                  - name: User-Agent
+                    value: insomnia/10.1.1
+                authentication:
+                  type: bearer
+                  token: "{{provider_token}}"
+                scripts:
+                  afterResponse: |+
+                    const body = insomnia.response.json();
+                    insomnia.environment.set("pharmacy_id",body.id);
+
+                    insomnia.test('Check if status is 200', () => {
+                        insomnia.expect(insomnia.response.code).to.eql(200);
+                    });
+
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: "{{host}}{{port}}{{api_base}}/services/pharmacies/read"
+                name: Read
+                meta:
+                  id: req_5e64e3fe192b48cc8de9c20bde2c3eb3
+                  created: 1730764043667
+                  modified: 1792730877627
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1730738446992
+                method: POST
+                body:
+                  mimeType: application/json
+                  text: |
+                    {
+                      "id": {{pharmacy_id}},  
+                      "schema": []
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                  - name: User-Agent
+                    value: insomnia/10.1.1
+                authentication:
+                  type: bearer
+                  token: "{{provider_token}}"
+                scripts:
+                  afterResponse: |+
+                    
+                    insomnia.test('Check if status is 200', () => {
+                        insomnia.expect(insomnia.response.code).to.eql(200);
+                    });
+
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: "{{host}}{{port}}{{api_base}}/services/pharmacies/update"
+                name: Update
+                meta:
+                  id: req_1ba8845932be490c9c537cd027a5fcda
+                  created: 1730764043668
+                  modified: 1792730877624
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1730738446892
+                method: PUT
+                body:
+                  mimeType: application/json
+                  text: >
+                    {
+                      "logo" : "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+                      "name": "Pharmastan",
+                      "country": "Egypt",
+                      "city": "Damietta",
+                      "address": "11 street Ras elbar",
+                      "phone": ["+1987654321"],
+                      "admin_id" : {{provider_id}},
+                      "owner_id" : {{provider_id}},
+                      "staff": {
+                        "Doctors": ["1001","1921"],
+                        "nurses": [""],
+                        "assistants": ["1000"]
+                      }
+                    }
+                parameters:
+                  - name: id
+                    value: " {{pharmacy_id}}"
+                    description: ""
+                    disabled: false
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                  - name: User-Agent
+                    value: insomnia/10.1.1
+                authentication:
+                  type: bearer
+                  token: "{{provider_token}}"
+                scripts:
+                  afterResponse: |+
+                    
+                    insomnia.test('Check if status is 200', () => {
+                        insomnia.expect(insomnia.response.code).to.eql(200);
+                    });
+
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: "{{host}}{{port}}{{api_base}}/services/pharmacies/delete"
+                name: Delete
+                meta:
+                  id: req_274300356c2c44acaed449aa1ae1f26e
+                  created: 1730764043670
+                  modified: 1792730877625
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1730738446792
+                method: DELETE
+                parameters:
+                  - name: id
+                    value: "{{pharmacy_id}}"
+                    description: ""
+                    disabled: false
+                headers:
+                  - name: User-Agent
+                    value: insomnia/10.1.1
+                authentication:
+                  type: bearer
+                  token: "{{provider_token}}"
+                scripts:
+                  afterResponse: |+
+                    
+                    insomnia.test('Check if status is 200', () => {
+                        insomnia.expect(insomnia.response.code).to.eql(200);
+                    });
+
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: "{{host}}{{port}}{{api_base}}/services/pharmacies/search"
+                name: Search
+                meta:
+                  id: req_4bbc7d13b4ba4c30b64444841fe664bd
+                  created: 1730764043672
+                  modified: 1792730877626
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1730738446692
+                method: POST
+                body:
+                  mimeType: application/json
+                  text: |
+                    {
+                        "keyword" : "pharma",
+                        "filter" : "name",
+                        "limit" : 5,
+                        "offset" : 0,
+                        "order_by" : "id",
+                        "direction" : 0
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                  - name: User-Agent
+                    value: insomnia/10.1.1
+                authentication:
+                  type: bearer
+                  token: "{{provider_token}}"
+                scripts:
+                  afterResponse: |+
+                    
+                    insomnia.test('Check if status is 200', () => {
+                        insomnia.expect(insomnia.response.code).to.eql(200);
+                    });
+
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+      - name: Laboratories
+        meta:
+          id: fld_6736e6aaaec9489ebc3570003ec6f103
+          created: 1730737776208
+          modified: 1794441426644
+          sortKey: -1730737776208
+          description: ""
+        children:
+          - name: Laboratory
+            meta:
+              id: fld_6daac98479b646ef95083bd8f2cd35c1
+              created: 1730764022663
+              modified: 1794441426644
+              sortKey: -1730764026793
+              description: ""
+            children:
+              - url: "{{host}}{{port}}{{api_base}}/services/laboratories/create"
+                name: Create
+                meta:
+                  id: req_8dae878f32444639b67f542fadeed044
+                  created: 1730764022664
+                  modified: 1792730877629
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1730738447092
+                method: POST
+                body:
+                  mimeType: application/json
+                  text: >
+                    {
+                      "logo" : "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+                      "name": "Clinical Lab 101",
+                      "country": "Egypt",
+                      "city": "Damietta",
+                      "address": "11 street Ras elbar",
+                      "phone": ["+1987654321"],
+                      "admin_id" : {{provider_id}},
+                      "owner_id" : {{provider_id}},
+                      "staff": {
+                        "Doctors": ["1001","1921"],
+                        "nurses": [""],
+                        "assistants": ["1000"]
+                      }
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                  - name: User-Agent
+                    value: insomnia/10.1.1
+                authentication:
+                  type: bearer
+                  token: "{{provider_token}}"
+                scripts:
+                  afterResponse: |+
+                    const body = insomnia.response.json();
+                    insomnia.environment.set("laboratory_id",body.id);
+
+                    insomnia.test('Check if status is 200', () => {
+                        insomnia.expect(insomnia.response.code).to.eql(200);
+                    });
+
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: "{{host}}{{port}}{{api_base}}/services/laboratories/read"
+                name: Read
+                meta:
+                  id: req_7a4cc9c8c0504f0ab26ee0b38385b6b5
+                  created: 1730764022665
+                  modified: 1792730877628
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1730738446992
+                method: POST
+                body:
+                  mimeType: application/json
+                  text: |
+                    {
+                      "id": {{laboratory_id}},  
+                      "schema": []
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                  - name: User-Agent
+                    value: insomnia/10.1.1
+                authentication:
+                  type: bearer
+                  token: "{{provider_token}}"
+                scripts:
+                  afterResponse: |+
+                    
+                    insomnia.test('Check if status is 200', () => {
+                        insomnia.expect(insomnia.response.code).to.eql(200);
+                    });
+
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: "{{host}}{{port}}{{api_base}}/services/laboratories/update"
+                name: Update
+                meta:
+                  id: req_f40f9ab431974e728082487c350f7bbd
+                  created: 1730764022666
+                  modified: 1792730877632
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1730738446892
+                method: PUT
+                body:
+                  mimeType: application/json
+                  text: >
+                    {
+                      "logo" : "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+                      "name": "Clinical Lab 102",
+                      "country": "Egypt",
+                      "city": "Damietta",
+                      "address": "11 street Ras elbar",
+                      "phone": ["+1987654321"],
+                      "admin_id" : {{provider_id}},
+                      "owner_id" : {{provider_id}},
+                      "staff": {
+                        "Doctors": ["1001","1921"],
+                        "nurses": [""],
+                        "assistants": ["1000"]
+                      }
+                    }
+                parameters:
+                  - name: id
+                    value: "{{laboratory_id}}"
+                    description: ""
+                    disabled: false
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                  - name: User-Agent
+                    value: insomnia/10.1.1
+                authentication:
+                  type: bearer
+                  token: "{{provider_token}}"
+                scripts:
+                  afterResponse: |+
+                    
+                    insomnia.test('Check if status is 200', () => {
+                        insomnia.expect(insomnia.response.code).to.eql(200);
+                    });
+
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: "{{host}}{{port}}{{api_base}}/services/laboratories/delete"
+                name: Delete
+                meta:
+                  id: req_b2c38a7e7dbf4d1394816fa4de12fb09
+                  created: 1730764022667
+                  modified: 1792730877630
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1730738446792
+                method: DELETE
+                parameters:
+                  - name: id
+                    value: "{{laboratory_id}}"
+                    description: ""
+                    disabled: false
+                headers:
+                  - name: User-Agent
+                    value: insomnia/10.1.1
+                authentication:
+                  type: bearer
+                  token: "{{provider_token}}"
+                scripts:
+                  afterResponse: |+
+                    
+                    insomnia.test('Check if status is 200', () => {
+                        insomnia.expect(insomnia.response.code).to.eql(200);
+                    });
+
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: "{{host}}{{port}}{{api_base}}/services/laboratories/search"
+                name: Search
+                meta:
+                  id: req_60fecc2ab8d149a48d546c2abd074aa8
+                  created: 1730764022668
+                  modified: 1792730877627
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1730738446692
+                method: POST
+                body:
+                  mimeType: application/json
+                  text: |
+                    {
+                        "keyword" : "102",
+                        "filter" : "name",
+                        "limit" : 5,
+                        "offset" : 0,
+                        "order_by" : "id",
+                        "direction" : 0
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                  - name: User-Agent
+                    value: insomnia/10.1.1
+                authentication:
+                  type: bearer
+                  token: "{{provider_token}}"
+                scripts:
+                  afterResponse: |+
+                    
+                    insomnia.test('Check if status is 200', () => {
+                        insomnia.expect(insomnia.response.code).to.eql(200);
+                    });
+
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+      - name: RadiologyCenters
+        meta:
+          id: fld_479e3833792b49acba47f8fadef3d6a1
+          created: 1730737786270
+          modified: 1794441419724
+          sortKey: -1730737786270
+          description: ""
+        children:
+          - name: RadiologyCenter
+            meta:
+              id: fld_d92a4410bd1142f59bb10a8019a24983
+              created: 1730764007816
+              modified: 1794441419724
+              sortKey: -1730764011630
+              description: ""
+            children:
+              - url: "{{host}}{{port}}{{api_base}}/services/radiologycenters/create"
+                name: Create
+                meta:
+                  id: req_b341780790e8422f85d6292c915d1600
+                  created: 1730764007817
+                  modified: 1792730877630
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1730738447092
+                method: POST
+                body:
+                  mimeType: application/json
+                  text: >
+                    {
+                      "logo" : "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+                      "name": "RadiologyCenter 101",
+                      "country": "Egypt",
+                      "city": "Damietta",
+                      "address": "11 street Ras elbar",
+                      "phone": ["+1987654321"],
+                      "admin_id" : {{provider_id}},
+                      "owner_id" : {{provider_id}},
+                      "staff": {
+                        "Doctors": ["1001","1921"],
+                        "nurses": [""],
+                        "assistants": ["1000"]
+                      }
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                  - name: User-Agent
+                    value: insomnia/10.1.1
+                authentication:
+                  type: bearer
+                  token: "{{provider_token}}"
+                scripts:
+                  afterResponse: |+
+                    const body = insomnia.response.json();
+                    insomnia.environment.set("radiologycenter_id",body.id);
+
+                    insomnia.test('Check if status is 200', () => {
+                        insomnia.expect(insomnia.response.code).to.eql(200);
+                    });
+
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: "{{host}}{{port}}{{api_base}}/services/radiologycenters/read"
+                name: Read
+                meta:
+                  id: req_b509e45deb9d46538a0d84aeb17321bd
+                  created: 1730764007818
+                  modified: 1792730877630
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1730738446992
+                method: POST
+                body:
+                  mimeType: application/json
+                  text: |
+                    {
+                      "id": {{radiologycenter_id}},  
+                      "schema": []
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                  - name: User-Agent
+                    value: insomnia/10.1.1
+                authentication:
+                  type: bearer
+                  token: "{{provider_token}}"
+                scripts:
+                  afterResponse: |+
+                    
+                    insomnia.test('Check if status is 200', () => {
+                        insomnia.expect(insomnia.response.code).to.eql(200);
+                    });
+
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: "{{host}}{{port}}{{api_base}}/services/radiologycenters/update"
+                name: Update
+                meta:
+                  id: req_8c5f9344c7e347b497d7c0324842dd96
+                  created: 1730764007820
+                  modified: 1792730877629
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1730738446892
+                method: PUT
+                body:
+                  mimeType: application/json
+                  text: >
+                    {
+                      "logo" : "https://www.clipartmax.com/png/small/150-1509965_entity-gaming-entity-gaming-logo.png",
+                      "name": "RadiologyCenter 102",
+                      "country": "Egypt",
+                      "city": "Damietta",
+                      "address": "11 street Ras elbar",
+                      "phone": ["+1987654321"],
+                      "admin_id" : {{provider_id}},
+                      "owner_id" : {{provider_id}},
+                      "staff": {
+                        "Doctors": ["1001","1921"],
+                        "nurses": [""],
+                        "assistants": ["1000"]
+                      }
+                    }
+                parameters:
+                  - name: id
+                    value: "{{radiologycenter_id}}"
+                    description: ""
+                    disabled: false
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                  - name: User-Agent
+                    value: insomnia/10.1.1
+                authentication:
+                  type: bearer
+                  token: "{{provider_token}}"
+                scripts:
+                  afterResponse: |+
+                    
+                    insomnia.test('Check if status is 200', () => {
+                        insomnia.expect(insomnia.response.code).to.eql(200);
+                    });
+
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: "{{host}}{{port}}{{api_base}}/services/radiologycenters/delete"
+                name: Delete
+                meta:
+                  id: req_60d8fc0c95ef4ecab24b38629777bf89
+                  created: 1730764007821
+                  modified: 1792730877627
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1730738446792
+                method: DELETE
+                parameters:
+                  - name: id
+                    value: "{{radiologycenter_id}}"
+                    description: ""
+                    disabled: false
+                headers:
+                  - name: User-Agent
+                    value: insomnia/10.1.1
+                authentication:
+                  type: bearer
+                  token: "{{provider_token}}"
+                scripts:
+                  afterResponse: |+
+                    
+                    insomnia.test('Check if status is 200', () => {
+                        insomnia.expect(insomnia.response.code).to.eql(200);
+                    });
+
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: "{{host}}{{port}}{{api_base}}/services/radiologycenters/search"
+                name: Search
+                meta:
+                  id: req_71d28dfc78cb4f22b0340601f8c38a6b
+                  created: 1730764007821
+                  modified: 1792730877628
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1730738446692
+                method: POST
+                body:
+                  mimeType: application/json
+                  text: |
+                    {
+                        "keyword" : "101",
+                        "filter" : "name",
+                        "limit" : 5,
+                        "offset" : 0,
+                        "order_by" : "id",
+                        "direction" : 0
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                  - name: User-Agent
+                    value: insomnia/10.1.1
+                authentication:
+                  type: bearer
+                  token: "{{provider_token}}"
+                scripts:
+                  afterResponse: |+
+                    
+                    insomnia.test('Check if status is 200', () => {
+                        insomnia.expect(insomnia.response.code).to.eql(200);
+                    });
+
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+  - name: Appointments
+    meta:
+      id: fld_c3ab29ce7352468dbcdbc4de88160132
+      created: 1734532396494
+      modified: 1794441626943
+      sortKey: -1730736244156.5
+      description: ""
+    children:
+      - name: Clinics
+        meta:
+          id: fld_b4c9b38212964eaa97ed91d85805d63f
+          created: 1734532482032
+          modified: 1794441626943
+          sortKey: -1734532482032
+          description: ""
+        children:
+          - url: "{{ host }}{{port}}{{api_base}}/appointments/clinics/create"
+            name: Create
+            meta:
+              id: req_19ef129693d6470b80042160d1db9514
+              created: 1734532410537
+              modified: 1794436819319
+              isPrivate: false
+              description: ""
+              sortKey: -1734532491615
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                  "clinic_id": {{clinic_id}},
+                  "user_id": {{user_id}},
+                  "provider_id": {{provider_id}},
+                  "appointment_date": "2026-05-25",
+                  "appointment_time": "10:00:00",
+                  "appointment_duration": 30,
+                  "appointment_reason": "Check-up",
+                  "appointment_note": "No notes",
+                	"appointment_payment_transaction_id":"1000",
+                  "appointment_payment_transaction_status": "pending",
+                	"appointment_payment_method": "amount",
+                  "appointment_payment_currency": "currency",
+                  "appointment_payment_date": "2026-05-25",
+                  "appointment_payment_time": "10:00:00",
+                  "appointment_payment_amount" : 100,
+                  "appointment_payment_status": "pending",
+                	"appointment_type" : "regular",
+                	"appointment_status" :"pending"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/10.2.0
+            authentication:
+              type: bearer
+              token: "{{provider_token}}"
+            scripts:
+              afterResponse: |+
+                
+                insomnia.test('Check if status is 200', () => {
+                    insomnia.expect(insomnia.response.code).to.eql(200);
+                		const body = insomnia.response.json();
+                		insomnia.environment.set("appointment_id",body.id);
+                });
+
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}{{port}}{{api_base}}/appointments/clinics/read"
+            name: Read
+            meta:
+              id: req_0eb2f7bc335f4143a7c680c27392a91c
+              created: 1734532430930
+              modified: 1794439434352
+              isPrivate: false
+              description: ""
+              sortKey: -1734532491565
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"id":{{ appointment_id }},
+                	"provider_id":{{provider_id}},
+                	"clinic_id": {{ clinic_id }},
+                  "schema": []
+                }
+            parameters:
+              - name: id
+                value: "{{appointment_id}}"
+                description: ""
+                disabled: false
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/10.2.0
+            authentication:
+              type: bearer
+              token: "{{provider_token}}"
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}{{port}}{{api_base}}/appointments/clinics/update"
+            name: Update
+            meta:
+              id: req_a2f273f7e5ef4e5b9c98e01d7b04064a
+              created: 1734532441642
+              modified: 1794439850883
+              isPrivate: false
+              description: ""
+              sortKey: -1734532491540
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                  "user_id": {{user_id}},
+                  "clinic_id": {{clinic_id}},
+                  "provider_id": {{provider_id}},
+                  "appointment_date": "2021-05-20",
+                  "appointment_time": "10:00:00",
+                  "appointment_duration": 30,
+                  "appointment_reason": "Check-up",
+                  "appointment_note": "No notes",
+                  "appointment_payment_status": "pending",
+                  "appointment_payment_method": "credit_card",
+                  "appointment_payment_amount": 100,
+                  "appointment_payment_currency": "USD",
+                  "appointment_payment_date": "2021-05-20",
+                  "appointment_payment_time": "10:00:00",
+                  "appointment_payment_transaction_id": "1234567890",
+                  "appointment_payment_transaction_status": "completed",
+                  "appointment_type": "online",
+                  "appointment_status": "pending"
+                }
+            parameters:
+              - name: id
+                value: "{{appointment_id}}"
+                description: ""
+                disabled: false
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/10.2.0
+            authentication:
+              type: bearer
+              token: "{{provider_token}}"
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}{{port}}{{api_base}}/appointments/clinics/delete"
+            name: Delete
+            meta:
+              id: req_ed374c6170e44bffa204c5a565177924
+              created: 1734532453121
+              modified: 1794437556004
+              isPrivate: false
+              description: ""
+              sortKey: -1734532491515
+            method: DELETE
+            parameters:
+              - name: id
+                value: "{{appointment_id}}"
+                description: ""
+                disabled: false
+            headers:
+              - name: User-Agent
+                value: insomnia/10.2.0
+            authentication:
+              type: bearer
+              token: "{{provider_token}}"
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_56ddf710294ac119b5a84d51dfe3954ea23bb183
+    created: 1792730877657
+    modified: 1794441787826
+environments:
+  name: Base Environment
+  meta:
+    id: env_56ddf710294ac119b5a84d51dfe3954ea23bb183
+    created: 1730732466802
+    modified: 1794441787827
+    isPrivate: false
+  data:
+    api_base: /api/v2
+    appointment_id: 1000
+    clinic_id: 1000
+    health_id: 100001
+    host: http://127.0.0.1
+    laboratory_id: 1000
+    paidservice_id: 100000
+    patient_id: 100000
+    patientdrugs_id: 100000
+    pharmacy_id: 1001
+    port: :8080
+    prescription_id: 100000
+    prescriptions_id: 1000
+    provider_id: 1000
+    provider_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3OTcwMzM1ODIsImdyb3VwIjoicHJvdmlkZXJzIiwiaWF0IjoxNzk0NDQxNTgyLCJpcF9hZGRyZXNzIjoiMTI3LjAuMC4xIiwiaXNzIjoiUHJvamVjdFZhbGhhbGxhIiwianRpIjoiMTAwMCIsImxsb2R0IjoiMjAyNi0xMS0xMSAxODo1OTo0Mi0wNSIsInN1YiI6InByb3ZpZGVyIn0.0Z3OH4RJ9iUEuhBJgUAxWZgMB86QMm0j9YFP2kCTI3Q
+    radiologycenter_id: 1000
+    reports_id: 100022
+    request_id: 100000
+    user_id: 1000
+    user_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3OTcwMzM3ODAsImdyb3VwIjoidXNlcnMiLCJpYXQiOjE3OTQ0NDE3ODAsImlwX2FkZHJlc3MiOiIxMjcuMC4wLjEiLCJpc3MiOiJQcm9qZWN0VmFsaGFsbGEiLCJqdGkiOiIxMDAwIiwibGxvZHQiOiIyMDI2LTExLTExIDE5OjAzOjAwLTA1Iiwic3ViIjoidXNlcjEifQ.zrFqYu9AKJ2oO-ShGfDU0WWdCbdN64ol44PUNH0Xgmg
+    visit_id: 100000
