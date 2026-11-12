@@ -37,6 +37,83 @@ def payload(name, **override):
         text = text.replace("{{%s}}" % k, v)
     return json.loads(text)
 
+def _parse_init_sql(path):
+    """Parse init.sql's CREATE TABLE statements into {table: {not_null, fk, has_default}}.
+    Used to tell genuinely-required columns (NOT NULL, no DEFAULT) and association ids
+    (REFERENCES, no DEFAULT) apart from columns the database will happily default for us -
+    so the generated schemas' "required" lists match what the server actually demands,
+    not every key the example payload happens to send.
+    """
+    try:
+        sql = open(path, encoding="utf-8").read()
+    except OSError:
+        return {}
+    tables = {}
+    for m in re.finditer(r"CREATE TABLE(?:\s+IF NOT EXISTS)?\s+(\w+)\s*\((.*?)\n\);", sql, re.S):
+        tname, body = m.group(1), m.group(2)
+        not_null, fk, has_default = set(), set(), set()
+        for line in body.split("\n"):
+            line = line.strip().rstrip(",")
+            if not line:
+                continue
+            colm = re.match(r"(\w+)\s+", line)
+            if not colm:
+                continue
+            col = colm.group(1)
+            up = line.upper()
+            if col == "id" or up.startswith(("PRIMARY KEY", "FOREIGN KEY", "UNIQUE", "CHECK")):
+                continue
+            has_def = "DEFAULT" in up
+            if has_def:
+                has_default.add(col)
+            if "REFERENCES" in up and not has_def:
+                fk.add(col)
+            if "NOT NULL" in up and not has_def:
+                not_null.add(col)
+        tables[tname] = {"not_null": not_null, "fk": fk, "has_default": has_default}
+    return tables
+
+TABLES = _parse_init_sql(os.path.join(PROJECT, "init.sql"))
+
+# The six "one JSONB blob per parent record" tables: their sole payload column has a SQL DEFAULT
+# (so the NOT-NULL/REFERENCES rule below would call it optional) but it's the entire reason the
+# endpoint exists, so it's always required on create/update regardless of the column's default.
+SOLE_PAYLOAD_COLUMN = {
+    "patients_health": "health", "patients_drugs": "drugs", "patients_reports": "reports",
+    "clinics_paidservices": "paidservices", "clinics_requests": "requests", "clinics_prescriptions": "prescriptions",
+}
+
+# Maps every table-backed request-body schema name to the table whose columns decide which of its
+# keys are genuinely required. Schemas not listed here (Login, Search, ReadRequest, Staff...) keep
+# the "every example key is required" behaviour from infer(), since they aren't a direct column mirror.
+SCHEMA_TABLE = {
+    "ProvidersCreate": "providers", "ProvidersUpdate": "providers",
+    "UsersCreate": "users", "UsersUpdate": "users",
+    "ClinicsCreate": "clinics", "ClinicsUpdate": "clinics",
+    "PharmaciesCreate": "pharmacies", "PharmaciesUpdate": "pharmacies",
+    "LaboratoriesCreate": "laboratories", "LaboratoriesUpdate": "laboratories",
+    "RadiologycentersCreate": "radiologycenters", "RadiologycentersUpdate": "radiologycenters",
+    "PatientCreate": "patients", "PatientUpdate": "patients",
+    "HealthCreate": "patients_health", "HealthUpdate": "patients_health",
+    "PatientdrugsCreate": "patients_drugs", "PatientdrugsUpdate": "patients_drugs",
+    "ReportsCreate": "patients_reports", "ReportsUpdate": "patients_reports",
+    "VisitCreate": "clinics_visits", "VisitUpdate": "clinics_visits",
+    "RequestsCreate": "clinics_requests", "RequestsUpdate": "clinics_requests",
+    "PrescriptionsCreate": "clinics_prescriptions", "PrescriptionsUpdate": "clinics_prescriptions",
+    "PaidservicesCreate": "clinics_paidservices", "PaidservicesUpdate": "clinics_paidservices",
+    "AppointmentCreate": "clinics_appointments", "AppointmentUpdate": "clinics_appointments",
+}
+
+def required_keys_for_table(table, keys):
+    """Of an example body's keys, return the ones the SQL schema (or the sole-payload-column
+    override above) actually demands: the record's own id, a NOT-NULL column with no DEFAULT,
+    or a REFERENCES column with no DEFAULT (an association id - nullable in SQL, but not a
+    request anyone would actually make without it)."""
+    info = TABLES.get(table, {})
+    not_null, fk = info.get("not_null", set()), info.get("fk", set())
+    sole = SOLE_PAYLOAD_COLUMN.get(table)
+    return [k for k in keys if k == "id" or k in not_null or k in fk or k == sole]
+
 FIELD_DOC = {
     "avatar": "URL of the profile picture.", "active": "Whether the account is active on creation.",
     "language": "Preferred language code, e.g. `en`.", "username": "Unique login name.", "password": "Account password (plain text over TLS; stored hashed).",
@@ -72,6 +149,12 @@ def infer(value, key=None):
         s = {"type": "array", "items": infer(value[0]) if value else {}}
     elif isinstance(value, dict):
         s = {"type": "object", "properties": {k: infer(v, k) for k, v in value.items()}}
+        if value:
+            # Every example body here is a real, accepted request - its keys are what the server
+            # actually requires. Without this, Schemathesis (and any other schema-driven client)
+            # treats "{}" as a schema-valid request for every endpoint, since nothing says
+            # otherwise, and flags the server's very reasonable "Data is empty" 400 as a bug.
+            s["required"] = list(value.keys())
     else:
         s = {}
     if key and key in FIELD_DOC:
@@ -156,6 +239,21 @@ def add(tag, method, path, summary, description, *, body=None, schema_name=None,
     if body is not None:
         sname = schema_name
         schemas[sname] = infer(body)
+        # Only the top-level body keys are validated against a fixed list by the server; nested
+        # JSONB blobs (health, staff, specialities, examination...) are opaque and accept any keys.
+        schemas[sname]["additionalProperties"] = False
+        if sname in SCHEMA_TABLE:
+            # Override infer()'s blanket "every key is required" with the real required/optional
+            # split derived from init.sql for this table (see required_keys_for_table above).
+            req = required_keys_for_table(SCHEMA_TABLE[sname], body.keys())
+            if req:
+                schemas[sname]["required"] = req
+            else:
+                # No individual field is required, but the server still rejects a literal "{}"
+                # body ("Data is empty") - minProperties says the same thing without naming a
+                # specific key (e.g. VisitUpdate, where every column is nullable with no default).
+                schemas[sname].pop("required", None)
+                schemas[sname]["minProperties"] = 1
         op["requestBody"] = {"required": True, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/" + sname}, "example": body}}}
     r200 = {"description": ok_desc}
     if ok:
@@ -434,7 +532,7 @@ def _flat(sch, prefix=""):
             it = v.get("items", {})
             t = "array of " + it.get("type", "any")
         if v.get("format"): t += " (%s)" % v["format"]
-        rows.append((name, t, "yes" if k in req else "", v.get("description", "")))
+        rows.append((name, t, "yes" if k in req else "no", v.get("description", "")))
         if v.get("type") == "object" and v.get("properties"):
             rows += _flat(v, name + ".")
         elif v.get("type") == "array" and v.get("items", {}).get("type") == "object":

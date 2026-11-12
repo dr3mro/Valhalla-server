@@ -22039,7 +22039,23 @@
             "type": "string",
             "description": "Medical speciality."
           }
-        }
+        },
+        "required": [
+          "language",
+          "username",
+          "password",
+          "fullname",
+          "phone",
+          "email",
+          "country",
+          "city",
+          "address",
+          "dob",
+          "gender",
+          "position",
+          "speciality"
+        ],
+        "additionalProperties": false
       },
       "ProvidersLogin": {
         "type": "object",
@@ -22052,7 +22068,12 @@
             "type": "string",
             "description": "Account password (plain text over TLS; stored hashed)."
           }
-        }
+        },
+        "required": [
+          "username",
+          "password"
+        ],
+        "additionalProperties": false
       },
       "ReadRequest": {
         "type": "object",
@@ -22066,7 +22087,12 @@
             "items": {},
             "description": "Names of the fields to return. The samples always send an empty array."
           }
-        }
+        },
+        "required": [
+          "id",
+          "schema"
+        ],
+        "additionalProperties": false
       },
       "ProvidersUpdate": {
         "type": "object",
@@ -22126,9 +22152,26 @@
                 "type": "integer"
               }
             },
+            "required": [
+              "clinics"
+            ],
             "description": "Map of service type to service id the provider works with."
           }
-        }
+        },
+        "required": [
+          "language",
+          "fullname",
+          "phone",
+          "email",
+          "country",
+          "city",
+          "address",
+          "dob",
+          "gender",
+          "position",
+          "speciality"
+        ],
+        "additionalProperties": false
       },
       "ProvidersSearch": {
         "type": "object",
@@ -22157,7 +22200,16 @@
             "type": "integer",
             "description": "Sort direction (samples use `0`)."
           }
-        }
+        },
+        "required": [
+          "keyword",
+          "filter",
+          "limit",
+          "offset",
+          "order_by",
+          "direction"
+        ],
+        "additionalProperties": false
       },
       "UsersCreate": {
         "type": "object",
@@ -22226,7 +22278,24 @@
             "type": "string",
             "description": "Occupation."
           }
-        }
+        },
+        "required": [
+          "language",
+          "parent",
+          "username",
+          "email",
+          "password",
+          "fullname",
+          "phone",
+          "country",
+          "city",
+          "address",
+          "dob",
+          "gender",
+          "marital",
+          "job"
+        ],
+        "additionalProperties": false
       },
       "UsersLogin": {
         "type": "object",
@@ -22239,7 +22308,12 @@
             "type": "string",
             "description": "Account password (plain text over TLS; stored hashed)."
           }
-        }
+        },
+        "required": [
+          "username",
+          "password"
+        ],
+        "additionalProperties": false
       },
       "UsersUpdate": {
         "type": "object",
@@ -22300,7 +22374,22 @@
             "type": "string",
             "description": "Occupation."
           }
-        }
+        },
+        "required": [
+          "language",
+          "parent",
+          "email",
+          "fullname",
+          "phone",
+          "country",
+          "city",
+          "address",
+          "dob",
+          "gender",
+          "marital",
+          "job"
+        ],
+        "additionalProperties": false
       },
       "UsersSearch": {
         "type": "object",
@@ -22329,7 +22418,16 @@
             "type": "integer",
             "description": "Sort direction (samples use `0`)."
           }
-        }
+        },
+        "required": [
+          "keyword",
+          "filter",
+          "limit",
+          "offset",
+          "order_by",
+          "direction"
+        ],
+        "additionalProperties": false
       },
       "ClinicsCreate": {
         "type": "object",
@@ -22398,9 +22496,23 @@
                 }
               }
             },
+            "required": [
+              "Doctors",
+              "nurses",
+              "assistants"
+            ],
             "description": "Staff members grouped by role. Entries look like `\"<provider id>[:<extra>]\"` as in the sample collection."
           }
-        }
+        },
+        "required": [
+          "name",
+          "country",
+          "city",
+          "address",
+          "admin_id",
+          "owner_id"
+        ],
+        "additionalProperties": false
       },
       "ClinicsUpdate": {
         "type": "object",
@@ -22469,9 +22581,23 @@
                 }
               }
             },
+            "required": [
+              "Doctors",
+              "nurses",
+              "assistants"
+            ],
             "description": "Staff members grouped by role. Entries look like `\"<provider id>[:<extra>]\"` as in the sample collection."
           }
-        }
+        },
+        "required": [
+          "name",
+          "country",
+          "city",
+          "address",
+          "admin_id",
+          "owner_id"
+        ],
+        "additionalProperties": false
       },
       "ClinicsSearch": {
         "type": "object",
@@ -22500,7 +22626,16 @@
             "type": "integer",
             "description": "Sort direction (samples use `0`)."
           }
-        }
+        },
+        "required": [
+          "keyword",
+          "filter",
+          "limit",
+          "offset",
+          "order_by",
+          "direction"
+        ],
+        "additionalProperties": false
       },
       "PharmaciesCreate": {
         "type": "object",
@@ -22562,9 +22697,23 @@
                 }
               }
             },
+            "required": [
+              "Doctors",
+              "nurses",
+              "assistants"
+            ],
             "description": "Staff members grouped by role. Entries look like `\"<provider id>[:<extra>]\"` as in the sample collection."
           }
-        }
+        },
+        "required": [
+          "name",
+          "country",
+          "city",
+          "address",
+          "admin_id",
+          "owner_id"
+        ],
+        "additionalProperties": false
       },
       "PharmaciesUpdate": {
         "type": "object",
@@ -22626,9 +22775,23 @@
                 }
               }
             },
+            "required": [
+              "Doctors",
+              "nurses",
+              "assistants"
+            ],
             "description": "Staff members grouped by role. Entries look like `\"<provider id>[:<extra>]\"` as in the sample collection."
           }
-        }
+        },
+        "required": [
+          "name",
+          "country",
+          "city",
+          "address",
+          "admin_id",
+          "owner_id"
+        ],
+        "additionalProperties": false
       },
       "PharmaciesSearch": {
         "type": "object",
@@ -22657,7 +22820,16 @@
             "type": "integer",
             "description": "Sort direction (samples use `0`)."
           }
-        }
+        },
+        "required": [
+          "keyword",
+          "filter",
+          "limit",
+          "offset",
+          "order_by",
+          "direction"
+        ],
+        "additionalProperties": false
       },
       "LaboratoriesCreate": {
         "type": "object",
@@ -22719,9 +22891,23 @@
                 }
               }
             },
+            "required": [
+              "Doctors",
+              "nurses",
+              "assistants"
+            ],
             "description": "Staff members grouped by role. Entries look like `\"<provider id>[:<extra>]\"` as in the sample collection."
           }
-        }
+        },
+        "required": [
+          "name",
+          "country",
+          "city",
+          "address",
+          "admin_id",
+          "owner_id"
+        ],
+        "additionalProperties": false
       },
       "LaboratoriesUpdate": {
         "type": "object",
@@ -22783,9 +22969,23 @@
                 }
               }
             },
+            "required": [
+              "Doctors",
+              "nurses",
+              "assistants"
+            ],
             "description": "Staff members grouped by role. Entries look like `\"<provider id>[:<extra>]\"` as in the sample collection."
           }
-        }
+        },
+        "required": [
+          "name",
+          "country",
+          "city",
+          "address",
+          "admin_id",
+          "owner_id"
+        ],
+        "additionalProperties": false
       },
       "LaboratoriesSearch": {
         "type": "object",
@@ -22814,7 +23014,16 @@
             "type": "integer",
             "description": "Sort direction (samples use `0`)."
           }
-        }
+        },
+        "required": [
+          "keyword",
+          "filter",
+          "limit",
+          "offset",
+          "order_by",
+          "direction"
+        ],
+        "additionalProperties": false
       },
       "RadiologycentersCreate": {
         "type": "object",
@@ -22876,9 +23085,23 @@
                 }
               }
             },
+            "required": [
+              "Doctors",
+              "nurses",
+              "assistants"
+            ],
             "description": "Staff members grouped by role. Entries look like `\"<provider id>[:<extra>]\"` as in the sample collection."
           }
-        }
+        },
+        "required": [
+          "name",
+          "country",
+          "city",
+          "address",
+          "admin_id",
+          "owner_id"
+        ],
+        "additionalProperties": false
       },
       "RadiologycentersUpdate": {
         "type": "object",
@@ -22940,9 +23163,23 @@
                 }
               }
             },
+            "required": [
+              "Doctors",
+              "nurses",
+              "assistants"
+            ],
             "description": "Staff members grouped by role. Entries look like `\"<provider id>[:<extra>]\"` as in the sample collection."
           }
-        }
+        },
+        "required": [
+          "name",
+          "country",
+          "city",
+          "address",
+          "admin_id",
+          "owner_id"
+        ],
+        "additionalProperties": false
       },
       "RadiologycentersSearch": {
         "type": "object",
@@ -22971,7 +23208,16 @@
             "type": "integer",
             "description": "Sort direction (samples use `0`)."
           }
-        }
+        },
+        "required": [
+          "keyword",
+          "filter",
+          "limit",
+          "offset",
+          "order_by",
+          "direction"
+        ],
+        "additionalProperties": false
       },
       "PatientCreate": {
         "type": "object",
@@ -23016,7 +23262,18 @@
             "type": "string",
             "description": "Occupation."
           }
-        }
+        },
+        "required": [
+          "clinic_id",
+          "fullname",
+          "phone",
+          "city",
+          "dob",
+          "gender",
+          "marital",
+          "job"
+        ],
+        "additionalProperties": false
       },
       "PatientUpdate": {
         "type": "object",
@@ -23057,7 +23314,17 @@
             "type": "string",
             "description": "Occupation."
           }
-        }
+        },
+        "required": [
+          "fullname",
+          "phone",
+          "city",
+          "dob",
+          "gender",
+          "marital",
+          "job"
+        ],
+        "additionalProperties": false
       },
       "PatientSearch": {
         "type": "object",
@@ -23086,7 +23353,16 @@
             "type": "integer",
             "description": "Sort direction (samples use `0`)."
           }
-        }
+        },
+        "required": [
+          "keyword",
+          "filter",
+          "limit",
+          "offset",
+          "order_by",
+          "direction"
+        ],
+        "additionalProperties": false
       },
       "HealthCreate": {
         "type": "object",
@@ -23216,9 +23492,54 @@
                 "description": "Free-text comments."
               }
             },
+            "required": [
+              "past_medical_history",
+              "allergies",
+              "medications",
+              "surgeries",
+              "pregnancy",
+              "breastfeeding",
+              "mammogram",
+              "blood_pressure",
+              "blood_sugar",
+              "family_planning",
+              "hiv",
+              "hepatitis",
+              "renal_disease",
+              "tuberculosis",
+              "cancer",
+              "diabetes",
+              "asthma",
+              "hypertension",
+              "chronic_cardiac_disease",
+              "stroke",
+              "kidney_disease",
+              "liver_disease",
+              "immunizations",
+              "nutrition",
+              "physical_exam",
+              "sleep_apnea",
+              "mental_health",
+              "tobacco_smoking",
+              "alcohol",
+              "drugs",
+              "other",
+              "pregnancy_complications",
+              "past_treatments",
+              "family_history",
+              "vaccinations",
+              "other_treatments",
+              "comments"
+            ],
             "description": "Object of health-history answers (the sample sends `\"No\"` for each key)."
           }
-        }
+        },
+        "required": [
+          "id",
+          "clinic_id",
+          "health"
+        ],
+        "additionalProperties": false
       },
       "HealthUpdate": {
         "type": "object",
@@ -23340,9 +23661,52 @@
                 "description": "Free-text comments."
               }
             },
+            "required": [
+              "past_medical_history",
+              "allergies",
+              "medications",
+              "surgeries",
+              "pregnancy",
+              "breastfeeding",
+              "mammogram",
+              "blood_pressure",
+              "blood_sugar",
+              "family_planning",
+              "hiv",
+              "hepatitis",
+              "renal_disease",
+              "tuberculosis",
+              "cancer",
+              "diabetes",
+              "asthma",
+              "hypertension",
+              "chronic_cardiac_disease",
+              "stroke",
+              "kidney_disease",
+              "liver_disease",
+              "immunizations",
+              "nutrition",
+              "physical_exam",
+              "sleep_apnea",
+              "mental_health",
+              "tobacco_smoking",
+              "alcohol",
+              "drugs",
+              "other",
+              "pregnancy_complications",
+              "past_treatments",
+              "family_history",
+              "vaccinations",
+              "other_treatments",
+              "comments"
+            ],
             "description": "Object of health-history answers (the sample sends `\"No\"` for each key)."
           }
-        }
+        },
+        "required": [
+          "health"
+        ],
+        "additionalProperties": false
       },
       "PatientdrugsCreate": {
         "type": "object",
@@ -23398,11 +23762,31 @@
                   "type": "string",
                   "description": "Free-text comments."
                 }
-              }
+              },
+              "required": [
+                "name",
+                "dosage",
+                "frequency",
+                "duration",
+                "route",
+                "quantity",
+                "start_date",
+                "end_date",
+                "prescription",
+                "dispense",
+                "other",
+                "comments"
+              ]
             },
             "description": "List of drug entries."
           }
-        }
+        },
+        "required": [
+          "id",
+          "clinic_id",
+          "drugs"
+        ],
+        "additionalProperties": false
       },
       "PatientdrugsUpdate": {
         "type": "object",
@@ -23450,11 +23834,29 @@
                   "type": "string",
                   "description": "Free-text comments."
                 }
-              }
+              },
+              "required": [
+                "name",
+                "dosage",
+                "frequency",
+                "duration",
+                "route",
+                "quantity",
+                "start_date",
+                "end_date",
+                "prescription",
+                "dispense",
+                "other",
+                "comments"
+              ]
             },
             "description": "List of drug entries."
           }
-        }
+        },
+        "required": [
+          "drugs"
+        ],
+        "additionalProperties": false
       },
       "ReportsCreate": {
         "type": "object",
@@ -23485,11 +23887,23 @@
                 "result": {
                   "type": "string"
                 }
-              }
+              },
+              "required": [
+                "report_type",
+                "name",
+                "date",
+                "result"
+              ]
             },
             "description": "List of report entries."
           }
-        }
+        },
+        "required": [
+          "id",
+          "clinic_id",
+          "reports"
+        ],
+        "additionalProperties": false
       },
       "ReportsUpdate": {
         "type": "object",
@@ -23512,11 +23926,21 @@
                 "result": {
                   "type": "string"
                 }
-              }
+              },
+              "required": [
+                "report_type",
+                "name",
+                "date",
+                "result"
+              ]
             },
             "description": "List of report entries."
           }
-        }
+        },
+        "required": [
+          "reports"
+        ],
+        "additionalProperties": false
       },
       "VisitCreate": {
         "type": "object",
@@ -23583,6 +24007,19 @@
                 "type": "string"
               }
             },
+            "required": [
+              "BP",
+              "pulse",
+              "temperature",
+              "respiration",
+              "oxygen_saturation",
+              "weight",
+              "height",
+              "comments",
+              "Examination",
+              "Other",
+              "Notes"
+            ],
             "description": "Free-form object of examination findings (vital signs etc.)."
           },
           "diagnosis": {
@@ -23593,7 +24030,12 @@
             "type": "string",
             "description": "Free-text comments."
           }
-        }
+        },
+        "required": [
+          "patient_id",
+          "clinic_id"
+        ],
+        "additionalProperties": false
       },
       "VisitUpdate": {
         "type": "object",
@@ -23652,6 +24094,19 @@
                 "type": "string"
               }
             },
+            "required": [
+              "BP",
+              "pulse",
+              "temperature",
+              "respiration",
+              "oxygen_saturation",
+              "weight",
+              "height",
+              "comments",
+              "Examination",
+              "Other",
+              "Notes"
+            ],
             "description": "Free-form object of examination findings (vital signs etc.)."
           },
           "diagnosis": {
@@ -23662,7 +24117,9 @@
             "type": "string",
             "description": "Free-text comments."
           }
-        }
+        },
+        "additionalProperties": false,
+        "minProperties": 1
       },
       "RequestsCreate": {
         "type": "object",
@@ -23693,11 +24150,23 @@
                 "media": {
                   "type": "string"
                 }
-              }
+              },
+              "required": [
+                "name",
+                "date",
+                "result",
+                "media"
+              ]
             },
             "description": "List of requested investigations."
           }
-        }
+        },
+        "required": [
+          "id",
+          "clinic_id",
+          "requests"
+        ],
+        "additionalProperties": false
       },
       "RequestsUpdate": {
         "type": "object",
@@ -23720,11 +24189,21 @@
                 "media": {
                   "type": "string"
                 }
-              }
+              },
+              "required": [
+                "name",
+                "date",
+                "result",
+                "media"
+              ]
             },
             "description": "List of requested investigations."
           }
-        }
+        },
+        "required": [
+          "requests"
+        ],
+        "additionalProperties": false
       },
       "PrescriptionsCreate": {
         "type": "object",
@@ -23780,11 +24259,31 @@
                   "type": "string",
                   "description": "Free-text comments."
                 }
-              }
+              },
+              "required": [
+                "name",
+                "dosage",
+                "frequency",
+                "duration",
+                "route",
+                "quantity",
+                "start_date",
+                "end_date",
+                "prescription",
+                "dispense",
+                "other",
+                "comments"
+              ]
             },
             "description": "List of prescribed drugs."
           }
-        }
+        },
+        "required": [
+          "id",
+          "clinic_id",
+          "prescriptions"
+        ],
+        "additionalProperties": false
       },
       "PrescriptionsUpdate": {
         "type": "object",
@@ -23832,11 +24331,29 @@
                   "type": "string",
                   "description": "Free-text comments."
                 }
-              }
+              },
+              "required": [
+                "name",
+                "dosage",
+                "frequency",
+                "duration",
+                "route",
+                "quantity",
+                "start_date",
+                "end_date",
+                "prescription",
+                "dispense",
+                "other",
+                "comments"
+              ]
             },
             "description": "List of prescribed drugs."
           }
-        }
+        },
+        "required": [
+          "prescriptions"
+        ],
+        "additionalProperties": false
       },
       "PaidservicesCreate": {
         "type": "object",
@@ -23864,11 +24381,22 @@
                 "amount": {
                   "type": "string"
                 }
-              }
+              },
+              "required": [
+                "name",
+                "date",
+                "amount"
+              ]
             },
             "description": "List of paid services."
           }
-        }
+        },
+        "required": [
+          "id",
+          "clinic_id",
+          "paidservices"
+        ],
+        "additionalProperties": false
       },
       "PaidservicesUpdate": {
         "type": "object",
@@ -23888,11 +24416,20 @@
                 "amount": {
                   "type": "string"
                 }
-              }
+              },
+              "required": [
+                "name",
+                "date",
+                "amount"
+              ]
             },
             "description": "List of paid services."
           }
-        }
+        },
+        "required": [
+          "paidservices"
+        ],
+        "additionalProperties": false
       },
       "AppointmentCreate": {
         "type": "object",
@@ -23961,7 +24498,28 @@
             "type": "string",
             "description": "e.g. `pending`."
           }
-        }
+        },
+        "required": [
+          "clinic_id",
+          "user_id",
+          "provider_id",
+          "appointment_date",
+          "appointment_time",
+          "appointment_duration",
+          "appointment_reason",
+          "appointment_note",
+          "appointment_payment_transaction_id",
+          "appointment_payment_transaction_status",
+          "appointment_payment_method",
+          "appointment_payment_currency",
+          "appointment_payment_date",
+          "appointment_payment_time",
+          "appointment_payment_amount",
+          "appointment_payment_status",
+          "appointment_type",
+          "appointment_status"
+        ],
+        "additionalProperties": false
       },
       "AppointmentRead": {
         "type": "object",
@@ -23983,7 +24541,14 @@
             "items": {},
             "description": "Names of the fields to return. The samples always send an empty array."
           }
-        }
+        },
+        "required": [
+          "id",
+          "provider_id",
+          "clinic_id",
+          "schema"
+        ],
+        "additionalProperties": false
       },
       "AppointmentUpdate": {
         "type": "object",
@@ -24052,7 +24617,28 @@
             "type": "string",
             "description": "e.g. `pending`."
           }
-        }
+        },
+        "required": [
+          "user_id",
+          "clinic_id",
+          "provider_id",
+          "appointment_date",
+          "appointment_time",
+          "appointment_duration",
+          "appointment_reason",
+          "appointment_note",
+          "appointment_payment_status",
+          "appointment_payment_method",
+          "appointment_payment_amount",
+          "appointment_payment_currency",
+          "appointment_payment_date",
+          "appointment_payment_time",
+          "appointment_payment_transaction_id",
+          "appointment_payment_transaction_status",
+          "appointment_type",
+          "appointment_status"
+        ],
+        "additionalProperties": false
       },
       "StaffInvite": {
         "type": "object",
@@ -24081,7 +24667,16 @@
             "type": "string",
             "description": "Name of the entity (used in the invite e-mail)."
           }
-        }
+        },
+        "required": [
+          "nominee_id",
+          "entity_id",
+          "role",
+          "email",
+          "nominee_group",
+          "entity_name"
+        ],
+        "additionalProperties": false
       },
       "StaffAdd": {
         "type": "object",
@@ -24114,9 +24709,21 @@
                 "description": "Name of the entity (used in the invite e-mail)."
               }
             },
+            "required": [
+              "nominee_id",
+              "entity_id",
+              "role",
+              "email",
+              "nominee_group",
+              "entity_name"
+            ],
             "description": "Staff data object."
           }
-        }
+        },
+        "required": [
+          "payload"
+        ],
+        "additionalProperties": false
       },
       "StaffRemove": {
         "type": "object",
@@ -24153,9 +24760,22 @@
                 "description": "Name of the entity (used in the invite e-mail)."
               }
             },
+            "required": [
+              "nominee_id",
+              "entity_id",
+              "role",
+              "email",
+              "nominee_group",
+              "entity_name"
+            ],
             "description": "Staff data object."
           }
-        }
+        },
+        "required": [
+          "id",
+          "payload"
+        ],
+        "additionalProperties": false
       }
     },
     "securitySchemes": {

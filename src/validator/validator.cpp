@@ -59,8 +59,12 @@ bool Validator::validateDatabaseCreateSchema(const std::string &tablename, const
     }
     catch (const std::exception &e)
     {
+        // Everything in the try block above only ever touches the client-supplied `data` and the
+        // static table schema (no DB/network I/O), so any exception reaching here (jsoncons
+        // throwing "Not an object" for a non-object body, e.g.) is a malformed-input problem on
+        // the client's side, not a server fault - report it as 400, not 500.
         error.message = e.what();
-        error.code    = api::v2::Http::Status::INTERNAL_SERVER_ERROR;
+        error.code    = api::v2::Http::Status::BAD_REQUEST;
         return false;
     }
 
@@ -100,8 +104,10 @@ bool Validator::validateDatabaseUpdateSchema(const std::string &tablename, const
     }
     catch (const std::exception &e)
     {
+        // Same reasoning as validateDatabaseCreateSchema's catch above: nothing in this try block
+        // can fail for a genuine server-side reason, only for malformed client input.
         error.message = e.what();
-        error.code    = api::v2::Http::Status::INTERNAL_SERVER_ERROR;
+        error.code    = api::v2::Http::Status::BAD_REQUEST;
         return false;
     }
 

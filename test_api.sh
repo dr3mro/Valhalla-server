@@ -93,6 +93,7 @@ step() {
 		FAILED="${FAILED}  - ${name} (${method} ${path%%\?*}): got ${STATUS}, expected ${expect}"$'\n'
 		printf '  %s✗%s %s %-7s %s (expected %s)\n' "$R" "$N" "$STATUS" "$method" "$name" "$expect"
 		printf '      %s\n' "$(printf '%s' "$LAST" | head -c 400)"
+		[[ -n $payload && $payload != "@empty" ]] && printf '      payload: %s\n' "$(printf '%s' "$payload" | head -c 1000)"
 		[[ -s $TMP/err ]] && printf '      curl: %s\n' "$(cat "$TMP/err")"
 	fi
 	return 0

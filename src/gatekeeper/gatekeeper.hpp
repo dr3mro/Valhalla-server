@@ -8,6 +8,7 @@
 #include <optional>
 #include <string>
 #include <string_view>
+#include <vector>
 
 #include "gatekeeper/dosdetector/dosdetector.hpp"
 #include "gatekeeper/permissionmanager/permissionmanager.hpp"
@@ -61,6 +62,9 @@ namespace api::v2
         DOSDetector::Status isDosAttack(const DOSDetector::Request& request);
 
         [[nodiscard]] static bool isQuerySqlInjection(const std::string& query);
+        [[nodiscard]] static bool isQuerySqlInjection(const std::string& query, const std::vector<std::string>& params);
+        // "Predicted" query: $1, $2, ... replaced by the quoted bound values, for detection only.
+        [[nodiscard]] static std::string buildDetectionQuery(const std::string& query, const std::vector<std::string>& params);
 
        private:
         std::optional<jsoncons::json>     parse_data(std::string_view data, std::string& message, bool& success);

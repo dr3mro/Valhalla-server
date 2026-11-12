@@ -31,7 +31,30 @@ void ClinicController<T>::CreateImpl(CALLBACK_ &&callback, const Requester &&req
             return;
         }
 
-        std::optional<uint64_t> id = request_json.at("id").as<uint64_t>();
+        // A body that simply omits "id" (e.g. {"reports": [...], "clinic_id": ...}) is a client
+        // mistake, not a server failure - .at("id") below throws "Key not found" for exactly that
+        // case, and validateDatabaseCreateSchema() above was told to ignore a missing "id" (see
+        // `rule`), so it has to be checked explicitly here before the .at() call, or it falls
+        // through uncaught into the generic 500 handler below.
+        if (!request_json.contains("id"))
+        {
+            callback(api::v2::Http::Status::BAD_REQUEST, "id not provided.");
+            return;
+        }
+        // A fuzzer-sized "id" (e.g. 33689528311627667466646192128, far past UINT64_MAX) makes
+        // jsoncons' .as<uint64_t>() throw "Integer overflow" rather than just failing to convert -
+        // that's still a malformed-client-input case, not a server fault, so it needs its own catch
+        // here rather than falling through to the generic 500 handler below.
+        std::optional<uint64_t> id;
+        try
+        {
+            id = request_json.at("id").as<uint64_t>();
+        }
+        catch (const std::exception &)
+        {
+            callback(api::v2::Http::Status::BAD_REQUEST, "id must be a non-negative integer that fits in 64 bits.");
+            return;
+        }
         if (!id.has_value())
         {
             callback(api::v2::Http::Status::BAD_REQUEST, "id not provided.");

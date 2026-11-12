@@ -32,11 +32,12 @@ namespace api::v2::MiddleWares
                     auto end_time   = std::chrono::steady_clock::now();
                     auto elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
                     // Log the elapsed time
-                    LOG_INFO << fmt::format(": {}{}{}{}{}", fmt::format(fmt::fg(fmt::color::orange), fmt::format("[{} ms] ", elapsed_ms)),
-                        fmt::format(fmt::fg(fmt::color::yellow), fmt::format("[{}]", req->getPeerAddr().toIp())),
-                        fmt::format(fmt::fg(fmt::color::red), fmt::format("[{}]", req->getMethodString())),
-                        fmt::format(fmt::fg(fmt::color::magenta), fmt::format("[{}]", static_cast<int>(resp->getStatusCode()))),
-                        fmt::format(fmt::fg(fmt::color::cyan), fmt::format("[{}]", req->path())));
+                    LOG_INFO << fmt::format(": {}{}{}{}{}",
+                        fmt::styled(fmt::format("[{} ms] ", elapsed_ms), fmt::fg(fmt::color::orange)),
+                        fmt::styled(fmt::format("[{}]", req->getPeerAddr().toIp()), fmt::fg(fmt::color::yellow)),
+                        fmt::styled(fmt::format("[{}]", req->getMethodString()), fmt::fg(fmt::color::red)),
+                        fmt::styled(fmt::format("[{}]", static_cast<int>(resp->getStatusCode())), fmt::fg(fmt::color::magenta)),
+                        fmt::styled(fmt::format("[{}]", req->path()), fmt::fg(fmt::color::cyan)));
                     std::move(mcb)(resp);
                 });
         }

@@ -98,7 +98,8 @@ class Controller
             if (query.has_value())
             {
                 bool isSqlInjection      = false;
-                query_results_json_array = databaseController->executeSearchQuery(query.value(), isSqlInjection, entity.getSqlParams());
+                query_results_json_array = databaseController->executeSearchQuery(
+                    query.value(), isSqlInjection, entity.getSqlParams(), GateKeeper::buildDetectionQuery(query.value(), entity.getSqlParamValues()));
 
                 if (isSqlInjection)
                 {
@@ -211,8 +212,8 @@ class Controller
 
    private:
     std::shared_ptr<DatabaseController> databaseController;
-    std::optional<jsoncons::json> (DatabaseController::*dbexec)(const std::string &, bool &, const pqxx::params &)  = &DatabaseController::executeQuery;
-    std::optional<jsoncons::json> (DatabaseController::*dbrexec)(const std::string &, bool &, const pqxx::params &) = &DatabaseController::executeReadQuery;
+    std::optional<jsoncons::json> (DatabaseController::*dbexec)(const std::string &, bool &, const pqxx::params &, const std::string &)  = &DatabaseController::executeQuery;
+    std::optional<jsoncons::json> (DatabaseController::*dbrexec)(const std::string &, bool &, const pqxx::params &, const std::string &) = &DatabaseController::executeReadQuery;
 
    protected:
     template <typename T>
@@ -260,7 +261,7 @@ class Controller
     bool get_sql_statement(std::optional<std::string> &query, T &entity, S &sqlstatement, std::string &error)
     {
         query = (entity.*sqlstatement)();
-        if (query.has_value() && GateKeeper::isQuerySqlInjection(query.value()))
+        if (query.has_value() && GateKeeper::isQuerySqlInjection(GateKeeper::buildDetectionQuery(query.value(), entity.getSqlParamValues())))
         {
             error = "A Sql Injection pattern is detected in generated query.";
             return false;
@@ -275,7 +276,7 @@ class Controller
     }
 
     template <typename S, typename T>
-    void cruds(T &entity, S &sqlstatement, std::optional<jsoncons::json> (DatabaseController::*func)(const std::string &, bool &, const pqxx::params &), CALLBACK_ &&callback)
+    void cruds(T &entity, S &sqlstatement, std::optional<jsoncons::json> (DatabaseController::*func)(const std::string &, bool &, const pqxx::params &, const std::string &), CALLBACK_ &&callback)
     {
         std::optional<jsoncons::json> results_j;
         std::optional<std::string>    query;
@@ -291,7 +292,8 @@ class Controller
             if (query.has_value())
             {
                 bool isSqlInjection = false;
-                results_j           = (*databaseController.*func)(query.value(), isSqlInjection, entity.getSqlParams());
+                results_j           = (*databaseController.*func)(
+                    query.value(), isSqlInjection, entity.getSqlParams(), GateKeeper::buildDetectionQuery(query.value(), entity.getSqlParamValues()));
                 if (results_j.has_value())
                 {
                     if (!results_j->empty())

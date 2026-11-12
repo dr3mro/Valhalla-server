@@ -43,7 +43,7 @@ class Entity : public Base
 
     std::optional<std::string> getSqlCreateStatement() override
     {
-        sql_params_ = {};
+        resetSqlParams();
         try
         {
             std::vector<std::string> keys_arr;
@@ -62,7 +62,7 @@ class Entity : public Base
             for (size_t i = 1; i <= values_arr.size(); ++i)
                 placeholders.push_back(fmt::format("${}", i));
             for (const auto &v : values_arr)
-                sql_params_.append(v);
+                addSqlParam(v);
 
             std::string columns = fmt::format("{}", fmt::join(keys_arr, ","));
             return fmt::format("INSERT INTO {} ({}) VALUES ({}) RETURNING *;", tablename, columns, fmt::join(placeholders, ","));
@@ -77,7 +77,7 @@ class Entity : public Base
 
     std::optional<std::string> getSqlReadStatement() override
     {
-        sql_params_ = {};
+        resetSqlParams();
         std::optional<std::string> query;
         try
         {
@@ -103,7 +103,7 @@ class Entity : public Base
 
     std::optional<std::string> getSqlUpdateStatement() override
     {
-        sql_params_ = {};
+        resetSqlParams();
         try
         {
             jsoncons::json payload = std::get<Update_t>(data).get_data();
@@ -121,7 +121,7 @@ class Entity : public Base
             for (auto it = payload.object_range().begin(); it != payload.object_range().end(); ++it)
             {
                 set_clauses.push_back(fmt::format("{} = ${}", it->key(), param_idx++));
-                sql_params_.append(it->value().as<std::string>());
+                addSqlParam(it->value().as<std::string>());
             }
 
             return fmt::format("UPDATE {} SET {} WHERE id={} RETURNING *;", tablename, fmt::join(set_clauses, ", "), _id.value());
@@ -136,7 +136,7 @@ class Entity : public Base
 
     std::optional<std::string> getSqlDeleteStatement() override
     {
-        sql_params_ = {};
+        resetSqlParams();
         std::optional<std::string> query;
         std::optional<uint64_t>    _id;
 
@@ -162,11 +162,11 @@ class Entity : public Base
 
     std::optional<std::string> getSqlSearchStatement() override
     {
-        sql_params_ = {};
+        resetSqlParams();
         try
         {
             Search_t searchdata = std::get<Search_t>(getData());
-            sql_params_.append(fmt::format("%{}%", searchdata.keyword));
+            addSqlParam(fmt::format("%{}%", searchdata.keyword));
             return fmt::format(
                 "SELECT * FROM {}_safe WHERE {}::text ILIKE $1 ORDER BY {} {} "
                 "LIMIT {} OFFSET {};",

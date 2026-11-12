@@ -29,6 +29,13 @@ OUT_DIR="${OUT_DIR:-$ROOT/schemathesis-results}"
 MAX_EXAMPLES="${MAX_EXAMPLES:-50}"
 MAX_TIME="${MAX_TIME:-300}"
 CHECKS="${CHECKS:-all}"
+# positive_data_acceptance (ST202 "Schema-valid request rejected") assumes a request that matches
+# the OpenAPI schema should always be accepted. That holds for pure data-shape validation, but this
+# API has business rules no JSON Schema can express - "Delete is NOT implemented for entity type
+# ...", "Initial service admin_id and owner_id should be equal to that of provider_id", SQL
+# injection pattern detection, and the like - which schemathesis's fuzzer will always eventually
+# trip and flag as a false positive. Excluded by default; run with EXCLUDE_CHECKS= (empty) to see them again.
+EXCLUDE_CHECKS="${EXCLUDE_CHECKS-positive_data_acceptance}"
 EXTRA_ARGS="${EXTRA_ARGS:-}"
 # Logout (/clients/{type}/logout) really does kill the session server-side (GateKeeper::logout ->
 # SessionManager::removeSession). We log in ONCE and hand Schemathesis that single token for every
@@ -96,6 +103,7 @@ st run "$SPEC" \
 	--url "$BASE_URL" \
 	-H "Authorization: Bearer $TOKEN" \
 	--checks="$CHECKS" \
+	${EXCLUDE_CHECKS:+--exclude-checks="$EXCLUDE_CHECKS"} \
 	--max-examples="$MAX_EXAMPLES" \
 	--max-time="$MAX_TIME" \
 	--exclude-path-regex "$EXCLUDE_PATH_REGEX" \

@@ -34,6 +34,15 @@ set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -O2")
 
 add_compile_options(-fdiagnostics-color=always -fdiagnostics-show-option)
 
+# Cargo-like diagnostics: carets, ranges, unicode art, template trees
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 13)
+  add_compile_options(-fdiagnostics-text-art-charset=unicode
+                      -fdiagnostics-show-caret -fdiagnostics-show-labels)
+elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-fcolor-diagnostics -fdiagnostics-show-template-tree
+                      -fdiagnostics-fixit-info -fcaret-diagnostics-max-lines=0)
+endif()
+
 # set(CMAKE_C_CLANG_TIDY clang-tidy -checks=-*,readability-*)
 # set(CMAKE_CXX_CLANG_TIDY clang-tidy -checks=-*,readability-*)
 

@@ -45,7 +45,7 @@ namespace api
 
             std::optional<std::string> getSqlCreateStatement() final
             {
-                sql_params_ = {};
+                resetSqlParams();
                 auto clientdata = std::get<Types::CreateClient_t>(getData());
 
                 try
@@ -63,7 +63,7 @@ namespace api
                     for (size_t i = 1; i <= values_arr.size(); ++i)
                         placeholders.push_back(fmt::format("${}", i));
                     for (const auto &v : values_arr)
-                        sql_params_.append(v);
+                        addSqlParam(v);
 
                     std::string columns = fmt::format("{}", fmt::join(keys_arr, ","));
                     return fmt::format("INSERT INTO {} ({}) VALUES ({}) RETURNING id;", tablename, columns, fmt::join(placeholders, ","));
@@ -78,7 +78,7 @@ namespace api
 
             std::optional<std::string> getSqlUpdateStatement() final
             {
-                sql_params_ = {};
+                resetSqlParams();
                 try
                 {
                     auto clientdata = std::get<Types::UpdateClient_t>(getData()).get_data_set();
@@ -95,7 +95,7 @@ namespace api
                     for (auto it = clientdata.begin(); it != clientdata.end(); ++it)
                     {
                         set_clauses.push_back(fmt::format("{} = ${}", it->first, param_idx++));
-                        sql_params_.append(it->second);
+                        addSqlParam(it->second);
                     }
 
                     return fmt::format("UPDATE {} SET {} WHERE id={} RETURNING id;", tablename, fmt::join(set_clauses, ", "), client_id.value());

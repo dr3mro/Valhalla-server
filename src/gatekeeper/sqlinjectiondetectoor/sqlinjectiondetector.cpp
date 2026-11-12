@@ -17,13 +17,15 @@ std::vector<std::string> SqlInjectionDetector::riskyKeywords;
 void SqlInjectionDetector::initialize()
 {
     // Initialize common SQL injection patterns
-    std::vector<std::regex> suspiciousPatterns = {
+    suspiciousPatterns = {
         // Existing patterns
         std::regex(R"('\s*OR\s+'1'\s*=\s*'1)", std::regex_constants::icase), std::regex(R"('\s*OR\s+1\s*=\s*1)", std::regex_constants::icase),
         std::regex(R"('\s*OR\s+'a'\s*=\s*'a)", std::regex_constants::icase), std::regex("--\\s*$"),
-        std::regex(";\\s*DROP\\s+TABLE", std::regex_constants::icase), std::regex("UNION\\s+ALL\\s+SELECT", std::regex_constants::icase),
-        std::regex("UNION\\s+SELECT", std::regex_constants::icase), std::regex("INTO\\s+OUTFILE", std::regex_constants::icase),
-        std::regex("LOAD_FILE", std::regex_constants::icase),
+        std::regex(";\\s*DROP\\s+TABLE", std::regex_constants::icase),
+        // UNION patterns disabled: the app's own queries (e.g. provider/user services) legitimately use UNION ALL SELECT.
+        // std::regex("UNION\\s+ALL\\s+SELECT", std::regex_constants::icase),
+        // std::regex("UNION\\s+SELECT", std::regex_constants::icase),
+        std::regex("INTO\\s+OUTFILE", std::regex_constants::icase), std::regex("LOAD_FILE", std::regex_constants::icase),
 
         // Additional patterns
         std::regex("';\\s*--", std::regex_constants::icase),                             // Single quote followed by comment
@@ -84,6 +86,51 @@ bool SqlInjectionDetector::isQuerySqlInjection(const std::string& query)
     }
 
     return isSqlInjection;
+}
+
+std::string SqlInjectionDetector::buildDetectionQuery(const std::string& query, const std::vector<std::string>& params)
+{
+    std::string out;
+    out.reserve(query.size() + params.size() * 16);
+
+    for (size_t i = 0; i < query.size(); ++i)
+    {
+        if (query[i] == '$' && i + 1 < query.size() && (std::isdigit(static_cast<unsigned char>(query[i + 1])) != 0))
+        {
+            size_t j   = i + 1;
+            size_t idx = 0;
+            while (j < query.size() && (std::isdigit(static_cast<unsigned char>(query[j])) != 0))
+            {
+                idx = idx * 10 + static_cast<size_t>(query[j] - '0');
+                ++j;
+            }
+
+            if (idx >= 1 && idx <= params.size())
+            {
+                // Quote it the way an inlined SQL literal would look (' doubled), so a payload such as
+                // "' OR 1=1 --" shows up in the string exactly as it would if it had been concatenated.
+                out += '\'';
+                for (const char ch : params[idx - 1])
+                {
+                    out += ch;
+                    if (ch == '\'')
+                    {
+                        out += '\'';
+                    }
+                }
+                out += '\'';
+                i = j - 1;
+                continue;
+            }
+        }
+        out += query[i];
+    }
+    return out;
+}
+
+bool SqlInjectionDetector::isQuerySqlInjection(const std::string& query, const std::vector<std::string>& params)
+{
+    return isQuerySqlInjection(buildDetectionQuery(query, params));
 }
 
 void SqlInjectionDetector::addCustomPattern(const std::string& pattern)
@@ -218,14 +265,16 @@ bool SqlInjectionDetector::hasRiskyKeywords(const std::string& query)
     std::string upperQuery = query;
     std::ranges::transform(upperQuery, upperQuery.begin(), ::toupper);
 
+    // '_' counts as part of a word, so identifiers such as sleep_apnea or system_id are not keyword hits.
+    const auto isWordChar = [](char c) { return std::isalnum(static_cast<unsigned char>(c)) != 0 || c == '_'; };
+
     for (const auto& keyword : riskyKeywords)
     {
-        size_t pos = upperQuery.find(keyword);
-        if (pos != std::string::npos)
+        // Look at every occurrence, not just the first one.
+        for (size_t pos = upperQuery.find(keyword); pos != std::string::npos; pos = upperQuery.find(keyword, pos + 1))
         {
-            // Check if the keyword is a complete word
-            bool isWordStart = (pos == 0 || (std::isalnum(upperQuery[pos - 1]) == 0));
-            bool isWordEnd   = (pos + keyword.length() == upperQuery.length() || (std::isalnum(upperQuery[pos + keyword.length()]) == 0));
+            const bool isWordStart = (pos == 0 || !isWordChar(upperQuery[pos - 1]));
+            const bool isWordEnd   = (pos + keyword.length() == upperQuery.length() || !isWordChar(upperQuery[pos + keyword.length()]));
 
             if (isWordStart && isWordEnd)
             {

@@ -119,12 +119,24 @@ namespace api::v2::Types
             // handler, leaking the server's file path in the response body.
             try
             {
-                keyword   = search_j.at("keyword").as<std::string>();
-                filter    = search_j.at("filter").as<std::string>();
-                order_by  = search_j.at("order_by").as<std::string>();
-                direction = search_j.at("direction").as<short>() == 0 ? "ASC" : "DESC";
-                limit     = search_j.at("limit").as<size_t>();
-                offset    = search_j.at("offset").as<size_t>();
+                const jsoncons::json &kw = search_j.at("keyword"), &fl = search_j.at("filter"), &ob = search_j.at("order_by"),
+                                     &dr = search_j.at("direction"), &lm = search_j.at("limit"), &of = search_j.at("offset");
+                // jsoncons' as<T>() happily coerces across types (a JSON bool/null becomes "true"/""
+                // as a string, for instance) instead of throwing, which let a body that violates the
+                // declared schema (e.g. "order_by": false, "limit": null) sail through this try block
+                // untouched. Check the actual JSON type first so a mismatch is treated the same as any
+                // other malformed search body - success=false, not silently-coerced garbage.
+                if (!kw.is_string() || !fl.is_string() || !ob.is_string() || !dr.is_number() || !lm.is_number() || !of.is_number())
+                {
+                    success = false;
+                    return;
+                }
+                keyword   = kw.as<std::string>();
+                filter    = fl.as<std::string>();
+                order_by  = ob.as<std::string>();
+                direction = dr.as<short>() == 0 ? "ASC" : "DESC";
+                limit     = lm.as<size_t>();
+                offset    = of.as<size_t>();
                 success   = validate(search_j);
             }
             catch (const std::exception &)
