@@ -1,4 +1,7 @@
 -- init.sql
+-- drop all data
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
 
 -- Set starting user_id from 1000
 CREATE SEQUENCE users_id_seq START 1000;
