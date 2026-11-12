@@ -14,7 +14,6 @@
 #include "database/database.hpp"
 #include "database/databaseconnectionpool.hpp"
 #include "database/watchdog.hpp"
-#include "gatekeeper/sqlinjectiondetectoor/sqlinjectiondetector.hpp"
 #include "store/store.hpp"
 #include "utils/global/types.hpp"
 
@@ -49,19 +48,19 @@ void DatabaseController::ensureBackends()
     }
 }
 
-std::optional<jsoncons::json> DatabaseController::executeQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params, const std::string &predicted_query)
+std::optional<jsoncons::json> DatabaseController::executeQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params, const std::string &plain_query)
 {
-    return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::work>, query, isSqlInjection, params, predicted_query);
+    return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::work>, query, isSqlInjection, params, plain_query);
 }
 
-std::optional<jsoncons::json> DatabaseController::executeReadQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params, const std::string &predicted_query)
+std::optional<jsoncons::json> DatabaseController::executeReadQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params, const std::string &plain_query)
 {
-    return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::nontransaction>, query, isSqlInjection, params, predicted_query);
+    return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::nontransaction>, query, isSqlInjection, params, plain_query);
 }
 
-std::optional<jsoncons::json ::array> DatabaseController::executeSearchQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params, const std::string &predicted_query)
+std::optional<jsoncons::json ::array> DatabaseController::executeSearchQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params, const std::string &plain_query)
 {
-    return executer<jsoncons::json::array>(&Database::executeQuery<jsoncons::json::array, pqxx::nontransaction>, query, isSqlInjection, params, predicted_query);
+    return executer<jsoncons::json::array>(&Database::executeQuery<jsoncons::json::array, pqxx::nontransaction>, query, isSqlInjection, params, plain_query);
 }
 
 std::optional<std::string> DatabaseController::doReadQuery(const std::string &query, bool &isSqlInjection)
@@ -76,16 +75,17 @@ std::optional<bool> DatabaseController::checkItemExists(const std::string &table
 
 std::optional<jsoncons::json> DatabaseController::getPasswordHashForUserName(const std::string &username, const std::string &tablename, bool &isSqlInjection)
 {
-    std::string query = fmt::format("SELECT id,password,active FROM {} WHERE username = $1 LIMIT 1;", tablename);
-    return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::nontransaction>, query, isSqlInjection, pqxx::params{username},
-                                    SqlInjectionDetector::buildDetectionQuery(query, {username}));
+    // Parameterized query is executed; the plain one (value inline) is what the injection check scans.
+    std::string query       = fmt::format("SELECT id,password,active FROM {} WHERE username = $1 LIMIT 1;", tablename);
+    std::string plain_query = fmt::format("SELECT id,password,active FROM {} WHERE username = '{}' LIMIT 1;", tablename, username);
+    return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::nontransaction>, query, isSqlInjection, pqxx::params{username}, plain_query);
 }
 
 std::optional<uint64_t> DatabaseController::findIfUserID(const std::string &username, const std::string &tablename, bool &isSqlInjection)
 {
-    std::string query = fmt::format("SELECT id FROM {} WHERE id = $1 LIMIT 1;", tablename);
-    return executer<uint64_t>(&Database::doSimpleQuery<uint64_t>, query, isSqlInjection, pqxx::params{username},
-                              SqlInjectionDetector::buildDetectionQuery(query, {username}));
+    std::string query       = fmt::format("SELECT id FROM {} WHERE id = $1 LIMIT 1;", tablename);
+    std::string plain_query = fmt::format("SELECT id FROM {} WHERE id = '{}' LIMIT 1;", tablename, username);
+    return executer<uint64_t>(&Database::doSimpleQuery<uint64_t>, query, isSqlInjection, pqxx::params{username}, plain_query);
 }
 
 std::optional<std::unordered_set<api::v2::ColumnInfo>> DatabaseController::getTableSchema(const std::string &tableName)

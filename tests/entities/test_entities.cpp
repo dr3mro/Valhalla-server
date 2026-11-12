@@ -31,7 +31,8 @@ TEST_CASE("Entity create statement lists every column with placeholders", "[enti
     const Types::Create_t create(payload, 5);
 
     Entity     entity(create, "clinics");
-    const auto statement = entity.getSqlCreateStatement();
+    pqxx::params params;
+    const auto   statement = entity.getSqlCreateStatementParameterized(params);
 
     REQUIRE(statement.has_value());
     // jsoncons uses a sorted policy, so keys are ordered alphabetically; the
@@ -40,6 +41,19 @@ TEST_CASE("Entity create statement lists every column with placeholders", "[enti
     CHECK(statement->find("description,id,name") != std::string::npos);
     CHECK(statement->find("VALUES ($1,$2,$3)") != std::string::npos);
     CHECK(statement->back() == ';');
+}
+
+TEST_CASE("Entity plain statements inline the values for the injection check", "[entities][sql]")
+{
+    const jsoncons::json payload = makeJsonObject({{"name", "renamed"}});
+    const Types::Update_t update(payload, 12);
+
+    Entity     entity(update, "users");
+    const auto statement = entity.getSqlUpdateStatement();
+
+    REQUIRE(statement.has_value());
+    CHECK(statement->find("name = 'renamed'") != std::string::npos);
+    CHECK(statement->find('$') == std::string::npos);
 }
 
 TEST_CASE("Entity read statement targets the _safe view", "[entities][sql]")
@@ -74,7 +88,8 @@ TEST_CASE("Entity update statement builds a SET clause with parameters", "[entit
     const Types::Update_t update(payload, 12);
 
     Entity     entity(update, "users");
-    const auto statement = entity.getSqlUpdateStatement();
+    pqxx::params params;
+    const auto   statement = entity.getSqlUpdateStatementParameterized(params);
 
     REQUIRE(statement.has_value());
     CHECK(statement->find("UPDATE users SET") == 0);
@@ -108,7 +123,8 @@ TEST_CASE("Entity search statement parameterises the keyword and honours paging"
     REQUIRE(success);
 
     Entity     entity(search, "patients");
-    const auto statement = entity.getSqlSearchStatement();
+    pqxx::params params;
+    const auto   statement = entity.getSqlSearchStatementParameterized(params);
 
     REQUIRE(statement.has_value());
     CHECK(statement->find("SELECT * FROM patients_safe WHERE name::text ILIKE $1") != std::string::npos);

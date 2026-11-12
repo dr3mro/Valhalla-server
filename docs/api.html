@@ -6102,6 +6102,7 @@ window.onload = () => {
     const run = String(C.state().RUN);
     if (kind === 'account') { b.username = 'bm' + run + 'u' + i; b.email = b.username + '@mail.com'; }
     else if (kind === 'suspend') { b.username = 'bs' + run + 's' + i; b.email = b.username + '@mail.com'; }
+    else if (kind === 'logout') { b.username = 'bl' + run + 'l' + i; b.email = b.username + '@mail.com'; }
     else if (kind === 'email') b.email = 'bm' + run + 'p' + i + '@mail.com';
     return Object.assign({}, req, { body: JSON.stringify(b) });
   }
@@ -6146,10 +6147,21 @@ window.onload = () => {
     const loginStep = STEPS.find((x) => isLogin(x) && x.path === '/clients/' + grp + '/login');
     const outPath = '/clients/' + grp + '/logout';
     if (!loginStep) return [{ label: 'POST ' + outPath, skipped: 'no login step' }];
-    const base = await C.prepare(loginStep.id);
-    if (base.error) return [{ label: 'POST ' + outPath, skipped: base.error }];
+    const createStep = STEPS.find((x) => x.method === 'POST' && x.path === '/clients/' + grp + '/create');
+    if (!createStep) return [{ label: 'POST ' + outPath, skipped: 'no create step' }];
+    const cbase = await C.prepare(createStep.id);
+    if (cbase.error) return [{ label: 'POST ' + outPath, skipped: cbase.error }];
+    /* one account per session: logging a user in several times shares one session, so only the first logout would succeed */
     await reserve(total);
-    const logins = await hammer(() => base, total, conc, null, true);
+    const made = await hammer((i) => vary(cbase, i, 'logout'), total, conc, null, true);
+    const pw = JSON.parse(cbase.body).password;
+    const run = String(C.state().RUN);
+    const names = [];
+    made.items.forEach((x, i) => { if (x && x.ok) names.push('bl' + run + 'l' + i); });
+    if (!names.length) return [{ label: 'POST ' + outPath, skipped: 'could not create accounts' }];
+    await reserve(names.length);
+    const logins = await hammer((k) => ({ method: 'POST', url: C.baseUrl() + '/clients/' + grp + '/login', headers: { 'Content-Type': 'application/json' }, expect: 200,
+      body: JSON.stringify({ username: names[k], password: pw }) }), names.length, conc, null, true);
     const tokens = logins.items.filter((x) => x && x.ok && x.json && x.json.token).map((x) => x.json.token);
     if (!tokens.length) return [{ label: 'POST ' + outPath, skipped: 'login returned no tokens' }];
     await reserve(tokens.length);

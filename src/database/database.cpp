@@ -46,7 +46,11 @@ bool Database::checkExists(const std::string &table, const std::string &column, 
         std::string query = fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = $1);",
                                         connection->quote_name(table),
                                         connection->quote_name(column));
-        isSqlInjection    = GateKeeper::isQuerySqlInjection(GateKeeper::buildDetectionQuery(query, {value}));
+        // Plain query (value inline) is only scanned for SQL injection; the parameterized one is executed.
+        isSqlInjection = GateKeeper::isQuerySqlInjection(fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = '{}');",
+                                                                     connection->quote_name(table),
+                                                                     connection->quote_name(column),
+                                                                     value));
 
         if (isSqlInjection)
         {
@@ -169,13 +173,20 @@ std::optional<std::unordered_set<std::string>> Database::getAllTables()
 }
 
 template <typename jsonType, typename TransactionType>
-std::optional<jsonType> Database::executeQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params, const std::string &predicted_query)
+std::optional<jsonType> Database::executeQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params, const std::string &plain_query)
 {
     static_assert(std::is_same_v<jsonType, jsoncons::json> || std::is_same_v<jsonType, jsoncons::json::array>, "Unsupported jsonType specialization");
 
     try
     {
-        isSqlInjection = GateKeeper::isQuerySqlInjection(predicted_query.empty() ? query : predicted_query);
+
+        // Scan the plain query (values inline) when there is one; a parameterized query is never run without it.
+        if (plain_query.empty() && params.size() > 0)
+        {
+            Message::CriticalMessage("Refusing to run a parameterized query without its plain query: the values would not be checked for SQL injection.");
+            return std::nullopt;
+        }
+        isSqlInjection = GateKeeper::isQuerySqlInjection(query);
 
         if (isSqlInjection)
         {
@@ -266,11 +277,17 @@ std::optional<jsonType> Database::executeQuery(const std::string &query, bool &i
 }
 
 template <typename T>
-std::optional<T> Database::doSimpleQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params, const std::string &predicted_query)
+std::optional<T> Database::doSimpleQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params, const std::string &plain_query)
 {
     try
     {
-        isSqlInjection = GateKeeper::isQuerySqlInjection(predicted_query.empty() ? query : predicted_query);
+        // Scan the plain query (values inline) when there is one; a parameterized query is never run without it.
+        if (plain_query.empty() && params.size() > 0)
+        {
+            Message::CriticalMessage("Refusing to run a parameterized query without its plain query: the values would not be checked for SQL injection.");
+            return std::nullopt;
+        }
+        isSqlInjection = GateKeeper::isQuerySqlInjection(query);
 
         if (isSqlInjection)
         {

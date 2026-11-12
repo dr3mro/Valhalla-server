@@ -9,10 +9,6 @@ class SqlInjectionDetector
    public:
     static void                                   initialize();
     [[nodiscard]] static bool                     isQuerySqlInjection(const std::string& query);
-    // Checks the query text AND the bound parameter values: $1, $2, ... are replaced by the quoted values
-    // in a throwaway copy that is used for detection only (never executed).
-    [[nodiscard]] static bool                     isQuerySqlInjection(const std::string& query, const std::vector<std::string>& params);
-    [[nodiscard]] static std::string              buildDetectionQuery(const std::string& query, const std::vector<std::string>& params);
     static void                                   addCustomPattern(const std::string& pattern);
     [[nodiscard]] static std::vector<std::string> getDetectedPatterns(const std::string& query);
 

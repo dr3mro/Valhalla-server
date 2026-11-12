@@ -88,51 +88,6 @@ bool SqlInjectionDetector::isQuerySqlInjection(const std::string& query)
     return isSqlInjection;
 }
 
-std::string SqlInjectionDetector::buildDetectionQuery(const std::string& query, const std::vector<std::string>& params)
-{
-    std::string out;
-    out.reserve(query.size() + params.size() * 16);
-
-    for (size_t i = 0; i < query.size(); ++i)
-    {
-        if (query[i] == '$' && i + 1 < query.size() && (std::isdigit(static_cast<unsigned char>(query[i + 1])) != 0))
-        {
-            size_t j   = i + 1;
-            size_t idx = 0;
-            while (j < query.size() && (std::isdigit(static_cast<unsigned char>(query[j])) != 0))
-            {
-                idx = idx * 10 + static_cast<size_t>(query[j] - '0');
-                ++j;
-            }
-
-            if (idx >= 1 && idx <= params.size())
-            {
-                // Quote it the way an inlined SQL literal would look (' doubled), so a payload such as
-                // "' OR 1=1 --" shows up in the string exactly as it would if it had been concatenated.
-                out += '\'';
-                for (const char ch : params[idx - 1])
-                {
-                    out += ch;
-                    if (ch == '\'')
-                    {
-                        out += '\'';
-                    }
-                }
-                out += '\'';
-                i = j - 1;
-                continue;
-            }
-        }
-        out += query[i];
-    }
-    return out;
-}
-
-bool SqlInjectionDetector::isQuerySqlInjection(const std::string& query, const std::vector<std::string>& params)
-{
-    return isQuerySqlInjection(buildDetectionQuery(query, params));
-}
-
 void SqlInjectionDetector::addCustomPattern(const std::string& pattern)
 {
     customPatterns.push_back(pattern);

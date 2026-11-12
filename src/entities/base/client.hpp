@@ -45,67 +45,24 @@ namespace api
 
             std::optional<std::string> getSqlCreateStatement() final
             {
-                resetSqlParams();
-                auto clientdata = std::get<Types::CreateClient_t>(getData());
-
-                try
-                {
-                    std::vector<std::string> keys_arr;
-                    std::vector<std::string> values_arr;
-
-                    for (const auto &item : clientdata.get_data_set())
-                    {
-                        keys_arr.push_back(item.first);
-                        values_arr.push_back(item.second);
-                    }
-
-                    std::vector<std::string> placeholders;
-                    for (size_t i = 1; i <= values_arr.size(); ++i)
-                        placeholders.push_back(fmt::format("${}", i));
-                    for (const auto &v : values_arr)
-                        addSqlParam(v);
-
-                    std::string columns = fmt::format("{}", fmt::join(keys_arr, ","));
-                    return fmt::format("INSERT INTO {} ({}) VALUES ({}) RETURNING id;", tablename, columns, fmt::join(placeholders, ","));
-                }
-                catch (const std::exception &e)
-                {
-                    Message::ErrorMessage(fmt::format("Failed to create Sql create statement for table {}.", tablename));
-                    Message::CriticalMessage(e.what());
-                    return std::nullopt;
-                }
+                PlainBinder binder;
+                return buildClientCreateStatement(binder);
+            }
+            std::optional<std::string> getSqlCreateStatementParameterized(pqxx::params &params) final
+            {
+                ParamBinder binder(params);
+                return buildClientCreateStatement(binder);
             }
 
             std::optional<std::string> getSqlUpdateStatement() final
             {
-                resetSqlParams();
-                try
-                {
-                    auto clientdata = std::get<Types::UpdateClient_t>(getData()).get_data_set();
-                    client_id       = std::get<Types::UpdateClient_t>(getData()).get_id();
-                    if (!client_id.has_value())
-                    {
-                        Message::ErrorMessage(fmt::format("Failed to update client data. No id provided."));
-                        return std::nullopt;
-                    }
-
-                    std::vector<std::string> set_clauses;
-                    size_t                   param_idx = 1;
-
-                    for (auto it = clientdata.begin(); it != clientdata.end(); ++it)
-                    {
-                        set_clauses.push_back(fmt::format("{} = ${}", it->first, param_idx++));
-                        addSqlParam(it->second);
-                    }
-
-                    return fmt::format("UPDATE {} SET {} WHERE id={} RETURNING id;", tablename, fmt::join(set_clauses, ", "), client_id.value());
-                }
-                catch (const std::exception &e)
-                {
-                    Message::ErrorMessage(fmt::format("Failed to create Sql update statement for table {}.", tablename));
-                    Message::CriticalMessage(e.what());
-                    return std::nullopt;
-                }
+                PlainBinder binder;
+                return buildClientUpdateStatement(binder);
+            }
+            std::optional<std::string> getSqlUpdateStatementParameterized(pqxx::params &params) final
+            {
+                ParamBinder binder(params);
+                return buildClientUpdateStatement(binder);
             }
 
             std::optional<std::string> getSqlToggleSuspendStatement(bool state)
@@ -159,6 +116,62 @@ namespace api
             ~Client() override = default;
 
            protected:
+            // Common implementation shared by the plain and the parameterized variant (see Base::PlainBinder / ParamBinder).
+            template <typename Binder>
+            std::optional<std::string> buildClientCreateStatement(Binder &binder)
+            {
+                try
+                {
+                    auto clientdata = std::get<Types::CreateClient_t>(getData());
+
+                    std::vector<std::string> keys_arr;
+                    std::vector<std::string> values_arr;
+
+                    for (const auto &item : clientdata.get_data_set())
+                    {
+                        keys_arr.push_back(item.first);
+                        values_arr.push_back(binder.bind(item.second));
+                    }
+
+                    return fmt::format("INSERT INTO {} ({}) VALUES ({}) RETURNING id;", tablename, fmt::join(keys_arr, ","), fmt::join(values_arr, ","));
+                }
+                catch (const std::exception &e)
+                {
+                    Message::ErrorMessage(fmt::format("Failed to create Sql create statement for table {}.", tablename));
+                    Message::CriticalMessage(e.what());
+                    return std::nullopt;
+                }
+            }
+
+            template <typename Binder>
+            std::optional<std::string> buildClientUpdateStatement(Binder &binder)
+            {
+                try
+                {
+                    auto clientdata = std::get<Types::UpdateClient_t>(getData()).get_data_set();
+                    client_id       = std::get<Types::UpdateClient_t>(getData()).get_id();
+                    if (!client_id.has_value())
+                    {
+                        Message::ErrorMessage(fmt::format("Failed to update client data. No id provided."));
+                        return std::nullopt;
+                    }
+
+                    std::vector<std::string> set_clauses;
+                    for (auto it = clientdata.begin(); it != clientdata.end(); ++it)
+                    {
+                        set_clauses.push_back(fmt::format("{} = {}", it->first, binder.bind(it->second)));
+                    }
+
+                    return fmt::format("UPDATE {} SET {} WHERE id={} RETURNING id;", tablename, fmt::join(set_clauses, ", "), client_id.value());
+                }
+                catch (const std::exception &e)
+                {
+                    Message::ErrorMessage(fmt::format("Failed to create Sql update statement for table {}.", tablename));
+                    Message::CriticalMessage(e.what());
+                    return std::nullopt;
+                }
+            }
+
             std::optional<uint64_t> client_id; /*NOLINT*/
         };
     }  // namespace v2

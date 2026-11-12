@@ -35,10 +35,12 @@ class Database
     bool reconnect();
 
     template <typename jsonType, typename TransactionType>
-    std::optional<jsonType> executeQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params = {}, const std::string &predicted_query = {});
+    // "plain_query" is the same statement with the values written inline; it is what gets scanned for SQL injection.
+    // It is required whenever params is not empty (the parameterized text alone hides the values from the detector).
+    std::optional<jsonType> executeQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params = {}, const std::string &plain_query = {});
 
     template <typename T>
-    std::optional<T> doSimpleQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params = {}, const std::string &predicted_query = {});
+    std::optional<T> doSimpleQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params = {}, const std::string &plain_query = {});
 
     std::optional<std::unordered_set<api::v2::ColumnInfo>> getTableSchema(const std::string &tableName);
     std::optional<std::unordered_set<std::string>>         getAllTables();
