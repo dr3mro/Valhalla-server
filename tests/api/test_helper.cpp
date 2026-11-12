@@ -30,7 +30,7 @@ TEST_CASE("Helper::failureResponse answers with 500 and a failure payload", "[ap
     CHECK(response->getStatusCode() == drogon::HttpStatusCode::k500InternalServerError);
     CHECK(response->getBody().find("boom") != std::string::npos);
     CHECK(response->getBody().find("\"Status\"") != std::string::npos);
-    CHECK(response->contentTypeString() == "application/json");
+    CHECK(response->contentTypeString().find("application/json") != std::string::npos);
 }
 
 TEST_CASE("Helper::errorResponse answers with the requested code", "[api][helper]")

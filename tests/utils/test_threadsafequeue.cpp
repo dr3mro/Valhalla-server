@@ -141,3 +141,32 @@ TEST_CASE("ThreadSafeQueue handles concurrent producers and consumers", "[utils]
     REQUIRE(consumed.size() == expected.size());
     CHECK(consumed == expected);
 }
+
+TEST_CASE("ThreadSafeQueue push rvalue moves the object in", "[utils][queue]")
+{
+    ThreadSafeQueue<std::string> queue;
+
+    std::string s = "moved-string";
+    queue.push(std::move(s));
+
+    CHECK(queue.size() == 1);
+    const auto val = queue.pop();
+    REQUIRE(val.has_value());
+    CHECK(*val == "moved-string");
+}
+
+TEST_CASE("ThreadSafeQueue size tracks insertions and removals", "[utils][queue]")
+{
+    ThreadSafeQueue<int> queue;
+
+    CHECK(queue.size() == 0);
+    queue.push(1);
+    CHECK(queue.size() == 1);
+    queue.push(2);
+    CHECK(queue.size() == 2);
+    queue.pop();
+    CHECK(queue.size() == 1);
+    queue.clear();
+    CHECK(queue.size() == 0);
+    CHECK(queue.empty());
+}

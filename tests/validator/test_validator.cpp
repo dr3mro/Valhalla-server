@@ -216,14 +216,16 @@ TEST_CASE("Types::Search_t direction 1 maps to DESC", "[validator][search]")
     CHECK(parsed.direction == "DESC");
 }
 
-TEST_CASE("Types::Search_t throws and reports failure for a missing key", "[validator][search]")
+TEST_CASE("Types::Search_t reports failure for a missing key without throwing", "[validator][search]")
 {
+    // The constructor catches exceptions internally and signals failure via success=false
+    // rather than re-throwing, so callers can reply with a 400 instead of a 500.
     jsoncons::json incomplete = jsoncons::json::parse(R"({
         "keyword": "x", "filter": "f", "order_by": "o", "direction": 0, "limit": 1
     })");  // "offset" missing
 
     bool success = true;
-    REQUIRE_THROWS_AS(Types::Search_t(incomplete, success), std::exception);
+    REQUIRE_NOTHROW(Types::Search_t(incomplete, success));
     CHECK_FALSE(success);
 }
 
@@ -234,3 +236,53 @@ TEST_CASE("Types::Search_t throws and reports failure for a missing key", "[vali
 // set (it sets found=false and then unconditionally assigns found=true
 // before dereferencing) - see tests/README.md, known bug 3. Exercising them
 // is undefined behaviour until that is fixed.
+
+TEST_CASE("Types::Search_t rejects fields with wrong JSON types", "[validator][search]")
+{
+    SECTION("keyword is a number, not a string")
+    {
+        const jsoncons::json search_j = jsoncons::json::parse(R"({
+            "keyword": 123, "filter": "f", "order_by": "o",
+            "direction": 0, "limit": 1, "offset": 0
+        })");
+        bool success = true;
+        Types::Search_t parsed(search_j, success);
+        CHECK_FALSE(success);
+    }
+
+    SECTION("direction is a string, not a number")
+    {
+        const jsoncons::json search_j = jsoncons::json::parse(R"({
+            "keyword": "x", "filter": "f", "order_by": "o",
+            "direction": "ASC", "limit": 1, "offset": 0
+        })");
+        bool success = true;
+        Types::Search_t parsed(search_j, success);
+        CHECK_FALSE(success);
+    }
+
+    SECTION("limit is a string, not a number")
+    {
+        const jsoncons::json search_j = jsoncons::json::parse(R"({
+            "keyword": "x", "filter": "f", "order_by": "o",
+            "direction": 0, "limit": "ten", "offset": 0
+        })");
+        bool success = true;
+        Types::Search_t parsed(search_j, success);
+        CHECK_FALSE(success);
+    }
+}
+
+TEST_CASE("Types::Search_t with zero limit and offset is valid", "[validator][search]")
+{
+    const jsoncons::json search_j = jsoncons::json::parse(R"({
+        "keyword": "", "filter": "all", "order_by": "id",
+        "direction": 0, "limit": 0, "offset": 0
+    })");
+    bool success = false;
+    const Types::Search_t parsed(search_j, success);
+    CHECK(success);
+    CHECK(parsed.limit == 0);
+    CHECK(parsed.offset == 0);
+    CHECK(parsed.direction == "ASC");
+}

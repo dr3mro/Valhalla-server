@@ -123,14 +123,15 @@ bool SqlInjectionDetector::containsSuspiciousPattern(const std::string& query, s
 {
     bool found = false;
 
+    const size_t builtInCount = suspiciousPatterns.size() - customPatterns.size();
     for (size_t i = 0; i < suspiciousPatterns.size(); ++i)
     {
         if (std::regex_search(query, suspiciousPatterns[i]))
         {
             found = true;
-            if (i < customPatterns.size())
+            if (i >= builtInCount)
             {
-                detectedPatterns.push_back("Custom pattern matched: " + customPatterns[i]);
+                detectedPatterns.push_back("Custom pattern matched: " + customPatterns[i - builtInCount]);
             }
             else
             {
@@ -220,18 +221,20 @@ bool SqlInjectionDetector::hasRiskyKeywords(const std::string& query)
     std::string upperQuery = query;
     std::ranges::transform(upperQuery, upperQuery.begin(), ::toupper);
 
-    // '_' counts as part of a word, so identifiers such as sleep_apnea or system_id are not keyword hits.
-    const auto isWordChar = [](char c) { return std::isalnum(static_cast<unsigned char>(c)) != 0 || c == '_'; };
+    // '_' before a keyword (e.g. pg_sleep) is a word boundary; '_' after (e.g. sleep_apnea)
+    // is treated as a word character so compound identifiers are not flagged.
+    const auto isWordStart = [](char c) { return std::isalnum(static_cast<unsigned char>(c)) != 0; };
+    const auto isWordChar  = [](char c) { return std::isalnum(static_cast<unsigned char>(c)) != 0 || c == '_'; };
 
     for (const auto& keyword : riskyKeywords)
     {
         // Look at every occurrence, not just the first one.
         for (size_t pos = upperQuery.find(keyword); pos != std::string::npos; pos = upperQuery.find(keyword, pos + 1))
         {
-            const bool isWordStart = (pos == 0 || !isWordChar(upperQuery[pos - 1]));
+            const bool isWordStart_ = (pos == 0 || !isWordStart(upperQuery[pos - 1]));
             const bool isWordEnd   = (pos + keyword.length() == upperQuery.length() || !isWordChar(upperQuery[pos + keyword.length()]));
 
-            if (isWordStart && isWordEnd)
+            if (isWordStart_ && isWordEnd)
             {
                 return true;
             }

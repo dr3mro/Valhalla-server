@@ -169,3 +169,69 @@ TEST_CASE("TokenManager rejects a malformed token without crashing", "[gatekeepe
     REQUIRE_FALSE(manager.isTokenValid(loginData, message));
     CHECK_FALSE(message.empty());
 }
+TEST_CASE("TokenManager generateToken fails cleanly for each missing field", "[gatekeeper][token]")
+{
+    TokenManager manager;
+
+    SECTION("missing clientId")
+    {
+        auto loginData        = std::optional<ClientLoginData>(makeLoginData(42, "users", "1.2.3.4"));
+        loginData->username   = "u";
+        loginData->lastLogoutTime = "llodt";
+        loginData->group      = "users";
+        loginData->clientId.reset();
+
+        REQUIRE_FALSE(manager.generateToken(loginData));
+        CHECK_FALSE(loginData->token.has_value());
+    }
+
+    SECTION("missing ip_address")
+    {
+        auto loginData            = std::optional<ClientLoginData>(makeLoginData(42, "users", "1.2.3.4"));
+        loginData->username       = "u";
+        loginData->lastLogoutTime = "llodt";
+        loginData->group          = "users";
+        loginData->ip_address.reset();
+
+        REQUIRE_FALSE(manager.generateToken(loginData));
+    }
+
+    SECTION("missing group")
+    {
+        auto loginData            = std::optional<ClientLoginData>(makeLoginData(42, "users", "1.2.3.4"));
+        loginData->username       = "u";
+        loginData->lastLogoutTime = "llodt";
+        loginData->group.reset();
+
+        REQUIRE_FALSE(manager.generateToken(loginData));
+    }
+
+    SECTION("missing lastLogoutTime")
+    {
+        auto loginData        = std::optional<ClientLoginData>(makeLoginData(42, "users", "1.2.3.4"));
+        loginData->username   = "u";
+        loginData->group      = "users";
+        loginData->lastLogoutTime.reset();
+
+        REQUIRE_FALSE(manager.generateToken(loginData));
+    }
+}
+
+TEST_CASE("TokenManager rejects an already-expired token", "[gatekeeper][token]")
+{
+    TokenManager manager;
+
+    // Build a token that expired 1 minute ago.
+    const auto token = valhalla_test::makeToken(
+        kSecret, kIssuer, kType, "alice", 7, "users", "127.0.0.1", "llodt",
+        std::chrono::minutes{-1});
+
+    auto loginData            = std::optional<ClientLoginData>(makeLoginData(7, "users", "127.0.0.1"));
+    loginData->token          = token;
+    loginData->username       = "alice";
+    loginData->lastLogoutTime = "llodt";
+
+    std::string message;
+    REQUIRE_FALSE(manager.isTokenValid(loginData, message));
+    CHECK_FALSE(message.empty());
+}

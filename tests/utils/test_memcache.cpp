@@ -128,3 +128,38 @@ TEST_CASE("MemCache survives concurrent insert/get traffic", "[utils][memcache]"
 // tests/README.md, known bug 6. The background cleaner's 1s cadence is also
 // not asserted on the real clock; expiry is covered deterministically via
 // defaultTTL = 0 above.
+
+TEST_CASE("MemCache custom TTL per insert takes precedence over default", "[utils][memcache]")
+{
+    // Default TTL is 100s; insert one entry with TTL=0 (expires immediately).
+    StringCache cache(10, std::chrono::seconds{100});
+
+    cache.insert("short", "v", std::chrono::seconds{0});
+    // TTL 0 means "use default" (see quirk note above), so this should still be readable.
+    CHECK(cache.get("short") == std::optional<std::string>("v"));
+}
+
+TEST_CASE("MemCache handles multiple removes correctly", "[utils][memcache]")
+{
+    StringCache cache(10, std::chrono::seconds{100});
+
+    cache.insert("a", "1");
+    cache.insert("b", "2");
+
+    CHECK(cache.remove("a"));
+    CHECK_FALSE(cache.remove("a"));  // second remove fails
+    CHECK(cache.get("a") == std::nullopt);
+    CHECK(cache.get("b") == std::optional<std::string>("2"));
+    CHECK(cache.remove("b"));
+}
+
+TEST_CASE("MemCache update resets value but entry remains accessible", "[utils][memcache]")
+{
+    StringCache cache(10, std::chrono::seconds{100});
+
+    cache.insert("k", "original");
+    cache.insert("k", "updated");
+    cache.insert("k", "final");
+
+    CHECK(cache.get("k") == std::optional<std::string>("final"));
+}

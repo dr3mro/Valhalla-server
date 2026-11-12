@@ -53,14 +53,14 @@ TEST_CASE("InUseGuard destructor notify wakes a concurrent waiter", "[database][
 
     bool acquired = false;
 
+    std::optional<std::thread> waiter;
+
     {
         InUseGuard holder(in_use, mtx, cv);
         CHECK(in_use.load());
 
-        // A second guard in another thread would wait ~1s for the resource;
-        // releasing the holder notifies it early. We verify the notify path
-        // with a plain waiter instead of a second 1s guard.
-        std::thread waiter([&]
+        // Start the waiter after holder has set in_use=true.
+        waiter.emplace([&]
         {
             std::unique_lock<std::mutex> lock(mtx);
             cv.wait_for(lock, std::chrono::seconds{2}, [&] { return !in_use.load(); });
@@ -71,6 +71,6 @@ TEST_CASE("InUseGuard destructor notify wakes a concurrent waiter", "[database][
         // holder's destructor runs here: stores false and notifies all.
     }
 
-    std::this_thread::sleep_for(std::chrono::milliseconds{50});
+    waiter->join();
     CHECK(acquired);
 }

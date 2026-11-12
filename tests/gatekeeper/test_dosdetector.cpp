@@ -254,8 +254,16 @@ TEST_CASE("DoSDetector handles concurrent callers without deadlock", "[gatekeepe
 {
     DetectorFixture fixture(makeConfig(/*maxRequests*/ 100000, /*maxFingerprints*/ 100000));
 
-    constexpr int            kThreads  = 4;
-    constexpr int            kRequests = 25;
+    constexpr int kThreads  = 4;
+    constexpr int kRequests = 25;
+
+    // Pre-populate all request bodies before spawning threads; DetectorFixture::send
+    // calls bodies.push_back() which is not thread-safe under concurrent access.
+    std::vector<std::vector<std::string>> threadBodies(kThreads);
+    for (int t = 0; t < kThreads; ++t)
+        for (int i = 0; i < kRequests; ++i)
+            threadBodies[t].push_back("body-" + std::to_string(t) + "-" + std::to_string(i));
+
     std::vector<std::thread> workers;
     std::atomic<int>         allowedCount{0};
     std::atomic<bool>        unexpected{false};
@@ -263,11 +271,12 @@ TEST_CASE("DoSDetector handles concurrent callers without deadlock", "[gatekeepe
     for (int t = 0; t < kThreads; ++t)
     {
         workers.emplace_back(
-            [&fixture, &allowedCount, &unexpected, t]()
+            [&fixture, &allowedCount, &unexpected, &threadBodies, t]()
             {
                 for (int i = 0; i < kRequests; ++i)
                 {
-                    const auto status = fixture.send("203.0.113.77", "body-" + std::to_string(t) + "-" + std::to_string(i));
+                    const auto req    = makeRequest("203.0.113.77", threadBodies[t][i]);
+                    const auto status = fixture.detector->is_dos_attack(req);
                     if (status == DOSDetector::Status::ALLOWED)
                     {
                         ++allowedCount;

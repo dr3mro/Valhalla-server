@@ -6,8 +6,10 @@
 
 #include <jsoncons/json.hpp>
 
+#include "entities/base/client.hpp"
 #include "entities/base/entity.hpp"
 #include "entities/base/types.hpp"
+#include "entities/people/provider.hpp"
 #include "entities/people/user.hpp"
 
 using namespace api::v2;
@@ -149,4 +151,161 @@ TEST_CASE("User builds its get-services query", "[entities][sql]")
     const auto statement = user.getSqlGetServicesStatement();
     REQUIRE(statement.has_value());
     CHECK(*statement == "SELECT id from users WHERE id = 33");
+}
+
+TEST_CASE("Provider builds its get-services query", "[entities][sql]")
+{
+    const Types::Data_t data(7);
+    Provider   provider(data);
+    const auto statement = provider.getSqlGetServicesStatement();
+    REQUIRE(statement.has_value());
+    CHECK(statement->find("7") != std::string::npos);
+    CHECK(statement->find("clinics") != std::string::npos);
+    CHECK(statement->find("laboratories") != std::string::npos);
+    CHECK(statement->find("pharmacies") != std::string::npos);
+    CHECK(statement->find("radiologycenters") != std::string::npos);
+}
+
+TEST_CASE("Client getSqlSuspendStatement builds an UPDATE that sets active=false", "[entities][sql]")
+{
+    const Types::SuspendData suspendData(55);
+    User   user(suspendData);
+    const auto statement = user.getSqlSuspendStatement();
+    REQUIRE(statement.has_value());
+    CHECK(statement->find("UPDATE users SET active=false") != std::string::npos);
+    CHECK(statement->find("where id=55") != std::string::npos);
+    CHECK(statement->find("returning id,active;") != std::string::npos);
+}
+
+TEST_CASE("Client getSqlActivateStatement builds an UPDATE that sets active=true", "[entities][sql]")
+{
+    const Types::SuspendData suspendData(77);
+    User   user(suspendData);
+    const auto statement = user.getSqlActivateStatement();
+    REQUIRE(statement.has_value());
+    CHECK(statement->find("UPDATE users SET active=true") != std::string::npos);
+    CHECK(statement->find("where id=77") != std::string::npos);
+}
+
+TEST_CASE("SuspendData stores the client id", "[entities][types]")
+{
+    const Types::SuspendData sd(42);
+    CHECK(sd.client_id == 42);
+}
+
+TEST_CASE("StaffData parses a complete JSON object", "[entities][types]")
+{
+    jsoncons::json staff_j;
+    staff_j["nominee_id"]    = uint64_t{10};
+    staff_j["entity_id"]     = uint64_t{20};
+    staff_j["role"]          = "Doctor";
+    staff_j["email"]         = "doc@example.com";
+    staff_j["nominee_group"] = "providers";
+    staff_j["entity_name"]   = "City Clinic";
+
+    const Types::StaffData sd(staff_j);
+    CHECK(sd.parse_status == true);
+    CHECK(sd.nominee_id == 10);
+    CHECK(sd.entity_id == 20);
+    CHECK(sd.role == "Doctor");
+    CHECK(sd.email == "doc@example.com");
+    CHECK(sd.nominee_group == "providers");
+    CHECK(sd.entity_name == "City Clinic");
+    CHECK_FALSE(sd.project_name.empty());
+}
+
+TEST_CASE("StaffData sets parse_status=false on a missing key", "[entities][types]")
+{
+    jsoncons::json staff_j;
+    staff_j["nominee_id"] = uint64_t{10};
+    // entity_id and other required keys are absent
+
+    const Types::StaffData sd(staff_j);
+    CHECK(sd.parse_status == false);
+}
+
+TEST_CASE("StaffData::toInviteJson adds the required invite fields", "[entities][types]")
+{
+    jsoncons::json staff_j;
+    staff_j["nominee_id"]    = uint64_t{1};
+    staff_j["entity_id"]     = uint64_t{2};
+    staff_j["role"]          = "Nurse";
+    staff_j["email"]         = "nurse@example.com";
+    staff_j["nominee_group"] = "providers";
+    staff_j["entity_name"]   = "Central Hospital";
+
+    Types::StaffData sd(staff_j);
+    REQUIRE(sd.parse_status);
+
+    jsoncons::json invite = jsoncons::json::object();
+    invite["some_field"] = "initial";
+
+    const bool ok = sd.toInviteJson(invite);
+    CHECK(ok);
+    CHECK(invite.contains("subject"));
+    CHECK(invite.contains("template"));
+    CHECK(invite.contains("link"));
+    CHECK(invite.contains("project_name"));
+    CHECK(invite.contains("generate_body"));
+}
+
+TEST_CASE("Entity getSqlCreateStatement inlines values (plain binder)", "[entities][sql]")
+{
+    const jsoncons::json payload = makeJsonObject({{"title", "intro"}});
+    const Types::Create_t create(payload, 8);
+
+    Entity     entity(create, "courses");
+    const auto statement = entity.getSqlCreateStatement();
+
+    REQUIRE(statement.has_value());
+    CHECK(statement->find("INSERT INTO courses") == 0);
+    CHECK(statement->find("'intro'") != std::string::npos);
+    CHECK(statement->find('$') == std::string::npos);
+}
+
+TEST_CASE("Entity getSqlReadStatementParameterized returns the same query as the plain variant", "[entities][sql]")
+{
+    // The read/delete parameterized variants embed the id inline (same as the
+    // plain variant) rather than using $N placeholders. They exist for API
+    // uniformity; params is cleared but no bindings are added.
+    const std::unordered_set<std::string> schema = {"name"};
+    const Types::Read_t                   read(schema, 15);
+
+    Entity       entity(read, "clinics");
+    pqxx::params params;
+    const auto   statement = entity.getSqlReadStatementParameterized(params);
+
+    REQUIRE(statement.has_value());
+    CHECK(statement->find("FROM clinics_safe WHERE id=15 LIMIT 1;") != std::string::npos);
+    CHECK(statement->find("name") != std::string::npos);
+}
+
+TEST_CASE("Entity getSqlDeleteStatementParameterized returns the same query as the plain variant", "[entities][sql]")
+{
+    const Types::Delete_t del(99);
+    Entity       entity(del, "appointments");
+    pqxx::params params;
+    const auto   statement = entity.getSqlDeleteStatementParameterized(params);
+
+    REQUIRE(statement.has_value());
+    CHECK(*statement == "DELETE FROM appointments where id=99 returning id;");
+}
+
+TEST_CASE("Entity getSqlSearchStatement inlines the keyword", "[entities][sql]")
+{
+    const jsoncons::json search_j = jsoncons::json::parse(R"({
+        "keyword": "headache", "filter": "symptom",
+        "order_by": "id", "direction": 1, "limit": 5, "offset": 0
+    })");
+    bool success = false;
+    const Types::Search_t search(search_j, success);
+    REQUIRE(success);
+
+    Entity     entity(search, "cases");
+    const auto statement = entity.getSqlSearchStatement();
+
+    REQUIRE(statement.has_value());
+    CHECK(statement->find("headache") != std::string::npos);
+    CHECK(statement->find("ORDER BY id DESC") != std::string::npos);
+    CHECK(statement->find("LIMIT 6 OFFSET 0;") != std::string::npos);
 }

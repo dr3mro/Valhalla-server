@@ -98,3 +98,41 @@ TEST_CASE("Http::Error is a plain aggregate", "[utils][http]")
     CHECK(error.code == api::v2::Http::Status::BAD_REQUEST);
     CHECK(error.message == "bad input");
 }
+
+TEST_CASE("Http::getDescription covers all defined status codes", "[utils][http]")
+{
+    using api::v2::Http::Status;
+    using api::v2::Http::getDescription;
+
+    // 2xx
+    CHECK(getDescription(Status::CREATED)  == "Created");
+    CHECK(getDescription(Status::ACCEPTED) == "Accepted");
+    CHECK(getDescription(Status::NO_CONTENT) == "No Content");
+
+    // 3xx
+    CHECK(getDescription(Status::MOVED_PERMANENTLY)  == "Moved Permanently");
+    CHECK(getDescription(Status::TEMPORARY_REDIRECT) == "Temporary Redirect");
+
+    // 4xx
+    CHECK(getDescription(Status::CONFLICT)              == "Conflict");
+    CHECK(getDescription(Status::PAYLOAD_TOO_LARGE)     == "Payload Too Large");
+    CHECK(getDescription(Status::UNSUPPORTED_MEDIA_TYPE)== "Unsupported Media Type");
+    CHECK(getDescription(Status::METHOD_NOT_ALLOWED)    == "Method Not Allowed");
+
+    // 5xx
+    CHECK(getDescription(Status::NOT_IMPLEMENTED)      == "Not Implemented");
+    CHECK(getDescription(Status::SERVICE_UNAVAILABLE)  == "Service Unavailable");
+    CHECK(getDescription(Status::BAD_GATEWAY)          == "Bad Gateway");
+}
+
+TEST_CASE("Requester isAdmin/isStaff/isOwner/isSuper use the right group names", "[utils][requester]")
+{
+    CHECK(api::v2::Requester(1, "admins").isAdmin());
+    CHECK(api::v2::Requester(1, "staff").isStaff());
+    CHECK(api::v2::Requester(1, "owners").isOwner());
+    CHECK(api::v2::Requester(1, "Super").isSuper());
+
+    CHECK_FALSE(api::v2::Requester(1, "users").isAdmin());
+    CHECK_FALSE(api::v2::Requester(1, "admins").isUser());
+    CHECK_FALSE(api::v2::Requester(1, "admins").isProvider());
+}

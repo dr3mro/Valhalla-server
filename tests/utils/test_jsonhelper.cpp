@@ -50,3 +50,30 @@ TEST_CASE("JsonHelper::stringify round-trips through jsoncons parse", "[utils][j
     const auto reparsed = jsoncons::json::parse(JsonHelper::stringify(object));
     CHECK(reparsed.at("Message").as<std::string>() == "logout ok");
 }
+
+TEST_CASE("JsonHelper::jsonify handles an empty string message", "[utils][jsonhelper]")
+{
+    const Json::Value wrapped = JsonHelper::jsonify("");
+
+    REQUIRE(wrapped.isMember("Message"));
+    CHECK(wrapped["Message"].asString() == "");
+}
+
+TEST_CASE("JsonHelper::stringify handles an empty jsoncons object", "[utils][jsonhelper]")
+{
+    const jsoncons::json empty = jsoncons::json::object();
+    const std::string   text  = JsonHelper::stringify(empty);
+    CHECK_FALSE(text.empty());
+}
+
+TEST_CASE("JsonHelper::stringify handles a jsoncons null", "[utils][jsonhelper]")
+{
+    const jsoncons::json null_j = jsoncons::json::null();
+    CHECK_NOTHROW(JsonHelper::stringify(null_j));
+}
+
+TEST_CASE("JsonHelper::stringify handles an empty JsonCpp value", "[utils][jsonhelper]")
+{
+    const Json::Value empty;
+    CHECK_NOTHROW(JsonHelper::stringify(empty));
+}

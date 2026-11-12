@@ -192,7 +192,7 @@ TEST_CASE("SessionManager handles concurrent store and lookup", "[gatekeeper][se
             {
                 for (int i = 0; i < kPerThread; ++i)
                 {
-                    std::optional<ClientLoginData> data = makeLoginData(1000 + t * kPerThread + i);
+                    std::optional<ClientLoginData> data = makeLoginData(100000 + t * kPerThread + i);
                     data->username                      = "user";
                     data->group                         = "users";
                     data->lastLogoutTime                = "llodt";
