@@ -55,6 +55,15 @@ class Store
         return registerObject<T>(std::forward<Args>(args)...);
     }
 
+    // Replace an already-registered singleton without throwing.
+    // Used by test harnesses to inject fakes (see tests/support/fake_db.hpp).
+    template <typename T>
+    static void replaceObject(std::shared_ptr<T> obj)
+    {
+        std::lock_guard<std::mutex> lock(inventoryMutex);
+        inventory[typeid(T)] = obj;
+    }
+
    private:
     static std::unordered_map<std::type_index, std::shared_ptr<void>> inventory;
     static std::mutex                                                 inventoryMutex;
