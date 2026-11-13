@@ -66,11 +66,6 @@ class FakeDatabaseController : public DatabaseController
         return password_result;
     }
 
-    std::optional<uint64_t> findIfUserID(const std::string &, const std::string &, bool &) override
-    {
-        return find_user_result;
-    }
-
     std::optional<std::unordered_set<api::v2::ColumnInfo>> getTableSchema(
         const std::string &) override
     {

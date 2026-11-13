@@ -270,8 +270,6 @@ std::optional<jsonType> Database::executeQuery(const std::string &query, bool &i
         Message::ErrorMessage("Error executing query:");
         Message::InfoMessage(query);
         Message::CriticalMessage(e.what());
-        return std::nullopt;
-        // throw;  // Rethrow the exception to indicate failure
     }
     return std::nullopt;
 }

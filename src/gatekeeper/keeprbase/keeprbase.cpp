@@ -124,8 +124,7 @@ void KeeprBase::setNowLogoutTime(uint64_t _id, const std::string& _group)
 
         if (!result.has_value())
         {
-            Message::ErrorMessage("Error updating login time.");
-            Message::CriticalMessage(result.value().to_string());
+            Message::CriticalMessage("Error updating login time.");
         }
     }
     catch (const std::exception& e)

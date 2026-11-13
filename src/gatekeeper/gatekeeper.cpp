@@ -1,6 +1,7 @@
 #include "gatekeeper.hpp"
 
 #include <fmt/core.h>
+#include <fmt/format.h>
 
 #include <cstdint>
 #include <exception>
@@ -136,7 +137,7 @@ std::optional<jsoncons::json> GateKeeper::parse_data(/* NOLINT(readability-conve
     catch (const std::exception& e)
     {
         message = fmt::format("Json parsing error : {} - {}", message, e.what());
-        return false;
+        return std::nullopt;
     }
     success = true;
     return object_j;

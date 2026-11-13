@@ -1,6 +1,7 @@
 #include "databasecontroller.hpp"
 
 #include <fmt/core.h>
+#include <fmt/format.h>
 
 #include <cstdint>
 #include <cstdlib>
@@ -81,13 +82,6 @@ std::optional<jsoncons::json> DatabaseController::getPasswordHashForUserName(con
     return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::nontransaction>, query, isSqlInjection, pqxx::params{username}, plain_query);
 }
 
-std::optional<uint64_t> DatabaseController::findIfUserID(const std::string &username, const std::string &tablename, bool &isSqlInjection)
-{
-    std::string query       = fmt::format("SELECT id FROM {} WHERE id = $1 LIMIT 1;", tablename);
-    std::string plain_query = fmt::format("SELECT id FROM {} WHERE id = '{}' LIMIT 1;", tablename, username);
-    return executer<uint64_t>(&Database::doSimpleQuery<uint64_t>, query, isSqlInjection, pqxx::params{username}, plain_query);
-}
-
 std::optional<std::unordered_set<api::v2::ColumnInfo>> DatabaseController::getTableSchema(const std::string &tableName)
 {
     return executer<std::unordered_set<api::v2::ColumnInfo>>(&Database::getTableSchema, tableName);
@@ -99,4 +93,3 @@ std::optional<jsoncons::json> DatabaseController::getPermissions(const std::stri
 {
     return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::nontransaction>, query, isSqlInjection, pqxx::params{}, std::string{});
 }
-

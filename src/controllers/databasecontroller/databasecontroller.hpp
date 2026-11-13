@@ -38,8 +38,6 @@ class DatabaseController
     virtual std::optional<std::string>           doReadQuery(const std::string &query, bool &isSqlInjection);
     virtual std::optional<bool>                  checkItemExists(const std::string &table, const std::string &column, const std::string &value, bool &isSqlInjection);
     virtual std::optional<jsoncons::json>        getPasswordHashForUserName(const std::string &username, const std::string &tablename, bool &isSqlInjection);
-    virtual std::optional<uint64_t>              findIfUserID(
-                     const std::string &username, const std::string &tablename, bool &isSqlInjection);  // check if user found and return 0 if not
     virtual std::optional<std::unordered_set<api::v2::ColumnInfo>> getTableSchema(const std::string &tableName);
     virtual std::optional<std::unordered_set<std::string>>         getAllTables();
     virtual std::optional<jsoncons::json>                          getPermissions(const std::string &query, bool &isSqlInjection);
