@@ -88,13 +88,12 @@ TEST_CASE("Store::registerObject throws on double registration", "[utils][store]
     CHECK_THROWS_AS(Store::registerObject<StoreD>(), std::runtime_error);
 }
 
-// Known bug: Store::getObject has a TOCTOU race between the inventory lookup
-// and registerObject insertion. Two threads can both fail the find() check
-// before either inserts, so both call registerObject and create distinct
-// objects. This test documents the broken behaviour.
-// Fix: hold the lock across the check-and-insert in getObject, or use a
-// double-checked locking pattern that is correct (single lock acquisition).
-TEST_CASE("Store concurrent first-access does not race", "[utils][store][concurrency][.known-bug][!shouldfail]")
+// Bug 11: getObject has a TOCTOU race — the find and registerObject use two
+// separate lock acquisitions, so concurrent first-access can produce duplicate
+// instances. The safe fix (single lock scope) causes re-entrant deadlock because
+// some constructors call back into Store::getObject. Deferred until a recursive
+// mutex or two-phase construction is adopted. See tests/README.md §Bug 11.
+TEST_CASE("Store concurrent first-access does not race", "[.known-bug][utils][store][concurrency]")
 {
     // All 8 threads race to call getObject<StoreRace>(); only one must win the
     // construction; they all must receive the same pointer.

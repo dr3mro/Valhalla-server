@@ -6,7 +6,9 @@
 #include <string>
 
 #include "gatekeeper/keeprbase/keeprbase.hpp"
+#include "gatekeeper/types.hpp"
 #include "support/builders.hpp"
+#include "support/fake_db.hpp"
 
 // Minimal subclass to expose protected methods for testing.
 namespace
@@ -17,6 +19,7 @@ namespace
         using KeeprBase::current_time_to_utc_string;
         using KeeprBase::decodeToken;
         using KeeprBase::getTokenManagerParameters;
+        using KeeprBase::setNowLoginTimeGetLastLogoutTime;
     };
 
     constexpr const char *kSecret = "valhalla-unit-test-secret-key";
@@ -144,14 +147,19 @@ TEST_CASE("KeeprBase::decodeToken rejects an expired token", "[gatekeeper][keepr
     CHECK(message.find("expired") != std::string::npos);
 }
 
-// Known bug 4: KeeprBase::setNowLoginTimeGetLastLogoutTime has an inverted
-// has_value() check: `if (!result.has_value())` then calls `result.value()`
-// (which throws on empty optional). The error branch is taken on success and
-// the success branch on failure.
-// Proposed fix: invert the condition to `if (result.has_value())`.
-// This cannot be exercised hermetically without a DB-backed path; the bug is
-// documented here with a SUCCEED so it appears in the [.known-bug] suite.
-TEST_CASE("KeeprBase::setNowLoginTimeGetLastLogoutTime has an inverted has_value check", "[gatekeeper][keeprbase][.known-bug]")
+// Bug 4 fixed: the .value() call on an empty optional in the error branch has
+// been removed; the function now returns false cleanly when the DB returns nullopt.
+TEST_CASE("KeeprBase::setNowLoginTimeGetLastLogoutTime returns false when DB returns nullopt", "[gatekeeper][keeprbase]")
 {
-    SUCCEED("Bug documented: see tests/README.md known bug 4 and keeprbase.cpp:setNowLoginTimeGetLastLogoutTime");
+    auto fake = std::make_shared<FakeDatabaseController>();
+    fake->query_result = std::nullopt;
+    FakeDbGuard guard(fake);
+
+    TestKeepr k;
+    auto data       = std::make_optional<api::v2::Types::ClientLoginData>();
+    data->group     = std::string("users");
+    data->clientId  = uint64_t{42};
+
+    bool result = k.setNowLoginTimeGetLastLogoutTime(data);
+    CHECK_FALSE(result);
 }

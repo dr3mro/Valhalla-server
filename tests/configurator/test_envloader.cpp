@@ -146,14 +146,28 @@ TEST_CASE("EnvLoader integer template overload uses std::stoi", "[configurator][
 // falling back to the default. The stoull variant also silently wraps on
 // negative numbers.
 // Fix: wrap the stoi/stoull call in a try/catch; return the default on error.
-TEST_CASE("EnvLoader integer overload throws on non-numeric input (known bug 10)", "[configurator][envloader][.known-bug]")
+// Bug 10 fixed: getEnvironmentVariable<T> and the chrono overload now catch
+// stoi/stoull exceptions and fall back to the default value.
+TEST_CASE("EnvLoader integer overload falls back to default on non-numeric input", "[configurator][envloader]")
 {
     TestLoader loader;
 
-    SECTION("non-numeric value throws instead of falling back to the default")
+    SECTION("non-numeric value returns the default")
     {
         ScopedEnv guard("VALHALLA_TEST_DEFINITELY_UNSET", "not-a-number");
-        REQUIRE_THROWS_AS((loader.getEnvironmentVariable<int>("VALHALLA_TEST_DEFINITELY_UNSET", 3)), std::exception);
+        CHECK(loader.getEnvironmentVariable<int>("VALHALLA_TEST_DEFINITELY_UNSET", 3) == 3);
+    }
+
+    SECTION("negative chrono value returns the default")
+    {
+        ScopedEnv guard("VALHALLA_TEST_NEG_DURATION", "-5");
+        CHECK(loader.getEnvironmentVariable("VALHALLA_TEST_NEG_DURATION", std::chrono::seconds{10}) == std::chrono::seconds{10});
+    }
+
+    SECTION("non-numeric chrono value returns the default")
+    {
+        ScopedEnv guard("VALHALLA_TEST_BAD_DURATION", "banana");
+        CHECK(loader.getEnvironmentVariable("VALHALLA_TEST_BAD_DURATION", std::chrono::seconds{10}) == std::chrono::seconds{10});
     }
 }
 
@@ -167,18 +181,16 @@ TEST_CASE("EnvLoader parseSet splits on commas and trims whitespace", "[configur
     CHECK(loader.parseSet("").empty());
 }
 
-// Known bug 9: parseSet("a,,b") inserts an empty string as a member of the
-// resulting set. An empty regex pattern matches everything, so this would
-// effectively whitelist or blacklist *all* IP addresses.
-// Fix: skip empty tokens after splitting on commas.
-TEST_CASE("EnvLoader parseSet produces an empty-string entry from consecutive commas", "[configurator][envloader][.known-bug]")
+// Bug 9 fixed: parseSet now skips empty tokens, so "a,,b" yields exactly {"a","b"}.
+TEST_CASE("EnvLoader parseSet skips empty tokens from consecutive commas", "[configurator][envloader]")
 {
     TestLoader loader;
 
     const auto parsed = loader.parseSet("a,,b");
     CHECK(parsed.count("a") == 1);
     CHECK(parsed.count("b") == 1);
-    CHECK(parsed.count("") == 1);  // empty string present — the bug
+    CHECK(parsed.count("") == 0);  // empty string must NOT be present
+    CHECK(parsed.size() == 2);
 }
 
 TEST_CASE("EnvLoader set-of-strings overload falls back to an empty set", "[configurator][envloader]")
@@ -208,17 +220,24 @@ TEST_CASE("EnvVars get reads the process environment", "[configurator][envloader
     CHECK(getter.get("VALHALLA_TEST_DEFINITELY_UNSET") == std::optional<std::string>("hello"));
 }
 
-// Known bug 5: EnvVars::set() calls putenv(envVar.c_str()) where envVar is a
-// function-local std::string. putenv() keeps only the pointer; after set()
-// returns the string is destroyed, leaving a dangling pointer in the process
-// environment (UB on the next getenv / putenv call).
-// Fix: use setenv(key, value, 1) (POSIX) or keep the string alive in a static
-// / heap-allocated buffer.
-TEST_CASE("EnvVars::set has a dangling-pointer bug (not called; UB on return)", "[configurator][envloader][.known-bug]")
+// Bug 5 fixed: EnvVars::set() now uses setenv() which copies both key and
+// value internally — no dangling pointer.
+TEST_CASE("EnvVars::set stores a value that is readable via get after return", "[configurator][envloader]")
 {
-    // Calling EnvVars::set() would immediately exhibit UB; we document the
-    // bug here without triggering it.
-    SUCCEED("Bug documented: see tests/README.md known bug 5 and envvars.cpp:EnvVars::set");
+    struct Setter : EnvVars
+    {
+        using EnvVars::get;
+        using EnvVars::set;
+    };
+
+    Setter s;
+    s.set("VALHALLA_TEST_ENVVARS_SET_BUG5", "hello_fixed");
+    auto result = s.get("VALHALLA_TEST_ENVVARS_SET_BUG5");
+    REQUIRE(result.has_value());
+    CHECK(result.value() == "hello_fixed");
+
+    // Cleanup
+    unsetenv("VALHALLA_TEST_ENVVARS_SET_BUG5");
 }
 
 TEST_CASE("EnvLoader optimize_performance raises sub-1 values to ncpus*factor", "[configurator][envloader]")

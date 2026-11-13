@@ -18,7 +18,7 @@ TEST_CASE("GateKeeper::isQuerySqlInjection flags malicious queries", "[gatekeepe
 
     CHECK(GateKeeper::isQuerySqlInjection("SLEEP(10)"));
     CHECK(GateKeeper::isQuerySqlInjection("'; DROP TABLE users; --"));
-    CHECK(GateKeeper::isQuerySqlInjection("1 -- evil comment"));
+    CHECK(GateKeeper::isQuerySqlInjection("SELECT * FROM users WHERE id=1 --"));
     CHECK(GateKeeper::isQuerySqlInjection("SHUTDOWN"));
     CHECK(GateKeeper::isQuerySqlInjection("EXEC sp_who2"));
 }

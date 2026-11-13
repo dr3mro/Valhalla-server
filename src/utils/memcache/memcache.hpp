@@ -22,35 +22,66 @@ class MemCache
     MemCache(const MemCache&)            = delete;
     MemCache& operator=(const MemCache&) = delete;
 
-    MemCache(MemCache&& other) noexcept
-        : maxSize_(other.maxSize_),
-          defaultTTL_(other.defaultTTL_),
-          stopCleaner_(other.stopCleaner_),
-          cacheMap_(std::move(other.cacheMap_)),
-          cacheList_(std::move(other.cacheList_)),
-          cleanerThread_(std::move(other.cleanerThread_))
+    MemCache(MemCache&& other) noexcept : maxSize_(other.maxSize_), defaultTTL_(other.defaultTTL_), stopCleaner_(false)
     {
-        std::lock_guard<std::mutex> lock(other.mutex_);
-        other.stopCleaner_ = true;
+        // Stop the source's cleaner before moving state so the thread never
+        // runs against the moved-from object.
+        {
+            std::lock_guard<std::mutex> lock(other.mutex_);
+            other.stopCleaner_ = true;
+        }
+        other.cleanerCv_.notify_one();
+        if (other.cleanerThread_.joinable())
+        {
+            other.cleanerThread_.join();
+        }
+
+        {
+            std::lock_guard<std::mutex> lock(other.mutex_);
+            cacheMap_  = std::move(other.cacheMap_);
+            cacheList_ = std::move(other.cacheList_);
+        }
+
+        cleanerThread_ = std::thread(&MemCache::cleanExpiredEntries, this);
     }
 
     MemCache& operator=(MemCache&& other) noexcept
     {
         if (this != &other)
         {
+            // Stop this object's cleaner first.
             {
                 std::lock_guard<std::mutex> lock(mutex_);
-                std::lock_guard<std::mutex> otherLock(other.mutex_);
-                maxSize_           = other.maxSize_;
-                defaultTTL_        = other.defaultTTL_;
-                stopCleaner_       = other.stopCleaner_;
-                cacheMap_          = std::move(other.cacheMap_);
-                cacheList_         = std::move(other.cacheList_);
-                cleanerThread_     = std::move(other.cleanerThread_);
-                other.stopCleaner_ = true;
+                stopCleaner_ = true;
             }
             cleanerCv_.notify_one();
-            cleanerThread_.join();
+            if (cleanerThread_.joinable())
+            {
+                cleanerThread_.join();
+            }
+
+            // Stop the source's cleaner.
+            {
+                std::lock_guard<std::mutex> lock(other.mutex_);
+                other.stopCleaner_ = true;
+            }
+            other.cleanerCv_.notify_one();
+            if (other.cleanerThread_.joinable())
+            {
+                other.cleanerThread_.join();
+            }
+
+            {
+                std::lock_guard<std::mutex> lockThis(mutex_);
+                std::lock_guard<std::mutex> lockOther(other.mutex_);
+                maxSize_     = other.maxSize_;
+                defaultTTL_  = other.defaultTTL_;
+                cacheMap_    = std::move(other.cacheMap_);
+                cacheList_   = std::move(other.cacheList_);
+                stopCleaner_ = false;
+            }
+
+            cleanerThread_ = std::thread(&MemCache::cleanExpiredEntries, this);
         }
         return *this;
     }
@@ -62,7 +93,10 @@ class MemCache
             stopCleaner_ = true;
         }
         cleanerCv_.notify_one();
-        cleanerThread_.join();
+        if (cleanerThread_.joinable())
+        {
+            cleanerThread_.join();
+        }
     }
 
     void insert(const std::string& key, const T& value, std::chrono::seconds ttl = std::chrono::seconds::zero())

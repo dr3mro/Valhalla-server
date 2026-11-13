@@ -1,10 +1,12 @@
 #pragma once
 
 #include <chrono>
+#include <exception>
 #include <string>
 #include <unordered_set>
 
 #include "envvars/envvars.hpp"
+#include "utils/message/message.hpp"
 
 class EnvLoader : public EnvVars
 {
@@ -16,7 +18,19 @@ class EnvLoader : public EnvVars
     T getEnvironmentVariable(const std::string& key, T defaultValue)
     {
         auto value = get(key);
-        return value ? std::stoi(value.value()) : defaultValue;
+        if (!value)
+        {
+            return defaultValue;
+        }
+        try
+        {
+            return static_cast<T>(std::stoi(value.value()));
+        }
+        catch (const std::exception&)
+        {
+            Message::ErrorMessage("Invalid numeric value for env var " + key + "; using default.");
+            return defaultValue;
+        }
     }
 
     std::string                     getEnvironmentVariable(const std::string& key, const std::string& defaultValue);

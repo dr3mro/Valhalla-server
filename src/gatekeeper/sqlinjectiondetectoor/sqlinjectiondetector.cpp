@@ -55,15 +55,21 @@ void SqlInjectionDetector::initialize()
         std::regex(R"(';\s*XOR\s+1\s*=\s*1)", std::regex_constants::icase)               // XOR condition attack
     };
 
-    // Initialize risky keywords
-    riskyKeywords = {"EXEC", "EXECUTE", "SLEEP", "DELAY", "BENCHMARK", "WAITFOR", "XP_CMDSHELL", "SYSTEM", "SHUTDOWN"};
+    // Initialize risky keywords — only those that are unambiguously SQL/DB-specific.
+    // SYSTEM and DELAY are common English words and caused false positives in medical
+    // text ("immune system", "patient delay") — removed. EXECUTE is kept because
+    // EXECUTE IMMEDIATE is a real SQL injection vector.
+    riskyKeywords = {"EXEC", "EXECUTE", "SLEEP", "BENCHMARK", "WAITFOR", "XP_CMDSHELL", "SHUTDOWN"};
 }
 
 bool SqlInjectionDetector::isQuerySqlInjection(const std::string& query)
 {
     std::vector<std::string> detectedPatterns;
-    bool                     isSqlInjection = (containsSuspiciousPattern(query, detectedPatterns) || hasUnbalancedQuotes(query) || hasCommentTokens(query) ||
-                           hasMultipleQueries(query) || hasRiskyKeywords(query));
+    // hasUnbalancedQuotes removed: single apostrophes in names (O'Brien) caused
+    // too many false positives and genuine injection payloads are caught by the
+    // pattern + keyword + comment + multi-query checks.
+    bool isSqlInjection =
+        (containsSuspiciousPattern(query, detectedPatterns) || hasCommentTokens(query) || hasMultipleQueries(query) || hasRiskyKeywords(query));
 
     if (isSqlInjection)
     {
@@ -175,7 +181,11 @@ bool SqlInjectionDetector::hasUnbalancedQuotes(const std::string& query)
 
 bool SqlInjectionDetector::hasCommentTokens(const std::string& query)
 {
-    return query.find("--") != std::string::npos || query.find("/*") != std::string::npos || query.find('#') != std::string::npos;
+    // Only flag "--" when it appears at the end of the query (SQL trailing
+    // comment style). Mid-sentence dashes like "Dr. Brown -- cardiac ward" are
+    // not flagged. "#" is not a PostgreSQL comment character so it is omitted.
+    static const std::regex trailingComment("--\\s*$");
+    return std::regex_search(query, trailingComment) || query.find("/*") != std::string::npos;
 }
 
 bool SqlInjectionDetector::hasMultipleQueries(const std::string& query)
@@ -232,7 +242,7 @@ bool SqlInjectionDetector::hasRiskyKeywords(const std::string& query)
         for (size_t pos = upperQuery.find(keyword); pos != std::string::npos; pos = upperQuery.find(keyword, pos + 1))
         {
             const bool isWordStart_ = (pos == 0 || !isWordStart(upperQuery[pos - 1]));
-            const bool isWordEnd   = (pos + keyword.length() == upperQuery.length() || !isWordChar(upperQuery[pos + keyword.length()]));
+            const bool isWordEnd    = (pos + keyword.length() == upperQuery.length() || !isWordChar(upperQuery[pos + keyword.length()]));
 
             if (isWordStart_ && isWordEnd)
             {

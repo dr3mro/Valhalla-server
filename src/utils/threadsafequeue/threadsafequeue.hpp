@@ -1,6 +1,5 @@
 #pragma once
 
-#include <condition_variable>
 #include <mutex>
 #include <optional>
 #include <queue>
@@ -36,9 +35,8 @@ class ThreadSafeQueue
     std::optional<T> front();
 
    private:
-    mutable std::mutex      mutex_;
-    std::condition_variable cv_;
-    std::queue<T>           queue_;
+    mutable std::mutex mutex_;
+    std::queue<T>      queue_;
 };
 
 template <typename T>
@@ -46,7 +44,6 @@ void ThreadSafeQueue<T>::push(const T& value)
 {
     std::lock_guard<std::mutex> lock(mutex_);
     queue_.push(value);
-    cv_.notify_one();
 }
 
 template <typename T>
@@ -54,7 +51,6 @@ void ThreadSafeQueue<T>::push(T&& value)
 {
     std::lock_guard<std::mutex> lock(mutex_);
     queue_.push(std::move(value));
-    cv_.notify_one();
 }
 
 template <typename T>
@@ -98,7 +94,6 @@ void ThreadSafeQueue<T>::emplace(Args&&... args)
 {
     std::lock_guard<std::mutex> lock(mutex_);
     queue_.emplace(std::forward<Args>(args)...);
-    cv_.notify_one();
 }
 
 template <typename T>

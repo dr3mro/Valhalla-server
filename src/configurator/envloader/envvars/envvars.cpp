@@ -24,9 +24,8 @@ std::optional<std::string> EnvVars::get(const std::string& key)
 
 void EnvVars::set(const std::string& key, const std::string& value)
 {
-    std::string envVar = fmt::format("{}={}", key, value);
-    if (putenv(const_cast<char*>(envVar.c_str())) != 0)
+    if (setenv(key.c_str(), value.c_str(), 1) != 0)
     {
-        Message::ErrorMessage(fmt::format("Failed to set environment variable {}.", envVar));
+        Message::ErrorMessage(fmt::format("Failed to set environment variable {}.", key));
     }
 }

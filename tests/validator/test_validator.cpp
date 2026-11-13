@@ -229,21 +229,22 @@ TEST_CASE("Types::Search_t reports failure for a missing key without throwing", 
     CHECK_FALSE(success);
 }
 
-// Known bug 3: getDatabaseSchemaForTable() sets found=false in the not-found
-// branch but then unconditionally sets found=true before returning, and
-// dereferences the end iterator of the result map (UB). The validate*Schema
-// functions are therefore not called below. The bug is documented here.
-TEST_CASE("Validator::getDatabaseSchemaForTable has an unconditional found=true assignment that causes UB on miss",
-    "[validator][.known-bug]")
+// Bug 3 fixed: getDatabaseSchemaForTable() now returns {} early when the table
+// is not found, so found=false is preserved and the end-iterator is never
+// dereferenced.
+TEST_CASE("Validator::validateDatabaseCreateSchema returns false for an unknown table without crashing",
+    "[validator]")
 {
-    // This test documents the bug without triggering the UB (we do not call
-    // getDatabaseSchemaForTable directly because there is no public API and
-    // calling the validate*Schema functions with an unknown table would
-    // dereference an invalid iterator).
-    // Proposed fix: in getDatabaseSchemaForTable(), return {false, {}} early
-    // when table_schema_it == schema.end(), removing the unconditional
-    // found=true line.
-    SUCCEED("Bug documented: see tests/README.md known bug 3 and validator.cpp getDatabaseSchemaForTable()");
+    // With an empty DatabaseSchema (no DB connected), every table name is
+    // unknown. The fix ensures we get false + an error message instead of UB.
+    Validator            v;
+    api::v2::Http::Error error{};
+    jsoncons::json       data = jsoncons::json::parse(R"({"name":"test"})");
+    Validator::Rule      rule(Validator::Rule::Action::NONE, {});
+
+    bool result = v.validateDatabaseCreateSchema("nonexistent_table_xyz", data, error, rule);
+    CHECK_FALSE(result);
+    CHECK_FALSE(error.message.empty());
 }
 
 TEST_CASE("Types::Search_t rejects fields with wrong JSON types", "[validator][search]")

@@ -285,9 +285,9 @@ All configuration is supplied through environment variables. Defaults (see `src/
 
 | Variable        | Default | Description |
 |-----------------|---------|-------------|
-| `MAX_REQUESTS`  | `10000` | Max requests per period |
+| `MAX_REQUESTS`  | `10000` | Max repeat-count for one fingerprint before the IP is **banned** |
 | `PERIOD`        | `30`    | Window length (seconds) |
-| `MAX_FPS`       | `100`   | Max tracked fingerprints |
+| `MAX_FPS`       | `100`   | Max distinct fingerprints per IP before the IP is **rate-limited** |
 | `RL_DURATION`   | `30`    | Rate-limit duration (seconds) |
 | `BAN_DURATION`  | `3600`  | Ban duration (seconds) |
 | `CLN_FRQ`       | `30`    | Cleanup frequency (seconds) |

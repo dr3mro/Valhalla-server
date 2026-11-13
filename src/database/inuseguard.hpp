@@ -1,11 +1,13 @@
 #include <atomic>
+#include <chrono>
 #include <condition_variable>
 #include <mutex>
 
 class InUseGuard
 {
    public:
-    explicit InUseGuard(std::atomic<bool>& in_use, std::mutex& mtx, std::condition_variable& _cv);
+    explicit InUseGuard(std::atomic<bool>& in_use, std::mutex& mtx, std::condition_variable& _cv,
+        std::chrono::milliseconds timeout = std::chrono::seconds(1));
     InUseGuard()                             = delete;
     InUseGuard(const InUseGuard&)            = default;
     InUseGuard(InUseGuard&&)                 = delete;

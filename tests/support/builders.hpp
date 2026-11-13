@@ -54,13 +54,17 @@ namespace valhalla_test
     /// A token signed with the *wrong* key (for tampering/verification tests).
     inline std::string makeTamperedToken(const std::string &token)
     {
-        // Flip the last character of the signature part.
-        std::string tampered = token;
-        if (!tampered.empty())
-        {
-            const char last = tampered.back();
-            tampered.back() = last == 'A' ? 'B' : 'A';
-        }
+        // Flip a character in the middle of the signature (the third JWT segment,
+        // after the last '.'). We deliberately avoid the last character: for a
+        // 32-byte HMAC-SHA256 output the signature is 43 base64url chars, and the
+        // last char's bottom 2 bits are padding zeros — 'A' and 'B' decode to the
+        // same bytes, so flipping them does not actually change the signature.
+        std::string    tampered = token;
+        const std::size_t dot  = tampered.rfind('.');
+        if (dot == std::string::npos || dot + 4 >= tampered.size())
+            return tampered;
+        char &c = tampered[dot + 4];
+        c       = (c == 'A') ? 'Z' : 'A';
         return tampered;
     }
 }  // namespace valhalla_test

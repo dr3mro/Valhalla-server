@@ -84,7 +84,6 @@ bool KeeprBase::setNowLoginTimeGetLastLogoutTime(std::optional<Types::ClientLogi
         if (!result.has_value())
         {
             Message::ErrorMessage("Error updating login time.");
-            Message::CriticalMessage(result.value().to_string());
             return false;
         }
 

@@ -22,14 +22,10 @@ TEST_CASE("ThreadSafeQueue is FIFO", "[utils][queue]")
     CHECK(queue.size() == 0);
 }
 
-// Known bug 8: ThreadSafeQueue maintains a condition_variable and push()
-// notifies it, but pop() never waits on it — it returns nullopt immediately
-// for an empty queue. The condition_variable is dead code; the class name
-// implies blocking semantics that are not implemented.
-TEST_CASE("ThreadSafeQueue pop on an empty queue returns nullopt without blocking", "[utils][queue][.known-bug]")
+// Bug 8 fixed: dead condition_variable (and its #include) removed. pop()
+// was always non-blocking (returns nullopt); the CV was never waited on.
+TEST_CASE("ThreadSafeQueue pop on an empty queue returns nullopt without blocking", "[utils][queue]")
 {
-    // pop() never blocks: returns nullopt immediately for an empty queue.
-    // The condition_variable is maintained but never waited on (dead code).
     ThreadSafeQueue<std::string> queue;
 
     CHECK(queue.pop() == std::nullopt);

@@ -23,25 +23,26 @@ TEST_CASE("InUseGuard acquires an uncontended resource immediately", "[database]
     CHECK_FALSE(in_use.load());
 }
 
-TEST_CASE("InUseGuard waits out the 1 second timeout when the resource is busy", "[database][inuseguard]")
+TEST_CASE("InUseGuard waits out the timeout when the resource is busy", "[database][inuseguard]")
 {
     std::atomic<bool>       in_use{true};  // somebody else holds the resource
     std::mutex              mtx;
     std::condition_variable cv;
 
+    // Use a 50 ms timeout so the test completes quickly while still verifying
+    // that the guard waits at least that long before taking ownership.
+    constexpr auto kTimeout = std::chrono::milliseconds{50};
+
     const auto start = std::chrono::steady_clock::now();
     {
-        InUseGuard guard(in_use, mtx, cv);  // blocks ~1s inside wait_for
+        InUseGuard guard(in_use, mtx, cv, kTimeout);
 
         const auto elapsed = std::chrono::steady_clock::now() - start;
 
-        // The guard gives up waiting after roughly its 1 second timeout, then
-        // marks the resource in use anyway (it took ownership unconditionally).
-        CHECK(elapsed >= std::chrono::milliseconds{900});
+        CHECK(elapsed >= kTimeout);
         CHECK(in_use.load());
     }
 
-    // Releasing works as usual.
     CHECK_FALSE(in_use.load());
 }
 

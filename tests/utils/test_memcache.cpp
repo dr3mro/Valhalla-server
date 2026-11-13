@@ -124,16 +124,20 @@ TEST_CASE("MemCache survives concurrent insert/get traffic", "[utils][memcache]"
     }
 }
 
-// Known bug 6: MemCache move constructor moves the members but the cleaner
-// thread keeps a `this`-captured reference to the *moved-from* object; the
-// moved-from destructor later joins the thread which may still be running on
-// foreign state → use-after-move / data race / std::system_error.
-// Fix: stop + join the cleaner before moving, restart it afterwards.
-TEST_CASE("MemCache move constructor has a use-after-move bug in the cleaner thread", "[utils][memcache][.known-bug]")
+// Bug 6 fixed: move constructor now stops and joins the source's cleaner
+// before moving state, then starts a fresh cleaner on the destination.
+TEST_CASE("MemCache move constructor transfers entries to the destination", "[utils][memcache]")
 {
-    // Calling the move constructor would trigger the race; document only.
-    SUCCEED("Bug documented: see tests/README.md known bug 6 and memcache.hpp move constructor");
+    StringCache src(10, std::chrono::seconds{100});
+    src.insert("a", "1");
+    src.insert("b", "2");
+
+    StringCache dst(std::move(src));
+
+    CHECK(dst.get("a") == std::optional<std::string>("1"));
+    CHECK(dst.get("b") == std::optional<std::string>("2"));
 }
+
 // Note: The background cleaner's 1s cadence is not asserted on the real
 // clock; expiry is covered deterministically via TTL tests above.
 

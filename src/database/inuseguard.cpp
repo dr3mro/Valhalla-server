@@ -5,11 +5,12 @@
 #include <condition_variable>
 #include <mutex>
 
-InUseGuard::InUseGuard(std::atomic<bool>& in_use, std::mutex& mtx, std::condition_variable& _cv) : isConnectionInUse_(in_use), mutex_(mtx), conditionVar_(_cv)
+InUseGuard::InUseGuard(std::atomic<bool>& in_use, std::mutex& mtx, std::condition_variable& _cv, std::chrono::milliseconds timeout)
+    : isConnectionInUse_(in_use), mutex_(mtx), conditionVar_(_cv)
 {
     std::unique_lock<std::mutex> lock(mutex_);
 
-    conditionVar_.wait_for(lock, std::chrono::seconds(1), [this]() { return !isConnectionInUse_.load(); });
+    conditionVar_.wait_for(lock, timeout, [this]() { return !isConnectionInUse_.load(); });
 
     isConnectionInUse_.store(true);
 }

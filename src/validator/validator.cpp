@@ -18,7 +18,7 @@
 #include "utils/global/types.hpp"
 #include "validator/databaseschema/databaseschema.hpp"
 
-bool Validator::validateDatabaseCreateSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Http::Error &error, const Rule &rule)
+bool Validator::validateDatabaseCreateSchema(const std::string& tablename, const jsoncons::json& data, api::v2::Http::Error& error, const Rule& rule)
 {
     try
     {
@@ -57,7 +57,7 @@ bool Validator::validateDatabaseCreateSchema(const std::string &tablename, const
         }
         return true;
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         // Everything in the try block above only ever touches the client-supplied `data` and the
         // static table schema (no DB/network I/O), so any exception reaching here (jsoncons
@@ -71,7 +71,7 @@ bool Validator::validateDatabaseCreateSchema(const std::string &tablename, const
     return true;
 }
 
-bool Validator::validateDatabaseUpdateSchema(const std::string &tablename, const jsoncons::json &data, api::v2::Http::Error &error, const Rule &rule)
+bool Validator::validateDatabaseUpdateSchema(const std::string& tablename, const jsoncons::json& data, api::v2::Http::Error& error, const Rule& rule)
 {
     try
     {
@@ -102,7 +102,7 @@ bool Validator::validateDatabaseUpdateSchema(const std::string &tablename, const
         }
         return true;
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         // Same reasoning as validateDatabaseCreateSchema's catch above: nothing in this try block
         // can fail for a genuine server-side reason, only for malformed client input.
@@ -115,7 +115,7 @@ bool Validator::validateDatabaseUpdateSchema(const std::string &tablename, const
 }
 
 bool Validator::validateDatabaseReadSchema(
-    const std::unordered_set<std::string> &keys, const std::string &table_name, api::v2::Http::Error &error, const Rule &rule)
+    const std::unordered_set<std::string>& keys, const std::string& table_name, api::v2::Http::Error& error, const Rule& rule)
 {
     bool found = false;
 
@@ -129,7 +129,7 @@ bool Validator::validateDatabaseReadSchema(
     }
 
     // Check if all keys exist in the schema
-    for (const auto &key : keys)
+    for (const auto& key : keys)
     {
         if (rule.check(Rule::Action::ASSERT_NOT_PRESENT, key))
         {
@@ -139,7 +139,7 @@ bool Validator::validateDatabaseReadSchema(
         }
         // Use std::ranges::find_if to check if a column with the given name
         // exists
-        auto col = std::ranges::find_if(columns, [&](const api::v2::ColumnInfo &column) { return column.Name == key; });
+        auto col = std::ranges::find_if(columns, [&](const api::v2::ColumnInfo& column) { return column.Name == key; });
 
         if (col == columns.end())
         {
@@ -151,7 +151,7 @@ bool Validator::validateDatabaseReadSchema(
 
     return true;
 }
-bool Validator::clientRegexValidation(const jsoncons::json &data, api::v2::Http::Error &error, std::unordered_set<std::pair<std::string, std::string>> &db_data)
+bool Validator::clientRegexValidation(const jsoncons::json& data, api::v2::Http::Error& error, std::unordered_set<std::pair<std::string, std::string>>& db_data)
 {
     static const std::unordered_map<std::string, std::string> regex_client_validators = {
         {"username", "^[a-z][a-z0-9_]*$"},
@@ -164,12 +164,12 @@ bool Validator::clientRegexValidation(const jsoncons::json &data, api::v2::Http:
         {"gender", "^(Male|Female)$"},
     };
 
-    for (const auto &item : data.object_range())
+    for (const auto& item : data.object_range())
     {
         std::optional<std::string> value = item.value().as<std::string>();
         if (value.has_value() && !value->empty())
         {
-            auto pattern_item = std::ranges::find_if(regex_client_validators, [&](const auto &validator) { return validator.first == item.key(); });
+            auto pattern_item = std::ranges::find_if(regex_client_validators, [&](const auto& validator) { return validator.first == item.key(); });
 
             if (pattern_item != regex_client_validators.end())
             {
@@ -193,11 +193,11 @@ bool Validator::clientRegexValidation(const jsoncons::json &data, api::v2::Http:
 }
 
 // Add this method declaration in the private section
-bool Validator::hasDuplicateKeys(const jsoncons::json &data, api::v2::Http::Error &error)
+bool Validator::hasDuplicateKeys(const jsoncons::json& data, api::v2::Http::Error& error)
 {
     std::unordered_set<std::string> keys;
 
-    for (const auto &item : data.object_range())
+    for (const auto& item : data.object_range())
     {
         if (!keys.insert(item.key()).second)
         {
@@ -209,7 +209,7 @@ bool Validator::hasDuplicateKeys(const jsoncons::json &data, api::v2::Http::Erro
     return false;
 }
 
-bool Validator::nullCheck(const jsoncons::json &data, api::v2::Http::Error &error)
+bool Validator::nullCheck(const jsoncons::json& data, api::v2::Http::Error& error)
 {
     if (data.is_null() || data.empty())
     {
@@ -220,22 +220,23 @@ bool Validator::nullCheck(const jsoncons::json &data, api::v2::Http::Error &erro
     return false;
 }
 
-std::unordered_set<api::v2::ColumnInfo> Validator::getDatabaseSchemaForTable(const std::string &tablename, api::v2::Http::Error &error, bool &found)
+std::unordered_set<api::v2::ColumnInfo> Validator::getDatabaseSchemaForTable(const std::string& tablename, api::v2::Http::Error& error, bool& found)
 {
     SCHEMA_t schema = DatabaseSchema::getDatabaseSchema();
 
     // Ensure the table schema exists
     auto table_schema_it = schema.find(tablename);
-    if ((table_schema_it == schema.end()) || table_schema_it->second.empty())
+    if (table_schema_it == schema.end() || table_schema_it->second.empty())
     {
         error.message = "Table not found";
         error.code    = api::v2::Http::Status::BAD_REQUEST;
         found         = false;
+        return {};
     }
     found = true;
     return table_schema_it->second;
 }
-bool Validator::validateType(const jsoncons::json &value, const std::string &expectedType)
+bool Validator::validateType(const jsoncons::json& value, const std::string& expectedType)
 {
     if (expectedType == "integer")
     {
@@ -265,9 +266,9 @@ bool Validator::validateType(const jsoncons::json &value, const std::string &exp
 }
 
 bool Validator::checkColumns(
-    const jsoncons::json &data, const std::unordered_set<api::v2::ColumnInfo> &table_schema, api::v2::Http::Error &error, const Rule &rule)
+    const jsoncons::json& data, const std::unordered_set<api::v2::ColumnInfo>& table_schema, api::v2::Http::Error& error, const Rule& rule)
 {
-    for (const auto &column : table_schema)
+    for (const auto& column : table_schema)
     {
         bool column_exists = data.contains(column.Name);
 
@@ -282,7 +283,7 @@ bool Validator::checkColumns(
         // Validate data type if column exists
         if (column_exists)
         {
-            const auto &value = data.at(column.Name);
+            const auto& value = data.at(column.Name);
             if (!validateType(value, column.DataType))
             {
                 error.message = fmt::format("Data type mismatch for column: {} ,expected: {} ", column.Name, column.DataType);
@@ -294,19 +295,19 @@ bool Validator::checkColumns(
     return true;
 }
 bool Validator::ensureAllKeysExist(
-    const jsoncons::json &data, const std::unordered_set<api::v2::ColumnInfo> &table_schema, api::v2::Http::Error &error, const Rule &rule)
+    const jsoncons::json& data, const std::unordered_set<api::v2::ColumnInfo>& table_schema, api::v2::Http::Error& error, const Rule& rule)
 {
     // Create a set of column names for fast key lookup
     std::unordered_set<std::string> schema_columns;
-    for (const auto &column : table_schema)
+    for (const auto& column : table_schema)
     {
         schema_columns.insert(column.Name);
     }
 
     // Ensure all keys in `data` exist in the schema
-    for (const auto &entry : data.object_range())
+    for (const auto& entry : data.object_range())
     {
-        const auto &key = entry.key();
+        const auto& key = entry.key();
 
         // Check for missing not allowed keys
         if (rule.check(Rule::Action::ASSERT_NOT_PRESENT, key))
