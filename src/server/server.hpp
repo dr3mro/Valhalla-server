@@ -1,5 +1,8 @@
 #pragma once
 
+#include <drogon/HttpResponse.h>
+#include <drogon/HttpTypes.h>
+
 #include <memory>
 
 #include "api/v2/filters/auth.hpp"
@@ -24,7 +27,9 @@ class Server
     int run();
 
    private:
-    void print_banner();
+    void        print_banner();
+    static void addCorsHeaders(const drogon::HttpResponsePtr& response);
+    static bool isConventionalMethod(drogon::HttpMethod method);
 
     std::shared_ptr<Logger>                            logger_;
     std::shared_ptr<Configurator>                      configurator_;
