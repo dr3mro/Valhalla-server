@@ -125,7 +125,12 @@ class Controller
                     }
                 }
             }
-            response_json["results"] = query_results_json_array.value();
+            if(query_results_json_array.has_value()){
+                response_json["results"] = query_results_json_array.value();
+            }else{
+                response_json["results"] = jsoncons::json::array();
+            }
+
             std::move(callback)(api::v2::Http::Status::OK, response_json.as<std::string>());
         }
         catch (const std::exception &e)
