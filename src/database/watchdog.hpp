@@ -9,10 +9,10 @@ class WatchDog
 {
    public:
     WatchDog();
-    WatchDog(const WatchDog &)            = delete;
-    WatchDog(WatchDog &&)                 = delete;
-    WatchDog &operator=(const WatchDog &) = delete;
-    WatchDog &operator=(WatchDog &&)      = delete;
+    WatchDog(const WatchDog&)            = delete;
+    WatchDog(WatchDog&&)                 = delete;
+    WatchDog& operator=(const WatchDog&) = delete;
+    WatchDog& operator=(WatchDog&&)      = delete;
     virtual ~WatchDog();
 
    private:

@@ -1,12 +1,10 @@
 #include <catch2/catch_test_macros.hpp>
-
 #include <cstdint>
+#include <jsoncons/json.hpp>
 #include <optional>
 #include <string>
 #include <unordered_set>
 #include <utility>
-
-#include <jsoncons/json.hpp>
 
 #include "entities/base/types.hpp"
 #include "utils/global/http.hpp"
@@ -18,10 +16,10 @@ namespace Types = api::v2::Types;
 
 namespace
 {
-    jsoncons::json makeJsonObject(std::initializer_list<std::pair<const char *, std::string>> items)
+    jsoncons::json makeJsonObject(std::initializer_list<std::pair<const char*, std::string>> items)
     {
         jsoncons::json object = jsoncons::json::object();
-        for (const auto &[key, value] : items)
+        for (const auto& [key, value] : items)
         {
             object[key] = value;
         }
@@ -41,10 +39,7 @@ TEST_CASE("Validator::Rule flag semantics", "[validator][rule]")
         CHECK(rule.check(Action::ASSERT_IMMUTABLE, "created_at"));
     }
 
-    SECTION("a key not covered does not match")
-    {
-        CHECK_FALSE(rule.check(Action::ASSERT_IMMUTABLE, "name"));
-    }
+    SECTION("a key not covered does not match") { CHECK_FALSE(rule.check(Action::ASSERT_IMMUTABLE, "name")); }
 
     SECTION("a different action does not match even for covered keys")
     {
@@ -91,7 +86,7 @@ TEST_CASE("Validator::clientRegexValidation accepts known-good client data", "[v
         {"gender", "Male"},
     });
 
-    HttpError                                     error;
+    HttpError                                               error;
     std::unordered_set<std::pair<std::string, std::string>> db_data;
     REQUIRE(Validator::clientRegexValidation(data, error, db_data));
 
@@ -110,13 +105,13 @@ TEST_CASE("Validator::clientRegexValidation rejects values that do not match the
         {"gender", "male"},     // case sensitive
     };
 
-    for (const auto &[key, value] : invalid)
+    for (const auto& [key, value] : invalid)
     {
         CAPTURE(key, value);
 
         jsoncons::json data = makeJsonObject({{key.c_str(), value}});
 
-        HttpError                                     error;
+        HttpError                                               error;
         std::unordered_set<std::pair<std::string, std::string>> db_data;
         REQUIRE_FALSE(Validator::clientRegexValidation(data, error, db_data));
         CHECK(error.code == api::v2::Http::Status::BAD_REQUEST);
@@ -127,7 +122,7 @@ TEST_CASE("Validator::clientRegexValidation rejects values that do not match the
 TEST_CASE("Validator::clientRegexValidation password policy", "[validator][regex]")
 {
     const std::vector<std::string> valid = {
-        "Abcdef1!",   // lower, upper, digit, special, 8 chars
+        "Abcdef1!",  // lower, upper, digit, special, 8 chars
         "Longer1Password!",
     };
     const std::vector<std::string> invalid = {
@@ -138,20 +133,20 @@ TEST_CASE("Validator::clientRegexValidation password policy", "[validator][regex
         "Ab1!",       // shorter than 8
     };
 
-    for (const auto &password : valid)
+    for (const auto& password : valid)
     {
         CAPTURE(password);
-        jsoncons::json data = makeJsonObject({{"password", password}});
-        HttpError                                     error;
+        jsoncons::json                                          data = makeJsonObject({{"password", password}});
+        HttpError                                               error;
         std::unordered_set<std::pair<std::string, std::string>> db_data;
         CHECK(Validator::clientRegexValidation(data, error, db_data));
     }
 
-    for (const auto &password : invalid)
+    for (const auto& password : invalid)
     {
         CAPTURE(password);
-        jsoncons::json data = makeJsonObject({{"password", password}});
-        HttpError                                     error;
+        jsoncons::json                                          data = makeJsonObject({{"password", password}});
+        HttpError                                               error;
         std::unordered_set<std::pair<std::string, std::string>> db_data;
         CHECK_FALSE(Validator::clientRegexValidation(data, error, db_data));
         CHECK(error.code == api::v2::Http::Status::BAD_REQUEST);
@@ -162,7 +157,7 @@ TEST_CASE("Validator::clientRegexValidation rejects empty values", "[validator][
 {
     jsoncons::json data = makeJsonObject({{"username", ""}});
 
-    HttpError                                     error;
+    HttpError                                               error;
     std::unordered_set<std::pair<std::string, std::string>> db_data;
     REQUIRE_FALSE(Validator::clientRegexValidation(data, error, db_data));
     CHECK(error.code == api::v2::Http::Status::BAD_REQUEST);
@@ -173,7 +168,7 @@ TEST_CASE("Validator::clientRegexValidation passes through keys without a valida
 {
     jsoncons::json data = makeJsonObject({{"first_name", "anything at all"}});
 
-    HttpError                                     error;
+    HttpError                                               error;
     std::unordered_set<std::pair<std::string, std::string>> db_data;
     REQUIRE(Validator::clientRegexValidation(data, error, db_data));
     CHECK(db_data.count({"first_name", "anything at all"}) == 1);
@@ -190,7 +185,7 @@ TEST_CASE("Types::Search_t parses a valid search request", "[validator][search]"
         "offset": 20
     })");
 
-    bool      success = false;
+    bool                  success = false;
     const Types::Search_t search(search_j, success);
 
     CHECK(success);
@@ -209,7 +204,7 @@ TEST_CASE("Types::Search_t direction 1 maps to DESC", "[validator][search]")
         "direction": 1, "limit": 1, "offset": 0
     })");
 
-    bool success = false;
+    bool                  success = false;
     const Types::Search_t parsed(search, success);
 
     CHECK(success);
@@ -232,8 +227,7 @@ TEST_CASE("Types::Search_t reports failure for a missing key without throwing", 
 // Bug 3 fixed: getDatabaseSchemaForTable() now returns {} early when the table
 // is not found, so found=false is preserved and the end-iterator is never
 // dereferenced.
-TEST_CASE("Validator::validateDatabaseCreateSchema returns false for an unknown table without crashing",
-    "[validator]")
+TEST_CASE("Validator::validateDatabaseCreateSchema returns false for an unknown table without crashing", "[validator]")
 {
     // With an empty DatabaseSchema (no DB connected), every table name is
     // unknown. The fix ensures we get false + an error message instead of UB.
@@ -255,8 +249,8 @@ TEST_CASE("Types::Search_t rejects fields with wrong JSON types", "[validator][s
             "keyword": 123, "filter": "f", "order_by": "o",
             "direction": 0, "limit": 1, "offset": 0
         })");
-        bool success = true;
-        Types::Search_t parsed(search_j, success);
+        bool                 success  = true;
+        Types::Search_t      parsed(search_j, success);
         CHECK_FALSE(success);
     }
 
@@ -266,8 +260,8 @@ TEST_CASE("Types::Search_t rejects fields with wrong JSON types", "[validator][s
             "keyword": "x", "filter": "f", "order_by": "o",
             "direction": "ASC", "limit": 1, "offset": 0
         })");
-        bool success = true;
-        Types::Search_t parsed(search_j, success);
+        bool                 success  = true;
+        Types::Search_t      parsed(search_j, success);
         CHECK_FALSE(success);
     }
 
@@ -277,19 +271,19 @@ TEST_CASE("Types::Search_t rejects fields with wrong JSON types", "[validator][s
             "keyword": "x", "filter": "f", "order_by": "o",
             "direction": 0, "limit": "ten", "offset": 0
         })");
-        bool success = true;
-        Types::Search_t parsed(search_j, success);
+        bool                 success  = true;
+        Types::Search_t      parsed(search_j, success);
         CHECK_FALSE(success);
     }
 }
 
 TEST_CASE("Types::Search_t with zero limit and offset is valid", "[validator][search]")
 {
-    const jsoncons::json search_j = jsoncons::json::parse(R"({
+    const jsoncons::json  search_j = jsoncons::json::parse(R"({
         "keyword": "", "filter": "all", "order_by": "id",
         "direction": 0, "limit": 0, "offset": 0
     })");
-    bool success = false;
+    bool                  success  = false;
     const Types::Search_t parsed(search_j, success);
     CHECK(success);
     CHECK(parsed.limit == 0);

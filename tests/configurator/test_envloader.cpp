@@ -1,5 +1,5 @@
+#include <algorithm>
 #include <catch2/catch_test_macros.hpp>
-
 #include <chrono>
 #include <cstdint>
 #include <optional>
@@ -8,8 +8,6 @@
 #include <thread>
 #include <unordered_set>
 #include <vector>
-
-#include <algorithm>
 
 #include "configurator/configurator.hpp"
 #include "configurator/defaults.hpp"
@@ -32,10 +30,10 @@ namespace
     /// scope and restores the previous state afterwards.
     struct ScopedEnv
     {
-        ScopedEnv(const std::string &key, const std::string &value) : key_(key)
+        ScopedEnv(const std::string& key, const std::string& value) : key_(key)
         {
-            const char *previous = std::getenv(key.c_str());
-            hadPrevious_ = previous != nullptr;
+            const char* previous = std::getenv(key.c_str());
+            hadPrevious_         = previous != nullptr;
             if (hadPrevious_)
             {
                 previous_ = previous;
@@ -128,10 +126,7 @@ TEST_CASE("EnvLoader integer template overload uses std::stoi", "[configurator][
 {
     TestLoader loader;
 
-    SECTION("missing variable yields the default")
-    {
-        CHECK(loader.getEnvironmentVariable<int>("VALHALLA_TEST_DEFINITELY_UNSET", 3) == 3);
-    }
+    SECTION("missing variable yields the default") { CHECK(loader.getEnvironmentVariable<int>("VALHALLA_TEST_DEFINITELY_UNSET", 3) == 3); }
 
     SECTION("present variable is parsed with stoi")
     {
@@ -200,7 +195,7 @@ TEST_CASE("EnvLoader set-of-strings overload falls back to an empty set", "[conf
     const auto unset = loader.getEnvironmentVariable("VALHALLA_TEST_DEFINITELY_UNSET");
     CHECK(unset.empty());
 
-    ScopedEnv guard("VALHALLA_TEST_DEFINITELY_UNSET", "10.0.0.1,10.0.0.2");
+    ScopedEnv  guard("VALHALLA_TEST_DEFINITELY_UNSET", "10.0.0.1,10.0.0.2");
     const auto parsed = loader.getEnvironmentVariable("VALHALLA_TEST_DEFINITELY_UNSET");
     CHECK(parsed == std::unordered_set<std::string>{"10.0.0.1", "10.0.0.2"});
 }
@@ -267,7 +262,7 @@ TEST_CASE("Configurator exposes the configured singleton through Store", "[confi
 
     SECTION("DOSDetectorConfig uses the compiled-in defaults (env unset)")
     {
-        const auto &config = configurator->get<Configurator::DOSDetectorConfig>();
+        const auto& config = configurator->get<Configurator::DOSDetectorConfig>();
         CHECK(config.max_requests == Defaults::DosDetector::MAX_REQUESTS_);
         CHECK(config.max_fingerprints == Defaults::DosDetector::MAX_FPS_);
         CHECK(config.period == std::chrono::seconds{Defaults::DosDetector::PERIOD_});
@@ -279,7 +274,7 @@ TEST_CASE("Configurator exposes the configured singleton through Store", "[confi
 
     SECTION("DatabaseConfig uses the compiled-in defaults (env unset)")
     {
-        const auto &config = configurator->get<Configurator::DatabaseConfig>();
+        const auto& config = configurator->get<Configurator::DatabaseConfig>();
         CHECK(config.host == Defaults::Database::DB_HOST_);
         CHECK(config.port == Defaults::Database::DB_PORT_);
         CHECK(config.name == Defaults::Database::DB_NAME_);
@@ -293,7 +288,7 @@ TEST_CASE("Configurator exposes the configured singleton through Store", "[confi
     {
         // tests/support/global_env.cpp sets TOKEN_* before the Configurator
         // singleton was created; the values must have been picked up there.
-        const auto &config = configurator->get<Configurator::TokenManagerParameters>();
+        const auto& config = configurator->get<Configurator::TokenManagerParameters>();
         CHECK(std::string(config.secret) == "valhalla-unit-test-secret-key");
         CHECK(std::string(config.issuer) == "valhalla-unit-test-issuer");
         CHECK(std::string(config.type) == "JWS");

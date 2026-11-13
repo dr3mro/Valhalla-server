@@ -6,8 +6,7 @@
 class InUseGuard
 {
    public:
-    explicit InUseGuard(std::atomic<bool>& in_use, std::mutex& mtx, std::condition_variable& _cv,
-        std::chrono::milliseconds timeout = std::chrono::seconds(1));
+    explicit InUseGuard(std::atomic<bool>& in_use, std::mutex& mtx, std::condition_variable& _cv, std::chrono::milliseconds timeout = std::chrono::seconds(1));
     InUseGuard()                             = delete;
     InUseGuard(const InUseGuard&)            = default;
     InUseGuard(InUseGuard&&)                 = delete;

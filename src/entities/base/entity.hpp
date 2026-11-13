@@ -29,13 +29,13 @@ using Search_t   = api::v2::Types::Search_t;
 class Entity : public Base
 {
    public:
-    Entity(const Entity &)            = delete;
-    Entity(Entity &&)                 = delete;
-    Entity &operator=(const Entity &) = delete;
-    Entity &operator=(Entity &&)      = delete;
+    Entity(const Entity&)            = delete;
+    Entity(Entity&&)                 = delete;
+    Entity& operator=(const Entity&) = delete;
+    Entity& operator=(Entity&&)      = delete;
     template <typename T>
 
-    Entity(const T &_data, const std::string &_tablename) : tablename(_tablename), data(EntityType(_data))
+    Entity(const T& _data, const std::string& _tablename) : tablename(_tablename), data(EntityType(_data))
     {
     }
 
@@ -46,14 +46,14 @@ class Entity : public Base
         PlainBinder binder;
         return buildCreateStatement(binder);
     }
-    std::optional<std::string> getSqlCreateStatementParameterized(pqxx::params &params) override
+    std::optional<std::string> getSqlCreateStatementParameterized(pqxx::params& params) override
     {
         ParamBinder binder(params);
         return buildCreateStatement(binder);
     }
 
     std::optional<std::string> getSqlReadStatement() override { return buildReadStatement(); }
-    std::optional<std::string> getSqlReadStatementParameterized(pqxx::params &params) override
+    std::optional<std::string> getSqlReadStatementParameterized(pqxx::params& params) override
     {
         params = {};
         return buildReadStatement();
@@ -64,14 +64,14 @@ class Entity : public Base
         PlainBinder binder;
         return buildUpdateStatement(binder);
     }
-    std::optional<std::string> getSqlUpdateStatementParameterized(pqxx::params &params) override
+    std::optional<std::string> getSqlUpdateStatementParameterized(pqxx::params& params) override
     {
         ParamBinder binder(params);
         return buildUpdateStatement(binder);
     }
 
     std::optional<std::string> getSqlDeleteStatement() override { return buildDeleteStatement(); }
-    std::optional<std::string> getSqlDeleteStatementParameterized(pqxx::params &params) override
+    std::optional<std::string> getSqlDeleteStatementParameterized(pqxx::params& params) override
     {
         params = {};
         return buildDeleteStatement();
@@ -82,13 +82,13 @@ class Entity : public Base
         PlainBinder binder;
         return buildSearchStatement(binder);
     }
-    std::optional<std::string> getSqlSearchStatementParameterized(pqxx::params &params) override
+    std::optional<std::string> getSqlSearchStatementParameterized(pqxx::params& params) override
     {
         ParamBinder binder(params);
         return buildSearchStatement(binder);
     }
 
-    [[nodiscard("Warning: You should never discard the returned object")]] const EntityType &getData() const { return data; }
+    [[nodiscard("Warning: You should never discard the returned object")]] const EntityType& getData() const { return data; }
 
     [[nodiscard("Warning: You should never discard the returned object")]] std::string getGroupName() const  // ie. tablename
     {
@@ -119,7 +119,7 @@ class Entity : public Base
     // Common implementation of the SQL statements: one builder per operation, shared by the plain and the
     // parameterized variant. Binder::bind(value) returns what goes into the query for that value.
     template <typename Binder>
-    std::optional<std::string> buildCreateStatement(Binder &binder)
+    std::optional<std::string> buildCreateStatement(Binder& binder)
     {
         try
         {
@@ -129,7 +129,7 @@ class Entity : public Base
             jsoncons::json data_json = std::get<Create_t>(data).get_data();
             data_json["id"]          = std::get<Create_t>(data).get_id();
 
-            for (auto &iterator : data_json.object_range())
+            for (auto& iterator : data_json.object_range())
             {
                 keys_arr.push_back(iterator.key());
                 values_arr.push_back(binder.bind(iterator.value().template as<std::string>()));
@@ -137,7 +137,7 @@ class Entity : public Base
 
             return fmt::format("INSERT INTO {} ({}) VALUES ({}) RETURNING *;", tablename, fmt::join(keys_arr, ","), fmt::join(values_arr, ","));
         }
-        catch (const std::exception &e)
+        catch (const std::exception& e)
         {
             Message::ErrorMessage(fmt::format("Failed to create Sql create statement for table {}.", tablename));
             Message::CriticalMessage(e.what());
@@ -160,7 +160,7 @@ class Entity : public Base
             }
             return fmt::format("SELECT {} FROM {}_safe WHERE id={} LIMIT 1;", columns, tablename, user_id.value());
         }
-        catch (const std::exception &e)
+        catch (const std::exception& e)
         {
             Message::ErrorMessage(fmt::format("Failed to create Sql read statement for table {}.", tablename));
             Message::CriticalMessage(e.what());
@@ -169,7 +169,7 @@ class Entity : public Base
     }
 
     template <typename Binder>
-    std::optional<std::string> buildUpdateStatement(Binder &binder)
+    std::optional<std::string> buildUpdateStatement(Binder& binder)
     {
         try
         {
@@ -191,7 +191,7 @@ class Entity : public Base
 
             return fmt::format("UPDATE {} SET {} WHERE id={} RETURNING *;", tablename, fmt::join(set_clauses, ", "), _id.value());
         }
-        catch (const std::exception &e)
+        catch (const std::exception& e)
         {
             Message::ErrorMessage(fmt::format("Failed to create Sql update statement for table {}.", tablename));
             Message::CriticalMessage(e.what());
@@ -211,7 +211,7 @@ class Entity : public Base
             }
             return fmt::format("DELETE FROM {} where id={} returning id;", tablename, _id.value());
         }
-        catch (const std::exception &e)
+        catch (const std::exception& e)
         {
             Message::ErrorMessage(fmt::format("Failed to create Sql delete statement for table {}.", tablename));
             Message::CriticalMessage(e.what());
@@ -220,7 +220,7 @@ class Entity : public Base
     }
 
     template <typename Binder>
-    std::optional<std::string> buildSearchStatement(Binder &binder)
+    std::optional<std::string> buildSearchStatement(Binder& binder)
     {
         try
         {
@@ -231,7 +231,7 @@ class Entity : public Base
                 tablename, searchdata.filter, binder.bind(fmt::format("%{}%", searchdata.keyword)), searchdata.order_by, searchdata.direction,
                 searchdata.limit + 1, searchdata.offset);
         }
-        catch (const std::exception &e)
+        catch (const std::exception& e)
         {
             Message::ErrorMessage(fmt::format("Failed to create Sql search statement for table {}.", tablename));
             Message::CriticalMessage(e.what());

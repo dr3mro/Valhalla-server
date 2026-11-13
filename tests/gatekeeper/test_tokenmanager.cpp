@@ -1,27 +1,26 @@
+#include <jwt-cpp/jwt.h>
+#include <jwt-cpp/traits/kazuho-picojson/traits.h>
+
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/generators/catch_generators.hpp>
-
 #include <chrono>
 #include <optional>
 #include <string>
 
-#include <jwt-cpp/jwt.h>
-#include <jwt-cpp/traits/kazuho-picojson/traits.h>
-
 #include "gatekeeper/tokenmanager/tokenmanager.hpp"
 #include "support/builders.hpp"
 
-using TokenManager     = api::v2::TokenManager;
-using ClientLoginData  = api::v2::Types::ClientLoginData;
+using TokenManager    = api::v2::TokenManager;
+using ClientLoginData = api::v2::Types::ClientLoginData;
 using valhalla_test::makeLoginData;
 
 namespace
 {
     // Test token parameters - must match tests/support/global_env.cpp, which
     // sets them before the Configurator singleton is created.
-    constexpr const char *kSecret = "valhalla-unit-test-secret-key";
-    constexpr const char *kIssuer = "valhalla-unit-test-issuer";
-    constexpr const char *kType   = "JWS";
+    constexpr const char* kSecret          = "valhalla-unit-test-secret-key";
+    constexpr const char* kIssuer          = "valhalla-unit-test-issuer";
+    constexpr const char* kType            = "JWS";
     constexpr int         kValidityMinutes = 60;
 }  // namespace
 
@@ -82,11 +81,8 @@ TEST_CASE("TokenManager token signature round-trips with the configured secret",
     REQUIRE(manager.generateToken(loginData));
 
     // Verify with the same parameters the manager signed with.
-    auto verifier = jwt::verify<jwt::traits::kazuho_picojson>()
-                        .allow_algorithm(jwt::algorithm::hs256{kSecret})
-                        .with_issuer(kIssuer)
-                        .with_type(kType);
-    auto decoded = jwt::decode<jwt::traits::kazuho_picojson>(loginData->token.value());
+    auto verifier = jwt::verify<jwt::traits::kazuho_picojson>().allow_algorithm(jwt::algorithm::hs256{kSecret}).with_issuer(kIssuer).with_type(kType);
+    auto decoded  = jwt::decode<jwt::traits::kazuho_picojson>(loginData->token.value());
     REQUIRE_NOTHROW(verifier.verify(decoded));
 
     // A verifier with a different secret must reject it.
@@ -114,10 +110,10 @@ TEST_CASE("TokenManager validates a well-formed token whose session fields match
     // database the caller-provided fields decide the outcome (documented in
     // tests/README.md). The token check itself (signature, issuer, type,
     // subject, id, ip, group) is exercised here.
-    const auto token    = valhalla_test::makeToken(kSecret, kIssuer, kType, "alice", 7, "users", "127.0.0.1", "2026-01-01 00:00:00 +0000");
-    auto loginData = std::optional<ClientLoginData>(makeLoginData(7, "users", "127.0.0.1"));
-    loginData->token         = token;
-    loginData->username      = "alice";
+    const auto token          = valhalla_test::makeToken(kSecret, kIssuer, kType, "alice", 7, "users", "127.0.0.1", "2026-01-01 00:00:00 +0000");
+    auto       loginData      = std::optional<ClientLoginData>(makeLoginData(7, "users", "127.0.0.1"));
+    loginData->token          = token;
+    loginData->username       = "alice";
     loginData->lastLogoutTime = "2026-01-01 00:00:00 +0000";
 
     std::string message;
@@ -129,7 +125,7 @@ TEST_CASE("TokenManager rejects a token signed with the wrong secret", "[gatekee
 {
     TokenManager manager;
 
-    auto loginData = std::optional<ClientLoginData>(makeLoginData(7, "users", "127.0.0.1"));
+    auto loginData            = std::optional<ClientLoginData>(makeLoginData(7, "users", "127.0.0.1"));
     loginData->token          = valhalla_test::makeToken("intruder-secret", kIssuer, kType, "alice", 7, "users", "127.0.0.1", "llodt");
     loginData->username       = "alice";
     loginData->lastLogoutTime = "llodt";
@@ -143,10 +139,10 @@ TEST_CASE("TokenManager rejects a tampered token", "[gatekeeper][token]")
 {
     TokenManager manager;
 
-    auto loginData          = std::optional<ClientLoginData>(makeLoginData(7, "users", "127.0.0.1"));
-    const auto goodToken    = valhalla_test::makeToken(kSecret, kIssuer, kType, "alice", 7, "users", "127.0.0.1", "llodt");
-    loginData->token        = valhalla_test::makeTamperedToken(goodToken);
-    loginData->username     = "alice";
+    auto       loginData      = std::optional<ClientLoginData>(makeLoginData(7, "users", "127.0.0.1"));
+    const auto goodToken      = valhalla_test::makeToken(kSecret, kIssuer, kType, "alice", 7, "users", "127.0.0.1", "llodt");
+    loginData->token          = valhalla_test::makeTamperedToken(goodToken);
+    loginData->username       = "alice";
     loginData->lastLogoutTime = "llodt";
 
     std::string message;
@@ -158,11 +154,11 @@ TEST_CASE("TokenManager rejects a malformed token without crashing", "[gatekeepe
 {
     TokenManager manager;
 
-    const auto &malformed = GENERATE(std::string(""), std::string("not-a-token"), std::string("a.b"), std::string("..."),
-        std::string("eyJhbGciOiJIUzI1NiJ9.e30.!!!invalid-base64!!!"));
+    const auto& malformed = GENERATE(
+        std::string(""), std::string("not-a-token"), std::string("a.b"), std::string("..."), std::string("eyJhbGciOiJIUzI1NiJ9.e30.!!!invalid-base64!!!"));
 
-    auto loginData      = std::optional<ClientLoginData>(makeLoginData());
-    loginData->token    = malformed;
+    auto loginData   = std::optional<ClientLoginData>(makeLoginData());
+    loginData->token = malformed;
     std::string message;
 
     CAPTURE(malformed);
@@ -175,10 +171,10 @@ TEST_CASE("TokenManager generateToken fails cleanly for each missing field", "[g
 
     SECTION("missing clientId")
     {
-        auto loginData        = std::optional<ClientLoginData>(makeLoginData(42, "users", "1.2.3.4"));
-        loginData->username   = "u";
+        auto loginData            = std::optional<ClientLoginData>(makeLoginData(42, "users", "1.2.3.4"));
+        loginData->username       = "u";
         loginData->lastLogoutTime = "llodt";
-        loginData->group      = "users";
+        loginData->group          = "users";
         loginData->clientId.reset();
 
         REQUIRE_FALSE(manager.generateToken(loginData));
@@ -208,9 +204,9 @@ TEST_CASE("TokenManager generateToken fails cleanly for each missing field", "[g
 
     SECTION("missing lastLogoutTime")
     {
-        auto loginData        = std::optional<ClientLoginData>(makeLoginData(42, "users", "1.2.3.4"));
-        loginData->username   = "u";
-        loginData->group      = "users";
+        auto loginData      = std::optional<ClientLoginData>(makeLoginData(42, "users", "1.2.3.4"));
+        loginData->username = "u";
+        loginData->group    = "users";
         loginData->lastLogoutTime.reset();
 
         REQUIRE_FALSE(manager.generateToken(loginData));
@@ -222,9 +218,7 @@ TEST_CASE("TokenManager rejects an already-expired token", "[gatekeeper][token]"
     TokenManager manager;
 
     // Build a token that expired 1 minute ago.
-    const auto token = valhalla_test::makeToken(
-        kSecret, kIssuer, kType, "alice", 7, "users", "127.0.0.1", "llodt",
-        std::chrono::minutes{-1});
+    const auto token = valhalla_test::makeToken(kSecret, kIssuer, kType, "alice", 7, "users", "127.0.0.1", "llodt", std::chrono::minutes{-1});
 
     auto loginData            = std::optional<ClientLoginData>(makeLoginData(7, "users", "127.0.0.1"));
     loginData->token          = token;

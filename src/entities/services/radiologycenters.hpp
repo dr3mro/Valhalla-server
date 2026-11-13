@@ -14,7 +14,7 @@ class RadiologyCenters : public Service
     // RadiologyCenters() : Service(TABLENAME) {}
 
     template <typename T>
-    RadiologyCenters(const T &_data) : Service(_data, TABLENAME)
+    RadiologyCenters(const T& _data) : Service(_data, TABLENAME)
     {
     }
     static constexpr auto getTableName() { return TABLENAME; }

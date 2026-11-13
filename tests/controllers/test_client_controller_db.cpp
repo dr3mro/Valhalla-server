@@ -1,10 +1,8 @@
 #include <catch2/catch_test_macros.hpp>
-
+#include <jsoncons/json.hpp>
 #include <memory>
 #include <optional>
 #include <string>
-
-#include <jsoncons/json.hpp>
 
 #include "controllers/clientcontroller/clientcontroller.hpp"
 #include "entities/people/user.hpp"
@@ -26,9 +24,9 @@ namespace
         std::string body;
     };
 
-    CALLBACK_ capture(CallResult &out)
+    CALLBACK_ capture(CallResult& out)
     {
-        return [&out](int code, const std::string &body)
+        return [&out](int code, const std::string& body)
         {
             out.code = code;
             out.body = body;
@@ -147,8 +145,7 @@ TEST_CASE("ClientController::GetServices rejects nullopt id", "[controller][clie
     CHECK(result.code == Http::Status::BAD_REQUEST);
 }
 
-TEST_CASE("ClientController::GetServices returns empty array when DB has no results",
-    "[controller][client][services]")
+TEST_CASE("ClientController::GetServices returns empty array when DB has no results", "[controller][client][services]")
 {
     auto fake           = std::make_shared<FakeDatabaseController>();
     fake->search_result = jsoncons::json::array{};  // empty array, not nullopt
@@ -165,9 +162,9 @@ TEST_CASE("ClientController::GetServices returns empty array when DB has no resu
 TEST_CASE("ClientController::GetServices returns service array from DB", "[controller][client][services]")
 {
     jsoncons::json::array services;
-    jsoncons::json         svc = jsoncons::json::object();
-    svc["id"]                  = 1;
-    svc["name"]                = "City Clinic";
+    jsoncons::json        svc = jsoncons::json::object();
+    svc["id"]                 = 1;
+    svc["name"]               = "City Clinic";
     services.push_back(svc);
 
     auto fake           = std::make_shared<FakeDatabaseController>();
@@ -240,7 +237,7 @@ TEST_CASE("ClientController::Search rejects malformed JSON", "[controller][clien
 TEST_CASE("ClientController::Search rejects incomplete search params", "[controller][client][search]")
 {
     // Missing "offset" field
-    constexpr const char *incomplete = R"({"keyword":"x","filter":"name","order_by":"id","direction":0,"limit":10})";
+    constexpr const char*  incomplete = R"({"keyword":"x","filter":"name","order_by":"id","direction":0,"limit":10})";
     ClientController<User> ctrl;
     CallResult             result;
     ctrl.Search(capture(result), userRequester(), incomplete);
@@ -250,9 +247,9 @@ TEST_CASE("ClientController::Search rejects incomplete search params", "[control
 TEST_CASE("ClientController::Search returns results from DB", "[controller][client][search]")
 {
     jsoncons::json::array rows;
-    jsoncons::json         row = jsoncons::json::object();
-    row["id"]                  = 1;
-    row["username"]            = "alice";
+    jsoncons::json        row = jsoncons::json::object();
+    row["id"]                 = 1;
+    row["username"]           = "alice";
     rows.push_back(row);
     // Extra row to trigger the "more results" logic (limit=1 but 2 rows returned)
     rows.push_back(row);
@@ -264,7 +261,7 @@ TEST_CASE("ClientController::Search returns results from DB", "[controller][clie
     ClientController<User> ctrl;
     CallResult             result;
 
-    constexpr const char *search = R"({"keyword":"alice","filter":"username","order_by":"id","direction":0,"limit":1,"offset":0})";
+    constexpr const char* search = R"({"keyword":"alice","filter":"username","order_by":"id","direction":0,"limit":1,"offset":0})";
     ctrl.Search(capture(result), userRequester(), search);
     CHECK(result.code == Http::Status::OK);
     CHECK(result.body.find("alice") != std::string::npos);
@@ -279,7 +276,7 @@ TEST_CASE("ClientController::Search returns empty results when DB has no rows", 
     ClientController<User> ctrl;
     CallResult             result;
 
-    constexpr const char *search = R"({"keyword":"nobody","filter":"username","order_by":"id","direction":0,"limit":10,"offset":0})";
+    constexpr const char* search = R"({"keyword":"nobody","filter":"username","order_by":"id","direction":0,"limit":10,"offset":0})";
     ctrl.Search(capture(result), userRequester(), search);
     CHECK(result.code == Http::Status::OK);
 }

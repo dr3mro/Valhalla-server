@@ -32,14 +32,14 @@ namespace api
         class Client : public Entity
         {
            public:
-            Client(const Client &)            = delete;
-            Client(Client &&)                 = delete;
-            Client &operator=(const Client &) = delete;
-            Client &operator=(Client &&)      = delete;
+            Client(const Client&)            = delete;
+            Client(Client&&)                 = delete;
+            Client& operator=(const Client&) = delete;
+            Client& operator=(Client&&)      = delete;
             // Client(const std::string &tablename) : Entity(tablename) {};
 
             template <typename T>
-            Client(const T &data, const std::string &tablename) : Entity(data, tablename)
+            Client(const T& data, const std::string& tablename) : Entity(data, tablename)
             {
             }
 
@@ -48,7 +48,7 @@ namespace api
                 PlainBinder binder;
                 return buildClientCreateStatement(binder);
             }
-            std::optional<std::string> getSqlCreateStatementParameterized(pqxx::params &params) final
+            std::optional<std::string> getSqlCreateStatementParameterized(pqxx::params& params) final
             {
                 ParamBinder binder(params);
                 return buildClientCreateStatement(binder);
@@ -59,7 +59,7 @@ namespace api
                 PlainBinder binder;
                 return buildClientUpdateStatement(binder);
             }
-            std::optional<std::string> getSqlUpdateStatementParameterized(pqxx::params &params) final
+            std::optional<std::string> getSqlUpdateStatementParameterized(pqxx::params& params) final
             {
                 ParamBinder binder(params);
                 return buildClientUpdateStatement(binder);
@@ -74,10 +74,10 @@ namespace api
                     client_id                      = suspenddata.client_id;
                     query                          = fmt::format(
                         "UPDATE {} SET active={} where id={} returning "
-                                                 "id,active;",
+                        "id,active;",
                         tablename, state ? "true" : "false", client_id.value());
                 }
-                catch (const std::exception &e)
+                catch (const std::exception& e)
                 {
                     Message::ErrorMessage(fmt::format("Failed to create Sql suspend statement for table {}.", tablename));
                     Message::CriticalMessage(e.what());
@@ -97,7 +97,7 @@ namespace api
             bool exists()
             {
                 auto client_data = std::get<T>(getData()).get_data_set();
-                auto iterator    = std::ranges::find_if(client_data, [&](const auto &item) { return item.first == USERNAME; });
+                auto iterator    = std::ranges::find_if(client_data, [&](const auto& item) { return item.first == USERNAME; });
 
                 if (iterator != client_data.end())
                 {
@@ -118,7 +118,7 @@ namespace api
            protected:
             // Common implementation shared by the plain and the parameterized variant (see Base::PlainBinder / ParamBinder).
             template <typename Binder>
-            std::optional<std::string> buildClientCreateStatement(Binder &binder)
+            std::optional<std::string> buildClientCreateStatement(Binder& binder)
             {
                 try
                 {
@@ -127,7 +127,7 @@ namespace api
                     std::vector<std::string> keys_arr;
                     std::vector<std::string> values_arr;
 
-                    for (const auto &item : clientdata.get_data_set())
+                    for (const auto& item : clientdata.get_data_set())
                     {
                         keys_arr.push_back(item.first);
                         values_arr.push_back(binder.bind(item.second));
@@ -135,7 +135,7 @@ namespace api
 
                     return fmt::format("INSERT INTO {} ({}) VALUES ({}) RETURNING id;", tablename, fmt::join(keys_arr, ","), fmt::join(values_arr, ","));
                 }
-                catch (const std::exception &e)
+                catch (const std::exception& e)
                 {
                     Message::ErrorMessage(fmt::format("Failed to create Sql create statement for table {}.", tablename));
                     Message::CriticalMessage(e.what());
@@ -144,7 +144,7 @@ namespace api
             }
 
             template <typename Binder>
-            std::optional<std::string> buildClientUpdateStatement(Binder &binder)
+            std::optional<std::string> buildClientUpdateStatement(Binder& binder)
             {
                 try
                 {
@@ -164,7 +164,7 @@ namespace api
 
                     return fmt::format("UPDATE {} SET {} WHERE id={} RETURNING id;", tablename, fmt::join(set_clauses, ", "), client_id.value());
                 }
-                catch (const std::exception &e)
+                catch (const std::exception& e)
                 {
                     Message::ErrorMessage(fmt::format("Failed to create Sql update statement for table {}.", tablename));
                     Message::CriticalMessage(e.what());

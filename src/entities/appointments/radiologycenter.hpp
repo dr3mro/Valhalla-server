@@ -15,21 +15,21 @@ class RadiologyCenterAppointment : public Appointment
 
    public:
     template <typename T>
-    explicit RadiologyCenterAppointment(const T &_data) : Appointment(_data, TABLENAME)
+    explicit RadiologyCenterAppointment(const T& _data) : Appointment(_data, TABLENAME)
     {
     }
 
-    RadiologyCenterAppointment(const RadiologyCenterAppointment &)            = delete;
-    RadiologyCenterAppointment(RadiologyCenterAppointment &&)                 = delete;
-    RadiologyCenterAppointment &operator=(const RadiologyCenterAppointment &) = delete;
-    RadiologyCenterAppointment &operator=(RadiologyCenterAppointment &&)      = delete;
+    RadiologyCenterAppointment(const RadiologyCenterAppointment&)            = delete;
+    RadiologyCenterAppointment(RadiologyCenterAppointment&&)                 = delete;
+    RadiologyCenterAppointment& operator=(const RadiologyCenterAppointment&) = delete;
+    RadiologyCenterAppointment& operator=(RadiologyCenterAppointment&&)      = delete;
 
     static constexpr auto getTableName() { return TABLENAME; }
     static constexpr auto getOrgName() { return ORGNAME; }
 
     ~RadiologyCenterAppointment() override = default;
 
-    static std::optional<std::string> getServicePermissionsQuery(const std::string &service_name, std::uint64_t service_id)
+    static std::optional<std::string> getServicePermissionsQuery(const std::string& service_name, std::uint64_t service_id)
     {
         return getServicePermissionsQueryImpl(service_name, service_id);
     }

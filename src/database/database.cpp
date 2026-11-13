@@ -21,7 +21,7 @@
 #include "utils/message/message.hpp"
 #define IUGUARD InUseGuard connection_guard(isConnectionInUse_, mtx_, cv_);
 
-Database::Database(std::shared_ptr<pqxx::connection> &&conn) : connection(std::move(conn))
+Database::Database(std::shared_ptr<pqxx::connection>&& conn) : connection(std::move(conn))
 {
     try
     {
@@ -34,25 +34,21 @@ Database::Database(std::shared_ptr<pqxx::connection> &&conn) : connection(std::m
             connection_info = connection->connection_string();
         }
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         Message::CriticalMessage(fmt::format("Exception caught during database connection: {}", e.what()));
     }
 }
-Database::~Database() { Message::InfoMessage(fmt::format("Database connection {} is now exterminated.", static_cast<const void *>(this))); }
+Database::~Database() { Message::InfoMessage(fmt::format("Database connection {} is now exterminated.", static_cast<const void*>(this))); }
 
-bool Database::checkExists(const std::string &table, const std::string &column, const std::string &value, bool &isSqlInjection)
+bool Database::checkExists(const std::string& table, const std::string& column, const std::string& value, bool& isSqlInjection)
 {
     try
     {
-        std::string query = fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = $1);",
-                                        connection->quote_name(table),
-                                        connection->quote_name(column));
+        std::string query = fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = $1);", connection->quote_name(table), connection->quote_name(column));
         // Plain query (value inline) is only scanned for SQL injection; the parameterized one is executed.
-        isSqlInjection = GateKeeper::isQuerySqlInjection(fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = '{}');",
-                                                                     connection->quote_name(table),
-                                                                     connection->quote_name(column),
-                                                                     value));
+        isSqlInjection = GateKeeper::isQuerySqlInjection(
+            fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = '{}');", connection->quote_name(table), connection->quote_name(column), value));
 
         if (isSqlInjection)
         {
@@ -69,7 +65,7 @@ bool Database::checkExists(const std::string &table, const std::string &column, 
         }
         return result[0][0].as<bool>();
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         Message::CriticalMessage(fmt::format("Error executing query: {}", e.what()));
         return false;
@@ -88,7 +84,7 @@ bool Database::check_connection()
         pqxx::nontransaction ntxn(*connection);
         ntxn.exec("SELECT 1");
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         return false;
     }
@@ -105,14 +101,14 @@ bool Database::reconnect()
         }
         return check_connection();
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         Message::CriticalMessage(fmt::format("Failed to reconnect to database,{}", e.what()));
         return false;
     }
 }
 
-std::optional<std::unordered_set<api::v2::ColumnInfo>> Database::getTableSchema(const std::string &tableName)
+std::optional<std::unordered_set<api::v2::ColumnInfo>> Database::getTableSchema(const std::string& tableName)
 {
     try
     {
@@ -121,15 +117,14 @@ std::optional<std::unordered_set<api::v2::ColumnInfo>> Database::getTableSchema(
         {
             IUGUARD
             pqxx::nontransaction ntxn(*connection);
-            result = ntxn.exec(
-                pqxx::zview("SELECT column_name, data_type, column_default, is_nullable FROM "
-                            "information_schema.columns WHERE table_name = $1 AND column_name != 'id';"),
+            result = ntxn.exec(pqxx::zview("SELECT column_name, data_type, column_default, is_nullable FROM "
+                                           "information_schema.columns WHERE table_name = $1 AND column_name != 'id';"),
                 pqxx::params{tableName});
         }
 
         std::unordered_set<api::v2::ColumnInfo> schema;
 
-        for (const auto &row : result)
+        for (const auto& row : result)
         {
             api::v2::ColumnInfo column;
             column.Name       = row["column_name"].as<std::string>();
@@ -140,7 +135,7 @@ std::optional<std::unordered_set<api::v2::ColumnInfo>> Database::getTableSchema(
         }
         return schema;
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         Message::CriticalMessage(fmt::format("Error executing query: {}", e.what()));
         return std::nullopt;
@@ -161,13 +156,13 @@ std::optional<std::unordered_set<std::string>> Database::getAllTables()
 
         std::unordered_set<std::string> tables;
 
-        for (const auto &row : result)
+        for (const auto& row : result)
         {
             tables.insert(row["table_name"].as<std::string>());
         }
         return tables;
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         Message::CriticalMessage(fmt::format("Error executing query: {}", e.what()));
         return std::nullopt;
@@ -175,13 +170,12 @@ std::optional<std::unordered_set<std::string>> Database::getAllTables()
 }
 
 template <typename jsonType, typename TransactionType>
-std::optional<jsonType> Database::executeQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params, const std::string &plain_query)
+std::optional<jsonType> Database::executeQuery(const std::string& query, bool& isSqlInjection, const pqxx::params& params, const std::string& plain_query)
 {
     static_assert(std::is_same_v<jsonType, jsoncons::json> || std::is_same_v<jsonType, jsoncons::json::array>, "Unsupported jsonType specialization");
 
     try
     {
-
         // Scan the plain query (values inline) when there is one; a parameterized query is never run without it.
         if (plain_query.empty() && params.size() > 0)
         {
@@ -204,7 +198,6 @@ std::optional<jsonType> Database::executeQuery(const std::string &query, bool &i
 
             results = txn.exec(pqxx::zview(query), params);
 
-
             if constexpr (std::is_same_v<TransactionType, pqxx::work>)
             {
                 txn.commit();
@@ -214,11 +207,9 @@ std::optional<jsonType> Database::executeQuery(const std::string &query, bool &i
         jsonType       reply;
         jsoncons::json object;
 
-
-        for (const auto &row : results)
+        for (const auto& row : results)
         {
-
-            for (const auto &field : row)
+            for (const auto& field : row)
             {
                 std::string  field_name = field.name();
                 unsigned int field_type = field.type();
@@ -267,7 +258,7 @@ std::optional<jsonType> Database::executeQuery(const std::string &query, bool &i
         }
         return reply;
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         Message::ErrorMessage("Error executing query:");
         Message::InfoMessage(query);
@@ -277,7 +268,7 @@ std::optional<jsonType> Database::executeQuery(const std::string &query, bool &i
 }
 
 template <typename T>
-std::optional<T> Database::doSimpleQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params, const std::string &plain_query)
+std::optional<T> Database::doSimpleQuery(const std::string& query, bool& isSqlInjection, const pqxx::params& params, const std::string& plain_query)
 {
     try
     {
@@ -306,7 +297,7 @@ std::optional<T> Database::doSimpleQuery(const std::string &query, bool &isSqlIn
 
         return result.empty() ? std::nullopt : result[0][0].as<std::optional<T>>();
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         Message::ErrorMessage("Error executing query:");
         Message::InfoMessage(query);
@@ -316,8 +307,10 @@ std::optional<T> Database::doSimpleQuery(const std::string &query, bool &isSqlIn
     }
 }
 
-template std::optional<uint64_t>              Database::doSimpleQuery<uint64_t>(const std::string &, bool &, const pqxx::params &, const std::string &);
-template std::optional<std::string>           Database::doSimpleQuery<std::string>(const std::string &, bool &, const pqxx::params &, const std::string &);
-template std::optional<jsoncons::json>        Database::executeQuery<jsoncons::json, pqxx::nontransaction>(const std::string &, bool &, const pqxx::params &, const std::string &);
-template std::optional<jsoncons::json>        Database::executeQuery<jsoncons::json, pqxx::work>(const std::string &, bool &, const pqxx::params &, const std::string &);
-template std::optional<jsoncons::json::array> Database::executeQuery<jsoncons::json::array, pqxx::nontransaction>(const std::string &, bool &, const pqxx::params &, const std::string &);
+template std::optional<uint64_t>       Database::doSimpleQuery<uint64_t>(const std::string&, bool&, const pqxx::params&, const std::string&);
+template std::optional<std::string>    Database::doSimpleQuery<std::string>(const std::string&, bool&, const pqxx::params&, const std::string&);
+template std::optional<jsoncons::json> Database::executeQuery<jsoncons::json, pqxx::nontransaction>(
+    const std::string&, bool&, const pqxx::params&, const std::string&);
+template std::optional<jsoncons::json> Database::executeQuery<jsoncons::json, pqxx::work>(const std::string&, bool&, const pqxx::params&, const std::string&);
+template std::optional<jsoncons::json::array> Database::executeQuery<jsoncons::json::array, pqxx::nontransaction>(
+    const std::string&, bool&, const pqxx::params&, const std::string&);

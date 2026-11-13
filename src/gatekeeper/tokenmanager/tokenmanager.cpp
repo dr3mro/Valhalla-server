@@ -4,7 +4,7 @@
 #include <jwt-cpp/traits/kazuho-picojson/traits.h>
 using TokenManager = api::v2::TokenManager;
 
-bool TokenManager::generateToken(std::optional<Types::ClientLoginData> &clientLoginData)
+bool TokenManager::generateToken(std::optional<Types::ClientLoginData>& clientLoginData)
 {
     try
     {
@@ -29,13 +29,13 @@ bool TokenManager::generateToken(std::optional<Types::ClientLoginData> &clientLo
             return true;
         }
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         Message::CriticalMessage(fmt::format("Error generating token:{}", e.what()));
     }
     return false;
 }
-bool TokenManager::isTokenValid(std::optional<Types::ClientLoginData> &clientLoginData, std::string &message)
+bool TokenManager::isTokenValid(std::optional<Types::ClientLoginData>& clientLoginData, std::string& message)
 {
     try
     {
@@ -49,7 +49,7 @@ bool TokenManager::isTokenValid(std::optional<Types::ClientLoginData> &clientLog
         // Token is valid
         return validateToken(clientLoginData, message, decodedToken);
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         message = fmt::format("Error validating Token:{}", e.what());
         Message::CriticalMessage(message);

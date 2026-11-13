@@ -165,8 +165,8 @@ bool api::v2::PermissionManagerPrivate::preServiceCreateChecks(const Requester& 
     return true;
 }
 
-bool api::v2::PermissionManagerPrivate::isOwnerOrAdminOrHasPermission(
-    const Requester& requester, const std::optional<jsoncons::json>& permissions_j, const std::string& service_name, Http::Error& error, Permissions::PowerLevel required)
+bool api::v2::PermissionManagerPrivate::isOwnerOrAdminOrHasPermission(const Requester& requester, const std::optional<jsoncons::json>& permissions_j,
+    const std::string& service_name, Http::Error& error, Permissions::PowerLevel required)
 {
     if (isOwnerOrAdmin(requester, permissions_j, service_name, error))
     {

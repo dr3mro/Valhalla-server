@@ -21,14 +21,14 @@ namespace api::v2::Filters
     {
        public:
         Auth() = default;
-        void doFilter(const drogon::HttpRequestPtr &req, drogon::FilterCallback &&fcb, drogon::FilterChainCallback &&fccb) override
+        void doFilter(const drogon::HttpRequestPtr& req, drogon::FilterCallback&& fcb, drogon::FilterChainCallback&& fccb) override
         {
             const std::string bearer      = "Bearer ";
             const size_t      bearerMagic = bearer.length();
 
             // Directly get the authorization header value to avoid
             // multiple dereferences
-            const auto &auth_header = req->getHeader("Authorization");
+            const auto& auth_header = req->getHeader("Authorization");
 
             // Check for "Bearer " prefix using a fast substring
             // comparison

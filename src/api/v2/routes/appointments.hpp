@@ -27,31 +27,31 @@ namespace api::v2
     class Appointments : public drogon::HttpController<Appointments>
     {
        public:
-        void Create(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &entityType)
+        void Create(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& entityType)
         {
             executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Create, req, std::move(callback), req->body());
         }
 
-        void Read(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &entityType)
+        void Read(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& entityType)
         {
             executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Read, req, std::move(callback), req->body());
         }
 
-        void Update(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &entityType)
+        void Update(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& entityType)
         {
             auto id = parseIdParam(req, "id", callback);
-            if (!id) return;
-            executeControllerMethod(
-                appointmentRegistry, entityType, &AppointmentControllerBase::Update, req, std::move(callback), req->body(), *id);
+            if (!id)
+                return;
+            executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Update, req, std::move(callback), req->body(), *id);
         }
-        void Delete(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &entityType)
+        void Delete(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& entityType)
         {
             auto id = parseIdParam(req, "id", callback);
-            if (!id) return;
-            executeControllerMethod(
-                appointmentRegistry, entityType, &AppointmentControllerBase::Delete, req, std::move(callback), *id);
+            if (!id)
+                return;
+            executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Delete, req, std::move(callback), *id);
         }
-        void Search(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &entityType)
+        void Search(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& entityType)
         {
             executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Search, req, std::move(callback), req->body());
         }

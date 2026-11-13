@@ -9,7 +9,7 @@ class Clinics : public Service
 
    public:
     template <typename T>
-    Clinics(const T &_data) : Service(_data, TABLENAME)
+    Clinics(const T& _data) : Service(_data, TABLENAME)
     {
     }
 

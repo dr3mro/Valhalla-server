@@ -1,9 +1,8 @@
-#include <catch2/catch_test_macros.hpp>
+#include <trantor/utils/Logger.h>
 
+#include <catch2/catch_test_macros.hpp>
 #include <string>
 #include <vector>
-
-#include <trantor/utils/Logger.h>
 
 #include "utils/message/message.hpp"
 

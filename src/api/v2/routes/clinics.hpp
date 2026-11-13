@@ -33,40 +33,41 @@ namespace api::v2
     class Clinic : public drogon::HttpController<Clinic>
     {
        public:
-        void Create(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
+        void Create(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& serviceType)
         {
             executeControllerMethod(clinicRegistry, serviceType, &ClinicControllerBase::Create, req, std::move(callback), req->body());
         }
 
-        void Read(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
+        void Read(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& serviceType)
         {
             executeControllerMethod(clinicRegistry, serviceType, &ClinicControllerBase::Read, req, std::move(callback), req->body());
         }
 
-        void Update(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
+        void Update(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& serviceType)
         {
             auto id = parseIdParam(req, "id", callback);
-            if (!id) return;
-            executeControllerMethod(
-                clinicRegistry, serviceType, &ClinicControllerBase::Update, req, std::move(callback), req->body(), *id);
+            if (!id)
+                return;
+            executeControllerMethod(clinicRegistry, serviceType, &ClinicControllerBase::Update, req, std::move(callback), req->body(), *id);
         }
-        void Delete(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
+        void Delete(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& serviceType)
         {
             auto id = parseIdParam(req, "id", callback);
-            if (!id) return;
+            if (!id)
+                return;
             executeControllerMethod(clinicRegistry, serviceType, &ClinicControllerBase::Delete, req, std::move(callback), *id);
         }
-        void Search(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback)
+        void Search(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback)
         {
             executeControllerMethod(clinicRegistry, "patients", &ClinicControllerBase::Search, req, std::move(callback), req->body());
         }
 
-        void GetVisits(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback)
+        void GetVisits(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback)
         {
             auto patient_id = parseIdParam(req, "patient_id", callback);
-            if (!patient_id) return;
-            executeControllerMethod(
-                clinicRegistry, "patients", &ClinicControllerBase::GetVisits, req, std::move(callback), *patient_id);
+            if (!patient_id)
+                return;
+            executeControllerMethod(clinicRegistry, "patients", &ClinicControllerBase::GetVisits, req, std::move(callback), *patient_id);
         }
 
         METHOD_LIST_BEGIN

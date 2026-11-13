@@ -4,7 +4,7 @@
 
 template <typename T>
 template <typename U>
-void ClinicController<T>::CreateImpl(CALLBACK_ &&callback, const Requester &&requester, std::string_view data)
+void ClinicController<T>::CreateImpl(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
     requires(!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value)
 {
     jsoncons::json request_json;
@@ -12,7 +12,7 @@ void ClinicController<T>::CreateImpl(CALLBACK_ &&callback, const Requester &&req
     {
         request_json = jsoncons::json::parse(data);
     }
-    catch (const std::exception &)
+    catch (const std::exception&)
     {
         callback(api::v2::Http::Status::BAD_REQUEST, "Invalid request body: malformed JSON.");
         return;
@@ -50,7 +50,7 @@ void ClinicController<T>::CreateImpl(CALLBACK_ &&callback, const Requester &&req
         {
             id = request_json.at("id").as<uint64_t>();
         }
-        catch (const std::exception &)
+        catch (const std::exception&)
         {
             callback(api::v2::Http::Status::BAD_REQUEST, "id must be a non-negative integer that fits in 64 bits.");
             return;
@@ -73,7 +73,7 @@ void ClinicController<T>::CreateImpl(CALLBACK_ &&callback, const Requester &&req
 
         Controller::Create(entity, std::move(callback));
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         CRITICALMESSAGERESPONSE
     }
@@ -81,7 +81,7 @@ void ClinicController<T>::CreateImpl(CALLBACK_ &&callback, const Requester &&req
 
 template <typename T>
 template <typename U>
-void ClinicController<T>::CreateImpl(CALLBACK_ &&callback, const Requester &&requester, std::string_view data)
+void ClinicController<T>::CreateImpl(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
     requires(std::is_same<U, Patient>::value || std::is_same<U, Visits>::value)
 {
     EntityController<T>::Create(std::move(callback), std::move(requester), data);
@@ -89,7 +89,7 @@ void ClinicController<T>::CreateImpl(CALLBACK_ &&callback, const Requester &&req
 
 template <typename T>
 template <typename U>
-void ClinicController<T>::DeleteImpl(CALLBACK_ &&callback, const Requester &&requester, const std::optional<uint64_t> id)
+void ClinicController<T>::DeleteImpl(CALLBACK_&& callback, const Requester&& requester, const std::optional<uint64_t> id)
     requires(std::is_same<U, Patient>::value || std::is_same<U, Visits>::value)
 {
     EntityController<T>::Delete(std::move(callback), std::move(requester), id);
@@ -97,7 +97,7 @@ void ClinicController<T>::DeleteImpl(CALLBACK_ &&callback, const Requester &&req
 
 template <typename T>
 template <typename U>
-void ClinicController<T>::DeleteImpl(CALLBACK_ &&callback, [[maybe_unused]] const Requester &&requester, const std::optional<uint64_t> id)
+void ClinicController<T>::DeleteImpl(CALLBACK_&& callback, [[maybe_unused]] const Requester&& requester, const std::optional<uint64_t> id)
     requires(!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value)
 {
     (void)id;
@@ -106,7 +106,7 @@ void ClinicController<T>::DeleteImpl(CALLBACK_ &&callback, [[maybe_unused]] cons
 
 template <typename T>
 template <typename U>
-void ClinicController<T>::SearchImpl(CALLBACK_ &&callback, const Requester &&requester, std::string_view data)
+void ClinicController<T>::SearchImpl(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
     requires(std::is_same<U, Patient>::value)
 {
     EntityController<T>::Search(std::move(callback), std::move(requester), data);
@@ -114,7 +114,7 @@ void ClinicController<T>::SearchImpl(CALLBACK_ &&callback, const Requester &&req
 
 template <typename T>
 template <typename U>
-void ClinicController<T>::SearchImpl(CALLBACK_ &&callback, [[maybe_unused]] const Requester &&requester, [[maybe_unused]] std::string_view data)
+void ClinicController<T>::SearchImpl(CALLBACK_&& callback, [[maybe_unused]] const Requester&& requester, [[maybe_unused]] std::string_view data)
     requires(!std::is_same<U, Patient>::value)
 {
     callback(api::v2::Http::Status::BAD_REQUEST, fmt::format("Search is NOT implemented for entity type {}", T::getTableName()));
@@ -122,7 +122,7 @@ void ClinicController<T>::SearchImpl(CALLBACK_ &&callback, [[maybe_unused]] cons
 
 template <typename T>
 template <typename U>
-void ClinicController<T>::GetVisitsImpl(CALLBACK_ &&callback, const Requester &&requester, std::optional<uint64_t> patient_id)
+void ClinicController<T>::GetVisitsImpl(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> patient_id)
     requires(std::is_same<U, Patient>::value)
 {
     Http::Error error;
@@ -143,7 +143,7 @@ void ClinicController<T>::GetVisitsImpl(CALLBACK_ &&callback, const Requester &&
 
         Controller::GetVisits(entity, std::move(callback));
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         CRITICALMESSAGERESPONSE
     }
@@ -152,59 +152,59 @@ void ClinicController<T>::GetVisitsImpl(CALLBACK_ &&callback, const Requester &&
 template <typename T>
 template <typename U>
 void ClinicController<T>::GetVisitsImpl(
-    CALLBACK_ &&callback, [[maybe_unused]] const Requester &&requester, [[maybe_unused]] const std::optional<uint64_t> patient_id)
+    CALLBACK_&& callback, [[maybe_unused]] const Requester&& requester, [[maybe_unused]] const std::optional<uint64_t> patient_id)
     requires(!std::is_same<U, Patient>::value)
 {
     callback(api::v2::Http::Status::BAD_REQUEST, fmt::format("GetVisit is NOT implemented for entity type {}", T::getTableName()));
 }
 
 template <typename T>
-void ClinicController<T>::Create(CALLBACK_ &&callback, const Requester &&requester, std::string_view data)
+void ClinicController<T>::Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
 {
     CreateImpl(std::move(callback), std::move(requester), data);
 }
 
 template <typename T>
-void ClinicController<T>::Read(CALLBACK_ &&callback, const Requester &&requester, std::string_view data)
+void ClinicController<T>::Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
 {
     EntityController<T>::Read(std::move(callback), std::move(requester), data);
 }
 
 template <typename T>
-void ClinicController<T>::Update(CALLBACK_ &&callback, const Requester &&requester, std::string_view data, const std::optional<uint64_t> id)
+void ClinicController<T>::Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, const std::optional<uint64_t> id)
 {
     EntityController<T>::Update(std::move(callback), std::move(requester), data, id);
 }
 
 template <typename T>
-void ClinicController<T>::Delete(CALLBACK_ &&callback, const Requester &&requester, const std::optional<uint64_t> id)
+void ClinicController<T>::Delete(CALLBACK_&& callback, const Requester&& requester, const std::optional<uint64_t> id)
 {
     DeleteImpl(std::move(callback), std::move(requester), id);
 }
 
 template <typename T>
-void ClinicController<T>::Search(CALLBACK_ &&callback, const Requester &&requester, std::string_view data)
+void ClinicController<T>::Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
 {
     SearchImpl(std::move(callback), std::move(requester), data);
 }
 
 template <typename T>
-void ClinicController<T>::GetVisits(CALLBACK_ &&callback, const Requester &&requester, const std::optional<uint64_t> patient_id)
+void ClinicController<T>::GetVisits(CALLBACK_&& callback, const Requester&& requester, const std::optional<uint64_t> patient_id)
 {
     GetVisitsImpl(std::move(callback), std::move(requester), patient_id);
 }
 
 #define INSTANTIATE_CLINIC_CONTROLLER(TYPE)                                                                                                             \
-    template void ClinicController<TYPE>::CreateImpl(CALLBACK_ &&callback, const Requester &&requester, std::string_view data);                         \
-    template void ClinicController<TYPE>::DeleteImpl(CALLBACK_ &&callback, const Requester &&requester, std::optional<uint64_t> id);                    \
-    template void ClinicController<TYPE>::SearchImpl(CALLBACK_ &&callback, const Requester &&requester, std::string_view data);                         \
-    template void ClinicController<TYPE>::GetVisitsImpl(CALLBACK_ &&callback, const Requester &&requester, std::optional<uint64_t> patient_id);         \
-    template void ClinicController<TYPE>::Create(CALLBACK_ &&callback, const Requester &&requester, std::string_view data);                             \
-    template void ClinicController<TYPE>::Read(CALLBACK_ &&callback, const Requester &&requester, std::string_view data);                               \
-    template void ClinicController<TYPE>::Update(CALLBACK_ &&callback, const Requester &&requester, std::string_view data, std::optional<uint64_t> id); \
-    template void ClinicController<TYPE>::Delete(CALLBACK_ &&callback, const Requester &&requester, std::optional<uint64_t> id);                        \
-    template void ClinicController<TYPE>::Search(CALLBACK_ &&callback, const Requester &&requester, std::string_view data);                             \
-    template void ClinicController<TYPE>::GetVisits(CALLBACK_ &&callback, const Requester &&requester, std::optional<uint64_t> patient_id);
+    template void ClinicController<TYPE>::CreateImpl(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                         \
+    template void ClinicController<TYPE>::DeleteImpl(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id);                    \
+    template void ClinicController<TYPE>::SearchImpl(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                         \
+    template void ClinicController<TYPE>::GetVisitsImpl(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> patient_id);         \
+    template void ClinicController<TYPE>::Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                             \
+    template void ClinicController<TYPE>::Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                               \
+    template void ClinicController<TYPE>::Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> id); \
+    template void ClinicController<TYPE>::Delete(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id);                        \
+    template void ClinicController<TYPE>::Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                             \
+    template void ClinicController<TYPE>::GetVisits(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> patient_id);
 
 #include "gatekeeper/includes.hpp"  // IWYU pragma: keep
 // Instantiate for all entity types

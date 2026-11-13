@@ -13,18 +13,18 @@ class DatabaseConnectionPool
 {
    public:
     DatabaseConnectionPool();
-    DatabaseConnectionPool(const DatabaseConnectionPool &)            = delete;
-    DatabaseConnectionPool(DatabaseConnectionPool &&)                 = delete;
-    DatabaseConnectionPool &operator=(const DatabaseConnectionPool &) = delete;
-    DatabaseConnectionPool &operator=(DatabaseConnectionPool &&)      = delete;
-    virtual ~DatabaseConnectionPool()                                 = default;
+    DatabaseConnectionPool(const DatabaseConnectionPool&)            = delete;
+    DatabaseConnectionPool(DatabaseConnectionPool&&)                 = delete;
+    DatabaseConnectionPool& operator=(const DatabaseConnectionPool&) = delete;
+    DatabaseConnectionPool& operator=(DatabaseConnectionPool&&)      = delete;
+    virtual ~DatabaseConnectionPool()                                = default;
 
     [[nodiscard]] std::shared_ptr<Database> get_connection();
-    void                                    return_connection(std::shared_ptr<Database> &&db_ptr);
+    void                                    return_connection(std::shared_ptr<Database>&& db_ptr);
     void                                    reconnect_all();
 
    private:
-    std::shared_ptr<Database> createDatabaseConnection(const auto &config_);
+    std::shared_ptr<Database> createDatabaseConnection(const auto& config_);
 
     std::shared_ptr<Configurator>         configurator_;
     std::deque<std::shared_ptr<Database>> databaseConnections_;

@@ -40,12 +40,12 @@ WatchDog::WatchDog()
                     if (!db_ptr->check_connection())
                     {
                         Message::WarningMessage("Database connection lost. Attempting to reconnect...");
-                        Message::CriticalMessage(fmt::format("Database connection {} link is lost.", static_cast<const void *>(db_ptr.get())));
+                        Message::CriticalMessage(fmt::format("Database connection {} link is lost.", static_cast<const void*>(db_ptr.get())));
                         try
                         {
                             if (db_ptr->reconnect())
                             {
-                                Message::InfoMessage(fmt::format("Database connection {} is re-established successfully", static_cast<void *>(db_ptr.get())));
+                                Message::InfoMessage(fmt::format("Database connection {} is re-established successfully", static_cast<void*>(db_ptr.get())));
                                 dbHandler->reconnect_all();
                             }
                             else
@@ -53,7 +53,7 @@ WatchDog::WatchDog()
                                 Message::ErrorMessage("Failed to reconnect to database");
                             }
                         }
-                        catch (const std::exception &e)
+                        catch (const std::exception& e)
                         {
                             Message::CriticalMessage(fmt::format("Reconnect exception: {}", e.what()));
                         }
@@ -61,7 +61,7 @@ WatchDog::WatchDog()
 
                     std::this_thread::sleep_for(check_interval);
                 }
-                catch (const std::exception &e)
+                catch (const std::exception& e)
                 {
                     Message::CriticalMessage(fmt::format("Monitoring exception: {}", e.what()));
                 }

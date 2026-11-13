@@ -25,7 +25,7 @@ DOSDetector::DOSDetector()
     {
         async_task_clean_ = std::async(std::launch::async, &DOSDetector::cleanUpTask, this);
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         Message::ErrorMessage("Exception during DOSDetector initialization.");
         Message::CriticalMessage(e.what());
@@ -39,7 +39,7 @@ DOSDetector::DOSDetector(Configurator::DOSDetectorConfig config, ClockFn clock)
     {
         async_task_clean_ = std::async(std::launch::async, &DOSDetector::cleanUpTask, this);
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         Message::ErrorMessage("Exception during DOSDetector initialization.");
         Message::CriticalMessage(e.what());
@@ -57,14 +57,14 @@ DOSDetector::~DOSDetector()
             async_task_clean_.wait();
         }
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         Message::ErrorMessage("Exception during DOSDetector destruction.");
         Message::CriticalMessage(e.what());
     }
 }
 
-DOSDetector::Status DOSDetector::is_dos_attack(const Request &request)
+DOSDetector::Status DOSDetector::is_dos_attack(const Request& request)
 {
     try
     {
@@ -90,7 +90,7 @@ DOSDetector::Status DOSDetector::is_dos_attack(const Request &request)
 
         return processRequest(request);
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         Message::ErrorMessage("Failure in is_dos_attack.");
         Message::CriticalMessage(e.what());
@@ -98,18 +98,18 @@ DOSDetector::Status DOSDetector::is_dos_attack(const Request &request)
     }
 }
 inline void __attribute((always_inline)) DOSDetector::clean_requests(
-    const std::chrono::time_point<std::chrono::steady_clock> &window)  // Cleanup requests and blocked IPs
+    const std::chrono::time_point<std::chrono::steady_clock>& window)  // Cleanup requests and blocked IPs
 {
     std::lock_guard<std::mutex> request_lock(request_mutex_);
     // Cleanup requests
-    for (auto &request : requests_)
+    for (auto& request : requests_)
     {
-        auto &requests = request.second;
+        auto& requests = request.second;
 
         for (auto it = requests.begin(); it != requests.end();
             /* no increment here */)
         {
-            auto &times = it->second;
+            auto& times = it->second;
 
             while (!times.empty() && times.front() < window)
             {
@@ -127,7 +127,7 @@ inline void __attribute((always_inline)) DOSDetector::clean_requests(
         }
     }
 }
-inline void __attribute((always_inline)) DOSDetector::clean_ratelimited_ips(const std::chrono::time_point<std::chrono::steady_clock> &now)
+inline void __attribute((always_inline)) DOSDetector::clean_ratelimited_ips(const std::chrono::time_point<std::chrono::steady_clock>& now)
 {
     std::lock_guard<std::mutex> block_lock(ratelimit_mutex_);
     for (auto it = ratelimited_ips_.begin(); it != ratelimited_ips_.end();
@@ -144,7 +144,7 @@ inline void __attribute((always_inline)) DOSDetector::clean_ratelimited_ips(cons
         }
     }
 }
-inline void __attribute((always_inline)) DOSDetector::clean_banned_ips(const std::chrono::time_point<std::chrono::steady_clock> &now)
+inline void __attribute((always_inline)) DOSDetector::clean_banned_ips(const std::chrono::time_point<std::chrono::steady_clock>& now)
 {
     std::lock_guard<std::mutex> ban_lock(ban_mutex_);
     for (auto it = banned_ips_.begin(); it != banned_ips_.end();
@@ -183,21 +183,21 @@ void DOSDetector::cleanUpTask()
             clean_cv_.wait_for(lock, std::chrono::seconds(config_.clean_freq), [this] { return !running_clean_.load(); });
         }
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         Message::ErrorMessage("Exception in cleanUpTask.");
         Message::CriticalMessage(e.what());
     }
 }
 
-inline std::optional<std::string> __attribute((always_inline)) DOSDetector::generateRequestFingerprint(const DOSDetector::Request &req)
+inline std::optional<std::string> __attribute((always_inline)) DOSDetector::generateRequestFingerprint(const DOSDetector::Request& req)
 {
     try
     {
         std::string data;
         data.reserve(REQUEST_BUFFER_SIZE);
 
-        for (const auto &header : req.headers)
+        for (const auto& header : req.headers)
         {
             data.append(header.second);
         }
@@ -208,7 +208,7 @@ inline std::optional<std::string> __attribute((always_inline)) DOSDetector::gene
 
         return fmt::format("{}", hashed_key);
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         Message::ErrorMessage("Exception in generateRequestFingerprint.");
         Message::CriticalMessage(e.what());
@@ -216,13 +216,13 @@ inline std::optional<std::string> __attribute((always_inline)) DOSDetector::gene
     }
 }
 
-inline bool __attribute((always_inline)) DOSDetector::isWhitelisted(const std::string &remote_ip)
+inline bool __attribute((always_inline)) DOSDetector::isWhitelisted(const std::string& remote_ip)
 {
     try
     {
         return regexFind(remote_ip, whitelist_, whitelist_mutex_);
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         Message::ErrorMessage("Exception in isWhitelisted");
         Message::CriticalMessage(e.what());
@@ -230,13 +230,13 @@ inline bool __attribute((always_inline)) DOSDetector::isWhitelisted(const std::s
     }
 }
 
-inline bool __attribute((always_inline)) DOSDetector::isBlacklisted(const std::string &remote_ip)
+inline bool __attribute((always_inline)) DOSDetector::isBlacklisted(const std::string& remote_ip)
 {
     try
     {
         return regexFind(remote_ip, blacklist_, blacklist_mutex_);
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         Message::ErrorMessage("Exception in isBlacklisted.");
         Message::CriticalMessage(e.what());
@@ -244,21 +244,21 @@ inline bool __attribute((always_inline)) DOSDetector::isBlacklisted(const std::s
     }
 }
 
-inline bool __attribute((always_inline)) DOSDetector::regexFind(const std::string &remote_ip, const std::unordered_set<std::string> &list, std::mutex &mtx)
+inline bool __attribute((always_inline)) DOSDetector::regexFind(const std::string& remote_ip, const std::unordered_set<std::string>& list, std::mutex& mtx)
 {
     try
     {
         std::lock_guard<std::mutex> lock(mtx);
 
         return std::ranges::any_of(list,
-            [&remote_ip](const std::string &pattern)
+            [&remote_ip](const std::string& pattern)
             {
                 try
                 {
                     std::regex regex_pattern((pattern));
                     return std::regex_search((remote_ip), regex_pattern);
                 }
-                catch (const std::regex_error &e)
+                catch (const std::regex_error& e)
                 {
                     Message::ErrorMessage("Exception due to invalid regex pattern.");
                     Message::CriticalMessage(e.what());
@@ -267,7 +267,7 @@ inline bool __attribute((always_inline)) DOSDetector::regexFind(const std::strin
                 }
             });
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         Message::ErrorMessage("Exception in regexFind.");
         Message::CriticalMessage(e.what());
@@ -276,13 +276,13 @@ inline bool __attribute((always_inline)) DOSDetector::regexFind(const std::strin
     }
 }
 
-inline bool __attribute((always_inline)) DOSDetector::isBanned(const std::string &remote_ip)
+inline bool __attribute((always_inline)) DOSDetector::isBanned(const std::string& remote_ip)
 {
     try
     {
         return checkStatus(remote_ip, banned_ips_, ban_mutex_);
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         Message::ErrorMessage("Exception in isBanned.");
         Message::CriticalMessage(e.what());
@@ -291,13 +291,13 @@ inline bool __attribute((always_inline)) DOSDetector::isBanned(const std::string
     }
 }
 
-inline bool __attribute((always_inline)) DOSDetector::isRateLimited(const std::string &remote_ip)
+inline bool __attribute((always_inline)) DOSDetector::isRateLimited(const std::string& remote_ip)
 {
     try
     {
         return checkStatus(remote_ip, ratelimited_ips_, ratelimit_mutex_);
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         Message::ErrorMessage(fmt::format("Exception in isRateLimited."));
         Message::CriticalMessage(e.what());
@@ -307,7 +307,7 @@ inline bool __attribute((always_inline)) DOSDetector::isRateLimited(const std::s
 }
 
 template <typename Map, typename Mutex>
-inline bool __attribute((always_inline)) DOSDetector::checkStatus(const std::string &remote_ip, Map &ip_map, Mutex &mtx)
+inline bool __attribute((always_inline)) DOSDetector::checkStatus(const std::string& remote_ip, Map& ip_map, Mutex& mtx)
 {
     try
     {
@@ -326,7 +326,7 @@ inline bool __attribute((always_inline)) DOSDetector::checkStatus(const std::str
         }
         return false;
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         Message::ErrorMessage("Exception in checkStatus.");
         Message::CriticalMessage(e.what());
@@ -335,7 +335,7 @@ inline bool __attribute((always_inline)) DOSDetector::checkStatus(const std::str
     }
 }
 
-DOSDetector::Status DOSDetector::processRequest(const Request &request)
+DOSDetector::Status DOSDetector::processRequest(const Request& request)
 {
     try
     {
@@ -362,11 +362,11 @@ DOSDetector::Status DOSDetector::processRequest(const Request &request)
 
             // fmt::print("get the requests for the ip: {}\n",
             // remote_ip.value());
-            auto &ip_requests = requests_[remote_ip.value()];
+            auto& ip_requests = requests_[remote_ip.value()];
 
             // fmt::print("get the fingerprint for the ip: {} :: {}\n",
             // remote_ip.value(), request_fingerprint.value());
-            auto &fp_requests = ip_requests[request_fingerprint.value()];
+            auto& fp_requests = ip_requests[request_fingerprint.value()];
 
             const auto window = now - config_.period;
 
@@ -400,7 +400,7 @@ DOSDetector::Status DOSDetector::processRequest(const Request &request)
             // request_fingerprint.value());
         }
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         Message::ErrorMessage("Failure in processRequest.");
         Message::CriticalMessage(e.what());

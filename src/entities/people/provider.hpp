@@ -16,13 +16,13 @@ using Client = api::v2::Client;
 class Provider : public Client
 {
    public:
-    Provider(const Provider &)            = delete;
-    Provider(Provider &&)                 = delete;
-    Provider &operator=(const Provider &) = delete;
-    Provider &operator=(Provider &&)      = delete;
+    Provider(const Provider&)            = delete;
+    Provider(Provider&&)                 = delete;
+    Provider& operator=(const Provider&) = delete;
+    Provider& operator=(Provider&&)      = delete;
 
     template <typename ClientData_t>
-    explicit Provider(const ClientData_t &data) : Client(data, TABLENAME)
+    explicit Provider(const ClientData_t& data) : Client(data, TABLENAME)
     {
     }
     // Provider() : Client(std::string(TABLENAME)) {}
@@ -68,7 +68,7 @@ class Provider : public Client
                         )",
                 _id, _id);
         }
-        catch (const std::exception &e)
+        catch (const std::exception& e)
         {
             Message::ErrorMessage(fmt::format("Failed to create query for GetServicesStatement {}.", tablename));
             Message::CriticalMessage(e.what());

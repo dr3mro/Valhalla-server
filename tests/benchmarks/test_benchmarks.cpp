@@ -1,5 +1,4 @@
 #include <catch2/catch_test_macros.hpp>
-
 #include <chrono>
 #include <cstdlib>
 #include <string>
@@ -20,7 +19,7 @@ namespace
 
     /// Milliseconds for a repeated callable.
     template <typename Callable>
-    long long measure(Callable &&callable, const int iterations)
+    long long measure(Callable&& callable, const int iterations)
     {
         const auto start = std::chrono::steady_clock::now();
         for (int i = 0; i < iterations; ++i)
@@ -44,7 +43,7 @@ TEST_CASE("Benchmark: SqlInjectionDetector::isQuerySqlInjection", "[.benchmark]"
     const auto milliseconds = measure(
         [&](int)
         {
-            for (const auto &query : queries)
+            for (const auto& query : queries)
             {
                 (void)SqlInjectionDetector::isQuerySqlInjection(query);
             }

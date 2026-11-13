@@ -40,7 +40,7 @@ void ClientController<T>::Create(CALLBACK_&& callback, [[maybe_unused]] const Re
         {
             json_data = jsoncons::json::parse(data);
         }
-        catch (const std::exception &)
+        catch (const std::exception&)
         {
             callback(api::v2::Http::Status::BAD_REQUEST, "Invalid request body: malformed JSON.");
             return;

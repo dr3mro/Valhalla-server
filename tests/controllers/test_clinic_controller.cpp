@@ -17,7 +17,6 @@
 //   - Patient              → checks patient_id, runs canRead, calls Controller::GetVisits
 //   - others               → returns 400 "GetVisit is NOT implemented"
 #include <catch2/catch_test_macros.hpp>
-
 #include <optional>
 #include <string>
 
@@ -36,11 +35,20 @@
 
 using Requester = api::v2::Requester;
 
-struct Result { int status = 0; std::string body; };
+struct Result
+{
+    int         status = 0;
+    std::string body;
+};
 static Result capture(auto fn)
 {
     Result r;
-    fn([&](int s, const std::string& b){ r.status = s; r.body = b; });
+    fn(
+        [&](int s, const std::string& b)
+        {
+            r.status = s;
+            r.body   = b;
+        });
     return r;
 }
 
@@ -49,9 +57,7 @@ static Result capture(auto fn)
 TEST_CASE("ClinicController<Health>::Create rejects malformed JSON", "[controllers][clinic]")
 {
     ClinicController<Health> ctrl;
-    auto r = capture([&](auto cb){
-        ctrl.Create(std::move(cb), Requester(1, "providers"), "bad{json");
-    });
+    auto                     r = capture([&](auto cb) { ctrl.Create(std::move(cb), Requester(1, "providers"), "bad{json"); });
     CHECK(r.status == api::v2::Http::Status::BAD_REQUEST);
 }
 
@@ -62,9 +68,7 @@ TEST_CASE("ClinicController<Health>::Create rejects malformed JSON", "[controlle
 TEST_CASE("ClinicController<Reports>::Create rejects malformed JSON", "[controllers][clinic]")
 {
     ClinicController<Reports> ctrl;
-    auto r = capture([&](auto cb){
-        ctrl.Create(std::move(cb), Requester(1, "providers"), "{{");
-    });
+    auto                      r = capture([&](auto cb) { ctrl.Create(std::move(cb), Requester(1, "providers"), "{{"); });
     CHECK(r.status == api::v2::Http::Status::BAD_REQUEST);
 }
 
@@ -73,18 +77,14 @@ TEST_CASE("ClinicController<Reports>::Create rejects malformed JSON", "[controll
 TEST_CASE("ClinicController<Patient>::Create rejects malformed JSON (entity path)", "[controllers][clinic]")
 {
     ClinicController<Patient> ctrl;
-    auto r = capture([&](auto cb){
-        ctrl.Create(std::move(cb), Requester(1, "providers"), "bad{");
-    });
+    auto                      r = capture([&](auto cb) { ctrl.Create(std::move(cb), Requester(1, "providers"), "bad{"); });
     CHECK(r.status == api::v2::Http::Status::BAD_REQUEST);
 }
 
 TEST_CASE("ClinicController<Visits>::Create rejects malformed JSON (entity path)", "[controllers][clinic]")
 {
     ClinicController<Visits> ctrl;
-    auto r = capture([&](auto cb){
-        ctrl.Create(std::move(cb), Requester(1, "providers"), "bad{");
-    });
+    auto                     r = capture([&](auto cb) { ctrl.Create(std::move(cb), Requester(1, "providers"), "bad{"); });
     CHECK(r.status == api::v2::Http::Status::BAD_REQUEST);
 }
 
@@ -93,9 +93,7 @@ TEST_CASE("ClinicController<Visits>::Create rejects malformed JSON (entity path)
 TEST_CASE("ClinicController<Health>::Delete returns 400 not-implemented", "[controllers][clinic]")
 {
     ClinicController<Health> ctrl;
-    auto r = capture([&](auto cb){
-        ctrl.Delete(std::move(cb), Requester(1, "providers"), std::optional<uint64_t>{5});
-    });
+    auto                     r = capture([&](auto cb) { ctrl.Delete(std::move(cb), Requester(1, "providers"), std::optional<uint64_t>{5}); });
     CHECK(r.status == api::v2::Http::Status::BAD_REQUEST);
     CHECK(r.body.find("NOT implemented") != std::string::npos);
 }
@@ -103,18 +101,14 @@ TEST_CASE("ClinicController<Health>::Delete returns 400 not-implemented", "[cont
 TEST_CASE("ClinicController<Reports>::Delete returns 400 not-implemented", "[controllers][clinic]")
 {
     ClinicController<Reports> ctrl;
-    auto r = capture([&](auto cb){
-        ctrl.Delete(std::move(cb), Requester(1, "providers"), std::optional<uint64_t>{5});
-    });
+    auto                      r = capture([&](auto cb) { ctrl.Delete(std::move(cb), Requester(1, "providers"), std::optional<uint64_t>{5}); });
     CHECK(r.status == api::v2::Http::Status::BAD_REQUEST);
 }
 
 TEST_CASE("ClinicController<Prescriptions>::Delete returns 400 not-implemented", "[controllers][clinic]")
 {
     ClinicController<Prescriptions> ctrl;
-    auto r = capture([&](auto cb){
-        ctrl.Delete(std::move(cb), Requester(1, "providers"), std::optional<uint64_t>{1});
-    });
+    auto                            r = capture([&](auto cb) { ctrl.Delete(std::move(cb), Requester(1, "providers"), std::optional<uint64_t>{1}); });
     CHECK(r.status == api::v2::Http::Status::BAD_REQUEST);
 }
 
@@ -123,18 +117,14 @@ TEST_CASE("ClinicController<Prescriptions>::Delete returns 400 not-implemented",
 TEST_CASE("ClinicController<Patient>::Delete with no id → 406 (entity path)", "[controllers][clinic]")
 {
     ClinicController<Patient> ctrl;
-    auto r = capture([&](auto cb){
-        ctrl.Delete(std::move(cb), Requester(1, "providers"), std::nullopt);
-    });
+    auto                      r = capture([&](auto cb) { ctrl.Delete(std::move(cb), Requester(1, "providers"), std::nullopt); });
     CHECK(r.status == api::v2::Http::Status::NOT_ACCEPTABLE);
 }
 
 TEST_CASE("ClinicController<Visits>::Delete with no id → 406 (entity path)", "[controllers][clinic]")
 {
     ClinicController<Visits> ctrl;
-    auto r = capture([&](auto cb){
-        ctrl.Delete(std::move(cb), Requester(1, "providers"), std::nullopt);
-    });
+    auto                     r = capture([&](auto cb) { ctrl.Delete(std::move(cb), Requester(1, "providers"), std::nullopt); });
     CHECK(r.status == api::v2::Http::Status::NOT_ACCEPTABLE);
 }
 
@@ -143,9 +133,7 @@ TEST_CASE("ClinicController<Visits>::Delete with no id → 406 (entity path)", "
 TEST_CASE("ClinicController<Health>::Search returns 400 not-implemented", "[controllers][clinic]")
 {
     ClinicController<Health> ctrl;
-    auto r = capture([&](auto cb){
-        ctrl.Search(std::move(cb), Requester(1, "providers"), R"({"keyword":"flu"})");
-    });
+    auto                     r = capture([&](auto cb) { ctrl.Search(std::move(cb), Requester(1, "providers"), R"({"keyword":"flu"})"); });
     CHECK(r.status == api::v2::Http::Status::BAD_REQUEST);
     CHECK(r.body.find("NOT implemented") != std::string::npos);
 }
@@ -153,9 +141,7 @@ TEST_CASE("ClinicController<Health>::Search returns 400 not-implemented", "[cont
 TEST_CASE("ClinicController<Visits>::Search returns 400 not-implemented", "[controllers][clinic]")
 {
     ClinicController<Visits> ctrl;
-    auto r = capture([&](auto cb){
-        ctrl.Search(std::move(cb), Requester(1, "providers"), R"({"keyword":"visit"})");
-    });
+    auto                     r = capture([&](auto cb) { ctrl.Search(std::move(cb), Requester(1, "providers"), R"({"keyword":"visit"})"); });
     CHECK(r.status == api::v2::Http::Status::BAD_REQUEST);
 }
 
@@ -164,18 +150,14 @@ TEST_CASE("ClinicController<Visits>::Search returns 400 not-implemented", "[cont
 TEST_CASE("ClinicController<Patient>::Search rejects malformed JSON", "[controllers][clinic]")
 {
     ClinicController<Patient> ctrl;
-    auto r = capture([&](auto cb){
-        ctrl.Search(std::move(cb), Requester(1, "providers"), "bad{");
-    });
+    auto                      r = capture([&](auto cb) { ctrl.Search(std::move(cb), Requester(1, "providers"), "bad{"); });
     CHECK(r.status == api::v2::Http::Status::BAD_REQUEST);
 }
 
 TEST_CASE("ClinicController<Patient>::Search with missing fields → 406", "[controllers][clinic]")
 {
     ClinicController<Patient> ctrl;
-    auto r = capture([&](auto cb){
-        ctrl.Search(std::move(cb), Requester(1, "providers"), R"({"x":1})");
-    });
+    auto                      r = capture([&](auto cb) { ctrl.Search(std::move(cb), Requester(1, "providers"), R"({"x":1})"); });
     CHECK(r.status == api::v2::Http::Status::NOT_ACCEPTABLE);
 }
 
@@ -184,9 +166,7 @@ TEST_CASE("ClinicController<Patient>::Search with missing fields → 406", "[con
 TEST_CASE("ClinicController<Health>::GetVisits returns 400 not-implemented", "[controllers][clinic]")
 {
     ClinicController<Health> ctrl;
-    auto r = capture([&](auto cb){
-        ctrl.GetVisits(std::move(cb), Requester(1, "providers"), std::optional<uint64_t>{5});
-    });
+    auto                     r = capture([&](auto cb) { ctrl.GetVisits(std::move(cb), Requester(1, "providers"), std::optional<uint64_t>{5}); });
     CHECK(r.status == api::v2::Http::Status::BAD_REQUEST);
     CHECK(r.body.find("NOT implemented") != std::string::npos);
 }
@@ -194,9 +174,7 @@ TEST_CASE("ClinicController<Health>::GetVisits returns 400 not-implemented", "[c
 TEST_CASE("ClinicController<Visits>::GetVisits returns 400 not-implemented", "[controllers][clinic]")
 {
     ClinicController<Visits> ctrl;
-    auto r = capture([&](auto cb){
-        ctrl.GetVisits(std::move(cb), Requester(1, "providers"), std::optional<uint64_t>{5});
-    });
+    auto                     r = capture([&](auto cb) { ctrl.GetVisits(std::move(cb), Requester(1, "providers"), std::optional<uint64_t>{5}); });
     CHECK(r.status == api::v2::Http::Status::BAD_REQUEST);
 }
 
@@ -205,9 +183,7 @@ TEST_CASE("ClinicController<Visits>::GetVisits returns 400 not-implemented", "[c
 TEST_CASE("ClinicController<Patient>::GetVisits with no id → 400", "[controllers][clinic]")
 {
     ClinicController<Patient> ctrl;
-    auto r = capture([&](auto cb){
-        ctrl.GetVisits(std::move(cb), Requester(1, "providers"), std::nullopt);
-    });
+    auto                      r = capture([&](auto cb) { ctrl.GetVisits(std::move(cb), Requester(1, "providers"), std::nullopt); });
     CHECK(r.status == api::v2::Http::Status::BAD_REQUEST);
     CHECK_FALSE(r.body.empty());
 }
@@ -216,9 +192,7 @@ TEST_CASE("ClinicController<Patient>::GetVisits with mismatched requester → 40
 {
     ClinicController<Patient> ctrl;
     // requester id=99 ≠ patient_id=5 → canRead fails (group/id mismatch)
-    auto r = capture([&](auto cb){
-        ctrl.GetVisits(std::move(cb), Requester(99, "users"), std::optional<uint64_t>{5});
-    });
+    auto r = capture([&](auto cb) { ctrl.GetVisits(std::move(cb), Requester(99, "users"), std::optional<uint64_t>{5}); });
     CHECK(r.status == api::v2::Http::Status::FORBIDDEN);
 }
 
@@ -227,17 +201,13 @@ TEST_CASE("ClinicController<Patient>::GetVisits with mismatched requester → 40
 TEST_CASE("ClinicController<Health>::Read rejects malformed JSON", "[controllers][clinic]")
 {
     ClinicController<Health> ctrl;
-    auto r = capture([&](auto cb){
-        ctrl.Read(std::move(cb), Requester(1, "providers"), "bad{");
-    });
+    auto                     r = capture([&](auto cb) { ctrl.Read(std::move(cb), Requester(1, "providers"), "bad{"); });
     CHECK(r.status == api::v2::Http::Status::BAD_REQUEST);
 }
 
 TEST_CASE("ClinicController<Patient>::Update with no id → 400", "[controllers][clinic]")
 {
     ClinicController<Patient> ctrl;
-    auto r = capture([&](auto cb){
-        ctrl.Update(std::move(cb), Requester(1, "providers"), R"({"name":"x"})", std::nullopt);
-    });
+    auto                      r = capture([&](auto cb) { ctrl.Update(std::move(cb), Requester(1, "providers"), R"({"name":"x"})", std::nullopt); });
     CHECK(r.status == api::v2::Http::Status::BAD_REQUEST);
 }

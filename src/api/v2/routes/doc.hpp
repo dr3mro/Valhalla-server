@@ -17,7 +17,7 @@ namespace api::v2
     class Doc : public drogon::HttpController<Doc>
     {
        public:
-        void doc(const drogon::HttpRequestPtr & /*req*/, std::function<void(const drogon::HttpResponsePtr &)> &&callback)  // NOLINT
+        void doc(const drogon::HttpRequestPtr& /*req*/, std::function<void(const drogon::HttpResponsePtr&)>&& callback)  // NOLINT
         {
             drogon::HttpResponsePtr response = drogon::HttpResponse::newHttpResponse();
 

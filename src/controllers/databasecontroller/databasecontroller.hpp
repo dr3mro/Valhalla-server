@@ -13,9 +13,10 @@
 #include <string>
 #include <unordered_set>
 #include <utility>
-#include "store/store.hpp"
+
 #include "configurator/configurator.hpp"
 #include "database/databasehandler.hpp"
+#include "store/store.hpp"
 #include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
 class Case;
@@ -27,30 +28,33 @@ class DatabaseController
 {
    public:
     DatabaseController();
-    DatabaseController(const DatabaseController&)             = default;
-    DatabaseController(DatabaseController &&)                 = delete;
-    DatabaseController &operator=(const DatabaseController &) = default;
-    DatabaseController &operator=(DatabaseController &&)      = delete;
-    virtual ~DatabaseController()                             = default;
+    DatabaseController(const DatabaseController&)            = default;
+    DatabaseController(DatabaseController&&)                 = delete;
+    DatabaseController& operator=(const DatabaseController&) = default;
+    DatabaseController& operator=(DatabaseController&&)      = delete;
+    virtual ~DatabaseController()                            = default;
 
-    virtual std::optional<jsoncons::json>        executeQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params = {}, const std::string &plain_query = {});
-    virtual std::optional<jsoncons::json>        executeReadQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params = {}, const std::string &plain_query = {});
-    virtual std::optional<jsoncons::json::array> executeSearchQuery(const std::string &query, bool &isSqlInjection, const pqxx::params &params = {}, const std::string &plain_query = {});
-    virtual std::optional<std::string>           doReadQuery(const std::string &query, bool &isSqlInjection);
-    virtual std::optional<bool>                  checkItemExists(const std::string &table, const std::string &column, const std::string &value, bool &isSqlInjection);
-    virtual std::optional<jsoncons::json>        getPasswordHashForUserName(const std::string &username, const std::string &tablename, bool &isSqlInjection);
-    virtual std::optional<std::unordered_set<api::v2::ColumnInfo>> getTableSchema(const std::string &tableName);
+    virtual std::optional<jsoncons::json> executeQuery(
+        const std::string& query, bool& isSqlInjection, const pqxx::params& params = {}, const std::string& plain_query = {});
+    virtual std::optional<jsoncons::json> executeReadQuery(
+        const std::string& query, bool& isSqlInjection, const pqxx::params& params = {}, const std::string& plain_query = {});
+    virtual std::optional<jsoncons::json::array> executeSearchQuery(
+        const std::string& query, bool& isSqlInjection, const pqxx::params& params = {}, const std::string& plain_query = {});
+    virtual std::optional<std::string>    doReadQuery(const std::string& query, bool& isSqlInjection);
+    virtual std::optional<bool>           checkItemExists(const std::string& table, const std::string& column, const std::string& value, bool& isSqlInjection);
+    virtual std::optional<jsoncons::json> getPasswordHashForUserName(const std::string& username, const std::string& tablename, bool& isSqlInjection);
+    virtual std::optional<std::unordered_set<api::v2::ColumnInfo>> getTableSchema(const std::string& tableName);
     virtual std::optional<std::unordered_set<std::string>>         getAllTables();
-    virtual std::optional<jsoncons::json>                          getPermissions(const std::string &query, bool &isSqlInjection);
+    virtual std::optional<jsoncons::json>                          getPermissions(const std::string& query, bool& isSqlInjection);
 
    private:
     std::shared_ptr<DatabaseConnectionPool> databaseConnectionPool_;
     std::shared_ptr<WatchDog>               watchDog_;
-    std::shared_ptr<Configurator::Testing> testing_config_ = std::make_shared<Configurator::Testing>();
-    void ensureBackends();  // lazily creates the connection pool and watchdog
+    std::shared_ptr<Configurator::Testing>  testing_config_ = std::make_shared<Configurator::Testing>();
+    void                                    ensureBackends();  // lazily creates the connection pool and watchdog
 
     template <typename Result, typename Func, typename... Args>
-    std::optional<Result> executer(const Func &func, Args &&...args)
+    std::optional<Result> executer(const Func& func, Args&&... args)
     {
         try
         {
@@ -81,7 +85,7 @@ class DatabaseController
 
             return std::nullopt;
         }
-        catch (const std::exception &e)
+        catch (const std::exception& e)
         {
             Message::CriticalMessage(fmt::format("Exception occurred during query execution.", e.what()));
             return std::nullopt;

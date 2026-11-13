@@ -17,13 +17,13 @@ using StaffData = api::v2::Types::StaffData;
 class Service : public Entity
 {
    public:
-    Service(const Service &)            = delete;
-    Service(Service &&)                 = delete;
-    Service &operator=(const Service &) = delete;
-    Service &operator=(Service &&)      = delete;
+    Service(const Service&)            = delete;
+    Service(Service&&)                 = delete;
+    Service& operator=(const Service&) = delete;
+    Service& operator=(Service&&)      = delete;
 
     template <typename T>
-    Service(const T &data, const std::string &tablename) : Entity(data, tablename)
+    Service(const T& data, const std::string& tablename) : Entity(data, tablename)
     {
     }
     // Service(const std::string &tablename) : Entity(tablename) {};
@@ -36,12 +36,12 @@ class Service : public Entity
             auto idata = std::get<StaffData>(getData());
             query      = fmt::format(
                 "UPDATE {} SET mjson = jsonb_set(mjson, "
-                     "'{{payload,providers,Doctors}}', "
-                     "((mjson->'payload'->'providers'->'Doctors') || "
-                     "'\"{}\"')::jsonb) WHERE ID={} RETURNING id;",
+                "'{{payload,providers,Doctors}}', "
+                "((mjson->'payload'->'providers'->'Doctors') || "
+                "'\"{}\"')::jsonb) WHERE ID={} RETURNING id;",
                 tablename, idata.nominee_id, idata.nominee_group, idata.entity_id);
         }
-        catch (const std::exception &e)
+        catch (const std::exception& e)
         {
             Message::ErrorMessage("Error creating query for add member.");
             Message::CriticalMessage(e.what());
@@ -58,15 +58,15 @@ class Service : public Entity
             auto idata = std::get<StaffData>(getData());
             query      = fmt::format(
                 "UPDATE {} SET mjson = jsonb_set("
-                     "mjson, '{{payload,providers,Doctors}}', "
-                     "(SELECT jsonb_agg(elem) FROM "
-                     "jsonb_array_elements(mjson->'payload'->'providers'->'Doctors')"
-                     " AS elem "
-                     "WHERE elem <> '\"{}\"') "
-                     ") WHERE ID={} RETURNING id;",
+                "mjson, '{{payload,providers,Doctors}}', "
+                "(SELECT jsonb_agg(elem) FROM "
+                "jsonb_array_elements(mjson->'payload'->'providers'->'Doctors')"
+                " AS elem "
+                "WHERE elem <> '\"{}\"') "
+                ") WHERE ID={} RETURNING id;",
                 tablename, idata.nominee_id, idata.entity_id);
         }
-        catch (const std::exception &e)
+        catch (const std::exception& e)
         {
             Message::ErrorMessage("Error creating query for remove member.");
             Message::CriticalMessage(e.what());
@@ -74,7 +74,7 @@ class Service : public Entity
         }
         return query;
     }
-    static std::optional<std::string> getServicePermissionsQuery(const std::string &service_name, std::uint64_t service_id)
+    static std::optional<std::string> getServicePermissionsQuery(const std::string& service_name, std::uint64_t service_id)
     {
         return fmt::format("SELECT owner_id,admin_id,staff FROM {} WHERE id = '{}' LIMIT 1;", service_name, service_id);
     }

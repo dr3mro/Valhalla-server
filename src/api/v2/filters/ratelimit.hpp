@@ -20,7 +20,7 @@ namespace api::v2::Filters
     {
        public:
         RateLimit() = default;
-        void doFilter(const drogon::HttpRequestPtr &req, drogon::FilterCallback &&fcb, drogon::FilterChainCallback &&fccb) override
+        void doFilter(const drogon::HttpRequestPtr& req, drogon::FilterCallback&& fcb, drogon::FilterChainCallback&& fccb) override
         {
             std::shared_ptr<GateKeeper> gatekeeper = Store::getObject<GateKeeper>();
 
@@ -58,7 +58,7 @@ namespace api::v2::Filters
 
        private:
         std::shared_ptr<DOSDetector> dos_detector = Store::getObject<DOSDetector>();
-        void                         reply(const std::string &&msg, drogon::HttpStatusCode code, const drogon::FilterCallback &&cb)
+        void                         reply(const std::string&& msg, drogon::HttpStatusCode code, const drogon::FilterCallback&& cb)
         {
             auto resp = drogon::HttpResponse::newHttpResponse();
             resp->setBody(msg);

@@ -1,5 +1,4 @@
 #include <catch2/catch_test_macros.hpp>
-
 #include <chrono>
 #include <optional>
 #include <string>
@@ -98,17 +97,18 @@ TEST_CASE("MemCache survives concurrent insert/get traffic", "[utils][memcache]"
     std::vector<std::thread> threads;
     for (int t = 0; t < 4; ++t)
     {
-        threads.emplace_back([&cache, t]
-        {
-            for (int i = 0; i < 100; ++i)
+        threads.emplace_back(
+            [&cache, t]
             {
-                const auto key = "k" + std::to_string(t * 100 + i);
-                cache.insert(key, key);
-                (void)cache.get(key);
-            }
-        });
+                for (int i = 0; i < 100; ++i)
+                {
+                    const auto key = "k" + std::to_string(t * 100 + i);
+                    cache.insert(key, key);
+                    (void)cache.get(key);
+                }
+            });
     }
-    for (auto &thread : threads)
+    for (auto& thread : threads)
     {
         thread.join();
     }
@@ -205,12 +205,12 @@ TEST_CASE("MemCache re-insert refreshes TTL", "[utils][memcache][ttl]")
     ManualStrCache cache(10, std::chrono::seconds{10});
 
     cache.insert("k", "first");
-    ManualClock::advance(std::chrono::seconds{5});   // half-way through TTL
-    cache.insert("k", "second");                     // re-insert resets expiry to now+10s
-    ManualClock::advance(std::chrono::seconds{6});   // past original TTL, before new one
+    ManualClock::advance(std::chrono::seconds{5});  // half-way through TTL
+    cache.insert("k", "second");                    // re-insert resets expiry to now+10s
+    ManualClock::advance(std::chrono::seconds{6});  // past original TTL, before new one
     CHECK(cache.get("k") == std::optional<std::string>("second"));
 
-    ManualClock::advance(std::chrono::seconds{5});   // now past new TTL
+    ManualClock::advance(std::chrono::seconds{5});  // now past new TTL
     CHECK(cache.get("k") == std::nullopt);
 }
 

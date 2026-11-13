@@ -1,9 +1,8 @@
-#include <catch2/catch_test_macros.hpp>
-
-#include <string>
-
-#include <jsoncons/json.hpp>
 #include <json/value.h>
+
+#include <catch2/catch_test_macros.hpp>
+#include <jsoncons/json.hpp>
+#include <string>
 
 #include "utils/jsonhelper/jsonhelper.hpp"
 
@@ -62,7 +61,7 @@ TEST_CASE("JsonHelper::jsonify handles an empty string message", "[utils][jsonhe
 TEST_CASE("JsonHelper::stringify handles an empty jsoncons object", "[utils][jsonhelper]")
 {
     const jsoncons::json empty = jsoncons::json::object();
-    const std::string   text  = JsonHelper::stringify(empty);
+    const std::string    text  = JsonHelper::stringify(empty);
     CHECK_FALSE(text.empty());
 }
 

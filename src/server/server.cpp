@@ -43,8 +43,8 @@ namespace
     // registerPreRoutingAdvice, intercepting before Drogon's own router runs at all.
     bool isConventionalMethod(drogon::HttpMethod method)
     {
-        return method == drogon::Get || method == drogon::Post || method == drogon::Put || method == drogon::Delete || method == drogon::Options
-               || method == drogon::Head;
+        return method == drogon::Get || method == drogon::Post || method == drogon::Put || method == drogon::Delete || method == drogon::Options ||
+               method == drogon::Head;
     }
 
     // Path patterns this app actually registered (from getHandlersInfo(), populated once all
@@ -87,8 +87,8 @@ int Server::run()
                     // it; registerPreRoutingAdvice below consults it on every request.
                     for (const auto& info : drogon::app().getHandlersInfo())
                     {
-                        const std::string& pattern = std::get<0>(info);
-                        std::string regex_src = "^" + std::regex_replace(pattern, std::regex(R"(\{[^}]*\})"), "[^/]+") + "$";
+                        const std::string& pattern   = std::get<0>(info);
+                        std::string        regex_src = "^" + std::regex_replace(pattern, std::regex(R"(\{[^}]*\})"), "[^/]+") + "$";
                         g_knownPathPatterns.emplace_back(regex_src);
                     }
                 })
@@ -108,10 +108,9 @@ int Server::run()
 
                         std::move(callback)(resp);
                     }
-                    else if (!isConventionalMethod(req->method())
-                             && std::ranges::any_of(g_knownPathPatterns,
-                                                     [path = std::string(req->path())](const std::regex& re)
-                                                     { return std::regex_match(path, re); }))
+                    else if (!isConventionalMethod(req->method()) &&
+                             std::ranges::any_of(
+                                 g_knownPathPatterns, [path = std::string(req->path())](const std::regex& re) { return std::regex_match(path, re); }))
                     {
                         // A method this API never registers for ANY path (TRACE -> HttpMethod::Invalid,
                         // PATCH, PROPFIND, ...) sent to a path that otherwise exists. Drogon's own router

@@ -1,5 +1,4 @@
 #include <catch2/catch_test_macros.hpp>
-
 #include <cstdint>
 #include <string>
 #include <type_traits>
@@ -16,9 +15,9 @@
 // Compile-time checks on the entity concepts (STATIC_REQUIRE).
 namespace
 {
-    using api::v2::Client;
     using ::Provider;
     using ::User;
+    using api::v2::Client;
 }  // namespace
 
 TEST_CASE("Entity concepts classify the entity hierarchy at compile time", "[utils][concepts]")
@@ -83,10 +82,7 @@ TEST_CASE("Http::getDescription maps codes to their reason phrases", "[utils][ht
     CHECK(api::v2::Http::getDescription(api::v2::Http::Status::NOT_FOUND) == "Not Found");
     CHECK(api::v2::Http::getDescription(api::v2::Http::Status::INTERNAL_SERVER_ERROR) == "Internal Server Error");
 
-    SECTION("unknown codes report as unknown")
-    {
-        CHECK(api::v2::Http::getDescription(static_cast<api::v2::Http::Status>(599)) == "Unknown Status Code");
-    }
+    SECTION("unknown codes report as unknown") { CHECK(api::v2::Http::getDescription(static_cast<api::v2::Http::Status>(599)) == "Unknown Status Code"); }
 }
 
 TEST_CASE("Http::Error is a plain aggregate", "[utils][http]")
@@ -101,28 +97,28 @@ TEST_CASE("Http::Error is a plain aggregate", "[utils][http]")
 
 TEST_CASE("Http::getDescription covers all defined status codes", "[utils][http]")
 {
-    using api::v2::Http::Status;
     using api::v2::Http::getDescription;
+    using api::v2::Http::Status;
 
     // 2xx
-    CHECK(getDescription(Status::CREATED)  == "Created");
+    CHECK(getDescription(Status::CREATED) == "Created");
     CHECK(getDescription(Status::ACCEPTED) == "Accepted");
     CHECK(getDescription(Status::NO_CONTENT) == "No Content");
 
     // 3xx
-    CHECK(getDescription(Status::MOVED_PERMANENTLY)  == "Moved Permanently");
+    CHECK(getDescription(Status::MOVED_PERMANENTLY) == "Moved Permanently");
     CHECK(getDescription(Status::TEMPORARY_REDIRECT) == "Temporary Redirect");
 
     // 4xx
-    CHECK(getDescription(Status::CONFLICT)              == "Conflict");
-    CHECK(getDescription(Status::PAYLOAD_TOO_LARGE)     == "Payload Too Large");
-    CHECK(getDescription(Status::UNSUPPORTED_MEDIA_TYPE)== "Unsupported Media Type");
-    CHECK(getDescription(Status::METHOD_NOT_ALLOWED)    == "Method Not Allowed");
+    CHECK(getDescription(Status::CONFLICT) == "Conflict");
+    CHECK(getDescription(Status::PAYLOAD_TOO_LARGE) == "Payload Too Large");
+    CHECK(getDescription(Status::UNSUPPORTED_MEDIA_TYPE) == "Unsupported Media Type");
+    CHECK(getDescription(Status::METHOD_NOT_ALLOWED) == "Method Not Allowed");
 
     // 5xx
-    CHECK(getDescription(Status::NOT_IMPLEMENTED)      == "Not Implemented");
-    CHECK(getDescription(Status::SERVICE_UNAVAILABLE)  == "Service Unavailable");
-    CHECK(getDescription(Status::BAD_GATEWAY)          == "Bad Gateway");
+    CHECK(getDescription(Status::NOT_IMPLEMENTED) == "Not Implemented");
+    CHECK(getDescription(Status::SERVICE_UNAVAILABLE) == "Service Unavailable");
+    CHECK(getDescription(Status::BAD_GATEWAY) == "Bad Gateway");
 }
 
 TEST_CASE("Requester isAdmin/isStaff/isOwner/isSuper use the right group names", "[utils][requester]")

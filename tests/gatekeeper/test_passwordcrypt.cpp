@@ -1,6 +1,5 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/generators/catch_generators.hpp>
-
 #include <string>
 
 #include "gatekeeper/passwordcrypt/passwordcrypt.hpp"
@@ -45,7 +44,8 @@ TEST_CASE("PasswordCrypt handles boundary inputs", "[gatekeeper][password]")
 {
     PasswordCrypt crypt;
 
-    const auto &password = GENERATE(std::string(""), std::string("a"), std::string(512, 'x'), std::string("pässwörd-密码-🔐"), std::string("with space and\ttab"));
+    const auto& password =
+        GENERATE(std::string(""), std::string("a"), std::string(512, 'x'), std::string("pässwörd-密码-🔐"), std::string("with space and\ttab"));
 
     CAPTURE(password.size());
     const auto hash = crypt.hashPassword(password);
@@ -58,8 +58,8 @@ TEST_CASE("PasswordCrypt does not crash on malformed or truncated hashes", "[gat
 {
     PasswordCrypt crypt;
 
-    const auto &badHash = GENERATE(std::string(""), std::string("garbage"), std::string("$scrypt$"),
-        std::string("$7$C6..../....salt$truncated"), std::string(64, '\0'));
+    const auto& badHash =
+        GENERATE(std::string(""), std::string("garbage"), std::string("$scrypt$"), std::string("$7$C6..../....salt$truncated"), std::string(64, '\0'));
 
     CAPTURE(badHash.size());
     REQUIRE_FALSE(crypt.verifyPassword("any password", badHash));

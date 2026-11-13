@@ -27,17 +27,17 @@ namespace api::v2
     class Staff : public drogon::HttpController<Staff>
     {
        public:
-        void Invite(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
+        void Invite(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& serviceType)
         {
             executeControllerMethod(staffRegistry, serviceType, &StaffControllerBase::InviteStaffToEntity, req, std::move(callback), req->body());
         }
 
-        void Add(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
+        void Add(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& serviceType)
         {
             executeControllerMethod(staffRegistry, serviceType, &StaffControllerBase::AddStaffToEntity, req, std::move(callback), req->body());
         }
 
-        void Remove(const drogon::HttpRequestPtr &req, std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string &serviceType)
+        void Remove(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& serviceType)
         {
             executeControllerMethod(staffRegistry, serviceType, &StaffControllerBase::RemoveStaffFromEntity, req, std::move(callback), req->body());
         }

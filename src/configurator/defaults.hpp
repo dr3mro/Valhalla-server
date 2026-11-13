@@ -32,7 +32,6 @@ namespace Defaults
         const std::string DB_USER_     = "postgres";
         const std::string DB_PASS_     = "postgres";
 
-
     };  // namespace Database
 
     namespace Server
@@ -78,7 +77,8 @@ namespace Defaults
         const std::string QUEUE_PATH_ = "/enqueue";
     }  // namespace EmailSenderDaemon
 
-    namespace Testing{
+    namespace Testing
+    {
         const bool VALHALLA_TEST_NO_DB_ = false;
     }  // namespace Testing
 };  // namespace Defaults

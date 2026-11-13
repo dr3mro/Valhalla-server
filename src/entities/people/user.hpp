@@ -15,12 +15,12 @@ using Client = api::v2::Client;
 class User : public Client
 {
    public:
-    User(const User &)            = delete;
-    User(User &&)                 = delete;
-    User &operator=(const User &) = delete;
-    User &operator=(User &&)      = delete;
+    User(const User&)            = delete;
+    User(User&&)                 = delete;
+    User& operator=(const User&) = delete;
+    User& operator=(User&&)      = delete;
     template <typename ClientData_t>
-    explicit User(const ClientData_t &data) : Client(data, TABLENAME)
+    explicit User(const ClientData_t& data) : Client(data, TABLENAME)
     {
     }
     // User() : Client(std::string(TABLENAME)) {}
@@ -35,7 +35,7 @@ class User : public Client
             client_id = std::get<Data_t>(getData()).get_id();
             query     = fmt::format("SELECT id from users WHERE id = {}", client_id.value());
         }
-        catch (const std::exception &e)
+        catch (const std::exception& e)
         {
             Message::ErrorMessage(fmt::format("Failed to create query for GetServicesStatement {}.", tablename));
             Message::CriticalMessage(e.what());

@@ -1,7 +1,6 @@
+#include <atomic>
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/generators/catch_generators.hpp>
-
-#include <atomic>
 #include <chrono>
 #include <string>
 #include <thread>
@@ -37,7 +36,7 @@ namespace
         return config;
     }
 
-    DOSDetector::Request makeRequest(const std::string &ip, const std::string &body, const std::unordered_map<std::string, std::string> headers = {})
+    DOSDetector::Request makeRequest(const std::string& ip, const std::string& body, const std::unordered_map<std::string, std::string> headers = {})
     {
         return DOSDetector::Request{.ip = ip, .method = "GET", .path = "/users/read", .headers = headers, .body = body};
     }
@@ -46,19 +45,19 @@ namespace
     /// tests to simulate time passing without any real waiting.
     struct DetectorFixture
     {
-        FakeClock                              clock;
-        std::unique_ptr<DOSDetector>           detector;
-        std::vector<std::string>               bodies;  // keeps string_views alive
+        FakeClock                    clock;
+        std::unique_ptr<DOSDetector> detector;
+        std::vector<std::string>     bodies;  // keeps string_views alive
 
         explicit DetectorFixture(Configurator::DOSDetectorConfig config) : detector(std::make_unique<DOSDetector>(std::move(config), clock.callable())) {}
 
-        DOSDetector::Status send(const std::string &ip, const std::string &body)
+        DOSDetector::Status send(const std::string& ip, const std::string& body)
         {
             bodies.push_back(body);  // body is captured as string_view
             return detector->is_dos_attack(makeRequest(ip, bodies.back()));
         }
 
-        DOSDetector::Status send(const std::string &ip, const std::string &body, const std::unordered_map<std::string, std::string> &headers)
+        DOSDetector::Status send(const std::string& ip, const std::string& body, const std::unordered_map<std::string, std::string>& headers)
         {
             bodies.push_back(body);  // body is captured as string_view
             return detector->is_dos_attack(makeRequest(ip, bodies.back(), headers));
@@ -81,8 +80,8 @@ TEST_CASE("DoSDetector allows requests under the repeat limit", "[gatekeeper][do
 
 TEST_CASE("DoSDetector bans an IP when one request fingerprint repeats more than MAX_REQUESTS times", "[gatekeeper][dos]")
 {
-    DetectorFixture fixture(makeConfig(/*maxRequests*/ 5, /*maxFingerprints*/ 100, std::chrono::seconds{60}, std::chrono::seconds{30},
-        std::chrono::seconds{30}));
+    DetectorFixture fixture(
+        makeConfig(/*maxRequests*/ 5, /*maxFingerprints*/ 100, std::chrono::seconds{60}, std::chrono::seconds{30}, std::chrono::seconds{30}));
 
     for (int i = 0; i < 5; ++i)
     {
@@ -120,8 +119,8 @@ TEST_CASE("DoSDetector ban expires after BAN_DURATION", "[gatekeeper][dos]")
 
 TEST_CASE("DoSDetector rate-limits an IP whose distinct request fingerprints exceed MAX_FPS", "[gatekeeper][dos]")
 {
-    DetectorFixture fixture(makeConfig(/*maxRequests*/ 100, /*maxFingerprints*/ 2, std::chrono::seconds{60}, std::chrono::seconds{30},
-        std::chrono::seconds{3600}));
+    DetectorFixture fixture(
+        makeConfig(/*maxRequests*/ 100, /*maxFingerprints*/ 2, std::chrono::seconds{60}, std::chrono::seconds{30}, std::chrono::seconds{3600}));
 
     REQUIRE(fixture.send(IP, "body-a") == DOSDetector::Status::ALLOWED);
     REQUIRE(fixture.send(IP, "body-b") == DOSDetector::Status::ALLOWED);
@@ -145,8 +144,8 @@ TEST_CASE("DoSDetector treats different bodies and headers as different fingerpr
 
 TEST_CASE("DoSDetector rate limit expires after RL_DURATION and then re-arms while the window is saturated", "[gatekeeper][dos]")
 {
-    DetectorFixture fixture(makeConfig(/*maxRequests*/ 100, /*maxFingerprints*/ 2, std::chrono::seconds{60}, /*rlDuration*/ std::chrono::seconds{10},
-        std::chrono::seconds{3600}));
+    DetectorFixture fixture(
+        makeConfig(/*maxRequests*/ 100, /*maxFingerprints*/ 2, std::chrono::seconds{60}, /*rlDuration*/ std::chrono::seconds{10}, std::chrono::seconds{3600}));
 
     (void)fixture.send(IP, "a");
     (void)fixture.send(IP, "b");
@@ -202,26 +201,20 @@ TEST_CASE("DoSDetector window rollover: old requests no longer count against the
 
 TEST_CASE("DoSDetector whitelists IPs by exact match and regex", "[gatekeeper][dos]")
 {
-    auto config = makeConfig();
+    auto config      = makeConfig();
     config.whitelist = {"192.168.1.5", R"(^10\.0\..*)"};
     DetectorFixture fixture(std::move(config));
 
     CHECK(fixture.send("192.168.1.5", "x") == DOSDetector::Status::WHITELISTED);
 
-    SECTION("regex whitelist match")
-    {
-        CHECK(fixture.send("10.0.42.7", "x") == DOSDetector::Status::WHITELISTED);
-    }
+    SECTION("regex whitelist match") { CHECK(fixture.send("10.0.42.7", "x") == DOSDetector::Status::WHITELISTED); }
 
-    SECTION("a non-matching IP is processed normally")
-    {
-        CHECK(fixture.send("192.168.1.6", "x") == DOSDetector::Status::ALLOWED);
-    }
+    SECTION("a non-matching IP is processed normally") { CHECK(fixture.send("192.168.1.6", "x") == DOSDetector::Status::ALLOWED); }
 }
 
 TEST_CASE("DoSDetector blacklists IPs before processing", "[gatekeeper][dos]")
 {
-    auto config = makeConfig();
+    auto config      = makeConfig();
     config.blacklist = {"203.0.113.99"};
     DetectorFixture fixture(std::move(config));
 
@@ -232,7 +225,7 @@ TEST_CASE("DoSDetector blacklists IPs before processing", "[gatekeeper][dos]")
 
 TEST_CASE("DoSDetector whitelist wins over blacklist", "[gatekeeper][dos]")
 {
-    auto config = makeConfig();
+    auto config      = makeConfig();
     config.whitelist = {"203.0.113.50"};
     config.blacklist = {"203.0.113.50"};
     DetectorFixture fixture(std::move(config));
@@ -242,7 +235,7 @@ TEST_CASE("DoSDetector whitelist wins over blacklist", "[gatekeeper][dos]")
 
 TEST_CASE("DoSDetector ignores invalid whitelist regex patterns instead of crashing", "[gatekeeper][dos]")
 {
-    auto config = makeConfig();
+    auto config      = makeConfig();
     config.whitelist = {"[invalid-regex", "203.0.113.70"};
     DetectorFixture fixture(std::move(config));
 
@@ -261,8 +254,7 @@ TEST_CASE("DoSDetector handles concurrent callers without deadlock", "[gatekeepe
     // calls bodies.push_back() which is not thread-safe under concurrent access.
     std::vector<std::vector<std::string>> threadBodies(kThreads);
     for (int t = 0; t < kThreads; ++t)
-        for (int i = 0; i < kRequests; ++i)
-            threadBodies[t].push_back("body-" + std::to_string(t) + "-" + std::to_string(i));
+        for (int i = 0; i < kRequests; ++i) threadBodies[t].push_back("body-" + std::to_string(t) + "-" + std::to_string(i));
 
     std::vector<std::thread> workers;
     std::atomic<int>         allowedCount{0};
@@ -288,7 +280,7 @@ TEST_CASE("DoSDetector handles concurrent callers without deadlock", "[gatekeepe
                 }
             });
     }
-    for (auto &worker : workers)
+    for (auto& worker : workers)
     {
         worker.join();
     }
@@ -302,8 +294,8 @@ TEST_CASE("DoSDetector keeps working after the configured cleanup never fires", 
     // clean_freq is 3600s (real time) in these fixtures: the background
     // cleaner does not run during a test, which must not affect correctness
     // of the per-request paths (they trim windows and expire blocks lazily).
-    DetectorFixture fixture(makeConfig(/*maxRequests*/ 2, /*maxFingerprints*/ 2, std::chrono::seconds{60}, std::chrono::seconds{30},
-        std::chrono::seconds{3600}));
+    DetectorFixture fixture(
+        makeConfig(/*maxRequests*/ 2, /*maxFingerprints*/ 2, std::chrono::seconds{60}, std::chrono::seconds{30}, std::chrono::seconds{3600}));
 
     (void)fixture.send(IP, "a");
     (void)fixture.send(IP, "b");
@@ -321,8 +313,8 @@ TEST_CASE("DoSDetector: MAX_REQUESTS triggers a ban; MAX_FPS triggers a rate-lim
 {
     // "MAX_REQUESTS=2 bans after 3 identical requests" — rate-limit would be
     // the documented expectation; ban is the actual result.
-    DetectorFixture fixture(makeConfig(/*maxRequests*/ 2, /*maxFingerprints*/ 100,
-        std::chrono::seconds{60}, std::chrono::seconds{30}, std::chrono::seconds{3600}));
+    DetectorFixture fixture(
+        makeConfig(/*maxRequests*/ 2, /*maxFingerprints*/ 100, std::chrono::seconds{60}, std::chrono::seconds{30}, std::chrono::seconds{3600}));
 
     REQUIRE(fixture.send(IP, "same-body") == DOSDetector::Status::ALLOWED);
     REQUIRE(fixture.send(IP, "same-body") == DOSDetector::Status::ALLOWED);

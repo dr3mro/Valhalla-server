@@ -11,7 +11,7 @@ namespace api
             std::string Constraint;
             bool        isNullable;
 
-            bool operator==(const ColumnInfo &other) const { return Name == other.Name && DataType == other.DataType && isNullable == other.isNullable; }
+            bool operator==(const ColumnInfo& other) const { return Name == other.Name && DataType == other.DataType && isNullable == other.isNullable; }
         };
     }  // namespace v2
 }  // namespace api
@@ -21,7 +21,7 @@ namespace std
     template <>
     struct hash<api::v2::ColumnInfo>
     {
-        size_t operator()(const api::v2::ColumnInfo &column) const
+        size_t operator()(const api::v2::ColumnInfo& column) const
         {
             // Combine hashes of Name, DataType, and isNullable
             size_t h1 = hash<std::string>()(column.Name);
@@ -34,7 +34,7 @@ namespace std
     template <>
     struct hash<std::pair<std::string, std::string>>
     {
-        size_t operator()(const std::pair<std::string, std::string> &pair) const
+        size_t operator()(const std::pair<std::string, std::string>& pair) const
         {
             // Combine hashes of Name, DataType, and isNullable
             size_t h1 = hash<std::string>()(pair.first);

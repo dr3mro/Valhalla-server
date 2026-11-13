@@ -1,5 +1,4 @@
 #include <catch2/catch_test_macros.hpp>
-
 #include <chrono>
 #include <optional>
 #include <regex>
@@ -22,9 +21,9 @@ namespace
         using KeeprBase::setNowLoginTimeGetLastLogoutTime;
     };
 
-    constexpr const char *kSecret = "valhalla-unit-test-secret-key";
-    constexpr const char *kIssuer = "valhalla-unit-test-issuer";
-    constexpr const char *kType   = "JWS";
+    constexpr const char* kSecret = "valhalla-unit-test-secret-key";
+    constexpr const char* kIssuer = "valhalla-unit-test-issuer";
+    constexpr const char* kType   = "JWS";
 }  // namespace
 
 TEST_CASE("KeeprBase::current_time_to_utc_string returns a UTC timestamp", "[gatekeeper][keeprbase]")
@@ -46,7 +45,7 @@ TEST_CASE("KeeprBase::current_time_to_utc_string ends with '+0000'", "[gatekeepe
 
 TEST_CASE("KeeprBase::getTokenManagerParameters returns values matching the test environment", "[gatekeeper][keeprbase]")
 {
-    TestKeepr                                 k;
+    TestKeepr                                  k;
     const Configurator::TokenManagerParameters params = k.getTokenManagerParameters();
 
     // The test environment (support/global_env.cpp) sets these env vars.
@@ -58,13 +57,12 @@ TEST_CASE("KeeprBase::getTokenManagerParameters returns values matching the test
 
 TEST_CASE("KeeprBase::createTokenVerifier constructs a verifier that accepts a valid token", "[gatekeeper][keeprbase]")
 {
-    TestKeepr                              k;
-    const std::string                      llodt = "2026-01-01 00:00:00 +0000";
-    std::optional<api::v2::Types::ClientLoginData> data =
-        valhalla_test::makeLoginData(500, "users", "127.0.0.1");
-    data->username       = "testuser";
-    data->lastLogoutTime = llodt;
-    data->token = valhalla_test::makeToken(kSecret, kIssuer, kType, "testuser", 500, "users", "127.0.0.1", llodt);
+    TestKeepr                                      k;
+    const std::string                              llodt = "2026-01-01 00:00:00 +0000";
+    std::optional<api::v2::Types::ClientLoginData> data  = valhalla_test::makeLoginData(500, "users", "127.0.0.1");
+    data->username                                       = "testuser";
+    data->lastLogoutTime                                 = llodt;
+    data->token                                          = valhalla_test::makeToken(kSecret, kIssuer, kType, "testuser", 500, "users", "127.0.0.1", llodt);
 
     // createTokenVerifier must not throw for valid data.
     REQUIRE_NOTHROW([&] { (void)k.createTokenVerifier(data); }());
@@ -95,11 +93,11 @@ TEST_CASE("KeeprBase::createTokenVerifier throws when login data is incomplete",
 
 TEST_CASE("KeeprBase::decodeToken extracts claims from a valid JWT", "[gatekeeper][keeprbase]")
 {
-    const std::string llodt = "2026-01-01 00:00:00 +0000";
-    std::optional<api::v2::Types::ClientLoginData> data = valhalla_test::makeLoginData(600, "providers", "10.0.0.1");
-    data->username       = "drsmith";
-    data->lastLogoutTime = llodt;
-    data->token = valhalla_test::makeToken(kSecret, kIssuer, kType, "drsmith", 600, "providers", "10.0.0.1", llodt);
+    const std::string                              llodt = "2026-01-01 00:00:00 +0000";
+    std::optional<api::v2::Types::ClientLoginData> data  = valhalla_test::makeLoginData(600, "providers", "10.0.0.1");
+    data->username                                       = "drsmith";
+    data->lastLogoutTime                                 = llodt;
+    data->token                                          = valhalla_test::makeToken(kSecret, kIssuer, kType, "drsmith", 600, "providers", "10.0.0.1", llodt);
 
     auto decoded = jwt::decode<jwt::traits::kazuho_picojson>(data->token.value());
 
@@ -119,9 +117,9 @@ TEST_CASE("KeeprBase::decodeToken rejects a mismatched IP address", "[gatekeeper
     const std::string llodt = "2026-01-01 00:00:00 +0000";
     // Token is issued for IP 192.168.1.1 but data claims 192.168.1.2.
     std::optional<api::v2::Types::ClientLoginData> data = valhalla_test::makeLoginData(601, "users", "192.168.1.2");
-    data->username       = "user";
-    data->lastLogoutTime = llodt;
-    data->token = valhalla_test::makeToken(kSecret, kIssuer, kType, "user", 601, "users", "192.168.1.1", llodt);
+    data->username                                      = "user";
+    data->lastLogoutTime                                = llodt;
+    data->token                                         = valhalla_test::makeToken(kSecret, kIssuer, kType, "user", 601, "users", "192.168.1.1", llodt);
 
     auto decoded = jwt::decode<jwt::traits::kazuho_picojson>(data->token.value());
 
@@ -132,13 +130,12 @@ TEST_CASE("KeeprBase::decodeToken rejects a mismatched IP address", "[gatekeeper
 
 TEST_CASE("KeeprBase::decodeToken rejects an expired token", "[gatekeeper][keeprbase]")
 {
-    const std::string llodt = "2026-01-01 00:00:00 +0000";
-    std::optional<api::v2::Types::ClientLoginData> data = valhalla_test::makeLoginData(602, "users", "127.0.0.1");
-    data->username       = "user";
-    data->lastLogoutTime = llodt;
+    const std::string                              llodt = "2026-01-01 00:00:00 +0000";
+    std::optional<api::v2::Types::ClientLoginData> data  = valhalla_test::makeLoginData(602, "users", "127.0.0.1");
+    data->username                                       = "user";
+    data->lastLogoutTime                                 = llodt;
     // Token that expired 1 minute ago.
-    data->token = valhalla_test::makeToken(kSecret, kIssuer, kType, "user", 602, "users", "127.0.0.1", llodt,
-        std::chrono::minutes{-1});
+    data->token = valhalla_test::makeToken(kSecret, kIssuer, kType, "user", 602, "users", "127.0.0.1", llodt, std::chrono::minutes{-1});
 
     auto decoded = jwt::decode<jwt::traits::kazuho_picojson>(data->token.value());
 
@@ -151,14 +148,14 @@ TEST_CASE("KeeprBase::decodeToken rejects an expired token", "[gatekeeper][keepr
 // been removed; the function now returns false cleanly when the DB returns nullopt.
 TEST_CASE("KeeprBase::setNowLoginTimeGetLastLogoutTime returns false when DB returns nullopt", "[gatekeeper][keeprbase]")
 {
-    auto fake = std::make_shared<FakeDatabaseController>();
+    auto fake          = std::make_shared<FakeDatabaseController>();
     fake->query_result = std::nullopt;
     FakeDbGuard guard(fake);
 
     TestKeepr k;
-    auto data       = std::make_optional<api::v2::Types::ClientLoginData>();
-    data->group     = std::string("users");
-    data->clientId  = uint64_t{42};
+    auto      data = std::make_optional<api::v2::Types::ClientLoginData>();
+    data->group    = std::string("users");
+    data->clientId = uint64_t{42};
 
     bool result = k.setNowLoginTimeGetLastLogoutTime(data);
     CHECK_FALSE(result);

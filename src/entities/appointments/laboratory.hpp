@@ -14,19 +14,19 @@ class LaboratoryAppointment : public Appointment
 
    public:
     template <typename T>
-    explicit LaboratoryAppointment(const T &_data) : Appointment(_data, TABLENAME)
+    explicit LaboratoryAppointment(const T& _data) : Appointment(_data, TABLENAME)
     {
     }
 
-    LaboratoryAppointment(const LaboratoryAppointment &)            = delete;
-    LaboratoryAppointment(LaboratoryAppointment &&)                 = delete;
-    LaboratoryAppointment &operator=(const LaboratoryAppointment &) = delete;
-    LaboratoryAppointment &operator=(LaboratoryAppointment &&)      = delete;
+    LaboratoryAppointment(const LaboratoryAppointment&)            = delete;
+    LaboratoryAppointment(LaboratoryAppointment&&)                 = delete;
+    LaboratoryAppointment& operator=(const LaboratoryAppointment&) = delete;
+    LaboratoryAppointment& operator=(LaboratoryAppointment&&)      = delete;
 
     static constexpr auto getTableName() { return TABLENAME; }
     static constexpr auto getOrgName() { return ORGNAME; }
     ~LaboratoryAppointment() override = default;
-    static std::optional<std::string> getServicePermissionsQuery(const std::string &service_name, std::uint64_t service_id)
+    static std::optional<std::string> getServicePermissionsQuery(const std::string& service_name, std::uint64_t service_id)
     {
         return getServicePermissionsQueryImpl(service_name, service_id);
     }

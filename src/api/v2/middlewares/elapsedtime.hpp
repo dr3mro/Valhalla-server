@@ -19,21 +19,20 @@ namespace api::v2::MiddleWares
        public:
         ElapsedTime() = default;  // do not omit constructor
 
-        void invoke(const drogon::HttpRequestPtr &req, drogon::MiddlewareNextCallback &&nextCb, drogon::MiddlewareCallback &&mcb) override
+        void invoke(const drogon::HttpRequestPtr& req, drogon::MiddlewareNextCallback&& nextCb, drogon::MiddlewareCallback&& mcb) override
         {
             // Store the start time for this request
             std::chrono::steady_clock::time_point start_time = std::chrono::steady_clock::now();
 
             // will run while getting out from this middleware
             std::move(nextCb)(
-                [mcb = std::move(mcb), start_time, req](const drogon::HttpResponsePtr &resp)
+                [mcb = std::move(mcb), start_time, req](const drogon::HttpResponsePtr& resp)
                 {
                     // Calculate the elapsed time for this request
                     auto end_time   = std::chrono::steady_clock::now();
                     auto elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
                     // Log the elapsed time
-                    LOG_INFO << fmt::format(": {}{}{}{}{}",
-                        fmt::styled(fmt::format("[{} ms] ", elapsed_ms), fmt::fg(fmt::color::orange)),
+                    LOG_INFO << fmt::format(": {}{}{}{}{}", fmt::styled(fmt::format("[{} ms] ", elapsed_ms), fmt::fg(fmt::color::orange)),
                         fmt::styled(fmt::format("[{}]", req->getPeerAddr().toIp()), fmt::fg(fmt::color::yellow)),
                         fmt::styled(fmt::format("[{}]", req->getMethodString()), fmt::fg(fmt::color::red)),
                         fmt::styled(fmt::format("[{}]", static_cast<int>(resp->getStatusCode())), fmt::fg(fmt::color::magenta)),

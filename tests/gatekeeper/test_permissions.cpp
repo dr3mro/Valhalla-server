@@ -1,21 +1,20 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/generators/catch_generators.hpp>
-
 #include <cstdint>
 #include <optional>
 #include <string>
 #include <vector>
 
-#include "entities/people/user.hpp"
 #include "entities/people/provider.hpp"
+#include "entities/people/user.hpp"
 #include "entities/services/laboratories.hpp"
 #include "gatekeeper/permissionmanager/permissionmanager.hpp"
 #include "gatekeeper/permissionmanager/permissionmanager_private.hpp"
 #include "gatekeeper/permissionmanager/permissions.hpp"
 #include "support/builders.hpp"
 
-using Permissions      = ::Permissions;
-using PowerLevel       = Permissions::PowerLevel;
+using Permissions              = ::Permissions;
+using PowerLevel               = Permissions::PowerLevel;
 using PermissionManagerPrivate = api::v2::PermissionManagerPrivate;
 using PermissionManager        = api::v2::PermissionManager;
 using Requester                = api::v2::Requester;
@@ -24,14 +23,14 @@ namespace valhalla_test
 {
     using jsoncons::json;
 
-    inline std::optional<json> staffPermissions(const std::vector<std::pair<std::string, std::vector<std::string>>> &roles,
+    inline std::optional<json> staffPermissions(const std::vector<std::pair<std::string, std::vector<std::string>>>& roles,
         const jsoncons::optional<uint64_t> ownerId = {}, const jsoncons::optional<uint64_t> adminId = {})
     {
         json staff;
-        for (const auto &[role, members] : roles)
+        for (const auto& [role, members] : roles)
         {
             json membersJson = json::array();
-            for (const auto &member : members)
+            for (const auto& member : members)
             {
                 membersJson.push_back(member);
             }
@@ -84,7 +83,7 @@ TEST_CASE("Permissions bitmask hasPower semantics", "[gatekeeper][permissions]")
 
 TEST_CASE("PermissionManagerPrivate grants a staff member their configured power only", "[gatekeeper][permissions]")
 {
-    const auto requester = valhalla_test::makeRequester(7, "providers");
+    const auto requester     = valhalla_test::makeRequester(7, "providers");
     const auto permissions_j = valhalla_test::staffPermissions({{"Doctors", {"7:4"}}});  // 4 = CAN_READ
     SECTION("CAN_READ is granted")
     {
@@ -104,7 +103,7 @@ TEST_CASE("PermissionManagerPrivate grants a staff member their configured power
 
 TEST_CASE("PermissionManagerPrivate denies non-staff members", "[gatekeeper][permissions]")
 {
-    const auto requester = valhalla_test::makeRequester(99, "users");
+    const auto requester     = valhalla_test::makeRequester(99, "users");
     const auto permissions_j = valhalla_test::staffPermissions({{"Doctors", {"7:4"}}});
 
     HttpError error;
@@ -114,12 +113,12 @@ TEST_CASE("PermissionManagerPrivate denies non-staff members", "[gatekeeper][per
 
 TEST_CASE("PermissionManagerPrivate isStaffOfService parses the role string", "[gatekeeper][permissions]")
 {
-    const auto requester = valhalla_test::makeRequester(7, "users");
-    auto permissions_j = valhalla_test::staffPermissions({{"Nurses", {"3:12", "7:32"}}});  // 32 = IS_ADMIN (0x20)
+    const auto requester     = valhalla_test::makeRequester(7, "users");
+    auto       permissions_j = valhalla_test::staffPermissions({{"Nurses", {"3:12", "7:32"}}});  // 32 = IS_ADMIN (0x20)
 
     SECTION("matching member")
     {
-        HttpError error;
+        HttpError  error;
         const auto staff = PermissionManagerPrivate::isStaffOfService(requester, permissions_j, "clinics", error);
         REQUIRE(staff.has_value());
         CHECK(staff->staff_id == 7);
@@ -130,7 +129,7 @@ TEST_CASE("PermissionManagerPrivate isStaffOfService parses the role string", "[
     SECTION("member with a malformed power value is rejected")
     {
         permissions_j = valhalla_test::staffPermissions({{"Nurses", {"7:notanumber"}}});
-        HttpError error;
+        HttpError  error;
         const auto staff = PermissionManagerPrivate::isStaffOfService(requester, permissions_j, "clinics", error);
         REQUIRE_FALSE(staff.has_value());
         CHECK(error.code == api::v2::Http::Status::FORBIDDEN);
@@ -138,7 +137,7 @@ TEST_CASE("PermissionManagerPrivate isStaffOfService parses the role string", "[
 
     SECTION("missing permissions payload is rejected")
     {
-        HttpError error;
+        HttpError  error;
         const auto staff = PermissionManagerPrivate::isStaffOfService(requester, std::nullopt, "clinics", error);
         REQUIRE_FALSE(staff.has_value());
         CHECK(error.code == api::v2::Http::Status::BAD_REQUEST);
@@ -147,9 +146,9 @@ TEST_CASE("PermissionManagerPrivate isStaffOfService parses the role string", "[
 
 TEST_CASE("PermissionManagerPrivate checks owner and admin of a service", "[gatekeeper][permissions]")
 {
-    const auto owner = valhalla_test::makeRequester(1, "providers");
-    const auto admin = valhalla_test::makeRequester(2, "providers");
-    const auto nobody = valhalla_test::makeRequester(3, "providers");
+    const auto owner         = valhalla_test::makeRequester(1, "providers");
+    const auto admin         = valhalla_test::makeRequester(2, "providers");
+    const auto nobody        = valhalla_test::makeRequester(3, "providers");
     const auto permissions_j = valhalla_test::staffPermissions({}, 1, 2);
 
     HttpError error;
@@ -191,7 +190,7 @@ TEST_CASE("PermissionManagerPrivate isOwnerOrAdminOrHasPermission resolves role 
         // bug 11). With an owner/admin present, a CAN_READ-only member is
         // denied cleanly instead.
         const auto ownerOnly = valhalla_test::staffPermissions({{"Doctors", {"5:4"}}}, 1, 2);
-        HttpError error;
+        HttpError  error;
         CHECK_FALSE(PermissionManagerPrivate::isOwnerOrAdminOrHasPermission(valhalla_test::makeRequester(5, "users"), ownerOnly, "clinics", error));
     }
 
@@ -201,7 +200,7 @@ TEST_CASE("PermissionManagerPrivate isOwnerOrAdminOrHasPermission resolves role 
         // escapes isOwnerOrAdminOrHasPermission and error.code is left
         // untouched (uninitialised garbage in the caller's Http::Error).
         const auto staffOnly = valhalla_test::staffPermissions({{"Doctors", {"5:4"}}});
-        HttpError error;
+        HttpError  error;
         REQUIRE_THROWS_AS(
             PermissionManagerPrivate::isOwnerOrAdminOrHasPermission(valhalla_test::makeRequester(5, "users"), staffOnly, "clinics", error), std::exception);
     }
@@ -216,7 +215,7 @@ TEST_CASE("PermissionManagerPrivate isOwnerOrAdminOrHasPermission resolves role 
 TEST_CASE("PermissionManagerPrivate isOwnerOrAdmin requires either role", "[gatekeeper][permissions]")
 {
     const auto permissions_j = valhalla_test::staffPermissions({}, 1, 2);
-    HttpError error;
+    HttpError  error;
 
     CHECK(PermissionManagerPrivate::isOwnerOrAdmin(valhalla_test::makeRequester(1, "providers"), permissions_j, "clinics", error));
     CHECK(PermissionManagerPrivate::isOwnerOrAdmin(valhalla_test::makeRequester(2, "providers"), permissions_j, "clinics", error));
@@ -226,7 +225,7 @@ TEST_CASE("PermissionManagerPrivate isOwnerOrAdmin requires either role", "[gate
 TEST_CASE("PermissionManagerPrivate assert_group_id_match enforces same group and id", "[gatekeeper][permissions]")
 {
     const auto requester = valhalla_test::makeRequester(11, "users");
-    HttpError error;
+    HttpError  error;
 
     CHECK(PermissionManagerPrivate::assert_group_id_match(requester, "users", 11, error));
 
@@ -264,16 +263,16 @@ TEST_CASE("PermissionManagerPrivate preServiceCreateChecks validates the creator
     SECTION("provider owning and administering the service is allowed")
     {
         const auto requester = valhalla_test::makeRequester(4, "providers");
-        auto service_j = makeService(4, 4);
-        HttpError error;
+        auto       service_j = makeService(4, 4);
+        HttpError  error;
         CHECK(PermissionManagerPrivate::preServiceCreateChecks(requester, service_j, error));
     }
 
     SECTION("non-provider is rejected")
     {
         const auto requester = valhalla_test::makeRequester(4, "users");
-        auto service_j = makeService(4, 4);
-        HttpError error;
+        auto       service_j = makeService(4, 4);
+        HttpError  error;
         CHECK_FALSE(PermissionManagerPrivate::preServiceCreateChecks(requester, service_j, error));
         CHECK(error.code == api::v2::Http::Status::BAD_REQUEST);
     }
@@ -281,16 +280,16 @@ TEST_CASE("PermissionManagerPrivate preServiceCreateChecks validates the creator
     SECTION("owner/admin ids must match the requester")
     {
         const auto requester = valhalla_test::makeRequester(4, "providers");
-        auto service_j = makeService(9, 4);
-        HttpError error;
+        auto       service_j = makeService(9, 4);
+        HttpError  error;
         CHECK_FALSE(PermissionManagerPrivate::preServiceCreateChecks(requester, service_j, error));
     }
 
     SECTION("missing ids are rejected")
     {
         const auto requester = valhalla_test::makeRequester(4, "providers");
-        auto service_j = makeService(std::nullopt, std::nullopt);
-        HttpError error;
+        auto       service_j = makeService(std::nullopt, std::nullopt);
+        HttpError  error;
         CHECK_FALSE(PermissionManagerPrivate::preServiceCreateChecks(requester, service_j, error));
     }
 
@@ -308,7 +307,7 @@ TEST_CASE("PermissionManagerPrivate extract_json_value_safely returns values or 
     json clinicJson;
     clinicJson["clinic_id"] = 3;
     std::optional<json> service_j(std::move(clinicJson));
-    HttpError error;
+    HttpError           error;
 
     SECTION("present key")
     {
@@ -340,7 +339,7 @@ TEST_CASE("PermissionManagerPrivate extract_json_value_safely returns values or 
 TEST_CASE("PermissionManager always allows creation for clients", "[gatekeeper][permissions]")
 {
     const auto requester = valhalla_test::makeRequester(1, "users");
-    HttpError error;
+    HttpError  error;
     CHECK(PermissionManager{}.canCreate<User>(requester, std::nullopt, error));
 }
 
@@ -409,7 +408,8 @@ TEST_CASE("PermissionManagerPrivate isOwnerOrAdminOrHasPermission checks the bit
     const auto allowed = [&](const uint64_t id, const PowerLevel required)
     {
         HttpError error;
-        return PermissionManagerPrivate::isOwnerOrAdminOrHasPermission(valhalla_test::makeRequester(id, "providers"), permissions_j, "clinics", error, required);
+        return PermissionManagerPrivate::isOwnerOrAdminOrHasPermission(
+            valhalla_test::makeRequester(id, "providers"), permissions_j, "clinics", error, required);
     };
 
     SECTION("a read-only member can read but not write or delete")
@@ -439,10 +439,7 @@ TEST_CASE("PermissionManagerPrivate isOwnerOrAdminOrHasPermission checks the bit
         CHECK(allowed(2, PowerLevel::CAN_WRITE));
     }
 
-    SECTION("someone who is not listed is denied")
-    {
-        CHECK_FALSE(allowed(99, PowerLevel::CAN_READ));
-    }
+    SECTION("someone who is not listed is denied") { CHECK_FALSE(allowed(99, PowerLevel::CAN_READ)); }
 }
 
 TEST_CASE("PermissionManager canCreate<Service_t> delegates to preServiceCreateChecks", "[gatekeeper][permissions][service]")
@@ -450,7 +447,8 @@ TEST_CASE("PermissionManager canCreate<Service_t> delegates to preServiceCreateC
     using valhalla_test::json;
     PermissionManager manager;
 
-    const auto makeService = [](uint64_t owner, uint64_t admin) {
+    const auto makeService = [](uint64_t owner, uint64_t admin)
+    {
         json j;
         j["owner_id"] = owner;
         j["admin_id"] = admin;

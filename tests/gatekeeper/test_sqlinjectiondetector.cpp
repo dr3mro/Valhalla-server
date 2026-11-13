@@ -2,7 +2,6 @@
 #include <catch2/generators/catch_generators.hpp>
 #include <catch2/generators/catch_generators_range.hpp>
 #include <catch2/matchers/catch_matchers_all.hpp>
-
 #include <string>
 #include <vector>
 
@@ -46,11 +45,11 @@ namespace
         "john_doe",
         "P0001",
         "The patient reports mild fever and fatigue",
-        "select",                       // bare word, not risky on its own
-        "union",                        // ditto
+        "select",  // bare word, not risky on its own
+        "union",   // ditto
         "100% reliable",
         "café visit at 10:00",
-        "name='O''Brien'",              // doubled/escaped quote — balanced
+        "name='O''Brien'",  // doubled/escaped quote — balanced
         std::string(512, 'a'),
         "0.5 ml of solution B every 6 hours",
 
@@ -142,7 +141,7 @@ TEST_CASE("SqlInjectionDetector flags malicious queries caught by the active heu
 {
     SqlInjectionDetector::initialize();
 
-    const auto &query = GENERATE(from_range(detectedMaliciousInputs));
+    const auto& query = GENERATE(from_range(detectedMaliciousInputs));
     CAPTURE(query);
     REQUIRE(SqlInjectionDetector::isQuerySqlInjection(query));
 }
@@ -151,7 +150,7 @@ TEST_CASE("SqlInjectionDetector does not flag benign inputs", "[gatekeeper][sqli
 {
     SqlInjectionDetector::initialize();
 
-    const auto &query = GENERATE(from_range(benignInputs));
+    const auto& query = GENERATE(from_range(benignInputs));
     CAPTURE(query);
     REQUIRE_FALSE(SqlInjectionDetector::isQuerySqlInjection(query));
 }
@@ -163,7 +162,7 @@ TEST_CASE("SqlInjectionDetector flags classic injection signatures via built-in 
 {
     SqlInjectionDetector::initialize();
 
-    const auto &query = GENERATE(from_range(knownBugUndetectedInputs));
+    const auto& query = GENERATE(from_range(knownBugUndetectedInputs));
     CAPTURE(query);
     REQUIRE(SqlInjectionDetector::isQuerySqlInjection(query));
 }
@@ -175,7 +174,7 @@ TEST_CASE("SqlInjectionDetector does not flag fixed false-positive medical input
 {
     SqlInjectionDetector::initialize();
 
-    const auto &query = GENERATE(from_range(bug2FixedFalsePositives));
+    const auto& query = GENERATE(from_range(bug2FixedFalsePositives));
     CAPTURE(query);
     REQUIRE_FALSE(SqlInjectionDetector::isQuerySqlInjection(query));
 }
@@ -186,7 +185,7 @@ TEST_CASE("SqlInjectionDetector stacked-query check still flags semicolons in no
 {
     SqlInjectionDetector::initialize();
 
-    const auto &query = GENERATE(from_range(knownBugFalsePositives));
+    const auto& query = GENERATE(from_range(knownBugFalsePositives));
     CAPTURE(query);
     REQUIRE_FALSE(SqlInjectionDetector::isQuerySqlInjection(query));
 }
@@ -232,10 +231,7 @@ TEST_CASE("SqlInjectionDetector honours custom patterns", "[gatekeeper][sqli]")
     SqlInjectionDetector::initialize();
     SqlInjectionDetector::addCustomPattern("MAGIC_EVIL_PATTERN");
 
-    SECTION("a matching query is flagged")
-    {
-        REQUIRE(SqlInjectionDetector::isQuerySqlInjection("field = MAGIC_EVIL_PATTERN"));
-    }
+    SECTION("a matching query is flagged") { REQUIRE(SqlInjectionDetector::isQuerySqlInjection("field = MAGIC_EVIL_PATTERN")); }
 
     SECTION("the custom pattern is named in the detected patterns")
     {
@@ -243,10 +239,7 @@ TEST_CASE("SqlInjectionDetector honours custom patterns", "[gatekeeper][sqli]")
         REQUIRE_THAT(patterns, Catch::Matchers::Contains(std::string("Custom pattern matched: MAGIC_EVIL_PATTERN")));
     }
 
-    SECTION("case insensitive")
-    {
-        REQUIRE(SqlInjectionDetector::isQuerySqlInjection("field = magic_evil_pattern"));
-    }
+    SECTION("case insensitive") { REQUIRE(SqlInjectionDetector::isQuerySqlInjection("field = magic_evil_pattern")); }
 }
 
 TEST_CASE("SqlInjectionDetector keyword matching is case insensitive and word bounded", "[gatekeeper][sqli]")

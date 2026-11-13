@@ -21,14 +21,14 @@ struct Permissions
 
     // constructor for rule
     explicit Permissions(PowerLevel _powerLevel) : powerLevel(_powerLevel) {}
-    virtual ~Permissions()                      = default;
-    Permissions()                               = delete;
-    Permissions(const Permissions &)            = default;
-    Permissions &operator=(const Permissions &) = default;
-    Permissions(Permissions &&)                 = default;
-    Permissions &operator=(Permissions &&)      = default;
+    virtual ~Permissions()                     = default;
+    Permissions()                              = delete;
+    Permissions(const Permissions&)            = default;
+    Permissions& operator=(const Permissions&) = default;
+    Permissions(Permissions&&)                 = default;
+    Permissions& operator=(Permissions&&)      = default;
 
-    bool hasPower(const PowerLevel &check) { return static_cast<int>(powerLevel & check) != 0; }
+    bool hasPower(const PowerLevel& check) { return static_cast<int>(powerLevel & check) != 0; }
 
     // Overload | operator
     friend PowerLevel operator|(PowerLevel first, PowerLevel second)
@@ -43,14 +43,14 @@ struct Permissions
     }
 
     // Overload |= operator
-    friend PowerLevel &operator|=(PowerLevel &first, PowerLevel second)
+    friend PowerLevel& operator|=(PowerLevel& first, PowerLevel second)
     {
         first = first | second;
         return first;
     }
 
     // Overload &= operator
-    friend PowerLevel &operator&=(PowerLevel &first, PowerLevel second)
+    friend PowerLevel& operator&=(PowerLevel& first, PowerLevel second)
     {
         first = first & second;
         return first;
@@ -71,5 +71,5 @@ struct Permissions
    private:
     PowerLevel powerLevel;
     // check if rule is set
-    [[nodiscard]] static bool hasMatch(const PowerLevel &permission, const PowerLevel &check) { return static_cast<int>(permission & check) != 0; }
+    [[nodiscard]] static bool hasMatch(const PowerLevel& permission, const PowerLevel& check) { return static_cast<int>(permission & check) != 0; }
 };

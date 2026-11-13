@@ -35,9 +35,9 @@ namespace api::v2::Types
         // Entity_t &operator=(const Entity_t &) = delete;
         // Entity_t &operator=(Entity_t &&)      = delete;
 
-        Entity_t(const S &_data, const uint64_t _id) : data(_data), id(_id) {}
+        Entity_t(const S& _data, const uint64_t _id) : data(_data), id(_id) {}
         [[nodiscard]] std::optional<uint64_t> get_id() const { return id; }
-        [[nodiscard]] const S                &get_data() const { return this->data; }
+        [[nodiscard]] const S&                get_data() const { return this->data; }
 
         virtual ~Entity_t() = default;
 
@@ -53,7 +53,7 @@ namespace api::v2::Types
         // Create_t &operator=(const Create_t &) = default;
         // Create_t &operator=(Create_t &&)      = default;
 
-        Create_t(const jsoncons::json &_data, const uint64_t id) : Entity_t(_data, id) {}
+        Create_t(const jsoncons::json& _data, const uint64_t id) : Entity_t(_data, id) {}
         ~Create_t() override = default;
     };
 
@@ -64,7 +64,7 @@ namespace api::v2::Types
         // Read_t &operator=(const Read_t &) = delete;
         // Read_t &operator=(Read_t &&)      = delete;
 
-        Read_t(const std::unordered_set<std::string> &_data, const uint64_t _id) : Entity_t(_data, _id) {}
+        Read_t(const std::unordered_set<std::string>& _data, const uint64_t _id) : Entity_t(_data, _id) {}
         ~Read_t() override = default;
     };
 
@@ -75,7 +75,7 @@ namespace api::v2::Types
         // Update_t &operator=(const Update_t &) = delete;
         // Update_t &operator=(Update_t &&)      = delete;
 
-        Update_t(const jsoncons::json &_data, const uint64_t _id) : Entity_t(_data, _id) {}
+        Update_t(const jsoncons::json& _data, const uint64_t _id) : Entity_t(_data, _id) {}
         ~Update_t() override = default;
     };
 
@@ -110,7 +110,7 @@ namespace api::v2::Types
         size_t      limit;
         size_t      offset;
 
-        Search_t(const jsoncons::json &search_j, bool &success)
+        Search_t(const jsoncons::json& search_j, bool& success)
         {
             // A missing/malformed field here (e.g. an empty "{}" body) is a client error, not a
             // server error. success=false tells the caller (EntityController::Search) to reply with
@@ -119,8 +119,8 @@ namespace api::v2::Types
             // handler, leaking the server's file path in the response body.
             try
             {
-                const jsoncons::json &kw = search_j.at("keyword"), &fl = search_j.at("filter"), &ob = search_j.at("order_by"),
-                                     &dr = search_j.at("direction"), &lm = search_j.at("limit"), &of = search_j.at("offset");
+                const jsoncons::json &kw = search_j.at("keyword"), &fl = search_j.at("filter"), &ob = search_j.at("order_by"), &dr = search_j.at("direction"),
+                                     &lm = search_j.at("limit"), &of = search_j.at("offset");
                 // jsoncons' as<T>() happily coerces across types (a JSON bool/null becomes "true"/""
                 // as a string, for instance) instead of throwing, which let a body that violates the
                 // declared schema (e.g. "order_by": false, "limit": null) sail through this try block
@@ -139,22 +139,22 @@ namespace api::v2::Types
                 offset    = of.as<size_t>();
                 success   = validate(search_j);
             }
-            catch (const std::exception &)
+            catch (const std::exception&)
             {
                 success = false;
             }
         }
-        bool validate(const jsoncons::json &search_j)
+        bool validate(const jsoncons::json& search_j)
         {
             std::unordered_set<std::string> keys = {"keyword", "filter", "order_by", "direction", "limit", "offset"};
-            return std::ranges::all_of(keys, [&search_j](const std::string &key) { return search_j.find(key).has_value(); });
+            return std::ranges::all_of(keys, [&search_j](const std::string& key) { return search_j.find(key).has_value(); });
         }
     };
 
     struct ClientData_t
     {
        public:
-        ClientData_t(std::string_view _data, const std::optional<uint64_t> _id, api::v2::Http::Error &error, bool &success) : id(_id)
+        ClientData_t(std::string_view _data, const std::optional<uint64_t> _id, api::v2::Http::Error& error, bool& success) : id(_id)
         {
             try
             {
@@ -167,7 +167,7 @@ namespace api::v2::Types
                     return;
                 }
             }
-            catch (const std::exception &e)
+            catch (const std::exception& e)
             {
                 error   = {.code = api::v2::Http::Status::INTERNAL_SERVER_ERROR, .message = fmt::format("Failed while parsing client data: {}.", e.what())};
                 success = false;
@@ -178,7 +178,7 @@ namespace api::v2::Types
             success = true;
         }
 
-        const std::optional<jsoncons::json> &get_data_json() const { return data_j; }
+        const std::optional<jsoncons::json>& get_data_json() const { return data_j; }
         std::optional<uint64_t>              get_id() const { return id; }
 
        protected:
@@ -188,7 +188,7 @@ namespace api::v2::Types
 
         bool hashPassword()
         {
-            auto passwd_itr = std::ranges::find_if(data_set, [&](const auto &item) { return item.first == "password"; });
+            auto passwd_itr = std::ranges::find_if(data_set, [&](const auto& item) { return item.first == "password"; });
             if (passwd_itr != data_set.end())
             {
                 std::string                password_raw    = passwd_itr->second;
@@ -211,7 +211,7 @@ namespace api::v2::Types
     struct CreateClient_t : public ClientData_t
     {
        public:
-        CreateClient_t(std::string_view _data, const std::string &tablename, api::v2::Http::Error &error, bool &success)
+        CreateClient_t(std::string_view _data, const std::string& tablename, api::v2::Http::Error& error, bool& success)
             : ClientData_t(_data, std::nullopt, error, success)
         {
             try
@@ -232,7 +232,7 @@ namespace api::v2::Types
                 }
                 hashPassword();
             }
-            catch (const std::exception &e)
+            catch (const std::exception& e)
             {
                 error   = {.code = api::v2::Http::Status::INTERNAL_SERVER_ERROR, .message = fmt::format("Failed while parsing client data: {}.", e.what())};
                 success = false;
@@ -242,14 +242,14 @@ namespace api::v2::Types
 
             success = true;
         }
-        const std::unordered_set<std::pair<std::string, std::string>> &get_data_set() const { return data_set; }
+        const std::unordered_set<std::pair<std::string, std::string>>& get_data_set() const { return data_set; }
     };
 
     struct UpdateClient_t : public ClientData_t
     {
        public:
-        UpdateClient_t(std::string_view _data, const std::optional<uint64_t> _id, const std::string &tablename, api::v2::Http::Error &error, bool &success,
-            const Validator::Rule &rule)
+        UpdateClient_t(std::string_view _data, const std::optional<uint64_t> _id, const std::string& tablename, api::v2::Http::Error& error, bool& success,
+            const Validator::Rule& rule)
             : ClientData_t(_data, _id, error, success)
         {
             try
@@ -268,7 +268,7 @@ namespace api::v2::Types
                     return;
                 }
             }
-            catch (const std::exception &e)
+            catch (const std::exception& e)
             {
                 error   = {.code = api::v2::Http::Status::INTERNAL_SERVER_ERROR, .message = fmt::format("Failed while parsing client data: {}.", e.what())};
                 success = false;
@@ -278,7 +278,7 @@ namespace api::v2::Types
 
             success = true;
         }
-        const std::unordered_set<std::pair<std::string, std::string>> &get_data_set() const { return data_set; }
+        const std::unordered_set<std::pair<std::string, std::string>>& get_data_set() const { return data_set; }
     };
 
     struct SuspendData
@@ -298,7 +298,7 @@ namespace api::v2::Types
         std::string entity_name;
         std::string project_name;
 
-        StaffData(const jsoncons::json &json)
+        StaffData(const jsoncons::json& json)
         {
             try
             {
@@ -311,14 +311,14 @@ namespace api::v2::Types
                 project_name  = servercfg_.name;
                 parse_status  = true;
             }
-            catch (const std::exception &e)
+            catch (const std::exception& e)
             {
                 fmt::print("Error while parsing json: {}", std::string(e.what()));
                 parse_status = false;
             }
         }
 
-        bool toInviteJson(jsoncons::json &invite_json)
+        bool toInviteJson(jsoncons::json& invite_json)
         {
             try
             {
@@ -330,7 +330,7 @@ namespace api::v2::Types
                 invite_json["generate_body"] = "";
                 return true;
             }
-            catch (const std::exception &e)
+            catch (const std::exception& e)
             {
                 fmt::print("Error while creating invite json: {}", std::string(e.what()));
                 return false;
@@ -340,8 +340,8 @@ namespace api::v2::Types
 
        private:
         const std::shared_ptr<Configurator> cfg_         = Store::getObject<Configurator>();
-        const Configurator::ServerConfig   &servercfg_   = cfg_->get<Configurator::ServerConfig>();
-        const Configurator::FrontEndConfig &frontendcfg_ = cfg_->get<Configurator::FrontEndConfig>();
+        const Configurator::ServerConfig&   servercfg_   = cfg_->get<Configurator::ServerConfig>();
+        const Configurator::FrontEndConfig& frontendcfg_ = cfg_->get<Configurator::FrontEndConfig>();
     };
 
     using EntityType = std::variant<Create_t, Read_t, Update_t, Delete_t, Data_t, Search_t, CreateClient_t, UpdateClient_t, SuspendData, StaffData>;

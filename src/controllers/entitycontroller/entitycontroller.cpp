@@ -26,7 +26,7 @@ using Delete_t  = api::v2::Types::Delete_t;
 using Read_t    = api::v2::Types::Read_t;
 
 template <typename T>
-inline void __attribute((always_inline)) EntityController<T>::Create(CALLBACK_ &&callback, const Requester &&requester, std::string_view data)
+inline void __attribute((always_inline)) EntityController<T>::Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
 {
     try
     {
@@ -40,7 +40,7 @@ inline void __attribute((always_inline)) EntityController<T>::Create(CALLBACK_ &
         {
             request_j = jsoncons::json::parse(data);
         }
-        catch (const std::exception &)
+        catch (const std::exception&)
         {
             std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Invalid request body: malformed JSON.");
             return;
@@ -78,19 +78,19 @@ inline void __attribute((always_inline)) EntityController<T>::Create(CALLBACK_ &
 
         Controller::Create(entity, std::move(callback));
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         CRITICALMESSAGERESPONSE
     }
 }
 
 template <typename T>
-inline void __attribute((always_inline)) EntityController<T>::Read(CALLBACK_ &&callback, const Requester &&requester, std::string_view data)
+inline void __attribute((always_inline)) EntityController<T>::Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
 {
     try
     {
-        jsoncons::json request_j;
-        uint64_t       _id;
+        jsoncons::json                  request_j;
+        uint64_t                        _id;
         std::unordered_set<std::string> schema;
         try
         {
@@ -98,12 +98,12 @@ inline void __attribute((always_inline)) EntityController<T>::Read(CALLBACK_ &&c
             _id       = request_j.at("id").as<uint64_t>();
             schema    = request_j.at("schema").as<std::unordered_set<std::string>>();
         }
-        catch (const std::exception &)
+        catch (const std::exception&)
         {
             std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Invalid request body: malformed JSON or missing/invalid 'id'/'schema'.");
             return;
         }
-        HttpError      error;
+        HttpError error;
 
         if (!gateKeeper->canRead<T>(requester, _id, error))
         {
@@ -123,14 +123,14 @@ inline void __attribute((always_inline)) EntityController<T>::Read(CALLBACK_ &&c
 
         Controller::Read(entity, std::move(callback));
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         CRITICALMESSAGERESPONSE
     }
 }
 template <typename T>
 inline void __attribute((always_inline)) EntityController<T>::Update(
-    CALLBACK_ &&callback, const Requester &&requester, std::string_view data, const std::optional<uint64_t> _id)
+    CALLBACK_&& callback, const Requester&& requester, std::string_view data, const std::optional<uint64_t> _id)
 {
     try
     {
@@ -148,7 +148,7 @@ inline void __attribute((always_inline)) EntityController<T>::Update(
         {
             request_json = jsoncons::json::parse(data);
         }
-        catch (const std::exception &)
+        catch (const std::exception&)
         {
             std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Invalid request body: malformed JSON.");
             return;
@@ -181,14 +181,14 @@ inline void __attribute((always_inline)) EntityController<T>::Update(
 
         Controller::Update(entity, std::move(callback));
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         CRITICALMESSAGERESPONSE
     }
 }
 
 template <typename T>
-inline void __attribute((always_inline)) EntityController<T>::Delete(CALLBACK_ &&callback, const Requester &&requester, const std::optional<uint64_t> _id)
+inline void __attribute((always_inline)) EntityController<T>::Delete(CALLBACK_&& callback, const Requester&& requester, const std::optional<uint64_t> _id)
 {
     try
     {
@@ -210,21 +210,21 @@ inline void __attribute((always_inline)) EntityController<T>::Delete(CALLBACK_ &
 
         Controller::Delete(entity, std::move(callback));
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         CRITICALMESSAGERESPONSE
     }
 }
 
 template <typename T>
-inline void __attribute((always_inline)) EntityController<T>::Search(CALLBACK_ &&callback, [[maybe_unused]] const Requester &&requester, std::string_view data)
+inline void __attribute((always_inline)) EntityController<T>::Search(CALLBACK_&& callback, [[maybe_unused]] const Requester&& requester, std::string_view data)
 {
     jsoncons::json request_json;
     try
     {
         request_json = jsoncons::json::parse(data);
     }
-    catch (const std::exception &)
+    catch (const std::exception&)
     {
         std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Invalid request body: malformed JSON.");
         return;
@@ -243,18 +243,18 @@ inline void __attribute((always_inline)) EntityController<T>::Search(CALLBACK_ &
             std::move(callback)(api::v2::Http::Status::NOT_ACCEPTABLE, "Failed to search");
         }
     }
-    catch (const std::exception &e)
+    catch (const std::exception& e)
     {
         CRITICALMESSAGERESPONSE
     }
 }
 
 #define INSTANTIATE_ENTITY_CONTROLLER(TYPE) /*NOLINT*/                                                                                                  \
-    template void EntityController<TYPE>::Create(CALLBACK_ &&callback, const Requester &&requester, std::string_view data);                             \
-    template void EntityController<TYPE>::Read(CALLBACK_ &&callback, const Requester &&requester, std::string_view data);                               \
-    template void EntityController<TYPE>::Update(CALLBACK_ &&callback, const Requester &&requester, std::string_view data, std::optional<uint64_t> id); \
-    template void EntityController<TYPE>::Delete(CALLBACK_ &&callback, const Requester &&requester, std::optional<uint64_t> id);                        \
-    template void EntityController<TYPE>::Search(CALLBACK_ &&callback, const Requester &&requester, std::string_view data);
+    template void EntityController<TYPE>::Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                             \
+    template void EntityController<TYPE>::Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                               \
+    template void EntityController<TYPE>::Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> id); \
+    template void EntityController<TYPE>::Delete(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id);                        \
+    template void EntityController<TYPE>::Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data);
 
 #include "gatekeeper/includes.hpp"  // IWYU pragma: keep
 // Instantiate for all entity types

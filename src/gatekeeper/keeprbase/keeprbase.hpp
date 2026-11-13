@@ -33,7 +33,7 @@ namespace api::v2
         std::optional<std::string>    getLastLoginTime(uint64_t _id, const std::string& _group);
         std::optional<jsoncons::json> getPasswordHashForUserName(const std::string& username, const std::string& _group, bool& isSqlInjection);
         static bool                   decodeToken(
-                              std::optional<Types::ClientLoginData>& clientLoginData, std::string& message, jwt::decoded_jwt<jwt::traits::kazuho_picojson>& decoedToken);
+            std::optional<Types::ClientLoginData>& clientLoginData, std::string& message, jwt::decoded_jwt<jwt::traits::kazuho_picojson>& decoedToken);
         bool validateToken(
             std::optional<Types::ClientLoginData>& clientLoginData, std::string& message, jwt::decoded_jwt<jwt::traits::kazuho_picojson>& decodedToken);
         [[nodiscard]] jwt::verifier<jwt::default_clock, jwt::traits::kazuho_picojson> createTokenVerifier(

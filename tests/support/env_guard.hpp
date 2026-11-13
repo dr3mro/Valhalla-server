@@ -1,9 +1,8 @@
 #pragma once
 
+#include <cstdlib>
 #include <optional>
 #include <string>
-
-#include <cstdlib>
 
 /// RAII guard that sets (or unsets) an environment variable and restores the
 /// previous state on destruction. Never touches `.env`; only the process env.
@@ -11,9 +10,9 @@ class EnvGuard
 {
    public:
     /// Sets `key` to `value` for the lifetime of the guard.
-    EnvGuard(const std::string &key, const std::string &value) : key_(key)
+    EnvGuard(const std::string& key, const std::string& value) : key_(key)
     {
-        const char *previous = std::getenv(key.c_str());
+        const char* previous = std::getenv(key.c_str());
         if (previous != nullptr)
         {
             hadPrevious_ = true;
@@ -23,9 +22,9 @@ class EnvGuard
     }
 
     /// Unsets `key` for the lifetime of the guard.
-    explicit EnvGuard(const std::string &key) : key_(key)
+    explicit EnvGuard(const std::string& key) : key_(key)
     {
-        const char *previous = std::getenv(key.c_str());
+        const char* previous = std::getenv(key.c_str());
         if (previous != nullptr)
         {
             hadPrevious_ = true;
@@ -34,10 +33,10 @@ class EnvGuard
         unsetenv(key.c_str());
     }
 
-    EnvGuard(const EnvGuard &)            = delete;
-    EnvGuard &operator=(const EnvGuard &) = delete;
-    EnvGuard(EnvGuard &&)                 = delete;
-    EnvGuard &operator=(EnvGuard &&)      = delete;
+    EnvGuard(const EnvGuard&)            = delete;
+    EnvGuard& operator=(const EnvGuard&) = delete;
+    EnvGuard(EnvGuard&&)                 = delete;
+    EnvGuard& operator=(EnvGuard&&)      = delete;
 
     ~EnvGuard()
     {

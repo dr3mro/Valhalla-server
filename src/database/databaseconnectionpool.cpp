@@ -97,7 +97,7 @@ DatabaseConnectionPool::DatabaseConnectionPool() : configurator_(Store::getObjec
     catch (const std::exception& e)
     {
         std::string what = e.what();
-        Message::CriticalMessage(fmt::format("Failed to initialize database connection pool: {}",what));
+        Message::CriticalMessage(fmt::format("Failed to initialize database connection pool: {}", what));
         Message::ErrorMessage("Fatal Error!\nExiting...");
         exit(EXIT_FAILURE); /*NOLINT*/
     }

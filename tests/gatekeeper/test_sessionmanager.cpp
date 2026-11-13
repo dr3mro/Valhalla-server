@@ -1,13 +1,11 @@
-#include <catch2/catch_test_macros.hpp>
-
 #include <atomic>
+#include <catch2/catch_test_macros.hpp>
 #include <chrono>
+#include <jsoncons/json.hpp>
 #include <optional>
 #include <string>
 #include <thread>
 #include <vector>
-
-#include <jsoncons/json.hpp>
 
 #include "gatekeeper/passwordcrypt/passwordcrypt.hpp"
 #include "gatekeeper/sessionmanager/sessionmanager.hpp"
@@ -16,7 +14,7 @@
 #include "support/fake_db.hpp"
 #include "utils/global/http.hpp"
 
-using SessionManager = api::v2::SessionManager;
+using SessionManager  = api::v2::SessionManager;
 using ClientLoginData = api::v2::Types::ClientLoginData;
 using valhalla_test::makeLoginData;
 using valhalla_test::makeToken;
@@ -24,9 +22,9 @@ using valhalla_test::makeToken;
 namespace
 {
     // Test token parameters - must match tests/support/global_env.cpp.
-    constexpr const char *kSecret = "valhalla-unit-test-secret-key";
-    constexpr const char *kIssuer = "valhalla-unit-test-issuer";
-    constexpr const char *kType   = "JWS";
+    constexpr const char* kSecret = "valhalla-unit-test-secret-key";
+    constexpr const char* kIssuer = "valhalla-unit-test-issuer";
+    constexpr const char* kType   = "JWS";
 
     /// A session manager plus a login data object whose token/claims are
     /// consistent, so decodeToken() (claim extraction) succeeds.
@@ -39,7 +37,7 @@ namespace
         SessionManager                 manager;
         std::optional<ClientLoginData> loginData;
 
-        SessionFixture(const std::string &group = "users", const std::string &ip = "127.0.0.1")
+        SessionFixture(const std::string& group = "users", const std::string& ip = "127.0.0.1")
         {
             // Unique per fixture instance, stable for the lifetime of the run.
             static std::atomic<uint64_t> nextClientId{1000};
@@ -94,7 +92,7 @@ TEST_CASE("SessionManager removeSession is idempotent", "[gatekeeper][session]")
 TEST_CASE("SessionManager rejects empty inputs", "[gatekeeper][session]")
 {
     SessionFixture fixture;
-    std::string     message;
+    std::string    message;
 
     SECTION("storeSession with empty login data")
     {
@@ -128,7 +126,7 @@ TEST_CASE("SessionManager logout with a bad token answers without a database", "
         int         statusCode   = -1;
         std::string body;
         fixture.manager.logout(
-            [&statusCode, &body](const int code, const std::string &response)
+            [&statusCode, &body](const int code, const std::string& response)
             {
                 statusCode = code;
                 body       = response;
@@ -146,7 +144,7 @@ TEST_CASE("SessionManager logout with a bad token answers without a database", "
         int         statusCode        = -1;
         std::string body;
         fixture.manager.logout(
-            [&statusCode, &body](const int code, const std::string &response)
+            [&statusCode, &body](const int code, const std::string& response)
             {
                 statusCode = code;
                 body       = response;
@@ -160,13 +158,13 @@ TEST_CASE("SessionManager logout with a bad token answers without a database", "
 TEST_CASE("SessionManager logout with a valid token removes the session", "[gatekeeper][session]")
 {
     SessionFixture fixture;
-    std::string     message;
+    std::string    message;
     REQUIRE(fixture.manager.storeSession(fixture.loginData, message));
 
     int         statusCode = -1;
     std::string body;
     fixture.manager.logout(
-        [&statusCode, &body](const int code, const std::string &response)
+        [&statusCode, &body](const int code, const std::string& response)
         {
             statusCode = code;
             body       = response;
@@ -182,9 +180,9 @@ TEST_CASE("SessionManager logout with a valid token removes the session", "[gate
 TEST_CASE("SessionManager handles concurrent store and lookup", "[gatekeeper][session][concurrency]")
 {
     SessionFixture fixture;
-    std::string     message;
+    std::string    message;
 
-    constexpr int            kThreads = 4;
+    constexpr int            kThreads   = 4;
     constexpr int            kPerThread = 25;
     std::atomic<int>         storedFailures{0};
     std::atomic<int>         lookupFailures{0};
@@ -201,7 +199,7 @@ TEST_CASE("SessionManager handles concurrent store and lookup", "[gatekeeper][se
                     data->username                      = "user";
                     data->group                         = "users";
                     data->lastLogoutTime                = "llodt";
-                    data->token = makeToken(kSecret, kIssuer, kType, "user", data->clientId.value(), "users", "127.0.0.1", "llodt");
+                    data->token                         = makeToken(kSecret, kIssuer, kType, "user", data->clientId.value(), "users", "127.0.0.1", "llodt");
 
                     if (!fixture.manager.storeSession(data, message))
                     {
@@ -214,7 +212,7 @@ TEST_CASE("SessionManager handles concurrent store and lookup", "[gatekeeper][se
                 }
             });
     }
-    for (auto &worker : workers)
+    for (auto& worker : workers)
     {
         worker.join();
     }
@@ -228,7 +226,7 @@ TEST_CASE("SessionManager handles concurrent store and lookup", "[gatekeeper][se
 namespace
 {
     /// JSON row that getPasswordHashForUserName() returns on success.
-    jsoncons::json makePasswordRow(uint64_t id, const std::string &hash, bool active)
+    jsoncons::json makePasswordRow(uint64_t id, const std::string& hash, bool active)
     {
         jsoncons::json row = jsoncons::json::object();
         row["id"]          = id;
@@ -238,22 +236,22 @@ namespace
     }
 
     /// JSON row that setNowLoginTimeGetLastLogoutTime() reads from executeQuery().
-    jsoncons::json makeLoginTimeRow(const std::string &lastLogout)
+    jsoncons::json makeLoginTimeRow(const std::string& lastLogout)
     {
-        jsoncons::json row  = jsoncons::json::object();
-        row["last_logout"]  = lastLogout;
+        jsoncons::json row = jsoncons::json::object();
+        row["last_logout"] = lastLogout;
         return row;
     }
 }  // namespace
 
 TEST_CASE("SessionManager::login returns false when DB returns no password hash", "[gatekeeper][session][login]")
 {
-    auto fake = std::make_shared<FakeDatabaseController>();
+    auto        fake = std::make_shared<FakeDatabaseController>();
     FakeDbGuard guard(fake);
 
     fake->password_result = std::nullopt;
 
-    SessionManager              sm;
+    SessionManager                 sm;
     std::optional<ClientLoginData> cld = makeLoginData(2000, "users", "127.0.0.1");
     api::v2::Types::Credentials    creds{"testuser", "somepassword"};
 
@@ -264,12 +262,12 @@ TEST_CASE("SessionManager::login returns false when DB returns no password hash"
 
 TEST_CASE("SessionManager::login returns false for a wrong password", "[gatekeeper][session][login]")
 {
-    auto fake = std::make_shared<FakeDatabaseController>();
+    auto        fake = std::make_shared<FakeDatabaseController>();
     FakeDbGuard guard(fake);
 
     // Hash for a different password ("correct_password").
-    PasswordCrypt     pc;
-    auto              hash_opt     = pc.hashPassword("correct_password");
+    PasswordCrypt pc;
+    auto          hash_opt = pc.hashPassword("correct_password");
     REQUIRE(hash_opt.has_value());
     const std::string correct_hash = hash_opt.value();
 
@@ -277,7 +275,7 @@ TEST_CASE("SessionManager::login returns false for a wrong password", "[gatekeep
     // setNowLoginTimeGetLastLogoutTime() calls executeQuery(); supply a row.
     fake->query_result = makeLoginTimeRow("2026-01-01 00:00:00 +0000");
 
-    SessionManager              sm;
+    SessionManager                 sm;
     std::optional<ClientLoginData> cld = makeLoginData(2001, "users", "127.0.0.1");
     api::v2::Types::Credentials    creds{"testuser", "wrong_password"};
 
@@ -288,19 +286,19 @@ TEST_CASE("SessionManager::login returns false for a wrong password", "[gatekeep
 
 TEST_CASE("SessionManager::login succeeds with correct password and active account", "[gatekeeper][session][login]")
 {
-    auto fake = std::make_shared<FakeDatabaseController>();
+    auto        fake = std::make_shared<FakeDatabaseController>();
     FakeDbGuard guard(fake);
 
     PasswordCrypt     pc;
-    const std::string password      = "GoodPass123!";
-    auto              hash_opt      = pc.hashPassword(password);
+    const std::string password = "GoodPass123!";
+    auto              hash_opt = pc.hashPassword(password);
     REQUIRE(hash_opt.has_value());
-    const std::string correct_hash  = hash_opt.value();
+    const std::string correct_hash = hash_opt.value();
 
     fake->password_result = makePasswordRow(2002, correct_hash, true);
     fake->query_result    = makeLoginTimeRow("2026-01-01 00:00:00 +0000");
 
-    SessionManager              sm;
+    SessionManager                 sm;
     std::optional<ClientLoginData> cld = makeLoginData(2002, "users", "127.0.0.1");
     api::v2::Types::Credentials    creds{"testuser", password};
 

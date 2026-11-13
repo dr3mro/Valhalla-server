@@ -1,10 +1,8 @@
 #include <catch2/catch_test_macros.hpp>
-
 #include <cstdint>
+#include <jsoncons/json.hpp>
 #include <string>
 #include <unordered_set>
-
-#include <jsoncons/json.hpp>
 
 #include "entities/base/client.hpp"
 #include "entities/base/entity.hpp"
@@ -18,10 +16,10 @@ using namespace api::v2;
 
 namespace
 {
-    jsoncons::json makeJsonObject(std::initializer_list<std::pair<const char *, std::string>> items)
+    jsoncons::json makeJsonObject(std::initializer_list<std::pair<const char*, std::string>> items)
     {
         jsoncons::json object = jsoncons::json::object();
-        for (const auto &[key, value] : items)
+        for (const auto& [key, value] : items)
         {
             object[key] = value;
         }
@@ -31,10 +29,10 @@ namespace
 
 TEST_CASE("Entity create statement lists every column with placeholders", "[entities][sql]")
 {
-    const jsoncons::json payload = makeJsonObject({{"name", "clinic"}, {"description", "general"}});
+    const jsoncons::json  payload = makeJsonObject({{"name", "clinic"}, {"description", "general"}});
     const Types::Create_t create(payload, 5);
 
-    Entity     entity(create, "clinics");
+    Entity       entity(create, "clinics");
     pqxx::params params;
     const auto   statement = entity.getSqlCreateStatementParameterized(params);
 
@@ -49,7 +47,7 @@ TEST_CASE("Entity create statement lists every column with placeholders", "[enti
 
 TEST_CASE("Entity plain statements inline the values for the injection check", "[entities][sql]")
 {
-    const jsoncons::json payload = makeJsonObject({{"name", "renamed"}});
+    const jsoncons::json  payload = makeJsonObject({{"name", "renamed"}});
     const Types::Update_t update(payload, 12);
 
     Entity     entity(update, "users");
@@ -88,10 +86,10 @@ TEST_CASE("Entity read statement with an empty schema selects all columns", "[en
 
 TEST_CASE("Entity update statement builds a SET clause with parameters", "[entities][sql]")
 {
-    const jsoncons::json payload = makeJsonObject({{"name", "renamed"}});
+    const jsoncons::json  payload = makeJsonObject({{"name", "renamed"}});
     const Types::Update_t update(payload, 12);
 
-    Entity     entity(update, "users");
+    Entity       entity(update, "users");
     pqxx::params params;
     const auto   statement = entity.getSqlUpdateStatementParameterized(params);
 
@@ -114,7 +112,7 @@ TEST_CASE("Entity delete statement removes by id", "[entities][sql]")
 
 TEST_CASE("Entity search statement parameterises the keyword and honours paging", "[entities][sql]")
 {
-    const jsoncons::json search_j = jsoncons::json::parse(R"({
+    const jsoncons::json  search_j = jsoncons::json::parse(R"({
         "keyword": "fever",
         "filter": "name",
         "order_by": "created_at",
@@ -122,11 +120,11 @@ TEST_CASE("Entity search statement parameterises the keyword and honours paging"
         "limit": 10,
         "offset": 20
     })");
-    bool            success = false;
+    bool                  success  = false;
     const Types::Search_t search(search_j, success);
     REQUIRE(success);
 
-    Entity     entity(search, "patients");
+    Entity       entity(search, "patients");
     pqxx::params params;
     const auto   statement = entity.getSqlSearchStatementParameterized(params);
 
@@ -149,8 +147,8 @@ TEST_CASE("Entity exposes its group name and data variant", "[entities][sql]")
 TEST_CASE("User builds its get-services query", "[entities][sql]")
 {
     const Types::Data_t data(33);
-    User       user(data);
-    const auto statement = user.getSqlGetServicesStatement();
+    User                user(data);
+    const auto          statement = user.getSqlGetServicesStatement();
     REQUIRE(statement.has_value());
     CHECK(*statement == "SELECT id from users WHERE id = 33");
 }
@@ -158,8 +156,8 @@ TEST_CASE("User builds its get-services query", "[entities][sql]")
 TEST_CASE("Provider builds its get-services query", "[entities][sql]")
 {
     const Types::Data_t data(7);
-    Provider   provider(data);
-    const auto statement = provider.getSqlGetServicesStatement();
+    Provider            provider(data);
+    const auto          statement = provider.getSqlGetServicesStatement();
     REQUIRE(statement.has_value());
     CHECK(statement->find("7") != std::string::npos);
     CHECK(statement->find("clinics") != std::string::npos);
@@ -171,8 +169,8 @@ TEST_CASE("Provider builds its get-services query", "[entities][sql]")
 TEST_CASE("Client getSqlSuspendStatement builds an UPDATE that sets active=false", "[entities][sql]")
 {
     const Types::SuspendData suspendData(55);
-    User   user(suspendData);
-    const auto statement = user.getSqlSuspendStatement();
+    User                     user(suspendData);
+    const auto               statement = user.getSqlSuspendStatement();
     REQUIRE(statement.has_value());
     CHECK(statement->find("UPDATE users SET active=false") != std::string::npos);
     CHECK(statement->find("where id=55") != std::string::npos);
@@ -182,8 +180,8 @@ TEST_CASE("Client getSqlSuspendStatement builds an UPDATE that sets active=false
 TEST_CASE("Client getSqlActivateStatement builds an UPDATE that sets active=true", "[entities][sql]")
 {
     const Types::SuspendData suspendData(77);
-    User   user(suspendData);
-    const auto statement = user.getSqlActivateStatement();
+    User                     user(suspendData);
+    const auto               statement = user.getSqlActivateStatement();
     REQUIRE(statement.has_value());
     CHECK(statement->find("UPDATE users SET active=true") != std::string::npos);
     CHECK(statement->find("where id=77") != std::string::npos);
@@ -240,7 +238,7 @@ TEST_CASE("StaffData::toInviteJson adds the required invite fields", "[entities]
     REQUIRE(sd.parse_status);
 
     jsoncons::json invite = jsoncons::json::object();
-    invite["some_field"] = "initial";
+    invite["some_field"]  = "initial";
 
     const bool ok = sd.toInviteJson(invite);
     CHECK(ok);
@@ -253,7 +251,7 @@ TEST_CASE("StaffData::toInviteJson adds the required invite fields", "[entities]
 
 TEST_CASE("Entity getSqlCreateStatement inlines values (plain binder)", "[entities][sql]")
 {
-    const jsoncons::json payload = makeJsonObject({{"title", "intro"}});
+    const jsoncons::json  payload = makeJsonObject({{"title", "intro"}});
     const Types::Create_t create(payload, 8);
 
     Entity     entity(create, "courses");
@@ -285,9 +283,9 @@ TEST_CASE("Entity getSqlReadStatementParameterized returns the same query as the
 TEST_CASE("Entity getSqlDeleteStatementParameterized returns the same query as the plain variant", "[entities][sql]")
 {
     const Types::Delete_t del(99);
-    Entity       entity(del, "appointments");
-    pqxx::params params;
-    const auto   statement = entity.getSqlDeleteStatementParameterized(params);
+    Entity                entity(del, "appointments");
+    pqxx::params          params;
+    const auto            statement = entity.getSqlDeleteStatementParameterized(params);
 
     REQUIRE(statement.has_value());
     CHECK(*statement == "DELETE FROM appointments where id=99 returning id;");
@@ -295,11 +293,11 @@ TEST_CASE("Entity getSqlDeleteStatementParameterized returns the same query as t
 
 TEST_CASE("Entity getSqlSearchStatement inlines the keyword", "[entities][sql]")
 {
-    const jsoncons::json search_j = jsoncons::json::parse(R"({
+    const jsoncons::json  search_j = jsoncons::json::parse(R"({
         "keyword": "headache", "filter": "symptom",
         "order_by": "id", "direction": 1, "limit": 5, "offset": 0
     })");
-    bool success = false;
+    bool                  success  = false;
     const Types::Search_t search(search_j, success);
     REQUIRE(success);
 
@@ -316,8 +314,7 @@ TEST_CASE("Entity getSqlSearchStatement inlines the keyword", "[entities][sql]")
 
 namespace
 {
-    Types::StaffData makeStaffData(uint64_t nominee_id = 42, uint64_t entity_id = 7,
-        const std::string &nominee_group = "providers")
+    Types::StaffData makeStaffData(uint64_t nominee_id = 42, uint64_t entity_id = 7, const std::string& nominee_group = "providers")
     {
         jsoncons::json j;
         j["nominee_id"]    = nominee_id;
@@ -338,7 +335,7 @@ TEST_CASE("Service getSqlAddStaffStatement builds an UPDATE with the correct tab
 
     REQUIRE(stmt.has_value());
     CHECK(stmt->find("UPDATE clinics") == 0);
-    CHECK(stmt->find("42") != std::string::npos);   // nominee_id embedded
+    CHECK(stmt->find("42") != std::string::npos);  // nominee_id embedded
     CHECK(stmt->find("RETURNING id;") != std::string::npos);
 }
 
@@ -350,7 +347,7 @@ TEST_CASE("Service getSqlRemoveStaffStatement builds a filtered jsonb_agg UPDATE
 
     REQUIRE(stmt.has_value());
     CHECK(stmt->find("UPDATE laboratories") == 0);
-    CHECK(stmt->find("99") != std::string::npos);   // nominee_id being removed
+    CHECK(stmt->find("99") != std::string::npos);  // nominee_id being removed
     CHECK(stmt->find("jsonb_agg") != std::string::npos);
     CHECK(stmt->find("RETURNING id;") != std::string::npos);
 }
@@ -369,16 +366,16 @@ TEST_CASE("Service getSqlAddStaffStatement returns nullopt when data variant is 
 {
     // Constructing a Service with Create_t (not StaffData) makes getData() hold
     // the wrong variant — std::get<StaffData> throws and the method returns nullopt.
-    const jsoncons::json payload = makeJsonObject({{"name", "test"}});
+    const jsoncons::json  payload = makeJsonObject({{"name", "test"}});
     const Types::Create_t create(payload, 1);
-    Service svc(create, "clinics");
+    Service               svc(create, "clinics");
     CHECK_FALSE(svc.getSqlAddStaffStatement().has_value());
 }
 
 TEST_CASE("Service getSqlRemoveStaffStatement returns nullopt when data variant is wrong type", "[entities][sql][service]")
 {
     const Types::Delete_t del(1);
-    Service svc(del, "pharmacies");
+    Service               svc(del, "pharmacies");
     CHECK_FALSE(svc.getSqlRemoveStaffStatement().has_value());
 }
 
@@ -386,7 +383,7 @@ TEST_CASE("Service getSqlRemoveStaffStatement returns nullopt when data variant 
 
 TEST_CASE("Types::Create_t stores the payload and id", "[entities][types]")
 {
-    const jsoncons::json payload = makeJsonObject({{"field", "value"}});
+    const jsoncons::json  payload = makeJsonObject({{"field", "value"}});
     const Types::Create_t create(payload, 77);
 
     REQUIRE(create.get_id().has_value());
@@ -397,7 +394,7 @@ TEST_CASE("Types::Create_t stores the payload and id", "[entities][types]")
 TEST_CASE("Types::Read_t stores the schema set and id", "[entities][types]")
 {
     const std::unordered_set<std::string> schema = {"name", "dob", "email"};
-    const Types::Read_t read(schema, 55);
+    const Types::Read_t                   read(schema, 55);
 
     REQUIRE(read.get_id().has_value());
     CHECK(read.get_id().value() == 55);
@@ -407,7 +404,7 @@ TEST_CASE("Types::Read_t stores the schema set and id", "[entities][types]")
 
 TEST_CASE("Types::Update_t stores the payload and id", "[entities][types]")
 {
-    const jsoncons::json payload = makeJsonObject({{"status", "active"}});
+    const jsoncons::json  payload = makeJsonObject({{"status", "active"}});
     const Types::Update_t update(payload, 11);
 
     REQUIRE(update.get_id().has_value());

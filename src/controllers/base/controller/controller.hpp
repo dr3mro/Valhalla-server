@@ -41,52 +41,52 @@ class Controller
         {
             databaseController = Store::getObject<DatabaseController>();
         }
-        catch (const std::exception &e)
+        catch (const std::exception& e)
         {
             CRITICALMESSAGE
             throw std::runtime_error("Failed to initialize database controller");
         }
     }
 
-    Controller &operator=(const Controller &) = default;
-    Controller(const Controller &)            = default;
-    Controller &operator=(Controller &&)      = default;
-    Controller(Controller &&)                 = default;
+    Controller& operator=(const Controller&) = default;
+    Controller(const Controller&)            = default;
+    Controller& operator=(Controller&&)      = default;
+    Controller(Controller&&)                 = default;
 
     virtual ~Controller() = default;
 
     // CRUDS
     template <typename T>
-    void Create(T &entity, CALLBACK_ &&callback)
+    void Create(T& entity, CALLBACK_&& callback)
     {
-        std::optional<std::string> (T::*sqlstatement)()                  = &T::getSqlCreateStatement;
-        std::optional<std::string> (T::*paramstatement)(pqxx::params &) = &T::getSqlCreateStatementParameterized;
+        std::optional<std::string> (T::*sqlstatement)()                = &T::getSqlCreateStatement;
+        std::optional<std::string> (T::*paramstatement)(pqxx::params&) = &T::getSqlCreateStatementParameterized;
         cruds(entity, sqlstatement, paramstatement, dbexec, std::forward<CALLBACK_>(std::move(callback)));
     }
 
     template <typename T>
-    void Read(T &entity, CALLBACK_ &&callback)
+    void Read(T& entity, CALLBACK_&& callback)
     {
-        std::optional<std::string> (T::*sqlstatement)()                  = &T::getSqlReadStatement;
-        std::optional<std::string> (T::*paramstatement)(pqxx::params &) = &T::getSqlReadStatementParameterized;
+        std::optional<std::string> (T::*sqlstatement)()                = &T::getSqlReadStatement;
+        std::optional<std::string> (T::*paramstatement)(pqxx::params&) = &T::getSqlReadStatementParameterized;
         cruds(entity, sqlstatement, paramstatement, dbrexec, std::forward<CALLBACK_>(std::move(callback)));
     }
     template <typename T>
-    void Update(T &entity, CALLBACK_ &&callback)
+    void Update(T& entity, CALLBACK_&& callback)
     {
-        std::optional<std::string> (T::*sqlstatement)()                  = &T::getSqlUpdateStatement;
-        std::optional<std::string> (T::*paramstatement)(pqxx::params &) = &T::getSqlUpdateStatementParameterized;
+        std::optional<std::string> (T::*sqlstatement)()                = &T::getSqlUpdateStatement;
+        std::optional<std::string> (T::*paramstatement)(pqxx::params&) = &T::getSqlUpdateStatementParameterized;
         cruds(entity, sqlstatement, paramstatement, dbexec, std::forward<CALLBACK_>(std::move(callback)));
     }
     template <typename T>
-    void Delete(T &entity, CALLBACK_ &&callback)
+    void Delete(T& entity, CALLBACK_&& callback)
     {
-        std::optional<std::string> (T::*sqlstatement)()                  = &T::getSqlDeleteStatement;
-        std::optional<std::string> (T::*paramstatement)(pqxx::params &) = &T::getSqlDeleteStatementParameterized;
+        std::optional<std::string> (T::*sqlstatement)()                = &T::getSqlDeleteStatement;
+        std::optional<std::string> (T::*paramstatement)(pqxx::params&) = &T::getSqlDeleteStatementParameterized;
         cruds(entity, sqlstatement, paramstatement, dbexec, std::forward<CALLBACK_>(std::move(callback)));
     }
     template <typename T>
-    void Search(T &entity, CALLBACK_ &&callback)
+    void Search(T& entity, CALLBACK_&& callback)
     {
         jsoncons::json response_json;
         response_json["more"]   = false;
@@ -125,22 +125,25 @@ class Controller
                     }
                 }
             }
-            if(query_results_json_array.has_value()){
+            if (query_results_json_array.has_value())
+            {
                 response_json["results"] = query_results_json_array.value();
-            }else{
+            }
+            else
+            {
                 response_json["results"] = jsoncons::json::array();
             }
 
             std::move(callback)(api::v2::Http::Status::OK, response_json.as<std::string>());
         }
-        catch (const std::exception &e)
+        catch (const std::exception& e)
         {
             CRITICALMESSAGERESPONSE
         }
     }
 
     template <typename T>
-    void Suspend(T &entity, CALLBACK_ &&callback)
+    void Suspend(T& entity, CALLBACK_&& callback)
         requires(std::is_base_of_v<Client, T>)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlSuspendStatement;
@@ -148,7 +151,7 @@ class Controller
     }
 
     template <typename T>
-    void Unsuspend(T &entity, CALLBACK_ &&callback)
+    void Unsuspend(T& entity, CALLBACK_&& callback)
         requires(std::is_base_of_v<Client, T>)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlActivateStatement;
@@ -156,7 +159,7 @@ class Controller
     }
 
     template <typename T>
-    void GetServices(T &entity, CALLBACK_ &&callback)
+    void GetServices(T& entity, CALLBACK_&& callback)
         requires(std::is_base_of_v<Client, T>)
     {
         std::optional<jsoncons::json> services;
@@ -185,14 +188,14 @@ class Controller
                 std::move(callback)(api::v2::Http::Status::OK, "[]");
             }
         }
-        catch (const std::exception &e)
+        catch (const std::exception& e)
         {
             CRITICALMESSAGE
         }
     }
 
     template <typename T>
-    void GetVisits(T &entity, CALLBACK_ &&callback)
+    void GetVisits(T& entity, CALLBACK_&& callback)
         requires std::is_same<T, Patient>::value
     {
         jsoncons::json             visits;
@@ -216,7 +219,7 @@ class Controller
 
             std::move(callback)(api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(visits));
         }
-        catch (const std::exception &e)
+        catch (const std::exception& e)
         {
             CRITICALMESSAGE
         }
@@ -224,12 +227,14 @@ class Controller
 
    private:
     std::shared_ptr<DatabaseController> databaseController;
-    std::optional<jsoncons::json> (DatabaseController::*dbexec)(const std::string &, bool &, const pqxx::params &, const std::string &)  = &DatabaseController::executeQuery;
-    std::optional<jsoncons::json> (DatabaseController::*dbrexec)(const std::string &, bool &, const pqxx::params &, const std::string &) = &DatabaseController::executeReadQuery;
+    std::optional<jsoncons::json> (DatabaseController::*dbexec)(
+        const std::string&, bool&, const pqxx::params&, const std::string&) = &DatabaseController::executeQuery;
+    std::optional<jsoncons::json> (DatabaseController::*dbrexec)(
+        const std::string&, bool&, const pqxx::params&, const std::string&) = &DatabaseController::executeReadQuery;
 
    protected:
     template <typename T>
-    std::optional<uint64_t> getNextID(api::v2::Http::Error &error)
+    std::optional<uint64_t> getNextID(api::v2::Http::Error& error)
     {
         try
         {
@@ -261,7 +266,7 @@ class Controller
                 return obj->value().as<uint64_t>();
             }
         }
-        catch (const std::exception &e)
+        catch (const std::exception& e)
         {
             CRITICALMESSAGE
         }
@@ -273,8 +278,8 @@ class Controller
     // Only the parameterized query is executed; the plain one is handed to the database layer, which scans it for SQL injection.
     // plain_query stays empty when there is no parameterized variant (the query itself is then scanned).
     template <typename S, typename PS, typename T>
-    bool get_sql_statement(std::optional<std::string> &query, std::string &plain_query, T &entity, S &sqlstatement, PS &paramstatement, pqxx::params &params,
-                           std::string &error)
+    bool get_sql_statement(
+        std::optional<std::string>& query, std::string& plain_query, T& entity, S& sqlstatement, PS& paramstatement, pqxx::params& params, std::string& error)
     {
         query = (entity.*sqlstatement)();
         if (!query.has_value())
@@ -299,13 +304,15 @@ class Controller
 
     // For statements that have no parameterized variant (suspend, staff, ...).
     template <typename S, typename T>
-    void cruds(T &entity, S &sqlstatement, std::optional<jsoncons::json> (DatabaseController::*func)(const std::string &, bool &, const pqxx::params &, const std::string &), CALLBACK_ &&callback)
+    void cruds(T& entity, S&                                                                                                                       sqlstatement,
+        std::optional<jsoncons::json> (DatabaseController::*func)(const std::string&, bool&, const pqxx::params&, const std::string&), CALLBACK_&& callback)
     {
         cruds(entity, sqlstatement, nullptr, func, std::move(callback));
     }
 
     template <typename S, typename PS, typename T>
-    void cruds(T &entity, S &sqlstatement, PS paramstatement, std::optional<jsoncons::json> (DatabaseController::*func)(const std::string &, bool &, const pqxx::params &, const std::string &), CALLBACK_ &&callback)
+    void cruds(T& entity, S& sqlstatement, PS paramstatement,
+        std::optional<jsoncons::json> (DatabaseController::*func)(const std::string&, bool&, const pqxx::params&, const std::string&), CALLBACK_&& callback)
     {
         std::optional<jsoncons::json> results_j;
         std::optional<std::string>    query;
@@ -344,21 +351,21 @@ class Controller
                 std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Failed to create sql query");
             }
         }
-        catch (const std::exception &e)
+        catch (const std::exception& e)
         {
             CRITICALMESSAGE
         }
     }
 
     template <typename T>
-    void addStaff(T &entity, CALLBACK_ &&callback)
+    void addStaff(T& entity, CALLBACK_&& callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlAddStaffStatement;
         cruds(entity, sqlstatement, dbexec, std::move(callback));
     }
 
     template <typename T>
-    void removeStaff(T &entity, CALLBACK_ &&callback)
+    void removeStaff(T& entity, CALLBACK_&& callback)
     {
         std::optional<std::string> (T::*sqlstatement)() = &T::getSqlRemoveStaffStatement;
         cruds(entity, sqlstatement, dbexec, std::move(callback));

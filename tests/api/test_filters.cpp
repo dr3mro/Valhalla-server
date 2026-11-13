@@ -1,13 +1,12 @@
-#include <catch2/catch_test_macros.hpp>
+#include <drogon/HttpRequest.h>
+#include <drogon/HttpResponse.h>
+#include <drogon/HttpTypes.h>
 
+#include <catch2/catch_test_macros.hpp>
 #include <functional>
 #include <memory>
 #include <string>
 #include <utility>
-
-#include <drogon/HttpRequest.h>
-#include <drogon/HttpResponse.h>
-#include <drogon/HttpTypes.h>
 
 #include "api/v2/filters/auth.hpp"
 #include "utils/jsonhelper/jsonhelper.hpp"
@@ -19,7 +18,7 @@ namespace
     /// Runs the filter on a prepared request. Returns the response the filter
     /// passed to its rejection callback; sets chainCalled if the filter
     /// instead passed control to the chain.
-    drogon::HttpResponsePtr runFilter(const std::function<void(const drogon::HttpRequestPtr &)> &prepare, bool &chainCalled)
+    drogon::HttpResponsePtr runFilter(const std::function<void(const drogon::HttpRequestPtr&)>& prepare, bool& chainCalled)
     {
         auto request = drogon::HttpRequest::newHttpRequest();
         if (prepare)
@@ -31,8 +30,9 @@ namespace
         chainCalled = false;
 
         AuthFilter filter;
-        filter.doFilter(request,  //
-            [&rejected](const drogon::HttpResponsePtr &response) { rejected = response; }, [&chainCalled] { chainCalled = true; });
+        filter.doFilter(
+            request,  //
+            [&rejected](const drogon::HttpResponsePtr& response) { rejected = response; }, [&chainCalled] { chainCalled = true; });
 
         return rejected;
     }
@@ -45,8 +45,8 @@ namespace
 
 TEST_CASE("Auth filter rejects a request without an Authorization header", "[api][auth]")
 {
-    bool chainCalled = false;
-    const auto response = runFilter(nullptr, chainCalled);
+    bool       chainCalled = false;
+    const auto response    = runFilter(nullptr, chainCalled);
 
     REQUIRE(response != nullptr);
     CHECK_FALSE(chainCalled);
@@ -56,9 +56,8 @@ TEST_CASE("Auth filter rejects a request without an Authorization header", "[api
 
 TEST_CASE("Auth filter rejects a non-bearer Authorization header", "[api][auth]")
 {
-    bool chainCalled = false;
-    const auto response = runFilter(
-        [](const drogon::HttpRequestPtr &request) { request->addHeader("Authorization", "Basic dXNlcjpwYXNz"); }, chainCalled);
+    bool       chainCalled = false;
+    const auto response    = runFilter([](const drogon::HttpRequestPtr& request) { request->addHeader("Authorization", "Basic dXNlcjpwYXNz"); }, chainCalled);
 
     REQUIRE(response != nullptr);
     CHECK_FALSE(chainCalled);
@@ -69,9 +68,8 @@ TEST_CASE("Auth filter rejects a non-bearer Authorization header", "[api][auth]"
 TEST_CASE("Auth filter rejects a bare 'Bearer' prefix without the token", "[api][auth]")
 {
     // "Bearer" alone is size <= bearerMagic (7) and cannot carry a token.
-    bool chainCalled = false;
-    const auto response = runFilter(
-        [](const drogon::HttpRequestPtr &request) { request->addHeader("Authorization", "Bearer"); }, chainCalled);
+    bool       chainCalled = false;
+    const auto response    = runFilter([](const drogon::HttpRequestPtr& request) { request->addHeader("Authorization", "Bearer"); }, chainCalled);
 
     REQUIRE(response != nullptr);
     CHECK_FALSE(chainCalled);
@@ -80,9 +78,8 @@ TEST_CASE("Auth filter rejects a bare 'Bearer' prefix without the token", "[api]
 
 TEST_CASE("Auth filter rejects a Bearer token that does not verify", "[api][auth]")
 {
-    bool chainCalled = false;
-    const auto response = runFilter(
-        [](const drogon::HttpRequestPtr &request) { request->addHeader("Authorization", "Bearer not-a-real-token"); }, chainCalled);
+    bool       chainCalled = false;
+    const auto response = runFilter([](const drogon::HttpRequestPtr& request) { request->addHeader("Authorization", "Bearer not-a-real-token"); }, chainCalled);
 
     REQUIRE(response != nullptr);
     CHECK_FALSE(chainCalled);

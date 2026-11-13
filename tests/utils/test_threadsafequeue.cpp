@@ -1,5 +1,4 @@
 #include <catch2/catch_test_macros.hpp>
-
 #include <optional>
 #include <string>
 #include <thread>
@@ -40,7 +39,7 @@ TEST_CASE("ThreadSafeQueue front peeks without consuming", "[utils][queue]")
 
     queue.push(7);
     CHECK(queue.front() == std::optional<int>(7));
-    CHECK(queue.size() == 1);          // peek did not consume
+    CHECK(queue.size() == 1);  // peek did not consume
     CHECK(queue.pop() == std::optional<int>(7));
 }
 
@@ -93,13 +92,14 @@ TEST_CASE("ThreadSafeQueue handles concurrent producers and consumers", "[utils]
     std::vector<std::thread> producers;
     for (int t = 0; t < kProducers; ++t)
     {
-        producers.emplace_back([&queue, t]
-        {
-            for (int i = 0; i < kItemsPerThread; ++i)
+        producers.emplace_back(
+            [&queue, t]
             {
-                queue.push(t * kItemsPerThread + i);
-            }
-        });
+                for (int i = 0; i < kItemsPerThread; ++i)
+                {
+                    queue.push(t * kItemsPerThread + i);
+                }
+            });
     }
 
     std::vector<int> consumed;
@@ -115,7 +115,7 @@ TEST_CASE("ThreadSafeQueue handles concurrent producers and consumers", "[utils]
         }
     }
 
-    for (auto &producer : producers)
+    for (auto& producer : producers)
     {
         producer.join();
     }

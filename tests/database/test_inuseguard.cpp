@@ -1,6 +1,5 @@
-#include <catch2/catch_test_macros.hpp>
-
 #include <atomic>
+#include <catch2/catch_test_macros.hpp>
 #include <chrono>
 #include <condition_variable>
 #include <mutex>
@@ -11,8 +10,8 @@
 
 TEST_CASE("InUseGuard acquires an uncontended resource immediately", "[database][inuseguard]")
 {
-    std::atomic<bool>     in_use{false};
-    std::mutex            mtx;
+    std::atomic<bool>       in_use{false};
+    std::mutex              mtx;
     std::condition_variable cv;
 
     {
@@ -57,12 +56,13 @@ TEST_CASE("InUseGuard destructor notify wakes a concurrent waiter", "[database][
         CHECK(in_use.load());
 
         // Start the waiter after holder has set in_use=true.
-        waiter.emplace([&]
-        {
-            std::unique_lock<std::mutex> lock(mtx);
-            cv.wait_for(lock, std::chrono::seconds{2}, [&] { return !in_use.load(); });
-            acquired = !in_use.load();
-        });
+        waiter.emplace(
+            [&]
+            {
+                std::unique_lock<std::mutex> lock(mtx);
+                cv.wait_for(lock, std::chrono::seconds{2}, [&] { return !in_use.load(); });
+                acquired = !in_use.load();
+            });
 
         std::this_thread::sleep_for(std::chrono::milliseconds{50});
         // holder's destructor runs here: stores false and notifies all.

@@ -13,7 +13,7 @@ class Pharmacies : public Service
     // Pharmacies() : Service(TABLENAME) {}
 
     template <typename T>
-    Pharmacies(const T &_data) : Service(_data, TABLENAME)
+    Pharmacies(const T& _data) : Service(_data, TABLENAME)
     {
     }
     static constexpr auto getTableName() { return TABLENAME; }
