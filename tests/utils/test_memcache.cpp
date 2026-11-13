@@ -5,11 +5,13 @@
 #include <string>
 #include <thread>
 
+#include "support/fake_clock.hpp"
 #include "utils/memcache/memcache.hpp"
 
 namespace
 {
-    using StringCache = MemCache<std::string>;
+    using StringCache    = MemCache<std::string>;
+    using ManualStrCache = MemCache<std::string, ManualClock>;
 }  // namespace
 
 TEST_CASE("MemCache stores and retrieves values", "[utils][memcache]")
@@ -122,12 +124,18 @@ TEST_CASE("MemCache survives concurrent insert/get traffic", "[utils][memcache]"
     }
 }
 
-// NOTE: the move constructor is intentionally not tested: it moves the
-// cleaner thread out of the source object, whose destructor then calls
-// join() on a non-joinable thread and throws std::system_error - see
-// tests/README.md, known bug 6. The background cleaner's 1s cadence is also
-// not asserted on the real clock; expiry is covered deterministically via
-// defaultTTL = 0 above.
+// Known bug 6: MemCache move constructor moves the members but the cleaner
+// thread keeps a `this`-captured reference to the *moved-from* object; the
+// moved-from destructor later joins the thread which may still be running on
+// foreign state → use-after-move / data race / std::system_error.
+// Fix: stop + join the cleaner before moving, restart it afterwards.
+TEST_CASE("MemCache move constructor has a use-after-move bug in the cleaner thread", "[utils][memcache][.known-bug]")
+{
+    // Calling the move constructor would trigger the race; document only.
+    SUCCEED("Bug documented: see tests/README.md known bug 6 and memcache.hpp move constructor");
+}
+// Note: The background cleaner's 1s cadence is not asserted on the real
+// clock; expiry is covered deterministically via TTL tests above.
 
 TEST_CASE("MemCache custom TTL per insert takes precedence over default", "[utils][memcache]")
 {
@@ -162,4 +170,57 @@ TEST_CASE("MemCache update resets value but entry remains accessible", "[utils][
     cache.insert("k", "final");
 
     CHECK(cache.get("k") == std::optional<std::string>("final"));
+}
+
+// ── Deterministic TTL tests using ManualClock ────────────────────────────────
+// ManualClock is a static (process-global) clock; reset before each test.
+
+TEST_CASE("MemCache entry is present just before its TTL elapses", "[utils][memcache][ttl]")
+{
+    ManualClock::reset();
+    ManualStrCache cache(10, std::chrono::seconds{10});
+
+    cache.insert("k", "v");
+    ManualClock::advance(std::chrono::milliseconds{9999});  // 1 ms before expiry
+    CHECK(cache.get("k") == std::optional<std::string>("v"));
+}
+
+TEST_CASE("MemCache entry is gone after TTL elapses", "[utils][memcache][ttl]")
+{
+    ManualClock::reset();
+    ManualStrCache cache(10, std::chrono::seconds{10});
+
+    cache.insert("k", "v");
+    ManualClock::advance(std::chrono::seconds{10});  // exactly at expiry boundary
+    CHECK(cache.get("k") == std::nullopt);
+}
+
+TEST_CASE("MemCache re-insert refreshes TTL", "[utils][memcache][ttl]")
+{
+    ManualClock::reset();
+    ManualStrCache cache(10, std::chrono::seconds{10});
+
+    cache.insert("k", "first");
+    ManualClock::advance(std::chrono::seconds{5});   // half-way through TTL
+    cache.insert("k", "second");                     // re-insert resets expiry to now+10s
+    ManualClock::advance(std::chrono::seconds{6});   // past original TTL, before new one
+    CHECK(cache.get("k") == std::optional<std::string>("second"));
+
+    ManualClock::advance(std::chrono::seconds{5});   // now past new TTL
+    CHECK(cache.get("k") == std::nullopt);
+}
+
+TEST_CASE("MemCache expired entries are absent while fresh entries remain", "[utils][memcache][ttl]")
+{
+    ManualClock::reset();
+    ManualStrCache cache(10, std::chrono::seconds{5});
+
+    cache.insert("short", "s");
+    ManualClock::advance(std::chrono::seconds{3});
+    // Insert a second entry with a longer TTL (20s).
+    cache.insert("long", "l", std::chrono::seconds{20});
+
+    ManualClock::advance(std::chrono::seconds{3});  // "short" is now expired (6s > 5s)
+    CHECK(cache.get("short") == std::nullopt);
+    CHECK(cache.get("long") == std::optional<std::string>("l"));
 }

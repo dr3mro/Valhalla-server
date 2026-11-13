@@ -40,8 +40,9 @@ namespace api::v2
             const std::optional<Types::ClientLoginData>& clientLoginData) const;
         [[nodiscard]] Configurator::TokenManagerParameters getTokenManagerParameters() const { return tokenManagerParameters_; }
 
+        [[nodiscard]] std::shared_ptr<DatabaseController> databaseController() const { return Store::getObject<DatabaseController>(); }
+
        private:
-        std::shared_ptr<DatabaseController>  databaseController = Store::getObject<DatabaseController>();
         std::shared_ptr<Configurator>        configurator_;
         Configurator::TokenManagerParameters tokenManagerParameters_;
     };

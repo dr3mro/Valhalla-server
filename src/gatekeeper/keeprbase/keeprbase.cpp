@@ -30,7 +30,7 @@ bool KeeprBase::getLastLogoutTimeIfActive(std::optional<Types::ClientLoginData>&
             clientLoginData->group.value(), clientLoginData->group.value(), clientLoginData->clientId.value());
 
         bool isSqlInjection = false;
-        auto results        = databaseController->executeReadQuery(query, isSqlInjection);
+        auto results        = databaseController()->executeReadQuery(query, isSqlInjection);
         if (isSqlInjection)
         {
             Message::ErrorMessage("A Sql Injection pattern is detected in generated query.");
@@ -74,7 +74,7 @@ bool KeeprBase::setNowLoginTimeGetLastLogoutTime(std::optional<Types::ClientLogi
             clientLoginData->group.value(), clientLoginData->clientId.value(), clientLoginData->nowLoginTime.value(), clientLoginData->nowLoginTime.value());
 
         bool isSqlInjection = false;
-        auto result         = databaseController->executeQuery(query, isSqlInjection);
+        auto result         = databaseController()->executeQuery(query, isSqlInjection);
         if (isSqlInjection)
         {
             Message::ErrorMessage("A Sql Injection pattern is detected in generated query.");
@@ -115,7 +115,7 @@ void KeeprBase::setNowLogoutTime(uint64_t _id, const std::string& _group)
             _group, _id, logout_time);
 
         bool isSqlInjection = false;
-        auto result         = databaseController->executeQuery(query, isSqlInjection);
+        auto result         = databaseController()->executeQuery(query, isSqlInjection);
 
         if (isSqlInjection)
         {
@@ -141,7 +141,7 @@ std::optional<std::string> KeeprBase::getLastLoginTime(uint64_t _id, const std::
     std::string query          = fmt::format("SELECT last_login FROM {}_sessions WHERE id = {};", _group, _id);
     bool        isSqlInjection = false;
 
-    std::optional<std::string> result = databaseController->doReadQuery(query, isSqlInjection);
+    std::optional<std::string> result = databaseController()->doReadQuery(query, isSqlInjection);
     if (isSqlInjection)
     {
         Message::ErrorMessage("A Sql Injection pattern is detected in generated query.");
@@ -269,5 +269,5 @@ jwt::verifier<jwt::default_clock, jwt::traits::kazuho_picojson> KeeprBase::creat
 
 std::optional<jsoncons::json> api::v2::KeeprBase::getPasswordHashForUserName(const std::string& username, const std::string& _group, bool& isSqlInjection)
 {
-    return databaseController->getPasswordHashForUserName(username, _group, isSqlInjection);
+    return databaseController()->getPasswordHashForUserName(username, _group, isSqlInjection);
 }

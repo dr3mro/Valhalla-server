@@ -229,13 +229,22 @@ TEST_CASE("Types::Search_t reports failure for a missing key without throwing", 
     CHECK_FALSE(success);
 }
 
-// NOTE: Validator::validateDatabaseCreateSchema / validateDatabaseUpdateSchema
-// / validateDatabaseReadSchema are intentionally NOT covered: with no
-// PostgreSQL they fail schema lookup cleanly, but their shared
-// getDatabaseSchemaForTable() dereferences the end iterator of the result
-// set (it sets found=false and then unconditionally assigns found=true
-// before dereferencing) - see tests/README.md, known bug 3. Exercising them
-// is undefined behaviour until that is fixed.
+// Known bug 3: getDatabaseSchemaForTable() sets found=false in the not-found
+// branch but then unconditionally sets found=true before returning, and
+// dereferences the end iterator of the result map (UB). The validate*Schema
+// functions are therefore not called below. The bug is documented here.
+TEST_CASE("Validator::getDatabaseSchemaForTable has an unconditional found=true assignment that causes UB on miss",
+    "[validator][.known-bug]")
+{
+    // This test documents the bug without triggering the UB (we do not call
+    // getDatabaseSchemaForTable directly because there is no public API and
+    // calling the validate*Schema functions with an unknown table would
+    // dereference an invalid iterator).
+    // Proposed fix: in getDatabaseSchemaForTable(), return {false, {}} early
+    // when table_schema_it == schema.end(), removing the unconditional
+    // found=true line.
+    SUCCEED("Bug documented: see tests/README.md known bug 3 and validator.cpp getDatabaseSchemaForTable()");
+}
 
 TEST_CASE("Types::Search_t rejects fields with wrong JSON types", "[validator][search]")
 {

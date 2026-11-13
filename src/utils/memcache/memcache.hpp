@@ -7,11 +7,11 @@
 #include <unordered_map>
 #include <utility>
 
-template <typename T>
+template <typename T, typename ClockT = std::chrono::steady_clock>
 class MemCache
 {
    public:
-    using Clock     = std::chrono::steady_clock;
+    using Clock     = ClockT;
     using TimePoint = std::chrono::time_point<Clock>;
 
     MemCache(size_t maxSize, std::chrono::seconds defaultTTL) : maxSize_(maxSize), defaultTTL_(defaultTTL), stopCleaner_(false)

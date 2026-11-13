@@ -7,8 +7,13 @@
 #include <thread>
 #include <vector>
 
+#include <jsoncons/json.hpp>
+
+#include "gatekeeper/passwordcrypt/passwordcrypt.hpp"
 #include "gatekeeper/sessionmanager/sessionmanager.hpp"
+#include "gatekeeper/types.hpp"
 #include "support/builders.hpp"
+#include "support/fake_db.hpp"
 #include "utils/global/http.hpp"
 
 using SessionManager = api::v2::SessionManager;
@@ -216,4 +221,89 @@ TEST_CASE("SessionManager handles concurrent store and lookup", "[gatekeeper][se
 
     CHECK(storedFailures.load() == 0);
     CHECK(lookupFailures.load() == 0);
+}
+
+// ── SessionManager::login tests (via FakeDatabaseController) ─────────────────
+
+namespace
+{
+    /// JSON row that getPasswordHashForUserName() returns on success.
+    jsoncons::json makePasswordRow(uint64_t id, const std::string &hash, bool active)
+    {
+        jsoncons::json row = jsoncons::json::object();
+        row["id"]          = id;
+        row["password"]    = hash;
+        row["active"]      = active;
+        return row;
+    }
+
+    /// JSON row that setNowLoginTimeGetLastLogoutTime() reads from executeQuery().
+    jsoncons::json makeLoginTimeRow(const std::string &lastLogout)
+    {
+        jsoncons::json row  = jsoncons::json::object();
+        row["last_logout"]  = lastLogout;
+        return row;
+    }
+}  // namespace
+
+TEST_CASE("SessionManager::login returns false when DB returns no password hash", "[gatekeeper][session][login]")
+{
+    auto fake = std::make_shared<FakeDatabaseController>();
+    FakeDbGuard guard(fake);
+
+    fake->password_result = std::nullopt;
+
+    SessionManager              sm;
+    std::optional<ClientLoginData> cld = makeLoginData(2000, "users", "127.0.0.1");
+    api::v2::Types::Credentials    creds{"testuser", "somepassword"};
+
+    std::string message;
+    CHECK_FALSE(sm.login(std::optional{creds}, cld, message));
+    CHECK(message.find("does not exist") != std::string::npos);
+}
+
+TEST_CASE("SessionManager::login returns false for a wrong password", "[gatekeeper][session][login]")
+{
+    auto fake = std::make_shared<FakeDatabaseController>();
+    FakeDbGuard guard(fake);
+
+    // Hash for a different password ("correct_password").
+    PasswordCrypt     pc;
+    auto              hash_opt     = pc.hashPassword("correct_password");
+    REQUIRE(hash_opt.has_value());
+    const std::string correct_hash = hash_opt.value();
+
+    fake->password_result = makePasswordRow(2001, correct_hash, true);
+    // setNowLoginTimeGetLastLogoutTime() calls executeQuery(); supply a row.
+    fake->query_result = makeLoginTimeRow("2026-01-01 00:00:00 +0000");
+
+    SessionManager              sm;
+    std::optional<ClientLoginData> cld = makeLoginData(2001, "users", "127.0.0.1");
+    api::v2::Types::Credentials    creds{"testuser", "wrong_password"};
+
+    std::string message;
+    CHECK_FALSE(sm.login(std::optional{creds}, cld, message));
+    CHECK(message.find("Invalid") != std::string::npos);
+}
+
+TEST_CASE("SessionManager::login succeeds with correct password and active account", "[gatekeeper][session][login]")
+{
+    auto fake = std::make_shared<FakeDatabaseController>();
+    FakeDbGuard guard(fake);
+
+    PasswordCrypt     pc;
+    const std::string password      = "GoodPass123!";
+    auto              hash_opt      = pc.hashPassword(password);
+    REQUIRE(hash_opt.has_value());
+    const std::string correct_hash  = hash_opt.value();
+
+    fake->password_result = makePasswordRow(2002, correct_hash, true);
+    fake->query_result    = makeLoginTimeRow("2026-01-01 00:00:00 +0000");
+
+    SessionManager              sm;
+    std::optional<ClientLoginData> cld = makeLoginData(2002, "users", "127.0.0.1");
+    api::v2::Types::Credentials    creds{"testuser", password};
+
+    std::string message;
+    CHECK(sm.login(std::optional{creds}, cld, message));
 }

@@ -138,8 +138,19 @@ TEST_CASE("EnvLoader integer template overload uses std::stoi", "[configurator][
         ScopedEnv guard("VALHALLA_TEST_DEFINITELY_UNSET", "17");
         CHECK(loader.getEnvironmentVariable<int>("VALHALLA_TEST_DEFINITELY_UNSET", 3) == 17);
     }
+}
 
-    SECTION("a non-numeric value throws (std::stoi propagates)")
+// Known bug 10: getEnvironmentVariable<T>() calls std::stoi / std::stoull
+// without catching exceptions. A malformed env var (non-numeric, overflow)
+// propagates an unhandled exception that aborts server startup instead of
+// falling back to the default. The stoull variant also silently wraps on
+// negative numbers.
+// Fix: wrap the stoi/stoull call in a try/catch; return the default on error.
+TEST_CASE("EnvLoader integer overload throws on non-numeric input (known bug 10)", "[configurator][envloader][.known-bug]")
+{
+    TestLoader loader;
+
+    SECTION("non-numeric value throws instead of falling back to the default")
     {
         ScopedEnv guard("VALHALLA_TEST_DEFINITELY_UNSET", "not-a-number");
         REQUIRE_THROWS_AS((loader.getEnvironmentVariable<int>("VALHALLA_TEST_DEFINITELY_UNSET", 3)), std::exception);
@@ -154,15 +165,20 @@ TEST_CASE("EnvLoader parseSet splits on commas and trims whitespace", "[configur
     CHECK(loader.parseSet(" a , b ") == std::unordered_set<std::string>{"a", "b"});
     CHECK(loader.parseSet("single") == std::unordered_set<std::string>{"single"});
     CHECK(loader.parseSet("").empty());
+}
 
-    SECTION("empty items between separators are kept as empty strings")
-    {
-        // Known quirk: "a,,b" inserts the empty string as a member.
-        const auto parsed = loader.parseSet("a,,b");
-        CHECK(parsed.count("a") == 1);
-        CHECK(parsed.count("b") == 1);
-        CHECK(parsed.count("") == 1);
-    }
+// Known bug 9: parseSet("a,,b") inserts an empty string as a member of the
+// resulting set. An empty regex pattern matches everything, so this would
+// effectively whitelist or blacklist *all* IP addresses.
+// Fix: skip empty tokens after splitting on commas.
+TEST_CASE("EnvLoader parseSet produces an empty-string entry from consecutive commas", "[configurator][envloader][.known-bug]")
+{
+    TestLoader loader;
+
+    const auto parsed = loader.parseSet("a,,b");
+    CHECK(parsed.count("a") == 1);
+    CHECK(parsed.count("b") == 1);
+    CHECK(parsed.count("") == 1);  // empty string present — the bug
 }
 
 TEST_CASE("EnvLoader set-of-strings overload falls back to an empty set", "[configurator][envloader]")
@@ -192,10 +208,18 @@ TEST_CASE("EnvVars get reads the process environment", "[configurator][envloader
     CHECK(getter.get("VALHALLA_TEST_DEFINITELY_UNSET") == std::optional<std::string>("hello"));
 }
 
-// NOTE: EnvVars::set() is intentionally not tested: it hands a pointer to a
-// function-local std::string to putenv(), which keeps only the pointer. After
-// set() returns the string is destroyed and the process environment contains a
-// dangling pointer (tests/README.md, known bug 12).
+// Known bug 5: EnvVars::set() calls putenv(envVar.c_str()) where envVar is a
+// function-local std::string. putenv() keeps only the pointer; after set()
+// returns the string is destroyed, leaving a dangling pointer in the process
+// environment (UB on the next getenv / putenv call).
+// Fix: use setenv(key, value, 1) (POSIX) or keep the string alive in a static
+// / heap-allocated buffer.
+TEST_CASE("EnvVars::set has a dangling-pointer bug (not called; UB on return)", "[configurator][envloader][.known-bug]")
+{
+    // Calling EnvVars::set() would immediately exhibit UB; we document the
+    // bug here without triggering it.
+    SUCCEED("Bug documented: see tests/README.md known bug 5 and envvars.cpp:EnvVars::set");
+}
 
 TEST_CASE("EnvLoader optimize_performance raises sub-1 values to ncpus*factor", "[configurator][envloader]")
 {

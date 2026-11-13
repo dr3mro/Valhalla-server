@@ -143,3 +143,15 @@ TEST_CASE("KeeprBase::decodeToken rejects an expired token", "[gatekeeper][keepr
     CHECK_FALSE(TestKeepr::decodeToken(data, message, decoded));
     CHECK(message.find("expired") != std::string::npos);
 }
+
+// Known bug 4: KeeprBase::setNowLoginTimeGetLastLogoutTime has an inverted
+// has_value() check: `if (!result.has_value())` then calls `result.value()`
+// (which throws on empty optional). The error branch is taken on success and
+// the success branch on failure.
+// Proposed fix: invert the condition to `if (result.has_value())`.
+// This cannot be exercised hermetically without a DB-backed path; the bug is
+// documented here with a SUCCEED so it appears in the [.known-bug] suite.
+TEST_CASE("KeeprBase::setNowLoginTimeGetLastLogoutTime has an inverted has_value check", "[gatekeeper][keeprbase][.known-bug]")
+{
+    SUCCEED("Bug documented: see tests/README.md known bug 4 and keeprbase.cpp:setNowLoginTimeGetLastLogoutTime");
+}

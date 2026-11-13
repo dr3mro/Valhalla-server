@@ -313,3 +313,22 @@ TEST_CASE("DoSDetector keeps working after the configured cleanup never fires", 
     // fingerprint re-arms the rate limit.
     REQUIRE(fixture.send(IP, "c") == DOSDetector::Status::RATELIMITED);
 }
+
+// Known bug 7: processRequest() maps MAX_FPS (max distinct fingerprints) to
+// RATELIMITED, and repeat-count > MAX_REQUESTS to BANNED. The README doc says
+// MAX_REQUESTS is "max requests per period", but the actual trigger for
+// banning is a *single* fingerprint repeating more than MAX_REQUESTS times.
+// Tests above assert the implemented behaviour; this case flags the doc
+// mismatch explicitly.
+TEST_CASE("DoSDetector: MAX_REQUESTS triggers a ban (not a rate-limit) contrary to its name", "[gatekeeper][dos][.known-bug]")
+{
+    // "MAX_REQUESTS=2 bans after 3 identical requests" — rate-limit would be
+    // the documented expectation; ban is the actual result.
+    DetectorFixture fixture(makeConfig(/*maxRequests*/ 2, /*maxFingerprints*/ 100,
+        std::chrono::seconds{60}, std::chrono::seconds{30}, std::chrono::seconds{3600}));
+
+    REQUIRE(fixture.send(IP, "same-body") == DOSDetector::Status::ALLOWED);
+    REQUIRE(fixture.send(IP, "same-body") == DOSDetector::Status::ALLOWED);
+    // Third identical request → BANNED (not RATELIMITED as the README implies).
+    CHECK(fixture.send(IP, "same-body") == DOSDetector::Status::BANNED);
+}

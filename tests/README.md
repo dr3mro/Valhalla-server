@@ -149,7 +149,22 @@ fixed.**
 
 ## Gaps (would need a bigger refactor — see final report)
 
-- Fake-able `DatabaseController` (narrow interface) to test controllers,
-  `KeeprBase::validateToken`, permission query paths end-to-end.
-- Injected clock into `MemCache` (TTL expiry currently needs real time).
-- Drogon integration tests (real HTTP round trips) behind `[.integration]`.
+- ~~Injected clock into `MemCache` (TTL expiry currently needs real time).~~ **Closed (2026-11-13):** `MemCache<T, ClockT>` template seam added; `ManualClock` in `tests/support/fake_clock.hpp`; 4 TTL tests added.
+- ~~`KeeprBase::validateToken` needs DB seam.~~ **Closed (2026-11-13):** 5 tests in `tests/gatekeeper/test_keeprbase_validatetoken.cpp` using `FakeDatabaseController`.
+- ~~`SessionManager::login` needs DB seam.~~ **Closed (2026-11-13):** 3 login tests added to `test_sessionmanager.cpp`.
+- ~~`Store` untested.~~ **Closed (2026-11-13):** 5 tests in `tests/utils/test_store.cpp`; also exposes a new TOCTOU race (bug 11).
+- Drogon integration tests (real HTTP round trips) behind `[.integration]`. *(skeleton in `tests/controllers/test_integration_db.cpp` — full implementation requires a provisioned DB)*
+
+### Remaining permanent gaps
+
+- `src/server/` bootstrap.
+- `src/database/` pool + query execution (real PostgreSQL only).
+- Drogon filter success paths (`fccb`).
+- `Communicate` (libcurl, no network-free surface).
+- `Logger` construction test only: `logger.cpp` hardcodes the log directory; injectable path would require a 2-line production change (documented in `TEST_COVERAGE_PLAN.md`).
+
+## Known production bugs / suspicious behaviour (updated 2026-11-13)
+
+Bugs 1–10 are unchanged. A new bug was found:
+
+11. **`store.hpp` `Store::getObject` TOCTOU race** — Two threads can both pass `inventory.find(typeid(T)) == inventory.end()` before either inserts the object, so both call `registerObject` and create two distinct objects. The second silently overwrites the first. Fix: hold `inventoryMutex` across the check-and-insert in `getObject` (merge the two lock scopes into one). Documented in `tests/utils/test_store.cpp` `[.known-bug][!shouldfail]`.
