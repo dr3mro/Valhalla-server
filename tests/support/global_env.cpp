@@ -27,7 +27,7 @@ namespace
             setenv("TOKEN_TYPE", "JWS", 1);
             setenv("TOKEN_VALIDITY", "60", 1);
             setenv("CLN_FRQ", "1", 1);
-            setenv("VALHALLA_TEST_NO_DB", "1", 1);
+            setenv("VALHALLA_TEST_NO_DB", "true", 1);
 
             // Make sure nothing leaks in from the developer's shell.
             unsetenv("WHITELIST");

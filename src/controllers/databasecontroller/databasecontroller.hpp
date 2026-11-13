@@ -13,7 +13,8 @@
 #include <string>
 #include <unordered_set>
 #include <utility>
-
+#include "store/store.hpp"
+#include "configurator/configurator.hpp"
 #include "database/databasehandler.hpp"
 #include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
@@ -26,7 +27,7 @@ class DatabaseController
 {
    public:
     DatabaseController();
-    DatabaseController(const DatabaseController &)            = default;
+    DatabaseController(const DatabaseController&)             = default;
     DatabaseController(DatabaseController &&)                 = delete;
     DatabaseController &operator=(const DatabaseController &) = default;
     DatabaseController &operator=(DatabaseController &&)      = delete;
@@ -45,7 +46,7 @@ class DatabaseController
    private:
     std::shared_ptr<DatabaseConnectionPool> databaseConnectionPool_;
     std::shared_ptr<WatchDog>               watchDog_;
-
+    std::shared_ptr<Configurator::Testing> testing_config_ = std::make_shared<Configurator::Testing>();
     void ensureBackends();  // lazily creates the connection pool and watchdog
 
     template <typename Result, typename Func, typename... Args>

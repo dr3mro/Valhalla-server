@@ -6,12 +6,14 @@
 #include <cstdint>
 #include <cstdlib>
 #include <jsoncons/basic_json.hpp>
+#include <mutex>
 #include <optional>
 #include <pqxx/pqxx>
 #include <string>
 #include <string_view>
 #include <unordered_set>
 
+#include "configurator/configurator.hpp"
 #include "database/database.hpp"
 #include "database/databaseconnectionpool.hpp"
 #include "database/watchdog.hpp"
@@ -30,7 +32,7 @@ void DatabaseController::ensureBackends()
     // the (singleton) DatabaseController through Store and then performs the
     // first query (schema population) during boot.
     static std::mutex backendInitMutex;
-    std::lock_guard<std::mutex> lock(backendInitMutex);
+    std::scoped_lock lock(backendInitMutex);
     if (!databaseConnectionPool_)
     {
         // Hermetic unit-test seam: when VALHALLA_TEST_NO_DB is set (the unit
@@ -39,13 +41,12 @@ void DatabaseController::ensureBackends()
         // "database unavailable" (std::nullopt) deterministically, with no
         // sockets opened and no retries. Production never sets the variable,
         // so behaviour is unchanged there.
-        const char *const noDb = std::getenv("VALHALLA_TEST_NO_DB");
-        if (noDb != nullptr && noDb[0] != '\0' && std::string_view(noDb) != "0")
+        if (!testing_config_->no_db)
         {
-            return;
+            databaseConnectionPool_ = Store::getObject<DatabaseConnectionPool>();
+            watchDog_               = Store::getObject<WatchDog>();
         }
-        databaseConnectionPool_ = Store::getObject<DatabaseConnectionPool>();
-        watchDog_               = Store::getObject<WatchDog>();
+
     }
 }
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <fmt/core.h>
+#include <fmt/format.h>
 #include <fmt/ranges.h>
 
 #include <chrono>
@@ -233,6 +234,27 @@ class Configurator
             Message::ConfMessage(fmt::format("EmailSender port: {}", port));
             Message::ConfMessage(fmt::format("EmailSender queue path: {}", message_queue_path));
         }
+
+    };
+
+    using Testing = struct Testing : public EnvLoader
+    {
+        public:
+        bool    no_db; /*NOLINT */
+
+        Testing()
+            : no_db(getEnvironmentVariable("VALHALLA_TEST_NO_DB", Defaults::Testing::VALHALLA_TEST_NO_DB_))
+        {
+        }
+
+        void printValues() const override
+        {
+            Message::ConfMessage("------------------------------------------------");
+            Message::ConfMessage("-----------------Testing Config-----------------");
+            Message::ConfMessage("------------------------------------------------");
+            Message::ConfMessage(fmt::format("Testing no_db: {}", no_db));
+        }
+
     };
 
     // Template getter for structs
@@ -247,4 +269,5 @@ class Configurator
     TokenManagerParameters token_manager_parameters_;
     FrontEndConfig         frontend_config_;
     EmailSenderConfig      email_sender_config_;
+    Testing                testing_;
 };

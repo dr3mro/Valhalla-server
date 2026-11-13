@@ -39,3 +39,9 @@ Configurator::EmailSenderConfig& Configurator::get<Configurator::EmailSenderConf
 {
     return email_sender_config_;
 }
+
+template <>
+Configurator::Testing& Configurator::get<Configurator::Testing>()
+{
+    return testing_;
+}
