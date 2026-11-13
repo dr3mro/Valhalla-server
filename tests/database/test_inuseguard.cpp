@@ -4,6 +4,7 @@
 #include <chrono>
 #include <condition_variable>
 #include <mutex>
+#include <stdexcept>
 #include <thread>
 
 #include "database/inuseguard.hpp"
@@ -34,16 +35,11 @@ TEST_CASE("InUseGuard waits out the timeout when the resource is busy", "[databa
     constexpr auto kTimeout = std::chrono::milliseconds{50};
 
     const auto start = std::chrono::steady_clock::now();
-    {
-        InUseGuard guard(in_use, mtx, cv, kTimeout);
+    CHECK_THROWS_AS(InUseGuard(in_use, mtx, cv, kTimeout), std::runtime_error);
+    const auto elapsed = std::chrono::steady_clock::now() - start;
 
-        const auto elapsed = std::chrono::steady_clock::now() - start;
-
-        CHECK(elapsed >= kTimeout);
-        CHECK(in_use.load());
-    }
-
-    CHECK_FALSE(in_use.load());
+    CHECK(elapsed >= kTimeout);
+    CHECK(in_use.load());
 }
 
 TEST_CASE("InUseGuard destructor notify wakes a concurrent waiter", "[database][inuseguard]")

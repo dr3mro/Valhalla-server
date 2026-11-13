@@ -1,6 +1,7 @@
 #include "database.hpp"
 
 #include <fmt/core.h>
+#include <fmt/format.h>
 #include <trantor/utils/Logger.h>
 
 #include <cstdlib>
@@ -18,6 +19,7 @@
 #include "database/inuseguard.hpp"  // IWYU pragma: keep
 #include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
+#define IUGUARD InUseGuard connection_guard(isConnectionInUse_, mtx_, cv_);
 
 Database::Database(std::shared_ptr<pqxx::connection> &&conn) : connection(std::move(conn))
 {

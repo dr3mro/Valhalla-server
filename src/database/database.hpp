@@ -18,8 +18,6 @@
 
 #include "utils/global/types.hpp"
 
-#define IUGUARD InUseGuard connection_guard(isConnectionInUse_, mtx_, cv_);
-
 class Database
 {
    public:
