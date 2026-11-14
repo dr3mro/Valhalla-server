@@ -920,7 +920,7 @@ install_completion() {
     # shellcheck disable=SC2016  # $(...) is meant to run in the rc file
     if printf '\n%s (added by %s; remove to undo)\n[ -x %q ] && eval "$(%q completion %s)"\n' \
       "$marker" "$SCRIPT" "$SCRIPT" "$SCRIPT" "$shell" >>"$rc" 2>/dev/null; then
-  info "Added tab completion to $rc (open a new terminal to use it)."
+      info "Added tab completion to $rc (open a new terminal to use it)."
     fi
   done
 }
@@ -1025,7 +1025,7 @@ check_deps() {
   printf '%s\n' "${E_ERR}${E_i_err:+$E_i_err }error: '$cmd' needs these, which are missing:${E_R}" >&2
   local m
   for m in "${MISSING[@]}"; do
-    note "  ${E_ERR}${E_i_err:+$E_i_err }${E_R}$m  ${E_DIM}($(install_hint "$m"))${E_R}"
+    printf '%s\n' "  ${E_ERR}${E_i_err:+$E_i_err }${E_R}$m  ${E_DIM}($(install_hint "$m"))${E_R}" >&2
   done
   exit 1
 }
@@ -1293,8 +1293,6 @@ restore_from() {
 
 # persist_save: dumps the running database to persist_file (the previous
 # dump is kept as .prev). Dies if the dump fails, before anything is stopped.
-# persist_save: dumps the running database to persist_file (the previous
-# dump is kept as .prev). Dies if the dump fails, before anything is stopped.
 persist_save() {
   is_running || return 0
   local file
@@ -1302,7 +1300,7 @@ persist_save() {
   migrate_persist_file
   [[ -f $file ]] && mv -f "$file" "$file.prev"
   [[ -f $file.image ]] && mv -f "$file.image" "$file.prev.image"
-  note "Saving the database to ${E_VAL}$file${E_R}"
+  step "Saving the database to ${E_VAL}$file${E_R}"
   if ! dump_to "$file"; then
     [[ -f $file.prev ]] && mv -f "$file.prev" "$file"
     [[ -f $file.prev.image ]] && mv -f "$file.prev.image" "$file.image"
@@ -1337,7 +1335,7 @@ persist_load() {
     return 0
   fi
   step "Restoring the database from $file"
-  restore_from "$file" || note "warning: restoring $file failed; the database is the image's fresh one"
+  restore_from "$file" || warn "restoring $file failed; the database is the image's fresh one"
 }
 
 # warn_dump_image: before a container starts from a saved dump.
@@ -1601,7 +1599,7 @@ wait_healthy() {
   printf '%s' "${E_ACC}${E_i_wait:+$E_i_wait }${E_R}Waiting for the server" >&2
   while [[ $waited -lt $WAIT_SECONDS ]]; do
     if curl -fsS "$HEALTH_URL" >/dev/null 2>&1; then
-      note "${E_OK} up at ${E_VAL}$HEALTH_URL${E_R}"
+      ok "up at ${E_VAL}$HEALTH_URL${E_R}"
       server_version_line
       return 0
     fi
@@ -1741,7 +1739,7 @@ prune_images() {
   while IFS= read -r ref; do
     [[ -n $ref ]] || continue
     if rt image rm "$ref" >/dev/null 2>&1 || rt image delete "$ref" >/dev/null 2>&1; then
-      note "Removed old image $ref"
+      say_ok "Removed old image $ref"
       removed=$((removed + 1))
     fi
   done < <(old_image_refs "$keep")
@@ -2405,11 +2403,11 @@ cmd_test() {
   fi
   curl -fsS "$HEALTH_URL" >/dev/null 2>&1 || die "the server isn't answering at $HEALTH_URL; use: $PROG run"
   if [[ $kind == api || $kind == all ]]; then
-    note "Running test_api.sh against $base"
+    step "Running test_api.sh against $base"
     BASE_URL="$base" "$(script_path test_api)" || status=$?
   fi
   if [[ $kind == fuzz || $kind == all ]]; then
-    note "Running schemathesis_test.sh against $base"
+    step "Running schemathesis_test.sh against $base"
     BASE_URL="$base" "$(script_path schemathesis_test)" || status=$?
   fi
   return "$status"
@@ -2466,7 +2464,7 @@ fetch_installer() {
   tmp="$(mktemp)"
   if ! curl -fsSL "$INSTALLER_URL" -o "$tmp"; then
     rm -f "$tmp"
-    note "couldn't download the installer from $INSTALLER_URL"
+    warn "couldn't download the installer from $INSTALLER_URL"
     return 1
   fi
   echo "$tmp"
@@ -2518,7 +2516,7 @@ cmd_uninstall() {
     tmp="$(fetch_installer)" || die "couldn't download the installer from $INSTALLER_URL"
     installer="$tmp"
   fi
-  note "Running $installer (--uninstall ${dir_args[*]})"
+  step "Running $installer (--uninstall ${dir_args[*]})"
   sh "$installer" --uninstall "${dir_args[@]}" || { [[ -n $tmp ]] && rm -f "$tmp"; die "the installer failed"; }
   [[ -n $tmp ]] && rm -f "$tmp"
   return 0
