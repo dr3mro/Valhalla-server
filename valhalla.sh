@@ -20,7 +20,8 @@
 #   clean            Remove the container and every local image of the repo
 #                    (asks first).
 # Inspect:
-#   status           Show state, image, port, health and version.
+#   status           Show state, image, port, health and version, and check
+#                    for updates now (when there's an internet connection).
 #   outdated         Compare the container's image with Docker Hub.
 #   show             Follow the container's log (Ctrl+C stops following; the
 #                    container keeps running).
@@ -1752,6 +1753,42 @@ show_update_notice() {
   return 0
 }
 
+# status_updates: `status` checks for updates now (only with internet) and
+# reports the result; offline it shows what an earlier check found.
+status_updates() {
+  [[ ${VALHALLA_NO_UPDATE_CHECK:-0} == 1 ]] && return 0
+  if ! curl -fsS -m 3 -o /dev/null https://api.github.com 2>/dev/null; then
+    echo "Updates:   not checked (no internet connection)"
+    show_update_notice
+    return 0
+  fi
+  # Let a running background check finish rather than racing it.
+  local waited=0
+  while [[ -d $UPDATE_STATE.lock ]] && ((waited < 20)); do sleep 1; waited=$((waited + 1)); done
+  update_refresh
+  local tool image
+  tool="$(state_get tool_update)"; image="$(state_get image_update)"
+  if [[ $tool == 1 || $image == 1 ]]; then
+    echo "Updates:   available"
+    if [[ -t 2 ]]; then
+      show_update_notice
+    else
+      [[ $image == 1 ]] && echo "  Docker image $(state_get image_version) -> $(state_get image_latest_version) ($PROG update)"
+      [[ $tool == 1 ]] && echo "  valhalla tool $(state_get tool_installed | cut -c1-7) -> $(state_get tool_latest | cut -c1-7) ($PROG install)"
+    fi
+  else
+    local what=""
+    [[ -n $(state_get image_version) ]] && what="image $(state_get image_version)"
+    if [[ -n $(state_get tool_installed) ]]; then
+      what="${what:+$what, }tool $(state_get tool_installed | cut -c1-7)"
+    elif [[ ! -f $ROOT/VERSION ]]; then
+      what="${what:+$what; }tool not checked: running from a checkout"
+    fi
+    echo "Updates:   up to date${what:+ ($what)}"
+  fi
+  return 0
+}
+
 # ── commands ───────────────────────────────────────────────────────────────
 cmd_run() {
   local image
@@ -1955,6 +1992,7 @@ cmd_status() {
   echo "Container: $NAME"
   if ! exists; then
     echo "State:     not created (use: $PROG run)"
+    status_updates
     return 0
   fi
   local st
@@ -1983,6 +2021,7 @@ cmd_status() {
     ver="$(server_version_line | sed -E 's/.*[Vv]ersion[^:]*:[[:space:]]*//')"
     echo "Version:   ${ver:-unknown}"
   fi
+  status_updates
 }
 
 cmd_outdated() {
@@ -2245,7 +2284,7 @@ install_completion
 
 resolve_runtime
 case "$command" in
-  install | uninstall) ;;
+  install | uninstall | status) ;; # status checks for itself
   *)
     show_update_notice
     schedule_update_check

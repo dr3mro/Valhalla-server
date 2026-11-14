@@ -22,7 +22,7 @@ This downloads the latest tool from this repository: the `valhalla` command goes
 
 ```bash
 valhalla run       # pull the image and start the server on http://127.0.0.1:8080
-valhalla status    # is it up, and which version?
+valhalla status    # is it up, which version, and are there updates?
 valhalla doc       # open the interactive API docs in your browser
 ```
 
@@ -498,7 +498,7 @@ It passes every variable in a settings file to the container, using the first it
 
 **Disk space.** After `update` and `build`, the tool removes its own older images that no container uses: never the image the new container runs, and never the `-deps` build image. It then frees leftover layers. On Docker that's only the dangling images that came from this repository; Apple Container can't tell where an image came from, so there it runs `container image prune`, which removes only dangling (untagged, unused) images. It reports the image disk usage before and after. `-n` shows what it would remove, and `--no-prune` (or `VALHALLA_NO_PRUNE=1`) keeps everything.
 
-**Update notices.** Every few hours (`VALHALLA_UPDATE_INTERVAL`, default 6 hours) a background job checks, when you're online, whether Docker Hub has a newer image than your container runs and whether GitHub has a newer version of the tool than your installed copy. The next commands then show a small table with the installed and latest versions and the command that updates each (`valhalla update` for the image, `valhalla install` for the tool). The check never delays a command. The table only appears in an interactive terminal, styled as far as it supports: colors, Unicode box drawing, emoji, or Nerd Font icons when a Nerd Font is installed (`VALHALLA_NERD=0/1` overrides that guess). Turn it off with `VALHALLA_NO_UPDATE_CHECK=1`. A checkout, or a copy installed from one, isn't checked for tool updates.
+**Update notices.** Every few hours (`VALHALLA_UPDATE_INTERVAL`, default 6 hours) a background job checks, when you're online, whether Docker Hub has a newer image than your container runs and whether GitHub has a newer version of the tool than your installed copy. The next commands then show a small table with the installed and latest versions and the command that updates each (`valhalla update` for the image, `valhalla install` for the tool). The check never delays a command. The exception is `valhalla status`, which checks right away when there's an internet connection (a second or two) and ends with an `Updates:` line: up to date, available (with the table), or not checked when offline. The table only appears in an interactive terminal, styled as far as it supports: colors, Unicode box drawing, emoji, or Nerd Font icons when a Nerd Font is installed (`VALHALLA_NERD=0/1` overrides that guess). Turn it off with `VALHALLA_NO_UPDATE_CHECK=1`. A checkout, or a copy installed from one, isn't checked for tool updates.
 
 **Login token secret.** `TOKEN_SECRET` signs the JWT login tokens, and the tool never lets it change by itself between starts (which would log everyone out). The installer generates one into `~/.local/share/valhalla/config`. A container gets the first of: `--token-secret`, `TOKEN_SECRET` in the shell, the `.env` in use, `~/.local/share/valhalla/config` (checked even when a `.env` is in use), or the replaced container's secret. If there's none, one is generated once and saved to `config`. `valhalla env` shows which one is used, and `valhalla secret` replaces it (asking first).
 
@@ -530,7 +530,8 @@ Container:
   clean            Remove the container and every local image of the repo
                    (asks first).
 Inspect:
-  status           Show state, image, port, health and version.
+  status           Show state, image, port, health and version, and check
+                   for updates now (when there's an internet connection).
   outdated         Compare the container's image with Docker Hub.
   show             Follow the container's log (Ctrl+C stops following; the
                    container keeps running).
