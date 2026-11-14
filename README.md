@@ -10,40 +10,40 @@ A high-performance, multi-tenant healthcare backend written in modern C++20. Val
 
 Run the server with its own bundled PostgreSQL in a container, using Docker or Apple Container (Apple Silicon Macs). You need one of them installed, plus `curl` (and `python3` with Apple Container). The tool checks and tells you what's missing.
 
-**1. Install the `valhalla` command** (no checkout needed):
+**1. Install the `vdt` command** — the Valhalla Deployment Tool (no checkout needed):
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/dr3mro/Valhalla-server/main/install.sh | sh
 ```
 
-This downloads the latest tool from this repository: the `valhalla` command goes in `~/.local/bin` and its files in `~/.local/share/valhalla`. It adds `~/.local/bin` to `PATH` (if it isn't already) and tab completion in `~/.zshrc` and/or `~/.bashrc`. Open a new terminal afterwards.
+This downloads the latest tool from this repository: the `vdt` command goes in `~/.local/bin` and its files in `~/.local/share/vdt`. It adds `~/.local/bin` to `PATH` (if it isn't already) and tab completion in `~/.zshrc` and/or `~/.bashrc`. Open a new terminal afterwards.
 
 **2. Run it:**
 
 ```bash
-valhalla run       # pull the image and start the server on http://127.0.0.1:8080
-valhalla status    # is it up, which version, and are there updates?
-valhalla doc       # open the interactive API docs in your browser
+vdt run       # pull the image and start the server on http://127.0.0.1:8080
+vdt status    # is it up, which version, and are there updates?
+vdt doc       # open the interactive API docs in your browser
 ```
 
 **3. Day to day:**
 
 ```bash
-valhalla update    # newest image, same settings, and the newest valhalla tool; frees the old image's disk space
-valhalla show      # follow the log
-valhalla psql      # SQL shell on the bundled database
-valhalla dump      # save the database to ~/.local/share/valhalla/dumps
-valhalla update --persist   # keep the database across stop/restart/update from now on
-valhalla test      # run the end-to-end API tests against it
-valhalla stop      # stop it; valhalla run starts it again
-valhalla help      # everything else
+vdt update    # newest image, same settings, and the newest vdt tool; frees the old image's disk space
+vdt show      # follow the log
+vdt psql      # SQL shell on the bundled database
+vdt dump      # save the database to ~/.local/share/vdt/dumps
+vdt update --persist   # keep the database across stop/restart/update from now on
+vdt test      # run the end-to-end API tests against it
+vdt stop      # stop it; vdt run starts it again
+vdt help      # everything else
 ```
 
-Settings: the installer creates `~/.local/share/valhalla/config` (`.env` format) with defaults for a small local container (2 server threads, 2 database connections, and raised rate limits so the API docs' Benchmark and Test console panels don't get you blocked). Every variable in it is passed to the server (see [Configuration](#configuration)); edit it and run `valhalla update` to apply. A `.env` in the directory you run `valhalla` from is used instead (e.g. in your checkout of this repository).
+Settings: the installer creates `~/.local/share/vdt/config` (`.env` format) with defaults for a small local container (2 server threads, 2 database connections, and raised rate limits so the API docs' Benchmark and Test console panels don't get you blocked). Every variable in it is passed to the server (see [Configuration](#configuration)); edit it and run `vdt update` to apply. A `.env` in the directory you run `vdt` from is used instead (e.g. in your checkout of this repository).
 
-Update the tool with `valhalla install` (or `valhalla install v1.2.3` for a specific tag): it downloads the new version first, and only then removes the current copy and installs, so a failed download changes nothing. `valhalla version` shows what's installed. Remove it with `valhalla uninstall`, which works offline. Both keep your `.env` and `dumps/`.
+Update the tool with `vdt install` (or `vdt install v1.2.3` for a specific tag): it downloads the new version first, and only then removes the current copy and installs, so a failed download changes nothing. `vdt version` shows what's installed. Remove it with `vdt uninstall`, which works offline. Both keep your `.env` and `dumps/`.
 
-From a checkout of this repository, `./valhalla.sh` is the same tool. Details: [Manage it with `valhalla.sh`](#manage-it-with-valhallash). Without the tool: [Run with Docker](#run-with-docker). To build and run natively: [Getting Started](#getting-started).
+From a checkout of this repository, `./valhalla.sh` is the same tool (the installed `vdt` command is this file under another name). Details: [Manage it with `valhalla.sh`](#manage-it-with-valhallash). Without the tool: [Run with Docker](#run-with-docker). To build and run natively: [Getting Started](#getting-started).
 
 ---
 
@@ -124,20 +124,20 @@ Database controller  ──►  Connection pool  ──►  PostgreSQL
 
 ## Tech Stack
 
-| Area              | Technology |
-|-------------------|------------|
-| Language          | C++20 (C17 for C sources) |
-| Web framework     | Drogon + Trantor |
-| Database          | PostgreSQL via libpqxx |
-| Auth              | jwt-cpp |
-| Crypto / hashing  | libsodium |
-| JSON              | jsoncons, picojson (jsoncpp via Drogon) |
-| Config            | Environment variables |
-| Logging           | spdlog / fmt |
-| HTTP client       | libcurl, c-ares |
-| Hashing / utils   | xxhash, cppcodec, zlib |
-| Testing           | Catch2 |
-| Build             | CMake (≥ 4.0) + Conan 2 |
+| Area             | Technology                              |
+| ---------------- | --------------------------------------- |
+| Language         | C++20 (C17 for C sources)               |
+| Web framework    | Drogon + Trantor                        |
+| Database         | PostgreSQL via libpqxx                  |
+| Auth             | jwt-cpp                                 |
+| Crypto / hashing | libsodium                               |
+| JSON             | jsoncons, picojson (jsoncpp via Drogon) |
+| Config           | Environment variables                   |
+| Logging          | spdlog / fmt                            |
+| HTTP client      | libcurl, c-ares                         |
+| Hashing / utils  | xxhash, cppcodec, zlib                  |
+| Testing          | Catch2                                  |
+| Build            | CMake (≥ 4.0) + Conan 2                 |
 
 ## Getting Started
 
@@ -147,8 +147,8 @@ Database controller  ──►  Connection pool  ──►  PostgreSQL
 - [CMake](https://cmake.org/) ≥ 4.0 and [Ninja](https://ninja-build.org/) (used by `build.sh`)
 - [Conan](https://conan.io/) 2.x (package manager)
 - A reachable [PostgreSQL](https://www.postgresql.org/) instance
-- *(optional)* `ccache` — used automatically if found, to speed up rebuilds
-- *(optional)* Docker or Apple `container`, to run the all-in-one image (see [Run with Docker](#run-with-docker))
+- _(optional)_ `ccache` — used automatically if found, to speed up rebuilds
+- _(optional)_ Docker or Apple `container`, to run the all-in-one image (see [Run with Docker](#run-with-docker))
 
 Supported distributions: **Debian 13 (trixie)+ / Ubuntu 24.04+** and **Fedora 40+**. Older releases ship GCC < 13, and most distributions still package CMake 3.x, so you will likely need to install CMake 4 separately; see the notes below.
 
@@ -297,7 +297,7 @@ Every release tag publishes an all-in-one image to Docker Hub: the server **plus
 
 > **Which should I use?** The Docker image works on any OS. The Alpine tarballs attached to each GitHub Release run only on Alpine Linux. Anywhere else, without Docker, [build from source](#build-from-source).
 
-> **The database is ephemeral.** Every container start, *including a restart*, begins with a fresh, empty database initialised from `init.sql`. Nothing is kept. For persistent data, run the server against your own PostgreSQL instead (see [Run the server](#run-the-server)).
+> **The database is ephemeral.** Every container start, _including a restart_, begins with a fresh, empty database initialised from `init.sql`. Nothing is kept. For persistent data, run the server against your own PostgreSQL instead (see [Run the server](#run-the-server)).
 
 **Docker** (Linux, macOS, Windows):
 
@@ -417,15 +417,16 @@ If you run with `--rm` or the shell alias, the pull is all you need: the next `r
 
 **Settings.** Every variable in [Configuration](#configuration) can be passed with `-e`. Inside this image:
 
-| Variable | Default | Notes |
-|----------|---------|-------|
-| `TOKEN_SECRET` | *(random per start)* | Set it if tokens must survive a restart or be shared with other services |
-| `DB_NAME` / `DB_USER` / `DB_PASS` | `postgres` / `postgres` / `postgres` | Created inside the container on start; any value works, quotes included |
-| `DB_HOST` | `127.0.0.1` | Fixed: the image always uses its bundled database |
-| `SERVER_PORT` | `8080` | If you change it, change the `-p` mapping to match, e.g. `-p 9000:9000 -e SERVER_PORT=9000` |
-| `FRONTEND_HOST` / `EMAIL_SENDER_HOST` | Docker-network IPs | Set these if you use invite links or email |
+| Variable                              | Default                              | Notes                                                                                       |
+| ------------------------------------- | ------------------------------------ | ------------------------------------------------------------------------------------------- |
+| `TOKEN_SECRET`                        | _(random per start)_                 | Set it if tokens must survive a restart or be shared with other services                    |
+| `DB_NAME` / `DB_USER` / `DB_PASS`     | `postgres` / `postgres` / `postgres` | Created inside the container on start; any value works, quotes included                     |
+| `DB_HOST`                             | `127.0.0.1`                          | Fixed: the image always uses its bundled database                                           |
+| `SERVER_PORT`                         | `8080`                               | If you change it, change the `-p` mapping to match, e.g. `-p 9000:9000 -e SERVER_PORT=9000` |
+| `FRONTEND_HOST` / `EMAIL_SENDER_HOST` | Docker-network IPs                   | Set these if you use invite links or email                                                  |
 
 Details:
+
 - The server runs as the non-root user `valhalla`; PostgreSQL only listens inside the container (`127.0.0.1`).
 - The image has a health check (`GET /api/v2/hello`), so `docker ps` shows `healthy` once it is ready, typically a few seconds after start.
 - If `TOKEN_SECRET` is not set, the container generates a random one on each start (and says so in the log) rather than using the insecure built-in default.
@@ -445,18 +446,18 @@ The build compiles every C++ dependency from source on Alpine and runs the unit 
 
 `valhalla.sh` in the repository root wraps the commands above for both Docker and Apple Container. It picks Apple Container when it's installed and Docker otherwise (force one with `--runtime docker` or `--runtime container`).
 
-**Install it as the `valhalla` command** (no checkout needed). This downloads the latest `valhalla.sh`, the API test scripts and their payloads from this repository. The command goes in `~/.local/bin/valhalla` (a link); the files go in `~/.local/share/valhalla`, without the `.sh` extension (`valhalla`, `test_api`, `schemathesis_test`) and executable, plus a copy of the installer. It adds `~/.local/bin` to `PATH` (if it isn't already) and tab completion in `~/.zshrc` and/or `~/.bashrc`. An earlier install in `~/.bin/valhalla` is moved over, with its `.env` and `dumps/`:
+**Install it as the `vdt` command** (no checkout needed). This downloads the latest `valhalla.sh`, the API test scripts and their payloads from this repository. The command goes in `~/.local/bin/vdt` (a link); the files go in `~/.local/share/vdt`, without the `.sh` extension (`vdt`, `test_api`, `schemathesis_test`) and executable, plus a copy of the installer. It adds `~/.local/bin` to `PATH` (if it isn't already) and tab completion in `~/.zshrc` and/or `~/.bashrc`:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/dr3mro/Valhalla-server/main/install.sh | sh
 ```
 
-Then open a new terminal and use `valhalla` instead of `./valhalla.sh` (e.g. `valhalla run`, `valhalla status`). Afterwards the tool manages itself with the same installer. The installer keeps a copy of itself next to the tool, so `uninstall` works offline; `install` downloads the latest installer first, then uninstalls the current copy and installs the new one (if the download fails, nothing is removed):
+Then open a new terminal and use `vdt` instead of `./valhalla.sh` (e.g. `vdt run`, `vdt status`). Afterwards the tool manages itself with the same installer. The installer keeps a copy of itself next to the tool, so `uninstall` works offline; `install` downloads the latest installer first, then uninstalls the current copy and installs the new one (if the download fails, nothing is removed):
 
 ```bash
-valhalla install            # update to the latest version (your config and dumps/ are kept)
-valhalla install v1.2.3     # a specific tag, branch or commit
-valhalla uninstall          # remove it and its lines in ~/.zshrc / ~/.bashrc (asks first)
+vdt install            # update to the latest version (your config and dumps/ are kept)
+vdt install v1.2.3     # a specific tag, branch or commit
+vdt uninstall          # remove it and its lines in ~/.zshrc / ~/.bashrc (asks first)
 ```
 
 The installed copy has everything except `build`, which needs a full checkout of the repository. From a checkout, every command works the same as `./valhalla.sh <command>`:
@@ -476,13 +477,13 @@ The installed copy has everything except `build`, which needs a full checkout of
 ./valhalla.sh env             # what a new container would get from .env, secrets hidden
 ./valhalla.sh doc             # open the API docs in the browser
 ./valhalla.sh psql            # psql on the bundled database
-./valhalla.sh dump            # save the database to ~/.local/share/valhalla/dumps
+./valhalla.sh dump            # save the database to ~/.local/share/vdt/dumps
 ./valhalla.sh restore FILE    # load a dump back (e.g. after restart or update)
 ./valhalla.sh shell           # a shell inside the container
 ./valhalla.sh test            # run test_api.sh against it (test fuzz / test all for Schemathesis)
 ./valhalla.sh secret          # write a random TOKEN_SECRET to .env
-./valhalla.sh install         # install or update the `valhalla` command from GitHub
-./valhalla.sh uninstall       # remove the installed `valhalla` command
+./valhalla.sh install         # install or update the `vdt` command from GitHub
+./valhalla.sh uninstall       # remove the installed `vdt` command
 ./valhalla.sh delete          # remove the container (asks first)
 ./valhalla.sh clean           # remove the container and all local images of it (asks first)
 ./valhalla.sh version         # the tool's version
@@ -494,15 +495,15 @@ Each command first checks the tools it needs (`curl`, `python3` for Apple Contai
 
 Every `run`, `update` and `restart` waits until `/api/v2/hello` answers and prints the version line from the log.
 
-It passes every variable in a settings file to the container, using the first it finds: `.env` in the directory you run it from, `.env` next to the script (your checkout), or `~/.local/share/valhalla/config` (same format). The installer creates that last one with defaults for a small local container: `SERVER_THREADS = 2`, `DB_MAX_CONN = 2`, and raised `MAX_REQUESTS`/`MAX_FPS`. It's yours from then on: kept on update, and on uninstall unless it's still the unedited default. The script itself hard-codes no server settings; anything no `.env` sets falls back to the server's defaults (4 threads, 10 connections, `MAX_REQUESTS` 10000, `MAX_FPS` 100). Only one file is used; they aren't merged. Variables set in the shell win over `.env` for a single run (`SERVER_THREADS=4 ./valhalla.sh update`). Quoted values, spaces around `=` and ` # comments` are fine. After editing `.env`, run `./valhalla.sh update` to apply it. Use another file with `--env-file path` (or `VALHALLA_ENV_FILE`), or skip it with `--env-file none`.
+It passes every variable in a settings file to the container, using the first it finds: `.env` in the directory you run it from, `.env` next to the script (your checkout), or `~/.local/share/vdt/config` (same format). The installer creates that last one with defaults for a small local container: `SERVER_THREADS = 2`, `DB_MAX_CONN = 2`, and raised `MAX_REQUESTS`/`MAX_FPS`. It's yours from then on: kept on update, and on uninstall unless it's still the unedited default. The script itself hard-codes no server settings; anything no `.env` sets falls back to the server's defaults (4 threads, 10 connections, `MAX_REQUESTS` 10000, `MAX_FPS` 100). Only one file is used; they aren't merged. Variables set in the shell win over `.env` for a single run (`SERVER_THREADS=4 ./valhalla.sh update`). Quoted values, spaces around `=` and ` # comments` are fine. After editing `.env`, run `./valhalla.sh update` to apply it. Use another file with `--env-file path` (or `VALHALLA_ENV_FILE`), or skip it with `--env-file none`.
 
 **Disk space.** After `update` and `build`, the tool removes its own older images that no container uses: never the image the new container runs, and never the `-deps` build image. It then frees leftover layers. On Docker that's only the dangling images that came from this repository; Apple Container can't tell where an image came from, so there it runs `container image prune`, which removes only dangling (untagged, unused) images. It reports the image disk usage before and after. `-n` shows what it would remove, and `--no-prune` (or `VALHALLA_NO_PRUNE=1`) keeps everything.
 
-**Update notices.** Every few hours (`VALHALLA_UPDATE_INTERVAL`, default 6 hours) a background job checks, when you're online, whether Docker Hub has a newer image than your container runs and whether GitHub has a newer version of the tool than your installed copy. The next commands then show a small table with the installed and latest versions and the command that updates them: `valhalla update` covers both — the image and the `valhalla` tool itself (it runs the installer after the container is recreated). `valhalla install` only updates the tool, and `valhalla update --image-only` / `--tool-only` pick one side. The check never delays a command. The exception is `valhalla status`, which checks right away when there's an internet connection (a second or two) and ends with an `Updates:` line: up to date, available (with the table), or not checked when offline. The table only appears in an interactive terminal, styled as far as it supports: colors, Unicode box drawing, emoji, or Nerd Font icons when a Nerd Font is installed (`VALHALLA_NERD=0/1` overrides that guess). Turn it off with `VALHALLA_NO_UPDATE_CHECK=1`. A checkout, or a copy installed from one, isn't checked for tool updates.
+**Update notices.** Every few hours (`VALHALLA_UPDATE_INTERVAL`, default 6 hours) a background job checks, when you're online, whether Docker Hub has a newer image than your container runs and whether GitHub has a newer version of the tool than your installed copy. The next commands then show a small table with the installed and latest versions and the command that updates them: `vdt update` covers both — the image and the `vdt` tool itself (it runs the installer after the container is recreated). `vdt install` only updates the tool, and `vdt update --image-only` / `--tool-only` pick one side. The check never delays a command. The exception is `vdt status`, which checks right away when there's an internet connection (a second or two) and ends with an `Updates:` line: up to date, available (with the table), or not checked when offline. The table only appears in an interactive terminal, styled as far as it supports: colors, Unicode box drawing, emoji, or Nerd Font icons when a Nerd Font is installed (`VALHALLA_NERD=0/1` overrides that guess). Turn it off with `VALHALLA_NO_UPDATE_CHECK=1`. A checkout, or a copy installed from one, isn't checked for tool updates.
 
-**Login token secret.** `TOKEN_SECRET` signs the JWT login tokens, and the tool never lets it change by itself between starts (which would log everyone out). The installer generates one into `~/.local/share/valhalla/config`. A container gets the first of: `--token-secret`, `TOKEN_SECRET` in the shell, the `.env` in use, `~/.local/share/valhalla/config` (checked even when a `.env` is in use), or the replaced container's secret. If there's none, one is generated once and saved to `config`. `valhalla env` shows which one is used, and `valhalla secret` replaces it (asking first).
+**Login token secret.** `TOKEN_SECRET` signs the JWT login tokens, and the tool never lets it change by itself between starts (which would log everyone out). The installer generates one into `~/.local/share/vdt/config`. A container gets the first of: `--token-secret`, `TOKEN_SECRET` in the shell, the `.env` in use, `~/.local/share/vdt/config` (checked even when a `.env` is in use), or the replaced container's secret. If there's none, one is generated once and saved to `config`. `vdt env` shows which one is used, and `vdt secret` replaces it (asking first).
 
-**Persistence.** Without it, the bundled database starts from `init.sql` on every container start. Add `--persist` once (`valhalla run --persist`, `valhalla update --persist`, or `VALHALLA_PERSIST=1` in `.env`) and the database is kept in `~/.local/share/valhalla/dumps/<name>-persist.sql`, which is mounted into the container. The image's entrypoint loads it at start instead of `init.sql` and saves it whenever the container stops, including restarts outside the tool (Docker Desktop, a reboot). The tool also saves it before `stop`, `restart`, `update`, `build` and `delete` (the previous dump is kept as `.prev`), and if that save fails, nothing is stopped. The setting is stored in the container, so later commands remember it; `--no-persist` turns it off. `valhalla status` shows whether it's on and when the database was last saved. Restoring a dump made by a different image prints a warning, because if that image changed the schema the old schema comes back. Images released before this feature still work: the tool restores the dump itself after the container starts.
+**Persistence.** Without it, the bundled database starts from `init.sql` on every container start. Add `--persist` once (`vdt run --persist`, `vdt update --persist`, or `VALHALLA_PERSIST=1` in `.env`) and the database is kept in `~/.local/share/vdt/dumps/<name>-persist.sql`, which is mounted into the container. The image's entrypoint loads it at start instead of `init.sql` and saves it whenever the container stops, including restarts outside the tool (Docker Desktop, a reboot). The tool also saves it before `stop`, `restart`, `update`, `build` and `delete` (the previous dump is kept as `.prev`), and if that save fails, nothing is stopped. The setting is stored in the container, so later commands remember it; `--no-persist` turns it off. `vdt status` shows whether it's on and when the database was last saved. Restoring a dump made by a different image prints a warning, because if that image changed the schema the old schema comes back. Images released before this feature still work: the tool restores the dump itself after the container starts.
 
 In a terminal, `help` (or `--help`) is shown with colors, Unicode box drawing and emoji as far as the terminal supports them, and paged with `less` when it's longer than the screen; piped or with `NO_COLOR=1` it's plain text. Force a style with `VALHALLA_FANCY=0` (plain) to `3` (everything).
 
@@ -510,16 +511,19 @@ Full help (`./valhalla.sh help`):
 
 ```text
 Run the Valhalla server image locally with Docker or Apple's `container`.
+This file is the deployment tool: installed it's the `vdt` command
+(Valhalla Deployment Tool); from a checkout it's ./valhalla.sh.
 
-  valhalla [options] <command> [args]      (installed)
-  ./valhalla.sh [options] <command> [args] (from a checkout)
+  vdt [options] <command> [args]      (installed)
 
 Container:
   run [tag]        Start the container. Creates it (pulling the image if it's
                    missing) if it doesn't exist; starts it if it's stopped.
   update [tag]     Pull the image and recreate the container with the same
                    settings (re-reading .env), then remove the old image
-                   to free disk space (--no-prune keeps it).
+                   to free disk space (--no-prune keeps it); also updates
+                   the vdt tool itself when GitHub has a newer one
+                   (--image-only / --tool-only update just one).
   build [tag]      Build the image from this checkout (version from
                    `git describe`) as valhalla-server-run:<tag> (default
                    local), then recreate the container from it and remove
@@ -543,7 +547,7 @@ Inspect:
 Database (reset on every start unless persistence is on, see --persist):
   psql             Open psql on the database inside the container.
   dump [file]      Save the database (default
-                   ~/.local/share/valhalla/dumps/<name>-<time>.sql).
+                   ~/.local/share/vdt/dumps/<name>-<time>.sql).
   restore <file>   Load a dump into the running container, then restart the
                    server process so it starts from the restored data.
 Other:
@@ -552,20 +556,21 @@ Other:
                    Run test_api.sh (api, default) and/or
                    schemathesis_test.sh (fuzz) against the container.
   secret           Generate a new random TOKEN_SECRET and save it where it's
-                   read from (normally ~/.local/share/valhalla/config;
+                   read from (normally ~/.local/share/vdt/config;
                    asks before replacing one, which logs everyone out).
   version          Show the tool's version.
   completion [zsh|bash]
                    Print the shell completion script.
   help             Show this help.
 Tool (both run install.sh):
-  install [ref]    Install or update the `valhalla` command (~/.local/bin,
-                   files in ~/.local/share/valhalla; an installed copy
-                   updates itself in place). Downloads first; only then
+  install [ref]    Install or update the `vdt` command (~/.local/bin,
+                   files in ~/.local/share/vdt; an installed copy
+                   updates itself in place — `update` does this too).
+                   Downloads first; only then
                    removes the current copy and installs, so a failed
                    download changes nothing. ref: branch, tag or commit
                    (default main).
-  uninstall        Remove the installed `valhalla` command and its lines in
+  uninstall        Remove the installed `vdt` command and its lines in
                    ~/.zshrc / ~/.bashrc (asks first; keeps config, dumps/).
                    Uses the installer copy kept in the install directory,
                    so it works offline; downloads it only if missing.
@@ -591,6 +596,9 @@ Options (before or after the command):
                        of this tool are removed, plus dangling layers (on
                        Docker only those from this repo; Apple container's
                        prune removes all dangling images).
+  --image-only         update: only the image and container, skip the tool
+  --tool-only          update: only the vdt tool, leave the container
+                       alone (needs no runtime or container)
   --token-secret S     JWT signing secret for a new container (wins over
                        the env file and config; visible in your shell
                        history, so prefer the config file)
@@ -606,19 +614,20 @@ Other settings (environment variables):
   VALHALLA_NO_COMPLETION=1  don't add shell completion to ~/.zshrc/~/.bashrc
   VALHALLA_PERSIST=1   same as --persist when a container is created (also
                        works in the env file)
-  VALHALLA_DATA_DIR    where dumps go (default ~/.local/share/valhalla;
+  VALHALLA_DATA_DIR    where dumps go (default ~/.local/share/vdt;
                        dumps in its dumps/ folder)
   VALHALLA_WAIT        seconds to wait for the server to answer (default 60)
   VALHALLA_NO_UPDATE_CHECK=1  don't check for or show updates
   VALHALLA_UPDATE_INTERVAL  seconds between update checks (default 21600)
   VALHALLA_NERD=0|1    use Nerd Font icons (default: if one is installed)
-  VALHALLA_FANCY       help style: 0 plain, 1 colors, 2 + unicode, 3 + emoji
-                       (default: what the terminal supports; NO_COLOR=1
-                       also gives plain)
+  VALHALLA_FANCY       output style: 0 plain, 1 colors, 2 + unicode,
+                       3 + emoji (default: what the terminal supports;
+                       NO_COLOR=1 also gives plain). Applies to every
+                       message, report and help screen.
 
 Persistence: the bundled database starts from init.sql on every container
 start. With persistence on, it's kept in
-~/.local/share/valhalla/dumps/<name>-persist.sql (mounted at /persist):
+~/.local/share/vdt/dumps/<name>-persist.sql (mounted at /persist):
 the image's entrypoint loads it at start instead of init.sql and saves it
 when the container stops, also when that happens outside this tool (Docker
 Desktop restart, reboot). This tool also saves it before stop, restart,
@@ -642,14 +651,14 @@ for build) and lists every missing one with how to install it.
 
 Shell completion: on first use the script adds one line to ~/.zshrc and/or
 ~/.bashrc (whichever exist) to enable tab completion; open a new terminal to
-use it. Remove the line marked "valhalla completion" to undo.
+use it. Remove the line marked "vdt completion" to undo.
 
 Server variables: every KEY=VALUE in the env file is passed to the
 container through a private env file, so values don't show up in the
 process list (comments, including " # ..." after a value, and blank lines
 skipped; spaces around "=" and surrounding quotes removed). The env file is
 the first of: .env in the current directory, .env next to this script,
-~/.local/share/valhalla/config. The installer creates that file with defaults
+~/.local/share/vdt/config. The installer creates that file with defaults
 for a small local container: SERVER_THREADS=2, DB_MAX_CONN=2, and raised
 MAX_REQUESTS/MAX_FPS so the API docs' Benchmark and Test console panels
 don't get your IP rate-limited. Edit it freely; it's kept on update.
@@ -659,11 +668,11 @@ the shell win over the env file for one run (e.g. SERVER_THREADS=4
 uses its own defaults (in brackets below).
 
 TOKEN_SECRET (signs the login tokens) is never generated per start. The
-installer generates one into ~/.local/share/valhalla/config. A container
+installer generates one into ~/.local/share/vdt/config. A container
 gets the first of: --token-secret, TOKEN_SECRET in the shell, the env file
-in use, ~/.local/share/valhalla/config (also when a .env is in use), the
+in use, ~/.local/share/vdt/config (also when a .env is in use), the
 replaced container's secret; otherwise one is generated once and saved to
-config. `valhalla env` shows which one is used.
+config. `vdt env` shows which one is used.
 SERVER_PORT from the env file is the
 port published inside the container (default 8080). DB_HOST and DB_SSL are
 always overridden by the image, which runs its own Postgres.
@@ -716,77 +725,77 @@ All configuration is supplied through environment variables; defaults live in `s
 
 ### Server
 
-| Variable             | Default          | Description |
-|----------------------|------------------|-------------|
-| `SERVER_HOST`        | `0.0.0.0`        | Bind address |
-| `SERVER_PORT`        | `8080`           | Listen port |
-| `SERVER_THREADS`     | `4`              | Worker thread count |
-| `SERVER_UPLOAD_DIR`  | `./uploads/`     | File upload directory |
-| `SERVER_NAME`        | `ProjectValhalla` | Name shown in the startup banner |
-| `SERVER_VERSION`     | `1.0.0`          | Version string shown in the startup banner |
-| `SERVER_DESCRIPTION` | `ProjectValhalla API` | Description shown in the startup banner |
+| Variable             | Default               | Description                                |
+| -------------------- | --------------------- | ------------------------------------------ |
+| `SERVER_HOST`        | `0.0.0.0`             | Bind address                               |
+| `SERVER_PORT`        | `8080`                | Listen port                                |
+| `SERVER_THREADS`     | `4`                   | Worker thread count                        |
+| `SERVER_UPLOAD_DIR`  | `./uploads/`          | File upload directory                      |
+| `SERVER_NAME`        | `ProjectValhalla`     | Name shown in the startup banner           |
+| `SERVER_VERSION`     | `1.0.0`               | Version string shown in the startup banner |
+| `SERVER_DESCRIPTION` | `ProjectValhalla API` | Description shown in the startup banner    |
 
 ### Logging
 
-| Variable                | Default      | Description |
-|-------------------------|--------------|-------------|
+| Variable                | Default      | Description                                                              |
+| ----------------------- | ------------ | ------------------------------------------------------------------------ |
 | `SERVER_DEBUG_LEVEL`    | `1`          | Minimum level: `0` debug, `1` info, `2` warning, `3` error, `4` critical |
-| `SERVER_LOG_TO_CONSOLE` | `true`       | Log to stdout |
-| `SERVER_LOG_TO_FILE`    | `true`       | Log to a file |
-| `SERVER_LOG_DIR`        | `./logs/`    | Log directory |
-| `SERVER_LOG_FILE`       | `server.log` | Log file name |
+| `SERVER_LOG_TO_CONSOLE` | `true`       | Log to stdout                                                            |
+| `SERVER_LOG_TO_FILE`    | `true`       | Log to a file                                                            |
+| `SERVER_LOG_DIR`        | `./logs/`    | Log directory                                                            |
+| `SERVER_LOG_FILE`       | `server.log` | Log file name                                                            |
 
 ### Database (PostgreSQL)
 
-| Variable       | Default        | Description |
-|----------------|----------------|-------------|
-| `DB_HOST`      | `0.0.0.0`      | Database host. The default only works when PostgreSQL runs on the same machine; set it explicitly (e.g. `127.0.0.1`) |
-| `DB_PORT`      | `5432`         | Database port |
-| `DB_NAME`      | `postgres`     | Database name |
-| `DB_USER`      | `postgres`     | Database user |
-| `DB_PASS`      | `postgres`     | Database password |
-| `DB_SSL`       | `false`        | Enable SSL |
-| `DB_MAX_CONN`  | `10`           | Max pooled connections |
+| Variable      | Default    | Description                                                                                                          |
+| ------------- | ---------- | -------------------------------------------------------------------------------------------------------------------- |
+| `DB_HOST`     | `0.0.0.0`  | Database host. The default only works when PostgreSQL runs on the same machine; set it explicitly (e.g. `127.0.0.1`) |
+| `DB_PORT`     | `5432`     | Database port                                                                                                        |
+| `DB_NAME`     | `postgres` | Database name                                                                                                        |
+| `DB_USER`     | `postgres` | Database user                                                                                                        |
+| `DB_PASS`     | `postgres` | Database password                                                                                                    |
+| `DB_SSL`      | `false`    | Enable SSL                                                                                                           |
+| `DB_MAX_CONN` | `10`       | Max pooled connections                                                                                               |
 
 ### Authentication (JWT)
 
-| Variable        | Default                              | Description |
-|-----------------|--------------------------------------|-------------|
-| `TOKEN_SECRET`  | *(insecure dev default)*             | **Must** be overridden in production |
-| `TOKEN_VALIDITY`| `43200`                              | Token lifetime in minutes (30 days) |
-| `TOKEN_ISSUER`  | `ProjectValhalla`                    | JWT issuer claim |
-| `TOKEN_TYPE`    | `JWS`                                | JWT type |
+| Variable         | Default                  | Description                          |
+| ---------------- | ------------------------ | ------------------------------------ |
+| `TOKEN_SECRET`   | _(insecure dev default)_ | **Must** be overridden in production |
+| `TOKEN_VALIDITY` | `43200`                  | Token lifetime in minutes (30 days)  |
+| `TOKEN_ISSUER`   | `ProjectValhalla`        | JWT issuer claim                     |
+| `TOKEN_TYPE`     | `JWS`                    | JWT type                             |
 
 ### DoS detector / rate limiting
 
-| Variable        | Default | Description |
-|-----------------|---------|-------------|
-| `MAX_REQUESTS`  | `10000` | Max repeat-count for one fingerprint before the IP is **banned** |
-| `PERIOD`        | `30`    | Window length (seconds) |
-| `MAX_FPS`       | `100`   | Max distinct fingerprints per IP before the IP is **rate-limited** |
-| `RL_DURATION`   | `30`    | Rate-limit duration (seconds) |
-| `BAN_DURATION`  | `3600`  | Ban duration (seconds) |
-| `CLN_FRQ`       | `30`    | Cleanup frequency (seconds) |
-| `WHITELIST`     | *(empty)* | IPs exempt from rate limiting and bans (comma-separated patterns, see below) |
-| `BLACKLIST`     | *(empty)* | IPs always rejected (comma-separated patterns, see below) |
+| Variable       | Default   | Description                                                                  |
+| -------------- | --------- | ---------------------------------------------------------------------------- |
+| `MAX_REQUESTS` | `10000`   | Max repeat-count for one fingerprint before the IP is **banned**             |
+| `PERIOD`       | `30`      | Window length (seconds)                                                      |
+| `MAX_FPS`      | `100`     | Max distinct fingerprints per IP before the IP is **rate-limited**           |
+| `RL_DURATION`  | `30`      | Rate-limit duration (seconds)                                                |
+| `BAN_DURATION` | `3600`    | Ban duration (seconds)                                                       |
+| `CLN_FRQ`      | `30`      | Cleanup frequency (seconds)                                                  |
+| `WHITELIST`    | _(empty)_ | IPs exempt from rate limiting and bans (comma-separated patterns, see below) |
+| `BLACKLIST`    | _(empty)_ | IPs always rejected (comma-separated patterns, see below)                    |
 
 `WHITELIST` and `BLACKLIST` entries are **regular expressions**, matched anywhere in the client IP. A `.` matches any character, and an unanchored entry matches as a substring: `10.0.0.1` also matches `10.0.0.123`. For exact matches, escape the dots and anchor the entry, e.g. `WHITELIST='^127\.0\.0\.1$,^192\.168\.1\.[0-9]+$'`.
 
 ### Frontend & email sender
 
-| Variable                  | Default              | Description |
-|---------------------------|----------------------|-------------|
-| `FRONTEND_HOST`           | `http://172.20.0.5`  | Frontend base URL (used for invite links) |
-| `FRONTEND_PORT`           | `3000`               | Frontend port |
-| `FRONTEND_INVITE_PATH`    | `invite`             | Frontend path used in staff invite links |
-| `EMAIL_SENDER_HOST`       | `http://172.20.0.6`  | Email sender daemon host |
-| `EMAIL_SENDER_PORT`       | `5000`               | Email sender daemon port |
-| `EMAIL_SENDER_QUEUE_PATH` | `/enqueue`           | Email enqueue endpoint |
+| Variable                  | Default             | Description                               |
+| ------------------------- | ------------------- | ----------------------------------------- |
+| `FRONTEND_HOST`           | `http://172.20.0.5` | Frontend base URL (used for invite links) |
+| `FRONTEND_PORT`           | `3000`              | Frontend port                             |
+| `FRONTEND_INVITE_PATH`    | `invite`            | Frontend path used in staff invite links  |
+| `EMAIL_SENDER_HOST`       | `http://172.20.0.6` | Email sender daemon host                  |
+| `EMAIL_SENDER_PORT`       | `5000`              | Email sender daemon port                  |
+| `EMAIL_SENDER_QUEUE_PATH` | `/enqueue`          | Email enqueue endpoint                    |
 
 ### Testing
 
-| Variable              | Default | Description |
-|-----------------------|---------|-------------|
+| Variable              | Default | Description                                                     |
+| --------------------- | ------- | --------------------------------------------------------------- |
 | `VALHALLA_TEST_NO_DB` | `false` | Start without connecting to a database (used by the unit tests) |
 
 > ⚠️ The default `TOKEN_SECRET` and database credentials are for local development only. Always set strong values before deploying.
@@ -799,8 +808,8 @@ All endpoints live under the `/api/v2` prefix (for example `http://127.0.0.1:808
 
 The server ships its own API documentation, compiled into the binary:
 
-| URL | What it is |
-|-----|------------|
+| URL                               | What it is                                                                                                                                                                                                                                                                                                                                                                                 |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `http://<host>:<port>/api/v2/doc` | Swagger UI for every endpoint, plus an **API Guide** panel (permissions, data model, validation, errors, rate limiting, recipes, troubleshooting) and a **Test console** that runs all endpoints in order against the live server with dummy data, and a **Benchmark** panel (latency percentiles and requests/s per endpoint; writes are created with unique data and deleted afterwards) |
 
 With the defaults that is <http://127.0.0.1:8080/api/v2/doc>; the startup banner prints the exact URL. From the page you can also download the **OpenAPI 3** spec and a **Postman collection** (also kept in `docs/openapi.json` and `docs/valhalla.postman_collection.json`).
@@ -814,38 +823,38 @@ tools/docs/build.sh        # regenerates docs/api.html, openapi.json and the Pos
 
 To include real response samples in the docs, run `SAMPLES_OUT=api_tests/samples.jsonl ./test_api.sh` against a running server before `tools/docs/build.sh`.
 
-### Clients — `/clients/{clientType}/...`  (`clientType` ∈ `users`, `providers`)
+### Clients — `/clients/{clientType}/...` (`clientType` ∈ `users`, `providers`)
 
-| Method | Path                               | Auth | Description |
-|--------|------------------------------------|------|-------------|
-| POST   | `/clients/{clientType}/create`     | 🔓   | Register an account |
-| POST   | `/clients/{clientType}/login`      | 🔓   | Authenticate, receive a token |
-| POST   | `/clients/{clientType}/logout`     | 🔒   | Invalidate the session |
-| POST   | `/clients/{clientType}/suspend`    | 🔒   | Suspend an account |
-| POST   | `/clients/{clientType}/activate`   | 🔒   | Re-activate an account |
-| POST   | `/clients/{clientType}/read`       | 🔒   | Read account data |
-| PUT    | `/clients/{clientType}/update`     | 🔒   | Update an account |
-| DELETE | `/clients/{clientType}/delete`     | 🔒   | Delete an account |
-| POST   | `/clients/{clientType}/search`     | 🔒   | Search accounts |
-| GET    | `/clients/{clientType}/services`   | 🔒   | List the account's services |
+| Method | Path                             | Auth | Description                   |
+| ------ | -------------------------------- | ---- | ----------------------------- |
+| POST   | `/clients/{clientType}/create`   | 🔓   | Register an account           |
+| POST   | `/clients/{clientType}/login`    | 🔓   | Authenticate, receive a token |
+| POST   | `/clients/{clientType}/logout`   | 🔒   | Invalidate the session        |
+| POST   | `/clients/{clientType}/suspend`  | 🔒   | Suspend an account            |
+| POST   | `/clients/{clientType}/activate` | 🔒   | Re-activate an account        |
+| POST   | `/clients/{clientType}/read`     | 🔒   | Read account data             |
+| PUT    | `/clients/{clientType}/update`   | 🔒   | Update an account             |
+| DELETE | `/clients/{clientType}/delete`   | 🔒   | Delete an account             |
+| POST   | `/clients/{clientType}/search`   | 🔒   | Search accounts               |
+| GET    | `/clients/{clientType}/services` | 🔒   | List the account's services   |
 
-### Services — `/services/{serviceType}/...`  (`serviceType` ∈ `clinics`, `pharmacies`, `laboratories`, `radiologycenters`)
+### Services — `/services/{serviceType}/...` (`serviceType` ∈ `clinics`, `pharmacies`, `laboratories`, `radiologycenters`)
 
-| Method | Path                              | Auth | Description |
-|--------|-----------------------------------|------|-------------|
-| POST   | `/services/{serviceType}/create`  | 🔒   | Create a service |
-| POST   | `/services/{serviceType}/read`    | 🔒   | Read a service |
-| PUT    | `/services/{serviceType}/update`  | 🔒   | Update a service |
-| DELETE | `/services/{serviceType}/delete`  | 🔒   | Delete a service (owner only) |
-| POST   | `/services/{serviceType}/search`  | 🔒   | Search services |
+| Method | Path                             | Auth | Description                   |
+| ------ | -------------------------------- | ---- | ----------------------------- |
+| POST   | `/services/{serviceType}/create` | 🔒   | Create a service              |
+| POST   | `/services/{serviceType}/read`   | 🔒   | Read a service                |
+| PUT    | `/services/{serviceType}/update` | 🔒   | Update a service              |
+| DELETE | `/services/{serviceType}/delete` | 🔒   | Delete a service (owner only) |
+| POST   | `/services/{serviceType}/search` | 🔒   | Search services               |
 
 ### Staff — `/staff/services/{serviceType}/staff/...`
 
-| Method | Path                                          | Auth | Description |
-|--------|-----------------------------------------------|------|-------------|
-| POST   | `/staff/services/{serviceType}/staff/invite`  | 🔒   | Invite someone to the staff |
-| POST   | `/staff/services/{serviceType}/staff/add`     | 🔒   | Add a staff member |
-| POST   | `/staff/services/{serviceType}/staff/remove`  | 🔒   | Remove a staff member |
+| Method | Path                                         | Auth | Description                 |
+| ------ | -------------------------------------------- | ---- | --------------------------- |
+| POST   | `/staff/services/{serviceType}/staff/invite` | 🔒   | Invite someone to the staff |
+| POST   | `/staff/services/{serviceType}/staff/add`    | 🔒   | Add a staff member          |
+| POST   | `/staff/services/{serviceType}/staff/remove` | 🔒   | Remove a staff member       |
 
 These routes are registered with Drogon's `METHOD_ADD` (`src/api/v2/routes/staff.hpp`), which puts the controller path (`/api/v2/staff`) in front, hence the doubled `staff` segment. The interactive docs still show the shorter `/services/{serviceType}/staff/...` form, which does not match the server.
 
@@ -853,35 +862,35 @@ These routes are registered with Drogon's `METHOD_ADD` (`src/api/v2/routes/staff
 
 Each resource supports `create` (POST), `read` (POST), `update` (PUT) and `delete` (DELETE) under `/clinic/{resource}/`, all 🔒. Resources:
 
-| Resource        | Description |
-|-----------------|-------------|
+| Resource        | Description                                                                                |
+| --------------- | ------------------------------------------------------------------------------------------ |
 | `patients`      | Patient records (also `POST /clinic/patients/search` and `GET /clinic/patients/getvisits`) |
-| `health`        | A patient's health history |
-| `patientdrugs`  | A patient's drug list |
-| `reports`       | A patient's reports |
-| `visits`        | Visits |
-| `requests`      | Investigation requests for a visit |
-| `prescriptions` | Prescriptions for a visit |
-| `paidservices`  | Paid services for a visit |
+| `health`        | A patient's health history                                                                 |
+| `patientdrugs`  | A patient's drug list                                                                      |
+| `reports`       | A patient's reports                                                                        |
+| `visits`        | Visits                                                                                     |
+| `requests`      | Investigation requests for a visit                                                         |
+| `prescriptions` | Prescriptions for a visit                                                                  |
+| `paidservices`  | Paid services for a visit                                                                  |
 
 `delete` is not supported for `health`, `patientdrugs`, `reports`, `requests`, `prescriptions` and `paidservices`; they are removed with their parent record.
 
-### Appointments — `/appointments/{serviceType}/...`  (`serviceType` ∈ `clinics`, `pharmacies`, `laboratories`, `radiologycenters`)
+### Appointments — `/appointments/{serviceType}/...` (`serviceType` ∈ `clinics`, `pharmacies`, `laboratories`, `radiologycenters`)
 
-| Method | Path                                   | Auth | Description |
-|--------|----------------------------------------|------|-------------|
-| POST   | `/appointments/{serviceType}/create`   | 🔒   | Create an appointment |
-| POST   | `/appointments/{serviceType}/read`     | 🔒   | Read an appointment |
-| PUT    | `/appointments/{serviceType}/update`   | 🔒   | Update an appointment |
-| DELETE | `/appointments/{serviceType}/delete`   | 🔒   | Delete an appointment |
+| Method | Path                                 | Auth | Description           |
+| ------ | ------------------------------------ | ---- | --------------------- |
+| POST   | `/appointments/{serviceType}/create` | 🔒   | Create an appointment |
+| POST   | `/appointments/{serviceType}/read`   | 🔒   | Read an appointment   |
+| PUT    | `/appointments/{serviceType}/update` | 🔒   | Update an appointment |
+| DELETE | `/appointments/{serviceType}/delete` | 🔒   | Delete an appointment |
 
 The interactive docs currently only show the `clinics` variant.
 
 ### Misc
 
-| Method | Path     | Auth | Description |
-|--------|----------|------|-------------|
-| GET    | `/hello` | 🔓   | Health check |
+| Method | Path     | Auth | Description                                |
+| ------ | -------- | ---- | ------------------------------------------ |
+| GET    | `/hello` | 🔓   | Health check                               |
 | GET    | `/doc`   | 🔓   | Interactive API documentation (Swagger UI) |
 
 > Unknown routes return a JSON `404` (`"Endpoint not found."`). Rate-limit, ban and blacklist replies from the DoS filter are plain text.

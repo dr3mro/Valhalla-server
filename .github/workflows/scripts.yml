@@ -60,28 +60,28 @@ jobs:
           mkdir -p "$HOME"
           printf 'export KEEP_ME=1\n' >"$HOME/.bashrc"
           cp "$HOME/.bashrc" "$HOME/bashrc.orig"
-          D="$HOME/.local/share/valhalla"
+          D="$HOME/.local/share/vdt"
 
           sh install.sh
-          test -x "$D/valhalla" && test -x "$D/test_api" && test -x "$D/installer"
-          test "$(readlink "$HOME/.local/bin/valhalla")" = "$D/valhalla"
-          test "$(grep -c '>>> valhalla >>>' "$HOME/.bashrc")" = 1
-          "$HOME/.local/bin/valhalla" version
-          "$HOME/.local/bin/valhalla" help >/dev/null
+          test -x "$D/vdt" && test -x "$D/test_api" && test -x "$D/installer"
+          test "$(readlink "$HOME/.local/bin/vdt")" = "$D/vdt"
+          test "$(grep -c '>>> vdt >>>' "$HOME/.bashrc")" = 1
+          "$HOME/.local/bin/vdt" version
+          "$HOME/.local/bin/vdt" help >/dev/null
 
           # Bash completion loads and completes commands and options
-          bash -c 'eval "$("$1" completion bash)"; COMP_WORDS=(valhalla --pe); COMP_CWORD=1; _valhalla; [ "${COMPREPLY[*]}" = --persist ]' _ "$D/valhalla"
+          bash -c 'eval "$("$1" completion bash)"; COMP_WORDS=(vdt --pe); COMP_CWORD=1; _vdt; [ "${COMPREPLY[*]}" = --persist ]' _ "$D/vdt"
 
           # --replace keeps .env; a failed download removes nothing
           echo KEEP=1 >"$D/.env"
           sh install.sh --replace
           grep -q KEEP=1 "$D/.env"
           if VALHALLA_SOURCE=/nonexistent sh install.sh --replace; then exit 1; fi
-          test -x "$D/valhalla"
+          test -x "$D/vdt"
 
           # Uninstall restores the rc file and keeps .env
           sh "$D/installer" --uninstall
-          test ! -e "$HOME/.local/bin/valhalla"
+          test ! -e "$HOME/.local/bin/vdt"
           diff "$HOME/bashrc.orig" "$HOME/.bashrc"
           test -f "$D/.env"
 

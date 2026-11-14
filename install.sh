@@ -1,24 +1,24 @@
 #!/bin/sh
-# Install the Valhalla tool straight from the GitHub repo: the `valhalla`
-# command (valhalla.sh) as a link in ~/.local/bin, and its files (scripts
-# without the .sh extension, test payloads, a copy of this installer) in
-# ~/.local/share/valhalla. Adds ~/.local/bin to PATH if needed and tab
-# completion in ~/.zshrc and/or ~/.bashrc.
+# Install the Valhalla Deployment Tool (vdt) straight from the GitHub repo:
+# the `vdt` command (the repo's valhalla.sh) as a link in ~/.local/bin, and
+# its files (scripts without the .sh extension, test payloads, a copy of
+# this installer) in ~/.local/share/vdt. Adds ~/.local/bin to PATH if needed
+# and tab completion in ~/.zshrc and/or ~/.bashrc.
 #
 #   curl -fsSL https://raw.githubusercontent.com/dr3mro/Valhalla-server/main/install.sh | sh
 #
-# Re-run the same command, or `valhalla install`, to update to the latest version.
+# Re-run the same command, or `vdt install`, to update to the latest version.
 #
 # Options (after `sh -s --` when piping, e.g. `| sh -s -- --uninstall`):
 #   --ref REF       branch, tag or commit to install (default: main)
-#   --dir DIR       where the files go     (default: ~/.local/share/valhalla)
+#   --dir DIR       where the files go     (default: ~/.local/share/vdt)
 #   --bin-dir DIR   where the command goes (default: ~/.local/bin)
 #   --no-rc         don't touch ~/.zshrc / ~/.bashrc
 #   --uninstall     remove the tool and the rc lines (keeps config and dumps/);
-#                   same as `valhalla uninstall`
+#                   same as `vdt uninstall`
 #   --replace       download first, then remove the current copy (like
 #                   --uninstall) and install; nothing is removed if the
-#                   download fails. Used by `valhalla install`.
+#                   download fails. Used by `vdt install`.
 #   -h, --help      show this help
 #
 # Environment: VALHALLA_REF, VALHALLA_INSTALL_DIR, VALHALLA_BIN_DIR,
@@ -26,27 +26,25 @@
 # avoids GitHub's anonymous API rate limit), VALHALLA_SOURCE (install from a
 # local checkout instead of downloading; for testing).
 #
-# Installs: valhalla (valhalla.sh), test_api, schemathesis_test, installer
-# (a copy of this script, used by `valhalla uninstall`), api_tests/payloads/,
+# Installs: vdt (valhalla.sh), test_api, schemathesis_test, installer
+# (a copy of this script, used by `vdt uninstall`), api_tests/payloads/,
 # docs/openapi.json, and a default `config` (settings passed to the server)
 # if there isn't one. Your config and dumps/ in the install directory are never
-# touched. An install in the old location (~/.bin/valhalla) is moved here,
-# bringing its settings and dumps/ along.
+# touched.
 
 set -eu
 
 REPO="dr3mro/Valhalla-server"
 REF="${VALHALLA_REF:-main}"
-DEFAULT_DIR="$HOME/.local/share/valhalla"
+DEFAULT_DIR="$HOME/.local/share/vdt"
 DIR="${VALHALLA_INSTALL_DIR:-$DEFAULT_DIR}"
 BIN_DIR="${VALHALLA_BIN_DIR:-$HOME/.local/bin}"
-LEGACY_DIR="$HOME/.bin/valhalla"
 SOURCE="${VALHALLA_SOURCE:-}"
 EDIT_RC=1
 ACTION=install
 
-BEGIN_MARK="# >>> valhalla >>>"
-END_MARK="# <<< valhalla <<<"
+BEGIN_MARK="# >>> vdt >>>"
+END_MARK="# <<< vdt <<<"
 
 say() { printf '%s\n' "$*"; }
 die() { printf 'error: %s\n' "$*" >&2; exit 1; }
@@ -80,12 +78,9 @@ absolute() {
 DIR="$(absolute "$DIR")"
 BIN_DIR="$(absolute "$BIN_DIR")"
 
-# Older copies of `valhalla install` pass --dir with the old location.
-[ "$DIR" = "$LEGACY_DIR" ] && DIR="$DEFAULT_DIR"
-
-# Files managed by this installer (relative to DIR).
-# The .sh names are from earlier installs; they're removed on update.
-MANAGED="valhalla test_api schemathesis_test installer api_tests/payloads docs/openapi.json VERSION update-state update-state.lock deploy.sh test_api.sh schemathesis_test.sh"
+# Files managed by this installer (relative to DIR). The leftover .sh names
+# from earlier installs are removed on update.
+MANAGED="vdt test_api schemathesis_test installer api_tests/payloads docs/openapi.json VERSION update-state update-state.lock test_api.sh schemathesis_test.sh"
 
 # ── rc files ───────────────────────────────────────────────────────────────
 # rc_files: the rc files to manage: each of ~/.zshrc / ~/.bashrc that exists,
@@ -105,8 +100,7 @@ rc_files() {
   fi
 }
 
-# strip_rc FILE: removes our block and the line valhalla.sh adds on its own
-# (also under its old name, deploy.sh).
+# strip_rc FILE: removes our block (between BEGIN_MARK and END_MARK).
 strip_rc() {
   [ -f "$1" ] || return 0
   tmp="$(mktemp)"
@@ -114,8 +108,6 @@ strip_rc() {
     index($0, b) == 1 { skip = 1; next }
     skip && index($0, e) == 1 { skip = 0; next }
     skip { next }
-    /^# (deploy\.sh|valhalla) completion \(added by / { legacy = 1; next }
-    legacy { legacy = 0; next }
     /^[[:space:]]*$/ { blanks++; next }   # hold blank lines; drop them at EOF
     { while (blanks > 0) { print ""; blanks-- } print }' "$1" >"$tmp"
   cat "$tmp" >"$1" # keeps the file's permissions and any symlink
@@ -142,8 +134,8 @@ write_rc() {
   cat >>"$rc" <<EOF
 $BEGIN_MARK (added by install.sh; remove this block to undo)
 case ":\$PATH:" in *:$b:*) ;; *) export PATH=$b:"\$PATH" ;; esac
-# valhalla completion
-[ -x $d/valhalla ] && eval "\$($d/valhalla completion $sh_name)"
+# vdt completion
+[ -x $d/vdt ] && eval "\$($d/vdt completion $sh_name)"
 $END_MARK
 EOF
   say "Updated $rc"
@@ -202,12 +194,12 @@ copy_tree() {
 # container, unless there already is one (it's the user's file from then on).
 default_env() {
   cat <<'EOF'
-# Settings for the valhalla command (same format as a .env file): every
-# variable here is passed to the server container. `valhalla help` lists
+# Settings for the vdt command (same format as a .env file): every
+# variable here is passed to the server container. `vdt help` lists
 # them all with their defaults. Created by install.sh and kept on update and
-# uninstall, so edit freely. A .env in the directory you run valhalla from
+# uninstall, so edit freely. A .env in the directory you run vdt from
 # is used instead of this file.
-# Apply changes with: valhalla update
+# Apply changes with: vdt update
 
 # Small footprint for a local container (server defaults: 4 and 10)
 SERVER_THREADS = 2
@@ -253,22 +245,22 @@ write_default_env() {
 }
 
 # ── command link ───────────────────────────────────────────────────────────
-# link_command: BIN_DIR/valhalla -> DIR/valhalla (never replaces a real file).
+# link_command: BIN_DIR/vdt -> DIR/vdt (never replaces a real file).
 link_command() {
   mkdir -p "$BIN_DIR"
-  link="$BIN_DIR/valhalla"
+  link="$BIN_DIR/vdt"
   if [ -e "$link" ] && [ ! -L "$link" ]; then
-    say "warning: $link exists and isn't a link; left it alone. Run $DIR/valhalla directly."
+    say "warning: $link exists and isn't a link; left it alone. Run $DIR/vdt directly."
     return 0
   fi
-  ln -sfn "$DIR/valhalla" "$link"
-  say "Linked $link -> $DIR/valhalla"
+  ln -sfn "$DIR/vdt" "$link"
+  say "Linked $link -> $DIR/vdt"
 }
 
-# unlink_command: removes BIN_DIR/valhalla if it's our link.
+# unlink_command: removes BIN_DIR/vdt if it's our link.
 unlink_command() {
-  link="$BIN_DIR/valhalla"
-  if [ -L "$link" ] && [ "$(readlink "$link")" = "$DIR/valhalla" ]; then
+  link="$BIN_DIR/vdt"
+  if [ -L "$link" ] && [ "$(readlink "$link")" = "$DIR/vdt" ]; then
     rm -f "$link"
     say "Removed $link"
   fi
@@ -302,26 +294,6 @@ remove_files() {
   fi
 }
 
-# migrate_legacy: moves an install from ~/.bin/valhalla to DIR, bringing
-# its settings (.env, which becomes config) and dumps/ along, unless DIR
-# already has its own.
-migrate_legacy() {
-  [ "$DIR" != "$LEGACY_DIR" ] || return 0
-  [ -f "$LEGACY_DIR/VERSION" ] || [ -e "$LEGACY_DIR/valhalla" ] || return 0
-  say "Moving the old install from $LEGACY_DIR to $DIR"
-  mkdir -p "$DIR"
-  if [ -f "$LEGACY_DIR/.env" ] && [ ! -e "$DIR/config" ] && [ ! -e "$DIR/.env" ]; then
-    mv "$LEGACY_DIR/.env" "$DIR/config"
-    say "  moved .env (now config)"
-  fi
-  if [ -e "$LEGACY_DIR/dumps" ] && [ ! -e "$DIR/dumps" ]; then
-    mv "$LEGACY_DIR/dumps" "$DIR/dumps"
-    say "  moved dumps"
-  fi
-  remove_files "$LEGACY_DIR"
-  rmdir "$HOME/.bin" 2>/dev/null || true
-}
-
 # ── actions ────────────────────────────────────────────────────────────────
 # stage_files: downloads (or copies) everything into a temp dir first.
 stage_files() {
@@ -345,19 +317,17 @@ do_replace() {
 }
 
 place_files() {
-  migrate_legacy
-
   # Replace the managed files only; config, dumps/ and anything else stay.
   mkdir -p "$DIR"
   for f in $MANAGED; do rm -rf "${DIR:?}/$f"; done
-  # Installed without the .sh extension.
-  mv "$stage/valhalla.sh" "$stage/valhalla"
+  # Installed without the .sh extension, under the tool's name.
+  mv "$stage/valhalla.sh" "$stage/vdt"
   mv "$stage/test_api.sh" "$stage/test_api"
   mv "$stage/schemathesis_test.sh" "$stage/schemathesis_test"
   mv "$stage/install.sh" "$stage/installer"
   (cd "$stage" && tar -cf - .) | (cd "$DIR" && tar -xf -)
   # Downloads arrive as plain files (curl doesn't keep the executable bit).
-  chmod 755 "$DIR/valhalla" "$DIR/test_api" "$DIR/schemathesis_test" "$DIR/installer"
+  chmod 755 "$DIR/vdt" "$DIR/test_api" "$DIR/schemathesis_test" "$DIR/installer"
   printf '%s\n' "$VERSION_TEXT" >"$DIR/VERSION"
   say "Installed into $DIR"
   write_default_env
@@ -369,16 +339,16 @@ place_files() {
 
   say ""
   say "Done. Open a new terminal (or: source ~/.$(basename "${SHELL:-zsh}")rc), then:"
-  say "  valhalla help"
-  say "  valhalla run"
+  say "  vdt help"
+  say "  vdt run"
   say "Settings: $DIR/config (a .env in the current directory wins)"
-  say "Update later with: valhalla install    Remove with: valhalla uninstall"
+  say "Update later with: vdt install    Remove with: vdt uninstall"
 }
 
 do_uninstall() {
   if [ "$EDIT_RC" = 1 ]; then
     for rc in "$HOME/.zshrc" "$HOME/.bashrc" "$HOME/.bash_profile"; do
-      if [ -f "$rc" ] && grep -qF -e "$BEGIN_MARK" -e "# deploy.sh completion (added by" -e "# valhalla completion (added by" "$rc"; then
+      if [ -f "$rc" ] && grep -qF -e "$BEGIN_MARK" "$rc"; then
         strip_rc "$rc"
         say "Cleaned $rc"
       fi
@@ -389,11 +359,6 @@ do_uninstall() {
     remove_files "$DIR"
   else
     say "Nothing installed in $DIR"
-  fi
-  # Also clean up an install in the old location.
-  if [ "$DIR" != "$LEGACY_DIR" ] && { [ -f "$LEGACY_DIR/VERSION" ] || [ -e "$LEGACY_DIR/valhalla" ]; }; then
-    remove_files "$LEGACY_DIR"
-    rmdir "$HOME/.bin" 2>/dev/null || true
   fi
   return 0
 }

@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Run the Valhalla server image locally with Docker or Apple's `container`.
+# This file is the deployment tool: installed it's the `vdt` command
+# (Valhalla Deployment Tool); from a checkout it's ./valhalla.sh.
 #
-#   valhalla [options] <command> [args]      (installed)
-#   ./valhalla.sh [options] <command> [args] (from a checkout)
+#   @USAGE@
 #
 # Container:
 #   run [tag]        Start the container. Creates it (pulling the image if it's
@@ -10,7 +11,7 @@
 #   update [tag]     Pull the image and recreate the container with the same
 #                    settings (re-reading .env), then remove the old image
 #                    to free disk space (--no-prune keeps it); also updates
-#                    the valhalla tool itself when GitHub has a newer one
+#                    the vdt tool itself when GitHub has a newer one
 #                    (--image-only / --tool-only update just one).
 #   build [tag]      Build the image from this checkout (version from
 #                    `git describe`) as valhalla-server-run:<tag> (default
@@ -35,7 +36,7 @@
 # Database (reset on every start unless persistence is on, see --persist):
 #   psql             Open psql on the database inside the container.
 #   dump [file]      Save the database (default
-#                    ~/.local/share/valhalla/dumps/<name>-<time>.sql).
+#                    ~/.local/share/vdt/dumps/<name>-<time>.sql).
 #   restore <file>   Load a dump into the running container, then restart the
 #                    server process so it starts from the restored data.
 # Other:
@@ -44,21 +45,21 @@
 #                    Run test_api.sh (api, default) and/or
 #                    schemathesis_test.sh (fuzz) against the container.
 #   secret           Generate a new random TOKEN_SECRET and save it where it's
-#                    read from (normally ~/.local/share/valhalla/config;
+#                    read from (normally ~/.local/share/vdt/config;
 #                    asks before replacing one, which logs everyone out).
 #   version          Show the tool's version.
 #   completion [zsh|bash]
 #                    Print the shell completion script.
 #   help             Show this help.
 # Tool (both run install.sh):
-#   install [ref]    Install or update the `valhalla` command (~/.local/bin,
-#                    files in ~/.local/share/valhalla; an installed copy
+#   install [ref]    Install or update the `vdt` command (~/.local/bin,
+#                    files in ~/.local/share/vdt; an installed copy
 #                    updates itself in place — `update` does this too).
 #                    Downloads first; only then
 #                    removes the current copy and installs, so a failed
 #                    download changes nothing. ref: branch, tag or commit
 #                    (default main).
-#   uninstall        Remove the installed `valhalla` command and its lines in
+#   uninstall        Remove the installed `vdt` command and its lines in
 #                    ~/.zshrc / ~/.bashrc (asks first; keeps config, dumps/).
 #                    Uses the installer copy kept in the install directory,
 #                    so it works offline; downloads it only if missing.
@@ -85,7 +86,7 @@
 #                        Docker only those from this repo; Apple container's
 #                        prune removes all dangling images).
 #   --image-only         update: only the image and container, skip the tool
-#   --tool-only          update: only the valhalla tool, leave the container
+#   --tool-only          update: only the vdt tool, leave the container
 #                        alone (needs no runtime or container)
 #   --token-secret S     JWT signing secret for a new container (wins over
 #                        the env file and config; visible in your shell
@@ -102,7 +103,7 @@
 #   VALHALLA_NO_COMPLETION=1  don't add shell completion to ~/.zshrc/~/.bashrc
 #   VALHALLA_PERSIST=1   same as --persist when a container is created (also
 #                        works in the env file)
-#   VALHALLA_DATA_DIR    where dumps go (default ~/.local/share/valhalla;
+#   VALHALLA_DATA_DIR    where dumps go (default ~/.local/share/vdt;
 #                        dumps in its dumps/ folder)
 #   VALHALLA_WAIT        seconds to wait for the server to answer (default 60)
 #   VALHALLA_NO_UPDATE_CHECK=1  don't check for or show updates
@@ -115,7 +116,7 @@
 #
 # Persistence: the bundled database starts from init.sql on every container
 # start. With persistence on, it's kept in
-# ~/.local/share/valhalla/dumps/<name>-persist.sql (mounted at /persist):
+# ~/.local/share/vdt/dumps/<name>-persist.sql (mounted at /persist):
 # the image's entrypoint loads it at start instead of init.sql and saves it
 # when the container stops, also when that happens outside this tool (Docker
 # Desktop restart, reboot). This tool also saves it before stop, restart,
@@ -139,14 +140,14 @@
 #
 # Shell completion: on first use the script adds one line to ~/.zshrc and/or
 # ~/.bashrc (whichever exist) to enable tab completion; open a new terminal to
-# use it. Remove the line marked "valhalla completion" to undo.
+# use it. Remove the line marked "vdt completion" to undo.
 #
 # Server variables: every KEY=VALUE in the env file is passed to the
 # container through a private env file, so values don't show up in the
 # process list (comments, including " # ..." after a value, and blank lines
 # skipped; spaces around "=" and surrounding quotes removed). The env file is
 # the first of: .env in the current directory, .env next to this script,
-# ~/.local/share/valhalla/config. The installer creates that file with defaults
+# ~/.local/share/vdt/config. The installer creates that file with defaults
 # for a small local container: SERVER_THREADS=2, DB_MAX_CONN=2, and raised
 # MAX_REQUESTS/MAX_FPS so the API docs' Benchmark and Test console panels
 # don't get your IP rate-limited. Edit it freely; it's kept on update.
@@ -156,11 +157,11 @@
 # uses its own defaults (in brackets below).
 #
 # TOKEN_SECRET (signs the login tokens) is never generated per start. The
-# installer generates one into ~/.local/share/valhalla/config. A container
+# installer generates one into ~/.local/share/vdt/config. A container
 # gets the first of: --token-secret, TOKEN_SECRET in the shell, the env file
-# in use, ~/.local/share/valhalla/config (also when a .env is in use), the
+# in use, ~/.local/share/vdt/config (also when a .env is in use), the
 # replaced container's secret; otherwise one is generated once and saved to
-# config. `valhalla env` shows which one is used.
+# config. `vdt env` shows which one is used.
 # SERVER_PORT from the env file is the
 # port published inside the container (default 8080). DB_HOST and DB_SSL are
 # always overridden by the image, which runs its own Postgres.
@@ -216,9 +217,14 @@ while [[ -L $SCRIPT ]]; do
 done
 SCRIPT="$(cd "$(dirname "$SCRIPT")" && pwd)/$(basename "$SCRIPT")"
 ROOT="$(dirname "$SCRIPT")"
-# How the user called it (valhalla.sh, ./valhalla.sh, valhalla), for messages.
+# How the user called it (vdt, valhalla.sh, ./valhalla.sh), for messages.
 PROG="$0"
 [[ $PROG == */* && $(command -v "$(basename "$PROG")" 2>/dev/null) == "$PROG" ]] && PROG="$(basename "$PROG")"
+# Called by path (e.g. the rc file's eval of the install directory): show the
+# command's own name.
+case "$(basename "$PROG")" in
+  vdt | valhalla.sh) PROG="$(basename "$PROG")" ;;
+esac
 
 IMAGE_REPO="${VALHALLA_IMAGE:-docker.io/dr3mro/valhalla-server-run}"
 LOCAL_REPO="valhalla-server-run"
@@ -227,14 +233,25 @@ PORT="${VALHALLA_PORT:-8080}"
 PORT_EXPLICIT="${VALHALLA_PORT:+1}" # set: --port / VALHALLA_PORT wins over the container's port
 CPUS="${VALHALLA_CPUS:-4}"
 MEMORY_GB="${VALHALLA_MEMORY:-1}"
+# One place for dumps, whether this runs from a checkout or the installed
+# copy.
+DATA_DIR="${VALHALLA_DATA_DIR:-$HOME/.local/share/vdt}"
+DUMP_DIR="$DATA_DIR/dumps"
+WAIT_SECONDS="${VALHALLA_WAIT:-60}"
+STOP_TIMEOUT=30 # seconds the entrypoint gets to save the database on stop
+ENTRYPOINT_MARK="valhalla-entrypoint: persist-v1"
+INSPECT_CACHE="${TMPDIR:-/tmp}/valhalla-inspect.$$"
+ENV_TMP=""
+trap 'rm -f "$INSPECT_CACHE" ${ENV_TMP:+"$ENV_TMP"}' EXIT
+
 # Env file: --env-file / VALHALLA_ENV_FILE, else the first of: .env in the
-# current directory, .env next to this script, ~/.local/share/valhalla/config
-# (the installer creates that one with small defaults).
+# current directory, .env next to this script, $DATA_DIR/config (the
+# installer creates that one with small defaults).
 if [[ -n ${VALHALLA_ENV_FILE:-} ]]; then
   ENV_FILE="$VALHALLA_ENV_FILE"
 else
   ENV_FILE=""
-  for f in "$PWD/.env" "$ROOT/.env" "${VALHALLA_DATA_DIR:-$HOME/.local/share/valhalla}/config"; do
+  for f in "$PWD/.env" "$ROOT/.env" "$DATA_DIR/config"; do
     [[ -f $f ]] && { ENV_FILE="$f"; break; }
   done
   [[ -n $ENV_FILE ]] || ENV_FILE="$PWD/.env"
@@ -247,15 +264,6 @@ CLI_TOKEN_SECRET="" # --token-secret
 NO_PRUNE="${VALHALLA_NO_PRUNE:-0}" # --no-prune: keep old images after update/build
 UPDATE_SCOPE=""   # --image-only / --tool-only: update just one side of update
 OLD_PERSIST="" # VALHALLA_PERSIST of the container being replaced
-# One place for dumps, whether this runs from a checkout or the installed copy.
-DATA_DIR="${VALHALLA_DATA_DIR:-$HOME/.local/share/valhalla}"
-DUMP_DIR="$DATA_DIR/dumps"
-WAIT_SECONDS="${VALHALLA_WAIT:-60}"
-STOP_TIMEOUT=30 # seconds the entrypoint gets to save the database on stop
-ENTRYPOINT_MARK="valhalla-entrypoint: persist-v1"
-INSPECT_CACHE="${TMPDIR:-/tmp}/valhalla-inspect.$$"
-ENV_TMP=""
-trap 'rm -f "$INSPECT_CACHE" ${ENV_TMP:+"$ENV_TMP"}' EXIT
 
 # Commands: name|short description (single source for help-free tools such
 # as shell completion).
@@ -280,8 +288,8 @@ COMMANDS=(
   "shell|shell inside the container"
   "test|run the API tests against the container"
   "secret|write a random TOKEN_SECRET to the env file"
-  "install|install or update the valhalla command from GitHub"
-  "uninstall|remove the installed valhalla command"
+  "install|install or update the vdt command from GitHub"
+  "uninstall|remove the installed vdt command"
   "version|show the tool version"
   "completion|print the shell completion script"
   "help|show help"
@@ -309,7 +317,23 @@ OPTIONS=(
 ENV_KEYS=()
 ENV_VALS=()
 
-help_text() { sed -n '2,/^$/s/^# \{0,1\}//p' "$SCRIPT"; }
+# usage_line: the usage line for the help, named for how the script was
+# invoked (vdt when installed, valhalla.sh / ./valhalla.sh from a checkout).
+usage_line() {
+  if [[ -f $ROOT/VERSION ]]; then
+    printf '%s [options] <command> [args]      (installed)' "$PROG"
+  else
+    printf '%s [options] <command> [args] (from a checkout)' "$PROG"
+  fi
+}
+
+# help_text: the help from this script's header, with the usage line filled
+# in for the current invocation.
+help_text() {
+  local u
+  u="$(usage_line | sed -e 's/[&\\]/\\&/g')"
+  sed -n '2,/^$/s/^# \{0,1\}//p' "$SCRIPT" | sed "s|@USAGE@|$u|"
+}
 
 # fancy_level: how much decoration the terminal can show.
 #   0 plain (not a terminal, NO_COLOR, TERM=dumb), 1 colors,
@@ -491,7 +515,7 @@ say_info() { printf '%s\n' "${S_INFO}${S_i_info:+$S_i_info }${S_R}$*"; }
 # help_cols: the name-column width that aligns every list in the help
 # (longest of the command heads, option heads and env var names, clamped).
 help_cols() { help_text | awk '
-    /^  (valhalla|\.\/valhalla\.sh) / { next } # usage lines, not list entries
+    /^  .*\[options\] <command> / { next } # usage line, not a list entry
     /^  [a-z][a-z-]*( |$)/ || /^  -/ {
       line = $0; sub(/^  /, "", line)
       if (match(line, /  +/)) head = substr(line, 1, RSTART - 1); else head = line
@@ -596,8 +620,8 @@ render_help() {
       }
       next
     }
-    # usage lines
-    /^  (valhalla|\.\/valhalla\.sh) / {
+    # usage line: "  vdt [options] <command> [args]      (installed)"
+    /^  .*\[options\] <command> / {
       line = $0
       sub(/^  /, "", line)
       split(line, w, " ")
@@ -754,10 +778,11 @@ command_names() {
 }
 
 completion_zsh() {
-  local entry
+  local entry name
+  name="$(basename "$PROG")"
+  printf '# zsh completion for %s (generated by: %s completion zsh)\n' "$PROG" "$PROG"
   cat <<'EOF'
-# zsh completion for valhalla.sh (generated by: valhalla.sh completion zsh)
-_valhalla() {
+_vdt() {
   local -a cmds
   cmds=(
 EOF
@@ -805,7 +830,7 @@ EOF
   local curcontext=$curcontext state line
   _arguments -C -s $opts '1:command:->cmd' '*::arg:->args'
   case $state in
-    cmd) _describe -t commands 'valhalla command' cmds ;;
+    cmd) _describe -t commands 'vdt command' cmds ;;
     args)
       # Options are accepted after the command too.
       case ${words[CURRENT-1]} in
@@ -835,13 +860,15 @@ EOF
 }
 EOF
   echo '(( $+functions[compdef] )) || { autoload -Uz compinit && compinit -i; }'
-  printf 'compdef _valhalla valhalla valhalla.sh ./valhalla.sh %q\n' "$SCRIPT"
+  printf 'compdef _vdt %s %q\n' "$name" "$SCRIPT"
 }
 
 completion_bash() {
+  local entry name
+  name="$(basename "$PROG")"
+  printf '# bash completion for %s (generated by: %s completion bash)\n' "$PROG" "$PROG"
   cat <<'EOF'
-# bash completion for valhalla.sh (generated by: valhalla.sh completion bash)
-_valhalla() {
+_vdt() {
   local cur prev words cword
   cur="${COMP_WORDS[COMP_CWORD]}"
   prev="${COMP_WORDS[COMP_CWORD-1]}"
@@ -878,24 +905,17 @@ EOF
   esac
 }
 EOF
-  printf 'complete -F _valhalla valhalla valhalla.sh ./valhalla.sh %q\n' "$SCRIPT"
+  printf 'complete -F _vdt %s %q\n' "$name" "$SCRIPT"
 }
 
 # install_completion: once, add an eval line to ~/.zshrc and ~/.bashrc
 # (whichever exist). The marker makes it idempotent.
 install_completion() {
   [[ ${VALHALLA_NO_COMPLETION:-0} == 1 ]] && return 0
-  local shell rc tmp marker="# valhalla completion"
+  local shell rc tmp marker="# vdt completion"
   for shell in zsh bash; do
     rc="$HOME/.${shell}rc"
     [[ -f $rc ]] || continue
-    # Drop the line this tool added under its old name (deploy.sh).
-    if grep -qF "# deploy.sh completion (added by" "$rc" 2>/dev/null; then
-      tmp="$(mktemp)"
-      awk '/^# deploy\.sh completion \(added by / { skip = 1; next } skip { skip = 0; next } { print }' "$rc" >"$tmp" &&
-        cat "$tmp" >"$rc"
-      rm -f "$tmp"
-    fi
     grep -qF "$marker" "$rc" 2>/dev/null && continue
     # shellcheck disable=SC2016  # $(...) is meant to run in the rc file
     if printf '\n%s (added by %s; remove to undo)\n[ -x %q ] && eval "$(%q completion %s)"\n' \
@@ -1416,7 +1436,7 @@ save_secret_to_config() {
 }
 
 # resolve_token_secret SAVE [OLD]: sets TOKEN_VALUE and TOKEN_SOURCE. Order: --token-secret, TOKEN_SECRET in the shell, the env file in
-# use, ~/.local/share/valhalla/config, the old container's (saved to config),
+# use, the install directory's config, the old container's (saved to config),
 # else a new one (saved to config). With SAVE=0 nothing is written, and a
 # secret that would be generated stays empty.
 resolve_token_secret() {
@@ -1895,7 +1915,7 @@ show_update_notice() {
   fi
   if [[ $tool == 1 ]]; then
     inst="$(state_get tool_installed | cut -c1-7)"; lat="$(state_get tool_latest | cut -c1-7)"
-    rows+=("tool|valhalla tool|${inst:-?}|${lat:-newer}")
+    rows+=("tool|vdt tool|${inst:-?}|${lat:-newer}")
   fi
 
   # Column widths (text only; icons are added with their own width).
@@ -1962,7 +1982,7 @@ status_updates() {
       show_update_notice
     else
       [[ $image == 1 ]] && echo "  Docker image $(state_get image_version) -> $(state_get image_latest_version) ($PROG update)"
-      [[ $tool == 1 ]] && echo "  valhalla tool $(state_get tool_installed | cut -c1-7) -> $(state_get tool_latest | cut -c1-7) ($PROG update, or install for just the tool)"
+      [[ $tool == 1 ]] && echo "  vdt tool $(state_get tool_installed | cut -c1-7) -> $(state_get tool_latest | cut -c1-7) ($PROG update, or install for just the tool)"
     fi
   else
     local what=""
@@ -2068,14 +2088,14 @@ update_tool_step() {
   latest="$(latest_tool_sha)"
   [[ $latest =~ ^[0-9a-f]{40}$ ]] || latest=""
   if [[ -z $latest ]]; then
-    warn "couldn't reach GitHub to check for a newer valhalla tool; the image was updated"
+    warn "couldn't reach GitHub to check for a newer vdt tool; the image was updated"
     return 0
   fi
   if [[ $installed == "$latest" ]]; then
     ok "Tool: already up to date ($(echo "$latest" | cut -c1-7))."
     return 0
   fi
-  step "Updating the valhalla tool ($(echo "$installed" | cut -c1-7) -> $(echo "$latest" | cut -c1-7)), like '$PROG install'"
+  step "Updating the vdt tool ($(echo "$installed" | cut -c1-7) -> $(echo "$latest" | cut -c1-7)), like '$PROG install'"
   if ! install_tool main; then
     warn "the image was updated, but the tool update failed; run '$PROG install'"
   fi
@@ -2089,7 +2109,7 @@ cmd_update() {
       if [[ -z $(tool_installed_sha) ]]; then
         echo "Dry run, nothing changed. This is a checkout, so there is no installed copy to update (use: $PROG install)."
       else
-        echo "Dry run, nothing changed. Would update the valhalla tool in place (like '$PROG install')."
+        echo "Dry run, nothing changed. Would update the vdt tool in place (like '$PROG install')."
       fi
       return 0
     fi
@@ -2099,7 +2119,7 @@ cmd_update() {
   if [[ $DRY_RUN == 1 ]]; then
     PLAN_PRUNE=1 plan_recreate "$image" "pull $image"
     if [[ $UPDATE_SCOPE != image ]]; then
-      echo "  then also update the valhalla tool if GitHub has a newer one (skip with: --image-only)"
+      echo "  then also update the vdt tool if GitHub has a newer one (skip with: --image-only)"
     fi
     return
   fi
@@ -2397,7 +2417,7 @@ cmd_test() {
 
 cmd_secret() {
   # Write where the secret is read from: an explicit --env-file, else the
-  # env file in use if it sets TOKEN_SECRET, else ~/.local/share/valhalla/config.
+  # env file in use if it sets TOKEN_SECRET, else the install directory's config.
   local target="$CONFIG_FILE" has=0 secret
   if [[ -n $ENV_FILE_EXPLICIT ]]; then
     [[ $ENV_FILE != none ]] || die "no env file (--env-file none)"
@@ -2428,7 +2448,7 @@ INSTALLER_URL="${VALHALLA_INSTALLER_URL:-https://raw.githubusercontent.com/dr3mr
 # (or this checkout's install.sh); prints nothing if there's none.
 local_installer() {
   local f
-  for f in "$ROOT/installer" "$HOME/.local/share/valhalla/installer" "$ROOT/install.sh"; do
+  for f in "$ROOT/installer" "$HOME/.local/share/vdt/installer" "$ROOT/install.sh"; do
     [[ -f $f ]] && { echo "$f"; return 0; }
   done
   return 0
@@ -2436,8 +2456,8 @@ local_installer() {
 
 # install_target: the install directory; --dir is passed for an installed copy (install.sh writes VERSION),
 # so it acts on its own directory; from a checkout the installer's default
-# (~/.local/share/valhalla) is used.
-install_target() { if [[ -f $ROOT/VERSION ]]; then echo "$ROOT"; else echo "$HOME/.local/share/valhalla"; fi; }
+# (~/.local/share/vdt) is used.
+install_target() { if [[ -f $ROOT/VERSION ]]; then echo "$ROOT"; else echo "$HOME/.local/share/vdt"; fi; }
 
 # fetch_installer: downloads install.sh from GitHub into a temp file and
 # prints its path.
@@ -2492,7 +2512,7 @@ cmd_uninstall() {
     echo "Dry run: would run ${installer:-$INSTALLER_URL (downloaded)} with: --uninstall ${dir_args[*]}"
     return 0
   fi
-  confirm "Remove the valhalla command from $target and its lines in ~/.zshrc / ~/.bashrc? (config and dumps/ are kept)" ||
+  confirm "Remove the vdt command from $target and its lines in ~/.zshrc / ~/.bashrc? (config and dumps/ are kept)" ||
     die "cancelled"
   if [[ -z $installer ]]; then
     tmp="$(fetch_installer)" || die "couldn't download the installer from $INSTALLER_URL"
@@ -2506,9 +2526,9 @@ cmd_uninstall() {
 
 cmd_version() {
   if [[ -f $ROOT/VERSION ]]; then
-    echo "valhalla $(cat "$ROOT/VERSION") (installed in $ROOT)"
+    echo "vdt $(cat "$ROOT/VERSION") (installed in $ROOT)"
   else
-    echo "valhalla $(git -C "$ROOT" describe --tags --always --dirty 2>/dev/null || echo unknown) (checkout $ROOT)"
+    echo "valhalla.sh $(git -C "$ROOT" describe --tags --always --dirty 2>/dev/null || echo unknown) (checkout $ROOT)"
   fi
 }
 
