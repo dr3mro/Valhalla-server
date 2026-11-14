@@ -279,13 +279,15 @@ help_text() { sed -n '2,/^$/s/^# \{0,1\}//p' "$SCRIPT"; }
 #   0 plain (not a terminal, NO_COLOR, TERM=dumb), 1 colors,
 #   2 colors + unicode (UTF-8 locale), 3 + emoji (a terminal known to draw
 #   them; fonts can't be checked, so this goes by the terminal).
-# VALHALLA_FANCY=0..3 forces a level.
+# VALHALLA_FANCY=0..3 forces a level. Takes 1 if stdout is a terminal: it
+# runs inside $(...), where its own stdout is a pipe.
 fancy_level() {
+  local is_tty="${1:-0}"
   if [[ -n ${VALHALLA_FANCY:-} ]]; then
     echo "$VALHALLA_FANCY"
     return
   fi
-  [[ -t 1 && -z ${NO_COLOR:-} && ${TERM:-dumb} != dumb ]] || { echo 0; return; }
+  [[ $is_tty == 1 && -z ${NO_COLOR:-} && ${TERM:-dumb} != dumb ]] || { echo 0; return; }
   local colors
   colors="$(tput colors 2>/dev/null || echo 0)"
   [[ $colors =~ ^[0-9]+$ && $colors -ge 8 ]] || { echo 0; return; }
@@ -463,8 +465,9 @@ render_help() {
 }
 
 usage() {
-  local level
-  level="$(fancy_level)"
+  local level is_tty=0
+  [[ -t 1 ]] && is_tty=1
+  level="$(fancy_level "$is_tty")"
   if [[ $level -le 0 ]]; then
     help_text
   elif [[ -t 1 ]] && command -v less >/dev/null 2>&1; then
