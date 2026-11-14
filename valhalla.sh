@@ -500,16 +500,56 @@ style_init
 
 # ── styled message primitives (all write to stderr) ────────────────────────
 # die/warn keep their literal "error:"/"warning:" words; step/ok/info add a
-# severity glyph. At level 0 every line comes out plain, like before.
+# contextual glyph. At level 0 every line comes out plain, like before.
+message_icon() {
+  local text="$1" prefix="$2" name var
+  case "$text" in
+    Starting*|Creating*|Recreating*|Building*) name=i_box ;;
+    Pulling*|Downloading*|Updating*) name=i_pull ;;
+    Restarting*) name=i_restart ;;
+    Stopping*|Stopped*) name=i_stop ;;
+    Removing*|Removed*|"Couldn't remove"*) name=i_trash ;;
+    Saving*|Saved*|Dumping*|Dumped*|Restoring*|Restored*) name=i_save ;;
+    Running*test*|Running*installer*) name=i_book ;;
+    Opening*) name=i_link ;;
+    *TOKEN_SECRET*) name=i_key ;;
+    *restart*) name=i_restart ;;
+    *stop*) name=i_stop ;;
+    *remove*) name=i_trash ;;
+    *dump*|*database*|*restore*) name=i_save ;;
+    *test*) name=i_book ;;
+    *build*) name=i_box ;;
+    *open*) name=i_link ;;
+    *) name= ;;
+  esac
+  [[ -n $name ]] || return 0
+  var="${prefix}${name}"
+  printf '%s' "${!var}"
+}
 die() { printf '%s\n' "${E_ERR}${E_i_err:+$E_i_err }error:${E_R} $*" >&2; exit 1; }
 warn() { printf '%s\n' "${E_WRN}${E_i_warn:+$E_i_warn }warning:${E_R} $*" >&2; }
 note() { echo "$*" >&2; }
-step() { printf '%s\n' "${E_ACC}${E_i_step:+$E_i_step }${E_R}$*" >&2; }
-ok() { printf '%s\n' "${E_OK}${E_i_ok:+$E_i_ok }${E_R}$*" >&2; }
-info() { printf '%s\n' "${E_INFO}${E_i_info:+$E_i_info }${E_R}$*" >&2; }
+step() {
+  local icon; icon="$(message_icon "$*" E_)"; [[ -n $icon ]] || icon="$E_i_step"
+  printf '%s\n' "${E_ACC}${icon:+$icon }${E_R}$*" >&2
+}
+ok() {
+  local icon; icon="$(message_icon "$*" E_)"; [[ -n $icon ]] || icon="$E_i_ok"
+  printf '%s\n' "${E_OK}${icon:+$icon }${E_R}$*" >&2
+}
+info() {
+  local icon; icon="$(message_icon "$*" E_)"; [[ -n $icon ]] || icon="$E_i_info"
+  printf '%s\n' "${E_INFO}${icon:+$icon }${E_R}$*" >&2
+}
 # stdout twins for command results (styled only when stdout is a terminal).
-say_ok() { printf '%s\n' "${S_OK}${S_i_ok:+$S_i_ok }${S_R}$*"; }
-say_info() { printf '%s\n' "${S_INFO}${S_i_info:+$S_i_info }${S_R}$*"; }
+say_ok() {
+  local icon; icon="$(message_icon "$*" S_)"; [[ -n $icon ]] || icon="$S_i_ok"
+  printf '%s\n' "${S_OK}${icon:+$icon }${S_R}$*"
+}
+say_info() {
+  local icon; icon="$(message_icon "$*" S_)"; [[ -n $icon ]] || icon="$S_i_info"
+  printf '%s\n' "${S_INFO}${icon:+$icon }${S_R}$*"
+}
 
 
 # help_cols: the name-column width that aligns every list in the help
@@ -1608,7 +1648,7 @@ wait_healthy() {
     sleep 2
     waited=$((waited + 2))
   done
-  printf '%s\n' "${E_ERR}${E_i_err:+$E_i_err } not answering after ${WAIT_SECONDS}s${E_R} (raise it with VALHALLA_WAIT=SECONDS). Recent logs:" >&2
+  printf '%s\n' "${E_ERR}${E_i_err:+$E_i_err }not answering after ${WAIT_SECONDS}s${E_R} (raise it with VALHALLA_WAIT=SECONDS). Recent logs:" >&2
   logs | tail -n 20
   return 1
 }
@@ -1630,9 +1670,9 @@ run_success() {
   {
     echo
     printf '%s\n' "${S_ACC}${S_i_rocket:+$S_i_rocket }${S_B}Valhalla is up${S_R} ${S_OK}${S_i_ok:+$S_i_ok }${S_R}"
-    printf '  %s%-10s%s %s\n' "$S_LBL" "API:" "$S_R" "${S_VAL}${HEALTH_URL}${S_R}"
-    printf '  %s%-10s%s %s\n' "$S_LBL" "Docs:" "$S_R" "${S_INFO}${DOC_URL}${S_R}"
-    printf '  %s%-10s%s %s\n' "$S_LBL" "Container:" "$S_R" "${S_VAL}$NAME${S_R} ${S_DIM}(running)${S_R}"
+    printf '  %s%-14s%s %s\n' "$S_LBL" "${S_i_link:+$S_i_link }API:" "$S_R" "${S_VAL}${HEALTH_URL}${S_R}"
+    printf '  %s%-14s%s %s\n' "$S_LBL" "${S_i_book:+$S_i_book }Docs:" "$S_R" "${S_INFO}${DOC_URL}${S_R}"
+    printf '  %s%-14s%s %s\n' "$S_LBL" "${S_i_box:+$S_i_box }Container:" "$S_R" "${S_VAL}$NAME${S_R} ${S_DIM}(running)${S_R}"
   }
 }
 
@@ -1965,7 +2005,7 @@ show_update_notice() {
 status_updates() {
   [[ ${VALHALLA_NO_UPDATE_CHECK:-0} == 1 ]] && return 0
   if ! curl -fsS -m 1 -o /dev/null https://api.github.com 2>/dev/null; then
-    printf '%s%-10s%s %s\n' "$S_LBL" "Updates:" "$S_R" "not checked (no internet connection)"
+    printf '%s%-14s%s %s\n' "$S_LBL" "${S_i_info:+$S_i_info }Updates:" "$S_R" "not checked (no internet connection)"
     show_update_notice
     return 0
   fi
@@ -1976,7 +2016,7 @@ status_updates() {
   local tool image
   tool="$(state_get tool_update)"; image="$(state_get image_update)"
   if [[ $tool == 1 || $image == 1 ]]; then
-    printf '%s%-10s%s %s\n' "$S_LBL" "Updates:" "$S_R" "${S_OK}${S_i_ok:+$S_i_ok }available${S_R}"
+    printf '%s%-14s%s %s\n' "$S_LBL" "${S_i_info:+$S_i_info }Updates:" "$S_R" "${S_OK}${S_i_ok:+$S_i_ok }available${S_R}"
     if [[ -t 2 ]]; then
       show_update_notice
     else
@@ -1991,7 +2031,7 @@ status_updates() {
     elif [[ ! -f $ROOT/VERSION ]]; then
       what="${what:+$what; }tool not checked: running from a checkout"
     fi
-    printf '%s%-10s%s %s\n' "$S_LBL" "Updates:" "$S_R" "${S_OK}up to date${what:+ ${S_DIM}($what)${S_R}}"
+    printf '%s%-14s%s %s\n' "$S_LBL" "${S_i_info:+$S_i_info }Updates:" "$S_R" "${S_OK}${S_i_ok:+$S_i_ok }up to date${what:+ ${S_DIM}($what)${S_R}}"
   fi
   return 0
 }
@@ -2010,7 +2050,7 @@ cmd_run() {
       return
     fi
     if [[ $DRY_RUN == 1 ]]; then
-      echo "Dry run ($RT): would start the existing container $NAME."
+      say_info "Dry run ($RT): would start the existing container $NAME."
       return
     fi
     step "Starting existing container $NAME"
@@ -2106,9 +2146,9 @@ cmd_update() {
   if [[ $UPDATE_SCOPE == tool ]]; then
     if [[ $DRY_RUN == 1 ]]; then
       if [[ -z $(tool_installed_sha) ]]; then
-        echo "Dry run, nothing changed. This is a checkout, so there is no installed copy to update (use: $PROG install)."
+        say_info "Dry run, nothing changed. This is a checkout, so there is no installed copy to update (use: $PROG install)."
       else
-        echo "Dry run, nothing changed. Would update the vdt tool in place (like '$PROG install')."
+        say_info "Dry run, nothing changed. Would update the vdt tool in place (like '$PROG install')."
       fi
       return 0
     fi
@@ -2118,7 +2158,7 @@ cmd_update() {
   if [[ $DRY_RUN == 1 ]]; then
     PLAN_PRUNE=1 plan_recreate "$image" "pull $image"
     if [[ $UPDATE_SCOPE != image ]]; then
-      echo "  then also update the vdt tool if GitHub has a newer one (skip with: --image-only)"
+      say_info "then also update the vdt tool if GitHub has a newer one (skip with: --image-only)"
     fi
     return
   fi
@@ -2138,9 +2178,9 @@ cmd_build() {
   args+=("$ROOT")
 
   if [[ $DRY_RUN == 1 ]]; then
-    echo "Dry run ($RT), nothing changed. Would build:"
+    say_info "Dry run ($RT), nothing changed. Would build:"
     echo "  $RT ${args[*]}"
-    [[ $deps == local ]] && echo "  (deps built from source: slow)"
+    [[ $deps == local ]] && say_info "(deps built from source: slow)"
     PLAN_PRUNE=1 plan_recreate "$image" "then run the new image"
     return
   fi
@@ -2154,11 +2194,11 @@ cmd_build() {
 cmd_stop() {
   require_exists
   if ! is_running; then
-    echo "$NAME is not running."
+    say_info "$NAME is not running."
     return 0
   fi
   if [[ $DRY_RUN == 1 ]]; then
-    echo "Dry run ($RT): would $(persist_on && echo "save the database to $(persist_file) and ")stop $NAME."
+    say_info "Dry run ($RT): would $(persist_on && echo "save the database to $(persist_file) and ")stop $NAME."
     return 0
   fi
   persist_on && persist_save
@@ -2170,9 +2210,9 @@ cmd_restart() {
   require_exists
   if [[ $DRY_RUN == 1 ]]; then
     if persist_on; then
-      echo "Dry run ($RT): would save the database to $(persist_file), restart $NAME and restore it."
+      say_info "Dry run ($RT): would save the database to $(persist_file), restart $NAME and restore it."
     else
-      echo "Dry run ($RT): would restart $NAME (the database starts fresh)."
+      say_info "Dry run ($RT): would restart $NAME (the database starts fresh)."
     fi
     return 0
   fi
@@ -2192,13 +2232,13 @@ cmd_restart() {
 
 cmd_delete() {
   if ! exists; then
-    echo "Container $NAME doesn't exist."
+    say_info "Container $NAME doesn't exist."
     return 0
   fi
   local keep=0
   persist_on && is_running && keep=1
   if [[ $DRY_RUN == 1 ]]; then
-    echo "Dry run ($RT): would $([[ $keep == 1 ]] && echo "save the database to $(persist_file) and ")remove $NAME."
+    say_info "Dry run ($RT): would $([[ $keep == 1 ]] && echo "save the database to $(persist_file) and ")remove $NAME."
     return 0
   fi
   if [[ $keep == 1 ]]; then
@@ -2222,14 +2262,14 @@ cmd_clean() {
     refs="$(container image list 2>/dev/null | awk 'NR>1 {print $1":"$2}' | grep -E "$pattern" || true)"
   fi
   if [[ $DRY_RUN == 1 ]]; then
-    echo "Dry run ($RT): would remove container $NAME (if it exists) and these images:"
-    if [[ -n $refs ]]; then while IFS= read -r ref; do echo "  $ref"; done <<<"$refs"; else echo "  (none)"; fi
+    say_info "Dry run ($RT): would remove container $NAME (if it exists) and these images:"
+    if [[ -n $refs ]]; then while IFS= read -r ref; do echo "  $ref"; done <<<"$refs"; else say_info "(none)"; fi
     return 0
   fi
   confirm "Remove container $NAME and all local images of $IMAGE_REPO?" || die "cancelled"
   ASSUME_YES=1 cmd_delete
   if [[ -z $refs ]]; then
-    echo "No local images of $IMAGE_REPO."
+    say_info "No local images of $IMAGE_REPO."
     return 0
   fi
   # One at a time: an image still used by another container is reported,
@@ -2246,7 +2286,18 @@ cmd_clean() {
 }
 
 cmd_status() {
-  row() { printf '%s%-10s%s %s\n' "$S_LBL" "$1" "$S_R" "$2"; }
+  row() {
+    local icon
+    case "$1" in
+      Runtime:|State:|Updates:) icon="$S_i_info" ;;
+      Container:|Image:) icon="$S_i_box" ;;
+      URL:) icon="$S_i_link" ;;
+      Persist:) icon="$S_i_save" ;;
+      Health:) icon="$S_i_ok" ;;
+      Version:) icon="$S_i_book" ;;
+    esac
+    printf '%s%-14s%s %s\n' "$S_LBL" "${icon:+$icon }$1" "$S_R" "$2"
+  }
   row "Runtime:" "$RT"
   row "Container:" "$NAME"
   if ! exists; then
@@ -2350,7 +2401,7 @@ cmd_doc() {
 
 cmd_psql() {
   require_running
-  [[ $DRY_RUN == 1 ]] && { echo "Dry run ($RT): would open psql in $NAME."; return 0; }
+  [[ $DRY_RUN == 1 ]] && { say_info "Dry run ($RT): would open psql in $NAME."; return 0; }
   local user db port
   read -r user db port <<<"$(db_settings)"
   exec_it su-exec postgres psql -p "$port" -U "$user" -d "$db"
@@ -2360,7 +2411,7 @@ cmd_dump() {
   require_running
   local file="${1:-$DUMP_DIR/${NAME}-$(date +%Y%m%d-%H%M%S).sql}"
   if [[ $DRY_RUN == 1 ]]; then
-    echo "Dry run ($RT): would dump the database of $NAME to $file."
+    say_info "Dry run ($RT): would dump the database of $NAME to $file."
     return 0
   fi
   step "Dumping the database from $NAME"
@@ -2379,7 +2430,7 @@ cmd_restore() {
     extra=" It was made by a different image; if the schema changed, the old one comes back."
   fi
   if [[ $DRY_RUN == 1 ]]; then
-    echo "Dry run ($RT): would load $file into database $db in $NAME, replacing its contents.$extra"
+    say_info "Dry run ($RT): would load $file into database $db in $NAME, replacing its contents.$extra"
     return
   fi
   confirm "Replace the contents of database $db in $NAME with $file?$extra" || die "cancelled"
@@ -2390,7 +2441,7 @@ cmd_restore() {
 
 cmd_shell() {
   require_running
-  [[ $DRY_RUN == 1 ]] && { echo "Dry run ($RT): would open a shell in $NAME."; return 0; }
+  [[ $DRY_RUN == 1 ]] && { say_info "Dry run ($RT): would open a shell in $NAME."; return 0; }
   exec_it sh
 }
 
@@ -2399,7 +2450,7 @@ cmd_test() {
   case "$kind" in api | fuzz | all) ;; *) die "test takes api, fuzz or all, got '$kind'" ;; esac
   base="http://127.0.0.1:${PORT}/api/v2"
   if [[ $DRY_RUN == 1 ]]; then
-    echo "Dry run: would run the $kind tests against $base (they create and delete their own data)."
+    say_info "Dry run: would run the $kind tests against $base (they create and delete their own data)."
     return 0
   fi
   curl -fsS "$HEALTH_URL" >/dev/null 2>&1 || die "the server isn't answering at $HEALTH_URL; use: $PROG run"
@@ -2427,9 +2478,9 @@ cmd_secret() {
   [[ -f $target ]] && env_file_get "$target" TOKEN_SECRET >/dev/null && has=1
   if [[ $DRY_RUN == 1 ]]; then
     if [[ $has == 1 ]]; then
-      echo "Dry run: would replace TOKEN_SECRET in $target with a new random value."
+      say_info "Dry run: would replace TOKEN_SECRET in $target with a new random value."
     else
-      echo "Dry run: would add a random TOKEN_SECRET to $target."
+      say_info "Dry run: would add a random TOKEN_SECRET to $target."
     fi
     return
   fi
@@ -2492,9 +2543,9 @@ cmd_install() {
   [[ -f $ROOT/VERSION ]] && args+=(--dir "$ROOT")
 
   if [[ $DRY_RUN == 1 ]]; then
-    echo "Dry run, nothing changed. Would download $INSTALLER_URL and run it with: ${args[*]}"
-    echo "  (it downloads $ref first; only then does it remove the current copy in $target and install)"
-    [[ -f $target/VERSION ]] && echo "  installed now: $(cat "$target/VERSION")"
+    say_info "Dry run, nothing changed. Would download $INSTALLER_URL and run it with: ${args[*]}"
+    say_info "(it downloads $ref first; only then does it remove the current copy in $target and install)"
+    [[ -f $target/VERSION ]] && say_info "installed now: $(cat "$target/VERSION")"
     return 0
   fi
   install_tool "$ref" || die "the installer failed"
@@ -2508,7 +2559,7 @@ cmd_uninstall() {
   installer="$(local_installer)"
 
   if [[ $DRY_RUN == 1 ]]; then
-    echo "Dry run: would run ${installer:-$INSTALLER_URL (downloaded)} with: --uninstall ${dir_args[*]}"
+    say_info "Dry run: would run ${installer:-$INSTALLER_URL (downloaded)} with: --uninstall ${dir_args[*]}"
     return 0
   fi
   confirm "Remove the vdt command from $target and its lines in ~/.zshrc / ~/.bashrc? (config and dumps/ are kept)" ||
