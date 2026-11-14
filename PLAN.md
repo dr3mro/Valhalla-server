@@ -25,7 +25,7 @@
 - [x] **The curl header list is never freed** on any path. `curl_slist_free_all(headers)` is missing. `src/utils/communicate/communicate.cpp:15`
 - [ ] **Exceptions swallowed without a response.** `GetServices`, `GetVisits` and `cruds` catch with `CRITICALMESSAGE`, which never calls `callback`, so the request is never answered. Use `CRITICALMESSAGERESPONSE`. `src/controllers/base/controller/controller.hpp:193`, `:224`, `:356`
 - [ ] **Deleting a client removes the session unconditionally,** even when the delete failed. `src/controllers/clientcontroller/clientcontroller.cpp:122-123`
-- [ ] **`buildReadStatement` logs a missing `user_id`, then calls `.value()` anyway** (throws `bad_optional_access`). Return `std::nullopt`. `src/entities/base/entity.hpp:157-161`
+- [x] **`buildReadStatement` logs a missing `user_id`, then calls `.value()` anyway** (throws `bad_optional_access`). Return `std::nullopt`. `src/entities/base/entity.hpp:157-161` — also fixed the same pattern in `buildUpdateStatement`
 - [ ] **Copying a `DatabaseHanndler`** shares `db_ptr`, and both destructors return the same connection to the pool. Delete its copy operations. `src/database/databasehandler.hpp:12-14`
 - [ ] **Rate-limit filter replies.** A `RATELIMITED` reply says "IP is blacklisted." (`:45`), and `BANNED` returns `503 Service Unavailable` (`429` or `403` fits better). `src/api/v2/filters/ratelimit.hpp`
 - [ ] **Appointment permissions.** Update and delete checks use the _read_ permission query, and appointment entities define no update or delete queries. Decide the intended rule. `src/gatekeeper/permissionmanager/permissionmanager.cpp:159-179`

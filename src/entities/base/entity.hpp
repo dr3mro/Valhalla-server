@@ -157,6 +157,7 @@ class Entity : public Base
             if (!user_id.has_value())
             {
                 Message::ErrorMessage(fmt::format("Failed to read data from table {}. No id provided.", tablename));
+                return std::nullopt;
             }
             return fmt::format("SELECT {} FROM {}_safe WHERE id={} LIMIT 1;", columns, tablename, user_id.value());
         }
@@ -180,6 +181,7 @@ class Entity : public Base
             if (!_id.has_value())
             {
                 Message::ErrorMessage(fmt::format("Failed to update data from table {}. No id provided.", tablename));
+                return std::nullopt;
             }
 
             std::vector<std::string> set_clauses;
