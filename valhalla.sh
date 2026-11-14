@@ -1335,7 +1335,10 @@ cmd_install() {
   new="$(fetch_installer)"
   if [[ -f $target/valhalla || -f $target/VERSION ]]; then
     note "Removing the current install in $target first"
-    sh "${old:-$new}" --uninstall "${dir_args[@]}" || { rm -f "$new"; die "uninstall failed"; }
+    # The install replaces the tool's files anyway, so a failing uninstall
+    # (e.g. an older installer's bug) mustn't stop it halfway.
+    sh "${old:-$new}" --uninstall "${dir_args[@]}" ||
+      note "warning: the old uninstaller reported an error; installing anyway"
   fi
   note "Installing $ref"
   sh "$new" --ref "$ref" "${dir_args[@]}" || { rm -f "$new"; die "the installer failed"; }

@@ -212,7 +212,9 @@ remove_files() {
     say "Removed $target"
   else
     say "Removed the tool from $target; kept your other files there:"
-    for f in "$target"/* "$target"/.[!.]*; do [ -e "$f" ] && say "  $(basename "$f")"; done
+    for f in "$target"/* "$target"/.[!.]*; do
+      if [ -e "$f" ]; then say "  $(basename "$f")"; fi # unmatched globs stay literal
+    done
   fi
 }
 
@@ -290,6 +292,7 @@ do_uninstall() {
     remove_files "$LEGACY_DIR"
     rmdir "$HOME/.bin" 2>/dev/null || true
   fi
+  return 0
 }
 
 case "$ACTION" in
