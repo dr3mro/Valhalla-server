@@ -1,0 +1,145 @@
+name: Warm ccache
+
+# actions/cache entries are scoped per ref: a tag run can only restore caches
+# from its own tag or from the default branch. Release runs only on tags, so
+# without this workflow every new tag starts with an empty ccache. Building
+# the builder stage on main saves a ccache that every later tag can restore.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/**
+      - tests/**
+      - CMakeLists.txt
+      - get_tag.sh
+      - conanfile.txt
+      - conan.lock
+      - docker/Dockerfile.deps
+      - docs/api.html
+      - tools/cmake/**
+      - tools/conan/**
+      - docker/Dockerfile
+      - .github/workflows/ccache-warm.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ccache-warm-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  DEPS_IMAGE: docker.io/${{ secrets.DOCKER_USERNAME }}/valhalla-server-deps
+
+jobs:
+  # Rebuild the deps image only when its inputs changed in this push.
+  # Manual runs and pushes whose base commit is unknown always rebuild.
+  changes:
+    name: Detect Conan changes
+    runs-on: ubuntu-24.04
+    outputs:
+      deps: ${{ steps.diff.outputs.deps }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Diff deps inputs
+        id: diff
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          if [ "$GITHUB_EVENT_NAME" != push ] || ! git cat-file -e "${BEFORE}^{commit}" 2>/dev/null; then
+            echo "deps=true" >> "$GITHUB_OUTPUT"
+          elif git diff --quiet "$BEFORE" "$GITHUB_SHA" -- conanfile.txt conan.lock docker/Dockerfile.deps; then
+            echo "deps=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "deps=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  deps:
+    name: Deps image
+    needs: changes
+    if: needs.changes.outputs.deps == 'true'
+    uses: ./.github/workflows/deps.yml
+    secrets: inherit
+
+  warm:
+    name: Build and test (${{ matrix.slug }})
+    needs: [changes, deps]
+    # Run after deps succeeds, or straight away when deps was skipped.
+    if: >-
+      !cancelled()
+      && needs.changes.result == 'success'
+      && (needs.deps.result == 'success' || needs.deps.result == 'skipped')
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      matrix:
+        include:
+          - platform: linux/amd64
+            slug: amd64
+            runner: ubuntu-24.04
+          - platform: linux/arm64
+            slug: arm64
+            runner: ubuntu-24.04-arm
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@8aa5831fb8d48d8f76594c7ddde61ae58019f550 # v4.8.0
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      # Same key scheme as release.yml so tags restore what main saved.
+      - name: Restore ccache
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+        with:
+          path: /tmp/ccache-${{ matrix.slug }}
+          key: ccache-${{ matrix.slug }}-${{ github.sha }}
+          restore-keys: ccache-${{ matrix.slug }}-
+
+      - name: Inject ccache into BuildKit
+        uses: reproducible-containers/buildkit-cache-dance@5422eac04292c961a382e0f584ea0f03ad9da723 # v3.4.0
+        with:
+          cache-map: |
+            {
+              "/tmp/ccache-${{ matrix.slug }}": {
+                "target": "/root/.ccache",
+                "id": "ccache-${{ matrix.slug }}"
+              }
+            }
+          skip-extraction: true
+
+      # Builder stage only: compiles and runs unit tests, produces no image.
+      - name: Build builder stage
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: .
+          file: docker/Dockerfile
+          target: builder
+          platforms: ${{ matrix.platform }}
+          build-args: |
+            VALHALLA_VERSION=main
+            DEPS_IMAGE=${{ env.DEPS_IMAGE }}:${{ matrix.slug }}
+          outputs: type=cacheonly
+
+      - name: Extract ccache from BuildKit
+        uses: reproducible-containers/buildkit-cache-dance@5422eac04292c961a382e0f584ea0f03ad9da723 # v3.4.0
+        with:
+          cache-map: |
+            {
+              "/tmp/ccache-${{ matrix.slug }}": {
+                "target": "/root/.ccache",
+                "id": "ccache-${{ matrix.slug }}"
+              }
+            }
+          skip-injection: true

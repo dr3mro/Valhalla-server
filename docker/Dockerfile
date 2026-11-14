@@ -68,8 +68,14 @@ RUN VALHALLA_VERSION="${VALHALLA_VERSION}" cmake -S . -B build/Release -G Ninja 
 # buildkit-cache-dance injects /tmp/ccache-{arch} from the host into this
 # cache mount before the build and extracts it back after, so ccache persists
 # across GitHub Actions runs via actions/cache.
-RUN --mount=type=cache,id=ccache-$TARGETARCH,target=/root/.ccache \
+# TARGETARCH is only visible inside a stage once declared; without this line
+# the mount id expands to "ccache-" and never matches the id the cache-dance
+# step injects into ("ccache-amd64" / "ccache-arm64").
+ARG TARGETARCH
+ENV CCACHE_DIR=/root/.ccache
+RUN --mount=type=cache,id=ccache-${TARGETARCH},target=/root/.ccache,sharing=locked \
     ccache --set-config=max_size=500M \
+    && ccache -z \
     && cmake --build build/Release -j"$(nproc)" --target server unit_tests \
     && ccache -sv \
     && ctest --test-dir build/Release --output-on-failure -j"$(nproc)" --timeout 60 \

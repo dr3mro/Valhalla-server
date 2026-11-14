@@ -1,21 +1,20 @@
 name: Build deps image
 
+# Reusable: called by ccache-warm.yml on main when conanfile.txt, conan.lock
+# or Dockerfile.deps change, so the deps image is current before the ccache
+# warm build. Release builds use whatever image main last pushed.
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - conanfile.txt
-      - conan.lock
-      - docker/Dockerfile.deps
+  workflow_call:
   workflow_dispatch:
 
 permissions:
   contents: read
 
+# github.workflow is the caller's name when called, so a manual run and a
+# called run never cancel each other; queue instead so callers don't fail.
 concurrency:
-  group: deps-${{ github.ref }}
-  cancel-in-progress: true
+  group: deps-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
 
 env:
   DEPS_IMAGE: docker.io/${{ secrets.DOCKER_USERNAME }}/valhalla-server-deps
