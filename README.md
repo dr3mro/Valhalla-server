@@ -498,6 +498,8 @@ It passes every variable in a settings file to the container, using the first it
 
 **Persistence.** Without it, the bundled database starts from `init.sql` on every container start. Add `--persist` once (`valhalla run --persist`, `valhalla update --persist`, or `VALHALLA_PERSIST=1` in `.env`) and the database is kept in `~/.local/share/valhalla/dumps/<name>-persist.sql`, which is mounted into the container. The image's entrypoint loads it at start instead of `init.sql` and saves it whenever the container stops, including restarts outside the tool (Docker Desktop, a reboot). The tool also saves it before `stop`, `restart`, `update`, `build` and `delete` (the previous dump is kept as `.prev`), and if that save fails, nothing is stopped. The setting is stored in the container, so later commands remember it; `--no-persist` turns it off. `valhalla status` shows whether it's on and when the database was last saved. Restoring a dump made by a different image prints a warning, because if that image changed the schema the old schema comes back. Images released before this feature still work: the tool restores the dump itself after the container starts.
 
+In a terminal, `help` (or `--help`) is shown with colors, Unicode box drawing and emoji as far as the terminal supports them, and paged with `less` when it's longer than the screen; piped or with `NO_COLOR=1` it's plain text. Force a style with `VALHALLA_FANCY=0` (plain) to `3` (everything).
+
 Full help (`./valhalla.sh help`):
 
 ```text
@@ -590,6 +592,9 @@ Other settings (environment variables):
   VALHALLA_DATA_DIR    where dumps go (default ~/.local/share/valhalla;
                        dumps in its dumps/ folder)
   VALHALLA_WAIT        seconds to wait for the server to answer (default 60)
+  VALHALLA_FANCY       help style: 0 plain, 1 colors, 2 + unicode, 3 + emoji
+                       (default: what the terminal supports; NO_COLOR=1
+                       also gives plain)
 
 Persistence: the bundled database starts from init.sql on every container
 start. With persistence on, it's kept in

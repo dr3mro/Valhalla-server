@@ -88,6 +88,9 @@
 #   VALHALLA_DATA_DIR    where dumps go (default ~/.local/share/valhalla;
 #                        dumps in its dumps/ folder)
 #   VALHALLA_WAIT        seconds to wait for the server to answer (default 60)
+#   VALHALLA_FANCY       help style: 0 plain, 1 colors, 2 + unicode, 3 + emoji
+#                        (default: what the terminal supports; NO_COLOR=1
+#                        also gives plain)
 #
 # Persistence: the bundled database starts from init.sql on every container
 # start. With persistence on, it's kept in
@@ -270,7 +273,207 @@ ENV_VALS=()
 die() { echo "error: $*" >&2; exit 1; }
 note() { echo "$*" >&2; }
 
-usage() { sed -n '2,/^$/s/^# \{0,1\}//p' "$SCRIPT"; }
+help_text() { sed -n '2,/^$/s/^# \{0,1\}//p' "$SCRIPT"; }
+
+# fancy_level: how much decoration the terminal can show.
+#   0 plain (not a terminal, NO_COLOR, TERM=dumb), 1 colors,
+#   2 colors + unicode (UTF-8 locale), 3 + emoji (a terminal known to draw
+#   them; fonts can't be checked, so this goes by the terminal).
+# VALHALLA_FANCY=0..3 forces a level.
+fancy_level() {
+  if [[ -n ${VALHALLA_FANCY:-} ]]; then
+    echo "$VALHALLA_FANCY"
+    return
+  fi
+  [[ -t 1 && -z ${NO_COLOR:-} && ${TERM:-dumb} != dumb ]] || { echo 0; return; }
+  local colors
+  colors="$(tput colors 2>/dev/null || echo 0)"
+  [[ $colors =~ ^[0-9]+$ && $colors -ge 8 ]] || { echo 0; return; }
+  local loc="${LC_ALL:-${LC_CTYPE:-${LANG:-}}}"
+  if [[ ! $loc =~ [Uu][Tt][Ff]-?8 ]] && [[ "$(locale charmap 2>/dev/null)" != UTF-8 ]]; then
+    echo 1
+    return
+  fi
+  case "${TERM_PROGRAM:-}" in
+    iTerm.app | Apple_Terminal | vscode | WezTerm | ghostty | Hyper | Tabby | WarpTerminal | rio) echo 3; return ;;
+  esac
+  case "${TERM:-}" in
+    xterm-kitty | xterm-ghostty | wezterm | alacritty | foot*) echo 3; return ;;
+    linux) echo 1; return ;; # the Linux console has neither the glyphs nor emoji
+  esac
+  if [[ -n ${WT_SESSION:-} || -n ${KONSOLE_VERSION:-} || ${VTE_VERSION:-0} -ge 5000 ]]; then
+    echo 3
+    return
+  fi
+  echo 2
+}
+
+# render_help LEVEL: decorates help_text for the terminal.
+render_help() {
+  local level="$1" e
+  e="$(printf '\033')"
+  local c256=0
+  [[ "$(tput colors 2>/dev/null || echo 8)" -ge 256 ]] && c256=1
+  awk -v L="$level" -v E="$e" -v C256="$c256" -v W="$(tput cols 2>/dev/null || echo 80)" '
+    function c(code) { return E "[" code "m" }
+    function rule(n,   r, i) { r = ""; for (i = 0; i < n; i++) r = r H; return r }
+    # Colors (256-color palette when available).
+    BEGIN {
+      R = c(0); B = c(1); D = c(2)
+      if (C256) {
+        TITLE = c("1;38;5;213"); HEAD = c("1;38;5;111"); CMD = c("1;38;5;114"); ARG = c("38;5;221")
+        OPT = c("38;5;117"); ENV = c("38;5;183"); DEF = c("38;5;245"); CODE = c("38;5;216"); SUB = c("1;38;5;180")
+      } else {
+        TITLE = c("1;35"); HEAD = c("1;34"); CMD = c("1;32"); ARG = c("33")
+        OPT = c("36"); ENV = c("35"); DEF = c("2"); CODE = c("33"); SUB = c("1;33")
+      }
+      U = (L >= 2); M = (L >= 3)
+      # The marker replaces the 2-space indent, so it is 2 columns wide.
+      H = U ? "─" : "-"; BUL = U ? "▸ " : "* "
+      if (W > 100) W = 100
+      if (W < 40) W = 40
+    }
+    function emoji(t) {
+      if (!M) return ""
+      if (t ~ /^Container/) return "📦 "
+      if (t ~ /^Inspect/) return "🔍 "
+      if (t ~ /^Database/) return "💾 "
+      if (t ~ /^Other settings/) return "🌱 "
+      if (t ~ /^Other/) return "🧰 "
+      if (t ~ /^Tool/) return "🔧 "
+      if (t ~ /^Options/) return "🎛  "
+      if (t ~ /^Persistence/) return "💽 "
+      if (t ~ /^Runtime/) return "🐳 "
+      if (t ~ /^Dependencies/) return "🧩 "
+      if (t ~ /^Shell completion/) return "💡 "
+      if (t ~ /^Server variables the image/) return "📋 "
+      if (t ~ /^Server variables/) return "📜 "
+      if (t ~ /^Note/) return "📝 "
+      if (t ~ /^tag defaults/) return "🏷  "
+      return "◆ "
+    }
+    # Groups inside the server variable list.
+    function group_emoji(t) {
+      if (!M) return ""
+      if (t ~ /^Rate limiting/) return "🚦 "
+      if (t ~ /^Database/) return "🐘 "
+      if (t ~ /^Server/) return "🚀 "
+      if (t ~ /^Tokens/) return "🔐 "
+      if (t ~ /^Frontend/) return "🌐 "
+      if (t ~ /^Email/) return "📧 "
+      return "◆ "
+    }
+    # `code` -> colored, backticks dropped.
+    function inline(t,   out, i, parts, n) {
+      n = split(t, parts, "`")
+      out = parts[1]
+      for (i = 2; i <= n; i++) out = out ((i % 2 == 0) ? CODE : R) parts[i]
+      return out R
+    }
+    # [defaults] at the end of a line -> dim.
+    function defaults(t) { gsub(/\[[^]]*\]/, DEF "&" R, t); return t }
+
+    NR == 1 {
+      title = $0
+      if (U) {
+        line = rule(length(title) + 2 + (M ? 3 : 0))
+        print TITLE "╭" line "╮" R
+        print TITLE "│ " (M ? "🏰 " : "") title " │" R
+        print TITLE "╰" line "╯" R
+      } else {
+        print TITLE title R
+        print TITLE rule(length(title)) R
+      }
+      next
+    }
+    # usage lines
+    /^  (valhalla|\.\/valhalla\.sh) / {
+      line = $0
+      sub(/^  /, "", line)
+      split(line, w, " ")
+      rest = substr(line, length(w[1]) + 1)
+      gsub(/\[[^]]*\]|<[^>]*>/, ARG "&" R, rest)
+      print "  " CMD w[1] R rest
+      next
+    }
+    # section heading: "Something:" alone on a line
+    /^[A-Za-z][^:]*:$/ {
+      print ""
+      print HEAD emoji($0) $0 R
+      if (U) print D rule(W - 2) R
+      next
+    }
+    # paragraph label: "Persistence: text..."
+    /^[A-Z][A-Za-z ]+: / && !/^  / {
+      label = $0; sub(/:.*/, "", label)
+      rest = substr($0, length(label) + 2)
+      print ""
+      print HEAD emoji(label) label ":" R inline(rest)
+      next
+    }
+    # "tag defaults to ..." note
+    /^tag defaults/ { print D emoji($0) $0 R; next }
+    # option lines: "  --name NAME   desc" / "  -n, --dry-run   desc"
+    /^  -/ {
+      line = $0; sub(/^  /, "", line)
+      split(line, parts, /  +/)
+      head = parts[1]; desc = substr(line, length(head) + 1)
+      gsub(/-?-[a-z][a-z-]*/, OPT "&" R, head)
+      gsub(/ [A-Z][A-Z]+/, ARG "&" R, head)
+      print BUL head inline(defaults(desc))
+      next
+    }
+    # environment variables: "  VALHALLA_X   desc"
+    /^  [A-Z][A-Z0-9_]+(=[^ ]*)? / {
+      line = $0; sub(/^  /, "", line)
+      split(line, parts, / +/)
+      print BUL ENV parts[1] R inline(defaults(substr(line, length(parts[1]) + 1)))
+      next
+    }
+    # server variable list: "    MAX_REQUESTS   desc   [default]"
+    /^    [A-Z][A-Z0-9_]+ / {
+      line = $0; sub(/^    /, "", line)
+      split(line, parts, / +/)
+      # Dim [defaults] first, on the raw text: color codes contain "[" too.
+      rest = defaults(substr(line, length(parts[1]) + 1))
+      gsub(/[A-Z][A-Z0-9_][A-Z0-9_][A-Z0-9_]+/, ENV "&" R, rest)
+      print "    " ENV parts[1] R rest
+      next
+    }
+    # sub-group inside a section: "  Rate limiting / DoS"
+    /^  [A-Z][a-z]/ && !/  [^ ].*  / {
+      t = $0; sub(/^  /, "", t)
+      print "  " SUB group_emoji(t) t R
+      next
+    }
+    # command lines: "  run [tag]   desc"
+    /^  [a-z][a-z-]*( |$)/ {
+      line = $0; sub(/^  /, "", line)
+      split(line, parts, /  +/)
+      head = parts[1]; desc = substr(line, length(head) + 1)
+      split(head, w, " ")
+      args = substr(head, length(w[1]) + 1)
+      gsub(/\[[^]]*\]|<[^>]*>/, ARG "&" R, args)
+      print BUL CMD w[1] R args inline(desc)
+      next
+    }
+    # continuation and other text
+    { print inline($0) }
+  '
+}
+
+usage() {
+  local level
+  level="$(fancy_level)"
+  if [[ $level -le 0 ]]; then
+    help_text
+  elif [[ -t 1 ]] && command -v less >/dev/null 2>&1; then
+    # -R keeps colors, -F quits right away when it fits, -X leaves it on screen.
+    help_text | render_help "$level" | less -RFX
+  else
+    help_text | render_help "$level"
+  fi
+}
 
 confirm() {
   [[ $ASSUME_YES == 1 ]] && return 0
