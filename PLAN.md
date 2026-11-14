@@ -22,10 +22,8 @@
 ## 2. Bugs
 
 - [ ] **`communicate.cpp` sends stale data.** The `static` method map's lambdas capture `curl` **and `data`** by reference on the first call. Every later request uses dangling references, including the first call's request body. Build the map without captures, or set the options directly. `src/utils/communicate/communicate.cpp:24-30`
-- [x] **The curl header list is never freed** on any path. `curl_slist_free_all(headers)` is missing. `src/utils/communicate/communicate.cpp:15`
 - [ ] **Exceptions swallowed without a response.** `GetServices`, `GetVisits` and `cruds` catch with `CRITICALMESSAGE`, which never calls `callback`, so the request is never answered. Use `CRITICALMESSAGERESPONSE`. `src/controllers/base/controller/controller.hpp:193`, `:224`, `:356`
 - [ ] **Deleting a client removes the session unconditionally,** even when the delete failed. `src/controllers/clientcontroller/clientcontroller.cpp:122-123`
-- [x] **`buildReadStatement` logs a missing `user_id`, then calls `.value()` anyway** (throws `bad_optional_access`). Return `std::nullopt`. `src/entities/base/entity.hpp:157-161` — also fixed the same pattern in `buildUpdateStatement`
 - [ ] **Copying a `DatabaseHanndler`** shares `db_ptr`, and both destructors return the same connection to the pool. Delete its copy operations. `src/database/databasehandler.hpp:12-14`
 - [ ] **Rate-limit filter replies.** A `RATELIMITED` reply says "IP is blacklisted." (`:45`), and `BANNED` returns `503 Service Unavailable` (`429` or `403` fits better). `src/api/v2/filters/ratelimit.hpp`
 - [ ] **Appointment permissions.** Update and delete checks use the _read_ permission query, and appointment entities define no update or delete queries. Decide the intended rule. `src/gatekeeper/permissionmanager/permissionmanager.cpp:159-179`
@@ -64,11 +62,6 @@
   - `DatabaseHanndler` (4 files)
   - directory `sqlinjectiondetectoor/`
   - `staffcontrollerBase.hpp` (mixed case)
-  - ~~comment `DODDetectorConfig` (`src/configurator/configurator.cpp:4`)~~ fixed
-  - ~~banner comment says `[1, size-1]`, but the code uses `[0, …]` (`src/server/extras/banner.hpp:48`)~~ fixed
-- [x] **Includes:**
-  - `database.cpp` includes `staffcontroller.hpp` for nothing (`:18`) — it was only supplying the `GateKeeper` alias; now includes `gatekeeper/gatekeeper.hpp` directly
-  - unused `<iostream>`/`<ostream>` in `sessionmanager.cpp` (`:12`, `:15`)
 - [ ] **Style and portability:**
   - `__attribute((always_inline))` in 3 files (use `[[gnu::always_inline]]`)
   - `SuspendData` doesn't use an initializer list (`types.hpp:287`)
@@ -84,14 +77,7 @@
 
 ## 7. Build
 
-- [x] **Add a Conan lockfile.** Run `conan lock create .`, commit `conan.lock`, add `--lockfile` to `docker/Dockerfile`, and pin Conan exactly instead of `conan>=2,<3`. Without it, ConanCenter recipe updates can break a release unexpectedly.
-  - *Done:*
-    - `conan.lock` pins 20 libraries and 12 build tools, merged from Alpine amd64, Alpine arm64, and local Release/Debug.
-    - Docker uses `--lockfile=conan.lock --lockfile-partial`, so a newer Alpine CMake from a base-image bump doesn't break the build.
-    - Conan is pinned to `2.33.0`.
-    - `tools/conan/update_lock.sh` regenerates the lock for all platforms; the README explains when to use it.
-  - *Verified:* the lock resolves strictly for Linux x86_64/armv8 (GCC 15), macOS Release/Debug, and Ubuntu GCC 13 Debug. Inside real Alpine 3.24 (partial) it resolves to the same pinned recipe revisions. The script reproduces an identical lock.
-  - *Not yet run:* a full image build with the lock. The next tag build will do it, and it will recompile every dependency once, because `conan.lock` changes the cached dependency layer.
+- [ ] **Confirm a full image build with `conan.lock`.** The lock is in place but no image has been built with it yet. The next deps image build does it (ccache-warm on a push to main that changes the Conan files, or a manual `deps.yml` run), and it recompiles every dependency once, because `conan.lock` changes the cached dependency layer.
 
 ---
 
