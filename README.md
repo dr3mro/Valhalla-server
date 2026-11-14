@@ -16,7 +16,7 @@ Run the server with its own bundled PostgreSQL in a container, using Docker or A
 curl -fsSL https://raw.githubusercontent.com/dr3mro/Valhalla-server/main/install.sh | sh
 ```
 
-This downloads the latest tool from this repository into `~/.bin/valhalla` and adds it to `PATH`, with tab completion, in `~/.zshrc` and/or `~/.bashrc`. Open a new terminal afterwards.
+This downloads the latest tool from this repository: the `valhalla` command goes in `~/.local/bin` and its files in `~/.local/share/valhalla`. It adds `~/.local/bin` to `PATH` (if it isn't already) and tab completion in `~/.zshrc` and/or `~/.bashrc`. Open a new terminal afterwards.
 
 **2. Run it:**
 
@@ -38,7 +38,7 @@ valhalla stop      # stop it; valhalla run starts it again
 valhalla help      # everything else
 ```
 
-Settings: `valhalla` reads `.env` from the directory you run it in (e.g. your checkout of this repository), or else `~/.bin/valhalla/.env` (see [Configuration](#configuration)); every variable in it is passed to the server. Run `valhalla update` after editing it.
+Settings: `valhalla` reads `.env` from the directory you run it in (e.g. your checkout of this repository), or else `~/.local/share/valhalla/.env` (see [Configuration](#configuration)); every variable in it is passed to the server. Run `valhalla update` after editing it.
 
 Update the tool with `valhalla install` (or `valhalla install v1.2.3` for a specific tag): it downloads the latest installer, removes the current copy and installs the new one. Remove it with `valhalla uninstall`, which works offline. Both keep your `.env` and `dumps/`.
 
@@ -444,7 +444,7 @@ The build compiles every C++ dependency from source on Alpine and runs the unit 
 
 `valhalla.sh` in the repository root wraps the commands above for both Docker and Apple Container. It picks Apple Container when it's installed and Docker otherwise (force one with `--runtime docker` or `--runtime container`).
 
-**Install it as the `valhalla` command** (no checkout needed). This downloads the latest `valhalla.sh` (installed as `valhalla`), the API test scripts (as `test_api` and `schemathesis_test`) and their payloads from this repository into `~/.bin/valhalla`, makes them executable, and adds that directory to `PATH` with tab completion in `~/.zshrc` and/or `~/.bashrc`:
+**Install it as the `valhalla` command** (no checkout needed). This downloads the latest `valhalla.sh`, the API test scripts and their payloads from this repository. The command goes in `~/.local/bin/valhalla` (a link); the files go in `~/.local/share/valhalla`, without the `.sh` extension (`valhalla`, `test_api`, `schemathesis_test`) and executable, plus a copy of the installer. It adds `~/.local/bin` to `PATH` (if it isn't already) and tab completion in `~/.zshrc` and/or `~/.bashrc`. An earlier install in `~/.bin/valhalla` is moved over, with its `.env` and `dumps/`:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/dr3mro/Valhalla-server/main/install.sh | sh
@@ -492,7 +492,7 @@ Each command first checks the tools it needs (`curl`, `python3` for Apple Contai
 
 Every `run`, `update` and `restart` waits until `/api/v2/hello` answers and prints the version line from the log.
 
-It passes every variable in `.env` to the container: the `.env` in the directory you run it from if there is one, otherwise the one next to the script (for the installed `valhalla`, `~/.bin/valhalla/.env`). That way the server runs with the same settings as a native build, including `SERVER_THREADS` and `DB_MAX_CONN`; anything `.env` doesn't set falls back to the server's defaults (4 threads, 10 connections). Variables set in the shell win over `.env` for a single run (`SERVER_THREADS=4 ./valhalla.sh update`). Quoted values and spaces around `=` are fine. After editing `.env`, run `./valhalla.sh update` to apply it. Use another file with `VALHALLA_ENV_FILE=path`, or skip it with `VALHALLA_ENV_FILE=none`.
+It passes every variable in `.env` to the container: the `.env` in the directory you run it from if there is one, otherwise the one next to the script (for the installed `valhalla`, `~/.local/share/valhalla/.env`). That way the server runs with the same settings as a native build, including `SERVER_THREADS` and `DB_MAX_CONN`; anything `.env` doesn't set falls back to the server's defaults (4 threads, 10 connections). Variables set in the shell win over `.env` for a single run (`SERVER_THREADS=4 ./valhalla.sh update`). Quoted values and spaces around `=` are fine. After editing `.env`, run `./valhalla.sh update` to apply it. Use another file with `VALHALLA_ENV_FILE=path`, or skip it with `VALHALLA_ENV_FILE=none`.
 
 Full help (`./valhalla.sh help`):
 
@@ -540,9 +540,9 @@ Other:
                    Print the shell completion script.
   help             Show this help.
 Tool (both run install.sh):
-  install [ref]    Install or update the `valhalla` command in
-                   ~/.bin/valhalla (an installed copy updates itself in
-                   place): downloads the latest installer, uninstalls the
+  install [ref]    Install or update the `valhalla` command (~/.local/bin,
+                   files in ~/.local/share/valhalla; an installed copy
+                   updates itself in place): downloads the latest installer, uninstalls the
                    current copy, then installs. ref: branch, tag or commit
                    (default main).
   uninstall        Remove the installed `valhalla` command and its lines in

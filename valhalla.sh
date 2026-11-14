@@ -42,9 +42,9 @@
 #                    Print the shell completion script.
 #   help             Show this help.
 # Tool (both run install.sh):
-#   install [ref]    Install or update the `valhalla` command in
-#                    ~/.bin/valhalla (an installed copy updates itself in
-#                    place): downloads the latest installer, uninstalls the
+#   install [ref]    Install or update the `valhalla` command (~/.local/bin,
+#                    files in ~/.local/share/valhalla; an installed copy
+#                    updates itself in place): downloads the latest installer, uninstalls the
 #                    current copy, then installs. ref: branch, tag or commit
 #                    (default main).
 #   uninstall        Remove the installed `valhalla` command and its lines in
@@ -1104,7 +1104,7 @@ INSTALLER_URL="${VALHALLA_INSTALLER_URL:-https://raw.githubusercontent.com/dr3mr
 # (or this checkout's install.sh); prints nothing if there's none.
 local_installer() {
   local f
-  for f in "$ROOT/installer" "$HOME/.bin/valhalla/installer" "$ROOT/install.sh"; do
+  for f in "$ROOT/installer" "$HOME/.local/share/valhalla/installer" "$ROOT/install.sh"; do
     [[ -f $f ]] && { echo "$f"; return 0; }
   done
   return 0
@@ -1112,8 +1112,8 @@ local_installer() {
 
 # install_target: the install directory; --dir is passed for an installed copy (install.sh writes VERSION),
 # so it acts on its own directory; from a checkout the installer's default
-# (~/.bin/valhalla) is used.
-install_target() { if [[ -f $ROOT/VERSION ]]; then echo "$ROOT"; else echo "$HOME/.bin/valhalla"; fi; }
+# (~/.local/share/valhalla) is used.
+install_target() { if [[ -f $ROOT/VERSION ]]; then echo "$ROOT"; else echo "$HOME/.local/share/valhalla"; fi; }
 
 # fetch_installer: downloads install.sh from GitHub into a temp file and
 # prints its path.
