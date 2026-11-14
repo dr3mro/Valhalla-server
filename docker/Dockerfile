@@ -1,6 +1,12 @@
 # syntax=docker/dockerfile:1
 
-FROM alpine:3.24@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf AS builder
+# ---------------------------------------------------------------------------
+# Stage 1: local-deps
+# Used only when DEPS_IMAGE is not overridden (local `docker build` without
+# --build-arg). CI passes DEPS_IMAGE=dr3mro/valhalla-server-deps:<arch> so
+# this stage is never referenced and BuildKit skips it entirely.
+# ---------------------------------------------------------------------------
+FROM alpine:3.24@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf AS local-deps
 
 RUN apk add --no-cache \
     build-base cmake samurai linux-headers perl bash git \
@@ -13,12 +19,6 @@ ENV PATH="/opt/conan/bin:${PATH}"
 
 WORKDIR /src
 
-# Dependencies get their own layer so they are rebuilt only when conanfile.txt or conan.lock changes.
-# ConanCenter binaries target glibc, so build everything from source; its cmake recipe
-# only repackages Kitware's glibc binary, so use Alpine's cmake instead.
-# --lockfile-partial keeps every locked package pinned but tolerates a newer Alpine cmake.
-# CMAKE_POLICY_VERSION_MINIMUM lets CMake 4 configure dependencies that declare < 3.5.
-# Old gnulib-based build tools don't compile against Alpine's fortify-headers; they never ship.
 ARG BUILD_TOOLS_NO_FORTIFY="m4 bison flex"
 COPY conanfile.txt conan.lock ./
 RUN conan profile detect --force \
@@ -34,6 +34,19 @@ RUN conan profile detect --force \
        -c "tools.cmake.cmaketoolchain:extra_variables={'CMAKE_POLICY_VERSION_MINIMUM': '3.5'}" \
     && conan cache clean "*" --source --build --temp
 
+# ---------------------------------------------------------------------------
+# Stage 2: builder
+# In CI: FROM dr3mro/valhalla-server-deps:<arch> (Conan already installed).
+# Locally: FROM local-deps (built above).
+# ccache persists across builds via a per-arch BuildKit cache mount stored
+# in the GHA layer cache.
+# ---------------------------------------------------------------------------
+ARG DEPS_IMAGE=local-deps
+FROM ${DEPS_IMAGE} AS builder
+
+WORKDIR /src
+
+COPY conanfile.txt conan.lock ./
 COPY CMakeLists.txt get_tag.sh ./
 COPY tools/cmake tools/cmake
 COPY tools/conan tools/conan
@@ -41,9 +54,6 @@ COPY docs/api.html docs/api.html
 COPY src src
 COPY tests tests
 
-# The unit tests run against the same toolchain that produces the shipped binary.
-# ccache lives in a BuildKit cache mount so it persists across image rebuilds without
-# landing in any image layer.
 ARG VALHALLA_VERSION=""
 RUN --mount=type=cache,id=ccache-$TARGETARCH,target=/root/.ccache \
     export CCACHE_DIR=/root/.ccache \
@@ -55,7 +65,9 @@ RUN --mount=type=cache,id=ccache-$TARGETARCH,target=/root/.ccache \
     && ctest --test-dir build/Release --output-on-failure -j"$(nproc)" \
     && strip build/Release/server
 
-
+# ---------------------------------------------------------------------------
+# Stage 3: runtime
+# ---------------------------------------------------------------------------
 FROM alpine:3.24@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf
 
 RUN apk add --no-cache postgresql17 postgresql17-client su-exec tini libstdc++ libgcc \

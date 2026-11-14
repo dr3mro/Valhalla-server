@@ -1,0 +1,37 @@
+# syntax=docker/dockerfile:1
+# Builds the Conan dependency layer for Valhalla server on Alpine.
+# Push this image to Docker Hub whenever conanfile.txt or conan.lock changes;
+# the main Dockerfile uses it as its builder base to skip the ~10-min Conan step.
+
+FROM alpine:3.24@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf
+
+RUN apk add --no-cache \
+    build-base cmake samurai linux-headers perl bash git \
+    autoconf automake libtool make pkgconf bison flex \
+    python3 py3-pip ccache
+
+RUN python3 -m venv /opt/conan \
+    && /opt/conan/bin/pip install --no-cache-dir 'conan==2.33.0'
+ENV PATH="/opt/conan/bin:${PATH}"
+
+WORKDIR /src
+
+# ConanCenter binaries target glibc, so build everything from source.
+# --lockfile-partial keeps every locked package pinned but tolerates the
+# Alpine cmake version (which changes when the base image is updated).
+# CMAKE_POLICY_VERSION_MINIMUM lets CMake 4 configure deps that declare < 3.5.
+# Old gnulib-based build tools don't compile against Alpine's fortify-headers.
+ARG BUILD_TOOLS_NO_FORTIFY="m4 bison flex"
+COPY conanfile.txt conan.lock ./
+RUN conan profile detect --force \
+    && printf '\n[platform_tool_requires]\ncmake/%s\n' "$(cmake --version | awk 'NR==1{print $3}')" \
+       >> "$(conan profile path default)" \
+    && printf '\n[conf]\n' >> "$(conan profile path default)" \
+    && for t in ${BUILD_TOOLS_NO_FORTIFY}; do \
+         printf '%s/*:tools.build:cflags=["-U_FORTIFY_SOURCE"]\n' "$t" >> "$(conan profile path default)"; \
+       done \
+    && conan install . --build="*" --lockfile=conan.lock --lockfile-partial \
+       -s build_type=Release -s compiler.cppstd=gnu20 \
+       -c "trantor/*:tools.build:cxxflags=[\"-Wno-error=unused-result\"]" \
+       -c "tools.cmake.cmaketoolchain:extra_variables={'CMAKE_POLICY_VERSION_MINIMUM': '3.5'}" \
+    && conan cache clean "*" --source --build --temp
