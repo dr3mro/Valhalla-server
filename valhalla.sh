@@ -108,7 +108,7 @@
 #   VALHALLA_WAIT        seconds to wait for the server to answer (default 60)
 #   VALHALLA_NO_UPDATE_CHECK=1  don't check for or show updates
 #   VALHALLA_UPDATE_INTERVAL  seconds between update checks (default 21600)
-#   VALHALLA_NERD=0|1    use Nerd Font icons (default: if one is installed)
+#   VALHALLA_NERD=0|1    use Nerd Font icons (default at level 2; 1 forces)
 #   VALHALLA_FANCY       output style: 0 plain, 1 colors, 2 + unicode,
 #                        3 + emoji (default: what the terminal supports;
 #                        NO_COLOR=1 also gives plain). Applies to every
@@ -387,8 +387,8 @@ nerd_font() {
 
 # ── fancy output (colors, unicode, emoji, Nerd Font icons) ─────────────────
 # One style engine for everything the tool prints. Levels come from
-# fancy_level: 0 plain, 1 colors, 2 + unicode glyphs, 3 + emoji; icons prefer
-# Nerd Font glyphs when one is installed (VALHALLA_NERD=0/1 overrides).
+# fancy_level: 0 plain, 1 colors, 2 + unicode glyphs, 3 + emoji; level 2
+# prefers Nerd Font glyphs when one is installed (VALHALLA_NERD=1 forces them).
 # stdout and stderr are judged separately, so piped output stays clean.
 # Data-producing functions (inspect results, env values, completions) never
 # use these.
@@ -425,14 +425,14 @@ style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_*
     printf -v "${p}HEAD" '' ; printf -v "${p}VAL" '' ; printf -v "${p}LBL" ''
     printf -v "${p}DIM" '' ; printf -v "${p}B" ''
   fi
-  # Icons: Nerd Font glyphs (1 column) at level 2+, else emoji at level 3,
-  # else plain unicode at level 2, else nothing.
+  # Level 3 uses emoji, matching the help renderer. Nerd Font glyphs remain
+  # the level-2 fallback, or can be explicitly forced with VALHALLA_NERD=1.
   local v
   for v in NERD i_ok i_err i_warn i_info i_q i_pull i_save i_trash i_restart i_box i_rocket i_book i_link i_key i_wait i_stop i_step; do
     printf -v "${p}${v}" ''
   done
   if [[ $l -ge 2 ]]; then
-    if nerd_font; then
+    if [[ $l -lt 3 || ${VALHALLA_NERD:-} == 1 ]] && nerd_font; then
       printf -v "${p}NERD" '1'
       printf -v "${p}i_ok"     '%s' $'\xef\x80\x8c'   # nf-fa-check
       printf -v "${p}i_err"    '%s' $'\xef\x80\x8d'   # nf-fa-times
