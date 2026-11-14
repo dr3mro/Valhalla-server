@@ -1,5 +1,9 @@
 # syntax=docker/dockerfile:1
 
+# Declared here (global scope) so it can be used in FROM.
+# CI overrides this with the pre-built deps image to skip the Conan step.
+ARG DEPS_IMAGE=local-deps
+
 # ---------------------------------------------------------------------------
 # Stage 1: local-deps
 # Used only when DEPS_IMAGE is not overridden (local `docker build` without
@@ -41,7 +45,6 @@ RUN conan profile detect --force \
 # ccache persists across builds via a per-arch BuildKit cache mount stored
 # in the GHA layer cache.
 # ---------------------------------------------------------------------------
-ARG DEPS_IMAGE=local-deps
 FROM ${DEPS_IMAGE} AS builder
 
 WORKDIR /src
