@@ -15,7 +15,7 @@ FROM alpine:3.24@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5
 RUN apk add --no-cache \
     build-base cmake samurai linux-headers perl bash git \
     autoconf automake libtool make pkgconf bison flex \
-    python3 py3-pip
+    python3 py3-pip ccache
 
 RUN python3 -m venv /opt/conan \
     && /opt/conan/bin/pip install --no-cache-dir 'conan==2.33.0'
@@ -61,10 +61,14 @@ COPY tests tests
 # VALHALLA_VERSION changes (it generates version.cpp via configure_file).
 ARG VALHALLA_VERSION=""
 RUN VALHALLA_VERSION="${VALHALLA_VERSION}" cmake -S . -B build/Release -G Ninja \
-       -DCMAKE_BUILD_TYPE=Release -DENABLE_TESTS=ON -DVALHALLA_BUILD_DOCS=OFF
+       -DCMAKE_BUILD_TYPE=Release -DENABLE_TESTS=ON -DVALHALLA_BUILD_DOCS=OFF \
+       -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
 
-# Compile, test, strip — this layer caches as long as source files are unchanged.
-RUN cmake --build build/Release -j"$(nproc)" --target server unit_tests \
+# Compile, test, strip.
+# ccache persists across builds via a per-arch BuildKit cache mount exported
+# by the local cache backend and stored between runs with actions/cache.
+RUN --mount=type=cache,id=ccache-$TARGETARCH,target=/root/.ccache \
+    cmake --build build/Release -j"$(nproc)" --target server unit_tests \
     && ctest --test-dir build/Release --output-on-failure -j"$(nproc)" --timeout 60 \
     && strip build/Release/server
 
