@@ -5,7 +5,14 @@
 ## 1. Security
 
 - [ ] **Logout doesn't verify the token.** `jwt::decode` doesn't check the signature, and `ValidateToken` is commented out, so a forged token can log any `clientId` out. `src/gatekeeper/sessionmanager/sessionmanager.cpp:102-118`
-- [ ] **Whitelist and blacklist matching is unanchored.** Entries are regexes passed to `std::regex_search`, so a whitelist entry `10.0.0.1` also exempts `10.0.0.123`. Use exact or CIDR matching, or anchor each pattern automatically. `src/gatekeeper/dosdetector/dosdetector.cpp:247`
+- [ ] **Whitelist and blacklist rework** (`src/gatekeeper/dosdetector/dosdetector.cpp:67-90`, `:219-275`). Open decisions: should the blacklist win, and is `X-Forwarded-For` support needed?
+  - **Matching is far too broad.** Entries are regexes passed to `std::regex_search`: unanchored, with `.` matching any character. `192.168.1.*` also matches `192.168.10.4` and `192.168.199.1`; `127.0.0.1` matches `127.0.0.10`-`.199`. A whitelisted IP skips all DoS checks, so every over-match is a bypass. Fix: compile entries into exact-IP, CIDR (`192.168.1.0/24`) and per-octet wildcard (`192.168.1.*`) matchers; optionally keep regex behind a `re:` prefix.
+  - **The whitelist overrides the blacklist.** It's checked first, and the test `whitelist wins over blacklist` locks that in. Decide whether the deny list should win; if not, document the current order.
+  - **Every request pays for it.** `regexFind` builds a new `std::regex` per entry per request, for both lists, while holding `whitelist_mutex_`/`blacklist_mutex_`, so all worker threads queue on one lock and benchmarks suffer. The lists are `const` after startup: compile them once in the constructor and remove both mutexes.
+  - **Invalid patterns are logged on every request,** never once at startup. The test `ignores invalid whitelist regex patterns` codifies that. Validate at startup instead.
+  - **The client IP is wrong behind Docker or a proxy.** `req->peerAddr()` (`src/api/v2/filters/ratelimit.hpp:27`) is the Docker gateway (`172.17.0.1`, `192.168.64.1`) or the proxy, so every client shares one IP: one noisy client gets everyone limited, and whitelisting it whitelists everyone. Add opt-in trusted-proxy handling of `X-Forwarded-For`.
+  - **Tests:** add over-match cases (`192.168.1.50`, `127.0.0.10`), CIDR/wildcard cases, and blacklist-versus-whitelist precedence. Update the invalid-pattern test.
+  - **Cleanup:** collapse the three nested `try/catch` layers (`isWhitelisted` → `regexFind` → the lambda). `tests/README.md` item 9 (`"a,,b"` gives an empty match-everything entry) is outdated, because `parseSet` now skips empty items.
 - [ ] **The SQL-injection check scans the parameterized query** (`$1`, `$2`), which never contains user values. `src/database/database.cpp:185`, `:281`
 - [ ] **Password hashing uses scrypt's `OPSLIMIT_MIN`/`MEMLIMIT_MIN`,** which are test-only strengths. Use `*_INTERACTIVE` or stronger. `src/gatekeeper/passwordcrypt/passwordcrypt.cpp:34-35`
 - [ ] **The startup log prints the database password and the JWT secret.** `src/configurator/configurator.hpp:106`, `:187`
@@ -20,7 +27,7 @@
 - [ ] **Deleting a client removes the session unconditionally,** even when the delete failed. `src/controllers/clientcontroller/clientcontroller.cpp:122-123`
 - [ ] **`buildReadStatement` logs a missing `user_id`, then calls `.value()` anyway** (throws `bad_optional_access`). Return `std::nullopt`. `src/entities/base/entity.hpp:157-161`
 - [ ] **Copying a `DatabaseHanndler`** shares `db_ptr`, and both destructors return the same connection to the pool. Delete its copy operations. `src/database/databasehandler.hpp:12-14`
-- [ ] **Wrong rate-limit message.** A `RATELIMITED` reply says "IP is blacklisted." `src/api/v2/filters/ratelimit.hpp:45`
+- [ ] **Rate-limit filter replies.** A `RATELIMITED` reply says "IP is blacklisted." (`:45`), and `BANNED` returns `503 Service Unavailable` (`429` or `403` fits better). `src/api/v2/filters/ratelimit.hpp`
 - [ ] **Appointment permissions.** Update and delete checks use the _read_ permission query, and appointment entities define no update or delete queries. Decide the intended rule. `src/gatekeeper/permissionmanager/permissionmanager.cpp:159-179`
 - [ ] **The client validator coerces before checking type.** `as<std::string>()` turns numbers and booleans into strings before the regex checks, so a numeric `phone` passes. `src/validator/validator.cpp:169`
 

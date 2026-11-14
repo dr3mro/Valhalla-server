@@ -261,6 +261,7 @@ Every release tag publishes an all-in-one image to Docker Hub: the server **plus
 ```bash
 docker run --rm -p 8080:8080 \
   -e TOKEN_SECRET=change-me-to-a-long-random-string \
+  -e MAX_REQUESTS=1000000 -e MAX_FPS=3000000 \
   dr3mro/valhalla-server-run:latest
 ```
 
@@ -269,8 +270,11 @@ docker run --rm -p 8080:8080 \
 ```bash
 container run --rm -p 8080:8080 \
   -e TOKEN_SECRET=change-me-to-a-long-random-string \
+  -e MAX_REQUESTS=1000000 -e MAX_FPS=3000000 \
   dr3mro/valhalla-server-run:latest
 ```
+
+`MAX_REQUESTS` and `MAX_FPS` raise the DoS protection limits (defaults `10000` and `100`) so the **Benchmark** and **Test console** panels in the API docs don't get your IP rate-limited or banned. Leave them out for normal use.
 
 Then check it is up:
 
@@ -295,6 +299,7 @@ Docker:
 # one time: create it with your settings, without starting it
 docker create --name valhalla -p 8080:8080 \
   -e TOKEN_SECRET=change-me-to-a-long-random-string \
+  -e MAX_REQUESTS=1000000 -e MAX_FPS=3000000 \
   dr3mro/valhalla-server-run:latest
 
 docker start valhalla         # launch (add -a to attach to its output)
@@ -308,6 +313,7 @@ Apple Container (same commands):
 ```bash
 container create --name valhalla -p 8080:8080 \
   -e TOKEN_SECRET=change-me-to-a-long-random-string \
+  -e MAX_REQUESTS=1000000 -e MAX_FPS=3000000 \
   dr3mro/valhalla-server-run:latest
 
 container start valhalla
@@ -318,12 +324,51 @@ container rm valhalla
 
 - The name keeps everything you gave `create` (port, variables, image). To change any of it, `rm` the container and `create` it again.
 - The database is still wiped on every `start`, so a named container doesn't keep data between launches.
-- `start` reuses the image the container was created from. To upgrade, `docker pull dr3mro/valhalla-server-run:latest` (or `container image pull …`), then `rm` and `create` again.
+- `start` reuses the image the container was created from; see [Update to the latest version](#update-to-the-latest-version) below.
 - If you'd rather type a single word, add a shell alias to `~/.zshrc` or `~/.bashrc`, then just run `valhalla` (Ctrl+C to stop):
 
   ```bash
-  alias valhalla='docker run --rm -p 8080:8080 -e TOKEN_SECRET=change-me-to-a-long-random-string dr3mro/valhalla-server-run:latest'
+  alias valhalla='docker run --rm -p 8080:8080 -e TOKEN_SECRET=change-me-to-a-long-random-string -e MAX_REQUESTS=1000000 -e MAX_FPS=3000000 dr3mro/valhalla-server-run:latest'
   ```
+
+#### Update to the latest version
+
+Docker and Apple Container don't update images on their own; `latest` on your machine is whatever you last pulled. Pull the new image, then recreate the container from it. Nothing is lost, because the database is wiped on every start anyway.
+
+Docker:
+
+```bash
+docker pull dr3mro/valhalla-server-run:latest
+
+# if you use a named container (see above), recreate it from the new image
+docker stop valhalla
+docker rm valhalla
+docker create --name valhalla -p 8080:8080 \
+  -e TOKEN_SECRET=change-me-to-a-long-random-string \
+  -e MAX_REQUESTS=1000000 -e MAX_FPS=3000000 \
+  dr3mro/valhalla-server-run:latest
+docker start valhalla
+
+docker image prune -f         # optional: remove the old, now-untagged image
+```
+
+Apple Container:
+
+```bash
+container image pull dr3mro/valhalla-server-run:latest
+
+container stop valhalla
+container rm valhalla
+container create --name valhalla -p 8080:8080 \
+  -e TOKEN_SECRET=change-me-to-a-long-random-string \
+  -e MAX_REQUESTS=1000000 -e MAX_FPS=3000000 \
+  dr3mro/valhalla-server-run:latest
+container start valhalla
+
+container image prune         # optional: remove unused images
+```
+
+If you run with `--rm` or the shell alias, the pull is all you need: the next `run` uses the new image. To see which version is running, check the `Version` line in the startup banner (`docker logs valhalla` or `container logs valhalla`).
 
 **Settings.** Every variable in [Configuration](#configuration) can be passed with `-e`. Inside this image:
 
