@@ -50,7 +50,10 @@ DOSDetector::~DOSDetector()
 {
     try
     {
-        running_clean_.store(false);
+        {
+            std::lock_guard<std::mutex> lock(clean_mutex_);
+            running_clean_.store(false);
+        }
         clean_cv_.notify_all();
         if (async_task_clean_.valid())
         {

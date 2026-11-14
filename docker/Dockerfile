@@ -65,7 +65,7 @@ RUN --mount=type=cache,id=ccache-$TARGETARCH,target=/root/.ccache \
        -DCMAKE_BUILD_TYPE=Release -DENABLE_TESTS=ON -DVALHALLA_BUILD_DOCS=OFF \
        -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
     && cmake --build build/Release -j"$(nproc)" --target server unit_tests \
-    && ctest --test-dir build/Release --output-on-failure -j"$(nproc)" \
+    && ctest --test-dir build/Release --output-on-failure -j"$(nproc)" --timeout 60 \
     && strip build/Release/server
 
 # ---------------------------------------------------------------------------
