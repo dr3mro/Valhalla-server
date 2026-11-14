@@ -83,14 +83,17 @@ RUN --mount=type=cache,id=ccache-${TARGETARCH},target=/root/.ccache,sharing=lock
 
 # ---------------------------------------------------------------------------
 # Stage 2b: builder
-# Stamps the version: re-running cmake rewrites only version.cpp (configure_file
-# leaves unchanged files alone), so this recompiles one file, relinks, strips.
+# Stamps the version: every build runs the valhalla_version target, which
+# regenerates version.cpp from $VALHALLA_VERSION (there is no .git here), so
+# this recompiles that one file, relinks and strips. The variable has to be in
+# the environment of `cmake --build` itself; a configure step alone isn't
+# enough, because the build would rewrite version.cpp as "unknown".
 # ---------------------------------------------------------------------------
 FROM compile AS builder
 
 ARG VALHALLA_VERSION=""
-RUN VALHALLA_VERSION="${VALHALLA_VERSION}" cmake -S . -B build/Release \
-    && CCACHE_DISABLE=1 cmake --build build/Release --target server \
+RUN export VALHALLA_VERSION="${VALHALLA_VERSION}" CCACHE_DISABLE=1 \
+    && cmake --build build/Release --target server \
     && strip build/Release/server
 
 # ---------------------------------------------------------------------------

@@ -154,6 +154,35 @@ jobs:
 
           [ "$(docker exec smoke sh -c 'stat -c %U /proc/$(pidof server)')" = valhalla ]
 
+      - name: Smoke test persistence
+        run: |
+          wait_up() {
+            for _ in $(seq 1 60); do
+              curl -fsS http://127.0.0.1:8081/api/v2/hello >/dev/null 2>&1 && return 0
+              sleep 2
+            done
+            docker logs persist
+            return 1
+          }
+          sql() {
+            docker exec persist su-exec postgres psql -qtAX -d valhalla -c "$1"
+          }
+          mkdir -p "$RUNNER_TEMP/persist"
+
+          docker run -d --name persist -p 8081:8080 \
+            -e DB_NAME=valhalla -e DB_USER=app -e DB_PASS=test \
+            -e VALHALLA_PERSIST=1 -e VALHALLA_PERSIST_FILE=/persist/smoke.sql \
+            -v "$RUNNER_TEMP/persist:/persist" valhalla-smoke:test
+          wait_up
+          sql 'CREATE TABLE persist_marker (x int); INSERT INTO persist_marker VALUES (1)'
+
+          # docker restart sends SIGTERM: the entrypoint saves, then reloads on start
+          docker restart -t 30 persist
+          wait_up
+          test -s "$RUNNER_TEMP/persist/smoke.sql"
+          [ "$(sql 'SELECT count(*) FROM persist_marker')" = 1 ]
+          docker rm -f persist
+
       - name: Export binary and digest
         env:
           DIGEST: ${{ steps.push.outputs.digest }}

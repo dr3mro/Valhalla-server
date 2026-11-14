@@ -14,8 +14,11 @@
 #   --dir DIR       where the files go     (default: ~/.local/share/valhalla)
 #   --bin-dir DIR   where the command goes (default: ~/.local/bin)
 #   --no-rc         don't touch ~/.zshrc / ~/.bashrc
-#   --uninstall     remove the tool and the rc lines (keeps .env and dumps/);
+#   --uninstall     remove the tool and the rc lines (keeps config and dumps/);
 #                   same as `valhalla uninstall`
+#   --replace       download first, then remove the current copy (like
+#                   --uninstall) and install; nothing is removed if the
+#                   download fails. Used by `valhalla install`.
 #   -h, --help      show this help
 #
 # Environment: VALHALLA_REF, VALHALLA_INSTALL_DIR, VALHALLA_BIN_DIR,
@@ -25,9 +28,10 @@
 #
 # Installs: valhalla (valhalla.sh), test_api, schemathesis_test, installer
 # (a copy of this script, used by `valhalla uninstall`), api_tests/payloads/,
-# docs/openapi.json. Your .env and dumps/ in the install directory are never
+# docs/openapi.json, and a default `config` (settings passed to the server)
+# if there isn't one. Your config and dumps/ in the install directory are never
 # touched. An install in the old location (~/.bin/valhalla) is moved here,
-# bringing its .env and dumps/ along.
+# bringing its settings and dumps/ along.
 
 set -eu
 
@@ -59,13 +63,24 @@ while [ $# -gt 0 ]; do
     --bin-dir=*) BIN_DIR="${1#*=}"; shift ;;
     --no-rc) EDIT_RC=0; shift ;;
     --uninstall) ACTION=uninstall; shift ;;
+    --replace) ACTION=replace; shift ;;
     -h | --help) usage; exit 0 ;;
     *) die "unknown option: $1" ;;
   esac
 done
 
+# absolute PATH: PATH made absolute (relative paths would break the link and
+# the rc block), without a trailing slash.
+absolute() {
+  case "$1" in
+    /*) printf '%s' "${1%/}" ;;
+    *) printf '%s/%s' "$(pwd)" "${1%/}" ;;
+  esac
+}
+DIR="$(absolute "$DIR")"
+BIN_DIR="$(absolute "$BIN_DIR")"
+
 # Older copies of `valhalla install` pass --dir with the old location.
-DIR="${DIR%/}"
 [ "$DIR" = "$LEGACY_DIR" ] && DIR="$DEFAULT_DIR"
 
 # Files managed by this installer (relative to DIR).
@@ -83,6 +98,11 @@ rc_files() {
       say "$sh_name $rc"
     fi
   done
+  # macOS Terminal starts bash as a login shell, which reads ~/.bash_profile
+  # and not ~/.bashrc.
+  if [ "$(uname -s)" = Darwin ] && { [ "$login_shell" = bash ] || [ -f "$HOME/.bash_profile" ]; }; then
+    say "bash $HOME/.bash_profile"
+  fi
 }
 
 # strip_rc FILE: removes our block and the line valhalla.sh adds on its own
@@ -177,6 +197,40 @@ copy_tree() {
   VERSION_TEXT="local $SOURCE $(git -C "$SOURCE" rev-parse HEAD 2>/dev/null || echo unknown)"
 }
 
+# ── default settings ───────────────────────────────────────────────────────
+# write_default_env: creates DIR/.env with defaults for a small local
+# container, unless there already is one (it's the user's file from then on).
+default_env() {
+  cat <<'EOF'
+# Settings for the valhalla command (same format as a .env file): every
+# variable here is passed to the server container. `valhalla help` lists
+# them all with their defaults. Created by install.sh and kept on update and
+# uninstall, so edit freely. A .env in the directory you run valhalla from
+# is used instead of this file.
+# Apply changes with: valhalla update
+
+# Small footprint for a local container (server defaults: 4 and 10)
+SERVER_THREADS = 2
+DB_MAX_CONN = 2
+
+# Raised DoS limits so the API docs' Benchmark and Test console panels don't
+# get your IP rate-limited (server defaults: 10000 and 100)
+MAX_REQUESTS = 1000000
+MAX_FPS = 3000000
+EOF
+}
+
+write_default_env() {
+  # Earlier versions kept the settings in .env; rename it.
+  if [ -f "$DIR/.env" ] && [ ! -e "$DIR/config" ]; then
+    mv "$DIR/.env" "$DIR/config"
+    say "Renamed $DIR/.env to $DIR/config"
+  fi
+  [ -e "$DIR/config" ] && return 0
+  (umask 077 && default_env >"$DIR/config")
+  say "Created $DIR/config with default settings"
+}
+
 # ── command link ───────────────────────────────────────────────────────────
 # link_command: BIN_DIR/valhalla -> DIR/valhalla (never replaces a real file).
 link_command() {
@@ -204,6 +258,10 @@ unlink_command() {
 remove_files() {
   target="$1"
   for f in $MANAGED; do rm -rf "${target:?}/$f"; done
+  # The default config goes too, unless it was edited.
+  if [ -f "$target/config" ] && default_env | cmp -s - "$target/config"; then
+    rm -f "$target/config"
+  fi
   # macOS Finder drops .DS_Store files into folders it shows; they'd keep
   # the folders from being removed.
   rm -f "$target/.DS_Store" "$target/api_tests/.DS_Store" "$target/docs/.DS_Store"
@@ -219,33 +277,51 @@ remove_files() {
 }
 
 # migrate_legacy: moves an install from ~/.bin/valhalla to DIR, bringing
-# .env and dumps/ along (unless DIR already has its own).
+# its settings (.env, which becomes config) and dumps/ along, unless DIR
+# already has its own.
 migrate_legacy() {
   [ "$DIR" != "$LEGACY_DIR" ] || return 0
   [ -f "$LEGACY_DIR/VERSION" ] || [ -e "$LEGACY_DIR/valhalla" ] || return 0
   say "Moving the old install from $LEGACY_DIR to $DIR"
   mkdir -p "$DIR"
-  for f in .env dumps; do
-    if [ -e "$LEGACY_DIR/$f" ] && [ ! -e "$DIR/$f" ]; then
-      mv "$LEGACY_DIR/$f" "$DIR/$f"
-      say "  moved $f"
-    fi
-  done
+  if [ -f "$LEGACY_DIR/.env" ] && [ ! -e "$DIR/config" ] && [ ! -e "$DIR/.env" ]; then
+    mv "$LEGACY_DIR/.env" "$DIR/config"
+    say "  moved .env (now config)"
+  fi
+  if [ -e "$LEGACY_DIR/dumps" ] && [ ! -e "$DIR/dumps" ]; then
+    mv "$LEGACY_DIR/dumps" "$DIR/dumps"
+    say "  moved dumps"
+  fi
   remove_files "$LEGACY_DIR"
   rmdir "$HOME/.bin" 2>/dev/null || true
 }
 
 # ── actions ────────────────────────────────────────────────────────────────
-do_install() {
+# stage_files: downloads (or copies) everything into a temp dir first.
+stage_files() {
   command -v curl >/dev/null 2>&1 || die "curl is required"
-
   stage="$(mktemp -d)"
   trap 'rm -rf "$stage"' EXIT INT TERM
   if [ -n "$SOURCE" ]; then copy_tree "$stage"; else fetch_tree "$stage"; fi
+}
 
+do_install() {
+  stage_files
+  place_files
+}
+
+# do_replace: download first; only then remove the current copy and install.
+do_replace() {
+  stage_files
+  say "Removing the current install in $DIR"
+  do_uninstall
+  place_files
+}
+
+place_files() {
   migrate_legacy
 
-  # Replace the managed files only; .env, dumps/ and anything else stay.
+  # Replace the managed files only; config, dumps/ and anything else stay.
   mkdir -p "$DIR"
   for f in $MANAGED; do rm -rf "${DIR:?}/$f"; done
   # Installed without the .sh extension.
@@ -258,6 +334,7 @@ do_install() {
   chmod 755 "$DIR/valhalla" "$DIR/test_api" "$DIR/schemathesis_test" "$DIR/installer"
   printf '%s\n' "$VERSION_TEXT" >"$DIR/VERSION"
   say "Installed into $DIR"
+  write_default_env
   link_command
 
   if [ "$EDIT_RC" = 1 ]; then
@@ -268,13 +345,13 @@ do_install() {
   say "Done. Open a new terminal (or: source ~/.$(basename "${SHELL:-zsh}")rc), then:"
   say "  valhalla help"
   say "  valhalla run"
-  [ -f "$DIR/.env" ] || say "Settings: valhalla reads .env from the current directory, else $DIR/.env"
+  say "Settings: $DIR/config (a .env in the current directory wins)"
   say "Update later with: valhalla install    Remove with: valhalla uninstall"
 }
 
 do_uninstall() {
   if [ "$EDIT_RC" = 1 ]; then
-    for rc in "$HOME/.zshrc" "$HOME/.bashrc"; do
+    for rc in "$HOME/.zshrc" "$HOME/.bashrc" "$HOME/.bash_profile"; do
       if [ -f "$rc" ] && grep -qF -e "$BEGIN_MARK" -e "# deploy.sh completion (added by" -e "# valhalla completion (added by" "$rc"; then
         strip_rc "$rc"
         say "Cleaned $rc"
@@ -298,4 +375,5 @@ do_uninstall() {
 case "$ACTION" in
   install) do_install ;;
   uninstall) do_uninstall ;;
+  replace) do_replace ;;
 esac

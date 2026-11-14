@@ -80,6 +80,7 @@
 ## 7. Build
 
 - [ ] **Confirm a full image build with `conan.lock`.** The lock is in place but no image has been built with it yet. The next deps image build does it (ccache-warm on a push to main that changes the Conan files, or a manual `deps.yml` run), and it recompiles every dependency once, because `conan.lock` changes the cached dependency layer.
+- [ ] **Release a new image.** The entrypoint now handles persistence (loads the dump at start instead of `init.sql`, saves it on stop, `SIGHUP` restarts only the server) and the Dockerfile stamps the real version. Both reach users only with the next tagged release. Until then `valhalla.sh` falls back to restoring dumps itself. `docker/entrypoint.sh`, `docker/Dockerfile`
 
 ---
 

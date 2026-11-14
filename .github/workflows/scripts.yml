@@ -1,0 +1,152 @@
+name: Scripts
+
+# Tests valhalla.sh, install.sh and docker/entrypoint.sh: lint, the installer
+# in a throwaway HOME, and persistence end to end with Docker.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - valhalla.sh
+      - install.sh
+      - docker/entrypoint.sh
+      - .github/workflows/scripts.yml
+  pull_request:
+    paths:
+      - valhalla.sh
+      - install.sh
+      - docker/entrypoint.sh
+      - .github/workflows/scripts.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: scripts-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  VALHALLA_NO_COMPLETION: "1"
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: shellcheck and dash
+        run: |
+          sudo apt-get install -y -qq dash >/dev/null
+          shellcheck valhalla.sh
+          shellcheck -s sh install.sh docker/entrypoint.sh
+          dash -n install.sh
+          dash -n docker/entrypoint.sh
+
+  installer:
+    name: Installer
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Install, update, uninstall in a throwaway HOME
+        run: |
+          set -eux
+          export HOME="$RUNNER_TEMP/home" SHELL=/bin/bash VALHALLA_SOURCE="$GITHUB_WORKSPACE"
+          mkdir -p "$HOME"
+          printf 'export KEEP_ME=1\n' >"$HOME/.bashrc"
+          cp "$HOME/.bashrc" "$HOME/bashrc.orig"
+          D="$HOME/.local/share/valhalla"
+
+          sh install.sh
+          test -x "$D/valhalla" && test -x "$D/test_api" && test -x "$D/installer"
+          test "$(readlink "$HOME/.local/bin/valhalla")" = "$D/valhalla"
+          test "$(grep -c '>>> valhalla >>>' "$HOME/.bashrc")" = 1
+          "$HOME/.local/bin/valhalla" version
+          "$HOME/.local/bin/valhalla" help >/dev/null
+
+          # Bash completion loads and completes commands and options
+          bash -c 'eval "$("$1" completion bash)"; COMP_WORDS=(valhalla --pe); COMP_CWORD=1; _valhalla; [ "${COMPREPLY[*]}" = --persist ]' _ "$D/valhalla"
+
+          # --replace keeps .env; a failed download removes nothing
+          echo KEEP=1 >"$D/.env"
+          sh install.sh --replace
+          grep -q KEEP=1 "$D/.env"
+          if VALHALLA_SOURCE=/nonexistent sh install.sh --replace; then exit 1; fi
+          test -x "$D/valhalla"
+
+          # Uninstall restores the rc file and keeps .env
+          sh "$D/installer" --uninstall
+          test ! -e "$HOME/.local/bin/valhalla"
+          diff "$HOME/bashrc.orig" "$HOME/.bashrc"
+          test -f "$D/.env"
+
+  docker:
+    name: Docker end to end
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Tool with the published image (fallback persistence)
+        run: |
+          set -eux
+          export HOME="$RUNNER_TEMP/home"; mkdir -p "$HOME"
+          V="./valhalla.sh --runtime docker --name ci --port 18080"
+          sql() { echo "$1" | $V psql | sed -n 3p | tr -d ' '; }
+
+          # Dry runs change nothing
+          $V run
+          for c in stop restart delete clean dump; do $V "$c" -n; done
+          $V status | grep -q 'State:     running'
+
+          # Persistence survives stop/run and update
+          $V update --persist
+          echo "create table ci_marker(x int); insert into ci_marker values (1),(2);" | $V psql
+          $V stop && $V run
+          test "$(sql 'select count(*) from ci_marker;')" = 2
+          $V update
+          test "$(sql 'select count(*) from ci_marker;')" = 2
+          $V delete --yes
+
+      - name: New entrypoint (persistence inside the image)
+        run: |
+          set -eux
+          mkdir -p "$RUNNER_TEMP/ep" "$RUNNER_TEMP/persist"
+          cp docker/entrypoint.sh "$RUNNER_TEMP/ep/"
+          printf 'FROM docker.io/%s/valhalla-server-run:latest\nCOPY --chmod=755 entrypoint.sh /entrypoint.sh\n' \
+            "${{ github.repository_owner }}" >"$RUNNER_TEMP/ep/Dockerfile"
+          docker build -t ep-test "$RUNNER_TEMP/ep"
+
+          wait_up() { for _ in $(seq 1 30); do curl -fsS http://127.0.0.1:18081/api/v2/hello >/dev/null && return 0; sleep 2; done; docker logs ep; return 1; }
+          sql() { docker exec ep su-exec postgres psql -qtAX -d postgres -c "$1"; }
+
+          # Without persistence: init.sql, wiped on restart, server runs as valhalla
+          docker run -d --name ep -p 18081:8080 ep-test
+          wait_up
+          sql 'create table m(x int)'
+          docker restart ep && wait_up
+          [ "$(sql "select to_regclass('m') is null")" = t ]
+          [ "$(docker exec ep sh -c 'stat -c %U /proc/$(pidof server)')" = valhalla ]
+          docker rm -f ep
+
+          # With persistence: saved on stop (also docker restart), loaded on start
+          docker run -d --name ep -p 18081:8080 -e VALHALLA_PERSIST=1 \
+            -e VALHALLA_PERSIST_FILE=/persist/ep.sql -v "$RUNNER_TEMP/persist:/persist" ep-test
+          wait_up
+          sql 'create table m(x int); insert into m values (1),(2),(3)'
+          docker restart -t 30 ep && wait_up
+          test -s "$RUNNER_TEMP/persist/ep.sql"
+          [ "$(sql 'select count(*) from m')" = 3 ]
+
+          # SIGHUP restarts only the server; the data stays
+          old="$(docker exec ep pidof server)"
+          docker exec ep kill -HUP 1
+          sleep 3 && wait_up
+          [ "$(docker exec ep pidof server)" != "$old" ]
+          [ "$(sql 'select count(*) from m')" = 3 ]
+          docker rm -f ep

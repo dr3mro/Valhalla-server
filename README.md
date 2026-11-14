@@ -32,16 +32,16 @@ valhalla doc       # open the interactive API docs in your browser
 valhalla update    # newest image, same settings
 valhalla show      # follow the log
 valhalla psql      # SQL shell on the bundled database
-valhalla dump      # save the database (it's reset on every start)
+valhalla dump      # save the database to ~/.local/share/valhalla/dumps
 valhalla update --persist   # keep the database across stop/restart/update from now on
 valhalla test      # run the end-to-end API tests against it
 valhalla stop      # stop it; valhalla run starts it again
 valhalla help      # everything else
 ```
 
-Settings: `valhalla` reads `.env` from the directory you run it in (e.g. your checkout of this repository), or else `~/.local/share/valhalla/.env` (see [Configuration](#configuration)); every variable in it is passed to the server. Run `valhalla update` after editing it.
+Settings: the installer creates `~/.local/share/valhalla/config` (`.env` format) with defaults for a small local container (2 server threads, 2 database connections, and raised rate limits so the API docs' Benchmark and Test console panels don't get you blocked). Every variable in it is passed to the server (see [Configuration](#configuration)); edit it and run `valhalla update` to apply. A `.env` in the directory you run `valhalla` from is used instead (e.g. in your checkout of this repository).
 
-Update the tool with `valhalla install` (or `valhalla install v1.2.3` for a specific tag): it downloads the latest installer, removes the current copy and installs the new one. Remove it with `valhalla uninstall`, which works offline. Both keep your `.env` and `dumps/`.
+Update the tool with `valhalla install` (or `valhalla install v1.2.3` for a specific tag): it downloads the new version first, and only then removes the current copy and installs, so a failed download changes nothing. `valhalla version` shows what's installed. Remove it with `valhalla uninstall`, which works offline. Both keep your `.env` and `dumps/`.
 
 From a checkout of this repository, `./valhalla.sh` is the same tool. Details: [Manage it with `valhalla.sh`](#manage-it-with-valhallash). Without the tool: [Run with Docker](#run-with-docker). To build and run natively: [Getting Started](#getting-started).
 
@@ -454,7 +454,7 @@ curl -fsSL https://raw.githubusercontent.com/dr3mro/Valhalla-server/main/install
 Then open a new terminal and use `valhalla` instead of `./valhalla.sh` (e.g. `valhalla run`, `valhalla status`). Afterwards the tool manages itself with the same installer. The installer keeps a copy of itself next to the tool, so `uninstall` works offline; `install` downloads the latest installer first, then uninstalls the current copy and installs the new one (if the download fails, nothing is removed):
 
 ```bash
-valhalla install            # update to the latest version (your .env and dumps/ are kept)
+valhalla install            # update to the latest version (your config and dumps/ are kept)
 valhalla install v1.2.3     # a specific tag, branch or commit
 valhalla uninstall          # remove it and its lines in ~/.zshrc / ~/.bashrc (asks first)
 ```
@@ -476,26 +476,27 @@ The installed copy has everything except `build`, which needs a full checkout of
 ./valhalla.sh env             # what a new container would get from .env, secrets hidden
 ./valhalla.sh doc             # open the API docs in the browser
 ./valhalla.sh psql            # psql on the bundled database
-./valhalla.sh dump            # save the database to dumps/
+./valhalla.sh dump            # save the database to ~/.local/share/valhalla/dumps
 ./valhalla.sh restore FILE    # load a dump back (e.g. after restart or update)
 ./valhalla.sh shell           # a shell inside the container
 ./valhalla.sh test            # run test_api.sh against it (test fuzz / test all for Schemathesis)
 ./valhalla.sh secret          # write a random TOKEN_SECRET to .env
 ./valhalla.sh install         # install or update the `valhalla` command from GitHub
 ./valhalla.sh uninstall       # remove the installed `valhalla` command
-./valhalla.sh delete          # remove the container
-./valhalla.sh clean           # remove the container and all local images of it
+./valhalla.sh delete          # remove the container (asks first)
+./valhalla.sh clean           # remove the container and all local images of it (asks first)
+./valhalla.sh version         # the tool's version
 ```
 
-Options go before or after the command: `--name`, `--port`, `--runtime`, `--env-file`, `-n`/`--dry-run` (see what `run`, `update`, `build`, `restore`, `secret`, `install` or `uninstall` would do), `-y`/`--yes` and `-p`/`--persist` / `--no-persist` (see Persistence below). The first time you run it, it adds tab completion to `~/.zshrc` and/or `~/.bashrc`; open a new terminal to use it (set `VALHALLA_NO_COMPLETION=1` to skip).
+Options go before or after the command: `--name`, `--port`, `--runtime`, `--env-file`, `-n`/`--dry-run` (see what any command would change, without changing anything), `-y`/`--yes` and `-p`/`--persist` / `--no-persist` (see Persistence below). The first time you run it, it adds tab completion to `~/.zshrc` and/or `~/.bashrc`; open a new terminal to use it (set `VALHALLA_NO_COMPLETION=1` to skip).
 
 Each command first checks the tools it needs (`curl`, `python3` for Apple Container, `jq` for `test`, …) and lists any that are missing, with how to install them.
 
 Every `run`, `update` and `restart` waits until `/api/v2/hello` answers and prints the version line from the log.
 
-It passes every variable in `.env` to the container: the `.env` in the directory you run it from if there is one, otherwise the one next to the script (for the installed `valhalla`, `~/.local/share/valhalla/.env`). That way the server runs with the same settings as a native build, including `SERVER_THREADS` and `DB_MAX_CONN`; anything `.env` doesn't set falls back to the server's defaults (4 threads, 10 connections). Variables set in the shell win over `.env` for a single run (`SERVER_THREADS=4 ./valhalla.sh update`). Quoted values and spaces around `=` are fine. After editing `.env`, run `./valhalla.sh update` to apply it. Use another file with `VALHALLA_ENV_FILE=path`, or skip it with `VALHALLA_ENV_FILE=none`.
+It passes every variable in a settings file to the container, using the first it finds: `.env` in the directory you run it from, `.env` next to the script (your checkout), or `~/.local/share/valhalla/config` (same format). The installer creates that last one with defaults for a small local container: `SERVER_THREADS = 2`, `DB_MAX_CONN = 2`, and raised `MAX_REQUESTS`/`MAX_FPS`. It's yours from then on: kept on update, and on uninstall unless it's still the unedited default. The script itself hard-codes no server settings; anything no `.env` sets falls back to the server's defaults (4 threads, 10 connections, `MAX_REQUESTS` 10000, `MAX_FPS` 100). Only one file is used; they aren't merged. Variables set in the shell win over `.env` for a single run (`SERVER_THREADS=4 ./valhalla.sh update`). Quoted values, spaces around `=` and ` # comments` are fine. After editing `.env`, run `./valhalla.sh update` to apply it. Use another file with `--env-file path` (or `VALHALLA_ENV_FILE`), or skip it with `--env-file none`.
 
-**Persistence.** The bundled database starts empty on every container start. Add `--persist` once (`valhalla run --persist`, `valhalla update --persist`, or `VALHALLA_PERSIST=1` in `.env`) and the tool dumps the database to `dumps/<name>-persist.sql` before `stop`, `restart`, `update`, `build` and `delete`, and restores it after the container starts again (the previous dump is kept as `.prev`). The setting is stored in the container, so later commands remember it; `--no-persist` turns it off. If a save fails, nothing is stopped. `valhalla status` shows whether it's on and when the database was last saved. A dump from an older image is restored as is, so after an update that changes the schema, start fresh with `--no-persist` or restore by hand.
+**Persistence.** Without it, the bundled database starts from `init.sql` on every container start. Add `--persist` once (`valhalla run --persist`, `valhalla update --persist`, or `VALHALLA_PERSIST=1` in `.env`) and the database is kept in `~/.local/share/valhalla/dumps/<name>-persist.sql`, which is mounted into the container. The image's entrypoint loads it at start instead of `init.sql` and saves it whenever the container stops, including restarts outside the tool (Docker Desktop, a reboot). The tool also saves it before `stop`, `restart`, `update`, `build` and `delete` (the previous dump is kept as `.prev`), and if that save fails, nothing is stopped. The setting is stored in the container, so later commands remember it; `--no-persist` turns it off. `valhalla status` shows whether it's on and when the database was last saved. Restoring a dump made by a different image prints a warning, because if that image changed the schema the old schema comes back. Images released before this feature still work: the tool restores the dump itself after the container starts.
 
 Full help (`./valhalla.sh help`):
 
@@ -516,8 +517,9 @@ Container:
                    local), then recreate the container from it.
   stop             Stop the container without removing it (run starts it).
   restart          Restart the container.
-  delete           Remove the container (the image stays).
-  clean            Remove the container and every local image of the repo.
+  delete           Remove the container (the image stays; asks first).
+  clean            Remove the container and every local image of the repo
+                   (asks first).
 Inspect:
   status           Show state, image, port, health and version.
   outdated         Compare the container's image with Docker Hub.
@@ -530,8 +532,10 @@ Inspect:
   doc              Open the API docs in the browser (fails if not running).
 Database (reset on every start unless persistence is on, see --persist):
   psql             Open psql on the database inside the container.
-  dump [file]      Save the database (default dumps/<name>-<time>.sql).
-  restore <file>   Load a dump into the running container.
+  dump [file]      Save the database (default
+                   ~/.local/share/valhalla/dumps/<name>-<time>.sql).
+  restore <file>   Load a dump into the running container, then restart the
+                   server process so it starts from the restored data.
 Other:
   shell            Open a shell inside the container.
   test [api|fuzz|all]
@@ -539,17 +543,19 @@ Other:
                    schemathesis_test.sh (fuzz) against the container.
   secret           Generate a random TOKEN_SECRET and write it to the env
                    file (asks before replacing an existing one).
+  version          Show the tool's version.
   completion [zsh|bash]
                    Print the shell completion script.
   help             Show this help.
 Tool (both run install.sh):
   install [ref]    Install or update the `valhalla` command (~/.local/bin,
                    files in ~/.local/share/valhalla; an installed copy
-                   updates itself in place): downloads the latest installer, uninstalls the
-                   current copy, then installs. ref: branch, tag or commit
+                   updates itself in place). Downloads first; only then
+                   removes the current copy and installs, so a failed
+                   download changes nothing. ref: branch, tag or commit
                    (default main).
   uninstall        Remove the installed `valhalla` command and its lines in
-                   ~/.zshrc / ~/.bashrc (asks first; keeps .env, dumps/).
+                   ~/.zshrc / ~/.bashrc (asks first; keeps config, dumps/).
                    Uses the installer copy kept in the install directory,
                    so it works offline; downloads it only if missing.
 
@@ -557,11 +563,12 @@ tag defaults to "latest" (build: "local").
 
 Options (before or after the command):
   --name NAME          container name     (env VALHALLA_NAME, default valhalla)
-  --port PORT          host port          (env VALHALLA_PORT, default 8080)
+  --port PORT          host port          (env VALHALLA_PORT, default 8080;
+                       for an existing container, the port it was created with)
   --runtime RT         docker | container (env VALHALLA_RUNTIME)
-  --env-file FILE      env file, or "none" (env VALHALLA_ENV_FILE)
-  -n, --dry-run        show what run/update/build/restore/secret/install/
-                       uninstall would do
+  --env-file FILE      settings file, or "none" (env VALHALLA_ENV_FILE)
+  -n, --dry-run        show what a command would change, without changing
+                       anything (read-only commands just run)
   -y, --yes            don't ask for confirmation
   -p, --persist        keep the database across stop/restart/update/build/
                        delete (see Persistence below); stored in the
@@ -580,14 +587,22 @@ Other settings (environment variables):
   VALHALLA_NO_COMPLETION=1  don't add shell completion to ~/.zshrc/~/.bashrc
   VALHALLA_PERSIST=1   same as --persist when a container is created (also
                        works in the env file)
+  VALHALLA_DATA_DIR    where dumps go (default ~/.local/share/valhalla;
+                       dumps in its dumps/ folder)
+  VALHALLA_WAIT        seconds to wait for the server to answer (default 60)
 
-Persistence: the bundled database starts empty on every container start.
-With persistence on, the database is dumped to dumps/<name>-persist.sql
-before stop, restart, update, build and delete, and restored after run,
-restart, update and build (the previous dump is kept as .prev). If saving
-fails, nothing is stopped. Turning it on (run/update --persist) restores an
-existing saved file, or saves the current data if there's none yet. Note:
-a dump from an older image is restored as is, over a newer schema.
+Persistence: the bundled database starts from init.sql on every container
+start. With persistence on, it's kept in
+~/.local/share/valhalla/dumps/<name>-persist.sql (mounted at /persist):
+the image's entrypoint loads it at start instead of init.sql and saves it
+when the container stops, also when that happens outside this tool (Docker
+Desktop restart, reboot). This tool also saves it before stop, restart,
+update, build and delete (the previous dump is kept as .prev); if that
+fails, nothing is stopped. Images from before this feature fall back to the
+tool restoring the dump after start. Turning it on (run/update --persist)
+restores an existing saved file, or saves the current data if there's none
+yet. A dump made by a different image prints a warning: if that image
+changed the schema, the old schema comes back.
 
 Runtime: Apple `container` if installed, otherwise docker.
 
@@ -599,16 +614,19 @@ Shell completion: on first use the script adds one line to ~/.zshrc and/or
 ~/.bashrc (whichever exist) to enable tab completion; open a new terminal to
 use it. Remove the line marked "valhalla completion" to undo.
 
-Server variables: every KEY=VALUE in the env file (default: .env in the
-current directory if there is one, otherwise .env next to this script) is
-passed to the container (comments and blank lines skipped,
-spaces around "=" and surrounding quotes removed). Precedence, lowest to
-highest:
-  built-in defaults (MAX_REQUESTS=1000000, MAX_FPS=3000000)
-  < env file
-  < MAX_REQUESTS / MAX_FPS / TOKEN_SECRET / SERVER_THREADS / DB_MAX_CONN
-    set in the shell (e.g. SERVER_THREADS=4 ./valhalla.sh update).
-Variables set nowhere aren't passed, so the server uses its own defaults.
+Server variables: every KEY=VALUE in the env file is passed to the
+container through a private env file, so values don't show up in the
+process list (comments, including " # ..." after a value, and blank lines
+skipped; spaces around "=" and surrounding quotes removed). The env file is
+the first of: .env in the current directory, .env next to this script,
+~/.local/share/valhalla/config. The installer creates that file with defaults
+for a small local container: SERVER_THREADS=2, DB_MAX_CONN=2, and raised
+MAX_REQUESTS/MAX_FPS so the API docs' Benchmark and Test console panels
+don't get your IP rate-limited. Edit it freely; it's kept on update.
+MAX_REQUESTS, MAX_FPS, TOKEN_SECRET, SERVER_THREADS and DB_MAX_CONN set in
+the shell win over the env file for one run (e.g. SERVER_THREADS=4
+./valhalla.sh update). Variables set nowhere aren't passed, so the server
+uses its own defaults (in brackets below).
 Without any TOKEN_SECRET, update keeps the old container's and a new
 container lets the image generate one. SERVER_PORT from the env file is the
 port published inside the container (default 8080). DB_HOST and DB_SSL are
@@ -652,7 +670,8 @@ Server variables the image understands (server default in brackets):
     EMAIL_SENDER_PORT     [5000]
     EMAIL_SENDER_QUEUE_PATH [/enqueue]
 
-Note: the database lives inside the container and is reset on every start.
+Note: without persistence the database lives only inside the container and
+is reset on every start.
 ```
 
 ## Configuration

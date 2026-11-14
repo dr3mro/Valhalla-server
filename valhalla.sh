@@ -15,8 +15,9 @@
 #                    local), then recreate the container from it.
 #   stop             Stop the container without removing it (run starts it).
 #   restart          Restart the container.
-#   delete           Remove the container (the image stays).
-#   clean            Remove the container and every local image of the repo.
+#   delete           Remove the container (the image stays; asks first).
+#   clean            Remove the container and every local image of the repo
+#                    (asks first).
 # Inspect:
 #   status           Show state, image, port, health and version.
 #   outdated         Compare the container's image with Docker Hub.
@@ -29,8 +30,10 @@
 #   doc              Open the API docs in the browser (fails if not running).
 # Database (reset on every start unless persistence is on, see --persist):
 #   psql             Open psql on the database inside the container.
-#   dump [file]      Save the database (default dumps/<name>-<time>.sql).
-#   restore <file>   Load a dump into the running container.
+#   dump [file]      Save the database (default
+#                    ~/.local/share/valhalla/dumps/<name>-<time>.sql).
+#   restore <file>   Load a dump into the running container, then restart the
+#                    server process so it starts from the restored data.
 # Other:
 #   shell            Open a shell inside the container.
 #   test [api|fuzz|all]
@@ -38,17 +41,19 @@
 #                    schemathesis_test.sh (fuzz) against the container.
 #   secret           Generate a random TOKEN_SECRET and write it to the env
 #                    file (asks before replacing an existing one).
+#   version          Show the tool's version.
 #   completion [zsh|bash]
 #                    Print the shell completion script.
 #   help             Show this help.
 # Tool (both run install.sh):
 #   install [ref]    Install or update the `valhalla` command (~/.local/bin,
 #                    files in ~/.local/share/valhalla; an installed copy
-#                    updates itself in place): downloads the latest installer, uninstalls the
-#                    current copy, then installs. ref: branch, tag or commit
+#                    updates itself in place). Downloads first; only then
+#                    removes the current copy and installs, so a failed
+#                    download changes nothing. ref: branch, tag or commit
 #                    (default main).
 #   uninstall        Remove the installed `valhalla` command and its lines in
-#                    ~/.zshrc / ~/.bashrc (asks first; keeps .env, dumps/).
+#                    ~/.zshrc / ~/.bashrc (asks first; keeps config, dumps/).
 #                    Uses the installer copy kept in the install directory,
 #                    so it works offline; downloads it only if missing.
 #
@@ -56,11 +61,12 @@
 #
 # Options (before or after the command):
 #   --name NAME          container name     (env VALHALLA_NAME, default valhalla)
-#   --port PORT          host port          (env VALHALLA_PORT, default 8080)
+#   --port PORT          host port          (env VALHALLA_PORT, default 8080;
+#                        for an existing container, the port it was created with)
 #   --runtime RT         docker | container (env VALHALLA_RUNTIME)
-#   --env-file FILE      env file, or "none" (env VALHALLA_ENV_FILE)
-#   -n, --dry-run        show what run/update/build/restore/secret/install/
-#                        uninstall would do
+#   --env-file FILE      settings file, or "none" (env VALHALLA_ENV_FILE)
+#   -n, --dry-run        show what a command would change, without changing
+#                        anything (read-only commands just run)
 #   -y, --yes            don't ask for confirmation
 #   -p, --persist        keep the database across stop/restart/update/build/
 #                        delete (see Persistence below); stored in the
@@ -79,14 +85,22 @@
 #   VALHALLA_NO_COMPLETION=1  don't add shell completion to ~/.zshrc/~/.bashrc
 #   VALHALLA_PERSIST=1   same as --persist when a container is created (also
 #                        works in the env file)
+#   VALHALLA_DATA_DIR    where dumps go (default ~/.local/share/valhalla;
+#                        dumps in its dumps/ folder)
+#   VALHALLA_WAIT        seconds to wait for the server to answer (default 60)
 #
-# Persistence: the bundled database starts empty on every container start.
-# With persistence on, the database is dumped to dumps/<name>-persist.sql
-# before stop, restart, update, build and delete, and restored after run,
-# restart, update and build (the previous dump is kept as .prev). If saving
-# fails, nothing is stopped. Turning it on (run/update --persist) restores an
-# existing saved file, or saves the current data if there's none yet. Note:
-# a dump from an older image is restored as is, over a newer schema.
+# Persistence: the bundled database starts from init.sql on every container
+# start. With persistence on, it's kept in
+# ~/.local/share/valhalla/dumps/<name>-persist.sql (mounted at /persist):
+# the image's entrypoint loads it at start instead of init.sql and saves it
+# when the container stops, also when that happens outside this tool (Docker
+# Desktop restart, reboot). This tool also saves it before stop, restart,
+# update, build and delete (the previous dump is kept as .prev); if that
+# fails, nothing is stopped. Images from before this feature fall back to the
+# tool restoring the dump after start. Turning it on (run/update --persist)
+# restores an existing saved file, or saves the current data if there's none
+# yet. A dump made by a different image prints a warning: if that image
+# changed the schema, the old schema comes back.
 #
 # Runtime: Apple `container` if installed, otherwise docker.
 #
@@ -98,16 +112,19 @@
 # ~/.bashrc (whichever exist) to enable tab completion; open a new terminal to
 # use it. Remove the line marked "valhalla completion" to undo.
 #
-# Server variables: every KEY=VALUE in the env file (default: .env in the
-# current directory if there is one, otherwise .env next to this script) is
-# passed to the container (comments and blank lines skipped,
-# spaces around "=" and surrounding quotes removed). Precedence, lowest to
-# highest:
-#   built-in defaults (MAX_REQUESTS=1000000, MAX_FPS=3000000)
-#   < env file
-#   < MAX_REQUESTS / MAX_FPS / TOKEN_SECRET / SERVER_THREADS / DB_MAX_CONN
-#     set in the shell (e.g. SERVER_THREADS=4 ./valhalla.sh update).
-# Variables set nowhere aren't passed, so the server uses its own defaults.
+# Server variables: every KEY=VALUE in the env file is passed to the
+# container through a private env file, so values don't show up in the
+# process list (comments, including " # ..." after a value, and blank lines
+# skipped; spaces around "=" and surrounding quotes removed). The env file is
+# the first of: .env in the current directory, .env next to this script,
+# ~/.local/share/valhalla/config. The installer creates that file with defaults
+# for a small local container: SERVER_THREADS=2, DB_MAX_CONN=2, and raised
+# MAX_REQUESTS/MAX_FPS so the API docs' Benchmark and Test console panels
+# don't get your IP rate-limited. Edit it freely; it's kept on update.
+# MAX_REQUESTS, MAX_FPS, TOKEN_SECRET, SERVER_THREADS and DB_MAX_CONN set in
+# the shell win over the env file for one run (e.g. SERVER_THREADS=4
+# ./valhalla.sh update). Variables set nowhere aren't passed, so the server
+# uses its own defaults (in brackets below).
 # Without any TOKEN_SECRET, update keeps the old container's and a new
 # container lets the image generate one. SERVER_PORT from the env file is the
 # port published inside the container (default 8080). DB_HOST and DB_SSL are
@@ -151,7 +168,8 @@
 #     EMAIL_SENDER_PORT     [5000]
 #     EMAIL_SENDER_QUEUE_PATH [/enqueue]
 #
-# Note: the database lives inside the container and is reset on every start.
+# Note: without persistence the database lives only inside the container and
+# is reset on every start.
 
 set -eo pipefail
 
@@ -171,22 +189,35 @@ IMAGE_REPO="${VALHALLA_IMAGE:-docker.io/dr3mro/valhalla-server-run}"
 LOCAL_REPO="valhalla-server-run"
 NAME="${VALHALLA_NAME:-valhalla}"
 PORT="${VALHALLA_PORT:-8080}"
+PORT_EXPLICIT="${VALHALLA_PORT:+1}" # set: --port / VALHALLA_PORT wins over the container's port
 CPUS="${VALHALLA_CPUS:-4}"
 MEMORY_GB="${VALHALLA_MEMORY:-1}"
-# Env file: --env-file / VALHALLA_ENV_FILE, else .env in the current
-# directory, else .env next to this script.
+# Env file: --env-file / VALHALLA_ENV_FILE, else the first of: .env in the
+# current directory, .env next to this script, ~/.local/share/valhalla/config
+# (the installer creates that one with small defaults).
 if [[ -n ${VALHALLA_ENV_FILE:-} ]]; then
   ENV_FILE="$VALHALLA_ENV_FILE"
-elif [[ -f $PWD/.env ]]; then
-  ENV_FILE="$PWD/.env"
 else
-  ENV_FILE="$ROOT/.env"
+  ENV_FILE=""
+  for f in "$PWD/.env" "$ROOT/.env" "${VALHALLA_DATA_DIR:-$HOME/.local/share/valhalla}/config"; do
+    [[ -f $f ]] && { ENV_FILE="$f"; break; }
+  done
+  [[ -n $ENV_FILE ]] || ENV_FILE="$PWD/.env"
 fi
 ENV_FILE_EXPLICIT="${VALHALLA_ENV_FILE:+1}"
 DRY_RUN=0
 ASSUME_YES=0
 PERSIST=""     # --persist (1) / --no-persist (0); empty: keep the container's setting
 OLD_PERSIST="" # VALHALLA_PERSIST of the container being replaced
+# One place for dumps, whether this runs from a checkout or the installed copy.
+DATA_DIR="${VALHALLA_DATA_DIR:-$HOME/.local/share/valhalla}"
+DUMP_DIR="$DATA_DIR/dumps"
+WAIT_SECONDS="${VALHALLA_WAIT:-60}"
+STOP_TIMEOUT=30 # seconds the entrypoint gets to save the database on stop
+ENTRYPOINT_MARK="valhalla-entrypoint: persist-v1"
+INSPECT_CACHE="${TMPDIR:-/tmp}/valhalla-inspect.$$"
+ENV_TMP=""
+trap 'rm -f "$INSPECT_CACHE" ${ENV_TMP:+"$ENV_TMP"}' EXIT
 
 # Commands: name|short description (single source for help-free tools such
 # as shell completion).
@@ -213,6 +244,7 @@ COMMANDS=(
   "secret|write a random TOKEN_SECRET to the env file"
   "install|install or update the valhalla command from GitHub"
   "uninstall|remove the installed valhalla command"
+  "version|show the tool version"
   "completion|print the shell completion script"
   "help|show help"
 )
@@ -254,8 +286,8 @@ while [[ $# -gt 0 ]]; do
   case "$1" in
     --name) [[ $# -ge 2 ]] || die "--name needs a value"; NAME="$2"; shift 2 ;;
     --name=*) NAME="${1#*=}"; shift ;;
-    --port) [[ $# -ge 2 ]] || die "--port needs a value"; PORT="$2"; shift 2 ;;
-    --port=*) PORT="${1#*=}"; shift ;;
+    --port) [[ $# -ge 2 ]] || die "--port needs a value"; PORT="$2"; PORT_EXPLICIT=1; shift 2 ;;
+    --port=*) PORT="${1#*=}"; PORT_EXPLICIT=1; shift ;;
     --runtime) [[ $# -ge 2 ]] || die "--runtime needs a value"; VALHALLA_RUNTIME="$2"; shift 2 ;;
     --runtime=*) VALHALLA_RUNTIME="${1#*=}"; shift ;;
     --env-file) [[ $# -ge 2 ]] || die "--env-file needs a value"; ENV_FILE="$2"; ENV_FILE_EXPLICIT=1; shift 2 ;;
@@ -271,8 +303,16 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 [[ $PORT =~ ^[0-9]+$ ]] || die "--port must be a number, got '$PORT'"
-HEALTH_URL="http://127.0.0.1:${PORT}/api/v2/hello"
-DOC_URL="http://127.0.0.1:${PORT}/api/v2/doc"
+[[ $NAME =~ ^[A-Za-z0-9][A-Za-z0-9_.-]*$ ]] ||
+  die "--name may only contain letters, digits, '.', '_' and '-' (got '$NAME')"
+[[ $WAIT_SECONDS =~ ^[0-9]+$ ]] || die "VALHALLA_WAIT must be a number of seconds, got '$WAIT_SECONDS'"
+
+# set_urls: health and docs URLs for the current PORT.
+set_urls() {
+  HEALTH_URL="http://127.0.0.1:${PORT}/api/v2/hello"
+  DOC_URL="http://127.0.0.1:${PORT}/api/v2/doc"
+}
+set_urls
 
 # ── shell completion ───────────────────────────────────────────────────────
 command_names() {
@@ -491,7 +531,7 @@ check_deps() {
   local cmd="$1" arg="${2:-}"
 
   case "$cmd" in
-    secret | test | install | uninstall) ;;
+    secret | test | install | uninstall | version) ;;
     *)
       if [[ -n ${VALHALLA_RUNTIME:-} ]]; then
         need "$VALHALLA_RUNTIME"
@@ -569,20 +609,27 @@ rt() { if [[ $RT == docker ]]; then docker "$@"; else container "$@"; fi; }
 
 # ── runtime-specific primitives ────────────────────────────────────────────
 # apple_inspect PYTHON-EXPR: evaluates EXPR on the container's inspect JSON (d).
+# inspect_json: the container's inspect JSON, cached in a file for this run
+# (each `container inspect` is slow; a file also works inside $(...)).
+inspect_json() {
+  if [[ ! -s $INSPECT_CACHE ]]; then
+    rt inspect "$NAME" >"$INSPECT_CACHE" 2>/dev/null || { rm -f "$INSPECT_CACHE"; return 1; }
+  fi
+  cat "$INSPECT_CACHE"
+}
+
+# forget_inspect: call after anything that changes the container.
+forget_inspect() { rm -f "$INSPECT_CACHE"; }
+
+# apple_inspect PYTHON-EXPR: evaluates EXPR on the container's inspect JSON (d).
 apple_inspect() {
-  container inspect "$NAME" 2>/dev/null | EXPR="$1" python3 -c '
+  inspect_json | EXPR="$1" python3 -c '
 import json, os, sys
 d = json.load(sys.stdin); d = d[0] if isinstance(d, list) else d
 print(eval(os.environ["EXPR"]))' 2>/dev/null || true
 }
 
-exists() {
-  if [[ $RT == docker ]]; then
-    docker container inspect "$NAME" >/dev/null 2>&1
-  else
-    container inspect "$NAME" >/dev/null 2>&1
-  fi
-}
+exists() { inspect_json >/dev/null; }
 
 # state: prints "running" when running, anything else otherwise.
 state() {
@@ -614,6 +661,35 @@ container_env() {
 
 old_secret() { container_env TOKEN_SECRET; }
 
+# container_port: the host port the existing container publishes.
+container_port() {
+  if [[ $RT == docker ]]; then
+    docker container inspect -f '{{range $p, $b := .HostConfig.PortBindings}}{{(index $b 0).HostPort}} {{end}}' "$NAME" 2>/dev/null |
+      awk '{print $1}'
+  else
+    apple_inspect '(d.get("configuration", {}).get("publishedPorts") or [{}])[0].get("hostPort", "")'
+  fi
+}
+
+# adopt_container_port: unless --port/VALHALLA_PORT was given, talk to the
+# port the container was created with.
+adopt_container_port() {
+  [[ -n $PORT_EXPLICIT ]] && return 0
+  local p
+  p="$(container_port)"
+  if [[ $p =~ ^[0-9]+$ ]]; then
+    PORT="$p"
+    set_urls
+  fi
+  return 0
+}
+
+# entrypoint_persists: does the running container's entrypoint handle
+# persistence (load at start, save on stop, SIGHUP restarts)?
+entrypoint_persists() {
+  rt exec "$NAME" grep -qF "$ENTRYPOINT_MARK" /entrypoint.sh 2>/dev/null
+}
+
 # container_image: image reference the container was created from.
 container_image() {
   if [[ $RT == docker ]]; then
@@ -637,6 +713,7 @@ container_digest() {
 
 # exec_it CMD...: runs CMD interactively in the container (replaces this shell).
 exec_it() {
+  forget_inspect # exec skips the EXIT trap
   local -a tty=(-i)
   [[ -t 0 && -t 1 ]] && tty=(-it)
   if [[ $RT == docker ]]; then
@@ -659,10 +736,12 @@ remove_container() {
   else
     container delete --force "$NAME" >/dev/null 2>&1 || true
   fi
+  forget_inspect
 }
 
-start_container() { rt start "$NAME" >/dev/null; }
-stop_container() { rt stop "$NAME" >/dev/null; }
+start_container() { rt start "$NAME" >/dev/null; forget_inspect; }
+# stop_container: graceful stop with time for the entrypoint to save.
+stop_container() { rt stop -t "$STOP_TIMEOUT" "$NAME" >/dev/null; forget_inspect; }
 logs() { rt logs "$NAME" 2>&1; }
 
 # db_args: prints "user db port" of the bundled database.
@@ -678,7 +757,19 @@ db_settings() {
 # With persistence on, the database is dumped to persist_file before the
 # container stops or is replaced, and restored after it starts. The setting
 # lives in the container as VALHALLA_PERSIST=1, so later commands remember it.
-persist_file() { echo "$ROOT/dumps/${NAME}-persist.sql"; }
+persist_file() { echo "$DUMP_DIR/${NAME}-persist.sql"; }
+
+# migrate_persist_file: earlier versions kept the persist dump next to the
+# script ($ROOT/dumps); move it to DUMP_DIR once.
+migrate_persist_file() {
+  local old="$ROOT/dumps/${NAME}-persist.sql" new
+  new="$(persist_file)"
+  [[ $old != "$new" && -f $old && ! -f $new ]] || return 0
+  mkdir -p "$DUMP_DIR"
+  mv "$old" "$new"
+  [[ -f $old.prev ]] && mv "$old.prev" "$new.prev"
+  note "Moved the saved database from $old to $new"
+}
 
 # persist_on: is persistence on for the existing container (or forced by flag)?
 persist_on() {
@@ -699,39 +790,70 @@ persist_wanted() {
 }
 
 # dump_to FILE: pg_dump of the bundled database into FILE (0 on success).
+# dump_to FILE: pg_dump of the bundled database into FILE (0 on success);
+# records the image digest next to it (FILE.image) for restore checks.
 dump_to() {
-  local file="$1" user db port
+  local file="$1" user db port digest
   read -r user db port <<<"$(db_settings)"
   mkdir -p "$(dirname "$file")"
   if rt exec "$NAME" su-exec postgres pg_dump -p "$port" -U "$user" -d "$db" \
     --clean --if-exists --no-owner --no-privileges >"$file" 2>/dev/null && [[ -s $file ]]; then
+    digest="$(container_digest)"
+    [[ -n $digest ]] && echo "$digest" >"$file.image"
     return 0
   fi
   rm -f "$file"
   return 1
 }
 
+# check_dump_image FILE: warns when FILE was made by a different image (its
+# schema may differ from the running one). Prints nothing when unknown.
+dump_image_differs() {
+  local file="$1" saved now
+  [[ -f $file.image ]] || return 1
+  saved="$(cat "$file.image")"
+  now="$(container_digest)"
+  [[ -n $now && -n $saved && $now != "$saved" ]]
+}
+
 # restore_from FILE: loads FILE into the bundled database (0 on success).
+# restore_from FILE: loads FILE into the bundled database (0 on success),
+# then restarts the server process so its in-memory caches start clean
+# (images whose entrypoint supports it; older ones keep running as is).
 restore_from() {
   local file="$1" user db port
   read -r user db port <<<"$(db_settings)"
   if [[ $RT == docker ]]; then
-    docker exec -i "$NAME" su-exec postgres psql -q -v ON_ERROR_STOP=1 -p "$port" -U "$user" -d "$db" <"$file" >/dev/null
+    docker exec -i "$NAME" su-exec postgres psql -q -v ON_ERROR_STOP=1 -p "$port" -U "$user" -d "$db" <"$file" >/dev/null || return 1
   else
-    container exec -i "$NAME" su-exec postgres psql -q -v ON_ERROR_STOP=1 -p "$port" -U "$user" -d "$db" <"$file" >/dev/null
+    container exec -i "$NAME" su-exec postgres psql -q -v ON_ERROR_STOP=1 -p "$port" -U "$user" -d "$db" <"$file" >/dev/null || return 1
   fi
+  if entrypoint_persists; then
+    note "Restarting the server so it starts from the restored data"
+    rt exec "$NAME" kill -HUP 1 >/dev/null 2>&1 || true
+    sleep 1
+    wait_healthy >/dev/null || return 1
+  else
+    note "note: this image can't restart the server alone; cached sessions may be stale until: $PROG restart"
+  fi
+  return 0
 }
 
+# persist_save: dumps the running database to persist_file (the previous
+# dump is kept as .prev). Dies if the dump fails, before anything is stopped.
 # persist_save: dumps the running database to persist_file (the previous
 # dump is kept as .prev). Dies if the dump fails, before anything is stopped.
 persist_save() {
   is_running || return 0
   local file
   file="$(persist_file)"
+  migrate_persist_file
   [[ -f $file ]] && mv -f "$file" "$file.prev"
+  [[ -f $file.image ]] && mv -f "$file.image" "$file.prev.image"
   note "Saving the database to $file"
   if ! dump_to "$file"; then
     [[ -f $file.prev ]] && mv -f "$file.prev" "$file"
+    [[ -f $file.prev.image ]] && mv -f "$file.prev.image" "$file.image"
     die "couldn't save the database, so nothing was stopped (use --no-persist to skip saving)"
   fi
 }
@@ -747,15 +869,33 @@ save_before_replace() {
 }
 
 # persist_load: restores persist_file into the freshly started container.
+# persist_load: after the container started. Images whose entrypoint handles
+# persistence already loaded the dump at start; for older images, load it now.
 persist_load() {
   local file
   file="$(persist_file)"
+  if entrypoint_persists; then
+    if logs | grep -q "valhalla: restoring the database"; then
+      note "The database was restored from $file at start"
+    fi
+    return 0
+  fi
   if [[ ! -f $file ]]; then
     note "Persistence is on; no saved database yet ($file)"
     return 0
   fi
   note "Restoring the database from $file"
   restore_from "$file" || note "warning: restoring $file failed; the database is the image's fresh one"
+}
+
+# warn_dump_image: before a container starts from a saved dump.
+warn_dump_image() {
+  local file
+  file="$(persist_file)"
+  if [[ -f $file.image && -n ${1:-} && "$(cat "$file.image")" != "$1" ]]; then
+    note "warning: $file was saved by a different image; if this image changed the database"
+    note "         schema, the old schema comes back (start fresh with --no-persist)"
+  fi
 }
 
 # ── env file ───────────────────────────────────────────────────────────────
@@ -767,7 +907,7 @@ load_env() {
     return 0
   fi
 
-  local line key val
+  local line key val q rest
   while IFS= read -r line || [[ -n $line ]]; do
     line="${line%$'\r'}"
     [[ $line =~ ^[[:space:]]*(#|$) ]] && continue
@@ -777,8 +917,15 @@ load_env() {
     key="${key#"${key%%[![:space:]]*}"}"; key="${key%"${key##*[![:space:]]}"}"
     key="${key#export }"
     val="${val#"${val%%[![:space:]]*}"}"; val="${val%"${val##*[![:space:]]}"}"
-    if [[ ${#val} -ge 2 && ( ( $val == \"*\" ) || ( $val == \'*\' ) ) ]]; then
-      val="${val:1:${#val}-2}"
+    q="${val:0:1}"
+    if [[ ($q == '"' || $q == "'") && ${val:1} == *"$q"* ]]; then
+      # Quoted: keep what's inside the quotes; anything after (a comment) goes.
+      rest="${val:1}"
+      val="${rest%%"$q"*}"
+    else
+      # Unquoted: " # comment" ends the value.
+      val="${val%%[[:space:]]#*}"
+      val="${val%"${val##*[![:space:]]}"}"
     fi
     [[ $key =~ ^[A-Za-z_][A-Za-z0-9_]*$ ]] || { note "warning: skipping invalid key '$key' in $ENV_FILE"; continue; }
     env_set "$key" "$val"
@@ -816,17 +963,15 @@ env_set() {
 compose_env() {
   local fallback_secret="${1:-}"
 
-  # Defaults < env file < shell.
-  env_get MAX_REQUESTS >/dev/null || env_set MAX_REQUESTS 1000000
-  env_get MAX_FPS >/dev/null || env_set MAX_FPS 3000000
-  # Threads / pool size: from the env file if set there (or the shell);
-  # otherwise not passed, so the server uses its own defaults.
+  # Env file < shell. Anything set in neither isn't passed, so the server
+  # uses its own defaults (the installer's .env sets small local ones).
   [[ -n ${SERVER_THREADS:-} ]] && env_set SERVER_THREADS "$SERVER_THREADS"
   [[ -n ${DB_MAX_CONN:-} ]] && env_set DB_MAX_CONN "$DB_MAX_CONN"
   [[ -n ${MAX_REQUESTS:-} ]] && env_set MAX_REQUESTS "$MAX_REQUESTS"
   [[ -n ${MAX_FPS:-} ]] && env_set MAX_FPS "$MAX_FPS"
   if persist_wanted; then
     env_set VALHALLA_PERSIST 1
+    env_set VALHALLA_PERSIST_FILE "/persist/${NAME}-persist.sql"
   elif env_get VALHALLA_PERSIST >/dev/null || [[ -n $OLD_PERSIST ]]; then
     env_set VALHALLA_PERSIST 0
   fi
@@ -852,6 +997,7 @@ print_env() {
 }
 
 # create_container <image> [fallback TOKEN_SECRET, e.g. the old container's]
+# create_container <image> [fallback TOKEN_SECRET, e.g. the old container's]
 create_container() {
   local image="$1" i
   compose_env "${2:-}"
@@ -864,19 +1010,32 @@ create_container() {
       note "warning: SERVER_HOST=$server_host only listens inside the container; the published port won't reach it. Use 0.0.0.0." ;;
   esac
 
-  local -a args=(-d --name "$NAME" -p "${PORT}:${server_port}")
+  # Variables go through a private env file, not -e KEY=VALUE, so secrets
+  # don't show up in the process list.
+  ENV_TMP="$(mktemp "${TMPDIR:-/tmp}/valhalla-env.XXXXXX")"
+  chmod 600 "$ENV_TMP"
   for i in "${!ENV_KEYS[@]}"; do
-    args+=(-e "${ENV_KEYS[$i]}=${ENV_VALS[$i]}")
+    printf '%s=%s\n' "${ENV_KEYS[$i]}" "${ENV_VALS[$i]}" >>"$ENV_TMP"
   done
 
+  local -a args=(-d --name "$NAME" -p "${PORT}:${server_port}" --env-file "$ENV_TMP")
+  if [[ "$(env_get VALHALLA_PERSIST || true)" == 1 ]]; then
+    migrate_persist_file
+    mkdir -p "$DUMP_DIR"
+    args+=(-v "$DUMP_DIR:/persist")
+  fi
   if [[ $RT == docker ]]; then
     args+=(--cpus "$CPUS" --memory "${MEMORY_GB}g")
   else
     args+=(-c "$CPUS" -m "${MEMORY_GB}G")
   fi
   rt run "${args[@]}" "$image" >/dev/null
+  rm -f "$ENV_TMP"
+  ENV_TMP=""
+  forget_inspect
 }
 
+# plan_recreate <image> <action>: dry-run output for run/update/build.
 # plan_recreate <image> <action>: dry-run output for run/update/build.
 plan_recreate() {
   OLD_PERSIST="$(container_env VALHALLA_PERSIST)"
@@ -886,28 +1045,41 @@ plan_recreate() {
   if exists && is_running && save_before_replace; then
     echo "  save the database to $(persist_file)"
   fi
-  exists && echo "  remove container $NAME"
+  exists && echo "  stop and remove container $NAME"
   echo "  create $NAME from $1: port ${PORT}->$(env_get SERVER_PORT || echo 8080), ${CPUS} CPUs, ${MEMORY_GB} GB"
-  persist_wanted && echo "  restore the database from $(persist_file) (persistence on)"
+  if persist_wanted; then
+    echo "  mount $DUMP_DIR at /persist; the database is loaded from $(persist_file) at start"
+  fi
   echo "  with these variables:"
   print_env | sed 's/^/    /'
 }
 
 # ── helpers ────────────────────────────────────────────────────────────────
 wait_healthy() {
+  local waited=0
   printf "Waiting for the server" >&2
-  for _ in $(seq 1 30); do
+  while [[ $waited -lt $WAIT_SECONDS ]]; do
     if curl -fsS "$HEALTH_URL" >/dev/null 2>&1; then
       note " up at $HEALTH_URL"
-      logs | grep -i -m1 -E "version" || true
+      server_version_line
       return 0
     fi
     printf "." >&2
     sleep 2
+    waited=$((waited + 2))
   done
-  note " not answering after 60s. Recent logs:"
+  note " not answering after ${WAIT_SECONDS}s (raise it with VALHALLA_WAIT=SECONDS). Recent logs:"
   logs | tail -n 20
   return 1
+}
+
+# server_version_line: the version the server prints in its startup banner.
+server_version_line() {
+  local line
+  line="$(logs | sed -E $'s/\x1b\\[[0-9;]*m//g' | grep -m1 -E ' - Version +:' || true)"
+  [[ -n $line ]] || line="$(logs | sed -E $'s/\x1b\\[[0-9;]*m//g' | grep -m1 -E '\] Version: ' || true)"
+  [[ -n $line ]] && echo "$line"
+  return 0
 }
 
 image_ref() { echo "${IMAGE_REPO}:${1:-latest}"; }
@@ -935,6 +1107,9 @@ registry_digest() {
 
 # ensure_builder: Apple's default builder (2 GB) runs out of memory compiling
 # the server; give it VALHALLA_BUILD_MEMORY GB.
+# ensure_builder: Apple's default builder (2 GB) runs out of memory compiling
+# the server; give it VALHALLA_BUILD_MEMORY GB. This restarts the builder and
+# affects other builds too, so it says what it changes.
 ensure_builder() {
   [[ $RT == container ]] || return 0
   local want_gb="${VALHALLA_BUILD_MEMORY:-8}" have cpus
@@ -947,7 +1122,9 @@ except Exception:
     print(0)' 2>/dev/null || echo 0)"
   [[ $have -ge $want_gb ]] && return 0
   cpus="$(sysctl -n hw.ncpu 2>/dev/null || echo 4)"
-  note "Restarting the Apple builder with ${want_gb} GB and ${cpus} CPUs (had ${have} GB)"
+  note "The Apple builder has ${have} GB; compiling needs about ${want_gb} GB."
+  note "Restarting it with ${want_gb} GB and ${cpus} CPUs (this applies to all your builds;"
+  note "set VALHALLA_BUILD_MEMORY to change, or restart it yourself with: container builder start)"
   container builder stop >/dev/null 2>&1 || true
   container builder start --cpus "$cpus" --memory "${want_gb}g" >/dev/null
 }
@@ -985,11 +1162,14 @@ cmd_run() {
     note "Creating container $NAME from $image"
     create_container "$image"
   fi
+  adopt_container_port
   wait_healthy
   persist_on && persist_load
   return 0
 }
 
+# recreate <image>: replaces the container with one from <image>, keeping its
+# TOKEN_SECRET and, with persistence, its data.
 # recreate <image>: replaces the container with one from <image>, keeping its
 # TOKEN_SECRET and, with persistence, its data.
 recreate() {
@@ -1002,11 +1182,18 @@ recreate() {
     note "Turning persistence on: the new container gets the saved database $(persist_file);"
     note "the current one isn't saved (run '$PROG dump' first to keep it)"
   fi
+  # Stop gracefully first: an entrypoint with persistence saves on stop,
+  # which a forced removal would skip.
+  if exists && is_running; then stop_container; fi
   note "Recreating container $NAME from $image"
   remove_container
   create_container "$image" "$secret"
+  adopt_container_port
   wait_healthy
-  persist_on && persist_load
+  if persist_on; then
+    warn_dump_image "$(container_digest)"
+    persist_load
+  fi
   return 0
 }
 
@@ -1047,17 +1234,29 @@ cmd_build() {
 
 cmd_stop() {
   require_exists
-  if is_running; then
-    persist_on && persist_save
-    stop_container
-    echo "Stopped $NAME (start it again with: $PROG run)"
-  else
+  if ! is_running; then
     echo "$NAME is not running."
+    return 0
   fi
+  if [[ $DRY_RUN == 1 ]]; then
+    echo "Dry run ($RT): would $(persist_on && echo "save the database to $(persist_file) and ")stop $NAME."
+    return 0
+  fi
+  persist_on && persist_save
+  stop_container
+  echo "Stopped $NAME (start it again with: $PROG run)"
 }
 
 cmd_restart() {
   require_exists
+  if [[ $DRY_RUN == 1 ]]; then
+    if persist_on; then
+      echo "Dry run ($RT): would save the database to $(persist_file), restart $NAME and restore it."
+    else
+      echo "Dry run ($RT): would restart $NAME (the database starts fresh)."
+    fi
+    return 0
+  fi
   if persist_on; then
     note "Restarting $NAME (persistence on: the database is saved and restored)"
     persist_save
@@ -1072,35 +1271,58 @@ cmd_restart() {
 }
 
 cmd_delete() {
-  if exists; then
-    if persist_on && is_running; then
-      persist_save
-      note "Kept $(persist_file); $PROG run --persist restores it"
-    fi
-    remove_container
-    echo "Removed container $NAME"
-  else
+  if ! exists; then
     echo "Container $NAME doesn't exist."
+    return 0
   fi
+  local keep=0
+  persist_on && is_running && keep=1
+  if [[ $DRY_RUN == 1 ]]; then
+    echo "Dry run ($RT): would $([[ $keep == 1 ]] && echo "save the database to $(persist_file) and ")remove $NAME."
+    return 0
+  fi
+  if [[ $keep == 1 ]]; then
+    confirm "Remove container $NAME? (its database is saved to $(persist_file) first)" || die "cancelled"
+    persist_save
+    stop_container
+    note "Kept $(persist_file); $PROG run --persist restores it"
+  else
+    confirm "Remove container $NAME? Its database is lost (keep it with: $PROG dump)" || die "cancelled"
+  fi
+  remove_container
+  echo "Removed container $NAME"
 }
 
 cmd_clean() {
-  cmd_delete
-  local refs pattern
+  local refs pattern ref failed=0
   pattern="^((docker\.io/)?${IMAGE_REPO#docker.io/}|${LOCAL_REPO}):"
   if [[ $RT == docker ]]; then
     refs="$(docker image ls --format '{{.Repository}}:{{.Tag}}' | grep -E "$pattern" || true)"
-    [[ -n $refs ]] && echo "$refs" | xargs docker image rm >/dev/null
   else
     refs="$(container image list 2>/dev/null | awk 'NR>1 {print $1":"$2}' | grep -E "$pattern" || true)"
-    [[ -n $refs ]] && echo "$refs" | xargs container image delete >/dev/null
   fi
-  if [[ -n $refs ]]; then
-    echo "Removed images:"
-    while IFS= read -r ref; do echo "  $ref"; done <<<"$refs"
-  else
+  if [[ $DRY_RUN == 1 ]]; then
+    echo "Dry run ($RT): would remove container $NAME (if it exists) and these images:"
+    if [[ -n $refs ]]; then while IFS= read -r ref; do echo "  $ref"; done <<<"$refs"; else echo "  (none)"; fi
+    return 0
+  fi
+  confirm "Remove container $NAME and all local images of $IMAGE_REPO?" || die "cancelled"
+  ASSUME_YES=1 cmd_delete
+  if [[ -z $refs ]]; then
     echo "No local images of $IMAGE_REPO."
+    return 0
   fi
+  # One at a time: an image still used by another container is reported,
+  # not fatal.
+  while IFS= read -r ref; do
+    if rt image rm "$ref" >/dev/null 2>&1 || rt image delete "$ref" >/dev/null 2>&1; then
+      echo "Removed image $ref"
+    else
+      echo "Couldn't remove image $ref (still in use?)"
+      failed=1
+    fi
+  done <<<"$refs"
+  return "$failed"
 }
 
 cmd_status() {
@@ -1133,7 +1355,7 @@ cmd_status() {
       echo "Health:    not answering at $HEALTH_URL"
     fi
     local ver
-    ver="$(logs | grep -i -m1 -E "version" | sed -E $'s/\x1b\\[[0-9;]*m//g; s/.*[Vv]ersion[^:]*:[[:space:]]*//')"
+    ver="$(server_version_line | sed -E 's/.*[Vv]ersion[^:]*:[[:space:]]*//')"
     echo "Version:   ${ver:-unknown}"
   fi
 }
@@ -1162,6 +1384,7 @@ cmd_outdated() {
 
 cmd_show() {
   require_exists
+  forget_inspect # exec skips the EXIT trap
   if [[ $RT == docker ]]; then exec docker logs -f "$NAME"; else exec container logs -f "$NAME"; fi
 }
 
@@ -1174,6 +1397,7 @@ cmd_logs() {
 
 cmd_stats() {
   require_running
+  forget_inspect # exec skips the EXIT trap
   if [[ $RT == docker ]]; then exec docker stats "$NAME"; else exec container stats "$NAME"; fi
 }
 
@@ -1198,6 +1422,7 @@ cmd_doc() {
 
 cmd_psql() {
   require_running
+  [[ $DRY_RUN == 1 ]] && { echo "Dry run ($RT): would open psql in $NAME."; return 0; }
   local user db port
   read -r user db port <<<"$(db_settings)"
   exec_it su-exec postgres psql -p "$port" -U "$user" -d "$db"
@@ -1205,7 +1430,11 @@ cmd_psql() {
 
 cmd_dump() {
   require_running
-  local file="${1:-$ROOT/dumps/${NAME}-$(date +%Y%m%d-%H%M%S).sql}"
+  local file="${1:-$DUMP_DIR/${NAME}-$(date +%Y%m%d-%H%M%S).sql}"
+  if [[ $DRY_RUN == 1 ]]; then
+    echo "Dry run ($RT): would dump the database of $NAME to $file."
+    return 0
+  fi
   note "Dumping the database from $NAME"
   dump_to "$file" || die "pg_dump failed"
   echo "Saved $(wc -c <"$file" | tr -d ' ') bytes to $file"
@@ -1216,13 +1445,16 @@ cmd_restore() {
   [[ -n $file ]] || die "usage: $PROG restore <file>"
   [[ -f $file ]] || die "file not found: $file"
   require_running
-  local user db port
+  local user db port extra=""
   read -r user db port <<<"$(db_settings)"
+  if dump_image_differs "$file"; then
+    extra=" It was made by a different image; if the schema changed, the old one comes back."
+  fi
   if [[ $DRY_RUN == 1 ]]; then
-    echo "Dry run ($RT): would load $file into database $db in $NAME, replacing its contents."
+    echo "Dry run ($RT): would load $file into database $db in $NAME, replacing its contents.$extra"
     return
   fi
-  confirm "Replace the contents of database $db in $NAME with $file?" || die "cancelled"
+  confirm "Replace the contents of database $db in $NAME with $file?$extra" || die "cancelled"
   note "Restoring $file into $db"
   restore_from "$file" || die "restore failed"
   echo "Restored $file"
@@ -1230,12 +1462,18 @@ cmd_restore() {
 
 cmd_shell() {
   require_running
+  [[ $DRY_RUN == 1 ]] && { echo "Dry run ($RT): would open a shell in $NAME."; return 0; }
   exec_it sh
 }
 
 cmd_test() {
-  local kind="${1:-api}" base="http://127.0.0.1:${PORT}/api/v2" status=0
+  local kind="${1:-api}" base status=0
   case "$kind" in api | fuzz | all) ;; *) die "test takes api, fuzz or all, got '$kind'" ;; esac
+  base="http://127.0.0.1:${PORT}/api/v2"
+  if [[ $DRY_RUN == 1 ]]; then
+    echo "Dry run: would run the $kind tests against $base (they create and delete their own data)."
+    return 0
+  fi
   curl -fsS "$HEALTH_URL" >/dev/null 2>&1 || die "the server isn't answering at $HEALTH_URL; use: $PROG run"
   if [[ $kind == api || $kind == all ]]; then
     note "Running test_api.sh against $base"
@@ -1314,34 +1552,19 @@ fetch_installer() {
 }
 
 cmd_install() {
-  local ref="${1:-main}" target new old=""
+  local ref="${1:-main}" target new
   target="$(install_target)"
-  local -a dir_args=()
-  [[ -f $ROOT/VERSION ]] && dir_args=(--dir "$ROOT")
-  [[ -f $target/valhalla || -f $target/VERSION ]] && old="$(local_installer)"
+  local -a args=(--replace --ref "$ref")
+  [[ -f $ROOT/VERSION ]] && args+=(--dir "$ROOT")
 
   if [[ $DRY_RUN == 1 ]]; then
-    echo "Dry run, nothing changed. Would:"
-    echo "  download $INSTALLER_URL"
-    if [[ -f $target/valhalla || -f $target/VERSION ]]; then
-      echo "  uninstall the current copy in $target with ${old:-the downloaded installer} (keeps .env, dumps/)"
-      [[ -f $target/VERSION ]] && echo "    installed now: $(cat "$target/VERSION")"
-    fi
-    echo "  install $ref into $target"
+    echo "Dry run, nothing changed. Would download $INSTALLER_URL and run it with: ${args[*]}"
+    echo "  (it downloads $ref first; only then does it remove the current copy in $target and install)"
+    [[ -f $target/VERSION ]] && echo "  installed now: $(cat "$target/VERSION")"
     return 0
   fi
-
-  # Download first: if that fails, the current install is left alone.
   new="$(fetch_installer)"
-  if [[ -f $target/valhalla || -f $target/VERSION ]]; then
-    note "Removing the current install in $target first"
-    # The install replaces the tool's files anyway, so a failing uninstall
-    # (e.g. an older installer's bug) mustn't stop it halfway.
-    sh "${old:-$new}" --uninstall "${dir_args[@]}" ||
-      note "warning: the old uninstaller reported an error; installing anyway"
-  fi
-  note "Installing $ref"
-  sh "$new" --ref "$ref" "${dir_args[@]}" || { rm -f "$new"; die "the installer failed"; }
+  sh "$new" "${args[@]}" || { rm -f "$new"; die "the installer failed"; }
   rm -f "$new"
 }
 
@@ -1356,7 +1579,7 @@ cmd_uninstall() {
     echo "Dry run: would run ${installer:-$INSTALLER_URL (downloaded)} with: --uninstall ${dir_args[*]}"
     return 0
   fi
-  confirm "Remove the valhalla command from $target and its lines in ~/.zshrc / ~/.bashrc? (.env and dumps/ are kept)" ||
+  confirm "Remove the valhalla command from $target and its lines in ~/.zshrc / ~/.bashrc? (config and dumps/ are kept)" ||
     die "cancelled"
   if [[ -z $installer ]]; then
     tmp="$(fetch_installer)"
@@ -1366,6 +1589,14 @@ cmd_uninstall() {
   sh "$installer" --uninstall "${dir_args[@]}" || { [[ -n $tmp ]] && rm -f "$tmp"; die "the installer failed"; }
   [[ -n $tmp ]] && rm -f "$tmp"
   return 0
+}
+
+cmd_version() {
+  if [[ -f $ROOT/VERSION ]]; then
+    echo "valhalla $(cat "$ROOT/VERSION") (installed in $ROOT)"
+  else
+    echo "valhalla $(git -C "$ROOT" describe --tags --always --dirty 2>/dev/null || echo unknown) (checkout $ROOT)"
+  fi
 }
 
 cmd_completion() {
@@ -1398,9 +1629,14 @@ resolve_runtime
 check_deps "$command" "${ARGS[0]:-}"
 
 case "$command" in
-  secret | test | install | uninstall) "cmd_${command}" "${ARGS[@]}"; exit $? ;;
+  secret | install | uninstall | version) "cmd_${command}" "${ARGS[@]}"; exit $? ;;
 esac
 
+if [[ $command == test && -z $RT ]]; then
+  cmd_test "${ARGS[@]}"
+  exit $?
+fi
 pick_runtime
+exists && adopt_container_port
 case "$command" in run | update | build | env) load_env ;; esac
 "cmd_${command}" "${ARGS[@]}"
