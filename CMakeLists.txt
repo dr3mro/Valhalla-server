@@ -96,8 +96,11 @@ configure_file(
   @ONLY)
 add_compile_options(-ftemplate-backtrace-limit=0)
 
-# Find all source files
+# Find all source files.
+# cmake_configure_depends re-runs cmake automatically when the file list changes,
+# so adding or removing a .cpp file is picked up without a manual reconfigure.
 file(GLOB_RECURSE SRC "src/*.cpp")
+set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src")
 
 # Collect the main() translation unit separately so that the rest of the code
 # can be linked into the test executable as well.
