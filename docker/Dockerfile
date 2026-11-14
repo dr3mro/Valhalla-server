@@ -8,18 +8,19 @@ RUN apk add --no-cache \
     python3 py3-pip
 
 RUN python3 -m venv /opt/conan \
-    && /opt/conan/bin/pip install --no-cache-dir 'conan>=2,<3'
+    && /opt/conan/bin/pip install --no-cache-dir 'conan==2.33.0'
 ENV PATH="/opt/conan/bin:${PATH}"
 
 WORKDIR /src
 
-# Dependencies get their own layer so they are rebuilt only when conanfile.txt changes.
+# Dependencies get their own layer so they are rebuilt only when conanfile.txt or conan.lock changes.
 # ConanCenter binaries target glibc, so build everything from source; its cmake recipe
 # only repackages Kitware's glibc binary, so use Alpine's cmake instead.
+# --lockfile-partial keeps every locked package pinned but tolerates a newer Alpine cmake.
 # CMAKE_POLICY_VERSION_MINIMUM lets CMake 4 configure dependencies that declare < 3.5.
 # Old gnulib-based build tools don't compile against Alpine's fortify-headers; they never ship.
 ARG BUILD_TOOLS_NO_FORTIFY="m4 bison flex"
-COPY conanfile.txt .
+COPY conanfile.txt conan.lock ./
 RUN conan profile detect --force \
     && printf '\n[platform_tool_requires]\ncmake/%s\n' "$(cmake --version | awk 'NR==1{print $3}')" \
        >> "$(conan profile path default)" \
@@ -27,7 +28,8 @@ RUN conan profile detect --force \
     && for t in ${BUILD_TOOLS_NO_FORTIFY}; do \
          printf '%s/*:tools.build:cflags=["-U_FORTIFY_SOURCE"]\n' "$t" >> "$(conan profile path default)"; \
        done \
-    && conan install . --build="*" -s build_type=Release -s compiler.cppstd=gnu20 \
+    && conan install . --build="*" --lockfile=conan.lock --lockfile-partial \
+       -s build_type=Release -s compiler.cppstd=gnu20 \
        -c "trantor/*:tools.build:cxxflags=[\"-Wno-error=unused-result\"]" \
        -c "tools.cmake.cmaketoolchain:extra_variables={'CMAKE_POLICY_VERSION_MINIMUM': '3.5'}" \
     && conan cache clean "*" --source --build --temp

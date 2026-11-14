@@ -317,7 +317,7 @@ docker build -f docker/Dockerfile -t valhalla-server-run:local .
 container build -f docker/Dockerfile -t valhalla-server-run:local .
 ```
 
-The build compiles every C++ dependency from source on Alpine and runs the unit tests; the build fails if a test fails. The first build takes a long time; later builds reuse the cached dependency layer until `conanfile.txt` changes.
+The build compiles every C++ dependency from source on Alpine and runs the unit tests; the build fails if a test fails. The first build takes a long time; later builds reuse the cached dependency layer until `conanfile.txt` or `conan.lock` changes.
 
 **Release downloads.** Each GitHub Release also attaches `server-alpine-amd64.tar.gz` and `server-alpine-arm64.tar.gz`. These are built on Alpine (musl libc) and only run on Alpine-based systems; everywhere else use the Docker image, or [build from source](#build-from-source).
 
@@ -515,11 +515,12 @@ tests/                  # Catch2 unit tests (+ vendored Catch CMake helpers)
 docs/                   # Generated API docs: api.html (embedded), openapi.json, Postman collection
 tools/
 ├── cmake/              # CMake helpers (HTML embedding, docs generation)
-├── conan/              # Conan helper variables
+├── conan/              # Conan helper variables, lockfile update script
 └── docs/               # API docs generator (build.sh, build_docs.py, Swagger UI assets)
 api_tests/              # Request payloads and samples used by test_api.sh
 docker/                 # All-in-one Alpine image (Dockerfile + entrypoint)
 .github/                # Release workflow and Dependabot config
+conan.lock              # Pinned dependency versions (all platforms)
 init.sql                # Database schema
 build.sh                # Full build + unit tests + API tests
 run_release.sh          # Run build/Release/server with .env loaded
@@ -534,6 +535,7 @@ fuzz_auth.sh, sqlmap_test.sh, schemathesis_test.sh  # Security and fuzz testing 
 - **Editor support:** `.clangd` provides LSP configuration; `.vscode/` and `.zed/` settings are included. `CMAKE_EXPORT_COMPILE_COMMANDS` is on, so `compile_commands.json` is generated for tooling.
 - **Warnings:** built with `-Wall -Wextra -pedantic`.
 - **Versioning:** the current Git tag is embedded into the binary at build time via `get_tag.sh`.
+- **Dependencies:** `conan.lock` pins the exact version and recipe revision of every Conan package, for the Alpine Docker builds (amd64 and arm64) and for local macOS/Linux builds. Conan uses it automatically. To change or update dependencies, edit `conanfile.txt` if needed, run `tools/conan/update_lock.sh`, and commit both files. Don't use a plain `conan lock create .`: it locks only your own platform, and the Docker build would then fail.
 - **Build options:** `-DENABLE_TESTS=OFF` skips the unit tests (default `ON`); `-DVALHALLA_BUILD_DOCS=OFF` skips regenerating the API docs (default `ON`). Debug builds on Linux enable AddressSanitizer, UndefinedBehaviorSanitizer and LeakSanitizer.
 - **Tests:** a Catch2 suite lives in `tests/`. It runs without a database, so it works on any machine. `build.sh` runs it through the `conan-debug`/`conan-release` CTest presets, and building the Docker image runs it too, on Alpine.
 
