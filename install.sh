@@ -85,7 +85,7 @@ BIN_DIR="$(absolute "$BIN_DIR")"
 
 # Files managed by this installer (relative to DIR).
 # The .sh names are from earlier installs; they're removed on update.
-MANAGED="valhalla test_api schemathesis_test installer api_tests/payloads docs/openapi.json VERSION deploy.sh test_api.sh schemathesis_test.sh"
+MANAGED="valhalla test_api schemathesis_test installer api_tests/payloads docs/openapi.json VERSION update-state update-state.lock deploy.sh test_api.sh schemathesis_test.sh"
 
 # ── rc files ───────────────────────────────────────────────────────────────
 # rc_files: the rc files to manage: each of ~/.zshrc / ~/.bashrc that exists,

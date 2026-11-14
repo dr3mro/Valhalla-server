@@ -92,6 +92,9 @@
 #   VALHALLA_DATA_DIR    where dumps go (default ~/.local/share/valhalla;
 #                        dumps in its dumps/ folder)
 #   VALHALLA_WAIT        seconds to wait for the server to answer (default 60)
+#   VALHALLA_NO_UPDATE_CHECK=1  don't check for or show updates
+#   VALHALLA_UPDATE_INTERVAL  seconds between update checks (default 21600)
+#   VALHALLA_NERD=0|1    use Nerd Font icons (default: if one is installed)
 #   VALHALLA_FANCY       help style: 0 plain, 1 colors, 2 + unicode, 3 + emoji
 #                        (default: what the terminal supports; NO_COLOR=1
 #                        also gives plain)
@@ -108,6 +111,11 @@
 # restores an existing saved file, or saves the current data if there's none
 # yet. A dump made by a different image prints a warning: if that image
 # changed the schema, the old schema comes back.
+#
+# Updates: every few hours a background job checks (when online) whether a
+# newer Docker image or tool version exists; the next commands then show a
+# table with the installed and latest versions (in a terminal only, styled
+# as far as it supports). The check never delays a command.
 #
 # Runtime: Apple `container` if installed, otherwise docker.
 #
@@ -296,7 +304,7 @@ help_text() { sed -n '2,/^$/s/^# \{0,1\}//p' "$SCRIPT"; }
 fancy_level() {
   local is_tty="${1:-0}"
   if [[ -n ${VALHALLA_FANCY:-} ]]; then
-    echo "$VALHALLA_FANCY"
+    case "$VALHALLA_FANCY" in 0 | 1 | 2 | 3) echo "$VALHALLA_FANCY" ;; *) echo 0 ;; esac
     return
   fi
   [[ $is_tty == 1 && -z ${NO_COLOR:-} && ${TERM:-dumb} != dumb ]] || { echo 0; return; }
@@ -1402,9 +1410,10 @@ host_arch() {
 registry_digest() {
   local repo="${1#docker.io/}" tag="$2" token
   [[ $repo == */* ]] || repo="library/$repo"
-  token="$(curl -fsS "https://auth.docker.io/token?service=registry.docker.io&scope=repository:${repo}:pull" |
-    python3 -c 'import json, sys; print(json.load(sys.stdin)["token"])')" || return 1
-  curl -fsSI \
+  token="$(curl -fsS -m 10 "https://auth.docker.io/token?service=registry.docker.io&scope=repository:${repo}:pull" |
+    sed -n 's/.*"token": *"\([^"]*\)".*/\1/p')" || return 1
+  [[ -n $token ]] || return 1
+  curl -fsSI -m 10 \
     -H "Authorization: Bearer $token" \
     -H "Accept: application/vnd.oci.image.index.v1+json, application/vnd.docker.distribution.manifest.list.v2+json, application/vnd.oci.image.manifest.v1+json, application/vnd.docker.distribution.manifest.v2+json" \
     "https://registry-1.docker.io/v2/${repo}/manifests/${tag}" |
@@ -1433,6 +1442,225 @@ except Exception:
   note "set VALHALLA_BUILD_MEMORY to change, or restart it yourself with: container builder start)"
   container builder stop >/dev/null 2>&1 || true
   container builder start --cpus "$cpus" --memory "${want_gb}g" >/dev/null
+}
+
+# ── update check ───────────────────────────────────────────────────────────
+# A background job (at most every VALHALLA_UPDATE_INTERVAL seconds) checks
+# GitHub and Docker Hub and writes UPDATE_STATE; every run only reads that
+# file, so commands never wait on the network. The notice goes to stderr and
+# only to an interactive terminal.
+REPO_SLUG="dr3mro/Valhalla-server"
+UPDATE_STATE="$DATA_DIR/update-state"
+UPDATE_INTERVAL="${VALHALLA_UPDATE_INTERVAL:-21600}"
+
+state_get() { [[ -f $UPDATE_STATE ]] && sed -n "s/^$1=//p" "$UPDATE_STATE" | head -n1; return 0; }
+
+# forget_update_state: after update/build/install, so the next run re-checks
+# instead of showing what was just installed.
+forget_update_state() { rm -f "$UPDATE_STATE"; }
+
+# tool_installed_sha: the commit this installed copy came from; empty for a
+# checkout or a copy installed from a local checkout (nothing to compare).
+tool_installed_sha() {
+  [[ -f $ROOT/VERSION ]] || return 0
+  local v
+  v="$(cat "$ROOT/VERSION")"
+  [[ $v == local* ]] && return 0
+  echo "${v##* }"
+}
+
+# update_refresh: the background check. Writes UPDATE_STATE atomically.
+update_refresh() {
+  local lock="$UPDATE_STATE.lock" now tmp
+  mkdir -p "$DATA_DIR"
+  # One check at a time; a lock older than 2 minutes is stale.
+  if ! mkdir "$lock" 2>/dev/null; then
+    [[ -n $(find "$lock" -maxdepth 0 -mmin +2 2>/dev/null) ]] || return 0
+    rmdir "$lock" 2>/dev/null; mkdir "$lock" 2>/dev/null || return 0
+  fi
+  now="$(date +%s)"
+  tmp="$UPDATE_STATE.tmp.$$"
+  {
+    echo "checked_at=$now"
+    if ! curl -fsS -m 4 -o /dev/null https://api.github.com 2>/dev/null; then
+      echo "online=0"
+    else
+      echo "online=1"
+      local latest_sha release installed ref repo tag running latest version
+      latest_sha="$(curl -fsSL -m 8 -H "Accept: application/vnd.github.sha" \
+        "https://api.github.com/repos/$REPO_SLUG/commits/main" 2>/dev/null || true)"
+      [[ $latest_sha =~ ^[0-9a-f]{40}$ ]] || latest_sha=""
+      release="$(curl -fsSL -m 8 "https://api.github.com/repos/$REPO_SLUG/releases/latest" 2>/dev/null |
+        sed -n 's/.*"tag_name": *"\([^"]*\)".*/\1/p' | head -n1 || true)"
+      # No GitHub releases: the highest version tag instead.
+      if [[ -z $release ]]; then
+        release="$(curl -fsSL -m 8 "https://api.github.com/repos/$REPO_SLUG/tags?per_page=100" 2>/dev/null |
+          sed -n 's/.*"name": *"\(v\{0,1\}[0-9][0-9.]*\)".*/\1/p' | sort -V | tail -n1 || true)"
+      fi
+      installed="$(tool_installed_sha)"
+      echo "release=$release"
+      echo "tool_installed=$installed"
+      echo "tool_latest=$latest_sha"
+      if [[ -n $installed && -n $latest_sha && $installed != "$latest_sha" ]]; then
+        echo "tool_update=1"
+      else
+        echo "tool_update=0"
+      fi
+      # The container's image, if it's this repo's published image.
+      if [[ -n ${RT:-} ]] && exists; then
+        ref="$(container_image)"
+        repo="${ref%:*}"; tag="${ref##*:}"
+        if [[ ${repo#docker.io/} == "${IMAGE_REPO#docker.io/}" ]]; then
+          running="$(container_digest)"
+          latest="$(registry_digest "$repo" latest 2>/dev/null || true)"
+          version="$(server_version_line | sed -E 's/.*[Vv]ersion[^:]*:[[:space:]]*//; s/[[:space:]]+$//')"
+          # Which version tag is "latest"? (it moves with every release,
+          # pre-releases included, so ask Docker Hub rather than git tags)
+          local latest_version=""
+          if [[ -n $latest ]] && command -v python3 >/dev/null 2>&1; then
+            latest_version="$(curl -fsSL -m 10 "https://hub.docker.com/v2/repositories/${repo#docker.io/}/tags?page_size=25" 2>/dev/null |
+              DIGEST="$latest" python3 -c '
+import json, os, sys
+try:
+    d = json.load(sys.stdin)
+except Exception:
+    sys.exit(0)
+for t in d.get("results", []):
+    if t.get("name") != "latest" and t.get("digest") == os.environ["DIGEST"]:
+        print(t["name"]); break' 2>/dev/null || true)"
+          fi
+          echo "image_latest_version=${latest_version:-$release}"
+          echo "image_ref=$ref"
+          echo "image_version=$version"
+          echo "image_running=$running"
+          echo "image_latest=$latest"
+          if [[ -n $running && -n $latest && $running != "$latest" ]]; then
+            echo "image_update=1"
+          else
+            echo "image_update=0"
+          fi
+          echo "image_tag=$tag"
+        fi
+      fi
+    fi
+  } >"$tmp" 2>/dev/null
+  mv -f "$tmp" "$UPDATE_STATE"
+  rmdir "$lock" 2>/dev/null || true
+}
+
+# schedule_update_check: start update_refresh in the background when the
+# saved result is older than UPDATE_INTERVAL.
+schedule_update_check() {
+  [[ ${VALHALLA_NO_UPDATE_CHECK:-0} == 1 ]] && return 0
+  local checked now
+  checked="$(state_get checked_at)"
+  now="$(date +%s)"
+  if [[ $checked =~ ^[0-9]+$ ]] && ((now - checked < UPDATE_INTERVAL)); then
+    return 0
+  fi
+  (update_refresh >/dev/null 2>&1 </dev/null &)
+  return 0
+}
+
+# nerd_font: is a Nerd Font installed? (Installed isn't proof the terminal
+# uses it, so VALHALLA_NERD=0/1 overrides.)
+nerd_font() {
+  case "${VALHALLA_NERD:-}" in 1) return 0 ;; 0) return 1 ;; esac
+  if [[ $(uname -s) == Darwin ]]; then
+    local f
+    for f in "$HOME"/Library/Fonts/* /Library/Fonts/*; do
+      [[ $f == *[Nn]erd* ]] && return 0
+    done
+    return 1
+  else
+    command -v fc-list >/dev/null 2>&1 && fc-list 2>/dev/null | grep -qi 'nerd'
+  fi
+}
+
+# show_update_notice: prints the update table (stderr, terminals only).
+show_update_notice() {
+  [[ ${VALHALLA_NO_UPDATE_CHECK:-0} == 1 ]] && return 0
+  [[ -t 2 ]] || return 0
+  local tool image
+  tool="$(state_get tool_update)"; image="$(state_get image_update)"
+  [[ $tool == 1 || $image == 1 ]] || return 0
+
+  local level is_tty=1
+  level="$(fancy_level "$is_tty")"
+  local e R="" B="" D="" T="" H1="" OK="" OLD="" NEW=""
+  e="$(printf '\033')"
+  if [[ $level -ge 1 ]]; then
+    R="${e}[0m"; B="${e}[1m"; D="${e}[2m"
+    if [[ "$(tput colors 2>/dev/null || echo 8)" -ge 256 ]]; then
+      T="${e}[1;38;5;213m"; H1="${e}[1;38;5;111m"; OLD="${e}[38;5;210m"; NEW="${e}[1;38;5;114m"; OK="${e}[38;5;117m"
+    else
+      T="${e}[1;35m"; H1="${e}[1;34m"; OLD="${e}[31m"; NEW="${e}[1;32m"; OK="${e}[36m"
+    fi
+  fi
+
+  # Icons: Nerd Font glyphs (1 column), emoji (2 columns) or none.
+  local i_gift="" i_img="" i_tool="" iw=0
+  if [[ $level -ge 2 ]] && nerd_font; then
+    i_gift=$'\xef\x81\xab'; i_img=$'\xef\x8c\x88'; i_tool=$'\xef\x82\xad'; iw=2   # nf-fa-gift, nf-linux-docker, nf-fa-wrench
+  elif [[ $level -ge 3 ]]; then
+    i_gift="🎁"; i_img="🐳"; i_tool="🔧"; iw=3
+  fi
+
+  # Rows: name|installed|latest
+  local -a rows=()
+  local inst lat
+  if [[ $image == 1 ]]; then
+    inst="$(state_get image_version)"; [[ -n $inst ]] || inst="$(state_get image_running | cut -c8-19)"
+    lat="$(state_get image_latest_version)"; [[ -n $lat ]] || lat="$(state_get image_latest | cut -c8-19)"
+    rows+=("img|Docker image|${inst:-?}|${lat:-newer}")
+  fi
+  if [[ $tool == 1 ]]; then
+    inst="$(state_get tool_installed | cut -c1-7)"; lat="$(state_get tool_latest | cut -c1-7)"
+    rows+=("tool|valhalla tool|${inst:-?}|${lat:-newer}")
+  fi
+
+  # Column widths (text only; icons are added with their own width).
+  local w1=9 w2=9 w3=6 r name a b k
+  for r in "${rows[@]}"; do
+    IFS='|' read -r k name a b <<<"$r"
+    ((${#name} + iw > w1)) && w1=$((${#name} + iw))
+    ((${#a} > w2)) && w2=${#a}
+    ((${#b} > w3)) && w3=${#b}
+  done
+  local tl tr bl br hz vt lj rj tj bj xj
+  if [[ $level -ge 2 ]]; then
+    tl="╭"; tr="╮"; bl="╰"; br="╯"; hz="─"; vt="│"; lj="├"; rj="┤"; tj="┬"; bj="┴"; xj="┼"
+  else
+    tl="+"; tr="+"; bl="+"; br="+"; hz="-"; vt="|"; lj="+"; rj="+"; tj="+"; bj="+"; xj="+"
+  fi
+  rule() { local n=$1 out=""; while ((n-- > 0)); do out+="$hz"; done; printf '%s' "$out"; }
+  pad() { printf '%s%*s' "$1" $(($2 - $3)) ""; } # text, width, visible length
+
+  local inner=$((w1 + w2 + w3 + 8)) title="Update available" icon_w=0
+  [[ ${#rows[@]} -gt 1 ]] && title="Updates available"
+  [[ -n $i_gift ]] && icon_w=$iw
+  {
+    echo
+    printf '%s%s%s%s\n' "$T" "$tl" "$(rule $((inner)))" "$tr$R"
+    printf '%s%s %s%s%s %s%s\n' "$T" "$vt" "${i_gift:+$i_gift }" "$B" "$(pad "$title" $((inner - 2 - icon_w)) ${#title})" "$T$vt" "$R"
+    printf '%s%s%s%s%s%s%s%s%s\n' "$T" "$lj" "$(rule $((w1 + 2)))" "$tj" "$(rule $((w2 + 2)))" "$tj" "$(rule $((w3 + 2)))" "$rj" "$R"
+    printf '%s%s%s %s %s%s %s %s%s %s %s%s%s\n' "$T" "$vt" "$R$H1" "$(pad Component "$w1" 9)" "$T$vt" "$R$H1" "$(pad Installed "$w2" 9)" "$T$vt" "$R$H1" "$(pad Latest "$w3" 6)" "$T" "$vt" "$R"
+    printf '%s%s%s%s%s%s%s%s%s\n' "$T" "$lj" "$(rule $((w1 + 2)))" "$xj" "$(rule $((w2 + 2)))" "$xj" "$(rule $((w3 + 2)))" "$rj" "$R"
+    for r in "${rows[@]}"; do
+      IFS='|' read -r k name a b <<<"$r"
+      local ic=""; [[ $k == img ]] && ic="$i_img"; [[ $k == tool ]] && ic="$i_tool"
+      local cell="$name" vis=${#name}
+      if [[ -n $ic ]]; then cell="$ic $name"; vis=$((${#name} + iw)); fi
+      printf '%s%s%s %s %s%s %s%s %s%s %s%s %s%s\n' "$T" "$vt" "$R" "$(pad "$cell" "$w1" "$vis")" "$T$vt" "$R$OLD" "$(pad "$a" "$w2" ${#a})" "$R" "$T$vt" "$R$NEW" "$(pad "$b" "$w3" ${#b})" "$R" "$T$vt" "$R"
+    done
+    printf '%s%s%s%s%s%s%s%s%s\n' "$T" "$bl" "$(rule $((w1 + 2)))" "$bj" "$(rule $((w2 + 2)))" "$bj" "$(rule $((w3 + 2)))" "$br" "$R"
+    local how=""
+    [[ $image == 1 ]] && how="$PROG update"
+    [[ $tool == 1 ]] && how="${how:+$how  ·  }$PROG install"
+    [[ $level -lt 2 ]] && how="${how//  ·  /  and  }"
+    printf '  %sUpdate with:%s %s%s%s   %s(hide: VALHALLA_NO_UPDATE_CHECK=1)%s\n\n' "$D" "$R" "$OK" "$how" "$R" "$D" "$R"
+  } >&2
+  return 0
 }
 
 # ── commands ───────────────────────────────────────────────────────────────
@@ -1500,6 +1728,7 @@ recreate() {
     warn_dump_image "$(container_digest)"
     persist_load
   fi
+  forget_update_state
   return 0
 }
 
@@ -1864,6 +2093,7 @@ cmd_install() {
   new="$(fetch_installer)"
   sh "$new" "${args[@]}" || { rm -f "$new"; die "the installer failed"; }
   rm -f "$new"
+  forget_update_state
 }
 
 cmd_uninstall() {
@@ -1924,6 +2154,13 @@ known=" $(command_names)"
 install_completion
 
 resolve_runtime
+case "$command" in
+  install | uninstall) ;;
+  *)
+    show_update_notice
+    schedule_update_check
+    ;;
+esac
 check_deps "$command" "${ARGS[0]:-}"
 
 case "$command" in

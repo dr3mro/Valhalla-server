@@ -496,6 +496,8 @@ Every `run`, `update` and `restart` waits until `/api/v2/hello` answers and prin
 
 It passes every variable in a settings file to the container, using the first it finds: `.env` in the directory you run it from, `.env` next to the script (your checkout), or `~/.local/share/valhalla/config` (same format). The installer creates that last one with defaults for a small local container: `SERVER_THREADS = 2`, `DB_MAX_CONN = 2`, and raised `MAX_REQUESTS`/`MAX_FPS`. It's yours from then on: kept on update, and on uninstall unless it's still the unedited default. The script itself hard-codes no server settings; anything no `.env` sets falls back to the server's defaults (4 threads, 10 connections, `MAX_REQUESTS` 10000, `MAX_FPS` 100). Only one file is used; they aren't merged. Variables set in the shell win over `.env` for a single run (`SERVER_THREADS=4 ./valhalla.sh update`). Quoted values, spaces around `=` and ` # comments` are fine. After editing `.env`, run `./valhalla.sh update` to apply it. Use another file with `--env-file path` (or `VALHALLA_ENV_FILE`), or skip it with `--env-file none`.
 
+**Update notices.** Every few hours (`VALHALLA_UPDATE_INTERVAL`, default 6 hours) a background job checks, when you're online, whether Docker Hub has a newer image than your container runs and whether GitHub has a newer version of the tool than your installed copy. The next commands then show a small table with the installed and latest versions and the command that updates each (`valhalla update` for the image, `valhalla install` for the tool). The check never delays a command. The table only appears in an interactive terminal, styled as far as it supports: colors, Unicode box drawing, emoji, or Nerd Font icons when a Nerd Font is installed (`VALHALLA_NERD=0/1` overrides that guess). Turn it off with `VALHALLA_NO_UPDATE_CHECK=1`. A checkout, or a copy installed from one, isn't checked for tool updates.
+
 **Login token secret.** `TOKEN_SECRET` signs the JWT login tokens, and the tool never lets it change by itself between starts (which would log everyone out). The installer generates one into `~/.local/share/valhalla/config`. A container gets the first of: `--token-secret`, `TOKEN_SECRET` in the shell, the `.env` in use, `~/.local/share/valhalla/config` (checked even when a `.env` is in use), or the replaced container's secret. If there's none, one is generated once and saved to `config`. `valhalla env` shows which one is used, and `valhalla secret` replaces it (asking first).
 
 **Persistence.** Without it, the bundled database starts from `init.sql` on every container start. Add `--persist` once (`valhalla run --persist`, `valhalla update --persist`, or `VALHALLA_PERSIST=1` in `.env`) and the database is kept in `~/.local/share/valhalla/dumps/<name>-persist.sql`, which is mounted into the container. The image's entrypoint loads it at start instead of `init.sql` and saves it whenever the container stops, including restarts outside the tool (Docker Desktop, a reboot). The tool also saves it before `stop`, `restart`, `update`, `build` and `delete` (the previous dump is kept as `.prev`), and if that save fails, nothing is stopped. The setting is stored in the container, so later commands remember it; `--no-persist` turns it off. `valhalla status` shows whether it's on and when the database was last saved. Restoring a dump made by a different image prints a warning, because if that image changed the schema the old schema comes back. Images released before this feature still work: the tool restores the dump itself after the container starts.
@@ -598,6 +600,9 @@ Other settings (environment variables):
   VALHALLA_DATA_DIR    where dumps go (default ~/.local/share/valhalla;
                        dumps in its dumps/ folder)
   VALHALLA_WAIT        seconds to wait for the server to answer (default 60)
+  VALHALLA_NO_UPDATE_CHECK=1  don't check for or show updates
+  VALHALLA_UPDATE_INTERVAL  seconds between update checks (default 21600)
+  VALHALLA_NERD=0|1    use Nerd Font icons (default: if one is installed)
   VALHALLA_FANCY       help style: 0 plain, 1 colors, 2 + unicode, 3 + emoji
                        (default: what the terminal supports; NO_COLOR=1
                        also gives plain)
@@ -614,6 +619,11 @@ tool restoring the dump after start. Turning it on (run/update --persist)
 restores an existing saved file, or saves the current data if there's none
 yet. A dump made by a different image prints a warning: if that image
 changed the schema, the old schema comes back.
+
+Updates: every few hours a background job checks (when online) whether a
+newer Docker image or tool version exists; the next commands then show a
+table with the installed and latest versions (in a terminal only, styled
+as far as it supports). The check never delays a command.
 
 Runtime: Apple `container` if installed, otherwise docker.
 
