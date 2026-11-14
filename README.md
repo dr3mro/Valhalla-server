@@ -29,7 +29,7 @@ valhalla doc       # open the interactive API docs in your browser
 **3. Day to day:**
 
 ```bash
-valhalla update    # newest image, same settings
+valhalla update    # newest image, same settings; frees the old image's disk space
 valhalla show      # follow the log
 valhalla psql      # SQL shell on the bundled database
 valhalla dump      # save the database to ~/.local/share/valhalla/dumps
@@ -463,7 +463,7 @@ The installed copy has everything except `build`, which needs a full checkout of
 
 ```bash
 ./valhalla.sh run             # create (pulling the image if needed) or start the container
-./valhalla.sh update          # pull :latest and recreate the container with the same settings
+./valhalla.sh update          # pull :latest, recreate the container with the same settings, free old images
 ./valhalla.sh update v1.2.3   # same, for a specific tag
 ./valhalla.sh build           # build the image from this checkout and run it
 ./valhalla.sh stop            # stop it without removing it (run starts it again)
@@ -496,6 +496,8 @@ Every `run`, `update` and `restart` waits until `/api/v2/hello` answers and prin
 
 It passes every variable in a settings file to the container, using the first it finds: `.env` in the directory you run it from, `.env` next to the script (your checkout), or `~/.local/share/valhalla/config` (same format). The installer creates that last one with defaults for a small local container: `SERVER_THREADS = 2`, `DB_MAX_CONN = 2`, and raised `MAX_REQUESTS`/`MAX_FPS`. It's yours from then on: kept on update, and on uninstall unless it's still the unedited default. The script itself hard-codes no server settings; anything no `.env` sets falls back to the server's defaults (4 threads, 10 connections, `MAX_REQUESTS` 10000, `MAX_FPS` 100). Only one file is used; they aren't merged. Variables set in the shell win over `.env` for a single run (`SERVER_THREADS=4 ./valhalla.sh update`). Quoted values, spaces around `=` and ` # comments` are fine. After editing `.env`, run `./valhalla.sh update` to apply it. Use another file with `--env-file path` (or `VALHALLA_ENV_FILE`), or skip it with `--env-file none`.
 
+**Disk space.** After `update` and `build`, the tool removes its own older images that no container uses: never the image the new container runs, and never the `-deps` build image. It then frees leftover layers. On Docker that's only the dangling images that came from this repository; Apple Container can't tell where an image came from, so there it runs `container image prune`, which removes only dangling (untagged, unused) images. It reports the image disk usage before and after. `-n` shows what it would remove, and `--no-prune` (or `VALHALLA_NO_PRUNE=1`) keeps everything.
+
 **Update notices.** Every few hours (`VALHALLA_UPDATE_INTERVAL`, default 6 hours) a background job checks, when you're online, whether Docker Hub has a newer image than your container runs and whether GitHub has a newer version of the tool than your installed copy. The next commands then show a small table with the installed and latest versions and the command that updates each (`valhalla update` for the image, `valhalla install` for the tool). The check never delays a command. The table only appears in an interactive terminal, styled as far as it supports: colors, Unicode box drawing, emoji, or Nerd Font icons when a Nerd Font is installed (`VALHALLA_NERD=0/1` overrides that guess). Turn it off with `VALHALLA_NO_UPDATE_CHECK=1`. A checkout, or a copy installed from one, isn't checked for tool updates.
 
 **Login token secret.** `TOKEN_SECRET` signs the JWT login tokens, and the tool never lets it change by itself between starts (which would log everyone out). The installer generates one into `~/.local/share/valhalla/config`. A container gets the first of: `--token-secret`, `TOKEN_SECRET` in the shell, the `.env` in use, `~/.local/share/valhalla/config` (checked even when a `.env` is in use), or the replaced container's secret. If there's none, one is generated once and saved to `config`. `valhalla env` shows which one is used, and `valhalla secret` replaces it (asking first).
@@ -516,11 +518,12 @@ Container:
   run [tag]        Start the container. Creates it (pulling the image if it's
                    missing) if it doesn't exist; starts it if it's stopped.
   update [tag]     Pull the image and recreate the container with the same
-                   settings (re-reading .env). Keeps the old container's
-                   TOKEN_SECRET unless .env or the shell sets one.
+                   settings (re-reading .env), then remove the old image
+                   to free disk space (--no-prune keeps it).
   build [tag]      Build the image from this checkout (version from
                    `git describe`) as valhalla-server-run:<tag> (default
-                   local), then recreate the container from it.
+                   local), then recreate the container from it and remove
+                   the old image (--no-prune keeps it).
   stop             Stop the container without removing it (run starts it).
   restart          Restart the container.
   delete           Remove the container (the image stays; asks first).
@@ -582,6 +585,11 @@ Options (before or after the command):
                        container, so later commands remember it
   --no-persist         turn persistence off (with update/build: recreate
                        without it)
+  --no-prune           update/build: keep the replaced images (env
+                       VALHALLA_NO_PRUNE=1). Otherwise unused older images
+                       of this tool are removed, plus dangling layers (on
+                       Docker only those from this repo; Apple container's
+                       prune removes all dangling images).
   --token-secret S     JWT signing secret for a new container (wins over
                        the env file and config; visible in your shell
                        history, so prefer the config file)

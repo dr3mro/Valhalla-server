@@ -8,11 +8,12 @@
 #   run [tag]        Start the container. Creates it (pulling the image if it's
 #                    missing) if it doesn't exist; starts it if it's stopped.
 #   update [tag]     Pull the image and recreate the container with the same
-#                    settings (re-reading .env). Keeps the old container's
-#                    TOKEN_SECRET unless .env or the shell sets one.
+#                    settings (re-reading .env), then remove the old image
+#                    to free disk space (--no-prune keeps it).
 #   build [tag]      Build the image from this checkout (version from
 #                    `git describe`) as valhalla-server-run:<tag> (default
-#                    local), then recreate the container from it.
+#                    local), then recreate the container from it and remove
+#                    the old image (--no-prune keeps it).
 #   stop             Stop the container without removing it (run starts it).
 #   restart          Restart the container.
 #   delete           Remove the container (the image stays; asks first).
@@ -74,6 +75,11 @@
 #                        container, so later commands remember it
 #   --no-persist         turn persistence off (with update/build: recreate
 #                        without it)
+#   --no-prune           update/build: keep the replaced images (env
+#                        VALHALLA_NO_PRUNE=1). Otherwise unused older images
+#                        of this tool are removed, plus dangling layers (on
+#                        Docker only those from this repo; Apple container's
+#                        prune removes all dangling images).
 #   --token-secret S     JWT signing secret for a new container (wins over
 #                        the env file and config; visible in your shell
 #                        history, so prefer the config file)
@@ -230,6 +236,7 @@ DRY_RUN=0
 ASSUME_YES=0
 PERSIST=""     # --persist (1) / --no-persist (0); empty: keep the container's setting
 CLI_TOKEN_SECRET="" # --token-secret
+NO_PRUNE="${VALHALLA_NO_PRUNE:-0}" # --no-prune: keep old images after update/build
 OLD_PERSIST="" # VALHALLA_PERSIST of the container being replaced
 # One place for dumps, whether this runs from a checkout or the installed copy.
 DATA_DIR="${VALHALLA_DATA_DIR:-$HOME/.local/share/valhalla}"
@@ -283,6 +290,7 @@ OPTIONS=(
   "-p --persist|keep the database across stop/restart/update|"
   "--no-persist|turn persistence off|"
   "--token-secret|JWT signing secret for this container|value"
+  "--no-prune|keep old images after update/build|"
   "-h --help|show help|"
 )
 
@@ -524,6 +532,7 @@ while [[ $# -gt 0 ]]; do
     --token-secret) [[ $# -ge 2 ]] || die "--token-secret needs a value"; CLI_TOKEN_SECRET="$2"; shift 2 ;;
     --token-secret=*) CLI_TOKEN_SECRET="${1#*=}"; shift ;;
     --no-persist) PERSIST=0; shift ;;
+    --no-prune) NO_PRUNE=1; shift ;;
     -h | --help) ARGS=(help); break ;;
     --) shift; ARGS+=("$@"); break ;;
     -*) die "unknown option: $1 (see: $PROG help)" ;;
@@ -1366,6 +1375,8 @@ plan_recreate() {
   echo "  TOKEN_SECRET from: $TOKEN_SOURCE"
   echo "  with these variables:"
   print_env | sed 's/^/    /'
+  [[ ${PLAN_PRUNE:-0} == 1 ]] && prune_images
+  return 0
 }
 
 # ── helpers ────────────────────────────────────────────────────────────────
@@ -1442,6 +1453,84 @@ except Exception:
   note "set VALHALLA_BUILD_MEMORY to change, or restart it yourself with: container builder start)"
   container builder stop >/dev/null 2>&1 || true
   container builder start --cpus "$cpus" --memory "${want_gb}g" >/dev/null
+}
+
+# ── image cleanup ──────────────────────────────────────────────────────────
+# After update/build: remove this tool's older images that no container uses
+# (never the one the container runs, never the -deps build image), then free
+# leftover layers. Docker: only dangling images that came from this repo.
+# Apple container can't filter by origin; its prune only removes dangling
+# (untagged, unreferenced) images.
+
+# images_size: the runtime's total image size, for the before/after report.
+images_size() {
+  if [[ $RT == docker ]]; then
+    docker system df --format '{{.Type}} {{.Size}}' 2>/dev/null | sed -n 's/^Images //p'
+  else
+    container system df 2>/dev/null | awk '$1 == "Images" {print $4, $5}'
+  fi
+}
+
+# old_image_refs: repo:tag of this tool's run images that no container uses,
+# except KEEP (the image the container runs now).
+old_image_refs() {
+  local keep="${1#docker.io/}" used refs ref
+  local pattern="^((docker\.io/)?${IMAGE_REPO#docker.io/}|${LOCAL_REPO}):"
+  if [[ $RT == docker ]]; then
+    used="$(docker ps -a --format '{{.Image}}' 2>/dev/null | sed 's|^docker\.io/||' | sort -u)"
+    refs="$(docker image ls --format '{{.Repository}}:{{.Tag}}' 2>/dev/null | grep -E "$pattern" | grep -v ':<none>$' || true)"
+  else
+    used="$(container list --all 2>/dev/null | awk 'NR > 1 {print $2}' | sed 's|^docker\.io/||' | sort -u)"
+    refs="$(container image list 2>/dev/null | awk 'NR > 1 && $2 != "<none>" {print $1 ":" $2}' | grep -E "$pattern" || true)"
+  fi
+  while IFS= read -r ref; do
+    [[ -n $ref ]] || continue
+    ref="${ref#docker.io/}"
+    [[ $ref == "$keep" ]] && continue
+    grep -qxF "$ref" <<<"$used" && continue
+    echo "$ref"
+  done <<<"$refs"
+}
+
+# prune_images: the cleanup after update/build.
+prune_images() {
+  [[ $NO_PRUNE == 1 ]] && return 0
+  local keep before after ref id removed=0
+  keep="$(container_image)"
+  if [[ $DRY_RUN == 1 ]]; then
+    echo "  then remove unused older images:"
+    old_image_refs "$keep" | sed 's/^/    /'
+    if [[ $RT == docker ]]; then
+      echo "    and dangling images left by earlier pulls of $IMAGE_REPO"
+    else
+      echo "    and dangling images (container image prune)"
+    fi
+    return 0
+  fi
+  before="$(images_size)"
+  while IFS= read -r ref; do
+    [[ -n $ref ]] || continue
+    if rt image rm "$ref" >/dev/null 2>&1 || rt image delete "$ref" >/dev/null 2>&1; then
+      note "Removed old image $ref"
+      removed=$((removed + 1))
+    fi
+  done < <(old_image_refs "$keep")
+  if [[ $RT == docker ]]; then
+    for id in $(docker image ls -q --filter dangling=true 2>/dev/null); do
+      docker image inspect -f '{{range .RepoDigests}}{{println .}}{{end}}' "$id" 2>/dev/null |
+        grep -qE "(^|/)${IMAGE_REPO#docker.io/}@" || continue
+      docker image rm "$id" >/dev/null 2>&1 && removed=$((removed + 1))
+    done
+  else
+    container image prune >/dev/null 2>&1 || true
+  fi
+  after="$(images_size)"
+  if [[ -n $before && -n $after && $before != "$after" ]]; then
+    note "Freed image space: $before -> $after"
+  elif [[ $removed -gt 0 ]]; then
+    note "Removed $removed old image(s)"
+  fi
+  return 0
 }
 
 # ── update check ───────────────────────────────────────────────────────────
@@ -1729,6 +1818,7 @@ recreate() {
     persist_load
   fi
   forget_update_state
+  prune_images
   return 0
 }
 
@@ -1736,7 +1826,7 @@ cmd_update() {
   local image
   image="$(image_ref "${1:-}")"
   if [[ $DRY_RUN == 1 ]]; then
-    plan_recreate "$image" "pull $image"
+    PLAN_PRUNE=1 plan_recreate "$image" "pull $image"
     return
   fi
   pull "$image"
@@ -1757,7 +1847,7 @@ cmd_build() {
     echo "Dry run ($RT), nothing changed. Would build:"
     echo "  $RT ${args[*]}"
     [[ $deps == local ]] && echo "  (deps built from source: slow)"
-    plan_recreate "$image" "then run the new image"
+    PLAN_PRUNE=1 plan_recreate "$image" "then run the new image"
     return
   fi
 
