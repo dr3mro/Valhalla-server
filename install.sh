@@ -204,6 +204,9 @@ unlink_command() {
 remove_files() {
   target="$1"
   for f in $MANAGED; do rm -rf "${target:?}/$f"; done
+  # macOS Finder drops .DS_Store files into folders it shows; they'd keep
+  # the folders from being removed.
+  rm -f "$target/.DS_Store" "$target/api_tests/.DS_Store" "$target/docs/.DS_Store"
   rmdir "$target/api_tests" "$target/docs" 2>/dev/null || true
   if rmdir "$target" 2>/dev/null; then
     say "Removed $target"
