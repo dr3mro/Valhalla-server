@@ -65,10 +65,12 @@ RUN VALHALLA_VERSION="${VALHALLA_VERSION}" cmake -S . -B build/Release -G Ninja 
        -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
 
 # Compile, test, strip.
-# ccache persists across builds via a per-arch BuildKit cache mount exported
-# by the local cache backend and stored between runs with actions/cache.
+# buildkit-cache-dance injects /tmp/ccache-{arch} from the host into this
+# cache mount before the build and extracts it back after, so ccache persists
+# across GitHub Actions runs via actions/cache.
 RUN --mount=type=cache,id=ccache-$TARGETARCH,target=/root/.ccache \
-    cmake --build build/Release -j"$(nproc)" --target server unit_tests \
+    CCACHE_MAXSIZE=500M cmake --build build/Release -j"$(nproc)" --target server unit_tests \
+    && ccache -sv \
     && ctest --test-dir build/Release --output-on-failure -j"$(nproc)" --timeout 60 \
     && strip build/Release/server
 
