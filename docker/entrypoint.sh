@@ -16,7 +16,13 @@ if [ -z "${TOKEN_SECRET:-}" ]; then
     echo "TOKEN_SECRET not set: generated a random one for this run" >&2
 fi
 
-PGDATA=/var/lib/postgresql/data
+# Use /dev/shm (tmpfs) when available so the whole cluster lives in RAM.
+# Fall back to the normal data directory if /dev/shm is missing or too small.
+if [ -d /dev/shm ] && [ "$(df -P /dev/shm | awk 'NR==2{print $4}')" -gt 65536 ] 2>/dev/null; then
+    PGDATA=/dev/shm/pgdata
+else
+    PGDATA=/var/lib/postgresql/data
+fi
 
 # Wipe on every start: a restarted (not removed) container still has the old data dir and socket lock
 rm -rf "$PGDATA" /run/postgresql
@@ -27,8 +33,17 @@ chmod 700 "$PGDATA"
 su-exec postgres initdb -D "$PGDATA" -U postgres --auth-local=trust --auth-host=scram-sha-256 \
     --encoding=UTF8 --no-locale >/dev/null
 
+# Data is ephemeral: disable all durability guarantees for maximum throughput.
 su-exec postgres pg_ctl -D "$PGDATA" -w -t 30 \
-    -o "-c listen_addresses=127.0.0.1 -p $DB_PORT" start
+    -o "-c listen_addresses=127.0.0.1 -p $DB_PORT \
+        -c fsync=off \
+        -c synchronous_commit=off \
+        -c full_page_writes=off \
+        -c wal_level=minimal \
+        -c max_wal_senders=0 \
+        -c checkpoint_completion_target=0.9 \
+        -c shared_buffers=128MB \
+        -c work_mem=16MB" start
 
 psql_admin() {
     PGOPTIONS='-c client_min_messages=warning' \
