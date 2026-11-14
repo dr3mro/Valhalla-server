@@ -6,8 +6,53 @@ A high-performance, multi-tenant healthcare backend written in modern C++20. Val
 
 ---
 
+## Quick Start
+
+Run the server with its own bundled PostgreSQL in a container, using Docker or Apple Container (Apple Silicon Macs). You need one of them installed, plus `curl` (and `python3` with Apple Container). The tool checks and tells you what's missing.
+
+**1. Install the `valhalla` command** (no checkout needed):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/dr3mro/Valhalla-server/main/install.sh | sh
+```
+
+This downloads the latest tool from this repository into `~/.bin/valhalla` and adds it to `PATH`, with tab completion, in `~/.zshrc` and/or `~/.bashrc`. Open a new terminal afterwards.
+
+**2. Run it:**
+
+```bash
+valhalla run       # pull the image and start the server on http://127.0.0.1:8080
+valhalla status    # is it up, and which version?
+valhalla doc       # open the interactive API docs in your browser
+```
+
+**3. Day to day:**
+
+```bash
+valhalla update    # newest image, same settings
+valhalla show      # follow the log
+valhalla psql      # SQL shell on the bundled database
+valhalla dump      # save the database (it's reset on every start)
+valhalla test      # run the end-to-end API tests against it
+valhalla stop      # stop it; valhalla run starts it again
+valhalla help      # everything else
+```
+
+Settings: `valhalla` reads `.env` from the directory you run it in (e.g. your checkout of this repository), or else `~/.bin/valhalla/.env` (see [Configuration](#configuration)); every variable in it is passed to the server. Run `valhalla update` after editing it.
+
+Update the tool with `valhalla install` (or `valhalla install v1.2.3` for a specific tag); it fetches the installer from GitHub again. Remove it with:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/dr3mro/Valhalla-server/main/install.sh | sh -s -- --uninstall
+```
+
+From a checkout of this repository, `./valhalla.sh` is the same tool. Details: [Manage it with `valhalla.sh`](#manage-it-with-valhallash). Without the tool: [Run with Docker](#run-with-docker). To build and run natively: [Getting Started](#getting-started).
+
+---
+
 ## Table of Contents
 
+- [Quick Start](#quick-start)
 - [Features](#features)
 - [Architecture](#architecture)
 - [Tech Stack](#tech-stack)
@@ -19,6 +64,7 @@ A high-performance, multi-tenant healthcare backend written in modern C++20. Val
   - [Database setup](#database-setup)
   - [Run the server](#run-the-server)
   - [Run with Docker](#run-with-docker)
+    - [Manage it with `valhalla.sh`](#manage-it-with-valhallash)
 - [Configuration](#configuration)
 - [API Overview](#api-overview)
   - [Interactive API docs](#interactive-api-docs)
@@ -368,6 +414,8 @@ container start valhalla
 container image prune         # optional: remove unused images
 ```
 
+Or let [`valhalla.sh`](#manage-it-with-valhallash) do all of it: `./valhalla.sh update`.
+
 If you run with `--rm` or the shell alias, the pull is all you need: the next `run` uses the new image. To see which version is running, check the `Version` line in the startup banner (`docker logs valhalla` or `container logs valhalla`).
 
 **Settings.** Every variable in [Configuration](#configuration) can be passed with `-e`. Inside this image:
@@ -395,6 +443,193 @@ container build -f docker/Dockerfile -t valhalla-server-run:local .
 The build compiles every C++ dependency from source on Alpine and runs the unit tests; the build fails if a test fails. The first build takes a long time; later builds reuse the cached dependency layer until `conanfile.txt` or `conan.lock` changes.
 
 **Release downloads.** Each GitHub Release also attaches `server-alpine-amd64.tar.gz` and `server-alpine-arm64.tar.gz`. These are built on Alpine (musl libc) and only run on Alpine-based systems; everywhere else use the Docker image, or [build from source](#build-from-source).
+
+#### Manage it with `valhalla.sh`
+
+`valhalla.sh` in the repository root wraps the commands above for both Docker and Apple Container.
+
+**Install it as the `valhalla` command** (no checkout needed). This downloads the latest `valhalla.sh` (installed as `valhalla`), the API test scripts (as `test_api` and `schemathesis_test`) and their payloads from this repository into `~/.bin/valhalla`, makes them executable, and adds that directory to `PATH` with tab completion in `~/.zshrc` and/or `~/.bashrc`:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/dr3mro/Valhalla-server/main/install.sh | sh
+```
+
+Then open a new terminal and use `valhalla` instead of `./valhalla.sh` (e.g. `valhalla run`, `valhalla status`). Run the same command again to update. Your `~/.bin/valhalla/.env` and `dumps/` are kept.
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/dr3mro/Valhalla-server/main/install.sh | sh -s -- --ref v1.2.3   # a specific tag
+curl -fsSL https://raw.githubusercontent.com/dr3mro/Valhalla-server/main/install.sh | sh -s -- --uninstall    # remove it
+```
+
+The installed copy has everything except `build`, which needs a full checkout of the repository. It picks Apple Container when it's installed and Docker otherwise (force one with `VALHALLA_RUNTIME=docker` or `VALHALLA_RUNTIME=container`).
+
+```bash
+./valhalla.sh run             # create (pulling the image if needed) or start the container
+./valhalla.sh update          # pull :latest and recreate the container with the same settings
+./valhalla.sh update v1.2.3   # same, for a specific tag
+./valhalla.sh build           # build the image from this checkout and run it
+./valhalla.sh stop            # stop it without removing it (run starts it again)
+./valhalla.sh restart         # restart it (the database is wiped, as on every start)
+./valhalla.sh status          # state, image, port, health and version
+./valhalla.sh outdated        # is there a newer image on Docker Hub?
+./valhalla.sh show            # follow the log (Ctrl+C stops following, not the server)
+./valhalla.sh logs 50         # last 50 log lines
+./valhalla.sh stats           # live CPU and memory use
+./valhalla.sh env             # what a new container would get from .env, secrets hidden
+./valhalla.sh doc             # open the API docs in the browser
+./valhalla.sh psql            # psql on the bundled database
+./valhalla.sh dump            # save the database to dumps/
+./valhalla.sh restore FILE    # load a dump back (e.g. after restart or update)
+./valhalla.sh shell           # a shell inside the container
+./valhalla.sh test            # run test_api.sh against it (test fuzz / test all for Schemathesis)
+./valhalla.sh secret          # write a random TOKEN_SECRET to .env
+./valhalla.sh install         # install or update the `valhalla` command from GitHub
+./valhalla.sh delete          # remove the container
+./valhalla.sh clean           # remove the container and all local images of it
+```
+
+Options go before or after the command: `--name`, `--port`, `--runtime`, `--env-file`, `-n`/`--dry-run` (see what `run`, `update`, `build`, `restore` or `secret` would do) and `-y`/`--yes`. The first time you run it, it adds tab completion to `~/.zshrc` and/or `~/.bashrc`; open a new terminal to use it (set `VALHALLA_NO_COMPLETION=1` to skip).
+
+Each command first checks the tools it needs (`curl`, `python3` for Apple Container, `jq` for `test`, …) and lists any that are missing, with how to install them.
+
+Every `run`, `update` and `restart` waits until `/api/v2/hello` answers and prints the version line from the log.
+
+It passes every variable in `.env` to the container: the `.env` in the directory you run it from if there is one, otherwise the one next to the script (for the installed `valhalla`, `~/.bin/valhalla/.env`). That way the server runs with the same settings as a native build, including `SERVER_THREADS` and `DB_MAX_CONN`; anything `.env` doesn't set falls back to the server's defaults (4 threads, 10 connections). Variables set in the shell win over `.env` for a single run (`SERVER_THREADS=4 ./valhalla.sh update`). Quoted values and spaces around `=` are fine. After editing `.env`, run `./valhalla.sh update` to apply it. Use another file with `VALHALLA_ENV_FILE=path`, or skip it with `VALHALLA_ENV_FILE=none`.
+
+Full help (`./valhalla.sh help`):
+
+```text
+Run the Valhalla server image locally with Docker or Apple's `container`.
+
+  ./valhalla.sh [options] <command> [args]
+
+Container:
+  run [tag]        Start the container. Creates it (pulling the image if it's
+                   missing) if it doesn't exist; starts it if it's stopped.
+  update [tag]     Pull the image and recreate the container with the same
+                   settings (re-reading .env). Keeps the old container's
+                   TOKEN_SECRET unless .env or the shell sets one.
+  build [tag]      Build the image from this checkout (version from
+                   `git describe`) as valhalla-server-run:<tag> (default
+                   local), then recreate the container from it.
+  stop             Stop the container without removing it (run starts it).
+  restart          Restart the container.
+  delete           Remove the container (the image stays).
+  clean            Remove the container and every local image of the repo.
+Inspect:
+  status           Show state, image, port, health and version.
+  outdated         Compare the container's image with Docker Hub.
+  show             Follow the container's log (Ctrl+C stops following; the
+                   container keeps running).
+  logs [N]         Print the last N log lines (default 100).
+  stats            Live CPU and memory use.
+  env              Print the variables a new container would get (secrets
+                   hidden), without changing anything.
+  doc              Open the API docs in the browser (fails if not running).
+Database (reset on every start, so dump before restart/update):
+  psql             Open psql on the database inside the container.
+  dump [file]      Save the database (default dumps/<name>-<time>.sql).
+  restore <file>   Load a dump into the running container.
+Other:
+  shell            Open a shell inside the container.
+  test [api|fuzz|all]
+                   Run test_api.sh (api, default) and/or
+                   schemathesis_test.sh (fuzz) against the container.
+  secret           Generate a random TOKEN_SECRET and write it to the env
+                   file (asks before replacing an existing one).
+  install [ref]    Download the installer from GitHub and (re)install the
+                   latest tool as `valhalla` in ~/.bin/valhalla (or the
+                   directory this copy is installed in). ref: branch, tag
+                   or commit (default main).
+  completion [zsh|bash]
+                   Print the shell completion script.
+  help             Show this help.
+
+tag defaults to "latest" (build: "local").
+
+Options (before or after the command):
+  --name NAME          container name     (env VALHALLA_NAME, default valhalla)
+  --port PORT          host port          (env VALHALLA_PORT, default 8080)
+  --runtime RT         docker | container (env VALHALLA_RUNTIME)
+  --env-file FILE      env file, or "none" (env VALHALLA_ENV_FILE)
+  -n, --dry-run        show what run/update/build/restore/secret would do
+  -y, --yes            don't ask for confirmation
+  -h, --help           show this help
+
+Other settings (environment variables):
+  VALHALLA_IMAGE       image repo (default docker.io/dr3mro/valhalla-server-run)
+  VALHALLA_CPUS        CPUs (default 4)
+  VALHALLA_MEMORY      memory, GB (default 1)
+  VALHALLA_DEPS_IMAGE  build: deps image, or "local" to build the deps from
+                       source (default: <repo>-deps:<arch> from Docker Hub)
+  VALHALLA_BUILD_MEMORY  build: Apple builder memory, GB (default 8)
+  VALHALLA_NO_COMPLETION=1  don't add shell completion to ~/.zshrc/~/.bashrc
+
+Runtime: Apple `container` if installed, otherwise docker.
+
+Dependencies: before running, each command checks the tools and files it
+needs (e.g. curl, python3 for Apple container, jq for test, docker/Dockerfile
+for build) and lists every missing one with how to install it.
+
+Shell completion: on first use the script adds one line to ~/.zshrc and/or
+~/.bashrc (whichever exist) to enable tab completion; open a new terminal to
+use it. Remove the line marked "valhalla completion" to undo.
+
+Server variables: every KEY=VALUE in the env file (default: .env in the
+current directory if there is one, otherwise .env next to this script) is
+passed to the container (comments and blank lines skipped,
+spaces around "=" and surrounding quotes removed). Precedence, lowest to
+highest:
+  built-in defaults (MAX_REQUESTS=1000000, MAX_FPS=3000000)
+  < env file
+  < MAX_REQUESTS / MAX_FPS / TOKEN_SECRET / SERVER_THREADS / DB_MAX_CONN
+    set in the shell (e.g. SERVER_THREADS=4 ./valhalla.sh update).
+Variables set nowhere aren't passed, so the server uses its own defaults.
+Without any TOKEN_SECRET, update keeps the old container's and a new
+container lets the image generate one. SERVER_PORT from the env file is the
+port published inside the container (default 8080). DB_HOST and DB_SSL are
+always overridden by the image, which runs its own Postgres.
+
+Server variables the image understands (server default in brackets):
+  Rate limiting / DoS
+    MAX_REQUESTS          max requests per IP per PERIOD        [10000]
+    PERIOD                rate-limit window, seconds            [30]
+    MAX_FPS               max fingerprints per IP per PERIOD    [100]
+    RL_DURATION           rate-limit duration, seconds          [30]
+    BAN_DURATION          ban duration, seconds                 [3600]
+    CLN_FRQ               cleanup interval, seconds             [30]
+    WHITELIST             comma-separated IP patterns           []
+    BLACKLIST             comma-separated IP patterns           []
+  Database (the image runs its own Postgres; DB_HOST/DB_SSL are ignored)
+    DB_PORT               [5432]      DB_NAME   [postgres]
+    DB_USER               [postgres]  DB_PASS   [postgres]
+    DB_MAX_CONN           connection pool size                  [10]
+  Server
+    SERVER_HOST           listen address (keep 0.0.0.0)         [0.0.0.0]
+    SERVER_PORT           listen port inside the container      [8080]
+    SERVER_THREADS        worker threads                        [4]
+    SERVER_NAME           [ProjectValhalla]
+    SERVER_DESCRIPTION    [ProjectValhalla API]
+    SERVER_DEBUG_LEVEL    [1]
+    SERVER_LOG_TO_CONSOLE [true]      SERVER_LOG_TO_FILE  [true]
+    SERVER_LOG_DIR        [./logs/]   SERVER_LOG_FILE     [server.log]
+    SERVER_UPLOAD_DIR     [./uploads/]
+  Tokens
+    TOKEN_SECRET          JWT signing secret (image generates one if unset)
+    TOKEN_VALIDITY        minutes                               [43200]
+    TOKEN_ISSUER          [ProjectValhalla]
+    TOKEN_TYPE            [JWS]
+  Frontend (invite links)
+    FRONTEND_HOST         [http://172.20.0.5]
+    FRONTEND_PORT         [3000]
+    FRONTEND_INVITE_PATH  [invite]
+  Email sender
+    EMAIL_SENDER_HOST     [http://172.20.0.6]
+    EMAIL_SENDER_PORT     [5000]
+    EMAIL_SENDER_QUEUE_PATH [/enqueue]
+
+Note: the database lives inside the container and is reset on every start.
+```
 
 ## Configuration
 
