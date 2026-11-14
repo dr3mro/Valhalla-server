@@ -39,8 +39,9 @@
 #   test [api|fuzz|all]
 #                    Run test_api.sh (api, default) and/or
 #                    schemathesis_test.sh (fuzz) against the container.
-#   secret           Generate a random TOKEN_SECRET and write it to the env
-#                    file (asks before replacing an existing one).
+#   secret           Generate a new random TOKEN_SECRET and save it where it's
+#                    read from (normally ~/.local/share/valhalla/config;
+#                    asks before replacing one, which logs everyone out).
 #   version          Show the tool's version.
 #   completion [zsh|bash]
 #                    Print the shell completion script.
@@ -73,6 +74,9 @@
 #                        container, so later commands remember it
 #   --no-persist         turn persistence off (with update/build: recreate
 #                        without it)
+#   --token-secret S     JWT signing secret for a new container (wins over
+#                        the env file and config; visible in your shell
+#                        history, so prefer the config file)
 #   -h, --help           show this help
 #
 # Other settings (environment variables):
@@ -128,8 +132,14 @@
 # the shell win over the env file for one run (e.g. SERVER_THREADS=4
 # ./valhalla.sh update). Variables set nowhere aren't passed, so the server
 # uses its own defaults (in brackets below).
-# Without any TOKEN_SECRET, update keeps the old container's and a new
-# container lets the image generate one. SERVER_PORT from the env file is the
+#
+# TOKEN_SECRET (signs the login tokens) is never generated per start. The
+# installer generates one into ~/.local/share/valhalla/config. A container
+# gets the first of: --token-secret, TOKEN_SECRET in the shell, the env file
+# in use, ~/.local/share/valhalla/config (also when a .env is in use), the
+# replaced container's secret; otherwise one is generated once and saved to
+# config. `valhalla env` shows which one is used.
+# SERVER_PORT from the env file is the
 # port published inside the container (default 8080). DB_HOST and DB_SSL are
 # always overridden by the image, which runs its own Postgres.
 #
@@ -211,6 +221,7 @@ ENV_FILE_EXPLICIT="${VALHALLA_ENV_FILE:+1}"
 DRY_RUN=0
 ASSUME_YES=0
 PERSIST=""     # --persist (1) / --no-persist (0); empty: keep the container's setting
+CLI_TOKEN_SECRET="" # --token-secret
 OLD_PERSIST="" # VALHALLA_PERSIST of the container being replaced
 # One place for dumps, whether this runs from a checkout or the installed copy.
 DATA_DIR="${VALHALLA_DATA_DIR:-$HOME/.local/share/valhalla}"
@@ -263,6 +274,7 @@ OPTIONS=(
   "-y --yes|don't ask for confirmation|"
   "-p --persist|keep the database across stop/restart/update|"
   "--no-persist|turn persistence off|"
+  "--token-secret|JWT signing secret for this container|value"
   "-h --help|show help|"
 )
 
@@ -501,6 +513,8 @@ while [[ $# -gt 0 ]]; do
     -n | --dry-run) DRY_RUN=1; shift ;;
     -y | --yes) ASSUME_YES=1; shift ;;
     -p | --persist) PERSIST=1; shift ;;
+    --token-secret) [[ $# -ge 2 ]] || die "--token-secret needs a value"; CLI_TOKEN_SECRET="$2"; shift 2 ;;
+    --token-secret=*) CLI_TOKEN_SECRET="${1#*=}"; shift ;;
     --no-persist) PERSIST=0; shift ;;
     -h | --help) ARGS=(help); break ;;
     --) shift; ARGS+=("$@"); break ;;
@@ -759,7 +773,6 @@ check_deps() {
       want git "the image version will be \"dev\""
       ;;
     doc) need_any "open or xdg-open" open xdg-open ;;
-    secret) need_any "openssl or python3" openssl python3 ;;
     install | uninstall) need curl ;;
     test)
       need curl
@@ -1106,39 +1119,124 @@ warn_dump_image() {
 
 # ── env file ───────────────────────────────────────────────────────────────
 # load_env: parses ENV_FILE into ENV_KEYS/ENV_VALS. Later duplicates win.
+# parse_env_line LINE: sets PK/PV from a KEY=VALUE line (spaces around "=",
+# quotes and " # comments" handled); returns 1 for blank/comment/invalid lines.
+parse_env_line() {
+  local line="${1%$'\r'}" q rest
+  PK=""; PV=""
+  [[ $line =~ ^[[:space:]]*(#|$) ]] && return 1
+  [[ $line == *=* ]] || return 1
+  PK="${line%%=*}"
+  PV="${line#*=}"
+  PK="${PK#"${PK%%[![:space:]]*}"}"; PK="${PK%"${PK##*[![:space:]]}"}"
+  PK="${PK#export }"
+  PV="${PV#"${PV%%[![:space:]]*}"}"; PV="${PV%"${PV##*[![:space:]]}"}"
+  q="${PV:0:1}"
+  if [[ ($q == '"' || $q == "'") && ${PV:1} == *"$q"* ]]; then
+    # Quoted: keep what's inside the quotes; anything after (a comment) goes.
+    rest="${PV:1}"
+    PV="${rest%%"$q"*}"
+  else
+    # Unquoted: " # comment" ends the value.
+    PV="${PV%%[[:space:]]#*}"
+    PV="${PV%"${PV##*[![:space:]]}"}"
+  fi
+  [[ $PK =~ ^[A-Za-z_][A-Za-z0-9_]*$ ]] || { note "warning: skipping invalid key '$PK'"; return 1; }
+  return 0
+}
+
 load_env() {
   [[ $ENV_FILE == none ]] && return 0
   if [[ ! -f $ENV_FILE ]]; then
     [[ -n $ENV_FILE_EXPLICIT ]] && die "env file not found: $ENV_FILE"
     return 0
   fi
-
-  local line key val q rest
+  local line
   while IFS= read -r line || [[ -n $line ]]; do
-    line="${line%$'\r'}"
-    [[ $line =~ ^[[:space:]]*(#|$) ]] && continue
-    [[ $line == *=* ]] || continue
-    key="${line%%=*}"
-    val="${line#*=}"
-    key="${key#"${key%%[![:space:]]*}"}"; key="${key%"${key##*[![:space:]]}"}"
-    key="${key#export }"
-    val="${val#"${val%%[![:space:]]*}"}"; val="${val%"${val##*[![:space:]]}"}"
-    q="${val:0:1}"
-    if [[ ($q == '"' || $q == "'") && ${val:1} == *"$q"* ]]; then
-      # Quoted: keep what's inside the quotes; anything after (a comment) goes.
-      rest="${val:1}"
-      val="${rest%%"$q"*}"
-    else
-      # Unquoted: " # comment" ends the value.
-      val="${val%%[[:space:]]#*}"
-      val="${val%"${val##*[![:space:]]}"}"
-    fi
-    [[ $key =~ ^[A-Za-z_][A-Za-z0-9_]*$ ]] || { note "warning: skipping invalid key '$key' in $ENV_FILE"; continue; }
-    env_set "$key" "$val"
+    parse_env_line "$line" || continue
+    env_set "$PK" "$PV"
   done <"$ENV_FILE"
   note "Env file: $ENV_FILE (${#ENV_KEYS[@]} variables)"
 }
 
+# env_file_get FILE KEY: prints KEY's value from FILE (exit 1 if not set).
+env_file_get() {
+  local line found=1 val=""
+  [[ -f $1 ]] || return 1
+  while IFS= read -r line || [[ -n $line ]]; do
+    parse_env_line "$line" 2>/dev/null || continue
+    [[ $PK == "$2" ]] && { val="$PV"; found=0; }
+  done <"$1"
+  [[ $found == 0 ]] && printf '%s' "$val"
+  return "$found"
+}
+
+CONFIG_FILE="$DATA_DIR/config"
+
+# new_secret: 64 random hex characters.
+new_secret() {
+  if command -v openssl >/dev/null 2>&1; then
+    openssl rand -hex 32
+  else
+    od -An -tx1 -N32 /dev/urandom | tr -d ' \n'
+  fi
+}
+
+# save_secret_to_config SECRET: adds or replaces TOKEN_SECRET in CONFIG_FILE
+# (created owner-only if missing).
+save_secret_to_config() {
+  local secret="$1" tmp
+  mkdir -p "$(dirname "$CONFIG_FILE")"
+  if [[ ! -f $CONFIG_FILE ]]; then
+    (umask 077 && : >"$CONFIG_FILE")
+  fi
+  if grep -qE '^[[:space:]]*(export[[:space:]]+)?TOKEN_SECRET[[:space:]]*=' "$CONFIG_FILE"; then
+    tmp="$(mktemp "$CONFIG_FILE.XXXXXX")"
+    SECRET="$secret" awk '
+      /^[[:space:]]*(export[[:space:]]+)?TOKEN_SECRET[[:space:]]*=/ && !done { print "TOKEN_SECRET = \"" ENVIRON["SECRET"] "\""; done = 1; next }
+      { print }' "$CONFIG_FILE" >"$tmp"
+    chmod 600 "$tmp"
+    mv "$tmp" "$CONFIG_FILE"
+  else
+    printf '\n# JWT signing secret (keep it private; changing it logs everyone out)\nTOKEN_SECRET = "%s"\n' "$secret" >>"$CONFIG_FILE"
+  fi
+}
+
+# resolve_token_secret SAVE [OLD]: sets TOKEN_VALUE and TOKEN_SOURCE. Order: --token-secret, TOKEN_SECRET in the shell, the env file in
+# use, ~/.local/share/valhalla/config, the old container's (saved to config),
+# else a new one (saved to config). With SAVE=0 nothing is written, and a
+# secret that would be generated stays empty.
+resolve_token_secret() {
+  local save="$1" old="${2:-}" v
+  TOKEN_VALUE=""
+  if [[ -n $CLI_TOKEN_SECRET ]]; then
+    TOKEN_SOURCE="--token-secret"; TOKEN_VALUE="$CLI_TOKEN_SECRET"; return 0
+  fi
+  if [[ -n ${TOKEN_SECRET:-} ]]; then
+    TOKEN_SOURCE="the shell"; TOKEN_VALUE="$TOKEN_SECRET"; return 0
+  fi
+  if v="$(env_get TOKEN_SECRET)" && [[ -n $v ]]; then
+    TOKEN_SOURCE="$ENV_FILE"; TOKEN_VALUE="$v"; return 0
+  fi
+  if [[ $CONFIG_FILE != "$ENV_FILE" ]] && v="$(env_file_get "$CONFIG_FILE" TOKEN_SECRET)" && [[ -n $v ]]; then
+    TOKEN_SOURCE="$CONFIG_FILE"; TOKEN_VALUE="$v"; return 0
+  fi
+  if [[ -n $old ]]; then
+    TOKEN_SOURCE="the old container ($([[ $save == 1 ]] && echo saved || echo "would be saved") to $CONFIG_FILE)"; TOKEN_VALUE="$old"
+    [[ $save == 1 ]] && save_secret_to_config "$old"
+    return 0
+  fi
+  if [[ $save == 1 ]]; then
+    TOKEN_SOURCE="generated (saved to $CONFIG_FILE)"
+  else
+    TOKEN_SOURCE="would be generated once and saved to $CONFIG_FILE"
+  fi
+  if [[ $save == 1 ]]; then
+    TOKEN_VALUE="$(new_secret)"
+    save_secret_to_config "$TOKEN_VALUE"
+  fi
+  return 0
+}
 # env_get KEY: prints the value; exit 1 if the key isn't set.
 env_get() {
   local i
@@ -1164,10 +1262,11 @@ env_set() {
   ENV_VALS+=("$2")
 }
 
-# compose_env [fallback TOKEN_SECRET]: applies defaults and shell overrides
-# on top of the env file, giving the final container environment.
+# compose_env [OLD_TOKEN_SECRET] [SAVE]: applies shell overrides and the
+# token secret on top of the env file, giving the final container
+# environment. SAVE=1 lets it save a reused or generated secret to config.
 compose_env() {
-  local fallback_secret="${1:-}"
+  local old_secret_value="${1:-}" save="${2:-0}"
 
   # Env file < shell. Anything set in neither isn't passed, so the server
   # uses its own defaults (the installer's .env sets small local ones).
@@ -1181,11 +1280,9 @@ compose_env() {
   elif env_get VALHALLA_PERSIST >/dev/null || [[ -n $OLD_PERSIST ]]; then
     env_set VALHALLA_PERSIST 0
   fi
-  if [[ -n ${TOKEN_SECRET:-} ]]; then
-    env_set TOKEN_SECRET "$TOKEN_SECRET"
-  elif ! env_get TOKEN_SECRET >/dev/null && [[ -n $fallback_secret ]]; then
-    env_set TOKEN_SECRET "$fallback_secret"
-  fi
+  # Always pass a secret, so the entrypoint never makes a throwaway one.
+  resolve_token_secret "$save" "$old_secret_value"
+  [[ -n $TOKEN_VALUE ]] && env_set TOKEN_SECRET "$TOKEN_VALUE"
   return 0
 }
 
@@ -1206,7 +1303,9 @@ print_env() {
 # create_container <image> [fallback TOKEN_SECRET, e.g. the old container's]
 create_container() {
   local image="$1" i
-  compose_env "${2:-}"
+  compose_env "${2:-}" 1
+  [[ $TOKEN_SOURCE == generated* || $TOKEN_SOURCE == "the old container"* ]] &&
+    note "TOKEN_SECRET: $TOKEN_SOURCE"
 
   local server_port server_host
   server_port="$(env_get SERVER_PORT || echo 8080)"
@@ -1256,6 +1355,7 @@ plan_recreate() {
   if persist_wanted; then
     echo "  mount $DUMP_DIR at /persist; the database is loaded from $(persist_file) at start"
   fi
+  echo "  TOKEN_SECRET from: $TOKEN_SOURCE"
   echo "  with these variables:"
   print_env | sed 's/^/    /'
 }
@@ -1610,6 +1710,7 @@ cmd_stats() {
 cmd_env() {
   compose_env "$(old_secret)"
   print_env
+  note "TOKEN_SECRET from: $TOKEN_SOURCE"
 }
 
 cmd_doc() {
@@ -1693,39 +1794,30 @@ cmd_test() {
 }
 
 cmd_secret() {
-  [[ $ENV_FILE != none ]] || die "no env file (--env-file none)"
-  local secret has=0
-  [[ -f $ENV_FILE ]] && grep -qE '^[[:space:]]*(export[[:space:]]+)?TOKEN_SECRET[[:space:]]*=' "$ENV_FILE" && has=1
+  # Write where the secret is read from: an explicit --env-file, else the
+  # env file in use if it sets TOKEN_SECRET, else ~/.local/share/valhalla/config.
+  local target="$CONFIG_FILE" has=0 secret
+  if [[ -n $ENV_FILE_EXPLICIT ]]; then
+    [[ $ENV_FILE != none ]] || die "no env file (--env-file none)"
+    target="$ENV_FILE"
+  elif [[ -f $ENV_FILE ]] && env_file_get "$ENV_FILE" TOKEN_SECRET >/dev/null; then
+    target="$ENV_FILE"
+  fi
+  [[ -f $target ]] && env_file_get "$target" TOKEN_SECRET >/dev/null && has=1
   if [[ $DRY_RUN == 1 ]]; then
     if [[ $has == 1 ]]; then
-      echo "Dry run: would replace TOKEN_SECRET in $ENV_FILE with a new random value."
+      echo "Dry run: would replace TOKEN_SECRET in $target with a new random value."
     else
-      echo "Dry run: would add a random TOKEN_SECRET to $ENV_FILE."
+      echo "Dry run: would add a random TOKEN_SECRET to $target."
     fi
     return
   fi
   if [[ $has == 1 ]]; then
-    confirm "Replace the TOKEN_SECRET in $ENV_FILE? Tokens signed with the old one stop working." || die "cancelled"
+    confirm "Replace the TOKEN_SECRET in $target? Tokens signed with the old one stop working." || die "cancelled"
   fi
-  if command -v openssl >/dev/null 2>&1; then
-    secret="$(openssl rand -hex 32)"
-  else
-    secret="$(python3 -c 'import secrets; print(secrets.token_hex(32))')"
-  fi
-  if [[ $has == 1 ]]; then
-    local tmp
-    tmp="$(mktemp "${ENV_FILE}.XXXXXX")"
-    SECRET="$secret" awk '
-      /^[[:space:]]*(export[[:space:]]+)?TOKEN_SECRET[[:space:]]*=/ && !done { print "TOKEN_SECRET = \"" ENVIRON["SECRET"] "\""; done = 1; next }
-      { print }' "$ENV_FILE" >"$tmp"
-    chmod "$(stat -f %Lp "$ENV_FILE" 2>/dev/null || stat -c %a "$ENV_FILE")" "$tmp" 2>/dev/null || true
-    mv "$tmp" "$ENV_FILE"
-    echo "Replaced TOKEN_SECRET in $ENV_FILE. Apply it with: $PROG update"
-  else
-    [[ -f $ENV_FILE ]] || (umask 077 && : >"$ENV_FILE")
-    printf '\nTOKEN_SECRET = "%s"\n' "$secret" >>"$ENV_FILE"
-    echo "Added TOKEN_SECRET to $ENV_FILE. Apply it with: $PROG update"
-  fi
+  secret="$(new_secret)"
+  CONFIG_FILE="$target" save_secret_to_config "$secret"
+  echo "$([[ $has == 1 ]] && echo Replaced || echo Added) TOKEN_SECRET in $target. Apply it with: $PROG update"
 }
 
 INSTALLER_URL="${VALHALLA_INSTALLER_URL:-https://raw.githubusercontent.com/dr3mro/Valhalla-server/main/install.sh}"

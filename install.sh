@@ -217,8 +217,23 @@ DB_MAX_CONN = 2
 # get your IP rate-limited (server defaults: 10000 and 100)
 MAX_REQUESTS = 1000000
 MAX_FPS = 3000000
+
+# JWT signing secret, generated at install (keep it private; changing it
+# logs everyone out)
 EOF
 }
+
+# new_secret: 64 random hex characters.
+new_secret() {
+  if command -v openssl >/dev/null 2>&1; then
+    openssl rand -hex 32
+  else
+    od -An -tx1 -N32 /dev/urandom | tr -d ' \n'
+  fi
+}
+
+# has_secret FILE: does FILE set TOKEN_SECRET?
+has_secret() { grep -qE '^[[:space:]]*(export[[:space:]]+)?TOKEN_SECRET[[:space:]]*=' "$1"; }
 
 write_default_env() {
   # Earlier versions kept the settings in .env; rename it.
@@ -226,9 +241,15 @@ write_default_env() {
     mv "$DIR/.env" "$DIR/config"
     say "Renamed $DIR/.env to $DIR/config"
   fi
-  [ -e "$DIR/config" ] && return 0
-  (umask 077 && default_env >"$DIR/config")
-  say "Created $DIR/config with default settings"
+  if [ -e "$DIR/config" ]; then
+    if ! has_secret "$DIR/config"; then
+      printf '\n# JWT signing secret, generated at install (keep it private; changing it\n# logs everyone out)\nTOKEN_SECRET = "%s"\n' "$(new_secret)" >>"$DIR/config"
+      say "Added a generated TOKEN_SECRET to $DIR/config"
+    fi
+    return 0
+  fi
+  (umask 077 && { default_env; printf 'TOKEN_SECRET = "%s"\n' "$(new_secret)"; } >"$DIR/config")
+  say "Created $DIR/config with default settings and a generated TOKEN_SECRET"
 }
 
 # ── command link ───────────────────────────────────────────────────────────
@@ -259,8 +280,13 @@ remove_files() {
   target="$1"
   for f in $MANAGED; do rm -rf "${target:?}/$f"; done
   # The default config goes too, unless it was edited.
-  if [ -f "$target/config" ] && default_env | cmp -s - "$target/config"; then
-    rm -f "$target/config"
+  # (ignoring the TOKEN_SECRET line the installer generated). Not on
+  # --replace: the config and its secret carry over to the new install.
+  if [ "$ACTION" != replace ] && [ -f "$target/config" ]; then
+    cmp_tmp="$(mktemp)"
+    grep -vE '^TOKEN_SECRET = "[0-9a-f]{64}"$' "$target/config" >"$cmp_tmp" || true
+    if default_env | cmp -s - "$cmp_tmp"; then rm -f "$target/config"; fi
+    rm -f "$cmp_tmp"
   fi
   # macOS Finder drops .DS_Store files into folders it shows; they'd keep
   # the folders from being removed.

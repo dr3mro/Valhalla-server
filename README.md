@@ -496,6 +496,8 @@ Every `run`, `update` and `restart` waits until `/api/v2/hello` answers and prin
 
 It passes every variable in a settings file to the container, using the first it finds: `.env` in the directory you run it from, `.env` next to the script (your checkout), or `~/.local/share/valhalla/config` (same format). The installer creates that last one with defaults for a small local container: `SERVER_THREADS = 2`, `DB_MAX_CONN = 2`, and raised `MAX_REQUESTS`/`MAX_FPS`. It's yours from then on: kept on update, and on uninstall unless it's still the unedited default. The script itself hard-codes no server settings; anything no `.env` sets falls back to the server's defaults (4 threads, 10 connections, `MAX_REQUESTS` 10000, `MAX_FPS` 100). Only one file is used; they aren't merged. Variables set in the shell win over `.env` for a single run (`SERVER_THREADS=4 ./valhalla.sh update`). Quoted values, spaces around `=` and ` # comments` are fine. After editing `.env`, run `./valhalla.sh update` to apply it. Use another file with `--env-file path` (or `VALHALLA_ENV_FILE`), or skip it with `--env-file none`.
 
+**Login token secret.** `TOKEN_SECRET` signs the JWT login tokens, and the tool never lets it change by itself between starts (which would log everyone out). The installer generates one into `~/.local/share/valhalla/config`. A container gets the first of: `--token-secret`, `TOKEN_SECRET` in the shell, the `.env` in use, `~/.local/share/valhalla/config` (checked even when a `.env` is in use), or the replaced container's secret. If there's none, one is generated once and saved to `config`. `valhalla env` shows which one is used, and `valhalla secret` replaces it (asking first).
+
 **Persistence.** Without it, the bundled database starts from `init.sql` on every container start. Add `--persist` once (`valhalla run --persist`, `valhalla update --persist`, or `VALHALLA_PERSIST=1` in `.env`) and the database is kept in `~/.local/share/valhalla/dumps/<name>-persist.sql`, which is mounted into the container. The image's entrypoint loads it at start instead of `init.sql` and saves it whenever the container stops, including restarts outside the tool (Docker Desktop, a reboot). The tool also saves it before `stop`, `restart`, `update`, `build` and `delete` (the previous dump is kept as `.prev`), and if that save fails, nothing is stopped. The setting is stored in the container, so later commands remember it; `--no-persist` turns it off. `valhalla status` shows whether it's on and when the database was last saved. Restoring a dump made by a different image prints a warning, because if that image changed the schema the old schema comes back. Images released before this feature still work: the tool restores the dump itself after the container starts.
 
 In a terminal, `help` (or `--help`) is shown with colors, Unicode box drawing and emoji as far as the terminal supports them, and paged with `less` when it's longer than the screen; piped or with `NO_COLOR=1` it's plain text. Force a style with `VALHALLA_FANCY=0` (plain) to `3` (everything).
@@ -543,8 +545,9 @@ Other:
   test [api|fuzz|all]
                    Run test_api.sh (api, default) and/or
                    schemathesis_test.sh (fuzz) against the container.
-  secret           Generate a random TOKEN_SECRET and write it to the env
-                   file (asks before replacing an existing one).
+  secret           Generate a new random TOKEN_SECRET and save it where it's
+                   read from (normally ~/.local/share/valhalla/config;
+                   asks before replacing one, which logs everyone out).
   version          Show the tool's version.
   completion [zsh|bash]
                    Print the shell completion script.
@@ -577,6 +580,9 @@ Options (before or after the command):
                        container, so later commands remember it
   --no-persist         turn persistence off (with update/build: recreate
                        without it)
+  --token-secret S     JWT signing secret for a new container (wins over
+                       the env file and config; visible in your shell
+                       history, so prefer the config file)
   -h, --help           show this help
 
 Other settings (environment variables):
@@ -632,8 +638,14 @@ MAX_REQUESTS, MAX_FPS, TOKEN_SECRET, SERVER_THREADS and DB_MAX_CONN set in
 the shell win over the env file for one run (e.g. SERVER_THREADS=4
 ./valhalla.sh update). Variables set nowhere aren't passed, so the server
 uses its own defaults (in brackets below).
-Without any TOKEN_SECRET, update keeps the old container's and a new
-container lets the image generate one. SERVER_PORT from the env file is the
+
+TOKEN_SECRET (signs the login tokens) is never generated per start. The
+installer generates one into ~/.local/share/valhalla/config. A container
+gets the first of: --token-secret, TOKEN_SECRET in the shell, the env file
+in use, ~/.local/share/valhalla/config (also when a .env is in use), the
+replaced container's secret; otherwise one is generated once and saved to
+config. `valhalla env` shows which one is used.
+SERVER_PORT from the env file is the
 port published inside the container (default 8080). DB_HOST and DB_SSL are
 always overridden by the image, which runs its own Postgres.
 
