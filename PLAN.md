@@ -22,7 +22,7 @@
 ## 2. Bugs
 
 - [ ] **`communicate.cpp` sends stale data.** The `static` method map's lambdas capture `curl` **and `data`** by reference on the first call. Every later request uses dangling references, including the first call's request body. Build the map without captures, or set the options directly. `src/utils/communicate/communicate.cpp:24-30`
-- [ ] **The curl header list is never freed** on any path. `curl_slist_free_all(headers)` is missing. `src/utils/communicate/communicate.cpp:15`
+- [x] **The curl header list is never freed** on any path. `curl_slist_free_all(headers)` is missing. `src/utils/communicate/communicate.cpp:15`
 - [ ] **Exceptions swallowed without a response.** `GetServices`, `GetVisits` and `cruds` catch with `CRITICALMESSAGE`, which never calls `callback`, so the request is never answered. Use `CRITICALMESSAGERESPONSE`. `src/controllers/base/controller/controller.hpp:193`, `:224`, `:356`
 - [ ] **Deleting a client removes the session unconditionally,** even when the delete failed. `src/controllers/clientcontroller/clientcontroller.cpp:122-123`
 - [ ] **`buildReadStatement` logs a missing `user_id`, then calls `.value()` anyway** (throws `bad_optional_access`). Return `std::nullopt`. `src/entities/base/entity.hpp:157-161`
@@ -64,8 +64,8 @@
   - `DatabaseHanndler` (4 files)
   - directory `sqlinjectiondetectoor/`
   - `staffcontrollerBase.hpp` (mixed case)
-  - comment `DODDetectorConfig` (`src/configurator/configurator.cpp:4`)
-  - banner comment says `[1, size-1]`, but the code uses `[0, …]` (`src/server/extras/banner.hpp:48`)
+  - ~~comment `DODDetectorConfig` (`src/configurator/configurator.cpp:4`)~~ fixed
+  - ~~banner comment says `[1, size-1]`, but the code uses `[0, …]` (`src/server/extras/banner.hpp:48`)~~ fixed
 - [x] **Includes:**
   - `database.cpp` includes `staffcontroller.hpp` for nothing (`:18`) — it was only supplying the `GateKeeper` alias; now includes `gatekeeper/gatekeeper.hpp` directly
   - unused `<iostream>`/`<ostream>` in `sessionmanager.cpp` (`:12`, `:15`)

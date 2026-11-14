@@ -45,7 +45,7 @@ class Banner
         // 2. Seed the Mersenne Twister engine
         std::mt19937 generator(random_device());
 
-        // 3. Define the index on the closed interval [1, colors.size() - 1] (inclusive)
+        // 3. Define the index on the closed interval [0, colors.size() - 1] (inclusive)
         static std::uniform_int_distribution<std::size_t> index(0, colors.size() - 1);
 
         return colors.at(index(generator));

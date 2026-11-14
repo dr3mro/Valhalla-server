@@ -56,6 +56,7 @@ std::optional<std::string> Communicate::sendRequest(
         }
 
         curl_easy_cleanup(curl);
+        curl_slist_free_all(headers);
     }
     catch (const std::exception& e)
     {
@@ -66,6 +67,7 @@ std::optional<std::string> Communicate::sendRequest(
         {
             curl_easy_cleanup(curl);
         }
+        curl_slist_free_all(headers);
         return std::nullopt;
     }
 
