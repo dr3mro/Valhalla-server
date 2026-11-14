@@ -108,9 +108,10 @@
 #   VALHALLA_NO_UPDATE_CHECK=1  don't check for or show updates
 #   VALHALLA_UPDATE_INTERVAL  seconds between update checks (default 21600)
 #   VALHALLA_NERD=0|1    use Nerd Font icons (default: if one is installed)
-#   VALHALLA_FANCY       help style: 0 plain, 1 colors, 2 + unicode, 3 + emoji
-#                        (default: what the terminal supports; NO_COLOR=1
-#                        also gives plain)
+#   VALHALLA_FANCY       output style: 0 plain, 1 colors, 2 + unicode,
+#                        3 + emoji (default: what the terminal supports;
+#                        NO_COLOR=1 also gives plain). Applies to every
+#                        message, report and help screen.
 #
 # Persistence: the bundled database starts from init.sql on every container
 # start. With persistence on, it's kept in
@@ -308,10 +309,6 @@ OPTIONS=(
 ENV_KEYS=()
 ENV_VALS=()
 
-die() { echo "error: $*" >&2; exit 1; }
-note() { echo "$*" >&2; }
-warn() { echo "warning: $*" >&2; }
-
 help_text() { sed -n '2,/^$/s/^# \{0,1\}//p' "$SCRIPT"; }
 
 # fancy_level: how much decoration the terminal can show.
@@ -349,13 +346,176 @@ fancy_level() {
   echo 2
 }
 
-# render_help LEVEL: decorates help_text for the terminal.
+# nerd_font: is a Nerd Font installed? (Installed isn't proof the terminal
+# uses it, so VALHALLA_NERD=0/1 overrides.)
+nerd_font() {
+  case "${VALHALLA_NERD:-}" in 1) return 0 ;; 0) return 1 ;; esac
+  if [[ $(uname -s) == Darwin ]]; then
+    local f
+    for f in "$HOME"/Library/Fonts/* /Library/Fonts/*; do
+      [[ $f == *[Nn]erd* ]] && return 0
+    done
+    return 1
+  else
+    command -v fc-list >/dev/null 2>&1 && fc-list 2>/dev/null | grep -qi 'nerd'
+  fi
+}
+
+# ── fancy output (colors, unicode, emoji, Nerd Font icons) ─────────────────
+# One style engine for everything the tool prints. Levels come from
+# fancy_level: 0 plain, 1 colors, 2 + unicode glyphs, 3 + emoji; icons prefer
+# Nerd Font glyphs when one is installed (VALHALLA_NERD=0/1 overrides).
+# stdout and stderr are judged separately, so piped output stays clean.
+# Data-producing functions (inspect results, env values, completions) never
+# use these.
+style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_* icons.
+  local p="$1" l="$2"
+  if [[ $l -ge 1 ]]; then
+    if [[ "$(tput colors 2>/dev/null || echo 8)" -ge 256 ]]; then
+      printf -v "${p}ERR"  '\033[1;38;5;210m'
+      printf -v "${p}WRN"  '\033[1;38;5;221m'
+      printf -v "${p}OK"   '\033[38;5;114m'
+      printf -v "${p}INFO" '\033[38;5;117m'
+      printf -v "${p}ACC"  '\033[1;38;5;213m'
+      printf -v "${p}HEAD" '\033[1;38;5;111m'
+      printf -v "${p}VAL"  '\033[97m'
+      printf -v "${p}LBL"  '\033[38;5;245m'
+      printf -v "${p}DIM"  '\033[2m'
+      printf -v "${p}B"    '\033[1m'
+    else
+      printf -v "${p}ERR"  '\033[1;31m'
+      printf -v "${p}WRN"  '\033[1;33m'
+      printf -v "${p}OK"   '\033[1;32m'
+      printf -v "${p}INFO" '\033[36m'
+      printf -v "${p}ACC"  '\033[1;35m'
+      printf -v "${p}HEAD" '\033[1;34m'
+      printf -v "${p}VAL"  '\033[1;37m'
+      printf -v "${p}LBL"  '\033[2m'
+      printf -v "${p}DIM"  '\033[2m'
+      printf -v "${p}B"    '\033[1m'
+    fi
+    printf -v "${p}R" '\033[0m'
+  else
+    printf -v "${p}R" '' ; printf -v "${p}ERR" '' ; printf -v "${p}WRN" ''
+    printf -v "${p}OK" '' ; printf -v "${p}INFO" '' ; printf -v "${p}ACC" ''
+    printf -v "${p}HEAD" '' ; printf -v "${p}VAL" '' ; printf -v "${p}LBL" ''
+    printf -v "${p}DIM" '' ; printf -v "${p}B" ''
+  fi
+  # Icons: Nerd Font glyphs (1 column) at level 2+, else emoji at level 3,
+  # else plain unicode at level 2, else nothing.
+  local v
+  for v in NERD i_ok i_err i_warn i_info i_q i_pull i_save i_trash i_restart i_box i_rocket i_book i_link i_key i_wait i_stop i_step; do
+    printf -v "${p}${v}" ''
+  done
+  if [[ $l -ge 2 ]]; then
+    if nerd_font; then
+      printf -v "${p}NERD" '1'
+      printf -v "${p}i_ok"     '%s' $'\xef\x80\x8c'   # nf-fa-check
+      printf -v "${p}i_err"    '%s' $'\xef\x80\x8d'   # nf-fa-times
+      printf -v "${p}i_warn"   '%s' $'\xef\x81\xb1'   # nf-fa-warning
+      printf -v "${p}i_info"   '%s' $'\xef\x84\xa9'   # nf-fa-info
+      printf -v "${p}i_q"      '%s' $'\xef\x84\xa8'   # nf-fa-question
+      printf -v "${p}i_pull"   '%s' $'\xef\x80\x99'   # nf-fa-download
+      printf -v "${p}i_save"   '%s' $'\xef\x87\x80'   # nf-fa-database
+      printf -v "${p}i_trash"  '%s' $'\xef\x87\xb8'   # nf-fa-trash
+      printf -v "${p}i_restart" '%s' $'\xef\x80\xa1'  # nf-fa-refresh
+      printf -v "${p}i_box"    '%s' $'\xef\x86\xb2'   # nf-fa-cube
+      printf -v "${p}i_rocket" '%s' $'\xef\x84\xb5'   # nf-fa-rocket
+      printf -v "${p}i_book"   '%s' $'\xef\x80\xad'   # nf-fa-book
+      printf -v "${p}i_link"   '%s' $'\xef\x83\x81'   # nf-fa-link
+      printf -v "${p}i_key"    '%s' $'\xef\x82\x84'   # nf-fa-key
+      printf -v "${p}i_wait"   '%s' $'\xef\x89\x94'   # nf-fa-hourglass-half
+      printf -v "${p}i_stop"   '%s' $'\xef\x81\x8d'   # nf-fa-stop
+      printf -v "${p}i_step"   '%s' '▸'
+    elif [[ $l -ge 3 ]]; then
+      printf -v "${p}i_ok"     '%s' '✅'
+      printf -v "${p}i_err"    '%s' '❌'
+      printf -v "${p}i_warn"   '%s' '⚠️'
+      printf -v "${p}i_info"   '%s' 'ℹ️'
+      printf -v "${p}i_q"      '%s' '❓'
+      printf -v "${p}i_pull"   '%s' '⬇️'
+      printf -v "${p}i_save"   '%s' '💾'
+      printf -v "${p}i_trash"  '%s' '🗑️'
+      printf -v "${p}i_restart" '%s' '🔄'
+      printf -v "${p}i_box"    '%s' '📦'
+      printf -v "${p}i_rocket" '%s' '🚀'
+      printf -v "${p}i_book"   '%s' '📖'
+      printf -v "${p}i_link"   '%s' '🔗'
+      printf -v "${p}i_key"    '%s' '🔑'
+      printf -v "${p}i_wait"   '%s' '⏳'
+      printf -v "${p}i_stop"   '%s' '⏹️'
+      printf -v "${p}i_step"   '%s' '▸'
+    else
+      printf -v "${p}i_ok"     '%s' '✓'
+      printf -v "${p}i_err"    '%s' '✗'
+      printf -v "${p}i_warn"   '%s' '⚠'
+      printf -v "${p}i_info"   '%s' 'ℹ'
+      printf -v "${p}i_q"      '%s' '?'
+      printf -v "${p}i_pull"   '%s' '↓'
+      printf -v "${p}i_restart" '%s' '↻'
+      printf -v "${p}i_step"   '%s' '▸'
+    fi
+  fi
+}
+
+# The style variables are set dynamically in style_set; declare them so
+# the linter can see every name.
+# shellcheck disable=SC2034  # set dynamically in style_set
+S_R='' S_ERR='' S_WRN='' S_OK='' S_INFO='' S_ACC='' S_HEAD='' S_VAL='' S_LBL='' S_DIM='' S_B='' S_NERD='' S_i_ok='' S_i_err='' S_i_warn='' S_i_info='' S_i_q='' S_i_pull='' S_i_save='' S_i_trash='' S_i_restart='' S_i_box='' S_i_rocket='' S_i_book='' S_i_link='' S_i_key='' S_i_wait='' S_i_stop='' S_i_step='' E_R='' E_ERR='' E_WRN='' E_OK='' E_INFO='' E_ACC='' E_HEAD='' E_VAL='' E_LBL='' E_DIM='' E_B='' E_NERD='' E_i_ok='' E_i_err='' E_i_warn='' E_i_info='' E_i_q='' E_i_pull='' E_i_save='' E_i_trash='' E_i_restart='' E_i_box='' E_i_rocket='' E_i_book='' E_i_link='' E_i_key='' E_i_wait='' E_i_stop='' E_i_step=''
+
+# style_init: judge stdout and stderr separately, so only real terminals
+# get decoration and piped output stays byte-clean.
+style_init() {
+  local o=0 e=0
+  [[ -t 1 ]] && o=1
+  [[ -t 2 ]] && e=1
+  style_set S_ "$(fancy_level "$o")"
+  style_set E_ "$(fancy_level "$e")"
+}
+style_init
+
+# ── styled message primitives (all write to stderr) ────────────────────────
+# die/warn keep their literal "error:"/"warning:" words; step/ok/info add a
+# severity glyph. At level 0 every line comes out plain, like before.
+die() { printf '%s\n' "${E_ERR}${E_i_err:+$E_i_err }error:${E_R} $*" >&2; exit 1; }
+warn() { printf '%s\n' "${E_WRN}${E_i_warn:+$E_i_warn }warning:${E_R} $*" >&2; }
+note() { echo "$*" >&2; }
+step() { printf '%s\n' "${E_ACC}${E_i_step:+$E_i_step }${E_R}$*" >&2; }
+ok() { printf '%s\n' "${E_OK}${E_i_ok:+$E_i_ok }${E_R}$*" >&2; }
+info() { printf '%s\n' "${E_INFO}${E_i_info:+$E_i_info }${E_R}$*" >&2; }
+# stdout twins for command results (styled only when stdout is a terminal).
+say_ok() { printf '%s\n' "${S_OK}${S_i_ok:+$S_i_ok }${S_R}$*"; }
+say_info() { printf '%s\n' "${S_INFO}${S_i_info:+$S_i_info }${S_R}$*"; }
+
+
+# help_cols: the name-column width that aligns every list in the help
+# (longest of the command heads, option heads and env var names, clamped).
+help_cols() { help_text | awk '
+    /^  (valhalla|\.\/valhalla\.sh) / { next } # usage lines, not list entries
+    /^  [a-z][a-z-]*( |$)/ || /^  -/ {
+      line = $0; sub(/^  /, "", line)
+      if (match(line, /  +/)) head = substr(line, 1, RSTART - 1); else head = line
+      if (length(head) > w) w = length(head)
+      next
+    }
+    /^  [A-Z][A-Z0-9_]+(=[^ ]*)? / {
+      line = $0; sub(/^  /, "", line)
+      split(line, parts, / +/)
+      if (length(parts[1]) > w) w = length(parts[1])
+    }
+    END { if (w < 18) w = 18; if (w > 26) w = 26; print w }
+  '
+}
+
+# render_help LEVEL WNAME: decorates help_text for the terminal. WNAME is the
+# aligned name column; descriptions all start at the same column and long
+# paragraphs wrap to the terminal width.
 render_help() {
-  local level="$1" e
+  local level="$1" wname="$2" e
   e="$(printf '\033')"
   local c256=0
   [[ "$(tput colors 2>/dev/null || echo 8)" -ge 256 ]] && c256=1
-  awk -v L="$level" -v E="$e" -v C256="$c256" -v W="$(tput cols 2>/dev/null || echo 80)" '
+  awk -v L="$level" -v N="$wname" -v E="$e" -v C256="$c256" -v W="$(tput cols 2>/dev/null || echo 80)" '
     function c(code) { return E "[" code "m" }
     function rule(n,   r, i) { r = ""; for (i = 0; i < n; i++) r = r H; return r }
     # Colors (256-color palette when available).
@@ -373,6 +533,8 @@ render_help() {
       H = U ? "─" : "-"; BUL = U ? "▸ " : "* "
       if (W > 100) W = 100
       if (W < 40) W = 40
+      # One description column for every list, so the eye has a single rail.
+      DESCP = ""; for (i = 0; i < N + 4; i++) DESCP = DESCP " "
     }
     function emoji(t) {
       if (!M) return ""
@@ -390,6 +552,7 @@ render_help() {
       if (t ~ /^Server variables the image/) return "📋 "
       if (t ~ /^Server variables/) return "📜 "
       if (t ~ /^Note/) return "📝 "
+      if (t ~ /^Updates/) return "🔄 "
       if (t ~ /^tag defaults/) return "🏷  "
       return "◆ "
     }
@@ -413,6 +576,12 @@ render_help() {
     }
     # [defaults] at the end of a line -> dim.
     function defaults(t) { gsub(/\[[^]]*\]/, DEF "&" R, t); return t }
+    # spaces to reach the description column from a name of length len.
+    function gap(len,   n, s) {
+      n = N - len + 2; if (n < 2) n = 2
+      s = ""; while (n-- > 0) s = s " "
+      return s
+    }
 
     NR == 1 {
       title = $0
@@ -457,18 +626,21 @@ render_help() {
     # option lines: "  --name NAME   desc" / "  -n, --dry-run   desc"
     /^  -/ {
       line = $0; sub(/^  /, "", line)
-      split(line, parts, /  +/)
-      head = parts[1]; desc = substr(line, length(head) + 1)
+      if (match(line, /  +/)) { head = substr(line, 1, RSTART - 1); desc = substr(line, RSTART + RLENGTH) }
+      else { head = line; desc = "" }
+      rawlen = length(head)
       gsub(/-?-[a-z][a-z-]*/, OPT "&" R, head)
       gsub(/ [A-Z][A-Z]+/, ARG "&" R, head)
-      print BUL head inline(defaults(desc))
+      if (desc != "") print BUL head gap(rawlen) inline(defaults(desc))
+      else print BUL head
       next
     }
     # environment variables: "  VALHALLA_X   desc"
     /^  [A-Z][A-Z0-9_]+(=[^ ]*)? / {
       line = $0; sub(/^  /, "", line)
       split(line, parts, / +/)
-      print BUL ENV parts[1] R inline(defaults(substr(line, length(parts[1]) + 1)))
+      rest = substr(line, length(parts[1]) + 1); sub(/^ +/, "", rest)
+      print BUL ENV parts[1] R gap(length(parts[1])) inline(defaults(rest))
       next
     }
     # server variable list: "    MAX_REQUESTS   desc   [default]"
@@ -490,30 +662,36 @@ render_help() {
     # command lines: "  run [tag]   desc"
     /^  [a-z][a-z-]*( |$)/ {
       line = $0; sub(/^  /, "", line)
-      split(line, parts, /  +/)
-      head = parts[1]; desc = substr(line, length(head) + 1)
+      if (match(line, /  +/)) { head = substr(line, 1, RSTART - 1); desc = substr(line, RSTART + RLENGTH) }
+      else { head = line; desc = "" }
       split(head, w, " ")
       args = substr(head, length(w[1]) + 1)
       gsub(/\[[^]]*\]|<[^>]*>/, ARG "&" R, args)
-      print BUL CMD w[1] R args inline(desc)
+      if (desc != "") print BUL CMD w[1] R args gap(length(head)) inline(defaults(desc))
+      else print BUL CMD w[1] R args
       next
     }
-    # continuation and other text
+    # hand-indented continuation lines: realign to the description column
+    /^ {8}/ { sub(/^ */, ""); print DESCP inline($0); next }
+    # plain paragraphs: the header text is pre-wrapped, keep it as is
     { print inline($0) }
   '
 }
 
 usage() {
-  local level is_tty=0
+  local level is_tty=0 wname
   [[ -t 1 ]] && is_tty=1
   level="$(fancy_level "$is_tty")"
   if [[ $level -le 0 ]]; then
     help_text
-  elif [[ -t 1 ]] && command -v less >/dev/null 2>&1; then
+    return 0
+  fi
+  wname="$(help_cols)"
+  if [[ -t 1 ]] && command -v less >/dev/null 2>&1; then
     # -R keeps colors, -F quits right away when it fits, -X leaves it on screen.
-    help_text | render_help "$level" | less -RFX
+    help_text | render_help "$level" "$wname" | less -RFX
   else
-    help_text | render_help "$level"
+    help_text | render_help "$level" "$wname"
   fi
 }
 
@@ -521,7 +699,8 @@ confirm() {
   [[ $ASSUME_YES == 1 ]] && return 0
   [[ -t 0 ]] || die "$1 (re-run with --yes to confirm)"
   local answer
-  read -r -p "$1 [y/N] " answer
+  printf '%s' "${E_ACC}${E_i_q:+$E_i_q }${E_B}$1${E_R} ${E_DIM}[y/N]${E_R} " >&2
+  read -r answer
   [[ $answer == y || $answer == Y || $answer == yes ]]
 }
 
@@ -721,7 +900,7 @@ install_completion() {
     # shellcheck disable=SC2016  # $(...) is meant to run in the rc file
     if printf '\n%s (added by %s; remove to undo)\n[ -x %q ] && eval "$(%q completion %s)"\n' \
       "$marker" "$SCRIPT" "$SCRIPT" "$SCRIPT" "$shell" >>"$rc" 2>/dev/null; then
-      note "Added tab completion to $rc (open a new terminal to use it)."
+  info "Added tab completion to $rc (open a new terminal to use it)."
     fi
   done
 }
@@ -820,13 +999,13 @@ check_deps() {
   esac
 
   local w
-  for w in "${WARNINGS[@]}"; do note "warning: $w"; done
+  for w in "${WARNINGS[@]}"; do warn "$w"; done
   [[ ${#MISSING[@]} -eq 0 ]] && return 0
 
-  note "error: '$cmd' needs these, which are missing:"
+  printf '%s\n' "${E_ERR}${E_i_err:+$E_i_err }error: '$cmd' needs these, which are missing:${E_R}" >&2
   local m
   for m in "${MISSING[@]}"; do
-    note "  - $m  ($(install_hint "$m"))"
+    note "  ${E_ERR}${E_i_err:+$E_i_err }${E_R}$m  ${E_DIM}($(install_hint "$m"))${E_R}"
   done
   exit 1
 }
@@ -852,7 +1031,7 @@ resolve_runtime() {
 # container service if needed.
 pick_runtime() {
   if [[ $RT == container ]] && ! container system status >/dev/null 2>&1; then
-    note "Starting the container system service"
+    step "Starting the container system service"
     container system start
   fi
 }
@@ -979,7 +1158,7 @@ exec_it() {
 image_present() { rt image inspect "$1" >/dev/null 2>&1; }
 
 pull() {
-  note "Pulling $1 ($RT)"
+  step "Pulling $1 ($RT)"
   if [[ $RT == docker ]]; then docker pull "$1"; else container image pull "$1"; fi
 }
 
@@ -1021,7 +1200,7 @@ migrate_persist_file() {
   mkdir -p "$DUMP_DIR"
   mv "$old" "$new"
   [[ -f $old.prev ]] && mv "$old.prev" "$new.prev"
-  note "Moved the saved database from $old to $new"
+  step "Moved the saved database from $old to $new"
 }
 
 # persist_on: is persistence on for the existing container (or forced by flag)?
@@ -1082,12 +1261,12 @@ restore_from() {
     container exec -i "$NAME" su-exec postgres psql -q -v ON_ERROR_STOP=1 -p "$port" -U "$user" -d "$db" <"$file" >/dev/null || return 1
   fi
   if entrypoint_persists; then
-    note "Restarting the server so it starts from the restored data"
+    step "Restarting the server so it starts from the restored data"
     rt exec "$NAME" kill -HUP 1 >/dev/null 2>&1 || true
     sleep 1
     wait_healthy >/dev/null || return 1
   else
-    note "note: this image can't restart the server alone; cached sessions may be stale until: $PROG restart"
+    info "this image can't restart the server alone; cached sessions may be stale until: $PROG restart"
   fi
   return 0
 }
@@ -1103,7 +1282,7 @@ persist_save() {
   migrate_persist_file
   [[ -f $file ]] && mv -f "$file" "$file.prev"
   [[ -f $file.image ]] && mv -f "$file.image" "$file.prev.image"
-  note "Saving the database to $file"
+  note "Saving the database to ${E_VAL}$file${E_R}"
   if ! dump_to "$file"; then
     [[ -f $file.prev ]] && mv -f "$file.prev" "$file"
     [[ -f $file.prev.image ]] && mv -f "$file.prev.image" "$file.image"
@@ -1129,15 +1308,15 @@ persist_load() {
   file="$(persist_file)"
   if entrypoint_persists; then
     if logs | grep -q "valhalla: restoring the database"; then
-      note "The database was restored from $file at start"
+      ok "The database was restored from $file at start"
     fi
     return 0
   fi
   if [[ ! -f $file ]]; then
-    note "Persistence is on; no saved database yet ($file)"
+    info "Persistence is on; no saved database yet ($file)"
     return 0
   fi
-  note "Restoring the database from $file"
+  step "Restoring the database from $file"
   restore_from "$file" || note "warning: restoring $file failed; the database is the image's fresh one"
 }
 
@@ -1146,8 +1325,8 @@ warn_dump_image() {
   local file
   file="$(persist_file)"
   if [[ -f $file.image && -n ${1:-} && "$(cat "$file.image")" != "$1" ]]; then
-    note "warning: $file was saved by a different image; if this image changed the database"
-    note "         schema, the old schema comes back (start fresh with --no-persist)"
+    warn "$file was saved by a different image; if this image changed the database
+         schema, the old schema comes back (start fresh with --no-persist)"
   fi
 }
 
@@ -1190,7 +1369,7 @@ load_env() {
     parse_env_line "$line" || continue
     env_set "$PK" "$PV"
   done <"$ENV_FILE"
-  note "Env file: $ENV_FILE (${#ENV_KEYS[@]} variables)"
+  info "Env file: ${E_VAL}$ENV_FILE${E_R} (${#ENV_KEYS[@]} variables)"
 }
 
 # env_file_get FILE KEY: prints KEY's value from FILE (exit 1 if not set).
@@ -1339,14 +1518,14 @@ create_container() {
   local image="$1" i
   compose_env "${2:-}" 1
   [[ $TOKEN_SOURCE == generated* || $TOKEN_SOURCE == "the old container"* ]] &&
-    note "TOKEN_SECRET: $TOKEN_SOURCE"
+    info "TOKEN_SECRET: $TOKEN_SOURCE"
 
   local server_port server_host
   server_port="$(env_get SERVER_PORT || echo 8080)"
   server_host="$(env_get SERVER_HOST || echo 0.0.0.0)"
   case "$server_host" in
     127.* | localhost | ::1)
-      note "warning: SERVER_HOST=$server_host only listens inside the container; the published port won't reach it. Use 0.0.0.0." ;;
+      warn "SERVER_HOST=$server_host only listens inside the container; the published port won't reach it. Use 0.0.0.0." ;;
   esac
 
   # Variables go through a private env file, not -e KEY=VALUE, so secrets
@@ -1379,18 +1558,18 @@ create_container() {
 plan_recreate() {
   OLD_PERSIST="$(container_env VALHALLA_PERSIST)"
   compose_env "$(old_secret)"
-  echo "Dry run ($RT), nothing changed. Would:"
-  echo "  $2"
+  printf '%s\n' "${S_B}Dry run${S_R} ($RT), nothing changed. Would:"
+  printf '%s\n' "  ${S_ACC}${S_i_step:+$S_i_step }${S_R}$2"
   if exists && is_running && save_before_replace; then
-    echo "  save the database to $(persist_file)"
+    printf '%s\n' "  ${S_ACC}${S_i_step:+$S_i_step }${S_R}save the database to ${S_VAL}$(persist_file)${S_R}"
   fi
-  exists && echo "  stop and remove container $NAME"
-  echo "  create $NAME from $1: port ${PORT}->$(env_get SERVER_PORT || echo 8080), ${CPUS} CPUs, ${MEMORY_GB} GB"
+  exists && printf '%s\n' "  ${S_ACC}${S_i_step:+$S_i_step }${S_R}stop and remove container ${S_VAL}$NAME${S_R}"
+  printf '%s\n' "  ${S_ACC}${S_i_step:+$S_i_step }${S_R}create ${S_VAL}$NAME${S_R} from $1: port ${PORT}->$(env_get SERVER_PORT || echo 8080), ${CPUS} CPUs, ${MEMORY_GB} GB"
   if persist_wanted; then
-    echo "  mount $DUMP_DIR at /persist; the database is loaded from $(persist_file) at start"
+    printf '%s\n' "  ${S_ACC}${S_i_step:+$S_i_step }${S_R}mount $DUMP_DIR at /persist; the database is loaded from ${S_VAL}$(persist_file)${S_R}"
   fi
-  echo "  TOKEN_SECRET from: $TOKEN_SOURCE"
-  echo "  with these variables:"
+  printf '%s\n' "  ${S_ACC}${S_i_step:+$S_i_step }${S_R}TOKEN_SECRET from: ${S_VAL}$TOKEN_SOURCE${S_R}"
+  printf '%s\n' "  with these variables:"
   print_env | sed 's/^/    /'
   [[ ${PLAN_PRUNE:-0} == 1 ]] && prune_images
   return 0
@@ -1399,18 +1578,18 @@ plan_recreate() {
 # ── helpers ────────────────────────────────────────────────────────────────
 wait_healthy() {
   local waited=0
-  printf "Waiting for the server" >&2
+  printf '%s' "${E_ACC}${E_i_wait:+$E_i_wait }${E_R}Waiting for the server" >&2
   while [[ $waited -lt $WAIT_SECONDS ]]; do
     if curl -fsS "$HEALTH_URL" >/dev/null 2>&1; then
-      note " up at $HEALTH_URL"
+      note "${E_OK} up at ${E_VAL}$HEALTH_URL${E_R}"
       server_version_line
       return 0
     fi
-    printf "." >&2
+    printf '%s' "${E_DIM}.${E_R}" >&2
     sleep 2
     waited=$((waited + 2))
   done
-  note " not answering after ${WAIT_SECONDS}s (raise it with VALHALLA_WAIT=SECONDS). Recent logs:"
+  printf '%s\n' "${E_ERR}${E_i_err:+$E_i_err } not answering after ${WAIT_SECONDS}s${E_R} (raise it with VALHALLA_WAIT=SECONDS). Recent logs:" >&2
   logs | tail -n 20
   return 1
 }
@@ -1422,6 +1601,20 @@ server_version_line() {
   [[ -n $line ]] || line="$(logs | sed -E $'s/\x1b\\[[0-9;]*m//g' | grep -m1 -E '\] Version: ' || true)"
   [[ -n $line ]] && echo "$line"
   return 0
+}
+
+# run_success: the "it's up" banner with the URLs, after run/update/build/
+# restart. Always printed (plain when stdout isn't a terminal), because the
+# URLs are the point.
+run_success() {
+  is_running || return 0
+  {
+    echo
+    printf '%s\n' "${S_ACC}${S_i_rocket:+$S_i_rocket }${S_B}Valhalla is up${S_R} ${S_OK}${S_i_ok:+$S_i_ok }${S_R}"
+    printf '  %s%-10s%s %s\n' "$S_LBL" "API:" "$S_R" "${S_VAL}${HEALTH_URL}${S_R}"
+    printf '  %s%-10s%s %s\n' "$S_LBL" "Docs:" "$S_R" "${S_INFO}${DOC_URL}${S_R}"
+    printf '  %s%-10s%s %s\n' "$S_LBL" "Container:" "$S_R" "${S_VAL}$NAME${S_R} ${S_DIM}(running)${S_R}"
+  }
 }
 
 image_ref() { echo "${IMAGE_REPO}:${1:-latest}"; }
@@ -1465,9 +1658,9 @@ except Exception:
     print(0)' 2>/dev/null || echo 0)"
   [[ $have -ge $want_gb ]] && return 0
   cpus="$(sysctl -n hw.ncpu 2>/dev/null || echo 4)"
-  note "The Apple builder has ${have} GB; compiling needs about ${want_gb} GB."
-  note "Restarting it with ${want_gb} GB and ${cpus} CPUs (this applies to all your builds;"
-  note "set VALHALLA_BUILD_MEMORY to change, or restart it yourself with: container builder start)"
+  info "The Apple builder has ${have} GB; compiling needs about ${want_gb} GB."
+  info "Restarting it with ${want_gb} GB and ${cpus} CPUs (this applies to all your builds;"
+  info "set VALHALLA_BUILD_MEMORY to change, or restart it yourself with: container builder start)"
   container builder stop >/dev/null 2>&1 || true
   container builder start --cpus "$cpus" --memory "${want_gb}g" >/dev/null
 }
@@ -1515,7 +1708,7 @@ prune_images() {
   local keep before after ref id removed=0
   keep="$(container_image)"
   if [[ $DRY_RUN == 1 ]]; then
-    echo "  then remove unused older images:"
+    printf '%s\n' "  ${S_ACC}${S_i_step:+$S_i_step }${S_R}then remove unused older images:"
     old_image_refs "$keep" | sed 's/^/    /'
     if [[ $RT == docker ]]; then
       echo "    and dangling images left by earlier pulls of $IMAGE_REPO"
@@ -1543,9 +1736,9 @@ prune_images() {
   fi
   after="$(images_size)"
   if [[ -n $before && -n $after && $before != "$after" ]]; then
-    note "Freed image space: $before -> $after"
+    ok "Freed image space: $before -> $after"
   elif [[ $removed -gt 0 ]]; then
-    note "Removed $removed old image(s)"
+    ok "Removed $removed old image(s)"
   fi
   return 0
 }
@@ -1673,21 +1866,6 @@ schedule_update_check() {
   return 0
 }
 
-# nerd_font: is a Nerd Font installed? (Installed isn't proof the terminal
-# uses it, so VALHALLA_NERD=0/1 overrides.)
-nerd_font() {
-  case "${VALHALLA_NERD:-}" in 1) return 0 ;; 0) return 1 ;; esac
-  if [[ $(uname -s) == Darwin ]]; then
-    local f
-    for f in "$HOME"/Library/Fonts/* /Library/Fonts/*; do
-      [[ $f == *[Nn]erd* ]] && return 0
-    done
-    return 1
-  else
-    command -v fc-list >/dev/null 2>&1 && fc-list 2>/dev/null | grep -qi 'nerd'
-  fi
-}
-
 # show_update_notice: prints the update table (stderr, terminals only).
 show_update_notice() {
   [[ ${VALHALLA_NO_UPDATE_CHECK:-0} == 1 ]] && return 0
@@ -1696,24 +1874,14 @@ show_update_notice() {
   tool="$(state_get tool_update)"; image="$(state_get image_update)"
   [[ $tool == 1 || $image == 1 ]] || return 0
 
-  local level is_tty=1
-  level="$(fancy_level "$is_tty")"
-  local e R="" B="" D="" T="" H1="" OK="" OLD="" NEW=""
-  e="$(printf '\033')"
-  if [[ $level -ge 1 ]]; then
-    R="${e}[0m"; B="${e}[1m"; D="${e}[2m"
-    if [[ "$(tput colors 2>/dev/null || echo 8)" -ge 256 ]]; then
-      T="${e}[1;38;5;213m"; H1="${e}[1;38;5;111m"; OLD="${e}[38;5;210m"; NEW="${e}[1;38;5;114m"; OK="${e}[38;5;117m"
-    else
-      T="${e}[1;35m"; H1="${e}[1;34m"; OLD="${e}[31m"; NEW="${e}[1;32m"; OK="${e}[36m"
-    fi
-  fi
+  # Colors and icons come from the shared style engine (stderr judged).
+  local R="$E_R" B="$E_B" D="$E_DIM" T="$E_ACC" H1="$E_HEAD" OLD="$E_ERR" NEW="$E_OK" OK="$E_INFO"
 
   # Icons: Nerd Font glyphs (1 column), emoji (2 columns) or none.
   local i_gift="" i_img="" i_tool="" iw=0
-  if [[ $level -ge 2 ]] && nerd_font; then
+  if [[ -n $E_NERD ]]; then
     i_gift=$'\xef\x81\xab'; i_img=$'\xef\x8c\x88'; i_tool=$'\xef\x82\xad'; iw=2   # nf-fa-gift, nf-linux-docker, nf-fa-wrench
-  elif [[ $level -ge 3 ]]; then
+  elif [[ -n $E_i_rocket ]]; then
     i_gift="🎁"; i_img="🐳"; i_tool="🔧"; iw=3
   fi
 
@@ -1739,7 +1907,7 @@ show_update_notice() {
     ((${#b} > w3)) && w3=${#b}
   done
   local tl tr bl br hz vt lj rj tj bj xj
-  if [[ $level -ge 2 ]]; then
+  if [[ -n $E_i_step ]]; then # level >= 2: unicode allowed
     tl="╭"; tr="╮"; bl="╰"; br="╯"; hz="─"; vt="│"; lj="├"; rj="┤"; tj="┬"; bj="┴"; xj="┼"
   else
     tl="+"; tr="+"; bl="+"; br="+"; hz="-"; vt="|"; lj="+"; rj="+"; tj="+"; bj="+"; xj="+"
@@ -1778,7 +1946,7 @@ show_update_notice() {
 status_updates() {
   [[ ${VALHALLA_NO_UPDATE_CHECK:-0} == 1 ]] && return 0
   if ! curl -fsS -m 1 -o /dev/null https://api.github.com 2>/dev/null; then
-    echo "Updates:   not checked (no internet connection)"
+    printf '%s%-10s%s %s\n' "$S_LBL" "Updates:" "$S_R" "not checked (no internet connection)"
     show_update_notice
     return 0
   fi
@@ -1789,7 +1957,7 @@ status_updates() {
   local tool image
   tool="$(state_get tool_update)"; image="$(state_get image_update)"
   if [[ $tool == 1 || $image == 1 ]]; then
-    echo "Updates:   available"
+    printf '%s%-10s%s %s\n' "$S_LBL" "Updates:" "$S_R" "${S_OK}${S_i_ok:+$S_i_ok }available${S_R}"
     if [[ -t 2 ]]; then
       show_update_notice
     else
@@ -1804,7 +1972,7 @@ status_updates() {
     elif [[ ! -f $ROOT/VERSION ]]; then
       what="${what:+$what; }tool not checked: running from a checkout"
     fi
-    echo "Updates:   up to date${what:+ ($what)}"
+    printf '%s%-10s%s %s\n' "$S_LBL" "Updates:" "$S_R" "${S_OK}up to date${what:+ ${S_DIM}($what)${S_R}}"
   fi
   return 0
 }
@@ -1815,21 +1983,22 @@ cmd_run() {
   image="$(image_ref "${1:-}")"
   if exists; then
     if [[ -n ${1:-} && "$(container_image)" != "$image" ]]; then
-      note "note: $NAME already exists from $(container_image); $1 is ignored (use: $PROG update $1)"
+      info "$NAME already exists from $(container_image); $1 is ignored (use: $PROG update $1)"
     fi
     if is_running; then
-      echo "$NAME is already running."
       wait_healthy
+      run_success
       return
     fi
     if [[ $DRY_RUN == 1 ]]; then
       echo "Dry run ($RT): would start the existing container $NAME."
       return
     fi
-    note "Starting existing container $NAME"
+    step "Starting existing container $NAME"
     start_container
     wait_healthy
     persist_on && persist_load
+    run_success
     return 0
   else
     if [[ $DRY_RUN == 1 ]]; then
@@ -1839,12 +2008,13 @@ cmd_run() {
       return
     fi
     image_present "$image" || pull "$image"
-    note "Creating container $NAME from $image"
+    step "Creating container $NAME from $image"
     create_container "$image"
   fi
   adopt_container_port
   wait_healthy
   persist_on && persist_load
+  run_success
   return 0
 }
 
@@ -1859,13 +2029,13 @@ recreate() {
   if exists && save_before_replace; then
     persist_save
   elif exists && is_running && [[ $PERSIST == 1 && $OLD_PERSIST != 1 ]]; then
-    note "Turning persistence on: the new container gets the saved database $(persist_file);"
-    note "the current one isn't saved (run '$PROG dump' first to keep it)"
+    warn "Turning persistence on: the new container gets the saved database $(persist_file);
+    the current one isn't saved (run '$PROG dump' first to keep it)"
   fi
   # Stop gracefully first: an entrypoint with persistence saves on stop,
   # which a forced removal would skip.
   if exists && is_running; then stop_container; fi
-  note "Recreating container $NAME from $image"
+  step "Recreating container $NAME from $image"
   remove_container
   create_container "$image" "$secret"
   adopt_container_port
@@ -1876,6 +2046,7 @@ recreate() {
   fi
   forget_update_state
   prune_images
+  run_success
   return 0
 }
 
@@ -1891,7 +2062,7 @@ update_tool_step() {
   local installed latest
   installed="$(tool_installed_sha)"
   if [[ -z $installed ]]; then
-    note "Tool: not an installed copy (checkout) — nothing to update. Run '$PROG install' to install the command."
+    info "Tool: not an installed copy (checkout) — nothing to update. Run '$PROG install' to install the command."
     return 0
   fi
   latest="$(latest_tool_sha)"
@@ -1901,10 +2072,10 @@ update_tool_step() {
     return 0
   fi
   if [[ $installed == "$latest" ]]; then
-    note "Tool: already up to date ($(echo "$latest" | cut -c1-7))."
+    ok "Tool: already up to date ($(echo "$latest" | cut -c1-7))."
     return 0
   fi
-  note "Updating the valhalla tool ($(echo "$installed" | cut -c1-7) -> $(echo "$latest" | cut -c1-7)), like '$PROG install'"
+  step "Updating the valhalla tool ($(echo "$installed" | cut -c1-7) -> $(echo "$latest" | cut -c1-7)), like '$PROG install'"
   if ! install_tool main; then
     warn "the image was updated, but the tool update failed; run '$PROG install'"
   fi
@@ -1956,7 +2127,7 @@ cmd_build() {
   fi
 
   ensure_builder
-  note "Building $image (version $version, deps: $deps)"
+  step "Building $image (version $version, deps: $deps)"
   rt "${args[@]}"
   recreate "$image"
 }
@@ -1973,7 +2144,7 @@ cmd_stop() {
   fi
   persist_on && persist_save
   stop_container
-  echo "Stopped $NAME (start it again with: $PROG run)"
+  say_ok "Stopped $NAME (start it again with: $PROG run)"
 }
 
 cmd_restart() {
@@ -1987,15 +2158,16 @@ cmd_restart() {
     return 0
   fi
   if persist_on; then
-    note "Restarting $NAME (persistence on: the database is saved and restored)"
+    step "Restarting $NAME (persistence on: the database is saved and restored)"
     persist_save
   else
-    note "Restarting $NAME (the database is reset)"
+    step "Restarting $NAME (the database is reset)"
   fi
   is_running && stop_container
   start_container
   wait_healthy
   persist_on && persist_load
+  run_success
   return 0
 }
 
@@ -2014,12 +2186,12 @@ cmd_delete() {
     confirm "Remove container $NAME? (its database is saved to $(persist_file) first)" || die "cancelled"
     persist_save
     stop_container
-    note "Kept $(persist_file); $PROG run --persist restores it"
+    info "Kept $(persist_file); $PROG run --persist restores it"
   else
     confirm "Remove container $NAME? Its database is lost (keep it with: $PROG dump)" || die "cancelled"
   fi
   remove_container
-  echo "Removed container $NAME"
+  say_ok "Removed container $NAME"
 }
 
 cmd_clean() {
@@ -2045,9 +2217,9 @@ cmd_clean() {
   # not fatal.
   while IFS= read -r ref; do
     if rt image rm "$ref" >/dev/null 2>&1 || rt image delete "$ref" >/dev/null 2>&1; then
-      echo "Removed image $ref"
+      say_ok "Removed image $ref"
     else
-      echo "Couldn't remove image $ref (still in use?)"
+      printf '%s\n' "${S_WRN}${S_i_warn:+$S_i_warn }${S_R}Couldn't remove image $ref (still in use?)"
       failed=1
     fi
   done <<<"$refs"
@@ -2055,38 +2227,43 @@ cmd_clean() {
 }
 
 cmd_status() {
-  echo "Runtime:   $RT"
-  echo "Container: $NAME"
+  row() { printf '%s%-10s%s %s\n' "$S_LBL" "$1" "$S_R" "$2"; }
+  row "Runtime:" "$RT"
+  row "Container:" "$NAME"
   if ! exists; then
-    echo "State:     not created (use: $PROG run)"
+    row "State:" "not created ${S_DIM}(use: $PROG run)${S_R}"
     status_updates
     return 0
   fi
   local st
   st="$(state)"
-  echo "State:     ${st:-unknown}"
-  echo "Image:     $(container_image)"
-  echo "URL:       http://127.0.0.1:${PORT}  (docs: $DOC_URL)"
+  if [[ $st == running ]]; then
+    row "State:" "${S_OK}${S_i_ok:+$S_i_ok }running${S_R}"
+  else
+    row "State:" "${st:-unknown}"
+  fi
+  row "Image:" "${S_DIM}$(container_image)${S_R}"
+  row "URL:" "${S_VAL}http://127.0.0.1:${PORT}${S_R}  ${S_DIM}(docs: ${S_INFO}$DOC_URL${S_DIM})${S_R}"
   local pf
   pf="$(persist_file)"
   if persist_on; then
     if [[ -f $pf ]]; then
-      echo "Persist:   on, last saved $(date -r "$pf" '+%Y-%m-%d %H:%M' 2>/dev/null || echo '?') ($pf)"
+      row "Persist:" "on, last saved $(date -r "$pf" '+%Y-%m-%d %H:%M' 2>/dev/null || echo '?') ${S_DIM}($pf)${S_R}"
     else
-      echo "Persist:   on, nothing saved yet ($pf)"
+      row "Persist:" "on, nothing saved yet ${S_DIM}($pf)${S_R}"
     fi
   else
-    echo "Persist:   off (the database is reset on every start; enable: $PROG update --persist)"
+    row "Persist:" "off ${S_DIM}(the database is reset on every start; enable: $PROG update --persist)${S_R}"
   fi
   if [[ $st == running ]]; then
     if curl -fsS "$HEALTH_URL" >/dev/null 2>&1; then
-      echo "Health:    answering at $HEALTH_URL"
+      row "Health:" "${S_OK}${S_i_ok:+$S_i_ok }answering at ${S_DIM}$HEALTH_URL${S_R}"
     else
-      echo "Health:    not answering at $HEALTH_URL"
+      row "Health:" "${S_ERR}${S_i_err:+$S_i_err }not answering at ${S_DIM}$HEALTH_URL${S_R}"
     fi
     local ver
     ver="$(server_version_line | sed -E 's/.*[Vv]ersion[^:]*:[[:space:]]*//')"
-    echo "Version:   ${ver:-unknown}"
+    row "Version:" "${ver:-unknown}"
   fi
   status_updates
 }
@@ -2103,13 +2280,13 @@ cmd_outdated() {
   local_digest="$(container_digest)"
   remote_digest="$(registry_digest "$repo" "$tag")" || die "couldn't reach Docker Hub"
   [[ -n $remote_digest ]] || die "tag $tag not found for $repo"
-  echo "Container: $ref"
-  echo "  running   ${local_digest:-unknown}"
-  echo "  Docker Hub ${tag}: $remote_digest"
+  printf '%s%-10s%s %s\n' "$S_LBL" "Container:" "$S_R" "$ref"
+  echo "  ${S_DIM}running${S_R}    ${local_digest:-unknown}"
+  echo "  ${S_DIM}Docker Hub${S_R} ${S_VAL}$tag${S_R}: $remote_digest"
   if [[ $local_digest == "$remote_digest" ]]; then
-    echo "Up to date."
+    say_ok "Up to date."
   else
-    echo "Update available: $PROG update $tag"
+    printf '%s\n' "${S_ACC}${S_i_rocket:+$S_i_rocket }${S_B}Update available${S_R}: $PROG update $tag"
   fi
 }
 
@@ -2135,14 +2312,14 @@ cmd_stats() {
 cmd_env() {
   compose_env "$(old_secret)"
   print_env
-  note "TOKEN_SECRET from: $TOKEN_SOURCE"
+  info "TOKEN_SECRET from: $TOKEN_SOURCE"
 }
 
 cmd_doc() {
   require_running
   curl -fsS "$HEALTH_URL" >/dev/null 2>&1 ||
     die "$NAME is running but the server isn't answering at $HEALTH_URL (see: $PROG logs)"
-  echo "Opening $DOC_URL"
+  say_info "Opening $DOC_URL"
   if command -v open >/dev/null 2>&1; then
     open "$DOC_URL"
   elif command -v xdg-open >/dev/null 2>&1; then
@@ -2167,9 +2344,9 @@ cmd_dump() {
     echo "Dry run ($RT): would dump the database of $NAME to $file."
     return 0
   fi
-  note "Dumping the database from $NAME"
+  step "Dumping the database from $NAME"
   dump_to "$file" || die "pg_dump failed"
-  echo "Saved $(wc -c <"$file" | tr -d ' ') bytes to $file"
+  say_ok "Saved $(wc -c <"$file" | tr -d ' ') bytes to $file"
 }
 
 cmd_restore() {
@@ -2187,9 +2364,9 @@ cmd_restore() {
     return
   fi
   confirm "Replace the contents of database $db in $NAME with $file?$extra" || die "cancelled"
-  note "Restoring $file into $db"
+  step "Restoring $file into $db"
   restore_from "$file" || die "restore failed"
-  echo "Restored $file"
+  say_ok "Restored $file"
 }
 
 cmd_shell() {
@@ -2242,7 +2419,7 @@ cmd_secret() {
   fi
   secret="$(new_secret)"
   CONFIG_FILE="$target" save_secret_to_config "$secret"
-  echo "$([[ $has == 1 ]] && echo Replaced || echo Added) TOKEN_SECRET in $target. Apply it with: $PROG update"
+  say_ok "$([[ $has == 1 ]] && echo Replaced || echo Added) TOKEN_SECRET in $target. Apply it with: $PROG update"
 }
 
 INSTALLER_URL="${VALHALLA_INSTALLER_URL:-https://raw.githubusercontent.com/dr3mro/Valhalla-server/main/install.sh}"
@@ -2360,7 +2537,7 @@ case "$command" in
 esac
 
 known=" $(command_names)"
-[[ $known == *" $command "* ]] || { note "unknown command: $command (see: $PROG help)"; exit 1; }
+[[ $known == *" $command "* ]] || { die "unknown command: $command (see: $PROG help)"; }
 
 install_completion
 
