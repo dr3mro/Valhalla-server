@@ -432,10 +432,12 @@ style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_*
     printf -v "${p}${v}" ''
   done
   printf -v "${p}GAP" ''
+  printf -v "${p}VERSION_GAP" ''
   if [[ $l -ge 2 ]]; then
     if [[ $l -lt 3 || ${VALHALLA_NERD:-} == 1 ]] && nerd_font; then
       printf -v "${p}NERD" '1'
-      printf -v "${p}GAP" ' '
+      printf -v "${p}GAP" '   '
+      printf -v "${p}VERSION_GAP" '   '
       printf -v "${p}i_ok"     '%s' $'\xef\x80\x8c'   # nf-fa-check
       printf -v "${p}i_err"    '%s' $'\xef\x80\x8d'   # nf-fa-times
       printf -v "${p}i_warn"   '%s' $'\xef\x81\xb1'   # nf-fa-warning
@@ -456,6 +458,7 @@ style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_*
       printf -v "${p}i_version" '%s' $'\xef\x80\xab'  # nf-fa-tag
     elif [[ $l -ge 3 ]]; then
       printf -v "${p}GAP" '  '
+      printf -v "${p}VERSION_GAP" '   '
       printf -v "${p}i_ok"     '%s' '✅'
       printf -v "${p}i_err"    '%s' '❌'
       printf -v "${p}i_warn"   '%s' '🚧'
@@ -476,6 +479,7 @@ style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_*
       printf -v "${p}i_version" '%s' '🏷'
     else
       printf -v "${p}GAP" ' '
+      printf -v "${p}VERSION_GAP" ' '
       printf -v "${p}i_ok"     '%s' '✓'
       printf -v "${p}i_err"    '%s' '✗'
       printf -v "${p}i_warn"   '%s' '⚠'
@@ -492,7 +496,7 @@ style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_*
 # The style variables are set dynamically in style_set; declare them so
 # the linter can see every name.
 # shellcheck disable=SC2034  # set dynamically in style_set
-S_R='' S_ERR='' S_WRN='' S_OK='' S_INFO='' S_ACC='' S_HEAD='' S_VAL='' S_LBL='' S_DIM='' S_B='' S_NERD='' S_GAP='' S_i_ok='' S_i_err='' S_i_warn='' S_i_info='' S_i_q='' S_i_pull='' S_i_save='' S_i_trash='' S_i_restart='' S_i_box='' S_i_rocket='' S_i_book='' S_i_link='' S_i_key='' S_i_wait='' S_i_stop='' S_i_step='' S_i_version='' E_R='' E_ERR='' E_WRN='' E_OK='' E_INFO='' E_ACC='' E_HEAD='' E_VAL='' E_LBL='' E_DIM='' E_B='' E_NERD='' E_GAP='' E_i_ok='' E_i_err='' E_i_warn='' E_i_info='' E_i_q='' E_i_pull='' E_i_save='' E_i_trash='' E_i_restart='' E_i_box='' E_i_rocket='' E_i_book='' E_i_link='' E_i_key='' E_i_wait='' E_i_stop='' E_i_step='' E_i_version=''
+S_R='' S_ERR='' S_WRN='' S_OK='' S_INFO='' S_ACC='' S_HEAD='' S_VAL='' S_LBL='' S_DIM='' S_B='' S_NERD='' S_GAP='' S_VERSION_GAP='' S_i_ok='' S_i_err='' S_i_warn='' S_i_info='' S_i_q='' S_i_pull='' S_i_save='' S_i_trash='' S_i_restart='' S_i_box='' S_i_rocket='' S_i_book='' S_i_link='' S_i_key='' S_i_wait='' S_i_stop='' S_i_step='' S_i_version='' E_R='' E_ERR='' E_WRN='' E_OK='' E_INFO='' E_ACC='' E_HEAD='' E_VAL='' E_LBL='' E_DIM='' E_B='' E_NERD='' E_GAP='' E_VERSION_GAP='' E_i_ok='' E_i_err='' E_i_warn='' E_i_info='' E_i_q='' E_i_pull='' E_i_save='' E_i_trash='' E_i_restart='' E_i_box='' E_i_rocket='' E_i_book='' E_i_link='' E_i_key='' E_i_wait='' E_i_stop='' E_i_step='' E_i_version=''
 
 # style_init: judge stdout and stderr separately, so only real terminals
 # get decoration and piped output stays byte-clean.
@@ -599,7 +603,7 @@ render_help() {
         TITLE = c("1;35"); HEAD = c("1;34"); CMD = c("1;32"); ARG = c("33")
         OPT = c("36"); ENV = c("35"); DEF = c("2"); CODE = c("33"); SUB = c("1;33")
       }
-      U = (L >= 2); M = (L >= 3); EG = M ? "  " : " "
+      U = (L >= 2); M = (L >= 3); EG = M ? "   " : " "; EG = M ? "  " : " "
       # The marker replaces the 2-space indent, so it is 2 columns wide.
       H = U ? "─" : "-"; BUL = U ? "▸ " : "* "
       if (W > 100) W = 100
@@ -1666,9 +1670,10 @@ server_version_line() {
   line="$(logs | sed -E $'s/\x1b\\[[0-9;]*m//g' | grep -m1 -E ' - Version +:' || true)"
   [[ -n $line ]] || line="$(logs | sed -E $'s/\x1b\\[[0-9;]*m//g' | grep -m1 -E '\] Version: ' || true)"
   if [[ -n $line ]]; then
+    line="$(printf '%s\n' "$line" | sed -E 's/[[:space:]]*:[[:space:]]*/: /')"
     if [[ -t 1 && -n ${S_i_version:-} ]]; then
       line="${line# - }"
-      printf '%s%s\n' "$S_i_version$S_GAP" "$line"
+      printf '%s%s\n' "$S_i_version$S_VERSION_GAP" "$line"
     else
       echo "$line"
     fi
@@ -1684,9 +1689,9 @@ run_success() {
   {
     echo
     printf '%s\n' "${S_ACC}${S_i_rocket:+$S_i_rocket$S_GAP}${S_B}Valhalla is up${S_R} ${S_OK}${S_i_ok:+$S_i_ok$S_GAP}${S_R}"
-    printf '  %s%-14s%s %s\n' "$S_LBL" "${S_i_link:+$S_i_link$S_GAP}API:" "$S_R" "${S_VAL}${HEALTH_URL}${S_R}"
-    printf '  %s%-14s%s %s\n' "$S_LBL" "${S_i_book:+$S_i_book$S_GAP}Docs:" "$S_R" "${S_INFO}${DOC_URL}${S_R}"
-    printf '  %s%-14s%s %s\n' "$S_LBL" "${S_i_box:+$S_i_box$S_GAP}Container:" "$S_R" "${S_VAL}$NAME${S_R} ${S_DIM}(running)${S_R}"
+    printf '  %s%s%-10s%s %s\n' "$S_LBL" "${S_i_link:+$S_i_link$S_GAP}" "API:" "$S_R" "${S_VAL}${HEALTH_URL}${S_R}"
+    printf '  %s%s%-10s%s %s\n' "$S_LBL" "${S_i_book:+$S_i_book$S_GAP}" "Docs:" "$S_R" "${S_INFO}${DOC_URL}${S_R}"
+    printf '  %s%s%-10s%s %s\n' "$S_LBL" "${S_i_box:+$S_i_box$S_GAP}" "Container:" "$S_R" "${S_VAL}$NAME${S_R} ${S_DIM}(running)${S_R}"
   }
 }
 
@@ -2019,7 +2024,7 @@ show_update_notice() {
 status_updates() {
   [[ ${VALHALLA_NO_UPDATE_CHECK:-0} == 1 ]] && return 0
   if ! curl -fsS -m 1 -o /dev/null https://api.github.com 2>/dev/null; then
-    printf '%s%-14s%s %s\n' "$S_LBL" "${S_i_info:+$S_i_info$S_GAP}Updates:" "$S_R" "not checked (no internet connection)"
+    printf '%s%s%-10s%s %s\n' "$S_LBL" "${S_i_info:+$S_i_info$S_GAP}" "Updates:" "$S_R" "not checked (no internet connection)"
     show_update_notice
     return 0
   fi
@@ -2030,7 +2035,7 @@ status_updates() {
   local tool image
   tool="$(state_get tool_update)"; image="$(state_get image_update)"
   if [[ $tool == 1 || $image == 1 ]]; then
-    printf '%s%-14s%s %s\n' "$S_LBL" "${S_i_info:+$S_i_info$S_GAP}Updates:" "$S_R" "${S_OK}${S_i_ok:+$S_i_ok$S_GAP}available${S_R}"
+    printf '%s%s%-10s%s %s\n' "$S_LBL" "${S_i_info:+$S_i_info$S_GAP}" "Updates:" "$S_R" "${S_OK}${S_i_ok:+$S_i_ok$S_GAP}available${S_R}"
     if [[ -t 2 ]]; then
       show_update_notice
     else
@@ -2045,7 +2050,7 @@ status_updates() {
     elif [[ ! -f $ROOT/VERSION ]]; then
       what="${what:+$what; }tool not checked: running from a checkout"
     fi
-    printf '%s%-14s%s %s\n' "$S_LBL" "${S_i_info:+$S_i_info$S_GAP}Updates:" "$S_R" "${S_OK}${S_i_ok:+$S_i_ok$S_GAP}up to date${what:+ ${S_DIM}($what)${S_R}}"
+    printf '%s%s%-10s%s %s\n' "$S_LBL" "${S_i_info:+$S_i_info$S_GAP}" "Updates:" "$S_R" "${S_OK}${S_i_ok:+$S_i_ok$S_GAP}up to date${what:+ ${S_DIM}($what)${S_R}}"
   fi
   return 0
 }
@@ -2301,16 +2306,16 @@ cmd_clean() {
 
 cmd_status() {
   row() {
-    local icon
+    local icon gap="$S_GAP"
     case "$1" in
       Runtime:|State:|Updates:) icon="$S_i_info" ;;
       Container:|Image:) icon="$S_i_box" ;;
       URL:) icon="$S_i_link" ;;
       Persist:) icon="$S_i_save" ;;
       Health:) icon="$S_i_ok" ;;
-      Version:) icon="$S_i_version" ;;
+      Version:) icon="$S_i_version"; gap="$S_VERSION_GAP" ;;
     esac
-    printf '%s%-14s%s %s\n' "$S_LBL" "${icon:+$icon }$1" "$S_R" "$2"
+    printf '%s%s%-10s%s %s\n' "$S_LBL" "${icon:+$icon$gap}" "$1" "$S_R" "$2"
   }
   row "Runtime:" "$RT"
   row "Container:" "$NAME"
