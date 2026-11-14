@@ -357,7 +357,7 @@ fancy_level() {
     return
   fi
   case "${TERM_PROGRAM:-}" in
-    iTerm.app | Apple_Terminal | vscode | WezTerm | ghostty | Hyper | Tabby | WarpTerminal | rio) echo 3; return ;;
+    iTerm.app | Apple_Terminal | vscode | WezTerm | ghostty | Hyper | Tabby | WarpTerminal | rio | zed) echo 3; return ;;
   esac
   case "${TERM:-}" in
     xterm-kitty | xterm-ghostty | wezterm | alacritty | foot*) echo 3; return ;;
@@ -454,10 +454,10 @@ style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_*
     elif [[ $l -ge 3 ]]; then
       printf -v "${p}i_ok"     '%s' '✅'
       printf -v "${p}i_err"    '%s' '❌'
-      printf -v "${p}i_warn"   '%s' '⚠️'
-      printf -v "${p}i_info"   '%s' 'ℹ️'
+      printf -v "${p}i_warn"   '%s' '🟡'
+      printf -v "${p}i_info"   '%s' '🔵'
       printf -v "${p}i_q"      '%s' '❓'
-      printf -v "${p}i_pull"   '%s' '⬇️'
+      printf -v "${p}i_pull"   '%s' '📥'
       printf -v "${p}i_save"   '%s' '💾'
       printf -v "${p}i_trash"  '%s' '🗑️'
       printf -v "${p}i_restart" '%s' '🔄'
@@ -467,7 +467,7 @@ style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_*
       printf -v "${p}i_link"   '%s' '🔗'
       printf -v "${p}i_key"    '%s' '🔑'
       printf -v "${p}i_wait"   '%s' '⏳'
-      printf -v "${p}i_stop"   '%s' '⏹️'
+      printf -v "${p}i_stop"   '%s' '🛑'
       printf -v "${p}i_step"   '%s' '▸'
     else
       printf -v "${p}i_ok"     '%s' '✓'
