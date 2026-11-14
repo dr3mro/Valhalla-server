@@ -431,9 +431,11 @@ style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_*
   for v in NERD i_ok i_err i_warn i_info i_q i_pull i_save i_trash i_restart i_box i_rocket i_book i_link i_key i_wait i_stop i_step i_version; do
     printf -v "${p}${v}" ''
   done
+  printf -v "${p}GAP" ''
   if [[ $l -ge 2 ]]; then
     if [[ $l -lt 3 || ${VALHALLA_NERD:-} == 1 ]] && nerd_font; then
       printf -v "${p}NERD" '1'
+      printf -v "${p}GAP" ' '
       printf -v "${p}i_ok"     '%s' $'\xef\x80\x8c'   # nf-fa-check
       printf -v "${p}i_err"    '%s' $'\xef\x80\x8d'   # nf-fa-times
       printf -v "${p}i_warn"   '%s' $'\xef\x81\xb1'   # nf-fa-warning
@@ -453,6 +455,7 @@ style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_*
       printf -v "${p}i_step"   '%s' '▸'
       printf -v "${p}i_version" '%s' $'\xef\x80\xab'  # nf-fa-tag
     elif [[ $l -ge 3 ]]; then
+      printf -v "${p}GAP" '  '
       printf -v "${p}i_ok"     '%s' '✅'
       printf -v "${p}i_err"    '%s' '❌'
       printf -v "${p}i_warn"   '%s' '🚧'
@@ -472,6 +475,7 @@ style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_*
       printf -v "${p}i_step"   '%s' '▸'
       printf -v "${p}i_version" '%s' '🏷'
     else
+      printf -v "${p}GAP" ' '
       printf -v "${p}i_ok"     '%s' '✓'
       printf -v "${p}i_err"    '%s' '✗'
       printf -v "${p}i_warn"   '%s' '⚠'
@@ -488,7 +492,7 @@ style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_*
 # The style variables are set dynamically in style_set; declare them so
 # the linter can see every name.
 # shellcheck disable=SC2034  # set dynamically in style_set
-S_R='' S_ERR='' S_WRN='' S_OK='' S_INFO='' S_ACC='' S_HEAD='' S_VAL='' S_LBL='' S_DIM='' S_B='' S_NERD='' S_i_ok='' S_i_err='' S_i_warn='' S_i_info='' S_i_q='' S_i_pull='' S_i_save='' S_i_trash='' S_i_restart='' S_i_box='' S_i_rocket='' S_i_book='' S_i_link='' S_i_key='' S_i_wait='' S_i_stop='' S_i_step='' S_i_version='' E_R='' E_ERR='' E_WRN='' E_OK='' E_INFO='' E_ACC='' E_HEAD='' E_VAL='' E_LBL='' E_DIM='' E_B='' E_NERD='' E_i_ok='' E_i_err='' E_i_warn='' E_i_info='' E_i_q='' E_i_pull='' E_i_save='' E_i_trash='' E_i_restart='' E_i_box='' E_i_rocket='' E_i_book='' E_i_link='' E_i_key='' E_i_wait='' E_i_stop='' E_i_step='' E_i_version=''
+S_R='' S_ERR='' S_WRN='' S_OK='' S_INFO='' S_ACC='' S_HEAD='' S_VAL='' S_LBL='' S_DIM='' S_B='' S_NERD='' S_GAP='' S_i_ok='' S_i_err='' S_i_warn='' S_i_info='' S_i_q='' S_i_pull='' S_i_save='' S_i_trash='' S_i_restart='' S_i_box='' S_i_rocket='' S_i_book='' S_i_link='' S_i_key='' S_i_wait='' S_i_stop='' S_i_step='' S_i_version='' E_R='' E_ERR='' E_WRN='' E_OK='' E_INFO='' E_ACC='' E_HEAD='' E_VAL='' E_LBL='' E_DIM='' E_B='' E_NERD='' E_GAP='' E_i_ok='' E_i_err='' E_i_warn='' E_i_info='' E_i_q='' E_i_pull='' E_i_save='' E_i_trash='' E_i_restart='' E_i_box='' E_i_rocket='' E_i_book='' E_i_link='' E_i_key='' E_i_wait='' E_i_stop='' E_i_step='' E_i_version=''
 
 # style_init: judge stdout and stderr separately, so only real terminals
 # get decoration and piped output stays byte-clean.
@@ -529,29 +533,29 @@ message_icon() {
   var="${prefix}${name}"
   printf '%s' "${!var}"
 }
-die() { printf '%s\n' "${E_ERR}${E_i_err:+$E_i_err }error:${E_R} $*" >&2; exit 1; }
-warn() { printf '%s\n' "${E_WRN}${E_i_warn:+$E_i_warn }warning:${E_R} $*" >&2; }
+die() { printf '%s\n' "${E_ERR}${E_i_err:+$E_i_err$E_GAP}error:${E_R} $*" >&2; exit 1; }
+warn() { printf '%s\n' "${E_WRN}${E_i_warn:+$E_i_warn$E_GAP}warning:${E_R} $*" >&2; }
 note() { echo "$*" >&2; }
 step() {
   local icon; icon="$(message_icon "$*" E_)"; [[ -n $icon ]] || icon="$E_i_step"
-  printf '%s\n' "${E_ACC}${icon:+$icon }${E_R}$*" >&2
+  printf '%s\n' "${E_ACC}${icon:+$icon$E_GAP}${E_R}$*" >&2
 }
 ok() {
   local icon; icon="$(message_icon "$*" E_)"; [[ -n $icon ]] || icon="$E_i_ok"
-  printf '%s\n' "${E_OK}${icon:+$icon }${E_R}$*" >&2
+  printf '%s\n' "${E_OK}${icon:+$icon$E_GAP}${E_R}$*" >&2
 }
 info() {
   local icon; icon="$(message_icon "$*" E_)"; [[ -n $icon ]] || icon="$E_i_info"
-  printf '%s\n' "${E_INFO}${icon:+$icon }${E_R}$*" >&2
+  printf '%s\n' "${E_INFO}${icon:+$icon$E_GAP}${E_R}$*" >&2
 }
 # stdout twins for command results (styled only when stdout is a terminal).
 say_ok() {
   local icon; icon="$(message_icon "$*" S_)"; [[ -n $icon ]] || icon="$S_i_ok"
-  printf '%s\n' "${S_OK}${icon:+$icon }${S_R}$*"
+  printf '%s\n' "${S_OK}${icon:+$icon$S_GAP}${S_R}$*"
 }
 say_info() {
   local icon; icon="$(message_icon "$*" S_)"; [[ -n $icon ]] || icon="$S_i_info"
-  printf '%s\n' "${S_INFO}${icon:+$icon }${S_R}$*"
+  printf '%s\n' "${S_INFO}${icon:+$icon$S_GAP}${S_R}$*"
 }
 
 
@@ -595,7 +599,7 @@ render_help() {
         TITLE = c("1;35"); HEAD = c("1;34"); CMD = c("1;32"); ARG = c("33")
         OPT = c("36"); ENV = c("35"); DEF = c("2"); CODE = c("33"); SUB = c("1;33")
       }
-      U = (L >= 2); M = (L >= 3)
+      U = (L >= 2); M = (L >= 3); EG = M ? "  " : " "
       # The marker replaces the 2-space indent, so it is 2 columns wide.
       H = U ? "─" : "-"; BUL = U ? "▸ " : "* "
       if (W > 100) W = 100
@@ -605,34 +609,34 @@ render_help() {
     }
     function emoji(t) {
       if (!M) return ""
-      if (t ~ /^Container/) return "📦 "
-      if (t ~ /^Inspect/) return "🔍 "
-      if (t ~ /^Database/) return "💾 "
-      if (t ~ /^Other settings/) return "🌱 "
-      if (t ~ /^Other/) return "🧰 "
-      if (t ~ /^Tool/) return "🔧 "
-      if (t ~ /^Options/) return "🎛  "
-      if (t ~ /^Persistence/) return "💽 "
-      if (t ~ /^Runtime/) return "🐳 "
-      if (t ~ /^Dependencies/) return "🧩 "
-      if (t ~ /^Shell completion/) return "💡 "
-      if (t ~ /^Server variables the image/) return "📋 "
-      if (t ~ /^Server variables/) return "📜 "
-      if (t ~ /^Note/) return "📝 "
-      if (t ~ /^Updates/) return "🔄 "
-      if (t ~ /^tag defaults/) return "🏷  "
-      return "◆ "
+      if (t ~ /^Container/) return "📦" EG
+      if (t ~ /^Inspect/) return "🔍" EG
+      if (t ~ /^Database/) return "💾" EG
+      if (t ~ /^Other settings/) return "🌱" EG
+      if (t ~ /^Other/) return "🧰" EG
+      if (t ~ /^Tool/) return "🔧" EG
+      if (t ~ /^Options/) return "🎛" EG
+      if (t ~ /^Persistence/) return "💽" EG
+      if (t ~ /^Runtime/) return "🐳" EG
+      if (t ~ /^Dependencies/) return "🧩" EG
+      if (t ~ /^Shell completion/) return "💡" EG
+      if (t ~ /^Server variables the image/) return "📋" EG
+      if (t ~ /^Server variables/) return "📜" EG
+      if (t ~ /^Note/) return "📝" EG
+      if (t ~ /^Updates/) return "🔄" EG
+      if (t ~ /^tag defaults/) return "🏷" EG
+      return "◆" EG
     }
     # Groups inside the server variable list.
     function group_emoji(t) {
       if (!M) return ""
-      if (t ~ /^Rate limiting/) return "🚦 "
-      if (t ~ /^Database/) return "🐘 "
-      if (t ~ /^Server/) return "🚀 "
-      if (t ~ /^Tokens/) return "🔐 "
-      if (t ~ /^Frontend/) return "🌐 "
-      if (t ~ /^Email/) return "📧 "
-      return "◆ "
+      if (t ~ /^Rate limiting/) return "🚦" EG
+      if (t ~ /^Database/) return "🐘" EG
+      if (t ~ /^Server/) return "🚀" EG
+      if (t ~ /^Tokens/) return "🔐" EG
+      if (t ~ /^Frontend/) return "🌐" EG
+      if (t ~ /^Email/) return "📧" EG
+      return "◆" EG
     }
     # `code` -> colored, backticks dropped.
     function inline(t,   out, i, parts, n) {
@@ -653,9 +657,9 @@ render_help() {
     NR == 1 {
       title = $0
       if (U) {
-        line = rule(length(title) + 2 + (M ? 3 : 0))
+        line = rule(length(title) + 2 + (M ? 4 : 0))
         print TITLE "╭" line "╮" R
-        print TITLE "│ " (M ? "🏰 " : "") title " │" R
+        print TITLE "│ " (M ? "🏰" EG : "") title " │" R
         print TITLE "╰" line "╯" R
       } else {
         print TITLE title R
@@ -766,7 +770,7 @@ confirm() {
   [[ $ASSUME_YES == 1 ]] && return 0
   [[ -t 0 ]] || die "$1 (re-run with --yes to confirm)"
   local answer
-  printf '%s' "${E_ACC}${E_i_q:+$E_i_q }${E_B}$1${E_R} ${E_DIM}[y/N]${E_R} " >&2
+  printf '%s' "${E_ACC}${E_i_q:+$E_i_q$E_GAP}${E_B}$1${E_R} ${E_DIM}[y/N]${E_R} " >&2
   read -r answer
   [[ $answer == y || $answer == Y || $answer == yes ]]
 }
@@ -1065,10 +1069,10 @@ check_deps() {
   for w in "${WARNINGS[@]}"; do warn "$w"; done
   [[ ${#MISSING[@]} -eq 0 ]] && return 0
 
-  printf '%s\n' "${E_ERR}${E_i_err:+$E_i_err }error: '$cmd' needs these, which are missing:${E_R}" >&2
+  printf '%s\n' "${E_ERR}${E_i_err:+$E_i_err$E_GAP}error: '$cmd' needs these, which are missing:${E_R}" >&2
   local m
   for m in "${MISSING[@]}"; do
-    printf '%s\n' "  ${E_ERR}${E_i_err:+$E_i_err }${E_R}$m  ${E_DIM}($(install_hint "$m"))${E_R}" >&2
+    printf '%s\n' "  ${E_ERR}${E_i_err:+$E_i_err$E_GAP}${E_R}$m  ${E_DIM}($(install_hint "$m"))${E_R}" >&2
   done
   exit 1
 }
@@ -1620,16 +1624,16 @@ plan_recreate() {
   OLD_PERSIST="$(container_env VALHALLA_PERSIST)"
   compose_env "$(old_secret)"
   printf '%s\n' "${S_B}Dry run${S_R} ($RT), nothing changed. Would:"
-  printf '%s\n' "  ${S_ACC}${S_i_step:+$S_i_step }${S_R}$2"
+  printf '%s\n' "  ${S_ACC}${S_i_step:+$S_i_step$S_GAP}${S_R}$2"
   if exists && is_running && save_before_replace; then
-    printf '%s\n' "  ${S_ACC}${S_i_step:+$S_i_step }${S_R}save the database to ${S_VAL}$(persist_file)${S_R}"
+    printf '%s\n' "  ${S_ACC}${S_i_step:+$S_i_step$S_GAP}${S_R}save the database to ${S_VAL}$(persist_file)${S_R}"
   fi
-  exists && printf '%s\n' "  ${S_ACC}${S_i_step:+$S_i_step }${S_R}stop and remove container ${S_VAL}$NAME${S_R}"
-  printf '%s\n' "  ${S_ACC}${S_i_step:+$S_i_step }${S_R}create ${S_VAL}$NAME${S_R} from $1: port ${PORT}->$(env_get SERVER_PORT || echo 8080), ${CPUS} CPUs, ${MEMORY_GB} GB"
+  exists && printf '%s\n' "  ${S_ACC}${S_i_step:+$S_i_step$S_GAP}${S_R}stop and remove container ${S_VAL}$NAME${S_R}"
+  printf '%s\n' "  ${S_ACC}${S_i_step:+$S_i_step$S_GAP}${S_R}create ${S_VAL}$NAME${S_R} from $1: port ${PORT}->$(env_get SERVER_PORT || echo 8080), ${CPUS} CPUs, ${MEMORY_GB} GB"
   if persist_wanted; then
-    printf '%s\n' "  ${S_ACC}${S_i_step:+$S_i_step }${S_R}mount $DUMP_DIR at /persist; the database is loaded from ${S_VAL}$(persist_file)${S_R}"
+    printf '%s\n' "  ${S_ACC}${S_i_step:+$S_i_step$S_GAP}${S_R}mount $DUMP_DIR at /persist; the database is loaded from ${S_VAL}$(persist_file)${S_R}"
   fi
-  printf '%s\n' "  ${S_ACC}${S_i_step:+$S_i_step }${S_R}TOKEN_SECRET from: ${S_VAL}$TOKEN_SOURCE${S_R}"
+  printf '%s\n' "  ${S_ACC}${S_i_step:+$S_i_step$S_GAP}${S_R}TOKEN_SECRET from: ${S_VAL}$TOKEN_SOURCE${S_R}"
   printf '%s\n' "  with these variables:"
   print_env | sed 's/^/    /'
   [[ ${PLAN_PRUNE:-0} == 1 ]] && prune_images
@@ -1639,7 +1643,7 @@ plan_recreate() {
 # ── helpers ────────────────────────────────────────────────────────────────
 wait_healthy() {
   local waited=0
-  printf '%s' "${E_ACC}${E_i_wait:+$E_i_wait }${E_R}Waiting for the server" >&2
+  printf '%s' "${E_ACC}${E_i_wait:+$E_i_wait$E_GAP}${E_R}Waiting for the server" >&2
   while [[ $waited -lt $WAIT_SECONDS ]]; do
     if curl -fsS "$HEALTH_URL" >/dev/null 2>&1; then
       printf '\n' >&2
@@ -1651,7 +1655,7 @@ wait_healthy() {
     sleep 2
     waited=$((waited + 2))
   done
-  printf '%s\n' "${E_ERR}${E_i_err:+$E_i_err }not answering after ${WAIT_SECONDS}s${E_R} (raise it with VALHALLA_WAIT=SECONDS). Recent logs:" >&2
+  printf '%s\n' "${E_ERR}${E_i_err:+$E_i_err$E_GAP}not answering after ${WAIT_SECONDS}s${E_R} (raise it with VALHALLA_WAIT=SECONDS). Recent logs:" >&2
   logs | tail -n 20
   return 1
 }
@@ -1664,7 +1668,7 @@ server_version_line() {
   if [[ -n $line ]]; then
     if [[ -t 1 && -n ${S_i_version:-} ]]; then
       line="${line# - }"
-      printf '%s%s\n' "$S_i_version " "$line"
+      printf '%s%s\n' "$S_i_version$S_GAP" "$line"
     else
       echo "$line"
     fi
@@ -1679,10 +1683,10 @@ run_success() {
   is_running || return 0
   {
     echo
-    printf '%s\n' "${S_ACC}${S_i_rocket:+$S_i_rocket }${S_B}Valhalla is up${S_R} ${S_OK}${S_i_ok:+$S_i_ok }${S_R}"
-    printf '  %s%-14s%s %s\n' "$S_LBL" "${S_i_link:+$S_i_link }API:" "$S_R" "${S_VAL}${HEALTH_URL}${S_R}"
-    printf '  %s%-14s%s %s\n' "$S_LBL" "${S_i_book:+$S_i_book }Docs:" "$S_R" "${S_INFO}${DOC_URL}${S_R}"
-    printf '  %s%-14s%s %s\n' "$S_LBL" "${S_i_box:+$S_i_box }Container:" "$S_R" "${S_VAL}$NAME${S_R} ${S_DIM}(running)${S_R}"
+    printf '%s\n' "${S_ACC}${S_i_rocket:+$S_i_rocket$S_GAP}${S_B}Valhalla is up${S_R} ${S_OK}${S_i_ok:+$S_i_ok$S_GAP}${S_R}"
+    printf '  %s%-14s%s %s\n' "$S_LBL" "${S_i_link:+$S_i_link$S_GAP}API:" "$S_R" "${S_VAL}${HEALTH_URL}${S_R}"
+    printf '  %s%-14s%s %s\n' "$S_LBL" "${S_i_book:+$S_i_book$S_GAP}Docs:" "$S_R" "${S_INFO}${DOC_URL}${S_R}"
+    printf '  %s%-14s%s %s\n' "$S_LBL" "${S_i_box:+$S_i_box$S_GAP}Container:" "$S_R" "${S_VAL}$NAME${S_R} ${S_DIM}(running)${S_R}"
   }
 }
 
@@ -1777,7 +1781,7 @@ prune_images() {
   local keep before after ref id removed=0
   keep="$(container_image)"
   if [[ $DRY_RUN == 1 ]]; then
-    printf '%s\n' "  ${S_ACC}${S_i_step:+$S_i_step }${S_R}then remove unused older images:"
+    printf '%s\n' "  ${S_ACC}${S_i_step:+$S_i_step$S_GAP}${S_R}then remove unused older images:"
     old_image_refs "$keep" | sed 's/^/    /'
     if [[ $RT == docker ]]; then
       echo "    and dangling images left by earlier pulls of $IMAGE_REPO"
@@ -2015,7 +2019,7 @@ show_update_notice() {
 status_updates() {
   [[ ${VALHALLA_NO_UPDATE_CHECK:-0} == 1 ]] && return 0
   if ! curl -fsS -m 1 -o /dev/null https://api.github.com 2>/dev/null; then
-    printf '%s%-14s%s %s\n' "$S_LBL" "${S_i_info:+$S_i_info }Updates:" "$S_R" "not checked (no internet connection)"
+    printf '%s%-14s%s %s\n' "$S_LBL" "${S_i_info:+$S_i_info$S_GAP}Updates:" "$S_R" "not checked (no internet connection)"
     show_update_notice
     return 0
   fi
@@ -2026,7 +2030,7 @@ status_updates() {
   local tool image
   tool="$(state_get tool_update)"; image="$(state_get image_update)"
   if [[ $tool == 1 || $image == 1 ]]; then
-    printf '%s%-14s%s %s\n' "$S_LBL" "${S_i_info:+$S_i_info }Updates:" "$S_R" "${S_OK}${S_i_ok:+$S_i_ok }available${S_R}"
+    printf '%s%-14s%s %s\n' "$S_LBL" "${S_i_info:+$S_i_info$S_GAP}Updates:" "$S_R" "${S_OK}${S_i_ok:+$S_i_ok$S_GAP}available${S_R}"
     if [[ -t 2 ]]; then
       show_update_notice
     else
@@ -2041,7 +2045,7 @@ status_updates() {
     elif [[ ! -f $ROOT/VERSION ]]; then
       what="${what:+$what; }tool not checked: running from a checkout"
     fi
-    printf '%s%-14s%s %s\n' "$S_LBL" "${S_i_info:+$S_i_info }Updates:" "$S_R" "${S_OK}${S_i_ok:+$S_i_ok }up to date${what:+ ${S_DIM}($what)${S_R}}"
+    printf '%s%-14s%s %s\n' "$S_LBL" "${S_i_info:+$S_i_info$S_GAP}Updates:" "$S_R" "${S_OK}${S_i_ok:+$S_i_ok$S_GAP}up to date${what:+ ${S_DIM}($what)${S_R}}"
   fi
   return 0
 }
@@ -2288,7 +2292,7 @@ cmd_clean() {
     if rt image rm "$ref" >/dev/null 2>&1 || rt image delete "$ref" >/dev/null 2>&1; then
       say_ok "Removed image $ref"
     else
-      printf '%s\n' "${S_WRN}${S_i_warn:+$S_i_warn }${S_R}Couldn't remove image $ref (still in use?)"
+      printf '%s\n' "${S_WRN}${S_i_warn:+$S_i_warn$S_GAP}${S_R}Couldn't remove image $ref (still in use?)"
       failed=1
     fi
   done <<<"$refs"
@@ -2318,7 +2322,7 @@ cmd_status() {
   local st
   st="$(state)"
   if [[ $st == running ]]; then
-    row "State:" "${S_OK}${S_i_ok:+$S_i_ok }running${S_R}"
+    row "State:" "${S_OK}${S_i_ok:+$S_i_ok$S_GAP}running${S_R}"
   else
     row "State:" "${st:-unknown}"
   fi
@@ -2337,9 +2341,9 @@ cmd_status() {
   fi
   if [[ $st == running ]]; then
     if curl -fsS "$HEALTH_URL" >/dev/null 2>&1; then
-      row "Health:" "${S_OK}${S_i_ok:+$S_i_ok }answering at ${S_DIM}$HEALTH_URL${S_R}"
+      row "Health:" "${S_OK}${S_i_ok:+$S_i_ok$S_GAP}answering at ${S_DIM}$HEALTH_URL${S_R}"
     else
-      row "Health:" "${S_ERR}${S_i_err:+$S_i_err }not answering at ${S_DIM}$HEALTH_URL${S_R}"
+      row "Health:" "${S_ERR}${S_i_err:+$S_i_err$S_GAP}not answering at ${S_DIM}$HEALTH_URL${S_R}"
     fi
     local ver
     ver="$(server_version_line | sed -E 's/.*[Vv]ersion[^:]*:[[:space:]]*//')"
@@ -2366,7 +2370,7 @@ cmd_outdated() {
   if [[ $local_digest == "$remote_digest" ]]; then
     say_ok "Up to date."
   else
-    printf '%s\n' "${S_ACC}${S_i_rocket:+$S_i_rocket }${S_B}Update available${S_R}: $PROG update $tag"
+    printf '%s\n' "${S_ACC}${S_i_rocket:+$S_i_rocket$S_GAP}${S_B}Update available${S_R}: $PROG update $tag"
   fi
 }
 
