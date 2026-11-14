@@ -66,8 +66,8 @@
   - `staffcontrollerBase.hpp` (mixed case)
   - comment `DODDetectorConfig` (`src/configurator/configurator.cpp:4`)
   - banner comment says `[1, size-1]`, but the code uses `[0, …]` (`src/server/extras/banner.hpp:48`)
-- [ ] **Includes:**
-  - `database.cpp` includes `staffcontroller.hpp` for nothing (`:18`)
+- [x] **Includes:**
+  - `database.cpp` includes `staffcontroller.hpp` for nothing (`:18`) — it was only supplying the `GateKeeper` alias; now includes `gatekeeper/gatekeeper.hpp` directly
   - unused `<iostream>`/`<ostream>` in `sessionmanager.cpp` (`:12`, `:15`)
 - [ ] **Style and portability:**
   - `__attribute((always_inline))` in 3 files (use `[[gnu::always_inline]]`)

@@ -15,8 +15,9 @@
 #include <unordered_set>
 #include <utility>
 
-#include "controllers/staffcontroller/staffcontroller.hpp"
+#include "controllers/base/controller/controller.hpp"
 #include "database/inuseguard.hpp"  // IWYU pragma: keep
+#include "gatekeeper/gatekeeper.hpp"
 #include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
 #define IUGUARD InUseGuard connection_guard(isConnectionInUse_, mtx_, cv_);
