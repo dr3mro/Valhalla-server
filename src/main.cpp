@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include <exception>
 #include <iostream>
 #include <memory>
@@ -14,6 +15,6 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv)
     catch (const std::exception& exception)
     {
         std::cerr << "Server Error: " << exception.what() << '\n';
-        return 1;
+        return EXIT_FAILURE;
     }
 }
