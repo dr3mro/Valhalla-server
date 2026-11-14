@@ -57,10 +57,14 @@ COPY docs/api.html docs/api.html
 COPY src src
 COPY tests tests
 
+# Configure only — this layer is cheap and is the only one that changes when
+# VALHALLA_VERSION changes (it generates version.cpp via configure_file).
 ARG VALHALLA_VERSION=""
 RUN VALHALLA_VERSION="${VALHALLA_VERSION}" cmake -S . -B build/Release -G Ninja \
-       -DCMAKE_BUILD_TYPE=Release -DENABLE_TESTS=ON -DVALHALLA_BUILD_DOCS=OFF \
-    && cmake --build build/Release -j"$(nproc)" --target server unit_tests \
+       -DCMAKE_BUILD_TYPE=Release -DENABLE_TESTS=ON -DVALHALLA_BUILD_DOCS=OFF
+
+# Compile, test, strip — this layer caches as long as source files are unchanged.
+RUN cmake --build build/Release -j"$(nproc)" --target server unit_tests \
     && ctest --test-dir build/Release --output-on-failure -j"$(nproc)" --timeout 60 \
     && strip build/Release/server
 

@@ -27,9 +27,7 @@
 #include "utils/jsonhelper/jsonhelper.hpp"
 #include "utils/message/message.hpp"
 #include "validator/databaseschema/databaseschema.hpp"
-#ifndef GIT_TAG
-#    define GIT_TAG "unknown"
-#endif
+extern const char* const VALHALLA_GIT_TAG;
 
 Server::Server()
     : logger_(Store::getObject<Logger>()),
@@ -100,12 +98,13 @@ void Server::print_banner()
     Banner::print_line();
     Banner::print_logo(Banner::get_random_color());
     Banner::print_line();
-    Banner::print(" - Version", GIT_TAG, fmt::color::light_green, fmt::color::yellow);
+    Banner::print(" - Version", VALHALLA_GIT_TAG, fmt::color::light_green, fmt::color::yellow);
     Banner::print(" - Port", config_.port, fmt::color::light_green, fmt::color::yellow);
     Banner::print(" - Threads", config_.threads, fmt::color::light_green, fmt::color::yellow);
     Banner::print(" - Database", fmt::format("{} {}", db_config_.max_conn, "connections"), fmt::color::light_green, fmt::color::yellow);
     Banner::print(" - Doc", "http://localhost:" + std::to_string(config_.port) + "/api/v2/doc", fmt::color::light_green, fmt::color::yellow);
     Banner::print_line();
+
     std::flush(std::cout);
 }
 
