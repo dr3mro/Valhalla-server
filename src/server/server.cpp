@@ -44,10 +44,9 @@ Server::Server()
 }
 int Server::run()
 {
-    print_banner();
-
     try
     {
+        print_banner();
         drogon::app()
             .addListener(std::string(config_.host), config_.port)
             .setThreadNum(config_.threads)

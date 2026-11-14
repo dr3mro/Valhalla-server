@@ -24,7 +24,7 @@ class Store
     static std::shared_ptr<T> registerObject(Args&&... args)
     {
         {
-            std::lock_guard<std::mutex> lock(inventoryMutex);
+            std::scoped_lock lock(inventoryMutex);
             if (inventory.find(typeid(T)) != inventory.end())
             {
                 throw std::runtime_error("Object type already registered." + std::string(typeid(T).name()));
@@ -34,7 +34,7 @@ class Store
         auto object = std::make_shared<T>(std::forward<Args>(args)...);
 
         {
-            std::lock_guard<std::mutex> lock(inventoryMutex);
+            std::scoped_lock lock(inventoryMutex);
             inventory[typeid(T)] = object;
         }
 
@@ -45,8 +45,8 @@ class Store
     [[nodiscard("Warning: You should never discard the returned object")]] static std::shared_ptr<T> getObject(Args&&... args)
     {
         {
-            std::lock_guard<std::mutex> lock(inventoryMutex);
-            auto                        object = inventory.find(typeid(T));
+            std::scoped_lock lock(inventoryMutex);
+            auto             object = inventory.find(typeid(T));
             if (object != inventory.end())
             {
                 return std::static_pointer_cast<T>(object->second);
@@ -60,7 +60,7 @@ class Store
     template <typename T>
     static void replaceObject(std::shared_ptr<T> obj)
     {
-        std::lock_guard<std::mutex> lock(inventoryMutex);
+        std::scoped_lock lock(inventoryMutex);
         inventory[typeid(T)] = obj;
     }
 
