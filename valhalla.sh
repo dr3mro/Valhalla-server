@@ -217,6 +217,20 @@ COMMANDS=(
   "help|show help"
 )
 
+# Options: names|description|value kind (empty: flag; value, runtime, file).
+# Single source for shell completion; keep in sync with the parser below.
+OPTIONS=(
+  "--name|container name|value"
+  "--port|host port|value"
+  "--runtime|docker or container|runtime"
+  "--env-file|env file, or none|file"
+  "-n --dry-run|show what would happen|"
+  "-y --yes|don't ask for confirmation|"
+  "-p --persist|keep the database across stop/restart/update|"
+  "--no-persist|turn persistence off|"
+  "-h --help|show help|"
+)
+
 # Parsed env file (bash 3.2 has no associative arrays: parallel arrays).
 ENV_KEYS=()
 ENV_VALS=()
@@ -285,23 +299,51 @@ EOF
   local script=${words[1]} root
   [[ $script == */* ]] || script=${commands[$script]:-$script}
   root=${${script:A}:h}
-  local -a opts
+  local -a opts optdesc
   opts=(
-    '--name=[container name]:name:'
-    '--port=[host port]:port:'
-    '--runtime=[runtime]:runtime:(docker container)'
-    '--env-file=[env file, or none]:file:_files'
-    '(-n --dry-run)'{-n,--dry-run}'[show what would happen]'
-    '(-y --yes)'{-y,--yes}'[do not ask for confirmation]'
-    '(-p --persist --no-persist)'{-p,--persist}'[keep the database across restarts]'
-    '(-p --persist --no-persist)--no-persist[turn persistence off]'
-    '(-h --help)'{-h,--help}'[show help]'
-  )
+EOF
+  local entry names desc kind spec n q="'"
+  for entry in "${OPTIONS[@]}"; do
+    names="${entry%%|*}"; desc="${entry#*|}"; kind="${desc#*|}"; desc="${desc%%|*}"
+    desc="${desc//$q/$q\\$q$q}"
+    case "$kind" in
+      value) spec=":${names#--}:" ;;
+      runtime) spec=":runtime:(docker container)" ;;
+      file) spec=":file:_files" ;;
+      *) spec="" ;;
+    esac
+    if [[ $names == *" "* ]]; then
+      printf "    '(%s)'{%s}'[%s]'\n" "$names" "${names// /,}" "$desc"
+    elif [[ -n $kind ]]; then
+      printf "    '%s=[%s]%s'\n" "$names" "$desc" "$spec"
+    else
+      printf "    '%s[%s]'\n" "$names" "$desc"
+    fi
+  done
+  echo "  )"
+  echo "  optdesc=("
+  for entry in "${OPTIONS[@]}"; do
+    names="${entry%%|*}"; desc="${entry#*|}"; desc="${desc%%|*}"
+    desc="${desc//$q/$q\\$q$q}"
+    for n in $names; do printf "    '%s:%s'\n" "$n" "$desc"; done
+  done
+  echo "  )"
+  cat <<'EOF'
   local curcontext=$curcontext state line
   _arguments -C -s $opts '1:command:->cmd' '*::arg:->args'
   case $state in
     cmd) _describe -t commands 'valhalla command' cmds ;;
     args)
+      # Options are accepted after the command too.
+      case ${words[CURRENT-1]} in
+        --runtime) compadd docker container; return ;;
+        --env-file) _files; return ;;
+        --name|--port) _message 'value'; return ;;
+      esac
+      if [[ $PREFIX == -* ]]; then
+        _describe -t options 'option' optdesc
+        return
+      fi
       case ${line[1]} in
         run|update|build|outdated|install)
           local -a tags
@@ -330,8 +372,10 @@ _valhalla() {
   local cur prev words cword
   cur="${COMP_WORDS[COMP_CWORD]}"
   prev="${COMP_WORDS[COMP_CWORD-1]}"
-  local opts="--name --port --runtime --env-file --dry-run --yes --persist --no-persist --help -n -y -p -h"
 EOF
+  local entry all=""
+  for entry in "${OPTIONS[@]}"; do all+="${entry%%|*} "; done
+  printf '  local opts="%s"\n' "${all% }"
   printf '  local cmds="%s"\n' "$(command_names)"
   cat <<'EOF'
   case "$prev" in
