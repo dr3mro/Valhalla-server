@@ -452,21 +452,21 @@ style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_*
       printf -v "${p}i_stop"   '%s' $'\xef\x81\x8d'   # nf-fa-stop
       printf -v "${p}i_step"   '%s' '▸'
     elif [[ $l -ge 3 ]]; then
-      printf -v "${p}i_ok"     '%s' '✅'
-      printf -v "${p}i_err"    '%s' '❌'
+      printf -v "${p}i_ok"     '%s' '🟢'
+      printf -v "${p}i_err"    '%s' '🔴'
       printf -v "${p}i_warn"   '%s' '🟡'
       printf -v "${p}i_info"   '%s' '🔵'
       printf -v "${p}i_q"      '%s' '❓'
       printf -v "${p}i_pull"   '%s' '📥'
       printf -v "${p}i_save"   '%s' '💾'
-      printf -v "${p}i_trash"  '%s' '🗑️'
+      printf -v "${p}i_trash"  '%s' '🗑'
       printf -v "${p}i_restart" '%s' '🔄'
       printf -v "${p}i_box"    '%s' '📦'
       printf -v "${p}i_rocket" '%s' '🚀'
       printf -v "${p}i_book"   '%s' '📖'
       printf -v "${p}i_link"   '%s' '🔗'
       printf -v "${p}i_key"    '%s' '🔑'
-      printf -v "${p}i_wait"   '%s' '⏳'
+      printf -v "${p}i_wait"   '%s' '⌛'
       printf -v "${p}i_stop"   '%s' '🛑'
       printf -v "${p}i_step"   '%s' '▸'
     else
@@ -1599,6 +1599,7 @@ wait_healthy() {
   printf '%s' "${E_ACC}${E_i_wait:+$E_i_wait }${E_R}Waiting for the server" >&2
   while [[ $waited -lt $WAIT_SECONDS ]]; do
     if curl -fsS "$HEALTH_URL" >/dev/null 2>&1; then
+      printf '\n' >&2
       ok "up at ${E_VAL}$HEALTH_URL${E_R}"
       server_version_line
       return 0
