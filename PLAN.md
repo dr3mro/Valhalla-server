@@ -4,7 +4,7 @@
 
 ## 1. Security
 
-- [ ] **Logout doesn't verify the token.** `jwt::decode` doesn't check the signature, and `ValidateToken` is commented out, so a forged token can log any `clientId` out. `src/gatekeeper/sessionmanager/sessionmanager.cpp:102-118`
+- [ ] **Logout doesn't verify the token.** `jwt::decode` doesn't check the signature, and `ValidateToken` is commented out, so a forged token can log any `clientId` out. `src/gatekeeper/sessionmanager/sessionmanager.cpp:102-118`. Also, `token.value()` is called unchecked (`:100`): with no token the client gets a `500` whose body is the raw `bad_optional_access` text (the unit test "logout with a bad token" hits this).
 - [ ] **Whitelist and blacklist rework** (`src/gatekeeper/dosdetector/dosdetector.cpp:67-90`, `:219-275`). Open decisions: should the blacklist win, and is `X-Forwarded-For` support needed?
   - **Matching is far too broad.** Entries are regexes passed to `std::regex_search`: unanchored, with `.` matching any character. `192.168.1.*` also matches `192.168.10.4` and `192.168.199.1`; `127.0.0.1` matches `127.0.0.10`-`.199`. A whitelisted IP skips all DoS checks, so every over-match is a bypass. Fix: compile entries into exact-IP, CIDR (`192.168.1.0/24`) and per-octet wildcard (`192.168.1.*`) matchers; optionally keep regex behind a `re:` prefix.
   - **The whitelist overrides the blacklist.** It's checked first, and the test `whitelist wins over blacklist` locks that in. Decide whether the deny list should win; if not, document the current order.
@@ -21,6 +21,7 @@
 
 ## 2. Bugs
 
+- [ ] **Adding staff updates the wrong row.** `getSqlAddStaffStatement` passes 4 arguments to a format string with 3 placeholders, so `WHERE ID=` gets `nominee_group` (e.g. `providers`) instead of `entity_id`, and the query fails against a real database. Drop `idata.nominee_group` from the arguments. The test "builds an UPDATE with the correct table and id" never checks the id; make it assert `WHERE ID=7`. `src/entities/base/service.hpp:37-42`, `tests/entities/test_entities.cpp:330-340`
 - [ ] **`communicate.cpp` sends stale data.** The `static` method map's lambdas capture `curl` **and `data`** by reference on the first call. Every later request uses dangling references, including the first call's request body. Build the map without captures, or set the options directly. `src/utils/communicate/communicate.cpp:24-30`
 - [ ] **Exceptions swallowed without a response.** `GetServices`, `GetVisits` and `cruds` catch with `CRITICALMESSAGE`, which never calls `callback`, so the request is never answered. Use `CRITICALMESSAGERESPONSE`. `src/controllers/base/controller/controller.hpp:193`, `:224`, `:356`
 - [ ] **Deleting a client removes the session unconditionally,** even when the delete failed. `src/controllers/clientcontroller/clientcontroller.cpp:122-123`
@@ -62,6 +63,7 @@
   - `DatabaseHanndler` (4 files)
   - directory `sqlinjectiondetectoor/`
   - `staffcontrollerBase.hpp` (mixed case)
+- [ ] **`StaffData` logs with `fmt::print` and no newline,** so its parse errors bypass the logger and run into the next log line. Use `Message::ErrorMessage`. `src/entities/base/types.hpp:316`
 - [ ] **Style and portability:**
   - `__attribute((always_inline))` in 3 files (use `[[gnu::always_inline]]`)
   - `SuspendData` doesn't use an initializer list (`types.hpp:287`)
