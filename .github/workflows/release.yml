@@ -20,6 +20,9 @@ jobs:
   build:
     name: Build, test, smoke (${{ matrix.slug }})
     runs-on: ${{ matrix.runner }}
+    permissions:
+      contents: read
+      actions: read # list/watch ccache-warm runs
     strategy:
       matrix:
         include:
@@ -38,6 +41,29 @@ jobs:
           if [ -z "$DOCKER_USERNAME" ] || [ -z "$DOCKER_PASSWORD" ]; then
             echo "::error::Set the repository secrets DOCKER_USERNAME and DOCKER_PASSWORD"
             exit 1
+          fi
+
+      # If ccache-warm is still running for this commit on main (e.g. the
+      # commit and tag were pushed together), wait for it so this build gets
+      # the fresh deps image and ccache. Fails if the warm run fails. The
+      # lookup retries briefly because a simultaneous push may not have
+      # registered the warm run yet.
+      - name: Wait for ccache-warm on this commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for _ in 1 2 3; do
+            run_id=$(gh run list -R "$GITHUB_REPOSITORY" --workflow ccache-warm.yml \
+              --commit "$GITHUB_SHA" --json databaseId,status \
+              -q '[.[] | select(.status != "completed")][0].databaseId // empty')
+            [ -n "$run_id" ] && break
+            sleep 10
+          done
+          if [ -n "$run_id" ]; then
+            echo "Waiting for ccache-warm run $run_id"
+            gh run watch "$run_id" -R "$GITHUB_REPOSITORY" --exit-status --interval 30
+          else
+            echo "No ccache-warm run in progress for $GITHUB_SHA"
           fi
 
       - name: Checkout code
