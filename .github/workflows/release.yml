@@ -43,28 +43,33 @@ jobs:
             exit 1
           fi
 
-      # If ccache-warm is still running for this commit on main (e.g. the
-      # commit and tag were pushed together), wait for it so this build gets
-      # the fresh deps image and ccache. Fails if the warm run fails. The
-      # lookup retries briefly because a simultaneous push may not have
-      # registered the warm run yet.
+      # If ccache-warm ran (or is running) for this commit, wait for it and
+      # fail if it failed (a cancelled run is ignored), so this build gets the fresh deps image, ccache and
+      # compile layer. The lookup retries only while no run exists yet, since
+      # a commit and tag pushed together may not have registered it.
       - name: Wait for ccache-warm on this commit
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           for _ in 1 2 3; do
             run_id=$(gh run list -R "$GITHUB_REPOSITORY" --workflow ccache-warm.yml \
-              --commit "$GITHUB_SHA" --json databaseId,status \
-              -q '[.[] | select(.status != "completed")][0].databaseId // empty')
+              --commit "$GITHUB_SHA" --json databaseId -q '.[0].databaseId // empty')
             [ -n "$run_id" ] && break
             sleep 10
           done
-          if [ -n "$run_id" ]; then
-            echo "Waiting for ccache-warm run $run_id"
-            gh run watch "$run_id" -R "$GITHUB_REPOSITORY" --exit-status --interval 30
-          else
-            echo "No ccache-warm run in progress for $GITHUB_SHA"
+          if [ -z "$run_id" ]; then
+            echo "No ccache-warm run for $GITHUB_SHA"
+            exit 0
           fi
+          echo "Waiting for ccache-warm run $run_id"
+          gh run watch "$run_id" -R "$GITHUB_REPOSITORY" --interval 30 > /dev/null
+          conclusion=$(gh run view "$run_id" -R "$GITHUB_REPOSITORY" --json conclusion -q .conclusion)
+          echo "ccache-warm run $run_id: $conclusion"
+          case "$conclusion" in
+            # cancelled: superseded by a newer push to main; build without it.
+            success|cancelled|skipped) ;;
+            *) echo "::error::ccache-warm failed for $GITHUB_SHA"; exit 1 ;;
+          esac
 
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -84,25 +89,18 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Restore ccache
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+      # Restore only: a cache saved under a tag can't be read by later tags,
+      # so saving here would just upload for nothing. ccache only matters
+      # when the compile layer below is not already cached from main.
+      - name: Restore ccache and inject into BuildKit
+        uses: ./.github/actions/ccache-buildkit
         with:
-          path: /tmp/ccache-${{ matrix.slug }}
-          key: ccache-${{ matrix.slug }}-${{ github.sha }}
-          restore-keys: ccache-${{ matrix.slug }}-
+          phase: inject
+          arch: ${{ matrix.slug }}
 
-      - name: Inject ccache into BuildKit
-        uses: reproducible-containers/buildkit-cache-dance@5422eac04292c961a382e0f584ea0f03ad9da723 # v3.4.0
-        with:
-          cache-map: |
-            {
-              "/tmp/ccache-${{ matrix.slug }}": {
-                "target": "/root/.ccache",
-                "id": "ccache-${{ matrix.slug }}"
-              }
-            }
-          skip-extraction: true
-
+      # cache-from only: ccache-warm.yml writes scope src-<arch> on main. For
+      # a commit it built, the whole compile+test layer is reused and only the
+      # version stamp (version.cpp + relink + strip) runs here.
       - name: Build image and push by digest
         id: push
         uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
@@ -115,20 +113,7 @@ jobs:
             DEPS_IMAGE=${{ env.DEPS_IMAGE }}:${{ matrix.slug }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha,scope=src-${{ matrix.slug }}
-          cache-to: type=gha,scope=src-${{ matrix.slug }},mode=max
           outputs: type=image,name=${{ env.IMAGE }},push-by-digest=true,name-canonical=true,push=true
-
-      - name: Extract ccache from BuildKit
-        uses: reproducible-containers/buildkit-cache-dance@5422eac04292c961a382e0f584ea0f03ad9da723 # v3.4.0
-        with:
-          cache-map: |
-            {
-              "/tmp/ccache-${{ matrix.slug }}": {
-                "target": "/root/.ccache",
-                "id": "ccache-${{ matrix.slug }}"
-              }
-            }
-          skip-injection: true
 
       - name: Pull image for smoke test
         env:

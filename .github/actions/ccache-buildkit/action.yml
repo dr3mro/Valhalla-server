@@ -1,0 +1,64 @@
+name: ccache for BuildKit
+description: >-
+  Moves the per-arch ccache between actions/cache and the BuildKit cache
+  mount used by docker/Dockerfile (id=ccache-<arch>, target=/root/.ccache).
+  Run with phase=inject before the docker build and phase=extract after it.
+
+inputs:
+  phase:
+    description: "inject (restore + load into BuildKit) or extract (unload from BuildKit + optionally save)"
+    required: true
+  arch:
+    description: "Matrix slug, e.g. amd64 or arm64. Must match TARGETARCH."
+    required: true
+  save:
+    description: >-
+      extract only: save the cache with actions/cache. Only useful on main,
+      because actions/cache is scoped per ref and tags cannot read each
+      other's caches.
+    required: false
+    default: "false"
+
+runs:
+  using: composite
+  steps:
+    - name: Restore ccache
+      if: inputs.phase == 'inject'
+      uses: actions/cache/restore@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+      with:
+        path: /tmp/ccache-${{ inputs.arch }}
+        key: ccache-${{ inputs.arch }}-${{ github.sha }}
+        restore-keys: ccache-${{ inputs.arch }}-
+
+    - name: Inject ccache into BuildKit
+      if: inputs.phase == 'inject'
+      uses: reproducible-containers/buildkit-cache-dance@5422eac04292c961a382e0f584ea0f03ad9da723 # v3.4.0
+      with:
+        cache-map: |
+          {
+            "/tmp/ccache-${{ inputs.arch }}": {
+              "target": "/root/.ccache",
+              "id": "ccache-${{ inputs.arch }}"
+            }
+          }
+        skip-extraction: true
+
+    - name: Extract ccache from BuildKit
+      if: inputs.phase == 'extract'
+      uses: reproducible-containers/buildkit-cache-dance@5422eac04292c961a382e0f584ea0f03ad9da723 # v3.4.0
+      with:
+        cache-map: |
+          {
+            "/tmp/ccache-${{ inputs.arch }}": {
+              "target": "/root/.ccache",
+              "id": "ccache-${{ inputs.arch }}"
+            }
+          }
+        skip-injection: true
+
+    - name: Save ccache
+      if: inputs.phase == 'extract' && inputs.save == 'true'
+      uses: actions/cache/save@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+      with:
+        path: /tmp/ccache-${{ inputs.arch }}
+        key: ccache-${{ inputs.arch }}-${{ github.sha }}

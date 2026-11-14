@@ -39,13 +39,15 @@ RUN conan profile detect --force \
     && conan cache clean "*" --source --build --temp
 
 # ---------------------------------------------------------------------------
-# Stage 2: builder
+# Stage 2: compile
 # In CI: FROM dr3mro/valhalla-server-deps:<arch> (Conan already installed).
 # Locally: FROM local-deps (built above).
-# ccache persists across builds via a per-arch BuildKit cache mount stored
-# in the GHA layer cache.
+# Nothing in this stage depends on VALHALLA_VERSION, so its layers are
+# identical for main and for a tag on the same commit. ccache-warm.yml builds
+# this stage on main and exports its layers to the GHA cache; release.yml
+# reuses them and skips compiling and testing entirely.
 # ---------------------------------------------------------------------------
-FROM ${DEPS_IMAGE} AS builder
+FROM ${DEPS_IMAGE} AS compile
 
 WORKDIR /src
 
@@ -57,14 +59,13 @@ COPY docs/api.html docs/api.html
 COPY src src
 COPY tests tests
 
-# Configure only — this layer is cheap and is the only one that changes when
-# VALHALLA_VERSION changes (it generates version.cpp via configure_file).
-ARG VALHALLA_VERSION=""
-RUN VALHALLA_VERSION="${VALHALLA_VERSION}" cmake -S . -B build/Release -G Ninja \
+# Configure without a version: version.cpp says "unknown" here and is
+# regenerated in the builder stage below.
+RUN cmake -S . -B build/Release -G Ninja \
        -DCMAKE_BUILD_TYPE=Release -DENABLE_TESTS=ON -DVALHALLA_BUILD_DOCS=OFF \
        -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
 
-# Compile, test, strip.
+# Compile and test.
 # buildkit-cache-dance injects /tmp/ccache-{arch} from the host into this
 # cache mount before the build and extracts it back after, so ccache persists
 # across GitHub Actions runs via actions/cache.
@@ -78,7 +79,18 @@ RUN --mount=type=cache,id=ccache-${TARGETARCH},target=/root/.ccache,sharing=lock
     && ccache -z \
     && cmake --build build/Release -j"$(nproc)" --target server unit_tests \
     && ccache -sv \
-    && ctest --test-dir build/Release --output-on-failure -j"$(nproc)" --timeout 60 \
+    && ctest --test-dir build/Release --output-on-failure -j"$(nproc)" --timeout 60
+
+# ---------------------------------------------------------------------------
+# Stage 2b: builder
+# Stamps the version: re-running cmake rewrites only version.cpp (configure_file
+# leaves unchanged files alone), so this recompiles one file, relinks, strips.
+# ---------------------------------------------------------------------------
+FROM compile AS builder
+
+ARG VALHALLA_VERSION=""
+RUN VALHALLA_VERSION="${VALHALLA_VERSION}" cmake -S . -B build/Release \
+    && CCACHE_DISABLE=1 cmake --build build/Release --target server \
     && strip build/Release/server
 
 # ---------------------------------------------------------------------------
