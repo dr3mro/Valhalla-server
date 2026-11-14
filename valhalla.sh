@@ -1757,7 +1757,7 @@ show_update_notice() {
 # reports the result; offline it shows what an earlier check found.
 status_updates() {
   [[ ${VALHALLA_NO_UPDATE_CHECK:-0} == 1 ]] && return 0
-  if ! curl -fsS -m 3 -o /dev/null https://api.github.com 2>/dev/null; then
+  if ! curl -fsS -m 1 -o /dev/null https://api.github.com 2>/dev/null; then
     echo "Updates:   not checked (no internet connection)"
     show_update_notice
     return 0
