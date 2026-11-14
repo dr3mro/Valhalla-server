@@ -3,7 +3,6 @@ cppcodec/0.2
 picojson/cci.20210117
 zlib/1.4
 libpqxx/8.0.2
-yaml-cpp/0.8.0
 jwt-cpp/0.7.2
 jsoncons/1.7.0
 catch2/3.16.1
@@ -17,7 +16,6 @@ jsoncpp/1.9.5
 openssl/3.6.5
 trantor/1.5.29
 drogon/1.9.14
-ctrack/1.0.2
 
 [generators]
 CMakeDeps

@@ -569,7 +569,7 @@ import markdown as _md
 guide_html = _md.markdown(GUIDE_MD, extensions=["tables", "fenced_code", "toc"], extension_configs={"toc": {"permalink": False}})
 postman_js = json.dumps(POSTMAN, ensure_ascii=False).replace("</", "<\\/")
 steps_js = json.dumps(VC_STEPS, ensure_ascii=False).replace("</", "<\\/")
-html = f"""<!doctype html>
+html = rf"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">

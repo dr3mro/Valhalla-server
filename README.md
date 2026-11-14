@@ -37,7 +37,7 @@ A high-performance, multi-tenant healthcare backend written in modern C++20. Val
 - **Patients, visits & appointments** — patient records, health data, prescriptions, drugs, paid services, and visit/appointment scheduling per service.
 - **Staff management** — invite, add, and remove staff members on a per-service basis.
 - **JWT authentication** — stateless session tokens issued and validated via `jwt-cpp`.
-- **Role-based access control** — bitmask permission levels (`CAN_READ`, `CAN_WRITE`, `CAN_DELETE`, `IS_ADMIN`) enforced by a permission manager.
+- **Role-based access control** — bitmask permission levels (`CAN_READ`, `CAN_WRITE`, `CAN_DELETE`, `IS_ADMIN`, `IS_OWNER`, `IS_SUPER`) enforced by a permission manager.
 - **Security gatekeeper** layered into the request flow:
   - DoS / rate-limiting detector with configurable rate limits, ban durations, and IP whitelist/blacklist.
   - SQL-injection detector.
@@ -88,12 +88,11 @@ Database controller  ──►  Connection pool  ──►  PostgreSQL
 | Database          | PostgreSQL via libpqxx |
 | Auth              | jwt-cpp |
 | Crypto / hashing  | libsodium |
-| JSON              | jsoncons, picojson |
-| Config            | yaml-cpp + environment variables |
+| JSON              | jsoncons, picojson (jsoncpp via Drogon) |
+| Config            | Environment variables |
 | Logging           | spdlog / fmt |
 | HTTP client       | libcurl, c-ares |
 | Hashing / utils   | xxhash, cppcodec, zlib |
-| Profiling         | ctrack |
 | Testing           | Catch2 |
 | Build             | CMake (≥ 4.0) + Conan 2 |
 
@@ -106,9 +105,9 @@ Database controller  ──►  Connection pool  ──►  PostgreSQL
 - [Conan](https://conan.io/) 2.x (package manager)
 - A reachable [PostgreSQL](https://www.postgresql.org/) instance
 - *(optional)* `ccache` — used automatically if found, to speed up rebuilds
-- *(optional)* Docker + Docker Compose for containerized runs
+- *(optional)* Docker or Apple `container`, to run the all-in-one image (see [Run with Docker](#run-with-docker))
 
-Tested distributions: **Debian 13 (trixie)+ / Ubuntu 24.04+** and **Fedora 40+**. Older releases ship GCC < 13, and most distributions still package CMake 3.x, so you will likely need to install CMake 4 separately; see the notes below.
+Supported distributions: **Debian 13 (trixie)+ / Ubuntu 24.04+** and **Fedora 40+**. Older releases ship GCC < 13, and most distributions still package CMake 3.x, so you will likely need to install CMake 4 separately; see the notes below.
 
 ### Build from Source
 
@@ -153,25 +152,32 @@ pipx ensurepath          # then open a new shell so ~/.local/bin is on PATH
 conan profile detect --force
 ```
 
-`conan profile detect` produces a profile with `compiler.libcxx=libstdc++11`, which is what you want on Linux. The project requires C++20; if Conan complains about the language standard, set `compiler.cppstd=20` in `~/.conan2/profiles/default`.
+`conan profile detect` produces a profile with `compiler.libcxx=libstdc++11`, which is what you want on Linux. The project builds as GNU C++20, so the commands below pass `-s compiler.cppstd=gnu20`.
 
 Install dependencies and configure both build types:
 
 ```bash
 # Resolve and build third-party dependencies (the first run takes a while)
-conan install . --build=missing -s build_type=Debug
-conan install . --build=missing -s build_type=Release
+TRANTOR_FLAGS='trantor/*:tools.build:cxxflags=["-Wno-error=unused-result"]'
+conan install . --build=missing -s build_type=Debug   -s compiler.cppstd=gnu20 -c "$TRANTOR_FLAGS"
+conan install . --build=missing -s build_type=Release -s compiler.cppstd=gnu20 -c "$TRANTOR_FLAGS"
 
 # Configure CMake
-cmake -S . -B build/Debug   -DCMAKE_BUILD_TYPE=Debug
-cmake -S . -B build/Release -DCMAKE_BUILD_TYPE=Release
+cmake -S . -B build/Debug   -DCMAKE_BUILD_TYPE=Debug   -G Ninja
+cmake -S . -B build/Release -DCMAKE_BUILD_TYPE=Release -G Ninja
 
 # Compile
 cmake --build build/Debug   -j"$(nproc)"
 cmake --build build/Release -j"$(nproc)"
 ```
 
-Or just run the convenience script, which performs all of the above (it uses Ninja):
+Or run the convenience script `./build.sh`, which goes further than the steps above:
+
+1. Runs the same Conan, CMake and build steps for Debug and Release.
+2. Runs the unit tests for both (`ctest --preset conan-release` and `ctest --preset conan-debug`).
+3. **Starts the Release server in the background** (`./run_release.sh &`) and runs the API test suite (`./test_api.sh`) against it.
+
+Step 3 needs a running, initialised PostgreSQL (see [Database setup](#database-setup)), and it leaves the server running afterwards. Stop it with `pkill -f build/Release/server`.
 
 ```bash
 ./build.sh
@@ -181,7 +187,7 @@ The resulting binary is named `server` and is placed in the corresponding build 
 
 ### Database setup
 
-The server needs a PostgreSQL database initialised with `init.sql`. Skip this section if you already have a database, or if you use Docker Compose.
+The server needs a PostgreSQL database initialised with `init.sql`. Skip this section if you already have a database, or if you use the all-in-one Docker image (see [Run with Docker](#run-with-docker)).
 
 **Debian / Ubuntu** — the service is created and started by the package:
 
@@ -210,7 +216,7 @@ PGPASSWORD=postgres ./db_init.sh                                      # runs ini
 
 ### Run the server
 
-Create a `.env` file in the project root (it is read by `run_release.sh`; see [Configuration](#configuration) for every variable):
+Create a `.env` file in the project root. It is read by `run_release.sh` and ignored by Git, so local secrets stay out of commits. See [Configuration](#configuration) for every variable:
 
 ```bash
 cat > .env <<'EOF'
@@ -232,7 +238,7 @@ Then start it:
 ./run_release.sh --build    # rebuild Release first, then run
 ```
 
-Or run the binary directly with the variables exported in your shell: `./build/Release/server`.
+To use a different file, run `ENV_FILE=/path/to/file ./run_release.sh`. Or run the binary directly with the variables exported in your shell: `./build/Release/server`.
 
 Verify it is up:
 
@@ -245,6 +251,8 @@ Then open the interactive API docs at <http://127.0.0.1:8080/api/v2/doc>. If the
 ### Run with Docker
 
 Every release tag publishes an all-in-one image to Docker Hub: the server **plus** its own PostgreSQL, so no external database is needed. It is a single multi-arch image (`linux/amd64` and `linux/arm64`); Docker and Apple Container pull the right one automatically. It's meant for demos, testing, and CI.
+
+> **Which should I use?** The Docker image works on any OS. The Alpine tarballs attached to each GitHub Release run only on Alpine Linux. Anywhere else, without Docker, [build from source](#build-from-source).
 
 > **The database is ephemeral.** Every container start, *including a restart*, begins with a fresh, empty database initialised from `init.sql`. Nothing is kept. For persistent data, run the server against your own PostgreSQL instead (see [Run the server](#run-the-server)).
 
@@ -272,7 +280,7 @@ curl http://127.0.0.1:8080/api/v2/hello
 
 The interactive API docs are at <http://127.0.0.1:8080/api/v2/doc>.
 
-**Pin a version** instead of `latest` (`latest` only tracks stable `vX.Y.Z` releases):
+**Pin a version** instead of `latest`. `latest` only tracks stable releases (tags like `1.2.3` or `v1.2.3`); other tags, such as `1.2.3-beta`, are published under their own name only:
 
 ```bash
 docker pull dr3mro/valhalla-server-run:v1.2.3
@@ -291,7 +299,7 @@ docker stop valhalla
 
 | Variable | Default | Notes |
 |----------|---------|-------|
-| `TOKEN_SECRET` | *(insecure dev default)* | **Always set this** |
+| `TOKEN_SECRET` | *(random per start)* | Set it if tokens must survive a restart or be shared with other services |
 | `DB_NAME` / `DB_USER` / `DB_PASS` | `postgres` / `postgres` / `postgres` | Created inside the container on start; any value works, quotes included |
 | `DB_HOST` | `127.0.0.1` | Fixed: the image always uses its bundled database |
 | `SERVER_PORT` | `8080` | If you change it, change the `-p` mapping to match, e.g. `-p 9000:9000 -e SERVER_PORT=9000` |
@@ -315,7 +323,7 @@ The build compiles every C++ dependency from source on Alpine and runs the unit 
 
 ## Configuration
 
-All configuration is supplied through environment variables. Defaults (see `src/configurator/defaults.hpp`) are tuned for a local Docker network, so you will want to override at least the database and token settings in production.
+All configuration is supplied through environment variables; defaults live in `src/configurator/defaults.hpp`. The frontend and email-sender defaults point at fixed Docker-network IPs (`172.20.0.5`/`.6`), and the token secret and database credentials are development values, so override them for any real deployment.
 
 ### Server
 
@@ -325,12 +333,25 @@ All configuration is supplied through environment variables. Defaults (see `src/
 | `SERVER_PORT`        | `8080`           | Listen port |
 | `SERVER_THREADS`     | `4`              | Worker thread count |
 | `SERVER_UPLOAD_DIR`  | `./uploads/`     | File upload directory |
+| `SERVER_NAME`        | `ProjectValhalla` | Name shown in the startup banner |
+| `SERVER_VERSION`     | `1.0.0`          | Version string shown in the startup banner |
+| `SERVER_DESCRIPTION` | `ProjectValhalla API` | Description shown in the startup banner |
+
+### Logging
+
+| Variable                | Default      | Description |
+|-------------------------|--------------|-------------|
+| `SERVER_DEBUG_LEVEL`    | `1`          | Minimum level: `0` debug, `1` info, `2` warning, `3` error, `4` critical |
+| `SERVER_LOG_TO_CONSOLE` | `true`       | Log to stdout |
+| `SERVER_LOG_TO_FILE`    | `true`       | Log to a file |
+| `SERVER_LOG_DIR`        | `./logs/`    | Log directory |
+| `SERVER_LOG_FILE`       | `server.log` | Log file name |
 
 ### Database (PostgreSQL)
 
 | Variable       | Default        | Description |
 |----------------|----------------|-------------|
-| `DB_HOST`      | `127.0.0.1`    | Database host (`172.20.0.2` in the Docker Compose network) |
+| `DB_HOST`      | `0.0.0.0`      | Database host. The default only works when PostgreSQL runs on the same machine; set it explicitly (e.g. `127.0.0.1`) |
 | `DB_PORT`      | `5432`         | Database port |
 | `DB_NAME`      | `postgres`     | Database name |
 | `DB_USER`      | `postgres`     | Database user |
@@ -343,6 +364,9 @@ All configuration is supplied through environment variables. Defaults (see `src/
 | Variable        | Default                              | Description |
 |-----------------|--------------------------------------|-------------|
 | `TOKEN_SECRET`  | *(insecure dev default)*             | **Must** be overridden in production |
+| `TOKEN_VALIDITY`| `43200`                              | Token lifetime in minutes (30 days) |
+| `TOKEN_ISSUER`  | `ProjectValhalla`                    | JWT issuer claim |
+| `TOKEN_TYPE`    | `JWS`                                | JWT type |
 
 ### DoS detector / rate limiting
 
@@ -354,8 +378,10 @@ All configuration is supplied through environment variables. Defaults (see `src/
 | `RL_DURATION`   | `30`    | Rate-limit duration (seconds) |
 | `BAN_DURATION`  | `3600`  | Ban duration (seconds) |
 | `CLN_FRQ`       | `30`    | Cleanup frequency (seconds) |
-| `WHITELIST`     | *(empty)* | Whitelisted IPs |
-| `BLACKLIST`     | *(empty)* | Blacklisted IPs |
+| `WHITELIST`     | *(empty)* | IPs exempt from rate limiting and bans (comma-separated patterns, see below) |
+| `BLACKLIST`     | *(empty)* | IPs always rejected (comma-separated patterns, see below) |
+
+`WHITELIST` and `BLACKLIST` entries are **regular expressions**, matched anywhere in the client IP. A `.` matches any character, and an unanchored entry matches as a substring: `10.0.0.1` also matches `10.0.0.123`. For exact matches, escape the dots and anchor the entry, e.g. `WHITELIST='^127\.0\.0\.1$,^192\.168\.1\.[0-9]+$'`.
 
 ### Frontend & email sender
 
@@ -363,9 +389,16 @@ All configuration is supplied through environment variables. Defaults (see `src/
 |---------------------------|----------------------|-------------|
 | `FRONTEND_HOST`           | `http://172.20.0.5`  | Frontend base URL (used for invite links) |
 | `FRONTEND_PORT`           | `3000`               | Frontend port |
+| `FRONTEND_INVITE_PATH`    | `invite`             | Frontend path used in staff invite links |
 | `EMAIL_SENDER_HOST`       | `http://172.20.0.6`  | Email sender daemon host |
 | `EMAIL_SENDER_PORT`       | `5000`               | Email sender daemon port |
 | `EMAIL_SENDER_QUEUE_PATH` | `/enqueue`           | Email enqueue endpoint |
+
+### Testing
+
+| Variable              | Default | Description |
+|-----------------------|---------|-------------|
+| `VALHALLA_TEST_NO_DB` | `false` | Start without connecting to a database (used by the unit tests) |
 
 > ⚠️ The default `TOKEN_SECRET` and database credentials are for local development only. Always set strong values before deploying.
 
@@ -417,13 +450,15 @@ To include real response samples in the docs, run `SAMPLES_OUT=api_tests/samples
 | DELETE | `/services/{serviceType}/delete`  | 🔒   | Delete a service (owner only) |
 | POST   | `/services/{serviceType}/search`  | 🔒   | Search services |
 
-### Staff — `/services/{serviceType}/staff/...`
+### Staff — `/staff/services/{serviceType}/staff/...`
 
-| Method | Path                                    | Auth | Description |
-|--------|-----------------------------------------|------|-------------|
-| POST   | `/services/{serviceType}/staff/invite`  | 🔒   | Invite someone to the staff |
-| POST   | `/services/{serviceType}/staff/add`     | 🔒   | Add a staff member |
-| POST   | `/services/{serviceType}/staff/remove`  | 🔒   | Remove a staff member |
+| Method | Path                                          | Auth | Description |
+|--------|-----------------------------------------------|------|-------------|
+| POST   | `/staff/services/{serviceType}/staff/invite`  | 🔒   | Invite someone to the staff |
+| POST   | `/staff/services/{serviceType}/staff/add`     | 🔒   | Add a staff member |
+| POST   | `/staff/services/{serviceType}/staff/remove`  | 🔒   | Remove a staff member |
+
+These routes are registered with Drogon's `METHOD_ADD` (`src/api/v2/routes/staff.hpp`), which puts the controller path (`/api/v2/staff`) in front, hence the doubled `staff` segment. The interactive docs still show the shorter `/services/{serviceType}/staff/...` form, which does not match the server.
 
 ### Clinic records — `/clinic/{resource}/...`
 
@@ -442,14 +477,16 @@ Each resource supports `create` (POST), `read` (POST), `update` (PUT) and `delet
 
 `delete` is not supported for `health`, `patientdrugs`, `reports`, `requests`, `prescriptions` and `paidservices`; they are removed with their parent record.
 
-### Appointments — `/appointments/clinics/...`
+### Appointments — `/appointments/{serviceType}/...`  (`serviceType` ∈ `clinics`, `pharmacies`, `laboratories`, `radiologycenters`)
 
-| Method | Path                              | Auth | Description |
-|--------|-----------------------------------|------|-------------|
-| POST   | `/appointments/clinics/create`    | 🔒   | Create an appointment |
-| POST   | `/appointments/clinics/read`      | 🔒   | Read an appointment |
-| PUT    | `/appointments/clinics/update`    | 🔒   | Update an appointment |
-| DELETE | `/appointments/clinics/delete`    | 🔒   | Delete an appointment |
+| Method | Path                                   | Auth | Description |
+|--------|----------------------------------------|------|-------------|
+| POST   | `/appointments/{serviceType}/create`   | 🔒   | Create an appointment |
+| POST   | `/appointments/{serviceType}/read`     | 🔒   | Read an appointment |
+| PUT    | `/appointments/{serviceType}/update`   | 🔒   | Update an appointment |
+| DELETE | `/appointments/{serviceType}/delete`   | 🔒   | Delete an appointment |
+
+The interactive docs currently only show the `clinics` variant.
 
 ### Misc
 
@@ -474,10 +511,21 @@ src/
 ├── store/              # Shared object store
 ├── server/             # Server bootstrap (entry point)
 └── utils/              # Logging, caching, messaging, JSON helpers, thread-safe queue
-tests/                  # Catch2 test suite
-tools/conan/            # Conan helpers
+tests/                  # Catch2 unit tests (+ vendored Catch CMake helpers)
+docs/                   # Generated API docs: api.html (embedded), openapi.json, Postman collection
+tools/
+├── cmake/              # CMake helpers (HTML embedding, docs generation)
+├── conan/              # Conan helper variables
+└── docs/               # API docs generator (build.sh, build_docs.py, Swagger UI assets)
+api_tests/              # Request payloads and samples used by test_api.sh
 docker/                 # All-in-one Alpine image (Dockerfile + entrypoint)
-.github/workflows/      # Release CI: Alpine build + tests, GitHub Release, multi-arch Docker image
+.github/                # Release workflow and Dependabot config
+init.sql                # Database schema
+build.sh                # Full build + unit tests + API tests
+run_release.sh          # Run build/Release/server with .env loaded
+db_init.sh              # Load init.sql into a local PostgreSQL
+test_api.sh             # End-to-end API test suite against a running server
+fuzz_auth.sh, sqlmap_test.sh, schemathesis_test.sh  # Security and fuzz testing helpers
 ```
 
 ## Development
@@ -486,13 +534,18 @@ docker/                 # All-in-one Alpine image (Dockerfile + entrypoint)
 - **Editor support:** `.clangd` provides LSP configuration; `.vscode/` and `.zed/` settings are included. `CMAKE_EXPORT_COMPILE_COMMANDS` is on, so `compile_commands.json` is generated for tooling.
 - **Warnings:** built with `-Wall -Wextra -pedantic`.
 - **Versioning:** the current Git tag is embedded into the binary at build time via `get_tag.sh`.
-- **Tests:** a Catch2-based suite lives in `tests/` and is wired into the CMake build.
+- **Build options:** `-DENABLE_TESTS=OFF` skips the unit tests (default `ON`); `-DVALHALLA_BUILD_DOCS=OFF` skips regenerating the API docs (default `ON`). Debug builds on Linux enable AddressSanitizer, UndefinedBehaviorSanitizer and LeakSanitizer.
+- **Tests:** a Catch2 suite lives in `tests/`. It runs without a database, so it works on any machine. `build.sh` runs it through the `conan-debug`/`conan-release` CTest presets, and building the Docker image runs it too, on Alpine.
 
 ```bash
 # Run tests (after building)
-ctest --test-dir build/Debug
+ctest --test-dir build/Debug --output-on-failure
 ```
 
 ## Contributing
 
 Contributions are welcome. Please open an issue to discuss substantial changes first, keep commits focused, and run `clang-format` before submitting a pull request. See [`Todo.txt`](Todo.txt) for current work in progress.
+
+## License
+
+Released under the [MIT License](LICENSE).

@@ -13,9 +13,6 @@ class Banner
 
     static fmt::color get_random_color()
     {
-        std::random_device randomDevice;
-        std::srand(randomDevice());
-
         static std::vector<fmt::color> colors = {fmt::color::alice_blue, fmt::color::antique_white, fmt::color::aqua, fmt::color::aquamarine, fmt::color::azure,
             fmt::color::beige, fmt::color::bisque, fmt::color::black, fmt::color::blanched_almond, fmt::color::blue, fmt::color::blue_violet, fmt::color::brown,
             fmt::color::burly_wood, fmt::color::cadet_blue, fmt::color::chartreuse, fmt::color::chocolate, fmt::color::coral, fmt::color::cornflower_blue,
@@ -42,7 +39,16 @@ class Banner
             fmt::color::steel_blue, fmt::color::tan, fmt::color::teal, fmt::color::thistle, fmt::color::tomato, fmt::color::turquoise, fmt::color::violet,
             fmt::color::wheat, fmt::color::white, fmt::color::white_smoke, fmt::color::yellow, fmt::color::yellow_green};
 
-        return colors.at(arc4random() % colors.size());
+        // 1. Obtain a random seed from the hardware
+        std::random_device random_device;
+
+        // 2. Seed the Mersenne Twister engine
+        std::mt19937 generator(random_device());
+
+        // 3. Define the index on the closed interval [1, colors.size() - 1] (inclusive)
+        static std::uniform_int_distribution<std::size_t> index(0, colors.size() - 1);
+
+        return colors.at(index(generator));
     }
 
     template <typename T>

@@ -118,8 +118,7 @@ set(CONAN_PACKAGES
     c-ares
     spdlog
     Trantor
-    Drogon
-    ctrack)
+    Drogon)
 
 # Find all packages at once
 foreach(PACKAGE ${CONAN_PACKAGES})
