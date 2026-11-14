@@ -428,7 +428,7 @@ style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_*
   # Level 3 uses emoji, matching the help renderer. Nerd Font glyphs remain
   # the level-2 fallback, or can be explicitly forced with VALHALLA_NERD=1.
   local v
-  for v in NERD i_ok i_err i_warn i_info i_q i_pull i_save i_trash i_restart i_box i_rocket i_book i_link i_key i_wait i_stop i_step; do
+  for v in NERD i_ok i_err i_warn i_info i_q i_pull i_save i_trash i_restart i_box i_rocket i_book i_link i_key i_wait i_stop i_step i_version; do
     printf -v "${p}${v}" ''
   done
   if [[ $l -ge 2 ]]; then
@@ -451,11 +451,12 @@ style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_*
       printf -v "${p}i_wait"   '%s' $'\xef\x89\x94'   # nf-fa-hourglass-half
       printf -v "${p}i_stop"   '%s' $'\xef\x81\x8d'   # nf-fa-stop
       printf -v "${p}i_step"   '%s' '▸'
+      printf -v "${p}i_version" '%s' $'\xef\x80\xab'  # nf-fa-tag
     elif [[ $l -ge 3 ]]; then
-      printf -v "${p}i_ok"     '%s' '🟢'
-      printf -v "${p}i_err"    '%s' '🔴'
-      printf -v "${p}i_warn"   '%s' '🟡'
-      printf -v "${p}i_info"   '%s' '🔵'
+      printf -v "${p}i_ok"     '%s' '✅'
+      printf -v "${p}i_err"    '%s' '❌'
+      printf -v "${p}i_warn"   '%s' '🚧'
+      printf -v "${p}i_info"   '%s' '💡'
       printf -v "${p}i_q"      '%s' '❓'
       printf -v "${p}i_pull"   '%s' '📥'
       printf -v "${p}i_save"   '%s' '💾'
@@ -469,6 +470,7 @@ style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_*
       printf -v "${p}i_wait"   '%s' '⌛'
       printf -v "${p}i_stop"   '%s' '🛑'
       printf -v "${p}i_step"   '%s' '▸'
+      printf -v "${p}i_version" '%s' '🏷'
     else
       printf -v "${p}i_ok"     '%s' '✓'
       printf -v "${p}i_err"    '%s' '✗'
@@ -478,6 +480,7 @@ style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_*
       printf -v "${p}i_pull"   '%s' '↓'
       printf -v "${p}i_restart" '%s' '↻'
       printf -v "${p}i_step"   '%s' '▸'
+      printf -v "${p}i_version" '%s' '#'
     fi
   fi
 }
@@ -485,7 +488,7 @@ style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_*
 # The style variables are set dynamically in style_set; declare them so
 # the linter can see every name.
 # shellcheck disable=SC2034  # set dynamically in style_set
-S_R='' S_ERR='' S_WRN='' S_OK='' S_INFO='' S_ACC='' S_HEAD='' S_VAL='' S_LBL='' S_DIM='' S_B='' S_NERD='' S_i_ok='' S_i_err='' S_i_warn='' S_i_info='' S_i_q='' S_i_pull='' S_i_save='' S_i_trash='' S_i_restart='' S_i_box='' S_i_rocket='' S_i_book='' S_i_link='' S_i_key='' S_i_wait='' S_i_stop='' S_i_step='' E_R='' E_ERR='' E_WRN='' E_OK='' E_INFO='' E_ACC='' E_HEAD='' E_VAL='' E_LBL='' E_DIM='' E_B='' E_NERD='' E_i_ok='' E_i_err='' E_i_warn='' E_i_info='' E_i_q='' E_i_pull='' E_i_save='' E_i_trash='' E_i_restart='' E_i_box='' E_i_rocket='' E_i_book='' E_i_link='' E_i_key='' E_i_wait='' E_i_stop='' E_i_step=''
+S_R='' S_ERR='' S_WRN='' S_OK='' S_INFO='' S_ACC='' S_HEAD='' S_VAL='' S_LBL='' S_DIM='' S_B='' S_NERD='' S_i_ok='' S_i_err='' S_i_warn='' S_i_info='' S_i_q='' S_i_pull='' S_i_save='' S_i_trash='' S_i_restart='' S_i_box='' S_i_rocket='' S_i_book='' S_i_link='' S_i_key='' S_i_wait='' S_i_stop='' S_i_step='' S_i_version='' E_R='' E_ERR='' E_WRN='' E_OK='' E_INFO='' E_ACC='' E_HEAD='' E_VAL='' E_LBL='' E_DIM='' E_B='' E_NERD='' E_i_ok='' E_i_err='' E_i_warn='' E_i_info='' E_i_q='' E_i_pull='' E_i_save='' E_i_trash='' E_i_restart='' E_i_box='' E_i_rocket='' E_i_book='' E_i_link='' E_i_key='' E_i_wait='' E_i_stop='' E_i_step='' E_i_version=''
 
 # style_init: judge stdout and stderr separately, so only real terminals
 # get decoration and piped output stays byte-clean.
@@ -1658,7 +1661,14 @@ server_version_line() {
   local line
   line="$(logs | sed -E $'s/\x1b\\[[0-9;]*m//g' | grep -m1 -E ' - Version +:' || true)"
   [[ -n $line ]] || line="$(logs | sed -E $'s/\x1b\\[[0-9;]*m//g' | grep -m1 -E '\] Version: ' || true)"
-  [[ -n $line ]] && echo "$line"
+  if [[ -n $line ]]; then
+    if [[ -t 1 && -n ${S_i_version:-} ]]; then
+      line="${line# - }"
+      printf '%s%s\n' "$S_i_version " "$line"
+    else
+      echo "$line"
+    fi
+  fi
   return 0
 }
 
@@ -2294,7 +2304,7 @@ cmd_status() {
       URL:) icon="$S_i_link" ;;
       Persist:) icon="$S_i_save" ;;
       Health:) icon="$S_i_ok" ;;
-      Version:) icon="$S_i_book" ;;
+      Version:) icon="$S_i_version" ;;
     esac
     printf '%s%-14s%s %s\n' "$S_LBL" "${icon:+$icon }$1" "$S_R" "$2"
   }
