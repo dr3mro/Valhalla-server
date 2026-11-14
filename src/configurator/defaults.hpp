@@ -2,7 +2,7 @@
 
 #include <cstdint>
 #include <string>
-
+extern const char* const VALHALLA_GIT_TAG;
 namespace Defaults
 {
     namespace DosDetector
@@ -42,7 +42,7 @@ namespace Defaults
         const uint16_t    SERVER_THREADS_        = 4;
         const uint16_t    SERVER_PORT_           = 8080;
         const std::string SERVER_NAME_           = "ProjectValhalla";
-        const std::string SERVER_VER_            = "1.0.0";
+        const std::string SERVER_VER_            = std::string(VALHALLA_GIT_TAG);
         const std::string SERVER_DESC_           = "ProjectValhalla API";
         const std::string SERVER_HOST_           = "0.0.0.0";
         const uint8_t     SERVER_DEBUG_LEVEL_    = 1;

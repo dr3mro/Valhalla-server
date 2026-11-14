@@ -13,7 +13,7 @@
 #include "configurator/envloader/envloader.hpp"
 #include "defaults.hpp"
 #include "utils/message/message.hpp"
-
+extern const char* const VALHALLA_GIT_TAG;
 template <typename T>
 concept Config = std::is_base_of_v<EnvLoader, T>;
 
@@ -127,7 +127,7 @@ class Configurator
         ServerConfig()
             : host(getEnvironmentVariable("SERVER_HOST", Defaults::Server::SERVER_HOST_)),
               name(getEnvironmentVariable("SERVER_NAME", Defaults::Server::SERVER_NAME_)),
-              ver(getEnvironmentVariable("SERVER_VERSION", Defaults::Server::SERVER_VER_)),
+              ver(getEnvironmentVariable(VALHALLA_GIT_TAG, Defaults::Server::SERVER_VER_)),
               desc(getEnvironmentVariable("SERVER_DESCRIPTION", Defaults::Server::SERVER_DESC_)),
               port(getEnvironmentVariable("SERVER_PORT", Defaults::Server::SERVER_PORT_)),
               threads(getEnvironmentVariable("SERVER_THREADS", Defaults::Server::SERVER_THREADS_)),
