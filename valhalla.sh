@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Run the Valhalla server image locally with Docker or Apple's `container`.
 #
-#   ./valhalla.sh [options] <command> [args]
+#   valhalla [options] <command> [args]      (installed)
+#   ./valhalla.sh [options] <command> [args] (from a checkout)
 #
 # Container:
 #   run [tag]        Start the container. Creates it (pulling the image if it's
@@ -37,13 +38,19 @@
 #                    schemathesis_test.sh (fuzz) against the container.
 #   secret           Generate a random TOKEN_SECRET and write it to the env
 #                    file (asks before replacing an existing one).
-#   install [ref]    Download the installer from GitHub and (re)install the
-#                    latest tool as `valhalla` in ~/.bin/valhalla (or the
-#                    directory this copy is installed in). ref: branch, tag
-#                    or commit (default main).
 #   completion [zsh|bash]
 #                    Print the shell completion script.
 #   help             Show this help.
+# Tool (both run install.sh):
+#   install [ref]    Install or update the `valhalla` command in
+#                    ~/.bin/valhalla (an installed copy updates itself in
+#                    place): downloads the latest installer, uninstalls the
+#                    current copy, then installs. ref: branch, tag or commit
+#                    (default main).
+#   uninstall        Remove the installed `valhalla` command and its lines in
+#                    ~/.zshrc / ~/.bashrc (asks first; keeps .env, dumps/).
+#                    Uses the installer copy kept in the install directory,
+#                    so it works offline; downloads it only if missing.
 #
 # tag defaults to "latest" (build: "local").
 #
@@ -52,7 +59,8 @@
 #   --port PORT          host port          (env VALHALLA_PORT, default 8080)
 #   --runtime RT         docker | container (env VALHALLA_RUNTIME)
 #   --env-file FILE      env file, or "none" (env VALHALLA_ENV_FILE)
-#   -n, --dry-run        show what run/update/build/restore/secret would do
+#   -n, --dry-run        show what run/update/build/restore/secret/install/
+#                        uninstall would do
 #   -y, --yes            don't ask for confirmation
 #   -h, --help           show this help
 #
@@ -187,6 +195,7 @@ COMMANDS=(
   "test|run the API tests against the container"
   "secret|write a random TOKEN_SECRET to the env file"
   "install|install or update the valhalla command from GitHub"
+  "uninstall|remove the installed valhalla command"
   "completion|print the shell completion script"
   "help|show help"
 )
@@ -417,7 +426,7 @@ check_deps() {
   local cmd="$1" arg="${2:-}"
 
   case "$cmd" in
-    secret | test | install) ;;
+    secret | test | install | uninstall) ;;
     *)
       if [[ -n ${VALHALLA_RUNTIME:-} ]]; then
         need "$VALHALLA_RUNTIME"
@@ -440,7 +449,7 @@ check_deps() {
       ;;
     doc) need_any "open or xdg-open" open xdg-open ;;
     secret) need_any "openssl or python3" openssl python3 ;;
-    install) need curl ;;
+    install | uninstall) need curl ;;
     test)
       need curl
       case "${arg:-api}" in
@@ -1091,24 +1100,83 @@ cmd_secret() {
 
 INSTALLER_URL="${VALHALLA_INSTALLER_URL:-https://raw.githubusercontent.com/dr3mro/Valhalla-server/main/install.sh}"
 
-cmd_install() {
-  local ref="${1:-main}" tmp
-  local -a args=(--ref "$ref")
-  # An installed copy (install.sh writes VERSION) updates itself in place.
-  [[ -f $ROOT/VERSION ]] && args+=(--dir "$ROOT")
-  if [[ $DRY_RUN == 1 ]]; then
-    echo "Dry run: would download $INSTALLER_URL and run it with: ${args[*]}"
-    [[ -f $ROOT/VERSION ]] && echo "Installed now: $(cat "$ROOT/VERSION")"
-    return
-  fi
+# local_installer: the installer kept by install.sh in the install directory
+# (or this checkout's install.sh); prints nothing if there's none.
+local_installer() {
+  local f
+  for f in "$ROOT/installer" "$HOME/.bin/valhalla/installer" "$ROOT/install.sh"; do
+    [[ -f $f ]] && { echo "$f"; return 0; }
+  done
+  return 0
+}
+
+# install_target: the install directory; --dir is passed for an installed copy (install.sh writes VERSION),
+# so it acts on its own directory; from a checkout the installer's default
+# (~/.bin/valhalla) is used.
+install_target() { if [[ -f $ROOT/VERSION ]]; then echo "$ROOT"; else echo "$HOME/.bin/valhalla"; fi; }
+
+# fetch_installer: downloads install.sh from GitHub into a temp file and
+# prints its path.
+fetch_installer() {
+  local tmp
   tmp="$(mktemp)"
   if ! curl -fsSL "$INSTALLER_URL" -o "$tmp"; then
     rm -f "$tmp"
     die "couldn't download the installer from $INSTALLER_URL"
   fi
-  note "Running the installer (${args[*]})"
-  sh "$tmp" "${args[@]}" || { rm -f "$tmp"; die "the installer failed"; }
-  rm -f "$tmp"
+  echo "$tmp"
+}
+
+cmd_install() {
+  local ref="${1:-main}" target new old=""
+  target="$(install_target)"
+  local -a dir_args=()
+  [[ -f $ROOT/VERSION ]] && dir_args=(--dir "$ROOT")
+  [[ -f $target/valhalla || -f $target/VERSION ]] && old="$(local_installer)"
+
+  if [[ $DRY_RUN == 1 ]]; then
+    echo "Dry run, nothing changed. Would:"
+    echo "  download $INSTALLER_URL"
+    if [[ -f $target/valhalla || -f $target/VERSION ]]; then
+      echo "  uninstall the current copy in $target with ${old:-the downloaded installer} (keeps .env, dumps/)"
+      [[ -f $target/VERSION ]] && echo "    installed now: $(cat "$target/VERSION")"
+    fi
+    echo "  install $ref into $target"
+    return 0
+  fi
+
+  # Download first: if that fails, the current install is left alone.
+  new="$(fetch_installer)"
+  if [[ -f $target/valhalla || -f $target/VERSION ]]; then
+    note "Removing the current install in $target first"
+    sh "${old:-$new}" --uninstall "${dir_args[@]}" || { rm -f "$new"; die "uninstall failed"; }
+  fi
+  note "Installing $ref"
+  sh "$new" --ref "$ref" "${dir_args[@]}" || { rm -f "$new"; die "the installer failed"; }
+  rm -f "$new"
+}
+
+cmd_uninstall() {
+  local target installer tmp=""
+  target="$(install_target)"
+  local -a dir_args=()
+  [[ -f $ROOT/VERSION ]] && dir_args=(--dir "$ROOT")
+  installer="$(local_installer)"
+
+  if [[ $DRY_RUN == 1 ]]; then
+    echo "Dry run: would run ${installer:-$INSTALLER_URL (downloaded)} with: --uninstall ${dir_args[*]}"
+    return 0
+  fi
+  confirm "Remove the valhalla command from $target and its lines in ~/.zshrc / ~/.bashrc? (.env and dumps/ are kept)" ||
+    die "cancelled"
+  if [[ -z $installer ]]; then
+    tmp="$(fetch_installer)"
+    installer="$tmp"
+  fi
+  note "Running $installer (--uninstall ${dir_args[*]})"
+  sh "$installer" --uninstall "${dir_args[@]}" || { [[ -n $tmp ]] && rm -f "$tmp"; die "the installer failed"; }
+  [[ -n $tmp ]] && rm -f "$tmp"
+  return 0
 }
 
 cmd_completion() {
@@ -1141,7 +1209,7 @@ resolve_runtime
 check_deps "$command" "${ARGS[0]:-}"
 
 case "$command" in
-  secret | test | install) "cmd_${command}" "${ARGS[@]}"; exit $? ;;
+  secret | test | install | uninstall) "cmd_${command}" "${ARGS[@]}"; exit $? ;;
 esac
 
 pick_runtime

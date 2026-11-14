@@ -11,15 +11,17 @@
 #   --ref REF       branch, tag or commit to install (default: main)
 #   --dir DIR       install directory (default: ~/.bin/valhalla)
 #   --no-rc         don't touch ~/.zshrc / ~/.bashrc
-#   --uninstall     remove the tool and the rc lines (keeps .env and dumps/)
+#   --uninstall     remove the tool and the rc lines (keeps .env and dumps/);
+#                   same as `valhalla uninstall`
 #   -h, --help      show this help
 #
 # Environment: VALHALLA_REF, VALHALLA_INSTALL_DIR, GITHUB_TOKEN (optional,
 # avoids GitHub's anonymous API rate limit), VALHALLA_SOURCE (install from a
 # local checkout instead of downloading; for testing).
 #
-# Installs: valhalla (valhalla.sh), test_api, schemathesis_test,
-# api_tests/payloads/, docs/openapi.json. Your .env and dumps/ in the install
+# Installs: valhalla (valhalla.sh), test_api, schemathesis_test, installer
+# (a copy of this script, used by `valhalla uninstall`), api_tests/payloads/,
+# docs/openapi.json. Your .env and dumps/ in the install
 # directory are never touched.
 
 set -eu
@@ -54,7 +56,7 @@ done
 
 # Files managed by this installer (relative to DIR).
 # The .sh names are from earlier installs; they're removed on update.
-MANAGED="valhalla test_api schemathesis_test api_tests/payloads docs/openapi.json VERSION deploy.sh test_api.sh schemathesis_test.sh"
+MANAGED="valhalla test_api schemathesis_test installer api_tests/payloads docs/openapi.json VERSION deploy.sh test_api.sh schemathesis_test.sh"
 
 # ── rc files ───────────────────────────────────────────────────────────────
 # rc_files: the rc files to manage: each of ~/.zshrc / ~/.bashrc that exists,
@@ -137,7 +139,7 @@ fetch_tree() {
     die "couldn't list the repository files (API rate limit? set GITHUB_TOKEN)"
 
   count=0
-  for f in valhalla.sh test_api.sh schemathesis_test.sh docs/openapi.json $payloads; do
+  for f in valhalla.sh test_api.sh schemathesis_test.sh install.sh docs/openapi.json $payloads; do
     mkdir -p "$stage/$(dirname "$f")"
     curl -fsSL "https://raw.githubusercontent.com/$REPO/$SHA/$f" -o "$stage/$f" ||
       die "download failed: $f (does $REF contain it?)"
@@ -152,7 +154,7 @@ copy_tree() {
   stage="$1"
   [ -f "$SOURCE/valhalla.sh" ] || die "VALHALLA_SOURCE has no valhalla.sh: $SOURCE"
   say "Copying from $SOURCE"
-  for f in valhalla.sh test_api.sh schemathesis_test.sh docs/openapi.json; do
+  for f in valhalla.sh test_api.sh schemathesis_test.sh install.sh docs/openapi.json; do
     mkdir -p "$stage/$(dirname "$f")"
     cp "$SOURCE/$f" "$stage/$f"
   done
@@ -176,9 +178,10 @@ do_install() {
   mv "$stage/valhalla.sh" "$stage/valhalla"
   mv "$stage/test_api.sh" "$stage/test_api"
   mv "$stage/schemathesis_test.sh" "$stage/schemathesis_test"
+  mv "$stage/install.sh" "$stage/installer"
   (cd "$stage" && tar -cf - .) | (cd "$DIR" && tar -xf -)
   # Downloads arrive as plain files (curl doesn't keep the executable bit).
-  chmod 755 "$DIR/valhalla" "$DIR/test_api" "$DIR/schemathesis_test"
+  chmod 755 "$DIR/valhalla" "$DIR/test_api" "$DIR/schemathesis_test" "$DIR/installer"
   printf '%s\n' "$VERSION_TEXT" >"$DIR/VERSION"
   say "Installed into $DIR"
 
@@ -191,7 +194,7 @@ do_install() {
   say "  valhalla help"
   say "  valhalla run"
   [ -f "$DIR/.env" ] || say "Optional: put your settings in $DIR/.env (or use: valhalla --env-file FILE ...)"
-  say "Update later with: valhalla install"
+  say "Update later with: valhalla install    Remove with: valhalla uninstall"
 }
 
 do_uninstall() {

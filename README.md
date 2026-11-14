@@ -40,11 +40,7 @@ valhalla help      # everything else
 
 Settings: `valhalla` reads `.env` from the directory you run it in (e.g. your checkout of this repository), or else `~/.bin/valhalla/.env` (see [Configuration](#configuration)); every variable in it is passed to the server. Run `valhalla update` after editing it.
 
-Update the tool with `valhalla install` (or `valhalla install v1.2.3` for a specific tag); it fetches the installer from GitHub again. Remove it with:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/dr3mro/Valhalla-server/main/install.sh | sh -s -- --uninstall
-```
+Update the tool with `valhalla install` (or `valhalla install v1.2.3` for a specific tag): it downloads the latest installer, removes the current copy and installs the new one. Remove it with `valhalla uninstall`, which works offline. Both keep your `.env` and `dumps/`.
 
 From a checkout of this repository, `./valhalla.sh` is the same tool. Details: [Manage it with `valhalla.sh`](#manage-it-with-valhallash). Without the tool: [Run with Docker](#run-with-docker). To build and run natively: [Getting Started](#getting-started).
 
@@ -446,7 +442,7 @@ The build compiles every C++ dependency from source on Alpine and runs the unit 
 
 #### Manage it with `valhalla.sh`
 
-`valhalla.sh` in the repository root wraps the commands above for both Docker and Apple Container.
+`valhalla.sh` in the repository root wraps the commands above for both Docker and Apple Container. It picks Apple Container when it's installed and Docker otherwise (force one with `--runtime docker` or `--runtime container`).
 
 **Install it as the `valhalla` command** (no checkout needed). This downloads the latest `valhalla.sh` (installed as `valhalla`), the API test scripts (as `test_api` and `schemathesis_test`) and their payloads from this repository into `~/.bin/valhalla`, makes them executable, and adds that directory to `PATH` with tab completion in `~/.zshrc` and/or `~/.bashrc`:
 
@@ -454,14 +450,15 @@ The build compiles every C++ dependency from source on Alpine and runs the unit 
 curl -fsSL https://raw.githubusercontent.com/dr3mro/Valhalla-server/main/install.sh | sh
 ```
 
-Then open a new terminal and use `valhalla` instead of `./valhalla.sh` (e.g. `valhalla run`, `valhalla status`). Run the same command again to update. Your `~/.bin/valhalla/.env` and `dumps/` are kept.
+Then open a new terminal and use `valhalla` instead of `./valhalla.sh` (e.g. `valhalla run`, `valhalla status`). Afterwards the tool manages itself with the same installer. The installer keeps a copy of itself next to the tool, so `uninstall` works offline; `install` downloads the latest installer first, then uninstalls the current copy and installs the new one (if the download fails, nothing is removed):
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/dr3mro/Valhalla-server/main/install.sh | sh -s -- --ref v1.2.3   # a specific tag
-curl -fsSL https://raw.githubusercontent.com/dr3mro/Valhalla-server/main/install.sh | sh -s -- --uninstall    # remove it
+valhalla install            # update to the latest version (your .env and dumps/ are kept)
+valhalla install v1.2.3     # a specific tag, branch or commit
+valhalla uninstall          # remove it and its lines in ~/.zshrc / ~/.bashrc (asks first)
 ```
 
-The installed copy has everything except `build`, which needs a full checkout of the repository. It picks Apple Container when it's installed and Docker otherwise (force one with `VALHALLA_RUNTIME=docker` or `VALHALLA_RUNTIME=container`).
+The installed copy has everything except `build`, which needs a full checkout of the repository. From a checkout, every command works the same as `./valhalla.sh <command>`:
 
 ```bash
 ./valhalla.sh run             # create (pulling the image if needed) or start the container
@@ -484,11 +481,12 @@ The installed copy has everything except `build`, which needs a full checkout of
 ./valhalla.sh test            # run test_api.sh against it (test fuzz / test all for Schemathesis)
 ./valhalla.sh secret          # write a random TOKEN_SECRET to .env
 ./valhalla.sh install         # install or update the `valhalla` command from GitHub
+./valhalla.sh uninstall       # remove the installed `valhalla` command
 ./valhalla.sh delete          # remove the container
 ./valhalla.sh clean           # remove the container and all local images of it
 ```
 
-Options go before or after the command: `--name`, `--port`, `--runtime`, `--env-file`, `-n`/`--dry-run` (see what `run`, `update`, `build`, `restore` or `secret` would do) and `-y`/`--yes`. The first time you run it, it adds tab completion to `~/.zshrc` and/or `~/.bashrc`; open a new terminal to use it (set `VALHALLA_NO_COMPLETION=1` to skip).
+Options go before or after the command: `--name`, `--port`, `--runtime`, `--env-file`, `-n`/`--dry-run` (see what `run`, `update`, `build`, `restore`, `secret`, `install` or `uninstall` would do) and `-y`/`--yes`. The first time you run it, it adds tab completion to `~/.zshrc` and/or `~/.bashrc`; open a new terminal to use it (set `VALHALLA_NO_COMPLETION=1` to skip).
 
 Each command first checks the tools it needs (`curl`, `python3` for Apple Container, `jq` for `test`, …) and lists any that are missing, with how to install them.
 
@@ -501,7 +499,8 @@ Full help (`./valhalla.sh help`):
 ```text
 Run the Valhalla server image locally with Docker or Apple's `container`.
 
-  ./valhalla.sh [options] <command> [args]
+  valhalla [options] <command> [args]      (installed)
+  ./valhalla.sh [options] <command> [args] (from a checkout)
 
 Container:
   run [tag]        Start the container. Creates it (pulling the image if it's
@@ -537,13 +536,19 @@ Other:
                    schemathesis_test.sh (fuzz) against the container.
   secret           Generate a random TOKEN_SECRET and write it to the env
                    file (asks before replacing an existing one).
-  install [ref]    Download the installer from GitHub and (re)install the
-                   latest tool as `valhalla` in ~/.bin/valhalla (or the
-                   directory this copy is installed in). ref: branch, tag
-                   or commit (default main).
   completion [zsh|bash]
                    Print the shell completion script.
   help             Show this help.
+Tool (both run install.sh):
+  install [ref]    Install or update the `valhalla` command in
+                   ~/.bin/valhalla (an installed copy updates itself in
+                   place): downloads the latest installer, uninstalls the
+                   current copy, then installs. ref: branch, tag or commit
+                   (default main).
+  uninstall        Remove the installed `valhalla` command and its lines in
+                   ~/.zshrc / ~/.bashrc (asks first; keeps .env, dumps/).
+                   Uses the installer copy kept in the install directory,
+                   so it works offline; downloads it only if missing.
 
 tag defaults to "latest" (build: "local").
 
@@ -552,7 +557,8 @@ Options (before or after the command):
   --port PORT          host port          (env VALHALLA_PORT, default 8080)
   --runtime RT         docker | container (env VALHALLA_RUNTIME)
   --env-file FILE      env file, or "none" (env VALHALLA_ENV_FILE)
-  -n, --dry-run        show what run/update/build/restore/secret would do
+  -n, --dry-run        show what run/update/build/restore/secret/install/
+                       uninstall would do
   -y, --yes            don't ask for confirmation
   -h, --help           show this help
 
