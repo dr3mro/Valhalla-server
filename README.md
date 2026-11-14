@@ -280,7 +280,7 @@ curl http://127.0.0.1:8080/api/v2/hello
 
 The interactive API docs are at <http://127.0.0.1:8080/api/v2/doc>.
 
-**Pin a version** instead of `latest`. `latest` only tracks stable releases (tags like `1.2.3` or `v1.2.3`); other tags, such as `1.2.3-beta`, are published under their own name only:
+**Pin a version** instead of `latest`. Every release tag, including pre-releases such as `1.2.3-beta`, is published under its own name and also moves `latest`:
 
 ```bash
 docker pull dr3mro/valhalla-server-run:v1.2.3
