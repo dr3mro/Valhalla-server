@@ -9,7 +9,9 @@
 #                    missing) if it doesn't exist; starts it if it's stopped.
 #   update [tag]     Pull the image and recreate the container with the same
 #                    settings (re-reading .env), then remove the old image
-#                    to free disk space (--no-prune keeps it).
+#                    to free disk space (--no-prune keeps it); also updates
+#                    the valhalla tool itself when GitHub has a newer one
+#                    (--image-only / --tool-only update just one).
 #   build [tag]      Build the image from this checkout (version from
 #                    `git describe`) as valhalla-server-run:<tag> (default
 #                    local), then recreate the container from it and remove
@@ -51,7 +53,8 @@
 # Tool (both run install.sh):
 #   install [ref]    Install or update the `valhalla` command (~/.local/bin,
 #                    files in ~/.local/share/valhalla; an installed copy
-#                    updates itself in place). Downloads first; only then
+#                    updates itself in place — `update` does this too).
+#                    Downloads first; only then
 #                    removes the current copy and installs, so a failed
 #                    download changes nothing. ref: branch, tag or commit
 #                    (default main).
@@ -81,6 +84,9 @@
 #                        of this tool are removed, plus dangling layers (on
 #                        Docker only those from this repo; Apple container's
 #                        prune removes all dangling images).
+#   --image-only         update: only the image and container, skip the tool
+#   --tool-only          update: only the valhalla tool, leave the container
+#                        alone (needs no runtime or container)
 #   --token-secret S     JWT signing secret for a new container (wins over
 #                        the env file and config; visible in your shell
 #                        history, so prefer the config file)
@@ -238,6 +244,7 @@ ASSUME_YES=0
 PERSIST=""     # --persist (1) / --no-persist (0); empty: keep the container's setting
 CLI_TOKEN_SECRET="" # --token-secret
 NO_PRUNE="${VALHALLA_NO_PRUNE:-0}" # --no-prune: keep old images after update/build
+UPDATE_SCOPE=""   # --image-only / --tool-only: update just one side of update
 OLD_PERSIST="" # VALHALLA_PERSIST of the container being replaced
 # One place for dumps, whether this runs from a checkout or the installed copy.
 DATA_DIR="${VALHALLA_DATA_DIR:-$HOME/.local/share/valhalla}"
@@ -253,7 +260,7 @@ trap 'rm -f "$INSPECT_CACHE" ${ENV_TMP:+"$ENV_TMP"}' EXIT
 # as shell completion).
 COMMANDS=(
   "run|create or start the container"
-  "update|pull the image and recreate the container"
+  "update|pull the image, recreate the container and update the tool"
   "build|build the image from this checkout and run it"
   "stop|stop the container without removing it"
   "restart|restart the container"
@@ -292,6 +299,8 @@ OPTIONS=(
   "--no-persist|turn persistence off|"
   "--token-secret|JWT signing secret for this container|value"
   "--no-prune|keep old images after update/build|"
+  "--image-only|update: only the image, skip the tool|"
+  "--tool-only|update: only the tool, skip the image|"
   "-h --help|show help|"
 )
 
@@ -301,6 +310,7 @@ ENV_VALS=()
 
 die() { echo "error: $*" >&2; exit 1; }
 note() { echo "$*" >&2; }
+warn() { echo "warning: $*" >&2; }
 
 help_text() { sed -n '2,/^$/s/^# \{0,1\}//p' "$SCRIPT"; }
 
@@ -534,6 +544,8 @@ while [[ $# -gt 0 ]]; do
     --token-secret=*) CLI_TOKEN_SECRET="${1#*=}"; shift ;;
     --no-persist) PERSIST=0; shift ;;
     --no-prune) NO_PRUNE=1; shift ;;
+    --image-only) UPDATE_SCOPE="${UPDATE_SCOPE:+$UPDATE_SCOPE }image"; shift ;;
+    --tool-only) UPDATE_SCOPE="${UPDATE_SCOPE:+$UPDATE_SCOPE }tool"; shift ;;
     -h | --help) ARGS=(help); break ;;
     --) shift; ARGS+=("$@"); break ;;
     -*) die "unknown option: $1 (see: $PROG help)" ;;
@@ -541,6 +553,10 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 [[ $PORT =~ ^[0-9]+$ ]] || die "--port must be a number, got '$PORT'"
+case "$UPDATE_SCOPE" in
+  "" | image | tool) ;; # single flag (or none) is fine
+  *) die "--image-only and --tool-only can't be used together" ;;
+esac
 [[ $NAME =~ ^[A-Za-z0-9][A-Za-z0-9_.-]*$ ]] ||
   die "--name may only contain letters, digits, '.', '_' and '-' (got '$NAME')"
 [[ $WAIT_SECONDS =~ ^[0-9]+$ ]] || die "VALHALLA_WAIT must be a number of seconds, got '$WAIT_SECONDS'"
@@ -791,7 +807,7 @@ check_deps() {
       want git "the image version will be \"dev\""
       ;;
     doc) need_any "open or xdg-open" open xdg-open ;;
-    install | uninstall) need curl ;;
+    install | uninstall | update) need curl ;;
     test)
       need curl
       case "${arg:-api}" in
@@ -1559,6 +1575,12 @@ tool_installed_sha() {
   echo "${v##* }"
 }
 
+# latest_tool_sha: the commit main is at on GitHub; empty when unreachable.
+latest_tool_sha() {
+  curl -fsSL -m 8 -H "Accept: application/vnd.github.sha" \
+    "https://api.github.com/repos/$REPO_SLUG/commits/main" 2>/dev/null || true
+}
+
 # update_refresh: the background check. Writes UPDATE_STATE atomically.
 update_refresh() {
   local lock="$UPDATE_STATE.lock" now tmp
@@ -1577,8 +1599,7 @@ update_refresh() {
     else
       echo "online=1"
       local latest_sha release installed ref repo tag running latest version
-      latest_sha="$(curl -fsSL -m 8 -H "Accept: application/vnd.github.sha" \
-        "https://api.github.com/repos/$REPO_SLUG/commits/main" 2>/dev/null || true)"
+      latest_sha="$(latest_tool_sha)"
       [[ $latest_sha =~ ^[0-9a-f]{40}$ ]] || latest_sha=""
       release="$(curl -fsSL -m 8 "https://api.github.com/repos/$REPO_SLUG/releases/latest" 2>/dev/null |
         sed -n 's/.*"tag_name": *"\([^"]*\)".*/\1/p' | head -n1 || true)"
@@ -1745,9 +1766,8 @@ show_update_notice() {
     done
     printf '%s%s%s%s%s%s%s%s%s\n' "$T" "$bl" "$(rule $((w1 + 2)))" "$bj" "$(rule $((w2 + 2)))" "$bj" "$(rule $((w3 + 2)))" "$br" "$R"
     local how=""
-    [[ $image == 1 ]] && how="$PROG update"
-    [[ $tool == 1 ]] && how="${how:+$how  ·  }$PROG install"
-    [[ $level -lt 2 ]] && how="${how//  ·  /  and  }"
+    [[ $image == 1 || $tool == 1 ]] && how="$PROG update"
+    [[ $image != 1 && $tool == 1 ]] && how="$how (or $PROG install for just the tool)"
     printf '  %sUpdate with:%s %s%s%s   %s(hide: VALHALLA_NO_UPDATE_CHECK=1)%s\n\n' "$D" "$R" "$OK" "$how" "$R" "$D" "$R"
   } >&2
   return 0
@@ -1774,7 +1794,7 @@ status_updates() {
       show_update_notice
     else
       [[ $image == 1 ]] && echo "  Docker image $(state_get image_version) -> $(state_get image_latest_version) ($PROG update)"
-      [[ $tool == 1 ]] && echo "  valhalla tool $(state_get tool_installed | cut -c1-7) -> $(state_get tool_latest | cut -c1-7) ($PROG install)"
+      [[ $tool == 1 ]] && echo "  valhalla tool $(state_get tool_installed | cut -c1-7) -> $(state_get tool_latest | cut -c1-7) ($PROG update, or install for just the tool)"
     fi
   else
     local what=""
@@ -1859,15 +1879,62 @@ recreate() {
   return 0
 }
 
+# update_tool_step: the tool half of update. Runs after the image half (the
+# installer replaces the running script, so it goes last — safe because the
+# installer downloads first and only then removes the current copy and
+# installs, so this script keeps reading its old, open file).
+# Skipped for a checkout or a locally-installed copy (tool_installed_sha is
+# empty: nothing to compare against), when the tool is already at main's
+# commit, and when GitHub can't be reached. Never fails the update: the image
+# half has already succeeded when this runs.
+update_tool_step() {
+  local installed latest
+  installed="$(tool_installed_sha)"
+  if [[ -z $installed ]]; then
+    note "Tool: not an installed copy (checkout) — nothing to update. Run '$PROG install' to install the command."
+    return 0
+  fi
+  latest="$(latest_tool_sha)"
+  [[ $latest =~ ^[0-9a-f]{40}$ ]] || latest=""
+  if [[ -z $latest ]]; then
+    warn "couldn't reach GitHub to check for a newer valhalla tool; the image was updated"
+    return 0
+  fi
+  if [[ $installed == "$latest" ]]; then
+    note "Tool: already up to date ($(echo "$latest" | cut -c1-7))."
+    return 0
+  fi
+  note "Updating the valhalla tool ($(echo "$installed" | cut -c1-7) -> $(echo "$latest" | cut -c1-7)), like '$PROG install'"
+  if ! install_tool main; then
+    warn "the image was updated, but the tool update failed; run '$PROG install'"
+  fi
+}
+
 cmd_update() {
   local image
   image="$(image_ref "${1:-}")"
+  if [[ $UPDATE_SCOPE == tool ]]; then
+    if [[ $DRY_RUN == 1 ]]; then
+      if [[ -z $(tool_installed_sha) ]]; then
+        echo "Dry run, nothing changed. This is a checkout, so there is no installed copy to update (use: $PROG install)."
+      else
+        echo "Dry run, nothing changed. Would update the valhalla tool in place (like '$PROG install')."
+      fi
+      return 0
+    fi
+    update_tool_step
+    return
+  fi
   if [[ $DRY_RUN == 1 ]]; then
     PLAN_PRUNE=1 plan_recreate "$image" "pull $image"
+    if [[ $UPDATE_SCOPE != image ]]; then
+      echo "  then also update the valhalla tool if GitHub has a newer one (skip with: --image-only)"
+    fi
     return
   fi
   pull "$image"
   recreate "$image"
+  [[ $UPDATE_SCOPE == image ]] || update_tool_step
 }
 
 cmd_build() {
@@ -2202,13 +2269,28 @@ fetch_installer() {
   tmp="$(mktemp)"
   if ! curl -fsSL "$INSTALLER_URL" -o "$tmp"; then
     rm -f "$tmp"
-    die "couldn't download the installer from $INSTALLER_URL"
+    note "couldn't download the installer from $INSTALLER_URL"
+    return 1
   fi
   echo "$tmp"
 }
 
+# install_tool <ref>: download the installer and run it (downloads first; only
+# then does it remove the current copy in the install directory and install, so
+# a failed download changes nothing). Returns non-zero if the installer failed.
+install_tool() {
+  local ref="${1:-main}" new
+  local -a args=(--replace --ref "$ref")
+  [[ -f $ROOT/VERSION ]] && args+=(--dir "$ROOT")
+  new="$(fetch_installer)" || return 1
+  sh "$new" "${args[@]}"; local rc=$?
+  rm -f "$new"
+  ((rc == 0)) || return "$rc"
+  forget_update_state
+}
+
 cmd_install() {
-  local ref="${1:-main}" target new
+  local ref="${1:-main}" target
   target="$(install_target)"
   local -a args=(--replace --ref "$ref")
   [[ -f $ROOT/VERSION ]] && args+=(--dir "$ROOT")
@@ -2219,10 +2301,7 @@ cmd_install() {
     [[ -f $target/VERSION ]] && echo "  installed now: $(cat "$target/VERSION")"
     return 0
   fi
-  new="$(fetch_installer)"
-  sh "$new" "${args[@]}" || { rm -f "$new"; die "the installer failed"; }
-  rm -f "$new"
-  forget_update_state
+  install_tool "$ref" || die "the installer failed"
 }
 
 cmd_uninstall() {
@@ -2239,7 +2318,7 @@ cmd_uninstall() {
   confirm "Remove the valhalla command from $target and its lines in ~/.zshrc / ~/.bashrc? (config and dumps/ are kept)" ||
     die "cancelled"
   if [[ -z $installer ]]; then
-    tmp="$(fetch_installer)"
+    tmp="$(fetch_installer)" || die "couldn't download the installer from $INSTALLER_URL"
     installer="$tmp"
   fi
   note "Running $installer (--uninstall ${dir_args[*]})"
@@ -2271,6 +2350,9 @@ cmd_completion() {
 # ── main ───────────────────────────────────────────────────────────────────
 command="${ARGS[0]:-help}"
 ARGS=("${ARGS[@]:1}")
+if [[ -n $UPDATE_SCOPE && $command != update ]]; then
+  die "--image-only/--tool-only are update options (see: $PROG help)"
+fi
 
 case "$command" in
   help) usage; exit 0 ;;
@@ -2285,6 +2367,10 @@ install_completion
 resolve_runtime
 case "$command" in
   install | uninstall | status) ;; # status checks for itself
+  update)
+    # --tool-only updates the tool itself: no notice, like install.
+    [[ $UPDATE_SCOPE == tool ]] || { show_update_notice; schedule_update_check; }
+    ;;
   *)
     show_update_notice
     schedule_update_check
@@ -2298,6 +2384,10 @@ esac
 
 if [[ $command == test && -z $RT ]]; then
   cmd_test "${ARGS[@]}"
+  exit $?
+fi
+if [[ $command == update && $UPDATE_SCOPE == tool ]]; then
+  "cmd_${command}" "${ARGS[@]}"
   exit $?
 fi
 pick_runtime
