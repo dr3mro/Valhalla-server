@@ -1,0 +1,15 @@
+.git
+.github
+.cache
+.vscode
+.zed
+build
+logs
+uploads
+api_tests
+**/node_modules
+.env
+.env.*
+*.log
+*.tar.gz
+CMakeUserPresets.json

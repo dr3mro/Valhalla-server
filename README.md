@@ -95,20 +95,20 @@ Database controller  ──►  Connection pool  ──►  PostgreSQL
 | Hashing / utils   | xxhash, cppcodec, zlib |
 | Profiling         | ctrack |
 | Testing           | Catch2 |
-| Build             | CMake (≥ 3.30) + Conan 2 |
+| Build             | CMake (≥ 4.0) + Conan 2 |
 
 ## Getting Started
 
 ### Prerequisites
 
 - A C++20-capable compiler (GCC 13+ / Clang 17+)
-- [CMake](https://cmake.org/) ≥ 3.30 and [Ninja](https://ninja-build.org/) (used by `build.sh`)
+- [CMake](https://cmake.org/) ≥ 4.0 and [Ninja](https://ninja-build.org/) (used by `build.sh`)
 - [Conan](https://conan.io/) 2.x (package manager)
 - A reachable [PostgreSQL](https://www.postgresql.org/) instance
 - *(optional)* `ccache` — used automatically if found, to speed up rebuilds
 - *(optional)* Docker + Docker Compose for containerized runs
 
-Tested distributions: **Debian 13 (trixie)+ / Ubuntu 24.04+** and **Fedora 40+**. Older releases ship GCC < 13 or CMake < 3.30; see the notes below for workarounds.
+Tested distributions: **Debian 13 (trixie)+ / Ubuntu 24.04+** and **Fedora 40+**. Older releases ship GCC < 13, and most distributions still package CMake 3.x, so you will likely need to install CMake 4 separately; see the notes below.
 
 ### Build from Source
 
@@ -122,12 +122,12 @@ sudo apt install -y build-essential git curl zip unzip tar pkg-config \
     uuid-dev libssl-dev python3 python3-pip pipx \
     postgresql postgresql-client
 
-# 2. Check versions: you need GCC >= 13 and CMake >= 3.30
+# 2. Check versions: you need GCC >= 13 and CMake >= 4.0
 g++ --version | head -1
 cmake --version | head -1
 ```
 
-> If `cmake` is older than 3.30 (e.g. Ubuntu 22.04/Debian 12), install a newer one with `pipx install cmake` (or from the [Kitware APT repository](https://apt.kitware.com/)). If `g++` is older than 13, install `g++-13` (`sudo apt install g++-13`) and export `CC=gcc-13 CXX=g++-13` before the steps below.
+> The packaged `cmake` is 3.x on Ubuntu 24.04 (3.28) and Debian 13 (3.31). Install CMake 4 with `pipx install cmake` (then `pipx ensurepath` and open a new shell), or from the [Kitware APT repository](https://apt.kitware.com/). If `g++` is older than 13, install `g++-13` (`sudo apt install g++-13`) and export `CC=gcc-13 CXX=g++-13` before the steps below.
 
 #### Fedora
 
@@ -138,10 +138,12 @@ sudo dnf install -y gcc gcc-c++ make git curl zip unzip tar pkgconf-pkg-config \
     libuuid-devel openssl-devel python3 python3-pip pipx \
     postgresql-server postgresql
 
-# 2. Check versions: you need GCC >= 13 and CMake >= 3.30
+# 2. Check versions: you need GCC >= 13 and CMake >= 4.0
 g++ --version | head -1
 cmake --version | head -1
 ```
+
+> If `cmake --version` is below 4.0, install CMake 4 with `pipx install cmake` (then `pipx ensurepath` and open a new shell).
 
 #### Install Conan and build (both distributions)
 
@@ -242,13 +244,74 @@ Then open the interactive API docs at <http://127.0.0.1:8080/api/v2/doc>. If the
 
 ### Run with Docker
 
-A Compose profile is provided for a containerized run:
+Every release tag publishes an all-in-one image to Docker Hub: the server **plus** its own PostgreSQL, so no external database is needed. It is a single multi-arch image (`linux/amd64` and `linux/arm64`); Docker and Apple Container pull the right one automatically. It's meant for demos, testing, and CI.
+
+> **The database is ephemeral.** Every container start, *including a restart*, begins with a fresh, empty database initialised from `init.sql`. Nothing is kept. For persistent data, run the server against your own PostgreSQL instead (see [Run the server](#run-the-server)).
+
+**Docker** (Linux, macOS, Windows):
 
 ```bash
-docker compose --profile run up --build
+docker run --rm -p 8080:8080 \
+  -e TOKEN_SECRET=change-me-to-a-long-random-string \
+  dr3mro/valhalla-server-run:latest
 ```
 
-The release `Dockerfile` (`.github/workflows/docker/Dockerfile`) is based on `ubuntu:24.04`, ships the prebuilt `server` binary, and exposes port **8080**.
+**Apple Container** (Apple Silicon Macs):
+
+```bash
+container run --rm -p 8080:8080 \
+  -e TOKEN_SECRET=change-me-to-a-long-random-string \
+  dr3mro/valhalla-server-run:latest
+```
+
+Then check it is up:
+
+```bash
+curl http://127.0.0.1:8080/api/v2/hello
+```
+
+The interactive API docs are at <http://127.0.0.1:8080/api/v2/doc>.
+
+**Pin a version** instead of `latest` (`latest` only tracks stable `vX.Y.Z` releases):
+
+```bash
+docker pull dr3mro/valhalla-server-run:v1.2.3
+container image pull dr3mro/valhalla-server-run:v1.2.3
+```
+
+**Run in the background, view logs, stop** (Docker shown; Apple Container uses the same `run -d`, `logs`, `stop` commands with `container` instead of `docker`):
+
+```bash
+docker run -d --name valhalla -p 8080:8080 -e TOKEN_SECRET=... dr3mro/valhalla-server-run:latest
+docker logs -f valhalla
+docker stop valhalla
+```
+
+**Settings.** Every variable in [Configuration](#configuration) can be passed with `-e`. Inside this image:
+
+| Variable | Default | Notes |
+|----------|---------|-------|
+| `TOKEN_SECRET` | *(insecure dev default)* | **Always set this** |
+| `DB_NAME` / `DB_USER` / `DB_PASS` | `postgres` / `postgres` / `postgres` | Created inside the container on start; any value works, quotes included |
+| `DB_HOST` | `127.0.0.1` | Fixed: the image always uses its bundled database |
+| `SERVER_PORT` | `8080` | If you change it, change the `-p` mapping to match, e.g. `-p 9000:9000 -e SERVER_PORT=9000` |
+| `FRONTEND_HOST` / `EMAIL_SENDER_HOST` | Docker-network IPs | Set these if you use invite links or email |
+
+Details:
+- The server runs as the non-root user `valhalla`; PostgreSQL only listens inside the container (`127.0.0.1`).
+- The image has a health check (`GET /api/v2/hello`), so `docker ps` shows `healthy` once it is ready, typically a few seconds after start.
+- If `TOKEN_SECRET` is not set, the container generates a random one on each start (and says so in the log) rather than using the insecure built-in default.
+
+**Build the image yourself** from the repository root:
+
+```bash
+docker build -f docker/Dockerfile -t valhalla-server-run:local .
+container build -f docker/Dockerfile -t valhalla-server-run:local .
+```
+
+The build compiles every C++ dependency from source on Alpine and runs the unit tests; the build fails if a test fails. The first build takes a long time; later builds reuse the cached dependency layer until `conanfile.txt` changes.
+
+**Release downloads.** Each GitHub Release also attaches `server-alpine-amd64.tar.gz` and `server-alpine-arm64.tar.gz`. These are built on Alpine (musl libc) and only run on Alpine-based systems; everywhere else use the Docker image, or [build from source](#build-from-source).
 
 ## Configuration
 
@@ -413,7 +476,8 @@ src/
 └── utils/              # Logging, caching, messaging, JSON helpers, thread-safe queue
 tests/                  # Catch2 test suite
 tools/conan/            # Conan helpers
-.github/workflows/      # CI (Ubuntu release build) + Docker packaging
+docker/                 # All-in-one Alpine image (Dockerfile + entrypoint)
+.github/workflows/      # Release CI: Alpine build + tests, GitHub Release, multi-arch Docker image
 ```
 
 ## Development
@@ -432,29 +496,3 @@ ctest --test-dir build/Debug
 ## Contributing
 
 Contributions are welcome. Please open an issue to discuss substantial changes first, keep commits focused, and run `clang-format` before submitting a pull request. See [`Todo.txt`](Todo.txt) for current work in progress.
-
-
-# Project Valhalla
-
-```
-pipx install conan 
-pipx ensurepath 
-
-conan profile detect --force
-
-conan install . --build=missing  -s build_type=Debug
-conan install . --build=missing  -s build_type=Release
-
-cmake -S. -Bbuild/Debug  -DCMAKE_BUILD_TYPE=Debug
-cmake -S. -Bbuild/Release  -DCMAKE_BUILD_TYPE=Release
-
-cmake --build build/Debug -j8
-cmake --build build/Release -j8
-
-```
-
-### Test docker
-
-```
-docker compose --profile run up --build
-```

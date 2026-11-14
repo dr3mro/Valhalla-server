@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Builds without .git (e.g. Docker) pass the version explicitly
+if [[ -n ${VALHALLA_VERSION:-} ]]; then
+	echo "-DGIT_TAG=\"${VALHALLA_VERSION}\""
+	exit 0
+fi
+
 # Try to get the exact tag
 current_tag=$(git describe --tags --exact-match 2>/dev/null)
 
