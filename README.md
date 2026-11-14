@@ -33,6 +33,7 @@ valhalla update    # newest image, same settings
 valhalla show      # follow the log
 valhalla psql      # SQL shell on the bundled database
 valhalla dump      # save the database (it's reset on every start)
+valhalla update --persist   # keep the database across stop/restart/update from now on
 valhalla test      # run the end-to-end API tests against it
 valhalla stop      # stop it; valhalla run starts it again
 valhalla help      # everything else
@@ -486,13 +487,15 @@ The installed copy has everything except `build`, which needs a full checkout of
 ./valhalla.sh clean           # remove the container and all local images of it
 ```
 
-Options go before or after the command: `--name`, `--port`, `--runtime`, `--env-file`, `-n`/`--dry-run` (see what `run`, `update`, `build`, `restore`, `secret`, `install` or `uninstall` would do) and `-y`/`--yes`. The first time you run it, it adds tab completion to `~/.zshrc` and/or `~/.bashrc`; open a new terminal to use it (set `VALHALLA_NO_COMPLETION=1` to skip).
+Options go before or after the command: `--name`, `--port`, `--runtime`, `--env-file`, `-n`/`--dry-run` (see what `run`, `update`, `build`, `restore`, `secret`, `install` or `uninstall` would do), `-y`/`--yes` and `-p`/`--persist` / `--no-persist` (see Persistence below). The first time you run it, it adds tab completion to `~/.zshrc` and/or `~/.bashrc`; open a new terminal to use it (set `VALHALLA_NO_COMPLETION=1` to skip).
 
 Each command first checks the tools it needs (`curl`, `python3` for Apple Container, `jq` for `test`, …) and lists any that are missing, with how to install them.
 
 Every `run`, `update` and `restart` waits until `/api/v2/hello` answers and prints the version line from the log.
 
 It passes every variable in `.env` to the container: the `.env` in the directory you run it from if there is one, otherwise the one next to the script (for the installed `valhalla`, `~/.local/share/valhalla/.env`). That way the server runs with the same settings as a native build, including `SERVER_THREADS` and `DB_MAX_CONN`; anything `.env` doesn't set falls back to the server's defaults (4 threads, 10 connections). Variables set in the shell win over `.env` for a single run (`SERVER_THREADS=4 ./valhalla.sh update`). Quoted values and spaces around `=` are fine. After editing `.env`, run `./valhalla.sh update` to apply it. Use another file with `VALHALLA_ENV_FILE=path`, or skip it with `VALHALLA_ENV_FILE=none`.
+
+**Persistence.** The bundled database starts empty on every container start. Add `--persist` once (`valhalla run --persist`, `valhalla update --persist`, or `VALHALLA_PERSIST=1` in `.env`) and the tool dumps the database to `dumps/<name>-persist.sql` before `stop`, `restart`, `update`, `build` and `delete`, and restores it after the container starts again (the previous dump is kept as `.prev`). The setting is stored in the container, so later commands remember it; `--no-persist` turns it off. If a save fails, nothing is stopped. `valhalla status` shows whether it's on and when the database was last saved. A dump from an older image is restored as is, so after an update that changes the schema, start fresh with `--no-persist` or restore by hand.
 
 Full help (`./valhalla.sh help`):
 
@@ -525,7 +528,7 @@ Inspect:
   env              Print the variables a new container would get (secrets
                    hidden), without changing anything.
   doc              Open the API docs in the browser (fails if not running).
-Database (reset on every start, so dump before restart/update):
+Database (reset on every start unless persistence is on, see --persist):
   psql             Open psql on the database inside the container.
   dump [file]      Save the database (default dumps/<name>-<time>.sql).
   restore <file>   Load a dump into the running container.
@@ -560,6 +563,11 @@ Options (before or after the command):
   -n, --dry-run        show what run/update/build/restore/secret/install/
                        uninstall would do
   -y, --yes            don't ask for confirmation
+  -p, --persist        keep the database across stop/restart/update/build/
+                       delete (see Persistence below); stored in the
+                       container, so later commands remember it
+  --no-persist         turn persistence off (with update/build: recreate
+                       without it)
   -h, --help           show this help
 
 Other settings (environment variables):
@@ -570,6 +578,16 @@ Other settings (environment variables):
                        source (default: <repo>-deps:<arch> from Docker Hub)
   VALHALLA_BUILD_MEMORY  build: Apple builder memory, GB (default 8)
   VALHALLA_NO_COMPLETION=1  don't add shell completion to ~/.zshrc/~/.bashrc
+  VALHALLA_PERSIST=1   same as --persist when a container is created (also
+                       works in the env file)
+
+Persistence: the bundled database starts empty on every container start.
+With persistence on, the database is dumped to dumps/<name>-persist.sql
+before stop, restart, update, build and delete, and restored after run,
+restart, update and build (the previous dump is kept as .prev). If saving
+fails, nothing is stopped. Turning it on (run/update --persist) restores an
+existing saved file, or saves the current data if there's none yet. Note:
+a dump from an older image is restored as is, over a newer schema.
 
 Runtime: Apple `container` if installed, otherwise docker.
 

@@ -27,7 +27,7 @@
 #   env              Print the variables a new container would get (secrets
 #                    hidden), without changing anything.
 #   doc              Open the API docs in the browser (fails if not running).
-# Database (reset on every start, so dump before restart/update):
+# Database (reset on every start unless persistence is on, see --persist):
 #   psql             Open psql on the database inside the container.
 #   dump [file]      Save the database (default dumps/<name>-<time>.sql).
 #   restore <file>   Load a dump into the running container.
@@ -62,6 +62,11 @@
 #   -n, --dry-run        show what run/update/build/restore/secret/install/
 #                        uninstall would do
 #   -y, --yes            don't ask for confirmation
+#   -p, --persist        keep the database across stop/restart/update/build/
+#                        delete (see Persistence below); stored in the
+#                        container, so later commands remember it
+#   --no-persist         turn persistence off (with update/build: recreate
+#                        without it)
 #   -h, --help           show this help
 #
 # Other settings (environment variables):
@@ -72,6 +77,16 @@
 #                        source (default: <repo>-deps:<arch> from Docker Hub)
 #   VALHALLA_BUILD_MEMORY  build: Apple builder memory, GB (default 8)
 #   VALHALLA_NO_COMPLETION=1  don't add shell completion to ~/.zshrc/~/.bashrc
+#   VALHALLA_PERSIST=1   same as --persist when a container is created (also
+#                        works in the env file)
+#
+# Persistence: the bundled database starts empty on every container start.
+# With persistence on, the database is dumped to dumps/<name>-persist.sql
+# before stop, restart, update, build and delete, and restored after run,
+# restart, update and build (the previous dump is kept as .prev). If saving
+# fails, nothing is stopped. Turning it on (run/update --persist) restores an
+# existing saved file, or saves the current data if there's none yet. Note:
+# a dump from an older image is restored as is, over a newer schema.
 #
 # Runtime: Apple `container` if installed, otherwise docker.
 #
@@ -170,6 +185,8 @@ fi
 ENV_FILE_EXPLICIT="${VALHALLA_ENV_FILE:+1}"
 DRY_RUN=0
 ASSUME_YES=0
+PERSIST=""     # --persist (1) / --no-persist (0); empty: keep the container's setting
+OLD_PERSIST="" # VALHALLA_PERSIST of the container being replaced
 
 # Commands: name|short description (single source for help-free tools such
 # as shell completion).
@@ -231,6 +248,8 @@ while [[ $# -gt 0 ]]; do
     --env-file=*) ENV_FILE="${1#*=}"; ENV_FILE_EXPLICIT=1; shift ;;
     -n | --dry-run) DRY_RUN=1; shift ;;
     -y | --yes) ASSUME_YES=1; shift ;;
+    -p | --persist) PERSIST=1; shift ;;
+    --no-persist) PERSIST=0; shift ;;
     -h | --help) ARGS=(help); break ;;
     --) shift; ARGS+=("$@"); break ;;
     -*) die "unknown option: $1 (see: $PROG help)" ;;
@@ -274,6 +293,8 @@ EOF
     '--env-file=[env file, or none]:file:_files'
     '(-n --dry-run)'{-n,--dry-run}'[show what would happen]'
     '(-y --yes)'{-y,--yes}'[do not ask for confirmation]'
+    '(-p --persist --no-persist)'{-p,--persist}'[keep the database across restarts]'
+    '(-p --persist --no-persist)--no-persist[turn persistence off]'
     '(-h --help)'{-h,--help}'[show help]'
   )
   local curcontext=$curcontext state line
@@ -309,7 +330,7 @@ _valhalla() {
   local cur prev words cword
   cur="${COMP_WORDS[COMP_CWORD]}"
   prev="${COMP_WORDS[COMP_CWORD-1]}"
-  local opts="--name --port --runtime --env-file --dry-run --yes --help -n -y -h"
+  local opts="--name --port --runtime --env-file --dry-run --yes --persist --no-persist --help -n -y -p -h"
 EOF
   printf '  local cmds="%s"\n' "$(command_names)"
   cat <<'EOF'
@@ -609,6 +630,90 @@ db_settings() {
   echo "${user:-postgres} ${db:-postgres} ${port:-5432}"
 }
 
+# ── persistence ────────────────────────────────────────────────────────────
+# With persistence on, the database is dumped to persist_file before the
+# container stops or is replaced, and restored after it starts. The setting
+# lives in the container as VALHALLA_PERSIST=1, so later commands remember it.
+persist_file() { echo "$ROOT/dumps/${NAME}-persist.sql"; }
+
+# persist_on: is persistence on for the existing container (or forced by flag)?
+persist_on() {
+  case "$PERSIST" in 1) return 0 ;; 0) return 1 ;; esac
+  [[ "$(container_env VALHALLA_PERSIST)" == 1 ]]
+}
+
+# persist_wanted: should the container about to be created persist?
+# --persist/--no-persist, else VALHALLA_PERSIST from the env file or shell,
+# else the replaced container's setting.
+persist_wanted() {
+  case "$PERSIST" in 1) return 0 ;; 0) return 1 ;; esac
+  local v
+  v="$(env_get VALHALLA_PERSIST || true)"
+  [[ -n ${VALHALLA_PERSIST:-} ]] && v="$VALHALLA_PERSIST"
+  [[ -n $v ]] || v="$OLD_PERSIST"
+  [[ $v == 1 ]]
+}
+
+# dump_to FILE: pg_dump of the bundled database into FILE (0 on success).
+dump_to() {
+  local file="$1" user db port
+  read -r user db port <<<"$(db_settings)"
+  mkdir -p "$(dirname "$file")"
+  if rt exec "$NAME" su-exec postgres pg_dump -p "$port" -U "$user" -d "$db" \
+    --clean --if-exists --no-owner --no-privileges >"$file" 2>/dev/null && [[ -s $file ]]; then
+    return 0
+  fi
+  rm -f "$file"
+  return 1
+}
+
+# restore_from FILE: loads FILE into the bundled database (0 on success).
+restore_from() {
+  local file="$1" user db port
+  read -r user db port <<<"$(db_settings)"
+  if [[ $RT == docker ]]; then
+    docker exec -i "$NAME" su-exec postgres psql -q -v ON_ERROR_STOP=1 -p "$port" -U "$user" -d "$db" <"$file" >/dev/null
+  else
+    container exec -i "$NAME" su-exec postgres psql -q -v ON_ERROR_STOP=1 -p "$port" -U "$user" -d "$db" <"$file" >/dev/null
+  fi
+}
+
+# persist_save: dumps the running database to persist_file (the previous
+# dump is kept as .prev). Dies if the dump fails, before anything is stopped.
+persist_save() {
+  is_running || return 0
+  local file
+  file="$(persist_file)"
+  [[ -f $file ]] && mv -f "$file" "$file.prev"
+  note "Saving the database to $file"
+  if ! dump_to "$file"; then
+    [[ -f $file.prev ]] && mv -f "$file.prev" "$file"
+    die "couldn't save the database, so nothing was stopped (use --no-persist to skip saving)"
+  fi
+}
+
+# save_before_replace: should recreate/plan save the running database first?
+# Yes if the old container persisted (unless --no-persist). When --persist
+# turns it on for a container that didn't persist, only if nothing is saved
+# yet: an existing saved file is what the new container restores.
+save_before_replace() {
+  [[ $PERSIST == 0 ]] && return 1
+  [[ $OLD_PERSIST == 1 ]] && return 0
+  [[ $PERSIST == 1 && ! -f "$(persist_file)" ]]
+}
+
+# persist_load: restores persist_file into the freshly started container.
+persist_load() {
+  local file
+  file="$(persist_file)"
+  if [[ ! -f $file ]]; then
+    note "Persistence is on; no saved database yet ($file)"
+    return 0
+  fi
+  note "Restoring the database from $file"
+  restore_from "$file" || note "warning: restoring $file failed; the database is the image's fresh one"
+}
+
 # ── env file ───────────────────────────────────────────────────────────────
 # load_env: parses ENV_FILE into ENV_KEYS/ENV_VALS. Later duplicates win.
 load_env() {
@@ -676,6 +781,11 @@ compose_env() {
   [[ -n ${DB_MAX_CONN:-} ]] && env_set DB_MAX_CONN "$DB_MAX_CONN"
   [[ -n ${MAX_REQUESTS:-} ]] && env_set MAX_REQUESTS "$MAX_REQUESTS"
   [[ -n ${MAX_FPS:-} ]] && env_set MAX_FPS "$MAX_FPS"
+  if persist_wanted; then
+    env_set VALHALLA_PERSIST 1
+  elif env_get VALHALLA_PERSIST >/dev/null || [[ -n $OLD_PERSIST ]]; then
+    env_set VALHALLA_PERSIST 0
+  fi
   if [[ -n ${TOKEN_SECRET:-} ]]; then
     env_set TOKEN_SECRET "$TOKEN_SECRET"
   elif ! env_get TOKEN_SECRET >/dev/null && [[ -n $fallback_secret ]]; then
@@ -725,11 +835,16 @@ create_container() {
 
 # plan_recreate <image> <action>: dry-run output for run/update/build.
 plan_recreate() {
+  OLD_PERSIST="$(container_env VALHALLA_PERSIST)"
   compose_env "$(old_secret)"
   echo "Dry run ($RT), nothing changed. Would:"
   echo "  $2"
+  if exists && is_running && save_before_replace; then
+    echo "  save the database to $(persist_file)"
+  fi
   exists && echo "  remove container $NAME"
   echo "  create $NAME from $1: port ${PORT}->$(env_get SERVER_PORT || echo 8080), ${CPUS} CPUs, ${MEMORY_GB} GB"
+  persist_wanted && echo "  restore the database from $(persist_file) (persistence on)"
   echo "  with these variables:"
   print_env | sed 's/^/    /'
 }
@@ -812,6 +927,9 @@ cmd_run() {
     fi
     note "Starting existing container $NAME"
     start_container
+    wait_healthy
+    persist_on && persist_load
+    return 0
   else
     if [[ $DRY_RUN == 1 ]]; then
       local action="use local image $image"
@@ -824,6 +942,28 @@ cmd_run() {
     create_container "$image"
   fi
   wait_healthy
+  persist_on && persist_load
+  return 0
+}
+
+# recreate <image>: replaces the container with one from <image>, keeping its
+# TOKEN_SECRET and, with persistence, its data.
+recreate() {
+  local image="$1" secret
+  secret="$(old_secret)"
+  OLD_PERSIST="$(container_env VALHALLA_PERSIST)"
+  if exists && save_before_replace; then
+    persist_save
+  elif exists && is_running && [[ $PERSIST == 1 && $OLD_PERSIST != 1 ]]; then
+    note "Turning persistence on: the new container gets the saved database $(persist_file);"
+    note "the current one isn't saved (run '$PROG dump' first to keep it)"
+  fi
+  note "Recreating container $NAME from $image"
+  remove_container
+  create_container "$image" "$secret"
+  wait_healthy
+  persist_on && persist_load
+  return 0
 }
 
 cmd_update() {
@@ -833,13 +973,8 @@ cmd_update() {
     plan_recreate "$image" "pull $image"
     return
   fi
-  local secret
-  secret="$(old_secret)"
   pull "$image"
-  note "Recreating container $NAME"
-  remove_container
-  create_container "$image" "$secret"
-  wait_healthy
+  recreate "$image"
 }
 
 cmd_build() {
@@ -863,18 +998,13 @@ cmd_build() {
   ensure_builder
   note "Building $image (version $version, deps: $deps)"
   rt "${args[@]}"
-
-  local secret
-  secret="$(old_secret)"
-  note "Recreating container $NAME from $image"
-  remove_container
-  create_container "$image" "$secret"
-  wait_healthy
+  recreate "$image"
 }
 
 cmd_stop() {
   require_exists
   if is_running; then
+    persist_on && persist_save
     stop_container
     echo "Stopped $NAME (start it again with: $PROG run)"
   else
@@ -884,14 +1014,25 @@ cmd_stop() {
 
 cmd_restart() {
   require_exists
-  note "Restarting $NAME (the database is reset)"
+  if persist_on; then
+    note "Restarting $NAME (persistence on: the database is saved and restored)"
+    persist_save
+  else
+    note "Restarting $NAME (the database is reset)"
+  fi
   is_running && stop_container
   start_container
   wait_healthy
+  persist_on && persist_load
+  return 0
 }
 
 cmd_delete() {
   if exists; then
+    if persist_on && is_running; then
+      persist_save
+      note "Kept $(persist_file); $PROG run --persist restores it"
+    fi
     remove_container
     echo "Removed container $NAME"
   else
@@ -930,6 +1071,17 @@ cmd_status() {
   echo "State:     ${st:-unknown}"
   echo "Image:     $(container_image)"
   echo "URL:       http://127.0.0.1:${PORT}  (docs: $DOC_URL)"
+  local pf
+  pf="$(persist_file)"
+  if persist_on; then
+    if [[ -f $pf ]]; then
+      echo "Persist:   on, last saved $(date -r "$pf" '+%Y-%m-%d %H:%M' 2>/dev/null || echo '?') ($pf)"
+    else
+      echo "Persist:   on, nothing saved yet ($pf)"
+    fi
+  else
+    echo "Persist:   off (the database is reset on every start; enable: $PROG update --persist)"
+  fi
   if [[ $st == running ]]; then
     if curl -fsS "$HEALTH_URL" >/dev/null 2>&1; then
       echo "Health:    answering at $HEALTH_URL"
@@ -1009,15 +1161,9 @@ cmd_psql() {
 
 cmd_dump() {
   require_running
-  local file="${1:-$ROOT/dumps/${NAME}-$(date +%Y%m%d-%H%M%S).sql}" user db port
-  read -r user db port <<<"$(db_settings)"
-  mkdir -p "$(dirname "$file")"
-  note "Dumping database $db from $NAME"
-  if ! rt exec "$NAME" su-exec postgres pg_dump -p "$port" -U "$user" -d "$db" \
-    --clean --if-exists --no-owner --no-privileges >"$file"; then
-    rm -f "$file"
-    die "pg_dump failed"
-  fi
+  local file="${1:-$ROOT/dumps/${NAME}-$(date +%Y%m%d-%H%M%S).sql}"
+  note "Dumping the database from $NAME"
+  dump_to "$file" || die "pg_dump failed"
   echo "Saved $(wc -c <"$file" | tr -d ' ') bytes to $file"
 }
 
@@ -1034,11 +1180,7 @@ cmd_restore() {
   fi
   confirm "Replace the contents of database $db in $NAME with $file?" || die "cancelled"
   note "Restoring $file into $db"
-  if [[ $RT == docker ]]; then
-    docker exec -i "$NAME" su-exec postgres psql -q -v ON_ERROR_STOP=1 -p "$port" -U "$user" -d "$db" <"$file" >/dev/null
-  else
-    container exec -i "$NAME" su-exec postgres psql -q -v ON_ERROR_STOP=1 -p "$port" -U "$user" -d "$db" <"$file" >/dev/null
-  fi
+  restore_from "$file" || die "restore failed"
   echo "Restored $file"
 }
 
