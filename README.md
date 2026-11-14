@@ -287,13 +287,43 @@ docker pull dr3mro/valhalla-server-run:v1.2.3
 container image pull dr3mro/valhalla-server-run:v1.2.3
 ```
 
-**Run in the background, view logs, stop** (Docker shown; Apple Container uses the same `run -d`, `logs`, `stop` commands with `container` instead of `docker`):
+**Give it a name to launch later.** Create the container once, with your settings, then start and stop it by name. Leave out `--rm`, or the container is deleted when it stops.
+
+Docker:
 
 ```bash
-docker run -d --name valhalla -p 8080:8080 -e TOKEN_SECRET=... dr3mro/valhalla-server-run:latest
-docker logs -f valhalla
-docker stop valhalla
+# one time: create it with your settings, without starting it
+docker create --name valhalla -p 8080:8080 \
+  -e TOKEN_SECRET=change-me-to-a-long-random-string \
+  dr3mro/valhalla-server-run:latest
+
+docker start valhalla         # launch (add -a to attach to its output)
+docker logs -f valhalla       # follow logs
+docker stop valhalla          # stop
+docker rm valhalla            # delete it, e.g. to change settings
 ```
+
+Apple Container (same commands):
+
+```bash
+container create --name valhalla -p 8080:8080 \
+  -e TOKEN_SECRET=change-me-to-a-long-random-string \
+  dr3mro/valhalla-server-run:latest
+
+container start valhalla
+container logs -f valhalla
+container stop valhalla
+container rm valhalla
+```
+
+- The name keeps everything you gave `create` (port, variables, image). To change any of it, `rm` the container and `create` it again.
+- The database is still wiped on every `start`, so a named container doesn't keep data between launches.
+- `start` reuses the image the container was created from. To upgrade, `docker pull dr3mro/valhalla-server-run:latest` (or `container image pull …`), then `rm` and `create` again.
+- If you'd rather type a single word, add a shell alias to `~/.zshrc` or `~/.bashrc`, then just run `valhalla` (Ctrl+C to stop):
+
+  ```bash
+  alias valhalla='docker run --rm -p 8080:8080 -e TOKEN_SECRET=change-me-to-a-long-random-string dr3mro/valhalla-server-run:latest'
+  ```
 
 **Settings.** Every variable in [Configuration](#configuration) can be passed with `-e`. Inside this image:
 
