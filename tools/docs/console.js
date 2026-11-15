@@ -26,12 +26,16 @@
   };
 
   /* ---------- session state ---------- */
-  function newSession() {
+  function freshState() {
     const run = String(Date.now()).slice(-6);
     state = {
       RUN: run, PROVIDER_USERNAME: 'provider' + run, PROVIDER_PASSWORD: '1234@Abc!', USER_USERNAME: 'user' + run,
       USER_PASSWORD: '123Mm@p0', DISP_PROVIDER: 'providerx' + run, DISP_USER: 'userx' + run,
     };
+    paintState();
+  }
+  function newSession() {
+    freshState();
     results = {};
     STEPS.forEach((s) => paintRow(s, null));
     paintState();
@@ -180,6 +184,9 @@
       if (s.cleanup && !withCleanup) { finish(s, { status: 'skip', note: 'clean-up not selected' }); continue; }
       await runStep(s.id, { auto: false });
     }
+    /* the clean-up deleted the accounts and records, so the saved ids and tokens are stale: forget them,
+       otherwise the benchmark (which reuses this state) logs in with an account that no longer exists */
+    if (withCleanup && !stopRequested) freshState();
     busy = false;
     setBusy(false);
     paintSummary(true);
