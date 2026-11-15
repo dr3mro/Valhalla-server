@@ -299,7 +299,7 @@ remove_files() {
   else
     say "🗑   Removed the tool from $target; kept your other files there:"
     for f in "$target"/* "$target"/.[!.]*; do
-      if [ -e "$f" ]; then say "  $(basename "$f")"; fi # unmatched globs stay literal
+      if [ -e "$f" ]; then say "  📁  $(basename "$f")"; fi # unmatched globs stay literal
     done
   fi
 }
