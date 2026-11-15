@@ -15,7 +15,7 @@
 #   --keep             leave the container running afterwards
 #   --smoke            short run (sweep 1 and 8 VUs for 5s, benchmark in SMOKE mode) to test the script
 #   --port N           host port for the container (default 18080)
-#   --runtime R        docker | podman | container (default docker)
+#   --runtime R        docker | container (default: valhalla.sh decides; env VALHALLA_RUNTIME also works)
 #   --duration D       time per sweep level (default 20s)
 #   --sweep "1 8 32"   VU levels for the sweep (default "1 8 32 128")
 # Env: BASE_URL (default http://127.0.0.1:<port>), PROVIDER_USER/PROVIDER_PASS, USER_NAME/USER_PASS,
@@ -26,7 +26,7 @@
 set -uo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-LABEL="baseline"; START=1; KEEP=0; SMOKE=0; PORT=18080; RUNTIME="${RUNTIME:-docker}"
+LABEL="baseline"; START=1; KEEP=0; SMOKE=0; PORT=18080; RUNTIME="${RUNTIME:-}"
 DURATION="20s"; SWEEP="1 8 32 128"
 NAME="perf-$$"
 while [[ $# -gt 0 ]]; do
@@ -54,7 +54,9 @@ for t in k6 curl jq; do command -v "$t" >/dev/null || { echo "error: $t is requi
 OUT_DIR="$ROOT/docs/perf"; RAW="$OUT_DIR/raw/$LABEL"; mkdir -p "$RAW"
 REPORT="$OUT_DIR/$LABEL.md"
 TMP="$(mktemp -d)"; STATS_PID=""
-V=("$ROOT/valhalla.sh" --runtime "$RUNTIME" --name "$NAME" --port "$PORT")
+V=("$ROOT/valhalla.sh")
+[[ -n $RUNTIME ]] && V+=(--runtime "$RUNTIME")
+V+=(--name "$NAME" --port "$PORT")
 
 cleanup() {
 	[[ -n $STATS_PID ]] && kill "$STATS_PID" 2>/dev/null
@@ -89,9 +91,10 @@ LOGIN="$(curl -sS -o /dev/null -w '%{http_code}' -H 'Content-Type: application/j
 export BASE_URL PROVIDER_USER PROVIDER_PASS USER_NAME USER_PASS
 
 # ---- 3. container stats sampler (one snapshot every 5 s, never a streaming call)
-if [[ $START == 1 ]] && command -v "$RUNTIME" >/dev/null; then
+if [[ $START == 1 && ( $RUNTIME == docker || ( -z $RUNTIME && -n $(command -v docker) ) ) ]]; then
+	RT="${RUNTIME:-docker}"
 	( while :; do
-		"$RUNTIME" stats --no-stream --format '{{.CPUPerc}} {{.MemUsage}}' "$NAME" 2>/dev/null | sed "s/^/$(date +%H:%M:%S) /"
+		"$RT" stats --no-stream --format '{{.CPUPerc}} {{.MemUsage}}' "$NAME" 2>/dev/null | sed "s/^/$(date +%H:%M:%S) /"
 		sleep 5
 	done ) >"$RAW/container-stats.txt" &
 	STATS_PID=$!
@@ -130,7 +133,7 @@ row() { # row <label> <json>
 	echo "- Date: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
 	echo "- Git: $(git -C "$ROOT" describe --always --dirty 2>/dev/null || echo unknown)"
 	echo "- Host: $(uname -srm), $(nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null) CPUs"
-	echo "- Target: $BASE_URL ($([[ $START == 1 ]] && echo "fresh $RUNTIME container, default settings" || echo "existing server"))"
+	echo "- Target: $BASE_URL ($([[ $START == 1 ]] && echo "fresh ${RUNTIME:-default-runtime} container, default settings" || echo "existing server"))"
 	echo "- Sweep: ${DURATION} per level, endpoint POST /clients/providers/read (auth + permission check + 1 DB read)"
 	[[ $SMOKE == 1 ]] && echo "- **Smoke run: numbers are not meaningful**"
 	echo
