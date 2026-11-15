@@ -286,6 +286,13 @@ TEST_CASE("Configurator exposes the configured singleton through Store", "[confi
         CHECK(config.acquire_timeout_ms == 3000);
     }
 
+    SECTION("DbExecutorConfig: tests run database work inline, the queue size is the default")
+    {
+        const auto& config = configurator->get<Configurator::DbExecutorConfig>();
+        CHECK(config.workers == 0);  // tests/support/global_env.cpp sets DB_WORKERS=0
+        CHECK(config.queue_max == Defaults::DbExecutor::QUEUE_MAX_);
+    }
+
     SECTION("PasswordWorkerConfig: tests run password work inline, other values are the defaults")
     {
         const auto& config = configurator->get<Configurator::PasswordWorkerConfig>();

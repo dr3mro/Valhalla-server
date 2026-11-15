@@ -182,6 +182,8 @@ k6 run --quiet --summary-export "$RAW/benchmark.json" "$ROOT/tools/k6/benchmark.
 
 # ---- 5b. login burst: do many simultaneous logins slow down plain reads?
 log "Login burst (reads alone, then reads while clients log in), about 40 seconds"
+# the mixed benchmark may have removed the provider account, so make sure it exists again (create is a no-op if it does)
+post /clients/providers/create "$PROVIDER_JSON" >/dev/null || true
 k6 run --quiet --summary-export "$RAW/login-burst.json" "$ROOT/tools/k6/login_burst.js" >"$RAW/login-burst.log" 2>&1 \
 	|| echo "   (k6 exited non-zero; see $RAW/login-burst.log)"
 

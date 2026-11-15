@@ -8,8 +8,6 @@ Completed: Steps 0-4 (all queries bound, detector archived in `archive/sqlinject
 
 ## Step 5: Connection pool behavior
 
-Done in code (not yet built or measured): `BlockingPool<T>` replaces the pool's own queue, `DB_ACQUIRE_TIMEOUT_MS` (default 3000) sets the wait, a timeout throws `DatabaseBusy` which becomes 503 with `Retry-After: 1` (controllers, login, Auth filter), `InUseGuard` is gone, `DatabaseHanndler` cannot be copied, the watchdog no longer spins when the pool is busy, and startup warns when `DB_MAX_CONN < SERVER_THREADS + 1`. Also fixed: `reconnect_all` used to wait for reconnects after releasing the pool lock; the three controller catch blocks that never answered now reply.
-
 Left to do:
 
 1. Build, run the unit tests (new: `test_blockingpool.cpp`, `test_database_busy.cpp`, busy-login test, config default).
@@ -20,41 +18,38 @@ Done when: a run at the highest concurrency with the recommended pool size shows
 
 ## Step 6: Take scrypt off the event loop
 
-Done in code (not yet built or measured): login runs its database reads on the request thread, then submits "verify password, write `last_login`, issue token, answer" to a bounded `PasswordWorker` (`PASSWORD_WORKERS` default 2, `PASSWORD_QUEUE_MAX` default 64; 0 workers = inline, which the unit tests use). A wrong password no longer updates the session row. Client create and update (which hash the password) run on the same worker. A full queue answers 503 with `Retry-After`. `executeControllerMethod` now captures the response callback by value, because answers can come from another thread after the handler returned. The k6 script `tools/k6/login_burst.js` runs reads alone, then reads during a login burst, and `perf_baseline.sh` reports both.
-
 Left to do:
 
 1. Build and run the unit tests (new: `test_passwordworker.cpp`, session-manager split tests, wrong-password-writes-nothing tests, config check).
 2. Run `tools/perf_baseline.sh --reset-db` and compare "reads alone" with "reads during login burst" in the new report section; read p99 should stay close. Check the server log for 503s during the burst; if there are many, raise `PASSWORD_WORKERS`/`PASSWORD_QUEUE_MAX` (keep workers below `DB_MAX_CONN`).
 3. Run the login/logout API tests and `sqlmap_test.sh`.
-4. Done in code: new passwords are hashed with Argon2id at the OWASP minimum (19 MiB, 2 passes) instead of scrypt at the test-only minimum. `verifyPassword` reads the algorithm from the stored string, so existing scrypt hashes still log in. Run the burst test with this in place (the benchmark seeds new users, so they get Argon2id) and size `PASSWORD_WORKERS` from the measured cost per login.
-5. The global rate limit (`MAX_REQUESTS` per `PERIOD`) is the only brake on password guessing; consider a stricter limit for the login route.
+4. The global rate limit (`MAX_REQUESTS` per `PERIOD`) is the only brake on password guessing; consider a stricter limit for the login route.
 
 Done when: p99 of a read endpoint stays flat while a burst of logins runs, and a failed login leaves the session row untouched.
 
 ## Step 7: Stop blocking IO threads on the database (largest change)
 
-Handlers call libpqxx synchronously, so each of the `SERVER_THREADS` (default 4) threads is blocked for the full duration of every DB call, and a slow query stalls all unrelated requests that share the thread.
+Implemented with approach A (libpqxx on a bounded `DbExecutor`; the Drogon async client was rejected as too large a rewrite). Left to do:
 
-Pick one approach:
+1. Build and run the unit tests (new: `tests/concurrency/test_boundedexecutor.cpp`, `DbExecutorConfig` check); run the API tests and `sqlmap_test.sh`.
+2. Add a slow-query scenario to `tools/perf_baseline.sh` (a few VUs on a `pg_sleep`-style endpoint while others read) and check that read p99 stays flat.
+3. Run `tools/perf_baseline.sh` as Stage 6 and compare with Stage 5; the mixed-run drop seen in Stage 5 (14.2k to 10.2k req/s) should be explained or recovered.
+4. Tune `DB_WORKERS` (default `DB_MAX_CONN`) and `DB_QUEUE_MAX` (default 256).
+5. Check shutdown order: `DbExecutor` must drain and join before the connection pool is destroyed.
+6. Check that replying from a worker thread works with the `ElapsedTime` middleware and the Drogon callbacks under load.
+7. Add a handler-level test for the queue-full 503.
 
-- **A (smaller change):** keep libpqxx but run all DB work on a separate worker pool sized to the connection pool; the handler returns immediately and the callback is invoked from the worker. The controller APIs already take callbacks, so this fits the current design.
-- **B (larger change):** switch to Drogon's async DB client (`drogon::orm::DbClient`) with a connection count matching `DB_MAX_CONN`, which gives non-blocking queries and built-in pipelining.
-
-Steps for A:
-1. Introduce a `DbExecutor` (thread pool plus bounded queue) in `DatabaseController::executer`.
-2. Make the queue bounded and return 503 when full, so overload degrades gracefully.
-3. Keep the permission check, query and response in one task to avoid extra thread hops.
-4. Raise `SERVER_THREADS` only if profiling shows IO threads are busy with non-DB work.
-
-Done when: throughput scales with DB pool size instead of server thread count, and slow queries no longer raise latency of unrelated endpoints.
+Done when: throughput scales with `DB_WORKERS` and the pool size instead of `SERVER_THREADS`, a slow query no longer raises the latency of unrelated endpoints, overload returns 503 quickly, and the Stage 6 numbers are recorded.
 
 ## Step 8: Query-level tuning
 
-1. Use prepared statements (`pqxx::connection::prepare`) for the hot, fixed queries (login lookup, permission lookups, CRUD by id) so Postgres does not re-plan them each time.
-2. Check `EXPLAIN ANALYZE` for the search and permission queries and add the missing indexes (foreign keys, username, group/owner ids). Put new indexes in `init.sql` and the schema migration path.
-3. Search: avoid `OFFSET` for deep pages (keyset pagination) and keep the `limit + 1` trick.
-4. Return only the needed columns in list/search responses.
+Do Step 7's verification and the Stage 6 run first, so a Step 8 change cannot be confused with a Step 7 regression.
+
+1. Measure first: enable `pg_stat_statements`, seed far more rows than the benchmark does (indexes and sequential scans do not show on small tables), run `tools/perf_baseline.sh`, and list the top queries by total time and mean time. Items 2-5 only touch queries that appear there.
+2. Use prepared statements (`pqxx::connection::prepare`) for the hot, fixed queries (login lookup, permission lookups, CRUD by id) so Postgres does not re-plan them each time. Dynamic search queries (variable filters and ordering) stay unprepared.
+3. Check `EXPLAIN ANALYZE` for the search and permission queries and add the missing indexes (foreign keys, username, group/owner ids). Put new indexes in `init.sql` and the schema migration path.
+4. Search: avoid `OFFSET` for deep pages (keyset pagination) and keep the `limit + 1` trick.
+5. Return only the needed columns in list/search responses.
 
 Done when: `pg_stat_statements` shows the top queries with low mean time and no sequential scans on large tables.
 

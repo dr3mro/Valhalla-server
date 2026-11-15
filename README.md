@@ -673,7 +673,7 @@ the first of: .env in the current directory, .env next to this script,
 for a small local container: SERVER_THREADS=2, DB_MAX_CONN=2, and raised
 MAX_REQUESTS/MAX_FPS so the API docs' Benchmark and Test console panels
 don't get your IP rate-limited. Edit it freely; it's kept on update.
-MAX_REQUESTS, MAX_FPS, PERMISSION_CACHE_TTL, DB_ACQUIRE_TIMEOUT_MS, PASSWORD_WORKERS, PASSWORD_QUEUE_MAX, TOKEN_SECRET, SERVER_THREADS and DB_MAX_CONN set in
+MAX_REQUESTS, MAX_FPS, PERMISSION_CACHE_TTL, DB_ACQUIRE_TIMEOUT_MS, PASSWORD_WORKERS, PASSWORD_QUEUE_MAX, DB_WORKERS, DB_QUEUE_MAX, TOKEN_SECRET, SERVER_THREADS and DB_MAX_CONN set in
 the shell win over the env file for one run (e.g. SERVER_THREADS=4
 ./valhalla.sh update). Variables set nowhere aren't passed, so the server
 uses its own defaults (in brackets below).
@@ -708,6 +708,9 @@ Server variables the image understands (server default in brackets):
   Passwords (hashing runs on its own threads, never on request threads)
     PASSWORD_WORKERS      threads for hashing/login checks, keep < DB_MAX_CONN [2]
     PASSWORD_QUEUE_MAX    waiting operations before new ones get 503      [64]
+  Database executor (blocking database work runs here, never on request threads)
+    DB_WORKERS            threads for database work [DB_MAX_CONN]
+    DB_QUEUE_MAX          waiting requests before new ones get 503 [256]
   Server
     SERVER_HOST           listen address (keep 0.0.0.0)         [0.0.0.0]
     SERVER_PORT           listen port inside the container      [8080]
@@ -787,6 +790,8 @@ All configuration is supplied through environment variables; defaults live in `s
 | -------------------- | ------- | ---------------------------------------------------------------------------------------------------- |
 | `PASSWORD_WORKERS`   | `2`     | Threads that hash and verify passwords (Argon2id), so request threads are never blocked; keep it below `DB_MAX_CONN`; `0` runs on the request thread |
 | `PASSWORD_QUEUE_MAX` | `64`    | Password operations that may wait for a worker; further ones get `503` with `Retry-After`            |
+| `DB_WORKERS`         | `DB_MAX_CONN` | Threads that run the blocking database work (permission check, query), so request threads are never blocked by a slow query; `0` runs on the request thread |
+| `DB_QUEUE_MAX`       | `256`   | Requests that may wait for a database worker; further ones get `503` with `Retry-After`              |
 
 ### Authentication (JWT)
 

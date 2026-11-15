@@ -90,6 +90,11 @@ namespace Defaults
         const uint32_t QUEUE_MAX_ = 64;  // waiting password operations before new ones get 503
     }  // namespace PasswordWorker
 
+    namespace DbExecutor
+    {
+        const uint32_t QUEUE_MAX_ = 256;  // waiting database requests before new ones get 503 (workers default to DB_MAX_CONN)
+    }  // namespace DbExecutor
+
     namespace Testing
     {
         const bool VALHALLA_TEST_NO_DB_ = false;

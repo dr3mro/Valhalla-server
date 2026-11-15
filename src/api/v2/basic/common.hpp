@@ -14,10 +14,14 @@
 #include <optional>
 #include <string>
 #include <string_view>
+#include <tuple>
+#include <type_traits>
 #include <utility>
 
 #include "api/v2/helper/helper.hpp"
 #include "database/databasebusy.hpp"
+#include "database/dbexecutor.hpp"
+#include "store/store.hpp"
 #include "utils/global/callback.hpp"
 #include "utils/global/http.hpp"
 #include "utils/global/requester.hpp"
@@ -52,56 +56,70 @@ namespace api::v2
         }
     }
 
+    // Runs the controller method on the database executor, so the blocking permission check and query never hold a Drogon IO
+    // thread. The request, the arguments and the response callback are captured by value, because the work finishes after
+    // this function has returned, on another thread. A full queue is answered with 503 right here.
     template <typename Func, typename Registry, typename... Args>
     static void executeControllerMethod(const Registry& registry, const std::string_view key, Func method, const drogon::HttpRequestPtr& req,
         std::function<void(const drogon::HttpResponsePtr&)>&& callback, Args&&... args)
     {
         auto ctl = registry.find(key);
-        if (ctl != registry.end())
-        {
-            try
-            {
-                std::visit(
-                    [&](const auto& controller)
-                    {
-                        // The controller may answer later, from another thread (password work runs on a worker), after this
-                        // function has returned, so the response callback is captured by value, never by reference.
-                        CALLBACK_ mcb = [callback](int code, const std::string& content)
-                        {
-                            using Reply = std::function<void(const drogon::HttpResponsePtr&)>;
-                            switch (code)
-                            {
-                                case api::v2::Http::Status::OK:
-                                    Helper::successResponse(content, Reply(callback));
-                                    break;
-                                case api::v2::Http::Status::INTERNAL_SERVER_ERROR:
-                                    Helper::failureResponse(content, Reply(callback));
-                                    break;
-                                default:
-                                    Helper::errorResponse(static_cast<drogon::HttpStatusCode>(code), content, Reply(callback));
-                                    break;
-                            }
-                        };
-
-                        Requester requester(req->getAttributes()->get<uint64_t>("clientID"), req->getAttributes()->get<std::string>("clientGroup"));
-
-                        std::invoke(method, controller.get(), std::move(mcb), std::move(requester), std::forward<Args>(args)...);
-                        return;
-                    },
-                    ctl->second);
-            }
-            catch (const DatabaseBusy& e)
-            {
-                Helper::errorResponse(drogon::k503ServiceUnavailable, e.what(), std::move(callback));
-            }
-            catch (const std::exception& e)
-            {
-                Helper::failureResponse(e.what(), std::move(callback));
-            }
-        }
-        else
+        if (ctl == registry.end())
         {
             Helper::errorResponse(drogon::k400BadRequest, fmt::format("Type mapping not found for: {}", key), std::move(callback));
+            return;
+        }
+
+        try
+        {
+            std::visit(
+                [&](const auto& controller)
+                {
+                    CALLBACK_ mcb = [callback](int code, const std::string& content)
+                    {
+                        using Reply = std::function<void(const drogon::HttpResponsePtr&)>;
+                        switch (code)
+                        {
+                            case api::v2::Http::Status::OK:
+                                Helper::successResponse(content, Reply(callback));
+                                break;
+                            case api::v2::Http::Status::INTERNAL_SERVER_ERROR:
+                                Helper::failureResponse(content, Reply(callback));
+                                break;
+                            default:
+                                Helper::errorResponse(static_cast<drogon::HttpStatusCode>(code), content, Reply(callback));
+                                break;
+                        }
+                    };
+
+                    // Read what the handler needs from the request now; the rest runs on a worker.
+                    Requester requester(req->getAttributes()->get<uint64_t>("clientID"), req->getAttributes()->get<std::string>("clientGroup"));
+
+                    static const std::shared_ptr<DbExecutor> executor = Store::getObject<DbExecutor>();
+
+                    runOnDbExecutor(*executor, std::move(mcb),
+                        [method, target = controller.get(), req, callback, requester = std::move(requester), packed = std::make_tuple(std::decay_t<Args>(args)...)](
+                            CALLBACK_&& cb) mutable
+                        {
+                            try
+                            {
+                                std::apply([&](auto&... unpacked) { std::invoke(method, target, std::move(cb), std::move(requester), unpacked...); }, packed);
+                            }
+                            catch (const DatabaseBusy& e)
+                            {
+                                Helper::errorResponse(drogon::k503ServiceUnavailable, e.what(), std::move(callback));
+                            }
+                            catch (const std::exception& e)
+                            {
+                                Helper::failureResponse(e.what(), std::move(callback));
+                            }
+                        });
+                },
+                ctl->second);
+        }
+        catch (const std::exception& e)
+        {
+            Helper::failureResponse(e.what(), std::move(callback));
         }
     }
 }  // namespace api::v2

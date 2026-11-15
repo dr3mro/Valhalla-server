@@ -209,7 +209,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -392,7 +392,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -566,7 +566,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -802,7 +802,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1068,7 +1068,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1344,7 +1344,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1593,7 +1593,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1916,7 +1916,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -2163,7 +2163,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -2413,7 +2413,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -2663,7 +2663,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -2847,7 +2847,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -3021,7 +3021,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -3257,7 +3257,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -3523,7 +3523,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -3798,7 +3798,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -4047,7 +4047,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -4349,7 +4349,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -4600,7 +4600,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -4850,7 +4850,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -5100,7 +5100,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -5397,7 +5397,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -5672,7 +5672,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -5981,7 +5981,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -6230,7 +6230,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -6521,7 +6521,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -6812,7 +6812,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -7084,7 +7084,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -7389,7 +7389,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -7638,7 +7638,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -7927,7 +7927,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -8218,7 +8218,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -8490,7 +8490,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -8795,7 +8795,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -9044,7 +9044,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -9333,7 +9333,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -9624,7 +9624,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -9896,7 +9896,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -10201,7 +10201,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -10450,7 +10450,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -10713,7 +10713,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -10982,7 +10982,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -11244,7 +11244,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -11526,7 +11526,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -11775,7 +11775,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -12054,7 +12054,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -12308,7 +12308,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -12638,7 +12638,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -12930,7 +12930,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -13272,7 +13272,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -13510,7 +13510,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -13822,7 +13822,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -14105,7 +14105,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -14429,7 +14429,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -14667,7 +14667,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -14947,7 +14947,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -15214,7 +15214,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -15506,7 +15506,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -15744,7 +15744,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -16035,7 +16035,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -16308,7 +16308,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -16611,7 +16611,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -16860,7 +16860,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -17140,7 +17140,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -17407,7 +17407,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -17699,7 +17699,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -17937,7 +17937,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -18249,7 +18249,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -18532,7 +18532,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -18856,7 +18856,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -19094,7 +19094,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -19370,7 +19370,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -19635,7 +19635,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -19923,7 +19923,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -20161,7 +20161,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -20446,7 +20446,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -20729,7 +20729,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -21028,7 +21028,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -21277,7 +21277,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -21520,7 +21520,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -21782,7 +21782,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
@@ -22045,7 +22045,7 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many requests were already waiting for a database worker (`DB_QUEUE_MAX`), or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {

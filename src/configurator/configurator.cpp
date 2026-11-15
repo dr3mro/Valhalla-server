@@ -47,6 +47,12 @@ Configurator::PasswordWorkerConfig& Configurator::get<Configurator::PasswordWork
 }
 
 template <>
+Configurator::DbExecutorConfig& Configurator::get<Configurator::DbExecutorConfig>()
+{
+    return db_executor_config_;
+}
+
+template <>
 Configurator::EmailSenderConfig& Configurator::get<Configurator::EmailSenderConfig>()
 {
     return email_sender_config_;

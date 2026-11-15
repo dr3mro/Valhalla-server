@@ -2,27 +2,27 @@
 
   █ TOTAL RESULTS 
 
-    checks_total.......: 466150  23293.736896/s
-    checks_succeeded...: 100.00% 466150 out of 466150
-    checks_failed......: 0.00%   0 out of 466150
+    checks_total.......: 456436  22807.373196/s
+    checks_succeeded...: 100.00% 456436 out of 456436
+    checks_failed......: 0.00%   0 out of 456436
 
     ✓ read 200
 
     HTTP
-    http_req_duration..............: avg=315.2µs  min=148µs    med=305µs    p(90)=388µs    p(95)=420µs    p(99)=553µs    max=11.02ms
-      { expected_response:true }...: avg=315.2µs  min=148µs    med=305µs    p(90)=388µs    p(95)=420µs    p(99)=553µs    max=11.02ms
-    http_req_failed................: 0.00%  0 out of 466151
-    http_reqs......................: 466151 23293.786866/s
+    http_req_duration..............: avg=322.79µs min=144µs    med=304µs    p(90)=416µs    p(95)=473µs    p(99)=660µs   max=66.34ms
+      { expected_response:true }...: avg=322.79µs min=144µs    med=304µs    p(90)=416µs    p(95)=473µs    p(99)=660µs   max=66.34ms
+    http_req_failed................: 0.00%  0 out of 456437
+    http_reqs......................: 456437 22807.423164/s
 
     EXECUTION
-    iteration_duration.............: avg=340.78µs min=159.37µs med=329.66µs p(90)=415.66µs p(95)=449.95µs p(99)=604.77µs max=5.77ms 
-    iterations.....................: 466150 23293.736896/s
+    iteration_duration.............: avg=348.16µs min=157.83µs med=328.87µs p(90)=443.87µs p(95)=501.83µs p(99)=697.7µs max=66.37ms
+    iterations.....................: 456436 22807.373196/s
     vus............................: 8      min=8           max=8
     vus_max........................: 8      min=8           max=8
 
     NETWORK
-    data_received..................: 366 MB 18 MB/s
-    data_sent......................: 235 MB 12 MB/s
+    data_received..................: 358 MB 18 MB/s
+    data_sent......................: 230 MB 12 MB/s
 
 
 

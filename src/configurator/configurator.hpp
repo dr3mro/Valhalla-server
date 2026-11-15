@@ -33,6 +33,7 @@ class Configurator
         email_sender_config_.printValues();
         permission_cache_config_.printValues();
         password_worker_config_.printValues();
+        db_executor_config_.printValues();
     }
 
     using DOSDetectorConfig = struct DOSDetectorConfig : public EnvLoader
@@ -277,6 +278,37 @@ class Configurator
         }
     };
 
+    using DbExecutorConfig = struct DbExecutorConfig : public EnvLoader
+    {
+        uint16_t workers;    // 0 runs database work on the request thread (tests)
+        uint32_t queue_max;  // queued requests before a new one is refused with 503
+
+        DbExecutorConfig()
+            : workers(defaultWorkers()),
+              queue_max(getEnvironmentVariable("DB_QUEUE_MAX", Defaults::DbExecutor::QUEUE_MAX_))
+        {
+            workers = getEnvironmentVariable("DB_WORKERS", workers);
+        }
+
+        void printValues() const override
+        {
+            Message::ConfMessage("------------------------------------------------");
+            Message::ConfMessage("---------------DB Executor Config---------------");
+            Message::ConfMessage("------------------------------------------------");
+            Message::ConfMessage(fmt::format("DB workers: {}", workers));
+            Message::ConfMessage(fmt::format("DB queue max: {}", queue_max));
+        }
+
+       private:
+        // One worker per database connection, using the same pool size the connection pool will use.
+        uint16_t defaultWorkers()
+        {
+            auto pool = static_cast<uint16_t>(getEnvironmentVariable("DB_MAX_CONN", static_cast<uint16_t>(Defaults::Database::DB_MAX_CONN_)));
+            optimize_performance(pool, 5);
+            return pool;
+        }
+    };
+
     using Testing = struct Testing : public EnvLoader
     {
        public:
@@ -307,5 +339,6 @@ class Configurator
     EmailSenderConfig      email_sender_config_;
     PermissionCacheConfig  permission_cache_config_;
     PasswordWorkerConfig   password_worker_config_;
+    DbExecutorConfig       db_executor_config_;
     Testing                testing_;
 };
