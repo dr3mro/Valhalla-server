@@ -9,9 +9,9 @@ class DatabaseHanndler
 {
    public:
     DatabaseHanndler();
-    DatabaseHanndler(const DatabaseHanndler&)            = default;
+    DatabaseHanndler(const DatabaseHanndler&)            = delete;
     DatabaseHanndler(DatabaseHanndler&&)                 = delete;
-    DatabaseHanndler& operator=(const DatabaseHanndler&) = default;
+    DatabaseHanndler& operator=(const DatabaseHanndler&) = delete;
     DatabaseHanndler& operator=(DatabaseHanndler&&)      = delete;
     virtual ~DatabaseHanndler();
 

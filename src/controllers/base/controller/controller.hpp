@@ -170,7 +170,7 @@ class Controller
         }
         catch (const std::exception& e)
         {
-            CRITICALMESSAGE
+            CRITICALMESSAGERESPONSE
         }
     }
 
@@ -195,7 +195,7 @@ class Controller
         }
         catch (const std::exception& e)
         {
-            CRITICALMESSAGE
+            CRITICALMESSAGERESPONSE
         }
     }
 
@@ -239,7 +239,7 @@ class Controller
         }
         catch (const std::exception& e)
         {
-            CRITICALMESSAGE
+            CRITICALMESSAGERESPONSE
         }
     }
 

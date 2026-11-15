@@ -15,6 +15,7 @@
 #include <utility>
 
 #include "configurator/configurator.hpp"
+#include "database/databasebusy.hpp"
 #include "database/databasehandler.hpp"
 #include "store/store.hpp"
 #include "utils/global/types.hpp"
@@ -82,9 +83,13 @@ class DatabaseController
 
             return std::nullopt;
         }
+        catch (const DatabaseBusy&)
+        {
+            throw;  // the pool is exhausted: callers answer 503 instead of treating it as a failed query
+        }
         catch (const std::exception& e)
         {
-            Message::CriticalMessage(fmt::format("Exception occurred during query execution.", e.what()));
+            Message::CriticalMessage(fmt::format("Exception occurred during query execution: {}", e.what()));
             return std::nullopt;
         }
         catch (...)

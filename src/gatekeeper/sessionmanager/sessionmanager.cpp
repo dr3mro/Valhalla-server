@@ -15,6 +15,7 @@
 #include <utility>
 #include <utils/jsonhelper/jsonhelper.hpp>
 
+#include "database/databasebusy.hpp"
 #include "gatekeeper/types.hpp"
 #include "utils/global/callback.hpp"
 #include "utils/global/global.hpp"
@@ -79,6 +80,10 @@ bool SessionManager::login(const std::optional<Types::Credentials>& credentials,
             return false;
         }
     }
+    catch (const DatabaseBusy&)
+    {
+        throw;
+    }
     catch (const std::exception& e)
     {
         message += fmt::format("Error: {}", e.what());
@@ -113,7 +118,7 @@ void SessionManager::logout(CALLBACK_&& callback, std::optional<Types::ClientLog
     }
     catch (const std::exception& e)
     {
-        std::move(callback)(api::v2::Http::Status::INTERNAL_SERVER_ERROR, e.what());
+        std::move(callback)(api::v2::Http::statusForException(e), e.what());
         CRITICALMESSAGE
     }
 }
@@ -138,6 +143,10 @@ bool SessionManager::clientHasValidSession(std::optional<Types::ClientLoginData>
             return true;
         }
     }
+    catch (const DatabaseBusy&)
+    {
+        throw;
+    }
     catch (const std::exception& e)
     {
         message = fmt::format("Error storing session:{}", e.what());
@@ -158,6 +167,10 @@ bool SessionManager::storeSession(std::optional<Types::ClientLoginData>& clientL
         std::string key = fmt::format("{}_{}", clientLoginData->group.value(), clientLoginData->clientId.value());
         clientsSessionsList->insert(key, clientLoginData.value(), std::chrono::duration_cast<std::chrono::seconds>(clientLoginData->expireTime));
         return true;
+    }
+    catch (const DatabaseBusy&)
+    {
+        throw;
     }
     catch (const std::exception& e)
     {
@@ -191,6 +204,10 @@ bool SessionManager::removeSession(std::optional<Types::ClientLoginData>& client
         std::string key = fmt::format("{}_{}", clientLoginData->group.value(), clientLoginData->clientId.value());
         clientsSessionsList->remove(key);
         return true;
+    }
+    catch (const DatabaseBusy&)
+    {
+        throw;
     }
     catch (const std::exception& e)
     {

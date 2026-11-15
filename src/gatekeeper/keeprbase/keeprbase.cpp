@@ -14,6 +14,7 @@
 #include <stdexcept>
 #include <string>
 
+#include "database/databasebusy.hpp"
 #include "gatekeeper/types.hpp"
 #include "utils/global/global.hpp"
 #include "utils/message/message.hpp"
@@ -63,6 +64,10 @@ bool KeeprBase::getLastLogoutTimeIfActive(std::optional<Types::ClientLoginData>&
         }
         return false;
     }
+    catch (const DatabaseBusy&)
+    {
+        throw;
+    }
     catch (std::exception& e)
     {
         CRITICALMESSAGE
@@ -110,6 +115,10 @@ bool KeeprBase::setNowLoginTimeGetLastLogoutTime(std::optional<Types::ClientLogi
         }
         return true;
     }
+    catch (const DatabaseBusy&)
+    {
+        throw;
+    }
     catch (const std::exception& e)
     {
         Message::ErrorMessage("Error updating login time.");
@@ -144,6 +153,10 @@ void KeeprBase::setNowLogoutTime(uint64_t _id, const std::string& _group)
         {
             Message::CriticalMessage("Error updating login time.");
         }
+    }
+    catch (const DatabaseBusy&)
+    {
+        throw;
     }
     catch (const std::exception& e)
     {
@@ -217,6 +230,10 @@ bool KeeprBase::decodeToken(
 
         return true;
     }
+    catch (const DatabaseBusy&)
+    {
+        throw;
+    }
     catch (const std::exception& e)
     {
         message = fmt::format("Error storing session:{}", e.what());
@@ -255,6 +272,10 @@ bool KeeprBase::validateToken(
         message = fmt::format("Token verification failed:{}", e.what());
         Message::CriticalMessage(message);
         return false;
+    }
+    catch (const DatabaseBusy&)
+    {
+        throw;
     }
     catch (const std::exception& e)
     {

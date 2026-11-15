@@ -8,6 +8,7 @@
 #include <unordered_set>
 
 #include "controllers/databasecontroller/databasecontroller.hpp"
+#include "database/databasebusy.hpp"
 #include "store/store.hpp"
 #include "utils/global/types.hpp"
 
@@ -30,29 +31,63 @@ class FakeDatabaseController : public DatabaseController
     std::optional<std::unordered_set<std::string>>         tables_result;
     std::optional<jsoncons::json>                          permissions_result;
 
-    std::optional<jsoncons::json> executeQuery(const std::string&, const pqxx::params& = {}) override { return query_result; }
+    /// When true every query throws DatabaseBusy, like a pool whose wait timed out.
+    bool busy = false;
+
+    std::optional<jsoncons::json> executeQuery(const std::string&, const pqxx::params& = {}) override
+    {
+        throwIfBusy();
+        return query_result;
+    }
 
     std::optional<jsoncons::json> executeReadQuery(const std::string&, const pqxx::params& = {}) override
     {
+        throwIfBusy();
         return read_result;
     }
 
     std::optional<jsoncons::json::array> executeSearchQuery(const std::string&, const pqxx::params& = {}) override
     {
+        throwIfBusy();
         return search_result;
     }
 
-    std::optional<std::string> doReadQuery(const std::string&, const pqxx::params& = {}) override { return do_read_result; }
+    std::optional<std::string> doReadQuery(const std::string&, const pqxx::params& = {}) override
+    {
+        throwIfBusy();
+        return do_read_result;
+    }
 
-    std::optional<bool> checkItemExists(const std::string&, const std::string&, const std::string&) override { return exists_result; }
+    std::optional<bool> checkItemExists(const std::string&, const std::string&, const std::string&) override
+    {
+        throwIfBusy();
+        return exists_result;
+    }
 
-    std::optional<jsoncons::json> getPasswordHashForUserName(const std::string&, const std::string&) override { return password_result; }
+    std::optional<jsoncons::json> getPasswordHashForUserName(const std::string&, const std::string&) override
+    {
+        throwIfBusy();
+        return password_result;
+    }
 
     std::optional<std::unordered_set<api::v2::ColumnInfo>> getTableSchema(const std::string&) override { return schema_result; }
 
     std::optional<std::unordered_set<std::string>> getAllTables() override { return tables_result; }
 
-    std::optional<jsoncons::json> getPermissions(const std::string&) override { return permissions_result; }
+    std::optional<jsoncons::json> getPermissions(const std::string&) override
+    {
+        throwIfBusy();
+        return permissions_result;
+    }
+
+   private:
+    void throwIfBusy() const
+    {
+        if (busy)
+        {
+            throw DatabaseBusy();
+        }
+    }
 };
 
 /// RAII guard: injects a fake DatabaseController into the Store for the

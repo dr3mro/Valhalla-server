@@ -2,28 +2,54 @@
 
 Findings from a read-through of the request path (Drogon handler -> GateKeeper -> Controller -> DatabaseController -> Database/libpqxx). Steps are ordered: measure first, then cheap and low-risk wins, then structural changes. Re-measure after every step and keep a change only if the numbers improve.
 
-Key files: `src/controllers/base/controller/controller.hpp`, `src/controllers/databasecontroller/databasecontroller.{hpp,cpp}`, `src/database/{database,databaseconnectionpool,inuseguard}.cpp`, `src/gatekeeper/**`, `src/server/server.cpp`, `src/configurator/defaults.hpp`, `CMakeLists.txt`.
+Key files: `src/controllers/base/controller/controller.hpp`, `src/controllers/databasecontroller/databasecontroller.{hpp,cpp}`, `src/database/{database,databaseconnectionpool}.cpp`, `src/gatekeeper/**`, `src/server/server.cpp`, `src/configurator/defaults.hpp`, `CMakeLists.txt`.
 
 Completed: Steps 0-4 (all queries bound, detector archived in `archive/sqlinjectiondetector/`, sqlmap clean) (results in `docs/perf/results.md`, history in git).
 
 ## Step 5: Connection pool behavior
 
-1. `DatabaseConnectionPool::get_connection()` waits at most 1 s and then returns null, which surfaces as failed requests under load. Make the wait configurable and return a clear 503 when it is exceeded.
-2. `InUseGuard` adds a second per-connection mutex/condition variable with its own 1 s timeout, even though the pool already hands a connection to one caller at a time. Remove it, or keep it only for the watchdog/reconnect path.
-3. Size the pool from measurements: start with `DB_MAX_CONN` about 2x server threads, and stay below Postgres `max_connections`. Consider PgBouncer if several instances run.
-4. Make the pool return connections reliably (RAII handle) so an exception cannot leak one.
+Done in code (not yet built or measured): `BlockingPool<T>` replaces the pool's own queue, `DB_ACQUIRE_TIMEOUT_MS` (default 3000) sets the wait, a timeout throws `DatabaseBusy` which becomes 503 with `Retry-After: 1` (controllers, login, Auth filter), `InUseGuard` is gone, `DatabaseHanndler` cannot be copied, the watchdog no longer spins when the pool is busy, and startup warns when `DB_MAX_CONN < SERVER_THREADS + 1`. Also fixed: `reconnect_all` used to wait for reconnects after releasing the pool lock; the three controller catch blocks that never answered now reply.
 
-Done when: a load test at the highest concurrency produces no connection-timeout errors, only queueing.
+Left to do:
+
+1. Build, run the unit tests (new: `test_blockingpool.cpp`, `test_database_busy.cpp`, busy-login test, config default).
+2. Run the API tests and `sqlmap_test.sh`; check that a 503 under an undersized pool (for example `DB_MAX_CONN=2` with `SERVER_THREADS=10`) has the JSON body and `Retry-After`.
+3. Size the pool: with `perf_baseline.sh --reset-db` at 128 VUs try `DB_MAX_CONN` = threads + 1, 2x and 4x threads; keep the smallest size that stops adding throughput and stay below Postgres `max_connections`. Add the run as the next stage column. Mention PgBouncer in the docs for several instances.
+
+Done when: a run at the highest concurrency with the recommended pool size shows no connection-timeout errors, only queueing; an undersized pool gives 503 with `Retry-After`, never a generic 500.
 
 ## Step 6: Take scrypt off the event loop
 
-`PasswordCrypt::verifyPassword` (libsodium scrypt) is intentionally slow and runs on a Drogon IO thread, so a handful of simultaneous logins can freeze every other request on those threads.
+Today `SessionManager::login` runs on a Drogon IO thread and does, in order: DB read of the hash, DB write of `last_login` (before the password is checked, so a failed login still updates it), then `PasswordCrypt::verifyPassword` (scrypt, blocking). Client create and update also call `hashPassword` on the IO thread (`types.hpp`). The scrypt cost is small now only because hashing uses `OPSLIMIT_MIN`/`MEMLIMIT_MIN`; the planned move to `*_INTERACTIVE` (Step 9) makes each verify about 100 ms and would freeze every request on that thread, so this step must land first. Stored hashes encode their own parameters, so raising them later needs no migration.
 
-1. Run password verification on a dedicated worker pool (or `drogon::app().getLoop()` / a `trantor::ConcurrentTaskQueue`) and complete the callback from there.
-2. Cap concurrent logins, and keep or tighten the existing rate limiting on the login route.
-3. Do not weaken the scrypt parameters to gain speed.
+### 6.1 Fix the order in login
 
-Done when: p99 of a read endpoint stays flat while a burst of logins runs.
+Verify the password first, then write `last_login`. A wrong password must not touch the session row. Add a test that fails today (FakeDb records whether the write ran).
+
+### 6.2 A bounded password worker
+
+1. New `PasswordWorker` (`src/gatekeeper/passwordcrypt/`): a small fixed pool (`trantor::ConcurrentTaskQueue` or own threads) with `submit(task)` that returns false when the queue is full.
+2. Config through the Configurator, with `.env`, `valhalla.sh` help/README and docs: `PASSWORD_WORKERS` (default: min(2, cores/4), at least 1) and `PASSWORD_QUEUE_MAX` (default 64).
+3. A test mode that runs tasks inline, so existing tests stay synchronous.
+4. Keep workers fewer than the DB pool size, because the post-verify steps use the database.
+
+### 6.3 Async login
+
+1. `GateKeeper::login`: parse and read the hash on the IO thread as now, then submit "verify, set `last_login`, generate token, call the callback" to the worker. The Drogon callback may be called from any thread; capture everything by value (`shared_ptr`s for managers).
+2. Queue full returns 503 with `Retry-After`, never blocks.
+3. Same worker for `hashPassword` in client create and update (do the hash in the controller before building the entity, or submit the whole create).
+4. Keep the existing login rate limit; confirm which limiter covers the login route and tighten it if the per-IP limit is loose.
+5. Do not weaken the scrypt parameters. Optional 6.5: raise to `*_INTERACTIVE` once this is measured.
+
+### 6.4 Tests and measure
+
+1. Unit tests: worker runs tasks and stops cleanly (drains on shutdown), queue-full is rejected, login failure does not write `last_login`, 503 path.
+2. New k6 scenario: a burst of logins while the read sweep runs. Record read p99 with and without the burst (stage 5 column; stage 4 is the last numbers recorded).
+3. Run `sqlmap_test.sh` and the login/logout API tests again.
+
+Risks: a callback fired after shutdown or on a destroyed object (capture by value, drain workers first); worker threads starving the DB pool; slower single login by one queue hop (negligible).
+
+Done when: p99 of a read endpoint stays flat while a burst of logins runs, and a failed login leaves the session row untouched.
 
 ## Step 7: Stop blocking IO threads on the database (largest change)
 

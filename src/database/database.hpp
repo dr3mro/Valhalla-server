@@ -4,13 +4,10 @@
 #include <fmt/format.h>
 #include <trantor/utils/Logger.h>
 
-#include <atomic>
-#include <condition_variable>
 #include <cstdint>
 #include <jsoncons/basic_json.hpp>
 #include <jsoncons/json.hpp>
 #include <memory>
-#include <mutex>
 #include <optional>
 #include <pqxx/pqxx>
 #include <string>
@@ -45,10 +42,6 @@ class Database
    private:
     std::shared_ptr<pqxx::connection> connection;
     std::string                       connection_info;  // Store connection parameters
-
-    std::atomic<bool>       isConnectionInUse_;
-    std::mutex              mtx_;
-    std::condition_variable cv_;
 
     static const std::uint16_t TEXT    = 1043;
     static const std::uint16_t INTEGER = 23;

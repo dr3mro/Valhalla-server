@@ -77,6 +77,7 @@ class Configurator
     {
         bool        ssl;
         uint16_t    max_conn;
+        uint32_t    acquire_timeout_ms;
         uint16_t    port;
         std::string name;
         std::string user;
@@ -86,6 +87,7 @@ class Configurator
         DatabaseConfig()
             : ssl(getEnvironmentVariable("DB_SSL", Defaults::Database::DB_SSL_)),
               max_conn(getEnvironmentVariable("DB_MAX_CONN", Defaults::Database::DB_MAX_CONN_)),
+              acquire_timeout_ms(getEnvironmentVariable("DB_ACQUIRE_TIMEOUT_MS", Defaults::Database::DB_ACQUIRE_TIMEOUT_MS_)),
               port(getEnvironmentVariable("DB_PORT", Defaults::Database::DB_PORT_)),
               name(getEnvironmentVariable("DB_NAME", Defaults::Database::DB_NAME_)),
               user(getEnvironmentVariable("DB_USER", Defaults::Database::DB_USER_)),
@@ -107,6 +109,7 @@ class Configurator
             Message::ConfMessage(fmt::format("Pass: {}", pass));
             Message::ConfMessage(fmt::format("SSL: {}", ssl));
             Message::ConfMessage(fmt::format("Max Connections: {}", max_conn));
+            Message::ConfMessage(fmt::format("Connection Wait Timeout: {} ms", acquire_timeout_ms));
         }
     };
 

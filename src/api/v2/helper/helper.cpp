@@ -33,6 +33,10 @@ void Helper::reply(std::function<void(const drogon::HttpResponsePtr&)>&& callbac
     res->setStatusCode(code);
     res->setContentTypeCode(drogon::CT_APPLICATION_JSON);
     res->setBody(message);
+    if (code == drogon::k503ServiceUnavailable)
+    {
+        res->addHeader("Retry-After", "1");
+    }
     std::move(callback)(res);
 }
 

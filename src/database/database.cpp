@@ -17,10 +17,8 @@
 #include <utility>
 
 #include "controllers/base/controller/controller.hpp"
-#include "database/inuseguard.hpp"  // IWYU pragma: keep
 #include "utils/global/types.hpp"
 #include "utils/message/message.hpp"
-#define IUGUARD InUseGuard connection_guard(isConnectionInUse_, mtx_, cv_);
 
 Database::Database(std::shared_ptr<pqxx::connection>&& conn) : connection(std::move(conn))
 {
@@ -49,8 +47,6 @@ bool Database::checkExists(const std::string& table, const std::string& column, 
         std::string query = fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = $1);", connection->quote_name(table), connection->quote_name(column));
         pqxx::result result;
         {
-            IUGUARD
-
             pqxx::nontransaction txn(*connection);
 
             result = txn.exec(pqxx::zview(query), pqxx::params{value});
@@ -72,7 +68,6 @@ bool Database::check_connection()
     }
     try
     {
-        IUGUARD
         pqxx::nontransaction ntxn(*connection);
         ntxn.exec("SELECT 1");
     }
@@ -88,7 +83,6 @@ bool Database::reconnect()
     try
     {
         {
-            IUGUARD
             connection = std::make_shared<pqxx::connection>(connection_info);
         }
         return check_connection();
@@ -107,7 +101,6 @@ std::optional<std::unordered_set<api::v2::ColumnInfo>> Database::getTableSchema(
         pqxx::result result;
 
         {
-            IUGUARD
             pqxx::nontransaction ntxn(*connection);
             result = ntxn.exec(pqxx::zview("SELECT column_name, data_type, column_default, is_nullable FROM "
                                            "information_schema.columns WHERE table_name = $1 AND column_name != 'id';"),
@@ -141,7 +134,6 @@ std::optional<std::unordered_set<std::string>> Database::getAllTables()
         pqxx::result result;
 
         {
-            IUGUARD
             pqxx::work txn(*connection);
             result = txn.exec("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';");
         }
@@ -171,8 +163,6 @@ std::optional<jsonType> Database::executeQuery(const std::string& query, const p
         pqxx::result results;
 
         {
-            IUGUARD
-
             TransactionType txn(*connection);
 
             results = txn.exec(pqxx::zview(query), params);
@@ -255,8 +245,6 @@ std::optional<T> Database::doSimpleQuery(const std::string& query, const pqxx::p
         pqxx::result result;
 
         {
-            IUGUARD
-
             pqxx::nontransaction txn(*connection);
 
             result = txn.exec(pqxx::zview(query), params);

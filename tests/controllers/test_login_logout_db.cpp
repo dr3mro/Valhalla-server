@@ -164,8 +164,22 @@ TEST_CASE("ClientController::Login returns UNAUTHORIZED for SQL injection in use
     ClientController<User> ctrl;
     CR                     r;
     ctrl.Login(cap(r), anonRequester(), R"({"username":"' OR 1=1 --","password":"x"})", "127.0.0.1");
-    // SQL injection detected → returns UNAUTHORIZED (or BAD_REQUEST depending on path)
-    CHECK((r.code == Http::Status::UNAUTHORIZED || r.code == Http::Status::BAD_REQUEST));
+    // The username is only ever a bound parameter, so it is simply an unknown user.
+    CHECK(r.code == Http::Status::UNAUTHORIZED);
+}
+
+// ── Login: no database connection available ──────────────────────────────────
+
+TEST_CASE("ClientController::Login returns 503 when the database is busy", "[controller][client][login][db][busy]")
+{
+    auto fake  = std::make_shared<FakeDatabaseController>();
+    fake->busy = true;
+
+    FakeDbGuard            guard(fake);
+    ClientController<User> ctrl;
+    CR                     r;
+    ctrl.Login(cap(r), anonRequester(), R"({"username":"alice","password":"secret"})", "127.0.0.1");
+    CHECK(r.code == Http::Status::SERVICE_UNAVAILABLE);
 }
 
 // ── Logout: valid token ───────────────────────────────────────────────────────

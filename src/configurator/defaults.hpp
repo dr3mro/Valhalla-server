@@ -26,6 +26,8 @@ namespace Defaults
          */
         const bool        DB_SSL_      = false;
         const uint8_t     DB_MAX_CONN_ = 10;
+        // How long a request waits for a free connection before getting 503 (milliseconds).
+        const uint32_t    DB_ACQUIRE_TIMEOUT_MS_ = 3000;
         const uint16_t    DB_PORT_     = 5432;
         const std::string DB_HOST_     = "0.0.0.0";
         const std::string DB_NAME_     = "postgres";

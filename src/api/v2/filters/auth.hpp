@@ -11,6 +11,7 @@
 #include <string>
 #include <utility>
 
+#include "database/databasebusy.hpp"
 #include "gatekeeper/gatekeeper.hpp"
 #include "gatekeeper/types.hpp"
 #include "store/store.hpp"
@@ -48,7 +49,22 @@ namespace api::v2::Filters
             clientLoginData->ip_address                           = req->getPeerAddr().toIp();
             std::string message;
             // Validate token
-            if (!gateKeeper->isAuthenticationValid(clientLoginData, message))
+            bool valid = false;
+            try
+            {
+                valid = gateKeeper->isAuthenticationValid(clientLoginData, message);
+            }
+            catch (const DatabaseBusy& e)
+            {
+                auto resp = drogon::HttpResponse::newHttpResponse();
+                resp->setStatusCode(drogon::HttpStatusCode::k503ServiceUnavailable);
+                resp->setContentTypeCode(drogon::CT_APPLICATION_JSON);
+                resp->addHeader("Retry-After", "1");
+                resp->setBody(JsonHelper::stringify(JsonHelper::jsonify(e.what())));
+                std::move(fcb)(resp);
+                return;
+            }
+            if (!valid)
             {
                 auto resp = drogon::HttpResponse::newHttpResponse();
                 resp->setStatusCode(drogon::HttpStatusCode::k401Unauthorized);

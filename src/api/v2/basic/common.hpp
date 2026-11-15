@@ -17,6 +17,7 @@
 #include <utility>
 
 #include "api/v2/helper/helper.hpp"
+#include "database/databasebusy.hpp"
 #include "utils/global/callback.hpp"
 #include "utils/global/http.hpp"
 #include "utils/global/requester.hpp"
@@ -85,6 +86,10 @@ namespace api::v2
                         return;
                     },
                     ctl->second);
+            }
+            catch (const DatabaseBusy& e)
+            {
+                Helper::errorResponse(drogon::k503ServiceUnavailable, e.what(), std::move(callback));
             }
             catch (const std::exception& e)
             {

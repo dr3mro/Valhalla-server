@@ -19,6 +19,7 @@
 #include <vector>
 
 #include "configurator/configurator.hpp"
+#include "database/databasebusy.hpp"
 #include "database.hpp"
 #include "database/database.hpp"
 #include "store/store.hpp"
@@ -50,6 +51,16 @@ DatabaseConnectionPool::DatabaseConnectionPool() : configurator_(Store::getObjec
     try
     {
         const Configurator::DatabaseConfig& config = configurator_->get<Configurator::DatabaseConfig>();
+        acquireTimeout_                            = std::chrono::milliseconds(config.acquire_timeout_ms);
+
+        // Every server thread blocks on one connection while it queries, and the watchdog needs one more. A smaller pool
+        // makes requests queue (and time out with 503) even though nothing is slow.
+        const unsigned int server_threads = configurator_->get<Configurator::ServerConfig>().threads;
+        if (config.max_conn < server_threads + 1U)
+        {
+            Message::WarningMessage(fmt::format("DB_MAX_CONN ({}) is below SERVER_THREADS + 1 ({}): requests may queue for a connection.", config.max_conn,
+                server_threads + 1U));
+        }
 
         std::vector<std::future<std::shared_ptr<Database>>> futures;
 
@@ -80,11 +91,8 @@ DatabaseConnectionPool::DatabaseConnectionPool() : configurator_(Store::getObjec
             auto conn = future.get();  // Blocks only on completion of the individual task
             if (conn != nullptr)
             {
-                {
-                    std::lock_guard<std::mutex> lock(mutex_);
-                    databaseConnections_.push_back(conn);
-                }
-                Message::InitMessage(fmt::format("Connection {}/{} created successfully.", databaseConnections_.size(), config.max_conn));
+                pool_.release(conn);
+                Message::InitMessage(fmt::format("Connection {}/{} created successfully.", pool_.idle(), config.max_conn));
             }
             else
             {
@@ -104,30 +112,34 @@ DatabaseConnectionPool::DatabaseConnectionPool() : configurator_(Store::getObjec
 
 std::shared_ptr<Database> DatabaseConnectionPool::get_connection()
 {
-    std::unique_lock<std::mutex> lock(mutex_);
+    const auto timeout = acquireTimeout_;
+    const auto started = std::chrono::steady_clock::now();
 
-    if (!cv_.wait_for(lock, std::chrono::seconds(1), [this] { return !databaseConnections_.empty(); }))
+    std::shared_ptr<Database> db_ptr = pool_.acquire(timeout);
+
+    const auto waited_ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - started).count();
+
+    if (db_ptr == nullptr)
     {
-        Message::CriticalMessage("Timeout while waiting for a connection");
-        return nullptr;
+        Message::CriticalMessage(fmt::format("Timeout ({} ms) while waiting for a database connection", timeout.count()));
+        throw DatabaseBusy();
     }
 
-    std::shared_ptr<Database> db_ptr = std::move(databaseConnections_.front());
-
-    databaseConnections_.pop_front();
+    if (waited_ms >= SLOW_WAIT_WARNING_MS)
+    {
+        // At most one warning per second, so a saturated pool does not flood the log.
+        const std::int64_t now_ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
+        std::int64_t       last   = lastSlowWaitWarningMs_.load();
+        if (now_ms - last >= 1000 && lastSlowWaitWarningMs_.compare_exchange_strong(last, now_ms))
+        {
+            Message::WarningMessage(fmt::format("Waited {} ms for a database connection: the pool is saturated (see DB_MAX_CONN).", waited_ms));
+        }
+    }
 
     return db_ptr;
 }
 
-void DatabaseConnectionPool::return_connection(std::shared_ptr<Database>&& db_ptr)
-{
-    if (db_ptr != nullptr)
-    {
-        std::lock_guard<std::mutex> lock(mutex_);
-        databaseConnections_.push_back(std::move(db_ptr));
-        cv_.notify_one();
-    }
-}
+void DatabaseConnectionPool::return_connection(std::shared_ptr<Database>&& db_ptr) { pool_.release(std::move(db_ptr)); }
 
 void DatabaseConnectionPool::reconnect_all()
 {
@@ -136,13 +148,11 @@ void DatabaseConnectionPool::reconnect_all()
     std::vector<std::future<void>> futures;
     futures.reserve(config.max_conn);
 
-    {
-        // Lock the database connections during the iteration
-        std::lock_guard<std::mutex> lock(mutex_);
-
-        for (auto& connection : databaseConnections_)
+    // The pool lock is held until every reconnect finished, so no idle connection can be handed out (and used) while it
+    // is being reconnected.
+    pool_.forEachIdle(
+        [&futures](std::shared_ptr<Database>& connection)
         {
-            // Launch reconnection tasks asynchronously
             futures.push_back(std::async(std::launch::async,
                 [&connection]()
                 {
@@ -162,12 +172,12 @@ void DatabaseConnectionPool::reconnect_all()
                         Message::CriticalMessage(fmt::format("Reconnect exception: {}", e.what()));
                     }
                 }));
-        }
-    }
-
-    // Wait for all futures to complete
-    for (auto& future : futures)
-    {
-        future.wait();
-    }
+        },
+        [&futures]()
+        {
+            for (auto& future : futures)
+            {
+                future.wait();
+            }
+        });
 }

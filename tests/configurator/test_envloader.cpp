@@ -282,6 +282,8 @@ TEST_CASE("Configurator exposes the configured singleton through Store", "[confi
         CHECK(config.pass == Defaults::Database::DB_PASS_);
         CHECK_FALSE(config.ssl);
         CHECK(config.max_conn == Defaults::Database::DB_MAX_CONN_);
+        CHECK(config.acquire_timeout_ms == Defaults::Database::DB_ACQUIRE_TIMEOUT_MS_);
+        CHECK(config.acquire_timeout_ms == 3000);
     }
 
     SECTION("TokenManagerParameters come from the test environment")

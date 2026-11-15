@@ -207,7 +207,14 @@ row() { # row <label> <json>
 	echo "- Date: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
 	echo "- Git: $(git -C "$ROOT" describe --always --dirty 2>/dev/null || echo unknown)"
 	echo "- Host: $(uname -srm), $(nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null) CPUs"
-	echo "- Target: $BASE_URL ($([[ $START == 0 ]] && echo "existing server" || { [[ $MODE == native ]] && echo "native build/Release/server, threads=${SERVER_THREADS:-default}, db_conn=${DB_MAX_CONN:-default}" || echo "fresh ${RUNTIME} container"; }))"
+	if [[ $START == 0 ]]; then
+		target_desc="existing server"
+	elif [[ $MODE == native ]]; then
+		target_desc="native build/Release/server, threads=${SERVER_THREADS:-default}, db_conn=${DB_MAX_CONN:-default}"
+	else
+		target_desc="fresh ${RUNTIME} container"
+	fi
+	echo "- Target: $BASE_URL ($target_desc)"
 	echo "- Sweep: ${DURATION} per level, endpoint POST /clients/providers/read (auth + permission check + 1 DB read)"
 	[[ $SMOKE == 1 ]] && echo "- **Smoke run: numbers are not meaningful**"
 	[[ $BAD == 1 ]] && echo "- **INVALID RUN: more than 5% of requests failed (see warnings). Fix the cause and rerun; do not compare these numbers.**"

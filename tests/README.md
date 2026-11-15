@@ -82,8 +82,8 @@ order is irrelevant.
 
 - **`src/server/`** — bootstrap; starts the Drogon app loop.
 - **`src/database/`** — real PostgreSQL only. Pool construction, watchdog and
-  query execution are skipped; `InUseGuard` RAII *is* tested (pure
-  synchronisation).
+  query execution are skipped; `BlockingPool` (the pool's wait/hand-out
+  logic) *is* tested with plain objects.
 - **Controllers & DB-backed control flow** — every path funnels through
   `DatabaseController` which requires a live DB; a narrow fake seam would be a
   large refactor (see gaps).

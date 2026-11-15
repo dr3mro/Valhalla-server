@@ -178,13 +178,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -216,13 +209,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -359,13 +361,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -397,13 +392,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -531,13 +535,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -569,13 +566,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -683,13 +689,6 @@
                     "summary": "Delete not supported",
                     "value": {
                       "Message": "Delete is NOT implemented",
-                      "Status": "Error"
-                    }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
                       "Status": "Error"
                     }
                   }
@@ -803,13 +802,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -949,13 +957,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -1067,13 +1068,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -1223,13 +1233,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -1341,13 +1344,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -1470,13 +1482,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -1588,13 +1593,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -1791,13 +1805,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -1909,13 +1916,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -2036,13 +2052,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -2154,13 +2163,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -2284,13 +2302,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -2402,13 +2413,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -2532,13 +2552,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -2650,13 +2663,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -2794,13 +2816,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -2832,13 +2847,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -2966,13 +2990,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -3004,13 +3021,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -3118,13 +3144,6 @@
                     "summary": "Delete not supported",
                     "value": {
                       "Message": "Delete is NOT implemented",
-                      "Status": "Error"
-                    }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
                       "Status": "Error"
                     }
                   }
@@ -3238,13 +3257,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -3384,13 +3412,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -3502,13 +3523,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -3657,13 +3687,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -3775,13 +3798,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -3904,13 +3936,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -4022,13 +4047,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -4204,13 +4238,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -4322,13 +4349,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -4453,13 +4489,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -4571,13 +4600,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -4701,13 +4739,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -4819,13 +4850,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -4949,13 +4989,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -5067,13 +5100,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -5244,13 +5286,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -5362,13 +5397,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -5517,13 +5561,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -5635,13 +5672,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -5824,13 +5870,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -5942,13 +5981,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -6071,13 +6119,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -6189,13 +6230,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -6360,13 +6410,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -6478,13 +6521,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -6649,13 +6701,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -6767,13 +6812,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -6919,13 +6973,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -7037,13 +7084,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -7222,13 +7278,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -7340,13 +7389,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -7469,13 +7527,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -7587,13 +7638,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -7756,13 +7816,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -7874,13 +7927,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -8045,13 +8107,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -8163,13 +8218,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -8315,13 +8379,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -8433,13 +8490,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -8618,13 +8684,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -8736,13 +8795,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -8865,13 +8933,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -8983,13 +9044,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -9152,13 +9222,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -9270,13 +9333,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -9441,13 +9513,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -9559,13 +9624,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -9711,13 +9785,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -9829,13 +9896,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -10014,13 +10090,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -10132,13 +10201,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -10261,13 +10339,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -10379,13 +10450,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -10522,13 +10602,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -10640,13 +10713,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -10789,13 +10871,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -10907,13 +10982,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -11049,13 +11133,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -11167,13 +11244,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -11329,13 +11415,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -11447,13 +11526,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -11576,13 +11664,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -11694,13 +11775,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -11853,13 +11943,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -11971,13 +12054,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -12105,13 +12197,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -12223,13 +12308,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -12433,13 +12527,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -12551,13 +12638,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -12723,13 +12819,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -12841,13 +12930,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -13063,13 +13161,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -13181,13 +13272,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -13299,13 +13399,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -13417,13 +13510,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -13609,13 +13711,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -13727,13 +13822,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -13890,13 +13994,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -14008,13 +14105,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -14212,13 +14318,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -14330,13 +14429,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -14448,13 +14556,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -14566,13 +14667,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -14726,13 +14836,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -14844,13 +14947,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -14991,13 +15103,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -15109,13 +15214,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -15281,13 +15395,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -15399,13 +15506,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -15517,13 +15633,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -15635,13 +15744,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -15806,13 +15924,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -15924,13 +16035,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -16077,13 +16197,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -16195,13 +16308,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -16378,13 +16500,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -16496,13 +16611,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -16625,13 +16749,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -16743,13 +16860,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -16903,13 +17029,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -17021,13 +17140,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -17168,13 +17296,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -17286,13 +17407,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -17458,13 +17588,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -17576,13 +17699,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -17694,13 +17826,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -17812,13 +17937,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -18004,13 +18138,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -18122,13 +18249,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -18285,13 +18421,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -18403,13 +18532,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -18607,13 +18745,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -18725,13 +18856,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -18843,13 +18983,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -18961,13 +19094,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -19117,13 +19259,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -19235,13 +19370,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -19380,13 +19524,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -19498,13 +19635,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -19666,13 +19812,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -19784,13 +19923,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -19902,13 +20050,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -20020,13 +20161,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -20185,13 +20335,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -20303,13 +20446,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -20466,13 +20618,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -20584,13 +20729,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -20763,13 +20917,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -20881,13 +21028,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -21010,13 +21166,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -21128,13 +21277,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -21251,13 +21409,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -21369,13 +21520,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -21511,13 +21671,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -21629,13 +21782,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },
@@ -21772,13 +21934,6 @@
                       "Message": "Delete is NOT implemented",
                       "Status": "Error"
                     }
-                  },
-                  "sqli": {
-                    "summary": "Injection pattern in a value",
-                    "value": {
-                      "Message": "A Sql Injection pattern is detected in generated query.",
-                      "Status": "Error"
-                    }
                   }
                 }
               }
@@ -21890,13 +22045,22 @@
             }
           },
           "503": {
-            "description": "**Service unavailable** - your IP was banned by the DoS protection. Plain-text body `IP is banned.`",
+            "description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
             "content": {
               "text/plain": {
                 "schema": {
                   "type": "string"
                 },
                 "example": "IP is banned."
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "Message": "Database is busy, no connection available",
+                  "Status": "Error"
+                }
               }
             }
           },

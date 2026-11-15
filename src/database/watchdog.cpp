@@ -9,6 +9,7 @@
 #include <thread>
 
 #include "database/database.hpp"
+#include "database/databasebusy.hpp"
 #include "database/databasehandler.hpp"
 #include "utils/message/message.hpp"
 
@@ -61,9 +62,15 @@ WatchDog::WatchDog()
 
                     std::this_thread::sleep_for(check_interval);
                 }
+                catch (const DatabaseBusy&)
+                {
+                    Message::WarningMessage("WatchDog could not acquire a database connection within timeout.");
+                    std::this_thread::sleep_for(check_interval);
+                }
                 catch (const std::exception& e)
                 {
                     Message::CriticalMessage(fmt::format("Monitoring exception: {}", e.what()));
+                    std::this_thread::sleep_for(check_interval);
                 }
             }
         });
