@@ -92,6 +92,7 @@ jobs:
   docker:
     name: Docker end to end (Linux)
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -113,8 +114,8 @@ jobs:
           $V logs 20 | grep -q .
           rc=0; timeout 5 ./valhalla.sh --runtime docker --name ci show >"$RUNNER_TEMP/show.log" 2>&1 || rc=$?
           [ "$rc" = 124 ] && test -s "$RUNNER_TEMP/show.log"
-          rc=0; timeout 5 ./valhalla.sh --runtime docker --name ci stats >"$RUNNER_TEMP/stats.log" 2>&1 || rc=$?
-          [ "$rc" = 124 ] && grep -q ci "$RUNNER_TEMP/stats.log"
+          rc=0; timeout -k 2 5 ./valhalla.sh --runtime docker --name ci stats >"$RUNNER_TEMP/stats.log" 2>&1 || rc=$?
+          { [ "$rc" = 124 ] || [ "$rc" = 137 ]; } && grep -q ci "$RUNNER_TEMP/stats.log"
           $V env | grep -q '^TOKEN_SECRET=<hidden>$'
           $V outdated | grep -qE 'Up to date|Update available'
           [ "$(echo 'id -un' | $V shell)" = root ]
