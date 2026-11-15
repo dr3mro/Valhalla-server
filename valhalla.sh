@@ -47,7 +47,8 @@
 #   payload [group] [name]
 #                    Browse the JSON request payloads test_api.sh sends
 #                    (interactive with fzf); with group and name, print one
-#                    directly (--raw prints the file as-is, e.g. for curl).
+#                    directly (--raw prints the file as-is, --filled
+#                    substitutes sample values for the placeholders).
 #   secret           Generate a new random TOKEN_SECRET and save it where it's
 #                    read from (normally ~/.local/share/vdt/config;
 #                    asks before replacing one, which logs everyone out).
@@ -139,9 +140,9 @@
 # Runtime: Apple `container` if installed, otherwise docker.
 #
 # Dependencies: before running, each command checks the tools and files it
-# needs (e.g. curl, python3 for Apple container, jq and fzf for test/payload,
-# docker/Dockerfile for build) and lists every missing one with how to
-# install it.
+# needs (e.g. curl, python3 for Apple container, jq for test, fzf for
+# payload, docker/Dockerfile for build) and lists every missing one with how
+# to install it.
 #
 # Shell completion: on first use the script adds one line to ~/.zshrc and/or
 # ~/.bashrc (whichever exist) to enable tab completion; open a new terminal to
@@ -269,6 +270,7 @@ CLI_TOKEN_SECRET="" # --token-secret
 NO_PRUNE="${VALHALLA_NO_PRUNE:-0}" # --no-prune: keep old images after update/build
 UPDATE_SCOPE=""   # --image-only / --tool-only: update just one side of update
 RAW_PAYLOAD=0     # --raw: payload prints the payload file as-is
+FILLED_PAYLOAD=0  # --filled: payload substitutes sample values for placeholders
 OLD_PERSIST="" # VALHALLA_PERSIST of the container being replaced
 
 # Commands: name|short description (single source for help-free tools such
@@ -318,6 +320,7 @@ OPTIONS=(
   "--image-only|update: only the image, skip the tool|"
   "--tool-only|update: only the tool, skip the image|"
   "--raw|payload: print the payload file as-is|"
+  "--filled|payload: substitute sample values for placeholders|"
   "-h --help|show help|"
 )
 
@@ -809,6 +812,7 @@ while [[ $# -gt 0 ]]; do
     --image-only) UPDATE_SCOPE="${UPDATE_SCOPE:+$UPDATE_SCOPE }image"; shift ;;
     --tool-only) UPDATE_SCOPE="${UPDATE_SCOPE:+$UPDATE_SCOPE }tool"; shift ;;
     --raw) RAW_PAYLOAD=1; shift ;;
+    --filled) FILLED_PAYLOAD=1; shift ;;
     -h | --help) ARGS=(help); break ;;
     --) shift; ARGS+=("$@"); break ;;
     -*) die "unknown option: $1 (see: $PROG help)" ;;
@@ -1107,7 +1111,6 @@ check_deps() {
     payload)
       need fzf
       want bat "nicer payload colors"
-      want jq "prettier payload previews"
       ;;
   esac
 
@@ -2569,11 +2572,44 @@ payload_hint() {
   esac
 }
 
+# payload_value NAME run: the sample value --filled substitutes for a
+# placeholder, following test_api.sh's conventions (numbers are bare, where
+# the template expects them so).
+payload_value() {
+  local name="$1" run="$2"
+  case "$name" in
+    ID | *_ID) echo 1 ;;
+    RUN) echo "$run" ;;
+    PROVIDER_USERNAME) echo "provider$run" ;;
+    USER_USERNAME | LOGIN_USERNAME) echo "user$run" ;;
+    *USERNAME) echo "provider$run" ;;
+    PROVIDER_PASSWORD) echo '1234@Abc!' ;;
+    USER_PASSWORD | LOGIN_PASSWORD) echo '123Mm@p0' ;;
+    *PASSWORD) echo '123Mm@p0' ;;
+    *TOKEN) echo "sample.$run.token" ;;
+    DISPOSABLE_NAME) echo "disposable$run" ;;
+    *) echo "sample-$name" ;;
+  esac
+}
+
+# payload_fill FILE: every {{NAME}} replaced by its sample value (payload_value).
+payload_fill() {
+  local file="$1" content name value run
+  run="$(date +%s | tail -c 7)"
+  content="$(<"$file")"
+  for name in $(printf '%s' "$content" | grep -o '{{[A-Z_]*}}' | sort -u | tr -d '{}'); do
+    value="$(payload_value "$name" "$run")"
+    content="${content//"{{$name}}"/$value}"
+  done
+  printf '%s' "$content"
+}
+
 # payload_colorize FILE: the JSON with syntax colors (plain when not fancy).
-# Uses bat when installed, a small awk colorizer otherwise. Template
-# placeholders ({{NAME}}) always stand out, also inside strings.
+# FILE may be "-" for stdin. Uses bat when installed, a small awk colorizer
+# otherwise. Template placeholders ({{NAME}}) always stand out, also inside
+# strings.
 payload_colorize() {
-  local file="$1" level colors bat ph_esc r_esc
+  local file="${1:--}" level colors bat ph_esc r_esc
   level="$(fancy_level "$([[ -t 1 ]] && echo 1 || echo 0)")"
   [[ $level -ge 1 ]] || { cat "$file"; return 0; }
   colors="$(tput colors 2>/dev/null || echo 8)"
@@ -2585,8 +2621,9 @@ payload_colorize() {
   r_esc=$'\033[0m'
   bat="$(command -v bat 2>/dev/null || command -v batcat 2>/dev/null || true)"
   # bat renders bare placeholders (invalid JSON, e.g. "id": {{CLINIC_ID}}) as
-  # noisy per-character runs; those files keep the awk colorizer.
-  if [[ -n $bat ]] && ! grep -q ':[[:space:]]*{{' "$file"; then
+  # noisy per-character runs; those files keep the awk colorizer. Stdin ("-")
+  # is only used for --filled, which is valid JSON by construction.
+  if [[ -n $bat ]] && { [[ $file == - ]] || ! grep -q ':[[:space:]]*{{' "$file"; }; then
     "$bat" --color=always --style=plain -l json "$file" |
       sed -E "s/{{[A-Z_]+}}/${ph_esc}&${r_esc}/g"
     return 0
@@ -2684,38 +2721,33 @@ payload_group_fzf() { # dir: pick a group (fzf); non-zero when quit
       --preview-window 'right,60%,wrap'
 }
 
-payload_name_fzf() { # dir group: pick a payload (fzf); enter views it in place
-  local dir="$1" group="$2" f out="" preview bat_bin view_fancy
+payload_name_fzf() { # dir group: pick a payload (fzf); preview shows it filled
+  local dir="$1" group="$2" f out="" filled raw view_fancy
+  local script_q group_q
   for f in "$dir/$group"/*.json; do
     [[ -f $f ]] || continue
     out+="$(basename "$f" .json)"$'\n'
   done
   [[ -n $out ]] || return 1
+  # The preview renders through vdt itself: the filled body by default (every
+  # {{NAME}} gets a sample value, so the output is valid JSON and bat colors
+  # it cleanly), ctrl-r the raw template view, ctrl-f back to filled. fzf
+  # replaces {} with the item already single-quoted; the %q'd static parts
+  # are used bare (%q escapes spaces itself).
   view_fancy="$(fancy_level 1)"
-  bat_bin="$(command -v bat 2>/dev/null || command -v batcat 2>/dev/null || true)"
-  # fzf replaces {} with the item already single-quoted ('create'), so never
-  # quote the {} part again (that would put literal ' in the file name), and
-  # the %q'd static path is used bare (%q escapes spaces itself).
-  base_q="$(printf '%q' "$dir/$group")"
-  if [[ -n $bat_bin ]]; then
-    # Bare placeholders (invalid JSON) render as noisy per-character runs in
-    # bat: fall back to plain cat for those files, per selection.
-    preview="grep -q ':[[:space:]]*{{' $base_q/{}.json 2>/dev/null &&
-      cat $base_q/{}.json ||
-      \"$bat_bin\" --color=always --style=plain -l json $base_q/{}.json 2>/dev/null ||
-      cat $base_q/{}.json"
-  else
-    preview="jq -C . $base_q/{}.json 2>/dev/null || cat $base_q/{}.json"
-  fi
-  # enter: the full view replaces the fzf screen ("press any key" returns to
-  # the list); esc: back to the group list.
   script_q="$(printf '%q' "$SCRIPT")"
   group_q="$(printf '%q' "$group")"
+  filled="VALHALLA_FANCY=$view_fancy $script_q payload $group_q {} --filled"
+  raw="VALHALLA_FANCY=$view_fancy $script_q payload $group_q {}"
+  # enter: the full view replaces the fzf screen ("press any key" returns to
+  # the list); esc: back to the group list.
   printf '%s' "$out" |
     fzf --prompt "$group ▸ " --reverse --border \
-      --header 'enter: view   esc: back' \
-      --preview "$preview" \
+      --header 'enter: view   ctrl-r: template   ctrl-f: filled   esc: back' \
+      --preview "$filled" \
       --preview-window 'right,60%,wrap' \
+      --bind "ctrl-r:change-preview($raw)" \
+      --bind "ctrl-f:change-preview($filled)" \
       --bind "enter:execute(VALHALLA_FANCY=$view_fancy $script_q payload $group_q {})"
 }
 
@@ -2753,6 +2785,8 @@ payload_list_group() { # dir group: the payloads in one group
 cmd_payload() {
   local group="${1:-}" name="${2:-}" dir file
   [[ ${3:-} ]] && die "usage: $PROG payload [group] [name]"
+  [[ $RAW_PAYLOAD == 1 && $FILLED_PAYLOAD == 1 ]] &&
+    die "--raw and --filled can't be used together"
   dir="$(payload_dir)" ||
     die "no payload files found (install the tool: $PROG install, or run from a checkout)"
   # "providers/create" (or "providers/create.json") in one argument also works
@@ -2766,6 +2800,8 @@ cmd_payload() {
     [[ -f $file ]] || die "no payload $group/$name.json (see: $PROG payload $group)"
     if [[ $RAW_PAYLOAD == 1 ]]; then
       cat "$file"
+    elif [[ $FILLED_PAYLOAD == 1 ]]; then
+      payload_fill "$file" | payload_colorize -
     else
       payload_show "$group" "$name" "$file"
     fi
@@ -2776,8 +2812,8 @@ cmd_payload() {
     payload_list_group "$dir" "$group"
     return 0
   fi
-  if [[ $RAW_PAYLOAD == 1 ]]; then
-    die "--raw needs a group and a name (e.g.: $PROG payload providers create --raw)"
+  if [[ $RAW_PAYLOAD == 1 || $FILLED_PAYLOAD == 1 ]]; then
+    die "--raw/--filled need a group and a name (e.g.: $PROG payload providers create --raw)"
   fi
   # No arguments: interactive with fzf, a plain list when piped.
   if [[ -t 0 && -t 1 ]]; then
@@ -2924,6 +2960,9 @@ if [[ -n $UPDATE_SCOPE && $command != update ]]; then
 fi
 if [[ $RAW_PAYLOAD == 1 && $command != payload ]]; then
   die "--raw is a payload option (see: $PROG help)"
+fi
+if [[ $FILLED_PAYLOAD == 1 && $command != payload ]]; then
+  die "--filled is a payload option (see: $PROG help)"
 fi
 
 case "$command" in
