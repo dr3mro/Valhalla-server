@@ -34,6 +34,16 @@
 
 set -eu
 
+# Colors when stdout/stderr is a terminal.
+if [ -t 1 ]; then
+  BOLD=$(printf '\033[1m'); DIM=$(printf '\033[2m'); RST=$(printf '\033[0m')
+  C_INFO=$(printf '\033[36m'); C_OK=$(printf '\033[32m'); C_WARN=$(printf '\033[33m')
+else
+  BOLD=; DIM=; RST=; C_INFO=; C_OK=; C_WARN=
+fi
+if [ -t 2 ]; then C_ERR=$(printf '\033[31m'); else C_ERR=; fi
+
+
 REPO="dr3mro/Valhalla-server"
 REF="${VALHALLA_REF:-main}"
 DEFAULT_DIR="$HOME/.local/share/vdt"
@@ -47,7 +57,7 @@ BEGIN_MARK="# >>> vdt >>>"
 END_MARK="# <<< vdt <<<"
 
 say() { printf '%s\n' "$*"; }
-die() { printf 'error: %s\n' "$*" >&2; exit 1; }
+die() { printf '%serror:%s %s\n' "$C_ERR" "$RST" "$*" >&2; exit 1; }
 
 usage() { sed -n '2,/^$/s/^# \{0,1\}//p' "$0" 2>/dev/null || say "See the header of install.sh in $REPO."; }
 
@@ -138,7 +148,7 @@ case ":\$PATH:" in *:$b:*) ;; *) export PATH=$b:"\$PATH" ;; esac
 [ -x $d/vdt ] && eval "\$($d/vdt completion $sh_name)"
 $END_MARK
 EOF
-  say "Updated $rc"
+  say "📝  Updated $rc"
 }
 
 # ── download ───────────────────────────────────────────────────────────────
@@ -153,11 +163,11 @@ api() {
 # fetch_tree STAGE: downloads the files at commit $SHA into STAGE.
 fetch_tree() {
   stage="$1"
-  say "Resolving $REF in $REPO"
+  say "🔍  Resolving $REF in $REPO"
   SHA="$(api -H "Accept: application/vnd.github.sha" "https://api.github.com/repos/$REPO/commits/$REF")" ||
     die "couldn't resolve '$REF' on GitHub (bad ref, no network, or API rate limit; set GITHUB_TOKEN to raise it)"
   case "$SHA" in *[!0-9a-f]* | "") die "unexpected answer from GitHub for '$REF': $SHA" ;; esac
-  say "Downloading $REF ($(printf '%s' "$SHA" | cut -c1-12))"
+  say "📥  Downloading $REF ($(printf '%s' "$SHA" | cut -c1-12))"
 
   payloads="$(api "https://api.github.com/repos/$REPO/git/trees/$SHA?recursive=1" |
     grep -o '"path": *"api_tests/payloads/[^"]*\.json"' |
@@ -171,7 +181,7 @@ fetch_tree() {
       die "download failed: $f (does $REF contain it?)"
     count=$((count + 1))
   done
-  say "Downloaded $count files"
+  say "✅  Downloaded $count files"
   VERSION_TEXT="$REF $SHA"
 }
 
@@ -179,7 +189,7 @@ fetch_tree() {
 copy_tree() {
   stage="$1"
   [ -f "$SOURCE/valhalla.sh" ] || die "VALHALLA_SOURCE has no valhalla.sh: $SOURCE"
-  say "Copying from $SOURCE"
+  say "📋  Copying from $SOURCE"
   for f in valhalla.sh test_api.sh schemathesis_test.sh install.sh docs/openapi.json; do
     mkdir -p "$stage/$(dirname "$f")"
     cp "$SOURCE/$f" "$stage/$f"
@@ -231,17 +241,17 @@ write_default_env() {
   # Earlier versions kept the settings in .env; rename it.
   if [ -f "$DIR/.env" ] && [ ! -e "$DIR/config" ]; then
     mv "$DIR/.env" "$DIR/config"
-    say "Renamed $DIR/.env to $DIR/config"
+    say "💾  Renamed $DIR/.env to $DIR/config"
   fi
   if [ -e "$DIR/config" ]; then
     if ! has_secret "$DIR/config"; then
       printf '\n# JWT signing secret, generated at install (keep it private; changing it\n# logs everyone out)\nTOKEN_SECRET = "%s"\n' "$(new_secret)" >>"$DIR/config"
-      say "Added a generated TOKEN_SECRET to $DIR/config"
+      say "🔑  Added a generated TOKEN_SECRET to $DIR/config"
     fi
     return 0
   fi
   (umask 077 && { default_env; printf 'TOKEN_SECRET = "%s"\n' "$(new_secret)"; } >"$DIR/config")
-  say "Created $DIR/config with default settings and a generated TOKEN_SECRET"
+  say "💾  Created $DIR/config with default settings and a generated TOKEN_SECRET"
 }
 
 # ── command link ───────────────────────────────────────────────────────────
@@ -250,11 +260,11 @@ link_command() {
   mkdir -p "$BIN_DIR"
   link="$BIN_DIR/vdt"
   if [ -e "$link" ] && [ ! -L "$link" ]; then
-    say "warning: $link exists and isn't a link; left it alone. Run $DIR/vdt directly."
+    say "🚧  warning: $link exists and isn't a link; left it alone. Run $DIR/vdt directly."
     return 0
   fi
   ln -sfn "$DIR/vdt" "$link"
-  say "Linked $link -> $DIR/vdt"
+  say "🔗  Linked $link -> $DIR/vdt"
 }
 
 # unlink_command: removes BIN_DIR/vdt if it's our link.
@@ -262,7 +272,7 @@ unlink_command() {
   link="$BIN_DIR/vdt"
   if [ -L "$link" ] && [ "$(readlink "$link")" = "$DIR/vdt" ]; then
     rm -f "$link"
-    say "Removed $link"
+    say "🗑   Removed $link"
   fi
 }
 
@@ -285,9 +295,9 @@ remove_files() {
   rm -f "$target/.DS_Store" "$target/api_tests/.DS_Store" "$target/docs/.DS_Store"
   rmdir "$target/api_tests" "$target/docs" 2>/dev/null || true
   if rmdir "$target" 2>/dev/null; then
-    say "Removed $target"
+    say "🗑   Removed $target"
   else
-    say "Removed the tool from $target; kept your other files there:"
+    say "🗑   Removed the tool from $target; kept your other files there:"
     for f in "$target"/* "$target"/.[!.]*; do
       if [ -e "$f" ]; then say "  $(basename "$f")"; fi # unmatched globs stay literal
     done
@@ -311,7 +321,7 @@ do_install() {
 # do_replace: download first; only then remove the current copy and install.
 do_replace() {
   stage_files
-  say "Removing the current install in $DIR"
+  say "🗑   Removing the current install in $DIR"
   do_uninstall
   place_files
 }
@@ -329,7 +339,7 @@ place_files() {
   # Downloads arrive as plain files (curl doesn't keep the executable bit).
   chmod 755 "$DIR/vdt" "$DIR/test_api" "$DIR/schemathesis_test" "$DIR/installer"
   printf '%s\n' "$VERSION_TEXT" >"$DIR/VERSION"
-  say "Installed into $DIR"
+  say "📦  Installed into $DIR"
   write_default_env
   link_command
 
@@ -338,7 +348,7 @@ place_files() {
   fi
 
   say ""
-  say "Done. Open a new terminal (or: source ~/.$(basename "${SHELL:-zsh}")rc), then:"
+  say "🎉  Done. Open a new terminal (or: source ~/.$(basename "${SHELL:-zsh}")rc), then:"
   say "  vdt help"
   say "  vdt run"
   say "Settings: $DIR/config (a .env in the current directory wins)"
@@ -350,7 +360,7 @@ do_uninstall() {
     for rc in "$HOME/.zshrc" "$HOME/.bashrc" "$HOME/.bash_profile"; do
       if [ -f "$rc" ] && grep -qF -e "$BEGIN_MARK" "$rc"; then
         strip_rc "$rc"
-        say "Cleaned $rc"
+        say "🧹  Cleaned $rc"
       fi
     done
   fi
@@ -358,7 +368,7 @@ do_uninstall() {
   if [ -d "$DIR" ]; then
     remove_files "$DIR"
   else
-    say "Nothing installed in $DIR"
+    say "ℹ️  Nothing installed in $DIR"
   fi
   return 0
 }
