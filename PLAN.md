@@ -13,6 +13,9 @@
   - Open decisions: should the blacklist win over the whitelist (test `whitelist wins over blacklist` locks the current order in)? Is `X-Forwarded-For` needed? Behind Docker or a proxy `req->peerAddr()` (`ratelimit.hpp:27`) is the gateway, so every client shares one IP. Add opt-in trusted-proxy handling.
   - While in `ratelimit.hpp`: fix reply text/status (`RATELIMITED` says "IP is blacklisted." at `:45`; `BANNED` returns `503`, `429`/`403` fits) [R2.4]; hold the detector as a member instead of looking `GateKeeper` up in the Store per request; take one lock or shard by IP for counters; key by the 64-bit fingerprint; stop copying all headers into a new map; a rate-limited request calls `processRequest` twice [P8.2].
   - Tests: over-match cases (`192.168.1.50`, `127.0.0.10`), CIDR/wildcard, precedence, updated invalid-pattern test.
+- [ ] **`staff/add` has no permission check.** `StaffController<T>::AddStaffToEntity` (`staffcontroller.cpp:40`) marks `requester` as `[[maybe_unused]]` and never calls `gateKeeper->canManageStaff<T>(requester, _id, error)`, which `RemoveStaffFromEntity` (`:71`) and `InviteStaffToEntity` (`:95`) both do. Any authenticated client can add staff to any clinic, pharmacy, laboratory or radiology center.
+  - Fix: call `canManageStaff` before the insert and return 403 on failure, exactly as the other two do; remove `[[maybe_unused]]`.
+  - Tests: `controllers/test_staff_controller.cpp`: a non-manager requester gets 403 on add; a manager still succeeds; extend `test_api.sh` with the same case. Re-check the per-endpoint query count afterwards (this adds one permission lookup: 1 query warm becomes 2 on a cold permission cache).
 - [ ] **Startup log prints DB password and JWT secret.** `configurator.hpp:106`, `:187` [R1.4]
 - [ ] **Native run with default `TOKEN_SECRET`.** Warn or refuse when it equals `Defaults::TokenParameters::TOKEN_SECRET_`. [R1.5]
 - [ ] **Duplicate JSON keys.** Verify jsoncons rejects them; enable strict parsing if not. `validator.cpp:29-34`, `:82-86` [R1.6]
@@ -41,6 +44,32 @@
 - [ ] Response path: cache CORS header strings, compact JSON error bodies. **Do together with ST204:** stop sending `Allow` on normal responses and make the `405` list and `addCorsHeaders` consistent (`server.cpp:69-71`, `:115`). That removes a per-response header and fixes the conformance failure in one change. [P8.5, R3.2]
 - [ ] `Store` race (`store.hpp:24-56`, separate locks in `getObject`/`registerObject`): fix with `Store::cachedObject` and stop calling `getObject` in constructors and methods. [R4.1, P8.7, R5 style item]
 - Done when: no filter or middleware function above ~3% in the profile, and mixed throughput above Stage 4 on the current script.
+
+### Step 8b: Avoidable per-request objects (do after Step 8; the filter work overlaps)
+
+Source: per-route object count (about 16-24 objects per request, 1 locked `Store::getObject` on every route). Only objects that can live in a class or static are listed; parsed JSON, entity data, DB results, responses and the pooled connection handle are genuinely per-request and stay.
+
+- [ ] 1. `static const Validator::Rule` at the 5 sites (`entitycontroller.cpp` create, read, update; `clientcontroller.cpp:106`; `cliniccontroller.cpp:22`). A `Rule` is a map of sets (about 4 allocations); `check()` is const, so concurrent reads are safe. Keep them `const` with a comment.
+- [ ] 2. Cache the `{}_safe` table name per entity type (`entitycontroller.cpp:111`) as a function-local `static const std::string`.
+- [ ] 3. `RateLimit` (`ratelimit.hpp`): hold `GateKeeper` as a member, resolved in the constructor, and use the declared but unused `dos_detector` member. Removes the only locked `Store::getObject` per request. Check the init order: the Store objects must exist before Drogon builds the filter.
+- [ ] 4a. `DOSDetector::Request`: `method` and `path` become `string_view`; `ip` stays `std::string` (the IP lookups take `const std::string&`, and IPv6 would allocate on conversion). `processRequest` already copies `ip` and keeps only a fingerprint string, so no view outlives the call; document "valid only during `is_dos_attack`" on the struct.
+- [ ] 4b. Replace the header map copy with a caller-computed `header_hash` (Drogon's header map is probably not `std::unordered_map<string,string>`; verify at compile time). Add `static DOSDetector::hashHeaders(range)`: XXH3 each header value, XOR the results, so the fingerprint no longer depends on header order. Use XXH3 streaming for the body so the 4 KB buffer in `generateRequestFingerprint` goes away.
+- Dropped (no benefit or unsafe): reusing `DatabaseHanndler` across requests (it is RAII over a pooled connection; reuse leaks or shares connections); the `Bearer ` substring in `Auth` (fits the small-string buffer, no allocation).
+- Expected gain: about 15-30 allocations per request, mostly from item 4b; likely 2-5% throughput, inside run-to-run noise. Judge it by allocations per request (`heaptrack` on a fixed 10k-request replay), not req/s.
+
+**Tests for Step 8b** (write them first, against the current code):
+
+- [ ] `gatekeeper/test_dosdetector.cpp`, edit: `makeRequest` and the fixture's `send()` build `Request` with a by-value `headers` map; switch them to `header_hash = DOSDetector::hashHeaders(headers)` and keep `path`/`method` views backed by literals or the fixture's stored strings (a by-value parameter would dangle). Keep every existing status test (ban, rate limit, whitelist, blacklist, rollover, concurrency) unchanged as the regression net.
+- [ ] `gatekeeper/test_dosdetector.cpp`, add: same header values in a different order give the same fingerprint (repeat still counts toward MAX_REQUESTS); different values give different fingerprints; `hashHeaders` of an empty set is stable and differs from a one-header set; after `is_dos_attack` returns, destroying the request's backing strings does not change the next request's status (run under ASan).
+- [ ] `api/test_filters.cpp`, add: `RateLimit` filter test through `runFilter`: allowed calls the chain; blacklisted gives 403, ratelimited 429, banned 503, each with the right body. If `setPeerAddr` (only on `HttpRequestImpl`) makes this brittle, extract the status-to-response mapping into a small function and test that.
+- [ ] `api/test_filters.cpp`, add: constructing `RateLimit` before `GateKeeper` is registered fails loudly (guards the init order from item 3).
+- [ ] `utils/test_store.cpp` or `store/test_store_cached.cpp`, add: a test-build-only counter on `Store::getObject`; one `RateLimit` pass must make zero calls.
+- [ ] `validator/test_validator.cpp`, add: the same `static const Rule` called from several threads gives identical results.
+- [ ] `controllers/test_entity_controller.cpp`, add: a read uses the `{table}_safe` name, and two entity types do not share a cached name.
+- [ ] `benchmarks/test_benchmarks.cpp`, add a hidden `[.benchmark]` case for `is_dos_attack` with 20 headers, plus an allocation counter (override `operator new` in the benchmark target only). Run before and after.
+- No change: `controllers/test_database_busy.cpp` (handler untouched), the `Auth` filter tests, `archive/sqlinjectiondetector/` (not built).
+- Order: add the new tests, make items 1-4, update `makeRequest`, run the full suite, then run the DoS and `RateLimit` tests under ASan and TSan, then benchmark 3+ runs per variant.
+- Done when: all tests pass under ASan and TSan, zero `Store::getObject` calls per request, and allocations per request are recorded in `docs/perf/`.
 
 ### Step 9: Database round trips and statements
 
