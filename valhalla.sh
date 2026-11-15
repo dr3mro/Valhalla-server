@@ -2482,7 +2482,7 @@ cmd_clean() {
 
 cmd_status() {
   row() {
-    local icon gap="$S_GAP" override="${3:-}"
+    local icon gap="${4:-$S_GAP}" override="${3:-}"
     if [[ -n $override ]]; then icon="$override"; else
       case "$1" in
         Runtime:) icon="$S_i_runtime" ;;
@@ -2498,7 +2498,7 @@ cmd_status() {
     printf '%s%s%-10s%s %s\n' "$S_LBL" "${icon:+$icon$gap}" "$1" "$S_R" "$2"
   }
   row "Runtime:" "$RT"
-  row "Server:" "$NAME"
+  row "Server:" "$NAME" "" "$S_GAP "
   if ! exists; then
     row "State:" "not created ${S_DIM}(use: $PROG run)${S_R}" "$S_i_q"
     status_updates
