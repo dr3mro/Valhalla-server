@@ -2335,10 +2335,46 @@ update_tool_step() {
   fi
 }
 
+# update_banner/update_footer: fancy boxes for `vdt update`.
+update_banner() {
+  local sub="$1" w=52 i pad
+  local tl tr bl br hz vt
+  if [[ -n $E_i_step ]]; then tl="╭"; tr="╮"; bl="╰"; br="╯"; hz="─"; vt="│"; else tl="+"; tr="+"; bl="+"; br="+"; hz="-"; vt="|"; fi
+  local line=""; for ((i=0;i<w;i++)); do line+="$hz"; done
+  echo >&2
+  printf '%s%s%s%s%s\n' "$E_HEAD" "$tl" "$line" "$tr" "$E_R" >&2
+  local title="🔄  Updating Valhalla"
+  pad=$((w - 2 - ${#title}))
+  ((pad < 0)) && pad=0
+  printf '%s%s%s %s%s%s%*s%s%s\n' "$E_HEAD" "$vt" "$E_R" "$E_ACC$E_B" "$title" "$E_R" "$pad" "" "$E_HEAD" "$vt" "$E_R" >&2
+  if [[ -n $sub ]]; then
+    pad=$((w - 2 - ${#sub}))
+    ((pad < 0)) && pad=0
+    printf '%s%s%s %s%s%s%*s%s%s\n' "$E_HEAD" "$vt" "$E_R" "$E_DIM" "$sub" "$E_R" "$pad" "" "$E_HEAD" "$vt" "$E_R" >&2
+  fi
+  printf '%s%s%s%s%s\n' "$E_HEAD" "$bl" "$line" "$br" "$E_R" >&2
+  echo >&2
+}
+
+update_footer() {
+  local w=52 i
+  local tl tr bl br hz vt
+  if [[ -n $E_i_step ]]; then tl="╭"; tr="╮"; bl="╰"; br="╯"; hz="─"; vt="│"; else tl="+"; tr="+"; bl="+"; br="+"; hz="-"; vt="|"; fi
+  local line=""; for ((i=0;i<w;i++)); do line+="$hz"; done
+  echo >&2
+  printf '%s%s%s%s%s
+' "$E_OK" "$tl" "$line" "$tr" "$E_R" >&2
+  printf '%s%s%s %s%s%s %s%s
+' "$E_OK" "$vt" "$E_R" "$E_OK$E_B" "✅  Update complete" "$E_R" "$E_OK$vt" "$E_R" >&2
+  printf '%s%s%s%s%s
+' "$E_OK" "$bl" "$line" "$br" "$E_R" >&2
+  echo >&2
+}
 cmd_update() {
   local image
   image="$(image_ref "${1:-}")"
   if [[ $UPDATE_SCOPE == tool ]]; then
+    update_banner "tool only"
     if [[ $DRY_RUN == 1 ]]; then
       if [[ -z $(tool_installed_sha) ]]; then
         say_info "Dry run, nothing changed. This is a checkout, so there is no installed copy to update (use: $PROG install)."
@@ -2348,6 +2384,7 @@ cmd_update() {
       return 0
     fi
     update_tool_step
+    update_footer
     return
   fi
   if [[ $DRY_RUN == 1 ]]; then
@@ -2357,9 +2394,11 @@ cmd_update() {
     fi
     return
   fi
+  update_banner "$image"
   pull "$image"
   recreate "$image"
   [[ $UPDATE_SCOPE == image ]] || update_tool_step
+  update_footer
 }
 
 cmd_build() {
