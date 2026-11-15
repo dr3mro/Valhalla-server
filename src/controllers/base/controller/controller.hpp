@@ -127,7 +127,7 @@ class Controller
             }
             if (query_results_json_array.has_value())
             {
-                response_json["results"] = std::move(query_results_json_array.value());
+                response_json["results"] = query_results_json_array.value();
             }
             else
             {
