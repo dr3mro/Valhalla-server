@@ -251,7 +251,7 @@ write_default_env() {
     return 0
   fi
   (umask 077 && { default_env; printf 'TOKEN_SECRET = "%s"\n' "$(new_secret)"; } >"$DIR/config")
-  say "💾  Created $DIR/config with default settings and a generated TOKEN_SECRET"
+  say "📄  Created $DIR/config with default settings and a generated TOKEN_SECRET"
 }
 
 # ── command link ───────────────────────────────────────────────────────────
@@ -272,7 +272,7 @@ unlink_command() {
   link="$BIN_DIR/vdt"
   if [ -L "$link" ] && [ "$(readlink "$link")" = "$DIR/vdt" ]; then
     rm -f "$link"
-    say "🗑   Removed $link"
+    say "✂️  Removed $link"
   fi
 }
 
@@ -297,7 +297,7 @@ remove_files() {
   if rmdir "$target" 2>/dev/null; then
     say "🗑   Removed $target"
   else
-    say "🗑   Removed the tool from $target; kept your other files there:"
+    say "📤  Removed the tool from $target; kept your other files there:"
     for f in "$target"/* "$target"/.[!.]*; do
       if [ -e "$f" ]; then say "  📁  $(basename "$f")"; fi # unmatched globs stay literal
     done
@@ -321,7 +321,7 @@ do_install() {
 # do_replace: download first; only then remove the current copy and install.
 do_replace() {
   stage_files
-  say "🗑   Removing the current install in $DIR"
+  say "🧹  Removing the current install in $DIR"
   do_uninstall
   place_files
 }
@@ -352,7 +352,7 @@ place_files() {
   say "  📖  vdt help"
   say "  🚀  vdt run"
   say "⚙️  Settings: $DIR/config (a .env in the current directory wins)"
-  say "🔄  Update later with: vdt install    🗑  Remove with: vdt uninstall"
+  say "🔄  Update later with: vdt install    ❌  Remove with: vdt uninstall"
 }
 
 do_uninstall() {
@@ -360,7 +360,7 @@ do_uninstall() {
     for rc in "$HOME/.zshrc" "$HOME/.bashrc" "$HOME/.bash_profile"; do
       if [ -f "$rc" ] && grep -qF -e "$BEGIN_MARK" "$rc"; then
         strip_rc "$rc"
-        say "🧹  Cleaned $rc"
+        say "🧽  Cleaned $rc"
       fi
     done
   fi
