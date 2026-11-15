@@ -2,27 +2,26 @@
 
   █ TOTAL RESULTS 
 
-    checks_total.......: 421828  21074.403494/s
-    checks_succeeded...: 100.00% 421828 out of 421828
-    checks_failed......: 0.00%   0 out of 421828
+    checks_total.......: 9514    26744.852867/s
+    checks_succeeded...: 100.00% 9514 out of 9514
+    checks_failed......: 0.00%   0 out of 9514
 
     ✓ read 200
 
     HTTP
-    http_req_duration..............: avg=1.47ms min=300µs    med=1.41ms p(90)=2.33ms p(95)=2.71ms p(99)=3.4ms  max=14.13ms
-      { expected_response:true }...: avg=1.47ms min=300µs    med=1.41ms p(90)=2.33ms p(95)=2.71ms p(99)=3.4ms  max=14.13ms
-    http_req_failed................: 0.00%  0 out of 421829
-    http_reqs......................: 421829 21074.453453/s
+    http_req_duration..............: avg=1.14ms min=338µs    med=1.09ms p(90)=1.87ms p(95)=2.14ms p(99)=2.75ms max=4.36ms
+      { expected_response:true }...: avg=1.14ms min=338µs    med=1.09ms p(90)=1.87ms p(95)=2.14ms p(99)=2.75ms max=4.36ms
+    http_req_failed................: 0.00%  0 out of 9516
+    http_reqs......................: 9516   26750.475077/s
 
     EXECUTION
-    iteration_duration.............: avg=1.51ms min=336.62µs med=1.44ms p(90)=2.37ms p(95)=2.75ms p(99)=3.45ms max=7.6ms  
-    iterations.....................: 421828 21074.403494/s
-    vus............................: 32     min=32          max=32
-    vus_max........................: 32     min=32          max=32
+    iteration_duration.............: avg=1.17ms min=351.33µs med=1.12ms p(90)=1.9ms  p(95)=2.18ms p(99)=2.79ms max=4.4ms 
+    iterations.....................: 9514   26744.852867/s
 
     NETWORK
-    data_received..................: 331 MB 17 MB/s
-    data_sent......................: 212 MB 11 MB/s
+    data_received..................: 7.5 MB 21 MB/s
+    data_sent......................: 4.8 MB 14 MB/s
 
 
 
+time="2026-11-15T06:44:27-05:00" level=error msg="test run was aborted because k6 received a 'interrupt' signal"

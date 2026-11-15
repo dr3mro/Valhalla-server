@@ -58,6 +58,13 @@ while [[ $# -gt 0 ]]; do
 	esac
 done
 
+if [[ ${RESET_DB:-0} == 1 && $START == 0 ]]; then
+	echo "error: --reset-db only works when this script starts the server (it resets the database first, then starts it)." >&2
+	echo "       With --no-start, reset by hand, then start your server, then run the script:" >&2
+	echo "         set -a; . ./.env; set +a; PGPASSWORD=\"\$DB_PASS\" psql -q -h \"\$DB_HOST\" -p \"\${DB_PORT:-5432}\" -U \"\$DB_USER\" -d \"\$DB_NAME\" -f init.sql" >&2
+	exit 2
+fi
+
 BASE_URL="${BASE_URL:-http://127.0.0.1:$PORT}"
 PROVIDER_USER="${PROVIDER_USER:-provider}"; PROVIDER_PASS="${PROVIDER_PASS:-1234@Abc!}"
 USER_NAME="${USER_NAME:-user1}"; USER_PASS="${USER_PASS:-123Mm@p0}"

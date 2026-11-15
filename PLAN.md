@@ -1,83 +1,93 @@
-# Remaining Work
+# Valhalla Server: Combined Plan (remaining work + performance)
 
-> Re-verified against the code at `b8790f7` on 2026-11-13. The release pipeline works: tag builds pass, and the multi-arch image is published to Docker Hub.
+## 1. Security (do first: it also unblocks the fast-path work)
 
-## 1. Security
+- [ ] **Forged tokens accepted. One fix, two entry points.** [R1.1, R1.2, P8.1]
+  - `SessionManager::clientHasValidSession` (`sessionmanager.cpp:156-186`) decodes the JWT without verifying the signature and looks the session up by `group_id`; it never compares the token with the one stored at login. Signature is only checked on a session miss.
+  - Logout (`sessionmanager.cpp:102-118`) uses `jwt::decode` with no signature check (`ValidateToken` commented out), so a forged token can log any `clientId` out. `token.value()` at `:100` is unchecked: no token gives a `500` with raw `bad_optional_access` text.
+  - Fix: look sessions up by a hash of the token (or compare the stored token in constant time) and take id, group and expiry from the stored session. A session hit then needs no JWT parse (this is also the speed win in [P8.1]). Keep signature verification in the slow path (`TokenManager::isTokenValid`). Make logout use the same lookup and return `401` when the token is missing.
+  - Decide: must a session hit re-check `is_active`, or must suspend code remove the session? (Today a suspended client keeps its session.)
+  - Tests: forged token on the auth filter, forged token on logout, missing token on logout; extend the login/logout API tests and `fuzz_auth.sh`.
+- [ ] **Whitelist/blacklist and the rate-limit filter: one rework.** [R1.3, R2.4, P8.2]
+  - Matching is far too broad: entries are unanchored regexes (`192.168.1.*` also matches `192.168.10.4`; `127.0.0.1` matches `127.0.0.10`-`.199`), and a whitelisted IP skips all DoS checks. Replace with exact-IP, CIDR and per-octet wildcard matchers (regex only behind a `re:` prefix), compiled once at startup into immutable, lock-free lists. This is the same change [P8.2] asks for (stop locking `const` sets), so do it once.
+  - Open decisions: should the blacklist win over the whitelist (test `whitelist wins over blacklist` locks the current order in)? Is `X-Forwarded-For` needed? Behind Docker or a proxy `req->peerAddr()` (`ratelimit.hpp:27`) is the gateway, so every client shares one IP. Add opt-in trusted-proxy handling.
+  - While in `ratelimit.hpp`: fix reply text/status (`RATELIMITED` says "IP is blacklisted." at `:45`; `BANNED` returns `503`, `429`/`403` fits) [R2.4]; hold the detector as a member instead of looking `GateKeeper` up in the Store per request; take one lock or shard by IP for counters; key by the 64-bit fingerprint; stop copying all headers into a new map; a rate-limited request calls `processRequest` twice [P8.2].
+  - Tests: over-match cases (`192.168.1.50`, `127.0.0.10`), CIDR/wildcard, precedence, updated invalid-pattern test.
+- [ ] **Startup log prints DB password and JWT secret.** `configurator.hpp:106`, `:187` [R1.4]
+- [ ] **Native run with default `TOKEN_SECRET`.** Warn or refuse when it equals `Defaults::TokenParameters::TOKEN_SECRET_`. [R1.5]
+- [ ] **Duplicate JSON keys.** Verify jsoncons rejects them; enable strict parsing if not. `validator.cpp:29-34`, `:82-86` [R1.6]
 
-- [ ] **Logout doesn't verify the token.** `jwt::decode` doesn't check the signature, and `ValidateToken` is commented out, so a forged token can log any `clientId` out. `src/gatekeeper/sessionmanager/sessionmanager.cpp:102-118`. Also, `token.value()` is called unchecked (`:100`): with no token the client gets a `500` whose body is the raw `bad_optional_access` text (the unit test "logout with a bad token" hits this).
-- [ ] **The auth filter accepts a forged token when the client has a session.** `SessionManager::clientHasValidSession` (`src/gatekeeper/sessionmanager/sessionmanager.cpp:156-186`) decodes the JWT without verifying the signature and looks the session up by `group_id`; it never compares the token with the one stored at login. The signature is only verified on a session miss. Look sessions up by a hash of the token (or compare it), and add a forged-token test. See Step 8 of `PERFORMANCE_PLAN.md`.
-- [ ] **Whitelist and blacklist rework** (`src/gatekeeper/dosdetector/dosdetector.cpp:67-90`, `:219-275`). Open decisions: should the blacklist win, and is `X-Forwarded-For` support needed?
-  - **Matching is far too broad.** Entries are regexes passed to `std::regex_search`: unanchored, with `.` matching any character. `192.168.1.*` also matches `192.168.10.4` and `192.168.199.1`; `127.0.0.1` matches `127.0.0.10`-`.199`. A whitelisted IP skips all DoS checks, so every over-match is a bypass. Fix: compile entries into exact-IP, CIDR (`192.168.1.0/24`) and per-octet wildcard (`192.168.1.*`) matchers; optionally keep regex behind a `re:` prefix.
-  - **The whitelist overrides the blacklist.** It's checked first, and the test `whitelist wins over blacklist` locks that in. Decide whether the deny list should win; if not, document the current order.
-  - **The client IP is wrong behind Docker or a proxy.** `req->peerAddr()` (`src/api/v2/filters/ratelimit.hpp:27`) is the Docker gateway (`172.17.0.1`, `192.168.64.1`) or the proxy, so every client shares one IP: one noisy client gets everyone limited, and whitelisting it whitelists everyone. Add opt-in trusted-proxy handling of `X-Forwarded-For`.
-  - **Tests:** add over-match cases (`192.168.1.50`, `127.0.0.10`), CIDR/wildcard cases, and blacklist-versus-whitelist precedence. Update the invalid-pattern test.
-  - **Cleanup:** collapse the three nested `try/catch` layers (`isWhitelisted` → `regexFind` → the lambda). `tests/README.md` item 9 (`"a,,b"` gives an empty match-everything entry) is outdated, because `parseSet` now skips empty items.
-- [ ] **The startup log prints the database password and the JWT secret.** `src/configurator/configurator.hpp:106`, `:187`
-- [ ] **Nothing stops a native run with the default `TOKEN_SECRET`.** (The Docker image already generates a random one.) Warn or refuse when it equals `Defaults::TokenParameters::TOKEN_SECRET_`.
-- [ ] **Duplicate JSON keys.** The `hasDuplicateKeys` check is commented out on the assumption that jsoncons rejects duplicates. Verify that's true, and enable strict parsing if it isn't. `src/validator/validator.cpp:29-34`, `:82-86`
+## 2. Performance
 
-## 2. Bugs
+### Step 7: Verify the DB executor
 
-- [ ] **Adding staff updates the wrong row.** `getSqlAddStaffStatement` passes 4 arguments to a format string with 3 placeholders, so `WHERE ID=` gets `nominee_group` (e.g. `providers`) instead of `entity_id`, and the query fails against a real database. Drop `idata.nominee_group` from the arguments. The test "builds an UPDATE with the correct table and id" never checks the id; make it assert `WHERE ID=7`. `src/entities/base/service.hpp:37-42`, `tests/entities/test_entities.cpp:330-340`
-- [ ] **`communicate.cpp` sends stale data.** The `static` method map's lambdas capture `curl` **and `data`** by reference on the first call. Every later request uses dangling references, including the first call's request body. Build the map without captures, or set the options directly. `src/utils/communicate/communicate.cpp:24-30`
-- [ ] **Deleting a client removes the session unconditionally,** even when the delete failed. `src/controllers/clientcontroller/clientcontroller.cpp:122-123`
-- [ ] **Rate-limit filter replies.** A `RATELIMITED` reply says "IP is blacklisted." (`:45`), and `BANNED` returns `503 Service Unavailable` (`429` or `403` fits better). `src/api/v2/filters/ratelimit.hpp`
-- [ ] **Appointment permissions.** Update and delete checks use the _read_ permission query, and appointment entities define no update or delete queries. Decide the intended rule. `src/gatekeeper/permissionmanager/permissionmanager.cpp:159-179`
-- [ ] **The client validator coerces before checking type.** `as<std::string>()` turns numbers and booleans into strings before the regex checks, so a numeric `phone` passes. `src/validator/validator.cpp:169`
+- [ ] Check that mixed throughput is back at the Stage 4 level on the current script (`tools/k6/benchmark.js`) and that overload returns 503 quickly.
 
-## 3. API conformance (Schemathesis)
+### Step 7b: Login burst starves reads (new, from the 4 latest runs)
 
-- [ ] **ST201: search integers and extra keys.** `is_number()` accepts `2.5`, and `as<size_t>()` truncates it. Unknown properties are also accepted, though the schema has `additionalProperties: false`. Reject both, and add unit tests. `src/entities/base/types.hpp` (`Search_t`)
-- [ ] **ST204: `Allow` header.**
-  - Every route gets the same hard-coded `Allow` list.
-  - The `405` list omits `HEAD`, while `addCorsHeaders` adds `Allow` (with `HEAD`) to **every** response.
-  - Fix: make the two lists consistent, and stop sending `Allow` on normal responses.
+| Run                                   | login req/s | reads alone req/s | reads during burst req/s | read p99 during (ms) |
+| ------------------------------------- | ----------- | ----------------- | ------------------------ | -------------------- |
+| stage-last / old-hash (3cab417-dirty) | 24.4 / 23.6 | 5395 / 4230       | 4075 / 4022              | 2.8 / 2.7            |
+| s4 (ebd7530)                          | 719.4       | 5754              | 1984                     | 7.3                  |
+| s5 (3cab417-dirty, worktree)          | 710         | 5211              | 1216                     | 17                   |
 
-  `src/server/server.cpp:69-71`, `:115`
+- The two hash variants differ by far more than noise from the first pair: about 30x login throughput, but reads fall 2x-4x. Decide the target: login at ~24/s protects reads but is slow for users; ~700/s needs a cap so password hashing cannot take cores from request threads.
+- [ ] Rerun s4 and s5 three times each to see whether 1984 vs 1216 req/s is real. [new]
+- [ ] Bound password-hash concurrency (`PASSWORD_WORKERS`) and re-test; goal: read p99 during burst within about 2x of reads-alone, login throughput stated as a documented figure. [relates to Stage 5, off-loop hashing and Argon2id]
 
-- [ ] **Re-run the conformance suite** and confirm zero ST201 and ST204 failures.
+### Step 8: Per-request cost on IO threads (profile first: 30 s at 32 VUs of `providers/read`)
 
-## 4. Concurrency (low risk)
+- [ ] Session/permission caches write on every read: `MemCache::get` moves entries to front under a lock; `BasicPermissionCache::get` renews the timer and deep-copies JSON. Options: renew timer after half the TTL, return `shared_ptr<const json>`, shard by key hash. **Do together with the `MemCache` expiry bug:** it only expires from the back of the list (`memcache.hpp:205-207`), which a move-to-front design makes worse. [P8.4, R4.2]
+- [ ] Response path: cache CORS header strings, compact JSON error bodies. **Do together with ST204:** stop sending `Allow` on normal responses and make the `405` list and `addCorsHeaders` consistent (`server.cpp:69-71`, `:115`). That removes a per-response header and fixes the conformance failure in one change. [P8.5, R3.2]
+- [ ] `Store` race (`store.hpp:24-56`, separate locks in `getObject`/`registerObject`): fix with `Store::cachedObject` and stop calling `getObject` in constructors and methods. [R4.1, P8.7, R5 style item]
+- Done when: no filter or middleware function above ~3% in the profile, and mixed throughput above Stage 4 on the current script.
 
-- [ ] **Race in `Store`.** `getObject`/`registerObject` check and insert under separate locks; two first-time callers can race (the second throws "already registered"). `src/store/store.hpp:24-56`
-- [ ] **`MemCache` only expires entries from the back of the list,** so an entry with an earlier expiry that was moved to the front survives until everything behind it has expired. `src/utils/memcache/memcache.hpp:205-207`
+### Step 9: Database round trips and statements
 
-## 5. Code quality
+- [ ] Count round trips per endpoint (`log_statement=all` for one `test_api.sh` run); targets: reads 1, writes 1-2. [P9.1]
+- [ ] Single-statement writes use `pqxx::nontransaction` (no `BEGIN`/`COMMIT`). **Partly done:** some `Database` paths already do; the `executeQuery<json, pqxx::work>` path used by `databasecontroller.cpp:67` does not. [P9.2]
+- [ ] Replace `checkItemExists` before insert with `INSERT ... ON CONFLICT DO NOTHING RETURNING id`. [P9.3]
+- [ ] Prepared statements for login, permission and by-id queries, re-prepared after `reconnect`. [P9.4]
+- [ ] **Related bug to fix in the same pass** (same code): `ClientController::Delete` calls `removeSession` after `EntityController::Delete` whatever the outcome (`clientcontroller.cpp:133-138`). `Suspend` (`:181`) does the same, which is fine for suspend but means a suspended client's session _is_ removed; that answers half of the `is_active` question in section 1 (re-check only matters for paths that don't go through `Suspend`). [R2.3]
+- Done when: round-trip counts are recorded in `docs/perf/` and no endpoint wraps a single statement in a transaction.
 
-- [ ] **Dead code:**
-  - `ResetPassword` (an empty stub that no route calls; `src/controllers/clientcontroller/clientcontroller.cpp:205-209`)
-  - unreachable `return true` after a returning `catch` (`src/validator/validator.cpp:71`, `:114`)
-  - unused `dos_detector` member (`src/api/v2/filters/ratelimit.hpp:60`)
-  - redundant key loop in `Search_t::validate` (`types.hpp:147-151`)
-- [ ] **Asymmetric rule-of-five.** Copy-construct is allowed but copy-assign is deleted. `KeeprBase` (`keeprbase.hpp:22-23`), `SessionManager` (`sessionmanager.hpp:22-24`)
-- [ ] **Macros:**
-  - `IUGUARD` declares a named local (`src/database/database.cpp:22`)
-  - `CRITICALMESSAGE` and `CRITICALMESSAGERESPONSE` depend on `e` and `callback` being in scope (`src/utils/global/global.hpp`)
-- [ ] **Typos in names:**
-  - `DatabaseHanndler` (4 files)
-  - directory `sqlinjectiondetectoor/`
-  - `staffcontrollerBase.hpp` (mixed case)
-- [ ] **`StaffData` logs with `fmt::print` and no newline,** so its parse errors bypass the logger and run into the next log line. Use `Message::ErrorMessage`. `src/entities/base/types.hpp:316`
-- [ ] **Style and portability:**
-  - `__attribute((always_inline))` in 3 files (use `[[gnu::always_inline]]`)
-  - `SuspendData` doesn't use an initializer list (`types.hpp:287`)
-  - `using X = struct X` config structs (`configurator.hpp`)
-  - hidden `static` `db_ctl` cache (`permissionmanager_private.hpp:79`)
-  - 5 `// [ ]` TODO comments
-  - `Store::getObject` called in constructors, so initialization order depends on first use
+## 3. Correctness bugs (independent of performance)
+
+- [ ] `communicate.cpp` captures `curl` and `data` by reference in a `static` map, so later requests use dangling references (`communicate.cpp:24-30`). [R2.2]
+- [ ] Appointment update/delete use the read permission query; no update/delete queries defined. Decide the intended rule (`permissionmanager.cpp:159-179`). [R2.5]
+- [ ] Client validator coerces before type check (`validator.cpp:169`): numeric `phone` passes. [R2.6]
+
+## 4. API conformance (Schemathesis)
+
+- [ ] ST201: reject non-integer search numbers (`2.5` truncated by `as<size_t>()`) and unknown properties (`types.hpp`, `Search_t`); add unit tests. [R3.1]
+- [ ] ST204 `Allow` header: handled in Step 8 (response path).
+- [ ] Re-run the conformance suite: zero ST201 and ST204 failures. [R3.3]
+
+## 5. Logging
+
+- [ ] `StaffData` uses `fmt::print` with no newline (`types.hpp:316`); use `Message::ErrorMessage`. [R5.5]
 
 ## 6. Documentation
 
-- [ ] **The OpenAPI generator is stale.** It shows the old staff URL (`/services/{type}/staff/...`, really `/staff/services/{type}/staff/...`) and clinic-only appointments. Update `tools/docs/build_docs.py:375-389` and `tools/docs/steps.py:66-93`, run `tools/docs/build.sh`, and commit `docs/`.
-- [ ] **Check the staff URLs against a running server.** The README documents them from the code.
+- [ ] Regenerate the OpenAPI docs: stale staff URL and clinic-only appointments (`build_docs.py:375-389`, `steps.py:66-93`; run `tools/docs/build.sh`, commit `docs/`). [R6.1]
+- [ ] Check staff URLs against a running server. [R6.2]
 
-## 7. Build
+## 7. Build and release
 
-- [ ] **Confirm a full image build with `conan.lock`.** The lock is in place but no image has been built with it yet. The next deps image build does it (ccache-warm on a push to main that changes the Conan files, or a manual `deps.yml` run), and it recompiles every dependency once, because `conan.lock` changes the cached dependency layer.
-- [ ] **Release a new image.** The entrypoint now handles persistence (loads the dump at start instead of `init.sql`, saves it on stop, `SIGHUP` restarts only the server) and the Dockerfile stamps the real version. Both reach users only with the next tagged release. Until then `valhalla.sh` falls back to restoring dumps itself. `docker/entrypoint.sh`, `docker/Dockerfile`
+- [ ] Confirm a full image build with `conan.lock` (next deps build recompiles every dependency once). [R7.1]
+- [ ] Tag a release so the new entrypoint persistence and version stamping reach users. [R7.2]
 
----
+## 8. Shell scripts (Linux / macOS)
 
-## Known issue, accepted as is
+Linux is solid and macOS mostly fine; only the items below are worth doing.
 
-- **Port already in use.** Trantor `exit(1)`s while threads are live, and the process aborts with "mutex lock failed".
+**High impact** (file : problem : affects)
+
+- [ ] **H6** `schemathesis_test.sh:47, 58-62`: `pip3 install --user` fails under PEP 668 (Debian 12+, Ubuntu 23.04+, Fedora, **Homebrew Python on macOS**). Use the venv approach already in `tools/docs/build.sh:22-27`. **macOS, newer Linux. Blocks the conformance re-run in section 4 on your Mac.**
+- [ ] **H7** `python3` hard requirement in `fuzz_auth.sh:13`, `sqlmap_test.sh:62`, `schemathesis_test.sh:55`, `tools/docs/build.sh:20`, `valhalla.sh:1086,1092,1108`. Stock macOS ships only the Xcode shim. Add one shared "find python" helper.
+- [ ] **H11** `db_init.sh:1`: no shebang, no `set -e`, resolves `init.sql` from the current directory. Fails with Exec format error when run directly. All platforms.
+- [ ] **H12** `valhalla.sh:1092`: `outdated` hard-requires `python3`, but only the optional Hub-tag lookup at 1947 uses it (`registry_digest` does not). All platforms.
+
+**Build script**
+
+- [ ] `build.sh:1`: `#!/bin/bash` should be `#!/usr/bin/env bash`, and add `set -euo pipefail` (today a failed `conan`/`cmake` still runs `ctest` and starts a stale binary). **This one can silently invalidate perf and test runs, so do it early.**

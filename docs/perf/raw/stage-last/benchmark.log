@@ -6,27 +6,28 @@
     ✓ 'rate>0.99' rate=100.00%
 
     http_req_duration
-    ✓ 'p(95)<500' p(95)=17.32ms
+    ✓ 'p(95)<500' p(95)=1ms
 
       {scenario:crud}
-      ✓ 'p(95)<800' p(95)=13.92ms
+      ✓ 'p(95)<800' p(95)=997µs
 
       {scenario:reads}
-      ✓ 'p(95)<300' p(95)=17.85ms
+      ✓ 'p(95)<300' p(95)=1.09ms
 
     http_req_failed
-    ✓ 'rate<0.01' rate=0.00%
+    ✓ 'rate<0.01' rate=0.11%
 
 
   █ TOTAL RESULTS 
 
-    checks_total.......: 761373  8446.335738/s
-    checks_succeeded...: 100.00% 761373 out of 761373
-    checks_failed......: 0.00%   0 out of 761373
+    checks_total.......: 7600    15965.078491/s
+    checks_succeeded...: 100.00% 7600 out of 7600
+    checks_failed......: 0.00%   0 out of 7600
 
     ✓ patients/create 200
     ✓ patients/read 200
     ✓ patients/update 200
+    ✓ providers/login 200
     ✓ patients/search 200
     ✓ visits/create 200
     ✓ visits/read 200
@@ -36,47 +37,45 @@
     ✓ appointments/delete 200
     ✓ patients/delete 200
     ✓ users/login 200
-    ✓ providers/services 200
-    ✓ radiologycenters/read 200
-    ✓ clinics/read 200
-    ✓ prescriptions/read 200
     ✓ paidservices/read 200
-    ✓ radiologycenters/search 200
-    ✓ laboratories/read 200
-    ✓ providers/read 200
-    ✓ users/read 200
-    ✓ users/services 200
-    ✓ clinics/search 200
-    ✓ hello 200
-    ✓ users/search 200
-    ✓ pharmacies/search 200
-    ✓ laboratories/search 200
-    ✓ pharmacies/read 200
-    ✓ patientdrugs/read 200
     ✓ providers/search 200
-    ✓ reports/read 200
-    ✓ health/read 200
+    ✓ users/services 200
     ✓ requests/read 200
-    ✓ providers/login 200
+    ✓ clinics/read 200
+    ✓ users/read 200
+    ✓ providers/read 200
     ✓ patients/getvisits 200
+    ✓ laboratories/read 200
+    ✓ patientdrugs/read 200
+    ✓ health/read 200
+    ✓ clinics/search 200
+    ✓ radiologycenters/search 200
+    ✓ reports/read 200
+    ✓ pharmacies/search 200
+    ✓ providers/services 200
+    ✓ prescriptions/read 200
+    ✓ pharmacies/read 200
+    ✓ users/search 200
+    ✓ radiologycenters/read 200
+    ✓ hello 200
+    ✓ laboratories/search 200
 
     HTTP
-    http_req_duration..............: avg=8.42ms  min=115µs    med=7.81ms p(90)=14.59ms p(95)=17.32ms p(99)=23.11ms max=149.44ms
-      { expected_response:true }...: avg=8.42ms  min=207µs    med=7.81ms p(90)=14.59ms p(95)=17.32ms p(99)=23.11ms max=149.44ms
-      { scenario:crud }............: avg=6.29ms  min=338µs    med=6.16ms p(90)=11.58ms p(95)=13.92ms p(99)=18.23ms max=137.18ms
-      { scenario:reads }...........: avg=8.87ms  min=207µs    med=8.09ms p(90)=15.1ms  p(95)=17.85ms p(99)=23.44ms max=149.44ms
-    http_req_failed................: 0.00%  8 out of 761405
-    http_reqs......................: 761405 8446.690732/s
+    http_req_duration..............: avg=590.1µs  min=41µs     med=523µs  p(90)=846µs   p(95)=1ms    p(99)=2.04ms  max=3.78ms 
+      { expected_response:true }...: avg=590.25µs min=156µs    med=523µs  p(90)=846µs   p(95)=1ms    p(99)=2.04ms  max=3.78ms 
+      { scenario:crud }............: avg=586.13µs min=156µs    med=521µs  p(90)=843µs   p(95)=997µs  p(99)=2.02ms  max=3.12ms 
+      { scenario:reads }...........: avg=703.28µs min=264µs    med=656µs  p(90)=890.8µs p(95)=1.09ms p(99)=2.02ms  max=2.19ms 
+    http_req_failed................: 0.11%  9 out of 7633
+    http_reqs......................: 7633   16034.400543/s
 
     EXECUTION
-    iteration_duration.............: avg=10.29ms min=300.83µs med=8.32ms p(90)=16.04ms p(95)=19.64ms p(99)=78.4ms  max=287.16ms
-    iterations.....................: 632783 7019.815081/s
-    vus............................: 11     min=11          max=109
-    vus_max........................: 120    min=120         max=120
+    iteration_duration.............: avg=5.38ms   min=394.95µs med=5.71ms p(90)=9.31ms  p(95)=9.95ms p(99)=12.21ms max=16.05ms
+    iterations.....................: 868    1823.380017/s
 
     NETWORK
-    data_received..................: 784 MB 8.7 MB/s
-    data_sent......................: 400 MB 4.4 MB/s
+    data_received..................: 6.0 MB 13 MB/s
+    data_sent......................: 4.7 MB 9.9 MB/s
 
 
 
+time="2026-11-15T06:44:28-05:00" level=error msg="test run was aborted because k6 received a 'interrupt' signal"

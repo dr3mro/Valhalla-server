@@ -1,0 +1,56 @@
+
+
+  █ THRESHOLDS 
+
+    http_req_duration{scenario:reads_quiet}
+    ✓ 'max>=0' max=3.89ms
+
+    http_req_duration{scenario:reads_slow}
+    ✓ 'max>=0' max=65.66ms
+
+    http_req_duration{scenario:slow_users}
+    ✓ 'max>=0' max=14s
+
+    http_reqs{scenario:reads_quiet}
+    ✓ 'count>=0' count=212838
+
+    http_reqs{scenario:reads_slow}
+    ✓ 'count>=0' count=200326
+
+    http_reqs{scenario:slow_users}
+    ✓ 'count>=0' count=9102
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 422266  12057.159248/s
+    checks_succeeded...: 100.00% 422266 out of 422266
+    checks_failed......: 0.00%   0 out of 422266
+
+    ✓ read 200
+    ✓ slow read 200 or 503
+
+    HTTP
+    http_req_duration..............: avg=666.48µs min=133µs   med=493µs    p(90)=736µs    p(95)=845µs    p(99)=1.21ms max=14s    
+      { expected_response:true }...: avg=666.48µs min=133µs   med=493µs    p(90)=736µs    p(95)=845µs    p(99)=1.21ms max=14s    
+      { scenario:reads_quiet }.....: avg=517.71µs min=262µs   med=486µs    p(90)=672µs    p(95)=753µs    p(99)=1.08ms max=3.89ms 
+      { scenario:reads_slow }......: avg=556.39µs min=133µs   med=516µs    p(90)=799µs    p(95)=915µs    p(99)=1.32ms max=65.66ms
+      { scenario:slow_users }......: avg=6.56ms   min=157µs   med=354µs    p(90)=516µs    p(95)=599µs    p(99)=1.05ms max=14s    
+    http_req_failed................: 0.00%  0 out of 422268
+    http_reqs......................: 422268 12057.216355/s
+      { scenario:reads_quiet }.....: 212838 6077.263289/s
+      { scenario:reads_slow }......: 200326 5720.002282/s
+      { scenario:slow_users }......: 9102   259.893677/s
+
+    EXECUTION
+    iteration_duration.............: avg=706.82µs min=147.5µs med=533.58µs p(90)=781.16µs p(95)=893.29µs p(99)=1.28ms max=14s    
+    iterations.....................: 422266 12057.159248/s
+    vus............................: 12     min=0           max=12
+    vus_max........................: 20     min=20          max=20
+
+    NETWORK
+    data_received..................: 331 MB 9.5 MB/s
+    data_sent......................: 212 MB 6.1 MB/s
+
+
+

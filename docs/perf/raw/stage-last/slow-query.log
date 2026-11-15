@@ -3,54 +3,52 @@
   █ THRESHOLDS 
 
     http_req_duration{scenario:reads_quiet}
-    ✓ 'max>=0' max=5.65ms
+    ✓ 'max>=0' max=1.11ms
 
     http_req_duration{scenario:reads_slow}
-    ✓ 'max>=0' max=14s
+    ✓ 'max>=0' max=0s
 
     http_req_duration{scenario:slow_users}
-    ✓ 'max>=0' max=14s
+    ✓ 'max>=0' max=0s
 
     http_reqs{scenario:reads_quiet}
-    ✓ 'count>=0' count=192823
+    ✓ 'count>=0' count=873
 
     http_reqs{scenario:reads_slow}
-    ✓ 'count>=0' count=180174
+    ✓ 'count>=0' count=0
 
     http_reqs{scenario:slow_users}
-    ✓ 'count>=0' count=8202
+    ✓ 'count>=0' count=0
 
 
   █ TOTAL RESULTS 
 
-    checks_total.......: 381199  10877.892455/s
-    checks_succeeded...: 100.00% 381199 out of 381199
-    checks_failed......: 0.00%   0 out of 381199
+    checks_total.......: 872     17131.294081/s
+    checks_succeeded...: 100.00% 872 out of 872
+    checks_failed......: 0.00%   0 out of 872
 
     ✓ read 200
-    ✓ slow read 200 or 503
 
     HTTP
-    http_req_duration..............: avg=739.48µs min=144µs    med=488µs   p(90)=711µs    p(95)=811µs    p(99)=1.14ms max=14s   
-      { expected_response:true }...: avg=739.48µs min=144µs    med=488µs   p(90)=711µs    p(95)=811µs    p(99)=1.14ms max=14s   
-      { scenario:reads_quiet }.....: avg=570.72µs min=252µs    med=533µs   p(90)=759µs    p(95)=856µs    p(99)=1.22ms max=5.65ms
-      { scenario:reads_slow }......: avg=622µs    min=144µs    med=446µs   p(90)=624µs    p(95)=722µs    p(99)=1.05ms max=14s   
-      { scenario:slow_users }......: avg=7.28ms   min=159µs    med=410µs   p(90)=673µs    p(95)=771µs    p(99)=1.15ms max=14s   
-    http_req_failed................: 0.00%  0 out of 381201
-    http_reqs......................: 381201 10877.949527/s
-      { scenario:reads_quiet }.....: 192823 5502.39601/s
-      { scenario:reads_slow }......: 180174 5141.44422/s
-      { scenario:slow_users }......: 8202   234.052224/s
+    http_req_duration..............: avg=385.8µs  min=177µs    med=348µs    p(90)=545.6µs  p(95)=666.09µs p(99)=922.11µs max=1.73ms
+      { expected_response:true }...: avg=385.8µs  min=177µs    med=348µs    p(90)=545.6µs  p(95)=666.09µs p(99)=922.11µs max=1.73ms
+      { scenario:reads_quiet }.....: avg=382.86µs min=177µs    med=348µs    p(90)=539.8µs  p(95)=643.79µs p(99)=860.67µs max=1.11ms
+      { scenario:reads_slow }......: avg=0s       min=0s       med=0s       p(90)=0s       p(95)=0s       p(99)=0s       max=0s    
+      { scenario:slow_users }......: avg=0s       min=0s       med=0s       p(90)=0s       p(95)=0s       p(99)=0s       max=0s    
+    http_req_failed................: 0.00%  0 out of 875
+    http_reqs......................: 875    17190.232019/s
+      { scenario:reads_quiet }.....: 873    17150.94006/s
+      { scenario:reads_slow }......: 0      0/s
+      { scenario:slow_users }......: 0      0/s
 
     EXECUTION
-    iteration_duration.............: avg=782.75µs min=157.91µs med=532.2µs p(90)=759.95µs p(95)=865.54µs p(99)=1.22ms max=14s   
-    iterations.....................: 381199 10877.892455/s
-    vus............................: 12     min=0           max=12
-    vus_max........................: 20     min=20          max=20
+    iteration_duration.............: avg=415.79µs min=204.58µs med=376.66µs p(90)=581.27µs p(95)=705.34µs p(99)=894.64µs max=1.31ms
+    iterations.....................: 872    17131.294081/s
 
     NETWORK
-    data_received..................: 299 MB 8.5 MB/s
-    data_sent......................: 192 MB 5.5 MB/s
+    data_received..................: 687 kB 14 MB/s
+    data_sent......................: 443 kB 8.7 MB/s
 
 
 
+time="2026-11-15T06:44:28-05:00" level=error msg="test run was aborted because k6 received a 'interrupt' signal"

@@ -4,7 +4,7 @@
 //   SMOKE=1 k6 run tools/k6/benchmark.js              # 1 VU, 10s sanity check
 //   BASE_URL=http://host:8080 k6 run tools/k6/benchmark.js
 //
-// Env overrides: BASE_URL, PROVIDER_USER, PROVIDER_PASS, USER_NAME, USER_PASS, SMOKE
+// Env overrides: BASE_URL, PROVIDER_USER, PROVIDER_PASS, USER_NAME, USER_PASS, SMOKE, AUTH_RATE
 //
 // NOTE: your rate limiter / blacklist (.env: RL_*, BAN_*, WHITELIST, BLACKLIST) will start
 // returning 429/403 under load. Whitelist the load generator's IP before benchmarking.
@@ -16,6 +16,8 @@ const BASE = (__ENV.BASE_URL || 'http://127.0.0.1:8080') + '/api/v2';
 const PROVIDER = { username: __ENV.PROVIDER_USER || 'provider', password: __ENV.PROVIDER_PASS || '1234@Abc!' };
 const USER = { username: __ENV.USER_NAME || 'user1', password: __ENV.USER_PASS || '123Mm@p0' };
 const SMOKE = !!__ENV.SMOKE;
+// AUTH_RATE=0 leaves the login scenario out (to see how much password hashing costs the rest of the mix); default 5 logins per second.
+const AUTH_RATE = __ENV.AUTH_RATE === undefined ? 5 : Number(__ENV.AUTH_RATE);
 
 export const options = {
   scenarios: SMOKE
@@ -35,14 +37,18 @@ export const options = {
         // write traffic: full create -> read -> update -> search -> delete lifecycles
         crud: { executor: 'constant-vus', exec: 'crud', vus: 10, duration: '90s' },
         // login endpoints (password hashing + token issuing)
-        auth: {
-          executor: 'constant-arrival-rate',
-          exec: 'auth',
-          rate: 5,
-          timeUnit: '1s',
-          duration: '90s',
-          preAllocatedVUs: 10,
-        },
+        ...(AUTH_RATE > 0
+          ? {
+              auth: {
+                executor: 'constant-arrival-rate',
+                exec: 'auth',
+                rate: AUTH_RATE,
+                timeUnit: '1s',
+                duration: '90s',
+                preAllocatedVUs: 10,
+              },
+            }
+          : {}),
       },
   thresholds: {
     http_req_failed: ['rate<0.01'],
