@@ -2346,28 +2346,28 @@ update_banner() {
   local title="🔄  Updating Valhalla"
   pad=$((w - 2 - ${#title}))
   ((pad < 0)) && pad=0
-  printf '%s%s%s %s%s%s%*s%s%s\n' "$E_HEAD" "$vt" "$E_R" "$E_ACC$E_B" "$title" "$E_R" "$pad" "" "$E_HEAD" "$vt" "$E_R" >&2
+  printf '%s%s%s %s%s%s%*s%s%s%s\n' "$E_HEAD" "$vt" "$E_R" "$E_ACC$E_B" "$title" "$E_R" "$pad" "" "$E_HEAD" "$vt" "$E_R" >&2
   if [[ -n $sub ]]; then
     pad=$((w - 2 - ${#sub}))
     ((pad < 0)) && pad=0
-    printf '%s%s%s %s%s%s%*s%s%s\n' "$E_HEAD" "$vt" "$E_R" "$E_DIM" "$sub" "$E_R" "$pad" "" "$E_HEAD" "$vt" "$E_R" >&2
+    printf '%s%s%s %s%s%s%*s%s%s%s\n' "$E_HEAD" "$vt" "$E_R" "$E_DIM" "$sub" "$E_R" "$pad" "" "$E_HEAD" "$vt" "$E_R" >&2
   fi
   printf '%s%s%s%s%s\n' "$E_HEAD" "$bl" "$line" "$br" "$E_R" >&2
   echo >&2
 }
 
 update_footer() {
-  local w=52 i
+  local w=52 i pad
   local tl tr bl br hz vt
   if [[ -n $E_i_step ]]; then tl="╭"; tr="╮"; bl="╰"; br="╯"; hz="─"; vt="│"; else tl="+"; tr="+"; bl="+"; br="+"; hz="-"; vt="|"; fi
   local line=""; for ((i=0;i<w;i++)); do line+="$hz"; done
   echo >&2
-  printf '%s%s%s%s%s
-' "$E_OK" "$tl" "$line" "$tr" "$E_R" >&2
-  printf '%s%s%s %s%s%s %s%s
-' "$E_OK" "$vt" "$E_R" "$E_OK$E_B" "✅  Update complete" "$E_R" "$E_OK$vt" "$E_R" >&2
-  printf '%s%s%s%s%s
-' "$E_OK" "$bl" "$line" "$br" "$E_R" >&2
+  printf '%s%s%s%s%s\n' "$E_OK" "$tl" "$line" "$tr" "$E_R" >&2
+  local title="✅  Update complete"
+  pad=$((w - 2 - ${#title}))
+  ((pad < 0)) && pad=0
+  printf '%s%s%s %s%s%s%*s%s%s%s\n' "$E_OK" "$vt" "$E_R" "$E_OK$E_B" "$title" "$E_R" "$pad" "" "$E_OK" "$vt" "$E_R" >&2
+  printf '%s%s%s%s%s\n' "$E_OK" "$bl" "$line" "$br" "$E_R" >&2
   echo >&2
 }
 cmd_update() {
