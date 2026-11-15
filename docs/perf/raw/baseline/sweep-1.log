@@ -2,27 +2,27 @@
 
   █ TOTAL RESULTS 
 
-    checks_total.......: 12195   2432.614387/s
-    checks_succeeded...: 100.00% 12195 out of 12195
-    checks_failed......: 0.00%   0 out of 12195
+    checks_total.......: 106272  5311.559299/s
+    checks_succeeded...: 100.00% 106272 out of 106272
+    checks_failed......: 0.00%   0 out of 106272
 
     ✓ read 200
 
     HTTP
-    http_req_duration..............: avg=352.98µs min=246µs    med=353µs    p(90)=402µs    p(95)=408µs    p(99)=464.24µs max=10.28ms
-      { expected_response:true }...: avg=352.98µs min=246µs    med=353µs    p(90)=402µs    p(95)=408µs    p(99)=464.24µs max=10.28ms
-    http_req_failed................: 0.00%  0 out of 12196
-    http_reqs......................: 12196  2432.813864/s
+    http_req_duration..............: avg=173.56µs min=152µs   med=171µs    p(90)=182µs    p(95)=187µs   p(99)=234µs    max=6.06ms
+      { expected_response:true }...: avg=173.56µs min=152µs   med=171µs    p(90)=182µs    p(95)=187µs   p(99)=234µs    max=6.06ms
+    http_req_failed................: 0.00%  0 out of 106273
+    http_reqs......................: 106273 5311.60928/s
 
     EXECUTION
-    iteration_duration.............: avg=405.5µs  min=258.41µs med=412.45µs p(90)=474.58µs p(95)=484.72µs p(99)=625.15µs max=5.76ms 
-    iterations.....................: 12195  2432.614387/s
-    vus............................: 1      min=1          max=1
-    vus_max........................: 1      min=1          max=1
+    iteration_duration.............: avg=187.09µs min=163.7µs med=183.75µs p(90)=195.83µs p(95)=201.7µs p(99)=258.06µs max=3.31ms
+    iterations.....................: 106272 5311.559299/s
+    vus............................: 1      min=1           max=1
+    vus_max........................: 1      min=1           max=1
 
     NETWORK
-    data_received..................: 9.6 MB 1.9 MB/s
-    data_sent......................: 6.2 MB 1.2 MB/s
+    data_received..................: 83 MB  4.2 MB/s
+    data_sent......................: 54 MB  2.7 MB/s
 
 
 
