@@ -272,7 +272,7 @@ unlink_command() {
   link="$BIN_DIR/vdt"
   if [ -L "$link" ] && [ "$(readlink "$link")" = "$DIR/vdt" ]; then
     rm -f "$link"
-    say "✂️  Removed $link"
+    say "✂️   Removed $link"
   fi
 }
 
