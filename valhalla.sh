@@ -1154,15 +1154,24 @@ WARNINGS=()
 
 # install_hint TOOL: how to get TOOL.
 install_hint() {
-  local brew=""
+  local brew="" mac=""
   command -v brew >/dev/null 2>&1 && brew="brew install"
+  [[ $(uname -s) == Darwin ]] && mac=1
   case "$1" in
-    container) echo "https://github.com/apple/container/releases${brew:+ or: $brew container}" ;;
+    container)
+      if [[ -n $mac ]]; then echo "https://github.com/apple/container/releases${brew:+ or: $brew container}"
+      else echo "Apple container is macOS only; use docker: VALHALLA_RUNTIME=docker"
+      fi
+      ;;
     docker) echo "https://docs.docker.com/get-docker/" ;;
-    "container or docker") echo "Apple container: https://github.com/apple/container/releases; Docker: https://docs.docker.com/get-docker/" ;;
-    python3) echo "${brew:+$brew python  (or: }xcode-select --install${brew:+)}" ;;
-    git) echo "${brew:+$brew git  (or: }xcode-select --install${brew:+)}" ;;
-    "open or xdg-open") echo "xdg-utils from your package manager" ;;
+    "container or docker")
+      if [[ -n $mac ]]; then echo "Apple container: https://github.com/apple/container/releases; Docker: https://docs.docker.com/get-docker/"
+      else echo "Docker: https://docs.docker.com/engine/install/"
+      fi
+      ;;
+    python3) if [[ -n $mac ]]; then echo "${brew:+$brew python  (or: }xcode-select --install${brew:+)}"; else echo "${brew:-your package manager:} python3"; fi ;;
+    git) if [[ -n $mac ]]; then echo "${brew:+$brew git  (or: }xcode-select --install${brew:+)}"; else echo "${brew:-your package manager:} git"; fi ;;
+    xdg-open) echo "xdg-utils from your package manager" ;;
     "openssl or python3") echo "${brew:+$brew openssl or }install python3" ;;
     docker/Dockerfile) echo "build needs a full checkout: git clone https://github.com/dr3mro/Valhalla-server" ;;
     *.sh | */*) echo "missing next to $SCRIPT; reinstall, or restore it with: git checkout -- $1" ;;
@@ -1228,7 +1237,11 @@ check_deps() {
       need_file docker/Dockerfile
       want git "the image version will be \"dev\""
       ;;
-    doc) need_any "open or xdg-open" open xdg-open ;;
+    doc)
+      if [[ $(uname -s) == Darwin ]]; then need open
+      else need_any "xdg-open" xdg-open wslview
+      fi
+      ;;
     install | uninstall | update) need curl ;;
     test)
       need curl
@@ -1241,7 +1254,7 @@ check_deps() {
       ;;
     payload)
       need fzf
-      want bat "nicer payload colors"
+      command -v batcat >/dev/null 2>&1 || want bat "nicer payload colors" # Debian/Ubuntu name it batcat
       ;;
   esac
 
@@ -1785,7 +1798,13 @@ create_container() {
   if [[ "$(env_get VALHALLA_PERSIST || true)" == 1 ]]; then
     migrate_persist_file
     mkdir -p "$DUMP_DIR"
-    args+=(-v "$DUMP_DIR:/persist")
+    # :z relabels the folder for SELinux (Fedora, RHEL); without it the
+    # container can't write there. Only Docker on Linux needs or knows it.
+    if [[ $RT == docker && $(uname -s) == Linux ]]; then
+      args+=(-v "$DUMP_DIR:/persist:z")
+    else
+      args+=(-v "$DUMP_DIR:/persist")
+    fi
   fi
   if [[ $RT == docker ]]; then
     args+=(--cpus "$CPUS" --memory "${MEMORY_GB}g")
@@ -2597,12 +2616,16 @@ cmd_doc() {
   curl -fsS "$HEALTH_URL" >/dev/null 2>&1 ||
     die "$NAME is running but the server isn't answering at $HEALTH_URL (see: $PROG logs)"
   say_info "Opening $DOC_URL"
-  if command -v open >/dev/null 2>&1; then
+  # macOS: open. Elsewhere xdg-open first: on Debian/Ubuntu `open` can be
+  # openvt (from kbd), which would try to start a virtual console.
+  if [[ $(uname -s) == Darwin ]] && command -v open >/dev/null 2>&1; then
     open "$DOC_URL"
   elif command -v xdg-open >/dev/null 2>&1; then
     xdg-open "$DOC_URL" >/dev/null 2>&1
+  elif [[ $(uname -s) != Darwin ]] && command -v wslview >/dev/null 2>&1; then
+    wslview "$DOC_URL"
   else
-    die "no 'open' or 'xdg-open' found; browse to $DOC_URL"
+    die "no browser opener (open, xdg-open or wslview) found; browse to $DOC_URL"
   fi
 }
 
@@ -2768,7 +2791,7 @@ payload_colorize() {
   # is only used for --filled, which is valid JSON by construction.
   if [[ -n $bat ]] && { [[ $file == - ]] || ! grep -q ':[[:space:]]*{{' "$file"; }; then
     "$bat" --color=always --style=plain -l json "$file" |
-      sed -E "s/{{[A-Z_]+}}/${ph_esc}&${r_esc}/g"
+      sed -E "s/\\{\\{[A-Z_]+\\}\\}/${ph_esc}&${r_esc}/g" # escaped: GNU sed rejects a bare {{
     return 0
   fi
   awk -v hi="$colors" '

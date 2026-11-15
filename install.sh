@@ -34,14 +34,8 @@
 
 set -eu
 
-# Colors when stdout/stderr is a terminal.
-if [ -t 1 ]; then
-  BOLD=$(printf '\033[1m'); DIM=$(printf '\033[2m'); RST=$(printf '\033[0m')
-  C_INFO=$(printf '\033[36m'); C_OK=$(printf '\033[32m'); C_WARN=$(printf '\033[33m')
-else
-  BOLD=; DIM=; RST=; C_INFO=; C_OK=; C_WARN=
-fi
-if [ -t 2 ]; then C_ERR=$(printf '\033[31m'); else C_ERR=; fi
+# Red "error:" when stderr is a terminal.
+if [ -t 2 ]; then C_ERR=$(printf '\033[31m'); RST=$(printf '\033[0m'); else C_ERR=; RST=; fi
 
 
 REPO="dr3mro/Valhalla-server"
