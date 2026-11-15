@@ -3030,16 +3030,8 @@ install_tool() {
   local ref="${1:-main}" new
   local -a args=(--replace --ref "$ref")
   [[ -f $ROOT/VERSION ]] && args+=(--dir "$ROOT")
-  if [[ -f $ROOT/installer ]]; then
-    new="$ROOT/installer"
-    sh "$new" "${args[@]}"; local rc=$?
-  elif [[ -f $ROOT/install.sh ]]; then
-    new="$ROOT/install.sh"
-    VALHALLA_SOURCE="$ROOT" sh "$new" "${args[@]}"; local rc=$?
-  else
-    new="$(fetch_installer)" || return 1
-    sh "$new" "${args[@]}"; local rc=$?
-  fi
+  new="$(fetch_installer)" || return 1
+  sh "$new" "${args[@]}"; local rc=$?
   [[ "$new" != "$ROOT/install.sh" ]] && rm -f "$new"
   ((rc == 0)) || return "$rc"
   forget_update_state
