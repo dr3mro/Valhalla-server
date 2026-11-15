@@ -12,7 +12,13 @@ class DbExecutor : public BoundedExecutor
 {
    public:
     DbExecutor();  // sizes come from the Configurator
-    DbExecutor(std::size_t workers, std::size_t queue_max);
+    DbExecutor(std::size_t workers, std::size_t queue_max, bool io_fast_path = false);
+
+    // True when requests are first tried on the IO thread (see database/dbprobe.hpp) and only queued if they need the database.
+    [[nodiscard]] bool ioFastPath() const { return io_fast_path_ && !inlineMode(); }
+
+   private:
+    bool io_fast_path_ = false;
 };
 
 // Runs body(callback) on the DB workers; a full queue answers 503 and body never runs.

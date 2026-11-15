@@ -6,7 +6,9 @@
 #include "database/databaseconnectionpool.hpp"
 #include "store/store.hpp"
 
-DatabaseHanndler::DatabaseHanndler() : databaseConnectionPool(Store::getObject<DatabaseConnectionPool>()) { db_ptr = databaseConnectionPool->get_connection(); }
+DatabaseHanndler::DatabaseHanndler() : DatabaseHanndler(Store::getObject<DatabaseConnectionPool>()) {}
+
+DatabaseHanndler::DatabaseHanndler(std::shared_ptr<DatabaseConnectionPool> pool) : databaseConnectionPool(std::move(pool)) { db_ptr = databaseConnectionPool->get_connection(); }
 
 DatabaseHanndler::~DatabaseHanndler()
 {

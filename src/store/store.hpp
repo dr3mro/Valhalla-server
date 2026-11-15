@@ -1,5 +1,7 @@
 #pragma once
 
+#include <atomic>
+#include <cstdint>
 #include <memory>
 #include <mutex>
 #include <stdexcept>
@@ -55,6 +57,23 @@ class Store
         return registerObject<T>(std::forward<Args>(args)...);
     }
 
+    // Like getObject<T>(), but cheap enough for the request path: each thread keeps its own pointer and only goes back to the
+    // Store (mutex + type lookup) after replaceObject() has changed something. Use it where an object is looked up for every
+    // request (member initializers of objects built per request); long-lived objects can keep calling getObject<T>() once.
+    template <typename T>
+    [[nodiscard]] static std::shared_ptr<T> cachedObject()
+    {
+        thread_local std::shared_ptr<T> cached;
+        thread_local uint64_t           seen = 0;
+        const uint64_t                  now  = generation.load(std::memory_order_acquire);
+        if (!cached || seen != now)
+        {
+            cached = getObject<T>();
+            seen   = now;
+        }
+        return cached;
+    }
+
     // Replace an already-registered singleton without throwing.
     // Used by test harnesses to inject fakes (see tests/support/fake_db.hpp).
     template <typename T>
@@ -62,9 +81,11 @@ class Store
     {
         std::scoped_lock lock(inventoryMutex);
         inventory[typeid(T)] = obj;
+        generation.fetch_add(1, std::memory_order_release);  // makes every thread's cachedObject<T>() look again
     }
 
    private:
     static std::unordered_map<std::type_index, std::shared_ptr<void>> inventory;
     static std::mutex                                                 inventoryMutex;
+    static std::atomic<uint64_t>                                      generation;  // bumped by replaceObject()
 };

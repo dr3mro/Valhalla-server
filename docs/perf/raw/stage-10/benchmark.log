@@ -1,0 +1,82 @@
+
+
+  █ THRESHOLDS 
+
+    checks
+    ✓ 'rate>0.99' rate=100.00%
+
+    http_req_duration
+    ✓ 'p(95)<500' p(95)=97.56ms
+
+      {scenario:crud}
+      ✓ 'p(95)<800' p(95)=45.65ms
+
+      {scenario:reads}
+      ✓ 'p(95)<300' p(95)=108.88ms
+
+    http_req_failed
+    ✓ 'rate<0.01' rate=0.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 627550  6965.979369/s
+    checks_succeeded...: 100.00% 627550 out of 627550
+    checks_failed......: 0.00%   0 out of 627550
+
+    ✓ patients/create 200
+    ✓ patients/read 200
+    ✓ patients/update 200
+    ✓ patients/search 200
+    ✓ visits/create 200
+    ✓ visits/read 200
+    ✓ visits/delete 200
+    ✓ appointments/create 200
+    ✓ appointments/read 200
+    ✓ appointments/delete 200
+    ✓ patients/delete 200
+    ✓ providers/login 200
+    ✓ requests/read 200
+    ✓ users/search 200
+    ✓ users/services 200
+    ✓ providers/services 200
+    ✓ pharmacies/read 200
+    ✓ patients/getvisits 200
+    ✓ radiologycenters/read 200
+    ✓ patientdrugs/read 200
+    ✓ prescriptions/read 200
+    ✓ clinics/search 200
+    ✓ paidservices/read 200
+    ✓ laboratories/read 200
+    ✓ clinics/read 200
+    ✓ health/read 200
+    ✓ hello 200
+    ✓ users/read 200
+    ✓ providers/search 200
+    ✓ providers/read 200
+    ✓ radiologycenters/search 200
+    ✓ laboratories/search 200
+    ✓ pharmacies/search 200
+    ✓ reports/read 200
+    ✓ users/login 200
+
+    HTTP
+    http_req_duration..............: avg=10.31ms min=44µs    med=596µs    p(90)=1.2ms  p(95)=97.56ms  p(99)=220.46ms max=264.01ms
+      { expected_response:true }...: avg=10.31ms min=44µs    med=596µs    p(90)=1.2ms  p(95)=97.56ms  p(99)=220.46ms max=264.01ms
+      { scenario:crud }............: avg=7.8ms   min=195µs   med=669µs    p(90)=1.26ms p(95)=45.65ms  p(99)=197.17ms max=261.86ms
+      { scenario:reads }...........: avg=10.85ms min=44µs    med=581µs    p(90)=1.18ms p(95)=108.88ms p(99)=223ms    max=264.01ms
+    http_req_failed................: 0.00%  8 out of 627582
+    http_reqs......................: 627582 6966.334578/s
+
+    EXECUTION
+    iteration_duration.............: avg=12.45ms min=75.91µs med=665.18µs p(90)=1.75ms p(95)=117.94ms p(99)=227.16ms max=1s      
+    iterations.....................: 523190 5807.554372/s
+    vus............................: 11     min=11          max=109
+    vus_max........................: 120    min=120         max=120
+
+    NETWORK
+    data_received..................: 645 MB 7.2 MB/s
+    data_sent......................: 330 MB 3.7 MB/s
+
+
+

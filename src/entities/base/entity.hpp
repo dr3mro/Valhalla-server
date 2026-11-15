@@ -87,7 +87,7 @@ class Entity : public Base
             Message::ErrorMessage(fmt::format("Failed to create Sql search statement for table {}.", tablename));
             return false;
         }
-        auto result = databaseController->checkItemExists(tablename, "id", std::to_string(_id.value()));
+        auto result = databaseController()->checkItemExists(tablename, "id", std::to_string(_id.value()));
         return result.value_or(false);
     }
 
@@ -231,7 +231,8 @@ class Entity : public Base
     }
 
     const std::string                   tablename;                                                   /*NOLINT*/
-    std::shared_ptr<DatabaseController> databaseController = Store::getObject<DatabaseController>(); /*NOLINT*/
+    // The database controller is one global object: entities are built for every request, so they do not each carry a pointer to it.
+    static std::shared_ptr<DatabaseController> databaseController() { return Store::cachedObject<DatabaseController>(); }
 
    private:
     const EntityType data;

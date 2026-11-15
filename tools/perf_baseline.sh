@@ -8,7 +8,8 @@
 #   2. seeds a provider and a user (the k6 benchmark logs in as them)
 #   3. runs a concurrency sweep on one read endpoint (tools/k6/sweep.js) at 1/8/32/128 VUs
 #   4. runs the full mixed benchmark (tools/k6/benchmark.js: reads + crud + auth)
-#   5. samples container CPU/memory while it runs
+#   5. runs a login burst and a slow-query scenario (reads while requests wait on a locked table; needs psql)
+#   5b. samples container CPU/memory while it runs
 #   6. writes docs/perf/<label>.md (default: baseline.md) plus raw k6 JSON under docs/perf/raw/<label>/
 #
 # Usage:  tools/perf_baseline.sh [options]
@@ -187,6 +188,29 @@ post /clients/providers/create "$PROVIDER_JSON" >/dev/null || true
 k6 run --quiet --summary-export "$RAW/login-burst.json" "$ROOT/tools/k6/login_burst.js" >"$RAW/login-burst.log" 2>&1 \
 	|| echo "   (k6 exited non-zero; see $RAW/login-burst.log)"
 
+# ---- 5c. slow query: does a query stuck in the database slow down unrelated reads?
+# A background psql locks the users table during the second phase, so reads of that table wait inside the database while
+# reads of the providers table go on. Needs psql and the same DB_* settings the server uses (native mode loads them from .env).
+SLOW_DONE=0
+if command -v psql >/dev/null; then
+	SLOW_PHASE=15
+	log "Slow query (reads alone, then reads while ${SLOW_VUS:-4} clients wait on a locked table), about 45 seconds"
+	post /clients/providers/create "$PROVIDER_JSON" >/dev/null || true
+	(
+		sleep $((SLOW_PHASE + 5 + 1))
+		PGPASSWORD="${DB_PASS:-}" psql -q -h "${DB_HOST:-127.0.0.1}" -p "${DB_PORT:-5432}" -U "${DB_USER:-postgres}" -d "${DB_NAME:-postgres}" \
+			-c "BEGIN; LOCK TABLE users IN ACCESS EXCLUSIVE MODE; SELECT pg_sleep($((SLOW_PHASE - 1))); COMMIT;" >"$RAW/slow-query-lock.log" 2>&1
+	) &
+	LOCK_PID=$!
+	k6 run --quiet -e PHASE="${SLOW_PHASE}s" --summary-export "$RAW/slow-query.json" "$ROOT/tools/k6/slow_query.js" >"$RAW/slow-query.log" 2>&1 \
+		|| echo "   (k6 exited non-zero; see $RAW/slow-query.log)"
+	wait "$LOCK_PID" 2>/dev/null
+	SLOW_DONE=1
+	if grep -qi "error\|fatal" "$RAW/slow-query-lock.log" 2>/dev/null; then echo "WARNING: the table lock failed, see $RAW/slow-query-lock.log"; SLOW_DONE=0; fi
+else
+	echo "note: psql not found, skipping the slow-query scenario"
+fi
+
 [[ -n $STATS_PID ]] && { kill "$STATS_PID" 2>/dev/null; STATS_PID=""; }
 
 # A run where most requests failed measures the rate limiter, not the server: refuse to call it a result.
@@ -200,8 +224,8 @@ done
 # ---- 6. report
 log "Writing $REPORT"
 m() { jq -r --arg k "$2" "$3" "$1" 2>/dev/null || echo "n/a"; }   # m <file> <key> <jq>
-burst_row() { # burst_row <label> <read scenario> <login scenario or empty>
-	local f="$RAW/login-burst.json"
+burst_row() { # burst_row <label> <read scenario> <other scenario or empty> [json file]
+	local f="${4:-$RAW/login-burst.json}"
 	[[ -s $f ]] || { echo "| $1 | n/a | n/a | n/a | n/a |"; return; }
 	jq -r --arg l "$1" --arg rs "$2" --arg ls "$3" '
 		.metrics as $m |
@@ -228,7 +252,7 @@ row() { # row <label> <json>
 	if [[ $START == 0 ]]; then
 		target_desc="existing server"
 	elif [[ $MODE == native ]]; then
-		target_desc="native build/Release/server, threads=${SERVER_THREADS:-default}, db_conn=${DB_MAX_CONN:-default}"
+		target_desc="native build/Release/server, threads=${SERVER_THREADS:-default}, db_conn=${DB_MAX_CONN:-default}, db_workers=${DB_WORKERS:-default}"
 	else
 		target_desc="fresh ${RUNTIME} container"
 	fi
@@ -257,6 +281,19 @@ row() { # row <label> <json>
 	echo "|-------|-----------|-------------|-------------|-------------|"
 	burst_row "reads alone" "reads_quiet" ""
 	burst_row "reads during login burst" "reads_burst" "logins"
+	echo
+	echo "## Slow query (read latency while other requests wait on a locked table)"
+	echo
+	if [[ $SLOW_DONE == 1 ]]; then
+		echo "| phase | read req/s | read p95 ms | read p99 ms | slow req/s |"
+		echo "|-------|-----------|-------------|-------------|-----------|"
+		burst_row "reads alone" "reads_quiet" "" "$RAW/slow-query.json"
+		burst_row "reads while ${SLOW_VUS:-4} requests are stuck" "reads_slow" "slow_users" "$RAW/slow-query.json"
+		echo
+		echo "Read p99 should stay close to the first row. If it follows the stuck requests, database work is still blocking request threads (or SLOW_VUS is not below DB_WORKERS and SERVER_THREADS)."
+	else
+		echo "Skipped (no psql, or the table lock failed)."
+	fi
 	echo
 	if [[ -s $RAW/container-stats.txt ]]; then
 		echo "## Container CPU / memory (peak sample)"

@@ -20,6 +20,7 @@
 #include "entities/services/laboratories.hpp"
 #include "entities/services/pharmacies.hpp"
 #include "entities/services/radiologycenters.hpp"
+#include "database/dbexecutor.hpp"
 #include "store/store.hpp"
 
 namespace api::v2
@@ -29,12 +30,12 @@ namespace api::v2
        public:
         void Create(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& serviceType)
         {
-            executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Create, req, std::move(callback), req->body());
+            executeControllerMethod(*dbExecutor, serviceRegistry, serviceType, &ServiceControllerBase::Create, req, std::move(callback), req->body());
         }
 
         void Read(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& serviceType)
         {
-            executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Read, req, std::move(callback), req->body());
+            executeControllerMethod(*dbExecutor, serviceRegistry, serviceType, &ServiceControllerBase::Read, req, std::move(callback), req->body());
         }
 
         void Update(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& serviceType)
@@ -42,18 +43,18 @@ namespace api::v2
             auto id = parseIdParam(req, "id", callback);
             if (!id)
                 return;
-            executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Update, req, std::move(callback), req->body(), *id);
+            executeControllerMethod(*dbExecutor, serviceRegistry, serviceType, &ServiceControllerBase::Update, req, std::move(callback), req->body(), *id);
         }
         void Delete(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& serviceType)
         {
             auto id = parseIdParam(req, "id", callback);
             if (!id)
                 return;
-            executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Delete, req, std::move(callback), *id);
+            executeControllerMethod(*dbExecutor, serviceRegistry, serviceType, &ServiceControllerBase::Delete, req, std::move(callback), *id);
         }
         void Search(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& serviceType)
         {
-            executeControllerMethod(serviceRegistry, serviceType, &ServiceControllerBase::Search, req, std::move(callback), req->body());
+            executeControllerMethod(*dbExecutor, serviceRegistry, serviceType, &ServiceControllerBase::Search, req, std::move(callback), req->body());
         }
         METHOD_LIST_BEGIN
         METHOD_ADD(Services::Create, "/{serviceType}/create", drogon::Post, SECURE);
@@ -64,6 +65,7 @@ namespace api::v2
         METHOD_LIST_END
 
        private:
+        std::shared_ptr<DbExecutor> dbExecutor = Store::getObject<DbExecutor>();  // runs the blocking database work, shared with every route
         using ServiceVariant = std::variant<std::shared_ptr<ServiceController<Clinics>>, std::shared_ptr<ServiceController<Pharmacies>>,
             std::shared_ptr<ServiceController<Laboratories>>, std::shared_ptr<ServiceController<RadiologyCenters>>>;
 

@@ -164,17 +164,27 @@ bool Validator::clientRegexValidation(const jsoncons::json& data, api::v2::Http:
         {"gender", "^(Male|Female)$"},
     };
 
+    // Compiling a std::regex is expensive, so it happens once, not for every request and field.
+    static const std::unordered_map<std::string, std::regex> compiled_validators = []
+    {
+        std::unordered_map<std::string, std::regex> compiled;
+        for (const auto& [name, pattern] : regex_client_validators)
+        {
+            compiled.emplace(name, std::regex(pattern));
+        }
+        return compiled;
+    }();
+
     for (const auto& item : data.object_range())
     {
         std::optional<std::string> value = item.value().as<std::string>();
         if (value.has_value() && !value->empty())
         {
-            auto pattern_item = std::ranges::find_if(regex_client_validators, [&](const auto& validator) { return validator.first == item.key(); });
+            auto pattern_item = compiled_validators.find(std::string(item.key()));
 
-            if (pattern_item != regex_client_validators.end())
+            if (pattern_item != compiled_validators.end())
             {
-                std::regex pattern(pattern_item->second);
-                if (!std::regex_match(value.value(), pattern))
+                if (!std::regex_match(value.value(), pattern_item->second))
                 {
                     error = {.code = api::v2::Http::Status::BAD_REQUEST, .message = fmt::format("Key ({}) Value({}) is invalid.", item.key(), value.value())};
                     return false;

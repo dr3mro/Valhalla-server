@@ -85,7 +85,7 @@ From a checkout of this repository, `./valhalla.sh` is the same tool (the instal
 - **Security gatekeeper** layered into the request flow:
   - DoS / rate-limiting detector with configurable rate limits, ban durations, and IP whitelist/blacklist.
   - Every SQL value is a bound parameter (`pqxx::params`); identifiers come from schema-validated keys or allowlists.
-  - Password hashing with `libsodium`.
+  - Password hashing with `libsodium` (Argon2id), off the request threads.
   - Session and token managers.
 - **PostgreSQL persistence** via `libpqxx`, with a connection pool, a connection watchdog, and a database schema validator.
 - **CORS support** with pre-routing OPTIONS handling and standard CORS headers on every response.
@@ -94,33 +94,39 @@ From a checkout of this repository, `./valhalla.sh` is the same tool (the instal
 
 ## Architecture
 
-Requests flow through a layered pipeline:
+Requests flow through a layered pipeline. Drogon's IO threads only parse, route and answer; everything that can block (database calls, password hashing) runs on separate bounded worker pools.
 
 ```
 HTTP request
    │
    ▼
-Drogon listener  ──►  CORS pre-routing advice (handles OPTIONS)
+Drogon IO threads (SERVER_THREADS)
+   ├─ CORS pre-routing advice (handles OPTIONS)
+   ├─ Rate-limit / DoS filter       (in memory)
+   ├─ Token + session filter        (in memory, SECURE routes only)
+   └─ Route (api/v2/routes): picks the controller, copies what it needs from the request
+   │
+   ▼  submit()  ── queue full ──►  503 + Retry-After
+DB executor (DB_WORKERS threads, queue DB_QUEUE_MAX)
+   Controller (controllers/*)  ──►  permission check (RBAC, cached)  ──►  Entity (entities/*)
    │
    ▼
-Gatekeeper (filters/middlewares)
-   ├─ DoS / rate-limit detector
-   ├─ Token / session validation   (SECURE routes only)
-   └─ Permission check (RBAC)
-   │
-   ▼
-Route (api/v2/routes)  ──►  Controller (controllers/*)  ──►  Entity (entities/*)
-   │
-   ▼
-Database controller  ──►  Connection pool  ──►  PostgreSQL
+Database controller  ──►  Connection pool (DB_MAX_CONN)  ──►  PostgreSQL
+   │                      └─ no free connection within DB_ACQUIRE_TIMEOUT_MS ──►  503
+
+Login, client create and client update hand their password work on to:
+Password worker (PASSWORD_WORKERS threads, queue PASSWORD_QUEUE_MAX)  ──►  Argon2id hash / verify
+   (a full queue answers 503)
 ```
 
-- **Routes** (`src/api/v2/routes`) declare endpoints and mark each as `SECURE` or `INSECURE`. A small registry maps a path parameter (e.g. `clientType`, `serviceType`) to the concrete controller, so one route class serves many entity types.
+- **Routes** (`src/api/v2/routes`) declare endpoints and mark each as `SECURE` or `INSECURE`. A small registry maps a path parameter (e.g. `clientType`, `serviceType`) to the concrete controller, so one route class serves many entity types. `executeControllerMethod` submits the whole controller call to the DB executor, with the request data, arguments and response callback captured by value, because the answer is sent from a worker thread.
 - **Controllers** (`src/controllers`) implement CRUD/search logic against a generic base.
 - **Entities** (`src/entities`) model the domain: people (users, providers), services (clinics, laboratories, pharmacies, radiology centers), patients, visits, and appointments.
-- **Gatekeeper** (`src/gatekeeper`) holds all the cross-cutting security concerns.
+- **Gatekeeper** (`src/gatekeeper`) holds the cross-cutting security concerns: DoS detector, token and session managers, the permission manager with its idle-expiry cache, and password hashing (Argon2id, with legacy scrypt hashes still accepted at login).
+- **Concurrency** (`src/concurrency`) has `BoundedExecutor`, the fixed-size thread pool with a bounded queue that `submit()` never blocks on. The DB executor (`src/database/dbexecutor`) and the password worker are two instances. With zero workers a task runs inline, which the unit tests use.
+- **Database** (`src/database`) has the connection pool (`BlockingPool`, waits with a timeout and throws `DatabaseBusy`, which becomes 503), the watchdog that reconnects dropped connections, and the handler that borrows a connection for one query.
 - **Configurator** (`src/configurator`) loads and validates configuration from the environment at startup.
-- **Store** (`src/store`) provides shared singleton object access for controllers.
+- **Store** (`src/store`) provides shared singleton object access. Objects built for every request use `Store::cachedObject<T>()`, which keeps a per-thread pointer and only goes back to the Store when an object has been replaced (tests replace the database controller with a fake).
 
 ## Tech Stack
 
@@ -673,7 +679,7 @@ the first of: .env in the current directory, .env next to this script,
 for a small local container: SERVER_THREADS=2, DB_MAX_CONN=2, and raised
 MAX_REQUESTS/MAX_FPS so the API docs' Benchmark and Test console panels
 don't get your IP rate-limited. Edit it freely; it's kept on update.
-MAX_REQUESTS, MAX_FPS, PERMISSION_CACHE_TTL, DB_ACQUIRE_TIMEOUT_MS, PASSWORD_WORKERS, PASSWORD_QUEUE_MAX, DB_WORKERS, DB_QUEUE_MAX, TOKEN_SECRET, SERVER_THREADS and DB_MAX_CONN set in
+MAX_REQUESTS, MAX_FPS, PERMISSION_CACHE_TTL, DB_ACQUIRE_TIMEOUT_MS, PASSWORD_WORKERS, PASSWORD_QUEUE_MAX, DB_WORKERS, DB_QUEUE_MAX, DB_IO_FASTPATH, TOKEN_SECRET, SERVER_THREADS and DB_MAX_CONN set in
 the shell win over the env file for one run (e.g. SERVER_THREADS=4
 ./valhalla.sh update). Variables set nowhere aren't passed, so the server
 uses its own defaults (in brackets below).
@@ -711,6 +717,7 @@ Server variables the image understands (server default in brackets):
   Database executor (blocking database work runs here, never on request threads)
     DB_WORKERS            threads for database work [DB_MAX_CONN]
     DB_QUEUE_MAX          waiting requests before new ones get 503 [256]
+    DB_IO_FASTPATH        try each request on the IO thread first, queue it only if it needs the database [false]
   Server
     SERVER_HOST           listen address (keep 0.0.0.0)         [0.0.0.0]
     SERVER_PORT           listen port inside the container      [8080]
@@ -792,6 +799,7 @@ All configuration is supplied through environment variables; defaults live in `s
 | `PASSWORD_QUEUE_MAX` | `64`    | Password operations that may wait for a worker; further ones get `503` with `Retry-After`            |
 | `DB_WORKERS`         | `DB_MAX_CONN` | Threads that run the blocking database work (permission check, query), so request threads are never blocked by a slow query; `0` runs on the request thread |
 | `DB_QUEUE_MAX`       | `256`   | Requests that may wait for a database worker; further ones get `503` with `Retry-After`              |
+| `DB_IO_FASTPATH`     | `false` | Run each request on the IO thread first; requests refused without a query (bad body, permission cache) answer there, the rest move to a database worker. Turn on only if the benchmark shows a gain |
 
 ### Authentication (JWT)
 
@@ -938,9 +946,10 @@ src/
 ├── api/v2/             # REST API: routes, filters, middlewares, helpers
 ├── controllers/        # Business logic per resource (clients, clinics, services, …)
 ├── entities/           # Domain models (people, services, patients, visits, appointments)
-├── gatekeeper/         # Security: DoS detector, SQLi detector, tokens, sessions, RBAC, password hashing
+├── gatekeeper/         # Security: DoS detector, tokens, sessions, RBAC, password hashing and its worker pool
+├── concurrency/        # BoundedExecutor: thread pool with a bounded queue
 ├── configurator/       # Environment-driven configuration + defaults
-├── database/           # Connection pool, watchdog, handlers
+├── database/           # Connection pool, watchdog, handlers, DB executor
 ├── validator/          # Request + database-schema validation
 ├── store/              # Shared object store
 ├── server/             # Server bootstrap (entry point)

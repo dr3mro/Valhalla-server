@@ -90,7 +90,7 @@ namespace api
                 if (iterator != client_data.end())
                 {
                     std::string username       = iterator->second;
-                    auto        result         = databaseController->checkItemExists(tablename, USERNAME, username);
+                    auto        result         = databaseController()->checkItemExists(tablename, USERNAME, username);
                     return result.value_or(false);
                 }
                 return false;

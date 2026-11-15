@@ -22,6 +22,7 @@ namespace
     {
         std::promise<void>& promise;
         bool                released = false;
+        BoundedExecutor*    executor = nullptr;  // joined before the objects the blocked task uses go away
         void                now()
         {
             if (!released)
@@ -30,7 +31,14 @@ namespace
                 promise.set_value();
             }
         }
-        ~ReleaseOnExit() { now(); }
+        ~ReleaseOnExit()
+        {
+            now();
+            if (executor != nullptr)
+            {
+                executor->shutdown();
+            }
+        }
     };
 }  // namespace
 
@@ -78,7 +86,7 @@ TEST_CASE("BoundedExecutor refuses work when the queue is full", "[concurrency][
 
     {
         BoundedExecutor executor(1, 1, "test");
-        ReleaseOnExit   gate{release_promise};
+        ReleaseOnExit   gate{release_promise, false, &executor};
 
         REQUIRE(executor.submit(
             [&]
@@ -117,7 +125,7 @@ TEST_CASE("runOnDbExecutor answers 503 when the queue is full and never runs the
     auto               release = release_promise.get_future().share();
 
     DbExecutor    executor(1, 1);
-    ReleaseOnExit gate{release_promise};
+    ReleaseOnExit gate{release_promise, false, &executor};
 
     REQUIRE(executor.submit(
         [&]
@@ -154,4 +162,78 @@ TEST_CASE("runOnDbExecutor hands the callback to the body when it is accepted", 
         [&](int c, const std::string&) { code = c; },
         [](CALLBACK_&& cb) { std::move(cb)(api::v2::Http::Status::OK, "ok"); });
     CHECK(code == static_cast<int>(api::v2::Http::Status::OK));
+}
+
+TEST_CASE("BoundedExecutor: a task does not wait behind a slow one while another worker is free", "[concurrency][executor]")
+{
+    BoundedExecutor executor(2, 64, "test");
+
+    std::atomic<int>   done{0};
+    std::promise<void> started_promise;
+    auto               started = started_promise.get_future();
+    std::promise<void> release_promise;
+    auto               release = release_promise.get_future().share();
+    ReleaseOnExit      gate{release_promise, false, &executor};
+
+    REQUIRE(executor.submit(
+        [&]
+        {
+            started_promise.set_value();
+            release.wait();
+        }));
+    REQUIRE(started.wait_for(5s) == std::future_status::ready);
+
+    // The first worker is stuck; every later task must still finish, whichever worker round-robin picks first.
+    for (int i = 0; i < 20; ++i)
+    {
+        REQUIRE(executor.submit([&] { ++done; }));
+    }
+    for (int waited = 0; waited < 500 && done < 20; ++waited)
+    {
+        std::this_thread::sleep_for(10ms);
+    }
+    CHECK(done == 20);
+    gate.now();
+}
+
+TEST_CASE("BoundedExecutor: the queue limit is shared by all workers and every task runs once", "[concurrency][executor]")
+{
+    BoundedExecutor executor(4, 8, "test");
+
+    std::atomic<int>   started{0};
+    std::atomic<int>   ran{0};
+    std::promise<void> release_promise;
+    auto               release = release_promise.get_future().share();
+    ReleaseOnExit      gate{release_promise, false, &executor};
+
+    for (int i = 0; i < 4; ++i)  // keep every worker busy
+    {
+        REQUIRE(executor.submit(
+            [&]
+            {
+                ++started;
+                release.wait();
+                ++ran;
+            }));
+    }
+    for (int waited = 0; waited < 500 && started < 4; ++waited)
+    {
+        std::this_thread::sleep_for(10ms);
+    }
+    REQUIRE(started == 4);
+
+    int accepted = 0;
+    for (int i = 0; i < 20; ++i)
+    {
+        if (executor.submit([&] { ++ran; }))
+        {
+            ++accepted;
+        }
+    }
+    CHECK(accepted == 8);
+    CHECK(executor.pending() == 8);
+    gate.now();
+    executor.shutdown();
+    CHECK(ran == 4 + accepted);
+    CHECK(executor.pending() == 0);
 }

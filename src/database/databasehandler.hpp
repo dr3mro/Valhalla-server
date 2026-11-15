@@ -8,7 +8,8 @@ class Database;
 class DatabaseHanndler
 {
    public:
-    DatabaseHanndler();
+    DatabaseHanndler();  // looks the pool up in the Store (rare callers such as the watchdog)
+    explicit DatabaseHanndler(std::shared_ptr<DatabaseConnectionPool> pool);  // hot path: the caller already holds the pool, no Store lookup
     DatabaseHanndler(const DatabaseHanndler&)            = delete;
     DatabaseHanndler(DatabaseHanndler&&)                 = delete;
     DatabaseHanndler& operator=(const DatabaseHanndler&) = delete;

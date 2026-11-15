@@ -21,6 +21,8 @@
 #include "api/v2/all_routes.hpp"  // IWYU pragma: keep
 #include "api/v2/middlewares/elapsedtime.hpp"
 #include "configurator/configurator.hpp"
+#include "database/dbexecutor.hpp"
+#include "gatekeeper/passwordcrypt/passwordworker.hpp"
 #include "server/extras/banner.hpp"
 #include "store/store.hpp"
 #include "utils/Logger/logger.hpp"
@@ -77,6 +79,12 @@ int Server::run()
             .registerHttpResponseCreationAdvice([](const drogon::HttpResponsePtr& resp) { addCorsHeaders(resp); })
             .setCustom404Page(drogon::HttpResponse::newHttpJsonResponse(api::v2::JsonHelper::jsonify("Endpoint not found.")))
             .run();
+
+        // The event loops have stopped. Finish the queued database and password work and join the workers now, while the
+        // connection pool and the other singletons still exist, instead of leaving it to static destruction. The database
+        // executor goes first because its tasks may hand work to the password worker.
+        Store::getObject<DbExecutor>()->shutdown();
+        Store::getObject<PasswordWorker>()->shutdown();
     }
     catch (const std::exception& e)
     {

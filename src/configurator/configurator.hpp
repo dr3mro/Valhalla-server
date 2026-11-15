@@ -282,10 +282,12 @@ class Configurator
     {
         uint16_t workers;    // 0 runs database work on the request thread (tests)
         uint32_t queue_max;  // queued requests before a new one is refused with 503
+        bool     io_fast_path;  // answer requests that need no database on the IO thread (DB_IO_FASTPATH)
 
         DbExecutorConfig()
             : workers(defaultWorkers()),
-              queue_max(getEnvironmentVariable("DB_QUEUE_MAX", Defaults::DbExecutor::QUEUE_MAX_))
+              queue_max(getEnvironmentVariable("DB_QUEUE_MAX", Defaults::DbExecutor::QUEUE_MAX_)),
+              io_fast_path(getEnvironmentVariable("DB_IO_FASTPATH", Defaults::DbExecutor::IO_FAST_PATH_))
         {
             workers = getEnvironmentVariable("DB_WORKERS", workers);
         }
@@ -297,6 +299,7 @@ class Configurator
             Message::ConfMessage("------------------------------------------------");
             Message::ConfMessage(fmt::format("DB workers: {}", workers));
             Message::ConfMessage(fmt::format("DB queue max: {}", queue_max));
+            Message::ConfMessage(fmt::format("DB IO fast path: {}", io_fast_path));
         }
 
        private:

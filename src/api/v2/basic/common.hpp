@@ -21,7 +21,7 @@
 #include "api/v2/helper/helper.hpp"
 #include "database/databasebusy.hpp"
 #include "database/dbexecutor.hpp"
-#include "store/store.hpp"
+#include "database/dbprobe.hpp"
 #include "utils/global/callback.hpp"
 #include "utils/global/http.hpp"
 #include "utils/global/requester.hpp"
@@ -60,7 +60,7 @@ namespace api::v2
     // thread. The request, the arguments and the response callback are captured by value, because the work finishes after
     // this function has returned, on another thread. A full queue is answered with 503 right here.
     template <typename Func, typename Registry, typename... Args>
-    static void executeControllerMethod(const Registry& registry, const std::string_view key, Func method, const drogon::HttpRequestPtr& req,
+    static void executeControllerMethod(DbExecutor& executor, const Registry& registry, const std::string_view key, Func method, const drogon::HttpRequestPtr& req,
         std::function<void(const drogon::HttpResponsePtr&)>&& callback, Args&&... args)
     {
         auto ctl = registry.find(key);
@@ -95,11 +95,33 @@ namespace api::v2
                     // Read what the handler needs from the request now; the rest runs on a worker.
                     Requester requester(req->getAttributes()->get<uint64_t>("clientID"), req->getAttributes()->get<std::string>("clientGroup"));
 
-                    static const std::shared_ptr<DbExecutor> executor = Store::getObject<DbExecutor>();
+                    auto packed = std::make_tuple(std::decay_t<Args>(args)...);
 
-                    runOnDbExecutor(*executor, std::move(mcb),
-                        [method, target = controller.get(), req, callback, requester = std::move(requester), packed = std::make_tuple(std::decay_t<Args>(args)...)](
-                            CALLBACK_&& cb) mutable
+                    // Fast path: run the call here first. A request that is answered from memory (bad body, refused by the
+                    // permission cache) never queues; the first query throws WouldBlock before anything was written, and
+                    // the request goes to the executor and runs again from the start.
+                    if (executor.ioFastPath())
+                    {
+                        try
+                        {
+                            DbProbe     probe;
+                            CALLBACK_   probe_cb = mcb;  // its own copy: the real one must still be there if the probe gives up
+                            std::apply([&](auto&... unpacked) { std::invoke(method, controller.get(), std::move(probe_cb), std::move(requester), unpacked...); }, packed);
+                            return;
+                        }
+                        catch (const WouldBlock&)
+                        {
+                            // needs the database: queue it below
+                        }
+                        catch (const std::exception& e)
+                        {
+                            Helper::failureResponse(e.what(), std::move(callback));
+                            return;
+                        }
+                    }
+
+                    runOnDbExecutor(executor, std::move(mcb),
+                        [method, target = controller.get(), req, callback, requester = std::move(requester), packed = std::move(packed)](CALLBACK_&& cb) mutable
                         {
                             try
                             {

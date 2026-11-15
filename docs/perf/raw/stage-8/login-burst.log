@@ -1,0 +1,52 @@
+
+
+  █ THRESHOLDS 
+
+    http_req_duration{scenario:reads_burst}
+    ✓ 'max>=0' max=14.45ms
+
+    http_req_duration{scenario:reads_quiet}
+    ✓ 'max>=0' max=3.42ms
+
+    http_reqs{scenario:logins}
+    ✓ 'count>=0' count=863
+
+    http_reqs{scenario:reads_burst}
+    ✓ 'count>=0' count=161258
+
+    http_reqs{scenario:reads_quiet}
+    ✓ 'count>=0' count=197112
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 359233  10204.30685/s
+    checks_succeeded...: 100.00% 359233 out of 359233
+    checks_failed......: 0.00%   0 out of 359233
+
+    ✓ read 200
+    ✓ login 200 or 503
+
+    HTTP
+    http_req_duration..............: avg=1.29ms   min=127µs    med=549µs    p(90)=908µs    p(95)=1.13ms p(99)=1.99ms max=455.39ms
+      { expected_response:true }...: avg=1.29ms   min=127µs    med=549µs    p(90)=908µs    p(95)=1.13ms p(99)=1.99ms max=455.39ms
+      { scenario:reads_burst }.....: avg=698.11µs min=127µs    med=617µs    p(90)=1.1ms    p(95)=1.35ms p(99)=2.32ms max=14.45ms 
+      { scenario:reads_quiet }.....: avg=557.48µs min=231µs    med=523µs    p(90)=735µs    p(95)=822µs  p(99)=1.2ms  max=3.42ms  
+    http_req_failed................: 0.00%  0 out of 359234
+    http_reqs......................: 359234 10204.335256/s
+      { scenario:logins }..........: 863    24.51422/s
+      { scenario:reads_burst }.....: 161258 4580.665234/s
+      { scenario:reads_quiet }.....: 197112 5599.127396/s
+
+    EXECUTION
+    iteration_duration.............: avg=1.33ms   min=139.29µs med=593.37µs p(90)=958.16µs p(95)=1.18ms p(99)=2.07ms max=455.49ms
+    iterations.....................: 359233 10204.30685/s
+    vus............................: 24     min=0           max=24
+    vus_max........................: 32     min=32          max=32
+
+    NETWORK
+    data_received..................: 282 MB 8.0 MB/s
+    data_sent......................: 180 MB 5.1 MB/s
+
+
+

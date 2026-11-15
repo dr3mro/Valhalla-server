@@ -5,16 +5,13 @@
 ## 1. Security
 
 - [ ] **Logout doesn't verify the token.** `jwt::decode` doesn't check the signature, and `ValidateToken` is commented out, so a forged token can log any `clientId` out. `src/gatekeeper/sessionmanager/sessionmanager.cpp:102-118`. Also, `token.value()` is called unchecked (`:100`): with no token the client gets a `500` whose body is the raw `bad_optional_access` text (the unit test "logout with a bad token" hits this).
+- [ ] **The auth filter accepts a forged token when the client has a session.** `SessionManager::clientHasValidSession` (`src/gatekeeper/sessionmanager/sessionmanager.cpp:156-186`) decodes the JWT without verifying the signature and looks the session up by `group_id`; it never compares the token with the one stored at login. The signature is only verified on a session miss. Look sessions up by a hash of the token (or compare it), and add a forged-token test. See Step 8 of `PERFORMANCE_PLAN.md`.
 - [ ] **Whitelist and blacklist rework** (`src/gatekeeper/dosdetector/dosdetector.cpp:67-90`, `:219-275`). Open decisions: should the blacklist win, and is `X-Forwarded-For` support needed?
   - **Matching is far too broad.** Entries are regexes passed to `std::regex_search`: unanchored, with `.` matching any character. `192.168.1.*` also matches `192.168.10.4` and `192.168.199.1`; `127.0.0.1` matches `127.0.0.10`-`.199`. A whitelisted IP skips all DoS checks, so every over-match is a bypass. Fix: compile entries into exact-IP, CIDR (`192.168.1.0/24`) and per-octet wildcard (`192.168.1.*`) matchers; optionally keep regex behind a `re:` prefix.
   - **The whitelist overrides the blacklist.** It's checked first, and the test `whitelist wins over blacklist` locks that in. Decide whether the deny list should win; if not, document the current order.
-  - **Every request pays for it.** `regexFind` builds a new `std::regex` per entry per request, for both lists, while holding `whitelist_mutex_`/`blacklist_mutex_`, so all worker threads queue on one lock and benchmarks suffer. The lists are `const` after startup: compile them once in the constructor and remove both mutexes.
-  - **Invalid patterns are logged on every request,** never once at startup. The test `ignores invalid whitelist regex patterns` codifies that. Validate at startup instead.
   - **The client IP is wrong behind Docker or a proxy.** `req->peerAddr()` (`src/api/v2/filters/ratelimit.hpp:27`) is the Docker gateway (`172.17.0.1`, `192.168.64.1`) or the proxy, so every client shares one IP: one noisy client gets everyone limited, and whitelisting it whitelists everyone. Add opt-in trusted-proxy handling of `X-Forwarded-For`.
   - **Tests:** add over-match cases (`192.168.1.50`, `127.0.0.10`), CIDR/wildcard cases, and blacklist-versus-whitelist precedence. Update the invalid-pattern test.
   - **Cleanup:** collapse the three nested `try/catch` layers (`isWhitelisted` → `regexFind` → the lambda). `tests/README.md` item 9 (`"a,,b"` gives an empty match-everything entry) is outdated, because `parseSet` now skips empty items.
-- [x] **(obsolete: detector removed, all queries bound)** The SQL-injection check scans the parameterized query (`$1`, `$2`), which never contains user values. `src/database/database.cpp:185`, `:281`
-- [x] **(done: Argon2id at the OWASP minimum, old scrypt hashes still verify, runs on the password worker)** Password hashing used scrypt's `OPSLIMIT_MIN`/`MEMLIMIT_MIN`,** which are test-only strengths. Use `*_INTERACTIVE` or stronger. `src/gatekeeper/passwordcrypt/passwordcrypt.cpp:34-35`
 - [ ] **The startup log prints the database password and the JWT secret.** `src/configurator/configurator.hpp:106`, `:187`
 - [ ] **Nothing stops a native run with the default `TOKEN_SECRET`.** (The Docker image already generates a random one.) Warn or refuse when it equals `Defaults::TokenParameters::TOKEN_SECRET_`.
 - [ ] **Duplicate JSON keys.** The `hasDuplicateKeys` check is commented out on the assumption that jsoncons rejects duplicates. Verify that's true, and enable strict parsing if it isn't. `src/validator/validator.cpp:29-34`, `:82-86`
@@ -23,9 +20,7 @@
 
 - [ ] **Adding staff updates the wrong row.** `getSqlAddStaffStatement` passes 4 arguments to a format string with 3 placeholders, so `WHERE ID=` gets `nominee_group` (e.g. `providers`) instead of `entity_id`, and the query fails against a real database. Drop `idata.nominee_group` from the arguments. The test "builds an UPDATE with the correct table and id" never checks the id; make it assert `WHERE ID=7`. `src/entities/base/service.hpp:37-42`, `tests/entities/test_entities.cpp:330-340`
 - [ ] **`communicate.cpp` sends stale data.** The `static` method map's lambdas capture `curl` **and `data`** by reference on the first call. Every later request uses dangling references, including the first call's request body. Build the map without captures, or set the options directly. `src/utils/communicate/communicate.cpp:24-30`
-- [ ] **Exceptions swallowed without a response.** `GetServices`, `GetVisits` and `cruds` catch with `CRITICALMESSAGE`, which never calls `callback`, so the request is never answered. Use `CRITICALMESSAGERESPONSE`. `src/controllers/base/controller/controller.hpp:193`, `:224`, `:356`
 - [ ] **Deleting a client removes the session unconditionally,** even when the delete failed. `src/controllers/clientcontroller/clientcontroller.cpp:122-123`
-- [ ] **Copying a `DatabaseHanndler`** shares `db_ptr`, and both destructors return the same connection to the pool. Delete its copy operations. `src/database/databasehandler.hpp:12-14`
 - [ ] **Rate-limit filter replies.** A `RATELIMITED` reply says "IP is blacklisted." (`:45`), and `BANNED` returns `503 Service Unavailable` (`429` or `403` fits better). `src/api/v2/filters/ratelimit.hpp`
 - [ ] **Appointment permissions.** Update and delete checks use the _read_ permission query, and appointment entities define no update or delete queries. Decide the intended rule. `src/gatekeeper/permissionmanager/permissionmanager.cpp:159-179`
 - [ ] **The client validator coerces before checking type.** `as<std::string>()` turns numbers and booleans into strings before the regex checks, so a numeric `phone` passes. `src/validator/validator.cpp:169`
@@ -46,7 +41,6 @@
 
 - [ ] **Race in `Store`.** `getObject`/`registerObject` check and insert under separate locks; two first-time callers can race (the second throws "already registered"). `src/store/store.hpp:24-56`
 - [ ] **`MemCache` only expires entries from the back of the list,** so an entry with an earlier expiry that was moved to the front survives until everything behind it has expired. `src/utils/memcache/memcache.hpp:205-207`
-- [ ] **Pool size read without its lock** (startup log only). `src/database/databaseconnectionpool.cpp:88`
 
 ## 5. Code quality
 

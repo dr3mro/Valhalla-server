@@ -161,7 +161,7 @@ namespace api::v2::Types
 
         bool validate(const jsoncons::json& search_j)
         {
-            std::unordered_set<std::string> keys = {"keyword", "filter", "order_by", "direction", "limit", "offset"};
+            static const std::unordered_set<std::string> keys = {"keyword", "filter", "order_by", "direction", "limit", "offset"};
             return std::ranges::all_of(keys, [&search_j](const std::string& key) { return search_j.find(key).has_value(); }) && isPlainIdentifier(filter) &&
                    isPlainIdentifier(order_by);
         }
@@ -221,7 +221,7 @@ namespace api::v2::Types
         }
 
        private:
-        std::shared_ptr<PasswordCrypt> passwordCrypt = Store::getObject<PasswordCrypt>();
+        std::shared_ptr<PasswordCrypt> passwordCrypt = Store::cachedObject<PasswordCrypt>();
     };
 
     struct CreateClient_t : public ClientData_t
@@ -355,7 +355,7 @@ namespace api::v2::Types
         StaffData() = default;
 
        private:
-        const std::shared_ptr<Configurator> cfg_         = Store::getObject<Configurator>();
+        const std::shared_ptr<Configurator> cfg_         = Store::cachedObject<Configurator>();
         const Configurator::ServerConfig&   servercfg_   = cfg_->get<Configurator::ServerConfig>();
         const Configurator::FrontEndConfig& frontendcfg_ = cfg_->get<Configurator::FrontEndConfig>();
     };

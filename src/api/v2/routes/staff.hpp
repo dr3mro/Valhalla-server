@@ -20,6 +20,7 @@
 #include "entities/services/laboratories.hpp"
 #include "entities/services/pharmacies.hpp"
 #include "entities/services/radiologycenters.hpp"
+#include "database/dbexecutor.hpp"
 #include "store/store.hpp"
 
 namespace api::v2
@@ -29,17 +30,17 @@ namespace api::v2
        public:
         void Invite(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& serviceType)
         {
-            executeControllerMethod(staffRegistry, serviceType, &StaffControllerBase::InviteStaffToEntity, req, std::move(callback), req->body());
+            executeControllerMethod(*dbExecutor, staffRegistry, serviceType, &StaffControllerBase::InviteStaffToEntity, req, std::move(callback), req->body());
         }
 
         void Add(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& serviceType)
         {
-            executeControllerMethod(staffRegistry, serviceType, &StaffControllerBase::AddStaffToEntity, req, std::move(callback), req->body());
+            executeControllerMethod(*dbExecutor, staffRegistry, serviceType, &StaffControllerBase::AddStaffToEntity, req, std::move(callback), req->body());
         }
 
         void Remove(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& serviceType)
         {
-            executeControllerMethod(staffRegistry, serviceType, &StaffControllerBase::RemoveStaffFromEntity, req, std::move(callback), req->body());
+            executeControllerMethod(*dbExecutor, staffRegistry, serviceType, &StaffControllerBase::RemoveStaffFromEntity, req, std::move(callback), req->body());
         }
 
         METHOD_LIST_BEGIN
@@ -49,6 +50,7 @@ namespace api::v2
         METHOD_LIST_END
 
        private:
+        std::shared_ptr<DbExecutor> dbExecutor = Store::getObject<DbExecutor>();  // runs the blocking database work, shared with every route
         using StaffVariant = std::variant<std::shared_ptr<StaffController<Clinics>>, std::shared_ptr<StaffController<Pharmacies>>,
             std::shared_ptr<StaffController<Laboratories>>, std::shared_ptr<StaffController<RadiologyCenters>>>;
 

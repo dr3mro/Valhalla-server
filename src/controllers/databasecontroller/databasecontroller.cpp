@@ -31,8 +31,20 @@ void DatabaseController::ensureBackends()
     // Server's constructor eagerly creates DatabaseSchema, which constructs
     // the (singleton) DatabaseController through Store and then performs the
     // first query (schema population) during boot.
+    //
+    // Every query calls this, so the common case (already created) is one atomic load. The mutex is only taken during the first
+    // calls; the release/acquire pair makes the pointers written below visible to every thread that sees the flag set.
+    if (backendsReady_.load(std::memory_order_acquire))
+    {
+        return;
+    }
+
     static std::mutex backendInitMutex;
     std::scoped_lock  lock(backendInitMutex);
+    if (backendsReady_.load(std::memory_order_relaxed))
+    {
+        return;
+    }
     if (!databaseConnectionPool_)
     {
         // Hermetic unit-test seam: when VALHALLA_TEST_NO_DB is set (the unit
@@ -47,6 +59,7 @@ void DatabaseController::ensureBackends()
             watchDog_               = Store::getObject<WatchDog>();
         }
     }
+    backendsReady_.store(true, std::memory_order_release);
 }
 
 std::optional<jsoncons::json> DatabaseController::executeQuery(const std::string& query, const pqxx::params& params)

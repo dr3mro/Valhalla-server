@@ -18,6 +18,7 @@
 #include "controllers/clientcontroller/clientcontrollerbase.hpp"
 #include "entities/people/provider.hpp"
 #include "entities/people/user.hpp"
+#include "database/dbexecutor.hpp"
 #include "store/store.hpp"
 
 namespace api::v2
@@ -27,16 +28,16 @@ namespace api::v2
        public:
         void create(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& clientType)
         {
-            executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Create, req, std::move(callback), req->body());
+            executeControllerMethod(*dbExecutor, clientRegistry, clientType, &ClientControllerBase::Create, req, std::move(callback), req->body());
         }
 
         void login(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& clientType)
         {
-            executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Login, req, std::move(callback), req->body(), req->peerAddr().toIp());
+            executeControllerMethod(*dbExecutor, clientRegistry, clientType, &ClientControllerBase::Login, req, std::move(callback), req->body(), req->peerAddr().toIp());
         }
         void logout(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& clientType)
         {
-            executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Logout, req, std::move(callback),
+            executeControllerMethod(*dbExecutor, clientRegistry, clientType, &ClientControllerBase::Logout, req, std::move(callback),
                 req->getHeader("Authorization").substr(7), req->peerAddr().toIp());  // NOLINT
         }
 
@@ -45,7 +46,7 @@ namespace api::v2
             auto id = parseIdParam(req, "id", callback);
             if (!id)
                 return;
-            executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Suspend, req, std::move(callback), *id);
+            executeControllerMethod(*dbExecutor, clientRegistry, clientType, &ClientControllerBase::Suspend, req, std::move(callback), *id);
         }
 
         void activate(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& clientType)
@@ -53,12 +54,12 @@ namespace api::v2
             auto id = parseIdParam(req, "id", callback);
             if (!id)
                 return;
-            executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Activate, req, std::move(callback), *id);
+            executeControllerMethod(*dbExecutor, clientRegistry, clientType, &ClientControllerBase::Activate, req, std::move(callback), *id);
         }
 
         void read(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& clientType)
         {
-            executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Read, req, std::move(callback), req->body());
+            executeControllerMethod(*dbExecutor, clientRegistry, clientType, &ClientControllerBase::Read, req, std::move(callback), req->body());
         }
 
         void update(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& clientType)
@@ -66,25 +67,25 @@ namespace api::v2
             auto id = parseIdParam(req, "id", callback);
             if (!id)
                 return;
-            executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Update, req, std::move(callback), req->body(), *id);
+            executeControllerMethod(*dbExecutor, clientRegistry, clientType, &ClientControllerBase::Update, req, std::move(callback), req->body(), *id);
         }
         void delete_(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& clientType)
         {
             auto id = parseIdParam(req, "id", callback);
             if (!id)
                 return;
-            executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Delete, req, std::move(callback), *id);
+            executeControllerMethod(*dbExecutor, clientRegistry, clientType, &ClientControllerBase::Delete, req, std::move(callback), *id);
         }
         void search(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& clientType)
         {
-            executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::Search, req, std::move(callback), req->body());
+            executeControllerMethod(*dbExecutor, clientRegistry, clientType, &ClientControllerBase::Search, req, std::move(callback), req->body());
         }
         void getservices(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& clientType)
         {
             auto id = parseIdParam(req, "id", callback);
             if (!id)
                 return;
-            executeControllerMethod(clientRegistry, clientType, &ClientControllerBase::GetServices, req, std::move(callback), *id);
+            executeControllerMethod(*dbExecutor, clientRegistry, clientType, &ClientControllerBase::GetServices, req, std::move(callback), *id);
         }
 
         METHOD_LIST_BEGIN
@@ -101,6 +102,7 @@ namespace api::v2
         METHOD_LIST_END
 
        private:
+        std::shared_ptr<DbExecutor> dbExecutor = Store::getObject<DbExecutor>();  // runs the blocking database work, shared with every route
         using ClientVariant = std::variant<std::shared_ptr<ClientController<User>>, std::shared_ptr<ClientController<Provider>>>;
 
         std::unordered_map<std::string_view, ClientVariant> clientRegistry = {

@@ -1,7 +1,11 @@
 #include "concurrency/boundedexecutor.hpp"
 
+#include <fmt/format.h>
+
 #include <algorithm>
+#include <chrono>
 #include <cstddef>
+#include <cstdint>
 #include <exception>
 #include <functional>
 #include <mutex>
@@ -22,24 +26,49 @@ BoundedExecutor::BoundedExecutor(std::size_t workers, std::size_t queue_max, std
     workers_.reserve(workers);
     for (std::size_t i = 0; i < workers; ++i)
     {
-        workers_.emplace_back([this] { run(); });
+        workers_.push_back(std::make_unique<Worker>());
+    }
+    // Start the threads only now: a worker looks at every queue, so all of them must exist first.
+    for (std::size_t i = 0; i < workers; ++i)
+    {
+        workers_[i]->thread = std::thread([this, i] { run(i); });
     }
 }
 
-BoundedExecutor::~BoundedExecutor()
+BoundedExecutor::~BoundedExecutor() { shutdown(); }
+
+void BoundedExecutor::shutdown()
 {
-    {
-        std::lock_guard<std::mutex> lock(mutex_);
-        stopping_ = true;
-    }
-    cv_.notify_all();
+    stopping_.store(true, std::memory_order_release);
     for (auto& worker : workers_)
     {
-        if (worker.joinable())
         {
-            worker.join();
+            std::lock_guard<std::mutex> lock(worker->mutex);  // a sleeping worker either sees the flag or is already waiting
+        }
+        worker->cv.notify_all();
+    }
+    for (auto& worker : workers_)
+    {
+        if (worker->thread.joinable() && worker->thread.get_id() != std::this_thread::get_id())
+        {
+            worker->thread.join();
         }
     }
+
+    const Stats s = stats();
+    if (s.submitted > 0 || s.rejected > 0)
+    {
+        Message::InfoMessage(fmt::format("{}: {} tasks, {} rejected, deepest queue {}, average wait {:.1f} us.", name_, s.submitted, s.rejected, s.max_queue, s.avg_wait_us));
+        submitted_ = 0;  // report once
+        rejected_  = 0;
+    }
+}
+
+BoundedExecutor::Stats BoundedExecutor::stats() const
+{
+    const auto waited = waited_tasks_.load(std::memory_order_relaxed);
+    return {submitted_.load(std::memory_order_relaxed), rejected_.load(std::memory_order_relaxed), max_queue_.load(std::memory_order_relaxed),
+        waited == 0 ? 0.0 : static_cast<double>(wait_ns_.load(std::memory_order_relaxed)) / static_cast<double>(waited) / 1000.0};
 }
 
 bool BoundedExecutor::submit(std::function<void()> task)
@@ -49,47 +78,129 @@ bool BoundedExecutor::submit(std::function<void()> task)
         task();
         return true;
     }
-
+    if (stopping_.load(std::memory_order_acquire))
     {
-        std::lock_guard<std::mutex> lock(mutex_);
-        if (stopping_ || queue_.size() >= queue_max_)
+        rejected_.fetch_add(1, std::memory_order_relaxed);
+        return false;
+    }
+
+    // Reserve a place in the shared limit first; give it back if the pool turns out to be stopping.
+    const std::size_t depth = queued_.fetch_add(1, std::memory_order_acq_rel) + 1;
+    if (depth > queue_max_)
+    {
+        queued_.fetch_sub(1, std::memory_order_acq_rel);
+        rejected_.fetch_add(1, std::memory_order_relaxed);
+        return false;
+    }
+
+    // Round-robin start, then the first idle worker from there; with none idle, the round-robin one.
+    const std::size_t n      = workers_.size();
+    const std::size_t start  = next_.fetch_add(1, std::memory_order_relaxed) % n;
+    std::size_t       target = start;
+    for (std::size_t i = 0; i < n; ++i)
+    {
+        const std::size_t candidate = (start + i) % n;
+        if (workers_[candidate]->idle.load(std::memory_order_acquire))
         {
+            target = candidate;
+            break;
+        }
+    }
+
+    Worker& worker = *workers_[target];
+    bool    wake   = false;
+    {
+        std::lock_guard<std::mutex> lock(worker.mutex);
+        if (stopping_.load(std::memory_order_acquire))  // checked under the lock: the worker's exit check is under it too
+        {
+            queued_.fetch_sub(1, std::memory_order_acq_rel);
+            rejected_.fetch_add(1, std::memory_order_relaxed);
             return false;
         }
-        queue_.push_back(std::move(task));
+        worker.queue.push_back({std::move(task), std::chrono::steady_clock::now()});
+        // An idle worker is claimed (flag cleared) so the next submit() picks another one instead of queueing behind this task.
+        // A busy worker finds its task itself; it needs no wake-up (system call).
+        wake = worker.idle.exchange(false, std::memory_order_acq_rel);
     }
-    cv_.notify_one();
+    submitted_.fetch_add(1, std::memory_order_relaxed);
+    if (depth > max_queue_.load(std::memory_order_relaxed))
+    {
+        max_queue_.store(depth, std::memory_order_relaxed);
+    }
+    if (wake)
+    {
+        worker.cv.notify_one();
+    }
     return true;
-}
-
-std::size_t BoundedExecutor::pending() const
-{
-    std::lock_guard<std::mutex> lock(mutex_);
-    return queue_.size();
 }
 
 bool BoundedExecutor::onWorkerThread() const { return currentExecutor == this; }
 
-void BoundedExecutor::run()
+bool BoundedExecutor::take(std::size_t self, Item& item)
+{
+    {
+        Worker&                     own = *workers_[self];
+        std::lock_guard<std::mutex> lock(own.mutex);
+        if (!own.queue.empty())
+        {
+            item = std::move(own.queue.front());
+            own.queue.pop_front();
+            queued_.fetch_sub(1, std::memory_order_acq_rel);
+            return true;
+        }
+    }
+    // Nothing of our own: help a worker that is stuck on a slow task. try_lock keeps this from ever waiting on someone.
+    const std::size_t n = workers_.size();
+    for (std::size_t i = 1; i < n; ++i)
+    {
+        Worker&                      other = *workers_[(self + i) % n];
+        std::unique_lock<std::mutex> lock(other.mutex, std::try_to_lock);
+        if (lock.owns_lock() && !other.queue.empty())
+        {
+            item = std::move(other.queue.front());
+            other.queue.pop_front();
+            queued_.fetch_sub(1, std::memory_order_acq_rel);
+            return true;
+        }
+    }
+    return false;
+}
+
+void BoundedExecutor::account(const Item& item)
+{
+    wait_ns_.fetch_add(static_cast<std::uint64_t>(std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now() - item.queued_at).count()),
+        std::memory_order_relaxed);
+    waited_tasks_.fetch_add(1, std::memory_order_relaxed);
+}
+
+void BoundedExecutor::run(std::size_t self)
 {
     currentExecutor = this;
+    Worker& own     = *workers_[self];
     for (;;)
     {
-        std::function<void()> task;
+        Item item;
+        if (!take(self, item))
         {
-            std::unique_lock<std::mutex> lock(mutex_);
-            cv_.wait(lock, [this] { return stopping_ || !queue_.empty(); });
-            if (queue_.empty())
+            std::unique_lock<std::mutex> lock(own.mutex);
+            if (own.queue.empty())
             {
-                return;  // stopping and nothing left to do
+                if (stopping_.load(std::memory_order_acquire))
+                {
+                    return;  // stopping, and nothing is left in our queue (no submit can add one any more)
+                }
+                own.idle.store(true, std::memory_order_release);
+                own.cv.wait(lock, [&] { return stopping_.load(std::memory_order_acquire) || !own.queue.empty(); });
+                own.idle.store(false, std::memory_order_release);
             }
-            task = std::move(queue_.front());
-            queue_.pop_front();
+            continue;  // look again: a task arrived, or we are stopping
         }
+
+        account(item);
 
         try
         {
-            task();
+            item.task();
         }
         catch (const std::exception& e)
         {

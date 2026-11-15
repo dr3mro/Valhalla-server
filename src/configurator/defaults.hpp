@@ -93,6 +93,7 @@ namespace Defaults
     namespace DbExecutor
     {
         const uint32_t QUEUE_MAX_ = 256;  // waiting database requests before new ones get 503 (workers default to DB_MAX_CONN)
+        const bool     IO_FAST_PATH_ = false;  // try each request on the IO thread first; only worth it when many requests are refused without a query
     }  // namespace DbExecutor
 
     namespace Testing

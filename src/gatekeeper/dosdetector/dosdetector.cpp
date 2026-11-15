@@ -14,6 +14,7 @@
 #include <regex>
 #include <string>
 #include <thread>
+#include <unordered_map>
 #include <unordered_set>
 #include <utility>
 
@@ -253,21 +254,29 @@ inline bool __attribute((always_inline)) DOSDetector::regexFind(const std::strin
     {
         std::lock_guard<std::mutex> lock(mtx);
 
+        // Patterns are compiled once per thread and then reused; compiling a std::regex on every request is far more expensive
+        // than matching it. A pattern that does not compile is remembered as empty, so it is reported once and then skipped.
+        thread_local std::unordered_map<std::string, std::optional<std::regex>> compiled;
+
         return std::ranges::any_of(list,
             [&remote_ip](const std::string& pattern)
             {
-                try
+                auto found = compiled.find(pattern);
+                if (found == compiled.end())
                 {
-                    std::regex regex_pattern((pattern));
-                    return std::regex_search((remote_ip), regex_pattern);
+                    std::optional<std::regex> regex_pattern;
+                    try
+                    {
+                        regex_pattern.emplace(pattern);
+                    }
+                    catch (const std::regex_error& e)
+                    {
+                        Message::ErrorMessage("Exception due to invalid regex pattern.");
+                        Message::CriticalMessage(e.what());
+                    }
+                    found = compiled.emplace(pattern, std::move(regex_pattern)).first;
                 }
-                catch (const std::regex_error& e)
-                {
-                    Message::ErrorMessage("Exception due to invalid regex pattern.");
-                    Message::CriticalMessage(e.what());
-
-                    return false;
-                }
+                return found->second.has_value() && std::regex_search(remote_ip, *found->second);
             });
     }
     catch (const std::exception& e)

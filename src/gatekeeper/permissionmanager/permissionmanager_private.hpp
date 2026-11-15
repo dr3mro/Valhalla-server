@@ -77,8 +77,7 @@ namespace api::v2
         template <typename Func, typename... Args>
         static std::optional<jsoncons::json> getPermissionsOfEntity(Func&& func, Args&... args)
         {
-            static std::shared_ptr<DatabaseController> db_ctl = Store::getObject<DatabaseController>();
-            std::optional<std::string>                 query  = std::invoke(std::forward<Func>(func), std::forward<Args>(args)...);
+            std::optional<std::string> query = std::invoke(std::forward<Func>(func), std::forward<Args>(args)...);
 
             if (!query.has_value() || query->empty())
             {
@@ -91,7 +90,8 @@ namespace api::v2
                 return cached;
             }
 
-            const uint64_t                generation    = cache.generation();
+            const std::shared_ptr<DatabaseController> db_ctl = Store::cachedObject<DatabaseController>();  // only needed on a cache miss
+            const uint64_t                            generation    = cache.generation();
             std::optional<jsoncons::json> permissions_j = db_ctl->getPermissions(query.value());
 
             if (!permissions_j.has_value() || permissions_j->empty())

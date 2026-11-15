@@ -1,7 +1,10 @@
 #pragma once
+
+#include "database/dbprobe.hpp"
 #include <fmt/core.h>
 #include <fmt/format.h>
 
+#include <atomic>
 #include <cstdint>
 #include <exception>
 #include <jsoncons/basic_json.hpp>
@@ -29,9 +32,9 @@ class DatabaseController
 {
    public:
     DatabaseController();
-    DatabaseController(const DatabaseController&)            = default;
+    DatabaseController(const DatabaseController&)            = delete;
     DatabaseController(DatabaseController&&)                 = delete;
-    DatabaseController& operator=(const DatabaseController&) = default;
+    DatabaseController& operator=(const DatabaseController&) = delete;
     DatabaseController& operator=(DatabaseController&&)      = delete;
     virtual ~DatabaseController()                            = default;
 
@@ -46,6 +49,7 @@ class DatabaseController
     virtual std::optional<jsoncons::json>                          getPermissions(const std::string& query);
 
    private:
+    std::atomic<bool>                       backendsReady_{false};
     std::shared_ptr<DatabaseConnectionPool> databaseConnectionPool_;
     std::shared_ptr<WatchDog>               watchDog_;
     std::shared_ptr<Configurator::Testing>  testing_config_ = std::make_shared<Configurator::Testing>();
@@ -54,6 +58,7 @@ class DatabaseController
     template <typename Result, typename Func, typename... Args>
     std::optional<Result> executer(const Func& func, Args&&... args)
     {
+        DbProbe::check();  // on the IO-thread fast path this throws WouldBlock: the request moves to the DB executor
         try
         {
             ensureBackends();
@@ -66,7 +71,7 @@ class DatabaseController
                 return std::nullopt;
             }
 
-            std::unique_ptr<DatabaseHanndler> dbHandler = std::make_unique<DatabaseHanndler>();
+            std::unique_ptr<DatabaseHanndler> dbHandler = std::make_unique<DatabaseHanndler>(databaseConnectionPool_);
             std::shared_ptr<Database>         db_ptr    = dbHandler->get_connection();
 
             if (db_ptr == nullptr)

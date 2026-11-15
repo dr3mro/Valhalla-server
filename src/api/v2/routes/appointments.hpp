@@ -20,6 +20,7 @@
 #include "entities/appointments/laboratory.hpp"
 #include "entities/appointments/pharmacy.hpp"
 #include "entities/appointments/radiologycenter.hpp"
+#include "database/dbexecutor.hpp"
 #include "store/store.hpp"
 
 namespace api::v2
@@ -29,12 +30,12 @@ namespace api::v2
        public:
         void Create(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& entityType)
         {
-            executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Create, req, std::move(callback), req->body());
+            executeControllerMethod(*dbExecutor, appointmentRegistry, entityType, &AppointmentControllerBase::Create, req, std::move(callback), req->body());
         }
 
         void Read(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& entityType)
         {
-            executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Read, req, std::move(callback), req->body());
+            executeControllerMethod(*dbExecutor, appointmentRegistry, entityType, &AppointmentControllerBase::Read, req, std::move(callback), req->body());
         }
 
         void Update(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& entityType)
@@ -42,18 +43,18 @@ namespace api::v2
             auto id = parseIdParam(req, "id", callback);
             if (!id)
                 return;
-            executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Update, req, std::move(callback), req->body(), *id);
+            executeControllerMethod(*dbExecutor, appointmentRegistry, entityType, &AppointmentControllerBase::Update, req, std::move(callback), req->body(), *id);
         }
         void Delete(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& entityType)
         {
             auto id = parseIdParam(req, "id", callback);
             if (!id)
                 return;
-            executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Delete, req, std::move(callback), *id);
+            executeControllerMethod(*dbExecutor, appointmentRegistry, entityType, &AppointmentControllerBase::Delete, req, std::move(callback), *id);
         }
         void Search(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& entityType)
         {
-            executeControllerMethod(appointmentRegistry, entityType, &AppointmentControllerBase::Search, req, std::move(callback), req->body());
+            executeControllerMethod(*dbExecutor, appointmentRegistry, entityType, &AppointmentControllerBase::Search, req, std::move(callback), req->body());
         }
 
         METHOD_LIST_BEGIN
@@ -64,6 +65,7 @@ namespace api::v2
         METHOD_LIST_END
 
        private:
+        std::shared_ptr<DbExecutor> dbExecutor = Store::getObject<DbExecutor>();  // runs the blocking database work, shared with every route
         using AppointmentVariant =
             std::variant<std::shared_ptr<AppointmentController<ClinicAppointment>>, std::shared_ptr<AppointmentController<PharmacyAppointment>>,
                 std::shared_ptr<AppointmentController<LaboratoryAppointment>>, std::shared_ptr<AppointmentController<RadiologyCenterAppointment>>>;
