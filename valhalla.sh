@@ -451,7 +451,7 @@ style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_*
   # Level 3 uses emoji, matching the help renderer. Nerd Font glyphs remain
   # the level-2 fallback, or can be explicitly forced with VALHALLA_NERD=1.
   local v
-  for v in NERD i_ok i_err i_warn i_info i_q i_pull i_save i_trash i_restart i_box i_rocket i_book i_link i_key i_wait i_stop i_step i_version; do
+  for v in NERD i_ok i_err i_warn i_info i_q i_pull i_save i_trash i_restart i_box i_server i_runtime i_rocket i_book i_link i_key i_wait i_stop i_step i_version; do
     printf -v "${p}${v}" ''
   done
   printf -v "${p}GAP" ''
@@ -471,6 +471,8 @@ style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_*
       printf -v "${p}i_trash"  '%s' $'\xef\x87\xb8'   # nf-fa-trash
       printf -v "${p}i_restart" '%s' $'\xef\x80\xa1'  # nf-fa-refresh
       printf -v "${p}i_box"    '%s' $'\xef\x86\xb2'   # nf-fa-cube
+      printf -v "${p}i_server" '%s' $'\xef\x88\xb3'   # nf-fa-server
+      printf -v "${p}i_runtime" '%s' $'\xef\x84\xa9'   # nf-fa-info
       printf -v "${p}i_rocket" '%s' $'\xef\x84\xb5'   # nf-fa-rocket
       printf -v "${p}i_book"   '%s' $'\xef\x80\xad'   # nf-fa-book
       printf -v "${p}i_link"   '%s' $'\xef\x83\x81'   # nf-fa-link
@@ -492,6 +494,8 @@ style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_*
       printf -v "${p}i_trash"  '%s' '🗑'
       printf -v "${p}i_restart" '%s' '🔄'
       printf -v "${p}i_box"    '%s' '📦'
+      printf -v "${p}i_server" '%s' '⚙️'
+      printf -v "${p}i_runtime" '%s' '🐳'
       printf -v "${p}i_rocket" '%s' '🚀'
       printf -v "${p}i_book"   '%s' '📖'
       printf -v "${p}i_link"   '%s' '🔗'
@@ -507,6 +511,8 @@ style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_*
       printf -v "${p}i_err"    '%s' '✗'
       printf -v "${p}i_warn"   '%s' '⚠'
       printf -v "${p}i_info"   '%s' 'ℹ'
+      printf -v "${p}i_runtime" '%s' 'ℹ'
+      printf -v "${p}i_server"   '%s' ' '
       printf -v "${p}i_q"      '%s' '?'
       printf -v "${p}i_pull"   '%s' '↓'
       printf -v "${p}i_restart" '%s' '↻'
@@ -519,7 +525,7 @@ style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_*
 # The style variables are set dynamically in style_set; declare them so
 # the linter can see every name.
 # shellcheck disable=SC2034  # set dynamically in style_set
-S_R='' S_ERR='' S_WRN='' S_OK='' S_INFO='' S_ACC='' S_HEAD='' S_VAL='' S_LBL='' S_DIM='' S_B='' S_NERD='' S_GAP='' S_VERSION_GAP='' S_i_ok='' S_i_err='' S_i_warn='' S_i_info='' S_i_q='' S_i_pull='' S_i_save='' S_i_trash='' S_i_restart='' S_i_box='' S_i_rocket='' S_i_book='' S_i_link='' S_i_key='' S_i_wait='' S_i_stop='' S_i_step='' S_i_version='' E_R='' E_ERR='' E_WRN='' E_OK='' E_INFO='' E_ACC='' E_HEAD='' E_VAL='' E_LBL='' E_DIM='' E_B='' E_NERD='' E_GAP='' E_VERSION_GAP='' E_i_ok='' E_i_err='' E_i_warn='' E_i_info='' E_i_q='' E_i_pull='' E_i_save='' E_i_trash='' E_i_restart='' E_i_box='' E_i_rocket='' E_i_book='' E_i_link='' E_i_key='' E_i_wait='' E_i_stop='' E_i_step='' E_i_version=''
+S_R='' S_ERR='' S_WRN='' S_OK='' S_INFO='' S_ACC='' S_HEAD='' S_VAL='' S_LBL='' S_DIM='' S_B='' S_NERD='' S_GAP='' S_VERSION_GAP='' S_i_ok='' S_i_err='' S_i_warn='' S_i_info='' S_i_q='' S_i_pull='' S_i_save='' S_i_trash='' S_i_restart='' S_i_box='' S_i_server='' S_i_runtime='' S_i_rocket='' S_i_book='' S_i_link='' S_i_key='' S_i_wait='' S_i_stop='' S_i_step='' S_i_version='' E_R='' E_ERR='' E_WRN='' E_OK='' E_INFO='' E_ACC='' E_HEAD='' E_VAL='' E_LBL='' E_DIM='' E_B='' E_NERD='' E_GAP='' E_VERSION_GAP='' E_i_ok='' E_i_err='' E_i_warn='' E_i_info='' E_i_q='' E_i_pull='' E_i_save='' E_i_trash='' E_i_restart='' E_i_box='' E_i_server='' E_i_runtime='' E_i_rocket='' E_i_book='' E_i_link='' E_i_key='' E_i_wait='' E_i_stop='' E_i_step='' E_i_version=''
 
 # style_init: judge stdout and stderr separately, so only real terminals
 # get decoration and piped output stays byte-clean.
@@ -1861,7 +1867,7 @@ run_success() {
     printf '%s\n' "${S_ACC}${S_i_rocket:+$S_i_rocket$S_GAP}${S_B}Valhalla is up${S_R} ${S_OK}${S_i_ok:+$S_i_ok$S_GAP}${S_R}"
     printf '  %s%s%-10s%s %s\n' "$S_LBL" "${S_i_link:+$S_i_link$S_GAP}" "API:" "$S_R" "${S_VAL}${HEALTH_URL}${S_R}"
     printf '  %s%s%-10s%s %s\n' "$S_LBL" "${S_i_book:+$S_i_book$S_GAP}" "Docs:" "$S_R" "${S_INFO}${DOC_URL}${S_R}"
-    printf '  %s%s%-10s%s %s\n' "$S_LBL" "${S_i_box:+$S_i_box$S_GAP}" "Container:" "$S_R" "${S_VAL}$NAME${S_R} ${S_DIM}(running)${S_R}"
+    printf '  %s%s%-10s%s %s\n' "$S_LBL" "${S_i_server:+$S_i_server$S_GAP}" "Server:" "$S_R" "${S_VAL}$NAME${S_R} ${S_DIM}(running)${S_R}"
   }
 }
 
@@ -2194,7 +2200,7 @@ show_update_notice() {
 status_updates() {
   [[ ${VALHALLA_NO_UPDATE_CHECK:-0} == 1 ]] && return 0
   if ! curl -fsS -m 1 -o /dev/null https://api.github.com 2>/dev/null; then
-    printf '%s%s%-10s%s %s\n' "$S_LBL" "${S_i_info:+$S_i_info$S_GAP}" "Updates:" "$S_R" "not checked (no internet connection)"
+    printf '%s%s%-10s%s %s\n' "$S_LBL" "${S_i_restart:+$S_i_restart$S_GAP}" "Updates:" "$S_R" "not checked (no internet connection)"
     show_update_notice
     return 0
   fi
@@ -2205,7 +2211,7 @@ status_updates() {
   local tool image
   tool="$(state_get tool_update)"; image="$(state_get image_update)"
   if [[ $tool == 1 || $image == 1 ]]; then
-    printf '%s%s%-10s%s %s\n' "$S_LBL" "${S_i_info:+$S_i_info$S_GAP}" "Updates:" "$S_R" "${S_OK}${S_i_ok:+$S_i_ok$S_GAP}available${S_R}"
+    printf '%s%s%-10s%s %s\n' "$S_LBL" "${S_i_restart:+$S_i_restart$S_GAP}" "Updates:" "$S_R" "${S_OK}${S_i_ok:+$S_i_ok$S_GAP}available${S_R}"
     if [[ -t 2 ]]; then
       show_update_notice
     else
@@ -2220,7 +2226,7 @@ status_updates() {
     elif [[ ! -f $ROOT/VERSION ]]; then
       what="${what:+$what; }tool not checked: running from a checkout"
     fi
-    printf '%s%s%-10s%s %s\n' "$S_LBL" "${S_i_info:+$S_i_info$S_GAP}" "Updates:" "$S_R" "${S_OK}${S_i_ok:+$S_i_ok$S_GAP}up to date${what:+ ${S_DIM}($what)${S_R}}"
+    printf '%s%s%-10s%s %s\n' "$S_LBL" "${S_i_restart:+$S_i_restart$S_GAP}" "Updates:" "$S_R" "${S_OK}${S_i_ok:+$S_i_ok$S_GAP}up to date${what:+ ${S_DIM}($what)${S_R}}"
   fi
   return 0
 }
@@ -2476,33 +2482,38 @@ cmd_clean() {
 
 cmd_status() {
   row() {
-    local icon gap="$S_GAP"
-    case "$1" in
-      Runtime:|State:|Updates:) icon="$S_i_info" ;;
-      Container:|Image:) icon="$S_i_box" ;;
-      URL:) icon="$S_i_link" ;;
-      Persist:) icon="$S_i_save" ;;
-      Health:) icon="$S_i_ok" ;;
-      Version:) icon="$S_i_version"; gap="$S_VERSION_GAP" ;;
-    esac
+    local icon gap="$S_GAP" override="${3:-}"
+    if [[ -n $override ]]; then icon="$override"; else
+      case "$1" in
+        Runtime:) icon="$S_i_runtime" ;;
+        State:) icon="$S_i_wait" ;;
+        Updates:) icon="$S_i_restart" ;;
+        Server:) icon="$S_i_server" ;;
+        Image:) icon="$S_i_box" ;;        URL:) icon="$S_i_link" ;;
+        Docs:) icon="$S_i_book" ;;        Persist:) icon="$S_i_save" ;;
+        Health:) icon="$S_i_ok" ;;
+        Version:) icon="$S_i_version"; gap="$S_VERSION_GAP" ;;
+      esac
+    fi
     printf '%s%s%-10s%s %s\n' "$S_LBL" "${icon:+$icon$gap}" "$1" "$S_R" "$2"
   }
   row "Runtime:" "$RT"
-  row "Container:" "$NAME"
+  row "Server:" "$NAME"
   if ! exists; then
-    row "State:" "not created ${S_DIM}(use: $PROG run)${S_R}"
+    row "State:" "not created ${S_DIM}(use: $PROG run)${S_R}" "$S_i_q"
     status_updates
     return 0
   fi
   local st
   st="$(state)"
   if [[ $st == running ]]; then
-    row "State:" "${S_OK}${S_i_ok:+$S_i_ok$S_GAP}running${S_R}"
+    row "State:" "${S_OK}${S_i_ok:+$S_i_ok$S_GAP}running${S_R}" "$S_i_ok"
   else
-    row "State:" "${st:-unknown}"
+    row "State:" "${st:-unknown}" "$S_i_stop"
   fi
   row "Image:" "${S_DIM}$(container_image)${S_R}"
-  row "URL:" "${S_VAL}http://127.0.0.1:${PORT}${S_R}  ${S_DIM}(docs: ${S_INFO}$DOC_URL${S_DIM})${S_R}"
+  row "URL:" "${S_VAL}http://127.0.0.1:${PORT}${S_R}"
+  row "Docs:" "${S_INFO}$DOC_URL${S_R}"
   local pf
   pf="$(persist_file)"
   if persist_on; then
@@ -2539,7 +2550,7 @@ cmd_outdated() {
   local_digest="$(container_digest)"
   remote_digest="$(registry_digest "$repo" "$tag")" || die "couldn't reach Docker Hub"
   [[ -n $remote_digest ]] || die "tag $tag not found for $repo"
-  printf '%s%-10s%s %s\n' "$S_LBL" "Container:" "$S_R" "$ref"
+  printf '%s%-10s%s %s\n' "$S_LBL" "Server:" "$S_R" "$ref"
   echo "  ${S_DIM}running${S_R}    ${local_digest:-unknown}"
   echo "  ${S_DIM}Docker Hub${S_R} ${S_VAL}$tag${S_R}: $remote_digest"
   if [[ $local_digest == "$remote_digest" ]]; then
