@@ -15,7 +15,7 @@
 #   --keep             leave the container running afterwards
 #   --smoke            short run (sweep 1 and 8 VUs for 5s, benchmark in SMOKE mode) to test the script
 #   --port N           host port for the container (default 18080)
-#   --runtime R        docker | container (default: valhalla.sh decides; env VALHALLA_RUNTIME also works)
+#   --runtime R        docker | container (default: container, Apple; env VALHALLA_RUNTIME also works)
 #   --duration D       time per sweep level (default 20s)
 #   --sweep "1 8 32"   VU levels for the sweep (default "1 8 32 128")
 # Env: BASE_URL (default http://127.0.0.1:<port>), PROVIDER_USER/PROVIDER_PASS, USER_NAME/USER_PASS,
@@ -26,7 +26,7 @@
 set -uo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-LABEL="baseline"; START=1; KEEP=0; SMOKE=0; PORT=18080; RUNTIME="${RUNTIME:-}"
+LABEL="baseline"; START=1; KEEP=0; SMOKE=0; PORT=18080; RUNTIME="${RUNTIME:-${VALHALLA_RUNTIME:-container}}"
 DURATION="20s"; SWEEP="1 8 32 128"
 NAME="perf-$$"
 while [[ $# -gt 0 ]]; do
