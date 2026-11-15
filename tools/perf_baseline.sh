@@ -11,6 +11,7 @@
 #
 # Usage:  tools/perf_baseline.sh [options]
 #   --label NAME       output name (default: baseline). Use e.g. step3-permission-cache for later runs.
+#   --hub              start the published Docker Hub image instead of building this checkout (default: build)
 #   --no-start         use an already running server at BASE_URL (you handle rate limits and seeding state)
 #   --keep             leave the container running afterwards
 #   --smoke            short run (sweep 1 and 8 VUs for 5s, benchmark in SMOKE mode) to test the script
@@ -26,13 +27,14 @@
 set -uo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-LABEL="baseline"; START=1; KEEP=0; SMOKE=0; PORT=8080; RUNTIME="${RUNTIME:-${VALHALLA_RUNTIME:-container}}"
+LABEL="baseline"; START=1; BUILD=1; KEEP=0; SMOKE=0; PORT=8080; RUNTIME="${RUNTIME:-${VALHALLA_RUNTIME:-container}}"
 DURATION="20s"; SWEEP="1 8 32 128"
 NAME="perf-$$"
 while [[ $# -gt 0 ]]; do
 	case "$1" in
 		--label) LABEL="$2"; shift 2 ;;
 		--no-start) START=0; shift ;;
+		--hub) BUILD=0; shift ;;
 		--keep) KEEP=1; shift ;;
 		--smoke) SMOKE=1; DURATION="5s"; SWEEP="1 8"; shift ;;
 		--port) PORT="$2"; shift 2 ;;
@@ -71,9 +73,10 @@ log() { printf '\n== %s ==\n' "$*"; }
 if [[ $START == 1 ]]; then
 	log "Starting server ($NAME on port $PORT)"
 	printf 'WHITELIST=%s\n' "$WHITELIST" >"$TMP/env"
-	"${V[@]}" --env-file "$TMP/env" run || { echo "error: could not start the server" >&2; exit 1; }
+	if [[ $BUILD == 1 ]]; then CMD=(build "$LABEL"); echo "Building the image from this checkout (first build can take several minutes)"; else CMD=(run); fi
+	"${V[@]}" --env-file "$TMP/env" "${CMD[@]}" || { echo "error: could not start the server" >&2; exit 1; }
 fi
-for _ in $(seq 1 60); do
+for _ in $(seq 1 90); do
 	curl -fsS --max-time 3 "$BASE_URL/api/v2/hello" >/dev/null 2>&1 && break
 	sleep 1
 done
