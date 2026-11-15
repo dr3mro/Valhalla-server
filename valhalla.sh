@@ -3023,7 +3023,10 @@ install_tool() {
   local ref="${1:-main}" new
   local -a args=(--replace --ref "$ref")
   [[ -f $ROOT/VERSION ]] && args+=(--dir "$ROOT")
-  if [[ -f $ROOT/install.sh ]]; then
+  if [[ -f $ROOT/installer ]]; then
+    new="$ROOT/installer"
+    sh "$new" "${args[@]}"; local rc=$?
+  elif [[ -f $ROOT/install.sh ]]; then
     new="$ROOT/install.sh"
     VALHALLA_SOURCE="$ROOT" sh "$new" "${args[@]}"; local rc=$?
   else
