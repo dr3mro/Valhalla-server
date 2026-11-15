@@ -545,7 +545,7 @@ message_icon() {
   local text="$1" prefix="$2" name var
   case "$text" in
     Starting*|Creating*|Recreating*|Building*) name=i_box ;;
-    Pulling*|Downloading*|Updating*) name=i_pull ;;
+    Pulling*|Downloading*|Updating*|Installing*) name=i_pull ;;
     Restarting*) name=i_restart ;;
     Stopping*|Stopped*) name=i_stop ;;
     Removing*|Removed*|"Couldn't remove"*) name=i_trash ;;
@@ -3042,7 +3042,9 @@ cmd_install() {
     [[ -f $target/VERSION ]] && say_info "installed now: $(cat "$target/VERSION")"
     return 0
   fi
+  step "Installing vdt ($ref)"
   install_tool "$ref" || die "the installer failed"
+  say_ok "Installed vdt to $target"
 }
 
 cmd_uninstall() {
