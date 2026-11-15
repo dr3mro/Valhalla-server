@@ -44,6 +44,10 @@
 #   test [api|fuzz|all]
 #                    Run test_api.sh (api, default) and/or
 #                    schemathesis_test.sh (fuzz) against the container.
+#   payload [group] [name]
+#                    Browse the JSON request payloads test_api.sh sends
+#                    (interactive with fzf); with group and name, print one
+#                    directly (--raw prints the file as-is, e.g. for curl).
 #   secret           Generate a new random TOKEN_SECRET and save it where it's
 #                    read from (normally ~/.local/share/vdt/config;
 #                    asks before replacing one, which logs everyone out).
@@ -135,8 +139,9 @@
 # Runtime: Apple `container` if installed, otherwise docker.
 #
 # Dependencies: before running, each command checks the tools and files it
-# needs (e.g. curl, python3 for Apple container, jq for test, docker/Dockerfile
-# for build) and lists every missing one with how to install it.
+# needs (e.g. curl, python3 for Apple container, jq and fzf for test/payload,
+# docker/Dockerfile for build) and lists every missing one with how to
+# install it.
 #
 # Shell completion: on first use the script adds one line to ~/.zshrc and/or
 # ~/.bashrc (whichever exist) to enable tab completion; open a new terminal to
@@ -263,6 +268,7 @@ PERSIST=""     # --persist (1) / --no-persist (0); empty: keep the container's s
 CLI_TOKEN_SECRET="" # --token-secret
 NO_PRUNE="${VALHALLA_NO_PRUNE:-0}" # --no-prune: keep old images after update/build
 UPDATE_SCOPE=""   # --image-only / --tool-only: update just one side of update
+RAW_PAYLOAD=0     # --raw: payload prints the payload file as-is
 OLD_PERSIST="" # VALHALLA_PERSIST of the container being replaced
 
 # Commands: name|short description (single source for help-free tools such
@@ -287,6 +293,7 @@ COMMANDS=(
   "restore|load a dump into the container"
   "shell|shell inside the container"
   "test|run the API tests against the container"
+  "payload|browse the JSON request payloads used by the API"
   "secret|write a random TOKEN_SECRET to the env file"
   "install|install or update the vdt command from GitHub"
   "uninstall|remove the installed vdt command"
@@ -310,6 +317,7 @@ OPTIONS=(
   "--no-prune|keep old images after update/build|"
   "--image-only|update: only the image, skip the tool|"
   "--tool-only|update: only the tool, skip the image|"
+  "--raw|payload: print the payload file as-is|"
   "-h --help|show help|"
 )
 
@@ -800,6 +808,7 @@ while [[ $# -gt 0 ]]; do
     --no-prune) NO_PRUNE=1; shift ;;
     --image-only) UPDATE_SCOPE="${UPDATE_SCOPE:+$UPDATE_SCOPE }image"; shift ;;
     --tool-only) UPDATE_SCOPE="${UPDATE_SCOPE:+$UPDATE_SCOPE }tool"; shift ;;
+    --raw) RAW_PAYLOAD=1; shift ;;
     -h | --help) ARGS=(help); break ;;
     --) shift; ARGS+=("$@"); break ;;
     -*) die "unknown option: $1 (see: $PROG help)" ;;
@@ -905,6 +914,22 @@ EOF
           local -a kinds
           kinds=('api:test_api.sh' 'fuzz:schemathesis_test.sh' 'all:both')
           _describe -t kinds 'test suite' kinds ;;
+        payload)
+          local dir pd
+          for pd in "$root/api_tests/payloads" "$HOME/.local/share/vdt/api_tests/payloads"; do
+            [[ -d $pd ]] && { dir=$pd; break }
+          done
+          if [[ -z $dir ]]; then
+            _message 'payload group'
+          elif [[ -d $dir/$words[CURRENT-1] ]]; then
+            local -a names
+            names=("$dir/$words[CURRENT-1]/"*.json(.N:t:r))
+            _describe -t payloads 'payload' names
+          else
+            local -a groups
+            groups=("$dir/"*(/N:t))
+            _describe -t groups 'payload group' groups
+          fi ;;
         completion) compadd zsh bash ;;
       esac ;;
   esac
@@ -952,6 +977,18 @@ EOF
       COMPREPLY=($(compgen -W "latest local $(git -C "$root" tag 2>/dev/null)" -- "$cur")) ;;
     restore | dump) COMPREPLY=($(compgen -f -- "$cur")) ;;
     test) COMPREPLY=($(compgen -W "api fuzz all" -- "$cur")) ;;
+    payload)
+      local pd dir=""
+      for pd in "$root/api_tests/payloads" "$HOME/.local/share/vdt/api_tests/payloads"; do
+        [[ -d $pd ]] && { dir=$pd; break; }
+      done
+      if [[ -z $dir ]]; then
+        COMPREPLY=()
+      elif [[ -d $dir/$prev ]]; then
+        COMPREPLY=($(compgen -W "$(ls "$dir/$prev" 2>/dev/null | sed 's/[.]json$//')" -- "$cur"))
+      else
+        COMPREPLY=($(compgen -W "$(ls "$dir" 2>/dev/null)" -- "$cur"))
+      fi ;;
     completion) COMPREPLY=($(compgen -W "zsh bash" -- "$cur")) ;;
   esac
 }
@@ -1035,7 +1072,7 @@ check_deps() {
   local cmd="$1" arg="${2:-}"
 
   case "$cmd" in
-    secret | test | install | uninstall | version) ;;
+    secret | test | install | uninstall | version | payload) ;;
     *)
       if [[ -n ${VALHALLA_RUNTIME:-} ]]; then
         need "$VALHALLA_RUNTIME"
@@ -1066,6 +1103,10 @@ check_deps() {
       case "${arg:-api}" in
         fuzz | all) need python3; need_script schemathesis_test ;;
       esac
+      ;;
+    payload)
+      need fzf
+      want jq "nicer payload previews"
       ;;
   esac
 
@@ -2484,6 +2525,227 @@ cmd_test() {
   return "$status"
 }
 
+# ── payload browsing ───────────────────────────────────────────────────────
+# The request bodies test_api.sh sends live in api_tests/payloads
+# (<group>/<name>.json); the installed tool ships them too. `payload`
+# browses them with fzf, lists one group, or prints one (--raw: as-is).
+
+# payload_dir: where the payload files are (checkout first, installed copy
+# second); fails when neither has them.
+payload_dir() {
+  if [[ -d $ROOT/api_tests/payloads ]]; then
+    echo "$ROOT/api_tests/payloads"
+    return 0
+  fi
+  if [[ -d $DATA_DIR/api_tests/payloads ]]; then
+    echo "$DATA_DIR/api_tests/payloads"
+    return 0
+  fi
+  return 1
+}
+
+payload_groups() { # dir: group names, sorted, one per line
+  local d
+  for d in "$1"/*/; do [[ -d $d ]] && basename "$d"; done | sort
+}
+
+payload_count() { # dir group: number of payloads in it
+  local f n=0
+  for f in "$1/$2"/*.json; do [[ -f $f ]] && n=$((n + 1)); done
+  echo "$n"
+}
+
+# payload_hint NAME: what a placeholder like {{CLINIC_ID}} stands for.
+payload_hint() {
+  case "$1" in
+    ID) echo "numeric id of the record to read" ;;
+    *_ID) echo "numeric id returned by an earlier call" ;;
+    *USERNAME) echo "unique username for this test run" ;;
+    *PASSWORD) echo "the matching password of the test run" ;;
+    RUN) echo "unique id of each test run (usernames, emails)" ;;
+    DISPOSABLE_NAME) echo "name of a throwaway record used by a test" ;;
+    *) echo "substituted by test_api.sh at run time" ;;
+  esac
+}
+
+# payload_colorize FILE: the JSON with syntax colors (plain when not fancy).
+# Template placeholders ({{NAME}}) always stand out, also inside strings.
+payload_colorize() {
+  local file="$1" level colors
+  level="$(fancy_level "$([[ -t 1 ]] && echo 1 || echo 0)")"
+  [[ $level -ge 1 ]] || { cat "$file"; return 0; }
+  colors="$(tput colors 2>/dev/null || echo 8)"
+  awk -v hi="$colors" '
+    BEGIN {
+      R = "\033[0m"
+      if (hi >= 256) {
+        KEY = "\033[1;38;5;111m"; STR = "\033[38;5;114m"; NUM = "\033[38;5;216m"
+        BOOL = "\033[1;38;5;213m"; PH = "\033[1;38;5;221m"; DIM = "\033[2m"
+      } else {
+        KEY = "\033[1;34m"; STR = "\033[1;32m"; NUM = "\033[1;33m"
+        BOOL = "\033[1;35m"; PH = "\033[1;33m"; DIM = "\033[2m"
+      }
+    }
+    {
+      line = $0
+      if (match(line, /^[ \t]*"[^"]*"[ \t]*:/)) {
+        head = substr(line, RSTART, RLENGTH)
+        rest = substr(line, RSTART + RLENGTH)
+        if (match(head, /"[^"]*"/)) {
+          key = substr(head, RSTART, RLENGTH)
+          sub(/"[^"]*"/, KEY key R, head)
+        }
+        value = rest
+        sub(/^[ \t]+/, "", value)
+        sub(/[ \t]*,[ \t]*$/, "", value)
+        col = ""
+        if (value ~ /^"/) col = STR
+        else if (value ~ /^\{\{/) col = NUM
+        else if (value ~ /^-?[0-9]/) col = NUM
+        else if (value ~ /^(true|false|null)$/) col = BOOL
+        if (col != "" && length(value) > 0) {
+          i = index(rest, value)
+          rest = substr(rest, 1, i - 1) col value R substr(rest, i + length(value))
+        }
+        line = head rest
+      } else if (match(line, /[][{}]/)) {
+        b = substr(line, RSTART, 1)
+        line = substr(line, 1, RSTART - 1) DIM b R substr(line, RSTART + 1)
+      }
+      gsub(/\{\{[A-Z_]+\}\}/, PH "&" R, line)
+      print line
+    }
+  ' "$file"
+}
+
+payload_show() { # group name file: the boxed, colorized view of one payload
+  local group="$1" name="$2" file="$3" content title bar icon="" ph hint
+  local level i pad max phs=() hints=()
+  [[ -f $file ]] || die "no payload file: $file"
+  content="$(<"$file")"
+  level="$(fancy_level "$([[ -t 1 ]] && echo 1 || echo 0)")"
+  title="$group/$name.json"
+  [[ $level -ge 3 && -n $S_i_book ]] && icon="$S_i_book"
+  if [[ $level -ge 1 ]]; then
+    pad=2
+    [[ -n $icon ]] && pad=6
+    bar=""
+    for ((i = 0; i < ${#title} + pad; i++)); do bar+="─"; done
+    printf '%s\n' "${S_ACC}╭${bar}╮${S_R}"
+    printf '%s\n' "${S_ACC}│ ${S_B}${icon:+$icon$S_GAP}$title${S_R}${S_ACC} │${S_R}"
+    printf '%s\n' "${S_ACC}╰${bar}╯${S_R}"
+  else
+    printf '%s\n' "$title"
+  fi
+  if [[ $content == *'{{'* ]]; then
+    for ph in $(printf '%s' "$content" | grep -o '{{[A-Z_]*}}' | sort -u); do
+      hint="${ph#??}"
+      hint="${hint%??}"
+      phs+=("$ph")
+      hints+=("$(payload_hint "$hint")")
+      (( ${#ph} > max )) && max=${#ph}
+    done
+    max=${max:-0}
+    printf '%s\n' "${S_LBL}Placeholders${S_R}"
+    for ((i = 0; i < ${#phs[@]}; i++)); do
+      printf '  %s%-*s%s %s%s%s\n' "$S_INFO" "$max" "${phs[i]}" "$S_R" "$S_DIM" "${hints[i]}" "$S_R"
+    done
+    echo
+  fi
+  payload_colorize "$file"
+  printf '%s\n' "${S_DIM}raw copy: $PROG payload $group $name --raw${S_R}"
+}
+
+payload_group_fzf() { # dir: pick a group (fzf); non-zero when quit
+  local dir="$1"
+  payload_groups "$dir" |
+    fzf --prompt 'payload group ▸ ' --reverse --height=70% --border \
+      --header 'enter: select   esc: quit' \
+      --preview "ls \"$dir/{}\" 2>/dev/null | sed 's/[.]json\$//'" \
+      --preview-window 'right:60%:wrap'
+}
+
+payload_name_fzf() { # dir group: pick a payload (fzf); non-zero when back
+  local dir="$1" group="$2" f out=""
+  for f in "$dir/$group"/*.json; do
+    [[ -f $f ]] || continue
+    out+="$(basename "$f" .json)"$'\n'
+  done
+  [[ -n $out ]] || return 1
+  printf '%s' "$out" |
+    fzf --prompt "$group ▸ " --reverse --height=70% --border \
+      --header 'enter: view   esc: back' \
+      --preview "jq -C . \"$dir/$group/{}.json\" 2>/dev/null || cat \"$dir/$group/{}.json\"" \
+      --preview-window 'right:60%:wrap'
+}
+
+payload_browse() { # dir: group -> payload -> view; esc backs up a level
+  local dir="$1" group name
+  while :; do
+    group="$(payload_group_fzf "$dir")" || return 0
+    while :; do
+      name="$(payload_name_fzf "$dir" "$group")" || break
+      payload_show "$group" "$name" "$dir/$group/$name.json"
+    done
+  done
+}
+
+payload_list_all() { # dir: every group with its payload count
+  local dir="$1" g n
+  printf '%s\n' "${S_HEAD}Payload groups${S_R}"
+  for g in $(payload_groups "$dir"); do
+    n="$(payload_count "$dir" "$g")"
+    printf '  %s%s%s %s(%s payloads)%s\n' "$S_VAL" "$g" "$S_R" "$S_DIM" "$n" "$S_R"
+  done
+}
+
+payload_list_group() { # dir group: the payloads in one group
+  local dir="$1" group="$2" f name
+  printf '%s\n' "${S_HEAD}Payloads in $group${S_R}"
+  for f in "$dir/$group"/*.json; do
+    [[ -f $f ]] || continue
+    name="$(basename "$f" .json)"
+    printf '  %s%s%s\n' "$S_VAL" "$name" "$S_R"
+  done
+}
+
+cmd_payload() {
+  local group="${1:-}" name="${2:-}" dir file
+  [[ ${3:-} ]] && die "usage: $PROG payload [group] [name]"
+  dir="$(payload_dir)" ||
+    die "no payload files found (install the tool: $PROG install, or run from a checkout)"
+  # "providers/create" (or "providers/create.json") in one argument also works
+  if [[ $group == */* ]]; then
+    name="${group#*/}"
+    group="${group%%/*}"
+  fi
+  name="${name%.json}"
+  if [[ -n $group && -n $name ]]; then
+    file="$dir/$group/$name.json"
+    [[ -f $file ]] || die "no payload $group/$name.json (see: $PROG payload $group)"
+    if [[ $RAW_PAYLOAD == 1 ]]; then
+      cat "$file"
+    else
+      payload_show "$group" "$name" "$file"
+    fi
+    return 0
+  fi
+  if [[ -n $group ]]; then
+    [[ -d $dir/$group ]] || die "no payload group '$group' (see: $PROG payload)"
+    payload_list_group "$dir" "$group"
+    return 0
+  fi
+  if [[ $RAW_PAYLOAD == 1 ]]; then
+    die "--raw needs a group and a name (e.g.: $PROG payload providers create --raw)"
+  fi
+  # No arguments: interactive with fzf, a plain list when piped.
+  if [[ -t 0 && -t 1 ]]; then
+    payload_browse "$dir"
+  else
+    payload_list_all "$dir"
+  fi
+}
+
 cmd_secret() {
   # Write where the secret is read from: an explicit --env-file, else the
   # env file in use if it sets TOKEN_SECRET, else the install directory's config.
@@ -2619,6 +2881,9 @@ ARGS=("${ARGS[@]:1}")
 if [[ -n $UPDATE_SCOPE && $command != update ]]; then
   die "--image-only/--tool-only are update options (see: $PROG help)"
 fi
+if [[ $RAW_PAYLOAD == 1 && $command != payload ]]; then
+  die "--raw is a payload option (see: $PROG help)"
+fi
 
 case "$command" in
   help) usage; exit 0 ;;
@@ -2633,6 +2898,7 @@ install_completion
 resolve_runtime
 case "$command" in
   install | uninstall | status) ;; # status checks for itself
+  payload) ;;                      # needs no image or container
   update)
     # --tool-only updates the tool itself: no notice, like install.
     [[ $UPDATE_SCOPE == tool ]] || { show_update_notice; schedule_update_check; }
@@ -2645,7 +2911,7 @@ esac
 check_deps "$command" "${ARGS[0]:-}"
 
 case "$command" in
-  secret | install | uninstall | version) "cmd_${command}" "${ARGS[@]}"; exit $? ;;
+  secret | install | uninstall | version | payload) "cmd_${command}" "${ARGS[@]}"; exit $? ;;
 esac
 
 if [[ $command == test && -z $RT ]]; then

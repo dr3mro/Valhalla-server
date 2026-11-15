@@ -35,6 +35,7 @@ vdt psql      # SQL shell on the bundled database
 vdt dump      # save the database to ~/.local/share/vdt/dumps
 vdt update --persist   # keep the database across stop/restart/update from now on
 vdt test      # run the end-to-end API tests against it
+vdt payload   # browse the JSON request payloads the tests send (fzf); --raw prints one for curl
 vdt stop      # stop it; vdt run starts it again
 vdt help      # everything else
 ```
