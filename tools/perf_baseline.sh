@@ -2,7 +2,9 @@
 # Step 0 of PERFORMANCE_PLAN.md: record a repeatable performance baseline.
 #
 # What it does:
-#   1. starts a throw-away Valhalla container (./valhalla.sh run) unless --no-start is given
+#   1. starts the server unless --no-start is given. Default: the native Release binary build/Release/server
+#      (PostgreSQL must already be running and initialised, see db_init.sh; settings come from .env).
+#      With --container it starts a throw-away container instead (./valhalla.sh build/run).
 #   2. seeds a provider and a user (the k6 benchmark logs in as them)
 #   3. runs a concurrency sweep on one read endpoint (tools/k6/sweep.js) at 1/8/32/128 VUs
 #   4. runs the full mixed benchmark (tools/k6/benchmark.js: reads + crud + auth)
@@ -11,12 +13,14 @@
 #
 # Usage:  tools/perf_baseline.sh [options]
 #   --label NAME       output name (default: baseline). Use e.g. step3-permission-cache for later runs.
-#   --hub              start the published Docker Hub image instead of building this checkout (default: build)
+#   --container        run the server in a container (valhalla.sh) instead of the native binary
+#   --rebuild          run "cmake --build build/Release" before starting the native binary
+#   --hub              (with --container) start the published Docker Hub image instead of building this checkout (default: build)
 #   --no-start         use an already running server at BASE_URL (you handle rate limits and seeding state)
-#   --keep             leave the container running afterwards
+#   --keep             leave the server running afterwards
 #   --smoke            short run (sweep 1 and 8 VUs for 5s, benchmark in SMOKE mode) to test the script
 #   --port N           host port for the container (default 8080)
-#   --runtime R        docker | container (default: container, Apple; env VALHALLA_RUNTIME also works)
+#   --runtime R        (with --container) docker | container (default: container, Apple; env VALHALLA_RUNTIME also works)
 #   --duration D       time per sweep level (default 20s)
 #   --sweep "1 8 32"   VU levels for the sweep (default "1 8 32 128")
 # Env: BASE_URL (default http://127.0.0.1:<port>), PROVIDER_USER/PROVIDER_PASS, USER_NAME/USER_PASS,
@@ -27,6 +31,7 @@
 set -uo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+MODE=native; REBUILD=0; ENV_FILE="${ENV_FILE:-}"
 LABEL="baseline"; START=1; BUILD=1; KEEP=0; SMOKE=0; PORT=8080; RUNTIME="${RUNTIME:-${VALHALLA_RUNTIME:-container}}"
 DURATION="20s"; SWEEP="1 8 32 128"
 NAME="perf-$$"
@@ -35,6 +40,10 @@ while [[ $# -gt 0 ]]; do
 		--label) LABEL="$2"; shift 2 ;;
 		--no-start) START=0; shift ;;
 		--hub) BUILD=0; shift ;;
+		--container) MODE=container; shift ;;
+		--native) MODE=native; shift ;;
+		--rebuild) REBUILD=1; shift ;;
+		--env-file) ENV_FILE="$2"; shift 2 ;;
 		--keep) KEEP=1; shift ;;
 		--smoke) SMOKE=1; DURATION="5s"; SWEEP="1 8"; shift ;;
 		--port) PORT="$2"; shift 2 ;;
@@ -55,14 +64,15 @@ for t in k6 curl jq; do command -v "$t" >/dev/null || { echo "error: $t is requi
 
 OUT_DIR="$ROOT/docs/perf"; RAW="$OUT_DIR/raw/$LABEL"; mkdir -p "$RAW"
 REPORT="$OUT_DIR/$LABEL.md"
-TMP="$(mktemp -d)"; STATS_PID=""
+TMP="$(mktemp -d)"; STATS_PID=""; SRV_PID=""
 V=("$ROOT/valhalla.sh")
 [[ -n $RUNTIME ]] && V+=(--runtime "$RUNTIME")
 V+=(--name "$NAME" --port "$PORT")
 
 cleanup() {
 	[[ -n $STATS_PID ]] && kill "$STATS_PID" 2>/dev/null
-	if [[ $START == 1 && $KEEP == 0 ]]; then "${V[@]}" delete -y >/dev/null 2>&1 || "${V[@]}" delete >/dev/null 2>&1 </dev/null; fi
+	if [[ -n ${SRV_PID:-} && $KEEP == 0 ]]; then kill "$SRV_PID" 2>/dev/null; wait "$SRV_PID" 2>/dev/null; fi
+	if [[ $MODE == container && $START == 1 && $KEEP == 0 ]]; then "${V[@]}" delete -y >/dev/null 2>&1 || "${V[@]}" delete >/dev/null 2>&1 </dev/null; fi
 	rm -rf "$TMP"
 }
 trap cleanup EXIT
@@ -70,7 +80,36 @@ trap cleanup EXIT
 log() { printf '\n== %s ==\n' "$*"; }
 
 # ---- 1. server
-if [[ $START == 1 ]]; then
+SERVER_LOG="$RAW/server.log"
+if [[ $START == 1 && $MODE == native ]]; then
+	BIN="$ROOT/build/Release/server"
+	if [[ $REBUILD == 1 ]]; then
+		log "Building (cmake --build build/Release)"
+		cmake --build "$ROOT/build/Release" || { echo "error: build failed" >&2; exit 1; }
+	fi
+	[[ -x $BIN ]] || { echo "error: $BIN not found; run ./build.sh or use --rebuild" >&2; exit 1; }
+	log "Starting native server $BIN on port $PORT"
+	# Load KEY=VALUE lines from the env file (never sourced, same parser idea as run_release.sh).
+	EF="${ENV_FILE:-$ROOT/.env}"
+	if [[ -f $EF ]]; then
+		while IFS= read -r line || [[ -n $line ]]; do
+			line=${line%$'\r'}
+			[[ $line =~ ^[[:space:]]*(#|$) ]] && continue
+			[[ $line =~ ^[[:space:]]*(export[[:space:]]+)?([A-Za-z_][A-Za-z0-9_]*)[[:space:]]*=[[:space:]]*(.*)$ ]] || continue
+			key=${BASH_REMATCH[2]}; val=${BASH_REMATCH[3]}
+			val=${val%%[[:space:]]#*}; val=${val%"${val##*[![:space:]]}"}
+			if [[ $val =~ ^\"(.*)\"$ || $val =~ ^\'(.*)\'$ ]]; then val=${BASH_REMATCH[1]}; fi
+			export "$key=$val"
+		done <"$EF"
+	else
+		echo "note: no env file at $EF, using the environment and built-in defaults"
+	fi
+	# Perf-run overrides: our port, no rate-limit bans, quiet console (the log goes to $SERVER_LOG).
+	export SERVER_PORT="$PORT" MAX_REQUESTS=100000000 MAX_FPS=100000000 WHITELIST="$WHITELIST" SERVER_LOG_TO_CONSOLE=false
+	if lsof -iTCP:"$PORT" -sTCP:LISTEN >/dev/null 2>&1; then echo "error: port $PORT is already in use; stop that server first" >&2; exit 1; fi
+	( cd "$ROOT" && exec "$BIN" ) >"$SERVER_LOG" 2>&1 &
+	SRV_PID=$!
+elif [[ $START == 1 ]]; then
 	log "Starting server ($NAME on port $PORT)"
 	printf 'WHITELIST=%s\nMAX_REQUESTS=100000000\nMAX_FPS=100000000\n' "$WHITELIST" >"$TMP/env"
 	if [[ $BUILD == 1 ]]; then CMD=(build "$LABEL"); echo "Building the image from this checkout (first build can take several minutes)"; else CMD=(run); fi
@@ -78,6 +117,11 @@ if [[ $START == 1 ]]; then
 fi
 for _ in $(seq 1 90); do
 	curl -fsS --max-time 3 "$BASE_URL/api/v2/hello" >/dev/null 2>&1 && break
+	if [[ -n $SRV_PID ]] && ! kill -0 "$SRV_PID" 2>/dev/null; then
+		echo "error: the server exited. Last log lines ($SERVER_LOG):" >&2; tail -20 "$SERVER_LOG" >&2
+		echo "hint: PostgreSQL must be running and initialised (psql -f init.sql via ./db_init.sh), matching DB_* in .env" >&2
+		exit 1
+	fi
 	sleep 1
 done
 curl -fsS --max-time 3 "$BASE_URL/api/v2/hello" >/dev/null 2>&1 || { echo "error: server not answering at $BASE_URL" >&2; exit 1; }
@@ -98,8 +142,14 @@ if [[ $START == 0 ]]; then
 	echo "      otherwise the rate limiter (default 10000 requests/30 s per IP) bans the load generator for an hour."
 fi
 
-# ---- 3. container stats sampler (one snapshot every 5 s, never a streaming call)
-if [[ $START == 1 && ( $RUNTIME == docker || ( -z $RUNTIME && -n $(command -v docker) ) ) ]]; then
+# ---- 3. CPU/memory sampler (one snapshot every 5 s, never a streaming call)
+if [[ -n $SRV_PID ]]; then
+	( while kill -0 "$SRV_PID" 2>/dev/null; do
+		ps -o %cpu=,rss= -p "$SRV_PID" | awk -v t="$(date +%H:%M:%S)" '{printf "%s %s%% %.0fMiB\n", t, $1, $2/1024}'
+		sleep 5
+	done ) >"$RAW/container-stats.txt" &
+	STATS_PID=$!
+elif [[ $MODE == container && $START == 1 && ( $RUNTIME == docker || ( -z $RUNTIME && -n $(command -v docker) ) ) ]]; then
 	RT="${RUNTIME:-docker}"
 	( while :; do
 		"$RT" stats --no-stream --format '{{.CPUPerc}} {{.MemUsage}}' "$NAME" 2>/dev/null | sed "s/^/$(date +%H:%M:%S) /"
@@ -149,7 +199,7 @@ row() { # row <label> <json>
 	echo "- Date: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
 	echo "- Git: $(git -C "$ROOT" describe --always --dirty 2>/dev/null || echo unknown)"
 	echo "- Host: $(uname -srm), $(nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null) CPUs"
-	echo "- Target: $BASE_URL ($([[ $START == 1 ]] && echo "fresh ${RUNTIME:-default-runtime} container, default settings" || echo "existing server"))"
+	echo "- Target: $BASE_URL ($([[ $START == 0 ]] && echo "existing server" || { [[ $MODE == native ]] && echo "native build/Release/server, threads=${SERVER_THREADS:-default}, db_conn=${DB_MAX_CONN:-default}" || echo "fresh ${RUNTIME} container"; }))"
 	echo "- Sweep: ${DURATION} per level, endpoint POST /clients/providers/read (auth + permission check + 1 DB read)"
 	[[ $SMOKE == 1 ]] && echo "- **Smoke run: numbers are not meaningful**"
 	[[ $BAD == 1 ]] && echo "- **INVALID RUN: more than 5% of requests failed (see warnings). Fix the cause and rerun; do not compare these numbers.**"
