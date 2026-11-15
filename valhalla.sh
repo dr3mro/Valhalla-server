@@ -2673,11 +2673,14 @@ payload_show() { # group name file: the boxed, colorized view of one payload
 }
 
 payload_group_fzf() { # dir: pick a group (fzf); non-zero when quit
-  local dir="$1"
+  local dir="$1" dir_q
+  # %q output is already sh-safe on its own; adding quotes would break paths
+  # with spaces (the backslashes would become literal). fzf quotes {} itself.
+  dir_q="$(printf '%q' "$dir")"
   payload_groups "$dir" |
     fzf --prompt 'payload group ▸ ' --reverse --height=70% --border \
       --header 'enter: select   esc: quit' \
-      --preview "ls \"$dir/{}\" 2>/dev/null | sed 's/[.]json\$//'" \
+      --preview "ls $dir_q/{} 2>/dev/null | sed 's/[.]json\$//'" \
       --preview-window 'right,60%,wrap'
 }
 
@@ -2690,24 +2693,30 @@ payload_name_fzf() { # dir group: pick a payload (fzf); enter views it in place
   [[ -n $out ]] || return 1
   view_fancy="$(fancy_level 1)"
   bat_bin="$(command -v bat 2>/dev/null || command -v batcat 2>/dev/null || true)"
+  # fzf replaces {} with the item already single-quoted ('create'), so never
+  # quote the {} part again (that would put literal ' in the file name), and
+  # the %q'd static path is used bare (%q escapes spaces itself).
+  base_q="$(printf '%q' "$dir/$group")"
   if [[ -n $bat_bin ]]; then
     # Bare placeholders (invalid JSON) render as noisy per-character runs in
     # bat: fall back to plain cat for those files, per selection.
-    preview="grep -q ':[[:space:]]*{{' \"$dir/$group/{}.json\" 2>/dev/null &&
-      cat \"$dir/$group/{}.json\" ||
-      \"$bat_bin\" --color=always --style=plain -l json \"$dir/$group/{}.json\" 2>/dev/null ||
-      cat \"$dir/$group/{}.json\""
+    preview="grep -q ':[[:space:]]*{{' $base_q/{}.json 2>/dev/null &&
+      cat $base_q/{}.json ||
+      \"$bat_bin\" --color=always --style=plain -l json $base_q/{}.json 2>/dev/null ||
+      cat $base_q/{}.json"
   else
-    preview="jq -C . \"$dir/$group/{}.json\" 2>/dev/null || cat \"$dir/$group/{}.json\""
+    preview="jq -C . $base_q/{}.json 2>/dev/null || cat $base_q/{}.json"
   fi
   # enter: the full view replaces the fzf screen ("press any key" returns to
   # the list); esc: back to the group list.
+  script_q="$(printf '%q' "$SCRIPT")"
+  group_q="$(printf '%q' "$group")"
   printf '%s' "$out" |
     fzf --prompt "$group ▸ " --reverse --height=70% --border \
       --header 'enter: view   esc: back' \
       --preview "$preview" \
       --preview-window 'right,60%,wrap' \
-      --bind "enter:execute(VALHALLA_FANCY=$view_fancy '$SCRIPT' payload '$group' {})"
+      --bind "enter:execute(VALHALLA_FANCY=$view_fancy $script_q payload $group_q {})"
 }
 
 payload_browse() { # dir: group -> payload; enter views in place, esc backs up
