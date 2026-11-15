@@ -1960,10 +1960,10 @@ old_image_refs() {
   local keep="${1#docker.io/}" used refs ref
   local pattern="^((docker\.io/)?${IMAGE_REPO#docker.io/}|${LOCAL_REPO}):"
   if [[ $RT == docker ]]; then
-    used="$(docker ps -a --format '{{.Image}}' 2>/dev/null | sed 's|^docker\.io/||' | sort -u)"
+    used="$(docker ps -a --format '{{.Image}}' 2>/dev/null | sed 's|^docker\.io/||' | sort -u || true)"
     refs="$(docker image ls --format '{{.Repository}}:{{.Tag}}' 2>/dev/null | grep -E "$pattern" | grep -v ':<none>$' || true)"
   else
-    used="$(container list --all 2>/dev/null | awk 'NR > 1 {print $2}' | sed 's|^docker\.io/||' | sort -u)"
+    used="$(container list --all 2>/dev/null | awk 'NR > 1 {print $2}' | sed 's|^docker\.io/||' | sort -u || true)"
     refs="$(container image list 2>/dev/null | awk 'NR > 1 && $2 != "<none>" {print $1 ":" $2}' | grep -E "$pattern" || true)"
   fi
   while IFS= read -r ref; do
@@ -2973,13 +2973,13 @@ cmd_payload() {
     fi
     return 0
   fi
+  if [[ $RAW_PAYLOAD == 1 || $FILLED_PAYLOAD == 1 ]]; then
+    die "--raw/--filled need a group and a name (e.g.: $PROG payload providers create --raw)"
+  fi
   if [[ -n $group ]]; then
     [[ -d $dir/$group ]] || die "no payload group '$group' (see: $PROG payload)"
     payload_list_group "$dir" "$group"
     return 0
-  fi
-  if [[ $RAW_PAYLOAD == 1 || $FILLED_PAYLOAD == 1 ]]; then
-    die "--raw/--filled need a group and a name (e.g.: $PROG payload providers create --raw)"
   fi
   # No arguments: interactive with fzf, a plain list when piped.
   if [[ -t 0 && -t 1 ]]; then

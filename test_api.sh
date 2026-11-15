@@ -16,6 +16,9 @@
 # Note:    the server only implements DELETE for patients and visits; deleting health, drugs, reports,
 #          requests, prescriptions and paidservices returns 400 by design (rows go away via ON DELETE CASCADE).
 # Needs:   curl, jq. Exit code is 0 only if every step returned the expected status.
+# Payload placeholders ({{ID}}, {{LOGIN_USERNAME}}) and setvar read/write
+# variables by name, which shellcheck can't follow.
+# shellcheck disable=SC2034,SC2154
 set -uo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
