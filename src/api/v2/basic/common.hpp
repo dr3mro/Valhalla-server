@@ -64,18 +64,21 @@ namespace api::v2
                 std::visit(
                     [&](const auto& controller)
                     {
-                        CALLBACK_ mcb = [&callback](int code, const std::string& content)
+                        // The controller may answer later, from another thread (password work runs on a worker), after this
+                        // function has returned, so the response callback is captured by value, never by reference.
+                        CALLBACK_ mcb = [callback](int code, const std::string& content)
                         {
+                            using Reply = std::function<void(const drogon::HttpResponsePtr&)>;
                             switch (code)
                             {
                                 case api::v2::Http::Status::OK:
-                                    Helper::successResponse(content, std::move(callback));
+                                    Helper::successResponse(content, Reply(callback));
                                     break;
                                 case api::v2::Http::Status::INTERNAL_SERVER_ERROR:
-                                    Helper::failureResponse(content, std::move(callback));
+                                    Helper::failureResponse(content, Reply(callback));
                                     break;
                                 default:
-                                    Helper::errorResponse(static_cast<drogon::HttpStatusCode>(code), content, std::move(callback));
+                                    Helper::errorResponse(static_cast<drogon::HttpStatusCode>(code), content, Reply(callback));
                                     break;
                             }
                         };

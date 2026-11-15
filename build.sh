@@ -9,6 +9,3 @@ cmake --build build/Debug -j 10
 
 ctest --preset conan-release
 ctest --preset conan-debug
-
-./run_release.sh&
-./test_api.sh

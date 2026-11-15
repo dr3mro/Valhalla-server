@@ -32,6 +32,7 @@ class Configurator
         frontend_config_.printValues();
         email_sender_config_.printValues();
         permission_cache_config_.printValues();
+        password_worker_config_.printValues();
     }
 
     using DOSDetectorConfig = struct DOSDetectorConfig : public EnvLoader
@@ -255,6 +256,27 @@ class Configurator
         }
     };
 
+    using PasswordWorkerConfig = struct PasswordWorkerConfig : public EnvLoader
+    {
+        uint16_t workers;    // 0 runs password work on the request thread
+        uint32_t queue_max;  // queued operations before a new one is refused with 503
+
+        PasswordWorkerConfig()
+            : workers(getEnvironmentVariable("PASSWORD_WORKERS", Defaults::PasswordWorker::WORKERS_)),
+              queue_max(getEnvironmentVariable("PASSWORD_QUEUE_MAX", Defaults::PasswordWorker::QUEUE_MAX_))
+        {
+        }
+
+        void printValues() const override
+        {
+            Message::ConfMessage("------------------------------------------------");
+            Message::ConfMessage("-------------Password Worker Config-------------");
+            Message::ConfMessage("------------------------------------------------");
+            Message::ConfMessage(fmt::format("Password workers: {}", workers));
+            Message::ConfMessage(fmt::format("Password queue max: {}", queue_max));
+        }
+    };
+
     using Testing = struct Testing : public EnvLoader
     {
        public:
@@ -284,5 +306,6 @@ class Configurator
     FrontEndConfig         frontend_config_;
     EmailSenderConfig      email_sender_config_;
     PermissionCacheConfig  permission_cache_config_;
+    PasswordWorkerConfig   password_worker_config_;
     Testing                testing_;
 };

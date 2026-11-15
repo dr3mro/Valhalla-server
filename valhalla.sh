@@ -162,7 +162,7 @@
 # for a small local container: SERVER_THREADS=2, DB_MAX_CONN=2, and raised
 # MAX_REQUESTS/MAX_FPS so the API docs' Benchmark and Test console panels
 # don't get your IP rate-limited. Edit it freely; it's kept on update.
-# MAX_REQUESTS, MAX_FPS, PERMISSION_CACHE_TTL, DB_ACQUIRE_TIMEOUT_MS, TOKEN_SECRET, SERVER_THREADS and DB_MAX_CONN set in
+# MAX_REQUESTS, MAX_FPS, PERMISSION_CACHE_TTL, DB_ACQUIRE_TIMEOUT_MS, PASSWORD_WORKERS, PASSWORD_QUEUE_MAX, TOKEN_SECRET, SERVER_THREADS and DB_MAX_CONN set in
 # the shell win over the env file for one run (e.g. SERVER_THREADS=4
 # ./valhalla.sh update). Variables set nowhere aren't passed, so the server
 # uses its own defaults (in brackets below).
@@ -194,6 +194,9 @@
 #     DB_ACQUIRE_TIMEOUT_MS ms to wait for a free connection, then 503   [3000]
 #   Caching
 #     PERMISSION_CACHE_TTL  idle seconds a cached permission is kept, 0 = off [300]
+#   Passwords (hashing runs on its own threads, never on request threads)
+#     PASSWORD_WORKERS      threads for hashing/login checks, keep < DB_MAX_CONN [2]
+#     PASSWORD_QUEUE_MAX    waiting operations before new ones get 503      [64]
 #   Server
 #     SERVER_HOST           listen address (keep 0.0.0.0)         [0.0.0.0]
 #     SERVER_PORT           listen port inside the container      [8080]
@@ -1750,6 +1753,8 @@ compose_env() {
   [[ -n ${MAX_REQUESTS:-} ]] && env_set MAX_REQUESTS "$MAX_REQUESTS"
   [[ -n ${MAX_FPS:-} ]] && env_set MAX_FPS "$MAX_FPS"
   [[ -n ${PERMISSION_CACHE_TTL:-} ]] && env_set PERMISSION_CACHE_TTL "$PERMISSION_CACHE_TTL"
+  [[ -n ${PASSWORD_WORKERS:-} ]] && env_set PASSWORD_WORKERS "$PASSWORD_WORKERS"
+  [[ -n ${PASSWORD_QUEUE_MAX:-} ]] && env_set PASSWORD_QUEUE_MAX "$PASSWORD_QUEUE_MAX"
   if persist_wanted; then
     env_set VALHALLA_PERSIST 1
     env_set VALHALLA_PERSIST_FILE "/persist/${NAME}-persist.sql"

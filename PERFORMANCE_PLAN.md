@@ -20,34 +20,15 @@ Done when: a run at the highest concurrency with the recommended pool size shows
 
 ## Step 6: Take scrypt off the event loop
 
-Today `SessionManager::login` runs on a Drogon IO thread and does, in order: DB read of the hash, DB write of `last_login` (before the password is checked, so a failed login still updates it), then `PasswordCrypt::verifyPassword` (scrypt, blocking). Client create and update also call `hashPassword` on the IO thread (`types.hpp`). The scrypt cost is small now only because hashing uses `OPSLIMIT_MIN`/`MEMLIMIT_MIN`; the planned move to `*_INTERACTIVE` (Step 9) makes each verify about 100 ms and would freeze every request on that thread, so this step must land first. Stored hashes encode their own parameters, so raising them later needs no migration.
+Done in code (not yet built or measured): login runs its database reads on the request thread, then submits "verify password, write `last_login`, issue token, answer" to a bounded `PasswordWorker` (`PASSWORD_WORKERS` default 2, `PASSWORD_QUEUE_MAX` default 64; 0 workers = inline, which the unit tests use). A wrong password no longer updates the session row. Client create and update (which hash the password) run on the same worker. A full queue answers 503 with `Retry-After`. `executeControllerMethod` now captures the response callback by value, because answers can come from another thread after the handler returned. The k6 script `tools/k6/login_burst.js` runs reads alone, then reads during a login burst, and `perf_baseline.sh` reports both.
 
-### 6.1 Fix the order in login
+Left to do:
 
-Verify the password first, then write `last_login`. A wrong password must not touch the session row. Add a test that fails today (FakeDb records whether the write ran).
-
-### 6.2 A bounded password worker
-
-1. New `PasswordWorker` (`src/gatekeeper/passwordcrypt/`): a small fixed pool (`trantor::ConcurrentTaskQueue` or own threads) with `submit(task)` that returns false when the queue is full.
-2. Config through the Configurator, with `.env`, `valhalla.sh` help/README and docs: `PASSWORD_WORKERS` (default: min(2, cores/4), at least 1) and `PASSWORD_QUEUE_MAX` (default 64).
-3. A test mode that runs tasks inline, so existing tests stay synchronous.
-4. Keep workers fewer than the DB pool size, because the post-verify steps use the database.
-
-### 6.3 Async login
-
-1. `GateKeeper::login`: parse and read the hash on the IO thread as now, then submit "verify, set `last_login`, generate token, call the callback" to the worker. The Drogon callback may be called from any thread; capture everything by value (`shared_ptr`s for managers).
-2. Queue full returns 503 with `Retry-After`, never blocks.
-3. Same worker for `hashPassword` in client create and update (do the hash in the controller before building the entity, or submit the whole create).
-4. Keep the existing login rate limit; confirm which limiter covers the login route and tighten it if the per-IP limit is loose.
-5. Do not weaken the scrypt parameters. Optional 6.5: raise to `*_INTERACTIVE` once this is measured.
-
-### 6.4 Tests and measure
-
-1. Unit tests: worker runs tasks and stops cleanly (drains on shutdown), queue-full is rejected, login failure does not write `last_login`, 503 path.
-2. New k6 scenario: a burst of logins while the read sweep runs. Record read p99 with and without the burst (stage 5 column; stage 4 is the last numbers recorded).
-3. Run `sqlmap_test.sh` and the login/logout API tests again.
-
-Risks: a callback fired after shutdown or on a destroyed object (capture by value, drain workers first); worker threads starving the DB pool; slower single login by one queue hop (negligible).
+1. Build and run the unit tests (new: `test_passwordworker.cpp`, session-manager split tests, wrong-password-writes-nothing tests, config check).
+2. Run `tools/perf_baseline.sh --reset-db` and compare "reads alone" with "reads during login burst" in the new report section; read p99 should stay close. Check the server log for 503s during the burst; if there are many, raise `PASSWORD_WORKERS`/`PASSWORD_QUEUE_MAX` (keep workers below `DB_MAX_CONN`).
+3. Run the login/logout API tests and `sqlmap_test.sh`.
+4. Done in code: new passwords are hashed with Argon2id at the OWASP minimum (19 MiB, 2 passes) instead of scrypt at the test-only minimum. `verifyPassword` reads the algorithm from the stored string, so existing scrypt hashes still log in. Run the burst test with this in place (the benchmark seeds new users, so they get Argon2id) and size `PASSWORD_WORKERS` from the measured cost per login.
+5. The global rate limit (`MAX_REQUESTS` per `PERIOD`) is the only brake on password guessing; consider a stricter limit for the login route.
 
 Done when: p99 of a read endpoint stays flat while a burst of logins runs, and a failed login leaves the session row untouched.
 

@@ -673,7 +673,7 @@ the first of: .env in the current directory, .env next to this script,
 for a small local container: SERVER_THREADS=2, DB_MAX_CONN=2, and raised
 MAX_REQUESTS/MAX_FPS so the API docs' Benchmark and Test console panels
 don't get your IP rate-limited. Edit it freely; it's kept on update.
-MAX_REQUESTS, MAX_FPS, PERMISSION_CACHE_TTL, DB_ACQUIRE_TIMEOUT_MS, TOKEN_SECRET, SERVER_THREADS and DB_MAX_CONN set in
+MAX_REQUESTS, MAX_FPS, PERMISSION_CACHE_TTL, DB_ACQUIRE_TIMEOUT_MS, PASSWORD_WORKERS, PASSWORD_QUEUE_MAX, TOKEN_SECRET, SERVER_THREADS and DB_MAX_CONN set in
 the shell win over the env file for one run (e.g. SERVER_THREADS=4
 ./valhalla.sh update). Variables set nowhere aren't passed, so the server
 uses its own defaults (in brackets below).
@@ -705,6 +705,9 @@ Server variables the image understands (server default in brackets):
     DB_ACQUIRE_TIMEOUT_MS ms to wait for a free connection, then 503   [3000]
   Caching
     PERMISSION_CACHE_TTL  idle seconds a cached permission is kept, 0 = off [300]
+  Passwords (hashing runs on its own threads, never on request threads)
+    PASSWORD_WORKERS      threads for hashing/login checks, keep < DB_MAX_CONN [2]
+    PASSWORD_QUEUE_MAX    waiting operations before new ones get 503      [64]
   Server
     SERVER_HOST           listen address (keep 0.0.0.0)         [0.0.0.0]
     SERVER_PORT           listen port inside the container      [8080]
@@ -777,6 +780,13 @@ All configuration is supplied through environment variables; defaults live in `s
 | Variable               | Default | Description                                                                 |
 | ---------------------- | ------- | --------------------------------------------------------------------------- |
 | `PERMISSION_CACHE_TTL` | `300`   | Seconds an unused cached permission is kept; each use renews it; `0` disables |
+
+### Passwords
+
+| Variable             | Default | Description                                                                                          |
+| -------------------- | ------- | ---------------------------------------------------------------------------------------------------- |
+| `PASSWORD_WORKERS`   | `2`     | Threads that hash and verify passwords (Argon2id), so request threads are never blocked; keep it below `DB_MAX_CONN`; `0` runs on the request thread |
+| `PASSWORD_QUEUE_MAX` | `64`    | Password operations that may wait for a worker; further ones get `503` with `Retry-After`            |
 
 ### Authentication (JWT)
 

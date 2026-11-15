@@ -180,6 +180,11 @@ if [[ $SMOKE == 1 ]]; then export SMOKE=1; fi
 k6 run --quiet --summary-export "$RAW/benchmark.json" "$ROOT/tools/k6/benchmark.js" >"$RAW/benchmark.log" 2>&1 \
 	|| echo "   (k6 exited non-zero, usually a threshold; see $RAW/benchmark.log)"
 
+# ---- 5b. login burst: do many simultaneous logins slow down plain reads?
+log "Login burst (reads alone, then reads while clients log in), about 40 seconds"
+k6 run --quiet --summary-export "$RAW/login-burst.json" "$ROOT/tools/k6/login_burst.js" >"$RAW/login-burst.log" 2>&1 \
+	|| echo "   (k6 exited non-zero; see $RAW/login-burst.log)"
+
 [[ -n $STATS_PID ]] && { kill "$STATS_PID" 2>/dev/null; STATS_PID=""; }
 
 # A run where most requests failed measures the rate limiter, not the server: refuse to call it a result.
@@ -193,6 +198,17 @@ done
 # ---- 6. report
 log "Writing $REPORT"
 m() { jq -r --arg k "$2" "$3" "$1" 2>/dev/null || echo "n/a"; }   # m <file> <key> <jq>
+burst_row() { # burst_row <label> <read scenario> <login scenario or empty>
+	local f="$RAW/login-burst.json"
+	[[ -s $f ]] || { echo "| $1 | n/a | n/a | n/a | n/a |"; return; }
+	jq -r --arg l "$1" --arg rs "$2" --arg ls "$3" '
+		.metrics as $m |
+		($m["http_req_duration{scenario:" + $rs + "}"] // {}) as $d |
+		($m["http_reqs{scenario:" + $rs + "}"] // {}) as $q |
+		(if $ls == "" then "-" else ($m["http_reqs{scenario:" + $ls + "}"].rate // 0 | . * 10 | round / 10 | tostring) end) as $lr |
+		"| \($l) | \($q.rate // 0 | . * 10 | round / 10) | \($d["p(95)"] // 0 | . * 10 | round / 10) | \($d["p(99)"] // 0 | . * 10 | round / 10) | \($lr) |"
+	' "$f"
+}
 row() { # row <label> <json>
 	local f="$2"
 	[[ -s $f ]] || { echo "| $1 | n/a | n/a | n/a | n/a | n/a | n/a |"; return; }
@@ -232,6 +248,13 @@ row() { # row <label> <json>
 	row "all" "$RAW/benchmark.json"
 	echo
 	echo "Per-scenario p95 and thresholds: \`raw/$LABEL/benchmark.log\`."
+	echo
+	echo "## Login burst (read latency with and without simultaneous logins)"
+	echo
+	echo "| phase | read req/s | read p95 ms | read p99 ms | login req/s |"
+	echo "|-------|-----------|-------------|-------------|-------------|"
+	burst_row "reads alone" "reads_quiet" ""
+	burst_row "reads during login burst" "reads_burst" "logins"
 	echo
 	if [[ -s $RAW/container-stats.txt ]]; then
 		echo "## Container CPU / memory (peak sample)"

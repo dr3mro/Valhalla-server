@@ -34,9 +34,13 @@ class FakeDatabaseController : public DatabaseController
     /// When true every query throws DatabaseBusy, like a pool whose wait timed out.
     bool busy = false;
 
+    /// How many times a write-capable query (executeQuery) ran, to check that a path did not write.
+    int query_calls = 0;
+
     std::optional<jsoncons::json> executeQuery(const std::string&, const pqxx::params& = {}) override
     {
         throwIfBusy();
+        ++query_calls;
         return query_result;
     }
 

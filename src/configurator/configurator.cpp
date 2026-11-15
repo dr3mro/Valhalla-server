@@ -41,6 +41,12 @@ Configurator::PermissionCacheConfig& Configurator::get<Configurator::PermissionC
 }
 
 template <>
+Configurator::PasswordWorkerConfig& Configurator::get<Configurator::PasswordWorkerConfig>()
+{
+    return password_worker_config_;
+}
+
+template <>
 Configurator::EmailSenderConfig& Configurator::get<Configurator::EmailSenderConfig>()
 {
     return email_sender_config_;

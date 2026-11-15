@@ -25,7 +25,13 @@ namespace api::v2
         SessionManager& operator=(SessionManager&&)      = delete;
         ~SessionManager() override                       = default;
 
+        // login() = fetchPasswordHash() then completeLogin(). GateKeeper calls the two parts separately so the password check
+        // can run on the password worker; a wrong password never updates the login time.
         bool login(const std::optional<Types::Credentials>& credentials, std::optional<Types::ClientLoginData>& clientLoginData, std::string& message);
+        std::optional<std::string> fetchPasswordHash(
+            const std::optional<Types::Credentials>& credentials, std::optional<Types::ClientLoginData>& clientLoginData, std::string& message);
+        bool completeLogin(const std::optional<Types::Credentials>& credentials, const std::string& password_hash,
+            std::optional<Types::ClientLoginData>& clientLoginData, std::string& message);
         void logout(CALLBACK_&& callback, std::optional<Types::ClientLoginData>& clientLoginData);
         bool clientHasValidSession(std::optional<Types::ClientLoginData>& clientLoginData, std::string& message);
         bool storeSession(std::optional<Types::ClientLoginData>& clientLoginData, std::string& message);

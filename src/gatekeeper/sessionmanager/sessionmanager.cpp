@@ -24,9 +24,13 @@
 
 using SessionManager = api::v2::SessionManager;
 
-bool SessionManager::login(const std::optional<Types::Credentials>& credentials, std::optional<Types::ClientLoginData>& clientLoginData, std::string& message)
+// Login is split in two so the slow part (password hashing) can run on the password worker:
+//   fetchPasswordHash  - reads the stored hash and checks the account is active (database reads only, no writes)
+//   completeLogin      - verifies the password and only then records the login time
+// login() runs both on the calling thread.
+std::optional<std::string> SessionManager::fetchPasswordHash(
+    const std::optional<Types::Credentials>& credentials, std::optional<Types::ClientLoginData>& clientLoginData, std::string& message)
 {
-    std::optional<std::string> password_hash;
     try
     {
         auto client_object = getPasswordHashForUserName(credentials->username, clientLoginData->group.value());
@@ -34,7 +38,7 @@ bool SessionManager::login(const std::optional<Types::Credentials>& credentials,
         if (!client_object.has_value() || client_object.value().empty())
         {
             message = fmt::format("Failure: username {} does not exist, please try again.", credentials->username);
-            return false;
+            return std::nullopt;
         }
 
         jsoncons::json& client_j = client_object.value();
@@ -44,7 +48,7 @@ bool SessionManager::login(const std::optional<Types::Credentials>& credentials,
         if (!clientLoginData->clientId.has_value())
         {
             message += "Failed to find client id from database, please try again";
-            return false;
+            return std::nullopt;
         }
 
         clientLoginData->username  = credentials->username;
@@ -53,30 +57,46 @@ bool SessionManager::login(const std::optional<Types::Credentials>& credentials,
         if (!clientLoginData->is_active)
         {
             message += fmt::format("username: [{}] is suspended, please contact the administrator", credentials->username);
-            return false;
+            return std::nullopt;
         }
 
-        bool success = setNowLoginTimeGetLastLogoutTime(clientLoginData);
-
-        if (!success)
-        {
-            message +=
-                "Failed to set now login and get last logout times , please "
-                "try again";
-            return false;
-        }
-
-        password_hash = client_j.at("password").as_string();
+        std::optional<std::string> password_hash = client_j.at("password").as_string();
 
         if (!password_hash.has_value())
         {
             message += "Failed to find password hash from database, please try again";
+            return std::nullopt;
+        }
+        return password_hash;
+    }
+    catch (const DatabaseBusy&)
+    {
+        throw;
+    }
+    catch (const std::exception& e)
+    {
+        message += fmt::format("Error: {}", e.what());
+    }
+    return std::nullopt;
+}
+
+bool SessionManager::completeLogin(const std::optional<Types::Credentials>& credentials, const std::string& password_hash,
+    std::optional<Types::ClientLoginData>& clientLoginData, std::string& message)
+{
+    try
+    {
+        // Check the password first: a failed login must not touch the session row.
+        if (!passwordCrypt->verifyPassword(credentials->password, password_hash))
+        {
+            message += "Invalid username/password, please try again";
             return false;
         }
 
-        if (!passwordCrypt->verifyPassword(credentials->password, password_hash.value()))
+        if (!setNowLoginTimeGetLastLogoutTime(clientLoginData))
         {
-            message += "Invalid username/password, please try again";
+            message +=
+                "Failed to set now login and get last logout times , please "
+                "try again";
             return false;
         }
     }
@@ -90,6 +110,16 @@ bool SessionManager::login(const std::optional<Types::Credentials>& credentials,
         return false;
     }
     return true;
+}
+
+bool SessionManager::login(const std::optional<Types::Credentials>& credentials, std::optional<Types::ClientLoginData>& clientLoginData, std::string& message)
+{
+    const std::optional<std::string> password_hash = fetchPasswordHash(credentials, clientLoginData, message);
+    if (!password_hash.has_value())
+    {
+        return false;
+    }
+    return completeLogin(credentials, password_hash.value(), clientLoginData, message);
 }
 
 void SessionManager::logout(CALLBACK_&& callback, std::optional<Types::ClientLoginData>& clientLoginData)

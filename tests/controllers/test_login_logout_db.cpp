@@ -123,6 +123,8 @@ TEST_CASE("ClientController::Login returns UNAUTHORIZED for wrong password", "[c
     CR                     r;
     ctrl.Login(cap(r), anonRequester(), R"({"username":"alice","password":"wrong_password"})", "127.0.0.1");
     CHECK(r.code == Http::Status::UNAUTHORIZED);
+    // A wrong password must not touch the session row (the login time is written only after the password is verified).
+    CHECK(fake->query_calls == 0);
 }
 
 // ── Login: success ────────────────────────────────────────────────────────────
@@ -141,6 +143,7 @@ TEST_CASE("ClientController::Login returns 200 and token on correct credentials"
     CHECK(r.code == Http::Status::OK);
     CHECK(r.body.find("token") != std::string::npos);
     CHECK(r.body.find("alice") != std::string::npos);
+    CHECK(fake->query_calls == 1);  // the login time is recorded exactly once, after the password check
 }
 
 // ── Login: malformed JSON credentials ────────────────────────────────────────

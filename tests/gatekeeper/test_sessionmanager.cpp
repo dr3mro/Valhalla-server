@@ -282,6 +282,7 @@ TEST_CASE("SessionManager::login returns false for a wrong password", "[gatekeep
     std::string message;
     CHECK_FALSE(sm.login(std::optional{creds}, cld, message));
     CHECK(message.find("Invalid") != std::string::npos);
+    CHECK(fake->query_calls == 0);  // the login time is not written for a wrong password
 }
 
 TEST_CASE("SessionManager::login succeeds with correct password and active account", "[gatekeeper][session][login]")
@@ -304,4 +305,61 @@ TEST_CASE("SessionManager::login succeeds with correct password and active accou
 
     std::string message;
     CHECK(sm.login(std::optional{creds}, cld, message));
+}
+
+TEST_CASE("SessionManager::fetchPasswordHash reads without writing", "[gatekeeper][session][login]")
+{
+    auto        fake = std::make_shared<FakeDatabaseController>();
+    FakeDbGuard guard(fake);
+
+    fake->password_result = makePasswordRow(2003, "stored-hash", true);
+
+    SessionManager                 sm;
+    std::optional<ClientLoginData> cld = makeLoginData(2003, "users", "127.0.0.1");
+    api::v2::Types::Credentials    creds{"testuser", "whatever"};
+
+    std::string message;
+    const auto  hash = sm.fetchPasswordHash(std::optional{creds}, cld, message);
+    REQUIRE(hash.has_value());
+    CHECK(*hash == "stored-hash");
+    CHECK(cld->clientId == 2003);
+    CHECK(fake->query_calls == 0);
+}
+
+TEST_CASE("SessionManager::fetchPasswordHash refuses a suspended account", "[gatekeeper][session][login]")
+{
+    auto        fake = std::make_shared<FakeDatabaseController>();
+    FakeDbGuard guard(fake);
+
+    fake->password_result = makePasswordRow(2004, "stored-hash", false);
+
+    SessionManager                 sm;
+    std::optional<ClientLoginData> cld = makeLoginData(2004, "users", "127.0.0.1");
+    api::v2::Types::Credentials    creds{"testuser", "whatever"};
+
+    std::string message;
+    CHECK_FALSE(sm.fetchPasswordHash(std::optional{creds}, cld, message).has_value());
+    CHECK(message.find("suspended") != std::string::npos);
+}
+
+TEST_CASE("SessionManager::completeLogin verifies first and writes the login time once", "[gatekeeper][session][login]")
+{
+    auto        fake = std::make_shared<FakeDatabaseController>();
+    FakeDbGuard guard(fake);
+
+    PasswordCrypt pc;
+    auto          hash_opt = pc.hashPassword("GoodPass123!");
+    REQUIRE(hash_opt.has_value());
+
+    fake->query_result = makeLoginTimeRow("2026-01-01 00:00:00 +0000");
+
+    SessionManager                 sm;
+    std::optional<ClientLoginData> cld = makeLoginData(2005, "users", "127.0.0.1");
+    std::string                    message;
+
+    CHECK_FALSE(sm.completeLogin(std::optional{api::v2::Types::Credentials{"u", "bad"}}, *hash_opt, cld, message));
+    CHECK(fake->query_calls == 0);
+
+    CHECK(sm.completeLogin(std::optional{api::v2::Types::Credentials{"u", "GoodPass123!"}}, *hash_opt, cld, message));
+    CHECK(fake->query_calls == 1);
 }

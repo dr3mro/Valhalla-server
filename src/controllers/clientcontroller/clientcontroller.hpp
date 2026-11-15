@@ -13,6 +13,7 @@
 #include "controllers/entitycontroller/entitycontroller.hpp"
 #include "controllers/entitycontroller/entitycontrollerbase.hpp"
 #include "gatekeeper/gatekeeper.hpp"
+#include "gatekeeper/passwordcrypt/passwordworker.hpp"
 #include "store/store.hpp"
 #include "utils/global/callback.hpp"
 #include "utils/global/concepts.hpp"
@@ -42,5 +43,11 @@ class ClientController : public EntityController<T>, public ClientControllerBase
     void GetServices(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id) final;
 
    private:
-    std::shared_ptr<GateKeeper> gateKeeper = Store::getObject<GateKeeper>();
+    // The real work of Create and Update. Both hash the password, so the public methods run them on the
+    // password worker instead of on a request thread.
+    void createNow(CALLBACK_&& callback, const Requester& requester, std::string_view data);
+    void updateNow(CALLBACK_&& callback, const Requester& requester, std::string_view data, std::optional<uint64_t> _id);
+
+    std::shared_ptr<GateKeeper>     gateKeeper     = Store::getObject<GateKeeper>();
+    std::shared_ptr<PasswordWorker> passwordWorker = Store::getObject<PasswordWorker>();
 };

@@ -13,6 +13,7 @@
 
 #include "gatekeeper/dosdetector/dosdetector.hpp"
 #include "gatekeeper/includes.hpp"  // IWYU pragma: keep
+#include "gatekeeper/passwordcrypt/passwordworker.hpp"
 #include "gatekeeper/permissionmanager/permissionmanager.hpp"
 #include "gatekeeper/sessionmanager/sessionmanager.hpp"
 #include "gatekeeper/tokenmanager/tokenmanager.hpp"
@@ -33,7 +34,8 @@ GateKeeper::GateKeeper()
     : sessionManager_(Store::getObject<SessionManager>()),
       tokenManager_(Store::getObject<api::v2::TokenManager>()),
       dosDetector_(Store::getObject<DOSDetector>()),
-      permissionManager_(Store::getObject<api::v2::PermissionManager>())
+      permissionManager_(Store::getObject<api::v2::PermissionManager>()),
+      passwordWorker_(Store::getObject<PasswordWorker>())
 {
 }
 void GateKeeper::login(CALLBACK_&& callback, std::string_view data, const std::string& ip_address, std::string_view group)
@@ -54,29 +56,46 @@ void GateKeeper::login(CALLBACK_&& callback, std::string_view data, const std::s
         clientLoginData->group                                = group;
         clientLoginData->ip_address                           = ip_address;
 
-        success = sessionManager_->login(credentials, clientLoginData, message);
-
-        if (!success || !clientLoginData.has_value())
+        // Database reads only, on this thread. Everything slow (password hashing) and everything that writes happens on the worker.
+        std::optional<std::string> password_hash = sessionManager_->fetchPasswordHash(credentials, clientLoginData, message);
+        if (!password_hash.has_value())
         {
             std::move(callback)(Http::Status::UNAUTHORIZED, "Login failure: " + message);
             return;
         }
 
-        success = tokenManager_->generateToken(clientLoginData);
-        if (!success)
-        {
-            std::move(callback)(Http::Status::INTERNAL_SERVER_ERROR, "failed to generate token");
-            return;
-        }
+        runOnPasswordWorker(*passwordWorker_, std::move(callback),
+            [sessionManager = sessionManager_, tokenManager = tokenManager_, credentials = std::move(credentials), password_hash = std::move(password_hash).value(),
+                clientLoginData = std::move(clientLoginData), message = std::move(message)](CALLBACK_&& callback) mutable
+            {
+                try
+                {
+                    if (!sessionManager->completeLogin(credentials, password_hash, clientLoginData, message) || !clientLoginData.has_value())
+                    {
+                        callback(Http::Status::UNAUTHORIZED, "Login failure: " + message);
+                        return;
+                    }
 
-        jsoncons::json token_object;
-        token_object["token"]     = clientLoginData->token;
-        token_object["username"]  = clientLoginData->username;
-        token_object["client_id"] = clientLoginData->clientId;
-        token_object["group"]     = clientLoginData->group;
-        token_object["ipAddress"] = clientLoginData->ip_address;
+                    if (!tokenManager->generateToken(clientLoginData))
+                    {
+                        callback(Http::Status::INTERNAL_SERVER_ERROR, "failed to generate token");
+                        return;
+                    }
 
-        std::move(callback)(Http::Status::OK, token_object.as<std::string>());
+                    jsoncons::json token_object;
+                    token_object["token"]     = clientLoginData->token;
+                    token_object["username"]  = clientLoginData->username;
+                    token_object["client_id"] = clientLoginData->clientId;
+                    token_object["group"]     = clientLoginData->group;
+                    token_object["ipAddress"] = clientLoginData->ip_address;
+
+                    callback(Http::Status::OK, token_object.as<std::string>());
+                }
+                catch (const std::exception& e)
+                {
+                    CRITICALMESSAGERESPONSE
+                }
+            });
     }
     catch (const std::exception& e)
     {

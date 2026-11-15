@@ -10,6 +10,7 @@
 #include <string_view>
 
 #include "gatekeeper/dosdetector/dosdetector.hpp"
+#include "gatekeeper/passwordcrypt/passwordworker.hpp"
 #include "gatekeeper/permissionmanager/permissionmanager.hpp"
 #include "gatekeeper/sessionmanager/sessionmanager.hpp"
 #include "gatekeeper/tokenmanager/tokenmanager.hpp"
@@ -68,5 +69,6 @@ namespace api::v2
         std::shared_ptr<TokenManager>      tokenManager_;
         std::shared_ptr<DOSDetector>       dosDetector_;
         std::shared_ptr<PermissionManager> permissionManager_;
+        std::shared_ptr<PasswordWorker>    passwordWorker_;  // password hashing runs here, not on the request threads
     };
 }  // namespace api::v2

@@ -14,7 +14,7 @@
   - **Tests:** add over-match cases (`192.168.1.50`, `127.0.0.10`), CIDR/wildcard cases, and blacklist-versus-whitelist precedence. Update the invalid-pattern test.
   - **Cleanup:** collapse the three nested `try/catch` layers (`isWhitelisted` → `regexFind` → the lambda). `tests/README.md` item 9 (`"a,,b"` gives an empty match-everything entry) is outdated, because `parseSet` now skips empty items.
 - [x] **(obsolete: detector removed, all queries bound)** The SQL-injection check scans the parameterized query (`$1`, `$2`), which never contains user values. `src/database/database.cpp:185`, `:281`
-- [ ] **Password hashing uses scrypt's `OPSLIMIT_MIN`/`MEMLIMIT_MIN`,** which are test-only strengths. Use `*_INTERACTIVE` or stronger. `src/gatekeeper/passwordcrypt/passwordcrypt.cpp:34-35`
+- [x] **(done: Argon2id at the OWASP minimum, old scrypt hashes still verify, runs on the password worker)** Password hashing used scrypt's `OPSLIMIT_MIN`/`MEMLIMIT_MIN`,** which are test-only strengths. Use `*_INTERACTIVE` or stronger. `src/gatekeeper/passwordcrypt/passwordcrypt.cpp:34-35`
 - [ ] **The startup log prints the database password and the JWT secret.** `src/configurator/configurator.hpp:106`, `:187`
 - [ ] **Nothing stops a native run with the default `TOKEN_SECRET`.** (The Docker image already generates a random one.) Warn or refuse when it equals `Defaults::TokenParameters::TOKEN_SECRET_`.
 - [ ] **Duplicate JSON keys.** The `hasDuplicateKeys` check is commented out on the assumption that jsoncons rejects duplicates. Verify that's true, and enable strict parsing if it isn't. `src/validator/validator.cpp:29-34`, `:82-86`

@@ -217,7 +217,7 @@ ERR429 = {"description": "**Too many requests** - rate limit reached for your IP
           "content": {"text/plain": {"schema": {"type": "string"}, "example": "IP is blacklisted."}}}
 ERR500 = {"description": "**Internal error** - unexpected server or database failure. Body: `{\"Message\", \"Status\": \"Failure\"}`. The 503 `IP is banned.` and the filter's `Server error.` are plain text.",
           "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}, "example": {"Message": "Failed to create Sql create statement for table patients.", "Status": "Failure"}}}}
-ERR503 = {"description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS` (JSON body, header `Retry-After: 1`). Wait and retry.",
+ERR503 = {"description": "**Service unavailable** - either your IP was banned by the DoS protection (plain-text body `IP is banned.`), or every database connection was busy for longer than `DB_ACQUIRE_TIMEOUT_MS`, or too many logins / client creates were already waiting for a password worker (`PASSWORD_QUEUE_MAX`) (JSON body, header `Retry-After: 1`). Wait and retry.",
           "content": {"text/plain": {"schema": {"type": "string"}, "example": "IP is banned."},
                       "application/json": {"schema": {"$ref": "#/components/schemas/Error"}, "example": {"Message": "Database is busy, no connection available", "Status": "Error"}}}}
 ERRDEF = {"description": "Any other error. JSON errors use `{\"Message\": ...}`.",

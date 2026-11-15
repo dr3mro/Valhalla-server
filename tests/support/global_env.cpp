@@ -27,6 +27,8 @@ namespace
             setenv("TOKEN_TYPE", "JWS", 1);
             setenv("TOKEN_VALIDITY", "60", 1);
             setenv("CLN_FRQ", "1", 1);
+            // 0 workers: password hashing/verification runs inline, so tests stay synchronous.
+            setenv("PASSWORD_WORKERS", "0", 1);
             setenv("VALHALLA_TEST_NO_DB", "true", 1);
 
             // Make sure nothing leaks in from the developer's shell.

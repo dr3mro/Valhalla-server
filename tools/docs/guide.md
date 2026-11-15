@@ -160,7 +160,7 @@ Client mistakes answer `{"Message": "...", "Status": "Error"}`, server faults `"
 | **404** | Unknown route | `{"Message": "Endpoint not found."}` |
 | **429** | Rate limit reached | plain text |
 | **500** | Unexpected server or database failure | `{"Message": "...", "Status": "Failure"}` |
-| **503** | IP banned by the DoS protection, or no free database connection within `DB_ACQUIRE_TIMEOUT_MS` | plain text `IP is banned.`, or `{"Message": "Database is busy, no connection available", "Status": "Error"}` with `Retry-After: 1` |
+| **503** | IP banned by the DoS protection, no free database connection within `DB_ACQUIRE_TIMEOUT_MS`, or the password queue is full (`PASSWORD_QUEUE_MAX`) | plain text `IP is banned.`, or `{"Message": "Database is busy, no connection available", "Status": "Error"}` with `Retry-After: 1` |
 
 ## Rate limiting and abuse protection
 
@@ -241,6 +241,7 @@ curl -X POST $BASE/clinic/patients/search -H "Authorization: Bearer $TOKEN" -H '
 | `400 Failed to validate request body, Key: [x] is not found in database schema` | A body key is not a column of the table (check spelling and nesting). |
 | `400 Delete is NOT implemented` | Sub-records cannot be deleted directly; delete the parent patient or visit. |
 | `429` / `503` plain text | Rate limited or banned: wait `RL_DURATION` / `BAN_DURATION` or whitelist your IP. |
+| `503` JSON `Too many password operations in progress` | Many logins or client creates at once; retry after a second, or raise `PASSWORD_WORKERS` / `PASSWORD_QUEUE_MAX`. |
 | `503` JSON `Database is busy` | All database connections were in use for longer than `DB_ACQUIRE_TIMEOUT_MS`: retry after a second, or raise `DB_MAX_CONN` (keep it at least `SERVER_THREADS + 1`). |
 | Browser shows a CORS or network error from this page | Open the page from the server itself (`/api/v2/doc`) or fix the Base URL. |
 

@@ -286,6 +286,14 @@ TEST_CASE("Configurator exposes the configured singleton through Store", "[confi
         CHECK(config.acquire_timeout_ms == 3000);
     }
 
+    SECTION("PasswordWorkerConfig: tests run password work inline, other values are the defaults")
+    {
+        const auto& config = configurator->get<Configurator::PasswordWorkerConfig>();
+        CHECK(config.workers == 0);  // tests/support/global_env.cpp sets PASSWORD_WORKERS=0
+        CHECK(config.queue_max == Defaults::PasswordWorker::QUEUE_MAX_);
+        CHECK(Defaults::PasswordWorker::WORKERS_ == 2);
+    }
+
     SECTION("TokenManagerParameters come from the test environment")
     {
         // tests/support/global_env.cpp sets TOKEN_* before the Configurator

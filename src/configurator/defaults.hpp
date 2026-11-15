@@ -84,6 +84,12 @@ namespace Defaults
         const uint32_t TTL_ = 300;  // seconds a cached permission may stay idle
     }  // namespace PermissionCache
 
+    namespace PasswordWorker
+    {
+        const uint16_t WORKERS_   = 2;   // threads that hash and verify passwords; 0 = run on the request thread (tests)
+        const uint32_t QUEUE_MAX_ = 64;  // waiting password operations before new ones get 503
+    }  // namespace PasswordWorker
+
     namespace Testing
     {
         const bool VALHALLA_TEST_NO_DB_ = false;

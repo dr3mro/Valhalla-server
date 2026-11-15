@@ -1,5 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/generators/catch_generators.hpp>
+#include <sodium/crypto_pwhash_scryptsalsa208sha256.h>
 #include <string>
 
 #include "gatekeeper/passwordcrypt/passwordcrypt.hpp"
@@ -59,19 +60,41 @@ TEST_CASE("PasswordCrypt does not crash on malformed or truncated hashes", "[gat
     PasswordCrypt crypt;
 
     const auto& badHash =
-        GENERATE(std::string(""), std::string("garbage"), std::string("$scrypt$"), std::string("$7$C6..../....salt$truncated"), std::string(64, '\0'));
+        GENERATE(std::string(""), std::string("garbage"), std::string("$scrypt$"), std::string("$7$C6..../....salt$truncated"), std::string("$argon2id$v=19$m=19456,t=2,p=1$truncated"), std::string(64, '\0'));
 
     CAPTURE(badHash.size());
     REQUIRE_FALSE(crypt.verifyPassword("any password", badHash));
 }
 
-TEST_CASE("PasswordCrypt hash output looks like a scrypt encoded string", "[gatekeeper][password]")
+TEST_CASE("PasswordCrypt hash output is an Argon2id encoded string", "[gatekeeper][password]")
 {
     PasswordCrypt crypt;
 
     const auto hash = crypt.hashPassword("format-check");
     REQUIRE(hash.has_value());
-    // libsodium's scrypt str format starts with "$7$"
-    REQUIRE(hash->starts_with("$7$"));
-    REQUIRE(hash->size() >= 64);
+    // libsodium's Argon2id str format: $argon2id$v=19$m=<KiB>,t=<passes>,p=1$<salt>$<hash>
+    REQUIRE(hash->starts_with("$argon2id$"));
+    CHECK(hash->find("m=19456,t=2,p=1") != std::string::npos);  // OWASP minimum: 19 MiB, 2 passes
+}
+
+TEST_CASE("PasswordCrypt still verifies hashes made with the old scrypt scheme", "[gatekeeper][password]")
+{
+    PasswordCrypt crypt;
+
+    // A hash as the previous version of the server stored it (scrypt, the cost it used).
+    char legacy[crypto_pwhash_scryptsalsa208sha256_STRBYTES];  // NOLINT
+    REQUIRE(crypto_pwhash_scryptsalsa208sha256_str(static_cast<char*>(legacy), "old-password", 12, crypto_pwhash_scryptsalsa208sha256_OPSLIMIT_MIN,
+                crypto_pwhash_scryptsalsa208sha256_MEMLIMIT_MIN) == 0);
+    const std::string legacy_hash(static_cast<const char*>(legacy));
+    REQUIRE(legacy_hash.starts_with("$7$"));
+
+    CHECK(crypt.verifyPassword("old-password", legacy_hash));
+    CHECK_FALSE(crypt.verifyPassword("other-password", legacy_hash));
+}
+
+TEST_CASE("PasswordCrypt rejects a hash with an unknown algorithm prefix", "[gatekeeper][password]")
+{
+    PasswordCrypt crypt;
+    CHECK_FALSE(crypt.verifyPassword("any", "$2b$12$abcdefghijklmnopqrstuuABCDEFGHIJKLMNOPQRSTUVWXYZ01234"));
+    CHECK_FALSE(crypt.verifyPassword("any", "plaintext-password"));
 }
