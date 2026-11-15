@@ -1,22 +1,25 @@
 name: Scripts
 
-# Tests valhalla.sh, install.sh and docker/entrypoint.sh: lint, the installer
-# in a throwaway HOME, and persistence end to end with Docker.
+# Tests every shell script on Linux and macOS: lint, the offline suite
+# (.github/scripts/test_tool.sh: installer, vdt commands, dry runs, helper
+# scripts) and, on Linux, the vdt container commands end to end with Docker.
+# GitHub's macOS runners have no container runtime, so macOS gets the offline
+# suite only (with both Homebrew bash and the system bash 3.2).
 
 on:
   push:
     branches:
       - main
     paths:
-      - valhalla.sh
-      - install.sh
-      - docker/entrypoint.sh
+      - "**/*.sh"
+      - api_tests/payloads/**
+      - .github/scripts/**
       - .github/workflows/scripts.yml
   pull_request:
     paths:
-      - valhalla.sh
-      - install.sh
-      - docker/entrypoint.sh
+      - "**/*.sh"
+      - api_tests/payloads/**
+      - .github/scripts/**
       - .github/workflows/scripts.yml
   workflow_dispatch:
 
@@ -29,6 +32,7 @@ concurrency:
 
 env:
   VALHALLA_NO_COMPLETION: "1"
+  VALHALLA_NO_UPDATE_CHECK: "1"
 
 jobs:
   lint:
@@ -41,68 +45,104 @@ jobs:
       - name: shellcheck and dash
         run: |
           sudo apt-get install -y -qq dash >/dev/null
-          shellcheck valhalla.sh
-          shellcheck -s sh install.sh docker/entrypoint.sh
-          dash -n install.sh
-          dash -n docker/entrypoint.sh
+          # Every tracked script, as the shell its shebang names.
+          status=0
+          for f in $(git ls-files '*.sh'); do
+            case "$(head -n 1 "$f")" in
+              *bash*) shellcheck -s bash "$f" || status=1 ;;
+              *) shellcheck -s sh "$f" && dash -n "$f" || status=1 ;;
+            esac
+          done
+          exit "$status"
 
-  installer:
-    name: Installer
-    runs-on: ubuntu-24.04
+  offline:
+    name: Offline (${{ matrix.name }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Linux, bash 5
+            os: ubuntu-24.04
+            bash: bash
+          - name: macOS, Homebrew bash
+            os: macos-15
+            bash: bash
+          - name: macOS, system bash 3.2
+            os: macos-15
+            bash: /bin/bash
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Install, update, uninstall in a throwaway HOME
+      - name: Install test dependencies
         run: |
-          set -eux
-          export HOME="$RUNNER_TEMP/home" SHELL=/bin/bash VALHALLA_SOURCE="$GITHUB_WORKSPACE"
-          mkdir -p "$HOME"
-          printf 'export KEEP_ME=1\n' >"$HOME/.bashrc"
-          cp "$HOME/.bashrc" "$HOME/bashrc.orig"
-          D="$HOME/.local/share/vdt"
+          if [ "$RUNNER_OS" = Linux ]; then
+            sudo apt-get install -y -qq dash zsh fzf jq >/dev/null
+          else
+            HOMEBREW_NO_AUTO_UPDATE=1 HOMEBREW_NO_INSTALL_CLEANUP=1 brew install bash fzf jq >/dev/null
+          fi
+          ${{ matrix.bash }} --version | head -n 1
 
-          sh install.sh
-          test -x "$D/vdt" && test -x "$D/test_api" && test -x "$D/installer"
-          test "$(readlink "$HOME/.local/bin/vdt")" = "$D/vdt"
-          test "$(grep -c '>>> vdt >>>' "$HOME/.bashrc")" = 1
-          "$HOME/.local/bin/vdt" version
-          "$HOME/.local/bin/vdt" help >/dev/null
-
-          # Bash completion loads and completes commands and options
-          bash -c 'eval "$("$1" completion bash)"; COMP_WORDS=(vdt --pe); COMP_CWORD=1; _vdt; [ "${COMPREPLY[*]}" = --persist ]' _ "$D/vdt"
-
-          # --replace keeps .env; a failed download removes nothing
-          echo KEEP=1 >"$D/.env"
-          sh install.sh --replace
-          grep -q KEEP=1 "$D/.env"
-          if VALHALLA_SOURCE=/nonexistent sh install.sh --replace; then exit 1; fi
-          test -x "$D/vdt"
-
-          # Uninstall restores the rc file and keeps .env
-          sh "$D/installer" --uninstall
-          test ! -e "$HOME/.local/bin/vdt"
-          diff "$HOME/bashrc.orig" "$HOME/.bashrc"
-          test -f "$D/.env"
+      - name: Run the offline suite
+        env:
+          TOOL_BASH: ${{ matrix.bash }}
+        run: bash .github/scripts/test_tool.sh
 
   docker:
-    name: Docker end to end
+    name: Docker end to end (Linux)
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Tool with the published image (fallback persistence)
+      - name: vdt commands with the published image
         run: |
           set -eux
           export HOME="$RUNNER_TEMP/home"; mkdir -p "$HOME"
-          V="./valhalla.sh --runtime docker --name ci --port 18080"
+          V="./valhalla.sh --runtime docker --name ci --port 18080"   # split on purpose
           sql() { echo "$1" | $V psql | sed -n 3p | tr -d ' '; }
 
           # Dry runs change nothing
           $V run
-          for c in stop restart delete clean dump; do $V "$c" -n; done
+          for c in stop restart delete clean dump shell; do $V "$c" -n; done
           $V status | grep -q 'State:     running'
+
+          # Inspect
+          $V status | grep -q 'Health:    answering'
+          $V logs 20 | grep -q .
+          rc=0; timeout 5 ./valhalla.sh --runtime docker --name ci show >"$RUNNER_TEMP/show.log" 2>&1 || rc=$?
+          [ "$rc" = 124 ] && test -s "$RUNNER_TEMP/show.log"
+          rc=0; timeout 5 ./valhalla.sh --runtime docker --name ci stats >"$RUNNER_TEMP/stats.log" 2>&1 || rc=$?
+          [ "$rc" = 124 ] && grep -q ci "$RUNNER_TEMP/stats.log"
+          $V env | grep -q '^TOKEN_SECRET=<hidden>$'
+          $V outdated | grep -qE 'Up to date|Update available'
+          [ "$(echo 'id -un' | $V shell)" = root ]
+
+          # doc opens the docs URL (xdg-open stubbed)
+          mkdir -p "$RUNNER_TEMP/bin"
+          printf "#!/bin/sh\necho \"\$1\" >'%s/opened'\n" "$RUNNER_TEMP" >"$RUNNER_TEMP/bin/xdg-open"
+          chmod +x "$RUNNER_TEMP/bin/xdg-open"
+          PATH="$RUNNER_TEMP/bin:$PATH" $V doc
+          grep -q 'http://127.0.0.1:18080/api/v2/doc' "$RUNNER_TEMP/opened"
+
+          # dump and restore
+          echo "create table ci_dump(x int); insert into ci_dump values (7);" | $V psql
+          $V dump "$RUNNER_TEMP/ci.sql"
+          test -s "$RUNNER_TEMP/ci.sql"
+          echo "drop table ci_dump;" | $V psql
+          if $V restore "$RUNNER_TEMP/ci.sql" </dev/null; then exit 1; fi # asks first
+          $V restore --yes "$RUNNER_TEMP/ci.sql"
+          test "$(sql 'select x from ci_dump;')" = 7
+
+          # stop, restart, run
+          $V stop
+          $V status | grep -q 'State:     exited'
+          $V logs 5 | grep -q .                                  # logs work while stopped
+          if $V psql </dev/null; then exit 1; fi                 # psql needs it running
+          $V run
+          $V restart
+          $V status | grep -q 'Health:    answering'
 
           # Persistence survives stop/run and update
           $V update --persist
@@ -111,7 +151,17 @@ jobs:
           test "$(sql 'select count(*) from ci_marker;')" = 2
           $V update
           test "$(sql 'select count(*) from ci_marker;')" = 2
+          $V update --no-persist
+          test "$(sql "select to_regclass('ci_marker') is null;")" = t
+
+          # delete asks first; clean removes the container and the images
+          if $V delete </dev/null; then exit 1; fi
           $V delete --yes
+          $V status | grep -q 'State:     not created'
+          $V run
+          $V clean --yes
+          $V status | grep -q 'State:     not created'
+          test -z "$(docker image ls -q 'dr3mro/valhalla-server-run')"
 
       - name: New entrypoint (persistence inside the image)
         run: |
