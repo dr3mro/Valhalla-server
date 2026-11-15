@@ -35,7 +35,7 @@ vdt psql      # SQL shell on the bundled database
 vdt dump      # save the database to ~/.local/share/vdt/dumps
 vdt update --persist   # keep the database across stop/restart/update from now on
 vdt test      # run the end-to-end API tests against it
-vdt payload   # browse the JSON request payloads the tests send (fzf); --raw prints one for curl
+vdt payload   # browse the JSON request payloads the tests send (fzf); --filled shows one with sample values, --raw prints the template for curl
 vdt stop      # stop it; vdt run starts it again
 vdt help      # everything else
 ```
@@ -492,7 +492,7 @@ The installed copy has everything except `build`, which needs a full checkout of
 
 Options go before or after the command: `--name`, `--port`, `--runtime`, `--env-file`, `-n`/`--dry-run` (see what any command would change, without changing anything), `-y`/`--yes` and `-p`/`--persist` / `--no-persist` (see Persistence below). The first time you run it, it adds tab completion to `~/.zshrc` and/or `~/.bashrc`; open a new terminal to use it (set `VALHALLA_NO_COMPLETION=1` to skip).
 
-Each command first checks the tools it needs (`curl`, `python3` for Apple Container, `jq` for `test`, …) and lists any that are missing, with how to install them.
+Each command first checks the tools it needs (`curl`, `python3` for Apple Container, `jq` for `test`, `fzf` for `payload`, …) and lists any that are missing, with how to install them.
 
 Every `run`, `update` and `restart` waits until `/api/v2/hello` answers and prints the version line from the log.
 
@@ -556,6 +556,11 @@ Other:
   test [api|fuzz|all]
                    Run test_api.sh (api, default) and/or
                    schemathesis_test.sh (fuzz) against the container.
+  payload [group] [name]
+                   Browse the JSON request payloads test_api.sh sends
+                   (interactive with fzf); with group and name, print one
+                   directly (--raw prints the file as-is, --filled
+                   substitutes sample values for the placeholders).
   secret           Generate a new random TOKEN_SECRET and save it where it's
                    read from (normally ~/.local/share/vdt/config;
                    asks before replacing one, which logs everyone out).
@@ -647,8 +652,9 @@ as far as it supports). The check never delays a command.
 Runtime: Apple `container` if installed, otherwise docker.
 
 Dependencies: before running, each command checks the tools and files it
-needs (e.g. curl, python3 for Apple container, jq for test, docker/Dockerfile
-for build) and lists every missing one with how to install it.
+needs (e.g. curl, python3 for Apple container, jq for test, fzf for
+payload, docker/Dockerfile for build) and lists every missing one with how
+to install it.
 
 Shell completion: on first use the script adds one line to ~/.zshrc and/or
 ~/.bashrc (whichever exist) to enable tab completion; open a new terminal to
