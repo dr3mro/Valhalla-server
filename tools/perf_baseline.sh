@@ -74,18 +74,18 @@ if [[ $START == 1 ]]; then
 	"${V[@]}" --env-file "$TMP/env" run || { echo "error: could not start the server" >&2; exit 1; }
 fi
 for _ in $(seq 1 60); do
-	curl -fsS "$BASE_URL/api/v2/hello" >/dev/null 2>&1 && break
+	curl -fsS --max-time 3 "$BASE_URL/api/v2/hello" >/dev/null 2>&1 && break
 	sleep 1
 done
-curl -fsS "$BASE_URL/api/v2/hello" >/dev/null 2>&1 || { echo "error: server not answering at $BASE_URL" >&2; exit 1; }
+curl -fsS --max-time 3 "$BASE_URL/api/v2/hello" >/dev/null 2>&1 || { echo "error: server not answering at $BASE_URL" >&2; exit 1; }
 
 # ---- 2. seed provider + user (ignore "already exists")
 log "Seeding"
-post() { curl -sS -o /dev/null -w '%{http_code}' -H 'Content-Type: application/json' -X POST "$BASE_URL/api/v2$1" -d "$2"; }
+post() { curl -sS --max-time 15 -o /dev/null -w '%{http_code}' -H 'Content-Type: application/json' -X POST "$BASE_URL/api/v2$1" -d "$2"; }
 PROVIDER_JSON="$(jq -nc --arg u "$PROVIDER_USER" --arg p "$PROVIDER_PASS" '{avatar:"http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200",active:true,language:"en",username:$u,password:$p,fullname:"Amr Nasr",phone:"+201299999999",email:"amr@mail.com",country:"Egypt",city:"Damietta",address:"portsaid street",dob:"17-02-1985",gender:"Male",position:"Doctor",speciality:"Cardiology"}')"
 USER_JSON="$(jq -nc --arg u "$USER_NAME" --arg p "$USER_PASS" '{avatar:"http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200",language:"en",active:true,parent:"0",username:$u,email:"amr@mail.com",password:$p,fullname:"Amr Nasr",phone:"+201299999999",country:"Egypt",city:"Damietta",address:"12 valhalla Street ",dob:"10-10-1990",gender:"Male",marital:"single",job:"Doctor"}')"
 echo "provider create: $(post /clients/providers/create "$PROVIDER_JSON")   user create: $(post /clients/users/create "$USER_JSON")"
-LOGIN="$(curl -sS -o /dev/null -w '%{http_code}' -H 'Content-Type: application/json' -X POST "$BASE_URL/api/v2/clients/providers/login" -d "$(jq -nc --arg u "$PROVIDER_USER" --arg p "$PROVIDER_PASS" '{username:$u,password:$p}')")"
+LOGIN="$(curl -sS --max-time 15 -o /dev/null -w '%{http_code}' -H 'Content-Type: application/json' -X POST "$BASE_URL/api/v2/clients/providers/login" -d "$(jq -nc --arg u "$PROVIDER_USER" --arg p "$PROVIDER_PASS" '{username:$u,password:$p}')")"
 [[ $LOGIN == 200 ]] || { echo "error: provider login returned $LOGIN (check seeding / rate limiter)" >&2; exit 1; }
 
 export BASE_URL PROVIDER_USER PROVIDER_PASS USER_NAME USER_PASS
@@ -101,15 +101,15 @@ if [[ $START == 1 && ( $RUNTIME == docker || ( -z $RUNTIME && -n $(command -v do
 fi
 
 # ---- 4. concurrency sweep
-log "Concurrency sweep (providers/read): $SWEEP"
+log "Concurrency sweep (providers/read): $SWEEP, $DURATION each"
 for n in $SWEEP; do
-	echo "-- $n VUs for $DURATION"
+	echo "-- $n VUs for $DURATION ($(date +%H:%M:%S))"
 	k6 run --quiet -e VUS="$n" -e DURATION="$DURATION" --summary-export "$RAW/sweep-$n.json" "$ROOT/tools/k6/sweep.js" >"$RAW/sweep-$n.log" 2>&1 \
 		|| echo "   (k6 exited non-zero; see $RAW/sweep-$n.log)"
 done
 
 # ---- 5. full mixed benchmark
-log "Mixed benchmark (reads + crud + auth)"
+log "Mixed benchmark (reads + crud + auth), takes about 2 minutes, live log: $RAW/benchmark.log"
 if [[ $SMOKE == 1 ]]; then export SMOKE=1; fi
 k6 run --quiet --summary-export "$RAW/benchmark.json" "$ROOT/tools/k6/benchmark.js" >"$RAW/benchmark.log" 2>&1 \
 	|| echo "   (k6 exited non-zero, usually a threshold; see $RAW/benchmark.log)"
