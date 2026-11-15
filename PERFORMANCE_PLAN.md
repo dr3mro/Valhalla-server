@@ -34,7 +34,7 @@ Done when: baseline re-run shows no regression and a small gain.
 
 Done when: a create makes a single DB round trip (check with `log_statement=all` in a test DB).
 
-## Step 3: Cache permission lookups
+## Step 3: Cache permission lookups [done: idle-expiry cache, TTL 300s, no write invalidation]
 
 `PermissionManager` runs a DB query on every authorized request (`getPermissionsOfEntity`). There is already an open TODO in `permissionmanager.cpp` for this.
 

@@ -35,6 +35,12 @@ Configurator::FrontEndConfig& Configurator::get<Configurator::FrontEndConfig>()
 }
 
 template <>
+Configurator::PermissionCacheConfig& Configurator::get<Configurator::PermissionCacheConfig>()
+{
+    return permission_cache_config_;
+}
+
+template <>
 Configurator::EmailSenderConfig& Configurator::get<Configurator::EmailSenderConfig>()
 {
     return email_sender_config_;

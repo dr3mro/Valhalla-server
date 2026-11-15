@@ -31,6 +31,7 @@ class Configurator
         token_manager_parameters_.printValues();
         frontend_config_.printValues();
         email_sender_config_.printValues();
+        permission_cache_config_.printValues();
     }
 
     using DOSDetectorConfig = struct DOSDetectorConfig : public EnvLoader
@@ -236,6 +237,21 @@ class Configurator
         }
     };
 
+    using PermissionCacheConfig = struct PermissionCacheConfig : public EnvLoader
+    {
+        std::chrono::seconds ttl;  // idle lifetime of a cached permission; 0 disables the cache
+
+        PermissionCacheConfig() : ttl(getEnvironmentVariable("PERMISSION_CACHE_TTL", std::chrono::seconds(Defaults::PermissionCache::TTL_))) {}
+
+        void printValues() const override
+        {
+            Message::ConfMessage("------------------------------------------------");
+            Message::ConfMessage("-------------Permission Cache Config------------");
+            Message::ConfMessage("------------------------------------------------");
+            Message::ConfMessage(fmt::format("Permission cache TTL: {} seconds", ttl.count()));
+        }
+    };
+
     using Testing = struct Testing : public EnvLoader
     {
        public:
@@ -264,5 +280,6 @@ class Configurator
     TokenManagerParameters token_manager_parameters_;
     FrontEndConfig         frontend_config_;
     EmailSenderConfig      email_sender_config_;
+    PermissionCacheConfig  permission_cache_config_;
     Testing                testing_;
 };

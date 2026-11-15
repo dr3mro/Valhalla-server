@@ -8,6 +8,7 @@
 #include <string>
 
 #include "controllers/databasecontroller/databasecontroller.hpp"
+#include "gatekeeper/permissionmanager/permissioncache.hpp"
 #include "gatekeeper/permissionmanager/permissions.hpp"
 #include "store/store.hpp"
 #include "utils/global/http.hpp"
@@ -84,6 +85,13 @@ namespace api::v2
                 return std::nullopt;
             }
 
+            auto& cache = PermissionCache::instance();
+            if (auto cached = cache.get(query.value()); cached.has_value())
+            {
+                return cached;
+            }
+
+            const uint64_t                generation     = cache.generation();
             bool                          isSqlInjection = false;
             std::optional<jsoncons::json> permissions_j  = db_ctl->getPermissions(query.value(), isSqlInjection);
 
@@ -98,6 +106,7 @@ namespace api::v2
                 return std::nullopt;
             }
 
+            cache.put(query.value(), permissions_j.value(), generation);
             return permissions_j;
         }
 

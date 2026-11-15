@@ -222,4 +222,3 @@ INSTANTIATE_PERMISSION_CRUD(PharmacyAppointment)
 INSTANTIATE_PERMISSION_CRUD(LaboratoryAppointment)
 INSTANTIATE_PERMISSION_CRUD(RadiologyCenterAppointment)
 
-//[ ] create a cache for permissions and make update or delete cause invalidation.

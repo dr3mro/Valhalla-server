@@ -77,6 +77,11 @@ namespace Defaults
         const std::string QUEUE_PATH_ = "/enqueue";
     }  // namespace EmailSenderDaemon
 
+    namespace PermissionCache
+    {
+        const uint32_t TTL_ = 300;  // seconds a cached permission may stay idle
+    }  // namespace PermissionCache
+
     namespace Testing
     {
         const bool VALHALLA_TEST_NO_DB_ = false;
