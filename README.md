@@ -506,14 +506,19 @@ It passes every variable in a settings file to the container, using the first it
 
 **Persistence.** Without it, the bundled database starts from `init.sql` on every container start. Add `--persist` once (`vdt run --persist`, `vdt update --persist`, or `VALHALLA_PERSIST=1` in `.env`) and the database is kept in `~/.local/share/vdt/dumps/<name>-persist.sql`, which is mounted into the container. The image's entrypoint loads it at start instead of `init.sql` and saves it whenever the container stops, including restarts outside the tool (Docker Desktop, a reboot). The tool also saves it before `stop`, `restart`, `update`, `build` and `delete` (the previous dump is kept as `.prev`), and if that save fails, nothing is stopped. The setting is stored in the container, so later commands remember it; `--no-persist` turns it off. `vdt status` shows whether it's on and when the database was last saved. Restoring a dump made by a different image prints a warning, because if that image changed the schema the old schema comes back. Images released before this feature still work: the tool restores the dump itself after the container starts.
 
-In a terminal, `vdt` messages and `help` (or `--help`) use colors, Unicode box drawing and emoji as far as the terminal supports them, and help is paged with `less` when it's longer than the screen; piped or with `NO_COLOR=1` output is plain text. Force a style with `VALHALLA_FANCY=0` (plain) to `3` (everything).
+In a terminal, `vdt` messages and `help` (or `--help`) use colors, Unicode box drawing, BMP symbols and emoji as far as the terminal supports them, and help is paged with `less` when it's longer than the screen; piped or with `NO_COLOR=1` output is plain text. Force a style with `VALHALLA_FANCY=0` (plain) to `3` (everything).
 
 Full help (`./valhalla.sh help`):
 
 ```text
-Run the Valhalla server image locally with Docker or Apple's `container`.
-This file is the deployment tool: installed it's the `vdt` command
-(Valhalla Deployment Tool); from a checkout it's ./valhalla.sh.
+Valhalla Deployment Tool (vdt): run and manage the Valhalla server locally.
+Quick start:
+  run              Start the server (pulls the image on first use).
+  doc              Open the API docs in the browser.
+  status           Check state, health and version.
+  logs [N]         Print the last N log lines (default 100).
+  stop             Stop the container (run starts it again).
+  update           Pull the newest image and update the tool.
 
   vdt [options] <command> [args]      (installed)
 
@@ -626,10 +631,10 @@ Other settings (environment variables):
   VALHALLA_NO_UPDATE_CHECK=1  don't check for or show updates
   VALHALLA_UPDATE_INTERVAL  seconds between update checks (default 21600)
   VALHALLA_NERD=0|1    use Nerd Font icons (default at level 2; 1 forces)
-  VALHALLA_FANCY       output style: 0 plain, 1 colors, 2 + unicode,
-                       3 + emoji (default: what the terminal supports;
-                       NO_COLOR=1 also gives plain). Applies to every
-                       message, report and help screen.
+  VALHALLA_FANCY       output style: 0 plain, 1 colors, 2 + unicode
+                       (BMP symbols), 3 + emoji (default: what the
+                       terminal supports; NO_COLOR=1 also gives plain).
+                       Applies to every message, report and help screen.
 
 Persistence: the bundled database starts from init.sql on every container
 start. With persistence on, it's kept in

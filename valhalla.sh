@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
-# Run the Valhalla server image locally with Docker or Apple's `container`.
-# This file is the deployment tool: installed it's the `vdt` command
-# (Valhalla Deployment Tool); from a checkout it's ./valhalla.sh.
+# Valhalla Deployment Tool (vdt): run and manage the Valhalla server locally.
+# Quick start:
+#   run              Start the server (pulls the image on first use).
+#   doc              Open the API docs in the browser.
+#   status           Check state, health and version.
+#   logs [N]         Print the last N log lines (default 100).
+#   stop             Stop the container (run starts it again).
+#   update           Pull the newest image and update the tool.
 #
 #   @USAGE@
 #
@@ -114,10 +119,10 @@
 #   VALHALLA_NO_UPDATE_CHECK=1  don't check for or show updates
 #   VALHALLA_UPDATE_INTERVAL  seconds between update checks (default 21600)
 #   VALHALLA_NERD=0|1    use Nerd Font icons (default at level 2; 1 forces)
-#   VALHALLA_FANCY       output style: 0 plain, 1 colors, 2 + unicode,
-#                        3 + emoji (default: what the terminal supports;
-#                        NO_COLOR=1 also gives plain). Applies to every
-#                        message, report and help screen.
+#   VALHALLA_FANCY       output style: 0 plain, 1 colors, 2 + unicode
+#                        (BMP symbols), 3 + emoji (default: what the
+#                        terminal supports; NO_COLOR=1 also gives plain).
+#                        Applies to every message, report and help screen.
 #
 # Persistence: the bundled database starts from init.sql on every container
 # start. With persistence on, it's kept in
@@ -378,6 +383,13 @@ fancy_level() {
     echo 3
     return
   fi
+  # Modern terminals (256+ colors, UTF-8) usually draw emoji even when they
+  # are not on the known-terminal list above; fall back to BMP symbols only
+  # for the low-color case.
+  if [[ $colors -ge 256 ]]; then
+    echo 3
+    return
+  fi
   echo 2
 }
 
@@ -593,36 +605,56 @@ help_cols() { help_text | awk '
   '
 }
 
-# render_help LEVEL WNAME: decorates help_text for the terminal. WNAME is the
-# aligned name column; descriptions all start at the same column and long
-# paragraphs wrap to the terminal width.
+# quick_cols: the name-column width for the quick start box (its own, so the
+# box stays compact instead of using the global help column).
+quick_cols() { help_text | awk '
+    /^Quick start:$/ { q = 1; next }
+    q && /^[[:space:]]*$/ { q = 0 }
+    q && /^  / {
+      line = $0; sub(/^  /, "", line)
+      if (match(line, /  +/)) head = substr(line, 1, RSTART - 1); else head = line
+      if (length(head) > w) w = length(head)
+    }
+    END { if (w < 6) w = 6; print w }
+  '
+}
+
+# render_help LEVEL WNAME QCOL: decorates help_text for the terminal. WNAME is
+# the aligned name column, QCOL the command column inside the quick start box;
+# descriptions all start at the same column and long paragraphs wrap to the
+# terminal width.
 render_help() {
-  local level="$1" wname="$2" e
+  local level="$1" wname="$2" qcol="$3" e
   e="$(printf '\033')"
   local c256=0
   [[ "$(tput colors 2>/dev/null || echo 8)" -ge 256 ]] && c256=1
-  awk -v L="$level" -v N="$wname" -v E="$e" -v C256="$c256" -v W="$(tput cols 2>/dev/null || echo 80)" '
+  awk -v L="$level" -v N="$wname" -v QC="$qcol" -v E="$e" -v C256="$c256" -v W="$(tput cols 2>/dev/null || echo 80)" '
     function c(code) { return E "[" code "m" }
     function rule(n,   r, i) { r = ""; for (i = 0; i < n; i++) r = r H; return r }
     # Colors (256-color palette when available).
     BEGIN {
       R = c(0); B = c(1); D = c(2)
       if (C256) {
-        TITLE = c("1;38;5;213"); HEAD = c("1;38;5;111"); CMD = c("1;38;5;114"); ARG = c("38;5;221")
-        OPT = c("38;5;117"); ENV = c("38;5;183"); DEF = c("38;5;245"); CODE = c("38;5;216"); SUB = c("1;38;5;180")
+        TITLE = c("1;38;5;117"); HEAD = c("1;38;5;46"); CMD = c("1;38;5;114"); ARG = c("38;5;221")
+        OPT = c("38;5;117"); ENV = c("38;5;183"); DEF = c("38;5;245"); CODE = c("38;5;216"); SUB = c("1;38;5;180"); FRAME = c("1;38;5;196")
       } else {
-        TITLE = c("1;35"); HEAD = c("1;34"); CMD = c("1;32"); ARG = c("33")
-        OPT = c("36"); ENV = c("35"); DEF = c("2"); CODE = c("33"); SUB = c("1;33")
+        TITLE = c("1;36"); HEAD = c("1;32"); CMD = c("1;32"); ARG = c("33")
+        OPT = c("36"); ENV = c("35"); DEF = c("2"); CODE = c("33"); SUB = c("1;33"); FRAME = c("1;31")
       }
       U = (L >= 2); M = (L >= 3); EG = M ? "   " : " "; EG = M ? "  " : " "
       # The marker replaces the 2-space indent, so it is 2 columns wide.
       H = U ? "─" : "-"; BUL = U ? "▸ " : "* "
       if (W > 100) W = 100
       if (W < 40) W = 40
+      # Quick start box: full width up to 88 columns; the contents get BOXW-4.
+      BOXW = (W > 88) ? 88 : W
+      CW = BOXW - 4
+      INQ = 0
       # One description column for every list, so the eye has a single rail.
       DESCP = ""; for (i = 0; i < N + 4; i++) DESCP = DESCP " "
     }
     function emoji(t) {
+      if (t ~ /^Quick start/) { if (M) return "⚡️" EG; return "" }
       if (!M) return ""
       if (t ~ /^Container/) return "📦" EG
       if (t ~ /^Inspect/) return "🔍" EG
@@ -668,17 +700,64 @@ render_help() {
       s = ""; while (n-- > 0) s = s " "
       return s
     }
+    function spaces(n,   s) { s = ""; while (n-- > 0) s = s " "; return s }
+    # A glyph per quick-start command: astral emoji at level 3, BMP symbols at
+    # level 2 (fonts are not checked; both sets are width 1 or 2 as assumed).
+    function qicon(h) {
+      if (M) {
+        if (h ~ /^run/) return "🚀"
+        if (h ~ /^doc/) return "📖"
+        if (h ~ /^status/) return "🩺"
+        if (h ~ /^show|^logs/) return "📜"
+        if (h ~ /^stop/) return "🛑"
+        if (h ~ /^restart/) return "🔁"
+        if (h ~ /^update/) return "🔄"
+        if (h ~ /^build/) return "🔨"
+        if (h ~ /^test/) return "🧪"
+        if (h ~ /^psql/) return "🐘"
+        if (h ~ /^shell/) return "🐚"
+        if (h ~ /^install/) return "📥"
+        return ""
+      }
+      if (U) {
+        if (h ~ /^run/) return "▸"
+        if (h ~ /^doc/) return "ℹ"
+        if (h ~ /^status/) return "◉"
+        if (h ~ /^show|^logs/) return "≣"
+        if (h ~ /^stop/) return "⏹"
+        if (h ~ /^restart/) return "↺"
+        if (h ~ /^update/) return "↻"
+        if (h ~ /^build/) return "⚒"
+        if (h ~ /^test/) return "⚗"
+        if (h ~ /^psql/) return "⌗"
+        if (h ~ /^shell/) return "❯"
+        if (h ~ /^install/) return "⤓"
+        return "▸"
+      }
+      return ""
+    }
+    # One quick-start line: left border, prefix, description, right border.
+    # PVIS is the visible width of the (colored) prefix.
+    function qline(pre, pvis, text,   pad) {
+      pad = CW - pvis - length(text)
+      if (pad < 0) pad = 0
+      print TITLE (U ? "│" : "|") R " " pre inline(text) spaces(pad) " " TITLE (U ? "│" : "|") R
+    }
 
     NR == 1 {
       title = $0
+      split_at = index(title, "(vdt)")
+      title_before = (split_at ? substr(title, 1, split_at - 1) : title)
+      title_vdt = (split_at ? substr(title, split_at, 5) : "")
+      title_after = (split_at ? substr(title, split_at + 5) : "")
       if (U) {
         line = rule(length(title) + 2 + (M ? 4 : 0))
-        print TITLE "╭" line "╮" R
-        print TITLE "│ " (M ? "🏰" EG : "") title " │" R
-        print TITLE "╰" line "╯" R
+        print FRAME "╭" line "╮" R
+        print FRAME "│ " R (M ? "🏰" EG : "") TITLE title_before HEAD title_vdt TITLE title_after " " FRAME "│" R
+        print FRAME "╰" line "╯" R
       } else {
-        print TITLE title R
-        print TITLE rule(length(title)) R
+        print TITLE title_before HEAD title_vdt TITLE title_after R
+        print FRAME rule(length(title)) R
       }
       next
     }
@@ -690,6 +769,51 @@ render_help() {
       rest = substr(line, length(w[1]) + 1)
       gsub(/\[[^]]*\]|<[^>]*>/, ARG "&" R, rest)
       print "  " CMD w[1] R rest
+      next
+    }
+    # quick start: common tasks in a rounded box (ASCII when Unicode is out)
+    /^Quick start:$/ {
+      print ""
+      print HEAD emoji($0) $0 R
+      print TITLE (U ? "╭" : "+") rule(BOXW - 2) (U ? "╮" : "+") R
+      INQ = 1
+      next
+    }
+    INQ && /^[[:space:]]*$/ {
+      print TITLE (U ? "╰" : "+") rule(BOXW - 2) (U ? "╯" : "+") R
+      INQ = 0
+      print ""
+      next
+    }
+    INQ && /^  / {
+      line = $0; sub(/^  /, "", line)
+      if (match(line, /  +/)) { head = substr(line, 1, RSTART - 1); desc = substr(line, RSTART + RLENGTH) }
+      else { head = line; desc = "" }
+      split(head, w, " ")
+      args = substr(head, length(w[1]) + 1)
+      gsub(/\[[^]]*\]|<[^>]*>/, ARG "&" R, args)
+      icon = qicon(head)
+      iw = (icon == "") ? 0 : (M ? 3 : 2) # emoji is 2 columns wide, BMP 1
+      qgap = QC - length(head) + 2; if (qgap < 2) qgap = 2
+      pre = (icon != "" ? icon " " : "") CMD w[1] R args spaces(qgap)
+      pvis = iw + length(head) + qgap
+      avail = CW - pvis; if (avail < 12) avail = 12
+      if (desc == "") { qline(pre, pvis, ""); next }
+      firstline = 1
+      rest = desc
+      while (length(rest) > avail) {
+        nw = split(rest, words, " ")
+        cur = ""
+        for (i = 1; i <= nw; i++) {
+          cand = (cur == "") ? words[i] : cur " " words[i]
+          if (length(cand) > avail && cur != "") break
+          cur = cand
+        }
+        qline(firstline ? pre : spaces(pvis), pvis, cur)
+        firstline = 0
+        rest = substr(rest, length(cur) + 2)
+      }
+      qline(firstline ? pre : spaces(pvis), pvis, rest)
       next
     }
     # section heading: "Something:" alone on a line
@@ -765,7 +889,7 @@ render_help() {
 }
 
 usage() {
-  local level is_tty=0 wname
+  local level is_tty=0 wname qcol
   [[ -t 1 ]] && is_tty=1
   level="$(fancy_level "$is_tty")"
   if [[ $level -le 0 ]]; then
@@ -773,11 +897,12 @@ usage() {
     return 0
   fi
   wname="$(help_cols)"
+  qcol="$(quick_cols)"
   if [[ -t 1 ]] && command -v less >/dev/null 2>&1; then
     # -R keeps colors, -F quits right away when it fits, -X leaves it on screen.
-    help_text | render_help "$level" "$wname" | less -RFX
+    help_text | render_help "$level" "$wname" "$qcol" | less -RFX
   else
-    help_text | render_help "$level" "$wname"
+    help_text | render_help "$level" "$wname" "$qcol"
   fi
 }
 
