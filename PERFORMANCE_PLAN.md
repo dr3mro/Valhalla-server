@@ -4,91 +4,7 @@ Findings from a read-through of the request path (Drogon handler -> GateKeeper -
 
 Key files: `src/controllers/base/controller/controller.hpp`, `src/controllers/databasecontroller/databasecontroller.{hpp,cpp}`, `src/database/{database,databaseconnectionpool,inuseguard}.cpp`, `src/gatekeeper/**`, `src/server/server.cpp`, `src/configurator/defaults.hpp`, `CMakeLists.txt`.
 
-## Step 0: Establish a baseline
-
-Goal: know where the time goes before changing anything.
-
-1. Run a Release build against a seeded Postgres (see `docker/`, `valhalla.sh`).
-2. Load-test a representative mix with `wrk`, `hey` or `k6` using the existing `api_tests`/`Insomnia.yaml` requests: login, read one entity, create one entity, search.
-3. Record per endpoint: requests/s, p50/p95/p99 latency, error rate (watch for 4xx/5xx and "Timeout while waiting for a connection" in logs).
-4. Run each test at several concurrency levels (1, 8, 32, 128) to see where throughput stops scaling.
-5. Profile one run with `perf record -g` (or `perf top`) and check `pg_stat_statements` on the database side.
-6. Save results in `docs/perf/baseline.md` so later steps can be compared.
-
-Done when: a table of baseline numbers is committed.
-
-## Step 1: Zero-risk quick wins
-
-1. **Build flags.** In `CMakeLists.txt` change Release from `-O2` to `-O3` and enable LTO (`CMAKE_INTERPROCEDURAL_OPTIMIZATION`). Keep `-DNDEBUG`.
-2. **Log noise.** `Database::executeQuery` emits `LOG_WARN` for every null field in every row. Remove it or lower it to debug level.
-3. **Avoid double JSON work.** Handlers convert results to `jsoncons::json` and then `.as<std::string>()` again. Remove copies (move instead of copy, e.g. `reply.push_back(std::move(object))`; clear/reuse `object` per row instead of leaking fields between rows).
-4. **Type switch fix.** The row conversion only knows TEXT/INTEGER/BOOLEAN/JSON/JSONB and falls back to strings, so bigint/numeric/timestamp come out as strings. Add the missing OIDs so clients do not need to re-parse.
-
-Done when: baseline re-run shows no regression and a small gain.
-
-## Step 2: Fix the Create path (fewer round trips, no wasted work) [done: id assigned by the DB default, INSERT ... RETURNING *]
-
-1. In `EntityController<T>::Create` (`src/controllers/entitycontroller/entitycontroller.cpp`) `getNextID` runs before the body is parsed or validated. Move it after validation and permission checks so rejected requests do not take a connection or burn a sequence value.
-2. Replace the separate `SELECT NEXTVAL(...)` query with `INSERT ... RETURNING id` (or `DEFAULT nextval(...)` in the column), so a create is one query instead of two.
-3. Apply the same idea to Update/Delete where the code does a read before the write.
-
-Done when: a create makes a single DB round trip (check with `log_statement=all` in a test DB).
-
-## Step 3: Cache permission lookups [done: idle-expiry cache, TTL 300s, no write invalidation]
-
-`PermissionManager` runs a DB query on every authorized request (`getPermissionsOfEntity`). There is already an open TODO in `permissionmanager.cpp` for this.
-
-1. Add a TTL cache (the project already has `utils/memcache`) keyed by `(entity type, entity id)` holding the permissions JSON.
-2. Invalidate the key on every update/delete of the entity, on staff add/remove, and on suspend/unsuspend.
-3. Keep the TTL short (e.g. 30-60 s) as a safety net, and make it configurable.
-4. Add unit tests for hit, miss, invalidation and expiry (`tests/gatekeeper/`).
-5. Be explicit about the security trade-off: a revoked permission can stay valid until invalidation/TTL, so invalidation must be wired into every write path.
-
-Done when: a repeated read of the same entity does not issue a permission query.
-
-## Step 4: Parameterize every query, then retire the SQL-injection detector
-
-Why: the detector costs about 35 `std::regex_search` calls per database call and has produced false positives on medical text. Bound parameters cannot change the SQL, so they are the real protection. Today the main entity create/read/update/delete/search paths are already parameterized (with a "plain" twin statement built only so the detector can scan it); the paths below still build SQL by string formatting.
-
-Fix first (found while planning): since commit `8af2ad0`, `executeQuery` and `doSimpleQuery` scan the parameterized text instead of the plain query, contrary to their comments. This disappears with the detector, but do not ship a build between 4.1 and 4.4 that relies on it.
-
-### 4.1 Inventory and identifier policy
-
-1. List every call site that passes SQL to `DatabaseController` (`executeQuery`, `executeReadQuery`, `executeSearchQuery`, `doReadQuery`) and mark it bound or formatted. Known formatted ones:
-   - staff add/remove (`service.hpp`), suspend/activate (`client.hpp`), `getSqlGetServicesStatement` (user, provider), `getSqlGetVisitsStatement` (patient);
-   - permission queries for services, cases and appointments;
-   - `keeprbase.cpp`: active check, login upsert, logout upsert, last login;
-   - `getNextID` (unused since Step 2; delete it).
-2. Identifiers (table and group names such as `{}_sessions`) cannot be bound. Decide one rule: values come only from a compile-time allowlist (`users`, `providers`, the entity table names) or pass through `connection->quote_name`; reject anything else with a 400.
-3. Fix `getSqlAddStaffStatement` while here: it passes four arguments to three placeholders, so `ID=` receives `nominee_group` instead of `entity_id`. Add a test first (it should fail today), then fix.
-
-### 4.2 Parameterize the remaining paths [partly done: staff, suspend/activate, services, visits, session queries]
-
-Still formatted, by design for now: the permission queries for services, cases and appointments, which only embed typed `uint64_t` ids and compile-time table names (not injectable). Convert them in a follow-up if the "no formatted SQL at all" rule is wanted; they need a signature change (query plus params) across `service.hpp`, `case.hpp`, `appointment.hpp`, `patient.hpp` and the cache key.
-
-1. Convert each formatted statement to `$1, $2, ...` with `pqxx::params` (ids, timestamps and staff ids as bound values; the JSON string in the staff `jsonb_set` bound as text and cast with `::jsonb`).
-2. Do it per group (staff, client toggle, services/visits, permission queries, session queries), one commit each, running the unit tests after each.
-3. Keep the detector enabled during this step as a safety net.
-
-### 4.3 Prove it
-
-1. `sqlmap_test.sh` and `schemathesis_test.sh` pass with the detector still on.
-2. Run them again with the detector switched off (temporary env flag in a scratch build). If sqlmap finds nothing, the parameterization is complete.
-3. Add API tests that send quote, semicolon, comment and `' OR 1=1` payloads in every free-text field and check that they are stored or rejected by validation, never executed.
-
-### 4.4 Remove the detector (done, uncompiled; needs build, tests, sqlmap and schemathesis)
-
-1. Delete `src/gatekeeper/sqlinjectiondetectoor/`, `GateKeeper::isQuerySqlInjection`, the `isSqlInjection` out-parameters and their 400 branches, and the plain/parameterized twin statements. There is now a single `getSql*Statement(pqxx::params&)` API, and `Search` `filter`/`order_by` must be plain identifiers (`Search_t::validate`).
-2. Move the detector sources and `tests/gatekeeper/test_sqlinjectiondetector.cpp` to `archive/sqlinjectiondetector/` outside the build (not globbed by CMake). Git history keeps them either way.
-3. Remove the detector benchmark and any README/API-doc text that promises the "SQL injection detected" response; update tests that expect it.
-
-### 4.5 Measure
-
-Run `tools/perf_baseline.sh --reset-db` after 4.2 (stage 3) and after 4.4 (stage 4) and add both columns to the results sheet and `docs/perf/results.csv`. Expect gains mainly on the mixed benchmark; the profile before and after shows the detector's real share.
-
-Risks: a missed formatted statement (4.1 inventory and 4.3 sqlmap catch it); identifier handling (allowlist plus `quote_name`); tests and docs that expect the old 400 response.
-
-Done when: no SQL is built by string formatting with request-derived values, sqlmap and schemathesis are clean with the detector off, the detector is archived, and stage 3 and 4 results are recorded.
+Completed: Steps 0-4 (all queries bound, detector archived in `archive/sqlinjectiondetector/`, sqlmap clean) (results in `docs/perf/results.md`, history in git).
 
 ## Step 5: Connection pool behavior
 
@@ -146,11 +62,6 @@ Done when: `pg_stat_statements` shows the top queries with low mean time and no 
 
 | Step | Effort | Risk | Expected gain |
 |------|--------|------|---------------|
-| 0 Baseline | Low | None | Enables everything else |
-| 1 Quick wins | Low | Low | Small |
-| 2 Create path | Low | Low | Medium (writes) |
-| 3 Permission cache | Medium | Medium (stale permissions) | High (reads) |
-| 4 Injection scan | Medium | Medium (security) | Medium |
 | 5 Pool behavior | Low | Low | Medium under load |
 | 6 Scrypt off loop | Medium | Low | High for login bursts |
 | 7 Async DB | High | Medium | Highest |
