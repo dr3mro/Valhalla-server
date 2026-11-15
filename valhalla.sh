@@ -2315,8 +2315,15 @@ recreate() {
 update_tool_step() {
   local installed latest
   installed="$(tool_installed_sha)"
-  if [[ -z $installed ]]; then
+  if [[ -z $installed && ! -f $ROOT/VERSION ]]; then
     info "Tool: not an installed copy (checkout) — nothing to update. Run '$PROG install' to install the command."
+    return 0
+  fi
+  if [[ -z $installed ]]; then
+    step "Updating the vdt tool, like '$PROG install'"
+    if ! install_tool main; then
+      warn "the image was updated, but the tool update failed; run '$PROG install'"
+    fi
     return 0
   fi
   latest="$(latest_tool_sha)"
