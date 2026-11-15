@@ -72,7 +72,7 @@ log() { printf '\n== %s ==\n' "$*"; }
 # ---- 1. server
 if [[ $START == 1 ]]; then
 	log "Starting server ($NAME on port $PORT)"
-	printf 'WHITELIST=%s\n' "$WHITELIST" >"$TMP/env"
+	printf 'WHITELIST=%s\nMAX_REQUESTS=100000000\nMAX_FPS=100000000\n' "$WHITELIST" >"$TMP/env"
 	if [[ $BUILD == 1 ]]; then CMD=(build "$LABEL"); echo "Building the image from this checkout (first build can take several minutes)"; else CMD=(run); fi
 	"${V[@]}" --env-file "$TMP/env" "${CMD[@]}" || { echo "error: could not start the server" >&2; exit 1; }
 fi
@@ -92,6 +92,11 @@ LOGIN="$(curl -sS --max-time 15 -o /dev/null -w '%{http_code}' -H 'Content-Type:
 [[ $LOGIN == 200 ]] || { echo "error: provider login returned $LOGIN (check seeding / rate limiter)" >&2; exit 1; }
 
 export BASE_URL PROVIDER_USER PROVIDER_PASS USER_NAME USER_PASS
+
+if [[ $START == 0 ]]; then
+	echo "NOTE: --no-start needs a server started with MAX_REQUESTS=100000000, MAX_FPS=100000000 and a WHITELIST,"
+	echo "      otherwise the rate limiter (default 10000 requests/30 s per IP) bans the load generator for an hour."
+fi
 
 # ---- 3. container stats sampler (one snapshot every 5 s, never a streaming call)
 if [[ $START == 1 && ( $RUNTIME == docker || ( -z $RUNTIME && -n $(command -v docker) ) ) ]]; then
@@ -119,6 +124,14 @@ k6 run --quiet --summary-export "$RAW/benchmark.json" "$ROOT/tools/k6/benchmark.
 
 [[ -n $STATS_PID ]] && { kill "$STATS_PID" 2>/dev/null; STATS_PID=""; }
 
+# A run where most requests failed measures the rate limiter, not the server: refuse to call it a result.
+BAD=0
+for f in "$RAW"/sweep-*.json "$RAW/benchmark.json"; do
+	[[ -s $f ]] || continue
+	r="$(jq -r '(.metrics.http_req_failed.value // .metrics.http_req_failed.rate // 0)' "$f" 2>/dev/null)"
+	if awk -v r="$r" 'BEGIN{exit !(r > 0.05)}'; then echo "WARNING: $(basename "$f") failed rate $r (rate limiter ban / 429 / 503?)"; BAD=1; fi
+done
+
 # ---- 6. report
 log "Writing $REPORT"
 m() { jq -r --arg k "$2" "$3" "$1" 2>/dev/null || echo "n/a"; }   # m <file> <key> <jq>
@@ -139,6 +152,7 @@ row() { # row <label> <json>
 	echo "- Target: $BASE_URL ($([[ $START == 1 ]] && echo "fresh ${RUNTIME:-default-runtime} container, default settings" || echo "existing server"))"
 	echo "- Sweep: ${DURATION} per level, endpoint POST /clients/providers/read (auth + permission check + 1 DB read)"
 	[[ $SMOKE == 1 ]] && echo "- **Smoke run: numbers are not meaningful**"
+	[[ $BAD == 1 ]] && echo "- **INVALID RUN: more than 5% of requests failed (see warnings). Fix the cause and rerun; do not compare these numbers.**"
 	echo
 	echo "## Concurrency sweep"
 	echo
