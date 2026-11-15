@@ -11,6 +11,7 @@
 #include <memory>
 #include <optional>
 #include <string>
+#include <string_view>
 #include <type_traits>
 #include <unordered_set>
 #include <utility>
@@ -205,20 +206,21 @@ std::optional<jsonType> Database::executeQuery(const std::string& query, bool& i
             }
         }
 
-        jsonType       reply;
-        jsoncons::json object;
+        jsonType reply;
 
         for (const auto& row : results)
         {
+            // A fresh object per row, so no field can leak from one row into the next.
+            jsoncons::json object;
+
             for (const auto& field : row)
             {
-                std::string  field_name = field.name();
-                unsigned int field_type = field.type();
+                const std::string_view field_name = field.name();
+                const unsigned int     field_type = field.type();
 
                 if (field.is_null())
                 {
                     object[field_name] = nullptr;
-                    LOG_WARN << "Field " << field_name << " is null";
                 }
                 else
                 {
@@ -250,7 +252,7 @@ std::optional<jsonType> Database::executeQuery(const std::string& query, bool& i
             }
             if constexpr (std::is_same_v<jsonType, jsoncons::json::array>)
             {
-                reply.push_back(object);
+                reply.push_back(std::move(object));
             }
             else
             {
