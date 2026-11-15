@@ -7,6 +7,7 @@
 #include <string>
 #include <thread>
 #include <utility>
+#include <vector>
 
 #include "concurrency/boundedexecutor.hpp"
 #include "database/dbexecutor.hpp"
@@ -235,5 +236,45 @@ TEST_CASE("BoundedExecutor: the queue limit is shared by all workers and every t
     gate.now();
     executor.shutdown();
     CHECK(ran == 4 + accepted);
+    CHECK(executor.pending() == 0);
+}
+
+TEST_CASE("BoundedExecutor: many closed-loop clients never leave a task sitting in a queue", "[concurrency][executor]")
+{
+    // Regression: a worker whose wake-up found its queue already emptied by a thief went back to sleep without being
+    // marked idle, so later tasks queued behind it and waited until something else woke it.
+    BoundedExecutor executor(4, 256, "test");
+
+    constexpr int clients = 16;
+    constexpr int rounds  = 1500;
+    std::atomic<int> finished{0};
+
+    std::vector<std::thread> threads;
+    for (int c = 0; c < clients; ++c)
+    {
+        threads.emplace_back(
+            [&]
+            {
+                for (int r = 0; r < rounds; ++r)
+                {
+                    std::promise<void> done;
+                    auto               future = done.get_future();
+                    if (!executor.submit([&done] { done.set_value(); }))
+                    {
+                        continue;
+                    }
+                    if (future.wait_for(10s) != std::future_status::ready)
+                    {
+                        return;  // stuck: the count below fails
+                    }
+                    ++finished;
+                }
+            });
+    }
+    for (auto& t : threads)
+    {
+        t.join();
+    }
+    CHECK(finished.load() > clients * rounds / 2);  // a few may be refused when the queue is momentarily full
     CHECK(executor.pending() == 0);
 }

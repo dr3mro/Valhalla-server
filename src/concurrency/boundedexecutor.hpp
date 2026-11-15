@@ -20,9 +20,10 @@
 // A fixed pool of threads with a bounded queue. It exists so that slow, blocking work (database calls, password hashing)
 // never runs on a Drogon IO thread. submit() never blocks: it returns false when the queue is full, and the caller answers 503.
 //
-// Every worker has its own queue and its own lock, so submitters and workers do not all contend on one mutex. submit() starts
-// at the next worker in round-robin order and prefers a worker that is idle, so a task never waits behind a slow one while
-// another worker sleeps; only that idle worker is woken (a busy one needs no wake-up, it looks at its queue when it
+// Every worker has its own queue and its own lock, so submitters and workers do not all contend on one mutex. submit() picks
+// an idle worker if there is one (so a task never waits behind a slow one while another worker sleeps), otherwise the worker
+// with the shortest queue, so the queues stay the same length and waiting time stays fair (plain round-robin left some queues
+// long and some short, and the tasks in the long ones waited 20 times longer). Only an idle worker is woken (a busy one needs no wake-up, it looks at its queue when it
 // finishes). A worker that has run out of work takes tasks from the other workers' queues before it sleeps. The queue limit
 // is shared: at most queue_max tasks wait across all workers.
 //
@@ -74,6 +75,7 @@ class BoundedExecutor
         std::mutex              mutex;
         std::condition_variable cv;
         std::deque<Item>        queue;
+        std::atomic<std::size_t> depth{0};   // queue.size(), readable without the lock
         std::atomic<bool>       idle{false};  // set under mutex while the worker waits for work; read without it by submit()
         std::thread             thread;
     };

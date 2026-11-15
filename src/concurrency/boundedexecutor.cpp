@@ -7,6 +7,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <exception>
+#include <limits>
 #include <functional>
 #include <mutex>
 #include <string>
@@ -93,10 +94,11 @@ bool BoundedExecutor::submit(std::function<void()> task)
         return false;
     }
 
-    // Round-robin start, then the first idle worker from there; with none idle, the round-robin one.
-    const std::size_t n      = workers_.size();
-    const std::size_t start  = next_.fetch_add(1, std::memory_order_relaxed) % n;
-    std::size_t       target = start;
+    // From a round-robin start: the first idle worker; with none idle, the one with the shortest queue (the start worker wins ties).
+    const std::size_t n        = workers_.size();
+    const std::size_t start    = next_.fetch_add(1, std::memory_order_relaxed) % n;
+    std::size_t       target   = start;
+    std::size_t       shortest = std::numeric_limits<std::size_t>::max();
     for (std::size_t i = 0; i < n; ++i)
     {
         const std::size_t candidate = (start + i) % n;
@@ -104,6 +106,12 @@ bool BoundedExecutor::submit(std::function<void()> task)
         {
             target = candidate;
             break;
+        }
+        const std::size_t depth = workers_[candidate]->depth.load(std::memory_order_relaxed);
+        if (depth < shortest)
+        {
+            shortest = depth;
+            target   = candidate;
         }
     }
 
@@ -118,6 +126,7 @@ bool BoundedExecutor::submit(std::function<void()> task)
             return false;
         }
         worker.queue.push_back({std::move(task), std::chrono::steady_clock::now()});
+        worker.depth.store(worker.queue.size(), std::memory_order_relaxed);
         // An idle worker is claimed (flag cleared) so the next submit() picks another one instead of queueing behind this task.
         // A busy worker finds its task itself; it needs no wake-up (system call).
         wake = worker.idle.exchange(false, std::memory_order_acq_rel);
@@ -145,6 +154,7 @@ bool BoundedExecutor::take(std::size_t self, Item& item)
         {
             item = std::move(own.queue.front());
             own.queue.pop_front();
+            own.depth.store(own.queue.size(), std::memory_order_relaxed);
             queued_.fetch_sub(1, std::memory_order_acq_rel);
             return true;
         }
@@ -159,6 +169,7 @@ bool BoundedExecutor::take(std::size_t self, Item& item)
         {
             item = std::move(other.queue.front());
             other.queue.pop_front();
+            other.depth.store(other.queue.size(), std::memory_order_relaxed);
             queued_.fetch_sub(1, std::memory_order_acq_rel);
             return true;
         }
@@ -189,8 +200,13 @@ void BoundedExecutor::run(std::size_t self)
                 {
                     return;  // stopping, and nothing is left in our queue (no submit can add one any more)
                 }
-                own.idle.store(true, std::memory_order_release);
-                own.cv.wait(lock, [&] { return stopping_.load(std::memory_order_acquire) || !own.queue.empty(); });
+                // idle is set again on every pass: a submit() that claimed us may have lost its task to a thief, and then
+                // the wake-up finds an empty queue; going back to sleep with idle cleared would hide us from every later submit().
+                while (!stopping_.load(std::memory_order_acquire) && own.queue.empty())
+                {
+                    own.idle.store(true, std::memory_order_release);
+                    own.cv.wait(lock);
+                }
                 own.idle.store(false, std::memory_order_release);
             }
             continue;  // look again: a task arrived, or we are stopping

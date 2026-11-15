@@ -1,0 +1,420 @@
+{
+    "metrics": {
+        "vus": {
+            "max": 109,
+            "value": 11,
+            "min": 11
+        },
+        "http_reqs": {
+            "count": 761405,
+            "rate": 8446.690732218443
+        },
+        "http_req_tls_handshaking": {
+            "max": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0
+        },
+        "checks": {
+            "passes": 761373,
+            "fails": 0,
+            "thresholds": {
+                "rate>0.99": false
+            },
+            "value": 1
+        },
+        "http_req_waiting": {
+            "p(95)": 17.291,
+            "p(99)": 23.08,
+            "max": 149.415,
+            "avg": 8.397142357877753,
+            "min": 0.098,
+            "med": 7.789,
+            "p(90)": 14.557
+        },
+        "http_req_duration{scenario:reads}": {
+            "avg": 8.87948252627653,
+            "min": 0.207,
+            "med": 8.099,
+            "p(90)": 15.107,
+            "p(95)": 17.852,
+            "p(99)": 23.448,
+            "max": 149.444,
+            "thresholds": {
+                "p(95)<300": false
+            }
+        },
+        "http_req_connecting": {
+            "p(99)": 0,
+            "max": 1.14,
+            "avg": 0.00004584550928874909,
+            "min": 0,
+            "med": 0,
+            "p(90)": 0,
+            "p(95)": 0
+        },
+        "vus_max": {
+            "max": 120,
+            "value": 120,
+            "min": 120
+        },
+        "data_sent": {
+            "rate": 4438675.736212623,
+            "count": 400112897
+        },
+        "data_received": {
+            "count": 783645119,
+            "rate": 8693412.78820801
+        },
+        "http_req_failed": {
+            "passes": 8,
+            "fails": 761397,
+            "thresholds": {
+                "rate<0.01": false
+            },
+            "value": 0.000010506891864382293
+        },
+        "http_req_duration": {
+            "avg": 8.427311451855543,
+            "min": 0.115,
+            "med": 7.818,
+            "p(90)": 14.591,
+            "p(95)": 17.324,
+            "p(99)": 23.111919999999984,
+            "max": 149.444,
+            "thresholds": {
+                "p(95)<500": false
+            }
+        },
+        "http_req_duration{scenario:crud}": {
+            "p(95)": 13.923,
+            "p(99)": 18.23456,
+            "max": 137.182,
+            "avg": 6.293532446323456,
+            "min": 0.338,
+            "med": 6.167,
+            "p(90)": 11.584,
+            "thresholds": {
+                "p(95)<800": false
+            }
+        },
+        "http_req_blocked": {
+            "med": 0.001,
+            "p(90)": 0.002,
+            "p(95)": 0.003,
+            "p(99)": 0.004,
+            "max": 1.217,
+            "avg": 0.0016884890432610157,
+            "min": 0
+        },
+        "iteration_duration": {
+            "min": 0.300833,
+            "med": 8.322791,
+            "p(90)": 16.0411578,
+            "p(95)": 19.642162799999998,
+            "p(99)": 78.40739187999998,
+            "max": 287.168833,
+            "avg": 10.298692115516864
+        },
+        "http_req_duration{expected_response:true}": {
+            "max": 149.444,
+            "avg": 8.427340137930763,
+            "min": 0.207,
+            "med": 7.818,
+            "p(90)": 14.591,
+            "p(95)": 17.324,
+            "p(99)": 23.112
+        },
+        "http_req_sending": {
+            "p(95)": 0.014,
+            "p(99)": 0.036,
+            "max": 4.53,
+            "avg": 0.008661754256969157,
+            "min": 0.002,
+            "med": 0.007,
+            "p(90)": 0.012
+        },
+        "http_req_receiving": {
+            "avg": 0.02150733972063886,
+            "min": 0.006,
+            "med": 0.018,
+            "p(90)": 0.027,
+            "p(95)": 0.034,
+            "p(99)": 0.07,
+            "max": 9.907
+        },
+        "iterations": {
+            "count": 632783,
+            "rate": 7019.815080811635
+        }
+    },
+    "setup_data": {
+        "clinicId": 6243,
+        "pharmacyId": 6276,
+        "providerToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3OTczMzM0MjcsImdyb3VwIjoicHJvdmlkZXJzIiwiaWF0IjoxNzk0NzQxNDI3LCJpcF9hZGRyZXNzIjoiMTI3LjAuMC4xIiwiaXNzIjoiUHJvamVjdFZhbGhhbGxhIiwianRpIjoiNjQyMSIsImxsb2R0IjoiMjAyNi0xMS0xNSAwNjoxMzozMy0wNSIsInN1YiI6InByb3ZpZGVyIn0.u7locFMenCQlyDkueykulg_AvSNU0vLKrGFpgsXFckY",
+        "radiologyId": 6279,
+        "userId": 6437,
+        "userToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE3OTczMzM0MjcsImdyb3VwIjoidXNlcnMiLCJpYXQiOjE3OTQ3NDE0MjcsImlwX2FkZHJlc3MiOiIxMjcuMC4wLjEiLCJpc3MiOiJQcm9qZWN0VmFsaGFsbGEiLCJqdGkiOiI2NDM3IiwibGxvZHQiOiIyMDI2LTExLTE1IDA2OjE0OjA5LTA1Iiwic3ViIjoidXNlcjEifQ.8t_TERBBZRENgh6-dE8ZWJYmk6vipspRnRXnappKkGU",
+        "visitId": 384426,
+        "appointmentId": 280538,
+        "laboratoryId": 6222,
+        "patientId": 384527,
+        "providerId": 6421
+    },
+    "root_group": {
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {},
+        "checks": {
+                "patients/create 200": {
+                    "path": "::patients/create 200",
+                    "id": "e706673383e0b098b926327523cce1db",
+                    "passes": 12859,
+                    "fails": 0,
+                    "name": "patients/create 200"
+                },
+                "patients/read 200": {
+                    "fails": 0,
+                    "name": "patients/read 200",
+                    "path": "::patients/read 200",
+                    "id": "61d06b808304f5f5140be1f6610d8e7c",
+                    "passes": 63581
+                },
+                "patients/update 200": {
+                    "passes": 12859,
+                    "fails": 0,
+                    "name": "patients/update 200",
+                    "path": "::patients/update 200",
+                    "id": "9fd7bca7d3c5cb84e76836a44a4d4cb0"
+                },
+                "patients/search 200": {
+                    "name": "patients/search 200",
+                    "path": "::patients/search 200",
+                    "id": "cbe586dcb7eba79b307a8c3ba0fc38d9",
+                    "passes": 38338,
+                    "fails": 0
+                },
+                "visits/create 200": {
+                    "name": "visits/create 200",
+                    "path": "::visits/create 200",
+                    "id": "8ca376ebc3cbdd880f18489de831ab11",
+                    "passes": 12859,
+                    "fails": 0
+                },
+                "visits/read 200": {
+                    "id": "e1a8298d71968929694a3ccc314f6a95",
+                    "passes": 51268,
+                    "fails": 0,
+                    "name": "visits/read 200",
+                    "path": "::visits/read 200"
+                },
+                "visits/delete 200": {
+                    "id": "b64752bbf4e6d60bc45ba55dd7862226",
+                    "passes": 12859,
+                    "fails": 0,
+                    "name": "visits/delete 200",
+                    "path": "::visits/delete 200"
+                },
+                "appointments/create 200": {
+                    "name": "appointments/create 200",
+                    "path": "::appointments/create 200",
+                    "id": "16e6fb1c60e982b6fcff4451aef3cf6f",
+                    "passes": 12859,
+                    "fails": 0
+                },
+                "appointments/read 200": {
+                    "id": "79884fac53b3724390c1d2af1072163b",
+                    "passes": 38332,
+                    "fails": 0,
+                    "name": "appointments/read 200",
+                    "path": "::appointments/read 200"
+                },
+                "appointments/delete 200": {
+                    "path": "::appointments/delete 200",
+                    "id": "86f5baad9c852e83898b7877635ce94d",
+                    "passes": 12859,
+                    "fails": 0,
+                    "name": "appointments/delete 200"
+                },
+                "patients/delete 200": {
+                    "id": "9194c0db7dd83da518a47b20a77e6773",
+                    "passes": 12859,
+                    "fails": 0,
+                    "name": "patients/delete 200",
+                    "path": "::patients/delete 200"
+                },
+                "users/login 200": {
+                    "path": "::users/login 200",
+                    "id": "2952accff8969299055725783655e524",
+                    "passes": 230,
+                    "fails": 0,
+                    "name": "users/login 200"
+                },
+                "providers/services 200": {
+                    "passes": 19203,
+                    "fails": 0,
+                    "name": "providers/services 200",
+                    "path": "::providers/services 200",
+                    "id": "ffe3d9601cfce35143673a39fced134b"
+                },
+                "radiologycenters/read 200": {
+                    "name": "radiologycenters/read 200",
+                    "path": "::radiologycenters/read 200",
+                    "id": "7224c473c1fda6a3257709212878e49d",
+                    "passes": 19222,
+                    "fails": 0
+                },
+                "clinics/read 200": {
+                    "passes": 31821,
+                    "fails": 0,
+                    "name": "clinics/read 200",
+                    "path": "::clinics/read 200",
+                    "id": "a13995dc7a12568a30ccb836089acdd2"
+                },
+                "prescriptions/read 200": {
+                    "path": "::prescriptions/read 200",
+                    "id": "bbac4944abee714dad735aaf4abf0667",
+                    "passes": 18896,
+                    "fails": 0,
+                    "name": "prescriptions/read 200"
+                },
+                "paidservices/read 200": {
+                    "name": "paidservices/read 200",
+                    "path": "::paidservices/read 200",
+                    "id": "127dd7fdc12cdbcde6437661da199f7d",
+                    "passes": 19082,
+                    "fails": 0
+                },
+                "radiologycenters/search 200": {
+                    "fails": 0,
+                    "name": "radiologycenters/search 200",
+                    "path": "::radiologycenters/search 200",
+                    "id": "44279cd85630e10bd33dce430fd995c1",
+                    "passes": 12663
+                },
+                "laboratories/read 200": {
+                    "path": "::laboratories/read 200",
+                    "id": "4fc0cecd1355b8c6b6d3895c063647f2",
+                    "passes": 19382,
+                    "fails": 0,
+                    "name": "laboratories/read 200"
+                },
+                "providers/read 200": {
+                    "name": "providers/read 200",
+                    "path": "::providers/read 200",
+                    "id": "b83db8041567c08c61f72b59ad04877d",
+                    "passes": 38354,
+                    "fails": 0
+                },
+                "users/read 200": {
+                    "name": "users/read 200",
+                    "path": "::users/read 200",
+                    "id": "6fa9b82162cc5d6651332f1f755e3041",
+                    "passes": 38369,
+                    "fails": 0
+                },
+                "users/services 200": {
+                    "path": "::users/services 200",
+                    "id": "d4ad96c6132618fb452eb6bd174e487b",
+                    "passes": 19188,
+                    "fails": 0,
+                    "name": "users/services 200"
+                },
+                "clinics/search 200": {
+                    "id": "ce366d0527bfa6e1bdc446af3feefc0b",
+                    "passes": 19307,
+                    "fails": 0,
+                    "name": "clinics/search 200",
+                    "path": "::clinics/search 200"
+                },
+                "hello 200": {
+                    "id": "7b2c29e4699ebe6fb76774dac7502fd6",
+                    "passes": 19297,
+                    "fails": 0,
+                    "name": "hello 200",
+                    "path": "::hello 200"
+                },
+                "users/search 200": {
+                    "name": "users/search 200",
+                    "path": "::users/search 200",
+                    "id": "1f330551a46e1f85e0fd0a28467e6e6d",
+                    "passes": 25671,
+                    "fails": 0
+                },
+                "pharmacies/search 200": {
+                    "name": "pharmacies/search 200",
+                    "path": "::pharmacies/search 200",
+                    "id": "68cd9715611d0ae9bd45da9bea74ab37",
+                    "passes": 12819,
+                    "fails": 0
+                },
+                "laboratories/search 200": {
+                    "name": "laboratories/search 200",
+                    "path": "::laboratories/search 200",
+                    "id": "ae56e7fac473e4b217f881a4b86a3574",
+                    "passes": 12729,
+                    "fails": 0
+                },
+                "pharmacies/read 200": {
+                    "fails": 0,
+                    "name": "pharmacies/read 200",
+                    "path": "::pharmacies/read 200",
+                    "id": "bc6d7acc880ce1e2c34d082c8d987205",
+                    "passes": 19257
+                },
+                "patientdrugs/read 200": {
+                    "fails": 0,
+                    "name": "patientdrugs/read 200",
+                    "path": "::patientdrugs/read 200",
+                    "id": "8cc1bf96e21ff32e0172fe6862b7ba70",
+                    "passes": 25424
+                },
+                "providers/search 200": {
+                    "name": "providers/search 200",
+                    "path": "::providers/search 200",
+                    "id": "e7d72fd29bfe9da2d699291ffcfd0c85",
+                    "passes": 25606,
+                    "fails": 0
+                },
+                "reports/read 200": {
+                    "name": "reports/read 200",
+                    "path": "::reports/read 200",
+                    "id": "c24fddcec235b7b80061de0c1fe0d4bd",
+                    "passes": 19027,
+                    "fails": 0
+                },
+                "health/read 200": {
+                    "name": "health/read 200",
+                    "path": "::health/read 200",
+                    "id": "e04892cca68455d097fb491fd7cd2f81",
+                    "passes": 25663,
+                    "fails": 0
+                },
+                "requests/read 200": {
+                    "name": "requests/read 200",
+                    "path": "::requests/read 200",
+                    "id": "0d8a43bc971c94595d829126728cb7b8",
+                    "passes": 19296,
+                    "fails": 0
+                },
+                "providers/login 200": {
+                    "path": "::providers/login 200",
+                    "id": "989e3ed9ec34a4258bcb7b4f547a9d11",
+                    "passes": 221,
+                    "fails": 0,
+                    "name": "providers/login 200"
+                },
+                "patients/getvisits 200": {
+                    "name": "patients/getvisits 200",
+                    "path": "::patients/getvisits 200",
+                    "id": "4a100f9f8e40ddeb764356267585ffce",
+                    "passes": 19114,
+                    "fails": 0
+                }
+            },
+        "name": "",
+        "path": ""
+    }
+}

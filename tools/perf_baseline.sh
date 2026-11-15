@@ -195,7 +195,9 @@ SLOW_DONE=0
 if command -v psql >/dev/null; then
 	SLOW_PHASE=15
 	log "Slow query (reads alone, then reads while ${SLOW_VUS:-4} clients wait on a locked table), about 45 seconds"
+	# the mixed benchmark removes the accounts it logs in as, so create both again (a no-op if they exist)
 	post /clients/providers/create "$PROVIDER_JSON" >/dev/null || true
+	post /clients/users/create "$USER_JSON" >/dev/null || true
 	(
 		sleep $((SLOW_PHASE + 5 + 1))
 		PGPASSWORD="${DB_PASS:-}" psql -q -h "${DB_HOST:-127.0.0.1}" -p "${DB_PORT:-5432}" -U "${DB_USER:-postgres}" -d "${DB_NAME:-postgres}" \
