@@ -14,6 +14,7 @@
 # Usage:  tools/perf_baseline.sh [options]
 #   --label NAME       output name (default: baseline). Use e.g. step3-permission-cache for later runs.
 #   --container        run the server in a container (valhalla.sh) instead of the native binary
+#   --reset-db         (native) re-run init.sql first: DROPS ALL DATA in the database from .env, so every run starts from the same empty tables
 #   --rebuild          run "cmake --build build/Release" before starting the native binary
 #   --hub              (with --container) start the published Docker Hub image instead of building this checkout (default: build)
 #   --no-start         use an already running server at BASE_URL (you handle rate limits and seeding state)
@@ -31,7 +32,7 @@
 set -uo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-MODE=native; REBUILD=0; ENV_FILE="${ENV_FILE:-}"
+MODE=native; REBUILD=0; RESET_DB=0; ENV_FILE="${ENV_FILE:-}"
 LABEL="baseline"; START=1; BUILD=1; KEEP=0; SMOKE=0; PORT=8080; RUNTIME="${RUNTIME:-${VALHALLA_RUNTIME:-container}}"
 DURATION="20s"; SWEEP="1 8 32 128"
 NAME="perf-$$"
@@ -43,6 +44,7 @@ while [[ $# -gt 0 ]]; do
 		--container) MODE=container; shift ;;
 		--native) MODE=native; shift ;;
 		--rebuild) REBUILD=1; shift ;;
+		--reset-db) RESET_DB=1; shift ;;
 		--env-file) ENV_FILE="$2"; shift 2 ;;
 		--keep) KEEP=1; shift ;;
 		--smoke) SMOKE=1; DURATION="5s"; SWEEP="1 8"; shift ;;
@@ -103,6 +105,12 @@ if [[ $START == 1 && $MODE == native ]]; then
 		done <"$EF"
 	else
 		echo "note: no env file at $EF, using the environment and built-in defaults"
+	fi
+	if [[ $RESET_DB == 1 ]]; then
+		command -v psql >/dev/null || { echo "error: --reset-db needs psql" >&2; exit 1; }
+		log "Resetting database ${DB_NAME:-postgres} on ${DB_HOST:-127.0.0.1}:${DB_PORT:-5432} (init.sql, drops all data)"
+		PGPASSWORD="${DB_PASS:-}" psql -q -v ON_ERROR_STOP=1 -h "${DB_HOST:-127.0.0.1}" -p "${DB_PORT:-5432}" -U "${DB_USER:-postgres}" -d "${DB_NAME:-postgres}" -f "$ROOT/init.sql" >/dev/null \
+			|| { echo "error: init.sql failed" >&2; exit 1; }
 	fi
 	# Perf-run overrides: our port, no rate-limit bans, quiet console (the log goes to $SERVER_LOG).
 	export SERVER_PORT="$PORT" MAX_REQUESTS=100000000 MAX_FPS=100000000 WHITELIST="$WHITELIST" SERVER_LOG_TO_CONSOLE=false
