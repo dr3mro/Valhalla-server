@@ -419,23 +419,23 @@ style_set() { # PREFIX LEVEL: defines ${PREFIX}R/ERR/... colors and ${PREFIX}i_*
   local p="$1" l="$2"
   if [[ $l -ge 1 ]]; then
     if [[ "$(tput colors 2>/dev/null || echo 8)" -ge 256 ]]; then
-      printf -v "${p}ERR"  '\033[1;38;5;210m'
-      printf -v "${p}WRN"  '\033[1;38;5;221m'
-      printf -v "${p}OK"   '\033[38;5;114m'
-      printf -v "${p}INFO" '\033[38;5;117m'
-      printf -v "${p}ACC"  '\033[1;38;5;213m'
-      printf -v "${p}HEAD" '\033[1;38;5;111m'
-      printf -v "${p}VAL"  '\033[97m'
-      printf -v "${p}LBL"  '\033[38;5;245m'
+      printf -v "${p}ERR"  '\033[38;5;211m'
+      printf -v "${p}WRN"  '\033[38;5;223m'
+      printf -v "${p}OK"   '\033[38;5;151m'
+      printf -v "${p}INFO" '\033[38;5;159m'
+      printf -v "${p}ACC"  '\033[38;5;183m'
+      printf -v "${p}HEAD" '\033[38;5;153m'
+      printf -v "${p}VAL"  '\033[38;5;255m'
+      printf -v "${p}LBL"  '\033[38;5;189m'
       printf -v "${p}DIM"  '\033[2m'
       printf -v "${p}B"    '\033[1m'
     else
-      printf -v "${p}ERR"  '\033[1;31m'
-      printf -v "${p}WRN"  '\033[1;33m'
-      printf -v "${p}OK"   '\033[1;32m'
+      printf -v "${p}ERR"  '\033[31m'
+      printf -v "${p}WRN"  '\033[33m'
+      printf -v "${p}OK"   '\033[32m'
       printf -v "${p}INFO" '\033[36m'
-      printf -v "${p}ACC"  '\033[1;35m'
-      printf -v "${p}HEAD" '\033[1;34m'
+      printf -v "${p}ACC"  '\033[35m'
+      printf -v "${p}HEAD" '\033[34m'
       printf -v "${p}VAL"  '\033[1;37m'
       printf -v "${p}LBL"  '\033[2m'
       printf -v "${p}DIM"  '\033[2m'
@@ -635,11 +635,11 @@ render_help() {
     BEGIN {
       R = c(0); B = c(1); D = c(2)
       if (C256) {
-        TITLE = c("1;38;5;117"); HEAD = c("1;38;5;46"); CMD = c("1;38;5;114"); ARG = c("38;5;221")
-        OPT = c("38;5;117"); ENV = c("38;5;183"); DEF = c("38;5;245"); CODE = c("38;5;216"); SUB = c("1;38;5;180"); FRAME = c("1;38;5;196")
+        TITLE = c("1;38;5;153"); HEAD = c("1;38;5;183"); CMD = c("1;38;5;151"); ARG = c("38;5;223")
+        OPT = c("38;5;159"); ENV = c("38;5;183"); DEF = c("38;5;250"); CODE = c("38;5;216"); SUB = c("38;5;223"); FRAME = c("1;38;5;147")
       } else {
-        TITLE = c("1;36"); HEAD = c("1;32"); CMD = c("1;32"); ARG = c("33")
-        OPT = c("36"); ENV = c("35"); DEF = c("2"); CODE = c("33"); SUB = c("1;33"); FRAME = c("1;31")
+        TITLE = c("34"); HEAD = c("35"); CMD = c("32"); ARG = c("33")
+        OPT = c("36"); ENV = c("35"); DEF = c("2"); CODE = c("33"); SUB = c("33"); FRAME = c("35")
       }
       U = (L >= 2); M = (L >= 3); EG = M ? "   " : " "; EG = M ? "  " : " "
       # The marker replaces the 2-space indent, so it is 2 columns wide.
