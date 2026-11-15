@@ -1106,7 +1106,8 @@ check_deps() {
       ;;
     payload)
       need fzf
-      want jq "nicer payload previews"
+      want bat "nicer payload colors"
+      want jq "prettier payload previews"
       ;;
   esac
 
@@ -2569,12 +2570,27 @@ payload_hint() {
 }
 
 # payload_colorize FILE: the JSON with syntax colors (plain when not fancy).
-# Template placeholders ({{NAME}}) always stand out, also inside strings.
+# Uses bat when installed, a small awk colorizer otherwise. Template
+# placeholders ({{NAME}}) always stand out, also inside strings.
 payload_colorize() {
-  local file="$1" level colors
+  local file="$1" level colors bat ph_esc r_esc
   level="$(fancy_level "$([[ -t 1 ]] && echo 1 || echo 0)")"
   [[ $level -ge 1 ]] || { cat "$file"; return 0; }
   colors="$(tput colors 2>/dev/null || echo 8)"
+  if [[ $colors -ge 256 ]]; then
+    ph_esc=$'\033[1;38;5;221m'
+  else
+    ph_esc=$'\033[1;33m'
+  fi
+  r_esc=$'\033[0m'
+  bat="$(command -v bat 2>/dev/null || command -v batcat 2>/dev/null || true)"
+  # bat renders bare placeholders (invalid JSON, e.g. "id": {{CLINIC_ID}}) as
+  # noisy per-character runs; those files keep the awk colorizer.
+  if [[ -n $bat ]] && ! grep -q ':[[:space:]]*{{' "$file"; then
+    "$bat" --color=always --style=plain -l json "$file" |
+      sed -E "s/{{[A-Z_]+}}/${ph_esc}&${r_esc}/g"
+    return 0
+  fi
   awk -v hi="$colors" '
     BEGIN {
       R = "\033[0m"
@@ -2662,51 +2678,67 @@ payload_group_fzf() { # dir: pick a group (fzf); non-zero when quit
     fzf --prompt 'payload group ▸ ' --reverse --height=70% --border \
       --header 'enter: select   esc: quit' \
       --preview "ls \"$dir/{}\" 2>/dev/null | sed 's/[.]json\$//'" \
-      --preview-window 'right:60%:wrap'
+      --preview-window 'right,60%,wrap'
 }
 
-payload_name_fzf() { # dir group: pick a payload (fzf); non-zero when back
-  local dir="$1" group="$2" f out=""
+payload_name_fzf() { # dir group: pick a payload (fzf); enter views it in place
+  local dir="$1" group="$2" f out="" preview bat_bin view_fancy
   for f in "$dir/$group"/*.json; do
     [[ -f $f ]] || continue
     out+="$(basename "$f" .json)"$'\n'
   done
   [[ -n $out ]] || return 1
+  view_fancy="$(fancy_level 1)"
+  bat_bin="$(command -v bat 2>/dev/null || command -v batcat 2>/dev/null || true)"
+  if [[ -n $bat_bin ]]; then
+    # Bare placeholders (invalid JSON) render as noisy per-character runs in
+    # bat: fall back to plain cat for those files, per selection.
+    preview="grep -q ':[[:space:]]*{{' \"$dir/$group/{}.json\" 2>/dev/null &&
+      cat \"$dir/$group/{}.json\" ||
+      \"$bat_bin\" --color=always --style=plain -l json \"$dir/$group/{}.json\" 2>/dev/null ||
+      cat \"$dir/$group/{}.json\""
+  else
+    preview="jq -C . \"$dir/$group/{}.json\" 2>/dev/null || cat \"$dir/$group/{}.json\""
+  fi
+  # enter: the full view replaces the fzf screen ("press any key" returns to
+  # the list); esc: back to the group list.
   printf '%s' "$out" |
     fzf --prompt "$group ▸ " --reverse --height=70% --border \
       --header 'enter: view   esc: back' \
-      --preview "jq -C . \"$dir/$group/{}.json\" 2>/dev/null || cat \"$dir/$group/{}.json\"" \
-      --preview-window 'right:60%:wrap'
+      --preview "$preview" \
+      --preview-window 'right,60%,wrap' \
+      --bind "enter:execute(VALHALLA_FANCY=$view_fancy '$SCRIPT' payload '$group' {})"
 }
 
-payload_browse() { # dir: group -> payload -> view; esc backs up a level
-  local dir="$1" group name
+payload_browse() { # dir: group -> payload; enter views in place, esc backs up
+  local dir="$1" group
   while :; do
     group="$(payload_group_fzf "$dir")" || return 0
-    while :; do
-      name="$(payload_name_fzf "$dir" "$group")" || break
-      payload_show "$group" "$name" "$dir/$group/$name.json"
-    done
+    payload_name_fzf "$dir" "$group" || true
   done
 }
 
 payload_list_all() { # dir: every group with its payload count
   local dir="$1" g n
-  printf '%s\n' "${S_HEAD}Payload groups${S_R}"
+  local -a lines=()
+  lines+=("${S_HEAD}Payload groups${S_R}")
   for g in $(payload_groups "$dir"); do
     n="$(payload_count "$dir" "$g")"
-    printf '  %s%s%s %s(%s payloads)%s\n' "$S_VAL" "$g" "$S_R" "$S_DIM" "$n" "$S_R"
+    lines+=("  ${S_VAL}${g}${S_R} ${S_DIM}(${n} payloads)${S_R}")
   done
+  printf '%s\n' "${lines[@]}"
 }
 
 payload_list_group() { # dir group: the payloads in one group
   local dir="$1" group="$2" f name
-  printf '%s\n' "${S_HEAD}Payloads in $group${S_R}"
+  local -a lines=()
+  lines+=("${S_HEAD}Payloads in $group${S_R}")
   for f in "$dir/$group"/*.json; do
     [[ -f $f ]] || continue
     name="$(basename "$f" .json)"
-    printf '  %s%s%s\n' "$S_VAL" "$name" "$S_R"
+    lines+=("  ${S_VAL}${name}${S_R}")
   done
+  printf '%s\n' "${lines[@]}"
 }
 
 cmd_payload() {
