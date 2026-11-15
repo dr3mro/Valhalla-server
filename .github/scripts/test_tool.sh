@@ -71,6 +71,7 @@ echo "Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the
 exit 1
 EOF
 chmod +x "$STUB/docker"
+ORIG_PATH="$PATH"
 BASE_PATH="$STUB:$PATH"
 
 # fresh_home SHELL: new empty HOME with SHELL as the login shell.
@@ -264,7 +265,20 @@ fails "restore: missing file" "file not found" vdt restore "$WORK/nope.sql"
 fails "logs: bad count" "doesn't exist|takes a number" vdt logs abc
 
 section "Tool: dependency checks"
-fails "no runtime installed" "container or docker" env PATH="$(dirname "$(command -v jq)"):/usr/bin:/bin" VALHALLA_RUNTIME= "$TOOL_BASH" "$V" status
+# A PATH with every command except the runtimes (CI runners have docker in
+# /usr/bin, so trimming PATH to the system dirs isn't enough).
+NORT="$WORK/no-runtime"
+mkdir -p "$NORT"
+IFS=: read -r -a path_dirs <<<"$ORIG_PATH"
+for d in "${path_dirs[@]}"; do
+  [[ -d $d ]] || continue
+  for f in "$d"/*; do
+    n="${f##*/}"
+    case "$n" in docker | container | podman) continue ;; esac
+    [[ -x $f && ! -e $NORT/$n ]] && ln -s "$f" "$NORT/$n"
+  done
+done
+fails "no runtime installed" "container or docker" env PATH="$NORT" VALHALLA_RUNTIME= "$TOOL_BASH" "$V" status
 if command -v container >/dev/null 2>&1; then
   : # Apple container is installed (a developer Mac); nothing to check
 elif [[ $OS == Darwin ]]; then
