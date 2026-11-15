@@ -127,7 +127,16 @@ class Entity : public Base
             std::vector<std::string> values_arr;
 
             jsoncons::json data_json = std::get<Create_t>(data).get_data();
-            data_json["id"]          = std::get<Create_t>(data).get_id();
+            // With an id given (e.g. a patient's health record shares the patient id) it is inserted. Without one the
+            // column is left out, so the database assigns it, and any "id" the client sent is dropped.
+            if (const auto create_id = std::get<Create_t>(data).get_id(); create_id.has_value())
+            {
+                data_json["id"] = create_id.value();
+            }
+            else
+            {
+                data_json.erase("id");
+            }
 
             for (auto& iterator : data_json.object_range())
             {

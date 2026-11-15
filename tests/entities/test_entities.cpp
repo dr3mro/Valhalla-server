@@ -45,6 +45,23 @@ TEST_CASE("Entity create statement lists every column with placeholders", "[enti
     CHECK(statement->back() == ';');
 }
 
+TEST_CASE("Entity create statement without an id leaves the id to the database", "[entities][sql]")
+{
+    // A client-supplied "id" must be dropped so it can never choose its own primary key.
+    const jsoncons::json  payload = makeJsonObject({{"name", "clinic"}, {"id", "42"}});
+    const Types::Create_t create(payload);
+
+    Entity       entity(create, "clinics");
+    pqxx::params params;
+    const auto   statement = entity.getSqlCreateStatementParameterized(params);
+
+    REQUIRE(statement.has_value());
+    CHECK(statement->find("INSERT INTO clinics (name)") == 0);
+    CHECK(statement->find("VALUES ($1)") != std::string::npos);
+    CHECK(statement->find("RETURNING *;") != std::string::npos);
+    CHECK(statement->find("id") == std::string::npos);
+}
+
 TEST_CASE("Entity plain statements inline the values for the injection check", "[entities][sql]")
 {
     const jsoncons::json  payload = makeJsonObject({{"name", "renamed"}});

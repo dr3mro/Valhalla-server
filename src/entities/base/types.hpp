@@ -35,7 +35,7 @@ namespace api::v2::Types
         // Entity_t &operator=(const Entity_t &) = delete;
         // Entity_t &operator=(Entity_t &&)      = delete;
 
-        Entity_t(const S& _data, const uint64_t _id) : data(_data), id(_id) {}
+        Entity_t(const S& _data, const std::optional<uint64_t> _id) : data(_data), id(_id) {}
         [[nodiscard]] std::optional<uint64_t> get_id() const { return id; }
         [[nodiscard]] const S&                get_data() const { return this->data; }
 
@@ -54,6 +54,8 @@ namespace api::v2::Types
         // Create_t &operator=(Create_t &&)      = default;
 
         Create_t(const jsoncons::json& _data, const uint64_t id) : Entity_t(_data, id) {}
+        // No id: the database assigns it (the column default is nextval of the table's sequence).
+        explicit Create_t(const jsoncons::json& _data) : Entity_t(_data, std::nullopt) {}
         ~Create_t() override = default;
     };
 

@@ -33,7 +33,6 @@ inline void __attribute((always_inline)) EntityController<T>::Create(CALLBACK_&&
         bool            success = false;
         HttpError       error;
         Validator::Rule rule((Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA | Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA), {"id"});
-        auto            next_id = this->template getNextID<T>(error);
 
         std::optional<jsoncons::json> request_j;
         try
@@ -66,13 +65,9 @@ inline void __attribute((always_inline)) EntityController<T>::Create(CALLBACK_&&
             return;
         }
 
-        if (!next_id.has_value())
-        {
-            std::move(callback)(error.code, fmt::format("Failed to generate next ID, {}.", error.message));
-            return;
-        }
-
-        Create_t entity_data = Create_t(request_j.value(), next_id.value());
+        // The id is assigned by the database (INSERT ... RETURNING *), so a create is one query, and a request that is
+        // rejected above never takes a connection or burns a sequence value.
+        Create_t entity_data = Create_t(request_j.value());
 
         T entity(entity_data);
 

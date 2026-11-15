@@ -26,7 +26,7 @@ Done when: a table of baseline numbers is committed.
 
 Done when: baseline re-run shows no regression and a small gain.
 
-## Step 2: Fix the Create path (fewer round trips, no wasted work)
+## Step 2: Fix the Create path (fewer round trips, no wasted work) [done: id assigned by the DB default, INSERT ... RETURNING *]
 
 1. In `EntityController<T>::Create` (`src/controllers/entitycontroller/entitycontroller.cpp`) `getNextID` runs before the body is parsed or validated. Move it after validation and permission checks so rejected requests do not take a connection or burn a sequence value.
 2. Replace the separate `SELECT NEXTVAL(...)` query with `INSERT ... RETURNING id` (or `DEFAULT nextval(...)` in the column), so a create is one query instead of two.
