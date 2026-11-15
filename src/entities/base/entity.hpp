@@ -41,50 +41,33 @@ class Entity : public Base
 
     ~Entity() override = default;
 
-    std::optional<std::string> getSqlCreateStatement() override
+    std::optional<std::string> getSqlCreateStatement(pqxx::params& params) override
     {
-        PlainBinder binder;
-        return buildCreateStatement(binder);
-    }
-    std::optional<std::string> getSqlCreateStatementParameterized(pqxx::params& params) override
-    {
-        ParamBinder binder(params);
+        Binder binder(params);
         return buildCreateStatement(binder);
     }
 
-    std::optional<std::string> getSqlReadStatement() override { return buildReadStatement(); }
-    std::optional<std::string> getSqlReadStatementParameterized(pqxx::params& params) override
+    std::optional<std::string> getSqlReadStatement(pqxx::params& params) override
     {
-        params = {};
-        return buildReadStatement();
+        Binder binder(params);
+        return buildReadStatement(binder);
     }
 
-    std::optional<std::string> getSqlUpdateStatement() override
+    std::optional<std::string> getSqlUpdateStatement(pqxx::params& params) override
     {
-        PlainBinder binder;
-        return buildUpdateStatement(binder);
-    }
-    std::optional<std::string> getSqlUpdateStatementParameterized(pqxx::params& params) override
-    {
-        ParamBinder binder(params);
+        Binder binder(params);
         return buildUpdateStatement(binder);
     }
 
-    std::optional<std::string> getSqlDeleteStatement() override { return buildDeleteStatement(); }
-    std::optional<std::string> getSqlDeleteStatementParameterized(pqxx::params& params) override
+    std::optional<std::string> getSqlDeleteStatement(pqxx::params& params) override
     {
-        params = {};
-        return buildDeleteStatement();
+        Binder binder(params);
+        return buildDeleteStatement(binder);
     }
 
-    std::optional<std::string> getSqlSearchStatement() override
+    std::optional<std::string> getSqlSearchStatement(pqxx::params& params) override
     {
-        PlainBinder binder;
-        return buildSearchStatement(binder);
-    }
-    std::optional<std::string> getSqlSearchStatementParameterized(pqxx::params& params) override
-    {
-        ParamBinder binder(params);
+        Binder binder(params);
         return buildSearchStatement(binder);
     }
 
@@ -104,20 +87,12 @@ class Entity : public Base
             Message::ErrorMessage(fmt::format("Failed to create Sql search statement for table {}.", tablename));
             return false;
         }
-        bool isSqlInjection = false;
-        auto result         = databaseController->checkItemExists(tablename, "id", std::to_string(_id.value()), isSqlInjection);
-
-        if (isSqlInjection)
-        {
-            Message::ErrorMessage("A Sql Injection pattern is detected in generated query.");
-            return false;
-        }
+        auto result = databaseController->checkItemExists(tablename, "id", std::to_string(_id.value()));
         return result.value_or(false);
     }
 
    protected:
-    // Common implementation of the SQL statements: one builder per operation, shared by the plain and the
-    // parameterized variant. Binder::bind(value) returns what goes into the query for that value.
+    // The SQL statements: one builder per operation. Binder::bind(value) returns the placeholder for that value.
     template <typename Binder>
     std::optional<std::string> buildCreateStatement(Binder& binder)
     {
@@ -154,7 +129,8 @@ class Entity : public Base
         }
     }
 
-    std::optional<std::string> buildReadStatement()
+    template <typename Binder>
+    std::optional<std::string> buildReadStatement(Binder& binder)
     {
         try
         {
@@ -168,7 +144,7 @@ class Entity : public Base
                 Message::ErrorMessage(fmt::format("Failed to read data from table {}. No id provided.", tablename));
                 return std::nullopt;
             }
-            return fmt::format("SELECT {} FROM {}_safe WHERE id={} LIMIT 1;", columns, tablename, user_id.value());
+            return fmt::format("SELECT {} FROM {}_safe WHERE id={} LIMIT 1;", columns, tablename, binder.bind(user_id.value()));
         }
         catch (const std::exception& e)
         {
@@ -200,7 +176,7 @@ class Entity : public Base
                 set_clauses.push_back(fmt::format("{} = {}", it->key(), binder.bind(it->value().template as<std::string>())));
             }
 
-            return fmt::format("UPDATE {} SET {} WHERE id={} RETURNING *;", tablename, fmt::join(set_clauses, ", "), _id.value());
+            return fmt::format("UPDATE {} SET {} WHERE id={} RETURNING *;", tablename, fmt::join(set_clauses, ", "), binder.bind(_id.value()));
         }
         catch (const std::exception& e)
         {
@@ -210,7 +186,8 @@ class Entity : public Base
         }
     }
 
-    std::optional<std::string> buildDeleteStatement()
+    template <typename Binder>
+    std::optional<std::string> buildDeleteStatement(Binder& binder)
     {
         try
         {
@@ -220,7 +197,7 @@ class Entity : public Base
                 Message::ErrorMessage(fmt::format("Failed to delete data from table {}. No id provided.", tablename));
                 return std::nullopt;
             }
-            return fmt::format("DELETE FROM {} where id={} returning id;", tablename, _id.value());
+            return fmt::format("DELETE FROM {} WHERE id={} RETURNING id;", tablename, binder.bind(_id.value()));
         }
         catch (const std::exception& e)
         {
@@ -236,11 +213,14 @@ class Entity : public Base
         try
         {
             Search_t searchdata = std::get<Search_t>(getData());
+            // Bound in a fixed order (argument evaluation order is unspecified).
+            const std::string keyword_ph = binder.bind(fmt::format("%{}%", searchdata.keyword));
+            const std::string limit_ph   = binder.bind(searchdata.limit + 1);
+            const std::string offset_ph  = binder.bind(searchdata.offset);
             return fmt::format(
                 "SELECT * FROM {}_safe WHERE {}::text ILIKE {} ORDER BY {} {} "
                 "LIMIT {} OFFSET {};",
-                tablename, searchdata.filter, binder.bind(fmt::format("%{}%", searchdata.keyword)), searchdata.order_by, searchdata.direction,
-                searchdata.limit + 1, searchdata.offset);
+                tablename, searchdata.filter, keyword_ph, searchdata.order_by, searchdata.direction, limit_ph, offset_ph);
         }
         catch (const std::exception& e)
         {

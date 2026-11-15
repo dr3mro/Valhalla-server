@@ -46,16 +46,49 @@ Done when: a create makes a single DB round trip (check with `log_statement=all`
 
 Done when: a repeated read of the same entity does not issue a permission query.
 
-## Step 4: Cheaper SQL-injection scanning
+## Step 4: Parameterize every query, then retire the SQL-injection detector
 
-Every query is scanned with about 35 `std::regex` patterns, a keyword scan and quote/semicolon checks. This is done for the plain query and again inside `executeQuery`. `std::regex` is slow, and the executed statement is already parameterized.
+Why: the detector costs about 35 `std::regex_search` calls per database call and has produced false positives on medical text. Bound parameters cannot change the SQL, so they are the real protection. Today the main entity create/read/update/delete/search paths are already parameterized (with a "plain" twin statement built only so the detector can scan it); the paths below still build SQL by string formatting.
 
-1. Compile the regexes once (already static) and stop scanning the same text twice; scan only the plain query that contains the user values.
-2. Do cheap checks first (the `;`, `/*`, `--` and keyword checks) and run the regexes only when something suspicious is found.
-3. Longer term, replace `std::regex` with RE2 or a small hand-written scanner.
-4. Do not remove detection without sign-off: the existing tests (`tests/gatekeeper/test_sqlinjectiondetector.cpp`, `sqlmap_test.sh`, `schemathesis_test.sh`) must still pass unchanged.
+Fix first (found while planning): since commit `8af2ad0`, `executeQuery` and `doSimpleQuery` scan the parameterized text instead of the plain query, contrary to their comments. This disappears with the detector, but do not ship a build between 4.1 and 4.4 that relies on it.
 
-Done when: profile shows the detector is no longer a top-5 symbol and all injection tests pass.
+### 4.1 Inventory and identifier policy
+
+1. List every call site that passes SQL to `DatabaseController` (`executeQuery`, `executeReadQuery`, `executeSearchQuery`, `doReadQuery`) and mark it bound or formatted. Known formatted ones:
+   - staff add/remove (`service.hpp`), suspend/activate (`client.hpp`), `getSqlGetServicesStatement` (user, provider), `getSqlGetVisitsStatement` (patient);
+   - permission queries for services, cases and appointments;
+   - `keeprbase.cpp`: active check, login upsert, logout upsert, last login;
+   - `getNextID` (unused since Step 2; delete it).
+2. Identifiers (table and group names such as `{}_sessions`) cannot be bound. Decide one rule: values come only from a compile-time allowlist (`users`, `providers`, the entity table names) or pass through `connection->quote_name`; reject anything else with a 400.
+3. Fix `getSqlAddStaffStatement` while here: it passes four arguments to three placeholders, so `ID=` receives `nominee_group` instead of `entity_id`. Add a test first (it should fail today), then fix.
+
+### 4.2 Parameterize the remaining paths [partly done: staff, suspend/activate, services, visits, session queries]
+
+Still formatted, by design for now: the permission queries for services, cases and appointments, which only embed typed `uint64_t` ids and compile-time table names (not injectable). Convert them in a follow-up if the "no formatted SQL at all" rule is wanted; they need a signature change (query plus params) across `service.hpp`, `case.hpp`, `appointment.hpp`, `patient.hpp` and the cache key.
+
+1. Convert each formatted statement to `$1, $2, ...` with `pqxx::params` (ids, timestamps and staff ids as bound values; the JSON string in the staff `jsonb_set` bound as text and cast with `::jsonb`).
+2. Do it per group (staff, client toggle, services/visits, permission queries, session queries), one commit each, running the unit tests after each.
+3. Keep the detector enabled during this step as a safety net.
+
+### 4.3 Prove it
+
+1. `sqlmap_test.sh` and `schemathesis_test.sh` pass with the detector still on.
+2. Run them again with the detector switched off (temporary env flag in a scratch build). If sqlmap finds nothing, the parameterization is complete.
+3. Add API tests that send quote, semicolon, comment and `' OR 1=1` payloads in every free-text field and check that they are stored or rejected by validation, never executed.
+
+### 4.4 Remove the detector (done, uncompiled; needs build, tests, sqlmap and schemathesis)
+
+1. Delete `src/gatekeeper/sqlinjectiondetectoor/`, `GateKeeper::isQuerySqlInjection`, the `isSqlInjection` out-parameters and their 400 branches, and the plain/parameterized twin statements. There is now a single `getSql*Statement(pqxx::params&)` API, and `Search` `filter`/`order_by` must be plain identifiers (`Search_t::validate`).
+2. Move the detector sources and `tests/gatekeeper/test_sqlinjectiondetector.cpp` to `archive/sqlinjectiondetector/` outside the build (not globbed by CMake). Git history keeps them either way.
+3. Remove the detector benchmark and any README/API-doc text that promises the "SQL injection detected" response; update tests that expect it.
+
+### 4.5 Measure
+
+Run `tools/perf_baseline.sh --reset-db` after 4.2 (stage 3) and after 4.4 (stage 4) and add both columns to the results sheet and `docs/perf/results.csv`. Expect gains mainly on the mixed benchmark; the profile before and after shows the detector's real share.
+
+Risks: a missed formatted statement (4.1 inventory and 4.3 sqlmap catch it); identifier handling (allowlist plus `quote_name`); tests and docs that expect the old 400 response.
+
+Done when: no SQL is built by string formatting with request-derived values, sqlmap and schemathesis are clean with the detector off, the detector is archived, and stage 3 and 4 results are recorded.
 
 ## Step 5: Connection pool behavior
 

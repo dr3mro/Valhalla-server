@@ -35,9 +35,11 @@ class Patient : public Case
     static constexpr auto getTableName() { return TABLENAME; }
     static constexpr auto getCreateKey() { return CREATE_KEY; }
 
-    std::string getSqlGetVisitsStatement()
+    std::optional<std::string> getSqlGetVisitsStatement(pqxx::params& params)
     {
-        return fmt::format("SELECT * FROM clinics_visits WHERE patient_id = {} ;", std::get<Data_t>(getData()).get_id().value());
+        params = {};
+        params.append(std::get<Data_t>(getData()).get_id().value());
+        return std::string("SELECT * FROM clinics_visits WHERE patient_id = $1;");
     }
 
     static std::optional<std::string> getPermissionsQueryForCreate(const std::optional<jsoncons::json>& data_j)

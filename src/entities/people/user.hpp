@@ -27,13 +27,14 @@ class User : public Client
     ~User() override = default;
 
     static constexpr auto      getTableName() { return TABLENAME; }
-    std::optional<std::string> getSqlGetServicesStatement()
+    std::optional<std::string> getSqlGetServicesStatement(pqxx::params& params)
     {
-        std::optional<std::string> query;
         try
         {
             client_id = std::get<Data_t>(getData()).get_id();
-            query     = fmt::format("SELECT id from users WHERE id = {}", client_id.value());
+            params    = {};
+            params.append(client_id.value());
+            return std::string("SELECT id FROM users WHERE id = $1");
         }
         catch (const std::exception& e)
         {
@@ -41,8 +42,6 @@ class User : public Client
             Message::CriticalMessage(e.what());
             return std::nullopt;
         }
-
-        return query;
     }
 
    private:

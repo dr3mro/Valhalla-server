@@ -1,6 +1,7 @@
 #include <catch2/catch_test_macros.hpp>
 #include <cstdint>
 #include <jsoncons/json.hpp>
+#include <pqxx/pqxx>
 #include <string>
 #include <unordered_set>
 
@@ -34,7 +35,7 @@ TEST_CASE("Entity create statement lists every column with placeholders", "[enti
 
     Entity       entity(create, "clinics");
     pqxx::params params;
-    const auto   statement = entity.getSqlCreateStatementParameterized(params);
+    const auto   statement = entity.getSqlCreateStatement(params);
 
     REQUIRE(statement.has_value());
     // jsoncons uses a sorted policy, so keys are ordered alphabetically; the
@@ -53,7 +54,7 @@ TEST_CASE("Entity create statement without an id leaves the id to the database",
 
     Entity       entity(create, "clinics");
     pqxx::params params;
-    const auto   statement = entity.getSqlCreateStatementParameterized(params);
+    const auto   statement = entity.getSqlCreateStatement(params);
 
     REQUIRE(statement.has_value());
     CHECK(statement->find("INSERT INTO clinics (name)") == 0);
@@ -62,43 +63,34 @@ TEST_CASE("Entity create statement without an id leaves the id to the database",
     CHECK(statement->find("id") == std::string::npos);
 }
 
-TEST_CASE("Entity plain statements inline the values for the injection check", "[entities][sql]")
-{
-    const jsoncons::json  payload = makeJsonObject({{"name", "renamed"}});
-    const Types::Update_t update(payload, 12);
-
-    Entity     entity(update, "users");
-    const auto statement = entity.getSqlUpdateStatement();
-
-    REQUIRE(statement.has_value());
-    CHECK(statement->find("name = 'renamed'") != std::string::npos);
-    CHECK(statement->find('$') == std::string::npos);
-}
-
-TEST_CASE("Entity read statement targets the _safe view", "[entities][sql]")
+TEST_CASE("Entity read statement targets the _safe view and binds the id", "[entities][sql]")
 {
     const std::unordered_set<std::string> schema = {"name", "dob"};
     const Types::Read_t                   read(schema, 9);
 
-    Entity     entity(read, "users");
-    const auto statement = entity.getSqlReadStatement();
+    Entity       entity(read, "users");
+    pqxx::params params;
+    const auto   statement = entity.getSqlReadStatement(params);
 
     REQUIRE(statement.has_value());
     CHECK(statement->find("SELECT ") == 0);
-    CHECK(statement->find(" FROM users_safe WHERE id=9 LIMIT 1;") != std::string::npos);
+    CHECK(statement->find(" FROM users_safe WHERE id=$1 LIMIT 1;") != std::string::npos);
     CHECK(statement->find("name") != std::string::npos);
     CHECK(statement->find("dob") != std::string::npos);
+    CHECK(statement->find('9') == std::string::npos);
+    CHECK(params.size() == 1);
 }
 
 TEST_CASE("Entity read statement with an empty schema selects all columns", "[entities][sql]")
 {
     const Types::Read_t read({}, 3);
 
-    Entity     entity(read, "users");
-    const auto statement = entity.getSqlReadStatement();
+    Entity       entity(read, "users");
+    pqxx::params params;
+    const auto   statement = entity.getSqlReadStatement(params);
 
     REQUIRE(statement.has_value());
-    CHECK(statement->find("SELECT * FROM users_safe WHERE id=3 LIMIT 1;") == 0);
+    CHECK(statement->find("SELECT * FROM users_safe WHERE id=$1 LIMIT 1;") == 0);
 }
 
 TEST_CASE("Entity update statement builds a SET clause with parameters", "[entities][sql]")
@@ -108,23 +100,27 @@ TEST_CASE("Entity update statement builds a SET clause with parameters", "[entit
 
     Entity       entity(update, "users");
     pqxx::params params;
-    const auto   statement = entity.getSqlUpdateStatementParameterized(params);
+    const auto   statement = entity.getSqlUpdateStatement(params);
 
     REQUIRE(statement.has_value());
     CHECK(statement->find("UPDATE users SET") == 0);
     CHECK(statement->find("name = $1") != std::string::npos);
-    CHECK(statement->find("WHERE id=12 RETURNING *;") != std::string::npos);
+    CHECK(statement->find("WHERE id=$2 RETURNING *;") != std::string::npos);
+    CHECK(statement->find("renamed") == std::string::npos);
+    CHECK(params.size() == 2);
 }
 
-TEST_CASE("Entity delete statement removes by id", "[entities][sql]")
+TEST_CASE("Entity delete statement removes by a bound id", "[entities][sql]")
 {
     const Types::Delete_t del(21);
 
-    Entity     entity(del, "clinics");
-    const auto statement = entity.getSqlDeleteStatement();
+    Entity       entity(del, "clinics");
+    pqxx::params params;
+    const auto   statement = entity.getSqlDeleteStatement(params);
 
     REQUIRE(statement.has_value());
-    CHECK(*statement == "DELETE FROM clinics where id=21 returning id;");
+    CHECK(*statement == "DELETE FROM clinics WHERE id=$1 RETURNING id;");
+    CHECK(params.size() == 1);
 }
 
 TEST_CASE("Entity search statement parameterises the keyword and honours paging", "[entities][sql]")
@@ -143,13 +139,14 @@ TEST_CASE("Entity search statement parameterises the keyword and honours paging"
 
     Entity       entity(search, "patients");
     pqxx::params params;
-    const auto   statement = entity.getSqlSearchStatementParameterized(params);
+    const auto   statement = entity.getSqlSearchStatement(params);
 
     REQUIRE(statement.has_value());
     CHECK(statement->find("SELECT * FROM patients_safe WHERE name::text ILIKE $1") != std::string::npos);
     CHECK(statement->find("ORDER BY created_at ASC") != std::string::npos);
-    // LIMIT is limit + 1 (the extra row detects a next page).
-    CHECK(statement->find("LIMIT 11 OFFSET 20;") != std::string::npos);
+    // LIMIT is limit + 1 (the extra row detects a next page); keyword, limit and offset are all bound.
+    CHECK(statement->find("LIMIT $2 OFFSET $3;") != std::string::npos);
+    CHECK(params.size() == 3);
 }
 
 TEST_CASE("Entity exposes its group name and data variant", "[entities][sql]")
@@ -161,47 +158,72 @@ TEST_CASE("Entity exposes its group name and data variant", "[entities][sql]")
     CHECK_NOTHROW(std::get<Types::Delete_t>(entity.getData()));
 }
 
-TEST_CASE("User builds its get-services query", "[entities][sql]")
-{
-    const Types::Data_t data(33);
-    User                user(data);
-    const auto          statement = user.getSqlGetServicesStatement();
-    REQUIRE(statement.has_value());
-    CHECK(*statement == "SELECT id from users WHERE id = 33");
-}
-
-TEST_CASE("Provider builds its get-services query", "[entities][sql]")
-{
-    const Types::Data_t data(7);
-    Provider            provider(data);
-    const auto          statement = provider.getSqlGetServicesStatement();
-    REQUIRE(statement.has_value());
-    CHECK(statement->find("7") != std::string::npos);
-    CHECK(statement->find("clinics") != std::string::npos);
-    CHECK(statement->find("laboratories") != std::string::npos);
-    CHECK(statement->find("pharmacies") != std::string::npos);
-    CHECK(statement->find("radiologycenters") != std::string::npos);
-}
-
-TEST_CASE("Client getSqlSuspendStatement builds an UPDATE that sets active=false", "[entities][sql]")
+TEST_CASE("Client suspend and activate statements bind the state and the id", "[entities][sql][params]")
 {
     const Types::SuspendData suspendData(55);
     User                     user(suspendData);
-    const auto               statement = user.getSqlSuspendStatement();
-    REQUIRE(statement.has_value());
-    CHECK(statement->find("UPDATE users SET active=false") != std::string::npos);
-    CHECK(statement->find("where id=55") != std::string::npos);
-    CHECK(statement->find("returning id,active;") != std::string::npos);
+    pqxx::params             params;
+
+    const auto suspend = user.getSqlSuspendStatement(params);
+    REQUIRE(suspend.has_value());
+    CHECK(*suspend == "UPDATE users SET active=$1 WHERE id=$2 RETURNING id,active;");
+    CHECK(params.size() == 2);
+    CHECK(suspend->find("55") == std::string::npos);
+
+    pqxx::params activate_params;
+    const auto   activate = user.getSqlActivateStatement(activate_params);
+    REQUIRE(activate.has_value());
+    CHECK(*activate == "UPDATE users SET active=$1 WHERE id=$2 RETURNING id,active;");
+    CHECK(activate_params.size() == 2);
 }
 
-TEST_CASE("Client getSqlActivateStatement builds an UPDATE that sets active=true", "[entities][sql]")
+TEST_CASE("Get-services statements bind the client id", "[entities][sql][params]")
 {
-    const Types::SuspendData suspendData(77);
-    User                     user(suspendData);
-    const auto               statement = user.getSqlActivateStatement();
-    REQUIRE(statement.has_value());
-    CHECK(statement->find("UPDATE users SET active=true") != std::string::npos);
-    CHECK(statement->find("where id=77") != std::string::npos);
+    const Types::Data_t data(33);
+    pqxx::params        user_params;
+
+    User       user(data);
+    const auto user_stmt = user.getSqlGetServicesStatement(user_params);
+    REQUIRE(user_stmt.has_value());
+    CHECK(*user_stmt == "SELECT id FROM users WHERE id = $1");
+    CHECK(user_params.size() == 1);
+
+    pqxx::params provider_params;
+    Provider     provider(data);
+    const auto   provider_stmt = provider.getSqlGetServicesStatement(provider_params);
+    REQUIRE(provider_stmt.has_value());
+    CHECK(provider_params.size() == 2);
+    CHECK(provider_stmt->find("33") == std::string::npos);
+    CHECK(provider_stmt->find("$1") != std::string::npos);
+    CHECK(provider_stmt->find("$2") != std::string::npos);
+}
+
+TEST_CASE("Staff statements bind the nominee id and the entity id", "[entities][sql][params]")
+{
+    jsoncons::json staff_j;
+    staff_j["nominee_id"]    = uint64_t{10};
+    staff_j["entity_id"]     = uint64_t{20};
+    staff_j["role"]          = "Doctor";
+    staff_j["email"]         = "doc@example.com";
+    staff_j["nominee_group"] = "providers";
+    staff_j["entity_name"]   = "City Clinic";
+    const Types::StaffData sd(staff_j);
+    Clinics                clinic(sd);
+
+    pqxx::params params;
+    const auto   add = clinic.getSqlAddStaffStatement(params);
+    REQUIRE(add.has_value());
+    CHECK(params.size() == 2);
+    CHECK(add->find("WHERE id=$") != std::string::npos);
+    CHECK(add->find("to_jsonb($") != std::string::npos);
+    CHECK(add->find("10") == std::string::npos);
+    CHECK(add->find("20") == std::string::npos);
+
+    pqxx::params remove_params;
+    const auto   remove = clinic.getSqlRemoveStaffStatement(remove_params);
+    REQUIRE(remove.has_value());
+    CHECK(remove_params.size() == 2);
+    CHECK(remove->find("elem <> to_jsonb($") != std::string::npos);
 }
 
 TEST_CASE("SuspendData stores the client id", "[entities][types]")
@@ -266,65 +288,32 @@ TEST_CASE("StaffData::toInviteJson adds the required invite fields", "[entities]
     CHECK(invite.contains("generate_body"));
 }
 
-TEST_CASE("Entity getSqlCreateStatement inlines values (plain binder)", "[entities][sql]")
+TEST_CASE("Entity read statement keeps the requested columns", "[entities][sql]")
 {
-    const jsoncons::json  payload = makeJsonObject({{"title", "intro"}});
-    const Types::Create_t create(payload, 8);
-
-    Entity     entity(create, "courses");
-    const auto statement = entity.getSqlCreateStatement();
-
-    REQUIRE(statement.has_value());
-    CHECK(statement->find("INSERT INTO courses") == 0);
-    CHECK(statement->find("'intro'") != std::string::npos);
-    CHECK(statement->find('$') == std::string::npos);
-}
-
-TEST_CASE("Entity getSqlReadStatementParameterized returns the same query as the plain variant", "[entities][sql]")
-{
-    // The read/delete parameterized variants embed the id inline (same as the
-    // plain variant) rather than using $N placeholders. They exist for API
-    // uniformity; params is cleared but no bindings are added.
     const std::unordered_set<std::string> schema = {"name"};
     const Types::Read_t                   read(schema, 15);
 
     Entity       entity(read, "clinics");
     pqxx::params params;
-    const auto   statement = entity.getSqlReadStatementParameterized(params);
+    const auto   statement = entity.getSqlReadStatement(params);
 
     REQUIRE(statement.has_value());
-    CHECK(statement->find("FROM clinics_safe WHERE id=15 LIMIT 1;") != std::string::npos);
+    CHECK(statement->find("FROM clinics_safe WHERE id=$1 LIMIT 1;") != std::string::npos);
     CHECK(statement->find("name") != std::string::npos);
 }
 
-TEST_CASE("Entity getSqlDeleteStatementParameterized returns the same query as the plain variant", "[entities][sql]")
+TEST_CASE("Entity delete statement is rebuilt cleanly on every call", "[entities][sql]")
 {
     const Types::Delete_t del(99);
     Entity                entity(del, "appointments");
-    pqxx::params          params;
-    const auto            statement = entity.getSqlDeleteStatementParameterized(params);
+    pqxx::params          first;
+    REQUIRE(entity.getSqlDeleteStatement(first).has_value());
+    pqxx::params params;
+    const auto   statement = entity.getSqlDeleteStatement(params);
 
     REQUIRE(statement.has_value());
-    CHECK(*statement == "DELETE FROM appointments where id=99 returning id;");
-}
-
-TEST_CASE("Entity getSqlSearchStatement inlines the keyword", "[entities][sql]")
-{
-    const jsoncons::json  search_j = jsoncons::json::parse(R"({
-        "keyword": "headache", "filter": "symptom",
-        "order_by": "id", "direction": 1, "limit": 5, "offset": 0
-    })");
-    bool                  success  = false;
-    const Types::Search_t search(search_j, success);
-    REQUIRE(success);
-
-    Entity     entity(search, "cases");
-    const auto statement = entity.getSqlSearchStatement();
-
-    REQUIRE(statement.has_value());
-    CHECK(statement->find("headache") != std::string::npos);
-    CHECK(statement->find("ORDER BY id DESC") != std::string::npos);
-    CHECK(statement->find("LIMIT 6 OFFSET 0;") != std::string::npos);
+    CHECK(*statement == "DELETE FROM appointments WHERE id=$1 RETURNING id;");
+    CHECK(params.size() == 1);
 }
 
 // ── Service SQL builders ────────────────────────────────────────────────────
@@ -344,29 +333,33 @@ namespace
     }
 }  // namespace
 
-TEST_CASE("Service getSqlAddStaffStatement builds an UPDATE with the correct table and id", "[entities][sql][service]")
+TEST_CASE("Service getSqlAddStaffStatement builds an UPDATE with the correct table", "[entities][sql][service]")
 {
-    const auto sd = makeStaffData(42, 7, "providers");
-    Service    svc(sd, "clinics");
-    const auto stmt = svc.getSqlAddStaffStatement();
+    const auto   sd = makeStaffData(42, 7, "providers");
+    Service      svc(sd, "clinics");
+    pqxx::params params;
+    const auto   stmt = svc.getSqlAddStaffStatement(params);
 
     REQUIRE(stmt.has_value());
     CHECK(stmt->find("UPDATE clinics") == 0);
-    CHECK(stmt->find("42") != std::string::npos);  // nominee_id embedded
+    CHECK(stmt->find("42") == std::string::npos);  // nominee_id is bound, not embedded
     CHECK(stmt->find("RETURNING id;") != std::string::npos);
+    CHECK(params.size() == 2);
 }
 
 TEST_CASE("Service getSqlRemoveStaffStatement builds a filtered jsonb_agg UPDATE", "[entities][sql][service]")
 {
-    const auto sd = makeStaffData(99, 5, "providers");
-    Service    svc(sd, "laboratories");
-    const auto stmt = svc.getSqlRemoveStaffStatement();
+    const auto   sd = makeStaffData(99, 5, "providers");
+    Service      svc(sd, "laboratories");
+    pqxx::params params;
+    const auto   stmt = svc.getSqlRemoveStaffStatement(params);
 
     REQUIRE(stmt.has_value());
     CHECK(stmt->find("UPDATE laboratories") == 0);
-    CHECK(stmt->find("99") != std::string::npos);  // nominee_id being removed
+    CHECK(stmt->find("99") == std::string::npos);  // nominee_id being removed is bound
     CHECK(stmt->find("jsonb_agg") != std::string::npos);
     CHECK(stmt->find("RETURNING id;") != std::string::npos);
+    CHECK(params.size() == 2);
 }
 
 TEST_CASE("Service::getServicePermissionsQuery returns a SELECT for the given service and id", "[entities][sql][service]")
@@ -386,14 +379,16 @@ TEST_CASE("Service getSqlAddStaffStatement returns nullopt when data variant is 
     const jsoncons::json  payload = makeJsonObject({{"name", "test"}});
     const Types::Create_t create(payload, 1);
     Service               svc(create, "clinics");
-    CHECK_FALSE(svc.getSqlAddStaffStatement().has_value());
+    pqxx::params params;
+    CHECK_FALSE(svc.getSqlAddStaffStatement(params).has_value());
 }
 
 TEST_CASE("Service getSqlRemoveStaffStatement returns nullopt when data variant is wrong type", "[entities][sql][service]")
 {
     const Types::Delete_t del(1);
     Service               svc(del, "pharmacies");
-    CHECK_FALSE(svc.getSqlRemoveStaffStatement().has_value());
+    pqxx::params params;
+    CHECK_FALSE(svc.getSqlRemoveStaffStatement(params).has_value());
 }
 
 // ── Types direct construction ───────────────────────────────────────────────

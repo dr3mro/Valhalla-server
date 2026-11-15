@@ -91,15 +91,8 @@ namespace api::v2
                 return cached;
             }
 
-            const uint64_t                generation     = cache.generation();
-            bool                          isSqlInjection = false;
-            std::optional<jsoncons::json> permissions_j  = db_ctl->getPermissions(query.value(), isSqlInjection);
-
-            if (isSqlInjection)
-            {
-                Message::ErrorMessage("A Sql Injection pattern is detected in generated query.");
-                return std::nullopt;
-            }
+            const uint64_t                generation    = cache.generation();
+            std::optional<jsoncons::json> permissions_j = db_ctl->getPermissions(query.value());
 
             if (!permissions_j.has_value() || permissions_j->empty())
             {

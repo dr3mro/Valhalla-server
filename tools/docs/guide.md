@@ -146,7 +146,7 @@ users_sessions / providers_sessions: last_login, last_logout per account
 | `email` | `name@domain.tld`. |
 | `dob` (accounts) | `dd-mm-yyyy`. |
 | `gender` (accounts) | Exactly `Male` or `Female`. |
-| All bodies | Every key must be a real column of the target table; required (`NOT NULL`) columns without a default must be present; empty values are refused for required text. Values that look like SQL injection are rejected. |
+| All bodies | Every key must be a real column of the target table; required (`NOT NULL`) columns without a default must be present; empty values are refused for required text. Every value is sent to the database as a bound parameter, never spliced into the SQL. |
 
 ## Errors
 

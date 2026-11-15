@@ -18,42 +18,23 @@ class Base
     explicit Base() = default;
     virtual ~Base() = default;
 
-    // Plain query (values inline): used only for the SQL-injection check, never executed.
-    virtual std::optional<std::string> getSqlCreateStatement() = 0;
-    // Parameterized query ($1, $2, ...): the one that is executed; the values go into params.
-    virtual std::optional<std::string> getSqlCreateStatementParameterized(pqxx::params& params) = 0;
-    // Plain query (values inline): used only for the SQL-injection check, never executed.
-    virtual std::optional<std::string> getSqlReadStatement() = 0;
-    // Parameterized query ($1, $2, ...): the one that is executed; the values go into params.
-    virtual std::optional<std::string> getSqlReadStatementParameterized(pqxx::params& params) = 0;
-    // Plain query (values inline): used only for the SQL-injection check, never executed.
-    virtual std::optional<std::string> getSqlUpdateStatement() = 0;
-    // Parameterized query ($1, $2, ...): the one that is executed; the values go into params.
-    virtual std::optional<std::string> getSqlUpdateStatementParameterized(pqxx::params& params) = 0;
-    // Plain query (values inline): used only for the SQL-injection check, never executed.
-    virtual std::optional<std::string> getSqlDeleteStatement() = 0;
-    // Parameterized query ($1, $2, ...): the one that is executed; the values go into params.
-    virtual std::optional<std::string> getSqlDeleteStatementParameterized(pqxx::params& params) = 0;
-    // Plain query (values inline): used only for the SQL-injection check, never executed.
-    virtual std::optional<std::string> getSqlSearchStatement() = 0;
-    // Parameterized query ($1, $2, ...): the one that is executed; the values go into params.
-    virtual std::optional<std::string> getSqlSearchStatementParameterized(pqxx::params& params) = 0;
+    // Every builder returns SQL with $1, $2, ... placeholders and stores the values in params; values are never
+    // written into the SQL text.
+    virtual std::optional<std::string> getSqlCreateStatement(pqxx::params& params) = 0;
+    virtual std::optional<std::string> getSqlReadStatement(pqxx::params& params)   = 0;
+    virtual std::optional<std::string> getSqlUpdateStatement(pqxx::params& params) = 0;
+    virtual std::optional<std::string> getSqlDeleteStatement(pqxx::params& params) = 0;
+    virtual std::optional<std::string> getSqlSearchStatement(pqxx::params& params) = 0;
 
    protected:
-    // The plain and the parameterized statement of an entity share ONE builder; the builder asks a "binder"
-    // how each value is written into the query. Only the binder differs between the two variants.
-
-    // Writes the value inline ('value'): the query is only scanned for SQL injection, never executed.
-    struct PlainBinder
+    // A builder asks the binder how each value is written into the query: bind(value) stores it in params and
+    // returns its placeholder ($1, $2, ...).
+    struct Binder
     {
-        static std::string bind(const std::string& value) { return fmt::format("'{}'", value); }
-    };
+        explicit Binder(pqxx::params& p) : params(p) { params = {}; }
 
-    // Writes a placeholder ($1, $2, ...) and stores the value in params: this is the query that is executed.
-    struct ParamBinder
-    {
-        explicit ParamBinder(pqxx::params& p) : params(p) { params = {}; }
-        std::string bind(const std::string& value)
+        template <typename T>
+        std::string bind(const T& value)
         {
             params.append(value);
             return fmt::format("${}", ++index);

@@ -59,7 +59,6 @@ File naming: `test_<unit>.cpp`. Tags follow the convention below.
 
 | Area | Coupling | Notes |
 |---|---|---|
-| `SqlInjectionDetector` | static state only | pure logic; static `suspiciousPatterns`/`riskyKeywords`/`customPatterns` persist across tests (kept in one TU, ordered) |
 | `PasswordCrypt` | libsodium | pure, no globals |
 | `PermissionManager` (client paths) + `PermissionManagerPrivate` | none | pure functions over `Requester` + `jsoncons::json` |
 | `EnvLoader`/`EnvVars`/`Configurator::*Config` | `getenv` | tests use an RAII env guard (`tests/support/env_guard.hpp`) |
@@ -102,16 +101,9 @@ order is irrelevant.
 Kept as `[.known-bug]` `[!shouldfail]` tests or documented here. **Not silently
 fixed.**
 
-1. **`sqlinjectiondetector.cpp` `initialize()`** — declares a *local*
-   `suspiciousPatterns` vector that shadows the static member, so none of the
-   ~35 built-in regex patterns are ever installed. `containsSuspiciousPattern`
-   only ever sees custom patterns. Fix: drop the local `std::vector<std::regex>`
-   qualifier (assign to the member).
-2. **`sqlinjectiondetector.cpp` `hasCommentTokens` / `hasRiskyKeywords`** —
-   flags every `--`, `/*`, `#` and whole words such as `SYSTEM`, `SLEEP`,
-   `DELAY`, `EXECUTE` anywhere in a query. Benign text ("immune system",
-   "patient delay", `--` as dash, `#hashtag`) is rejected; `O'Brien` trips the
-   unbalanced-quote check. Documented with `[!shouldfail]` cases.
+1. *(retired)* The SQL-injection detector was removed once every statement was parameterized; its sources and tests are in
+   `archive/sqlinjectiondetector/`.
+2. *(retired)* See 1.
 3. **`validator.cpp` `getDatabaseSchemaForTable`** — sets `found = false` in the
    not-found branch but then unconditionally `found = true` before returning;
    worse, on a table miss it *dereferences the end iterator*

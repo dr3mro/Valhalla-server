@@ -197,7 +197,6 @@ ERR400 = {"description": "**Bad request** - the body or an id is wrong, or the o
               "unknownKey": {"summary": "Field not allowed", **_ex("Key not allowed: foo", "Error")},
               "empty": {"summary": "Empty value", **_ex("Value is empty for key username", "Error")},
               "notImpl": {"summary": "Delete not supported", **_ex("Delete is NOT implemented", "Error")},
-              "sqli": {"summary": "Injection pattern in a value", **_ex("A Sql Injection pattern is detected in generated query.", "Error")},
           })}
 ERR401 = {"description": "**Unauthorized** - the token is missing, malformed, expired, revoked, bound to another IP, or the account is suspended. Body: `{\"Message\"}` only (no `Status`).",
           "content": _J({

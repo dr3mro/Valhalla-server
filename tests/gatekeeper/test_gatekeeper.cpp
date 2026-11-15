@@ -4,32 +4,9 @@
 
 #include "gatekeeper/dosdetector/dosdetector.hpp"
 #include "gatekeeper/gatekeeper.hpp"
-#include "gatekeeper/sqlinjectiondetectoor/sqlinjectiondetector.hpp"
 #include "support/builders.hpp"
 
 using GateKeeper = api::v2::GateKeeper;
-
-// ── isQuerySqlInjection (static pure wrapper) ───────────────────────────────
-
-TEST_CASE("GateKeeper::isQuerySqlInjection flags malicious queries", "[gatekeeper][sqli]")
-{
-    SqlInjectionDetector::initialize();
-
-    CHECK(GateKeeper::isQuerySqlInjection("SLEEP(10)"));
-    CHECK(GateKeeper::isQuerySqlInjection("'; DROP TABLE users; --"));
-    CHECK(GateKeeper::isQuerySqlInjection("SELECT * FROM users WHERE id=1 --"));
-    CHECK(GateKeeper::isQuerySqlInjection("SHUTDOWN"));
-    CHECK(GateKeeper::isQuerySqlInjection("EXEC sp_who2"));
-}
-
-TEST_CASE("GateKeeper::isQuerySqlInjection accepts legitimate production queries", "[gatekeeper][sqli]")
-{
-    CHECK_FALSE(GateKeeper::isQuerySqlInjection("SELECT * FROM users_safe WHERE id=1 LIMIT 1;"));
-    CHECK_FALSE(GateKeeper::isQuerySqlInjection("INSERT INTO appointments (date) VALUES ('2026-01-15') RETURNING *;"));
-    CHECK_FALSE(GateKeeper::isQuerySqlInjection("SELECT id,password,active FROM users WHERE username = $1 LIMIT 1;"));
-    CHECK_FALSE(GateKeeper::isQuerySqlInjection("SELECT NEXTVAL('users_id_seq');"));
-    CHECK_FALSE(GateKeeper::isQuerySqlInjection(""));
-}
 
 // ── isDosAttack (uses singleton DOSDetector from Store) ─────────────────────
 

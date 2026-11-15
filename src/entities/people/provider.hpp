@@ -28,27 +28,25 @@ class Provider : public Client
     // Provider() : Client(std::string(TABLENAME)) {}
     ~Provider() override = default;
     static constexpr auto      getTableName() { return TABLENAME; }
-    std::optional<std::string> getSqlGetServicesStatement()
+    std::optional<std::string> getSqlGetServicesStatement(pqxx::params& params)
     {
-        std::optional<std::string> query;
         try
         {
             client_id = std::get<Data_t>(getData()).get_id();
-
             if (!client_id.has_value())
             {
-                Message::ErrorMessage(fmt::format("Failed to get services for provider with id {}.", client_id.value()));
+                Message::ErrorMessage("Failed to get services for provider: no id.");
                 return std::nullopt;
             }
-
-            uint64_t _id = client_id.value();
-
-            query = fmt::format(
+            params = {};
+            params.append(client_id.value());                    // $1: numeric id
+            params.append(std::to_string(client_id.value()));    // $2: the same id as text, compared with the JSON staff entries
+            return std::string(
                 R"(
                         WITH vars AS (
-                            SELECT {} AS id 
+                            SELECT $1::bigint AS id
                         )
-                        SELECT combined.id, combined.name, combined.type 
+                        SELECT combined.id, combined.name, combined.type
                         FROM (
                             SELECT id, name, staff, admin_id, owner_id, 'Clinic' AS type
                             FROM clinics
@@ -62,11 +60,10 @@ class Provider : public Client
                             SELECT id, name, staff, admin_id, owner_id, 'Laboratory' AS type
                             FROM laboratories
                         ) AS combined
-                        JOIN vars ON jsonb_path_exists(combined.staff, '$.** ? (@ == "{}")'::jsonpath)
+                        JOIN vars ON jsonb_path_exists(combined.staff, '$.** ? (@ == $v)'::jsonpath, jsonb_build_object('v', $2::text))
                                 OR combined.admin_id = vars.id
                                 OR combined.owner_id = vars.id;
-                        )",
-                _id, _id);
+                        )");
         }
         catch (const std::exception& e)
         {
@@ -74,8 +71,6 @@ class Provider : public Client
             Message::CriticalMessage(e.what());
             return std::nullopt;
         }
-
-        return query;
     }
 
    private:

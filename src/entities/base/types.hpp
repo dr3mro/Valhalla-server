@@ -3,6 +3,7 @@
 #include <fmt/format.h>
 
 #include <algorithm>
+#include <cctype>
 #include <cppcodec/base64_rfc4648.hpp>
 #include <cstddef>
 #include <cstdint>
@@ -146,10 +147,23 @@ namespace api::v2::Types
                 success = false;
             }
         }
+        // "filter" and "order_by" are written into the SQL text (identifiers cannot be bound), so they must be plain
+        // identifiers: letters, digits and underscores only, not starting with a digit.
+        static bool isPlainIdentifier(const std::string& name)
+        {
+            constexpr size_t MAX_IDENTIFIER_LENGTH = 63;  // PostgreSQL's limit
+            if (name.empty() || name.size() > MAX_IDENTIFIER_LENGTH || std::isdigit(static_cast<unsigned char>(name.front())) != 0)
+            {
+                return false;
+            }
+            return std::ranges::all_of(name, [](char c) { return std::isalnum(static_cast<unsigned char>(c)) != 0 || c == '_'; });
+        }
+
         bool validate(const jsoncons::json& search_j)
         {
             std::unordered_set<std::string> keys = {"keyword", "filter", "order_by", "direction", "limit", "offset"};
-            return std::ranges::all_of(keys, [&search_j](const std::string& key) { return search_j.find(key).has_value(); });
+            return std::ranges::all_of(keys, [&search_j](const std::string& key) { return search_j.find(key).has_value(); }) && isPlainIdentifier(filter) &&
+                   isPlainIdentifier(order_by);
         }
     };
 

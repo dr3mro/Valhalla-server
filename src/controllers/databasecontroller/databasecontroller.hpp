@@ -34,18 +34,15 @@ class DatabaseController
     DatabaseController& operator=(DatabaseController&&)      = delete;
     virtual ~DatabaseController()                            = default;
 
-    virtual std::optional<jsoncons::json> executeQuery(
-        const std::string& query, bool& isSqlInjection, const pqxx::params& params = {}, const std::string& plain_query = {});
-    virtual std::optional<jsoncons::json> executeReadQuery(
-        const std::string& query, bool& isSqlInjection, const pqxx::params& params = {}, const std::string& plain_query = {});
-    virtual std::optional<jsoncons::json::array> executeSearchQuery(
-        const std::string& query, bool& isSqlInjection, const pqxx::params& params = {}, const std::string& plain_query = {});
-    virtual std::optional<std::string>    doReadQuery(const std::string& query, bool& isSqlInjection);
-    virtual std::optional<bool>           checkItemExists(const std::string& table, const std::string& column, const std::string& value, bool& isSqlInjection);
-    virtual std::optional<jsoncons::json> getPasswordHashForUserName(const std::string& username, const std::string& tablename, bool& isSqlInjection);
+    virtual std::optional<jsoncons::json>        executeQuery(const std::string& query, const pqxx::params& params = {});
+    virtual std::optional<jsoncons::json>        executeReadQuery(const std::string& query, const pqxx::params& params = {});
+    virtual std::optional<jsoncons::json::array> executeSearchQuery(const std::string& query, const pqxx::params& params = {});
+    virtual std::optional<std::string>           doReadQuery(const std::string& query, const pqxx::params& params = {});
+    virtual std::optional<bool>                  checkItemExists(const std::string& table, const std::string& column, const std::string& value);
+    virtual std::optional<jsoncons::json>        getPasswordHashForUserName(const std::string& username, const std::string& tablename);
     virtual std::optional<std::unordered_set<api::v2::ColumnInfo>> getTableSchema(const std::string& tableName);
     virtual std::optional<std::unordered_set<std::string>>         getAllTables();
-    virtual std::optional<jsoncons::json>                          getPermissions(const std::string& query, bool& isSqlInjection);
+    virtual std::optional<jsoncons::json>                          getPermissions(const std::string& query);
 
    private:
     std::shared_ptr<DatabaseConnectionPool> databaseConnectionPool_;

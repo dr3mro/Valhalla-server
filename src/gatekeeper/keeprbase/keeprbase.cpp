@@ -10,6 +10,7 @@
 #include <exception>
 #include <jsoncons/basic_json.hpp>
 #include <optional>
+#include <pqxx/pqxx>
 #include <stdexcept>
 #include <string>
 
@@ -18,24 +19,38 @@
 #include "utils/message/message.hpp"
 using KeeprBase = api::v2::KeeprBase;
 
+namespace
+{
+    // Identifiers cannot be bound as parameters, so the session table is chosen from a fixed allowlist.
+    std::optional<std::string> sessionsTable(const std::string& group)
+    {
+        if (group == "users" || group == "providers")
+        {
+            return group + "_sessions";
+        }
+        return std::nullopt;
+    }
+}  // namespace
+
 bool KeeprBase::getLastLogoutTimeIfActive(std::optional<Types::ClientLoginData>& clientLoginData)
 {
     try
     {
-        std::string query = fmt::format(
-            "WITH client_data AS (SELECT ses.id, ses.last_logout, client.active FROM {}_sessions ses\
-            LEFT JOIN {} client ON ses.id = client.id) \
-            SELECT id,\
-            last_logout, active FROM client_data WHERE id = {};",
-            clientLoginData->group.value(), clientLoginData->group.value(), clientLoginData->clientId.value());
-
-        bool isSqlInjection = false;
-        auto results        = databaseController()->executeReadQuery(query, isSqlInjection);
-        if (isSqlInjection)
+        const auto sessions = sessionsTable(clientLoginData->group.value());
+        if (!sessions.has_value())
         {
-            Message::ErrorMessage("A Sql Injection pattern is detected in generated query.");
+            Message::ErrorMessage("Unknown client group.");
             return false;
         }
+        const std::string param_query = fmt::format(
+            "WITH client_data AS (SELECT ses.id, ses.last_logout, client.active FROM {} ses "
+            "LEFT JOIN {} client ON ses.id = client.id) "
+            "SELECT id, last_logout, active FROM client_data WHERE id = $1;",
+            sessions.value(), clientLoginData->group.value());
+        pqxx::params params;
+        params.append(clientLoginData->clientId.value());
+
+        auto results = databaseController()->executeReadQuery(param_query, params);
 
         if (results.has_value())
         {
@@ -66,20 +81,22 @@ bool KeeprBase::setNowLoginTimeGetLastLogoutTime(std::optional<Types::ClientLogi
             Message::ErrorMessage("group or client id is empty");
             return false;
         }
-        std::string query = fmt::format(
-            "INSERT INTO {}_sessions (id, last_login,last_logout) VALUES ({}, "
-            "'{}', '{}') "
-            "ON CONFLICT (id) DO UPDATE SET last_login = EXCLUDED.last_login "
-            "RETURNING last_logout;",
-            clientLoginData->group.value(), clientLoginData->clientId.value(), clientLoginData->nowLoginTime.value(), clientLoginData->nowLoginTime.value());
-
-        bool isSqlInjection = false;
-        auto result         = databaseController()->executeQuery(query, isSqlInjection);
-        if (isSqlInjection)
+        const auto sessions = sessionsTable(clientLoginData->group.value());
+        if (!sessions.has_value())
         {
-            Message::ErrorMessage("A Sql Injection pattern is detected in generated query.");
+            Message::ErrorMessage("Unknown client group.");
             return false;
         }
+        const std::string param_query = fmt::format(
+            "INSERT INTO {} (id, last_login, last_logout) VALUES ($1, $2, $2) "
+            "ON CONFLICT (id) DO UPDATE SET last_login = EXCLUDED.last_login "
+            "RETURNING last_logout;",
+            sessions.value());
+        pqxx::params params;
+        params.append(clientLoginData->clientId.value());
+        params.append(clientLoginData->nowLoginTime.value());
+
+        auto result = databaseController()->executeQuery(param_query, params);
 
         if (!result.has_value())
         {
@@ -107,20 +124,21 @@ void KeeprBase::setNowLogoutTime(uint64_t _id, const std::string& _group)
     {
         std::string logout_time = current_time_to_utc_string();
 
-        std::string query = fmt::format(
-            "INSERT INTO {}_sessions (id, last_logout) VALUES ({}, '{}') "
-            "ON CONFLICT (id) DO UPDATE SET last_logout = "
-            "EXCLUDED.last_logout;",
-            _group, _id, logout_time);
-
-        bool isSqlInjection = false;
-        auto result         = databaseController()->executeQuery(query, isSqlInjection);
-
-        if (isSqlInjection)
+        const auto sessions = sessionsTable(_group);
+        if (!sessions.has_value())
         {
-            Message::ErrorMessage("A Sql Injection pattern is detected in generated query.");
+            Message::ErrorMessage("Unknown client group.");
             return;
         }
+        const std::string param_query = fmt::format(
+            "INSERT INTO {} (id, last_logout) VALUES ($1, $2) "
+            "ON CONFLICT (id) DO UPDATE SET last_logout = EXCLUDED.last_logout;",
+            sessions.value());
+        pqxx::params params;
+        params.append(_id);
+        params.append(logout_time);
+
+        auto result = databaseController()->executeQuery(param_query, params);
 
         if (!result.has_value())
         {
@@ -136,16 +154,17 @@ void KeeprBase::setNowLogoutTime(uint64_t _id, const std::string& _group)
 
 std::optional<std::string> KeeprBase::getLastLoginTime(uint64_t _id, const std::string& _group)
 {
-    std::string query          = fmt::format("SELECT last_login FROM {}_sessions WHERE id = {};", _group, _id);
-    bool        isSqlInjection = false;
-
-    std::optional<std::string> result = databaseController()->doReadQuery(query, isSqlInjection);
-    if (isSqlInjection)
+    const auto sessions = sessionsTable(_group);
+    if (!sessions.has_value())
     {
-        Message::ErrorMessage("A Sql Injection pattern is detected in generated query.");
+        Message::ErrorMessage("Unknown client group.");
         return std::nullopt;
     }
-    return result;
+    const std::string param_query = fmt::format("SELECT last_login FROM {} WHERE id = $1;", sessions.value());
+    pqxx::params      params;
+    params.append(_id);
+
+    return databaseController()->doReadQuery(param_query, params);
 }
 
 std::string KeeprBase::current_time_to_utc_string()
@@ -265,7 +284,7 @@ jwt::verifier<jwt::default_clock, jwt::traits::kazuho_picojson> KeeprBase::creat
         .with_claim("llodt", jwt::basic_claim<jwt::traits::kazuho_picojson>(clientLoginData->lastLogoutTime.value()));
 }
 
-std::optional<jsoncons::json> api::v2::KeeprBase::getPasswordHashForUserName(const std::string& username, const std::string& _group, bool& isSqlInjection)
+std::optional<jsoncons::json> api::v2::KeeprBase::getPasswordHashForUserName(const std::string& username, const std::string& _group)
 {
-    return databaseController()->getPasswordHashForUserName(username, _group, isSqlInjection);
+    return databaseController()->getPasswordHashForUserName(username, _group);
 }

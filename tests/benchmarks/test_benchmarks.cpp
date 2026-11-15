@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 
-#include "gatekeeper/sqlinjectiondetectoor/sqlinjectiondetector.hpp"
 #include "utils/memcache/memcache.hpp"
 #include "utils/threadsafequeue/threadsafequeue.hpp"
 
@@ -29,30 +28,6 @@ namespace
         return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - start).count();
     }
 }  // namespace
-
-TEST_CASE("Benchmark: SqlInjectionDetector::isQuerySqlInjection", "[.benchmark]")
-{
-    if (!benchmarksRequested())
-    {
-        SKIP();
-    }
-
-    SqlInjectionDetector::initialize();
-    const std::vector<std::string> queries = {"john_doe", "P0001", "abc' OR 1=1", "'; DROP TABLE users; --", "1; DELETE FROM users"};
-
-    const auto milliseconds = measure(
-        [&](int)
-        {
-            for (const auto& query : queries)
-            {
-                (void)SqlInjectionDetector::isQuerySqlInjection(query);
-            }
-        },
-        10000);
-
-    INFO("isQuerySqlInjection 5 queries x 10000 iterations: " << milliseconds << " ms");
-    CHECK(milliseconds >= 0);
-}
 
 TEST_CASE("Benchmark: ThreadSafeQueue push/pop round trips", "[.benchmark]")
 {

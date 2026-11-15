@@ -43,39 +43,29 @@ namespace api
             {
             }
 
-            std::optional<std::string> getSqlCreateStatement() final
+            std::optional<std::string> getSqlCreateStatement(pqxx::params& params) final
             {
-                PlainBinder binder;
-                return buildClientCreateStatement(binder);
-            }
-            std::optional<std::string> getSqlCreateStatementParameterized(pqxx::params& params) final
-            {
-                ParamBinder binder(params);
+                Binder binder(params);
                 return buildClientCreateStatement(binder);
             }
 
-            std::optional<std::string> getSqlUpdateStatement() final
+            std::optional<std::string> getSqlUpdateStatement(pqxx::params& params) final
             {
-                PlainBinder binder;
-                return buildClientUpdateStatement(binder);
-            }
-            std::optional<std::string> getSqlUpdateStatementParameterized(pqxx::params& params) final
-            {
-                ParamBinder binder(params);
+                Binder binder(params);
                 return buildClientUpdateStatement(binder);
             }
 
-            std::optional<std::string> getSqlToggleSuspendStatement(bool state)
+            std::optional<std::string> getSqlToggleSuspendStatement(bool state, pqxx::params& params)
             {
-                std::optional<std::string> query;
                 try
                 {
                     Types::SuspendData suspenddata = std::get<Types::SuspendData>(getData());
                     client_id                      = suspenddata.client_id;
-                    query                          = fmt::format(
-                        "UPDATE {} SET active={} where id={} returning "
-                        "id,active;",
-                        tablename, state ? "true" : "false", client_id.value());
+                    Binder binder(params);
+                    // Bound in a fixed order (argument evaluation order is unspecified).
+                    const std::string state_ph = binder.bind(state);
+                    const std::string id_ph    = binder.bind(client_id.value());
+                    return fmt::format("UPDATE {} SET active={} WHERE id={} RETURNING id,active;", tablename, state_ph, id_ph);
                 }
                 catch (const std::exception& e)
                 {
@@ -83,13 +73,11 @@ namespace api
                     Message::CriticalMessage(e.what());
                     return std::nullopt;
                 }
-
-                return query;
             }
 
-            std::optional<std::string> getSqlSuspendStatement() { return getSqlToggleSuspendStatement(false); }
+            std::optional<std::string> getSqlSuspendStatement(pqxx::params& params) { return getSqlToggleSuspendStatement(false, params); }
 
-            std::optional<std::string> getSqlActivateStatement() { return getSqlToggleSuspendStatement(true); }
+            std::optional<std::string> getSqlActivateStatement(pqxx::params& params) { return getSqlToggleSuspendStatement(true, params); }
 
             std::optional<uint64_t> getClientId() const { return client_id; }
 
@@ -102,13 +90,7 @@ namespace api
                 if (iterator != client_data.end())
                 {
                     std::string username       = iterator->second;
-                    bool        isSqlInjection = false;
-                    auto        result         = databaseController->checkItemExists(tablename, USERNAME, username, isSqlInjection);
-                    if (isSqlInjection)
-                    {
-                        Message::ErrorMessage("A Sql Injection pattern is detected in generated query.");
-                        return false;
-                    }
+                    auto        result         = databaseController->checkItemExists(tablename, USERNAME, username);
                     return result.value_or(false);
                 }
                 return false;
@@ -116,7 +98,7 @@ namespace api
             ~Client() override = default;
 
            protected:
-            // Common implementation shared by the plain and the parameterized variant (see Base::PlainBinder / ParamBinder).
+            // Statement builders (see Base::Binder).
             template <typename Binder>
             std::optional<std::string> buildClientCreateStatement(Binder& binder)
             {
@@ -162,7 +144,7 @@ namespace api
                         set_clauses.push_back(fmt::format("{} = {}", it->first, binder.bind(it->second)));
                     }
 
-                    return fmt::format("UPDATE {} SET {} WHERE id={} RETURNING id;", tablename, fmt::join(set_clauses, ", "), client_id.value());
+                    return fmt::format("UPDATE {} SET {} WHERE id={} RETURNING id;", tablename, fmt::join(set_clauses, ", "), binder.bind(client_id.value()));
                 }
                 catch (const std::exception& e)
                 {

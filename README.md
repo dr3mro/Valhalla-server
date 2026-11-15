@@ -84,7 +84,7 @@ From a checkout of this repository, `./valhalla.sh` is the same tool (the instal
 - **Role-based access control** — bitmask permission levels (`CAN_READ`, `CAN_WRITE`, `CAN_DELETE`, `IS_ADMIN`, `IS_OWNER`, `IS_SUPER`) enforced by a permission manager.
 - **Security gatekeeper** layered into the request flow:
   - DoS / rate-limiting detector with configurable rate limits, ban durations, and IP whitelist/blacklist.
-  - SQL-injection detector.
+  - Every SQL value is a bound parameter (`pqxx::params`); identifiers come from schema-validated keys or allowlists.
   - Password hashing with `libsodium`.
   - Session and token managers.
 - **PostgreSQL persistence** via `libpqxx`, with a connection pool, a connection watchdog, and a database schema validator.
@@ -105,7 +105,6 @@ Drogon listener  ──►  CORS pre-routing advice (handles OPTIONS)
    ▼
 Gatekeeper (filters/middlewares)
    ├─ DoS / rate-limit detector
-   ├─ SQL-injection detector
    ├─ Token / session validation   (SECURE routes only)
    └─ Permission check (RBAC)
    │

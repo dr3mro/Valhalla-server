@@ -28,17 +28,16 @@ class Database
     explicit Database(std::shared_ptr<pqxx::connection>&& conn);
     virtual ~Database();
 
-    bool checkExists(const std::string& table, const std::string& column, const std::string& value, bool& isSqlInjection);
+    bool checkExists(const std::string& table, const std::string& column, const std::string& value);
     bool check_connection();
     bool reconnect();
 
+    // The statement uses $1, $2, ... placeholders; the values travel separately in params.
     template <typename jsonType, typename TransactionType>
-    // "plain_query" is the same statement with the values written inline; it is what gets scanned for SQL injection.
-    // It is required whenever params is not empty (the parameterized text alone hides the values from the detector).
-    std::optional<jsonType> executeQuery(const std::string& query, bool& isSqlInjection, const pqxx::params& params = {}, const std::string& plain_query = {});
+    std::optional<jsonType> executeQuery(const std::string& query, const pqxx::params& params = {});
 
     template <typename T>
-    std::optional<T> doSimpleQuery(const std::string& query, bool& isSqlInjection, const pqxx::params& params = {}, const std::string& plain_query = {});
+    std::optional<T> doSimpleQuery(const std::string& query, const pqxx::params& params = {});
 
     std::optional<std::unordered_set<api::v2::ColumnInfo>> getTableSchema(const std::string& tableName);
     std::optional<std::unordered_set<std::string>>         getAllTables();

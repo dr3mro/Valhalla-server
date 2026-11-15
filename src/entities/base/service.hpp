@@ -28,18 +28,20 @@ class Service : public Entity
     }
     // Service(const std::string &tablename) : Entity(tablename) {};
     ~Service() override = default;
-    std::optional<std::string> getSqlAddStaffStatement()
+    // The nominee id (as JSON text) and the entity id are bound.
+    std::optional<std::string> getSqlAddStaffStatement(pqxx::params& params)
     {
-        std::optional<std::string> query;
         try
         {
-            auto idata = std::get<StaffData>(getData());
-            query      = fmt::format(
-                "UPDATE {} SET mjson = jsonb_set(mjson, "
-                "'{{payload,providers,Doctors}}', "
-                "((mjson->'payload'->'providers'->'Doctors') || "
-                "'\"{}\"')::jsonb) WHERE ID={} RETURNING id;",
-                tablename, idata.nominee_id, idata.nominee_group, idata.entity_id);
+            auto   idata = std::get<StaffData>(getData());
+            Binder binder(params);
+            // Bound in a fixed order (argument evaluation order is unspecified).
+            const std::string nominee_ph = binder.bind(std::to_string(idata.nominee_id));
+            const std::string entity_ph  = binder.bind(idata.entity_id);
+            return fmt::format(
+                "UPDATE {} SET mjson = jsonb_set(mjson, '{{payload,providers,Doctors}}', "
+                "((mjson->'payload'->'providers'->'Doctors') || to_jsonb({}::text))) WHERE id={} RETURNING id;",
+                tablename, nominee_ph, entity_ph);
         }
         catch (const std::exception& e)
         {
@@ -47,24 +49,22 @@ class Service : public Entity
             Message::CriticalMessage(e.what());
             return std::nullopt;
         }
-        return query;
     }
 
-    std::optional<std::string> getSqlRemoveStaffStatement()
+    std::optional<std::string> getSqlRemoveStaffStatement(pqxx::params& params)
     {
-        std::optional<std::string> query;
         try
         {
-            auto idata = std::get<StaffData>(getData());
-            query      = fmt::format(
-                "UPDATE {} SET mjson = jsonb_set("
-                "mjson, '{{payload,providers,Doctors}}', "
-                "(SELECT jsonb_agg(elem) FROM "
-                "jsonb_array_elements(mjson->'payload'->'providers'->'Doctors')"
-                " AS elem "
-                "WHERE elem <> '\"{}\"') "
-                ") WHERE ID={} RETURNING id;",
-                tablename, idata.nominee_id, idata.entity_id);
+            auto   idata = std::get<StaffData>(getData());
+            Binder binder(params);
+            // Bound in a fixed order (argument evaluation order is unspecified).
+            const std::string nominee_ph = binder.bind(std::to_string(idata.nominee_id));
+            const std::string entity_ph  = binder.bind(idata.entity_id);
+            return fmt::format(
+                "UPDATE {} SET mjson = jsonb_set(mjson, '{{payload,providers,Doctors}}', "
+                "(SELECT jsonb_agg(elem) FROM jsonb_array_elements(mjson->'payload'->'providers'->'Doctors') AS elem "
+                "WHERE elem <> to_jsonb({}::text))) WHERE id={} RETURNING id;",
+                tablename, nominee_ph, entity_ph);
         }
         catch (const std::exception& e)
         {
@@ -72,7 +72,6 @@ class Service : public Entity
             Message::CriticalMessage(e.what());
             return std::nullopt;
         }
-        return query;
     }
     static std::optional<std::string> getServicePermissionsQuery(const std::string& service_name, std::uint64_t service_id)
     {

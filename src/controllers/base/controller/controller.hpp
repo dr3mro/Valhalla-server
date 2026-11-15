@@ -59,31 +59,27 @@ class Controller
     template <typename T>
     void Create(T& entity, CALLBACK_&& callback)
     {
-        std::optional<std::string> (T::*sqlstatement)()                = &T::getSqlCreateStatement;
-        std::optional<std::string> (T::*paramstatement)(pqxx::params&) = &T::getSqlCreateStatementParameterized;
-        cruds(entity, sqlstatement, paramstatement, dbexec, std::forward<CALLBACK_>(std::move(callback)));
+        std::optional<std::string> (T::*sqlstatement)(pqxx::params&) = &T::getSqlCreateStatement;
+        cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK_>(std::move(callback)));
     }
 
     template <typename T>
     void Read(T& entity, CALLBACK_&& callback)
     {
-        std::optional<std::string> (T::*sqlstatement)()                = &T::getSqlReadStatement;
-        std::optional<std::string> (T::*paramstatement)(pqxx::params&) = &T::getSqlReadStatementParameterized;
-        cruds(entity, sqlstatement, paramstatement, dbrexec, std::forward<CALLBACK_>(std::move(callback)));
+        std::optional<std::string> (T::*sqlstatement)(pqxx::params&) = &T::getSqlReadStatement;
+        cruds(entity, sqlstatement, dbrexec, std::forward<CALLBACK_>(std::move(callback)));
     }
     template <typename T>
     void Update(T& entity, CALLBACK_&& callback)
     {
-        std::optional<std::string> (T::*sqlstatement)()                = &T::getSqlUpdateStatement;
-        std::optional<std::string> (T::*paramstatement)(pqxx::params&) = &T::getSqlUpdateStatementParameterized;
-        cruds(entity, sqlstatement, paramstatement, dbexec, std::forward<CALLBACK_>(std::move(callback)));
+        std::optional<std::string> (T::*sqlstatement)(pqxx::params&) = &T::getSqlUpdateStatement;
+        cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK_>(std::move(callback)));
     }
     template <typename T>
     void Delete(T& entity, CALLBACK_&& callback)
     {
-        std::optional<std::string> (T::*sqlstatement)()                = &T::getSqlDeleteStatement;
-        std::optional<std::string> (T::*paramstatement)(pqxx::params&) = &T::getSqlDeleteStatementParameterized;
-        cruds(entity, sqlstatement, paramstatement, dbexec, std::forward<CALLBACK_>(std::move(callback)));
+        std::optional<std::string> (T::*sqlstatement)(pqxx::params&) = &T::getSqlDeleteStatement;
+        cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK_>(std::move(callback)));
     }
     template <typename T>
     void Search(T& entity, CALLBACK_&& callback)
@@ -97,22 +93,12 @@ class Controller
 
         try
         {
-            // The plain query (values inline) is handed to the database layer, which scans it; the parameterized one is executed.
-            std::optional<std::string> plain_query = entity.getSqlSearchStatement();
-            pqxx::params               params;
-            if (plain_query.has_value())
-                query = entity.getSqlSearchStatementParameterized(params);
+            pqxx::params params;
+            query = entity.getSqlSearchStatement(params);
 
             if (query.has_value())
             {
-                bool isSqlInjection      = false;
-                query_results_json_array = databaseController->executeSearchQuery(query.value(), isSqlInjection, params, plain_query.value());
-
-                if (isSqlInjection)
-                {
-                    std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "A Sql Injection pattern is detected in generated query.");
-                    return;
-                }
+                query_results_json_array = databaseController->executeSearchQuery(query.value(), params);
 
                 if (query_results_json_array.has_value() && !query_results_json_array->empty())
                 {
@@ -146,7 +132,7 @@ class Controller
     void Suspend(T& entity, CALLBACK_&& callback)
         requires(std::is_base_of_v<Client, T>)
     {
-        std::optional<std::string> (T::*sqlstatement)() = &T::getSqlSuspendStatement;
+        std::optional<std::string> (T::*sqlstatement)(pqxx::params&) = &T::getSqlSuspendStatement;
         cruds(entity, sqlstatement, dbexec, std::move(callback));
     }
 
@@ -154,7 +140,7 @@ class Controller
     void Unsuspend(T& entity, CALLBACK_&& callback)
         requires(std::is_base_of_v<Client, T>)
     {
-        std::optional<std::string> (T::*sqlstatement)() = &T::getSqlActivateStatement;
+        std::optional<std::string> (T::*sqlstatement)(pqxx::params&) = &T::getSqlActivateStatement;
         cruds(entity, sqlstatement, dbexec, std::move(callback));
     }
 
@@ -167,18 +153,12 @@ class Controller
 
         try
         {
-            query = entity.getSqlGetServicesStatement();
+            pqxx::params params;
+            query = entity.getSqlGetServicesStatement(params);
 
             if (query.has_value())
             {
-                bool isSqlInjection = false;
-
-                services = databaseController->executeSearchQuery(query.value(), isSqlInjection);
-                if (isSqlInjection)
-                {
-                    std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "A Sql Injection pattern is detected in generated query.");
-                    return;
-                }
+                services = databaseController->executeSearchQuery(query.value(), params);
 
                 if (services.has_value())
                 {
@@ -203,18 +183,12 @@ class Controller
 
         try
         {
-            query = entity.getSqlGetVisitsStatement();
+            pqxx::params params;
+            query = entity.getSqlGetVisitsStatement(params);
 
             if (query.has_value())
             {
-                bool isSqlInjection = false;
-                visits              = databaseController->executeSearchQuery(query.value(), isSqlInjection);
-
-                if (isSqlInjection)
-                {
-                    std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "A Sql Injection pattern is detected in generated query.");
-                    return;
-                }
+                visits = databaseController->executeSearchQuery(query.value(), params);
             }
 
             std::move(callback)(api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(visits));
@@ -227,129 +201,41 @@ class Controller
 
    private:
     std::shared_ptr<DatabaseController> databaseController;
-    std::optional<jsoncons::json> (DatabaseController::*dbexec)(
-        const std::string&, bool&, const pqxx::params&, const std::string&) = &DatabaseController::executeQuery;
-    std::optional<jsoncons::json> (DatabaseController::*dbrexec)(
-        const std::string&, bool&, const pqxx::params&, const std::string&) = &DatabaseController::executeReadQuery;
+    std::optional<jsoncons::json> (DatabaseController::*dbexec)(const std::string&, const pqxx::params&)  = &DatabaseController::executeQuery;
+    std::optional<jsoncons::json> (DatabaseController::*dbrexec)(const std::string&, const pqxx::params&) = &DatabaseController::executeReadQuery;
 
    protected:
-    template <typename T>
-    std::optional<uint64_t> getNextID(api::v2::Http::Error& error)
-    {
-        try
-        {
-            bool                          isSqlInjection = false;
-            std::optional<jsoncons::json> json_nextval =
-                databaseController->executeQuery(fmt::format("SELECT NEXTVAL('{}_id_seq');", T::getTableName()), isSqlInjection);
-
-            if (isSqlInjection)
-            {
-                error.message = "A Sql Injection pattern is detected in generated query.";
-                error.code    = api::v2::Http::Status::BAD_REQUEST;
-                return std::nullopt;
-            }
-
-            if (!json_nextval.has_value() || json_nextval->empty())
-            {
-                error.message = fmt::format(
-                    "nextID from seq function of {} failed, could not create a "
-                    "new ID.",
-                    T::getTableName());
-                error.code = api::v2::Http::Status::CONFLICT;
-                Message::ErrorMessage(error.message);
-                return std::nullopt;
-            }
-
-            auto obj = json_nextval->find("nextval");
-            if (obj != json_nextval->object_range().end())
-            {
-                return obj->value().as<uint64_t>();
-            }
-        }
-        catch (const std::exception& e)
-        {
-            CRITICALMESSAGE
-        }
-        return std::nullopt;
-    }
-
     ///////////////////////////
-    // Builds the plain query (values inline) and, when the entity provides one, the parameterized query (values in params).
-    // Only the parameterized query is executed; the plain one is handed to the database layer, which scans it for SQL injection.
-    // plain_query stays empty when there is no parameterized variant (the query itself is then scanned).
-    template <typename S, typename PS, typename T>
-    bool get_sql_statement(
-        std::optional<std::string>& query, std::string& plain_query, T& entity, S& sqlstatement, PS& paramstatement, pqxx::params& params, std::string& error)
-    {
-        query = (entity.*sqlstatement)();
-        if (!query.has_value())
-        {
-            error = fmt::format("Failed to get SQL statement for {}.", entity.getTableName());
-            return false;
-        }
-
-        if constexpr (!std::is_null_pointer_v<PS>)
-        {
-            plain_query = query.value();
-            query       = (entity.*paramstatement)(params);
-            if (!query.has_value())
-            {
-                error = fmt::format("Failed to get SQL statement for {}.", entity.getTableName());
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    // For statements that have no parameterized variant (suspend, staff, ...).
+    // Runs one entity statement: it builds the SQL (placeholders) and its params, executes it and reports the result.
     template <typename S, typename T>
-    void cruds(T& entity, S&                                                                                                                       sqlstatement,
-        std::optional<jsoncons::json> (DatabaseController::*func)(const std::string&, bool&, const pqxx::params&, const std::string&), CALLBACK_&& callback)
-    {
-        cruds(entity, sqlstatement, nullptr, func, std::move(callback));
-    }
-
-    template <typename S, typename PS, typename T>
-    void cruds(T& entity, S& sqlstatement, PS paramstatement,
-        std::optional<jsoncons::json> (DatabaseController::*func)(const std::string&, bool&, const pqxx::params&, const std::string&), CALLBACK_&& callback)
+    void cruds(T& entity, S& sqlstatement, std::optional<jsoncons::json> (DatabaseController::*func)(const std::string&, const pqxx::params&),
+        CALLBACK_&& callback)
     {
         std::optional<jsoncons::json> results_j;
-        std::optional<std::string>    query;
         pqxx::params                  params;
-        std::string                   plain_query;
         try
         {
-            std::string error;
-            if (!get_sql_statement(query, plain_query, entity, sqlstatement, paramstatement, params, error))
+            std::optional<std::string> query = (entity.*sqlstatement)(params);
+            if (!query.has_value())
             {
-                std::move(callback)(api::v2::Http::Status::BAD_REQUEST, error);
+                std::move(callback)(api::v2::Http::Status::BAD_REQUEST, fmt::format("Failed to get SQL statement for {}.", entity.getTableName()));
                 return;
             }
 
-            if (query.has_value())
+            results_j = (*databaseController.*func)(query.value(), params);
+            if (results_j.has_value())
             {
-                bool isSqlInjection = false;
-                results_j           = (*databaseController.*func)(query.value(), isSqlInjection, params, plain_query);
-                if (isSqlInjection)
+                if (!results_j->empty())
                 {
-                    std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "A Sql Injection pattern is detected in generated query.");
-                    return;
-                }
-                if (results_j.has_value())
-                {
-                    if (!results_j->empty())
-                    {
-                        std::move(callback)(api::v2::Http::Status::OK, results_j.value().as<std::string>());
-                        return;
-                    }
-
-                    std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Query returned empty result, please recheck your parameters.");
+                    std::move(callback)(api::v2::Http::Status::OK, results_j.value().as<std::string>());
                     return;
                 }
 
-                std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Failed to create sql query");
+                std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Query returned empty result, please recheck your parameters.");
+                return;
             }
+
+            std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Failed to create sql query");
         }
         catch (const std::exception& e)
         {
@@ -360,14 +246,14 @@ class Controller
     template <typename T>
     void addStaff(T& entity, CALLBACK_&& callback)
     {
-        std::optional<std::string> (T::*sqlstatement)() = &T::getSqlAddStaffStatement;
+        std::optional<std::string> (T::*sqlstatement)(pqxx::params&) = &T::getSqlAddStaffStatement;
         cruds(entity, sqlstatement, dbexec, std::move(callback));
     }
 
     template <typename T>
     void removeStaff(T& entity, CALLBACK_&& callback)
     {
-        std::optional<std::string> (T::*sqlstatement)() = &T::getSqlRemoveStaffStatement;
+        std::optional<std::string> (T::*sqlstatement)(pqxx::params&) = &T::getSqlRemoveStaffStatement;
         cruds(entity, sqlstatement, dbexec, std::move(callback));
     }
 };

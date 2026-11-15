@@ -224,6 +224,35 @@ TEST_CASE("Types::Search_t reports failure for a missing key without throwing", 
     CHECK_FALSE(success);
 }
 
+TEST_CASE("Types::Search_t only accepts plain identifiers for filter and order_by", "[validator][search]")
+{
+    const auto parse = [](const std::string& filter, const std::string& order_by)
+    {
+        jsoncons::json search_j;
+        search_j["keyword"]   = "x";
+        search_j["filter"]    = filter;
+        search_j["order_by"]  = order_by;
+        search_j["direction"] = 0;
+        search_j["limit"]     = 1;
+        search_j["offset"]    = 0;
+        bool                  success = false;
+        const Types::Search_t parsed(search_j, success);
+        return success;
+    };
+
+    CHECK(parse("name", "created_at"));
+    CHECK(parse("_private2", "id"));
+
+    CHECK_FALSE(parse("name; DROP TABLE users", "id"));
+    CHECK_FALSE(parse("name", "id,(SELECT pg_sleep(5))"));
+    CHECK_FALSE(parse("name", "id DESC"));
+    CHECK_FALSE(parse("users.password", "id"));
+    CHECK_FALSE(parse("1name", "id"));
+    CHECK_FALSE(parse("", "id"));
+    CHECK_FALSE(parse("name", ""));
+    CHECK_FALSE(parse(std::string(64, 'a'), "id"));
+}
+
 // Bug 3 fixed: getDatabaseSchemaForTable() now returns {} early when the table
 // is not found, so found=false is preserved and the end-iterator is never
 // dereferenced.

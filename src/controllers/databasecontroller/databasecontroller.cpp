@@ -49,40 +49,41 @@ void DatabaseController::ensureBackends()
     }
 }
 
-std::optional<jsoncons::json> DatabaseController::executeQuery(
-    const std::string& query, bool& isSqlInjection, const pqxx::params& params, const std::string& plain_query)
+std::optional<jsoncons::json> DatabaseController::executeQuery(const std::string& query, const pqxx::params& params)
 {
-    return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::work>, query, isSqlInjection, params, plain_query);
+    return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::work>, query, params);
 }
 
-std::optional<jsoncons::json> DatabaseController::executeReadQuery(
-    const std::string& query, bool& isSqlInjection, const pqxx::params& params, const std::string& plain_query)
+std::optional<jsoncons::json> DatabaseController::executeReadQuery(const std::string& query, const pqxx::params& params)
 {
-    return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::nontransaction>, query, isSqlInjection, params, plain_query);
+    return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::nontransaction>, query, params);
 }
 
-std::optional<jsoncons::json::array> DatabaseController::executeSearchQuery(
-    const std::string& query, bool& isSqlInjection, const pqxx::params& params, const std::string& plain_query)
+std::optional<jsoncons::json::array> DatabaseController::executeSearchQuery(const std::string& query, const pqxx::params& params)
 {
-    return executer<jsoncons::json::array>(&Database::executeQuery<jsoncons::json::array, pqxx::nontransaction>, query, isSqlInjection, params, plain_query);
+    return executer<jsoncons::json::array>(&Database::executeQuery<jsoncons::json::array, pqxx::nontransaction>, query, params);
 }
 
-std::optional<std::string> DatabaseController::doReadQuery(const std::string& query, bool& isSqlInjection)
+std::optional<std::string> DatabaseController::doReadQuery(const std::string& query, const pqxx::params& params)
 {
-    return executer<std::string>(&Database::doSimpleQuery<std::string>, query, isSqlInjection, pqxx::params{}, std::string{});
+    return executer<std::string>(&Database::doSimpleQuery<std::string>, query, params);
 }
 
-std::optional<bool> DatabaseController::checkItemExists(const std::string& table, const std::string& column, const std::string& value, bool& isSqlInjection)
+std::optional<bool> DatabaseController::checkItemExists(const std::string& table, const std::string& column, const std::string& value)
 {
-    return executer<bool>(&Database::checkExists, table, column, value, isSqlInjection);
+    return executer<bool>(&Database::checkExists, table, column, value);
 }
 
-std::optional<jsoncons::json> DatabaseController::getPasswordHashForUserName(const std::string& username, const std::string& tablename, bool& isSqlInjection)
+std::optional<jsoncons::json> DatabaseController::getPasswordHashForUserName(const std::string& username, const std::string& tablename)
 {
-    // Parameterized query is executed; the plain one (value inline) is what the injection check scans.
-    std::string query       = fmt::format("SELECT id,password,active FROM {} WHERE username = $1 LIMIT 1;", tablename);
-    std::string plain_query = fmt::format("SELECT id,password,active FROM {} WHERE username = '{}' LIMIT 1;", tablename, username);
-    return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::nontransaction>, query, isSqlInjection, pqxx::params{username}, plain_query);
+    // Identifiers cannot be bound: only the two client tables are accepted.
+    if (tablename != "users" && tablename != "providers")
+    {
+        Message::ErrorMessage(fmt::format("Unknown client table: {}", tablename));
+        return std::nullopt;
+    }
+    const std::string query = fmt::format("SELECT id,password,active FROM {} WHERE username = $1 LIMIT 1;", tablename);
+    return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::nontransaction>, query, pqxx::params{username});
 }
 
 std::optional<std::unordered_set<api::v2::ColumnInfo>> DatabaseController::getTableSchema(const std::string& tableName)
@@ -92,7 +93,8 @@ std::optional<std::unordered_set<api::v2::ColumnInfo>> DatabaseController::getTa
 
 std::optional<std::unordered_set<std::string>> DatabaseController::getAllTables() { return executer<std::unordered_set<std::string>>(&Database::getAllTables); }
 
-std::optional<jsoncons::json> DatabaseController::getPermissions(const std::string& query, bool& isSqlInjection)
+std::optional<jsoncons::json> DatabaseController::getPermissions(const std::string& query)
 {
-    return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::nontransaction>, query, isSqlInjection, pqxx::params{}, std::string{});
+    return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::nontransaction>, query, pqxx::params{});
 }
+

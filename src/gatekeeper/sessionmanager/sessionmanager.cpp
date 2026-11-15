@@ -28,14 +28,8 @@ bool SessionManager::login(const std::optional<Types::Credentials>& credentials,
     std::optional<std::string> password_hash;
     try
     {
-        bool isSqlInjection = false;
-        auto client_object  = getPasswordHashForUserName(credentials->username, clientLoginData->group.value(), isSqlInjection);
+        auto client_object = getPasswordHashForUserName(credentials->username, clientLoginData->group.value());
 
-        if (isSqlInjection)
-        {
-            message = "A Sql Injection pattern is detected in generated query.";
-            return false;
-        }
         if (!client_object.has_value() || client_object.value().empty())
         {
             message = fmt::format("Failure: username {} does not exist, please try again.", credentials->username);
