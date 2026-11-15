@@ -795,8 +795,8 @@ render_help() {
       icon = qicon(head)
       iw = (icon == "") ? 0 : (M ? 3 : 2) # emoji is 2 columns wide, BMP 1
       qgap = QC - length(head) + 2; if (qgap < 2) qgap = 2
-      pre = (icon != "" ? icon " " : "") CMD w[1] R args spaces(qgap)
-      pvis = iw + length(head) + qgap
+      pre = (icon != "" ? icon " " : "") CMD "vdt " w[1] R args spaces(qgap)
+      pvis = iw + length("vdt ") + length(head) + qgap
       avail = CW - pvis; if (avail < 12) avail = 12
       if (desc == "") { qline(pre, pvis, ""); next }
       firstline = 1
