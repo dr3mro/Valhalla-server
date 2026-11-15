@@ -2678,7 +2678,7 @@ payload_group_fzf() { # dir: pick a group (fzf); non-zero when quit
   # with spaces (the backslashes would become literal). fzf quotes {} itself.
   dir_q="$(printf '%q' "$dir")"
   payload_groups "$dir" |
-    fzf --prompt 'payload group ▸ ' --reverse --height=70% --border \
+    fzf --prompt 'payload group ▸ ' --reverse --border \
       --header 'enter: select   esc: quit' \
       --preview "ls $dir_q/{} 2>/dev/null | sed 's/[.]json\$//'" \
       --preview-window 'right,60%,wrap'
@@ -2712,7 +2712,7 @@ payload_name_fzf() { # dir group: pick a payload (fzf); enter views it in place
   script_q="$(printf '%q' "$SCRIPT")"
   group_q="$(printf '%q' "$group")"
   printf '%s' "$out" |
-    fzf --prompt "$group ▸ " --reverse --height=70% --border \
+    fzf --prompt "$group ▸ " --reverse --border \
       --header 'enter: view   esc: back' \
       --preview "$preview" \
       --preview-window 'right,60%,wrap' \
