@@ -349,10 +349,10 @@ place_files() {
 
   say ""
   say "🎉  Done. Open a new terminal (or: source ~/.$(basename "${SHELL:-zsh}")rc), then:"
-  say "  vdt help"
-  say "  vdt run"
-  say "Settings: $DIR/config (a .env in the current directory wins)"
-  say "Update later with: vdt install    Remove with: vdt uninstall"
+  say "  📖  vdt help"
+  say "  🚀  vdt run"
+  say "⚙️  Settings: $DIR/config (a .env in the current directory wins)"
+  say "🔄  Update later with: vdt install    🗑  Remove with: vdt uninstall"
 }
 
 do_uninstall() {
