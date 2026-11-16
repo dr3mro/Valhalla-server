@@ -21,6 +21,7 @@ class ClinicControllerBase
     virtual drogon::Task<void> ReadAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data) = 0;
     virtual void Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> id) = 0;
     virtual void Delete(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id)                        = 0;
+    virtual drogon::Task<void> DeleteAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id) = 0;
     virtual void Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data)                             = 0;
     virtual void GetVisits(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> patient_id)             = 0;
 };

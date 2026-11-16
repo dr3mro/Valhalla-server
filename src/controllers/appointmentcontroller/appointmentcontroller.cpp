@@ -47,6 +47,12 @@ void AppointmentController<T>::Delete(CALLBACK_&& callback, const Requester&& re
 }
 
 template <Appointment_t T>
+drogon::Task<void> AppointmentController<T>::DeleteAsync(CALLBACK_&& callback, const Requester&& requester, const std::optional<uint64_t> _id)
+{
+    co_await EntityController<T>::DeleteAsync(std::move(callback), std::move(requester), _id);
+}
+
+template <Appointment_t T>
 void AppointmentController<T>::Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
 {
     EntityController<T>::Search(std::move(callback), std::move(requester), data);
@@ -58,6 +64,7 @@ void AppointmentController<T>::Search(CALLBACK_&& callback, const Requester&& re
     template drogon::Task<void> AppointmentController<TYPE>::ReadAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data); \
     template void AppointmentController<TYPE>::Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> _id); \
     template void AppointmentController<TYPE>::Delete(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> _id);                        \
+    template drogon::Task<void> AppointmentController<TYPE>::DeleteAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> _id); \
     template void AppointmentController<TYPE>::Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data);
 
 INSTANTIATE_APPOINTMENT_CONTROLLER(ClinicAppointment)

@@ -31,6 +31,14 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
         requires(!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value);
 
     template <typename U = T>
+    drogon::Task<void> DeleteAsyncImpl(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id)
+        requires(std::is_same<U, Patient>::value || std::is_same<U, Visits>::value);
+
+    template <typename U = T>
+    drogon::Task<void> DeleteAsyncImpl(CALLBACK_&& callback, [[maybe_unused]] const Requester&& requester, std::optional<uint64_t> id)
+        requires(!std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value);
+
+    template <typename U = T>
     void SearchImpl(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
         requires(!std::is_same<U, Patient>::value);
 
@@ -55,6 +63,7 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
     drogon::Task<void> ReadAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data) final;
     void Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> id) final;
     void Delete(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id) final;
+    drogon::Task<void> DeleteAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id) final;
     void Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data) final;
     void GetVisits(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> patient_id) final;
 };

@@ -27,5 +27,6 @@ class AppointmentController : public EntityController<T>, public AppointmentCont
     drogon::Task<void> ReadAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
     void Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> _id) override;
     void Delete(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> _id) override;
+    drogon::Task<void> DeleteAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> _id) override;
     void Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
 };
