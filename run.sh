@@ -52,7 +52,7 @@ ${C_BOLD}${C_Y}${E_BUILD}Build & run:${C_N}
   ${C_C}release${C_N}                 ${C_DIM}Run Release server (./scripts/run/run_release.sh)${C_N}
   ${C_C}debug${C_N}                   ${C_DIM}Run Debug server (./scripts/run/run_debug.sh)${C_N}
 ${C_BOLD}${C_Y}${E_SERVER}Server lifecycle:${C_N}
-  ${C_C}server start release|debug [--background]${C_N}    ${C_DIM}Start server${C_N}
+  ${C_C}server start release|debug [--foreground]${C_N}    ${C_DIM}Start server (background by default)${C_N}
   ${C_C}server stop${C_N}                                 ${C_DIM}Stop server${C_N}
   ${C_C}server status${C_N}                               ${C_DIM}Server status${C_N}
   ${C_C}server restart release|debug${C_N}                ${C_DIM}Restart server${C_N}
@@ -103,9 +103,10 @@ server_running() {
 
 server_start() {
     local profile="${1:-release}"
-    local background=0
+    local background=1
     shift || true
     for arg in "$@"; do
+        [[ $arg == "--foreground" ]] && background=0
         [[ $arg == "--background" ]] && background=1
     done
 
