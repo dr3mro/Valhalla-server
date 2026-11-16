@@ -231,11 +231,18 @@ case "$cmd" in
     list) list_cmds ;;
     build)
         profile="${1:-all}"; shift || true
-        "$ROOT/tools/docs/build.sh" >/dev/null 2>&1 || true
         case "$profile" in
-            release) cmake --build "$ROOT/build/Release" "$@" ;;
-            debug) cmake --build "$ROOT/build/Debug" "$@" ;;
-            all|"") "$ROOT/scripts/build/build.sh" "$@" ;;
+            openapi)
+                "$ROOT/tools/docs/build.sh" "$@"
+                ;;
+            release|debug|all|"")
+                "$ROOT/tools/docs/build.sh" >/dev/null 2>&1 || true
+                case "$profile" in
+                    release) cmake --build "$ROOT/build/Release" "$@" ;;
+                    debug) cmake --build "$ROOT/build/Debug" "$@" ;;
+                    all|"") "$ROOT/scripts/build/build.sh" "$@" ;;
+                esac
+                ;;
             *) err "Unknown build profile: $profile"; exit 2 ;;
         esac
         ;;
