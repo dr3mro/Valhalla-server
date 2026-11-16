@@ -134,8 +134,16 @@ void ClientController<T>::updateNow(CALLBACK_&& callback, const Requester& reque
 template <Client_t T>
 void ClientController<T>::Delete(CALLBACK_&& callback, const Requester&& requester, const std::optional<uint64_t> client_id)
 {
-    EntityController<T>::Delete(std::move(callback), std::move(requester), client_id);
-    gateKeeper->removeSession(client_id, T::getTableName());
+    auto cb = std::move(callback);
+    CALLBACK_ wrapped = [this, client_id, cb = std::move(cb)](int code, const std::string& body) mutable
+    {
+        if (code == static_cast<int>(api::v2::Http::Status::OK) && client_id.has_value())
+        {
+            gateKeeper->removeSession(client_id, T::getTableName());
+        }
+        std::move(cb)(code, body);
+    };
+    EntityController<T>::Delete(std::move(wrapped), std::move(requester), client_id);
 }
 
 template <Client_t T>
@@ -366,8 +374,16 @@ drogon::Task<void> ClientController<T>::UpdateAsync(CALLBACK_&& callback, const 
 template <Client_t T>
 drogon::Task<void> ClientController<T>::DeleteAsync(CALLBACK_&& callback, const Requester&& requester, const std::optional<uint64_t> client_id)
 {
-    co_await EntityController<T>::DeleteAsync(std::move(callback), std::move(requester), client_id);
-    gateKeeper->removeSession(client_id, T::getTableName());
+    auto cb = std::move(callback);
+    CALLBACK_ wrapped = [this, client_id, cb = std::move(cb)](int code, const std::string& body) mutable
+    {
+        if (code == static_cast<int>(api::v2::Http::Status::OK) && client_id.has_value())
+        {
+            gateKeeper->removeSession(client_id, T::getTableName());
+        }
+        std::move(cb)(code, body);
+    };
+    co_await EntityController<T>::DeleteAsync(std::move(wrapped), std::move(requester), client_id);
 }
 
 template <Client_t T>

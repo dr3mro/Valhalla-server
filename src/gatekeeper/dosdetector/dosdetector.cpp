@@ -357,13 +357,13 @@ DOSDetector::Status DOSDetector::processRequest(const Request& request)
 
         if (!remote_ip)
         {
-            fmt::print("Failed to get ip from request.\n");
+            Message::ErrorMessage("Failed to get ip from request.");
             return Status::ERROR;
         }
         // fmt::print("Request from {}\n", remote_ip.value());
         if (!request_fingerprint)
         {
-            fmt::print("Failed to generate request fingerprint.");
+            Message::ErrorMessage("Failed to generate request fingerprint.");
             return Status::ERROR;
         }
         // fmt::print("Request fingerprint: {}\n", request_fingerprint.value());

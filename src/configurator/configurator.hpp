@@ -110,7 +110,7 @@ class Configurator
             Message::ConfMessage(fmt::format("Port: {}", port));
             Message::ConfMessage(fmt::format("Name: {}", name));
             Message::ConfMessage(fmt::format("User: {}", user));
-            Message::ConfMessage(fmt::format("Pass: {}", pass));
+            Message::ConfMessage("Pass: [redacted]");
             Message::ConfMessage(fmt::format("SSL: {}", ssl));
             Message::ConfMessage(fmt::format("Async: {}", async));
             Message::ConfMessage(fmt::format("Max Connections: {}", max_conn));
@@ -193,7 +193,11 @@ class Configurator
             Message::ConfMessage(fmt::format("Issuer: {}", issuer));
             Message::ConfMessage(fmt::format("Type: {}", type));
             Message::ConfMessage(fmt::format("Validity: {} minutes", validity));
-            Message::ConfMessage(fmt::format("Secret: {}", secret));
+            Message::ConfMessage("Secret: [redacted]");
+            if (secret == Defaults::TokenParameters::TOKEN_SECRET_)
+            {
+                Message::WarningMessage("TOKEN_SECRET is set to the default value; set a secure secret for production.");
+            }
         }
     };
 

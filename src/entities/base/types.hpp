@@ -129,7 +129,7 @@ namespace api::v2::Types
                 // declared schema (e.g. "order_by": false, "limit": null) sail through this try block
                 // untouched. Check the actual JSON type first so a mismatch is treated the same as any
                 // other malformed search body - success=false, not silently-coerced garbage.
-                if (!kw.is_string() || !fl.is_string() || !ob.is_string() || !dr.is_number() || !lm.is_number() || !of.is_number())
+                if (!kw.is_string() || !fl.is_string() || !ob.is_string() || !dr.is_int64() || !lm.is_int64() || !of.is_int64())
                 {
                     success = false;
                     return;
@@ -162,7 +162,7 @@ namespace api::v2::Types
         bool validate(const jsoncons::json& search_j)
         {
             static const std::unordered_set<std::string> keys = {"keyword", "filter", "order_by", "direction", "limit", "offset"};
-            return std::ranges::all_of(keys, [&search_j](const std::string& key) { return search_j.find(key).has_value(); }) && isPlainIdentifier(filter) &&
+            return search_j.size() == keys.size() && std::ranges::all_of(keys, [&search_j](const std::string& key) { return search_j.find(key).has_value(); }) && isPlainIdentifier(filter) &&
                    isPlainIdentifier(order_by);
         }
     };
@@ -329,7 +329,7 @@ namespace api::v2::Types
             }
             catch (const std::exception& e)
             {
-                fmt::print("Error while parsing json: {}", std::string(e.what()));
+                Message::ErrorMessage("Error while parsing json: " + std::string(e.what()));
                 parse_status = false;
             }
         }
@@ -348,7 +348,7 @@ namespace api::v2::Types
             }
             catch (const std::exception& e)
             {
-                fmt::print("Error while creating invite json: {}", std::string(e.what()));
+                Message::ErrorMessage("Error while creating invite json: " + std::string(e.what()));
                 return false;
             }
         }

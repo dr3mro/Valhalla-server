@@ -39,7 +39,7 @@ StaffController<T>::StaffController()
 }
 
 template <typename T>
-void StaffController<T>::AddStaffToEntity(CALLBACK_&& callback, [[maybe_unused]] const Requester&& requester, std::string_view data)
+void StaffController<T>::AddStaffToEntity(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
 {
     jsoncons::json staff_j;
     HttpError      error;
@@ -50,6 +50,14 @@ void StaffController<T>::AddStaffToEntity(CALLBACK_&& callback, [[maybe_unused]]
         StaffData      staffData(payload);
 
         T staff(staffData);
+
+        uint64_t _id = staff_j.at("id").as<uint64_t>();
+
+        if (!gateKeeper->canManageStaff<T>(requester, _id, error))
+        {
+            std::move(callback)(error.code, error.message);
+            return;
+        }
 
         Controller::addStaff(staff, std::move(callback));
     }
@@ -127,7 +135,7 @@ void StaffController<T>::InviteStaffToEntity(CALLBACK_&& callback, const Request
 
 
 template <typename T>
-drogon::Task<void> StaffController<T>::AddStaffToEntityAsync(CALLBACK_&& callback, [[maybe_unused]] const Requester&& requester, std::string_view data)
+drogon::Task<void> StaffController<T>::AddStaffToEntityAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
 {
     jsoncons::json staff_j;
     HttpError      error;
@@ -138,6 +146,14 @@ drogon::Task<void> StaffController<T>::AddStaffToEntityAsync(CALLBACK_&& callbac
         StaffData      staffData(payload);
 
         T staff(staffData);
+
+        uint64_t _id = staff_j.at("id").as<uint64_t>();
+
+        if (!co_await gateKeeper->canManageStaffAsync<T>(requester, _id, error))
+        {
+            std::move(callback)(error.code, error.message);
+            co_return;
+        }
 
         co_await Controller::addStaffAsync(staff, std::move(callback));
     }

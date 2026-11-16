@@ -30,7 +30,7 @@ std::optional<std::string> Communicate::sendRequest(
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
 
         // Map of methods to their respective cURL options
-        static const std::map<drogon::HttpMethod, std::function<void()>> methodMap = {{drogon::HttpMethod::Post,
+        const std::map<drogon::HttpMethod, std::function<void()>> methodMap = {{drogon::HttpMethod::Post,
                                                                                           [&curl, &data]()
                                                                                           {
                                                                                               curl_easy_setopt(curl, CURLOPT_POST, 1L);

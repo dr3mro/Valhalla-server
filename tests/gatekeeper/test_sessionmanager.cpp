@@ -132,8 +132,8 @@ TEST_CASE("SessionManager logout with a bad token answers without a database", "
                 body       = response;
             },
             fixture.loginData);
-        // jwt::decode throws for garbage input -> internal server error.
-        CHECK(statusCode == api::v2::Http::Status::INTERNAL_SERVER_ERROR);
+        // No valid session for a garbage token.
+        CHECK(statusCode == api::v2::Http::Status::UNAUTHORIZED);
         CHECK_FALSE(body.empty());
     }
 
@@ -150,7 +150,7 @@ TEST_CASE("SessionManager logout with a bad token answers without a database", "
                 body       = response;
             },
             fixture.loginData);
-        CHECK(statusCode == api::v2::Http::Status::OK);
+        CHECK(statusCode == api::v2::Http::Status::UNAUTHORIZED);
         CHECK(body.find("ip address") != std::string::npos);
     }
 }

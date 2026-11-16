@@ -56,9 +56,12 @@ command -v python3 >/dev/null || { err "python3 is required but was not found on
 [[ -f $SPEC ]] || { err "OpenAPI spec not found: $SPEC (run 'cmake --build' or tools/docs/build.sh to generate it)"; exit 2; }
 
 if ! command -v st >/dev/null; then
-	note "schemathesis ('st') not found - installing into ~/.local ..."
-	pip3 install --user --quiet schemathesis || { err "pip install schemathesis failed"; exit 2; }
-	command -v st >/dev/null || { err "schemathesis installed but 'st' still not on PATH ($HOME/.local/bin)"; exit 2; }
+	note "schemathesis ('st') not found - creating a virtualenv ..."
+	VENV_DIR="${VENV_DIR:-$HOME/.cache/valhalla-schemathesis-venv}"
+	python3 -m venv "$VENV_DIR" || { err "python3 -m venv failed"; exit 2; }
+	"$VENV_DIR/bin/pip" install --quiet schemathesis || { err "pip install schemathesis failed"; exit 2; }
+	export PATH="$VENV_DIR/bin:$PATH"
+	command -v st >/dev/null || { err "schemathesis installed but 'st' still not on PATH"; exit 2; }
 fi
 
 note "Base URL: $BASE_URL"

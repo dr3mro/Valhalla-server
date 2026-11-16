@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 conan profile detect --force
 conan install . --build=missing -s build_type=Release -s compiler.cppstd=gnu20  -c "trantor/*:tools.build:cxxflags=[\"-Wno-error=unused-result\"]"
 conan install . --build=missing -s build_type=Debug -s compiler.cppstd=gnu20  -c "trantor/*:tools.build:cxxflags=[\"-Wno-error=unused-result\"]"

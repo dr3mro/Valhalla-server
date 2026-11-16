@@ -1,5 +1,17 @@
 # Valhalla Server: Combined Plan (remaining work + performance)
 
+## Project rules for everything you write or change
+
+- Logging: never write to stdout or stderr directly in C++ (no std::cout, std::cerr, printf, fmt::print, puts). Use the project logging API in src/utils/message/message.hpp (Message::DebugMessage, InfoMessage, WarningMessage, ErrorMessage, CriticalMessage). Do not add logging on the per-request hot path unless it is at Debug level and guarded.
+- Configuration: never call getenv, std::getenv or setenv outside src/configurator/envloader. New settings go through a Configurator struct (see src/configurator/configurator.hpp and defaults.hpp).
+- Shared objects: do not look objects up with Store::getObject on a per-request path; hold them as members resolved at construction, or use Store::cachedObject.
+- No new dependencies. Prefer the C++20 standard library, then Drogon utilities that already exist in the pinned version, then project code.
+- Follow .clang-format, .clang-tidy and cppcheck.supp. Every file ends with a trailing newline. Do not reformat lines you did not change.
+- In the final report, include the result of this grep over everything you changed (it must show no new matches):
+  git diff <base>..HEAD -- src tests | grep '^+' | grep -n "cout\|cerr\|printf\|fmt::print\|getenv\|Store::"
+
+Goal: make database access asynchronous so a Drogon IO thread never blocks on PostgreSQL. No worker pool, no thread hand-off, and reads stay fast even when queries are slow.
+
 > Note (1.0.3): database access is now asynchronous by default (`DB_ASYNC=true`, Drogon `orm::DbClient`
 > coroutines on the IO threads). The performance work below that targets the DB executor applies to the
 > legacy synchronous fallback (`DB_ASYNC=false`), which is kept for one release. See `aync_plan.md`.
@@ -23,7 +35,7 @@ Root cause: CORS headers were written in three places (creation advice, OPTIONS 
 
 ## 1. Security (do first: it also unblocks the fast-path work)
 
-- [ ] **Forged tokens accepted. One fix, two entry points.** [R1.1, R1.2, P8.1]
+- [x] **Forged tokens accepted. One fix, two entry points.** [R1.1, R1.2, P8.1] (session token compared in constant time; logout requires a matching stored session / returns 401 for missing token)
   - `SessionManager::clientHasValidSession` (`sessionmanager.cpp:156-186`) decodes the JWT without verifying the signature and looks the session up by `group_id`; it never compares the token with the one stored at login. Signature is only checked on a session miss.
   - Logout (`sessionmanager.cpp:102-118`) uses `jwt::decode` with no signature check (`ValidateToken` commented out), so a forged token can log any `clientId` out. `token.value()` at `:100` is unchecked: no token gives a `500` with raw `bad_optional_access` text.
   - Fix: look sessions up by a hash of the token (or compare the stored token in constant time) and take id, group and expiry from the stored session. A session hit then needs no JWT parse (this is also the speed win in [P8.1]). Keep signature verification in the slow path (`TokenManager::isTokenValid`). Make logout use the same lookup and return `401` when the token is missing.
@@ -34,11 +46,11 @@ Root cause: CORS headers were written in three places (creation advice, OPTIONS 
   - Open decisions: should the blacklist win over the whitelist (test `whitelist wins over blacklist` locks the current order in)? Is `X-Forwarded-For` needed? Behind Docker or a proxy `req->peerAddr()` (`ratelimit.hpp:27`) is the gateway, so every client shares one IP. Add opt-in trusted-proxy handling.
   - While in `ratelimit.hpp`: fix reply text/status (`RATELIMITED` says "IP is blacklisted." at `:45`; `BANNED` returns `503`, `429`/`403` fits) [R2.4]; hold the detector as a member instead of looking `GateKeeper` up in the Store per request; take one lock or shard by IP for counters; key by the 64-bit fingerprint; stop copying all headers into a new map; a rate-limited request calls `processRequest` twice [P8.2].
   - Tests: over-match cases (`192.168.1.50`, `127.0.0.10`), CIDR/wildcard, precedence, updated invalid-pattern test.
-- [ ] **`staff/add` has no permission check.** `StaffController<T>::AddStaffToEntity` (`staffcontroller.cpp:40`) marks `requester` as `[[maybe_unused]]` and never calls `gateKeeper->canManageStaff<T>(requester, _id, error)`, which `RemoveStaffFromEntity` (`:71`) and `InviteStaffToEntity` (`:95`) both do. Any authenticated client can add staff to any clinic, pharmacy, laboratory or radiology center.
+- [x] **`staff/add` has no permission check.** Fixed: `canManageStaff` called before insert in sync and async paths.
   - Fix: call `canManageStaff` before the insert and return 403 on failure, exactly as the other two do; remove `[[maybe_unused]]`.
   - Tests: `controllers/test_staff_controller.cpp`: a non-manager requester gets 403 on add; a manager still succeeds; extend `test_api.sh` with the same case. Re-check the per-endpoint query count afterwards (this adds one permission lookup: 1 query warm becomes 2 on a cold permission cache).
-- [ ] **Startup log prints DB password and JWT secret.** `configurator.hpp:106`, `:187` [R1.4]
-- [ ] **Native run with default `TOKEN_SECRET`.** Warn or refuse when it equals `Defaults::TokenParameters::TOKEN_SECRET_`. [R1.5]
+- [x] **Startup log prints DB password and JWT secret.** `configurator.hpp:106`, `:187` [R1.4] (redacted in printValues)
+- [x] **Native run with default `TOKEN_SECRET`.** Warn or refuse when it equals `Defaults::TokenParameters::TOKEN_SECRET_`. [R1.5] (warning emitted)
 - [ ] **Duplicate JSON keys.** Verify jsoncons rejects them; enable strict parsing if not. `validator.cpp:29-34`, `:82-86` [R1.6]
 
 ## 2. Performance
@@ -103,21 +115,21 @@ Source: per-route object count (about 16-24 objects per request, 1 locked `Store
 
 ## 3. Correctness bugs (independent of performance)
 
-- [ ] `communicate.cpp` captures `curl` and `data` by reference in a `static` map, so later requests use dangling references (`communicate.cpp:24-30`). [R2.2]
+- [x] `communicate.cpp` captures `curl` and `data` by reference in a `static` map, so later requests use dangling references (`communicate.cpp:24-30`). [R2.2] (made method map non-static)
 - [ ] Appointment update/delete use the read permission query; no update/delete queries defined. Decide the intended rule (`permissionmanager.cpp:159-179`). [R2.5]
-- [ ] Client validator coerces before type check (`validator.cpp:169`): numeric `phone` passes. [R2.6]
+- [x] Client validator coerces before type check (`validator.cpp:169`): numeric `phone` passes. [R2.6] (require string type)
 
 ## 4. API conformance (Schemathesis)
 
-- [ ] ST201: reject non-integer search numbers (`2.5` truncated by `as<size_t>()`) and unknown properties (`types.hpp`, `Search_t`); add unit tests. [R3.1]
+- [x] ST201: reject non-integer search numbers (`2.5` truncated by `as<size_t>()`) and unknown properties (`types.hpp`, `Search_t`); add unit tests. [R3.1] (integer checks + size check)
 - [ ] ST204 `Allow` header: resolved for Drogon-recognized methods; the 80 remaining failures are TRACE requests rejected during parsing before the pre-routing advice, so they return 405 without `Allow` or CORS headers.
 - [ ] Re-run the conformance suite: ST201 unchecked here; ST204 reduced to the parse-level TRACE case only. [R3.3]
 
 ## 5. Logging
 
-- [ ] `StaffData` uses `fmt::print` with no newline (`types.hpp:316`); use `Message::ErrorMessage`. [R5.5]
-- [ ] Direct output in `src/gatekeeper/dosdetector/dosdetector.cpp:360` and `:366` (`fmt::print` in error paths).
-- [ ] Direct output in `src/validator/databaseschema/databaseschema.cpp:59` (`fmt::print`).
+- [x] `StaffData` uses `fmt::print` with no newline (`types.hpp:316`); use `Message::ErrorMessage`. [R5.5]
+- [x] Direct output in `src/gatekeeper/dosdetector/dosdetector.cpp:360` and `:366` (`fmt::print` in error paths).
+- [x] Direct output in `src/validator/databaseschema/databaseschema.cpp:59` (`fmt::print`).
 - [ ] `src/main.cpp:17` uses `std::cerr` before the logger exists; probably acceptable.
 
 ## 6. Documentation
@@ -136,11 +148,11 @@ Linux is solid and macOS mostly fine; only the items below are worth doing.
 
 **High impact** (file : problem : affects)
 
-- [ ] **H6** `schemathesis_test.sh:47, 58-62`: `pip3 install --user` fails under PEP 668 (Debian 12+, Ubuntu 23.04+, Fedora, **Homebrew Python on macOS**). Use the venv approach already in `tools/docs/build.sh:22-27`. **macOS, newer Linux. Blocks the conformance re-run in section 4 on your Mac.**
+- [x] **H6** `schemathesis_test.sh:47, 58-62`: `pip3 install --user` fails under PEP 668 (Debian 12+, Ubuntu 23.04+, Fedora, **Homebrew Python on macOS**). Use the venv approach already in `tools/docs/build.sh:22-27`. **macOS, newer Linux. Blocks the conformance re-run in section 4 on your Mac.**
 - [ ] **H7** `python3` hard requirement in `fuzz_auth.sh:13`, `sqlmap_test.sh:62`, `schemathesis_test.sh:55`, `tools/docs/build.sh:20`, `valhalla.sh:1086,1092,1108`. Stock macOS ships only the Xcode shim. Add one shared "find python" helper.
-- [ ] **H11** `db_init.sh:1`: no shebang, no `set -e`, resolves `init.sql` from the current directory. Fails with Exec format error when run directly. All platforms.
-- [ ] **H12** `valhalla.sh:1092`: `outdated` hard-requires `python3`, but only the optional Hub-tag lookup at 1947 uses it (`registry_digest` does not). All platforms.
+- [x] **H11** `db_init.sh:1`: no shebang, no `set -e`, resolves `init.sql` from the current directory. Fails with Exec format error when run directly. All platforms.
+- [x] **H12** `valhalla.sh:1092`: `outdated` hard-requires `python3`, but only the optional Hub-tag lookup at 1947 uses it (`registry_digest` does not). All platforms.
 
 **Build script**
 
-- [ ] `build.sh:1`: `#!/bin/bash` should be `#!/usr/bin/env bash`, and add `set -euo pipefail` (today a failed `conan`/`cmake` still runs `ctest` and starts a stale binary). **This one can silently invalidate perf and test runs, so do it early.**
+- [x] `build.sh:1`: `#!/bin/bash` should be `#!/usr/bin/env bash`, and add `set -euo pipefail` (today a failed `conan`/`cmake` still runs `ctest` and starts a stale binary). **This one can silently invalidate perf and test runs, so do it early.**

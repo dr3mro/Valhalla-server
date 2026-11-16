@@ -177,6 +177,12 @@ bool Validator::clientRegexValidation(const jsoncons::json& data, api::v2::Http:
 
     for (const auto& item : data.object_range())
     {
+        if (!item.value().is_string())
+        {
+            error.message = "Value must be a string for key " + std::string(item.key());
+            error.code    = api::v2::Http::Status::BAD_REQUEST;
+            return false;
+        }
         std::optional<std::string> value = item.value().as<std::string>();
         if (value.has_value() && !value->empty())
         {

@@ -56,7 +56,7 @@ void DatabaseSchema::printSchema()
     {
         for (const auto& column : columns)
         {
-            fmt::print("{} : {} - {} - {} - {} \n", tableName, column.Name, column.DataType, column.Constraint, column.isNullable);
+            Message::InfoMessage(fmt::format("{} : {} - {} - {} - {} \n", tableName, column.Name, column.DataType, column.Constraint, column.isNullable));
         }
     }
 }

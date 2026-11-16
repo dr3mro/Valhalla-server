@@ -179,22 +179,58 @@ void SessionManager::logout(CALLBACK_&& callback, std::optional<Types::ClientLog
 {
     try
     {
-        auto        decodedToken = jwt::decode<jwt::traits::kazuho_picojson>(clientLoginData->token.value());
-        std::string message;
-
-        if (!decodeToken(clientLoginData, message, decodedToken))
+        if (!clientLoginData.has_value() || !clientLoginData->token.has_value())
         {
-            std::move(callback)(Http::Status::OK, JsonHelper::stringify(JsonHelper::jsonify(message)));
+            std::move(callback)(Http::Status::UNAUTHORIZED, JsonHelper::stringify(JsonHelper::jsonify("Missing token.")));
             return;
         }
 
-        // bool status = tokenManager->ValidateToken(loggedClientInfo);
-        // if (!status)
-        // {
-        //     callback(api::v2::Http::Status::UNAUTHORIZED, "Logout failure.");
-        //     Message::ErrorMessage("Logout failure.");
-        //     return;
-        // }
+        std::optional<jwt::decoded_jwt<jwt::traits::kazuho_picojson>> decodedToken;
+        std::string message;
+        try
+        {
+            decodedToken = jwt::decode<jwt::traits::kazuho_picojson>(clientLoginData->token.value());
+        }
+        catch (const std::exception&)
+        {
+            std::move(callback)(Http::Status::UNAUTHORIZED, JsonHelper::stringify(JsonHelper::jsonify("Invalid token.")));
+            return;
+        }
+
+        if (!decodeToken(clientLoginData, message, decodedToken.value()))
+        {
+            std::move(callback)(Http::Status::UNAUTHORIZED, JsonHelper::stringify(JsonHelper::jsonify(message)));
+            return;
+        }
+
+        // If a session is stored for this (group, client), the supplied token must match it
+        // (constant time) to prevent a forged JWT from logging a victim out.
+        std::string key = fmt::format("{}_{}", clientLoginData->group.value(), clientLoginData->clientId.value());
+        auto        session = clientsSessionsList->get(key);
+        if (session.has_value())
+        {
+            const std::string& stored_token   = session->token.value_or("");
+            const std::string& supplied_token = clientLoginData->token.value_or("");
+            if (stored_token.empty() || supplied_token.empty() || stored_token.size() != supplied_token.size())
+            {
+                std::move(callback)(Http::Status::UNAUTHORIZED, JsonHelper::stringify(JsonHelper::jsonify("Invalid token.")));
+                return;
+            }
+            bool tokens_equal = true;
+            for (size_t i = 0; i < stored_token.size(); ++i)
+            {
+                if (stored_token[i] != supplied_token[i])
+                {
+                    tokens_equal = false;
+                }
+            }
+            if (!tokens_equal)
+            {
+                std::move(callback)(Http::Status::UNAUTHORIZED, JsonHelper::stringify(JsonHelper::jsonify("Invalid token.")));
+                return;
+            }
+        }
+
         setNowLogoutTime(clientLoginData->clientId.value(), clientLoginData->group.value());
         removeSession(clientLoginData);
         std::move(callback)(api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(api::v2::JsonHelper::jsonify("Logout success.")));
@@ -223,6 +259,29 @@ bool SessionManager::clientHasValidSession(std::optional<Types::ClientLoginData>
         auto session = clientsSessionsList->get(key);
         if (session.has_value())
         {
+            // Compare the stored token with the supplied one in constant time so a
+            // forged JWT that happens to carry a valid (group, client) pair cannot
+            // hijack an existing session.
+            const std::string& stored_token   = session->token.value_or("");
+            const std::string& supplied_token = clientLoginData->token.value_or("");
+            if (stored_token.empty() || supplied_token.empty() || stored_token.size() != supplied_token.size())
+            {
+                return false;
+            }
+            bool tokens_equal = true;
+            for (size_t i = 0; i < stored_token.size(); ++i)
+            {
+                if (stored_token[i] != supplied_token[i])
+                {
+                    tokens_equal = false;
+                }
+            }
+            if (!tokens_equal)
+            {
+                return false;
+            }
+            // Trust the stored session's identity/expiry, not the (possibly forged) JWT.
+            clientLoginData = session.value();
             return true;
         }
     }

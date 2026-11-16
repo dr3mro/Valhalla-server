@@ -53,7 +53,7 @@ TEST_CASE("StaffController<Clinics>::AddStaffToEntity with valid payload proceed
 {
     StaffController<Clinics> ctrl;
     // Minimal valid payload for StaffData
-    auto r = capture([&](auto cb) { ctrl.AddStaffToEntity(std::move(cb), Requester(1, "owners"), R"({"payload":{"staff_id":10,"role":"nurse"}})"); });
+    auto r = capture([&](auto cb) { ctrl.AddStaffToEntity(std::move(cb), Requester(1, "owners"), R"({"id":1,"payload":{"staff_id":10,"role":"nurse"}})"); });
     // Passes JSON parse; reaches DB (unavailable) or returns a response — must not crash
     CHECK_FALSE(r.body.empty());
 }
