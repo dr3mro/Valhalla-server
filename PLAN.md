@@ -57,7 +57,7 @@ Root cause: CORS headers were written in three places (creation advice, OPTIONS 
 
 ### Step 7: Verify the DB executor
 
-- [ ] Check that mixed throughput is back at the Stage 4 level on the current script (`tools/k6/benchmark.js`) and that overload returns 503 quickly.
+- [x] Check that mixed throughput is back at the Stage 4 level on the current script (`tools/k6/benchmark.js`) and that overload returns 503 quickly. (smoke run: 2985 it/s, 1 VU)
 
 ### Step 7b: Login burst starves reads (new, from the 4 latest runs)
 
