@@ -192,7 +192,7 @@
 #     DB_USER               [postgres]  DB_PASS   [postgres]
 #     DB_MAX_CONN           connection pool size, keep >= SERVER_THREADS+1 [10]
 #     DB_ACQUIRE_TIMEOUT_MS ms to wait for a free connection, then 503   [3000]
-#     DB_ASYNC              async database access (Drogon DbClient), experimental [false]
+#     DB_ASYNC              async database access (Drogon DbClient) [true], false = legacy synchronous pool
 #   Caching
 #     PERMISSION_CACHE_TTL  idle seconds a cached permission is kept, 0 = off [300]
 #   Passwords (hashing runs on its own threads, never on request threads)

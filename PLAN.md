@@ -1,5 +1,9 @@
 # Valhalla Server: Combined Plan (remaining work + performance)
 
+> Note (1.0.3): database access is now asynchronous by default (`DB_ASYNC=true`, Drogon `orm::DbClient`
+> coroutines on the IO threads). The performance work below that targets the DB executor applies to the
+> legacy synchronous fallback (`DB_ASYNC=false`), which is kept for one release. See `aync_plan.md`.
+
 ## 0. CORS: top priority (front end is blocked; React at another port calls the API on `localhost:8080`)
 
 Root cause: CORS headers were written in three places (creation advice, OPTIONS branch, 405 branch) and `Allow` in two, and `Access-Control-Allow-Methods` was never sent, so PUT/DELETE preflights fail.

@@ -87,14 +87,16 @@ From a checkout of this repository, `./valhalla.sh` is the same tool (the instal
   - Every SQL value is a bound parameter (`pqxx::params`); identifiers come from schema-validated keys or allowlists.
   - Password hashing with `libsodium` (Argon2id), off the request threads.
   - Session and token managers.
-- **PostgreSQL persistence** via `libpqxx`, with a connection pool, a connection watchdog, and a database schema validator.
+- **PostgreSQL persistence** via Drogon's asynchronous `orm::DbClient` by default (`DB_ASYNC=true`; writes wrapped in transactions), with the legacy `libpqxx` connection pool, watchdog and schema validator kept behind `DB_ASYNC=false` for one release.
 - **CORS support** with pre-routing OPTIONS handling and standard CORS headers on every response.
 - **Structured logging** through `spdlog`, to console and/or file.
 - **12-factor configuration** — every setting is read from environment variables with sensible defaults.
 
 ## Architecture
 
-Requests flow through a layered pipeline. Drogon's IO threads only parse, route and answer; everything that can block (database calls, password hashing) runs on separate bounded worker pools.
+Requests flow through a layered pipeline. Drogon's IO threads only parse, route and answer.
+
+By default (`DB_ASYNC=true`) database work runs as coroutines on the IO threads over Drogon's asynchronous `orm::DbClient` — no DB worker pool, and a slow query never holds a request thread. Password hashing and login checks still run on the dedicated password worker pool. The legacy synchronous path (DB executor + connection pool, `DB_ASYNC=false`) is kept for one release as a fallback.
 
 ```
 HTTP request
@@ -103,16 +105,18 @@ HTTP request
 Drogon IO threads (SERVER_THREADS)
    ├─ CORS pre-routing advice (handles OPTIONS)
    ├─ Rate-limit / DoS filter       (in memory)
-   ├─ Token + session filter        (in memory, SECURE routes only)
+   ├─ Token + session filter        (SECURE routes only; the DB read on a token re-check is a coroutine)
    └─ Route (api/v2/routes): picks the controller, copies what it needs from the request
    │
-   ▼  submit()  ── queue full ──►  503 + Retry-After
-DB executor (DB_WORKERS threads, queue DB_QUEUE_MAX)
-   Controller (controllers/*)  ──►  permission check (RBAC, cached)  ──►  Entity (entities/*)
+   ▼  DB_ASYNC=true:
+   Controller (controllers/*)  ──►  permission check (RBAC, cached, coroutine on miss)  ──►  Entity (entities/*)
    │
    ▼
-Database controller  ──►  Connection pool (DB_MAX_CONN)  ──►  PostgreSQL
-   │                      └─ no free connection within DB_ACQUIRE_TIMEOUT_MS ──►  503
+Async DbClient (Drogon, DB_MAX_CONN connections)  ──►  PostgreSQL   (writes run in a transaction; pool exhaustion ──► 503)
+
+DB_ASYNC=false (legacy): the route hands the whole controller call to the DB executor
+(DB_WORKERS threads, queue DB_QUEUE_MAX; queue full ──► 503 + Retry-After), which runs it
+against the synchronous libpqxx connection pool (DB_MAX_CONN, DB_ACQUIRE_TIMEOUT_MS).
 
 Login, client create and client update hand their password work on to:
 Password worker (PASSWORD_WORKERS threads, queue PASSWORD_QUEUE_MAX)  ──►  Argon2id hash / verify
@@ -123,8 +127,8 @@ Password worker (PASSWORD_WORKERS threads, queue PASSWORD_QUEUE_MAX)  ──► 
 - **Controllers** (`src/controllers`) implement CRUD/search logic against a generic base.
 - **Entities** (`src/entities`) model the domain: people (users, providers), services (clinics, laboratories, pharmacies, radiology centers), patients, visits, and appointments.
 - **Gatekeeper** (`src/gatekeeper`) holds the cross-cutting security concerns: DoS detector, token and session managers, the permission manager with its idle-expiry cache, and password hashing (Argon2id, with legacy scrypt hashes still accepted at login).
-- **Concurrency** (`src/concurrency`) has `BoundedExecutor`, the fixed-size thread pool with a bounded queue that `submit()` never blocks on. The DB executor (`src/database/dbexecutor`) and the password worker are two instances. With zero workers a task runs inline, which the unit tests use.
-- **Database** (`src/database`) has the connection pool (`BlockingPool`, waits with a timeout and throws `DatabaseBusy`, which becomes 503), the watchdog that reconnects dropped connections, and the handler that borrows a connection for one query.
+- **Concurrency** (`src/concurrency`) has `BoundedExecutor`, the fixed-size thread pool with a bounded queue that `submit()` never blocks on. The DB executor (`src/database/dbexecutor`, legacy `DB_ASYNC=false` path) and the password worker are two instances. With zero workers a task runs inline, which the unit tests use.
+- **Database** (`src/database`) has the asynchronous client wrapper (`AsyncDbClient`, the default `DB_ASYNC=true` path), the legacy connection pool (`BlockingPool`, waits with a timeout and throws `DatabaseBusy`, which becomes 503), the watchdog that reconnects dropped connections, and the handler that borrows a connection for one query.
 - **Configurator** (`src/configurator`) loads and validates configuration from the environment at startup.
 - **Store** (`src/store`) provides shared singleton object access. Objects built for every request use `Store::cachedObject<T>()`, which keeps a per-thread pointer and only goes back to the Store when an object has been replaced (tests replace the database controller with a fake).
 
@@ -714,7 +718,7 @@ Server variables the image understands (server default in brackets):
   Passwords (hashing runs on its own threads, never on request threads)
     PASSWORD_WORKERS      threads for hashing/login checks, keep < DB_MAX_CONN [2]
     PASSWORD_QUEUE_MAX    waiting operations before new ones get 503      [64]
-  Database executor (blocking database work runs here, never on request threads)
+  Database executor (legacy DB_ASYNC=false path; blocking database work runs here)
     DB_WORKERS            threads for database work [DB_MAX_CONN]
     DB_QUEUE_MAX          waiting requests before new ones get 503 [256]
     DB_IO_FASTPATH        try each request on the IO thread first, queue it only if it needs the database [false]
@@ -784,6 +788,7 @@ All configuration is supplied through environment variables; defaults live in `s
 | `DB_SSL`      | `false`    | Enable SSL                                                                                                           |
 | `DB_MAX_CONN` | `10`       | Max pooled connections; keep it at least `SERVER_THREADS + 1` (the watchdog holds one)                                |
 | `DB_ACQUIRE_TIMEOUT_MS` | `3000` | Milliseconds a request waits for a free connection before it gets `503` with `Retry-After`                       |
+| `DB_ASYNC`    | `true`     | Asynchronous database access (Drogon `orm::DbClient` coroutines on the IO threads). `false` runs the legacy synchronous libpqxx pool behind the DB executor; kept for one release |
 
 ### Caching
 
@@ -797,9 +802,9 @@ All configuration is supplied through environment variables; defaults live in `s
 | -------------------- | ------- | ---------------------------------------------------------------------------------------------------- |
 | `PASSWORD_WORKERS`   | `2`     | Threads that hash and verify passwords (Argon2id), so request threads are never blocked; keep it below `DB_MAX_CONN`; `0` runs on the request thread |
 | `PASSWORD_QUEUE_MAX` | `64`    | Password operations that may wait for a worker; further ones get `503` with `Retry-After`            |
-| `DB_WORKERS`         | `DB_MAX_CONN` | Threads that run the blocking database work (permission check, query), so request threads are never blocked by a slow query; `0` runs on the request thread |
-| `DB_QUEUE_MAX`       | `256`   | Requests that may wait for a database worker; further ones get `503` with `Retry-After`              |
-| `DB_IO_FASTPATH`     | `false` | Run each request on the IO thread first; requests refused without a query (bad body, permission cache) answer there, the rest move to a database worker. Turn on only if the benchmark shows a gain |
+| `DB_WORKERS`         | `DB_MAX_CONN` | Legacy (`DB_ASYNC=false`) only: threads that run the blocking database work (permission check, query), so request threads are never blocked by a slow query; `0` runs on the request thread |
+| `DB_QUEUE_MAX`       | `256`   | Legacy (`DB_ASYNC=false`) only: requests that may wait for a database worker; further ones get `503` with `Retry-After` |
+| `DB_IO_FASTPATH`     | `false` | Legacy (`DB_ASYNC=false`) only: run each request on the IO thread first; requests refused without a query (bad body, permission cache) answer there, the rest move to a database worker |
 
 ### Authentication (JWT)
 
