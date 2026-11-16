@@ -22,6 +22,8 @@
 #include "entities/services/clinics/patient/patient.hpp"
 #include "gatekeeper/gatekeeper.hpp"
 #include "store/store.hpp"
+#include "drogon/utils/coroutine.h"
+#include "database/asyncdbclient.hpp"
 #include "utils/global/callback.hpp"
 #include "utils/global/global.hpp"
 #include "utils/global/http.hpp"
@@ -64,10 +66,23 @@ class Controller
     }
 
     template <typename T>
+    drogon::Task<void> CreateAsync(T& entity, CALLBACK_&& callback)
+    {
+        std::optional<std::string> (T::*sqlstatement)(pqxx::params&) = &T::getSqlCreateStatement;
+        co_await crudsAsync(entity, sqlstatement, &DatabaseController::executeQueryCoro, std::forward<CALLBACK_>(std::move(callback)));
+    }
+
+    template <typename T>
     void Read(T& entity, CALLBACK_&& callback)
     {
         std::optional<std::string> (T::*sqlstatement)(pqxx::params&) = &T::getSqlReadStatement;
         cruds(entity, sqlstatement, dbrexec, std::forward<CALLBACK_>(std::move(callback)));
+    }
+    template <typename T>
+    drogon::Task<void> ReadAsync(T& entity, CALLBACK_&& callback)
+    {
+        std::optional<std::string> (T::*sqlstatement)(pqxx::params&) = &T::getSqlReadStatement;
+        co_await crudsAsync(entity, sqlstatement, &DatabaseController::executeReadQueryCoro, std::forward<CALLBACK_>(std::move(callback)));
     }
     template <typename T>
     void Update(T& entity, CALLBACK_&& callback)
@@ -75,11 +90,25 @@ class Controller
         std::optional<std::string> (T::*sqlstatement)(pqxx::params&) = &T::getSqlUpdateStatement;
         cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK_>(std::move(callback)));
     }
+
+    template <typename T>
+    drogon::Task<void> UpdateAsync(T& entity, CALLBACK_&& callback)
+    {
+        std::optional<std::string> (T::*sqlstatement)(pqxx::params&) = &T::getSqlUpdateStatement;
+        co_await crudsAsync(entity, sqlstatement, &DatabaseController::executeQueryCoro, std::forward<CALLBACK_>(std::move(callback)));
+    }
     template <typename T>
     void Delete(T& entity, CALLBACK_&& callback)
     {
         std::optional<std::string> (T::*sqlstatement)(pqxx::params&) = &T::getSqlDeleteStatement;
         cruds(entity, sqlstatement, dbexec, std::forward<CALLBACK_>(std::move(callback)));
+    }
+
+    template <typename T>
+    drogon::Task<void> DeleteAsync(T& entity, CALLBACK_&& callback)
+    {
+        std::optional<std::string> (T::*sqlstatement)(pqxx::params&) = &T::getSqlDeleteStatement;
+        co_await crudsAsync(entity, sqlstatement, &DatabaseController::executeQueryCoro, std::forward<CALLBACK_>(std::move(callback)));
     }
     template <typename T>
     void Search(T& entity, CALLBACK_&& callback)
@@ -127,7 +156,6 @@ class Controller
             CRITICALMESSAGERESPONSE
         }
     }
-
     template <typename T>
     void Suspend(T& entity, CALLBACK_&& callback)
         requires(std::is_base_of_v<Client, T>)
@@ -142,6 +170,22 @@ class Controller
     {
         std::optional<std::string> (T::*sqlstatement)(pqxx::params&) = &T::getSqlActivateStatement;
         cruds(entity, sqlstatement, dbexec, std::move(callback));
+    }
+
+    template <typename T>
+    drogon::Task<void> SuspendAsync(T& entity, CALLBACK_&& callback)
+        requires(std::is_base_of_v<Client, T>)
+    {
+        std::optional<std::string> (T::*sqlstatement)(pqxx::params&) = &T::getSqlSuspendStatement;
+        co_await crudsAsync(entity, sqlstatement, &DatabaseController::executeQueryCoro, std::move(callback));
+    }
+
+    template <typename T>
+    drogon::Task<void> UnsuspendAsync(T& entity, CALLBACK_&& callback)
+        requires(std::is_base_of_v<Client, T>)
+    {
+        std::optional<std::string> (T::*sqlstatement)(pqxx::params&) = &T::getSqlActivateStatement;
+        co_await crudsAsync(entity, sqlstatement, &DatabaseController::executeQueryCoro, std::move(callback));
     }
 
     template <typename T>
@@ -175,6 +219,37 @@ class Controller
     }
 
     template <typename T>
+    drogon::Task<void> GetServicesAsync(T& entity, CALLBACK_&& callback)
+        requires(std::is_base_of_v<Client, T>)
+    {
+        std::optional<jsoncons::json> services;
+        std::optional<std::string>    query;
+
+        try
+        {
+            pqxx::params params;
+            query = entity.getSqlGetServicesStatement(params);
+
+            if (query.has_value())
+            {
+                auto db = Store::getObject<DatabaseController>();
+                services = co_await db->executeSearchQueryCoro(query.value(), params);
+
+                if (services.has_value())
+                {
+                    std::move(callback)(api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(services.value()));
+                    co_return;
+                }
+                std::move(callback)(api::v2::Http::Status::OK, "[]");
+            }
+        }
+        catch (const std::exception& e)
+        {
+            CRITICALMESSAGERESPONSE
+        }
+    }
+
+    template <typename T>
     void GetVisits(T& entity, CALLBACK_&& callback)
         requires std::is_same<T, Patient>::value
     {
@@ -189,6 +264,32 @@ class Controller
             if (query.has_value())
             {
                 visits = databaseController->executeSearchQuery(query.value(), params);
+            }
+
+            std::move(callback)(api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(visits));
+        }
+        catch (const std::exception& e)
+        {
+            CRITICALMESSAGERESPONSE
+        }
+    }
+
+    template <typename T>
+    drogon::Task<void> GetVisitsAsync(T& entity, CALLBACK_&& callback)
+        requires std::is_same<T, Patient>::value
+    {
+        jsoncons::json             visits;
+        std::optional<std::string> query;
+
+        try
+        {
+            pqxx::params params;
+            query = entity.getSqlGetVisitsStatement(params);
+
+            if (query.has_value())
+            {
+                auto db = Store::getObject<DatabaseController>();
+                visits = co_await db->executeSearchQueryCoro(query.value(), params);
             }
 
             std::move(callback)(api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(visits));
@@ -233,6 +334,42 @@ class Controller
 
                 std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Query returned empty result, please recheck your parameters.");
                 return;
+            }
+
+            std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Failed to create sql query");
+        }
+        catch (const std::exception& e)
+        {
+            CRITICALMESSAGERESPONSE
+        }
+    }
+
+    template <typename S, typename T>
+    drogon::Task<void> crudsAsync(T& entity, S& sqlstatement, drogon::Task<std::optional<jsoncons::json>> (DatabaseController::*func)(const std::string&, const pqxx::params&), CALLBACK_&& callback)
+    {
+        std::optional<jsoncons::json> results_j;
+        pqxx::params                  params;
+        try
+        {
+            std::optional<std::string> query = (entity.*sqlstatement)(params);
+            if (!query.has_value())
+            {
+                std::move(callback)(api::v2::Http::Status::BAD_REQUEST, fmt::format("Failed to get SQL statement for {}.", entity.getTableName()));
+                co_return;
+            }
+
+            auto db = Store::getObject<DatabaseController>();
+            results_j = co_await std::invoke(func, db.get(), query.value(), params);
+            if (results_j.has_value())
+            {
+                if (!results_j->empty())
+                {
+                    std::move(callback)(api::v2::Http::Status::OK, results_j.value().as<std::string>());
+                    co_return;
+                }
+
+                std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Query returned empty result, please recheck your parameters.");
+                co_return;
             }
 
             std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Failed to create sql query");
