@@ -41,7 +41,6 @@ ${C_BOLD}${C_Y}${E_BUILD}Build & run:${C_N}
   ${C_C}build openapi${C_N}    ${C_DIM}Regenerate OpenAPI docs${C_N}
   ${C_C}release${C_N}          ${C_DIM}Run Release server (./scripts/run/run_release.sh)${C_N}
   ${C_C}debug${C_N}            ${C_DIM}Run Debug server (./scripts/run/run_debug.sh)${C_N}
-  ${C_C}openapi${C_N}          ${C_DIM}Regenerate OpenAPI docs (alias for build openapi)${C_N}
 
 ${C_BOLD}${C_Y}${E_SERVER}Server lifecycle:${C_N}
   server start release|debug [--background]
@@ -266,7 +265,7 @@ case "$cmd" in
     bench|perf) "$ROOT/scripts/test/perf_baseline.sh" "$@" ;;
     lint) "$ROOT/scripts/qa/lint_sh.sh" "$@" ;;
     db-init) "$ROOT/scripts/run/db_init.sh" "$@" ;;
-    openapi) "$ROOT/tools/docs/build.sh" "$@" ;;
+
     peek) tail -f "$LOG_FILE" ;;
     server)
         sub="${1:-status}"; shift || true
