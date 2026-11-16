@@ -50,6 +50,24 @@ async function run() {
   const base = document.getElementById("base").value.replace(/\/$/, "");
   const credentials = document.getElementById("creds").checked ? "include" : "omit";
   let failed = 0;
+  row("settings", true, "page origin " + location.origin + "; API base " + base + "; credentials: " + credentials + "; " + navigator.userAgent);
+  if (credentials === "include") {
+    row("credentials mode", false, "credentials: include is on. Browsers reject Access-Control-Allow-Origin: * in that mode, so every call below is expected to fail. Untick the box unless the front end really sends cookies.");
+  }
+  // Reachability probe: a no-cors GET never needs CORS headers. If it resolves (opaque response), the server is reachable
+  // from this browser and any failure below is a CORS problem. If it rejects, the browser cannot reach the server at all
+  // (server down, wrong port, Docker port not published, IPv6/IPv4 mismatch, extension or ad blocker, VPN/proxy).
+  let reachable = false;
+  try {
+    await fetch(base + "/api/v2/hello", { mode: "no-cors", credentials: "omit", cache: "no-store" });
+    reachable = true;
+    row("reachability (no-cors GET /hello)", true, "the browser can reach the server; the failures below, if any, are CORS rules");
+  } catch (e) {
+    failed++;
+    row("reachability (no-cors GET /hello)", false,
+        "the browser cannot reach " + base + " at all (" + e.name + ": " + e.message + "). This is not a CORS rule. " +
+        "Open " + base + "/api/v2/hello in a new tab; try http://127.0.0.1:8080 instead of localhost; check the container is running and published with -p 8080:8080; disable ad blockers/extensions; check VPN/proxy. DevTools Console and Network tab show the exact net:: error.");
+  }
   for (const [name, method, path, headers, body] of CALLS) {
     try {
       const r = await fetch(base + path, { method, headers, body, mode: "cors", credentials });
@@ -59,7 +77,9 @@ async function run() {
       row(name, true, detail);
     } catch (e) {
       failed++;
-      row(name, false, e.name + ": " + e.message + " (blocked by the browser, see the Console for the CORS reason)");
+      row(name, false, e.name + ": " + e.message + (reachable
+        ? " (the server is reachable, so the browser blocked this on CORS rules; the Console shows which one)"
+        : " (the server is not reachable from this browser, see the reachability row)"));
     }
   }
   const total = document.createElement("p");
