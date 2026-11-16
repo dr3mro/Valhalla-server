@@ -28,40 +28,42 @@ mkdir -p "$STATE_DIR"
 # shellcheck disable=SC2153
 usage() {
     cat <<EOF
-${C_BOLD}Valhalla run tool${C_N}
+${C_BOLD}${C_M}╔══════════════════════════════════════╗${C_N}
+${C_BOLD}${C_M}║${C_N}  ${E_ROCKET} ${C_BOLD}${C_Y}Valhalla Run Tool${C_N}               ${C_BOLD}${C_M}║${C_N}
+${C_BOLD}${C_M}╚══════════════════════════════════════╝${C_N}
 
 ${C_BOLD}Usage:${C_N} ./run.sh <command> [args...]
 
 ${C_BOLD}${C_Y}${E_BUILD}  Build & run:${C_N}
-  build            Build Debug + Release
-  build release    Build Release only
-  build debug      Build Debug only
-  release          Run Release server (./scripts/run/run_release.sh)
-  debug            Run Debug server (./scripts/run/run_debug.sh)
-  openapi          Regenerate OpenAPI docs
+  ${C_C}build${C_N}            ${C_DIM}Build Debug + Release${C_N}
+  ${C_C}build release${C_N}    ${C_DIM}Build Release only${C_N}
+  ${C_C}build debug${C_N}      ${C_DIM}Build Debug only${C_N}
+  ${C_C}release${C_N}          ${C_DIM}Run Release server (./scripts/run/run_release.sh)${C_N}
+  ${C_C}debug${C_N}            ${C_DIM}Run Debug server (./scripts/run/run_debug.sh)${C_N}
+  ${C_C}openapi${C_N}          ${C_DIM}Regenerate OpenAPI docs${C_N}
 
 ${C_BOLD}${C_Y}${E_SERVER}  Server lifecycle:${C_N}
   server start release|debug [--background]
   server stop
   server status
   server restart release|debug
-  server peek                 Tail the background server log (Ctrl+C to stop; server keeps running)
+  ${C_C}server peek${C_N}                 ${C_DIM}Tail the background server log (Ctrl+C to stop; server keeps running)${C_N}
 
 ${C_BOLD}${C_Y}${E_TEST}  Tests:${C_N}
-  tests | unit     Run Catch2 unit tests (Debug + Release)
-  api              Run API tests (scripts/test/test_api.sh)
-  fuzz             Run fuzz_auth
-  sqlmap           Run sqlmap tests
-  schemathesis     Run schemathesis tests
-  cors             Run CORS tests
-  bench            Run performance baseline
-  lint             Run shell lint
-  db-init          Initialize database
-  all              Build, init DB, start server, run all tests, stop server
+  ${C_C}tests | unit${C_N}     ${C_DIM}Run Catch2 unit tests (Debug + Release)${C_N}
+  ${C_C}api${C_N}              ${C_DIM}Run API tests (scripts/test/test_api.sh)${C_N}
+  ${C_C}fuzz${C_N}             ${C_DIM}Run fuzz_auth${C_N}
+  ${C_C}sqlmap${C_N}           ${C_DIM}Run sqlmap tests${C_N}
+  ${C_C}schemathesis${C_N}     ${C_DIM}Run schemathesis tests${C_N}
+  ${C_C}cors${C_N}             ${C_DIM}Run CORS tests${C_N}
+  ${C_C}bench${C_N}            ${C_DIM}Run performance baseline${C_N}
+  ${C_C}lint${C_N}             ${C_DIM}Run shell lint${C_N}
+  ${C_C}db-init${C_N}          ${C_DIM}Initialize database${C_N}
+  ${C_C}all${C_N}              ${C_DIM}Build, init DB, start server, run all tests, stop server${C_N}
 
 ${C_BOLD}${C_Y}${E_INFO}  Other:${C_N}
-  list             List commands
-  help             Show this help
+  ${C_C}list${C_N}             ${C_DIM}List commands${C_N}
+  ${C_C}help${C_N}             ${C_DIM}Show this help${C_N}
 
 ${C_BOLD}Examples:${C_N}
   ./run.sh release --build
