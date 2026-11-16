@@ -37,7 +37,7 @@ namespace api::v2
        public:
         void Create(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& serviceType)
         {
-            const bool async = Store::getObject<Configurator>()->get<Configurator::DatabaseConfig>().async;
+            const bool async = asyncDb_;
             if (async)
             {
                 auto cb = std::move(callback);
@@ -89,7 +89,7 @@ namespace api::v2
 
         void Read(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& serviceType)
         {
-            const bool async = Store::getObject<Configurator>()->get<Configurator::DatabaseConfig>().async;
+            const bool async = asyncDb_;
             if (async)
             {
                 auto cb = std::move(callback);
@@ -145,7 +145,7 @@ namespace api::v2
             if (!id)
                 return;
 
-            const bool async = Store::getObject<Configurator>()->get<Configurator::DatabaseConfig>().async;
+            const bool async = asyncDb_;
             if (async)
             {
                 auto cb = std::move(callback);
@@ -200,7 +200,7 @@ namespace api::v2
             if (!id)
                 return;
 
-            const bool async = Store::getObject<Configurator>()->get<Configurator::DatabaseConfig>().async;
+            const bool async = asyncDb_;
             if (async)
             {
                 auto cb = std::move(callback);
@@ -251,7 +251,7 @@ namespace api::v2
         }
         void Search(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback)
         {
-            const bool async = Store::getObject<Configurator>()->get<Configurator::DatabaseConfig>().async;
+            const bool async = asyncDb_;
             if (async)
             {
                 auto cb = std::move(callback);
@@ -320,6 +320,7 @@ namespace api::v2
 
        private:
         std::shared_ptr<DbExecutor> dbExecutor = Store::getObject<DbExecutor>();  // runs the blocking database work, shared with every route
+        const bool asyncDb_ = Store::cachedObject<Configurator>()->get<Configurator::DatabaseConfig>().async;
         using ClinicVariant =
             std::variant<std::shared_ptr<ClinicController<Patient>>, std::shared_ptr<ClinicController<Visits>>, std::shared_ptr<ClinicController<VisitDrugs>>,
                 std::shared_ptr<ClinicController<Requests>>, std::shared_ptr<ClinicController<Prescriptions>>, std::shared_ptr<ClinicController<PaidServices>>,

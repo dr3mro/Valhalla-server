@@ -55,7 +55,7 @@ namespace api::v2
             if (!id)
                 return;
 
-            const bool async = Store::getObject<Configurator>()->get<Configurator::DatabaseConfig>().async;
+            const bool async = asyncDb_;
             if (async)
             {
                 auto cb = std::move(callback);
@@ -111,7 +111,7 @@ namespace api::v2
             if (!id)
                 return;
 
-            const bool async = Store::getObject<Configurator>()->get<Configurator::DatabaseConfig>().async;
+            const bool async = asyncDb_;
             if (async)
             {
                 auto cb = std::move(callback);
@@ -164,7 +164,7 @@ namespace api::v2
         void read(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& clientType)
         {
             // Prototype async path (DB_ASYNC=true, providers only): the read runs as a coroutine on the IO loop.
-            const bool async = Store::getObject<Configurator>()->get<Configurator::DatabaseConfig>().async;
+            const bool async = asyncDb_;
             if (async && (clientType == "users" || clientType == "providers"))
             {
                 auto cb = std::move(callback);
@@ -216,7 +216,7 @@ namespace api::v2
                         // Permission check (CPU-only for clients, no DB).
                         api::v2::Http::Error error;
                         // Extract controller to get gateKeeper? Use a default-constructed entity controller? We reuse sync permission via GateKeeper global.
-                        auto gateKeeper = Store::getObject<GateKeeper>(); // may not be registered; fallback
+                        auto gateKeeper = gateKeeper_; // may not be registered; fallback
                         // Simpler: use PermissionManager indirectly not available; skip? Instead keep sync check by constructing controller.
                         // For prototype, delegate permission check to the existing sync controller method is not possible async.
                         // We'll perform the same assert_group_id_match by calling GateKeeper if registered.
@@ -254,7 +254,7 @@ namespace api::v2
                             co_return;
                         }
 
-                        auto dbController = Store::getObject<DatabaseController>();
+                        auto dbController = dbController_;
                         auto result = co_await dbController->executeReadQueryCoro(query.value(), params);
                         if (result.has_value() && !result->empty())
                         {
@@ -304,7 +304,7 @@ namespace api::v2
             if (!id)
                 return;
 
-            const bool async = Store::getObject<Configurator>()->get<Configurator::DatabaseConfig>().async;
+            const bool async = asyncDb_;
             if (async)
             {
                 auto cb = std::move(callback);
@@ -355,7 +355,7 @@ namespace api::v2
         }
         void search(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& clientType)
         {
-            const bool async = Store::getObject<Configurator>()->get<Configurator::DatabaseConfig>().async;
+            const bool async = asyncDb_;
             if (async)
             {
                 auto cb = std::move(callback);
@@ -410,7 +410,7 @@ namespace api::v2
             if (!id)
                 return;
 
-            const bool async = Store::getObject<Configurator>()->get<Configurator::DatabaseConfig>().async;
+            const bool async = asyncDb_;
             if (async)
             {
                 auto cb = std::move(callback);
@@ -475,6 +475,9 @@ namespace api::v2
 
        private:
         std::shared_ptr<DbExecutor> dbExecutor = Store::getObject<DbExecutor>();  // runs the blocking database work, shared with every route
+        std::shared_ptr<GateKeeper> gateKeeper_ = Store::cachedObject<GateKeeper>();
+        std::shared_ptr<DatabaseController> dbController_ = Store::cachedObject<DatabaseController>();
+        const bool asyncDb_ = Store::cachedObject<Configurator>()->get<Configurator::DatabaseConfig>().async;
         using ClientVariant = std::variant<std::shared_ptr<ClientController<User>>, std::shared_ptr<ClientController<Provider>>>;
 
         std::unordered_map<std::string_view, ClientVariant> clientRegistry = {
