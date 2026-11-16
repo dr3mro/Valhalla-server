@@ -26,6 +26,7 @@ class ServiceController : public EntityController<T>, public ServiceControllerBa
     // CRUDS
     void Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
     void Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
+    drogon::Task<void> ReadAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
     void Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> _id) override;
     void Delete(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> _id) override;
     void Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
