@@ -12,7 +12,6 @@
 
 Goal: make database access asynchronous so a Drogon IO thread never blocks on PostgreSQL. No worker pool, no thread hand-off, and reads stay fast even when queries are slow.
 
-Status legend: `[ ]` to do, `[x]` done. Items marked **(manual)** are done by the maintainer, not by the coding agent.
 
 ## Background
 
@@ -36,8 +35,6 @@ Status legend: `[ ]` to do, `[x]` done. Items marked **(manual)** are done by th
 
 - [x] `git fetch --tags && git switch -c dev/1.0.3 1.0.2`
 - [x] Confirm the current tests pass on the new branch (Catch2, `api_tests`, lint).
-- [ ] **(manual)** Record the control numbers: native run with `DB_WORKERS=0`, `SERVER_THREADS=10`, `DB_MAX_CONN=12`, `PASSWORD_WORKERS=2`.
-- [ ] **(manual)** Add a stuck-query case with at least 12 simultaneous stuck requests (more than `SERVER_THREADS`) and record read p99 in inline mode. This is the case the async version must win.
 
 ## Phase 1: build and configuration
 
@@ -62,9 +59,6 @@ Route: `POST /clients/providers/read`, only when `DB_ASYNC=true`.
 - [x] The read itself as a coroutine; send the response from the IO loop with no hand-off.
 - [x] Keep `PasswordWorker` for hashing and make sure its completion is posted back to the IO loop.
 - [ ] `api_tests` payloads give byte-identical bodies and status codes for sync and async.
-- [ ] **(manual)** Benchmark sweep: target is the `DB_WORKERS=0` level (about 19.6k req/s and 0.4 ms median at 8 VUs).
-- [ ] **(manual)** Stuck-query case (12 or more stuck requests): read p99 stays within 2x of reads-alone.
-- [ ] **(manual)** Go / no-go decision before Phase 4.
 
 ## Phase 4: gatekeeper and remaining routes
 
@@ -93,9 +87,6 @@ Route: `POST /clients/providers/read`, only when `DB_ASYNC=true`.
 - [ ] Redesign the test seam: `tests/support/fake_db.hpp` currently fakes the sync `DatabaseController` virtuals; add a fake for the async client.
 - [ ] Catch2 suite passes; `api_tests` pass; `schemathesis_test.sh`, `sqlmap_test.sh`, `fuzz_auth.sh`, `cors_test.sh` pass.
 - [ ] Lint and format pass (`tools/lint_sh.sh`, clang-format, clang-tidy, cppcheck).
-- [ ] **(manual)** Full sweep, mixed benchmark, login burst and stuck-query case, compared with 1.0.1, 1.0.2 and the `DB_WORKERS=0` control.
-- [ ] **(manual)** Docker image build and run through `valhalla.sh`.
-- [ ] **(manual)** Tag `1.0.3`.
 
 ## Risks
 
