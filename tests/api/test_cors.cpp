@@ -35,6 +35,17 @@ TEST_CASE("Cors::apply sets the full header set on a normal response", "[api][co
     CHECK(response->getHeader("Allow").empty());                   // not a CORS header
 }
 
+TEST_CASE("Cors::apply does not duplicate a pre-existing Allow-Origin", "[api][cors]")
+{
+    auto response = drogon::HttpResponse::newHttpResponse();
+    response->addHeader("Access-Control-Allow-Origin", "*");
+
+    Cors::apply(makeRequest(drogon::Get), response);
+
+    CHECK(response->getHeader("Access-Control-Allow-Origin") == "*");
+    CHECK(response->headers().count("access-control-allow-origin") == 1);
+}
+
 TEST_CASE("Cors::apply is idempotent: applying it twice changes nothing", "[api][cors]")
 {
     auto       response = drogon::HttpResponse::newHttpResponse();

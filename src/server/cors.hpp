@@ -14,14 +14,16 @@
 /// and a header can never appear twice.
 namespace Cors
 {
-    inline constexpr const char* ALLOWED_METHODS         = "GET, POST, PUT, DELETE, HEAD, OPTIONS";
-    inline constexpr const char* DEFAULT_ALLOWED_HEADERS = "Content-Type, Authorization, Accept, X-Requested-With";
-    inline constexpr const char* EXPOSED_HEADERS         = "Retry-After, Content-Length";
-    inline constexpr const char* PREFLIGHT_MAX_AGE       = "7200";  // browsers cap this at 2 hours anyway
+    inline const std::string ALLOWED_METHODS         = "GET, POST, PUT, DELETE, HEAD, OPTIONS";
+    inline const std::string DEFAULT_ALLOWED_HEADERS = "Content-Type, Authorization, Accept, X-Requested-With";
+    inline const std::string EXPOSED_HEADERS         = "Retry-After, Content-Length";
+    inline const std::string PREFLIGHT_MAX_AGE       = "7200";  // browsers cap this at 2 hours anyway
 
+    // Drogon stores headers in a map keyed by the lower-cased name, so addHeader
+    // replaces any existing value instead of appending a second one. Removing
+    // first is therefore unnecessary; this saves one map operation per header.
     inline void set(const drogon::HttpResponsePtr& resp, const std::string& key, const std::string& value)
     {
-        resp->removeHeader(key);
         resp->addHeader(key, value);
     }
 
@@ -115,7 +117,6 @@ namespace Cors
             }
             if (found && !existing.empty())
             {
-                resp->removeHeader("Vary");
                 resp->addHeader("Vary", existing + ", " + value);
             }
             else
@@ -181,6 +182,15 @@ namespace Cors
 
     inline void apply(const drogon::HttpRequestPtr& req, const drogon::HttpResponsePtr& resp)
     {
+        // Cors::apply is the only writer; once its marker header is present the
+        // response is already complete, so there is nothing more to do.
+        const auto& existingHeaders = resp->headers();
+        const auto  originIt        = existingHeaders.find("access-control-allow-origin");
+        if (originIt != existingHeaders.end() && originIt->second == "*")
+        {
+            return;
+        }
+
         set(resp, "Access-Control-Allow-Origin", "*");
         set(resp, "Access-Control-Allow-Methods", ALLOWED_METHODS);
         set(resp, "Access-Control-Expose-Headers", EXPOSED_HEADERS);

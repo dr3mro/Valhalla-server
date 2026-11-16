@@ -4,6 +4,11 @@
 #include <string>
 #include <vector>
 
+#include <drogon/HttpRequest.h>
+#include <drogon/HttpResponse.h>
+#include <drogon/HttpTypes.h>
+
+#include "server/cors.hpp"
 #include "utils/memcache/memcache.hpp"
 #include "utils/threadsafequeue/threadsafequeue.hpp"
 
@@ -68,4 +73,38 @@ TEST_CASE("Benchmark: MemCache insert/get round trips", "[.benchmark]")
     INFO("insert 50000: " << insertMs << " ms; get 50000: " << getMs << " ms");
     CHECK(insertMs >= 0);
     CHECK(getMs >= 0);
+}
+
+TEST_CASE("Benchmark: Cors::apply on a fresh response", "[.benchmark]")
+{
+    if (!benchmarksRequested())
+    {
+        SKIP();
+    }
+
+    auto request = drogon::HttpRequest::newHttpRequest();
+    request->setMethod(drogon::Get);
+
+    const auto applyMs = measure(
+        [&](int /*i*/)
+        {
+            auto response = drogon::HttpResponse::newHttpResponse();
+            Cors::apply(request, response);
+        },
+        10000);
+
+    const auto oldMs = measure(
+        [&](int /*i*/)
+        {
+            auto response = drogon::HttpResponse::newHttpResponse();
+            response->addHeader("Access-Control-Allow-Origin", "*");
+            response->addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, HEAD, OPTIONS");
+            response->addHeader("Access-Control-Expose-Headers", "Retry-After, Content-Length");
+            response->addHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, Accept, X-Requested-With");
+        },
+        10000);
+
+    INFO("Cors::apply 10000 calls: " << applyMs << " ms; five addHeader calls 10000 times: " << oldMs << " ms");
+    CHECK(applyMs >= 0);
+    CHECK(oldMs >= 0);
 }
