@@ -1,0 +1,69 @@
+#include <catch2/catch_test_macros.hpp>
+#include <drogon/HttpRequest.h>
+#include <drogon/HttpResponse.h>
+#include <drogon/HttpTypes.h>
+
+#include <string>
+
+#include "server/cors.hpp"
+
+namespace
+{
+    drogon::HttpRequestPtr makeRequest(drogon::HttpMethod method, const std::string& requestedHeaders = "")
+    {
+        auto request = drogon::HttpRequest::newHttpRequest();
+        request->setMethod(method);
+        if (!requestedHeaders.empty())
+        {
+            request->addHeader("Access-Control-Request-Headers", requestedHeaders);
+        }
+        return request;
+    }
+}  // namespace
+
+TEST_CASE("Cors::apply sets the full header set on a normal response", "[api][cors]")
+{
+    auto response = drogon::HttpResponse::newHttpResponse();
+    Cors::apply(makeRequest(drogon::Get), response);
+
+    CHECK(response->getHeader("Access-Control-Allow-Origin") == "*");
+    CHECK(response->getHeader("Access-Control-Allow-Methods").find("PUT") != std::string::npos);
+    CHECK(response->getHeader("Access-Control-Allow-Methods").find("DELETE") != std::string::npos);
+    CHECK(response->getHeader("Access-Control-Allow-Headers") == Cors::DEFAULT_ALLOWED_HEADERS);
+    CHECK(response->getHeader("Access-Control-Expose-Headers").find("Retry-After") != std::string::npos);
+    CHECK(response->getHeader("Access-Control-Max-Age").empty());  // preflight only
+    CHECK(response->getHeader("Allow").empty());                   // not a CORS header
+}
+
+TEST_CASE("Cors::apply is idempotent: applying it twice changes nothing", "[api][cors]")
+{
+    auto response = drogon::HttpResponse::newHttpResponse();
+    const auto request = makeRequest(drogon::Get);
+
+    Cors::apply(request, response);
+    const auto once = response->getHeader("Access-Control-Allow-Origin");
+    const auto size = response->headers().size();
+
+    Cors::apply(request, response);
+    CHECK(response->getHeader("Access-Control-Allow-Origin") == once);
+    CHECK(response->headers().size() == size);
+}
+
+TEST_CASE("Cors::apply echoes the requested headers on a preflight only", "[api][cors]")
+{
+    SECTION("preflight")
+    {
+        auto response = drogon::HttpResponse::newHttpResponse();
+        Cors::apply(makeRequest(drogon::Options, "content-type, x-custom"), response);
+
+        CHECK(response->getHeader("Access-Control-Allow-Headers") == "content-type, x-custom");
+        CHECK(response->getHeader("Access-Control-Max-Age") == Cors::PREFLIGHT_MAX_AGE);
+    }
+    SECTION("a normal request never echoes request headers")
+    {
+        auto response = drogon::HttpResponse::newHttpResponse();
+        Cors::apply(makeRequest(drogon::Get, "x-evil"), response);
+
+        CHECK(response->getHeader("Access-Control-Allow-Headers") == Cors::DEFAULT_ALLOWED_HEADERS);
+    }
+}
