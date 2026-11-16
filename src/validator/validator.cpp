@@ -177,6 +177,22 @@ bool Validator::clientRegexValidation(const jsoncons::json& data, api::v2::Http:
 
     for (const auto& item : data.object_range())
     {
+        auto pattern_item = compiled_validators.find(std::string(item.key()));
+
+        // Keys without a validator are passed through untouched (no type requirement).
+        if (pattern_item == compiled_validators.end())
+        {
+            if (item.value().is_string())
+            {
+                std::optional<std::string> v = item.value().as<std::string>();
+                if (v.has_value() && !v->empty())
+                {
+                    db_data.insert({std::string(item.key()), *v});
+                }
+            }
+            continue;
+        }
+
         if (!item.value().is_string())
         {
             error.message = "Value must be a string for key " + std::string(item.key());
@@ -186,15 +202,10 @@ bool Validator::clientRegexValidation(const jsoncons::json& data, api::v2::Http:
         std::optional<std::string> value = item.value().as<std::string>();
         if (value.has_value() && !value->empty())
         {
-            auto pattern_item = compiled_validators.find(std::string(item.key()));
-
-            if (pattern_item != compiled_validators.end())
+            if (!std::regex_match(value.value(), pattern_item->second))
             {
-                if (!std::regex_match(value.value(), pattern_item->second))
-                {
-                    error = {.code = api::v2::Http::Status::BAD_REQUEST, .message = fmt::format("Key ({}) Value({}) is invalid.", item.key(), value.value())};
-                    return false;
-                }
+                error = {.code = api::v2::Http::Status::BAD_REQUEST, .message = fmt::format("Key ({}) Value({}) is invalid.", item.key(), value.value())};
+                return false;
             }
             db_data.insert({item.key(), value.value()});
         }
