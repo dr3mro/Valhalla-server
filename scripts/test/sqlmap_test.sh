@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # SQL-injection sweep of every Valhalla-server API endpoint, using sqlmap.
 #
-# 1. api_tests/sqlmap_gen.py runs the SAME 89-step test flow as test_api.sh/the docs page's benchmark
+# 1. tests/api_tests/sqlmap_gen.py runs the SAME 89-step test flow as test_api.sh/the docs page's benchmark
 #    panel against the live server (provider/user -> services -> patient -> health/drugs/reports ->
 #    visit -> requests/prescriptions/paidservices -> appointment -> suspend/activate -> clean-up) and
 #    snapshots a raw-HTTP request file for EVERY one of those 89 steps (one per step id, even when
@@ -23,7 +23,7 @@
 #
 # Usage:   ./sqlmap_test.sh
 # Env:     BASE_URL (default http://127.0.0.1:8080/api/v2)
-#          PAYLOAD_DIR (default api_tests/payloads next to this script)
+#          PAYLOAD_DIR (default tests/api_tests/payloads next to this script)
 #          OUT_DIR   (default sqlmap-results, next to this script)
 #          LEVEL (default 1) RISK (default 1)   - sqlmap's --level / --risk. The default sweep of all 89
 #            steps is meant to be quick; raise these (e.g. LEVEL=3 RISK=2, or even 5/3) for a
@@ -49,7 +49,7 @@ set -uo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BASE_URL="${BASE_URL:-http://127.0.0.1:8080/api/v2}"
-PAYLOAD_DIR="${PAYLOAD_DIR:-$ROOT/api_tests/payloads}"
+PAYLOAD_DIR="${PAYLOAD_DIR:-$ROOT/tests/api_tests/payloads}"
 OUT_DIR="${OUT_DIR:-$ROOT/sqlmap-results}"
 LEVEL="${LEVEL:-1}"
 RISK="${RISK:-1}"
@@ -57,7 +57,7 @@ SQLMAP_BIN="${SQLMAP_BIN:-sqlmap}"
 EXTRA_ARGS="${EXTRA_ARGS:-}"
 ONLY="${ONLY:-}"
 SKIP_SQLMAP="${SKIP_SQLMAP:-0}"
-GEN="$ROOT/api_tests/sqlmap_gen.py"
+GEN="$ROOT/tests/api_tests/sqlmap_gen.py"
 
 command -v python3 >/dev/null || { echo "error: 'python3' is required but was not found on PATH" >&2; exit 2; }
 [[ -f $GEN ]] || { echo "error: $GEN not found" >&2; exit 2; }

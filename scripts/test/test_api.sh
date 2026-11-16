@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # End-to-end curl test of every Valhalla-server API endpoint (api/v2).
 #
-# Request bodies live in api_tests/payloads/<group>/<name>.json. They are templates: {{NAME}} is replaced
+# Request bodies live in tests/api_tests/payloads/<group>/<name>.json. They are templates: {{NAME}} is replaced
 # with the shell variable NAME at run time (ids and tokens returned by earlier calls, run id, usernames...).
 # Numbers are written bare ({{CLINIC_ID}}), strings keep their quotes ("{{USER_USERNAME}}").
 #
@@ -11,7 +11,7 @@
 #
 # Usage:   ./test_api.sh
 # Env:     BASE_URL (default http://127.0.0.1:8080/api/v2)   VERBOSE=1 (print every response)
-#          PAYLOAD_DIR (default api_tests/payloads next to this script)   SKIP_SUSPEND=1   SAMPLES_OUT=file.jsonl (record responses for the docs)
+#          PAYLOAD_DIR (default tests/api_tests/payloads next to this script)   SKIP_SUSPEND=1   SAMPLES_OUT=file.jsonl (record responses for the docs)
 #          PROVIDER_USERNAME / USER_USERNAME (default: unique per run, so reruns never clash)
 # Note:    the server only implements DELETE for patients and visits; deleting health, drugs, reports,
 #          requests, prescriptions and paidservices returns 400 by design (rows go away via ON DELETE CASCADE).
@@ -23,7 +23,7 @@ set -uo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BASE_URL="${BASE_URL:-http://127.0.0.1:8080/api/v2}"
-PAYLOAD_DIR="${PAYLOAD_DIR:-$ROOT/api_tests/payloads}"
+PAYLOAD_DIR="${PAYLOAD_DIR:-$ROOT/tests/api_tests/payloads}"
 VERBOSE="${VERBOSE:-0}"
 RUN="$(date +%s | tail -c 7)"
 PROVIDER_USERNAME="${PROVIDER_USERNAME:-provider${RUN}}"
