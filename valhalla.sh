@@ -1905,7 +1905,7 @@ run_success() {
     printf '%s\n' "${S_ACC}${S_i_rocket:+$S_i_rocket$S_GAP}${S_B}Valhalla is up${S_R} ${S_OK}${S_i_ok:+$S_i_ok$S_GAP}${S_R}"
     printf '  %s%s%-10s%s %s\n' "$S_LBL" "${S_i_link:+$S_i_link$S_GAP}" "API:" "$S_R" "${S_VAL}${HEALTH_URL}${S_R}"
     printf '  %s%s%-10s%s %s\n' "$S_LBL" "${S_i_book:+$S_i_book$S_GAP}" "Docs:" "$S_R" "${S_INFO}${DOC_URL}${S_R}"
-    printf '  %s%s%-10s%s %s\n' "$S_LBL" "${S_i_server:+$S_i_server$S_GAP}" "Server:" "$S_R" "${S_VAL}$NAME${S_R} ${S_DIM}(running)${S_R}"
+    printf '  %s%s%-10s%s %s\n' "$S_LBL" "${S_i_server:+$S_i_server$S_GAP }" "Server:" "$S_R" "${S_VAL}$NAME${S_R} ${S_DIM}(running)${S_R}"
   }
 }
 

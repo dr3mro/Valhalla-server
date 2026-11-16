@@ -246,7 +246,7 @@ inline void __attribute((always_inline)) EntityController<T>::Search(CALLBACK_&&
 }
 
 template <typename T>
-inline drogon::Task<void> __attribute((always_inline)) EntityController<T>::CreateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+drogon::Task<void> EntityController<T>::CreateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
 {
     try
     {
@@ -297,7 +297,7 @@ inline drogon::Task<void> __attribute((always_inline)) EntityController<T>::Crea
     }
 }
 template <typename T>
-inline drogon::Task<void> __attribute((always_inline)) EntityController<T>::ReadAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+drogon::Task<void> EntityController<T>::ReadAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
 {
     try
     {
@@ -341,7 +341,7 @@ inline drogon::Task<void> __attribute((always_inline)) EntityController<T>::Read
     }
 }
 template <typename T>
-inline drogon::Task<void> __attribute((always_inline)) EntityController<T>::UpdateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data, const std::optional<uint64_t> _id)
+drogon::Task<void> EntityController<T>::UpdateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data, const std::optional<uint64_t> _id)
 {
     try
     {
@@ -398,7 +398,7 @@ inline drogon::Task<void> __attribute((always_inline)) EntityController<T>::Upda
     }
 }
 template <typename T>
-inline drogon::Task<void> __attribute((always_inline)) EntityController<T>::DeleteAsync(CALLBACK_&& callback, const Requester&& requester, const std::optional<uint64_t> _id)
+drogon::Task<void> EntityController<T>::DeleteAsync(CALLBACK_&& callback, const Requester&& requester, const std::optional<uint64_t> _id)
 {
     try
     {
@@ -426,7 +426,7 @@ inline drogon::Task<void> __attribute((always_inline)) EntityController<T>::Dele
     }
 }
 template <typename T>
-inline drogon::Task<void> __attribute((always_inline)) EntityController<T>::SearchAsync(CALLBACK_&& callback, [[maybe_unused]] const Requester&& requester, std::string_view data)
+drogon::Task<void> EntityController<T>::SearchAsync(CALLBACK_&& callback, [[maybe_unused]] const Requester&& requester, std::string_view data)
 {
     jsoncons::json request_json;
     try

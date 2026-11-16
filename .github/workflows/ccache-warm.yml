@@ -38,47 +38,15 @@ env:
   DEPS_IMAGE: docker.io/${{ secrets.DOCKER_USERNAME }}/valhalla-server-deps
 
 jobs:
-  # Rebuild the deps image only when its inputs changed in this push.
-  # Manual runs and pushes whose base commit is unknown always rebuild.
-  changes:
-    name: Detect Conan changes
-    runs-on: ubuntu-24.04
-    outputs:
-      deps: ${{ steps.diff.outputs.deps }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          fetch-depth: 0
-
-      - name: Diff deps inputs
-        id: diff
-        env:
-          BEFORE: ${{ github.event.before }}
-        run: |
-          if [ "$GITHUB_EVENT_NAME" != push ] || ! git cat-file -e "${BEFORE}^{commit}" 2>/dev/null; then
-            echo "deps=true" >> "$GITHUB_OUTPUT"
-          elif git diff --quiet "$BEFORE" "$GITHUB_SHA" -- conanfile.txt conan.lock docker/Dockerfile.deps; then
-            echo "deps=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "deps=true" >> "$GITHUB_OUTPUT"
-          fi
-
+  # No-op when an image for the current Conan inputs already exists.
   deps:
     name: Deps image
-    needs: changes
-    if: needs.changes.outputs.deps == 'true'
     uses: ./.github/workflows/deps.yml
     secrets: inherit
 
   warm:
     name: Build and test (${{ matrix.slug }})
-    needs: [changes, deps]
-    # Run after deps succeeds, or straight away when deps was skipped.
-    if: >-
-      !cancelled()
-      && needs.changes.result == 'success'
-      && (needs.deps.result == 'success' || needs.deps.result == 'skipped')
+    needs: deps
     runs-on: ${{ matrix.runner }}
     strategy:
       matrix:
@@ -92,6 +60,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Compute deps tag
+        id: dt
+        run: |
+          h=$(cat conanfile.txt conan.lock docker/Dockerfile.deps | sha256sum | cut -c1-12)
+          echo "tag=${h}-${{ matrix.slug }}" >> "$GITHUB_OUTPUT"
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
@@ -118,7 +92,7 @@ jobs:
           target: compile
           platforms: ${{ matrix.platform }}
           build-args: |
-            DEPS_IMAGE=${{ env.DEPS_IMAGE }}:${{ matrix.slug }}
+            DEPS_IMAGE=${{ env.DEPS_IMAGE }}:${{ steps.dt.outputs.tag }}
           cache-from: type=gha,scope=src-${{ matrix.slug }}
           cache-to: type=gha,scope=src-${{ matrix.slug }},mode=max
           outputs: type=cacheonly

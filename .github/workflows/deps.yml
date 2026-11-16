@@ -1,8 +1,8 @@
 name: Build deps image
 
-# Reusable: called by ccache-warm.yml on main when conanfile.txt, conan.lock
-# or Dockerfile.deps change, so the deps image is current before the ccache
-# warm build. Release builds use whatever image main last pushed.
+# Reusable: called by ccache-warm.yml and release.yml. The image is tagged
+# with a hash of conanfile.txt, conan.lock and Dockerfile.deps, so it is
+# built only when no image for those exact inputs exists yet, on any ref.
 on:
   workflow_call:
   workflow_dispatch:
@@ -55,13 +55,36 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Compute deps tag
+        id: dt
+        run: |
+          h=$(cat conanfile.txt conan.lock docker/Dockerfile.deps | sha256sum | cut -c1-12)
+          echo "tag=${h}-${{ matrix.slug }}" >> "$GITHUB_OUTPUT"
+
+      - name: Check whether this deps image already exists
+        id: exists
+        run: |
+          if docker buildx imagetools inspect "$DEPS_IMAGE:${{ steps.dt.outputs.tag }}" >/dev/null 2>&1; then
+            echo "found=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "found=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Build and push deps image
+        if: steps.exists.outputs.found != 'true'
         uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
         with:
           context: .
           file: docker/Dockerfile.deps
           platforms: ${{ matrix.platform }}
           push: true
-          tags: ${{ env.DEPS_IMAGE }}:${{ matrix.slug }}
+          tags: ${{ env.DEPS_IMAGE }}:${{ steps.dt.outputs.tag }}
           cache-from: type=gha,scope=deps-${{ matrix.slug }}
           cache-to: type=gha,scope=deps-${{ matrix.slug }},mode=max
+
+      # :<arch> stays as a convenience pointer to what main last used.
+      - name: Point :${{ matrix.slug }} at it (main only)
+        if: github.ref == 'refs/heads/main'
+        run: |
+          docker buildx imagetools create -t "$DEPS_IMAGE:${{ matrix.slug }}" \
+            "$DEPS_IMAGE:${{ steps.dt.outputs.tag }}"
