@@ -210,8 +210,8 @@ run_all() {
 
     if [[ $do_unit -eq 1 ]]; then
         step "Unit tests"
-        ctest --test-dir "$ROOT/build/Debug" --output-on-failure >/tmp/run_unit.log 2>&1
-        unit_rc=$?
+        ctest --test-dir "$ROOT/build/Debug" --progress --output-on-failure 2>&1 | tee /tmp/run_unit.log | perl -ne 'if (/Start\\s+(\\d+):\\s*(.*)/) { printf "\\r[%s] %s", $1, $2; $| = 1; } END { print "\\n" }'
+        unit_rc=${PIPESTATUS[0]}
         if [[ $unit_rc -eq 0 ]]; then record "unit tests" 0; else record "unit tests" 1; tail -20 /tmp/run_unit.log; fi
     fi
 
