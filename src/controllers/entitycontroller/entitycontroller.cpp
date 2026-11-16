@@ -340,6 +340,123 @@ inline drogon::Task<void> __attribute((always_inline)) EntityController<T>::Read
         CRITICALMESSAGERESPONSE
     }
 }
+template <typename T>
+inline drogon::Task<void> __attribute((always_inline)) EntityController<T>::UpdateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data, const std::optional<uint64_t> _id)
+{
+    try
+    {
+        bool                 success = false;
+        api::v2::Http::Error error;
+
+        if (!_id.has_value())
+        {
+            std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "No id provided.");
+            co_return;
+        }
+
+        std::optional<jsoncons::json> request_json;
+        try
+        {
+            request_json = jsoncons::json::parse(data);
+        }
+        catch (const std::exception&)
+        {
+            std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Invalid request body: malformed JSON.");
+            co_return;
+        }
+
+        if (!request_json.has_value())
+        {
+            std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Invalid request body.");
+            co_return;
+        }
+
+        Validator::Rule rule(Validator::Rule::Action::NONE, {});
+        success = Validator::validateDatabaseUpdateSchema(T::getTableName(), request_json, error, rule);
+
+        if (!success)
+        {
+            std::move(callback)(error.code, fmt::format("Failed to validate request body, {}.", error.message));
+            co_return;
+        }
+
+        if (!gateKeeper->canUpdate<T>(requester, _id.value(), error))
+        {
+            std::move(callback)(error.code, error.message);
+            co_return;
+        }
+
+        Update_t entity_data = Update_t(request_json.value(), _id.value());
+
+        T entity(entity_data);
+
+        co_await Controller::UpdateAsync(entity, std::move(callback));
+    }
+    catch (const std::exception& e)
+    {
+        CRITICALMESSAGERESPONSE
+    }
+}
+template <typename T>
+inline drogon::Task<void> __attribute((always_inline)) EntityController<T>::DeleteAsync(CALLBACK_&& callback, const Requester&& requester, const std::optional<uint64_t> _id)
+{
+    try
+    {
+        if (!_id.has_value())
+        {
+            std::move(callback)(api::v2::Http::Status::NOT_ACCEPTABLE, "Invalid id provided");
+            co_return;
+        }
+
+        HttpError error;
+
+        if (!gateKeeper->canDelete<T>(requester, _id.value(), error))
+        {
+            std::move(callback)(error.code, error.message);
+            co_return;
+        }
+
+        T entity(Delete_t(_id.value()));
+
+        co_await Controller::DeleteAsync(entity, std::move(callback));
+    }
+    catch (const std::exception& e)
+    {
+        CRITICALMESSAGERESPONSE
+    }
+}
+template <typename T>
+inline drogon::Task<void> __attribute((always_inline)) EntityController<T>::SearchAsync(CALLBACK_&& callback, [[maybe_unused]] const Requester&& requester, std::string_view data)
+{
+    jsoncons::json request_json;
+    try
+    {
+        request_json = jsoncons::json::parse(data);
+    }
+    catch (const std::exception&)
+    {
+        std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Invalid request body: malformed JSON.");
+        co_return;
+    }
+    try
+    {
+        bool success = false;
+        T    entity((Search_t(request_json, success)));
+
+        if (success)
+        {
+            co_await Controller::SearchAsync(entity, std::move(callback));
+        }
+        else
+        {
+            std::move(callback)(api::v2::Http::Status::NOT_ACCEPTABLE, "Failed to search");
+        }
+    }
+    catch (const std::exception& e)
+    {
+        CRITICALMESSAGERESPONSE
+    }
+}
 #define INSTANTIATE_ENTITY_CONTROLLER(TYPE) /*NOLINT*/                                                                                                  \
     template void EntityController<TYPE>::Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                             \
     template void EntityController<TYPE>::Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                               \
@@ -347,7 +464,10 @@ inline drogon::Task<void> __attribute((always_inline)) EntityController<T>::Read
     template void EntityController<TYPE>::Delete(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id);                        \
     template void EntityController<TYPE>::Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data); \
     template drogon::Task<void> EntityController<TYPE>::CreateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data);         \
-    template drogon::Task<void> EntityController<TYPE>::ReadAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data);
+    template drogon::Task<void> EntityController<TYPE>::ReadAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data);               \
+    template drogon::Task<void> EntityController<TYPE>::UpdateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> id); \
+    template drogon::Task<void> EntityController<TYPE>::DeleteAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id);        \
+    template drogon::Task<void> EntityController<TYPE>::SearchAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data);
 
 #include "gatekeeper/includes.hpp"  // IWYU pragma: keep
 // Instantiate for all entity types

@@ -157,6 +157,53 @@ class Controller
         }
     }
     template <typename T>
+    drogon::Task<void> SearchAsync(T& entity, CALLBACK_&& callback)
+    {
+        jsoncons::json response_json;
+        response_json["more"]   = false;
+        response_json["offset"] = 0;
+
+        std::optional<jsoncons::json> query_results_json_array;
+        std::optional<std::string>    query;
+
+        try
+        {
+            pqxx::params params;
+            query = entity.getSqlSearchStatement(params);
+
+            if (query.has_value())
+            {
+                query_results_json_array = co_await databaseController->executeSearchQueryCoro(query.value(), params);
+
+                if (query_results_json_array.has_value() && !query_results_json_array->empty())
+                {
+                    size_t results_count = query_results_json_array->size();
+                    if (results_count > std::get<Search_t>(entity.getData()).limit)
+                    {
+                        response_json["more"]   = true;
+                        response_json["offset"] = std::get<Search_t>(entity.getData()).offset + std::get<Search_t>(entity.getData()).limit;
+                        query_results_json_array->erase(query_results_json_array->array_range().end() - 1);
+                    }
+                }
+            }
+            if (query_results_json_array.has_value())
+            {
+                response_json["results"] = std::move(query_results_json_array.value());
+            }
+            else
+            {
+                response_json["results"] = jsoncons::json::array();
+            }
+
+            std::move(callback)(api::v2::Http::Status::OK, response_json.as<std::string>());
+        }
+        catch (const std::exception& e)
+        {
+            CRITICALMESSAGERESPONSE
+        }
+        co_return;
+    }
+    template <typename T>
     void Suspend(T& entity, CALLBACK_&& callback)
         requires(std::is_base_of_v<Client, T>)
     {

@@ -1,4 +1,5 @@
 #include "controllers/clientcontroller/clientcontroller.hpp"
+#include "drogon/utils/coroutine.h"
 
 #include <fmt/core.h>
 
@@ -250,12 +251,47 @@ void ClientController<T>::GetServices(CALLBACK_&& callback, const Requester&& re
     }
 }
 
+
+template <Client_t T>
+drogon::Task<void> ClientController<T>::CreateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+{
+    co_await EntityController<T>::CreateAsync(std::move(callback), std::move(requester), data);
+}
+
+template <Client_t T>
+drogon::Task<void> ClientController<T>::ReadAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+{
+    co_await EntityController<T>::ReadAsync(std::move(callback), std::move(requester), data);
+}
+
+template <Client_t T>
+drogon::Task<void> ClientController<T>::UpdateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data, const std::optional<uint64_t> _id)
+{
+    co_await EntityController<T>::UpdateAsync(std::move(callback), std::move(requester), data, _id);
+}
+
+template <Client_t T>
+drogon::Task<void> ClientController<T>::DeleteAsync(CALLBACK_&& callback, const Requester&& requester, const std::optional<uint64_t> client_id)
+{
+    co_await EntityController<T>::DeleteAsync(std::move(callback), std::move(requester), client_id);
+}
+
+template <Client_t T>
+drogon::Task<void> ClientController<T>::SearchAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+{
+    co_await EntityController<T>::SearchAsync(std::move(callback), std::move(requester), data);
+}
 #define INSTANTIATE_CLIENT_CONTROLLER(TYPE) /* NOLINT(cppcoreguidelines-macro-usage)*/                                                                    \
     template void ClientController<TYPE>::Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                               \
     template void ClientController<TYPE>::Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                                 \
     template void ClientController<TYPE>::Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> id);   \
     template void ClientController<TYPE>::Delete(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id);                   \
     template void ClientController<TYPE>::Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                               \
+    template drogon::Task<void> ClientController<TYPE>::CreateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data);           \
+    template drogon::Task<void> ClientController<TYPE>::ReadAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data);             \
+    template drogon::Task<void> ClientController<TYPE>::UpdateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> id); \
+    template drogon::Task<void> ClientController<TYPE>::DeleteAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id); \
+    template drogon::Task<void> ClientController<TYPE>::SearchAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data); \
     template void ClientController<TYPE>::Login(CALLBACK_&& callback, const Requester&& requester, std::string_view data, const std::string& ip_address); \
     template void ClientController<TYPE>::Logout(                                                                                                         \
         CALLBACK_&& callback, const Requester&& requester, const std::optional<std::string>& token, const std::string& ip_address);                       \

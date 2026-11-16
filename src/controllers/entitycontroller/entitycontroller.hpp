@@ -34,8 +34,11 @@ class EntityController : public Controller, public EntityControllerBase
     void Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
     drogon::Task<void> ReadAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
     void Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> _id) override;
+    drogon::Task<void> UpdateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> _id) override;
     void Delete(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> _id) override;
+    drogon::Task<void> DeleteAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> _id) override;
     void Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
+    drogon::Task<void> SearchAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
 
    private:
     std::shared_ptr<GateKeeper> gateKeeper = Store::getObject<GateKeeper>();
