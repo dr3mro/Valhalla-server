@@ -24,6 +24,8 @@ DOSDetector::DOSDetector()
 {
     try
     {
+        for (const auto& p : config_.whitelist) whitelist_.push_back(compileMatcher(p));
+        for (const auto& p : config_.blacklist) blacklist_.push_back(compileMatcher(p));
         async_task_clean_ = std::async(std::launch::async, &DOSDetector::cleanUpTask, this);
     }
     catch (const std::exception& e)
@@ -38,6 +40,8 @@ DOSDetector::DOSDetector(Configurator::DOSDetectorConfig config, ClockFn clock)
 {
     try
     {
+        for (const auto& p : config_.whitelist) whitelist_.push_back(compileMatcher(p));
+        for (const auto& p : config_.blacklist) blacklist_.push_back(compileMatcher(p));
         async_task_clean_ = std::async(std::launch::async, &DOSDetector::cleanUpTask, this);
     }
     catch (const std::exception& e)
@@ -220,11 +224,88 @@ inline std::optional<std::string> __attribute((always_inline)) DOSDetector::gene
     }
 }
 
+DOSDetector::Matcher DOSDetector::compileMatcher(const std::string& pattern) const
+{
+    if (pattern.rfind("re:", 0) == 0)
+    {
+        std::regex re(pattern.substr(3));
+        return [re](const std::string& ip) { return std::regex_search(ip, re); };
+    }
+    if (pattern.find('/') != std::string::npos)
+    {
+        // CIDR
+        std::string net = pattern.substr(0, pattern.find('/'));
+        int prefix = std::stoi(pattern.substr(pattern.find('/') + 1));
+        // parse IPv4
+        unsigned int a, b, c, d;
+        if (sscanf(net.c_str(), "%u.%u.%u.%u", &a, &b, &c, &d) == 4)
+        {
+            uint32_t network = (a << 24) | (b << 16) | (c << 8) | d;
+            uint32_t mask = prefix == 0 ? 0 : (0xFFFFFFFFu << (32 - prefix));
+            network &= mask;
+            return [network, mask](const std::string& ip)
+            {
+                unsigned int a2, b2, c2, d2;
+                if (sscanf(ip.c_str(), "%u.%u.%u.%u", &a2, &b2, &c2, &d2) != 4) return false;
+                uint32_t val = (a2 << 24) | (b2 << 16) | (c2 << 8) | d2;
+                return (val & mask) == network;
+            };
+        }
+        return [](const std::string&) { return false; };
+    }
+    if (pattern.find('*') != std::string::npos)
+    {
+        std::vector<std::string> parts;
+        std::string cur;
+        for (char ch : pattern)
+        {
+            if (ch == '.')
+            {
+                parts.push_back(cur);
+                cur.clear();
+            }
+            else
+            {
+                cur.push_back(ch);
+            }
+        }
+        parts.push_back(cur);
+        return [parts](const std::string& ip)
+        {
+            std::vector<std::string> ipParts;
+            std::string cur2;
+            for (char ch : ip)
+            {
+                if (ch == '.')
+                {
+                    ipParts.push_back(cur2);
+                    cur2.clear();
+                }
+                else
+                {
+                    cur2.push_back(ch);
+                }
+            }
+            ipParts.push_back(cur2);
+            if (ipParts.size() != parts.size()) return false;
+            for (size_t i = 0; i < parts.size(); ++i)
+            {
+                if (parts[i] != "*" && parts[i] != ipParts[i]) return false;
+            }
+            return true;
+        };
+    }
+    // exact
+    std::string exact = pattern;
+    return [exact](const std::string& ip) { return ip == exact; };
+}
+
 inline bool __attribute((always_inline)) DOSDetector::isWhitelisted(const std::string& remote_ip)
 {
     try
     {
-        return regexFind(remote_ip, whitelist_, whitelist_mutex_);
+        for (const auto& m : whitelist_) if (m(remote_ip)) return true;
+        return false;
     }
     catch (const std::exception& e)
     {
@@ -238,52 +319,13 @@ inline bool __attribute((always_inline)) DOSDetector::isBlacklisted(const std::s
 {
     try
     {
-        return regexFind(remote_ip, blacklist_, blacklist_mutex_);
+        for (const auto& m : blacklist_) if (m(remote_ip)) return true;
+        return false;
     }
     catch (const std::exception& e)
     {
         Message::ErrorMessage("Exception in isBlacklisted.");
         Message::CriticalMessage(e.what());
-        return false;
-    }
-}
-
-inline bool __attribute((always_inline)) DOSDetector::regexFind(const std::string& remote_ip, const std::unordered_set<std::string>& list, std::mutex& mtx)
-{
-    try
-    {
-        std::lock_guard<std::mutex> lock(mtx);
-
-        // Patterns are compiled once per thread and then reused; compiling a std::regex on every request is far more expensive
-        // than matching it. A pattern that does not compile is remembered as empty, so it is reported once and then skipped.
-        thread_local std::unordered_map<std::string, std::optional<std::regex>> compiled;
-
-        return std::ranges::any_of(list,
-            [&remote_ip](const std::string& pattern)
-            {
-                auto found = compiled.find(pattern);
-                if (found == compiled.end())
-                {
-                    std::optional<std::regex> regex_pattern;
-                    try
-                    {
-                        regex_pattern.emplace(pattern);
-                    }
-                    catch (const std::regex_error& e)
-                    {
-                        Message::ErrorMessage("Exception due to invalid regex pattern.");
-                        Message::CriticalMessage(e.what());
-                    }
-                    found = compiled.emplace(pattern, std::move(regex_pattern)).first;
-                }
-                return found->second.has_value() && std::regex_search(remote_ip, *found->second);
-            });
-    }
-    catch (const std::exception& e)
-    {
-        Message::ErrorMessage("Exception in regexFind.");
-        Message::CriticalMessage(e.what());
-
         return false;
     }
 }

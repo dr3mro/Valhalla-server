@@ -70,7 +70,7 @@ namespace
 TEST_CASE("DoSDetector anchored whitelist patterns do not over-match", "[gatekeeper][dos]")
 {
     DetectorFixture fixture(makeConfig(/*maxRequests*/ 10, /*maxFingerprints*/ 100, std::chrono::seconds{60}, std::chrono::seconds{30},
-        std::chrono::seconds{3600}, /*whitelist*/ {R"(^172\.17\.0\.1$)"}));
+        std::chrono::seconds{3600}, /*whitelist*/ {"172.17.0.1"}));
 
     REQUIRE(fixture.send("172.17.0.1", "body") == DOSDetector::Status::WHITELISTED);
     // An anchored pattern must not also match 172.17.0.10 .. 172.17.0.199.
@@ -212,7 +212,7 @@ TEST_CASE("DoSDetector window rollover: old requests no longer count against the
 TEST_CASE("DoSDetector whitelists IPs by exact match and regex", "[gatekeeper][dos]")
 {
     auto config      = makeConfig();
-    config.whitelist = {"192.168.1.5", R"(^10\.0\..*)"};
+    config.whitelist = {"192.168.1.5", "re:^10\\.0\\..*"};
     DetectorFixture fixture(std::move(config));
 
     CHECK(fixture.send("192.168.1.5", "x") == DOSDetector::Status::WHITELISTED);

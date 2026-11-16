@@ -82,14 +82,14 @@ class DOSDetector
     std::unordered_map<std::string, std::unordered_map<std::string, std::deque<std::chrono::steady_clock::time_point>>> requests_;
     std::unordered_map<std::string, std::chrono::steady_clock::time_point>                                              ratelimited_ips_;  // time to unblock
     std::unordered_map<std::string, std::chrono::steady_clock::time_point>                                              banned_ips_;       // time to unban
-    const std::unordered_set<std::string>                                                                               whitelist_ = config_.whitelist;
-    const std::unordered_set<std::string>                                                                               blacklist_ = config_.blacklist;
+    using Matcher = std::function<bool(const std::string&)>;
+    std::vector<Matcher> whitelist_;
+    std::vector<Matcher> blacklist_;
 
     std::mutex request_mutex_;
     std::mutex ratelimit_mutex_;
     std::mutex ban_mutex_;
-    std::mutex whitelist_mutex_;
-    std::mutex blacklist_mutex_;
+    // (no mutexes: matchers are compiled once at construction and then immutable)
 
     std::future<void>       async_task_clean_;
     std::atomic<bool>       running_clean_{true};
@@ -100,7 +100,7 @@ class DOSDetector
     inline std::optional<std::string> __attribute((always_inline)) generateRequestFingerprint(const DOSDetector::Request& request);
     inline bool __attribute((always_inline))                       isWhitelisted(const std::string& remote_ip);
     inline bool __attribute((always_inline))                       isBlacklisted(const std::string& remote_ip);
-    inline bool __attribute((always_inline)) regexFind(const std::string& remote_ip, const std::unordered_set<std::string>& list, std::mutex& mtx);
+    Matcher compileMatcher(const std::string& pattern) const;
     inline bool __attribute((always_inline)) isBanned(const std::string& remote_ip);
     inline bool __attribute((always_inline)) isRateLimited(const std::string& remote_ip);
     template <typename Map, typename Mutex>
