@@ -31,7 +31,7 @@ import sys
 import urllib.error
 import urllib.request
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "tools", "docs"))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "tools", "docs"))
 from steps import build_steps  # noqa: E402
 
 VAR_RE = re.compile(r"\{\{([A-Z_]+)\}\}")
