@@ -175,7 +175,7 @@ run_all() {
     local profile="release"
     local keep=0
     local do_unit=1 do_api=1 do_fuzz=1 do_cors=1
-    local do_cors_react=0 do_sqlmap=0 do_schemathesis=0
+    local do_cors_react=1 do_sqlmap=1 do_schemathesis=1
     for arg in "$@"; do
         case "$arg" in
             --debug) profile="debug" ;;
@@ -212,6 +212,7 @@ run_all() {
     local failures=0
     local -a SUITES=() RESULTS=() PLAIN=()
     record() { SUITES+=("$1"); if [[ $2 -eq 0 ]]; then RESULTS+=("${C_G}PASS${C_N}"); PLAIN+=("PASS"); else RESULTS+=("${C_R}FAIL${C_N}"); PLAIN+=("FAIL"); failures=$((failures+1)); fi; }
+    skip() { SUITES+=("$1"); RESULTS+=("${C_Y}SKIP${C_N}"); PLAIN+=("SKIP"); }
 
     if [[ $do_unit -eq 1 ]]; then
         step "Unit tests"
@@ -245,15 +246,23 @@ run_all() {
     fi
 
     if [[ $do_sqlmap -eq 1 ]]; then
-        step "SQLMap tests"
-        "$ROOT/scripts/test/sqlmap_test.sh" 2>&1 | tee /tmp/run_sqlmap.log
-        if [[ ${PIPESTATUS[0]} -eq 0 ]]; then record "sqlmap" 0; else record "sqlmap" 1; fi
+        if ! command -v sqlmap >/dev/null 2>&1; then
+            skip "sqlmap"
+        else
+            step "SQLMap tests"
+            "$ROOT/scripts/test/sqlmap_test.sh" 2>&1 | tee /tmp/run_sqlmap.log
+            if [[ ${PIPESTATUS[0]} -eq 0 ]]; then record "sqlmap" 0; else record "sqlmap" 1; fi
+        fi
     fi
 
     if [[ $do_schemathesis -eq 1 ]]; then
-        step "Schemathesis tests"
-        "$ROOT/scripts/test/schemathesis_test.sh" 2>&1 | tee /tmp/run_schemathesis.log
-        if [[ ${PIPESTATUS[0]} -eq 0 ]]; then record "schemathesis" 0; else record "schemathesis" 1; fi
+        if ! command -v st >/dev/null 2>&1 && ! python3 -c 'import schemathesis' 2>/dev/null; then
+            skip "schemathesis"
+        else
+            step "Schemathesis tests"
+            "$ROOT/scripts/test/schemathesis_test.sh" 2>&1 | tee /tmp/run_schemathesis.log
+            if [[ ${PIPESTATUS[0]} -eq 0 ]]; then record "schemathesis" 0; else record "schemathesis" 1; fi
+        fi
     fi
 
     if [[ $keep -eq 0 ]]; then
