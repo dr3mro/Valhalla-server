@@ -1,5 +1,17 @@
 # Valhalla Server: Combined Plan (remaining work + performance)
 
+## 0. CORS: top priority (front end is blocked; React at another port calls the API on `localhost:8080`)
+
+Root cause: CORS headers were written in three places (creation advice, OPTIONS branch, 405 branch) and `Allow` in two, and `Access-Control-Allow-Methods` was never sent, so PUT/DELETE preflights fail.
+
+- [x] One writer: `Cors::apply(req, resp)` in `src/server/cors.hpp`, called only from `registerPreSendingAdvice` in `server.cpp`. It removes each header before setting it, so applying it twice cannot duplicate anything. The creation advice and the `addCorsHeaders` calls are gone.
+- [x] Headers: `Allow-Origin: *`, `Allow-Methods: GET, POST, PUT, DELETE, HEAD, OPTIONS`, `Expose-Headers: Retry-After, Content-Length`, `Allow-Headers` default `Content-Type, Authorization, Accept, X-Requested-With` (on a preflight, echo `Access-Control-Request-Headers`), `Max-Age: 7200` on preflight only. `Allow` now appears only on the 405 reply (this also fixes ST204). `X-Powered-By` was removed.
+- [x] **Build and run (verified):** `HttpResponse::removeHeader`, `headers()`, `HttpRequest::getHeader` and `registerPreSendingAdvice(const HttpRequestPtr&, const HttpResponsePtr&)` all exist in Drogon 1.9.14 (conan.lock); the project builds (Debug + Release) and all 350 unit tests pass, including `tests/api/test_cors.cpp` (12 assertions, 3 cases).
+- [x] Run `./cors_test.sh` against a running server: each CORS header appears exactly once for GET, 404, 401, PUT/DELETE preflight and 405 (all 6 checks print "ok"). `tests/api/test_cors.cpp` passes. `test_api.sh` also passes (89 passed, 0 failed). No response carries `Allow` except 405 replies; `X-Powered-By` is gone.
+- [x] Checked whether pre-sending advice covers parse-error 400s generated inside Drogon: it does **not**. A malformed request line (e.g. `GET /bad http/1.1` or `GARBAGE`) makes Drogon return `HTTP/1.1 400 Bad Request` with only `Connection: close` and no CORS headers, because the response is produced during parsing before the pre-sending advice runs. Not worked around, per task rules; front ends hitting such errors will still see a CORS failure.
+- [ ] Only if the front end needs cookies or `withCredentials`: add a `CORS_ALLOWED_ORIGINS` env setting (comma-separated, default `*`), echo the matching `Origin` with `Vary: Origin` and `Allow-Credentials: true`; never combine `*` with credentials.
+- [ ] Docker: the front end's requests all arrive from the bridge gateway IP (about `172.17.0.1`). Whitelist it in the dev `WHITELIST`, or raise the dev rate limits, so React StrictMode double requests don't trigger a fingerprint ban.
+
 ## 1. Security (do first: it also unblocks the fast-path work)
 
 - [ ] **Forged tokens accepted. One fix, two entry points.** [R1.1, R1.2, P8.1]
