@@ -51,6 +51,7 @@ section "layout"
 # 5. qa lint
 section "lint"
 check "lint_sh" scripts/qa/lint_sh.sh
+check "check_init_sql_path" scripts/qa/check_init_sql_path.sh
 
 echo
 echo "Passed: $PASS  Failed: $FAIL"

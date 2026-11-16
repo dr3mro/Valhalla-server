@@ -141,7 +141,7 @@
       "-d",
       "postgres",
       "-f",
-      "init.sql",
+      "scripts/db/init.sql",
     ],
     "use_new_terminal": true,
     "allow_concurrent_runs": false,

@@ -73,7 +73,9 @@ def _parse_init_sql(path):
         tables[tname] = {"not_null": not_null, "fk": fk, "has_default": has_default}
     return tables
 
-TABLES = _parse_init_sql(os.path.join(PROJECT, "init.sql"))
+TABLES = _parse_init_sql(os.path.join(PROJECT, "scripts", "db", "init.sql"))
+if not TABLES:
+    raise SystemExit("build_docs: no tables parsed from init.sql - required-field inference would silently degrade")
 
 # The six "one JSONB blob per parent record" tables: their sole payload column has a SQL DEFAULT
 # (so the NOT-NULL/REFERENCES rule below would call it optional) but it's the entire reason the
