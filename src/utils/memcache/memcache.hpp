@@ -202,9 +202,20 @@ class MemCache
 
                 auto now = Clock::now();
 
-                while (!cacheList_.empty() && cacheList_.back().getExpiration() <= now)
+                // Expired entries can live anywhere after move-to-front, so scan the
+                // whole list instead of only evicting from the back.
+                auto it = cacheList_.begin();
+                while (it != cacheList_.end())
                 {
-                    evictOldest();
+                    if (it->getExpiration() <= now)
+                    {
+                        cacheMap_.erase(it->getKey());
+                        it = cacheList_.erase(it);
+                    }
+                    else
+                    {
+                        ++it;
+                    }
                 }
             }
         }
