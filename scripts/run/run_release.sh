@@ -5,7 +5,9 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-cd "$ROOT"
+RUN_DIR="$ROOT/build/run"
+mkdir -p "$RUN_DIR"
+cd "$RUN_DIR"
 
 if [[ -z ${ENV_FILE:-} ]]; then
   if [[ -f $ROOT/config ]]; then ENV_FILE="$ROOT/config"

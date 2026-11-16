@@ -130,7 +130,8 @@ if [[ $START == 1 && $MODE == native ]]; then
 	# Perf-run overrides: our port, no rate-limit bans, quiet console (the log goes to $SERVER_LOG).
 	export SERVER_PORT="$PORT" MAX_REQUESTS=100000000 MAX_FPS=100000000 WHITELIST="$WHITELIST" SERVER_LOG_TO_CONSOLE=false
 	if lsof -iTCP:"$PORT" -sTCP:LISTEN >/dev/null 2>&1; then echo "error: port $PORT is already in use; stop that server first" >&2; exit 1; fi
-	( cd "$ROOT" && exec "$BIN" ) >"$SERVER_LOG" 2>&1 &
+	mkdir -p "$ROOT/build/run"
+	( cd "$ROOT/build/run" && exec "$BIN" ) >"$SERVER_LOG" 2>&1 &
 	SRV_PID=$!
 elif [[ $START == 1 ]]; then
 	log "Starting server ($NAME on port $PORT)"
