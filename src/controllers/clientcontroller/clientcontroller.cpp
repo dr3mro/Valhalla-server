@@ -208,7 +208,7 @@ drogon::Task<void> ClientController<T>::SuspendAsync(CALLBACK_&& callback, const
         T           client(suspendData);
         HttpError   error;
 
-        if (!gateKeeper->canToggleActive<T>(requester, client_id.value(), error))
+        if (!co_await gateKeeper->canToggleActiveAsync<T>(requester, client_id.value(), error))
         {
             std::move(callback)(error.code, error.message);
             co_return;
@@ -267,7 +267,7 @@ drogon::Task<void> ClientController<T>::ActivateAsync(CALLBACK_&& callback, cons
         T client(suspendData);
 
         HttpError error;
-        if (!gateKeeper->canToggleActive<T>(requester, client_id.value(), error))
+        if (!co_await gateKeeper->canToggleActiveAsync<T>(requester, client_id.value(), error))
         {
             std::move(callback)(error.code, error.message);
             co_return;
@@ -330,7 +330,7 @@ drogon::Task<void> ClientController<T>::GetServicesAsync(CALLBACK_&& callback, c
         T client(Data_t(client_id.value()));
 
         HttpError error;
-        if (!gateKeeper->canGetServices<T>(requester, client_id.value(), error))
+        if (!co_await gateKeeper->canGetServicesAsync<T>(requester, client_id.value(), error))
         {
             std::move(callback)(error.code, error.message);
             co_return;

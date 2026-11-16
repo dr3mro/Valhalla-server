@@ -1,6 +1,7 @@
 #pragma once
 
 #include "gatekeeper/keeprbase/keeprbase.hpp"
+#include "drogon/utils/coroutine.h"
 namespace api
 {
     namespace v2
@@ -12,6 +13,7 @@ namespace api
             virtual ~TokenManager() = default;
             bool generateToken(std::optional<Types::ClientLoginData>& clientLoginData);
             bool isTokenValid(std::optional<Types::ClientLoginData>& clientLoginData, std::string& message);
+            drogon::Task<bool> isTokenValidCoro(std::optional<Types::ClientLoginData>& clientLoginData, std::string& message);
         };
     }  // namespace v2
 }  // namespace api

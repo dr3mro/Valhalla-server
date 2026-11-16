@@ -38,28 +38,50 @@ namespace api::v2
         void logout(CALLBACK_&& callback, const std::optional<std::string>& token, const std::string& ip_address, const std::string& group);
 
         bool isAuthenticationValid(std::optional<Types::ClientLoginData>& clientLoginData, std::string& message);
+        drogon::Task<bool> isAuthenticationValidAsync(std::optional<Types::ClientLoginData>& clientLoginData, std::string& message);
         void removeSession(std::optional<uint64_t> client_id, const std::string& group);
 
         template <typename T>
         bool canCreate(const Requester& requester, const std::optional<jsoncons::json>& data_j, Http::Error& error);
 
         template <typename T>
+        drogon::Task<bool> canCreateAsync(const Requester& requester, const std::optional<jsoncons::json>& data_j, Http::Error& error);
+
+        template <typename T>
         bool canRead(const Requester& requester, uint64_t entity_id, Http::Error& error);
+
+        template <typename T>
+        drogon::Task<bool> canReadAsync(const Requester& requester, uint64_t entity_id, Http::Error& error);
 
         template <typename T>
         bool canUpdate(const Requester& requester, uint64_t entity_id, Http::Error& error);
 
         template <typename T>
+        drogon::Task<bool> canUpdateAsync(const Requester& requester, uint64_t entity_id, Http::Error& error);
+
+        template <typename T>
         bool canDelete(const Requester& requester, uint64_t entity_id, Http::Error& error);
 
         template <typename T>
+        drogon::Task<bool> canDeleteAsync(const Requester& requester, uint64_t entity_id, Http::Error& error);
+
+        template <typename T>
         bool canManageStaff(const Requester& requester, uint64_t _id, Http::Error& error);
+
+        template <typename T>
+        drogon::Task<bool> canManageStaffAsync(const Requester& requester, uint64_t _id, Http::Error& error);
 
         template <Client_t T>
         bool canToggleActive(const Requester& requester, uint64_t _id, Http::Error& error);
 
         template <Client_t T>
+        drogon::Task<bool> canToggleActiveAsync(const Requester& requester, uint64_t _id, Http::Error& error);
+
+        template <Client_t T>
         bool canGetServices(const Requester& requester, uint64_t _id, Http::Error& error);
+
+        template <Client_t T>
+        drogon::Task<bool> canGetServicesAsync(const Requester& requester, uint64_t _id, Http::Error& error);
 
         DOSDetector::Status isDosAttack(const DOSDetector::Request& request);
 

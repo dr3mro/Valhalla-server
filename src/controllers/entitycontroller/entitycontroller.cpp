@@ -279,7 +279,7 @@ inline drogon::Task<void> __attribute((always_inline)) EntityController<T>::Crea
             co_return;
         }
 
-        if (!gateKeeper->canCreate<T>(requester, request_j, error))
+        if (!co_await gateKeeper->canCreateAsync<T>(requester, request_j, error))
         {
             std::move(callback)(error.code, error.message);
             co_return;
@@ -317,7 +317,7 @@ inline drogon::Task<void> __attribute((always_inline)) EntityController<T>::Read
         }
         HttpError error;
 
-        if (!gateKeeper->canRead<T>(requester, _id, error))
+        if (!co_await gateKeeper->canReadAsync<T>(requester, _id, error))
         {
             std::move(callback)(error.code, error.message);
             co_return;
@@ -380,7 +380,7 @@ inline drogon::Task<void> __attribute((always_inline)) EntityController<T>::Upda
             co_return;
         }
 
-        if (!gateKeeper->canUpdate<T>(requester, _id.value(), error))
+        if (!co_await gateKeeper->canUpdateAsync<T>(requester, _id.value(), error))
         {
             std::move(callback)(error.code, error.message);
             co_return;
@@ -410,7 +410,7 @@ inline drogon::Task<void> __attribute((always_inline)) EntityController<T>::Dele
 
         HttpError error;
 
-        if (!gateKeeper->canDelete<T>(requester, _id.value(), error))
+        if (!co_await gateKeeper->canDeleteAsync<T>(requester, _id.value(), error))
         {
             std::move(callback)(error.code, error.message);
             co_return;

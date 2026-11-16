@@ -1,5 +1,7 @@
 #include "gatekeeper/permissionmanager/permissionmanager.hpp"
 
+#include "drogon/utils/coroutine.h"
+
 #include <fmt/core.h>
 
 #include <cstdint>
@@ -181,20 +183,184 @@ bool PermissionManager::canDelete(const Requester& requester, uint64_t appointme
     return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error, Permissions::PowerLevel::CAN_DELETE);
 }
 
-#define INSTANTIATE_PERMISSION_CRUD(TYPE)                                                                                 \
-    template bool PermissionManager::canCreate<TYPE>(const Requester&, const std::optional<jsoncons::json>&, HttpError&); \
-    template bool PermissionManager::canRead<TYPE>(const Requester&, const uint64_t entity_id, HttpError&);               \
-    template bool PermissionManager::canUpdate<TYPE>(const Requester&, const uint64_t entity_id, HttpError&);             \
-    template bool PermissionManager::canDelete<TYPE>(const Requester&, const uint64_t entity_id, HttpError&);
 
-#define INSTANTIATE_PERMISSION_CLIENT(TYPE)                                                                                 \
-    INSTANTIATE_PERMISSION_CRUD(TYPE)                                                                                       \
-    template bool PermissionManager::canGetServices<TYPE>(const Requester& requester, const uint64_t id, HttpError& error); \
-    template bool PermissionManager::canToggleActive<TYPE>(const Requester& requester, const uint64_t id, HttpError& error);
+template <Client_t T>
+drogon::Task<bool> PermissionManager::canCreateAsync(
+    [[maybe_unused]] const Requester& requester, [[maybe_unused]] const std::optional<jsoncons::json>& data_j, [[maybe_unused]] Http::Error& error)
+{
+    co_return true;
+}
 
-#define INSTANTIATE_PERMISSION_ENTITY(TYPE) \
-    INSTANTIATE_PERMISSION_CRUD(TYPE)       \
-    template bool PermissionManager::canManageStaff<TYPE>(const Requester&, const uint64_t entity_id, HttpError&);
+template <Client_t T>
+drogon::Task<bool> PermissionManager::canReadAsync(const Requester& requester, uint64_t client_id, HttpError& error)
+{
+    co_return pm_priv::assert_group_id_match(requester, T::getTableName(), client_id, error);
+}
+template <Client_t T>
+drogon::Task<bool> PermissionManager::canUpdateAsync(const Requester& requester, uint64_t client_id, HttpError& error)
+{
+    co_return pm_priv::assert_group_id_match(requester, T::getTableName(), client_id, error);
+}
+template <Client_t T>
+drogon::Task<bool> PermissionManager::canDeleteAsync(const Requester& requester, const uint64_t client_id, HttpError& error)
+{
+    co_return pm_priv::assert_group_id_match(requester, T::getTableName(), client_id, error);
+}
+
+template <Client_t T>
+drogon::Task<bool> PermissionManager::canToggleActiveAsync(const Requester& requester, const uint64_t client_id, Http::Error& error)
+{
+    co_return pm_priv::assert_group_id_match(requester, T::getTableName(), client_id, error);
+}
+
+template <Client_t T>
+drogon::Task<bool> PermissionManager::canGetServicesAsync(const Requester& requester, const uint64_t client_id, Http::Error& error)
+{
+    co_return pm_priv::assert_group_id_match(requester, T::getTableName(), client_id, error);
+}
+
+template <Service_t T>
+drogon::Task<bool> PermissionManager::canCreateAsync(const Requester& requester, const std::optional<jsoncons::json>& service_j, Http::Error& error)
+{
+    co_return pm_priv::preServiceCreateChecks(requester, service_j, error);
+}
+
+template <Service_t T>
+drogon::Task<bool> PermissionManager::canReadAsync(const Requester& requester, uint64_t service_id, Http::Error& error)
+{
+    const std::string             service_name  = T::getTableName();
+    std::optional<jsoncons::json> permissions_j = co_await pm_priv::getPermissionsOfEntityCoro(T::getServicePermissionsQuery, service_name, service_id);
+
+    co_return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error, Permissions::PowerLevel::CAN_READ);
+}
+
+template <Service_t T>
+drogon::Task<bool> PermissionManager::canUpdateAsync(const Requester& requester, uint64_t service_id, Http::Error& error)
+{
+    const std::string             service_name  = T::getTableName();
+    std::optional<jsoncons::json> permissions_j = co_await pm_priv::getPermissionsOfEntityCoro(T::getServicePermissionsQuery, service_name, service_id);
+
+    co_return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error, Permissions::PowerLevel::CAN_WRITE);
+}
+
+template <Service_t T>
+drogon::Task<bool> PermissionManager::canDeleteAsync(const Requester& requester, const uint64_t service_id, Http::Error& error)
+{
+    const std::string             service_name  = T::getTableName();
+    std::optional<jsoncons::json> permissions_j = co_await pm_priv::getPermissionsOfEntityCoro(T::getServicePermissionsQuery, service_name, service_id);
+
+    co_return pm_priv::isOwnerOfService(requester, permissions_j, service_name, error);
+}
+
+template <typename T>
+drogon::Task<bool> PermissionManager::canManageStaffAsync(const Requester& requester, uint64_t service_id, Http::Error& error)
+{
+    std::string                   service_name  = T::getTableName();
+    std::optional<jsoncons::json> permissions_j = co_await pm_priv::getPermissionsOfEntityCoro(T::getServicePermissionsQuery, service_name, service_id);
+
+    co_return pm_priv::isOwnerOrAdmin(requester, permissions_j, service_name, error);
+}
+
+template <Case_t T>
+drogon::Task<bool> PermissionManager::canCreateAsync(const Requester& requester, const std::optional<jsoncons::json>& data_j, Http::Error& error)
+{
+    std::string                   service_name  = T::getTableName();
+    std::optional<jsoncons::json> permissions_j = co_await pm_priv::getPermissionsOfEntityCoro(T::getPermissionsQueryForCreate, data_j);
+
+    co_return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error, Permissions::PowerLevel::CAN_WRITE);
+}
+
+template <Case_t T>
+drogon::Task<bool> PermissionManager::canReadAsync(const Requester& requester, const uint64_t _id, Http::Error& error)
+{
+    std::string                   service_name  = T::getTableName();
+    std::optional<jsoncons::json> permissions_j = co_await pm_priv::getPermissionsOfEntityCoro(T::getPermissionsQueryForRead, _id);
+
+    co_return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error, Permissions::PowerLevel::CAN_READ);
+}
+
+template <Case_t T>
+drogon::Task<bool> PermissionManager::canUpdateAsync(const Requester& requester, const uint64_t _id, Http::Error& error)
+{
+    std::string                   service_name  = T::getTableName();
+    std::optional<jsoncons::json> permissions_j = co_await pm_priv::getPermissionsOfEntityCoro(&T::getPermissionsQueryForUpdate, _id);
+
+    co_return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error, Permissions::PowerLevel::CAN_WRITE);
+}
+
+template <Case_t T>
+drogon::Task<bool> PermissionManager::canDeleteAsync(const Requester& requester, const uint64_t _id, Http::Error& error)
+{
+    std::string                   service_name  = T::getTableName();
+    std::optional<jsoncons::json> permissions_j = co_await pm_priv::getPermissionsOfEntityCoro(&T::getPermissionsQueryForDelete, _id);
+
+    co_return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error, Permissions::PowerLevel::CAN_DELETE);
+}
+
+template <Appointment_t T>
+drogon::Task<bool> PermissionManager::canCreateAsync(const Requester& requester, const std::optional<jsoncons::json>& service_j, Http::Error& error)
+{
+    std::string service_name = T::getOrgName();
+
+    auto service_id = pm_priv::extract_json_value_safely<uint64_t>(service_j, "clinic_id", service_name, error);
+
+    if (!service_id.has_value())
+    {
+        co_return false;
+    }
+    std::optional<jsoncons::json> permissions_j = co_await pm_priv::getPermissionsOfEntityCoro(T::getServicePermissionsQuery, service_name, service_id.value());
+
+    co_return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error, Permissions::PowerLevel::CAN_WRITE);
+}
+
+template <Appointment_t T>
+drogon::Task<bool> PermissionManager::canReadAsync(const Requester& requester, uint64_t appointment_id, Http::Error& error)
+{
+    std::string                   service_name  = T::getOrgName();
+    std::optional<jsoncons::json> permissions_j = co_await pm_priv::getPermissionsOfEntityCoro(T::getPermissionsQueryForRead, appointment_id);
+
+    co_return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error, Permissions::PowerLevel::CAN_READ);
+}
+
+template <Appointment_t T>
+drogon::Task<bool> PermissionManager::canUpdateAsync(const Requester& requester, const uint64_t appointment_id, Http::Error& error)
+{
+    std::string                   service_name  = T::getOrgName();
+    std::optional<jsoncons::json> permissions_j = co_await pm_priv::getPermissionsOfEntityCoro(T::getPermissionsQueryForRead, appointment_id);
+
+    co_return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error, Permissions::PowerLevel::CAN_WRITE);
+}
+
+template <Appointment_t T>
+drogon::Task<bool> PermissionManager::canDeleteAsync(const Requester& requester, uint64_t appointment_id, Http::Error& error)
+{
+    std::string                   service_name  = T::getOrgName();
+    std::optional<jsoncons::json> permissions_j = co_await pm_priv::getPermissionsOfEntityCoro(T::getPermissionsQueryForRead, appointment_id);
+
+    co_return pm_priv::isOwnerOrAdminOrHasPermission(requester, permissions_j, service_name, error, Permissions::PowerLevel::CAN_DELETE);
+}
+
+#define INSTANTIATE_PERMISSION_CRUD(TYPE)                                                                                           \
+    template bool PermissionManager::canCreate<TYPE>(const Requester&, const std::optional<jsoncons::json>&, HttpError&);            \
+    template bool PermissionManager::canRead<TYPE>(const Requester&, const uint64_t entity_id, HttpError&);                         \
+    template bool PermissionManager::canUpdate<TYPE>(const Requester&, const uint64_t entity_id, HttpError&);                       \
+    template bool PermissionManager::canDelete<TYPE>(const Requester&, const uint64_t entity_id, HttpError&);                       \
+    template drogon::Task<bool> PermissionManager::canCreateAsync<TYPE>(const Requester&, const std::optional<jsoncons::json>&, HttpError&); \
+    template drogon::Task<bool> PermissionManager::canReadAsync<TYPE>(const Requester&, const uint64_t entity_id, HttpError&);       \
+    template drogon::Task<bool> PermissionManager::canUpdateAsync<TYPE>(const Requester&, const uint64_t entity_id, HttpError&);     \
+    template drogon::Task<bool> PermissionManager::canDeleteAsync<TYPE>(const Requester&, const uint64_t entity_id, HttpError&);
+
+#define INSTANTIATE_PERMISSION_CLIENT(TYPE)                                                                                          \
+    INSTANTIATE_PERMISSION_CRUD(TYPE)                                                                                                \
+    template bool PermissionManager::canGetServices<TYPE>(const Requester& requester, const uint64_t id, HttpError& error);           \
+    template bool PermissionManager::canToggleActive<TYPE>(const Requester& requester, const uint64_t id, HttpError& error);          \
+    template drogon::Task<bool> PermissionManager::canGetServicesAsync<TYPE>(const Requester& requester, const uint64_t id, HttpError& error); \
+    template drogon::Task<bool> PermissionManager::canToggleActiveAsync<TYPE>(const Requester& requester, const uint64_t id, HttpError& error);
+
+#define INSTANTIATE_PERMISSION_ENTITY(TYPE)                                                                                       \
+    INSTANTIATE_PERMISSION_CRUD(TYPE)                                                                                             \
+    template bool PermissionManager::canManageStaff<TYPE>(const Requester&, const uint64_t entity_id, HttpError&);                 \
+    template drogon::Task<bool> PermissionManager::canManageStaffAsync<TYPE>(const Requester&, const uint64_t entity_id, HttpError&);
 
 // Client types
 INSTANTIATE_PERMISSION_CLIENT(User)

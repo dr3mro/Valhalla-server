@@ -56,3 +56,29 @@ bool TokenManager::isTokenValid(std::optional<Types::ClientLoginData>& clientLog
     }
     return false;
 }
+
+drogon::Task<bool> TokenManager::isTokenValidCoro(std::optional<Types::ClientLoginData>& clientLoginData, std::string& message)
+{
+    try
+    {
+        jwt::decoded_jwt<jwt::traits::kazuho_picojson> decodedToken = jwt::decode<jwt::traits::kazuho_picojson>(clientLoginData->token.value());
+        if (!decodeToken(clientLoginData, message, decodedToken))
+        {
+            message = fmt::format("Token is not valid: {}", message);
+            co_return false;
+        }
+
+        // Token is valid
+        co_return co_await validateTokenCoro(clientLoginData, message, decodedToken);
+    }
+    catch (const DatabaseBusy&)
+    {
+        throw;
+    }
+    catch (const std::exception& e)
+    {
+        message = fmt::format("Error validating Token:{}", e.what());
+        Message::CriticalMessage(message);
+    }
+    co_return false;
+}

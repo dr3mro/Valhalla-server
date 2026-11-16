@@ -199,6 +199,20 @@ bool GateKeeper::isAuthenticationValid(std::optional<Types::ClientLoginData>& cl
     return false;
 }
 
+drogon::Task<bool> GateKeeper::isAuthenticationValidAsync(std::optional<Types::ClientLoginData>& clientLoginData, std::string& message)
+{
+    if (sessionManager_->clientHasValidSession(clientLoginData, message))
+    {
+        co_return true;
+    }
+
+    if (co_await tokenManager_->isTokenValidCoro(clientLoginData, message))
+    {
+        co_return sessionManager_->storeSession(clientLoginData, message);
+    }
+    co_return false;
+}
+
 void GateKeeper::removeSession(std::optional<uint64_t> client_id, const std::string& group)
 {
     std::optional<ClientLoginData> clientLoginData = ClientLoginData{};
@@ -295,21 +309,71 @@ bool GateKeeper::canGetServices(const Requester& requester, const uint64_t _id, 
     return permissionManager_->canGetServices<T>(requester, _id, error);
 }
 
+
+template <typename T>
+drogon::Task<bool> GateKeeper::canCreateAsync(const Requester& requester, const std::optional<jsoncons::json>& data_j, Http::Error& error)
+{
+    co_return co_await permissionManager_->canCreateAsync<T>(requester, data_j, error);
+}
+
+template <typename T>
+drogon::Task<bool> GateKeeper::canReadAsync(const Requester& requester, const uint64_t entity_id, Http::Error& error)
+{
+    co_return co_await permissionManager_->canReadAsync<T>(requester, entity_id, error);
+}
+
+template <typename T>
+drogon::Task<bool> GateKeeper::canUpdateAsync(const Requester& requester, const uint64_t entity_id, Http::Error& error)
+{
+    co_return co_await permissionManager_->canUpdateAsync<T>(requester, entity_id, error);
+}
+
+template <typename T>
+drogon::Task<bool> GateKeeper::canDeleteAsync(const Requester& requester, const uint64_t entity_id, Http::Error& error)
+{
+    co_return co_await permissionManager_->canDeleteAsync<T>(requester, entity_id, error);
+}
+
+template <typename T>
+drogon::Task<bool> GateKeeper::canManageStaffAsync(const Requester& requester, uint64_t _id, Http::Error& error)
+{
+    co_return co_await permissionManager_->canManageStaffAsync<T>(requester, _id, error);
+}
+
+template <Client_t T>
+drogon::Task<bool> GateKeeper::canToggleActiveAsync(const Requester& requester, const uint64_t _id, Http::Error& error)
+{
+    co_return co_await permissionManager_->canToggleActiveAsync<T>(requester, _id, error);
+}
+
+template <Client_t T>
+drogon::Task<bool> GateKeeper::canGetServicesAsync(const Requester& requester, const uint64_t _id, Http::Error& error)
+{
+    co_return co_await permissionManager_->canGetServicesAsync<T>(requester, _id, error);
+}
+
 // canCreate specializations
-#define INSTANTIATE_GATEKEEPER_CRUD(TYPE) /* NOLINT  */                                                              \
-    template bool GateKeeper::canCreate<TYPE>(const Requester&, const std::optional<jsoncons::json>&, Http::Error&); \
-    template bool GateKeeper::canRead<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);               \
-    template bool GateKeeper::canUpdate<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);             \
-    template bool GateKeeper::canDelete<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);
+#define INSTANTIATE_GATEKEEPER_CRUD(TYPE) /* NOLINT  */                                                                                     \
+    template bool GateKeeper::canCreate<TYPE>(const Requester&, const std::optional<jsoncons::json>&, Http::Error&);                        \
+    template bool GateKeeper::canRead<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);                                     \
+    template bool GateKeeper::canUpdate<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);                                   \
+    template bool GateKeeper::canDelete<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);                                   \
+    template drogon::Task<bool> GateKeeper::canCreateAsync<TYPE>(const Requester&, const std::optional<jsoncons::json>&, Http::Error&);     \
+    template drogon::Task<bool> GateKeeper::canReadAsync<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);                   \
+    template drogon::Task<bool> GateKeeper::canUpdateAsync<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);                 \
+    template drogon::Task<bool> GateKeeper::canDeleteAsync<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);
 
-#define INSTANTIATE_GATEKEEPER_CLIENT(TYPE) /* NOLINT  */                                                               \
-    INSTANTIATE_GATEKEEPER_CRUD(TYPE)                                                                                   \
-    template bool GateKeeper::canGetServices<TYPE>(const Requester& requester, const uint64_t _id, Http::Error& error); \
-    template bool GateKeeper::canToggleActive<TYPE>(const Requester& requester, const uint64_t _id, Http::Error& error);
+#define INSTANTIATE_GATEKEEPER_CLIENT(TYPE) /* NOLINT  */                                                                              \
+    INSTANTIATE_GATEKEEPER_CRUD(TYPE)                                                                                                 \
+    template bool GateKeeper::canGetServices<TYPE>(const Requester& requester, const uint64_t _id, Http::Error& error);                \
+    template bool GateKeeper::canToggleActive<TYPE>(const Requester& requester, const uint64_t _id, Http::Error& error);               \
+    template drogon::Task<bool> GateKeeper::canGetServicesAsync<TYPE>(const Requester& requester, const uint64_t _id, Http::Error& error); \
+    template drogon::Task<bool> GateKeeper::canToggleActiveAsync<TYPE>(const Requester& requester, const uint64_t _id, Http::Error& error);
 
-#define INSTANTIATE_GATEKEEPER_ENTITY(TYPE) /* NOLINT  */ \
-    INSTANTIATE_GATEKEEPER_CRUD(TYPE)                     \
-    template bool GateKeeper::canManageStaff<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);
+#define INSTANTIATE_GATEKEEPER_ENTITY(TYPE) /* NOLINT  */                                                                              \
+    INSTANTIATE_GATEKEEPER_CRUD(TYPE)                                                                                                 \
+    template bool GateKeeper::canManageStaff<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);                          \
+    template drogon::Task<bool> GateKeeper::canManageStaffAsync<TYPE>(const Requester&, const uint64_t entity_id, Http::Error&);
 
 // Usage:
 INSTANTIATE_GATEKEEPER_CLIENT(User)

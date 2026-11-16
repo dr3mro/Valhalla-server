@@ -154,7 +154,7 @@ drogon::Task<void> ClinicController<T>::CreateAsyncImpl(CALLBACK_&& callback, co
             co_return;
         }
 
-        if (!gateKeeper->canCreate<T>(requester, request_json, error))
+        if (!co_await gateKeeper->canCreateAsync<T>(requester, request_json, error))
         {
             callback(error.code, error.message);
             co_return;

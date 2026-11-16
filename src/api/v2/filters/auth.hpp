@@ -11,7 +11,9 @@
 #include <string>
 #include <utility>
 
+#include "configurator/configurator.hpp"
 #include "database/databasebusy.hpp"
+#include "drogon/utils/coroutine.h"
 #include "gatekeeper/gatekeeper.hpp"
 #include "gatekeeper/types.hpp"
 #include "store/store.hpp"
@@ -49,6 +51,53 @@ namespace api::v2::Filters
             clientLoginData->ip_address                           = req->getPeerAddr().toIp();
             std::string message;
             // Validate token
+            static const bool asyncDb = Store::cachedObject<Configurator>()->get<Configurator::DatabaseConfig>().async;
+            if (asyncDb)
+            {
+                const size_t bearerMagicLocal = bearerMagic;
+                auto handler = [this, req, bearerMagicLocal, fcb = std::move(fcb), fccb = std::move(fccb)]() mutable -> drogon::AsyncTask
+                {
+                    std::optional<Types::ClientLoginData> clientLoginData = Types::ClientLoginData{};
+                    clientLoginData->token                                = req->getHeader("Authorization").substr(bearerMagicLocal);
+                    clientLoginData->ip_address                           = req->getPeerAddr().toIp();
+                    std::string        message;
+                    bool               valid = false;
+                    drogon::FilterCallback cb = std::move(fcb);
+                    drogon::FilterChainCallback chain = std::move(fccb);
+                    try
+                    {
+                        valid = co_await gateKeeper->isAuthenticationValidAsync(clientLoginData, message);
+                    }
+                    catch (const DatabaseBusy& e)
+                    {
+                        auto resp = drogon::HttpResponse::newHttpResponse();
+                        resp->setStatusCode(drogon::HttpStatusCode::k503ServiceUnavailable);
+                        resp->setContentTypeCode(drogon::CT_APPLICATION_JSON);
+                        resp->addHeader("Retry-After", "1");
+                        resp->setBody(JsonHelper::stringify(JsonHelper::jsonify(e.what())));
+                        std::move(cb)(resp);
+                        co_return;
+                    }
+                    if (!valid)
+                    {
+                        auto resp = drogon::HttpResponse::newHttpResponse();
+                        resp->setStatusCode(drogon::HttpStatusCode::k401Unauthorized);
+                        resp->setContentTypeCode(drogon::CT_APPLICATION_JSON);
+                        resp->setBody(JsonHelper::stringify(JsonHelper::jsonify(message)));
+                        std::move(cb)(resp);
+                        co_return;
+                    }
+
+                    req->attributes()->insert("clientID", clientLoginData->clientId.value());
+                    req->attributes()->insert("clientGroup", clientLoginData->group.value());
+
+                    // Token is valid, pass control to the next filter/handler
+                    std::move(chain)();
+                };
+                handler();
+                return;
+            }
+
             bool valid = false;
             try
             {

@@ -286,6 +286,93 @@ bool KeeprBase::validateToken(
     return false;
 }
 
+drogon::Task<bool> KeeprBase::getLastLogoutTimeIfActiveCoro(std::optional<Types::ClientLoginData>& clientLoginData)
+{
+    try
+    {
+        const auto sessions = sessionsTable(clientLoginData->group.value());
+        if (!sessions.has_value())
+        {
+            Message::ErrorMessage("Unknown client group.");
+            co_return false;
+        }
+        const std::string param_query = fmt::format(
+            "WITH client_data AS (SELECT ses.id, ses.last_logout, client.active FROM {} ses "
+            "LEFT JOIN {} client ON ses.id = client.id) "
+            "SELECT id, last_logout, active FROM client_data WHERE id = $1;",
+            sessions.value(), clientLoginData->group.value());
+        pqxx::params params;
+        params.append(clientLoginData->clientId.value());
+
+        auto results = co_await databaseController()->executeReadQueryCoro(param_query, params);
+
+        if (results.has_value())
+        {
+            if (!results->empty())
+            {
+                clientLoginData->is_active      = results.value().at("active").as_bool();
+                clientLoginData->lastLogoutTime = results.value().at("last_logout").as_string();
+                co_return true;
+            }
+        }
+        co_return false;
+    }
+    catch (const DatabaseBusy&)
+    {
+        throw;
+    }
+    catch (std::exception& e)
+    {
+        CRITICALMESSAGE
+    }
+    co_return false;
+}
+
+drogon::Task<bool> KeeprBase::validateTokenCoro(
+    std::optional<Types::ClientLoginData>& clientLoginData, std::string& message, jwt::decoded_jwt<jwt::traits::kazuho_picojson>& decodedToken)
+{
+    try
+    {
+        co_await getLastLogoutTimeIfActiveCoro(clientLoginData);
+        if (clientLoginData->lastLogoutTime != decodedToken.get_payload_claim("llodt").as_string())
+        {
+            message = "Client is logged out from server, Please login again.";
+            co_return false;
+        }
+
+        if (!clientLoginData->is_active)
+        {
+            message = "Account is suspend, please contact the administrator.";
+            co_return false;
+        }
+
+        // Validate token claims
+        auto verifier = createTokenVerifier(clientLoginData);
+
+        verifier.verify(decodedToken);
+
+        // Token is valid
+        co_return true;
+    }
+    catch (const jwt::error::token_verification_exception& e)
+    {
+        message = fmt::format("Token verification failed:{}", e.what());
+        Message::CriticalMessage(message);
+        co_return false;
+    }
+    catch (const DatabaseBusy&)
+    {
+        throw;
+    }
+    catch (const std::exception& e)
+    {
+        message = fmt::format("Error validating Token:{}", e.what());
+        Message::CriticalMessage(message);
+        co_return false;
+    }
+    co_return false;
+}
+
 jwt::verifier<jwt::default_clock, jwt::traits::kazuho_picojson> KeeprBase::createTokenVerifier(
     const std::optional<Types::ClientLoginData>& clientLoginData) const
 {

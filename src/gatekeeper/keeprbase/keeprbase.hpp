@@ -38,6 +38,9 @@ namespace api::v2
             std::optional<Types::ClientLoginData>& clientLoginData, std::string& message, jwt::decoded_jwt<jwt::traits::kazuho_picojson>& decoedToken);
         bool validateToken(
             std::optional<Types::ClientLoginData>& clientLoginData, std::string& message, jwt::decoded_jwt<jwt::traits::kazuho_picojson>& decodedToken);
+        drogon::Task<bool> getLastLogoutTimeIfActiveCoro(std::optional<Types::ClientLoginData>& clientLoginData);
+        drogon::Task<bool> validateTokenCoro(
+            std::optional<Types::ClientLoginData>& clientLoginData, std::string& message, jwt::decoded_jwt<jwt::traits::kazuho_picojson>& decodedToken);
         [[nodiscard]] jwt::verifier<jwt::default_clock, jwt::traits::kazuho_picojson> createTokenVerifier(
             const std::optional<Types::ClientLoginData>& clientLoginData) const;
         [[nodiscard]] Configurator::TokenManagerParameters getTokenManagerParameters() const { return tokenManagerParameters_; }
