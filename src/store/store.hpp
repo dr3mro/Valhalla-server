@@ -54,7 +54,22 @@ class Store
                 return std::static_pointer_cast<T>(object->second);
             }
         }
-        return registerObject<T>(std::forward<Args>(args)...);
+
+        // Construct outside the lock (construction may be expensive), but
+        // re-check under the lock before publishing so concurrent first access
+        // cannot install two different instances or throw "already registered".
+        auto candidate = std::make_shared<T>(std::forward<Args>(args)...);
+
+        {
+            std::scoped_lock lock(inventoryMutex);
+            auto             object = inventory.find(typeid(T));
+            if (object != inventory.end())
+            {
+                return std::static_pointer_cast<T>(object->second);
+            }
+            inventory[typeid(T)] = candidate;
+        }
+        return candidate;
     }
 
     // Like getObject<T>(), but cheap enough for the request path: each thread keeps its own pointer and only goes back to the
