@@ -49,6 +49,46 @@ TEST_CASE("Cors::apply is idempotent: applying it twice changes nothing", "[api]
     CHECK(response->headers().size() == size);
 }
 
+TEST_CASE("Cors::apply hardens the preflight echo", "[api][cors]")
+{
+    auto response = drogon::HttpResponse::newHttpResponse();
+
+    SECTION("oversized value falls back to the default")
+    {
+        const std::string huge(1025, 'a');
+        Cors::apply(makeRequest(drogon::Options, huge), response);
+        CHECK(response->getHeader("Access-Control-Allow-Headers") == Cors::DEFAULT_ALLOWED_HEADERS);
+    }
+
+    SECTION("a value with a space or control character is rejected")
+    {
+        Cors::apply(makeRequest(drogon::Options, "x bad"), response);
+        CHECK(response->getHeader("Access-Control-Allow-Headers") == Cors::DEFAULT_ALLOWED_HEADERS);
+
+        const std::string withControl = std::string("\x01authorization");
+        Cors::apply(makeRequest(drogon::Options, withControl), response);
+        CHECK(response->getHeader("Access-Control-Allow-Headers") == Cors::DEFAULT_ALLOWED_HEADERS);
+    }
+
+    SECTION("mixed valid and invalid tokens keeps only the valid ones")
+    {
+        Cors::apply(makeRequest(drogon::Options, "content-type, not a token, x-custom"), response);
+        CHECK(response->getHeader("Access-Control-Allow-Headers") == "content-type, x-custom");
+    }
+
+    SECTION("empty value falls back to the default")
+    {
+        Cors::apply(makeRequest(drogon::Options, ""), response);
+        CHECK(response->getHeader("Access-Control-Allow-Headers") == Cors::DEFAULT_ALLOWED_HEADERS);
+    }
+
+    SECTION("preflight sets Vary")
+    {
+        Cors::apply(makeRequest(drogon::Options, "content-type"), response);
+        CHECK(response->getHeader("Vary") == "Access-Control-Request-Headers");
+    }
+}
+
 TEST_CASE("Cors::apply echoes the requested headers on a preflight only", "[api][cors]")
 {
     SECTION("preflight")

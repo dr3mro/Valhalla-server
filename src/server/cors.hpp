@@ -4,7 +4,10 @@
 #include <drogon/HttpResponse.h>
 #include <drogon/HttpTypes.h>
 
+#include <algorithm>
+#include <cctype>
 #include <string>
+#include <vector>
 
 /// CORS response headers, written in exactly one place (the pre-sending advice in server.cpp).
 /// Every header is removed before it is set, so applying this twice to one response is harmless
@@ -22,6 +25,93 @@ namespace Cors
         resp->addHeader(key, value);
     }
 
+    namespace detail
+    {
+        inline bool isTokenChar(char c)
+        {
+            const unsigned char uc = static_cast<unsigned char>(c);
+            if (std::isalnum(uc) != 0)
+            {
+                return true;
+            }
+            switch (uc)
+            {
+                case '!':
+                case '#':
+                case '$':
+                case '%':
+                case '&':
+                case '\'':
+                case '*':
+                case '+':
+                case '-':
+                case '.':
+                case '^':
+                case '_':
+                case '`':
+                case '|':
+                case '~':
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
+        // Validate and normalise an Access-Control-Request-Headers value.
+        // Returns an empty string when nothing valid remains (or the input is
+        // too large), so the caller can fall back to DEFAULT_ALLOWED_HEADERS.
+        inline std::string sanitizeRequestedHeaders(const std::string& requested)
+        {
+            if (requested.empty() || requested.size() > 1024)
+            {
+                return {};
+            }
+
+            std::string result;
+            std::string token;
+            auto        flush = [&]()
+            {
+                const std::string::size_type first = token.find_first_not_of(" \t");
+                if (first == std::string::npos)
+                {
+                    token.clear();
+                    return;
+                }
+                const std::string::size_type last = token.find_last_not_of(" \t");
+                const std::string            trimmed = token.substr(first, last - first + 1);
+                token.clear();
+
+                if (trimmed.empty())
+                {
+                    return;
+                }
+                if (!std::all_of(trimmed.begin(), trimmed.end(), isTokenChar))
+                {
+                    return;
+                }
+                if (!result.empty())
+                {
+                    result += ", ";
+                }
+                result += trimmed;
+            };
+
+            for (char c : requested)
+            {
+                if (c == ',')
+                {
+                    flush();
+                }
+                else
+                {
+                    token.push_back(c);
+                }
+            }
+            flush();
+            return result;
+        }
+    }  // namespace detail
+
     inline void apply(const drogon::HttpRequestPtr& req, const drogon::HttpResponsePtr& resp)
     {
         set(resp, "Access-Control-Allow-Origin", "*");
@@ -31,13 +121,16 @@ namespace Cors
         std::string allowedHeaders = DEFAULT_ALLOWED_HEADERS;
         if (req->method() == drogon::Options)
         {
-            // Preflight only: allow whatever the browser says it is about to send.
-            const std::string& requested = req->getHeader("Access-Control-Request-Headers");
-            if (!requested.empty())
+            // Preflight only: allow whatever the browser says it is about to send,
+            // after validating the token list and bounding its size.
+            const std::string requested = req->getHeader("Access-Control-Request-Headers");
+            const std::string echoed = detail::sanitizeRequestedHeaders(requested);
+            if (!echoed.empty())
             {
-                allowedHeaders = requested;
+                allowedHeaders = echoed;
             }
             set(resp, "Access-Control-Max-Age", PREFLIGHT_MAX_AGE);
+            set(resp, "Vary", "Access-Control-Request-Headers");
         }
         set(resp, "Access-Control-Allow-Headers", allowedHeaders);
     }
