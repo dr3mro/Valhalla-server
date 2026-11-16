@@ -28,9 +28,9 @@ mkdir -p "$STATE_DIR"
 # shellcheck disable=SC2153
 usage() {
     cat <<EOF
-${C_BOLD}${C_M}╔══════════════════════════════════════════╗${C_N}
-${C_BOLD}${C_M}║${C_N}     ${C_BOLD}${C_Y}Valhalla Run Tool${C_N}                ${C_BOLD}${C_M}║${C_N}
-${C_BOLD}${C_M}╚══════════════════════════════════════════╝${C_N}
+${C_BOLD}${C_M}╔═══════════════════════════════════════╗${C_N}
+${C_BOLD}${C_M}║${C_N}     ${C_BOLD}${C_Y}      Valhalla Run Tool${C_N}           ${C_BOLD}${C_M}║${C_N}
+${C_BOLD}${C_M}╚═══════════════════════════════════════╝${C_N}
 
 ${C_BOLD}Usage:${C_N} ./run.sh <command> [args...]
 
@@ -65,7 +65,7 @@ ${C_BOLD}${C_Y}${E_INFO}Other:${C_N}
   ${C_C}list${C_N}             ${C_DIM}List commands${C_N}
   ${C_C}help${C_N}             ${C_DIM}Show this help${C_N}
 
-${C_BOLD}Examples:${C_N}
+${C_BOLD}${C_Y}Examples:${C_N}
   ./run.sh release --build
   ./run.sh all --debug
   ./run.sh server start release --background
