@@ -7,6 +7,7 @@
 #include <string_view>
 
 #include "utils/global/callback.hpp"
+#include "drogon/utils/coroutine.h"
 #include "utils/global/requester.hpp"
 
 using Requester = api::v2::Requester;
@@ -23,10 +24,15 @@ class ClientControllerBase
 
     // PUBLIC
     virtual void Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data)                                                  = 0;
+    virtual drogon::Task<void> CreateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data) = 0;
     virtual void Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data)                                                    = 0;
+    virtual drogon::Task<void> ReadAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data) = 0;
     virtual void Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> _id)                     = 0;
+    virtual drogon::Task<void> UpdateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> _id) = 0;
     virtual void Delete(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id)                                      = 0;
+    virtual drogon::Task<void> DeleteAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id) = 0;
     virtual void Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data)                                                  = 0;
+    virtual drogon::Task<void> SearchAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data) = 0;
     virtual void Login(CALLBACK_&& callback, const Requester&& requester, std::string_view data, const std::string& ip_address)                    = 0;
     virtual void Logout(CALLBACK_&& callback, const Requester&& requester, const std::optional<std::string>& token, const std::string& ip_address) = 0;
     virtual void Suspend(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id)                                     = 0;

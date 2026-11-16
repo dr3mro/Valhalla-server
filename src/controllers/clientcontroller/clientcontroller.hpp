@@ -16,6 +16,7 @@
 #include "gatekeeper/passwordcrypt/passwordworker.hpp"
 #include "store/store.hpp"
 #include "utils/global/callback.hpp"
+#include "drogon/utils/coroutine.h"
 #include "utils/global/concepts.hpp"
 #include "utils/global/global.hpp"
 
@@ -31,10 +32,15 @@ class ClientController : public EntityController<T>, public ClientControllerBase
     ~ClientController() override                         = default;
 
     void Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data) final;
+    drogon::Task<void> CreateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data) final;
     void Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data) final;
+    drogon::Task<void> ReadAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data) final;
     void Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> _id) final;
+    drogon::Task<void> UpdateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> _id) final;
     void Delete(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id) final;
+    drogon::Task<void> DeleteAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id) final;
     void Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data) final;
+    drogon::Task<void> SearchAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data) final;
     void Login(CALLBACK_&& callback, const Requester&& requester, std::string_view data, const std::string& ip_address) final;
     void Logout(CALLBACK_&& callback, const Requester&& requester, const std::optional<std::string>& token, const std::string& ip_address) final;
     void Suspend(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id) final;
