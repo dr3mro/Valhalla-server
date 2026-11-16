@@ -204,7 +204,7 @@ bool Validator::clientRegexValidation(const jsoncons::json& data, api::v2::Http:
         {
             if (!std::regex_match(value.value(), pattern_item->second))
             {
-                error = {.code = api::v2::Http::Status::BAD_REQUEST, .message = fmt::format("Key ({}) Value({}) is invalid.", item.key(), value.value())};
+                error = {.code = api::v2::Http::Status::BAD_REQUEST, .message = fmt::format("Key ({}) value is invalid.", item.key())};
                 return false;
             }
             db_data.insert({item.key(), value.value()});

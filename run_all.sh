@@ -77,27 +77,39 @@ SUITE_STATUS=()
 
 record() { # name status
     if [[ $2 -ne 0 ]]; then
-        echo "FAIL: $1" >&2
+        echo "${C_R}FAIL:${C_N} $1" >&2
         failures=$((failures + 1))
         SUITE_STATUS+=("FAIL")
     else
-        echo "PASS: $1"
+        echo "${C_G}PASS:${C_N} $1"
         SUITE_STATUS+=("PASS")
     fi
     SUITE_NAMES+=("$1")
 }
 
+if [[ -t 1 ]]; then
+    C_G=$'\033[32m'; C_R=$'\033[31m'; C_B=$'\033[1m'; C_N=$'\033[0m'
+else
+    C_G=""; C_R=""; C_B=""; C_N=""
+fi
+
 print_summary() {
     echo "===== summary ====="
-    printf '%-28s %s\n' "Suite" "Result"
+    printf '%s%-28s %s%s\n' "$C_B" "Suite" "Result" "$C_N"
     printf '%-28s %s\n' "----------------------------" "------"
     if [[ ${#SUITE_NAMES[@]} -gt 0 ]]; then
-        local i
+        local i status color
         for i in "${!SUITE_NAMES[@]}"; do
-            printf '%-28s %s\n' "${SUITE_NAMES[$i]}" "${SUITE_STATUS[$i]}"
+            status="${SUITE_STATUS[$i]}"
+            if [[ $status == "PASS" ]]; then color="$C_G"; else color="$C_R"; fi
+            printf '%-28s %s%s%s\n' "${SUITE_NAMES[$i]}" "$color" "$status" "$C_N"
         done
     fi
-    echo "failures: $failures"
+    if [[ $failures -eq 0 ]]; then
+        printf '%sfailures: %d%s\n' "$C_G" "$failures" "$C_N"
+    else
+        printf '%sfailures: %d%s\n' "$C_R" "$failures" "$C_N"
+    fi
 }
 
 # 1. Shell lint

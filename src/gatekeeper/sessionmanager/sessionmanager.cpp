@@ -38,7 +38,7 @@ std::optional<std::string> SessionManager::fetchPasswordHash(
 
         if (!client_object.has_value() || client_object.value().empty())
         {
-            message = fmt::format("Failure: username {} does not exist, please try again.", credentials->username);
+            message = "Failure: username does not exist, please try again.";
             return std::nullopt;
         }
 
@@ -90,7 +90,7 @@ drogon::Task<std::optional<std::string>> SessionManager::fetchPasswordHashCoro(
 
         if (!client_object.has_value() || client_object.value().empty())
         {
-            message = fmt::format("Failure: username {} does not exist, please try again.", credentials->username);
+            message = "Failure: username does not exist, please try again.";
             co_return std::nullopt;
         }
 
