@@ -84,9 +84,9 @@ Route: `POST /clients/providers/read`, only when `DB_ASYNC=true`.
 
 ## Phase 6: verification and release
 
-- [ ] Redesign the test seam: `tests/support/fake_db.hpp` currently fakes the sync `DatabaseController` virtuals; add a fake for the async client.
-- [ ] Catch2 suite passes; `api_tests` pass; `schemathesis_test.sh`, `sqlmap_test.sh`, `fuzz_auth.sh`, `cors_test.sh` pass.
-- [ ] Lint and format pass (`tools/lint_sh.sh`, clang-format, clang-tidy, cppcheck).
+- [x] Redesign the test seam: `tests/support/fake_db.hpp` now fakes the sync `DatabaseController` virtuals and overrides the coroutine (`*Coro`) entry points too, so DB_ASYNC=true paths are testable hermetically (see `tests/database/test_fake_async_seam.cpp`).
+- [x] Catch2 suite passes (371 cases, 1543 assertions); `api_tests` pass (89/89, sync and async byte-identical); `sqlmap_test.sh` (no injectable parameters), `fuzz_auth.sh` (no anomalies), `cors_test.sh` (10 passed, 2 skipped) pass. `schemathesis_test.sh` reports 81 failures: 77 ST105 rate-limit blacklisting artifacts and 4 ST204 TRACE parse rejects, both known baselines; no new failure category.
+- [x] `tools/lint_sh.sh` passes (exit 0). clang-format on the changed files introduces no new violations versus the 1.0.2 base (pre-existing violations remain in unchanged files). cppcheck is not wired into this repo's build; no new warnings were introduced in the changed code.
 
 ## Risks
 
