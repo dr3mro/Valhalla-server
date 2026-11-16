@@ -62,7 +62,7 @@ Route: `POST /clients/providers/read`, only when `DB_ASYNC=true`.
 
 ## Phase 4: gatekeeper and remaining routes
 
-- [ ] Session and token validation (`SessionManager`, `GateKeeper::isAuthenticationValid`) and the auth filter (`src/api/v2/filters/auth.hpp`).
+- [x] Session and token validation (`SessionManager`, `GateKeeper::isAuthenticationValid`) and the auth filter (`src/api/v2/filters/auth.hpp`) (memcache/token based, no DB on hot path).
 - [x] Login flow: `fetchPasswordHash` async, `completeLogin` on `PasswordWorker`, result posted back to the IO loop.
 - [ ] All read routes (users, providers, clinics, services, staff, appointments, search, visits, get-services).
 - [ ] Write routes: create / update / delete / suspend / unsuspend, with `pqxx::work` transactions replaced by Drogon transactions.
@@ -72,7 +72,7 @@ Route: `POST /clients/providers/read`, only when `DB_ASYNC=true`.
 - [ ] Gatekeeper DB code, the full list of real call sites: `keeprbase.cpp` (`getPasswordHashForUserName` x2, `setNowLoginTimeGetLastLogoutTime`, `executeQuery` x2, `executeReadQuery`, `doReadQuery`), `permissionmanager_private.hpp` (`getPermissionsOfEntity` -> `getPermissions`, used by about 19 `PermissionManager` methods in `permissionmanager.cpp`), `sessionmanager.cpp` (login / timestamps), and `PermissionCache` invalidation after writes.
 - [x] Controller layer: `controllers/base/controller/controller.hpp` (`cruds`, `Search`, `GetServices`, `GetVisits` call `executeQuery`, `executeReadQuery` and `executeSearchQuery`) is the single place all CRUD routes go through; convert it once.
 - [x] Schema loading at boot (`src/validator/databaseschema/databaseschema.cpp`: `getTableSchema`, `getAllTables`): stays on a small synchronous pqxx connection; libpqxx remains a dependency.
-- [ ] Graceful shutdown: close the `DbClient` cleanly (replaces the executor shutdown in `Server::run()`).
+- [x] Graceful shutdown: `DbClient` is owned by Drogon and closes on app teardown; executor shutdown retained for sync path.
 - [ ] Container image: the image runs its own Postgres and overrides `DB_HOST` and `DB_SSL`; confirm the `DbClient` honours the same overrides and `DB_ACQUIRE_TIMEOUT_MS` behaviour.
 
 ## Phase 5: cleanup
