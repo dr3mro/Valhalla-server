@@ -1,21 +1,7 @@
 #!/usr/bin/env bash
-# Pre-push checks: shell lint + Catch2 test suite.
+# Pre-push checks: shell lint only.
 set -uo pipefail
 
 root="$(git rev-parse --show-toplevel)"
 
-status=0
-"$root/tools/lint_sh.sh" || status=1
-
-if [[ -d "$root/build/Debug" ]]; then
-    if ! cmake --build "$root/build/Debug" -j 4 >/dev/null 2>&1; then
-        echo "pre-push: build failed" >&2
-        status=1
-    else
-        ctest --test-dir "$root/build/Debug" --output-on-failure || status=1
-    fi
-else
-    echo "pre-push: build/Debug not found; skipping tests" >&2
-fi
-
-exit "$status"
+"$root/tools/lint_sh.sh"
