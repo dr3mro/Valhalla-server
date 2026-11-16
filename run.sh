@@ -72,7 +72,7 @@ ${C_BOLD}${C_Y}${E_INFO}Other:${C_N}
   ${C_C}list${C_N}                    ${C_DIM}List commands${C_N}
   ${C_C}help${C_N}                    ${C_DIM}Show this help${C_N}
   ${C_C}completion bash|zsh${C_N}     ${C_DIM}Print completion script${C_N}
-  ${C_C}completion setup${C_N}       ${C_DIM}Add completion to shell rc${C_N}
+  ${C_C}completion setup${C_N}        ${C_DIM}Add completion to shell rc${C_N}
 ${C_BOLD}${C_Y}Examples:${C_N}
   ./run.sh release --build
   ./run.sh all --debug
@@ -274,6 +274,11 @@ _run_sh() {
     local cur
     cur="${COMP_WORDS[COMP_CWORD]}"
     local commands="build release debug configure clean server tests api fuzz sqlmap schemathesis cors bench lint db-init all conan list help completion"
+    local options="--help --no-color --no-build --keep-server --skip-server --skip-db-init --background --port --base-url"
+    if [[ $cur == -* ]]; then
+        COMPREPLY=( $(compgen -W "$options" -- "$cur") )
+        return 0
+    fi
     if [[ $COMP_CWORD -eq 1 ]]; then
         COMPREPLY=( $(compgen -W "$commands" -- "$cur") )
         return 0
@@ -329,6 +334,10 @@ _run_sh() {
         'help:Show help'
         'completion:Print completion script'
     )
+    if [[ "$words[CURRENT]" == -* ]]; then
+        compadd --help --no-color --no-build --keep-server --skip-server --skip-db-init --background --port --base-url
+        return
+    fi
     if (( CURRENT == 2 )); then
         _describe 'command' commands
         return
