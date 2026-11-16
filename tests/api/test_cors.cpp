@@ -49,6 +49,31 @@ TEST_CASE("Cors::apply is idempotent: applying it twice changes nothing", "[api]
     CHECK(response->headers().size() == size);
 }
 
+TEST_CASE("Cors::apply preserves and appends Vary", "[api][cors]")
+{
+    auto response = drogon::HttpResponse::newHttpResponse();
+
+    SECTION("no existing Vary gets exactly ours")
+    {
+        Cors::apply(makeRequest(drogon::Options, "content-type"), response);
+        CHECK(response->getHeader("Vary") == "Access-Control-Request-Headers");
+    }
+
+    SECTION("an existing Vary is preserved and ours is appended")
+    {
+        response->addHeader("Vary", "Accept-Encoding");
+        Cors::apply(makeRequest(drogon::Options, "content-type"), response);
+        CHECK(response->getHeader("Vary") == "Accept-Encoding, Access-Control-Request-Headers");
+    }
+
+    SECTION("applying twice does not duplicate the token")
+    {
+        Cors::apply(makeRequest(drogon::Options, "content-type"), response);
+        Cors::apply(makeRequest(drogon::Options, "content-type"), response);
+        CHECK(response->getHeader("Vary") == "Access-Control-Request-Headers");
+    }
+}
+
 TEST_CASE("Cors::apply hardens the preflight echo", "[api][cors]")
 {
     auto response = drogon::HttpResponse::newHttpResponse();

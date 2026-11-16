@@ -57,6 +57,73 @@ namespace Cors
             }
         }
 
+        inline bool iequals(const std::string& a, const std::string& b)
+        {
+            if (a.size() != b.size())
+            {
+                return false;
+            }
+            return std::equal(a.begin(), a.end(), b.begin(),
+                [](char x, char y) { return std::tolower(static_cast<unsigned char>(x)) == std::tolower(static_cast<unsigned char>(y)); });
+        }
+
+        // Append `value` to the Vary response header without duplicating an
+        // existing (case-insensitive) token. Other code may have set Vary first.
+        inline void addToVary(const drogon::HttpResponsePtr& resp, const std::string& value)
+        {
+            std::string existing;
+            bool        found = false;
+            for (const auto& kv : resp->headers())
+            {
+                if (iequals(kv.first, "Vary"))
+                {
+                    existing = kv.second;
+                    found    = true;
+                    break;
+                }
+            }
+
+            auto contains = [&value](const std::string& headerValue)
+            {
+                std::string token;
+                for (char c : headerValue + ",")
+                {
+                    if (c == ',')
+                    {
+                        const std::string::size_type first = token.find_first_not_of(" \t");
+                        if (first != std::string::npos)
+                        {
+                            const std::string::size_type last = token.find_last_not_of(" \t");
+                            if (iequals(token.substr(first, last - first + 1), value))
+                            {
+                                return true;
+                            }
+                        }
+                        token.clear();
+                    }
+                    else
+                    {
+                        token.push_back(c);
+                    }
+                }
+                return false;
+            };
+
+            if (found && contains(existing))
+            {
+                return;
+            }
+            if (found && !existing.empty())
+            {
+                resp->removeHeader("Vary");
+                resp->addHeader("Vary", existing + ", " + value);
+            }
+            else
+            {
+                resp->addHeader("Vary", value);
+            }
+        }
+
         // Validate and normalise an Access-Control-Request-Headers value.
         // Returns an empty string when nothing valid remains (or the input is
         // too large), so the caller can fall back to DEFAULT_ALLOWED_HEADERS.
@@ -130,7 +197,7 @@ namespace Cors
                 allowedHeaders = echoed;
             }
             set(resp, "Access-Control-Max-Age", PREFLIGHT_MAX_AGE);
-            set(resp, "Vary", "Access-Control-Request-Headers");
+            detail::addToVary(resp, "Access-Control-Request-Headers");
         }
         set(resp, "Access-Control-Allow-Headers", allowedHeaders);
     }
