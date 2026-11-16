@@ -67,7 +67,7 @@ namespace Cors
         const std::string& requested = req->getHeader("Access-Control-Request-Headers");
 
         const std::string* allowedHeaders = &defaultAllowedHeaders();
-        std::string echoed;
+        std::string        echoed;
         if (req->method() == drogon::Options)
         {
             echoed = detail::sanitizeRequestedHeaders(requested);

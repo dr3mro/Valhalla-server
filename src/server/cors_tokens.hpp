@@ -75,8 +75,8 @@ namespace CorsTokens
     inline std::string mergeVary(std::string_view existing, std::string_view value)
     {
         std::string combined;
-        bool hasWildcard = false;
-        bool present = false;
+        bool        hasWildcard = false;
+        bool        present     = false;
         for (std::string_view token : tokens(existing))
         {
             if (token == "*")

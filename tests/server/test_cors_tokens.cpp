@@ -1,6 +1,5 @@
-#include <catch2/catch_test_macros.hpp>
-
 #include <algorithm>
+#include <catch2/catch_test_macros.hpp>
 #include <iterator>
 #include <ranges>
 #include <string>
@@ -18,8 +17,8 @@ TEST_CASE("CorsTokens::trim removes tabs and spaces", "[server][cors]")
 TEST_CASE("CorsTokens::tokens drops empty entries", "[server][cors]")
 {
     std::vector<std::string_view> values;
-    auto toks = CorsTokens::tokens("a,,b");
-    std::copy(toks.begin(), toks.end(), std::back_inserter(values));
+    auto                          toks = CorsTokens::tokens("a,,b");
+    std::ranges::copy(toks.begin(), toks.end(), std::back_inserter(values));
     REQUIRE(values.size() == 2);
     CHECK(values[0] == "a");
     CHECK(values[1] == "b");
