@@ -17,15 +17,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.hpp" line="156" column="21" bodyfile="src/database/database.hpp" bodystart="156" bodyend="-1"/>
-        <referencedby refid="classDatabase_1a5941bc7b94fbacc46dd8acc818712afd" compoundref="database_8cpp" startline="117" endline="133">check_connection</referencedby>
-        <referencedby refid="classDatabase_1a7c0a44631de74f1d0a18119d1cd6cf1a" compoundref="database_8cpp" startline="93" endline="111">checkExists</referencedby>
-        <referencedby refid="classDatabase_1aa78586a013e7bb5fb707dc4ce330d896" compoundref="database_8cpp" startline="58" endline="75">Database</referencedby>
-        <referencedby refid="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" compoundref="database_8cpp" startline="340" endline="362">doSimpleQuery</referencedby>
-        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="248" endline="329">executeQuery</referencedby>
-        <referencedby refid="classDatabase_1a53e5ff850d852b1d9930ed830393e1a1" compoundref="database_8cpp" startline="207" endline="231">getAllTables</referencedby>
-        <referencedby refid="classDatabase_1aa5fe1076eec14a4e265fd4b7d1247983" compoundref="database_8cpp" startline="168" endline="199">getTableSchema</referencedby>
-        <referencedby refid="classDatabase_1a0ec8decb4af7abab6348d85d31f6af70" compoundref="database_8cpp" startline="143" endline="157">reconnect</referencedby>
+        <location file="src/database/database.hpp" line="232" column="7" bodyfile="src/database/database.hpp" bodystart="232" bodyend="-1"/>
+        <referencedby refid="classDatabase_1a5941bc7b94fbacc46dd8acc818712afd" compoundref="database_8cpp" startline="180" endline="198">check_connection</referencedby>
+        <referencedby refid="classDatabase_1a7c0a44631de74f1d0a18119d1cd6cf1a" compoundref="database_8cpp" startline="134" endline="173">checkExists</referencedby>
+        <referencedby refid="classDatabase_1aa78586a013e7bb5fb707dc4ce330d896" compoundref="database_8cpp" startline="83" endline="113">Database</referencedby>
+        <referencedby refid="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" compoundref="database_8cpp" startline="495" endline="523">doSimpleQuery</referencedby>
+        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="356" endline="484">executeQuery</referencedby>
+        <referencedby refid="classDatabase_1a53e5ff850d852b1d9930ed830393e1a1" compoundref="database_8cpp" startline="309" endline="339">getAllTables</referencedby>
+        <referencedby refid="classDatabase_1aa5fe1076eec14a4e265fd4b7d1247983" compoundref="database_8cpp" startline="243" endline="301">getTableSchema</referencedby>
+        <referencedby refid="classDatabase_1a0ec8decb4af7abab6348d85d31f6af70" compoundref="database_8cpp" startline="212" endline="232">reconnect</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classDatabase_1adec58b4f1a163f78c57d6631c5caf6b0" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -39,9 +39,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.hpp" line="157" column="39" bodyfile="src/database/database.hpp" bodystart="157" bodyend="-1"/>
-        <referencedby refid="classDatabase_1aa78586a013e7bb5fb707dc4ce330d896" compoundref="database_8cpp" startline="58" endline="75">Database</referencedby>
-        <referencedby refid="classDatabase_1a0ec8decb4af7abab6348d85d31f6af70" compoundref="database_8cpp" startline="143" endline="157">reconnect</referencedby>
+        <location file="src/database/database.hpp" line="234" column="15" bodyfile="src/database/database.hpp" bodystart="234" bodyend="-1"/>
+        <referencedby refid="classDatabase_1aa78586a013e7bb5fb707dc4ce330d896" compoundref="database_8cpp" startline="83" endline="113">Database</referencedby>
+        <referencedby refid="classDatabase_1a0ec8decb4af7abab6348d85d31f6af70" compoundref="database_8cpp" startline="212" endline="232">reconnect</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-static-attrib">
@@ -51,7 +51,8 @@
         <argsstring></argsstring>
         <name>TEXT</name>
         <qualifiedname>Database::TEXT</qualifiedname>
-        <initializer>= 1043</initializer>
+        <initializer>                            =
+1043</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -59,8 +60,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.hpp" line="162" column="32" bodyfile="src/database/database.hpp" bodystart="162" bodyend="-1"/>
-        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="248" endline="329">executeQuery</referencedby>
+        <location file="src/database/database.hpp" line="242" column="30" bodyfile="src/database/database.hpp" bodystart="242" bodyend="-1"/>
+        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="356" endline="484">executeQuery</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classDatabase_1ad09259c9f7ccae773cbd03b9bf1eb6e6" prot="private" static="yes" mutable="no">
         <type>const std::uint16_t</type>
@@ -68,15 +69,16 @@
         <argsstring></argsstring>
         <name>INTEGER</name>
         <qualifiedname>Database::INTEGER</qualifiedname>
-        <initializer>= 23</initializer>
+        <initializer>                               =
+23</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.hpp" line="163" column="32" bodyfile="src/database/database.hpp" bodystart="163" bodyend="-1"/>
-        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="248" endline="329">executeQuery</referencedby>
+        <location file="src/database/database.hpp" line="244" column="30" bodyfile="src/database/database.hpp" bodystart="244" bodyend="-1"/>
+        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="356" endline="484">executeQuery</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classDatabase_1a9647c8b7198f626b7d461e472fa70f9b" prot="private" static="yes" mutable="no">
         <type>const std::uint16_t</type>
@@ -84,15 +86,16 @@
         <argsstring></argsstring>
         <name>BOOLEAN</name>
         <qualifiedname>Database::BOOLEAN</qualifiedname>
-        <initializer>= 16</initializer>
+        <initializer>                               =
+16</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.hpp" line="164" column="32" bodyfile="src/database/database.hpp" bodystart="164" bodyend="-1"/>
-        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="248" endline="329">executeQuery</referencedby>
+        <location file="src/database/database.hpp" line="246" column="30" bodyfile="src/database/database.hpp" bodystart="246" bodyend="-1"/>
+        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="356" endline="484">executeQuery</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classDatabase_1a8fad4151f7565d3b3f57d53d50080c05" prot="private" static="yes" mutable="no">
         <type>const std::uint16_t</type>
@@ -100,15 +103,16 @@
         <argsstring></argsstring>
         <name>JSON</name>
         <qualifiedname>Database::JSON</qualifiedname>
-        <initializer>= 114</initializer>
+        <initializer>                            =
+114</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.hpp" line="165" column="32" bodyfile="src/database/database.hpp" bodystart="165" bodyend="-1"/>
-        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="248" endline="329">executeQuery</referencedby>
+        <location file="src/database/database.hpp" line="248" column="30" bodyfile="src/database/database.hpp" bodystart="248" bodyend="-1"/>
+        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="356" endline="484">executeQuery</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classDatabase_1a3f5fa0c674ad45ee587e735cb37bdb4b" prot="private" static="yes" mutable="no">
         <type>const std::uint16_t</type>
@@ -116,15 +120,16 @@
         <argsstring></argsstring>
         <name>JSONB</name>
         <qualifiedname>Database::JSONB</qualifiedname>
-        <initializer>= 3802</initializer>
+        <initializer>                             =
+3802</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.hpp" line="166" column="32" bodyfile="src/database/database.hpp" bodystart="166" bodyend="-1"/>
-        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="248" endline="329">executeQuery</referencedby>
+        <location file="src/database/database.hpp" line="250" column="30" bodyfile="src/database/database.hpp" bodystart="250" bodyend="-1"/>
+        <referencedby refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="356" endline="484">executeQuery</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -143,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.hpp" line="66" column="5"/>
+        <location file="src/database/database.hpp" line="94" column="3"/>
         <references refid="classDatabase_1a83f8b6d2941a4aee50f225e08e97291c">Database</references>
         <referencedby refid="classDatabase_1a83f8b6d2941a4aee50f225e08e97291c">Database</referencedby>
         <referencedby refid="classDatabase_1a00d16c8b373c9bb4bad59550648c5393">Database</referencedby>
@@ -165,7 +170,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.hpp" line="67" column="5"/>
+        <location file="src/database/database.hpp" line="96" column="3"/>
         <references refid="classDatabase_1a83f8b6d2941a4aee50f225e08e97291c">Database</references>
       </memberdef>
       <memberdef kind="function" id="classDatabase_1a46b93a4878076c7cfddd5b4058297f14" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -183,7 +188,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.hpp" line="68" column="14"/>
+        <location file="src/database/database.hpp" line="98" column="12"/>
         <references refid="classDatabase_1a83f8b6d2941a4aee50f225e08e97291c">Database</references>
       </memberdef>
       <memberdef kind="function" id="classDatabase_1a4f753fb279bc951340001eb8f21f5b82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -201,12 +206,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.hpp" line="69" column="14"/>
-        <references refid="classDatabase_1a5941bc7b94fbacc46dd8acc818712afd" compoundref="database_8cpp" startline="117" endline="133">check_connection</references>
-        <references refid="classDatabase_1a7c0a44631de74f1d0a18119d1cd6cf1a" compoundref="database_8cpp" startline="93" endline="111">checkExists</references>
+        <location file="src/database/database.hpp" line="100" column="12"/>
+        <references refid="classDatabase_1a5941bc7b94fbacc46dd8acc818712afd" compoundref="database_8cpp" startline="180" endline="198">check_connection</references>
+        <references refid="classDatabase_1a7c0a44631de74f1d0a18119d1cd6cf1a" compoundref="database_8cpp" startline="134" endline="173">checkExists</references>
         <references refid="classDatabase_1a83f8b6d2941a4aee50f225e08e97291c">Database</references>
-        <references refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="248" endline="329">executeQuery</references>
-        <references refid="classDatabase_1a0ec8decb4af7abab6348d85d31f6af70" compoundref="database_8cpp" startline="143" endline="157">reconnect</references>
+        <references refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="356" endline="484">executeQuery</references>
+        <references refid="classDatabase_1a0ec8decb4af7abab6348d85d31f6af70" compoundref="database_8cpp" startline="212" endline="232">reconnect</references>
       </memberdef>
       <memberdef kind="function" id="classDatabase_1aa78586a013e7bb5fb707dc4ce330d896" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -235,10 +240,10 @@ Takes ownership of a connection, validates it and caches its connection string. 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.hpp" line="78" column="14" bodyfile="src/database/database.cpp" bodystart="58" bodyend="75"/>
-        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="156">connection</references>
-        <references refid="classDatabase_1adec58b4f1a163f78c57d6631c5caf6b0" compoundref="database_8hpp" startline="157">connection_info</references>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <location file="src/database/database.hpp" line="112" column="12" bodyfile="src/database/database.cpp" bodystart="83" bodyend="113"/>
+        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="232">connection</references>
+        <references refid="classDatabase_1adec58b4f1a163f78c57d6631c5caf6b0" compoundref="database_8hpp" startline="234">connection_info</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
       </memberdef>
       <memberdef kind="function" id="classDatabase_1a84d399a2ad58d69daab9b05330e1316d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -254,8 +259,8 @@ Takes ownership of a connection, validates it and caches its connection string. 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.hpp" line="83" column="13" bodyfile="src/database/database.cpp" bodystart="80" bodyend="80"/>
-        <references refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" compoundref="message_8cpp" startline="39" endline="39">Message::InfoMessage</references>
+        <location file="src/database/database.hpp" line="120" column="11" bodyfile="src/database/database.cpp" bodystart="118" bodyend="122"/>
+        <references refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" compoundref="message_8cpp" startline="48" endline="50">Message::InfoMessage</references>
       </memberdef>
       <memberdef kind="function" id="classDatabase_1a7c0a44631de74f1d0a18119d1cd6cf1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -312,10 +317,10 @@ Checks whether a row exists using a parameterised EXISTS query. Table and column
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.hpp" line="96" column="10" bodyfile="src/database/database.cpp" bodystart="93" bodyend="111"/>
-        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="156">connection</references>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <referencedby refid="classDatabaseController_1a870dc0277e6ac74c5ddb410e1f7112a2" compoundref="databasecontroller_8cpp" startline="109" endline="112">DatabaseController::checkItemExists</referencedby>
+        <location file="src/database/database.hpp" line="137" column="8" bodyfile="src/database/database.cpp" bodystart="134" bodyend="173"/>
+        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="232">connection</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <referencedby refid="classDatabaseController_1a870dc0277e6ac74c5ddb410e1f7112a2" compoundref="databasecontroller_8cpp" startline="148" endline="156">DatabaseController::checkItemExists</referencedby>
         <referencedby refid="classDatabase_1a4f753fb279bc951340001eb8f21f5b82">operator=</referencedby>
       </memberdef>
       <memberdef kind="function" id="classDatabase_1a5941bc7b94fbacc46dd8acc818712afd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -337,10 +342,10 @@ Checks whether a row exists using a parameterised EXISTS query. Table and column
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.hpp" line="102" column="10" bodyfile="src/database/database.cpp" bodystart="117" bodyend="133"/>
-        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="156">connection</references>
+        <location file="src/database/database.hpp" line="149" column="8" bodyfile="src/database/database.cpp" bodystart="180" bodyend="198"/>
+        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="232">connection</references>
         <referencedby refid="classDatabase_1a4f753fb279bc951340001eb8f21f5b82">operator=</referencedby>
-        <referencedby refid="classDatabase_1a0ec8decb4af7abab6348d85d31f6af70" compoundref="database_8cpp" startline="143" endline="157">reconnect</referencedby>
+        <referencedby refid="classDatabase_1a0ec8decb4af7abab6348d85d31f6af70" compoundref="database_8cpp" startline="212" endline="232">reconnect</referencedby>
       </memberdef>
       <memberdef kind="function" id="classDatabase_1a0ec8decb4af7abab6348d85d31f6af70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -365,11 +370,11 @@ The old connection is dropped when the <computeroutput>shared_ptr</computeroutpu
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.hpp" line="110" column="10" bodyfile="src/database/database.cpp" bodystart="143" bodyend="157"/>
-        <references refid="classDatabase_1a5941bc7b94fbacc46dd8acc818712afd" compoundref="database_8cpp" startline="117" endline="133">check_connection</references>
-        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="156">connection</references>
-        <references refid="classDatabase_1adec58b4f1a163f78c57d6631c5caf6b0" compoundref="database_8hpp" startline="157">connection_info</references>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <location file="src/database/database.hpp" line="160" column="8" bodyfile="src/database/database.cpp" bodystart="212" bodyend="232"/>
+        <references refid="classDatabase_1a5941bc7b94fbacc46dd8acc818712afd" compoundref="database_8cpp" startline="180" endline="198">check_connection</references>
+        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="232">connection</references>
+        <references refid="classDatabase_1adec58b4f1a163f78c57d6631c5caf6b0" compoundref="database_8hpp" startline="234">connection_info</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
         <referencedby refid="classDatabase_1a4f753fb279bc951340001eb8f21f5b82">operator=</referencedby>
       </memberdef>
       <memberdef kind="function" id="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -439,24 +444,24 @@ Executes a parameterised query and converts result rows to JSON. Commits the tra
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.hpp" line="126" column="19" bodyfile="src/database/database.cpp" bodystart="248" bodyend="329"/>
-        <references refid="classDatabase_1a9647c8b7198f626b7d461e472fa70f9b" compoundref="database_8hpp" startline="164">BOOLEAN</references>
-        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="156">connection</references>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
-        <references refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" compoundref="message_8cpp" startline="39" endline="39">Message::InfoMessage</references>
-        <references refid="classDatabase_1ad09259c9f7ccae773cbd03b9bf1eb6e6" compoundref="database_8hpp" startline="163">INTEGER</references>
-        <references refid="classDatabase_1a8fad4151f7565d3b3f57d53d50080c05" compoundref="database_8hpp" startline="165">JSON</references>
-        <references refid="classDatabase_1a3f5fa0c674ad45ee587e735cb37bdb4b" compoundref="database_8hpp" startline="166">JSONB</references>
-        <references refid="classDatabase_1a0be5b2122215021626f1150c89302594" compoundref="database_8hpp" startline="162">TEXT</references>
+        <location file="src/database/database.hpp" line="185" column="17" bodyfile="src/database/database.cpp" bodystart="356" bodyend="484"/>
+        <references refid="classDatabase_1a9647c8b7198f626b7d461e472fa70f9b" compoundref="database_8hpp" startline="246">BOOLEAN</references>
+        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="232">connection</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
+        <references refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" compoundref="message_8cpp" startline="48" endline="50">Message::InfoMessage</references>
+        <references refid="classDatabase_1ad09259c9f7ccae773cbd03b9bf1eb6e6" compoundref="database_8hpp" startline="244">INTEGER</references>
+        <references refid="classDatabase_1a8fad4151f7565d3b3f57d53d50080c05" compoundref="database_8hpp" startline="248">JSON</references>
+        <references refid="classDatabase_1a3f5fa0c674ad45ee587e735cb37bdb4b" compoundref="database_8hpp" startline="250">JSONB</references>
+        <references refid="classDatabase_1a0be5b2122215021626f1150c89302594" compoundref="database_8hpp" startline="242">TEXT</references>
         <referencedby refid="database_8cpp_1a93a7b5be58f322ccae0d3b1564eb4011">Database::executeQuery&lt; jsoncons::json, pqxx::nontransaction &gt;</referencedby>
         <referencedby refid="database_8cpp_1adea7d8276ce4e36cb3acb79558b4204d">Database::executeQuery&lt; jsoncons::json, pqxx::work &gt;</referencedby>
         <referencedby refid="database_8cpp_1abf10deee0aec368650df99ba1df909b8">Database::executeQuery&lt; jsoncons::json::array, pqxx::nontransaction &gt;</referencedby>
-        <referencedby refid="classDatabaseController_1a107e601b43f856547bc04d97e8975b8d" compoundref="databasecontroller_8cpp" startline="88" endline="92">DatabaseController::executeQuery</referencedby>
-        <referencedby refid="classDatabaseController_1ae2d9c2dcf54cdec81331949a9aaea597" compoundref="databasecontroller_8cpp" startline="94" endline="97">DatabaseController::executeReadQuery</referencedby>
-        <referencedby refid="classDatabaseController_1ab854d593bad9adf157993f38f465fc18" compoundref="databasecontroller_8cpp" startline="99" endline="102">DatabaseController::executeSearchQuery</referencedby>
-        <referencedby refid="classDatabaseController_1aa758566f79643d7f383a135ef80fa9e9" compoundref="databasecontroller_8cpp" startline="114" endline="124">DatabaseController::getPasswordHashForUserName</referencedby>
-        <referencedby refid="classDatabaseController_1ae11a73cc6347582351411b8c5ef7341d" compoundref="databasecontroller_8cpp" startline="133" endline="136">DatabaseController::getPermissions</referencedby>
+        <referencedby refid="classDatabaseController_1a107e601b43f856547bc04d97e8975b8d" compoundref="databasecontroller_8cpp" startline="112" endline="121">DatabaseController::executeQuery</referencedby>
+        <referencedby refid="classDatabaseController_1ae2d9c2dcf54cdec81331949a9aaea597" compoundref="databasecontroller_8cpp" startline="123" endline="130">DatabaseController::executeReadQuery</referencedby>
+        <referencedby refid="classDatabaseController_1ab854d593bad9adf157993f38f465fc18" compoundref="databasecontroller_8cpp" startline="132" endline="139">DatabaseController::executeSearchQuery</referencedby>
+        <referencedby refid="classDatabaseController_1aa758566f79643d7f383a135ef80fa9e9" compoundref="databasecontroller_8cpp" startline="158" endline="176">DatabaseController::getPasswordHashForUserName</referencedby>
+        <referencedby refid="classDatabaseController_1ae11a73cc6347582351411b8c5ef7341d" compoundref="databasecontroller_8cpp" startline="190" endline="196">DatabaseController::getPermissions</referencedby>
         <referencedby refid="classDatabase_1a4f753fb279bc951340001eb8f21f5b82">operator=</referencedby>
       </memberdef>
       <memberdef kind="function" id="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -515,16 +520,16 @@ Executes a query in a nontransaction and returns a single scalar value. Reads th
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.hpp" line="137" column="19" bodyfile="src/database/database.cpp" bodystart="340" bodyend="362"/>
-        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="156">connection</references>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
-        <references refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" compoundref="message_8cpp" startline="39" endline="39">Message::InfoMessage</references>
+        <location file="src/database/database.hpp" line="204" column="17" bodyfile="src/database/database.cpp" bodystart="495" bodyend="523"/>
+        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="232">connection</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
+        <references refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" compoundref="message_8cpp" startline="48" endline="50">Message::InfoMessage</references>
         <referencedby refid="database_8cpp_1af71e8706984c45b60a2cc047d2245d98">Database::doSimpleQuery&lt; std::string &gt;</referencedby>
-        <referencedby refid="classDatabaseController_1a5ac3b3112fc438ac6133b008d46b62ca" compoundref="databasecontroller_8cpp" startline="104" endline="107">DatabaseController::doReadQuery</referencedby>
+        <referencedby refid="classDatabaseController_1a5ac3b3112fc438ac6133b008d46b62ca" compoundref="databasecontroller_8cpp" startline="141" endline="146">DatabaseController::doReadQuery</referencedby>
       </memberdef>
       <memberdef kind="function" id="classDatabase_1aa5fe1076eec14a4e265fd4b7d1247983" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::optional&lt; std::unordered_set&lt; <ref refid="namespaceapi_1_1v2_1a629023e05b2c9802c14aaca4634f4ab3" kindref="member">api::v2::ColumnInfo</ref> &gt; &gt;</type>
+        <type>std::optional&lt; std::unordered_set&lt; <ref refid="namespaceapi_1_1v2_1aaed92c04eb1e44678c97ae468bd8a42b" kindref="member">api::v2::ColumnInfo</ref> &gt; &gt;</type>
         <definition>std::optional&lt; std::unordered_set&lt; api::v2::ColumnInfo &gt; &gt; Database::getTableSchema</definition>
         <argsstring>(const std::string &amp;tableName)</argsstring>
         <name>getTableSchema</name>
@@ -552,10 +557,10 @@ Reads the column metadata of a table, excluding the synthetic <computeroutput>id
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.hpp" line="144" column="19" bodyfile="src/database/database.cpp" bodystart="168" bodyend="199"/>
-        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="156">connection</references>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <referencedby refid="classDatabaseController_1a7d83a6ade653663a62d68922f0928419" compoundref="databasecontroller_8cpp" startline="126" endline="129">DatabaseController::getTableSchema</referencedby>
+        <location file="src/database/database.hpp" line="216" column="17" bodyfile="src/database/database.cpp" bodystart="243" bodyend="301"/>
+        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="232">connection</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <referencedby refid="classDatabaseController_1a7d83a6ade653663a62d68922f0928419" compoundref="databasecontroller_8cpp" startline="179" endline="183">DatabaseController::getTableSchema</referencedby>
       </memberdef>
       <memberdef kind="function" id="classDatabase_1a53e5ff850d852b1d9930ed830393e1a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; std::unordered_set&lt; std::string &gt; &gt;</type>
@@ -576,24 +581,24 @@ Uses a <computeroutput>pqxx::work</computeroutput> (committed implicitly when it
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/database.hpp" line="150" column="27" bodyfile="src/database/database.cpp" bodystart="207" bodyend="231"/>
-        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="156">connection</references>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <referencedby refid="classDatabaseController_1acece421c53c0fef3b2965878f2422d5e" compoundref="databasecontroller_8cpp" startline="131" endline="131">DatabaseController::getAllTables</referencedby>
+        <location file="src/database/database.hpp" line="224" column="3" bodyfile="src/database/database.cpp" bodystart="309" bodyend="339"/>
+        <references refid="classDatabase_1aa5b051115e9769591a8fbf7542f3251e" compoundref="database_8hpp" startline="232">connection</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <referencedby refid="classDatabaseController_1acece421c53c0fef3b2965878f2422d5e" compoundref="databasecontroller_8cpp" startline="186" endline="188">DatabaseController::getAllTables</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
 <para>Owns one synchronous PostgreSQL connection used by the synchronous database path. </para>
     </briefdescription>
     <detaileddescription>
-<para>A <ref refid="classDatabase" kindref="compound">Database</ref> wraps a single <computeroutput>pqxx::connection</computeroutput> and offers the query helpers used by controllers through a <ref refid="classDatabaseHanndler" kindref="compound">DatabaseHanndler</ref> lease. Instances are constructed and owned by <ref refid="classDatabaseConnectionPool" kindref="compound">DatabaseConnectionPool</ref>, which hands them out one borrower at a time; callers never construct one directly. The constructor validates the connection with <computeroutput>SELECT 1</computeroutput> and caches its connection string so <ref refid="classDatabase_1a0ec8decb4af7abab6348d85d31f6af70" kindref="member">reconnect()</ref> can rebuild it later.</para>
-<para>Thread-safety: the wrapped connection is used by one borrower at a time as enforced by the pool, so no internal locking is performed. Non-copyable and non-movable: ownership stays with the pool&apos;s <computeroutput>std::shared_ptr</computeroutput>. <simplesect kind="note"><para>The constructor tolerates a null connection (no validation performed and an empty cached connection string); in normal operation the pool passes a validated connection. </para>
+<para>A <ref refid="classDatabase" kindref="compound">Database</ref> wraps a single <computeroutput>pqxx::connection</computeroutput> and offers the query helpers used by controllers through a <ref refid="classDatabaseHanndler" kindref="compound">DatabaseHanndler</ref> lease. Instances are constructed and owned by <ref refid="classDatabaseConnectionPool" kindref="compound">DatabaseConnectionPool</ref>, which hands them out one borrower at a time; callers never construct one directly. The constructor validates the connection with <computeroutput>SELECT 1</computeroutput> and caches its connection string so <ref refid="classDatabase_1a0ec8decb4af7abab6348d85d31f6af70" kindref="member">reconnect()</ref> can rebuild it later. <verbatim>     Thread-safety: the wrapped connection is used by one borrower at a
+</verbatim> time as enforced by the pool, so no internal locking is performed. Non-copyable and non-movable: ownership stays with the pool&apos;s <computeroutput>std::shared_ptr</computeroutput>. <simplesect kind="note"><para>The constructor tolerates a null connection (no validation performed and an empty cached connection string); in normal operation the pool passes a validated connection. </para>
 </simplesect>
 <simplesect kind="see"><para><ref refid="classDatabaseConnectionPool" kindref="compound">DatabaseConnectionPool</ref>, <ref refid="classDatabaseHanndler" kindref="compound">DatabaseHanndler</ref> </para>
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="src/database/database.hpp" line="62" column="1" bodyfile="src/database/database.hpp" bodystart="63" bodyend="167"/>
+    <location file="src/database/database.hpp" line="90" column="1" bodyfile="src/database/database.hpp" bodystart="90" bodyend="252"/>
     <listofallmembers>
       <member refid="classDatabase_1a9647c8b7198f626b7d461e472fa70f9b" prot="private" virt="non-virtual"><scope>Database</scope><name>BOOLEAN</name></member>
       <member refid="classDatabase_1a5941bc7b94fbacc46dd8acc818712afd" prot="public" virt="non-virtual"><scope>Database</scope><name>check_connection</name></member>

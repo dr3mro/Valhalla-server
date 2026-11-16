@@ -16,28 +16,29 @@
     </templateparamlist>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" prot="private" static="no" mutable="no">
-        <type>std::shared_ptr&lt; <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> &gt;</type>
+        <type>std::shared_ptr&lt; <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref> &gt;</type>
         <definition>std::shared_ptr&lt;GateKeeper&gt; EntityController&lt; T &gt;::gateKeeper</definition>
         <argsstring></argsstring>
         <name>gateKeeper</name>
         <qualifiedname>EntityController::gateKeeper</qualifiedname>
-        <initializer>= <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref>&gt;()</initializer>
+        <initializer>                       =
+<ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref>&gt;()</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Shared <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> used by every operation to authorize actions on behalf of the requester. </para>
+<para>Shared <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref> used by every operation to authorize actions on behalf of the requester. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="154" column="21" bodyfile="src/controllers/entitycontroller/entitycontroller.hpp" bodystart="154" bodyend="-1"/>
-        <referencedby refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" compoundref="entitycontroller_8cpp" startline="57" endline="112">EntityController&lt; T &gt;::Create</referencedby>
-        <referencedby refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" compoundref="entitycontroller_8cpp" startline="290" endline="343">EntityController&lt; T &gt;::CreateAsync</referencedby>
-        <referencedby refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" compoundref="entitycontroller_8cpp" startline="224" endline="252">EntityController&lt; T &gt;::Delete</referencedby>
-        <referencedby refid="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" compoundref="entitycontroller_8cpp" startline="452" endline="480">EntityController&lt; T &gt;::DeleteAsync</referencedby>
-        <referencedby refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" compoundref="entitycontroller_8cpp" startline="115" endline="160">EntityController&lt; T &gt;::Read</referencedby>
-        <referencedby refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" compoundref="entitycontroller_8cpp" startline="345" endline="390">EntityController&lt; T &gt;::ReadAsync</referencedby>
-        <referencedby refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" compoundref="entitycontroller_8cpp" startline="162" endline="221">EntityController&lt; T &gt;::Update</referencedby>
-        <referencedby refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" compoundref="entitycontroller_8cpp" startline="392" endline="450">EntityController&lt; T &gt;::UpdateAsync</referencedby>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="218" column="19" bodyfile="src/controllers/entitycontroller/entitycontroller.hpp" bodystart="218" bodyend="-1"/>
+        <referencedby refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" compoundref="entitycontroller_8cpp" startline="76" endline="150">EntityController&lt; T &gt;::Create</referencedby>
+        <referencedby refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" compoundref="entitycontroller_8cpp" startline="370" endline="442">EntityController&lt; T &gt;::CreateAsync</referencedby>
+        <referencedby refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" compoundref="entitycontroller_8cpp" startline="297" endline="328">EntityController&lt; T &gt;::Delete</referencedby>
+        <referencedby refid="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" compoundref="entitycontroller_8cpp" startline="590" endline="624">EntityController&lt; T &gt;::DeleteAsync</referencedby>
+        <referencedby refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" compoundref="entitycontroller_8cpp" startline="153" endline="219">EntityController&lt; T &gt;::Read</referencedby>
+        <referencedby refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" compoundref="entitycontroller_8cpp" startline="444" endline="510">EntityController&lt; T &gt;::ReadAsync</referencedby>
+        <referencedby refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" compoundref="entitycontroller_8cpp" startline="221" endline="294">EntityController&lt; T &gt;::Update</referencedby>
+        <referencedby refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" compoundref="entitycontroller_8cpp" startline="512" endline="588">EntityController&lt; T &gt;::UpdateAsync</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -53,11 +54,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="65" column="5"/>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="83" column="3"/>
+        <referencedby refid="classServiceController_1a5cdd73e0b08ae45f2d808070e5680025" compoundref="servicecontroller_8cpp" startline="104" endline="111">ServiceController&lt; T &gt;::CreateAsync</referencedby>
+        <referencedby refid="classServiceController_1a69e19ca4bc442fd85af8df06ed98b5dc" compoundref="servicecontroller_8cpp" startline="218" endline="226">ServiceController&lt; T &gt;::DeleteAsync</referencedby>
         <referencedby refid="classEntityController_1a0d747765581fc7b8e2aeb021311a20b3">EntityController&lt; T &gt;::EntityController</referencedby>
         <referencedby refid="classEntityController_1a04d928df412682361a6b4337f2f6e027">EntityController&lt; T &gt;::EntityController</referencedby>
         <referencedby refid="classEntityController_1a7fd4702e0d3f27df13c4395c174c0f58">EntityController&lt; T &gt;::operator=</referencedby>
         <referencedby refid="classEntityController_1a2887bd9e566dc27e0d49dfc9f8f1d9e2">EntityController&lt; T &gt;::operator=</referencedby>
+        <referencedby refid="classServiceController_1ab279214d55b6c2fa43ad6ee069413c97" compoundref="servicecontroller_8cpp" startline="139" endline="147">ServiceController&lt; T &gt;::ReadAsync</referencedby>
+        <referencedby refid="classServiceController_1abbe959a26ec829cc66e5e1cfd8175577" compoundref="servicecontroller_8cpp" startline="180" endline="190">ServiceController&lt; T &gt;::UpdateAsync</referencedby>
       </memberdef>
       <memberdef kind="function" id="classEntityController_1a0d747765581fc7b8e2aeb021311a20b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -74,7 +79,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="66" column="5"/>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="84" column="3"/>
         <references refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690">EntityController&lt; T &gt;::EntityController</references>
       </memberdef>
       <memberdef kind="function" id="classEntityController_1a04d928df412682361a6b4337f2f6e027" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -92,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="67" column="5"/>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="86" column="3"/>
         <references refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690">EntityController&lt; T &gt;::EntityController</references>
       </memberdef>
       <memberdef kind="function" id="classEntityController_1a7fd4702e0d3f27df13c4395c174c0f58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -110,7 +115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="68" column="22"/>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="88" column="20"/>
         <references refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690">EntityController&lt; T &gt;::EntityController</references>
       </memberdef>
       <memberdef kind="function" id="classEntityController_1a2887bd9e566dc27e0d49dfc9f8f1d9e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -128,7 +133,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="69" column="22"/>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="90" column="20"/>
         <references refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690">EntityController&lt; T &gt;::EntityController</references>
       </memberdef>
       <memberdef kind="function" id="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -143,18 +148,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="70" column="5"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" compoundref="entitycontroller_8cpp" startline="57" endline="112">EntityController&lt; T &gt;::Create</references>
-        <references refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" compoundref="entitycontroller_8cpp" startline="290" endline="343">EntityController&lt; T &gt;::CreateAsync</references>
-        <references refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" compoundref="entitycontroller_8cpp" startline="224" endline="252">EntityController&lt; T &gt;::Delete</references>
-        <references refid="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" compoundref="entitycontroller_8cpp" startline="452" endline="480">EntityController&lt; T &gt;::DeleteAsync</references>
-        <references refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" compoundref="entitycontroller_8cpp" startline="115" endline="160">EntityController&lt; T &gt;::Read</references>
-        <references refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" compoundref="entitycontroller_8cpp" startline="345" endline="390">EntityController&lt; T &gt;::ReadAsync</references>
-        <references refid="classEntityController_1a888ea97ce413d880bcca6f7e9cf6b896" compoundref="entitycontroller_8cpp" startline="255" endline="287">EntityController&lt; T &gt;::Search</references>
-        <references refid="classEntityController_1a430903208b20b59481d07c88b66ac4f6" compoundref="entitycontroller_8cpp" startline="482" endline="514">EntityController&lt; T &gt;::SearchAsync</references>
-        <references refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" compoundref="entitycontroller_8cpp" startline="162" endline="221">EntityController&lt; T &gt;::Update</references>
-        <references refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" compoundref="entitycontroller_8cpp" startline="392" endline="450">EntityController&lt; T &gt;::UpdateAsync</references>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="92" column="3"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" compoundref="entitycontroller_8cpp" startline="76" endline="150">EntityController&lt; T &gt;::Create</references>
+        <references refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" compoundref="entitycontroller_8cpp" startline="370" endline="442">EntityController&lt; T &gt;::CreateAsync</references>
+        <references refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" compoundref="entitycontroller_8cpp" startline="297" endline="328">EntityController&lt; T &gt;::Delete</references>
+        <references refid="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" compoundref="entitycontroller_8cpp" startline="590" endline="624">EntityController&lt; T &gt;::DeleteAsync</references>
+        <references refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" compoundref="entitycontroller_8cpp" startline="153" endline="219">EntityController&lt; T &gt;::Read</references>
+        <references refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" compoundref="entitycontroller_8cpp" startline="444" endline="510">EntityController&lt; T &gt;::ReadAsync</references>
+        <references refid="classEntityController_1a888ea97ce413d880bcca6f7e9cf6b896" compoundref="entitycontroller_8cpp" startline="331" endline="367">EntityController&lt; T &gt;::Search</references>
+        <references refid="classEntityController_1a430903208b20b59481d07c88b66ac4f6" compoundref="entitycontroller_8cpp" startline="626" endline="662">EntityController&lt; T &gt;::SearchAsync</references>
+        <references refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" compoundref="entitycontroller_8cpp" startline="221" endline="294">EntityController&lt; T &gt;::Update</references>
+        <references refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" compoundref="entitycontroller_8cpp" startline="512" endline="588">EntityController&lt; T &gt;::UpdateAsync</references>
       </memberdef>
       <memberdef kind="function" id="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
@@ -193,7 +198,7 @@
 <parametername direction="in">requester</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Principal whose create permission is checked by <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref>. </para>
+<para>Principal whose create permission is checked by <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref>. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -209,17 +214,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="80" column="10" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="57" bodyend="112"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classController_1a092b50bf54ca1d6d6f706a5a052992b1" compoundref="controller_8hpp" startline="135" endline="139">Controller::Create</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="154">EntityController&lt; T &gt;::gateKeeper</references>
-        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7acf64a80b49ebda9168c3d7a2b6f95f15" compoundref="validator_8hpp" startline="90">Validator::Rule::IGNORE_IF_MISSING_FROM_SCHEMA</references>
-        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a61500db96634a6ab0be12a77a8460481" compoundref="validator_8hpp" startline="91">Validator::Rule::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA</references>
-        <references refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" compoundref="validator_8cpp" startline="52" endline="104">Validator::validateDatabaseCreateSchema</references>
-        <referencedby refid="classAppointmentController_1a07a0c78a16d4f88cf921a96d6a72858c" compoundref="appointmentcontroller_8cpp" startline="56" endline="59">AppointmentController&lt; T &gt;::Create</referencedby>
-        <referencedby refid="classServiceController_1a138db9b26dcc863d6895ccb1f01a7123" compoundref="servicecontroller_8cpp" startline="57" endline="60">ServiceController&lt; T &gt;::Create</referencedby>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="107" column="8" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="76" bodyend="150"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classController_1a092b50bf54ca1d6d6f706a5a052992b1" compoundref="controller_8hpp" startline="187" endline="196">Controller::Create</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="218">EntityController&lt; T &gt;::gateKeeper</references>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7acf64a80b49ebda9168c3d7a2b6f95f15" compoundref="validator_8hpp" startline="108">Validator::Rule::IGNORE_IF_MISSING_FROM_SCHEMA</references>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a61500db96634a6ab0be12a77a8460481" compoundref="validator_8hpp" startline="110">Validator::Rule::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA</references>
+        <references refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" compoundref="validator_8cpp" startline="66" endline="139">Validator::validateDatabaseCreateSchema</references>
+        <referencedby refid="classAppointmentController_1a07a0c78a16d4f88cf921a96d6a72858c" compoundref="appointmentcontroller_8cpp" startline="84" endline="92">AppointmentController&lt; T &gt;::Create</referencedby>
+        <referencedby refid="classServiceController_1a138db9b26dcc863d6895ccb1f01a7123" compoundref="servicecontroller_8cpp" startline="84" endline="92">ServiceController&lt; T &gt;::Create</referencedby>
         <referencedby refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b">EntityController&lt; T &gt;::~EntityController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classEntityController_1a0de2c6044f1460f85750e4d18635997b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -275,19 +280,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="87" column="18" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="290" bodyend="343"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classController_1a020c9869a16a1ac31bc2b2ce128cf51b" compoundref="controller_8hpp" startline="151" endline="155">Controller::CreateAsync</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="154">EntityController&lt; T &gt;::gateKeeper</references>
-        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7acf64a80b49ebda9168c3d7a2b6f95f15" compoundref="validator_8hpp" startline="90">Validator::Rule::IGNORE_IF_MISSING_FROM_SCHEMA</references>
-        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a61500db96634a6ab0be12a77a8460481" compoundref="validator_8hpp" startline="91">Validator::Rule::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA</references>
-        <references refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" compoundref="validator_8cpp" startline="52" endline="104">Validator::validateDatabaseCreateSchema</references>
-        <referencedby refid="classAppointmentController_1a5ae310b608a81f19c3e4a5d0bbb57666" compoundref="appointmentcontroller_8cpp" startline="68" endline="71">AppointmentController&lt; T &gt;::CreateAsync</referencedby>
-        <referencedby refid="classClientController_1a52b4114b1e619b6526ee861696eff6da" compoundref="clientcontroller_8cpp" startline="414" endline="417">ClientController&lt; T &gt;::CreateAsync</referencedby>
-        <referencedby refid="classServiceController_1a5cdd73e0b08ae45f2d808070e5680025" compoundref="servicecontroller_8cpp" startline="71" endline="74">ServiceController&lt; T &gt;::CreateAsync</referencedby>
-        <referencedby refid="classClinicController_1a6cc12150aba468806260399172fcd9ce" compoundref="cliniccontroller_8cpp" startline="119" endline="124">ClinicController&lt; T &gt;::CreateAsyncImpl</referencedby>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="118" column="16" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="370" bodyend="442"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classController_1a020c9869a16a1ac31bc2b2ce128cf51b" compoundref="controller_8hpp" startline="211" endline="220">Controller::CreateAsync</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="218">EntityController&lt; T &gt;::gateKeeper</references>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7acf64a80b49ebda9168c3d7a2b6f95f15" compoundref="validator_8hpp" startline="108">Validator::Rule::IGNORE_IF_MISSING_FROM_SCHEMA</references>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a61500db96634a6ab0be12a77a8460481" compoundref="validator_8hpp" startline="110">Validator::Rule::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA</references>
+        <references refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" compoundref="validator_8cpp" startline="66" endline="139">Validator::validateDatabaseCreateSchema</references>
+        <referencedby refid="classAppointmentController_1a5ae310b608a81f19c3e4a5d0bbb57666" compoundref="appointmentcontroller_8cpp" startline="102" endline="109">AppointmentController&lt; T &gt;::CreateAsync</referencedby>
+        <referencedby refid="classClientController_1a52b4114b1e619b6526ee861696eff6da" compoundref="clientcontroller_8cpp" startline="530" endline="537">ClientController&lt; T &gt;::CreateAsync</referencedby>
+        <referencedby refid="classClinicController_1a6cc12150aba468806260399172fcd9ce" compoundref="cliniccontroller_8cpp" startline="148" endline="157">ClinicController&lt; T &gt;::CreateAsyncImpl</referencedby>
         <referencedby refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b">EntityController&lt; T &gt;::~EntityController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -343,18 +347,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="96" column="10" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="115" bodyend="160"/>
-        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006" compoundref="validator_8hpp" startline="93">Validator::Rule::ASSERT_NOT_PRESENT</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="154">EntityController&lt; T &gt;::gateKeeper</references>
-        <references refid="classController_1a99ba169c6f8163fd44cf966510c2730c" compoundref="controller_8hpp" startline="166" endline="170">Controller::Read</references>
-        <references refid="classValidator_1a950c1350bd04c695d0add09b31db3974" compoundref="validator_8cpp" startline="162" endline="198">Validator::validateDatabaseReadSchema</references>
-        <referencedby refid="classAppointmentController_1a304bdc460cdd955f0d08a7e5bc3611dc" compoundref="appointmentcontroller_8cpp" startline="81" endline="84">AppointmentController&lt; T &gt;::Read</referencedby>
-        <referencedby refid="classClientController_1a33f69fd2b79bc13817aa0574333266bf" compoundref="clientcontroller_8cpp" startline="120" endline="123">ClientController&lt; T &gt;::Read</referencedby>
-        <referencedby refid="classClinicController_1a0f109a3105237cccf7b29263ad6ff4ea" compoundref="cliniccontroller_8cpp" startline="320" endline="323">ClinicController&lt; T &gt;::Read</referencedby>
-        <referencedby refid="classServiceController_1a92157307a0c39b6623d7a5cb75a0e7bf" compoundref="servicecontroller_8cpp" startline="84" endline="87">ServiceController&lt; T &gt;::Read</referencedby>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="131" column="8" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="153" bodyend="219"/>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006" compoundref="validator_8hpp" startline="113">Validator::Rule::ASSERT_NOT_PRESENT</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="218">EntityController&lt; T &gt;::gateKeeper</references>
+        <references refid="classController_1a99ba169c6f8163fd44cf966510c2730c" compoundref="controller_8hpp" startline="234" endline="242">Controller::Read</references>
+        <references refid="classValidator_1a950c1350bd04c695d0add09b31db3974" compoundref="validator_8cpp" startline="211" endline="267">Validator::validateDatabaseReadSchema</references>
+        <referencedby refid="classAppointmentController_1a304bdc460cdd955f0d08a7e5bc3611dc" compoundref="appointmentcontroller_8cpp" startline="121" endline="128">AppointmentController&lt; T &gt;::Read</referencedby>
+        <referencedby refid="classClientController_1a33f69fd2b79bc13817aa0574333266bf" compoundref="clientcontroller_8cpp" startline="158" endline="164">ClientController&lt; T &gt;::Read</referencedby>
+        <referencedby refid="classClinicController_1a0f109a3105237cccf7b29263ad6ff4ea" compoundref="cliniccontroller_8cpp" startline="411" endline="417">ClinicController&lt; T &gt;::Read</referencedby>
+        <referencedby refid="classServiceController_1a92157307a0c39b6623d7a5cb75a0e7bf" compoundref="servicecontroller_8cpp" startline="122" endline="129">ServiceController&lt; T &gt;::Read</referencedby>
         <referencedby refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b">EntityController&lt; T &gt;::~EntityController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -410,18 +414,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="103" column="18" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="345" bodyend="390"/>
-        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006" compoundref="validator_8hpp" startline="93">Validator::Rule::ASSERT_NOT_PRESENT</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="154">EntityController&lt; T &gt;::gateKeeper</references>
-        <references refid="classController_1a055ea60472dc93fbb1c8af3d9f9d9091" compoundref="controller_8hpp" startline="181" endline="185">Controller::ReadAsync</references>
-        <references refid="classValidator_1a950c1350bd04c695d0add09b31db3974" compoundref="validator_8cpp" startline="162" endline="198">Validator::validateDatabaseReadSchema</references>
-        <referencedby refid="classAppointmentController_1a96bc67b390c572327b9cbee839ab97dd" compoundref="appointmentcontroller_8cpp" startline="93" endline="96">AppointmentController&lt; T &gt;::ReadAsync</referencedby>
-        <referencedby refid="classClientController_1a2a260581d3133c68635516102d87bbdb" compoundref="clientcontroller_8cpp" startline="420" endline="423">ClientController&lt; T &gt;::ReadAsync</referencedby>
-        <referencedby refid="classClinicController_1a00e426195a2f2a48140a94d7e258bf94" compoundref="cliniccontroller_8cpp" startline="326" endline="329">ClinicController&lt; T &gt;::ReadAsync</referencedby>
-        <referencedby refid="classServiceController_1ab279214d55b6c2fa43ad6ee069413c97" compoundref="servicecontroller_8cpp" startline="96" endline="99">ServiceController&lt; T &gt;::ReadAsync</referencedby>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="141" column="16" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="444" bodyend="510"/>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006" compoundref="validator_8hpp" startline="113">Validator::Rule::ASSERT_NOT_PRESENT</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="218">EntityController&lt; T &gt;::gateKeeper</references>
+        <references refid="classController_1a055ea60472dc93fbb1c8af3d9f9d9091" compoundref="controller_8hpp" startline="256" endline="264">Controller::ReadAsync</references>
+        <references refid="classValidator_1a950c1350bd04c695d0add09b31db3974" compoundref="validator_8cpp" startline="211" endline="267">Validator::validateDatabaseReadSchema</references>
+        <referencedby refid="classAppointmentController_1a96bc67b390c572327b9cbee839ab97dd" compoundref="appointmentcontroller_8cpp" startline="138" endline="145">AppointmentController&lt; T &gt;::ReadAsync</referencedby>
+        <referencedby refid="classClientController_1a2a260581d3133c68635516102d87bbdb" compoundref="clientcontroller_8cpp" startline="540" endline="547">ClientController&lt; T &gt;::ReadAsync</referencedby>
+        <referencedby refid="classClinicController_1a00e426195a2f2a48140a94d7e258bf94" compoundref="cliniccontroller_8cpp" startline="420" endline="426">ClinicController&lt; T &gt;::ReadAsync</referencedby>
         <referencedby refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b">EntityController&lt; T &gt;::~EntityController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classEntityController_1a351b900503468ac17e930c42fdf23bdf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -489,17 +492,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="111" column="10" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="162" bodyend="221"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="154">EntityController&lt; T &gt;::gateKeeper</references>
-        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a0753c9c32b6bf47d97d8b16158906388" compoundref="validator_8hpp" startline="89">Validator::Rule::NONE</references>
-        <references refid="classController_1a19c2ebed1725708ab253bc0ba1d9b2c5" compoundref="controller_8hpp" startline="196" endline="200">Controller::Update</references>
-        <references refid="classValidator_1a879e2b4d767389023f5537ceb9ad6a63" compoundref="validator_8cpp" startline="112" endline="154">Validator::validateDatabaseUpdateSchema</references>
-        <referencedby refid="classAppointmentController_1a8193e8f08b8afcc80abbaf8ffa9991e9" compoundref="appointmentcontroller_8cpp" startline="107" endline="110">AppointmentController&lt; T &gt;::Update</referencedby>
-        <referencedby refid="classClinicController_1ac9602c4667f7e5dadd4be920a9258d48" compoundref="cliniccontroller_8cpp" startline="332" endline="335">ClinicController&lt; T &gt;::Update</referencedby>
-        <referencedby refid="classServiceController_1a0bdcfc6e76c7864d0c84acd7be675ce4" compoundref="servicecontroller_8cpp" startline="110" endline="113">ServiceController&lt; T &gt;::Update</referencedby>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="153" column="8" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="221" bodyend="294"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="218">EntityController&lt; T &gt;::gateKeeper</references>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a0753c9c32b6bf47d97d8b16158906388" compoundref="validator_8hpp" startline="106">Validator::Rule::NONE</references>
+        <references refid="classController_1a19c2ebed1725708ab253bc0ba1d9b2c5" compoundref="controller_8hpp" startline="278" endline="286">Controller::Update</references>
+        <references refid="classValidator_1a879e2b4d767389023f5537ceb9ad6a63" compoundref="validator_8cpp" startline="148" endline="202">Validator::validateDatabaseUpdateSchema</references>
+        <referencedby refid="classAppointmentController_1a8193e8f08b8afcc80abbaf8ffa9991e9" compoundref="appointmentcontroller_8cpp" startline="158" endline="167">AppointmentController&lt; T &gt;::Update</referencedby>
+        <referencedby refid="classClinicController_1ac9602c4667f7e5dadd4be920a9258d48" compoundref="cliniccontroller_8cpp" startline="429" endline="437">ClinicController&lt; T &gt;::Update</referencedby>
+        <referencedby refid="classServiceController_1a0bdcfc6e76c7864d0c84acd7be675ce4" compoundref="servicecontroller_8cpp" startline="159" endline="169">ServiceController&lt; T &gt;::Update</referencedby>
         <referencedby refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b">EntityController&lt; T &gt;::~EntityController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -567,18 +570,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="119" column="18" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="392" bodyend="450"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="154">EntityController&lt; T &gt;::gateKeeper</references>
-        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a0753c9c32b6bf47d97d8b16158906388" compoundref="validator_8hpp" startline="89">Validator::Rule::NONE</references>
-        <references refid="classController_1a146f10399fc24f1052079827e6248b2a" compoundref="controller_8hpp" startline="211" endline="215">Controller::UpdateAsync</references>
-        <references refid="classValidator_1a879e2b4d767389023f5537ceb9ad6a63" compoundref="validator_8cpp" startline="112" endline="154">Validator::validateDatabaseUpdateSchema</references>
-        <referencedby refid="classAppointmentController_1ac6ec86b8497afe05196a67967e6063c2" compoundref="appointmentcontroller_8cpp" startline="120" endline="123">AppointmentController&lt; T &gt;::UpdateAsync</referencedby>
-        <referencedby refid="classClientController_1ad218f6587a3135d5b5466401aac514e9" compoundref="clientcontroller_8cpp" startline="426" endline="429">ClientController&lt; T &gt;::UpdateAsync</referencedby>
-        <referencedby refid="classClinicController_1ae01eb0d9ae50dc1e58a118201030b89f" compoundref="cliniccontroller_8cpp" startline="338" endline="341">ClinicController&lt; T &gt;::UpdateAsync</referencedby>
-        <referencedby refid="classServiceController_1abbe959a26ec829cc66e5e1cfd8175577" compoundref="servicecontroller_8cpp" startline="123" endline="126">ServiceController&lt; T &gt;::UpdateAsync</referencedby>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="165" column="16" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="512" bodyend="588"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="218">EntityController&lt; T &gt;::gateKeeper</references>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a0753c9c32b6bf47d97d8b16158906388" compoundref="validator_8hpp" startline="106">Validator::Rule::NONE</references>
+        <references refid="classController_1a146f10399fc24f1052079827e6248b2a" compoundref="controller_8hpp" startline="300" endline="308">Controller::UpdateAsync</references>
+        <references refid="classValidator_1a879e2b4d767389023f5537ceb9ad6a63" compoundref="validator_8cpp" startline="148" endline="202">Validator::validateDatabaseUpdateSchema</references>
+        <referencedby refid="classAppointmentController_1ac6ec86b8497afe05196a67967e6063c2" compoundref="appointmentcontroller_8cpp" startline="178" endline="188">AppointmentController&lt; T &gt;::UpdateAsync</referencedby>
+        <referencedby refid="classClientController_1ad218f6587a3135d5b5466401aac514e9" compoundref="clientcontroller_8cpp" startline="550" endline="560">ClientController&lt; T &gt;::UpdateAsync</referencedby>
+        <referencedby refid="classClinicController_1ae01eb0d9ae50dc1e58a118201030b89f" compoundref="cliniccontroller_8cpp" startline="440" endline="449">ClinicController&lt; T &gt;::UpdateAsync</referencedby>
         <referencedby refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b">EntityController&lt; T &gt;::~EntityController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -634,16 +636,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="126" column="10" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="224" bodyend="252"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="classController_1a1aee6ba4e59315c76893a2221808d719" compoundref="controller_8hpp" startline="226" endline="230">Controller::Delete</references>
-        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="154">EntityController&lt; T &gt;::gateKeeper</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="88">api::v2::Http::NOT_ACCEPTABLE</references>
-        <referencedby refid="classAppointmentController_1aae035bd4dac4df5e559e0e117534e260" compoundref="appointmentcontroller_8cpp" startline="133" endline="136">AppointmentController&lt; T &gt;::Delete</referencedby>
-        <referencedby refid="classClientController_1a57d1a8ba8f83b70242fcc29b7f8f70cb" compoundref="clientcontroller_8cpp" startline="169" endline="182">ClientController&lt; T &gt;::Delete</referencedby>
-        <referencedby refid="classServiceController_1adc89e37530112d08d7ee85aae48d8d3c" compoundref="servicecontroller_8cpp" startline="136" endline="139">ServiceController&lt; T &gt;::Delete</referencedby>
-        <referencedby refid="classClinicController_1aca363c98cad2d51f279275f84b8be1ce" compoundref="cliniccontroller_8cpp" startline="212" endline="216">ClinicController&lt; T &gt;::DeleteImpl</referencedby>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="177" column="8" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="297" bodyend="328"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="classController_1a1aee6ba4e59315c76893a2221808d719" compoundref="controller_8hpp" startline="321" endline="329">Controller::Delete</references>
+        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="218">EntityController&lt; T &gt;::gateKeeper</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="110">api::v2::Http::NOT_ACCEPTABLE</references>
+        <referencedby refid="classAppointmentController_1aae035bd4dac4df5e559e0e117534e260" compoundref="appointmentcontroller_8cpp" startline="200" endline="207">AppointmentController&lt; T &gt;::Delete</referencedby>
+        <referencedby refid="classClientController_1a57d1a8ba8f83b70242fcc29b7f8f70cb" compoundref="clientcontroller_8cpp" startline="228" endline="250">ClientController&lt; T &gt;::Delete</referencedby>
+        <referencedby refid="classServiceController_1adc89e37530112d08d7ee85aae48d8d3c" compoundref="servicecontroller_8cpp" startline="201" endline="208">ServiceController&lt; T &gt;::Delete</referencedby>
+        <referencedby refid="classClinicController_1aca363c98cad2d51f279275f84b8be1ce" compoundref="cliniccontroller_8cpp" startline="257" endline="265">ClinicController&lt; T &gt;::DeleteImpl</referencedby>
         <referencedby refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b">EntityController&lt; T &gt;::~EntityController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -699,16 +701,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="133" column="18" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="452" bodyend="480"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="classController_1a7a0500b8cc369da32375933abd6e1fb1" compoundref="controller_8hpp" startline="241" endline="245">Controller::DeleteAsync</references>
-        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="154">EntityController&lt; T &gt;::gateKeeper</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="88">api::v2::Http::NOT_ACCEPTABLE</references>
-        <referencedby refid="classAppointmentController_1a7c0fa66b965e56315970b935e1bb2ad0" compoundref="appointmentcontroller_8cpp" startline="145" endline="148">AppointmentController&lt; T &gt;::DeleteAsync</referencedby>
-        <referencedby refid="classClientController_1addb2c711f70f69b197b67da384b80c2d" compoundref="clientcontroller_8cpp" startline="432" endline="444">ClientController&lt; T &gt;::DeleteAsync</referencedby>
-        <referencedby refid="classServiceController_1a69e19ca4bc442fd85af8df06ed98b5dc" compoundref="servicecontroller_8cpp" startline="148" endline="151">ServiceController&lt; T &gt;::DeleteAsync</referencedby>
-        <referencedby refid="classClinicController_1ae70f0975a505349680600bf924538c7a" compoundref="cliniccontroller_8cpp" startline="230" endline="234">ClinicController&lt; T &gt;::DeleteAsyncImpl</referencedby>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="186" column="16" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="590" bodyend="624"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="classController_1a7a0500b8cc369da32375933abd6e1fb1" compoundref="controller_8hpp" startline="343" endline="351">Controller::DeleteAsync</references>
+        <references refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" compoundref="entitycontroller_8hpp" startline="218">EntityController&lt; T &gt;::gateKeeper</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="110">api::v2::Http::NOT_ACCEPTABLE</references>
+        <referencedby refid="classAppointmentController_1a7c0fa66b965e56315970b935e1bb2ad0" compoundref="appointmentcontroller_8cpp" startline="217" endline="225">AppointmentController&lt; T &gt;::DeleteAsync</referencedby>
+        <referencedby refid="classClientController_1addb2c711f70f69b197b67da384b80c2d" compoundref="clientcontroller_8cpp" startline="563" endline="585">ClientController&lt; T &gt;::DeleteAsync</referencedby>
+        <referencedby refid="classClinicController_1ae70f0975a505349680600bf924538c7a" compoundref="cliniccontroller_8cpp" startline="285" endline="295">ClinicController&lt; T &gt;::DeleteAsyncImpl</referencedby>
         <referencedby refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b">EntityController&lt; T &gt;::~EntityController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classEntityController_1a888ea97ce413d880bcca6f7e9cf6b896" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -766,16 +767,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="141" column="10" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="255" bodyend="287"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="88">api::v2::Http::NOT_ACCEPTABLE</references>
-        <references refid="classController_1aaa9930fa3fdd7c91a56392f3e1440736" compoundref="controller_8hpp" startline="261" endline="309">Controller::Search</references>
-        <referencedby refid="classAppointmentController_1a9052acc829edcd321478db51124386d4" compoundref="appointmentcontroller_8cpp" startline="159" endline="162">AppointmentController&lt; T &gt;::Search</referencedby>
-        <referencedby refid="classClientController_1a36c5c10efab0dcfdf020f6702a6ff9bb" compoundref="clientcontroller_8cpp" startline="185" endline="188">ClientController&lt; T &gt;::Search</referencedby>
-        <referencedby refid="classServiceController_1af655c40238892ccf0103ebf85ac4d438" compoundref="servicecontroller_8cpp" startline="162" endline="165">ServiceController&lt; T &gt;::Search</referencedby>
-        <referencedby refid="classClinicController_1a1f5a5a8c1ec63ea2d5e3e7ac89be22ad" compoundref="cliniccontroller_8cpp" startline="249" endline="253">ClinicController&lt; T &gt;::SearchImpl</referencedby>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="199" column="8" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="331" bodyend="367"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="110">api::v2::Http::NOT_ACCEPTABLE</references>
+        <references refid="classController_1aaa9930fa3fdd7c91a56392f3e1440736" compoundref="controller_8hpp" startline="374" endline="443">Controller::Search</references>
+        <referencedby refid="classAppointmentController_1a9052acc829edcd321478db51124386d4" compoundref="appointmentcontroller_8cpp" startline="238" endline="246">AppointmentController&lt; T &gt;::Search</referencedby>
+        <referencedby refid="classClientController_1a36c5c10efab0dcfdf020f6702a6ff9bb" compoundref="clientcontroller_8cpp" startline="253" endline="259">ClientController&lt; T &gt;::Search</referencedby>
+        <referencedby refid="classServiceController_1af655c40238892ccf0103ebf85ac4d438" compoundref="servicecontroller_8cpp" startline="239" endline="247">ServiceController&lt; T &gt;::Search</referencedby>
+        <referencedby refid="classClinicController_1a1f5a5a8c1ec63ea2d5e3e7ac89be22ad" compoundref="cliniccontroller_8cpp" startline="317" endline="325">ClinicController&lt; T &gt;::SearchImpl</referencedby>
         <referencedby refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b">EntityController&lt; T &gt;::~EntityController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classEntityController_1a430903208b20b59481d07c88b66ac4f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -830,13 +831,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="148" column="18" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="482" bodyend="514"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="88">api::v2::Http::NOT_ACCEPTABLE</references>
-        <references refid="classController_1ae3f0e461a7a50529945f6e70ba5572be" compoundref="controller_8hpp" startline="321" endline="366">Controller::SearchAsync</references>
-        <referencedby refid="classClientController_1ab7c4ffff79c0e56214abb463ae375925" compoundref="clientcontroller_8cpp" startline="447" endline="450">ClientController&lt; T &gt;::SearchAsync</referencedby>
+        <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="209" column="16" bodyfile="src/controllers/entitycontroller/entitycontroller.cpp" bodystart="626" bodyend="662"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="110">api::v2::Http::NOT_ACCEPTABLE</references>
+        <references refid="classController_1ae3f0e461a7a50529945f6e70ba5572be" compoundref="controller_8hpp" startline="458" endline="522">Controller::SearchAsync</references>
+        <referencedby refid="classClientController_1ab7c4ffff79c0e56214abb463ae375925" compoundref="clientcontroller_8cpp" startline="588" endline="595">ClientController&lt; T &gt;::SearchAsync</referencedby>
         <referencedby refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b">EntityController&lt; T &gt;::~EntityController</referencedby>
       </memberdef>
     </sectiondef>
@@ -844,7 +845,7 @@
 <para>Generic request-facing CRUDS handler: validates and authorizes a request, then delegates persistence to <ref refid="classController" kindref="compound">Controller</ref>. </para>
     </briefdescription>
     <detaileddescription>
-<para>Combines the persistence engine (<ref refid="classController" kindref="compound">Controller</ref>) with the abstract CRUDS interface (<ref refid="classEntityControllerBase" kindref="compound">EntityControllerBase</ref>). Each operation follows the same pipeline: parse/validate the JSON body against the entity&apos;s database schema, ask <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> whether <computeroutput>requester</computeroutput> may perform the action, construct the entity from the appropriate Types data carrier, and call the matching <ref refid="classController" kindref="compound">Controller</ref> method (or its coroutine counterpart). Failure at any stage answers through <computeroutput>callback</computeroutput> and returns early, so no database connection is taken for a request that fails validation or authorization.</para>
+<para>Combines the persistence engine (<ref refid="classController" kindref="compound">Controller</ref>) with the abstract CRUDS interface (<ref refid="classEntityControllerBase" kindref="compound">EntityControllerBase</ref>). Each operation follows the same pipeline: parse/validate the JSON body against the entity&apos;s database schema, ask <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref> whether <computeroutput>requester</computeroutput> may perform the action, construct the entity from the appropriate Types data carrier, and call the matching <ref refid="classController" kindref="compound">Controller</ref> method (or its coroutine counterpart). Failure at any stage answers through <computeroutput>callback</computeroutput> and returns early, so no database connection is taken for a request that fails validation or authorization.</para>
 <para><parameterlist kind="templateparam"><parameteritem>
 <parameternamelist>
 <parametername>T</parametername>
@@ -856,7 +857,7 @@
 </parameterlist>
 <simplesect kind="note"><para>All operations are <computeroutput>override</computeroutput> implementations of <ref refid="classEntityControllerBase" kindref="compound">EntityControllerBase</ref>. Coroutine variants borrow their arguments and must be awaited while those arguments (and the controller) remain alive. </para>
 </simplesect>
-<simplesect kind="see"><para><ref refid="classEntityControllerBase" kindref="compound">EntityControllerBase</ref>, <ref refid="classController" kindref="compound">Controller</ref>, <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> </para>
+<simplesect kind="see"><para><ref refid="classEntityControllerBase" kindref="compound">EntityControllerBase</ref>, <ref refid="classController" kindref="compound">Controller</ref>, <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref> </para>
 </simplesect>
 </para>
     </detaileddescription>
@@ -920,7 +921,7 @@
         <link refid="classEntityControllerBase"/>
       </node>
     </collaborationgraph>
-    <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="62" column="1" bodyfile="src/controllers/entitycontroller/entitycontroller.hpp" bodystart="63" bodyend="155"/>
+    <location file="src/controllers/entitycontroller/entitycontroller.hpp" line="81" column="1" bodyfile="src/controllers/entitycontroller/entitycontroller.hpp" bodystart="81" bodyend="221"/>
     <listofallmembers>
       <member refid="classController_1a29dac549946db2810cb4435323502c75" prot="protected" virt="non-virtual"><scope>EntityController</scope><name>addStaff</name></member>
       <member refid="classController_1a1bb3245ec82d14644a2359cd546ea218" prot="protected" virt="non-virtual"><scope>EntityController</scope><name>addStaffAsync</name></member>

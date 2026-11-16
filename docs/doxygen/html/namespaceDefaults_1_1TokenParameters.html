@@ -124,12 +124,12 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('namespaceDefau
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ada29f7e4f7ebcc44ed863b1f845ca546" id="r_ada29f7e4f7ebcc44ed863b1f845ca546"><td class="memItemLeft">const uint64_t&#160;</td><td class="memItemRight"><a class="el" href="#ada29f7e4f7ebcc44ed863b1f845ca546">TOKEN_VALIDITY_</a> = 43200</td></tr>
-<tr class="memitem:a149299356bd51590ac0178d7efb271c0" id="r_a149299356bd51590ac0178d7efb271c0"><td class="memItemLeft">const std::string&#160;</td><td class="memItemRight"><a class="el" href="#a149299356bd51590ac0178d7efb271c0">TOKEN_ISSUER_</a> = &quot;ProjectValhalla&quot;</td></tr>
+<tr class="memitem:ada29f7e4f7ebcc44ed863b1f845ca546" id="r_ada29f7e4f7ebcc44ed863b1f845ca546"><td class="memItemLeft">const uint64_t&#160;</td><td class="memItemRight"><a class="el" href="#ada29f7e4f7ebcc44ed863b1f845ca546">TOKEN_VALIDITY_</a></td></tr>
+<tr class="memitem:a149299356bd51590ac0178d7efb271c0" id="r_a149299356bd51590ac0178d7efb271c0"><td class="memItemLeft">const std::string&#160;</td><td class="memItemRight"><a class="el" href="#a149299356bd51590ac0178d7efb271c0">TOKEN_ISSUER_</a></td></tr>
 <tr class="memdesc:a149299356bd51590ac0178d7efb271c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default issuer claim.  <br /></td></tr>
 <tr class="memitem:a6c11dc93d055319b522a61cf797cc937" id="r_a6c11dc93d055319b522a61cf797cc937"><td class="memItemLeft">const std::string&#160;</td><td class="memItemRight"><a class="el" href="#a6c11dc93d055319b522a61cf797cc937">TOKEN_TYPE_</a> = &quot;JWS&quot;</td></tr>
 <tr class="memdesc:a6c11dc93d055319b522a61cf797cc937"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default token type.  <br /></td></tr>
-<tr class="memitem:af82d2e7594dd9a9e542d7a9584b73e30" id="r_af82d2e7594dd9a9e542d7a9584b73e30"><td class="memItemLeft">const std::string&#160;</td><td class="memItemRight"><a class="el" href="#af82d2e7594dd9a9e542d7a9584b73e30">TOKEN_SECRET_</a> = &quot;01234567890123456789012345678901&quot;</td></tr>
+<tr class="memitem:af82d2e7594dd9a9e542d7a9584b73e30" id="r_af82d2e7594dd9a9e542d7a9584b73e30"><td class="memItemLeft">const std::string&#160;</td><td class="memItemRight"><a class="el" href="#af82d2e7594dd9a9e542d7a9584b73e30">TOKEN_SECRET_</a></td></tr>
 <tr class="memdesc:af82d2e7594dd9a9e542d7a9584b73e30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insecure development signing secret; override TOKEN_SECRET in production.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
@@ -143,14 +143,16 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const std::string Defaults::TokenParameters::TOKEN_ISSUER_ = &quot;ProjectValhalla&quot;</td>
+          <td class="memname">const std::string Defaults::TokenParameters::TOKEN_ISSUER_</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<b>Initial value:</b><div class="fragment"><div class="line">                            =</div>
+<div class="line"><span class="stringliteral">&quot;ProjectValhalla&quot;</span></div>
+</div><!-- fragment -->
 <p>Default issuer claim. </p>
 
-<p class="definition">Definition at line <a class="el" href="defaults_8hpp_source.html#l00146">146</a> of file <a class="el" href="defaults_8hpp_source.html">defaults.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="defaults_8hpp_source.html#l00211">211</a> of file <a class="el" href="defaults_8hpp_source.html">defaults.hpp</a>.</p>
 
 </div>
 </div>
@@ -161,14 +163,16 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const std::string Defaults::TokenParameters::TOKEN_SECRET_ = &quot;01234567890123456789012345678901&quot;</td>
+          <td class="memname">const std::string Defaults::TokenParameters::TOKEN_SECRET_</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<b>Initial value:</b><div class="fragment"><div class="line">                            =</div>
+<div class="line"><span class="stringliteral">&quot;01234567890123456789012345678901&quot;</span></div>
+</div><!-- fragment -->
 <p>Insecure development signing secret; override TOKEN_SECRET in production. </p>
 
-<p class="definition">Definition at line <a class="el" href="defaults_8hpp_source.html#l00150">150</a> of file <a class="el" href="defaults_8hpp_source.html">defaults.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="defaults_8hpp_source.html#l00219">219</a> of file <a class="el" href="defaults_8hpp_source.html">defaults.hpp</a>.</p>
 
 </div>
 </div>
@@ -186,7 +190,7 @@ Variables</h2></td></tr>
 
 <p>Default token type. </p>
 
-<p class="definition">Definition at line <a class="el" href="defaults_8hpp_source.html#l00148">148</a> of file <a class="el" href="defaults_8hpp_source.html">defaults.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="defaults_8hpp_source.html#l00215">215</a> of file <a class="el" href="defaults_8hpp_source.html">defaults.hpp</a>.</p>
 
 </div>
 </div>
@@ -197,12 +201,14 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const uint64_t Defaults::TokenParameters::TOKEN_VALIDITY_ = 43200</td>
+          <td class="memname">const uint64_t Defaults::TokenParameters::TOKEN_VALIDITY_</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="defaults_8hpp_source.html#l00144">144</a> of file <a class="el" href="defaults_8hpp_source.html">defaults.hpp</a>.</p>
+<b>Initial value:</b><div class="fragment"><div class="line">                           =</div>
+<div class="line">43200</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="defaults_8hpp_source.html#l00207">207</a> of file <a class="el" href="defaults_8hpp_source.html">defaults.hpp</a>.</p>
 
 </div>
 </div>

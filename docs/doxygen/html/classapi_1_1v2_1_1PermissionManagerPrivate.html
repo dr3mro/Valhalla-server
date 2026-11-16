@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('classapi_1_1v2
 </div><!--header-->
 <div class="contents">
 
-<p>Implementation helpers shared by the <a class="el" href="classapi_1_1v2_1_1PermissionManager.html" title="Central authorization facade: answers &quot;may this requester perform this operation on this entity?...">PermissionManager</a> authorization overloads.  
+<p>Implementation helpers shared by the <a class="el" href="classapi_1_1v2_1_1PermissionManager.html" title="Central authorization facade: answers &quot;may this requester performthis operation on this entity?...">PermissionManager</a> authorization overloads.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="permissionmanager__private_8hpp_source.html">permissionmanager_private.hpp</a>&gt;</code></p>
@@ -135,24 +135,24 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a6a68b225b7b685e9ed7293606870fafc" id="r_a6a68b225b7b685e9ed7293606870fafc"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a6a68b225b7b685e9ed7293606870fafc">hasPermission</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const <a class="el" href="structPermissions.html#a1dc2e37dd1ca56eb9dc57829a512e092">Permissions::PowerLevel</a> &amp;powerlevel, const std::string &amp;service_name, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a6a68b225b7b685e9ed7293606870fafc" id="r_a6a68b225b7b685e9ed7293606870fafc"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a6a68b225b7b685e9ed7293606870fafc">hasPermission</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const <a class="el" href="structPermissions.html#a1dc2e37dd1ca56eb9dc57829a512e092">Permissions::PowerLevel</a> &amp;powerlevel, const std::string &amp;service_name, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a6a68b225b7b685e9ed7293606870fafc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks that the requester is a staff member of the service holding <code class="param">powerlevel</code>.  <br /></td></tr>
-<tr class="memitem:a261f7f649b795efc1d1dd8955510f9ea" id="r_a261f7f649b795efc1d1dd8955510f9ea"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a261f7f649b795efc1d1dd8955510f9ea">isOwnerOfService</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const std::string &amp;service_name, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a261f7f649b795efc1d1dd8955510f9ea" id="r_a261f7f649b795efc1d1dd8955510f9ea"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a261f7f649b795efc1d1dd8955510f9ea">isOwnerOfService</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const std::string &amp;service_name, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a261f7f649b795efc1d1dd8955510f9ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks that the requester is the service owner, comparing against <span class="tt">owner_id</span>.  <br /></td></tr>
-<tr class="memitem:a9242aea2edde8ca7163099b20049595f" id="r_a9242aea2edde8ca7163099b20049595f"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a9242aea2edde8ca7163099b20049595f">isAdminOfService</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const std::string &amp;service_name, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a9242aea2edde8ca7163099b20049595f" id="r_a9242aea2edde8ca7163099b20049595f"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a9242aea2edde8ca7163099b20049595f">isAdminOfService</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const std::string &amp;service_name, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a9242aea2edde8ca7163099b20049595f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks that the requester is the service admin, comparing against <span class="tt">admin_id</span>.  <br /></td></tr>
-<tr class="memitem:a95781764a2c4cf1be79c2b58fa742348" id="r_a95781764a2c4cf1be79c2b58fa742348"><td class="memItemLeft">static std::optional&lt; <a class="el" href="structPermissions.html#a9617e1834ef40047fc77ac4898e51eb5">Permissions::StaffPermission</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a95781764a2c4cf1be79c2b58fa742348">isStaffOfService</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const std::string &amp;service_name, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a95781764a2c4cf1be79c2b58fa742348" id="r_a95781764a2c4cf1be79c2b58fa742348"><td class="memItemLeft">static std::optional&lt; <a class="el" href="structPermissions.html#a26a1c9adb722c5389044eb29c0db4e1e">Permissions::StaffPermission</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a95781764a2c4cf1be79c2b58fa742348">isStaffOfService</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const std::string &amp;service_name, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a95781764a2c4cf1be79c2b58fa742348"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the requester in the service's <span class="tt">staff</span> map and decodes its <span class="tt">"&lt;id&gt;:&lt;mask&gt;"</span> entry.  <br /></td></tr>
-<tr class="memitem:acc3187ff8d1189d0e1b02d23908847c9" id="r_acc3187ff8d1189d0e1b02d23908847c9"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#acc3187ff8d1189d0e1b02d23908847c9">assert_group_id_match</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, const std::string &amp;groupname, uint64_t client_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:acc3187ff8d1189d0e1b02d23908847c9" id="r_acc3187ff8d1189d0e1b02d23908847c9"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#acc3187ff8d1189d0e1b02d23908847c9">assert_group_id_match</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, const std::string &amp;groupname, uint64_t client_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:acc3187ff8d1189d0e1b02d23908847c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requires both the requester's group and id to match the target client.  <br /></td></tr>
-<tr class="memitem:a7e6031ab93f769c852bb999b4f2bdc7b" id="r_a7e6031ab93f769c852bb999b4f2bdc7b"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a7e6031ab93f769c852bb999b4f2bdc7b">preServiceCreateChecks</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;service_j, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a7e6031ab93f769c852bb999b4f2bdc7b" id="r_a7e6031ab93f769c852bb999b4f2bdc7b"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a7e6031ab93f769c852bb999b4f2bdc7b">preServiceCreateChecks</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;service_j, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a7e6031ab93f769c852bb999b4f2bdc7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates a service-creation payload: present, valid owner/admin ids, and provider caller.  <br /></td></tr>
-<tr class="memitem:a2ca7a0ee58dc0ceb4dfc2ef1374471dc" id="r_a2ca7a0ee58dc0ceb4dfc2ef1374471dc"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a2ca7a0ee58dc0ceb4dfc2ef1374471dc">isOwnerOrAdminOrHasPermission</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const std::string &amp;service_name, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error, <a class="el" href="structPermissions.html#a1dc2e37dd1ca56eb9dc57829a512e092">Permissions::PowerLevel</a> required=Permissions::PowerLevel::CAN_DELETE)</td></tr>
+<tr class="memitem:a2ca7a0ee58dc0ceb4dfc2ef1374471dc" id="r_a2ca7a0ee58dc0ceb4dfc2ef1374471dc"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a2ca7a0ee58dc0ceb4dfc2ef1374471dc">isOwnerOrAdminOrHasPermission</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const std::string &amp;service_name, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error, <a class="el" href="structPermissions.html#a1dc2e37dd1ca56eb9dc57829a512e092">Permissions::PowerLevel</a> required=Permissions::PowerLevel::CAN_DELETE)</td></tr>
 <tr class="memdesc:a2ca7a0ee58dc0ceb4dfc2ef1374471dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows owner/admin unconditionally, or staff carrying the <code class="param">required</code> capability bit.  <br /></td></tr>
-<tr class="memitem:abf032243785557f4e3f6c636a926a8ac" id="r_abf032243785557f4e3f6c636a926a8ac"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#abf032243785557f4e3f6c636a926a8ac">isOwnerOrAdmin</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const std::string &amp;service_name, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
-<tr class="memdesc:abf032243785557f4e3f6c636a926a8ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows only the service owner or admin.  <br /></td></tr>
+<tr class="memitem:a64b26a6beda50b382d489eb1459f907e" id="r_a64b26a6beda50b382d489eb1459f907e"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a64b26a6beda50b382d489eb1459f907e">isOwnerOrAdmin</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const std::string &amp;service_name, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
+<tr class="memdesc:a64b26a6beda50b382d489eb1459f907e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows only the service owner or admin.  <br /></td></tr>
 <tr class="memitem:a8243a8ac1bf2b9855448e67fa959c6fc" id="r_a8243a8ac1bf2b9855448e67fa959c6fc"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
-<tr class="memitem:a8243a8ac1bf2b9855448e67fa959c6fc template"><td class="memItemLeft">static std::optional&lt; T &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a8243a8ac1bf2b9855448e67fa959c6fc">extract_json_value_safely</a> (const std::optional&lt; jsoncons::json &gt; &amp;service_j, const std::string &amp;key, const std::string &amp;service_name, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a8243a8ac1bf2b9855448e67fa959c6fc template"><td class="memItemLeft">static std::optional&lt; T &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a8243a8ac1bf2b9855448e67fa959c6fc">extract_json_value_safely</a> (const std::optional&lt; jsoncons::json &gt; &amp;service_j, const std::string &amp;key, const std::string &amp;service_name, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a8243a8ac1bf2b9855448e67fa959c6fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts and converts <code class="param">key</code> from a JSON payload, reporting BAD_REQUEST on failure.  <br /></td></tr>
 <tr class="memitem:a3e7c77aa55023f9d5ccc345e7b68f2ab" id="r_a3e7c77aa55023f9d5ccc345e7b68f2ab"><td class="memTemplParams" colspan="2">template&lt;typename Func, typename... Args&gt; </td></tr>
 <tr class="memitem:a3e7c77aa55023f9d5ccc345e7b68f2ab template"><td class="memItemLeft">static std::optional&lt; jsoncons::json &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a3e7c77aa55023f9d5ccc345e7b68f2ab">getPermissionsOfEntity</a> (Func &amp;&amp;func, Args &amp;... args)</td></tr>
@@ -162,10 +162,10 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memdesc:a070d79b55b8f3262de2b815a636defd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#a3e7c77aa55023f9d5ccc345e7b68f2ab" title="Fetches an entity&#39;s permission JSON, serving the idle-expiry cache when possible.">getPermissionsOfEntity()</a>; awaits the async database read.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implementation helpers shared by the <a class="el" href="classapi_1_1v2_1_1PermissionManager.html" title="Central authorization facade: answers &quot;may this requester perform this operation on this entity?...">PermissionManager</a> authorization overloads. </p>
-<p>Pure static utilities: they interpret the permission JSON returned by the database (owner/admin ids, staff capability strings), enforce group/id checks and create preconditions, and fetch/cache entity permissions through <a class="el" href="permissioncache_8hpp.html#a07017f9d2fac77a264ee3c9aad001918" title="Convenience alias for the default-clock permission cache.">PermissionCache</a>. Sync helpers use <a class="el" href="classDatabaseController.html#ae11a73cc6347582351411b8c5ef7341d" title="Runs a caller-supplied permissions query and maps the result to a JSON object.">DatabaseController::getPermissions</a>; the <span class="tt">*Coro</span> variant awaits getPermissionsCoro. All denial/error details are written to the caller-provided <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3" title="Validation/error payload: a numeric code and a human-readable message.">Http::Error</a>. </p><dl class="section note"><dt>Note</dt><dd>The class holds no state; all members are static. In everyday words: this is a toolbox, not a machine. You never make one; you call its named tools with the facts and get a yes/no back. </dd></dl>
+<div class="textblock"><p>Implementation helpers shared by the <a class="el" href="classapi_1_1v2_1_1PermissionManager.html" title="Central authorization facade: answers &quot;may this requester performthis operation on this entity?...">PermissionManager</a> authorization overloads. </p>
+<p>Pure static utilities: they interpret the permission JSON returned by the database (owner/admin ids, staff capability strings), enforce group/id checks and create preconditions, and fetch/cache entity permissions through <a class="el" href="permissioncache_8hpp.html#af89da15e5a12d8824c558d44b4452c26" title="Convenience alias for the default-clock permission cache.">PermissionCache</a>. Sync helpers use <a class="el" href="classDatabaseController.html#ae11a73cc6347582351411b8c5ef7341d" title="Runs a caller-supplied permissions query and maps the result to a JSON object.">DatabaseController::getPermissions</a>; the <span class="tt">*Coro</span> variant awaits getPermissionsCoro. All denial/error details are written to the caller-provided <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5" title="Validation/error payload: a numeric code and a human-readable message.">Http::Error</a>. </p><dl class="section note"><dt>Note</dt><dd>The class holds no state; all members are static. In everyday words: this is a toolbox, not a machine. You never make one; you call its named tools with the facts and get a yes/no back. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8hpp_source.html#l00059">59</a> of file <a class="el" href="permissionmanager__private_8hpp_source.html">permissionmanager_private.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8hpp_source.html#l00072">72</a> of file <a class="el" href="permissionmanager__private_8hpp_source.html">permissionmanager_private.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa31f67bcd25e9e17e0e4650edd10d6e5" name="aa31f67bcd25e9e17e0e4650edd10d6e5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa31f67bcd25e9e17e0e4650edd10d6e5">&#9670;&#160;</a></span>PermissionManagerPrivate() <span class="overload">[1/3]</span></h2>
@@ -286,7 +286,7 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">bool PermissionManagerPrivate::assert_group_id_match </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -301,7 +301,7 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -324,11 +324,11 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True when both match. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8cpp_source.html#l00153">153</a> of file <a class="el" href="permissionmanager__private_8cpp_source.html">permissionmanager_private.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8cpp_source.html#l00265">265</a> of file <a class="el" href="permissionmanager__private_8cpp_source.html">permissionmanager_private.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="http_8hpp_source.html#l00085">api::v2::Http::FORBIDDEN</a>.</p>
+<p class="reference">References <a class="el" href="http_8hpp_source.html#l00106">api::v2::Http::FORBIDDEN</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="permissionmanager_8cpp_source.html#l00067">api::v2::PermissionManager::canDelete()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00253">api::v2::PermissionManager::canDeleteAsync()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00081">api::v2::PermissionManager::canGetServices()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00267">api::v2::PermissionManager::canGetServicesAsync()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00055">api::v2::PermissionManager::canRead()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00241">api::v2::PermissionManager::canReadAsync()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00074">api::v2::PermissionManager::canToggleActive()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00260">api::v2::PermissionManager::canToggleActiveAsync()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00061">api::v2::PermissionManager::canUpdate()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00247">api::v2::PermissionManager::canUpdateAsync()</a>, and <a class="el" href="#a885d7b03354ce85c0937e7c42c2216c2">operator=()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="permissionmanager_8cpp_source.html#l00106">api::v2::PermissionManager::canDelete()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00551">api::v2::PermissionManager::canDeleteAsync()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00138">api::v2::PermissionManager::canGetServices()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00580">api::v2::PermissionManager::canGetServicesAsync()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00076">api::v2::PermissionManager::canRead()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00525">api::v2::PermissionManager::canReadAsync()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00122">api::v2::PermissionManager::canToggleActive()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00566">api::v2::PermissionManager::canToggleActiveAsync()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00091">api::v2::PermissionManager::canUpdate()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00538">api::v2::PermissionManager::canUpdateAsync()</a>, and <a class="el" href="#a885d7b03354ce85c0937e7c42c2216c2">operator=()</a>.</p>
 
 </div>
 </div>
@@ -361,7 +361,7 @@ template&lt;typename T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -389,9 +389,9 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The extracted value, or <span class="tt">std::nullopt</span> on failure. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8hpp_source.html#l00168">168</a> of file <a class="el" href="permissionmanager__private_8hpp_source.html">permissionmanager_private.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8hpp_source.html#l00242">242</a> of file <a class="el" href="permissionmanager__private_8hpp_source.html">permissionmanager_private.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="http_8hpp_source.html#l00082">api::v2::Http::BAD_REQUEST</a>.</p>
+<p class="reference">References <a class="el" href="http_8hpp_source.html#l00103">api::v2::Http::BAD_REQUEST</a>.</p>
 
 </div>
 </div>
@@ -442,11 +442,11 @@ template&lt;typename Func, typename... Args&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>Cached or freshly read permissions, or <span class="tt">std::nullopt</span> on no query/no data. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classBasicPermissionCache.html#a96ddf9f59ee4f1f686cab167c68effbb">BasicPermissionCache::generation</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8hpp_source.html#l00206">206</a> of file <a class="el" href="permissionmanager__private_8hpp_source.html">permissionmanager_private.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8hpp_source.html#l00306">306</a> of file <a class="el" href="permissionmanager__private_8hpp_source.html">permissionmanager_private.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="store_8hpp_source.html#l00189">Store::cachedObject()</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00161">BasicPermissionCache&lt; ClockT &gt;::instance()</a>.</p>
+<p class="reference">References <a class="el" href="store_8hpp_source.html#l00260">Store::cachedObject()</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00213">BasicPermissionCache&lt; ClockT &gt;::instance()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="permissionmanager_8cpp_source.html#l00128">api::v2::PermissionManager::canManageStaff()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="permissionmanager_8cpp_source.html#l00251">api::v2::PermissionManager::canManageStaff()</a>.</p>
 
 </div>
 </div>
@@ -497,11 +497,11 @@ template&lt;typename Func, typename... Args&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>Cached or freshly read permissions, or <span class="tt">std::nullopt</span> on no query/no data. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The caller must drive the returned task; the query string must outlive the awaited read. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8hpp_source.html#l00246">246</a> of file <a class="el" href="permissionmanager__private_8hpp_source.html">permissionmanager_private.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8hpp_source.html#l00382">382</a> of file <a class="el" href="permissionmanager__private_8hpp_source.html">permissionmanager_private.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="store_8hpp_source.html#l00189">Store::cachedObject()</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00161">BasicPermissionCache&lt; ClockT &gt;::instance()</a>.</p>
+<p class="reference">References <a class="el" href="store_8hpp_source.html#l00260">Store::cachedObject()</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00213">BasicPermissionCache&lt; ClockT &gt;::instance()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="permissionmanager_8cpp_source.html#l00311">api::v2::PermissionManager::canManageStaffAsync()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="permissionmanager_8cpp_source.html#l00691">api::v2::PermissionManager::canManageStaffAsync()</a>.</p>
 
 </div>
 </div>
@@ -517,7 +517,7 @@ template&lt;typename Func, typename... Args&gt; </div>
         <tr>
           <td class="memname">bool PermissionManagerPrivate::hasPermission </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -537,7 +537,7 @@ template&lt;typename Func, typename... Args&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -561,11 +561,11 @@ template&lt;typename Func, typename... Args&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>True when the staff entry's mask contains <code class="param">powerlevel</code>.</dd></dl>
 <p>Requires staff membership plus the <code class="param">powerlevel</code> capability bit. error: FORBIDDEN with a reason when the requester is not staff. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8cpp_source.html#l00050">50</a> of file <a class="el" href="permissionmanager__private_8cpp_source.html">permissionmanager_private.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8cpp_source.html#l00068">68</a> of file <a class="el" href="permissionmanager__private_8cpp_source.html">permissionmanager_private.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="http_8hpp_source.html#l00085">api::v2::Http::FORBIDDEN</a>, and <a class="el" href="permissionmanager__private_8cpp_source.html#l00108">isStaffOfService()</a>.</p>
+<p class="reference">References <a class="el" href="http_8hpp_source.html#l00106">api::v2::Http::FORBIDDEN</a>, and <a class="el" href="permissionmanager__private_8cpp_source.html#l00177">isStaffOfService()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="permissionmanager__private_8cpp_source.html#l00214">isOwnerOrAdminOrHasPermission()</a>, and <a class="el" href="#a885d7b03354ce85c0937e7c42c2216c2">operator=()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="permissionmanager__private_8cpp_source.html#l00356">isOwnerOrAdminOrHasPermission()</a>, and <a class="el" href="#a885d7b03354ce85c0937e7c42c2216c2">operator=()</a>.</p>
 
 </div>
 </div>
@@ -581,7 +581,7 @@ template&lt;typename Func, typename... Args&gt; </div>
         <tr>
           <td class="memname">bool PermissionManagerPrivate::isAdminOfService </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -596,7 +596,7 @@ template&lt;typename Func, typename... Args&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -619,11 +619,11 @@ template&lt;typename Func, typename... Args&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True only when the ids match. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8cpp_source.html#l00085">85</a> of file <a class="el" href="permissionmanager__private_8cpp_source.html">permissionmanager_private.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8cpp_source.html#l00137">137</a> of file <a class="el" href="permissionmanager__private_8cpp_source.html">permissionmanager_private.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="http_8hpp_source.html#l00082">api::v2::Http::BAD_REQUEST</a>, and <a class="el" href="http_8hpp_source.html#l00085">api::v2::Http::FORBIDDEN</a>.</p>
+<p class="reference">References <a class="el" href="http_8hpp_source.html#l00103">api::v2::Http::BAD_REQUEST</a>, and <a class="el" href="http_8hpp_source.html#l00106">api::v2::Http::FORBIDDEN</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="permissionmanager__private_8cpp_source.html#l00235">isOwnerOrAdmin()</a>, and <a class="el" href="#a885d7b03354ce85c0937e7c42c2216c2">operator=()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#a885d7b03354ce85c0937e7c42c2216c2">operator=()</a>.</p>
 
 </div>
 </div>
@@ -639,7 +639,7 @@ template&lt;typename Func, typename... Args&gt; </div>
         <tr>
           <td class="memname">bool PermissionManagerPrivate::isOwnerOfService </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -654,7 +654,7 @@ template&lt;typename Func, typename... Args&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -677,16 +677,16 @@ template&lt;typename Func, typename... Args&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True only when the ids match. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8cpp_source.html#l00065">65</a> of file <a class="el" href="permissionmanager__private_8cpp_source.html">permissionmanager_private.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8cpp_source.html#l00102">102</a> of file <a class="el" href="permissionmanager__private_8cpp_source.html">permissionmanager_private.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="http_8hpp_source.html#l00082">api::v2::Http::BAD_REQUEST</a>, and <a class="el" href="http_8hpp_source.html#l00085">api::v2::Http::FORBIDDEN</a>.</p>
+<p class="reference">References <a class="el" href="http_8hpp_source.html#l00103">api::v2::Http::BAD_REQUEST</a>, and <a class="el" href="http_8hpp_source.html#l00106">api::v2::Http::FORBIDDEN</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="permissionmanager__private_8cpp_source.html#l00235">isOwnerOrAdmin()</a>, and <a class="el" href="#a885d7b03354ce85c0937e7c42c2216c2">operator=()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#a885d7b03354ce85c0937e7c42c2216c2">operator=()</a>.</p>
 
 </div>
 </div>
-<a id="abf032243785557f4e3f6c636a926a8ac" name="abf032243785557f4e3f6c636a926a8ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abf032243785557f4e3f6c636a926a8ac">&#9670;&#160;</a></span>isOwnerOrAdmin()</h2>
+<a id="a64b26a6beda50b382d489eb1459f907e" name="a64b26a6beda50b382d489eb1459f907e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64b26a6beda50b382d489eb1459f907e">&#9670;&#160;</a></span>isOwnerOrAdmin()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -697,7 +697,7 @@ template&lt;typename Func, typename... Args&gt; </div>
         <tr>
           <td class="memname">bool api::v2::PermissionManagerPrivate::isOwnerOrAdmin </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -712,7 +712,7 @@ template&lt;typename Func, typename... Args&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -732,14 +732,9 @@ template&lt;typename Func, typename... Args&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True when either identity check succeeds.</dd></dl>
-<p>Allows either the owner or the admin (short-circuits on owner success). error: May still hold a message from a failed first check when the second succeeds. </p>
+<dl class="section return"><dt>Returns</dt><dd>True when either identity check succeeds. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8cpp_source.html#l00235">235</a> of file <a class="el" href="permissionmanager__private_8cpp_source.html">permissionmanager_private.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00085">isAdminOfService()</a>, and <a class="el" href="permissionmanager__private_8cpp_source.html#l00065">isOwnerOfService()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="permissionmanager_8cpp_source.html#l00128">api::v2::PermissionManager::canManageStaff()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00311">api::v2::PermissionManager::canManageStaffAsync()</a>, <a class="el" href="permissionmanager__private_8cpp_source.html#l00214">isOwnerOrAdminOrHasPermission()</a>, and <a class="el" href="#a885d7b03354ce85c0937e7c42c2216c2">operator=()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="permissionmanager_8cpp_source.html#l00251">api::v2::PermissionManager::canManageStaff()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00691">api::v2::PermissionManager::canManageStaffAsync()</a>, and <a class="el" href="permissionmanager__private_8cpp_source.html#l00356">isOwnerOrAdminOrHasPermission()</a>.</p>
 
 </div>
 </div>
@@ -755,7 +750,7 @@ template&lt;typename Func, typename... Args&gt; </div>
         <tr>
           <td class="memname">bool api::v2::PermissionManagerPrivate::isOwnerOrAdminOrHasPermission </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -770,7 +765,7 @@ template&lt;typename Func, typename... Args&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>, </td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -790,9 +785,9 @@ template&lt;typename Func, typename... Args&gt; </div>
 <p>Think of it as two doors in series: first check if the caller owns or administers the service; only if not, check whether they are staff with the specific capability bit we need.</p>
 <p>On failure it augments <code class="param">error.message</code> with the service name and the more specific message left by <a class="el" href="#a6a68b225b7b685e9ed7293606870fafc" title="Checks that the requester is a staff member of the service holding powerlevel.">hasPermission()</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8cpp_source.html#l00214">214</a> of file <a class="el" href="permissionmanager__private_8cpp_source.html">permissionmanager_private.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8cpp_source.html#l00356">356</a> of file <a class="el" href="permissionmanager__private_8cpp_source.html">permissionmanager_private.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="http_8hpp_source.html#l00085">api::v2::Http::FORBIDDEN</a>, <a class="el" href="permissionmanager__private_8cpp_source.html#l00050">hasPermission()</a>, and <a class="el" href="permissionmanager__private_8cpp_source.html#l00235">isOwnerOrAdmin()</a>.</p>
+<p class="reference">References <a class="el" href="http_8hpp_source.html#l00106">api::v2::Http::FORBIDDEN</a>, <a class="el" href="permissionmanager__private_8cpp_source.html#l00068">hasPermission()</a>, and <a class="el" href="#a64b26a6beda50b382d489eb1459f907e">isOwnerOrAdmin()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a885d7b03354ce85c0937e7c42c2216c2">operator=()</a>.</p>
 
@@ -808,9 +803,9 @@ template&lt;typename Func, typename... Args&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::optional&lt; <a class="el" href="structPermissions.html#a9617e1834ef40047fc77ac4898e51eb5">Permissions::StaffPermission</a> &gt; PermissionManagerPrivate::isStaffOfService </td>
+          <td class="memname">std::optional&lt; <a class="el" href="structPermissions.html#a26a1c9adb722c5389044eb29c0db4e1e">Permissions::StaffPermission</a> &gt; PermissionManagerPrivate::isStaffOfService </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -825,7 +820,7 @@ template&lt;typename Func, typename... Args&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -854,11 +849,11 @@ template&lt;typename Func, typename... Args&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>The decoded StaffPermission on a match, <span class="tt">std::nullopt</span> otherwise.</dd></dl>
 <p>Malformed numeric entries throw and are reported as FORBIDDEN; a non-match also leaves FORBIDDEN in <code class="param">error</code>. The mask is decoded into <a class="el" href="permissionmanager__private_8cpp.html#a005141ff44605d200344a1f530cde902">PowerLevel</a> bits. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8cpp_source.html#l00108">108</a> of file <a class="el" href="permissionmanager__private_8cpp_source.html">permissionmanager_private.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8cpp_source.html#l00177">177</a> of file <a class="el" href="permissionmanager__private_8cpp_source.html">permissionmanager_private.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="http_8hpp_source.html#l00082">api::v2::Http::BAD_REQUEST</a>, and <a class="el" href="http_8hpp_source.html#l00085">api::v2::Http::FORBIDDEN</a>.</p>
+<p class="reference">References <a class="el" href="http_8hpp_source.html#l00103">api::v2::Http::BAD_REQUEST</a>, and <a class="el" href="http_8hpp_source.html#l00106">api::v2::Http::FORBIDDEN</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="permissionmanager__private_8cpp_source.html#l00050">hasPermission()</a>, and <a class="el" href="#a885d7b03354ce85c0937e7c42c2216c2">operator=()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="permissionmanager__private_8cpp_source.html#l00068">hasPermission()</a>, and <a class="el" href="#a885d7b03354ce85c0937e7c42c2216c2">operator=()</a>.</p>
 
 </div>
 </div>
@@ -912,7 +907,7 @@ template&lt;typename Func, typename... Args&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00153">assert_group_id_match()</a>, <a class="el" href="permissionmanager__private_8cpp_source.html#l00050">hasPermission()</a>, <a class="el" href="permissionmanager__private_8cpp_source.html#l00085">isAdminOfService()</a>, <a class="el" href="permissionmanager__private_8cpp_source.html#l00065">isOwnerOfService()</a>, <a class="el" href="permissionmanager__private_8cpp_source.html#l00235">isOwnerOrAdmin()</a>, <a class="el" href="permissionmanager__private_8cpp_source.html#l00214">isOwnerOrAdminOrHasPermission()</a>, <a class="el" href="permissionmanager__private_8cpp_source.html#l00108">isStaffOfService()</a>, <a class="el" href="#aa31f67bcd25e9e17e0e4650edd10d6e5">PermissionManagerPrivate()</a>, and <a class="el" href="permissionmanager__private_8cpp_source.html#l00168">preServiceCreateChecks()</a>.</p>
+<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00265">assert_group_id_match()</a>, <a class="el" href="permissionmanager__private_8cpp_source.html#l00068">hasPermission()</a>, <a class="el" href="permissionmanager__private_8cpp_source.html#l00137">isAdminOfService()</a>, <a class="el" href="permissionmanager__private_8cpp_source.html#l00102">isOwnerOfService()</a>, <a class="el" href="permissionmanager__private_8cpp_source.html#l00356">isOwnerOrAdminOrHasPermission()</a>, <a class="el" href="permissionmanager__private_8cpp_source.html#l00177">isStaffOfService()</a>, <a class="el" href="#aa31f67bcd25e9e17e0e4650edd10d6e5">PermissionManagerPrivate()</a>, and <a class="el" href="permissionmanager__private_8cpp_source.html#l00289">preServiceCreateChecks()</a>.</p>
 
 </div>
 </div>
@@ -928,7 +923,7 @@ template&lt;typename Func, typename... Args&gt; </div>
         <tr>
           <td class="memname">bool api::v2::PermissionManagerPrivate::preServiceCreateChecks </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -938,7 +933,7 @@ template&lt;typename Func, typename... Args&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -960,9 +955,9 @@ template&lt;typename Func, typename... Args&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>True when all preconditions hold.</dd></dl>
 <p>Validates service creation: payload present, ids extractable, caller is the provider. error: BAD_REQUEST with a reason on failure. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8cpp_source.html#l00168">168</a> of file <a class="el" href="permissionmanager__private_8cpp_source.html">permissionmanager_private.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8cpp_source.html#l00289">289</a> of file <a class="el" href="permissionmanager__private_8cpp_source.html">permissionmanager_private.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="http_8hpp_source.html#l00082">api::v2::Http::BAD_REQUEST</a>.</p>
+<p class="reference">References <a class="el" href="http_8hpp_source.html#l00103">api::v2::Http::BAD_REQUEST</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a885d7b03354ce85c0937e7c42c2216c2">operator=()</a>.</p>
 

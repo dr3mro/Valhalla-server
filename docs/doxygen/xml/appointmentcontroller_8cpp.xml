@@ -16,41 +16,7 @@
     <includes refid="callback_8hpp" local="yes">utils/global/callback.hpp</includes>
     <includes refid="concepts_8hpp" local="yes">utils/global/concepts.hpp</includes>
     <incdepgraph>
-      <node id="76">
-        <label>concurrency/boundedexecutor.hpp</label>
-        <link refid="boundedexecutor_8hpp"/>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="71" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="72" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="77" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="45" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="62" relation="include">
-        </childnode>
-      </node>
-      <node id="31">
+      <node id="30">
         <label>configurator/configurator.hpp</label>
         <link refid="configurator_8hpp"/>
         <childnode refid="18" relation="include">
@@ -59,7 +25,7 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -67,16 +33,16 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
       </node>
-      <node id="37">
+      <node id="36">
         <label>defaults.hpp</label>
         <link refid="defaults_8hpp"/>
         <childnode refid="3" relation="include">
@@ -84,23 +50,23 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="33">
+      <node id="32">
         <label>configurator/envloader/envloader.hpp</label>
         <link refid="envloader_8hpp"/>
-        <childnode refid="32" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
       </node>
-      <node id="34">
+      <node id="33">
         <label>envvars/envvars.hpp</label>
         <link refid="envvars_8hpp"/>
         <childnode refid="4" relation="include">
@@ -133,9 +99,9 @@
         </childnode>
         <childnode refid="95" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="79" relation="include">
+        <childnode refid="78" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -151,9 +117,9 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="79" relation="include">
+        <childnode refid="78" relation="include">
         </childnode>
       </node>
       <node id="6">
@@ -165,7 +131,7 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
@@ -201,6 +167,10 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
         <childnode refid="51" relation="include">
         </childnode>
         <childnode refid="57" relation="include">
@@ -211,11 +181,7 @@
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="64" relation="include">
         </childnode>
@@ -223,19 +189,17 @@
         </childnode>
         <childnode refid="88" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
       </node>
       <node id="25">
         <label>controllers/databasecontroller/databasecontroller.hpp</label>
         <link refid="databasecontroller_8hpp"/>
-        <childnode refid="26" relation="include">
-        </childnode>
         <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -247,37 +211,39 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
         <childnode refid="50" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
       </node>
       <node id="13">
@@ -297,15 +263,15 @@
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
         <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="68" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="90">
@@ -319,27 +285,27 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="39">
+      <node id="37">
         <label>database/asyncdbclient.hpp</label>
         <link refid="asyncdbclient_8hpp"/>
-        <childnode refid="40" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
       </node>
-      <node id="41">
+      <node id="39">
         <label>database/asyncresultmapper.hpp</label>
         <link refid="asyncresultmapper_8hpp"/>
-        <childnode refid="42" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -350,25 +316,25 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="43">
+      <node id="41">
         <label>database/asyncsqlbinder.hpp</label>
         <link refid="asyncsqlbinder_8hpp"/>
-        <childnode refid="40" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="43" relation="include">
         </childnode>
       </node>
-      <node id="38">
+      <node id="44">
         <label>database/databasebusy.hpp</label>
         <link refid="databasebusy_8hpp"/>
         <childnode refid="23" relation="include">
@@ -376,13 +342,13 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="46">
+      <node id="45">
         <label>database/databasehandler.hpp</label>
         <link refid="databasehandler_8hpp"/>
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="46">
         <label>database/dbprobe.hpp</label>
         <link refid="dbprobe_8hpp"/>
       </node>
@@ -459,7 +425,7 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
@@ -505,7 +471,7 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>
@@ -515,7 +481,7 @@
         </childnode>
         <childnode refid="64" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
       </node>
       <node id="55">
@@ -537,7 +503,7 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
@@ -551,7 +517,7 @@
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
       </node>
       <node id="57">
@@ -587,13 +553,13 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="60" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="61" relation="include">
         </childnode>
@@ -601,7 +567,7 @@
         </childnode>
         <childnode refid="62" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="63" relation="include">
         </childnode>
@@ -631,23 +597,25 @@
       <node id="70">
         <label>gatekeeper/dosdetector/dosdetector.hpp</label>
         <link refid="dosdetector_8hpp"/>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
         <childnode refid="71" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="72" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="73" relation="include">
         </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -655,13 +623,11 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="74" relation="include">
-        </childnode>
         <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
@@ -685,35 +651,35 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
         <childnode refid="70" relation="include">
         </childnode>
         <childnode refid="75" relation="include">
         </childnode>
-        <childnode refid="78" relation="include">
+        <childnode refid="77" relation="include">
         </childnode>
-        <childnode refid="80" relation="include">
+        <childnode refid="79" relation="include">
         </childnode>
         <childnode refid="87" relation="include">
         </childnode>
-        <childnode refid="84" relation="include">
+        <childnode refid="83" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="79" relation="include">
+        <childnode refid="78" relation="include">
         </childnode>
         <childnode refid="62" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="81">
+      <node id="80">
         <label>gatekeeper/keeprbase/keeprbase.hpp</label>
         <link refid="keeprbase_8hpp"/>
-        <childnode refid="82" relation="include">
+        <childnode refid="81" relation="include">
         </childnode>
-        <childnode refid="83" relation="include">
+        <childnode refid="82" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -725,13 +691,13 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="84" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="83" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
@@ -753,10 +719,10 @@
         </childnode>
         <childnode refid="76" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="78">
+      <node id="77">
         <label>gatekeeper/permissionmanager/permissionmanager.hpp</label>
         <link refid="permissionmanager_8hpp"/>
         <childnode refid="3" relation="include">
@@ -765,19 +731,19 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="79" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="78" relation="include">
         </childnode>
         <childnode refid="62" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="80">
+      <node id="79">
         <label>gatekeeper/sessionmanager/sessionmanager.hpp</label>
         <link refid="sessionmanager_8hpp"/>
-        <childnode refid="32" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
@@ -785,33 +751,33 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="81" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="80" relation="include">
         </childnode>
         <childnode refid="61" relation="include">
         </childnode>
-        <childnode refid="84" relation="include">
+        <childnode refid="83" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="85" relation="include">
+        <childnode refid="84" relation="include">
         </childnode>
       </node>
       <node id="87">
         <label>gatekeeper/tokenmanager/tokenmanager.hpp</label>
         <link refid="tokenmanager_8hpp"/>
-        <childnode refid="81" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="80" relation="include">
         </childnode>
       </node>
-      <node id="84">
+      <node id="83">
         <label>gatekeeper/types.hpp</label>
         <link refid="gatekeeper_2types_8hpp"/>
-        <childnode refid="32" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -823,13 +789,13 @@
       <node id="47">
         <label>store/store.hpp</label>
         <link refid="store_8hpp"/>
-        <childnode refid="27" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
@@ -840,13 +806,13 @@
         <childnode refid="49" relation="include">
         </childnode>
       </node>
-      <node id="7">
+      <node id="8">
         <label>utils/global/callback.hpp</label>
         <link refid="callback_8hpp"/>
-        <childnode refid="8" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="79">
+      <node id="78">
         <label>utils/global/concepts.hpp</label>
         <link refid="concepts_8hpp"/>
         <childnode refid="24" relation="include">
@@ -857,7 +823,7 @@
         <link refid="errorstatus_8hpp"/>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
         <childnode refid="62" relation="include">
         </childnode>
@@ -900,30 +866,30 @@
         <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="85">
+      <node id="84">
         <label>utils/memcache/memcache.hpp</label>
         <link refid="memcache_8hpp"/>
-        <childnode refid="32" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="71" relation="include">
+        <childnode refid="72" relation="include">
         </childnode>
-        <childnode refid="86" relation="include">
+        <childnode refid="85" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="77" relation="include">
+        <childnode refid="86" relation="include">
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="35">
+      <node id="34">
         <label>utils/message/message.hpp</label>
         <link refid="message_8hpp"/>
-        <childnode refid="36" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
@@ -941,7 +907,7 @@
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
@@ -953,16 +919,19 @@
       <node id="53">
         <label>algorithm</label>
       </node>
-      <node id="27">
+      <node id="26">
         <label>atomic</label>
       </node>
       <node id="58">
         <label>cctype</label>
       </node>
-      <node id="32">
+      <node id="31">
         <label>chrono</label>
       </node>
-      <node id="71">
+      <node id="76">
+        <label>concurrency/boundedexecutor.hpp</label>
+      </node>
+      <node id="72">
         <label>condition_variable</label>
       </node>
       <node id="59">
@@ -974,22 +943,22 @@
       <node id="3">
         <label>cstdint</label>
       </node>
-      <node id="72">
+      <node id="73">
         <label>deque</label>
       </node>
       <node id="69">
         <label>drogon/DrTemplateBase.h</label>
       </node>
-      <node id="40">
+      <node id="38">
         <label>drogon/orm/DbClient.h</label>
       </node>
-      <node id="42">
+      <node id="40">
         <label>drogon/orm/Result.h</label>
       </node>
-      <node id="44">
+      <node id="42">
         <label>drogon/orm/SqlBinder.h</label>
       </node>
-      <node id="9">
+      <node id="7">
         <label>drogon/utils/coroutine.h</label>
       </node>
       <node id="21">
@@ -1004,10 +973,10 @@
       <node id="19">
         <label>fmt/ranges.h</label>
       </node>
-      <node id="8">
+      <node id="9">
         <label>functional</label>
       </node>
-      <node id="73">
+      <node id="74">
         <label>future</label>
       </node>
       <node id="54">
@@ -1022,25 +991,25 @@
       <node id="15">
         <label>jsoncons/json.hpp</label>
       </node>
-      <node id="82">
+      <node id="81">
         <label>jwt-cpp/jwt.h</label>
       </node>
-      <node id="83">
+      <node id="82">
         <label>jwt-cpp/traits/kazuho-picojson/traits.h</label>
       </node>
-      <node id="86">
+      <node id="85">
         <label>list</label>
       </node>
       <node id="16">
         <label>memory</label>
       </node>
-      <node id="28">
+      <node id="27">
         <label>mutex</label>
       </node>
       <node id="4">
         <label>optional</label>
       </node>
-      <node id="29">
+      <node id="28">
         <label>pqxx/pqxx</label>
       </node>
       <node id="23">
@@ -1055,10 +1024,10 @@
       <node id="52">
         <label>sys/types.h</label>
       </node>
-      <node id="77">
+      <node id="86">
         <label>thread</label>
       </node>
-      <node id="36">
+      <node id="35">
         <label>trantor/utils/Logger.h</label>
       </node>
       <node id="24">
@@ -1070,7 +1039,7 @@
       <node id="49">
         <label>unordered_map</label>
       </node>
-      <node id="30">
+      <node id="29">
         <label>unordered_set</label>
       </node>
       <node id="12">
@@ -1079,26 +1048,17 @@
       <node id="60">
         <label>variant</label>
       </node>
-      <node id="45">
+      <node id="43">
         <label>vector</label>
       </node>
-      <node id="74">
+      <node id="71">
         <label>xxhash.h</label>
       </node>
     </incdepgraph>
     <sectiondef kind="define">
-      <memberdef kind="define" id="appointmentcontroller_8cpp_1a7345e95c4c6f86cb225597e306710c5c" prot="public" static="no">
+      <memberdef kind="define" id="appointmentcontroller_8cpp_1acf836f406f4ab375e608a252744d150a" prot="public" static="no">
         <name>INSTANTIATE_APPOINTMENT_CONTROLLER</name>
         <param><defname>TYPE</defname></param>
-        <initializer>template void <ref refid="classAppointmentController" kindref="compound">AppointmentController</ref>&lt;TYPE&gt;::Create(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp; callback, const <ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp; requester, std::string_view data);                              \
-template drogon::Task&lt;void&gt; <ref refid="classAppointmentController" kindref="compound">AppointmentController</ref>&lt;TYPE&gt;::CreateAsync(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp; callback, const <ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp; requester, std::string_view data); \
-template void <ref refid="classAppointmentController" kindref="compound">AppointmentController</ref>&lt;TYPE&gt;::Read(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp; callback, const <ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp; requester, std::string_view data);                                \
-template drogon::Task&lt;void&gt; <ref refid="classAppointmentController" kindref="compound">AppointmentController</ref>&lt;TYPE&gt;::ReadAsync(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp; callback, const <ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp; requester, std::string_view data); \
-template void <ref refid="classAppointmentController" kindref="compound">AppointmentController</ref>&lt;TYPE&gt;::Update(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp; callback, const <ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp; requester, std::string_view data, std::optional&lt;uint64_t&gt; _id); \
-template drogon::Task&lt;void&gt; <ref refid="classAppointmentController" kindref="compound">AppointmentController</ref>&lt;TYPE&gt;::UpdateAsync(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp; callback, const <ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp; requester, std::string_view data, std::optional&lt;uint64_t&gt; _id); \
-template void <ref refid="classAppointmentController" kindref="compound">AppointmentController</ref>&lt;TYPE&gt;::Delete(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp; callback, const <ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp; requester, std::optional&lt;uint64_t&gt; _id);                        \
-template drogon::Task&lt;void&gt; <ref refid="classAppointmentController" kindref="compound">AppointmentController</ref>&lt;TYPE&gt;::DeleteAsync(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp; callback, const <ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp; requester, std::optional&lt;uint64_t&gt; _id); \
-template void <ref refid="classAppointmentController" kindref="compound">AppointmentController</ref>&lt;TYPE&gt;::Search(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp; callback, const <ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp; requester, std::string_view data);</initializer>
         <briefdescription>
 <para>Forces compilation of all member templates for one concrete appointment entity type. </para>
         </briefdescription>
@@ -1116,15 +1076,15 @@ template void <ref refid="classAppointmentController" kindref="compound">Appoint
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontroller.cpp" line="171" column="9" bodyfile="src/controllers/appointmentcontroller/appointmentcontroller.cpp" bodystart="171" bodyend="180"/>
+        <location file="src/controllers/appointmentcontroller/appointmentcontroller.cpp" line="258" column="9" bodyfile="src/controllers/appointmentcontroller/appointmentcontroller.cpp" bodystart="257" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
 <para>Definitions for <ref refid="classAppointmentController" kindref="compound">AppointmentController</ref> and its explicit template instantiations. </para>
     </briefdescription>
     <detaileddescription>
-<para>Each operation is a pure forwarder to <ref refid="classEntityController" kindref="compound">EntityController</ref>; instantiations at the end of the file make the concrete specializations available to the appointments route layer.</para>
-<para>In plain words, this file contains the bodies of the small forwarding methods that were only declared in the header. Each body just passes its arguments on to <ref refid="classEntityController" kindref="compound">EntityController</ref>, which does the real work (parsing, validation, permission checks, SQL and JSON output). The block of macros at the end forces the compiler to build a concrete version of the class for each appointment type, so the route layer can link to them. There is no extra logic here.</para>
+<para>Each operation is a pure forwarder to <ref refid="classEntityController" kindref="compound">EntityController</ref>; instantiations at the end of the file make the concrete specializations available to the appointments route layer. <verbatim>     In plain words, this file contains the bodies of the small
+</verbatim> forwarding methods that were only declared in the header. Each body just passes its arguments on to <ref refid="classEntityController" kindref="compound">EntityController</ref>, which does the real work (parsing, validation, permission checks, SQL and JSON output). The block of macros at the end forces the compiler to build a concrete version of the class for each appointment type, so the route layer can link to them. There is no extra logic here.</para>
 <para>WHY THIS FILE MATTERS IN THE SERVER: Without these definitions and the explicit instantiations, the route registry&apos;s <computeroutput>shared_ptr&lt;<ref refid="classAppointmentController" kindref="compound">AppointmentController</ref>&lt;T&gt;&gt;</computeroutput> objects would be declared but never actually compiled, and the program would fail to link (the compiler would report &quot;undefined reference&quot;). This file is called by the appointments route layer through <ref refid="classAppointmentControllerBase" kindref="compound">AppointmentControllerBase</ref> and calls into <ref refid="classEntityController" kindref="compound">EntityController</ref> for every job. It turns the appointment interface into working, linkable code.</para>
 <para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
 <listitem><para>Explicit template instantiation (forcing the compiler to build a concrete version): <ulink url="https://en.cppreference.com/w/cpp/language/template_instantiation">https://en.cppreference.com/w/cpp/language/template_instantiation</ulink></para>
@@ -1141,189 +1101,313 @@ template void <ref refid="classAppointmentController" kindref="compound">Appoint
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
 <codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>appointmentcontroller.cpp</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Definitions<sp/>for<sp/>@ref<sp/>AppointmentController<sp/>and<sp/>its<sp/>explicit<sp/>template<sp/>instantiations.</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>Each<sp/>operation<sp/>is<sp/>a<sp/>pure<sp/>forwarder<sp/>to<sp/>@ref<sp/>EntityController;<sp/>instantiations<sp/>at<sp/>the<sp/>end</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>of<sp/>the<sp/>file<sp/>make<sp/>the<sp/>concrete<sp/>specializations<sp/>available<sp/>to<sp/>the<sp/>appointments<sp/>route<sp/>layer.</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>In<sp/>plain<sp/>words,<sp/>this<sp/>file<sp/>contains<sp/>the<sp/>bodies<sp/>of<sp/>the<sp/>small<sp/>forwarding<sp/>methods<sp/>that<sp/>were</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>only<sp/>declared<sp/>in<sp/>the<sp/>header.<sp/>Each<sp/>body<sp/>just<sp/>passes<sp/>its<sp/>arguments<sp/>on<sp/>to<sp/>@ref<sp/>EntityController,</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>which<sp/>does<sp/>the<sp/>real<sp/>work<sp/>(parsing,<sp/>validation,<sp/>permission<sp/>checks,<sp/>SQL<sp/>and<sp/>JSON<sp/>output).<sp/>The</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>block<sp/>of<sp/>macros<sp/>at<sp/>the<sp/>end<sp/>forces<sp/>the<sp/>compiler<sp/>to<sp/>build<sp/>a<sp/>concrete<sp/>version<sp/>of<sp/>the<sp/>class<sp/>for</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>each<sp/>appointment<sp/>type,<sp/>so<sp/>the<sp/>route<sp/>layer<sp/>can<sp/>link<sp/>to<sp/>them.<sp/>There<sp/>is<sp/>no<sp/>extra<sp/>logic<sp/>here.</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>Without<sp/>these<sp/>definitions<sp/>and<sp/>the<sp/>explicit<sp/>instantiations,<sp/>the<sp/>route<sp/>registry&apos;s</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>`shared_ptr&lt;AppointmentController&lt;T&gt;&gt;`<sp/>objects<sp/>would<sp/>be<sp/>declared<sp/>but<sp/>never<sp/>actually<sp/>compiled,<sp/>and<sp/>the</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>program<sp/>would<sp/>fail<sp/>to<sp/>link<sp/>(the<sp/>compiler<sp/>would<sp/>report<sp/>&quot;undefined<sp/>reference&quot;).<sp/>This<sp/>file<sp/>is<sp/>called<sp/>by</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>the<sp/>appointments<sp/>route<sp/>layer<sp/>through<sp/>@ref<sp/>AppointmentControllerBase<sp/>and<sp/>calls<sp/>into</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>@ref<sp/>EntityController<sp/>for<sp/>every<sp/>job.<sp/>It<sp/>turns<sp/>the<sp/>appointment<sp/>interface<sp/>into<sp/>working,<sp/>linkable<sp/>code.</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>Explicit<sp/>template<sp/>instantiation<sp/>(forcing<sp/>the<sp/>compiler<sp/>to<sp/>build<sp/>a<sp/>concrete<sp/>version):<sp/>https://en.cppreference.com/w/cpp/language/template_instantiation</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>std::move<sp/>(transferring<sp/>ownership<sp/>instead<sp/>of<sp/>copying):<sp/>https://en.cppreference.com/w/cpp/utility/move</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>-<sp/>C++20<sp/>coroutines<sp/>(functions<sp/>that<sp/>pause<sp/>and<sp/>resume<sp/>with<sp/>co_await/co_return):<sp/>https://en.cppreference.com/w/cpp/language/coroutines</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
-<codeline lineno="27"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="appointmentcontroller_8hpp" kindref="compound">controllers/appointmentcontroller/appointmentcontroller.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>class<sp/>declarations<sp/>whose<sp/>method<sp/>bodies<sp/>are<sp/>defined<sp/>below.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Gives<sp/>fixed-width<sp/>whole-number<sp/>types<sp/>such<sp/>as<sp/>uint64_t<sp/>(an<sp/>unsigned<sp/>64-bit<sp/>number).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Gives<sp/>std::optional:<sp/>a<sp/>box<sp/>that<sp/>either<sp/>holds<sp/>a<sp/>value<sp/>or<sp/>says<sp/>&quot;there<sp/>is<sp/>no<sp/>value&quot;.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Gives<sp/>std::string_view:<sp/>a<sp/>cheap,<sp/>non-owning<sp/>view<sp/>over<sp/>a<sp/>stretch<sp/>of<sp/>text.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Gives<sp/>std::move<sp/>and<sp/>std::forward,<sp/>used<sp/>below<sp/>to<sp/>hand<sp/>arguments<sp/>on<sp/>without<sp/>copying.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="appointmentcontrollerbase_8hpp" kindref="compound">controllers/appointmentcontroller/appointmentcontrollerbase.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>interface<sp/>family<sp/>this<sp/>class<sp/>belongs<sp/>to.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="entitycontroller_8hpp" kindref="compound">controllers/entitycontroller/entitycontroller.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>base<sp/>class<sp/>that<sp/>actually<sp/>implements<sp/>every<sp/>forwarded<sp/>job.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>following<sp/>entity<sp/>headers<sp/>are<sp/>kept<sp/>intentionally:<sp/>the<sp/>full<sp/>type<sp/>of<sp/>each<sp/>is<sp/>needed<sp/>by<sp/>the</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>explicit<sp/>instantiations<sp/>at<sp/>the<sp/>bottom<sp/>of<sp/>this<sp/>file.<sp/>&quot;IWYU<sp/>pragma:<sp/>keep&quot;<sp/>tells<sp/>the<sp/>include-what-you-use<sp/>tool<sp/>not<sp/>to<sp/>remove<sp/>them.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="clinic_8hpp" kindref="compound">entities/appointments/clinic.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="laboratory_8hpp" kindref="compound">entities/appointments/laboratory.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="pharmacy_8hpp" kindref="compound">entities/appointments/pharmacy.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="radiologycenter_8hpp" kindref="compound">entities/appointments/radiologycenter.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="callback_8hpp" kindref="compound">utils/global/callback.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Defines<sp/>CALLBACK_,<sp/>the<sp/>&quot;call<sp/>me<sp/>when<sp/>finished&quot;<sp/>function<sp/>type<sp/>passed<sp/>to<sp/>every<sp/>operation.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="concepts_8hpp" kindref="compound">utils/global/concepts.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Defines<sp/>the<sp/>Appointment_t<sp/>concept<sp/>that<sp/>constrains<sp/>the<sp/>template<sp/>parameter<sp/>T.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="47"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Creates<sp/>an<sp/>appointment<sp/>entity;<sp/>delegates<sp/>entirely<sp/>to<sp/>@ref<sp/>EntityController.</highlight></codeline>
-<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>@details<sp/>Parsing,<sp/>schema<sp/>validation,<sp/>authorisation,<sp/>entity<sp/>construction<sp/>and<sp/>the<sp/>INSERT<sp/>all</highlight></codeline>
-<codeline lineno="50"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>happen<sp/>in<sp/>the<sp/>delegate;<sp/>this<sp/>adapter<sp/>only<sp/>moves<sp/>the<sp/>callback<sp/>and<sp/>requester<sp/>through.</highlight></codeline>
-<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>by<sp/>the<sp/>delegate<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
-<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>forwarded<sp/>for<sp/>authorisation.</highlight></codeline>
-<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body;<sp/>must<sp/>remain<sp/>valid<sp/>for<sp/>the<sp/>duration<sp/>of<sp/>the<sp/>call.</highlight></codeline>
-<codeline lineno="54"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>One<sp/>definition<sp/>works<sp/>for<sp/>any<sp/>type<sp/>T<sp/>satisfying<sp/>the<sp/>Appointment_t<sp/>concept.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56" refid="classAppointmentController_1a07a0c78a16d4f88cf921a96d6a72858c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classAppointmentController_1a07a0c78a16d4f88cf921a96d6a72858c" kindref="member">AppointmentController&lt;T&gt;::Create</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)</highlight></codeline>
-<codeline lineno="57"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" kindref="member">EntityController&lt;T&gt;::Create</ref>(std::move(callback),<sp/>std::move(requester),<sp/>data);<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>everything<sp/>to<sp/>the<sp/>base;<sp/>std::move<sp/>transfers<sp/>the<sp/>values<sp/>so<sp/>they<sp/>are<sp/>not<sp/>copied.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="61"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="62"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>@ref<sp/>Create;<sp/>co_awaits<sp/>`EntityController&lt;T&gt;::CreateAsync`.</highlight></codeline>
-<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
-<codeline lineno="64"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>forwarded<sp/>for<sp/>authorisation.</highlight></codeline>
-<codeline lineno="65"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body;<sp/>must<sp/>remain<sp/>valid<sp/>until<sp/>the<sp/>task<sp/>completes.</highlight></codeline>
-<codeline lineno="66"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;</highlight></codeline>
-<codeline lineno="68" refid="classAppointmentController_1a5ae310b608a81f19c3e4a5d0bbb57666" refkind="member"><highlight class="normal">drogon::Task&lt;void&gt;<sp/><ref refid="classAppointmentController_1a5ae310b608a81f19c3e4a5d0bbb57666" kindref="member">AppointmentController&lt;T&gt;::CreateAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)</highlight></codeline>
-<codeline lineno="69"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">co_await</highlight><highlight class="normal"><sp/><ref refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" kindref="member">EntityController&lt;T&gt;::CreateAsync</ref>(std::move(callback),<sp/>std::move(requester),<sp/>data);<sp/><sp/></highlight><highlight class="comment">//<sp/>Pause<sp/>until<sp/>the<sp/>base&apos;s<sp/>async<sp/>create<sp/>finishes;<sp/>then<sp/>this<sp/>task<sp/>completes.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="73"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="74"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Reads<sp/>an<sp/>appointment<sp/>entity;<sp/>delegates<sp/>entirely<sp/>to<sp/>@ref<sp/>EntityController.</highlight></codeline>
-<codeline lineno="75"><highlight class="comment"><sp/>*<sp/>@details<sp/>Expects<sp/>`data`<sp/>to<sp/>carry<sp/>the<sp/>target<sp/>`id`<sp/>and<sp/>the<sp/>requested<sp/>`schema`.</highlight></codeline>
-<codeline lineno="76"><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
-<codeline lineno="77"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>forwarded<sp/>for<sp/>authorisation.</highlight></codeline>
-<codeline lineno="78"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body;<sp/>must<sp/>remain<sp/>valid<sp/>for<sp/>the<sp/>duration<sp/>of<sp/>the<sp/>call.</highlight></codeline>
-<codeline lineno="79"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;</highlight></codeline>
-<codeline lineno="81" refid="classAppointmentController_1a304bdc460cdd955f0d08a7e5bc3611dc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classAppointmentController_1a304bdc460cdd955f0d08a7e5bc3611dc" kindref="member">AppointmentController&lt;T&gt;::Read</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)</highlight></codeline>
-<codeline lineno="82"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" kindref="member">EntityController&lt;T&gt;::Read</ref>(std::move(callback),<sp/>std::move(requester),<sp/>data);<sp/><sp/></highlight><highlight class="comment">//<sp/>Pass<sp/>straight<sp/>through<sp/>to<sp/>the<sp/>base&apos;s<sp/>Read;<sp/>no<sp/>extra<sp/>checks<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="86"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="87"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>@ref<sp/>Read;<sp/>co_awaits<sp/>`EntityController&lt;T&gt;::ReadAsync`.</highlight></codeline>
-<codeline lineno="88"><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
-<codeline lineno="89"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>forwarded<sp/>for<sp/>authorisation.</highlight></codeline>
-<codeline lineno="90"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body;<sp/>must<sp/>remain<sp/>valid<sp/>until<sp/>the<sp/>task<sp/>completes.</highlight></codeline>
-<codeline lineno="91"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;</highlight></codeline>
-<codeline lineno="93" refid="classAppointmentController_1a96bc67b390c572327b9cbee839ab97dd" refkind="member"><highlight class="normal">drogon::Task&lt;void&gt;<sp/><ref refid="classAppointmentController_1a96bc67b390c572327b9cbee839ab97dd" kindref="member">AppointmentController&lt;T&gt;::ReadAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)</highlight></codeline>
-<codeline lineno="94"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">co_await</highlight><highlight class="normal"><sp/><ref refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" kindref="member">EntityController&lt;T&gt;::ReadAsync</ref>(std::move(callback),<sp/>std::move(requester),<sp/>data);<sp/><sp/></highlight><highlight class="comment">//<sp/>Suspends<sp/>until<sp/>the<sp/>base&apos;s<sp/>async<sp/>read<sp/>is<sp/>done,<sp/>then<sp/>resumes<sp/>and<sp/>returns.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="98"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="99"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Updates<sp/>an<sp/>appointment<sp/>entity;<sp/>delegates<sp/>entirely<sp/>to<sp/>@ref<sp/>EntityController.</highlight></codeline>
-<codeline lineno="100"><highlight class="comment"><sp/>*<sp/>@details<sp/>A<sp/>disengaged<sp/>@p<sp/>_id<sp/>is<sp/>rejected<sp/>by<sp/>the<sp/>delegate<sp/>before<sp/>any<sp/>database<sp/>work.</highlight></codeline>
-<codeline lineno="101"><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
-<codeline lineno="102"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>forwarded<sp/>for<sp/>authorisation.</highlight></codeline>
-<codeline lineno="103"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body<sp/>with<sp/>the<sp/>fields<sp/>to<sp/>change.</highlight></codeline>
-<codeline lineno="104"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>_id<sp/>Target<sp/>entity<sp/>id.</highlight></codeline>
-<codeline lineno="105"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;</highlight></codeline>
-<codeline lineno="107" refid="classAppointmentController_1a8193e8f08b8afcc80abbaf8ffa9991e9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classAppointmentController_1a8193e8f08b8afcc80abbaf8ffa9991e9" kindref="member">AppointmentController&lt;T&gt;::Update</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;uint64_t&gt;<sp/>_id)</highlight></codeline>
-<codeline lineno="108"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" kindref="member">EntityController&lt;T&gt;::Update</ref>(std::move(callback),<sp/>std::move(requester),<sp/>data,<sp/>_id);<sp/><sp/></highlight><highlight class="comment">//<sp/>Forward<sp/>the<sp/>new<sp/>fields<sp/>and<sp/>target<sp/>id;<sp/>the<sp/>base<sp/>validates<sp/>the<sp/>id.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="110"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="112"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="113"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>@ref<sp/>Update;<sp/>co_awaits<sp/>`EntityController&lt;T&gt;::UpdateAsync`.</highlight></codeline>
-<codeline lineno="114"><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
-<codeline lineno="115"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>forwarded<sp/>for<sp/>authorisation.</highlight></codeline>
-<codeline lineno="116"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body;<sp/>must<sp/>remain<sp/>valid<sp/>until<sp/>the<sp/>task<sp/>completes.</highlight></codeline>
-<codeline lineno="117"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>_id<sp/>Target<sp/>entity<sp/>id.</highlight></codeline>
-<codeline lineno="118"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="119"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;</highlight></codeline>
-<codeline lineno="120" refid="classAppointmentController_1ac6ec86b8497afe05196a67967e6063c2" refkind="member"><highlight class="normal">drogon::Task&lt;void&gt;<sp/><ref refid="classAppointmentController_1ac6ec86b8497afe05196a67967e6063c2" kindref="member">AppointmentController&lt;T&gt;::UpdateAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;uint64_t&gt;<sp/>_id)</highlight></codeline>
-<codeline lineno="121"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">co_await</highlight><highlight class="normal"><sp/><ref refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" kindref="member">EntityController&lt;T&gt;::UpdateAsync</ref>(std::move(callback),<sp/>std::move(requester),<sp/>data,<sp/>_id);<sp/><sp/></highlight><highlight class="comment">//<sp/>Pause<sp/>until<sp/>the<sp/>base<sp/>finishes<sp/>the<sp/>async<sp/>update.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="125"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="126"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Deletes<sp/>an<sp/>appointment<sp/>entity;<sp/>delegates<sp/>entirely<sp/>to<sp/>@ref<sp/>EntityController.</highlight></codeline>
-<codeline lineno="127"><highlight class="comment"><sp/>*<sp/>@details<sp/>A<sp/>disengaged<sp/>@p<sp/>_id<sp/>is<sp/>rejected<sp/>by<sp/>the<sp/>delegate<sp/>before<sp/>any<sp/>database<sp/>work.</highlight></codeline>
-<codeline lineno="128"><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
-<codeline lineno="129"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>forwarded<sp/>for<sp/>authorisation.</highlight></codeline>
-<codeline lineno="130"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>_id<sp/>Target<sp/>entity<sp/>id.</highlight></codeline>
-<codeline lineno="131"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="132"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;</highlight></codeline>
-<codeline lineno="133" refid="classAppointmentController_1aae035bd4dac4df5e559e0e117534e260" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classAppointmentController_1aae035bd4dac4df5e559e0e117534e260" kindref="member">AppointmentController&lt;T&gt;::Delete</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;uint64_t&gt;<sp/>_id)</highlight></codeline>
-<codeline lineno="134"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" kindref="member">EntityController&lt;T&gt;::Delete</ref>(std::move(callback),<sp/>std::move(requester),<sp/>_id);<sp/><sp/></highlight><highlight class="comment">//<sp/>Forward<sp/>only<sp/>the<sp/>target<sp/>id;<sp/>no<sp/>JSON<sp/>body<sp/>is<sp/>needed<sp/>for<sp/>a<sp/>delete.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="138"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="139"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>@ref<sp/>Delete;<sp/>co_awaits<sp/>`EntityController&lt;T&gt;::DeleteAsync`.</highlight></codeline>
-<codeline lineno="140"><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
-<codeline lineno="141"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>forwarded<sp/>for<sp/>authorisation.</highlight></codeline>
-<codeline lineno="142"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>_id<sp/>Target<sp/>entity<sp/>id.</highlight></codeline>
-<codeline lineno="143"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="144"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;</highlight></codeline>
-<codeline lineno="145" refid="classAppointmentController_1a7c0fa66b965e56315970b935e1bb2ad0" refkind="member"><highlight class="normal">drogon::Task&lt;void&gt;<sp/><ref refid="classAppointmentController_1a7c0fa66b965e56315970b935e1bb2ad0" kindref="member">AppointmentController&lt;T&gt;::DeleteAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;uint64_t&gt;<sp/>_id)</highlight></codeline>
-<codeline lineno="146"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">co_await</highlight><highlight class="normal"><sp/><ref refid="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" kindref="member">EntityController&lt;T&gt;::DeleteAsync</ref>(std::move(callback),<sp/>std::move(requester),<sp/>_id);<sp/><sp/></highlight><highlight class="comment">//<sp/>Pause<sp/>until<sp/>the<sp/>base<sp/>finishes<sp/>the<sp/>async<sp/>delete.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="150"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="151"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Runs<sp/>a<sp/>paginated<sp/>search;<sp/>delegates<sp/>entirely<sp/>to<sp/>@ref<sp/>EntityController.</highlight></codeline>
-<codeline lineno="152"><highlight class="comment"><sp/>*<sp/>@details<sp/>The<sp/>delegate<sp/>builds<sp/>the<sp/>search<sp/>entity<sp/>from<sp/>`data`<sp/>and<sp/>returns<sp/>`results`,<sp/>`more`<sp/>and</highlight></codeline>
-<codeline lineno="153"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>`offset`;<sp/>the<sp/>requester<sp/>is<sp/>forwarded<sp/>but<sp/>not<sp/>used<sp/>by<sp/>the<sp/>shipped<sp/>search<sp/>path.</highlight></codeline>
-<codeline lineno="154"><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
-<codeline lineno="155"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>forwarded<sp/>for<sp/>interface<sp/>symmetry.</highlight></codeline>
-<codeline lineno="156"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>search<sp/>criteria;<sp/>must<sp/>remain<sp/>valid<sp/>for<sp/>the<sp/>duration<sp/>of<sp/>the<sp/>call.</highlight></codeline>
-<codeline lineno="157"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="158"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;</highlight></codeline>
-<codeline lineno="159" refid="classAppointmentController_1a9052acc829edcd321478db51124386d4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classAppointmentController_1a9052acc829edcd321478db51124386d4" kindref="member">AppointmentController&lt;T&gt;::Search</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)</highlight></codeline>
-<codeline lineno="160"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEntityController_1a888ea97ce413d880bcca6f7e9cf6b896" kindref="member">EntityController&lt;T&gt;::Search</ref>(std::move(callback),<sp/>std::move(requester),<sp/>data);<sp/><sp/></highlight><highlight class="comment">//<sp/>Forward<sp/>the<sp/>criteria;<sp/>the<sp/>base<sp/>returns<sp/>results/more/offset<sp/>through<sp/>the<sp/>callback.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="162"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="164"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="165"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Forces<sp/>compilation<sp/>of<sp/>all<sp/>member<sp/>templates<sp/>for<sp/>one<sp/>concrete<sp/>appointment<sp/>entity<sp/>type.</highlight></codeline>
-<codeline lineno="166"><highlight class="comment"><sp/>*<sp/>@details<sp/>Definitions<sp/>live<sp/>in<sp/>this<sp/>translation<sp/>unit,<sp/>so<sp/>without<sp/>these<sp/>instantiations<sp/>the<sp/>route</highlight></codeline>
-<codeline lineno="167"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>layer&apos;s<sp/>`shared_ptr&lt;AppointmentController&lt;T&gt;&gt;`<sp/>registrations<sp/>would<sp/>fail<sp/>to<sp/>link.</highlight></codeline>
-<codeline lineno="168"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A<sp/>&quot;translation<sp/>unit&quot;<sp/>is<sp/>one<sp/>source<sp/>file<sp/>plus<sp/>everything<sp/>it<sp/>includes<sp/>after<sp/>preprocessing.</highlight></codeline>
-<codeline lineno="169"><highlight class="comment"><sp/>*<sp/>@param<sp/>TYPE<sp/>Concrete<sp/>appointment<sp/>entity<sp/>class<sp/>to<sp/>instantiate.</highlight></codeline>
-<codeline lineno="170"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="171" refid="appointmentcontroller_8cpp_1a7345e95c4c6f86cb225597e306710c5c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>INSTANTIATE_APPOINTMENT_CONTROLLER(TYPE)<sp/></highlight><highlight class="comment">/*<sp/>NOLINT<sp/>(<sp/>-readability-macro-expansion)<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="172"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>void<sp/>AppointmentController&lt;TYPE&gt;::Create(CALLBACK_&amp;&amp;<sp/>callback,<sp/>const<sp/>Requester&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="173"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>drogon::Task&lt;void&gt;<sp/>AppointmentController&lt;TYPE&gt;::CreateAsync(CALLBACK_&amp;&amp;<sp/>callback,<sp/>const<sp/>Requester&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data);<sp/>\</highlight></codeline>
-<codeline lineno="174"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>void<sp/>AppointmentController&lt;TYPE&gt;::Read(CALLBACK_&amp;&amp;<sp/>callback,<sp/>const<sp/>Requester&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="175"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>drogon::Task&lt;void&gt;<sp/>AppointmentController&lt;TYPE&gt;::ReadAsync(CALLBACK_&amp;&amp;<sp/>callback,<sp/>const<sp/>Requester&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data);<sp/>\</highlight></codeline>
-<codeline lineno="176"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>void<sp/>AppointmentController&lt;TYPE&gt;::Update(CALLBACK_&amp;&amp;<sp/>callback,<sp/>const<sp/>Requester&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data,<sp/>std::optional&lt;uint64_t&gt;<sp/>_id);<sp/>\</highlight></codeline>
-<codeline lineno="177"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>drogon::Task&lt;void&gt;<sp/>AppointmentController&lt;TYPE&gt;::UpdateAsync(CALLBACK_&amp;&amp;<sp/>callback,<sp/>const<sp/>Requester&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data,<sp/>std::optional&lt;uint64_t&gt;<sp/>_id);<sp/>\</highlight></codeline>
-<codeline lineno="178"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>void<sp/>AppointmentController&lt;TYPE&gt;::Delete(CALLBACK_&amp;&amp;<sp/>callback,<sp/>const<sp/>Requester&amp;&amp;<sp/>requester,<sp/>std::optional&lt;uint64_t&gt;<sp/>_id);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="179"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>drogon::Task&lt;void&gt;<sp/>AppointmentController&lt;TYPE&gt;::DeleteAsync(CALLBACK_&amp;&amp;<sp/>callback,<sp/>const<sp/>Requester&amp;&amp;<sp/>requester,<sp/>std::optional&lt;uint64_t&gt;<sp/>_id);<sp/>\</highlight></codeline>
-<codeline lineno="180"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>void<sp/>AppointmentController&lt;TYPE&gt;::Search(CALLBACK_&amp;&amp;<sp/>callback,<sp/>const<sp/>Requester&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data);</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="181"><highlight class="normal"></highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><ref refid="appointmentcontroller_8cpp_1a7345e95c4c6f86cb225597e306710c5c" kindref="member">INSTANTIATE_APPOINTMENT_CONTROLLER</ref>(<ref refid="classClinicAppointment" kindref="compound">ClinicAppointment</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>the<sp/>clinic-appointment<sp/>controller&apos;s<sp/>code<sp/>so<sp/>the<sp/>route<sp/>layer<sp/>can<sp/>link<sp/>to<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><ref refid="appointmentcontroller_8cpp_1a7345e95c4c6f86cb225597e306710c5c" kindref="member">INSTANTIATE_APPOINTMENT_CONTROLLER</ref>(<ref refid="classPharmacyAppointment" kindref="compound">PharmacyAppointment</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>the<sp/>pharmacy-appointment<sp/>controller&apos;s<sp/>code<sp/>so<sp/>the<sp/>route<sp/>layer<sp/>can<sp/>link<sp/>to<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><ref refid="appointmentcontroller_8cpp_1a7345e95c4c6f86cb225597e306710c5c" kindref="member">INSTANTIATE_APPOINTMENT_CONTROLLER</ref>(<ref refid="classLaboratoryAppointment" kindref="compound">LaboratoryAppointment</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>the<sp/>laboratory-appointment<sp/>controller&apos;s<sp/>code<sp/>so<sp/>the<sp/>route<sp/>layer<sp/>can<sp/>link<sp/>to<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><ref refid="appointmentcontroller_8cpp_1a7345e95c4c6f86cb225597e306710c5c" kindref="member">INSTANTIATE_APPOINTMENT_CONTROLLER</ref>(<ref refid="classRadiologyCenterAppointment" kindref="compound">RadiologyCenterAppointment</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>the<sp/>radiology-center-appointment<sp/>controller&apos;s<sp/>code<sp/>so<sp/>the<sp/>route<sp/>layer<sp/>can<sp/>link<sp/>to<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Definitions<sp/>for<sp/>@ref<sp/>AppointmentController<sp/>and<sp/>its<sp/>explicit<sp/>template</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>instantiations.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details<sp/>Each<sp/>operation<sp/>is<sp/>a<sp/>pure<sp/>forwarder<sp/>to<sp/>@ref<sp/>EntityController;</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>instantiations<sp/>at<sp/>the<sp/>end<sp/>of<sp/>the<sp/>file<sp/>make<sp/>the<sp/>concrete<sp/>specializations</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>available<sp/>to<sp/>the<sp/>appointments<sp/>route<sp/>layer.</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>In<sp/>plain<sp/>words,<sp/>this<sp/>file<sp/>contains<sp/>the<sp/>bodies<sp/>of<sp/>the<sp/>small</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>forwarding<sp/>methods<sp/>that<sp/>were<sp/>only<sp/>declared<sp/>in<sp/>the<sp/>header.<sp/>Each<sp/>body<sp/>just</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>passes<sp/>its<sp/>arguments<sp/>on<sp/>to<sp/>@ref<sp/>EntityController,<sp/>which<sp/>does<sp/>the<sp/>real<sp/>work</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>(parsing,<sp/>validation,<sp/>permission<sp/>checks,<sp/>SQL<sp/>and<sp/>JSON<sp/>output).<sp/>The<sp/>block<sp/>of</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>macros<sp/>at<sp/>the<sp/>end<sp/>forces<sp/>the<sp/>compiler<sp/>to<sp/>build<sp/>a<sp/>concrete<sp/>version<sp/>of<sp/>the</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>class<sp/>for<sp/>each<sp/>appointment<sp/>type,<sp/>so<sp/>the<sp/>route<sp/>layer<sp/>can<sp/>link<sp/>to<sp/>them.<sp/>There</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>is<sp/>no<sp/>extra<sp/>logic<sp/>here.</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>Without<sp/>these<sp/>definitions<sp/>and<sp/>the<sp/>explicit<sp/>instantiations,<sp/>the<sp/>route</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>registry&apos;s<sp/>`shared_ptr&lt;AppointmentController&lt;T&gt;&gt;`<sp/>objects<sp/>would<sp/>be<sp/>declared</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>but<sp/>never<sp/>actually<sp/>compiled,<sp/>and<sp/>the<sp/>program<sp/>would<sp/>fail<sp/>to<sp/>link<sp/>(the<sp/>compiler</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>would<sp/>report<sp/>&quot;undefined<sp/>reference&quot;).<sp/>This<sp/>file<sp/>is<sp/>called<sp/>by<sp/>the<sp/>appointments</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>route<sp/>layer<sp/>through<sp/>@ref<sp/>AppointmentControllerBase<sp/>and<sp/>calls<sp/>into</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@ref<sp/>EntityController<sp/>for<sp/>every<sp/>job.<sp/>It<sp/>turns<sp/>the<sp/>appointment<sp/>interface<sp/>into</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>working,<sp/>linkable<sp/>code.</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>-<sp/>Explicit<sp/>template<sp/>instantiation<sp/>(forcing<sp/>the<sp/>compiler<sp/>to<sp/>build<sp/>a<sp/>concrete</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>version):<sp/>https://en.cppreference.com/w/cpp/language/template_instantiation</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/>-<sp/>std::move<sp/>(transferring<sp/>ownership<sp/>instead<sp/>of<sp/>copying):</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/utility/move</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>-<sp/>C++20<sp/>coroutines<sp/>(functions<sp/>that<sp/>pause<sp/>and<sp/>resume<sp/>with<sp/>co_await/co_return):</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/language/coroutines</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>class<sp/>declarations<sp/>whose<sp/>method<sp/>bodies<sp/>are<sp/>defined<sp/>below.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="appointmentcontroller_8hpp" kindref="compound">controllers/appointmentcontroller/appointmentcontroller.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Gives<sp/>fixed-width<sp/>whole-number<sp/>types<sp/>such<sp/>as<sp/>uint64_t<sp/>(an<sp/>unsigned<sp/>64-bit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>number).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Gives<sp/>std::optional:<sp/>a<sp/>box<sp/>that<sp/>either<sp/>holds<sp/>a<sp/>value<sp/>or<sp/>says<sp/>&quot;there<sp/>is<sp/>no</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>value&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Gives<sp/>std::string_view:<sp/>a<sp/>cheap,<sp/>non-owning<sp/>view<sp/>over<sp/>a<sp/>stretch<sp/>of<sp/>text.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Gives<sp/>std::move<sp/>and<sp/>std::forward,<sp/>used<sp/>below<sp/>to<sp/>hand<sp/>arguments<sp/>on<sp/>without</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>copying.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>interface<sp/>family<sp/>this<sp/>class<sp/>belongs<sp/>to.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="appointmentcontrollerbase_8hpp" kindref="compound">controllers/appointmentcontroller/appointmentcontrollerbase.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>base<sp/>class<sp/>that<sp/>actually<sp/>implements<sp/>every<sp/>forwarded<sp/>job.<sp/>The<sp/>following</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/>entity<sp/>headers<sp/>are<sp/>kept<sp/>intentionally:<sp/>the<sp/>full<sp/>type<sp/>of<sp/>each<sp/>is<sp/>needed<sp/>by<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/>explicit<sp/>instantiations<sp/>at<sp/>the<sp/>bottom<sp/>of<sp/>this<sp/>file.<sp/>&quot;IWYU<sp/>pragma:<sp/>keep&quot;<sp/>tells</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>include-what-you-use<sp/>tool<sp/>not<sp/>to<sp/>remove<sp/>them.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="entitycontroller_8hpp" kindref="compound">controllers/entitycontroller/entitycontroller.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="clinic_8hpp" kindref="compound">entities/appointments/clinic.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="laboratory_8hpp" kindref="compound">entities/appointments/laboratory.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="pharmacy_8hpp" kindref="compound">entities/appointments/pharmacy.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="radiologycenter_8hpp" kindref="compound">entities/appointments/radiologycenter.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Defines<sp/>CALLBACK_,<sp/>the<sp/>&quot;call<sp/>me<sp/>when<sp/>finished&quot;<sp/>function<sp/>type<sp/>passed<sp/>to<sp/>every</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>operation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="callback_8hpp" kindref="compound">utils/global/callback.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Defines<sp/>the<sp/>Appointment_t<sp/>concept<sp/>that<sp/>constrains<sp/>the<sp/>template<sp/>parameter<sp/>T.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="concepts_8hpp" kindref="compound">utils/global/concepts.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="70"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Creates<sp/>an<sp/>appointment<sp/>entity;<sp/>delegates<sp/>entirely<sp/>to<sp/>@ref</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/>*<sp/>EntityController.</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/>*<sp/>@details<sp/>Parsing,<sp/>schema<sp/>validation,<sp/>authorisation,<sp/>entity<sp/>construction<sp/>and</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/>*<sp/>the<sp/>INSERT<sp/>all<sp/>happen<sp/>in<sp/>the<sp/>delegate;<sp/>this<sp/>adapter<sp/>only<sp/>moves<sp/>the<sp/>callback</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/>*<sp/>and<sp/>requester<sp/>through.</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>by<sp/>the<sp/>delegate<sp/>with</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/>*<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>forwarded<sp/>for<sp/>authorisation.</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body;<sp/>must<sp/>remain<sp/>valid<sp/>for<sp/>the<sp/>duration<sp/>of<sp/>the</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/>*<sp/>call.</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>One<sp/>definition<sp/>works<sp/>for<sp/>any<sp/>type<sp/>T<sp/>satisfying</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>Appointment_t<sp/>concept.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="classAppointmentController_1a07a0c78a16d4f88cf921a96d6a72858c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classAppointmentController_1a07a0c78a16d4f88cf921a96d6a72858c" kindref="member">AppointmentController&lt;T&gt;::Create</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/>data)<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><ref refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" kindref="member">EntityController&lt;T&gt;::Create</ref>(std::move(callback),</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(requester),</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data);<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>everything<sp/>to<sp/>the<sp/>base;<sp/>std::move</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>transfers<sp/>the<sp/>values<sp/>so<sp/>they<sp/>are<sp/>not</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>copied.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="94"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>@ref<sp/>Create;<sp/>co_awaits</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/>*<sp/>`EntityController&lt;T&gt;::CreateAsync`.</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>forwarded<sp/>for<sp/>authorisation.</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body;<sp/>must<sp/>remain<sp/>valid<sp/>until<sp/>the<sp/>task<sp/>completes.</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;</highlight></codeline>
+<codeline lineno="102" refid="classAppointmentController_1a5ae310b608a81f19c3e4a5d0bbb57666" refkind="member"><highlight class="normal">drogon::Task&lt;void&gt;<sp/><ref refid="classAppointmentController_1a5ae310b608a81f19c3e4a5d0bbb57666" kindref="member">AppointmentController&lt;T&gt;::CreateAsync</ref>(</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">co_await</highlight><highlight class="normal"><sp/><ref refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" kindref="member">EntityController&lt;T&gt;::CreateAsync</ref>(std::move(callback),</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(requester),</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data);<sp/><sp/></highlight><highlight class="comment">//<sp/>Pause<sp/>until<sp/>the<sp/>base&apos;s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>async<sp/>create<sp/>finishes;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>then<sp/>this<sp/>task<sp/>completes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="111"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Reads<sp/>an<sp/>appointment<sp/>entity;<sp/>delegates<sp/>entirely<sp/>to<sp/>@ref</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/>*<sp/>EntityController.</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/>*<sp/>@details<sp/>Expects<sp/>`data`<sp/>to<sp/>carry<sp/>the<sp/>target<sp/>`id`<sp/>and<sp/>the<sp/>requested<sp/>`schema`.</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>forwarded<sp/>for<sp/>authorisation.</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body;<sp/>must<sp/>remain<sp/>valid<sp/>for<sp/>the<sp/>duration<sp/>of<sp/>the</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/>*<sp/>call.</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;</highlight></codeline>
+<codeline lineno="121" refid="classAppointmentController_1a304bdc460cdd955f0d08a7e5bc3611dc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classAppointmentController_1a304bdc460cdd955f0d08a7e5bc3611dc" kindref="member">AppointmentController&lt;T&gt;::Read</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/>data)<sp/>{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><ref refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" kindref="member">EntityController&lt;T&gt;::Read</ref>(std::move(callback),</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(requester),</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data);<sp/><sp/></highlight><highlight class="comment">//<sp/>Pass<sp/>straight<sp/>through<sp/>to<sp/>the<sp/>base&apos;s<sp/>Read;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>no<sp/>extra<sp/>checks<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="130"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>@ref<sp/>Read;<sp/>co_awaits</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/>*<sp/>`EntityController&lt;T&gt;::ReadAsync`.</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>forwarded<sp/>for<sp/>authorisation.</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body;<sp/>must<sp/>remain<sp/>valid<sp/>until<sp/>the<sp/>task<sp/>completes.</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;</highlight></codeline>
+<codeline lineno="138" refid="classAppointmentController_1a96bc67b390c572327b9cbee839ab97dd" refkind="member"><highlight class="normal">drogon::Task&lt;void&gt;<sp/><ref refid="classAppointmentController_1a96bc67b390c572327b9cbee839ab97dd" kindref="member">AppointmentController&lt;T&gt;::ReadAsync</ref>(</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">co_await</highlight><highlight class="normal"><sp/><ref refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" kindref="member">EntityController&lt;T&gt;::ReadAsync</ref>(std::move(callback),</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(requester),</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data);<sp/><sp/></highlight><highlight class="comment">//<sp/>Suspends<sp/>until<sp/>the<sp/>base&apos;s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>async<sp/>read<sp/>is<sp/>done,<sp/>then</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>resumes<sp/>and<sp/>returns.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="147"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Updates<sp/>an<sp/>appointment<sp/>entity;<sp/>delegates<sp/>entirely<sp/>to<sp/>@ref</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp/>*<sp/>EntityController.</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/>*<sp/>@details<sp/>A<sp/>disengaged<sp/>@p<sp/>_id<sp/>is<sp/>rejected<sp/>by<sp/>the<sp/>delegate<sp/>before<sp/>any<sp/>database</highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp/>*<sp/>work.</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="153"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>forwarded<sp/>for<sp/>authorisation.</highlight></codeline>
+<codeline lineno="154"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body<sp/>with<sp/>the<sp/>fields<sp/>to<sp/>change.</highlight></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>_id<sp/>Target<sp/>entity<sp/>id.</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;</highlight></codeline>
+<codeline lineno="158" refid="classAppointmentController_1a8193e8f08b8afcc80abbaf8ffa9991e9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classAppointmentController_1a8193e8f08b8afcc80abbaf8ffa9991e9" kindref="member">AppointmentController&lt;T&gt;::Update</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>requester,</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data,</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;uint64_t&gt;<sp/>_id)<sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><ref refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" kindref="member">EntityController&lt;T&gt;::Update</ref>(std::move(callback),</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(requester),</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data,</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_id);<sp/><sp/></highlight><highlight class="comment">//<sp/>Forward<sp/>the<sp/>new<sp/>fields<sp/>and<sp/>target<sp/>id;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>base<sp/>validates<sp/>the<sp/>id.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="169"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="170"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>@ref<sp/>Update;<sp/>co_awaits</highlight></codeline>
+<codeline lineno="171"><highlight class="comment"><sp/>*<sp/>`EntityController&lt;T&gt;::UpdateAsync`.</highlight></codeline>
+<codeline lineno="172"><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>forwarded<sp/>for<sp/>authorisation.</highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>body;<sp/>must<sp/>remain<sp/>valid<sp/>until<sp/>the<sp/>task<sp/>completes.</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>_id<sp/>Target<sp/>entity<sp/>id.</highlight></codeline>
+<codeline lineno="176"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;</highlight></codeline>
+<codeline lineno="178" refid="classAppointmentController_1ac6ec86b8497afe05196a67967e6063c2" refkind="member"><highlight class="normal">drogon::Task&lt;void&gt;<sp/><ref refid="classAppointmentController_1ac6ec86b8497afe05196a67967e6063c2" kindref="member">AppointmentController&lt;T&gt;::UpdateAsync</ref>(</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>requester,</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data,</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;uint64_t&gt;<sp/>_id)<sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">co_await</highlight><highlight class="normal"><sp/><ref refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" kindref="member">EntityController&lt;T&gt;::UpdateAsync</ref>(std::move(callback),</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(requester),</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data,</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_id);<sp/><sp/></highlight><highlight class="comment">//<sp/>Pause<sp/>until<sp/>the<sp/>base</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>finishes<sp/>the<sp/>async<sp/>update.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="190"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="191"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Deletes<sp/>an<sp/>appointment<sp/>entity;<sp/>delegates<sp/>entirely<sp/>to<sp/>@ref</highlight></codeline>
+<codeline lineno="192"><highlight class="comment"><sp/>*<sp/>EntityController.</highlight></codeline>
+<codeline lineno="193"><highlight class="comment"><sp/>*<sp/>@details<sp/>A<sp/>disengaged<sp/>@p<sp/>_id<sp/>is<sp/>rejected<sp/>by<sp/>the<sp/>delegate<sp/>before<sp/>any<sp/>database</highlight></codeline>
+<codeline lineno="194"><highlight class="comment"><sp/>*<sp/>work.</highlight></codeline>
+<codeline lineno="195"><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="196"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>forwarded<sp/>for<sp/>authorisation.</highlight></codeline>
+<codeline lineno="197"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>_id<sp/>Target<sp/>entity<sp/>id.</highlight></codeline>
+<codeline lineno="198"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;</highlight></codeline>
+<codeline lineno="200" refid="classAppointmentController_1aae035bd4dac4df5e559e0e117534e260" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classAppointmentController_1aae035bd4dac4df5e559e0e117534e260" kindref="member">AppointmentController&lt;T&gt;::Delete</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>requester,</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;uint64_t&gt;<sp/>_id)<sp/>{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><ref refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" kindref="member">EntityController&lt;T&gt;::Delete</ref>(std::move(callback),</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(requester),</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_id);<sp/><sp/></highlight><highlight class="comment">//<sp/>Forward<sp/>only<sp/>the<sp/>target<sp/>id;<sp/>no<sp/>JSON<sp/>body</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>is<sp/>needed<sp/>for<sp/>a<sp/>delete.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="209"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="210"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>@ref<sp/>Delete;<sp/>co_awaits</highlight></codeline>
+<codeline lineno="211"><highlight class="comment"><sp/>*<sp/>`EntityController&lt;T&gt;::DeleteAsync`.</highlight></codeline>
+<codeline lineno="212"><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="213"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>forwarded<sp/>for<sp/>authorisation.</highlight></codeline>
+<codeline lineno="214"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>_id<sp/>Target<sp/>entity<sp/>id.</highlight></codeline>
+<codeline lineno="215"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;</highlight></codeline>
+<codeline lineno="217" refid="classAppointmentController_1a7c0fa66b965e56315970b935e1bb2ad0" refkind="member"><highlight class="normal">drogon::Task&lt;void&gt;<sp/><ref refid="classAppointmentController_1a7c0fa66b965e56315970b935e1bb2ad0" kindref="member">AppointmentController&lt;T&gt;::DeleteAsync</ref>(</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>requester,</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::optional&lt;uint64_t&gt;<sp/>_id)<sp/>{</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">co_await</highlight><highlight class="normal"><sp/><ref refid="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" kindref="member">EntityController&lt;T&gt;::DeleteAsync</ref>(std::move(callback),</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(requester),</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_id);<sp/><sp/></highlight><highlight class="comment">//<sp/>Pause<sp/>until<sp/>the<sp/>base</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>finishes<sp/>the<sp/>async<sp/>delete.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="227"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="228"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Runs<sp/>a<sp/>paginated<sp/>search;<sp/>delegates<sp/>entirely<sp/>to<sp/>@ref<sp/>EntityController.</highlight></codeline>
+<codeline lineno="229"><highlight class="comment"><sp/>*<sp/>@details<sp/>The<sp/>delegate<sp/>builds<sp/>the<sp/>search<sp/>entity<sp/>from<sp/>`data`<sp/>and<sp/>returns</highlight></codeline>
+<codeline lineno="230"><highlight class="comment"><sp/>*<sp/>`results`,<sp/>`more`<sp/>and<sp/>`offset`;<sp/>the<sp/>requester<sp/>is<sp/>forwarded<sp/>but<sp/>not<sp/>used<sp/>by</highlight></codeline>
+<codeline lineno="231"><highlight class="comment"><sp/>*<sp/>the<sp/>shipped<sp/>search<sp/>path.</highlight></codeline>
+<codeline lineno="232"><highlight class="comment"><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Completion<sp/>handler<sp/>invoked<sp/>once<sp/>with<sp/>(status,<sp/>body).</highlight></codeline>
+<codeline lineno="233"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>requester<sp/>Authenticated<sp/>caller<sp/>forwarded<sp/>for<sp/>interface<sp/>symmetry.</highlight></codeline>
+<codeline lineno="234"><highlight class="comment"><sp/>*<sp/>@param[in]<sp/>data<sp/>Raw<sp/>JSON<sp/>search<sp/>criteria;<sp/>must<sp/>remain<sp/>valid<sp/>for<sp/>the<sp/>duration</highlight></codeline>
+<codeline lineno="235"><highlight class="comment"><sp/>*<sp/>of<sp/>the<sp/>call.</highlight></codeline>
+<codeline lineno="236"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;Appo</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">ment_t<sp/>T&gt;</highlight></codeline>
+<codeline lineno="238" refid="classAppointmentController_1a9052acc829edcd321478db51124386d4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classAppointmentController_1a9052acc829edcd321478db51124386d4" kindref="member">AppointmentController&lt;T&gt;::Search</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/>data)<sp/>{</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><ref refid="classEntityController_1a888ea97ce413d880bcca6f7e9cf6b896" kindref="member">EntityController&lt;T&gt;::Search</ref>(std::move(callback),</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(requester),</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data);<sp/><sp/></highlight><highlight class="comment">//<sp/>Forward<sp/>the<sp/>criteria;<sp/>the<sp/>base<sp/>returns</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>results/more/offset<sp/>through<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>callback.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="248"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="249"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Forces<sp/>compilation<sp/>of<sp/>all<sp/>member<sp/>templates<sp/>for<sp/>one<sp/>concrete</highlight></codeline>
+<codeline lineno="250"><highlight class="comment"><sp/>*<sp/>appointment<sp/>entity<sp/>type.</highlight></codeline>
+<codeline lineno="251"><highlight class="comment"><sp/>*<sp/>@details<sp/>Definitions<sp/>live<sp/>in<sp/>this<sp/>translation<sp/>unit,<sp/>so<sp/>without<sp/>these</highlight></codeline>
+<codeline lineno="252"><highlight class="comment"><sp/>*<sp/>instantiations<sp/>the<sp/>route<sp/>layer&apos;s<sp/>`shared_ptr&lt;AppointmentController&lt;T&gt;&gt;`</highlight></codeline>
+<codeline lineno="253"><highlight class="comment"><sp/>*<sp/>registrations<sp/>would<sp/>fail<sp/>to<sp/>link.<sp/>A<sp/>&quot;translation<sp/>unit&quot;<sp/>is<sp/>one<sp/>source<sp/>file</highlight></codeline>
+<codeline lineno="254"><highlight class="comment"><sp/>*<sp/>plus<sp/>everything<sp/>it<sp/>includes<sp/>after<sp/>preprocessing.</highlight></codeline>
+<codeline lineno="255"><highlight class="comment"><sp/>*<sp/>@param<sp/>TYPE<sp/>Concrete<sp/>appointment<sp/>entity<sp/>class<sp/>to<sp/>instantiate.</highlight></codeline>
+<codeline lineno="256"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257" refid="appointmentcontroller_8cpp_1acf836f406f4ab375e608a252744d150a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>INSTANTIATE_APPOINTMENT_CONTROLLER(<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="258"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>TYPE)<sp/></highlight><highlight class="comment">/*<sp/>NOLINT<sp/>(<sp/>-readability-macro-expansion)<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="259"><highlight class="preprocessor"><sp/><sp/>template<sp/>void<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="260"><highlight class="preprocessor"><sp/><sp/>AppointmentController&lt;TYPE&gt;::Create(CALLBACK_&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="261"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Requester&amp;&amp;<sp/>requester,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="262"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/>data);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="263"><highlight class="preprocessor"><sp/><sp/>template<sp/>drogon::Task&lt;void&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="264"><highlight class="preprocessor"><sp/><sp/>AppointmentController&lt;TYPE&gt;::CreateAsync(CALLBACK_&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="265"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Requester&amp;&amp;<sp/>requester,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="266"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/>data);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="267"><highlight class="preprocessor"><sp/><sp/>template<sp/>void<sp/>AppointmentController&lt;TYPE&gt;::Read(CALLBACK_&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,<sp/><sp/>\</highlight></codeline>
+<codeline lineno="268"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Requester&amp;&amp;<sp/>requester,<sp/>\</highlight></codeline>
+<codeline lineno="269"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/>data);<sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="270"><highlight class="preprocessor"><sp/><sp/>template<sp/>drogon::Task&lt;void&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="271"><highlight class="preprocessor"><sp/><sp/>AppointmentController&lt;TYPE&gt;::ReadAsync(CALLBACK_&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="272"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Requester&amp;&amp;<sp/>requester,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="273"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/>data);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="274"><highlight class="preprocessor"><sp/><sp/>template<sp/>void<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="275"><highlight class="preprocessor"><sp/><sp/>AppointmentController&lt;TYPE&gt;::Update(CALLBACK_&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="276"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Requester&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>requester,<sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="277"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="278"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;uint64_t&gt;<sp/>_id);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="279"><highlight class="preprocessor"><sp/><sp/>template<sp/>drogon::Task&lt;void&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="280"><highlight class="preprocessor"><sp/><sp/>AppointmentController&lt;TYPE&gt;::UpdateAsync(CALLBACK_&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,<sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="281"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Requester&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>requester,<sp/><sp/>\</highlight></codeline>
+<codeline lineno="282"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data,<sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="283"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;uint64_t&gt;<sp/>_id);<sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="284"><highlight class="preprocessor"><sp/><sp/>template<sp/>void<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="285"><highlight class="preprocessor"><sp/><sp/>AppointmentController&lt;TYPE&gt;::Delete(CALLBACK_&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="286"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Requester&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>requester,<sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="287"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;uint64_t&gt;<sp/>_id);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="288"><highlight class="preprocessor"><sp/><sp/>template<sp/>drogon::Task&lt;void&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="289"><highlight class="preprocessor"><sp/><sp/>AppointmentController&lt;TYPE&gt;::DeleteAsync(CALLBACK_&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,<sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="290"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Requester&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>requester,<sp/><sp/>\</highlight></codeline>
+<codeline lineno="291"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;uint64_t&gt;<sp/>_id);<sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="292"><highlight class="preprocessor"><sp/><sp/>template<sp/>void<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="293"><highlight class="preprocessor"><sp/><sp/>AppointmentController&lt;TYPE&gt;::Search(CALLBACK_&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="294"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>Requester&amp;&amp;<sp/>requester,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="295"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/>data);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><ref refid="appointmentcontroller_8cpp_1acf836f406f4ab375e608a252744d150a" kindref="member">INSTANTIATE_APPOINTMENT_CONTROLLER</ref>(</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classClinicAppointment" kindref="compound">ClinicAppointment</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>the<sp/>clinic-appointment<sp/>controller&apos;s<sp/>code<sp/>so<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>route<sp/>layer<sp/>can<sp/>link<sp/>to<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><ref refid="appointmentcontroller_8cpp_1acf836f406f4ab375e608a252744d150a" kindref="member">INSTANTIATE_APPOINTMENT_CONTROLLER</ref>(</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPharmacyAppointment" kindref="compound">PharmacyAppointment</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>the<sp/>pharmacy-appointment<sp/>controller&apos;s<sp/>code<sp/>so</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>route<sp/>layer<sp/>can<sp/>link<sp/>to<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><ref refid="appointmentcontroller_8cpp_1acf836f406f4ab375e608a252744d150a" kindref="member">INSTANTIATE_APPOINTMENT_CONTROLLER</ref>(</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classLaboratoryAppointment" kindref="compound">LaboratoryAppointment</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>the<sp/>laboratory-appointment<sp/>controller&apos;s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>code<sp/>so<sp/>the<sp/>route<sp/>layer<sp/>can<sp/>link<sp/>to<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><ref refid="appointmentcontroller_8cpp_1acf836f406f4ab375e608a252744d150a" kindref="member">INSTANTIATE_APPOINTMENT_CONTROLLER</ref>(</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classRadiologyCenterAppointment" kindref="compound">RadiologyCenterAppointment</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>the<sp/>radiology-center-appointment</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>controller&apos;s<sp/>code<sp/>so<sp/>the<sp/>route<sp/>layer<sp/>can</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>link<sp/>to<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/controllers/appointmentcontroller/appointmentcontroller.cpp"/>
   </compounddef>

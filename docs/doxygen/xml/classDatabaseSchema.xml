@@ -17,10 +17,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/databaseschema/databaseschema.hpp" line="88" column="21" bodyfile="src/validator/databaseschema/databaseschema.hpp" bodystart="88" bodyend="-1"/>
-        <referencedby refid="classDatabaseSchema_1aa32c7db2e9b88c2cfec1f09a2de9d7dd" compoundref="databaseschema_8cpp" startline="88" endline="88">getDatabaseSchema</referencedby>
-        <referencedby refid="classDatabaseSchema_1a801e1391c1907e56401a867210b8c25d" compoundref="databaseschema_8cpp" startline="69" endline="83">populateSchema</referencedby>
-        <referencedby refid="classDatabaseSchema_1a6a5d958e7d5a760bcd929c88b1d93fa7" compoundref="databaseschema_8cpp" startline="95" endline="104">printSchema</referencedby>
+        <location file="src/validator/databaseschema/databaseschema.hpp" line="109" column="19" bodyfile="src/validator/databaseschema/databaseschema.hpp" bodystart="109" bodyend="-1"/>
+        <referencedby refid="classDatabaseSchema_1aa32c7db2e9b88c2cfec1f09a2de9d7dd" compoundref="databaseschema_8cpp" startline="119" endline="121">getDatabaseSchema</referencedby>
+        <referencedby refid="classDatabaseSchema_1a801e1391c1907e56401a867210b8c25d" compoundref="databaseschema_8cpp" startline="92" endline="114">populateSchema</referencedby>
+        <referencedby refid="classDatabaseSchema_1a6a5d958e7d5a760bcd929c88b1d93fa7" compoundref="databaseschema_8cpp" startline="128" endline="146">printSchema</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -49,10 +49,10 @@ See <ref refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" kindref=
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/databaseschema/databaseschema.hpp" line="58" column="5" bodyfile="src/validator/databaseschema/databaseschema.cpp" bodystart="44" bodyend="61"/>
-        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
-        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="139" endline="165">Store::getObject</references>
-        <references refid="classDatabaseSchema_1a801e1391c1907e56401a867210b8c25d" compoundref="databaseschema_8cpp" startline="69" endline="83">populateSchema</references>
+        <location file="src/validator/databaseschema/databaseschema.hpp" line="71" column="3" bodyfile="src/validator/databaseschema/databaseschema.cpp" bodystart="56" bodyend="82"/>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
+        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
+        <references refid="classDatabaseSchema_1a801e1391c1907e56401a867210b8c25d" compoundref="databaseschema_8cpp" startline="92" endline="114">populateSchema</references>
         <referencedby refid="classDatabaseSchema_1adc76072bec45e25694e7c9cb032ec8c2">DatabaseSchema</referencedby>
         <referencedby refid="classDatabaseSchema_1ad79c4f44f0be999ac2b6b4105f7e8f1a">DatabaseSchema</referencedby>
         <referencedby refid="classDatabaseSchema_1a7362b5c73b9b41c0a30d8f10c72c676d">operator=</referencedby>
@@ -74,8 +74,8 @@ See <ref refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" kindref=
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/databaseschema/databaseschema.hpp" line="60" column="5"/>
-        <references refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" compoundref="databaseschema_8cpp" startline="44" endline="61">DatabaseSchema</references>
+        <location file="src/validator/databaseschema/databaseschema.hpp" line="74" column="3"/>
+        <references refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" compoundref="databaseschema_8cpp" startline="56" endline="82">DatabaseSchema</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseSchema_1ad79c4f44f0be999ac2b6b4105f7e8f1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -93,8 +93,8 @@ See <ref refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" kindref=
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/databaseschema/databaseschema.hpp" line="62" column="5"/>
-        <references refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" compoundref="databaseschema_8cpp" startline="44" endline="61">DatabaseSchema</references>
+        <location file="src/validator/databaseschema/databaseschema.hpp" line="76" column="3"/>
+        <references refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" compoundref="databaseschema_8cpp" startline="56" endline="82">DatabaseSchema</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseSchema_1a7362b5c73b9b41c0a30d8f10c72c676d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classDatabaseSchema" kindref="compound">DatabaseSchema</ref> &amp;</type>
@@ -112,8 +112,8 @@ See <ref refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" kindref=
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/databaseschema/databaseschema.hpp" line="64" column="20"/>
-        <references refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" compoundref="databaseschema_8cpp" startline="44" endline="61">DatabaseSchema</references>
+        <location file="src/validator/databaseschema/databaseschema.hpp" line="79" column="18"/>
+        <references refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" compoundref="databaseschema_8cpp" startline="56" endline="82">DatabaseSchema</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseSchema_1a8136008c88832535639afc43afb7474d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classDatabaseSchema" kindref="compound">DatabaseSchema</ref> &amp;</type>
@@ -131,8 +131,8 @@ See <ref refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" kindref=
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/databaseschema/databaseschema.hpp" line="66" column="20"/>
-        <references refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" compoundref="databaseschema_8cpp" startline="44" endline="61">DatabaseSchema</references>
+        <location file="src/validator/databaseschema/databaseschema.hpp" line="82" column="18"/>
+        <references refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" compoundref="databaseschema_8cpp" startline="56" endline="82">DatabaseSchema</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseSchema_1acfaf80023a95a35c0b38bc3594e18cf7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -147,11 +147,11 @@ See <ref refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" kindref=
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/databaseschema/databaseschema.hpp" line="68" column="13"/>
-        <references refid="classDatabaseSchema_1aa32c7db2e9b88c2cfec1f09a2de9d7dd" compoundref="databaseschema_8cpp" startline="88" endline="88">getDatabaseSchema</references>
-        <references refid="classDatabaseSchema_1a801e1391c1907e56401a867210b8c25d" compoundref="databaseschema_8cpp" startline="69" endline="83">populateSchema</references>
-        <references refid="classDatabaseSchema_1a6a5d958e7d5a760bcd929c88b1d93fa7" compoundref="databaseschema_8cpp" startline="95" endline="104">printSchema</references>
-        <references refid="databaseschema_8hpp_1aea29cf503a423c2163e5b08142700952" compoundref="databaseschema_8hpp" startline="33">SCHEMA_t</references>
+        <location file="src/validator/databaseschema/databaseschema.hpp" line="85" column="11"/>
+        <references refid="classDatabaseSchema_1aa32c7db2e9b88c2cfec1f09a2de9d7dd" compoundref="databaseschema_8cpp" startline="119" endline="121">getDatabaseSchema</references>
+        <references refid="classDatabaseSchema_1a801e1391c1907e56401a867210b8c25d" compoundref="databaseschema_8cpp" startline="92" endline="114">populateSchema</references>
+        <references refid="classDatabaseSchema_1a6a5d958e7d5a760bcd929c88b1d93fa7" compoundref="databaseschema_8cpp" startline="128" endline="146">printSchema</references>
+        <references refid="databaseschema_8hpp_1aea29cf503a423c2163e5b08142700952" compoundref="databaseschema_8hpp" startline="39" endline="42">SCHEMA_t</references>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -184,12 +184,12 @@ See <ref refid="classDatabaseSchema_1a801e1391c1907e56401a867210b8c25d" kindref=
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/databaseschema/databaseschema.hpp" line="76" column="28" bodyfile="src/validator/databaseschema/databaseschema.cpp" bodystart="69" bodyend="83"/>
-        <references refid="classDatabaseSchema_1a607a79c489b46a2d8b1d72f40dcfd272" compoundref="databaseschema_8hpp" startline="88">databaseSchema</references>
-        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
-        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="139" endline="165">Store::getObject</references>
-        <references refid="classMessage_1a3d5db738594c8af1428053227959259e" compoundref="message_8cpp" startline="40" endline="40">Message::WarningMessage</references>
-        <referencedby refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" compoundref="databaseschema_8cpp" startline="44" endline="61">DatabaseSchema</referencedby>
+        <location file="src/validator/databaseschema/databaseschema.hpp" line="94" column="15" bodyfile="src/validator/databaseschema/databaseschema.cpp" bodystart="92" bodyend="114"/>
+        <references refid="classDatabaseSchema_1a607a79c489b46a2d8b1d72f40dcfd272" compoundref="databaseschema_8hpp" startline="109">databaseSchema</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
+        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
+        <references refid="classMessage_1a3d5db738594c8af1428053227959259e" compoundref="message_8cpp" startline="51" endline="53">Message::WarningMessage</references>
+        <referencedby refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" compoundref="databaseschema_8cpp" startline="56" endline="82">DatabaseSchema</referencedby>
         <referencedby refid="classDatabaseSchema_1acfaf80023a95a35c0b38bc3594e18cf7">~DatabaseSchema</referencedby>
       </memberdef>
       <memberdef kind="function" id="classDatabaseSchema_1aa32c7db2e9b88c2cfec1f09a2de9d7dd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -210,10 +210,10 @@ See <ref refid="classDatabaseSchema_1aa32c7db2e9b88c2cfec1f09a2de9d7dd" kindref=
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/databaseschema/databaseschema.hpp" line="82" column="27" bodyfile="src/validator/databaseschema/databaseschema.cpp" bodystart="88" bodyend="88"/>
-        <references refid="classDatabaseSchema_1a607a79c489b46a2d8b1d72f40dcfd272" compoundref="databaseschema_8hpp" startline="88">databaseSchema</references>
-        <references refid="databaseschema_8hpp_1aea29cf503a423c2163e5b08142700952" compoundref="databaseschema_8hpp" startline="33">SCHEMA_t</references>
-        <referencedby refid="classValidator_1a3827a99ba8a6d471ad08ae9b6455108f" compoundref="validator_8cpp" startline="316" endline="331">Validator::getDatabaseSchemaForTable</referencedby>
+        <location file="src/validator/databaseschema/databaseschema.hpp" line="101" column="25" bodyfile="src/validator/databaseschema/databaseschema.cpp" bodystart="119" bodyend="121"/>
+        <references refid="classDatabaseSchema_1a607a79c489b46a2d8b1d72f40dcfd272" compoundref="databaseschema_8hpp" startline="109">databaseSchema</references>
+        <references refid="databaseschema_8hpp_1aea29cf503a423c2163e5b08142700952" compoundref="databaseschema_8hpp" startline="39" endline="42">SCHEMA_t</references>
+        <referencedby refid="classValidator_1a3827a99ba8a6d471ad08ae9b6455108f" compoundref="validator_8cpp" startline="441" endline="462">Validator::getDatabaseSchemaForTable</referencedby>
         <referencedby refid="classDatabaseSchema_1acfaf80023a95a35c0b38bc3594e18cf7">~DatabaseSchema</referencedby>
       </memberdef>
       <memberdef kind="function" id="classDatabaseSchema_1a6a5d958e7d5a760bcd929c88b1d93fa7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -230,9 +230,9 @@ See <ref refid="classDatabaseSchema_1aa32c7db2e9b88c2cfec1f09a2de9d7dd" kindref=
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/databaseschema/databaseschema.hpp" line="84" column="28" bodyfile="src/validator/databaseschema/databaseschema.cpp" bodystart="95" bodyend="104"/>
-        <references refid="classDatabaseSchema_1a607a79c489b46a2d8b1d72f40dcfd272" compoundref="databaseschema_8hpp" startline="88">databaseSchema</references>
-        <references refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" compoundref="message_8cpp" startline="39" endline="39">Message::InfoMessage</references>
+        <location file="src/validator/databaseschema/databaseschema.hpp" line="104" column="15" bodyfile="src/validator/databaseschema/databaseschema.cpp" bodystart="128" bodyend="146"/>
+        <references refid="classDatabaseSchema_1a607a79c489b46a2d8b1d72f40dcfd272" compoundref="databaseschema_8hpp" startline="109">databaseSchema</references>
+        <references refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" compoundref="message_8cpp" startline="48" endline="50">Message::InfoMessage</references>
         <referencedby refid="classDatabaseSchema_1acfaf80023a95a35c0b38bc3594e18cf7">~DatabaseSchema</referencedby>
       </memberdef>
     </sectiondef>
@@ -249,7 +249,7 @@ See <ref refid="classDatabaseSchema_1aa32c7db2e9b88c2cfec1f09a2de9d7dd" kindref=
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="src/validator/databaseschema/databaseschema.hpp" line="50" column="1" bodyfile="src/validator/databaseschema/databaseschema.hpp" bodystart="51" bodyend="89"/>
+    <location file="src/validator/databaseschema/databaseschema.hpp" line="62" column="1" bodyfile="src/validator/databaseschema/databaseschema.hpp" bodystart="62" bodyend="111"/>
     <listofallmembers>
       <member refid="classDatabaseSchema_1af897695ff6dd58e10ef7eee9e71af82c" prot="public" virt="non-virtual"><scope>DatabaseSchema</scope><name>DatabaseSchema</name></member>
       <member refid="classDatabaseSchema_1adc76072bec45e25694e7c9cb032ec8c2" prot="public" virt="non-virtual"><scope>DatabaseSchema</scope><name>DatabaseSchema</name></member>

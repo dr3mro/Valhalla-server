@@ -290,11 +290,11 @@ class ServiceController&lt; T &gt;</div><p>Service-entity controller that adapts
   </dd>
 </dl>
 <p>A thin, stateless adapter: every CRUD+S entry point simply forwards to the same-named method of <span class="tt"><a class="el" href="classEntityController.html" title="Generic request-facing CRUDS handler: validates and authorizes a request, then delegates persistence ...">EntityController</a>&lt;T&gt;</span>, so validation, authorisation, entity construction, SQL execution, JSON marshalling and error→HTTP mapping all live in that base. The template parameter supplies the table name, SQL statements and permission queries used there. This class exists to give service entities a distinct interface (and therefore a distinct entry in the route registry) from appointment entities.</p>
-<p>Plain-language version: <span class="tt">T</span> is whichever entity class we are handling (say <span class="tt"><a class="el" href="classClinics.html" title="Service entity bound to the clinics table; the organisation root for clinic cases.">Clinics</a></span>). The <span class="tt"><a class="el" href="conceptService__t.html" title="Constrains T to Service or a type derived from it.">Service_t</a></span> after <span class="tt">template</span> is a "concept" — a compile-time check that refuses to build this class unless <span class="tt">T</span> is really a service type. Because this class stores no data ("stateless"), its only job is to hand the arguments to <span class="tt"><a class="el" href="classEntityController.html" title="Generic request-facing CRUDS handler: validates and authorizes a request, then delegates persistence ...">EntityController</a>&lt;T&gt;</span> and let that base do everything.</p>
-<p>Explicit instantiations are provided for <span class="tt"><a class="el" href="classClinics.html" title="Service entity bound to the clinics table; the organisation root for clinic cases.">Clinics</a></span>, <span class="tt"><a class="el" href="classPharmacies.html" title="Service entity bound to the pharmacies table (a pharmacy service provider).">Pharmacies</a></span>, <span class="tt"><a class="el" href="classLaboratories.html" title="Service entity bound to the laboratories table (a laboratory service provider).">Laboratories</a></span> and <span class="tt"><a class="el" href="classRadiologyCenters.html" title="Service entity bound to the radiologycenters table (a radiology centre).">RadiologyCenters</a></span>; the route layer stores <span class="tt">shared_ptr&lt;<a class="el" href="classServiceController.html" title="Service-entity controller that adapts EntityController to ServiceControllerBase.">ServiceController</a>&lt;T&gt;&gt;</span> values in a variant and dispatches to them through <a class="el" href="classServiceControllerBase.html" title="ServiceControllerBase">ServiceControllerBase</a>. </p><dl class="section note"><dt>Note</dt><dd>Copy and move are disabled so each registered controller has a single identity. </dd></dl>
+<p>Plain-language version: <span class="tt">T</span> is whichever entity class we are handling (say <span class="tt"><a class="el" href="classClinics.html" title="Service entity bound to the clinics table; the organisation root for clinic cases.">Clinics</a></span>). The <span class="tt"><a class="el" href="conceptService__t.html" title="Constrains T to Service or a type derived from it.">Service_t</a></span> after <span class="tt">template</span> is a "concept" — a compile-time check that refuses to build this class unless <span class="tt">T</span> is really a service type. Because this class stores no data ("stateless"), its only job is to hand the arguments to <span class="tt"><a class="el" href="classEntityController.html" title="Generic request-facing CRUDS handler: validates and authorizes a request, then delegates persistence ...">EntityController</a>&lt;T&gt;</span> and let that base do everything. </p><pre class="fragment">     Explicit instantiations are provided for `Clinics`, `Pharmacies`,
+</pre><p> <span class="tt"><a class="el" href="classLaboratories.html" title="Service entity bound to the laboratories table (a laboratory service provider).">Laboratories</a></span> and <span class="tt"><a class="el" href="classRadiologyCenters.html" title="Service entity bound to the radiologycenters table (a radiology centre).">RadiologyCenters</a></span>; the route layer stores <span class="tt">shared_ptr&lt;<a class="el" href="classServiceController.html" title="Service-entity controller that adapts EntityController to ServiceControllerBase.">ServiceController</a>&lt;T&gt;&gt;</span> values in a variant and dispatches to them through <a class="el" href="classServiceControllerBase.html" title="ServiceControllerBase">ServiceControllerBase</a>. </p><dl class="section note"><dt>Note</dt><dd>Copy and move are disabled so each registered controller has a single identity. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classEntityController.html" title="Generic request-facing CRUDS handler: validates and authorizes a request, then delegates persistence ...">EntityController</a>, <a class="el" href="classServiceControllerBase.html" title="Type-erased interface for service-entity (clinic, pharmacy, laboratory, radiology center) CRUD+S oper...">ServiceControllerBase</a>, <a class="el" href="conceptService__t.html" title="Constrains T to Service or a type derived from it.">Service_t</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="servicecontroller_8hpp_source.html#l00064">64</a> of file <a class="el" href="servicecontroller_8hpp_source.html">servicecontroller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="servicecontroller_8hpp_source.html#l00092">92</a> of file <a class="el" href="servicecontroller_8hpp_source.html">servicecontroller.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4d83fcbb1ae3b5bc4995d298e105ad8f" name="a4d83fcbb1ae3b5bc4995d298e105ad8f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4d83fcbb1ae3b5bc4995d298e105ad8f">&#9670;&#160;</a></span>ServiceController() <span class="overload">[1/3]</span></h2>
@@ -416,7 +416,7 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
 
 <p>Defaulted destructor; no resources are owned directly. </p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="servicecontroller_8cpp_source.html#l00057">Create()</a>, <a class="el" href="servicecontroller_8cpp_source.html#l00071">CreateAsync()</a>, <a class="el" href="servicecontroller_8cpp_source.html#l00136">Delete()</a>, <a class="el" href="servicecontroller_8cpp_source.html#l00148">DeleteAsync()</a>, <a class="el" href="servicecontroller_8cpp_source.html#l00084">Read()</a>, <a class="el" href="servicecontroller_8cpp_source.html#l00096">ReadAsync()</a>, <a class="el" href="servicecontroller_8cpp_source.html#l00162">Search()</a>, <a class="el" href="servicecontroller_8cpp_source.html#l00110">Update()</a>, and <a class="el" href="servicecontroller_8cpp_source.html#l00123">UpdateAsync()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="servicecontroller_8cpp_source.html#l00084">Create()</a>, <a class="el" href="servicecontroller_8cpp_source.html#l00104">CreateAsync()</a>, <a class="el" href="servicecontroller_8cpp_source.html#l00201">Delete()</a>, <a class="el" href="servicecontroller_8cpp_source.html#l00218">DeleteAsync()</a>, <a class="el" href="servicecontroller_8cpp_source.html#l00122">Read()</a>, <a class="el" href="servicecontroller_8cpp_source.html#l00139">ReadAsync()</a>, <a class="el" href="servicecontroller_8cpp_source.html#l00239">Search()</a>, <a class="el" href="servicecontroller_8cpp_source.html#l00159">Update()</a>, and <a class="el" href="servicecontroller_8cpp_source.html#l00180">UpdateAsync()</a>.</p>
 
 </div>
 </div>
@@ -468,9 +468,9 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
 
 <p>Reimplemented from <a class="el" href="classEntityController.html#a449401c7840a8159d6e3b64c30f72e4d">EntityController&lt; T &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="servicecontroller_8cpp_source.html#l00057">57</a> of file <a class="el" href="servicecontroller_8cpp_source.html">servicecontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="servicecontroller_8cpp_source.html#l00084">84</a> of file <a class="el" href="servicecontroller_8cpp_source.html">servicecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00057">EntityController&lt; T &gt;::Create()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00076">EntityController&lt; T &gt;::Create()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a34ea2d608d297ccff95c6d11d865e351">~ServiceController()</a>.</p>
 
@@ -522,11 +522,11 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
 
 <p>Reimplemented from <a class="el" href="classEntityController.html#a0de2c6044f1460f85750e4d18635997b">EntityController&lt; T &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="servicecontroller_8cpp_source.html#l00071">71</a> of file <a class="el" href="servicecontroller_8cpp_source.html">servicecontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="servicecontroller_8cpp_source.html#l00104">104</a> of file <a class="el" href="servicecontroller_8cpp_source.html">servicecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00290">EntityController&lt; T &gt;::CreateAsync()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="servicecontroller_8cpp_source.html#l00104">CreateAsync()</a>, and <a class="el" href="classEntityController.html#a44f8ed2e1c2479a0fe4ab7f816efd690">EntityController&lt; T &gt;::EntityController()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="#a34ea2d608d297ccff95c6d11d865e351">~ServiceController()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="servicecontroller_8cpp_source.html#l00104">CreateAsync()</a>, and <a class="el" href="#a34ea2d608d297ccff95c6d11d865e351">~ServiceController()</a>.</p>
 
 </div>
 </div>
@@ -577,9 +577,9 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
 
 <p>Reimplemented from <a class="el" href="classEntityController.html#ae5a0d4d7a4e9dd670f22655a831f8215">EntityController&lt; T &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="servicecontroller_8cpp_source.html#l00136">136</a> of file <a class="el" href="servicecontroller_8cpp_source.html">servicecontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="servicecontroller_8cpp_source.html#l00201">201</a> of file <a class="el" href="servicecontroller_8cpp_source.html">servicecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00224">EntityController&lt; T &gt;::Delete()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00297">EntityController&lt; T &gt;::Delete()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a34ea2d608d297ccff95c6d11d865e351">~ServiceController()</a>.</p>
 
@@ -631,11 +631,11 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
 
 <p>Reimplemented from <a class="el" href="classEntityController.html#ac2793aa8599a89a46fe157473d16a89e">EntityController&lt; T &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="servicecontroller_8cpp_source.html#l00148">148</a> of file <a class="el" href="servicecontroller_8cpp_source.html">servicecontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="servicecontroller_8cpp_source.html#l00218">218</a> of file <a class="el" href="servicecontroller_8cpp_source.html">servicecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00452">EntityController&lt; T &gt;::DeleteAsync()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="servicecontroller_8cpp_source.html#l00218">DeleteAsync()</a>, and <a class="el" href="classEntityController.html#a44f8ed2e1c2479a0fe4ab7f816efd690">EntityController&lt; T &gt;::EntityController()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="#a34ea2d608d297ccff95c6d11d865e351">~ServiceController()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="servicecontroller_8cpp_source.html#l00218">DeleteAsync()</a>, and <a class="el" href="#a34ea2d608d297ccff95c6d11d865e351">~ServiceController()</a>.</p>
 
 </div>
 </div>
@@ -748,9 +748,9 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
 
 <p>Reimplemented from <a class="el" href="classEntityController.html#afa8269ceee3631d7e20cbce2444a00aa">EntityController&lt; T &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="servicecontroller_8cpp_source.html#l00084">84</a> of file <a class="el" href="servicecontroller_8cpp_source.html">servicecontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="servicecontroller_8cpp_source.html#l00122">122</a> of file <a class="el" href="servicecontroller_8cpp_source.html">servicecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00115">EntityController&lt; T &gt;::Read()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00153">EntityController&lt; T &gt;::Read()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a34ea2d608d297ccff95c6d11d865e351">~ServiceController()</a>.</p>
 
@@ -802,11 +802,11 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
 
 <p>Reimplemented from <a class="el" href="classEntityController.html#a9707869a9f99e7a5df537c9468ea0a4e">EntityController&lt; T &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="servicecontroller_8cpp_source.html#l00096">96</a> of file <a class="el" href="servicecontroller_8cpp_source.html">servicecontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="servicecontroller_8cpp_source.html#l00139">139</a> of file <a class="el" href="servicecontroller_8cpp_source.html">servicecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00345">EntityController&lt; T &gt;::ReadAsync()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="classEntityController.html#a44f8ed2e1c2479a0fe4ab7f816efd690">EntityController&lt; T &gt;::EntityController()</a>, and <a class="el" href="servicecontroller_8cpp_source.html#l00139">ReadAsync()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="#a34ea2d608d297ccff95c6d11d865e351">~ServiceController()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="servicecontroller_8cpp_source.html#l00139">ReadAsync()</a>, and <a class="el" href="#a34ea2d608d297ccff95c6d11d865e351">~ServiceController()</a>.</p>
 
 </div>
 </div>
@@ -857,9 +857,9 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
 
 <p>Reimplemented from <a class="el" href="classEntityController.html#a888ea97ce413d880bcca6f7e9cf6b896">EntityController&lt; T &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="servicecontroller_8cpp_source.html#l00162">162</a> of file <a class="el" href="servicecontroller_8cpp_source.html">servicecontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="servicecontroller_8cpp_source.html#l00239">239</a> of file <a class="el" href="servicecontroller_8cpp_source.html">servicecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00255">EntityController&lt; T &gt;::Search()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00331">EntityController&lt; T &gt;::Search()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a34ea2d608d297ccff95c6d11d865e351">~ServiceController()</a>.</p>
 
@@ -918,9 +918,9 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
 
 <p>Reimplemented from <a class="el" href="classEntityController.html#a351b900503468ac17e930c42fdf23bdf">EntityController&lt; T &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="servicecontroller_8cpp_source.html#l00110">110</a> of file <a class="el" href="servicecontroller_8cpp_source.html">servicecontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="servicecontroller_8cpp_source.html#l00159">159</a> of file <a class="el" href="servicecontroller_8cpp_source.html">servicecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00162">EntityController&lt; T &gt;::Update()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00221">EntityController&lt; T &gt;::Update()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a34ea2d608d297ccff95c6d11d865e351">~ServiceController()</a>.</p>
 
@@ -978,11 +978,11 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
 
 <p>Reimplemented from <a class="el" href="classEntityController.html#a89d8cf3d79aae4e8b462c667c70fdce4">EntityController&lt; T &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="servicecontroller_8cpp_source.html#l00123">123</a> of file <a class="el" href="servicecontroller_8cpp_source.html">servicecontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="servicecontroller_8cpp_source.html#l00180">180</a> of file <a class="el" href="servicecontroller_8cpp_source.html">servicecontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00392">EntityController&lt; T &gt;::UpdateAsync()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="classEntityController.html#a44f8ed2e1c2479a0fe4ab7f816efd690">EntityController&lt; T &gt;::EntityController()</a>, and <a class="el" href="servicecontroller_8cpp_source.html#l00180">UpdateAsync()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="#a34ea2d608d297ccff95c6d11d865e351">~ServiceController()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="servicecontroller_8cpp_source.html#l00180">UpdateAsync()</a>, and <a class="el" href="#a34ea2d608d297ccff95c6d11d865e351">~ServiceController()</a>.</p>
 
 </div>
 </div>

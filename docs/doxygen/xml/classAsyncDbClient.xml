@@ -17,9 +17,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncdbclient.hpp" line="105" column="21" bodyfile="src/database/asyncdbclient.hpp" bodystart="105" bodyend="-1"/>
-        <referencedby refid="classAsyncDbClient_1a213710d5066ee9045340071a669ebf45" compoundref="asyncdbclient_8cpp" startline="43" endline="43">AsyncDbClient</referencedby>
-        <referencedby refid="classAsyncDbClient_1a6df3848ed2c5239948f7274454e6f937" compoundref="asyncdbclient_8hpp" startline="99" endline="99">client</referencedby>
+        <location file="src/database/asyncdbclient.hpp" line="158" column="7" bodyfile="src/database/asyncdbclient.hpp" bodystart="158" bodyend="-1"/>
+        <referencedby refid="classAsyncDbClient_1a213710d5066ee9045340071a669ebf45" compoundref="asyncdbclient_8cpp" startline="60" endline="62">AsyncDbClient</referencedby>
+        <referencedby refid="classAsyncDbClient_1a6df3848ed2c5239948f7274454e6f937" compoundref="asyncdbclient_8hpp" startline="147" endline="149">client</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -53,9 +53,9 @@ No validation or configuration happens here; a null client is accepted for tests
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncdbclient.hpp" line="59" column="14" bodyfile="src/database/asyncdbclient.cpp" bodystart="43" bodyend="43"/>
-        <references refid="classAsyncDbClient_1a6df3848ed2c5239948f7274454e6f937" compoundref="asyncdbclient_8hpp" startline="99" endline="99">client</references>
-        <references refid="classAsyncDbClient_1aced87db92a4d5da428c025008912efd0" compoundref="asyncdbclient_8hpp" startline="105">client_</references>
+        <location file="src/database/asyncdbclient.hpp" line="78" column="12" bodyfile="src/database/asyncdbclient.cpp" bodystart="60" bodyend="62"/>
+        <references refid="classAsyncDbClient_1a6df3848ed2c5239948f7274454e6f937" compoundref="asyncdbclient_8hpp" startline="147" endline="149">client</references>
+        <references refid="classAsyncDbClient_1aced87db92a4d5da428c025008912efd0" compoundref="asyncdbclient_8hpp" startline="158">client_</references>
         <referencedby refid="classAsyncDbClient_1a00eaa6a9016ba3d36f6598345b3b64de">AsyncDbClient</referencedby>
         <referencedby refid="classAsyncDbClient_1a4c8f093334062996bd575498bfcb40c2">AsyncDbClient</referencedby>
         <referencedby refid="classAsyncDbClient_1a73fa2d950fcdf6a7b3468b6da94a0b19">operator=</referencedby>
@@ -78,8 +78,8 @@ No validation or configuration happens here; a null client is accepted for tests
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncdbclient.hpp" line="66" column="5"/>
-        <references refid="classAsyncDbClient_1a213710d5066ee9045340071a669ebf45" compoundref="asyncdbclient_8cpp" startline="43" endline="43">AsyncDbClient</references>
+        <location file="src/database/asyncdbclient.hpp" line="89" column="3"/>
+        <references refid="classAsyncDbClient_1a213710d5066ee9045340071a669ebf45" compoundref="asyncdbclient_8cpp" startline="60" endline="62">AsyncDbClient</references>
       </memberdef>
       <memberdef kind="function" id="classAsyncDbClient_1a00eaa6a9016ba3d36f6598345b3b64de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -96,8 +96,8 @@ No validation or configuration happens here; a null client is accepted for tests
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncdbclient.hpp" line="67" column="5"/>
-        <references refid="classAsyncDbClient_1a213710d5066ee9045340071a669ebf45" compoundref="asyncdbclient_8cpp" startline="43" endline="43">AsyncDbClient</references>
+        <location file="src/database/asyncdbclient.hpp" line="92" column="3"/>
+        <references refid="classAsyncDbClient_1a213710d5066ee9045340071a669ebf45" compoundref="asyncdbclient_8cpp" startline="60" endline="62">AsyncDbClient</references>
       </memberdef>
       <memberdef kind="function" id="classAsyncDbClient_1a6a9c60e4054389f20640fb633d38dd42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classAsyncDbClient" kindref="compound">AsyncDbClient</ref> &amp;</type>
@@ -114,8 +114,8 @@ No validation or configuration happens here; a null client is accepted for tests
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncdbclient.hpp" line="68" column="19"/>
-        <references refid="classAsyncDbClient_1a213710d5066ee9045340071a669ebf45" compoundref="asyncdbclient_8cpp" startline="43" endline="43">AsyncDbClient</references>
+        <location file="src/database/asyncdbclient.hpp" line="95" column="17"/>
+        <references refid="classAsyncDbClient_1a213710d5066ee9045340071a669ebf45" compoundref="asyncdbclient_8cpp" startline="60" endline="62">AsyncDbClient</references>
       </memberdef>
       <memberdef kind="function" id="classAsyncDbClient_1a73fa2d950fcdf6a7b3468b6da94a0b19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classAsyncDbClient" kindref="compound">AsyncDbClient</ref> &amp;</type>
@@ -132,8 +132,8 @@ No validation or configuration happens here; a null client is accepted for tests
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncdbclient.hpp" line="69" column="19"/>
-        <references refid="classAsyncDbClient_1a213710d5066ee9045340071a669ebf45" compoundref="asyncdbclient_8cpp" startline="43" endline="43">AsyncDbClient</references>
+        <location file="src/database/asyncdbclient.hpp" line="98" column="17"/>
+        <references refid="classAsyncDbClient_1a213710d5066ee9045340071a669ebf45" compoundref="asyncdbclient_8cpp" startline="60" endline="62">AsyncDbClient</references>
       </memberdef>
       <memberdef kind="function" id="classAsyncDbClient_1a9695856e6d84ef0220f89c0b2d614ead" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -151,9 +151,9 @@ No validation or configuration happens here; a null client is accepted for tests
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncdbclient.hpp" line="74" column="13"/>
-        <references refid="classAsyncDbClient_1a060a2df97483204c119b2d3322de7455" compoundref="asyncdbclient_8cpp" startline="67" endline="73">connectionString</references>
-        <references refid="classAsyncDbClient_1ac0396c3d59602cf860e6fef52c98a736" compoundref="asyncdbclient_8cpp" startline="50" endline="60">createClient</references>
+        <location file="src/database/asyncdbclient.hpp" line="107" column="11"/>
+        <references refid="classAsyncDbClient_1a060a2df97483204c119b2d3322de7455" compoundref="asyncdbclient_8cpp" startline="105" endline="125">connectionString</references>
+        <references refid="classAsyncDbClient_1ac0396c3d59602cf860e6fef52c98a736" compoundref="asyncdbclient_8cpp" startline="71" endline="96">createClient</references>
       </memberdef>
       <memberdef kind="function" id="classAsyncDbClient_1a6df3848ed2c5239948f7274454e6f937" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::shared_ptr&lt; drogon::orm::DbClient &gt; &amp;</type>
@@ -171,10 +171,10 @@ No validation or configuration happens here; a null client is accepted for tests
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncdbclient.hpp" line="99" column="28" bodyfile="src/database/asyncdbclient.hpp" bodystart="99" bodyend="99"/>
-        <references refid="classAsyncDbClient_1aced87db92a4d5da428c025008912efd0" compoundref="asyncdbclient_8hpp" startline="105">client_</references>
-        <referencedby refid="classAsyncDbClient_1a213710d5066ee9045340071a669ebf45" compoundref="asyncdbclient_8cpp" startline="43" endline="43">AsyncDbClient</referencedby>
-        <referencedby refid="classAsyncDbClient_1ac0396c3d59602cf860e6fef52c98a736" compoundref="asyncdbclient_8cpp" startline="50" endline="60">createClient</referencedby>
+        <location file="src/database/asyncdbclient.hpp" line="147" column="26" bodyfile="src/database/asyncdbclient.hpp" bodystart="147" bodyend="149"/>
+        <references refid="classAsyncDbClient_1aced87db92a4d5da428c025008912efd0" compoundref="asyncdbclient_8hpp" startline="158">client_</references>
+        <referencedby refid="classAsyncDbClient_1a213710d5066ee9045340071a669ebf45" compoundref="asyncdbclient_8cpp" startline="60" endline="62">AsyncDbClient</referencedby>
+        <referencedby refid="classAsyncDbClient_1ac0396c3d59602cf860e6fef52c98a736" compoundref="asyncdbclient_8cpp" startline="71" endline="96">createClient</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -189,7 +189,7 @@ No validation or configuration happens here; a null client is accepted for tests
         </briefdescription>
         <detaileddescription>
 <para>Creates the Drogon Pg client from the <ref refid="classStore" kindref="compound">Store</ref>&apos;s database configuration.</para>
-<para>Reads <computeroutput><ref refid="classConfigurator_1afdc97f6e9bd19c0197759b8860ed9a49" kindref="member">Configurator::DatabaseConfig</ref></computeroutput> from the <ref refid="classStore" kindref="compound">Store</ref>, builds the connection string with <computeroutput><ref refid="classAsyncDbClient_1a060a2df97483204c119b2d3322de7455" kindref="member">connectionString</ref></computeroutput>, requests <computeroutput>DB_MAX_CONN</computeroutput> connections and applies the acquire timeout, converting milliseconds to the seconds Drogon expects. <simplesect kind="return"><para>A newly created client, ready to be wrapped and registered with <computeroutput><ref refid="classStore_1a1e12f060c02095975351db8f5d63cb76" kindref="member">Store::registerObject</ref>&lt;<ref refid="classAsyncDbClient" kindref="compound">AsyncDbClient</ref>&gt;</computeroutput>. </para>
+<para>Reads <computeroutput><ref refid="classConfigurator_1a78caa68d4554c8ab0d0c1753ce8edbe2" kindref="member">Configurator::DatabaseConfig</ref></computeroutput> from the <ref refid="classStore" kindref="compound">Store</ref>, builds the connection string with <computeroutput><ref refid="classAsyncDbClient_1a060a2df97483204c119b2d3322de7455" kindref="member">connectionString</ref></computeroutput>, requests <computeroutput>DB_MAX_CONN</computeroutput> connections and applies the acquire timeout, converting milliseconds to the seconds Drogon expects. <simplesect kind="return"><para>A newly created client, ready to be wrapped and registered with <computeroutput><ref refid="classStore_1a1e12f060c02095975351db8f5d63cb76" kindref="member">Store::registerObject</ref>&lt;<ref refid="classAsyncDbClient" kindref="compound">AsyncDbClient</ref>&gt;</computeroutput>. </para>
 </simplesect>
 <simplesect kind="pre"><para>A <computeroutput><ref refid="classConfigurator" kindref="compound">Configurator</ref></computeroutput> object is registered in the <ref refid="classStore" kindref="compound">Store</ref>.</para>
 </simplesect>
@@ -197,11 +197,11 @@ No validation or configuration happens here; a null client is accepted for tests
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncdbclient.hpp" line="84" column="28" bodyfile="src/database/asyncdbclient.cpp" bodystart="50" bodyend="60"/>
-        <references refid="classAsyncDbClient_1a6df3848ed2c5239948f7274454e6f937" compoundref="asyncdbclient_8hpp" startline="99" endline="99">client</references>
-        <references refid="classAsyncDbClient_1a060a2df97483204c119b2d3322de7455" compoundref="asyncdbclient_8cpp" startline="67" endline="73">connectionString</references>
-        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="139" endline="165">Store::getObject</references>
-        <referencedby refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" compoundref="server_8cpp" startline="92" endline="148">Server::run</referencedby>
+        <location file="src/database/asyncdbclient.hpp" line="123" column="3" bodyfile="src/database/asyncdbclient.cpp" bodystart="71" bodyend="96"/>
+        <references refid="classAsyncDbClient_1a6df3848ed2c5239948f7274454e6f937" compoundref="asyncdbclient_8hpp" startline="147" endline="149">client</references>
+        <references refid="classAsyncDbClient_1a060a2df97483204c119b2d3322de7455" compoundref="asyncdbclient_8cpp" startline="105" endline="125">connectionString</references>
+        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
+        <referencedby refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" compoundref="server_8cpp" startline="156" endline="295">Server::run</referencedby>
         <referencedby refid="classAsyncDbClient_1a9695856e6d84ef0220f89c0b2d614ead">~AsyncDbClient</referencedby>
       </memberdef>
       <memberdef kind="function" id="classAsyncDbClient_1a060a2df97483204c119b2d3322de7455" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -211,7 +211,7 @@ No validation or configuration happens here; a null client is accepted for tests
         <name>connectionString</name>
         <qualifiedname>AsyncDbClient::connectionString</qualifiedname>
         <param>
-          <type>const <ref refid="classConfigurator_1afdc97f6e9bd19c0197759b8860ed9a49" kindref="member">Configurator::DatabaseConfig</ref> &amp;</type>
+          <type>const <ref refid="classConfigurator_1a78caa68d4554c8ab0d0c1753ce8edbe2" kindref="member">Configurator::DatabaseConfig</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -236,8 +236,8 @@ No validation or configuration happens here; a null client is accepted for tests
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncdbclient.hpp" line="93" column="51" bodyfile="src/database/asyncdbclient.cpp" bodystart="67" bodyend="73"/>
-        <referencedby refid="classAsyncDbClient_1ac0396c3d59602cf860e6fef52c98a736" compoundref="asyncdbclient_8cpp" startline="50" endline="60">createClient</referencedby>
+        <location file="src/database/asyncdbclient.hpp" line="137" column="22" bodyfile="src/database/asyncdbclient.cpp" bodystart="105" bodyend="125"/>
+        <referencedby refid="classAsyncDbClient_1ac0396c3d59602cf860e6fef52c98a736" compoundref="asyncdbclient_8cpp" startline="71" endline="96">createClient</referencedby>
         <referencedby refid="classAsyncDbClient_1a9695856e6d84ef0220f89c0b2d614ead">~AsyncDbClient</referencedby>
       </memberdef>
     </sectiondef>
@@ -249,7 +249,7 @@ No validation or configuration happens here; a null client is accepted for tests
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="src/database/asyncdbclient.hpp" line="51" column="1" bodyfile="src/database/asyncdbclient.hpp" bodystart="52" bodyend="106"/>
+    <location file="src/database/asyncdbclient.hpp" line="70" column="1" bodyfile="src/database/asyncdbclient.hpp" bodystart="70" bodyend="161"/>
     <listofallmembers>
       <member refid="classAsyncDbClient_1a213710d5066ee9045340071a669ebf45" prot="public" virt="non-virtual"><scope>AsyncDbClient</scope><name>AsyncDbClient</name></member>
       <member refid="classAsyncDbClient_1a4c8f093334062996bd575498bfcb40c2" prot="public" virt="non-virtual"><scope>AsyncDbClient</scope><name>AsyncDbClient</name></member>

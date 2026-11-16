@@ -145,7 +145,7 @@ Private Attributes</h2></td></tr>
 <dd>
 For a beginner: this is a helper struct that derived builders create on the stack for one SQL statement. It remembers a running counter so the first value becomes $1, the second $2, and so on, which is exactly what PostgreSQL expects in the prepared query. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="base_8hpp_source.html#l00122">122</a> of file <a class="el" href="base_8hpp_source.html">base.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="base_8hpp_source.html#l00157">157</a> of file <a class="el" href="base_8hpp_source.html">base.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8aff08d8abb6b9a8abb7964019d5e057" name="a8aff08d8abb6b9a8abb7964019d5e057"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8aff08d8abb6b9a8abb7964019d5e057">&#9670;&#160;</a></span>Binder()</h2>
@@ -172,9 +172,9 @@ For a beginner: this is a helper struct that derived builders create on the stac
 
 <p>Binds to p and clears it so the first <a class="el" href="#a8fb0871ea4d994dfad3360aac44d8c56" title="Appends a value to the parameter container and returns its placeholder.">bind()</a> produces $1. </p>
 
-<p class="definition">Definition at line <a class="el" href="base_8hpp_source.html#l00127">127</a> of file <a class="el" href="base_8hpp_source.html">base.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="base_8hpp_source.html#l00161">161</a> of file <a class="el" href="base_8hpp_source.html">base.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="base_8hpp_source.html#l00146">params</a>.</p>
+<p class="reference">References <a class="el" href="base_8hpp_source.html#l00191">params</a>.</p>
 
 </div>
 </div>
@@ -219,11 +219,11 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A placeholder of the form "$n", with n increasing in call order from 1. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="base_8hpp_source.html#l00136">136</a> of file <a class="el" href="base_8hpp_source.html">base.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="base_8hpp_source.html#l00178">178</a> of file <a class="el" href="base_8hpp_source.html">base.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="base_8hpp_source.html#l00151">index</a>, and <a class="el" href="base_8hpp_source.html#l00146">params</a>.</p>
+<p class="reference">References <a class="el" href="base_8hpp_source.html#l00198">index</a>, and <a class="el" href="base_8hpp_source.html#l00191">params</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="client_8hpp_source.html#l00214">api::v2::Client::buildClientCreateStatement()</a>, <a class="el" href="client_8hpp_source.html#l00249">api::v2::Client::buildClientUpdateStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00207">Entity::buildCreateStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00323">Entity::buildDeleteStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00251">Entity::buildReadStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00356">Entity::buildSearchStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00284">Entity::buildUpdateStatement()</a>, <a class="el" href="service_8hpp_source.html#l00092">Service::getSqlAddStaffStatement()</a>, <a class="el" href="service_8hpp_source.html#l00125">Service::getSqlRemoveStaffStatement()</a>, and <a class="el" href="client_8hpp_source.html#l00135">api::v2::Client::getSqlToggleSuspendStatement()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="client_8hpp_source.html#l00311">api::v2::Client::buildClientCreateStatement()</a>, <a class="el" href="client_8hpp_source.html#l00365">api::v2::Client::buildClientUpdateStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00295">Entity::buildCreateStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00490">Entity::buildDeleteStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00368">Entity::buildReadStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00533">Entity::buildSearchStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00425">Entity::buildUpdateStatement()</a>, <a class="el" href="service_8hpp_source.html#l00114">Service::getSqlAddStaffStatement()</a>, <a class="el" href="service_8hpp_source.html#l00165">Service::getSqlRemoveStaffStatement()</a>, and <a class="el" href="client_8hpp_source.html#l00184">api::v2::Client::getSqlToggleSuspendStatement()</a>.</p>
 
 </div>
 </div>
@@ -250,9 +250,9 @@ template&lt;typename T&gt; </div>
 
 <p>Count of values bound so far; drives the $n placeholder numbering. </p>
 
-<p class="definition">Definition at line <a class="el" href="base_8hpp_source.html#l00151">151</a> of file <a class="el" href="base_8hpp_source.html">base.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="base_8hpp_source.html#l00198">198</a> of file <a class="el" href="base_8hpp_source.html">base.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="base_8hpp_source.html#l00136">bind()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="base_8hpp_source.html#l00178">bind()</a>.</p>
 
 </div>
 </div>
@@ -278,9 +278,9 @@ template&lt;typename T&gt; </div>
 
 <p>The borrowed parameter container that receives appended values. </p>
 
-<p class="definition">Definition at line <a class="el" href="base_8hpp_source.html#l00146">146</a> of file <a class="el" href="base_8hpp_source.html">base.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="base_8hpp_source.html#l00191">191</a> of file <a class="el" href="base_8hpp_source.html">base.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="base_8hpp_source.html#l00136">bind()</a>, and <a class="el" href="base_8hpp_source.html#l00127">Binder()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="base_8hpp_source.html#l00178">bind()</a>, and <a class="el" href="base_8hpp_source.html#l00161">Binder()</a>.</p>
 
 </div>
 </div>

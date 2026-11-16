@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/base.hpp" line="61" column="14"/>
+        <location file="src/entities/base/base.hpp" line="73" column="12"/>
       </memberdef>
       <memberdef kind="function" id="classBase_1a306fb25541331080645a716286357ef9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/base.hpp" line="66" column="13"/>
+        <location file="src/entities/base/base.hpp" line="79" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classBase_1a370479ee58fedd41365acea55b47de9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -69,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/base.hpp" line="76" column="27"/>
+        <location file="src/entities/base/base.hpp" line="92" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBase_1ad1d05549ca23bf4602c86fb3f6575d30" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -101,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/base.hpp" line="84" column="27"/>
+        <location file="src/entities/base/base.hpp" line="103" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBase_1a48122a0f0bd77d2aadcbe10b3e0863fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -134,7 +134,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/base.hpp" line="91" column="27"/>
+        <location file="src/entities/base/base.hpp" line="113" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBase_1a35f7a42b849a9eaf439715a4b280a8f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -166,7 +166,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/base.hpp" line="98" column="27"/>
+        <location file="src/entities/base/base.hpp" line="123" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBase_1a3b86dc196e03d75434ff98e8e04fe303" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -200,7 +200,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/base.hpp" line="107" column="27"/>
+        <location file="src/entities/base/base.hpp" line="136" column="25"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -211,7 +211,8 @@
 </simplesect>
 <simplesect kind="see"><para><ref refid="classEntity" kindref="compound">Entity</ref>, <ref refid="structBase_1_1Binder" kindref="compound">Binder</ref> </para>
 </simplesect>
-<simplesect kind="note"><para>For a beginner: &quot;virtual&quot; means the call is decided at runtime, so a <ref refid="classBase" kindref="compound">Base</ref> pointer can reach the correct derived-class version of each function. &quot;= 0&quot; means this class gives no body and forces children to provide one; that is what makes <ref refid="classBase" kindref="compound">Base</ref> abstract (not instantiable). </para>
+<simplesect kind="note"><para>For a beginner: &quot;virtual&quot; means the call is decided at runtime, so a <ref refid="classBase" kindref="compound">Base</ref> pointer can reach the correct derived-class version of each function. &quot;=
+0&quot; means this class gives no body and forces children to provide one; that is what makes <ref refid="classBase" kindref="compound">Base</ref> abstract (not instantiable). </para>
 </simplesect>
 </para>
     </detaileddescription>
@@ -367,7 +368,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="src/entities/base/base.hpp" line="55" column="1" bodyfile="src/entities/base/base.hpp" bodystart="56" bodyend="153"/>
+    <location file="src/entities/base/base.hpp" line="68" column="1" bodyfile="src/entities/base/base.hpp" bodystart="68" bodyend="201"/>
     <listofallmembers>
       <member refid="classBase_1a58887755525abd3f340963e2bbdcc972" prot="public" virt="non-virtual"><scope>Base</scope><name>Base</name></member>
       <member refid="classBase_1a370479ee58fedd41365acea55b47de9b" prot="public" virt="pure-virtual"><scope>Base</scope><name>getSqlCreateStatement</name></member>

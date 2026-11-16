@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['testing_0',['Testing',['../structTesting.html',1,'']]],
-  ['threadsafequeue_1',['ThreadSafeQueue',['../classThreadSafeQueue.html',1,'']]],
-  ['tokenmanager_2',['TokenManager',['../classapi_1_1v2_1_1TokenManager.html',1,'api::v2']]],
-  ['tokenmanagerparameters_3',['TokenManagerParameters',['../structTokenManagerParameters.html',1,'']]]
+  ['update_5ft_0',['Update_t',['../classUpdate__t.html',1,'']]],
+  ['updateclient_5ft_1',['UpdateClient_t',['../structapi_1_1v2_1_1Types_1_1UpdateClient__t.html',1,'api::v2::Types']]],
+  ['user_2',['User',['../classUser.html',1,'']]]
 ];

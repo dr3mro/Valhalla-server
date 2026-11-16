@@ -76,12 +76,14 @@ add_custom_target(copy_compile_commands ALL
 )
 
 
-include_directories("${CMAKE_CURRENT_SOURCE_DIR}/src")
+include_directories(
+    "${CMAKE_CURRENT_SOURCE_DIR}/src"
+    "${CMAKE_CURRENT_SOURCE_DIR}/libs/")
 
 # Suppress developer warnings and deprecated warnings
-set(CMAKE_SUPPRESS_DEVELOPER_WARNINGS
-    1
-    CACHE INTERNAL "No dev warnings")
+set(
+  CMAKE_SUPPRESS_DEVELOPER_WARNINGS 1
+  CACHE INTERNAL "No dev warnings")
 set(CMAKE_WARN_DEPRECATED OFF)
 set(CMAKE_COLOR_DIAGNOSTICS ON)
 
@@ -207,6 +209,8 @@ endif()
 include(tools/conan/variables.cmake)
 
 # Link libraries (PUBLIC: static lib deps are propagated to consumers)
+add_subdirectory(libs)
+list(APPEND PACKAGE_LIBS concurrency)
 target_link_libraries(server_core PUBLIC ${PACKAGE_LIBS})
 
 # Enable AddressSanitizer only for Debug build type on Linux for now.

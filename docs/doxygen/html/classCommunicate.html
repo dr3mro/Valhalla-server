@@ -140,7 +140,7 @@ Static Private Member Functions</h2></td></tr>
 <div class="textblock"><p>Thin static-only wrapper around libcurl for outbound HTTP calls. </p>
 <p>Builds <span class="tt">server:port/path</span>, sends a JSON content-type header and performs either a GET or a POST with the supplied body. There is no instance state: each call creates and cleans up its own CURL handle, and failures are reported to the console via <a class="el" href="classMessage.html" title="Stateless facade for emitting coloured status messages.">Message</a> and signalled to the caller by an empty optional rather than by an exception. </p><dl class="section note"><dt>Note</dt><dd>Only GET and POST are supported; all calls are blocking. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="communicate_8hpp_source.html#l00044">44</a> of file <a class="el" href="communicate_8hpp_source.html">communicate.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="communicate_8hpp_source.html#l00052">52</a> of file <a class="el" href="communicate_8hpp_source.html">communicate.hpp</a>.</p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a0a4ddbbf7176276436c6c9f8bd3fa9f1" name="a0a4ddbbf7176276436c6c9f8bd3fa9f1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0a4ddbbf7176276436c6c9f8bd3fa9f1">&#9670;&#160;</a></span>handleResponse()</h2>
@@ -175,11 +175,11 @@ Static Private Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Accumulated body, or an empty string on error. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>A cURL error or thrown exception is logged via <a class="el" href="classMessage.html" title="Stateless facade for emitting coloured status messages.">Message</a> and produces an empty string; callers treat that as failure. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="communicate_8cpp_source.html#l00109">109</a> of file <a class="el" href="communicate_8cpp_source.html">communicate.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="communicate_8cpp_source.html#l00162">162</a> of file <a class="el" href="communicate_8cpp_source.html">communicate.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="message_8cpp_source.html#l00042">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00041">Message::ErrorMessage()</a>, and <a class="el" href="communicate_8cpp_source.html#l00134">WriteCallback()</a>.</p>
+<p class="reference">References <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, and <a class="el" href="communicate_8cpp_source.html#l00196">WriteCallback()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="communicate_8cpp_source.html#l00038">sendRequest()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="communicate_8cpp_source.html#l00047">sendRequest()</a>.</p>
 
 </div>
 </div>
@@ -240,11 +240,11 @@ Static Private Member Functions</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>All exceptions (init failure, unsupported method, cURL error, empty body) are caught internally, logged via <a class="el" href="classMessage.html" title="Stateless facade for emitting coloured status messages.">Message</a> and converted to <span class="tt">std::nullopt</span>; nothing is thrown to the caller. </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd><span class="tt">data</span> is passed to libcurl by pointer, so it must outlive the call; this holds for normal synchronous use. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="communicate_8cpp_source.html#l00038">38</a> of file <a class="el" href="communicate_8cpp_source.html">communicate.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="communicate_8cpp_source.html#l00047">47</a> of file <a class="el" href="communicate_8cpp_source.html">communicate.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="message_8cpp_source.html#l00042">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00041">Message::ErrorMessage()</a>, and <a class="el" href="communicate_8cpp_source.html#l00109">handleResponse()</a>.</p>
+<p class="reference">References <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, and <a class="el" href="communicate_8cpp_source.html#l00162">handleResponse()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="staffcontroller_8cpp_source.html#l00169">StaffController&lt; T &gt;::InviteStaffToEntity()</a>, and <a class="el" href="staffcontroller_8cpp_source.html#l00299">StaffController&lt; T &gt;::InviteStaffToEntityAsync()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="staffcontroller_8cpp_source.html#l00263">StaffController&lt; T &gt;::InviteStaffToEntity()</a>, and <a class="el" href="staffcontroller_8cpp_source.html#l00445">StaffController&lt; T &gt;::InviteStaffToEntityAsync()</a>.</p>
 
 </div>
 </div>
@@ -297,9 +297,9 @@ Static Private Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Number of bytes consumed, which must equal <span class="tt">size * nmemb</span> or libcurl reports a write error. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="communicate_8cpp_source.html#l00134">134</a> of file <a class="el" href="communicate_8cpp_source.html">communicate.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="communicate_8cpp_source.html#l00196">196</a> of file <a class="el" href="communicate_8cpp_source.html">communicate.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="communicate_8cpp_source.html#l00109">handleResponse()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="communicate_8cpp_source.html#l00162">handleResponse()</a>.</p>
 
 </div>
 </div>

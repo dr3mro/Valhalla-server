@@ -33,13 +33,14 @@
  */
 
 // the declarations implemented below
-#include "concurrency/boundedexecutor.hpp"
+#include "boundedexecutor.hpp"
 
 // fmt::format: builds the one-line statistics log message
 #include <fmt/format.h>
 
 #include <algorithm>  // std::max: clamp queue_max to at least 1
 // steady_clock / duration_cast: timestamps and wait-time measurement
+#include <atomic>
 #include <chrono>
 #include <cstddef>     // std::size_t: unsigned counts and indices
 #include <cstdint>     // std::uint64_t: the statistics counters
@@ -73,7 +74,7 @@ namespace {
  * queue_max is clamped to at least 1. All Worker objects are created before any
  * thread starts, because a worker may steal from every other queue. Starting
  * threads only after that avoids a race where a worker sees a
- *          not-yet-constructed peer. The final spin (with yield) removes the
+ * not-yet-constructed peer. The final spin (with yield) removes the
  * startup race with an immediate submit(). workers: Number of worker threads; 0
  * gives inline mode. queue_max: Shared queue capacity, clamped to at least 1.
  * name: Log label for this pool.
@@ -81,7 +82,9 @@ namespace {
 BoundedExecutor::BoundedExecutor(std::size_t workers,  // NOLINT
                                  std::size_t queue_max,
                                  std::string name)
-    : queue_max_(std::max<std::size_t>(queue_max, 1)), name_(std::move(name)) {
+    : queue_max_(std::max<std::size_t>(queue_max,
+                                       1)),
+      name_(std::move(name)) {
   workers_.reserve(workers);  // reserve once so push_back cannot reallocate
                               // and move the Worker objects
   for (std::size_t i = 0; i < workers; ++i) {
@@ -92,20 +95,20 @@ BoundedExecutor::BoundedExecutor(std::size_t workers,  // NOLINT
   // Start the threads only now: a worker looks at every queue, so all of them
   // must exist first.
   for (std::size_t i = 0; i < workers; ++i) {
-    workers_[i]->thread = std::thread([this, i] {
+    workers_.at(i)->thread = std::thread([this, i] {
+      // launch the worker loop, capturing this pool and its index
       run(i);
-    });  // launch the worker loop, capturing this pool and its index
+    });
   }
   // Wait until every worker is ready (idle) before returning, so callers that
   // submit immediately after construction do not race with thread startup and
   // trigger stealing.
   for (std::size_t i = 0; i < workers; ++i) {
-    // spin until this worker says it is
-    // waiting for work
-    while (!workers_[i]->idle.load(std::memory_order_acquire)) {
-      std::this_thread::yield();  // politely let the OS run the worker
-                                  // instead of burning CPU in a tight
-                                  // loop
+    // spin until this worker says it is waiting for work
+    while (!workers_.at(i)->idle.load(std::memory_order_acquire)) {
+      // politely let the OS run the worker instead of burning CPU in a tight
+      // loop
+      std::this_thread::yield();
     }
   }
 }
@@ -124,25 +127,25 @@ BoundedExecutor::~BoundedExecutor() {
  * @details The stopping flag is published with release semantics; the
  * empty-lock/notify pair then wakes a worker that is either waiting or about to
  * wait, and each worker checks the flag under its own mutex before sleeping.
- *          Join is skipped for the calling thread so a task may shut down its
- * own pool. Statistics are logged only when there is something to report, and
- * the counters are cleared so a second call does not log them again.
- *          ("Joining" a thread means waiting here until that thread's code has
+ * Join is skipped for the calling thread so a task may shut down its own pool.
+ * Statistics are logged only when there is something to report, and the
+ * counters are cleared so a second call does not log them again.
+ * ("Joining" a thread means waiting here until that thread's code has
  * finished.)
  */
 void BoundedExecutor::shutdown() {
-  stopping_.store(true,
-                  std::memory_order_release);  // publish "no new work" before
-                                               // waking anyone
+  stopping_.store(true, std::memory_order_release);
+  // publish "no new work" before waking anyone
   // wake every worker so it can notice the flag
   for (auto& worker : workers_) {
     {
-      std::lock_guard<std::mutex> lock(
-          worker->mutex);  // a sleeping worker either sees the flag or is
-                           // already waiting
+      // a sleeping worker either sees the flag or is
+      // already waiting
+      std::scoped_lock lock(worker->mutex);
     }
-    worker->cv.notify_all();  // the short lock above closes the race with a
-                              // worker going to sleep
+    // the short lock above closes the race with a
+    // worker going to sleep
+    worker->cv.notify_all();
   }
   for (auto& worker : workers_) {
     // never try to join ourselves
@@ -152,20 +155,20 @@ void BoundedExecutor::shutdown() {
                               // draining its queue
     }
   }
+  // take a snapshot of the counters before clearing them
+  const Stats state = stats();
 
-  const Stats s =
-      stats();  // take a snapshot of the counters before clearing them
   // only log when something actually happened
-  if (s.submitted > 0 || s.rejected > 0) {
+  if (state.submitted > 0 || state.rejected > 0) {
     // Log one summary line built from the counters captured above.
     Message::InfoMessage(
         fmt::format("{}: {} tasks, {} rejected, deepest queue {}, average "
                     "wait {:.1f} us.",
                     name_,
-                    s.submitted,
-                    s.rejected,
-                    s.max_queue,
-                    s.avg_wait_us));
+                    state.submitted,
+                    state.rejected,
+                    state.max_queue,
+                    state.avg_wait_us));
     submitted_ = 0;  // report once
     rejected_  = 0;  // clear the counter so a second shutdown() does not log
                      // the same numbers
@@ -180,19 +183,22 @@ void BoundedExecutor::shutdown() {
  * @note Values are approximate while the pool is running; they are exact after
  * shutdown().
  */
+
 BoundedExecutor::Stats BoundedExecutor::stats() const {
-  const auto waited = waited_tasks_.load(
-      std::memory_order_relaxed);  // how many tasks went into the total wait
-                                   // time
+  // how many tasks went into the total wait time
+  const auto waited =  // NOLINT
+      waited_tasks_.load(std::memory_order_relaxed);
+
   // The last value is total nanoseconds divided by the sample count, then
   // converted to microseconds.
-  return {submitted_.load(std::memory_order_relaxed),
-          rejected_.load(std::memory_order_relaxed),
-          max_queue_.load(std::memory_order_relaxed),
-          waited == 0
-              ? 0.0
-              : static_cast<double>(wait_ns_.load(std::memory_order_relaxed)) /
-                    static_cast<double>(waited) / 1000.0};
+  return {.submitted   = submitted_.load(std::memory_order_relaxed),
+          .rejected    = rejected_.load(std::memory_order_relaxed),
+          .max_queue   = max_queue_.load(std::memory_order_relaxed),
+          .avg_wait_us = waited == 0 ? 0.0
+                                     : static_cast<double>(wait_ns_.load(
+                                           std::memory_order_relaxed)) /
+                                           static_cast<double>(waited) /
+                                           1000.0};  // NOLINT
 }
 
 /**
@@ -327,7 +333,8 @@ bool BoundedExecutor::onWorkerThread() const {
  * queueing timestamp. Returns true if a task was taken; false if all queues
  * were empty or locked.
  */
-bool BoundedExecutor::take(std::size_t self, Item& item) {
+bool BoundedExecutor::take(std::size_t self,
+                           Item&       item) {
   {
     Worker&                     own = *workers_[self];  // our own worker record
     std::lock_guard<std::mutex> lock(

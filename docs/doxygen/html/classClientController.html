@@ -153,11 +153,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab7c4ffff79c0e56214abb463ae375925" id="r_ab7c4ffff79c0e56214abb463ae375925"><td class="memItemLeft">drogon::Task&lt; void &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ab7c4ffff79c0e56214abb463ae375925">SearchAsync</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="structRequester.html">Requester</a> &amp;&amp;requester, std::string_view data) final</td></tr>
 <tr class="memdesc:ab7c4ffff79c0e56214abb463ae375925"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#a36c5c10efab0dcfdf020f6702a6ff9bb" title="Searches clients; delegates to EntityController::Search().">Search()</a>; delegates to <a class="el" href="classEntityController.html#a430903208b20b59481d07c88b66ac4f6" title="Coroutine form of Search(); must be awaited.">EntityController::SearchAsync()</a>.  <br /></td></tr>
 <tr class="memitem:aa76ccf7c49744669ef28827b606216d9" id="r_aa76ccf7c49744669ef28827b606216d9"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa76ccf7c49744669ef28827b606216d9">Login</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="structRequester.html">Requester</a> &amp;&amp;requester, std::string_view data, const std::string &amp;ip_address) final</td></tr>
-<tr class="memdesc:aa76ccf7c49744669ef28827b606216d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Authenticates a client via <a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3" title="Convenience alias for the authorisation service.">GateKeeper</a>; the requester argument is ignored.  <br /></td></tr>
+<tr class="memdesc:aa76ccf7c49744669ef28827b606216d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Authenticates a client via <a class="el" href="controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1" title="Convenience alias for the authorisation service.">GateKeeper</a>; the requester argument is ignored.  <br /></td></tr>
 <tr class="memitem:ab41c86cac7c0746d1b05f254e43b4591" id="r_ab41c86cac7c0746d1b05f254e43b4591"><td class="memItemLeft">drogon::Task&lt; void &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ab41c86cac7c0746d1b05f254e43b4591">LoginAsync</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="structRequester.html">Requester</a> &amp;&amp;requester, std::string_view data, const std::string &amp;ip_address) final</td></tr>
 <tr class="memdesc:ab41c86cac7c0746d1b05f254e43b4591"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#aa76ccf7c49744669ef28827b606216d9" title="Authenticates a client via GateKeeper; the requester argument is ignored.">Login()</a>; awaits <a class="el" href="classapi_1_1v2_1_1GateKeeper.html#ac767969b80539df0339a6d1e36996867" title="Coroutine form of login() for use on Drogon executor threads.">GateKeeper::loginAsync()</a>.  <br /></td></tr>
 <tr class="memitem:aefe031b81d6d282292bafd65d191c8cd" id="r_aefe031b81d6d282292bafd65d191c8cd"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aefe031b81d6d282292bafd65d191c8cd">Logout</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="structRequester.html">Requester</a> &amp;&amp;requester, const std::optional&lt; std::string &gt; &amp;token, const std::string &amp;ip_address) final</td></tr>
-<tr class="memdesc:aefe031b81d6d282292bafd65d191c8cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invalidates a client session via <a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3" title="Convenience alias for the authorisation service.">GateKeeper</a>; the requester argument is ignored.  <br /></td></tr>
+<tr class="memdesc:aefe031b81d6d282292bafd65d191c8cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invalidates a client session via <a class="el" href="controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1" title="Convenience alias for the authorisation service.">GateKeeper</a>; the requester argument is ignored.  <br /></td></tr>
 <tr class="memitem:ac9f28aab768cb85f02f2ca84b694f149" id="r_ac9f28aab768cb85f02f2ca84b694f149"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ac9f28aab768cb85f02f2ca84b694f149">Suspend</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="structRequester.html">Requester</a> &amp;&amp;requester, std::optional&lt; uint64_t &gt; client_id) final</td></tr>
 <tr class="memdesc:ac9f28aab768cb85f02f2ca84b694f149"><td class="mdescLeft">&#160;</td><td class="mdescRight">Suspends a client (if authorized) and removes its sessions after the DB update.  <br /></td></tr>
 <tr class="memitem:a77e043006883f4a959679df477d0ad39" id="r_a77e043006883f4a959679df477d0ad39"><td class="memItemLeft">drogon::Task&lt; void &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a77e043006883f4a959679df477d0ad39">SuspendAsync</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="structRequester.html">Requester</a> &amp;&amp;requester, std::optional&lt; uint64_t &gt; client_id) final</td></tr>
@@ -295,8 +295,8 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a52124a8675b2204d7c202908798dc091" id="r_a52124a8675b2204d7c202908798dc091"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3">GateKeeper</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a52124a8675b2204d7c202908798dc091">gateKeeper</a> = <a class="el" href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c">Store::getObject</a>&lt;<a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3">GateKeeper</a>&gt;()</td></tr>
-<tr class="memitem:a2be44d78c532e6b3f569ba1061f29d60" id="r_a2be44d78c532e6b3f569ba1061f29d60"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classPasswordWorker.html">PasswordWorker</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a2be44d78c532e6b3f569ba1061f29d60">passwordWorker</a> = <a class="el" href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c">Store::getObject</a>&lt;<a class="el" href="classPasswordWorker.html">PasswordWorker</a>&gt;()</td></tr>
+<tr class="memitem:a52124a8675b2204d7c202908798dc091" id="r_a52124a8675b2204d7c202908798dc091"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1">GateKeeper</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a52124a8675b2204d7c202908798dc091">gateKeeper</a></td></tr>
+<tr class="memitem:a2be44d78c532e6b3f569ba1061f29d60" id="r_a2be44d78c532e6b3f569ba1061f29d60"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classPasswordWorker.html">PasswordWorker</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a2be44d78c532e6b3f569ba1061f29d60">passwordWorker</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-inherited" class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -323,7 +323,7 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt;<br />
 class ClientController&lt; T &gt;</div><p>Client-specific handler that layers password hashing, sessions and account state over the generic CRUDS flow. </p>
-<p>Inherits persistence from <a class="el" href="classEntityController.html" title="Generic request-facing CRUDS handler: validates and authorizes a request, then delegates persistence ...">EntityController&lt;T&gt;</a> and the full client contract from <a class="el" href="classClientControllerBase.html" title="Abstract contract for client (User/Provider) handlers: CRUDS plus session and account-state operation...">ClientControllerBase</a>. Read/Search and their coroutine forms simply forward to <a class="el" href="classEntityController.html" title="Generic request-facing CRUDS handler: validates and authorizes a request, then delegates persistence ...">EntityController</a>; Create/Update dispatch their bodies to a <a class="el" href="classPasswordWorker.html" title="The pool for deliberately slow password work (hashing and verification), so it never runs on a Drogon...">PasswordWorker</a> so password hashing never occupies a Drogon IO thread. Login/Logout are delegated to <a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3" title="Convenience alias for the authorisation service.">GateKeeper</a>, and Suspend/Delete additionally invalidate sessions on success. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+<p>Inherits persistence from <a class="el" href="classEntityController.html" title="Generic request-facing CRUDS handler: validates and authorizes a request, then delegates persistence ...">EntityController&lt;T&gt;</a> and the full client contract from <a class="el" href="classClientControllerBase.html" title="Abstract contract for client (User/Provider) handlers: CRUDS plus session and account-state operation...">ClientControllerBase</a>. Read/Search and their coroutine forms simply forward to <a class="el" href="classEntityController.html" title="Generic request-facing CRUDS handler: validates and authorizes a request, then delegates persistence ...">EntityController</a>; Create/Update dispatch their bodies to a <a class="el" href="classPasswordWorker.html" title="The pool for deliberately slow password work (hashing and verification), so it never runs on a Drogon...">PasswordWorker</a> so password hashing never occupies a Drogon IO thread. Login/Logout are delegated to <a class="el" href="controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1" title="Convenience alias for the authorisation service.">GateKeeper</a>, and Suspend/Delete additionally invalidate sessions on success. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td><a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a> type satisfying <span class="tt"><a class="el" href="conceptClient__t.html" title="Constrains T to api::v2::Client or a type derived from it.">Client_t</a></span> (derives from <span class="tt"><a class="el" href="classapi_1_1v2_1_1Client.html" title="Entity for client-style tables (users, providers) with dedicated create/update builders.">api::v2::Client</a></span>), e.g. <a class="el" href="classUser.html" title="Client entity for the users table with an id lookup query.">User</a> or <a class="el" href="classProvider.html" title="Client entity for the providers table with a get-services query.">Provider</a>. </td></tr>
   </table>
@@ -332,7 +332,7 @@ class ClientController&lt; T &gt;</div><p>Client-specific handler that layers pa
 <dl class="section note"><dt>Note</dt><dd>All overrides are <span class="tt">final</span>. Coroutine variants borrow their arguments and must be awaited while they live. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classClientControllerBase.html" title="Abstract contract for client (User/Provider) handlers: CRUDS plus session and account-state operation...">ClientControllerBase</a>, <a class="el" href="classEntityController.html" title="Generic request-facing CRUDS handler: validates and authorizes a request, then delegates persistence ...">EntityController</a>, <a class="el" href="classPasswordWorker.html" title="The pool for deliberately slow password work (hashing and verification), so it never runs on a Drogon...">PasswordWorker</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8hpp_source.html#l00061">61</a> of file <a class="el" href="clientcontroller_8hpp_source.html">clientcontroller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8hpp_source.html#l00081">81</a> of file <a class="el" href="clientcontroller_8hpp_source.html">clientcontroller.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a766d8b32e21da18e3b392b339a7f64ed" name="a766d8b32e21da18e3b392b339a7f64ed"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a766d8b32e21da18e3b392b339a7f64ed">&#9670;&#160;</a></span>ClientController() <span class="overload">[1/3]</span></h2>
@@ -446,7 +446,7 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="clientcontroller_8cpp_source.html#l00279">Activate()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00311">ActivateAsync()</a>, <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00058">Create()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00414">CreateAsync()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00067">createNow()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00169">Delete()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00432">DeleteAsync()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00351">GetServices()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00381">GetServicesAsync()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00191">Login()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00198">LoginAsync()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00205">Logout()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00120">Read()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00420">ReadAsync()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00343">ResetPassword()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00185">Search()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00447">SearchAsync()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00213">Suspend()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00246">SuspendAsync()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00126">Update()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00426">UpdateAsync()</a>, and <a class="el" href="clientcontroller_8cpp_source.html#l00134">updateNow()</a>.</p>
+<p class="reference">References <a class="el" href="clientcontroller_8cpp_source.html#l00376">Activate()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00410">ActivateAsync()</a>, <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00079">Create()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00530">CreateAsync()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00096">createNow()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00228">Delete()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00563">DeleteAsync()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00457">GetServices()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00490">GetServicesAsync()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00262">Login()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00276">LoginAsync()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00290">Logout()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00158">Read()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00540">ReadAsync()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00445">ResetPassword()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00253">Search()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00588">SearchAsync()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00302">Suspend()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00338">SuspendAsync()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00167">Update()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00550">UpdateAsync()</a>, and <a class="el" href="clientcontroller_8cpp_source.html#l00185">updateNow()</a>.</p>
 
 </div>
 </div>
@@ -497,9 +497,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 
 <p>Implements <a class="el" href="classClientControllerBase.html#ae6ddf114a8b76d43a70e8097a688aa37">ClientControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00279">279</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00376">376</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00066">CRITICALMESSAGERESPONSE</a>, <a class="el" href="clientcontroller_8hpp_source.html#l00245">gateKeeper</a>, <a class="el" href="http_8hpp_source.html#l00088">api::v2::Http::NOT_ACCEPTABLE</a>, and <a class="el" href="controller_8hpp_source.html#l00392">Controller::Unsuspend()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00073">CRITICALMESSAGERESPONSE</a>, <a class="el" href="clientcontroller_8hpp_source.html#l00378">gateKeeper</a>, <a class="el" href="http_8hpp_source.html#l00110">api::v2::Http::NOT_ACCEPTABLE</a>, and <a class="el" href="controller_8hpp_source.html#l00556">Controller::Unsuspend()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
 
@@ -551,9 +551,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 
 <p>Implements <a class="el" href="classClientControllerBase.html#a9d1d1653cfcd791bc46fceb6b6ff3983">ClientControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00311">311</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00410">410</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00066">CRITICALMESSAGERESPONSE</a>, <a class="el" href="clientcontroller_8hpp_source.html#l00245">gateKeeper</a>, <a class="el" href="http_8hpp_source.html#l00088">api::v2::Http::NOT_ACCEPTABLE</a>, and <a class="el" href="controller_8hpp_source.html#l00424">Controller::UnsuspendAsync()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00073">CRITICALMESSAGERESPONSE</a>, <a class="el" href="clientcontroller_8hpp_source.html#l00378">gateKeeper</a>, <a class="el" href="http_8hpp_source.html#l00110">api::v2::Http::NOT_ACCEPTABLE</a>, and <a class="el" href="controller_8hpp_source.html#l00599">Controller::UnsuspendAsync()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
 
@@ -605,9 +605,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 
 <p>Implements <a class="el" href="classEntityControllerBase.html#a1094cb5fe08aaaba8cd5ec5c57784cf0">EntityControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00058">58</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00079">79</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00067">createNow()</a>, <a class="el" href="clientcontroller_8hpp_source.html#l00249">passwordWorker</a>, and <a class="el" href="passwordworker_8hpp_source.html#l00071">runOnPasswordWorker()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00096">createNow()</a>, <a class="el" href="clientcontroller_8hpp_source.html#l00384">passwordWorker</a>, and <a class="el" href="passwordworker_8hpp_source.html#l00088">runOnPasswordWorker()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
 
@@ -660,9 +660,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 
 <p>Implements <a class="el" href="classEntityControllerBase.html#a7d18b72b305783a247f3d70c64ad391b">EntityControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00414">414</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00530">530</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00290">EntityController&lt; T &gt;::CreateAsync()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00370">EntityController&lt; T &gt;::CreateAsync()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
 
@@ -712,11 +712,11 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00067">67</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00096">96</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="http_8hpp_source.html#l00082">api::v2::Http::BAD_REQUEST</a>, <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="http_8hpp_source.html#l00089">api::v2::Http::CONFLICT</a>, <a class="el" href="controller_8hpp_source.html#l00135">Controller::Create()</a>, <a class="el" href="global_8hpp_source.html#l00066">CRITICALMESSAGERESPONSE</a>, and <a class="el" href="clientcontroller_8hpp_source.html#l00245">gateKeeper</a>.</p>
+<p class="reference">References <a class="el" href="http_8hpp_source.html#l00103">api::v2::Http::BAD_REQUEST</a>, <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="http_8hpp_source.html#l00112">api::v2::Http::CONFLICT</a>, <a class="el" href="controller_8hpp_source.html#l00187">Controller::Create()</a>, <a class="el" href="global_8hpp_source.html#l00073">CRITICALMESSAGERESPONSE</a>, and <a class="el" href="clientcontroller_8hpp_source.html#l00378">gateKeeper</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="clientcontroller_8cpp_source.html#l00058">Create()</a>, and <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="clientcontroller_8cpp_source.html#l00079">Create()</a>, and <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
 
 </div>
 </div>
@@ -766,9 +766,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 
 <p>Implements <a class="el" href="classEntityControllerBase.html#ad7023964ed22d27aa3adc12dd5ac3d93">EntityControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00169">169</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00228">228</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="entitycontroller_8cpp_source.html#l00224">EntityController&lt; T &gt;::Delete()</a>, <a class="el" href="clientcontroller_8hpp_source.html#l00245">gateKeeper</a>, and <a class="el" href="http_8hpp_source.html#l00064">api::v2::Http::OK</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="entitycontroller_8cpp_source.html#l00297">EntityController&lt; T &gt;::Delete()</a>, <a class="el" href="clientcontroller_8hpp_source.html#l00378">gateKeeper</a>, and <a class="el" href="http_8hpp_source.html#l00077">api::v2::Http::OK</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
 
@@ -820,9 +820,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 
 <p>Implements <a class="el" href="classEntityControllerBase.html#a0edce522edd2a4970d7853b433adbb7d">EntityControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00432">432</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00563">563</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="entitycontroller_8cpp_source.html#l00452">EntityController&lt; T &gt;::DeleteAsync()</a>, <a class="el" href="clientcontroller_8hpp_source.html#l00245">gateKeeper</a>, and <a class="el" href="http_8hpp_source.html#l00064">api::v2::Http::OK</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="entitycontroller_8cpp_source.html#l00590">EntityController&lt; T &gt;::DeleteAsync()</a>, <a class="el" href="clientcontroller_8hpp_source.html#l00378">gateKeeper</a>, and <a class="el" href="http_8hpp_source.html#l00077">api::v2::Http::OK</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
 
@@ -874,9 +874,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 
 <p>Implements <a class="el" href="classClientControllerBase.html#af9f1272d9d14a2a2d1b4ba8117728cf8">ClientControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00351">351</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00457">457</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="http_8hpp_source.html#l00082">api::v2::Http::BAD_REQUEST</a>, <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00066">CRITICALMESSAGERESPONSE</a>, <a class="el" href="clientcontroller_8hpp_source.html#l00245">gateKeeper</a>, and <a class="el" href="controller_8hpp_source.html#l00443">Controller::GetServices()</a>.</p>
+<p class="reference">References <a class="el" href="http_8hpp_source.html#l00103">api::v2::Http::BAD_REQUEST</a>, <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00073">CRITICALMESSAGERESPONSE</a>, <a class="el" href="clientcontroller_8hpp_source.html#l00378">gateKeeper</a>, and <a class="el" href="controller_8hpp_source.html#l00626">Controller::GetServices()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
 
@@ -928,9 +928,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 
 <p>Implements <a class="el" href="classClientControllerBase.html#aa2bc82cd6f33a4c24caa63536a0f5917">ClientControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00381">381</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00490">490</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="http_8hpp_source.html#l00082">api::v2::Http::BAD_REQUEST</a>, <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00066">CRITICALMESSAGERESPONSE</a>, <a class="el" href="clientcontroller_8hpp_source.html#l00245">gateKeeper</a>, and <a class="el" href="controller_8hpp_source.html#l00483">Controller::GetServicesAsync()</a>.</p>
+<p class="reference">References <a class="el" href="http_8hpp_source.html#l00103">api::v2::Http::BAD_REQUEST</a>, <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00073">CRITICALMESSAGERESPONSE</a>, <a class="el" href="clientcontroller_8hpp_source.html#l00378">gateKeeper</a>, and <a class="el" href="controller_8hpp_source.html#l00674">Controller::GetServicesAsync()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
 
@@ -975,7 +975,7 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Authenticates a client via <a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3" title="Convenience alias for the authorisation service.">GateKeeper</a>; the requester argument is ignored. </p>
+<p>Authenticates a client via <a class="el" href="controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1" title="Convenience alias for the authorisation service.">GateKeeper</a>; the requester argument is ignored. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">callback</td><td>Invoked once with the login result. </td></tr>
@@ -988,9 +988,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 
 <p>Implements <a class="el" href="classClientControllerBase.html#a5a5df5eb70313c7005af72f0a49f6cb7">ClientControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00191">191</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00262">262</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, and <a class="el" href="clientcontroller_8hpp_source.html#l00245">gateKeeper</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, and <a class="el" href="clientcontroller_8hpp_source.html#l00378">gateKeeper</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
 
@@ -1048,9 +1048,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 
 <p>Implements <a class="el" href="classClientControllerBase.html#a1f079a107f086ce7fd8d643aaf485de5">ClientControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00198">198</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00276">276</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, and <a class="el" href="clientcontroller_8hpp_source.html#l00245">gateKeeper</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, and <a class="el" href="clientcontroller_8hpp_source.html#l00378">gateKeeper</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
 
@@ -1095,7 +1095,7 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Invalidates a client session via <a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3" title="Convenience alias for the authorisation service.">GateKeeper</a>; the requester argument is ignored. </p>
+<p>Invalidates a client session via <a class="el" href="controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1" title="Convenience alias for the authorisation service.">GateKeeper</a>; the requester argument is ignored. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">callback</td><td>Invoked once with the logout result. </td></tr>
@@ -1108,9 +1108,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 
 <p>Implements <a class="el" href="classClientControllerBase.html#aa9e86fbbf9bce91d15b371c18dababea">ClientControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00205">205</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00290">290</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, and <a class="el" href="clientcontroller_8hpp_source.html#l00245">gateKeeper</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, and <a class="el" href="clientcontroller_8hpp_source.html#l00378">gateKeeper</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
 
@@ -1220,9 +1220,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 
 <p>Implements <a class="el" href="classEntityControllerBase.html#a8a392d8c3fd918f13c644079d727effa">EntityControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00120">120</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00158">158</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00115">EntityController&lt; T &gt;::Read()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00153">EntityController&lt; T &gt;::Read()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
 
@@ -1274,9 +1274,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 
 <p>Implements <a class="el" href="classEntityControllerBase.html#a023b63c4973ca2d03539b11cb9693453">EntityControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00420">420</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00540">540</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00345">EntityController&lt; T &gt;::ReadAsync()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00444">EntityController&lt; T &gt;::ReadAsync()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
 
@@ -1329,9 +1329,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 
 <p>Implements <a class="el" href="classClientControllerBase.html#abf2e638366a36499d889c626eefcc82c">ClientControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00343">343</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00445">445</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
 
@@ -1383,9 +1383,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 
 <p>Implements <a class="el" href="classEntityControllerBase.html#ace1793314727472edb5aeb5e03cdf622">EntityControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00185">185</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00253">253</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00255">EntityController&lt; T &gt;::Search()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00331">EntityController&lt; T &gt;::Search()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
 
@@ -1437,9 +1437,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 
 <p>Implements <a class="el" href="classEntityControllerBase.html#a3ed2dd3c8c29b82c86ace136191b6c30">EntityControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00447">447</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00588">588</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00482">EntityController&lt; T &gt;::SearchAsync()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00626">EntityController&lt; T &gt;::SearchAsync()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
 
@@ -1491,9 +1491,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 
 <p>Implements <a class="el" href="classClientControllerBase.html#a6a58bc8fd2e226e47f00d74de0e47f65">ClientControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00213">213</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00302">302</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00066">CRITICALMESSAGERESPONSE</a>, <a class="el" href="clientcontroller_8hpp_source.html#l00245">gateKeeper</a>, <a class="el" href="http_8hpp_source.html#l00088">api::v2::Http::NOT_ACCEPTABLE</a>, and <a class="el" href="controller_8hpp_source.html#l00376">Controller::Suspend()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00073">CRITICALMESSAGERESPONSE</a>, <a class="el" href="clientcontroller_8hpp_source.html#l00378">gateKeeper</a>, <a class="el" href="http_8hpp_source.html#l00110">api::v2::Http::NOT_ACCEPTABLE</a>, and <a class="el" href="controller_8hpp_source.html#l00536">Controller::Suspend()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
 
@@ -1545,9 +1545,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 
 <p>Implements <a class="el" href="classClientControllerBase.html#ab604c168d7eb829127b21b5d7f4de43d">ClientControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00246">246</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00338">338</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00066">CRITICALMESSAGERESPONSE</a>, <a class="el" href="clientcontroller_8hpp_source.html#l00245">gateKeeper</a>, <a class="el" href="http_8hpp_source.html#l00088">api::v2::Http::NOT_ACCEPTABLE</a>, and <a class="el" href="controller_8hpp_source.html#l00408">Controller::SuspendAsync()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00073">CRITICALMESSAGERESPONSE</a>, <a class="el" href="clientcontroller_8hpp_source.html#l00378">gateKeeper</a>, <a class="el" href="http_8hpp_source.html#l00110">api::v2::Http::NOT_ACCEPTABLE</a>, and <a class="el" href="controller_8hpp_source.html#l00576">Controller::SuspendAsync()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
 
@@ -1605,9 +1605,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 
 <p>Implements <a class="el" href="classEntityControllerBase.html#ae5d92e66680e04f297ac7449f1a8d9f4">EntityControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00126">126</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00167">167</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="clientcontroller_8hpp_source.html#l00249">passwordWorker</a>, <a class="el" href="passwordworker_8hpp_source.html#l00071">runOnPasswordWorker()</a>, and <a class="el" href="clientcontroller_8cpp_source.html#l00134">updateNow()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="clientcontroller_8hpp_source.html#l00384">passwordWorker</a>, <a class="el" href="passwordworker_8hpp_source.html#l00088">runOnPasswordWorker()</a>, and <a class="el" href="clientcontroller_8cpp_source.html#l00185">updateNow()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
 
@@ -1666,9 +1666,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 
 <p>Implements <a class="el" href="classEntityControllerBase.html#a65cfe323fc4255e1b8a06d5864be2616">EntityControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00426">426</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00550">550</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00392">EntityController&lt; T &gt;::UpdateAsync()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, and <a class="el" href="entitycontroller_8cpp_source.html#l00512">EntityController&lt; T &gt;::UpdateAsync()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
 
@@ -1724,11 +1724,11 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00134">134</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8cpp_source.html#l00185">185</a> of file <a class="el" href="clientcontroller_8cpp_source.html">clientcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="validator_8hpp_source.html#l00092">Validator::Rule::ASSERT_IMMUTABLE</a>, <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00066">CRITICALMESSAGERESPONSE</a>, <a class="el" href="clientcontroller_8hpp_source.html#l00245">gateKeeper</a>, and <a class="el" href="controller_8hpp_source.html#l00196">Controller::Update()</a>.</p>
+<p class="reference">References <a class="el" href="validator_8hpp_source.html#l00112">Validator::Rule::ASSERT_IMMUTABLE</a>, <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00073">CRITICALMESSAGERESPONSE</a>, <a class="el" href="clientcontroller_8hpp_source.html#l00378">gateKeeper</a>, and <a class="el" href="controller_8hpp_source.html#l00278">Controller::Update()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="clientcontroller_8cpp_source.html#l00126">Update()</a>, and <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="clientcontroller_8cpp_source.html#l00167">Update()</a>, and <a class="el" href="#afc26f65a35933d0e8025c42d9101ce85">~ClientController()</a>.</p>
 
 </div>
 </div>
@@ -1745,7 +1745,7 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3">GateKeeper</a>&gt; <a class="el" href="classClientController.html">ClientController</a>&lt; T &gt;::gateKeeper = <a class="el" href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c">Store::getObject</a>&lt;<a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3">GateKeeper</a>&gt;()</td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1">GateKeeper</a>&gt; <a class="el" href="classClientController.html">ClientController</a>&lt; T &gt;::gateKeeper</td>
         </tr>
       </table>
   </td>
@@ -1754,11 +1754,14 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Shared authorization service used by all operations. </p>
+<b>Initial value:</b><div class="fragment"><div class="line">                       =</div>
+<div class="line"><a class="code hl_function" href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c">Store::getObject&lt;GateKeeper&gt;</a>()</div>
+<div class="ttc" id="aclassStore_html_a0607fb3b583c06ca910ed6c9881e790c"><div class="ttname"><a href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c">Store::getObject</a></div><div class="ttdeci">static std::shared_ptr&lt; T &gt; getObject(Args &amp;&amp;... args)</div><div class="ttdoc">Returns the singleton for T, constructing it on first use.</div><div class="ttdef"><b>Definition</b> <a href="store_8hpp_source.html#l00190">store.hpp:190</a></div></div>
+</div><!-- fragment --><p>Shared authorization service used by all operations. </p>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8hpp_source.html#l00245">245</a> of file <a class="el" href="clientcontroller_8hpp_source.html">clientcontroller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8hpp_source.html#l00378">378</a> of file <a class="el" href="clientcontroller_8hpp_source.html">clientcontroller.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="clientcontroller_8cpp_source.html#l00279">Activate()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00311">ActivateAsync()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00067">createNow()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00169">Delete()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00432">DeleteAsync()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00351">GetServices()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00381">GetServicesAsync()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00191">Login()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00198">LoginAsync()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00205">Logout()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00213">Suspend()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00246">SuspendAsync()</a>, and <a class="el" href="clientcontroller_8cpp_source.html#l00134">updateNow()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="clientcontroller_8cpp_source.html#l00376">Activate()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00410">ActivateAsync()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00096">createNow()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00228">Delete()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00563">DeleteAsync()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00457">GetServices()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00490">GetServicesAsync()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00262">Login()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00276">LoginAsync()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00290">Logout()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00302">Suspend()</a>, <a class="el" href="clientcontroller_8cpp_source.html#l00338">SuspendAsync()</a>, and <a class="el" href="clientcontroller_8cpp_source.html#l00185">updateNow()</a>.</p>
 
 </div>
 </div>
@@ -1774,7 +1777,7 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="classPasswordWorker.html">PasswordWorker</a>&gt; <a class="el" href="classClientController.html">ClientController</a>&lt; T &gt;::passwordWorker = <a class="el" href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c">Store::getObject</a>&lt;<a class="el" href="classPasswordWorker.html">PasswordWorker</a>&gt;()</td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classPasswordWorker.html">PasswordWorker</a>&gt; <a class="el" href="classClientController.html">ClientController</a>&lt; T &gt;::passwordWorker</td>
         </tr>
       </table>
   </td>
@@ -1783,11 +1786,13 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Dedicated pool for the deliberately slow password hashing/verification work. </p>
+<b>Initial value:</b><div class="fragment"><div class="line">                           =</div>
+<div class="line"><a class="code hl_function" href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c">Store::getObject&lt;PasswordWorker&gt;</a>()</div>
+</div><!-- fragment --><p>Dedicated pool for the deliberately slow password hashing/verification work. </p>
 
-<p class="definition">Definition at line <a class="el" href="clientcontroller_8hpp_source.html#l00249">249</a> of file <a class="el" href="clientcontroller_8hpp_source.html">clientcontroller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clientcontroller_8hpp_source.html#l00384">384</a> of file <a class="el" href="clientcontroller_8hpp_source.html">clientcontroller.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="clientcontroller_8cpp_source.html#l00058">Create()</a>, and <a class="el" href="clientcontroller_8cpp_source.html#l00126">Update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="clientcontroller_8cpp_source.html#l00079">Create()</a>, and <a class="el" href="clientcontroller_8cpp_source.html#l00167">Update()</a>.</p>
 
 </div>
 </div>

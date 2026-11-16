@@ -2,7 +2,7 @@ var namespaceapi_1_1v2 =
 [
     [ "Filters", "namespaceapi_1_1v2_1_1Filters.html", "namespaceapi_1_1v2_1_1Filters" ],
     [ "Http", "namespaceapi_1_1v2_1_1Http.html", [
-      [ "Error", "namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3", null ],
+      [ "Error", "namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5", null ],
       [ "Status", "namespaceapi_1_1v2_1_1Http.html#a6199aeb84d745378b1befef28d78892f", [
         [ "CONTINUE", "namespaceapi_1_1v2_1_1Http.html#a6199aeb84d745378b1befef28d78892fa5f85285014b155daa0edef79c879c07f", null ],
         [ "SWITCHING_PROTOCOLS", "namespaceapi_1_1v2_1_1Http.html#a6199aeb84d745378b1befef28d78892fa66ad9fd1e124ac246d846e3300e33bec", null ],
@@ -63,8 +63,8 @@ var namespaceapi_1_1v2 =
     [ "Staff", "classapi_1_1v2_1_1Staff.html", "classapi_1_1v2_1_1Staff" ],
     [ "TokenManager", "classapi_1_1v2_1_1TokenManager.html", "classapi_1_1v2_1_1TokenManager" ],
     [ "ClientData_t", "conceptapi_1_1v2_1_1ClientData__t.html", null ],
-    [ "ColumnInfo", "namespaceapi_1_1v2.html#a629023e05b2c9802c14aaca4634f4ab3", null ],
-    [ "Requester", "namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7", null ],
+    [ "ColumnInfo", "namespaceapi_1_1v2.html#aaed92c04eb1e44678c97ae468bd8a42b", null ],
+    [ "Requester", "namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c", null ],
     [ "executeControllerMethod", "namespaceapi_1_1v2.html#aa679c4967ecfe1f25818539f137414d3", null ],
     [ "parseIdParam", "namespaceapi_1_1v2.html#aa69205bcc60e13d43ab454e4ac275e60", null ]
 ];

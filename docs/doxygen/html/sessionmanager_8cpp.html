@@ -119,10 +119,10 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('sessionmanager
 </div><!--header-->
 <div class="contents">
 
-<p>The implementation of login, logout and session bookkeeping. (Originally: "Implementation for sessionmanager: Reads the stored password hash after checking the account exists and is active.").  
+<p>The implementation of login, logout and session bookkeeping. (Originally: "Implementation for sessionmanager: Reads the stored
+password hash after checking the account exists and is active.").  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="sessionmanager_8hpp_source.html">gatekeeper/sessionmanager/sessionmanager.hpp</a>&quot;</code><br />
-<code>#include &quot;drogon/utils/coroutine.h&quot;</code><br />
 <code>#include &lt;fmt/core.h&gt;</code><br />
 <code>#include &lt;fmt/format.h&gt;</code><br />
 <code>#include &lt;jwt-cpp/jwt.h&gt;</code><br />
@@ -137,6 +137,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('sessionmanager
 <code>#include &lt;utility&gt;</code><br />
 <code>#include &lt;<a class="el" href="jsonhelper_8hpp_source.html">utils/jsonhelper/jsonhelper.hpp</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="databasebusy_8hpp_source.html">database/databasebusy.hpp</a>&quot;</code><br />
+<code>#include &quot;drogon/utils/coroutine.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="gatekeeper_2types_8hpp_source.html">gatekeeper/types.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="callback_8hpp_source.html">utils/global/callback.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="global_8hpp_source.html">utils/global/global.hpp</a>&quot;</code><br />
@@ -147,12 +148,13 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('sessionmanager
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a8256b008f0e6c1884c2b7aca9d53fec2" id="r_a8256b008f0e6c1884c2b7aca9d53fec2"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a8256b008f0e6c1884c2b7aca9d53fec2">SessionManager</a> = <a class="el" href="classapi_1_1v2_1_1SessionManager.html">api::v2::SessionManager</a></td></tr>
+<tr class="memitem:aa7df7e3b388a985439e1eb11eba04a0f" id="r_aa7df7e3b388a985439e1eb11eba04a0f"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#aa7df7e3b388a985439e1eb11eba04a0f">SessionManager</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The implementation of login, logout and session bookkeeping. (Originally: "Implementation for sessionmanager: Reads the stored password hash after checking the account exists and is active."). </p>
+<div class="textblock"><p>The implementation of login, logout and session bookkeeping. (Originally: "Implementation for sessionmanager: Reads the stored
+password hash after checking the account exists and is active."). </p>
 <p>This file reads a client's stored hash, verifies the supplied password, records login/logout times, and manages the in-memory session cache. Tokens are decoded and compared to the stored session in constant time to stop forged tokens hijacking an account.</p>
-<p>WHY THIS FILE MATTERS IN THE SERVER: This is where a username/password becomes a trusted session. <a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3" title="Convenience alias for the authorisation service.">GateKeeper</a> calls it for login and logout; the session data it stores is what later requests rely on to know who is calling. Without it, no one could sign in or out.</p>
+<p>WHY THIS FILE MATTERS IN THE SERVER: This is where a username/password becomes a trusted session. <a class="el" href="controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1" title="Convenience alias for the authorisation service.">GateKeeper</a> calls it for login and logout; the session data it stores is what later requests rely on to know who is calling. Without it, no one could sign in or out.</p>
 <p>CONCEPTS TO LEARN (for beginners):</p><ul>
 <li>JWT (JSON Web Token): <a href="https://jwt.io/introduction">https://jwt.io/introduction</a></li>
 <li>Timing attacks / constant-time comparison: <a href="https://en.wikipedia.org/wiki/Timing_attack">https://en.wikipedia.org/wiki/Timing_attack</a></li>
@@ -164,19 +166,22 @@ Typedefs</h2></td></tr>
 
 <p class="definition">Definition in file <a class="el" href="sessionmanager_8cpp_source.html">sessionmanager.cpp</a>.</p>
 </div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Typedef Documentation</h2>
-<a id="a8256b008f0e6c1884c2b7aca9d53fec2" name="a8256b008f0e6c1884c2b7aca9d53fec2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8256b008f0e6c1884c2b7aca9d53fec2">&#9670;&#160;</a></span>SessionManager</h2>
+<a id="aa7df7e3b388a985439e1eb11eba04a0f" name="aa7df7e3b388a985439e1eb11eba04a0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7df7e3b388a985439e1eb11eba04a0f">&#9670;&#160;</a></span>SessionManager</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#a8256b008f0e6c1884c2b7aca9d53fec2">SessionManager</a> = <a class="el" href="classapi_1_1v2_1_1SessionManager.html">api::v2::SessionManager</a></td>
+          <td class="memname">using <a class="el" href="#aa7df7e3b388a985439e1eb11eba04a0f">SessionManager</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="sessionmanager_8cpp_source.html#l00050">50</a> of file <a class="el" href="sessionmanager_8cpp_source.html">sessionmanager.cpp</a>.</p>
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line"><a class="code hl_class" href="classapi_1_1v2_1_1SessionManager.html">api::v2::SessionManager</a></div>
+<div class="ttc" id="aclassapi_1_1v2_1_1SessionManager_html"><div class="ttname"><a href="classapi_1_1v2_1_1SessionManager.html">api::v2::SessionManager</a></div><div class="ttdoc">Owns the client login flow and the in-memory session cache.</div><div class="ttdef"><b>Definition</b> <a href="sessionmanager_8hpp_source.html#l00069">sessionmanager.hpp:69</a></div></div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="sessionmanager_8cpp_source.html#l00060">60</a> of file <a class="el" href="sessionmanager_8cpp_source.html">sessionmanager.cpp</a>.</p>
 
 </div>
 </div>

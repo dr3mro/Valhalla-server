@@ -10,33 +10,33 @@
     <includedby refid="staffcontroller_8cpp" local="yes">src/controllers/staffcontroller/staffcontroller.cpp</includedby>
     <includedby refid="includes_8hpp" local="yes">src/gatekeeper/includes.hpp</includedby>
     <incdepgraph>
-      <node id="23">
+      <node id="22">
         <label>configurator/configurator.hpp</label>
         <link refid="configurator_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
         <childnode refid="26" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
-      <node id="31">
+      <node id="30">
         <label>defaults.hpp</label>
         <link refid="defaults_8hpp"/>
         <childnode refid="5" relation="include">
@@ -44,23 +44,23 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="27">
+      <node id="26">
         <label>configurator/envloader/envloader.hpp</label>
         <link refid="envloader_8hpp"/>
-        <childnode refid="25" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
       </node>
-      <node id="28">
+      <node id="27">
         <label>envvars/envvars.hpp</label>
         <link refid="envvars_8hpp"/>
         <childnode refid="7" relation="include">
@@ -71,43 +71,41 @@
       <node id="14">
         <label>controllers/databasecontroller/databasecontroller.hpp</label>
         <link refid="databasecontroller_8hpp"/>
-        <childnode refid="15" relation="include">
-        </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="38" relation="include">
         </childnode>
@@ -115,31 +113,33 @@
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
         <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
-      <node id="34">
+      <node id="31">
         <label>database/asyncdbclient.hpp</label>
         <link refid="asyncdbclient_8hpp"/>
-        <childnode refid="35" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="36">
+      <node id="33">
         <label>database/asyncresultmapper.hpp</label>
         <link refid="asyncresultmapper_8hpp"/>
-        <childnode refid="37" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
@@ -148,52 +148,52 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="38">
+      <node id="35">
         <label>database/asyncsqlbinder.hpp</label>
         <link refid="asyncsqlbinder_8hpp"/>
-        <childnode refid="35" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="32">
+      <node id="38">
         <label>database/databasebusy.hpp</label>
         <link refid="databasebusy_8hpp"/>
-        <childnode refid="33" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="41">
+      <node id="40">
         <label>database/databasehandler.hpp</label>
         <link refid="databasehandler_8hpp"/>
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="15">
+      <node id="41">
         <label>database/dbprobe.hpp</label>
         <link refid="dbprobe_8hpp"/>
       </node>
       <node id="46">
         <label>entities/base/base.hpp</label>
         <link refid="base_8hpp"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -225,13 +225,13 @@
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="42" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -253,7 +253,7 @@
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
       <node id="48">
@@ -261,7 +261,7 @@
         <link refid="entities_2base_2types_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
@@ -275,7 +275,7 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
@@ -283,19 +283,19 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="52" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="53" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="54" relation="include">
         </childnode>
@@ -303,7 +303,7 @@
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="56" relation="include">
         </childnode>
@@ -327,15 +327,15 @@
       <node id="42">
         <label>store/store.hpp</label>
         <link refid="store_8hpp"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -358,10 +358,10 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="29">
+      <node id="28">
         <label>utils/message/message.hpp</label>
         <link refid="message_8hpp"/>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -373,15 +373,15 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>
@@ -391,13 +391,13 @@
       <node id="49">
         <label>algorithm</label>
       </node>
-      <node id="17">
+      <node id="16">
         <label>atomic</label>
       </node>
       <node id="50">
         <label>cctype</label>
       </node>
-      <node id="25">
+      <node id="24">
         <label>chrono</label>
       </node>
       <node id="51">
@@ -409,16 +409,16 @@
       <node id="5">
         <label>cstdint</label>
       </node>
-      <node id="35">
+      <node id="32">
         <label>drogon/orm/DbClient.h</label>
       </node>
-      <node id="37">
+      <node id="34">
         <label>drogon/orm/Result.h</label>
       </node>
-      <node id="39">
+      <node id="36">
         <label>drogon/orm/SqlBinder.h</label>
       </node>
-      <node id="40">
+      <node id="37">
         <label>drogon/utils/coroutine.h</label>
       </node>
       <node id="6">
@@ -427,16 +427,16 @@
       <node id="4">
         <label>fmt/core.h</label>
       </node>
-      <node id="16">
+      <node id="15">
         <label>fmt/format.h</label>
       </node>
-      <node id="24">
+      <node id="23">
         <label>fmt/ranges.h</label>
       </node>
       <node id="11">
         <label>iterator</label>
       </node>
-      <node id="18">
+      <node id="17">
         <label>jsoncons/basic_json.hpp</label>
       </node>
       <node id="2">
@@ -445,16 +445,16 @@
       <node id="12">
         <label>memory</label>
       </node>
-      <node id="19">
+      <node id="18">
         <label>mutex</label>
       </node>
       <node id="7">
         <label>optional</label>
       </node>
-      <node id="20">
+      <node id="19">
         <label>pqxx/pqxx</label>
       </node>
-      <node id="33">
+      <node id="39">
         <label>stdexcept</label>
       </node>
       <node id="8">
@@ -466,10 +466,10 @@
       <node id="10">
         <label>sys/types.h</label>
       </node>
-      <node id="30">
+      <node id="29">
         <label>trantor/utils/Logger.h</label>
       </node>
-      <node id="26">
+      <node id="25">
         <label>type_traits</label>
       </node>
       <node id="43">
@@ -478,10 +478,10 @@
       <node id="44">
         <label>unordered_map</label>
       </node>
-      <node id="21">
+      <node id="20">
         <label>unordered_set</label>
       </node>
-      <node id="22">
+      <node id="21">
         <label>utility</label>
       </node>
       <node id="53">
@@ -571,7 +571,7 @@
     </briefdescription>
     <detaileddescription>
 <para>This header declares the <ref refid="classLaboratories" kindref="compound">Laboratories</ref> class, a very small C++ type that stands for one laboratory in the <computeroutput>laboratories</computeroutput> database table. It holds almost no logic of its own. It only names the table and lets its parent class <ref refid="classService" kindref="compound">Service</ref> do the real work of building SQL statements. You create one by passing in a data wrapper made from a client request, and the parent stores that wrapper for later use.</para>
-<para>WHY THIS FILE MATTERS IN THE SERVER: <ref refid="classLaboratories" kindref="compound">Laboratories</ref> is one of the &quot;service provider&quot; types in the server, next to pharmacies and radiology centres. When a client creates, reads, updates or deletes a laboratory, or manages its staff, the route layer picks this class as <ref refid="classServiceController" kindref="compound">ServiceController&lt;Laboratories&gt;</ref> / <ref refid="classStaffController" kindref="compound">StaffController&lt;Laboratories&gt;</ref>. Those controllers call the inherited methods from <ref refid="classService" kindref="compound">Service</ref> and <ref refid="classEntity" kindref="compound">Entity</ref>, which produce the actual SQL. The class also publishes the table name so <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref> can check that the requesting staff member is allowed to change this service. Without this file there would be no C++ type tying the <computeroutput>laboratories</computeroutput> table to the generic CRUD machinery, so laboratory endpoints could not work.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: <ref refid="classLaboratories" kindref="compound">Laboratories</ref> is one of the &quot;service provider&quot; types in the server, next to pharmacies and radiology centres. When a client creates, reads, updates or deletes a laboratory, or manages its staff, the route layer picks this class as <ref refid="classServiceController" kindref="compound">ServiceController&lt;Laboratories&gt;</ref> / <ref refid="classStaffController" kindref="compound">StaffController&lt;Laboratories&gt;</ref>. Those controllers call the inherited methods from <ref refid="classService" kindref="compound">Service</ref> and <ref refid="classEntity" kindref="compound">Entity</ref>, which produce the actual SQL. The class also publishes the table name so <ref refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21" kindref="member">PermissionManager</ref> can check that the requesting staff member is allowed to change this service. Without this file there would be no C++ type tying the <computeroutput>laboratories</computeroutput> table to the generic CRUD machinery, so laboratory endpoints could not work.</para>
 <para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
 <listitem><para>static constexpr: a value fixed at compile time that belongs to the class, not to one object. <ulink url="https://en.cppreference.com/w/cpp/language/static">https://en.cppreference.com/w/cpp/language/static</ulink></para>
 </listitem><listitem><para>JSON: a text format used to carry request data; this project uses the jsoncons library to read it. <ulink url="https://jsoncons.github.io/jsoncons/">https://jsoncons.github.io/jsoncons/</ulink></para>
@@ -587,84 +587,120 @@
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
 <codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>laboratories.hpp</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Service<sp/>entity<sp/>bound<sp/>to<sp/>the<sp/>`laboratories`<sp/>table<sp/>(a<sp/>laboratory<sp/>service<sp/>provider).</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>declares<sp/>the<sp/>Laboratories<sp/>class,<sp/>a<sp/>very<sp/>small<sp/>C++<sp/>type<sp/>that<sp/>stands<sp/>for<sp/>one<sp/>laboratory<sp/>in<sp/>the</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>`laboratories`<sp/>database<sp/>table.<sp/>It<sp/>holds<sp/>almost<sp/>no<sp/>logic<sp/>of<sp/>its<sp/>own.<sp/>It<sp/>only<sp/>names<sp/>the<sp/>table<sp/>and<sp/>lets<sp/>its</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>parent<sp/>class<sp/>Service<sp/>do<sp/>the<sp/>real<sp/>work<sp/>of<sp/>building<sp/>SQL<sp/>statements.<sp/>You<sp/>create<sp/>one<sp/>by<sp/>passing<sp/>in<sp/>a<sp/>data</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wrapper<sp/>made<sp/>from<sp/>a<sp/>client<sp/>request,<sp/>and<sp/>the<sp/>parent<sp/>stores<sp/>that<sp/>wrapper<sp/>for<sp/>later<sp/>use.</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Laboratories<sp/>is<sp/>one<sp/>of<sp/>the<sp/>&quot;service<sp/>provider&quot;<sp/>types<sp/>in<sp/>the<sp/>server,<sp/>next<sp/>to<sp/>pharmacies<sp/>and<sp/>radiology<sp/>centres.<sp/>When<sp/>a</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>client<sp/>creates,<sp/>reads,<sp/>updates<sp/>or<sp/>deletes<sp/>a<sp/>laboratory,<sp/>or<sp/>manages<sp/>its<sp/>staff,<sp/>the<sp/>route<sp/>layer<sp/>picks<sp/>this<sp/>class<sp/>as</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>ServiceController&lt;Laboratories&gt;<sp/>/<sp/>StaffController&lt;Laboratories&gt;.<sp/>Those<sp/>controllers<sp/>call<sp/>the<sp/>inherited<sp/>methods<sp/>from</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>Service<sp/>and<sp/>Entity,<sp/>which<sp/>produce<sp/>the<sp/>actual<sp/>SQL.<sp/>The<sp/>class<sp/>also<sp/>publishes<sp/>the<sp/>table<sp/>name<sp/>so<sp/>PermissionManager<sp/>can</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>check<sp/>that<sp/>the<sp/>requesting<sp/>staff<sp/>member<sp/>is<sp/>allowed<sp/>to<sp/>change<sp/>this<sp/>service.<sp/>Without<sp/>this<sp/>file<sp/>there<sp/>would<sp/>be<sp/>no<sp/>C++</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>type<sp/>tying<sp/>the<sp/>`laboratories`<sp/>table<sp/>to<sp/>the<sp/>generic<sp/>CRUD<sp/>machinery,<sp/>so<sp/>laboratory<sp/>endpoints<sp/>could<sp/>not<sp/>work.</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>static<sp/>constexpr:<sp/>a<sp/>value<sp/>fixed<sp/>at<sp/>compile<sp/>time<sp/>that<sp/>belongs<sp/>to<sp/>the<sp/>class,<sp/>not<sp/>to<sp/>one<sp/>object.<sp/>https://en.cppreference.com/w/cpp/language/static</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>JSON:<sp/>a<sp/>text<sp/>format<sp/>used<sp/>to<sp/>carry<sp/>request<sp/>data;<sp/>this<sp/>project<sp/>uses<sp/>the<sp/>jsoncons<sp/>library<sp/>to<sp/>read<sp/>it.<sp/>https://jsoncons.github.io/jsoncons/</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>Template<sp/>(`template<sp/>&lt;typename<sp/>T&gt;`):<sp/>a<sp/>blueprint<sp/>that<sp/>works<sp/>with<sp/>whatever<sp/>data<sp/>type<sp/>the<sp/>caller<sp/>supplies.<sp/>https://en.cppreference.com/w/cpp</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Compiler-enforced<sp/>header<sp/>guard:<sp/>include<sp/>this<sp/>file<sp/>at<sp/>most<sp/>once<sp/>per<sp/>translation<sp/>unit.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/json.hpp&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>jsoncons<sp/>JSON<sp/>library:<sp/>reads<sp/>the<sp/>request<sp/>payloads<sp/>this<sp/>entity<sp/>may<sp/>be<sp/>built<sp/>from.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="service_8hpp" kindref="compound">entities/base/service.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Service<sp/>is<sp/>the<sp/>parent<sp/>class<sp/>that<sp/>supplies<sp/>the<sp/>inherited<sp/>CRUD/staff<sp/>behaviour.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="32"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>@class<sp/>Laboratories</highlight></codeline>
-<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Service<sp/>entity<sp/>bound<sp/>to<sp/>the<sp/>`laboratories`<sp/>table<sp/>(a<sp/>laboratory<sp/>service<sp/>provider).</highlight></codeline>
-<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>@details<sp/>A<sp/>thin<sp/>value<sp/>type<sp/>that<sp/>binds<sp/>the<sp/>generic<sp/>Service/Entity<sp/>SQL<sp/>machinery<sp/>to<sp/>one<sp/>database</highlight></codeline>
-<codeline lineno="36"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>table.<sp/>CRUD/search<sp/>statement<sp/>generation<sp/>and<sp/>staff<sp/>management<sp/>are<sp/>entirely<sp/>inherited;</highlight></codeline>
-<codeline lineno="37"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this<sp/>class<sp/>only<sp/>fixes<sp/>the<sp/>table<sp/>name<sp/>and<sp/>exposes<sp/>it<sp/>to<sp/>the<sp/>permission<sp/>layer.<sp/>Instances</highlight></codeline>
-<codeline lineno="38"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>are<sp/>built<sp/>from<sp/>one<sp/>of<sp/>the<sp/>api::v2::Types<sp/>data<sp/>wrappers<sp/>(for<sp/>example<sp/>Create_t<sp/>or<sp/>Read_t),</highlight></codeline>
-<codeline lineno="39"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>which<sp/>Entity<sp/>stores<sp/>as<sp/>an<sp/>EntityType<sp/>variant.<sp/>The<sp/>type<sp/>satisfies<sp/>the<sp/>api::v2::Service_t</highlight></codeline>
-<codeline lineno="40"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>concept<sp/>and<sp/>is<sp/>selected<sp/>through<sp/>the<sp/>`laboratories`<sp/>entries<sp/>of<sp/>the<sp/>services<sp/>and<sp/>staff</highlight></codeline>
-<codeline lineno="41"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>route<sp/>registries<sp/>(ServiceController&lt;Laboratories&gt;,<sp/>StaffController&lt;Laboratories&gt;).</highlight></codeline>
-<codeline lineno="42"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Ownership:<sp/>the<sp/>wrapper<sp/>is<sp/>copied<sp/>into<sp/>the<sp/>base<sp/>and<sp/>is<sp/>const<sp/>thereafter;<sp/>no<sp/>other</highlight></codeline>
-<codeline lineno="43"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resources<sp/>are<sp/>owned.<sp/>Instances<sp/>have<sp/>no<sp/>mutable<sp/>state<sp/>and<sp/>do<sp/>no<sp/>locking<sp/>of<sp/>their<sp/>own;</highlight></codeline>
-<codeline lineno="44"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PermissionManager<sp/>uses<sp/>the<sp/>inherited<sp/>Service::getServicePermissionsQuery<sp/>together<sp/>with</highlight></codeline>
-<codeline lineno="45"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>getTableName()<sp/>to<sp/>authorise<sp/>staff<sp/>changes.</highlight></codeline>
-<codeline lineno="46"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Copy<sp/>and<sp/>move<sp/>are<sp/>deleted<sp/>by<sp/>Service:<sp/>construct<sp/>a<sp/>fresh<sp/>instance<sp/>per<sp/>operation.</highlight></codeline>
-<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>@note<sp/>No<sp/>default<sp/>constructor:<sp/>Entity<sp/>needs<sp/>a<sp/>data<sp/>wrapper<sp/>to<sp/>build<sp/>statements<sp/>from.</highlight></codeline>
-<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>@see<sp/>Service,<sp/>Entity,<sp/>ServiceController,<sp/>StaffController,<sp/>PermissionManager</highlight></codeline>
-<codeline lineno="49"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50" refid="classLaboratories" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classLaboratories_1a196b3a30731960f60b4d463bb73868d3" kindref="member">Laboratories</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" kindref="member">Service</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Inherits<sp/>every<sp/>CRUD/search/staff<sp/>method;<sp/>this<sp/>class<sp/>only<sp/>fixes<sp/>the<sp/>table<sp/>name.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:<sp/><sp/></highlight><highlight class="comment">//<sp/>Implementation<sp/>details<sp/>kept<sp/>hidden<sp/>from<sp/>outside<sp/>callers.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/><sp/>/**<sp/>@brief<sp/>Table<sp/>bound<sp/>to<sp/>this<sp/>entity;<sp/>also<sp/>used<sp/>as<sp/>the<sp/>service<sp/>name<sp/>in<sp/>staff<sp/>permission<sp/>queries.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="54" refid="classLaboratories_1a8c175343a741a015e275a074fc1c410a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classLaboratories_1a8c175343a741a015e275a074fc1c410a" kindref="member">TABLENAME</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;laboratories&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>fixed<sp/>table<sp/>name<sp/>known<sp/>at<sp/>compile<sp/>time;<sp/>`auto`<sp/>lets<sp/>the<sp/>compiler<sp/>pick<sp/>the<sp/>exact<sp/>string-literal<sp/>type,<sp/>and<sp/>constexpr<sp/>means<sp/>it<sp/>never<sp/>changes<sp/>so<sp/>it<sp/>can<sp/>be<sp/>used<sp/>directly<sp/>in<sp/>generated<sp/>SQL<sp/>and<sp/>permission<sp/>checks.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:<sp/><sp/></highlight><highlight class="comment">//<sp/>Public<sp/>interface:<sp/>construction,<sp/>table-name<sp/>lookup<sp/>and<sp/>destruction.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Laboratories()<sp/>:<sp/>Service(TABLENAME)<sp/>{}<sp/><sp/>//<sp/>Deliberately<sp/>disabled:<sp/>Entity<sp/>needs<sp/>a<sp/>data<sp/>wrapper<sp/>before<sp/>it<sp/>can<sp/>build<sp/>any<sp/>statement.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Constructs<sp/>a<sp/>laboratory<sp/>entity<sp/>bound<sp/>to<sp/>`laboratories`.</highlight></codeline>
-<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Forwards<sp/>the<sp/>wrapper<sp/>and<sp/>table<sp/>name<sp/>to<sp/>Service,<sp/>which<sp/>stores<sp/>the<sp/>wrapper<sp/>in<sp/>Entity.</highlight></codeline>
-<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>The<sp/>wrapper&apos;s<sp/>type<sp/>decides<sp/>which<sp/>inherited<sp/>SQL<sp/>builder<sp/>(create/read/update/delete/</highlight></codeline>
-<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>search)<sp/>can<sp/>legitimately<sp/>be<sp/>used<sp/>with<sp/>the<sp/>resulting<sp/>instance.</highlight></codeline>
-<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>A<sp/>type<sp/>accepted<sp/>by<sp/>EntityType,<sp/>e.g.<sp/>api::v2::Types::Create_t<sp/>or<sp/>Read_t.</highlight></codeline>
-<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_data<sp/>Operation<sp/>data<sp/>to<sp/>copy<sp/>into<sp/>the<sp/>entity.</highlight></codeline>
-<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>T<sp/>is<sp/>deduced<sp/>from<sp/>the<sp/>wrapper<sp/>the<sp/>caller<sp/>passes,<sp/>so<sp/>many<sp/>wrapper<sp/>types<sp/>fit<sp/>this<sp/>one<sp/>constructor.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68" refid="classLaboratories_1a196b3a30731960f60b4d463bb73868d3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classLaboratories_1a196b3a30731960f60b4d463bb73868d3" kindref="member">Laboratories</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T&amp;<sp/>_data)<sp/>:<sp/><ref refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" kindref="member">Service</ref>(_data,<sp/><ref refid="classLaboratories_1a8c175343a741a015e275a074fc1c410a" kindref="member">TABLENAME</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>the<sp/>data<sp/>and<sp/>table<sp/>name<sp/>to<sp/>Service,<sp/>which<sp/>copies<sp/>them<sp/>into<sp/>Entity.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>table<sp/>this<sp/>entity<sp/>is<sp/>bound<sp/>to.</highlight></codeline>
-<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>constant<sp/>`laboratories`<sp/>string.</highlight></codeline>
-<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="75" refid="classLaboratories_1ab791359ddebb664cfd543a60d262b6a8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classLaboratories_1ab791359ddebb664cfd543a60d262b6a8" kindref="member">getTableName</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classLaboratories_1a8c175343a741a015e275a074fc1c410a" kindref="member">TABLENAME</ref>;<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Returns<sp/>the<sp/>compile-time<sp/>table<sp/>name<sp/>so<sp/>callers<sp/>(e.g.<sp/>PermissionManager)<sp/>can<sp/>build<sp/>the<sp/>right<sp/>SQL.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Destructor;<sp/>the<sp/>entity<sp/>owns<sp/>nothing<sp/>beyond<sp/>the<sp/>data<sp/>wrapper<sp/>held<sp/>by<sp/>Entity.</highlight></codeline>
-<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="79" refid="classLaboratories_1a648e882a9b1dc55d467dcdd179aee4c3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classLaboratories_1a648e882a9b1dc55d467dcdd179aee4c3" kindref="member">~Laboratories</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>`override`<sp/>confirms<sp/>the<sp/>parent<sp/>has<sp/>a<sp/>virtual<sp/>destructor;<sp/>`=<sp/>default`<sp/>lets<sp/>the<sp/>compiler<sp/>clean<sp/>up<sp/>the<sp/>stored<sp/>wrapper.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Service<sp/>entity<sp/>bound<sp/>to<sp/>the<sp/>`laboratories`<sp/>table<sp/>(a<sp/>laboratory<sp/>service</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>provider).</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>declares<sp/>the<sp/>Laboratories<sp/>class,<sp/>a<sp/>very<sp/>small<sp/>C++<sp/>type</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>that<sp/>stands<sp/>for<sp/>one<sp/>laboratory<sp/>in<sp/>the<sp/>`laboratories`<sp/>database<sp/>table.<sp/>It<sp/>holds</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>almost<sp/>no<sp/>logic<sp/>of<sp/>its<sp/>own.<sp/>It<sp/>only<sp/>names<sp/>the<sp/>table<sp/>and<sp/>lets<sp/>its<sp/>parent<sp/>class</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>Service<sp/>do<sp/>the<sp/>real<sp/>work<sp/>of<sp/>building<sp/>SQL<sp/>statements.<sp/>You<sp/>create<sp/>one<sp/>by</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>passing<sp/>in<sp/>a<sp/>data<sp/>wrapper<sp/>made<sp/>from<sp/>a<sp/>client<sp/>request,<sp/>and<sp/>the<sp/>parent<sp/>stores</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>that<sp/>wrapper<sp/>for<sp/>later<sp/>use.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>Laboratories<sp/>is<sp/>one<sp/>of<sp/>the<sp/>&quot;service<sp/>provider&quot;<sp/>types<sp/>in<sp/>the<sp/>server,<sp/>next<sp/>to</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>pharmacies<sp/>and<sp/>radiology<sp/>centres.<sp/>When<sp/>a<sp/>client<sp/>creates,<sp/>reads,<sp/>updates<sp/>or</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>deletes<sp/>a<sp/>laboratory,<sp/>or<sp/>manages<sp/>its<sp/>staff,<sp/>the<sp/>route<sp/>layer<sp/>picks<sp/>this<sp/>class</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>as<sp/>ServiceController&lt;Laboratories&gt;<sp/>/<sp/>StaffController&lt;Laboratories&gt;.<sp/>Those</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>controllers<sp/>call<sp/>the<sp/>inherited<sp/>methods<sp/>from<sp/>Service<sp/>and<sp/>Entity,<sp/>which<sp/>produce</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>the<sp/>actual<sp/>SQL.<sp/>The<sp/>class<sp/>also<sp/>publishes<sp/>the<sp/>table<sp/>name<sp/>so<sp/>PermissionManager</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>can<sp/>check<sp/>that<sp/>the<sp/>requesting<sp/>staff<sp/>member<sp/>is<sp/>allowed<sp/>to<sp/>change<sp/>this<sp/>service.</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>Without<sp/>this<sp/>file<sp/>there<sp/>would<sp/>be<sp/>no<sp/>C++<sp/>type<sp/>tying<sp/>the<sp/>`laboratories`<sp/>table</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>to<sp/>the<sp/>generic<sp/>CRUD<sp/>machinery,<sp/>so<sp/>laboratory<sp/>endpoints<sp/>could<sp/>not<sp/>work.</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>-<sp/>static<sp/>constexpr:<sp/>a<sp/>value<sp/>fixed<sp/>at<sp/>compile<sp/>time<sp/>that<sp/>belongs<sp/>to<sp/>the<sp/>class,</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>not<sp/>to<sp/>one<sp/>object.<sp/>https://en.cppreference.com/w/cpp/language/static</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>-<sp/>JSON:<sp/>a<sp/>text<sp/>format<sp/>used<sp/>to<sp/>carry<sp/>request<sp/>data;<sp/>this<sp/>project<sp/>uses<sp/>the</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>jsoncons<sp/>library<sp/>to<sp/>read<sp/>it.<sp/>https://jsoncons.github.io/jsoncons/</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>-<sp/>Template<sp/>(`template<sp/>&lt;typename<sp/>T&gt;`):<sp/>a<sp/>blueprint<sp/>that<sp/>works<sp/>with<sp/>whatever</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/>data<sp/>type<sp/>the<sp/>caller<sp/>supplies.<sp/>https://en.cppreference.com/w/cpp</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Compiler-enforced<sp/>header<sp/>guard:<sp/>include<sp/>this<sp/>file<sp/>at<sp/>most<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>per<sp/>translation<sp/>unit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>jsoncons<sp/>JSON<sp/>library:<sp/>reads<sp/>the<sp/>request<sp/>payloads<sp/>this<sp/>entity<sp/>may<sp/>be<sp/>built</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>from.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/json.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Service<sp/>is<sp/>the<sp/>parent<sp/>class<sp/>that<sp/>supplies<sp/>the<sp/>inherited<sp/>CRUD/staff<sp/>behaviour.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="service_8hpp" kindref="compound">entities/base/service.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="45"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>@class<sp/>Laboratories</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Service<sp/>entity<sp/>bound<sp/>to<sp/>the<sp/>`laboratories`<sp/>table<sp/>(a<sp/>laboratory<sp/>service</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>provider).</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>@details<sp/>A<sp/>thin<sp/>value<sp/>type<sp/>that<sp/>binds<sp/>the<sp/>generic<sp/>Service/Entity<sp/>SQL</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>machinery<sp/>to<sp/>one<sp/>database<sp/>table.<sp/>CRUD/search<sp/>statement<sp/>generation<sp/>and<sp/>staff</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>management<sp/>are<sp/>entirely<sp/>inherited;<sp/>this<sp/>class<sp/>only<sp/>fixes<sp/>the<sp/>table<sp/>name<sp/>and</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>exposes<sp/>it<sp/>to<sp/>the<sp/>permission<sp/>layer.<sp/>Instances<sp/>are<sp/>built<sp/>from<sp/>one<sp/>of<sp/>the</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>api::v2::Types<sp/>data<sp/>wrappers<sp/>(for<sp/>example<sp/>Create_t<sp/>or<sp/>Read_t),<sp/>which<sp/>Entity</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>stores<sp/>as<sp/>an<sp/>EntityType<sp/>variant.<sp/>The<sp/>type<sp/>satisfies<sp/>the<sp/>api::v2::Service_t</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>concept<sp/>and<sp/>is<sp/>selected<sp/>through<sp/>the<sp/>`laboratories`<sp/>entries<sp/>of<sp/>the</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/>services<sp/>and<sp/>staff<sp/>route<sp/>registries<sp/>(ServiceController&lt;Laboratories&gt;,</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*<sp/>StaffController&lt;Laboratories&gt;).<sp/>Ownership:<sp/>the<sp/>wrapper<sp/>is<sp/>copied<sp/>into<sp/>the</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*<sp/>base<sp/>and<sp/>is<sp/>const<sp/>thereafter;<sp/>no<sp/>other<sp/>resources<sp/>are<sp/>owned.<sp/>Instances<sp/>have<sp/>no</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/>mutable<sp/>state<sp/>and<sp/>do<sp/>no<sp/>locking<sp/>of<sp/>their<sp/>own;<sp/>PermissionManager<sp/>uses<sp/>the</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/>inherited<sp/>Service::getServicePermissionsQuery<sp/>together<sp/>with<sp/>getTableName()<sp/>to</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/>authorise<sp/>staff<sp/>changes.<sp/>Copy<sp/>and<sp/>move<sp/>are<sp/>deleted<sp/>by<sp/>Service:<sp/>construct<sp/>a</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/>fresh<sp/>instance<sp/>per<sp/>operation.</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>@note<sp/>No<sp/>default<sp/>constructor:<sp/>Entity<sp/>needs<sp/>a<sp/>data<sp/>wrapper<sp/>to<sp/>build<sp/>statements</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/>from.</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*<sp/>@see<sp/>Service,<sp/>Entity,<sp/>ServiceController,<sp/>StaffController,<sp/>PermissionManager</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Inherits<sp/>every<sp/>CRUD/search/staff<sp/>method;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/>this<sp/>class<sp/>only<sp/>fixes<sp/>the<sp/>table<sp/>name.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="classLaboratories" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classLaboratories_1a196b3a30731960f60b4d463bb73868d3" kindref="member">Laboratories</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" kindref="member">Service</ref><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:<sp/><sp/></highlight><highlight class="comment">//<sp/>Implementation<sp/>details<sp/>kept<sp/>hidden<sp/>from<sp/>outside<sp/>callers.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/>/**<sp/>@brief<sp/>Table<sp/>bound<sp/>to<sp/>this<sp/>entity;<sp/>also<sp/>used<sp/>as<sp/>the<sp/>service<sp/>name<sp/>in</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/>*<sp/>staff<sp/>permission<sp/>queries.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="classLaboratories_1a8c175343a741a015e275a074fc1c410a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classLaboratories_1a8c175343a741a015e275a074fc1c410a" kindref="member">TABLENAME</ref><sp/>=</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;laboratories&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>fixed<sp/>table<sp/>name<sp/>known<sp/>at<sp/>compile<sp/>time;<sp/>`auto`</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>lets<sp/>the<sp/>compiler<sp/>pick<sp/>the<sp/>exact<sp/>string-literal</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>type,<sp/>and<sp/>constexpr<sp/>means<sp/>it<sp/>never</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>changes<sp/>so<sp/>it<sp/>can<sp/>be<sp/>used<sp/>directly<sp/>in<sp/>generated<sp/>SQL<sp/>and<sp/>permission</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>checks.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:<sp/><sp/></highlight><highlight class="comment">//<sp/>Public<sp/>interface:<sp/>construction,<sp/>table-name<sp/>lookup<sp/>and<sp/>destruction.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Laboratories()<sp/>:<sp/>Service(TABLENAME)<sp/>{}<sp/><sp/>//<sp/>Deliberately<sp/>disabled:<sp/>Entity</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>needs<sp/>a<sp/>data<sp/>wrapper<sp/>before<sp/>it<sp/>can<sp/>build<sp/>any<sp/>statement.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Constructs<sp/>a<sp/>laboratory<sp/>entity<sp/>bound<sp/>to<sp/>`laboratories`.</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Forwards<sp/>the<sp/>wrapper<sp/>and<sp/>table<sp/>name<sp/>to<sp/>Service,<sp/>which<sp/>stores<sp/>the</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/>*<sp/>wrapper<sp/>in<sp/>Entity.<sp/>The<sp/>wrapper&apos;s<sp/>type<sp/>decides<sp/>which<sp/>inherited<sp/>SQL<sp/>builder</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/>*<sp/>(create/read/update/delete/<sp/>search)<sp/>can<sp/>legitimately<sp/>be<sp/>used<sp/>with<sp/>the</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/>*<sp/>resulting<sp/>instance.</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>A<sp/>type<sp/>accepted<sp/>by<sp/>EntityType,<sp/>e.g.<sp/>api::v2::Types::Create_t<sp/>or</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Read_t.</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_data<sp/>Operation<sp/>data<sp/>to<sp/>copy<sp/>into<sp/>the<sp/>entity.</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>T<sp/>is<sp/>deduced<sp/>from<sp/>the<sp/>wrapper<sp/>the<sp/>caller<sp/>passes,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>so<sp/>many<sp/>wrapper<sp/>types<sp/>fit<sp/>this<sp/>one<sp/>constructor.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="classLaboratories_1a196b3a30731960f60b4d463bb73868d3" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classLaboratories_1a196b3a30731960f60b4d463bb73868d3" kindref="member">Laboratories</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T&amp;<sp/>_data)</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>the<sp/>data<sp/>and<sp/>table<sp/>name<sp/>to<sp/>Service,<sp/>which</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>copies<sp/>them<sp/>into<sp/>Entity.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" kindref="member">Service</ref>(_data,<sp/><ref refid="classLaboratories_1a8c175343a741a015e275a074fc1c410a" kindref="member">TABLENAME</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/>}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>table<sp/>this<sp/>entity<sp/>is<sp/>bound<sp/>to.</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>constant<sp/>`laboratories`<sp/>string.</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="classLaboratories_1ab791359ddebb664cfd543a60d262b6a8" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classLaboratories_1ab791359ddebb664cfd543a60d262b6a8" kindref="member">getTableName</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classLaboratories_1a8c175343a741a015e275a074fc1c410a" kindref="member">TABLENAME</ref>;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Returns<sp/>the<sp/>compile-time<sp/>table<sp/>name<sp/>so<sp/>callers<sp/>(e.g.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>PermissionManager)<sp/>can<sp/>build<sp/>the<sp/>right<sp/>SQL.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Destructor;<sp/>the<sp/>entity<sp/>owns<sp/>nothing<sp/>beyond<sp/>the<sp/>data<sp/>wrapper<sp/>held</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/><sp/><sp/>*<sp/>by<sp/>Entity.</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="classLaboratories_1a648e882a9b1dc55d467dcdd179aee4c3" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classLaboratories_1a648e882a9b1dc55d467dcdd179aee4c3" kindref="member">~Laboratories</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>`override`<sp/>confirms<sp/>the<sp/>parent<sp/>has<sp/>a<sp/>virtual<sp/>destructor;<sp/>`=</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>default`<sp/>lets<sp/>the<sp/>compiler<sp/>clean<sp/>up<sp/>the<sp/>stored<sp/>wrapper.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal">};</highlight></codeline>
     </programlisting>
     <location file="src/entities/services/laboratories.hpp"/>
   </compounddef>

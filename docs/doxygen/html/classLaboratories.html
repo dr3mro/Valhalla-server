@@ -190,7 +190,7 @@ Static Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-static-attribs" class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:a8c175343a741a015e275a074fc1c410a" id="r_a8c175343a741a015e275a074fc1c410a"><td class="memItemLeft">static constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="#a8c175343a741a015e275a074fc1c410a">TABLENAME</a> = &quot;laboratories&quot;</td></tr>
+<tr class="memitem:a8c175343a741a015e275a074fc1c410a" id="r_a8c175343a741a015e275a074fc1c410a"><td class="memItemLeft">static constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="#a8c175343a741a015e275a074fc1c410a">TABLENAME</a></td></tr>
 <tr class="memdesc:a8c175343a741a015e275a074fc1c410a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Table bound to this entity; also used as the service name in staff permission queries.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-inherited" class="groupheader"><a id="inherited" name="inherited"></a>
@@ -220,10 +220,10 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classService.html" title="Entity for service/organisation tables (clinics, pharmacies, laboratories, ...).">Service</a> entity bound to the <span class="tt">laboratories</span> table (a laboratory service provider). </p>
-<p>A thin value type that binds the generic Service/Entity SQL machinery to one database table. CRUD/search statement generation and staff management are entirely inherited; this class only fixes the table name and exposes it to the permission layer. Instances are built from one of the <a class="el" href="namespaceapi_1_1v2_1_1Types.html">api::v2::Types</a> data wrappers (for example <a class="el" href="classCreate__t.html" title="Entity_t carrying the JSON object to insert and an optional primary key.">Create_t</a> or <a class="el" href="classRead__t.html" title="Entity_t carrying the columns to select and the id of the row to read.">Read_t</a>), which <a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a> stores as an <a class="el" href="entity_8hpp.html#aa7ee46136fb273d4151dc647393adcdd" title="Short names for the CRUD value types and the variant they live in (see api::v2::Types).">EntityType</a> variant. The type satisfies the api::v2::Service_t concept and is selected through the <span class="tt">laboratories</span> entries of the services and staff route registries (<a class="el" href="classServiceController.html" title="Service-entity controller that adapts EntityController to ServiceControllerBase.">ServiceController&lt;Laboratories&gt;</a>, <a class="el" href="classStaffController.html" title="Implements staff management for one service entity type.">StaffController&lt;Laboratories&gt;</a>). Ownership: the wrapper is copied into the base and is const thereafter; no other resources are owned. Instances have no mutable state and do no locking of their own; <a class="el" href="gatekeeper_8cpp.html#a2391c0b165c65deb4ad3ad19ca6dd2aa">PermissionManager</a> uses the inherited <a class="el" href="classService.html#ac5c73e3e8d87d1a87af5c12dcee32013" title="Builds the permission lookup for a service row by id.">Service::getServicePermissionsQuery</a> together with <a class="el" href="#ab791359ddebb664cfd543a60d262b6a8" title="Returns the table this entity is bound to.">getTableName()</a> to authorise staff changes. Copy and move are deleted by <a class="el" href="classService.html" title="Entity for service/organisation tables (clinics, pharmacies, laboratories, ...).">Service</a>: construct a fresh instance per operation. </p><dl class="section note"><dt>Note</dt><dd>No default constructor: <a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a> needs a data wrapper to build statements from. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classService.html" title="Entity for service/organisation tables (clinics, pharmacies, laboratories, ...).">Service</a>, <a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a>, <a class="el" href="classServiceController.html" title="Service-entity controller that adapts EntityController to ServiceControllerBase.">ServiceController</a>, <a class="el" href="classStaffController.html" title="Implements staff management for one service entity type.">StaffController</a>, <a class="el" href="gatekeeper_8cpp.html#a2391c0b165c65deb4ad3ad19ca6dd2aa">PermissionManager</a> </dd></dl>
+<p>A thin value type that binds the generic Service/Entity SQL machinery to one database table. CRUD/search statement generation and staff management are entirely inherited; this class only fixes the table name and exposes it to the permission layer. Instances are built from one of the <a class="el" href="namespaceapi_1_1v2_1_1Types.html">api::v2::Types</a> data wrappers (for example <a class="el" href="classCreate__t.html" title="Entity_t carrying the JSON object to insert and an optional primary key.">Create_t</a> or <a class="el" href="classRead__t.html" title="Entity_t carrying the columns to select and the id of the row to read.">Read_t</a>), which <a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a> stores as an <a class="el" href="entity_8hpp.html#aa7ee46136fb273d4151dc647393adcdd" title="Short names for the CRUD value types and the variant they live in (see api::v2::Types).">EntityType</a> variant. The type satisfies the api::v2::Service_t concept and is selected through the <span class="tt">laboratories</span> entries of the services and staff route registries (<a class="el" href="classServiceController.html" title="Service-entity controller that adapts EntityController to ServiceControllerBase.">ServiceController&lt;Laboratories&gt;</a>, <a class="el" href="classStaffController.html" title="Implements staff management for one service entity type.">StaffController&lt;Laboratories&gt;</a>). Ownership: the wrapper is copied into the base and is const thereafter; no other resources are owned. Instances have no mutable state and do no locking of their own; <a class="el" href="gatekeeper_8cpp.html#ae17e951f1dc80a8e4920571ebe9f3c21">PermissionManager</a> uses the inherited <a class="el" href="classService.html#ac5c73e3e8d87d1a87af5c12dcee32013" title="Builds the permission lookup for a service row by id.">Service::getServicePermissionsQuery</a> together with <a class="el" href="#ab791359ddebb664cfd543a60d262b6a8" title="Returns the table this entity is bound to.">getTableName()</a> to authorise staff changes. Copy and move are deleted by <a class="el" href="classService.html" title="Entity for service/organisation tables (clinics, pharmacies, laboratories, ...).">Service</a>: construct a fresh instance per operation. </p><dl class="section note"><dt>Note</dt><dd>No default constructor: <a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a> needs a data wrapper to build statements from. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classService.html" title="Entity for service/organisation tables (clinics, pharmacies, laboratories, ...).">Service</a>, <a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a>, <a class="el" href="classServiceController.html" title="Service-entity controller that adapts EntityController to ServiceControllerBase.">ServiceController</a>, <a class="el" href="classStaffController.html" title="Implements staff management for one service entity type.">StaffController</a>, <a class="el" href="gatekeeper_8cpp.html#ae17e951f1dc80a8e4920571ebe9f3c21">PermissionManager</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="laboratories_8hpp_source.html#l00050">50</a> of file <a class="el" href="laboratories_8hpp_source.html">laboratories.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="laboratories_8hpp_source.html#l00069">69</a> of file <a class="el" href="laboratories_8hpp_source.html">laboratories.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a196b3a30731960f60b4d463bb73868d3" name="a196b3a30731960f60b4d463bb73868d3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a196b3a30731960f60b4d463bb73868d3">&#9670;&#160;</a></span>Laboratories()</h2>
@@ -253,7 +253,7 @@ template&lt;typename T&gt; </div>
 <p>Constructs a laboratory entity bound to <span class="tt">laboratories</span>. </p>
 <p>Forwards the wrapper and table name to <a class="el" href="classService.html" title="Entity for service/organisation tables (clinics, pharmacies, laboratories, ...).">Service</a>, which stores the wrapper in <a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a>. The wrapper's type decides which inherited SQL builder (create/read/update/delete/ search) can legitimately be used with the resulting instance. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">T</td><td>A type accepted by <a class="el" href="entity_8hpp.html#aa7ee46136fb273d4151dc647393adcdd" title="Short names for the CRUD value types and the variant they live in (see api::v2::Types).">EntityType</a>, e.g. <a class="el" href="namespaceapi_1_1v2_1_1Types.html#ac9a246b12a16bc018eec47370d2d6a20">api::v2::Types::Create_t</a> or <a class="el" href="classRead__t.html" title="Entity_t carrying the columns to select and the id of the row to read.">Read_t</a>. </td></tr>
+    <tr><td class="paramname">T</td><td>A type accepted by <a class="el" href="entity_8hpp.html#aa7ee46136fb273d4151dc647393adcdd" title="Short names for the CRUD value types and the variant they live in (see api::v2::Types).">EntityType</a>, e.g. <a class="el" href="namespaceapi_1_1v2_1_1Types.html#a3c62a5c40f89f4df780a0aa64a374461">api::v2::Types::Create_t</a> or <a class="el" href="classRead__t.html" title="Entity_t carrying the columns to select and the id of the row to read.">Read_t</a>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -264,9 +264,9 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="laboratories_8hpp_source.html#l00068">68</a> of file <a class="el" href="laboratories_8hpp_source.html">laboratories.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="laboratories_8hpp_source.html#l00096">96</a> of file <a class="el" href="laboratories_8hpp_source.html">laboratories.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="classService.html#af1e2a6e3a3d0dc6daad5f7ce21992166">Service::Service()</a>, and <a class="el" href="laboratories_8hpp_source.html#l00054">TABLENAME</a>.</p>
+<p class="reference">References <a class="el" href="classService.html#af1e2a6e3a3d0dc6daad5f7ce21992166">Service::Service()</a>, and <a class="el" href="laboratories_8hpp_source.html#l00073">TABLENAME</a>.</p>
 
 </div>
 </div>
@@ -324,9 +324,9 @@ template&lt;typename T&gt; </div>
 <p>Returns the table this entity is bound to. </p>
 <dl class="section return"><dt>Returns</dt><dd>The constant <span class="tt">laboratories</span> string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="laboratories_8hpp_source.html#l00075">75</a> of file <a class="el" href="laboratories_8hpp_source.html">laboratories.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="laboratories_8hpp_source.html#l00105">105</a> of file <a class="el" href="laboratories_8hpp_source.html">laboratories.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="laboratories_8hpp_source.html#l00054">TABLENAME</a>.</p>
+<p class="reference">References <a class="el" href="laboratories_8hpp_source.html#l00073">TABLENAME</a>.</p>
 
 </div>
 </div>
@@ -341,7 +341,7 @@ template&lt;typename T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto Laboratories::TABLENAME = &quot;laboratories&quot;</td>
+          <td class="memname">auto Laboratories::TABLENAME</td>
         </tr>
       </table>
   </td>
@@ -350,12 +350,14 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<b>Initial value:</b><div class="fragment"><div class="line">                            =</div>
+<div class="line"><span class="stringliteral">&quot;laboratories&quot;</span></div>
+</div><!-- fragment -->
 <p>Table bound to this entity; also used as the service name in staff permission queries. </p>
 
-<p class="definition">Definition at line <a class="el" href="laboratories_8hpp_source.html#l00054">54</a> of file <a class="el" href="laboratories_8hpp_source.html">laboratories.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="laboratories_8hpp_source.html#l00073">73</a> of file <a class="el" href="laboratories_8hpp_source.html">laboratories.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="laboratories_8hpp_source.html#l00075">getTableName()</a>, and <a class="el" href="laboratories_8hpp_source.html#l00068">Laboratories()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="laboratories_8hpp_source.html#l00105">getTableName()</a>, and <a class="el" href="laboratories_8hpp_source.html#l00096">Laboratories()</a>.</p>
 
 </div>
 </div>

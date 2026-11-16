@@ -9,7 +9,7 @@
     <detaileddescription>
 <para>Like <ref refid="classDelete__t" kindref="compound">Delete_t</ref>, the char payload is an unused sentinel and the id is the state. </para>
     </detaileddescription>
-    <location file="src/entities/base/types.hpp" line="220" column="1"/>
+    <location file="src/entities/base/types.hpp" line="278" column="1"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

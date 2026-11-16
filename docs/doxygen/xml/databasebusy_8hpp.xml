@@ -716,55 +716,72 @@
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
 <codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>databasebusy.hpp</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Exception<sp/>signalling<sp/>that<sp/>the<sp/>connection<sp/>pool<sp/>could<sp/>not<sp/>lease<sp/>a<sp/>connection<sp/>in<sp/>time.</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>defines<sp/>DatabaseBusy,<sp/>a<sp/>tiny<sp/>exception<sp/>class<sp/>used<sp/>as<sp/>a<sp/>signal.<sp/>It<sp/>adds</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>no<sp/>data<sp/>of<sp/>its<sp/>own;<sp/>it<sp/>simply<sp/>derives<sp/>from<sp/>std::runtime_error<sp/>with<sp/>a<sp/>default<sp/>message</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>so<sp/>it<sp/>can<sp/>be<sp/>caught<sp/>either<sp/>specifically<sp/>or<sp/>by<sp/>generic<sp/>error<sp/>handlers.<sp/>Its<sp/>whole</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>purpose<sp/>is<sp/>to<sp/>give<sp/>&quot;the<sp/>pool<sp/>is<sp/>exhausted&quot;<sp/>a<sp/>distinct<sp/>type.</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>The<sp/>HTTP<sp/>layer<sp/>needs<sp/>to<sp/>tell<sp/>two<sp/>very<sp/>different<sp/>failures<sp/>apart:<sp/>a<sp/>broken<sp/>query<sp/>(probably<sp/>a</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>server<sp/>bug,<sp/>answer<sp/>500)<sp/>and<sp/>a<sp/>temporary<sp/>shortage<sp/>of<sp/>connections<sp/>(the<sp/>client<sp/>should<sp/>retry,</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>answer<sp/>503<sp/>with<sp/>Retry-After).<sp/>DatabaseConnectionPool::get_connection()<sp/>throws<sp/>this<sp/>type<sp/>when</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>its<sp/>wait<sp/>expires,<sp/>and<sp/>filters,<sp/>controllers<sp/>and<sp/>the<sp/>watchdog<sp/>all<sp/>catch<sp/>it<sp/>separately.<sp/>Without</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>a<sp/>dedicated<sp/>type,<sp/>every<sp/>timeout<sp/>would<sp/>look<sp/>like<sp/>a<sp/>generic<sp/>error<sp/>and<sp/>clients<sp/>would<sp/>not<sp/>know</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>to<sp/>retry.</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>Exceptions<sp/>and<sp/>catch<sp/>blocks:<sp/>https://en.cppreference.com/w/cpp/language/try_catch</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>std::runtime_error<sp/>(a<sp/>standard<sp/>exception<sp/>carrying<sp/>a<sp/>message):<sp/>https://en.cppreference.com/w/cpp/error/runtime_error</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>Inheritance:<sp/>https://en.cppreference.com/w/cpp/language/derived_class</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>HTTP<sp/>503<sp/>Service<sp/>Unavailable<sp/>and<sp/>Retry-After</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>explicit<sp/>constructors<sp/>(prevent<sp/>accidental<sp/>implicit<sp/>conversion):<sp/>https://en.cppreference.com/w/cpp/language/explicit</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
-<codeline lineno="26"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>guard:<sp/>define<sp/>this<sp/>exception<sp/>at<sp/>most<sp/>once<sp/>per<sp/>translation<sp/>unit.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdexcept&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::runtime_error,<sp/>the<sp/>base<sp/>class,<sp/>is<sp/>declared<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>is<sp/>used<sp/>for<sp/>the<sp/>exception<sp/>message.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Thrown<sp/>when<sp/>no<sp/>database<sp/>connection<sp/>became<sp/>free<sp/>within<sp/>DB_ACQUIRE_TIMEOUT_MS.<sp/>It<sp/>is<sp/>not<sp/>a<sp/>query<sp/>failure:<sp/>callers<sp/>answer</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/>503<sp/>with<sp/>Retry-After<sp/>instead<sp/>of<sp/>a<sp/>generic<sp/>error.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="35"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>@class<sp/>DatabaseBusy</highlight></codeline>
-<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Exception<sp/>signalling<sp/>that<sp/>the<sp/>connection<sp/>pool<sp/>could<sp/>not<sp/>lease<sp/>a<sp/>connection<sp/>in<sp/>time.</highlight></codeline>
-<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>@details<sp/>Distinguishes<sp/>pool<sp/>exhaustion<sp/>from<sp/>a<sp/>genuine<sp/>query<sp/>failure<sp/>so<sp/>the<sp/>HTTP<sp/>layer<sp/>can</highlight></codeline>
-<codeline lineno="39"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map<sp/>it<sp/>to<sp/>503<sp/>(Service<sp/>Unavailable)<sp/>with<sp/>Retry-After<sp/>rather<sp/>than<sp/>500.<sp/>Derives</highlight></codeline>
-<codeline lineno="40"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>from<sp/>`std::runtime_error`<sp/>so<sp/>generic<sp/>handlers<sp/>still<sp/>catch<sp/>it.</highlight></codeline>
-<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>@see<sp/>api::v2::Http::statusForException,<sp/>DatabaseConnectionPool::get_connection</highlight></codeline>
-<codeline lineno="42"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43" refid="classDatabaseBusy" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" kindref="member">DatabaseBusy</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::runtime_error<sp/><sp/></highlight><highlight class="comment">//<sp/>Inherits<sp/>the<sp/>message-carrying<sp/>behaviour<sp/>and<sp/>stays<sp/>catchable<sp/>as<sp/>a<sp/>std::exception.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Constructs<sp/>the<sp/>exception<sp/>with<sp/>a<sp/>default<sp/>or<sp/>custom<sp/>message.</highlight></codeline>
-<codeline lineno="48"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>what<sp/>Message<sp/>describing<sp/>the<sp/>busy<sp/>condition.</highlight></codeline>
-<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50" refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" kindref="member">DatabaseBusy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>what<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Database<sp/>is<sp/>busy,<sp/>no<sp/>connection<sp/>available&quot;</highlight><highlight class="normal">)<sp/>:<sp/><ref refid="namespacestd" kindref="compound">std</ref>::runtime_error(what)<sp/>{}<sp/><sp/></highlight><highlight class="comment">//<sp/>`explicit`<sp/>prevents<sp/>accidentally<sp/>creating<sp/>this<sp/>exception<sp/>from<sp/>a<sp/>bare<sp/>string;<sp/>the<sp/>default<sp/>message<sp/>explains<sp/>the<sp/>common<sp/>case.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Exception<sp/>signalling<sp/>that<sp/>the<sp/>connection<sp/>pool<sp/>could<sp/>not<sp/>lease<sp/>a</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>connection<sp/>in<sp/>time.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>defines<sp/>DatabaseBusy,<sp/>a<sp/>tiny<sp/>exception<sp/>class<sp/>used<sp/>as<sp/>a</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>signal.<sp/>It<sp/>adds<sp/>no<sp/>data<sp/>of<sp/>its<sp/>own;<sp/>it<sp/>simply<sp/>derives<sp/>from<sp/>std::runtime_error</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>with<sp/>a<sp/>default<sp/>message<sp/>so<sp/>it<sp/>can<sp/>be<sp/>caught<sp/>either<sp/>specifically<sp/>or<sp/>by<sp/>generic</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>error<sp/>handlers.<sp/>Its<sp/>whole<sp/>purpose<sp/>is<sp/>to<sp/>give<sp/>&quot;the<sp/>pool<sp/>is<sp/>exhausted&quot;<sp/>a</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>distinct<sp/>type.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>The<sp/>HTTP<sp/>layer<sp/>needs<sp/>to<sp/>tell<sp/>two<sp/>very<sp/>different<sp/>failures<sp/>apart:<sp/>a<sp/>broken</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>query<sp/>(probably<sp/>a<sp/>server<sp/>bug,<sp/>answer<sp/>500)<sp/>and<sp/>a<sp/>temporary<sp/>shortage<sp/>of</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>connections<sp/>(the<sp/>client<sp/>should<sp/>retry,<sp/>answer<sp/>503<sp/>with<sp/>Retry-After).</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>DatabaseConnectionPool::get_connection()<sp/>throws<sp/>this<sp/>type<sp/>when<sp/>its<sp/>wait</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>expires,<sp/>and<sp/>filters,<sp/>controllers<sp/>and<sp/>the<sp/>watchdog<sp/>all<sp/>catch<sp/>it<sp/>separately.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>Without<sp/>a<sp/>dedicated<sp/>type,<sp/>every<sp/>timeout<sp/>would<sp/>look<sp/>like<sp/>a<sp/>generic<sp/>error<sp/>and</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>clients<sp/>would<sp/>not<sp/>know<sp/>to<sp/>retry.</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>Exceptions<sp/>and<sp/>catch<sp/>blocks:</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/language/try_catch</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>-<sp/>std::runtime_error<sp/>(a<sp/>standard<sp/>exception<sp/>carrying<sp/>a<sp/>message):</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/error/runtime_error</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>-<sp/>Inheritance:<sp/>https://en.cppreference.com/w/cpp/language/derived_class</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>-<sp/>HTTP<sp/>503<sp/>Service<sp/>Unavailable<sp/>and<sp/>Retry-After</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>-<sp/>explicit<sp/>constructors<sp/>(prevent<sp/>accidental<sp/>implicit<sp/>conversion):</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/language/explicit</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>guard:<sp/>define<sp/>this<sp/>exception<sp/>at<sp/>most<sp/>once<sp/>per</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>translation<sp/>unit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdexcept&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::runtime_error,<sp/>the<sp/>base<sp/>class,<sp/>is<sp/>declared<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>is<sp/>used<sp/>for<sp/>the<sp/>exception<sp/>message.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Thrown<sp/>when<sp/>no<sp/>database<sp/>connection<sp/>became<sp/>free<sp/>within<sp/>DB_ACQUIRE_TIMEOUT_MS.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>It<sp/>is<sp/>not<sp/>a<sp/>query<sp/>failure:<sp/>callers<sp/>answer<sp/>503<sp/>with<sp/>Retry-After<sp/>instead<sp/>of<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>generic<sp/>error.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="43"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>@class<sp/>DatabaseBusy</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Exception<sp/>signalling<sp/>that<sp/>the<sp/>connection<sp/>pool<sp/>could<sp/>not<sp/>lease<sp/>a</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>connection<sp/>in<sp/>time.</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>@details<sp/>Distinguishes<sp/>pool<sp/>exhaustion<sp/>from<sp/>a<sp/>genuine<sp/>query<sp/>failure<sp/>so<sp/>the</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>HTTP<sp/>layer<sp/>can<sp/>map<sp/>it<sp/>to<sp/>503<sp/>(Service<sp/>Unavailable)<sp/>with<sp/>Retry-After<sp/>rather</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>than<sp/>500.<sp/>Derives<sp/>from<sp/>`std::runtime_error`<sp/>so<sp/>generic<sp/>handlers<sp/>still<sp/>catch</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>it.</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>@see<sp/>api::v2::Http::statusForException,</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>DatabaseConnectionPool::get_connection</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="classDatabaseBusy" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" kindref="member">DatabaseBusy</ref></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Inherits<sp/>the<sp/>message-carrying<sp/>behaviour<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>stays<sp/>catchable<sp/>as<sp/>a<sp/>std::exception.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::runtime_error<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Constructs<sp/>the<sp/>exception<sp/>with<sp/>a<sp/>default<sp/>or<sp/>custom<sp/>message.</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>what<sp/>Message<sp/>describing<sp/>the<sp/>busy<sp/>condition.</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" kindref="member">DatabaseBusy</ref>(</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>what<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Database<sp/>is<sp/>busy,<sp/>no<sp/>connection<sp/>available&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="namespacestd" kindref="compound">std</ref>::runtime_error(what)<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>`explicit`<sp/>prevents<sp/>accidentally<sp/>creating<sp/>this<sp/>exception<sp/>from<sp/>a<sp/>bare</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>string;<sp/>the<sp/>default<sp/>message<sp/>explains<sp/>the<sp/>common<sp/>case.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal">};</highlight></codeline>
     </programlisting>
     <location file="src/database/databasebusy.hpp"/>
   </compounddef>

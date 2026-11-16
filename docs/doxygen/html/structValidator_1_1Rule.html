@@ -128,8 +128,8 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('structValidato
 Public Types</h2></td></tr>
 <tr class="memitem:ac2209fa7790b33a3c0b8d2e331c533a7" id="r_ac2209fa7790b33a3c0b8d2e331c533a7"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#ac2209fa7790b33a3c0b8d2e331c533a7">Action</a> : std::uint8_t { <br />
 &#160;&#160;<a class="el" href="#ac2209fa7790b33a3c0b8d2e331c533a7a0753c9c32b6bf47d97d8b16158906388">NONE</a> = 0
-, <a class="el" href="#ac2209fa7790b33a3c0b8d2e331c533a7acf64a80b49ebda9168c3d7a2b6f95f15">IGNORE_IF_MISSING_FROM_SCHEMA</a> = 1U &lt;&lt; 0U
-, <a class="el" href="#ac2209fa7790b33a3c0b8d2e331c533a7a61500db96634a6ab0be12a77a8460481">IGNORE_IF_NOT_NULLABLE_IN_SCHEMA</a> = 1U &lt;&lt; 1U
+, <a class="el" href="#ac2209fa7790b33a3c0b8d2e331c533a7acf64a80b49ebda9168c3d7a2b6f95f15">IGNORE_IF_MISSING_FROM_SCHEMA</a>
+, <a class="el" href="#ac2209fa7790b33a3c0b8d2e331c533a7a61500db96634a6ab0be12a77a8460481">IGNORE_IF_NOT_NULLABLE_IN_SCHEMA</a>
 , <a class="el" href="#ac2209fa7790b33a3c0b8d2e331c533a7ad45728414bb4b722bdff45f0f70692c7">ASSERT_IMMUTABLE</a> = 1U &lt;&lt; 2U
 , <br />
 &#160;&#160;<a class="el" href="#ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006">ASSERT_NOT_PRESENT</a> = 1U &lt;&lt; 3U
@@ -181,7 +181,7 @@ Friends</h2></td></tr>
 <div class="textblock"><p>A set of validation exceptions keyed by the actions they relax or assert. </p>
 <p>Holds one or more bitmask <a class="el" href="#ac2209fa7790b33a3c0b8d2e331c533a7" title="Bitmask of validation relaxations/assertions that make up a rule.">Action</a> flags and, for each flag group, the set of column names it applies to. A check passes only when the relevant flag is present in <a class="el" href="#ae4e62d78091b24b8d55c84d62a8988d4" title="action">action</a> and a matching flag group contains the key being checked. Rules are typically static const objects in controller code, composed with the bitwise operators. </p><dl class="section note"><dt>Note</dt><dd>Copying/moving is implicit; the key sets own their strings. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00081">81</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00099">99</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
 </div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Member Enumeration Documentation</h2>
 <a id="ac2209fa7790b33a3c0b8d2e331c533a7" name="ac2209fa7790b33a3c0b8d2e331c533a7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac2209fa7790b33a3c0b8d2e331c533a7">&#9670;&#160;</a></span>Action</h2>
@@ -205,7 +205,7 @@ Friends</h2></td></tr>
 <tr><td class="fieldname"><a id="ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006" name="ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006"></a>ASSERT_NOT_PRESENT&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00087">87</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00105">105</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
 
 </div>
 </div>
@@ -247,9 +247,9 @@ Friends</h2></td></tr>
 </dl>
 <dl class="section pre"><dt>Precondition</dt><dd>At least one <a class="el" href="#ac2209fa7790b33a3c0b8d2e331c533a7" title="Bitmask of validation relaxations/assertions that make up a rule.">Action</a> flag should be set, otherwise the rule can never match. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00122">122</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00151">151</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="validator_8hpp_source.html#l00097">action</a>.</p>
+<p class="reference">References <a class="el" href="validator_8hpp_source.html#l00117">action</a>, and <a class="el" href="validator_8hpp_source.html#l00122">keys</a>.</p>
 
 </div>
 </div>
@@ -318,11 +318,11 @@ Friends</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True only when <code class="param">check</code> is set in this rule and <code class="param">key</code> belongs to a flag group that intersects <code class="param">check</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00108">108</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00132">132</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="validator_8hpp_source.html#l00108">check()</a>, <a class="el" href="validator_8hpp_source.html#l00174">hasKey()</a>, and <a class="el" href="validator_8hpp_source.html#l00168">hasMatch()</a>.</p>
+<p class="reference">References <a class="el" href="validator_8hpp_source.html#l00132">check()</a>, <a class="el" href="validator_8hpp_source.html#l00221">hasKey()</a>, and <a class="el" href="validator_8hpp_source.html#l00210">hasMatch()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="validator_8hpp_source.html#l00108">check()</a>, <a class="el" href="validator_8cpp_source.html#l00374">Validator::checkColumns()</a>, <a class="el" href="validator_8cpp_source.html#l00409">Validator::ensureAllKeysExist()</a>, <a class="el" href="validator_8hpp_source.html#l00174">hasKey()</a>, <a class="el" href="validator_8hpp_source.html#l00168">hasMatch()</a>, <a class="el" href="validator_8hpp_source.html#l00170">hasMatch()</a>, and <a class="el" href="validator_8cpp_source.html#l00162">Validator::validateDatabaseReadSchema()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="validator_8hpp_source.html#l00132">check()</a>, <a class="el" href="validator_8cpp_source.html#l00511">Validator::checkColumns()</a>, <a class="el" href="validator_8cpp_source.html#l00564">Validator::ensureAllKeysExist()</a>, <a class="el" href="validator_8hpp_source.html#l00221">hasKey()</a>, <a class="el" href="validator_8hpp_source.html#l00210">hasMatch()</a>, <a class="el" href="validator_8hpp_source.html#l00214">hasMatch()</a>, and <a class="el" href="validator_8cpp_source.html#l00211">Validator::validateDatabaseReadSchema()</a>.</p>
 
 </div>
 </div>
@@ -355,11 +355,11 @@ Friends</h2></td></tr>
 
 <p>True when <code class="param">element</code> appears in a key set whose flags intersect <code class="param">check</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00174">174</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00221">221</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="validator_8hpp_source.html#l00108">check()</a>, and <a class="el" href="validator_8hpp_source.html#l00168">hasMatch()</a>.</p>
+<p class="reference">References <a class="el" href="validator_8hpp_source.html#l00132">check()</a>, <a class="el" href="validator_8hpp_source.html#l00210">hasMatch()</a>, and <a class="el" href="validator_8hpp_source.html#l00122">keys</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="validator_8hpp_source.html#l00108">check()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="validator_8hpp_source.html#l00132">check()</a>.</p>
 
 </div>
 </div>
@@ -388,11 +388,11 @@ Friends</h2></td></tr>
 
 <p>True when the rule's combined action intersects <code class="param">check</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00168">168</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00210">210</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="validator_8hpp_source.html#l00097">action</a>, <a class="el" href="validator_8hpp_source.html#l00108">check()</a>, and <a class="el" href="validator_8hpp_source.html#l00089">NONE</a>.</p>
+<p class="reference">References <a class="el" href="validator_8hpp_source.html#l00117">action</a>, <a class="el" href="validator_8hpp_source.html#l00132">check()</a>, and <a class="el" href="validator_8hpp_source.html#l00106">NONE</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="validator_8hpp_source.html#l00108">check()</a>, and <a class="el" href="validator_8hpp_source.html#l00174">hasKey()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="validator_8hpp_source.html#l00132">check()</a>, and <a class="el" href="validator_8hpp_source.html#l00221">hasKey()</a>.</p>
 
 </div>
 </div>
@@ -425,9 +425,9 @@ Friends</h2></td></tr>
 
 <p>True when a stored flag group intersects <code class="param">check</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00170">170</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00214">214</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="validator_8hpp_source.html#l00108">check()</a>, and <a class="el" href="validator_8hpp_source.html#l00089">NONE</a>.</p>
+<p class="reference">References <a class="el" href="validator_8hpp_source.html#l00132">check()</a>, and <a class="el" href="validator_8hpp_source.html#l00106">NONE</a>.</p>
 
 </div>
 </div>
@@ -456,9 +456,9 @@ Friends</h2></td></tr>
 
 <p>Convenience conversion: true when at least one action flag is set. </p>
 
-<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00163">163</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00203">203</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="validator_8hpp_source.html#l00097">action</a>.</p>
+<p class="reference">References <a class="el" href="validator_8hpp_source.html#l00117">action</a>.</p>
 
 </div>
 </div>
@@ -492,7 +492,7 @@ Friends</h2></td></tr>
 
 <p>Returns the intersection of two action bitmasks. </p>
 
-<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00136">136</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00170">170</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
 
 </div>
 </div>
@@ -525,7 +525,7 @@ Friends</h2></td></tr>
 
 <p>Keeps only the flags common to <code class="param">first</code> and <code class="param">second</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00151">151</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00187">187</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
 
 </div>
 </div>
@@ -558,7 +558,7 @@ Friends</h2></td></tr>
 
 <p>Combines two action flags into one bitmask. </p>
 
-<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00129">129</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00161">161</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
 
 </div>
 </div>
@@ -591,7 +591,7 @@ Friends</h2></td></tr>
 
 <p>Adds <code class="param">second's</code> flags to <code class="param">first</code> in place. </p>
 
-<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00143">143</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00179">179</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
 
 </div>
 </div>
@@ -620,7 +620,7 @@ Friends</h2></td></tr>
 
 <p>Inverts all eight bits; include NONE filtering at the call site. </p>
 
-<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00159">159</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00196">196</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
 
 </div>
 </div>
@@ -639,9 +639,9 @@ Friends</h2></td></tr>
 
 <p>Combined action flags that this rule activates. </p>
 
-<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00097">97</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00117">117</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="validator_8hpp_source.html#l00168">hasMatch()</a>, <a class="el" href="validator_8hpp_source.html#l00163">operator bool()</a>, and <a class="el" href="validator_8hpp_source.html#l00122">Rule()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="validator_8hpp_source.html#l00210">hasMatch()</a>, <a class="el" href="validator_8hpp_source.html#l00203">operator bool()</a>, and <a class="el" href="validator_8hpp_source.html#l00151">Rule()</a>.</p>
 
 </div>
 </div>
@@ -659,7 +659,9 @@ Friends</h2></td></tr>
 
 <p>Maps an action flag (or group of flags) to the keys it applies to. </p>
 
-<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00099">99</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="validator_8hpp_source.html#l00122">122</a> of file <a class="el" href="validator_8hpp_source.html">validator.hpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="validator_8hpp_source.html#l00221">hasKey()</a>, and <a class="el" href="validator_8hpp_source.html#l00151">Rule()</a>.</p>
 
 </div>
 </div>

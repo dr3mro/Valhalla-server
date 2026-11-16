@@ -11,7 +11,8 @@
         <argsstring></argsstring>
         <name>TABLENAME</name>
         <qualifiedname>VisitDrugs::TABLENAME</qualifiedname>
-        <initializer>= &quot;patients_visitdrugs&quot;</initializer>
+        <initializer>                            =
+&quot;patients_visitdrugs&quot;</initializer>
         <briefdescription>
 <para>Table bound to this entity; used by CRUD builders and the read/update/delete permission joins. </para>
         </briefdescription>
@@ -22,12 +23,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="57" column="27" bodyfile="src/entities/services/clinics/visits/visitdrugs.hpp" bodystart="57" bodyend="-1"/>
-        <referencedby refid="classVisitDrugs_1aeb6099460d22bc92712831274c255c37" compoundref="visitdrugs_8hpp" startline="139" endline="139">getPermissionsQueryForDelete</referencedby>
-        <referencedby refid="classVisitDrugs_1ae06f34defd9095528817ea0d16af8516" compoundref="visitdrugs_8hpp" startline="127" endline="127">getPermissionsQueryForRead</referencedby>
-        <referencedby refid="classVisitDrugs_1ac6f9974b6fe18393bdb2a622bce8a4fd" compoundref="visitdrugs_8hpp" startline="133" endline="133">getPermissionsQueryForUpdate</referencedby>
-        <referencedby refid="classVisitDrugs_1a578f61d3e2a4639511cbde16270085aa" compoundref="visitdrugs_8hpp" startline="82" endline="82">getTableName</referencedby>
-        <referencedby refid="classVisitDrugs_1a159d440a52935fadf1b3a98c68ecc4ac" compoundref="visitdrugs_8hpp" startline="74" endline="76">VisitDrugs</referencedby>
+        <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="78" column="25" bodyfile="src/entities/services/clinics/visits/visitdrugs.hpp" bodystart="78" bodyend="-1"/>
+        <referencedby refid="classVisitDrugs_1aeb6099460d22bc92712831274c255c37" compoundref="visitdrugs_8hpp" startline="219" endline="222">getPermissionsQueryForDelete</referencedby>
+        <referencedby refid="classVisitDrugs_1ae06f34defd9095528817ea0d16af8516" compoundref="visitdrugs_8hpp" startline="197" endline="200">getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classVisitDrugs_1ac6f9974b6fe18393bdb2a622bce8a4fd" compoundref="visitdrugs_8hpp" startline="208" endline="211">getPermissionsQueryForUpdate</referencedby>
+        <referencedby refid="classVisitDrugs_1a578f61d3e2a4639511cbde16270085aa" compoundref="visitdrugs_8hpp" startline="119" endline="121">getTableName</referencedby>
+        <referencedby refid="classVisitDrugs_1a159d440a52935fadf1b3a98c68ecc4ac" compoundref="visitdrugs_8hpp" startline="109" endline="113">VisitDrugs</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classVisitDrugs_1a515e0e7dff66bd7408bb5de123b9db9e" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>auto</type>
@@ -35,7 +36,8 @@
         <argsstring></argsstring>
         <name>KEYREFTABLENAME</name>
         <qualifiedname>VisitDrugs::KEYREFTABLENAME</qualifiedname>
-        <initializer>= &quot;clinics_visits&quot;</initializer>
+        <initializer>                                  =
+&quot;clinics_visits&quot;</initializer>
         <briefdescription>
 <para>Table whose <computeroutput>id</computeroutput> is the create-payload key and whose <computeroutput>clinic_id</computeroutput> identifies the owning clinic. </para>
         </briefdescription>
@@ -43,8 +45,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="59" column="27" bodyfile="src/entities/services/clinics/visits/visitdrugs.hpp" bodystart="59" bodyend="-1"/>
-        <referencedby refid="classVisitDrugs_1a15cbcaeec950481fe5fde4402de33581" compoundref="visitdrugs_8hpp" startline="105" endline="119">getPermissionsQueryForCreate</referencedby>
+        <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="84" column="25" bodyfile="src/entities/services/clinics/visits/visitdrugs.hpp" bodystart="84" bodyend="-1"/>
+        <referencedby refid="classVisitDrugs_1a15cbcaeec950481fe5fde4402de33581" compoundref="visitdrugs_8hpp" startline="155" endline="186">getPermissionsQueryForCreate</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classVisitDrugs_1a0879e3e5537fed8ded204400c07a7557" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>auto</type>
@@ -52,7 +54,8 @@
         <argsstring></argsstring>
         <name>CREATE_KEY</name>
         <qualifiedname>VisitDrugs::CREATE_KEY</qualifiedname>
-        <initializer>= &quot;id&quot;</initializer>
+        <initializer>                             =
+&quot;id&quot;</initializer>
         <briefdescription>
 <para>Create-payload key holding the visit id used to resolve clinic ownership. </para>
         </briefdescription>
@@ -60,9 +63,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="61" column="27" bodyfile="src/entities/services/clinics/visits/visitdrugs.hpp" bodystart="61" bodyend="-1"/>
-        <referencedby refid="classVisitDrugs_1adca70669166195bd09aa66a0aa442eff" compoundref="visitdrugs_8hpp" startline="87" endline="87">getCreateKey</referencedby>
-        <referencedby refid="classVisitDrugs_1a15cbcaeec950481fe5fde4402de33581" compoundref="visitdrugs_8hpp" startline="105" endline="119">getPermissionsQueryForCreate</referencedby>
+        <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="89" column="25" bodyfile="src/entities/services/clinics/visits/visitdrugs.hpp" bodystart="89" bodyend="-1"/>
+        <referencedby refid="classVisitDrugs_1adca70669166195bd09aa66a0aa442eff" compoundref="visitdrugs_8hpp" startline="126" endline="128">getCreateKey</referencedby>
+        <referencedby refid="classVisitDrugs_1a15cbcaeec950481fe5fde4402de33581" compoundref="visitdrugs_8hpp" startline="155" endline="186">getPermissionsQueryForCreate</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -90,7 +93,7 @@
 <parametername>T</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>A type accepted by <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref>, e.g. <ref refid="namespaceapi_1_1v2_1_1Types_1ac9a246b12a16bc018eec47370d2d6a20" kindref="member">api::v2::Types::Create_t</ref> or <ref refid="classRead__t" kindref="compound">Read_t</ref>. </para>
+<para>A type accepted by <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref>, e.g. <ref refid="namespaceapi_1_1v2_1_1Types_1a3c62a5c40f89f4df780a0aa64a374461" kindref="member">api::v2::Types::Create_t</ref> or <ref refid="classRead__t" kindref="compound">Read_t</ref>. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -107,9 +110,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="74" column="5" bodyfile="src/entities/services/clinics/visits/visitdrugs.hpp" bodystart="74" bodyend="76"/>
+        <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="109" column="3" bodyfile="src/entities/services/clinics/visits/visitdrugs.hpp" bodystart="109" bodyend="113"/>
         <references refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911">Case::Case</references>
-        <references refid="classVisitDrugs_1a897b24b45802851fb17d36a929ea03c0" compoundref="visitdrugs_8hpp" startline="57">TABLENAME</references>
+        <references refid="classVisitDrugs_1a897b24b45802851fb17d36a929ea03c0" compoundref="visitdrugs_8hpp" startline="78">TABLENAME</references>
       </memberdef>
       <memberdef kind="function" id="classVisitDrugs_1aab3c3b5977e832eb69266c2302ac0e55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -124,7 +127,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="92" column="5"/>
+        <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="135" column="3"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -144,8 +147,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="82" column="27" bodyfile="src/entities/services/clinics/visits/visitdrugs.hpp" bodystart="82" bodyend="82"/>
-        <references refid="classVisitDrugs_1a897b24b45802851fb17d36a929ea03c0" compoundref="visitdrugs_8hpp" startline="57">TABLENAME</references>
+        <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="119" column="25" bodyfile="src/entities/services/clinics/visits/visitdrugs.hpp" bodystart="119" bodyend="121"/>
+        <references refid="classVisitDrugs_1a897b24b45802851fb17d36a929ea03c0" compoundref="visitdrugs_8hpp" startline="78">TABLENAME</references>
       </memberdef>
       <memberdef kind="function" id="classVisitDrugs_1adca70669166195bd09aa66a0aa442eff" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>auto</type>
@@ -163,8 +166,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="87" column="27" bodyfile="src/entities/services/clinics/visits/visitdrugs.hpp" bodystart="87" bodyend="87"/>
-        <references refid="classVisitDrugs_1a0879e3e5537fed8ded204400c07a7557" compoundref="visitdrugs_8hpp" startline="61">CREATE_KEY</references>
+        <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="126" column="25" bodyfile="src/entities/services/clinics/visits/visitdrugs.hpp" bodystart="126" bodyend="128"/>
+        <references refid="classVisitDrugs_1a0879e3e5537fed8ded204400c07a7557" compoundref="visitdrugs_8hpp" startline="89">CREATE_KEY</references>
       </memberdef>
       <memberdef kind="function" id="classVisitDrugs_1a15cbcaeec950481fe5fde4402de33581" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -180,7 +183,7 @@
 <para>Builds the SQL that resolves the owning clinic for a create request. </para>
         </briefdescription>
         <detaileddescription>
-<para>Reads the visit id from <computeroutput>data_j</computeroutput> using CREATE_KEY and delegates to the <ref refid="classCase" kindref="compound">Case</ref> base, which joins <computeroutput>clinics</computeroutput> with <computeroutput>clinics_visits</computeroutput> on clinic_id. <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref> runs the returned SELECT before the insert; no insert occurs here. <parameterlist kind="param"><parameteritem>
+<para>Reads the visit id from <computeroutput>data_j</computeroutput> using CREATE_KEY and delegates to the <ref refid="classCase" kindref="compound">Case</ref> base, which joins <computeroutput>clinics</computeroutput> with <computeroutput>clinics_visits</computeroutput> on clinic_id. <ref refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21" kindref="member">PermissionManager</ref> runs the returned SELECT before the insert; no insert occurs here. <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">data_j</parametername>
 </parameternamelist>
@@ -197,11 +200,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="105" column="26" bodyfile="src/entities/services/clinics/visits/visitdrugs.hpp" bodystart="105" bodyend="119"/>
-        <references refid="classVisitDrugs_1a0879e3e5537fed8ded204400c07a7557" compoundref="visitdrugs_8hpp" startline="61">CREATE_KEY</references>
-        <references refid="global_8hpp_1a68447123f2c27bb7bcdbbaec4091dab7" compoundref="global_8hpp" startline="46" endline="48">CRITICALMESSAGE</references>
-        <references refid="classCase_1a5617a4962ddeaabd3094fae406c860f6" compoundref="case_8hpp" startline="119" endline="130">Case::getPermissionsQueryForCreateImpl</references>
-        <references refid="classVisitDrugs_1a515e0e7dff66bd7408bb5de123b9db9e" compoundref="visitdrugs_8hpp" startline="59">KEYREFTABLENAME</references>
+        <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="155" column="24" bodyfile="src/entities/services/clinics/visits/visitdrugs.hpp" bodystart="155" bodyend="186"/>
+        <references refid="classVisitDrugs_1a0879e3e5537fed8ded204400c07a7557" compoundref="visitdrugs_8hpp" startline="89">CREATE_KEY</references>
+        <references refid="global_8hpp_1a68447123f2c27bb7bcdbbaec4091dab7" compoundref="global_8hpp" startline="48" endline="54">CRITICALMESSAGE</references>
+        <references refid="classCase_1a5617a4962ddeaabd3094fae406c860f6" compoundref="case_8hpp" startline="154" endline="170">Case::getPermissionsQueryForCreateImpl</references>
+        <references refid="classVisitDrugs_1a515e0e7dff66bd7408bb5de123b9db9e" compoundref="visitdrugs_8hpp" startline="84">KEYREFTABLENAME</references>
       </memberdef>
       <memberdef kind="function" id="classVisitDrugs_1ae06f34defd9095528817ea0d16af8516" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -232,9 +235,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="127" column="26" bodyfile="src/entities/services/clinics/visits/visitdrugs.hpp" bodystart="127" bodyend="127"/>
-        <references refid="classCase_1a549bb017161d692a03db738d940b9b2f" compoundref="case_8hpp" startline="138" endline="147">Case::getPermissionsQueryForReadImp</references>
-        <references refid="classVisitDrugs_1a897b24b45802851fb17d36a929ea03c0" compoundref="visitdrugs_8hpp" startline="57">TABLENAME</references>
+        <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="197" column="24" bodyfile="src/entities/services/clinics/visits/visitdrugs.hpp" bodystart="197" bodyend="200"/>
+        <references refid="classCase_1a549bb017161d692a03db738d940b9b2f" compoundref="case_8hpp" startline="181" endline="194">Case::getPermissionsQueryForReadImp</references>
+        <references refid="classVisitDrugs_1a897b24b45802851fb17d36a929ea03c0" compoundref="visitdrugs_8hpp" startline="78">TABLENAME</references>
       </memberdef>
       <memberdef kind="function" id="classVisitDrugs_1ac6f9974b6fe18393bdb2a622bce8a4fd" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -265,9 +268,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="133" column="26" bodyfile="src/entities/services/clinics/visits/visitdrugs.hpp" bodystart="133" bodyend="133"/>
-        <references refid="classCase_1acfa6a0504f8706a2d5acceb6cf2d1edf" compoundref="case_8hpp" startline="155" endline="164">Case::getPermissionsQueryForUpdateImpl</references>
-        <references refid="classVisitDrugs_1a897b24b45802851fb17d36a929ea03c0" compoundref="visitdrugs_8hpp" startline="57">TABLENAME</references>
+        <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="208" column="24" bodyfile="src/entities/services/clinics/visits/visitdrugs.hpp" bodystart="208" bodyend="211"/>
+        <references refid="classCase_1acfa6a0504f8706a2d5acceb6cf2d1edf" compoundref="case_8hpp" startline="205" endline="218">Case::getPermissionsQueryForUpdateImpl</references>
+        <references refid="classVisitDrugs_1a897b24b45802851fb17d36a929ea03c0" compoundref="visitdrugs_8hpp" startline="78">TABLENAME</references>
       </memberdef>
       <memberdef kind="function" id="classVisitDrugs_1aeb6099460d22bc92712831274c255c37" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -298,9 +301,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="139" column="26" bodyfile="src/entities/services/clinics/visits/visitdrugs.hpp" bodystart="139" bodyend="139"/>
-        <references refid="classCase_1a1dd10871e1bd41f7d55b2b6f54da4fff" compoundref="case_8hpp" startline="172" endline="181">Case::getPermissionsQueryForDeleteImp</references>
-        <references refid="classVisitDrugs_1a897b24b45802851fb17d36a929ea03c0" compoundref="visitdrugs_8hpp" startline="57">TABLENAME</references>
+        <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="219" column="24" bodyfile="src/entities/services/clinics/visits/visitdrugs.hpp" bodystart="219" bodyend="222"/>
+        <references refid="classCase_1a1dd10871e1bd41f7d55b2b6f54da4fff" compoundref="case_8hpp" startline="229" endline="242">Case::getPermissionsQueryForDeleteImp</references>
+        <references refid="classVisitDrugs_1a897b24b45802851fb17d36a929ea03c0" compoundref="visitdrugs_8hpp" startline="78">TABLENAME</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -309,7 +312,7 @@
     <detaileddescription>
 <para>A thin value type that binds the generic Case/Entity CRUD machinery to one table. Despite the <computeroutput>patients_</computeroutput> prefix of the table name, create-authorisation is resolved through a visit: CREATE_KEY identifies a <computeroutput>clinics_visits</computeroutput> row, whose clinic_id links to the owning clinic. SQL generation is inherited; this class only fixes the table name and the reference table. The static getPermissionsQueryFor* helpers are taken as function pointers by <ref refid="classapi_1_1v2_1_1PermissionManager_1a7ca637c16b64d7ebc2e29acc0f366cf0" kindref="member">PermissionManager::canCreate</ref>/canRead/canUpdate/canDelete for api::v2::Case_t T. Registered as <ref refid="classClinicController" kindref="compound">ClinicController&lt;VisitDrugs&gt;</ref> under the <computeroutput>visitDrugs</computeroutput> serviceType. Ownership: the data wrapper is copied into <ref refid="classEntity" kindref="compound">Entity</ref> and is const thereafter; no mutable state and no locking of its own. Copy and move are deleted by <ref refid="classCase" kindref="compound">Case</ref>. <simplesect kind="note"><para>No default constructor: <ref refid="classEntity" kindref="compound">Entity</ref> needs a data wrapper to build statements from. </para>
 </simplesect>
-<simplesect kind="see"><para><ref refid="classCase" kindref="compound">Case</ref>, <ref refid="classEntity" kindref="compound">Entity</ref>, <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref>, <ref refid="classClinicController" kindref="compound">ClinicController</ref> </para>
+<simplesect kind="see"><para><ref refid="classCase" kindref="compound">Case</ref>, <ref refid="classEntity" kindref="compound">Entity</ref>, <ref refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21" kindref="member">PermissionManager</ref>, <ref refid="classClinicController" kindref="compound">ClinicController</ref> </para>
 </simplesect>
 </para>
     </detaileddescription>
@@ -361,7 +364,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="50" column="1" bodyfile="src/entities/services/clinics/visits/visitdrugs.hpp" bodystart="51" bodyend="140"/>
+    <location file="src/entities/services/clinics/visits/visitdrugs.hpp" line="70" column="1" bodyfile="src/entities/services/clinics/visits/visitdrugs.hpp" bodystart="70" bodyend="223"/>
     <listofallmembers>
       <member refid="classBase_1a58887755525abd3f340963e2bbdcc972" prot="public" virt="non-virtual"><scope>VisitDrugs</scope><name>Base</name></member>
       <member refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" prot="protected" virt="non-virtual"><scope>VisitDrugs</scope><name>buildCreateStatement</name></member>

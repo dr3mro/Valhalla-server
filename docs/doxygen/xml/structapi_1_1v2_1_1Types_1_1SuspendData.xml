@@ -17,9 +17,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="577" column="18" bodyfile="src/entities/base/types.hpp" bodystart="577" bodyend="-1"/>
-        <referencedby refid="classapi_1_1v2_1_1Client_1aca2d94a63d7099b47ce5b1fce6ff49b1" compoundref="client_8hpp" startline="135" endline="153">api::v2::Client::getSqlToggleSuspendStatement</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1SuspendData_1ac6b1fa980e9a1e983755e42a20cc1415" compoundref="entities_2base_2types_8hpp" startline="583" endline="583">SuspendData</referencedby>
+        <location file="src/entities/base/types.hpp" line="790" column="14" bodyfile="src/entities/base/types.hpp" bodystart="790" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1Client_1aca2d94a63d7099b47ce5b1fce6ff49b1" compoundref="client_8hpp" startline="184" endline="215">api::v2::Client::getSqlToggleSuspendStatement</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1SuspendData_1ac6b1fa980e9a1e983755e42a20cc1415" compoundref="entities_2base_2types_8hpp" startline="797" endline="799">SuspendData</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -50,8 +50,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="583" column="9" bodyfile="src/entities/base/types.hpp" bodystart="583" bodyend="583"/>
-        <references refid="structapi_1_1v2_1_1Types_1_1SuspendData_1ad5b052303873a9083234af598934e180" compoundref="entities_2base_2types_8hpp" startline="577">client_id</references>
+        <location file="src/entities/base/types.hpp" line="797" column="5" bodyfile="src/entities/base/types.hpp" bodystart="797" bodyend="799"/>
+        <references refid="structapi_1_1v2_1_1Types_1_1SuspendData_1ad5b052303873a9083234af598934e180" compoundref="entities_2base_2types_8hpp" startline="790">client_id</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -59,7 +59,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/entities/base/types.hpp" line="572" column="5" bodyfile="src/entities/base/types.hpp" bodystart="573" bodyend="584"/>
+    <location file="src/entities/base/types.hpp" line="786" column="3" bodyfile="src/entities/base/types.hpp" bodystart="786" bodyend="800"/>
     <listofallmembers>
       <member refid="structapi_1_1v2_1_1Types_1_1SuspendData_1ad5b052303873a9083234af598934e180" prot="public" virt="non-virtual"><scope>api::v2::Types::SuspendData</scope><name>client_id</name></member>
       <member refid="structapi_1_1v2_1_1Types_1_1SuspendData_1ac6b1fa980e9a1e983755e42a20cc1415" prot="public" virt="non-virtual"><scope>api::v2::Types::SuspendData</scope><name>SuspendData</name></member>

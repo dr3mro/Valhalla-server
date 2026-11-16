@@ -120,50 +120,62 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('store_8cpp_sou
 <div class="contents">
 <a href="store_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file store.cpp</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief Defines the Store&#39;s single shared registry, lock and generation counter.</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * @details This file contains no functions. It only gives real storage to the three static variables that store.hpp</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *          declares: a map from a C++ type to its one shared object, a mutex protecting that map, and a counter used to</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *          refresh per-thread caches. The counter starts at 1 so that a brand-new thread, whose remembered value starts</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *          at 0, always performs a lookup the first time it asks for an object.</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * WHY THIS FILE MATTERS IN THE SERVER:</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> * These few definitions are the physical storage behind the service locator. Every call to Store::getObject(),</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * Store::cachedObject() or Store::replaceObject() reads or changes these variables. Without this file the header would</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * only declare names and the linker would report &quot;undefined reference&quot; errors. Tests also depend on the counter</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> * starting at 1, so a freshly installed fake is noticed on the very first cached lookup.</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> * CONCEPTS TO LEARN (for beginners):</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> * - None difficult here; this file only provides real storage (a &quot;definition&quot;) for names declared in the header.</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> * @author Amr Osman &lt;dr3mro@gmail.com&gt;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * @date 2026-11-16</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="store_8hpp.html">store.hpp</a>&quot;</span>  <span class="comment">// the class declaration whose static members are defined below</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;atomic&gt;</span>         <span class="comment">// std::atomic: the generation counter&#39;s type.</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &lt;cstdint&gt;</span>        <span class="comment">// std::uint64_t: the counter&#39;s fixed-width integer type.</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &lt;memory&gt;</span>         <span class="comment">// std::shared_ptr: the map stores objects through shared ownership.</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &lt;mutex&gt;</span>          <span class="comment">// std::mutex: the type of the registry lock.</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;typeindex&gt;</span>      <span class="comment">// std::type_index: the type used as the map key.</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &lt;unordered_map&gt;</span>  <span class="comment">// std::unordered_map: the type of the registry map.</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief Defines the Store&#39;s single shared registry, lock and generation</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * counter.</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details This file contains no functions. It only gives real storage to the</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * three static variables that store.hpp declares: a map from a C++ type to its</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * one shared object, a mutex protecting that map, and a counter used to refresh</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * per-thread caches. The counter starts at 1 so that a brand-new thread, whose</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * remembered value starts at 0, always performs a lookup the first time it asks</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> * for an object.</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * WHY THIS FILE MATTERS IN THE SERVER:</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> * These few definitions are the physical storage behind the service locator.</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> * Every call to Store::getObject(), Store::cachedObject() or</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> * Store::replaceObject() reads or changes these variables. Without this file</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> * the header would only declare names and the linker would report &quot;undefined</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> * reference&quot; errors. Tests also depend on the counter starting at 1, so a</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> * freshly installed fake is noticed on the very first cached lookup.</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> * CONCEPTS TO LEARN (for beginners):</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * - None difficult here; this file only provides real storage (a &quot;definition&quot;)</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> * for names declared in the header.</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> * @author Amr Osman &lt;dr3mro@gmail.com&gt;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> * @date 2026-11-16</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">// the class declaration whose static members are defined below</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &quot;<a class="code" href="store_8hpp.html">store.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">// Static member definitions</span><span class="comment"></span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">/**</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment"> * Type-keyed singleton registry shared by every translation unit.</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>std::unordered_map&lt;std::type_index, std::shared_ptr&lt;void&gt;&gt; <a class="code hl_variable" href="classStore.html#a27825898458fa79d1665a31030fdcd77">Store::inventory</a>;  <span class="comment">// empty at start; entries are added on first use</span><span class="comment"></span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">/**</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment"> * Serialises access to the registry.</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>std::mutex                                                 <a class="code hl_variable" href="classStore.html#a76db2e16906c8ffed79259a532795255">Store::inventoryMutex</a>;  <span class="comment">// only one thread may read or edit inventory at a time</span><span class="comment"></span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &lt;atomic&gt;</span>   <span class="comment">// std::atomic: the generation counter&#39;s type.</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &lt;cstdint&gt;</span>  <span class="comment">// std::uint64_t: the counter&#39;s fixed-width integer type.</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">// std::shared_ptr: the map stores objects through shared ownership.</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &lt;mutex&gt;</span>          <span class="comment">// std::mutex: the type of the registry lock.</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &lt;typeindex&gt;</span>      <span class="comment">// std::type_index: the type used as the map key.</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &lt;unordered_map&gt;</span>  <span class="comment">// std::unordered_map: the type of the registry map.</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">// Static member definitions</span><span class="comment"></span></div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">/**</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment"> * Starts at 1 so a fresh thread&#39;s cached &quot;seen&quot; value of 0 is always stale on its first cachedObject() call.</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment"> * Type-keyed singleton registry shared by every translation unit.</span></div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>std::atomic&lt;uint64_t&gt;                                      <a class="code hl_variable" href="classStore.html#ad9ed1336388988b3382f9e95229262ce">Store::generation</a>{1};  <span class="comment">// bumped by replaceObject() to invalidate thread-local caches</span></div>
-<div class="ttc" id="aclassStore_html_a27825898458fa79d1665a31030fdcd77"><div class="ttname"><a href="classStore.html#a27825898458fa79d1665a31030fdcd77">Store::inventory</a></div><div class="ttdeci">static std::unordered_map&lt; std::type_index, std::shared_ptr&lt; void &gt; &gt; inventory</div><div class="ttdef"><b>Definition</b> <a href="store_8hpp_source.html#l00227">store.hpp:227</a></div></div>
-<div class="ttc" id="aclassStore_html_a76db2e16906c8ffed79259a532795255"><div class="ttname"><a href="classStore.html#a76db2e16906c8ffed79259a532795255">Store::inventoryMutex</a></div><div class="ttdeci">static std::mutex inventoryMutex</div><div class="ttdef"><b>Definition</b> <a href="store_8hpp_source.html#l00231">store.hpp:231</a></div></div>
-<div class="ttc" id="aclassStore_html_ad9ed1336388988b3382f9e95229262ce"><div class="ttname"><a href="classStore.html#ad9ed1336388988b3382f9e95229262ce">Store::generation</a></div><div class="ttdeci">static std::atomic&lt; uint64_t &gt; generation</div><div class="ttdef"><b>Definition</b> <a href="store_8hpp_source.html#l00043">store.hpp:43</a></div></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>std::unordered_map&lt;std::type_index, std::shared_ptr&lt;void&gt;&gt;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_variable" href="classStore.html#a27825898458fa79d1665a31030fdcd77">Store::inventory</a>;  <span class="comment">// empty at start; entries are added on first use</span><span class="comment"></span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment"> * Serialises access to the registry.</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>std::mutex <a class="code hl_variable" href="classStore.html#a76db2e16906c8ffed79259a532795255">Store::inventoryMutex</a>;  <span class="comment">// only one thread may read or edit inventory</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                                   <span class="comment">// at a time</span><span class="comment"></span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment"> * Starts at 1 so a fresh thread&#39;s cached &quot;seen&quot; value of 0 is always stale on</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment"> * its first cachedObject() call.</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>std::atomic&lt;uint64_t&gt; <a class="code hl_variable" href="classStore.html#ad9ed1336388988b3382f9e95229262ce">Store::generation</a>{</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    1};  <span class="comment">// bumped by replaceObject() to invalidate thread-local caches</span></div>
+<div class="ttc" id="aclassStore_html_a27825898458fa79d1665a31030fdcd77"><div class="ttname"><a href="classStore.html#a27825898458fa79d1665a31030fdcd77">Store::inventory</a></div><div class="ttdeci">static std::unordered_map&lt; std::type_index, std::shared_ptr&lt; void &gt; &gt; inventory</div><div class="ttdef"><b>Definition</b> <a href="store_8hpp_source.html#l00318">store.hpp:318</a></div></div>
+<div class="ttc" id="aclassStore_html_a76db2e16906c8ffed79259a532795255"><div class="ttname"><a href="classStore.html#a76db2e16906c8ffed79259a532795255">Store::inventoryMutex</a></div><div class="ttdeci">static std::mutex inventoryMutex</div><div class="ttdef"><b>Definition</b> <a href="store_8hpp_source.html#l00323">store.hpp:323</a></div></div>
+<div class="ttc" id="aclassStore_html_ad9ed1336388988b3382f9e95229262ce"><div class="ttname"><a href="classStore.html#ad9ed1336388988b3382f9e95229262ce">Store::generation</a></div><div class="ttdeci">static std::atomic&lt; uint64_t &gt; generation</div><div class="ttdef"><b>Definition</b> <a href="store_8hpp_source.html#l00054">store.hpp:54</a></div></div>
 <div class="ttc" id="astore_8hpp_html"><div class="ttname"><a href="store_8hpp.html">store.hpp</a></div><div class="ttdoc">Process-wide service locator keyed by C++ type.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

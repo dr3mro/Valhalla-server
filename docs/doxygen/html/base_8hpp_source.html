@@ -121,161 +121,211 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('base_8hpp_sour
 <a href="base_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file base.hpp</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief Default construction; the interface itself carries no state.</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * @details Base is the shared blueprint (an &quot;abstract base class&quot;) for every entity in the</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * server. It declares the five SQL statement builders that each concrete entity must supply:</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * create, read, update, delete and search. It also provides a small helper called Binder that</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * safely turns values into numbered placeholders, so data is never pasted into SQL text. The</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * class stores no data of its own; it only fixes the shape that all derived entity classes follow.</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> * WHY THIS FILE MATTERS IN THE SERVER:</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * This is the bottom contract of the whole entity layer. Controllers call the five getSql* functions</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * through a Base reference without caring which concrete table is involved, and every concrete</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> * entity (Entity, Client, Service, Appointment, Case and friends) inherits from Base. Without it</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> * there would be no single way to ask &quot;give me the SQL for this operation&quot;, and the safe binding</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> * pattern would have to be copied into every table class by hand.</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> * CONCEPTS TO LEARN (for beginners):</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> * - std::optional: https://en.cppreference.com/w/cpp/utility/optional</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * - Abstract base class / pure virtual function: a function ending in &quot;= 0&quot; forces every child</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> *   class to implement it, so callers can use one common interface for all of them.</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * - SQL parameter binding: put $1, $2, ... markers in the SQL and pass the real values separately,</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> *   so user data can never change the meaning of the query; see https://en.cppreference.com/w/cpp</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> *   or the libpqxx documentation.</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> * @author Amr Osman &lt;dr3mro@gmail.com&gt;</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"> * @date 2026-11-16</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#pragma once  </span><span class="comment">// Include this header at most once per source file, to avoid duplicate definitions.</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &lt;fmt/format.h&gt;</span>  <span class="comment">// Provides fmt::format, used below to build placeholder strings such as &quot;$1&quot;.</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &lt;cstddef&gt;</span>   <span class="comment">// Brings in size_t, the type used for the placeholder counter.</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &lt;optional&gt;</span>  <span class="comment">// std::optional lets a builder return &quot;no statement&quot; instead of a fake empty string.</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &lt;pqxx/pqxx&gt;</span> <span class="comment">// The PostgreSQL C++ library; pqxx::params holds the values bound to a statement.</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &lt;string&gt;</span>    <span class="comment">// std::string is the return type of every SQL builder.</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment"></span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">/**</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment"> * Base class for all entities in the application.</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment"> * Provides common functionality for creating, reading, updating, deleting, and</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment"> * searching entities. Derived classes must implement the virtual functions to</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment"> * provide the SQL statements for each operation.</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment"> * @details The interface separates deciding what SQL to run from executing it: a caller asks an</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment"> * entity for a statement plus its bound parameters and hands both to the database layer. Every</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment"> * builder returns SQL containing only $1, $2, ... placeholders and appends the actual values to</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment"> * the caller-supplied pqxx::params, so column values are never written into the SQL text. A</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment"> * builder returns std::nullopt when it cannot produce a usable statement.</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment"> * @note The destructor is virtual because entities are used polymorphically through this interface.</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment"> * @see Entity, Binder</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment"> * @note For a beginner: &quot;virtual&quot; means the call is decided at runtime, so a Base pointer can</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment"> * reach the correct derived-class version of each function. &quot;= 0&quot; means this class gives no body</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment"> * and forces children to provide one; that is what makes Base abstract (not instantiable).</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment"> */</span></div>
-<div class="foldopen" id="foldopen00055" data-start="{" data-end="};">
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classBase.html">   55</a></span><span class="keyword">class </span><a class="code hl_function" href="classBase.html#a58887755525abd3f340963e2bbdcc972">Base</a></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>{</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>   <span class="keyword">public</span>:<span class="comment"></span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">     * @brief Default construction; the interface itself carries no state.</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classBase.html#a58887755525abd3f340963e2bbdcc972">   61</a></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classBase.html#a58887755525abd3f340963e2bbdcc972">Base</a>() = <span class="keywordflow">default</span>;  <span class="comment">// &quot;explicit&quot; with no arguments simply documents that this is a deliberate default constructor.</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment"></span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">     * @brief Permits safe deletion through a Base pointer.</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classBase.html#a306fb25541331080645a716286357ef9">   66</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="classBase.html#a306fb25541331080645a716286357ef9">~Base</a>() = <span class="keywordflow">default</span>;  <span class="comment">// Virtual so deleting a derived object through a Base* calls the right destructor.</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="comment">// Every builder returns SQL with $1, $2, ... placeholders and stores the values in params; values are never</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">// written into the SQL text.</span><span class="comment"></span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">     * @brief Builds the INSERT statement for the entity&#39;s payload.</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">     * @param[out] params Receives the values for the returned placeholders; builders clear it first.</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">     * @return SQL with $n placeholders, or std::nullopt if the statement cannot be built.</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">     * @note Values are bound rather than embedded in the returned text.</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classBase.html#a370479ee58fedd41365acea55b47de9b">   76</a></span>    <span class="keyword">virtual</span> std::optional&lt;std::string&gt; <a class="code hl_function" href="classBase.html#a370479ee58fedd41365acea55b47de9b">getSqlCreateStatement</a>(pqxx::params&amp; params) = 0;  <span class="comment">// Child supplies the INSERT; the reference lets us fill the caller&#39;s container.</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment"></span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">     * @brief Builds the SELECT statement for reading one entity by id.</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">     * @param[out] params Receives the bound id; builders clear the container first.</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">     * @return SQL with $n placeholders, or std::nullopt if no usable statement can be built (for</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment">     * example, when no id is available).</span></div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classBase.html#ad1d05549ca23bf4602c86fb3f6575d30">   84</a></span>    <span class="keyword">virtual</span> std::optional&lt;std::string&gt; <a class="code hl_function" href="classBase.html#ad1d05549ca23bf4602c86fb3f6575d30">getSqlReadStatement</a>(pqxx::params&amp; params)   = 0;  <span class="comment">// Child supplies the single-row SELECT.</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment"></span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">     * @brief Builds the UPDATE statement for the entity&#39;s payload.</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">     * @param[out] params Receives the bound values and id; builders clear the container first.</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment">     * @return SQL with $n placeholders, or std::nullopt if no usable statement can be built.</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="classBase.html#a48122a0f0bd77d2aadcbe10b3e0863fd">   91</a></span>    <span class="keyword">virtual</span> std::optional&lt;std::string&gt; <a class="code hl_function" href="classBase.html#a48122a0f0bd77d2aadcbe10b3e0863fd">getSqlUpdateStatement</a>(pqxx::params&amp; params) = 0;  <span class="comment">// Child supplies the UPDATE.</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment"></span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">     * @brief Builds the DELETE statement for an entity identified by id.</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment">     * @param[out] params Receives the bound id; builders clear the container first.</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment">     * @return SQL with $n placeholders, or std::nullopt if no usable statement can be built.</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="classBase.html#a35f7a42b849a9eaf439715a4b280a8f4">   98</a></span>    <span class="keyword">virtual</span> std::optional&lt;std::string&gt; <a class="code hl_function" href="classBase.html#a35f7a42b849a9eaf439715a4b280a8f4">getSqlDeleteStatement</a>(pqxx::params&amp; params) = 0;  <span class="comment">// Child supplies the DELETE.</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment"></span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment">     * @brief Builds the paginated search statement for the entity&#39;s table.</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="comment">     * @param[out] params Receives the bound keyword, limit and offset; builders clear it first.</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment">     * @return SQL with $n placeholders, or std::nullopt if no usable statement can be built.</span></div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment">     * @note Search filters and ordering identifiers cannot be bound and are instead validated</span></div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment">     * before being written into the statement by the concrete value types.</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="classBase.html#a3b86dc196e03d75434ff98e8e04fe303">  107</a></span>    <span class="keyword">virtual</span> std::optional&lt;std::string&gt; <a class="code hl_function" href="classBase.html#a3b86dc196e03d75434ff98e8e04fe303">getSqlSearchStatement</a>(pqxx::params&amp; params) = 0;  <span class="comment">// Child supplies the paginated SELECT.</span></div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>   <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="comment">// A builder asks the binder how each value is written into the query: bind(value) stores it in params and</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="comment">// returns its placeholder ($1, $2, ...).</span><span class="comment"></span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="comment">     * @brief Appends values to a pqxx::params and hands back the matching SQL placeholders.</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment">     * @details Construction clears the supplied container, so each fresh Binder restarts numbering</span></div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="comment">     * at $1 for one statement. Routing every value through bind() is what keeps callers from</span></div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="comment">     * concatenating untrusted data into SQL text.</span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="comment">     * @note Holds a borrowed reference to the params container and must not outlive it.</span></div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="comment">     * @note For a beginner: this is a helper struct that derived builders create on the stack for</span></div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment">     * one SQL statement. It remembers a running counter so the first value becomes $1, the second</span></div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment">     * $2, and so on, which is exactly what PostgreSQL expects in the prepared query.</span></div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment">     */</span></div>
-<div class="foldopen" id="foldopen00122" data-start="{" data-end="};">
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="structBase_1_1Binder.html">  122</a></span>    <span class="keyword">struct </span><a class="code hl_function" href="structBase_1_1Binder.html#a8aff08d8abb6b9a8abb7964019d5e057">Binder</a></div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    {<span class="comment"></span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="comment">        /**</span></div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="comment">         * @brief Binds to p and clears it so the first bind() produces $1.</span></div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="comment">         */</span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="structBase_1_1Binder.html#a8aff08d8abb6b9a8abb7964019d5e057">  127</a></span>        <span class="keyword">explicit</span> <a class="code hl_function" href="structBase_1_1Binder.html#a8aff08d8abb6b9a8abb7964019d5e057">Binder</a>(pqxx::params&amp; p) : <a class="code hl_variable" href="structBase_1_1Binder.html#aa2f67f67cd827fa79329b85e1757145e">params</a>(p) { <a class="code hl_variable" href="structBase_1_1Binder.html#aa2f67f67cd827fa79329b85e1757145e">params</a> = {}; }  <span class="comment">// Keep a reference to the caller&#39;s container and empty it so placeholders start fresh at $1.</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment"></span> </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="comment">        /**</span></div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="comment">         * @brief Appends a value to the parameter container and returns its placeholder.</span></div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="comment">         * @tparam T A type accepted by pqxx::params::append.</span></div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="comment">         * @param[in] value The value to bind; copied into the container by pqxx.</span></div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="comment">         * @return A placeholder of the form &quot;$n&quot;, with n increasing in call order from 1.</span></div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="comment">         */</span></div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00136" data-start="{" data-end="}">
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="structBase_1_1Binder.html#a8fb0871ea4d994dfad3360aac44d8c56">  136</a></span>        std::string <a class="code hl_function" href="structBase_1_1Binder.html#a8fb0871ea4d994dfad3360aac44d8c56">bind</a>(<span class="keyword">const</span> T&amp; value)  <span class="comment">// A template so any value type pqxx understands can be bound the same way.</span></div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        {</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>            <a class="code hl_variable" href="structBase_1_1Binder.html#aa2f67f67cd827fa79329b85e1757145e">params</a>.append(value);            <span class="comment">// Store the real value separately from the SQL text (safe binding).</span></div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>            <span class="keywordflow">return</span> fmt::format(<span class="stringliteral">&quot;${}&quot;</span>, ++<a class="code hl_variable" href="structBase_1_1Binder.html#aa2c6aab342d4d62357fb8c8c15ff61be">index</a>);  <span class="comment">// Bump the counter first, then return $1, $2, ... in that order.</span></div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        }</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * @details Base is the shared blueprint (an &quot;abstract base class&quot;) for every</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * entity in the server. It declares the five SQL statement builders that each</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * concrete entity must supply: create, read, update, delete and search. It also</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * provides a small helper called Binder that safely turns values into numbered</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * placeholders, so data is never pasted into SQL text. The class stores no data</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * of its own; it only fixes the shape that all derived entity classes follow.</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * WHY THIS FILE MATTERS IN THE SERVER:</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * This is the bottom contract of the whole entity layer. Controllers call the</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> * five getSql* functions through a Base reference without caring which concrete</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> * table is involved, and every concrete entity (Entity, Client, Service,</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> * Appointment, Case and friends) inherits from Base. Without it there would be</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> * no single way to ask &quot;give me the SQL for this operation&quot;, and the safe</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> * binding pattern would have to be copied into every table class by hand.</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * CONCEPTS TO LEARN (for beginners):</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> * - std::optional: https://en.cppreference.com/w/cpp/utility/optional</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * - Abstract base class / pure virtual function: a function ending in &quot;= 0&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> * forces every child class to implement it, so callers can use one common</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> * interface for all of them.</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> * - SQL parameter binding: put $1, $2, ... markers in the SQL and pass the real</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> * values separately, so user data can never change the meaning of the query;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"> * see https://en.cppreference.com/w/cpp or the libpqxx documentation.</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment"> * @author Amr Osman &lt;dr3mro@gmail.com&gt;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment"> * @date 2026-11-16</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#pragma once  </span><span class="comment">// Include this header at most once per source file, to avoid</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>              <span class="comment">// duplicate definitions.</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">// Provides fmt::format, used below to build placeholder strings such as &quot;$1&quot;.</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &lt;fmt/format.h&gt;</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">// Brings in size_t, the type used for the placeholder counter.</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &lt;cstddef&gt;</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">// std::optional lets a builder return &quot;no statement&quot; instead of a fake empty</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">// string.</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#include &lt;optional&gt;</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">// The PostgreSQL C++ library; pqxx::params holds the values bound to a</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">// statement.</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#include &lt;pqxx/pqxx&gt;</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#include &lt;string&gt;</span>  <span class="comment">// std::string is the return type of every SQL builder.</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment"></span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment"> * Base class for all entities in the application.</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment"> * Provides common functionality for creating, reading, updating, deleting, and</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment"> * searching entities. Derived classes must implement the virtual functions to</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment"> * provide the SQL statements for each operation.</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment"> * @details The interface separates deciding what SQL to run from executing it:</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment"> * a caller asks an entity for a statement plus its bound parameters and hands</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment"> * both to the database layer. Every builder returns SQL containing only $1, $2,</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment"> * ... placeholders and appends the actual values to the caller-supplied</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment"> * pqxx::params, so column values are never written into the SQL text. A builder</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment"> * returns std::nullopt when it cannot produce a usable statement.</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment"> * @note The destructor is virtual because entities are used polymorphically</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment"> * through this interface.</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment"> * @see Entity, Binder</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment"> * @note For a beginner: &quot;virtual&quot; means the call is decided at runtime, so a</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment"> * Base pointer can reach the correct derived-class version of each function. &quot;=</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment"> * 0&quot; means this class gives no body and forces children to provide one; that is</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment"> * what makes Base abstract (not instantiable).</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment"> */</span></div>
+<div class="foldopen" id="foldopen00068" data-start="{" data-end="};">
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classBase.html">   68</a></span><span class="keyword">class </span><a class="code hl_function" href="classBase.html#a58887755525abd3f340963e2bbdcc972">Base</a> {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> <span class="keyword">public</span>:<span class="comment"></span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">   * @brief Default construction; the interface itself carries no state.</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">   */</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classBase.html#a58887755525abd3f340963e2bbdcc972">   73</a></span>  <span class="keyword">explicit</span> <a class="code hl_function" href="classBase.html#a58887755525abd3f340963e2bbdcc972">Base</a>() = <span class="keywordflow">default</span>;  <span class="comment">// &quot;explicit&quot; with no arguments simply documents</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                              <span class="comment">// that this is a deliberate default constructor.</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment"></span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">   * @brief Permits safe deletion through a Base pointer.</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">   */</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classBase.html#a306fb25541331080645a716286357ef9">   79</a></span>  <span class="keyword">virtual</span> <a class="code hl_function" href="classBase.html#a306fb25541331080645a716286357ef9">~Base</a>() = <span class="keywordflow">default</span>;  <span class="comment">// Virtual so deleting a derived object through</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                              <span class="comment">// a Base* calls the right destructor.</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  <span class="comment">// Every builder returns SQL with $1, $2, ... placeholders and stores the</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  <span class="comment">// values in params; values are never written into the SQL text.</span><span class="comment"></span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment">   * @brief Builds the INSERT statement for the entity&#39;s payload.</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">   * @param[out] params Receives the values for the returned placeholders;</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">   * builders clear it first.</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">   * @return SQL with $n placeholders, or std::nullopt if the statement cannot</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment">   * be built.</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment">   * @note Values are bound rather than embedded in the returned text.</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment">   */</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classBase.html#a370479ee58fedd41365acea55b47de9b">   92</a></span>  <span class="keyword">virtual</span> std::optional&lt;std::string&gt; <a class="code hl_function" href="classBase.html#a370479ee58fedd41365acea55b47de9b">getSqlCreateStatement</a>(</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>      pqxx::params&amp; params) = 0;  <span class="comment">// Child supplies the INSERT; the reference</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                                  <span class="comment">// lets us fill the caller&#39;s container.</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment"></span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">   * @brief Builds the SELECT statement for reading one entity by id.</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment">   * @param[out] params Receives the bound id; builders clear the container</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment">   * first.</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment">   * @return SQL with $n placeholders, or std::nullopt if no usable statement</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment">   * can be built (for example, when no id is available).</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="comment">   */</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="classBase.html#ad1d05549ca23bf4602c86fb3f6575d30">  103</a></span>  <span class="keyword">virtual</span> std::optional&lt;std::string&gt; <a class="code hl_function" href="classBase.html#ad1d05549ca23bf4602c86fb3f6575d30">getSqlReadStatement</a>(</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>      pqxx::params&amp; params) = 0;  <span class="comment">// Child supplies the single-row SELECT.</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment"></span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment">   * @brief Builds the UPDATE statement for the entity&#39;s payload.</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment">   * @param[out] params Receives the bound values and id; builders clear the</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="comment">   * container first.</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment">   * @return SQL with $n placeholders, or std::nullopt if no usable statement</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment">   * can be built.</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment">   */</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="classBase.html#a48122a0f0bd77d2aadcbe10b3e0863fd">  113</a></span>  <span class="keyword">virtual</span> std::optional&lt;std::string&gt; <a class="code hl_function" href="classBase.html#a48122a0f0bd77d2aadcbe10b3e0863fd">getSqlUpdateStatement</a>(</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>      pqxx::params&amp; params) = 0;  <span class="comment">// Child supplies the UPDATE.</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="comment"></span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="comment">   * @brief Builds the DELETE statement for an entity identified by id.</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="comment">   * @param[out] params Receives the bound id; builders clear the container</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment">   * first.</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment">   * @return SQL with $n placeholders, or std::nullopt if no usable statement</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment">   * can be built.</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment">   */</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="classBase.html#a35f7a42b849a9eaf439715a4b280a8f4">  123</a></span>  <span class="keyword">virtual</span> std::optional&lt;std::string&gt; <a class="code hl_function" href="classBase.html#a35f7a42b849a9eaf439715a4b280a8f4">getSqlDeleteStatement</a>(</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>      pqxx::params&amp; params) = 0;  <span class="comment">// Child supplies the DELETE.</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="comment"></span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="comment">   * @brief Builds the paginated search statement for the entity&#39;s table.</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment">   * @param[out] params Receives the bound keyword, limit and offset; builders</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="comment">   * clear it first.</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="comment">   * @return SQL with $n placeholders, or std::nullopt if no usable statement</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="comment">   * can be built.</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="comment">   * @note Search filters and ordering identifiers cannot be bound and are</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="comment">   * instead validated before being written into the statement by the concrete</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="comment">   * value types.</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="comment">   */</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="classBase.html#a3b86dc196e03d75434ff98e8e04fe303">  136</a></span>  <span class="keyword">virtual</span> std::optional&lt;std::string&gt; <a class="code hl_function" href="classBase.html#a3b86dc196e03d75434ff98e8e04fe303">getSqlSearchStatement</a>(</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>      pqxx::params&amp; params) = 0;  <span class="comment">// Child supplies the paginated SELECT.</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>  <span class="comment">// A builder asks the binder how each value is written into the query:</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>  <span class="comment">// bind(value) stores it in params and returns its placeholder ($1, $2,</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>  <span class="comment">// ...).</span><span class="comment"></span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="comment">   * @brief Appends values to a pqxx::params and hands back the matching SQL</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="comment">   * placeholders.</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="comment">   * @details Construction clears the supplied container, so each fresh Binder</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="comment">   * restarts numbering at $1 for one statement. Routing every value through</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="comment">   * bind() is what keeps callers from concatenating untrusted data into SQL</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="comment">   * text.</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="comment">   * @note Holds a borrowed reference to the params container and must not</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="comment">   * outlive it.</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="comment">   * @note For a beginner: this is a helper struct that derived builders</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="comment">   * create on the stack for one SQL statement. It remembers a running counter</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="comment">   * so the first value becomes $1, the second $2, and so on, which is exactly</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="comment">   * what PostgreSQL expects in the prepared query.</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment">   */</span></div>
+<div class="foldopen" id="foldopen00157" data-start="{" data-end="};">
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno"><a class="line" href="structBase_1_1Binder.html">  157</a></span>  <span class="keyword">struct </span><a class="code hl_function" href="structBase_1_1Binder.html#a8aff08d8abb6b9a8abb7964019d5e057">Binder</a> {<span class="comment"></span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="comment">     * @brief Binds to p and clears it so the first bind() produces $1.</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="comment">     */</span></div>
+<div class="foldopen" id="foldopen00161" data-start="{" data-end="}">
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno"><a class="line" href="structBase_1_1Binder.html#a8aff08d8abb6b9a8abb7964019d5e057">  161</a></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="structBase_1_1Binder.html#a8aff08d8abb6b9a8abb7964019d5e057">Binder</a>(pqxx::params&amp; p) : <a class="code hl_variable" href="structBase_1_1Binder.html#aa2f67f67cd827fa79329b85e1757145e">params</a>(p) {</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>      <a class="code hl_variable" href="structBase_1_1Binder.html#aa2f67f67cd827fa79329b85e1757145e">params</a> = {};</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    }  <span class="comment">// Keep a reference to the caller&#39;s container and empty it so</span></div>
 </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>       <span class="keyword">private</span>:<span class="comment"></span></div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="comment">        /**</span></div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="comment">         * @brief The borrowed parameter container that receives appended values.</span></div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="comment">         */</span></div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno"><a class="line" href="structBase_1_1Binder.html#aa2f67f67cd827fa79329b85e1757145e">  146</a></span>        pqxx::params&amp; <a class="code hl_variable" href="structBase_1_1Binder.html#aa2f67f67cd827fa79329b85e1757145e">params</a>;  <span class="comment">// A reference, not a copy: we fill the caller&#39;s container directly; it must outlive this Binder.</span></div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="comment"></span> </div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="comment">        /**</span></div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="comment">         * @brief Count of values bound so far; drives the $n placeholder numbering.</span></div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="comment">         */</span></div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="structBase_1_1Binder.html#aa2c6aab342d4d62357fb8c8c15ff61be">  151</a></span>        <span class="keywordtype">size_t</span>        <a class="code hl_variable" href="structBase_1_1Binder.html#aa2c6aab342d4d62357fb8c8c15ff61be">index</a> = 0;  <span class="comment">// Starts at zero so the first ++index yields 1; this is the $n counter.</span></div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    };</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>       <span class="comment">// placeholders start fresh at $1.</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="comment"></span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="comment">     * @brief Appends a value to the parameter container and returns its</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="comment">     * placeholder.</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="comment">     * @tparam T A type accepted by pqxx::params::append.</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="comment">     * @param[in] value The value to bind; copied into the container by</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="comment">     * pqxx.</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="comment">     * @return A placeholder of the form &quot;$n&quot;, with n increasing in call</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="comment">     * order from 1.</span></div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <span class="comment">// A template so any value type pqxx</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="comment">// understands can be bound the same way.</span></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00178" data-start="{" data-end="}">
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno"><a class="line" href="structBase_1_1Binder.html#a8fb0871ea4d994dfad3360aac44d8c56">  178</a></span>    std::string <a class="code hl_function" href="structBase_1_1Binder.html#a8fb0871ea4d994dfad3360aac44d8c56">bind</a>(<span class="keyword">const</span> T&amp; value) {</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>      <a class="code hl_variable" href="structBase_1_1Binder.html#aa2f67f67cd827fa79329b85e1757145e">params</a>.append(value);  <span class="comment">// Store the real value separately from the</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>                             <span class="comment">// SQL text (safe binding).</span></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>      <span class="keywordflow">return</span> fmt::format(<span class="stringliteral">&quot;${}&quot;</span>,</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>                         ++<a class="code hl_variable" href="structBase_1_1Binder.html#aa2c6aab342d4d62357fb8c8c15ff61be">index</a>);  <span class="comment">// Bump the counter first, then return $1,</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>                                    <span class="comment">// $2, ... in that order.</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    }</div>
 </div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>};</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>   <span class="keyword">private</span>:<span class="comment"></span></div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="comment">     * @brief The borrowed parameter container that receives appended</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="comment">     * values.</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno"><a class="line" href="structBase_1_1Binder.html#aa2f67f67cd827fa79329b85e1757145e">  191</a></span>    pqxx::params&amp; <a class="code hl_variable" href="structBase_1_1Binder.html#aa2f67f67cd827fa79329b85e1757145e">params</a>;  <span class="comment">// A reference, not a copy: we fill the caller&#39;s</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>                           <span class="comment">// container directly; it must outlive this Binder.</span></div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="comment"></span> </div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="comment">    /**</span></div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="comment">     * @brief Count of values bound so far; drives the $n placeholder</span></div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="comment">     * numbering.</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno"><a class="line" href="structBase_1_1Binder.html#aa2c6aab342d4d62357fb8c8c15ff61be">  198</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structBase_1_1Binder.html#aa2c6aab342d4d62357fb8c8c15ff61be">index</a> = 0;  <span class="comment">// Starts at zero so the first ++index yields 1; this</span></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>                       <span class="comment">// is the $n counter.</span></div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>  };</div>
+</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>};</div>
 </div>
 <div class="ttc" id="aclassBase_html_a306fb25541331080645a716286357ef9"><div class="ttname"><a href="classBase.html#a306fb25541331080645a716286357ef9">Base::~Base</a></div><div class="ttdeci">virtual ~Base()=default</div><div class="ttdoc">Permits safe deletion through a Base pointer.</div></div>
 <div class="ttc" id="aclassBase_html_a35f7a42b849a9eaf439715a4b280a8f4"><div class="ttname"><a href="classBase.html#a35f7a42b849a9eaf439715a4b280a8f4">Base::getSqlDeleteStatement</a></div><div class="ttdeci">virtual std::optional&lt; std::string &gt; getSqlDeleteStatement(pqxx::params &amp;params)=0</div><div class="ttdoc">Builds the DELETE statement for an entity identified by id.</div></div>
@@ -284,10 +334,10 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('base_8hpp_sour
 <div class="ttc" id="aclassBase_html_a48122a0f0bd77d2aadcbe10b3e0863fd"><div class="ttname"><a href="classBase.html#a48122a0f0bd77d2aadcbe10b3e0863fd">Base::getSqlUpdateStatement</a></div><div class="ttdeci">virtual std::optional&lt; std::string &gt; getSqlUpdateStatement(pqxx::params &amp;params)=0</div><div class="ttdoc">Builds the UPDATE statement for the entity&#39;s payload.</div></div>
 <div class="ttc" id="aclassBase_html_a58887755525abd3f340963e2bbdcc972"><div class="ttname"><a href="classBase.html#a58887755525abd3f340963e2bbdcc972">Base::Base</a></div><div class="ttdeci">Base()=default</div><div class="ttdoc">Default construction; the interface itself carries no state.</div></div>
 <div class="ttc" id="aclassBase_html_ad1d05549ca23bf4602c86fb3f6575d30"><div class="ttname"><a href="classBase.html#ad1d05549ca23bf4602c86fb3f6575d30">Base::getSqlReadStatement</a></div><div class="ttdeci">virtual std::optional&lt; std::string &gt; getSqlReadStatement(pqxx::params &amp;params)=0</div><div class="ttdoc">Builds the SELECT statement for reading one entity by id.</div></div>
-<div class="ttc" id="astructBase_1_1Binder_html_a8aff08d8abb6b9a8abb7964019d5e057"><div class="ttname"><a href="structBase_1_1Binder.html#a8aff08d8abb6b9a8abb7964019d5e057">Base::Binder::Binder</a></div><div class="ttdeci">Binder(pqxx::params &amp;p)</div><div class="ttdoc">Binds to p and clears it so the first bind() produces $1.</div><div class="ttdef"><b>Definition</b> <a href="#l00127">base.hpp:127</a></div></div>
-<div class="ttc" id="astructBase_1_1Binder_html_a8fb0871ea4d994dfad3360aac44d8c56"><div class="ttname"><a href="structBase_1_1Binder.html#a8fb0871ea4d994dfad3360aac44d8c56">Base::Binder::bind</a></div><div class="ttdeci">std::string bind(const T &amp;value)</div><div class="ttdoc">Appends a value to the parameter container and returns its placeholder.</div><div class="ttdef"><b>Definition</b> <a href="#l00136">base.hpp:136</a></div></div>
-<div class="ttc" id="astructBase_1_1Binder_html_aa2c6aab342d4d62357fb8c8c15ff61be"><div class="ttname"><a href="structBase_1_1Binder.html#aa2c6aab342d4d62357fb8c8c15ff61be">Base::Binder::index</a></div><div class="ttdeci">size_t index</div><div class="ttdoc">Count of values bound so far; drives the $n placeholder numbering.</div><div class="ttdef"><b>Definition</b> <a href="#l00151">base.hpp:151</a></div></div>
-<div class="ttc" id="astructBase_1_1Binder_html_aa2f67f67cd827fa79329b85e1757145e"><div class="ttname"><a href="structBase_1_1Binder.html#aa2f67f67cd827fa79329b85e1757145e">Base::Binder::params</a></div><div class="ttdeci">pqxx::params &amp; params</div><div class="ttdoc">The borrowed parameter container that receives appended values.</div><div class="ttdef"><b>Definition</b> <a href="#l00146">base.hpp:146</a></div></div>
+<div class="ttc" id="astructBase_1_1Binder_html_a8aff08d8abb6b9a8abb7964019d5e057"><div class="ttname"><a href="structBase_1_1Binder.html#a8aff08d8abb6b9a8abb7964019d5e057">Base::Binder::Binder</a></div><div class="ttdeci">Binder(pqxx::params &amp;p)</div><div class="ttdoc">Binds to p and clears it so the first bind() produces $1.</div><div class="ttdef"><b>Definition</b> <a href="#l00161">base.hpp:161</a></div></div>
+<div class="ttc" id="astructBase_1_1Binder_html_a8fb0871ea4d994dfad3360aac44d8c56"><div class="ttname"><a href="structBase_1_1Binder.html#a8fb0871ea4d994dfad3360aac44d8c56">Base::Binder::bind</a></div><div class="ttdeci">std::string bind(const T &amp;value)</div><div class="ttdoc">Appends a value to the parameter container and returns its placeholder.</div><div class="ttdef"><b>Definition</b> <a href="#l00178">base.hpp:178</a></div></div>
+<div class="ttc" id="astructBase_1_1Binder_html_aa2c6aab342d4d62357fb8c8c15ff61be"><div class="ttname"><a href="structBase_1_1Binder.html#aa2c6aab342d4d62357fb8c8c15ff61be">Base::Binder::index</a></div><div class="ttdeci">size_t index</div><div class="ttdoc">Count of values bound so far; drives the $n placeholder numbering.</div><div class="ttdef"><b>Definition</b> <a href="#l00198">base.hpp:198</a></div></div>
+<div class="ttc" id="astructBase_1_1Binder_html_aa2f67f67cd827fa79329b85e1757145e"><div class="ttname"><a href="structBase_1_1Binder.html#aa2f67f67cd827fa79329b85e1757145e">Base::Binder::params</a></div><div class="ttdeci">pqxx::params &amp; params</div><div class="ttdoc">The borrowed parameter container that receives appended values.</div><div class="ttdef"><b>Definition</b> <a href="#l00191">base.hpp:191</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

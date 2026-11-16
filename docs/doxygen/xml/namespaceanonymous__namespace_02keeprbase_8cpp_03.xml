@@ -32,15 +32,15 @@ SQL placeholders (like $1) can only stand for <emphasis>values</emphasis>, not f
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/keeprbase/keeprbase.cpp" line="71" column="19" bodyfile="src/gatekeeper/keeprbase/keeprbase.cpp" bodystart="71" bodyend="78"/>
-        <references refid="namespaceanonymous__namespace_02keeprbase_8cpp_03_1a22d455a201554dcf54b905d320ee089b" compoundref="keeprbase_8cpp" startline="71" endline="78">sessionsTable</references>
-        <referencedby refid="namespaceanonymous__namespace_02keeprbase_8cpp_03_1a22d455a201554dcf54b905d320ee089b" compoundref="keeprbase_8cpp" startline="71" endline="78">sessionsTable</referencedby>
+        <location file="src/gatekeeper/keeprbase/keeprbase.cpp" line="91" column="17" bodyfile="src/gatekeeper/keeprbase/keeprbase.cpp" bodystart="91" bodyend="100"/>
+        <references refid="namespaceanonymous__namespace_02keeprbase_8cpp_03_1a22d455a201554dcf54b905d320ee089b" compoundref="keeprbase_8cpp" startline="91" endline="100">sessionsTable</references>
+        <referencedby refid="namespaceanonymous__namespace_02keeprbase_8cpp_03_1a22d455a201554dcf54b905d320ee089b" compoundref="keeprbase_8cpp" startline="91" endline="100">sessionsTable</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/gatekeeper/keeprbase/keeprbase.cpp" line="57" column="1"/>
+    <location file="src/gatekeeper/keeprbase/keeprbase.cpp" line="75" column="1"/>
   </compounddef>
 </doxygen>

@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('structWouldBlo
 <div class="textblock"><p>Control-flow signal that a request needs the database and must move off the IO thread. </p>
 <p>Thrown by <a class="el" href="classDbProbe.html#af3b9ebe61addb4dd1885a3d117221a1f" title="Guards a database-access point against running on an IO thread.">DbProbe::check()</a> before any database access or response is written. It deliberately does not derive from <span class="tt">std::exception</span>, so controllers' generic <span class="tt">catch (const std::exception&amp;)</span> blocks do not swallow it; only the dedicated <span class="tt">catch (const <a class="el" href="structWouldBlock.html" title="Control-flow signal that a request needs the database and must move off the IO thread.">WouldBlock</a>&amp;)</span> in the fast-path wrapper handles it. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classDbProbe.html" title="RAII marker that puts the current thread in &quot;probe&quot; mode.">DbProbe</a>, <a class="el" href="classDbExecutor.html#a5d6abf2368cd71250974124d570b7f2b" title="Reports whether the IO-thread fast path is active.">DbExecutor::ioFastPath</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="dbprobe_8hpp_source.html#l00047">47</a> of file <a class="el" href="dbprobe_8hpp_source.html">dbprobe.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dbprobe_8hpp_source.html#l00061">61</a> of file <a class="el" href="dbprobe_8hpp_source.html">dbprobe.hpp</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>src/database/<a class="el" href="dbprobe_8hpp_source.html">dbprobe.hpp</a></li>
 </ul>

@@ -85,12 +85,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/communicate/communicate.hpp" line="61" column="26" bodyfile="src/utils/communicate/communicate.cpp" bodystart="38" bodyend="108"/>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
-        <references refid="classCommunicate_1a0a4ddbbf7176276436c6c9f8bd3fa9f1" compoundref="communicate_8cpp" startline="109" endline="132">handleResponse</references>
-        <referencedby refid="classStaffController_1aca79920a9fdd6da89333627992bf6287" compoundref="staffcontroller_8cpp" startline="169" endline="214">StaffController&lt; T &gt;::InviteStaffToEntity</referencedby>
-        <referencedby refid="classStaffController_1a7bfaae0026f9082bb42968cf04b421d5" compoundref="staffcontroller_8cpp" startline="299" endline="345">StaffController&lt; T &gt;::InviteStaffToEntityAsync</referencedby>
+        <location file="src/utils/communicate/communicate.hpp" line="69" column="3" bodyfile="src/utils/communicate/communicate.cpp" bodystart="47" bodyend="160"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
+        <references refid="classCommunicate_1a0a4ddbbf7176276436c6c9f8bd3fa9f1" compoundref="communicate_8cpp" startline="162" endline="193">handleResponse</references>
+        <referencedby refid="classStaffController_1aca79920a9fdd6da89333627992bf6287" compoundref="staffcontroller_8cpp" startline="263" endline="339">StaffController&lt; T &gt;::InviteStaffToEntity</referencedby>
+        <referencedby refid="classStaffController_1a7bfaae0026f9082bb42968cf04b421d5" compoundref="staffcontroller_8cpp" startline="445" endline="514">StaffController&lt; T &gt;::InviteStaffToEntityAsync</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-static-func">
@@ -125,11 +125,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/communicate/communicate.hpp" line="72" column="26" bodyfile="src/utils/communicate/communicate.cpp" bodystart="109" bodyend="132"/>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
-        <references refid="classCommunicate_1a16c7e1e24d2610ef8d00d8ebe3b7c59b" compoundref="communicate_8cpp" startline="134" endline="139">WriteCallback</references>
-        <referencedby refid="classCommunicate_1ac17ede80bd387e5c096fcf9fcb481aee" compoundref="communicate_8cpp" startline="38" endline="108">sendRequest</referencedby>
+        <location file="src/utils/communicate/communicate.hpp" line="87" column="24" bodyfile="src/utils/communicate/communicate.cpp" bodystart="162" bodyend="193"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
+        <references refid="classCommunicate_1a16c7e1e24d2610ef8d00d8ebe3b7c59b" compoundref="communicate_8cpp" startline="196" endline="206">WriteCallback</references>
+        <referencedby refid="classCommunicate_1ac17ede80bd387e5c096fcf9fcb481aee" compoundref="communicate_8cpp" startline="47" endline="160">sendRequest</referencedby>
       </memberdef>
       <memberdef kind="function" id="classCommunicate_1a16c7e1e24d2610ef8d00d8ebe3b7c59b" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; size_t &gt;</type>
@@ -196,8 +196,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/communicate/communicate.hpp" line="83" column="31" bodyfile="src/utils/communicate/communicate.cpp" bodystart="134" bodyend="139"/>
-        <referencedby refid="classCommunicate_1a0a4ddbbf7176276436c6c9f8bd3fa9f1" compoundref="communicate_8cpp" startline="109" endline="132">handleResponse</referencedby>
+        <location file="src/utils/communicate/communicate.hpp" line="101" column="24" bodyfile="src/utils/communicate/communicate.cpp" bodystart="196" bodyend="206"/>
+        <referencedby refid="classCommunicate_1a0a4ddbbf7176276436c6c9f8bd3fa9f1" compoundref="communicate_8cpp" startline="162" endline="193">handleResponse</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -208,7 +208,7 @@
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="src/utils/communicate/communicate.hpp" line="44" column="1" bodyfile="src/utils/communicate/communicate.hpp" bodystart="45" bodyend="84"/>
+    <location file="src/utils/communicate/communicate.hpp" line="52" column="1" bodyfile="src/utils/communicate/communicate.hpp" bodystart="52" bodyend="107"/>
     <listofallmembers>
       <member refid="classCommunicate_1a0a4ddbbf7176276436c6c9f8bd3fa9f1" prot="private" virt="non-virtual"><scope>Communicate</scope><name>handleResponse</name></member>
       <member refid="classCommunicate_1ac17ede80bd387e5c096fcf9fcb481aee" prot="public" virt="non-virtual"><scope>Communicate</scope><name>sendRequest</name></member>

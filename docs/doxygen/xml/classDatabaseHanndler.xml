@@ -17,10 +17,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databasehandler.hpp" line="89" column="21" bodyfile="src/database/databasehandler.hpp" bodystart="89" bodyend="-1"/>
-        <referencedby refid="classDatabaseHanndler_1a476a68dd38ded0e1bbb26fcb67032838" compoundref="databasehandler_8cpp" startline="45" endline="45">DatabaseHanndler</referencedby>
-        <referencedby refid="classDatabaseHanndler_1a5911c1b883276be0222ba585f86c7790" compoundref="databasehandler_8cpp" startline="68" endline="68">reconnect_all</referencedby>
-        <referencedby refid="classDatabaseHanndler_1a4a8606c696de3b957d0a1118d1cb4041" compoundref="databasehandler_8cpp" startline="51" endline="57">~DatabaseHanndler</referencedby>
+        <location file="src/database/databasehandler.hpp" line="122" column="7" bodyfile="src/database/databasehandler.hpp" bodystart="122" bodyend="-1"/>
+        <referencedby refid="classDatabaseHanndler_1a476a68dd38ded0e1bbb26fcb67032838" compoundref="databasehandler_8cpp" startline="58" endline="61">DatabaseHanndler</referencedby>
+        <referencedby refid="classDatabaseHanndler_1a5911c1b883276be0222ba585f86c7790" compoundref="databasehandler_8cpp" startline="91" endline="93">reconnect_all</referencedby>
+        <referencedby refid="classDatabaseHanndler_1a4a8606c696de3b957d0a1118d1cb4041" compoundref="databasehandler_8cpp" startline="69" endline="77">~DatabaseHanndler</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classDatabaseHanndler_1a77ba118b0c1ee0849dc4e6dfbd1eca00" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classDatabase" kindref="compound">Database</ref> &gt;</type>
@@ -35,10 +35,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databasehandler.hpp" line="94" column="35" bodyfile="src/database/databasehandler.hpp" bodystart="94" bodyend="-1"/>
-        <referencedby refid="classDatabaseHanndler_1a476a68dd38ded0e1bbb26fcb67032838" compoundref="databasehandler_8cpp" startline="45" endline="45">DatabaseHanndler</referencedby>
-        <referencedby refid="classDatabaseHanndler_1a980f5c0f9454a8c931a15f24c45a863b" compoundref="databasehandler_8cpp" startline="63" endline="63">get_connection</referencedby>
-        <referencedby refid="classDatabaseHanndler_1a4a8606c696de3b957d0a1118d1cb4041" compoundref="databasehandler_8cpp" startline="51" endline="57">~DatabaseHanndler</referencedby>
+        <location file="src/database/databasehandler.hpp" line="130" column="7" bodyfile="src/database/databasehandler.hpp" bodystart="130" bodyend="-1"/>
+        <referencedby refid="classDatabaseHanndler_1a476a68dd38ded0e1bbb26fcb67032838" compoundref="databasehandler_8cpp" startline="58" endline="61">DatabaseHanndler</referencedby>
+        <referencedby refid="classDatabaseHanndler_1a980f5c0f9454a8c931a15f24c45a863b" compoundref="databasehandler_8cpp" startline="83" endline="85">get_connection</referencedby>
+        <referencedby refid="classDatabaseHanndler_1a4a8606c696de3b957d0a1118d1cb4041" compoundref="databasehandler_8cpp" startline="69" endline="77">~DatabaseHanndler</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -66,9 +66,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databasehandler.hpp" line="55" column="5" bodyfile="src/database/databasehandler.cpp" bodystart="38" bodyend="38"/>
-        <references refid="classDatabaseHanndler_1a43b2f603f6330897f5bcca99605cb433" compoundref="databasehandler_8cpp" startline="38" endline="38">DatabaseHanndler</references>
-        <referencedby refid="classDatabaseHanndler_1a43b2f603f6330897f5bcca99605cb433" compoundref="databasehandler_8cpp" startline="38" endline="38">DatabaseHanndler</referencedby>
+        <location file="src/database/databasehandler.hpp" line="70" column="3" bodyfile="src/database/databasehandler.cpp" bodystart="48" bodyend="50"/>
+        <references refid="classDatabaseHanndler_1a43b2f603f6330897f5bcca99605cb433" compoundref="databasehandler_8cpp" startline="48" endline="50">DatabaseHanndler</references>
+        <referencedby refid="classDatabaseHanndler_1a43b2f603f6330897f5bcca99605cb433" compoundref="databasehandler_8cpp" startline="48" endline="50">DatabaseHanndler</referencedby>
         <referencedby refid="classDatabaseHanndler_1aa76584f3e4cf8d74f1cda195bb2c8f02">DatabaseHanndler</referencedby>
         <referencedby refid="classDatabaseHanndler_1aac5a8bac18e671b3d26bcd6f111707ad">DatabaseHanndler</referencedby>
         <referencedby refid="classDatabaseHanndler_1a490884ddfc7503673789a42784911bd6">operator=</referencedby>
@@ -110,9 +110,9 @@ Leases one connection immediately so the handler always owns a valid lease. pool
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databasehandler.hpp" line="62" column="14" bodyfile="src/database/databasehandler.cpp" bodystart="45" bodyend="45"/>
-        <references refid="classDatabaseHanndler_1a1ceb0875bc5d7bf509cff79d75c12b5e" compoundref="databasehandler_8hpp" startline="89">databaseConnectionPool</references>
-        <references refid="classDatabaseHanndler_1a77ba118b0c1ee0849dc4e6dfbd1eca00" compoundref="databasehandler_8hpp" startline="94">db_ptr</references>
+        <location file="src/database/databasehandler.hpp" line="80" column="12" bodyfile="src/database/databasehandler.cpp" bodystart="58" bodyend="61"/>
+        <references refid="classDatabaseHanndler_1a1ceb0875bc5d7bf509cff79d75c12b5e" compoundref="databasehandler_8hpp" startline="122">databaseConnectionPool</references>
+        <references refid="classDatabaseHanndler_1a77ba118b0c1ee0849dc4e6dfbd1eca00" compoundref="databasehandler_8hpp" startline="130">db_ptr</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseHanndler_1aa76584f3e4cf8d74f1cda195bb2c8f02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -129,8 +129,8 @@ Leases one connection immediately so the handler always owns a valid lease. pool
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databasehandler.hpp" line="63" column="5"/>
-        <references refid="classDatabaseHanndler_1a43b2f603f6330897f5bcca99605cb433" compoundref="databasehandler_8cpp" startline="38" endline="38">DatabaseHanndler</references>
+        <location file="src/database/databasehandler.hpp" line="83" column="3"/>
+        <references refid="classDatabaseHanndler_1a43b2f603f6330897f5bcca99605cb433" compoundref="databasehandler_8cpp" startline="48" endline="50">DatabaseHanndler</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseHanndler_1aac5a8bac18e671b3d26bcd6f111707ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -147,8 +147,8 @@ Leases one connection immediately so the handler always owns a valid lease. pool
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databasehandler.hpp" line="64" column="5"/>
-        <references refid="classDatabaseHanndler_1a43b2f603f6330897f5bcca99605cb433" compoundref="databasehandler_8cpp" startline="38" endline="38">DatabaseHanndler</references>
+        <location file="src/database/databasehandler.hpp" line="85" column="3"/>
+        <references refid="classDatabaseHanndler_1a43b2f603f6330897f5bcca99605cb433" compoundref="databasehandler_8cpp" startline="48" endline="50">DatabaseHanndler</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseHanndler_1a490884ddfc7503673789a42784911bd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classDatabaseHanndler" kindref="compound">DatabaseHanndler</ref> &amp;</type>
@@ -165,8 +165,8 @@ Leases one connection immediately so the handler always owns a valid lease. pool
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databasehandler.hpp" line="65" column="22"/>
-        <references refid="classDatabaseHanndler_1a43b2f603f6330897f5bcca99605cb433" compoundref="databasehandler_8cpp" startline="38" endline="38">DatabaseHanndler</references>
+        <location file="src/database/databasehandler.hpp" line="87" column="20"/>
+        <references refid="classDatabaseHanndler_1a43b2f603f6330897f5bcca99605cb433" compoundref="databasehandler_8cpp" startline="48" endline="50">DatabaseHanndler</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseHanndler_1add233bfb40803aa1ddee44b1a5bcefb4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classDatabaseHanndler" kindref="compound">DatabaseHanndler</ref> &amp;</type>
@@ -183,10 +183,10 @@ Leases one connection immediately so the handler always owns a valid lease. pool
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databasehandler.hpp" line="66" column="22"/>
-        <references refid="classDatabaseHanndler_1a43b2f603f6330897f5bcca99605cb433" compoundref="databasehandler_8cpp" startline="38" endline="38">DatabaseHanndler</references>
-        <references refid="classDatabaseHanndler_1a980f5c0f9454a8c931a15f24c45a863b" compoundref="databasehandler_8cpp" startline="63" endline="63">get_connection</references>
-        <references refid="classDatabaseHanndler_1a5911c1b883276be0222ba585f86c7790" compoundref="databasehandler_8cpp" startline="68" endline="68">reconnect_all</references>
+        <location file="src/database/databasehandler.hpp" line="89" column="20"/>
+        <references refid="classDatabaseHanndler_1a43b2f603f6330897f5bcca99605cb433" compoundref="databasehandler_8cpp" startline="48" endline="50">DatabaseHanndler</references>
+        <references refid="classDatabaseHanndler_1a980f5c0f9454a8c931a15f24c45a863b" compoundref="databasehandler_8cpp" startline="83" endline="85">get_connection</references>
+        <references refid="classDatabaseHanndler_1a5911c1b883276be0222ba585f86c7790" compoundref="databasehandler_8cpp" startline="91" endline="93">reconnect_all</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseHanndler_1a4a8606c696de3b957d0a1118d1cb4041" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -203,9 +203,9 @@ Leases one connection immediately so the handler always owns a valid lease. pool
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databasehandler.hpp" line="71" column="13" bodyfile="src/database/databasehandler.cpp" bodystart="51" bodyend="57"/>
-        <references refid="classDatabaseHanndler_1a1ceb0875bc5d7bf509cff79d75c12b5e" compoundref="databasehandler_8hpp" startline="89">databaseConnectionPool</references>
-        <references refid="classDatabaseHanndler_1a77ba118b0c1ee0849dc4e6dfbd1eca00" compoundref="databasehandler_8hpp" startline="94">db_ptr</references>
+        <location file="src/database/databasehandler.hpp" line="96" column="11" bodyfile="src/database/databasehandler.cpp" bodystart="69" bodyend="77"/>
+        <references refid="classDatabaseHanndler_1a1ceb0875bc5d7bf509cff79d75c12b5e" compoundref="databasehandler_8hpp" startline="122">databaseConnectionPool</references>
+        <references refid="classDatabaseHanndler_1a77ba118b0c1ee0849dc4e6dfbd1eca00" compoundref="databasehandler_8hpp" startline="130">db_ptr</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseHanndler_1a980f5c0f9454a8c931a15f24c45a863b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::shared_ptr&lt; <ref refid="classDatabase" kindref="compound">Database</ref> &gt;</type>
@@ -226,8 +226,8 @@ Leases one connection immediately so the handler always owns a valid lease. pool
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databasehandler.hpp" line="77" column="21" bodyfile="src/database/databasehandler.cpp" bodystart="63" bodyend="63"/>
-        <references refid="classDatabaseHanndler_1a77ba118b0c1ee0849dc4e6dfbd1eca00" compoundref="databasehandler_8hpp" startline="94">db_ptr</references>
+        <location file="src/database/databasehandler.hpp" line="105" column="3" bodyfile="src/database/databasehandler.cpp" bodystart="83" bodyend="85"/>
+        <references refid="classDatabaseHanndler_1a77ba118b0c1ee0849dc4e6dfbd1eca00" compoundref="databasehandler_8hpp" startline="130">db_ptr</references>
         <referencedby refid="classDatabaseHanndler_1add233bfb40803aa1ddee44b1a5bcefb4">operator=</referencedby>
       </memberdef>
       <memberdef kind="function" id="classDatabaseHanndler_1a5911c1b883276be0222ba585f86c7790" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -247,8 +247,8 @@ Leases one connection immediately so the handler always owns a valid lease. pool
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databasehandler.hpp" line="83" column="31" bodyfile="src/database/databasehandler.cpp" bodystart="68" bodyend="68"/>
-        <references refid="classDatabaseHanndler_1a1ceb0875bc5d7bf509cff79d75c12b5e" compoundref="databasehandler_8hpp" startline="89">databaseConnectionPool</references>
+        <location file="src/database/databasehandler.hpp" line="113" column="8" bodyfile="src/database/databasehandler.cpp" bodystart="91" bodyend="93"/>
+        <references refid="classDatabaseHanndler_1a1ceb0875bc5d7bf509cff79d75c12b5e" compoundref="databasehandler_8hpp" startline="122">databaseConnectionPool</references>
         <referencedby refid="classDatabaseHanndler_1add233bfb40803aa1ddee44b1a5bcefb4">operator=</referencedby>
       </memberdef>
     </sectiondef>
@@ -262,7 +262,7 @@ Leases one connection immediately so the handler always owns a valid lease. pool
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="src/database/databasehandler.hpp" line="46" column="1" bodyfile="src/database/databasehandler.hpp" bodystart="47" bodyend="95"/>
+    <location file="src/database/databasehandler.hpp" line="60" column="1" bodyfile="src/database/databasehandler.hpp" bodystart="60" bodyend="132"/>
     <listofallmembers>
       <member refid="classDatabaseHanndler_1a1ceb0875bc5d7bf509cff79d75c12b5e" prot="private" virt="non-virtual"><scope>DatabaseHanndler</scope><name>databaseConnectionPool</name></member>
       <member refid="classDatabaseHanndler_1a43b2f603f6330897f5bcca99605cb433" prot="public" virt="non-virtual"><scope>DatabaseHanndler</scope><name>DatabaseHanndler</name></member>

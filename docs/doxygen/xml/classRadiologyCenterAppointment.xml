@@ -11,7 +11,8 @@
         <argsstring></argsstring>
         <name>TABLENAME</name>
         <qualifiedname>RadiologyCenterAppointment::TABLENAME</qualifiedname>
-        <initializer>= &quot;radiologycenters_appointments&quot;</initializer>
+        <initializer>                            =
+&quot;radiologycenters_appointments&quot;</initializer>
         <briefdescription>
 <para><ref refid="classDatabase" kindref="compound">Database</ref> table holding radiology centre appointments. </para>
         </briefdescription>
@@ -19,10 +20,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/radiologycenter.hpp" line="46" column="27" bodyfile="src/entities/appointments/radiologycenter.hpp" bodystart="46" bodyend="-1"/>
-        <referencedby refid="classRadiologyCenterAppointment_1a875b5ef628661ebc4be5b7b10446be2d" compoundref="radiologycenter_8hpp" startline="103" endline="106">getPermissionsQueryForRead</referencedby>
-        <referencedby refid="classRadiologyCenterAppointment_1a8b941280ccea9f69a8c7f73fa3123db0" compoundref="radiologycenter_8hpp" startline="75" endline="75">getTableName</referencedby>
-        <referencedby refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f" compoundref="radiologycenter_8hpp" startline="60" endline="62">RadiologyCenterAppointment</referencedby>
+        <location file="src/entities/appointments/radiologycenter.hpp" line="59" column="25" bodyfile="src/entities/appointments/radiologycenter.hpp" bodystart="59" bodyend="-1"/>
+        <referencedby refid="classRadiologyCenterAppointment_1a875b5ef628661ebc4be5b7b10446be2d" compoundref="radiologycenter_8hpp" startline="138" endline="147">getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classRadiologyCenterAppointment_1a8b941280ccea9f69a8c7f73fa3123db0" compoundref="radiologycenter_8hpp" startline="99" endline="101">getTableName</referencedby>
+        <referencedby refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f" compoundref="radiologycenter_8hpp" startline="77" endline="81">RadiologyCenterAppointment</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classRadiologyCenterAppointment_1a89762770070203831eeef785f7fbbf8b" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>auto</type>
@@ -30,7 +31,8 @@
         <argsstring></argsstring>
         <name>ORGNAME</name>
         <qualifiedname>RadiologyCenterAppointment::ORGNAME</qualifiedname>
-        <initializer>= &quot;radiologycenters&quot;</initializer>
+        <initializer>                          =
+&quot;radiologycenters&quot;</initializer>
         <briefdescription>
 <para>Plural organisation name used for permission service lookup. </para>
         </briefdescription>
@@ -38,9 +40,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/radiologycenter.hpp" line="51" column="27" bodyfile="src/entities/appointments/radiologycenter.hpp" bodystart="51" bodyend="-1"/>
-        <referencedby refid="classRadiologyCenterAppointment_1ab1162564687b33a4b200b5bf5d40b944" compoundref="radiologycenter_8hpp" startline="80" endline="80">getOrgName</referencedby>
-        <referencedby refid="classRadiologyCenterAppointment_1a875b5ef628661ebc4be5b7b10446be2d" compoundref="radiologycenter_8hpp" startline="103" endline="106">getPermissionsQueryForRead</referencedby>
+        <location file="src/entities/appointments/radiologycenter.hpp" line="66" column="25" bodyfile="src/entities/appointments/radiologycenter.hpp" bodystart="66" bodyend="-1"/>
+        <referencedby refid="classRadiologyCenterAppointment_1ab1162564687b33a4b200b5bf5d40b944" compoundref="radiologycenter_8hpp" startline="106" endline="108">getOrgName</referencedby>
+        <referencedby refid="classRadiologyCenterAppointment_1a875b5ef628661ebc4be5b7b10446be2d" compoundref="radiologycenter_8hpp" startline="138" endline="147">getPermissionsQueryForRead</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -85,9 +87,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/radiologycenter.hpp" line="60" column="14" bodyfile="src/entities/appointments/radiologycenter.hpp" bodystart="60" bodyend="62"/>
-        <references refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" compoundref="appointment_8hpp" startline="60" endline="62">Appointment::Appointment</references>
-        <references refid="classRadiologyCenterAppointment_1a4e8b07cf5d0bdcd80c4f7b91d27425a7" compoundref="radiologycenter_8hpp" startline="46">TABLENAME</references>
+        <location file="src/entities/appointments/radiologycenter.hpp" line="77" column="12" bodyfile="src/entities/appointments/radiologycenter.hpp" bodystart="77" bodyend="81"/>
+        <references refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" compoundref="appointment_8hpp" startline="73" endline="77">Appointment::Appointment</references>
+        <references refid="classRadiologyCenterAppointment_1a4e8b07cf5d0bdcd80c4f7b91d27425a7" compoundref="radiologycenter_8hpp" startline="59">TABLENAME</references>
         <referencedby refid="classRadiologyCenterAppointment_1aadc88d5cbdde227766ce558eb8e07d18">operator=</referencedby>
         <referencedby refid="classRadiologyCenterAppointment_1afc3b51487de0521db2a57e24b0c1d755">operator=</referencedby>
         <referencedby refid="classRadiologyCenterAppointment_1ad7ea3fc53d0b72e89cd78a4a7b153ba1">RadiologyCenterAppointment</referencedby>
@@ -109,8 +111,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/radiologycenter.hpp" line="67" column="5"/>
-        <references refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f" compoundref="radiologycenter_8hpp" startline="60" endline="62">RadiologyCenterAppointment</references>
+        <location file="src/entities/appointments/radiologycenter.hpp" line="87" column="3"/>
+        <references refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f" compoundref="radiologycenter_8hpp" startline="77" endline="81">RadiologyCenterAppointment</references>
       </memberdef>
       <memberdef kind="function" id="classRadiologyCenterAppointment_1a822e9b4a653bbabb669b7b6a0927fabb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -127,8 +129,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/radiologycenter.hpp" line="68" column="5"/>
-        <references refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f" compoundref="radiologycenter_8hpp" startline="60" endline="62">RadiologyCenterAppointment</references>
+        <location file="src/entities/appointments/radiologycenter.hpp" line="89" column="3"/>
+        <references refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f" compoundref="radiologycenter_8hpp" startline="77" endline="81">RadiologyCenterAppointment</references>
       </memberdef>
       <memberdef kind="function" id="classRadiologyCenterAppointment_1aadc88d5cbdde227766ce558eb8e07d18" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classRadiologyCenterAppointment" kindref="compound">RadiologyCenterAppointment</ref> &amp;</type>
@@ -145,8 +147,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/radiologycenter.hpp" line="69" column="32"/>
-        <references refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f" compoundref="radiologycenter_8hpp" startline="60" endline="62">RadiologyCenterAppointment</references>
+        <location file="src/entities/appointments/radiologycenter.hpp" line="91" column="30"/>
+        <references refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f" compoundref="radiologycenter_8hpp" startline="77" endline="81">RadiologyCenterAppointment</references>
       </memberdef>
       <memberdef kind="function" id="classRadiologyCenterAppointment_1afc3b51487de0521db2a57e24b0c1d755" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classRadiologyCenterAppointment" kindref="compound">RadiologyCenterAppointment</ref> &amp;</type>
@@ -163,8 +165,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/radiologycenter.hpp" line="70" column="32"/>
-        <references refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f" compoundref="radiologycenter_8hpp" startline="60" endline="62">RadiologyCenterAppointment</references>
+        <location file="src/entities/appointments/radiologycenter.hpp" line="93" column="30"/>
+        <references refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f" compoundref="radiologycenter_8hpp" startline="77" endline="81">RadiologyCenterAppointment</references>
       </memberdef>
       <memberdef kind="function" id="classRadiologyCenterAppointment_1ab8277c75180149f32f3a1f2c88f4e929" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -179,7 +181,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/radiologycenter.hpp" line="85" column="5"/>
+        <location file="src/entities/appointments/radiologycenter.hpp" line="113" column="3"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -196,8 +198,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/radiologycenter.hpp" line="75" column="27" bodyfile="src/entities/appointments/radiologycenter.hpp" bodystart="75" bodyend="75"/>
-        <references refid="classRadiologyCenterAppointment_1a4e8b07cf5d0bdcd80c4f7b91d27425a7" compoundref="radiologycenter_8hpp" startline="46">TABLENAME</references>
+        <location file="src/entities/appointments/radiologycenter.hpp" line="99" column="25" bodyfile="src/entities/appointments/radiologycenter.hpp" bodystart="99" bodyend="101"/>
+        <references refid="classRadiologyCenterAppointment_1a4e8b07cf5d0bdcd80c4f7b91d27425a7" compoundref="radiologycenter_8hpp" startline="59">TABLENAME</references>
       </memberdef>
       <memberdef kind="function" id="classRadiologyCenterAppointment_1ab1162564687b33a4b200b5bf5d40b944" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>auto</type>
@@ -212,8 +214,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/radiologycenter.hpp" line="80" column="27" bodyfile="src/entities/appointments/radiologycenter.hpp" bodystart="80" bodyend="80"/>
-        <references refid="classRadiologyCenterAppointment_1a89762770070203831eeef785f7fbbf8b" compoundref="radiologycenter_8hpp" startline="51">ORGNAME</references>
+        <location file="src/entities/appointments/radiologycenter.hpp" line="106" column="25" bodyfile="src/entities/appointments/radiologycenter.hpp" bodystart="106" bodyend="108"/>
+        <references refid="classRadiologyCenterAppointment_1a89762770070203831eeef785f7fbbf8b" compoundref="radiologycenter_8hpp" startline="66">ORGNAME</references>
       </memberdef>
       <memberdef kind="function" id="classRadiologyCenterAppointment_1a18feeb99c9350f3f52342b33e2fb8644" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -256,8 +258,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/radiologycenter.hpp" line="93" column="26" bodyfile="src/entities/appointments/radiologycenter.hpp" bodystart="93" bodyend="96"/>
-        <references refid="classAppointment_1a26159d8e97aa5b0e286e9bb22d1e923e" compoundref="appointment_8hpp" startline="84" endline="91">Appointment::getServicePermissionsQueryImpl</references>
+        <location file="src/entities/appointments/radiologycenter.hpp" line="123" column="24" bodyfile="src/entities/appointments/radiologycenter.hpp" bodystart="123" bodyend="129"/>
+        <references refid="classAppointment_1a26159d8e97aa5b0e286e9bb22d1e923e" compoundref="appointment_8hpp" startline="102" endline="112">Appointment::getServicePermissionsQueryImpl</references>
       </memberdef>
       <memberdef kind="function" id="classRadiologyCenterAppointment_1a875b5ef628661ebc4be5b7b10446be2d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -288,10 +290,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/radiologycenter.hpp" line="103" column="26" bodyfile="src/entities/appointments/radiologycenter.hpp" bodystart="103" bodyend="106"/>
-        <references refid="classAppointment_1ad8f4b942704f5aad7dab3b4469199fd0" compoundref="appointment_8hpp" startline="102" endline="112">Appointment::getPermissionsQueryForReadImpl</references>
-        <references refid="classRadiologyCenterAppointment_1a89762770070203831eeef785f7fbbf8b" compoundref="radiologycenter_8hpp" startline="51">ORGNAME</references>
-        <references refid="classRadiologyCenterAppointment_1a4e8b07cf5d0bdcd80c4f7b91d27425a7" compoundref="radiologycenter_8hpp" startline="46">TABLENAME</references>
+        <location file="src/entities/appointments/radiologycenter.hpp" line="138" column="24" bodyfile="src/entities/appointments/radiologycenter.hpp" bodystart="138" bodyend="147"/>
+        <references refid="classAppointment_1ad8f4b942704f5aad7dab3b4469199fd0" compoundref="appointment_8hpp" startline="129" endline="152">Appointment::getPermissionsQueryForReadImpl</references>
+        <references refid="classRadiologyCenterAppointment_1a89762770070203831eeef785f7fbbf8b" compoundref="radiologycenter_8hpp" startline="66">ORGNAME</references>
+        <references refid="classRadiologyCenterAppointment_1a4e8b07cf5d0bdcd80c4f7b91d27425a7" compoundref="radiologycenter_8hpp" startline="59">TABLENAME</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -350,7 +352,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/entities/appointments/radiologycenter.hpp" line="40" column="1" bodyfile="src/entities/appointments/radiologycenter.hpp" bodystart="41" bodyend="107"/>
+    <location file="src/entities/appointments/radiologycenter.hpp" line="51" column="1" bodyfile="src/entities/appointments/radiologycenter.hpp" bodystart="54" bodyend="148"/>
     <listofallmembers>
       <member refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" prot="public" virt="non-virtual"><scope>RadiologyCenterAppointment</scope><name>Appointment</name></member>
       <member refid="classAppointment_1a452e32e34b2b149ac5062ae45be25697" prot="public" virt="non-virtual"><scope>RadiologyCenterAppointment</scope><name>Appointment</name></member>

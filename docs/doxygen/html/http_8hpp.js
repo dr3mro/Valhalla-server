@@ -1,6 +1,6 @@
 var http_8hpp =
 [
-    [ "api::v2::Http::Error", "namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3", null ],
+    [ "api::v2::Http::Error", "namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5", null ],
     [ "api::v2::Http::Status", "namespaceapi_1_1v2_1_1Http.html#a6199aeb84d745378b1befef28d78892f", [
       [ "api::v2::Http::CONTINUE", "namespaceapi_1_1v2_1_1Http.html#a6199aeb84d745378b1befef28d78892fa5f85285014b155daa0edef79c879c07f", null ],
       [ "api::v2::Http::SWITCHING_PROTOCOLS", "namespaceapi_1_1v2_1_1Http.html#a6199aeb84d745378b1befef28d78892fa66ad9fd1e124ac246d846e3300e33bec", null ],

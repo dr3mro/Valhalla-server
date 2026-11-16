@@ -23,7 +23,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/global/types.hpp" line="97" column="16" bodyfile="src/utils/global/types.hpp" bodystart="97" bodyend="103"/>
+        <location file="src/utils/global/types.hpp" line="127" column="12" bodyfile="src/utils/global/types.hpp" bodystart="127" bodyend="135"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -31,7 +31,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/utils/global/types.hpp" line="94" column="5" bodyfile="src/utils/global/types.hpp" bodystart="95" bodyend="104"/>
+    <location file="src/utils/global/types.hpp" line="124" column="3" bodyfile="src/utils/global/types.hpp" bodystart="124" bodyend="136"/>
     <listofallmembers>
       <member refid="structstd_1_1hash_3_01std_1_1pair_3_01std_1_1string_00_01std_1_1string_01_4_01_4_1a4a8e52b504de4adb048b08693751697e" prot="public" virt="non-virtual"><scope>std::hash&lt; std::pair&lt; std::string, std::string &gt; &gt;</scope><name>operator()</name></member>
     </listofallmembers>

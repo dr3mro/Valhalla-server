@@ -20,7 +20,7 @@ BreakBeforeBraces: Attach
 
 # Prefer readable multi-line argument and parameter lists over dense packing.
 BinPackArguments: false
-BinPackParameters: false
+BinPackParameters: AlwaysOnePerLine
 AllowAllArgumentsOnNextLine: true
 AllowAllParametersOfDeclarationOnNextLine: true
 AlignAfterOpenBracket: Align

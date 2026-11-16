@@ -166,7 +166,7 @@ class ThreadSafeQueue&lt; T &gt;</div><p>FIFO container safe for concurrent prod
 </dl>
 <dl class="section note"><dt>Note</dt><dd><a class="el" href="#a58b5532baa6110071f697ad1f9bfbf58" title="Reports whether the queue currently has no elements.">empty()</a> and <a class="el" href="#ab255a078bfa2253878a2e17fd5a7a21c" title="Returns the current number of elements.">size()</a> report a snapshot; another thread can modify the queue as soon as the call returns. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="threadsafequeue_8hpp_source.html#l00049">49</a> of file <a class="el" href="threadsafequeue_8hpp_source.html">threadsafequeue.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="threadsafequeue_8hpp_source.html#l00061">61</a> of file <a class="el" href="threadsafequeue_8hpp_source.html">threadsafequeue.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae20e4ca35fd7b5e4d7358b690447e90e" name="ae20e4ca35fd7b5e4d7358b690447e90e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae20e4ca35fd7b5e4d7358b690447e90e">&#9670;&#160;</a></span>ThreadSafeQueue()</h2>
@@ -224,7 +224,7 @@ template&lt;typename T&gt; </div>
 
 <p>Virtual destructor; any remaining elements are destroyed normally. </p>
 
-<p class="reference">References <a class="el" href="threadsafequeue_8hpp_source.html#l00170">clear()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00180">emplace()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00156">empty()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00187">front()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00141">pop()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00126">push()</a>, and <a class="el" href="threadsafequeue_8hpp_source.html#l00163">size()</a>.</p>
+<p class="reference">References <a class="el" href="threadsafequeue_8hpp_source.html#l00213">clear()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00230">emplace()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00195">empty()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00241">front()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00176">pop()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00155">push()</a>, and <a class="el" href="threadsafequeue_8hpp_source.html#l00204">size()</a>.</p>
 
 </div>
 </div>
@@ -248,9 +248,9 @@ template&lt;typename T&gt; </div>
 
 <p>Discards all elements currently in the queue. </p>
 
-<p class="definition">Definition at line <a class="el" href="threadsafequeue_8hpp_source.html#l00170">170</a> of file <a class="el" href="threadsafequeue_8hpp_source.html">threadsafequeue.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="threadsafequeue_8hpp_source.html#l00213">213</a> of file <a class="el" href="threadsafequeue_8hpp_source.html">threadsafequeue.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="threadsafequeue_8hpp_source.html#l00156">empty()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00118">mutex_</a>, and <a class="el" href="threadsafequeue_8hpp_source.html#l00122">queue_</a>.</p>
+<p class="reference">References <a class="el" href="threadsafequeue_8hpp_source.html#l00195">empty()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00143">mutex_</a>, and <a class="el" href="threadsafequeue_8hpp_source.html#l00148">queue_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a403aa1522ed7c480709b67784fb59289">~ThreadSafeQueue()</a>.</p>
 
@@ -289,9 +289,9 @@ template&lt;typename... Args&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="threadsafequeue_8hpp_source.html#l00180">180</a> of file <a class="el" href="threadsafequeue_8hpp_source.html">threadsafequeue.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="threadsafequeue_8hpp_source.html#l00230">230</a> of file <a class="el" href="threadsafequeue_8hpp_source.html">threadsafequeue.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="threadsafequeue_8hpp_source.html#l00118">mutex_</a>, and <a class="el" href="threadsafequeue_8hpp_source.html#l00122">queue_</a>.</p>
+<p class="reference">References <a class="el" href="threadsafequeue_8hpp_source.html#l00143">mutex_</a>, and <a class="el" href="threadsafequeue_8hpp_source.html#l00148">queue_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a403aa1522ed7c480709b67784fb59289">~ThreadSafeQueue()</a>.</p>
 
@@ -316,11 +316,11 @@ template&lt;typename T&gt; </div>
 
 <p><a class="el" href="classReports.html" title="Case entity for the patients_reports table (a patient&#39;s report record).">Reports</a> whether the queue currently has no elements. </p>
 
-<p class="definition">Definition at line <a class="el" href="threadsafequeue_8hpp_source.html#l00156">156</a> of file <a class="el" href="threadsafequeue_8hpp_source.html">threadsafequeue.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="threadsafequeue_8hpp_source.html#l00195">195</a> of file <a class="el" href="threadsafequeue_8hpp_source.html">threadsafequeue.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="threadsafequeue_8hpp_source.html#l00118">mutex_</a>, and <a class="el" href="threadsafequeue_8hpp_source.html#l00122">queue_</a>.</p>
+<p class="reference">References <a class="el" href="threadsafequeue_8hpp_source.html#l00143">mutex_</a>, and <a class="el" href="threadsafequeue_8hpp_source.html#l00148">queue_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="threadsafequeue_8hpp_source.html#l00170">clear()</a>, and <a class="el" href="#a403aa1522ed7c480709b67784fb59289">~ThreadSafeQueue()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="threadsafequeue_8hpp_source.html#l00213">clear()</a>, and <a class="el" href="#a403aa1522ed7c480709b67784fb59289">~ThreadSafeQueue()</a>.</p>
 
 </div>
 </div>
@@ -344,9 +344,9 @@ template&lt;typename T&gt; </div>
 <p>Returns a copy of the front element without removing it. </p>
 <dl class="section return"><dt>Returns</dt><dd>Copy of the front element, or std::nullopt if the queue is empty. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="threadsafequeue_8hpp_source.html#l00187">187</a> of file <a class="el" href="threadsafequeue_8hpp_source.html">threadsafequeue.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="threadsafequeue_8hpp_source.html#l00241">241</a> of file <a class="el" href="threadsafequeue_8hpp_source.html">threadsafequeue.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="threadsafequeue_8hpp_source.html#l00118">mutex_</a>, and <a class="el" href="threadsafequeue_8hpp_source.html#l00122">queue_</a>.</p>
+<p class="reference">References <a class="el" href="threadsafequeue_8hpp_source.html#l00143">mutex_</a>, and <a class="el" href="threadsafequeue_8hpp_source.html#l00148">queue_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a403aa1522ed7c480709b67784fb59289">~ThreadSafeQueue()</a>.</p>
 
@@ -372,9 +372,9 @@ template&lt;typename T&gt; </div>
 <p>Removes and returns the front element, if any. </p>
 <dl class="section return"><dt>Returns</dt><dd>The front element, or std::nullopt if the queue is empty. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="threadsafequeue_8hpp_source.html#l00141">141</a> of file <a class="el" href="threadsafequeue_8hpp_source.html">threadsafequeue.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="threadsafequeue_8hpp_source.html#l00176">176</a> of file <a class="el" href="threadsafequeue_8hpp_source.html">threadsafequeue.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="threadsafequeue_8hpp_source.html#l00118">mutex_</a>, and <a class="el" href="threadsafequeue_8hpp_source.html#l00122">queue_</a>.</p>
+<p class="reference">References <a class="el" href="threadsafequeue_8hpp_source.html#l00143">mutex_</a>, and <a class="el" href="threadsafequeue_8hpp_source.html#l00148">queue_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a403aa1522ed7c480709b67784fb59289">~ThreadSafeQueue()</a>.</p>
 
@@ -405,9 +405,9 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="threadsafequeue_8hpp_source.html#l00126">126</a> of file <a class="el" href="threadsafequeue_8hpp_source.html">threadsafequeue.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="threadsafequeue_8hpp_source.html#l00155">155</a> of file <a class="el" href="threadsafequeue_8hpp_source.html">threadsafequeue.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="threadsafequeue_8hpp_source.html#l00118">mutex_</a>, and <a class="el" href="threadsafequeue_8hpp_source.html#l00122">queue_</a>.</p>
+<p class="reference">References <a class="el" href="threadsafequeue_8hpp_source.html#l00143">mutex_</a>, and <a class="el" href="threadsafequeue_8hpp_source.html#l00148">queue_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a403aa1522ed7c480709b67784fb59289">~ThreadSafeQueue()</a>.</p>
 
@@ -438,9 +438,9 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="threadsafequeue_8hpp_source.html#l00134">134</a> of file <a class="el" href="threadsafequeue_8hpp_source.html">threadsafequeue.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="threadsafequeue_8hpp_source.html#l00166">166</a> of file <a class="el" href="threadsafequeue_8hpp_source.html">threadsafequeue.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="threadsafequeue_8hpp_source.html#l00118">mutex_</a>, and <a class="el" href="threadsafequeue_8hpp_source.html#l00122">queue_</a>.</p>
+<p class="reference">References <a class="el" href="threadsafequeue_8hpp_source.html#l00143">mutex_</a>, and <a class="el" href="threadsafequeue_8hpp_source.html#l00148">queue_</a>.</p>
 
 </div>
 </div>
@@ -463,9 +463,9 @@ template&lt;typename T&gt; </div>
 
 <p>Returns the current number of elements. </p>
 
-<p class="definition">Definition at line <a class="el" href="threadsafequeue_8hpp_source.html#l00163">163</a> of file <a class="el" href="threadsafequeue_8hpp_source.html">threadsafequeue.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="threadsafequeue_8hpp_source.html#l00204">204</a> of file <a class="el" href="threadsafequeue_8hpp_source.html">threadsafequeue.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="threadsafequeue_8hpp_source.html#l00118">mutex_</a>, and <a class="el" href="threadsafequeue_8hpp_source.html#l00122">queue_</a>.</p>
+<p class="reference">References <a class="el" href="threadsafequeue_8hpp_source.html#l00143">mutex_</a>, and <a class="el" href="threadsafequeue_8hpp_source.html#l00148">queue_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a403aa1522ed7c480709b67784fb59289">~ThreadSafeQueue()</a>.</p>
 
@@ -496,9 +496,9 @@ template&lt;typename T&gt; </div>
 
 <p>Guards every access to queue_; mutable so const queries can lock it. </p>
 
-<p class="definition">Definition at line <a class="el" href="threadsafequeue_8hpp_source.html#l00118">118</a> of file <a class="el" href="threadsafequeue_8hpp_source.html">threadsafequeue.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="threadsafequeue_8hpp_source.html#l00143">143</a> of file <a class="el" href="threadsafequeue_8hpp_source.html">threadsafequeue.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="threadsafequeue_8hpp_source.html#l00170">clear()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00180">emplace()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00156">empty()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00187">front()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00141">pop()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00126">push()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00134">push()</a>, and <a class="el" href="threadsafequeue_8hpp_source.html#l00163">size()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="threadsafequeue_8hpp_source.html#l00213">clear()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00230">emplace()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00195">empty()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00241">front()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00176">pop()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00155">push()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00166">push()</a>, and <a class="el" href="threadsafequeue_8hpp_source.html#l00204">size()</a>.</p>
 
 </div>
 </div>
@@ -526,9 +526,9 @@ template&lt;typename T&gt; </div>
 
 <p>The underlying FIFO container. </p>
 
-<p class="definition">Definition at line <a class="el" href="threadsafequeue_8hpp_source.html#l00122">122</a> of file <a class="el" href="threadsafequeue_8hpp_source.html">threadsafequeue.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="threadsafequeue_8hpp_source.html#l00148">148</a> of file <a class="el" href="threadsafequeue_8hpp_source.html">threadsafequeue.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="threadsafequeue_8hpp_source.html#l00170">clear()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00180">emplace()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00156">empty()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00187">front()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00141">pop()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00126">push()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00134">push()</a>, and <a class="el" href="threadsafequeue_8hpp_source.html#l00163">size()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="threadsafequeue_8hpp_source.html#l00213">clear()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00230">emplace()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00195">empty()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00241">front()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00176">pop()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00155">push()</a>, <a class="el" href="threadsafequeue_8hpp_source.html#l00166">push()</a>, and <a class="el" href="threadsafequeue_8hpp_source.html#l00204">size()</a>.</p>
 
 </div>
 </div>

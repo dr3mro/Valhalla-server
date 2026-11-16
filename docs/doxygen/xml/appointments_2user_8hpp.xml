@@ -5,33 +5,33 @@
     <includes local="no">jsoncons/json.hpp</includes>
     <includes refid="appointment_8hpp" local="yes">entities/appointments/base/appointment.hpp</includes>
     <incdepgraph>
-      <node id="23">
+      <node id="22">
         <label>configurator/configurator.hpp</label>
         <link refid="configurator_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
         <childnode refid="26" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
-      <node id="31">
+      <node id="30">
         <label>defaults.hpp</label>
         <link refid="defaults_8hpp"/>
         <childnode refid="5" relation="include">
@@ -39,23 +39,23 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="27">
+      <node id="26">
         <label>configurator/envloader/envloader.hpp</label>
         <link refid="envloader_8hpp"/>
-        <childnode refid="25" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
       </node>
-      <node id="28">
+      <node id="27">
         <label>envvars/envvars.hpp</label>
         <link refid="envvars_8hpp"/>
         <childnode refid="6" relation="include">
@@ -66,43 +66,41 @@
       <node id="14">
         <label>controllers/databasecontroller/databasecontroller.hpp</label>
         <link refid="databasecontroller_8hpp"/>
-        <childnode refid="15" relation="include">
-        </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="38" relation="include">
         </childnode>
@@ -110,31 +108,33 @@
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
         <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
-      <node id="34">
+      <node id="31">
         <label>database/asyncdbclient.hpp</label>
         <link refid="asyncdbclient_8hpp"/>
-        <childnode refid="35" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="36">
+      <node id="33">
         <label>database/asyncresultmapper.hpp</label>
         <link refid="asyncresultmapper_8hpp"/>
-        <childnode refid="37" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
@@ -143,39 +143,39 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="38">
+      <node id="35">
         <label>database/asyncsqlbinder.hpp</label>
         <link refid="asyncsqlbinder_8hpp"/>
-        <childnode refid="35" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="32">
+      <node id="38">
         <label>database/databasebusy.hpp</label>
         <link refid="databasebusy_8hpp"/>
-        <childnode refid="33" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="41">
+      <node id="40">
         <label>database/databasehandler.hpp</label>
         <link refid="databasehandler_8hpp"/>
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="15">
+      <node id="41">
         <label>database/dbprobe.hpp</label>
         <link refid="dbprobe_8hpp"/>
       </node>
@@ -204,13 +204,13 @@
       <node id="46">
         <label>entities/base/base.hpp</label>
         <link refid="base_8hpp"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -242,13 +242,13 @@
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="42" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
       <node id="48">
@@ -256,7 +256,7 @@
         <link refid="entities_2base_2types_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
@@ -270,7 +270,7 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
@@ -278,19 +278,19 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="52" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="53" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="54" relation="include">
         </childnode>
@@ -298,7 +298,7 @@
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="56" relation="include">
         </childnode>
@@ -314,15 +314,15 @@
       <node id="42">
         <label>store/store.hpp</label>
         <link refid="store_8hpp"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -345,10 +345,10 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="29">
+      <node id="28">
         <label>utils/message/message.hpp</label>
         <link refid="message_8hpp"/>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -360,15 +360,15 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>
@@ -378,13 +378,13 @@
       <node id="49">
         <label>algorithm</label>
       </node>
-      <node id="17">
+      <node id="16">
         <label>atomic</label>
       </node>
       <node id="50">
         <label>cctype</label>
       </node>
-      <node id="25">
+      <node id="24">
         <label>chrono</label>
       </node>
       <node id="51">
@@ -396,16 +396,16 @@
       <node id="5">
         <label>cstdint</label>
       </node>
-      <node id="35">
+      <node id="32">
         <label>drogon/orm/DbClient.h</label>
       </node>
-      <node id="37">
+      <node id="34">
         <label>drogon/orm/Result.h</label>
       </node>
-      <node id="39">
+      <node id="36">
         <label>drogon/orm/SqlBinder.h</label>
       </node>
-      <node id="40">
+      <node id="37">
         <label>drogon/utils/coroutine.h</label>
       </node>
       <node id="10">
@@ -414,16 +414,16 @@
       <node id="4">
         <label>fmt/core.h</label>
       </node>
-      <node id="16">
+      <node id="15">
         <label>fmt/format.h</label>
       </node>
-      <node id="24">
+      <node id="23">
         <label>fmt/ranges.h</label>
       </node>
       <node id="11">
         <label>iterator</label>
       </node>
-      <node id="18">
+      <node id="17">
         <label>jsoncons/basic_json.hpp</label>
       </node>
       <node id="2">
@@ -432,16 +432,16 @@
       <node id="12">
         <label>memory</label>
       </node>
-      <node id="19">
+      <node id="18">
         <label>mutex</label>
       </node>
       <node id="6">
         <label>optional</label>
       </node>
-      <node id="20">
+      <node id="19">
         <label>pqxx/pqxx</label>
       </node>
-      <node id="33">
+      <node id="39">
         <label>stdexcept</label>
       </node>
       <node id="7">
@@ -453,10 +453,10 @@
       <node id="9">
         <label>sys/types.h</label>
       </node>
-      <node id="30">
+      <node id="29">
         <label>trantor/utils/Logger.h</label>
       </node>
-      <node id="26">
+      <node id="25">
         <label>type_traits</label>
       </node>
       <node id="43">
@@ -465,10 +465,10 @@
       <node id="44">
         <label>unordered_map</label>
       </node>
-      <node id="21">
+      <node id="20">
         <label>unordered_set</label>
       </node>
-      <node id="22">
+      <node id="21">
         <label>utility</label>
       </node>
       <node id="53">
@@ -500,79 +500,99 @@
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
 <codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>user.hpp</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Appointment<sp/>entity<sp/>defined<sp/>in<sp/>this<sp/>header,<sp/>bound<sp/>to<sp/>the<sp/>clinics<sp/>appointment<sp/>table.</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>is<sp/>a<sp/>minimal<sp/>concrete<sp/>specialisation<sp/>of<sp/>Appointment.<sp/>It<sp/>fixes<sp/>only<sp/>the<sp/>table<sp/>name</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>(&quot;clinics_appointments&quot;)<sp/>and<sp/>provides<sp/>a<sp/>constructor,<sp/>a<sp/>table-name<sp/>accessor<sp/>and<sp/>a<sp/>destructor.<sp/>It</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>does<sp/>not<sp/>define<sp/>an<sp/>organisation<sp/>name<sp/>or<sp/>the<sp/>static<sp/>permission-query<sp/>helpers<sp/>that<sp/>the<sp/>other</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>appointment<sp/>specialisations<sp/>expose.</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>It<sp/>gives<sp/>callers<sp/>a<sp/>ready-made<sp/>Appointment<sp/>for<sp/>the<sp/>clinics<sp/>appointment<sp/>table<sp/>when<sp/>only<sp/>the<sp/>table</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>name<sp/>is<sp/>needed.<sp/>Note<sp/>that<sp/>the<sp/>class<sp/>is<sp/>named<sp/>ClinicAppointment,<sp/>the<sp/>same<sp/>name<sp/>used<sp/>in</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>entities/appointments/clinic.hpp,<sp/>so<sp/>including<sp/>both<sp/>headers<sp/>together<sp/>would<sp/>conflict.<sp/>It<sp/>is<sp/>kept</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>as<sp/>a<sp/>lightweight<sp/>alternative<sp/>for<sp/>code<sp/>paths<sp/>that<sp/>do<sp/>not<sp/>need<sp/>permission<sp/>helpers.</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>-<sp/>std::optional:<sp/>https://en.cppreference.com/w/cpp/utility/optional</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>-<sp/>Static<sp/>constexpr<sp/>member:<sp/>a<sp/>compile-time<sp/>constant<sp/>stored<sp/>on<sp/>the<sp/>class,<sp/>usable<sp/>without<sp/>an<sp/>object.</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>One<sp/>Definition<sp/>Rule:<sp/>two<sp/>different<sp/>classes<sp/>with<sp/>the<sp/>same<sp/>name<sp/>in<sp/>the<sp/>same<sp/>namespace<sp/>will<sp/>clash</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp/>*<sp/><sp/><sp/>if<sp/>both<sp/>headers<sp/>are<sp/>included<sp/>in<sp/>one<sp/>translation<sp/>unit;<sp/>that<sp/>is<sp/>the<sp/>caveat<sp/>noted<sp/>for<sp/>this<sp/>file.</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>header<sp/>at<sp/>most<sp/>once<sp/>per<sp/>source<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/json.hpp&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>jsoncons::json,<sp/>kept<sp/>available<sp/>for<sp/>payloads<sp/>passed<sp/>to<sp/>the<sp/>base<sp/>constructor.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="appointment_8hpp" kindref="compound">entities/appointments/base/appointment.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Appointment,<sp/>the<sp/>base<sp/>class<sp/>providing<sp/>the<sp/>CRUD<sp/>statement<sp/>builders.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="31"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>@class<sp/>ClinicAppointment</highlight></codeline>
-<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Appointment<sp/>entity<sp/>defined<sp/>in<sp/>this<sp/>header,<sp/>bound<sp/>to<sp/>the<sp/>clinics<sp/>appointment<sp/>table.</highlight></codeline>
-<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>@details<sp/>A<sp/>minimal<sp/>Appointment<sp/>specialisation<sp/>fixing<sp/>only<sp/>TABLENAME<sp/>and<sp/>exposing<sp/>getTableName();</highlight></codeline>
-<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>it<sp/>does<sp/>not<sp/>define<sp/>an<sp/>organisation<sp/>name<sp/>or<sp/>the<sp/>static<sp/>permission-query<sp/>helpers<sp/>found<sp/>in<sp/>the</highlight></codeline>
-<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>other<sp/>appointment<sp/>specialisations.</highlight></codeline>
-<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>@note<sp/>The<sp/>class<sp/>name<sp/>collides<sp/>with<sp/>ClinicAppointment<sp/>in<sp/>entities/appointments/clinic.hpp.</highlight></codeline>
-<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>@see<sp/>Appointment</highlight></codeline>
-<codeline lineno="39"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classClinicAppointment" kindref="compound">ClinicAppointment</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classAppointment" kindref="compound">Appointment</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Public<sp/>inheritance<sp/>keeps<sp/>the<sp/>base<sp/>CRUD<sp/>interface<sp/>available.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="43"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="44"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Database<sp/>table<sp/>holding<sp/>clinic<sp/>appointments.</highlight></codeline>
-<codeline lineno="45"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69" kindref="member">TABLENAME</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;clinics_appointments&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>exact<sp/>table<sp/>this<sp/>class<sp/>reads<sp/>and<sp/>writes.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="50"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Stores<sp/>the<sp/>appointment<sp/>payload,<sp/>binding<sp/>it<sp/>to<sp/>the<sp/>clinic<sp/>appointment<sp/>table.</highlight></codeline>
-<codeline lineno="51"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Payload<sp/>type<sp/>held<sp/>by<sp/>EntityType.</highlight></codeline>
-<codeline lineno="52"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_data<sp/>Operation<sp/>payload.</highlight></codeline>
-<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="55" refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" kindref="member">ClinicAppointment</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T&amp;<sp/>_data)<sp/>:<sp/><ref refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" kindref="member">Appointment</ref>(_data,<sp/><ref refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69" kindref="member">TABLENAME</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;explicit&quot;<sp/>requires<sp/>a<sp/>direct<sp/>call;<sp/>TABLENAME<sp/>fixes<sp/>the<sp/>target<sp/>table.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Non-copyable<sp/>and<sp/>non-movable;<sp/>construct<sp/>in<sp/>place<sp/>for<sp/>the<sp/>request<sp/>that<sp/>uses<sp/>it.</highlight></codeline>
-<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="62" refid="classClinicAppointment_1a3357977125025b54a7d12a88de9bc4cc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classClinicAppointment_1a3357977125025b54a7d12a88de9bc4cc" kindref="member">ClinicAppointment</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" kindref="member">ClinicAppointment</ref>&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copy.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="63" refid="classClinicAppointment_1a6f23042843785fdf6184609a570f75ca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classClinicAppointment_1a6f23042843785fdf6184609a570f75ca" kindref="member">ClinicAppointment</ref>(<ref refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" kindref="member">ClinicAppointment</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>move.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="64" refid="classClinicAppointment_1a27717d22eec5dd4dbab1c959bdd516c8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" kindref="member">ClinicAppointment</ref>&amp;<sp/><ref refid="classClinicAppointment_1a27717d22eec5dd4dbab1c959bdd516c8" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" kindref="member">ClinicAppointment</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copy<sp/>assignment.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="65" refid="classClinicAppointment_1a2884f35bddf960135583cafc3a9bf6ce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" kindref="member">ClinicAppointment</ref>&amp;<sp/><ref refid="classClinicAppointment_1a2884f35bddf960135583cafc3a9bf6ce" kindref="member">operator=</ref>(<ref refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" kindref="member">ClinicAppointment</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>move<sp/>assignment.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>clinic<sp/>appointment<sp/>table<sp/>name.</highlight></codeline>
-<codeline lineno="69"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="70" refid="classClinicAppointment_1a152526d304bed176515509bd5f950144" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classClinicAppointment_1a152526d304bed176515509bd5f950144" kindref="member">getTableName</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69" kindref="member">TABLENAME</ref>;<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Static<sp/>accessor<sp/>for<sp/>the<sp/>table<sp/>name.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Default<sp/>destructor;<sp/>no<sp/>state<sp/>beyond<sp/>the<sp/>base<sp/>Appointment.</highlight></codeline>
-<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="74" refid="classClinicAppointment_1a97bf9248ddfd1900b070ebe454b7c663" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classClinicAppointment_1a97bf9248ddfd1900b070ebe454b7c663" kindref="member">~ClinicAppointment</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Nothing<sp/>extra<sp/>to<sp/>clean<sp/>up.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Appointment<sp/>entity<sp/>defined<sp/>in<sp/>this<sp/>header,<sp/>bound<sp/>to<sp/>the<sp/>clinics</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>appointment<sp/>table.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>is<sp/>a<sp/>minimal<sp/>concrete<sp/>specialisation<sp/>of<sp/>Appointment.<sp/>It<sp/>fixes</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>only<sp/>the<sp/>table<sp/>name</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>(&quot;clinics_appointments&quot;)<sp/>and<sp/>provides<sp/>a<sp/>constructor,<sp/>a<sp/>table-name<sp/>accessor</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>and<sp/>a<sp/>destructor.<sp/>It<sp/>does<sp/>not<sp/>define<sp/>an<sp/>organisation<sp/>name<sp/>or<sp/>the<sp/>static</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>permission-query<sp/>helpers<sp/>that<sp/>the<sp/>other<sp/>appointment<sp/>specialisations<sp/>expose.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>It<sp/>gives<sp/>callers<sp/>a<sp/>ready-made<sp/>Appointment<sp/>for<sp/>the<sp/>clinics<sp/>appointment<sp/>table</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>when<sp/>only<sp/>the<sp/>table<sp/>name<sp/>is<sp/>needed.<sp/>Note<sp/>that<sp/>the<sp/>class<sp/>is<sp/>named</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>ClinicAppointment,<sp/>the<sp/>same<sp/>name<sp/>used<sp/>in<sp/>entities/appointments/clinic.hpp,<sp/>so</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>including<sp/>both<sp/>headers<sp/>together<sp/>would<sp/>conflict.<sp/>It<sp/>is<sp/>kept<sp/>as<sp/>a<sp/>lightweight</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>alternative<sp/>for<sp/>code<sp/>paths<sp/>that<sp/>do<sp/>not<sp/>need<sp/>permission<sp/>helpers.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>std::optional:<sp/>https://en.cppreference.com/w/cpp/utility/optional</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>Static<sp/>constexpr<sp/>member:<sp/>a<sp/>compile-time<sp/>constant<sp/>stored<sp/>on<sp/>the<sp/>class,</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>usable<sp/>without<sp/>an<sp/>object.</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>One<sp/>Definition<sp/>Rule:<sp/>two<sp/>different<sp/>classes<sp/>with<sp/>the<sp/>same<sp/>name<sp/>in<sp/>the<sp/>same</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>namespace<sp/>will<sp/>clash<sp/>if<sp/>both<sp/>headers<sp/>are<sp/>included<sp/>in<sp/>one<sp/>translation<sp/>unit;</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>that<sp/>is<sp/>the<sp/>caveat<sp/>noted<sp/>for<sp/>this<sp/>file.</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>header<sp/>at<sp/>most<sp/>once<sp/>per<sp/>source<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>jsoncons::json,<sp/>kept<sp/>available<sp/>for<sp/>payloads<sp/>passed<sp/>to<sp/>the<sp/>base<sp/>constructor.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/json.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Appointment,<sp/>the<sp/>base<sp/>class<sp/>providing<sp/>the<sp/>CRUD<sp/>statement<sp/>builders.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="appointment_8hpp" kindref="compound">entities/appointments/base/appointment.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="38"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>@class<sp/>ClinicAppointment</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Appointment<sp/>entity<sp/>defined<sp/>in<sp/>this<sp/>header,<sp/>bound<sp/>to<sp/>the<sp/>clinics</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>appointment<sp/>table.</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>@details<sp/>A<sp/>minimal<sp/>Appointment<sp/>specialisation<sp/>fixing<sp/>only<sp/>TABLENAME<sp/>and</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>exposing<sp/>getTableName();<sp/>it<sp/>does<sp/>not<sp/>define<sp/>an<sp/>organisation<sp/>name<sp/>or<sp/>the</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>static<sp/>permission-query<sp/>helpers<sp/>found<sp/>in<sp/>the<sp/>other<sp/>appointment</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>specialisations.</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>@note<sp/>The<sp/>class<sp/>name<sp/>collides<sp/>with<sp/>ClinicAppointment<sp/>in</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>entities/appointments/clinic.hpp.</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>@see<sp/>Appointment</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Public<sp/>inheritance<sp/>keeps<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>base<sp/>CRUD<sp/>interface<sp/>available.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classClinicAppointment" kindref="compound">ClinicAppointment</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classAppointment" kindref="compound">Appointment</ref><sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Database<sp/>table<sp/>holding<sp/>clinic<sp/>appointments.</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69" kindref="member">TABLENAME</ref><sp/>=</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;clinics_appointments&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>exact<sp/>table<sp/>this<sp/>class<sp/>reads<sp/>and<sp/>writes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Stores<sp/>the<sp/>appointment<sp/>payload,<sp/>binding<sp/>it<sp/>to<sp/>the<sp/>clinic</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/>*<sp/>appointment<sp/>table.</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Payload<sp/>type<sp/>held<sp/>by<sp/>EntityType.</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_data<sp/>Operation<sp/>payload.</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="68" refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" kindref="member">ClinicAppointment</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T&amp;<sp/>_data)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;explicit&quot;<sp/>requires<sp/>a<sp/>direct<sp/>call;<sp/>TABLENAME</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>fixes<sp/>the<sp/>target<sp/>table.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" kindref="member">Appointment</ref>(_data,<sp/><ref refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69" kindref="member">TABLENAME</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Non-copyable<sp/>and<sp/>non-movable;<sp/>construct<sp/>in<sp/>place<sp/>for<sp/>the<sp/>request</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/>*<sp/>that<sp/>uses<sp/>it.</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="classClinicAppointment_1a3357977125025b54a7d12a88de9bc4cc" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classClinicAppointment_1a3357977125025b54a7d12a88de9bc4cc" kindref="member">ClinicAppointment</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" kindref="member">ClinicAppointment</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copy.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="classClinicAppointment_1a6f23042843785fdf6184609a570f75ca" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classClinicAppointment_1a6f23042843785fdf6184609a570f75ca" kindref="member">ClinicAppointment</ref>(<ref refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" kindref="member">ClinicAppointment</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>move.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classClinicAppointment_1a27717d22eec5dd4dbab1c959bdd516c8" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" kindref="member">ClinicAppointment</ref>&amp;<sp/><ref refid="classClinicAppointment_1a27717d22eec5dd4dbab1c959bdd516c8" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" kindref="member">ClinicAppointment</ref>&amp;)<sp/>=</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copy<sp/>assignment.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="classClinicAppointment_1a2884f35bddf960135583cafc3a9bf6ce" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" kindref="member">ClinicAppointment</ref>&amp;<sp/><ref refid="classClinicAppointment_1a2884f35bddf960135583cafc3a9bf6ce" kindref="member">operator=</ref>(<ref refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" kindref="member">ClinicAppointment</ref>&amp;&amp;)<sp/>=</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>move<sp/>assignment.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>clinic<sp/>appointment<sp/>table<sp/>name.</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="classClinicAppointment_1a152526d304bed176515509bd5f950144" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classClinicAppointment_1a152526d304bed176515509bd5f950144" kindref="member">getTableName</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69" kindref="member">TABLENAME</ref>;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Static<sp/>accessor<sp/>for<sp/>the<sp/>table<sp/>name.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Default<sp/>destructor;<sp/>no<sp/>state<sp/>beyond<sp/>the<sp/>base<sp/>Appointment.</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="classClinicAppointment_1a97bf9248ddfd1900b070ebe454b7c663" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classClinicAppointment_1a97bf9248ddfd1900b070ebe454b7c663" kindref="member">~ClinicAppointment</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Nothing<sp/>extra<sp/>to<sp/>clean<sp/>up.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal">};</highlight></codeline>
     </programlisting>
     <location file="src/entities/appointments/user.hpp"/>
   </compounddef>

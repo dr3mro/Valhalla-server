@@ -9,8 +9,8 @@
     <includes local="no">optional</includes>
     <includes local="no">string_view</includes>
     <includes refid="controller_8hpp" local="yes">controllers/base/controller/controller.hpp</includes>
-    <includes local="yes">drogon/utils/coroutine.h</includes>
     <includes refid="entitycontrollerbase_8hpp" local="yes">controllers/entitycontroller/entitycontrollerbase.hpp</includes>
+    <includes local="yes">drogon/utils/coroutine.h</includes>
     <includes refid="gatekeeper_8hpp" local="yes">gatekeeper/gatekeeper.hpp</includes>
     <includes refid="store_8hpp" local="yes">store/store.hpp</includes>
     <includes refid="callback_8hpp" local="yes">utils/global/callback.hpp</includes>
@@ -24,41 +24,7 @@
     <includedby refid="servicecontroller_8cpp" local="yes">src/controllers/servicecontroller/servicecontroller.cpp</includedby>
     <includedby refid="servicecontroller_8hpp" local="yes">src/controllers/servicecontroller/servicecontroller.hpp</includedby>
     <incdepgraph>
-      <node id="71">
-        <label>concurrency/boundedexecutor.hpp</label>
-        <link refid="boundedexecutor_8hpp"/>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="65" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="66" relation="include">
-        </childnode>
-        <childnode refid="67" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="72" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="73" relation="include">
-        </childnode>
-        <childnode refid="56" relation="include">
-        </childnode>
-      </node>
-      <node id="24">
+      <node id="23">
         <label>configurator/configurator.hpp</label>
         <link refid="configurator_8hpp"/>
         <childnode refid="9" relation="include">
@@ -67,7 +33,7 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -75,16 +41,16 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="29">
         <label>defaults.hpp</label>
         <link refid="defaults_8hpp"/>
         <childnode refid="3" relation="include">
@@ -92,23 +58,23 @@
         <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="25">
         <label>configurator/envloader/envloader.hpp</label>
         <link refid="envloader_8hpp"/>
-        <childnode refid="25" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
       </node>
-      <node id="27">
+      <node id="26">
         <label>envvars/envvars.hpp</label>
         <link refid="envvars_8hpp"/>
         <childnode refid="6" relation="include">
@@ -147,6 +113,10 @@
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
         <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="51" relation="include">
@@ -157,11 +127,7 @@
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="73" relation="include">
+        <childnode refid="72" relation="include">
         </childnode>
         <childnode refid="58" relation="include">
         </childnode>
@@ -169,19 +135,17 @@
         </childnode>
         <childnode refid="85" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="18">
         <label>controllers/databasecontroller/databasecontroller.hpp</label>
         <link refid="databasecontroller_8hpp"/>
-        <childnode refid="19" relation="include">
-        </childnode>
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -193,37 +157,39 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
         <childnode refid="38" relation="include">
         </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
         <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -243,15 +209,15 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
         <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="62" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="73" relation="include">
+        <childnode refid="72" relation="include">
         </childnode>
       </node>
       <node id="87">
@@ -263,29 +229,29 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="73" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="72" relation="include">
         </childnode>
-        <childnode refid="76" relation="include">
+        <childnode refid="75" relation="include">
         </childnode>
       </node>
-      <node id="32">
+      <node id="30">
         <label>database/asyncdbclient.hpp</label>
         <link refid="asyncdbclient_8hpp"/>
-        <childnode refid="33" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="34">
+      <node id="32">
         <label>database/asyncresultmapper.hpp</label>
         <link refid="asyncresultmapper_8hpp"/>
-        <childnode refid="35" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
@@ -296,25 +262,25 @@
         <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="36">
+      <node id="34">
         <label>database/asyncsqlbinder.hpp</label>
         <link refid="asyncsqlbinder_8hpp"/>
-        <childnode refid="33" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
       </node>
-      <node id="31">
+      <node id="38">
         <label>database/databasebusy.hpp</label>
         <link refid="databasebusy_8hpp"/>
         <childnode refid="14" relation="include">
@@ -322,13 +288,13 @@
         <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="40">
+      <node id="39">
         <label>database/databasehandler.hpp</label>
         <link refid="databasehandler_8hpp"/>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="19">
+      <node id="40">
         <label>database/dbprobe.hpp</label>
         <link refid="dbprobe_8hpp"/>
       </node>
@@ -341,7 +307,7 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
@@ -387,7 +353,7 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
@@ -397,7 +363,7 @@
         </childnode>
         <childnode refid="58" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="49">
@@ -419,7 +385,7 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
@@ -433,7 +399,7 @@
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="51">
@@ -469,13 +435,13 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="54" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>
@@ -483,7 +449,7 @@
         </childnode>
         <childnode refid="56" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="57" relation="include">
         </childnode>
@@ -513,23 +479,25 @@
       <node id="64">
         <label>gatekeeper/dosdetector/dosdetector.hpp</label>
         <link refid="dosdetector_8hpp"/>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
         <childnode refid="65" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="67" relation="include">
         </childnode>
         <childnode refid="68" relation="include">
         </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -537,13 +505,11 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="69" relation="include">
-        </childnode>
         <childnode refid="43" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
@@ -567,35 +533,35 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
         <childnode refid="64" relation="include">
         </childnode>
         <childnode refid="70" relation="include">
         </childnode>
-        <childnode refid="74" relation="include">
-        </childnode>
-        <childnode refid="77" relation="include">
-        </childnode>
-        <childnode refid="84" relation="include">
-        </childnode>
-        <childnode refid="81" relation="include">
-        </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
         <childnode refid="73" relation="include">
-        </childnode>
-        <childnode refid="75" relation="include">
-        </childnode>
-        <childnode refid="56" relation="include">
         </childnode>
         <childnode refid="76" relation="include">
         </childnode>
-      </node>
-      <node id="78">
-        <label>gatekeeper/keeprbase/keeprbase.hpp</label>
-        <link refid="keeprbase_8hpp"/>
-        <childnode refid="79" relation="include">
+        <childnode refid="84" relation="include">
         </childnode>
         <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+      </node>
+      <node id="77">
+        <label>gatekeeper/keeprbase/keeprbase.hpp</label>
+        <link refid="keeprbase_8hpp"/>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -607,13 +573,13 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="81" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="80" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
@@ -635,10 +601,10 @@
         </childnode>
         <childnode refid="71" relation="include">
         </childnode>
-        <childnode refid="73" relation="include">
+        <childnode refid="72" relation="include">
         </childnode>
       </node>
-      <node id="74">
+      <node id="73">
         <label>gatekeeper/permissionmanager/permissionmanager.hpp</label>
         <link refid="permissionmanager_8hpp"/>
         <childnode refid="3" relation="include">
@@ -647,19 +613,19 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="75" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="74" relation="include">
         </childnode>
         <childnode refid="56" relation="include">
         </childnode>
-        <childnode refid="76" relation="include">
+        <childnode refid="75" relation="include">
         </childnode>
       </node>
-      <node id="77">
+      <node id="76">
         <label>gatekeeper/sessionmanager/sessionmanager.hpp</label>
         <link refid="sessionmanager_8hpp"/>
-        <childnode refid="25" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -667,33 +633,33 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="78" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="77" relation="include">
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>
-        <childnode refid="81" relation="include">
+        <childnode refid="80" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="73" relation="include">
+        <childnode refid="72" relation="include">
         </childnode>
-        <childnode refid="82" relation="include">
+        <childnode refid="81" relation="include">
         </childnode>
       </node>
       <node id="84">
         <label>gatekeeper/tokenmanager/tokenmanager.hpp</label>
         <link refid="tokenmanager_8hpp"/>
-        <childnode refid="78" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="77" relation="include">
         </childnode>
       </node>
-      <node id="81">
+      <node id="80">
         <label>gatekeeper/types.hpp</label>
         <link refid="gatekeeper_2types_8hpp"/>
-        <childnode refid="25" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -705,13 +671,13 @@
       <node id="41">
         <label>store/store.hpp</label>
         <link refid="store_8hpp"/>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
@@ -722,13 +688,13 @@
         <childnode refid="43" relation="include">
         </childnode>
       </node>
-      <node id="73">
+      <node id="72">
         <label>utils/global/callback.hpp</label>
         <link refid="callback_8hpp"/>
-        <childnode refid="67" relation="include">
+        <childnode refid="68" relation="include">
         </childnode>
       </node>
-      <node id="75">
+      <node id="74">
         <label>utils/global/concepts.hpp</label>
         <link refid="concepts_8hpp"/>
         <childnode refid="16" relation="include">
@@ -739,7 +705,7 @@
         <link refid="errorstatus_8hpp"/>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="56" relation="include">
         </childnode>
@@ -758,7 +724,7 @@
         <childnode refid="43" relation="include">
         </childnode>
       </node>
-      <node id="76">
+      <node id="75">
         <label>utils/global/requester.hpp</label>
         <link refid="requester_8hpp"/>
         <childnode refid="3" relation="include">
@@ -782,30 +748,30 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="82">
+      <node id="81">
         <label>utils/memcache/memcache.hpp</label>
         <link refid="memcache_8hpp"/>
-        <childnode refid="25" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="65" relation="include">
+        <childnode refid="66" relation="include">
         </childnode>
-        <childnode refid="83" relation="include">
+        <childnode refid="82" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="72" relation="include">
+        <childnode refid="83" relation="include">
         </childnode>
         <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="28">
+      <node id="27">
         <label>utils/message/message.hpp</label>
         <link refid="message_8hpp"/>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
@@ -823,7 +789,7 @@
         </childnode>
         <childnode refid="43" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
@@ -835,16 +801,19 @@
       <node id="47">
         <label>algorithm</label>
       </node>
-      <node id="20">
+      <node id="19">
         <label>atomic</label>
       </node>
       <node id="52">
         <label>cctype</label>
       </node>
-      <node id="25">
+      <node id="24">
         <label>chrono</label>
       </node>
-      <node id="65">
+      <node id="71">
+        <label>concurrency/boundedexecutor.hpp</label>
+      </node>
+      <node id="66">
         <label>condition_variable</label>
       </node>
       <node id="53">
@@ -856,22 +825,22 @@
       <node id="3">
         <label>cstdint</label>
       </node>
-      <node id="66">
+      <node id="67">
         <label>deque</label>
       </node>
       <node id="63">
         <label>drogon/DrTemplateBase.h</label>
       </node>
-      <node id="33">
+      <node id="31">
         <label>drogon/orm/DbClient.h</label>
       </node>
-      <node id="35">
+      <node id="33">
         <label>drogon/orm/Result.h</label>
       </node>
-      <node id="37">
+      <node id="35">
         <label>drogon/orm/SqlBinder.h</label>
       </node>
-      <node id="38">
+      <node id="36">
         <label>drogon/utils/coroutine.h</label>
       </node>
       <node id="12">
@@ -886,10 +855,10 @@
       <node id="10">
         <label>fmt/ranges.h</label>
       </node>
-      <node id="67">
+      <node id="68">
         <label>functional</label>
       </node>
-      <node id="68">
+      <node id="69">
         <label>future</label>
       </node>
       <node id="48">
@@ -904,25 +873,25 @@
       <node id="4">
         <label>jsoncons/json.hpp</label>
       </node>
-      <node id="79">
+      <node id="78">
         <label>jwt-cpp/jwt.h</label>
       </node>
-      <node id="80">
+      <node id="79">
         <label>jwt-cpp/traits/kazuho-picojson/traits.h</label>
       </node>
-      <node id="83">
+      <node id="82">
         <label>list</label>
       </node>
       <node id="5">
         <label>memory</label>
       </node>
-      <node id="21">
+      <node id="20">
         <label>mutex</label>
       </node>
       <node id="6">
         <label>optional</label>
       </node>
-      <node id="22">
+      <node id="21">
         <label>pqxx/pqxx</label>
       </node>
       <node id="14">
@@ -937,10 +906,10 @@
       <node id="46">
         <label>sys/types.h</label>
       </node>
-      <node id="72">
+      <node id="83">
         <label>thread</label>
       </node>
-      <node id="29">
+      <node id="28">
         <label>trantor/utils/Logger.h</label>
       </node>
       <node id="16">
@@ -952,7 +921,7 @@
       <node id="43">
         <label>unordered_map</label>
       </node>
-      <node id="23">
+      <node id="22">
         <label>unordered_set</label>
       </node>
       <node id="17">
@@ -961,10 +930,10 @@
       <node id="54">
         <label>variant</label>
       </node>
-      <node id="39">
+      <node id="37">
         <label>vector</label>
       </node>
-      <node id="69">
+      <node id="65">
         <label>xxhash.h</label>
       </node>
     </incdepgraph>
@@ -1083,14 +1052,14 @@
 <para>Generic request-facing CRUDS handler: validates and authorizes a request, then delegates persistence to <ref refid="classController" kindref="compound">Controller</ref>. </para>
     </briefdescription>
     <detaileddescription>
-<para>Declares <computeroutput><ref refid="classEntityController" kindref="compound">EntityController</ref>&lt;T&gt;</computeroutput>, the class that turns an HTTP request body into a validated, authorized entity and then hands it to the lower-level <ref refid="classController" kindref="compound">Controller</ref> for persistence. For each of the ten operations it follows the same recipe: parse JSON, validate against the entity schema, ask <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> for permission, build the entity, and call the matching <ref refid="classController" kindref="compound">Controller</ref> method. The .cpp file holds the definitions.</para>
+<para>Declares <computeroutput><ref refid="classEntityController" kindref="compound">EntityController</ref>&lt;T&gt;</computeroutput>, the class that turns an HTTP request body into a validated, authorized entity and then hands it to the lower-level <ref refid="classController" kindref="compound">Controller</ref> for persistence. For each of the ten operations it follows the same recipe: parse JSON, validate against the entity schema, ask <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref> for permission, build the entity, and call the matching <ref refid="classController" kindref="compound">Controller</ref> method. The .cpp file holds the definitions.</para>
 <para>WHY THIS FILE MATTERS IN THE SERVER: This is the bridge between &quot;a request came in&quot; and &quot;a row was written&quot;. The generic <ref refid="classClientController" kindref="compound">ClientController</ref> and <ref refid="classClinicController" kindref="compound">ClinicController</ref> both inherit from it, reusing its Read/Search/Update flows. Without this class each entity type would need its own copy of the parse-validate-authorize-delegate pipeline, and validation/security rules would drift.</para>
 <para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
 <listitem><para>Templates: <ulink url="https://en.cppreference.com/w/cpp/language/templates">https://en.cppreference.com/w/cpp/language/templates</ulink></para>
 </listitem><listitem><para>Multiple inheritance (this class inherits two bases): <ulink url="https://en.cppreference.com/w/cpp/language/derived_class">https://en.cppreference.com/w/cpp/language/derived_class</ulink></para>
 </listitem><listitem><para><computeroutput>override</computeroutput> and virtual functions: <ulink url="https://en.cppreference.com/w/cpp/language/virtual">https://en.cppreference.com/w/cpp/language/virtual</ulink></para>
 </listitem><listitem><para>Coroutines (co_await / drogon::Task): <ulink url="https://en.cppreference.com/w/cpp/language/coroutines">https://en.cppreference.com/w/cpp/language/coroutines</ulink></para>
-</listitem><listitem><para>std::shared_ptr (sharing the <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> service): <ulink url="https://en.cppreference.com/w/cpp/memory/shared_ptr">https://en.cppreference.com/w/cpp/memory/shared_ptr</ulink></para>
+</listitem><listitem><para>std::shared_ptr (sharing the <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref> service): <ulink url="https://en.cppreference.com/w/cpp/memory/shared_ptr">https://en.cppreference.com/w/cpp/memory/shared_ptr</ulink></para>
 </listitem><listitem><para>Callback / std::function: <ulink url="https://en.cppreference.com/w/cpp/utility/functional/function">https://en.cppreference.com/w/cpp/utility/functional/function</ulink></para>
 </listitem></itemizedlist>
 </para>
@@ -1103,159 +1072,225 @@
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
 <codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>entitycontroller.hpp</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Generic<sp/>request-facing<sp/>CRUDS<sp/>handler:<sp/>validates<sp/>and<sp/>authorizes<sp/>a<sp/>request,<sp/>then<sp/>delegates<sp/>persistence<sp/>to<sp/>Controller.</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>Declares<sp/>`EntityController&lt;T&gt;`,<sp/>the<sp/>class<sp/>that<sp/>turns<sp/>an<sp/>HTTP<sp/>request<sp/>body<sp/>into<sp/>a<sp/>validated,<sp/>authorized</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entity<sp/>and<sp/>then<sp/>hands<sp/>it<sp/>to<sp/>the<sp/>lower-level<sp/>Controller<sp/>for<sp/>persistence.<sp/>For<sp/>each<sp/>of<sp/>the<sp/>ten<sp/>operations<sp/>it</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>follows<sp/>the<sp/>same<sp/>recipe:<sp/>parse<sp/>JSON,<sp/>validate<sp/>against<sp/>the<sp/>entity<sp/>schema,<sp/>ask<sp/>GateKeeper<sp/>for<sp/>permission,</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>build<sp/>the<sp/>entity,<sp/>and<sp/>call<sp/>the<sp/>matching<sp/>Controller<sp/>method.<sp/>The<sp/>.cpp<sp/>file<sp/>holds<sp/>the<sp/>definitions.</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>the<sp/>bridge<sp/>between<sp/>&quot;a<sp/>request<sp/>came<sp/>in&quot;<sp/>and<sp/>&quot;a<sp/>row<sp/>was<sp/>written&quot;.<sp/>The<sp/>generic<sp/>ClientController<sp/>and</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>ClinicController<sp/>both<sp/>inherit<sp/>from<sp/>it,<sp/>reusing<sp/>its<sp/>Read/Search/Update<sp/>flows.<sp/>Without<sp/>this<sp/>class<sp/>each<sp/>entity<sp/>type</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>would<sp/>need<sp/>its<sp/>own<sp/>copy<sp/>of<sp/>the<sp/>parse-validate-authorize-delegate<sp/>pipeline,<sp/>and<sp/>validation/security<sp/>rules<sp/>would<sp/>drift.</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>-<sp/>Templates:<sp/>https://en.cppreference.com/w/cpp/language/templates</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>-<sp/>Multiple<sp/>inheritance<sp/>(this<sp/>class<sp/>inherits<sp/>two<sp/>bases):<sp/>https://en.cppreference.com/w/cpp/language/derived_class</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>-<sp/>`override`<sp/>and<sp/>virtual<sp/>functions:<sp/>https://en.cppreference.com/w/cpp/language/virtual</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>Coroutines<sp/>(co_await<sp/>/<sp/>drogon::Task):<sp/>https://en.cppreference.com/w/cpp/language/coroutines</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>std::shared_ptr<sp/>(sharing<sp/>the<sp/>GateKeeper<sp/>service):<sp/>https://en.cppreference.com/w/cpp/memory/shared_ptr</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>Callback<sp/>/<sp/>std::function:<sp/>https://en.cppreference.com/w/cpp/utility/functional/function</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/format.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Formatting<sp/>error<sp/>messages<sp/>with<sp/>{}<sp/>placeholders.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>uint64_t<sp/>entity<sp/>ids.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/json.hpp&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>JSON<sp/>value<sp/>type<sp/>used<sp/>to<sp/>parse<sp/>request<sp/>bodies.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::shared_ptr<sp/>for<sp/>the<sp/>shared<sp/>GateKeeper.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Optional<sp/>ids<sp/>passed<sp/>to<sp/>Update/Delete.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Non-owning<sp/>view<sp/>of<sp/>the<sp/>request<sp/>body.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Generic<sp/>request-facing<sp/>CRUDS<sp/>handler:<sp/>validates<sp/>and<sp/>authorizes<sp/>a</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>request,<sp/>then<sp/>delegates<sp/>persistence<sp/>to<sp/>Controller.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details<sp/>Declares<sp/>`EntityController&lt;T&gt;`,<sp/>the<sp/>class<sp/>that<sp/>turns<sp/>an<sp/>HTTP<sp/>request</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>body<sp/>into<sp/>a<sp/>validated,<sp/>authorized<sp/>entity<sp/>and<sp/>then<sp/>hands<sp/>it<sp/>to<sp/>the<sp/>lower-level</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>Controller<sp/>for<sp/>persistence.<sp/>For<sp/>each<sp/>of<sp/>the<sp/>ten<sp/>operations<sp/>it<sp/>follows<sp/>the</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>same<sp/>recipe:<sp/>parse<sp/>JSON,<sp/>validate<sp/>against<sp/>the<sp/>entity<sp/>schema,<sp/>ask<sp/>GateKeeper</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>for<sp/>permission,<sp/>build<sp/>the<sp/>entity,<sp/>and<sp/>call<sp/>the<sp/>matching<sp/>Controller<sp/>method.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>The<sp/>.cpp<sp/>file<sp/>holds<sp/>the<sp/>definitions.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>the<sp/>bridge<sp/>between<sp/>&quot;a<sp/>request<sp/>came<sp/>in&quot;<sp/>and<sp/>&quot;a<sp/>row<sp/>was<sp/>written&quot;.<sp/>The</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>generic<sp/>ClientController<sp/>and<sp/>ClinicController<sp/>both<sp/>inherit<sp/>from<sp/>it,<sp/>reusing</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>its<sp/>Read/Search/Update<sp/>flows.<sp/>Without<sp/>this<sp/>class<sp/>each<sp/>entity<sp/>type<sp/>would<sp/>need</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>its<sp/>own<sp/>copy<sp/>of<sp/>the<sp/>parse-validate-authorize-delegate<sp/>pipeline,<sp/>and</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>validation/security<sp/>rules<sp/>would<sp/>drift.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>Templates:<sp/>https://en.cppreference.com/w/cpp/language/templates</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>Multiple<sp/>inheritance<sp/>(this<sp/>class<sp/>inherits<sp/>two<sp/>bases):</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/language/derived_class</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>-<sp/>`override`<sp/>and<sp/>virtual<sp/>functions:</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/language/virtual</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>-<sp/>Coroutines<sp/>(co_await<sp/>/<sp/>drogon::Task):</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/language/coroutines</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>-<sp/>std::shared_ptr<sp/>(sharing<sp/>the<sp/>GateKeeper<sp/>service):</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/memory/shared_ptr</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/>-<sp/>Callback<sp/>/<sp/>std::function:</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/utility/functional/function</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="controller_8hpp" kindref="compound">controllers/base/controller/controller.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>persistence<sp/>engine<sp/>this<sp/>class<sp/>delegates<sp/>to.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;drogon/utils/coroutine.h&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Drogon<sp/>Task<sp/>type<sp/>for<sp/>the<sp/>Async<sp/>variants.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="entitycontrollerbase_8hpp" kindref="compound">controllers/entitycontroller/entitycontrollerbase.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>interface<sp/>this<sp/>class<sp/>implements.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gatekeeper_8hpp" kindref="compound">gatekeeper/gatekeeper.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Authorization<sp/>service<sp/>declaration.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="store_8hpp" kindref="compound">store/store.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Service<sp/>locator<sp/>for<sp/>the<sp/>shared<sp/>GateKeeper.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="callback_8hpp" kindref="compound">utils/global/callback.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Defines<sp/>CALLBACK_,<sp/>the<sp/>reply<sp/>function<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref><sp/>=<sp/><ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">api::v2::GateKeeper</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Short<sp/>name<sp/>for<sp/>the<sp/>authorization<sp/>service.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="45"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>@class<sp/>EntityController</highlight></codeline>
-<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Generic<sp/>request-facing<sp/>CRUDS<sp/>handler:<sp/>validates<sp/>and<sp/>authorizes<sp/>a<sp/>request,<sp/>then<sp/>delegates<sp/>persistence<sp/>to<sp/>Controller.</highlight></codeline>
-<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>@details<sp/>Combines<sp/>the<sp/>persistence<sp/>engine<sp/>(Controller)<sp/>with<sp/>the<sp/>abstract<sp/>CRUDS<sp/>interface<sp/>(EntityControllerBase).</highlight></codeline>
-<codeline lineno="49"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Each<sp/>operation<sp/>follows<sp/>the<sp/>same<sp/>pipeline:<sp/>parse/validate<sp/>the<sp/>JSON<sp/>body<sp/>against<sp/>the<sp/>entity&apos;s<sp/>database</highlight></codeline>
-<codeline lineno="50"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>schema,<sp/>ask<sp/>GateKeeper<sp/>whether<sp/>@p<sp/>requester<sp/>may<sp/>perform<sp/>the<sp/>action,<sp/>construct<sp/>the<sp/>entity<sp/>from<sp/>the</highlight></codeline>
-<codeline lineno="51"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>appropriate<sp/>Types<sp/>data<sp/>carrier,<sp/>and<sp/>call<sp/>the<sp/>matching<sp/>Controller<sp/>method<sp/>(or<sp/>its<sp/>coroutine<sp/>counterpart).</highlight></codeline>
-<codeline lineno="52"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Failure<sp/>at<sp/>any<sp/>stage<sp/>answers<sp/>through<sp/>@p<sp/>callback<sp/>and<sp/>returns<sp/>early,<sp/>so<sp/>no<sp/>database<sp/>connection<sp/>is<sp/>taken</highlight></codeline>
-<codeline lineno="53"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>a<sp/>request<sp/>that<sp/>fails<sp/>validation<sp/>or<sp/>authorization.</highlight></codeline>
-<codeline lineno="54"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="55"><highlight class="comment"><sp/>*<sp/>@tparam<sp/>T<sp/>Entity<sp/>type<sp/>whose<sp/>static<sp/>`getTableName()`<sp/>and<sp/>data-carrier<sp/>constructors<sp/>(Create_t/Read_t/Update_t/</highlight></codeline>
-<codeline lineno="56"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Delete_t/Search_t)<sp/>define<sp/>the<sp/>schema<sp/>used<sp/>for<sp/>validation<sp/>and<sp/>persistence.</highlight></codeline>
-<codeline lineno="57"><highlight class="comment"><sp/>*<sp/>@note<sp/>All<sp/>operations<sp/>are<sp/>`override`<sp/>implementations<sp/>of<sp/>EntityControllerBase.<sp/>Coroutine<sp/>variants<sp/>borrow<sp/>their</highlight></codeline>
-<codeline lineno="58"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>arguments<sp/>and<sp/>must<sp/>be<sp/>awaited<sp/>while<sp/>those<sp/>arguments<sp/>(and<sp/>the<sp/>controller)<sp/>remain<sp/>alive.</highlight></codeline>
-<codeline lineno="59"><highlight class="comment"><sp/>*<sp/>@see<sp/>EntityControllerBase,<sp/>Controller,<sp/>GateKeeper</highlight></codeline>
-<codeline lineno="60"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="62" refid="classEntityController" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690" kindref="member">EntityController</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classController_1a95c56822d667e94b031451729ce069a9" kindref="member">Controller</ref>,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classEntityControllerBase_1a945e355f1db0eb3e3775f4b39ff5cc58" kindref="member">EntityControllerBase</ref></highlight></codeline>
-<codeline lineno="63"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="65" refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690" kindref="member">EntityController</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Uses<sp/>the<sp/>base<sp/>GateKeeper<sp/>initializer.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="66" refid="classEntityController_1a0d747765581fc7b8e2aeb021311a20b3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEntityController_1a0d747765581fc7b8e2aeb021311a20b3" kindref="member">EntityController</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690" kindref="member">EntityController</ref>&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Copying<sp/>shares<sp/>the<sp/>GateKeeper<sp/>handle.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="67" refid="classEntityController_1a04d928df412682361a6b4337f2f6e027" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEntityController_1a04d928df412682361a6b4337f2f6e027" kindref="member">EntityController</ref>(<ref refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690" kindref="member">EntityController</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Moving<sp/>transfers<sp/>the<sp/>GateKeeper<sp/>handle.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68" refid="classEntityController_1a7fd4702e0d3f27df13c4395c174c0f58" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690" kindref="member">EntityController</ref>&amp;<sp/><ref refid="classEntityController_1a7fd4702e0d3f27df13c4395c174c0f58" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690" kindref="member">EntityController</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>assignment<sp/>shares<sp/>the<sp/>handle.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="69" refid="classEntityController_1a2887bd9e566dc27e0d49dfc9f8f1d9e2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690" kindref="member">EntityController</ref>&amp;<sp/><ref refid="classEntityController_1a2887bd9e566dc27e0d49dfc9f8f1d9e2" kindref="member">operator=</ref>(<ref refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690" kindref="member">EntityController</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>assignment<sp/>transfers<sp/>the<sp/>handle.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="70" refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b" kindref="member">~EntityController</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Virtual<sp/>via<sp/>both<sp/>bases;<sp/>no<sp/>explicit<sp/>cleanup<sp/>needed.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>CRUDS</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Validates<sp/>and<sp/>authorizes<sp/>a<sp/>create<sp/>request,<sp/>then<sp/>inserts<sp/>the<sp/>new<sp/>entity.</highlight></codeline>
-<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Ignores<sp/>server-controlled<sp/>`id`<sp/>in<sp/>the<sp/>schema<sp/>rule;<sp/>the<sp/>database<sp/>assigns<sp/>the<sp/>primary<sp/>key.</highlight></codeline>
-<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>exactly<sp/>once<sp/>with<sp/>the<sp/>resulting<sp/>HTTP<sp/>status<sp/>and<sp/>body.</highlight></codeline>
-<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>whose<sp/>create<sp/>permission<sp/>is<sp/>checked<sp/>by<sp/>GateKeeper.</highlight></codeline>
-<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>describing<sp/>the<sp/>new<sp/>entity.</highlight></codeline>
-<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" kindref="member">Create</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>Create();<sp/>awaits<sp/>the<sp/>asynchronous<sp/>gate<sp/>and<sp/>persistence<sp/>checks.</highlight></codeline>
-<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>exactly<sp/>once<sp/>on<sp/>completion.</highlight></codeline>
-<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>whose<sp/>create<sp/>permission<sp/>is<sp/>checked.</highlight></codeline>
-<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>describing<sp/>the<sp/>new<sp/>entity;<sp/>must<sp/>outlive<sp/>the<sp/>coroutine.</highlight></codeline>
-<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" kindref="member">CreateAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Validates<sp/>and<sp/>authorizes<sp/>a<sp/>read<sp/>request,<sp/>then<sp/>reads<sp/>the<sp/>selected<sp/>columns<sp/>of<sp/>an<sp/>entity.</highlight></codeline>
-<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>The<sp/>body<sp/>must<sp/>carry<sp/>a<sp/>numeric<sp/>`id`<sp/>and<sp/>a<sp/>`schema`<sp/>array;<sp/>forbidden<sp/>fields<sp/>(e.g.<sp/>`password`)<sp/>are</highlight></codeline>
-<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rejected<sp/>by<sp/>the<sp/>read-schema<sp/>rule.</highlight></codeline>
-<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>exactly<sp/>once<sp/>with<sp/>the<sp/>resulting<sp/>HTTP<sp/>status<sp/>and<sp/>body.</highlight></codeline>
-<codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>whose<sp/>read<sp/>permission<sp/>is<sp/>checked.</highlight></codeline>
-<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>containing<sp/>`id`<sp/>and<sp/>`schema`.</highlight></codeline>
-<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" kindref="member">Read</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>Read();<sp/>must<sp/>be<sp/>awaited.</highlight></codeline>
-<codeline lineno="99"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>exactly<sp/>once<sp/>on<sp/>completion.</highlight></codeline>
-<codeline lineno="100"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>whose<sp/>read<sp/>permission<sp/>is<sp/>checked.</highlight></codeline>
-<codeline lineno="101"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>containing<sp/>`id`<sp/>and<sp/>`schema`;<sp/>must<sp/>outlive<sp/>the<sp/>coroutine.</highlight></codeline>
-<codeline lineno="102"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" kindref="member">ReadAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Validates<sp/>and<sp/>authorizes<sp/>an<sp/>update<sp/>request,<sp/>then<sp/>updates<sp/>the<sp/>entity.</highlight></codeline>
-<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>exactly<sp/>once<sp/>with<sp/>the<sp/>resulting<sp/>HTTP<sp/>status<sp/>and<sp/>body.</highlight></codeline>
-<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>whose<sp/>update<sp/>permission<sp/>is<sp/>checked.</highlight></codeline>
-<codeline lineno="108"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>holding<sp/>the<sp/>fields<sp/>to<sp/>change.</highlight></codeline>
-<codeline lineno="109"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_id<sp/>Target<sp/>entity<sp/>id;<sp/>a<sp/>missing<sp/>value<sp/>is<sp/>rejected<sp/>with<sp/>400.</highlight></codeline>
-<codeline lineno="110"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" kindref="member">Update</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data,<sp/>std::optional&lt;uint64_t&gt;<sp/>_id)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="112"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="113"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>Update();<sp/>must<sp/>be<sp/>awaited.</highlight></codeline>
-<codeline lineno="114"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>exactly<sp/>once<sp/>on<sp/>completion.</highlight></codeline>
-<codeline lineno="115"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>whose<sp/>update<sp/>permission<sp/>is<sp/>checked.</highlight></codeline>
-<codeline lineno="116"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>holding<sp/>the<sp/>fields<sp/>to<sp/>change;<sp/>must<sp/>outlive<sp/>the<sp/>coroutine.</highlight></codeline>
-<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_id<sp/>Target<sp/>entity<sp/>id;<sp/>a<sp/>missing<sp/>value<sp/>is<sp/>rejected<sp/>with<sp/>400.</highlight></codeline>
-<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" kindref="member">UpdateAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data,<sp/>std::optional&lt;uint64_t&gt;<sp/>_id)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Authorizes<sp/>and<sp/>performs<sp/>a<sp/>delete;<sp/>a<sp/>missing<sp/>id<sp/>is<sp/>rejected<sp/>with<sp/>406.</highlight></codeline>
-<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>exactly<sp/>once<sp/>with<sp/>the<sp/>resulting<sp/>HTTP<sp/>status<sp/>and<sp/>body.</highlight></codeline>
-<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>whose<sp/>delete<sp/>permission<sp/>is<sp/>checked.</highlight></codeline>
-<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_id<sp/>Target<sp/>entity<sp/>id.</highlight></codeline>
-<codeline lineno="125"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" kindref="member">Delete</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::optional&lt;uint64_t&gt;<sp/>_id)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="127"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="128"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>Delete();<sp/>must<sp/>be<sp/>awaited.</highlight></codeline>
-<codeline lineno="129"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>exactly<sp/>once<sp/>on<sp/>completion.</highlight></codeline>
-<codeline lineno="130"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>whose<sp/>delete<sp/>permission<sp/>is<sp/>checked.</highlight></codeline>
-<codeline lineno="131"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_id<sp/>Target<sp/>entity<sp/>id.</highlight></codeline>
-<codeline lineno="132"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" kindref="member">DeleteAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::optional&lt;uint64_t&gt;<sp/>_id)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="134"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="135"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Parses<sp/>search<sp/>criteria<sp/>into<sp/>a<sp/>Search_t<sp/>and<sp/>runs<sp/>the<sp/>paginated<sp/>search.</highlight></codeline>
-<codeline lineno="136"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>The<sp/>requester<sp/>is<sp/>accepted<sp/>for<sp/>interface<sp/>uniformity<sp/>but<sp/>is<sp/>not<sp/>used<sp/>by<sp/>this<sp/>implementation.</highlight></codeline>
-<codeline lineno="137"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>exactly<sp/>once<sp/>with<sp/>the<sp/>resulting<sp/>HTTP<sp/>status<sp/>and<sp/>body.</highlight></codeline>
-<codeline lineno="138"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Unused<sp/>principal.</highlight></codeline>
-<codeline lineno="139"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>containing<sp/>criteria,<sp/>limit<sp/>and<sp/>offset.</highlight></codeline>
-<codeline lineno="140"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEntityController_1a888ea97ce413d880bcca6f7e9cf6b896" kindref="member">Search</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="142"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="143"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>Search();<sp/>must<sp/>be<sp/>awaited.</highlight></codeline>
-<codeline lineno="144"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>exactly<sp/>once<sp/>on<sp/>completion.</highlight></codeline>
-<codeline lineno="145"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Unused<sp/>principal.</highlight></codeline>
-<codeline lineno="146"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>containing<sp/>criteria,<sp/>limit<sp/>and<sp/>offset;<sp/>must<sp/>outlive<sp/>the<sp/>coroutine.</highlight></codeline>
-<codeline lineno="147"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classEntityController_1a430903208b20b59481d07c88b66ac4f6" kindref="member">SearchAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/>callback,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,<sp/>std::string_view<sp/>data)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"></highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="151"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="152"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Shared<sp/>GateKeeper<sp/>used<sp/>by<sp/>every<sp/>operation<sp/>to<sp/>authorize<sp/>actions<sp/>on<sp/>behalf<sp/>of<sp/>the<sp/>requester.</highlight></codeline>
-<codeline lineno="153"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="154" refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;GateKeeper&gt;<sp/><ref refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" kindref="member">gateKeeper</ref><sp/>=<sp/><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject&lt;GateKeeper&gt;</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Shared<sp/>authorization<sp/>service<sp/>used<sp/>by<sp/>every<sp/>operation.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="155"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/format.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Formatting<sp/>error<sp/>messages<sp/>with<sp/>{}<sp/>placeholders.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>uint64_t<sp/>entity<sp/>ids.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>JSON<sp/>value<sp/>type<sp/>used<sp/>to<sp/>parse<sp/>request<sp/>bodies.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/json.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::shared_ptr<sp/>for<sp/>the<sp/>shared<sp/>GateKeeper.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Optional<sp/>ids<sp/>passed<sp/>to<sp/>Update/Delete.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Non-owning<sp/>view<sp/>of<sp/>the<sp/>request<sp/>body.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>persistence<sp/>engine<sp/>this<sp/>class<sp/>delegates<sp/>to.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="controller_8hpp" kindref="compound">controllers/base/controller/controller.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>interface<sp/>this<sp/>class<sp/>implements.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="entitycontrollerbase_8hpp" kindref="compound">controllers/entitycontroller/entitycontrollerbase.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;drogon/utils/coroutine.h&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Drogon<sp/>Task<sp/>type<sp/>for<sp/>the<sp/>Async<sp/>variants.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="gatekeeper_8hpp" kindref="compound">gatekeeper/gatekeeper.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Authorization<sp/>service<sp/>declaration.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="store_8hpp" kindref="compound">store/store.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Service<sp/>locator<sp/>for<sp/>the<sp/>shared<sp/>GateKeeper.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Defines<sp/>CALLBACK_,<sp/>the<sp/>reply<sp/>function<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="callback_8hpp" kindref="compound">utils/global/callback.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref><sp/>=</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">api::v2::GateKeeper</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Short<sp/>name<sp/>for<sp/>the<sp/>authorization<sp/>service.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="59"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/>@class<sp/>EntityController</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Generic<sp/>request-facing<sp/>CRUDS<sp/>handler:<sp/>validates<sp/>and<sp/>authorizes<sp/>a</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/>request,<sp/>then<sp/>delegates<sp/>persistence<sp/>to<sp/>Controller.</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>@details<sp/>Combines<sp/>the<sp/>persistence<sp/>engine<sp/>(Controller)<sp/>with<sp/>the<sp/>abstract<sp/>CRUDS</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/>interface<sp/>(EntityControllerBase).<sp/>Each<sp/>operation<sp/>follows<sp/>the<sp/>same<sp/>pipeline:</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*<sp/>parse/validate<sp/>the<sp/>JSON<sp/>body<sp/>against<sp/>the<sp/>entity&apos;s<sp/>database<sp/>schema,<sp/>ask</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*<sp/>GateKeeper<sp/>whether<sp/>@p<sp/>requester<sp/>may<sp/>perform<sp/>the<sp/>action,<sp/>construct<sp/>the<sp/>entity</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*<sp/>from<sp/>the<sp/>appropriate<sp/>Types<sp/>data<sp/>carrier,<sp/>and<sp/>call<sp/>the<sp/>matching<sp/>Controller</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/>*<sp/>method<sp/>(or<sp/>its<sp/>coroutine<sp/>counterpart).<sp/>Failure<sp/>at<sp/>any<sp/>stage<sp/>answers<sp/>through</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*<sp/>@p<sp/>callback<sp/>and<sp/>returns<sp/>early,<sp/>so<sp/>no<sp/>database<sp/>connection<sp/>is<sp/>taken<sp/>for<sp/>a</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*<sp/>request<sp/>that<sp/>fails<sp/>validation<sp/>or<sp/>authorization.</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/>*<sp/>@tparam<sp/>T<sp/>Entity<sp/>type<sp/>whose<sp/>static<sp/>`getTableName()`<sp/>and<sp/>data-carrier</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/>*<sp/>constructors<sp/>(Create_t/Read_t/Update_t/<sp/>Delete_t/Search_t)<sp/>define<sp/>the<sp/>schema</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/>*<sp/>used<sp/>for<sp/>validation<sp/>and<sp/>persistence.</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/>*<sp/>@note<sp/>All<sp/>operations<sp/>are<sp/>`override`<sp/>implementations<sp/>of<sp/>EntityControllerBase.</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/>*<sp/>Coroutine<sp/>variants<sp/>borrow<sp/>their<sp/>arguments<sp/>and<sp/>must<sp/>be<sp/>awaited<sp/>while<sp/>those</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/>*<sp/>arguments<sp/>(and<sp/>the<sp/>controller)<sp/>remain<sp/>alive.</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/>*<sp/>@see<sp/>EntityControllerBase,<sp/>Controller,<sp/>GateKeeper</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="81" refid="classEntityController" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690" kindref="member">EntityController</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classController_1a95c56822d667e94b031451729ce069a9" kindref="member">Controller</ref>,<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classEntityControllerBase_1a945e355f1db0eb3e3775f4b39ff5cc58" kindref="member">EntityControllerBase</ref><sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="83" refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690" kindref="member">EntityController</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Uses<sp/>the<sp/>base<sp/>GateKeeper<sp/>initializer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="classEntityController_1a0d747765581fc7b8e2aeb021311a20b3" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classEntityController_1a0d747765581fc7b8e2aeb021311a20b3" kindref="member">EntityController</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690" kindref="member">EntityController</ref>&amp;)<sp/>=</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Copying<sp/>shares<sp/>the<sp/>GateKeeper<sp/>handle.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="classEntityController_1a04d928df412682361a6b4337f2f6e027" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classEntityController_1a04d928df412682361a6b4337f2f6e027" kindref="member">EntityController</ref>(<ref refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690" kindref="member">EntityController</ref>&amp;&amp;)<sp/>=</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Moving<sp/>transfers<sp/>the<sp/>GateKeeper<sp/>handle.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="classEntityController_1a7fd4702e0d3f27df13c4395c174c0f58" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690" kindref="member">EntityController</ref>&amp;<sp/><ref refid="classEntityController_1a7fd4702e0d3f27df13c4395c174c0f58" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690" kindref="member">EntityController</ref>&amp;)<sp/>=</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>assignment<sp/>shares<sp/>the<sp/>handle.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="classEntityController_1a2887bd9e566dc27e0d49dfc9f8f1d9e2" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690" kindref="member">EntityController</ref>&amp;<sp/><ref refid="classEntityController_1a2887bd9e566dc27e0d49dfc9f8f1d9e2" kindref="member">operator=</ref>(<ref refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690" kindref="member">EntityController</ref>&amp;&amp;)<sp/>=</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Move<sp/>assignment<sp/>transfers<sp/>the<sp/>handle.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classEntityController_1a3b05f68ed4f93fe3e4369ef47f7b194b" kindref="member">~EntityController</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Virtual<sp/>via<sp/>both<sp/>bases;<sp/>no<sp/>explicit<sp/>cleanup<sp/>needed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>CRUDS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Validates<sp/>and<sp/>authorizes<sp/>a<sp/>create<sp/>request,<sp/>then<sp/>inserts<sp/>the<sp/>new</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/>*<sp/>entity.</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Ignores<sp/>server-controlled<sp/>`id`<sp/>in<sp/>the<sp/>schema<sp/>rule;<sp/>the<sp/>database</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/><sp/><sp/>*<sp/>assigns<sp/>the<sp/>primary<sp/>key.</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>exactly<sp/>once<sp/>with<sp/>the<sp/>resulting<sp/>HTTP</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/><sp/><sp/>*<sp/>status<sp/>and<sp/>body.</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>whose<sp/>create<sp/>permission<sp/>is<sp/>checked<sp/>by</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/>*<sp/>GateKeeper.</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>describing<sp/>the<sp/>new<sp/>entity.</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" kindref="member">Create</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/>data)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>Create();<sp/>awaits<sp/>the<sp/>asynchronous<sp/>gate<sp/>and</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/><sp/><sp/>*<sp/>persistence<sp/>checks.</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>exactly<sp/>once<sp/>on<sp/>completion.</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>whose<sp/>create<sp/>permission<sp/>is<sp/>checked.</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>describing<sp/>the<sp/>new<sp/>entity;<sp/>must<sp/>outlive<sp/>the</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/><sp/><sp/>*<sp/>coroutine.</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" kindref="member">CreateAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/>data)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Validates<sp/>and<sp/>authorizes<sp/>a<sp/>read<sp/>request,<sp/>then<sp/>reads<sp/>the<sp/>selected</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/>*<sp/>columns<sp/>of<sp/>an<sp/>entity.</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>The<sp/>body<sp/>must<sp/>carry<sp/>a<sp/>numeric<sp/>`id`<sp/>and<sp/>a<sp/>`schema`<sp/>array;</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/><sp/><sp/>*<sp/>forbidden<sp/>fields<sp/>(e.g.<sp/>`password`)<sp/>are<sp/>rejected<sp/>by<sp/>the<sp/>read-schema<sp/>rule.</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>exactly<sp/>once<sp/>with<sp/>the<sp/>resulting<sp/>HTTP</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/><sp/><sp/>*<sp/>status<sp/>and<sp/>body.</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>whose<sp/>read<sp/>permission<sp/>is<sp/>checked.</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>containing<sp/>`id`<sp/>and<sp/>`schema`.</highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" kindref="member">Read</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/>data)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>Read();<sp/>must<sp/>be<sp/>awaited.</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>exactly<sp/>once<sp/>on<sp/>completion.</highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>whose<sp/>read<sp/>permission<sp/>is<sp/>checked.</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>containing<sp/>`id`<sp/>and<sp/>`schema`;<sp/>must<sp/>outlive<sp/>the</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/><sp/><sp/>*<sp/>coroutine.</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" kindref="member">ReadAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/>data)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Validates<sp/>and<sp/>authorizes<sp/>an<sp/>update<sp/>request,<sp/>then<sp/>updates<sp/>the</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/><sp/><sp/>*<sp/>entity.</highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>exactly<sp/>once<sp/>with<sp/>the<sp/>resulting<sp/>HTTP</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp/><sp/><sp/>*<sp/>status<sp/>and<sp/>body.</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>whose<sp/>update<sp/>permission<sp/>is<sp/>checked.</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>holding<sp/>the<sp/>fields<sp/>to<sp/>change.</highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_id<sp/>Target<sp/>entity<sp/>id;<sp/>a<sp/>missing<sp/>value<sp/>is<sp/>rejected<sp/>with<sp/>400.</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" kindref="member">Update</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>requester,</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data,</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;uint64_t&gt;<sp/>_id)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>Update();<sp/>must<sp/>be<sp/>awaited.</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>exactly<sp/>once<sp/>on<sp/>completion.</highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>whose<sp/>update<sp/>permission<sp/>is<sp/>checked.</highlight></codeline>
+<codeline lineno="161"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>holding<sp/>the<sp/>fields<sp/>to<sp/>change;<sp/>must<sp/>outlive<sp/>the</highlight></codeline>
+<codeline lineno="162"><highlight class="comment"><sp/><sp/><sp/>*<sp/>coroutine.</highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_id<sp/>Target<sp/>entity<sp/>id;<sp/>a<sp/>missing<sp/>value<sp/>is<sp/>rejected<sp/>with<sp/>400.</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" kindref="member">UpdateAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>requester,</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data,</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;uint64_t&gt;<sp/>_id)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="169"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="170"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Authorizes<sp/>and<sp/>performs<sp/>a<sp/>delete;<sp/>a<sp/>missing<sp/>id<sp/>is<sp/>rejected<sp/>with</highlight></codeline>
+<codeline lineno="171"><highlight class="comment"><sp/><sp/><sp/>*<sp/>406.</highlight></codeline>
+<codeline lineno="172"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>exactly<sp/>once<sp/>with<sp/>the<sp/>resulting<sp/>HTTP</highlight></codeline>
+<codeline lineno="173"><highlight class="comment"><sp/><sp/><sp/>*<sp/>status<sp/>and<sp/>body.</highlight></codeline>
+<codeline lineno="174"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>whose<sp/>delete<sp/>permission<sp/>is<sp/>checked.</highlight></codeline>
+<codeline lineno="175"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_id<sp/>Target<sp/>entity<sp/>id.</highlight></codeline>
+<codeline lineno="176"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" kindref="member">Delete</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>requester,</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;uint64_t&gt;<sp/>_id)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="180"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="181"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>Delete();<sp/>must<sp/>be<sp/>awaited.</highlight></codeline>
+<codeline lineno="182"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>exactly<sp/>once<sp/>on<sp/>completion.</highlight></codeline>
+<codeline lineno="183"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Principal<sp/>whose<sp/>delete<sp/>permission<sp/>is<sp/>checked.</highlight></codeline>
+<codeline lineno="184"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>_id<sp/>Target<sp/>entity<sp/>id.</highlight></codeline>
+<codeline lineno="185"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" kindref="member">DeleteAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>requester,</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;uint64_t&gt;<sp/>_id)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="189"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="190"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Parses<sp/>search<sp/>criteria<sp/>into<sp/>a<sp/>Search_t<sp/>and<sp/>runs<sp/>the<sp/>paginated</highlight></codeline>
+<codeline lineno="191"><highlight class="comment"><sp/><sp/><sp/>*<sp/>search.</highlight></codeline>
+<codeline lineno="192"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@note<sp/>The<sp/>requester<sp/>is<sp/>accepted<sp/>for<sp/>interface<sp/>uniformity<sp/>but<sp/>is<sp/>not<sp/>used</highlight></codeline>
+<codeline lineno="193"><highlight class="comment"><sp/><sp/><sp/>*<sp/>by<sp/>this<sp/>implementation.</highlight></codeline>
+<codeline lineno="194"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>exactly<sp/>once<sp/>with<sp/>the<sp/>resulting<sp/>HTTP</highlight></codeline>
+<codeline lineno="195"><highlight class="comment"><sp/><sp/><sp/>*<sp/>status<sp/>and<sp/>body.</highlight></codeline>
+<codeline lineno="196"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Unused<sp/>principal.</highlight></codeline>
+<codeline lineno="197"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>containing<sp/>criteria,<sp/>limit<sp/>and<sp/>offset.</highlight></codeline>
+<codeline lineno="198"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEntityController_1a888ea97ce413d880bcca6f7e9cf6b896" kindref="member">Search</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/>data)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="202"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Coroutine<sp/>form<sp/>of<sp/>Search();<sp/>must<sp/>be<sp/>awaited.</highlight></codeline>
+<codeline lineno="204"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Invoked<sp/>exactly<sp/>once<sp/>on<sp/>completion.</highlight></codeline>
+<codeline lineno="205"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>requester<sp/>Unused<sp/>principal.</highlight></codeline>
+<codeline lineno="206"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>JSON<sp/>body<sp/>containing<sp/>criteria,<sp/>limit<sp/>and<sp/>offset;<sp/>must</highlight></codeline>
+<codeline lineno="207"><highlight class="comment"><sp/><sp/><sp/>*<sp/>outlive<sp/>the<sp/>coroutine.</highlight></codeline>
+<codeline lineno="208"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/>drogon::Task&lt;void&gt;<sp/><ref refid="classEntityController_1a430903208b20b59481d07c88b66ac4f6" kindref="member">SearchAsync</ref>(<ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;<sp/>requester,</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/>data)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="214"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="215"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Shared<sp/>GateKeeper<sp/>used<sp/>by<sp/>every<sp/>operation<sp/>to<sp/>authorize<sp/>actions<sp/>on<sp/>behalf</highlight></codeline>
+<codeline lineno="216"><highlight class="comment"><sp/><sp/><sp/>*<sp/>of<sp/>the<sp/>requester.</highlight></codeline>
+<codeline lineno="217"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218" refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" refkind="member"><highlight class="normal"><sp/><sp/>std::shared_ptr&lt;GateKeeper&gt;<sp/><ref refid="classEntityController_1ac49338ce6dd5aa3191b389b5d24f8ab1" kindref="member">gateKeeper</ref><sp/>=</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject&lt;GateKeeper&gt;</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Shared<sp/>authorization<sp/>service<sp/>used<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>every<sp/>operation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal">};</highlight></codeline>
     </programlisting>
     <location file="src/controllers/entitycontroller/entitycontroller.hpp"/>
   </compounddef>

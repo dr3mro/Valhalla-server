@@ -11,7 +11,8 @@
         <argsstring></argsstring>
         <name>TABLENAME</name>
         <qualifiedname>LaboratoryAppointment::TABLENAME</qualifiedname>
-        <initializer>= &quot;laboratories_appointments&quot;</initializer>
+        <initializer>                            =
+&quot;laboratories_appointments&quot;</initializer>
         <briefdescription>
 <para><ref refid="classDatabase" kindref="compound">Database</ref> table holding laboratory appointments. </para>
         </briefdescription>
@@ -19,10 +20,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/laboratory.hpp" line="46" column="27" bodyfile="src/entities/appointments/laboratory.hpp" bodystart="46" bodyend="-1"/>
-        <referencedby refid="classLaboratoryAppointment_1a595757aaaa3f41e2f6fd744a2fcdb5fe" compoundref="laboratory_8hpp" startline="103" endline="106">getPermissionsQueryForRead</referencedby>
-        <referencedby refid="classLaboratoryAppointment_1a7c086bce74c6648549de6dedfc038441" compoundref="laboratory_8hpp" startline="75" endline="75">getTableName</referencedby>
-        <referencedby refid="classLaboratoryAppointment_1aaa503b4863b86d76d0b995f0b46db965" compoundref="laboratory_8hpp" startline="60" endline="62">LaboratoryAppointment</referencedby>
+        <location file="src/entities/appointments/laboratory.hpp" line="57" column="25" bodyfile="src/entities/appointments/laboratory.hpp" bodystart="57" bodyend="-1"/>
+        <referencedby refid="classLaboratoryAppointment_1a595757aaaa3f41e2f6fd744a2fcdb5fe" compoundref="laboratory_8hpp" startline="135" endline="144">getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classLaboratoryAppointment_1a7c086bce74c6648549de6dedfc038441" compoundref="laboratory_8hpp" startline="97" endline="99">getTableName</referencedby>
+        <referencedby refid="classLaboratoryAppointment_1aaa503b4863b86d76d0b995f0b46db965" compoundref="laboratory_8hpp" startline="75" endline="79">LaboratoryAppointment</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classLaboratoryAppointment_1a2722c50b8c428d9cc04d09b64ad93569" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>auto</type>
@@ -30,7 +31,8 @@
         <argsstring></argsstring>
         <name>ORGNAME</name>
         <qualifiedname>LaboratoryAppointment::ORGNAME</qualifiedname>
-        <initializer>= &quot;laboratories&quot;</initializer>
+        <initializer>                          =
+&quot;laboratories&quot;</initializer>
         <briefdescription>
 <para>Plural organisation name used for permission service lookup. </para>
         </briefdescription>
@@ -38,9 +40,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/laboratory.hpp" line="51" column="27" bodyfile="src/entities/appointments/laboratory.hpp" bodystart="51" bodyend="-1"/>
-        <referencedby refid="classLaboratoryAppointment_1a7b7f0decf8b2b1714912e211c1d68ab6" compoundref="laboratory_8hpp" startline="80" endline="80">getOrgName</referencedby>
-        <referencedby refid="classLaboratoryAppointment_1a595757aaaa3f41e2f6fd744a2fcdb5fe" compoundref="laboratory_8hpp" startline="103" endline="106">getPermissionsQueryForRead</referencedby>
+        <location file="src/entities/appointments/laboratory.hpp" line="64" column="25" bodyfile="src/entities/appointments/laboratory.hpp" bodystart="64" bodyend="-1"/>
+        <referencedby refid="classLaboratoryAppointment_1a7b7f0decf8b2b1714912e211c1d68ab6" compoundref="laboratory_8hpp" startline="104" endline="106">getOrgName</referencedby>
+        <referencedby refid="classLaboratoryAppointment_1a595757aaaa3f41e2f6fd744a2fcdb5fe" compoundref="laboratory_8hpp" startline="135" endline="144">getPermissionsQueryForRead</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -85,9 +87,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/laboratory.hpp" line="60" column="14" bodyfile="src/entities/appointments/laboratory.hpp" bodystart="60" bodyend="62"/>
-        <references refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" compoundref="appointment_8hpp" startline="60" endline="62">Appointment::Appointment</references>
-        <references refid="classLaboratoryAppointment_1a75b2b6dab5bba9815655108243c53087" compoundref="laboratory_8hpp" startline="46">TABLENAME</references>
+        <location file="src/entities/appointments/laboratory.hpp" line="75" column="12" bodyfile="src/entities/appointments/laboratory.hpp" bodystart="75" bodyend="79"/>
+        <references refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" compoundref="appointment_8hpp" startline="73" endline="77">Appointment::Appointment</references>
+        <references refid="classLaboratoryAppointment_1a75b2b6dab5bba9815655108243c53087" compoundref="laboratory_8hpp" startline="57">TABLENAME</references>
         <referencedby refid="classLaboratoryAppointment_1af901aab01dddf919b4bdc5869ecde3dd">LaboratoryAppointment</referencedby>
         <referencedby refid="classLaboratoryAppointment_1aae78a7349da774160e53ddc4ba05f741">LaboratoryAppointment</referencedby>
         <referencedby refid="classLaboratoryAppointment_1a1d65f7c45d42dc394a28b14438258958">operator=</referencedby>
@@ -109,8 +111,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/laboratory.hpp" line="67" column="5"/>
-        <references refid="classLaboratoryAppointment_1aaa503b4863b86d76d0b995f0b46db965" compoundref="laboratory_8hpp" startline="60" endline="62">LaboratoryAppointment</references>
+        <location file="src/entities/appointments/laboratory.hpp" line="86" column="3"/>
+        <references refid="classLaboratoryAppointment_1aaa503b4863b86d76d0b995f0b46db965" compoundref="laboratory_8hpp" startline="75" endline="79">LaboratoryAppointment</references>
       </memberdef>
       <memberdef kind="function" id="classLaboratoryAppointment_1aae78a7349da774160e53ddc4ba05f741" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -127,8 +129,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/laboratory.hpp" line="68" column="5"/>
-        <references refid="classLaboratoryAppointment_1aaa503b4863b86d76d0b995f0b46db965" compoundref="laboratory_8hpp" startline="60" endline="62">LaboratoryAppointment</references>
+        <location file="src/entities/appointments/laboratory.hpp" line="88" column="3"/>
+        <references refid="classLaboratoryAppointment_1aaa503b4863b86d76d0b995f0b46db965" compoundref="laboratory_8hpp" startline="75" endline="79">LaboratoryAppointment</references>
       </memberdef>
       <memberdef kind="function" id="classLaboratoryAppointment_1a1d65f7c45d42dc394a28b14438258958" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classLaboratoryAppointment" kindref="compound">LaboratoryAppointment</ref> &amp;</type>
@@ -145,8 +147,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/laboratory.hpp" line="69" column="27"/>
-        <references refid="classLaboratoryAppointment_1aaa503b4863b86d76d0b995f0b46db965" compoundref="laboratory_8hpp" startline="60" endline="62">LaboratoryAppointment</references>
+        <location file="src/entities/appointments/laboratory.hpp" line="89" column="25"/>
+        <references refid="classLaboratoryAppointment_1aaa503b4863b86d76d0b995f0b46db965" compoundref="laboratory_8hpp" startline="75" endline="79">LaboratoryAppointment</references>
       </memberdef>
       <memberdef kind="function" id="classLaboratoryAppointment_1ab17e0f5ba84b9ee6c5a74a5bcbefb26b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classLaboratoryAppointment" kindref="compound">LaboratoryAppointment</ref> &amp;</type>
@@ -163,8 +165,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/laboratory.hpp" line="70" column="27"/>
-        <references refid="classLaboratoryAppointment_1aaa503b4863b86d76d0b995f0b46db965" compoundref="laboratory_8hpp" startline="60" endline="62">LaboratoryAppointment</references>
+        <location file="src/entities/appointments/laboratory.hpp" line="91" column="25"/>
+        <references refid="classLaboratoryAppointment_1aaa503b4863b86d76d0b995f0b46db965" compoundref="laboratory_8hpp" startline="75" endline="79">LaboratoryAppointment</references>
       </memberdef>
       <memberdef kind="function" id="classLaboratoryAppointment_1a1aa616b7efe9633f0038c5647a1f4db8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -179,7 +181,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/laboratory.hpp" line="85" column="5"/>
+        <location file="src/entities/appointments/laboratory.hpp" line="111" column="3"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -196,8 +198,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/laboratory.hpp" line="75" column="27" bodyfile="src/entities/appointments/laboratory.hpp" bodystart="75" bodyend="75"/>
-        <references refid="classLaboratoryAppointment_1a75b2b6dab5bba9815655108243c53087" compoundref="laboratory_8hpp" startline="46">TABLENAME</references>
+        <location file="src/entities/appointments/laboratory.hpp" line="97" column="25" bodyfile="src/entities/appointments/laboratory.hpp" bodystart="97" bodyend="99"/>
+        <references refid="classLaboratoryAppointment_1a75b2b6dab5bba9815655108243c53087" compoundref="laboratory_8hpp" startline="57">TABLENAME</references>
       </memberdef>
       <memberdef kind="function" id="classLaboratoryAppointment_1a7b7f0decf8b2b1714912e211c1d68ab6" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>auto</type>
@@ -212,8 +214,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/laboratory.hpp" line="80" column="27" bodyfile="src/entities/appointments/laboratory.hpp" bodystart="80" bodyend="80"/>
-        <references refid="classLaboratoryAppointment_1a2722c50b8c428d9cc04d09b64ad93569" compoundref="laboratory_8hpp" startline="51">ORGNAME</references>
+        <location file="src/entities/appointments/laboratory.hpp" line="104" column="25" bodyfile="src/entities/appointments/laboratory.hpp" bodystart="104" bodyend="106"/>
+        <references refid="classLaboratoryAppointment_1a2722c50b8c428d9cc04d09b64ad93569" compoundref="laboratory_8hpp" startline="64">ORGNAME</references>
       </memberdef>
       <memberdef kind="function" id="classLaboratoryAppointment_1a368ccccd84c7a292536042fbc4fc7f7f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -256,8 +258,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/laboratory.hpp" line="93" column="26" bodyfile="src/entities/appointments/laboratory.hpp" bodystart="93" bodyend="96"/>
-        <references refid="classAppointment_1a26159d8e97aa5b0e286e9bb22d1e923e" compoundref="appointment_8hpp" startline="84" endline="91">Appointment::getServicePermissionsQueryImpl</references>
+        <location file="src/entities/appointments/laboratory.hpp" line="120" column="24" bodyfile="src/entities/appointments/laboratory.hpp" bodystart="120" bodyend="126"/>
+        <references refid="classAppointment_1a26159d8e97aa5b0e286e9bb22d1e923e" compoundref="appointment_8hpp" startline="102" endline="112">Appointment::getServicePermissionsQueryImpl</references>
       </memberdef>
       <memberdef kind="function" id="classLaboratoryAppointment_1a595757aaaa3f41e2f6fd744a2fcdb5fe" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -288,10 +290,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/laboratory.hpp" line="103" column="26" bodyfile="src/entities/appointments/laboratory.hpp" bodystart="103" bodyend="106"/>
-        <references refid="classAppointment_1ad8f4b942704f5aad7dab3b4469199fd0" compoundref="appointment_8hpp" startline="102" endline="112">Appointment::getPermissionsQueryForReadImpl</references>
-        <references refid="classLaboratoryAppointment_1a2722c50b8c428d9cc04d09b64ad93569" compoundref="laboratory_8hpp" startline="51">ORGNAME</references>
-        <references refid="classLaboratoryAppointment_1a75b2b6dab5bba9815655108243c53087" compoundref="laboratory_8hpp" startline="46">TABLENAME</references>
+        <location file="src/entities/appointments/laboratory.hpp" line="135" column="24" bodyfile="src/entities/appointments/laboratory.hpp" bodystart="135" bodyend="144"/>
+        <references refid="classAppointment_1ad8f4b942704f5aad7dab3b4469199fd0" compoundref="appointment_8hpp" startline="129" endline="152">Appointment::getPermissionsQueryForReadImpl</references>
+        <references refid="classLaboratoryAppointment_1a2722c50b8c428d9cc04d09b64ad93569" compoundref="laboratory_8hpp" startline="64">ORGNAME</references>
+        <references refid="classLaboratoryAppointment_1a75b2b6dab5bba9815655108243c53087" compoundref="laboratory_8hpp" startline="57">TABLENAME</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -350,7 +352,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/entities/appointments/laboratory.hpp" line="40" column="1" bodyfile="src/entities/appointments/laboratory.hpp" bodystart="41" bodyend="107"/>
+    <location file="src/entities/appointments/laboratory.hpp" line="49" column="1" bodyfile="src/entities/appointments/laboratory.hpp" bodystart="52" bodyend="145"/>
     <listofallmembers>
       <member refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" prot="public" virt="non-virtual"><scope>LaboratoryAppointment</scope><name>Appointment</name></member>
       <member refid="classAppointment_1a452e32e34b2b149ac5062ae45be25697" prot="public" virt="non-virtual"><scope>LaboratoryAppointment</scope><name>Appointment</name></member>

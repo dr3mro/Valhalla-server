@@ -24,11 +24,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="155" column="23" bodyfile="src/controllers/staffcontroller/staffcontroller.hpp" bodystart="155" bodyend="-1"/>
-        <referencedby refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" compoundref="staffcontroller_8cpp" startline="71" endline="76">StaffController&lt; T &gt;::StaffController</referencedby>
+        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="241" column="7" bodyfile="src/controllers/staffcontroller/staffcontroller.hpp" bodystart="241" bodyend="-1"/>
+        <referencedby refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" compoundref="staffcontroller_8cpp" startline="116" endline="129">StaffController&lt; T &gt;::StaffController</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classStaffController_1aab325c701b76d68ee35fb4202a1c4693" prot="private" static="no" mutable="no">
-        <type><ref refid="classConfigurator_1ab635e7d33896fb372c42ee982c579e53" kindref="member">Configurator::EmailSenderConfig</ref></type>
+        <type><ref refid="classConfigurator_1ae7a8c53bf3a5ab860650fbc02354b222" kindref="member">Configurator::EmailSenderConfig</ref></type>
         <definition>Configurator::EmailSenderConfig StaffController&lt; T &gt;::email_sender_daemon_config_</definition>
         <argsstring></argsstring>
         <name>email_sender_daemon_config_</name>
@@ -40,13 +40,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="157" column="37" bodyfile="src/controllers/staffcontroller/staffcontroller.hpp" bodystart="157" bodyend="-1"/>
-        <referencedby refid="classStaffController_1aca79920a9fdd6da89333627992bf6287" compoundref="staffcontroller_8cpp" startline="169" endline="214">StaffController&lt; T &gt;::InviteStaffToEntity</referencedby>
-        <referencedby refid="classStaffController_1a7bfaae0026f9082bb42968cf04b421d5" compoundref="staffcontroller_8cpp" startline="299" endline="345">StaffController&lt; T &gt;::InviteStaffToEntityAsync</referencedby>
-        <referencedby refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" compoundref="staffcontroller_8cpp" startline="71" endline="76">StaffController&lt; T &gt;::StaffController</referencedby>
+        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="246" column="7" bodyfile="src/controllers/staffcontroller/staffcontroller.hpp" bodystart="246" bodyend="-1"/>
+        <referencedby refid="classStaffController_1aca79920a9fdd6da89333627992bf6287" compoundref="staffcontroller_8cpp" startline="263" endline="339">StaffController&lt; T &gt;::InviteStaffToEntity</referencedby>
+        <referencedby refid="classStaffController_1a7bfaae0026f9082bb42968cf04b421d5" compoundref="staffcontroller_8cpp" startline="445" endline="514">StaffController&lt; T &gt;::InviteStaffToEntityAsync</referencedby>
+        <referencedby refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" compoundref="staffcontroller_8cpp" startline="116" endline="129">StaffController&lt; T &gt;::StaffController</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classStaffController_1af25ca143465f16659a086bd6ffeebb04" prot="private" static="no" mutable="no">
-        <type>std::shared_ptr&lt; <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> &gt;</type>
+        <type>std::shared_ptr&lt; <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref> &gt;</type>
         <definition>std::shared_ptr&lt;GateKeeper&gt; StaffController&lt; T &gt;::gateKeeper</definition>
         <argsstring></argsstring>
         <name>gateKeeper</name>
@@ -58,14 +58,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="159" column="25" bodyfile="src/controllers/staffcontroller/staffcontroller.hpp" bodystart="159" bodyend="-1"/>
-        <referencedby refid="classStaffController_1a454ac6b5d362f6b9be674eac131f4da7" compoundref="staffcontroller_8cpp" startline="92" endline="121">StaffController&lt; T &gt;::AddStaffToEntity</referencedby>
-        <referencedby refid="classStaffController_1a53a028cf301c7a9765b3633a06275546" compoundref="staffcontroller_8cpp" startline="227" endline="255">StaffController&lt; T &gt;::AddStaffToEntityAsync</referencedby>
-        <referencedby refid="classStaffController_1aca79920a9fdd6da89333627992bf6287" compoundref="staffcontroller_8cpp" startline="169" endline="214">StaffController&lt; T &gt;::InviteStaffToEntity</referencedby>
-        <referencedby refid="classStaffController_1a7bfaae0026f9082bb42968cf04b421d5" compoundref="staffcontroller_8cpp" startline="299" endline="345">StaffController&lt; T &gt;::InviteStaffToEntityAsync</referencedby>
-        <referencedby refid="classStaffController_1aefd020493c2178716433285aca94ae50" compoundref="staffcontroller_8cpp" startline="132" endline="155">StaffController&lt; T &gt;::RemoveStaffFromEntity</referencedby>
-        <referencedby refid="classStaffController_1ac220308be6bf24122bfe037ea8c75e9c" compoundref="staffcontroller_8cpp" startline="265" endline="289">StaffController&lt; T &gt;::RemoveStaffFromEntityAsync</referencedby>
-        <referencedby refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" compoundref="staffcontroller_8cpp" startline="71" endline="76">StaffController&lt; T &gt;::StaffController</referencedby>
+        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="252" column="7" bodyfile="src/controllers/staffcontroller/staffcontroller.hpp" bodystart="252" bodyend="-1"/>
+        <referencedby refid="classStaffController_1a454ac6b5d362f6b9be674eac131f4da7" compoundref="staffcontroller_8cpp" startline="149" endline="199">StaffController&lt; T &gt;::AddStaffToEntity</referencedby>
+        <referencedby refid="classStaffController_1a53a028cf301c7a9765b3633a06275546" compoundref="staffcontroller_8cpp" startline="353" endline="389">StaffController&lt; T &gt;::AddStaffToEntityAsync</referencedby>
+        <referencedby refid="classStaffController_1aca79920a9fdd6da89333627992bf6287" compoundref="staffcontroller_8cpp" startline="263" endline="339">StaffController&lt; T &gt;::InviteStaffToEntity</referencedby>
+        <referencedby refid="classStaffController_1a7bfaae0026f9082bb42968cf04b421d5" compoundref="staffcontroller_8cpp" startline="445" endline="514">StaffController&lt; T &gt;::InviteStaffToEntityAsync</referencedby>
+        <referencedby refid="classStaffController_1aefd020493c2178716433285aca94ae50" compoundref="staffcontroller_8cpp" startline="211" endline="248">StaffController&lt; T &gt;::RemoveStaffFromEntity</referencedby>
+        <referencedby refid="classStaffController_1ac220308be6bf24122bfe037ea8c75e9c" compoundref="staffcontroller_8cpp" startline="400" endline="433">StaffController&lt; T &gt;::RemoveStaffFromEntityAsync</referencedby>
+        <referencedby refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" compoundref="staffcontroller_8cpp" startline="116" endline="129">StaffController&lt; T &gt;::StaffController</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -80,7 +80,7 @@
         </briefdescription>
         <detaileddescription>
 <para>Resolves shared services from the global <ref refid="classStore" kindref="compound">Store</ref> and snapshots the email-daemon config.</para>
-<para>Reads the registered <ref refid="classConfigurator" kindref="compound">Configurator</ref> and <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> instances through <computeroutput><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref></computeroutput>, then copies <computeroutput><ref refid="structEmailSenderConfig" kindref="compound">EmailSenderConfig</ref></computeroutput> out of the <ref refid="classConfigurator" kindref="compound">Configurator</ref> so the invite path does not have to query configuration per request. <simplesect kind="note"><para>Failure behaviour when a service is absent from the <ref refid="classStore" kindref="compound">Store</ref> is that of <computeroutput><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref></computeroutput>.</para>
+<para>Reads the registered <ref refid="classConfigurator" kindref="compound">Configurator</ref> and <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref> instances through <computeroutput><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref></computeroutput>, then copies <computeroutput><ref refid="structEmailSenderConfig" kindref="compound">EmailSenderConfig</ref></computeroutput> out of the <ref refid="classConfigurator" kindref="compound">Configurator</ref> so the invite path does not have to query configuration per request. <simplesect kind="note"><para>Failure behaviour when a service is absent from the <ref refid="classStore" kindref="compound">Store</ref> is that of <computeroutput><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref></computeroutput>.</para>
 </simplesect>
 <computeroutput><ref refid="classStaffController_1a3f42581637f6b2711eac8ada82ad135a" kindref="member">cfg_</ref></computeroutput> and <computeroutput><ref refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" kindref="member">gateKeeper</ref></computeroutput> are service-locator handles; the <computeroutput><ref refid="structEmailSenderConfig" kindref="compound">EmailSenderConfig</ref></computeroutput> value is copied out once so the invite path does not re-read configuration per request. <simplesect kind="note"><para>Failure behaviour when a service is absent from the <ref refid="classStore" kindref="compound">Store</ref> is that of <computeroutput><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref></computeroutput>. </para>
 </simplesect>
@@ -88,10 +88,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="86" column="5" bodyfile="src/controllers/staffcontroller/staffcontroller.cpp" bodystart="71" bodyend="76"/>
-        <references refid="classStaffController_1a3f42581637f6b2711eac8ada82ad135a" compoundref="staffcontroller_8hpp" startline="155">StaffController&lt; T &gt;::cfg_</references>
-        <references refid="classStaffController_1aab325c701b76d68ee35fb4202a1c4693" compoundref="staffcontroller_8hpp" startline="157">StaffController&lt; T &gt;::email_sender_daemon_config_</references>
-        <references refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" compoundref="staffcontroller_8hpp" startline="159">StaffController&lt; T &gt;::gateKeeper</references>
+        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="116" column="3" bodyfile="src/controllers/staffcontroller/staffcontroller.cpp" bodystart="116" bodyend="129"/>
+        <references refid="classStaffController_1a3f42581637f6b2711eac8ada82ad135a" compoundref="staffcontroller_8hpp" startline="241">StaffController&lt; T &gt;::cfg_</references>
+        <references refid="classStaffController_1aab325c701b76d68ee35fb4202a1c4693" compoundref="staffcontroller_8hpp" startline="246">StaffController&lt; T &gt;::email_sender_daemon_config_</references>
+        <references refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" compoundref="staffcontroller_8hpp" startline="252">StaffController&lt; T &gt;::gateKeeper</references>
         <referencedby refid="classStaffController_1a8b0067a20c16696da7f15899b0804985">StaffController&lt; T &gt;::operator=</referencedby>
         <referencedby refid="classStaffController_1a6c1f92044026b4fc6703b3f513fd915a">StaffController&lt; T &gt;::operator=</referencedby>
         <referencedby refid="classStaffController_1af44e90b3c1914495477d4046fc71c151">StaffController&lt; T &gt;::StaffController</referencedby>
@@ -113,8 +113,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="88" column="5"/>
-        <references refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" compoundref="staffcontroller_8cpp" startline="71" endline="76">StaffController&lt; T &gt;::StaffController</references>
+        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="120" column="3"/>
+        <references refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" compoundref="staffcontroller_8cpp" startline="116" endline="129">StaffController&lt; T &gt;::StaffController</references>
       </memberdef>
       <memberdef kind="function" id="classStaffController_1aa6585747b8fafe5c7a3b7080968f6b9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -132,8 +132,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="90" column="5"/>
-        <references refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" compoundref="staffcontroller_8cpp" startline="71" endline="76">StaffController&lt; T &gt;::StaffController</references>
+        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="124" column="3"/>
+        <references refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" compoundref="staffcontroller_8cpp" startline="116" endline="129">StaffController&lt; T &gt;::StaffController</references>
       </memberdef>
       <memberdef kind="function" id="classStaffController_1a8b0067a20c16696da7f15899b0804985" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classStaffController" kindref="compound">StaffController</ref> &amp;</type>
@@ -151,8 +151,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="92" column="21"/>
-        <references refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" compoundref="staffcontroller_8cpp" startline="71" endline="76">StaffController&lt; T &gt;::StaffController</references>
+        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="127" column="19"/>
+        <references refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" compoundref="staffcontroller_8cpp" startline="116" endline="129">StaffController&lt; T &gt;::StaffController</references>
       </memberdef>
       <memberdef kind="function" id="classStaffController_1a6c1f92044026b4fc6703b3f513fd915a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classStaffController" kindref="compound">StaffController</ref> &amp;</type>
@@ -170,8 +170,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="94" column="21"/>
-        <references refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" compoundref="staffcontroller_8cpp" startline="71" endline="76">StaffController&lt; T &gt;::StaffController</references>
+        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="130" column="19"/>
+        <references refid="classStaffController_1a647b206d73ca8ac25b3669834e80e840" compoundref="staffcontroller_8cpp" startline="116" endline="129">StaffController&lt; T &gt;::StaffController</references>
       </memberdef>
       <memberdef kind="function" id="classStaffController_1a0e4a65120d9fea6f89fa8ed411fe536a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -186,14 +186,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="96" column="5"/>
-        <references refid="classStaffController_1a454ac6b5d362f6b9be674eac131f4da7" compoundref="staffcontroller_8cpp" startline="92" endline="121">StaffController&lt; T &gt;::AddStaffToEntity</references>
-        <references refid="classStaffController_1a53a028cf301c7a9765b3633a06275546" compoundref="staffcontroller_8cpp" startline="227" endline="255">StaffController&lt; T &gt;::AddStaffToEntityAsync</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classStaffController_1aca79920a9fdd6da89333627992bf6287" compoundref="staffcontroller_8cpp" startline="169" endline="214">StaffController&lt; T &gt;::InviteStaffToEntity</references>
-        <references refid="classStaffController_1a7bfaae0026f9082bb42968cf04b421d5" compoundref="staffcontroller_8cpp" startline="299" endline="345">StaffController&lt; T &gt;::InviteStaffToEntityAsync</references>
-        <references refid="classStaffController_1aefd020493c2178716433285aca94ae50" compoundref="staffcontroller_8cpp" startline="132" endline="155">StaffController&lt; T &gt;::RemoveStaffFromEntity</references>
-        <references refid="classStaffController_1ac220308be6bf24122bfe037ea8c75e9c" compoundref="staffcontroller_8cpp" startline="265" endline="289">StaffController&lt; T &gt;::RemoveStaffFromEntityAsync</references>
+        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="134" column="3"/>
+        <references refid="classStaffController_1a454ac6b5d362f6b9be674eac131f4da7" compoundref="staffcontroller_8cpp" startline="149" endline="199">StaffController&lt; T &gt;::AddStaffToEntity</references>
+        <references refid="classStaffController_1a53a028cf301c7a9765b3633a06275546" compoundref="staffcontroller_8cpp" startline="353" endline="389">StaffController&lt; T &gt;::AddStaffToEntityAsync</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classStaffController_1aca79920a9fdd6da89333627992bf6287" compoundref="staffcontroller_8cpp" startline="263" endline="339">StaffController&lt; T &gt;::InviteStaffToEntity</references>
+        <references refid="classStaffController_1a7bfaae0026f9082bb42968cf04b421d5" compoundref="staffcontroller_8cpp" startline="445" endline="514">StaffController&lt; T &gt;::InviteStaffToEntityAsync</references>
+        <references refid="classStaffController_1aefd020493c2178716433285aca94ae50" compoundref="staffcontroller_8cpp" startline="211" endline="248">StaffController&lt; T &gt;::RemoveStaffFromEntity</references>
+        <references refid="classStaffController_1ac220308be6bf24122bfe037ea8c75e9c" compoundref="staffcontroller_8cpp" startline="400" endline="433">StaffController&lt; T &gt;::RemoveStaffFromEntityAsync</references>
       </memberdef>
       <memberdef kind="function" id="classStaffController_1a454ac6b5d362f6b9be674eac131f4da7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -218,7 +218,7 @@
 <para>Adds a staff member described by <computeroutput>data</computeroutput> to the service entity identified in that body. </para>
         </briefdescription>
         <detaileddescription>
-<para>Parses <computeroutput>payload</computeroutput>/<computeroutput>id</computeroutput>, constructs <ref refid="structapi_1_1v2_1_1Types_1_1StaffData" kindref="compound">api::v2::Types::StaffData</ref> and <computeroutput>T</computeroutput>, checks <computeroutput>canManageStaff</computeroutput>, then delegates to <computeroutput><ref refid="classController_1a29dac549946db2810cb4435323502c75" kindref="member">Controller::addStaff</ref></computeroutput>. A parse failure is an exceptional 500 path; an authorisation failure returns the <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> error code. <parameterlist kind="param"><parameteritem>
+<para>Parses <computeroutput>payload</computeroutput>/<computeroutput>id</computeroutput>, constructs <ref refid="structapi_1_1v2_1_1Types_1_1StaffData" kindref="compound">api::v2::Types::StaffData</ref> and <computeroutput>T</computeroutput>, checks <computeroutput>canManageStaff</computeroutput>, then delegates to <computeroutput><ref refid="classController_1a29dac549946db2810cb4435323502c75" kindref="member">Controller::addStaff</ref></computeroutput>. A parse failure is an exceptional 500 path; an authorisation failure returns the <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref> error code. <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="inout">callback</parametername>
 </parameternamelist>
@@ -243,15 +243,15 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-Adds a staff member described by <computeroutput>data</computeroutput> to the service entity it names. Parses a JSON body with <computeroutput>payload</computeroutput> and <computeroutput>id</computeroutput>, builds <ref refid="staffcontroller_8cpp_1acd40880d4e5e43f97e8ead3d0efe3666" kindref="member">StaffData</ref> and <computeroutput>T</computeroutput>, checks staff-management permission against the id, and finally delegates the SQL work to <computeroutput><ref refid="classController_1a29dac549946db2810cb4435323502c75" kindref="member">Controller::addStaff</ref></computeroutput>. On denial the <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref>&apos;s code and message are returned verbatim; any thrown exception is mapped by <computeroutput><ref refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" kindref="member">CRITICALMESSAGERESPONSE</ref></computeroutput> (500, or 503 for a busy database). Note: There is no pre-parse guard: malformed JSON or a missing key is an exceptional 500 path here, unlike the 400 responses of <ref refid="classEntityController" kindref="compound">EntityController</ref>. callback: Completion handler invoked once with (status, body). requester: Authenticated caller used for the staff-management permission check. data: Raw JSON body containing <computeroutput>id</computeroutput> and <computeroutput>payload</computeroutput>; must outlive the call. </para>
+Adds a staff member described by <computeroutput>data</computeroutput> to the service entity it names. Parses a JSON body with <computeroutput>payload</computeroutput> and <computeroutput>id</computeroutput>, builds <ref refid="staffcontroller_8cpp_1a05f271479525f9aae1900f939d81a7f9" kindref="member">StaffData</ref> and <computeroutput>T</computeroutput>, checks staff-management permission against the id, and finally delegates the SQL work to <computeroutput><ref refid="classController_1a29dac549946db2810cb4435323502c75" kindref="member">Controller::addStaff</ref></computeroutput>. On denial the <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref>&apos;s code and message are returned verbatim; any thrown exception is mapped by <computeroutput><ref refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" kindref="member">CRITICALMESSAGERESPONSE</ref></computeroutput> (500, or 503 for a busy database). Note: There is no pre-parse guard: malformed JSON or a missing key is an exceptional 500 path here, unlike the 400 responses of <ref refid="classEntityController" kindref="compound">EntityController</ref>. callback: Completion handler invoked once with (status, body). requester: Authenticated caller used for the staff-management permission check. data: Raw JSON body containing <computeroutput>id</computeroutput> and <computeroutput>payload</computeroutput>; must outlive the call. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="108" column="10" bodyfile="src/controllers/staffcontroller/staffcontroller.cpp" bodystart="92" bodyend="121"/>
-        <references refid="classController_1a29dac549946db2810cb4435323502c75" compoundref="controller_8hpp" startline="707" endline="711">Controller::addStaff</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" compoundref="staffcontroller_8hpp" startline="159">StaffController&lt; T &gt;::gateKeeper</references>
+        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="153" column="8" bodyfile="src/controllers/staffcontroller/staffcontroller.cpp" bodystart="149" bodyend="199"/>
+        <references refid="classController_1a29dac549946db2810cb4435323502c75" compoundref="controller_8hpp" startline="974" endline="979">Controller::addStaff</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" compoundref="staffcontroller_8hpp" startline="252">StaffController&lt; T &gt;::gateKeeper</references>
         <referencedby refid="classStaffController_1a0e4a65120d9fea6f89fa8ed411fe536a">StaffController&lt; T &gt;::~StaffController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classStaffController_1aefd020493c2178716433285aca94ae50" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -302,15 +302,15 @@ Adds a staff member described by <computeroutput>data</computeroutput> to the se
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-Removes a staff member from the service entity named in <computeroutput>data</computeroutput>. Same request shape and authorisation contract as <ref refid="classStaffController_1a454ac6b5d362f6b9be674eac131f4da7" kindref="member">AddStaffToEntity</ref>, but delegates to <computeroutput><ref refid="classController_1ae33c97548e0d8cdd3f2289573d1a0dba" kindref="member">Controller::removeStaff</ref></computeroutput>. Malformed input is an exceptional 500 path; a failed permission check returns the <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> error unchanged. callback: Completion handler invoked once with (status, body). requester: Authenticated caller used for the staff-management permission check. data: Raw JSON body containing <computeroutput>id</computeroutput> (the service) and <computeroutput>payload</computeroutput> (the staff member). </para>
+Removes a staff member from the service entity named in <computeroutput>data</computeroutput>. Same request shape and authorisation contract as <ref refid="classStaffController_1a454ac6b5d362f6b9be674eac131f4da7" kindref="member">AddStaffToEntity</ref>, but delegates to <computeroutput><ref refid="classController_1ae33c97548e0d8cdd3f2289573d1a0dba" kindref="member">Controller::removeStaff</ref></computeroutput>. Malformed input is an exceptional 500 path; a failed permission check returns the <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref> error unchanged. callback: Completion handler invoked once with (status, body). requester: Authenticated caller used for the staff-management permission check. data: Raw JSON body containing <computeroutput>id</computeroutput> (the service) and <computeroutput>payload</computeroutput> (the staff member). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="117" column="10" bodyfile="src/controllers/staffcontroller/staffcontroller.cpp" bodystart="132" bodyend="155"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" compoundref="staffcontroller_8hpp" startline="159">StaffController&lt; T &gt;::gateKeeper</references>
-        <references refid="classController_1ae33c97548e0d8cdd3f2289573d1a0dba" compoundref="controller_8hpp" startline="721" endline="725">Controller::removeStaff</references>
+        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="168" column="8" bodyfile="src/controllers/staffcontroller/staffcontroller.cpp" bodystart="211" bodyend="248"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" compoundref="staffcontroller_8hpp" startline="252">StaffController&lt; T &gt;::gateKeeper</references>
+        <references refid="classController_1ae33c97548e0d8cdd3f2289573d1a0dba" compoundref="controller_8hpp" startline="991" endline="996">Controller::removeStaff</references>
         <referencedby refid="classStaffController_1a0e4a65120d9fea6f89fa8ed411fe536a">StaffController&lt; T &gt;::~StaffController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classStaffController_1aca79920a9fdd6da89333627992bf6287" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -361,18 +361,18 @@ Removes a staff member from the service entity named in <computeroutput>data</co
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-Invites a staff member by handing an invite message to the email-sender daemon. Parses <computeroutput>nominee_id</computeroutput> and the <ref refid="staffcontroller_8cpp_1acd40880d4e5e43f97e8ead3d0efe3666" kindref="member">StaffData</ref> fields from the whole body, checks staff-management permission, and — if the fields parsed and the invite JSON could be built — POSTs that JSON to the configured email daemon. The daemon&apos;s body is relayed with 200 on success; 400 is returned when invite construction or delivery fails. Note: <computeroutput>nominee_id</computeroutput> is the value passed to <computeroutput>canManageStaff</computeroutput> as the permission-check target; note also that the email request is a synchronous cURL call. callback: Completion handler invoked once with (status, body). requester: Authenticated caller used for the staff-management permission check. data: Raw JSON body containing <computeroutput>nominee_id</computeroutput> and the invite fields. </para>
+Invites a staff member by handing an invite message to the email-sender daemon. Parses <computeroutput>nominee_id</computeroutput> and the <ref refid="staffcontroller_8cpp_1a05f271479525f9aae1900f939d81a7f9" kindref="member">StaffData</ref> fields from the whole body, checks staff-management permission, and — if the fields parsed and the invite JSON could be built — POSTs that JSON to the configured email daemon. The daemon&apos;s body is relayed with 200 on success; 400 is returned when invite construction or delivery fails. Note: <computeroutput>nominee_id</computeroutput> is the value passed to <computeroutput>canManageStaff</computeroutput> as the permission-check target; note also that the email request is a synchronous cURL call. callback: Completion handler invoked once with (status, body). requester: Authenticated caller used for the staff-management permission check. data: Raw JSON body containing <computeroutput>nominee_id</computeroutput> and the invite fields. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="127" column="10" bodyfile="src/controllers/staffcontroller/staffcontroller.cpp" bodystart="169" bodyend="214"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="classStaffController_1aab325c701b76d68ee35fb4202a1c4693" compoundref="staffcontroller_8hpp" startline="157">StaffController&lt; T &gt;::email_sender_daemon_config_</references>
-        <references refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" compoundref="staffcontroller_8hpp" startline="159">StaffController&lt; T &gt;::gateKeeper</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
-        <references refid="classCommunicate_1ac17ede80bd387e5c096fcf9fcb481aee" compoundref="communicate_8cpp" startline="38" endline="108">Communicate::sendRequest</references>
+        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="186" column="8" bodyfile="src/controllers/staffcontroller/staffcontroller.cpp" bodystart="263" bodyend="339"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="classStaffController_1aab325c701b76d68ee35fb4202a1c4693" compoundref="staffcontroller_8hpp" startline="246">StaffController&lt; T &gt;::email_sender_daemon_config_</references>
+        <references refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" compoundref="staffcontroller_8hpp" startline="252">StaffController&lt; T &gt;::gateKeeper</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
+        <references refid="classCommunicate_1ac17ede80bd387e5c096fcf9fcb481aee" compoundref="communicate_8cpp" startline="47" endline="160">Communicate::sendRequest</references>
         <referencedby refid="classStaffController_1a0e4a65120d9fea6f89fa8ed411fe536a">StaffController&lt; T &gt;::~StaffController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classStaffController_1a53a028cf301c7a9765b3633a06275546" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -427,11 +427,11 @@ Coroutine form of <ref refid="classStaffController_1a454ac6b5d362f6b9be674eac131
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="135" column="18" bodyfile="src/controllers/staffcontroller/staffcontroller.cpp" bodystart="227" bodyend="255"/>
-        <references refid="classController_1a1bb3245ec82d14644a2359cd546ea218" compoundref="controller_8hpp" startline="735" endline="739">Controller::addStaffAsync</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" compoundref="staffcontroller_8hpp" startline="159">StaffController&lt; T &gt;::gateKeeper</references>
+        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="201" column="16" bodyfile="src/controllers/staffcontroller/staffcontroller.cpp" bodystart="353" bodyend="389"/>
+        <references refid="classController_1a1bb3245ec82d14644a2359cd546ea218" compoundref="controller_8hpp" startline="1009" endline="1017">Controller::addStaffAsync</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" compoundref="staffcontroller_8hpp" startline="252">StaffController&lt; T &gt;::gateKeeper</references>
         <referencedby refid="classStaffController_1a0e4a65120d9fea6f89fa8ed411fe536a">StaffController&lt; T &gt;::~StaffController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classStaffController_1ac220308be6bf24122bfe037ea8c75e9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -486,11 +486,11 @@ Coroutine form of <ref refid="classStaffController_1aefd020493c2178716433285aca9
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="143" column="18" bodyfile="src/controllers/staffcontroller/staffcontroller.cpp" bodystart="265" bodyend="289"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" compoundref="staffcontroller_8hpp" startline="159">StaffController&lt; T &gt;::gateKeeper</references>
-        <references refid="classController_1a417810c27071d4c1fae298b518d7819f" compoundref="controller_8hpp" startline="749" endline="753">Controller::removeStaffAsync</references>
+        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="217" column="16" bodyfile="src/controllers/staffcontroller/staffcontroller.cpp" bodystart="400" bodyend="433"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" compoundref="staffcontroller_8hpp" startline="252">StaffController&lt; T &gt;::gateKeeper</references>
+        <references refid="classController_1a417810c27071d4c1fae298b518d7819f" compoundref="controller_8hpp" startline="1030" endline="1038">Controller::removeStaffAsync</references>
         <referencedby refid="classStaffController_1a0e4a65120d9fea6f89fa8ed411fe536a">StaffController&lt; T &gt;::~StaffController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classStaffController_1a7bfaae0026f9082bb42968cf04b421d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -547,14 +547,14 @@ Coroutine form of <ref refid="classStaffController_1aca79920a9fdd6da89333627992b
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="151" column="18" bodyfile="src/controllers/staffcontroller/staffcontroller.cpp" bodystart="299" bodyend="345"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="classStaffController_1aab325c701b76d68ee35fb4202a1c4693" compoundref="staffcontroller_8hpp" startline="157">StaffController&lt; T &gt;::email_sender_daemon_config_</references>
-        <references refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" compoundref="staffcontroller_8hpp" startline="159">StaffController&lt; T &gt;::gateKeeper</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
-        <references refid="classCommunicate_1ac17ede80bd387e5c096fcf9fcb481aee" compoundref="communicate_8cpp" startline="38" endline="108">Communicate::sendRequest</references>
+        <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="232" column="16" bodyfile="src/controllers/staffcontroller/staffcontroller.cpp" bodystart="445" bodyend="514"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="classStaffController_1aab325c701b76d68ee35fb4202a1c4693" compoundref="staffcontroller_8hpp" startline="246">StaffController&lt; T &gt;::email_sender_daemon_config_</references>
+        <references refid="classStaffController_1af25ca143465f16659a086bd6ffeebb04" compoundref="staffcontroller_8hpp" startline="252">StaffController&lt; T &gt;::gateKeeper</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
+        <references refid="classCommunicate_1ac17ede80bd387e5c096fcf9fcb481aee" compoundref="communicate_8cpp" startline="47" endline="160">Communicate::sendRequest</references>
         <referencedby refid="classStaffController_1a0e4a65120d9fea6f89fa8ed411fe536a">StaffController&lt; T &gt;::~StaffController</referencedby>
       </memberdef>
     </sectiondef>
@@ -571,11 +571,11 @@ Coroutine form of <ref refid="classStaffController_1aca79920a9fdd6da89333627992b
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-Unlike <ref refid="classServiceController" kindref="compound">ServiceController</ref> this is not an <computeroutput><ref refid="classEntityController" kindref="compound">EntityController</ref></computeroutput>: it inherits <ref refid="classController" kindref="compound">Controller</ref> for the low-level add/remove-staff SQL helpers and implements the domain operations of <ref refid="classStaffControllerBase" kindref="compound">StaffControllerBase</ref> directly. Each operation parses the request body, obtains a <computeroutput><ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref></computeroutput> staff-management decision, and only then performs a side effect (an SQL statement, or an HTTP POST to the email-sender daemon for invites).</para>
-<para>Plain-language version: <computeroutput>T</computeroutput> is the concrete entity (say <computeroutput><ref refid="classClinics" kindref="compound">Clinics</ref></computeroutput>). The class relies on <computeroutput>T</computeroutput> being constructible from staff data and on <computeroutput>T</computeroutput> providing the add/remove staff SQL statements; those are compile-time expectations rather than an enforced concept. The three jobs here do real work (parse, check permission, act), unlike the pure forwarding service controllers.</para>
-<para>Explicit instantiations exist for <computeroutput><ref refid="classClinics" kindref="compound">Clinics</ref></computeroutput>, <computeroutput><ref refid="classPharmacies" kindref="compound">Pharmacies</ref></computeroutput>, <computeroutput><ref refid="classLaboratories" kindref="compound">Laboratories</ref></computeroutput> and <computeroutput><ref refid="classRadiologyCenters" kindref="compound">RadiologyCenters</ref></computeroutput>; the staff route registry stores instances as shared pointers and selects one by service name. <simplesect kind="note"><para>Instances are shared across Drogon workers; the cached dependencies below are populated in the constructor and are not mutated by the operations. </para>
+Unlike <ref refid="classServiceController" kindref="compound">ServiceController</ref> this is not an <computeroutput><ref refid="classEntityController" kindref="compound">EntityController</ref></computeroutput>: it inherits <ref refid="classController" kindref="compound">Controller</ref> for the low-level add/remove-staff SQL helpers and implements the domain operations of <ref refid="classStaffControllerBase" kindref="compound">StaffControllerBase</ref> directly. Each operation parses the request body, obtains a <computeroutput><ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref></computeroutput> staff-management decision, and only then performs a side effect (an SQL statement, or an HTTP POST to the email-sender daemon for invites). <verbatim>     Plain-language version: `T` is the concrete entity (say `Clinics`).
+</verbatim> The class relies on <computeroutput>T</computeroutput> being constructible from staff data and on <computeroutput>T</computeroutput> providing the add/remove staff SQL statements; those are compile-time expectations rather than an enforced concept. The three jobs here do real work (parse, check permission, act), unlike the pure forwarding service controllers. <verbatim>     Explicit instantiations exist for `Clinics`, `Pharmacies`,
+</verbatim> <computeroutput><ref refid="classLaboratories" kindref="compound">Laboratories</ref></computeroutput> and <computeroutput><ref refid="classRadiologyCenters" kindref="compound">RadiologyCenters</ref></computeroutput>; the staff route registry stores instances as shared pointers and selects one by service name. <simplesect kind="note"><para>Instances are shared across Drogon workers; the cached dependencies below are populated in the constructor and are not mutated by the operations. </para>
 </simplesect>
-<simplesect kind="see"><para><ref refid="classStaffControllerBase" kindref="compound">StaffControllerBase</ref>, <ref refid="classController" kindref="compound">Controller</ref>, <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref>, <ref refid="classConfigurator" kindref="compound">Configurator</ref> </para>
+<simplesect kind="see"><para><ref refid="classStaffControllerBase" kindref="compound">StaffControllerBase</ref>, <ref refid="classController" kindref="compound">Controller</ref>, <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref>, <ref refid="classConfigurator" kindref="compound">Configurator</ref> </para>
 </simplesect>
 </para>
     </detaileddescription>
@@ -622,7 +622,7 @@ Unlike <ref refid="classServiceController" kindref="compound">ServiceController<
         <link refid="classStaffControllerBase"/>
       </node>
     </collaborationgraph>
-    <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="76" column="1" bodyfile="src/controllers/staffcontroller/staffcontroller.hpp" bodystart="77" bodyend="160"/>
+    <location file="src/controllers/staffcontroller/staffcontroller.hpp" line="104" column="1" bodyfile="src/controllers/staffcontroller/staffcontroller.hpp" bodystart="104" bodyend="254"/>
     <listofallmembers>
       <member refid="classController_1a29dac549946db2810cb4435323502c75" prot="protected" virt="non-virtual"><scope>StaffController</scope><name>addStaff</name></member>
       <member refid="classController_1a1bb3245ec82d14644a2359cd546ea218" prot="protected" virt="non-virtual"><scope>StaffController</scope><name>addStaffAsync</name></member>

@@ -137,7 +137,7 @@ Static Protected Member Functions</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>The set of environment variables is process-global. Reading is safe while no other thread mutates the environment; mutation is intended for setup/test code before threads start, not for the request path. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classEnvLoader.html" title="Base for configuration sections that read typed values from the process environment.">EnvLoader</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="envvars_8hpp_source.html#l00045">45</a> of file <a class="el" href="envvars_8hpp_source.html">envvars.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="envvars_8hpp_source.html#l00055">55</a> of file <a class="el" href="envvars_8hpp_source.html">envvars.hpp</a>.</p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a84ea9a96f8f19c0d80cec58da34d7861" name="a84ea9a96f8f19c0d80cec58da34d7861"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a84ea9a96f8f19c0d80cec58da34d7861">&#9670;&#160;</a></span>get()</h2>
@@ -163,7 +163,8 @@ Static Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reads a raw environment variable. </p>
-<p>Asks the operating system for the value stored under <code class="param">key</code>. In plain words: "is there a variable with this name, and if so what text does it hold?" The answer is wrapped in an optional so that "not set" is clearly different from "set to empty text". </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Asks the operating system for the value stored under <code class="param">key</code>. In plain words: "is there a variable with this name, and if so what text
+does it hold?" The answer is wrapped in an optional so that "not set" is clearly different from "set to empty text". </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>Variable name. </td></tr>
   </table>
@@ -171,9 +172,9 @@ Static Protected Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The value as a string, or std::nullopt when the variable is not set. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="envvars_8cpp_source.html#l00033">33</a> of file <a class="el" href="envvars_8cpp_source.html">envvars.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="envvars_8cpp_source.html#l00045">45</a> of file <a class="el" href="envvars_8cpp_source.html">envvars.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="envloader_8cpp_source.html#l00079">EnvLoader::getEnvironmentVariable()</a>, <a class="el" href="envloader_8cpp_source.html#l00043">EnvLoader::getEnvironmentVariable()</a>, <a class="el" href="envloader_8cpp_source.html#l00052">EnvLoader::getEnvironmentVariable()</a>, <a class="el" href="envloader_8cpp_source.html#l00036">EnvLoader::getEnvironmentVariable()</a>, and <a class="el" href="envloader_8hpp_source.html#l00081">EnvLoader::getEnvironmentVariable()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="envloader_8cpp_source.html#l00117">EnvLoader::getEnvironmentVariable()</a>, <a class="el" href="envloader_8cpp_source.html#l00063">EnvLoader::getEnvironmentVariable()</a>, <a class="el" href="envloader_8cpp_source.html#l00077">EnvLoader::getEnvironmentVariable()</a>, <a class="el" href="envloader_8cpp_source.html#l00051">EnvLoader::getEnvironmentVariable()</a>, and <a class="el" href="envloader_8hpp_source.html#l00115">EnvLoader::getEnvironmentVariable()</a>.</p>
 
 </div>
 </div>
@@ -216,9 +217,9 @@ Static Protected Member Functions</h2></td></tr>
 <dl class="section warning"><dt>Warning</dt><dd>Mutating the process environment is not synchronized with other threads. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The only caller in this repository is a test that derives a helper to expose this protected method; production configuration is read-only. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="envvars_8cpp_source.html#l00049">49</a> of file <a class="el" href="envvars_8cpp_source.html">envvars.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="envvars_8cpp_source.html#l00069">69</a> of file <a class="el" href="envvars_8cpp_source.html">envvars.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="message_8cpp_source.html#l00041">Message::ErrorMessage()</a>.</p>
+<p class="reference">References <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>.</p>
 
 </div>
 </div>

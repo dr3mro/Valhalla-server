@@ -17,14 +17,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="378" column="28" bodyfile="src/gatekeeper/gatekeeper.hpp" bodystart="378" bodyend="-1"/>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="70" endline="77">GateKeeper</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1aef829fb4539cac1a6df5195edf66184a" compoundref="gatekeeper_8cpp" startline="239" endline="253">isAuthenticationValid</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a7268e0a8290406b8ac474072e39f1948" compoundref="gatekeeper_8cpp" startline="255" endline="268">isAuthenticationValidAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a3ba9a5d63c120692afc6d8d765826544" compoundref="gatekeeper_8cpp" startline="78" endline="149">login</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1ac767969b80539df0339a6d1e36996867" compoundref="gatekeeper_8cpp" startline="151" endline="220">loginAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1aa229540ef1e83bef737798d28697b61b" compoundref="gatekeeper_8cpp" startline="222" endline="237">logout</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a1005fa5f7c6f9815782dbdb60e50c24c" compoundref="gatekeeper_8cpp" startline="270" endline="276">removeSession</referencedby>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="495" column="9" bodyfile="src/gatekeeper/gatekeeper.hpp" bodystart="495" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="99" endline="115">GateKeeper</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1aef829fb4539cac1a6df5195edf66184a" compoundref="gatekeeper_8cpp" startline="380" endline="401">isAuthenticationValid</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a7268e0a8290406b8ac474072e39f1948" compoundref="gatekeeper_8cpp" startline="403" endline="423">isAuthenticationValidAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a3ba9a5d63c120692afc6d8d765826544" compoundref="gatekeeper_8cpp" startline="116" endline="241">login</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1ac767969b80539df0339a6d1e36996867" compoundref="gatekeeper_8cpp" startline="243" endline="355">loginAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1aa229540ef1e83bef737798d28697b61b" compoundref="gatekeeper_8cpp" startline="357" endline="378">logout</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a1005fa5f7c6f9815782dbdb60e50c24c" compoundref="gatekeeper_8cpp" startline="425" endline="434">removeSession</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classapi_1_1v2_1_1GateKeeper_1af80a9d45a0c1c9e6abf7dfe2f149cf0d" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classapi_1_1v2_1_1TokenManager" kindref="compound">TokenManager</ref> &gt;</type>
@@ -39,12 +39,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="379" column="30" bodyfile="src/gatekeeper/gatekeeper.hpp" bodystart="379" bodyend="-1"/>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="70" endline="77">GateKeeper</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1aef829fb4539cac1a6df5195edf66184a" compoundref="gatekeeper_8cpp" startline="239" endline="253">isAuthenticationValid</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a7268e0a8290406b8ac474072e39f1948" compoundref="gatekeeper_8cpp" startline="255" endline="268">isAuthenticationValidAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a3ba9a5d63c120692afc6d8d765826544" compoundref="gatekeeper_8cpp" startline="78" endline="149">login</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1ac767969b80539df0339a6d1e36996867" compoundref="gatekeeper_8cpp" startline="151" endline="220">loginAsync</referencedby>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="500" column="9" bodyfile="src/gatekeeper/gatekeeper.hpp" bodystart="500" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="99" endline="115">GateKeeper</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1aef829fb4539cac1a6df5195edf66184a" compoundref="gatekeeper_8cpp" startline="380" endline="401">isAuthenticationValid</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a7268e0a8290406b8ac474072e39f1948" compoundref="gatekeeper_8cpp" startline="403" endline="423">isAuthenticationValidAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a3ba9a5d63c120692afc6d8d765826544" compoundref="gatekeeper_8cpp" startline="116" endline="241">login</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1ac767969b80539df0339a6d1e36996867" compoundref="gatekeeper_8cpp" startline="243" endline="355">loginAsync</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classapi_1_1v2_1_1GateKeeper_1a8f269c62483272957ea3b2dd5cd55636" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classDOSDetector" kindref="compound">DOSDetector</ref> &gt;</type>
@@ -59,9 +59,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="380" column="31" bodyfile="src/gatekeeper/gatekeeper.hpp" bodystart="380" bodyend="-1"/>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="70" endline="77">GateKeeper</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1ae85cb4ffc450a0150a4db1183585d988" compoundref="gatekeeper_8cpp" startline="278" endline="278">isDosAttack</referencedby>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="504" column="9" bodyfile="src/gatekeeper/gatekeeper.hpp" bodystart="504" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="99" endline="115">GateKeeper</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1ae85cb4ffc450a0150a4db1183585d988" compoundref="gatekeeper_8cpp" startline="436" endline="439">isDosAttack</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classapi_1_1v2_1_1PermissionManager" kindref="compound">PermissionManager</ref> &gt;</type>
@@ -76,22 +76,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="381" column="25" bodyfile="src/gatekeeper/gatekeeper.hpp" bodystart="381" bodyend="-1"/>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a7f6ffd25732e0c84e85fe56b28879aaa" compoundref="gatekeeper_8cpp" startline="331" endline="334">canCreate</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1afa13e2f1fbe41b8fae5deb91731da9dc" compoundref="gatekeeper_8cpp" startline="374" endline="377">canCreateAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a23268a22e5e60a61df7831eb82c11346" compoundref="gatekeeper_8cpp" startline="349" endline="352">canDelete</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a72420af970b6f1328b6a811de06d16a1" compoundref="gatekeeper_8cpp" startline="392" endline="395">canDeleteAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1af4482568f67eea493dd07a8bb5c0461d" compoundref="gatekeeper_8cpp" startline="367" endline="370">canGetServices</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a11e4332c8b8c374e3a7c3a2c2caec649" compoundref="gatekeeper_8cpp" startline="410" endline="413">canGetServicesAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a6e64492dda48f1087eed55fe47cabbe2" compoundref="gatekeeper_8cpp" startline="355" endline="358">canManageStaff</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a54cd3ef474eede80d3d45c4999c2cf83" compoundref="gatekeeper_8cpp" startline="398" endline="401">canManageStaffAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a9d5d84f7e5666b5e707aaa781b1eb1ea" compoundref="gatekeeper_8cpp" startline="337" endline="340">canRead</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a3165b2ac0e3866c535957d46b22b2dfe" compoundref="gatekeeper_8cpp" startline="380" endline="383">canReadAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a8c4e977ab1ef401f06493b67e6f4dcf7" compoundref="gatekeeper_8cpp" startline="361" endline="364">canToggleActive</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a1f8ac0c6ea0a4716cb91674cfe44bc01" compoundref="gatekeeper_8cpp" startline="404" endline="407">canToggleActiveAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a6f4f8460d06aa137939e8ac440f77a0f" compoundref="gatekeeper_8cpp" startline="343" endline="346">canUpdate</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1abb0037e8d56bec3ceaf4237e6db3c36f" compoundref="gatekeeper_8cpp" startline="386" endline="389">canUpdateAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="70" endline="77">GateKeeper</referencedby>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="507" column="9" bodyfile="src/gatekeeper/gatekeeper.hpp" bodystart="507" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a7f6ffd25732e0c84e85fe56b28879aaa" compoundref="gatekeeper_8cpp" startline="504" endline="511">canCreate</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1afa13e2f1fbe41b8fae5deb91731da9dc" compoundref="gatekeeper_8cpp" startline="574" endline="582">canCreateAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a23268a22e5e60a61df7831eb82c11346" compoundref="gatekeeper_8cpp" startline="534" endline="541">canDelete</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a72420af970b6f1328b6a811de06d16a1" compoundref="gatekeeper_8cpp" startline="605" endline="612">canDeleteAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1af4482568f67eea493dd07a8bb5c0461d" compoundref="gatekeeper_8cpp" startline="564" endline="571">canGetServices</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a11e4332c8b8c374e3a7c3a2c2caec649" compoundref="gatekeeper_8cpp" startline="631" endline="636">canGetServicesAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a6e64492dda48f1087eed55fe47cabbe2" compoundref="gatekeeper_8cpp" startline="544" endline="551">canManageStaff</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a54cd3ef474eede80d3d45c4999c2cf83" compoundref="gatekeeper_8cpp" startline="615" endline="620">canManageStaffAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a9d5d84f7e5666b5e707aaa781b1eb1ea" compoundref="gatekeeper_8cpp" startline="514" endline="521">canRead</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a3165b2ac0e3866c535957d46b22b2dfe" compoundref="gatekeeper_8cpp" startline="585" endline="592">canReadAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a8c4e977ab1ef401f06493b67e6f4dcf7" compoundref="gatekeeper_8cpp" startline="554" endline="561">canToggleActive</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a1f8ac0c6ea0a4716cb91674cfe44bc01" compoundref="gatekeeper_8cpp" startline="623" endline="628">canToggleActiveAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a6f4f8460d06aa137939e8ac440f77a0f" compoundref="gatekeeper_8cpp" startline="524" endline="531">canUpdate</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1abb0037e8d56bec3ceaf4237e6db3c36f" compoundref="gatekeeper_8cpp" startline="595" endline="602">canUpdateAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="99" endline="115">GateKeeper</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classapi_1_1v2_1_1GateKeeper_1af2c58e2b5f9501cd5f368e7b51648e2b" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classPasswordWorker" kindref="compound">PasswordWorker</ref> &gt;</type>
@@ -106,10 +106,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="382" column="28" bodyfile="src/gatekeeper/gatekeeper.hpp" bodystart="382" bodyend="-1"/>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="70" endline="77">GateKeeper</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a3ba9a5d63c120692afc6d8d765826544" compoundref="gatekeeper_8cpp" startline="78" endline="149">login</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1ac767969b80539df0339a6d1e36996867" compoundref="gatekeeper_8cpp" startline="151" endline="220">loginAsync</referencedby>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="510" column="9" bodyfile="src/gatekeeper/gatekeeper.hpp" bodystart="510" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="99" endline="115">GateKeeper</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a3ba9a5d63c120692afc6d8d765826544" compoundref="gatekeeper_8cpp" startline="116" endline="241">login</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1ac767969b80539df0339a6d1e36996867" compoundref="gatekeeper_8cpp" startline="243" endline="355">loginAsync</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -128,12 +128,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="95" column="9" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="70" bodyend="77"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a8f269c62483272957ea3b2dd5cd55636" compoundref="gatekeeper_8hpp" startline="380">dosDetector_</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1af2c58e2b5f9501cd5f368e7b51648e2b" compoundref="gatekeeper_8hpp" startline="382">passwordWorker_</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" compoundref="gatekeeper_8hpp" startline="378">sessionManager_</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1af80a9d45a0c1c9e6abf7dfe2f149cf0d" compoundref="gatekeeper_8hpp" startline="379">tokenManager_</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="125" column="5" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="99" bodyend="115"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a8f269c62483272957ea3b2dd5cd55636" compoundref="gatekeeper_8hpp" startline="504">dosDetector_</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1af2c58e2b5f9501cd5f368e7b51648e2b" compoundref="gatekeeper_8hpp" startline="510">passwordWorker_</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="507">permissionManager_</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" compoundref="gatekeeper_8hpp" startline="495">sessionManager_</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1af80a9d45a0c1c9e6abf7dfe2f149cf0d" compoundref="gatekeeper_8hpp" startline="500">tokenManager_</references>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a107ed4c865dca8c005619fb9dbcebc26">GateKeeper</referencedby>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a6540627ddbc0362aef0fb8b7bd95ab0f">GateKeeper</referencedby>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a5e16af906f652e29d5d5e2387a3b57de">operator=</referencedby>
@@ -155,8 +155,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="96" column="9"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="70" endline="77">GateKeeper</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="126" column="5"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="99" endline="115">GateKeeper</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a5e16af906f652e29d5d5e2387a3b57de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" kindref="member">GateKeeper</ref> &amp;</type>
@@ -174,8 +174,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="97" column="20"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="70" endline="77">GateKeeper</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="129" column="16"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="99" endline="115">GateKeeper</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a6540627ddbc0362aef0fb8b7bd95ab0f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -193,8 +193,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="98" column="9"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="70" endline="77">GateKeeper</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="131" column="5"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="99" endline="115">GateKeeper</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a8d78a30d2b3a6999da8e396126847768" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" kindref="member">GateKeeper</ref> &amp;</type>
@@ -212,8 +212,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="99" column="20"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="70" endline="77">GateKeeper</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="134" column="16"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a8b8e7247f3b2ce9f51287d7bbff3345e" compoundref="gatekeeper_8cpp" startline="99" endline="115">GateKeeper</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -228,31 +228,31 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="103" column="17"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a7f6ffd25732e0c84e85fe56b28879aaa" compoundref="gatekeeper_8cpp" startline="331" endline="334">canCreate</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1afa13e2f1fbe41b8fae5deb91731da9dc" compoundref="gatekeeper_8cpp" startline="374" endline="377">canCreateAsync</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a23268a22e5e60a61df7831eb82c11346" compoundref="gatekeeper_8cpp" startline="349" endline="352">canDelete</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a72420af970b6f1328b6a811de06d16a1" compoundref="gatekeeper_8cpp" startline="392" endline="395">canDeleteAsync</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1af4482568f67eea493dd07a8bb5c0461d" compoundref="gatekeeper_8cpp" startline="367" endline="370">canGetServices</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a11e4332c8b8c374e3a7c3a2c2caec649" compoundref="gatekeeper_8cpp" startline="410" endline="413">canGetServicesAsync</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a6e64492dda48f1087eed55fe47cabbe2" compoundref="gatekeeper_8cpp" startline="355" endline="358">canManageStaff</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a54cd3ef474eede80d3d45c4999c2cf83" compoundref="gatekeeper_8cpp" startline="398" endline="401">canManageStaffAsync</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a9d5d84f7e5666b5e707aaa781b1eb1ea" compoundref="gatekeeper_8cpp" startline="337" endline="340">canRead</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a3165b2ac0e3866c535957d46b22b2dfe" compoundref="gatekeeper_8cpp" startline="380" endline="383">canReadAsync</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a8c4e977ab1ef401f06493b67e6f4dcf7" compoundref="gatekeeper_8cpp" startline="361" endline="364">canToggleActive</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a1f8ac0c6ea0a4716cb91674cfe44bc01" compoundref="gatekeeper_8cpp" startline="404" endline="407">canToggleActiveAsync</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a6f4f8460d06aa137939e8ac440f77a0f" compoundref="gatekeeper_8cpp" startline="343" endline="346">canUpdate</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1abb0037e8d56bec3ceaf4237e6db3c36f" compoundref="gatekeeper_8cpp" startline="386" endline="389">canUpdateAsync</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1aef829fb4539cac1a6df5195edf66184a" compoundref="gatekeeper_8cpp" startline="239" endline="253">isAuthenticationValid</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a7268e0a8290406b8ac474072e39f1948" compoundref="gatekeeper_8cpp" startline="255" endline="268">isAuthenticationValidAsync</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1ae85cb4ffc450a0150a4db1183585d988" compoundref="gatekeeper_8cpp" startline="278" endline="278">isDosAttack</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a3ba9a5d63c120692afc6d8d765826544" compoundref="gatekeeper_8cpp" startline="78" endline="149">login</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1ac767969b80539df0339a6d1e36996867" compoundref="gatekeeper_8cpp" startline="151" endline="220">loginAsync</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1aa229540ef1e83bef737798d28697b61b" compoundref="gatekeeper_8cpp" startline="222" endline="237">logout</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1ad3fb6e3ac62858e51a921ecef59671de" compoundref="gatekeeper_8cpp" startline="300" endline="324">parse_credentials</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1afaac61dc7abb5b7d68bad64aada544c4" compoundref="gatekeeper_8cpp" startline="280" endline="297">parse_data</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a1005fa5f7c6f9815782dbdb60e50c24c" compoundref="gatekeeper_8cpp" startline="270" endline="276">removeSession</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="140" column="13"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a7f6ffd25732e0c84e85fe56b28879aaa" compoundref="gatekeeper_8cpp" startline="504" endline="511">canCreate</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1afa13e2f1fbe41b8fae5deb91731da9dc" compoundref="gatekeeper_8cpp" startline="574" endline="582">canCreateAsync</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a23268a22e5e60a61df7831eb82c11346" compoundref="gatekeeper_8cpp" startline="534" endline="541">canDelete</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a72420af970b6f1328b6a811de06d16a1" compoundref="gatekeeper_8cpp" startline="605" endline="612">canDeleteAsync</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1af4482568f67eea493dd07a8bb5c0461d" compoundref="gatekeeper_8cpp" startline="564" endline="571">canGetServices</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a11e4332c8b8c374e3a7c3a2c2caec649" compoundref="gatekeeper_8cpp" startline="631" endline="636">canGetServicesAsync</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a6e64492dda48f1087eed55fe47cabbe2" compoundref="gatekeeper_8cpp" startline="544" endline="551">canManageStaff</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a54cd3ef474eede80d3d45c4999c2cf83" compoundref="gatekeeper_8cpp" startline="615" endline="620">canManageStaffAsync</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a9d5d84f7e5666b5e707aaa781b1eb1ea" compoundref="gatekeeper_8cpp" startline="514" endline="521">canRead</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a3165b2ac0e3866c535957d46b22b2dfe" compoundref="gatekeeper_8cpp" startline="585" endline="592">canReadAsync</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a8c4e977ab1ef401f06493b67e6f4dcf7" compoundref="gatekeeper_8cpp" startline="554" endline="561">canToggleActive</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a1f8ac0c6ea0a4716cb91674cfe44bc01" compoundref="gatekeeper_8cpp" startline="623" endline="628">canToggleActiveAsync</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a6f4f8460d06aa137939e8ac440f77a0f" compoundref="gatekeeper_8cpp" startline="524" endline="531">canUpdate</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1abb0037e8d56bec3ceaf4237e6db3c36f" compoundref="gatekeeper_8cpp" startline="595" endline="602">canUpdateAsync</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1aef829fb4539cac1a6df5195edf66184a" compoundref="gatekeeper_8cpp" startline="380" endline="401">isAuthenticationValid</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a7268e0a8290406b8ac474072e39f1948" compoundref="gatekeeper_8cpp" startline="403" endline="423">isAuthenticationValidAsync</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ae85cb4ffc450a0150a4db1183585d988" compoundref="gatekeeper_8cpp" startline="436" endline="439">isDosAttack</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a3ba9a5d63c120692afc6d8d765826544" compoundref="gatekeeper_8cpp" startline="116" endline="241">login</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac767969b80539df0339a6d1e36996867" compoundref="gatekeeper_8cpp" startline="243" endline="355">loginAsync</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1aa229540ef1e83bef737798d28697b61b" compoundref="gatekeeper_8cpp" startline="357" endline="378">logout</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ad3fb6e3ac62858e51a921ecef59671de" compoundref="gatekeeper_8cpp" startline="464" endline="496">parse_credentials</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1afaac61dc7abb5b7d68bad64aada544c4" compoundref="gatekeeper_8cpp" startline="442" endline="462">parse_data</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a1005fa5f7c6f9815782dbdb60e50c24c" compoundref="gatekeeper_8cpp" startline="425" endline="434">removeSession</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a3ba9a5d63c120692afc6d8d765826544" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -317,17 +317,17 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="123" column="14" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="78" bodyend="149"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">api::v2::Http::INTERNAL_SERVER_ERROR</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1ad3fb6e3ac62858e51a921ecef59671de" compoundref="gatekeeper_8cpp" startline="300" endline="324">parse_credentials</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1af2c58e2b5f9501cd5f368e7b51648e2b" compoundref="gatekeeper_8hpp" startline="382">passwordWorker_</references>
-        <references refid="passwordworker_8hpp_1a11301e300507b2f5ba81930e709a5de6" compoundref="passwordworker_8hpp" startline="71" endline="75">runOnPasswordWorker</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" compoundref="gatekeeper_8hpp" startline="378">sessionManager_</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1af80a9d45a0c1c9e6abf7dfe2f149cf0d" compoundref="gatekeeper_8hpp" startline="379">tokenManager_</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa521335676ea4815ed98bb811fb2d1fea" compoundref="http_8hpp" startline="83">api::v2::Http::UNAUTHORIZED</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="167" column="10" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="116" bodyend="241"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="123">api::v2::Http::INTERNAL_SERVER_ERROR</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ad3fb6e3ac62858e51a921ecef59671de" compoundref="gatekeeper_8cpp" startline="464" endline="496">parse_credentials</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1af2c58e2b5f9501cd5f368e7b51648e2b" compoundref="gatekeeper_8hpp" startline="510">passwordWorker_</references>
+        <references refid="passwordworker_8hpp_1a11301e300507b2f5ba81930e709a5de6" compoundref="passwordworker_8hpp" startline="88" endline="98">runOnPasswordWorker</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" compoundref="gatekeeper_8hpp" startline="495">sessionManager_</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1af80a9d45a0c1c9e6abf7dfe2f149cf0d" compoundref="gatekeeper_8hpp" startline="500">tokenManager_</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa521335676ea4815ed98bb811fb2d1fea" compoundref="http_8hpp" startline="104">api::v2::Http::UNAUTHORIZED</references>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1ac767969b80539df0339a6d1e36996867" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -395,17 +395,17 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="137" column="22" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="151" bodyend="220"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">api::v2::Http::INTERNAL_SERVER_ERROR</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1ad3fb6e3ac62858e51a921ecef59671de" compoundref="gatekeeper_8cpp" startline="300" endline="324">parse_credentials</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1af2c58e2b5f9501cd5f368e7b51648e2b" compoundref="gatekeeper_8hpp" startline="382">passwordWorker_</references>
-        <references refid="passwordworker_8hpp_1a11301e300507b2f5ba81930e709a5de6" compoundref="passwordworker_8hpp" startline="71" endline="75">runOnPasswordWorker</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" compoundref="gatekeeper_8hpp" startline="378">sessionManager_</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1af80a9d45a0c1c9e6abf7dfe2f149cf0d" compoundref="gatekeeper_8hpp" startline="379">tokenManager_</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa521335676ea4815ed98bb811fb2d1fea" compoundref="http_8hpp" startline="83">api::v2::Http::UNAUTHORIZED</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="187" column="18" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="243" bodyend="355"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="123">api::v2::Http::INTERNAL_SERVER_ERROR</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ad3fb6e3ac62858e51a921ecef59671de" compoundref="gatekeeper_8cpp" startline="464" endline="496">parse_credentials</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1af2c58e2b5f9501cd5f368e7b51648e2b" compoundref="gatekeeper_8hpp" startline="510">passwordWorker_</references>
+        <references refid="passwordworker_8hpp_1a11301e300507b2f5ba81930e709a5de6" compoundref="passwordworker_8hpp" startline="88" endline="98">runOnPasswordWorker</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" compoundref="gatekeeper_8hpp" startline="495">sessionManager_</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1af80a9d45a0c1c9e6abf7dfe2f149cf0d" compoundref="gatekeeper_8hpp" startline="500">tokenManager_</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa521335676ea4815ed98bb811fb2d1fea" compoundref="http_8hpp" startline="104">api::v2::Http::UNAUTHORIZED</references>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1aa229540ef1e83bef737798d28697b61b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -471,10 +471,10 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="147" column="14" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="222" bodyend="237"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" compoundref="gatekeeper_8hpp" startline="378">sessionManager_</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="203" column="10" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="357" bodyend="378"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" compoundref="gatekeeper_8hpp" startline="495">sessionManager_</references>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1aef829fb4539cac1a6df5195edf66184a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -484,7 +484,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         <name>isAuthenticationValid</name>
         <qualifiedname>api::v2::GateKeeper::isAuthenticationValid</qualifiedname>
         <param>
-          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1af609f0aaf134643edde3ad81ab5ebf7f" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
           <declname>clientLoginData</declname>
         </param>
         <param>
@@ -518,9 +518,9 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="164" column="22" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="239" bodyend="253"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" compoundref="gatekeeper_8hpp" startline="378">sessionManager_</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1af80a9d45a0c1c9e6abf7dfe2f149cf0d" compoundref="gatekeeper_8hpp" startline="379">tokenManager_</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="227" column="18" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="380" bodyend="401"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" compoundref="gatekeeper_8hpp" startline="495">sessionManager_</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1af80a9d45a0c1c9e6abf7dfe2f149cf0d" compoundref="gatekeeper_8hpp" startline="500">tokenManager_</references>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a7268e0a8290406b8ac474072e39f1948" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -530,7 +530,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         <name>isAuthenticationValidAsync</name>
         <qualifiedname>api::v2::GateKeeper::isAuthenticationValidAsync</qualifiedname>
         <param>
-          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1af609f0aaf134643edde3ad81ab5ebf7f" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
           <declname>clientLoginData</declname>
         </param>
         <param>
@@ -566,9 +566,9 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="174" column="30" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="255" bodyend="268"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" compoundref="gatekeeper_8hpp" startline="378">sessionManager_</references>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1af80a9d45a0c1c9e6abf7dfe2f149cf0d" compoundref="gatekeeper_8hpp" startline="379">tokenManager_</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="241" column="26" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="403" bodyend="423"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" compoundref="gatekeeper_8hpp" startline="495">sessionManager_</references>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1af80a9d45a0c1c9e6abf7dfe2f149cf0d" compoundref="gatekeeper_8hpp" startline="500">tokenManager_</references>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a1005fa5f7c6f9815782dbdb60e50c24c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -610,8 +610,8 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="180" column="14" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="270" bodyend="276"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" compoundref="gatekeeper_8hpp" startline="378">sessionManager_</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="250" column="10" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="425" bodyend="434"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a245d424b0c142b25ea1fc11bf5695845" compoundref="gatekeeper_8hpp" startline="495">sessionManager_</references>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a7f6ffd25732e0c84e85fe56b28879aaa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -626,7 +626,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         <name>canCreate</name>
         <qualifiedname>api::v2::GateKeeper::canCreate</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -634,7 +634,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
           <declname>data_j</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -681,8 +681,8 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="193" column="14" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="331" bodyend="334"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="266" column="10" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="504" bodyend="511"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="507">permissionManager_</references>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1afa13e2f1fbe41b8fae5deb91731da9dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -697,7 +697,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         <name>canCreateAsync</name>
         <qualifiedname>api::v2::GateKeeper::canCreateAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -705,7 +705,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
           <declname>data_j</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -754,8 +754,8 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="205" column="22" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="374" bodyend="377"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="281" column="18" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="574" bodyend="582"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="507">permissionManager_</references>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a9d5d84f7e5666b5e707aaa781b1eb1ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -770,7 +770,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         <name>canRead</name>
         <qualifiedname>api::v2::GateKeeper::canRead</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -778,7 +778,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
           <declname>entity_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -825,8 +825,8 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="216" column="14" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="337" bodyend="340"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="295" column="10" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="514" bodyend="521"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="507">permissionManager_</references>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a3165b2ac0e3866c535957d46b22b2dfe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -841,7 +841,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         <name>canReadAsync</name>
         <qualifiedname>api::v2::GateKeeper::canReadAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -849,7 +849,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
           <declname>entity_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -898,8 +898,8 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="228" column="22" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="380" bodyend="383"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="309" column="18" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="585" bodyend="592"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="507">permissionManager_</references>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a6f4f8460d06aa137939e8ac440f77a0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -914,7 +914,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         <name>canUpdate</name>
         <qualifiedname>api::v2::GateKeeper::canUpdate</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -922,7 +922,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
           <declname>entity_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -969,8 +969,8 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="239" column="14" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="343" bodyend="346"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="322" column="10" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="524" bodyend="531"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="507">permissionManager_</references>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1abb0037e8d56bec3ceaf4237e6db3c36f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -985,7 +985,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         <name>canUpdateAsync</name>
         <qualifiedname>api::v2::GateKeeper::canUpdateAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -993,7 +993,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
           <declname>entity_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1042,8 +1042,8 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="251" column="22" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="386" bodyend="389"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="336" column="18" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="595" bodyend="602"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="507">permissionManager_</references>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a23268a22e5e60a61df7831eb82c11346" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1058,7 +1058,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         <name>canDelete</name>
         <qualifiedname>api::v2::GateKeeper::canDelete</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1066,7 +1066,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
           <declname>entity_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1113,8 +1113,8 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="262" column="14" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="349" bodyend="352"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="349" column="10" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="534" bodyend="541"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="507">permissionManager_</references>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a72420af970b6f1328b6a811de06d16a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1129,7 +1129,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         <name>canDeleteAsync</name>
         <qualifiedname>api::v2::GateKeeper::canDeleteAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1137,7 +1137,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
           <declname>entity_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1186,8 +1186,8 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="274" column="22" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="392" bodyend="395"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="363" column="18" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="605" bodyend="612"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="507">permissionManager_</references>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a6e64492dda48f1087eed55fe47cabbe2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1202,7 +1202,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         <name>canManageStaff</name>
         <qualifiedname>api::v2::GateKeeper::canManageStaff</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1210,7 +1210,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
           <declname>_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1257,8 +1257,8 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="285" column="14" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="355" bodyend="358"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="377" column="10" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="544" bodyend="551"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="507">permissionManager_</references>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a54cd3ef474eede80d3d45c4999c2cf83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1273,7 +1273,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         <name>canManageStaffAsync</name>
         <qualifiedname>api::v2::GateKeeper::canManageStaffAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1281,7 +1281,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
           <declname>_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1330,8 +1330,8 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="297" column="22" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="398" bodyend="401"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="391" column="18" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="615" bodyend="620"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="507">permissionManager_</references>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a8c4e977ab1ef401f06493b67e6f4dcf7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1348,7 +1348,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         <name>canToggleActive</name>
         <qualifiedname>api::v2::GateKeeper::canToggleActive</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1356,7 +1356,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
           <declname>_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1403,8 +1403,8 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="308" column="14" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="361" bodyend="364"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="405" column="10" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="554" bodyend="561"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="507">permissionManager_</references>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a1f8ac0c6ea0a4716cb91674cfe44bc01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1421,7 +1421,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         <name>canToggleActiveAsync</name>
         <qualifiedname>api::v2::GateKeeper::canToggleActiveAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1429,7 +1429,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
           <declname>_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1478,8 +1478,8 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="320" column="22" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="404" bodyend="407"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="419" column="18" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="623" bodyend="628"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="507">permissionManager_</references>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1af4482568f67eea493dd07a8bb5c0461d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1496,7 +1496,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         <name>canGetServices</name>
         <qualifiedname>api::v2::GateKeeper::canGetServices</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1504,7 +1504,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
           <declname>_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1551,8 +1551,8 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="331" column="14" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="367" bodyend="370"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="433" column="10" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="564" bodyend="571"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="507">permissionManager_</references>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1a11e4332c8b8c374e3a7c3a2c2caec649" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1569,7 +1569,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         <name>canGetServicesAsync</name>
         <qualifiedname>api::v2::GateKeeper::canGetServicesAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1577,7 +1577,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
           <declname>_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1626,8 +1626,8 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="343" column="22" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="410" bodyend="413"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="381">permissionManager_</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="447" column="18" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="631" bodyend="636"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1ac11aba8584897bdb6d395fbb30bc0b3a" compoundref="gatekeeper_8hpp" startline="507">permissionManager_</references>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1ae85cb4ffc450a0150a4db1183585d988" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1637,7 +1637,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         <name>isDosAttack</name>
         <qualifiedname>api::v2::GateKeeper::isDosAttack</qualifiedname>
         <param>
-          <type>const <ref refid="classDOSDetector_1a362a948824acc3cf457cb47e8d095cb5" kindref="member">DOSDetector::Request</ref> &amp;</type>
+          <type>const <ref refid="classDOSDetector_1a43f9aacef13939c478b0b533aaf7d6ca" kindref="member">DOSDetector::Request</ref> &amp;</type>
           <declname>request</declname>
         </param>
         <briefdescription>
@@ -1661,8 +1661,8 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="353" column="29" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="278" bodyend="278"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1a8f269c62483272957ea3b2dd5cd55636" compoundref="gatekeeper_8hpp" startline="380">dosDetector_</references>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="462" column="25" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="436" bodyend="439"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1a8f269c62483272957ea3b2dd5cd55636" compoundref="gatekeeper_8hpp" startline="504">dosDetector_</references>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
       </memberdef>
     </sectiondef>
@@ -1720,12 +1720,12 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="363" column="27" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="280" bodyend="297"/>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1ad3fb6e3ac62858e51a921ecef59671de" compoundref="gatekeeper_8cpp" startline="300" endline="324">parse_credentials</referencedby>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="473" column="19" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="442" bodyend="462"/>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1ad3fb6e3ac62858e51a921ecef59671de" compoundref="gatekeeper_8cpp" startline="464" endline="496">parse_credentials</referencedby>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1GateKeeper_1ad3fb6e3ac62858e51a921ecef59671de" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1ada88a3e212586efbdfd1f931b0f4a8a9" kindref="member">Types::Credentials</ref> &gt;</type>
+        <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1a249a6e076b477aa182c10bc4334e1268" kindref="member">Types::Credentials</ref> &gt;</type>
         <definition>std::optional&lt; Credentials &gt; GateKeeper::parse_credentials</definition>
         <argsstring>(std::string_view data, std::string &amp;message, bool &amp;success)</argsstring>
         <name>parse_credentials</name>
@@ -1777,10 +1777,10 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/gatekeeper.hpp" line="373" column="23" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="300" bodyend="324"/>
-        <references refid="classapi_1_1v2_1_1GateKeeper_1afaac61dc7abb5b7d68bad64aada544c4" compoundref="gatekeeper_8cpp" startline="280" endline="297">parse_data</references>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a3ba9a5d63c120692afc6d8d765826544" compoundref="gatekeeper_8cpp" startline="78" endline="149">login</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1ac767969b80539df0339a6d1e36996867" compoundref="gatekeeper_8cpp" startline="151" endline="220">loginAsync</referencedby>
+        <location file="src/gatekeeper/gatekeeper.hpp" line="486" column="19" bodyfile="src/gatekeeper/gatekeeper.cpp" bodystart="464" bodyend="496"/>
+        <references refid="classapi_1_1v2_1_1GateKeeper_1afaac61dc7abb5b7d68bad64aada544c4" compoundref="gatekeeper_8cpp" startline="442" endline="462">parse_data</references>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a3ba9a5d63c120692afc6d8d765826544" compoundref="gatekeeper_8cpp" startline="116" endline="241">login</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1ac767969b80539df0339a6d1e36996867" compoundref="gatekeeper_8cpp" startline="243" endline="355">loginAsync</referencedby>
         <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a42aaf9402689a853ecf1d1bd7efa68ce">~GateKeeper</referencedby>
       </memberdef>
     </sectiondef>
@@ -1794,7 +1794,7 @@ Step by step: validate the JSON, look up the hash, then hand the slow bcrypt che
 </simplesect>
 For a beginner: a &quot;facade&quot; is like a receptionist. A controller does not need to know which manager to call or in what order; it just asks <ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">GateKeeper</ref>. Because the manager pointers are shared_ptrs obtained from a process-wide <ref refid="classStore" kindref="compound">Store</ref>, building two GateKeepers does not create two sets of sessions - both talk to the same managers. The methods ending in &quot;Async&quot; are coroutine versions: they return a drogon::Task that the caller must drive, allowing slow database work to pause instead of blocking a server IO thread. </para>
     </detaileddescription>
-    <location file="src/gatekeeper/gatekeeper.hpp" line="85" column="5" bodyfile="src/gatekeeper/gatekeeper.hpp" bodystart="86" bodyend="383"/>
+    <location file="src/gatekeeper/gatekeeper.hpp" line="113" column="3" bodyfile="src/gatekeeper/gatekeeper.hpp" bodystart="113" bodyend="513"/>
     <listofallmembers>
       <member refid="classapi_1_1v2_1_1GateKeeper_1a7f6ffd25732e0c84e85fe56b28879aaa" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>canCreate</name></member>
       <member refid="classapi_1_1v2_1_1GateKeeper_1afa13e2f1fbe41b8fae5deb91731da9dc" prot="public" virt="non-virtual"><scope>api::v2::GateKeeper</scope><name>canCreateAsync</name></member>

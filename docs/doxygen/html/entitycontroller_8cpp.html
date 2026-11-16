@@ -133,8 +133,8 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('entitycontroll
 <code>#include &lt;unordered_set&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
 <code>#include &quot;<a class="el" href="controller_8hpp_source.html">controllers/base/controller/controller.hpp</a>&quot;</code><br />
-<code>#include &quot;drogon/utils/coroutine.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="entitycontrollerbase_8hpp_source.html">controllers/entitycontroller/entitycontrollerbase.hpp</a>&quot;</code><br />
+<code>#include &quot;drogon/utils/coroutine.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="entities_2base_2types_8hpp_source.html">entities/base/types.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="callback_8hpp_source.html">utils/global/callback.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="http_8hpp_source.html">utils/global/http.hpp</a>&quot;</code><br />
@@ -150,15 +150,15 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ae441f2f0dc07feb7ea9ffef43f2640bb" id="r_ae441f2f0dc07feb7ea9ffef43f2640bb"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#ae441f2f0dc07feb7ea9ffef43f2640bb">Create_t</a> = <a class="el" href="namespaceapi_1_1v2_1_1Types.html#ac9a246b12a16bc018eec47370d2d6a20">api::v2::Types::Create_t</a></td></tr>
-<tr class="memitem:a42fc487bf6af7e475cd3f8e60fd85f39" id="r_a42fc487bf6af7e475cd3f8e60fd85f39"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a42fc487bf6af7e475cd3f8e60fd85f39">Update_t</a> = <a class="el" href="namespaceapi_1_1v2_1_1Types.html#a20045c81ace97166027763e5c4c5f9b2">api::v2::Types::Update_t</a></td></tr>
-<tr class="memitem:a145cf228089e63715fc8555bfdfd354b" id="r_a145cf228089e63715fc8555bfdfd354b"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a145cf228089e63715fc8555bfdfd354b">Delete_t</a> = <a class="el" href="namespaceapi_1_1v2_1_1Types.html#a825fd8d986399970a67bf9bd619450ad">api::v2::Types::Delete_t</a></td></tr>
-<tr class="memitem:a55725b9cf45e5143432537010a85c1d5" id="r_a55725b9cf45e5143432537010a85c1d5"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a55725b9cf45e5143432537010a85c1d5">Read_t</a> = <a class="el" href="namespaceapi_1_1v2_1_1Types.html#aa1dfc44a5afdc88f1bdc09c5ff2be63d">api::v2::Types::Read_t</a></td></tr>
+<tr class="memitem:ae441f2f0dc07feb7ea9ffef43f2640bb" id="r_ae441f2f0dc07feb7ea9ffef43f2640bb"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#ae441f2f0dc07feb7ea9ffef43f2640bb">Create_t</a> = <a class="el" href="namespaceapi_1_1v2_1_1Types.html#a3c62a5c40f89f4df780a0aa64a374461">api::v2::Types::Create_t</a></td></tr>
+<tr class="memitem:a0928d38763f002c6e6d97ff50865851b" id="r_a0928d38763f002c6e6d97ff50865851b"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a0928d38763f002c6e6d97ff50865851b">Update_t</a></td></tr>
+<tr class="memitem:a80ee6ff467cc44d18a082067b6f04ec7" id="r_a80ee6ff467cc44d18a082067b6f04ec7"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a80ee6ff467cc44d18a082067b6f04ec7">Delete_t</a></td></tr>
+<tr class="memitem:a55725b9cf45e5143432537010a85c1d5" id="r_a55725b9cf45e5143432537010a85c1d5"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a55725b9cf45e5143432537010a85c1d5">Read_t</a> = <a class="el" href="namespaceapi_1_1v2_1_1Types.html#afbdb544a57b12e560c40c2075321b1b5">api::v2::Types::Read_t</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Out-of-line definitions and explicit template instantiations for <a class="el" href="classEntityController.html" title="Generic request-facing CRUDS handler: validates and authorizes a request, then delegates persistence ...">EntityController&lt;T&gt;</a>. </p>
-<p>The synchronous and coroutine implementations mirror each other: each validates the JSON body, checks <a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3" title="Convenience alias for the authorisation service.">GateKeeper</a> authorization, builds the entity from a Types data carrier, and delegates to <a class="el" href="classController.html" title="Reusable persistence engine for the API&#39;s CRUDS (Create/Read/Update/Delete/Search) operations.">Controller</a>. Explicit instantiation at the bottom makes these templates available to translation units that include only the header (via <a class="el" href="includes_8hpp.html" title="Umbrella header that makes every authorizable entity type complete for GateKeeper template instantiat...">gatekeeper/includes.hpp</a>).</p>
-<p>WHY THIS FILE MATTERS IN THE SERVER: This is where the generic entity pipeline actually lives. Every operation here follows the same shape - parse the JSON, validate it against the table schema, check the caller's permission with <a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3" title="Convenience alias for the authorisation service.">GateKeeper</a>, build the entity object, and hand it to <a class="el" href="classController.html" title="Reusable persistence engine for the API&#39;s CRUDS (Create/Read/Update/Delete/Search) operations.">Controller</a> for the SQL. The coroutine twins do the same but await the async gate and async DB calls. The bottom of the file lists every concrete entity type so the linker can find these templates; without those instantiations the server would fail to link.</p>
+<p>The synchronous and coroutine implementations mirror each other: each validates the JSON body, checks <a class="el" href="controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1" title="Convenience alias for the authorisation service.">GateKeeper</a> authorization, builds the entity from a Types data carrier, and delegates to <a class="el" href="classController.html" title="Reusable persistence engine for the API&#39;s CRUDS (Create/Read/Update/Delete/Search) operations.">Controller</a>. Explicit instantiation at the bottom makes these templates available to translation units that include only the header (via <a class="el" href="includes_8hpp.html" title="Umbrella header that makes every authorizable entity type complete for GateKeeper template instantiat...">gatekeeper/includes.hpp</a>).</p>
+<p>WHY THIS FILE MATTERS IN THE SERVER: This is where the generic entity pipeline actually lives. Every operation here follows the same shape - parse the JSON, validate it against the table schema, check the caller's permission with <a class="el" href="controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1" title="Convenience alias for the authorisation service.">GateKeeper</a>, build the entity object, and hand it to <a class="el" href="classController.html" title="Reusable persistence engine for the API&#39;s CRUDS (Create/Read/Update/Delete/Search) operations.">Controller</a> for the SQL. The coroutine twins do the same but await the async gate and async DB calls. The bottom of the file lists every concrete entity type so the linker can find these templates; without those instantiations the server would fail to link.</p>
 <p>CONCEPTS TO LEARN (for beginners):</p><ul>
 <li>Templates and explicit instantiation: <a href="https://en.cppreference.com/w/cpp/language/templates">https://en.cppreference.com/w/cpp/language/templates</a></li>
 <li>Coroutines (co_await / co_return): <a href="https://en.cppreference.com/w/cpp/language/coroutines">https://en.cppreference.com/w/cpp/language/coroutines</a></li>
@@ -186,33 +186,11 @@ Typedefs</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classEntityController.html#a449401c7840a8159d6e3b64c30f72e4d">EntityController&lt;TYPE&gt;::Create</a>(<a class="code hl_define" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a>&amp;&amp; callback, <span class="keyword">const</span> <a class="code hl_struct" href="structRequester.html">Requester</a>&amp;&amp; requester, std::string_view data);                             \</div>
-<div class="line"><span class="keyword">template</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classEntityController.html#afa8269ceee3631d7e20cbce2444a00aa">EntityController&lt;TYPE&gt;::Read</a>(<a class="code hl_define" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a>&amp;&amp; callback, <span class="keyword">const</span> <a class="code hl_struct" href="structRequester.html">Requester</a>&amp;&amp; requester, std::string_view data);                               \</div>
-<div class="line"><span class="keyword">template</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classEntityController.html#a351b900503468ac17e930c42fdf23bdf">EntityController&lt;TYPE&gt;::Update</a>(<a class="code hl_define" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a>&amp;&amp; callback, <span class="keyword">const</span> <a class="code hl_struct" href="structRequester.html">Requester</a>&amp;&amp; requester, std::string_view data, std::optional&lt;uint64_t&gt; <span class="keywordtype">id</span>); \</div>
-<div class="line"><span class="keyword">template</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classEntityController.html#ae5a0d4d7a4e9dd670f22655a831f8215">EntityController&lt;TYPE&gt;::Delete</a>(<a class="code hl_define" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a>&amp;&amp; callback, <span class="keyword">const</span> <a class="code hl_struct" href="structRequester.html">Requester</a>&amp;&amp; requester, std::optional&lt;uint64_t&gt; <span class="keywordtype">id</span>);                        \</div>
-<div class="line"><span class="keyword">template</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classEntityController.html#a888ea97ce413d880bcca6f7e9cf6b896">EntityController&lt;TYPE&gt;::Search</a>(<a class="code hl_define" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a>&amp;&amp; callback, <span class="keyword">const</span> <a class="code hl_struct" href="structRequester.html">Requester</a>&amp;&amp; requester, std::string_view data); \</div>
-<div class="line"><span class="keyword">template</span> drogon::Task&lt;void&gt; <a class="code hl_function" href="classEntityController.html#a0de2c6044f1460f85750e4d18635997b">EntityController&lt;TYPE&gt;::CreateAsync</a>(<a class="code hl_define" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a>&amp;&amp; callback, <span class="keyword">const</span> <a class="code hl_struct" href="structRequester.html">Requester</a>&amp;&amp; requester, std::string_view data);         \</div>
-<div class="line"><span class="keyword">template</span> drogon::Task&lt;void&gt; <a class="code hl_function" href="classEntityController.html#a9707869a9f99e7a5df537c9468ea0a4e">EntityController&lt;TYPE&gt;::ReadAsync</a>(<a class="code hl_define" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a>&amp;&amp; callback, <span class="keyword">const</span> <a class="code hl_struct" href="structRequester.html">Requester</a>&amp;&amp; requester, std::string_view data);               \</div>
-<div class="line"><span class="keyword">template</span> drogon::Task&lt;void&gt; <a class="code hl_function" href="classEntityController.html#a89d8cf3d79aae4e8b462c667c70fdce4">EntityController&lt;TYPE&gt;::UpdateAsync</a>(<a class="code hl_define" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a>&amp;&amp; callback, <span class="keyword">const</span> <a class="code hl_struct" href="structRequester.html">Requester</a>&amp;&amp; requester, std::string_view data, std::optional&lt;uint64_t&gt; <span class="keywordtype">id</span>); \</div>
-<div class="line"><span class="keyword">template</span> drogon::Task&lt;void&gt; <a class="code hl_function" href="classEntityController.html#ac2793aa8599a89a46fe157473d16a89e">EntityController&lt;TYPE&gt;::DeleteAsync</a>(<a class="code hl_define" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a>&amp;&amp; callback, <span class="keyword">const</span> <a class="code hl_struct" href="structRequester.html">Requester</a>&amp;&amp; requester, std::optional&lt;uint64_t&gt; <span class="keywordtype">id</span>);        \</div>
-<div class="line"><span class="keyword">template</span> drogon::Task&lt;void&gt; <a class="code hl_function" href="classEntityController.html#a430903208b20b59481d07c88b66ac4f6">EntityController&lt;TYPE&gt;::SearchAsync</a>(<a class="code hl_define" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a>&amp;&amp; callback, <span class="keyword">const</span> <a class="code hl_struct" href="structRequester.html">Requester</a>&amp;&amp; requester, std::string_view data);</div>
-<div class="ttc" id="acallback_8hpp_html_a46d97763fde9c175df21fc9b8f73b1d3"><div class="ttname"><a href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a></div><div class="ttdeci">#define CALLBACK_</div><div class="ttdoc">Completion callback used throughout the request pipeline.</div><div class="ttdef"><b>Definition</b> <a href="callback_8hpp_source.html#l00044">callback.hpp:44</a></div></div>
-<div class="ttc" id="aclassEntityController_html_a0de2c6044f1460f85750e4d18635997b"><div class="ttname"><a href="classEntityController.html#a0de2c6044f1460f85750e4d18635997b">EntityController::CreateAsync</a></div><div class="ttdeci">drogon::Task&lt; void &gt; CreateAsync(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data) override</div><div class="ttdoc">Coroutine form of Create(); awaits the asynchronous gate and persistence checks.</div><div class="ttdef"><b>Definition</b> <a href="entitycontroller_8cpp_source.html#l00290">entitycontroller.cpp:290</a></div></div>
-<div class="ttc" id="aclassEntityController_html_a351b900503468ac17e930c42fdf23bdf"><div class="ttname"><a href="classEntityController.html#a351b900503468ac17e930c42fdf23bdf">EntityController::Update</a></div><div class="ttdeci">void Update(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data, std::optional&lt; uint64_t &gt; _id) override</div><div class="ttdoc">Validates and authorizes an update request, then updates the entity.</div><div class="ttdef"><b>Definition</b> <a href="entitycontroller_8cpp_source.html#l00162">entitycontroller.cpp:162</a></div></div>
-<div class="ttc" id="aclassEntityController_html_a430903208b20b59481d07c88b66ac4f6"><div class="ttname"><a href="classEntityController.html#a430903208b20b59481d07c88b66ac4f6">EntityController::SearchAsync</a></div><div class="ttdeci">drogon::Task&lt; void &gt; SearchAsync(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data) override</div><div class="ttdoc">Coroutine form of Search(); must be awaited.</div><div class="ttdef"><b>Definition</b> <a href="entitycontroller_8cpp_source.html#l00482">entitycontroller.cpp:482</a></div></div>
-<div class="ttc" id="aclassEntityController_html_a449401c7840a8159d6e3b64c30f72e4d"><div class="ttname"><a href="classEntityController.html#a449401c7840a8159d6e3b64c30f72e4d">EntityController::Create</a></div><div class="ttdeci">void Create(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data) override</div><div class="ttdoc">Validates and authorizes a create request, then inserts the new entity.</div><div class="ttdef"><b>Definition</b> <a href="entitycontroller_8cpp_source.html#l00057">entitycontroller.cpp:57</a></div></div>
-<div class="ttc" id="aclassEntityController_html_a888ea97ce413d880bcca6f7e9cf6b896"><div class="ttname"><a href="classEntityController.html#a888ea97ce413d880bcca6f7e9cf6b896">EntityController::Search</a></div><div class="ttdeci">void Search(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data) override</div><div class="ttdoc">Parses search criteria into a Search_t and runs the paginated search.</div><div class="ttdef"><b>Definition</b> <a href="entitycontroller_8cpp_source.html#l00255">entitycontroller.cpp:255</a></div></div>
-<div class="ttc" id="aclassEntityController_html_a89d8cf3d79aae4e8b462c667c70fdce4"><div class="ttname"><a href="classEntityController.html#a89d8cf3d79aae4e8b462c667c70fdce4">EntityController::UpdateAsync</a></div><div class="ttdeci">drogon::Task&lt; void &gt; UpdateAsync(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data, std::optional&lt; uint64_t &gt; _id) override</div><div class="ttdoc">Coroutine form of Update(); must be awaited.</div><div class="ttdef"><b>Definition</b> <a href="entitycontroller_8cpp_source.html#l00392">entitycontroller.cpp:392</a></div></div>
-<div class="ttc" id="aclassEntityController_html_a9707869a9f99e7a5df537c9468ea0a4e"><div class="ttname"><a href="classEntityController.html#a9707869a9f99e7a5df537c9468ea0a4e">EntityController::ReadAsync</a></div><div class="ttdeci">drogon::Task&lt; void &gt; ReadAsync(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data) override</div><div class="ttdoc">Coroutine form of Read(); must be awaited.</div><div class="ttdef"><b>Definition</b> <a href="entitycontroller_8cpp_source.html#l00345">entitycontroller.cpp:345</a></div></div>
-<div class="ttc" id="aclassEntityController_html_ac2793aa8599a89a46fe157473d16a89e"><div class="ttname"><a href="classEntityController.html#ac2793aa8599a89a46fe157473d16a89e">EntityController::DeleteAsync</a></div><div class="ttdeci">drogon::Task&lt; void &gt; DeleteAsync(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::optional&lt; uint64_t &gt; _id) override</div><div class="ttdoc">Coroutine form of Delete(); must be awaited.</div><div class="ttdef"><b>Definition</b> <a href="entitycontroller_8cpp_source.html#l00452">entitycontroller.cpp:452</a></div></div>
-<div class="ttc" id="aclassEntityController_html_ae5a0d4d7a4e9dd670f22655a831f8215"><div class="ttname"><a href="classEntityController.html#ae5a0d4d7a4e9dd670f22655a831f8215">EntityController::Delete</a></div><div class="ttdeci">void Delete(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::optional&lt; uint64_t &gt; _id) override</div><div class="ttdoc">Authorizes and performs a delete; a missing id is rejected with 406.</div><div class="ttdef"><b>Definition</b> <a href="entitycontroller_8cpp_source.html#l00224">entitycontroller.cpp:224</a></div></div>
-<div class="ttc" id="aclassEntityController_html_afa8269ceee3631d7e20cbce2444a00aa"><div class="ttname"><a href="classEntityController.html#afa8269ceee3631d7e20cbce2444a00aa">EntityController::Read</a></div><div class="ttdeci">void Read(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data) override</div><div class="ttdoc">Validates and authorizes a read request, then reads the selected columns of an entity.</div><div class="ttdef"><b>Definition</b> <a href="entitycontroller_8cpp_source.html#l00115">entitycontroller.cpp:115</a></div></div>
-<div class="ttc" id="astructRequester_html"><div class="ttname"><a href="structRequester.html">Requester</a></div><div class="ttdoc">Value object describing who issued a request.</div></div>
-</div><!-- fragment -->
+
 <p>Forces compilation of both sync and coroutine CRUDS members for one entity type. </p>
 <p>Required because template definitions live in this translation unit; without these instantiations, callers including only the header would fail to link. The entity types are listed via <a class="el" href="includes_8hpp.html" title="Umbrella header that makes every authorizable entity type complete for GateKeeper template instantiat...">gatekeeper/includes.hpp</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="entitycontroller_8cpp_source.html#l00521">521</a> of file <a class="el" href="entitycontroller_8cpp_source.html">entitycontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entitycontroller_8cpp_source.html#l00671">671</a> of file <a class="el" href="entitycontroller_8cpp_source.html">entitycontroller.cpp</a>.</p>
 
 </div>
 </div>
@@ -224,28 +202,31 @@ Typedefs</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using Create_t = <a class="el" href="namespaceapi_1_1v2_1_1Types.html#ac9a246b12a16bc018eec47370d2d6a20">api::v2::Types::Create_t</a></td>
+          <td class="memname">using Create_t = <a class="el" href="namespaceapi_1_1v2_1_1Types.html#a3c62a5c40f89f4df780a0aa64a374461">api::v2::Types::Create_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="entitycontroller_8cpp_source.html#l00051">51</a> of file <a class="el" href="entitycontroller_8cpp_source.html">entitycontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entitycontroller_8cpp_source.html#l00066">66</a> of file <a class="el" href="entitycontroller_8cpp_source.html">entitycontroller.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a145cf228089e63715fc8555bfdfd354b" name="a145cf228089e63715fc8555bfdfd354b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a145cf228089e63715fc8555bfdfd354b">&#9670;&#160;</a></span>Delete_t</h2>
+<a id="a80ee6ff467cc44d18a082067b6f04ec7" name="a80ee6ff467cc44d18a082067b6f04ec7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80ee6ff467cc44d18a082067b6f04ec7">&#9670;&#160;</a></span>Delete_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using Delete_t = <a class="el" href="namespaceapi_1_1v2_1_1Types.html#a825fd8d986399970a67bf9bd619450ad">api::v2::Types::Delete_t</a></td>
+          <td class="memname">using Delete_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="entitycontroller_8cpp_source.html#l00053">53</a> of file <a class="el" href="entitycontroller_8cpp_source.html">entitycontroller.cpp</a>.</p>
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line"><a class="code hl_typedef" href="namespaceapi_1_1v2_1_1Types.html#aab2d812a6283bb17019f53991e752f94">api::v2::Types::Delete_t</a></div>
+<div class="ttc" id="anamespaceapi_1_1v2_1_1Types_html_aab2d812a6283bb17019f53991e752f94"><div class="ttname"><a href="namespaceapi_1_1v2_1_1Types.html#aab2d812a6283bb17019f53991e752f94">api::v2::Types::Delete_t</a></div><div class="ttdeci">struct Delete_t :public Entity_t&lt; char &gt; { explicit Delete_t(const uint64_t _id) :Entity_t(&#39;\0&#39;, _id) { } ~Delete_t() override=default; } Delete_t</div><div class="ttdef"><b>Definition</b> <a href="entities_2base_2types_8hpp_source.html#l00257">types.hpp:257</a></div></div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="entitycontroller_8cpp_source.html#l00070">70</a> of file <a class="el" href="entitycontroller_8cpp_source.html">entitycontroller.cpp</a>.</p>
 
 </div>
 </div>
@@ -256,28 +237,31 @@ Typedefs</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using Read_t = <a class="el" href="namespaceapi_1_1v2_1_1Types.html#aa1dfc44a5afdc88f1bdc09c5ff2be63d">api::v2::Types::Read_t</a></td>
+          <td class="memname">using Read_t = <a class="el" href="namespaceapi_1_1v2_1_1Types.html#afbdb544a57b12e560c40c2075321b1b5">api::v2::Types::Read_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="entitycontroller_8cpp_source.html#l00054">54</a> of file <a class="el" href="entitycontroller_8cpp_source.html">entitycontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entitycontroller_8cpp_source.html#l00072">72</a> of file <a class="el" href="entitycontroller_8cpp_source.html">entitycontroller.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a42fc487bf6af7e475cd3f8e60fd85f39" name="a42fc487bf6af7e475cd3f8e60fd85f39"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a42fc487bf6af7e475cd3f8e60fd85f39">&#9670;&#160;</a></span>Update_t</h2>
+<a id="a0928d38763f002c6e6d97ff50865851b" name="a0928d38763f002c6e6d97ff50865851b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0928d38763f002c6e6d97ff50865851b">&#9670;&#160;</a></span>Update_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using Update_t = <a class="el" href="namespaceapi_1_1v2_1_1Types.html#a20045c81ace97166027763e5c4c5f9b2">api::v2::Types::Update_t</a></td>
+          <td class="memname">using Update_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="entitycontroller_8cpp_source.html#l00052">52</a> of file <a class="el" href="entitycontroller_8cpp_source.html">entitycontroller.cpp</a>.</p>
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line"><a class="code hl_typedef" href="namespaceapi_1_1v2_1_1Types.html#a263b12321afea5b9a122a6e4c319a992">api::v2::Types::Update_t</a></div>
+<div class="ttc" id="anamespaceapi_1_1v2_1_1Types_html_a263b12321afea5b9a122a6e4c319a992"><div class="ttname"><a href="namespaceapi_1_1v2_1_1Types.html#a263b12321afea5b9a122a6e4c319a992">api::v2::Types::Update_t</a></div><div class="ttdeci">struct Update_t :public Entity_t&lt; jsoncons::json &gt; { Update_t(const jsoncons::json &amp;_data, const uint64_t _id) :Entity_t(_data, _id) { } ~Update_t() override=default; } Update_t</div><div class="ttdef"><b>Definition</b> <a href="entities_2base_2types_8hpp_source.html#l00230">types.hpp:230</a></div></div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="entitycontroller_8cpp_source.html#l00068">68</a> of file <a class="el" href="entitycontroller_8cpp_source.html">entitycontroller.cpp</a>.</p>
 
 </div>
 </div>

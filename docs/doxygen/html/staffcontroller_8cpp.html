@@ -122,7 +122,6 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('staffcontrolle
 <p>Definitions for <a class="el" href="classStaffController.html" title="StaffController">StaffController</a> and its explicit template instantiations.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="staffcontroller_8hpp_source.html">controllers/staffcontroller/staffcontroller.hpp</a>&quot;</code><br />
-<code>#include &quot;drogon/utils/coroutine.h&quot;</code><br />
 <code>#include &lt;drogon/HttpTypes.h&gt;</code><br />
 <code>#include &lt;fmt/format.h&gt;</code><br />
 <code>#include &lt;cstdint&gt;</code><br />
@@ -136,6 +135,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('staffcontrolle
 <code>#include &quot;<a class="el" href="configurator_8hpp_source.html">configurator/configurator.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="controller_8hpp_source.html">controllers/base/controller/controller.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="staffcontrollerBase_8hpp_source.html">controllers/staffcontroller/staffcontrollerBase.hpp</a>&quot;</code><br />
+<code>#include &quot;drogon/utils/coroutine.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="entities_2base_2types_8hpp_source.html">entities/base/types.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="gatekeeper_8hpp_source.html">gatekeeper/gatekeeper.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="store_8hpp_source.html">store/store.hpp</a>&quot;</code><br />
@@ -157,14 +157,14 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:acd40880d4e5e43f97e8ead3d0efe3666" id="r_acd40880d4e5e43f97e8ead3d0efe3666"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#acd40880d4e5e43f97e8ead3d0efe3666">StaffData</a> = <a class="el" href="structapi_1_1v2_1_1Types_1_1StaffData.html">api::v2::Types::StaffData</a></td></tr>
-<tr class="memdesc:acd40880d4e5e43f97e8ead3d0efe3666"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience alias for the invite/staff fields parsed from a request body.  <br /></td></tr>
+<tr class="memitem:a05f271479525f9aae1900f939d81a7f9" id="r_a05f271479525f9aae1900f939d81a7f9"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a05f271479525f9aae1900f939d81a7f9">StaffData</a></td></tr>
+<tr class="memdesc:a05f271479525f9aae1900f939d81a7f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience alias for the invite/staff fields parsed from a request body.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Definitions for <a class="el" href="classStaffController.html" title="StaffController">StaffController</a> and its explicit template instantiations. </p>
-<p>Unlike the other controller adapters, this file contains real logic: request parsing, staff-management authorisation, and either a staff SQL statement or an outbound invite POST to the email-sender daemon.</p>
-<p>In plain words, each function here does the same three-step dance: (1) read the JSON request body, (2) ask <a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3" title="Convenience alias for the authorisation service.">GateKeeper</a> whether the caller is allowed to manage this service's staff, and (3) only if allowed, actually do the work — run SQL to add/remove a member, or POST an invitation to the email daemon. If anything goes wrong, the catch block turns the exception into an HTTP error reply. The macros at the end build a concrete version of the class for each service entity type so the route layer can link to it.</p>
-<p>WHY THIS FILE MATTERS IN THE SERVER: This is the implementation behind the staff HTTP routes: it is where permission is actually enforced before any staff change is made and where invitations are sent. It is called through <a class="el" href="classStaffControllerBase.html" title="StaffControllerBase">StaffControllerBase</a> by the route layer, and it calls into <a class="el" href="classController.html" title="Controller">Controller</a> (for SQL), <a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3" title="GateKeeper">GateKeeper</a> (for permission) and <a class="el" href="classCommunicate.html" title="Communicate">Communicate</a> (for the email POST). Without it, the staff interface would have no behaviour and no one could add, remove or invite staff.</p>
+<p>Unlike the other controller adapters, this file contains real logic: request parsing, staff-management authorisation, and either a staff SQL statement or an outbound invite POST to the email-sender daemon. </p><pre class="fragment">     In plain words, each function here does the same three-step dance:
+</pre><p> (1) read the JSON request body, (2) ask <a class="el" href="controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1" title="Convenience alias for the authorisation service.">GateKeeper</a> whether the caller is allowed to manage this service's staff, and (3) only if allowed, actually do the work — run SQL to add/remove a member, or POST an invitation to the email daemon. If anything goes wrong, the catch block turns the exception into an HTTP error reply. The macros at the end build a concrete version of the class for each service entity type so the route layer can link to it.</p>
+<p>WHY THIS FILE MATTERS IN THE SERVER: This is the implementation behind the staff HTTP routes: it is where permission is actually enforced before any staff change is made and where invitations are sent. It is called through <a class="el" href="classStaffControllerBase.html" title="StaffControllerBase">StaffControllerBase</a> by the route layer, and it calls into <a class="el" href="classController.html" title="Controller">Controller</a> (for SQL), <a class="el" href="controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1" title="GateKeeper">GateKeeper</a> (for permission) and <a class="el" href="classCommunicate.html" title="Communicate">Communicate</a> (for the email POST). Without it, the staff interface would have no behaviour and no one could add, remove or invite staff.</p>
 <p>CONCEPTS TO LEARN (for beginners):</p><ul>
 <li>try/catch (handling errors instead of crashing): <a href="https://en.cppreference.com/w/cpp/language/try_catch">https://en.cppreference.com/w/cpp/language/try_catch</a></li>
 <li>std::optional (a value that may be absent): <a href="https://en.cppreference.com/w/cpp/utility/optional">https://en.cppreference.com/w/cpp/utility/optional</a></li>
@@ -189,21 +189,34 @@ Typedefs</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span> <a class="code hl_function" href="classStaffController.html#a647b206d73ca8ac25b3669834e80e840">StaffController&lt;TYPE&gt;::StaffController</a>();                                                                                    \</div>
-<div class="line"><span class="keyword">template</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classStaffController.html#a454ac6b5d362f6b9be674eac131f4da7">StaffController&lt;TYPE&gt;::AddStaffToEntity</a>(<a class="code hl_define" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a>&amp;&amp; callback, <span class="keyword">const</span> <a class="code hl_struct" href="structRequester.html">Requester</a>&amp;&amp; requester, std::string_view data);      \</div>
-<div class="line"><span class="keyword">template</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classStaffController.html#aefd020493c2178716433285aca94ae50">StaffController&lt;TYPE&gt;::RemoveStaffFromEntity</a>(<a class="code hl_define" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a>&amp;&amp; callback, <span class="keyword">const</span> <a class="code hl_struct" href="structRequester.html">Requester</a>&amp;&amp; requester, std::string_view data); \</div>
-<div class="line"><span class="keyword">template</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classStaffController.html#aca79920a9fdd6da89333627992bf6287">StaffController&lt;TYPE&gt;::InviteStaffToEntity</a>(<a class="code hl_define" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a>&amp;&amp; callback, <span class="keyword">const</span> <a class="code hl_struct" href="structRequester.html">Requester</a>&amp;&amp; requester, std::string_view data); \</div>
-<div class="line"><span class="keyword">template</span> drogon::Task&lt;void&gt; <a class="code hl_function" href="classStaffController.html#a53a028cf301c7a9765b3633a06275546">StaffController&lt;TYPE&gt;::AddStaffToEntityAsync</a>(<a class="code hl_define" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a>&amp;&amp; callback, <span class="keyword">const</span> <a class="code hl_struct" href="structRequester.html">Requester</a>&amp;&amp; requester, std::string_view data); \</div>
-<div class="line"><span class="keyword">template</span> drogon::Task&lt;void&gt; <a class="code hl_function" href="classStaffController.html#ac220308be6bf24122bfe037ea8c75e9c">StaffController&lt;TYPE&gt;::RemoveStaffFromEntityAsync</a>(<a class="code hl_define" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a>&amp;&amp; callback, <span class="keyword">const</span> <a class="code hl_struct" href="structRequester.html">Requester</a>&amp;&amp; requester, std::string_view data); \</div>
-<div class="line"><span class="keyword">template</span> drogon::Task&lt;void&gt; <a class="code hl_function" href="classStaffController.html#a7bfaae0026f9082bb42968cf04b421d5">StaffController&lt;TYPE&gt;::InviteStaffToEntityAsync</a>(<a class="code hl_define" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a>&amp;&amp; callback, <span class="keyword">const</span> <a class="code hl_struct" href="structRequester.html">Requester</a>&amp;&amp; requester, std::string_view data);</div>
-<div class="ttc" id="acallback_8hpp_html_a46d97763fde9c175df21fc9b8f73b1d3"><div class="ttname"><a href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a></div><div class="ttdeci">#define CALLBACK_</div><div class="ttdoc">Completion callback used throughout the request pipeline.</div><div class="ttdef"><b>Definition</b> <a href="callback_8hpp_source.html#l00044">callback.hpp:44</a></div></div>
-<div class="ttc" id="aclassStaffController_html_a454ac6b5d362f6b9be674eac131f4da7"><div class="ttname"><a href="classStaffController.html#a454ac6b5d362f6b9be674eac131f4da7">StaffController::AddStaffToEntity</a></div><div class="ttdeci">void AddStaffToEntity(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data) override</div><div class="ttdoc">Adds a staff member described by data to the service entity identified in that body.</div><div class="ttdef"><b>Definition</b> <a href="staffcontroller_8cpp_source.html#l00092">staffcontroller.cpp:92</a></div></div>
-<div class="ttc" id="aclassStaffController_html_a53a028cf301c7a9765b3633a06275546"><div class="ttname"><a href="classStaffController.html#a53a028cf301c7a9765b3633a06275546">StaffController::AddStaffToEntityAsync</a></div><div class="ttdeci">drogon::Task&lt; void &gt; AddStaffToEntityAsync(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data) override</div><div class="ttdoc">Coroutine form of AddStaffToEntity.</div><div class="ttdef"><b>Definition</b> <a href="staffcontroller_8cpp_source.html#l00227">staffcontroller.cpp:227</a></div></div>
-<div class="ttc" id="aclassStaffController_html_a647b206d73ca8ac25b3669834e80e840"><div class="ttname"><a href="classStaffController.html#a647b206d73ca8ac25b3669834e80e840">StaffController::StaffController</a></div><div class="ttdeci">StaffController()</div><div class="ttdoc">Resolves shared dependencies from the global service locator and snapshots config.</div><div class="ttdef"><b>Definition</b> <a href="staffcontroller_8cpp_source.html#l00071">staffcontroller.cpp:71</a></div></div>
-<div class="ttc" id="aclassStaffController_html_a7bfaae0026f9082bb42968cf04b421d5"><div class="ttname"><a href="classStaffController.html#a7bfaae0026f9082bb42968cf04b421d5">StaffController::InviteStaffToEntityAsync</a></div><div class="ttdeci">drogon::Task&lt; void &gt; InviteStaffToEntityAsync(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data) override</div><div class="ttdoc">Coroutine form of InviteStaffToEntity.</div><div class="ttdef"><b>Definition</b> <a href="staffcontroller_8cpp_source.html#l00299">staffcontroller.cpp:299</a></div></div>
-<div class="ttc" id="aclassStaffController_html_ac220308be6bf24122bfe037ea8c75e9c"><div class="ttname"><a href="classStaffController.html#ac220308be6bf24122bfe037ea8c75e9c">StaffController::RemoveStaffFromEntityAsync</a></div><div class="ttdeci">drogon::Task&lt; void &gt; RemoveStaffFromEntityAsync(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data) override</div><div class="ttdoc">Coroutine form of RemoveStaffFromEntity.</div><div class="ttdef"><b>Definition</b> <a href="staffcontroller_8cpp_source.html#l00265">staffcontroller.cpp:265</a></div></div>
-<div class="ttc" id="aclassStaffController_html_aca79920a9fdd6da89333627992bf6287"><div class="ttname"><a href="classStaffController.html#aca79920a9fdd6da89333627992bf6287">StaffController::InviteStaffToEntity</a></div><div class="ttdeci">void InviteStaffToEntity(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data) override</div><div class="ttdoc">Invites a staff member by handing an invite message to the email-sender daemon.</div><div class="ttdef"><b>Definition</b> <a href="staffcontroller_8cpp_source.html#l00169">staffcontroller.cpp:169</a></div></div>
-<div class="ttc" id="aclassStaffController_html_aefd020493c2178716433285aca94ae50"><div class="ttname"><a href="classStaffController.html#aefd020493c2178716433285aca94ae50">StaffController::RemoveStaffFromEntity</a></div><div class="ttdeci">void RemoveStaffFromEntity(CALLBACK_ &amp;&amp;callback, const Requester &amp;&amp;requester, std::string_view data) override</div><div class="ttdoc">Removes a staff member from a service entity.</div><div class="ttdef"><b>Definition</b> <a href="staffcontroller_8cpp_source.html#l00132">staffcontroller.cpp:132</a></div></div>
+<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span> <a class="code hl_function" href="classStaffController.html#a647b206d73ca8ac25b3669834e80e840">StaffController&lt;TYPE&gt;::StaffController</a>();                           \</div>
+<div class="line"><span class="keyword">template</span> void                                                                \</div>
+<div class="line">StaffController&lt;TYPE&gt;::AddStaffToEntity(<a class="code hl_define" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a>&amp;&amp;       callback,          \</div>
+<div class="line">                                        <span class="keyword">const</span> <a class="code hl_struct" href="structRequester.html">Requester</a>&amp;&amp; requester,         \</div>
+<div class="line">                                        std::string_view  data);             \</div>
+<div class="line"><span class="keyword">template</span> void                                                                \</div>
+<div class="line">StaffController&lt;TYPE&gt;::RemoveStaffFromEntity(<a class="code hl_define" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a>&amp;&amp;       callback,     \</div>
+<div class="line">                                             <span class="keyword">const</span> <a class="code hl_struct" href="structRequester.html">Requester</a>&amp;&amp; requester,    \</div>
+<div class="line">                                             std::string_view  data);        \</div>
+<div class="line"><span class="keyword">template</span> void                                                                \</div>
+<div class="line">StaffController&lt;TYPE&gt;::InviteStaffToEntity(<a class="code hl_define" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a>&amp;&amp;       callback,       \</div>
+<div class="line">                                           <span class="keyword">const</span> <a class="code hl_struct" href="structRequester.html">Requester</a>&amp;&amp; requester,      \</div>
+<div class="line">                                           std::string_view  data);          \</div>
+<div class="line"><span class="keyword">template</span> drogon::Task&lt;void&gt;                                                  \</div>
+<div class="line">StaffController&lt;TYPE&gt;::AddStaffToEntityAsync(<a class="code hl_define" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a>&amp;&amp;       callback,     \</div>
+<div class="line">                                             <span class="keyword">const</span> <a class="code hl_struct" href="structRequester.html">Requester</a>&amp;&amp; requester,    \</div>
+<div class="line">                                             std::string_view  data);        \</div>
+<div class="line"><span class="keyword">template</span> drogon::Task&lt;void&gt; <a class="code hl_class" href="classStaffController.html">StaffController</a>&lt;                                 \</div>
+<div class="line">    TYPE&gt;::RemoveStaffFromEntityAsync(<a class="code hl_define" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a>&amp;&amp;       callback,            \</div>
+<div class="line">                                      <span class="keyword">const</span> <a class="code hl_struct" href="structRequester.html">Requester</a>&amp;&amp; requester,           \</div>
+<div class="line">                                      std::string_view  data);               \</div>
+<div class="line"><span class="keyword">template</span> drogon::Task&lt;void&gt;                                                  \</div>
+<div class="line">StaffController&lt;TYPE&gt;::InviteStaffToEntityAsync(<a class="code hl_define" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a>&amp;&amp;       callback,  \</div>
+<div class="line">                                                <span class="keyword">const</span> <a class="code hl_struct" href="structRequester.html">Requester</a>&amp;&amp; requester, \</div>
+<div class="line">                                                std::string_view  data);</div>
+<div class="ttc" id="acallback_8hpp_html_a46d97763fde9c175df21fc9b8f73b1d3"><div class="ttname"><a href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a></div><div class="ttdeci">#define CALLBACK_</div><div class="ttdoc">Completion callback used throughout the request pipeline.</div><div class="ttdef"><b>Definition</b> <a href="callback_8hpp_source.html#l00047">callback.hpp:47</a></div></div>
+<div class="ttc" id="aclassStaffController_html"><div class="ttname"><a href="classStaffController.html">StaffController</a></div><div class="ttdoc">Implements staff management for one service entity type.</div><div class="ttdef"><b>Definition</b> <a href="staffcontroller_8hpp_source.html#l00104">staffcontroller.hpp:104</a></div></div>
+<div class="ttc" id="aclassStaffController_html_a647b206d73ca8ac25b3669834e80e840"><div class="ttname"><a href="classStaffController.html#a647b206d73ca8ac25b3669834e80e840">StaffController::StaffController</a></div><div class="ttdeci">StaffController()</div><div class="ttdoc">Resolves shared dependencies from the global service locator and snapshots config.</div><div class="ttdef"><b>Definition</b> <a href="staffcontroller_8cpp_source.html#l00116">staffcontroller.cpp:116</a></div></div>
 <div class="ttc" id="astructRequester_html"><div class="ttname"><a href="structRequester.html">Requester</a></div><div class="ttdoc">Value object describing who issued a request.</div></div>
 </div><!-- fragment -->
 <p>Forces compilation of the constructor and all member templates for one service entity type. </p>
@@ -214,27 +227,30 @@ Typedefs</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="staffcontroller_8cpp_source.html#l00361">361</a> of file <a class="el" href="staffcontroller_8cpp_source.html">staffcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="staffcontroller_8cpp_source.html#l00532">532</a> of file <a class="el" href="staffcontroller_8cpp_source.html">staffcontroller.cpp</a>.</p>
 
 </div>
 </div>
 <a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Typedef Documentation</h2>
-<a id="acd40880d4e5e43f97e8ead3d0efe3666" name="acd40880d4e5e43f97e8ead3d0efe3666"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acd40880d4e5e43f97e8ead3d0efe3666">&#9670;&#160;</a></span>StaffData</h2>
+<a id="a05f271479525f9aae1900f939d81a7f9" name="a05f271479525f9aae1900f939d81a7f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05f271479525f9aae1900f939d81a7f9">&#9670;&#160;</a></span>StaffData</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#acd40880d4e5e43f97e8ead3d0efe3666">StaffData</a> = <a class="el" href="structapi_1_1v2_1_1Types_1_1StaffData.html">api::v2::Types::StaffData</a></td>
+          <td class="memname">using <a class="el" href="#a05f271479525f9aae1900f939d81a7f9">StaffData</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line"><a class="code hl_struct" href="structapi_1_1v2_1_1Types_1_1StaffData.html">api::v2::Types::StaffData</a></div>
+<div class="ttc" id="astructapi_1_1v2_1_1Types_1_1StaffData_html"><div class="ttname"><a href="structapi_1_1v2_1_1Types_1_1StaffData.html">api::v2::Types::StaffData</a></div><div class="ttdoc">Parsed staff-invitation data and rendering of the invitation link payload.</div><div class="ttdef"><b>Definition</b> <a href="entities_2base_2types_8hpp_source.html#l00813">types.hpp:813</a></div></div>
+</div><!-- fragment -->
 <p>Convenience alias for the invite/staff fields parsed from a request body. </p>
 <p>Convenience alias for the staff-invitation payload consumed by <a class="el" href="classService.html" title="Entity for service/organisation tables (clinics, pharmacies, laboratories, ...).">Service</a> builders. </p>
 
-<p class="definition">Definition at line <a class="el" href="staffcontroller_8cpp_source.html#l00062">62</a> of file <a class="el" href="staffcontroller_8cpp_source.html">staffcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="staffcontroller_8cpp_source.html#l00101">101</a> of file <a class="el" href="staffcontroller_8cpp_source.html">staffcontroller.cpp</a>.</p>
 
 </div>
 </div>

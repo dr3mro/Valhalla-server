@@ -40,7 +40,7 @@ var hierarchy =
     [ "BasicPermissionCache&lt; ClockT &gt;", "classBasicPermissionCache.html", null ],
     [ "Base::Binder", "structBase_1_1Binder.html", null ],
     [ "BlockingPool&lt; T &gt;", "classBlockingPool.html", null ],
-    [ "BoundedExecutor", "classBoundedExecutor.html", [
+    [ "BoundedExecutor", null, [
       [ "DbExecutor", "classDbExecutor.html", null ],
       [ "PasswordWorker", "classPasswordWorker.html", null ]
     ] ],
@@ -112,7 +112,6 @@ var hierarchy =
     [ "drogon::HttpMiddleware", null, [
       [ "api::v2::MiddleWares::ElapsedTime", "classapi_1_1v2_1_1MiddleWares_1_1ElapsedTime.html", null ]
     ] ],
-    [ "BoundedExecutor::Item", "structBoundedExecutor_1_1Item.html", null ],
     [ "api::v2::JsonHelper", "classapi_1_1v2_1_1JsonHelper.html", null ],
     [ "api::v2::KeeprBase", "classapi_1_1v2_1_1KeeprBase.html", [
       [ "api::v2::SessionManager", "classapi_1_1v2_1_1SessionManager.html", null ],
@@ -143,7 +142,6 @@ var hierarchy =
       [ "StaffController< T >", "classStaffController.html", null ]
     ] ],
     [ "api::v2::Types::StaffData", "structapi_1_1v2_1_1Types_1_1StaffData.html", null ],
-    [ "BoundedExecutor::Stats", "structBoundedExecutor_1_1Stats.html", null ],
     [ "Store", "classStore.html", null ],
     [ "api::v2::Types::SuspendData", "structapi_1_1v2_1_1Types_1_1SuspendData.html", null ],
     [ "Testing", "structTesting.html", null ],
@@ -152,6 +150,5 @@ var hierarchy =
     [ "Update_t", "classUpdate__t.html", null ],
     [ "Validator", "classValidator.html", null ],
     [ "WatchDog", "classWatchDog.html", null ],
-    [ "BoundedExecutor::Worker", "structBoundedExecutor_1_1Worker.html", null ],
     [ "WouldBlock", "structWouldBlock.html", null ]
 ];

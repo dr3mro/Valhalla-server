@@ -177,7 +177,7 @@ Static Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-attribs" class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a7845d0ed5ca20c2a1de1adeadae345ae" id="r_a7845d0ed5ca20c2a1de1adeadae345ae"><td class="memItemLeft">static constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="#a7845d0ed5ca20c2a1de1adeadae345ae">ORGNAME</a> = &quot;clinics&quot;</td></tr>
+<tr class="memitem:a7845d0ed5ca20c2a1de1adeadae345ae" id="r_a7845d0ed5ca20c2a1de1adeadae345ae"><td class="memItemLeft">static constexpr auto&#160;</td><td class="memItemRight"><a class="el" href="#a7845d0ed5ca20c2a1de1adeadae345ae">ORGNAME</a></td></tr>
 <tr class="memdesc:a7845d0ed5ca20c2a1de1adeadae345ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Organisation this case belongs to; used as the permission service name.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-static-methods" class="groupheader"><a id="pro-static-methods" name="pro-static-methods"></a>
@@ -220,10 +220,10 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classBase.html">Base</a> entity for clinic-owned clinical records (patients, visits, reports, ...). </p>
-<p>Extends <a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a> with a fixed organisation name ("clinics") and a family of static permission-query builders. Concrete service entities derive from <a class="el" href="classCase.html" title="Base entity for clinic-owned clinical records (patients, visits, reports, ...).">Case</a> and expose those builders to <a class="el" href="gatekeeper_8cpp.html#a2391c0b165c65deb4ad3ad19ca6dd2aa">PermissionManager</a>, which executes the returned query to decide whether a requester may create/read/update/delete a record. The builders select the owner, admin and staff columns of the owning clinic (joined to the record table where needed). </p><dl class="section note"><dt>Note</dt><dd>Unlike the CRUD builders in <a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a>, these queries interpolate the id and table names into the SQL text via fmt::format and take no pqxx::params; they are called with internal, trusted values and the resulting text is also used as a cache key by <a class="el" href="gatekeeper_8cpp.html#a2391c0b165c65deb4ad3ad19ca6dd2aa">PermissionManager</a>. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a>, <a class="el" href="gatekeeper_8cpp.html#a2391c0b165c65deb4ad3ad19ca6dd2aa">PermissionManager</a> </dd></dl>
+<p>Extends <a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a> with a fixed organisation name ("clinics") and a family of static permission-query builders. Concrete service entities derive from <a class="el" href="classCase.html" title="Base entity for clinic-owned clinical records (patients, visits, reports, ...).">Case</a> and expose those builders to <a class="el" href="gatekeeper_8cpp.html#ae17e951f1dc80a8e4920571ebe9f3c21">PermissionManager</a>, which executes the returned query to decide whether a requester may create/read/update/delete a record. The builders select the owner, admin and staff columns of the owning clinic (joined to the record table where needed). </p><dl class="section note"><dt>Note</dt><dd>Unlike the CRUD builders in <a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a>, these queries interpolate the id and table names into the SQL text via fmt::format and take no pqxx::params; they are called with internal, trusted values and the resulting text is also used as a cache key by <a class="el" href="gatekeeper_8cpp.html#ae17e951f1dc80a8e4920571ebe9f3c21">PermissionManager</a>. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a>, <a class="el" href="gatekeeper_8cpp.html#ae17e951f1dc80a8e4920571ebe9f3c21">PermissionManager</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="case_8hpp_source.html#l00054">54</a> of file <a class="el" href="case_8hpp_source.html">case.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="case_8hpp_source.html#l00068">68</a> of file <a class="el" href="case_8hpp_source.html">case.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9994142d5b90bc1a5dbca54fc2526911" name="a9994142d5b90bc1a5dbca54fc2526911"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9994142d5b90bc1a5dbca54fc2526911">&#9670;&#160;</a></span>Case() <span class="overload">[1/3]</span></h2>
@@ -252,7 +252,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="#a9994142d5b90bc1a5dbca54fc2526911">Case()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="#a7b23df81d29fee57dd61a99a86b8261c">Case()</a>, <a class="el" href="#a9994142d5b90bc1a5dbca54fc2526911">Case()</a>, <a class="el" href="health_8hpp_source.html#l00070">Health::Health()</a>, <a class="el" href="#aa384eaca0046ba0bba80dfdcfe199711">operator=()</a>, <a class="el" href="#aa0c0269d0a4f48681b880b9621004bcf">operator=()</a>, <a class="el" href="paidservices_8hpp_source.html#l00071">PaidServices::PaidServices()</a>, <a class="el" href="patient_8hpp_source.html#l00088">Patient::Patient()</a>, <a class="el" href="patientdrugs_8hpp_source.html#l00071">PatientDrugs::PatientDrugs()</a>, <a class="el" href="prescriptions_8hpp_source.html#l00071">Prescriptions::Prescriptions()</a>, <a class="el" href="reports_8hpp_source.html#l00071">Reports::Reports()</a>, <a class="el" href="requests_8hpp_source.html#l00071">Requests::Requests()</a>, <a class="el" href="visitdrugs_8hpp_source.html#l00074">VisitDrugs::VisitDrugs()</a>, and <a class="el" href="visits_8hpp_source.html#l00071">Visits::Visits()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#a7b23df81d29fee57dd61a99a86b8261c">Case()</a>, <a class="el" href="#a9994142d5b90bc1a5dbca54fc2526911">Case()</a>, <a class="el" href="health_8hpp_source.html#l00103">Health::Health()</a>, <a class="el" href="#aa384eaca0046ba0bba80dfdcfe199711">operator=()</a>, <a class="el" href="#aa0c0269d0a4f48681b880b9621004bcf">operator=()</a>, <a class="el" href="paidservices_8hpp_source.html#l00104">PaidServices::PaidServices()</a>, <a class="el" href="patient_8hpp_source.html#l00130">Patient::Patient()</a>, <a class="el" href="patientdrugs_8hpp_source.html#l00101">PatientDrugs::PatientDrugs()</a>, <a class="el" href="prescriptions_8hpp_source.html#l00105">Prescriptions::Prescriptions()</a>, <a class="el" href="reports_8hpp_source.html#l00103">Reports::Reports()</a>, <a class="el" href="requests_8hpp_source.html#l00100">Requests::Requests()</a>, <a class="el" href="visitdrugs_8hpp_source.html#l00109">VisitDrugs::VisitDrugs()</a>, and <a class="el" href="visits_8hpp_source.html#l00104">Visits::Visits()</a>.</p>
 
 </div>
 </div>
@@ -327,9 +327,9 @@ template&lt;typename Data&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="case_8hpp_source.html#l00077">77</a> of file <a class="el" href="case_8hpp_source.html">case.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="case_8hpp_source.html#l00094">94</a> of file <a class="el" href="case_8hpp_source.html">case.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00393">Entity::data</a>, <a class="el" href="classEntity.html#a936dfd4b5db17a339819ae5800c33a93">Entity::Entity()</a>, and <a class="el" href="entity_8hpp_source.html#l00381">Entity::tablename</a>.</p>
+<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00596">Entity::data</a>, <a class="el" href="classEntity.html#a936dfd4b5db17a339819ae5800c33a93">Entity::Entity()</a>, and <a class="el" href="entity_8hpp_source.html#l00573">Entity::tablename</a>.</p>
 
 </div>
 </div>
@@ -386,9 +386,9 @@ template&lt;typename Data&gt; </div>
 
 <p>Returns the owning organisation name ("clinics"). </p>
 
-<p class="definition">Definition at line <a class="el" href="case_8hpp_source.html#l00084">84</a> of file <a class="el" href="case_8hpp_source.html">case.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="case_8hpp_source.html#l00103">103</a> of file <a class="el" href="case_8hpp_source.html">case.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="case_8hpp_source.html#l00060">ORGNAME</a>.</p>
+<p class="reference">References <a class="el" href="case_8hpp_source.html#l00074">ORGNAME</a>.</p>
 
 </div>
 </div>
@@ -429,11 +429,11 @@ template&lt;typename Data&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>SELECT statement (always produced by this implementation). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="case_8hpp_source.html#l00119">119</a> of file <a class="el" href="case_8hpp_source.html">case.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="case_8hpp_source.html#l00154">154</a> of file <a class="el" href="case_8hpp_source.html">case.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="case_8hpp_source.html#l00119">getPermissionsQueryForCreateImpl()</a>, and <a class="el" href="entity_8hpp_source.html#l00381">Entity::tablename</a>.</p>
+<p class="reference">References <a class="el" href="case_8hpp_source.html#l00154">getPermissionsQueryForCreateImpl()</a>, and <a class="el" href="entity_8hpp_source.html#l00573">Entity::tablename</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="health_8hpp_source.html#l00102">Health::getPermissionsQueryForCreate()</a>, <a class="el" href="paidservices_8hpp_source.html#l00102">PaidServices::getPermissionsQueryForCreate()</a>, <a class="el" href="patientdrugs_8hpp_source.html#l00103">PatientDrugs::getPermissionsQueryForCreate()</a>, <a class="el" href="prescriptions_8hpp_source.html#l00102">Prescriptions::getPermissionsQueryForCreate()</a>, <a class="el" href="reports_8hpp_source.html#l00103">Reports::getPermissionsQueryForCreate()</a>, <a class="el" href="requests_8hpp_source.html#l00102">Requests::getPermissionsQueryForCreate()</a>, <a class="el" href="visitdrugs_8hpp_source.html#l00105">VisitDrugs::getPermissionsQueryForCreate()</a>, <a class="el" href="visits_8hpp_source.html#l00102">Visits::getPermissionsQueryForCreate()</a>, and <a class="el" href="case_8hpp_source.html#l00119">getPermissionsQueryForCreateImpl()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="health_8hpp_source.html#l00149">Health::getPermissionsQueryForCreate()</a>, <a class="el" href="paidservices_8hpp_source.html#l00150">PaidServices::getPermissionsQueryForCreate()</a>, <a class="el" href="patientdrugs_8hpp_source.html#l00147">PatientDrugs::getPermissionsQueryForCreate()</a>, <a class="el" href="prescriptions_8hpp_source.html#l00151">Prescriptions::getPermissionsQueryForCreate()</a>, <a class="el" href="reports_8hpp_source.html#l00149">Reports::getPermissionsQueryForCreate()</a>, <a class="el" href="requests_8hpp_source.html#l00146">Requests::getPermissionsQueryForCreate()</a>, <a class="el" href="visitdrugs_8hpp_source.html#l00155">VisitDrugs::getPermissionsQueryForCreate()</a>, <a class="el" href="visits_8hpp_source.html#l00150">Visits::getPermissionsQueryForCreate()</a>, and <a class="el" href="case_8hpp_source.html#l00154">getPermissionsQueryForCreateImpl()</a>.</p>
 
 </div>
 </div>
@@ -469,11 +469,11 @@ template&lt;typename Data&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>SELECT statement, or std::nullopt if it cannot be built (currently it always returns the formatted text). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="case_8hpp_source.html#l00099">99</a> of file <a class="el" href="case_8hpp_source.html">case.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="case_8hpp_source.html#l00125">125</a> of file <a class="el" href="case_8hpp_source.html">case.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="case_8hpp_source.html#l00060">ORGNAME</a>.</p>
+<p class="reference">References <a class="el" href="case_8hpp_source.html#l00074">ORGNAME</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="patient_8hpp_source.html#l00137">Patient::getPermissionsQueryForCreate()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="patient_8hpp_source.html#l00207">Patient::getPermissionsQueryForCreate()</a>.</p>
 
 </div>
 </div>
@@ -514,11 +514,11 @@ template&lt;typename Data&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>SELECT statement identifying the owning clinic's owner/admin/staff. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="case_8hpp_source.html#l00172">172</a> of file <a class="el" href="case_8hpp_source.html">case.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="case_8hpp_source.html#l00229">229</a> of file <a class="el" href="case_8hpp_source.html">case.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="case_8hpp_source.html#l00060">ORGNAME</a>, and <a class="el" href="entity_8hpp_source.html#l00381">Entity::tablename</a>.</p>
+<p class="reference">References <a class="el" href="case_8hpp_source.html#l00205">getPermissionsQueryForUpdateImpl()</a>, <a class="el" href="case_8hpp_source.html#l00074">ORGNAME</a>, and <a class="el" href="entity_8hpp_source.html#l00573">Entity::tablename</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="health_8hpp_source.html#l00135">Health::getPermissionsQueryForDelete()</a>, <a class="el" href="paidservices_8hpp_source.html#l00135">PaidServices::getPermissionsQueryForDelete()</a>, <a class="el" href="patient_8hpp_source.html#l00173">Patient::getPermissionsQueryForDelete()</a>, <a class="el" href="patientdrugs_8hpp_source.html#l00137">PatientDrugs::getPermissionsQueryForDelete()</a>, <a class="el" href="prescriptions_8hpp_source.html#l00135">Prescriptions::getPermissionsQueryForDelete()</a>, <a class="el" href="reports_8hpp_source.html#l00137">Reports::getPermissionsQueryForDelete()</a>, <a class="el" href="requests_8hpp_source.html#l00135">Requests::getPermissionsQueryForDelete()</a>, <a class="el" href="visitdrugs_8hpp_source.html#l00139">VisitDrugs::getPermissionsQueryForDelete()</a>, and <a class="el" href="visits_8hpp_source.html#l00136">Visits::getPermissionsQueryForDelete()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="health_8hpp_source.html#l00210">Health::getPermissionsQueryForDelete()</a>, <a class="el" href="paidservices_8hpp_source.html#l00213">PaidServices::getPermissionsQueryForDelete()</a>, <a class="el" href="patient_8hpp_source.html#l00265">Patient::getPermissionsQueryForDelete()</a>, <a class="el" href="patientdrugs_8hpp_source.html#l00209">PatientDrugs::getPermissionsQueryForDelete()</a>, <a class="el" href="prescriptions_8hpp_source.html#l00214">Prescriptions::getPermissionsQueryForDelete()</a>, <a class="el" href="reports_8hpp_source.html#l00211">Reports::getPermissionsQueryForDelete()</a>, <a class="el" href="requests_8hpp_source.html#l00209">Requests::getPermissionsQueryForDelete()</a>, <a class="el" href="visitdrugs_8hpp_source.html#l00219">VisitDrugs::getPermissionsQueryForDelete()</a>, and <a class="el" href="visits_8hpp_source.html#l00212">Visits::getPermissionsQueryForDelete()</a>.</p>
 
 </div>
 </div>
@@ -559,11 +559,11 @@ template&lt;typename Data&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>SELECT statement identifying the owning clinic's owner/admin/staff. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="case_8hpp_source.html#l00138">138</a> of file <a class="el" href="case_8hpp_source.html">case.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="case_8hpp_source.html#l00181">181</a> of file <a class="el" href="case_8hpp_source.html">case.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="case_8hpp_source.html#l00060">ORGNAME</a>, and <a class="el" href="entity_8hpp_source.html#l00381">Entity::tablename</a>.</p>
+<p class="reference">References <a class="el" href="case_8hpp_source.html#l00074">ORGNAME</a>, and <a class="el" href="entity_8hpp_source.html#l00573">Entity::tablename</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="health_8hpp_source.html#l00123">Health::getPermissionsQueryForRead()</a>, <a class="el" href="paidservices_8hpp_source.html#l00123">PaidServices::getPermissionsQueryForRead()</a>, <a class="el" href="patient_8hpp_source.html#l00159">Patient::getPermissionsQueryForRead()</a>, <a class="el" href="patientdrugs_8hpp_source.html#l00125">PatientDrugs::getPermissionsQueryForRead()</a>, <a class="el" href="prescriptions_8hpp_source.html#l00123">Prescriptions::getPermissionsQueryForRead()</a>, <a class="el" href="reports_8hpp_source.html#l00125">Reports::getPermissionsQueryForRead()</a>, <a class="el" href="requests_8hpp_source.html#l00123">Requests::getPermissionsQueryForRead()</a>, <a class="el" href="visitdrugs_8hpp_source.html#l00127">VisitDrugs::getPermissionsQueryForRead()</a>, <a class="el" href="visits_8hpp_source.html#l00124">Visits::getPermissionsQueryForRead()</a>, and <a class="el" href="case_8hpp_source.html#l00155">getPermissionsQueryForUpdateImpl()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="health_8hpp_source.html#l00188">Health::getPermissionsQueryForRead()</a>, <a class="el" href="paidservices_8hpp_source.html#l00191">PaidServices::getPermissionsQueryForRead()</a>, <a class="el" href="patient_8hpp_source.html#l00241">Patient::getPermissionsQueryForRead()</a>, <a class="el" href="patientdrugs_8hpp_source.html#l00187">PatientDrugs::getPermissionsQueryForRead()</a>, <a class="el" href="prescriptions_8hpp_source.html#l00192">Prescriptions::getPermissionsQueryForRead()</a>, <a class="el" href="reports_8hpp_source.html#l00189">Reports::getPermissionsQueryForRead()</a>, <a class="el" href="requests_8hpp_source.html#l00187">Requests::getPermissionsQueryForRead()</a>, <a class="el" href="visitdrugs_8hpp_source.html#l00197">VisitDrugs::getPermissionsQueryForRead()</a>, and <a class="el" href="visits_8hpp_source.html#l00190">Visits::getPermissionsQueryForRead()</a>.</p>
 
 </div>
 </div>
@@ -604,11 +604,11 @@ template&lt;typename Data&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>SELECT statement identifying the owning clinic's owner/admin/staff. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="case_8hpp_source.html#l00155">155</a> of file <a class="el" href="case_8hpp_source.html">case.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="case_8hpp_source.html#l00205">205</a> of file <a class="el" href="case_8hpp_source.html">case.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="case_8hpp_source.html#l00138">getPermissionsQueryForReadImp()</a>, and <a class="el" href="entity_8hpp_source.html#l00381">Entity::tablename</a>.</p>
+<p class="reference">References <a class="el" href="case_8hpp_source.html#l00074">ORGNAME</a>, and <a class="el" href="entity_8hpp_source.html#l00573">Entity::tablename</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="health_8hpp_source.html#l00129">Health::getPermissionsQueryForUpdate()</a>, <a class="el" href="paidservices_8hpp_source.html#l00129">PaidServices::getPermissionsQueryForUpdate()</a>, <a class="el" href="patient_8hpp_source.html#l00166">Patient::getPermissionsQueryForUpdate()</a>, <a class="el" href="patientdrugs_8hpp_source.html#l00131">PatientDrugs::getPermissionsQueryForUpdate()</a>, <a class="el" href="prescriptions_8hpp_source.html#l00129">Prescriptions::getPermissionsQueryForUpdate()</a>, <a class="el" href="reports_8hpp_source.html#l00131">Reports::getPermissionsQueryForUpdate()</a>, <a class="el" href="requests_8hpp_source.html#l00129">Requests::getPermissionsQueryForUpdate()</a>, <a class="el" href="visitdrugs_8hpp_source.html#l00133">VisitDrugs::getPermissionsQueryForUpdate()</a>, and <a class="el" href="visits_8hpp_source.html#l00130">Visits::getPermissionsQueryForUpdate()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="case_8hpp_source.html#l00229">getPermissionsQueryForDeleteImp()</a>, <a class="el" href="health_8hpp_source.html#l00199">Health::getPermissionsQueryForUpdate()</a>, <a class="el" href="paidservices_8hpp_source.html#l00202">PaidServices::getPermissionsQueryForUpdate()</a>, <a class="el" href="patient_8hpp_source.html#l00253">Patient::getPermissionsQueryForUpdate()</a>, <a class="el" href="patientdrugs_8hpp_source.html#l00198">PatientDrugs::getPermissionsQueryForUpdate()</a>, <a class="el" href="prescriptions_8hpp_source.html#l00203">Prescriptions::getPermissionsQueryForUpdate()</a>, <a class="el" href="reports_8hpp_source.html#l00200">Reports::getPermissionsQueryForUpdate()</a>, <a class="el" href="requests_8hpp_source.html#l00198">Requests::getPermissionsQueryForUpdate()</a>, <a class="el" href="visitdrugs_8hpp_source.html#l00208">VisitDrugs::getPermissionsQueryForUpdate()</a>, and <a class="el" href="visits_8hpp_source.html#l00201">Visits::getPermissionsQueryForUpdate()</a>.</p>
 
 </div>
 </div>
@@ -677,7 +677,7 @@ template&lt;typename Data&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto Case::ORGNAME = &quot;clinics&quot;</td>
+          <td class="memname">auto Case::ORGNAME</td>
         </tr>
       </table>
   </td>
@@ -686,12 +686,14 @@ template&lt;typename Data&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<b>Initial value:</b><div class="fragment"><div class="line">                          =</div>
+<div class="line"><span class="stringliteral">&quot;clinics&quot;</span></div>
+</div><!-- fragment -->
 <p>Organisation this case belongs to; used as the permission service name. </p>
 
-<p class="definition">Definition at line <a class="el" href="case_8hpp_source.html#l00060">60</a> of file <a class="el" href="case_8hpp_source.html">case.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="case_8hpp_source.html#l00074">74</a> of file <a class="el" href="case_8hpp_source.html">case.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="case_8hpp_source.html#l00084">getOrgName()</a>, <a class="el" href="case_8hpp_source.html#l00099">getPermissionsQueryForCreatePatientImpl()</a>, <a class="el" href="case_8hpp_source.html#l00172">getPermissionsQueryForDeleteImp()</a>, and <a class="el" href="case_8hpp_source.html#l00138">getPermissionsQueryForReadImp()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="case_8hpp_source.html#l00103">getOrgName()</a>, <a class="el" href="case_8hpp_source.html#l00125">getPermissionsQueryForCreatePatientImpl()</a>, <a class="el" href="case_8hpp_source.html#l00229">getPermissionsQueryForDeleteImp()</a>, <a class="el" href="case_8hpp_source.html#l00181">getPermissionsQueryForReadImp()</a>, and <a class="el" href="case_8hpp_source.html#l00205">getPermissionsQueryForUpdateImpl()</a>.</p>
 
 </div>
 </div>

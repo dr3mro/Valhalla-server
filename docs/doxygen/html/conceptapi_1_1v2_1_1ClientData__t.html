@@ -124,15 +124,20 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('conceptapi_1_1
 
 <p><code>#include &lt;<a class="el" href="client_8hpp_source.html">client.hpp</a>&gt;</code></p>
 <h2 id="header-conceptdef" class="groupheader">Concept definition</h2>
-<div class="fragment"><div class="line">        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line">        <span class="keyword">concept </span><a class="code hl_concept" href="conceptapi_1_1v2_1_1ClientData__t.html">ClientData_t</a> = std::is_same&lt;T, Types::CreateClient_t&gt;::value || std::is_same&lt;T, Types::UpdateClient_t&gt;::value ||</div>
-<div class="line">                               std::is_same&lt;T, Types::SuspendData&gt;::value || std::is_same&lt;T, Types::Data_t&gt;::value</div>
-<div class="ttc" id="aconceptapi_1_1v2_1_1ClientData__t_html"><div class="ttname"><a href="conceptapi_1_1v2_1_1ClientData__t.html">api::v2::ClientData_t</a></div><div class="ttdoc">Constrains Client helpers to the payload types that carry client data or a client id.</div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00066">client.hpp:66</a></div></div>
+<div class="fragment"><div class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line">    <span class="keyword">concept </span><a class="code hl_concept" href="conceptapi_1_1v2_1_1ClientData__t.html">ClientData_t</a> =</div>
+<div class="line">        std::is_same&lt;T, Types::CreateClient_t&gt;::value ||</div>
+<div class="line">        std::is_same&lt;T, Types::UpdateClient_t&gt;::value ||</div>
+<div class="line">        std::is_same&lt;T, Types::SuspendData&gt;::value ||</div>
+<div class="line">        std::is_same&lt;T,</div>
+<div class="line">                     <a class="code hl_typedef" href="namespaceapi_1_1v2_1_1Types.html#a9f750896e315eb50c898d065fbed2b44">Types::Data_t</a>&gt;::value</div>
+<div class="ttc" id="aconceptapi_1_1v2_1_1ClientData__t_html"><div class="ttname"><a href="conceptapi_1_1v2_1_1ClientData__t.html">api::v2::ClientData_t</a></div><div class="ttdoc">Constrains Client helpers to the payload types that carry client data or a client id.</div><div class="ttdef"><b>Definition</b> <a href="client_8hpp_source.html#l00082">client.hpp:82</a></div></div>
+<div class="ttc" id="anamespaceapi_1_1v2_1_1Types_html_a9f750896e315eb50c898d065fbed2b44"><div class="ttname"><a href="namespaceapi_1_1v2_1_1Types.html#a9f750896e315eb50c898d065fbed2b44">api::v2::Types::Data_t</a></div><div class="ttdeci">struct Data_t :public Entity_t&lt; char &gt; { explicit Data_t(const uint64_t _id) :Entity_t(&#39;\0&#39;, _id) { } ~Data_t() override=default; } Data_t</div><div class="ttdef"><b>Definition</b> <a href="entities_2base_2types_8hpp_source.html#l00284">types.hpp:284</a></div></div>
 </div><!-- fragment --><a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Constrains <a class="el" href="controller_8hpp.html#af928d8b9ced02f7387b9b56ed3877b11" title="Convenience alias for the base Client class.">Client</a> helpers to the payload types that carry client data or a client id. </p>
-<p>Satisfied by <a class="el" href="clientcontroller_8cpp.html#a664c209b78ddc22b11631338f3759859">CreateClient_t</a> and <a class="el" href="clientcontroller_8cpp.html#a51d1a4a57120d8a5220851ce8416f926">UpdateClient_t</a> (which expose a validated data_set), and by <a class="el" href="clientcontroller_8cpp.html#aafc15234bd165371dccecc0545e68ddf">SuspendData</a> and <a class="el" href="classData__t.html" title="Entity_t carrying only a client id, used for id-only lookups (for example get-services).">Data_t</a> (which carry an id only). </p>
+<p>Satisfied by <a class="el" href="clientcontroller_8cpp.html#af3be12d85abf03f08c24f20bc2e06c14">CreateClient_t</a> and <a class="el" href="clientcontroller_8cpp.html#a183872c176505dd851df420a00926d74">UpdateClient_t</a> (which expose a validated data_set), and by <a class="el" href="clientcontroller_8cpp.html#a6077dd2da3713e139a37b02ece1f6aaf">SuspendData</a> and <a class="el" href="classData__t.html" title="Entity_t carrying only a client id, used for id-only lookups (for example get-services).">Data_t</a> (which carry an id only). </p>
 
-<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00066">66</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00082">82</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

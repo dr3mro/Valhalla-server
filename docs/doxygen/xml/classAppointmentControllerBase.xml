@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="72" column="14"/>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="96" column="12"/>
         <referencedby refid="classAppointmentControllerBase_1af75003bf9e6874f6c577c5c1c05d5cf7">AppointmentControllerBase</referencedby>
         <referencedby refid="classAppointmentControllerBase_1a6adc76394966241dc855c8dfe4818271">AppointmentControllerBase</referencedby>
         <referencedby refid="classAppointmentControllerBase_1a69bb5308a8526f51cbe6ca2d3143d374">operator=</referencedby>
@@ -40,7 +40,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="74" column="5"/>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="100" column="3"/>
         <references refid="classAppointmentControllerBase_1a2f3fcbc7122031d97061db180c747fac">AppointmentControllerBase</references>
       </memberdef>
       <memberdef kind="function" id="classAppointmentControllerBase_1a6adc76394966241dc855c8dfe4818271" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="76" column="5"/>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="103" column="3"/>
         <references refid="classAppointmentControllerBase_1a2f3fcbc7122031d97061db180c747fac">AppointmentControllerBase</references>
       </memberdef>
       <memberdef kind="function" id="classAppointmentControllerBase_1a69bb5308a8526f51cbe6ca2d3143d374" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -78,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="78" column="31"/>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="106" column="29"/>
         <references refid="classAppointmentControllerBase_1a2f3fcbc7122031d97061db180c747fac">AppointmentControllerBase</references>
       </memberdef>
       <memberdef kind="function" id="classAppointmentControllerBase_1a2810286950caafd54a805ee51b8174c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -97,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="80" column="31"/>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="109" column="29"/>
         <references refid="classAppointmentControllerBase_1a2f3fcbc7122031d97061db180c747fac">AppointmentControllerBase</references>
       </memberdef>
       <memberdef kind="function" id="classAppointmentControllerBase_1aac2dc02319f959dd2e7427de1db0ac63" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -113,7 +113,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="82" column="13"/>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="113" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classAppointmentControllerBase_1ab647aad281f3e7b378ce3a80f6f2d812" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -126,7 +126,7 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref> &amp;&amp;</type>
+          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a8aac836dbb3d1b4bc56b33de7ad245a4" kindref="member">Requester</ref> &amp;&amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -166,9 +166,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="91" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Appointments_1a75506c18ee76ac6bf38b0c54cbbb53db" compoundref="appointments_8hpp" startline="83" endline="133">api::v2::Appointments::Create</referencedby>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="127" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1a75506c18ee76ac6bf38b0c54cbbb53db" compoundref="appointments_8hpp" startline="112" endline="215">api::v2::Appointments::Create</referencedby>
       </memberdef>
       <memberdef kind="function" id="classAppointmentControllerBase_1aa38e2ee7e8e67fc65efa2ae579b8b292" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -181,7 +181,7 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref> &amp;&amp;</type>
+          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a8aac836dbb3d1b4bc56b33de7ad245a4" kindref="member">Requester</ref> &amp;&amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -221,8 +221,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="98" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="142" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classAppointmentControllerBase_1ac74bf3e7c5e5ce53b463fc56ce84c1f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -235,7 +235,7 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref> &amp;&amp;</type>
+          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a8aac836dbb3d1b4bc56b33de7ad245a4" kindref="member">Requester</ref> &amp;&amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -275,9 +275,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="105" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Appointments_1af9fa78f8cd4bbf7f4b7f5073055effb1" compoundref="appointments_8hpp" startline="143" endline="193">api::v2::Appointments::Read</referencedby>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="157" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1af9fa78f8cd4bbf7f4b7f5073055effb1" compoundref="appointments_8hpp" startline="228" endline="315">api::v2::Appointments::Read</referencedby>
       </memberdef>
       <memberdef kind="function" id="classAppointmentControllerBase_1acd60a9aa9a593fa82c7407008ba6cc3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -290,7 +290,7 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref> &amp;&amp;</type>
+          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a8aac836dbb3d1b4bc56b33de7ad245a4" kindref="member">Requester</ref> &amp;&amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -330,8 +330,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="112" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="171" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classAppointmentControllerBase_1a8a91b4e32b1afb820d5b1b7af83469a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -344,7 +344,7 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref> &amp;&amp;</type>
+          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a8aac836dbb3d1b4bc56b33de7ad245a4" kindref="member">Requester</ref> &amp;&amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -396,9 +396,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="120" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Appointments_1ab7c172b45fbfbc8580bf0a69505e111b" compoundref="appointments_8hpp" startline="205" endline="260">api::v2::Appointments::Update</referencedby>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="186" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1ab7c172b45fbfbc8580bf0a69505e111b" compoundref="appointments_8hpp" startline="331" endline="423">api::v2::Appointments::Update</referencedby>
       </memberdef>
       <memberdef kind="function" id="classAppointmentControllerBase_1a4b35caba8ea117928f1f0a13855d5e94" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -411,7 +411,7 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref> &amp;&amp;</type>
+          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a8aac836dbb3d1b4bc56b33de7ad245a4" kindref="member">Requester</ref> &amp;&amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -463,8 +463,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="128" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="203" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classAppointmentControllerBase_1a1677d9a8337072581bc9e2e658b5c9ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -477,7 +477,7 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref> &amp;&amp;</type>
+          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a8aac836dbb3d1b4bc56b33de7ad245a4" kindref="member">Requester</ref> &amp;&amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -517,9 +517,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="135" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Appointments_1a515ae728e10e637a657f1c912ccf9e7a" compoundref="appointments_8hpp" startline="270" endline="325">api::v2::Appointments::Delete</referencedby>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="217" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1a515ae728e10e637a657f1c912ccf9e7a" compoundref="appointments_8hpp" startline="435" endline="525">api::v2::Appointments::Delete</referencedby>
       </memberdef>
       <memberdef kind="function" id="classAppointmentControllerBase_1a1d3056a1551d3ab67042f274db3c86a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -532,7 +532,7 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref> &amp;&amp;</type>
+          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a8aac836dbb3d1b4bc56b33de7ad245a4" kindref="member">Requester</ref> &amp;&amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -572,8 +572,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="142" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="231" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classAppointmentControllerBase_1aa79a4ad4a10da6c9d6b791df603fc907" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -586,7 +586,7 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a94dc636f3cc68d7c4ea35ba32b0dd8d1" kindref="member">Requester</ref> &amp;&amp;</type>
+          <type>const <ref refid="appointmentcontrollerbase_8hpp_1a8aac836dbb3d1b4bc56b33de7ad245a4" kindref="member">Requester</ref> &amp;&amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -626,28 +626,29 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="151" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Appointments_1af86bad11dd97edc907a87ddd2cefa8dd" compoundref="appointments_8hpp" startline="334" endline="337">api::v2::Appointments::Search</referencedby>
+        <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="246" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1af86bad11dd97edc907a87ddd2cefa8dd" compoundref="appointments_8hpp" startline="539" endline="550">api::v2::Appointments::Search</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
 <para>Type-erased interface for appointment-entity CRUD+S operations. </para>
     </briefdescription>
     <detaileddescription>
-<para>Declares a synchronous callback form and a coroutine (<computeroutput>drogon::Task&lt;void&gt;</computeroutput>) form of every operation. The appointments route registry reaches concrete controllers through this base via a <computeroutput>std::variant</computeroutput>, so its virtual functions are the dispatch point used by a single route handler for all appointment entity types.</para>
-<para>In plain words: &quot;synchronous&quot; means the answer arrives through a callback function, while the coroutine (<computeroutput>drogon::Task&lt;void&gt;</computeroutput>) versions can be paused with co_await so the server can do other work meanwhile. &quot;Virtual functions&quot; mean a call made through this base runs the real object&apos;s version. A <computeroutput>std::variant</computeroutput> is a box that can hold one of several controller types.</para>
-<para>Invocation contract shared by every method:<itemizedlist>
-<listitem><para><computeroutput>callback</computeroutput> is <computeroutput>std::function&lt;void(int, const std::string&amp;)&gt;</computeroutput>, it is moved through the call chain and, by contract, invoked once on each completion path, including failures. Its first argument is an <ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892f" kindref="member">api::v2::Http::Status</ref> code, its second a response body.</para>
-</listitem><listitem><para><computeroutput>requester</computeroutput> is the authenticated caller identity consulted for authorisation.</para>
+<para>Declares a synchronous callback form and a coroutine (<computeroutput>drogon::Task&lt;void&gt;</computeroutput>) form of every operation. The appointments route registry reaches concrete controllers through this base via a <computeroutput>std::variant</computeroutput>, so its virtual functions are the dispatch point used by a single route handler for all appointment entity types. <verbatim>     In plain words: &quot;synchronous&quot; means the answer arrives through a
+</verbatim> callback function, while the coroutine (<computeroutput>drogon::Task&lt;void&gt;</computeroutput>) versions can be paused with co_await so the server can do other work meanwhile. &quot;Virtual
+functions&quot; mean a call made through this base runs the real object&apos;s version. A <computeroutput>std::variant</computeroutput> is a box that can hold one of several controller types. <verbatim>     Invocation contract shared by every method:
+     - `callback` is `std::function&lt;void(int, const std::string&amp;)&gt;`, it
+</verbatim> is moved through the call chain and, by contract, invoked once on each completion path, including failures. Its first argument is an <ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892f" kindref="member">api::v2::Http::Status</ref> code, its second a response body.<itemizedlist>
+<listitem><para><computeroutput>requester</computeroutput> is the authenticated caller identity consulted for authorisation.</para>
 </listitem><listitem><para><computeroutput>data</computeroutput> is a non-owning view of the raw JSON request body, valid only for the call.</para>
-</listitem><listitem><para><computeroutput>_id</computeroutput> is the optional target id; absence is handled by the concrete implementation.</para>
-</listitem></itemizedlist>
-</para>
-<para>The <computeroutput>*Async</computeroutput> methods must be co_awaited; the HTTP layer wraps them in <computeroutput>drogon::async_run</computeroutput> and turns the callback result into a reply. <simplesect kind="note"><para>The interface itself is stateless; behaviour lives in <ref refid="classAppointmentController" kindref="compound">AppointmentController</ref>. </para>
+</listitem><listitem><para><computeroutput>_id</computeroutput> is the optional target id; absence is handled by the concrete implementation. <verbatim>     The `*Async` methods must be co_awaited; the HTTP layer wraps them
+</verbatim> in <computeroutput>drogon::async_run</computeroutput> and turns the callback result into a reply. <simplesect kind="note"><para>The interface itself is stateless; behaviour lives in <ref refid="classAppointmentController" kindref="compound">AppointmentController</ref>. </para>
 </simplesect>
 <simplesect kind="see"><para><ref refid="classAppointmentController" kindref="compound">AppointmentController</ref>, <ref refid="classEntityControllerBase" kindref="compound">EntityControllerBase</ref>, <ref refid="classController" kindref="compound">Controller</ref> </para>
 </simplesect>
+</para>
+</listitem></itemizedlist>
 </para>
     </detaileddescription>
     <inheritancegraph>
@@ -662,7 +663,7 @@
         <link refid="classAppointmentControllerBase"/>
       </node>
     </inheritancegraph>
-    <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="68" column="1" bodyfile="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" bodystart="69" bodyend="152"/>
+    <location file="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" line="93" column="1" bodyfile="src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp" bodystart="93" bodyend="251"/>
     <listofallmembers>
       <member refid="classAppointmentControllerBase_1a2f3fcbc7122031d97061db180c747fac" prot="public" virt="non-virtual"><scope>AppointmentControllerBase</scope><name>AppointmentControllerBase</name></member>
       <member refid="classAppointmentControllerBase_1af75003bf9e6874f6c577c5c1c05d5cf7" prot="public" virt="non-virtual"><scope>AppointmentControllerBase</scope><name>AppointmentControllerBase</name></member>

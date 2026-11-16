@@ -135,13 +135,13 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('controller_8hp
 <code>#include &lt;type_traits&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
 <code>#include &quot;<a class="el" href="databasecontroller_8hpp_source.html">controllers/databasecontroller/databasecontroller.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="asyncdbclient_8hpp_source.html">database/asyncdbclient.hpp</a>&quot;</code><br />
+<code>#include &quot;drogon/utils/coroutine.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="client_8hpp_source.html">entities/base/client.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="entities_2base_2types_8hpp_source.html">entities/base/types.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="patient_8hpp_source.html">entities/services/clinics/patient/patient.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="gatekeeper_8hpp_source.html">gatekeeper/gatekeeper.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="store_8hpp_source.html">store/store.hpp</a>&quot;</code><br />
-<code>#include &quot;drogon/utils/coroutine.h&quot;</code><br />
-<code>#include &quot;<a class="el" href="asyncdbclient_8hpp_source.html">database/asyncdbclient.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="callback_8hpp_source.html">utils/global/callback.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="global_8hpp_source.html">utils/global/global.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="http_8hpp_source.html">utils/global/http.hpp</a>&quot;</code><br />
@@ -157,11 +157,11 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ab00ec3369a174558b462962c4595aa92" id="r_ab00ec3369a174558b462962c4595aa92"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#ab00ec3369a174558b462962c4595aa92">Search_t</a> = <a class="el" href="namespaceapi_1_1v2_1_1Types.html#ab4aef0c396603bde559a861ee7aeda3d">api::v2::Types::Search_t</a></td></tr>
+<tr class="memitem:aae5d6e887384ae12de7a6b10d953cd2b" id="r_aae5d6e887384ae12de7a6b10d953cd2b"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#aae5d6e887384ae12de7a6b10d953cd2b">Search_t</a></td></tr>
 <tr class="memitem:af928d8b9ced02f7387b9b56ed3877b11" id="r_af928d8b9ced02f7387b9b56ed3877b11"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#af928d8b9ced02f7387b9b56ed3877b11">Client</a> = <a class="el" href="classapi_1_1v2_1_1Client.html">api::v2::Client</a></td></tr>
 <tr class="memdesc:af928d8b9ced02f7387b9b56ed3877b11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience alias for the base <a class="el" href="#af928d8b9ced02f7387b9b56ed3877b11" title="Convenience alias for the base Client class.">Client</a> class.  <br /></td></tr>
-<tr class="memitem:aa21c1eb0e46bd1813cc4cba55771c0a3" id="r_aa21c1eb0e46bd1813cc4cba55771c0a3"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#aa21c1eb0e46bd1813cc4cba55771c0a3">GateKeeper</a> = <a class="el" href="classapi_1_1v2_1_1GateKeeper.html">api::v2::GateKeeper</a></td></tr>
-<tr class="memdesc:aa21c1eb0e46bd1813cc4cba55771c0a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience alias for the authorisation service.  <br /></td></tr>
+<tr class="memitem:a3100d7dd64f64ce2844ac60863afbaa1" id="r_a3100d7dd64f64ce2844ac60863afbaa1"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a3100d7dd64f64ce2844ac60863afbaa1">GateKeeper</a></td></tr>
+<tr class="memdesc:a3100d7dd64f64ce2844ac60863afbaa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience alias for the authorisation service.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Reusable persistence engine for the API's CRUDS (Create/Read/Update/Delete/Search) operations. </p>
@@ -196,41 +196,47 @@ Typedefs</h2></td></tr>
 
 <p>Convenience alias for the base <a class="el" href="#af928d8b9ced02f7387b9b56ed3877b11" title="Convenience alias for the base Client class.">Client</a> class. </p>
 
-<p class="definition">Definition at line <a class="el" href="controller_8hpp_source.html#l00065">65</a> of file <a class="el" href="controller_8hpp_source.html">controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="controller_8hpp_source.html#l00093">93</a> of file <a class="el" href="controller_8hpp_source.html">controller.hpp</a>.</p>
 
 </div>
 </div>
-<a id="aa21c1eb0e46bd1813cc4cba55771c0a3" name="aa21c1eb0e46bd1813cc4cba55771c0a3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa21c1eb0e46bd1813cc4cba55771c0a3">&#9670;&#160;</a></span>GateKeeper</h2>
+<a id="a3100d7dd64f64ce2844ac60863afbaa1" name="a3100d7dd64f64ce2844ac60863afbaa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3100d7dd64f64ce2844ac60863afbaa1">&#9670;&#160;</a></span>GateKeeper</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#aa21c1eb0e46bd1813cc4cba55771c0a3">GateKeeper</a> = <a class="el" href="classapi_1_1v2_1_1GateKeeper.html">api::v2::GateKeeper</a></td>
+          <td class="memname">using <a class="el" href="#a3100d7dd64f64ce2844ac60863afbaa1">GateKeeper</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line"><a class="code hl_class" href="classapi_1_1v2_1_1GateKeeper.html">api::v2::GateKeeper</a></div>
+<div class="ttc" id="aclassapi_1_1v2_1_1GateKeeper_html"><div class="ttname"><a href="classapi_1_1v2_1_1GateKeeper.html">api::v2::GateKeeper</a></div><div class="ttdoc">Facade over authentication, authorization and per-IP abuse detection.</div><div class="ttdef"><b>Definition</b> <a href="gatekeeper_8hpp_source.html#l00113">gatekeeper.hpp:113</a></div></div>
+</div><!-- fragment -->
 <p>Convenience alias for the authorisation service. </p>
 
-<p class="definition">Definition at line <a class="el" href="controller_8hpp_source.html#l00066">66</a> of file <a class="el" href="controller_8hpp_source.html">controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="controller_8hpp_source.html#l00094">94</a> of file <a class="el" href="controller_8hpp_source.html">controller.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ab00ec3369a174558b462962c4595aa92" name="ab00ec3369a174558b462962c4595aa92"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab00ec3369a174558b462962c4595aa92">&#9670;&#160;</a></span>Search_t</h2>
+<a id="aae5d6e887384ae12de7a6b10d953cd2b" name="aae5d6e887384ae12de7a6b10d953cd2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae5d6e887384ae12de7a6b10d953cd2b">&#9670;&#160;</a></span>Search_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using Search_t = <a class="el" href="namespaceapi_1_1v2_1_1Types.html#ab4aef0c396603bde559a861ee7aeda3d">api::v2::Types::Search_t</a></td>
+          <td class="memname">using Search_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="controller_8hpp_source.html#l00064">64</a> of file <a class="el" href="controller_8hpp_source.html">controller.hpp</a>.</p>
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line"><a class="code hl_typedef" href="namespaceapi_1_1v2_1_1Types.html#a1144660e5eba7daf9bae03f809fc006f">api::v2::Types::Search_t</a></div>
+<div class="ttc" id="anamespaceapi_1_1v2_1_1Types_html_a1144660e5eba7daf9bae03f809fc006f"><div class="ttname"><a href="namespaceapi_1_1v2_1_1Types.html#a1144660e5eba7daf9bae03f809fc006f">api::v2::Types::Search_t</a></div><div class="ttdeci">struct Search_t { std::string keyword; std::string filter; std::string order_by; std::string direction; size_t limit; size_t offset; Search_t(const jsoncons::json &amp;search_j, bool &amp;success) { try { const jsoncons::json &amp;kw=search_j.at(&quot;keyword&quot;), &amp;fl=search_j.at(&quot;filter&quot;), &amp;ob=search_j.at(&quot;order_by&quot;), &amp;dr=search_j.at(&quot;direction&quot;), &amp;lm=search_j.at(&quot;limit&quot;), &amp;of=search_j.at(&quot;offset&quot;); if(!kw.is_string()||!fl.is_string()||!ob.is_string()|| !dr.is_int64()||!lm.is_int64()||!of.is_int64()) { success=false; return; } keyword=kw.as&lt; std::string &gt;(); filter=fl.as&lt; std::string &gt;(); order_by=ob.as&lt; std::string &gt;(); direction=dr.as&lt; short &gt;()==0 ? &quot;ASC&quot; :&quot;DESC&quot;; limit=lm.as&lt; size_t &gt;(); offset=of.as&lt; size_t &gt;(); success=validate(search_j); } catch(const std::exception &amp;) { success=false; } } static bool isPlainIdentifier(const std::string &amp;name) { constexpr size_t MAX_IDENTIFIER_LENGTH= 63; if(name.empty()||name.size() &gt; MAX_IDENTIFIER_LENGTH|| std::isdigit(static_cast&lt; unsigned char &gt;(name.front())) !=0) { return false; } return std::ranges::all_of(name,[](char c) { return std::isalnum(static_cast&lt; unsigned char &gt;(c)) !=0||c==&#39;_&#39;; }); } bool validate(const jsoncons::json &amp;search_j) { static const std::unordered_set&lt; std::string &gt; keys= {&quot;keyword&quot;, &quot;filter&quot;, &quot;order_by&quot;, &quot;direction&quot;, &quot;limit&quot;, &quot;offset&quot;}; return search_j.size()==keys.size() &amp;&amp; std::ranges::all_of(keys,[&amp;search_j](const std::string &amp;key) { return search_j.find(key).has_value(); }) &amp;&amp; isPlainIdentifier(filter) &amp;&amp; isPlainIdentifier( order_by); } } Search_t</div><div class="ttdef"><b>Definition</b> <a href="entities_2base_2types_8hpp_source.html#l00316">types.hpp:316</a></div></div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="controller_8hpp_source.html#l00090">90</a> of file <a class="el" href="controller_8hpp_source.html">controller.hpp</a>.</p>
 
 </div>
 </div>

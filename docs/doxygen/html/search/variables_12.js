@@ -22,8 +22,5 @@ var searchData=
   ['should_5fmonitor_19',['should_monitor',['../classWatchDog.html#a16372b8cab4cdd8c7b6e591d44cf6d30',1,'WatchDog']]],
   ['slow_5fwait_5fwarning_5fms_20',['SLOW_WAIT_WARNING_MS',['../classDatabaseConnectionPool.html#ad084ec4336eb5f8b2992541fa696013e',1,'DatabaseConnectionPool']]],
   ['staffregistry_21',['staffRegistry',['../classapi_1_1v2_1_1Staff.html#ab8fb15b6ca094d5e2fca8fe9e675fdba',1,'api::v2::Staff']]],
-  ['stopcleaner_5f_22',['stopCleaner_',['../classMemCache.html#a35871df8b3ebcfa658e6fa4f8f5f1dbd',1,'MemCache']]],
-  ['stopping_5f_23',['stopping_',['../classBoundedExecutor.html#a2fe4e0d777523f51d59935f89030ac1c',1,'BoundedExecutor']]],
-  ['submitted_24',['submitted',['../structBoundedExecutor_1_1Stats.html#ad0368dc91edec0dec6888b7b84ce56dc',1,'BoundedExecutor::Stats']]],
-  ['submitted_5f_25',['submitted_',['../classBoundedExecutor.html#a586729a32716a35da700a96fbc590333',1,'BoundedExecutor']]]
+  ['stopcleaner_5f_22',['stopCleaner_',['../classMemCache.html#a35871df8b3ebcfa658e6fa4f8f5f1dbd',1,'MemCache']]]
 ];

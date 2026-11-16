@@ -20,7 +20,5 @@ var searchData=
   ['connection_17',['connection',['../classDatabase.html#aa5b051115e9769591a8fbf7542f3251e',1,'Database']]],
   ['connection_5finfo_18',['connection_info',['../classDatabase.html#adec58b4f1a163f78c57d6631c5caf6b0',1,'Database']]],
   ['create_5fkey_19',['CREATE_KEY',['../classHealth.html#ac617c697d82d54e345b6ae1f77fd8caa',1,'Health::CREATE_KEY'],['../classPatient.html#a1efed6fb3b9dbf1aefad853f1d1612f5',1,'Patient::CREATE_KEY'],['../classPatientDrugs.html#a6633f09d1eec3aa7c58d66a7ee0db31e',1,'PatientDrugs::CREATE_KEY'],['../classReports.html#a7c7ba27c2bb61a79b6818bc03a0cef04',1,'Reports::CREATE_KEY'],['../classPaidServices.html#ac071e51fc326b90ccc7e6edca088b27a',1,'PaidServices::CREATE_KEY'],['../classPrescriptions.html#ac4a4cc7c9c080e16304c19272b741fd5',1,'Prescriptions::CREATE_KEY'],['../classRequests.html#a70dfaafa03060bfbc49fc4ec1691676c',1,'Requests::CREATE_KEY'],['../classVisitDrugs.html#a0879e3e5537fed8ded204400c07a7557',1,'VisitDrugs::CREATE_KEY'],['../classVisits.html#a6627259064722e48018892c7e7358428',1,'Visits::CREATE_KEY']]],
-  ['currentexecutor_20',['currentExecutor',['../namespaceanonymous__namespace_02boundedexecutor_8cpp_03.html#ab84b8609fe5c97780788c6d292a2c64c',1,'anonymous_namespace{boundedexecutor.cpp}']]],
-  ['cv_21',['cv',['../structBoundedExecutor_1_1Worker.html#a67b3712ac7683ac32a183909d82c4407',1,'BoundedExecutor::Worker']]],
-  ['cv_5f_22',['cv_',['../classBlockingPool.html#a7521eacf45e5a5cfc473a714ecc06ce8',1,'BlockingPool']]]
+  ['cv_5f_20',['cv_',['../classBlockingPool.html#a7521eacf45e5a5cfc473a714ecc06ce8',1,'BlockingPool']]]
 ];

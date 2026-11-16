@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/helper/helper.hpp" line="59" column="9"/>
+        <location file="src/api/v2/helper/helper.hpp" line="72" column="5"/>
         <referencedby refid="classapi_1_1v2_1_1Helper_1a5c59bc23cc7580cf706220dae65687f1">Helper</referencedby>
         <referencedby refid="classapi_1_1v2_1_1Helper_1a709e62e62bbedcf44abc53a03e9ccaf5">Helper</referencedby>
         <referencedby refid="classapi_1_1v2_1_1Helper_1a99067f0af6b914e26f6506bdfbdc925a">operator=</referencedby>
@@ -40,7 +40,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/helper/helper.hpp" line="60" column="9"/>
+        <location file="src/api/v2/helper/helper.hpp" line="74" column="5"/>
         <references refid="classapi_1_1v2_1_1Helper_1a8628cae20d07c86b011fd649b77d7de6">Helper</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Helper_1a709e62e62bbedcf44abc53a03e9ccaf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/helper/helper.hpp" line="61" column="9"/>
+        <location file="src/api/v2/helper/helper.hpp" line="75" column="5"/>
         <references refid="classapi_1_1v2_1_1Helper_1a8628cae20d07c86b011fd649b77d7de6">Helper</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Helper_1a99067f0af6b914e26f6506bdfbdc925a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/helper/helper.hpp" line="62" column="16"/>
+        <location file="src/api/v2/helper/helper.hpp" line="77" column="12"/>
         <references refid="classapi_1_1v2_1_1Helper_1a8628cae20d07c86b011fd649b77d7de6">Helper</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Helper_1a428804de7e7b015a3c534a41499b7183" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -94,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/helper/helper.hpp" line="63" column="16"/>
+        <location file="src/api/v2/helper/helper.hpp" line="79" column="12"/>
         <references refid="classapi_1_1v2_1_1Helper_1a8628cae20d07c86b011fd649b77d7de6">Helper</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Helper_1a3a328cc315cb0e5359cbdea710254da4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -109,12 +109,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/helper/helper.hpp" line="64" column="17"/>
-        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="53" endline="56">errorResponse</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="44" endline="47">failureResponse</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a0e93abbeb3346f2d972a1894c31cb245" compoundref="helper_8cpp" startline="88" endline="93">prepare</references>
-        <references refid="classapi_1_1v2_1_1Helper_1ac64aa8b347960cbc8cf263633241a633" compoundref="helper_8cpp" startline="71" endline="82">reply</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="62" endline="65">successResponse</references>
+        <location file="src/api/v2/helper/helper.hpp" line="81" column="13"/>
+        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="71" endline="80">errorResponse</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="56" endline="64">failureResponse</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a0e93abbeb3346f2d972a1894c31cb245" compoundref="helper_8cpp" startline="128" endline="137">prepare</references>
+        <references refid="classapi_1_1v2_1_1Helper_1ac64aa8b347960cbc8cf263633241a633" compoundref="helper_8cpp" startline="102" endline="121">reply</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="88" endline="94">successResponse</references>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-static-attrib">
@@ -124,7 +124,8 @@
         <argsstring></argsstring>
         <name>FAILURE</name>
         <qualifiedname>api::v2::Helper::FAILURE</qualifiedname>
-        <initializer>= &quot;Failure&quot;</initializer>
+        <initializer>                                =
+&quot;Failure&quot;</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -132,8 +133,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/helper/helper.hpp" line="109" column="37" bodyfile="src/api/v2/helper/helper.hpp" bodystart="109" bodyend="-1"/>
-        <referencedby refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="44" endline="47">failureResponse</referencedby>
+        <location file="src/api/v2/helper/helper.hpp" line="149" column="33" bodyfile="src/api/v2/helper/helper.hpp" bodystart="149" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="56" endline="64">failureResponse</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classapi_1_1v2_1_1Helper_1a9633fc9b2cf52a1fec90c3241c0da359" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>const char *</type>
@@ -141,7 +142,8 @@
         <argsstring></argsstring>
         <name>ERROR</name>
         <qualifiedname>api::v2::Helper::ERROR</qualifiedname>
-        <initializer>= &quot;Error&quot;</initializer>
+        <initializer>                              =
+&quot;Error&quot;</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -149,8 +151,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/helper/helper.hpp" line="113" column="37" bodyfile="src/api/v2/helper/helper.hpp" bodystart="113" bodyend="-1"/>
-        <referencedby refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="53" endline="56">errorResponse</referencedby>
+        <location file="src/api/v2/helper/helper.hpp" line="154" column="33" bodyfile="src/api/v2/helper/helper.hpp" bodystart="154" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="71" endline="80">errorResponse</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -196,36 +198,36 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/helper/helper.hpp" line="74" column="21" bodyfile="src/api/v2/helper/helper.cpp" bodystart="44" bodyend="47"/>
-        <references refid="classapi_1_1v2_1_1Helper_1a31bece8e19e92c5c7d7dfe681acf17ad" compoundref="helper_8hpp" startline="109">FAILURE</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a0e93abbeb3346f2d972a1894c31cb245" compoundref="helper_8cpp" startline="88" endline="93">prepare</references>
-        <references refid="classapi_1_1v2_1_1Helper_1ac64aa8b347960cbc8cf263633241a633" compoundref="helper_8cpp" startline="71" endline="82">reply</references>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a7f99d20b39e5bdd6ea695c622b613167" compoundref="clients_8hpp" startline="238" endline="293">api::v2::Clients::activate</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1a409d7e9e2260c9a82ed370c9fa33a6cb" compoundref="staff_8hpp" startline="146" endline="196">api::v2::Staff::Add</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Appointments_1a75506c18ee76ac6bf38b0c54cbbb53db" compoundref="appointments_8hpp" startline="83" endline="133">api::v2::Appointments::Create</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1a732361aa386238582d08d4165eb4b864" compoundref="api_2v2_2routes_2clinics_8hpp" startline="86" endline="136">api::v2::Clinic::Create</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Services_1a7a1d4a2a443909b8a43856e72288c36a" compoundref="services_8hpp" startline="79" endline="129">api::v2::Services::Create</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Appointments_1a515ae728e10e637a657f1c912ccf9e7a" compoundref="appointments_8hpp" startline="270" endline="325">api::v2::Appointments::Delete</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1a0041b3b3e1be2e86ea5b2aef2544d8fd" compoundref="api_2v2_2routes_2clinics_8hpp" startline="270" endline="325">api::v2::Clinic::Delete</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Services_1a6c1616c95dc9edf3ffaf52612b94bc29" compoundref="services_8hpp" startline="263" endline="318">api::v2::Services::Delete</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a1c64163fcea38e48979cbe03e86bb65d" compoundref="clients_8hpp" startline="352" endline="407">api::v2::Clients::delete_</referencedby>
-        <referencedby refid="namespaceapi_1_1v2_1aa679c4967ecfe1f25818539f137414d3" compoundref="common_8hpp" startline="129" endline="216">api::v2::executeControllerMethod</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1aa3d6c4f043f6ba5e024f51d1a642a8e7" compoundref="clients_8hpp" startline="475" endline="530">api::v2::Clients::getservices</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1ad05abb43349c46b4bc7fc67fab45ed11" compoundref="api_2v2_2routes_2clinics_8hpp" startline="392" endline="447">api::v2::Clinic::GetVisits</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1a073bef1425950fe6acd2a9287ed6e9a9" compoundref="staff_8hpp" startline="85" endline="135">api::v2::Staff::Invite</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a8b82b6424d114860f571b240a2b20d97" compoundref="clients_8hpp" startline="101" endline="150">api::v2::Clients::login</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Appointments_1af9fa78f8cd4bbf7f4b7f5073055effb1" compoundref="appointments_8hpp" startline="143" endline="193">api::v2::Appointments::Read</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1a55c8928811105908bdcd77a1f8e8fefb" compoundref="api_2v2_2routes_2clinics_8hpp" startline="146" endline="196">api::v2::Clinic::Read</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Services_1add4126a239d7f9a96356da45f888ff67" compoundref="services_8hpp" startline="139" endline="189">api::v2::Services::Read</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1ae5420af7a0b9609ca0536d2d9643679e" compoundref="clients_8hpp" startline="594" endline="705">api::v2::Clients::readAsyncImpl</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1acffe2bacadd52880b9302de943c11a3f" compoundref="staff_8hpp" startline="207" endline="257">api::v2::Staff::Remove</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1a5f03d36ebe2fec6696c005bc1e190605" compoundref="api_2v2_2routes_2clinics_8hpp" startline="333" endline="383">api::v2::Clinic::Search</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Services_1a9aaef4e8359c44c2f0d8f79e96497868" compoundref="services_8hpp" startline="327" endline="377">api::v2::Services::Search</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a6ed35f998ca78524ee42c7ba30cce0e9" compoundref="clients_8hpp" startline="416" endline="466">api::v2::Clients::search</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a4226d0e35525e0d197941e93fe0ee1d7" compoundref="clients_8hpp" startline="173" endline="228">api::v2::Clients::suspend</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Appointments_1ab7c172b45fbfbc8580bf0a69505e111b" compoundref="appointments_8hpp" startline="205" endline="260">api::v2::Appointments::Update</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1ab966bc6c2f287a66e363365398ebacd7" compoundref="api_2v2_2routes_2clinics_8hpp" startline="206" endline="261">api::v2::Clinic::Update</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Services_1aca116f0dbc91a0743085f121c253cf17" compoundref="services_8hpp" startline="199" endline="254">api::v2::Services::Update</referencedby>
+        <location file="src/api/v2/helper/helper.hpp" line="92" column="17" bodyfile="src/api/v2/helper/helper.cpp" bodystart="56" bodyend="64"/>
+        <references refid="classapi_1_1v2_1_1Helper_1a31bece8e19e92c5c7d7dfe681acf17ad" compoundref="helper_8hpp" startline="149">FAILURE</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a0e93abbeb3346f2d972a1894c31cb245" compoundref="helper_8cpp" startline="128" endline="137">prepare</references>
+        <references refid="classapi_1_1v2_1_1Helper_1ac64aa8b347960cbc8cf263633241a633" compoundref="helper_8cpp" startline="102" endline="121">reply</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a7f99d20b39e5bdd6ea695c622b613167" compoundref="clients_8hpp" startline="362" endline="452">api::v2::Clients::activate</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1a409d7e9e2260c9a82ed370c9fa33a6cb" compoundref="staff_8hpp" startline="210" endline="295">api::v2::Staff::Add</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1a75506c18ee76ac6bf38b0c54cbbb53db" compoundref="appointments_8hpp" startline="112" endline="215">api::v2::Appointments::Create</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a732361aa386238582d08d4165eb4b864" compoundref="api_2v2_2routes_2clinics_8hpp" startline="119" endline="204">api::v2::Clinic::Create</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a7a1d4a2a443909b8a43856e72288c36a" compoundref="services_8hpp" startline="104" endline="191">api::v2::Services::Create</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1a515ae728e10e637a657f1c912ccf9e7a" compoundref="appointments_8hpp" startline="435" endline="525">api::v2::Appointments::Delete</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a0041b3b3e1be2e86ea5b2aef2544d8fd" compoundref="api_2v2_2routes_2clinics_8hpp" startline="418" endline="504">api::v2::Clinic::Delete</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a6c1616c95dc9edf3ffaf52612b94bc29" compoundref="services_8hpp" startline="407" endline="495">api::v2::Services::Delete</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a1c64163fcea38e48979cbe03e86bb65d" compoundref="clients_8hpp" startline="551" endline="639">api::v2::Clients::delete_</referencedby>
+        <referencedby refid="namespaceapi_1_1v2_1aa679c4967ecfe1f25818539f137414d3" compoundref="common_8hpp" startline="188" endline="371">api::v2::executeControllerMethod</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1aa3d6c4f043f6ba5e024f51d1a642a8e7" compoundref="clients_8hpp" startline="747" endline="838">api::v2::Clients::getservices</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1ad05abb43349c46b4bc7fc67fab45ed11" compoundref="api_2v2_2routes_2clinics_8hpp" startline="612" endline="706">api::v2::Clinic::GetVisits</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1a073bef1425950fe6acd2a9287ed6e9a9" compoundref="staff_8hpp" startline="108" endline="195">api::v2::Staff::Invite</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a8b82b6424d114860f571b240a2b20d97" compoundref="clients_8hpp" startline="139" endline="222">api::v2::Clients::login</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1af9fa78f8cd4bbf7f4b7f5073055effb1" compoundref="appointments_8hpp" startline="228" endline="315">api::v2::Appointments::Read</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a55c8928811105908bdcd77a1f8e8fefb" compoundref="api_2v2_2routes_2clinics_8hpp" startline="218" endline="301">api::v2::Clinic::Read</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1add4126a239d7f9a96356da45f888ff67" compoundref="services_8hpp" startline="205" endline="288">api::v2::Services::Read</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1ae5420af7a0b9609ca0536d2d9643679e" compoundref="clients_8hpp" startline="964" endline="1146">api::v2::Clients::readAsyncImpl</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1acffe2bacadd52880b9302de943c11a3f" compoundref="staff_8hpp" startline="310" endline="395">api::v2::Staff::Remove</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a5f03d36ebe2fec6696c005bc1e190605" compoundref="api_2v2_2routes_2clinics_8hpp" startline="516" endline="599">api::v2::Clinic::Search</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a9aaef4e8359c44c2f0d8f79e96497868" compoundref="services_8hpp" startline="508" endline="591">api::v2::Services::Search</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a6ed35f998ca78524ee42c7ba30cce0e9" compoundref="clients_8hpp" startline="651" endline="734">api::v2::Clients::search</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a4226d0e35525e0d197941e93fe0ee1d7" compoundref="clients_8hpp" startline="261" endline="349">api::v2::Clients::suspend</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1ab7c172b45fbfbc8580bf0a69505e111b" compoundref="appointments_8hpp" startline="331" endline="423">api::v2::Appointments::Update</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1ab966bc6c2f287a66e363365398ebacd7" compoundref="api_2v2_2routes_2clinics_8hpp" startline="315" endline="405">api::v2::Clinic::Update</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1aca116f0dbc91a0743085f121c253cf17" compoundref="services_8hpp" startline="302" endline="394">api::v2::Services::Update</referencedby>
         <referencedby refid="classapi_1_1v2_1_1Helper_1a3a328cc315cb0e5359cbdea710254da4">~Helper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -282,37 +284,37 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/helper/helper.hpp" line="81" column="21" bodyfile="src/api/v2/helper/helper.cpp" bodystart="53" bodyend="56"/>
-        <references refid="classapi_1_1v2_1_1Helper_1a9633fc9b2cf52a1fec90c3241c0da359" compoundref="helper_8hpp" startline="113">ERROR</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a0e93abbeb3346f2d972a1894c31cb245" compoundref="helper_8cpp" startline="88" endline="93">prepare</references>
-        <references refid="classapi_1_1v2_1_1Helper_1ac64aa8b347960cbc8cf263633241a633" compoundref="helper_8cpp" startline="71" endline="82">reply</references>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a7f99d20b39e5bdd6ea695c622b613167" compoundref="clients_8hpp" startline="238" endline="293">api::v2::Clients::activate</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1a409d7e9e2260c9a82ed370c9fa33a6cb" compoundref="staff_8hpp" startline="146" endline="196">api::v2::Staff::Add</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Appointments_1a75506c18ee76ac6bf38b0c54cbbb53db" compoundref="appointments_8hpp" startline="83" endline="133">api::v2::Appointments::Create</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1a732361aa386238582d08d4165eb4b864" compoundref="api_2v2_2routes_2clinics_8hpp" startline="86" endline="136">api::v2::Clinic::Create</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Services_1a7a1d4a2a443909b8a43856e72288c36a" compoundref="services_8hpp" startline="79" endline="129">api::v2::Services::Create</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Appointments_1a515ae728e10e637a657f1c912ccf9e7a" compoundref="appointments_8hpp" startline="270" endline="325">api::v2::Appointments::Delete</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1a0041b3b3e1be2e86ea5b2aef2544d8fd" compoundref="api_2v2_2routes_2clinics_8hpp" startline="270" endline="325">api::v2::Clinic::Delete</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Services_1a6c1616c95dc9edf3ffaf52612b94bc29" compoundref="services_8hpp" startline="263" endline="318">api::v2::Services::Delete</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a1c64163fcea38e48979cbe03e86bb65d" compoundref="clients_8hpp" startline="352" endline="407">api::v2::Clients::delete_</referencedby>
-        <referencedby refid="namespaceapi_1_1v2_1aa679c4967ecfe1f25818539f137414d3" compoundref="common_8hpp" startline="129" endline="216">api::v2::executeControllerMethod</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1aa3d6c4f043f6ba5e024f51d1a642a8e7" compoundref="clients_8hpp" startline="475" endline="530">api::v2::Clients::getservices</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1ad05abb43349c46b4bc7fc67fab45ed11" compoundref="api_2v2_2routes_2clinics_8hpp" startline="392" endline="447">api::v2::Clinic::GetVisits</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1a073bef1425950fe6acd2a9287ed6e9a9" compoundref="staff_8hpp" startline="85" endline="135">api::v2::Staff::Invite</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a8b82b6424d114860f571b240a2b20d97" compoundref="clients_8hpp" startline="101" endline="150">api::v2::Clients::login</referencedby>
-        <referencedby refid="namespaceapi_1_1v2_1aa69205bcc60e13d43ab454e4ac275e60" compoundref="common_8hpp" startline="87" endline="100">api::v2::parseIdParam</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Appointments_1af9fa78f8cd4bbf7f4b7f5073055effb1" compoundref="appointments_8hpp" startline="143" endline="193">api::v2::Appointments::Read</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1a55c8928811105908bdcd77a1f8e8fefb" compoundref="api_2v2_2routes_2clinics_8hpp" startline="146" endline="196">api::v2::Clinic::Read</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Services_1add4126a239d7f9a96356da45f888ff67" compoundref="services_8hpp" startline="139" endline="189">api::v2::Services::Read</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1ae5420af7a0b9609ca0536d2d9643679e" compoundref="clients_8hpp" startline="594" endline="705">api::v2::Clients::readAsyncImpl</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1acffe2bacadd52880b9302de943c11a3f" compoundref="staff_8hpp" startline="207" endline="257">api::v2::Staff::Remove</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1a5f03d36ebe2fec6696c005bc1e190605" compoundref="api_2v2_2routes_2clinics_8hpp" startline="333" endline="383">api::v2::Clinic::Search</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Services_1a9aaef4e8359c44c2f0d8f79e96497868" compoundref="services_8hpp" startline="327" endline="377">api::v2::Services::Search</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a6ed35f998ca78524ee42c7ba30cce0e9" compoundref="clients_8hpp" startline="416" endline="466">api::v2::Clients::search</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a4226d0e35525e0d197941e93fe0ee1d7" compoundref="clients_8hpp" startline="173" endline="228">api::v2::Clients::suspend</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Appointments_1ab7c172b45fbfbc8580bf0a69505e111b" compoundref="appointments_8hpp" startline="205" endline="260">api::v2::Appointments::Update</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1ab966bc6c2f287a66e363365398ebacd7" compoundref="api_2v2_2routes_2clinics_8hpp" startline="206" endline="261">api::v2::Clinic::Update</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Services_1aca116f0dbc91a0743085f121c253cf17" compoundref="services_8hpp" startline="199" endline="254">api::v2::Services::Update</referencedby>
+        <location file="src/api/v2/helper/helper.hpp" line="104" column="5" bodyfile="src/api/v2/helper/helper.cpp" bodystart="71" bodyend="80"/>
+        <references refid="classapi_1_1v2_1_1Helper_1a9633fc9b2cf52a1fec90c3241c0da359" compoundref="helper_8hpp" startline="154">ERROR</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a0e93abbeb3346f2d972a1894c31cb245" compoundref="helper_8cpp" startline="128" endline="137">prepare</references>
+        <references refid="classapi_1_1v2_1_1Helper_1ac64aa8b347960cbc8cf263633241a633" compoundref="helper_8cpp" startline="102" endline="121">reply</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a7f99d20b39e5bdd6ea695c622b613167" compoundref="clients_8hpp" startline="362" endline="452">api::v2::Clients::activate</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1a409d7e9e2260c9a82ed370c9fa33a6cb" compoundref="staff_8hpp" startline="210" endline="295">api::v2::Staff::Add</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1a75506c18ee76ac6bf38b0c54cbbb53db" compoundref="appointments_8hpp" startline="112" endline="215">api::v2::Appointments::Create</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a732361aa386238582d08d4165eb4b864" compoundref="api_2v2_2routes_2clinics_8hpp" startline="119" endline="204">api::v2::Clinic::Create</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a7a1d4a2a443909b8a43856e72288c36a" compoundref="services_8hpp" startline="104" endline="191">api::v2::Services::Create</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1a515ae728e10e637a657f1c912ccf9e7a" compoundref="appointments_8hpp" startline="435" endline="525">api::v2::Appointments::Delete</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a0041b3b3e1be2e86ea5b2aef2544d8fd" compoundref="api_2v2_2routes_2clinics_8hpp" startline="418" endline="504">api::v2::Clinic::Delete</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a6c1616c95dc9edf3ffaf52612b94bc29" compoundref="services_8hpp" startline="407" endline="495">api::v2::Services::Delete</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a1c64163fcea38e48979cbe03e86bb65d" compoundref="clients_8hpp" startline="551" endline="639">api::v2::Clients::delete_</referencedby>
+        <referencedby refid="namespaceapi_1_1v2_1aa679c4967ecfe1f25818539f137414d3" compoundref="common_8hpp" startline="188" endline="371">api::v2::executeControllerMethod</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1aa3d6c4f043f6ba5e024f51d1a642a8e7" compoundref="clients_8hpp" startline="747" endline="838">api::v2::Clients::getservices</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1ad05abb43349c46b4bc7fc67fab45ed11" compoundref="api_2v2_2routes_2clinics_8hpp" startline="612" endline="706">api::v2::Clinic::GetVisits</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1a073bef1425950fe6acd2a9287ed6e9a9" compoundref="staff_8hpp" startline="108" endline="195">api::v2::Staff::Invite</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a8b82b6424d114860f571b240a2b20d97" compoundref="clients_8hpp" startline="139" endline="222">api::v2::Clients::login</referencedby>
+        <referencedby refid="namespaceapi_1_1v2_1aa69205bcc60e13d43ab454e4ac275e60" compoundref="common_8hpp" startline="121" endline="144">api::v2::parseIdParam</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1af9fa78f8cd4bbf7f4b7f5073055effb1" compoundref="appointments_8hpp" startline="228" endline="315">api::v2::Appointments::Read</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a55c8928811105908bdcd77a1f8e8fefb" compoundref="api_2v2_2routes_2clinics_8hpp" startline="218" endline="301">api::v2::Clinic::Read</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1add4126a239d7f9a96356da45f888ff67" compoundref="services_8hpp" startline="205" endline="288">api::v2::Services::Read</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1ae5420af7a0b9609ca0536d2d9643679e" compoundref="clients_8hpp" startline="964" endline="1146">api::v2::Clients::readAsyncImpl</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1acffe2bacadd52880b9302de943c11a3f" compoundref="staff_8hpp" startline="310" endline="395">api::v2::Staff::Remove</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a5f03d36ebe2fec6696c005bc1e190605" compoundref="api_2v2_2routes_2clinics_8hpp" startline="516" endline="599">api::v2::Clinic::Search</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a9aaef4e8359c44c2f0d8f79e96497868" compoundref="services_8hpp" startline="508" endline="591">api::v2::Services::Search</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a6ed35f998ca78524ee42c7ba30cce0e9" compoundref="clients_8hpp" startline="651" endline="734">api::v2::Clients::search</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a4226d0e35525e0d197941e93fe0ee1d7" compoundref="clients_8hpp" startline="261" endline="349">api::v2::Clients::suspend</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1ab7c172b45fbfbc8580bf0a69505e111b" compoundref="appointments_8hpp" startline="331" endline="423">api::v2::Appointments::Update</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1ab966bc6c2f287a66e363365398ebacd7" compoundref="api_2v2_2routes_2clinics_8hpp" startline="315" endline="405">api::v2::Clinic::Update</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1aca116f0dbc91a0743085f121c253cf17" compoundref="services_8hpp" startline="302" endline="394">api::v2::Services::Update</referencedby>
         <referencedby refid="classapi_1_1v2_1_1Helper_1a3a328cc315cb0e5359cbdea710254da4">~Helper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -357,34 +359,34 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/helper/helper.hpp" line="88" column="28" bodyfile="src/api/v2/helper/helper.cpp" bodystart="62" bodyend="65"/>
-        <references refid="classapi_1_1v2_1_1Helper_1ac64aa8b347960cbc8cf263633241a633" compoundref="helper_8cpp" startline="71" endline="82">reply</references>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a7f99d20b39e5bdd6ea695c622b613167" compoundref="clients_8hpp" startline="238" endline="293">api::v2::Clients::activate</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1a409d7e9e2260c9a82ed370c9fa33a6cb" compoundref="staff_8hpp" startline="146" endline="196">api::v2::Staff::Add</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Appointments_1a75506c18ee76ac6bf38b0c54cbbb53db" compoundref="appointments_8hpp" startline="83" endline="133">api::v2::Appointments::Create</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1a732361aa386238582d08d4165eb4b864" compoundref="api_2v2_2routes_2clinics_8hpp" startline="86" endline="136">api::v2::Clinic::Create</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Services_1a7a1d4a2a443909b8a43856e72288c36a" compoundref="services_8hpp" startline="79" endline="129">api::v2::Services::Create</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Appointments_1a515ae728e10e637a657f1c912ccf9e7a" compoundref="appointments_8hpp" startline="270" endline="325">api::v2::Appointments::Delete</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1a0041b3b3e1be2e86ea5b2aef2544d8fd" compoundref="api_2v2_2routes_2clinics_8hpp" startline="270" endline="325">api::v2::Clinic::Delete</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Services_1a6c1616c95dc9edf3ffaf52612b94bc29" compoundref="services_8hpp" startline="263" endline="318">api::v2::Services::Delete</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a1c64163fcea38e48979cbe03e86bb65d" compoundref="clients_8hpp" startline="352" endline="407">api::v2::Clients::delete_</referencedby>
-        <referencedby refid="namespaceapi_1_1v2_1aa679c4967ecfe1f25818539f137414d3" compoundref="common_8hpp" startline="129" endline="216">api::v2::executeControllerMethod</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1aa3d6c4f043f6ba5e024f51d1a642a8e7" compoundref="clients_8hpp" startline="475" endline="530">api::v2::Clients::getservices</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1ad05abb43349c46b4bc7fc67fab45ed11" compoundref="api_2v2_2routes_2clinics_8hpp" startline="392" endline="447">api::v2::Clinic::GetVisits</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1a073bef1425950fe6acd2a9287ed6e9a9" compoundref="staff_8hpp" startline="85" endline="135">api::v2::Staff::Invite</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a8b82b6424d114860f571b240a2b20d97" compoundref="clients_8hpp" startline="101" endline="150">api::v2::Clients::login</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Appointments_1af9fa78f8cd4bbf7f4b7f5073055effb1" compoundref="appointments_8hpp" startline="143" endline="193">api::v2::Appointments::Read</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1a55c8928811105908bdcd77a1f8e8fefb" compoundref="api_2v2_2routes_2clinics_8hpp" startline="146" endline="196">api::v2::Clinic::Read</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Services_1add4126a239d7f9a96356da45f888ff67" compoundref="services_8hpp" startline="139" endline="189">api::v2::Services::Read</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1ae5420af7a0b9609ca0536d2d9643679e" compoundref="clients_8hpp" startline="594" endline="705">api::v2::Clients::readAsyncImpl</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1acffe2bacadd52880b9302de943c11a3f" compoundref="staff_8hpp" startline="207" endline="257">api::v2::Staff::Remove</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1a5f03d36ebe2fec6696c005bc1e190605" compoundref="api_2v2_2routes_2clinics_8hpp" startline="333" endline="383">api::v2::Clinic::Search</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Services_1a9aaef4e8359c44c2f0d8f79e96497868" compoundref="services_8hpp" startline="327" endline="377">api::v2::Services::Search</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a6ed35f998ca78524ee42c7ba30cce0e9" compoundref="clients_8hpp" startline="416" endline="466">api::v2::Clients::search</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a4226d0e35525e0d197941e93fe0ee1d7" compoundref="clients_8hpp" startline="173" endline="228">api::v2::Clients::suspend</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Appointments_1ab7c172b45fbfbc8580bf0a69505e111b" compoundref="appointments_8hpp" startline="205" endline="260">api::v2::Appointments::Update</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1ab966bc6c2f287a66e363365398ebacd7" compoundref="api_2v2_2routes_2clinics_8hpp" startline="206" endline="261">api::v2::Clinic::Update</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Services_1aca116f0dbc91a0743085f121c253cf17" compoundref="services_8hpp" startline="199" endline="254">api::v2::Services::Update</referencedby>
+        <location file="src/api/v2/helper/helper.hpp" line="116" column="17" bodyfile="src/api/v2/helper/helper.cpp" bodystart="88" bodyend="94"/>
+        <references refid="classapi_1_1v2_1_1Helper_1ac64aa8b347960cbc8cf263633241a633" compoundref="helper_8cpp" startline="102" endline="121">reply</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a7f99d20b39e5bdd6ea695c622b613167" compoundref="clients_8hpp" startline="362" endline="452">api::v2::Clients::activate</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1a409d7e9e2260c9a82ed370c9fa33a6cb" compoundref="staff_8hpp" startline="210" endline="295">api::v2::Staff::Add</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1a75506c18ee76ac6bf38b0c54cbbb53db" compoundref="appointments_8hpp" startline="112" endline="215">api::v2::Appointments::Create</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a732361aa386238582d08d4165eb4b864" compoundref="api_2v2_2routes_2clinics_8hpp" startline="119" endline="204">api::v2::Clinic::Create</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a7a1d4a2a443909b8a43856e72288c36a" compoundref="services_8hpp" startline="104" endline="191">api::v2::Services::Create</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1a515ae728e10e637a657f1c912ccf9e7a" compoundref="appointments_8hpp" startline="435" endline="525">api::v2::Appointments::Delete</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a0041b3b3e1be2e86ea5b2aef2544d8fd" compoundref="api_2v2_2routes_2clinics_8hpp" startline="418" endline="504">api::v2::Clinic::Delete</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a6c1616c95dc9edf3ffaf52612b94bc29" compoundref="services_8hpp" startline="407" endline="495">api::v2::Services::Delete</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a1c64163fcea38e48979cbe03e86bb65d" compoundref="clients_8hpp" startline="551" endline="639">api::v2::Clients::delete_</referencedby>
+        <referencedby refid="namespaceapi_1_1v2_1aa679c4967ecfe1f25818539f137414d3" compoundref="common_8hpp" startline="188" endline="371">api::v2::executeControllerMethod</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1aa3d6c4f043f6ba5e024f51d1a642a8e7" compoundref="clients_8hpp" startline="747" endline="838">api::v2::Clients::getservices</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1ad05abb43349c46b4bc7fc67fab45ed11" compoundref="api_2v2_2routes_2clinics_8hpp" startline="612" endline="706">api::v2::Clinic::GetVisits</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1a073bef1425950fe6acd2a9287ed6e9a9" compoundref="staff_8hpp" startline="108" endline="195">api::v2::Staff::Invite</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a8b82b6424d114860f571b240a2b20d97" compoundref="clients_8hpp" startline="139" endline="222">api::v2::Clients::login</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1af9fa78f8cd4bbf7f4b7f5073055effb1" compoundref="appointments_8hpp" startline="228" endline="315">api::v2::Appointments::Read</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a55c8928811105908bdcd77a1f8e8fefb" compoundref="api_2v2_2routes_2clinics_8hpp" startline="218" endline="301">api::v2::Clinic::Read</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1add4126a239d7f9a96356da45f888ff67" compoundref="services_8hpp" startline="205" endline="288">api::v2::Services::Read</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1ae5420af7a0b9609ca0536d2d9643679e" compoundref="clients_8hpp" startline="964" endline="1146">api::v2::Clients::readAsyncImpl</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1acffe2bacadd52880b9302de943c11a3f" compoundref="staff_8hpp" startline="310" endline="395">api::v2::Staff::Remove</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a5f03d36ebe2fec6696c005bc1e190605" compoundref="api_2v2_2routes_2clinics_8hpp" startline="516" endline="599">api::v2::Clinic::Search</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a9aaef4e8359c44c2f0d8f79e96497868" compoundref="services_8hpp" startline="508" endline="591">api::v2::Services::Search</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a6ed35f998ca78524ee42c7ba30cce0e9" compoundref="clients_8hpp" startline="651" endline="734">api::v2::Clients::search</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a4226d0e35525e0d197941e93fe0ee1d7" compoundref="clients_8hpp" startline="261" endline="349">api::v2::Clients::suspend</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1ab7c172b45fbfbc8580bf0a69505e111b" compoundref="appointments_8hpp" startline="331" endline="423">api::v2::Appointments::Update</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1ab966bc6c2f287a66e363365398ebacd7" compoundref="api_2v2_2routes_2clinics_8hpp" startline="315" endline="405">api::v2::Clinic::Update</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1aca116f0dbc91a0743085f121c253cf17" compoundref="services_8hpp" startline="302" endline="394">api::v2::Services::Update</referencedby>
         <referencedby refid="classapi_1_1v2_1_1Helper_1a3a328cc315cb0e5359cbdea710254da4">~Helper</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Helper_1a0e93abbeb3346f2d972a1894c31cb245" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -431,10 +433,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/helper/helper.hpp" line="95" column="28" bodyfile="src/api/v2/helper/helper.cpp" bodystart="88" bodyend="93"/>
-        <references refid="classapi_1_1v2_1_1JsonHelper_1a641560db2243ef5bca5bb763e98b3b43" compoundref="jsonhelper_8cpp" startline="27" endline="33">api::v2::JsonHelper::jsonify</references>
-        <referencedby refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="53" endline="56">errorResponse</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="44" endline="47">failureResponse</referencedby>
+        <location file="src/api/v2/helper/helper.hpp" line="128" column="24" bodyfile="src/api/v2/helper/helper.cpp" bodystart="128" bodyend="137"/>
+        <references refid="classapi_1_1v2_1_1JsonHelper_1a641560db2243ef5bca5bb763e98b3b43" compoundref="jsonhelper_8cpp" startline="32" endline="40">api::v2::JsonHelper::jsonify</references>
+        <referencedby refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="71" endline="80">errorResponse</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="56" endline="64">failureResponse</referencedby>
         <referencedby refid="classapi_1_1v2_1_1Helper_1a3a328cc315cb0e5359cbdea710254da4">~Helper</referencedby>
       </memberdef>
     </sectiondef>
@@ -493,10 +495,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/helper/helper.hpp" line="104" column="21" bodyfile="src/api/v2/helper/helper.cpp" bodystart="71" bodyend="82"/>
-        <referencedby refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="53" endline="56">errorResponse</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="44" endline="47">failureResponse</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="62" endline="65">successResponse</referencedby>
+        <location file="src/api/v2/helper/helper.hpp" line="140" column="17" bodyfile="src/api/v2/helper/helper.cpp" bodystart="102" bodyend="121"/>
+        <referencedby refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="71" endline="80">errorResponse</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="56" endline="64">failureResponse</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="88" endline="94">successResponse</referencedby>
         <referencedby refid="classapi_1_1v2_1_1Helper_1a3a328cc315cb0e5359cbdea710254da4">~Helper</referencedby>
       </memberdef>
     </sectiondef>
@@ -508,7 +510,7 @@
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="src/api/v2/helper/helper.hpp" line="51" column="5" bodyfile="src/api/v2/helper/helper.hpp" bodystart="52" bodyend="114"/>
+    <location file="src/api/v2/helper/helper.hpp" line="64" column="3" bodyfile="src/api/v2/helper/helper.hpp" bodystart="64" bodyend="157"/>
     <listofallmembers>
       <member refid="classapi_1_1v2_1_1Helper_1a9633fc9b2cf52a1fec90c3241c0da359" prot="private" virt="non-virtual"><scope>api::v2::Helper</scope><name>ERROR</name></member>
       <member refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" prot="public" virt="non-virtual"><scope>api::v2::Helper</scope><name>errorResponse</name></member>

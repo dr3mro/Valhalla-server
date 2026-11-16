@@ -147,7 +147,7 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a40ca499cbee8072a0cf80889f3510f85" id="r_a40ca499cbee8072a0cf80889f3510f85"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a40ca499cbee8072a0cf80889f3510f85">KeeprBase</a> = <a class="el" href="classapi_1_1v2_1_1KeeprBase.html">api::v2::KeeprBase</a></td></tr>
+<tr class="memitem:a62ac81c874d900289fbf508f81a219c0" id="r_a62ac81c874d900289fbf508f81a219c0"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a62ac81c874d900289fbf508f81a219c0">KeeprBase</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -157,7 +157,7 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation for keeprbase: Maps a client group to its session table via a fixed allowlist. </p>
 <p>This file implements the shared SQL and JWT helpers used by the session and token managers. It chooses a session table from a hard-coded allowlist of the two valid groups (<span class="tt">users</span> and <span class="tt">providers</span>), then builds parameterized SQL to read or update login/logout times and to load password hashes. It also formats UTC timestamps, extracts identity claims from decoded JWTs, checks them against live session state, and builds an HS256 verifier bound to the configured secret. Most helpers have a coroutine twin that awaits the database read instead of blocking a thread.</p>
-<p>WHY THIS FILE MATTERS IN THE SERVER: This is the persistence and token-verification engine under the gatekeeper. <a class="el" href="sessionmanager_8cpp.html#a8256b008f0e6c1884c2b7aca9d53fec2">SessionManager</a> and <a class="el" href="tokenmanager_8cpp.html#a29cda383d518dafdbd3cf3438adea93f">TokenManager</a> call these helpers during login, logout and every token check; those managers are called by <a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3" title="Convenience alias for the authorisation service.">GateKeeper</a>, which is called by controllers and filters. Crucially, mapping a group to a table through an allowlist (instead of pasting user input into SQL) prevents SQL injection, and parameterized queries keep the actual values safe too. Without this file the managers would have no way to record logouts or decide whether an old token has been invalidated.</p>
+<p>WHY THIS FILE MATTERS IN THE SERVER: This is the persistence and token-verification engine under the gatekeeper. <a class="el" href="sessionmanager_8cpp.html#aa7df7e3b388a985439e1eb11eba04a0f">SessionManager</a> and <a class="el" href="tokenmanager_8cpp.html#a29cda383d518dafdbd3cf3438adea93f">TokenManager</a> call these helpers during login, logout and every token check; those managers are called by <a class="el" href="controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1" title="Convenience alias for the authorisation service.">GateKeeper</a>, which is called by controllers and filters. Crucially, mapping a group to a table through an allowlist (instead of pasting user input into SQL) prevents SQL injection, and parameterized queries keep the actual values safe too. Without this file the managers would have no way to record logouts or decide whether an old token has been invalidated.</p>
 <p>CONCEPTS TO LEARN (for beginners):</p><ul>
 <li>SQL injection and why parameterized queries / allowlists prevent it: <a href="https://en.wikipedia.org/wiki/SQL_injection">https://en.wikipedia.org/wiki/SQL_injection</a></li>
 <li>Prepared statements: <a href="https://en.wikipedia.org/wiki/Prepared_statement">https://en.wikipedia.org/wiki/Prepared_statement</a></li>
@@ -174,19 +174,22 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition in file <a class="el" href="keeprbase_8cpp_source.html">keeprbase.cpp</a>.</p>
 </div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Typedef Documentation</h2>
-<a id="a40ca499cbee8072a0cf80889f3510f85" name="a40ca499cbee8072a0cf80889f3510f85"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40ca499cbee8072a0cf80889f3510f85">&#9670;&#160;</a></span>KeeprBase</h2>
+<a id="a62ac81c874d900289fbf508f81a219c0" name="a62ac81c874d900289fbf508f81a219c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62ac81c874d900289fbf508f81a219c0">&#9670;&#160;</a></span>KeeprBase</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#a40ca499cbee8072a0cf80889f3510f85">KeeprBase</a> = <a class="el" href="classapi_1_1v2_1_1KeeprBase.html">api::v2::KeeprBase</a></td>
+          <td class="memname">using <a class="el" href="#a62ac81c874d900289fbf508f81a219c0">KeeprBase</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="keeprbase_8cpp_source.html#l00055">55</a> of file <a class="el" href="keeprbase_8cpp_source.html">keeprbase.cpp</a>.</p>
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line"><a class="code hl_class" href="classapi_1_1v2_1_1KeeprBase.html">api::v2::KeeprBase</a></div>
+<div class="ttc" id="aclassapi_1_1v2_1_1KeeprBase_html"><div class="ttname"><a href="classapi_1_1v2_1_1KeeprBase.html">api::v2::KeeprBase</a></div><div class="ttdoc">Shared base for session/token managers offering session-table and JWT helpers.</div><div class="ttdef"><b>Definition</b> <a href="keeprbase_8hpp_source.html#l00089">keeprbase.hpp:89</a></div></div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="keeprbase_8cpp_source.html#l00071">71</a> of file <a class="el" href="keeprbase_8cpp_source.html">keeprbase.cpp</a>.</p>
 
 </div>
 </div>

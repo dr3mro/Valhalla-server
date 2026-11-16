@@ -16,10 +16,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="192" column="24" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="192" bodyend="-1"/>
+        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="255" column="20" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="255" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structBasicPermissionCache_1_1Entry_1aa4d64f4c1a99f8b22a2be95d0a4a2844" prot="public" static="no" mutable="no">
-        <type><ref refid="classBasicPermissionCache_1abf8817b8abb9f4b29023135bec1916e9" kindref="member">TimePoint</ref></type>
+        <type><ref refid="classBasicPermissionCache_1a38b5bd729bd632f83084ea88809e34fd" kindref="member">TimePoint</ref></type>
         <definition>TimePoint BasicPermissionCache&lt; ClockT &gt;::Entry::expires</definition>
         <argsstring></argsstring>
         <name>expires</name>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="193" column="24" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="193" bodyend="-1"/>
+        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="257" column="15" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="257" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -39,7 +39,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="190" column="5" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="191" bodyend="194"/>
+    <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="254" column="3" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="254" bodyend="259"/>
     <listofallmembers>
       <member refid="structBasicPermissionCache_1_1Entry_1aa4d64f4c1a99f8b22a2be95d0a4a2844" prot="public" virt="non-virtual"><scope>BasicPermissionCache::Entry</scope><name>expires</name></member>
       <member refid="structBasicPermissionCache_1_1Entry_1a5347d94d5d97e1193e67b5947e1f2cbc" prot="public" virt="non-virtual"><scope>BasicPermissionCache::Entry</scope><name>value</name></member>

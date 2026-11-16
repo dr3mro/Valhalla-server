@@ -127,44 +127,57 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('jsonhelper_8cp
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *          toStyledString. All are thin wrappers around the two libraries.</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * WHY THIS FILE MATTERS IN THE SERVER:</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> * This is where the actual conversion work lives. Callers across the API include</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * the header and call these functions to build uniform status/error bodies and</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * to print JSON for logs or responses. Keeping the implementations here (rather</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> * than inline in the header) means callers do not need to depend on the details</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> * of both JSON libraries just to use the helpers.</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> * This is where the actual conversion work lives. Callers across the API</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * include the header and call these functions to build uniform status/error</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * bodies and to print JSON for logs or responses. Keeping the implementations</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> * here (rather than inline in the header) means callers do not need to depend</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> * on the details of both JSON libraries just to use the helpers.</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> * CONCEPTS TO LEARN (for beginners):</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> * - Function overloading: https://en.cppreference.com/w/cpp/language/overload_resolution</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> * - Qualified names (api::v2::JsonHelper::...): https://en.cppreference.com/w/cpp/language/identifiers#Qualified_identifiers</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * - std::string: https://en.cppreference.com/w/cpp/string/basic_string</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * @author Amr Osman &lt;dr3mro@gmail.com&gt;</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> * @date 2026-11-16</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;<a class="code" href="jsonhelper_8hpp.html">jsonhelper.hpp</a>&quot;</span>  <span class="comment">// The declarations of the three JsonHelper static functions implemented below.</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> * - Function overloading:</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> * https://en.cppreference.com/w/cpp/language/overload_resolution</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * - Qualified names (api::v2::JsonHelper::...):</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> * https://en.cppreference.com/w/cpp/language/identifiers#Qualified_identifiers</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * - std::string: https://en.cppreference.com/w/cpp/string/basic_string</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> * @author Amr Osman &lt;dr3mro@gmail.com&gt;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> * @date 2026-11-16</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="foldopen" id="foldopen00027" data-start="{" data-end="}">
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classapi_1_1v2_1_1JsonHelper.html#a641560db2243ef5bca5bb763e98b3b43">   27</a></span>Json::Value <a class="code hl_function" href="classapi_1_1v2_1_1JsonHelper.html#a641560db2243ef5bca5bb763e98b3b43">api::v2::JsonHelper::jsonify</a>(<span class="keyword">const</span> std::string&amp; message)  <span class="comment">// Fully-qualified name identifies which class&#39;s static function this is.</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>{</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">// Uniform single-key shape for simple status and error bodies.</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    Json::Value object;          <span class="comment">// An empty JsonCpp value; assigning to object[&quot;Message&quot;] turns it into a JSON object.</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">object</span>[<span class="stringliteral">&quot;Message&quot;</span>] = message; <span class="comment">// Adds one key/value pair so the body is { &quot;Message&quot;: &quot;...&quot; }.</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordflow">return</span> object;               <span class="comment">// Returns the object by value for the caller to use as a response body.</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>}</div>
-</div>
-<div class="foldopen" id="foldopen00034" data-start="{" data-end="}">
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classapi_1_1v2_1_1JsonHelper.html#ade4746bc7ad2022dcd1caae268066f20">   34</a></span>std::string <a class="code hl_function" href="classapi_1_1v2_1_1JsonHelper.html#a1b5317049b9d7659fea55b9f6c96c379">api::v2::JsonHelper::stringify</a>(<span class="keyword">const</span> jsoncons::json&amp; json)  <span class="comment">// Overload for the jsoncons type used by validation.</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>{</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="comment">// dump_pretty writes into the supplied string; used for validation results.</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    std::string json_string;       <span class="comment">// Empty receiving string; dump_pretty appends the formatted JSON to it.</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    json.dump_pretty(json_string); <span class="comment">// jsoncons fills the string with indented JSON text.</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordflow">return</span> json_string;            <span class="comment">// Hands the finished text back to the caller.</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">// The declarations of the three JsonHelper static functions implemented below.</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &quot;<a class="code" href="jsonhelper_8hpp.html">jsonhelper.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">// Fully-qualified name identifies which</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">// class&#39;s static function this is.</span></div>
+<div class="foldopen" id="foldopen00032" data-start="{" data-end="}">
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classapi_1_1v2_1_1JsonHelper.html#a641560db2243ef5bca5bb763e98b3b43">   32</a></span>Json::Value <a class="code hl_function" href="classapi_1_1v2_1_1JsonHelper.html#a641560db2243ef5bca5bb763e98b3b43">api::v2::JsonHelper::jsonify</a>(<span class="keyword">const</span> std::string&amp; message) {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  <span class="comment">// Uniform single-key shape for simple status and error bodies.</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  Json::Value object;  <span class="comment">// An empty JsonCpp value; assigning to</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                       <span class="comment">// object[&quot;Message&quot;] turns it into a JSON object.</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>  <span class="keywordtype">object</span>[<span class="stringliteral">&quot;Message&quot;</span>] = message;  <span class="comment">// Adds one key/value pair so the body is {</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                                <span class="comment">// &quot;Message&quot;: &quot;...&quot; }.</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <span class="keywordflow">return</span> object;  <span class="comment">// Returns the object by value for the caller to use as a</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                  <span class="comment">// response body.</span></div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>}</div>
 </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classapi_1_1v2_1_1JsonHelper.html#a1b5317049b9d7659fea55b9f6c96c379">   41</a></span>std::string <a class="code hl_function" href="classapi_1_1v2_1_1JsonHelper.html#a1b5317049b9d7659fea55b9f6c96c379">api::v2::JsonHelper::stringify</a>(<span class="keyword">const</span> Json::Value&amp; json) { <span class="keywordflow">return</span> json.toStyledString(); }  <span class="comment">// JsonCpp builds the pretty text directly and returns it.</span></div>
-<div class="ttc" id="aclassapi_1_1v2_1_1JsonHelper_html_a1b5317049b9d7659fea55b9f6c96c379"><div class="ttname"><a href="classapi_1_1v2_1_1JsonHelper.html#a1b5317049b9d7659fea55b9f6c96c379">api::v2::JsonHelper::stringify</a></div><div class="ttdeci">static std::string stringify(const Json::Value &amp;json)</div><div class="ttdoc">Serialises a JsonCpp value to a formatted string.</div><div class="ttdef"><b>Definition</b> <a href="#l00041">jsonhelper.cpp:41</a></div></div>
-<div class="ttc" id="aclassapi_1_1v2_1_1JsonHelper_html_a641560db2243ef5bca5bb763e98b3b43"><div class="ttname"><a href="classapi_1_1v2_1_1JsonHelper.html#a641560db2243ef5bca5bb763e98b3b43">api::v2::JsonHelper::jsonify</a></div><div class="ttdeci">static Json::Value jsonify(const std::string &amp;message)</div><div class="ttdoc">Wraps a message in a JSON object with a single &quot;Message&quot; key.</div><div class="ttdef"><b>Definition</b> <a href="#l00027">jsonhelper.cpp:27</a></div></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">// Overload for the jsoncons type used by validation.</span></div>
+<div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classapi_1_1v2_1_1JsonHelper.html#ade4746bc7ad2022dcd1caae268066f20">   42</a></span>std::string <a class="code hl_function" href="classapi_1_1v2_1_1JsonHelper.html#a1b5317049b9d7659fea55b9f6c96c379">api::v2::JsonHelper::stringify</a>(<span class="keyword">const</span> jsoncons::json&amp; json) {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  <span class="comment">// dump_pretty writes into the supplied string; used for validation results.</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  std::string json_string;  <span class="comment">// Empty receiving string; dump_pretty appends the</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                            <span class="comment">// formatted JSON to it.</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  json.dump_pretty(</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>      json_string);    <span class="comment">// jsoncons fills the string with indented JSON text.</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="keywordflow">return</span> json_string;  <span class="comment">// Hands the finished text back to the caller.</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
+</div>
+<div class="foldopen" id="foldopen00050" data-start="{" data-end="}">
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classapi_1_1v2_1_1JsonHelper.html#a1b5317049b9d7659fea55b9f6c96c379">   50</a></span>std::string <a class="code hl_function" href="classapi_1_1v2_1_1JsonHelper.html#a1b5317049b9d7659fea55b9f6c96c379">api::v2::JsonHelper::stringify</a>(<span class="keyword">const</span> Json::Value&amp; json) {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <span class="keywordflow">return</span> json.toStyledString();</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>}  <span class="comment">// JsonCpp builds the pretty text directly and returns it.</span></div>
+</div>
+<div class="ttc" id="aclassapi_1_1v2_1_1JsonHelper_html_a1b5317049b9d7659fea55b9f6c96c379"><div class="ttname"><a href="classapi_1_1v2_1_1JsonHelper.html#a1b5317049b9d7659fea55b9f6c96c379">api::v2::JsonHelper::stringify</a></div><div class="ttdeci">static std::string stringify(const Json::Value &amp;json)</div><div class="ttdoc">Serialises a JsonCpp value to a formatted string.</div><div class="ttdef"><b>Definition</b> <a href="#l00050">jsonhelper.cpp:50</a></div></div>
+<div class="ttc" id="aclassapi_1_1v2_1_1JsonHelper_html_a641560db2243ef5bca5bb763e98b3b43"><div class="ttname"><a href="classapi_1_1v2_1_1JsonHelper.html#a641560db2243ef5bca5bb763e98b3b43">api::v2::JsonHelper::jsonify</a></div><div class="ttdeci">static Json::Value jsonify(const std::string &amp;message)</div><div class="ttdoc">Wraps a message in a JSON object with a single &quot;Message&quot; key.</div><div class="ttdef"><b>Definition</b> <a href="#l00032">jsonhelper.cpp:32</a></div></div>
 <div class="ttc" id="ajsonhelper_8hpp_html"><div class="ttname"><a href="jsonhelper_8hpp.html">jsonhelper.hpp</a></div><div class="ttdoc">Conversions between JsonCpp, jsoncons and response strings.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

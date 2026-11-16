@@ -18,8 +18,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="600" column="21" bodyfile="src/entities/base/types.hpp" bodystart="600" bodyend="-1"/>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a818a674284397d061b1cee9f60170271" compoundref="entities_2base_2types_8hpp" startline="643" endline="661">StaffData</referencedby>
+        <location file="src/entities/base/types.hpp" line="817" column="10" bodyfile="src/entities/base/types.hpp" bodystart="817" bodyend="-1"/>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a818a674284397d061b1cee9f60170271" compoundref="entities_2base_2types_8hpp" startline="869" endline="895">StaffData</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structapi_1_1v2_1_1Types_1_1StaffData_1a3459bc31d13d7f54c2ff43b7a5553562" prot="public" static="no" mutable="no">
         <type>uint64_t</type>
@@ -34,8 +34,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="605" column="21" bodyfile="src/entities/base/types.hpp" bodystart="605" bodyend="-1"/>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a818a674284397d061b1cee9f60170271" compoundref="entities_2base_2types_8hpp" startline="643" endline="661">StaffData</referencedby>
+        <location file="src/entities/base/types.hpp" line="823" column="14" bodyfile="src/entities/base/types.hpp" bodystart="823" bodyend="-1"/>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a818a674284397d061b1cee9f60170271" compoundref="entities_2base_2types_8hpp" startline="869" endline="895">StaffData</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structapi_1_1v2_1_1Types_1_1StaffData_1a7bda1a424286fc0ad26f050d4146e6e9" prot="public" static="no" mutable="no">
         <type>uint64_t</type>
@@ -50,8 +50,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="610" column="21" bodyfile="src/entities/base/types.hpp" bodystart="610" bodyend="-1"/>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a818a674284397d061b1cee9f60170271" compoundref="entities_2base_2types_8hpp" startline="643" endline="661">StaffData</referencedby>
+        <location file="src/entities/base/types.hpp" line="830" column="14" bodyfile="src/entities/base/types.hpp" bodystart="830" bodyend="-1"/>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a818a674284397d061b1cee9f60170271" compoundref="entities_2base_2types_8hpp" startline="869" endline="895">StaffData</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structapi_1_1v2_1_1Types_1_1StaffData_1a582e041282df2054db82e1239100aa10" prot="public" static="no" mutable="no">
         <type>std::string</type>
@@ -66,8 +66,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="615" column="21" bodyfile="src/entities/base/types.hpp" bodystart="615" bodyend="-1"/>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a818a674284397d061b1cee9f60170271" compoundref="entities_2base_2types_8hpp" startline="643" endline="661">StaffData</referencedby>
+        <location file="src/entities/base/types.hpp" line="835" column="17" bodyfile="src/entities/base/types.hpp" bodystart="835" bodyend="-1"/>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a818a674284397d061b1cee9f60170271" compoundref="entities_2base_2types_8hpp" startline="869" endline="895">StaffData</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structapi_1_1v2_1_1Types_1_1StaffData_1a934cdbfb066d40a61dc51340a2678e7f" prot="public" static="no" mutable="no">
         <type>std::string</type>
@@ -82,8 +82,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="620" column="21" bodyfile="src/entities/base/types.hpp" bodystart="620" bodyend="-1"/>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a818a674284397d061b1cee9f60170271" compoundref="entities_2base_2types_8hpp" startline="643" endline="661">StaffData</referencedby>
+        <location file="src/entities/base/types.hpp" line="840" column="17" bodyfile="src/entities/base/types.hpp" bodystart="840" bodyend="-1"/>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a818a674284397d061b1cee9f60170271" compoundref="entities_2base_2types_8hpp" startline="869" endline="895">StaffData</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structapi_1_1v2_1_1Types_1_1StaffData_1adce6b262c001a216cef9d1281fe4f272" prot="public" static="no" mutable="no">
         <type>std::string</type>
@@ -98,8 +98,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="625" column="21" bodyfile="src/entities/base/types.hpp" bodystart="625" bodyend="-1"/>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a818a674284397d061b1cee9f60170271" compoundref="entities_2base_2types_8hpp" startline="643" endline="661">StaffData</referencedby>
+        <location file="src/entities/base/types.hpp" line="845" column="17" bodyfile="src/entities/base/types.hpp" bodystart="845" bodyend="-1"/>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a818a674284397d061b1cee9f60170271" compoundref="entities_2base_2types_8hpp" startline="869" endline="895">StaffData</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structapi_1_1v2_1_1Types_1_1StaffData_1a5b9177176c26303a73791ec96a8f7dcb" prot="public" static="no" mutable="no">
         <type>std::string</type>
@@ -114,8 +114,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="630" column="21" bodyfile="src/entities/base/types.hpp" bodystart="630" bodyend="-1"/>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a818a674284397d061b1cee9f60170271" compoundref="entities_2base_2types_8hpp" startline="643" endline="661">StaffData</referencedby>
+        <location file="src/entities/base/types.hpp" line="850" column="17" bodyfile="src/entities/base/types.hpp" bodystart="850" bodyend="-1"/>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a818a674284397d061b1cee9f60170271" compoundref="entities_2base_2types_8hpp" startline="869" endline="895">StaffData</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structapi_1_1v2_1_1Types_1_1StaffData_1abb3a4632b592b92f0c949c156cc0256a" prot="public" static="no" mutable="no">
         <type>std::string</type>
@@ -130,9 +130,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="635" column="21" bodyfile="src/entities/base/types.hpp" bodystart="635" bodyend="-1"/>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a818a674284397d061b1cee9f60170271" compoundref="entities_2base_2types_8hpp" startline="643" endline="661">StaffData</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a45122c90e774a3c1e67316590dd15245" compoundref="entities_2base_2types_8hpp" startline="671" endline="688">toInviteJson</referencedby>
+        <location file="src/entities/base/types.hpp" line="855" column="17" bodyfile="src/entities/base/types.hpp" bodystart="855" bodyend="-1"/>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a818a674284397d061b1cee9f60170271" compoundref="entities_2base_2types_8hpp" startline="869" endline="895">StaffData</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a45122c90e774a3c1e67316590dd15245" compoundref="entities_2base_2types_8hpp" startline="910" endline="941">toInviteJson</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -142,7 +142,8 @@
         <argsstring></argsstring>
         <name>cfg_</name>
         <qualifiedname>api::v2::Types::StaffData::cfg_</qualifiedname>
-        <initializer>= <ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject</ref>&lt;<ref refid="classConfigurator" kindref="compound">Configurator</ref>&gt;()</initializer>
+        <initializer>                       =
+<ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject</ref>&lt;<ref refid="classConfigurator" kindref="compound">Configurator</ref>&gt;()</initializer>
         <briefdescription>
 <para>Shared configurator used to read server and frontend settings. </para>
         </briefdescription>
@@ -150,15 +151,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="698" column="31" bodyfile="src/entities/base/types.hpp" bodystart="698" bodyend="-1"/>
+        <location file="src/entities/base/types.hpp" line="953" column="27" bodyfile="src/entities/base/types.hpp" bodystart="953" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structapi_1_1v2_1_1Types_1_1StaffData_1a195401809f6f777e4ccd460ddda407c9" prot="private" static="no" mutable="no">
-        <type>const <ref refid="classConfigurator_1aec113448232bb2cde090d19e8b2b716e" kindref="member">Configurator::ServerConfig</ref> &amp;</type>
+        <type>const <ref refid="classConfigurator_1a927a53596c80ae2c5f02c21f85af9d83" kindref="member">Configurator::ServerConfig</ref> &amp;</type>
         <definition>const Configurator::ServerConfig&amp; api::v2::Types::StaffData::servercfg_</definition>
         <argsstring></argsstring>
         <name>servercfg_</name>
         <qualifiedname>api::v2::Types::StaffData::servercfg_</qualifiedname>
-        <initializer>= <ref refid="structapi_1_1v2_1_1Types_1_1StaffData_1a8762db475d5d6d78ed62d3cd947ec0ad" kindref="member">cfg_</ref>-&gt;get&lt;<ref refid="classConfigurator_1aec113448232bb2cde090d19e8b2b716e" kindref="member">Configurator::ServerConfig</ref>&gt;()</initializer>
+        <initializer>                                        =
+<ref refid="structapi_1_1v2_1_1Types_1_1StaffData_1a8762db475d5d6d78ed62d3cd947ec0ad" kindref="member">cfg_</ref>-&gt;get&lt;<ref refid="classConfigurator_1a927a53596c80ae2c5f02c21f85af9d83" kindref="member">Configurator::ServerConfig</ref>&gt;()</initializer>
         <briefdescription>
 <para><ref refid="classServer" kindref="compound">Server</ref> configuration, source of project_name. </para>
         </briefdescription>
@@ -166,16 +168,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="703" column="44" bodyfile="src/entities/base/types.hpp" bodystart="703" bodyend="-1"/>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a818a674284397d061b1cee9f60170271" compoundref="entities_2base_2types_8hpp" startline="643" endline="661">StaffData</referencedby>
+        <location file="src/entities/base/types.hpp" line="961" column="38" bodyfile="src/entities/base/types.hpp" bodystart="961" bodyend="-1"/>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a818a674284397d061b1cee9f60170271" compoundref="entities_2base_2types_8hpp" startline="869" endline="895">StaffData</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structapi_1_1v2_1_1Types_1_1StaffData_1a37f2a8adfb205f92804835dd6d8e242f" prot="private" static="no" mutable="no">
-        <type>const <ref refid="classConfigurator_1a347b5a0b1eea515a10e00751bcfa1d4d" kindref="member">Configurator::FrontEndConfig</ref> &amp;</type>
+        <type>const <ref refid="classConfigurator_1a8b3e99fef2ad5bf59793fa235a97aa3c" kindref="member">Configurator::FrontEndConfig</ref> &amp;</type>
         <definition>const Configurator::FrontEndConfig&amp; api::v2::Types::StaffData::frontendcfg_</definition>
         <argsstring></argsstring>
         <name>frontendcfg_</name>
         <qualifiedname>api::v2::Types::StaffData::frontendcfg_</qualifiedname>
-        <initializer>= <ref refid="structapi_1_1v2_1_1Types_1_1StaffData_1a8762db475d5d6d78ed62d3cd947ec0ad" kindref="member">cfg_</ref>-&gt;get&lt;<ref refid="classConfigurator_1a347b5a0b1eea515a10e00751bcfa1d4d" kindref="member">Configurator::FrontEndConfig</ref>&gt;()</initializer>
+        <initializer>                                            =
+<ref refid="structapi_1_1v2_1_1Types_1_1StaffData_1a8762db475d5d6d78ed62d3cd947ec0ad" kindref="member">cfg_</ref>-&gt;get&lt;<ref refid="classConfigurator_1a8b3e99fef2ad5bf59793fa235a97aa3c" kindref="member">Configurator::FrontEndConfig</ref>&gt;()</initializer>
         <briefdescription>
 <para>Frontend configuration, source of the invitation link host/port/path. </para>
         </briefdescription>
@@ -183,8 +186,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="708" column="44" bodyfile="src/entities/base/types.hpp" bodystart="708" bodyend="-1"/>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a45122c90e774a3c1e67316590dd15245" compoundref="entities_2base_2types_8hpp" startline="671" endline="688">toInviteJson</referencedby>
+        <location file="src/entities/base/types.hpp" line="970" column="40" bodyfile="src/entities/base/types.hpp" bodystart="970" bodyend="-1"/>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1StaffData_1a45122c90e774a3c1e67316590dd15245" compoundref="entities_2base_2types_8hpp" startline="910" endline="941">toInviteJson</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -217,17 +220,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="643" column="9" bodyfile="src/entities/base/types.hpp" bodystart="643" bodyend="661"/>
-        <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1a934cdbfb066d40a61dc51340a2678e7f" compoundref="entities_2base_2types_8hpp" startline="620">email</references>
-        <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1a7bda1a424286fc0ad26f050d4146e6e9" compoundref="entities_2base_2types_8hpp" startline="610">entity_id</references>
-        <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1a5b9177176c26303a73791ec96a8f7dcb" compoundref="entities_2base_2types_8hpp" startline="630">entity_name</references>
-        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
-        <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1adce6b262c001a216cef9d1281fe4f272" compoundref="entities_2base_2types_8hpp" startline="625">nominee_group</references>
-        <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1a3459bc31d13d7f54c2ff43b7a5553562" compoundref="entities_2base_2types_8hpp" startline="605">nominee_id</references>
-        <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1a55ae36cc256cb39ff371140e5dbe7ddd" compoundref="entities_2base_2types_8hpp" startline="600">parse_status</references>
-        <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1abb3a4632b592b92f0c949c156cc0256a" compoundref="entities_2base_2types_8hpp" startline="635">project_name</references>
-        <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1a582e041282df2054db82e1239100aa10" compoundref="entities_2base_2types_8hpp" startline="615">role</references>
-        <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1a195401809f6f777e4ccd460ddda407c9" compoundref="entities_2base_2types_8hpp" startline="703">servercfg_</references>
+        <location file="src/entities/base/types.hpp" line="869" column="5" bodyfile="src/entities/base/types.hpp" bodystart="869" bodyend="895"/>
+        <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1a934cdbfb066d40a61dc51340a2678e7f" compoundref="entities_2base_2types_8hpp" startline="840">email</references>
+        <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1a7bda1a424286fc0ad26f050d4146e6e9" compoundref="entities_2base_2types_8hpp" startline="830">entity_id</references>
+        <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1a5b9177176c26303a73791ec96a8f7dcb" compoundref="entities_2base_2types_8hpp" startline="850">entity_name</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
+        <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1adce6b262c001a216cef9d1281fe4f272" compoundref="entities_2base_2types_8hpp" startline="845">nominee_group</references>
+        <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1a3459bc31d13d7f54c2ff43b7a5553562" compoundref="entities_2base_2types_8hpp" startline="823">nominee_id</references>
+        <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1a55ae36cc256cb39ff371140e5dbe7ddd" compoundref="entities_2base_2types_8hpp" startline="817">parse_status</references>
+        <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1abb3a4632b592b92f0c949c156cc0256a" compoundref="entities_2base_2types_8hpp" startline="855">project_name</references>
+        <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1a582e041282df2054db82e1239100aa10" compoundref="entities_2base_2types_8hpp" startline="835">role</references>
+        <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1a195401809f6f777e4ccd460ddda407c9" compoundref="entities_2base_2types_8hpp" startline="961">servercfg_</references>
       </memberdef>
       <memberdef kind="function" id="structapi_1_1v2_1_1Types_1_1StaffData_1a45122c90e774a3c1e67316590dd15245" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -258,10 +261,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="671" column="14" bodyfile="src/entities/base/types.hpp" bodystart="671" bodyend="688"/>
-        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
-        <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1a37f2a8adfb205f92804835dd6d8e242f" compoundref="entities_2base_2types_8hpp" startline="708">frontendcfg_</references>
-        <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1abb3a4632b592b92f0c949c156cc0256a" compoundref="entities_2base_2types_8hpp" startline="635">project_name</references>
+        <location file="src/entities/base/types.hpp" line="910" column="10" bodyfile="src/entities/base/types.hpp" bodystart="910" bodyend="941"/>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
+        <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1a37f2a8adfb205f92804835dd6d8e242f" compoundref="entities_2base_2types_8hpp" startline="970">frontendcfg_</references>
+        <references refid="structapi_1_1v2_1_1Types_1_1StaffData_1abb3a4632b592b92f0c949c156cc0256a" compoundref="entities_2base_2types_8hpp" startline="855">project_name</references>
       </memberdef>
       <memberdef kind="function" id="structapi_1_1v2_1_1Types_1_1StaffData_1a5f84bb5253746416586719750ca7cb03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -276,7 +279,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="692" column="9"/>
+        <location file="src/entities/base/types.hpp" line="946" column="5"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -287,7 +290,7 @@
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="src/entities/base/types.hpp" line="595" column="5" bodyfile="src/entities/base/types.hpp" bodystart="596" bodyend="709"/>
+    <location file="src/entities/base/types.hpp" line="813" column="3" bodyfile="src/entities/base/types.hpp" bodystart="813" bodyend="975"/>
     <listofallmembers>
       <member refid="structapi_1_1v2_1_1Types_1_1StaffData_1a8762db475d5d6d78ed62d3cd947ec0ad" prot="private" virt="non-virtual"><scope>api::v2::Types::StaffData</scope><name>cfg_</name></member>
       <member refid="structapi_1_1v2_1_1Types_1_1StaffData_1a934cdbfb066d40a61dc51340a2678e7f" prot="public" virt="non-virtual"><scope>api::v2::Types::StaffData</scope><name>email</name></member>

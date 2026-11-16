@@ -70,7 +70,7 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -92,13 +92,13 @@
         </childnode>
         <childnode refid="93" relation="include">
         </childnode>
-        <childnode refid="62" relation="include">
+        <childnode refid="69" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
         <childnode refid="53" relation="include">
         </childnode>
-        <childnode refid="56" relation="include">
+        <childnode refid="54" relation="include">
         </childnode>
       </node>
       <node id="6">
@@ -134,7 +134,7 @@
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="72" relation="include">
+        <childnode refid="71" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
@@ -156,7 +156,7 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -184,7 +184,7 @@
         </childnode>
         <childnode refid="78" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
@@ -228,7 +228,7 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -248,6 +248,10 @@
         </childnode>
         <childnode refid="95" relation="include">
         </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
         <childnode refid="113" relation="include">
         </childnode>
         <childnode refid="115" relation="include">
@@ -256,11 +260,7 @@
         </childnode>
         <childnode refid="117" relation="include">
         </childnode>
-        <childnode refid="93" relation="include">
-        </childnode>
         <childnode refid="46" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
         </childnode>
       </node>
       <node id="118">
@@ -274,7 +274,7 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -290,33 +290,33 @@
         </childnode>
         <childnode refid="90" relation="include">
         </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
         <childnode refid="119" relation="include">
         </childnode>
         <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="122" relation="include">
         </childnode>
         <childnode refid="123" relation="include">
         </childnode>
-        <childnode refid="93" relation="include">
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="53" relation="include">
         </childnode>
         <childnode refid="107" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="61" relation="include">
-        </childnode>
-        <childnode refid="64" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="46" relation="include">
         </childnode>
       </node>
       <node id="124">
@@ -332,7 +332,7 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -352,6 +352,10 @@
         </childnode>
         <childnode refid="126" relation="include">
         </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
         <childnode refid="129" relation="include">
         </childnode>
         <childnode refid="110" relation="include">
@@ -370,11 +374,7 @@
         </childnode>
         <childnode refid="128" relation="include">
         </childnode>
-        <childnode refid="93" relation="include">
-        </childnode>
         <childnode refid="46" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
         </childnode>
       </node>
       <node id="136">
@@ -388,7 +388,7 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
@@ -410,7 +410,7 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
@@ -430,7 +430,7 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -450,6 +450,10 @@
         </childnode>
         <childnode refid="141" relation="include">
         </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
         <childnode refid="142" relation="include">
         </childnode>
         <childnode refid="144" relation="include">
@@ -458,11 +462,7 @@
         </childnode>
         <childnode refid="146" relation="include">
         </childnode>
-        <childnode refid="93" relation="include">
-        </childnode>
         <childnode refid="46" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
         </childnode>
       </node>
       <node id="147">
@@ -478,7 +478,7 @@
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -500,6 +500,8 @@
         </childnode>
         <childnode refid="149" relation="include">
         </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
         <childnode refid="142" relation="include">
         </childnode>
         <childnode refid="144" relation="include">
@@ -508,43 +510,7 @@
         </childnode>
         <childnode refid="146" relation="include">
         </childnode>
-        <childnode refid="93" relation="include">
-        </childnode>
         <childnode refid="46" relation="include">
-        </childnode>
-      </node>
-      <node id="49">
-        <label>concurrency/boundedexecutor.hpp</label>
-        <link refid="boundedexecutor_8hpp"/>
-        <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="41" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="43" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="50" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="51" relation="include">
-        </childnode>
-        <childnode refid="52" relation="include">
-        </childnode>
-        <childnode refid="53" relation="include">
         </childnode>
       </node>
       <node id="15">
@@ -618,9 +584,9 @@
         </childnode>
         <childnode refid="96" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
+        <childnode refid="52" relation="include">
         </childnode>
       </node>
       <node id="95">
@@ -630,11 +596,11 @@
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
-        </childnode>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="56" relation="include">
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
         </childnode>
       </node>
       <node id="97">
@@ -666,7 +632,11 @@
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
         <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="98" relation="include">
         </childnode>
@@ -678,11 +648,7 @@
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="64" relation="include">
-        </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
         <childnode refid="108" relation="include">
         </childnode>
@@ -716,17 +682,17 @@
         </childnode>
         <childnode refid="112" relation="include">
         </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
         <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
         <childnode refid="52" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="55" relation="include">
         </childnode>
         <childnode refid="108" relation="include">
         </childnode>
@@ -742,11 +708,11 @@
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
-        </childnode>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="56" relation="include">
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
         </childnode>
       </node>
       <node id="125">
@@ -770,23 +736,21 @@
         <link refid="cliniccontrollerbase_8hpp"/>
         <childnode refid="127" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
-        </childnode>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="56" relation="include">
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
         </childnode>
       </node>
-      <node id="61">
+      <node id="59">
         <label>controllers/databasecontroller/databasecontroller.hpp</label>
         <link refid="databasecontroller_8hpp"/>
-        <childnode refid="62" relation="include">
-        </childnode>
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
@@ -798,11 +762,11 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="63" relation="include">
+        <childnode refid="60" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
@@ -812,21 +776,23 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
         <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="64" relation="include">
-        </childnode>
-        <childnode refid="66" relation="include">
         </childnode>
         <childnode refid="68" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="69" relation="include">
         </childnode>
-        <childnode refid="70" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
-        <childnode refid="71" relation="include">
+        <childnode refid="70" relation="include">
         </childnode>
         <childnode refid="26" relation="include">
         </childnode>
@@ -848,15 +814,15 @@
         </childnode>
         <childnode refid="97" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
         <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
       </node>
       <node id="112">
@@ -868,11 +834,11 @@
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
-        </childnode>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="56" relation="include">
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
         </childnode>
       </node>
       <node id="140">
@@ -890,9 +856,9 @@
         </childnode>
         <childnode refid="141" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
+        <childnode refid="52" relation="include">
         </childnode>
       </node>
       <node id="141">
@@ -906,11 +872,11 @@
         </childnode>
         <childnode refid="95" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
-        </childnode>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="56" relation="include">
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
         </childnode>
       </node>
       <node id="148">
@@ -920,13 +886,13 @@
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
         <childnode refid="97" relation="include">
         </childnode>
         <childnode refid="149" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
         </childnode>
       </node>
       <node id="149">
@@ -936,15 +902,15 @@
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
-        <childnode refid="56" relation="include">
+        <childnode refid="54" relation="include">
         </childnode>
       </node>
-      <node id="64">
+      <node id="61">
         <label>database/asyncdbclient.hpp</label>
         <link refid="asyncdbclient_8hpp"/>
-        <childnode refid="65" relation="include">
+        <childnode refid="62" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -953,10 +919,10 @@
         <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="66">
+      <node id="63">
         <label>database/asyncresultmapper.hpp</label>
         <link refid="asyncresultmapper_8hpp"/>
-        <childnode refid="67" relation="include">
+        <childnode refid="64" relation="include">
         </childnode>
         <childnode refid="34" relation="include">
         </childnode>
@@ -967,22 +933,22 @@
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="68">
+      <node id="65">
         <label>database/asyncsqlbinder.hpp</label>
         <link refid="asyncsqlbinder_8hpp"/>
-        <childnode refid="65" relation="include">
+        <childnode refid="62" relation="include">
         </childnode>
-        <childnode refid="69" relation="include">
+        <childnode refid="66" relation="include">
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="63" relation="include">
+        <childnode refid="60" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
+        <childnode refid="67" relation="include">
         </childnode>
       </node>
       <node id="29">
@@ -993,7 +959,7 @@
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="70">
+      <node id="68">
         <label>database/databasehandler.hpp</label>
         <link refid="databasehandler_8hpp"/>
         <childnode refid="5" relation="include">
@@ -1008,10 +974,10 @@
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
       </node>
-      <node id="62">
+      <node id="69">
         <label>database/dbprobe.hpp</label>
         <link refid="dbprobe_8hpp"/>
       </node>
@@ -1088,7 +1054,7 @@
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="63" relation="include">
+        <childnode refid="60" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
@@ -1134,7 +1100,7 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
+        <childnode refid="67" relation="include">
         </childnode>
         <childnode refid="102" relation="include">
         </childnode>
@@ -1166,9 +1132,9 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
+        <childnode refid="67" relation="include">
         </childnode>
-        <childnode refid="61" relation="include">
+        <childnode refid="59" relation="include">
         </childnode>
         <childnode refid="103" relation="include">
         </childnode>
@@ -1246,7 +1212,7 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="73" relation="include">
+        <childnode refid="72" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
@@ -1416,29 +1382,29 @@
         <link refid="dosdetector_8hpp"/>
         <childnode refid="38" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
         <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="42" relation="include">
         </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
-        </childnode>
-        <childnode refid="44" relation="include">
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
@@ -1468,35 +1434,35 @@
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
         <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="54" relation="include">
-        </childnode>
-        <childnode refid="57" relation="include">
-        </childnode>
-        <childnode refid="76" relation="include">
-        </childnode>
-        <childnode refid="72" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="51" relation="include">
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
         <childnode refid="53" relation="include">
         </childnode>
-        <childnode refid="56" relation="include">
+        <childnode refid="54" relation="include">
         </childnode>
       </node>
-      <node id="58">
+      <node id="56">
         <label>gatekeeper/keeprbase/keeprbase.hpp</label>
         <link refid="keeprbase_8hpp"/>
-        <childnode refid="59" relation="include">
+        <childnode refid="57" relation="include">
         </childnode>
-        <childnode refid="60" relation="include">
+        <childnode refid="58" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
@@ -1510,16 +1476,16 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="61" relation="include">
-        </childnode>
-        <childnode refid="72" relation="include">
+        <childnode refid="59" relation="include">
         </childnode>
         <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
       </node>
-      <node id="73">
+      <node id="72">
         <label>gatekeeper/passwordcrypt/passwordcrypt.hpp</label>
         <link refid="passwordcrypt_8hpp"/>
         <childnode refid="12" relation="include">
@@ -1536,10 +1502,10 @@
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
       </node>
-      <node id="54">
+      <node id="51">
         <label>gatekeeper/permissionmanager/permissionmanager.hpp</label>
         <link refid="permissionmanager_8hpp"/>
         <childnode refid="20" relation="include">
@@ -1548,16 +1514,16 @@
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
-        </childnode>
         <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
         </childnode>
         <childnode refid="53" relation="include">
         </childnode>
-        <childnode refid="56" relation="include">
+        <childnode refid="54" relation="include">
         </childnode>
       </node>
-      <node id="57">
+      <node id="55">
         <label>gatekeeper/sessionmanager/sessionmanager.hpp</label>
         <link refid="sessionmanager_8hpp"/>
         <childnode refid="19" relation="include">
@@ -1568,30 +1534,30 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="58" relation="include">
-        </childnode>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="73" relation="include">
+        <childnode refid="56" relation="include">
         </childnode>
         <childnode refid="72" relation="include">
         </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
         <childnode refid="46" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
-        <childnode refid="74" relation="include">
+        <childnode refid="73" relation="include">
         </childnode>
       </node>
       <node id="76">
         <label>gatekeeper/tokenmanager/tokenmanager.hpp</label>
         <link refid="tokenmanager_8hpp"/>
-        <childnode refid="58" relation="include">
-        </childnode>
         <childnode refid="31" relation="include">
         </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
       </node>
-      <node id="72">
+      <node id="71">
         <label>gatekeeper/types.hpp</label>
         <link refid="gatekeeper_2types_8hpp"/>
         <childnode refid="19" relation="include">
@@ -1616,7 +1582,7 @@
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
+        <childnode refid="67" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
@@ -1650,7 +1616,7 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
+        <childnode refid="67" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -1696,7 +1662,7 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="64" relation="include">
+        <childnode refid="61" relation="include">
         </childnode>
         <childnode refid="93" relation="include">
         </childnode>
@@ -1738,13 +1704,13 @@
       <node id="46">
         <label>store/store.hpp</label>
         <link refid="store_8hpp"/>
-        <childnode refid="38" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
@@ -1771,13 +1737,13 @@
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="52">
+      <node id="50">
         <label>utils/global/callback.hpp</label>
         <link refid="callback_8hpp"/>
-        <childnode refid="41" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
       </node>
-      <node id="55">
+      <node id="52">
         <label>utils/global/concepts.hpp</label>
         <link refid="concepts_8hpp"/>
         <childnode refid="21" relation="include">
@@ -1807,7 +1773,7 @@
         <childnode refid="45" relation="include">
         </childnode>
       </node>
-      <node id="56">
+      <node id="54">
         <label>utils/global/requester.hpp</label>
         <link refid="requester_8hpp"/>
         <childnode refid="20" relation="include">
@@ -1817,7 +1783,7 @@
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="71">
+      <node id="70">
         <label>utils/global/types.hpp</label>
         <link refid="utils_2global_2types_8hpp"/>
         <childnode refid="13" relation="include">
@@ -1831,20 +1797,20 @@
         <childnode refid="35" relation="include">
         </childnode>
       </node>
-      <node id="74">
+      <node id="73">
         <label>utils/memcache/memcache.hpp</label>
         <link refid="memcache_8hpp"/>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
-        <childnode refid="75" relation="include">
+        <childnode refid="74" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="50" relation="include">
+        <childnode refid="75" relation="include">
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
@@ -1868,7 +1834,7 @@
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="71" relation="include">
+        <childnode refid="70" relation="include">
         </childnode>
       </node>
       <node id="107">
@@ -1890,7 +1856,7 @@
         </childnode>
         <childnode refid="53" relation="include">
         </childnode>
-        <childnode refid="71" relation="include">
+        <childnode refid="70" relation="include">
         </childnode>
       </node>
       <node id="100">
@@ -1899,7 +1865,7 @@
       <node id="137">
         <label>api_html.hpp</label>
       </node>
-      <node id="38">
+      <node id="39">
         <label>atomic</label>
       </node>
       <node id="105">
@@ -1908,7 +1874,10 @@
       <node id="19">
         <label>chrono</label>
       </node>
-      <node id="39">
+      <node id="49">
+        <label>concurrency/boundedexecutor.hpp</label>
+      </node>
+      <node id="40">
         <label>condition_variable</label>
       </node>
       <node id="106">
@@ -1923,7 +1892,7 @@
       <node id="84">
         <label>cstdlib</label>
       </node>
-      <node id="40">
+      <node id="41">
         <label>deque</label>
       </node>
       <node id="33">
@@ -1956,13 +1925,13 @@
       <node id="10">
         <label>drogon/drogon_callbacks.h</label>
       </node>
-      <node id="65">
+      <node id="62">
         <label>drogon/orm/DbClient.h</label>
       </node>
-      <node id="67">
+      <node id="64">
         <label>drogon/orm/Result.h</label>
       </node>
-      <node id="69">
+      <node id="66">
         <label>drogon/orm/SqlBinder.h</label>
       </node>
       <node id="127">
@@ -1986,10 +1955,10 @@
       <node id="18">
         <label>fmt/ranges.h</label>
       </node>
-      <node id="41">
+      <node id="42">
         <label>functional</label>
       </node>
-      <node id="42">
+      <node id="43">
         <label>future</label>
       </node>
       <node id="85">
@@ -2007,25 +1976,25 @@
       <node id="35">
         <label>jsoncons/json.hpp</label>
       </node>
-      <node id="59">
+      <node id="57">
         <label>jwt-cpp/jwt.h</label>
       </node>
-      <node id="60">
+      <node id="58">
         <label>jwt-cpp/traits/kazuho-picojson/traits.h</label>
       </node>
-      <node id="75">
+      <node id="74">
         <label>list</label>
       </node>
       <node id="5">
         <label>memory</label>
       </node>
-      <node id="43">
+      <node id="44">
         <label>mutex</label>
       </node>
       <node id="12">
         <label>optional</label>
       </node>
-      <node id="63">
+      <node id="60">
         <label>pqxx/pqxx</label>
       </node>
       <node id="154">
@@ -2055,7 +2024,7 @@
       <node id="99">
         <label>sys/types.h</label>
       </node>
-      <node id="50">
+      <node id="75">
         <label>thread</label>
       </node>
       <node id="27">
@@ -2082,10 +2051,10 @@
       <node id="89">
         <label>variant</label>
       </node>
-      <node id="51">
+      <node id="67">
         <label>vector</label>
       </node>
-      <node id="44">
+      <node id="38">
         <label>xxhash.h</label>
       </node>
     </incdepgraph>
@@ -2110,193 +2079,375 @@
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
 <codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>server.cpp</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Implementation<sp/>of<sp/>Server:<sp/>Drogon<sp/>configuration,<sp/>request<sp/>hooks,<sp/>and<sp/>shutdown<sp/>sequencing.</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>file<sp/>turns<sp/>the<sp/>Server<sp/>declaration<sp/>into<sp/>working<sp/>code.<sp/>It<sp/>builds<sp/>the<sp/>Drogon<sp/>application<sp/>—<sp/>listener,</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>thread<sp/>count,<sp/>log<sp/>level,<sp/>a<sp/>custom<sp/>404<sp/>page<sp/>—<sp/>and<sp/>registers<sp/>two<sp/>global<sp/>hooks:<sp/>one<sp/>that<sp/>answers<sp/>CORS</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>preflights<sp/>and<sp/>rejects<sp/>unusual<sp/>HTTP<sp/>methods<sp/>before<sp/>routing,<sp/>and<sp/>one<sp/>that<sp/>adds<sp/>CORS<sp/>headers<sp/>to<sp/>every</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>response.<sp/>It<sp/>also<sp/>prints<sp/>the<sp/>startup<sp/>banner<sp/>and,<sp/>after<sp/>the<sp/>event<sp/>loops<sp/>stop,<sp/>drains<sp/>the<sp/>database<sp/>and</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>password<sp/>worker<sp/>pools<sp/>in<sp/>a<sp/>safe<sp/>order.</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>the<sp/>file<sp/>that<sp/>actually<sp/>boots<sp/>the<sp/>web<sp/>server.<sp/>main()<sp/>calls<sp/>Server::run(),<sp/>and<sp/>the<sp/>code<sp/>here<sp/>is<sp/>what<sp/>opens<sp/>the</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>listening<sp/>port<sp/>and<sp/>starts<sp/>Drogon&apos;s<sp/>event<sp/>loops<sp/>so<sp/>HTTP<sp/>requests<sp/>can<sp/>be<sp/>served.<sp/>It<sp/>also<sp/>contains<sp/>the<sp/>two<sp/>cross-cutting</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>request<sp/>rules<sp/>(CORS<sp/>and<sp/>allowed<sp/>methods)<sp/>that<sp/>apply<sp/>to<sp/>every<sp/>endpoint,<sp/>so<sp/>individual<sp/>controllers<sp/>do<sp/>not<sp/>have<sp/>to</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>repeat<sp/>them.<sp/>Finally,<sp/>it<sp/>owns<sp/>the<sp/>shutdown<sp/>order;<sp/>without<sp/>it,<sp/>worker<sp/>threads<sp/>could<sp/>be<sp/>destroyed<sp/>while<sp/>they<sp/>still<sp/>had</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>queued<sp/>work,<sp/>causing<sp/>crashes<sp/>at<sp/>exit.</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>Lambda<sp/>expressions<sp/>(the<sp/>inline<sp/>anonymous<sp/>functions<sp/>used<sp/>as<sp/>callbacks):<sp/>https://en.cppreference.com/w/cpp/language/lambda</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>Move<sp/>semantics<sp/>and<sp/>std::move:<sp/>https://en.cppreference.com/w/cpp/utility/move</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>Drogon&apos;s<sp/>application<sp/>and<sp/>advice<sp/>hooks:<sp/>https://github.com/drogonframework/drogon</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
-<codeline lineno="25"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="server_8hpp" kindref="compound">server.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>class&apos;s<sp/>own<sp/>declaration<sp/>is<sp/>always<sp/>included<sp/>first.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpAppFramework.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>drogon::app(),<sp/>the<sp/>single<sp/>global<sp/>framework<sp/>object<sp/>we<sp/>configure<sp/>and<sp/>run</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpRequest.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>drogon::HttpRequestPtr,<sp/>used<sp/>by<sp/>the<sp/>two<sp/>advice<sp/>hooks<sp/>below</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpResponse.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>drogon::HttpResponse<sp/>and<sp/>the<sp/>newHttpResponse/newHttpJsonResponse<sp/>factories</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpTypes.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>status<sp/>constants<sp/>such<sp/>as<sp/>k204NoContent<sp/>and<sp/>k405MethodNotAllowed</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/drogon.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>an<sp/>umbrella<sp/>header<sp/>that<sp/>pulls<sp/>in<sp/>the<sp/>rest<sp/>of<sp/>the<sp/>Drogon<sp/>framework</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/drogon_callbacks.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>AdviceCallback<sp/>and<sp/>AdviceChainCallback<sp/>used<sp/>by<sp/>pre-routing<sp/>advice</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/color.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>fmt::color<sp/>values<sp/>used<sp/>when<sp/>printing<sp/>the<sp/>coloured<sp/>banner</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/core.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>fmt::format<sp/>and<sp/>fmt::print<sp/>used<sp/>by<sp/>messages<sp/>and<sp/>the<sp/>banner</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/format.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>the<sp/>remaining<sp/>fmt<sp/>formatting<sp/>helpers</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;trantor/utils/Logger.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>trantor::Logger::LogLevel<sp/>used<sp/>when<sp/>setting<sp/>the<sp/>framework<sp/>log<sp/>level</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdlib&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>EXIT_SUCCESS<sp/>and<sp/>EXIT_FAILURE,<sp/>the<sp/>exit<sp/>status<sp/>codes</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;exception&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>std::exception,<sp/>the<sp/>type<sp/>caught<sp/>around<sp/>startup<sp/>and<sp/>shutdown</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>std::cout<sp/>and<sp/>std::flush<sp/>used<sp/>to<sp/>print<sp/>the<sp/>banner</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>std::make_shared,<sp/>used<sp/>to<sp/>create<sp/>the<sp/>filter<sp/>and<sp/>middleware<sp/>objects</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>std::string<sp/>and<sp/>std::to_string<sp/>used<sp/>throughout<sp/>this<sp/>file</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>std::move,<sp/>used<sp/>to<sp/>invoke<sp/>the<sp/>advice<sp/>callbacks<sp/>exactly<sp/>once</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Including<sp/>this<sp/>header<sp/>makes<sp/>Drogon<sp/>discover<sp/>and<sp/>register<sp/>all<sp/>of<sp/>the<sp/>application&apos;s<sp/>HTTP<sp/>routes.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="all__routes_8hpp" kindref="compound">api/v2/all_routes.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="elapsedtime_8hpp" kindref="compound">api/v2/middlewares/elapsedtime.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>timing<sp/>middleware<sp/>used<sp/>by<sp/>the<sp/>pre-sending<sp/>hook</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="configurator_8hpp" kindref="compound">configurator/configurator.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Configurator<sp/>types<sp/>used<sp/>to<sp/>read<sp/>the<sp/>cached<sp/>settings</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="asyncdbclient_8hpp" kindref="compound">database/asyncdbclient.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>AsyncDbClient,<sp/>created<sp/>and<sp/>registered<sp/>when<sp/>async<sp/>DB<sp/>mode<sp/>is<sp/>enabled</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dbexecutor_8hpp" kindref="compound">database/dbexecutor.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>DbExecutor,<sp/>whose<sp/>task<sp/>queue<sp/>is<sp/>drained<sp/>during<sp/>shutdown</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="passwordworker_8hpp" kindref="compound">gatekeeper/passwordcrypt/passwordworker.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>PasswordWorker,<sp/>drained<sp/>after<sp/>the<sp/>DB<sp/>executor</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="cors_8hpp" kindref="compound">server/cors.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Cors::apply(),<sp/>which<sp/>adds<sp/>CORS<sp/>headers<sp/>in<sp/>the<sp/>pre-sending<sp/>hook</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="banner_8hpp" kindref="compound">server/extras/banner.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Banner<sp/>helpers<sp/>used<sp/>to<sp/>print<sp/>the<sp/>startup<sp/>banner</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="store_8hpp" kindref="compound">store/store.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Store,<sp/>the<sp/>global<sp/>registry<sp/>of<sp/>shared<sp/>singleton<sp/>objects</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="logger_8hpp" kindref="compound">utils/Logger/logger.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>Logger<sp/>type<sp/>resolved<sp/>from<sp/>the<sp/>Store</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="jsonhelper_8hpp" kindref="compound">utils/jsonhelper/jsonhelper.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>JsonHelper::jsonify(),<sp/>which<sp/>builds<sp/>the<sp/>custom<sp/>404<sp/>JSON<sp/>body</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="message_8hpp" kindref="compound">utils/message/message.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Message<sp/>helpers<sp/>used<sp/>to<sp/>report<sp/>startup<sp/>failures</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="databaseschema_8hpp" kindref="compound">validator/databaseschema/databaseschema.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>DatabaseSchema<sp/>type<sp/>resolved<sp/>from<sp/>the<sp/>Store</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="62"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Resolves<sp/>the<sp/>Store<sp/>singletons<sp/>and<sp/>snapshots<sp/>the<sp/>configuration<sp/>used<sp/>throughout<sp/>startup.</highlight></codeline>
-<codeline lineno="64"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="65"><highlight class="comment"><sp/>*<sp/>@details<sp/>Objects<sp/>fetched<sp/>here<sp/>are<sp/>shared_ptrs,<sp/>so<sp/>they<sp/>remain<sp/>valid<sp/>for<sp/>the<sp/>lifetime<sp/>of<sp/>the<sp/>Server.<sp/>The<sp/>two</highlight></codeline>
-<codeline lineno="66"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Configurator<sp/>structs<sp/>are<sp/>copied<sp/>by<sp/>value;<sp/>configuration<sp/>changes<sp/>made<sp/>after<sp/>construction<sp/>are<sp/>not<sp/>observed.</highlight></codeline>
-<codeline lineno="67"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68" refid="classServer_1ad5ec9462b520e59f7ea831e157ee5e59" refkind="member"><highlight class="normal"><ref refid="classServer_1ad5ec9462b520e59f7ea831e157ee5e59" kindref="member">Server::Server</ref>()<sp/><sp/></highlight><highlight class="comment">//<sp/>Initialise<sp/>every<sp/>member:<sp/>fetch<sp/>shared<sp/>singletons<sp/>from<sp/>the<sp/>Store<sp/>and<sp/>snapshot<sp/>the<sp/>configuration.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="classServer_1aa84ff16ac0dff01780bb1f1fbc6b3d0f" kindref="member">logger_</ref>(<ref refid="classStore" kindref="compound">Store</ref>::getObject&lt;<ref refid="classLogger" kindref="compound">Logger</ref>&gt;()),<sp/><sp/></highlight><highlight class="comment">//<sp/>Fetch<sp/>(or<sp/>create)<sp/>the<sp/>shared<sp/>logger<sp/>from<sp/>the<sp/>global<sp/>Store.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1adb978249d96530b9b06c6a88d73fd097" kindref="member">configurator_</ref>(<ref refid="classStore" kindref="compound">Store</ref>::getObject&lt;<ref refid="classConfigurator" kindref="compound">Configurator</ref>&gt;()),<sp/><sp/></highlight><highlight class="comment">//<sp/>Fetch<sp/>the<sp/>shared<sp/>settings<sp/>object,<sp/>also<sp/>used<sp/>later<sp/>for<sp/>printValues()<sp/>and<sp/>CORS.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>(<ref refid="classServer_1adb978249d96530b9b06c6a88d73fd097" kindref="member">configurator_</ref>-&gt;get&lt;<ref refid="classConfigurator" kindref="compound">Configurator</ref>::<ref refid="structServerConfig" kindref="compound">ServerConfig</ref>&gt;()),<sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>the<sp/>server<sp/>settings<sp/>so<sp/>later<sp/>changes<sp/>cannot<sp/>alter<sp/>this<sp/>run.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1add9a2053fd3293d3ea32f90174f31362" kindref="member">db_config_</ref>(<ref refid="classServer_1adb978249d96530b9b06c6a88d73fd097" kindref="member">configurator_</ref>-&gt;get&lt;<ref refid="classConfigurator" kindref="compound">Configurator</ref>::<ref refid="structDatabaseConfig" kindref="compound">DatabaseConfig</ref>&gt;()),<sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>the<sp/>DB<sp/>settings,<sp/>including<sp/>the<sp/>flag<sp/>that<sp/>selects<sp/>async<sp/>mode.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1a4b5af6fbc728adfb0315088430f9c059" kindref="member">databaseSchema_</ref>(<ref refid="classStore" kindref="compound">Store</ref>::getObject&lt;<ref refid="classDatabaseSchema" kindref="compound">DatabaseSchema</ref>&gt;()),<sp/><sp/></highlight><highlight class="comment">//<sp/>Fetch<sp/>the<sp/>shared<sp/>schema<sp/>validator<sp/>used<sp/>by<sp/>request<sp/>handling.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1aaaa0c607dbdbdf1fe064a1b247cc33f1" kindref="member">auth_filter_</ref>(<ref refid="namespacestd" kindref="compound">std</ref>::make_shared&lt;<ref refid="namespaceapi" kindref="compound">api</ref>::v2::<ref refid="namespaceapi_1_1v2_1_1Filters" kindref="compound">Filters</ref>::Auth&gt;()),<sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>one<sp/>authentication<sp/>filter<sp/>instance<sp/>owned<sp/>by<sp/>this<sp/>Server.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1ad1d6edc7edb17417bfd77dd21c3414ea" kindref="member">elapsed_time_</ref>(<ref refid="namespacestd" kindref="compound">std</ref>::make_shared&lt;<ref refid="namespaceapi" kindref="compound">api</ref>::v2::<ref refid="namespaceapi_1_1v2_1_1MiddleWares" kindref="compound">MiddleWares</ref>::ElapsedTime&gt;()),<sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>one<sp/>request-timing<sp/>middleware<sp/>instance.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1a0dc35f5ff0d3ffb61a5faf00c844da1e" kindref="member">rate_limit_</ref>(<ref refid="namespacestd" kindref="compound">std</ref>::make_shared&lt;<ref refid="namespaceapi" kindref="compound">api</ref>::v2::<ref refid="namespaceapi_1_1v2_1_1Filters" kindref="compound">Filters</ref>::RateLimit&gt;())<sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>one<sp/>rate-limit<sp/>filter<sp/>instance<sp/>(last,<sp/>so<sp/>no<sp/>trailing<sp/>comma).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="78"><highlight class="normal">}</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="79"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="80"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Configures<sp/>and<sp/>runs<sp/>the<sp/>Drogon<sp/>application,<sp/>then<sp/>drains<sp/>the<sp/>worker<sp/>pools.</highlight></codeline>
-<codeline lineno="81"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="82"><highlight class="comment"><sp/>*<sp/>@details<sp/>Registers<sp/>the<sp/>listener,<sp/>thread<sp/>count,<sp/>upload<sp/>path,<sp/>log<sp/>level,<sp/>a<sp/>custom<sp/>404<sp/>page<sp/>and<sp/>two<sp/>global<sp/>advice<sp/>hooks:</highlight></codeline>
-<codeline lineno="83"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>pre-routing<sp/>hook<sp/>short-circuits<sp/>OPTIONS<sp/>and<sp/>rejects<sp/>uncommon<sp/>methods,<sp/>and<sp/>the<sp/>pre-sending<sp/>hook<sp/>applies</highlight></codeline>
-<codeline lineno="84"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CORS<sp/>headers<sp/>to<sp/>every<sp/>response.<sp/>When<sp/>db_config_.async<sp/>is<sp/>set,<sp/>an<sp/>AsyncDbClient<sp/>is<sp/>registered<sp/>in<sp/>the<sp/>Store</highlight></codeline>
-<codeline lineno="85"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>before<sp/>the<sp/>event<sp/>loops<sp/>start.<sp/>Control<sp/>returns<sp/>from<sp/>drogon::app().run()<sp/>only<sp/>after<sp/>the<sp/>event<sp/>loops<sp/>stop.</highlight></codeline>
-<codeline lineno="86"><highlight class="comment"><sp/>*<sp/>@return<sp/>EXIT_SUCCESS<sp/>on<sp/>a<sp/>clean<sp/>run<sp/>and<sp/>shutdown,<sp/>EXIT_FAILURE<sp/>if<sp/>setup<sp/>or<sp/>shutdown<sp/>throws<sp/>std::exception.</highlight></codeline>
-<codeline lineno="87"><highlight class="comment"><sp/>*<sp/>@note<sp/>The<sp/>post-run<sp/>shutdown<sp/>order<sp/>is<sp/>deliberate:<sp/>DbExecutor<sp/>is<sp/>drained<sp/>before<sp/>PasswordWorker<sp/>because<sp/>database<sp/>tasks</highlight></codeline>
-<codeline lineno="88"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>may<sp/>enqueue<sp/>password<sp/>work.<sp/>Both<sp/>happen<sp/>here,<sp/>while<sp/>the<sp/>Store<sp/>singletons<sp/>still<sp/>exist,<sp/>rather<sp/>than<sp/>in<sp/>static</highlight></codeline>
-<codeline lineno="89"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>destructors.</highlight></codeline>
-<codeline lineno="90"><highlight class="comment"><sp/>*<sp/>@see<sp/>print_banner(),<sp/>Cors::apply(),<sp/>Store::getObject()</highlight></codeline>
-<codeline lineno="91"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="92" refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" kindref="member">Server::run</ref>()<sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>Drogon,<sp/>serve<sp/>requests,<sp/>then<sp/>drain<sp/>the<sp/>worker<sp/>pools<sp/>and<sp/>return<sp/>an<sp/>exit<sp/>code.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="93"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Catch<sp/>any<sp/>exception<sp/>from<sp/>setup<sp/>or<sp/>teardown<sp/>so<sp/>it<sp/>can<sp/>be<sp/>reported<sp/>cleanly.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1a419137d4cb2f6fdeee5e3982da4fd1d7" kindref="member">print_banner</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Show<sp/>the<sp/>effective<sp/>settings<sp/>and<sp/>the<sp/>logo<sp/>before<sp/>the<sp/>framework<sp/>starts<sp/>logging.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classServer_1add9a2053fd3293d3ea32f90174f31362" kindref="member">db_config_</ref>.async)<sp/><sp/></highlight><highlight class="comment">//<sp/>Only<sp/>asynchronous<sp/>DB<sp/>mode<sp/>needs<sp/>a<sp/>separate<sp/>client<sp/>registered<sp/>up<sp/>front.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStore_1a1e12f060c02095975351db8f5d63cb76" kindref="member">Store::registerObject&lt;AsyncDbClient&gt;</ref>(<ref refid="classAsyncDbClient_1ac0396c3d59602cf860e6fef52c98a736" kindref="member">AsyncDbClient::createClient</ref>());<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>an<sp/>async<sp/>DB<sp/>client<sp/>and<sp/>put<sp/>it<sp/>in<sp/>the<sp/>Store<sp/>for<sp/>controllers<sp/>to<sp/>use.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::app()<sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>single<sp/>global<sp/>Drogon<sp/>application;<sp/>the<sp/>chain<sp/>below<sp/>configures<sp/>it<sp/>before<sp/>run()<sp/>is<sp/>called.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.addListener(std::string(<ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.host),<sp/><ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.port)<sp/><sp/></highlight><highlight class="comment">//<sp/>Listen<sp/>on<sp/>the<sp/>configured<sp/>host<sp/>address<sp/>and<sp/>TCP<sp/>port.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.setThreadNum(<ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.threads)<sp/><sp/></highlight><highlight class="comment">//<sp/>Use<sp/>the<sp/>configured<sp/>number<sp/>of<sp/>I/O<sp/>worker<sp/>threads.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.setUploadPath(<ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.upload_dir)<sp/><sp/></highlight><highlight class="comment">//<sp/>Tell<sp/>Drogon<sp/>where<sp/>to<sp/>store<sp/>uploaded<sp/>files.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.disableSigtermHandling()<sp/><sp/></highlight><highlight class="comment">//<sp/>Let<sp/>the<sp/>event<sp/>loops<sp/>drive<sp/>shutdown<sp/>instead<sp/>of<sp/>Drogon&apos;s<sp/>own<sp/>SIGTERM<sp/>handler.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.setLogLevel(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">trantor::Logger::LogLevel</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.debug_level))<sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>the<sp/>numeric<sp/>config<sp/>value<sp/>into<sp/>the<sp/>framework&apos;s<sp/>log-level<sp/>enum.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.registerPreRoutingAdvice(<sp/><sp/></highlight><highlight class="comment">//<sp/>Install<sp/>a<sp/>hook<sp/>that<sp/>runs<sp/>before<sp/>routing:<sp/>answer<sp/>preflights<sp/>and<sp/>reject<sp/>odd<sp/>methods.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::HttpRequestPtr&amp;<sp/>req,<sp/>drogon::AdviceCallback&amp;&amp;<sp/>callback,<sp/>drogon::AdviceChainCallback&amp;&amp;<sp/>chainedcallback)<sp/><sp/></highlight><highlight class="comment">//<sp/>Request<sp/>+<sp/>callbacks.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>CORS<sp/>preflights<sp/>are<sp/>answered<sp/>once,<sp/>here,<sp/>with<sp/>204<sp/>and<sp/>no<sp/>body;<sp/>they<sp/>never<sp/>reach<sp/>a<sp/>controller.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(req-&gt;method()<sp/>==<sp/>drogon::Options)<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>browser&apos;s<sp/>preflight<sp/>check<sp/>uses<sp/>OPTIONS<sp/>and<sp/>expects<sp/>a<sp/>quick<sp/>empty<sp/>reply.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>resp<sp/>=<sp/>drogon::HttpResponse::newHttpResponse();<sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>fresh,<sp/>empty<sp/>response<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resp-&gt;setStatusCode(drogon::k204NoContent);<sp/><sp/></highlight><highlight class="comment">//<sp/>204<sp/>means<sp/>&quot;success,<sp/>no<sp/>content&quot;,<sp/>which<sp/>is<sp/>correct<sp/>for<sp/>a<sp/>preflight.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(callback)(resp);<sp/><sp/></highlight><highlight class="comment">//<sp/>Send<sp/>this<sp/>response<sp/>immediately<sp/>and<sp/>do<sp/>not<sp/>continue<sp/>the<sp/>chain.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Uncommon<sp/>methods<sp/>are<sp/>rejected<sp/>before<sp/>routing;<sp/>Allow<sp/>advertises<sp/>what<sp/>is<sp/>accepted.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classServer_1a5bc93a8ab4205adcfc43ee9d8f4aaa83" kindref="member">isConventionalMethod</ref>(req-&gt;method()))<sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>the<sp/>method<sp/>is<sp/>unsupported,<sp/>stop<sp/>before<sp/>any<sp/>route<sp/>is<sp/>matched.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>resp<sp/>=<sp/>drogon::HttpResponse::newHttpResponse();<sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>response<sp/>object<sp/>to<sp/>carry<sp/>the<sp/>error<sp/>status.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resp-&gt;setStatusCode(drogon::k405MethodNotAllowed);<sp/><sp/></highlight><highlight class="comment">//<sp/>405<sp/>tells<sp/>the<sp/>client<sp/>the<sp/>method<sp/>is<sp/>not<sp/>allowed.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resp-&gt;addHeader(</highlight><highlight class="stringliteral">&quot;Allow&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespaceCors_1a1e735c23d92eb7d39a494adbe6fe035d" kindref="member">Cors::allowedMethods</ref>());<sp/><sp/></highlight><highlight class="comment">//<sp/>Advertise<sp/>which<sp/>methods<sp/>the<sp/>server<sp/>does<sp/>accept.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(callback)(resp);<sp/><sp/></highlight><highlight class="comment">//<sp/>Respond<sp/>now;<sp/>the<sp/>request<sp/>never<sp/>reaches<sp/>a<sp/>controller.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>method<sp/>is<sp/>acceptable,<sp/>so<sp/>let<sp/>normal<sp/>routing<sp/>continue.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(chainedcallback)();<sp/><sp/></highlight><highlight class="comment">//<sp/>Call<sp/>the<sp/>chain<sp/>callback<sp/>to<sp/>pass<sp/>the<sp/>request<sp/>to<sp/>the<sp/>next<sp/>step.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>})</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>only<sp/>place<sp/>CORS<sp/>headers<sp/>are<sp/>written:<sp/>runs<sp/>once<sp/>per<sp/>response,<sp/>after<sp/>every<sp/>filter<sp/>and<sp/>pre-routing<sp/>reply.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.registerPreSendingAdvice([](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::HttpRequestPtr&amp;<sp/>req,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::HttpResponsePtr&amp;<sp/>resp)<sp/>{<sp/><ref refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" kindref="member">Cors::apply</ref>(req,<sp/>resp);<sp/>})<sp/><sp/></highlight><highlight class="comment">//<sp/>CORS<sp/>headers.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.setCustom404Page(drogon::HttpResponse::newHttpJsonResponse(<ref refid="classapi_1_1v2_1_1JsonHelper_1a641560db2243ef5bca5bb763e98b3b43" kindref="member">api::v2::JsonHelper::jsonify</ref>(</highlight><highlight class="stringliteral">&quot;Endpoint<sp/>not<sp/>found.&quot;</highlight><highlight class="normal">)))<sp/><sp/></highlight><highlight class="comment">//<sp/>JSON<sp/>body<sp/>for<sp/>unknown<sp/>routes.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.run();<sp/><sp/></highlight><highlight class="comment">//<sp/>Start<sp/>the<sp/>event<sp/>loops<sp/>and<sp/>block<sp/>here<sp/>until<sp/>they<sp/>stop;<sp/>execution<sp/>continues<sp/>below<sp/>afterwards.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="134"><highlight class="normal"></highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>event<sp/>loops<sp/>have<sp/>stopped.<sp/>Finish<sp/>the<sp/>queued<sp/>database<sp/>and<sp/>password<sp/>work<sp/>and<sp/>join<sp/>the<sp/>workers<sp/>now,<sp/>while<sp/>the</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>connection<sp/>pool<sp/>and<sp/>the<sp/>other<sp/>singletons<sp/>still<sp/>exist,<sp/>instead<sp/>of<sp/>leaving<sp/>it<sp/>to<sp/>static<sp/>destruction.<sp/>The<sp/>database</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>executor<sp/>goes<sp/>first<sp/>because<sp/>its<sp/>tasks<sp/>may<sp/>hand<sp/>work<sp/>to<sp/>the<sp/>password<sp/>worker.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject&lt;DbExecutor&gt;</ref>()-&gt;shutdown();<sp/><sp/></highlight><highlight class="comment">//<sp/>Drain<sp/>the<sp/>DB<sp/>task<sp/>queue<sp/>and<sp/>stop<sp/>its<sp/>threads<sp/>before<sp/>the<sp/>DB<sp/>singletons<sp/>disappear.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject&lt;PasswordWorker&gt;</ref>()-&gt;shutdown();<sp/><sp/></highlight><highlight class="comment">//<sp/>Then<sp/>drain<sp/>password-hashing<sp/>work,<sp/>which<sp/>DB<sp/>tasks<sp/>may<sp/>have<sp/>queued.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/><sp/></highlight><highlight class="comment">//<sp/>Reached<sp/>if<sp/>any<sp/>of<sp/>the<sp/>setup<sp/>or<sp/>teardown<sp/>above<sp/>threw<sp/>an<sp/>exception.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(fmt::format(</highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>start<sp/>server<sp/>on<sp/>{}:{}.&quot;</highlight><highlight class="normal">,<sp/><ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.host,<sp/><ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.port));<sp/><sp/></highlight><highlight class="comment">//<sp/>Report<sp/>which<sp/>address<sp/>failed<sp/>to<sp/>start.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>the<sp/>exception&apos;s<sp/>own<sp/>description<sp/>as<sp/>a<sp/>critical<sp/>message.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;<sp/><sp/></highlight><highlight class="comment">//<sp/>Signal<sp/>failure<sp/>to<sp/>main(),<sp/>and<sp/>from<sp/>there<sp/>to<sp/>the<sp/>operating<sp/>system.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_SUCCESS;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>server<sp/>ran<sp/>and<sp/>shut<sp/>down<sp/>cleanly.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal">}</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="149"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="150"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Prints<sp/>the<sp/>effective<sp/>configuration<sp/>and<sp/>the<sp/>startup<sp/>logo.</highlight></codeline>
-<codeline lineno="151"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="152"><highlight class="comment"><sp/>*<sp/>@details<sp/>Writes<sp/>to<sp/>stdout<sp/>and<sp/>explicitly<sp/>flushes<sp/>it<sp/>so<sp/>the<sp/>banner<sp/>appears<sp/>before<sp/>framework<sp/>logging<sp/>begins.<sp/>The</highlight></codeline>
-<codeline lineno="153"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>displayed<sp/>version<sp/>comes<sp/>from<sp/>the<sp/>build-time<sp/>VALHALLA_GIT_TAG,<sp/>not<sp/>from<sp/>the<sp/>Configurator<sp/>snapshot.</highlight></codeline>
-<codeline lineno="154"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="155" refid="classServer_1a419137d4cb2f6fdeee5e3982da4fd1d7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classServer_1a419137d4cb2f6fdeee5e3982da4fd1d7" kindref="member">Server::print_banner</ref>()<sp/><sp/></highlight><highlight class="comment">//<sp/>Print<sp/>the<sp/>configuration<sp/>summary<sp/>and<sp/>the<sp/>ASCII<sp/>logo,<sp/>then<sp/>flush<sp/>stdout.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="156"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Print<sp/>Config</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBanner_1aee5bc794e7e7e6c1dbe3476d417a0f0a" kindref="member">Banner::print_line</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Draw<sp/>a<sp/>separator<sp/>line<sp/>before<sp/>the<sp/>configuration<sp/>block.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBanner_1a773dc3b0a54676530c4a659489a4bc09" kindref="member">Banner::print</ref>(</highlight><highlight class="stringliteral">&quot;Configuration:&quot;</highlight><highlight class="normal">,<sp/><ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.desc,<sp/>fmt::color::light_blue,<sp/>fmt::color::yellow);<sp/><sp/></highlight><highlight class="comment">//<sp/>Print<sp/>the<sp/>section<sp/>title<sp/>with<sp/>coloured<sp/>label<sp/>and<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBanner_1aee5bc794e7e7e6c1dbe3476d417a0f0a" kindref="member">Banner::print_line</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Draw<sp/>a<sp/>separator<sp/>after<sp/>the<sp/>title.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classServer_1adb978249d96530b9b06c6a88d73fd097" kindref="member">configurator_</ref>-&gt;printValues();<sp/><sp/></highlight><highlight class="comment">//<sp/>Dump<sp/>every<sp/>effective<sp/>configuration<sp/>value<sp/>from<sp/>the<sp/>source<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="162"><highlight class="normal"></highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Show<sp/>ASCII<sp/>Art</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBanner_1aee5bc794e7e7e6c1dbe3476d417a0f0a" kindref="member">Banner::print_line</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Draw<sp/>a<sp/>separator<sp/>before<sp/>the<sp/>logo<sp/>section.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBanner_1accf954d53281ba0a993945630a19f66b" kindref="member">Banner::print_logo</ref>(<ref refid="classBanner_1a0f4d8408fd489c69079a28a1b2b9648f" kindref="member">Banner::get_random_color</ref>());<sp/><sp/></highlight><highlight class="comment">//<sp/>Print<sp/>the<sp/>logo<sp/>in<sp/>a<sp/>randomly<sp/>chosen<sp/>colour.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBanner_1aee5bc794e7e7e6c1dbe3476d417a0f0a" kindref="member">Banner::print_line</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Draw<sp/>a<sp/>separator<sp/>after<sp/>the<sp/>logo.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBanner_1a773dc3b0a54676530c4a659489a4bc09" kindref="member">Banner::print</ref>(</highlight><highlight class="stringliteral">&quot;<sp/>-<sp/>Version&quot;</highlight><highlight class="normal">,<sp/>VALHALLA_GIT_TAG,<sp/>fmt::color::light_green,<sp/>fmt::color::yellow);<sp/><sp/></highlight><highlight class="comment">//<sp/>Show<sp/>the<sp/>build-time<sp/>Git<sp/>tag<sp/>as<sp/>the<sp/>version.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBanner_1a773dc3b0a54676530c4a659489a4bc09" kindref="member">Banner::print</ref>(</highlight><highlight class="stringliteral">&quot;<sp/>-<sp/>Port&quot;</highlight><highlight class="normal">,<sp/><ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.port,<sp/>fmt::color::light_green,<sp/>fmt::color::yellow);<sp/><sp/></highlight><highlight class="comment">//<sp/>Show<sp/>which<sp/>TCP<sp/>port<sp/>the<sp/>server<sp/>listens<sp/>on.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBanner_1a773dc3b0a54676530c4a659489a4bc09" kindref="member">Banner::print</ref>(</highlight><highlight class="stringliteral">&quot;<sp/>-<sp/>Threads&quot;</highlight><highlight class="normal">,<sp/><ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.threads,<sp/>fmt::color::light_green,<sp/>fmt::color::yellow);<sp/><sp/></highlight><highlight class="comment">//<sp/>Show<sp/>how<sp/>many<sp/>worker<sp/>threads<sp/>were<sp/>configured.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBanner_1a773dc3b0a54676530c4a659489a4bc09" kindref="member">Banner::print</ref>(</highlight><highlight class="stringliteral">&quot;<sp/>-<sp/>Database&quot;</highlight><highlight class="normal">,<sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;{}<sp/>{}&quot;</highlight><highlight class="normal">,<sp/><ref refid="classServer_1add9a2053fd3293d3ea32f90174f31362" kindref="member">db_config_</ref>.max_conn,<sp/></highlight><highlight class="stringliteral">&quot;connections&quot;</highlight><highlight class="normal">),<sp/>fmt::color::light_green,<sp/>fmt::color::yellow);<sp/><sp/></highlight><highlight class="comment">//<sp/>Max<sp/>DB<sp/>connections.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBanner_1a773dc3b0a54676530c4a659489a4bc09" kindref="member">Banner::print</ref>(</highlight><highlight class="stringliteral">&quot;<sp/>-<sp/>Doc&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;http://localhost:&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(<ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.port)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;/api/v2/doc&quot;</highlight><highlight class="normal">,<sp/>fmt::color::light_green,<sp/>fmt::color::yellow);<sp/><sp/></highlight><highlight class="comment">//<sp/>Docs<sp/>URL.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBanner_1aee5bc794e7e7e6c1dbe3476d417a0f0a" kindref="member">Banner::print_line</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Close<sp/>the<sp/>banner<sp/>with<sp/>a<sp/>final<sp/>separator<sp/>line.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="173"><highlight class="normal"></highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>std::flush(std::cout);<sp/><sp/></highlight><highlight class="comment">//<sp/>Force<sp/>the<sp/>banner<sp/>out<sp/>before<sp/>Drogon&apos;s<sp/>loggers<sp/>start<sp/>writing<sp/>to<sp/>the<sp/>same<sp/>console.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="175"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="176"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="177"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="178"><highlight class="comment"><sp/>*<sp/>Reports<sp/>whether<sp/>a<sp/>method<sp/>should<sp/>be<sp/>routed<sp/>rather<sp/>than<sp/>rejected<sp/>in<sp/>pre-routing.</highlight></codeline>
-<codeline lineno="179"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="180"><highlight class="comment"><sp/>*<sp/>method:<sp/>Method<sp/>of<sp/>the<sp/>incoming<sp/>request.</highlight></codeline>
-<codeline lineno="181"><highlight class="comment"><sp/>*<sp/>Returns<sp/>true<sp/>for<sp/>GET,<sp/>POST,<sp/>PUT,<sp/>DELETE,<sp/>OPTIONS<sp/>and<sp/>HEAD;<sp/>false<sp/>for<sp/>all<sp/>others,<sp/>notably<sp/>PATCH.</highlight></codeline>
-<codeline lineno="182"><highlight class="comment"><sp/>*<sp/>Note:<sp/>PATCH<sp/>is<sp/>advertised<sp/>by<sp/>Cors::allowedMethods()<sp/>but<sp/>is<sp/>not<sp/>accepted<sp/>here;<sp/>the<sp/>two<sp/>lists<sp/>differ<sp/>in<sp/>the<sp/>current</highlight></codeline>
-<codeline lineno="183"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>implementation.</highlight></codeline>
-<codeline lineno="184"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="185" refid="classServer_1a5bc93a8ab4205adcfc43ee9d8f4aaa83" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classServer_1a5bc93a8ab4205adcfc43ee9d8f4aaa83" kindref="member">Server::isConventionalMethod</ref>(drogon::HttpMethod<sp/>method)<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>true<sp/>only<sp/>for<sp/>the<sp/>six<sp/>methods<sp/>this<sp/>server<sp/>is<sp/>willing<sp/>to<sp/>route.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="186"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>method<sp/>==<sp/>drogon::Get<sp/>||<sp/>method<sp/>==<sp/>drogon::Post<sp/>||<sp/>method<sp/>==<sp/>drogon::Put<sp/>||<sp/>method<sp/>==<sp/>drogon::Delete<sp/>||<sp/>method<sp/>==<sp/>drogon::Options<sp/>||<sp/><sp/></highlight><highlight class="comment">//<sp/>Accepted.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>method<sp/>==<sp/>drogon::Head;<sp/><sp/></highlight><highlight class="comment">//<sp/>Also<sp/>accept<sp/>HEAD<sp/>(like<sp/>GET<sp/>but<sp/>without<sp/>a<sp/>body);<sp/>everything<sp/>else,<sp/>such<sp/>as<sp/>PATCH,<sp/>returns<sp/>false.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="189"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Implementation<sp/>of<sp/>Server:<sp/>Drogon<sp/>configuration,<sp/>request<sp/>hooks,<sp/>and</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>shutdown<sp/>sequencing.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>file<sp/>turns<sp/>the<sp/>Server<sp/>declaration<sp/>into<sp/>working<sp/>code.<sp/>It<sp/>builds</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>the<sp/>Drogon<sp/>application<sp/>—<sp/>listener,<sp/>thread<sp/>count,<sp/>log<sp/>level,<sp/>a<sp/>custom<sp/>404<sp/>page</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>—<sp/>and<sp/>registers<sp/>two<sp/>global<sp/>hooks:<sp/>one<sp/>that<sp/>answers<sp/>CORS<sp/>preflights<sp/>and</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>rejects<sp/>unusual<sp/>HTTP<sp/>methods<sp/>before<sp/>routing,<sp/>and<sp/>one<sp/>that<sp/>adds<sp/>CORS<sp/>headers</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>to<sp/>every<sp/>response.<sp/>It<sp/>also<sp/>prints<sp/>the<sp/>startup<sp/>banner<sp/>and,<sp/>after<sp/>the<sp/>event</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>loops<sp/>stop,<sp/>drains<sp/>the<sp/>database<sp/>and<sp/>password<sp/>worker<sp/>pools<sp/>in<sp/>a<sp/>safe<sp/>order.</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>the<sp/>file<sp/>that<sp/>actually<sp/>boots<sp/>the<sp/>web<sp/>server.<sp/>main()<sp/>calls</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>Server::run(),<sp/>and<sp/>the<sp/>code<sp/>here<sp/>is<sp/>what<sp/>opens<sp/>the<sp/>listening<sp/>port<sp/>and<sp/>starts</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>Drogon&apos;s<sp/>event<sp/>loops<sp/>so<sp/>HTTP<sp/>requests<sp/>can<sp/>be<sp/>served.<sp/>It<sp/>also<sp/>contains<sp/>the<sp/>two</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>cross-cutting<sp/>request<sp/>rules<sp/>(CORS<sp/>and<sp/>allowed<sp/>methods)<sp/>that<sp/>apply<sp/>to<sp/>every</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>endpoint,<sp/>so<sp/>individual<sp/>controllers<sp/>do<sp/>not<sp/>have<sp/>to<sp/>repeat<sp/>them.<sp/>Finally,<sp/>it</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>owns<sp/>the<sp/>shutdown<sp/>order;<sp/>without<sp/>it,<sp/>worker<sp/>threads<sp/>could<sp/>be<sp/>destroyed<sp/>while</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>they<sp/>still<sp/>had<sp/>queued<sp/>work,<sp/>causing<sp/>crashes<sp/>at<sp/>exit.</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>-<sp/>Lambda<sp/>expressions<sp/>(the<sp/>inline<sp/>anonymous<sp/>functions<sp/>used<sp/>as<sp/>callbacks):</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/language/lambda</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>-<sp/>Move<sp/>semantics<sp/>and<sp/>std::move:</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/utility/move</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>-<sp/>Drogon&apos;s<sp/>application<sp/>and<sp/>advice<sp/>hooks:</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>https://github.com/drogonframework/drogon</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="server_8hpp" kindref="compound">server.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>class&apos;s<sp/>own<sp/>declaration<sp/>is<sp/>always<sp/>included<sp/>first.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>drogon::app(),<sp/>the<sp/>single<sp/>global<sp/>framework<sp/>object<sp/>we<sp/>configure<sp/>and<sp/>run</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpAppFramework.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>drogon::HttpRequestPtr,<sp/>used<sp/>by<sp/>the<sp/>two<sp/>advice<sp/>hooks<sp/>below</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpRequest.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>drogon::HttpResponse<sp/>and<sp/>the<sp/>newHttpResponse/newHttpJsonResponse</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>factories</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpResponse.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>status<sp/>constants<sp/>such<sp/>as<sp/>k204NoContent<sp/>and<sp/>k405MethodNotAllowed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpTypes.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>an<sp/>umbrella<sp/>header<sp/>that<sp/>pulls<sp/>in<sp/>the<sp/>rest<sp/>of<sp/>the<sp/>Drogon<sp/>framework</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/drogon.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>AdviceCallback<sp/>and<sp/>AdviceChainCallback<sp/>used<sp/>by<sp/>pre-routing<sp/>advice</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/drogon_callbacks.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>fmt::color<sp/>values<sp/>used<sp/>when<sp/>printing<sp/>the<sp/>coloured<sp/>banner</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/color.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>fmt::format<sp/>and<sp/>fmt::print<sp/>used<sp/>by<sp/>messages<sp/>and<sp/>the<sp/>banner</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/core.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/format.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>the<sp/>remaining<sp/>fmt<sp/>formatting<sp/>helpers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>trantor::Logger::LogLevel<sp/>used<sp/>when<sp/>setting<sp/>the<sp/>framework<sp/>log<sp/>level</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;trantor/utils/Logger.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdlib&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>EXIT_SUCCESS<sp/>and<sp/>EXIT_FAILURE,<sp/>the<sp/>exit<sp/>status<sp/>codes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>std::exception,<sp/>the<sp/>type<sp/>caught<sp/>around<sp/>startup<sp/>and<sp/>shutdown</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;exception&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>std::cout<sp/>and<sp/>std::flush<sp/>used<sp/>to<sp/>print<sp/>the<sp/>banner</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>std::make_shared,<sp/>used<sp/>to<sp/>create<sp/>the<sp/>filter<sp/>and<sp/>middleware<sp/>objects</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>std::string<sp/>and<sp/>std::to_string<sp/>used<sp/>throughout<sp/>this<sp/>file</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>std::move,<sp/>used<sp/>to<sp/>invoke<sp/>the<sp/>advice<sp/>callbacks<sp/>exactly<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Including<sp/>this<sp/>header<sp/>makes<sp/>Drogon<sp/>discover<sp/>and<sp/>register<sp/>all<sp/>of<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//<sp/>application&apos;s<sp/>HTTP<sp/>routes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="all__routes_8hpp" kindref="compound">api/v2/all_routes.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>timing<sp/>middleware<sp/>used<sp/>by<sp/>the<sp/>pre-sending<sp/>hook</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="elapsedtime_8hpp" kindref="compound">api/v2/middlewares/elapsedtime.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Configurator<sp/>types<sp/>used<sp/>to<sp/>read<sp/>the<sp/>cached<sp/>settings</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="configurator_8hpp" kindref="compound">configurator/configurator.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>AsyncDbClient,<sp/>created<sp/>and<sp/>registered<sp/>when<sp/>async<sp/>DB<sp/>mode<sp/>is<sp/>enabled</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="asyncdbclient_8hpp" kindref="compound">database/asyncdbclient.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">//<sp/>DbExecutor,<sp/>whose<sp/>task<sp/>queue<sp/>is<sp/>drained<sp/>during<sp/>shutdown</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dbexecutor_8hpp" kindref="compound">database/dbexecutor.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PasswordWorker,<sp/>drained<sp/>after<sp/>the<sp/>DB<sp/>executor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="passwordworker_8hpp" kindref="compound">gatekeeper/passwordcrypt/passwordworker.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Cors::apply(),<sp/>which<sp/>adds<sp/>CORS<sp/>headers<sp/>in<sp/>the<sp/>pre-sending<sp/>hook</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="cors_8hpp" kindref="compound">server/cors.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Banner<sp/>helpers<sp/>used<sp/>to<sp/>print<sp/>the<sp/>startup<sp/>banner</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="banner_8hpp" kindref="compound">server/extras/banner.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Store,<sp/>the<sp/>global<sp/>registry<sp/>of<sp/>shared<sp/>singleton<sp/>objects</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="store_8hpp" kindref="compound">store/store.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="logger_8hpp" kindref="compound">utils/Logger/logger.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>Logger<sp/>type<sp/>resolved<sp/>from<sp/>the<sp/>Store</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment">//<sp/>JsonHelper::jsonify(),<sp/>which<sp/>builds<sp/>the<sp/>custom<sp/>404<sp/>JSON<sp/>body</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="jsonhelper_8hpp" kindref="compound">utils/jsonhelper/jsonhelper.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Message<sp/>helpers<sp/>used<sp/>to<sp/>report<sp/>startup<sp/>failures</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="message_8hpp" kindref="compound">utils/message/message.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>DatabaseSchema<sp/>type<sp/>resolved<sp/>from<sp/>the<sp/>Store</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="databaseschema_8hpp" kindref="compound">validator/databaseschema/databaseschema.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="95"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Resolves<sp/>the<sp/>Store<sp/>singletons<sp/>and<sp/>snapshots<sp/>the<sp/>configuration<sp/>used</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/>*<sp/>throughout<sp/>startup.</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/>*<sp/>@details<sp/>Objects<sp/>fetched<sp/>here<sp/>are<sp/>shared_ptrs,<sp/>so<sp/>they<sp/>remain<sp/>valid<sp/>for<sp/>the</highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/>*<sp/>lifetime<sp/>of<sp/>the<sp/>Server.<sp/>The<sp/>two<sp/>Configurator<sp/>structs<sp/>are<sp/>copied<sp/>by<sp/>value;</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/>*<sp/>configuration<sp/>changes<sp/>made<sp/>after<sp/>construction<sp/>are<sp/>not<sp/>observed.</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="classServer_1ad5ec9462b520e59f7ea831e157ee5e59" refkind="member"><highlight class="normal"><ref refid="classServer_1ad5ec9462b520e59f7ea831e157ee5e59" kindref="member">Server::Server</ref>()<sp/><sp/></highlight><highlight class="comment">//<sp/>Initialise<sp/>every<sp/>member:<sp/>fetch<sp/>shared<sp/>singletons<sp/>from<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Store<sp/>and<sp/>snapshot<sp/>the<sp/>configuration.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Fetch<sp/>(or<sp/>create)<sp/>the<sp/>shared</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>logger<sp/>from<sp/>the<sp/>global<sp/>Store.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Fetch<sp/>the<sp/>shared<sp/>settings</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>object,<sp/>also<sp/>used<sp/>later<sp/>for</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>printValues()<sp/>and<sp/>CORS.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>the<sp/>server<sp/>settings</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>so<sp/>later<sp/>changes<sp/>cannot</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>alter<sp/>this<sp/>run.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>the<sp/>DB<sp/>settings,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>including<sp/>the<sp/>flag<sp/>that</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>selects<sp/>async<sp/>mode.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Fetch<sp/>the<sp/>shared<sp/>schema</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>validator<sp/>used<sp/>by<sp/>request</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>handling.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>one<sp/>authentication<sp/>filter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>instance<sp/>owned<sp/>by<sp/>this<sp/>Server.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>one</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>request-timing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>middleware<sp/>instance.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>one<sp/>rate-limit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>filter<sp/>instance<sp/>(last,<sp/>so</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>no<sp/>trailing<sp/>comma).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="classServer_1aa84ff16ac0dff01780bb1f1fbc6b3d0f" kindref="member">logger_</ref>(<ref refid="classStore" kindref="compound">Store</ref>::getObject&lt;<ref refid="classLogger" kindref="compound">Logger</ref>&gt;()),</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1adb978249d96530b9b06c6a88d73fd097" kindref="member">configurator_</ref>(<ref refid="classStore" kindref="compound">Store</ref>::getObject&lt;<ref refid="classConfigurator" kindref="compound">Configurator</ref>&gt;()),</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>(<ref refid="classServer_1adb978249d96530b9b06c6a88d73fd097" kindref="member">configurator_</ref>-&gt;get&lt;<ref refid="classConfigurator" kindref="compound">Configurator</ref>::<ref refid="structServerConfig" kindref="compound">ServerConfig</ref>&gt;()),</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1add9a2053fd3293d3ea32f90174f31362" kindref="member">db_config_</ref>(<ref refid="classServer_1adb978249d96530b9b06c6a88d73fd097" kindref="member">configurator_</ref>-&gt;get&lt;<ref refid="classConfigurator" kindref="compound">Configurator</ref>::<ref refid="structDatabaseConfig" kindref="compound">DatabaseConfig</ref>&gt;()),</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1a4b5af6fbc728adfb0315088430f9c059" kindref="member">databaseSchema_</ref>(<ref refid="classStore" kindref="compound">Store</ref>::getObject&lt;<ref refid="classDatabaseSchema" kindref="compound">DatabaseSchema</ref>&gt;()),</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1aaaa0c607dbdbdf1fe064a1b247cc33f1" kindref="member">auth_filter_</ref>(<ref refid="namespacestd" kindref="compound">std</ref>::make_shared&lt;<ref refid="namespaceapi" kindref="compound">api</ref>::v2::<ref refid="namespaceapi_1_1v2_1_1Filters" kindref="compound">Filters</ref>::Auth&gt;()),</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1ad1d6edc7edb17417bfd77dd21c3414ea" kindref="member">elapsed_time_</ref>(<ref refid="namespacestd" kindref="compound">std</ref>::make_shared&lt;<ref refid="namespaceapi" kindref="compound">api</ref>::v2::<ref refid="namespaceapi_1_1v2_1_1MiddleWares" kindref="compound">MiddleWares</ref>::ElapsedTime&gt;()),</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1a0dc35f5ff0d3ffb61a5faf00c844da1e" kindref="member">rate_limit_</ref>(<ref refid="namespacestd" kindref="compound">std</ref>::make_shared&lt;<ref refid="namespaceapi" kindref="compound">api</ref>::v2::<ref refid="namespaceapi_1_1v2_1_1Filters" kindref="compound">Filters</ref>::RateLimit&gt;())<sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="136"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Configures<sp/>and<sp/>runs<sp/>the<sp/>Drogon<sp/>application,<sp/>then<sp/>drains<sp/>the<sp/>worker</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/>*<sp/>pools.</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/>*<sp/>@details<sp/>Registers<sp/>the<sp/>listener,<sp/>thread<sp/>count,<sp/>upload<sp/>path,<sp/>log<sp/>level,<sp/>a</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/>*<sp/>custom<sp/>404<sp/>page<sp/>and<sp/>two<sp/>global<sp/>advice<sp/>hooks:<sp/>the<sp/>pre-routing<sp/>hook</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/>*<sp/>short-circuits<sp/>OPTIONS<sp/>and<sp/>rejects<sp/>uncommon<sp/>methods,<sp/>and<sp/>the<sp/>pre-sending<sp/>hook</highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/>*<sp/>applies<sp/>CORS<sp/>headers<sp/>to<sp/>every<sp/>response.<sp/>When<sp/>db_config_.async<sp/>is<sp/>set,<sp/>an</highlight></codeline>
+<codeline lineno="144"><highlight class="comment"><sp/>*<sp/>AsyncDbClient<sp/>is<sp/>registered<sp/>in<sp/>the<sp/>Store<sp/>before<sp/>the<sp/>event<sp/>loops<sp/>start.</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/>*<sp/>Control<sp/>returns<sp/>from<sp/>drogon::app().run()<sp/>only<sp/>after<sp/>the<sp/>event<sp/>loops<sp/>stop.</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/>*<sp/>@return<sp/>EXIT_SUCCESS<sp/>on<sp/>a<sp/>clean<sp/>run<sp/>and<sp/>shutdown,<sp/>EXIT_FAILURE<sp/>if<sp/>setup<sp/>or</highlight></codeline>
+<codeline lineno="147"><highlight class="comment"><sp/>*<sp/>shutdown<sp/>throws<sp/>std::exception.</highlight></codeline>
+<codeline lineno="148"><highlight class="comment"><sp/>*<sp/>@note<sp/>The<sp/>post-run<sp/>shutdown<sp/>order<sp/>is<sp/>deliberate:<sp/>DbExecutor<sp/>is<sp/>drained<sp/>before</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp/>*<sp/>PasswordWorker<sp/>because<sp/>database<sp/>tasks<sp/>may<sp/>enqueue<sp/>password<sp/>work.<sp/>Both<sp/>happen</highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/>*<sp/>here,<sp/>while<sp/>the<sp/>Store<sp/>singletons<sp/>still<sp/>exist,<sp/>rather<sp/>than<sp/>in<sp/>static</highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>destructors.</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/>*<sp/>@see<sp/>print_banner(),<sp/>Cors::apply(),<sp/>Store::getObject()</highlight></codeline>
+<codeline lineno="153"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Configure<sp/>Drogon,<sp/>serve<sp/>requests,<sp/>then<sp/>drain<sp/>the<sp/>worker</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="comment">//<sp/>pools<sp/>and<sp/>return<sp/>an<sp/>exit<sp/>code.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156" refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" kindref="member">Server::run</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Catch<sp/>any<sp/>exception<sp/>from<sp/>setup<sp/>or<sp/>teardown<sp/>so<sp/>it<sp/>can<sp/>be<sp/>reported</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>cleanly.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classServer_1a419137d4cb2f6fdeee5e3982da4fd1d7" kindref="member">print_banner</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Show<sp/>the<sp/>effective<sp/>settings<sp/>and<sp/>the<sp/>logo<sp/>before<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>framework<sp/>starts<sp/>logging.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Only<sp/>asynchronous<sp/>DB<sp/>mode<sp/>needs<sp/>a<sp/>separate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>client<sp/>registered<sp/>up<sp/>front.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classServer_1add9a2053fd3293d3ea32f90174f31362" kindref="member">db_config_</ref>.async)<sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStore_1a1e12f060c02095975351db8f5d63cb76" kindref="member">Store::registerObject&lt;AsyncDbClient&gt;</ref>(</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classAsyncDbClient_1ac0396c3d59602cf860e6fef52c98a736" kindref="member">AsyncDbClient::createClient</ref>());<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>an<sp/>async<sp/>DB<sp/>client<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>put<sp/>it<sp/>in<sp/>the<sp/>Store<sp/>for</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>controllers<sp/>to<sp/>use.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>the<sp/>single<sp/>global<sp/>Drogon<sp/>application;<sp/>the<sp/>chain<sp/>below</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>configures<sp/>it<sp/>before<sp/>run()<sp/>is<sp/>called.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Listen<sp/>on<sp/>the<sp/>configured<sp/>host</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>address<sp/>and<sp/>TCP<sp/>port.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Use<sp/>the<sp/>configured<sp/>number<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>I/O<sp/>worker<sp/>threads.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Tell<sp/>Drogon<sp/>where<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>store<sp/>uploaded<sp/>files.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Let<sp/>the<sp/>event<sp/>loops<sp/>drive</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>shutdown<sp/>instead<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Drogon&apos;s<sp/>own<sp/>SIGTERM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>handler.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>the<sp/>numeric<sp/>config</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>value<sp/>into<sp/>the<sp/>framework&apos;s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>log-level<sp/>enum.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Install<sp/>a<sp/>hook<sp/>that<sp/>runs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>before<sp/>routing:<sp/>answer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>preflights<sp/>and<sp/>reject<sp/>odd</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>methods.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Request<sp/>+<sp/>callbacks.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>drogon::app()</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.addListener(std::string(<ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.host),<sp/><ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.port)</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.setThreadNum(<ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.threads)</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.setUploadPath(<ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.upload_dir)</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.disableSigtermHandling()</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.setLogLevel(</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">trantor::Logger::LogLevel</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.debug_level))</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.registerPreRoutingAdvice(</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::HttpRequestPtr&amp;<sp/>req,</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::AdviceCallback&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/>callback,</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::AdviceChainCallback&amp;&amp;<sp/>chainedcallback)<sp/>{</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>CORS<sp/>preflights<sp/>are<sp/>answered<sp/>once,<sp/>here,<sp/>with</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>204<sp/>and<sp/>no<sp/>body;<sp/>they<sp/>never<sp/>reach<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>controller.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>browser&apos;s<sp/>preflight</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>uses<sp/>OPTIONS<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>expects<sp/>a<sp/>quick<sp/>empty</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>reply.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(req-&gt;method()<sp/>==<sp/>drogon::Options)<sp/>{</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>resp<sp/>=</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::HttpResponse::newHttpResponse();<sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>fresh,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>empty<sp/>response</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resp-&gt;setStatusCode(drogon::k204NoContent);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>204<sp/>means</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;success,<sp/>no</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>content&quot;,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>which<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>correct<sp/>for<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>preflight.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(callback)(resp);<sp/><sp/></highlight><highlight class="comment">//<sp/>Send<sp/>this<sp/>response<sp/>immediately</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>do<sp/>not<sp/>continue<sp/>the<sp/>chain.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Uncommon<sp/>methods<sp/>are<sp/>rejected<sp/>before<sp/>routing;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Allow<sp/>advertises<sp/>what<sp/>is<sp/>accepted.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>the<sp/>method</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>is<sp/>unsupported,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>stop<sp/>before<sp/>any</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>route<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>matched.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classServer_1a5bc93a8ab4205adcfc43ee9d8f4aaa83" kindref="member">isConventionalMethod</ref>(req-&gt;method()))<sp/>{</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>resp<sp/>=</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::HttpResponse::newHttpResponse();<sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>response<sp/>object</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>to<sp/>carry<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>error<sp/>status.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resp-&gt;setStatusCode(</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>405<sp/>tells<sp/>the<sp/>client<sp/>the<sp/>method<sp/>is<sp/>not</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>allowed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::k405MethodNotAllowed);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>resp-&gt;addHeader(</highlight><highlight class="stringliteral">&quot;Allow&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceCors_1a1e735c23d92eb7d39a494adbe6fe035d" kindref="member">Cors::allowedMethods</ref>());<sp/><sp/></highlight><highlight class="comment">//<sp/>Advertise</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>which</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>methods<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>server<sp/>does</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>accept.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Respond<sp/>now;<sp/>the<sp/>request<sp/>never</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>reaches<sp/>a<sp/>controller.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>method<sp/>is<sp/>acceptable,<sp/>so<sp/>let<sp/>normal</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>routing<sp/>continue.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(callback)(resp);</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(chainedcallback)();<sp/><sp/></highlight><highlight class="comment">//<sp/>Call<sp/>the<sp/>chain</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>callback<sp/>to<sp/>pass</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>request<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>next<sp/>step.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>})</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>only<sp/>place<sp/>CORS<sp/>headers<sp/>are<sp/>written:<sp/>runs<sp/>once<sp/>per</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>response,<sp/>after<sp/>every<sp/>filter<sp/>and<sp/>pre-routing<sp/>reply.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.registerPreSendingAdvice([](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::HttpRequestPtr&amp;<sp/><sp/>req,</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::HttpResponsePtr&amp;<sp/>resp)<sp/>{</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" kindref="member">Cors::apply</ref>(req,<sp/>resp);</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>})<sp/><sp/></highlight><highlight class="comment">//<sp/>CORS<sp/>headers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.setCustom404Page(drogon::HttpResponse::newHttpJsonResponse(</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1JsonHelper_1a641560db2243ef5bca5bb763e98b3b43" kindref="member">api::v2::JsonHelper::jsonify</ref>(</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Endpoint<sp/>not<sp/>found.&quot;</highlight><highlight class="normal">)))<sp/><sp/></highlight><highlight class="comment">//<sp/>JSON<sp/>body<sp/>for</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>unknown<sp/>routes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.run();<sp/><sp/></highlight><highlight class="comment">//<sp/>Start<sp/>the<sp/>event<sp/>loops<sp/>and<sp/>block<sp/>here<sp/>until</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>they<sp/>stop;<sp/>execution<sp/>continues<sp/>below</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>afterwards.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>event<sp/>loops<sp/>have<sp/>stopped.<sp/>Finish<sp/>the<sp/>queued<sp/>database<sp/>and<sp/>password</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>work<sp/>and<sp/>join<sp/>the<sp/>workers<sp/>now,<sp/>while<sp/>the<sp/>connection<sp/>pool<sp/>and<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>other<sp/>singletons<sp/>still<sp/>exist,<sp/>instead<sp/>of<sp/>leaving<sp/>it<sp/>to<sp/>static</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>destruction.<sp/>The<sp/>database<sp/>executor<sp/>goes<sp/>first<sp/>because<sp/>its<sp/>tasks<sp/>may</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>hand<sp/>work<sp/>to<sp/>the<sp/>password<sp/>worker.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject&lt;DbExecutor&gt;</ref>()</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-&gt;shutdown();<sp/><sp/></highlight><highlight class="comment">//<sp/>Drain<sp/>the<sp/>DB<sp/>task<sp/>queue<sp/>and<sp/>stop<sp/>its<sp/>threads</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>before<sp/>the<sp/>DB<sp/>singletons<sp/>disappear.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Then<sp/>drain<sp/>password-hashing<sp/>work,<sp/>which<sp/>DB<sp/>tasks</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>may<sp/>have<sp/>queued.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reached<sp/>if<sp/>any<sp/>of<sp/>the<sp/>setup<sp/>or<sp/>teardown</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>above<sp/>threw<sp/>an<sp/>exception.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject&lt;PasswordWorker&gt;</ref>()-&gt;shutdown();</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>start<sp/>server<sp/>on<sp/>{}:{}.&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.host,</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.port));<sp/><sp/></highlight><highlight class="comment">//<sp/>Report<sp/>which<sp/>address<sp/>failed<sp/>to<sp/>start.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>the<sp/>exception&apos;s<sp/>own</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>description<sp/>as<sp/>a<sp/>critical<sp/>message.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;<sp/><sp/></highlight><highlight class="comment">//<sp/>Signal<sp/>failure<sp/>to<sp/>main(),<sp/>and<sp/>from<sp/>there<sp/>to<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>operating<sp/>system.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_SUCCESS;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>server<sp/>ran<sp/>and<sp/>shut<sp/>down<sp/>cleanly.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal">}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="296"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="297"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Prints<sp/>the<sp/>effective<sp/>configuration<sp/>and<sp/>the<sp/>startup<sp/>logo.</highlight></codeline>
+<codeline lineno="298"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="299"><highlight class="comment"><sp/>*<sp/>@details<sp/>Writes<sp/>to<sp/>stdout<sp/>and<sp/>explicitly<sp/>flushes<sp/>it<sp/>so<sp/>the<sp/>banner<sp/>appears</highlight></codeline>
+<codeline lineno="300"><highlight class="comment"><sp/>*<sp/>before<sp/>framework<sp/>logging<sp/>begins.<sp/>The<sp/>displayed<sp/>version<sp/>comes<sp/>from<sp/>the</highlight></codeline>
+<codeline lineno="301"><highlight class="comment"><sp/>*<sp/>build-time<sp/>VALHALLA_GIT_TAG,<sp/>not<sp/>from<sp/>the<sp/>Configurator<sp/>snapshot.</highlight></codeline>
+<codeline lineno="302"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Print<sp/>the<sp/>configuration<sp/>summary<sp/>and<sp/>the<sp/>ASCII</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight><highlight class="comment">//<sp/>logo,<sp/>then<sp/>flush<sp/>stdout.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="305" refid="classServer_1a419137d4cb2f6fdeee5e3982da4fd1d7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classServer_1a419137d4cb2f6fdeee5e3982da4fd1d7" kindref="member">Server::print_banner</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Print<sp/>Config</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><ref refid="classBanner_1aee5bc794e7e7e6c1dbe3476d417a0f0a" kindref="member">Banner::print_line</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Draw<sp/>a<sp/>separator<sp/>line<sp/>before<sp/>the<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>block.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><ref refid="classBanner_1a773dc3b0a54676530c4a659489a4bc09" kindref="member">Banner::print</ref>(</highlight><highlight class="stringliteral">&quot;Configuration:&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.desc,</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::color::light_blue,</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::color::yellow);<sp/><sp/></highlight><highlight class="comment">//<sp/>Print<sp/>the<sp/>section<sp/>title<sp/>with<sp/>coloured</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>label<sp/>and<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><ref refid="classBanner_1aee5bc794e7e7e6c1dbe3476d417a0f0a" kindref="member">Banner::print_line</ref>();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Draw<sp/>a<sp/>separator<sp/>after<sp/>the<sp/>title.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><ref refid="classServer_1adb978249d96530b9b06c6a88d73fd097" kindref="member">configurator_</ref>-&gt;printValues();<sp/><sp/></highlight><highlight class="comment">//<sp/>Dump<sp/>every<sp/>effective<sp/>configuration<sp/>value</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>from<sp/>the<sp/>source<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Show<sp/>ASCII<sp/>Art</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><ref refid="classBanner_1aee5bc794e7e7e6c1dbe3476d417a0f0a" kindref="member">Banner::print_line</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Draw<sp/>a<sp/>separator<sp/>before<sp/>the<sp/>logo<sp/>section.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><ref refid="classBanner_1accf954d53281ba0a993945630a19f66b" kindref="member">Banner::print_logo</ref>(<ref refid="classBanner_1a0f4d8408fd489c69079a28a1b2b9648f" kindref="member">Banner::get_random_color</ref>());<sp/><sp/></highlight><highlight class="comment">//<sp/>Print<sp/>the<sp/>logo<sp/>in<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>randomly<sp/>chosen<sp/>colour.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><ref refid="classBanner_1aee5bc794e7e7e6c1dbe3476d417a0f0a" kindref="member">Banner::print_line</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Draw<sp/>a<sp/>separator<sp/>after<sp/>the<sp/>logo.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><ref refid="classBanner_1a773dc3b0a54676530c4a659489a4bc09" kindref="member">Banner::print</ref>(</highlight><highlight class="stringliteral">&quot;<sp/>-<sp/>Version&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>VALHALLA_GIT_TAG,</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::color::light_green,</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::color::yellow);<sp/><sp/></highlight><highlight class="comment">//<sp/>Show<sp/>the<sp/>build-time<sp/>Git<sp/>tag<sp/>as<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>version.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><ref refid="classBanner_1a773dc3b0a54676530c4a659489a4bc09" kindref="member">Banner::print</ref>(</highlight><highlight class="stringliteral">&quot;<sp/>-<sp/>Port&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.port,</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::color::light_green,</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::color::yellow);<sp/><sp/></highlight><highlight class="comment">//<sp/>Show<sp/>which<sp/>TCP<sp/>port<sp/>the<sp/>server<sp/>listens</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>on.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><ref refid="classBanner_1a773dc3b0a54676530c4a659489a4bc09" kindref="member">Banner::print</ref>(</highlight><highlight class="stringliteral">&quot;<sp/>-<sp/>Threads&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.threads,</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::color::light_green,</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::color::yellow);<sp/><sp/></highlight><highlight class="comment">//<sp/>Show<sp/>how<sp/>many<sp/>worker<sp/>threads<sp/>were</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>configured.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><ref refid="classBanner_1a773dc3b0a54676530c4a659489a4bc09" kindref="member">Banner::print</ref>(</highlight><highlight class="stringliteral">&quot;<sp/>-<sp/>Database&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;{}<sp/>{}&quot;</highlight><highlight class="normal">,<sp/><ref refid="classServer_1add9a2053fd3293d3ea32f90174f31362" kindref="member">db_config_</ref>.max_conn,<sp/></highlight><highlight class="stringliteral">&quot;connections&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::color::light_green,</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::color::yellow);<sp/><sp/></highlight><highlight class="comment">//<sp/>Max<sp/>DB<sp/>connections.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><ref refid="classBanner_1a773dc3b0a54676530c4a659489a4bc09" kindref="member">Banner::print</ref>(</highlight><highlight class="stringliteral">&quot;<sp/>-<sp/>Doc&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;http://localhost:&quot;</highlight><highlight class="normal"><sp/>+<sp/>std::to_string(<ref refid="classServer_1a9187a361704ab4a8649b189969582ad8" kindref="member">config_</ref>.port)<sp/>+</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;/api/v2/doc&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::color::light_green,</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::color::yellow);<sp/><sp/></highlight><highlight class="comment">//<sp/>Docs<sp/>URL.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><ref refid="classBanner_1aee5bc794e7e7e6c1dbe3476d417a0f0a" kindref="member">Banner::print_line</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>Close<sp/>the<sp/>banner<sp/>with<sp/>a<sp/>final<sp/>separator<sp/>line.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"></highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/>std::flush(std::cout);<sp/><sp/></highlight><highlight class="comment">//<sp/>Force<sp/>the<sp/>banner<sp/>out<sp/>before<sp/>Drogon&apos;s<sp/>loggers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>start<sp/>writing<sp/>to<sp/>the<sp/>same<sp/>console.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="353"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="354"><highlight class="comment"><sp/>*<sp/>Reports<sp/>whether<sp/>a<sp/>method<sp/>should<sp/>be<sp/>routed<sp/>rather<sp/>than<sp/>rejected<sp/>in</highlight></codeline>
+<codeline lineno="355"><highlight class="comment"><sp/>*<sp/>pre-routing.</highlight></codeline>
+<codeline lineno="356"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="357"><highlight class="comment"><sp/>*<sp/>method:<sp/>Method<sp/>of<sp/>the<sp/>incoming<sp/>request.</highlight></codeline>
+<codeline lineno="358"><highlight class="comment"><sp/>*<sp/>Returns<sp/>true<sp/>for<sp/>GET,<sp/>POST,<sp/>PUT,<sp/>DELETE,<sp/>OPTIONS<sp/>and<sp/>HEAD;<sp/>false<sp/>for<sp/>all</highlight></codeline>
+<codeline lineno="359"><highlight class="comment"><sp/>*<sp/>others,<sp/>notably<sp/>PATCH.<sp/>Note:<sp/>PATCH<sp/>is<sp/>advertised<sp/>by<sp/>Cors::allowedMethods()</highlight></codeline>
+<codeline lineno="360"><highlight class="comment"><sp/>*<sp/>but<sp/>is<sp/>not<sp/>accepted<sp/>here;<sp/>the<sp/>two<sp/>lists<sp/>differ<sp/>in<sp/>the<sp/>current<sp/>implementation.</highlight></codeline>
+<codeline lineno="361"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Return<sp/>true<sp/>only<sp/>for<sp/>the<sp/>six<sp/>methods<sp/>this</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="363"><highlight class="normal"></highlight><highlight class="comment">//<sp/>server<sp/>is<sp/>willing<sp/>to<sp/>route.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="364" refid="classServer_1a5bc93a8ab4205adcfc43ee9d8f4aaa83" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classServer_1a5bc93a8ab4205adcfc43ee9d8f4aaa83" kindref="member">Server::isConventionalMethod</ref>(drogon::HttpMethod<sp/>method)<sp/>{</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>method<sp/>==<sp/>drogon::Get<sp/>||<sp/>method<sp/>==<sp/>drogon::Post<sp/>||</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>method<sp/>==<sp/>drogon::Put<sp/>||<sp/>method<sp/>==<sp/>drogon::Delete<sp/>||</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>method<sp/>==<sp/>drogon::Options<sp/>||<sp/><sp/></highlight><highlight class="comment">//<sp/>Accepted.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>method<sp/>==</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::Head;<sp/><sp/></highlight><highlight class="comment">//<sp/>Also<sp/>accept<sp/>HEAD<sp/>(like<sp/>GET<sp/>but<sp/>without<sp/>a<sp/>body);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>everything<sp/>else,<sp/>such<sp/>as<sp/>PATCH,<sp/>returns<sp/>false.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="src/server/server.cpp"/>
   </compounddef>

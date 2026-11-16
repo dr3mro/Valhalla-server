@@ -150,22 +150,22 @@ Private Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a0f880bf20fea3484b52e50084dfa9887" id="r_a0f880bf20fea3484b52e50084dfa9887"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classConfigurator.html">Configurator</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a0f880bf20fea3484b52e50084dfa9887">configurator_</a></td></tr>
 <tr class="memitem:a63cabe6ff7246a8a5bbbda2fad2ef3a8" id="r_a63cabe6ff7246a8a5bbbda2fad2ef3a8"><td class="memItemLeft"><a class="el" href="classBlockingPool.html">BlockingPool</a>&lt; <a class="el" href="classDatabase.html">Database</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a63cabe6ff7246a8a5bbbda2fad2ef3a8">pool_</a></td></tr>
-<tr class="memitem:a3d3988a112b2d63e72f0e3bf4f63db05" id="r_a3d3988a112b2d63e72f0e3bf4f63db05"><td class="memItemLeft">std::chrono::milliseconds&#160;</td><td class="memItemRight"><a class="el" href="#a3d3988a112b2d63e72f0e3bf4f63db05">acquireTimeout_</a> {0}</td></tr>
-<tr class="memitem:ae164078e6fbad2503800fd0c0ed804c2" id="r_ae164078e6fbad2503800fd0c0ed804c2"><td class="memItemLeft">std::atomic&lt; std::int64_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ae164078e6fbad2503800fd0c0ed804c2">lastSlowWaitWarningMs_</a> {0}</td></tr>
+<tr class="memitem:a3d3988a112b2d63e72f0e3bf4f63db05" id="r_a3d3988a112b2d63e72f0e3bf4f63db05"><td class="memItemLeft">std::chrono::milliseconds&#160;</td><td class="memItemRight"><a class="el" href="#a3d3988a112b2d63e72f0e3bf4f63db05">acquireTimeout_</a></td></tr>
+<tr class="memitem:ae164078e6fbad2503800fd0c0ed804c2" id="r_ae164078e6fbad2503800fd0c0ed804c2"><td class="memItemLeft">std::atomic&lt; std::int64_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ae164078e6fbad2503800fd0c0ed804c2">lastSlowWaitWarningMs_</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-static-attribs" class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:ad084ec4336eb5f8b2992541fa696013e" id="r_ad084ec4336eb5f8b2992541fa696013e"><td class="memItemLeft">static constexpr std::int64_t&#160;</td><td class="memItemRight"><a class="el" href="#ad084ec4336eb5f8b2992541fa696013e">SLOW_WAIT_WARNING_MS</a> = 100</td></tr>
-<tr class="memitem:a65446ef53e49f4ceb60ea24fe91160ee" id="r_a65446ef53e49f4ceb60ea24fe91160ee"><td class="memItemLeft">static constexpr std::uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#a65446ef53e49f4ceb60ea24fe91160ee">TIMEOUT</a> = 2</td></tr>
-<tr class="memitem:a4e41d9d5e3346efc01cba4e9eedd2ba8" id="r_a4e41d9d5e3346efc01cba4e9eedd2ba8"><td class="memItemLeft">static constexpr unsigned int&#160;</td><td class="memItemRight"><a class="el" href="#a4e41d9d5e3346efc01cba4e9eedd2ba8">MAX_RETRIES</a> = 5</td></tr>
+<tr class="memitem:ad084ec4336eb5f8b2992541fa696013e" id="r_ad084ec4336eb5f8b2992541fa696013e"><td class="memItemLeft">static constexpr std::int64_t&#160;</td><td class="memItemRight"><a class="el" href="#ad084ec4336eb5f8b2992541fa696013e">SLOW_WAIT_WARNING_MS</a></td></tr>
+<tr class="memitem:a65446ef53e49f4ceb60ea24fe91160ee" id="r_a65446ef53e49f4ceb60ea24fe91160ee"><td class="memItemLeft">static constexpr std::uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#a65446ef53e49f4ceb60ea24fe91160ee">TIMEOUT</a></td></tr>
+<tr class="memitem:a4e41d9d5e3346efc01cba4e9eedd2ba8" id="r_a4e41d9d5e3346efc01cba4e9eedd2ba8"><td class="memItemLeft">static constexpr unsigned int&#160;</td><td class="memItemRight"><a class="el" href="#a4e41d9d5e3346efc01cba4e9eedd2ba8">MAX_RETRIES</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Owns the fixed set of synchronous <a class="el" href="classDatabase.html" title="Owns one synchronous PostgreSQL connection used by the synchronous database path.">Database</a> connections and leases them to callers. </p>
-<p>Connections are created in parallel at construction and stored in a <a class="el" href="classBlockingPool.html" title="Thread-safe fixed set of reusable items leased one caller at a time.">BlockingPool</a>. Callers obtain a connection with <a class="el" href="#a39716826b3e5be2f15603d8cf809446b" title="Leases an idle connection, waiting at most the configured acquire timeout.">get_connection()</a> and must give it back with <a class="el" href="#ace8c17b9fea41e732a18f9700af847bb" title="Returns a previously leased connection to the idle set and wakes one waiter.">return_connection()</a>; in practice <a class="el" href="classDatabaseHanndler.html" title="RAII lease of a single pooled Database connection.">DatabaseHanndler</a> does this via RAII. The acquire timeout is read once from configuration at startup. When a wait for a connection expires, <a class="el" href="#a39716826b3e5be2f15603d8cf809446b" title="Leases an idle connection, waiting at most the configured acquire timeout.">get_connection()</a> throws <a class="el" href="classDatabaseBusy.html" title="Exception signalling that the connection pool could not lease a connection in time.">DatabaseBusy</a>, which the HTTP layer maps to 503.</p>
-<p>Thread-safety: connection hand-out and return are serialised by <a class="el" href="classBlockingPool.html" title="Thread-safe fixed set of reusable items leased one caller at a time.">BlockingPool</a>; the slow-wait warning rate limiter is atomic. Non-copyable and non-movable. </p><dl class="section warning"><dt>Warning</dt><dd>A failed initialisation is fatal: the constructor logs and calls <span class="tt">exit(EXIT_FAILURE)</span>. </dd></dl>
+<p>Connections are created in parallel at construction and stored in a <a class="el" href="classBlockingPool.html" title="Thread-safe fixed set of reusable items leased one caller at a time.">BlockingPool</a>. Callers obtain a connection with <a class="el" href="#a39716826b3e5be2f15603d8cf809446b" title="Leases an idle connection, waiting at most the configured acquire timeout.">get_connection()</a> and must give it back with <a class="el" href="#ace8c17b9fea41e732a18f9700af847bb" title="Returns a previously leased connection to the idle set and wakes one waiter.">return_connection()</a>; in practice <a class="el" href="classDatabaseHanndler.html" title="RAII lease of a single pooled Database connection.">DatabaseHanndler</a> does this via RAII. The acquire timeout is read once from configuration at startup. When a wait for a connection expires, <a class="el" href="#a39716826b3e5be2f15603d8cf809446b" title="Leases an idle connection, waiting at most the configured acquire timeout.">get_connection()</a> throws <a class="el" href="classDatabaseBusy.html" title="Exception signalling that the connection pool could not lease a connection in time.">DatabaseBusy</a>, which the HTTP layer maps to 503. </p><pre class="fragment">     Thread-safety: connection hand-out and return are serialised by
+</pre><p> <a class="el" href="classBlockingPool.html" title="Thread-safe fixed set of reusable items leased one caller at a time.">BlockingPool</a>; the slow-wait warning rate limiter is atomic. Non-copyable and non-movable. </p><dl class="section warning"><dt>Warning</dt><dd>A failed initialisation is fatal: the constructor logs and calls <span class="tt">exit(EXIT_FAILURE)</span>. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classBlockingPool.html" title="Thread-safe fixed set of reusable items leased one caller at a time.">BlockingPool</a>, <a class="el" href="classDatabaseHanndler.html" title="RAII lease of a single pooled Database connection.">DatabaseHanndler</a>, <a class="el" href="classDatabaseBusy.html" title="Exception signalling that the connection pool could not lease a connection in time.">DatabaseBusy</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8hpp_source.html#l00055">55</a> of file <a class="el" href="databaseconnectionpool_8hpp_source.html">databaseconnectionpool.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8hpp_source.html#l00078">78</a> of file <a class="el" href="databaseconnectionpool_8hpp_source.html">databaseconnectionpool.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6764698bbb9762db2ce366d88d7de231" name="a6764698bbb9762db2ce366d88d7de231"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6764698bbb9762db2ce366d88d7de231">&#9670;&#160;</a></span>DatabaseConnectionPool() <span class="overload">[1/3]</span></h2>
@@ -187,9 +187,9 @@ Static Private Attributes</h2></td></tr>
 <p>Reads the acquire timeout and <span class="tt">DB_MAX_CONN</span>, warns if the pool is smaller than <span class="tt">SERVER_THREADS + 1</span>, then creates connections concurrently with bounded retries and exponential backoff. Any creation failure is fatal (process exit).</p>
 <p>Reads DB_MAX_CONN and the acquire timeout, warns when the pool is undersized, then starts all connections concurrently. Each slot retries with exponential backoff (MAX_RETRIES attempts); if any slot cannot be created, a runtime_error is raised and the catch block exits the process with EXIT_FAILURE. </p>
 
-<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8cpp_source.html#l00091">91</a> of file <a class="el" href="databaseconnectionpool_8cpp_source.html">databaseconnectionpool.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8cpp_source.html#l00133">133</a> of file <a class="el" href="databaseconnectionpool_8cpp_source.html">databaseconnectionpool.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="databaseconnectionpool_8hpp_source.html#l00109">acquireTimeout_</a>, <a class="el" href="databaseconnectionpool_8hpp_source.html#l00107">configurator_</a>, <a class="el" href="databaseconnectionpool_8cpp_source.html#l00063">createDatabaseConnection()</a>, <a class="el" href="message_8cpp_source.html#l00042">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00041">Message::ErrorMessage()</a>, <a class="el" href="blockingpool_8hpp_source.html#l00109">BlockingPool&lt; T &gt;::idle()</a>, <a class="el" href="message_8cpp_source.html#l00044">Message::InitMessage()</a>, <a class="el" href="databaseconnectionpool_8hpp_source.html#l00125">MAX_RETRIES</a>, <a class="el" href="databaseconnectionpool_8hpp_source.html#l00108">pool_</a>, <a class="el" href="blockingpool_8hpp_source.html#l00072">BlockingPool&lt; T &gt;::release()</a>, and <a class="el" href="message_8cpp_source.html#l00040">Message::WarningMessage()</a>.</p>
+<p class="reference">References <a class="el" href="databaseconnectionpool_8hpp_source.html#l00158">acquireTimeout_</a>, <a class="el" href="databaseconnectionpool_8hpp_source.html#l00154">configurator_</a>, <a class="el" href="databaseconnectionpool_8cpp_source.html#l00086">createDatabaseConnection()</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, <a class="el" href="blockingpool_8hpp_source.html#l00155">BlockingPool&lt; T &gt;::idle()</a>, <a class="el" href="message_8cpp_source.html#l00063">Message::InitMessage()</a>, <a class="el" href="databaseconnectionpool_8hpp_source.html#l00179">MAX_RETRIES</a>, <a class="el" href="databaseconnectionpool_8hpp_source.html#l00157">pool_</a>, <a class="el" href="blockingpool_8hpp_source.html#l00099">BlockingPool&lt; T &gt;::release()</a>, and <a class="el" href="message_8cpp_source.html#l00051">Message::WarningMessage()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a39a9799f57b9446f7fd80d284c66113a">DatabaseConnectionPool()</a>, <a class="el" href="#a8bbd9681b2d84684ad40e2eb62c9eddd">DatabaseConnectionPool()</a>, <a class="el" href="#a40992d2ac72ec16cefcc79e48f174e23">operator=()</a>, and <a class="el" href="#a0426d4292fb343f110c83e8451aceb0c">operator=()</a>.</p>
 
@@ -218,7 +218,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="databaseconnectionpool_8cpp_source.html#l00091">DatabaseConnectionPool()</a>.</p>
+<p class="reference">References <a class="el" href="databaseconnectionpool_8cpp_source.html#l00133">DatabaseConnectionPool()</a>.</p>
 
 </div>
 </div>
@@ -245,7 +245,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="databaseconnectionpool_8cpp_source.html#l00091">DatabaseConnectionPool()</a>.</p>
+<p class="reference">References <a class="el" href="databaseconnectionpool_8cpp_source.html#l00133">DatabaseConnectionPool()</a>.</p>
 
 </div>
 </div>
@@ -274,7 +274,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Destroys the pool. Connection cleanup is delegated to the members' destructors. </p>
 
-<p class="reference">References <a class="el" href="databaseconnectionpool_8cpp_source.html#l00063">createDatabaseConnection()</a>, <a class="el" href="databaseconnectionpool_8cpp_source.html#l00162">get_connection()</a>, <a class="el" href="databaseconnectionpool_8cpp_source.html#l00205">reconnect_all()</a>, and <a class="el" href="databaseconnectionpool_8cpp_source.html#l00195">return_connection()</a>.</p>
+<p class="reference">References <a class="el" href="databaseconnectionpool_8cpp_source.html#l00086">createDatabaseConnection()</a>, <a class="el" href="databaseconnectionpool_8cpp_source.html#l00269">get_connection()</a>, <a class="el" href="databaseconnectionpool_8cpp_source.html#l00343">reconnect_all()</a>, and <a class="el" href="databaseconnectionpool_8cpp_source.html#l00329">return_connection()</a>.</p>
 
 </div>
 </div>
@@ -318,11 +318,11 @@ Static Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>A valid <a class="el" href="classDatabase.html" title="Owns one synchronous PostgreSQL connection used by the synchronous database path.">Database</a>, or <span class="tt">nullptr</span> if opening or validation failed.</dd></dl>
 <p>Opens one pqxx connection using the configured credentials and a connect timeout. Returns a <a class="el" href="classDatabase.html" title="Owns one synchronous PostgreSQL connection used by the synchronous database path.">Database</a> only when the connection is open; failures are logged rather than thrown so the caller can retry the whole slot. config_: Configuration holding host, dbname, user and password. Returns A validated <a class="el" href="classDatabase.html" title="Owns one synchronous PostgreSQL connection used by the synchronous database path.">Database</a>, or <span class="tt">nullptr</span> on failure. </p>
 
-<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8cpp_source.html#l00063">63</a> of file <a class="el" href="databaseconnectionpool_8cpp_source.html">databaseconnectionpool.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8cpp_source.html#l00086">86</a> of file <a class="el" href="databaseconnectionpool_8cpp_source.html">databaseconnectionpool.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="message_8cpp_source.html#l00042">Message::CriticalMessage()</a>, and <a class="el" href="databaseconnectionpool_8hpp_source.html#l00120">TIMEOUT</a>.</p>
+<p class="reference">References <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, and <a class="el" href="databaseconnectionpool_8hpp_source.html#l00172">TIMEOUT</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="databaseconnectionpool_8cpp_source.html#l00091">DatabaseConnectionPool()</a>, and <a class="el" href="#a43c46e813684a9dbd0ba9a7d2eff764e">~DatabaseConnectionPool()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="databaseconnectionpool_8cpp_source.html#l00133">DatabaseConnectionPool()</a>, and <a class="el" href="#a43c46e813684a9dbd0ba9a7d2eff764e">~DatabaseConnectionPool()</a>.</p>
 
 </div>
 </div>
@@ -367,9 +367,9 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <p>Measures the wait with a steady clock and emits at most one saturation warning per second using an atomic compare-exchange on the last-warning timestamp. </p>
 
-<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8cpp_source.html#l00162">162</a> of file <a class="el" href="databaseconnectionpool_8cpp_source.html">databaseconnectionpool.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8cpp_source.html#l00269">269</a> of file <a class="el" href="databaseconnectionpool_8cpp_source.html">databaseconnectionpool.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="blockingpool_8hpp_source.html#l00093">BlockingPool&lt; T &gt;::acquire()</a>, <a class="el" href="databaseconnectionpool_8hpp_source.html#l00109">acquireTimeout_</a>, <a class="el" href="message_8cpp_source.html#l00042">Message::CriticalMessage()</a>, <a class="el" href="databasebusy_8hpp_source.html#l00050">DatabaseBusy::DatabaseBusy()</a>, <a class="el" href="databaseconnectionpool_8hpp_source.html#l00110">lastSlowWaitWarningMs_</a>, <a class="el" href="databaseconnectionpool_8hpp_source.html#l00108">pool_</a>, <a class="el" href="databaseconnectionpool_8hpp_source.html#l00115">SLOW_WAIT_WARNING_MS</a>, and <a class="el" href="message_8cpp_source.html#l00040">Message::WarningMessage()</a>.</p>
+<p class="reference">References <a class="el" href="blockingpool_8hpp_source.html#l00126">BlockingPool&lt; T &gt;::acquire()</a>, <a class="el" href="databaseconnectionpool_8hpp_source.html#l00158">acquireTimeout_</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="databasebusy_8hpp_source.html#l00063">DatabaseBusy::DatabaseBusy()</a>, <a class="el" href="databaseconnectionpool_8hpp_source.html#l00160">lastSlowWaitWarningMs_</a>, <a class="el" href="databaseconnectionpool_8hpp_source.html#l00157">pool_</a>, <a class="el" href="databaseconnectionpool_8hpp_source.html#l00166">SLOW_WAIT_WARNING_MS</a>, and <a class="el" href="message_8cpp_source.html#l00051">Message::WarningMessage()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a43c46e813684a9dbd0ba9a7d2eff764e">~DatabaseConnectionPool()</a>.</p>
 
@@ -398,7 +398,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="databaseconnectionpool_8cpp_source.html#l00091">DatabaseConnectionPool()</a>.</p>
+<p class="reference">References <a class="el" href="databaseconnectionpool_8cpp_source.html#l00133">DatabaseConnectionPool()</a>.</p>
 
 </div>
 </div>
@@ -425,7 +425,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="databaseconnectionpool_8cpp_source.html#l00091">DatabaseConnectionPool()</a>.</p>
+<p class="reference">References <a class="el" href="databaseconnectionpool_8cpp_source.html#l00133">DatabaseConnectionPool()</a>.</p>
 
 </div>
 </div>
@@ -449,9 +449,9 @@ Static Private Attributes</h2></td></tr>
 <p>Holds the pool lock for the whole operation so no idle connection can be handed out while it is being reconnected; busy connections are not touched.</p>
 <p>Uses forEachIdle to hold the pool lock while the reconnect tasks run and until every task has been waited on, so no idle connection is handed out half-way through a reconnect. Busy (already leased) connections are not touched here. </p><dl class="section note"><dt>Note</dt><dd>Each reconnect's success or failure (including exceptions) is logged; the method itself does not throw for an individual connection failure. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8cpp_source.html#l00205">205</a> of file <a class="el" href="databaseconnectionpool_8cpp_source.html">databaseconnectionpool.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8cpp_source.html#l00343">343</a> of file <a class="el" href="databaseconnectionpool_8cpp_source.html">databaseconnectionpool.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="databaseconnectionpool_8hpp_source.html#l00107">configurator_</a>, <a class="el" href="message_8cpp_source.html#l00042">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00041">Message::ErrorMessage()</a>, <a class="el" href="blockingpool_8hpp_source.html#l00130">BlockingPool&lt; T &gt;::forEachIdle()</a>, <a class="el" href="message_8cpp_source.html#l00039">Message::InfoMessage()</a>, and <a class="el" href="databaseconnectionpool_8hpp_source.html#l00108">pool_</a>.</p>
+<p class="reference">References <a class="el" href="databaseconnectionpool_8hpp_source.html#l00154">configurator_</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, <a class="el" href="blockingpool_8hpp_source.html#l00183">BlockingPool&lt; T &gt;::forEachIdle()</a>, <a class="el" href="message_8cpp_source.html#l00048">Message::InfoMessage()</a>, and <a class="el" href="databaseconnectionpool_8hpp_source.html#l00157">pool_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a43c46e813684a9dbd0ba9a7d2eff764e">~DatabaseConnectionPool()</a>.</p>
 
@@ -481,9 +481,9 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <p>Returns a leased connection to the idle set, waking one waiting acquirer. db_ptr: Connection to return; null values are ignored by <a class="el" href="classBlockingPool.html" title="Thread-safe fixed set of reusable items leased one caller at a time.">BlockingPool</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8cpp_source.html#l00195">195</a> of file <a class="el" href="databaseconnectionpool_8cpp_source.html">databaseconnectionpool.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8cpp_source.html#l00329">329</a> of file <a class="el" href="databaseconnectionpool_8cpp_source.html">databaseconnectionpool.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="databaseconnectionpool_8hpp_source.html#l00108">pool_</a>, and <a class="el" href="blockingpool_8hpp_source.html#l00072">BlockingPool&lt; T &gt;::release()</a>.</p>
+<p class="reference">References <a class="el" href="databaseconnectionpool_8hpp_source.html#l00157">pool_</a>, and <a class="el" href="blockingpool_8hpp_source.html#l00099">BlockingPool&lt; T &gt;::release()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a43c46e813684a9dbd0ba9a7d2eff764e">~DatabaseConnectionPool()</a>.</p>
 
@@ -500,7 +500,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::chrono::milliseconds DatabaseConnectionPool::acquireTimeout_ {0}</td>
+          <td class="memname">std::chrono::milliseconds DatabaseConnectionPool::acquireTimeout_</td>
         </tr>
       </table>
   </td>
@@ -509,10 +509,12 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">{</div>
+<div class="line">      0}</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8hpp_source.html#l00158">158</a> of file <a class="el" href="databaseconnectionpool_8hpp_source.html">databaseconnectionpool.hpp</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8hpp_source.html#l00109">109</a> of file <a class="el" href="databaseconnectionpool_8hpp_source.html">databaseconnectionpool.hpp</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="databaseconnectionpool_8cpp_source.html#l00091">DatabaseConnectionPool()</a>, and <a class="el" href="databaseconnectionpool_8cpp_source.html#l00162">get_connection()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="databaseconnectionpool_8cpp_source.html#l00133">DatabaseConnectionPool()</a>, and <a class="el" href="databaseconnectionpool_8cpp_source.html#l00269">get_connection()</a>.</p>
 
 </div>
 </div>
@@ -536,9 +538,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8hpp_source.html#l00107">107</a> of file <a class="el" href="databaseconnectionpool_8hpp_source.html">databaseconnectionpool.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8hpp_source.html#l00154">154</a> of file <a class="el" href="databaseconnectionpool_8hpp_source.html">databaseconnectionpool.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="databaseconnectionpool_8cpp_source.html#l00091">DatabaseConnectionPool()</a>, and <a class="el" href="databaseconnectionpool_8cpp_source.html#l00205">reconnect_all()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="databaseconnectionpool_8cpp_source.html#l00133">DatabaseConnectionPool()</a>, and <a class="el" href="databaseconnectionpool_8cpp_source.html#l00343">reconnect_all()</a>.</p>
 
 </div>
 </div>
@@ -552,7 +554,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;std::int64_t&gt; DatabaseConnectionPool::lastSlowWaitWarningMs_ {0}</td>
+          <td class="memname">std::atomic&lt;std::int64_t&gt; DatabaseConnectionPool::lastSlowWaitWarningMs_</td>
         </tr>
       </table>
   </td>
@@ -561,10 +563,12 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">{</div>
+<div class="line">      0}</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8hpp_source.html#l00160">160</a> of file <a class="el" href="databaseconnectionpool_8hpp_source.html">databaseconnectionpool.hpp</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8hpp_source.html#l00110">110</a> of file <a class="el" href="databaseconnectionpool_8hpp_source.html">databaseconnectionpool.hpp</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="databaseconnectionpool_8cpp_source.html#l00162">get_connection()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="databaseconnectionpool_8cpp_source.html#l00269">get_connection()</a>.</p>
 
 </div>
 </div>
@@ -578,7 +582,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int DatabaseConnectionPool::MAX_RETRIES = 5</td>
+          <td class="memname">unsigned int DatabaseConnectionPool::MAX_RETRIES</td>
         </tr>
       </table>
   </td>
@@ -587,11 +591,13 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Number of attempts to create a connection before giving up on that slot. </p>
+<b>Initial value:</b><div class="fragment"><div class="line">                                      =</div>
+<div class="line">5</div>
+</div><!-- fragment --><p>Number of attempts to create a connection before giving up on that slot. </p>
 
-<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8hpp_source.html#l00125">125</a> of file <a class="el" href="databaseconnectionpool_8hpp_source.html">databaseconnectionpool.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8hpp_source.html#l00179">179</a> of file <a class="el" href="databaseconnectionpool_8hpp_source.html">databaseconnectionpool.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="databaseconnectionpool_8cpp_source.html#l00091">DatabaseConnectionPool()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="databaseconnectionpool_8cpp_source.html#l00133">DatabaseConnectionPool()</a>.</p>
 
 </div>
 </div>
@@ -615,9 +621,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8hpp_source.html#l00108">108</a> of file <a class="el" href="databaseconnectionpool_8hpp_source.html">databaseconnectionpool.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8hpp_source.html#l00157">157</a> of file <a class="el" href="databaseconnectionpool_8hpp_source.html">databaseconnectionpool.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="databaseconnectionpool_8cpp_source.html#l00091">DatabaseConnectionPool()</a>, <a class="el" href="databaseconnectionpool_8cpp_source.html#l00162">get_connection()</a>, <a class="el" href="databaseconnectionpool_8cpp_source.html#l00205">reconnect_all()</a>, and <a class="el" href="databaseconnectionpool_8cpp_source.html#l00195">return_connection()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="databaseconnectionpool_8cpp_source.html#l00133">DatabaseConnectionPool()</a>, <a class="el" href="databaseconnectionpool_8cpp_source.html#l00269">get_connection()</a>, <a class="el" href="databaseconnectionpool_8cpp_source.html#l00343">reconnect_all()</a>, and <a class="el" href="databaseconnectionpool_8cpp_source.html#l00329">return_connection()</a>.</p>
 
 </div>
 </div>
@@ -631,7 +637,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::int64_t DatabaseConnectionPool::SLOW_WAIT_WARNING_MS = 100</td>
+          <td class="memname">std::int64_t DatabaseConnectionPool::SLOW_WAIT_WARNING_MS</td>
         </tr>
       </table>
   </td>
@@ -640,11 +646,13 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Minimum wait (ms) that triggers a slow-acquire warning. </p>
+<b>Initial value:</b><div class="fragment"><div class="line">                                               =</div>
+<div class="line">100</div>
+</div><!-- fragment --><p>Minimum wait (ms) that triggers a slow-acquire warning. </p>
 
-<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8hpp_source.html#l00115">115</a> of file <a class="el" href="databaseconnectionpool_8hpp_source.html">databaseconnectionpool.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8hpp_source.html#l00166">166</a> of file <a class="el" href="databaseconnectionpool_8hpp_source.html">databaseconnectionpool.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="databaseconnectionpool_8cpp_source.html#l00162">get_connection()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="databaseconnectionpool_8cpp_source.html#l00269">get_connection()</a>.</p>
 
 </div>
 </div>
@@ -658,7 +666,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::uint16_t DatabaseConnectionPool::TIMEOUT = 2</td>
+          <td class="memname">std::uint16_t DatabaseConnectionPool::TIMEOUT</td>
         </tr>
       </table>
   </td>
@@ -667,11 +675,13 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>libpq <span class="tt">connect_timeout</span> in seconds used when opening connections. </p>
+<b>Initial value:</b><div class="fragment"><div class="line">                                   =</div>
+<div class="line">2</div>
+</div><!-- fragment --><p>libpq <span class="tt">connect_timeout</span> in seconds used when opening connections. </p>
 
-<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8hpp_source.html#l00120">120</a> of file <a class="el" href="databaseconnectionpool_8hpp_source.html">databaseconnectionpool.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databaseconnectionpool_8hpp_source.html#l00172">172</a> of file <a class="el" href="databaseconnectionpool_8hpp_source.html">databaseconnectionpool.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="databaseconnectionpool_8cpp_source.html#l00063">createDatabaseConnection()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="databaseconnectionpool_8cpp_source.html#l00086">createDatabaseConnection()</a>.</p>
 
 </div>
 </div>

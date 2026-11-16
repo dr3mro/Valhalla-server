@@ -1,8 +1,8 @@
 var classDOSDetector =
 [
-    [ "ClockFn", "classDOSDetector.html#a35807e99abb90ecd94ca0fb70ca558b7", null ],
-    [ "Matcher", "classDOSDetector.html#ab4343e71b3c2528eb5ce000c73815897", null ],
-    [ "Request", "classDOSDetector.html#a362a948824acc3cf457cb47e8d095cb5", null ],
+    [ "ClockFn", "classDOSDetector.html#ac7575b7d29bfc8bd94cb54bb6321799a", null ],
+    [ "Matcher", "classDOSDetector.html#ad8b341c07d5e83619f002dd65b9f7977", null ],
+    [ "Request", "classDOSDetector.html#a43f9aacef13939c478b0b533aaf7d6ca", null ],
     [ "Status", "classDOSDetector.html#acf5c41607da4d0e603dbe116fb4a5f56", [
       [ "ALLOWED", "classDOSDetector.html#acf5c41607da4d0e603dbe116fb4a5f56ae4f0885433f4027329da7e965b38a756", null ],
       [ "WHITELISTED", "classDOSDetector.html#acf5c41607da4d0e603dbe116fb4a5f56a7cd7955250b12853bd245c9ed76a5ba7", null ],
@@ -46,7 +46,7 @@ var classDOSDetector =
     [ "ratelimited_ips_", "classDOSDetector.html#a7414d016492551e5efb514c3a37c46aa", null ],
     [ "REQUEST_BUFFER_SIZE", "classDOSDetector.html#a92b6c713256d98b3580443b3b2f9d6a3", null ],
     [ "request_mutex_", "classDOSDetector.html#af6aa937bee640e5ed826496bcf4325e1", null ],
-    [ "requests_", "classDOSDetector.html#a010da1daced447c1940552c9148eb551", null ],
+    [ "requests_", "classDOSDetector.html#aea7f4706caa63d2ddd7036ec3640355c", null ],
     [ "running_clean_", "classDOSDetector.html#a917abeb77d41bddf1a6838a1a790148c", null ],
     [ "whitelist_", "classDOSDetector.html#a718d71ac63ba8e97aa101239e6184eba", null ]
 ];

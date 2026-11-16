@@ -1,6 +1,6 @@
 var structPermissions =
 [
-    [ "StaffPermission", "structPermissions.html#a9617e1834ef40047fc77ac4898e51eb5", null ],
+    [ "StaffPermission", "structPermissions.html#a26a1c9adb722c5389044eb29c0db4e1e", null ],
     [ "PowerLevel", "structPermissions.html#a1dc2e37dd1ca56eb9dc57829a512e092", [
       [ "NONE", "structPermissions.html#a1dc2e37dd1ca56eb9dc57829a512e092ab50339a10e1de285ac99d4c3990b8693", null ],
       [ "USER", "structPermissions.html#a1dc2e37dd1ca56eb9dc57829a512e092a2e40ad879e955201df4dedbf8d479a12", null ],

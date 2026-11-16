@@ -15,5 +15,5 @@ var searchData=
   ['frontend_20email_20sender_12',['Frontend &amp;amp; email sender',['../index.html#autotoc_md23',1,'']]],
   ['frontend_5fconfig_5f_13',['frontend_config_',['../classConfigurator.html#a0e0e891626210eec166117bf5aa4b9f8',1,'Configurator']]],
   ['frontendcfg_5f_14',['frontendcfg_',['../structapi_1_1v2_1_1Types_1_1StaffData.html#a37f2a8adfb205f92804835dd6d8e242f',1,'api::v2::Types::StaffData']]],
-  ['frontendconfig_15',['FrontEndConfig',['../structFrontEndConfig.html',1,'FrontEndConfig'],['../classConfigurator.html#a347b5a0b1eea515a10e00751bcfa1d4d',1,'Configurator::FrontEndConfig']]]
+  ['frontendconfig_15',['FrontEndConfig',['../structFrontEndConfig.html',1,'FrontEndConfig'],['../classConfigurator.html#a8b3e99fef2ad5bf59793fa235a97aa3c',1,'Configurator::FrontEndConfig']]]
 ];

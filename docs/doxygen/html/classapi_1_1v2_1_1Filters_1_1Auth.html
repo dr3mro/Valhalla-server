@@ -133,13 +133,13 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a0d799325b0251f98cf0535db411dc3b7" id="r_a0d799325b0251f98cf0535db411dc3b7"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classapi_1_1v2_1_1GateKeeper.html">GateKeeper</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a0d799325b0251f98cf0535db411dc3b7">gateKeeper</a> = <a class="el" href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c">Store::getObject</a>&lt;<a class="el" href="classapi_1_1v2_1_1GateKeeper.html">GateKeeper</a>&gt;()</td></tr>
+<tr class="memitem:a0d799325b0251f98cf0535db411dc3b7" id="r_a0d799325b0251f98cf0535db411dc3b7"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classapi_1_1v2_1_1GateKeeper.html">GateKeeper</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a0d799325b0251f98cf0535db411dc3b7">gateKeeper</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Drogon filter that validates the Bearer token and identifies the requester. </p>
 <p>Runs last in the SECURE filter chain, after rate limiting and timing (see INSECURE/SECURE in <a class="el" href="common_8hpp.html" title="Safely parse a numeric id query parameter, replying 400 on failure.">basic/common.hpp</a>). It rejects malformed/missing Authorization headers and invalid tokens with a JSON 401; a <a class="el" href="classDatabaseBusy.html" title="Exception signalling that the connection pool could not lease a connection in time.">DatabaseBusy</a> from the validator becomes a retryable JSON 503 with Retry-After: 1. On success it inserts "clientID" and "clientGroup" request attributes that downstream controllers read to build a <a class="el" href="structRequester.html" title="Value object describing who issued a request.">Requester</a> for permission checks, then continues the chain. When DatabaseConfig::async is set, validation runs in a drogon::Task coroutine and the callbacks are moved into the coroutine frame so they outlive every suspension. </p><dl class="section note"><dt>Note</dt><dd>All routes that consume the identity attributes must include this filter (SECURE). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="auth_8hpp_source.html#l00065">65</a> of file <a class="el" href="auth_8hpp_source.html">auth.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="auth_8hpp_source.html#l00088">88</a> of file <a class="el" href="auth_8hpp_source.html">auth.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a84b0818922fc0aecd9f446419b3eb5fe" name="a84b0818922fc0aecd9f446419b3eb5fe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a84b0818922fc0aecd9f446419b3eb5fe">&#9670;&#160;</a></span>Auth()</h2>
@@ -211,9 +211,9 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="auth_8hpp_source.html#l00081">81</a> of file <a class="el" href="auth_8hpp_source.html">auth.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="auth_8hpp_source.html#l00115">115</a> of file <a class="el" href="auth_8hpp_source.html">auth.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="store_8hpp_source.html#l00189">Store::cachedObject()</a>, <a class="el" href="auth_8hpp_source.html#l00192">gateKeeper</a>, <a class="el" href="jsonhelper_8cpp_source.html#l00027">api::v2::JsonHelper::jsonify()</a>, and <a class="el" href="jsonhelper_8cpp_source.html#l00041">api::v2::JsonHelper::stringify()</a>.</p>
+<p class="reference">References <a class="el" href="store_8hpp_source.html#l00260">Store::cachedObject()</a>, <a class="el" href="auth_8hpp_source.html#l00341">gateKeeper</a>, <a class="el" href="jsonhelper_8cpp_source.html#l00032">api::v2::JsonHelper::jsonify()</a>, and <a class="el" href="jsonhelper_8cpp_source.html#l00050">api::v2::JsonHelper::stringify()</a>.</p>
 
 </div>
 </div>
@@ -228,7 +228,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="classapi_1_1v2_1_1GateKeeper.html">GateKeeper</a>&gt; api::v2::Filters::Auth::gateKeeper = <a class="el" href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c">Store::getObject</a>&lt;<a class="el" href="classapi_1_1v2_1_1GateKeeper.html">GateKeeper</a>&gt;()</td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classapi_1_1v2_1_1GateKeeper.html">GateKeeper</a>&gt; api::v2::Filters::Auth::gateKeeper</td>
         </tr>
       </table>
   </td>
@@ -237,10 +237,13 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">                       =</div>
+<div class="line"><a class="code hl_function" href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c">Store::getObject&lt;GateKeeper&gt;</a>()</div>
+<div class="ttc" id="aclassStore_html_a0607fb3b583c06ca910ed6c9881e790c"><div class="ttname"><a href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c">Store::getObject</a></div><div class="ttdeci">static std::shared_ptr&lt; T &gt; getObject(Args &amp;&amp;... args)</div><div class="ttdoc">Returns the singleton for T, constructing it on first use.</div><div class="ttdef"><b>Definition</b> <a href="store_8hpp_source.html#l00190">store.hpp:190</a></div></div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="auth_8hpp_source.html#l00341">341</a> of file <a class="el" href="auth_8hpp_source.html">auth.hpp</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="auth_8hpp_source.html#l00192">192</a> of file <a class="el" href="auth_8hpp_source.html">auth.hpp</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="auth_8hpp_source.html#l00081">doFilter()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="auth_8hpp_source.html#l00115">doFilter()</a>.</p>
 
 </div>
 </div>

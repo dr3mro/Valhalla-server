@@ -128,25 +128,25 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('classClinicCon
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3e8f2c567afba1c174e17be60de26351" id="r_a3e8f2c567afba1c174e17be60de26351"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a3e8f2c567afba1c174e17be60de26351">ClinicControllerBase</a> ()=default</td></tr>
 <tr class="memitem:a14929608e87a3507194222c27cb602ec" id="r_a14929608e87a3507194222c27cb602ec"><td class="memItemLeft">virtual&#160;</td><td class="memItemRight"><a class="el" href="#a14929608e87a3507194222c27cb602ec">~ClinicControllerBase</a> ()=default</td></tr>
-<tr class="memitem:a572b7956fa1d19e1c688458f4108dca0" id="r_a572b7956fa1d19e1c688458f4108dca0"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a572b7956fa1d19e1c688458f4108dca0">Create</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;&amp;requester, std::string_view data)=0</td></tr>
+<tr class="memitem:a572b7956fa1d19e1c688458f4108dca0" id="r_a572b7956fa1d19e1c688458f4108dca0"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a572b7956fa1d19e1c688458f4108dca0">Create</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;&amp;requester, std::string_view data)=0</td></tr>
 <tr class="memdesc:a572b7956fa1d19e1c688458f4108dca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a clinic-service entity from the JSON body.  <br /></td></tr>
-<tr class="memitem:a69c52c140626bbe5abb2cc9bfcc3d1b8" id="r_a69c52c140626bbe5abb2cc9bfcc3d1b8"><td class="memItemLeft">virtual drogon::Task&lt; void &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a69c52c140626bbe5abb2cc9bfcc3d1b8">CreateAsync</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;&amp;requester, std::string_view data)=0</td></tr>
+<tr class="memitem:a69c52c140626bbe5abb2cc9bfcc3d1b8" id="r_a69c52c140626bbe5abb2cc9bfcc3d1b8"><td class="memItemLeft">virtual drogon::Task&lt; void &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a69c52c140626bbe5abb2cc9bfcc3d1b8">CreateAsync</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;&amp;requester, std::string_view data)=0</td></tr>
 <tr class="memdesc:a69c52c140626bbe5abb2cc9bfcc3d1b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#a572b7956fa1d19e1c688458f4108dca0" title="Creates a clinic-service entity from the JSON body.">Create()</a>; must be awaited.  <br /></td></tr>
-<tr class="memitem:abd99fedc56554304ebf14698b28cdb7c" id="r_abd99fedc56554304ebf14698b28cdb7c"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#abd99fedc56554304ebf14698b28cdb7c">Read</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;&amp;requester, std::string_view data)=0</td></tr>
+<tr class="memitem:abd99fedc56554304ebf14698b28cdb7c" id="r_abd99fedc56554304ebf14698b28cdb7c"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#abd99fedc56554304ebf14698b28cdb7c">Read</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;&amp;requester, std::string_view data)=0</td></tr>
 <tr class="memdesc:abd99fedc56554304ebf14698b28cdb7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads selected columns of a clinic-service entity identified in <code class="param">data</code>.  <br /></td></tr>
-<tr class="memitem:a37d9bbe872aad4f871c285c5af09d24b" id="r_a37d9bbe872aad4f871c285c5af09d24b"><td class="memItemLeft">virtual drogon::Task&lt; void &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a37d9bbe872aad4f871c285c5af09d24b">ReadAsync</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;&amp;requester, std::string_view data)=0</td></tr>
+<tr class="memitem:a37d9bbe872aad4f871c285c5af09d24b" id="r_a37d9bbe872aad4f871c285c5af09d24b"><td class="memItemLeft">virtual drogon::Task&lt; void &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a37d9bbe872aad4f871c285c5af09d24b">ReadAsync</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;&amp;requester, std::string_view data)=0</td></tr>
 <tr class="memdesc:a37d9bbe872aad4f871c285c5af09d24b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#abd99fedc56554304ebf14698b28cdb7c" title="Reads selected columns of a clinic-service entity identified in data.">Read()</a>; must be awaited.  <br /></td></tr>
-<tr class="memitem:a75870953c9e268b975a0433484ffaf76" id="r_a75870953c9e268b975a0433484ffaf76"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a75870953c9e268b975a0433484ffaf76">Update</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;&amp;requester, std::string_view data, std::optional&lt; uint64_t &gt; id)=0</td></tr>
+<tr class="memitem:a75870953c9e268b975a0433484ffaf76" id="r_a75870953c9e268b975a0433484ffaf76"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a75870953c9e268b975a0433484ffaf76">Update</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;&amp;requester, std::string_view data, std::optional&lt; uint64_t &gt; id)=0</td></tr>
 <tr class="memdesc:a75870953c9e268b975a0433484ffaf76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates a clinic-service entity identified by <code class="param">id</code>.  <br /></td></tr>
-<tr class="memitem:ab1d608f74cb516ca9d1663d6f86358a5" id="r_ab1d608f74cb516ca9d1663d6f86358a5"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#ab1d608f74cb516ca9d1663d6f86358a5">Delete</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;&amp;requester, std::optional&lt; uint64_t &gt; id)=0</td></tr>
+<tr class="memitem:ab1d608f74cb516ca9d1663d6f86358a5" id="r_ab1d608f74cb516ca9d1663d6f86358a5"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#ab1d608f74cb516ca9d1663d6f86358a5">Delete</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;&amp;requester, std::optional&lt; uint64_t &gt; id)=0</td></tr>
 <tr class="memdesc:ab1d608f74cb516ca9d1663d6f86358a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes a clinic-service entity; only supported for Patient/Visits by the implementation.  <br /></td></tr>
-<tr class="memitem:a3c0dca8c5c1ba3d19a2c53ee4775653b" id="r_a3c0dca8c5c1ba3d19a2c53ee4775653b"><td class="memItemLeft">virtual drogon::Task&lt; void &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a3c0dca8c5c1ba3d19a2c53ee4775653b">DeleteAsync</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;&amp;requester, std::optional&lt; uint64_t &gt; id)=0</td></tr>
+<tr class="memitem:a3c0dca8c5c1ba3d19a2c53ee4775653b" id="r_a3c0dca8c5c1ba3d19a2c53ee4775653b"><td class="memItemLeft">virtual drogon::Task&lt; void &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a3c0dca8c5c1ba3d19a2c53ee4775653b">DeleteAsync</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;&amp;requester, std::optional&lt; uint64_t &gt; id)=0</td></tr>
 <tr class="memdesc:a3c0dca8c5c1ba3d19a2c53ee4775653b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#ab1d608f74cb516ca9d1663d6f86358a5" title="Deletes a clinic-service entity; only supported for Patient/Visits by the implementation.">Delete()</a>; must be awaited.  <br /></td></tr>
-<tr class="memitem:a021464e215ff55abfa11f3b684117934" id="r_a021464e215ff55abfa11f3b684117934"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a021464e215ff55abfa11f3b684117934">Search</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;&amp;requester, std::string_view data)=0</td></tr>
+<tr class="memitem:a021464e215ff55abfa11f3b684117934" id="r_a021464e215ff55abfa11f3b684117934"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a021464e215ff55abfa11f3b684117934">Search</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;&amp;requester, std::string_view data)=0</td></tr>
 <tr class="memdesc:a021464e215ff55abfa11f3b684117934"><td class="mdescLeft">&#160;</td><td class="mdescRight">Searches clinic-service entities; only supported for <a class="el" href="classPatient.html" title="Case entity for the patients table; the patient record owned by a clinic.">Patient</a> by the implementation.  <br /></td></tr>
-<tr class="memitem:a14f6857ba85561fd62cb5280a94e8eb1" id="r_a14f6857ba85561fd62cb5280a94e8eb1"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a14f6857ba85561fd62cb5280a94e8eb1">GetVisits</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;&amp;requester, std::optional&lt; uint64_t &gt; patient_id)=0</td></tr>
+<tr class="memitem:a14f6857ba85561fd62cb5280a94e8eb1" id="r_a14f6857ba85561fd62cb5280a94e8eb1"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a14f6857ba85561fd62cb5280a94e8eb1">GetVisits</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;&amp;requester, std::optional&lt; uint64_t &gt; patient_id)=0</td></tr>
 <tr class="memdesc:a14f6857ba85561fd62cb5280a94e8eb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the visit history of a patient; unsupported for other entity types.  <br /></td></tr>
-<tr class="memitem:a80c5adbbef552507ede8c823171d15b0" id="r_a80c5adbbef552507ede8c823171d15b0"><td class="memItemLeft">virtual drogon::Task&lt; void &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a80c5adbbef552507ede8c823171d15b0">GetVisitsAsync</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;&amp;requester, std::optional&lt; uint64_t &gt; patient_id)=0</td></tr>
+<tr class="memitem:a80c5adbbef552507ede8c823171d15b0" id="r_a80c5adbbef552507ede8c823171d15b0"><td class="memItemLeft">virtual drogon::Task&lt; void &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a80c5adbbef552507ede8c823171d15b0">GetVisitsAsync</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;&amp;requester, std::optional&lt; uint64_t &gt; patient_id)=0</td></tr>
 <tr class="memdesc:a80c5adbbef552507ede8c823171d15b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#a14f6857ba85561fd62cb5280a94e8eb1" title="Retrieves the visit history of a patient; unsupported for other entity types.">GetVisits()</a>; must be awaited.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
@@ -154,7 +154,7 @@ Public Member Functions</h2></td></tr>
 <p>Defines the subset of CRUDS operations meaningful for clinic entities plus patient visit retrieval. Implementations (<a class="el" href="classClinicController.html" title="Clinic-entity handler that specializes generic CRUDS behaviour per entity type via constrained helper...">ClinicController</a>) specialize behaviour per entity type: for example only Patient/Visits support Delete, only <a class="el" href="classPatient.html" title="Case entity for the patients table; the patient record owned by a clinic.">Patient</a> supports Search and GetVisits. <span class="tt"><a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3" title="Completion callback used throughout the request pipeline.">CALLBACK_</a></span> is <span class="tt">std::function&lt;void(int, const std::string&amp;)&gt;</span>; implementations answer exactly once with an HTTP status code and body on every completing path, including "not implemented" rejections. </p><dl class="section note"><dt>Note</dt><dd>Only Create, Read, Delete and GetVisits have coroutine forms in this contract; Update and Search are synchronous only. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classClinicController.html" title="Clinic-entity handler that specializes generic CRUDS behaviour per entity type via constrained helper...">ClinicController</a>, <a class="el" href="classEntityControllerBase.html" title="Abstract contract for the request-facing CRUDS handlers exposed for every entity type.">EntityControllerBase</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cliniccontrollerbase_8hpp_source.html#l00047">47</a> of file <a class="el" href="cliniccontrollerbase_8hpp_source.html">cliniccontrollerbase.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cliniccontrollerbase_8hpp_source.html#l00062">62</a> of file <a class="el" href="cliniccontrollerbase_8hpp_source.html">cliniccontrollerbase.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a3e8f2c567afba1c174e17be60de26351" name="a3e8f2c567afba1c174e17be60de26351"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3e8f2c567afba1c174e17be60de26351">&#9670;&#160;</a></span>ClinicControllerBase()</h2>
@@ -224,7 +224,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -251,9 +251,9 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classClinicController.html#a4dee307e46cd9d8a3cc2b76e603e9b24">ClinicController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00086">api::v2::Clinic::Create()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00119">api::v2::Clinic::Create()</a>.</p>
 
 </div>
 </div>
@@ -274,7 +274,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -301,7 +301,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classClinicController.html#a223487282b083a736ff5ad040a9b79af">ClinicController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
 </div>
 </div>
@@ -322,7 +322,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -349,9 +349,9 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classClinicController.html#af4377661c51a748d9df8056f70ad2a03">ClinicController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00270">api::v2::Clinic::Delete()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00418">api::v2::Clinic::Delete()</a>.</p>
 
 </div>
 </div>
@@ -372,7 +372,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -399,7 +399,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classClinicController.html#a046bf1ade561188314d73665933e5aec">ClinicController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
 </div>
 </div>
@@ -420,7 +420,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -447,9 +447,9 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classClinicController.html#ac39bb42de6ca02ad70eb6ed1064a1d61">ClinicController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00392">api::v2::Clinic::GetVisits()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00612">api::v2::Clinic::GetVisits()</a>.</p>
 
 </div>
 </div>
@@ -470,7 +470,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -497,7 +497,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classClinicController.html#a8ed0fcaa92bbfb7e6d1d2c4c7b6dbea9">ClinicController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
 </div>
 </div>
@@ -518,7 +518,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -545,9 +545,9 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classClinicController.html#a0f109a3105237cccf7b29263ad6ff4ea">ClinicController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00146">api::v2::Clinic::Read()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00218">api::v2::Clinic::Read()</a>.</p>
 
 </div>
 </div>
@@ -568,7 +568,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -595,7 +595,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classClinicController.html#a00e426195a2f2a48140a94d7e258bf94">ClinicController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
 </div>
 </div>
@@ -616,7 +616,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -643,9 +643,9 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classClinicController.html#ad3d21099d98ec1e52ab290ca38389c98">ClinicController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00333">api::v2::Clinic::Search()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00516">api::v2::Clinic::Search()</a>.</p>
 
 </div>
 </div>
@@ -666,7 +666,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -699,9 +699,9 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classClinicController.html#ac9602c4667f7e5dadd4be920a9258d48">ClinicController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00206">api::v2::Clinic::Update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00315">api::v2::Clinic::Update()</a>.</p>
 
 </div>
 </div>

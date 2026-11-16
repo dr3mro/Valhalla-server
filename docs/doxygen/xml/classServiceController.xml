@@ -26,7 +26,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="68" column="14"/>
+        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="101" column="12"/>
         <referencedby refid="classServiceController_1a9078e347020b3217b1b82a45b443337a">ServiceController&lt; T &gt;::operator=</referencedby>
         <referencedby refid="classServiceController_1aafadda7ba3379b01f6f1ecfe2d2a05c7">ServiceController&lt; T &gt;::operator=</referencedby>
         <referencedby refid="classServiceController_1af393fd444ba179b55b1df0e4fa669241">ServiceController&lt; T &gt;::ServiceController</referencedby>
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="71" column="5"/>
+        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="107" column="3"/>
         <references refid="classServiceController_1a4d83fcbb1ae3b5bc4995d298e105ad8f">ServiceController&lt; T &gt;::ServiceController</references>
       </memberdef>
       <memberdef kind="function" id="classServiceController_1ae9b934a496730c1c8377437565353170" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="73" column="5"/>
+        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="112" column="3"/>
         <references refid="classServiceController_1a4d83fcbb1ae3b5bc4995d298e105ad8f">ServiceController&lt; T &gt;::ServiceController</references>
       </memberdef>
       <memberdef kind="function" id="classServiceController_1a9078e347020b3217b1b82a45b443337a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -86,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="75" column="23"/>
+        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="116" column="21"/>
         <references refid="classServiceController_1a4d83fcbb1ae3b5bc4995d298e105ad8f">ServiceController&lt; T &gt;::ServiceController</references>
       </memberdef>
       <memberdef kind="function" id="classServiceController_1aafadda7ba3379b01f6f1ecfe2d2a05c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -105,7 +105,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="77" column="23"/>
+        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="119" column="21"/>
         <references refid="classServiceController_1a4d83fcbb1ae3b5bc4995d298e105ad8f">ServiceController&lt; T &gt;::ServiceController</references>
       </memberdef>
       <memberdef kind="function" id="classServiceController_1a34ea2d608d297ccff95c6d11d865e351" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -121,17 +121,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="79" column="5"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classServiceController_1a138db9b26dcc863d6895ccb1f01a7123" compoundref="servicecontroller_8cpp" startline="57" endline="60">ServiceController&lt; T &gt;::Create</references>
-        <references refid="classServiceController_1a5cdd73e0b08ae45f2d808070e5680025" compoundref="servicecontroller_8cpp" startline="71" endline="74">ServiceController&lt; T &gt;::CreateAsync</references>
-        <references refid="classServiceController_1adc89e37530112d08d7ee85aae48d8d3c" compoundref="servicecontroller_8cpp" startline="136" endline="139">ServiceController&lt; T &gt;::Delete</references>
-        <references refid="classServiceController_1a69e19ca4bc442fd85af8df06ed98b5dc" compoundref="servicecontroller_8cpp" startline="148" endline="151">ServiceController&lt; T &gt;::DeleteAsync</references>
-        <references refid="classServiceController_1a92157307a0c39b6623d7a5cb75a0e7bf" compoundref="servicecontroller_8cpp" startline="84" endline="87">ServiceController&lt; T &gt;::Read</references>
-        <references refid="classServiceController_1ab279214d55b6c2fa43ad6ee069413c97" compoundref="servicecontroller_8cpp" startline="96" endline="99">ServiceController&lt; T &gt;::ReadAsync</references>
-        <references refid="classServiceController_1af655c40238892ccf0103ebf85ac4d438" compoundref="servicecontroller_8cpp" startline="162" endline="165">ServiceController&lt; T &gt;::Search</references>
-        <references refid="classServiceController_1a0bdcfc6e76c7864d0c84acd7be675ce4" compoundref="servicecontroller_8cpp" startline="110" endline="113">ServiceController&lt; T &gt;::Update</references>
-        <references refid="classServiceController_1abbe959a26ec829cc66e5e1cfd8175577" compoundref="servicecontroller_8cpp" startline="123" endline="126">ServiceController&lt; T &gt;::UpdateAsync</references>
+        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="122" column="3"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classServiceController_1a138db9b26dcc863d6895ccb1f01a7123" compoundref="servicecontroller_8cpp" startline="84" endline="92">ServiceController&lt; T &gt;::Create</references>
+        <references refid="classServiceController_1a5cdd73e0b08ae45f2d808070e5680025" compoundref="servicecontroller_8cpp" startline="104" endline="111">ServiceController&lt; T &gt;::CreateAsync</references>
+        <references refid="classServiceController_1adc89e37530112d08d7ee85aae48d8d3c" compoundref="servicecontroller_8cpp" startline="201" endline="208">ServiceController&lt; T &gt;::Delete</references>
+        <references refid="classServiceController_1a69e19ca4bc442fd85af8df06ed98b5dc" compoundref="servicecontroller_8cpp" startline="218" endline="226">ServiceController&lt; T &gt;::DeleteAsync</references>
+        <references refid="classServiceController_1a92157307a0c39b6623d7a5cb75a0e7bf" compoundref="servicecontroller_8cpp" startline="122" endline="129">ServiceController&lt; T &gt;::Read</references>
+        <references refid="classServiceController_1ab279214d55b6c2fa43ad6ee069413c97" compoundref="servicecontroller_8cpp" startline="139" endline="147">ServiceController&lt; T &gt;::ReadAsync</references>
+        <references refid="classServiceController_1af655c40238892ccf0103ebf85ac4d438" compoundref="servicecontroller_8cpp" startline="239" endline="247">ServiceController&lt; T &gt;::Search</references>
+        <references refid="classServiceController_1a0bdcfc6e76c7864d0c84acd7be675ce4" compoundref="servicecontroller_8cpp" startline="159" endline="169">ServiceController&lt; T &gt;::Update</references>
+        <references refid="classServiceController_1abbe959a26ec829cc66e5e1cfd8175577" compoundref="servicecontroller_8cpp" startline="180" endline="190">ServiceController&lt; T &gt;::UpdateAsync</references>
       </memberdef>
       <memberdef kind="function" id="classServiceController_1a138db9b26dcc863d6895ccb1f01a7123" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -186,9 +186,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="83" column="10" bodyfile="src/controllers/servicecontroller/servicecontroller.cpp" bodystart="57" bodyend="60"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" compoundref="entitycontroller_8cpp" startline="57" endline="112">EntityController&lt; T &gt;::Create</references>
+        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="130" column="8" bodyfile="src/controllers/servicecontroller/servicecontroller.cpp" bodystart="84" bodyend="92"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" compoundref="entitycontroller_8cpp" startline="76" endline="150">EntityController&lt; T &gt;::Create</references>
         <referencedby refid="classServiceController_1a34ea2d608d297ccff95c6d11d865e351">ServiceController&lt; T &gt;::~ServiceController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classServiceController_1a5cdd73e0b08ae45f2d808070e5680025" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -243,9 +243,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="85" column="18" bodyfile="src/controllers/servicecontroller/servicecontroller.cpp" bodystart="71" bodyend="74"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" compoundref="entitycontroller_8cpp" startline="290" endline="343">EntityController&lt; T &gt;::CreateAsync</references>
+        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="137" column="16" bodyfile="src/controllers/servicecontroller/servicecontroller.cpp" bodystart="104" bodyend="111"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classServiceController_1a5cdd73e0b08ae45f2d808070e5680025" compoundref="servicecontroller_8cpp" startline="104" endline="111">ServiceController&lt; T &gt;::CreateAsync</references>
+        <references refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690">EntityController&lt; T &gt;::EntityController</references>
+        <referencedby refid="classServiceController_1a5cdd73e0b08ae45f2d808070e5680025" compoundref="servicecontroller_8cpp" startline="104" endline="111">ServiceController&lt; T &gt;::CreateAsync</referencedby>
         <referencedby refid="classServiceController_1a34ea2d608d297ccff95c6d11d865e351">ServiceController&lt; T &gt;::~ServiceController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classServiceController_1a92157307a0c39b6623d7a5cb75a0e7bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -301,9 +303,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="87" column="10" bodyfile="src/controllers/servicecontroller/servicecontroller.cpp" bodystart="84" bodyend="87"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" compoundref="entitycontroller_8cpp" startline="115" endline="160">EntityController&lt; T &gt;::Read</references>
+        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="144" column="8" bodyfile="src/controllers/servicecontroller/servicecontroller.cpp" bodystart="122" bodyend="129"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" compoundref="entitycontroller_8cpp" startline="153" endline="219">EntityController&lt; T &gt;::Read</references>
         <referencedby refid="classServiceController_1a34ea2d608d297ccff95c6d11d865e351">ServiceController&lt; T &gt;::~ServiceController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classServiceController_1ab279214d55b6c2fa43ad6ee069413c97" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -358,9 +360,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="89" column="18" bodyfile="src/controllers/servicecontroller/servicecontroller.cpp" bodystart="96" bodyend="99"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" compoundref="entitycontroller_8cpp" startline="345" endline="390">EntityController&lt; T &gt;::ReadAsync</references>
+        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="151" column="16" bodyfile="src/controllers/servicecontroller/servicecontroller.cpp" bodystart="139" bodyend="147"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690">EntityController&lt; T &gt;::EntityController</references>
+        <references refid="classServiceController_1ab279214d55b6c2fa43ad6ee069413c97" compoundref="servicecontroller_8cpp" startline="139" endline="147">ServiceController&lt; T &gt;::ReadAsync</references>
+        <referencedby refid="classServiceController_1ab279214d55b6c2fa43ad6ee069413c97" compoundref="servicecontroller_8cpp" startline="139" endline="147">ServiceController&lt; T &gt;::ReadAsync</referencedby>
         <referencedby refid="classServiceController_1a34ea2d608d297ccff95c6d11d865e351">ServiceController&lt; T &gt;::~ServiceController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classServiceController_1a0bdcfc6e76c7864d0c84acd7be675ce4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -428,9 +432,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="91" column="10" bodyfile="src/controllers/servicecontroller/servicecontroller.cpp" bodystart="110" bodyend="113"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" compoundref="entitycontroller_8cpp" startline="162" endline="221">EntityController&lt; T &gt;::Update</references>
+        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="157" column="8" bodyfile="src/controllers/servicecontroller/servicecontroller.cpp" bodystart="159" bodyend="169"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" compoundref="entitycontroller_8cpp" startline="221" endline="294">EntityController&lt; T &gt;::Update</references>
         <referencedby refid="classServiceController_1a34ea2d608d297ccff95c6d11d865e351">ServiceController&lt; T &gt;::~ServiceController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classServiceController_1abbe959a26ec829cc66e5e1cfd8175577" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -497,9 +501,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="93" column="18" bodyfile="src/controllers/servicecontroller/servicecontroller.cpp" bodystart="123" bodyend="126"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" compoundref="entitycontroller_8cpp" startline="392" endline="450">EntityController&lt; T &gt;::UpdateAsync</references>
+        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="165" column="16" bodyfile="src/controllers/servicecontroller/servicecontroller.cpp" bodystart="180" bodyend="190"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690">EntityController&lt; T &gt;::EntityController</references>
+        <references refid="classServiceController_1abbe959a26ec829cc66e5e1cfd8175577" compoundref="servicecontroller_8cpp" startline="180" endline="190">ServiceController&lt; T &gt;::UpdateAsync</references>
+        <referencedby refid="classServiceController_1abbe959a26ec829cc66e5e1cfd8175577" compoundref="servicecontroller_8cpp" startline="180" endline="190">ServiceController&lt; T &gt;::UpdateAsync</referencedby>
         <referencedby refid="classServiceController_1a34ea2d608d297ccff95c6d11d865e351">ServiceController&lt; T &gt;::~ServiceController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classServiceController_1adc89e37530112d08d7ee85aae48d8d3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -555,9 +561,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="95" column="10" bodyfile="src/controllers/servicecontroller/servicecontroller.cpp" bodystart="136" bodyend="139"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" compoundref="entitycontroller_8cpp" startline="224" endline="252">EntityController&lt; T &gt;::Delete</references>
+        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="172" column="8" bodyfile="src/controllers/servicecontroller/servicecontroller.cpp" bodystart="201" bodyend="208"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" compoundref="entitycontroller_8cpp" startline="297" endline="328">EntityController&lt; T &gt;::Delete</references>
         <referencedby refid="classServiceController_1a34ea2d608d297ccff95c6d11d865e351">ServiceController&lt; T &gt;::~ServiceController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classServiceController_1a69e19ca4bc442fd85af8df06ed98b5dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -612,9 +618,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="97" column="18" bodyfile="src/controllers/servicecontroller/servicecontroller.cpp" bodystart="148" bodyend="151"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" compoundref="entitycontroller_8cpp" startline="452" endline="480">EntityController&lt; T &gt;::DeleteAsync</references>
+        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="178" column="16" bodyfile="src/controllers/servicecontroller/servicecontroller.cpp" bodystart="218" bodyend="226"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classServiceController_1a69e19ca4bc442fd85af8df06ed98b5dc" compoundref="servicecontroller_8cpp" startline="218" endline="226">ServiceController&lt; T &gt;::DeleteAsync</references>
+        <references refid="classEntityController_1a44f8ed2e1c2479a0fe4ab7f816efd690">EntityController&lt; T &gt;::EntityController</references>
+        <referencedby refid="classServiceController_1a69e19ca4bc442fd85af8df06ed98b5dc" compoundref="servicecontroller_8cpp" startline="218" endline="226">ServiceController&lt; T &gt;::DeleteAsync</referencedby>
         <referencedby refid="classServiceController_1a34ea2d608d297ccff95c6d11d865e351">ServiceController&lt; T &gt;::~ServiceController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classServiceController_1af655c40238892ccf0103ebf85ac4d438" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -670,9 +678,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="99" column="10" bodyfile="src/controllers/servicecontroller/servicecontroller.cpp" bodystart="162" bodyend="165"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1a888ea97ce413d880bcca6f7e9cf6b896" compoundref="entitycontroller_8cpp" startline="255" endline="287">EntityController&lt; T &gt;::Search</references>
+        <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="184" column="8" bodyfile="src/controllers/servicecontroller/servicecontroller.cpp" bodystart="239" bodyend="247"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1a888ea97ce413d880bcca6f7e9cf6b896" compoundref="entitycontroller_8cpp" startline="331" endline="367">EntityController&lt; T &gt;::Search</references>
         <referencedby refid="classServiceController_1a34ea2d608d297ccff95c6d11d865e351">ServiceController&lt; T &gt;::~ServiceController</referencedby>
       </memberdef>
     </sectiondef>
@@ -690,8 +698,8 @@
 </parameteritem>
 </parameterlist>
 A thin, stateless adapter: every CRUD+S entry point simply forwards to the same-named method of <computeroutput><ref refid="classEntityController" kindref="compound">EntityController</ref>&lt;T&gt;</computeroutput>, so validation, authorisation, entity construction, SQL execution, JSON marshalling and error→HTTP mapping all live in that base. The template parameter supplies the table name, SQL statements and permission queries used there. This class exists to give service entities a distinct interface (and therefore a distinct entry in the route registry) from appointment entities.</para>
-<para>Plain-language version: <computeroutput>T</computeroutput> is whichever entity class we are handling (say <computeroutput><ref refid="classClinics" kindref="compound">Clinics</ref></computeroutput>). The <computeroutput><ref refid="conceptService__t" kindref="compound">Service_t</ref></computeroutput> after <computeroutput>template</computeroutput> is a &quot;concept&quot; — a compile-time check that refuses to build this class unless <computeroutput>T</computeroutput> is really a service type. Because this class stores no data (&quot;stateless&quot;), its only job is to hand the arguments to <computeroutput><ref refid="classEntityController" kindref="compound">EntityController</ref>&lt;T&gt;</computeroutput> and let that base do everything.</para>
-<para>Explicit instantiations are provided for <computeroutput><ref refid="classClinics" kindref="compound">Clinics</ref></computeroutput>, <computeroutput><ref refid="classPharmacies" kindref="compound">Pharmacies</ref></computeroutput>, <computeroutput><ref refid="classLaboratories" kindref="compound">Laboratories</ref></computeroutput> and <computeroutput><ref refid="classRadiologyCenters" kindref="compound">RadiologyCenters</ref></computeroutput>; the route layer stores <computeroutput>shared_ptr&lt;<ref refid="classServiceController" kindref="compound">ServiceController</ref>&lt;T&gt;&gt;</computeroutput> values in a variant and dispatches to them through <ref refid="classServiceControllerBase" kindref="compound">ServiceControllerBase</ref>. <simplesect kind="note"><para>Copy and move are disabled so each registered controller has a single identity. </para>
+<para>Plain-language version: <computeroutput>T</computeroutput> is whichever entity class we are handling (say <computeroutput><ref refid="classClinics" kindref="compound">Clinics</ref></computeroutput>). The <computeroutput><ref refid="conceptService__t" kindref="compound">Service_t</ref></computeroutput> after <computeroutput>template</computeroutput> is a &quot;concept&quot; — a compile-time check that refuses to build this class unless <computeroutput>T</computeroutput> is really a service type. Because this class stores no data (&quot;stateless&quot;), its only job is to hand the arguments to <computeroutput><ref refid="classEntityController" kindref="compound">EntityController</ref>&lt;T&gt;</computeroutput> and let that base do everything. <verbatim>     Explicit instantiations are provided for `Clinics`, `Pharmacies`,
+</verbatim> <computeroutput><ref refid="classLaboratories" kindref="compound">Laboratories</ref></computeroutput> and <computeroutput><ref refid="classRadiologyCenters" kindref="compound">RadiologyCenters</ref></computeroutput>; the route layer stores <computeroutput>shared_ptr&lt;<ref refid="classServiceController" kindref="compound">ServiceController</ref>&lt;T&gt;&gt;</computeroutput> values in a variant and dispatches to them through <ref refid="classServiceControllerBase" kindref="compound">ServiceControllerBase</ref>. <simplesect kind="note"><para>Copy and move are disabled so each registered controller has a single identity. </para>
 </simplesect>
 <simplesect kind="see"><para><ref refid="classEntityController" kindref="compound">EntityController</ref>, <ref refid="classServiceControllerBase" kindref="compound">ServiceControllerBase</ref>, <ref refid="conceptService__t" kindref="compound">Service_t</ref> </para>
 </simplesect>
@@ -757,7 +765,7 @@ A thin, stateless adapter: every CRUD+S entry point simply forwards to the same-
         <link refid="classServiceControllerBase"/>
       </node>
     </collaborationgraph>
-    <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="64" column="1" bodyfile="src/controllers/servicecontroller/servicecontroller.hpp" bodystart="65" bodyend="100"/>
+    <location file="src/controllers/servicecontroller/servicecontroller.hpp" line="92" column="1" bodyfile="src/controllers/servicecontroller/servicecontroller.hpp" bodystart="97" bodyend="189"/>
     <listofallmembers>
       <member refid="classController_1a29dac549946db2810cb4435323502c75" prot="protected" virt="non-virtual"><scope>ServiceController</scope><name>addStaff</name></member>
       <member refid="classController_1a1bb3245ec82d14644a2359cd546ea218" prot="protected" virt="non-virtual"><scope>ServiceController</scope><name>addStaffAsync</name></member>

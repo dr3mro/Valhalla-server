@@ -16,9 +16,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databaseconnectionpool.hpp" line="107" column="21" bodyfile="src/database/databaseconnectionpool.hpp" bodystart="107" bodyend="-1"/>
-        <referencedby refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="91" endline="153">DatabaseConnectionPool</referencedby>
-        <referencedby refid="classDatabaseConnectionPool_1a51134b38454f5146921c081fbf2ad5f3" compoundref="databaseconnectionpool_8cpp" startline="205" endline="244">reconnect_all</referencedby>
+        <location file="src/database/databaseconnectionpool.hpp" line="154" column="7" bodyfile="src/database/databaseconnectionpool.hpp" bodystart="154" bodyend="-1"/>
+        <referencedby refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="133" endline="257">DatabaseConnectionPool</referencedby>
+        <referencedby refid="classDatabaseConnectionPool_1a51134b38454f5146921c081fbf2ad5f3" compoundref="databaseconnectionpool_8cpp" startline="343" endline="406">reconnect_all</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classDatabaseConnectionPool_1a63cabe6ff7246a8a5bbbda2fad2ef3a8" prot="private" static="no" mutable="no">
         <type><ref refid="classBlockingPool" kindref="compound">BlockingPool</ref>&lt; <ref refid="classDatabase" kindref="compound">Database</ref> &gt;</type>
@@ -32,11 +32,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databaseconnectionpool.hpp" line="108" column="25" bodyfile="src/database/databaseconnectionpool.hpp" bodystart="108" bodyend="-1"/>
-        <referencedby refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="91" endline="153">DatabaseConnectionPool</referencedby>
-        <referencedby refid="classDatabaseConnectionPool_1a39716826b3e5be2f15603d8cf809446b" compoundref="databaseconnectionpool_8cpp" startline="162" endline="189">get_connection</referencedby>
-        <referencedby refid="classDatabaseConnectionPool_1a51134b38454f5146921c081fbf2ad5f3" compoundref="databaseconnectionpool_8cpp" startline="205" endline="244">reconnect_all</referencedby>
-        <referencedby refid="classDatabaseConnectionPool_1ace8c17b9fea41e732a18f9700af847bb" compoundref="databaseconnectionpool_8cpp" startline="195" endline="195">return_connection</referencedby>
+        <location file="src/database/databaseconnectionpool.hpp" line="157" column="7" bodyfile="src/database/databaseconnectionpool.hpp" bodystart="157" bodyend="-1"/>
+        <referencedby refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="133" endline="257">DatabaseConnectionPool</referencedby>
+        <referencedby refid="classDatabaseConnectionPool_1a39716826b3e5be2f15603d8cf809446b" compoundref="databaseconnectionpool_8cpp" startline="269" endline="323">get_connection</referencedby>
+        <referencedby refid="classDatabaseConnectionPool_1a51134b38454f5146921c081fbf2ad5f3" compoundref="databaseconnectionpool_8cpp" startline="343" endline="406">reconnect_all</referencedby>
+        <referencedby refid="classDatabaseConnectionPool_1ace8c17b9fea41e732a18f9700af847bb" compoundref="databaseconnectionpool_8cpp" startline="329" endline="332">return_connection</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classDatabaseConnectionPool_1a3d3988a112b2d63e72f0e3bf4f63db05" prot="private" static="no" mutable="no">
         <type>std::chrono::milliseconds</type>
@@ -44,16 +44,17 @@
         <argsstring></argsstring>
         <name>acquireTimeout_</name>
         <qualifiedname>DatabaseConnectionPool::acquireTimeout_</qualifiedname>
-        <initializer>{0}</initializer>
+        <initializer>{
+      0}</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databaseconnectionpool.hpp" line="109" column="35" bodyfile="src/database/databaseconnectionpool.hpp" bodystart="109" bodyend="109"/>
-        <referencedby refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="91" endline="153">DatabaseConnectionPool</referencedby>
-        <referencedby refid="classDatabaseConnectionPool_1a39716826b3e5be2f15603d8cf809446b" compoundref="databaseconnectionpool_8cpp" startline="162" endline="189">get_connection</referencedby>
+        <location file="src/database/databaseconnectionpool.hpp" line="158" column="29" bodyfile="src/database/databaseconnectionpool.hpp" bodystart="158" bodyend="159"/>
+        <referencedby refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="133" endline="257">DatabaseConnectionPool</referencedby>
+        <referencedby refid="classDatabaseConnectionPool_1a39716826b3e5be2f15603d8cf809446b" compoundref="databaseconnectionpool_8cpp" startline="269" endline="323">get_connection</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classDatabaseConnectionPool_1ae164078e6fbad2503800fd0c0ed804c2" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; std::int64_t &gt;</type>
@@ -61,15 +62,16 @@
         <argsstring></argsstring>
         <name>lastSlowWaitWarningMs_</name>
         <qualifiedname>DatabaseConnectionPool::lastSlowWaitWarningMs_</qualifiedname>
-        <initializer>{0}</initializer>
+        <initializer>{
+      0}</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databaseconnectionpool.hpp" line="110" column="21" bodyfile="src/database/databaseconnectionpool.hpp" bodystart="110" bodyend="110"/>
-        <referencedby refid="classDatabaseConnectionPool_1a39716826b3e5be2f15603d8cf809446b" compoundref="databaseconnectionpool_8cpp" startline="162" endline="189">get_connection</referencedby>
+        <location file="src/database/databaseconnectionpool.hpp" line="160" column="15" bodyfile="src/database/databaseconnectionpool.hpp" bodystart="160" bodyend="161"/>
+        <referencedby refid="classDatabaseConnectionPool_1a39716826b3e5be2f15603d8cf809446b" compoundref="databaseconnectionpool_8cpp" startline="269" endline="323">get_connection</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-static-attrib">
@@ -79,7 +81,8 @@
         <argsstring></argsstring>
         <name>SLOW_WAIT_WARNING_MS</name>
         <qualifiedname>DatabaseConnectionPool::SLOW_WAIT_WARNING_MS</qualifiedname>
-        <initializer>= 100</initializer>
+        <initializer>                                               =
+100</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -87,8 +90,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databaseconnectionpool.hpp" line="115" column="35" bodyfile="src/database/databaseconnectionpool.hpp" bodystart="115" bodyend="-1"/>
-        <referencedby refid="classDatabaseConnectionPool_1a39716826b3e5be2f15603d8cf809446b" compoundref="databaseconnectionpool_8cpp" startline="162" endline="189">get_connection</referencedby>
+        <location file="src/database/databaseconnectionpool.hpp" line="166" column="33" bodyfile="src/database/databaseconnectionpool.hpp" bodystart="166" bodyend="-1"/>
+        <referencedby refid="classDatabaseConnectionPool_1a39716826b3e5be2f15603d8cf809446b" compoundref="databaseconnectionpool_8cpp" startline="269" endline="323">get_connection</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classDatabaseConnectionPool_1a65446ef53e49f4ceb60ea24fe91160ee" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>std::uint16_t</type>
@@ -96,7 +99,8 @@
         <argsstring></argsstring>
         <name>TIMEOUT</name>
         <qualifiedname>DatabaseConnectionPool::TIMEOUT</qualifiedname>
-        <initializer>= 2</initializer>
+        <initializer>                                   =
+2</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -104,8 +108,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databaseconnectionpool.hpp" line="120" column="36" bodyfile="src/database/databaseconnectionpool.hpp" bodystart="120" bodyend="-1"/>
-        <referencedby refid="classDatabaseConnectionPool_1a37fcc8910499c8a84a3196b77d4f032a" compoundref="databaseconnectionpool_8cpp" startline="63" endline="82">createDatabaseConnection</referencedby>
+        <location file="src/database/databaseconnectionpool.hpp" line="172" column="34" bodyfile="src/database/databaseconnectionpool.hpp" bodystart="172" bodyend="-1"/>
+        <referencedby refid="classDatabaseConnectionPool_1a37fcc8910499c8a84a3196b77d4f032a" compoundref="databaseconnectionpool_8cpp" startline="86" endline="122">createDatabaseConnection</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classDatabaseConnectionPool_1a4e41d9d5e3346efc01cba4e9eedd2ba8" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>unsigned int</type>
@@ -113,7 +117,8 @@
         <argsstring></argsstring>
         <name>MAX_RETRIES</name>
         <qualifiedname>DatabaseConnectionPool::MAX_RETRIES</qualifiedname>
-        <initializer>= 5</initializer>
+        <initializer>                                      =
+5</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -121,8 +126,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databaseconnectionpool.hpp" line="125" column="36" bodyfile="src/database/databaseconnectionpool.hpp" bodystart="125" bodyend="-1"/>
-        <referencedby refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="91" endline="153">DatabaseConnectionPool</referencedby>
+        <location file="src/database/databaseconnectionpool.hpp" line="179" column="33" bodyfile="src/database/databaseconnectionpool.hpp" bodystart="179" bodyend="-1"/>
+        <referencedby refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="133" endline="257">DatabaseConnectionPool</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -142,18 +147,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databaseconnectionpool.hpp" line="64" column="5" bodyfile="src/database/databaseconnectionpool.cpp" bodystart="91" bodyend="153"/>
-        <references refid="classDatabaseConnectionPool_1a3d3988a112b2d63e72f0e3bf4f63db05" compoundref="databaseconnectionpool_8hpp" startline="109" endline="109">acquireTimeout_</references>
-        <references refid="classDatabaseConnectionPool_1a0f880bf20fea3484b52e50084dfa9887" compoundref="databaseconnectionpool_8hpp" startline="107">configurator_</references>
-        <references refid="classDatabaseConnectionPool_1a37fcc8910499c8a84a3196b77d4f032a" compoundref="databaseconnectionpool_8cpp" startline="63" endline="82">createDatabaseConnection</references>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
-        <references refid="classBlockingPool_1a2cdad342573ef45e2ba4e0325e753004" compoundref="blockingpool_8hpp" startline="109" endline="113">BlockingPool&lt; T &gt;::idle</references>
-        <references refid="classMessage_1aaa3d510c50f46a224c9021dfd5d33ecb" compoundref="message_8cpp" startline="44" endline="44">Message::InitMessage</references>
-        <references refid="classDatabaseConnectionPool_1a4e41d9d5e3346efc01cba4e9eedd2ba8" compoundref="databaseconnectionpool_8hpp" startline="125">MAX_RETRIES</references>
-        <references refid="classDatabaseConnectionPool_1a63cabe6ff7246a8a5bbbda2fad2ef3a8" compoundref="databaseconnectionpool_8hpp" startline="108">pool_</references>
-        <references refid="classBlockingPool_1ab15e0709ecb1d8979957d54b2e666f78" compoundref="blockingpool_8hpp" startline="72" endline="83">BlockingPool&lt; T &gt;::release</references>
-        <references refid="classMessage_1a3d5db738594c8af1428053227959259e" compoundref="message_8cpp" startline="40" endline="40">Message::WarningMessage</references>
+        <location file="src/database/databaseconnectionpool.hpp" line="88" column="3" bodyfile="src/database/databaseconnectionpool.cpp" bodystart="133" bodyend="257"/>
+        <references refid="classDatabaseConnectionPool_1a3d3988a112b2d63e72f0e3bf4f63db05" compoundref="databaseconnectionpool_8hpp" startline="158" endline="159">acquireTimeout_</references>
+        <references refid="classDatabaseConnectionPool_1a0f880bf20fea3484b52e50084dfa9887" compoundref="databaseconnectionpool_8hpp" startline="154">configurator_</references>
+        <references refid="classDatabaseConnectionPool_1a37fcc8910499c8a84a3196b77d4f032a" compoundref="databaseconnectionpool_8cpp" startline="86" endline="122">createDatabaseConnection</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
+        <references refid="classBlockingPool_1a2cdad342573ef45e2ba4e0325e753004" compoundref="blockingpool_8hpp" startline="155" endline="159">BlockingPool&lt; T &gt;::idle</references>
+        <references refid="classMessage_1aaa3d510c50f46a224c9021dfd5d33ecb" compoundref="message_8cpp" startline="63" endline="65">Message::InitMessage</references>
+        <references refid="classDatabaseConnectionPool_1a4e41d9d5e3346efc01cba4e9eedd2ba8" compoundref="databaseconnectionpool_8hpp" startline="179">MAX_RETRIES</references>
+        <references refid="classDatabaseConnectionPool_1a63cabe6ff7246a8a5bbbda2fad2ef3a8" compoundref="databaseconnectionpool_8hpp" startline="157">pool_</references>
+        <references refid="classBlockingPool_1ab15e0709ecb1d8979957d54b2e666f78" compoundref="blockingpool_8hpp" startline="99" endline="115">BlockingPool&lt; T &gt;::release</references>
+        <references refid="classMessage_1a3d5db738594c8af1428053227959259e" compoundref="message_8cpp" startline="51" endline="53">Message::WarningMessage</references>
         <referencedby refid="classDatabaseConnectionPool_1a39a9799f57b9446f7fd80d284c66113a">DatabaseConnectionPool</referencedby>
         <referencedby refid="classDatabaseConnectionPool_1a8bbd9681b2d84684ad40e2eb62c9eddd">DatabaseConnectionPool</referencedby>
         <referencedby refid="classDatabaseConnectionPool_1a40992d2ac72ec16cefcc79e48f174e23">operator=</referencedby>
@@ -174,8 +179,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databaseconnectionpool.hpp" line="65" column="5"/>
-        <references refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="91" endline="153">DatabaseConnectionPool</references>
+        <location file="src/database/databaseconnectionpool.hpp" line="90" column="3"/>
+        <references refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="133" endline="257">DatabaseConnectionPool</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseConnectionPool_1a8bbd9681b2d84684ad40e2eb62c9eddd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -192,8 +197,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databaseconnectionpool.hpp" line="66" column="5"/>
-        <references refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="91" endline="153">DatabaseConnectionPool</references>
+        <location file="src/database/databaseconnectionpool.hpp" line="92" column="3"/>
+        <references refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="133" endline="257">DatabaseConnectionPool</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseConnectionPool_1a40992d2ac72ec16cefcc79e48f174e23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classDatabaseConnectionPool" kindref="compound">DatabaseConnectionPool</ref> &amp;</type>
@@ -210,8 +215,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databaseconnectionpool.hpp" line="67" column="28"/>
-        <references refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="91" endline="153">DatabaseConnectionPool</references>
+        <location file="src/database/databaseconnectionpool.hpp" line="94" column="26"/>
+        <references refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="133" endline="257">DatabaseConnectionPool</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseConnectionPool_1a0426d4292fb343f110c83e8451aceb0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classDatabaseConnectionPool" kindref="compound">DatabaseConnectionPool</ref> &amp;</type>
@@ -228,8 +233,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databaseconnectionpool.hpp" line="68" column="28"/>
-        <references refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="91" endline="153">DatabaseConnectionPool</references>
+        <location file="src/database/databaseconnectionpool.hpp" line="96" column="26"/>
+        <references refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="133" endline="257">DatabaseConnectionPool</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseConnectionPool_1a43c46e813684a9dbd0ba9a7d2eff764e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -244,11 +249,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databaseconnectionpool.hpp" line="73" column="13"/>
-        <references refid="classDatabaseConnectionPool_1a37fcc8910499c8a84a3196b77d4f032a" compoundref="databaseconnectionpool_8cpp" startline="63" endline="82">createDatabaseConnection</references>
-        <references refid="classDatabaseConnectionPool_1a39716826b3e5be2f15603d8cf809446b" compoundref="databaseconnectionpool_8cpp" startline="162" endline="189">get_connection</references>
-        <references refid="classDatabaseConnectionPool_1a51134b38454f5146921c081fbf2ad5f3" compoundref="databaseconnectionpool_8cpp" startline="205" endline="244">reconnect_all</references>
-        <references refid="classDatabaseConnectionPool_1ace8c17b9fea41e732a18f9700af847bb" compoundref="databaseconnectionpool_8cpp" startline="195" endline="195">return_connection</references>
+        <location file="src/database/databaseconnectionpool.hpp" line="103" column="11"/>
+        <references refid="classDatabaseConnectionPool_1a37fcc8910499c8a84a3196b77d4f032a" compoundref="databaseconnectionpool_8cpp" startline="86" endline="122">createDatabaseConnection</references>
+        <references refid="classDatabaseConnectionPool_1a39716826b3e5be2f15603d8cf809446b" compoundref="databaseconnectionpool_8cpp" startline="269" endline="323">get_connection</references>
+        <references refid="classDatabaseConnectionPool_1a51134b38454f5146921c081fbf2ad5f3" compoundref="databaseconnectionpool_8cpp" startline="343" endline="406">reconnect_all</references>
+        <references refid="classDatabaseConnectionPool_1ace8c17b9fea41e732a18f9700af847bb" compoundref="databaseconnectionpool_8cpp" startline="329" endline="332">return_connection</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseConnectionPool_1a39716826b3e5be2f15603d8cf809446b" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::shared_ptr&lt; <ref refid="classDatabase" kindref="compound">Database</ref> &gt;</type>
@@ -287,15 +292,15 @@ Measures the wait with a steady clock and emits at most one saturation warning p
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databaseconnectionpool.hpp" line="83" column="22" bodyfile="src/database/databaseconnectionpool.cpp" bodystart="162" bodyend="189"/>
-        <references refid="classBlockingPool_1aa577bb9f7274c91f2ba9912cac021769" compoundref="blockingpool_8hpp" startline="93" endline="103">BlockingPool&lt; T &gt;::acquire</references>
-        <references refid="classDatabaseConnectionPool_1a3d3988a112b2d63e72f0e3bf4f63db05" compoundref="databaseconnectionpool_8hpp" startline="109" endline="109">acquireTimeout_</references>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="50" endline="50">DatabaseBusy::DatabaseBusy</references>
-        <references refid="classDatabaseConnectionPool_1ae164078e6fbad2503800fd0c0ed804c2" compoundref="databaseconnectionpool_8hpp" startline="110" endline="110">lastSlowWaitWarningMs_</references>
-        <references refid="classDatabaseConnectionPool_1a63cabe6ff7246a8a5bbbda2fad2ef3a8" compoundref="databaseconnectionpool_8hpp" startline="108">pool_</references>
-        <references refid="classDatabaseConnectionPool_1ad084ec4336eb5f8b2992541fa696013e" compoundref="databaseconnectionpool_8hpp" startline="115">SLOW_WAIT_WARNING_MS</references>
-        <references refid="classMessage_1a3d5db738594c8af1428053227959259e" compoundref="message_8cpp" startline="40" endline="40">Message::WarningMessage</references>
+        <location file="src/database/databaseconnectionpool.hpp" line="119" column="3" bodyfile="src/database/databaseconnectionpool.cpp" bodystart="269" bodyend="323"/>
+        <references refid="classBlockingPool_1aa577bb9f7274c91f2ba9912cac021769" compoundref="blockingpool_8hpp" startline="126" endline="148">BlockingPool&lt; T &gt;::acquire</references>
+        <references refid="classDatabaseConnectionPool_1a3d3988a112b2d63e72f0e3bf4f63db05" compoundref="databaseconnectionpool_8hpp" startline="158" endline="159">acquireTimeout_</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="63" endline="66">DatabaseBusy::DatabaseBusy</references>
+        <references refid="classDatabaseConnectionPool_1ae164078e6fbad2503800fd0c0ed804c2" compoundref="databaseconnectionpool_8hpp" startline="160" endline="161">lastSlowWaitWarningMs_</references>
+        <references refid="classDatabaseConnectionPool_1a63cabe6ff7246a8a5bbbda2fad2ef3a8" compoundref="databaseconnectionpool_8hpp" startline="157">pool_</references>
+        <references refid="classDatabaseConnectionPool_1ad084ec4336eb5f8b2992541fa696013e" compoundref="databaseconnectionpool_8hpp" startline="166">SLOW_WAIT_WARNING_MS</references>
+        <references refid="classMessage_1a3d5db738594c8af1428053227959259e" compoundref="message_8cpp" startline="51" endline="53">Message::WarningMessage</references>
         <referencedby refid="classDatabaseConnectionPool_1a43c46e813684a9dbd0ba9a7d2eff764e">~DatabaseConnectionPool</referencedby>
       </memberdef>
       <memberdef kind="function" id="classDatabaseConnectionPool_1ace8c17b9fea41e732a18f9700af847bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -325,9 +330,9 @@ Returns a leased connection to the idle set, waking one waiting acquirer. db_ptr
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databaseconnectionpool.hpp" line="89" column="45" bodyfile="src/database/databaseconnectionpool.cpp" bodystart="195" bodyend="195"/>
-        <references refid="classDatabaseConnectionPool_1a63cabe6ff7246a8a5bbbda2fad2ef3a8" compoundref="databaseconnectionpool_8hpp" startline="108">pool_</references>
-        <references refid="classBlockingPool_1ab15e0709ecb1d8979957d54b2e666f78" compoundref="blockingpool_8hpp" startline="72" endline="83">BlockingPool&lt; T &gt;::release</references>
+        <location file="src/database/databaseconnectionpool.hpp" line="128" column="8" bodyfile="src/database/databaseconnectionpool.cpp" bodystart="329" bodyend="332"/>
+        <references refid="classDatabaseConnectionPool_1a63cabe6ff7246a8a5bbbda2fad2ef3a8" compoundref="databaseconnectionpool_8hpp" startline="157">pool_</references>
+        <references refid="classBlockingPool_1ab15e0709ecb1d8979957d54b2e666f78" compoundref="blockingpool_8hpp" startline="99" endline="115">BlockingPool&lt; T &gt;::release</references>
         <referencedby refid="classDatabaseConnectionPool_1a43c46e813684a9dbd0ba9a7d2eff764e">~DatabaseConnectionPool</referencedby>
       </memberdef>
       <memberdef kind="function" id="classDatabaseConnectionPool_1a51134b38454f5146921c081fbf2ad5f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -348,13 +353,13 @@ Returns a leased connection to the idle set, waking one waiting acquirer. db_ptr
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databaseconnectionpool.hpp" line="96" column="45" bodyfile="src/database/databaseconnectionpool.cpp" bodystart="205" bodyend="244"/>
-        <references refid="classDatabaseConnectionPool_1a0f880bf20fea3484b52e50084dfa9887" compoundref="databaseconnectionpool_8hpp" startline="107">configurator_</references>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
-        <references refid="classBlockingPool_1a5f53d641019a9e2d276f21f7bee1723a" compoundref="blockingpool_8hpp" startline="130" endline="138">BlockingPool&lt; T &gt;::forEachIdle</references>
-        <references refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" compoundref="message_8cpp" startline="39" endline="39">Message::InfoMessage</references>
-        <references refid="classDatabaseConnectionPool_1a63cabe6ff7246a8a5bbbda2fad2ef3a8" compoundref="databaseconnectionpool_8hpp" startline="108">pool_</references>
+        <location file="src/database/databaseconnectionpool.hpp" line="139" column="8" bodyfile="src/database/databaseconnectionpool.cpp" bodystart="343" bodyend="406"/>
+        <references refid="classDatabaseConnectionPool_1a0f880bf20fea3484b52e50084dfa9887" compoundref="databaseconnectionpool_8hpp" startline="154">configurator_</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
+        <references refid="classBlockingPool_1a5f53d641019a9e2d276f21f7bee1723a" compoundref="blockingpool_8hpp" startline="183" endline="194">BlockingPool&lt; T &gt;::forEachIdle</references>
+        <references refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" compoundref="message_8cpp" startline="48" endline="50">Message::InfoMessage</references>
+        <references refid="classDatabaseConnectionPool_1a63cabe6ff7246a8a5bbbda2fad2ef3a8" compoundref="databaseconnectionpool_8hpp" startline="157">pool_</references>
         <referencedby refid="classDatabaseConnectionPool_1a43c46e813684a9dbd0ba9a7d2eff764e">~DatabaseConnectionPool</referencedby>
       </memberdef>
     </sectiondef>
@@ -397,10 +402,10 @@ Opens one pqxx connection using the configured credentials and a connect timeout
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databaseconnectionpool.hpp" line="105" column="21" bodyfile="src/database/databaseconnectionpool.cpp" bodystart="63" bodyend="82"/>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classDatabaseConnectionPool_1a65446ef53e49f4ceb60ea24fe91160ee" compoundref="databaseconnectionpool_8hpp" startline="120">TIMEOUT</references>
-        <referencedby refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="91" endline="153">DatabaseConnectionPool</referencedby>
+        <location file="src/database/databaseconnectionpool.hpp" line="149" column="19" bodyfile="src/database/databaseconnectionpool.cpp" bodystart="86" bodyend="122"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classDatabaseConnectionPool_1a65446ef53e49f4ceb60ea24fe91160ee" compoundref="databaseconnectionpool_8hpp" startline="172">TIMEOUT</references>
+        <referencedby refid="classDatabaseConnectionPool_1a6764698bbb9762db2ce366d88d7de231" compoundref="databaseconnectionpool_8cpp" startline="133" endline="257">DatabaseConnectionPool</referencedby>
         <referencedby refid="classDatabaseConnectionPool_1a43c46e813684a9dbd0ba9a7d2eff764e">~DatabaseConnectionPool</referencedby>
       </memberdef>
     </sectiondef>
@@ -408,8 +413,8 @@ Opens one pqxx connection using the configured credentials and a connect timeout
 <para>Owns the fixed set of synchronous <ref refid="classDatabase" kindref="compound">Database</ref> connections and leases them to callers. </para>
     </briefdescription>
     <detaileddescription>
-<para>Connections are created in parallel at construction and stored in a <ref refid="classBlockingPool" kindref="compound">BlockingPool</ref>. Callers obtain a connection with <ref refid="classDatabaseConnectionPool_1a39716826b3e5be2f15603d8cf809446b" kindref="member">get_connection()</ref> and must give it back with <ref refid="classDatabaseConnectionPool_1ace8c17b9fea41e732a18f9700af847bb" kindref="member">return_connection()</ref>; in practice <ref refid="classDatabaseHanndler" kindref="compound">DatabaseHanndler</ref> does this via RAII. The acquire timeout is read once from configuration at startup. When a wait for a connection expires, <ref refid="classDatabaseConnectionPool_1a39716826b3e5be2f15603d8cf809446b" kindref="member">get_connection()</ref> throws <ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref>, which the HTTP layer maps to 503.</para>
-<para>Thread-safety: connection hand-out and return are serialised by <ref refid="classBlockingPool" kindref="compound">BlockingPool</ref>; the slow-wait warning rate limiter is atomic. Non-copyable and non-movable. <simplesect kind="warning"><para>A failed initialisation is fatal: the constructor logs and calls <computeroutput>exit(EXIT_FAILURE)</computeroutput>. </para>
+<para>Connections are created in parallel at construction and stored in a <ref refid="classBlockingPool" kindref="compound">BlockingPool</ref>. Callers obtain a connection with <ref refid="classDatabaseConnectionPool_1a39716826b3e5be2f15603d8cf809446b" kindref="member">get_connection()</ref> and must give it back with <ref refid="classDatabaseConnectionPool_1ace8c17b9fea41e732a18f9700af847bb" kindref="member">return_connection()</ref>; in practice <ref refid="classDatabaseHanndler" kindref="compound">DatabaseHanndler</ref> does this via RAII. The acquire timeout is read once from configuration at startup. When a wait for a connection expires, <ref refid="classDatabaseConnectionPool_1a39716826b3e5be2f15603d8cf809446b" kindref="member">get_connection()</ref> throws <ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref>, which the HTTP layer maps to 503. <verbatim>     Thread-safety: connection hand-out and return are serialised by
+</verbatim> <ref refid="classBlockingPool" kindref="compound">BlockingPool</ref>; the slow-wait warning rate limiter is atomic. Non-copyable and non-movable. <simplesect kind="warning"><para>A failed initialisation is fatal: the constructor logs and calls <computeroutput>exit(EXIT_FAILURE)</computeroutput>. </para>
 </simplesect>
 <simplesect kind="see"><para><ref refid="classBlockingPool" kindref="compound">BlockingPool</ref>, <ref refid="classDatabaseHanndler" kindref="compound">DatabaseHanndler</ref>, <ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref> </para>
 </simplesect>
@@ -428,7 +433,7 @@ Opens one pqxx connection using the configured credentials and a connect timeout
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/database/databaseconnectionpool.hpp" line="55" column="1" bodyfile="src/database/databaseconnectionpool.hpp" bodystart="56" bodyend="126"/>
+    <location file="src/database/databaseconnectionpool.hpp" line="78" column="1" bodyfile="src/database/databaseconnectionpool.hpp" bodystart="78" bodyend="182"/>
     <listofallmembers>
       <member refid="classDatabaseConnectionPool_1a3d3988a112b2d63e72f0e3bf4f63db05" prot="private" virt="non-virtual"><scope>DatabaseConnectionPool</scope><name>acquireTimeout_</name></member>
       <member refid="classDatabaseConnectionPool_1a0f880bf20fea3484b52e50084dfa9887" prot="private" virt="non-virtual"><scope>DatabaseConnectionPool</scope><name>configurator_</name></member>

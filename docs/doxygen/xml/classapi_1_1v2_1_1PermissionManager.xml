@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="58" column="9"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="69" column="5"/>
         <referencedby refid="classapi_1_1v2_1_1PermissionManager_1ae276f363c2d49a6818eced74bebf4ca6">operator=</referencedby>
         <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a6ee8b35704a2706f3a1ee3d1eb1b0d4d">operator=</referencedby>
         <referencedby refid="classapi_1_1v2_1_1PermissionManager_1abb670098c751db8d9eb061535e4c0d0c">PermissionManager</referencedby>
@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="59" column="9"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="71" column="5"/>
         <references refid="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea">PermissionManager</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1ae276f363c2d49a6818eced74bebf4ca6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="60" column="27"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="73" column="23"/>
         <references refid="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea">PermissionManager</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a2e6ebe0e6b8c79b266e1bf2b232a1d6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="61" column="9"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="75" column="5"/>
         <references refid="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea">PermissionManager</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a6ee8b35704a2706f3a1ee3d1eb1b0d4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="62" column="27"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="77" column="23"/>
         <references refid="classapi_1_1v2_1_1PermissionManager_1a363c6f47c83d288eb8c878b38ae5afea">PermissionManager</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -106,19 +106,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="63" column="17"/>
-        <references refid="classapi_1_1v2_1_1PermissionManager_1a7ca637c16b64d7ebc2e29acc0f366cf0" compoundref="permissionmanager_8cpp" startline="47" endline="51">canCreate</references>
-        <references refid="classapi_1_1v2_1_1PermissionManager_1ab38a9fb015cfa0c0a21684b1b7e5c75d" compoundref="permissionmanager_8cpp" startline="233" endline="237">canCreateAsync</references>
-        <references refid="classapi_1_1v2_1_1PermissionManager_1a71258d4ae15f18d8a002c192c0fb6e2a" compoundref="permissionmanager_8cpp" startline="67" endline="70">canDelete</references>
-        <references refid="classapi_1_1v2_1_1PermissionManager_1a0adc8dfb1a38a0e3953a4032f3673980" compoundref="permissionmanager_8cpp" startline="253" endline="256">canDeleteAsync</references>
-        <references refid="classapi_1_1v2_1_1PermissionManager_1a3fdd025d52c5c4b4140c3ff6790921fd" compoundref="permissionmanager_8cpp" startline="81" endline="84">canGetServices</references>
-        <references refid="classapi_1_1v2_1_1PermissionManager_1a30126a03fc03c2870325aa6df4543518" compoundref="permissionmanager_8cpp" startline="267" endline="270">canGetServicesAsync</references>
-        <references refid="classapi_1_1v2_1_1PermissionManager_1aff6b99de61b84feb36a534319778195b" compoundref="permissionmanager_8cpp" startline="55" endline="58">canRead</references>
-        <references refid="classapi_1_1v2_1_1PermissionManager_1aed948cb4da3d53102be81025ef98bda2" compoundref="permissionmanager_8cpp" startline="241" endline="244">canReadAsync</references>
-        <references refid="classapi_1_1v2_1_1PermissionManager_1a30eb01bee43eade86f66faa01e47fc91" compoundref="permissionmanager_8cpp" startline="74" endline="77">canToggleActive</references>
-        <references refid="classapi_1_1v2_1_1PermissionManager_1afa8aa5d58764cb40be9d226283f5197a" compoundref="permissionmanager_8cpp" startline="260" endline="263">canToggleActiveAsync</references>
-        <references refid="classapi_1_1v2_1_1PermissionManager_1a96e35dad77cb2e1dbd0ffffa7c648fdc" compoundref="permissionmanager_8cpp" startline="61" endline="64">canUpdate</references>
-        <references refid="classapi_1_1v2_1_1PermissionManager_1afded6faae3268475fa32898c00b5476e" compoundref="permissionmanager_8cpp" startline="247" endline="250">canUpdateAsync</references>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="79" column="13"/>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1a7ca637c16b64d7ebc2e29acc0f366cf0" compoundref="permissionmanager_8cpp" startline="64" endline="69">canCreate</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1ab38a9fb015cfa0c0a21684b1b7e5c75d" compoundref="permissionmanager_8cpp" startline="514" endline="519">canCreateAsync</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1a71258d4ae15f18d8a002c192c0fb6e2a" compoundref="permissionmanager_8cpp" startline="106" endline="115">canDelete</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1a0adc8dfb1a38a0e3953a4032f3673980" compoundref="permissionmanager_8cpp" startline="551" endline="559">canDeleteAsync</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1a3fdd025d52c5c4b4140c3ff6790921fd" compoundref="permissionmanager_8cpp" startline="138" endline="147">canGetServices</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1a30126a03fc03c2870325aa6df4543518" compoundref="permissionmanager_8cpp" startline="580" endline="587">canGetServicesAsync</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1aff6b99de61b84feb36a534319778195b" compoundref="permissionmanager_8cpp" startline="76" endline="85">canRead</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1aed948cb4da3d53102be81025ef98bda2" compoundref="permissionmanager_8cpp" startline="525" endline="533">canReadAsync</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1a30eb01bee43eade86f66faa01e47fc91" compoundref="permissionmanager_8cpp" startline="122" endline="131">canToggleActive</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1afa8aa5d58764cb40be9d226283f5197a" compoundref="permissionmanager_8cpp" startline="566" endline="573">canToggleActiveAsync</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1a96e35dad77cb2e1dbd0ffffa7c648fdc" compoundref="permissionmanager_8cpp" startline="91" endline="100">canUpdate</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1afded6faae3268475fa32898c00b5476e" compoundref="permissionmanager_8cpp" startline="538" endline="546">canUpdateAsync</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a7ca637c16b64d7ebc2e29acc0f366cf0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -134,7 +134,7 @@
         <name>canCreate</name>
         <qualifiedname>api::v2::PermissionManager::canCreate</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -142,7 +142,7 @@
           <declname>data_j</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -193,7 +193,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="75" column="14" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="47" bodyend="51"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="95" column="10" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="64" bodyend="69"/>
         <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1ab38a9fb015cfa0c0a21684b1b7e5c75d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -210,7 +210,7 @@
         <name>canCreateAsync</name>
         <qualifiedname>api::v2::PermissionManager::canCreateAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -218,7 +218,7 @@
           <declname>data_j</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -232,7 +232,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="79" column="22" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="233" bodyend="237"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="104" column="18" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="514" bodyend="519"/>
         <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1aff6b99de61b84feb36a534319778195b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -249,7 +249,7 @@
         <name>canRead</name>
         <qualifiedname>api::v2::PermissionManager::canRead</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -257,7 +257,7 @@
           <declname>client_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -308,8 +308,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="90" column="14" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="55" bodyend="58"/>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="153" endline="163">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="121" column="10" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="76" bodyend="85"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="265" endline="283">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
         <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1aed948cb4da3d53102be81025ef98bda2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -326,7 +326,7 @@
         <name>canReadAsync</name>
         <qualifiedname>api::v2::PermissionManager::canReadAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -334,7 +334,7 @@
           <declname>client_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -348,8 +348,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="94" column="22" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="241" bodyend="244"/>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="153" endline="163">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="129" column="18" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="525" bodyend="533"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="265" endline="283">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
         <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a96e35dad77cb2e1dbd0ffffa7c648fdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -366,7 +366,7 @@
         <name>canUpdate</name>
         <qualifiedname>api::v2::PermissionManager::canUpdate</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -374,7 +374,7 @@
           <declname>client_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -425,8 +425,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="105" column="14" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="61" bodyend="64"/>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="153" endline="163">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="145" column="10" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="91" bodyend="100"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="265" endline="283">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
         <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1afded6faae3268475fa32898c00b5476e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -443,7 +443,7 @@
         <name>canUpdateAsync</name>
         <qualifiedname>api::v2::PermissionManager::canUpdateAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -451,7 +451,7 @@
           <declname>client_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -465,8 +465,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="109" column="22" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="247" bodyend="250"/>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="153" endline="163">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="153" column="18" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="538" bodyend="546"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="265" endline="283">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
         <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a71258d4ae15f18d8a002c192c0fb6e2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -483,7 +483,7 @@
         <name>canDelete</name>
         <qualifiedname>api::v2::PermissionManager::canDelete</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -491,7 +491,7 @@
           <declname>client_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -542,8 +542,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="120" column="14" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="67" bodyend="70"/>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="153" endline="163">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="169" column="10" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="106" bodyend="115"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="265" endline="283">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
         <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a0adc8dfb1a38a0e3953a4032f3673980" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -560,7 +560,7 @@
         <name>canDeleteAsync</name>
         <qualifiedname>api::v2::PermissionManager::canDeleteAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -568,7 +568,7 @@
           <declname>client_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -582,8 +582,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="124" column="22" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="253" bodyend="256"/>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="153" endline="163">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="177" column="18" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="551" bodyend="559"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="265" endline="283">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
         <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a30eb01bee43eade86f66faa01e47fc91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -600,7 +600,7 @@
         <name>canToggleActive</name>
         <qualifiedname>api::v2::PermissionManager::canToggleActive</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -608,7 +608,7 @@
           <declname>client_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -655,8 +655,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="135" column="14" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="74" bodyend="77"/>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="153" endline="163">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="193" column="10" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="122" bodyend="131"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="265" endline="283">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
         <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1afa8aa5d58764cb40be9d226283f5197a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -673,7 +673,7 @@
         <name>canToggleActiveAsync</name>
         <qualifiedname>api::v2::PermissionManager::canToggleActiveAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -681,7 +681,7 @@
           <declname>client_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -692,8 +692,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="139" column="22" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="260" bodyend="263"/>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="153" endline="163">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="201" column="18" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="566" bodyend="573"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="265" endline="283">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
         <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a3fdd025d52c5c4b4140c3ff6790921fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -710,7 +710,7 @@
         <name>canGetServices</name>
         <qualifiedname>api::v2::PermissionManager::canGetServices</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -718,7 +718,7 @@
           <declname>client_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -765,8 +765,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="150" column="14" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="81" bodyend="84"/>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="153" endline="163">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="218" column="10" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="138" bodyend="147"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="265" endline="283">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
         <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a30126a03fc03c2870325aa6df4543518" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -783,7 +783,7 @@
         <name>canGetServicesAsync</name>
         <qualifiedname>api::v2::PermissionManager::canGetServicesAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -791,7 +791,7 @@
           <declname>client_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -802,8 +802,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="154" column="22" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="267" bodyend="270"/>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="153" endline="163">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="226" column="18" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="580" bodyend="587"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="265" endline="283">api::v2::PermissionManagerPrivate::assert_group_id_match</references>
         <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a3ea07c998d2818c6ef1585a83d58de31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -820,7 +820,7 @@
         <name>canCreate</name>
         <qualifiedname>api::v2::PermissionManager::canCreate</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -828,7 +828,7 @@
           <declname>service_j</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -875,7 +875,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="167" column="14"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="247" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a4fde2b6b7c617ef97f0a3aa6a5135425" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -891,7 +891,7 @@
         <name>canCreateAsync</name>
         <qualifiedname>api::v2::PermissionManager::canCreateAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -899,7 +899,7 @@
           <declname>service_j</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -909,7 +909,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="171" column="22"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="256" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a52a131813fb846d82e3b7b4b3363a6b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -925,7 +925,7 @@
         <name>canRead</name>
         <qualifiedname>api::v2::PermissionManager::canRead</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -933,7 +933,7 @@
           <declname>service_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -980,7 +980,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="182" column="14"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="273" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1abd8a7e3b5ffcb254c3954daa0cb44ceb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -996,7 +996,7 @@
         <name>canReadAsync</name>
         <qualifiedname>api::v2::PermissionManager::canReadAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1004,7 +1004,7 @@
           <declname>service_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1014,7 +1014,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="186" column="22"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="281" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a99d92a72b1a2a99f6392b3a4f9b08374" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1030,7 +1030,7 @@
         <name>canUpdate</name>
         <qualifiedname>api::v2::PermissionManager::canUpdate</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1038,7 +1038,7 @@
           <declname>service_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1085,7 +1085,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="197" column="14"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="298" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a49df60ee2868117406972f850747ee34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1101,7 +1101,7 @@
         <name>canUpdateAsync</name>
         <qualifiedname>api::v2::PermissionManager::canUpdateAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1109,7 +1109,7 @@
           <declname>service_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1119,7 +1119,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="201" column="22"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="306" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a5ce6653354254b4b6b1788b68bce6fff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1135,7 +1135,7 @@
         <name>canDelete</name>
         <qualifiedname>api::v2::PermissionManager::canDelete</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1143,7 +1143,7 @@
           <declname>service_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1190,7 +1190,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="212" column="14"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="322" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a984d7b5d477fa1a100f742adda535fb3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1206,7 +1206,7 @@
         <name>canDeleteAsync</name>
         <qualifiedname>api::v2::PermissionManager::canDeleteAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1214,7 +1214,7 @@
           <declname>service_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1224,9 +1224,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="216" column="22"/>
-        <references refid="classapi_1_1v2_1_1PermissionManager_1a850868371bb029e826761eff3b329c5c" compoundref="permissionmanager_8cpp" startline="128" endline="135">canManageStaff</references>
-        <references refid="classapi_1_1v2_1_1PermissionManager_1af314003136240877cbf15fe24c288a05" compoundref="permissionmanager_8cpp" startline="311" endline="317">canManageStaffAsync</references>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="330" column="18"/>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1a850868371bb029e826761eff3b329c5c" compoundref="permissionmanager_8cpp" startline="251" endline="269">canManageStaff</references>
+        <references refid="classapi_1_1v2_1_1PermissionManager_1af314003136240877cbf15fe24c288a05" compoundref="permissionmanager_8cpp" startline="691" endline="708">canManageStaffAsync</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a850868371bb029e826761eff3b329c5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1240,7 +1240,7 @@
         <name>canManageStaff</name>
         <qualifiedname>api::v2::PermissionManager::canManageStaff</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1248,7 +1248,7 @@
           <declname>service_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1296,9 +1296,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="227" column="14" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="128" bodyend="135"/>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3e7c77aa55023f9d5ccc345e7b68f2ab" compoundref="permissionmanager__private_8hpp" startline="206" endline="232">api::v2::PermissionManagerPrivate::getPermissionsOfEntity</references>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1abf032243785557f4e3f6c636a926a8ac" compoundref="permissionmanager__private_8cpp" startline="235" endline="239">api::v2::PermissionManagerPrivate::isOwnerOrAdmin</references>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="347" column="10" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="251" bodyend="269"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3e7c77aa55023f9d5ccc345e7b68f2ab" compoundref="permissionmanager__private_8hpp" startline="306" endline="357">api::v2::PermissionManagerPrivate::getPermissionsOfEntity</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a64b26a6beda50b382d489eb1459f907e">api::v2::PermissionManagerPrivate::isOwnerOrAdmin</references>
         <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a984d7b5d477fa1a100f742adda535fb3">canDeleteAsync</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1af314003136240877cbf15fe24c288a05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1313,7 +1313,7 @@
         <name>canManageStaffAsync</name>
         <qualifiedname>api::v2::PermissionManager::canManageStaffAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1321,7 +1321,7 @@
           <declname>service_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1332,9 +1332,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="231" column="22" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="311" bodyend="317"/>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a070d79b55b8f3262de2b815a636defd7" compoundref="permissionmanager__private_8hpp" startline="246" endline="272">api::v2::PermissionManagerPrivate::getPermissionsOfEntityCoro</references>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1abf032243785557f4e3f6c636a926a8ac" compoundref="permissionmanager__private_8cpp" startline="235" endline="239">api::v2::PermissionManagerPrivate::isOwnerOrAdmin</references>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="355" column="18" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.cpp" bodystart="691" bodyend="708"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a070d79b55b8f3262de2b815a636defd7" compoundref="permissionmanager__private_8hpp" startline="382" endline="430">api::v2::PermissionManagerPrivate::getPermissionsOfEntityCoro</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a64b26a6beda50b382d489eb1459f907e">api::v2::PermissionManagerPrivate::isOwnerOrAdmin</references>
         <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a984d7b5d477fa1a100f742adda535fb3">canDeleteAsync</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a516ef7c5e4679c36c93b26bdd434509b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1351,7 +1351,7 @@
         <name>canCreate</name>
         <qualifiedname>api::v2::PermissionManager::canCreate</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1359,7 +1359,7 @@
           <declname>data_j</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1406,7 +1406,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="246" column="14"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="376" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1af13c583f1a64ce0d38551683c50ec070" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1422,7 +1422,7 @@
         <name>canCreateAsync</name>
         <qualifiedname>api::v2::PermissionManager::canCreateAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1430,7 +1430,7 @@
           <declname>data_j</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1440,7 +1440,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="250" column="22"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="383" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a589a8a5cdfa8dbacb4f8a6dc70718a13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1456,7 +1456,7 @@
         <name>canRead</name>
         <qualifiedname>api::v2::PermissionManager::canRead</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1464,7 +1464,7 @@
           <declname>case_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1511,7 +1511,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="261" column="14"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="399" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a69637b8a9b6d0d73f1f8ae12a91c5fd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1527,7 +1527,7 @@
         <name>canReadAsync</name>
         <qualifiedname>api::v2::PermissionManager::canReadAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1535,7 +1535,7 @@
           <declname>case_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1545,7 +1545,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="265" column="22"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="405" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a27ca0858f19c5a91561fc6baac4c921b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1561,7 +1561,7 @@
         <name>canUpdate</name>
         <qualifiedname>api::v2::PermissionManager::canUpdate</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1569,7 +1569,7 @@
           <declname>case_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1616,7 +1616,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="276" column="14"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="420" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a3f8bed5ca5e8f25c1f7ddd7b414c3cc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1632,7 +1632,7 @@
         <name>canUpdateAsync</name>
         <qualifiedname>api::v2::PermissionManager::canUpdateAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1640,7 +1640,7 @@
           <declname>case_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1650,7 +1650,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="280" column="22"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="426" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a9ba39dbfd12564c994c208afe10d9d41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1666,7 +1666,7 @@
         <name>canDelete</name>
         <qualifiedname>api::v2::PermissionManager::canDelete</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1674,7 +1674,7 @@
           <declname>_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1721,7 +1721,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="291" column="14"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="441" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a16329f4f9bbd3a5e6044bded5958d259" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1737,7 +1737,7 @@
         <name>canDeleteAsync</name>
         <qualifiedname>api::v2::PermissionManager::canDeleteAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1745,7 +1745,7 @@
           <declname>_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1755,7 +1755,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="295" column="22"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="448" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a3ea07c998d2818c6ef1585a83d58de31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1771,7 +1771,7 @@
         <name>canCreate</name>
         <qualifiedname>api::v2::PermissionManager::canCreate</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1779,7 +1779,7 @@
           <declname>service_j</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1826,7 +1826,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="310" column="14"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="470" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a4fde2b6b7c617ef97f0a3aa6a5135425" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1842,7 +1842,7 @@
         <name>canCreateAsync</name>
         <qualifiedname>api::v2::PermissionManager::canCreateAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1850,7 +1850,7 @@
           <declname>service_j</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1860,7 +1860,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="314" column="22"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="478" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a52a131813fb846d82e3b7b4b3363a6b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1876,7 +1876,7 @@
         <name>canRead</name>
         <qualifiedname>api::v2::PermissionManager::canRead</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1884,7 +1884,7 @@
           <declname>service_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1931,7 +1931,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="325" column="14"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="494" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1abd8a7e3b5ffcb254c3954daa0cb44ceb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1947,7 +1947,7 @@
         <name>canReadAsync</name>
         <qualifiedname>api::v2::PermissionManager::canReadAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1955,7 +1955,7 @@
           <declname>service_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -1965,7 +1965,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="329" column="22"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="501" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a99d92a72b1a2a99f6392b3a4f9b08374" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1981,7 +1981,7 @@
         <name>canUpdate</name>
         <qualifiedname>api::v2::PermissionManager::canUpdate</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -1989,7 +1989,7 @@
           <declname>service_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -2036,7 +2036,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="340" column="14"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="517" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a49df60ee2868117406972f850747ee34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2052,7 +2052,7 @@
         <name>canUpdateAsync</name>
         <qualifiedname>api::v2::PermissionManager::canUpdateAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -2060,7 +2060,7 @@
           <declname>service_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -2070,7 +2070,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="344" column="22"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="524" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a9ba39dbfd12564c994c208afe10d9d41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2086,7 +2086,7 @@
         <name>canDelete</name>
         <qualifiedname>api::v2::PermissionManager::canDelete</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -2094,7 +2094,7 @@
           <declname>_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -2141,7 +2141,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="355" column="14"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="540" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManager_1a16329f4f9bbd3a5e6044bded5958d259" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2157,7 +2157,7 @@
         <name>canDeleteAsync</name>
         <qualifiedname>api::v2::PermissionManager::canDeleteAsync</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -2165,7 +2165,7 @@
           <declname>_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -2175,18 +2175,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="359" column="22"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="547" column="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>Central authorization facade: answers &quot;may this requester perform this operation on this entity?&quot;. </para>
+<para>Central authorization facade: answers &quot;may this requester perform
+this operation on this entity?&quot;. </para>
     </briefdescription>
     <detaileddescription>
 <para>Overloads are grouped by the concept constraining the entity type (<ref refid="conceptClient__t" kindref="compound">Client_t</ref>, <ref refid="conceptService__t" kindref="compound">Service_t</ref>, <ref refid="conceptCase__t" kindref="compound">Case_t</ref>, <ref refid="conceptAppointment__t" kindref="compound">Appointment_t</ref>). Most checks load the entity&apos;s permission JSON (through <ref refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3e7c77aa55023f9d5ccc345e7b68f2ab" kindref="member">PermissionManagerPrivate::getPermissionsOfEntity</ref>) and apply the service owner/admin/staff rules; the plain client checks only assert that the requester&apos;s group and id match the target client. Every <computeroutput>*Async</computeroutput> overload is the coroutine counterpart of a synchronous check; those needing permission data use the async (database/cached) lookup. On denial, <computeroutput>error</computeroutput> receives a status and reason. <simplesect kind="note"><para>Each overload is explicitly instantiated for the supported entity types at the bottom of <ref refid="permissionmanager_8cpp" kindref="compound">permissionmanager.cpp</ref>; this header only declares them. In everyday words: think of this class as a receptionist who checks ID before letting someone do something. It does not fetch data itself; it asks <ref refid="classapi_1_1v2_1_1PermissionManagerPrivate" kindref="compound">PermissionManagerPrivate</ref> for the facts and then decides. </para>
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="55" column="5" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.hpp" bodystart="56" bodyend="362"/>
+    <location file="src/gatekeeper/permissionmanager/permissionmanager.hpp" line="67" column="3" bodyfile="src/gatekeeper/permissionmanager/permissionmanager.hpp" bodystart="67" bodyend="555"/>
     <listofallmembers>
       <member refid="classapi_1_1v2_1_1PermissionManager_1a7ca637c16b64d7ebc2e29acc0f366cf0" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canCreate</name></member>
       <member refid="classapi_1_1v2_1_1PermissionManager_1a3ea07c998d2818c6ef1585a83d58de31" prot="public" virt="non-virtual"><scope>api::v2::PermissionManager</scope><name>canCreate</name></member>

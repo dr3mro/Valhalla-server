@@ -90,78 +90,113 @@
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
 <codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>asyncdberror.hpp</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Maps<sp/>exceptions<sp/>from<sp/>the<sp/>Drogon<sp/>async<sp/>database<sp/>path<sp/>to<sp/>the<sp/>HTTP<sp/>statuses<sp/>of<sp/>the<sp/>synchronous<sp/>path.</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>declares<sp/>three<sp/>small<sp/>helpers<sp/>that<sp/>inspect<sp/>an<sp/>exception.<sp/>One<sp/>decides<sp/>whether<sp/>the<sp/>error<sp/>means</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&quot;the<sp/>database<sp/>is<sp/>busy&quot;,<sp/>one<sp/>turns<sp/>that<sp/>decision<sp/>into<sp/>an<sp/>HTTP<sp/>status<sp/>code,<sp/>and<sp/>one<sp/>throws<sp/>the<sp/>project&apos;s</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DatabaseBusy<sp/>exception<sp/>so<sp/>the<sp/>rest<sp/>of<sp/>the<sp/>server<sp/>can<sp/>keep<sp/>a<sp/>single<sp/>error-handling<sp/>path.</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>The<sp/>controller<sp/>methods<sp/>that<sp/>use<sp/>Drogon<sp/>coroutines<sp/>catch<sp/>errors<sp/>as<sp/>the<sp/>generic<sp/>std::exception<sp/>type,<sp/>so<sp/>they<sp/>lose</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>the<sp/>specific<sp/>Drogon<sp/>exception<sp/>class.<sp/>These<sp/>helpers<sp/>recover<sp/>the<sp/>important<sp/>distinction:<sp/>a<sp/>busy<sp/>pool<sp/>or<sp/>a<sp/>timeout</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>means<sp/>&quot;try<sp/>again<sp/>later&quot;<sp/>(HTTP<sp/>503<sp/>Service<sp/>Unavailable),<sp/>while<sp/>any<sp/>other<sp/>failure<sp/>is<sp/>a<sp/>normal<sp/>internal<sp/>error</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>(HTTP<sp/>500).<sp/>They<sp/>let<sp/>the<sp/>async<sp/>database<sp/>path<sp/>answer<sp/>failures<sp/>exactly<sp/>the<sp/>same<sp/>way<sp/>the<sp/>older<sp/>synchronous<sp/>path</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>does.<sp/>Without<sp/>this<sp/>file,<sp/>a<sp/>temporary<sp/>database<sp/>overload<sp/>would<sp/>be<sp/>reported<sp/>as<sp/>a<sp/>generic<sp/>server<sp/>error<sp/>instead<sp/>of<sp/>a</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>retryable<sp/>one,<sp/>and<sp/>callers<sp/>would<sp/>not<sp/>know<sp/>to<sp/>back<sp/>off.</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>-<sp/>C++20<sp/>coroutines:<sp/>https://en.cppreference.com/w/cpp/language/coroutines</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>Exceptions<sp/>and<sp/>std::exception:<sp/>https://en.cppreference.com/w/cpp/error/exception</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>dynamic_cast<sp/>(checking<sp/>an<sp/>object&apos;s<sp/>real<sp/>type<sp/>at<sp/>runtime):<sp/>https://en.cppreference.com/w/cpp/language/dynamic_cast</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>HTTP<sp/>503<sp/>status:<sp/>https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>Drogon<sp/>DbClient:<sp/>https://drogon.docsforge.com/master/database/</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
-<codeline lineno="25"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Make<sp/>sure<sp/>these<sp/>declarations<sp/>appear<sp/>only<sp/>once<sp/>in<sp/>each<sp/>compiled<sp/>source<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpTypes.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>drogon::HttpStatusCode<sp/>and<sp/>the<sp/>k500/k503<sp/>constants<sp/>returned<sp/>by<sp/>toHttpStatus().</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/orm/Exception.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Drogon&apos;s<sp/>exception<sp/>classes,<sp/>whose<sp/>messages<sp/>we<sp/>examine.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;exception&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::exception,<sp/>the<sp/>base<sp/>type<sp/>every<sp/>caught<sp/>error<sp/>arrives<sp/>as.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string,<sp/>used<sp/>when<sp/>searching<sp/>the<sp/>error<sp/>message<sp/>text.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="databasebusy_8hpp" kindref="compound">database/databasebusy.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>DatabaseBusy,<sp/>the<sp/>project&apos;s<sp/>own<sp/>&quot;no<sp/>connection<sp/>available&quot;<sp/>exception.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="37"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>@namespace<sp/>asyncdb</highlight></codeline>
-<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Maps<sp/>exceptions<sp/>from<sp/>the<sp/>Drogon<sp/>async<sp/>database<sp/>path<sp/>to<sp/>the<sp/>HTTP<sp/>statuses<sp/>of<sp/>the<sp/>synchronous<sp/>path.</highlight></codeline>
-<codeline lineno="40"><highlight class="comment"><sp/>*<sp/>@details<sp/>An<sp/>exhausted<sp/>pool<sp/>or<sp/>timeout<sp/>is<sp/>&quot;busy&quot;<sp/>and<sp/>maps<sp/>to<sp/>503,<sp/>matching<sp/>`DatabaseBusy`;<sp/>every<sp/>other<sp/>failure<sp/>maps<sp/>to</highlight></codeline>
-<codeline lineno="41"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>500.<sp/>The<sp/>helpers<sp/>take<sp/>`std::exception`<sp/>because<sp/>coroutine<sp/>awaits<sp/>surface<sp/>their<sp/>failures<sp/>through<sp/>that<sp/>base<sp/>type.</highlight></codeline>
-<codeline lineno="42"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceasyncdb" kindref="compound">asyncdb</ref></highlight></codeline>
-<codeline lineno="44"><highlight class="normal">{</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="45"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Tests<sp/>whether<sp/>an<sp/>exception<sp/>represents<sp/>a<sp/>busy<sp/>database<sp/>(pool<sp/>exhaustion<sp/>or<sp/>timeout).</highlight></codeline>
-<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>First<sp/>checks<sp/>for<sp/>a<sp/>`DatabaseBusy`<sp/>by<sp/>dynamic<sp/>type;<sp/>otherwise<sp/>performs<sp/>a<sp/>case-sensitive<sp/>substring<sp/>search<sp/>of</highlight></codeline>
-<codeline lineno="48"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>`what()`<sp/>for<sp/>&quot;timeout&quot;,<sp/>&quot;pool&quot;,<sp/>&quot;too<sp/>many<sp/>clients&quot;<sp/>and<sp/>&quot;connection&quot;.<sp/>The<sp/>message<sp/>check<sp/>is<sp/>a<sp/>heuristic<sp/>used</highlight></codeline>
-<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>because<sp/>callers<sp/>catch<sp/>exceptions<sp/>as<sp/>`std::exception`,<sp/>where<sp/>the<sp/>specific<sp/>Drogon<sp/>type<sp/>may<sp/>not<sp/>be<sp/>available.</highlight></codeline>
-<codeline lineno="50"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>error<sp/>Exception<sp/>to<sp/>classify;<sp/>need<sp/>not<sp/>outlive<sp/>the<sp/>call.</highlight></codeline>
-<codeline lineno="51"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>if<sp/>the<sp/>exception<sp/>looks<sp/>like<sp/>a<sp/>busy/timeout<sp/>condition.</highlight></codeline>
-<codeline lineno="52"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@warning<sp/>&quot;connection&quot;<sp/>is<sp/>a<sp/>broad<sp/>match:<sp/>an<sp/>unrelated<sp/>error<sp/>whose<sp/>message<sp/>mentions<sp/>a<sp/>connection<sp/>is<sp/>classified<sp/>as<sp/>busy.</highlight></codeline>
-<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" kindref="member">isBusy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>`[[nodiscard]]`<sp/>forces<sp/>callers<sp/>to<sp/>use<sp/>the<sp/>answer;<sp/>`const&amp;`<sp/>inspects<sp/>without<sp/>copying.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="56"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="57"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Converts<sp/>an<sp/>exception<sp/>to<sp/>the<sp/>HTTP<sp/>status<sp/>the<sp/>synchronous<sp/>database<sp/>path<sp/>would<sp/>produce.</highlight></codeline>
-<codeline lineno="58"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>error<sp/>Exception<sp/>to<sp/>classify.</highlight></codeline>
-<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>`k503ServiceUnavailable`<sp/>when<sp/>`isBusy(error)`<sp/>is<sp/>true,<sp/>otherwise<sp/>`k500InternalServerError`.</highlight></codeline>
-<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>drogon::HttpStatusCode<sp/><ref refid="namespaceasyncdb_1aa8c2770011cc45a2089c9b8d1c9ef6ba" kindref="member">toHttpStatus</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Returns<sp/>a<sp/>Drogon<sp/>status<sp/>constant<sp/>the<sp/>HTTP<sp/>layer<sp/>can<sp/>send<sp/>directly<sp/>to<sp/>the<sp/>client.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Raises<sp/>`DatabaseBusy`<sp/>when<sp/>the<sp/>exception<sp/>represents<sp/>an<sp/>exhausted<sp/>pool<sp/>or<sp/>timeout.</highlight></codeline>
-<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>error<sp/>Exception<sp/>to<sp/>classify.</highlight></codeline>
-<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@throws<sp/>DatabaseBusy<sp/>if<sp/>`isBusy(error)`<sp/>is<sp/>true;<sp/>otherwise<sp/>the<sp/>function<sp/>does<sp/>nothing.</highlight></codeline>
-<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>The<sp/>original<sp/>exception<sp/>is<sp/>not<sp/>chained;<sp/>callers<sp/>rely<sp/>on<sp/>the<sp/>resulting<sp/>`DatabaseBusy`<sp/>producing<sp/>a<sp/>503<sp/>with</highlight></codeline>
-<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>Retry-After<sp/>in<sp/>the<sp/>HTTP<sp/>layer.</highlight></codeline>
-<codeline lineno="69"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceasyncdb_1a7c8890804d39f7a13dac84b992a8c77b" kindref="member">throwIfBusy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Re-throws<sp/>as<sp/>the<sp/>project&apos;s<sp/>own<sp/>type<sp/>so<sp/>existing<sp/>error<sp/>handlers<sp/>need<sp/>no<sp/>changes.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>asyncdb</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="73"><highlight class="comment">/**<sp/>@brief<sp/>Alias<sp/>for<sp/>the<sp/>Phase<sp/>2<sp/>vocabulary;<sp/>denotes<sp/>the<sp/>same<sp/>namespace<sp/>as<sp/>`asyncdb`.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceasyncdb" kindref="compound">AsyncDbError</ref><sp/>=<sp/><ref refid="namespaceasyncdb" kindref="compound">asyncdb</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Another<sp/>name<sp/>for<sp/>the<sp/>same<sp/>helpers,<sp/>used<sp/>by<sp/>code<sp/>written<sp/>during<sp/>&quot;Phase<sp/>2&quot;<sp/>of<sp/>the<sp/>async<sp/>migration.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Maps<sp/>exceptions<sp/>from<sp/>the<sp/>Drogon<sp/>async<sp/>database<sp/>path<sp/>to<sp/>the<sp/>HTTP</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>statuses<sp/>of<sp/>the<sp/>synchronous<sp/>path.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>declares<sp/>three<sp/>small<sp/>helpers<sp/>that<sp/>inspect<sp/>an<sp/>exception.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>One<sp/>decides<sp/>whether<sp/>the<sp/>error<sp/>means<sp/>&quot;the<sp/>database<sp/>is<sp/>busy&quot;,<sp/>one<sp/>turns<sp/>that</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>decision<sp/>into<sp/>an<sp/>HTTP<sp/>status<sp/>code,<sp/>and<sp/>one<sp/>throws<sp/>the<sp/>project&apos;s<sp/>DatabaseBusy</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>exception<sp/>so<sp/>the<sp/>rest<sp/>of<sp/>the<sp/>server<sp/>can<sp/>keep<sp/>a<sp/>single<sp/>error-handling<sp/>path.</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>The<sp/>controller<sp/>methods<sp/>that<sp/>use<sp/>Drogon<sp/>coroutines<sp/>catch<sp/>errors<sp/>as<sp/>the<sp/>generic</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>std::exception<sp/>type,<sp/>so<sp/>they<sp/>lose<sp/>the<sp/>specific<sp/>Drogon<sp/>exception<sp/>class.<sp/>These</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>helpers<sp/>recover<sp/>the<sp/>important<sp/>distinction:<sp/>a<sp/>busy<sp/>pool<sp/>or<sp/>a<sp/>timeout<sp/>means</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>&quot;try<sp/>again<sp/>later&quot;<sp/>(HTTP<sp/>503<sp/>Service<sp/>Unavailable),<sp/>while<sp/>any<sp/>other<sp/>failure<sp/>is</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>a<sp/>normal<sp/>internal<sp/>error<sp/>(HTTP<sp/>500).<sp/>They<sp/>let<sp/>the<sp/>async<sp/>database<sp/>path<sp/>answer</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>failures<sp/>exactly<sp/>the<sp/>same<sp/>way<sp/>the<sp/>older<sp/>synchronous<sp/>path<sp/>does.<sp/>Without<sp/>this</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>file,<sp/>a<sp/>temporary<sp/>database<sp/>overload<sp/>would<sp/>be<sp/>reported<sp/>as<sp/>a<sp/>generic<sp/>server</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>error<sp/>instead<sp/>of<sp/>a<sp/>retryable<sp/>one,<sp/>and<sp/>callers<sp/>would<sp/>not<sp/>know<sp/>to<sp/>back<sp/>off.</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>C++20<sp/>coroutines:<sp/>https://en.cppreference.com/w/cpp/language/coroutines</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>Exceptions<sp/>and<sp/>std::exception:</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/error/exception</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>-<sp/>dynamic_cast<sp/>(checking<sp/>an<sp/>object&apos;s<sp/>real<sp/>type<sp/>at<sp/>runtime):</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/language/dynamic_cast</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>-<sp/>HTTP<sp/>503<sp/>status:</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>-<sp/>Drogon<sp/>DbClient:<sp/>https://drogon.docsforge.com/master/database/</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Make<sp/>sure<sp/>these<sp/>declarations<sp/>appear<sp/>only<sp/>once<sp/>in<sp/>each<sp/>compiled</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>source<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>drogon::HttpStatusCode<sp/>and<sp/>the<sp/>k500/k503<sp/>constants<sp/>returned<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>toHttpStatus().</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpTypes.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Drogon&apos;s<sp/>exception<sp/>classes,<sp/>whose<sp/>messages<sp/>we<sp/>examine.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/orm/Exception.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>std::exception,<sp/>the<sp/>base<sp/>type<sp/>every<sp/>caught<sp/>error<sp/>arrives<sp/>as.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;exception&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string,<sp/>used<sp/>when<sp/>searching<sp/>the<sp/>error<sp/>message<sp/>text.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>DatabaseBusy,<sp/>the<sp/>project&apos;s<sp/>own<sp/>&quot;no<sp/>connection<sp/>available&quot;<sp/>exception.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="databasebusy_8hpp" kindref="compound">database/databasebusy.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="50"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>@namespace<sp/>asyncdb</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Maps<sp/>exceptions<sp/>from<sp/>the<sp/>Drogon<sp/>async<sp/>database<sp/>path<sp/>to<sp/>the<sp/>HTTP</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>statuses<sp/>of<sp/>the<sp/>synchronous<sp/>path.</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>@details<sp/>An<sp/>exhausted<sp/>pool<sp/>or<sp/>timeout<sp/>is<sp/>&quot;busy&quot;<sp/>and<sp/>maps<sp/>to<sp/>503,<sp/>matching</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/>`DatabaseBusy`;<sp/>every<sp/>other<sp/>failure<sp/>maps<sp/>to<sp/>500.<sp/>The<sp/>helpers<sp/>take</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/>`std::exception`<sp/>because<sp/>coroutine<sp/>awaits<sp/>surface<sp/>their<sp/>failures<sp/>through<sp/>that</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*<sp/>base<sp/>type.</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceasyncdb" kindref="compound">asyncdb</ref><sp/>{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Tests<sp/>whether<sp/>an<sp/>exception<sp/>represents<sp/>a<sp/>busy<sp/>database<sp/>(pool</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/>*<sp/>exhaustion<sp/>or<sp/>timeout).</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>First<sp/>checks<sp/>for<sp/>a<sp/>`DatabaseBusy`<sp/>by<sp/>dynamic<sp/>type;<sp/>otherwise</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/>*<sp/>performs<sp/>a<sp/>case-sensitive<sp/>substring<sp/>search<sp/>of<sp/>`what()`<sp/>for<sp/>&quot;timeout&quot;,</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/>*<sp/>&quot;pool&quot;,<sp/>&quot;too<sp/>many<sp/>clients&quot;<sp/>and<sp/>&quot;connection&quot;.<sp/>The<sp/>message<sp/>check<sp/>is<sp/>a</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/>*<sp/>heuristic<sp/>used<sp/>because<sp/>callers<sp/>catch<sp/>exceptions<sp/>as<sp/>`std::exception`,</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/>*<sp/>where<sp/>the<sp/>specific<sp/>Drogon<sp/>type<sp/>may<sp/>not<sp/>be<sp/>available.</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>error<sp/>Exception<sp/>to<sp/>classify;<sp/>need<sp/>not<sp/>outlive<sp/>the<sp/>call.</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>True<sp/>if<sp/>the<sp/>exception<sp/>looks<sp/>like<sp/>a<sp/>busy/timeout<sp/>condition.</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@warning<sp/>&quot;connection&quot;<sp/>is<sp/>a<sp/>broad<sp/>match:<sp/>an<sp/>unrelated<sp/>error<sp/>whose<sp/>message</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/>*<sp/>mentions<sp/>a<sp/>connection<sp/>is<sp/>classified<sp/>as<sp/>busy.</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" kindref="member">isBusy</ref>(</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>`[[nodiscard]]`<sp/>forces<sp/>callers<sp/>to<sp/>use<sp/>the<sp/>answer;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>`const&amp;`<sp/>inspects<sp/>without<sp/>copying.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Converts<sp/>an<sp/>exception<sp/>to<sp/>the<sp/>HTTP<sp/>status<sp/>the<sp/>synchronous<sp/>database</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/>*<sp/>path<sp/>would<sp/>produce.</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>error<sp/>Exception<sp/>to<sp/>classify.</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>`k503ServiceUnavailable`<sp/>when<sp/>`isBusy(error)`<sp/>is<sp/>true,<sp/>otherwise</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/>*<sp/>`k500InternalServerError`.</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/>drogon::HttpStatusCode<sp/><ref refid="namespaceasyncdb_1aa8c2770011cc45a2089c9b8d1c9ef6ba" kindref="member">toHttpStatus</ref>(</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Returns<sp/>a<sp/>Drogon<sp/>status<sp/>constant<sp/>the<sp/>HTTP<sp/>layer<sp/>can<sp/>send</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>directly<sp/>to<sp/>the<sp/>client.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Raises<sp/>`DatabaseBusy`<sp/>when<sp/>the<sp/>exception<sp/>represents<sp/>an<sp/>exhausted</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/>*<sp/>pool<sp/>or<sp/>timeout.</highlight></codeline>
+<codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>error<sp/>Exception<sp/>to<sp/>classify.</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@throws<sp/>DatabaseBusy<sp/>if<sp/>`isBusy(error)`<sp/>is<sp/>true;<sp/>otherwise<sp/>the<sp/>function</highlight></codeline>
+<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/>*<sp/>does<sp/>nothing.</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@note<sp/>The<sp/>original<sp/>exception<sp/>is<sp/>not<sp/>chained;<sp/>callers<sp/>rely<sp/>on<sp/>the</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/>*<sp/>resulting<sp/>`DatabaseBusy`<sp/>producing<sp/>a<sp/>503<sp/>with<sp/>Retry-After<sp/>in<sp/>the<sp/>HTTP</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/>*<sp/>layer.</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceasyncdb_1a7c8890804d39f7a13dac84b992a8c77b" kindref="member">throwIfBusy</ref>(</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>error);<sp/><sp/></highlight><highlight class="comment">//<sp/>Re-throws<sp/>as<sp/>the<sp/>project&apos;s<sp/>own<sp/>type<sp/>so</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>existing<sp/>error<sp/>handlers<sp/>need<sp/>no<sp/>changes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>asyncdb</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="105"><highlight class="comment">/**<sp/>@brief<sp/>Alias<sp/>for<sp/>the<sp/>Phase<sp/>2<sp/>vocabulary;<sp/>denotes<sp/>the<sp/>same<sp/>namespace<sp/>as</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/>*<sp/>`asyncdb`.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceasyncdb" kindref="compound">AsyncDbError</ref><sp/>=</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceasyncdb" kindref="compound">asyncdb</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Another<sp/>name<sp/>for<sp/>the<sp/>same<sp/>helpers,<sp/>used<sp/>by<sp/>code<sp/>written<sp/>during</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;Phase<sp/>2&quot;<sp/>of<sp/>the<sp/>async<sp/>migration.</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/database/asyncdberror.hpp"/>
   </compounddef>

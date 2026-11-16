@@ -11,7 +11,8 @@
         <argsstring></argsstring>
         <name>SESSION_TIMEOUT</name>
         <qualifiedname>api::v2::SessionManager::SESSION_TIMEOUT</qualifiedname>
-        <initializer>= std::chrono::seconds(3600)</initializer>
+        <initializer>                                                  =
+std::chrono::seconds(3600)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -19,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="156" column="47" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.hpp" bodystart="156" bodyend="-1"/>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="221" column="43" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.hpp" bodystart="221" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classapi_1_1v2_1_1SessionManager_1a56d6eb7cb7a8a5c41c702df255cbd502" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>int</type>
@@ -27,7 +28,8 @@
         <argsstring></argsstring>
         <name>SESSION_MAX</name>
         <qualifiedname>api::v2::SessionManager::SESSION_MAX</qualifiedname>
-        <initializer>= 4096</initializer>
+        <initializer>                             =
+4096</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -35,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="157" column="47" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.hpp" bodystart="157" bodyend="-1"/>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="224" column="26" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.hpp" bodystart="224" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -45,7 +47,8 @@
         <argsstring></argsstring>
         <name>passwordCrypt</name>
         <qualifiedname>api::v2::SessionManager::passwordCrypt</qualifiedname>
-        <initializer>= <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classPasswordCrypt" kindref="compound">PasswordCrypt</ref>&gt;()</initializer>
+        <initializer>                          =
+<ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classPasswordCrypt" kindref="compound">PasswordCrypt</ref>&gt;()</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -53,17 +56,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="159" column="44" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.hpp" bodystart="159" bodyend="-1"/>
-        <referencedby refid="classapi_1_1v2_1_1SessionManager_1abbdf2297a918188909ce176585214a89" compoundref="sessionmanager_8cpp" startline="176" endline="206">completeLogin</referencedby>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="227" column="21" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.hpp" bodystart="227" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1abbdf2297a918188909ce176585214a89" compoundref="sessionmanager_8cpp" startline="266" endline="311">completeLogin</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classapi_1_1v2_1_1SessionManager_1a65a1a1dc52287f3db432cde8b6d95f8a" prot="private" static="no" mutable="no">
-        <type>std::shared_ptr&lt; <ref refid="classMemCache" kindref="compound">MemCache</ref>&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &gt;</type>
+        <type>std::shared_ptr&lt; <ref refid="classMemCache" kindref="compound">MemCache</ref>&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1af609f0aaf134643edde3ad81ab5ebf7f" kindref="member">Types::ClientLoginData</ref> &gt; &gt;</type>
         <definition>std::shared_ptr&lt;MemCache&lt;Types::ClientLoginData&gt; &gt; api::v2::SessionManager::clientsSessionsList</definition>
         <argsstring></argsstring>
         <name>clientsSessionsList</name>
         <qualifiedname>api::v2::SessionManager::clientsSessionsList</qualifiedname>
         <initializer>                                =
-<ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classMemCache" kindref="compound">MemCache</ref>&lt;<ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref>&gt;&gt;(<ref refid="classapi_1_1v2_1_1SessionManager_1a56d6eb7cb7a8a5c41c702df255cbd502" kindref="member">SESSION_MAX</ref>, <ref refid="classapi_1_1v2_1_1SessionManager_1a2526008976c4fb859de88f30dcd98811" kindref="member">SESSION_TIMEOUT</ref>)</initializer>
+<ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classMemCache" kindref="compound">MemCache</ref>&lt;
+    <ref refid="namespaceapi_1_1v2_1_1Types_1af609f0aaf134643edde3ad81ab5ebf7f" kindref="member">Types::ClientLoginData</ref>&gt;&gt;(<ref refid="classapi_1_1v2_1_1SessionManager_1a56d6eb7cb7a8a5c41c702df255cbd502" kindref="member">SESSION_MAX</ref>,
+                             <ref refid="classapi_1_1v2_1_1SessionManager_1a2526008976c4fb859de88f30dcd98811" kindref="member">SESSION_TIMEOUT</ref>)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -71,11 +76,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="160" column="25" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.hpp" bodystart="160" bodyend="-1"/>
-        <referencedby refid="classapi_1_1v2_1_1SessionManager_1a2be4af6233804aa5b85985ecb3e14d00" compoundref="sessionmanager_8cpp" startline="297" endline="350">clientHasValidSession</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="224" endline="289">logout</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1SessionManager_1a64bf884c729b388729752c9163db479f" compoundref="sessionmanager_8cpp" startline="391" endline="426">removeSession</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1SessionManager_1a7ca49324d009c30cf57fa224bfaabe4e" compoundref="sessionmanager_8cpp" startline="361" endline="384">storeSession</referencedby>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="231" column="21" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.hpp" bodystart="231" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1a2be4af6233804aa5b85985ecb3e14d00" compoundref="sessionmanager_8cpp" startline="468" endline="547">clientHasValidSession</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="343" endline="458">logout</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1a64bf884c729b388729752c9163db479f" compoundref="sessionmanager_8cpp" startline="605" endline="650">removeSession</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1a7ca49324d009c30cf57fa224bfaabe4e" compoundref="sessionmanager_8cpp" startline="558" endline="596">storeSession</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -91,7 +96,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="62" column="9"/>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="71" column="5"/>
         <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa7e0fae115ecf09ac1ce5a6fed83486f">operator=</referencedby>
         <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa3a4e1ef2013d3901e07eda1ea79d395">operator=</referencedby>
         <referencedby refid="classapi_1_1v2_1_1SessionManager_1af57126e07156086b627616835fe6d15c">SessionManager</referencedby>
@@ -112,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="63" column="9"/>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="73" column="5"/>
         <references refid="classapi_1_1v2_1_1SessionManager_1a35bfaf5b65e09dc3a18f8ada3a305401">SessionManager</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1a429453e19b3f336e6b55d10e290dde23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -130,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="64" column="9"/>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="75" column="5"/>
         <references refid="classapi_1_1v2_1_1SessionManager_1a35bfaf5b65e09dc3a18f8ada3a305401">SessionManager</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1aa7e0fae115ecf09ac1ce5a6fed83486f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -148,7 +153,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="65" column="24"/>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="78" column="20"/>
         <references refid="classapi_1_1v2_1_1SessionManager_1a35bfaf5b65e09dc3a18f8ada3a305401">SessionManager</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1aa3a4e1ef2013d3901e07eda1ea79d395" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -166,7 +171,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="66" column="24"/>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="80" column="20"/>
         <references refid="classapi_1_1v2_1_1SessionManager_1a35bfaf5b65e09dc3a18f8ada3a305401">SessionManager</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1a50993077d4fc27eac1e213623209c5bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -181,16 +186,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="67" column="9"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classapi_1_1v2_1_1SessionManager_1a2be4af6233804aa5b85985ecb3e14d00" compoundref="sessionmanager_8cpp" startline="297" endline="350">clientHasValidSession</references>
-        <references refid="classapi_1_1v2_1_1SessionManager_1abbdf2297a918188909ce176585214a89" compoundref="sessionmanager_8cpp" startline="176" endline="206">completeLogin</references>
-        <references refid="classapi_1_1v2_1_1SessionManager_1abffc874efc27d46a421446767b1d3c6c" compoundref="sessionmanager_8cpp" startline="65" endline="115">fetchPasswordHash</references>
-        <references refid="classapi_1_1v2_1_1SessionManager_1a9122497c5ad97796173492b1a4f3372f" compoundref="sessionmanager_8cpp" startline="118" endline="168">fetchPasswordHashCoro</references>
-        <references refid="classapi_1_1v2_1_1SessionManager_1add62dbdf029d62e261f527ef187ec4ff" compoundref="sessionmanager_8cpp" startline="209" endline="217">login</references>
-        <references refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="224" endline="289">logout</references>
-        <references refid="classapi_1_1v2_1_1SessionManager_1a64bf884c729b388729752c9163db479f" compoundref="sessionmanager_8cpp" startline="391" endline="426">removeSession</references>
-        <references refid="classapi_1_1v2_1_1SessionManager_1a7ca49324d009c30cf57fa224bfaabe4e" compoundref="sessionmanager_8cpp" startline="361" endline="384">storeSession</references>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="82" column="5"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a2be4af6233804aa5b85985ecb3e14d00" compoundref="sessionmanager_8cpp" startline="468" endline="547">clientHasValidSession</references>
+        <references refid="classapi_1_1v2_1_1SessionManager_1abbdf2297a918188909ce176585214a89" compoundref="sessionmanager_8cpp" startline="266" endline="311">completeLogin</references>
+        <references refid="classapi_1_1v2_1_1SessionManager_1abffc874efc27d46a421446767b1d3c6c" compoundref="sessionmanager_8cpp" startline="85" endline="163">fetchPasswordHash</references>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a9122497c5ad97796173492b1a4f3372f" compoundref="sessionmanager_8cpp" startline="170" endline="254">fetchPasswordHashCoro</references>
+        <references refid="classapi_1_1v2_1_1SessionManager_1add62dbdf029d62e261f527ef187ec4ff" compoundref="sessionmanager_8cpp" startline="316" endline="334">login</references>
+        <references refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="343" endline="458">logout</references>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a64bf884c729b388729752c9163db479f" compoundref="sessionmanager_8cpp" startline="605" endline="650">removeSession</references>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a7ca49324d009c30cf57fa224bfaabe4e" compoundref="sessionmanager_8cpp" startline="558" endline="596">storeSession</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1add62dbdf029d62e261f527ef187ec4ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -199,11 +204,11 @@
         <name>login</name>
         <qualifiedname>api::v2::SessionManager::login</qualifiedname>
         <param>
-          <type>const std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1ada88a3e212586efbdfd1f931b0f4a8a9" kindref="member">Types::Credentials</ref> &gt; &amp;</type>
+          <type>const std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1a249a6e076b477aa182c10bc4334e1268" kindref="member">Types::Credentials</ref> &gt; &amp;</type>
           <declname>credentials</declname>
         </param>
         <param>
-          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1af609f0aaf134643edde3ad81ab5ebf7f" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
           <declname>clientLoginData</declname>
         </param>
         <param>
@@ -246,9 +251,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="80" column="14" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="209" bodyend="217"/>
-        <references refid="classapi_1_1v2_1_1SessionManager_1abbdf2297a918188909ce176585214a89" compoundref="sessionmanager_8cpp" startline="176" endline="206">completeLogin</references>
-        <references refid="classapi_1_1v2_1_1SessionManager_1abffc874efc27d46a421446767b1d3c6c" compoundref="sessionmanager_8cpp" startline="65" endline="115">fetchPasswordHash</references>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="100" column="10" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="316" bodyend="334"/>
+        <references refid="classapi_1_1v2_1_1SessionManager_1abbdf2297a918188909ce176585214a89" compoundref="sessionmanager_8cpp" startline="266" endline="311">completeLogin</references>
+        <references refid="classapi_1_1v2_1_1SessionManager_1abffc874efc27d46a421446767b1d3c6c" compoundref="sessionmanager_8cpp" startline="85" endline="163">fetchPasswordHash</references>
         <referencedby refid="classapi_1_1v2_1_1SessionManager_1a50993077d4fc27eac1e213623209c5bd">~SessionManager</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1abffc874efc27d46a421446767b1d3c6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -258,11 +263,11 @@
         <name>fetchPasswordHash</name>
         <qualifiedname>api::v2::SessionManager::fetchPasswordHash</qualifiedname>
         <param>
-          <type>const std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1ada88a3e212586efbdfd1f931b0f4a8a9" kindref="member">Types::Credentials</ref> &gt; &amp;</type>
+          <type>const std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1a249a6e076b477aa182c10bc4334e1268" kindref="member">Types::Credentials</ref> &gt; &amp;</type>
           <declname>credentials</declname>
         </param>
         <param>
-          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1af609f0aaf134643edde3ad81ab5ebf7f" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
           <declname>clientLoginData</declname>
         </param>
         <param>
@@ -313,9 +318,9 @@ Reads the stored password hash after checking the account exists and is active. 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="90" column="23" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="65" bodyend="115"/>
-        <references refid="classapi_1_1v2_1_1KeeprBase_1a8ced4af95be98298b0a63084deece769" compoundref="keeprbase_8cpp" startline="536" endline="539">api::v2::KeeprBase::getPasswordHashForUserName</references>
-        <referencedby refid="classapi_1_1v2_1_1SessionManager_1add62dbdf029d62e261f527ef187ec4ff" compoundref="sessionmanager_8cpp" startline="209" endline="217">login</referencedby>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="116" column="5" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="85" bodyend="163"/>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a8ced4af95be98298b0a63084deece769" compoundref="keeprbase_8cpp" startline="686" endline="691">api::v2::KeeprBase::getPasswordHashForUserName</references>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1add62dbdf029d62e261f527ef187ec4ff" compoundref="sessionmanager_8cpp" startline="316" endline="334">login</referencedby>
         <referencedby refid="classapi_1_1v2_1_1SessionManager_1a50993077d4fc27eac1e213623209c5bd">~SessionManager</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1a9122497c5ad97796173492b1a4f3372f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -325,11 +330,11 @@ Reads the stored password hash after checking the account exists and is active. 
         <name>fetchPasswordHashCoro</name>
         <qualifiedname>api::v2::SessionManager::fetchPasswordHashCoro</qualifiedname>
         <param>
-          <type>const std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1ada88a3e212586efbdfd1f931b0f4a8a9" kindref="member">Types::Credentials</ref> &gt; &amp;</type>
+          <type>const std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1a249a6e076b477aa182c10bc4334e1268" kindref="member">Types::Credentials</ref> &gt; &amp;</type>
           <declname>credentials</declname>
         </param>
         <param>
-          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1af609f0aaf134643edde3ad81ab5ebf7f" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
           <declname>clientLoginData</declname>
         </param>
         <param>
@@ -380,8 +385,8 @@ Reads the stored password hash after checking the account exists and is active. 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="101" column="22" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="118" bodyend="168"/>
-        <references refid="classapi_1_1v2_1_1KeeprBase_1acdd434fec377861a4be32a7fbbd6549f" compoundref="keeprbase_8cpp" startline="548" endline="551">api::v2::KeeprBase::getPasswordHashForUserNameCoro</references>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="133" column="5" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="170" bodyend="254"/>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1acdd434fec377861a4be32a7fbbd6549f" compoundref="keeprbase_8cpp" startline="702" endline="708">api::v2::KeeprBase::getPasswordHashForUserNameCoro</references>
         <referencedby refid="classapi_1_1v2_1_1SessionManager_1a50993077d4fc27eac1e213623209c5bd">~SessionManager</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1abbdf2297a918188909ce176585214a89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -391,7 +396,7 @@ Reads the stored password hash after checking the account exists and is active. 
         <name>completeLogin</name>
         <qualifiedname>api::v2::SessionManager::completeLogin</qualifiedname>
         <param>
-          <type>const std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1ada88a3e212586efbdfd1f931b0f4a8a9" kindref="member">Types::Credentials</ref> &gt; &amp;</type>
+          <type>const std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1a249a6e076b477aa182c10bc4334e1268" kindref="member">Types::Credentials</ref> &gt; &amp;</type>
           <declname>credentials</declname>
         </param>
         <param>
@@ -399,7 +404,7 @@ Reads the stored password hash after checking the account exists and is active. 
           <declname>password_hash</declname>
         </param>
         <param>
-          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1af609f0aaf134643edde3ad81ab5ebf7f" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
           <declname>clientLoginData</declname>
         </param>
         <param>
@@ -458,10 +463,10 @@ Verifies the password first; only a match updates the stored login time. message
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="113" column="14" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="176" bodyend="206"/>
-        <references refid="classapi_1_1v2_1_1SessionManager_1a7b12ce1fb5e65eb8f9ad5f8ef9f5580c" compoundref="sessionmanager_8hpp" startline="159">passwordCrypt</references>
-        <references refid="classapi_1_1v2_1_1KeeprBase_1a827a3339a5b2ecfddc1ba78ef85e7711" compoundref="keeprbase_8cpp" startline="140" endline="190">api::v2::KeeprBase::setNowLoginTimeGetLastLogoutTime</references>
-        <referencedby refid="classapi_1_1v2_1_1SessionManager_1add62dbdf029d62e261f527ef187ec4ff" compoundref="sessionmanager_8cpp" startline="209" endline="217">login</referencedby>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="152" column="10" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="266" bodyend="311"/>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a7b12ce1fb5e65eb8f9ad5f8ef9f5580c" compoundref="sessionmanager_8hpp" startline="227">passwordCrypt</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a827a3339a5b2ecfddc1ba78ef85e7711" compoundref="keeprbase_8cpp" startline="180" endline="244">api::v2::KeeprBase::setNowLoginTimeGetLastLogoutTime</references>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1add62dbdf029d62e261f527ef187ec4ff" compoundref="sessionmanager_8cpp" startline="316" endline="334">login</referencedby>
         <referencedby refid="classapi_1_1v2_1_1SessionManager_1a50993077d4fc27eac1e213623209c5bd">~SessionManager</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -475,7 +480,7 @@ Verifies the password first; only a match updates the stored login time. message
           <declname>callback</declname>
         </param>
         <param>
-          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1af609f0aaf134643edde3ad81ab5ebf7f" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
           <declname>clientLoginData</declname>
         </param>
         <briefdescription>
@@ -504,18 +509,18 @@ Validates the token, checks it against the stored session in constant time, reco
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="124" column="14" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="224" bodyend="289"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classapi_1_1v2_1_1SessionManager_1a65a1a1dc52287f3db432cde8b6d95f8a" compoundref="sessionmanager_8hpp" startline="160">clientsSessionsList</references>
-        <references refid="global_8hpp_1a68447123f2c27bb7bcdbbaec4091dab7" compoundref="global_8hpp" startline="46" endline="48">CRITICALMESSAGE</references>
-        <references refid="classapi_1_1v2_1_1KeeprBase_1aa5bb3aa3442744a56f97c06d8c43a37d" compoundref="keeprbase_8cpp" startline="299" endline="337">api::v2::KeeprBase::decodeToken</references>
-        <references refid="classapi_1_1v2_1_1JsonHelper_1a641560db2243ef5bca5bb763e98b3b43" compoundref="jsonhelper_8cpp" startline="27" endline="33">api::v2::JsonHelper::jsonify</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
-        <references refid="classapi_1_1v2_1_1SessionManager_1a64bf884c729b388729752c9163db479f" compoundref="sessionmanager_8cpp" startline="391" endline="426">removeSession</references>
-        <references refid="classapi_1_1v2_1_1KeeprBase_1aec14dfc5acf772c02faa5ebe3c383eba" compoundref="keeprbase_8cpp" startline="199" endline="235">api::v2::KeeprBase::setNowLogoutTime</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1aaddeb034a51d7050d6cc65cc2b46fdcf" compoundref="errorstatus_8hpp" startline="49" endline="53">api::v2::Http::statusForException</references>
-        <references refid="classapi_1_1v2_1_1JsonHelper_1a1b5317049b9d7659fea55b9f6c96c379" compoundref="jsonhelper_8cpp" startline="41" endline="41">api::v2::JsonHelper::stringify</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa521335676ea4815ed98bb811fb2d1fea" compoundref="http_8hpp" startline="83">api::v2::Http::UNAUTHORIZED</references>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="171" column="10" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="343" bodyend="458"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a65a1a1dc52287f3db432cde8b6d95f8a" compoundref="sessionmanager_8hpp" startline="231">clientsSessionsList</references>
+        <references refid="global_8hpp_1a68447123f2c27bb7bcdbbaec4091dab7" compoundref="global_8hpp" startline="48" endline="54">CRITICALMESSAGE</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1aa5bb3aa3442744a56f97c06d8c43a37d" compoundref="keeprbase_8cpp" startline="376" endline="427">api::v2::KeeprBase::decodeToken</references>
+        <references refid="classapi_1_1v2_1_1JsonHelper_1a641560db2243ef5bca5bb763e98b3b43" compoundref="jsonhelper_8cpp" startline="32" endline="40">api::v2::JsonHelper::jsonify</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a64bf884c729b388729752c9163db479f" compoundref="sessionmanager_8cpp" startline="605" endline="650">removeSession</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1aec14dfc5acf772c02faa5ebe3c383eba" compoundref="keeprbase_8cpp" startline="252" endline="295">api::v2::KeeprBase::setNowLogoutTime</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1aaddeb034a51d7050d6cc65cc2b46fdcf" compoundref="errorstatus_8hpp" startline="56" endline="65">api::v2::Http::statusForException</references>
+        <references refid="classapi_1_1v2_1_1JsonHelper_1a1b5317049b9d7659fea55b9f6c96c379" compoundref="jsonhelper_8cpp" startline="50" endline="52">api::v2::JsonHelper::stringify</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa521335676ea4815ed98bb811fb2d1fea" compoundref="http_8hpp" startline="104">api::v2::Http::UNAUTHORIZED</references>
         <referencedby refid="classapi_1_1v2_1_1SessionManager_1a50993077d4fc27eac1e213623209c5bd">~SessionManager</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1a2be4af6233804aa5b85985ecb3e14d00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -525,7 +530,7 @@ Validates the token, checks it against the stored session in constant time, reco
         <name>clientHasValidSession</name>
         <qualifiedname>api::v2::SessionManager::clientHasValidSession</qualifiedname>
         <param>
-          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1af609f0aaf134643edde3ad81ab5ebf7f" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
           <declname>clientLoginData</declname>
         </param>
         <param>
@@ -559,10 +564,10 @@ Validates a cached session against the supplied token and adopts the stored iden
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="135" column="14" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="297" bodyend="350"/>
-        <references refid="classapi_1_1v2_1_1SessionManager_1a65a1a1dc52287f3db432cde8b6d95f8a" compoundref="sessionmanager_8hpp" startline="160">clientsSessionsList</references>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classapi_1_1v2_1_1KeeprBase_1aa5bb3aa3442744a56f97c06d8c43a37d" compoundref="keeprbase_8cpp" startline="299" endline="337">api::v2::KeeprBase::decodeToken</references>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="188" column="10" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="468" bodyend="547"/>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a65a1a1dc52287f3db432cde8b6d95f8a" compoundref="sessionmanager_8hpp" startline="231">clientsSessionsList</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1aa5bb3aa3442744a56f97c06d8c43a37d" compoundref="keeprbase_8cpp" startline="376" endline="427">api::v2::KeeprBase::decodeToken</references>
         <referencedby refid="classapi_1_1v2_1_1SessionManager_1a50993077d4fc27eac1e213623209c5bd">~SessionManager</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1a7ca49324d009c30cf57fa224bfaabe4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -572,7 +577,7 @@ Validates a cached session against the supplied token and adopts the stored iden
         <name>storeSession</name>
         <qualifiedname>api::v2::SessionManager::storeSession</qualifiedname>
         <param>
-          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1af609f0aaf134643edde3ad81ab5ebf7f" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
           <declname>clientLoginData</declname>
         </param>
         <param>
@@ -608,9 +613,9 @@ Caches the session under <computeroutput>"&lt;group&gt;_&lt;id&gt;"</computerout
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="147" column="14" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="361" bodyend="384"/>
-        <references refid="classapi_1_1v2_1_1SessionManager_1a65a1a1dc52287f3db432cde8b6d95f8a" compoundref="sessionmanager_8hpp" startline="160">clientsSessionsList</references>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="206" column="10" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="558" bodyend="596"/>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a65a1a1dc52287f3db432cde8b6d95f8a" compoundref="sessionmanager_8hpp" startline="231">clientsSessionsList</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
         <referencedby refid="classapi_1_1v2_1_1SessionManager_1a50993077d4fc27eac1e213623209c5bd">~SessionManager</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1SessionManager_1a64bf884c729b388729752c9163db479f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -620,7 +625,7 @@ Caches the session under <computeroutput>"&lt;group&gt;_&lt;id&gt;"</computerout
         <name>removeSession</name>
         <qualifiedname>api::v2::SessionManager::removeSession</qualifiedname>
         <param>
-          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1af609f0aaf134643edde3ad81ab5ebf7f" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
           <declname>clientLoginData</declname>
         </param>
         <briefdescription>
@@ -645,10 +650,10 @@ Caches the session under <computeroutput>"&lt;group&gt;_&lt;id&gt;"</computerout
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="153" column="14" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="391" bodyend="426"/>
-        <references refid="classapi_1_1v2_1_1SessionManager_1a65a1a1dc52287f3db432cde8b6d95f8a" compoundref="sessionmanager_8hpp" startline="160">clientsSessionsList</references>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="224" endline="289">logout</referencedby>
+        <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="216" column="10" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.cpp" bodystart="605" bodyend="650"/>
+        <references refid="classapi_1_1v2_1_1SessionManager_1a65a1a1dc52287f3db432cde8b6d95f8a" compoundref="sessionmanager_8hpp" startline="231">clientsSessionsList</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="343" endline="458">logout</referencedby>
         <referencedby refid="classapi_1_1v2_1_1SessionManager_1a50993077d4fc27eac1e213623209c5bd">~SessionManager</referencedby>
       </memberdef>
     </sectiondef>
@@ -691,7 +696,7 @@ Caches the session under <computeroutput>"&lt;group&gt;_&lt;id&gt;"</computerout
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="59" column="5" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.hpp" bodystart="60" bodyend="162"/>
+    <location file="src/gatekeeper/sessionmanager/sessionmanager.hpp" line="69" column="3" bodyfile="src/gatekeeper/sessionmanager/sessionmanager.hpp" bodystart="69" bodyend="238"/>
     <listofallmembers>
       <member refid="classapi_1_1v2_1_1SessionManager_1a2be4af6233804aa5b85985ecb3e14d00" prot="public" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>clientHasValidSession</name></member>
       <member refid="classapi_1_1v2_1_1SessionManager_1a65a1a1dc52287f3db432cde8b6d95f8a" prot="private" virt="non-virtual"><scope>api::v2::SessionManager</scope><name>clientsSessionsList</name></member>

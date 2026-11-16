@@ -766,73 +766,92 @@
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
 <codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>envvars.hpp</highlight></codeline>
 <codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Thin<sp/>protected<sp/>wrapper<sp/>around<sp/>the<sp/>process<sp/>environment<sp/>(getenv/setenv).</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>small<sp/>header<sp/>declares<sp/>two<sp/>helper<sp/>functions<sp/>that<sp/>read<sp/>and<sp/>write<sp/>environment</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>variables,<sp/>which<sp/>are<sp/>name/value<sp/>pairs<sp/>stored<sp/>by<sp/>the<sp/>operating<sp/>system<sp/>for<sp/>this<sp/>running</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>program.<sp/>It<sp/>does<sp/>no<sp/>conversion<sp/>or<sp/>validation<sp/>itself;<sp/>it<sp/>only<sp/>fetches<sp/>the<sp/>raw<sp/>text<sp/>string.</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>A<sp/>higher-level<sp/>class<sp/>(EnvLoader)<sp/>builds<sp/>on<sp/>top<sp/>of<sp/>this<sp/>to<sp/>turn<sp/>that<sp/>text<sp/>into<sp/>numbers,</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>booleans,<sp/>and<sp/>other<sp/>types<sp/>the<sp/>server<sp/>needs.</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>the<sp/>very<sp/>bottom<sp/>layer<sp/>of<sp/>the<sp/>configuration<sp/>system.<sp/>The<sp/>server<sp/>keeps<sp/>almost<sp/>every</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>setting<sp/>(ports,<sp/>database<sp/>credentials,<sp/>timeouts)<sp/>in<sp/>environment<sp/>variables<sp/>so<sp/>deployments<sp/>can</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>change<sp/>behaviour<sp/>without<sp/>editing<sp/>code<sp/>or<sp/>rebuilding.<sp/>EnvVars<sp/>is<sp/>the<sp/>only<sp/>place<sp/>that<sp/>talks</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>directly<sp/>to<sp/>the<sp/>operating<sp/>system&apos;s<sp/>environment.<sp/>EnvLoader<sp/>calls<sp/>get()<sp/>to<sp/>read<sp/>values,<sp/>and</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>tests<sp/>call<sp/>set()<sp/>to<sp/>prepare<sp/>temporary<sp/>values.<sp/>Without<sp/>this<sp/>file<sp/>there<sp/>would<sp/>be<sp/>no<sp/>safe,</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>uniform<sp/>way<sp/>for<sp/>the<sp/>rest<sp/>of<sp/>the<sp/>configuration<sp/>code<sp/>to<sp/>reach<sp/>those<sp/>settings.</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>Environment<sp/>variables:<sp/>https://man7.org/linux/man-pages/man7/environ.7.html</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>std::optional<sp/>(a<sp/>value<sp/>that<sp/>may<sp/>be<sp/>missing):<sp/>https://en.cppreference.com/w/cpp/utility/optional</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>file<sp/>at<sp/>most<sp/>once<sp/>per<sp/>translation<sp/>unit,<sp/>no<sp/>matter<sp/>how<sp/>many<sp/>times<sp/>it<sp/>is<sp/>included.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::optional<sp/>lets<sp/>a<sp/>function<sp/>return<sp/>&quot;a<sp/>string<sp/>OR<sp/>nothing&quot;<sp/>without<sp/>using<sp/>a<sp/>special<sp/>sentinel<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>holds<sp/>the<sp/>variable<sp/>names<sp/>and<sp/>the<sp/>text<sp/>values<sp/>read<sp/>from<sp/>the<sp/>environment.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="31"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>@class<sp/>EnvVars</highlight></codeline>
-<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Thin<sp/>protected<sp/>wrapper<sp/>around<sp/>the<sp/>process<sp/>environment<sp/>(getenv/setenv).</highlight></codeline>
-<codeline lineno="34"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>@details<sp/>Provides<sp/>the<sp/>raw<sp/>accessors<sp/>on<sp/>which<sp/>EnvLoader<sp/>builds<sp/>its<sp/>typed<sp/>conversions.</highlight></codeline>
-<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>The<sp/>helpers<sp/>are<sp/>static<sp/>and<sp/>protected<sp/>so<sp/>only<sp/>derived<sp/>configuration<sp/>types<sp/>(or<sp/>test<sp/>code</highlight></codeline>
-<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>deriving<sp/>from<sp/>them)<sp/>can<sp/>read<sp/>or<sp/>modify<sp/>the<sp/>environment;<sp/>callers<sp/>are<sp/>expected<sp/>to<sp/>use<sp/>the</highlight></codeline>
-<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>EnvLoader<sp/>overloads<sp/>instead.</highlight></codeline>
-<codeline lineno="39"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="40"><highlight class="comment"><sp/>*<sp/>@note<sp/>The<sp/>set<sp/>of<sp/>environment<sp/>variables<sp/>is<sp/>process-global.<sp/>Reading<sp/>is<sp/>safe<sp/>while<sp/>no<sp/>other</highlight></codeline>
-<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>thread<sp/>mutates<sp/>the<sp/>environment;<sp/>mutation<sp/>is<sp/>intended<sp/>for<sp/>setup/test<sp/>code<sp/>before<sp/>threads</highlight></codeline>
-<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>start,<sp/>not<sp/>for<sp/>the<sp/>request<sp/>path.</highlight></codeline>
-<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>@see<sp/>EnvLoader</highlight></codeline>
-<codeline lineno="44"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="45" refid="classEnvVars" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classEnvVars" kindref="compound">EnvVars</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Provides<sp/>only<sp/>protected<sp/>static<sp/>helpers<sp/>meant<sp/>for<sp/>configuration<sp/>classes<sp/>that<sp/>inherit<sp/>from<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:<sp/><sp/></highlight><highlight class="comment">//<sp/>Only<sp/>this<sp/>class<sp/>and<sp/>classes<sp/>that<sp/>inherit<sp/>from<sp/>it<sp/>may<sp/>use<sp/>the<sp/>helpers<sp/>below;<sp/>outside<sp/>code<sp/>cannot.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Method<sp/>to<sp/>get<sp/>an<sp/>environment<sp/>variable<sp/>by<sp/>name</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="50"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Reads<sp/>a<sp/>raw<sp/>environment<sp/>variable.</highlight></codeline>
-<codeline lineno="51"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Asks<sp/>the<sp/>operating<sp/>system<sp/>for<sp/>the<sp/>value<sp/>stored<sp/>under<sp/>@p<sp/>key.<sp/>In<sp/>plain<sp/>words:</highlight></codeline>
-<codeline lineno="52"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>&quot;is<sp/>there<sp/>a<sp/>variable<sp/>with<sp/>this<sp/>name,<sp/>and<sp/>if<sp/>so<sp/>what<sp/>text<sp/>does<sp/>it<sp/>hold?&quot;<sp/>The<sp/>answer<sp/>is</highlight></codeline>
-<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>wrapped<sp/>in<sp/>an<sp/>optional<sp/>so<sp/>that<sp/>&quot;not<sp/>set&quot;<sp/>is<sp/>clearly<sp/>different<sp/>from<sp/>&quot;set<sp/>to<sp/>empty<sp/>text&quot;.</highlight></codeline>
-<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>key<sp/>Variable<sp/>name.</highlight></codeline>
-<codeline lineno="55"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>value<sp/>as<sp/>a<sp/>string,<sp/>or<sp/>std::nullopt<sp/>when<sp/>the<sp/>variable<sp/>is<sp/>not<sp/>set.</highlight></codeline>
-<codeline lineno="56"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" kindref="member">get</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>key);<sp/><sp/></highlight><highlight class="comment">//<sp/>Returns<sp/>the<sp/>raw<sp/>text,<sp/>or<sp/>an<sp/>empty<sp/>optional<sp/>when<sp/>the<sp/>name<sp/>is<sp/>not<sp/>present.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Method<sp/>to<sp/>set<sp/>an<sp/>environment<sp/>variable</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Sets<sp/>(or<sp/>overwrites)<sp/>an<sp/>environment<sp/>variable<sp/>in<sp/>the<sp/>current<sp/>process.</highlight></codeline>
-<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>key<sp/>Variable<sp/>name.</highlight></codeline>
-<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>value<sp/>New<sp/>value.</highlight></codeline>
-<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>On<sp/>failure<sp/>an<sp/>error<sp/>message<sp/>is<sp/>logged;<sp/>the<sp/>call<sp/>does<sp/>not<sp/>throw.</highlight></codeline>
-<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@warning<sp/>Mutating<sp/>the<sp/>process<sp/>environment<sp/>is<sp/>not<sp/>synchronized<sp/>with<sp/>other<sp/>threads.</highlight></codeline>
-<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>The<sp/>only<sp/>caller<sp/>in<sp/>this<sp/>repository<sp/>is<sp/>a<sp/>test<sp/>that<sp/>derives<sp/>a<sp/>helper<sp/>to<sp/>expose<sp/>this</highlight></codeline>
-<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>protected<sp/>method;<sp/>production<sp/>configuration<sp/>is<sp/>read-only.</highlight></codeline>
-<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEnvVars_1a711d3932ab9abc4998c8acbb454f36a8" kindref="member">set</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>value);<sp/><sp/></highlight><highlight class="comment">//<sp/>Stores<sp/>value<sp/>under<sp/>key;<sp/>used<sp/>by<sp/>tests<sp/>to<sp/>fake<sp/>settings,<sp/>not<sp/>on<sp/>the<sp/>request<sp/>path.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>small<sp/>header<sp/>declares<sp/>two<sp/>helper<sp/>functions<sp/>that<sp/>read<sp/>and<sp/>write</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>environment<sp/>variables,<sp/>which<sp/>are<sp/>name/value<sp/>pairs<sp/>stored<sp/>by<sp/>the<sp/>operating</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>system<sp/>for<sp/>this<sp/>running<sp/>program.<sp/>It<sp/>does<sp/>no<sp/>conversion<sp/>or<sp/>validation<sp/>itself;</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>it<sp/>only<sp/>fetches<sp/>the<sp/>raw<sp/>text<sp/>string.<sp/>A<sp/>higher-level<sp/>class<sp/>(EnvLoader)<sp/>builds</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>on<sp/>top<sp/>of<sp/>this<sp/>to<sp/>turn<sp/>that<sp/>text<sp/>into<sp/>numbers,<sp/>booleans,<sp/>and<sp/>other<sp/>types<sp/>the</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>server<sp/>needs.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>the<sp/>very<sp/>bottom<sp/>layer<sp/>of<sp/>the<sp/>configuration<sp/>system.<sp/>The<sp/>server<sp/>keeps</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>almost<sp/>every<sp/>setting<sp/>(ports,<sp/>database<sp/>credentials,<sp/>timeouts)<sp/>in<sp/>environment</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>variables<sp/>so<sp/>deployments<sp/>can<sp/>change<sp/>behaviour<sp/>without<sp/>editing<sp/>code<sp/>or</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>rebuilding.<sp/>EnvVars<sp/>is<sp/>the<sp/>only<sp/>place<sp/>that<sp/>talks<sp/>directly<sp/>to<sp/>the<sp/>operating</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>system&apos;s<sp/>environment.<sp/>EnvLoader<sp/>calls<sp/>get()<sp/>to<sp/>read<sp/>values,<sp/>and<sp/>tests<sp/>call</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>set()<sp/>to<sp/>prepare<sp/>temporary<sp/>values.<sp/>Without<sp/>this<sp/>file<sp/>there<sp/>would<sp/>be<sp/>no<sp/>safe,</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>uniform<sp/>way<sp/>for<sp/>the<sp/>rest<sp/>of<sp/>the<sp/>configuration<sp/>code<sp/>to<sp/>reach<sp/>those<sp/>settings.</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>Environment<sp/>variables:<sp/>https://man7.org/linux/man-pages/man7/environ.7.html</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>std::optional<sp/>(a<sp/>value<sp/>that<sp/>may<sp/>be<sp/>missing):</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/utility/optional</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>file<sp/>at<sp/>most<sp/>once<sp/>per<sp/>translation<sp/>unit,<sp/>no<sp/>matter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>how<sp/>many<sp/>times<sp/>it<sp/>is<sp/>included.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>std::optional<sp/>lets<sp/>a<sp/>function<sp/>return<sp/>&quot;a<sp/>string<sp/>OR<sp/>nothing&quot;<sp/>without<sp/>using<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>special<sp/>sentinel<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>std::string<sp/>holds<sp/>the<sp/>variable<sp/>names<sp/>and<sp/>the<sp/>text<sp/>values<sp/>read<sp/>from<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>environment.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="39"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/>@class<sp/>EnvVars</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Thin<sp/>protected<sp/>wrapper<sp/>around<sp/>the<sp/>process<sp/>environment<sp/>(getenv/setenv).</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>@details<sp/>Provides<sp/>the<sp/>raw<sp/>accessors<sp/>on<sp/>which<sp/>EnvLoader<sp/>builds<sp/>its<sp/>typed</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>conversions.<sp/>The<sp/>helpers<sp/>are<sp/>static<sp/>and<sp/>protected<sp/>so<sp/>only<sp/>derived</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>configuration<sp/>types<sp/>(or<sp/>test<sp/>code<sp/>deriving<sp/>from<sp/>them)<sp/>can<sp/>read<sp/>or<sp/>modify<sp/>the</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>environment;<sp/>callers<sp/>are<sp/>expected<sp/>to<sp/>use<sp/>the<sp/>EnvLoader<sp/>overloads<sp/>instead.</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>@note<sp/>The<sp/>set<sp/>of<sp/>environment<sp/>variables<sp/>is<sp/>process-global.<sp/>Reading<sp/>is<sp/>safe</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>while<sp/>no<sp/>other<sp/>thread<sp/>mutates<sp/>the<sp/>environment;<sp/>mutation<sp/>is<sp/>intended<sp/>for</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>setup/test<sp/>code<sp/>before<sp/>threads<sp/>start,<sp/>not<sp/>for<sp/>the<sp/>request<sp/>path.</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>@see<sp/>EnvLoader</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Provides<sp/>only<sp/>protected<sp/>static<sp/>helpers<sp/>meant<sp/>for<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>classes<sp/>that<sp/>inherit<sp/>from<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classEnvVars" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classEnvVars" kindref="compound">EnvVars</ref><sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:<sp/><sp/></highlight><highlight class="comment">//<sp/>Only<sp/>this<sp/>class<sp/>and<sp/>classes<sp/>that<sp/>inherit<sp/>from<sp/>it<sp/>may<sp/>use<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>helpers<sp/>below;<sp/>outside<sp/>code<sp/>cannot.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Method<sp/>to<sp/>get<sp/>an<sp/>environment<sp/>variable<sp/>by<sp/>name</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Reads<sp/>a<sp/>raw<sp/>environment<sp/>variable.</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Asks<sp/>the<sp/>operating<sp/>system<sp/>for<sp/>the<sp/>value<sp/>stored<sp/>under<sp/>@p<sp/>key.<sp/>In</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/>*<sp/>plain<sp/>words:<sp/>&quot;is<sp/>there<sp/>a<sp/>variable<sp/>with<sp/>this<sp/>name,<sp/>and<sp/>if<sp/>so<sp/>what<sp/>text</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/>*<sp/>does<sp/>it<sp/>hold?&quot;<sp/>The<sp/>answer<sp/>is<sp/>wrapped<sp/>in<sp/>an<sp/>optional<sp/>so<sp/>that<sp/>&quot;not<sp/>set&quot;<sp/>is</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/>*<sp/>clearly<sp/>different<sp/>from<sp/>&quot;set<sp/>to<sp/>empty<sp/>text&quot;.</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>key<sp/>Variable<sp/>name.</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>value<sp/>as<sp/>a<sp/>string,<sp/>or<sp/>std::nullopt<sp/>when<sp/>the<sp/>variable<sp/>is<sp/>not</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/><sp/><sp/>*<sp/>set.</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" kindref="member">get</ref>(</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>key);<sp/><sp/></highlight><highlight class="comment">//<sp/>Returns<sp/>the<sp/>raw<sp/>text,<sp/>or<sp/>an<sp/>empty<sp/>optional</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>when<sp/>the<sp/>name<sp/>is<sp/>not<sp/>present.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Method<sp/>to<sp/>set<sp/>an<sp/>environment<sp/>variable</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Sets<sp/>(or<sp/>overwrites)<sp/>an<sp/>environment<sp/>variable<sp/>in<sp/>the<sp/>current</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/>*<sp/>process.</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>key<sp/>Variable<sp/>name.</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>value<sp/>New<sp/>value.</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@note<sp/>On<sp/>failure<sp/>an<sp/>error<sp/>message<sp/>is<sp/>logged;<sp/>the<sp/>call<sp/>does<sp/>not<sp/>throw.</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@warning<sp/>Mutating<sp/>the<sp/>process<sp/>environment<sp/>is<sp/>not<sp/>synchronized<sp/>with<sp/>other</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/>*<sp/>threads.</highlight></codeline>
+<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@note<sp/>The<sp/>only<sp/>caller<sp/>in<sp/>this<sp/>repository<sp/>is<sp/>a<sp/>test<sp/>that<sp/>derives<sp/>a<sp/>helper</highlight></codeline>
+<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/>*<sp/>to<sp/>expose<sp/>this<sp/>protected<sp/>method;<sp/>production<sp/>configuration<sp/>is<sp/>read-only.</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEnvVars_1a711d3932ab9abc4998c8acbb454f36a8" kindref="member">set</ref>(</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>key,</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>value);<sp/><sp/></highlight><highlight class="comment">//<sp/>Stores<sp/>value<sp/>under<sp/>key;<sp/>used<sp/>by<sp/>tests<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>fake<sp/>settings,<sp/>not<sp/>on<sp/>the<sp/>request<sp/>path.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal">};</highlight></codeline>
     </programlisting>
     <location file="src/configurator/envloader/envvars/envvars.hpp"/>
   </compounddef>

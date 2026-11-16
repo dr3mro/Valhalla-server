@@ -22,15 +22,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="118" column="24" bodyfile="src/utils/threadsafequeue/threadsafequeue.hpp" bodystart="118" bodyend="-1"/>
-        <referencedby refid="classThreadSafeQueue_1ad8729c0e01650afdbe28ec783e5ea9d8" compoundref="threadsafequeue_8hpp" startline="170" endline="176">ThreadSafeQueue&lt; T &gt;::clear</referencedby>
-        <referencedby refid="classThreadSafeQueue_1a0aefea0243124e49630483b10a8bee0f" compoundref="threadsafequeue_8hpp" startline="180" endline="184">ThreadSafeQueue&lt; T &gt;::emplace</referencedby>
-        <referencedby refid="classThreadSafeQueue_1a58b5532baa6110071f697ad1f9bfbf58" compoundref="threadsafequeue_8hpp" startline="156" endline="160">ThreadSafeQueue&lt; T &gt;::empty</referencedby>
-        <referencedby refid="classThreadSafeQueue_1a33be668a849175ebee2439b3a3facaf2" compoundref="threadsafequeue_8hpp" startline="187" endline="195">ThreadSafeQueue&lt; T &gt;::front</referencedby>
-        <referencedby refid="classThreadSafeQueue_1af63a11e90a58a5988cfe41a5d6aea73d" compoundref="threadsafequeue_8hpp" startline="141" endline="153">ThreadSafeQueue&lt; T &gt;::pop</referencedby>
-        <referencedby refid="classThreadSafeQueue_1a815452f980fe394e90aa0f5747f7350a" compoundref="threadsafequeue_8hpp" startline="126" endline="131">ThreadSafeQueue&lt; T &gt;::push</referencedby>
-        <referencedby refid="classThreadSafeQueue_1af271237052273bbbdb2004e6f0b60cc7" compoundref="threadsafequeue_8hpp" startline="134" endline="138">ThreadSafeQueue&lt; T &gt;::push</referencedby>
-        <referencedby refid="classThreadSafeQueue_1ab255a078bfa2253878a2e17fd5a7a21c" compoundref="threadsafequeue_8hpp" startline="163" endline="167">ThreadSafeQueue&lt; T &gt;::size</referencedby>
+        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="143" column="22" bodyfile="src/utils/threadsafequeue/threadsafequeue.hpp" bodystart="143" bodyend="-1"/>
+        <referencedby refid="classThreadSafeQueue_1ad8729c0e01650afdbe28ec783e5ea9d8" compoundref="threadsafequeue_8hpp" startline="213" endline="221">ThreadSafeQueue&lt; T &gt;::clear</referencedby>
+        <referencedby refid="classThreadSafeQueue_1a0aefea0243124e49630483b10a8bee0f" compoundref="threadsafequeue_8hpp" startline="230" endline="236">ThreadSafeQueue&lt; T &gt;::emplace</referencedby>
+        <referencedby refid="classThreadSafeQueue_1a58b5532baa6110071f697ad1f9bfbf58" compoundref="threadsafequeue_8hpp" startline="195" endline="199">ThreadSafeQueue&lt; T &gt;::empty</referencedby>
+        <referencedby refid="classThreadSafeQueue_1a33be668a849175ebee2439b3a3facaf2" compoundref="threadsafequeue_8hpp" startline="241" endline="251">ThreadSafeQueue&lt; T &gt;::front</referencedby>
+        <referencedby refid="classThreadSafeQueue_1af63a11e90a58a5988cfe41a5d6aea73d" compoundref="threadsafequeue_8hpp" startline="176" endline="190">ThreadSafeQueue&lt; T &gt;::pop</referencedby>
+        <referencedby refid="classThreadSafeQueue_1a815452f980fe394e90aa0f5747f7350a" compoundref="threadsafequeue_8hpp" startline="155" endline="161">ThreadSafeQueue&lt; T &gt;::push</referencedby>
+        <referencedby refid="classThreadSafeQueue_1af271237052273bbbdb2004e6f0b60cc7" compoundref="threadsafequeue_8hpp" startline="166" endline="171">ThreadSafeQueue&lt; T &gt;::push</referencedby>
+        <referencedby refid="classThreadSafeQueue_1ab255a078bfa2253878a2e17fd5a7a21c" compoundref="threadsafequeue_8hpp" startline="204" endline="208">ThreadSafeQueue&lt; T &gt;::size</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classThreadSafeQueue_1a4d485571d4d48174e5d80cea538e054b" prot="private" static="no" mutable="no">
         <type>std::queue&lt; T &gt;</type>
@@ -45,15 +45,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="122" column="21" bodyfile="src/utils/threadsafequeue/threadsafequeue.hpp" bodystart="122" bodyend="-1"/>
-        <referencedby refid="classThreadSafeQueue_1ad8729c0e01650afdbe28ec783e5ea9d8" compoundref="threadsafequeue_8hpp" startline="170" endline="176">ThreadSafeQueue&lt; T &gt;::clear</referencedby>
-        <referencedby refid="classThreadSafeQueue_1a0aefea0243124e49630483b10a8bee0f" compoundref="threadsafequeue_8hpp" startline="180" endline="184">ThreadSafeQueue&lt; T &gt;::emplace</referencedby>
-        <referencedby refid="classThreadSafeQueue_1a58b5532baa6110071f697ad1f9bfbf58" compoundref="threadsafequeue_8hpp" startline="156" endline="160">ThreadSafeQueue&lt; T &gt;::empty</referencedby>
-        <referencedby refid="classThreadSafeQueue_1a33be668a849175ebee2439b3a3facaf2" compoundref="threadsafequeue_8hpp" startline="187" endline="195">ThreadSafeQueue&lt; T &gt;::front</referencedby>
-        <referencedby refid="classThreadSafeQueue_1af63a11e90a58a5988cfe41a5d6aea73d" compoundref="threadsafequeue_8hpp" startline="141" endline="153">ThreadSafeQueue&lt; T &gt;::pop</referencedby>
-        <referencedby refid="classThreadSafeQueue_1a815452f980fe394e90aa0f5747f7350a" compoundref="threadsafequeue_8hpp" startline="126" endline="131">ThreadSafeQueue&lt; T &gt;::push</referencedby>
-        <referencedby refid="classThreadSafeQueue_1af271237052273bbbdb2004e6f0b60cc7" compoundref="threadsafequeue_8hpp" startline="134" endline="138">ThreadSafeQueue&lt; T &gt;::push</referencedby>
-        <referencedby refid="classThreadSafeQueue_1ab255a078bfa2253878a2e17fd5a7a21c" compoundref="threadsafequeue_8hpp" startline="163" endline="167">ThreadSafeQueue&lt; T &gt;::size</referencedby>
+        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="148" column="14" bodyfile="src/utils/threadsafequeue/threadsafequeue.hpp" bodystart="148" bodyend="-1"/>
+        <referencedby refid="classThreadSafeQueue_1ad8729c0e01650afdbe28ec783e5ea9d8" compoundref="threadsafequeue_8hpp" startline="213" endline="221">ThreadSafeQueue&lt; T &gt;::clear</referencedby>
+        <referencedby refid="classThreadSafeQueue_1a0aefea0243124e49630483b10a8bee0f" compoundref="threadsafequeue_8hpp" startline="230" endline="236">ThreadSafeQueue&lt; T &gt;::emplace</referencedby>
+        <referencedby refid="classThreadSafeQueue_1a58b5532baa6110071f697ad1f9bfbf58" compoundref="threadsafequeue_8hpp" startline="195" endline="199">ThreadSafeQueue&lt; T &gt;::empty</referencedby>
+        <referencedby refid="classThreadSafeQueue_1a33be668a849175ebee2439b3a3facaf2" compoundref="threadsafequeue_8hpp" startline="241" endline="251">ThreadSafeQueue&lt; T &gt;::front</referencedby>
+        <referencedby refid="classThreadSafeQueue_1af63a11e90a58a5988cfe41a5d6aea73d" compoundref="threadsafequeue_8hpp" startline="176" endline="190">ThreadSafeQueue&lt; T &gt;::pop</referencedby>
+        <referencedby refid="classThreadSafeQueue_1a815452f980fe394e90aa0f5747f7350a" compoundref="threadsafequeue_8hpp" startline="155" endline="161">ThreadSafeQueue&lt; T &gt;::push</referencedby>
+        <referencedby refid="classThreadSafeQueue_1af271237052273bbbdb2004e6f0b60cc7" compoundref="threadsafequeue_8hpp" startline="166" endline="171">ThreadSafeQueue&lt; T &gt;::push</referencedby>
+        <referencedby refid="classThreadSafeQueue_1ab255a078bfa2253878a2e17fd5a7a21c" compoundref="threadsafequeue_8hpp" startline="204" endline="208">ThreadSafeQueue&lt; T &gt;::size</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -70,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="55" column="5"/>
+        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="66" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classThreadSafeQueue_1a403aa1522ed7c480709b67784fb59289" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -85,14 +85,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="59" column="13"/>
-        <references refid="classThreadSafeQueue_1ad8729c0e01650afdbe28ec783e5ea9d8" compoundref="threadsafequeue_8hpp" startline="170" endline="176">ThreadSafeQueue&lt; T &gt;::clear</references>
-        <references refid="classThreadSafeQueue_1a0aefea0243124e49630483b10a8bee0f" compoundref="threadsafequeue_8hpp" startline="180" endline="184">ThreadSafeQueue&lt; T &gt;::emplace</references>
-        <references refid="classThreadSafeQueue_1a58b5532baa6110071f697ad1f9bfbf58" compoundref="threadsafequeue_8hpp" startline="156" endline="160">ThreadSafeQueue&lt; T &gt;::empty</references>
-        <references refid="classThreadSafeQueue_1a33be668a849175ebee2439b3a3facaf2" compoundref="threadsafequeue_8hpp" startline="187" endline="195">ThreadSafeQueue&lt; T &gt;::front</references>
-        <references refid="classThreadSafeQueue_1af63a11e90a58a5988cfe41a5d6aea73d" compoundref="threadsafequeue_8hpp" startline="141" endline="153">ThreadSafeQueue&lt; T &gt;::pop</references>
-        <references refid="classThreadSafeQueue_1a815452f980fe394e90aa0f5747f7350a" compoundref="threadsafequeue_8hpp" startline="126" endline="131">ThreadSafeQueue&lt; T &gt;::push</references>
-        <references refid="classThreadSafeQueue_1ab255a078bfa2253878a2e17fd5a7a21c" compoundref="threadsafequeue_8hpp" startline="163" endline="167">ThreadSafeQueue&lt; T &gt;::size</references>
+        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="71" column="11"/>
+        <references refid="classThreadSafeQueue_1ad8729c0e01650afdbe28ec783e5ea9d8" compoundref="threadsafequeue_8hpp" startline="213" endline="221">ThreadSafeQueue&lt; T &gt;::clear</references>
+        <references refid="classThreadSafeQueue_1a0aefea0243124e49630483b10a8bee0f" compoundref="threadsafequeue_8hpp" startline="230" endline="236">ThreadSafeQueue&lt; T &gt;::emplace</references>
+        <references refid="classThreadSafeQueue_1a58b5532baa6110071f697ad1f9bfbf58" compoundref="threadsafequeue_8hpp" startline="195" endline="199">ThreadSafeQueue&lt; T &gt;::empty</references>
+        <references refid="classThreadSafeQueue_1a33be668a849175ebee2439b3a3facaf2" compoundref="threadsafequeue_8hpp" startline="241" endline="251">ThreadSafeQueue&lt; T &gt;::front</references>
+        <references refid="classThreadSafeQueue_1af63a11e90a58a5988cfe41a5d6aea73d" compoundref="threadsafequeue_8hpp" startline="176" endline="190">ThreadSafeQueue&lt; T &gt;::pop</references>
+        <references refid="classThreadSafeQueue_1a815452f980fe394e90aa0f5747f7350a" compoundref="threadsafequeue_8hpp" startline="155" endline="161">ThreadSafeQueue&lt; T &gt;::push</references>
+        <references refid="classThreadSafeQueue_1ab255a078bfa2253878a2e17fd5a7a21c" compoundref="threadsafequeue_8hpp" startline="204" endline="208">ThreadSafeQueue&lt; T &gt;::size</references>
       </memberdef>
       <memberdef kind="function" id="classThreadSafeQueue_1a815452f980fe394e90aa0f5747f7350a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -121,9 +121,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="66" column="10" bodyfile="src/utils/threadsafequeue/threadsafequeue.hpp" bodystart="126" bodyend="131"/>
-        <references refid="classThreadSafeQueue_1ace0d7b833c9302eb30f6bd5bcf0f36be" compoundref="threadsafequeue_8hpp" startline="118">ThreadSafeQueue&lt; T &gt;::mutex_</references>
-        <references refid="classThreadSafeQueue_1a4d485571d4d48174e5d80cea538e054b" compoundref="threadsafequeue_8hpp" startline="122">ThreadSafeQueue&lt; T &gt;::queue_</references>
+        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="80" column="8" bodyfile="src/utils/threadsafequeue/threadsafequeue.hpp" bodystart="155" bodyend="161"/>
+        <references refid="classThreadSafeQueue_1ace0d7b833c9302eb30f6bd5bcf0f36be" compoundref="threadsafequeue_8hpp" startline="143">ThreadSafeQueue&lt; T &gt;::mutex_</references>
+        <references refid="classThreadSafeQueue_1a4d485571d4d48174e5d80cea538e054b" compoundref="threadsafequeue_8hpp" startline="148">ThreadSafeQueue&lt; T &gt;::queue_</references>
         <referencedby refid="classThreadSafeQueue_1a403aa1522ed7c480709b67784fb59289">ThreadSafeQueue&lt; T &gt;::~ThreadSafeQueue</referencedby>
       </memberdef>
       <memberdef kind="function" id="classThreadSafeQueue_1af271237052273bbbdb2004e6f0b60cc7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -153,9 +153,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="71" column="10" bodyfile="src/utils/threadsafequeue/threadsafequeue.hpp" bodystart="134" bodyend="138"/>
-        <references refid="classThreadSafeQueue_1ace0d7b833c9302eb30f6bd5bcf0f36be" compoundref="threadsafequeue_8hpp" startline="118">ThreadSafeQueue&lt; T &gt;::mutex_</references>
-        <references refid="classThreadSafeQueue_1a4d485571d4d48174e5d80cea538e054b" compoundref="threadsafequeue_8hpp" startline="122">ThreadSafeQueue&lt; T &gt;::queue_</references>
+        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="86" column="8" bodyfile="src/utils/threadsafequeue/threadsafequeue.hpp" bodystart="166" bodyend="171"/>
+        <references refid="classThreadSafeQueue_1ace0d7b833c9302eb30f6bd5bcf0f36be" compoundref="threadsafequeue_8hpp" startline="143">ThreadSafeQueue&lt; T &gt;::mutex_</references>
+        <references refid="classThreadSafeQueue_1a4d485571d4d48174e5d80cea538e054b" compoundref="threadsafequeue_8hpp" startline="148">ThreadSafeQueue&lt; T &gt;::queue_</references>
       </memberdef>
       <memberdef kind="function" id="classThreadSafeQueue_1af63a11e90a58a5988cfe41a5d6aea73d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; T &gt;</type>
@@ -173,9 +173,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="78" column="19" bodyfile="src/utils/threadsafequeue/threadsafequeue.hpp" bodystart="141" bodyend="153"/>
-        <references refid="classThreadSafeQueue_1ace0d7b833c9302eb30f6bd5bcf0f36be" compoundref="threadsafequeue_8hpp" startline="118">ThreadSafeQueue&lt; T &gt;::mutex_</references>
-        <references refid="classThreadSafeQueue_1a4d485571d4d48174e5d80cea538e054b" compoundref="threadsafequeue_8hpp" startline="122">ThreadSafeQueue&lt; T &gt;::queue_</references>
+        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="95" column="3" bodyfile="src/utils/threadsafequeue/threadsafequeue.hpp" bodystart="176" bodyend="190"/>
+        <references refid="classThreadSafeQueue_1ace0d7b833c9302eb30f6bd5bcf0f36be" compoundref="threadsafequeue_8hpp" startline="143">ThreadSafeQueue&lt; T &gt;::mutex_</references>
+        <references refid="classThreadSafeQueue_1a4d485571d4d48174e5d80cea538e054b" compoundref="threadsafequeue_8hpp" startline="148">ThreadSafeQueue&lt; T &gt;::queue_</references>
         <referencedby refid="classThreadSafeQueue_1a403aa1522ed7c480709b67784fb59289">ThreadSafeQueue&lt; T &gt;::~ThreadSafeQueue</referencedby>
       </memberdef>
       <memberdef kind="function" id="classThreadSafeQueue_1a58b5532baa6110071f697ad1f9bfbf58" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -191,10 +191,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="84" column="10" bodyfile="src/utils/threadsafequeue/threadsafequeue.hpp" bodystart="156" bodyend="160"/>
-        <references refid="classThreadSafeQueue_1ace0d7b833c9302eb30f6bd5bcf0f36be" compoundref="threadsafequeue_8hpp" startline="118">ThreadSafeQueue&lt; T &gt;::mutex_</references>
-        <references refid="classThreadSafeQueue_1a4d485571d4d48174e5d80cea538e054b" compoundref="threadsafequeue_8hpp" startline="122">ThreadSafeQueue&lt; T &gt;::queue_</references>
-        <referencedby refid="classThreadSafeQueue_1ad8729c0e01650afdbe28ec783e5ea9d8" compoundref="threadsafequeue_8hpp" startline="170" endline="176">ThreadSafeQueue&lt; T &gt;::clear</referencedby>
+        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="101" column="8" bodyfile="src/utils/threadsafequeue/threadsafequeue.hpp" bodystart="195" bodyend="199"/>
+        <references refid="classThreadSafeQueue_1ace0d7b833c9302eb30f6bd5bcf0f36be" compoundref="threadsafequeue_8hpp" startline="143">ThreadSafeQueue&lt; T &gt;::mutex_</references>
+        <references refid="classThreadSafeQueue_1a4d485571d4d48174e5d80cea538e054b" compoundref="threadsafequeue_8hpp" startline="148">ThreadSafeQueue&lt; T &gt;::queue_</references>
+        <referencedby refid="classThreadSafeQueue_1ad8729c0e01650afdbe28ec783e5ea9d8" compoundref="threadsafequeue_8hpp" startline="213" endline="221">ThreadSafeQueue&lt; T &gt;::clear</referencedby>
         <referencedby refid="classThreadSafeQueue_1a403aa1522ed7c480709b67784fb59289">ThreadSafeQueue&lt; T &gt;::~ThreadSafeQueue</referencedby>
       </memberdef>
       <memberdef kind="function" id="classThreadSafeQueue_1ab255a078bfa2253878a2e17fd5a7a21c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -210,9 +210,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="90" column="12" bodyfile="src/utils/threadsafequeue/threadsafequeue.hpp" bodystart="163" bodyend="167"/>
-        <references refid="classThreadSafeQueue_1ace0d7b833c9302eb30f6bd5bcf0f36be" compoundref="threadsafequeue_8hpp" startline="118">ThreadSafeQueue&lt; T &gt;::mutex_</references>
-        <references refid="classThreadSafeQueue_1a4d485571d4d48174e5d80cea538e054b" compoundref="threadsafequeue_8hpp" startline="122">ThreadSafeQueue&lt; T &gt;::queue_</references>
+        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="108" column="10" bodyfile="src/utils/threadsafequeue/threadsafequeue.hpp" bodystart="204" bodyend="208"/>
+        <references refid="classThreadSafeQueue_1ace0d7b833c9302eb30f6bd5bcf0f36be" compoundref="threadsafequeue_8hpp" startline="143">ThreadSafeQueue&lt; T &gt;::mutex_</references>
+        <references refid="classThreadSafeQueue_1a4d485571d4d48174e5d80cea538e054b" compoundref="threadsafequeue_8hpp" startline="148">ThreadSafeQueue&lt; T &gt;::queue_</references>
         <referencedby refid="classThreadSafeQueue_1a403aa1522ed7c480709b67784fb59289">ThreadSafeQueue&lt; T &gt;::~ThreadSafeQueue</referencedby>
       </memberdef>
       <memberdef kind="function" id="classThreadSafeQueue_1ad8729c0e01650afdbe28ec783e5ea9d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -228,10 +228,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="96" column="10" bodyfile="src/utils/threadsafequeue/threadsafequeue.hpp" bodystart="170" bodyend="176"/>
-        <references refid="classThreadSafeQueue_1a58b5532baa6110071f697ad1f9bfbf58" compoundref="threadsafequeue_8hpp" startline="156" endline="160">ThreadSafeQueue&lt; T &gt;::empty</references>
-        <references refid="classThreadSafeQueue_1ace0d7b833c9302eb30f6bd5bcf0f36be" compoundref="threadsafequeue_8hpp" startline="118">ThreadSafeQueue&lt; T &gt;::mutex_</references>
-        <references refid="classThreadSafeQueue_1a4d485571d4d48174e5d80cea538e054b" compoundref="threadsafequeue_8hpp" startline="122">ThreadSafeQueue&lt; T &gt;::queue_</references>
+        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="114" column="8" bodyfile="src/utils/threadsafequeue/threadsafequeue.hpp" bodystart="213" bodyend="221"/>
+        <references refid="classThreadSafeQueue_1a58b5532baa6110071f697ad1f9bfbf58" compoundref="threadsafequeue_8hpp" startline="195" endline="199">ThreadSafeQueue&lt; T &gt;::empty</references>
+        <references refid="classThreadSafeQueue_1ace0d7b833c9302eb30f6bd5bcf0f36be" compoundref="threadsafequeue_8hpp" startline="143">ThreadSafeQueue&lt; T &gt;::mutex_</references>
+        <references refid="classThreadSafeQueue_1a4d485571d4d48174e5d80cea538e054b" compoundref="threadsafequeue_8hpp" startline="148">ThreadSafeQueue&lt; T &gt;::queue_</references>
         <referencedby refid="classThreadSafeQueue_1a403aa1522ed7c480709b67784fb59289">ThreadSafeQueue&lt; T &gt;::~ThreadSafeQueue</referencedby>
       </memberdef>
       <memberdef kind="function" id="classThreadSafeQueue_1a0aefea0243124e49630483b10a8bee0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -277,9 +277,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="105" column="10" bodyfile="src/utils/threadsafequeue/threadsafequeue.hpp" bodystart="180" bodyend="184"/>
-        <references refid="classThreadSafeQueue_1ace0d7b833c9302eb30f6bd5bcf0f36be" compoundref="threadsafequeue_8hpp" startline="118">ThreadSafeQueue&lt; T &gt;::mutex_</references>
-        <references refid="classThreadSafeQueue_1a4d485571d4d48174e5d80cea538e054b" compoundref="threadsafequeue_8hpp" startline="122">ThreadSafeQueue&lt; T &gt;::queue_</references>
+        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="125" column="8" bodyfile="src/utils/threadsafequeue/threadsafequeue.hpp" bodystart="230" bodyend="236"/>
+        <references refid="classThreadSafeQueue_1ace0d7b833c9302eb30f6bd5bcf0f36be" compoundref="threadsafequeue_8hpp" startline="143">ThreadSafeQueue&lt; T &gt;::mutex_</references>
+        <references refid="classThreadSafeQueue_1a4d485571d4d48174e5d80cea538e054b" compoundref="threadsafequeue_8hpp" startline="148">ThreadSafeQueue&lt; T &gt;::queue_</references>
         <referencedby refid="classThreadSafeQueue_1a403aa1522ed7c480709b67784fb59289">ThreadSafeQueue&lt; T &gt;::~ThreadSafeQueue</referencedby>
       </memberdef>
       <memberdef kind="function" id="classThreadSafeQueue_1a33be668a849175ebee2439b3a3facaf2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -298,9 +298,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="112" column="19" bodyfile="src/utils/threadsafequeue/threadsafequeue.hpp" bodystart="187" bodyend="195"/>
-        <references refid="classThreadSafeQueue_1ace0d7b833c9302eb30f6bd5bcf0f36be" compoundref="threadsafequeue_8hpp" startline="118">ThreadSafeQueue&lt; T &gt;::mutex_</references>
-        <references refid="classThreadSafeQueue_1a4d485571d4d48174e5d80cea538e054b" compoundref="threadsafequeue_8hpp" startline="122">ThreadSafeQueue&lt; T &gt;::queue_</references>
+        <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="135" column="17" bodyfile="src/utils/threadsafequeue/threadsafequeue.hpp" bodystart="241" bodyend="251"/>
+        <references refid="classThreadSafeQueue_1ace0d7b833c9302eb30f6bd5bcf0f36be" compoundref="threadsafequeue_8hpp" startline="143">ThreadSafeQueue&lt; T &gt;::mutex_</references>
+        <references refid="classThreadSafeQueue_1a4d485571d4d48174e5d80cea538e054b" compoundref="threadsafequeue_8hpp" startline="148">ThreadSafeQueue&lt; T &gt;::queue_</references>
         <referencedby refid="classThreadSafeQueue_1a403aa1522ed7c480709b67784fb59289">ThreadSafeQueue&lt; T &gt;::~ThreadSafeQueue</referencedby>
       </memberdef>
     </sectiondef>
@@ -321,7 +321,7 @@
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="49" column="1" bodyfile="src/utils/threadsafequeue/threadsafequeue.hpp" bodystart="50" bodyend="123"/>
+    <location file="src/utils/threadsafequeue/threadsafequeue.hpp" line="61" column="1" bodyfile="src/utils/threadsafequeue/threadsafequeue.hpp" bodystart="61" bodyend="150"/>
     <listofallmembers>
       <member refid="classThreadSafeQueue_1ad8729c0e01650afdbe28ec783e5ea9d8" prot="public" virt="non-virtual"><scope>ThreadSafeQueue</scope><name>clear</name></member>
       <member refid="classThreadSafeQueue_1a0aefea0243124e49630483b10a8bee0f" prot="public" virt="non-virtual"><scope>ThreadSafeQueue</scope><name>emplace</name></member>

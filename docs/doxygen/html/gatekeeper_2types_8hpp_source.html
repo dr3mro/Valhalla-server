@@ -120,105 +120,161 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('gatekeeper_2ty
 <div class="contents">
 <a href="gatekeeper_2types_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file types.hpp</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief Login, credential and identity data types used by the gatekeeper subsystem.</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * @details This header defines two small plain-data structs that act as &quot;containers&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *          passed between the login, session and token helpers. Credentials holds the</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *          raw username/password typed by a client. ClientLoginData is a larger bag of</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *          optional fields that grows as a login or authentication request moves through</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *          the system: some fields come from the request, some from the database, and</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *          some are produced when a token is created. Nothing here does any work; it just</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *          gives the different helpers a shared vocabulary for the data they exchange.</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * WHY THIS FILE MATTERS IN THE SERVER:</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> * This file belongs to the gatekeeper (the security/identity part of the server). GateKeeper</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> * reads the request body into Credentials, then creates a ClientLoginData and passes it to</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> * SessionManager (session database rows) and TokenManager (JWT creation/validation). Almost</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> * every security function takes a ClientLoginData by reference, so without these types the</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> * helpers would need long, duplicated parameter lists and could not share state. Fields are</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> * optional because they are filled in at different stages - a field that is `nullopt` simply</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * means &quot;not known yet&quot; at this stage of the pipeline.</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * CONCEPTS TO LEARN (for beginners):</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> * - struct: https://en.cppreference.com/w/cpp/language/classes</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> * - std::optional (&quot;a value that may be missing&quot;): https://en.cppreference.com/w/cpp/utility/optional</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> * - std::chrono (time durations/time points): https://en.cppreference.com/w/cpp/chrono</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> * - JWT (a signed token carrying identity claims): https://jwt.io/introduction</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"> * - std::uint64_t (a fixed 64-bit whole number): https://en.cppreference.com/w/cpp/types/integer</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment"> * @author Amr Osman &lt;dr3mro@gmail.com&gt;</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment"> * @date 2026-11-16</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &lt;chrono&gt;</span>    <span class="comment">// Needed for expireTime, which stores a time as a system_clock duration.</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &lt;cstdint&gt;</span>   <span class="comment">// Needed for uint64_t, the fixed-width id type used by clientId.</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &lt;optional&gt;</span>  <span class="comment">// Needed for std::optional - most fields may be absent until filled in.</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &lt;string&gt;</span>    <span class="comment">// Needed for the text fields (token, username, group, ip, timestamps).</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief Login, credential and identity data types used by the gatekeeper</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * subsystem.</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * @details This header defines two small plain-data structs that act as</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * &quot;containers&quot; passed between the login, session and token helpers. Credentials</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * holds the raw username/password typed by a client. ClientLoginData is a</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * larger bag of optional fields that grows as a login or authentication request</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * moves through the system: some fields come from the request, some from the</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> * database, and some are produced when a token is created. Nothing here does</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * any work; it just gives the different helpers a shared vocabulary for the</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * data they exchange.</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> * WHY THIS FILE MATTERS IN THE SERVER:</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> * This file belongs to the gatekeeper (the security/identity part of the</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> * server). GateKeeper reads the request body into Credentials, then creates a</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> * ClientLoginData and passes it to SessionManager (session database rows) and</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> * TokenManager (JWT creation/validation). Almost every security function takes</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * a ClientLoginData by reference, so without these types the helpers would need</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> * long, duplicated parameter lists and could not share state. Fields are</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * optional because they are filled in at different stages - a field that is</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> * `nullopt` simply means &quot;not known yet&quot; at this stage of the pipeline.</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> * CONCEPTS TO LEARN (for beginners):</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> * - struct: https://en.cppreference.com/w/cpp/language/classes</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"> * - std::optional (&quot;a value that may be missing&quot;):</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"> * https://en.cppreference.com/w/cpp/utility/optional</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment"> * - std::chrono (time durations/time points):</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment"> * https://en.cppreference.com/w/cpp/chrono</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment"> * - JWT (a signed token carrying identity claims): https://jwt.io/introduction</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment"> * - std::uint64_t (a fixed 64-bit whole number):</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment"> * https://en.cppreference.com/w/cpp/types/integer</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment"> * @author Amr Osman &lt;dr3mro@gmail.com&gt;</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment"> * @date 2026-11-16</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceapi_1_1v2_1_1Types.html">api::v2::Types</a>  <span class="comment">// Groups these types under the &quot;api version 2 / Types&quot; namespace so names do not clash.</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>{<span class="comment"></span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structClientLoginData.html">   41</a></span><span class="comment">     * @struct ClientLoginData</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">     * @brief Mutable accumulator that carries a client&#39;s identity through login and authentication.</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">     * @details The same object is passed from GateKeeper into SessionManager, TokenManager and</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">     *          KeeprBase helpers. Fields are optional because they are populated at different</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">     *          stages: some arrive from the request (group, ip_address), some are read from the</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">     *          database (is_active, lastLogoutTime), and some are produced by token</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">     *          generation (token, expireTime). Call sites value-initialize this struct (for</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">     *          example `ClientLoginData{}`), so the non-optional scalar members start</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">     *          zero-initialized and are only meaningful once the corresponding helper sets them.</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">     * @note `passwordHash` and `passwordMatch` are declared here but are never assigned in src/;</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">     *       the login flow carries the hash as a separate local value.</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">     * @note Identity claims (username, clientId, group, ip_address, lastLogoutTime) are bound into</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">     *       the JWT and re-checked on validation, so changing one invalidates the token.</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">     * @details In everyday terms, think of this struct as a &quot;passport application form&quot; that gets</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">     *          stamped at each desk. It begins nearly empty, the HTTP request fills in the group</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">     *          and IP, the database fills in the active flag and last logout time, and the token</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">     *          generator fills in the token and its expiry. `std::optional` is used for each field</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">     *          because &quot;not filled in yet&quot; is a normal state, not an error, and it lets helpers</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">     *          check `has_value()` before using a field. The two plain `bool` fields are not</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">     *          optional, so they start as `false` after `ClientLoginData{}` and must be explicitly</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">     *          set from the database before they mean anything.</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">     */</span></div>
-<div class="foldopen" id="foldopen00063" data-start="{" data-end="};">
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">   63</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">ClientLoginData</a> = <span class="keyword">struct </span><a class="code hl_typedef" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">ClientLoginData</a></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    {</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        std::optional&lt;std::string&gt;          token;            <span class="comment">/**&lt; JWT issued on login; supplied by the client on subsequent requests. Optional because it only exists after token creation, and later requests send it back. */</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        std::optional&lt;std::string&gt;          username;         <span class="comment">/**&lt; Authenticated user name, used as the JWT subject. Optional until the database lookup or token decode supplies it. */</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        std::optional&lt;std::string&gt;          group;            <span class="comment">/**&lt; Client group (&quot;users&quot; or &quot;providers&quot;); selects the session table and becomes a JWT claim. Optional until the request or token says which group. */</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        std::optional&lt;uint64_t&gt;             clientId;         <span class="comment">/**&lt; Numeric client id, used as the JWT &quot;jti&quot; claim. A 64-bit unsigned number so it can hold large database ids; optional until resolved. */</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        std::optional&lt;std::string&gt;          lastLogoutTime;   <span class="comment">/**&lt; Last logout timestamp from the session table, mirrored as the &quot;llodt&quot; claim to detect later logouts. Stored as text because that is how it is kept in the database. */</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        std::optional&lt;std::string&gt;          nowLoginTime;     <span class="comment">/**&lt; Timestamp of the login currently being processed, written to the session row. Optional until the login helper generates the current UTC time. */</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordtype">bool</span>                                is_active;        <span class="comment">/**&lt; Account active flag read from the client table; gates token validation. A plain bool (zero-initialized to false) so a suspended account fails closed. */</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordtype">bool</span>                                passwordMatch;    <span class="comment">/**&lt; Declared but never assigned in src/; reserved for login state. Kept as a plain bool for future use. */</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        std::optional&lt;std::string&gt;          passwordHash;     <span class="comment">/**&lt; Declared but never assigned in src/; the hash is passed as a local value. Optional because this struct does not actually carry it in the current flow. */</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        std::chrono::system_clock::duration expireTime;       <span class="comment">/**&lt; Token expiry as a system_clock duration, compared against the current time during decode. A duration (not a string) makes the &quot;now &gt;= expiry&quot; comparison easy and exact. */</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        std::optional&lt;std::string&gt;          ip_address;       <span class="comment">/**&lt; Client IP bound into the token and compared against the request IP on validation. Optional until the filter supplies it; binding it stops a stolen token being reused elsewhere. */</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    };</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">// Needed for expireTime, which stores a time as a system_clock duration.</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#include &lt;chrono&gt;</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">// Needed for uint64_t, the fixed-width id type used by clientId.</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">// Needed for std::optional - most fields may be absent until filled in.</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#include &lt;optional&gt;</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">// Needed for the text fields (token, username, group, ip, timestamps).</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">// Groups these types under the &quot;api version 2 /</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">// Types&quot; namespace so names do not clash.</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceapi_1_1v2_1_1Types.html">api::v2::Types</a> {<span class="comment"></span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="structClientLoginData.html">   52</a></span><span class="comment">   * @struct ClientLoginData</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">   * @brief Mutable accumulator that carries a client&#39;s identity through login</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">   * and authentication.</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">   * @details The same object is passed from GateKeeper into SessionManager,</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">   * TokenManager and KeeprBase helpers. Fields are optional because they are</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">   * populated at different stages: some arrive from the request (group,</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">   * ip_address), some are read from the database (is_active, lastLogoutTime),</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">   * and some are produced by token generation (token, expireTime). Call sites</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">   * value-initialize this struct (for example `ClientLoginData{}`), so the</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">   * non-optional scalar members start zero-initialized and are only</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">   * meaningful once the corresponding helper sets them.</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">   * @note `passwordHash` and `passwordMatch` are declared here but are never</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">   * assigned in src/; the login flow carries the hash as a separate local</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">   * value.</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">   * @note Identity claims (username, clientId, group, ip_address,</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">   * lastLogoutTime) are bound into the JWT and re-checked on validation, so</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">   * changing one invalidates the token.</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">   * @details In everyday terms, think of this struct as a &quot;passport</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">   * application form&quot; that gets stamped at each desk. It begins nearly empty,</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">   * the HTTP request fills in the group and IP, the database fills in the</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">   * active flag and last logout time, and the token generator fills in the</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">   * token and its expiry. `std::optional` is used for each field because &quot;not</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">   * filled in yet&quot; is a normal state, not an error, and it lets helpers check</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">   * `has_value()` before using a field. The two plain `bool` fields are not</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">   *          optional, so they start as `false` after `ClientLoginData{}` and</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">   * must be explicitly set from the database before they mean anything.</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">   */</span></div>
+<div class="foldopen" id="foldopen00079" data-start="{" data-end="};">
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">   79</a></span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">ClientLoginData</a> = <span class="keyword">struct </span><a class="code hl_typedef" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">ClientLoginData</a> {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    std::optional&lt;std::string&gt;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        token; <span class="comment">/**&lt; JWT issued on login; supplied by the client on</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment">                  subsequent requests. Optional because it only exists after</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment">                  token creation, and later requests send it back. */</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    std::optional&lt;std::string&gt;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        username; <span class="comment">/**&lt; Authenticated user name, used as the JWT subject.</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">                     Optional until the database lookup or token decode</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">                     supplies it. */</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    std::optional&lt;std::string&gt;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        group; <span class="comment">/**&lt; Client group (&quot;users&quot; or &quot;providers&quot;); selects the</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment">                  session table and becomes a JWT claim. Optional until the</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment">                                         request or token says which group.</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">                */</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    std::optional&lt;uint64_t&gt;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        clientId; <span class="comment">/**&lt; Numeric client id, used as the JWT &quot;jti&quot; claim. A</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment">                     64-bit unsigned number so it can hold large database</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment">                     ids; optional until resolved. */</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    std::optional&lt;std::string&gt;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        lastLogoutTime; <span class="comment">/**&lt; Last logout timestamp from the session table,</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment">                           mirrored as the &quot;llodt&quot; claim to detect later</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment">                           logouts. Stored as text because that is how it is</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment">                           kept in the database. */</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    std::optional&lt;std::string&gt;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        nowLoginTime;   <span class="comment">/**&lt; Timestamp of the login currently being processed,</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment">                           written to the session row. Optional until the</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment">                           login helper generates the current UTC time. */</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordtype">bool</span> is_active;     <span class="comment">/**&lt; Account active flag read from the client table;</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment">                           gates token validation. A plain bool (zero-initialized</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment">                           to false) so a suspended account fails closed. */</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordtype">bool</span> passwordMatch; <span class="comment">/**&lt; Declared but never assigned in src/; reserved</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment">                           for login state. Kept as a plain bool for future</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment">                           use. */</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    std::optional&lt;std::string&gt;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        passwordHash; <span class="comment">/**&lt; Declared but never assigned in src/; the hash is</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment">                         passed as a local value. Optional because this</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="comment">                         struct does not actually carry it in the current</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="comment">                         flow. */</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    std::chrono::system_clock::duration</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        expireTime; <span class="comment">/**&lt; Token expiry as a system_clock duration, compared</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment">                       against the current time during decode. A duration</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment">                       (not a string) makes the &quot;now &gt;= expiry&quot; comparison</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment">                       easy and exact. */</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    std::optional&lt;std::string&gt;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        ip_address; <span class="comment">/**&lt; Client IP bound into the token and compared against</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="comment">                       the request IP on validation. Optional until the</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="comment">                       filter supplies it; binding it stops a stolen token</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="comment">                       being reused elsewhere. */</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>  };</div>
 </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment"></span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="structCredentials.html">   79</a></span><span class="comment">     * @struct Credentials</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">     * @brief Raw username/password pair parsed from a login request body.</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">     * @details Held only until the slow password work is dispatched to the password worker.</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment">     * @details These are ordinary non-optional strings because a login request must have both</span></div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment">     *          values for parsing to succeed. The check that both keys exist is done by</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment">     *          GateKeeper::parse_credentials before this struct is built, so by the time a</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment">     *          Credentials object exists its fields are known to be present. It is a small</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">     *          value type on purpose: it gets moved into a lambda that runs on a worker thread,</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">     *          so keeping it cheap to copy/move avoids extra work.</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">     */</span></div>
-<div class="foldopen" id="foldopen00089" data-start="{" data-end="};">
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="namespaceapi_1_1v2_1_1Types.html#ada88a3e212586efbdfd1f931b0f4a8a9">   89</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceapi_1_1v2_1_1Types.html#ada88a3e212586efbdfd1f931b0f4a8a9">Credentials</a> = <span class="keyword">struct </span><a class="code hl_typedef" href="namespaceapi_1_1v2_1_1Types.html#ada88a3e212586efbdfd1f931b0f4a8a9">Credentials</a></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    {</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        std::string username;  <span class="comment">/**&lt; The user&#39;s username. Plain string because it is required; used to look up the stored password hash. */</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        std::string password;  <span class="comment">/**&lt; The user&#39;s password. Plain string because it is required; compared against the stored hash on the password worker, never stored here long-term. */</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    };</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment"></span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="structCredentials.html">  130</a></span><span class="comment">   * @struct Credentials</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="comment">   * @brief Raw username/password pair parsed from a login request body.</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="comment">   * @details Held only until the slow password work is dispatched to the</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="comment">   * password worker.</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="comment">   * @details These are ordinary non-optional strings because a login request</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="comment">   * must have both values for parsing to succeed. The check that both keys</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="comment">   * exist is done by GateKeeper::parse_credentials before this struct is</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="comment">   * built, so by the time a Credentials object exists its fields are known to</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="comment">   * be present. It is a small value type on purpose: it gets moved into a</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="comment">   * lambda that runs on a worker thread, so keeping it cheap to copy/move</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="comment">   * avoids extra work.</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="comment">   */</span></div>
+<div class="foldopen" id="foldopen00142" data-start="{" data-end="};">
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="namespaceapi_1_1v2_1_1Types.html#a249a6e076b477aa182c10bc4334e1268">  142</a></span>  <span class="keyword">using </span><a class="code hl_typedef" href="namespaceapi_1_1v2_1_1Types.html#a249a6e076b477aa182c10bc4334e1268">Credentials</a> = <span class="keyword">struct </span><a class="code hl_typedef" href="namespaceapi_1_1v2_1_1Types.html#a249a6e076b477aa182c10bc4334e1268">Credentials</a> {</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    std::string</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        username;         <span class="comment">/**&lt; The user&#39;s username. Plain string because it is</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="comment">                             required; used to look up the stored password hash. */</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    std::string password; <span class="comment">/**&lt; The user&#39;s password. Plain string because it is</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="comment">                             required; compared against the stored hash on the</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="comment">                             password worker, never stored here long-term. */</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>  };</div>
 </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>}  <span class="comment">// namespace api::v2::Types</span></div>
-<div class="ttc" id="anamespaceapi_1_1v2_1_1Types_html"><div class="ttname"><a href="namespaceapi_1_1v2_1_1Types.html">api::v2::Types</a></div><div class="ttdef"><b>Definition</b> <a href="entities_2base_2types_8hpp_source.html#l00057">types.hpp:58</a></div></div>
-<div class="ttc" id="anamespaceapi_1_1v2_1_1Types_html_ada88a3e212586efbdfd1f931b0f4a8a9"><div class="ttname"><a href="namespaceapi_1_1v2_1_1Types.html#ada88a3e212586efbdfd1f931b0f4a8a9">api::v2::Types::Credentials</a></div><div class="ttdeci">struct Credentials { std::string username; std::string password; } Credentials</div><div class="ttdef"><b>Definition</b> <a href="#l00089">types.hpp:89</a></div></div>
-<div class="ttc" id="anamespaceapi_1_1v2_1_1Types_html_adbcc5e1a10a9ff9600c0741ca2e33368"><div class="ttname"><a href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">api::v2::Types::ClientLoginData</a></div><div class="ttdeci">struct ClientLoginData { std::optional&lt; std::string &gt; token; std::optional&lt; std::string &gt; username; std::optional&lt; std::string &gt; group; std::optional&lt; uint64_t &gt; clientId; std::optional&lt; std::string &gt; lastLogoutTime; std::optional&lt; std::string &gt; nowLoginTime; bool is_active; bool passwordMatch; std::optional&lt; std::string &gt; passwordHash; std::chrono::system_clock::duration expireTime; std::optional&lt; std::string &gt; ip_address; } ClientLoginData</div><div class="ttdef"><b>Definition</b> <a href="#l00063">types.hpp:63</a></div></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>}  <span class="comment">// namespace api::v2::Types</span></div>
+<div class="ttc" id="anamespaceapi_1_1v2_1_1Types_html"><div class="ttname"><a href="namespaceapi_1_1v2_1_1Types.html">api::v2::Types</a></div><div class="ttdef"><b>Definition</b> <a href="entities_2base_2types_8hpp_source.html#l00078">types.hpp:78</a></div></div>
+<div class="ttc" id="anamespaceapi_1_1v2_1_1Types_html_a249a6e076b477aa182c10bc4334e1268"><div class="ttname"><a href="namespaceapi_1_1v2_1_1Types.html#a249a6e076b477aa182c10bc4334e1268">api::v2::Types::Credentials</a></div><div class="ttdeci">struct Credentials { std::string username; std::string password; } Credentials</div><div class="ttdef"><b>Definition</b> <a href="#l00142">types.hpp:142</a></div></div>
+<div class="ttc" id="anamespaceapi_1_1v2_1_1Types_html_af609f0aaf134643edde3ad81ab5ebf7f"><div class="ttname"><a href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">api::v2::Types::ClientLoginData</a></div><div class="ttdeci">struct ClientLoginData { std::optional&lt; std::string &gt; token; std::optional&lt; std::string &gt; username; std::optional&lt; std::string &gt; group; std::optional&lt; uint64_t &gt; clientId; std::optional&lt; std::string &gt; lastLogoutTime; std::optional&lt; std::string &gt; nowLoginTime; bool is_active; bool passwordMatch; std::optional&lt; std::string &gt; passwordHash; std::chrono::system_clock::duration expireTime; std::optional&lt; std::string &gt; ip_address; } ClientLoginData</div><div class="ttdef"><b>Definition</b> <a href="#l00079">types.hpp:79</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

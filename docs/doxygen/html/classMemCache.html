@@ -133,8 +133,8 @@ Classes</h2></td></tr>
 Public Types</h2></td></tr>
 <tr class="memitem:ab849b6bdf3b4922b00f173434e61d073" id="r_ab849b6bdf3b4922b00f173434e61d073"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#ab849b6bdf3b4922b00f173434e61d073">Clock</a> = ClockT</td></tr>
 <tr class="memdesc:ab849b6bdf3b4922b00f173434e61d073"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="#ab849b6bdf3b4922b00f173434e61d073" title="Clock type used for expiration timestamps.">Clock</a> type used for expiration timestamps.  <br /></td></tr>
-<tr class="memitem:ab226fd602502da7daecc5b303eaf5910" id="r_ab226fd602502da7daecc5b303eaf5910"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#ab226fd602502da7daecc5b303eaf5910">TimePoint</a> = std::chrono::time_point&lt;<a class="el" href="#ab849b6bdf3b4922b00f173434e61d073">Clock</a>&gt;</td></tr>
-<tr class="memdesc:ab226fd602502da7daecc5b303eaf5910"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time point type used for expiration timestamps.  <br /></td></tr>
+<tr class="memitem:ae2921b17188672eabd81d40c51c8d10f" id="r_ae2921b17188672eabd81d40c51c8d10f"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#ae2921b17188672eabd81d40c51c8d10f">TimePoint</a></td></tr>
+<tr class="memdesc:ae2921b17188672eabd81d40c51c8d10f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time point type used for expiration timestamps.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -197,7 +197,7 @@ class MemCache&lt; T, ClockT &gt;</div><p>Bounded LRU cache whose entries expire
 </dl>
 <dl class="section note"><dt>Note</dt><dd><a class="el" href="#aa1473dd4fba512396e813d4c35ab39eb" title="Looks up a key and marks it as most recently used.">get()</a> treats an expired entry as a miss but does not erase it; physical removal is left to the cleaner. <a class="el" href="#a92f1f33f412afe2554cad2454b443800" title="Removes a key from the cache.">remove()</a> does not check expiry. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00063">63</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00078">78</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 </div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
 <a id="ab849b6bdf3b4922b00f173434e61d073" name="ab849b6bdf3b4922b00f173434e61d073"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab849b6bdf3b4922b00f173434e61d073">&#9670;&#160;</a></span>Clock</h2>
@@ -215,12 +215,12 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 
 <p><a class="el" href="#ab849b6bdf3b4922b00f173434e61d073" title="Clock type used for expiration timestamps.">Clock</a> type used for expiration timestamps. </p>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00069">69</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00083">83</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ab226fd602502da7daecc5b303eaf5910" name="ab226fd602502da7daecc5b303eaf5910"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab226fd602502da7daecc5b303eaf5910">&#9670;&#160;</a></span>TimePoint</h2>
+<a id="ae2921b17188672eabd81d40c51c8d10f" name="ae2921b17188672eabd81d40c51c8d10f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2921b17188672eabd81d40c51c8d10f">&#9670;&#160;</a></span>TimePoint</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -228,14 +228,16 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classMemCache.html">MemCache</a>&lt; T, ClockT &gt;::TimePoint = std::chrono::time_point&lt;<a class="el" href="#ab849b6bdf3b4922b00f173434e61d073">Clock</a>&gt;</td>
+          <td class="memname">using <a class="el" href="classMemCache.html">MemCache</a>&lt; T, ClockT &gt;::TimePoint</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line">std::chrono::time_point&lt;Clock&gt;</div>
+</div><!-- fragment -->
 <p>Time point type used for expiration timestamps. </p>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00073">73</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00088">88</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
 </div>
 </div>
@@ -278,11 +280,11 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00080">80</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00098">98</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00341">cleanerThread_</a>, <a class="el" href="memcache_8hpp_source.html#l00368">cleanExpiredEntries()</a>, <a class="el" href="memcache_8hpp_source.html#l00317">defaultTTL_</a>, <a class="el" href="memcache_8hpp_source.html#l00313">maxSize_</a>, and <a class="el" href="memcache_8hpp_source.html#l00337">stopCleaner_</a>.</p>
+<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00442">cleanerThread_</a>, <a class="el" href="memcache_8hpp_source.html#l00474">cleanExpiredEntries()</a>, <a class="el" href="memcache_8hpp_source.html#l00411">defaultTTL_</a>, <a class="el" href="memcache_8hpp_source.html#l00406">maxSize_</a>, and <a class="el" href="memcache_8hpp_source.html#l00438">stopCleaner_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="#a6951420f901529b4d8be417c463c27b0">MemCache()</a>, <a class="el" href="memcache_8hpp_source.html#l00095">MemCache()</a>, <a class="el" href="#a9693d7be8a97cc4ade0d64a52af16591">operator=()</a>, and <a class="el" href="memcache_8hpp_source.html#l00125">operator=()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#a6951420f901529b4d8be417c463c27b0">MemCache()</a>, <a class="el" href="memcache_8hpp_source.html#l00123">MemCache()</a>, <a class="el" href="#a9693d7be8a97cc4ade0d64a52af16591">operator=()</a>, and <a class="el" href="memcache_8hpp_source.html#l00170">operator=()</a>.</p>
 
 </div>
 </div>
@@ -338,7 +340,7 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00080">MemCache()</a>.</p>
+<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00098">MemCache()</a>.</p>
 
 </div>
 </div>
@@ -376,9 +378,9 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 </dl>
 <dl class="section post"><dt>Postcondition</dt><dd><span class="tt">other</span> has no running cleaner and is left in a valid but unspecified state; <span class="tt">*this</span> owns the transferred entries and a new cleaner thread. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00095">95</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00123">123</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00325">cacheList_</a>, <a class="el" href="memcache_8hpp_source.html#l00321">cacheMap_</a>, <a class="el" href="memcache_8hpp_source.html#l00341">cleanerThread_</a>, <a class="el" href="memcache_8hpp_source.html#l00368">cleanExpiredEntries()</a>, <a class="el" href="memcache_8hpp_source.html#l00317">defaultTTL_</a>, <a class="el" href="memcache_8hpp_source.html#l00313">maxSize_</a>, <a class="el" href="memcache_8hpp_source.html#l00080">MemCache()</a>, and <a class="el" href="memcache_8hpp_source.html#l00337">stopCleaner_</a>.</p>
+<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00423">cacheList_</a>, <a class="el" href="memcache_8hpp_source.html#l00417">cacheMap_</a>, <a class="el" href="memcache_8hpp_source.html#l00442">cleanerThread_</a>, <a class="el" href="memcache_8hpp_source.html#l00474">cleanExpiredEntries()</a>, <a class="el" href="memcache_8hpp_source.html#l00411">defaultTTL_</a>, <a class="el" href="memcache_8hpp_source.html#l00406">maxSize_</a>, <a class="el" href="memcache_8hpp_source.html#l00098">MemCache()</a>, and <a class="el" href="memcache_8hpp_source.html#l00438">stopCleaner_</a>.</p>
 
 </div>
 </div>
@@ -409,9 +411,9 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 
 <p>Stops the cleaner and waits for it before members are destroyed. </p>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00169">169</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00226">226</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00333">cleanerCv_</a>, <a class="el" href="memcache_8hpp_source.html#l00341">cleanerThread_</a>, <a class="el" href="memcache_8hpp_source.html#l00329">mutex_</a>, and <a class="el" href="memcache_8hpp_source.html#l00337">stopCleaner_</a>.</p>
+<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00434">cleanerCv_</a>, <a class="el" href="memcache_8hpp_source.html#l00442">cleanerThread_</a>, <a class="el" href="memcache_8hpp_source.html#l00429">mutex_</a>, and <a class="el" href="memcache_8hpp_source.html#l00438">stopCleaner_</a>.</p>
 
 </div>
 </div>
@@ -444,11 +446,11 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 <p>Cleaner loop that periodically erases all expired entries. </p>
 <p>Waits on cleanerCv_ with a one-second timeout; a notification from destruction or a move wakes it immediately so it can observe stopCleaner_ and exit. Otherwise it scans the entire list because move-to-front can leave expired entries away from the back. </p>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00368">368</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00474">474</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00325">cacheList_</a>, <a class="el" href="memcache_8hpp_source.html#l00321">cacheMap_</a>, <a class="el" href="memcache_8hpp_source.html#l00333">cleanerCv_</a>, <a class="el" href="memcache_8hpp_source.html#l00329">mutex_</a>, and <a class="el" href="memcache_8hpp_source.html#l00337">stopCleaner_</a>.</p>
+<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00423">cacheList_</a>, <a class="el" href="memcache_8hpp_source.html#l00417">cacheMap_</a>, <a class="el" href="memcache_8hpp_source.html#l00434">cleanerCv_</a>, <a class="el" href="memcache_8hpp_source.html#l00429">mutex_</a>, and <a class="el" href="memcache_8hpp_source.html#l00438">stopCleaner_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00095">MemCache()</a>, <a class="el" href="memcache_8hpp_source.html#l00080">MemCache()</a>, and <a class="el" href="memcache_8hpp_source.html#l00125">operator=()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00123">MemCache()</a>, <a class="el" href="memcache_8hpp_source.html#l00098">MemCache()</a>, and <a class="el" href="memcache_8hpp_source.html#l00170">operator=()</a>.</p>
 
 </div>
 </div>
@@ -480,11 +482,11 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 <p>Evicts the least recently used entry (the list's back). </p>
 <dl class="section pre"><dt>Precondition</dt><dd>cacheList_ is non-empty and the caller holds mutex_. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00353">353</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00458">458</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00325">cacheList_</a>, and <a class="el" href="memcache_8hpp_source.html#l00321">cacheMap_</a>.</p>
+<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00423">cacheList_</a>, and <a class="el" href="memcache_8hpp_source.html#l00417">cacheMap_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00192">insert()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00252">insert()</a>.</p>
 
 </div>
 </div>
@@ -523,9 +525,9 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>Copy of the value, or nullopt if the key is absent or expired. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>An expired entry is reported as a miss but is left for the cleaner to remove; a hit refreshes recency, not the entry's expiration. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00225">225</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00296">296</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00321">cacheMap_</a>, <a class="el" href="memcache_8hpp_source.html#l00347">moveToFront()</a>, and <a class="el" href="memcache_8hpp_source.html#l00329">mutex_</a>.</p>
+<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00417">cacheMap_</a>, <a class="el" href="memcache_8hpp_source.html#l00449">moveToFront()</a>, and <a class="el" href="memcache_8hpp_source.html#l00429">mutex_</a>.</p>
 
 </div>
 </div>
@@ -574,9 +576,9 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 </dl>
 <p>Existing keys receive a new value, a fresh expiration and move to the front of the LRU list. New keys are added at the front; when capacity is already reached the least recently used entry is evicted first. Safe to call concurrently with other operations. </p>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00192">192</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00252">252</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00325">cacheList_</a>, <a class="el" href="memcache_8hpp_source.html#l00321">cacheMap_</a>, <a class="el" href="memcache_8hpp_source.html#l00317">defaultTTL_</a>, <a class="el" href="memcache_8hpp_source.html#l00353">evictOldest()</a>, <a class="el" href="memcache_8hpp_source.html#l00313">maxSize_</a>, <a class="el" href="memcache_8hpp_source.html#l00347">moveToFront()</a>, and <a class="el" href="memcache_8hpp_source.html#l00329">mutex_</a>.</p>
+<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00423">cacheList_</a>, <a class="el" href="memcache_8hpp_source.html#l00417">cacheMap_</a>, <a class="el" href="memcache_8hpp_source.html#l00411">defaultTTL_</a>, <a class="el" href="memcache_8hpp_source.html#l00458">evictOldest()</a>, <a class="el" href="memcache_8hpp_source.html#l00406">maxSize_</a>, <a class="el" href="memcache_8hpp_source.html#l00449">moveToFront()</a>, and <a class="el" href="memcache_8hpp_source.html#l00429">mutex_</a>.</p>
 
 </div>
 </div>
@@ -613,11 +615,11 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00347">347</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00449">449</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00325">cacheList_</a>.</p>
+<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00423">cacheList_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00225">get()</a>, and <a class="el" href="memcache_8hpp_source.html#l00192">insert()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00296">get()</a>, and <a class="el" href="memcache_8hpp_source.html#l00252">insert()</a>.</p>
 
 </div>
 </div>
@@ -646,7 +648,7 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00080">MemCache()</a>.</p>
+<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00098">MemCache()</a>.</p>
 
 </div>
 </div>
@@ -685,9 +687,9 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd><span class="tt">*this</span>. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Self-assignment is a no-op. Both cleaners are stopped before any state is moved, and a fresh cleaner is started for <span class="tt">*this</span>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00125">125</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00170">170</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00325">cacheList_</a>, <a class="el" href="memcache_8hpp_source.html#l00321">cacheMap_</a>, <a class="el" href="memcache_8hpp_source.html#l00333">cleanerCv_</a>, <a class="el" href="memcache_8hpp_source.html#l00341">cleanerThread_</a>, <a class="el" href="memcache_8hpp_source.html#l00368">cleanExpiredEntries()</a>, <a class="el" href="memcache_8hpp_source.html#l00317">defaultTTL_</a>, <a class="el" href="memcache_8hpp_source.html#l00313">maxSize_</a>, <a class="el" href="memcache_8hpp_source.html#l00080">MemCache()</a>, <a class="el" href="memcache_8hpp_source.html#l00329">mutex_</a>, and <a class="el" href="memcache_8hpp_source.html#l00337">stopCleaner_</a>.</p>
+<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00423">cacheList_</a>, <a class="el" href="memcache_8hpp_source.html#l00417">cacheMap_</a>, <a class="el" href="memcache_8hpp_source.html#l00434">cleanerCv_</a>, <a class="el" href="memcache_8hpp_source.html#l00442">cleanerThread_</a>, <a class="el" href="memcache_8hpp_source.html#l00474">cleanExpiredEntries()</a>, <a class="el" href="memcache_8hpp_source.html#l00411">defaultTTL_</a>, <a class="el" href="memcache_8hpp_source.html#l00406">maxSize_</a>, <a class="el" href="memcache_8hpp_source.html#l00098">MemCache()</a>, <a class="el" href="memcache_8hpp_source.html#l00429">mutex_</a>, and <a class="el" href="memcache_8hpp_source.html#l00438">stopCleaner_</a>.</p>
 
 </div>
 </div>
@@ -726,9 +728,9 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>True if the key was present and was removed, false otherwise. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Expiry is not checked here: an expired entry not yet cleaned is still removed and reported as present. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00244">244</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00322">322</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00325">cacheList_</a>, <a class="el" href="memcache_8hpp_source.html#l00321">cacheMap_</a>, and <a class="el" href="memcache_8hpp_source.html#l00329">mutex_</a>.</p>
+<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00423">cacheList_</a>, <a class="el" href="memcache_8hpp_source.html#l00417">cacheMap_</a>, and <a class="el" href="memcache_8hpp_source.html#l00429">mutex_</a>.</p>
 
 </div>
 </div>
@@ -757,9 +759,9 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 
 <p>Entry list ordered from most recently used (front) to least (back). </p>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00325">325</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00423">423</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00368">cleanExpiredEntries()</a>, <a class="el" href="memcache_8hpp_source.html#l00353">evictOldest()</a>, <a class="el" href="memcache_8hpp_source.html#l00192">insert()</a>, <a class="el" href="memcache_8hpp_source.html#l00095">MemCache()</a>, <a class="el" href="memcache_8hpp_source.html#l00347">moveToFront()</a>, <a class="el" href="memcache_8hpp_source.html#l00125">operator=()</a>, and <a class="el" href="memcache_8hpp_source.html#l00244">remove()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00474">cleanExpiredEntries()</a>, <a class="el" href="memcache_8hpp_source.html#l00458">evictOldest()</a>, <a class="el" href="memcache_8hpp_source.html#l00252">insert()</a>, <a class="el" href="memcache_8hpp_source.html#l00123">MemCache()</a>, <a class="el" href="memcache_8hpp_source.html#l00449">moveToFront()</a>, <a class="el" href="memcache_8hpp_source.html#l00170">operator=()</a>, and <a class="el" href="memcache_8hpp_source.html#l00322">remove()</a>.</p>
 
 </div>
 </div>
@@ -787,9 +789,9 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 
 <p>Key-to-list-iterator index; iterators remain valid across splices. </p>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00321">321</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00417">417</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00368">cleanExpiredEntries()</a>, <a class="el" href="memcache_8hpp_source.html#l00353">evictOldest()</a>, <a class="el" href="memcache_8hpp_source.html#l00225">get()</a>, <a class="el" href="memcache_8hpp_source.html#l00192">insert()</a>, <a class="el" href="memcache_8hpp_source.html#l00095">MemCache()</a>, <a class="el" href="memcache_8hpp_source.html#l00125">operator=()</a>, and <a class="el" href="memcache_8hpp_source.html#l00244">remove()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00474">cleanExpiredEntries()</a>, <a class="el" href="memcache_8hpp_source.html#l00458">evictOldest()</a>, <a class="el" href="memcache_8hpp_source.html#l00296">get()</a>, <a class="el" href="memcache_8hpp_source.html#l00252">insert()</a>, <a class="el" href="memcache_8hpp_source.html#l00123">MemCache()</a>, <a class="el" href="memcache_8hpp_source.html#l00170">operator=()</a>, and <a class="el" href="memcache_8hpp_source.html#l00322">remove()</a>.</p>
 
 </div>
 </div>
@@ -817,9 +819,9 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 
 <p>Wakes the cleaner early on shutdown or move. </p>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00333">333</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00434">434</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00368">cleanExpiredEntries()</a>, <a class="el" href="memcache_8hpp_source.html#l00125">operator=()</a>, and <a class="el" href="memcache_8hpp_source.html#l00169">~MemCache()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00474">cleanExpiredEntries()</a>, <a class="el" href="memcache_8hpp_source.html#l00170">operator=()</a>, and <a class="el" href="memcache_8hpp_source.html#l00226">~MemCache()</a>.</p>
 
 </div>
 </div>
@@ -847,9 +849,9 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 
 <p>Background thread running <a class="el" href="#a6353c6d238fd6837b033a90a389218fe" title="Cleaner loop that periodically erases all expired entries.">cleanExpiredEntries()</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00341">341</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00442">442</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00095">MemCache()</a>, <a class="el" href="memcache_8hpp_source.html#l00080">MemCache()</a>, <a class="el" href="memcache_8hpp_source.html#l00125">operator=()</a>, and <a class="el" href="memcache_8hpp_source.html#l00169">~MemCache()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00123">MemCache()</a>, <a class="el" href="memcache_8hpp_source.html#l00098">MemCache()</a>, <a class="el" href="memcache_8hpp_source.html#l00170">operator=()</a>, and <a class="el" href="memcache_8hpp_source.html#l00226">~MemCache()</a>.</p>
 
 </div>
 </div>
@@ -877,9 +879,9 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 
 <p>TTL used by <a class="el" href="#ac7e13d86c785d85dcf0424c07013433a" title="Inserts a value or refreshes an existing key.">insert()</a> when no per-entry TTL is supplied. </p>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00317">317</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00411">411</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00192">insert()</a>, <a class="el" href="memcache_8hpp_source.html#l00095">MemCache()</a>, <a class="el" href="memcache_8hpp_source.html#l00080">MemCache()</a>, and <a class="el" href="memcache_8hpp_source.html#l00125">operator=()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00252">insert()</a>, <a class="el" href="memcache_8hpp_source.html#l00123">MemCache()</a>, <a class="el" href="memcache_8hpp_source.html#l00098">MemCache()</a>, and <a class="el" href="memcache_8hpp_source.html#l00170">operator=()</a>.</p>
 
 </div>
 </div>
@@ -907,9 +909,9 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 
 <p>Maximum number of entries retained before LRU eviction. </p>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00313">313</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00406">406</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00192">insert()</a>, <a class="el" href="memcache_8hpp_source.html#l00095">MemCache()</a>, <a class="el" href="memcache_8hpp_source.html#l00080">MemCache()</a>, and <a class="el" href="memcache_8hpp_source.html#l00125">operator=()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00252">insert()</a>, <a class="el" href="memcache_8hpp_source.html#l00123">MemCache()</a>, <a class="el" href="memcache_8hpp_source.html#l00098">MemCache()</a>, and <a class="el" href="memcache_8hpp_source.html#l00170">operator=()</a>.</p>
 
 </div>
 </div>
@@ -937,9 +939,9 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 
 <p>Guards all cache state and the cleaner control flag. </p>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00329">329</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00429">429</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00368">cleanExpiredEntries()</a>, <a class="el" href="memcache_8hpp_source.html#l00225">get()</a>, <a class="el" href="memcache_8hpp_source.html#l00192">insert()</a>, <a class="el" href="memcache_8hpp_source.html#l00125">operator=()</a>, <a class="el" href="memcache_8hpp_source.html#l00244">remove()</a>, and <a class="el" href="memcache_8hpp_source.html#l00169">~MemCache()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00474">cleanExpiredEntries()</a>, <a class="el" href="memcache_8hpp_source.html#l00296">get()</a>, <a class="el" href="memcache_8hpp_source.html#l00252">insert()</a>, <a class="el" href="memcache_8hpp_source.html#l00170">operator=()</a>, <a class="el" href="memcache_8hpp_source.html#l00322">remove()</a>, and <a class="el" href="memcache_8hpp_source.html#l00226">~MemCache()</a>.</p>
 
 </div>
 </div>
@@ -967,9 +969,9 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 
 <p>Set under mutex_ to request cleaner termination. </p>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00337">337</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00438">438</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00368">cleanExpiredEntries()</a>, <a class="el" href="memcache_8hpp_source.html#l00095">MemCache()</a>, <a class="el" href="memcache_8hpp_source.html#l00080">MemCache()</a>, <a class="el" href="memcache_8hpp_source.html#l00125">operator=()</a>, and <a class="el" href="memcache_8hpp_source.html#l00169">~MemCache()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00474">cleanExpiredEntries()</a>, <a class="el" href="memcache_8hpp_source.html#l00123">MemCache()</a>, <a class="el" href="memcache_8hpp_source.html#l00098">MemCache()</a>, <a class="el" href="memcache_8hpp_source.html#l00170">operator=()</a>, and <a class="el" href="memcache_8hpp_source.html#l00226">~MemCache()</a>.</p>
 
 </div>
 </div>

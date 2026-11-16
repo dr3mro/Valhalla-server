@@ -119,7 +119,8 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('permissionmana
 </div><!--header-->
 <div class="contents">
 
-<p>The behind-the-scenes helper functions used by <a class="el" href="gatekeeper_8cpp.html#a2391c0b165c65deb4ad3ad19ca6dd2aa">PermissionManager</a>. (Originally: "Implementation helpers shared by the PermissionManager authorization overloads.").  
+<p>The behind-the-scenes helper functions used by <a class="el" href="gatekeeper_8cpp.html#ae17e951f1dc80a8e4920571ebe9f3c21">PermissionManager</a>. (Originally: "Implementation helpers shared by the PermissionManager
+authorization overloads.").  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstdint&gt;</code><br />
 <code>#include &lt;exception&gt;</code><br />
@@ -128,11 +129,11 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('permissionmana
 <code>#include &lt;optional&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &quot;<a class="el" href="databasecontroller_8hpp_source.html">controllers/databasecontroller/databasecontroller.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="asyncdbclient_8hpp_source.html">database/asyncdbclient.hpp</a>&quot;</code><br />
+<code>#include &quot;drogon/utils/coroutine.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="permissioncache_8hpp_source.html">gatekeeper/permissionmanager/permissioncache.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="permissions_8hpp_source.html">gatekeeper/permissionmanager/permissions.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="store_8hpp_source.html">store/store.hpp</a>&quot;</code><br />
-<code>#include &quot;drogon/utils/coroutine.h&quot;</code><br />
-<code>#include &quot;<a class="el" href="asyncdbclient_8hpp_source.html">database/asyncdbclient.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="http_8hpp_source.html">utils/global/http.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="requester_8hpp_source.html">utils/global/requester.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="message_8hpp_source.html">utils/message/message.hpp</a>&quot;</code><br />
@@ -142,7 +143,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('permissionmana
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:api_3A_3Av2_3A_3APermissionManagerPrivate" id="r_api_3A_3Av2_3A_3APermissionManagerPrivate"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1PermissionManagerPrivate.html">api::v2::PermissionManagerPrivate</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation helpers shared by the <a class="el" href="classapi_1_1v2_1_1PermissionManager.html" title="Central authorization facade: answers &quot;may this requester perform this operation on this entity?...">PermissionManager</a> authorization overloads.  <a href="classapi_1_1v2_1_1PermissionManagerPrivate.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation helpers shared by the <a class="el" href="classapi_1_1v2_1_1PermissionManager.html" title="Central authorization facade: answers &quot;may this requester performthis operation on this entity?...">PermissionManager</a> authorization overloads.  <a href="classapi_1_1v2_1_1PermissionManagerPrivate.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -150,9 +151,10 @@ Namespaces</h2></td></tr>
 <tr class="memitem:api_3A_3Av2" id="r_api_3A_3Av2"><td class="memItemLeft">namespace &#160;</td><td class="memItemRight"><a class="el" href="namespaceapi_1_1v2.html">api::v2</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The behind-the-scenes helper functions used by <a class="el" href="gatekeeper_8cpp.html#a2391c0b165c65deb4ad3ad19ca6dd2aa">PermissionManager</a>. (Originally: "Implementation helpers shared by the PermissionManager authorization overloads."). </p>
+<div class="textblock"><p>The behind-the-scenes helper functions used by <a class="el" href="gatekeeper_8cpp.html#ae17e951f1dc80a8e4920571ebe9f3c21">PermissionManager</a>. (Originally: "Implementation helpers shared by the PermissionManager
+authorization overloads."). </p>
 <p>This header declares static utilities that interpret the permission JSON (owner id, admin id and staff entries), compare the requester's identity, validate creation payloads, and fetch/cache permissions. The class is just a namespace-like container; it holds no data.</p>
-<p>WHY THIS FILE MATTERS IN THE SERVER: <a class="el" href="gatekeeper_8cpp.html#a2391c0b165c65deb4ad3ad19ca6dd2aa">PermissionManager</a> delegates the real work here, so the same rules are applied consistently to services, cases and appointments. Without these helpers the public manager would have to repeat database lookups and JSON parsing in every overload.</p>
+<p>WHY THIS FILE MATTERS IN THE SERVER: <a class="el" href="gatekeeper_8cpp.html#ae17e951f1dc80a8e4920571ebe9f3c21">PermissionManager</a> delegates the real work here, so the same rules are applied consistently to services, cases and appointments. Without these helpers the public manager would have to repeat database lookups and JSON parsing in every overload.</p>
 <p>CONCEPTS TO LEARN (for beginners):</p><ul>
 <li>JSON (JavaScript Object Notation): <a href="https://www.json.org/json-en.html">https://www.json.org/json-en.html</a></li>
 <li>Static class members: <a href="https://en.cppreference.com/w/cpp/language/static">https://en.cppreference.com/w/cpp/language/static</a></li>

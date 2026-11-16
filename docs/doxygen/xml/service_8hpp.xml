@@ -16,33 +16,33 @@
     <includedby refid="pharmacies_8hpp" local="yes">src/entities/services/pharmacies.hpp</includedby>
     <includedby refid="radiologycenters_8hpp" local="yes">src/entities/services/radiologycenters.hpp</includedby>
     <incdepgraph>
-      <node id="22">
+      <node id="21">
         <label>configurator/configurator.hpp</label>
         <link refid="configurator_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="29">
         <label>defaults.hpp</label>
         <link refid="defaults_8hpp"/>
         <childnode refid="3" relation="include">
@@ -50,23 +50,23 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="25">
         <label>configurator/envloader/envloader.hpp</label>
         <link refid="envloader_8hpp"/>
-        <childnode refid="24" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
       </node>
-      <node id="27">
+      <node id="26">
         <label>envvars/envvars.hpp</label>
         <link refid="envvars_8hpp"/>
         <childnode refid="6" relation="include">
@@ -77,43 +77,41 @@
       <node id="13">
         <label>controllers/databasecontroller/databasecontroller.hpp</label>
         <link refid="databasecontroller_8hpp"/>
-        <childnode refid="14" relation="include">
-        </childnode>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="37" relation="include">
         </childnode>
@@ -121,31 +119,33 @@
         </childnode>
         <childnode refid="40" relation="include">
         </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
         <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="33">
+      <node id="30">
         <label>database/asyncdbclient.hpp</label>
         <link refid="asyncdbclient_8hpp"/>
-        <childnode refid="34" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="35">
+      <node id="32">
         <label>database/asyncresultmapper.hpp</label>
         <link refid="asyncresultmapper_8hpp"/>
-        <childnode refid="36" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -154,52 +154,52 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="37">
+      <node id="34">
         <label>database/asyncsqlbinder.hpp</label>
         <link refid="asyncsqlbinder_8hpp"/>
-        <childnode refid="34" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="31">
+      <node id="37">
         <label>database/databasebusy.hpp</label>
         <link refid="databasebusy_8hpp"/>
-        <childnode refid="32" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="40">
+      <node id="39">
         <label>database/databasehandler.hpp</label>
         <link refid="databasehandler_8hpp"/>
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="14">
+      <node id="40">
         <label>database/dbprobe.hpp</label>
         <link refid="dbprobe_8hpp"/>
       </node>
       <node id="45">
         <label>entities/base/base.hpp</label>
         <link refid="base_8hpp"/>
-        <childnode refid="15" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -231,13 +231,13 @@
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -259,7 +259,7 @@
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="47">
@@ -267,7 +267,7 @@
         <link refid="entities_2base_2types_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
@@ -281,7 +281,7 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -289,19 +289,19 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="51" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="52" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="53" relation="include">
         </childnode>
@@ -309,7 +309,7 @@
         </childnode>
         <childnode refid="54" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>
@@ -325,15 +325,15 @@
       <node id="41">
         <label>store/store.hpp</label>
         <link refid="store_8hpp"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -356,10 +356,10 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="28">
+      <node id="27">
         <label>utils/message/message.hpp</label>
         <link refid="message_8hpp"/>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -371,15 +371,15 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="43" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="54" relation="include">
         </childnode>
@@ -389,13 +389,13 @@
       <node id="48">
         <label>algorithm</label>
       </node>
-      <node id="16">
+      <node id="15">
         <label>atomic</label>
       </node>
       <node id="49">
         <label>cctype</label>
       </node>
-      <node id="24">
+      <node id="23">
         <label>chrono</label>
       </node>
       <node id="50">
@@ -407,16 +407,16 @@
       <node id="3">
         <label>cstdint</label>
       </node>
-      <node id="34">
+      <node id="31">
         <label>drogon/orm/DbClient.h</label>
       </node>
-      <node id="36">
+      <node id="33">
         <label>drogon/orm/Result.h</label>
       </node>
-      <node id="38">
+      <node id="35">
         <label>drogon/orm/SqlBinder.h</label>
       </node>
-      <node id="39">
+      <node id="36">
         <label>drogon/utils/coroutine.h</label>
       </node>
       <node id="4">
@@ -425,16 +425,16 @@
       <node id="2">
         <label>fmt/core.h</label>
       </node>
-      <node id="15">
+      <node id="14">
         <label>fmt/format.h</label>
       </node>
-      <node id="23">
+      <node id="22">
         <label>fmt/ranges.h</label>
       </node>
       <node id="10">
         <label>iterator</label>
       </node>
-      <node id="17">
+      <node id="16">
         <label>jsoncons/basic_json.hpp</label>
       </node>
       <node id="5">
@@ -443,16 +443,16 @@
       <node id="11">
         <label>memory</label>
       </node>
-      <node id="18">
+      <node id="17">
         <label>mutex</label>
       </node>
       <node id="6">
         <label>optional</label>
       </node>
-      <node id="19">
+      <node id="18">
         <label>pqxx/pqxx</label>
       </node>
-      <node id="32">
+      <node id="38">
         <label>stdexcept</label>
       </node>
       <node id="7">
@@ -464,10 +464,10 @@
       <node id="9">
         <label>sys/types.h</label>
       </node>
-      <node id="29">
+      <node id="28">
         <label>trantor/utils/Logger.h</label>
       </node>
-      <node id="25">
+      <node id="24">
         <label>type_traits</label>
       </node>
       <node id="42">
@@ -476,10 +476,10 @@
       <node id="43">
         <label>unordered_map</label>
       </node>
-      <node id="20">
+      <node id="19">
         <label>unordered_set</label>
       </node>
-      <node id="21">
+      <node id="20">
         <label>utility</label>
       </node>
       <node id="52">
@@ -622,13 +622,13 @@
 <para>Convenience alias for the staff-invitation payload consumed by <ref refid="classService" kindref="compound">Service</ref> builders. </para>
     </briefdescription>
     <detaileddescription>
-<para>This header defines the <ref refid="classService" kindref="compound">Service</ref> entity for organisation tables such as clinics, pharmacies, laboratories and radiology centres. On top of the inherited CRUD statements it adds two builders that edit the JSONB &quot;staff&quot; array of a service row to add or remove a team member, and a static query that <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref> uses to read a service&apos;s owner, admin and staff.</para>
-<para>WHY THIS FILE MATTERS IN THE SERVER: Services (organisations) need to manage teams, and permission checks need to know who owns or administers a service. Controllers use <ref refid="classService" kindref="compound">Service</ref> to build the jsonb_set UPDATEs that change the staff array and the SELECT that feeds <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref>. Without it there would be no safe way to add/remove staff or to authorise service-level operations.</para>
+<para>This header defines the <ref refid="classService" kindref="compound">Service</ref> entity for organisation tables such as clinics, pharmacies, laboratories and radiology centres. On top of the inherited CRUD statements it adds two builders that edit the JSONB &quot;staff&quot; array of a service row to add or remove a team member, and a static query that <ref refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21" kindref="member">PermissionManager</ref> uses to read a service&apos;s owner, admin and staff.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: Services (organisations) need to manage teams, and permission checks need to know who owns or administers a service. Controllers use <ref refid="classService" kindref="compound">Service</ref> to build the jsonb_set UPDATEs that change the staff array and the SELECT that feeds <ref refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21" kindref="member">PermissionManager</ref>. Without it there would be no safe way to add/remove staff or to authorise service-level operations.</para>
 <para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
 <listitem><para>std::optional: <ulink url="https://en.cppreference.com/w/cpp/utility/optional">https://en.cppreference.com/w/cpp/utility/optional</ulink></para>
 </listitem><listitem><para>JSONB: PostgreSQL&apos;s binary JSON column type; jsonb_set changes a value at a path inside it and the -&gt; operator walks into a JSON object.</para>
 </listitem><listitem><para>SQL parameter binding: put $1, $2, ... markers in the SQL and pass the real values separately; see <ulink url="https://en.cppreference.com/w/cpp">https://en.cppreference.com/w/cpp</ulink> or the libpqxx documentation.</para>
-</listitem><listitem><para>Type alias (using <ref refid="staffcontroller_8cpp_1acd40880d4e5e43f97e8ead3d0efe3666" kindref="member">StaffData</ref> = ...): a short local name for a longer qualified type; no new type is created.</para>
+</listitem><listitem><para>Type alias (using <ref refid="staffcontroller_8cpp_1a05f271479525f9aae1900f939d81a7f9" kindref="member">StaffData</ref> = ...): a short local name for a longer qualified type; no new type is created.</para>
 </listitem></itemizedlist>
 </para>
 <para><simplesect kind="author"><para>Amr Osman <ulink url="mailto:dr3mro@gmail.com">dr3mro@gmail.com</ulink> </para>
@@ -640,171 +640,230 @@
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
 <codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>service.hpp</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Convenience<sp/>alias<sp/>for<sp/>the<sp/>staff-invitation<sp/>payload<sp/>consumed<sp/>by<sp/>Service<sp/>builders.</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>defines<sp/>the<sp/>Service<sp/>entity<sp/>for<sp/>organisation<sp/>tables<sp/>such<sp/>as<sp/>clinics,</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>pharmacies,<sp/>laboratories<sp/>and<sp/>radiology<sp/>centres.<sp/>On<sp/>top<sp/>of<sp/>the<sp/>inherited<sp/>CRUD<sp/>statements<sp/>it<sp/>adds</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>two<sp/>builders<sp/>that<sp/>edit<sp/>the<sp/>JSONB<sp/>&quot;staff&quot;<sp/>array<sp/>of<sp/>a<sp/>service<sp/>row<sp/>to<sp/>add<sp/>or<sp/>remove<sp/>a<sp/>team<sp/>member,</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>and<sp/>a<sp/>static<sp/>query<sp/>that<sp/>PermissionManager<sp/>uses<sp/>to<sp/>read<sp/>a<sp/>service&apos;s<sp/>owner,<sp/>admin<sp/>and<sp/>staff.</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>Services<sp/>(organisations)<sp/>need<sp/>to<sp/>manage<sp/>teams,<sp/>and<sp/>permission<sp/>checks<sp/>need<sp/>to<sp/>know<sp/>who<sp/>owns<sp/>or</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>administers<sp/>a<sp/>service.<sp/>Controllers<sp/>use<sp/>Service<sp/>to<sp/>build<sp/>the<sp/>jsonb_set<sp/>UPDATEs<sp/>that<sp/>change<sp/>the</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>staff<sp/>array<sp/>and<sp/>the<sp/>SELECT<sp/>that<sp/>feeds<sp/>PermissionManager.<sp/>Without<sp/>it<sp/>there<sp/>would<sp/>be<sp/>no<sp/>safe<sp/>way</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>to<sp/>add/remove<sp/>staff<sp/>or<sp/>to<sp/>authorise<sp/>service-level<sp/>operations.</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>-<sp/>std::optional:<sp/>https://en.cppreference.com/w/cpp/utility/optional</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>-<sp/>JSONB:<sp/>PostgreSQL&apos;s<sp/>binary<sp/>JSON<sp/>column<sp/>type;<sp/>jsonb_set<sp/>changes<sp/>a<sp/>value<sp/>at<sp/>a<sp/>path<sp/>inside<sp/>it<sp/>and</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp/>*<sp/><sp/><sp/>the<sp/>-&gt;<sp/>operator<sp/>walks<sp/>into<sp/>a<sp/>JSON<sp/>object.</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>SQL<sp/>parameter<sp/>binding:<sp/>put<sp/>$1,<sp/>$2,<sp/>...<sp/>markers<sp/>in<sp/>the<sp/>SQL<sp/>and<sp/>pass<sp/>the<sp/>real<sp/>values<sp/>separately;</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp/>*<sp/><sp/><sp/>see<sp/>https://en.cppreference.com/w/cpp<sp/>or<sp/>the<sp/>libpqxx<sp/>documentation.</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>Type<sp/>alias<sp/>(using<sp/>StaffData<sp/>=<sp/>...):<sp/>a<sp/>short<sp/>local<sp/>name<sp/>for<sp/>a<sp/>longer<sp/>qualified<sp/>type;<sp/>no<sp/>new<sp/>type</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*<sp/><sp/><sp/>is<sp/>created.</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
-<codeline lineno="26"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>header<sp/>at<sp/>most<sp/>once<sp/>per<sp/>source<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/core.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>fmt::format<sp/>is<sp/>used<sp/>to<sp/>assemble<sp/>the<sp/>SQL<sp/>statements.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Convenience<sp/>alias<sp/>for<sp/>the<sp/>staff-invitation<sp/>payload<sp/>consumed<sp/>by<sp/>Service</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>builders.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>defines<sp/>the<sp/>Service<sp/>entity<sp/>for<sp/>organisation<sp/>tables<sp/>such</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>as<sp/>clinics,<sp/>pharmacies,<sp/>laboratories<sp/>and<sp/>radiology<sp/>centres.<sp/>On<sp/>top<sp/>of<sp/>the</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>inherited<sp/>CRUD<sp/>statements<sp/>it<sp/>adds<sp/>two<sp/>builders<sp/>that<sp/>edit<sp/>the<sp/>JSONB<sp/>&quot;staff&quot;</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>array<sp/>of<sp/>a<sp/>service<sp/>row<sp/>to<sp/>add<sp/>or<sp/>remove<sp/>a<sp/>team<sp/>member,<sp/>and<sp/>a<sp/>static<sp/>query</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>that<sp/>PermissionManager<sp/>uses<sp/>to<sp/>read<sp/>a<sp/>service&apos;s<sp/>owner,<sp/>admin<sp/>and<sp/>staff.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Services<sp/>(organisations)<sp/>need<sp/>to<sp/>manage<sp/>teams,<sp/>and<sp/>permission<sp/>checks<sp/>need<sp/>to</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>know<sp/>who<sp/>owns<sp/>or<sp/>administers<sp/>a<sp/>service.<sp/>Controllers<sp/>use<sp/>Service<sp/>to<sp/>build<sp/>the</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>jsonb_set<sp/>UPDATEs<sp/>that<sp/>change<sp/>the<sp/>staff<sp/>array<sp/>and<sp/>the<sp/>SELECT<sp/>that<sp/>feeds</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>PermissionManager.<sp/>Without<sp/>it<sp/>there<sp/>would<sp/>be<sp/>no<sp/>safe<sp/>way<sp/>to<sp/>add/remove<sp/>staff</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>or<sp/>to<sp/>authorise<sp/>service-level<sp/>operations.</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>std::optional:<sp/>https://en.cppreference.com/w/cpp/utility/optional</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>JSONB:<sp/>PostgreSQL&apos;s<sp/>binary<sp/>JSON<sp/>column<sp/>type;<sp/>jsonb_set<sp/>changes<sp/>a<sp/>value<sp/>at<sp/>a</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>path<sp/>inside<sp/>it<sp/>and<sp/>the<sp/>-&gt;<sp/>operator<sp/>walks<sp/>into<sp/>a<sp/>JSON<sp/>object.</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>SQL<sp/>parameter<sp/>binding:<sp/>put<sp/>$1,<sp/>$2,<sp/>...<sp/>markers<sp/>in<sp/>the<sp/>SQL<sp/>and<sp/>pass<sp/>the<sp/>real</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>values<sp/>separately;<sp/>see<sp/>https://en.cppreference.com/w/cpp<sp/>or<sp/>the<sp/>libpqxx</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>documentation.</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>-<sp/>Type<sp/>alias<sp/>(using<sp/>StaffData<sp/>=<sp/>...):<sp/>a<sp/>short<sp/>local<sp/>name<sp/>for<sp/>a<sp/>longer</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>qualified<sp/>type;<sp/>no<sp/>new<sp/>type<sp/>is<sp/>created.</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>uint64_t<sp/>and<sp/>std::uint64_t,<sp/>used<sp/>for<sp/>ids.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;exception&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::exception,<sp/>caught<sp/>by<sp/>the<sp/>builders.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/json.hpp&gt;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>jsoncons::json,<sp/>referenced<sp/>through<sp/>the<sp/>StaffData<sp/>payload.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>builders<sp/>return<sp/>std::optional&lt;std::string&gt;.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>for<sp/>SQL<sp/>text<sp/>and<sp/>table<sp/>names.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="entity_8hpp" kindref="compound">entities/base/entity.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Entity<sp/>and<sp/>Binder,<sp/>the<sp/>base<sp/>class<sp/>and<sp/>SQL<sp/>helper.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="entities_2base_2types_8hpp" kindref="compound">entities/base/types.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Types::StaffData,<sp/>the<sp/>staff-invitation<sp/>payload.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="message_8hpp" kindref="compound">utils/message/message.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Message<sp/>logging<sp/>for<sp/>build<sp/>failures.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="42"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Convenience<sp/>alias<sp/>for<sp/>the<sp/>staff-invitation<sp/>payload<sp/>consumed<sp/>by<sp/>Service<sp/>builders.</highlight></codeline>
-<codeline lineno="44"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="staffcontroller_8cpp_1acd40880d4e5e43f97e8ead3d0efe3666" kindref="member">StaffData</ref><sp/>=<sp/><ref refid="structapi_1_1v2_1_1Types_1_1StaffData" kindref="compound">api::v2::Types::StaffData</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Short<sp/>global<sp/>name<sp/>so<sp/>the<sp/>builders<sp/>below<sp/>can<sp/>just<sp/>write<sp/>StaffData.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="47"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>@class<sp/>Service</highlight></codeline>
-<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Entity<sp/>for<sp/>service/organisation<sp/>tables<sp/>(clinics,<sp/>pharmacies,<sp/>laboratories,<sp/>...).</highlight></codeline>
-<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>@details<sp/>Adds<sp/>builders<sp/>that<sp/>mutate<sp/>the<sp/>JSONB<sp/>&quot;staff&quot;<sp/>array<sp/>of<sp/>a<sp/>service<sp/>row<sp/>to<sp/>add<sp/>or<sp/>remove<sp/>a</highlight></codeline>
-<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>nominee,<sp/>plus<sp/>a<sp/>static<sp/>query<sp/>used<sp/>by<sp/>PermissionManager<sp/>to<sp/>read<sp/>a<sp/>service&apos;s<sp/>owner/admin/staff.</highlight></codeline>
-<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>CRUD<sp/>statements<sp/>remain<sp/>inherited<sp/>from<sp/>Entity.</highlight></codeline>
-<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>@note<sp/>The<sp/>staff<sp/>builders<sp/>bind<sp/>the<sp/>nominee<sp/>and<sp/>entity<sp/>ids<sp/>through<sp/>Binder;<sp/>the<sp/>static<sp/>permission</highlight></codeline>
-<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>query<sp/>interpolates<sp/>the<sp/>service<sp/>name<sp/>and<sp/>id<sp/>into<sp/>its<sp/>text<sp/>and<sp/>is<sp/>used<sp/>as<sp/>a<sp/>permission<sp/>cache<sp/>key.</highlight></codeline>
-<codeline lineno="55"><highlight class="comment"><sp/>*<sp/>@see<sp/>Entity,<sp/>api::v2::Types::StaffData</highlight></codeline>
-<codeline lineno="56"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57" refid="classService" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" kindref="member">Service</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93" kindref="member">Entity</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Inherits<sp/>all<sp/>CRUD<sp/>builders;<sp/>adds<sp/>staff-specific<sp/>and<sp/>permission<sp/>helpers.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Non-copyable<sp/>and<sp/>non-movable;<sp/>construct<sp/>in<sp/>place<sp/>for<sp/>the<sp/>request<sp/>that<sp/>uses<sp/>it.</highlight></codeline>
-<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="63" refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" kindref="member">Service</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" kindref="member">Service</ref>&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copy:<sp/>the<sp/>entity<sp/>belongs<sp/>to<sp/>one<sp/>request.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="64" refid="classService_1a0b54b15cd18155406cdd605c2fe6d46f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classService_1a0b54b15cd18155406cdd605c2fe6d46f" kindref="member">Service</ref>(<ref refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" kindref="member">Service</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>move.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="65" refid="classService_1acd58b3d98fbebda840c84e7f4b6a95c4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" kindref="member">Service</ref>&amp;<sp/><ref refid="classService_1acd58b3d98fbebda840c84e7f4b6a95c4" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" kindref="member">Service</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copy<sp/>assignment.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="66" refid="classService_1a272111f072b71c01c2b2f3bc680f782d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" kindref="member">Service</ref>&amp;<sp/><ref refid="classService_1a272111f072b71c01c2b2f3bc680f782d" kindref="member">operator=</ref>(<ref refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" kindref="member">Service</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>move<sp/>assignment.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="69"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Stores<sp/>the<sp/>payload<sp/>and<sp/>the<sp/>service<sp/>table<sp/>name<sp/>in<sp/>the<sp/>base<sp/>Entity.</highlight></codeline>
-<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Payload<sp/>type<sp/>held<sp/>by<sp/>EntityType<sp/>(StaffData<sp/>for<sp/>the<sp/>staff<sp/>builders).</highlight></codeline>
-<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Operation<sp/>payload.</highlight></codeline>
-<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>tablename<sp/>Service<sp/>table<sp/>name.</highlight></codeline>
-<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="75" refid="classService_1a8349b8181f9d015c6d7577f7194e86dc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classService_1a8349b8181f9d015c6d7577f7194e86dc" kindref="member">Service</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T&amp;<sp/><ref refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" kindref="member">data</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>)<sp/>:<sp/><ref refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93" kindref="member">Entity</ref>(<ref refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" kindref="member">data</ref>,<sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>Forward<sp/>both<sp/>values<sp/>to<sp/>the<sp/>base<sp/>unchanged.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Service(const<sp/>std::string<sp/>&amp;tablename)<sp/>:<sp/>Entity(tablename)<sp/>{};</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Default<sp/>destructor;<sp/>no<sp/>resources<sp/>beyond<sp/>the<sp/>base<sp/>Entity.</highlight></codeline>
-<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="82" refid="classService_1aba3604115a58b69b2c46a84fd9833131" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classService_1aba3604115a58b69b2c46a84fd9833131" kindref="member">~Service</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>base<sp/>destructor<sp/>is<sp/>sufficient.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>nominee<sp/>id<sp/>(as<sp/>JSON<sp/>text)<sp/>and<sp/>the<sp/>entity<sp/>id<sp/>are<sp/>bound.</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>UPDATE<sp/>that<sp/>appends<sp/>a<sp/>nominee<sp/>id<sp/>to<sp/>the<sp/>service&apos;s<sp/>Doctors<sp/>staff<sp/>array.</highlight></codeline>
-<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Uses<sp/>jsonb_set<sp/>on<sp/>the<sp/>mjson<sp/>payload<sp/>path<sp/>{payload,providers,Doctors},<sp/>concatenating</highlight></codeline>
-<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>the<sp/>nominee<sp/>id<sp/>as<sp/>a<sp/>JSON<sp/>text<sp/>value.<sp/>Both<sp/>the<sp/>nominee<sp/>id<sp/>(as<sp/>text)<sp/>and<sp/>the<sp/>entity<sp/>id<sp/>are<sp/>bound.</highlight></codeline>
-<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>params<sp/>Cleared<sp/>and<sp/>filled<sp/>with<sp/>the<sp/>bound<sp/>nominee<sp/>and<sp/>entity<sp/>ids.</highlight></codeline>
-<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>UPDATE<sp/>...<sp/>RETURNING<sp/>id,<sp/>or<sp/>std::nullopt<sp/>if<sp/>the<sp/>payload<sp/>is<sp/>not<sp/>StaffData<sp/>or<sp/>an</highlight></codeline>
-<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>exception<sp/>occurs.</highlight></codeline>
-<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="92" refid="classService_1a1a762691efab98926ce3c34988ccc51a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classService_1a1a762691efab98926ce3c34988ccc51a" kindref="member">getSqlAddStaffStatement</ref>(pqxx::params&amp;<sp/>params)<sp/><sp/></highlight><highlight class="comment">//<sp/>Builds<sp/>the<sp/>&quot;add<sp/>team<sp/>member&quot;<sp/>statement.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/>idata<sp/>=<sp/>std::get&lt;StaffData&gt;(<ref refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" kindref="member">getData</ref>());<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>payload<sp/>must<sp/>be<sp/>StaffData;<sp/>std::get<sp/>throws<sp/>otherwise.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBase_1_1Binder" kindref="compound">Binder</ref><sp/>binder(params);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Fresh<sp/>binder<sp/>for<sp/>the<sp/>two<sp/>parameters.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Bound<sp/>in<sp/>a<sp/>fixed<sp/>order<sp/>(argument<sp/>evaluation<sp/>order<sp/>is<sp/>unspecified).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>nominee_ph<sp/>=<sp/>binder.<ref refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" kindref="member">bind</ref>(std::to_string(idata.nominee_id));<sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>the<sp/>id<sp/>to<sp/>text<sp/>because<sp/>the<sp/>staff<sp/>array<sp/>holds<sp/>text<sp/>values;<sp/>bind<sp/>as<sp/>$1.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>entity_ph<sp/><sp/>=<sp/>binder.<ref refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" kindref="member">bind</ref>(idata.entity_id);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Bind<sp/>the<sp/>service<sp/>row<sp/>id<sp/>as<sp/>$2.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>SQL<sp/>calls<sp/>jsonb_set<sp/>on<sp/>mjson<sp/>at<sp/>the<sp/>path<sp/>{payload,providers,Doctors},<sp/>concatenating</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>(||)<sp/>the<sp/>existing<sp/>array<sp/>with<sp/>the<sp/>nominee<sp/>id<sp/>wrapped<sp/>by<sp/>to_jsonb(...::text).<sp/>This<sp/>adds</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>member<sp/>without<sp/>rebuilding<sp/>the<sp/>whole<sp/>array;<sp/>the<sp/>WHERE<sp/>id<sp/>clause<sp/>scopes<sp/>it<sp/>to<sp/>one<sp/>service.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fmt::format(</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;UPDATE<sp/>{}<sp/>SET<sp/>mjson<sp/>=<sp/>jsonb_set(mjson,<sp/>&apos;{{payload,providers,Doctors}}&apos;,<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;((mjson-&gt;&apos;payload&apos;-&gt;&apos;providers&apos;-&gt;&apos;Doctors&apos;)<sp/>||<sp/>to_jsonb({}::text)))<sp/>WHERE<sp/>id={}<sp/>RETURNING<sp/>id;&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>,<sp/>nominee_ph,<sp/>entity_ph);<sp/><sp/></highlight><highlight class="comment">//<sp/>Two<sp/>adjacent<sp/>string<sp/>literals<sp/>form<sp/>one<sp/>SQL<sp/>string;<sp/>the<sp/>placeholders<sp/>are<sp/>filled<sp/>in<sp/>order.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/><sp/></highlight><highlight class="comment">//<sp/>Wrong<sp/>payload<sp/>type<sp/>or<sp/>formatting<sp/>error.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight><highlight class="stringliteral">&quot;Error<sp/>creating<sp/>query<sp/>for<sp/>add<sp/>member.&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>a<sp/>human-readable<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(e.what());<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>exception<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Signal<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>UPDATE<sp/>that<sp/>removes<sp/>a<sp/>nominee<sp/>id<sp/>from<sp/>the<sp/>service&apos;s<sp/>Doctors<sp/>staff<sp/>array.</highlight></codeline>
-<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Rebuilds<sp/>the<sp/>array<sp/>with<sp/>jsonb_agg<sp/>over<sp/>the<sp/>elements<sp/>that<sp/>do<sp/>not<sp/>equal<sp/>the<sp/>bound</highlight></codeline>
-<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>nominee<sp/>id<sp/>(as<sp/>JSON<sp/>text).<sp/>The<sp/>nominee<sp/>and<sp/>entity<sp/>ids<sp/>are<sp/>bound<sp/>in<sp/>a<sp/>fixed<sp/>order.</highlight></codeline>
-<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>params<sp/>Cleared<sp/>and<sp/>filled<sp/>with<sp/>the<sp/>bound<sp/>nominee<sp/>and<sp/>entity<sp/>ids.</highlight></codeline>
-<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>UPDATE<sp/>...<sp/>RETURNING<sp/>id,<sp/>or<sp/>std::nullopt<sp/>if<sp/>the<sp/>payload<sp/>is<sp/>not<sp/>StaffData<sp/>or<sp/>an</highlight></codeline>
-<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>exception<sp/>occurs.</highlight></codeline>
-<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="125" refid="classService_1a6b8a06b26521f411f8c21104031ab5fe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classService_1a6b8a06b26521f411f8c21104031ab5fe" kindref="member">getSqlRemoveStaffStatement</ref>(pqxx::params&amp;<sp/>params)<sp/><sp/></highlight><highlight class="comment">//<sp/>Builds<sp/>the<sp/>&quot;remove<sp/>team<sp/>member&quot;<sp/>statement.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/>idata<sp/>=<sp/>std::get&lt;StaffData&gt;(<ref refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" kindref="member">getData</ref>());<sp/><sp/></highlight><highlight class="comment">//<sp/>Must<sp/>be<sp/>a<sp/>StaffData<sp/>payload.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBase_1_1Binder" kindref="compound">Binder</ref><sp/>binder(params);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Fresh<sp/>binder<sp/>for<sp/>the<sp/>two<sp/>parameters.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Bound<sp/>in<sp/>a<sp/>fixed<sp/>order<sp/>(argument<sp/>evaluation<sp/>order<sp/>is<sp/>unspecified).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>nominee_ph<sp/>=<sp/>binder.<ref refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" kindref="member">bind</ref>(std::to_string(idata.nominee_id));<sp/><sp/></highlight><highlight class="comment">//<sp/>Nominee<sp/>id<sp/>as<sp/>text<sp/>-&gt;<sp/>$1.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>entity_ph<sp/><sp/>=<sp/>binder.<ref refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" kindref="member">bind</ref>(idata.entity_id);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Service<sp/>row<sp/>id<sp/>-&gt;<sp/>$2.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>SQL<sp/>expands<sp/>the<sp/>Doctors<sp/>array<sp/>with<sp/>jsonb_array_elements,<sp/>keeps<sp/>only<sp/>elements<sp/>that</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>do<sp/>NOT<sp/>equal<sp/>the<sp/>nominee<sp/>id,<sp/>and<sp/>re-aggregates<sp/>them<sp/>with<sp/>jsonb_agg.<sp/>jsonb_set<sp/>then</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>writes<sp/>that<sp/>smaller<sp/>array<sp/>back<sp/>at<sp/>the<sp/>same<sp/>path<sp/>for<sp/>the<sp/>one<sp/>service<sp/>row.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fmt::format(</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;UPDATE<sp/>{}<sp/>SET<sp/>mjson<sp/>=<sp/>jsonb_set(mjson,<sp/>&apos;{{payload,providers,Doctors}}&apos;,<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;(SELECT<sp/>jsonb_agg(elem)<sp/>FROM<sp/>jsonb_array_elements(mjson-&gt;&apos;payload&apos;-&gt;&apos;providers&apos;-&gt;&apos;Doctors&apos;)<sp/>AS<sp/>elem<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;WHERE<sp/>elem<sp/>&lt;&gt;<sp/>to_jsonb({}::text)))<sp/>WHERE<sp/>id={}<sp/>RETURNING<sp/>id;&quot;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>,<sp/>nominee_ph,<sp/>entity_ph);<sp/><sp/></highlight><highlight class="comment">//<sp/>Placeholders<sp/>fill<sp/>the<sp/>nominee<sp/>comparison<sp/>and<sp/>the<sp/>row<sp/>id.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/><sp/></highlight><highlight class="comment">//<sp/>Wrong<sp/>payload<sp/>type<sp/>or<sp/>formatting<sp/>error.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight><highlight class="stringliteral">&quot;Error<sp/>creating<sp/>query<sp/>for<sp/>remove<sp/>member.&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>a<sp/>human-readable<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(e.what());<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Signal<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="150"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="151"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>permission<sp/>lookup<sp/>for<sp/>a<sp/>service<sp/>row<sp/>by<sp/>id.</highlight></codeline>
-<codeline lineno="152"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Returns<sp/>the<sp/>owner/admin/staff<sp/>columns<sp/>used<sp/>by<sp/>PermissionManager<sp/>to<sp/>authorise</highlight></codeline>
-<codeline lineno="153"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>service-level<sp/>actions.<sp/>The<sp/>table<sp/>name<sp/>and<sp/>id<sp/>are<sp/>formatted<sp/>into<sp/>the<sp/>query<sp/>text<sp/>rather<sp/>than</highlight></codeline>
-<codeline lineno="154"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>bound;<sp/>the<sp/>resulting<sp/>text<sp/>also<sp/>serves<sp/>as<sp/>the<sp/>permission<sp/>cache<sp/>key.</highlight></codeline>
-<codeline lineno="155"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_name<sp/>Name<sp/>of<sp/>the<sp/>service/organisation<sp/>table.</highlight></codeline>
-<codeline lineno="156"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_id<sp/>Primary<sp/>key<sp/>of<sp/>the<sp/>service<sp/>row.</highlight></codeline>
-<codeline lineno="157"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>SELECT<sp/>statement<sp/>(always<sp/>produced<sp/>by<sp/>this<sp/>implementation).</highlight></codeline>
-<codeline lineno="158"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="159" refid="classService_1ac5c73e3e8d87d1a87af5c12dcee32013" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classService_1ac5c73e3e8d87d1a87af5c12dcee32013" kindref="member">getServicePermissionsQuery</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>service_name,<sp/>std::uint64_t<sp/>service_id)<sp/><sp/></highlight><highlight class="comment">//<sp/>Static:<sp/>called<sp/>directly<sp/>by<sp/>the<sp/>permission<sp/>layer,<sp/>no<sp/>object<sp/>needed.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;SELECT<sp/>owner_id,admin_id,staff<sp/>FROM<sp/>{}<sp/>WHERE<sp/>id<sp/>=<sp/>&apos;{}&apos;<sp/>LIMIT<sp/>1;&quot;</highlight><highlight class="normal">,<sp/>service_name,<sp/>service_id);<sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>who<sp/>owns/administers/staffs<sp/>the<sp/>one<sp/>service<sp/>row;<sp/>LIMIT<sp/>1<sp/>because<sp/>ids<sp/>are<sp/>unique.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"></highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>private<sp/>members;<sp/>this<sp/>section<sp/>is<sp/>intentionally<sp/>empty<sp/>but<sp/>kept<sp/>for<sp/>symmetry<sp/>with<sp/>siblings.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="165"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"></highlight></codeline>
-<codeline lineno="167"><highlight class="normal"></highlight><highlight class="comment">//<sp/>(Intentionally<sp/>left<sp/>blank:<sp/>all<sp/>helpers<sp/>above<sp/>are<sp/>public<sp/>or<sp/>inherited.)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>header<sp/>at<sp/>most<sp/>once<sp/>per<sp/>source<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/core.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>fmt::format<sp/>is<sp/>used<sp/>to<sp/>assemble<sp/>the<sp/>SQL<sp/>statements.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>uint64_t<sp/>and<sp/>std::uint64_t,<sp/>used<sp/>for<sp/>ids.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;exception&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::exception,<sp/>caught<sp/>by<sp/>the<sp/>builders.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>jsoncons::json,<sp/>referenced<sp/>through<sp/>the<sp/>StaffData<sp/>payload.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;jsoncons/json.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>builders<sp/>return<sp/>std::optional&lt;std::string&gt;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>for<sp/>SQL<sp/>text<sp/>and<sp/>table<sp/>names.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Entity<sp/>and<sp/>Binder,<sp/>the<sp/>base<sp/>class<sp/>and<sp/>SQL<sp/>helper.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="entity_8hpp" kindref="compound">entities/base/entity.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Types::StaffData,<sp/>the<sp/>staff-invitation<sp/>payload.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="entities_2base_2types_8hpp" kindref="compound">entities/base/types.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="message_8hpp" kindref="compound">utils/message/message.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Message<sp/>logging<sp/>for<sp/>build<sp/>failures.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="49"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Convenience<sp/>alias<sp/>for<sp/>the<sp/>staff-invitation<sp/>payload<sp/>consumed<sp/>by<sp/>Service</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>builders.</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="staffcontroller_8cpp_1a05f271479525f9aae1900f939d81a7f9" kindref="member">StaffData</ref><sp/>=</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structapi_1_1v2_1_1Types_1_1StaffData" kindref="compound">api::v2::Types::StaffData</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Short<sp/>global<sp/>name<sp/>so<sp/>the<sp/>builders<sp/>below<sp/>can</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>just<sp/>write<sp/>StaffData.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="57"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*<sp/>@class<sp/>Service</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Entity<sp/>for<sp/>service/organisation<sp/>tables<sp/>(clinics,<sp/>pharmacies,</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/>laboratories,<sp/>...).</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/>@details<sp/>Adds<sp/>builders<sp/>that<sp/>mutate<sp/>the<sp/>JSONB<sp/>&quot;staff&quot;<sp/>array<sp/>of<sp/>a<sp/>service<sp/>row</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/>to<sp/>add<sp/>or<sp/>remove<sp/>a<sp/>nominee,<sp/>plus<sp/>a<sp/>static<sp/>query<sp/>used<sp/>by<sp/>PermissionManager<sp/>to</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>read<sp/>a<sp/>service&apos;s<sp/>owner/admin/staff.<sp/>CRUD<sp/>statements<sp/>remain<sp/>inherited<sp/>from</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/>Entity.</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*<sp/>@note<sp/>The<sp/>staff<sp/>builders<sp/>bind<sp/>the<sp/>nominee<sp/>and<sp/>entity<sp/>ids<sp/>through<sp/>Binder;<sp/>the</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*<sp/>static<sp/>permission<sp/>query<sp/>interpolates<sp/>the<sp/>service<sp/>name<sp/>and<sp/>id<sp/>into<sp/>its<sp/>text</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*<sp/>and<sp/>is<sp/>used<sp/>as<sp/>a<sp/>permission<sp/>cache<sp/>key.</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/>*<sp/>@see<sp/>Entity,<sp/>api::v2::Types::StaffData</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Inherits<sp/>all<sp/>CRUD<sp/>builders;<sp/>adds</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">//<sp/>staff-specific<sp/>and<sp/>permission<sp/>helpers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="classService" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" kindref="member">Service</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93" kindref="member">Entity</ref><sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Non-copyable<sp/>and<sp/>non-movable;<sp/>construct<sp/>in<sp/>place<sp/>for<sp/>the<sp/>request</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/>*<sp/>that<sp/>uses<sp/>it.</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" kindref="member">Service</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" kindref="member">Service</ref>&amp;)<sp/>=</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copy:<sp/>the<sp/>entity<sp/>belongs<sp/>to<sp/>one<sp/>request.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classService_1a0b54b15cd18155406cdd605c2fe6d46f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classService_1a0b54b15cd18155406cdd605c2fe6d46f" kindref="member">Service</ref>(<ref refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" kindref="member">Service</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>move.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classService_1acd58b3d98fbebda840c84e7f4b6a95c4" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" kindref="member">Service</ref>&amp;<sp/><ref refid="classService_1acd58b3d98fbebda840c84e7f4b6a95c4" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" kindref="member">Service</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copy<sp/>assignment.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="classService_1a272111f072b71c01c2b2f3bc680f782d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" kindref="member">Service</ref>&amp;<sp/><ref refid="classService_1a272111f072b71c01c2b2f3bc680f782d" kindref="member">operator=</ref>(<ref refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166" kindref="member">Service</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>move<sp/>assignment.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Stores<sp/>the<sp/>payload<sp/>and<sp/>the<sp/>service<sp/>table<sp/>name<sp/>in<sp/>the<sp/>base<sp/>Entity.</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@tparam<sp/>T<sp/>Payload<sp/>type<sp/>held<sp/>by<sp/>EntityType<sp/>(StaffData<sp/>for<sp/>the<sp/>staff</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/>*<sp/>builders).</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Operation<sp/>payload.</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>tablename<sp/>Service<sp/>table<sp/>name.</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="92" refid="classService_1a8349b8181f9d015c6d7577f7194e86dc" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classService_1a8349b8181f9d015c6d7577f7194e86dc" kindref="member">Service</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T&amp;<sp/><ref refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" kindref="member">data</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Forward<sp/>both<sp/>values<sp/>to<sp/>the<sp/>base<sp/>unchanged.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93" kindref="member">Entity</ref>(<ref refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" kindref="member">data</ref>,<sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Service(const<sp/>std::string<sp/>&amp;tablename)<sp/>:<sp/>Entity(tablename)<sp/>{};</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Default<sp/>destructor;<sp/>no<sp/>resources<sp/>beyond<sp/>the<sp/>base<sp/>Entity.</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="classService_1aba3604115a58b69b2c46a84fd9833131" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classService_1aba3604115a58b69b2c46a84fd9833131" kindref="member">~Service</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>base<sp/>destructor<sp/>is<sp/>sufficient.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>nominee<sp/>id<sp/>(as<sp/>JSON<sp/>text)<sp/>and<sp/>the<sp/>entity<sp/>id<sp/>are<sp/>bound.</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>UPDATE<sp/>that<sp/>appends<sp/>a<sp/>nominee<sp/>id<sp/>to<sp/>the<sp/>service&apos;s</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Doctors<sp/>staff<sp/>array.</highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Uses<sp/>jsonb_set<sp/>on<sp/>the<sp/>mjson<sp/>payload<sp/>path</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/>*<sp/>{payload,providers,Doctors},<sp/>concatenating<sp/>the<sp/>nominee<sp/>id<sp/>as<sp/>a<sp/>JSON<sp/>text</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/>*<sp/>value.<sp/>Both<sp/>the<sp/>nominee<sp/>id<sp/>(as<sp/>text)<sp/>and<sp/>the<sp/>entity<sp/>id<sp/>are<sp/>bound.</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[out]<sp/>params<sp/>Cleared<sp/>and<sp/>filled<sp/>with<sp/>the<sp/>bound<sp/>nominee<sp/>and<sp/>entity</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/><sp/><sp/>*<sp/>ids.</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>UPDATE<sp/>...<sp/>RETURNING<sp/>id,<sp/>or<sp/>std::nullopt<sp/>if<sp/>the<sp/>payload<sp/>is<sp/>not</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/><sp/><sp/>*<sp/>StaffData<sp/>or<sp/>an<sp/>exception<sp/>occurs.</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Builds<sp/>the<sp/>&quot;add<sp/>team<sp/>member&quot;<sp/>statement.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="classService_1a1a762691efab98926ce3c34988ccc51a" refkind="member"><highlight class="normal"><sp/><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classService_1a1a762691efab98926ce3c34988ccc51a" kindref="member">getSqlAddStaffStatement</ref>(pqxx::params&amp;<sp/>params)<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>idata<sp/>=</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::get&lt;StaffData&gt;(<ref refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" kindref="member">getData</ref>());<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>payload<sp/>must<sp/>be<sp/>StaffData;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::get<sp/>throws<sp/>otherwise.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBase_1_1Binder" kindref="compound">Binder</ref><sp/>binder(params);<sp/><sp/></highlight><highlight class="comment">//<sp/>Fresh<sp/>binder<sp/>for<sp/>the<sp/>two<sp/>parameters.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Bound<sp/>in<sp/>a<sp/>fixed<sp/>order<sp/>(argument<sp/>evaluation<sp/>order<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>unspecified).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>nominee_ph<sp/>=<sp/>binder.<ref refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" kindref="member">bind</ref>(std::to_string(</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>idata.nominee_id));<sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>the<sp/>id<sp/>to<sp/>text<sp/>because<sp/>the<sp/>staff</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>array<sp/>holds<sp/>text<sp/>values;<sp/>bind<sp/>as<sp/>$1.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>entity_ph<sp/>=</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>binder.<ref refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" kindref="member">bind</ref>(idata.entity_id);<sp/><sp/></highlight><highlight class="comment">//<sp/>Bind<sp/>the<sp/>service<sp/>row<sp/>id<sp/>as<sp/>$2.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>SQL<sp/>calls<sp/>jsonb_set<sp/>on<sp/>mjson<sp/>at<sp/>the<sp/>path</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>{payload,providers,Doctors},<sp/>concatenating</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>(||)<sp/>the<sp/>existing<sp/>array<sp/>with<sp/>the<sp/>nominee<sp/>id<sp/>wrapped<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>to_jsonb(...::text).<sp/>This<sp/>adds<sp/>the<sp/>member<sp/>without<sp/>rebuilding<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>whole<sp/>array;<sp/>the<sp/>WHERE<sp/>id<sp/>clause<sp/>scopes<sp/>it<sp/>to<sp/>one<sp/>service.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fmt::format(</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;UPDATE<sp/>{}<sp/>SET<sp/>mjson<sp/>=<sp/>jsonb_set(mjson,<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&apos;{{payload,providers,Doctors}}&apos;,<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;((mjson-&gt;&apos;payload&apos;-&gt;&apos;providers&apos;-&gt;&apos;Doctors&apos;)<sp/>||<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Two<sp/>adjacent<sp/>string<sp/>literals<sp/>form<sp/>one<sp/>SQL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>string;<sp/>the<sp/>placeholders<sp/>are<sp/>filled<sp/>in<sp/>order.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Wrong<sp/>payload<sp/>type<sp/>or<sp/>formatting<sp/>error.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;to_jsonb({}::text)))<sp/>WHERE<sp/>id={}<sp/>RETURNING<sp/>id;&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>,</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nominee_ph,</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entity_ph);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>creating<sp/>query<sp/>for<sp/>add<sp/>member.&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>human-readable</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>exception<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Signal<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="153"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="154"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>UPDATE<sp/>that<sp/>removes<sp/>a<sp/>nominee<sp/>id<sp/>from<sp/>the<sp/>service&apos;s</highlight></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/><sp/><sp/>*<sp/>Doctors<sp/>staff<sp/>array.</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Rebuilds<sp/>the<sp/>array<sp/>with<sp/>jsonb_agg<sp/>over<sp/>the<sp/>elements<sp/>that<sp/>do<sp/>not</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/><sp/><sp/>*<sp/>equal<sp/>the<sp/>bound<sp/>nominee<sp/>id<sp/>(as<sp/>JSON<sp/>text).<sp/>The<sp/>nominee<sp/>and<sp/>entity<sp/>ids<sp/>are</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/><sp/><sp/>*<sp/>bound<sp/>in<sp/>a<sp/>fixed<sp/>order.</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[out]<sp/>params<sp/>Cleared<sp/>and<sp/>filled<sp/>with<sp/>the<sp/>bound<sp/>nominee<sp/>and<sp/>entity</highlight></codeline>
+<codeline lineno="160"><highlight class="comment"><sp/><sp/><sp/>*<sp/>ids.</highlight></codeline>
+<codeline lineno="161"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>UPDATE<sp/>...<sp/>RETURNING<sp/>id,<sp/>or<sp/>std::nullopt<sp/>if<sp/>the<sp/>payload<sp/>is<sp/>not</highlight></codeline>
+<codeline lineno="162"><highlight class="comment"><sp/><sp/><sp/>*<sp/>StaffData<sp/>or<sp/>an<sp/>exception<sp/>occurs.</highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Builds<sp/>the<sp/>&quot;remove<sp/>team<sp/>member&quot;<sp/>statement.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165" refid="classService_1a6b8a06b26521f411f8c21104031ab5fe" refkind="member"><highlight class="normal"><sp/><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classService_1a6b8a06b26521f411f8c21104031ab5fe" kindref="member">getSqlRemoveStaffStatement</ref>(pqxx::params&amp;<sp/>params)<sp/>{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>idata<sp/>=</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::get&lt;StaffData&gt;(<ref refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" kindref="member">getData</ref>());<sp/><sp/></highlight><highlight class="comment">//<sp/>Must<sp/>be<sp/>a<sp/>StaffData<sp/>payload.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structBase_1_1Binder" kindref="compound">Binder</ref><sp/>binder(params);<sp/><sp/></highlight><highlight class="comment">//<sp/>Fresh<sp/>binder<sp/>for<sp/>the<sp/>two<sp/>parameters.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Bound<sp/>in<sp/>a<sp/>fixed<sp/>order<sp/>(argument<sp/>evaluation<sp/>order<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>unspecified).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>nominee_ph<sp/>=<sp/>binder.<ref refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" kindref="member">bind</ref>(</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::to_string(idata.nominee_id));<sp/><sp/></highlight><highlight class="comment">//<sp/>Nominee<sp/>id<sp/>as<sp/>text<sp/>-&gt;<sp/>$1.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>entity_ph<sp/>=</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>binder.<ref refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" kindref="member">bind</ref>(idata.entity_id);<sp/><sp/></highlight><highlight class="comment">//<sp/>Service<sp/>row<sp/>id<sp/>-&gt;<sp/>$2.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>SQL<sp/>expands<sp/>the<sp/>Doctors<sp/>array<sp/>with<sp/>jsonb_array_elements,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>keeps<sp/>only<sp/>elements<sp/>that<sp/>do<sp/>NOT<sp/>equal<sp/>the<sp/>nominee<sp/>id,<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>re-aggregates<sp/>them<sp/>with<sp/>jsonb_agg.<sp/>jsonb_set<sp/>then<sp/>writes<sp/>that</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>smaller<sp/>array<sp/>back<sp/>at<sp/>the<sp/>same<sp/>path<sp/>for<sp/>the<sp/>one<sp/>service<sp/>row.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fmt::format(</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;UPDATE<sp/>{}<sp/>SET<sp/>mjson<sp/>=<sp/>jsonb_set(mjson,<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&apos;{{payload,providers,Doctors}}&apos;,<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;(SELECT<sp/>jsonb_agg(elem)<sp/>FROM<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;jsonb_array_elements(mjson-&gt;&apos;payload&apos;-&gt;&apos;providers&apos;-&gt;&apos;Doctors&apos;)&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/>AS<sp/>elem<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Placeholders<sp/>fill<sp/>the<sp/>nominee<sp/>comparison<sp/>and<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>row<sp/>id.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Wrong<sp/>payload<sp/>type<sp/>or<sp/>formatting<sp/>error.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;WHERE<sp/>elem<sp/>&lt;&gt;<sp/>to_jsonb({}::text)))<sp/>WHERE<sp/>id={}<sp/>RETURNING<sp/>id;&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>,</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nominee_ph,</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>entity_ph);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>a<sp/>human-readable<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>creating<sp/>query<sp/>for<sp/>remove<sp/>member.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Signal<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/>}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="201"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="202"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>permission<sp/>lookup<sp/>for<sp/>a<sp/>service<sp/>row<sp/>by<sp/>id.</highlight></codeline>
+<codeline lineno="203"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Returns<sp/>the<sp/>owner/admin/staff<sp/>columns<sp/>used<sp/>by<sp/>PermissionManager</highlight></codeline>
+<codeline lineno="204"><highlight class="comment"><sp/><sp/><sp/>*<sp/>to<sp/>authorise<sp/>service-level<sp/>actions.<sp/>The<sp/>table<sp/>name<sp/>and<sp/>id<sp/>are<sp/>formatted</highlight></codeline>
+<codeline lineno="205"><highlight class="comment"><sp/><sp/><sp/>*<sp/>into<sp/>the<sp/>query<sp/>text<sp/>rather<sp/>than<sp/>bound;<sp/>the<sp/>resulting<sp/>text<sp/>also<sp/>serves<sp/>as</highlight></codeline>
+<codeline lineno="206"><highlight class="comment"><sp/><sp/><sp/>*<sp/>the<sp/>permission<sp/>cache<sp/>key.</highlight></codeline>
+<codeline lineno="207"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_name<sp/>Name<sp/>of<sp/>the<sp/>service/organisation<sp/>table.</highlight></codeline>
+<codeline lineno="208"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>service_id<sp/>Primary<sp/>key<sp/>of<sp/>the<sp/>service<sp/>row.</highlight></codeline>
+<codeline lineno="209"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>SELECT<sp/>statement<sp/>(always<sp/>produced<sp/>by<sp/>this<sp/>implementation).</highlight></codeline>
+<codeline lineno="210"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Static:<sp/>called<sp/>directly<sp/>by<sp/>the<sp/>permission</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>layer,<sp/>no<sp/>object<sp/>needed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213" refid="classService_1ac5c73e3e8d87d1a87af5c12dcee32013" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classService_1ac5c73e3e8d87d1a87af5c12dcee32013" kindref="member">getServicePermissionsQuery</ref>(</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>service_name,<sp/>std::uint64_t<sp/>service_id)<sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fmt::format(</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;SELECT<sp/>owner_id,admin_id,staff<sp/>FROM<sp/>{}<sp/>WHERE<sp/>id<sp/>=<sp/>&apos;{}&apos;<sp/>LIMIT<sp/>1;&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>service_name,</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>service_id);<sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>who<sp/>owns/administers/staffs<sp/>the<sp/>one<sp/>service</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>row;<sp/>LIMIT<sp/>1<sp/>because<sp/>ids<sp/>are<sp/>unique.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>private<sp/>members;<sp/>this<sp/>section<sp/>is<sp/>intentionally<sp/>empty<sp/>but<sp/>kept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>symmetry<sp/>with<sp/>siblings.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight><highlight class="comment">//<sp/>(Intentionally<sp/>left<sp/>blank:<sp/>all<sp/>helpers<sp/>above<sp/>are<sp/>public<sp/>or<sp/>inherited.)</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/entities/base/service.hpp"/>
   </compounddef>

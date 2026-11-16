@@ -11,7 +11,8 @@
         <argsstring></argsstring>
         <name>TABLENAME</name>
         <qualifiedname>PharmacyAppointment::TABLENAME</qualifiedname>
-        <initializer>= &quot;pharmacies_appointments&quot;</initializer>
+        <initializer>                            =
+&quot;pharmacies_appointments&quot;</initializer>
         <briefdescription>
 <para><ref refid="classDatabase" kindref="compound">Database</ref> table holding pharmacy appointments. </para>
         </briefdescription>
@@ -19,10 +20,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/pharmacy.hpp" line="45" column="27" bodyfile="src/entities/appointments/pharmacy.hpp" bodystart="45" bodyend="-1"/>
-        <referencedby refid="classPharmacyAppointment_1aaafef44e1e8889d2f67d0846da8b9b03" compoundref="pharmacy_8hpp" startline="101" endline="104">getPermissionsQueryForRead</referencedby>
-        <referencedby refid="classPharmacyAppointment_1a85f7c8644208571b26a5f685c4cf9b1e" compoundref="pharmacy_8hpp" startline="73" endline="73">getTableName</referencedby>
-        <referencedby refid="classPharmacyAppointment_1ad009e1ea5ef9d5752566bf16c28e5cb8" compoundref="pharmacy_8hpp" startline="59" endline="61">PharmacyAppointment</referencedby>
+        <location file="src/entities/appointments/pharmacy.hpp" line="57" column="25" bodyfile="src/entities/appointments/pharmacy.hpp" bodystart="57" bodyend="-1"/>
+        <referencedby refid="classPharmacyAppointment_1aaafef44e1e8889d2f67d0846da8b9b03" compoundref="pharmacy_8hpp" startline="133" endline="142">getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classPharmacyAppointment_1a85f7c8644208571b26a5f685c4cf9b1e" compoundref="pharmacy_8hpp" startline="95" endline="97">getTableName</referencedby>
+        <referencedby refid="classPharmacyAppointment_1ad009e1ea5ef9d5752566bf16c28e5cb8" compoundref="pharmacy_8hpp" startline="75" endline="79">PharmacyAppointment</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classPharmacyAppointment_1afd6652602e99d5a572d1425cad630b53" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>auto</type>
@@ -30,7 +31,8 @@
         <argsstring></argsstring>
         <name>ORGNAME</name>
         <qualifiedname>PharmacyAppointment::ORGNAME</qualifiedname>
-        <initializer>= &quot;pharmacies&quot;</initializer>
+        <initializer>                          =
+&quot;pharmacies&quot;</initializer>
         <briefdescription>
 <para>Plural organisation name used for permission service lookup. </para>
         </briefdescription>
@@ -38,9 +40,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/pharmacy.hpp" line="50" column="27" bodyfile="src/entities/appointments/pharmacy.hpp" bodystart="50" bodyend="-1"/>
-        <referencedby refid="classPharmacyAppointment_1a965a679e4b7d1960a6d17d1ca1547352" compoundref="pharmacy_8hpp" startline="78" endline="78">getOrgName</referencedby>
-        <referencedby refid="classPharmacyAppointment_1aaafef44e1e8889d2f67d0846da8b9b03" compoundref="pharmacy_8hpp" startline="101" endline="104">getPermissionsQueryForRead</referencedby>
+        <location file="src/entities/appointments/pharmacy.hpp" line="64" column="25" bodyfile="src/entities/appointments/pharmacy.hpp" bodystart="64" bodyend="-1"/>
+        <referencedby refid="classPharmacyAppointment_1a965a679e4b7d1960a6d17d1ca1547352" compoundref="pharmacy_8hpp" startline="102" endline="104">getOrgName</referencedby>
+        <referencedby refid="classPharmacyAppointment_1aaafef44e1e8889d2f67d0846da8b9b03" compoundref="pharmacy_8hpp" startline="133" endline="142">getPermissionsQueryForRead</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -85,9 +87,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/pharmacy.hpp" line="59" column="14" bodyfile="src/entities/appointments/pharmacy.hpp" bodystart="59" bodyend="61"/>
-        <references refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" compoundref="appointment_8hpp" startline="60" endline="62">Appointment::Appointment</references>
-        <references refid="classPharmacyAppointment_1a7f9b1f67ec6b7b98d9578f9893013c48" compoundref="pharmacy_8hpp" startline="45">TABLENAME</references>
+        <location file="src/entities/appointments/pharmacy.hpp" line="75" column="12" bodyfile="src/entities/appointments/pharmacy.hpp" bodystart="75" bodyend="79"/>
+        <references refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" compoundref="appointment_8hpp" startline="73" endline="77">Appointment::Appointment</references>
+        <references refid="classPharmacyAppointment_1a7f9b1f67ec6b7b98d9578f9893013c48" compoundref="pharmacy_8hpp" startline="57">TABLENAME</references>
         <referencedby refid="classPharmacyAppointment_1a1404307af3c04855581398a4e64845e3">operator=</referencedby>
         <referencedby refid="classPharmacyAppointment_1a0f55ca952fcd939e7ad52e61c3aa24f6">operator=</referencedby>
         <referencedby refid="classPharmacyAppointment_1ad2387a21a04beca455bfd2bf18e21ba8">PharmacyAppointment</referencedby>
@@ -109,8 +111,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/pharmacy.hpp" line="65" column="5"/>
-        <references refid="classPharmacyAppointment_1ad009e1ea5ef9d5752566bf16c28e5cb8" compoundref="pharmacy_8hpp" startline="59" endline="61">PharmacyAppointment</references>
+        <location file="src/entities/appointments/pharmacy.hpp" line="85" column="3"/>
+        <references refid="classPharmacyAppointment_1ad009e1ea5ef9d5752566bf16c28e5cb8" compoundref="pharmacy_8hpp" startline="75" endline="79">PharmacyAppointment</references>
       </memberdef>
       <memberdef kind="function" id="classPharmacyAppointment_1aa5bd57524ba38758814dc35dffcf3b92" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -127,8 +129,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/pharmacy.hpp" line="66" column="5"/>
-        <references refid="classPharmacyAppointment_1ad009e1ea5ef9d5752566bf16c28e5cb8" compoundref="pharmacy_8hpp" startline="59" endline="61">PharmacyAppointment</references>
+        <location file="src/entities/appointments/pharmacy.hpp" line="86" column="3"/>
+        <references refid="classPharmacyAppointment_1ad009e1ea5ef9d5752566bf16c28e5cb8" compoundref="pharmacy_8hpp" startline="75" endline="79">PharmacyAppointment</references>
       </memberdef>
       <memberdef kind="function" id="classPharmacyAppointment_1a1404307af3c04855581398a4e64845e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classPharmacyAppointment" kindref="compound">PharmacyAppointment</ref> &amp;</type>
@@ -145,8 +147,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/pharmacy.hpp" line="67" column="25"/>
-        <references refid="classPharmacyAppointment_1ad009e1ea5ef9d5752566bf16c28e5cb8" compoundref="pharmacy_8hpp" startline="59" endline="61">PharmacyAppointment</references>
+        <location file="src/entities/appointments/pharmacy.hpp" line="87" column="23"/>
+        <references refid="classPharmacyAppointment_1ad009e1ea5ef9d5752566bf16c28e5cb8" compoundref="pharmacy_8hpp" startline="75" endline="79">PharmacyAppointment</references>
       </memberdef>
       <memberdef kind="function" id="classPharmacyAppointment_1a0f55ca952fcd939e7ad52e61c3aa24f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classPharmacyAppointment" kindref="compound">PharmacyAppointment</ref> &amp;</type>
@@ -163,8 +165,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/pharmacy.hpp" line="68" column="25"/>
-        <references refid="classPharmacyAppointment_1ad009e1ea5ef9d5752566bf16c28e5cb8" compoundref="pharmacy_8hpp" startline="59" endline="61">PharmacyAppointment</references>
+        <location file="src/entities/appointments/pharmacy.hpp" line="89" column="23"/>
+        <references refid="classPharmacyAppointment_1ad009e1ea5ef9d5752566bf16c28e5cb8" compoundref="pharmacy_8hpp" startline="75" endline="79">PharmacyAppointment</references>
       </memberdef>
       <memberdef kind="function" id="classPharmacyAppointment_1ae1875e73548fe59bb1bddabd970e0521" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -179,7 +181,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/pharmacy.hpp" line="83" column="5"/>
+        <location file="src/entities/appointments/pharmacy.hpp" line="109" column="3"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -196,8 +198,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/pharmacy.hpp" line="73" column="27" bodyfile="src/entities/appointments/pharmacy.hpp" bodystart="73" bodyend="73"/>
-        <references refid="classPharmacyAppointment_1a7f9b1f67ec6b7b98d9578f9893013c48" compoundref="pharmacy_8hpp" startline="45">TABLENAME</references>
+        <location file="src/entities/appointments/pharmacy.hpp" line="95" column="25" bodyfile="src/entities/appointments/pharmacy.hpp" bodystart="95" bodyend="97"/>
+        <references refid="classPharmacyAppointment_1a7f9b1f67ec6b7b98d9578f9893013c48" compoundref="pharmacy_8hpp" startline="57">TABLENAME</references>
       </memberdef>
       <memberdef kind="function" id="classPharmacyAppointment_1a965a679e4b7d1960a6d17d1ca1547352" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>auto</type>
@@ -212,8 +214,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/pharmacy.hpp" line="78" column="27" bodyfile="src/entities/appointments/pharmacy.hpp" bodystart="78" bodyend="78"/>
-        <references refid="classPharmacyAppointment_1afd6652602e99d5a572d1425cad630b53" compoundref="pharmacy_8hpp" startline="50">ORGNAME</references>
+        <location file="src/entities/appointments/pharmacy.hpp" line="102" column="25" bodyfile="src/entities/appointments/pharmacy.hpp" bodystart="102" bodyend="104"/>
+        <references refid="classPharmacyAppointment_1afd6652602e99d5a572d1425cad630b53" compoundref="pharmacy_8hpp" startline="64">ORGNAME</references>
       </memberdef>
       <memberdef kind="function" id="classPharmacyAppointment_1a54aab05547e5db0a9014f81c2edaf972" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -256,8 +258,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/pharmacy.hpp" line="91" column="26" bodyfile="src/entities/appointments/pharmacy.hpp" bodystart="91" bodyend="94"/>
-        <references refid="classAppointment_1a26159d8e97aa5b0e286e9bb22d1e923e" compoundref="appointment_8hpp" startline="84" endline="91">Appointment::getServicePermissionsQueryImpl</references>
+        <location file="src/entities/appointments/pharmacy.hpp" line="118" column="24" bodyfile="src/entities/appointments/pharmacy.hpp" bodystart="118" bodyend="124"/>
+        <references refid="classAppointment_1a26159d8e97aa5b0e286e9bb22d1e923e" compoundref="appointment_8hpp" startline="102" endline="112">Appointment::getServicePermissionsQueryImpl</references>
       </memberdef>
       <memberdef kind="function" id="classPharmacyAppointment_1aaafef44e1e8889d2f67d0846da8b9b03" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -288,10 +290,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/pharmacy.hpp" line="101" column="26" bodyfile="src/entities/appointments/pharmacy.hpp" bodystart="101" bodyend="104"/>
-        <references refid="classAppointment_1ad8f4b942704f5aad7dab3b4469199fd0" compoundref="appointment_8hpp" startline="102" endline="112">Appointment::getPermissionsQueryForReadImpl</references>
-        <references refid="classPharmacyAppointment_1afd6652602e99d5a572d1425cad630b53" compoundref="pharmacy_8hpp" startline="50">ORGNAME</references>
-        <references refid="classPharmacyAppointment_1a7f9b1f67ec6b7b98d9578f9893013c48" compoundref="pharmacy_8hpp" startline="45">TABLENAME</references>
+        <location file="src/entities/appointments/pharmacy.hpp" line="133" column="24" bodyfile="src/entities/appointments/pharmacy.hpp" bodystart="133" bodyend="142"/>
+        <references refid="classAppointment_1ad8f4b942704f5aad7dab3b4469199fd0" compoundref="appointment_8hpp" startline="129" endline="152">Appointment::getPermissionsQueryForReadImpl</references>
+        <references refid="classPharmacyAppointment_1afd6652602e99d5a572d1425cad630b53" compoundref="pharmacy_8hpp" startline="64">ORGNAME</references>
+        <references refid="classPharmacyAppointment_1a7f9b1f67ec6b7b98d9578f9893013c48" compoundref="pharmacy_8hpp" startline="57">TABLENAME</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -350,7 +352,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/entities/appointments/pharmacy.hpp" line="39" column="1" bodyfile="src/entities/appointments/pharmacy.hpp" bodystart="40" bodyend="105"/>
+    <location file="src/entities/appointments/pharmacy.hpp" line="49" column="1" bodyfile="src/entities/appointments/pharmacy.hpp" bodystart="52" bodyend="143"/>
     <listofallmembers>
       <member refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" prot="public" virt="non-virtual"><scope>PharmacyAppointment</scope><name>Appointment</name></member>
       <member refid="classAppointment_1a452e32e34b2b149ac5062ae45be25697" prot="public" virt="non-virtual"><scope>PharmacyAppointment</scope><name>Appointment</name></member>

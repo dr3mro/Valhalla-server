@@ -119,7 +119,8 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('classapi_1_1v2
 </div><!--header-->
 <div class="contents">
 
-<p>Central authorization facade: answers "may this requester perform this operation on this entity?".  
+<p>Central authorization facade: answers "may this requester perform
+this operation on this entity?".  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="permissionmanager_8hpp_source.html">permissionmanager.hpp</a>&gt;</code></p>
@@ -133,125 +134,126 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6ee8b35704a2706f3a1ee3d1eb1b0d4d" id="r_a6ee8b35704a2706f3a1ee3d1eb1b0d4d"><td class="memItemLeft"><a class="el" href="#a363c6f47c83d288eb8c878b38ae5afea">PermissionManager</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a6ee8b35704a2706f3a1ee3d1eb1b0d4d">operator=</a> (<a class="el" href="#a363c6f47c83d288eb8c878b38ae5afea">PermissionManager</a> &amp;&amp;)=default</td></tr>
 <tr class="memitem:afc0e5c6e0d9cc637d0da34a4b4cbe919" id="r_afc0e5c6e0d9cc637d0da34a4b4cbe919"><td class="memItemLeft">virtual&#160;</td><td class="memItemRight"><a class="el" href="#afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager</a> ()=default</td></tr>
 <tr class="memitem:a7ca637c16b64d7ebc2e29acc0f366cf0" id="r_a7ca637c16b64d7ebc2e29acc0f366cf0"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </td></tr>
-<tr class="memitem:a7ca637c16b64d7ebc2e29acc0f366cf0 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a7ca637c16b64d7ebc2e29acc0f366cf0">canCreate</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;data_j, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a7ca637c16b64d7ebc2e29acc0f366cf0 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a7ca637c16b64d7ebc2e29acc0f366cf0">canCreate</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;data_j, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a7ca637c16b64d7ebc2e29acc0f366cf0"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classapi_1_1v2_1_1Client.html" title="Entity for client-style tables (users, providers) with dedicated create/update builders.">Client</a> creation is unrestricted (always allowed).  <br /></td></tr>
 <tr class="memitem:ab38a9fb015cfa0c0a21684b1b7e5c75d" id="r_ab38a9fb015cfa0c0a21684b1b7e5c75d"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </td></tr>
-<tr class="memitem:ab38a9fb015cfa0c0a21684b1b7e5c75d template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ab38a9fb015cfa0c0a21684b1b7e5c75d">canCreateAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;data_j, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:ab38a9fb015cfa0c0a21684b1b7e5c75d template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ab38a9fb015cfa0c0a21684b1b7e5c75d">canCreateAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;data_j, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:ab38a9fb015cfa0c0a21684b1b7e5c75d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#a7ca637c16b64d7ebc2e29acc0f366cf0" title="Client creation is unrestricted (always allowed).">canCreate()</a> for clients; always returns <span class="tt">true</span>.  <br /></td></tr>
 <tr class="memitem:aff6b99de61b84feb36a534319778195b" id="r_aff6b99de61b84feb36a534319778195b"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </td></tr>
-<tr class="memitem:aff6b99de61b84feb36a534319778195b template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#aff6b99de61b84feb36a534319778195b">canRead</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t client_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:aff6b99de61b84feb36a534319778195b template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#aff6b99de61b84feb36a534319778195b">canRead</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t client_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:aff6b99de61b84feb36a534319778195b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows reading a client only if requester group and id match the target.  <br /></td></tr>
 <tr class="memitem:aed948cb4da3d53102be81025ef98bda2" id="r_aed948cb4da3d53102be81025ef98bda2"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </td></tr>
-<tr class="memitem:aed948cb4da3d53102be81025ef98bda2 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aed948cb4da3d53102be81025ef98bda2">canReadAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t client_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:aed948cb4da3d53102be81025ef98bda2 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aed948cb4da3d53102be81025ef98bda2">canReadAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t client_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:aed948cb4da3d53102be81025ef98bda2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#aff6b99de61b84feb36a534319778195b" title="Allows reading a client only if requester group and id match the target.">canRead()</a> for clients.  <br /></td></tr>
 <tr class="memitem:a96e35dad77cb2e1dbd0ffffa7c648fdc" id="r_a96e35dad77cb2e1dbd0ffffa7c648fdc"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </td></tr>
-<tr class="memitem:a96e35dad77cb2e1dbd0ffffa7c648fdc template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a96e35dad77cb2e1dbd0ffffa7c648fdc">canUpdate</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t client_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a96e35dad77cb2e1dbd0ffffa7c648fdc template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a96e35dad77cb2e1dbd0ffffa7c648fdc">canUpdate</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t client_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a96e35dad77cb2e1dbd0ffffa7c648fdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows updating a client only if requester group and id match the target.  <br /></td></tr>
 <tr class="memitem:afded6faae3268475fa32898c00b5476e" id="r_afded6faae3268475fa32898c00b5476e"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </td></tr>
-<tr class="memitem:afded6faae3268475fa32898c00b5476e template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#afded6faae3268475fa32898c00b5476e">canUpdateAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t client_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:afded6faae3268475fa32898c00b5476e template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#afded6faae3268475fa32898c00b5476e">canUpdateAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t client_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:afded6faae3268475fa32898c00b5476e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#a96e35dad77cb2e1dbd0ffffa7c648fdc" title="Allows updating a client only if requester group and id match the target.">canUpdate()</a> for clients.  <br /></td></tr>
 <tr class="memitem:a71258d4ae15f18d8a002c192c0fb6e2a" id="r_a71258d4ae15f18d8a002c192c0fb6e2a"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </td></tr>
-<tr class="memitem:a71258d4ae15f18d8a002c192c0fb6e2a template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a71258d4ae15f18d8a002c192c0fb6e2a">canDelete</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t client_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a71258d4ae15f18d8a002c192c0fb6e2a template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a71258d4ae15f18d8a002c192c0fb6e2a">canDelete</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t client_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a71258d4ae15f18d8a002c192c0fb6e2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows deleting a client only if requester group and id match the target.  <br /></td></tr>
 <tr class="memitem:a0adc8dfb1a38a0e3953a4032f3673980" id="r_a0adc8dfb1a38a0e3953a4032f3673980"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </td></tr>
-<tr class="memitem:a0adc8dfb1a38a0e3953a4032f3673980 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a0adc8dfb1a38a0e3953a4032f3673980">canDeleteAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t client_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a0adc8dfb1a38a0e3953a4032f3673980 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a0adc8dfb1a38a0e3953a4032f3673980">canDeleteAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t client_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a0adc8dfb1a38a0e3953a4032f3673980"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#a71258d4ae15f18d8a002c192c0fb6e2a" title="Allows deleting a client only if requester group and id match the target.">canDelete()</a> for clients.  <br /></td></tr>
 <tr class="memitem:a30eb01bee43eade86f66faa01e47fc91" id="r_a30eb01bee43eade86f66faa01e47fc91"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </td></tr>
-<tr class="memitem:a30eb01bee43eade86f66faa01e47fc91 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a30eb01bee43eade86f66faa01e47fc91">canToggleActive</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t client_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a30eb01bee43eade86f66faa01e47fc91 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a30eb01bee43eade86f66faa01e47fc91">canToggleActive</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t client_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a30eb01bee43eade86f66faa01e47fc91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows toggling a client's active flag only on a matching group and id.  <br /></td></tr>
 <tr class="memitem:afa8aa5d58764cb40be9d226283f5197a" id="r_afa8aa5d58764cb40be9d226283f5197a"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </td></tr>
-<tr class="memitem:afa8aa5d58764cb40be9d226283f5197a template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#afa8aa5d58764cb40be9d226283f5197a">canToggleActiveAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t client_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:afa8aa5d58764cb40be9d226283f5197a template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#afa8aa5d58764cb40be9d226283f5197a">canToggleActiveAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t client_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:afa8aa5d58764cb40be9d226283f5197a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#a30eb01bee43eade86f66faa01e47fc91" title="Allows toggling a client&#39;s active flag only on a matching group and id.">canToggleActive()</a> for clients.  <br /></td></tr>
 <tr class="memitem:a3fdd025d52c5c4b4140c3ff6790921fd" id="r_a3fdd025d52c5c4b4140c3ff6790921fd"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </td></tr>
-<tr class="memitem:a3fdd025d52c5c4b4140c3ff6790921fd template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a3fdd025d52c5c4b4140c3ff6790921fd">canGetServices</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t client_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a3fdd025d52c5c4b4140c3ff6790921fd template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a3fdd025d52c5c4b4140c3ff6790921fd">canGetServices</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t client_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a3fdd025d52c5c4b4140c3ff6790921fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows listing a client's services only on a matching group and id.  <br /></td></tr>
 <tr class="memitem:a30126a03fc03c2870325aa6df4543518" id="r_a30126a03fc03c2870325aa6df4543518"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </td></tr>
-<tr class="memitem:a30126a03fc03c2870325aa6df4543518 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a30126a03fc03c2870325aa6df4543518">canGetServicesAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t client_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a30126a03fc03c2870325aa6df4543518 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a30126a03fc03c2870325aa6df4543518">canGetServicesAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t client_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a30126a03fc03c2870325aa6df4543518"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#a3fdd025d52c5c4b4140c3ff6790921fd" title="Allows listing a client&#39;s services only on a matching group and id.">canGetServices()</a> for clients.  <br /></td></tr>
 <tr class="memitem:a3ea07c998d2818c6ef1585a83d58de31" id="r_a3ea07c998d2818c6ef1585a83d58de31"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </td></tr>
-<tr class="memitem:a3ea07c998d2818c6ef1585a83d58de31 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a3ea07c998d2818c6ef1585a83d58de31">canCreate</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;service_j, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a3ea07c998d2818c6ef1585a83d58de31 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a3ea07c998d2818c6ef1585a83d58de31">canCreate</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;service_j, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a3ea07c998d2818c6ef1585a83d58de31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks preconditions for creating a service (payload present, provider is owner/admin).  <br /></td></tr>
 <tr class="memitem:a4fde2b6b7c617ef97f0a3aa6a5135425" id="r_a4fde2b6b7c617ef97f0a3aa6a5135425"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </td></tr>
-<tr class="memitem:a4fde2b6b7c617ef97f0a3aa6a5135425 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a4fde2b6b7c617ef97f0a3aa6a5135425">canCreateAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;service_j, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a4fde2b6b7c617ef97f0a3aa6a5135425 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a4fde2b6b7c617ef97f0a3aa6a5135425">canCreateAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;service_j, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a4fde2b6b7c617ef97f0a3aa6a5135425"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#a7ca637c16b64d7ebc2e29acc0f366cf0" title="Client creation is unrestricted (always allowed).">canCreate()</a> for services.  <br /></td></tr>
 <tr class="memitem:a52a131813fb846d82e3b7b4b3363a6b2" id="r_a52a131813fb846d82e3b7b4b3363a6b2"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </td></tr>
-<tr class="memitem:a52a131813fb846d82e3b7b4b3363a6b2 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a52a131813fb846d82e3b7b4b3363a6b2">canRead</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a52a131813fb846d82e3b7b4b3363a6b2 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a52a131813fb846d82e3b7b4b3363a6b2">canRead</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a52a131813fb846d82e3b7b4b3363a6b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows service reads for the owner, admin, or staff with the CAN_READ bit.  <br /></td></tr>
 <tr class="memitem:abd8a7e3b5ffcb254c3954daa0cb44ceb" id="r_abd8a7e3b5ffcb254c3954daa0cb44ceb"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </td></tr>
-<tr class="memitem:abd8a7e3b5ffcb254c3954daa0cb44ceb template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#abd8a7e3b5ffcb254c3954daa0cb44ceb">canReadAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:abd8a7e3b5ffcb254c3954daa0cb44ceb template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#abd8a7e3b5ffcb254c3954daa0cb44ceb">canReadAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:abd8a7e3b5ffcb254c3954daa0cb44ceb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#aff6b99de61b84feb36a534319778195b" title="Allows reading a client only if requester group and id match the target.">canRead()</a> for services.  <br /></td></tr>
 <tr class="memitem:a99d92a72b1a2a99f6392b3a4f9b08374" id="r_a99d92a72b1a2a99f6392b3a4f9b08374"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </td></tr>
-<tr class="memitem:a99d92a72b1a2a99f6392b3a4f9b08374 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a99d92a72b1a2a99f6392b3a4f9b08374">canUpdate</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a99d92a72b1a2a99f6392b3a4f9b08374 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a99d92a72b1a2a99f6392b3a4f9b08374">canUpdate</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a99d92a72b1a2a99f6392b3a4f9b08374"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows service updates for the owner, admin, or staff with the CAN_WRITE bit.  <br /></td></tr>
 <tr class="memitem:a49df60ee2868117406972f850747ee34" id="r_a49df60ee2868117406972f850747ee34"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </td></tr>
-<tr class="memitem:a49df60ee2868117406972f850747ee34 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a49df60ee2868117406972f850747ee34">canUpdateAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a49df60ee2868117406972f850747ee34 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a49df60ee2868117406972f850747ee34">canUpdateAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a49df60ee2868117406972f850747ee34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#a96e35dad77cb2e1dbd0ffffa7c648fdc" title="Allows updating a client only if requester group and id match the target.">canUpdate()</a> for services.  <br /></td></tr>
 <tr class="memitem:a5ce6653354254b4b6b1788b68bce6fff" id="r_a5ce6653354254b4b6b1788b68bce6fff"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </td></tr>
-<tr class="memitem:a5ce6653354254b4b6b1788b68bce6fff template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a5ce6653354254b4b6b1788b68bce6fff">canDelete</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a5ce6653354254b4b6b1788b68bce6fff template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a5ce6653354254b4b6b1788b68bce6fff">canDelete</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a5ce6653354254b4b6b1788b68bce6fff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows service deletion for the owner only.  <br /></td></tr>
 <tr class="memitem:a984d7b5d477fa1a100f742adda535fb3" id="r_a984d7b5d477fa1a100f742adda535fb3"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </td></tr>
-<tr class="memitem:a984d7b5d477fa1a100f742adda535fb3 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a984d7b5d477fa1a100f742adda535fb3">canDeleteAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a984d7b5d477fa1a100f742adda535fb3 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a984d7b5d477fa1a100f742adda535fb3">canDeleteAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a984d7b5d477fa1a100f742adda535fb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#a71258d4ae15f18d8a002c192c0fb6e2a" title="Allows deleting a client only if requester group and id match the target.">canDelete()</a> for services.  <br /></td></tr>
 <tr class="memitem:a850868371bb029e826761eff3b329c5c" id="r_a850868371bb029e826761eff3b329c5c"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
-<tr class="memitem:a850868371bb029e826761eff3b329c5c template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a850868371bb029e826761eff3b329c5c">canManageStaff</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a850868371bb029e826761eff3b329c5c template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a850868371bb029e826761eff3b329c5c">canManageStaff</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a850868371bb029e826761eff3b329c5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows staff management for the service owner or admin only.  <br /></td></tr>
 <tr class="memitem:af314003136240877cbf15fe24c288a05" id="r_af314003136240877cbf15fe24c288a05"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
-<tr class="memitem:af314003136240877cbf15fe24c288a05 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#af314003136240877cbf15fe24c288a05">canManageStaffAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:af314003136240877cbf15fe24c288a05 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#af314003136240877cbf15fe24c288a05">canManageStaffAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:af314003136240877cbf15fe24c288a05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#a850868371bb029e826761eff3b329c5c" title="Allows staff management for the service owner or admin only.">canManageStaff()</a>.  <br /></td></tr>
 <tr class="memitem:a516ef7c5e4679c36c93b26bdd434509b" id="r_a516ef7c5e4679c36c93b26bdd434509b"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </td></tr>
-<tr class="memitem:a516ef7c5e4679c36c93b26bdd434509b template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a516ef7c5e4679c36c93b26bdd434509b">canCreate</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;data_j, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a516ef7c5e4679c36c93b26bdd434509b template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a516ef7c5e4679c36c93b26bdd434509b">canCreate</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;data_j, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a516ef7c5e4679c36c93b26bdd434509b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows creating a case for owner/admin or staff with the CAN_WRITE bit.  <br /></td></tr>
 <tr class="memitem:af13c583f1a64ce0d38551683c50ec070" id="r_af13c583f1a64ce0d38551683c50ec070"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </td></tr>
-<tr class="memitem:af13c583f1a64ce0d38551683c50ec070 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#af13c583f1a64ce0d38551683c50ec070">canCreateAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;data_j, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:af13c583f1a64ce0d38551683c50ec070 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#af13c583f1a64ce0d38551683c50ec070">canCreateAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;data_j, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:af13c583f1a64ce0d38551683c50ec070"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#a7ca637c16b64d7ebc2e29acc0f366cf0" title="Client creation is unrestricted (always allowed).">canCreate()</a> for cases.  <br /></td></tr>
 <tr class="memitem:a589a8a5cdfa8dbacb4f8a6dc70718a13" id="r_a589a8a5cdfa8dbacb4f8a6dc70718a13"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </td></tr>
-<tr class="memitem:a589a8a5cdfa8dbacb4f8a6dc70718a13 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a589a8a5cdfa8dbacb4f8a6dc70718a13">canRead</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t case_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a589a8a5cdfa8dbacb4f8a6dc70718a13 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a589a8a5cdfa8dbacb4f8a6dc70718a13">canRead</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t case_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a589a8a5cdfa8dbacb4f8a6dc70718a13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows reading a case for owner/admin or staff with the CAN_READ bit.  <br /></td></tr>
 <tr class="memitem:a69637b8a9b6d0d73f1f8ae12a91c5fd2" id="r_a69637b8a9b6d0d73f1f8ae12a91c5fd2"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </td></tr>
-<tr class="memitem:a69637b8a9b6d0d73f1f8ae12a91c5fd2 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a69637b8a9b6d0d73f1f8ae12a91c5fd2">canReadAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t case_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a69637b8a9b6d0d73f1f8ae12a91c5fd2 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a69637b8a9b6d0d73f1f8ae12a91c5fd2">canReadAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t case_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a69637b8a9b6d0d73f1f8ae12a91c5fd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#aff6b99de61b84feb36a534319778195b" title="Allows reading a client only if requester group and id match the target.">canRead()</a> for cases.  <br /></td></tr>
 <tr class="memitem:a27ca0858f19c5a91561fc6baac4c921b" id="r_a27ca0858f19c5a91561fc6baac4c921b"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </td></tr>
-<tr class="memitem:a27ca0858f19c5a91561fc6baac4c921b template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a27ca0858f19c5a91561fc6baac4c921b">canUpdate</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t case_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a27ca0858f19c5a91561fc6baac4c921b template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a27ca0858f19c5a91561fc6baac4c921b">canUpdate</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t case_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a27ca0858f19c5a91561fc6baac4c921b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows updating a case for owner/admin or staff with the CAN_WRITE bit.  <br /></td></tr>
 <tr class="memitem:a3f8bed5ca5e8f25c1f7ddd7b414c3cc6" id="r_a3f8bed5ca5e8f25c1f7ddd7b414c3cc6"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </td></tr>
-<tr class="memitem:a3f8bed5ca5e8f25c1f7ddd7b414c3cc6 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a3f8bed5ca5e8f25c1f7ddd7b414c3cc6">canUpdateAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t case_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a3f8bed5ca5e8f25c1f7ddd7b414c3cc6 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a3f8bed5ca5e8f25c1f7ddd7b414c3cc6">canUpdateAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t case_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a3f8bed5ca5e8f25c1f7ddd7b414c3cc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#a96e35dad77cb2e1dbd0ffffa7c648fdc" title="Allows updating a client only if requester group and id match the target.">canUpdate()</a> for cases.  <br /></td></tr>
 <tr class="memitem:a9ba39dbfd12564c994c208afe10d9d41" id="r_a9ba39dbfd12564c994c208afe10d9d41"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </td></tr>
-<tr class="memitem:a9ba39dbfd12564c994c208afe10d9d41 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a9ba39dbfd12564c994c208afe10d9d41">canDelete</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t _id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a9ba39dbfd12564c994c208afe10d9d41 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a9ba39dbfd12564c994c208afe10d9d41">canDelete</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t _id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a9ba39dbfd12564c994c208afe10d9d41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows deleting a case for owner/admin or staff with the CAN_DELETE bit.  <br /></td></tr>
 <tr class="memitem:a16329f4f9bbd3a5e6044bded5958d259" id="r_a16329f4f9bbd3a5e6044bded5958d259"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </td></tr>
-<tr class="memitem:a16329f4f9bbd3a5e6044bded5958d259 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a16329f4f9bbd3a5e6044bded5958d259">canDeleteAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t _id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a16329f4f9bbd3a5e6044bded5958d259 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a16329f4f9bbd3a5e6044bded5958d259">canDeleteAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t _id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a16329f4f9bbd3a5e6044bded5958d259"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#a71258d4ae15f18d8a002c192c0fb6e2a" title="Allows deleting a client only if requester group and id match the target.">canDelete()</a> for cases.  <br /></td></tr>
 <tr class="memitem:a3ea07c998d2818c6ef1585a83d58de31" id="r_a3ea07c998d2818c6ef1585a83d58de31"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&gt; </td></tr>
-<tr class="memitem:a3ea07c998d2818c6ef1585a83d58de31 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a3ea07c998d2818c6ef1585a83d58de31">canCreate</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;service_j, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a3ea07c998d2818c6ef1585a83d58de31 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a3ea07c998d2818c6ef1585a83d58de31">canCreate</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;service_j, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a3ea07c998d2818c6ef1585a83d58de31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows creating an appointment for owner/admin or staff with the CAN_WRITE bit.  <br /></td></tr>
 <tr class="memitem:a4fde2b6b7c617ef97f0a3aa6a5135425" id="r_a4fde2b6b7c617ef97f0a3aa6a5135425"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&gt; </td></tr>
-<tr class="memitem:a4fde2b6b7c617ef97f0a3aa6a5135425 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a4fde2b6b7c617ef97f0a3aa6a5135425">canCreateAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;service_j, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a4fde2b6b7c617ef97f0a3aa6a5135425 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a4fde2b6b7c617ef97f0a3aa6a5135425">canCreateAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;service_j, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a4fde2b6b7c617ef97f0a3aa6a5135425"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#a7ca637c16b64d7ebc2e29acc0f366cf0" title="Client creation is unrestricted (always allowed).">canCreate()</a> for appointments.  <br /></td></tr>
 <tr class="memitem:a52a131813fb846d82e3b7b4b3363a6b2" id="r_a52a131813fb846d82e3b7b4b3363a6b2"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&gt; </td></tr>
-<tr class="memitem:a52a131813fb846d82e3b7b4b3363a6b2 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a52a131813fb846d82e3b7b4b3363a6b2">canRead</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a52a131813fb846d82e3b7b4b3363a6b2 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a52a131813fb846d82e3b7b4b3363a6b2">canRead</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a52a131813fb846d82e3b7b4b3363a6b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows reading an appointment for owner/admin or staff with the CAN_READ bit.  <br /></td></tr>
 <tr class="memitem:abd8a7e3b5ffcb254c3954daa0cb44ceb" id="r_abd8a7e3b5ffcb254c3954daa0cb44ceb"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&gt; </td></tr>
-<tr class="memitem:abd8a7e3b5ffcb254c3954daa0cb44ceb template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#abd8a7e3b5ffcb254c3954daa0cb44ceb">canReadAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:abd8a7e3b5ffcb254c3954daa0cb44ceb template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#abd8a7e3b5ffcb254c3954daa0cb44ceb">canReadAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:abd8a7e3b5ffcb254c3954daa0cb44ceb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#aff6b99de61b84feb36a534319778195b" title="Allows reading a client only if requester group and id match the target.">canRead()</a> for appointments.  <br /></td></tr>
 <tr class="memitem:a99d92a72b1a2a99f6392b3a4f9b08374" id="r_a99d92a72b1a2a99f6392b3a4f9b08374"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&gt; </td></tr>
-<tr class="memitem:a99d92a72b1a2a99f6392b3a4f9b08374 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a99d92a72b1a2a99f6392b3a4f9b08374">canUpdate</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a99d92a72b1a2a99f6392b3a4f9b08374 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a99d92a72b1a2a99f6392b3a4f9b08374">canUpdate</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a99d92a72b1a2a99f6392b3a4f9b08374"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows updating an appointment for owner/admin or staff with the CAN_WRITE bit.  <br /></td></tr>
 <tr class="memitem:a49df60ee2868117406972f850747ee34" id="r_a49df60ee2868117406972f850747ee34"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&gt; </td></tr>
-<tr class="memitem:a49df60ee2868117406972f850747ee34 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a49df60ee2868117406972f850747ee34">canUpdateAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a49df60ee2868117406972f850747ee34 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a49df60ee2868117406972f850747ee34">canUpdateAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t service_id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a49df60ee2868117406972f850747ee34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#a96e35dad77cb2e1dbd0ffffa7c648fdc" title="Allows updating a client only if requester group and id match the target.">canUpdate()</a> for appointments.  <br /></td></tr>
 <tr class="memitem:a9ba39dbfd12564c994c208afe10d9d41" id="r_a9ba39dbfd12564c994c208afe10d9d41"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&gt; </td></tr>
-<tr class="memitem:a9ba39dbfd12564c994c208afe10d9d41 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a9ba39dbfd12564c994c208afe10d9d41">canDelete</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t _id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a9ba39dbfd12564c994c208afe10d9d41 template"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a9ba39dbfd12564c994c208afe10d9d41">canDelete</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t _id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a9ba39dbfd12564c994c208afe10d9d41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows deleting an appointment for owner/admin or staff with the CAN_DELETE bit.  <br /></td></tr>
 <tr class="memitem:a16329f4f9bbd3a5e6044bded5958d259" id="r_a16329f4f9bbd3a5e6044bded5958d259"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&gt; </td></tr>
-<tr class="memitem:a16329f4f9bbd3a5e6044bded5958d259 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a16329f4f9bbd3a5e6044bded5958d259">canDeleteAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;requester, uint64_t _id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;error)</td></tr>
+<tr class="memitem:a16329f4f9bbd3a5e6044bded5958d259 template"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a16329f4f9bbd3a5e6044bded5958d259">canDeleteAsync</a> (const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;requester, uint64_t _id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;error)</td></tr>
 <tr class="memdesc:a16329f4f9bbd3a5e6044bded5958d259"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#a71258d4ae15f18d8a002c192c0fb6e2a" title="Allows deleting a client only if requester group and id match the target.">canDelete()</a> for appointments.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Central authorization facade: answers "may this requester perform this operation on this entity?". </p>
+<div class="textblock"><p>Central authorization facade: answers "may this requester perform
+this operation on this entity?". </p>
 <p>Overloads are grouped by the concept constraining the entity type (<a class="el" href="conceptClient__t.html" title="Constrains T to api::v2::Client or a type derived from it.">Client_t</a>, <a class="el" href="conceptService__t.html" title="Constrains T to Service or a type derived from it.">Service_t</a>, <a class="el" href="conceptCase__t.html" title="Constrains T to Case or a type derived from it.">Case_t</a>, <a class="el" href="conceptAppointment__t.html" title="Constrains T to Appointment or a type derived from it.">Appointment_t</a>). Most checks load the entity's permission JSON (through <a class="el" href="classapi_1_1v2_1_1PermissionManagerPrivate.html#a3e7c77aa55023f9d5ccc345e7b68f2ab" title="Fetches an entity&#39;s permission JSON, serving the idle-expiry cache when possible.">PermissionManagerPrivate::getPermissionsOfEntity</a>) and apply the service owner/admin/staff rules; the plain client checks only assert that the requester's group and id match the target client. Every <span class="tt">*Async</span> overload is the coroutine counterpart of a synchronous check; those needing permission data use the async (database/cached) lookup. On denial, <code class="param">error</code> receives a status and reason. </p><dl class="section note"><dt>Note</dt><dd>Each overload is explicitly instantiated for the supported entity types at the bottom of <a class="el" href="permissionmanager_8cpp.html" title="The implementations of all the permission-check methods. (Originally: &quot;Implementation for permissionm...">permissionmanager.cpp</a>; this header only declares them. In everyday words: think of this class as a receptionist who checks ID before letting someone do something. It does not fetch data itself; it asks <a class="el" href="classapi_1_1v2_1_1PermissionManagerPrivate.html" title="Implementation helpers shared by the PermissionManager authorization overloads.">PermissionManagerPrivate</a> for the facts and then decides. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager_8hpp_source.html#l00055">55</a> of file <a class="el" href="permissionmanager_8hpp_source.html">permissionmanager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager_8hpp_source.html#l00067">67</a> of file <a class="el" href="permissionmanager_8hpp_source.html">permissionmanager.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a363c6f47c83d288eb8c878b38ae5afea" name="a363c6f47c83d288eb8c878b38ae5afea"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a363c6f47c83d288eb8c878b38ae5afea">&#9670;&#160;</a></span>PermissionManager() <span class="overload">[1/3]</span></h2>
@@ -357,7 +359,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="permissionmanager_8cpp_source.html#l00047">canCreate()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00233">canCreateAsync()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00067">canDelete()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00253">canDeleteAsync()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00081">canGetServices()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00267">canGetServicesAsync()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00055">canRead()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00241">canReadAsync()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00074">canToggleActive()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00260">canToggleActiveAsync()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00061">canUpdate()</a>, and <a class="el" href="permissionmanager_8cpp_source.html#l00247">canUpdateAsync()</a>.</p>
+<p class="reference">References <a class="el" href="permissionmanager_8cpp_source.html#l00064">canCreate()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00514">canCreateAsync()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00106">canDelete()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00551">canDeleteAsync()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00138">canGetServices()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00580">canGetServicesAsync()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00076">canRead()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00525">canReadAsync()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00122">canToggleActive()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00566">canToggleActiveAsync()</a>, <a class="el" href="permissionmanager_8cpp_source.html#l00091">canUpdate()</a>, and <a class="el" href="permissionmanager_8cpp_source.html#l00538">canUpdateAsync()</a>.</p>
 
 </div>
 </div>
@@ -373,7 +375,7 @@ template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </div>
         <tr>
           <td class="memname">bool api::v2::PermissionManager::canCreate </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -383,7 +385,7 @@ template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -418,7 +420,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="memname">bool PermissionManager::canCreate </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -428,7 +430,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -454,7 +456,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Always <span class="tt">true</span>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00047">47</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00064">64</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager()</a>.</p>
 
@@ -471,7 +473,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="memname">bool api::v2::PermissionManager::canCreate </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -481,7 +483,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -516,7 +518,7 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
         <tr>
           <td class="memname">bool api::v2::PermissionManager::canCreate </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -526,7 +528,7 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -561,7 +563,7 @@ template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </div>
         <tr>
           <td class="memname">drogon::Task&lt; bool &gt; api::v2::PermissionManager::canCreateAsync </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -571,7 +573,7 @@ template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -591,7 +593,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="memname">drogon::Task&lt; bool &gt; PermissionManager::canCreateAsync </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -601,7 +603,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -612,7 +614,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
 <p>Coroutine form of service <a class="el" href="#a7ca637c16b64d7ebc2e29acc0f366cf0" title="Client creation is unrestricted (always allowed).">canCreate()</a>; checks the owner/admin preconditions.</p>
 <p>Coroutine form of client <a class="el" href="#a7ca637c16b64d7ebc2e29acc0f366cf0" title="Client creation is unrestricted (always allowed).">canCreate()</a>; always returns <span class="tt">true</span>. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00233">233</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00514">514</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager()</a>.</p>
 
@@ -629,7 +631,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="memname">drogon::Task&lt; bool &gt; api::v2::PermissionManager::canCreateAsync </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -639,7 +641,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -659,7 +661,7 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
         <tr>
           <td class="memname">drogon::Task&lt; bool &gt; api::v2::PermissionManager::canCreateAsync </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -669,7 +671,7 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -689,7 +691,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="memname">bool api::v2::PermissionManager::canDelete </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -699,7 +701,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -734,7 +736,7 @@ template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </div>
         <tr>
           <td class="memname">bool api::v2::PermissionManager::canDelete </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -744,7 +746,7 @@ template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -779,7 +781,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="memname">bool PermissionManager::canDelete </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -789,7 +791,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -815,9 +817,9 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True when both group and id match. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00067">67</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00106">106</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00153">api::v2::PermissionManagerPrivate::assert_group_id_match()</a>.</p>
+<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00265">api::v2::PermissionManagerPrivate::assert_group_id_match()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager()</a>.</p>
 
@@ -834,7 +836,7 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
         <tr>
           <td class="memname">bool api::v2::PermissionManager::canDelete </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -844,7 +846,7 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -879,7 +881,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="memname">drogon::Task&lt; bool &gt; api::v2::PermissionManager::canDeleteAsync </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -889,7 +891,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -909,7 +911,7 @@ template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </div>
         <tr>
           <td class="memname">drogon::Task&lt; bool &gt; api::v2::PermissionManager::canDeleteAsync </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -919,7 +921,7 @@ template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -939,7 +941,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="memname">drogon::Task&lt; bool &gt; PermissionManager::canDeleteAsync </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -949,7 +951,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -960,9 +962,9 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
 <p>Coroutine form of service <a class="el" href="#a71258d4ae15f18d8a002c192c0fb6e2a" title="Allows deleting a client only if requester group and id match the target.">canDelete()</a>; owner only.</p>
 <p>Coroutine form of client <a class="el" href="#a71258d4ae15f18d8a002c192c0fb6e2a" title="Allows deleting a client only if requester group and id match the target.">canDelete()</a>; group and id must match. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00253">253</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00551">551</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00153">api::v2::PermissionManagerPrivate::assert_group_id_match()</a>.</p>
+<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00265">api::v2::PermissionManagerPrivate::assert_group_id_match()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager()</a>.</p>
 
@@ -979,7 +981,7 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
         <tr>
           <td class="memname">drogon::Task&lt; bool &gt; api::v2::PermissionManager::canDeleteAsync </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -989,14 +991,14 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Coroutine form of <a class="el" href="#a71258d4ae15f18d8a002c192c0fb6e2a" title="Allows deleting a client only if requester group and id match the target.">canDelete()</a> for services. </p>
 
-<p class="reference">References <a class="el" href="permissionmanager_8cpp_source.html#l00128">canManageStaff()</a>, and <a class="el" href="permissionmanager_8cpp_source.html#l00311">canManageStaffAsync()</a>.</p>
+<p class="reference">References <a class="el" href="permissionmanager_8cpp_source.html#l00251">canManageStaff()</a>, and <a class="el" href="permissionmanager_8cpp_source.html#l00691">canManageStaffAsync()</a>.</p>
 
 </div>
 </div>
@@ -1011,7 +1013,7 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
         <tr>
           <td class="memname">bool PermissionManager::canGetServices </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1021,7 +1023,7 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1043,9 +1045,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True when both group and id match. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00081">81</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00138">138</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00153">api::v2::PermissionManagerPrivate::assert_group_id_match()</a>.</p>
+<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00265">api::v2::PermissionManagerPrivate::assert_group_id_match()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager()</a>.</p>
 
@@ -1062,7 +1064,7 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
         <tr>
           <td class="memname">drogon::Task&lt; bool &gt; PermissionManager::canGetServicesAsync </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1072,7 +1074,7 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1080,9 +1082,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 <p>Coroutine form of <a class="el" href="#a3fdd025d52c5c4b4140c3ff6790921fd" title="Allows listing a client&#39;s services only on a matching group and id.">canGetServices()</a> for clients. </p>
 <p>Coroutine form of client <a class="el" href="#a3fdd025d52c5c4b4140c3ff6790921fd" title="Allows listing a client&#39;s services only on a matching group and id.">canGetServices()</a>; group and id must match. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00267">267</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00580">580</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00153">api::v2::PermissionManagerPrivate::assert_group_id_match()</a>.</p>
+<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00265">api::v2::PermissionManagerPrivate::assert_group_id_match()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager()</a>.</p>
 
@@ -1099,7 +1101,7 @@ template&lt;typename T&gt; </div>
         <tr>
           <td class="memname">bool PermissionManager::canManageStaff </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1109,7 +1111,7 @@ template&lt;typename T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1132,9 +1134,9 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True when the requester is owner or admin. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00128">128</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00251">251</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissionmanager__private_8hpp_source.html#l00206">api::v2::PermissionManagerPrivate::getPermissionsOfEntity()</a>, and <a class="el" href="permissionmanager__private_8cpp_source.html#l00235">api::v2::PermissionManagerPrivate::isOwnerOrAdmin()</a>.</p>
+<p class="reference">References <a class="el" href="permissionmanager__private_8hpp_source.html#l00306">api::v2::PermissionManagerPrivate::getPermissionsOfEntity()</a>, and <a class="el" href="classapi_1_1v2_1_1PermissionManagerPrivate.html#a64b26a6beda50b382d489eb1459f907e">api::v2::PermissionManagerPrivate::isOwnerOrAdmin()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a984d7b5d477fa1a100f742adda535fb3">canDeleteAsync()</a>.</p>
 
@@ -1151,7 +1153,7 @@ template&lt;typename T&gt; </div>
         <tr>
           <td class="memname">drogon::Task&lt; bool &gt; PermissionManager::canManageStaffAsync </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1161,7 +1163,7 @@ template&lt;typename T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1169,9 +1171,9 @@ template&lt;typename T&gt; </div>
 <p>Coroutine form of <a class="el" href="#a850868371bb029e826761eff3b329c5c" title="Allows staff management for the service owner or admin only.">canManageStaff()</a>. </p>
 <p>Coroutine form of <a class="el" href="#a850868371bb029e826761eff3b329c5c" title="Allows staff management for the service owner or admin only.">canManageStaff()</a>; owner or admin only. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00311">311</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00691">691</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissionmanager__private_8hpp_source.html#l00246">api::v2::PermissionManagerPrivate::getPermissionsOfEntityCoro()</a>, and <a class="el" href="permissionmanager__private_8cpp_source.html#l00235">api::v2::PermissionManagerPrivate::isOwnerOrAdmin()</a>.</p>
+<p class="reference">References <a class="el" href="permissionmanager__private_8hpp_source.html#l00382">api::v2::PermissionManagerPrivate::getPermissionsOfEntityCoro()</a>, and <a class="el" href="classapi_1_1v2_1_1PermissionManagerPrivate.html#a64b26a6beda50b382d489eb1459f907e">api::v2::PermissionManagerPrivate::isOwnerOrAdmin()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a984d7b5d477fa1a100f742adda535fb3">canDeleteAsync()</a>.</p>
 
@@ -1188,7 +1190,7 @@ template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </div>
         <tr>
           <td class="memname">bool api::v2::PermissionManager::canRead </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1198,7 +1200,7 @@ template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1233,7 +1235,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="memname">bool PermissionManager::canRead </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1243,7 +1245,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1269,9 +1271,9 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True when both group and id match. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00055">55</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00076">76</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00153">api::v2::PermissionManagerPrivate::assert_group_id_match()</a>.</p>
+<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00265">api::v2::PermissionManagerPrivate::assert_group_id_match()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager()</a>.</p>
 
@@ -1288,7 +1290,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="memname">bool api::v2::PermissionManager::canRead </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1298,7 +1300,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1333,7 +1335,7 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
         <tr>
           <td class="memname">bool api::v2::PermissionManager::canRead </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1343,7 +1345,7 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1378,7 +1380,7 @@ template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </div>
         <tr>
           <td class="memname">drogon::Task&lt; bool &gt; api::v2::PermissionManager::canReadAsync </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1388,7 +1390,7 @@ template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1408,7 +1410,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="memname">drogon::Task&lt; bool &gt; PermissionManager::canReadAsync </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1418,7 +1420,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1429,9 +1431,9 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
 <p>Coroutine form of service <a class="el" href="#aff6b99de61b84feb36a534319778195b" title="Allows reading a client only if requester group and id match the target.">canRead()</a>; owner/admin or CAN_READ staff.</p>
 <p>Coroutine form of client <a class="el" href="#aff6b99de61b84feb36a534319778195b" title="Allows reading a client only if requester group and id match the target.">canRead()</a>; group and id must match. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00241">241</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00525">525</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00153">api::v2::PermissionManagerPrivate::assert_group_id_match()</a>.</p>
+<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00265">api::v2::PermissionManagerPrivate::assert_group_id_match()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager()</a>.</p>
 
@@ -1448,7 +1450,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="memname">drogon::Task&lt; bool &gt; api::v2::PermissionManager::canReadAsync </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1458,7 +1460,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1478,7 +1480,7 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
         <tr>
           <td class="memname">drogon::Task&lt; bool &gt; api::v2::PermissionManager::canReadAsync </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1488,7 +1490,7 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1508,7 +1510,7 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
         <tr>
           <td class="memname">bool PermissionManager::canToggleActive </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1518,7 +1520,7 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1540,9 +1542,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True when both group and id match. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00074">74</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00122">122</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00153">api::v2::PermissionManagerPrivate::assert_group_id_match()</a>.</p>
+<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00265">api::v2::PermissionManagerPrivate::assert_group_id_match()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager()</a>.</p>
 
@@ -1559,7 +1561,7 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
         <tr>
           <td class="memname">drogon::Task&lt; bool &gt; PermissionManager::canToggleActiveAsync </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1569,7 +1571,7 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1577,9 +1579,9 @@ template&lt;<a class="el" href="conceptClient__t.html">Client_t</a> T&gt; </div>
 <p>Coroutine form of <a class="el" href="#a30eb01bee43eade86f66faa01e47fc91" title="Allows toggling a client&#39;s active flag only on a matching group and id.">canToggleActive()</a> for clients. </p>
 <p>Coroutine form of client <a class="el" href="#a30eb01bee43eade86f66faa01e47fc91" title="Allows toggling a client&#39;s active flag only on a matching group and id.">canToggleActive()</a>; group and id must match. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00260">260</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00566">566</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00153">api::v2::PermissionManagerPrivate::assert_group_id_match()</a>.</p>
+<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00265">api::v2::PermissionManagerPrivate::assert_group_id_match()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager()</a>.</p>
 
@@ -1596,7 +1598,7 @@ template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </div>
         <tr>
           <td class="memname">bool api::v2::PermissionManager::canUpdate </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1606,7 +1608,7 @@ template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1641,7 +1643,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="memname">bool PermissionManager::canUpdate </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1651,7 +1653,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1677,9 +1679,9 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True when both group and id match. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00061">61</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00091">91</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00153">api::v2::PermissionManagerPrivate::assert_group_id_match()</a>.</p>
+<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00265">api::v2::PermissionManagerPrivate::assert_group_id_match()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager()</a>.</p>
 
@@ -1696,7 +1698,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="memname">bool api::v2::PermissionManager::canUpdate </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1706,7 +1708,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1741,7 +1743,7 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
         <tr>
           <td class="memname">bool api::v2::PermissionManager::canUpdate </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1751,7 +1753,7 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1786,7 +1788,7 @@ template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </div>
         <tr>
           <td class="memname">drogon::Task&lt; bool &gt; api::v2::PermissionManager::canUpdateAsync </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1796,7 +1798,7 @@ template&lt;<a class="el" href="conceptCase__t.html">Case_t</a> T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1816,7 +1818,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="memname">drogon::Task&lt; bool &gt; PermissionManager::canUpdateAsync </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1826,7 +1828,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1837,9 +1839,9 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
 <p>Coroutine form of service <a class="el" href="#a96e35dad77cb2e1dbd0ffffa7c648fdc" title="Allows updating a client only if requester group and id match the target.">canUpdate()</a>; owner/admin or CAN_WRITE staff.</p>
 <p>Coroutine form of client <a class="el" href="#a96e35dad77cb2e1dbd0ffffa7c648fdc" title="Allows updating a client only if requester group and id match the target.">canUpdate()</a>; group and id must match. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00247">247</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager_8cpp_source.html#l00538">538</a> of file <a class="el" href="permissionmanager_8cpp_source.html">permissionmanager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00153">api::v2::PermissionManagerPrivate::assert_group_id_match()</a>.</p>
+<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00265">api::v2::PermissionManagerPrivate::assert_group_id_match()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#afc0e5c6e0d9cc637d0da34a4b4cbe919">~PermissionManager()</a>.</p>
 
@@ -1856,7 +1858,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="memname">drogon::Task&lt; bool &gt; api::v2::PermissionManager::canUpdateAsync </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1866,7 +1868,7 @@ template&lt;<a class="el" href="conceptAppointment__t.html">Appointment_t</a> T&
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1886,7 +1888,7 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
         <tr>
           <td class="memname">drogon::Task&lt; bool &gt; api::v2::PermissionManager::canUpdateAsync </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1896,7 +1898,7 @@ template&lt;<a class="el" href="conceptService__t.html">Service_t</a> T&gt; </di
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">

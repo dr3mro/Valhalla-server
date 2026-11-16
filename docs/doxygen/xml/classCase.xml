@@ -20,7 +20,8 @@
         <argsstring></argsstring>
         <name>ORGNAME</name>
         <qualifiedname>Case::ORGNAME</qualifiedname>
-        <initializer>= &quot;clinics&quot;</initializer>
+        <initializer>                          =
+&quot;clinics&quot;</initializer>
         <briefdescription>
 <para>Organisation this case belongs to; used as the permission service name. </para>
         </briefdescription>
@@ -28,11 +29,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/case.hpp" line="60" column="27" bodyfile="src/entities/base/case.hpp" bodystart="60" bodyend="-1"/>
-        <referencedby refid="classCase_1a21c9d085ff35036397c09fbf1882343b" compoundref="case_8hpp" startline="84" endline="84">getOrgName</referencedby>
-        <referencedby refid="classCase_1a885de6b0ca89e3462529a9b9c388b9d2" compoundref="case_8hpp" startline="99" endline="109">getPermissionsQueryForCreatePatientImpl</referencedby>
-        <referencedby refid="classCase_1a1dd10871e1bd41f7d55b2b6f54da4fff" compoundref="case_8hpp" startline="172" endline="181">getPermissionsQueryForDeleteImp</referencedby>
-        <referencedby refid="classCase_1a549bb017161d692a03db738d940b9b2f" compoundref="case_8hpp" startline="138" endline="147">getPermissionsQueryForReadImp</referencedby>
+        <location file="src/entities/base/case.hpp" line="74" column="25" bodyfile="src/entities/base/case.hpp" bodystart="74" bodyend="-1"/>
+        <referencedby refid="classCase_1a21c9d085ff35036397c09fbf1882343b" compoundref="case_8hpp" startline="103" endline="105">getOrgName</referencedby>
+        <referencedby refid="classCase_1a885de6b0ca89e3462529a9b9c388b9d2" compoundref="case_8hpp" startline="125" endline="140">getPermissionsQueryForCreatePatientImpl</referencedby>
+        <referencedby refid="classCase_1a1dd10871e1bd41f7d55b2b6f54da4fff" compoundref="case_8hpp" startline="229" endline="242">getPermissionsQueryForDeleteImp</referencedby>
+        <referencedby refid="classCase_1a549bb017161d692a03db738d940b9b2f" compoundref="case_8hpp" startline="181" endline="194">getPermissionsQueryForReadImp</referencedby>
+        <referencedby refid="classCase_1acfa6a0504f8706a2d5acceb6cf2d1edf" compoundref="case_8hpp" startline="205" endline="218">getPermissionsQueryForUpdateImpl</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -52,21 +54,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/case.hpp" line="65" column="5"/>
+        <location file="src/entities/base/case.hpp" line="82" column="3"/>
         <references refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911">Case</references>
         <referencedby refid="classCase_1a7b23df81d29fee57dd61a99a86b8261c">Case</referencedby>
         <referencedby refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911">Case</referencedby>
-        <referencedby refid="classHealth_1aa04f9bbda3e6db2eeaa3adee512cdc62" compoundref="health_8hpp" startline="70" endline="72">Health::Health</referencedby>
+        <referencedby refid="classHealth_1aa04f9bbda3e6db2eeaa3adee512cdc62" compoundref="health_8hpp" startline="103" endline="107">Health::Health</referencedby>
         <referencedby refid="classCase_1aa384eaca0046ba0bba80dfdcfe199711">operator=</referencedby>
         <referencedby refid="classCase_1aa0c0269d0a4f48681b880b9621004bcf">operator=</referencedby>
-        <referencedby refid="classPaidServices_1a5a89ca95432f5de4e7174a7e5941b19a" compoundref="paidservices_8hpp" startline="71" endline="73">PaidServices::PaidServices</referencedby>
-        <referencedby refid="classPatient_1a4ad69b097d80d827fb48995556fffce6" compoundref="patient_8hpp" startline="88" endline="90">Patient::Patient</referencedby>
-        <referencedby refid="classPatientDrugs_1aec0c7883f73ef258f4dcff0befdf524e" compoundref="patientdrugs_8hpp" startline="71" endline="73">PatientDrugs::PatientDrugs</referencedby>
-        <referencedby refid="classPrescriptions_1ab8695ebe595055d65695ce4c5cb3ade4" compoundref="prescriptions_8hpp" startline="71" endline="73">Prescriptions::Prescriptions</referencedby>
-        <referencedby refid="classReports_1a427123b9c6c0531db08cbc068722684a" compoundref="reports_8hpp" startline="71" endline="73">Reports::Reports</referencedby>
-        <referencedby refid="classRequests_1af75c91bd6340cc072f92b9c1e10de75d" compoundref="requests_8hpp" startline="71" endline="73">Requests::Requests</referencedby>
-        <referencedby refid="classVisitDrugs_1a159d440a52935fadf1b3a98c68ecc4ac" compoundref="visitdrugs_8hpp" startline="74" endline="76">VisitDrugs::VisitDrugs</referencedby>
-        <referencedby refid="classVisits_1aaee1c5b76e8ac6e04bae59089c194d98" compoundref="visits_8hpp" startline="71" endline="73">Visits::Visits</referencedby>
+        <referencedby refid="classPaidServices_1a5a89ca95432f5de4e7174a7e5941b19a" compoundref="paidservices_8hpp" startline="104" endline="108">PaidServices::PaidServices</referencedby>
+        <referencedby refid="classPatient_1a4ad69b097d80d827fb48995556fffce6" compoundref="patient_8hpp" startline="130" endline="134">Patient::Patient</referencedby>
+        <referencedby refid="classPatientDrugs_1aec0c7883f73ef258f4dcff0befdf524e" compoundref="patientdrugs_8hpp" startline="101" endline="105">PatientDrugs::PatientDrugs</referencedby>
+        <referencedby refid="classPrescriptions_1ab8695ebe595055d65695ce4c5cb3ade4" compoundref="prescriptions_8hpp" startline="105" endline="109">Prescriptions::Prescriptions</referencedby>
+        <referencedby refid="classReports_1a427123b9c6c0531db08cbc068722684a" compoundref="reports_8hpp" startline="103" endline="107">Reports::Reports</referencedby>
+        <referencedby refid="classRequests_1af75c91bd6340cc072f92b9c1e10de75d" compoundref="requests_8hpp" startline="100" endline="104">Requests::Requests</referencedby>
+        <referencedby refid="classVisitDrugs_1a159d440a52935fadf1b3a98c68ecc4ac" compoundref="visitdrugs_8hpp" startline="109" endline="113">VisitDrugs::VisitDrugs</referencedby>
+        <referencedby refid="classVisits_1aaee1c5b76e8ac6e04bae59089c194d98" compoundref="visits_8hpp" startline="104" endline="108">Visits::Visits</referencedby>
       </memberdef>
       <memberdef kind="function" id="classCase_1a7b23df81d29fee57dd61a99a86b8261c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -83,7 +85,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/case.hpp" line="66" column="5"/>
+        <location file="src/entities/base/case.hpp" line="83" column="3"/>
         <references refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911">Case</references>
       </memberdef>
       <memberdef kind="function" id="classCase_1aa0c0269d0a4f48681b880b9621004bcf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -101,7 +103,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/case.hpp" line="67" column="10"/>
+        <location file="src/entities/base/case.hpp" line="84" column="8"/>
         <references refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911">Case</references>
       </memberdef>
       <memberdef kind="function" id="classCase_1aa384eaca0046ba0bba80dfdcfe199711" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -119,7 +121,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/case.hpp" line="68" column="10"/>
+        <location file="src/entities/base/case.hpp" line="85" column="8"/>
         <references refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911">Case</references>
       </memberdef>
       <memberdef kind="function" id="classCase_1a0d15370d666834e72bbcc00b419238de" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -175,10 +177,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/case.hpp" line="77" column="5" bodyfile="src/entities/base/case.hpp" bodystart="77" bodyend="79"/>
-        <references refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" compoundref="entity_8hpp" startline="393">Entity::data</references>
+        <location file="src/entities/base/case.hpp" line="94" column="3" bodyfile="src/entities/base/case.hpp" bodystart="94" bodyend="98"/>
+        <references refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" compoundref="entity_8hpp" startline="596">Entity::data</references>
         <references refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93">Entity::Entity</references>
-        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="381">Entity::tablename</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="573">Entity::tablename</references>
       </memberdef>
       <memberdef kind="function" id="classCase_1afc12c279a9ecdde1f571dee7ddd185a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -193,7 +195,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/case.hpp" line="89" column="5"/>
+        <location file="src/entities/base/case.hpp" line="111" column="3"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -210,8 +212,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/case.hpp" line="84" column="27" bodyfile="src/entities/base/case.hpp" bodystart="84" bodyend="84"/>
-        <references refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" compoundref="case_8hpp" startline="60">ORGNAME</references>
+        <location file="src/entities/base/case.hpp" line="103" column="25" bodyfile="src/entities/base/case.hpp" bodystart="103" bodyend="105"/>
+        <references refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" compoundref="case_8hpp" startline="74">ORGNAME</references>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-static-func">
@@ -244,9 +246,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/case.hpp" line="99" column="26" bodyfile="src/entities/base/case.hpp" bodystart="99" bodyend="109"/>
-        <references refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" compoundref="case_8hpp" startline="60">ORGNAME</references>
-        <referencedby refid="classPatient_1a885121ad678761986a02430b9ba09527" compoundref="patient_8hpp" startline="137" endline="151">Patient::getPermissionsQueryForCreate</referencedby>
+        <location file="src/entities/base/case.hpp" line="125" column="24" bodyfile="src/entities/base/case.hpp" bodystart="125" bodyend="140"/>
+        <references refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" compoundref="case_8hpp" startline="74">ORGNAME</references>
+        <referencedby refid="classPatient_1a885121ad678761986a02430b9ba09527" compoundref="patient_8hpp" startline="207" endline="230">Patient::getPermissionsQueryForCreate</referencedby>
       </memberdef>
       <memberdef kind="function" id="classCase_1a5617a4962ddeaabd3094fae406c860f6" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -289,18 +291,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/case.hpp" line="119" column="26" bodyfile="src/entities/base/case.hpp" bodystart="119" bodyend="130"/>
-        <references refid="classCase_1a5617a4962ddeaabd3094fae406c860f6" compoundref="case_8hpp" startline="119" endline="130">getPermissionsQueryForCreateImpl</references>
-        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="381">Entity::tablename</references>
-        <referencedby refid="classHealth_1acdfeb4a8a3a38cb292b0e68a8349ca84" compoundref="health_8hpp" startline="102" endline="116">Health::getPermissionsQueryForCreate</referencedby>
-        <referencedby refid="classPaidServices_1abde5fe3fd3d0658ea4853bc11b53671e" compoundref="paidservices_8hpp" startline="102" endline="116">PaidServices::getPermissionsQueryForCreate</referencedby>
-        <referencedby refid="classPatientDrugs_1ac6fc5c6fb8c16220d1bf0fa5f456c27c" compoundref="patientdrugs_8hpp" startline="103" endline="117">PatientDrugs::getPermissionsQueryForCreate</referencedby>
-        <referencedby refid="classPrescriptions_1a5aff3d53f014e3c5219d454ee95f91e6" compoundref="prescriptions_8hpp" startline="102" endline="116">Prescriptions::getPermissionsQueryForCreate</referencedby>
-        <referencedby refid="classReports_1a3ecfc2fcb6d9a4786fa9b4c34d75ab60" compoundref="reports_8hpp" startline="103" endline="117">Reports::getPermissionsQueryForCreate</referencedby>
-        <referencedby refid="classRequests_1afa9136767535530fab2229722f167d23" compoundref="requests_8hpp" startline="102" endline="116">Requests::getPermissionsQueryForCreate</referencedby>
-        <referencedby refid="classVisitDrugs_1a15cbcaeec950481fe5fde4402de33581" compoundref="visitdrugs_8hpp" startline="105" endline="119">VisitDrugs::getPermissionsQueryForCreate</referencedby>
-        <referencedby refid="classVisits_1abc37409f355b5de5cb632f825833cee8" compoundref="visits_8hpp" startline="102" endline="116">Visits::getPermissionsQueryForCreate</referencedby>
-        <referencedby refid="classCase_1a5617a4962ddeaabd3094fae406c860f6" compoundref="case_8hpp" startline="119" endline="130">getPermissionsQueryForCreateImpl</referencedby>
+        <location file="src/entities/base/case.hpp" line="154" column="24" bodyfile="src/entities/base/case.hpp" bodystart="154" bodyend="170"/>
+        <references refid="classCase_1a5617a4962ddeaabd3094fae406c860f6" compoundref="case_8hpp" startline="154" endline="170">getPermissionsQueryForCreateImpl</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="573">Entity::tablename</references>
+        <referencedby refid="classHealth_1acdfeb4a8a3a38cb292b0e68a8349ca84" compoundref="health_8hpp" startline="149" endline="178">Health::getPermissionsQueryForCreate</referencedby>
+        <referencedby refid="classPaidServices_1abde5fe3fd3d0658ea4853bc11b53671e" compoundref="paidservices_8hpp" startline="150" endline="181">PaidServices::getPermissionsQueryForCreate</referencedby>
+        <referencedby refid="classPatientDrugs_1ac6fc5c6fb8c16220d1bf0fa5f456c27c" compoundref="patientdrugs_8hpp" startline="147" endline="176">PatientDrugs::getPermissionsQueryForCreate</referencedby>
+        <referencedby refid="classPrescriptions_1a5aff3d53f014e3c5219d454ee95f91e6" compoundref="prescriptions_8hpp" startline="151" endline="182">Prescriptions::getPermissionsQueryForCreate</referencedby>
+        <referencedby refid="classReports_1a3ecfc2fcb6d9a4786fa9b4c34d75ab60" compoundref="reports_8hpp" startline="149" endline="178">Reports::getPermissionsQueryForCreate</referencedby>
+        <referencedby refid="classRequests_1afa9136767535530fab2229722f167d23" compoundref="requests_8hpp" startline="146" endline="177">Requests::getPermissionsQueryForCreate</referencedby>
+        <referencedby refid="classVisitDrugs_1a15cbcaeec950481fe5fde4402de33581" compoundref="visitdrugs_8hpp" startline="155" endline="186">VisitDrugs::getPermissionsQueryForCreate</referencedby>
+        <referencedby refid="classVisits_1abc37409f355b5de5cb632f825833cee8" compoundref="visits_8hpp" startline="150" endline="179">Visits::getPermissionsQueryForCreate</referencedby>
+        <referencedby refid="classCase_1a5617a4962ddeaabd3094fae406c860f6" compoundref="case_8hpp" startline="154" endline="170">getPermissionsQueryForCreateImpl</referencedby>
       </memberdef>
       <memberdef kind="function" id="classCase_1a549bb017161d692a03db738d940b9b2f" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -343,19 +345,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/case.hpp" line="138" column="26" bodyfile="src/entities/base/case.hpp" bodystart="138" bodyend="147"/>
-        <references refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" compoundref="case_8hpp" startline="60">ORGNAME</references>
-        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="381">Entity::tablename</references>
-        <referencedby refid="classHealth_1a51b63d4482da29ad120116f8ef3496a9" compoundref="health_8hpp" startline="123" endline="123">Health::getPermissionsQueryForRead</referencedby>
-        <referencedby refid="classPaidServices_1a47913b71949e337709093c73ab3112c8" compoundref="paidservices_8hpp" startline="123" endline="123">PaidServices::getPermissionsQueryForRead</referencedby>
-        <referencedby refid="classPatient_1a9c0cf980a6d81bf7736d9873b1d8954a" compoundref="patient_8hpp" startline="159" endline="159">Patient::getPermissionsQueryForRead</referencedby>
-        <referencedby refid="classPatientDrugs_1ac31b08ce384c3752980683b134ffa47d" compoundref="patientdrugs_8hpp" startline="125" endline="125">PatientDrugs::getPermissionsQueryForRead</referencedby>
-        <referencedby refid="classPrescriptions_1acb422f351da6ae3ae9f0c404ec1cee73" compoundref="prescriptions_8hpp" startline="123" endline="123">Prescriptions::getPermissionsQueryForRead</referencedby>
-        <referencedby refid="classReports_1a6be4c3d6bc645f854e3719059d6cb2bf" compoundref="reports_8hpp" startline="125" endline="125">Reports::getPermissionsQueryForRead</referencedby>
-        <referencedby refid="classRequests_1a67064cc2ae93ebe3d1d358781592820d" compoundref="requests_8hpp" startline="123" endline="123">Requests::getPermissionsQueryForRead</referencedby>
-        <referencedby refid="classVisitDrugs_1ae06f34defd9095528817ea0d16af8516" compoundref="visitdrugs_8hpp" startline="127" endline="127">VisitDrugs::getPermissionsQueryForRead</referencedby>
-        <referencedby refid="classVisits_1a1885d276697c825c425abd5220fa02b5" compoundref="visits_8hpp" startline="124" endline="124">Visits::getPermissionsQueryForRead</referencedby>
-        <referencedby refid="classCase_1acfa6a0504f8706a2d5acceb6cf2d1edf" compoundref="case_8hpp" startline="155" endline="164">getPermissionsQueryForUpdateImpl</referencedby>
+        <location file="src/entities/base/case.hpp" line="181" column="24" bodyfile="src/entities/base/case.hpp" bodystart="181" bodyend="194"/>
+        <references refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" compoundref="case_8hpp" startline="74">ORGNAME</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="573">Entity::tablename</references>
+        <referencedby refid="classHealth_1a51b63d4482da29ad120116f8ef3496a9" compoundref="health_8hpp" startline="188" endline="191">Health::getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classPaidServices_1a47913b71949e337709093c73ab3112c8" compoundref="paidservices_8hpp" startline="191" endline="194">PaidServices::getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classPatient_1a9c0cf980a6d81bf7736d9873b1d8954a" compoundref="patient_8hpp" startline="241" endline="244">Patient::getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classPatientDrugs_1ac31b08ce384c3752980683b134ffa47d" compoundref="patientdrugs_8hpp" startline="187" endline="190">PatientDrugs::getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classPrescriptions_1acb422f351da6ae3ae9f0c404ec1cee73" compoundref="prescriptions_8hpp" startline="192" endline="195">Prescriptions::getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classReports_1a6be4c3d6bc645f854e3719059d6cb2bf" compoundref="reports_8hpp" startline="189" endline="192">Reports::getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classRequests_1a67064cc2ae93ebe3d1d358781592820d" compoundref="requests_8hpp" startline="187" endline="190">Requests::getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classVisitDrugs_1ae06f34defd9095528817ea0d16af8516" compoundref="visitdrugs_8hpp" startline="197" endline="200">VisitDrugs::getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classVisits_1a1885d276697c825c425abd5220fa02b5" compoundref="visits_8hpp" startline="190" endline="193">Visits::getPermissionsQueryForRead</referencedby>
       </memberdef>
       <memberdef kind="function" id="classCase_1acfa6a0504f8706a2d5acceb6cf2d1edf" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -398,18 +399,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/case.hpp" line="155" column="26" bodyfile="src/entities/base/case.hpp" bodystart="155" bodyend="164"/>
-        <references refid="classCase_1a549bb017161d692a03db738d940b9b2f" compoundref="case_8hpp" startline="138" endline="147">getPermissionsQueryForReadImp</references>
-        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="381">Entity::tablename</references>
-        <referencedby refid="classHealth_1a2f8d9ca4d8ad64ab51128c8322c205ad" compoundref="health_8hpp" startline="129" endline="129">Health::getPermissionsQueryForUpdate</referencedby>
-        <referencedby refid="classPaidServices_1a4ce072d333dbd0975f9f0296f85eaf7c" compoundref="paidservices_8hpp" startline="129" endline="129">PaidServices::getPermissionsQueryForUpdate</referencedby>
-        <referencedby refid="classPatient_1aaf97e966375ff69900abb7e9668f5529" compoundref="patient_8hpp" startline="166" endline="166">Patient::getPermissionsQueryForUpdate</referencedby>
-        <referencedby refid="classPatientDrugs_1a48388f38b4a60efb58c0456bb91fc6f6" compoundref="patientdrugs_8hpp" startline="131" endline="131">PatientDrugs::getPermissionsQueryForUpdate</referencedby>
-        <referencedby refid="classPrescriptions_1aed5a4b9990874fa5c52d92f6a6cd3df0" compoundref="prescriptions_8hpp" startline="129" endline="129">Prescriptions::getPermissionsQueryForUpdate</referencedby>
-        <referencedby refid="classReports_1a15609f6f8614a70fedf1bf5cf34f7f04" compoundref="reports_8hpp" startline="131" endline="131">Reports::getPermissionsQueryForUpdate</referencedby>
-        <referencedby refid="classRequests_1a7ad538a2ddcbd270e92e83cd0e6a31fc" compoundref="requests_8hpp" startline="129" endline="129">Requests::getPermissionsQueryForUpdate</referencedby>
-        <referencedby refid="classVisitDrugs_1ac6f9974b6fe18393bdb2a622bce8a4fd" compoundref="visitdrugs_8hpp" startline="133" endline="133">VisitDrugs::getPermissionsQueryForUpdate</referencedby>
-        <referencedby refid="classVisits_1a75b35f8de2fe3dc21053cf73651ecd97" compoundref="visits_8hpp" startline="130" endline="130">Visits::getPermissionsQueryForUpdate</referencedby>
+        <location file="src/entities/base/case.hpp" line="205" column="24" bodyfile="src/entities/base/case.hpp" bodystart="205" bodyend="218"/>
+        <references refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" compoundref="case_8hpp" startline="74">ORGNAME</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="573">Entity::tablename</references>
+        <referencedby refid="classCase_1a1dd10871e1bd41f7d55b2b6f54da4fff" compoundref="case_8hpp" startline="229" endline="242">getPermissionsQueryForDeleteImp</referencedby>
+        <referencedby refid="classHealth_1a2f8d9ca4d8ad64ab51128c8322c205ad" compoundref="health_8hpp" startline="199" endline="202">Health::getPermissionsQueryForUpdate</referencedby>
+        <referencedby refid="classPaidServices_1a4ce072d333dbd0975f9f0296f85eaf7c" compoundref="paidservices_8hpp" startline="202" endline="205">PaidServices::getPermissionsQueryForUpdate</referencedby>
+        <referencedby refid="classPatient_1aaf97e966375ff69900abb7e9668f5529" compoundref="patient_8hpp" startline="253" endline="256">Patient::getPermissionsQueryForUpdate</referencedby>
+        <referencedby refid="classPatientDrugs_1a48388f38b4a60efb58c0456bb91fc6f6" compoundref="patientdrugs_8hpp" startline="198" endline="201">PatientDrugs::getPermissionsQueryForUpdate</referencedby>
+        <referencedby refid="classPrescriptions_1aed5a4b9990874fa5c52d92f6a6cd3df0" compoundref="prescriptions_8hpp" startline="203" endline="206">Prescriptions::getPermissionsQueryForUpdate</referencedby>
+        <referencedby refid="classReports_1a15609f6f8614a70fedf1bf5cf34f7f04" compoundref="reports_8hpp" startline="200" endline="203">Reports::getPermissionsQueryForUpdate</referencedby>
+        <referencedby refid="classRequests_1a7ad538a2ddcbd270e92e83cd0e6a31fc" compoundref="requests_8hpp" startline="198" endline="201">Requests::getPermissionsQueryForUpdate</referencedby>
+        <referencedby refid="classVisitDrugs_1ac6f9974b6fe18393bdb2a622bce8a4fd" compoundref="visitdrugs_8hpp" startline="208" endline="211">VisitDrugs::getPermissionsQueryForUpdate</referencedby>
+        <referencedby refid="classVisits_1a75b35f8de2fe3dc21053cf73651ecd97" compoundref="visits_8hpp" startline="201" endline="204">Visits::getPermissionsQueryForUpdate</referencedby>
       </memberdef>
       <memberdef kind="function" id="classCase_1a1dd10871e1bd41f7d55b2b6f54da4fff" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -452,27 +454,28 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/case.hpp" line="172" column="26" bodyfile="src/entities/base/case.hpp" bodystart="172" bodyend="181"/>
-        <references refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" compoundref="case_8hpp" startline="60">ORGNAME</references>
-        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="381">Entity::tablename</references>
-        <referencedby refid="classHealth_1a34f190d38ad4031c79953aca78fc68bd" compoundref="health_8hpp" startline="135" endline="135">Health::getPermissionsQueryForDelete</referencedby>
-        <referencedby refid="classPaidServices_1a2170417b8fab478a0b4cc3493fb9008f" compoundref="paidservices_8hpp" startline="135" endline="135">PaidServices::getPermissionsQueryForDelete</referencedby>
-        <referencedby refid="classPatient_1a35aec1ab81bfaaac3433608c530e8a43" compoundref="patient_8hpp" startline="173" endline="173">Patient::getPermissionsQueryForDelete</referencedby>
-        <referencedby refid="classPatientDrugs_1afd534a42f237d038d793e91293d188fb" compoundref="patientdrugs_8hpp" startline="137" endline="137">PatientDrugs::getPermissionsQueryForDelete</referencedby>
-        <referencedby refid="classPrescriptions_1ae55af8ee0205de5515a5f799bb690fda" compoundref="prescriptions_8hpp" startline="135" endline="135">Prescriptions::getPermissionsQueryForDelete</referencedby>
-        <referencedby refid="classReports_1abefb872d38acf1ed1f5ea9fdc1df749b" compoundref="reports_8hpp" startline="137" endline="137">Reports::getPermissionsQueryForDelete</referencedby>
-        <referencedby refid="classRequests_1ac25c218a4af588e39eafd3829c0ee9d2" compoundref="requests_8hpp" startline="135" endline="135">Requests::getPermissionsQueryForDelete</referencedby>
-        <referencedby refid="classVisitDrugs_1aeb6099460d22bc92712831274c255c37" compoundref="visitdrugs_8hpp" startline="139" endline="139">VisitDrugs::getPermissionsQueryForDelete</referencedby>
-        <referencedby refid="classVisits_1a7fbc9919f32e33da860cf3cabf26a7eb" compoundref="visits_8hpp" startline="136" endline="136">Visits::getPermissionsQueryForDelete</referencedby>
+        <location file="src/entities/base/case.hpp" line="229" column="24" bodyfile="src/entities/base/case.hpp" bodystart="229" bodyend="242"/>
+        <references refid="classCase_1acfa6a0504f8706a2d5acceb6cf2d1edf" compoundref="case_8hpp" startline="205" endline="218">getPermissionsQueryForUpdateImpl</references>
+        <references refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" compoundref="case_8hpp" startline="74">ORGNAME</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="573">Entity::tablename</references>
+        <referencedby refid="classHealth_1a34f190d38ad4031c79953aca78fc68bd" compoundref="health_8hpp" startline="210" endline="213">Health::getPermissionsQueryForDelete</referencedby>
+        <referencedby refid="classPaidServices_1a2170417b8fab478a0b4cc3493fb9008f" compoundref="paidservices_8hpp" startline="213" endline="216">PaidServices::getPermissionsQueryForDelete</referencedby>
+        <referencedby refid="classPatient_1a35aec1ab81bfaaac3433608c530e8a43" compoundref="patient_8hpp" startline="265" endline="268">Patient::getPermissionsQueryForDelete</referencedby>
+        <referencedby refid="classPatientDrugs_1afd534a42f237d038d793e91293d188fb" compoundref="patientdrugs_8hpp" startline="209" endline="212">PatientDrugs::getPermissionsQueryForDelete</referencedby>
+        <referencedby refid="classPrescriptions_1ae55af8ee0205de5515a5f799bb690fda" compoundref="prescriptions_8hpp" startline="214" endline="217">Prescriptions::getPermissionsQueryForDelete</referencedby>
+        <referencedby refid="classReports_1abefb872d38acf1ed1f5ea9fdc1df749b" compoundref="reports_8hpp" startline="211" endline="214">Reports::getPermissionsQueryForDelete</referencedby>
+        <referencedby refid="classRequests_1ac25c218a4af588e39eafd3829c0ee9d2" compoundref="requests_8hpp" startline="209" endline="212">Requests::getPermissionsQueryForDelete</referencedby>
+        <referencedby refid="classVisitDrugs_1aeb6099460d22bc92712831274c255c37" compoundref="visitdrugs_8hpp" startline="219" endline="222">VisitDrugs::getPermissionsQueryForDelete</referencedby>
+        <referencedby refid="classVisits_1a7fbc9919f32e33da860cf3cabf26a7eb" compoundref="visits_8hpp" startline="212" endline="215">Visits::getPermissionsQueryForDelete</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
 <para><ref refid="classBase" kindref="compound">Base</ref> entity for clinic-owned clinical records (patients, visits, reports, ...). </para>
     </briefdescription>
     <detaileddescription>
-<para>Extends <ref refid="classEntity" kindref="compound">Entity</ref> with a fixed organisation name (&quot;clinics&quot;) and a family of static permission-query builders. Concrete service entities derive from <ref refid="classCase" kindref="compound">Case</ref> and expose those builders to <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref>, which executes the returned query to decide whether a requester may create/read/update/delete a record. The builders select the owner, admin and staff columns of the owning clinic (joined to the record table where needed). <simplesect kind="note"><para>Unlike the CRUD builders in <ref refid="classEntity" kindref="compound">Entity</ref>, these queries interpolate the id and table names into the SQL text via fmt::format and take no pqxx::params; they are called with internal, trusted values and the resulting text is also used as a cache key by <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref>. </para>
+<para>Extends <ref refid="classEntity" kindref="compound">Entity</ref> with a fixed organisation name (&quot;clinics&quot;) and a family of static permission-query builders. Concrete service entities derive from <ref refid="classCase" kindref="compound">Case</ref> and expose those builders to <ref refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21" kindref="member">PermissionManager</ref>, which executes the returned query to decide whether a requester may create/read/update/delete a record. The builders select the owner, admin and staff columns of the owning clinic (joined to the record table where needed). <simplesect kind="note"><para>Unlike the CRUD builders in <ref refid="classEntity" kindref="compound">Entity</ref>, these queries interpolate the id and table names into the SQL text via fmt::format and take no pqxx::params; they are called with internal, trusted values and the resulting text is also used as a cache key by <ref refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21" kindref="member">PermissionManager</ref>. </para>
 </simplesect>
-<simplesect kind="see"><para><ref refid="classEntity" kindref="compound">Entity</ref>, <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref> </para>
+<simplesect kind="see"><para><ref refid="classEntity" kindref="compound">Entity</ref>, <ref refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21" kindref="member">PermissionManager</ref> </para>
 </simplesect>
 </para>
     </detaileddescription>
@@ -566,7 +569,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/entities/base/case.hpp" line="54" column="1" bodyfile="src/entities/base/case.hpp" bodystart="55" bodyend="234"/>
+    <location file="src/entities/base/case.hpp" line="68" column="1" bodyfile="src/entities/base/case.hpp" bodystart="68" bodyend="295"/>
     <listofallmembers>
       <member refid="classBase_1a58887755525abd3f340963e2bbdcc972" prot="public" virt="non-virtual"><scope>Case</scope><name>Base</name></member>
       <member refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" prot="protected" virt="non-virtual"><scope>Case</scope><name>buildCreateStatement</name></member>

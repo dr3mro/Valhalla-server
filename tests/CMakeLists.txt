@@ -19,7 +19,9 @@ add_executable(unit_tests ${TEST_SOURCES})
 target_include_directories(unit_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
 # Catch2::Catch2WithMain supplies main(); no CATCH_CONFIG_MAIN needed (v3).
-target_link_libraries(unit_tests PRIVATE server_core Catch2::Catch2WithMain)
+
+
+target_link_libraries(unit_tests PRIVATE server_core Catch2::Catch2WithMain )
 
 target_compile_features(unit_tests PRIVATE cxx_std_20)
 

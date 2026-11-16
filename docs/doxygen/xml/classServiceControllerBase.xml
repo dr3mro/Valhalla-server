@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="79" column="14"/>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="112" column="12"/>
         <referencedby refid="classServiceControllerBase_1a7578846e1ea453c43df59c463058af33">operator=</referencedby>
         <referencedby refid="classServiceControllerBase_1a924485ac89d89d72c74102afefbdd77a">operator=</referencedby>
         <referencedby refid="classServiceControllerBase_1a30c74409caf6f9833e22decdf93c8a54">ServiceControllerBase</referencedby>
@@ -40,7 +40,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="82" column="5"/>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="118" column="3"/>
         <references refid="classServiceControllerBase_1a0ccc53492a5a91f8d3fc0803ab917adc">ServiceControllerBase</references>
       </memberdef>
       <memberdef kind="function" id="classServiceControllerBase_1af5dbb1a6f31e3a7e9583eb724e6feb11" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="84" column="5"/>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="123" column="3"/>
         <references refid="classServiceControllerBase_1a0ccc53492a5a91f8d3fc0803ab917adc">ServiceControllerBase</references>
       </memberdef>
       <memberdef kind="function" id="classServiceControllerBase_1a7578846e1ea453c43df59c463058af33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -78,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="86" column="27"/>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="127" column="25"/>
         <references refid="classServiceControllerBase_1a0ccc53492a5a91f8d3fc0803ab917adc">ServiceControllerBase</references>
       </memberdef>
       <memberdef kind="function" id="classServiceControllerBase_1a924485ac89d89d72c74102afefbdd77a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -97,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="88" column="27"/>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="132" column="25"/>
         <references refid="classServiceControllerBase_1a0ccc53492a5a91f8d3fc0803ab917adc">ServiceControllerBase</references>
       </memberdef>
       <memberdef kind="function" id="classServiceControllerBase_1aab241845ae34572a2ed5d482a478ef87" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -116,7 +116,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="93" column="13"/>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="141" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classServiceControllerBase_1aef2ec41694023c184286b38ab52e7727" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -172,9 +172,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="103" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Services_1a7a1d4a2a443909b8a43856e72288c36a" compoundref="services_8hpp" startline="79" endline="129">api::v2::Services::Create</referencedby>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="157" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a7a1d4a2a443909b8a43856e72288c36a" compoundref="services_8hpp" startline="104" endline="191">api::v2::Services::Create</referencedby>
       </memberdef>
       <memberdef kind="function" id="classServiceControllerBase_1a02a5f680d56ad264edb004229d80c996" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -228,8 +228,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="111" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="174" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classServiceControllerBase_1a5bfaadfc6a791e0035dabc436e32ebcd" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -283,9 +283,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="118" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Services_1add4126a239d7f9a96356da45f888ff67" compoundref="services_8hpp" startline="139" endline="189">api::v2::Services::Read</referencedby>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="189" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Services_1add4126a239d7f9a96356da45f888ff67" compoundref="services_8hpp" startline="205" endline="288">api::v2::Services::Read</referencedby>
       </memberdef>
       <memberdef kind="function" id="classServiceControllerBase_1aa418b013aa53894745ca9595e40b62ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -339,8 +339,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="125" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="203" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classServiceControllerBase_1aefe0e5804f4eed5e0ac73a32317950d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -406,9 +406,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="133" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Services_1aca116f0dbc91a0743085f121c253cf17" compoundref="services_8hpp" startline="199" endline="254">api::v2::Services::Update</referencedby>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="219" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Services_1aca116f0dbc91a0743085f121c253cf17" compoundref="services_8hpp" startline="302" endline="394">api::v2::Services::Update</referencedby>
       </memberdef>
       <memberdef kind="function" id="classServiceControllerBase_1a737ec8801a6bb9ce6ceb53c2fb8ccc7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -474,8 +474,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="141" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="236" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classServiceControllerBase_1aed2131f8be6e44fdca0ac4bb17cb6dfb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -529,9 +529,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="148" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Services_1a6c1616c95dc9edf3ffaf52612b94bc29" compoundref="services_8hpp" startline="263" endline="318">api::v2::Services::Delete</referencedby>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="250" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a6c1616c95dc9edf3ffaf52612b94bc29" compoundref="services_8hpp" startline="407" endline="495">api::v2::Services::Delete</referencedby>
       </memberdef>
       <memberdef kind="function" id="classServiceControllerBase_1a2ed4587b95b68015369aa23e31bb5962" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -585,8 +585,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="155" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="264" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classServiceControllerBase_1af9b5bf091f00982abb00edfca5f3a110" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -640,28 +640,28 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="164" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Services_1a9aaef4e8359c44c2f0d8f79e96497868" compoundref="services_8hpp" startline="327" endline="377">api::v2::Services::Search</referencedby>
+        <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="279" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a9aaef4e8359c44c2f0d8f79e96497868" compoundref="services_8hpp" startline="508" endline="591">api::v2::Services::Search</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
 <para>Type-erased interface for service-entity (clinic, pharmacy, laboratory, radiology center) CRUD+S operations. </para>
     </briefdescription>
     <detaileddescription>
-<para>Declares both a synchronous, callback-driven form of every operation and a coroutine (<computeroutput>drogon::Task&lt;void&gt;</computeroutput>) form. The HTTP layer reaches concrete controllers through this base via a <computeroutput>std::variant</computeroutput> in the services route registry, so virtual dispatch here is what makes one route handler serve all service entity types.</para>
-<para>In plain words: &quot;synchronous&quot; means the caller gets the answer through a callback function; &quot;coroutine&quot; (<computeroutput>drogon::Task&lt;void&gt;</computeroutput>) means the caller can pause the operation with co_await and let the server do other work meanwhile. &quot;Virtual dispatch&quot; means that when the route code calls <computeroutput><ref refid="classServiceControllerBase_1aef2ec41694023c184286b38ab52e7727" kindref="member">Create</ref></computeroutput> through this base type, C++ automatically runs the version belonging to the real object (for example the clinic controller). A <computeroutput>std::variant</computeroutput> is a variable that can hold one of several different types — here it holds whichever concrete service controller was selected.</para>
-<para>Invocation contract shared by every method:<itemizedlist>
-<listitem><para><computeroutput>callback</computeroutput> is <computeroutput>std::function&lt;void(int, const std::string&amp;)&gt;</computeroutput>, moved by the caller and forwarded down the call chain. By contract it is invoked once on each completion path, including failures; the first argument is an <ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892f" kindref="member">api::v2::Http::Status</ref> code, the second a response body (serialized row(s) on success, diagnostic text on failure).</para>
-</listitem><listitem><para><computeroutput>requester</computeroutput> is the authenticated caller identity, used by implementations for the permission decision before any database work is done.</para>
+<para>Declares both a synchronous, callback-driven form of every operation and a coroutine (<computeroutput>drogon::Task&lt;void&gt;</computeroutput>) form. The HTTP layer reaches concrete controllers through this base via a <computeroutput>std::variant</computeroutput> in the services route registry, so virtual dispatch here is what makes one route handler serve all service entity types. <verbatim>     In plain words: &quot;synchronous&quot; means the caller gets the answer
+</verbatim> through a callback function; &quot;coroutine&quot; (<computeroutput>drogon::Task&lt;void&gt;</computeroutput>) means the caller can pause the operation with co_await and let the server do other work meanwhile. &quot;Virtual dispatch&quot; means that when the route code calls <computeroutput><ref refid="classServiceControllerBase_1aef2ec41694023c184286b38ab52e7727" kindref="member">Create</ref></computeroutput> through this base type, C++ automatically runs the version belonging to the real object (for example the clinic controller). A <computeroutput>std::variant</computeroutput> is a variable that can hold one of several different types — here it holds whichever concrete service controller was selected. <verbatim>     Invocation contract shared by every method:
+     - `callback` is `std::function&lt;void(int, const std::string&amp;)&gt;`,
+</verbatim> moved by the caller and forwarded down the call chain. By contract it is invoked once on each completion path, including failures; the first argument is an <ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892f" kindref="member">api::v2::Http::Status</ref> code, the second a response body (serialized row(s) on success, diagnostic text on failure).<itemizedlist>
+<listitem><para><computeroutput>requester</computeroutput> is the authenticated caller identity, used by implementations for the permission decision before any database work is done.</para>
 </listitem><listitem><para><computeroutput>data</computeroutput> is a non-owning view of the raw JSON request body; it must outlive the call.</para>
-</listitem><listitem><para><computeroutput>_id</computeroutput>, where present, is the optional target entity id; a missing value is rejected by the concrete implementation rather than by this interface.</para>
-</listitem></itemizedlist>
-</para>
-<para>The <computeroutput>*Async</computeroutput> methods perform the same operation but must be co_awaited; the route layer wraps them in <computeroutput>drogon::async_run</computeroutput> and converts the callback result into an HTTP reply. <simplesect kind="note"><para>Implementations here are supplied by <ref refid="classServiceController" kindref="compound">ServiceController</ref>; the interface itself adds no state. </para>
+</listitem><listitem><para><computeroutput>_id</computeroutput>, where present, is the optional target entity id; a missing value is rejected by the concrete implementation rather than by this interface. <verbatim>     The `*Async` methods perform the same operation but must be
+</verbatim> co_awaited; the route layer wraps them in <computeroutput>drogon::async_run</computeroutput> and converts the callback result into an HTTP reply. <simplesect kind="note"><para>Implementations here are supplied by <ref refid="classServiceController" kindref="compound">ServiceController</ref>; the interface itself adds no state. </para>
 </simplesect>
 <simplesect kind="see"><para><ref refid="classServiceController" kindref="compound">ServiceController</ref>, <ref refid="classEntityControllerBase" kindref="compound">EntityControllerBase</ref>, <ref refid="classController" kindref="compound">Controller</ref> </para>
 </simplesect>
+</para>
+</listitem></itemizedlist>
 </para>
     </detaileddescription>
     <inheritancegraph>
@@ -676,7 +676,7 @@
         <link refid="classServiceControllerBase"/>
       </node>
     </inheritancegraph>
-    <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="75" column="1" bodyfile="src/controllers/servicecontroller/servicecontrollerbase.hpp" bodystart="76" bodyend="165"/>
+    <location file="src/controllers/servicecontroller/servicecontrollerbase.hpp" line="109" column="1" bodyfile="src/controllers/servicecontroller/servicecontrollerbase.hpp" bodystart="109" bodyend="285"/>
     <listofallmembers>
       <member refid="classServiceControllerBase_1aef2ec41694023c184286b38ab52e7727" prot="public" virt="pure-virtual"><scope>ServiceControllerBase</scope><name>Create</name></member>
       <member refid="classServiceControllerBase_1a02a5f680d56ad264edb004229d80c996" prot="public" virt="pure-virtual"><scope>ServiceControllerBase</scope><name>CreateAsync</name></member>

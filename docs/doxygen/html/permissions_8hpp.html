@@ -119,7 +119,8 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('permissions_8h
 </div><!--header-->
 <div class="contents">
 
-<p>A small type that stores permissions as on/off bits in one byte. (Originally: "Holds a bitmask of authorization bits and the helpers to combine/test them.").  
+<p>A small type that stores permissions as on/off bits in one byte. (Originally: "Holds a bitmask of authorization bits and the helpers to
+combine/test them.").  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstddef&gt;</code><br />
 <code>#include &lt;cstdint&gt;</code><br />
@@ -132,9 +133,10 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds a bitmask of authorization bits and the helpers to combine/test them.  <a href="structPermissions.html#details">More...</a><br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A small type that stores permissions as on/off bits in one byte. (Originally: "Holds a bitmask of authorization bits and the helpers to combine/test them."). </p>
+<div class="textblock"><p>A small type that stores permissions as on/off bits in one byte. (Originally: "Holds a bitmask of authorization bits and the helpers to
+combine/test them."). </p>
 <p>This header defines the <a class="el" href="structPermissions.html" title="Holds a bitmask of authorization bits and the helpers to combine/test them.">Permissions</a> struct. It lists the individual rights (like "can read" or "is owner") as single bits, and provides operators to combine and test those bits. A single value can represent several rights at once.</p>
-<p>WHY THIS FILE MATTERS IN THE SERVER: Authorization questions ("may this person delete this?") are answered using these bit masks. <a class="el" href="gatekeeper_8cpp.html#a2391c0b165c65deb4ad3ad19ca6dd2aa">PermissionManager</a> and <a class="el" href="permissionmanager__private_8cpp.html#a69fdf8e30d39a5bacfc839feb01dd616">PermissionManagerPrivate</a> call the helpers here to turn a number stored in the database into a clear yes/no. Without this file there would be no common language for describing rights.</p>
+<p>WHY THIS FILE MATTERS IN THE SERVER: Authorization questions ("may this person delete this?") are answered using these bit masks. <a class="el" href="gatekeeper_8cpp.html#ae17e951f1dc80a8e4920571ebe9f3c21">PermissionManager</a> and <a class="el" href="permissionmanager__private_8cpp.html#a4b3594f285e47314250d2927a3b7cc87">PermissionManagerPrivate</a> call the helpers here to turn a number stored in the database into a clear yes/no. Without this file there would be no common language for describing rights.</p>
 <p>CONCEPTS TO LEARN (for beginners):</p><ul>
 <li>Bit masks and bitwise operators: <a href="https://en.wikipedia.org/wiki/Mask_(computing)">https://en.wikipedia.org/wiki/Mask_(computing)</a></li>
 <li>C++ bitwise operators: <a href="https://en.cppreference.com/w/cpp/language/operator_arithmetic">https://en.cppreference.com/w/cpp/language/operator_arithmetic</a></li>

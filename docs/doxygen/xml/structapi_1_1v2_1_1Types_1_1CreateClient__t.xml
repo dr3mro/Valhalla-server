@@ -20,7 +20,7 @@
           <declname>tablename</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">api::v2::Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <param>
@@ -68,16 +68,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="475" column="9" bodyfile="src/entities/base/types.hpp" bodystart="475" bodyend="505"/>
-        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006" compoundref="validator_8hpp" startline="93">Validator::Rule::ASSERT_NOT_PRESENT</references>
-        <references refid="classValidator_1adf618a4a20efe4f1bd832993affd8b7a" compoundref="validator_8cpp" startline="205" endline="272">Validator::clientRegexValidation</references>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1adc52add57f54dc3d0d39360a71e1ff22" compoundref="entities_2base_2types_8hpp" startline="420">api::v2::Types::ClientData_t::data_j</references>
-        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1ad6c132aa0d6b24951d7933dfffa81260" compoundref="entities_2base_2types_8hpp" startline="415">api::v2::Types::ClientData_t::data_set</references>
-        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
-        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a7f7e2dd8e7b65786c7d988cee10628fa" compoundref="entities_2base_2types_8hpp" startline="434" endline="450">api::v2::Types::ClientData_t::hashPassword</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">api::v2::Http::INTERNAL_SERVER_ERROR</references>
-        <references refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" compoundref="validator_8cpp" startline="52" endline="104">Validator::validateDatabaseCreateSchema</references>
+        <location file="src/entities/base/types.hpp" line="638" column="5" bodyfile="src/entities/base/types.hpp" bodystart="638" bodyend="686"/>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006" compoundref="validator_8hpp" startline="113">Validator::Rule::ASSERT_NOT_PRESENT</references>
+        <references refid="classValidator_1adf618a4a20efe4f1bd832993affd8b7a" compoundref="validator_8cpp" startline="275" endline="390">Validator::clientRegexValidation</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1adc52add57f54dc3d0d39360a71e1ff22" compoundref="entities_2base_2types_8hpp" startline="563">api::v2::Types::ClientData_t::data_j</references>
+        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1ad6c132aa0d6b24951d7933dfffa81260" compoundref="entities_2base_2types_8hpp" startline="557">api::v2::Types::ClientData_t::data_set</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
+        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a7f7e2dd8e7b65786c7d988cee10628fa" compoundref="entities_2base_2types_8hpp" startline="581" endline="606">api::v2::Types::ClientData_t::hashPassword</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="123">api::v2::Http::INTERNAL_SERVER_ERROR</references>
+        <references refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" compoundref="validator_8cpp" startline="66" endline="139">Validator::validateDatabaseCreateSchema</references>
       </memberdef>
       <memberdef kind="function" id="structapi_1_1v2_1_1Types_1_1CreateClient__t_1ad1e51108cd8b45962846d1cad89e2650" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::unordered_set&lt; std::pair&lt; std::string, std::string &gt; &gt; &amp;</type>
@@ -92,8 +92,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="509" column="34" bodyfile="src/entities/base/types.hpp" bodystart="509" bodyend="509"/>
-        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1ad6c132aa0d6b24951d7933dfffa81260" compoundref="entities_2base_2types_8hpp" startline="415">api::v2::Types::ClientData_t::data_set</references>
+        <location file="src/entities/base/types.hpp" line="692" column="5" bodyfile="src/entities/base/types.hpp" bodystart="692" bodyend="694"/>
+        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1ad6c132aa0d6b24951d7933dfffa81260" compoundref="entities_2base_2types_8hpp" startline="557">api::v2::Types::ClientData_t::data_set</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -126,7 +126,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/entities/base/types.hpp" line="465" column="5" bodyfile="src/entities/base/types.hpp" bodystart="466" bodyend="510"/>
+    <location file="src/entities/base/types.hpp" line="626" column="3" bodyfile="src/entities/base/types.hpp" bodystart="626" bodyend="695"/>
     <listofallmembers>
       <member refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a6c90d78e4dd68ae25af5e18582fb3910" prot="public" virt="non-virtual"><scope>api::v2::Types::CreateClient_t</scope><name>ClientData_t</name></member>
       <member refid="structapi_1_1v2_1_1Types_1_1CreateClient__t_1a33df7cd784299784f24b76d4343bd4dc" prot="public" virt="non-virtual"><scope>api::v2::Types::CreateClient_t</scope><name>CreateClient_t</name></member>

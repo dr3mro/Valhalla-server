@@ -47,7 +47,6 @@ var annotated_dup =
     [ "Base", "classBase.html", "classBase" ],
     [ "BasicPermissionCache", "classBasicPermissionCache.html", "classBasicPermissionCache" ],
     [ "BlockingPool", "classBlockingPool.html", "classBlockingPool" ],
-    [ "BoundedExecutor", "classBoundedExecutor.html", "classBoundedExecutor" ],
     [ "Case", "classCase.html", "classCase" ],
     [ "ClientController", "classClientController.html", "classClientController" ],
     [ "ClientControllerBase", "classClientControllerBase.html", "classClientControllerBase" ],

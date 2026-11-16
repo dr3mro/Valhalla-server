@@ -9,7 +9,8 @@
         <argsstring></argsstring>
         <name>VALHALLA_TEST_NO_DB_</name>
         <qualifiedname>Defaults::Testing::VALHALLA_TEST_NO_DB_</qualifiedname>
-        <initializer>= false</initializer>
+        <initializer>                            =
+false</initializer>
         <briefdescription>
 <para>Real database is used unless a test explicitly opts out. </para>
         </briefdescription>
@@ -17,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="218" column="20" bodyfile="src/configurator/defaults.hpp" bodystart="218" bodyend="-1"/>
+        <location file="src/configurator/defaults.hpp" line="313" column="16" bodyfile="src/configurator/defaults.hpp" bodystart="313" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -25,6 +26,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/configurator/defaults.hpp" line="212" column="1"/>
+    <location file="src/configurator/defaults.hpp" line="306" column="1"/>
   </compounddef>
 </doxygen>

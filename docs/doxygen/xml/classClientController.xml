@@ -14,12 +14,13 @@
     </templateparamlist>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classClientController_1a52124a8675b2204d7c202908798dc091" prot="private" static="no" mutable="no">
-        <type>std::shared_ptr&lt; <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> &gt;</type>
+        <type>std::shared_ptr&lt; <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref> &gt;</type>
         <definition>std::shared_ptr&lt;GateKeeper&gt; ClientController&lt; T &gt;::gateKeeper</definition>
         <argsstring></argsstring>
         <name>gateKeeper</name>
         <qualifiedname>ClientController::gateKeeper</qualifiedname>
-        <initializer>= <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref>&gt;()</initializer>
+        <initializer>                       =
+<ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref>&gt;()</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -27,20 +28,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="245" column="25" bodyfile="src/controllers/clientcontroller/clientcontroller.hpp" bodystart="245" bodyend="-1"/>
-        <referencedby refid="classClientController_1a42c57adab458feeb209485ce13c48b0f" compoundref="clientcontroller_8cpp" startline="279" endline="308">ClientController&lt; T &gt;::Activate</referencedby>
-        <referencedby refid="classClientController_1af7b6b7c90918fc3068478538f2e1b37d" compoundref="clientcontroller_8cpp" startline="311" endline="340">ClientController&lt; T &gt;::ActivateAsync</referencedby>
-        <referencedby refid="classClientController_1a0373ac4a58de1a4105939a0db1c64699" compoundref="clientcontroller_8cpp" startline="67" endline="117">ClientController&lt; T &gt;::createNow</referencedby>
-        <referencedby refid="classClientController_1a57d1a8ba8f83b70242fcc29b7f8f70cb" compoundref="clientcontroller_8cpp" startline="169" endline="182">ClientController&lt; T &gt;::Delete</referencedby>
-        <referencedby refid="classClientController_1addb2c711f70f69b197b67da384b80c2d" compoundref="clientcontroller_8cpp" startline="432" endline="444">ClientController&lt; T &gt;::DeleteAsync</referencedby>
-        <referencedby refid="classClientController_1abdee410951d9aa19b082955197f53162" compoundref="clientcontroller_8cpp" startline="351" endline="378">ClientController&lt; T &gt;::GetServices</referencedby>
-        <referencedby refid="classClientController_1aebd0c741055d14e284ea633eee9bd18d" compoundref="clientcontroller_8cpp" startline="381" endline="408">ClientController&lt; T &gt;::GetServicesAsync</referencedby>
-        <referencedby refid="classClientController_1aa76ccf7c49744669ef28827b606216d9" compoundref="clientcontroller_8cpp" startline="191" endline="195">ClientController&lt; T &gt;::Login</referencedby>
-        <referencedby refid="classClientController_1ab41c86cac7c0746d1b05f254e43b4591" compoundref="clientcontroller_8cpp" startline="198" endline="202">ClientController&lt; T &gt;::LoginAsync</referencedby>
-        <referencedby refid="classClientController_1aefe031b81d6d282292bafd65d191c8cd" compoundref="clientcontroller_8cpp" startline="205" endline="210">ClientController&lt; T &gt;::Logout</referencedby>
-        <referencedby refid="classClientController_1ac9f28aab768cb85f02f2ca84b694f149" compoundref="clientcontroller_8cpp" startline="213" endline="243">ClientController&lt; T &gt;::Suspend</referencedby>
-        <referencedby refid="classClientController_1a77e043006883f4a959679df477d0ad39" compoundref="clientcontroller_8cpp" startline="246" endline="276">ClientController&lt; T &gt;::SuspendAsync</referencedby>
-        <referencedby refid="classClientController_1a8f17ab1fcb71e5c9d8e03f6cfe69559b" compoundref="clientcontroller_8cpp" startline="134" endline="166">ClientController&lt; T &gt;::updateNow</referencedby>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="378" column="19" bodyfile="src/controllers/clientcontroller/clientcontroller.hpp" bodystart="378" bodyend="-1"/>
+        <referencedby refid="classClientController_1a42c57adab458feeb209485ce13c48b0f" compoundref="clientcontroller_8cpp" startline="376" endline="407">ClientController&lt; T &gt;::Activate</referencedby>
+        <referencedby refid="classClientController_1af7b6b7c90918fc3068478538f2e1b37d" compoundref="clientcontroller_8cpp" startline="410" endline="442">ClientController&lt; T &gt;::ActivateAsync</referencedby>
+        <referencedby refid="classClientController_1a0373ac4a58de1a4105939a0db1c64699" compoundref="clientcontroller_8cpp" startline="96" endline="155">ClientController&lt; T &gt;::createNow</referencedby>
+        <referencedby refid="classClientController_1a57d1a8ba8f83b70242fcc29b7f8f70cb" compoundref="clientcontroller_8cpp" startline="228" endline="250">ClientController&lt; T &gt;::Delete</referencedby>
+        <referencedby refid="classClientController_1addb2c711f70f69b197b67da384b80c2d" compoundref="clientcontroller_8cpp" startline="563" endline="585">ClientController&lt; T &gt;::DeleteAsync</referencedby>
+        <referencedby refid="classClientController_1abdee410951d9aa19b082955197f53162" compoundref="clientcontroller_8cpp" startline="457" endline="487">ClientController&lt; T &gt;::GetServices</referencedby>
+        <referencedby refid="classClientController_1aebd0c741055d14e284ea633eee9bd18d" compoundref="clientcontroller_8cpp" startline="490" endline="524">ClientController&lt; T &gt;::GetServicesAsync</referencedby>
+        <referencedby refid="classClientController_1aa76ccf7c49744669ef28827b606216d9" compoundref="clientcontroller_8cpp" startline="262" endline="273">ClientController&lt; T &gt;::Login</referencedby>
+        <referencedby refid="classClientController_1ab41c86cac7c0746d1b05f254e43b4591" compoundref="clientcontroller_8cpp" startline="276" endline="287">ClientController&lt; T &gt;::LoginAsync</referencedby>
+        <referencedby refid="classClientController_1aefe031b81d6d282292bafd65d191c8cd" compoundref="clientcontroller_8cpp" startline="290" endline="299">ClientController&lt; T &gt;::Logout</referencedby>
+        <referencedby refid="classClientController_1ac9f28aab768cb85f02f2ca84b694f149" compoundref="clientcontroller_8cpp" startline="302" endline="335">ClientController&lt; T &gt;::Suspend</referencedby>
+        <referencedby refid="classClientController_1a77e043006883f4a959679df477d0ad39" compoundref="clientcontroller_8cpp" startline="338" endline="373">ClientController&lt; T &gt;::SuspendAsync</referencedby>
+        <referencedby refid="classClientController_1a8f17ab1fcb71e5c9d8e03f6cfe69559b" compoundref="clientcontroller_8cpp" startline="185" endline="225">ClientController&lt; T &gt;::updateNow</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classClientController_1a2be44d78c532e6b3f569ba1061f29d60" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classPasswordWorker" kindref="compound">PasswordWorker</ref> &gt;</type>
@@ -48,7 +49,8 @@
         <argsstring></argsstring>
         <name>passwordWorker</name>
         <qualifiedname>ClientController::passwordWorker</qualifiedname>
-        <initializer>= <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classPasswordWorker" kindref="compound">PasswordWorker</ref>&gt;()</initializer>
+        <initializer>                           =
+<ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classPasswordWorker" kindref="compound">PasswordWorker</ref>&gt;()</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -56,9 +58,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="249" column="21" bodyfile="src/controllers/clientcontroller/clientcontroller.hpp" bodystart="249" bodyend="-1"/>
-        <referencedby refid="classClientController_1a7b3e95c9052e2b4646f014ca9af39140" compoundref="clientcontroller_8cpp" startline="58" endline="64">ClientController&lt; T &gt;::Create</referencedby>
-        <referencedby refid="classClientController_1a671dfda3ad96e247286fe44d22a1b478" compoundref="clientcontroller_8cpp" startline="126" endline="131">ClientController&lt; T &gt;::Update</referencedby>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="384" column="19" bodyfile="src/controllers/clientcontroller/clientcontroller.hpp" bodystart="384" bodyend="-1"/>
+        <referencedby refid="classClientController_1a7b3e95c9052e2b4646f014ca9af39140" compoundref="clientcontroller_8cpp" startline="79" endline="93">ClientController&lt; T &gt;::Create</referencedby>
+        <referencedby refid="classClientController_1a671dfda3ad96e247286fe44d22a1b478" compoundref="clientcontroller_8cpp" startline="167" endline="182">ClientController&lt; T &gt;::Update</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -74,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="64" column="5"/>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="84" column="3"/>
         <referencedby refid="classClientController_1a545dbf8d8fe22c612b5332f8f37fa985">ClientController&lt; T &gt;::ClientController</referencedby>
         <referencedby refid="classClientController_1a92982bb7df39853f560dd44f7b4b38a4">ClientController&lt; T &gt;::ClientController</referencedby>
         <referencedby refid="classClientController_1a0391cde2423e25dda7d43b6ddc70ae9e">ClientController&lt; T &gt;::operator=</referencedby>
@@ -95,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="65" column="5"/>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="86" column="3"/>
         <references refid="classClientController_1a766d8b32e21da18e3b392b339a7f64ed">ClientController&lt; T &gt;::ClientController</references>
       </memberdef>
       <memberdef kind="function" id="classClientController_1a545dbf8d8fe22c612b5332f8f37fa985" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -113,7 +115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="66" column="5"/>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="88" column="3"/>
         <references refid="classClientController_1a766d8b32e21da18e3b392b339a7f64ed">ClientController&lt; T &gt;::ClientController</references>
       </memberdef>
       <memberdef kind="function" id="classClientController_1ae4d319799fb8a52537011661385be8b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -131,7 +133,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="67" column="22"/>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="90" column="20"/>
         <references refid="classClientController_1a766d8b32e21da18e3b392b339a7f64ed">ClientController&lt; T &gt;::ClientController</references>
       </memberdef>
       <memberdef kind="function" id="classClientController_1a0391cde2423e25dda7d43b6ddc70ae9e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -149,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="68" column="22"/>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="92" column="20"/>
         <references refid="classClientController_1a766d8b32e21da18e3b392b339a7f64ed">ClientController&lt; T &gt;::ClientController</references>
       </memberdef>
       <memberdef kind="function" id="classClientController_1afc26f65a35933d0e8025c42d9101ce85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -164,30 +166,30 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="69" column="5"/>
-        <references refid="classClientController_1a42c57adab458feeb209485ce13c48b0f" compoundref="clientcontroller_8cpp" startline="279" endline="308">ClientController&lt; T &gt;::Activate</references>
-        <references refid="classClientController_1af7b6b7c90918fc3068478538f2e1b37d" compoundref="clientcontroller_8cpp" startline="311" endline="340">ClientController&lt; T &gt;::ActivateAsync</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classClientController_1a7b3e95c9052e2b4646f014ca9af39140" compoundref="clientcontroller_8cpp" startline="58" endline="64">ClientController&lt; T &gt;::Create</references>
-        <references refid="classClientController_1a52b4114b1e619b6526ee861696eff6da" compoundref="clientcontroller_8cpp" startline="414" endline="417">ClientController&lt; T &gt;::CreateAsync</references>
-        <references refid="classClientController_1a0373ac4a58de1a4105939a0db1c64699" compoundref="clientcontroller_8cpp" startline="67" endline="117">ClientController&lt; T &gt;::createNow</references>
-        <references refid="classClientController_1a57d1a8ba8f83b70242fcc29b7f8f70cb" compoundref="clientcontroller_8cpp" startline="169" endline="182">ClientController&lt; T &gt;::Delete</references>
-        <references refid="classClientController_1addb2c711f70f69b197b67da384b80c2d" compoundref="clientcontroller_8cpp" startline="432" endline="444">ClientController&lt; T &gt;::DeleteAsync</references>
-        <references refid="classClientController_1abdee410951d9aa19b082955197f53162" compoundref="clientcontroller_8cpp" startline="351" endline="378">ClientController&lt; T &gt;::GetServices</references>
-        <references refid="classClientController_1aebd0c741055d14e284ea633eee9bd18d" compoundref="clientcontroller_8cpp" startline="381" endline="408">ClientController&lt; T &gt;::GetServicesAsync</references>
-        <references refid="classClientController_1aa76ccf7c49744669ef28827b606216d9" compoundref="clientcontroller_8cpp" startline="191" endline="195">ClientController&lt; T &gt;::Login</references>
-        <references refid="classClientController_1ab41c86cac7c0746d1b05f254e43b4591" compoundref="clientcontroller_8cpp" startline="198" endline="202">ClientController&lt; T &gt;::LoginAsync</references>
-        <references refid="classClientController_1aefe031b81d6d282292bafd65d191c8cd" compoundref="clientcontroller_8cpp" startline="205" endline="210">ClientController&lt; T &gt;::Logout</references>
-        <references refid="classClientController_1a33f69fd2b79bc13817aa0574333266bf" compoundref="clientcontroller_8cpp" startline="120" endline="123">ClientController&lt; T &gt;::Read</references>
-        <references refid="classClientController_1a2a260581d3133c68635516102d87bbdb" compoundref="clientcontroller_8cpp" startline="420" endline="423">ClientController&lt; T &gt;::ReadAsync</references>
-        <references refid="classClientController_1a98c472a091deb653605efb4049936c9e" compoundref="clientcontroller_8cpp" startline="343" endline="348">ClientController&lt; T &gt;::ResetPassword</references>
-        <references refid="classClientController_1a36c5c10efab0dcfdf020f6702a6ff9bb" compoundref="clientcontroller_8cpp" startline="185" endline="188">ClientController&lt; T &gt;::Search</references>
-        <references refid="classClientController_1ab7c4ffff79c0e56214abb463ae375925" compoundref="clientcontroller_8cpp" startline="447" endline="450">ClientController&lt; T &gt;::SearchAsync</references>
-        <references refid="classClientController_1ac9f28aab768cb85f02f2ca84b694f149" compoundref="clientcontroller_8cpp" startline="213" endline="243">ClientController&lt; T &gt;::Suspend</references>
-        <references refid="classClientController_1a77e043006883f4a959679df477d0ad39" compoundref="clientcontroller_8cpp" startline="246" endline="276">ClientController&lt; T &gt;::SuspendAsync</references>
-        <references refid="classClientController_1a671dfda3ad96e247286fe44d22a1b478" compoundref="clientcontroller_8cpp" startline="126" endline="131">ClientController&lt; T &gt;::Update</references>
-        <references refid="classClientController_1ad218f6587a3135d5b5466401aac514e9" compoundref="clientcontroller_8cpp" startline="426" endline="429">ClientController&lt; T &gt;::UpdateAsync</references>
-        <references refid="classClientController_1a8f17ab1fcb71e5c9d8e03f6cfe69559b" compoundref="clientcontroller_8cpp" startline="134" endline="166">ClientController&lt; T &gt;::updateNow</references>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="94" column="3"/>
+        <references refid="classClientController_1a42c57adab458feeb209485ce13c48b0f" compoundref="clientcontroller_8cpp" startline="376" endline="407">ClientController&lt; T &gt;::Activate</references>
+        <references refid="classClientController_1af7b6b7c90918fc3068478538f2e1b37d" compoundref="clientcontroller_8cpp" startline="410" endline="442">ClientController&lt; T &gt;::ActivateAsync</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classClientController_1a7b3e95c9052e2b4646f014ca9af39140" compoundref="clientcontroller_8cpp" startline="79" endline="93">ClientController&lt; T &gt;::Create</references>
+        <references refid="classClientController_1a52b4114b1e619b6526ee861696eff6da" compoundref="clientcontroller_8cpp" startline="530" endline="537">ClientController&lt; T &gt;::CreateAsync</references>
+        <references refid="classClientController_1a0373ac4a58de1a4105939a0db1c64699" compoundref="clientcontroller_8cpp" startline="96" endline="155">ClientController&lt; T &gt;::createNow</references>
+        <references refid="classClientController_1a57d1a8ba8f83b70242fcc29b7f8f70cb" compoundref="clientcontroller_8cpp" startline="228" endline="250">ClientController&lt; T &gt;::Delete</references>
+        <references refid="classClientController_1addb2c711f70f69b197b67da384b80c2d" compoundref="clientcontroller_8cpp" startline="563" endline="585">ClientController&lt; T &gt;::DeleteAsync</references>
+        <references refid="classClientController_1abdee410951d9aa19b082955197f53162" compoundref="clientcontroller_8cpp" startline="457" endline="487">ClientController&lt; T &gt;::GetServices</references>
+        <references refid="classClientController_1aebd0c741055d14e284ea633eee9bd18d" compoundref="clientcontroller_8cpp" startline="490" endline="524">ClientController&lt; T &gt;::GetServicesAsync</references>
+        <references refid="classClientController_1aa76ccf7c49744669ef28827b606216d9" compoundref="clientcontroller_8cpp" startline="262" endline="273">ClientController&lt; T &gt;::Login</references>
+        <references refid="classClientController_1ab41c86cac7c0746d1b05f254e43b4591" compoundref="clientcontroller_8cpp" startline="276" endline="287">ClientController&lt; T &gt;::LoginAsync</references>
+        <references refid="classClientController_1aefe031b81d6d282292bafd65d191c8cd" compoundref="clientcontroller_8cpp" startline="290" endline="299">ClientController&lt; T &gt;::Logout</references>
+        <references refid="classClientController_1a33f69fd2b79bc13817aa0574333266bf" compoundref="clientcontroller_8cpp" startline="158" endline="164">ClientController&lt; T &gt;::Read</references>
+        <references refid="classClientController_1a2a260581d3133c68635516102d87bbdb" compoundref="clientcontroller_8cpp" startline="540" endline="547">ClientController&lt; T &gt;::ReadAsync</references>
+        <references refid="classClientController_1a98c472a091deb653605efb4049936c9e" compoundref="clientcontroller_8cpp" startline="445" endline="454">ClientController&lt; T &gt;::ResetPassword</references>
+        <references refid="classClientController_1a36c5c10efab0dcfdf020f6702a6ff9bb" compoundref="clientcontroller_8cpp" startline="253" endline="259">ClientController&lt; T &gt;::Search</references>
+        <references refid="classClientController_1ab7c4ffff79c0e56214abb463ae375925" compoundref="clientcontroller_8cpp" startline="588" endline="595">ClientController&lt; T &gt;::SearchAsync</references>
+        <references refid="classClientController_1ac9f28aab768cb85f02f2ca84b694f149" compoundref="clientcontroller_8cpp" startline="302" endline="335">ClientController&lt; T &gt;::Suspend</references>
+        <references refid="classClientController_1a77e043006883f4a959679df477d0ad39" compoundref="clientcontroller_8cpp" startline="338" endline="373">ClientController&lt; T &gt;::SuspendAsync</references>
+        <references refid="classClientController_1a671dfda3ad96e247286fe44d22a1b478" compoundref="clientcontroller_8cpp" startline="167" endline="182">ClientController&lt; T &gt;::Update</references>
+        <references refid="classClientController_1ad218f6587a3135d5b5466401aac514e9" compoundref="clientcontroller_8cpp" startline="550" endline="560">ClientController&lt; T &gt;::UpdateAsync</references>
+        <references refid="classClientController_1a8f17ab1fcb71e5c9d8e03f6cfe69559b" compoundref="clientcontroller_8cpp" startline="185" endline="225">ClientController&lt; T &gt;::updateNow</references>
       </memberdef>
       <memberdef kind="function" id="classClientController_1a7b3e95c9052e2b4646f014ca9af39140" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
         <type>void</type>
@@ -241,11 +243,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="78" column="10" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="58" bodyend="64"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classClientController_1a0373ac4a58de1a4105939a0db1c64699" compoundref="clientcontroller_8cpp" startline="67" endline="117">ClientController&lt; T &gt;::createNow</references>
-        <references refid="classClientController_1a2be44d78c532e6b3f569ba1061f29d60" compoundref="clientcontroller_8hpp" startline="249">ClientController&lt; T &gt;::passwordWorker</references>
-        <references refid="passwordworker_8hpp_1a11301e300507b2f5ba81930e709a5de6" compoundref="passwordworker_8hpp" startline="71" endline="75">runOnPasswordWorker</references>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="108" column="8" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="79" bodyend="93"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classClientController_1a0373ac4a58de1a4105939a0db1c64699" compoundref="clientcontroller_8cpp" startline="96" endline="155">ClientController&lt; T &gt;::createNow</references>
+        <references refid="classClientController_1a2be44d78c532e6b3f569ba1061f29d60" compoundref="clientcontroller_8hpp" startline="384">ClientController&lt; T &gt;::passwordWorker</references>
+        <references refid="passwordworker_8hpp_1a11301e300507b2f5ba81930e709a5de6" compoundref="passwordworker_8hpp" startline="88" endline="98">runOnPasswordWorker</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1a52b4114b1e619b6526ee861696eff6da" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -302,9 +304,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="86" column="18" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="414" bodyend="417"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" compoundref="entitycontroller_8cpp" startline="290" endline="343">EntityController&lt; T &gt;::CreateAsync</references>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="121" column="16" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="530" bodyend="537"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" compoundref="entitycontroller_8cpp" startline="370" endline="442">EntityController&lt; T &gt;::CreateAsync</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1a33f69fd2b79bc13817aa0574333266bf" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -359,9 +361,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="93" column="10" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="120" bodyend="123"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" compoundref="entitycontroller_8cpp" startline="115" endline="160">EntityController&lt; T &gt;::Read</references>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="133" column="8" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="158" bodyend="164"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" compoundref="entitycontroller_8cpp" startline="153" endline="219">EntityController&lt; T &gt;::Read</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1a2a260581d3133c68635516102d87bbdb" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -416,9 +418,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="100" column="18" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="420" bodyend="423"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" compoundref="entitycontroller_8cpp" startline="345" endline="390">EntityController&lt; T &gt;::ReadAsync</references>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="145" column="16" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="540" bodyend="547"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" compoundref="entitycontroller_8cpp" startline="444" endline="510">EntityController&lt; T &gt;::ReadAsync</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1a671dfda3ad96e247286fe44d22a1b478" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -485,11 +487,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="109" column="10" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="126" bodyend="131"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classClientController_1a2be44d78c532e6b3f569ba1061f29d60" compoundref="clientcontroller_8hpp" startline="249">ClientController&lt; T &gt;::passwordWorker</references>
-        <references refid="passwordworker_8hpp_1a11301e300507b2f5ba81930e709a5de6" compoundref="passwordworker_8hpp" startline="71" endline="75">runOnPasswordWorker</references>
-        <references refid="classClientController_1a8f17ab1fcb71e5c9d8e03f6cfe69559b" compoundref="clientcontroller_8cpp" startline="134" endline="166">ClientController&lt; T &gt;::updateNow</references>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="160" column="8" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="167" bodyend="182"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classClientController_1a2be44d78c532e6b3f569ba1061f29d60" compoundref="clientcontroller_8hpp" startline="384">ClientController&lt; T &gt;::passwordWorker</references>
+        <references refid="passwordworker_8hpp_1a11301e300507b2f5ba81930e709a5de6" compoundref="passwordworker_8hpp" startline="88" endline="98">runOnPasswordWorker</references>
+        <references refid="classClientController_1a8f17ab1fcb71e5c9d8e03f6cfe69559b" compoundref="clientcontroller_8cpp" startline="185" endline="225">ClientController&lt; T &gt;::updateNow</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1ad218f6587a3135d5b5466401aac514e9" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -558,9 +560,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="118" column="18" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="426" bodyend="429"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" compoundref="entitycontroller_8cpp" startline="392" endline="450">EntityController&lt; T &gt;::UpdateAsync</references>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="176" column="16" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="550" bodyend="560"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" compoundref="entitycontroller_8cpp" startline="512" endline="588">EntityController&lt; T &gt;::UpdateAsync</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1a57d1a8ba8f83b70242fcc29b7f8f70cb" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -615,11 +617,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="125" column="10" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="169" bodyend="182"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" compoundref="entitycontroller_8cpp" startline="224" endline="252">EntityController&lt; T &gt;::Delete</references>
-        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="245">ClientController&lt; T &gt;::gateKeeper</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="189" column="8" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="228" bodyend="250"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" compoundref="entitycontroller_8cpp" startline="297" endline="328">EntityController&lt; T &gt;::Delete</references>
+        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="378">ClientController&lt; T &gt;::gateKeeper</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1addb2c711f70f69b197b67da384b80c2d" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -674,11 +676,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="132" column="18" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="432" bodyend="444"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" compoundref="entitycontroller_8cpp" startline="452" endline="480">EntityController&lt; T &gt;::DeleteAsync</references>
-        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="245">ClientController&lt; T &gt;::gateKeeper</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="200" column="16" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="563" bodyend="585"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" compoundref="entitycontroller_8cpp" startline="590" endline="624">EntityController&lt; T &gt;::DeleteAsync</references>
+        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="378">ClientController&lt; T &gt;::gateKeeper</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1a36c5c10efab0dcfdf020f6702a6ff9bb" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -733,9 +735,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="139" column="10" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="185" bodyend="188"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1a888ea97ce413d880bcca6f7e9cf6b896" compoundref="entitycontroller_8cpp" startline="255" endline="287">EntityController&lt; T &gt;::Search</references>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="211" column="8" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="253" bodyend="259"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1a888ea97ce413d880bcca6f7e9cf6b896" compoundref="entitycontroller_8cpp" startline="331" endline="367">EntityController&lt; T &gt;::Search</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1ab7c4ffff79c0e56214abb463ae375925" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -790,9 +792,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="146" column="18" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="447" bodyend="450"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1a430903208b20b59481d07c88b66ac4f6" compoundref="entitycontroller_8cpp" startline="482" endline="514">EntityController&lt; T &gt;::SearchAsync</references>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="223" column="16" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="588" bodyend="595"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1a430903208b20b59481d07c88b66ac4f6" compoundref="entitycontroller_8cpp" startline="626" endline="662">EntityController&lt; T &gt;::SearchAsync</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1aa76ccf7c49744669ef28827b606216d9" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -819,7 +821,7 @@
           <declname>ip_address</declname>
         </param>
         <briefdescription>
-<para>Authenticates a client via <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref>; the requester argument is ignored. </para>
+<para>Authenticates a client via <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref>; the requester argument is ignored. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -859,9 +861,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="154" column="10" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="191" bodyend="195"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="245">ClientController&lt; T &gt;::gateKeeper</references>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="235" column="8" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="262" bodyend="273"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="378">ClientController&lt; T &gt;::gateKeeper</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1ab41c86cac7c0746d1b05f254e43b4591" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -928,9 +930,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="162" column="18" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="198" bodyend="202"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="245">ClientController&lt; T &gt;::gateKeeper</references>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="248" column="16" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="276" bodyend="287"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="378">ClientController&lt; T &gt;::gateKeeper</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1aefe031b81d6d282292bafd65d191c8cd" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -957,7 +959,7 @@
           <declname>ip_address</declname>
         </param>
         <briefdescription>
-<para>Invalidates a client session via <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref>; the requester argument is ignored. </para>
+<para>Invalidates a client session via <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref>; the requester argument is ignored. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -997,9 +999,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="170" column="10" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="205" bodyend="210"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="245">ClientController&lt; T &gt;::gateKeeper</references>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="261" column="8" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="290" bodyend="299"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="378">ClientController&lt; T &gt;::gateKeeper</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1ac9f28aab768cb85f02f2ca84b694f149" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -1054,12 +1056,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="177" column="10" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="213" bodyend="243"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="245">ClientController&lt; T &gt;::gateKeeper</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="88">api::v2::Http::NOT_ACCEPTABLE</references>
-        <references refid="classController_1acf60ad2a21b8d7c3c7a81d9412b6cd3c" compoundref="controller_8hpp" startline="376" endline="381">Controller::Suspend</references>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="274" column="8" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="302" bodyend="335"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="378">ClientController&lt; T &gt;::gateKeeper</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="110">api::v2::Http::NOT_ACCEPTABLE</references>
+        <references refid="classController_1acf60ad2a21b8d7c3c7a81d9412b6cd3c" compoundref="controller_8hpp" startline="536" endline="543">Controller::Suspend</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1a77e043006883f4a959679df477d0ad39" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -1114,12 +1116,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="184" column="18" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="246" bodyend="276"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="245">ClientController&lt; T &gt;::gateKeeper</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="88">api::v2::Http::NOT_ACCEPTABLE</references>
-        <references refid="classController_1a82399a341c86ed94ac1ade56ced71dc7" compoundref="controller_8hpp" startline="408" endline="413">Controller::SuspendAsync</references>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="284" column="16" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="338" bodyend="373"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="378">ClientController&lt; T &gt;::gateKeeper</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="110">api::v2::Http::NOT_ACCEPTABLE</references>
+        <references refid="classController_1a82399a341c86ed94ac1ade56ced71dc7" compoundref="controller_8hpp" startline="576" endline="586">Controller::SuspendAsync</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1a42c57adab458feeb209485ce13c48b0f" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -1174,12 +1176,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="191" column="10" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="279" bodyend="308"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="245">ClientController&lt; T &gt;::gateKeeper</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="88">api::v2::Http::NOT_ACCEPTABLE</references>
-        <references refid="classController_1a9b6e3fd0227fcb95b0831aef3b4e5f08" compoundref="controller_8hpp" startline="392" endline="397">Controller::Unsuspend</references>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="296" column="8" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="376" bodyend="407"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="378">ClientController&lt; T &gt;::gateKeeper</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="110">api::v2::Http::NOT_ACCEPTABLE</references>
+        <references refid="classController_1a9b6e3fd0227fcb95b0831aef3b4e5f08" compoundref="controller_8hpp" startline="556" endline="563">Controller::Unsuspend</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1af7b6b7c90918fc3068478538f2e1b37d" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -1234,12 +1236,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="198" column="18" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="311" bodyend="340"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="245">ClientController&lt; T &gt;::gateKeeper</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="88">api::v2::Http::NOT_ACCEPTABLE</references>
-        <references refid="classController_1a0044a385830517e3a97e0b250dce4748" compoundref="controller_8hpp" startline="424" endline="429">Controller::UnsuspendAsync</references>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="306" column="16" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="410" bodyend="442"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="378">ClientController&lt; T &gt;::gateKeeper</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="110">api::v2::Http::NOT_ACCEPTABLE</references>
+        <references refid="classController_1a0044a385830517e3a97e0b250dce4748" compoundref="controller_8hpp" startline="599" endline="609">Controller::UnsuspendAsync</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1a98c472a091deb653605efb4049936c9e" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -1296,8 +1298,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="207" column="10" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="343" bodyend="348"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="319" column="8" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="445" bodyend="454"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1abdee410951d9aa19b082955197f53162" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -1352,12 +1354,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="214" column="10" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="351" bodyend="378"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="245">ClientController&lt; T &gt;::gateKeeper</references>
-        <references refid="classController_1ad8517f93d94b2584124d06d0904c8c28" compoundref="controller_8hpp" startline="443" endline="470">Controller::GetServices</references>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="330" column="8" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="457" bodyend="487"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="378">ClientController&lt; T &gt;::gateKeeper</references>
+        <references refid="classController_1ad8517f93d94b2584124d06d0904c8c28" compoundref="controller_8hpp" startline="626" endline="659">Controller::GetServices</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1aebd0c741055d14e284ea633eee9bd18d" prot="public" static="no" const="no" explicit="no" inline="no" final="yes" virt="virtual">
@@ -1412,12 +1414,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="221" column="18" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="381" bodyend="408"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="245">ClientController&lt; T &gt;::gateKeeper</references>
-        <references refid="classController_1a2573416082a8360340c3f55c12b0c0b5" compoundref="controller_8hpp" startline="483" endline="511">Controller::GetServicesAsync</references>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="340" column="16" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="490" bodyend="524"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="378">ClientController&lt; T &gt;::gateKeeper</references>
+        <references refid="classController_1a2573416082a8360340c3f55c12b0c0b5" compoundref="controller_8hpp" startline="674" endline="712">Controller::GetServicesAsync</references>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
     </sectiondef>
@@ -1473,14 +1475,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="232" column="10" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="67" bodyend="117"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa3c71b3c24152de804ac03bd896fb4856" compoundref="http_8hpp" startline="89">api::v2::Http::CONFLICT</references>
-        <references refid="classController_1a092b50bf54ca1d6d6f706a5a052992b1" compoundref="controller_8hpp" startline="135" endline="139">Controller::Create</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="245">ClientController&lt; T &gt;::gateKeeper</references>
-        <referencedby refid="classClientController_1a7b3e95c9052e2b4646f014ca9af39140" compoundref="clientcontroller_8cpp" startline="58" endline="64">ClientController&lt; T &gt;::Create</referencedby>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="358" column="8" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="96" bodyend="155"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa3c71b3c24152de804ac03bd896fb4856" compoundref="http_8hpp" startline="112">api::v2::Http::CONFLICT</references>
+        <references refid="classController_1a092b50bf54ca1d6d6f706a5a052992b1" compoundref="controller_8hpp" startline="187" endline="196">Controller::Create</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="378">ClientController&lt; T &gt;::gateKeeper</references>
+        <referencedby refid="classClientController_1a7b3e95c9052e2b4646f014ca9af39140" compoundref="clientcontroller_8cpp" startline="79" endline="93">ClientController&lt; T &gt;::Create</referencedby>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientController_1a8f17ab1fcb71e5c9d8e03f6cfe69559b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1546,13 +1548,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="240" column="10" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="134" bodyend="166"/>
-        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ad45728414bb4b722bdff45f0f70692c7" compoundref="validator_8hpp" startline="92">Validator::Rule::ASSERT_IMMUTABLE</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="66" endline="69">CRITICALMESSAGERESPONSE</references>
-        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="245">ClientController&lt; T &gt;::gateKeeper</references>
-        <references refid="classController_1a19c2ebed1725708ab253bc0ba1d9b2c5" compoundref="controller_8hpp" startline="196" endline="200">Controller::Update</references>
-        <referencedby refid="classClientController_1a671dfda3ad96e247286fe44d22a1b478" compoundref="clientcontroller_8cpp" startline="126" endline="131">ClientController&lt; T &gt;::Update</referencedby>
+        <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="370" column="8" bodyfile="src/controllers/clientcontroller/clientcontroller.cpp" bodystart="185" bodyend="225"/>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ad45728414bb4b722bdff45f0f70692c7" compoundref="validator_8hpp" startline="112">Validator::Rule::ASSERT_IMMUTABLE</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="global_8hpp_1aea2ec294709dc731c2a2c67739e52a90" compoundref="global_8hpp" startline="73" endline="79">CRITICALMESSAGERESPONSE</references>
+        <references refid="classClientController_1a52124a8675b2204d7c202908798dc091" compoundref="clientcontroller_8hpp" startline="378">ClientController&lt; T &gt;::gateKeeper</references>
+        <references refid="classController_1a19c2ebed1725708ab253bc0ba1d9b2c5" compoundref="controller_8hpp" startline="278" endline="286">Controller::Update</references>
+        <referencedby refid="classClientController_1a671dfda3ad96e247286fe44d22a1b478" compoundref="clientcontroller_8cpp" startline="167" endline="182">ClientController&lt; T &gt;::Update</referencedby>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
       </memberdef>
     </sectiondef>
@@ -1560,7 +1562,7 @@
 <para>Client-specific handler that layers password hashing, sessions and account state over the generic CRUDS flow. </para>
     </briefdescription>
     <detaileddescription>
-<para>Inherits persistence from <ref refid="classEntityController" kindref="compound">EntityController&lt;T&gt;</ref> and the full client contract from <ref refid="classClientControllerBase" kindref="compound">ClientControllerBase</ref>. Read/Search and their coroutine forms simply forward to <ref refid="classEntityController" kindref="compound">EntityController</ref>; Create/Update dispatch their bodies to a <ref refid="classPasswordWorker" kindref="compound">PasswordWorker</ref> so password hashing never occupies a Drogon IO thread. Login/Logout are delegated to <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref>, and Suspend/Delete additionally invalidate sessions on success. <parameterlist kind="templateparam"><parameteritem>
+<para>Inherits persistence from <ref refid="classEntityController" kindref="compound">EntityController&lt;T&gt;</ref> and the full client contract from <ref refid="classClientControllerBase" kindref="compound">ClientControllerBase</ref>. Read/Search and their coroutine forms simply forward to <ref refid="classEntityController" kindref="compound">EntityController</ref>; Create/Update dispatch their bodies to a <ref refid="classPasswordWorker" kindref="compound">PasswordWorker</ref> so password hashing never occupies a Drogon IO thread. Login/Logout are delegated to <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref>, and Suspend/Delete additionally invalidate sessions on success. <parameterlist kind="templateparam"><parameteritem>
 <parameternamelist>
 <parametername>T</parametername>
 </parameternamelist>
@@ -1635,7 +1637,7 @@
         <link refid="classEntityControllerBase"/>
       </node>
     </collaborationgraph>
-    <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="61" column="1" bodyfile="src/controllers/clientcontroller/clientcontroller.hpp" bodystart="62" bodyend="250"/>
+    <location file="src/controllers/clientcontroller/clientcontroller.hpp" line="81" column="1" bodyfile="src/controllers/clientcontroller/clientcontroller.hpp" bodystart="82" bodyend="387"/>
     <listofallmembers>
       <member refid="classClientController_1a42c57adab458feeb209485ce13c48b0f" prot="public" virt="virtual"><scope>ClientController</scope><name>Activate</name></member>
       <member refid="classClientController_1af7b6b7c90918fc3068478538f2e1b37d" prot="public" virt="virtual"><scope>ClientController</scope><name>ActivateAsync</name></member>

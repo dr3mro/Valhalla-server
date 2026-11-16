@@ -126,11 +126,11 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('asyncsqlbinder
 <code>#include &lt;drogon/orm/SqlBinder.h&gt;</code><br />
 <code>#include &lt;drogon/utils/coroutine.h&gt;</code><br />
 <code>#include &lt;cstddef&gt;</code><br />
+<code>#include &lt;pqxx/pqxx&gt;</code><br />
 <code>#include &lt;source_location&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;pqxx/pqxx&gt;</code><br />
 </div>
 <p><a href="asyncsqlbinder_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -144,7 +144,8 @@ Functions</h2></td></tr>
 <tr class="memitem:ab211333eccb1603a4e5176a4da380a1d" id="r_ab211333eccb1603a4e5176a4da380a1d"><td class="memItemLeft">std::vector&lt; std::optional&lt; std::string &gt; &gt;&#160;</td><td class="memItemRight"><a class="el" href="namespaceasyncdb.html#ab211333eccb1603a4e5176a4da380a1d">asyncdb::toTextParams</a> (const pqxx::params &amp;params)</td></tr>
 <tr class="memdesc:ab211333eccb1603a4e5176a4da380a1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies each parameter's bytes into a string, or records a null when pqxx reports no value.  <br /></td></tr>
 <tr class="memitem:abe62892990453a6ed96ff720960a71e4" id="r_abe62892990453a6ed96ff720960a71e4"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="namespaceasyncdb.html#abe62892990453a6ed96ff720960a71e4">asyncdb::bindParams</a> (drogon::orm::internal::SqlBinder &amp;binder, const pqxx::params &amp;params)</td></tr>
-<tr class="memdesc:abe62892990453a6ed96ff720960a71e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emits one bind operation per parameter: NULL, binary (<span class="tt">format == 1</span>) or text.  <br /></td></tr>
+<tr class="memdesc:abe62892990453a6ed96ff720960a71e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emits one bind operation per parameter: NULL, binary (<span class="tt">format ==
+1</span>) or text.  <br /></td></tr>
 <tr class="memitem:abf4af65046571ee330dc2320277a57f7" id="r_abf4af65046571ee330dc2320277a57f7"><td class="memItemLeft">drogon::orm::internal::SqlAwaiter&#160;</td><td class="memItemRight"><a class="el" href="namespaceasyncdb.html#abf4af65046571ee330dc2320277a57f7">asyncdb::execSqlCoro</a> (drogon::orm::DbClient &amp;client, const std::string &amp;sql, const pqxx::params &amp;params)</td></tr>
 <tr class="memdesc:abf4af65046571ee330dc2320277a57f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds and binds the statement, then transfers the binder into an awaiter.  <br /></td></tr>
 </table>

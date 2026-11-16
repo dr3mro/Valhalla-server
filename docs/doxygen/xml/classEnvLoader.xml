@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/envloader/envloader.hpp" line="59" column="14"/>
+        <location file="src/configurator/envloader/envloader.hpp" line="80" column="12"/>
       </memberdef>
       <memberdef kind="function" id="classEnvLoader_1a6a34c4493098a7fc9327fc80a520287c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/envloader/envloader.hpp" line="61" column="13"/>
+        <location file="src/configurator/envloader/envloader.hpp" line="84" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classEnvLoader_1a2f52dfe5e8b93436843667a9e29bcf1e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -58,8 +58,9 @@
 <para>Reads an integer-like environment variable, converting with std::stoi. </para>
         </briefdescription>
         <detaileddescription>
-<para>When the variable is absent the default is returned directly. When present, the value is parsed as a signed int and static_cast to T. A parse failure is logged and the default returned. In plain language: &quot;if the deployment set this variable, try to
-read it as a whole number; if that fails for any reason, quietly use the safe default.&quot;</para>
+<para>When the variable is absent the default is returned directly. When present, the value is parsed as a signed int and static_cast to T. A parse failure is logged and the default returned. In plain language: &quot;if
+the deployment set this variable, try to read it as a whole number; if
+that fails for any reason, quietly use the safe default.&quot;</para>
 <para><parameterlist kind="templateparam"><parameteritem>
 <parameternamelist>
 <parametername>T</parametername>
@@ -90,15 +91,16 @@ read it as a whole number; if that fails for any reason, quietly use the safe de
 </simplesect>
 <simplesect kind="note"><para>Because parsing goes through std::stoi, values greater than INT_MAX (or less than INT_MIN) fall back to the default even for 64-bit destinations. </para>
 </simplesect>
-<simplesect kind="see"><para><ref refid="classEnvLoader_1a1866cb32c9be29f42152a1c0c9e7b2bb" kindref="member">getEnvironmentVariable(const std::string&amp;, const std::chrono::seconds&amp;)</ref> </para>
+<simplesect kind="see"><para><ref refid="classEnvLoader_1a1866cb32c9be29f42152a1c0c9e7b2bb" kindref="member">getEnvironmentVariable(const std::string&amp;, const
+std::chrono::seconds&amp;)</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/envloader/envloader.hpp" line="81" column="7" bodyfile="src/configurator/envloader/envloader.hpp" bodystart="81" bodyend="97"/>
-        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
-        <references refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" compoundref="envvars_8cpp" startline="33" endline="47">EnvVars::get</references>
+        <location file="src/configurator/envloader/envloader.hpp" line="115" column="5" bodyfile="src/configurator/envloader/envloader.hpp" bodystart="115" bodyend="140"/>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
+        <references refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" compoundref="envvars_8cpp" startline="45" endline="65">EnvVars::get</references>
       </memberdef>
       <memberdef kind="function" id="classEnvLoader_1a77a3c407cae008484f177781e216d1f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -141,8 +143,8 @@ read it as a whole number; if that fails for any reason, quietly use the safe de
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/envloader/envloader.hpp" line="105" column="37" bodyfile="src/configurator/envloader/envloader.cpp" bodystart="36" bodyend="40"/>
-        <references refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" compoundref="envvars_8cpp" startline="33" endline="47">EnvVars::get</references>
+        <location file="src/configurator/envloader/envloader.hpp" line="149" column="15" bodyfile="src/configurator/envloader/envloader.cpp" bodystart="51" bodyend="58"/>
+        <references refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" compoundref="envvars_8cpp" startline="45" endline="65">EnvVars::get</references>
       </memberdef>
       <memberdef kind="function" id="classEnvLoader_1a0a9c2b2459e1cffa605caad9957153df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -187,8 +189,8 @@ read it as a whole number; if that fails for any reason, quietly use the safe de
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/envloader/envloader.hpp" line="114" column="37" bodyfile="src/configurator/envloader/envloader.cpp" bodystart="43" bodyend="49"/>
-        <references refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" compoundref="envvars_8cpp" startline="33" endline="47">EnvVars::get</references>
+        <location file="src/configurator/envloader/envloader.hpp" line="163" column="8" bodyfile="src/configurator/envloader/envloader.cpp" bodystart="63" bodyend="72"/>
+        <references refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" compoundref="envvars_8cpp" startline="45" endline="65">EnvVars::get</references>
       </memberdef>
       <memberdef kind="function" id="classEnvLoader_1a1866cb32c9be29f42152a1c0c9e7b2bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::chrono::seconds</type>
@@ -233,9 +235,9 @@ read it as a whole number; if that fails for any reason, quietly use the safe de
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/envloader/envloader.hpp" line="123" column="37" bodyfile="src/configurator/envloader/envloader.cpp" bodystart="52" bodyend="76"/>
-        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
-        <references refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" compoundref="envvars_8cpp" startline="33" endline="47">EnvVars::get</references>
+        <location file="src/configurator/envloader/envloader.hpp" line="177" column="24" bodyfile="src/configurator/envloader/envloader.cpp" bodystart="77" bodyend="112"/>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
+        <references refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" compoundref="envvars_8cpp" startline="45" endline="65">EnvVars::get</references>
       </memberdef>
       <memberdef kind="function" id="classEnvLoader_1a5b217a34a87ae9d70716e42d7d2cc96b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::unordered_set&lt; std::string &gt;</type>
@@ -268,9 +270,9 @@ read it as a whole number; if that fails for any reason, quietly use the safe de
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/envloader/envloader.hpp" line="130" column="24" bodyfile="src/configurator/envloader/envloader.cpp" bodystart="79" bodyend="84"/>
-        <references refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" compoundref="envvars_8cpp" startline="33" endline="47">EnvVars::get</references>
-        <references refid="classEnvLoader_1ad54a73563266bd46fda3994caf3aede7" compoundref="envloader_8cpp" startline="87" endline="104">parseSet</references>
+        <location file="src/configurator/envloader/envloader.hpp" line="189" column="22" bodyfile="src/configurator/envloader/envloader.cpp" bodystart="117" bodyend="125"/>
+        <references refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" compoundref="envvars_8cpp" startline="45" endline="65">EnvVars::get</references>
+        <references refid="classEnvLoader_1ad54a73563266bd46fda3994caf3aede7" compoundref="envloader_8cpp" startline="131" endline="158">parseSet</references>
       </memberdef>
       <memberdef kind="function" id="classEnvLoader_1a4f95654bec2fd3765dd4d725e0581d9f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -286,9 +288,9 @@ read it as a whole number; if that fails for any reason, quietly use the safe de
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/envloader/envloader.hpp" line="137" column="18"/>
-        <references refid="classEnvLoader_1a5001a46f772e4564fd39201debbe7a30" compoundref="envloader_8cpp" startline="107" endline="115">optimize_performance</references>
-        <references refid="classEnvLoader_1ad54a73563266bd46fda3994caf3aede7" compoundref="envloader_8cpp" startline="87" endline="104">parseSet</references>
+        <location file="src/configurator/envloader/envloader.hpp" line="198" column="16"/>
+        <references refid="classEnvLoader_1a5001a46f772e4564fd39201debbe7a30" compoundref="envloader_8cpp" startline="163" endline="177">optimize_performance</references>
+        <references refid="classEnvLoader_1ad54a73563266bd46fda3994caf3aede7" compoundref="envloader_8cpp" startline="131" endline="158">parseSet</references>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-func">
@@ -333,7 +335,7 @@ read it as a whole number; if that fails for any reason, quietly use the safe de
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/envloader/envloader.hpp" line="147" column="37" bodyfile="src/configurator/envloader/envloader.cpp" bodystart="107" bodyend="115"/>
+        <location file="src/configurator/envloader/envloader.hpp" line="211" column="8" bodyfile="src/configurator/envloader/envloader.cpp" bodystart="163" bodyend="177"/>
         <referencedby refid="classEnvLoader_1a4f95654bec2fd3765dd4d725e0581d9f">printValues</referencedby>
       </memberdef>
       <memberdef kind="function" id="classEnvLoader_1ad54a73563266bd46fda3994caf3aede7" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -365,8 +367,8 @@ read it as a whole number; if that fails for any reason, quietly use the safe de
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/envloader/envloader.hpp" line="153" column="24" bodyfile="src/configurator/envloader/envloader.cpp" bodystart="87" bodyend="104"/>
-        <referencedby refid="classEnvLoader_1a5b217a34a87ae9d70716e42d7d2cc96b" compoundref="envloader_8cpp" startline="79" endline="84">getEnvironmentVariable</referencedby>
+        <location file="src/configurator/envloader/envloader.hpp" line="221" column="22" bodyfile="src/configurator/envloader/envloader.cpp" bodystart="131" bodyend="158"/>
+        <referencedby refid="classEnvLoader_1a5b217a34a87ae9d70716e42d7d2cc96b" compoundref="envloader_8cpp" startline="117" endline="125">getEnvironmentVariable</referencedby>
         <referencedby refid="classEnvLoader_1a4f95654bec2fd3765dd4d725e0581d9f">printValues</referencedby>
       </memberdef>
     </sectiondef>
@@ -407,7 +409,7 @@ read it as a whole number; if that fails for any reason, quietly use the safe de
         <link refid="classEnvVars"/>
       </node>
     </collaborationgraph>
-    <location file="src/configurator/envloader/envloader.hpp" line="55" column="1" bodyfile="src/configurator/envloader/envloader.hpp" bodystart="56" bodyend="154"/>
+    <location file="src/configurator/envloader/envloader.hpp" line="72" column="1" bodyfile="src/configurator/envloader/envloader.hpp" bodystart="75" bodyend="224"/>
     <listofallmembers>
       <member refid="classEnvLoader_1a20a23295f90e857692c0f2759fa4a3d4" prot="public" virt="non-virtual"><scope>EnvLoader</scope><name>EnvLoader</name></member>
       <member refid="classEnvVars_1a84ea9a96f8f19c0d80cec58da34d7861" prot="protected" virt="non-virtual"><scope>EnvLoader</scope><name>get</name></member>

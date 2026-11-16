@@ -143,9 +143,9 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Drogon filter that screens requests for DoS/rate-limit violations before authentication. </p>
-<p>First element of both the INSECURE and SECURE chains. It builds a <a class="el" href="classDOSDetector.html#a362a948824acc3cf457cb47e8d095cb5" title="Lightweight view of a request supplied by the HTTP filter.">DOSDetector::Request</a> from the peer IP, method, path, hashed headers and body, and asks <a class="el" href="classapi_1_1v2_1_1GateKeeper.html" title="Facade over authentication, authorization and per-IP abuse detection.">GateKeeper</a> for a verdict. ALLOWED/WHITELISTED continue the chain; blacklist, rate limit, ban and internal error short-circuit with a corresponding HTTP status. The <a class="el" href="classapi_1_1v2_1_1GateKeeper.html" title="Facade over authentication, authorization and per-IP abuse detection.">GateKeeper</a> and <a class="el" href="classDOSDetector.html" title="Per-IP abuse detector combining static lists with sliding-window request counting.">DOSDetector</a> are shared service-locator objects held for the filter's lifetime. </p><dl class="section note"><dt>Note</dt><dd>Unknown verdicts fall through to continuing the chain (default branch). </dd></dl>
+<p>First element of both the INSECURE and SECURE chains. It builds a <a class="el" href="classDOSDetector.html#a43f9aacef13939c478b0b533aaf7d6ca" title="Lightweight view of a request supplied by the HTTP filter.">DOSDetector::Request</a> from the peer IP, method, path, hashed headers and body, and asks <a class="el" href="classapi_1_1v2_1_1GateKeeper.html" title="Facade over authentication, authorization and per-IP abuse detection.">GateKeeper</a> for a verdict. ALLOWED/WHITELISTED continue the chain; blacklist, rate limit, ban and internal error short-circuit with a corresponding HTTP status. The <a class="el" href="classapi_1_1v2_1_1GateKeeper.html" title="Facade over authentication, authorization and per-IP abuse detection.">GateKeeper</a> and <a class="el" href="classDOSDetector.html" title="Per-IP abuse detector combining static lists with sliding-window request counting.">DOSDetector</a> are shared service-locator objects held for the filter's lifetime. </p><dl class="section note"><dt>Note</dt><dd>Unknown verdicts fall through to continuing the chain (default branch). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ratelimit_8hpp_source.html#l00055">55</a> of file <a class="el" href="ratelimit_8hpp_source.html">ratelimit.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ratelimit_8hpp_source.html#l00073">73</a> of file <a class="el" href="ratelimit_8hpp_source.html">ratelimit.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a31471fae98a1bb47ec6a99255a95ff4f" name="a31471fae98a1bb47ec6a99255a95ff4f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a31471fae98a1bb47ec6a99255a95ff4f">&#9670;&#160;</a></span>RateLimit()</h2>
@@ -172,9 +172,9 @@ Private Attributes</h2></td></tr>
 
 <p>Obtain the shared <a class="el" href="classapi_1_1v2_1_1GateKeeper.html" title="Facade over authentication, authorization and per-IP abuse detection.">GateKeeper</a> and <a class="el" href="classDOSDetector.html" title="Per-IP abuse detector combining static lists with sliding-window request counting.">DOSDetector</a> from the service locator. </p>
 
-<p class="definition">Definition at line <a class="el" href="ratelimit_8hpp_source.html#l00059">59</a> of file <a class="el" href="ratelimit_8hpp_source.html">ratelimit.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ratelimit_8hpp_source.html#l00081">81</a> of file <a class="el" href="ratelimit_8hpp_source.html">ratelimit.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ratelimit_8hpp_source.html#l00110">dos_detector</a>, and <a class="el" href="ratelimit_8hpp_source.html#l00109">gateKeeper</a>.</p>
+<p class="reference">References <a class="el" href="ratelimit_8hpp_source.html#l00170">dos_detector</a>, and <a class="el" href="ratelimit_8hpp_source.html#l00168">gateKeeper</a>.</p>
 
 </div>
 </div>
@@ -221,9 +221,9 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ratelimit_8hpp_source.html#l00072">72</a> of file <a class="el" href="ratelimit_8hpp_source.html">ratelimit.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ratelimit_8hpp_source.html#l00104">104</a> of file <a class="el" href="ratelimit_8hpp_source.html">ratelimit.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="dosdetector_8hpp_source.html#l00083">DOSDetector::ALLOWED</a>, <a class="el" href="dosdetector_8hpp_source.html#l00087">DOSDetector::BANNED</a>, <a class="el" href="dosdetector_8hpp_source.html#l00085">DOSDetector::BLACKLISTED</a>, <a class="el" href="dosdetector_8hpp_source.html#l00088">DOSDetector::ERROR</a>, <a class="el" href="ratelimit_8hpp_source.html#l00109">gateKeeper</a>, <a class="el" href="dosdetector_8hpp_source.html#l00113">DOSDetector::hashHeaders()</a>, <a class="el" href="dosdetector_8hpp_source.html#l00086">DOSDetector::RATELIMITED</a>, <a class="el" href="ratelimit_8hpp_source.html#l00117">reply()</a>, and <a class="el" href="dosdetector_8hpp_source.html#l00084">DOSDetector::WHITELISTED</a>.</p>
+<p class="reference">References <a class="el" href="dosdetector_8hpp_source.html#l00107">DOSDetector::ALLOWED</a>, <a class="el" href="dosdetector_8hpp_source.html#l00112">DOSDetector::BANNED</a>, <a class="el" href="dosdetector_8hpp_source.html#l00109">DOSDetector::BLACKLISTED</a>, <a class="el" href="dosdetector_8hpp_source.html#l00113">DOSDetector::ERROR</a>, <a class="el" href="ratelimit_8hpp_source.html#l00168">gateKeeper</a>, <a class="el" href="dosdetector_8hpp_source.html#l00152">DOSDetector::hashHeaders()</a>, <a class="el" href="dosdetector_8hpp_source.html#l00110">DOSDetector::RATELIMITED</a>, <a class="el" href="ratelimit_8hpp_source.html#l00180">reply()</a>, and <a class="el" href="dosdetector_8hpp_source.html#l00108">DOSDetector::WHITELISTED</a>.</p>
 
 </div>
 </div>
@@ -269,9 +269,9 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ratelimit_8hpp_source.html#l00117">117</a> of file <a class="el" href="ratelimit_8hpp_source.html">ratelimit.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ratelimit_8hpp_source.html#l00180">180</a> of file <a class="el" href="ratelimit_8hpp_source.html">ratelimit.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ratelimit_8hpp_source.html#l00072">doFilter()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ratelimit_8hpp_source.html#l00104">doFilter()</a>.</p>
 
 </div>
 </div>
@@ -297,9 +297,9 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Held for its lifetime only; doFilter never dereferences it. </p>
 
-<p class="definition">Definition at line <a class="el" href="ratelimit_8hpp_source.html#l00110">110</a> of file <a class="el" href="ratelimit_8hpp_source.html">ratelimit.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ratelimit_8hpp_source.html#l00170">170</a> of file <a class="el" href="ratelimit_8hpp_source.html">ratelimit.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ratelimit_8hpp_source.html#l00059">RateLimit()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ratelimit_8hpp_source.html#l00081">RateLimit()</a>.</p>
 
 </div>
 </div>
@@ -324,9 +324,9 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Used by doFilter via isDosAttack(). </p>
 
-<p class="definition">Definition at line <a class="el" href="ratelimit_8hpp_source.html#l00109">109</a> of file <a class="el" href="ratelimit_8hpp_source.html">ratelimit.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ratelimit_8hpp_source.html#l00168">168</a> of file <a class="el" href="ratelimit_8hpp_source.html">ratelimit.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ratelimit_8hpp_source.html#l00072">doFilter()</a>, and <a class="el" href="ratelimit_8hpp_source.html#l00059">RateLimit()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ratelimit_8hpp_source.html#l00104">doFilter()</a>, and <a class="el" href="ratelimit_8hpp_source.html#l00081">RateLimit()</a>.</p>
 
 </div>
 </div>

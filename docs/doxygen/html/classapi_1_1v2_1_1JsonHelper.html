@@ -151,7 +151,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="textblock"><p>Stateless bridge between the two JSON libraries and response bodies. </p>
 <p>The codebase uses JsonCpp for HTTP responses (Drogon) and jsoncons for validation. This utility wraps simple message objects and serialises either representation to a pretty-printed string. All members are static and construction is deleted: there is no state and no thread-safety concern beyond the underlying libraries. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classValidator.html" title="Stateless collection of checks applied to client JSON before it reaches the database.">Validator</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="jsonhelper_8hpp_source.html#l00042">42</a> of file <a class="el" href="jsonhelper_8hpp_source.html">jsonhelper.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="jsonhelper_8hpp_source.html#l00052">52</a> of file <a class="el" href="jsonhelper_8hpp_source.html">jsonhelper.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a3998887caa76f04a3cd81dc9f66de5ec" name="a3998887caa76f04a3cd81dc9f66de5ec"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3998887caa76f04a3cd81dc9f66de5ec">&#9670;&#160;</a></span>JsonHelper() <span class="overload">[1/3]</span></h2>
@@ -299,9 +299,9 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A JsonCpp value suitable for a Drogon response body. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="jsonhelper_8cpp_source.html#l00027">27</a> of file <a class="el" href="jsonhelper_8cpp_source.html">jsonhelper.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="jsonhelper_8cpp_source.html#l00032">32</a> of file <a class="el" href="jsonhelper_8cpp_source.html">jsonhelper.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="auth_8hpp_source.html#l00081">api::v2::Filters::Auth::doFilter()</a>, <a class="el" href="hello_8hpp_source.html#l00052">api::v2::Hello::hello()</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00224">api::v2::SessionManager::logout()</a>, <a class="el" href="#a260ef7e1999f9d532d74694dbcfc515b">operator=()</a>, <a class="el" href="helper_8cpp_source.html#l00088">api::v2::Helper::prepare()</a>, and <a class="el" href="server_8cpp_source.html#l00092">Server::run()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="auth_8hpp_source.html#l00115">api::v2::Filters::Auth::doFilter()</a>, <a class="el" href="hello_8hpp_source.html#l00064">api::v2::Hello::hello()</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00343">api::v2::SessionManager::logout()</a>, <a class="el" href="#a260ef7e1999f9d532d74694dbcfc515b">operator=()</a>, <a class="el" href="helper_8cpp_source.html#l00128">api::v2::Helper::prepare()</a>, and <a class="el" href="server_8cpp_source.html#l00156">Server::run()</a>.</p>
 
 </div>
 </div>
@@ -330,7 +330,7 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Copy assignment is disabled; the class is never instantiated. </p>
 
-<p class="reference">References <a class="el" href="#a3998887caa76f04a3cd81dc9f66de5ec">JsonHelper()</a>, <a class="el" href="jsonhelper_8cpp_source.html#l00027">jsonify()</a>, and <a class="el" href="jsonhelper_8cpp_source.html#l00041">stringify()</a>.</p>
+<p class="reference">References <a class="el" href="#a3998887caa76f04a3cd81dc9f66de5ec">JsonHelper()</a>, <a class="el" href="jsonhelper_8cpp_source.html#l00032">jsonify()</a>, and <a class="el" href="jsonhelper_8cpp_source.html#l00050">stringify()</a>.</p>
 
 </div>
 </div>
@@ -395,9 +395,9 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pretty-printed JSON text (JsonCpp's <span class="tt">toStyledString</span>). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="jsonhelper_8cpp_source.html#l00041">41</a> of file <a class="el" href="jsonhelper_8cpp_source.html">jsonhelper.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="jsonhelper_8cpp_source.html#l00050">50</a> of file <a class="el" href="jsonhelper_8cpp_source.html">jsonhelper.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="auth_8hpp_source.html#l00081">api::v2::Filters::Auth::doFilter()</a>, <a class="el" href="controller_8hpp_source.html#l00443">Controller::GetServices()</a>, <a class="el" href="controller_8hpp_source.html#l00483">Controller::GetServicesAsync()</a>, <a class="el" href="controller_8hpp_source.html#l00523">Controller::GetVisits()</a>, <a class="el" href="controller_8hpp_source.html#l00557">Controller::GetVisitsAsync()</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00224">api::v2::SessionManager::logout()</a>, and <a class="el" href="#a260ef7e1999f9d532d74694dbcfc515b">operator=()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="auth_8hpp_source.html#l00115">api::v2::Filters::Auth::doFilter()</a>, <a class="el" href="controller_8hpp_source.html#l00626">Controller::GetServices()</a>, <a class="el" href="controller_8hpp_source.html#l00674">Controller::GetServicesAsync()</a>, <a class="el" href="controller_8hpp_source.html#l00729">Controller::GetVisits()</a>, <a class="el" href="controller_8hpp_source.html#l00769">Controller::GetVisitsAsync()</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00343">api::v2::SessionManager::logout()</a>, and <a class="el" href="#a260ef7e1999f9d532d74694dbcfc515b">operator=()</a>.</p>
 
 </div>
 </div>
@@ -433,7 +433,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pretty-printed JSON text (jsoncons <span class="tt">dump_pretty</span>). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="jsonhelper_8cpp_source.html#l00034">34</a> of file <a class="el" href="jsonhelper_8cpp_source.html">jsonhelper.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="jsonhelper_8cpp_source.html#l00042">42</a> of file <a class="el" href="jsonhelper_8cpp_source.html">jsonhelper.cpp</a>.</p>
 
 </div>
 </div>

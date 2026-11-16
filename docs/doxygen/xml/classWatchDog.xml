@@ -10,7 +10,8 @@
         <argsstring></argsstring>
         <name>should_monitor</name>
         <qualifiedname>WatchDog::should_monitor</qualifiedname>
-        <initializer>{true}</initializer>
+        <initializer>{
+      true}</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -18,9 +19,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/watchdog.hpp" line="69" column="20" bodyfile="src/database/watchdog.hpp" bodystart="69" bodyend="69"/>
-        <referencedby refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="53" endline="117">WatchDog</referencedby>
-        <referencedby refid="classWatchDog_1a3528415da2eaba98430532547b786b17" compoundref="watchdog_8cpp" startline="125" endline="133">~WatchDog</referencedby>
+        <location file="src/database/watchdog.hpp" line="87" column="15" bodyfile="src/database/watchdog.hpp" bodystart="87" bodyend="88"/>
+        <referencedby refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="71" endline="207">WatchDog</referencedby>
+        <referencedby refid="classWatchDog_1a3528415da2eaba98430532547b786b17" compoundref="watchdog_8cpp" startline="216" endline="225">~WatchDog</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classWatchDog_1afb7703d71422aa4eb2163ee9550227c3" prot="private" static="no" mutable="no">
         <type>std::chrono::seconds</type>
@@ -28,7 +29,8 @@
         <argsstring></argsstring>
         <name>check_interval</name>
         <qualifiedname>WatchDog::check_interval</qualifiedname>
-        <initializer>{1}</initializer>
+        <initializer>{
+      1}</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -36,8 +38,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/watchdog.hpp" line="74" column="26" bodyfile="src/database/watchdog.hpp" bodystart="74" bodyend="74"/>
-        <referencedby refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="53" endline="117">WatchDog</referencedby>
+        <location file="src/database/watchdog.hpp" line="94" column="24" bodyfile="src/database/watchdog.hpp" bodystart="94" bodyend="95"/>
+        <referencedby refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="71" endline="207">WatchDog</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classWatchDog_1a98e4f26093742829ffff056ccdda85e8" prot="private" static="no" mutable="no">
         <type>std::thread</type>
@@ -52,9 +54,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/watchdog.hpp" line="79" column="26" bodyfile="src/database/watchdog.hpp" bodystart="79" bodyend="-1"/>
-        <referencedby refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="53" endline="117">WatchDog</referencedby>
-        <referencedby refid="classWatchDog_1a3528415da2eaba98430532547b786b17" compoundref="watchdog_8cpp" startline="125" endline="133">~WatchDog</referencedby>
+        <location file="src/database/watchdog.hpp" line="100" column="15" bodyfile="src/database/watchdog.hpp" bodystart="100" bodyend="-1"/>
+        <referencedby refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="71" endline="207">WatchDog</referencedby>
+        <referencedby refid="classWatchDog_1a3528415da2eaba98430532547b786b17" compoundref="watchdog_8cpp" startline="216" endline="225">~WatchDog</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -91,14 +93,14 @@ The loop leases a connection through a <ref refid="classDatabaseHanndler" kindre
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/watchdog.hpp" line="54" column="5" bodyfile="src/database/watchdog.cpp" bodystart="53" bodyend="117"/>
-        <references refid="classWatchDog_1afb7703d71422aa4eb2163ee9550227c3" compoundref="watchdog_8hpp" startline="74" endline="74">check_interval</references>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
-        <references refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" compoundref="message_8cpp" startline="39" endline="39">Message::InfoMessage</references>
-        <references refid="classWatchDog_1a98e4f26093742829ffff056ccdda85e8" compoundref="watchdog_8hpp" startline="79">monitor_thread</references>
-        <references refid="classWatchDog_1a16372b8cab4cdd8c7b6e591d44cf6d30" compoundref="watchdog_8hpp" startline="69" endline="69">should_monitor</references>
-        <references refid="classMessage_1a3d5db738594c8af1428053227959259e" compoundref="message_8cpp" startline="40" endline="40">Message::WarningMessage</references>
+        <location file="src/database/watchdog.hpp" line="67" column="3" bodyfile="src/database/watchdog.cpp" bodystart="71" bodyend="207"/>
+        <references refid="classWatchDog_1afb7703d71422aa4eb2163ee9550227c3" compoundref="watchdog_8hpp" startline="94" endline="95">check_interval</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
+        <references refid="classMessage_1a8945553f3f7f0e2dfa55d424b41c4886" compoundref="message_8cpp" startline="48" endline="50">Message::InfoMessage</references>
+        <references refid="classWatchDog_1a98e4f26093742829ffff056ccdda85e8" compoundref="watchdog_8hpp" startline="100">monitor_thread</references>
+        <references refid="classWatchDog_1a16372b8cab4cdd8c7b6e591d44cf6d30" compoundref="watchdog_8hpp" startline="87" endline="88">should_monitor</references>
+        <references refid="classMessage_1a3d5db738594c8af1428053227959259e" compoundref="message_8cpp" startline="51" endline="53">Message::WarningMessage</references>
         <referencedby refid="classWatchDog_1a4d8d5ca9267f3bceb4e579aaa877a3a6">operator=</referencedby>
         <referencedby refid="classWatchDog_1a957bca000c5227fb1d95352b5ee2e2db">operator=</referencedby>
         <referencedby refid="classWatchDog_1a26378fc6e5fb99263282c1ab7424da94">WatchDog</referencedby>
@@ -119,8 +121,8 @@ The loop leases a connection through a <ref refid="classDatabaseHanndler" kindre
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/watchdog.hpp" line="55" column="5"/>
-        <references refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="53" endline="117">WatchDog</references>
+        <location file="src/database/watchdog.hpp" line="69" column="3"/>
+        <references refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="71" endline="207">WatchDog</references>
       </memberdef>
       <memberdef kind="function" id="classWatchDog_1a508c7d705cee312d781d6637d5b0fbeb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -137,8 +139,8 @@ The loop leases a connection through a <ref refid="classDatabaseHanndler" kindre
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/watchdog.hpp" line="56" column="5"/>
-        <references refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="53" endline="117">WatchDog</references>
+        <location file="src/database/watchdog.hpp" line="71" column="3"/>
+        <references refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="71" endline="207">WatchDog</references>
       </memberdef>
       <memberdef kind="function" id="classWatchDog_1a4d8d5ca9267f3bceb4e579aaa877a3a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classWatchDog" kindref="compound">WatchDog</ref> &amp;</type>
@@ -155,8 +157,8 @@ The loop leases a connection through a <ref refid="classDatabaseHanndler" kindre
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/watchdog.hpp" line="57" column="14"/>
-        <references refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="53" endline="117">WatchDog</references>
+        <location file="src/database/watchdog.hpp" line="72" column="12"/>
+        <references refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="71" endline="207">WatchDog</references>
       </memberdef>
       <memberdef kind="function" id="classWatchDog_1a957bca000c5227fb1d95352b5ee2e2db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classWatchDog" kindref="compound">WatchDog</ref> &amp;</type>
@@ -173,8 +175,8 @@ The loop leases a connection through a <ref refid="classDatabaseHanndler" kindre
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/watchdog.hpp" line="58" column="14"/>
-        <references refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="53" endline="117">WatchDog</references>
+        <location file="src/database/watchdog.hpp" line="74" column="12"/>
+        <references refid="classWatchDog_1ac51438cc38b263b050633f99b4e45747" compoundref="watchdog_8cpp" startline="71" endline="207">WatchDog</references>
       </memberdef>
       <memberdef kind="function" id="classWatchDog_1a3528415da2eaba98430532547b786b17" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -191,9 +193,9 @@ The loop leases a connection through a <ref refid="classDatabaseHanndler" kindre
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/watchdog.hpp" line="63" column="13" bodyfile="src/database/watchdog.cpp" bodystart="125" bodyend="133"/>
-        <references refid="classWatchDog_1a98e4f26093742829ffff056ccdda85e8" compoundref="watchdog_8hpp" startline="79">monitor_thread</references>
-        <references refid="classWatchDog_1a16372b8cab4cdd8c7b6e591d44cf6d30" compoundref="watchdog_8hpp" startline="69" endline="69">should_monitor</references>
+        <location file="src/database/watchdog.hpp" line="80" column="11" bodyfile="src/database/watchdog.cpp" bodystart="216" bodyend="225"/>
+        <references refid="classWatchDog_1a98e4f26093742829ffff056ccdda85e8" compoundref="watchdog_8hpp" startline="100">monitor_thread</references>
+        <references refid="classWatchDog_1a16372b8cab4cdd8c7b6e591d44cf6d30" compoundref="watchdog_8hpp" startline="87" endline="88">should_monitor</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -206,7 +208,7 @@ The loop leases a connection through a <ref refid="classDatabaseHanndler" kindre
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="src/database/watchdog.hpp" line="46" column="1" bodyfile="src/database/watchdog.hpp" bodystart="47" bodyend="80"/>
+    <location file="src/database/watchdog.hpp" line="59" column="1" bodyfile="src/database/watchdog.hpp" bodystart="59" bodyend="102"/>
     <listofallmembers>
       <member refid="classWatchDog_1afb7703d71422aa4eb2163ee9550227c3" prot="private" virt="non-virtual"><scope>WatchDog</scope><name>check_interval</name></member>
       <member refid="classWatchDog_1a98e4f26093742829ffff056ccdda85e8" prot="private" virt="non-virtual"><scope>WatchDog</scope><name>monitor_thread</name></member>

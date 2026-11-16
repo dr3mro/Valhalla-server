@@ -6,7 +6,6 @@
     <includes local="no">unordered_map</includes>
     <includedby refid="common_8hpp" local="yes">src/api/v2/basic/common.hpp</includedby>
     <includedby refid="clients_8hpp" local="yes">src/api/v2/routes/clients.hpp</includedby>
-    <includedby refid="boundedexecutor_8hpp" local="yes">src/concurrency/boundedexecutor.hpp</includedby>
     <includedby refid="controller_8hpp" local="yes">src/controllers/base/controller/controller.hpp</includedby>
     <includedby refid="clientcontroller_8cpp" local="yes">src/controllers/clientcontroller/clientcontroller.cpp</includedby>
     <includedby refid="entitycontroller_8cpp" local="yes">src/controllers/entitycontroller/entitycontroller.cpp</includedby>
@@ -63,16 +62,16 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="21">
+      <node id="56">
         <label>src/api/v2/filters/auth.hpp</label>
         <link refid="auth_8hpp"/>
-        <childnode refid="22" relation="include">
+        <childnode refid="57" relation="include">
         </childnode>
       </node>
-      <node id="24">
+      <node id="59">
         <label>src/api/v2/filters/ratelimit.hpp</label>
         <link refid="ratelimit_8hpp"/>
-        <childnode refid="22" relation="include">
+        <childnode refid="57" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -117,153 +116,183 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="13">
-        <label>src/concurrency/boundedexecutor.cpp</label>
-        <link refid="boundedexecutor_8cpp"/>
-      </node>
-      <node id="12">
-        <label>src/concurrency/boundedexecutor.hpp</label>
-        <link refid="boundedexecutor_8hpp"/>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="28">
+      <node id="16">
         <label>src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
         <link refid="appointmentcontroller_8cpp"/>
       </node>
-      <node id="29">
+      <node id="17">
         <label>src/controllers/appointmentcontroller/appointmentcontroller.hpp</label>
         <link refid="appointmentcontroller_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="12">
         <label>src/controllers/base/controller/controller.hpp</label>
         <link refid="controller_8hpp"/>
-        <childnode refid="18" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="13">
         <label>src/controllers/clientcontroller/clientcontroller.cpp</label>
         <link refid="clientcontroller_8cpp"/>
       </node>
-      <node id="17">
+      <node id="18">
         <label>src/controllers/clientcontroller/clientcontroller.hpp</label>
         <link refid="clientcontroller_8hpp"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="19">
         <label>src/controllers/cliniccontroller/cliniccontroller.cpp</label>
         <link refid="cliniccontroller_8cpp"/>
       </node>
-      <node id="31">
+      <node id="20">
         <label>src/controllers/cliniccontroller/cliniccontroller.hpp</label>
         <link refid="cliniccontroller_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="14">
         <label>src/controllers/entitycontroller/entitycontroller.cpp</label>
         <link refid="entitycontroller_8cpp"/>
       </node>
-      <node id="27">
+      <node id="15">
         <label>src/controllers/entitycontroller/entitycontroller.hpp</label>
         <link refid="entitycontroller_8hpp"/>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="32">
+      <node id="21">
         <label>src/controllers/servicecontroller/servicecontroller.cpp</label>
         <link refid="servicecontroller_8cpp"/>
       </node>
-      <node id="33">
+      <node id="22">
         <label>src/controllers/servicecontroller/servicecontroller.hpp</label>
         <link refid="servicecontroller_8hpp"/>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="34">
+      <node id="23">
         <label>src/controllers/staffcontroller/staffcontroller.cpp</label>
         <link refid="staffcontroller_8cpp"/>
       </node>
-      <node id="35">
+      <node id="24">
         <label>src/controllers/staffcontroller/staffcontroller.hpp</label>
         <link refid="staffcontroller_8hpp"/>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="36">
+      <node id="25">
         <label>src/database/database.cpp</label>
         <link refid="database_8cpp"/>
       </node>
-      <node id="15">
-        <label>src/database/dbexecutor.cpp</label>
-        <link refid="dbexecutor_8cpp"/>
-      </node>
-      <node id="14">
-        <label>src/database/dbexecutor.hpp</label>
-        <link refid="dbexecutor_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="45">
+      <node id="34">
         <label>src/entities/appointments/base/appointment.hpp</label>
         <link refid="appointment_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>src/entities/appointments/clinic.hpp</label>
+        <link refid="clinic_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>src/entities/appointments/laboratory.hpp</label>
+        <link refid="laboratory_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>src/entities/appointments/pharmacy.hpp</label>
+        <link refid="pharmacy_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>src/entities/appointments/radiologycenter.hpp</label>
+        <link refid="radiologycenter_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>src/entities/appointments/user.hpp</label>
+        <link refid="appointments_2user_8hpp"/>
+      </node>
+      <node id="40">
+        <label>src/entities/base/case.hpp</label>
+        <link refid="case_8hpp"/>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
         <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
@@ -272,376 +301,290 @@
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
+      </node>
+      <node id="27">
+        <label>src/entities/base/client.hpp</label>
+        <link refid="client_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>src/entities/base/entity.hpp</label>
+        <link refid="entity_8hpp"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
         <childnode refid="50" relation="include">
         </childnode>
       </node>
-      <node id="46">
-        <label>src/entities/appointments/clinic.hpp</label>
-        <link refid="clinic_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="41" relation="include">
-        </childnode>
-      </node>
-      <node id="47">
-        <label>src/entities/appointments/laboratory.hpp</label>
-        <link refid="laboratory_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="41" relation="include">
-        </childnode>
-      </node>
-      <node id="48">
-        <label>src/entities/appointments/pharmacy.hpp</label>
-        <link refid="pharmacy_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="41" relation="include">
-        </childnode>
-      </node>
-      <node id="49">
-        <label>src/entities/appointments/radiologycenter.hpp</label>
-        <link refid="radiologycenter_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="41" relation="include">
-        </childnode>
-      </node>
       <node id="50">
-        <label>src/entities/appointments/user.hpp</label>
-        <link refid="appointments_2user_8hpp"/>
-      </node>
-      <node id="51">
-        <label>src/entities/base/case.hpp</label>
-        <link refid="case_8hpp"/>
+        <label>src/entities/base/service.hpp</label>
+        <link refid="service_8hpp"/>
+        <childnode refid="51" relation="include">
+        </childnode>
         <childnode refid="52" relation="include">
         </childnode>
         <childnode refid="53" relation="include">
         </childnode>
         <childnode refid="54" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
-        </childnode>
-        <childnode refid="56" relation="include">
-        </childnode>
-        <childnode refid="57" relation="include">
-        </childnode>
-        <childnode refid="58" relation="include">
-        </childnode>
-        <childnode refid="59" relation="include">
-        </childnode>
-        <childnode refid="60" relation="include">
-        </childnode>
       </node>
-      <node id="39">
-        <label>src/entities/base/client.hpp</label>
-        <link refid="client_8hpp"/>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="43" relation="include">
-        </childnode>
-      </node>
-      <node id="44">
-        <label>src/entities/base/entity.hpp</label>
-        <link refid="entity_8hpp"/>
-        <childnode refid="45" relation="include">
-        </childnode>
-        <childnode refid="51" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="61" relation="include">
-        </childnode>
-      </node>
-      <node id="61">
-        <label>src/entities/base/service.hpp</label>
-        <link refid="service_8hpp"/>
-        <childnode refid="62" relation="include">
-        </childnode>
-        <childnode refid="63" relation="include">
-        </childnode>
-        <childnode refid="64" relation="include">
-        </childnode>
-        <childnode refid="65" relation="include">
-        </childnode>
-      </node>
-      <node id="38">
+      <node id="26">
         <label>src/entities/base/types.hpp</label>
         <link refid="entities_2base_2types_8hpp"/>
-        <childnode refid="25" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="61" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="53" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
       </node>
-      <node id="40">
+      <node id="28">
         <label>src/entities/people/provider.hpp</label>
         <link refid="provider_8hpp"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="43">
+      <node id="32">
         <label>src/entities/people/user.hpp</label>
         <link refid="people_2user_8hpp"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="62">
+      <node id="51">
         <label>src/entities/services/clinics/clinics.hpp</label>
         <link refid="entities_2services_2clinics_2clinics_8hpp"/>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="52">
+      <node id="41">
         <label>src/entities/services/clinics/patient/health.hpp</label>
         <link refid="health_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="53">
+      <node id="42">
         <label>src/entities/services/clinics/patient/patient.hpp</label>
         <link refid="patient_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="54">
+      <node id="43">
         <label>src/entities/services/clinics/patient/patientdrugs.hpp</label>
         <link refid="patientdrugs_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="55">
+      <node id="44">
         <label>src/entities/services/clinics/patient/reports.hpp</label>
         <link refid="reports_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="56">
+      <node id="45">
         <label>src/entities/services/clinics/visits/paidservices.hpp</label>
         <link refid="paidservices_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="57">
+      <node id="46">
         <label>src/entities/services/clinics/visits/prescriptions.hpp</label>
         <link refid="prescriptions_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="58">
+      <node id="47">
         <label>src/entities/services/clinics/visits/requests.hpp</label>
         <link refid="requests_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="59">
+      <node id="48">
         <label>src/entities/services/clinics/visits/visitdrugs.hpp</label>
         <link refid="visitdrugs_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="60">
+      <node id="49">
         <label>src/entities/services/clinics/visits/visits.hpp</label>
         <link refid="visits_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="63">
+      <node id="52">
         <label>src/entities/services/laboratories.hpp</label>
         <link refid="laboratories_8hpp"/>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="64">
+      <node id="53">
         <label>src/entities/services/pharmacies.hpp</label>
         <link refid="pharmacies_8hpp"/>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="65">
+      <node id="54">
         <label>src/entities/services/radiologycenters.hpp</label>
         <link refid="radiologycenters_8hpp"/>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="19">
+      <node id="30">
         <label>src/gatekeeper/gatekeeper.cpp</label>
         <link refid="gatekeeper_8cpp"/>
       </node>
-      <node id="20">
+      <node id="55">
         <label>src/gatekeeper/gatekeeper.hpp</label>
         <link refid="gatekeeper_8hpp"/>
-        <childnode refid="21" relation="include">
+        <childnode refid="56" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="59" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-      </node>
-      <node id="41">
-        <label>src/gatekeeper/includes.hpp</label>
-        <link refid="includes_8hpp"/>
         <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
+      </node>
+      <node id="29">
+        <label>src/gatekeeper/includes.hpp</label>
+        <link refid="includes_8hpp"/>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
         </childnode>
       </node>
-      <node id="72">
+      <node id="66">
         <label>src/gatekeeper/keeprbase/keeprbase.cpp</label>
         <link refid="keeprbase_8cpp"/>
       </node>
-      <node id="37">
-        <label>src/gatekeeper/passwordcrypt/passwordworker.cpp</label>
-        <link refid="passwordworker_8cpp"/>
-      </node>
-      <node id="16">
-        <label>src/gatekeeper/passwordcrypt/passwordworker.hpp</label>
-        <link refid="passwordworker_8hpp"/>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="42">
+      <node id="31">
         <label>src/gatekeeper/permissionmanager/permissionmanager.cpp</label>
         <link refid="permissionmanager_8cpp"/>
       </node>
-      <node id="66">
+      <node id="60">
         <label>src/gatekeeper/permissionmanager/permissionmanager.hpp</label>
         <link refid="permissionmanager_8hpp"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="55" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
       </node>
-      <node id="67">
+      <node id="61">
         <label>src/gatekeeper/permissionmanager/permissionmanager_private.cpp</label>
         <link refid="permissionmanager__private_8cpp"/>
       </node>
-      <node id="68">
+      <node id="62">
         <label>src/gatekeeper/permissionmanager/permissionmanager_private.hpp</label>
         <link refid="permissionmanager__private_8hpp"/>
-        <childnode refid="42" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="67" relation="include">
+        <childnode refid="61" relation="include">
         </childnode>
       </node>
-      <node id="69">
+      <node id="63">
         <label>src/gatekeeper/sessionmanager/sessionmanager.cpp</label>
         <link refid="sessionmanager_8cpp"/>
       </node>
-      <node id="23">
+      <node id="58">
         <label>src/main.cpp</label>
         <link refid="main_8cpp"/>
       </node>
@@ -649,40 +592,40 @@
         <label>src/server/server.cpp</label>
         <link refid="server_8cpp"/>
       </node>
-      <node id="22">
+      <node id="57">
         <label>src/server/server.hpp</label>
         <link refid="server_8hpp"/>
-        <childnode refid="23" relation="include">
+        <childnode refid="58" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="70">
+      <node id="64">
         <label>src/utils/global/errorstatus.hpp</label>
         <link refid="errorstatus_8hpp"/>
-        <childnode refid="71" relation="include">
+        <childnode refid="65" relation="include">
         </childnode>
       </node>
-      <node id="71">
+      <node id="65">
         <label>src/utils/global/global.hpp</label>
         <link refid="global_8hpp"/>
-        <childnode refid="25" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="72" relation="include">
+        <childnode refid="66" relation="include">
         </childnode>
-        <childnode refid="69" relation="include">
+        <childnode refid="63" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -694,53 +637,51 @@
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="26" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="55" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="60" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="61" relation="include">
         </childnode>
-        <childnode refid="66" relation="include">
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
         </childnode>
         <childnode refid="67" relation="include">
         </childnode>
         <childnode refid="68" relation="include">
         </childnode>
-        <childnode refid="69" relation="include">
-        </childnode>
-        <childnode refid="70" relation="include">
-        </childnode>
-        <childnode refid="73" relation="include">
-        </childnode>
-        <childnode refid="74" relation="include">
-        </childnode>
       </node>
-      <node id="73">
+      <node id="67">
         <label>src/validator/validator.cpp</label>
         <link refid="validator_8cpp"/>
       </node>
-      <node id="74">
+      <node id="68">
         <label>src/validator/validator.hpp</label>
         <link refid="validator_8hpp"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="26" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="73" relation="include">
+        <childnode refid="67" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -773,8 +714,8 @@
 <codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Status<sp/>enum,<sp/>which<sp/>lists<sp/>the<sp/>HTTP<sp/>response<sp/>codes<sp/>this<sp/>server<sp/>uses.</highlight></codeline>
 <codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>The<sp/>enum<sp/>is<sp/>grouped<sp/>into<sp/>the<sp/>standard<sp/>families:<sp/>1xx<sp/>informational,</highlight></codeline>
 <codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>2xx<sp/>success,<sp/>3xx<sp/>redirection,<sp/>4xx<sp/>client<sp/>error<sp/>and<sp/>5xx<sp/>server<sp/>error.</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A<sp/>small<sp/>helper,<sp/>getDescription,<sp/>turns<sp/>a<sp/>Status<sp/>value<sp/>into<sp/>its<sp/>standard</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>human-readable<sp/>reason<sp/>phrase<sp/>(for<sp/>example<sp/>&quot;OK&quot;<sp/>or<sp/>&quot;Not<sp/>Found&quot;).</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>A<sp/>small<sp/>helper,<sp/>getDescription,<sp/>turns<sp/>a<sp/>Status<sp/>value<sp/>into<sp/>its</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>standard<sp/>human-readable<sp/>reason<sp/>phrase<sp/>(for<sp/>example<sp/>&quot;OK&quot;<sp/>or<sp/>&quot;Not<sp/>Found&quot;).</highlight></codeline>
 <codeline lineno="10"><highlight class="comment"><sp/>*</highlight></codeline>
 <codeline lineno="11"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
 <codeline lineno="12"><highlight class="comment"><sp/>*<sp/>Every<sp/>callback<sp/>in<sp/>the<sp/>API<sp/>reports<sp/>its<sp/>outcome<sp/>as<sp/>an<sp/>integer<sp/>status<sp/>code,<sp/>and</highlight></codeline>
@@ -786,122 +727,187 @@
 <codeline lineno="18"><highlight class="comment"><sp/>*</highlight></codeline>
 <codeline lineno="19"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
 <codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>Scoped/unscoped<sp/>enums:<sp/>https://en.cppreference.com/w/cpp/language/enum</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>std::unordered_map:<sp/>https://en.cppreference.com/w/cpp/container/unordered_map</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>Function-local<sp/>static<sp/>variables:<sp/>https://en.cppreference.com/w/cpp/language/storage_duration</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
-<codeline lineno="26"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>header<sp/>at<sp/>most<sp/>once<sp/>per<sp/>translation<sp/>unit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>std::unordered_map:</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/container/unordered_map</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>-<sp/>Function-local<sp/>static<sp/>variables:</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/language/storage_duration</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>is<sp/>used<sp/>for<sp/>Error::message<sp/>and<sp/>the<sp/>reason<sp/>phrases.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>status-to-description<sp/>lookup<sp/>table<sp/>uses<sp/>std::unordered_map.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceapi_1_1v2_1_1Http" kindref="compound">api::v2::Http</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Groups<sp/>HTTP-related<sp/>types<sp/>with<sp/>the<sp/>version-2<sp/>API<sp/>code.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal">{</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="35"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="36"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Validation/error<sp/>payload:<sp/>a<sp/>numeric<sp/>code<sp/>and<sp/>a<sp/>human-readable<sp/>message.</highlight></codeline>
-<codeline lineno="37"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Passed<sp/>by<sp/>reference<sp/>through<sp/>validator<sp/>APIs<sp/>that<sp/>report<sp/>failures</highlight></codeline>
-<codeline lineno="38"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>without<sp/>throwing;<sp/>callers<sp/>populate<sp/>both<sp/>members.</highlight></codeline>
-<codeline lineno="39"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="40" refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Error</ref><sp/>=<sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Error</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>lightweight<sp/>named<sp/>struct<sp/>(the<sp/>&quot;using&quot;<sp/>alias<sp/>keeps<sp/>the<sp/>old<sp/>spelling<sp/>working).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>code;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Numeric<sp/>problem<sp/>code<sp/>chosen<sp/>by<sp/>the<sp/>validator;<sp/>useful<sp/>for<sp/>machines.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>message;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Human-readable<sp/>explanation<sp/>of<sp/>the<sp/>problem;<sp/>useful<sp/>for<sp/>people.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@enum<sp/>Status</highlight></codeline>
-<codeline lineno="48"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>HTTP<sp/>status<sp/>codes<sp/>returned<sp/>as<sp/>the<sp/>first<sp/>CALLBACK_<sp/>argument.</highlight></codeline>
-<codeline lineno="49"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Enumerators<sp/>mirror<sp/>standard<sp/>HTTP<sp/>codes,<sp/>grouped<sp/>below<sp/>by<sp/>class:</highlight></codeline>
-<codeline lineno="50"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1xx<sp/>informational,<sp/>2xx<sp/>success,<sp/>3xx<sp/>redirection,<sp/>4xx<sp/>client<sp/>error</highlight></codeline>
-<codeline lineno="51"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>and<sp/>5xx<sp/>server<sp/>error.<sp/>INTERNAL_SERVER_ERROR<sp/>and<sp/>SERVICE_UNAVAILABLE</highlight></codeline>
-<codeline lineno="52"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>are<sp/>the<sp/>two<sp/>values<sp/>produced<sp/>by<sp/>statusForException.</highlight></codeline>
-<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>Only<sp/>codes<sp/>used<sp/>by<sp/>this<sp/>server<sp/>are<sp/>listed;<sp/>getDescription<sp/>falls<sp/>back</highlight></codeline>
-<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>to<sp/>a<sp/>generic<sp/>string<sp/>for<sp/>values<sp/>outside<sp/>this<sp/>set.</highlight></codeline>
-<codeline lineno="55"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892f" kindref="member">Status</ref><sp/>:<sp/>uint16_t<sp/><sp/></highlight><highlight class="comment">//<sp/>Stored<sp/>as<sp/>a<sp/>16-bit<sp/>unsigned<sp/>number;<sp/>codes<sp/>like<sp/>503<sp/>fit<sp/>easily<sp/>and<sp/>the<sp/>type<sp/>is<sp/>compact.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Informational<sp/>responses</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa5f85285014b155daa0edef79c879c07f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa5f85285014b155daa0edef79c879c07f" kindref="member">CONTINUE</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>100,<sp/><sp/></highlight><highlight class="comment">//<sp/>Server<sp/>got<sp/>the<sp/>request<sp/>headers;<sp/>client<sp/>should<sp/>go<sp/>ahead<sp/>and<sp/>send<sp/>the<sp/>body.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="60" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa66ad9fd1e124ac246d846e3300e33bec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa66ad9fd1e124ac246d846e3300e33bec" kindref="member">SWITCHING_PROTOCOLS</ref><sp/>=<sp/>101,<sp/><sp/></highlight><highlight class="comment">//<sp/>Server<sp/>is<sp/>switching<sp/>to<sp/>a<sp/>different<sp/>protocol<sp/>as<sp/>the<sp/>client<sp/>requested.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac1cb872fc9eb5c2dbf2f0061564a2e78" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac1cb872fc9eb5c2dbf2f0061564a2e78" kindref="member">PROCESSING</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>102,<sp/><sp/></highlight><highlight class="comment">//<sp/>Server<sp/>accepted<sp/>the<sp/>request<sp/>but<sp/>has<sp/>not<sp/>produced<sp/>a<sp/>response<sp/>yet.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Successful<sp/>responses</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="64" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" kindref="member">OK</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>200,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>general<sp/>&quot;it<sp/>worked&quot;<sp/>answer.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="65" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa934a30b367a0ce98b11dece63e5fcd0c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa934a30b367a0ce98b11dece63e5fcd0c" kindref="member">CREATED</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>201,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>request<sp/>worked<sp/>and<sp/>a<sp/>new<sp/>resource<sp/>was<sp/>created.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="66" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa682cb787be5c2998541538bcd9bb0f90" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa682cb787be5c2998541538bcd9bb0f90" kindref="member">ACCEPTED</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>202,<sp/><sp/></highlight><highlight class="comment">//<sp/>Request<sp/>accepted<sp/>for<sp/>processing,<sp/>but<sp/>the<sp/>work<sp/>is<sp/>not<sp/>finished<sp/>yet.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="67" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa4f53059b02ddece5199c6d29b60dc73b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa4f53059b02ddece5199c6d29b60dc73b" kindref="member">NON_AUTHORITATIVE_INFORMATION</ref><sp/>=<sp/>203,<sp/><sp/></highlight><highlight class="comment">//<sp/>Returned<sp/>information<sp/>may<sp/>differ<sp/>from<sp/>the<sp/>original<sp/>source.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab28caed6556eda42f01f06c4e9620b85" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab28caed6556eda42f01f06c4e9620b85" kindref="member">NO_CONTENT</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>204,<sp/><sp/></highlight><highlight class="comment">//<sp/>Success,<sp/>but<sp/>there<sp/>is<sp/>no<sp/>body<sp/>to<sp/>send<sp/>back.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="69" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa83859d17214e237409cd0a835ae21237" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa83859d17214e237409cd0a835ae21237" kindref="member">RESET_CONTENT</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>205,<sp/><sp/></highlight><highlight class="comment">//<sp/>Success;<sp/>the<sp/>client<sp/>should<sp/>reset<sp/>whatever<sp/>view<sp/>it<sp/>is<sp/>showing.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="70" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8e81edfc4ccdfd97b0f02ab1f73f3d6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8e81edfc4ccdfd97b0f02ab1f73f3d6" kindref="member">PARTIAL_CONTENT</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>206,<sp/><sp/></highlight><highlight class="comment">//<sp/>Only<sp/>part<sp/>of<sp/>the<sp/>resource<sp/>is<sp/>returned<sp/>(used<sp/>for<sp/>ranged<sp/>downloads).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Redirection<sp/>messages</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="73" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1706bb98d8efb484dd329a71c5c626cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1706bb98d8efb484dd329a71c5c626cf" kindref="member">MULTIPLE_CHOICES</ref><sp/><sp/><sp/>=<sp/>300,<sp/><sp/></highlight><highlight class="comment">//<sp/>There<sp/>are<sp/>several<sp/>possible<sp/>responses;<sp/>the<sp/>client<sp/>should<sp/>choose.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="74" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa29a0c1c47528d67a78030d95fb2819c8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa29a0c1c47528d67a78030d95fb2819c8" kindref="member">MOVED_PERMANENTLY</ref><sp/><sp/>=<sp/>301,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>resource<sp/>has<sp/>a<sp/>new<sp/>permanent<sp/>address.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="75" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9237a79ccd5829f8d66a4f1c55ddcc29" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9237a79ccd5829f8d66a4f1c55ddcc29" kindref="member">FOUND</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>302,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>resource<sp/>is<sp/>temporarily<sp/>at<sp/>a<sp/>different<sp/>address.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="76" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa09b0409eeefbc2bc0a0a518372becca2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa09b0409eeefbc2bc0a0a518372becca2" kindref="member">SEE_OTHER</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>303,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>answer<sp/>is<sp/>at<sp/>another<sp/>address;<sp/>fetch<sp/>it<sp/>with<sp/>GET.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="77" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf2c756ddd31cbcd9a04877d805a6abbb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf2c756ddd31cbcd9a04877d805a6abbb" kindref="member">NOT_MODIFIED</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>304,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>resource<sp/>has<sp/>not<sp/>changed;<sp/>the<sp/>client<sp/>can<sp/>use<sp/>its<sp/>cached<sp/>copy.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="78" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1417fdee2518bb6255392365ec6516af" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1417fdee2518bb6255392365ec6516af" kindref="member">TEMPORARY_REDIRECT</ref><sp/>=<sp/>307,<sp/><sp/></highlight><highlight class="comment">//<sp/>Redirect<sp/>for<sp/>now;<sp/>repeat<sp/>the<sp/>same<sp/>method<sp/>at<sp/>the<sp/>new<sp/>address.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="79" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa421e17e7a5f34f32cfb89b7f50f410e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa421e17e7a5f34f32cfb89b7f50f410e4" kindref="member">PERMANENT_REDIRECT</ref><sp/>=<sp/>308,<sp/><sp/></highlight><highlight class="comment">//<sp/>Redirect<sp/>permanently;<sp/>repeat<sp/>the<sp/>same<sp/>method<sp/>at<sp/>the<sp/>new<sp/>address.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Client<sp/>error<sp/>responses</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="82" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" kindref="member">BAD_REQUEST</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>400,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>server<sp/>could<sp/>not<sp/>understand<sp/>the<sp/>request.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="83" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa521335676ea4815ed98bb811fb2d1fea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa521335676ea4815ed98bb811fb2d1fea" kindref="member">UNAUTHORIZED</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>401,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>client<sp/>must<sp/>log<sp/>in<sp/>/<sp/>authenticate<sp/>first.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="84" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa72888dfce08120c3472f09c3b197287e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa72888dfce08120c3472f09c3b197287e" kindref="member">PAYMENT_REQUIRED</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>402,<sp/><sp/></highlight><highlight class="comment">//<sp/>Reserved<sp/>for<sp/>future<sp/>use<sp/>(digital<sp/>payments).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="85" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" kindref="member">FORBIDDEN</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>403,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>server<sp/>understood<sp/>but<sp/>refuses<sp/>to<sp/>allow<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="86" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa28c17a490f8c2005ea27ae8621e02b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa28c17a490f8c2005ea27ae8621e02b" kindref="member">NOT_FOUND</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>404,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>requested<sp/>resource<sp/>does<sp/>not<sp/>exist.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="87" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9aba05019a8a11f10bca39e486dd3377" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9aba05019a8a11f10bca39e486dd3377" kindref="member">METHOD_NOT_ALLOWED</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>405,<sp/><sp/></highlight><highlight class="comment">//<sp/>That<sp/>HTTP<sp/>method<sp/>is<sp/>not<sp/>allowed<sp/>for<sp/>this<sp/>resource.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="88" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" kindref="member">NOT_ACCEPTABLE</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>406,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>server<sp/>cannot<sp/>produce<sp/>a<sp/>response<sp/>the<sp/>client<sp/>will<sp/>accept.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="89" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa3c71b3c24152de804ac03bd896fb4856" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa3c71b3c24152de804ac03bd896fb4856" kindref="member">CONFLICT</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>409,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>request<sp/>conflicts<sp/>with<sp/>the<sp/>resource&apos;s<sp/>current<sp/>state.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="90" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa479247cdf01057ab6d6b8623f90b6013" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa479247cdf01057ab6d6b8623f90b6013" kindref="member">GONE</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>410,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>resource<sp/>used<sp/>to<sp/>exist<sp/>but<sp/>is<sp/>permanently<sp/>gone.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="91" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faa570b9e297feed34a77ad69fed0af9f5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faa570b9e297feed34a77ad69fed0af9f5" kindref="member">LENGTH_REQUIRED</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>411,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>request<sp/>must<sp/>include<sp/>a<sp/>Content-Length<sp/>header.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="92" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa8e6db76d29b393e63df6d7b54ee430d4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa8e6db76d29b393e63df6d7b54ee430d4" kindref="member">PRECONDITION_FAILED</ref><sp/><sp/><sp/><sp/>=<sp/>412,<sp/><sp/></highlight><highlight class="comment">//<sp/>Conditions<sp/>set<sp/>in<sp/>the<sp/>request<sp/>headers<sp/>were<sp/>not<sp/>met.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="93" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fad22ec215730e987eb8d193ac329e50bd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fad22ec215730e987eb8d193ac329e50bd" kindref="member">PAYLOAD_TOO_LARGE</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>413,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>request<sp/>body<sp/>is<sp/>bigger<sp/>than<sp/>the<sp/>server<sp/>allows.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="94" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9945623b649aaccc6308ef99ed7f256c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9945623b649aaccc6308ef99ed7f256c" kindref="member">UNSUPPORTED_MEDIA_TYPE</ref><sp/>=<sp/>415,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>request&apos;s<sp/>media<sp/>type<sp/>is<sp/>not<sp/>supported<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="95"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Server<sp/>error<sp/>responses</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="97" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" kindref="member">INTERNAL_SERVER_ERROR</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>500,<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>generic,<sp/>unexpected<sp/>failure<sp/>on<sp/>the<sp/>server.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="98" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1a6cd23a439556988904d3b93ca3ae31" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1a6cd23a439556988904d3b93ca3ae31" kindref="member">NOT_IMPLEMENTED</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>501,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>server<sp/>does<sp/>not<sp/>support<sp/>the<sp/>requested<sp/>feature<sp/>yet.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="99" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafbd7b839bd08636059d9ba88be1822ef" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafbd7b839bd08636059d9ba88be1822ef" kindref="member">BAD_GATEWAY</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>502,<sp/><sp/></highlight><highlight class="comment">//<sp/>An<sp/>upstream<sp/>server<sp/>sent<sp/>back<sp/>an<sp/>invalid<sp/>response.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="100" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa8f68ec2a12ee4e1b4766e3fe760220" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa8f68ec2a12ee4e1b4766e3fe760220" kindref="member">SERVICE_UNAVAILABLE</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>503,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>server<sp/>is<sp/>temporarily<sp/>unavailable;<sp/>the<sp/>client<sp/>should<sp/>retry.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="101" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa89ecf07ab072eb7a54787f00dadcbcfc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa89ecf07ab072eb7a54787f00dadcbcfc" kindref="member">GATEWAY_TIMEOUT</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>504,<sp/><sp/></highlight><highlight class="comment">//<sp/>An<sp/>upstream<sp/>server<sp/>took<sp/>too<sp/>long<sp/>to<sp/>respond.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="102" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac7da099c2cbe9f3b620829632dcfc89f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac7da099c2cbe9f3b620829632dcfc89f" kindref="member">HTTP_VERSION_NOT_SUPPORTED</ref><sp/>=<sp/>505<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>server<sp/>does<sp/>not<sp/>support<sp/>the<sp/>HTTP<sp/>version<sp/>used.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"></highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Utility<sp/>function<sp/>to<sp/>get<sp/>the<sp/>description<sp/>of<sp/>a<sp/>status<sp/>code</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>standard<sp/>reason<sp/>phrase<sp/>for<sp/>a<sp/>status<sp/>code.</highlight></codeline>
-<codeline lineno="108"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>code<sp/>Status<sp/>code<sp/>to<sp/>describe.</highlight></codeline>
-<codeline lineno="109"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>Reason<sp/>phrase<sp/>(e.g.<sp/>&quot;OK&quot;),<sp/>or<sp/>&quot;Unknown<sp/>Status<sp/>Code&quot;<sp/>if<sp/>`code`</highlight></codeline>
-<codeline lineno="110"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>not<sp/>present<sp/>in<sp/>the<sp/>lookup<sp/>table.</highlight></codeline>
-<codeline lineno="111"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>The<sp/>lookup<sp/>table<sp/>is<sp/>a<sp/>function-local<sp/>static,<sp/>initialised<sp/>once<sp/>and</highlight></codeline>
-<codeline lineno="112"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>read-only<sp/>thereafter.</highlight></codeline>
-<codeline lineno="113"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="114" refid="namespaceapi_1_1v2_1_1Http_1a68b4596379894631fc1835e4443727d8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a68b4596379894631fc1835e4443727d8" kindref="member">getDescription</ref>(<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892f" kindref="member">Status</ref><sp/>code)<sp/><sp/></highlight><highlight class="comment">//<sp/>Inline<sp/>so<sp/>the<sp/>definition<sp/>can<sp/>live<sp/>in<sp/>the<sp/>header;<sp/>takes<sp/>the<sp/>code<sp/>by<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Utility:<sp/>Map<sp/>status<sp/>codes<sp/>to<sp/>their<sp/>descriptions</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::unordered_map&lt;Status,<sp/>std::string&gt;<sp/>StatusDescriptions<sp/>=<sp/>{{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa5f85285014b155daa0edef79c879c07f" kindref="member">CONTINUE</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Continue&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa66ad9fd1e124ac246d846e3300e33bec" kindref="member">SWITCHING_PROTOCOLS</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Switching<sp/>Protocols&quot;</highlight><highlight class="normal">},<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>read-only<sp/>table<sp/>built<sp/>once,<sp/>pairing<sp/>each<sp/>code<sp/>with<sp/>its<sp/>standard<sp/>reason<sp/>phrase<sp/>(the<sp/>rows<sp/>continue<sp/>below).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac1cb872fc9eb5c2dbf2f0061564a2e78" kindref="member">PROCESSING</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Processing&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" kindref="member">OK</ref>,<sp/></highlight><highlight class="stringliteral">&quot;OK&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa934a30b367a0ce98b11dece63e5fcd0c" kindref="member">CREATED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Created&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa682cb787be5c2998541538bcd9bb0f90" kindref="member">ACCEPTED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Accepted&quot;</highlight><highlight class="normal">},</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa4f53059b02ddece5199c6d29b60dc73b" kindref="member">NON_AUTHORITATIVE_INFORMATION</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Non-Authoritative<sp/>Information&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab28caed6556eda42f01f06c4e9620b85" kindref="member">NO_CONTENT</ref>,<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>Content&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa83859d17214e237409cd0a835ae21237" kindref="member">RESET_CONTENT</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Reset<sp/>Content&quot;</highlight><highlight class="normal">},</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8e81edfc4ccdfd97b0f02ab1f73f3d6" kindref="member">PARTIAL_CONTENT</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Partial<sp/>Content&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1706bb98d8efb484dd329a71c5c626cf" kindref="member">MULTIPLE_CHOICES</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Multiple<sp/>Choices&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa29a0c1c47528d67a78030d95fb2819c8" kindref="member">MOVED_PERMANENTLY</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Moved<sp/>Permanently&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9237a79ccd5829f8d66a4f1c55ddcc29" kindref="member">FOUND</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Found&quot;</highlight><highlight class="normal">},</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa09b0409eeefbc2bc0a0a518372becca2" kindref="member">SEE_OTHER</ref>,<sp/></highlight><highlight class="stringliteral">&quot;See<sp/>Other&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf2c756ddd31cbcd9a04877d805a6abbb" kindref="member">NOT_MODIFIED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Not<sp/>Modified&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1417fdee2518bb6255392365ec6516af" kindref="member">TEMPORARY_REDIRECT</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Temporary<sp/>Redirect&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa421e17e7a5f34f32cfb89b7f50f410e4" kindref="member">PERMANENT_REDIRECT</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Permanent<sp/>Redirect&quot;</highlight><highlight class="normal">},</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" kindref="member">BAD_REQUEST</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Bad<sp/>Request&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa521335676ea4815ed98bb811fb2d1fea" kindref="member">UNAUTHORIZED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Unauthorized&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa72888dfce08120c3472f09c3b197287e" kindref="member">PAYMENT_REQUIRED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Payment<sp/>Required&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" kindref="member">FORBIDDEN</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Forbidden&quot;</highlight><highlight class="normal">},</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa28c17a490f8c2005ea27ae8621e02b" kindref="member">NOT_FOUND</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Not<sp/>Found&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9aba05019a8a11f10bca39e486dd3377" kindref="member">METHOD_NOT_ALLOWED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Method<sp/>Not<sp/>Allowed&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" kindref="member">NOT_ACCEPTABLE</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Not<sp/>Acceptable&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa3c71b3c24152de804ac03bd896fb4856" kindref="member">CONFLICT</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Conflict&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa479247cdf01057ab6d6b8623f90b6013" kindref="member">GONE</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Gone&quot;</highlight><highlight class="normal">},</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faa570b9e297feed34a77ad69fed0af9f5" kindref="member">LENGTH_REQUIRED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Length<sp/>Required&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa8e6db76d29b393e63df6d7b54ee430d4" kindref="member">PRECONDITION_FAILED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Precondition<sp/>Failed&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fad22ec215730e987eb8d193ac329e50bd" kindref="member">PAYLOAD_TOO_LARGE</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Payload<sp/>Too<sp/>Large&quot;</highlight><highlight class="normal">},</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9945623b649aaccc6308ef99ed7f256c" kindref="member">UNSUPPORTED_MEDIA_TYPE</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Unsupported<sp/>Media<sp/>Type&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" kindref="member">INTERNAL_SERVER_ERROR</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Internal<sp/>Server<sp/>Error&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1a6cd23a439556988904d3b93ca3ae31" kindref="member">NOT_IMPLEMENTED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Not<sp/>Implemented&quot;</highlight><highlight class="normal">},</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafbd7b839bd08636059d9ba88be1822ef" kindref="member">BAD_GATEWAY</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Bad<sp/>Gateway&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa8f68ec2a12ee4e1b4766e3fe760220" kindref="member">SERVICE_UNAVAILABLE</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Service<sp/>Unavailable&quot;</highlight><highlight class="normal">},<sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa89ecf07ab072eb7a54787f00dadcbcfc" kindref="member">GATEWAY_TIMEOUT</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Gateway<sp/>Timeout&quot;</highlight><highlight class="normal">},</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac7da099c2cbe9f3b620829632dcfc89f" kindref="member">HTTP_VERSION_NOT_SUPPORTED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;HTTP<sp/>Version<sp/>Not<sp/>Supported&quot;</highlight><highlight class="normal">}};</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"></highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>description<sp/>=<sp/>StatusDescriptions.find(code);<sp/><sp/></highlight><highlight class="comment">//<sp/>Look<sp/>up<sp/>the<sp/>code;<sp/>find<sp/>returns<sp/>an<sp/>iterator<sp/>(or<sp/>end()<sp/>when<sp/>missing).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(description<sp/>!=<sp/>StatusDescriptions.end())<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Only<sp/>use<sp/>the<sp/>result<sp/>if<sp/>the<sp/>code<sp/>was<sp/>actually<sp/>found.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>description-&gt;second;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>iterator&apos;s<sp/>second<sp/>member<sp/>is<sp/>the<sp/>reason<sp/>phrase<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Unknown<sp/>Status<sp/>Code&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Fallback<sp/>for<sp/>codes<sp/>that<sp/>are<sp/>not<sp/>in<sp/>the<sp/>table.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="136"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>api::v2::Http</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>header<sp/>at<sp/>most<sp/>once<sp/>per<sp/>translation<sp/>unit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>std::string<sp/>is<sp/>used<sp/>for<sp/>Error::message<sp/>and<sp/>the<sp/>reason<sp/>phrases.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>status-to-description<sp/>lookup<sp/>table<sp/>uses<sp/>std::unordered_map.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Groups<sp/>HTTP-related<sp/>types<sp/>with<sp/>the<sp/>version-2<sp/>API</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>code.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceapi_1_1v2_1_1Http" kindref="compound">api::v2::Http</ref><sp/>{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Validation/error<sp/>payload:<sp/>a<sp/>numeric<sp/>code<sp/>and<sp/>a<sp/>human-readable</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/><sp/><sp/>*<sp/>message.</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Passed<sp/>by<sp/>reference<sp/>through<sp/>validator<sp/>APIs<sp/>that<sp/>report<sp/>failures</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>without<sp/>throwing;<sp/>callers<sp/>populate<sp/>both<sp/>members.</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>lightweight<sp/>named<sp/>struct<sp/>(the<sp/>&quot;using&quot;<sp/>alias</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>keeps<sp/>the<sp/>old<sp/>spelling<sp/>working).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Error</ref><sp/>=<sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Error</ref><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>code;<sp/><sp/></highlight><highlight class="comment">//<sp/>Numeric<sp/>problem<sp/>code<sp/>chosen<sp/>by<sp/>the<sp/>validator;<sp/>useful<sp/>for</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>machines.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>message;<sp/><sp/></highlight><highlight class="comment">//<sp/>Human-readable<sp/>explanation<sp/>of<sp/>the<sp/>problem;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>useful<sp/>for<sp/>people.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@enum<sp/>Status</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>HTTP<sp/>status<sp/>codes<sp/>returned<sp/>as<sp/>the<sp/>first<sp/>CALLBACK_<sp/>argument.</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Enumerators<sp/>mirror<sp/>standard<sp/>HTTP<sp/>codes,<sp/>grouped<sp/>below<sp/>by<sp/>class:</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1xx<sp/>informational,<sp/>2xx<sp/>success,<sp/>3xx<sp/>redirection,<sp/>4xx<sp/>client</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/>*<sp/>error<sp/>and<sp/>5xx<sp/>server<sp/>error.<sp/>INTERNAL_SERVER_ERROR<sp/>and<sp/>SERVICE_UNAVAILABLE</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>are<sp/>the<sp/>two<sp/>values<sp/>produced<sp/>by<sp/>statusForException.</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@note<sp/>Only<sp/>codes<sp/>used<sp/>by<sp/>this<sp/>server<sp/>are<sp/>listed;<sp/>getDescription<sp/>falls</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/>*<sp/>back<sp/>to<sp/>a<sp/>generic<sp/>string<sp/>for<sp/>values<sp/>outside<sp/>this<sp/>set.</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Stored<sp/>as<sp/>a<sp/>16-bit<sp/>unsigned<sp/>number;<sp/>codes<sp/>like</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>503<sp/>fit<sp/>easily<sp/>and<sp/>the<sp/>type<sp/>is<sp/>compact.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892f" kindref="member">Status</ref><sp/>:<sp/>uint16_t<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Informational<sp/>responses</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa5f85285014b155daa0edef79c879c07f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa5f85285014b155daa0edef79c879c07f" kindref="member">CONTINUE</ref><sp/>=<sp/>100,<sp/><sp/></highlight><highlight class="comment">//<sp/>Server<sp/>got<sp/>the<sp/>request<sp/>headers;<sp/>client<sp/>should<sp/>go</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ahead<sp/>and<sp/>send<sp/>the<sp/>body.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa66ad9fd1e124ac246d846e3300e33bec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa66ad9fd1e124ac246d846e3300e33bec" kindref="member">SWITCHING_PROTOCOLS</ref><sp/>=<sp/>101,<sp/><sp/></highlight><highlight class="comment">//<sp/>Server<sp/>is<sp/>switching<sp/>to<sp/>a<sp/>different</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>protocol<sp/>as<sp/>the<sp/>client<sp/>requested.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac1cb872fc9eb5c2dbf2f0061564a2e78" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac1cb872fc9eb5c2dbf2f0061564a2e78" kindref="member">PROCESSING</ref><sp/>=<sp/>102,<sp/><sp/></highlight><highlight class="comment">//<sp/>Server<sp/>accepted<sp/>the<sp/>request<sp/>but<sp/>has<sp/>not<sp/>produced<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>response<sp/>yet.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Successful<sp/>responses</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" kindref="member">OK</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>200,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>general<sp/>&quot;it<sp/>worked&quot;<sp/>answer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa934a30b367a0ce98b11dece63e5fcd0c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa934a30b367a0ce98b11dece63e5fcd0c" kindref="member">CREATED</ref><sp/><sp/>=<sp/>201,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>request<sp/>worked<sp/>and<sp/>a<sp/>new<sp/>resource<sp/>was<sp/>created.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa682cb787be5c2998541538bcd9bb0f90" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa682cb787be5c2998541538bcd9bb0f90" kindref="member">ACCEPTED</ref><sp/>=<sp/>202,<sp/><sp/></highlight><highlight class="comment">//<sp/>Request<sp/>accepted<sp/>for<sp/>processing,<sp/>but<sp/>the<sp/>work<sp/>is<sp/>not</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>finished<sp/>yet.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa4f53059b02ddece5199c6d29b60dc73b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa4f53059b02ddece5199c6d29b60dc73b" kindref="member">NON_AUTHORITATIVE_INFORMATION</ref><sp/>=</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>203,<sp/><sp/></highlight><highlight class="comment">//<sp/>Returned<sp/>information<sp/>may<sp/>differ<sp/>from<sp/>the<sp/>original<sp/>source.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab28caed6556eda42f01f06c4e9620b85" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab28caed6556eda42f01f06c4e9620b85" kindref="member">NO_CONTENT</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>204,<sp/><sp/></highlight><highlight class="comment">//<sp/>Success,<sp/>but<sp/>there<sp/>is<sp/>no<sp/>body<sp/>to<sp/>send<sp/>back.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa83859d17214e237409cd0a835ae21237" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa83859d17214e237409cd0a835ae21237" kindref="member">RESET_CONTENT</ref><sp/><sp/><sp/>=<sp/>205,<sp/><sp/></highlight><highlight class="comment">//<sp/>Success;<sp/>the<sp/>client<sp/>should<sp/>reset<sp/>whatever<sp/>view</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>it<sp/>is<sp/>showing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8e81edfc4ccdfd97b0f02ab1f73f3d6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8e81edfc4ccdfd97b0f02ab1f73f3d6" kindref="member">PARTIAL_CONTENT</ref><sp/>=<sp/>206,<sp/><sp/></highlight><highlight class="comment">//<sp/>Only<sp/>part<sp/>of<sp/>the<sp/>resource<sp/>is<sp/>returned<sp/>(used</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>ranged<sp/>downloads).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Redirection<sp/>messages</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1706bb98d8efb484dd329a71c5c626cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1706bb98d8efb484dd329a71c5c626cf" kindref="member">MULTIPLE_CHOICES</ref><sp/><sp/>=<sp/>300,<sp/><sp/></highlight><highlight class="comment">//<sp/>There<sp/>are<sp/>several<sp/>possible<sp/>responses;<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>client<sp/>should<sp/>choose.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa29a0c1c47528d67a78030d95fb2819c8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa29a0c1c47528d67a78030d95fb2819c8" kindref="member">MOVED_PERMANENTLY</ref><sp/>=<sp/>301,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>resource<sp/>has<sp/>a<sp/>new<sp/>permanent<sp/>address.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9237a79ccd5829f8d66a4f1c55ddcc29" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9237a79ccd5829f8d66a4f1c55ddcc29" kindref="member">FOUND</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>302,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>resource<sp/>is<sp/>temporarily<sp/>at<sp/>a<sp/>different<sp/>address.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa09b0409eeefbc2bc0a0a518372becca2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa09b0409eeefbc2bc0a0a518372becca2" kindref="member">SEE_OTHER</ref><sp/><sp/><sp/><sp/>=<sp/>303,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>answer<sp/>is<sp/>at<sp/>another<sp/>address;<sp/>fetch<sp/>it<sp/>with<sp/>GET.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf2c756ddd31cbcd9a04877d805a6abbb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf2c756ddd31cbcd9a04877d805a6abbb" kindref="member">NOT_MODIFIED</ref><sp/>=<sp/>304,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>resource<sp/>has<sp/>not<sp/>changed;<sp/>the<sp/>client<sp/>can<sp/>use</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>its<sp/>cached<sp/>copy.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1417fdee2518bb6255392365ec6516af" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1417fdee2518bb6255392365ec6516af" kindref="member">TEMPORARY_REDIRECT</ref><sp/>=<sp/>307,<sp/><sp/></highlight><highlight class="comment">//<sp/>Redirect<sp/>for<sp/>now;<sp/>repeat<sp/>the<sp/>same<sp/>method</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>at<sp/>the<sp/>new<sp/>address.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa421e17e7a5f34f32cfb89b7f50f410e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa421e17e7a5f34f32cfb89b7f50f410e4" kindref="member">PERMANENT_REDIRECT</ref><sp/>=<sp/>308,<sp/><sp/></highlight><highlight class="comment">//<sp/>Redirect<sp/>permanently;<sp/>repeat<sp/>the<sp/>same</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>method<sp/>at<sp/>the<sp/>new<sp/>address.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Client<sp/>error<sp/>responses</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" kindref="member">BAD_REQUEST</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>400,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>server<sp/>could<sp/>not<sp/>understand<sp/>the<sp/>request.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa521335676ea4815ed98bb811fb2d1fea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa521335676ea4815ed98bb811fb2d1fea" kindref="member">UNAUTHORIZED</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>401,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>client<sp/>must<sp/>log<sp/>in<sp/>/<sp/>authenticate<sp/>first.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa72888dfce08120c3472f09c3b197287e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa72888dfce08120c3472f09c3b197287e" kindref="member">PAYMENT_REQUIRED</ref><sp/>=<sp/>402,<sp/><sp/></highlight><highlight class="comment">//<sp/>Reserved<sp/>for<sp/>future<sp/>use<sp/>(digital<sp/>payments).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" kindref="member">FORBIDDEN</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>403,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>server<sp/>understood<sp/>but<sp/>refuses<sp/>to<sp/>allow<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa28c17a490f8c2005ea27ae8621e02b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa28c17a490f8c2005ea27ae8621e02b" kindref="member">NOT_FOUND</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>404,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>requested<sp/>resource<sp/>does<sp/>not<sp/>exist.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9aba05019a8a11f10bca39e486dd3377" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9aba05019a8a11f10bca39e486dd3377" kindref="member">METHOD_NOT_ALLOWED</ref><sp/>=</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>405,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>That<sp/>HTTP<sp/>method<sp/>is<sp/>not<sp/>allowed<sp/>for<sp/>this<sp/>resource.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" kindref="member">NOT_ACCEPTABLE</ref><sp/>=<sp/>406,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>server<sp/>cannot<sp/>produce<sp/>a<sp/>response<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>client<sp/>will<sp/>accept.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa3c71b3c24152de804ac03bd896fb4856" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa3c71b3c24152de804ac03bd896fb4856" kindref="member">CONFLICT</ref><sp/>=<sp/>409,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>request<sp/>conflicts<sp/>with<sp/>the<sp/>resource&apos;s<sp/>current<sp/>state.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa479247cdf01057ab6d6b8623f90b6013" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa479247cdf01057ab6d6b8623f90b6013" kindref="member">GONE</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>410,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>resource<sp/>used<sp/>to<sp/>exist<sp/>but<sp/>is<sp/>permanently<sp/>gone.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faa570b9e297feed34a77ad69fed0af9f5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faa570b9e297feed34a77ad69fed0af9f5" kindref="member">LENGTH_REQUIRED</ref><sp/>=<sp/>411,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>request<sp/>must<sp/>include<sp/>a<sp/>Content-Length<sp/>header.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa8e6db76d29b393e63df6d7b54ee430d4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa8e6db76d29b393e63df6d7b54ee430d4" kindref="member">PRECONDITION_FAILED</ref><sp/>=</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>412,<sp/><sp/></highlight><highlight class="comment">//<sp/>Conditions<sp/>set<sp/>in<sp/>the<sp/>request<sp/>headers<sp/>were<sp/>not<sp/>met.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fad22ec215730e987eb8d193ac329e50bd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fad22ec215730e987eb8d193ac329e50bd" kindref="member">PAYLOAD_TOO_LARGE</ref><sp/>=</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>413,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>request<sp/>body<sp/>is<sp/>bigger<sp/>than<sp/>the<sp/>server<sp/>allows.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9945623b649aaccc6308ef99ed7f256c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9945623b649aaccc6308ef99ed7f256c" kindref="member">UNSUPPORTED_MEDIA_TYPE</ref><sp/>=</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>415,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>request&apos;s<sp/>media<sp/>type<sp/>is<sp/>not<sp/>supported<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Server<sp/>error<sp/>responses</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" kindref="member">INTERNAL_SERVER_ERROR</ref><sp/>=</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>500,<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>generic,<sp/>unexpected<sp/>failure<sp/>on<sp/>the<sp/>server.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1a6cd23a439556988904d3b93ca3ae31" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1a6cd23a439556988904d3b93ca3ae31" kindref="member">NOT_IMPLEMENTED</ref><sp/>=</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>501,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>server<sp/>does<sp/>not<sp/>support<sp/>the<sp/>requested<sp/>feature<sp/>yet.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafbd7b839bd08636059d9ba88be1822ef" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafbd7b839bd08636059d9ba88be1822ef" kindref="member">BAD_GATEWAY</ref><sp/>=<sp/>502,<sp/><sp/></highlight><highlight class="comment">//<sp/>An<sp/>upstream<sp/>server<sp/>sent<sp/>back<sp/>an<sp/>invalid<sp/>response.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa8f68ec2a12ee4e1b4766e3fe760220" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa8f68ec2a12ee4e1b4766e3fe760220" kindref="member">SERVICE_UNAVAILABLE</ref><sp/>=<sp/>503,<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>server<sp/>is<sp/>temporarily<sp/>unavailable;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>client<sp/>should<sp/>retry.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa89ecf07ab072eb7a54787f00dadcbcfc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa89ecf07ab072eb7a54787f00dadcbcfc" kindref="member">GATEWAY_TIMEOUT</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>504,<sp/><sp/></highlight><highlight class="comment">//<sp/>An<sp/>upstream<sp/>server<sp/>took<sp/>too<sp/>long<sp/>to<sp/>respond.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac7da099c2cbe9f3b620829632dcfc89f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac7da099c2cbe9f3b620829632dcfc89f" kindref="member">HTTP_VERSION_NOT_SUPPORTED</ref><sp/>=</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>505<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>server<sp/>does<sp/>not<sp/>support<sp/>the<sp/>HTTP<sp/>version<sp/>used.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Utility<sp/>function<sp/>to<sp/>get<sp/>the<sp/>description<sp/>of<sp/>a<sp/>status<sp/>code</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="137"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>standard<sp/>reason<sp/>phrase<sp/>for<sp/>a<sp/>status<sp/>code.</highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>code<sp/>Status<sp/>code<sp/>to<sp/>describe.</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>Reason<sp/>phrase<sp/>(e.g.<sp/>&quot;OK&quot;),<sp/>or<sp/>&quot;Unknown<sp/>Status<sp/>Code&quot;<sp/>if<sp/>`code`</highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>not<sp/>present<sp/>in<sp/>the<sp/>lookup<sp/>table.</highlight></codeline>
+<codeline lineno="141"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@note<sp/>The<sp/>lookup<sp/>table<sp/>is<sp/>a<sp/>function-local<sp/>static,<sp/>initialised<sp/>once<sp/>and</highlight></codeline>
+<codeline lineno="142"><highlight class="comment"><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>read-only<sp/>thereafter.</highlight></codeline>
+<codeline lineno="143"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Inline<sp/>so<sp/>the<sp/>definition<sp/>can<sp/>live<sp/>in<sp/>the<sp/>header;<sp/>takes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>code<sp/>by<sp/>value.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="namespaceapi_1_1v2_1_1Http_1a68b4596379894631fc1835e4443727d8" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceapi_1_1v2_1_1Http_1a68b4596379894631fc1835e4443727d8" kindref="member">getDescription</ref>(<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892f" kindref="member">Status</ref><sp/>code)<sp/>{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Utility:<sp/>Map<sp/>status<sp/>codes<sp/>to<sp/>their<sp/>descriptions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::unordered_map&lt;Status,<sp/>std::string&gt;<sp/>StatusDescriptions<sp/>=</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa5f85285014b155daa0edef79c879c07f" kindref="member">CONTINUE</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Continue&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa66ad9fd1e124ac246d846e3300e33bec" kindref="member">SWITCHING_PROTOCOLS</ref>,</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Switching<sp/>Protocols&quot;</highlight><highlight class="normal">},<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>read-only<sp/>table<sp/>built<sp/>once,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>pairing<sp/>each<sp/>code<sp/>with<sp/>its</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>standard<sp/>reason<sp/>phrase<sp/>(the<sp/>rows</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>continue<sp/>below).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac1cb872fc9eb5c2dbf2f0061564a2e78" kindref="member">PROCESSING</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Processing&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" kindref="member">OK</ref>,<sp/></highlight><highlight class="stringliteral">&quot;OK&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa934a30b367a0ce98b11dece63e5fcd0c" kindref="member">CREATED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Created&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa682cb787be5c2998541538bcd9bb0f90" kindref="member">ACCEPTED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Accepted&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa4f53059b02ddece5199c6d29b60dc73b" kindref="member">NON_AUTHORITATIVE_INFORMATION</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Non-Authoritative<sp/>Information&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab28caed6556eda42f01f06c4e9620b85" kindref="member">NO_CONTENT</ref>,<sp/></highlight><highlight class="stringliteral">&quot;No<sp/>Content&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa83859d17214e237409cd0a835ae21237" kindref="member">RESET_CONTENT</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Reset<sp/>Content&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8e81edfc4ccdfd97b0f02ab1f73f3d6" kindref="member">PARTIAL_CONTENT</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Partial<sp/>Content&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1706bb98d8efb484dd329a71c5c626cf" kindref="member">MULTIPLE_CHOICES</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Multiple<sp/>Choices&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa29a0c1c47528d67a78030d95fb2819c8" kindref="member">MOVED_PERMANENTLY</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Moved<sp/>Permanently&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9237a79ccd5829f8d66a4f1c55ddcc29" kindref="member">FOUND</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Found&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa09b0409eeefbc2bc0a0a518372becca2" kindref="member">SEE_OTHER</ref>,<sp/></highlight><highlight class="stringliteral">&quot;See<sp/>Other&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf2c756ddd31cbcd9a04877d805a6abbb" kindref="member">NOT_MODIFIED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Not<sp/>Modified&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1417fdee2518bb6255392365ec6516af" kindref="member">TEMPORARY_REDIRECT</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Temporary<sp/>Redirect&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa421e17e7a5f34f32cfb89b7f50f410e4" kindref="member">PERMANENT_REDIRECT</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Permanent<sp/>Redirect&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" kindref="member">BAD_REQUEST</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Bad<sp/>Request&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa521335676ea4815ed98bb811fb2d1fea" kindref="member">UNAUTHORIZED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Unauthorized&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa72888dfce08120c3472f09c3b197287e" kindref="member">PAYMENT_REQUIRED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Payment<sp/>Required&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" kindref="member">FORBIDDEN</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Forbidden&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa28c17a490f8c2005ea27ae8621e02b" kindref="member">NOT_FOUND</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Not<sp/>Found&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9aba05019a8a11f10bca39e486dd3377" kindref="member">METHOD_NOT_ALLOWED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Method<sp/>Not<sp/>Allowed&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" kindref="member">NOT_ACCEPTABLE</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Not<sp/>Acceptable&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa3c71b3c24152de804ac03bd896fb4856" kindref="member">CONFLICT</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Conflict&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa479247cdf01057ab6d6b8623f90b6013" kindref="member">GONE</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Gone&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faa570b9e297feed34a77ad69fed0af9f5" kindref="member">LENGTH_REQUIRED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Length<sp/>Required&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa8e6db76d29b393e63df6d7b54ee430d4" kindref="member">PRECONDITION_FAILED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Precondition<sp/>Failed&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fad22ec215730e987eb8d193ac329e50bd" kindref="member">PAYLOAD_TOO_LARGE</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Payload<sp/>Too<sp/>Large&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9945623b649aaccc6308ef99ed7f256c" kindref="member">UNSUPPORTED_MEDIA_TYPE</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Unsupported<sp/>Media<sp/>Type&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" kindref="member">INTERNAL_SERVER_ERROR</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Internal<sp/>Server<sp/>Error&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1a6cd23a439556988904d3b93ca3ae31" kindref="member">NOT_IMPLEMENTED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Not<sp/>Implemented&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafbd7b839bd08636059d9ba88be1822ef" kindref="member">BAD_GATEWAY</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Bad<sp/>Gateway&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa8f68ec2a12ee4e1b4766e3fe760220" kindref="member">SERVICE_UNAVAILABLE</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Service<sp/>Unavailable&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa89ecf07ab072eb7a54787f00dadcbcfc" kindref="member">GATEWAY_TIMEOUT</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Gateway<sp/>Timeout&quot;</highlight><highlight class="normal">},</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac7da099c2cbe9f3b620829632dcfc89f" kindref="member">HTTP_VERSION_NOT_SUPPORTED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;HTTP<sp/>Version<sp/>Not<sp/>Supported&quot;</highlight><highlight class="normal">}};</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>description<sp/>=</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>StatusDescriptions.find(code);<sp/><sp/></highlight><highlight class="comment">//<sp/>Look<sp/>up<sp/>the<sp/>code;<sp/>find<sp/>returns<sp/>an</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>iterator<sp/>(or<sp/>end()<sp/>when<sp/>missing).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Only<sp/>use<sp/>the<sp/>result<sp/>if<sp/>the<sp/>code<sp/>was<sp/>actually<sp/>found.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(description<sp/>!=<sp/>StatusDescriptions.end())<sp/>{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>description-&gt;second;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>iterator&apos;s<sp/>second<sp/>member<sp/>is<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>reason<sp/>phrase<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Unknown<sp/>Status<sp/>Code&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Fallback<sp/>for<sp/>codes<sp/>that<sp/>are<sp/>not<sp/>in<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>table.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>api::v2::Http</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/utils/global/http.hpp"/>
   </compounddef>

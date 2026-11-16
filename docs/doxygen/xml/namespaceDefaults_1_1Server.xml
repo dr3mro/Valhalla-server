@@ -9,7 +9,8 @@
         <argsstring></argsstring>
         <name>SERVER_THREADS_</name>
         <qualifiedname>Defaults::Server::SERVER_THREADS_</qualifiedname>
-        <initializer>= 4</initializer>
+        <initializer>                           =
+4</initializer>
         <briefdescription>
 <para>Default number of IO threads. </para>
         </briefdescription>
@@ -18,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="111" column="27" bodyfile="src/configurator/defaults.hpp" bodystart="111" bodyend="-1"/>
+        <location file="src/configurator/defaults.hpp" line="151" column="20" bodyfile="src/configurator/defaults.hpp" bodystart="151" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1Server_1ae720bc6d0fb01a3144a54f3a6d5e24c8" prot="public" static="no" mutable="no">
         <type>const uint16_t</type>
@@ -26,7 +27,8 @@
         <argsstring></argsstring>
         <name>SERVER_PORT_</name>
         <qualifiedname>Defaults::Server::SERVER_PORT_</qualifiedname>
-        <initializer>= 8080</initializer>
+        <initializer>                        =
+8080</initializer>
         <briefdescription>
 <para>Default HTTP port. </para>
         </briefdescription>
@@ -34,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="113" column="27" bodyfile="src/configurator/defaults.hpp" bodystart="113" bodyend="-1"/>
+        <location file="src/configurator/defaults.hpp" line="155" column="20" bodyfile="src/configurator/defaults.hpp" bodystart="155" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1Server_1a3afe392d625a7c873fb12484b77c9cde" prot="public" static="no" mutable="no">
         <type>const std::string</type>
@@ -42,7 +44,8 @@
         <argsstring></argsstring>
         <name>SERVER_NAME_</name>
         <qualifiedname>Defaults::Server::SERVER_NAME_</qualifiedname>
-        <initializer>= &quot;ProjectValhalla&quot;</initializer>
+        <initializer>                           =
+&quot;ProjectValhalla&quot;</initializer>
         <briefdescription>
 <para>Default advertised server name. </para>
         </briefdescription>
@@ -50,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="115" column="27" bodyfile="src/configurator/defaults.hpp" bodystart="115" bodyend="-1"/>
+        <location file="src/configurator/defaults.hpp" line="159" column="23" bodyfile="src/configurator/defaults.hpp" bodystart="159" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1Server_1ac147eb21c925844b32d2f34b7e481368" prot="public" static="no" mutable="no">
         <type>const std::string</type>
@@ -58,7 +61,8 @@
         <argsstring></argsstring>
         <name>SERVER_VER_</name>
         <qualifiedname>Defaults::Server::SERVER_VER_</qualifiedname>
-        <initializer>= std::string(&quot;dev&quot;)</initializer>
+        <initializer>                          = std::string(
+&quot;dev&quot;)</initializer>
         <briefdescription>
 <para>Default version, taken from the build-time git tag. </para>
         </briefdescription>
@@ -66,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="117" column="27" bodyfile="src/configurator/defaults.hpp" bodystart="117" bodyend="-1"/>
+        <location file="src/configurator/defaults.hpp" line="163" column="23" bodyfile="src/configurator/defaults.hpp" bodystart="163" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1Server_1aa7b551a3340ddcdba720445bea35c784" prot="public" static="no" mutable="no">
         <type>const std::string</type>
@@ -74,7 +78,8 @@
         <argsstring></argsstring>
         <name>SERVER_DESC_</name>
         <qualifiedname>Defaults::Server::SERVER_DESC_</qualifiedname>
-        <initializer>= &quot;ProjectValhalla API&quot;</initializer>
+        <initializer>                           =
+&quot;ProjectValhalla API&quot;</initializer>
         <briefdescription>
 <para>Default server description. </para>
         </briefdescription>
@@ -82,7 +87,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="119" column="27" bodyfile="src/configurator/defaults.hpp" bodystart="119" bodyend="-1"/>
+        <location file="src/configurator/defaults.hpp" line="167" column="23" bodyfile="src/configurator/defaults.hpp" bodystart="167" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1Server_1a32b80f9853a725d120d97a88f00d5c28" prot="public" static="no" mutable="no">
         <type>const std::string</type>
@@ -90,7 +95,8 @@
         <argsstring></argsstring>
         <name>SERVER_HOST_</name>
         <qualifiedname>Defaults::Server::SERVER_HOST_</qualifiedname>
-        <initializer>= &quot;0.0.0.0&quot;</initializer>
+        <initializer>                           =
+&quot;0.0.0.0&quot;</initializer>
         <briefdescription>
 <para>Default listen address (all interfaces). </para>
         </briefdescription>
@@ -98,7 +104,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="121" column="27" bodyfile="src/configurator/defaults.hpp" bodystart="121" bodyend="-1"/>
+        <location file="src/configurator/defaults.hpp" line="171" column="23" bodyfile="src/configurator/defaults.hpp" bodystart="171" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1Server_1a487839278f4fe06b8c5bd3c8fbcdea9e" prot="public" static="no" mutable="no">
         <type>const uint8_t</type>
@@ -106,7 +112,8 @@
         <argsstring></argsstring>
         <name>SERVER_DEBUG_LEVEL_</name>
         <qualifiedname>Defaults::Server::SERVER_DEBUG_LEVEL_</qualifiedname>
-        <initializer>= 1</initializer>
+        <initializer>                              =
+1</initializer>
         <briefdescription>
 <para>Default log verbosity (1 == info). </para>
         </briefdescription>
@@ -114,7 +121,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="123" column="27" bodyfile="src/configurator/defaults.hpp" bodystart="123" bodyend="-1"/>
+        <location file="src/configurator/defaults.hpp" line="175" column="19" bodyfile="src/configurator/defaults.hpp" bodystart="175" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1Server_1adc26c17a02a2ccbd2b1b146107c4c1e3" prot="public" static="no" mutable="no">
         <type>const bool</type>
@@ -122,7 +129,8 @@
         <argsstring></argsstring>
         <name>SERVER_LOG_TO_CONSOLE_</name>
         <qualifiedname>Defaults::Server::SERVER_LOG_TO_CONSOLE_</qualifiedname>
-        <initializer>= true</initializer>
+        <initializer>                              =
+true</initializer>
         <briefdescription>
 <para>Log to console by default. </para>
         </briefdescription>
@@ -130,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="125" column="27" bodyfile="src/configurator/defaults.hpp" bodystart="125" bodyend="-1"/>
+        <location file="src/configurator/defaults.hpp" line="179" column="16" bodyfile="src/configurator/defaults.hpp" bodystart="179" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1Server_1a1d7d0d640e76ca7a0a32f83aa553d986" prot="public" static="no" mutable="no">
         <type>const bool</type>
@@ -146,7 +154,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="127" column="27" bodyfile="src/configurator/defaults.hpp" bodystart="127" bodyend="-1"/>
+        <location file="src/configurator/defaults.hpp" line="183" column="16" bodyfile="src/configurator/defaults.hpp" bodystart="183" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1Server_1aad9f4b542f006079d47922c2dc5517bb" prot="public" static="no" mutable="no">
         <type>const std::string</type>
@@ -154,7 +162,8 @@
         <argsstring></argsstring>
         <name>SERVER_LOG_DIR_</name>
         <qualifiedname>Defaults::Server::SERVER_LOG_DIR_</qualifiedname>
-        <initializer>= &quot;./logs/&quot;</initializer>
+        <initializer>                              =
+&quot;./logs/&quot;</initializer>
         <briefdescription>
 <para>Default log directory. </para>
         </briefdescription>
@@ -162,7 +171,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="129" column="27" bodyfile="src/configurator/defaults.hpp" bodystart="129" bodyend="-1"/>
+        <location file="src/configurator/defaults.hpp" line="186" column="23" bodyfile="src/configurator/defaults.hpp" bodystart="186" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1Server_1a08f05b0dbdbbd1ccea7f66ceb6f8e582" prot="public" static="no" mutable="no">
         <type>const std::string</type>
@@ -170,7 +179,8 @@
         <argsstring></argsstring>
         <name>SERVER_LOG_FILE_</name>
         <qualifiedname>Defaults::Server::SERVER_LOG_FILE_</qualifiedname>
-        <initializer>= &quot;server.log&quot;</initializer>
+        <initializer>                               =
+&quot;server.log&quot;</initializer>
         <briefdescription>
 <para>Default log file name. </para>
         </briefdescription>
@@ -178,7 +188,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="131" column="27" bodyfile="src/configurator/defaults.hpp" bodystart="131" bodyend="-1"/>
+        <location file="src/configurator/defaults.hpp" line="190" column="23" bodyfile="src/configurator/defaults.hpp" bodystart="190" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1Server_1a95f015a8a849c6d8a5cfaf9adfb5fc9d" prot="public" static="no" mutable="no">
         <type>const std::string</type>
@@ -186,7 +196,8 @@
         <argsstring></argsstring>
         <name>SERVER_UPLOAD_DIR_</name>
         <qualifiedname>Defaults::Server::SERVER_UPLOAD_DIR_</qualifiedname>
-        <initializer>= &quot;./uploads/&quot;</initializer>
+        <initializer>                                 =
+&quot;./uploads/&quot;</initializer>
         <briefdescription>
 <para>Default upload directory. </para>
         </briefdescription>
@@ -194,7 +205,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="133" column="27" bodyfile="src/configurator/defaults.hpp" bodystart="133" bodyend="-1"/>
+        <location file="src/configurator/defaults.hpp" line="193" column="23" bodyfile="src/configurator/defaults.hpp" bodystart="193" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -202,6 +213,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/configurator/defaults.hpp" line="102" column="1"/>
+    <location file="src/configurator/defaults.hpp" line="141" column="1"/>
   </compounddef>
 </doxygen>

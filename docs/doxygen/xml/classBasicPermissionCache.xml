@@ -7,7 +7,7 @@
     <templateparamlist>
       <param>
         <type>typename ClockT</type>
-        <defval>std::chrono::steady_clock</defval>
+        <defval>std::chrono::        steady_clock</defval>
       </param>
     </templateparamlist>
     <sectiondef kind="public-type">
@@ -24,11 +24,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="62" column="5" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="62" bodyend="-1"/>
+        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="79" column="3" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="classBasicPermissionCache_1abf8817b8abb9f4b29023135bec1916e9" prot="public" static="no">
+      <memberdef kind="typedef" id="classBasicPermissionCache_1a38b5bd729bd632f83084ea88809e34fd" prot="public" static="no">
         <type>typename Clock::time_point</type>
-        <definition>using BasicPermissionCache&lt; ClockT &gt;::TimePoint = typename Clock::time_point</definition>
+        <definition>using BasicPermissionCache&lt; ClockT &gt;::TimePoint = 
+typename Clock::time_point</definition>
         <argsstring></argsstring>
         <name>TimePoint</name>
         <qualifiedname>BasicPermissionCache::TimePoint</qualifiedname>
@@ -39,7 +40,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="63" column="5" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="63" bodyend="-1"/>
+        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="81" column="3" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -56,11 +57,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="196" column="44" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="196" bodyend="-1"/>
-        <referencedby refid="classBasicPermissionCache_1a3fc019a15afdf799e9ff844805f5cf5c" compoundref="permissioncache_8hpp" startline="70" endline="70">BasicPermissionCache&lt; ClockT &gt;::BasicPermissionCache</referencedby>
-        <referencedby refid="classBasicPermissionCache_1a8bc94b095c9e39dcdc328b79671cb768" compoundref="permissioncache_8hpp" startline="73" endline="73">BasicPermissionCache&lt; ClockT &gt;::enabled</referencedby>
-        <referencedby refid="classBasicPermissionCache_1a617931f09a54fec0b8fc808ca00930db" compoundref="permissioncache_8hpp" startline="87" endline="106">BasicPermissionCache&lt; ClockT &gt;::get</referencedby>
-        <referencedby refid="classBasicPermissionCache_1abc720e1381076a0f4954ba9f6b39adfc" compoundref="permissioncache_8hpp" startline="117" endline="134">BasicPermissionCache&lt; ClockT &gt;::put</referencedby>
+        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="261" column="24" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="261" bodyend="-1"/>
+        <referencedby refid="classBasicPermissionCache_1a3fc019a15afdf799e9ff844805f5cf5c" compoundref="permissioncache_8hpp" startline="92" endline="95">BasicPermissionCache&lt; ClockT &gt;::BasicPermissionCache</referencedby>
+        <referencedby refid="classBasicPermissionCache_1a8bc94b095c9e39dcdc328b79671cb768" compoundref="permissioncache_8hpp" startline="99" endline="101">BasicPermissionCache&lt; ClockT &gt;::enabled</referencedby>
+        <referencedby refid="classBasicPermissionCache_1a617931f09a54fec0b8fc808ca00930db" compoundref="permissioncache_8hpp" startline="118" endline="141">BasicPermissionCache&lt; ClockT &gt;::get</referencedby>
+        <referencedby refid="classBasicPermissionCache_1abc720e1381076a0f4954ba9f6b39adfc" compoundref="permissioncache_8hpp" startline="154" endline="178">BasicPermissionCache&lt; ClockT &gt;::put</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classBasicPermissionCache_1afdda5e1b17df93c281620fb1cda65529" prot="private" static="no" mutable="no">
         <type>size_t</type>
@@ -75,9 +76,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="197" column="44" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="197" bodyend="-1"/>
-        <referencedby refid="classBasicPermissionCache_1a3fc019a15afdf799e9ff844805f5cf5c" compoundref="permissioncache_8hpp" startline="70" endline="70">BasicPermissionCache&lt; ClockT &gt;::BasicPermissionCache</referencedby>
-        <referencedby refid="classBasicPermissionCache_1abc720e1381076a0f4954ba9f6b39adfc" compoundref="permissioncache_8hpp" startline="117" endline="134">BasicPermissionCache&lt; ClockT &gt;::put</referencedby>
+        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="264" column="7" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="264" bodyend="-1"/>
+        <referencedby refid="classBasicPermissionCache_1a3fc019a15afdf799e9ff844805f5cf5c" compoundref="permissioncache_8hpp" startline="92" endline="95">BasicPermissionCache&lt; ClockT &gt;::BasicPermissionCache</referencedby>
+        <referencedby refid="classBasicPermissionCache_1abc720e1381076a0f4954ba9f6b39adfc" compoundref="permissioncache_8hpp" startline="154" endline="178">BasicPermissionCache&lt; ClockT &gt;::put</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classBasicPermissionCache_1a13952a8fdccc5be5adde16315caf68c6" prot="private" static="no" mutable="no">
         <type>std::mutex</type>
@@ -92,11 +93,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="198" column="44" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="198" bodyend="-1"/>
-        <referencedby refid="classBasicPermissionCache_1a617931f09a54fec0b8fc808ca00930db" compoundref="permissioncache_8hpp" startline="87" endline="106">BasicPermissionCache&lt; ClockT &gt;::get</referencedby>
-        <referencedby refid="classBasicPermissionCache_1ad3230e761d0a35d3b772d299d8d72b09" compoundref="permissioncache_8hpp" startline="141" endline="146">BasicPermissionCache&lt; ClockT &gt;::invalidateAll</referencedby>
-        <referencedby refid="classBasicPermissionCache_1abc720e1381076a0f4954ba9f6b39adfc" compoundref="permissioncache_8hpp" startline="117" endline="134">BasicPermissionCache&lt; ClockT &gt;::put</referencedby>
-        <referencedby refid="classBasicPermissionCache_1a66c8c31a6096dff363916fee3be53fe4" compoundref="permissioncache_8hpp" startline="149" endline="153">BasicPermissionCache&lt; ClockT &gt;::size</referencedby>
+        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="265" column="14" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="265" bodyend="-1"/>
+        <referencedby refid="classBasicPermissionCache_1a617931f09a54fec0b8fc808ca00930db" compoundref="permissioncache_8hpp" startline="118" endline="141">BasicPermissionCache&lt; ClockT &gt;::get</referencedby>
+        <referencedby refid="classBasicPermissionCache_1ad3230e761d0a35d3b772d299d8d72b09" compoundref="permissioncache_8hpp" startline="187" endline="196">BasicPermissionCache&lt; ClockT &gt;::invalidateAll</referencedby>
+        <referencedby refid="classBasicPermissionCache_1abc720e1381076a0f4954ba9f6b39adfc" compoundref="permissioncache_8hpp" startline="154" endline="178">BasicPermissionCache&lt; ClockT &gt;::put</referencedby>
+        <referencedby refid="classBasicPermissionCache_1a66c8c31a6096dff363916fee3be53fe4" compoundref="permissioncache_8hpp" startline="200" endline="205">BasicPermissionCache&lt; ClockT &gt;::size</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classBasicPermissionCache_1ac46e90790cb55a68825ada64c3924ee3" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; uint64_t &gt;</type>
@@ -104,7 +105,8 @@
         <argsstring></argsstring>
         <name>generation_</name>
         <qualifiedname>BasicPermissionCache::generation_</qualifiedname>
-        <initializer>{0}</initializer>
+        <initializer>{
+      0}</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -112,10 +114,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="199" column="34" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="199" bodyend="199"/>
-        <referencedby refid="classBasicPermissionCache_1a96ddf9f59ee4f1f686cab167c68effbb" compoundref="permissioncache_8hpp" startline="79" endline="79">BasicPermissionCache&lt; ClockT &gt;::generation</referencedby>
-        <referencedby refid="classBasicPermissionCache_1ad3230e761d0a35d3b772d299d8d72b09" compoundref="permissioncache_8hpp" startline="141" endline="146">BasicPermissionCache&lt; ClockT &gt;::invalidateAll</referencedby>
-        <referencedby refid="classBasicPermissionCache_1abc720e1381076a0f4954ba9f6b39adfc" compoundref="permissioncache_8hpp" startline="117" endline="134">BasicPermissionCache&lt; ClockT &gt;::put</referencedby>
+        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="267" column="15" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="267" bodyend="268"/>
+        <referencedby refid="classBasicPermissionCache_1a96ddf9f59ee4f1f686cab167c68effbb" compoundref="permissioncache_8hpp" startline="107" endline="109">BasicPermissionCache&lt; ClockT &gt;::generation</referencedby>
+        <referencedby refid="classBasicPermissionCache_1ad3230e761d0a35d3b772d299d8d72b09" compoundref="permissioncache_8hpp" startline="187" endline="196">BasicPermissionCache&lt; ClockT &gt;::invalidateAll</referencedby>
+        <referencedby refid="classBasicPermissionCache_1abc720e1381076a0f4954ba9f6b39adfc" compoundref="permissioncache_8hpp" startline="154" endline="178">BasicPermissionCache&lt; ClockT &gt;::put</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" prot="private" static="no" mutable="no">
         <type>std::unordered_map&lt; std::string, <ref refid="structBasicPermissionCache_1_1Entry" kindref="compound">Entry</ref> &gt;</type>
@@ -130,15 +132,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="200" column="24" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="200" bodyend="-1"/>
-        <referencedby refid="classBasicPermissionCache_1a617931f09a54fec0b8fc808ca00930db" compoundref="permissioncache_8hpp" startline="87" endline="106">BasicPermissionCache&lt; ClockT &gt;::get</referencedby>
-        <referencedby refid="classBasicPermissionCache_1ad3230e761d0a35d3b772d299d8d72b09" compoundref="permissioncache_8hpp" startline="141" endline="146">BasicPermissionCache&lt; ClockT &gt;::invalidateAll</referencedby>
-        <referencedby refid="classBasicPermissionCache_1abc720e1381076a0f4954ba9f6b39adfc" compoundref="permissioncache_8hpp" startline="117" endline="134">BasicPermissionCache&lt; ClockT &gt;::put</referencedby>
-        <referencedby refid="classBasicPermissionCache_1a66c8c31a6096dff363916fee3be53fe4" compoundref="permissioncache_8hpp" startline="149" endline="153">BasicPermissionCache&lt; ClockT &gt;::size</referencedby>
-        <referencedby refid="classBasicPermissionCache_1a7191cb562feddfcea0c6172b11df74eb" compoundref="permissioncache_8hpp" startline="175" endline="187">BasicPermissionCache&lt; ClockT &gt;::sweepExpired</referencedby>
+        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="271" column="7" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="271" bodyend="-1"/>
+        <referencedby refid="classBasicPermissionCache_1a617931f09a54fec0b8fc808ca00930db" compoundref="permissioncache_8hpp" startline="118" endline="141">BasicPermissionCache&lt; ClockT &gt;::get</referencedby>
+        <referencedby refid="classBasicPermissionCache_1ad3230e761d0a35d3b772d299d8d72b09" compoundref="permissioncache_8hpp" startline="187" endline="196">BasicPermissionCache&lt; ClockT &gt;::invalidateAll</referencedby>
+        <referencedby refid="classBasicPermissionCache_1abc720e1381076a0f4954ba9f6b39adfc" compoundref="permissioncache_8hpp" startline="154" endline="178">BasicPermissionCache&lt; ClockT &gt;::put</referencedby>
+        <referencedby refid="classBasicPermissionCache_1a66c8c31a6096dff363916fee3be53fe4" compoundref="permissioncache_8hpp" startline="200" endline="205">BasicPermissionCache&lt; ClockT &gt;::size</referencedby>
+        <referencedby refid="classBasicPermissionCache_1a7191cb562feddfcea0c6172b11df74eb" compoundref="permissioncache_8hpp" startline="231" endline="250">BasicPermissionCache&lt; ClockT &gt;::sweepExpired</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classBasicPermissionCache_1ad1eb0a45f99a5ef044d6a371c12aa01e" prot="private" static="no" mutable="no">
-        <type><ref refid="classBasicPermissionCache_1abf8817b8abb9f4b29023135bec1916e9" kindref="member">TimePoint</ref></type>
+        <type><ref refid="classBasicPermissionCache_1a38b5bd729bd632f83084ea88809e34fd" kindref="member">TimePoint</ref></type>
         <definition>TimePoint BasicPermissionCache&lt; ClockT &gt;::next_sweep_</definition>
         <argsstring></argsstring>
         <name>next_sweep_</name>
@@ -151,8 +153,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="201" column="44" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="201" bodyend="201"/>
-        <referencedby refid="classBasicPermissionCache_1a7191cb562feddfcea0c6172b11df74eb" compoundref="permissioncache_8hpp" startline="175" endline="187">BasicPermissionCache&lt; ClockT &gt;::sweepExpired</referencedby>
+        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="273" column="13" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="273" bodyend="273"/>
+        <referencedby refid="classBasicPermissionCache_1a7191cb562feddfcea0c6172b11df74eb" compoundref="permissioncache_8hpp" startline="231" endline="250">BasicPermissionCache&lt; ClockT &gt;::sweepExpired</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -196,10 +198,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="70" column="14" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="70" bodyend="70"/>
-        <references refid="classBasicPermissionCache_1afdda5e1b17df93c281620fb1cda65529" compoundref="permissioncache_8hpp" startline="197">BasicPermissionCache&lt; ClockT &gt;::max_entries_</references>
-        <references refid="classBasicPermissionCache_1a7397539f51c35baf3a6e189d5ef93d5e" compoundref="permissioncache_8hpp" startline="196">BasicPermissionCache&lt; ClockT &gt;::ttl_</references>
-        <referencedby refid="classBasicPermissionCache_1a6282dd3b2250a617863292fa8e42701f" compoundref="permissioncache_8hpp" startline="161" endline="165">BasicPermissionCache&lt; ClockT &gt;::instance</referencedby>
+        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="92" column="12" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="92" bodyend="95"/>
+        <references refid="classBasicPermissionCache_1afdda5e1b17df93c281620fb1cda65529" compoundref="permissioncache_8hpp" startline="264">BasicPermissionCache&lt; ClockT &gt;::max_entries_</references>
+        <references refid="classBasicPermissionCache_1a7397539f51c35baf3a6e189d5ef93d5e" compoundref="permissioncache_8hpp" startline="261">BasicPermissionCache&lt; ClockT &gt;::ttl_</references>
+        <referencedby refid="classBasicPermissionCache_1a6282dd3b2250a617863292fa8e42701f" compoundref="permissioncache_8hpp" startline="213" endline="220">BasicPermissionCache&lt; ClockT &gt;::instance</referencedby>
       </memberdef>
       <memberdef kind="function" id="classBasicPermissionCache_1a8bc94b095c9e39dcdc328b79671cb768" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -214,10 +216,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="73" column="11" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="73" bodyend="73"/>
-        <references refid="classBasicPermissionCache_1a7397539f51c35baf3a6e189d5ef93d5e" compoundref="permissioncache_8hpp" startline="196">BasicPermissionCache&lt; ClockT &gt;::ttl_</references>
-        <referencedby refid="classBasicPermissionCache_1a617931f09a54fec0b8fc808ca00930db" compoundref="permissioncache_8hpp" startline="87" endline="106">BasicPermissionCache&lt; ClockT &gt;::get</referencedby>
-        <referencedby refid="classBasicPermissionCache_1abc720e1381076a0f4954ba9f6b39adfc" compoundref="permissioncache_8hpp" startline="117" endline="134">BasicPermissionCache&lt; ClockT &gt;::put</referencedby>
+        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="99" column="9" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="99" bodyend="101"/>
+        <references refid="classBasicPermissionCache_1a7397539f51c35baf3a6e189d5ef93d5e" compoundref="permissioncache_8hpp" startline="261">BasicPermissionCache&lt; ClockT &gt;::ttl_</references>
+        <referencedby refid="classBasicPermissionCache_1a617931f09a54fec0b8fc808ca00930db" compoundref="permissioncache_8hpp" startline="118" endline="141">BasicPermissionCache&lt; ClockT &gt;::get</referencedby>
+        <referencedby refid="classBasicPermissionCache_1abc720e1381076a0f4954ba9f6b39adfc" compoundref="permissioncache_8hpp" startline="154" endline="178">BasicPermissionCache&lt; ClockT &gt;::put</referencedby>
       </memberdef>
       <memberdef kind="function" id="classBasicPermissionCache_1a96ddf9f59ee4f1f686cab167c68effbb" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>uint64_t</type>
@@ -232,8 +234,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="79" column="15" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="79" bodyend="79"/>
-        <references refid="classBasicPermissionCache_1ac46e90790cb55a68825ada64c3924ee3" compoundref="permissioncache_8hpp" startline="199" endline="199">BasicPermissionCache&lt; ClockT &gt;::generation_</references>
+        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="107" column="13" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="107" bodyend="109"/>
+        <references refid="classBasicPermissionCache_1ac46e90790cb55a68825ada64c3924ee3" compoundref="permissioncache_8hpp" startline="267" endline="268">BasicPermissionCache&lt; ClockT &gt;::generation_</references>
       </memberdef>
       <memberdef kind="function" id="classBasicPermissionCache_1a617931f09a54fec0b8fc808ca00930db" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; jsoncons::json &gt;</type>
@@ -264,12 +266,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="87" column="19" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="87" bodyend="106"/>
-        <references refid="classBasicPermissionCache_1a8bc94b095c9e39dcdc328b79671cb768" compoundref="permissioncache_8hpp" startline="73" endline="73">BasicPermissionCache&lt; ClockT &gt;::enabled</references>
-        <references refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" compoundref="permissioncache_8hpp" startline="200">BasicPermissionCache&lt; ClockT &gt;::map_</references>
-        <references refid="classBasicPermissionCache_1a13952a8fdccc5be5adde16315caf68c6" compoundref="permissioncache_8hpp" startline="198">BasicPermissionCache&lt; ClockT &gt;::mutex_</references>
-        <references refid="classBasicPermissionCache_1a7397539f51c35baf3a6e189d5ef93d5e" compoundref="permissioncache_8hpp" startline="196">BasicPermissionCache&lt; ClockT &gt;::ttl_</references>
-        <referencedby refid="classBasicPermissionCache_1a6282dd3b2250a617863292fa8e42701f" compoundref="permissioncache_8hpp" startline="161" endline="165">BasicPermissionCache&lt; ClockT &gt;::instance</referencedby>
+        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="118" column="17" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="118" bodyend="141"/>
+        <references refid="classBasicPermissionCache_1a8bc94b095c9e39dcdc328b79671cb768" compoundref="permissioncache_8hpp" startline="99" endline="101">BasicPermissionCache&lt; ClockT &gt;::enabled</references>
+        <references refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" compoundref="permissioncache_8hpp" startline="271">BasicPermissionCache&lt; ClockT &gt;::map_</references>
+        <references refid="classBasicPermissionCache_1a13952a8fdccc5be5adde16315caf68c6" compoundref="permissioncache_8hpp" startline="265">BasicPermissionCache&lt; ClockT &gt;::mutex_</references>
+        <references refid="classBasicPermissionCache_1a7397539f51c35baf3a6e189d5ef93d5e" compoundref="permissioncache_8hpp" startline="261">BasicPermissionCache&lt; ClockT &gt;::ttl_</references>
+        <referencedby refid="classBasicPermissionCache_1a6282dd3b2250a617863292fa8e42701f" compoundref="permissioncache_8hpp" startline="213" endline="220">BasicPermissionCache&lt; ClockT &gt;::instance</referencedby>
       </memberdef>
       <memberdef kind="function" id="classBasicPermissionCache_1abc720e1381076a0f4954ba9f6b39adfc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -322,14 +324,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="117" column="10" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="117" bodyend="134"/>
-        <references refid="classBasicPermissionCache_1a8bc94b095c9e39dcdc328b79671cb768" compoundref="permissioncache_8hpp" startline="73" endline="73">BasicPermissionCache&lt; ClockT &gt;::enabled</references>
-        <references refid="classBasicPermissionCache_1ac46e90790cb55a68825ada64c3924ee3" compoundref="permissioncache_8hpp" startline="199" endline="199">BasicPermissionCache&lt; ClockT &gt;::generation_</references>
-        <references refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" compoundref="permissioncache_8hpp" startline="200">BasicPermissionCache&lt; ClockT &gt;::map_</references>
-        <references refid="classBasicPermissionCache_1afdda5e1b17df93c281620fb1cda65529" compoundref="permissioncache_8hpp" startline="197">BasicPermissionCache&lt; ClockT &gt;::max_entries_</references>
-        <references refid="classBasicPermissionCache_1a13952a8fdccc5be5adde16315caf68c6" compoundref="permissioncache_8hpp" startline="198">BasicPermissionCache&lt; ClockT &gt;::mutex_</references>
-        <references refid="classBasicPermissionCache_1a7191cb562feddfcea0c6172b11df74eb" compoundref="permissioncache_8hpp" startline="175" endline="187">BasicPermissionCache&lt; ClockT &gt;::sweepExpired</references>
-        <references refid="classBasicPermissionCache_1a7397539f51c35baf3a6e189d5ef93d5e" compoundref="permissioncache_8hpp" startline="196">BasicPermissionCache&lt; ClockT &gt;::ttl_</references>
+        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="154" column="8" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="154" bodyend="178"/>
+        <references refid="classBasicPermissionCache_1a8bc94b095c9e39dcdc328b79671cb768" compoundref="permissioncache_8hpp" startline="99" endline="101">BasicPermissionCache&lt; ClockT &gt;::enabled</references>
+        <references refid="classBasicPermissionCache_1ac46e90790cb55a68825ada64c3924ee3" compoundref="permissioncache_8hpp" startline="267" endline="268">BasicPermissionCache&lt; ClockT &gt;::generation_</references>
+        <references refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" compoundref="permissioncache_8hpp" startline="271">BasicPermissionCache&lt; ClockT &gt;::map_</references>
+        <references refid="classBasicPermissionCache_1afdda5e1b17df93c281620fb1cda65529" compoundref="permissioncache_8hpp" startline="264">BasicPermissionCache&lt; ClockT &gt;::max_entries_</references>
+        <references refid="classBasicPermissionCache_1a13952a8fdccc5be5adde16315caf68c6" compoundref="permissioncache_8hpp" startline="265">BasicPermissionCache&lt; ClockT &gt;::mutex_</references>
+        <references refid="classBasicPermissionCache_1a7191cb562feddfcea0c6172b11df74eb" compoundref="permissioncache_8hpp" startline="231" endline="250">BasicPermissionCache&lt; ClockT &gt;::sweepExpired</references>
+        <references refid="classBasicPermissionCache_1a7397539f51c35baf3a6e189d5ef93d5e" compoundref="permissioncache_8hpp" startline="261">BasicPermissionCache&lt; ClockT &gt;::ttl_</references>
       </memberdef>
       <memberdef kind="function" id="classBasicPermissionCache_1ad3230e761d0a35d3b772d299d8d72b09" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -345,10 +347,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="141" column="10" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="141" bodyend="146"/>
-        <references refid="classBasicPermissionCache_1ac46e90790cb55a68825ada64c3924ee3" compoundref="permissioncache_8hpp" startline="199" endline="199">BasicPermissionCache&lt; ClockT &gt;::generation_</references>
-        <references refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" compoundref="permissioncache_8hpp" startline="200">BasicPermissionCache&lt; ClockT &gt;::map_</references>
-        <references refid="classBasicPermissionCache_1a13952a8fdccc5be5adde16315caf68c6" compoundref="permissioncache_8hpp" startline="198">BasicPermissionCache&lt; ClockT &gt;::mutex_</references>
+        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="187" column="8" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="187" bodyend="196"/>
+        <references refid="classBasicPermissionCache_1ac46e90790cb55a68825ada64c3924ee3" compoundref="permissioncache_8hpp" startline="267" endline="268">BasicPermissionCache&lt; ClockT &gt;::generation_</references>
+        <references refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" compoundref="permissioncache_8hpp" startline="271">BasicPermissionCache&lt; ClockT &gt;::map_</references>
+        <references refid="classBasicPermissionCache_1a13952a8fdccc5be5adde16315caf68c6" compoundref="permissioncache_8hpp" startline="265">BasicPermissionCache&lt; ClockT &gt;::mutex_</references>
       </memberdef>
       <memberdef kind="function" id="classBasicPermissionCache_1a66c8c31a6096dff363916fee3be53fe4" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>size_t</type>
@@ -363,9 +365,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="149" column="13" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="149" bodyend="153"/>
-        <references refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" compoundref="permissioncache_8hpp" startline="200">BasicPermissionCache&lt; ClockT &gt;::map_</references>
-        <references refid="classBasicPermissionCache_1a13952a8fdccc5be5adde16315caf68c6" compoundref="permissioncache_8hpp" startline="198">BasicPermissionCache&lt; ClockT &gt;::mutex_</references>
+        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="200" column="11" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="200" bodyend="205"/>
+        <references refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" compoundref="permissioncache_8hpp" startline="271">BasicPermissionCache&lt; ClockT &gt;::map_</references>
+        <references refid="classBasicPermissionCache_1a13952a8fdccc5be5adde16315caf68c6" compoundref="permissioncache_8hpp" startline="265">BasicPermissionCache&lt; ClockT &gt;::mutex_</references>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -379,16 +381,16 @@
 <para>Returns the process-wide singleton, configured from <ref refid="classConfigurator" kindref="compound">Configurator</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>The singleton&apos;s TTL is fixed at first use from <ref refid="classConfigurator_1ac21afc0ed845df874c67205e63ee2372" kindref="member">Configurator::PermissionCacheConfig</ref>; thread-safe initialization is guaranteed by the function-local static. </para>
+<para>The singleton&apos;s TTL is fixed at first use from <ref refid="classConfigurator_1a32f2368e1e72e5bd29909e000c0c9e4c" kindref="member">Configurator::PermissionCacheConfig</ref>; thread-safe initialization is guaranteed by the function-local static. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="161" column="33" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="161" bodyend="165"/>
-        <references refid="classBasicPermissionCache_1a3fc019a15afdf799e9ff844805f5cf5c" compoundref="permissioncache_8hpp" startline="70" endline="70">BasicPermissionCache&lt; ClockT &gt;::BasicPermissionCache</references>
-        <references refid="classBasicPermissionCache_1a617931f09a54fec0b8fc808ca00930db" compoundref="permissioncache_8hpp" startline="87" endline="106">BasicPermissionCache&lt; ClockT &gt;::get</references>
-        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="139" endline="165">Store::getObject</references>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3e7c77aa55023f9d5ccc345e7b68f2ab" compoundref="permissionmanager__private_8hpp" startline="206" endline="232">api::v2::PermissionManagerPrivate::getPermissionsOfEntity</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a070d79b55b8f3262de2b815a636defd7" compoundref="permissionmanager__private_8hpp" startline="246" endline="272">api::v2::PermissionManagerPrivate::getPermissionsOfEntityCoro</referencedby>
+        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="213" column="31" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="213" bodyend="220"/>
+        <references refid="classBasicPermissionCache_1a3fc019a15afdf799e9ff844805f5cf5c" compoundref="permissioncache_8hpp" startline="92" endline="95">BasicPermissionCache&lt; ClockT &gt;::BasicPermissionCache</references>
+        <references refid="classBasicPermissionCache_1a617931f09a54fec0b8fc808ca00930db" compoundref="permissioncache_8hpp" startline="118" endline="141">BasicPermissionCache&lt; ClockT &gt;::get</references>
+        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3e7c77aa55023f9d5ccc345e7b68f2ab" compoundref="permissionmanager__private_8hpp" startline="306" endline="357">api::v2::PermissionManagerPrivate::getPermissionsOfEntity</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a070d79b55b8f3262de2b815a636defd7" compoundref="permissionmanager__private_8hpp" startline="382" endline="430">api::v2::PermissionManagerPrivate::getPermissionsOfEntityCoro</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -408,19 +410,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="175" column="10" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="175" bodyend="187"/>
-        <references refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" compoundref="permissioncache_8hpp" startline="200">BasicPermissionCache&lt; ClockT &gt;::map_</references>
-        <references refid="classBasicPermissionCache_1ad1eb0a45f99a5ef044d6a371c12aa01e" compoundref="permissioncache_8hpp" startline="201" endline="201">BasicPermissionCache&lt; ClockT &gt;::next_sweep_</references>
-        <referencedby refid="classBasicPermissionCache_1abc720e1381076a0f4954ba9f6b39adfc" compoundref="permissioncache_8hpp" startline="117" endline="134">BasicPermissionCache&lt; ClockT &gt;::put</referencedby>
+        <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="231" column="8" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="231" bodyend="250"/>
+        <references refid="classBasicPermissionCache_1aa2dac46e2647fe5cc919e03476d8f642" compoundref="permissioncache_8hpp" startline="271">BasicPermissionCache&lt; ClockT &gt;::map_</references>
+        <references refid="classBasicPermissionCache_1ad1eb0a45f99a5ef044d6a371c12aa01e" compoundref="permissioncache_8hpp" startline="273" endline="273">BasicPermissionCache&lt; ClockT &gt;::next_sweep_</references>
+        <referencedby refid="classBasicPermissionCache_1abc720e1381076a0f4954ba9f6b39adfc" compoundref="permissioncache_8hpp" startline="154" endline="178">BasicPermissionCache&lt; ClockT &gt;::put</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
 <para>Idle-expiry cache for permission lookups, keyed by the generated permission query (which embeds the entity table and id). </para>
     </briefdescription>
     <detaileddescription>
-<para>Each hit renews the entry&apos;s lifetime; an entry that is not used for the TTL is removed. The TTL comes from <ref refid="classConfigurator_1ac21afc0ed845df874c67205e63ee2372" kindref="member">Configurator::PermissionCacheConfig</ref> (PERMISSION_CACHE_TTL, default 300 seconds); 0 disables the cache.</para>
-<para>Security trade-off: there is no invalidation on writes, so a revoked permission can keep being served while its entry stays in use. <ref refid="classBasicPermissionCache_1ad3230e761d0a35d3b772d299d8d72b09" kindref="member">invalidateAll()</ref> is available for callers that need an explicit flush.</para>
-<para>All public operations are thread-safe via mutex_; generation_ is atomic so readers can take a token without locking and have a racing <ref refid="classBasicPermissionCache_1abc720e1381076a0f4954ba9f6b39adfc" kindref="member">put()</ref> rejected. Think of it as a notepad: look up a question, and if the answer is still fresh use it; otherwise ask the database and jot the new answer down. <parameterlist kind="templateparam"><parameteritem>
+<para>Each hit renews the entry&apos;s lifetime; an entry that is not used for the TTL is removed. The TTL comes from <ref refid="classConfigurator_1a32f2368e1e72e5bd29909e000c0c9e4c" kindref="member">Configurator::PermissionCacheConfig</ref> (PERMISSION_CACHE_TTL, default 300 seconds); 0 disables the cache.</para>
+<para>Security trade-off: there is no invalidation on writes, so a revoked permission can keep being served while its entry stays in use. <ref refid="classBasicPermissionCache_1ad3230e761d0a35d3b772d299d8d72b09" kindref="member">invalidateAll()</ref> is available for callers that need an explicit flush. <verbatim>     All public operations are thread-safe via mutex_; generation_ is
+</verbatim> atomic so readers can take a token without locking and have a racing <ref refid="classBasicPermissionCache_1abc720e1381076a0f4954ba9f6b39adfc" kindref="member">put()</ref> rejected. Think of it as a notepad: look up a question, and if the answer is still fresh use it; otherwise ask the database and jot the new answer down. <parameterlist kind="templateparam"><parameteritem>
 <parameternamelist>
 <parametername>ClockT</parametername>
 </parameternamelist>
@@ -431,7 +433,7 @@
 </parameterlist>
 </para>
     </detaileddescription>
-    <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="59" column="1" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="60" bodyend="202"/>
+    <location file="src/gatekeeper/permissionmanager/permissioncache.hpp" line="77" column="1" bodyfile="src/gatekeeper/permissionmanager/permissioncache.hpp" bodystart="77" bodyend="275"/>
     <listofallmembers>
       <member refid="classBasicPermissionCache_1a3fc019a15afdf799e9ff844805f5cf5c" prot="public" virt="non-virtual"><scope>BasicPermissionCache</scope><name>BasicPermissionCache</name></member>
       <member refid="classBasicPermissionCache_1a3e99cd08033671e7ac34d935c0abc383" prot="public" virt="non-virtual"><scope>BasicPermissionCache</scope><name>Clock</name></member>
@@ -448,7 +450,7 @@
       <member refid="classBasicPermissionCache_1abc720e1381076a0f4954ba9f6b39adfc" prot="public" virt="non-virtual"><scope>BasicPermissionCache</scope><name>put</name></member>
       <member refid="classBasicPermissionCache_1a66c8c31a6096dff363916fee3be53fe4" prot="public" virt="non-virtual"><scope>BasicPermissionCache</scope><name>size</name></member>
       <member refid="classBasicPermissionCache_1a7191cb562feddfcea0c6172b11df74eb" prot="private" virt="non-virtual"><scope>BasicPermissionCache</scope><name>sweepExpired</name></member>
-      <member refid="classBasicPermissionCache_1abf8817b8abb9f4b29023135bec1916e9" prot="public" virt="non-virtual"><scope>BasicPermissionCache</scope><name>TimePoint</name></member>
+      <member refid="classBasicPermissionCache_1a38b5bd729bd632f83084ea88809e34fd" prot="public" virt="non-virtual"><scope>BasicPermissionCache</scope><name>TimePoint</name></member>
       <member refid="classBasicPermissionCache_1a7397539f51c35baf3a6e189d5ef93d5e" prot="private" virt="non-virtual"><scope>BasicPermissionCache</scope><name>ttl_</name></member>
     </listofallmembers>
   </compounddef>

@@ -119,7 +119,8 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('permissioncach
 </div><!--header-->
 <div class="contents">
 
-<p>A short-lived, thread-safe cache of permission data read from the database. (Originally: "Idle-expiry cache for permission lookups, keyed by the generated permission.").  
+<p>A short-lived, thread-safe cache of permission data read from the database. (Originally: "Idle-expiry cache for permission lookups, keyed by
+the generated permission.").  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;atomic&gt;</code><br />
 <code>#include &lt;chrono&gt;</code><br />
@@ -144,13 +145,14 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a07017f9d2fac77a264ee3c9aad001918" id="r_a07017f9d2fac77a264ee3c9aad001918"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a07017f9d2fac77a264ee3c9aad001918">PermissionCache</a> = <a class="el" href="classBasicPermissionCache.html">BasicPermissionCache</a>&lt;&gt;</td></tr>
-<tr class="memdesc:a07017f9d2fac77a264ee3c9aad001918"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience alias for the default-clock permission cache.  <br /></td></tr>
+<tr class="memitem:af89da15e5a12d8824c558d44b4452c26" id="r_af89da15e5a12d8824c558d44b4452c26"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#af89da15e5a12d8824c558d44b4452c26">PermissionCache</a></td></tr>
+<tr class="memdesc:af89da15e5a12d8824c558d44b4452c26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience alias for the default-clock permission cache.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A short-lived, thread-safe cache of permission data read from the database. (Originally: "Idle-expiry cache for permission lookups, keyed by the generated permission."). </p>
+<div class="textblock"><p>A short-lived, thread-safe cache of permission data read from the database. (Originally: "Idle-expiry cache for permission lookups, keyed by
+the generated permission."). </p>
 <p>This header defines a template cache that remembers the answer to a permission query for a while. Each use renews the entry's lifetime; unused entries expire. A generation counter prevents a slow read from putting stale data back after the cache has been flushed.</p>
-<p>WHY THIS FILE MATTERS IN THE SERVER: Permission checks happen on almost every request. Reading them from PostgreSQL each time would be slow, so <a class="el" href="permissionmanager__private_8cpp.html#a69fdf8e30d39a5bacfc839feb01dd616">PermissionManagerPrivate</a> asks this cache first. Without it, authorization would mean a database round-trip on every API call.</p>
+<p>WHY THIS FILE MATTERS IN THE SERVER: Permission checks happen on almost every request. Reading them from PostgreSQL each time would be slow, so <a class="el" href="permissionmanager__private_8cpp.html#a4b3594f285e47314250d2927a3b7cc87">PermissionManagerPrivate</a> asks this cache first. Without it, authorization would mean a database round-trip on every API call.</p>
 <p>CONCEPTS TO LEARN (for beginners):</p><ul>
 <li>Caching and time-to-live (TTL): <a href="https://en.wikipedia.org/wiki/Cache_(computing)">https://en.wikipedia.org/wiki/Cache_(computing)</a></li>
 <li>Mutexes and thread safety: <a href="https://en.cppreference.com/w/cpp/thread/mutex">https://en.cppreference.com/w/cpp/thread/mutex</a></li>
@@ -162,21 +164,24 @@ Typedefs</h2></td></tr>
 
 <p class="definition">Definition in file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
 </div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Typedef Documentation</h2>
-<a id="a07017f9d2fac77a264ee3c9aad001918" name="a07017f9d2fac77a264ee3c9aad001918"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07017f9d2fac77a264ee3c9aad001918">&#9670;&#160;</a></span>PermissionCache</h2>
+<a id="af89da15e5a12d8824c558d44b4452c26" name="af89da15e5a12d8824c558d44b4452c26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af89da15e5a12d8824c558d44b4452c26">&#9670;&#160;</a></span>PermissionCache</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#a07017f9d2fac77a264ee3c9aad001918">PermissionCache</a> = <a class="el" href="classBasicPermissionCache.html">BasicPermissionCache</a>&lt;&gt;</td>
+          <td class="memname">using <a class="el" href="#af89da15e5a12d8824c558d44b4452c26">PermissionCache</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line"><a class="code hl_class" href="classBasicPermissionCache.html">BasicPermissionCache&lt;&gt;</a></div>
+<div class="ttc" id="aclassBasicPermissionCache_html"><div class="ttname"><a href="classBasicPermissionCache.html">BasicPermissionCache</a></div><div class="ttdoc">Idle-expiry cache for permission lookups, keyed by the generated permission query (which embeds the e...</div><div class="ttdef"><b>Definition</b> <a href="permissioncache_8hpp_source.html#l00077">permissioncache.hpp:77</a></div></div>
+</div><!-- fragment -->
 <p>Convenience alias for the default-clock permission cache. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00205">205</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00278">278</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
 
 </div>
 </div>

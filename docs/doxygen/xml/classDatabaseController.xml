@@ -10,7 +10,8 @@
         <argsstring></argsstring>
         <name>backendsReady_</name>
         <qualifiedname>DatabaseController::backendsReady_</qualifiedname>
-        <initializer>{false}</initializer>
+        <initializer>{
+      false}</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -18,8 +19,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="251" column="39" bodyfile="src/controllers/databasecontroller/databasecontroller.hpp" bodystart="251" bodyend="251"/>
-        <referencedby refid="classDatabaseController_1a2685c684b979ee32be0f286df38c1449" compoundref="databasecontroller_8cpp" startline="48" endline="86">ensureBackends</referencedby>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="355" column="15" bodyfile="src/controllers/databasecontroller/databasecontroller.hpp" bodystart="355" bodyend="356"/>
+        <referencedby refid="classDatabaseController_1a2685c684b979ee32be0f286df38c1449" compoundref="databasecontroller_8cpp" startline="61" endline="110">ensureBackends</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classDatabaseController_1a31ddc963543c94188989eab4aa24e2ec" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classDatabaseConnectionPool" kindref="compound">DatabaseConnectionPool</ref> &gt;</type>
@@ -34,9 +35,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="255" column="21" bodyfile="src/controllers/databasecontroller/databasecontroller.hpp" bodystart="255" bodyend="-1"/>
-        <referencedby refid="classDatabaseController_1a2685c684b979ee32be0f286df38c1449" compoundref="databasecontroller_8cpp" startline="48" endline="86">ensureBackends</referencedby>
-        <referencedby refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="283" endline="329">executer</referencedby>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="361" column="7" bodyfile="src/controllers/databasecontroller/databasecontroller.hpp" bodystart="361" bodyend="-1"/>
+        <referencedby refid="classDatabaseController_1a2685c684b979ee32be0f286df38c1449" compoundref="databasecontroller_8cpp" startline="61" endline="110">ensureBackends</referencedby>
+        <referencedby refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="403" endline="445">executer</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classDatabaseController_1abbc84ebe21df91c2d77041778e86d199" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classWatchDog" kindref="compound">WatchDog</ref> &gt;</type>
@@ -51,16 +52,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="259" column="35" bodyfile="src/controllers/databasecontroller/databasecontroller.hpp" bodystart="259" bodyend="-1"/>
-        <referencedby refid="classDatabaseController_1a2685c684b979ee32be0f286df38c1449" compoundref="databasecontroller_8cpp" startline="48" endline="86">ensureBackends</referencedby>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="368" column="7" bodyfile="src/controllers/databasecontroller/databasecontroller.hpp" bodystart="368" bodyend="-1"/>
+        <referencedby refid="classDatabaseController_1a2685c684b979ee32be0f286df38c1449" compoundref="databasecontroller_8cpp" startline="61" endline="110">ensureBackends</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classDatabaseController_1ac8c9c76391d1ebcaa3fd2abdd93754b3" prot="private" static="no" mutable="no">
-        <type>std::shared_ptr&lt; <ref refid="classConfigurator_1accfc56a78d01317855517af2143108cb" kindref="member">Configurator::Testing</ref> &gt;</type>
+        <type>std::shared_ptr&lt; <ref refid="classConfigurator_1a6029dd81a8d2fe9a1eaa17bf2a508e03" kindref="member">Configurator::Testing</ref> &gt;</type>
         <definition>std::shared_ptr&lt;Configurator::Testing&gt; DatabaseController::testing_config_</definition>
         <argsstring></argsstring>
         <name>testing_config_</name>
         <qualifiedname>DatabaseController::testing_config_</qualifiedname>
-        <initializer>= std::make_shared&lt;<ref refid="classConfigurator_1accfc56a78d01317855517af2143108cb" kindref="member">Configurator::Testing</ref>&gt;()</initializer>
+        <initializer>                            =
+std::make_shared&lt;<ref refid="classConfigurator_1a6029dd81a8d2fe9a1eaa17bf2a508e03" kindref="member">Configurator::Testing</ref>&gt;()</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -68,8 +70,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="263" column="22" bodyfile="src/controllers/databasecontroller/databasecontroller.hpp" bodystart="263" bodyend="-1"/>
-        <referencedby refid="classDatabaseController_1a2685c684b979ee32be0f286df38c1449" compoundref="databasecontroller_8cpp" startline="48" endline="86">ensureBackends</referencedby>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="373" column="19" bodyfile="src/controllers/databasecontroller/databasecontroller.hpp" bodystart="373" bodyend="-1"/>
+        <referencedby refid="classDatabaseController_1a2685c684b979ee32be0f286df38c1449" compoundref="databasecontroller_8cpp" startline="61" endline="110">ensureBackends</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -87,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="90" column="5" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="46" bodyend="46"/>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="113" column="3" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="56" bodyend="57"/>
         <referencedby refid="classDatabaseController_1a8131cc7d895234c6f371640063c75419">DatabaseController</referencedby>
         <referencedby refid="classDatabaseController_1a928d42a1baf81f3d1030dce3ad99df37">DatabaseController</referencedby>
         <referencedby refid="classDatabaseController_1af159676154ecf5aa9dec2379f85df322">operator=</referencedby>
@@ -108,8 +110,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="91" column="5"/>
-        <references refid="classDatabaseController_1a0368a631e0488b14c619a0672620c84e" compoundref="databasecontroller_8cpp" startline="46" endline="46">DatabaseController</references>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="115" column="3"/>
+        <references refid="classDatabaseController_1a0368a631e0488b14c619a0672620c84e" compoundref="databasecontroller_8cpp" startline="56" endline="57">DatabaseController</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1a928d42a1baf81f3d1030dce3ad99df37" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -126,8 +128,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="92" column="5"/>
-        <references refid="classDatabaseController_1a0368a631e0488b14c619a0672620c84e" compoundref="databasecontroller_8cpp" startline="46" endline="46">DatabaseController</references>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="117" column="3"/>
+        <references refid="classDatabaseController_1a0368a631e0488b14c619a0672620c84e" compoundref="databasecontroller_8cpp" startline="56" endline="57">DatabaseController</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1af159676154ecf5aa9dec2379f85df322" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classDatabaseController" kindref="compound">DatabaseController</ref> &amp;</type>
@@ -144,8 +146,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="93" column="24"/>
-        <references refid="classDatabaseController_1a0368a631e0488b14c619a0672620c84e" compoundref="databasecontroller_8cpp" startline="46" endline="46">DatabaseController</references>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="119" column="22"/>
+        <references refid="classDatabaseController_1a0368a631e0488b14c619a0672620c84e" compoundref="databasecontroller_8cpp" startline="56" endline="57">DatabaseController</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1ae38b97b5b0177fe7ac97d15e0ebb20cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classDatabaseController" kindref="compound">DatabaseController</ref> &amp;</type>
@@ -162,8 +164,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="94" column="24"/>
-        <references refid="classDatabaseController_1a0368a631e0488b14c619a0672620c84e" compoundref="databasecontroller_8cpp" startline="46" endline="46">DatabaseController</references>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="121" column="22"/>
+        <references refid="classDatabaseController_1a0368a631e0488b14c619a0672620c84e" compoundref="databasecontroller_8cpp" startline="56" endline="57">DatabaseController</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1a6a80262c961a35e637be98299041fdaf" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -177,8 +179,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="95" column="13"/>
-        <references refid="classDatabaseController_1a107e601b43f856547bc04d97e8975b8d" compoundref="databasecontroller_8cpp" startline="88" endline="92">executeQuery</references>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="123" column="11"/>
+        <references refid="classDatabaseController_1a107e601b43f856547bc04d97e8975b8d" compoundref="databasecontroller_8cpp" startline="112" endline="121">executeQuery</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1a107e601b43f856547bc04d97e8975b8d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::optional&lt; jsoncons::json &gt;</type>
@@ -231,9 +233,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="104" column="34" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="88" bodyend="92"/>
-        <references refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="248" endline="329">Database::executeQuery</references>
-        <references refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="283" endline="329">executer</references>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="135" column="25" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="112" bodyend="121"/>
+        <references refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="356" endline="484">Database::executeQuery</references>
+        <references refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="403" endline="445">executer</references>
         <referencedby refid="classDatabaseController_1a6a80262c961a35e637be98299041fdaf">~DatabaseController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1ae2d9c2dcf54cdec81331949a9aaea597" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -287,9 +289,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="114" column="34" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="94" bodyend="97"/>
-        <references refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="248" endline="329">Database::executeQuery</references>
-        <references refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="283" endline="329">executer</references>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="150" column="25" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="123" bodyend="130"/>
+        <references refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="356" endline="484">Database::executeQuery</references>
+        <references refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="403" endline="445">executer</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1ab854d593bad9adf157993f38f465fc18" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::optional&lt; jsoncons::json::array &gt;</type>
@@ -342,9 +344,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="122" column="27" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="99" bodyend="102"/>
-        <references refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="248" endline="329">Database::executeQuery</references>
-        <references refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="283" endline="329">executer</references>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="163" column="25" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="132" bodyend="139"/>
+        <references refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="356" endline="484">Database::executeQuery</references>
+        <references refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="403" endline="445">executer</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1a5ac3b3112fc438ac6133b008d46b62ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -397,9 +399,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="130" column="37" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="104" bodyend="107"/>
-        <references refid="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" compoundref="database_8cpp" startline="340" endline="362">Database::doSimpleQuery</references>
-        <references refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="283" endline="329">executer</references>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="176" column="25" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="141" bodyend="146"/>
+        <references refid="classDatabase_1a66e88237437bd5d3d0bb1200876353b4" compoundref="database_8cpp" startline="495" endline="523">Database::doSimpleQuery</references>
+        <references refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="403" endline="445">executer</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1a870dc0277e6ac74c5ddb410e1f7112a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::optional&lt; bool &gt;</type>
@@ -463,9 +465,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="139" column="44" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="109" bodyend="112"/>
-        <references refid="classDatabase_1a7c0a44631de74f1d0a18119d1cd6cf1a" compoundref="database_8cpp" startline="93" endline="111">Database::checkExists</references>
-        <references refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="283" endline="329">executer</references>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="189" column="25" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="148" bodyend="156"/>
+        <references refid="classDatabase_1a7c0a44631de74f1d0a18119d1cd6cf1a" compoundref="database_8cpp" startline="134" endline="173">Database::checkExists</references>
+        <references refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="403" endline="445">executer</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1aa758566f79643d7f383a135ef80fa9e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::optional&lt; jsoncons::json &gt;</type>
@@ -517,13 +519,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="149" column="34" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="114" bodyend="124"/>
-        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
-        <references refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="248" endline="329">Database::executeQuery</references>
-        <references refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="283" endline="329">executer</references>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="206" column="25" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="158" bodyend="176"/>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
+        <references refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="356" endline="484">Database::executeQuery</references>
+        <references refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="403" endline="445">executer</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1a7d83a6ade653663a62d68922f0928419" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>std::optional&lt; std::unordered_set&lt; <ref refid="namespaceapi_1_1v2_1a629023e05b2c9802c14aaca4634f4ab3" kindref="member">api::v2::ColumnInfo</ref> &gt; &gt;</type>
+        <type>std::optional&lt; std::unordered_set&lt; <ref refid="namespaceapi_1_1v2_1aaed92c04eb1e44678c97ae468bd8a42b" kindref="member">api::v2::ColumnInfo</ref> &gt; &gt;</type>
         <definition>std::optional&lt; std::unordered_set&lt; api::v2::ColumnInfo &gt; &gt; DatabaseController::getTableSchema</definition>
         <argsstring>(const std::string &amp;tableName)</argsstring>
         <name>getTableSchema</name>
@@ -560,9 +562,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="156" column="27" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="126" bodyend="129"/>
-        <references refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="283" endline="329">executer</references>
-        <references refid="classDatabase_1aa5fe1076eec14a4e265fd4b7d1247983" compoundref="database_8cpp" startline="168" endline="199">Database::getTableSchema</references>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="217" column="25" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="179" bodyend="183"/>
+        <references refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="403" endline="445">executer</references>
+        <references refid="classDatabase_1aa5fe1076eec14a4e265fd4b7d1247983" compoundref="database_8cpp" startline="243" endline="301">Database::getTableSchema</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1acece421c53c0fef3b2965878f2422d5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::optional&lt; std::unordered_set&lt; std::string &gt; &gt;</type>
@@ -589,9 +591,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="162" column="35" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="131" bodyend="131"/>
-        <references refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="283" endline="329">executer</references>
-        <references refid="classDatabase_1a53e5ff850d852b1d9930ed830393e1a1" compoundref="database_8cpp" startline="207" endline="231">Database::getAllTables</references>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="227" column="3" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="186" bodyend="188"/>
+        <references refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="403" endline="445">executer</references>
+        <references refid="classDatabase_1a53e5ff850d852b1d9930ed830393e1a1" compoundref="database_8cpp" startline="309" endline="339">Database::getAllTables</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1ae11a73cc6347582351411b8c5ef7341d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::optional&lt; jsoncons::json &gt;</type>
@@ -631,9 +633,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="169" column="52" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="133" bodyend="136"/>
-        <references refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="248" endline="329">Database::executeQuery</references>
-        <references refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="283" endline="329">executer</references>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="236" column="25" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="190" bodyend="196"/>
+        <references refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" compoundref="database_8cpp" startline="356" endline="484">Database::executeQuery</references>
+        <references refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="403" endline="445">executer</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1a5874c6f56191991a88da60758f2200fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>drogon::Task&lt; std::optional&lt; jsoncons::json &gt; &gt;</type>
@@ -686,20 +688,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="182" column="33" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="144" bodyend="171"/>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="50" endline="50">DatabaseBusy::DatabaseBusy</references>
-        <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="98" endline="103">asyncdb::execSqlCoro</references>
-        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="139" endline="165">Store::getObject</references>
-        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="35" endline="49">asyncdb::isBusy</references>
-        <references refid="namespaceasyncdb_1a4cf3b925d86a0c5232a9573b8cf300b8" compoundref="asyncresultmapper_8cpp" startline="109" endline="116">asyncdb::mapResultToObject</references>
-        <referencedby refid="classController_1a1bb3245ec82d14644a2359cd546ea218" compoundref="controller_8hpp" startline="735" endline="739">Controller::addStaffAsync</referencedby>
-        <referencedby refid="classController_1a020c9869a16a1ac31bc2b2ce128cf51b" compoundref="controller_8hpp" startline="151" endline="155">Controller::CreateAsync</referencedby>
-        <referencedby refid="classController_1a7a0500b8cc369da32375933abd6e1fb1" compoundref="controller_8hpp" startline="241" endline="245">Controller::DeleteAsync</referencedby>
-        <referencedby refid="classController_1a417810c27071d4c1fae298b518d7819f" compoundref="controller_8hpp" startline="749" endline="753">Controller::removeStaffAsync</referencedby>
-        <referencedby refid="classController_1a82399a341c86ed94ac1ade56ced71dc7" compoundref="controller_8hpp" startline="408" endline="413">Controller::SuspendAsync</referencedby>
-        <referencedby refid="classController_1a0044a385830517e3a97e0b250dce4748" compoundref="controller_8hpp" startline="424" endline="429">Controller::UnsuspendAsync</referencedby>
-        <referencedby refid="classController_1a146f10399fc24f1052079827e6248b2a" compoundref="controller_8hpp" startline="211" endline="215">Controller::UpdateAsync</referencedby>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="253" column="24" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="205" bodyend="246"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="63" endline="66">DatabaseBusy::DatabaseBusy</references>
+        <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="157" endline="169">asyncdb::execSqlCoro</references>
+        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
+        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="45" endline="74">asyncdb::isBusy</references>
+        <references refid="namespaceasyncdb_1a4cf3b925d86a0c5232a9573b8cf300b8" compoundref="asyncresultmapper_8cpp" startline="162" endline="173">asyncdb::mapResultToObject</references>
+        <referencedby refid="classController_1a1bb3245ec82d14644a2359cd546ea218" compoundref="controller_8hpp" startline="1009" endline="1017">Controller::addStaffAsync</referencedby>
+        <referencedby refid="classController_1a020c9869a16a1ac31bc2b2ce128cf51b" compoundref="controller_8hpp" startline="211" endline="220">Controller::CreateAsync</referencedby>
+        <referencedby refid="classController_1a7a0500b8cc369da32375933abd6e1fb1" compoundref="controller_8hpp" startline="343" endline="351">Controller::DeleteAsync</referencedby>
+        <referencedby refid="classController_1a417810c27071d4c1fae298b518d7819f" compoundref="controller_8hpp" startline="1030" endline="1038">Controller::removeStaffAsync</referencedby>
+        <referencedby refid="classController_1a82399a341c86ed94ac1ade56ced71dc7" compoundref="controller_8hpp" startline="576" endline="586">Controller::SuspendAsync</referencedby>
+        <referencedby refid="classController_1a0044a385830517e3a97e0b250dce4748" compoundref="controller_8hpp" startline="599" endline="609">Controller::UnsuspendAsync</referencedby>
+        <referencedby refid="classController_1a146f10399fc24f1052079827e6248b2a" compoundref="controller_8hpp" startline="300" endline="308">Controller::UpdateAsync</referencedby>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1aa3de6b2217aa0ba75ec4eb5286d36799" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>drogon::Task&lt; std::optional&lt; jsoncons::json &gt; &gt;</type>
@@ -752,15 +754,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="190" column="33" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="173" bodyend="194"/>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="50" endline="50">DatabaseBusy::DatabaseBusy</references>
-        <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="98" endline="103">asyncdb::execSqlCoro</references>
-        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="139" endline="165">Store::getObject</references>
-        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="35" endline="49">asyncdb::isBusy</references>
-        <references refid="namespaceasyncdb_1a4cf3b925d86a0c5232a9573b8cf300b8" compoundref="asyncresultmapper_8cpp" startline="109" endline="116">asyncdb::mapResultToObject</references>
-        <referencedby refid="classDatabaseController_1a0389040d66c5126fd7750a189aefaa14" compoundref="databasecontroller_8cpp" startline="276" endline="285">getPasswordHashForUserNameCoro</referencedby>
-        <referencedby refid="classController_1a055ea60472dc93fbb1c8af3d9f9d9091" compoundref="controller_8hpp" startline="181" endline="185">Controller::ReadAsync</referencedby>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="266" column="24" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="249" bodyend="278"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="63" endline="66">DatabaseBusy::DatabaseBusy</references>
+        <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="157" endline="169">asyncdb::execSqlCoro</references>
+        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
+        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="45" endline="74">asyncdb::isBusy</references>
+        <references refid="namespaceasyncdb_1a4cf3b925d86a0c5232a9573b8cf300b8" compoundref="asyncresultmapper_8cpp" startline="162" endline="173">asyncdb::mapResultToObject</references>
+        <referencedby refid="classDatabaseController_1a0389040d66c5126fd7750a189aefaa14" compoundref="databasecontroller_8cpp" startline="394" endline="412">getPasswordHashForUserNameCoro</referencedby>
+        <referencedby refid="classController_1a055ea60472dc93fbb1c8af3d9f9d9091" compoundref="controller_8hpp" startline="256" endline="264">Controller::ReadAsync</referencedby>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1a7b2bb5792bc55ec851dcd7ae997c58a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>drogon::Task&lt; std::optional&lt; jsoncons::json::array &gt; &gt;</type>
@@ -813,13 +815,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="198" column="26" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="196" bodyend="217"/>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="50" endline="50">DatabaseBusy::DatabaseBusy</references>
-        <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="98" endline="103">asyncdb::execSqlCoro</references>
-        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="139" endline="165">Store::getObject</references>
-        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="35" endline="49">asyncdb::isBusy</references>
-        <references refid="namespaceasyncdb_1a0c9b2304653f373d0ec4ac262d7cf2bf" compoundref="asyncresultmapper_8cpp" startline="121" endline="130">asyncdb::mapResultToArray</references>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="279" column="3" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="281" bodyend="311"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="63" endline="66">DatabaseBusy::DatabaseBusy</references>
+        <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="157" endline="169">asyncdb::execSqlCoro</references>
+        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
+        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="45" endline="74">asyncdb::isBusy</references>
+        <references refid="namespaceasyncdb_1a0c9b2304653f373d0ec4ac262d7cf2bf" compoundref="asyncresultmapper_8cpp" startline="179" endline="193">asyncdb::mapResultToArray</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1ac586f1fc3a54b3bbf1ff5369e403ed20" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>drogon::Task&lt; std::optional&lt; std::string &gt; &gt;</type>
@@ -872,12 +874,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="206" column="36" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="219" bodyend="245"/>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="50" endline="50">DatabaseBusy::DatabaseBusy</references>
-        <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="98" endline="103">asyncdb::execSqlCoro</references>
-        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="139" endline="165">Store::getObject</references>
-        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="35" endline="49">asyncdb::isBusy</references>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="291" column="24" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="313" bodyend="349"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="63" endline="66">DatabaseBusy::DatabaseBusy</references>
+        <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="157" endline="169">asyncdb::execSqlCoro</references>
+        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
+        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="45" endline="74">asyncdb::isBusy</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1a757e16ca56537bd8eed3d9abe9768954" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>drogon::Task&lt; std::optional&lt; bool &gt; &gt;</type>
@@ -941,12 +943,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="217" column="43" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="247" bodyend="274"/>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="50" endline="50">DatabaseBusy::DatabaseBusy</references>
-        <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="98" endline="103">asyncdb::execSqlCoro</references>
-        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="139" endline="165">Store::getObject</references>
-        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="35" endline="49">asyncdb::isBusy</references>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="306" column="24" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="351" bodyend="391"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="63" endline="66">DatabaseBusy::DatabaseBusy</references>
+        <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="157" endline="169">asyncdb::execSqlCoro</references>
+        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
+        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="45" endline="74">asyncdb::isBusy</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1a0389040d66c5126fd7750a189aefaa14" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>drogon::Task&lt; std::optional&lt; jsoncons::json &gt; &gt;</type>
@@ -998,12 +1000,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="225" column="33" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="276" bodyend="285"/>
-        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
-        <references refid="classDatabaseController_1aa3de6b2217aa0ba75ec4eb5286d36799" compoundref="databasecontroller_8cpp" startline="173" endline="194">executeReadQueryCoro</references>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="319" column="3" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="394" bodyend="412"/>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
+        <references refid="classDatabaseController_1aa3de6b2217aa0ba75ec4eb5286d36799" compoundref="databasecontroller_8cpp" startline="249" endline="278">executeReadQueryCoro</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1ab6502e9c51e8657b16ffe4795949ebe7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>drogon::Task&lt; std::optional&lt; std::unordered_set&lt; <ref refid="namespaceapi_1_1v2_1a629023e05b2c9802c14aaca4634f4ab3" kindref="member">api::v2::ColumnInfo</ref> &gt; &gt; &gt;</type>
+        <type>drogon::Task&lt; std::optional&lt; std::unordered_set&lt; <ref refid="namespaceapi_1_1v2_1aaed92c04eb1e44678c97ae468bd8a42b" kindref="member">api::v2::ColumnInfo</ref> &gt; &gt; &gt;</type>
         <definition>drogon::Task&lt; std::optional&lt; std::unordered_set&lt; api::v2::ColumnInfo &gt; &gt; &gt; DatabaseController::getTableSchemaCoro</definition>
         <argsstring>(const std::string &amp;tableName)</argsstring>
         <name>getTableSchemaCoro</name>
@@ -1040,12 +1042,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="232" column="26" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="287" bodyend="321"/>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="50" endline="50">DatabaseBusy::DatabaseBusy</references>
-        <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="98" endline="103">asyncdb::execSqlCoro</references>
-        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="139" endline="165">Store::getObject</references>
-        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="35" endline="49">asyncdb::isBusy</references>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="330" column="3" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="415" bodyend="471"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="63" endline="66">DatabaseBusy::DatabaseBusy</references>
+        <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="157" endline="169">asyncdb::execSqlCoro</references>
+        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
+        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="45" endline="74">asyncdb::isBusy</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1abb1622b85d3e413bcb1dee3521a9d24f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>drogon::Task&lt; std::optional&lt; std::unordered_set&lt; std::string &gt; &gt; &gt;</type>
@@ -1072,12 +1074,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="238" column="34" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="323" bodyend="350"/>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="50" endline="50">DatabaseBusy::DatabaseBusy</references>
-        <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="98" endline="103">asyncdb::execSqlCoro</references>
-        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="139" endline="165">Store::getObject</references>
-        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="35" endline="49">asyncdb::isBusy</references>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="339" column="3" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="474" bodyend="509"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="63" endline="66">DatabaseBusy::DatabaseBusy</references>
+        <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="157" endline="169">asyncdb::execSqlCoro</references>
+        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
+        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="45" endline="74">asyncdb::isBusy</references>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1a2a0585031d4e0a5e8dfdeb7d77041563" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>drogon::Task&lt; std::optional&lt; jsoncons::json &gt; &gt;</type>
@@ -1117,13 +1119,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="245" column="33" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="352" bodyend="373"/>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="50" endline="50">DatabaseBusy::DatabaseBusy</references>
-        <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="98" endline="103">asyncdb::execSqlCoro</references>
-        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="139" endline="165">Store::getObject</references>
-        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="35" endline="49">asyncdb::isBusy</references>
-        <references refid="namespaceasyncdb_1a4cf3b925d86a0c5232a9573b8cf300b8" compoundref="asyncresultmapper_8cpp" startline="109" endline="116">asyncdb::mapResultToObject</references>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="347" column="24" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="512" bodyend="538"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="63" endline="66">DatabaseBusy::DatabaseBusy</references>
+        <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="157" endline="169">asyncdb::execSqlCoro</references>
+        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
+        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="45" endline="74">asyncdb::isBusy</references>
+        <references refid="namespaceasyncdb_1a4cf3b925d86a0c5232a9573b8cf300b8" compoundref="asyncresultmapper_8cpp" startline="162" endline="173">asyncdb::mapResultToObject</references>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -1140,13 +1142,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="267" column="45" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="48" bodyend="86"/>
-        <references refid="classDatabaseController_1a743181f5f295cdc6b9113defd29f7162" compoundref="databasecontroller_8hpp" startline="251" endline="251">backendsReady_</references>
-        <references refid="classDatabaseController_1a31ddc963543c94188989eab4aa24e2ec" compoundref="databasecontroller_8hpp" startline="255">databaseConnectionPool_</references>
-        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="139" endline="165">Store::getObject</references>
-        <references refid="classDatabaseController_1ac8c9c76391d1ebcaa3fd2abdd93754b3" compoundref="databasecontroller_8hpp" startline="263">testing_config_</references>
-        <references refid="classDatabaseController_1abbc84ebe21df91c2d77041778e86d199" compoundref="databasecontroller_8hpp" startline="259">watchDog_</references>
-        <referencedby refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="283" endline="329">executer</referencedby>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="381" column="3" bodyfile="src/controllers/databasecontroller/databasecontroller.cpp" bodystart="61" bodyend="110"/>
+        <references refid="classDatabaseController_1a743181f5f295cdc6b9113defd29f7162" compoundref="databasecontroller_8hpp" startline="355" endline="356">backendsReady_</references>
+        <references refid="classDatabaseController_1a31ddc963543c94188989eab4aa24e2ec" compoundref="databasecontroller_8hpp" startline="361">databaseConnectionPool_</references>
+        <references refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" compoundref="store_8hpp" startline="190" endline="225">Store::getObject</references>
+        <references refid="classDatabaseController_1ac8c9c76391d1ebcaa3fd2abdd93754b3" compoundref="databasecontroller_8hpp" startline="373">testing_config_</references>
+        <references refid="classDatabaseController_1abbc84ebe21df91c2d77041778e86d199" compoundref="databasecontroller_8hpp" startline="368">watchDog_</references>
+        <referencedby refid="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" compoundref="databasecontroller_8hpp" startline="403" endline="445">executer</referencedby>
       </memberdef>
       <memberdef kind="function" id="classDatabaseController_1a17754cf11f19b559b1fd8c3077817556" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -1236,29 +1238,29 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="283" column="19" bodyfile="src/controllers/databasecontroller/databasecontroller.hpp" bodystart="283" bodyend="329"/>
-        <references refid="classDbProbe_1af3b9ebe61addb4dd1885a3d117221a1f" compoundref="dbprobe_8hpp" startline="86" endline="92">DbProbe::check</references>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classDatabaseController_1a31ddc963543c94188989eab4aa24e2ec" compoundref="databasecontroller_8hpp" startline="255">databaseConnectionPool_</references>
-        <references refid="classDatabaseController_1a2685c684b979ee32be0f286df38c1449" compoundref="databasecontroller_8cpp" startline="48" endline="86">ensureBackends</references>
-        <referencedby refid="classDatabaseController_1a870dc0277e6ac74c5ddb410e1f7112a2" compoundref="databasecontroller_8cpp" startline="109" endline="112">checkItemExists</referencedby>
-        <referencedby refid="classDatabaseController_1a5ac3b3112fc438ac6133b008d46b62ca" compoundref="databasecontroller_8cpp" startline="104" endline="107">doReadQuery</referencedby>
-        <referencedby refid="classDatabaseController_1a107e601b43f856547bc04d97e8975b8d" compoundref="databasecontroller_8cpp" startline="88" endline="92">executeQuery</referencedby>
-        <referencedby refid="classDatabaseController_1ae2d9c2dcf54cdec81331949a9aaea597" compoundref="databasecontroller_8cpp" startline="94" endline="97">executeReadQuery</referencedby>
-        <referencedby refid="classDatabaseController_1ab854d593bad9adf157993f38f465fc18" compoundref="databasecontroller_8cpp" startline="99" endline="102">executeSearchQuery</referencedby>
-        <referencedby refid="classDatabaseController_1acece421c53c0fef3b2965878f2422d5e" compoundref="databasecontroller_8cpp" startline="131" endline="131">getAllTables</referencedby>
-        <referencedby refid="classDatabaseController_1aa758566f79643d7f383a135ef80fa9e9" compoundref="databasecontroller_8cpp" startline="114" endline="124">getPasswordHashForUserName</referencedby>
-        <referencedby refid="classDatabaseController_1ae11a73cc6347582351411b8c5ef7341d" compoundref="databasecontroller_8cpp" startline="133" endline="136">getPermissions</referencedby>
-        <referencedby refid="classDatabaseController_1a7d83a6ade653663a62d68922f0928419" compoundref="databasecontroller_8cpp" startline="126" endline="129">getTableSchema</referencedby>
+        <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="403" column="17" bodyfile="src/controllers/databasecontroller/databasecontroller.hpp" bodystart="403" bodyend="445"/>
+        <references refid="classDbProbe_1af3b9ebe61addb4dd1885a3d117221a1f" compoundref="dbprobe_8hpp" startline="113" endline="119">DbProbe::check</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classDatabaseController_1a31ddc963543c94188989eab4aa24e2ec" compoundref="databasecontroller_8hpp" startline="361">databaseConnectionPool_</references>
+        <references refid="classDatabaseController_1a2685c684b979ee32be0f286df38c1449" compoundref="databasecontroller_8cpp" startline="61" endline="110">ensureBackends</references>
+        <referencedby refid="classDatabaseController_1a870dc0277e6ac74c5ddb410e1f7112a2" compoundref="databasecontroller_8cpp" startline="148" endline="156">checkItemExists</referencedby>
+        <referencedby refid="classDatabaseController_1a5ac3b3112fc438ac6133b008d46b62ca" compoundref="databasecontroller_8cpp" startline="141" endline="146">doReadQuery</referencedby>
+        <referencedby refid="classDatabaseController_1a107e601b43f856547bc04d97e8975b8d" compoundref="databasecontroller_8cpp" startline="112" endline="121">executeQuery</referencedby>
+        <referencedby refid="classDatabaseController_1ae2d9c2dcf54cdec81331949a9aaea597" compoundref="databasecontroller_8cpp" startline="123" endline="130">executeReadQuery</referencedby>
+        <referencedby refid="classDatabaseController_1ab854d593bad9adf157993f38f465fc18" compoundref="databasecontroller_8cpp" startline="132" endline="139">executeSearchQuery</referencedby>
+        <referencedby refid="classDatabaseController_1acece421c53c0fef3b2965878f2422d5e" compoundref="databasecontroller_8cpp" startline="186" endline="188">getAllTables</referencedby>
+        <referencedby refid="classDatabaseController_1aa758566f79643d7f383a135ef80fa9e9" compoundref="databasecontroller_8cpp" startline="158" endline="176">getPasswordHashForUserName</referencedby>
+        <referencedby refid="classDatabaseController_1ae11a73cc6347582351411b8c5ef7341d" compoundref="databasecontroller_8cpp" startline="190" endline="196">getPermissions</referencedby>
+        <referencedby refid="classDatabaseController_1a7d83a6ade653663a62d68922f0928419" compoundref="databasecontroller_8cpp" startline="179" endline="183">getTableSchema</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
 <para>Single gateway through which controllers execute SQL, in both blocking and coroutine form. </para>
     </briefdescription>
     <detaileddescription>
-<para>Owns no query logic of its own: it acquires a connection (synchronously through a <computeroutput><ref refid="classDatabaseConnectionPool" kindref="compound">DatabaseConnectionPool</ref></computeroutput> and <computeroutput><ref refid="classDatabaseHanndler" kindref="compound">DatabaseHanndler</ref></computeroutput>, or asynchronously through <computeroutput><ref refid="classAsyncDbClient" kindref="compound">AsyncDbClient</ref></computeroutput>), invokes the matching <computeroutput><ref refid="classDatabase" kindref="compound">Database</ref></computeroutput>/ <computeroutput><ref refid="namespaceasyncdb" kindref="compound">asyncdb</ref></computeroutput> helper, and returns an <computeroutput>std::optional</computeroutput> result that is empty when the database is unavailable, a connection cannot be acquired, or the query fails. Every public method is virtual so tests can inject fakes through <computeroutput><ref refid="classStore_1a2a4bfc0b18f2999216eda3067988cf57" kindref="member">Store::replaceObject</ref></computeroutput>.</para>
-<para>Backend construction is lazy (see ensureBackends): the pool constructor terminates the process when PostgreSQL is unreachable, which would otherwise make the class unconstructible in hermetic tests. The double-checked <computeroutput><ref refid="classDatabaseController_1a743181f5f295cdc6b9113defd29f7162" kindref="member">backendsReady_</ref></computeroutput> flag makes that init a single atomic load on the hot path. In hermetic test mode the pool is never created and all query paths deterministically return <computeroutput>std::nullopt</computeroutput>.</para>
-<para>Query results are returned as JSON objects/arrays or plain scalars. Identifiers (table/column names) cannot be bound as parameters, so the few methods that interpolate them accept only fixed, trusted names. <simplesect kind="note"><para>Non-copyable and non-movable: the singleton is shared through <computeroutput><ref refid="classStore" kindref="compound">Store</ref></computeroutput>, never duplicated. </para>
+<para>Owns no query logic of its own: it acquires a connection (synchronously through a <computeroutput><ref refid="classDatabaseConnectionPool" kindref="compound">DatabaseConnectionPool</ref></computeroutput> and <computeroutput><ref refid="classDatabaseHanndler" kindref="compound">DatabaseHanndler</ref></computeroutput>, or asynchronously through <computeroutput><ref refid="classAsyncDbClient" kindref="compound">AsyncDbClient</ref></computeroutput>), invokes the matching <computeroutput><ref refid="classDatabase" kindref="compound">Database</ref></computeroutput>/ <computeroutput><ref refid="namespaceasyncdb" kindref="compound">asyncdb</ref></computeroutput> helper, and returns an <computeroutput>std::optional</computeroutput> result that is empty when the database is unavailable, a connection cannot be acquired, or the query fails. Every public method is virtual so tests can inject fakes through <computeroutput><ref refid="classStore_1a2a4bfc0b18f2999216eda3067988cf57" kindref="member">Store::replaceObject</ref></computeroutput>. <verbatim>     Backend construction is lazy (see ensureBackends): the pool
+</verbatim> constructor terminates the process when PostgreSQL is unreachable, which would otherwise make the class unconstructible in hermetic tests. The double-checked <computeroutput><ref refid="classDatabaseController_1a743181f5f295cdc6b9113defd29f7162" kindref="member">backendsReady_</ref></computeroutput> flag makes that init a single atomic load on the hot path. In hermetic test mode the pool is never created and all query paths deterministically return <computeroutput>std::nullopt</computeroutput>. <verbatim>     Query results are returned as JSON objects/arrays or plain scalars.
+</verbatim> Identifiers (table/column names) cannot be bound as parameters, so the few methods that interpolate them accept only fixed, trusted names. <simplesect kind="note"><para>Non-copyable and non-movable: the singleton is shared through <computeroutput><ref refid="classStore" kindref="compound">Store</ref></computeroutput>, never duplicated. </para>
 </simplesect>
 <simplesect kind="warning"><para>Pool exhaustion is not a query failure: <computeroutput><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></computeroutput> is propagated so callers can answer 503 with Retry-After instead of 500. </para>
 </simplesect>
@@ -1266,7 +1268,7 @@
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="83" column="1" bodyfile="src/controllers/databasecontroller/databasecontroller.hpp" bodystart="84" bodyend="330"/>
+    <location file="src/controllers/databasecontroller/databasecontroller.hpp" line="106" column="1" bodyfile="src/controllers/databasecontroller/databasecontroller.hpp" bodystart="106" bodyend="446"/>
     <listofallmembers>
       <member refid="classDatabaseController_1a743181f5f295cdc6b9113defd29f7162" prot="private" virt="non-virtual"><scope>DatabaseController</scope><name>backendsReady_</name></member>
       <member refid="classDatabaseController_1a870dc0277e6ac74c5ddb410e1f7112a2" prot="public" virt="virtual"><scope>DatabaseController</scope><name>checkItemExists</name></member>

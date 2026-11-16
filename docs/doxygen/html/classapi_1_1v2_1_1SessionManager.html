@@ -132,21 +132,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa7e0fae115ecf09ac1ce5a6fed83486f" id="r_aa7e0fae115ecf09ac1ce5a6fed83486f"><td class="memItemLeft"><a class="el" href="#a35bfaf5b65e09dc3a18f8ada3a305401">SessionManager</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#aa7e0fae115ecf09ac1ce5a6fed83486f">operator=</a> (const <a class="el" href="#a35bfaf5b65e09dc3a18f8ada3a305401">SessionManager</a> &amp;)=delete</td></tr>
 <tr class="memitem:aa3a4e1ef2013d3901e07eda1ea79d395" id="r_aa3a4e1ef2013d3901e07eda1ea79d395"><td class="memItemLeft"><a class="el" href="#a35bfaf5b65e09dc3a18f8ada3a305401">SessionManager</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#aa3a4e1ef2013d3901e07eda1ea79d395">operator=</a> (<a class="el" href="#a35bfaf5b65e09dc3a18f8ada3a305401">SessionManager</a> &amp;&amp;)=delete</td></tr>
 <tr class="memitem:a50993077d4fc27eac1e213623209c5bd" id="r_a50993077d4fc27eac1e213623209c5bd"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a50993077d4fc27eac1e213623209c5bd">~SessionManager</a> () override=default</td></tr>
-<tr class="memitem:add62dbdf029d62e261f527ef187ec4ff" id="r_add62dbdf029d62e261f527ef187ec4ff"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#add62dbdf029d62e261f527ef187ec4ff">login</a> (const std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#ada88a3e212586efbdfd1f931b0f4a8a9">Types::Credentials</a> &gt; &amp;credentials, std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &amp;clientLoginData, std::string &amp;message)</td></tr>
+<tr class="memitem:add62dbdf029d62e261f527ef187ec4ff" id="r_add62dbdf029d62e261f527ef187ec4ff"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#add62dbdf029d62e261f527ef187ec4ff">login</a> (const std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#a249a6e076b477aa182c10bc4334e1268">Types::Credentials</a> &gt; &amp;credentials, std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;clientLoginData, std::string &amp;message)</td></tr>
 <tr class="memdesc:add62dbdf029d62e261f527ef187ec4ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the full login synchronously on the calling thread: fetch then complete.  <br /></td></tr>
-<tr class="memitem:abffc874efc27d46a421446767b1d3c6c" id="r_abffc874efc27d46a421446767b1d3c6c"><td class="memItemLeft">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight"><a class="el" href="#abffc874efc27d46a421446767b1d3c6c">fetchPasswordHash</a> (const std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#ada88a3e212586efbdfd1f931b0f4a8a9">Types::Credentials</a> &gt; &amp;credentials, std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &amp;clientLoginData, std::string &amp;message)</td></tr>
+<tr class="memitem:abffc874efc27d46a421446767b1d3c6c" id="r_abffc874efc27d46a421446767b1d3c6c"><td class="memItemLeft">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight"><a class="el" href="#abffc874efc27d46a421446767b1d3c6c">fetchPasswordHash</a> (const std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#a249a6e076b477aa182c10bc4334e1268">Types::Credentials</a> &gt; &amp;credentials, std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;clientLoginData, std::string &amp;message)</td></tr>
 <tr class="memdesc:abffc874efc27d46a421446767b1d3c6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the stored password hash and checks that the account is active (no writes).  <br /></td></tr>
-<tr class="memitem:a9122497c5ad97796173492b1a4f3372f" id="r_a9122497c5ad97796173492b1a4f3372f"><td class="memItemLeft">drogon::Task&lt; std::optional&lt; std::string &gt; &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a9122497c5ad97796173492b1a4f3372f">fetchPasswordHashCoro</a> (const std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#ada88a3e212586efbdfd1f931b0f4a8a9">Types::Credentials</a> &gt; &amp;credentials, std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &amp;clientLoginData, std::string &amp;message)</td></tr>
+<tr class="memitem:a9122497c5ad97796173492b1a4f3372f" id="r_a9122497c5ad97796173492b1a4f3372f"><td class="memItemLeft">drogon::Task&lt; std::optional&lt; std::string &gt; &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a9122497c5ad97796173492b1a4f3372f">fetchPasswordHashCoro</a> (const std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#a249a6e076b477aa182c10bc4334e1268">Types::Credentials</a> &gt; &amp;credentials, std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;clientLoginData, std::string &amp;message)</td></tr>
 <tr class="memdesc:a9122497c5ad97796173492b1a4f3372f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#abffc874efc27d46a421446767b1d3c6c" title="Reads the stored password hash and checks that the account is active (no writes).">fetchPasswordHash()</a>; awaits the async database read.  <br /></td></tr>
-<tr class="memitem:abbdf2297a918188909ce176585214a89" id="r_abbdf2297a918188909ce176585214a89"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#abbdf2297a918188909ce176585214a89">completeLogin</a> (const std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#ada88a3e212586efbdfd1f931b0f4a8a9">Types::Credentials</a> &gt; &amp;credentials, const std::string &amp;password_hash, std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &amp;clientLoginData, std::string &amp;message)</td></tr>
+<tr class="memitem:abbdf2297a918188909ce176585214a89" id="r_abbdf2297a918188909ce176585214a89"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#abbdf2297a918188909ce176585214a89">completeLogin</a> (const std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#a249a6e076b477aa182c10bc4334e1268">Types::Credentials</a> &gt; &amp;credentials, const std::string &amp;password_hash, std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;clientLoginData, std::string &amp;message)</td></tr>
 <tr class="memdesc:abbdf2297a918188909ce176585214a89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifies <code class="param">password_hash</code> and, only on success, records the new login time.  <br /></td></tr>
-<tr class="memitem:aa81f2f467d2ae6e4121344642b501c36" id="r_aa81f2f467d2ae6e4121344642b501c36"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa81f2f467d2ae6e4121344642b501c36">logout</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &amp;clientLoginData)</td></tr>
+<tr class="memitem:aa81f2f467d2ae6e4121344642b501c36" id="r_aa81f2f467d2ae6e4121344642b501c36"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa81f2f467d2ae6e4121344642b501c36">logout</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;clientLoginData)</td></tr>
 <tr class="memdesc:aa81f2f467d2ae6e4121344642b501c36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invalidates the client's token/session and invokes <code class="param">callback</code> with the result.  <br /></td></tr>
-<tr class="memitem:a2be4af6233804aa5b85985ecb3e14d00" id="r_a2be4af6233804aa5b85985ecb3e14d00"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a2be4af6233804aa5b85985ecb3e14d00">clientHasValidSession</a> (std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &amp;clientLoginData, std::string &amp;message)</td></tr>
+<tr class="memitem:a2be4af6233804aa5b85985ecb3e14d00" id="r_a2be4af6233804aa5b85985ecb3e14d00"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a2be4af6233804aa5b85985ecb3e14d00">clientHasValidSession</a> (std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;clientLoginData, std::string &amp;message)</td></tr>
 <tr class="memdesc:a2be4af6233804aa5b85985ecb3e14d00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks a session against the cache and verifies the token's identity data.  <br /></td></tr>
-<tr class="memitem:a7ca49324d009c30cf57fa224bfaabe4e" id="r_a7ca49324d009c30cf57fa224bfaabe4e"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a7ca49324d009c30cf57fa224bfaabe4e">storeSession</a> (std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &amp;clientLoginData, std::string &amp;message)</td></tr>
+<tr class="memitem:a7ca49324d009c30cf57fa224bfaabe4e" id="r_a7ca49324d009c30cf57fa224bfaabe4e"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a7ca49324d009c30cf57fa224bfaabe4e">storeSession</a> (std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;clientLoginData, std::string &amp;message)</td></tr>
 <tr class="memdesc:a7ca49324d009c30cf57fa224bfaabe4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts the client's session into the cache with a TTL taken from <span class="tt">expireTime</span>.  <br /></td></tr>
-<tr class="memitem:a64bf884c729b388729752c9163db479f" id="r_a64bf884c729b388729752c9163db479f"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a64bf884c729b388729752c9163db479f">removeSession</a> (std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &amp;clientLoginData)</td></tr>
+<tr class="memitem:a64bf884c729b388729752c9163db479f" id="r_a64bf884c729b388729752c9163db479f"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a64bf884c729b388729752c9163db479f">removeSession</a> (std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;clientLoginData)</td></tr>
 <tr class="memdesc:a64bf884c729b388729752c9163db479f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the client's session from the cache (keyed by group and client id).  <br /></td></tr>
 <tr class="inherit_header pub_methods_classapi_1_1v2_1_1KeeprBase"><td colspan="2">Public Member Functions inherited from <a class="el" href="classapi_1_1v2_1_1KeeprBase.html">api::v2::KeeprBase</a></td></tr>
 <tr class="memitem:ab09740b221922b51de0a8c45c54daa85 pub_methods_classapi_1_1v2_1_1KeeprBase" id="r_ab09740b221922b51de0a8c45c54daa85"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#ab09740b221922b51de0a8c45c54daa85">KeeprBase</a> ()</td></tr>
@@ -160,20 +160,20 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a7b12ce1fb5e65eb8f9ad5f8ef9f5580c" id="r_a7b12ce1fb5e65eb8f9ad5f8ef9f5580c"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classPasswordCrypt.html">PasswordCrypt</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a7b12ce1fb5e65eb8f9ad5f8ef9f5580c">passwordCrypt</a> = <a class="el" href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c">Store::getObject</a>&lt;<a class="el" href="classPasswordCrypt.html">PasswordCrypt</a>&gt;()</td></tr>
-<tr class="memitem:a65a1a1dc52287f3db432cde8b6d95f8a" id="r_a65a1a1dc52287f3db432cde8b6d95f8a"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classMemCache.html">MemCache</a>&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a65a1a1dc52287f3db432cde8b6d95f8a">clientsSessionsList</a></td></tr>
+<tr class="memitem:a7b12ce1fb5e65eb8f9ad5f8ef9f5580c" id="r_a7b12ce1fb5e65eb8f9ad5f8ef9f5580c"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classPasswordCrypt.html">PasswordCrypt</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a7b12ce1fb5e65eb8f9ad5f8ef9f5580c">passwordCrypt</a></td></tr>
+<tr class="memitem:a65a1a1dc52287f3db432cde8b6d95f8a" id="r_a65a1a1dc52287f3db432cde8b6d95f8a"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classMemCache.html">MemCache</a>&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a65a1a1dc52287f3db432cde8b6d95f8a">clientsSessionsList</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-static-attribs" class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:a2526008976c4fb859de88f30dcd98811" id="r_a2526008976c4fb859de88f30dcd98811"><td class="memItemLeft">static constexpr std::chrono::seconds&#160;</td><td class="memItemRight"><a class="el" href="#a2526008976c4fb859de88f30dcd98811">SESSION_TIMEOUT</a> = std::chrono::seconds(3600)</td></tr>
-<tr class="memitem:a56d6eb7cb7a8a5c41c702df255cbd502" id="r_a56d6eb7cb7a8a5c41c702df255cbd502"><td class="memItemLeft">static constexpr int&#160;</td><td class="memItemRight"><a class="el" href="#a56d6eb7cb7a8a5c41c702df255cbd502">SESSION_MAX</a> = 4096</td></tr>
+<tr class="memitem:a2526008976c4fb859de88f30dcd98811" id="r_a2526008976c4fb859de88f30dcd98811"><td class="memItemLeft">static constexpr std::chrono::seconds&#160;</td><td class="memItemRight"><a class="el" href="#a2526008976c4fb859de88f30dcd98811">SESSION_TIMEOUT</a></td></tr>
+<tr class="memitem:a56d6eb7cb7a8a5c41c702df255cbd502" id="r_a56d6eb7cb7a8a5c41c702df255cbd502"><td class="memItemLeft">static constexpr int&#160;</td><td class="memItemRight"><a class="el" href="#a56d6eb7cb7a8a5c41c702df255cbd502">SESSION_MAX</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-inherited" class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_classapi_1_1v2_1_1KeeprBase"><td colspan="2">Protected Member Functions inherited from <a class="el" href="classapi_1_1v2_1_1KeeprBase.html">api::v2::KeeprBase</a></td></tr>
-<tr class="memitem:a827a3339a5b2ecfddc1ba78ef85e7711 pro_methods_classapi_1_1v2_1_1KeeprBase" id="r_a827a3339a5b2ecfddc1ba78ef85e7711"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#a827a3339a5b2ecfddc1ba78ef85e7711">setNowLoginTimeGetLastLogoutTime</a> (std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &amp;clientLoginData)</td></tr>
+<tr class="memitem:a827a3339a5b2ecfddc1ba78ef85e7711 pro_methods_classapi_1_1v2_1_1KeeprBase" id="r_a827a3339a5b2ecfddc1ba78ef85e7711"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#a827a3339a5b2ecfddc1ba78ef85e7711">setNowLoginTimeGetLastLogoutTime</a> (std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;clientLoginData)</td></tr>
 <tr class="memdesc:a827a3339a5b2ecfddc1ba78ef85e7711 pro_methods_classapi_1_1v2_1_1KeeprBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Records a login timestamp and returns the previously stored logout time.  <br /></td></tr>
-<tr class="memitem:a96a366e05f18b668479c2da9000d6289 pro_methods_classapi_1_1v2_1_1KeeprBase" id="r_a96a366e05f18b668479c2da9000d6289"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#a96a366e05f18b668479c2da9000d6289">getLastLogoutTimeIfActive</a> (std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &amp;clientLoginData)</td></tr>
+<tr class="memitem:a96a366e05f18b668479c2da9000d6289 pro_methods_classapi_1_1v2_1_1KeeprBase" id="r_a96a366e05f18b668479c2da9000d6289"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#a96a366e05f18b668479c2da9000d6289">getLastLogoutTimeIfActive</a> (std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;clientLoginData)</td></tr>
 <tr class="memdesc:a96a366e05f18b668479c2da9000d6289 pro_methods_classapi_1_1v2_1_1KeeprBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the account's active flag and last logout time from the session/client tables.  <br /></td></tr>
 <tr class="memitem:aec14dfc5acf772c02faa5ebe3c383eba pro_methods_classapi_1_1v2_1_1KeeprBase" id="r_aec14dfc5acf772c02faa5ebe3c383eba"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#aec14dfc5acf772c02faa5ebe3c383eba">setNowLogoutTime</a> (uint64_t _id, const std::string &amp;_group)</td></tr>
 <tr class="memdesc:aec14dfc5acf772c02faa5ebe3c383eba pro_methods_classapi_1_1v2_1_1KeeprBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Upserts the client's <span class="tt">last_logout</span> timestamp.  <br /></td></tr>
@@ -183,29 +183,29 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memdesc:a8ced4af95be98298b0a63084deece769 pro_methods_classapi_1_1v2_1_1KeeprBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches the stored password hash for a username via <a class="el" href="classDatabaseController.html" title="Single gateway through which controllers execute SQL, in both blocking and coroutine form.">DatabaseController</a>.  <br /></td></tr>
 <tr class="memitem:acdd434fec377861a4be32a7fbbd6549f pro_methods_classapi_1_1v2_1_1KeeprBase" id="r_acdd434fec377861a4be32a7fbbd6549f"><td class="memItemLeft">drogon::Task&lt; std::optional&lt; jsoncons::json &gt; &gt;&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#acdd434fec377861a4be32a7fbbd6549f">getPasswordHashForUserNameCoro</a> (const std::string &amp;username, const std::string &amp;_group)</td></tr>
 <tr class="memdesc:acdd434fec377861a4be32a7fbbd6549f pro_methods_classapi_1_1v2_1_1KeeprBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="classapi_1_1v2_1_1KeeprBase.html#a8ced4af95be98298b0a63084deece769" title="Fetches the stored password hash for a username via DatabaseController.">getPasswordHashForUserName()</a>.  <br /></td></tr>
-<tr class="memitem:a42038514e4e95779bf05a6f5d1ecad44 pro_methods_classapi_1_1v2_1_1KeeprBase" id="r_a42038514e4e95779bf05a6f5d1ecad44"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#a42038514e4e95779bf05a6f5d1ecad44">validateToken</a> (std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &amp;clientLoginData, std::string &amp;message, jwt::decoded_jwt&lt; jwt::traits::kazuho_picojson &gt; &amp;decodedToken)</td></tr>
+<tr class="memitem:a42038514e4e95779bf05a6f5d1ecad44 pro_methods_classapi_1_1v2_1_1KeeprBase" id="r_a42038514e4e95779bf05a6f5d1ecad44"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#a42038514e4e95779bf05a6f5d1ecad44">validateToken</a> (std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;clientLoginData, std::string &amp;message, jwt::decoded_jwt&lt; jwt::traits::kazuho_picojson &gt; &amp;decodedToken)</td></tr>
 <tr class="memdesc:a42038514e4e95779bf05a6f5d1ecad44 pro_methods_classapi_1_1v2_1_1KeeprBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates a decoded JWT against current session state and its signature/claims.  <br /></td></tr>
-<tr class="memitem:a25af0d69c7a5d1f0fa209b6002ec8c28 pro_methods_classapi_1_1v2_1_1KeeprBase" id="r_a25af0d69c7a5d1f0fa209b6002ec8c28"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#a25af0d69c7a5d1f0fa209b6002ec8c28">getLastLogoutTimeIfActiveCoro</a> (std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &amp;clientLoginData)</td></tr>
+<tr class="memitem:a25af0d69c7a5d1f0fa209b6002ec8c28 pro_methods_classapi_1_1v2_1_1KeeprBase" id="r_a25af0d69c7a5d1f0fa209b6002ec8c28"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#a25af0d69c7a5d1f0fa209b6002ec8c28">getLastLogoutTimeIfActiveCoro</a> (std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;clientLoginData)</td></tr>
 <tr class="memdesc:a25af0d69c7a5d1f0fa209b6002ec8c28 pro_methods_classapi_1_1v2_1_1KeeprBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="classapi_1_1v2_1_1KeeprBase.html#a96a366e05f18b668479c2da9000d6289" title="Loads the account&#39;s active flag and last logout time from the session/client tables.">getLastLogoutTimeIfActive()</a>.  <br /></td></tr>
-<tr class="memitem:adc936836bc32e25fd2348e738289c83a pro_methods_classapi_1_1v2_1_1KeeprBase" id="r_adc936836bc32e25fd2348e738289c83a"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#adc936836bc32e25fd2348e738289c83a">validateTokenCoro</a> (std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &amp;clientLoginData, std::string &amp;message, jwt::decoded_jwt&lt; jwt::traits::kazuho_picojson &gt; &amp;decodedToken)</td></tr>
+<tr class="memitem:adc936836bc32e25fd2348e738289c83a pro_methods_classapi_1_1v2_1_1KeeprBase" id="r_adc936836bc32e25fd2348e738289c83a"><td class="memItemLeft">drogon::Task&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#adc936836bc32e25fd2348e738289c83a">validateTokenCoro</a> (std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;clientLoginData, std::string &amp;message, jwt::decoded_jwt&lt; jwt::traits::kazuho_picojson &gt; &amp;decodedToken)</td></tr>
 <tr class="memdesc:adc936836bc32e25fd2348e738289c83a pro_methods_classapi_1_1v2_1_1KeeprBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="classapi_1_1v2_1_1KeeprBase.html#a42038514e4e95779bf05a6f5d1ecad44" title="Validates a decoded JWT against current session state and its signature/claims.">validateToken()</a>.  <br /></td></tr>
-<tr class="memitem:aaf8aa6b3f37ca047d975238a41fe8285 pro_methods_classapi_1_1v2_1_1KeeprBase" id="r_aaf8aa6b3f37ca047d975238a41fe8285"><td class="memItemLeft">jwt::verifier&lt; jwt::default_clock, jwt::traits::kazuho_picojson &gt;&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#aaf8aa6b3f37ca047d975238a41fe8285">createTokenVerifier</a> (const std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &amp;clientLoginData) const</td></tr>
+<tr class="memitem:aaf8aa6b3f37ca047d975238a41fe8285 pro_methods_classapi_1_1v2_1_1KeeprBase" id="r_aaf8aa6b3f37ca047d975238a41fe8285"><td class="memItemLeft">jwt::verifier&lt; jwt::default_clock, jwt::traits::kazuho_picojson &gt;&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#aaf8aa6b3f37ca047d975238a41fe8285">createTokenVerifier</a> (const std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;clientLoginData) const</td></tr>
 <tr class="memdesc:aaf8aa6b3f37ca047d975238a41fe8285 pro_methods_classapi_1_1v2_1_1KeeprBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds an HS256 verifier bound to the configured secret and the client's claims.  <br /></td></tr>
-<tr class="memitem:a769b4981f124c8bc48570a2ec0aaa01d pro_methods_classapi_1_1v2_1_1KeeprBase" id="r_a769b4981f124c8bc48570a2ec0aaa01d"><td class="memItemLeft"><a class="el" href="classConfigurator.html#a9ba2e563097f792da98c5844ba3d83f6">Configurator::TokenManagerParameters</a>&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#a769b4981f124c8bc48570a2ec0aaa01d">getTokenManagerParameters</a> () const</td></tr>
+<tr class="memitem:a769b4981f124c8bc48570a2ec0aaa01d pro_methods_classapi_1_1v2_1_1KeeprBase" id="r_a769b4981f124c8bc48570a2ec0aaa01d"><td class="memItemLeft"><a class="el" href="classConfigurator.html#af1c24b094032c664c8f543c85ed36b14">Configurator::TokenManagerParameters</a>&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#a769b4981f124c8bc48570a2ec0aaa01d">getTokenManagerParameters</a> () const</td></tr>
 <tr class="memdesc:a769b4981f124c8bc48570a2ec0aaa01d pro_methods_classapi_1_1v2_1_1KeeprBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a copy of the token parameters cached at construction.  <br /></td></tr>
 <tr class="memitem:a913563947fb79295de1f2278e6cb5e62 pro_methods_classapi_1_1v2_1_1KeeprBase" id="r_a913563947fb79295de1f2278e6cb5e62"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classDatabaseController.html">DatabaseController</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#a913563947fb79295de1f2278e6cb5e62">databaseController</a> () const</td></tr>
 <tr class="memdesc:a913563947fb79295de1f2278e6cb5e62 pro_methods_classapi_1_1v2_1_1KeeprBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the shared <a class="el" href="classDatabaseController.html" title="Single gateway through which controllers execute SQL, in both blocking and coroutine form.">DatabaseController</a> from the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a> cache.  <br /></td></tr>
 <tr class="inherit_header pro_static_methods_classapi_1_1v2_1_1KeeprBase"><td colspan="2">Static Protected Member Functions inherited from <a class="el" href="classapi_1_1v2_1_1KeeprBase.html">api::v2::KeeprBase</a></td></tr>
 <tr class="memitem:ac972310cb5c257ad144e4b2c2276ce0d pro_static_methods_classapi_1_1v2_1_1KeeprBase" id="r_ac972310cb5c257ad144e4b2c2276ce0d"><td class="memItemLeft">static std::string&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#ac972310cb5c257ad144e4b2c2276ce0d">current_time_to_utc_string</a> ()</td></tr>
 <tr class="memdesc:ac972310cb5c257ad144e4b2c2276ce0d pro_static_methods_classapi_1_1v2_1_1KeeprBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the current UTC time as a fixed-width string with a +0000 offset.  <br /></td></tr>
-<tr class="memitem:aa5bb3aa3442744a56f97c06d8c43a37d pro_static_methods_classapi_1_1v2_1_1KeeprBase" id="r_aa5bb3aa3442744a56f97c06d8c43a37d"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#aa5bb3aa3442744a56f97c06d8c43a37d">decodeToken</a> (std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &amp;clientLoginData, std::string &amp;message, jwt::decoded_jwt&lt; jwt::traits::kazuho_picojson &gt; &amp;decoedToken)</td></tr>
+<tr class="memitem:aa5bb3aa3442744a56f97c06d8c43a37d pro_static_methods_classapi_1_1v2_1_1KeeprBase" id="r_aa5bb3aa3442744a56f97c06d8c43a37d"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1KeeprBase.html#aa5bb3aa3442744a56f97c06d8c43a37d">decodeToken</a> (std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;clientLoginData, std::string &amp;message, jwt::decoded_jwt&lt; jwt::traits::kazuho_picojson &gt; &amp;decoedToken)</td></tr>
 <tr class="memdesc:aa5bb3aa3442744a56f97c06d8c43a37d pro_static_methods_classapi_1_1v2_1_1KeeprBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts identity claims from an already decoded JWT and checks expiry/IP binding.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Owns the client login flow and the in-memory session cache. </p>
 <p>Login is deliberately split into <a class="el" href="#abffc874efc27d46a421446767b1d3c6c" title="Reads the stored password hash and checks that the account is active (no writes).">fetchPasswordHash()</a> (database reads, account activation check) and <a class="el" href="#abbdf2297a918188909ce176585214a89" title="Verifies password_hash and, only on success, records the new login time.">completeLogin()</a> (password verification, then login-time write). <a class="el" href="classapi_1_1v2_1_1GateKeeper.html" title="Facade over authentication, authorization and per-IP abuse detection.">GateKeeper</a> invokes the two parts separately so the expensive password check can run on a <a class="el" href="classPasswordWorker.html" title="The pool for deliberately slow password work (hashing and verification), so it never runs on a Drogon...">PasswordWorker</a>; a wrong password therefore never updates the stored login time. Sessions live in a shared <a class="el" href="classMemCache.html" title="Bounded LRU cache whose entries expire after a configurable TTL.">MemCache</a> keyed by <span class="tt">"&lt;group&gt;_&lt;id&gt;"</span> and carry an expiry. All operations report failures through a human-readable message (or a callback for logout). </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classapi_1_1v2_1_1KeeprBase.html" title="Shared base for session/token managers offering session-table and JWT helpers.">KeeprBase</a> In everyday words: logging in is like showing ID at a desk. First we look up your account and check it is active; then we check your password; only then do we record that you logged in and hand you a session. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sessionmanager_8hpp_source.html#l00059">59</a> of file <a class="el" href="sessionmanager_8hpp_source.html">sessionmanager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sessionmanager_8hpp_source.html#l00069">69</a> of file <a class="el" href="sessionmanager_8hpp_source.html">sessionmanager.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a35bfaf5b65e09dc3a18f8ada3a305401" name="a35bfaf5b65e09dc3a18f8ada3a305401"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a35bfaf5b65e09dc3a18f8ada3a305401">&#9670;&#160;</a></span>SessionManager() <span class="overload">[1/3]</span></h2>
@@ -311,7 +311,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00297">clientHasValidSession()</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00176">completeLogin()</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00065">fetchPasswordHash()</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00118">fetchPasswordHashCoro()</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00209">login()</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00224">logout()</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00391">removeSession()</a>, and <a class="el" href="sessionmanager_8cpp_source.html#l00361">storeSession()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00468">clientHasValidSession()</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00266">completeLogin()</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00085">fetchPasswordHash()</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00170">fetchPasswordHashCoro()</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00316">login()</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00343">logout()</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00605">removeSession()</a>, and <a class="el" href="sessionmanager_8cpp_source.html#l00558">storeSession()</a>.</p>
 
 </div>
 </div>
@@ -325,7 +325,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">bool SessionManager::clientHasValidSession </td>
           <td>(</td>
-          <td class="paramtype">std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>clientLoginData</em></span>, </td>
+          <td class="paramtype">std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>clientLoginData</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -346,9 +346,9 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>True when the cached session and token agree.</dd></dl>
 <p>Validates a cached session against the supplied token and adopts the stored identity. message: Receives the validation error reason. Returns True when a matching session exists and the token is valid. Throws <a class="el" href="classDatabaseBusy.html" title="Exception signalling that the connection pool could not lease a connection in time.">DatabaseBusy</a>: Propagated to the caller for retry/back-off. </p>
 
-<p class="definition">Definition at line <a class="el" href="sessionmanager_8cpp_source.html#l00297">297</a> of file <a class="el" href="sessionmanager_8cpp_source.html">sessionmanager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sessionmanager_8cpp_source.html#l00468">468</a> of file <a class="el" href="sessionmanager_8cpp_source.html">sessionmanager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="sessionmanager_8hpp_source.html#l00160">clientsSessionsList</a>, <a class="el" href="message_8cpp_source.html#l00042">Message::CriticalMessage()</a>, and <a class="el" href="keeprbase_8cpp_source.html#l00299">api::v2::KeeprBase::decodeToken()</a>.</p>
+<p class="reference">References <a class="el" href="sessionmanager_8hpp_source.html#l00231">clientsSessionsList</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, and <a class="el" href="keeprbase_8cpp_source.html#l00376">api::v2::KeeprBase::decodeToken()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a50993077d4fc27eac1e213623209c5bd">~SessionManager()</a>.</p>
 
@@ -363,7 +363,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">bool SessionManager::completeLogin </td>
           <td>(</td>
-          <td class="paramtype">const std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#ada88a3e212586efbdfd1f931b0f4a8a9">Types::Credentials</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>credentials</em></span>, </td>
+          <td class="paramtype">const std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#a249a6e076b477aa182c10bc4334e1268">Types::Credentials</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>credentials</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -373,7 +373,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>clientLoginData</em></span>, </td>
+          <td class="paramtype">std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>clientLoginData</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -402,11 +402,11 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <p>Verifies the password first; only a match updates the stored login time. message: Receives the verification/update failure reason. Returns True when verification and the login-time update both succeeded. Throws <a class="el" href="classDatabaseBusy.html" title="Exception signalling that the connection pool could not lease a connection in time.">DatabaseBusy</a>: Propagated to the caller for retry/back-off. </p>
 
-<p class="definition">Definition at line <a class="el" href="sessionmanager_8cpp_source.html#l00176">176</a> of file <a class="el" href="sessionmanager_8cpp_source.html">sessionmanager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sessionmanager_8cpp_source.html#l00266">266</a> of file <a class="el" href="sessionmanager_8cpp_source.html">sessionmanager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="sessionmanager_8hpp_source.html#l00159">passwordCrypt</a>, and <a class="el" href="keeprbase_8cpp_source.html#l00140">api::v2::KeeprBase::setNowLoginTimeGetLastLogoutTime()</a>.</p>
+<p class="reference">References <a class="el" href="sessionmanager_8hpp_source.html#l00227">passwordCrypt</a>, and <a class="el" href="keeprbase_8cpp_source.html#l00180">api::v2::KeeprBase::setNowLoginTimeGetLastLogoutTime()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="sessionmanager_8cpp_source.html#l00209">login()</a>, and <a class="el" href="#a50993077d4fc27eac1e213623209c5bd">~SessionManager()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="sessionmanager_8cpp_source.html#l00316">login()</a>, and <a class="el" href="#a50993077d4fc27eac1e213623209c5bd">~SessionManager()</a>.</p>
 
 </div>
 </div>
@@ -419,12 +419,12 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">std::optional&lt; std::string &gt; SessionManager::fetchPasswordHash </td>
           <td>(</td>
-          <td class="paramtype">const std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#ada88a3e212586efbdfd1f931b0f4a8a9">Types::Credentials</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>credentials</em></span>, </td>
+          <td class="paramtype">const std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#a249a6e076b477aa182c10bc4334e1268">Types::Credentials</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>credentials</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>clientLoginData</em></span>, </td>
+          <td class="paramtype">std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>clientLoginData</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -452,11 +452,11 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <p>Reads the stored password hash after checking the account exists and is active. message: Receives the reason for a missing/suspended account or a read error. Returns Stored hash, or <span class="tt">std::nullopt</span> if the account is unusable. Throws <a class="el" href="classDatabaseBusy.html" title="Exception signalling that the connection pool could not lease a connection in time.">DatabaseBusy</a>: Propagated to the caller for retry/back-off. See also: <a class="el" href="#abffc874efc27d46a421446767b1d3c6c" title="Reads the stored password hash and checks that the account is active (no writes).">SessionManager::fetchPasswordHash</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="sessionmanager_8cpp_source.html#l00065">65</a> of file <a class="el" href="sessionmanager_8cpp_source.html">sessionmanager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sessionmanager_8cpp_source.html#l00085">85</a> of file <a class="el" href="sessionmanager_8cpp_source.html">sessionmanager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="keeprbase_8cpp_source.html#l00536">api::v2::KeeprBase::getPasswordHashForUserName()</a>.</p>
+<p class="reference">References <a class="el" href="keeprbase_8cpp_source.html#l00686">api::v2::KeeprBase::getPasswordHashForUserName()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="sessionmanager_8cpp_source.html#l00209">login()</a>, and <a class="el" href="#a50993077d4fc27eac1e213623209c5bd">~SessionManager()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="sessionmanager_8cpp_source.html#l00316">login()</a>, and <a class="el" href="#a50993077d4fc27eac1e213623209c5bd">~SessionManager()</a>.</p>
 
 </div>
 </div>
@@ -469,12 +469,12 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">drogon::Task&lt; std::optional&lt; std::string &gt; &gt; SessionManager::fetchPasswordHashCoro </td>
           <td>(</td>
-          <td class="paramtype">const std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#ada88a3e212586efbdfd1f931b0f4a8a9">Types::Credentials</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>credentials</em></span>, </td>
+          <td class="paramtype">const std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#a249a6e076b477aa182c10bc4334e1268">Types::Credentials</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>credentials</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>clientLoginData</em></span>, </td>
+          <td class="paramtype">std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>clientLoginData</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -501,9 +501,9 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sessionmanager_8cpp_source.html#l00118">118</a> of file <a class="el" href="sessionmanager_8cpp_source.html">sessionmanager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sessionmanager_8cpp_source.html#l00170">170</a> of file <a class="el" href="sessionmanager_8cpp_source.html">sessionmanager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="keeprbase_8cpp_source.html#l00548">api::v2::KeeprBase::getPasswordHashForUserNameCoro()</a>.</p>
+<p class="reference">References <a class="el" href="keeprbase_8cpp_source.html#l00702">api::v2::KeeprBase::getPasswordHashForUserNameCoro()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a50993077d4fc27eac1e213623209c5bd">~SessionManager()</a>.</p>
 
@@ -518,12 +518,12 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">bool SessionManager::login </td>
           <td>(</td>
-          <td class="paramtype">const std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#ada88a3e212586efbdfd1f931b0f4a8a9">Types::Credentials</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>credentials</em></span>, </td>
+          <td class="paramtype">const std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#a249a6e076b477aa182c10bc4334e1268">Types::Credentials</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>credentials</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>clientLoginData</em></span>, </td>
+          <td class="paramtype">std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>clientLoginData</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -545,9 +545,9 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True only when the password matches and the login time was recorded. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sessionmanager_8cpp_source.html#l00209">209</a> of file <a class="el" href="sessionmanager_8cpp_source.html">sessionmanager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sessionmanager_8cpp_source.html#l00316">316</a> of file <a class="el" href="sessionmanager_8cpp_source.html">sessionmanager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="sessionmanager_8cpp_source.html#l00176">completeLogin()</a>, and <a class="el" href="sessionmanager_8cpp_source.html#l00065">fetchPasswordHash()</a>.</p>
+<p class="reference">References <a class="el" href="sessionmanager_8cpp_source.html#l00266">completeLogin()</a>, and <a class="el" href="sessionmanager_8cpp_source.html#l00085">fetchPasswordHash()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a50993077d4fc27eac1e213623209c5bd">~SessionManager()</a>.</p>
 
@@ -567,7 +567,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>clientLoginData</em></span>&#160;)</td>
+          <td class="paramtype">std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>clientLoginData</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -583,9 +583,9 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <p>Validates the token, checks it against the stored session in constant time, records the logout time and removes the session. Every path invokes the callback. </p>
 
-<p class="definition">Definition at line <a class="el" href="sessionmanager_8cpp_source.html#l00224">224</a> of file <a class="el" href="sessionmanager_8cpp_source.html">sessionmanager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sessionmanager_8cpp_source.html#l00343">343</a> of file <a class="el" href="sessionmanager_8cpp_source.html">sessionmanager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="sessionmanager_8hpp_source.html#l00160">clientsSessionsList</a>, <a class="el" href="global_8hpp_source.html#l00046">CRITICALMESSAGE</a>, <a class="el" href="keeprbase_8cpp_source.html#l00299">api::v2::KeeprBase::decodeToken()</a>, <a class="el" href="jsonhelper_8cpp_source.html#l00027">api::v2::JsonHelper::jsonify()</a>, <a class="el" href="http_8hpp_source.html#l00064">api::v2::Http::OK</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00391">removeSession()</a>, <a class="el" href="keeprbase_8cpp_source.html#l00199">api::v2::KeeprBase::setNowLogoutTime()</a>, <a class="el" href="errorstatus_8hpp_source.html#l00049">api::v2::Http::statusForException()</a>, <a class="el" href="jsonhelper_8cpp_source.html#l00041">api::v2::JsonHelper::stringify()</a>, and <a class="el" href="http_8hpp_source.html#l00083">api::v2::Http::UNAUTHORIZED</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="sessionmanager_8hpp_source.html#l00231">clientsSessionsList</a>, <a class="el" href="global_8hpp_source.html#l00048">CRITICALMESSAGE</a>, <a class="el" href="keeprbase_8cpp_source.html#l00376">api::v2::KeeprBase::decodeToken()</a>, <a class="el" href="jsonhelper_8cpp_source.html#l00032">api::v2::JsonHelper::jsonify()</a>, <a class="el" href="http_8hpp_source.html#l00077">api::v2::Http::OK</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00605">removeSession()</a>, <a class="el" href="keeprbase_8cpp_source.html#l00252">api::v2::KeeprBase::setNowLogoutTime()</a>, <a class="el" href="errorstatus_8hpp_source.html#l00056">api::v2::Http::statusForException()</a>, <a class="el" href="jsonhelper_8cpp_source.html#l00050">api::v2::JsonHelper::stringify()</a>, and <a class="el" href="http_8hpp_source.html#l00104">api::v2::Http::UNAUTHORIZED</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a50993077d4fc27eac1e213623209c5bd">~SessionManager()</a>.</p>
 
@@ -654,7 +654,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">bool SessionManager::removeSession </td>
           <td>(</td>
-          <td class="paramtype">std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>clientLoginData</em></span></td><td>)</td>
+          <td class="paramtype">std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>clientLoginData</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -672,11 +672,11 @@ True when a session key could be built and the removal was attempted. </dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="sessionmanager_8cpp_source.html#l00391">391</a> of file <a class="el" href="sessionmanager_8cpp_source.html">sessionmanager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sessionmanager_8cpp_source.html#l00605">605</a> of file <a class="el" href="sessionmanager_8cpp_source.html">sessionmanager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="sessionmanager_8hpp_source.html#l00160">clientsSessionsList</a>, and <a class="el" href="message_8cpp_source.html#l00042">Message::CriticalMessage()</a>.</p>
+<p class="reference">References <a class="el" href="sessionmanager_8hpp_source.html#l00231">clientsSessionsList</a>, and <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="sessionmanager_8cpp_source.html#l00224">logout()</a>, and <a class="el" href="#a50993077d4fc27eac1e213623209c5bd">~SessionManager()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="sessionmanager_8cpp_source.html#l00343">logout()</a>, and <a class="el" href="#a50993077d4fc27eac1e213623209c5bd">~SessionManager()</a>.</p>
 
 </div>
 </div>
@@ -689,7 +689,7 @@ True when a session key could be built and the removal was attempted. </dd></dl>
         <tr>
           <td class="memname">bool SessionManager::storeSession </td>
           <td>(</td>
-          <td class="paramtype">std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>clientLoginData</em></span>, </td>
+          <td class="paramtype">std::optional&lt; <a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>clientLoginData</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -711,9 +711,9 @@ True when a session key could be built and the removal was attempted. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The TTL forwarded to <a class="el" href="classMemCache.html#ac7e13d86c785d85dcf0424c07013433a" title="Inserts a value or refreshes an existing key.">MemCache::insert</a> is <span class="tt">expireTime</span> — the JWT <span class="tt">exp</span> claim as a <span class="tt">system_clock</span> duration since the epoch (set by decodeToken), not an interval remaining until expiry. Consequently the effective cache lifetime is that absolute value rather than a short time-until-expiry.</dd></dl>
 <p>Caches the session under <span class="tt">"&lt;group&gt;_&lt;id&gt;"</span>, using <span class="tt">expireTime</span> as the <a class="el" href="classMemCache.html" title="Bounded LRU cache whose entries expire after a configurable TTL.">MemCache</a> TTL. <span class="tt">expireTime</span> is the JWT <span class="tt">exp</span> claim as a system_clock duration since the epoch (populated by decodeToken), so the value handed to <a class="el" href="classMemCache.html#ac7e13d86c785d85dcf0424c07013433a" title="Inserts a value or refreshes an existing key.">MemCache::insert</a> is that absolute duration, not a remaining-lifetime interval. message: Receives the failure reason. Returns True when the session was inserted. Throws <a class="el" href="classDatabaseBusy.html" title="Exception signalling that the connection pool could not lease a connection in time.">DatabaseBusy</a>: Propagated to the caller for retry/back-off. </p>
 
-<p class="definition">Definition at line <a class="el" href="sessionmanager_8cpp_source.html#l00361">361</a> of file <a class="el" href="sessionmanager_8cpp_source.html">sessionmanager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sessionmanager_8cpp_source.html#l00558">558</a> of file <a class="el" href="sessionmanager_8cpp_source.html">sessionmanager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="sessionmanager_8hpp_source.html#l00160">clientsSessionsList</a>, and <a class="el" href="message_8cpp_source.html#l00042">Message::CriticalMessage()</a>.</p>
+<p class="reference">References <a class="el" href="sessionmanager_8hpp_source.html#l00231">clientsSessionsList</a>, and <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a50993077d4fc27eac1e213623209c5bd">~SessionManager()</a>.</p>
 
@@ -730,7 +730,7 @@ True when a session key could be built and the removal was attempted. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="classMemCache.html">MemCache</a>&lt;<a class="el" href="namespaceapi_1_1v2_1_1Types.html#adbcc5e1a10a9ff9600c0741ca2e33368">Types::ClientLoginData</a>&gt; &gt; api::v2::SessionManager::clientsSessionsList</td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classMemCache.html">MemCache</a>&lt;<a class="el" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a>&gt; &gt; api::v2::SessionManager::clientsSessionsList</td>
         </tr>
       </table>
   </td>
@@ -740,15 +740,19 @@ True when a session key could be built and the removal was attempted. </dd></dl>
 </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">                                =</div>
-<div class="line"><a class="code hl_function" href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c">Store::getObject&lt;MemCache&lt;Types::ClientLoginData&gt;</a>&gt;(<a class="code hl_variable" href="#a56d6eb7cb7a8a5c41c702df255cbd502">SESSION_MAX</a>, <a class="code hl_variable" href="#a2526008976c4fb859de88f30dcd98811">SESSION_TIMEOUT</a>)</div>
-<div class="ttc" id="aclassStore_html_a0607fb3b583c06ca910ed6c9881e790c"><div class="ttname"><a href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c">Store::getObject</a></div><div class="ttdeci">static std::shared_ptr&lt; T &gt; getObject(Args &amp;&amp;... args)</div><div class="ttdoc">Returns the singleton for T, constructing it on first use.</div><div class="ttdef"><b>Definition</b> <a href="store_8hpp_source.html#l00139">store.hpp:139</a></div></div>
-<div class="ttc" id="aclassapi_1_1v2_1_1SessionManager_html_a2526008976c4fb859de88f30dcd98811"><div class="ttname"><a href="#a2526008976c4fb859de88f30dcd98811">api::v2::SessionManager::SESSION_TIMEOUT</a></div><div class="ttdeci">static constexpr std::chrono::seconds SESSION_TIMEOUT</div><div class="ttdef"><b>Definition</b> <a href="sessionmanager_8hpp_source.html#l00156">sessionmanager.hpp:156</a></div></div>
-<div class="ttc" id="aclassapi_1_1v2_1_1SessionManager_html_a56d6eb7cb7a8a5c41c702df255cbd502"><div class="ttname"><a href="#a56d6eb7cb7a8a5c41c702df255cbd502">api::v2::SessionManager::SESSION_MAX</a></div><div class="ttdeci">static constexpr int SESSION_MAX</div><div class="ttdef"><b>Definition</b> <a href="sessionmanager_8hpp_source.html#l00157">sessionmanager.hpp:157</a></div></div>
+<div class="line"><a class="code hl_function" href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c">Store::getObject</a>&lt;<a class="code hl_class" href="classMemCache.html">MemCache</a>&lt;</div>
+<div class="line">    <a class="code hl_typedef" href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">Types::ClientLoginData</a>&gt;&gt;(<a class="code hl_variable" href="#a56d6eb7cb7a8a5c41c702df255cbd502">SESSION_MAX</a>,</div>
+<div class="line">                             <a class="code hl_variable" href="#a2526008976c4fb859de88f30dcd98811">SESSION_TIMEOUT</a>)</div>
+<div class="ttc" id="aclassMemCache_html"><div class="ttname"><a href="classMemCache.html">MemCache</a></div><div class="ttdoc">Bounded LRU cache whose entries expire after a configurable TTL.</div><div class="ttdef"><b>Definition</b> <a href="memcache_8hpp_source.html#l00078">memcache.hpp:78</a></div></div>
+<div class="ttc" id="aclassStore_html_a0607fb3b583c06ca910ed6c9881e790c"><div class="ttname"><a href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c">Store::getObject</a></div><div class="ttdeci">static std::shared_ptr&lt; T &gt; getObject(Args &amp;&amp;... args)</div><div class="ttdoc">Returns the singleton for T, constructing it on first use.</div><div class="ttdef"><b>Definition</b> <a href="store_8hpp_source.html#l00190">store.hpp:190</a></div></div>
+<div class="ttc" id="aclassapi_1_1v2_1_1SessionManager_html_a2526008976c4fb859de88f30dcd98811"><div class="ttname"><a href="#a2526008976c4fb859de88f30dcd98811">api::v2::SessionManager::SESSION_TIMEOUT</a></div><div class="ttdeci">static constexpr std::chrono::seconds SESSION_TIMEOUT</div><div class="ttdef"><b>Definition</b> <a href="sessionmanager_8hpp_source.html#l00221">sessionmanager.hpp:221</a></div></div>
+<div class="ttc" id="aclassapi_1_1v2_1_1SessionManager_html_a56d6eb7cb7a8a5c41c702df255cbd502"><div class="ttname"><a href="#a56d6eb7cb7a8a5c41c702df255cbd502">api::v2::SessionManager::SESSION_MAX</a></div><div class="ttdeci">static constexpr int SESSION_MAX</div><div class="ttdef"><b>Definition</b> <a href="sessionmanager_8hpp_source.html#l00224">sessionmanager.hpp:224</a></div></div>
+<div class="ttc" id="anamespaceapi_1_1v2_1_1Types_html_af609f0aaf134643edde3ad81ab5ebf7f"><div class="ttname"><a href="namespaceapi_1_1v2_1_1Types.html#af609f0aaf134643edde3ad81ab5ebf7f">api::v2::Types::ClientLoginData</a></div><div class="ttdeci">struct ClientLoginData { std::optional&lt; std::string &gt; token; std::optional&lt; std::string &gt; username; std::optional&lt; std::string &gt; group; std::optional&lt; uint64_t &gt; clientId; std::optional&lt; std::string &gt; lastLogoutTime; std::optional&lt; std::string &gt; nowLoginTime; bool is_active; bool passwordMatch; std::optional&lt; std::string &gt; passwordHash; std::chrono::system_clock::duration expireTime; std::optional&lt; std::string &gt; ip_address; } ClientLoginData</div><div class="ttdef"><b>Definition</b> <a href="gatekeeper_2types_8hpp_source.html#l00079">types.hpp:79</a></div></div>
 </div><!-- fragment --><p>Shared session store, holding <a class="el" href="structClientLoginData.html" title="Mutable accumulator that carries a client&#39;s identity through login and authentication.">ClientLoginData</a> by "&lt;group&gt;_&lt;id&gt;" key. </p>
 
-<p class="definition">Definition at line <a class="el" href="sessionmanager_8hpp_source.html#l00160">160</a> of file <a class="el" href="sessionmanager_8hpp_source.html">sessionmanager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sessionmanager_8hpp_source.html#l00231">231</a> of file <a class="el" href="sessionmanager_8hpp_source.html">sessionmanager.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="sessionmanager_8cpp_source.html#l00297">clientHasValidSession()</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00224">logout()</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00391">removeSession()</a>, and <a class="el" href="sessionmanager_8cpp_source.html#l00361">storeSession()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="sessionmanager_8cpp_source.html#l00468">clientHasValidSession()</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00343">logout()</a>, <a class="el" href="sessionmanager_8cpp_source.html#l00605">removeSession()</a>, and <a class="el" href="sessionmanager_8cpp_source.html#l00558">storeSession()</a>.</p>
 
 </div>
 </div>
@@ -762,7 +766,7 @@ True when a session key could be built and the removal was attempted. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="classPasswordCrypt.html">PasswordCrypt</a>&gt; api::v2::SessionManager::passwordCrypt = <a class="el" href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c">Store::getObject</a>&lt;<a class="el" href="classPasswordCrypt.html">PasswordCrypt</a>&gt;()</td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classPasswordCrypt.html">PasswordCrypt</a>&gt; api::v2::SessionManager::passwordCrypt</td>
         </tr>
       </table>
   </td>
@@ -771,11 +775,13 @@ True when a session key could be built and the removal was attempted. </dd></dl>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Shared hasher/verifier, reused rather than recreated per login. </p>
+<b>Initial value:</b><div class="fragment"><div class="line">                          =</div>
+<div class="line"><a class="code hl_function" href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c">Store::getObject&lt;PasswordCrypt&gt;</a>()</div>
+</div><!-- fragment --><p>Shared hasher/verifier, reused rather than recreated per login. </p>
 
-<p class="definition">Definition at line <a class="el" href="sessionmanager_8hpp_source.html#l00159">159</a> of file <a class="el" href="sessionmanager_8hpp_source.html">sessionmanager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sessionmanager_8hpp_source.html#l00227">227</a> of file <a class="el" href="sessionmanager_8hpp_source.html">sessionmanager.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="sessionmanager_8cpp_source.html#l00176">completeLogin()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="sessionmanager_8cpp_source.html#l00266">completeLogin()</a>.</p>
 
 </div>
 </div>
@@ -789,7 +795,7 @@ True when a session key could be built and the removal was attempted. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int api::v2::SessionManager::SESSION_MAX = 4096</td>
+          <td class="memname">int api::v2::SessionManager::SESSION_MAX</td>
         </tr>
       </table>
   </td>
@@ -798,9 +804,11 @@ True when a session key could be built and the removal was attempted. </dd></dl>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Cache capacity: at most this many sessions are held. </p>
+<b>Initial value:</b><div class="fragment"><div class="line">                             =</div>
+<div class="line">4096</div>
+</div><!-- fragment --><p>Cache capacity: at most this many sessions are held. </p>
 
-<p class="definition">Definition at line <a class="el" href="sessionmanager_8hpp_source.html#l00157">157</a> of file <a class="el" href="sessionmanager_8hpp_source.html">sessionmanager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sessionmanager_8hpp_source.html#l00224">224</a> of file <a class="el" href="sessionmanager_8hpp_source.html">sessionmanager.hpp</a>.</p>
 
 </div>
 </div>
@@ -814,7 +822,7 @@ True when a session key could be built and the removal was attempted. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::chrono::seconds api::v2::SessionManager::SESSION_TIMEOUT = std::chrono::seconds(3600)</td>
+          <td class="memname">std::chrono::seconds api::v2::SessionManager::SESSION_TIMEOUT</td>
         </tr>
       </table>
   </td>
@@ -823,9 +831,11 @@ True when a session key could be built and the removal was attempted. </dd></dl>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Default session lifetime: one hour, used if no other TTL is given. </p>
+<b>Initial value:</b><div class="fragment"><div class="line">                                                  =</div>
+<div class="line">std::chrono::seconds(3600)</div>
+</div><!-- fragment --><p>Default session lifetime: one hour, used if no other TTL is given. </p>
 
-<p class="definition">Definition at line <a class="el" href="sessionmanager_8hpp_source.html#l00156">156</a> of file <a class="el" href="sessionmanager_8hpp_source.html">sessionmanager.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sessionmanager_8hpp_source.html#l00221">221</a> of file <a class="el" href="sessionmanager_8hpp_source.html">sessionmanager.hpp</a>.</p>
 
 </div>
 </div>

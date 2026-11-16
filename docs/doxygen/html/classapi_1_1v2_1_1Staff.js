@@ -1,6 +1,6 @@
 var classapi_1_1v2_1_1Staff =
 [
-    [ "StaffVariant", "classapi_1_1v2_1_1Staff.html#a73ce9b89d16e2da392efca541714cf55", null ],
+    [ "StaffVariant", "classapi_1_1v2_1_1Staff.html#ae4172ea31830e79b8b2b28aa4770f549", null ],
     [ "Add", "classapi_1_1v2_1_1Staff.html#a409d7e9e2260c9a82ed370c9fa33a6cb", null ],
     [ "Invite", "classapi_1_1v2_1_1Staff.html#a073bef1425950fe6acd2a9287ed6e9a9", null ],
     [ "METHOD_ADD", "classapi_1_1v2_1_1Staff.html#a473143499c845634a1916623d459d2cd", null ],

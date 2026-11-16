@@ -17,9 +17,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/base.hpp" line="146" column="22" bodyfile="src/entities/base/base.hpp" bodystart="146" bodyend="-1"/>
-        <referencedby refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" compoundref="base_8hpp" startline="136" endline="140">bind</referencedby>
-        <referencedby refid="structBase_1_1Binder_1a8aff08d8abb6b9a8abb7964019d5e057" compoundref="base_8hpp" startline="127" endline="127">Binder</referencedby>
+        <location file="src/entities/base/base.hpp" line="191" column="18" bodyfile="src/entities/base/base.hpp" bodystart="191" bodyend="-1"/>
+        <referencedby refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" compoundref="base_8hpp" startline="178" endline="184">bind</referencedby>
+        <referencedby refid="structBase_1_1Binder_1a8aff08d8abb6b9a8abb7964019d5e057" compoundref="base_8hpp" startline="161" endline="163">Binder</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structBase_1_1Binder_1aa2c6aab342d4d62357fb8c8c15ff61be" prot="private" static="no" mutable="no">
         <type>size_t</type>
@@ -35,8 +35,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/base.hpp" line="151" column="23" bodyfile="src/entities/base/base.hpp" bodystart="151" bodyend="-1"/>
-        <referencedby refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" compoundref="base_8hpp" startline="136" endline="140">bind</referencedby>
+        <location file="src/entities/base/base.hpp" line="198" column="12" bodyfile="src/entities/base/base.hpp" bodystart="198" bodyend="-1"/>
+        <referencedby refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" compoundref="base_8hpp" startline="178" endline="184">bind</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -57,8 +57,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/base.hpp" line="127" column="18" bodyfile="src/entities/base/base.hpp" bodystart="127" bodyend="127"/>
-        <references refid="structBase_1_1Binder_1aa2f67f67cd827fa79329b85e1757145e" compoundref="base_8hpp" startline="146">params</references>
+        <location file="src/entities/base/base.hpp" line="161" column="14" bodyfile="src/entities/base/base.hpp" bodystart="161" bodyend="163"/>
+        <references refid="structBase_1_1Binder_1aa2f67f67cd827fa79329b85e1757145e" compoundref="base_8hpp" startline="191">params</references>
       </memberdef>
       <memberdef kind="function" id="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -103,19 +103,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/base.hpp" line="136" column="21" bodyfile="src/entities/base/base.hpp" bodystart="136" bodyend="140"/>
-        <references refid="structBase_1_1Binder_1aa2c6aab342d4d62357fb8c8c15ff61be" compoundref="base_8hpp" startline="151">index</references>
-        <references refid="structBase_1_1Binder_1aa2f67f67cd827fa79329b85e1757145e" compoundref="base_8hpp" startline="146">params</references>
-        <referencedby refid="classapi_1_1v2_1_1Client_1a9d8ec7236a309400e90639c194bb7017" compoundref="client_8hpp" startline="214" endline="237">api::v2::Client::buildClientCreateStatement</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Client_1af26bfc187b1d8c93e829d05032c7bdb3" compoundref="client_8hpp" startline="249" endline="275">api::v2::Client::buildClientUpdateStatement</referencedby>
-        <referencedby refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" compoundref="entity_8hpp" startline="207" endline="240">Entity::buildCreateStatement</referencedby>
-        <referencedby refid="classEntity_1a5d453aed23fb998dfd4153b8e0b03c79" compoundref="entity_8hpp" startline="323" endline="341">Entity::buildDeleteStatement</referencedby>
-        <referencedby refid="classEntity_1af2c7b58bd4086c30e0f0fe926aff6344" compoundref="entity_8hpp" startline="251" endline="273">Entity::buildReadStatement</referencedby>
-        <referencedby refid="classEntity_1a2ca37a471aeacadb9ba7174e8091b18f" compoundref="entity_8hpp" startline="356" endline="376">Entity::buildSearchStatement</referencedby>
-        <referencedby refid="classEntity_1ab068d7d42389d0a967f0aa84deb21d79" compoundref="entity_8hpp" startline="284" endline="313">Entity::buildUpdateStatement</referencedby>
-        <referencedby refid="classService_1a1a762691efab98926ce3c34988ccc51a" compoundref="service_8hpp" startline="92" endline="115">Service::getSqlAddStaffStatement</referencedby>
-        <referencedby refid="classService_1a6b8a06b26521f411f8c21104031ab5fe" compoundref="service_8hpp" startline="125" endline="149">Service::getSqlRemoveStaffStatement</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Client_1aca2d94a63d7099b47ce5b1fce6ff49b1" compoundref="client_8hpp" startline="135" endline="153">api::v2::Client::getSqlToggleSuspendStatement</referencedby>
+        <location file="src/entities/base/base.hpp" line="178" column="17" bodyfile="src/entities/base/base.hpp" bodystart="178" bodyend="184"/>
+        <references refid="structBase_1_1Binder_1aa2c6aab342d4d62357fb8c8c15ff61be" compoundref="base_8hpp" startline="198">index</references>
+        <references refid="structBase_1_1Binder_1aa2f67f67cd827fa79329b85e1757145e" compoundref="base_8hpp" startline="191">params</references>
+        <referencedby refid="classapi_1_1v2_1_1Client_1a9d8ec7236a309400e90639c194bb7017" compoundref="client_8hpp" startline="311" endline="347">api::v2::Client::buildClientCreateStatement</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1af26bfc187b1d8c93e829d05032c7bdb3" compoundref="client_8hpp" startline="365" endline="409">api::v2::Client::buildClientUpdateStatement</referencedby>
+        <referencedby refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" compoundref="entity_8hpp" startline="295" endline="354">Entity::buildCreateStatement</referencedby>
+        <referencedby refid="classEntity_1a5d453aed23fb998dfd4153b8e0b03c79" compoundref="entity_8hpp" startline="490" endline="513">Entity::buildDeleteStatement</referencedby>
+        <referencedby refid="classEntity_1af2c7b58bd4086c30e0f0fe926aff6344" compoundref="entity_8hpp" startline="368" endline="410">Entity::buildReadStatement</referencedby>
+        <referencedby refid="classEntity_1a2ca37a471aeacadb9ba7174e8091b18f" compoundref="entity_8hpp" startline="533" endline="567">Entity::buildSearchStatement</referencedby>
+        <referencedby refid="classEntity_1ab068d7d42389d0a967f0aa84deb21d79" compoundref="entity_8hpp" startline="425" endline="476">Entity::buildUpdateStatement</referencedby>
+        <referencedby refid="classService_1a1a762691efab98926ce3c34988ccc51a" compoundref="service_8hpp" startline="114" endline="151">Service::getSqlAddStaffStatement</referencedby>
+        <referencedby refid="classService_1a6b8a06b26521f411f8c21104031ab5fe" compoundref="service_8hpp" startline="165" endline="200">Service::getSqlRemoveStaffStatement</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Client_1aca2d94a63d7099b47ce5b1fce6ff49b1" compoundref="client_8hpp" startline="184" endline="215">api::v2::Client::getSqlToggleSuspendStatement</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -128,7 +128,7 @@
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="src/entities/base/base.hpp" line="122" column="5" bodyfile="src/entities/base/base.hpp" bodystart="123" bodyend="152"/>
+    <location file="src/entities/base/base.hpp" line="157" column="3" bodyfile="src/entities/base/base.hpp" bodystart="157" bodyend="200"/>
     <listofallmembers>
       <member refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" prot="public" virt="non-virtual"><scope>Base::Binder</scope><name>bind</name></member>
       <member refid="structBase_1_1Binder_1a8aff08d8abb6b9a8abb7964019d5e057" prot="public" virt="non-virtual"><scope>Base::Binder</scope><name>Binder</name></member>

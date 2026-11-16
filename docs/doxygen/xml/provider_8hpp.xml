@@ -14,16 +14,16 @@
     <includedby refid="clientcontroller_8cpp" local="yes">src/controllers/clientcontroller/clientcontroller.cpp</includedby>
     <includedby refid="includes_8hpp" local="yes">src/gatekeeper/includes.hpp</includedby>
     <incdepgraph>
-      <node id="25">
+      <node id="24">
         <label>configurator/configurator.hpp</label>
         <link refid="configurator_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -31,16 +31,16 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="32">
+      <node id="31">
         <label>defaults.hpp</label>
         <link refid="defaults_8hpp"/>
         <childnode refid="3" relation="include">
@@ -48,23 +48,23 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="28">
+      <node id="27">
         <label>configurator/envloader/envloader.hpp</label>
         <link refid="envloader_8hpp"/>
-        <childnode refid="27" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
       </node>
-      <node id="29">
+      <node id="28">
         <label>envvars/envvars.hpp</label>
         <link refid="envvars_8hpp"/>
         <childnode refid="5" relation="include">
@@ -75,43 +75,41 @@
       <node id="16">
         <label>controllers/databasecontroller/databasecontroller.hpp</label>
         <link refid="databasecontroller_8hpp"/>
-        <childnode refid="17" relation="include">
-        </childnode>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="39" relation="include">
         </childnode>
@@ -119,31 +117,33 @@
         </childnode>
         <childnode refid="42" relation="include">
         </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
         <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="35">
+      <node id="32">
         <label>database/asyncdbclient.hpp</label>
         <link refid="asyncdbclient_8hpp"/>
-        <childnode refid="36" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="37">
+      <node id="34">
         <label>database/asyncresultmapper.hpp</label>
         <link refid="asyncresultmapper_8hpp"/>
-        <childnode refid="38" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
@@ -152,52 +152,52 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="39">
+      <node id="36">
         <label>database/asyncsqlbinder.hpp</label>
         <link refid="asyncsqlbinder_8hpp"/>
-        <childnode refid="36" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="33">
+      <node id="39">
         <label>database/databasebusy.hpp</label>
         <link refid="databasebusy_8hpp"/>
-        <childnode refid="34" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="42">
+      <node id="41">
         <label>database/databasehandler.hpp</label>
         <link refid="databasehandler_8hpp"/>
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="17">
+      <node id="42">
         <label>database/dbprobe.hpp</label>
         <link refid="dbprobe_8hpp"/>
       </node>
       <node id="47">
         <label>entities/base/base.hpp</label>
         <link refid="base_8hpp"/>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -233,11 +233,11 @@
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="57" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
       <node id="15">
@@ -267,13 +267,13 @@
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="43" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
       <node id="49">
@@ -281,7 +281,7 @@
         <link refid="entities_2base_2types_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
@@ -295,7 +295,7 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
@@ -303,19 +303,19 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="52" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="53" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="54" relation="include">
         </childnode>
@@ -323,7 +323,7 @@
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="56" relation="include">
         </childnode>
@@ -345,7 +345,7 @@
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
       <node id="54">
@@ -359,15 +359,15 @@
       <node id="43">
         <label>store/store.hpp</label>
         <link refid="store_8hpp"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -381,7 +381,7 @@
         <link refid="errorstatus_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>
@@ -406,10 +406,10 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="29">
         <label>utils/message/message.hpp</label>
         <link refid="message_8hpp"/>
-        <childnode refid="31" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -421,15 +421,15 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>
@@ -439,13 +439,13 @@
       <node id="9">
         <label>algorithm</label>
       </node>
-      <node id="19">
+      <node id="18">
         <label>atomic</label>
       </node>
       <node id="50">
         <label>cctype</label>
       </node>
-      <node id="27">
+      <node id="26">
         <label>chrono</label>
       </node>
       <node id="51">
@@ -457,16 +457,16 @@
       <node id="3">
         <label>cstdint</label>
       </node>
-      <node id="36">
+      <node id="33">
         <label>drogon/orm/DbClient.h</label>
       </node>
-      <node id="38">
+      <node id="35">
         <label>drogon/orm/Result.h</label>
       </node>
-      <node id="40">
+      <node id="37">
         <label>drogon/orm/SqlBinder.h</label>
       </node>
-      <node id="41">
+      <node id="38">
         <label>drogon/utils/coroutine.h</label>
       </node>
       <node id="4">
@@ -475,16 +475,16 @@
       <node id="2">
         <label>fmt/core.h</label>
       </node>
-      <node id="18">
+      <node id="17">
         <label>fmt/format.h</label>
       </node>
-      <node id="26">
+      <node id="25">
         <label>fmt/ranges.h</label>
       </node>
       <node id="10">
         <label>iterator</label>
       </node>
-      <node id="20">
+      <node id="19">
         <label>jsoncons/basic_json.hpp</label>
       </node>
       <node id="11">
@@ -493,16 +493,16 @@
       <node id="12">
         <label>memory</label>
       </node>
-      <node id="21">
+      <node id="20">
         <label>mutex</label>
       </node>
       <node id="5">
         <label>optional</label>
       </node>
-      <node id="22">
+      <node id="21">
         <label>pqxx/pqxx</label>
       </node>
-      <node id="34">
+      <node id="40">
         <label>stdexcept</label>
       </node>
       <node id="6">
@@ -514,7 +514,7 @@
       <node id="8">
         <label>sys/types.h</label>
       </node>
-      <node id="31">
+      <node id="30">
         <label>trantor/utils/Logger.h</label>
       </node>
       <node id="13">
@@ -526,10 +526,10 @@
       <node id="45">
         <label>unordered_map</label>
       </node>
-      <node id="23">
+      <node id="22">
         <label>unordered_set</label>
       </node>
-      <node id="24">
+      <node id="23">
         <label>utility</label>
       </node>
       <node id="53">
@@ -622,157 +622,194 @@
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
 <codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>provider.hpp</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Convenience<sp/>alias<sp/>for<sp/>the<sp/>id-only<sp/>payload<sp/>used<sp/>by<sp/>get-services<sp/>lookups.</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>defines<sp/>the<sp/>Provider<sp/>entity<sp/>for<sp/>the<sp/>&quot;providers&quot;<sp/>table.<sp/>It<sp/>inherits<sp/>the<sp/>full</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>validated<sp/>Client<sp/>behaviour<sp/>(create/update<sp/>with<sp/>validation,<sp/>suspend/activate,<sp/>username<sp/>checks)</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>and<sp/>adds<sp/>one<sp/>query:<sp/>getSqlGetServicesStatement,<sp/>which<sp/>lists<sp/>every<sp/>clinic,<sp/>pharmacy,<sp/>radiology</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>centre<sp/>and<sp/>laboratory<sp/>where<sp/>the<sp/>provider<sp/>is<sp/>an<sp/>owner,<sp/>an<sp/>admin,<sp/>or<sp/>listed<sp/>in<sp/>the<sp/>JSON<sp/>staff<sp/>array.</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>The<sp/>provider<sp/>id<sp/>is<sp/>bound<sp/>twice<sp/>because<sp/>it<sp/>is<sp/>needed<sp/>as<sp/>a<sp/>number<sp/>and<sp/>as<sp/>text.</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>When<sp/>a<sp/>provider<sp/>logs<sp/>in,<sp/>the<sp/>API<sp/>needs<sp/>to<sp/>know<sp/>which<sp/>organisations<sp/>they<sp/>belong<sp/>to<sp/>so<sp/>it<sp/>can<sp/>show</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>the<sp/>right<sp/>workspace.<sp/>Controllers<sp/>construct<sp/>Provider<sp/>and<sp/>call<sp/>getSqlGetServicesStatement<sp/>to<sp/>obtain</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>that<sp/>list.<sp/>Without<sp/>it<sp/>there<sp/>would<sp/>be<sp/>no<sp/>way<sp/>to<sp/>resolve<sp/>a<sp/>provider&apos;s<sp/>memberships<sp/>across<sp/>the<sp/>four</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>service<sp/>tables<sp/>in<sp/>one<sp/>query.</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>-<sp/>std::optional:<sp/>https://en.cppreference.com/w/cpp/utility/optional</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>SQL<sp/>parameter<sp/>binding:<sp/>put<sp/>$1,<sp/>$2,<sp/>...<sp/>markers<sp/>in<sp/>the<sp/>SQL<sp/>and<sp/>pass<sp/>the<sp/>real<sp/>values<sp/>separately;</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp/>*<sp/><sp/><sp/>see<sp/>https://en.cppreference.com/w/cpp<sp/>or<sp/>the<sp/>libpqxx<sp/>documentation.<sp/>Here<sp/>there<sp/>are<sp/>two<sp/>markers</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp/>*<sp/><sp/><sp/>for<sp/>the<sp/>same<sp/>id<sp/>because<sp/>one<sp/>is<sp/>used<sp/>as<sp/>a<sp/>bigint<sp/>and<sp/>the<sp/>other<sp/>as<sp/>text.</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>UNION<sp/>ALL:<sp/>combines<sp/>the<sp/>result<sp/>rows<sp/>of<sp/>several<sp/>SELECT<sp/>statements<sp/>into<sp/>one<sp/>list.</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>JSONB:<sp/>a<sp/>PostgreSQL<sp/>binary<sp/>JSON<sp/>column;<sp/>jsonb_path_exists<sp/>searches<sp/>inside<sp/>it<sp/>with<sp/>a<sp/>path.</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
-<codeline lineno="26"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>header<sp/>at<sp/>most<sp/>once<sp/>per<sp/>source<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/core.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>fmt::format<sp/>is<sp/>used<sp/>for<sp/>the<sp/>error<sp/>log<sp/>message.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>uint64_t,<sp/>the<sp/>id<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;exception&gt;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>std::exception,<sp/>caught<sp/>by<sp/>the<sp/>query<sp/>builder.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::optional<sp/>for<sp/>ids<sp/>and<sp/>the<sp/>builder<sp/>return<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>for<sp/>SQL<sp/>text.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="client_8hpp" kindref="compound">entities/base/client.hpp</ref>&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>Client,<sp/>the<sp/>base<sp/>class<sp/>with<sp/>validated<sp/>account<sp/>builders.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="entities_2base_2types_8hpp" kindref="compound">entities/base/types.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Types::Data_t,<sp/>the<sp/>id-only<sp/>payload<sp/>used<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="message_8hpp" kindref="compound">utils/message/message.hpp</ref>&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>Message<sp/>logging<sp/>for<sp/>build<sp/>failures.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="40"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Convenience<sp/>alias<sp/>for<sp/>the<sp/>id-only<sp/>payload<sp/>used<sp/>by<sp/>get-services<sp/>lookups.</highlight></codeline>
-<codeline lineno="42"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classData__t" kindref="compound">Data_t</ref><sp/>=<sp/><ref refid="namespaceapi_1_1v2_1_1Types_1adde80020c20219af8fb84408bfc566ce" kindref="member">api::v2::Types::Data_t</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Short<sp/>global<sp/>name<sp/>for<sp/>the<sp/>payload<sp/>that<sp/>carries<sp/>just<sp/>a<sp/>provider<sp/>id.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="45"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Convenience<sp/>alias<sp/>for<sp/>the<sp/>base<sp/>Client<sp/>class.</highlight></codeline>
-<codeline lineno="47"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="controller_8hpp_1af928d8b9ced02f7387b9b56ed3877b11" kindref="member">Client</ref><sp/>=<sp/><ref refid="classapi_1_1v2_1_1Client" kindref="compound">api::v2::Client</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Short<sp/>global<sp/>name<sp/>so<sp/>Provider<sp/>can<sp/>derive<sp/>from<sp/>Client<sp/>without<sp/>the<sp/>full<sp/>namespace.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="50"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>@class<sp/>Provider</highlight></codeline>
-<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Client<sp/>entity<sp/>for<sp/>the<sp/>providers<sp/>table<sp/>with<sp/>a<sp/>get-services<sp/>query.</highlight></codeline>
-<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>@details<sp/>Extends<sp/>Client<sp/>with<sp/>a<sp/>query<sp/>that<sp/>returns<sp/>every<sp/>service<sp/>(clinic,<sp/>pharmacy,<sp/>radiology</highlight></codeline>
-<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>centre<sp/>or<sp/>laboratory)<sp/>where<sp/>the<sp/>provider<sp/>is<sp/>an<sp/>owner,<sp/>admin<sp/>or<sp/>listed<sp/>in<sp/>the<sp/>JSON<sp/>staff<sp/>array.</highlight></codeline>
-<codeline lineno="55"><highlight class="comment"><sp/>*<sp/>The<sp/>provider<sp/>id<sp/>is<sp/>bound<sp/>twice<sp/>because<sp/>it<sp/>is<sp/>used<sp/>both<sp/>as<sp/>a<sp/>numeric<sp/>key<sp/>and<sp/>as<sp/>a<sp/>JSON<sp/>text<sp/>value.</highlight></codeline>
-<codeline lineno="56"><highlight class="comment"><sp/>*<sp/>@see<sp/>Client,<sp/>Types::Data_t</highlight></codeline>
-<codeline lineno="57"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58" refid="classProvider" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1" kindref="member">Provider</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1Client_1a787dc26f0c3eda19fab0dd719f0e35c4" kindref="member">Client</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Inherits<sp/>validated<sp/>account<sp/>behaviour;<sp/>adds<sp/>the<sp/>services<sp/>lookup.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="61"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Non-copyable<sp/>and<sp/>non-movable;<sp/>construct<sp/>in<sp/>place<sp/>for<sp/>the<sp/>request<sp/>that<sp/>uses<sp/>it.</highlight></codeline>
-<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="64" refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1" kindref="member">Provider</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1" kindref="member">Provider</ref>&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copy:<sp/>one<sp/>entity<sp/>per<sp/>request.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="65" refid="classProvider_1a23a000af0d12d42d56f4027a008ad906" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classProvider_1a23a000af0d12d42d56f4027a008ad906" kindref="member">Provider</ref>(<ref refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1" kindref="member">Provider</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>move.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="66" refid="classProvider_1a4c6419755f12de8b1122f3a21c1bc2d9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1" kindref="member">Provider</ref>&amp;<sp/><ref refid="classProvider_1a4c6419755f12de8b1122f3a21c1bc2d9" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1" kindref="member">Provider</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copy<sp/>assignment.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="67" refid="classProvider_1a1c64dbd493fa3b50b43676ce2b0198a6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1" kindref="member">Provider</ref>&amp;<sp/><ref refid="classProvider_1a1c64dbd493fa3b50b43676ce2b0198a6" kindref="member">operator=</ref>(<ref refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1" kindref="member">Provider</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>move<sp/>assignment.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="69"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Stores<sp/>an<sp/>id-only<sp/>payload,<sp/>binding<sp/>it<sp/>to<sp/>the<sp/>providers<sp/>table.</highlight></codeline>
-<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>ClientData_t<sp/>A<sp/>ClientData_t<sp/>payload<sp/>(typically<sp/>Data_t<sp/>for<sp/>get-services).</highlight></codeline>
-<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Operation<sp/>payload<sp/>carrying<sp/>the<sp/>provider<sp/>id.</highlight></codeline>
-<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>ClientData_t&gt;</highlight></codeline>
-<codeline lineno="75" refid="classProvider_1a8cee1947342e8204d0be826e21ea9c8a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classProvider_1a8cee1947342e8204d0be826e21ea9c8a" kindref="member">Provider</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ClientData_t&amp;<sp/><ref refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" kindref="member">data</ref>)<sp/>:<sp/><ref refid="classapi_1_1v2_1_1Client_1a787dc26f0c3eda19fab0dd719f0e35c4" kindref="member">Client</ref>(<ref refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" kindref="member">data</ref>,<sp/><ref refid="classProvider_1a999e58bf1dc6fcbf2cb09f37d10aa1c1" kindref="member">TABLENAME</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;explicit&quot;<sp/>prevents<sp/>implicit<sp/>conversions;<sp/>TABLENAME<sp/>fixes<sp/>the<sp/>target<sp/>table.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Provider()<sp/>:<sp/>Client(std::string(TABLENAME))<sp/>{}</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Default<sp/>destructor;<sp/>no<sp/>state<sp/>beyond<sp/>the<sp/>base<sp/>Client.</highlight></codeline>
-<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="82" refid="classProvider_1ad527a9774dbfbc0a55b9c7eadf4bbb6e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classProvider_1ad527a9774dbfbc0a55b9c7eadf4bbb6e" kindref="member">~Provider</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Nothing<sp/>extra<sp/>to<sp/>clean<sp/>up.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Convenience<sp/>alias<sp/>for<sp/>the<sp/>id-only<sp/>payload<sp/>used<sp/>by<sp/>get-services</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>lookups.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>header<sp/>defines<sp/>the<sp/>Provider<sp/>entity<sp/>for<sp/>the<sp/>&quot;providers&quot;<sp/>table.</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>It<sp/>inherits<sp/>the<sp/>full<sp/>validated<sp/>Client<sp/>behaviour<sp/>(create/update<sp/>with</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>validation,<sp/>suspend/activate,<sp/>username<sp/>checks)<sp/>and<sp/>adds<sp/>one<sp/>query:</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>getSqlGetServicesStatement,<sp/>which<sp/>lists<sp/>every<sp/>clinic,<sp/>pharmacy,<sp/>radiology</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>centre<sp/>and<sp/>laboratory<sp/>where<sp/>the<sp/>provider<sp/>is<sp/>an<sp/>owner,<sp/>an<sp/>admin,<sp/>or<sp/>listed<sp/>in</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>the<sp/>JSON<sp/>staff<sp/>array.<sp/>The<sp/>provider<sp/>id<sp/>is<sp/>bound<sp/>twice<sp/>because<sp/>it<sp/>is<sp/>needed<sp/>as</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>a<sp/>number<sp/>and<sp/>as<sp/>text.</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>When<sp/>a<sp/>provider<sp/>logs<sp/>in,<sp/>the<sp/>API<sp/>needs<sp/>to<sp/>know<sp/>which<sp/>organisations<sp/>they</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>belong<sp/>to<sp/>so<sp/>it<sp/>can<sp/>show<sp/>the<sp/>right<sp/>workspace.<sp/>Controllers<sp/>construct<sp/>Provider</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>and<sp/>call<sp/>getSqlGetServicesStatement<sp/>to<sp/>obtain<sp/>that<sp/>list.<sp/>Without<sp/>it<sp/>there</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>would<sp/>be<sp/>no<sp/>way<sp/>to<sp/>resolve<sp/>a<sp/>provider&apos;s<sp/>memberships<sp/>across<sp/>the<sp/>four<sp/>service</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>tables<sp/>in<sp/>one<sp/>query.</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>std::optional:<sp/>https://en.cppreference.com/w/cpp/utility/optional</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>SQL<sp/>parameter<sp/>binding:<sp/>put<sp/>$1,<sp/>$2,<sp/>...<sp/>markers<sp/>in<sp/>the<sp/>SQL<sp/>and<sp/>pass<sp/>the<sp/>real</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>values<sp/>separately;<sp/>see<sp/>https://en.cppreference.com/w/cpp<sp/>or<sp/>the<sp/>libpqxx</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>documentation.<sp/>Here<sp/>there<sp/>are<sp/>two<sp/>markers<sp/>for<sp/>the<sp/>same<sp/>id<sp/>because<sp/>one<sp/>is<sp/>used</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>as<sp/>a<sp/>bigint<sp/>and<sp/>the<sp/>other<sp/>as<sp/>text.</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>-<sp/>UNION<sp/>ALL:<sp/>combines<sp/>the<sp/>result<sp/>rows<sp/>of<sp/>several<sp/>SELECT<sp/>statements<sp/>into<sp/>one</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>list.</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>-<sp/>JSONB:<sp/>a<sp/>PostgreSQL<sp/>binary<sp/>JSON<sp/>column;<sp/>jsonb_path_exists<sp/>searches<sp/>inside</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/>it<sp/>with<sp/>a<sp/>path.</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>header<sp/>at<sp/>most<sp/>once<sp/>per<sp/>source<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/core.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>fmt::format<sp/>is<sp/>used<sp/>for<sp/>the<sp/>error<sp/>log<sp/>message.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>uint64_t,<sp/>the<sp/>id<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;exception&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::exception,<sp/>caught<sp/>by<sp/>the<sp/>query<sp/>builder.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::optional<sp/>for<sp/>ids<sp/>and<sp/>the<sp/>builder<sp/>return<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>for<sp/>SQL<sp/>text.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Client,<sp/>the<sp/>base<sp/>class<sp/>with<sp/>validated<sp/>account<sp/>builders.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="client_8hpp" kindref="compound">entities/base/client.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Types::Data_t,<sp/>the<sp/>id-only<sp/>payload<sp/>used<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="entities_2base_2types_8hpp" kindref="compound">entities/base/types.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="message_8hpp" kindref="compound">utils/message/message.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Message<sp/>logging<sp/>for<sp/>build<sp/>failures.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="49"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Convenience<sp/>alias<sp/>for<sp/>the<sp/>id-only<sp/>payload<sp/>used<sp/>by<sp/>get-services</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>lookups.</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classData__t" kindref="compound">Data_t</ref><sp/>=<sp/><ref refid="namespaceapi_1_1v2_1_1Types_1a9f750896e315eb50c898d065fbed2b44" kindref="member">api::v2::Types::Data_t</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Short<sp/>global<sp/>name<sp/>for<sp/>the<sp/>payload</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>that<sp/>carries<sp/>just<sp/>a<sp/>provider<sp/>id.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="56"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Convenience<sp/>alias<sp/>for<sp/>the<sp/>base<sp/>Client<sp/>class.</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="controller_8hpp_1af928d8b9ced02f7387b9b56ed3877b11" kindref="member">Client</ref><sp/>=<sp/><ref refid="classapi_1_1v2_1_1Client" kindref="compound">api::v2::Client</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Short<sp/>global<sp/>name<sp/>so<sp/>Provider<sp/>can<sp/>derive</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>from<sp/>Client<sp/>without<sp/>the<sp/>full<sp/>namespace.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="62"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>@class<sp/>Provider</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Client<sp/>entity<sp/>for<sp/>the<sp/>providers<sp/>table<sp/>with<sp/>a<sp/>get-services<sp/>query.</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*<sp/>@details<sp/>Extends<sp/>Client<sp/>with<sp/>a<sp/>query<sp/>that<sp/>returns<sp/>every<sp/>service<sp/>(clinic,</highlight></codeline>
+<codeline lineno="66"><highlight class="comment"><sp/>*<sp/>pharmacy,<sp/>radiology<sp/>centre<sp/>or<sp/>laboratory)<sp/>where<sp/>the<sp/>provider<sp/>is<sp/>an<sp/>owner,</highlight></codeline>
+<codeline lineno="67"><highlight class="comment"><sp/>*<sp/>admin<sp/>or<sp/>listed<sp/>in<sp/>the<sp/>JSON<sp/>staff<sp/>array.<sp/>The<sp/>provider<sp/>id<sp/>is<sp/>bound<sp/>twice</highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/>*<sp/>because<sp/>it<sp/>is<sp/>used<sp/>both<sp/>as<sp/>a<sp/>numeric<sp/>key<sp/>and<sp/>as<sp/>a<sp/>JSON<sp/>text<sp/>value.</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/>*<sp/>@see<sp/>Client,<sp/>Types::Data_t</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Inherits<sp/>validated<sp/>account<sp/>behaviour;<sp/>adds</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>services<sp/>lookup.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="classProvider" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1" kindref="member">Provider</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1Client_1a787dc26f0c3eda19fab0dd719f0e35c4" kindref="member">Client</ref><sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="76"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Non-copyable<sp/>and<sp/>non-movable;<sp/>construct<sp/>in<sp/>place<sp/>for<sp/>the<sp/>request</highlight></codeline>
+<codeline lineno="77"><highlight class="comment"><sp/><sp/><sp/>*<sp/>that<sp/>uses<sp/>it.</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1" kindref="member">Provider</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1" kindref="member">Provider</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copy:<sp/>one<sp/>entity<sp/>per<sp/>request.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classProvider_1a23a000af0d12d42d56f4027a008ad906" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classProvider_1a23a000af0d12d42d56f4027a008ad906" kindref="member">Provider</ref>(<ref refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1" kindref="member">Provider</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>move.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classProvider_1a4c6419755f12de8b1122f3a21c1bc2d9" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1" kindref="member">Provider</ref>&amp;<sp/><ref refid="classProvider_1a4c6419755f12de8b1122f3a21c1bc2d9" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1" kindref="member">Provider</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copy<sp/>assignment.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="classProvider_1a1c64dbd493fa3b50b43676ce2b0198a6" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1" kindref="member">Provider</ref>&amp;<sp/><ref refid="classProvider_1a1c64dbd493fa3b50b43676ce2b0198a6" kindref="member">operator=</ref>(<ref refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1" kindref="member">Provider</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>move<sp/>assignment.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="84"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>providers<sp/>table<sp/>name.</highlight></codeline>
-<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="87" refid="classProvider_1aaa88add3f2765173dc916334d4dc611e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classProvider_1aaa88add3f2765173dc916334d4dc611e" kindref="member">getTableName</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classProvider_1a999e58bf1dc6fcbf2cb09f37d10aa1c1" kindref="member">TABLENAME</ref>;<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Static<sp/>accessor<sp/>for<sp/>the<sp/>table<sp/>name.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>a<sp/>query<sp/>listing<sp/>the<sp/>services<sp/>the<sp/>provider<sp/>belongs<sp/>to.</highlight></codeline>
-<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Reads<sp/>the<sp/>id<sp/>from<sp/>the<sp/>Data_t<sp/>payload<sp/>into<sp/>client_id,<sp/>then<sp/>binds<sp/>it<sp/>as<sp/>a<sp/>bigint</highlight></codeline>
-<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>($1)<sp/>and<sp/>as<sp/>text<sp/>($2).<sp/>The<sp/>text<sp/>form<sp/>is<sp/>matched<sp/>against<sp/>the<sp/>JSON<sp/>staff<sp/>arrays<sp/>via</highlight></codeline>
-<codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>jsonb_path_exists;<sp/>owner_id<sp/>and<sp/>admin_id<sp/>are<sp/>compared<sp/>against<sp/>the<sp/>numeric<sp/>id.<sp/>Results<sp/>from</highlight></codeline>
-<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>the<sp/>four<sp/>service<sp/>tables<sp/>are<sp/>combined<sp/>with<sp/>UNION<sp/>ALL.</highlight></codeline>
-<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[out]<sp/>params<sp/>Cleared<sp/>and<sp/>filled<sp/>with<sp/>the<sp/>numeric<sp/>id<sp/>and<sp/>its<sp/>text<sp/>form.</highlight></codeline>
-<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>SELECT<sp/>statement,<sp/>or<sp/>std::nullopt<sp/>if<sp/>no<sp/>id<sp/>was<sp/>supplied<sp/>or<sp/>an<sp/>exception<sp/>occurs.</highlight></codeline>
-<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@note<sp/>Bindings<sp/>are<sp/>made<sp/>into<sp/>explicit<sp/>params<sp/>entries<sp/>because<sp/>the<sp/>two<sp/>uses<sp/>need<sp/>different<sp/>SQL<sp/>types.</highlight></codeline>
-<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="99" refid="classProvider_1ac2c776b47dc13f0277c0fe628f9e138d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classProvider_1ac2c776b47dc13f0277c0fe628f9e138d" kindref="member">getSqlGetServicesStatement</ref>(pqxx::params&amp;<sp/>params)<sp/><sp/></highlight><highlight class="comment">//<sp/>Builds<sp/>the<sp/>&quot;which<sp/>organisations<sp/>is<sp/>this<sp/>provider<sp/>in?&quot;<sp/>query.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" kindref="member">client_id</ref><sp/>=<sp/>std::get&lt;Data_t&gt;(<ref refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" kindref="member">getData</ref>()).get_id();<sp/><sp/></highlight><highlight class="comment">//<sp/>Pull<sp/>the<sp/>provider<sp/>id<sp/>from<sp/>the<sp/>id-only<sp/>payload<sp/>into<sp/>the<sp/>cached<sp/>member.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" kindref="member">client_id</ref>.has_value())<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Without<sp/>an<sp/>id<sp/>the<sp/>query<sp/>cannot<sp/>be<sp/>scoped.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>get<sp/>services<sp/>for<sp/>provider:<sp/>no<sp/>id.&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>caller<sp/>mistake.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>statement<sp/>returned.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>params<sp/>=<sp/>{};<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Empty<sp/>the<sp/>caller&apos;s<sp/>container<sp/>so<sp/>numbering<sp/>starts<sp/>fresh.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>params.append(<ref refid="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" kindref="member">client_id</ref>.value());<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>$1:<sp/>numeric<sp/>id,<sp/>used<sp/>in<sp/>the<sp/>bigint<sp/>comparisons.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>params.append(std::to_string(<ref refid="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" kindref="member">client_id</ref>.value()));<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>$2:<sp/>the<sp/>same<sp/>id<sp/>as<sp/>text,<sp/>compared<sp/>with<sp/>the<sp/>JSON<sp/>staff<sp/>entries.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>SQL<sp/>first<sp/>builds<sp/>a<sp/>&quot;vars&quot;<sp/>row<sp/>holding<sp/>the<sp/>numeric<sp/>id,<sp/>then<sp/>UNION<sp/>ALLs<sp/>the<sp/>id/name/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>staff/admin_id/owner_id<sp/>columns<sp/>from<sp/>all<sp/>four<sp/>service<sp/>tables.<sp/>The<sp/>JOIN<sp/>keeps<sp/>a<sp/>service</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>when<sp/>the<sp/>provider&apos;s<sp/>text<sp/>id<sp/>appears<sp/>anywhere<sp/>in<sp/>its<sp/>staff<sp/>JSON<sp/>(jsonb_path_exists)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>OR<sp/>the<sp/>numeric<sp/>id<sp/>matches<sp/>admin_id<sp/>or<sp/>owner_id.<sp/>This<sp/>returns<sp/>every<sp/>membership<sp/>in<sp/>one<sp/>go.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::string(</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>R</highlight><highlight class="stringliteral">&quot;(</highlight></codeline>
-<codeline lineno="118"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WITH<sp/>vars<sp/>AS<sp/>(</highlight></codeline>
-<codeline lineno="119"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SELECT<sp/>$1::bigint<sp/>AS<sp/>id</highlight></codeline>
-<codeline lineno="120"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight></codeline>
-<codeline lineno="121"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SELECT<sp/>combined.id,<sp/>combined.name,<sp/>combined.type</highlight></codeline>
-<codeline lineno="122"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FROM<sp/>(</highlight></codeline>
-<codeline lineno="123"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SELECT<sp/>id,<sp/>name,<sp/>staff,<sp/>admin_id,<sp/>owner_id,<sp/>&apos;Clinic&apos;<sp/>AS<sp/>type</highlight></codeline>
-<codeline lineno="124"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FROM<sp/>clinics</highlight></codeline>
-<codeline lineno="125"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UNION<sp/>ALL</highlight></codeline>
-<codeline lineno="126"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SELECT<sp/>id,<sp/>name,<sp/>staff,<sp/>admin_id,<sp/>owner_id,<sp/>&apos;Pharmacy&apos;<sp/>AS<sp/>type</highlight></codeline>
-<codeline lineno="127"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FROM<sp/>pharmacies</highlight></codeline>
-<codeline lineno="128"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UNION<sp/>ALL</highlight></codeline>
-<codeline lineno="129"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SELECT<sp/>id,<sp/>name,<sp/>staff,<sp/>admin_id,<sp/>owner_id,<sp/>&apos;RadiologyCenter&apos;<sp/>AS<sp/>type</highlight></codeline>
-<codeline lineno="130"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FROM<sp/>radiologycenters</highlight></codeline>
-<codeline lineno="131" refid="classProvider_1a999e58bf1dc6fcbf2cb09f37d10aa1c1" refkind="member"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UNION<sp/>ALL</highlight></codeline>
-<codeline lineno="132"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SELECT<sp/>id,<sp/>name,<sp/>staff,<sp/>admin_id,<sp/>owner_id,<sp/>&apos;Laboratory&apos;<sp/>AS<sp/>type</highlight></codeline>
-<codeline lineno="133"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FROM<sp/>laboratories</highlight></codeline>
-<codeline lineno="134"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>AS<sp/>combined</highlight></codeline>
-<codeline lineno="135"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>JOIN<sp/>vars<sp/>ON<sp/>jsonb_path_exists(combined.staff,<sp/>&apos;$.**<sp/>?<sp/>(@<sp/>==<sp/>$v)&apos;::jsonpath,<sp/>jsonb_build_object(&apos;v&apos;,<sp/>$2::text))</highlight></codeline>
-<codeline lineno="136"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OR<sp/>combined.admin_id<sp/>=<sp/>vars.id</highlight></codeline>
-<codeline lineno="137"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OR<sp/>combined.owner_id<sp/>=<sp/>vars.id;</highlight></codeline>
-<codeline lineno="138"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)&quot;);<sp/><sp/></highlight><highlight class="comment">//<sp/>Wrap<sp/>the<sp/>raw<sp/>SQL<sp/>literal<sp/>in<sp/>a<sp/>std::string<sp/>for<sp/>the<sp/>caller.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/><sp/></highlight><highlight class="comment">//<sp/>Wrong<sp/>payload<sp/>type<sp/>or<sp/>a<sp/>formatting<sp/>problem.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(fmt::format(</highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>create<sp/>query<sp/>for<sp/>GetServicesStatement<sp/>{}.&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>));<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>table.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Signal<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="149"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="150"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Database<sp/>table<sp/>holding<sp/>providers.</highlight></codeline>
-<codeline lineno="151"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classProvider_1a999e58bf1dc6fcbf2cb09f37d10aa1c1" kindref="member">TABLENAME</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;providers&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>exact<sp/>table<sp/>this<sp/>entity<sp/>targets.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="153"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="84"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Stores<sp/>an<sp/>id-only<sp/>payload,<sp/>binding<sp/>it<sp/>to<sp/>the<sp/>providers<sp/>table.</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@tparam<sp/>ClientData_t<sp/>A<sp/>ClientData_t<sp/>payload<sp/>(typically<sp/>Data_t<sp/>for</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/>*<sp/>get-services).</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Operation<sp/>payload<sp/>carrying<sp/>the<sp/>provider<sp/>id.</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>ClientData_t&gt;</highlight></codeline>
+<codeline lineno="91" refid="classProvider_1a8cee1947342e8204d0be826e21ea9c8a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classProvider_1a8cee1947342e8204d0be826e21ea9c8a" kindref="member">Provider</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ClientData_t&amp;<sp/><ref refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" kindref="member">data</ref>)</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;explicit&quot;<sp/>prevents<sp/>implicit<sp/>conversions;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TABLENAME<sp/>fixes<sp/>the<sp/>target<sp/>table.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classapi_1_1v2_1_1Client_1a787dc26f0c3eda19fab0dd719f0e35c4" kindref="member">Client</ref>(<ref refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" kindref="member">data</ref>,<sp/><ref refid="classProvider_1a999e58bf1dc6fcbf2cb09f37d10aa1c1" kindref="member">TABLENAME</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Provider()<sp/>:<sp/>Client(std::string(TABLENAME))<sp/>{}</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Default<sp/>destructor;<sp/>no<sp/>state<sp/>beyond<sp/>the<sp/>base<sp/>Client.</highlight></codeline>
+<codeline lineno="99"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="classProvider_1ad527a9774dbfbc0a55b9c7eadf4bbb6e" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classProvider_1ad527a9774dbfbc0a55b9c7eadf4bbb6e" kindref="member">~Provider</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Nothing<sp/>extra<sp/>to<sp/>clean<sp/>up.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>providers<sp/>table<sp/>name.</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="classProvider_1aaa88add3f2765173dc916334d4dc611e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classProvider_1aaa88add3f2765173dc916334d4dc611e" kindref="member">getTableName</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classProvider_1a999e58bf1dc6fcbf2cb09f37d10aa1c1" kindref="member">TABLENAME</ref>;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Static<sp/>accessor<sp/>for<sp/>the<sp/>table<sp/>name.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>a<sp/>query<sp/>listing<sp/>the<sp/>services<sp/>the<sp/>provider<sp/>belongs<sp/>to.</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Reads<sp/>the<sp/>id<sp/>from<sp/>the<sp/>Data_t<sp/>payload<sp/>into<sp/>client_id,<sp/>then<sp/>binds</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/><sp/><sp/>*<sp/>it<sp/>as<sp/>a<sp/>bigint</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/><sp/><sp/>*<sp/>($1)<sp/>and<sp/>as<sp/>text<sp/>($2).<sp/>The<sp/>text<sp/>form<sp/>is<sp/>matched<sp/>against<sp/>the<sp/>JSON<sp/>staff</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"><sp/><sp/><sp/>*<sp/>arrays<sp/>via<sp/>jsonb_path_exists;<sp/>owner_id<sp/>and<sp/>admin_id<sp/>are<sp/>compared<sp/>against</highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/><sp/><sp/>*<sp/>the<sp/>numeric<sp/>id.<sp/>Results<sp/>from<sp/>the<sp/>four<sp/>service<sp/>tables<sp/>are<sp/>combined<sp/>with</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/><sp/><sp/>*<sp/>UNION<sp/>ALL.</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[out]<sp/>params<sp/>Cleared<sp/>and<sp/>filled<sp/>with<sp/>the<sp/>numeric<sp/>id<sp/>and<sp/>its<sp/>text</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/>*<sp/>form.</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>SELECT<sp/>statement,<sp/>or<sp/>std::nullopt<sp/>if<sp/>no<sp/>id<sp/>was<sp/>supplied<sp/>or<sp/>an</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/>*<sp/>exception<sp/>occurs.</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@note<sp/>Bindings<sp/>are<sp/>made<sp/>into<sp/>explicit<sp/>params<sp/>entries<sp/>because<sp/>the<sp/>two<sp/>uses</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/>*<sp/>need<sp/>different<sp/>SQL<sp/>types.</highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Builds<sp/>the<sp/>&quot;which<sp/>organisations<sp/>is<sp/>this</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>provider<sp/>in?&quot;<sp/>query.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="classProvider_1ac2c776b47dc13f0277c0fe628f9e138d" refkind="member"><highlight class="normal"><sp/><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classProvider_1ac2c776b47dc13f0277c0fe628f9e138d" kindref="member">getSqlGetServicesStatement</ref>(pqxx::params&amp;<sp/>params)<sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" kindref="member">client_id</ref><sp/>=<sp/>std::get&lt;Data_t&gt;(<ref refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" kindref="member">getData</ref>())</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.get_id();<sp/><sp/></highlight><highlight class="comment">//<sp/>Pull<sp/>the<sp/>provider<sp/>id<sp/>from<sp/>the<sp/>id-only</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>payload<sp/>into<sp/>the<sp/>cached<sp/>member.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Without<sp/>an<sp/>id<sp/>the<sp/>query<sp/>cannot<sp/>be<sp/>scoped.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" kindref="member">client_id</ref>.has_value())<sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>caller<sp/>mistake.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>get<sp/>services<sp/>for<sp/>provider:<sp/>no<sp/>id.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>statement<sp/>returned.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>params<sp/>=<sp/>{};<sp/><sp/></highlight><highlight class="comment">//<sp/>Empty<sp/>the<sp/>caller&apos;s<sp/>container<sp/>so<sp/>numbering<sp/>starts<sp/>fresh.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>params.append(<ref refid="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" kindref="member">client_id</ref>.value());<sp/><sp/></highlight><highlight class="comment">//<sp/>$1:<sp/>numeric<sp/>id,<sp/>used<sp/>in<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>bigint<sp/>comparisons.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>params.append(std::to_string(</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" kindref="member">client_id</ref>.value()));<sp/><sp/></highlight><highlight class="comment">//<sp/>$2:<sp/>the<sp/>same<sp/>id<sp/>as<sp/>text,<sp/>compared<sp/>with</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>JSON<sp/>staff<sp/>entries.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>SQL<sp/>first<sp/>builds<sp/>a<sp/>&quot;vars&quot;<sp/>row<sp/>holding<sp/>the<sp/>numeric<sp/>id,<sp/>then</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>UNION<sp/>ALLs<sp/>the<sp/>id/name/<sp/>staff/admin_id/owner_id<sp/>columns<sp/>from<sp/>all</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>four<sp/>service<sp/>tables.<sp/>The<sp/>JOIN<sp/>keeps<sp/>a<sp/>service<sp/>when<sp/>the<sp/>provider&apos;s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>text<sp/>id<sp/>appears<sp/>anywhere<sp/>in<sp/>its<sp/>staff<sp/>JSON<sp/>(jsonb_path_exists)<sp/>OR</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>numeric<sp/>id<sp/>matches<sp/>admin_id<sp/>or<sp/>owner_id.<sp/>This<sp/>returns<sp/>every</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>membership<sp/>in<sp/>one<sp/>go.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::string(</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>R</highlight><highlight class="stringliteral">&quot;(</highlight></codeline>
+<codeline lineno="152"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WITH<sp/>vars<sp/>AS<sp/>(</highlight></codeline>
+<codeline lineno="153"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SELECT<sp/>$1::bigint<sp/>AS<sp/>id</highlight></codeline>
+<codeline lineno="154"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="155"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SELECT<sp/>combined.id,<sp/>combined.name,<sp/>combined.type</highlight></codeline>
+<codeline lineno="156"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FROM<sp/>(</highlight></codeline>
+<codeline lineno="157"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SELECT<sp/>id,<sp/>name,<sp/>staff,<sp/>admin_id,<sp/>owner_id,<sp/>&apos;Clinic&apos;<sp/>AS<sp/>type</highlight></codeline>
+<codeline lineno="158"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FROM<sp/>clinics</highlight></codeline>
+<codeline lineno="159"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UNION<sp/>ALL</highlight></codeline>
+<codeline lineno="160"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SELECT<sp/>id,<sp/>name,<sp/>staff,<sp/>admin_id,<sp/>owner_id,<sp/>&apos;Pharmacy&apos;<sp/>AS<sp/>type</highlight></codeline>
+<codeline lineno="161"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FROM<sp/>pharmacies</highlight></codeline>
+<codeline lineno="162"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UNION<sp/>ALL</highlight></codeline>
+<codeline lineno="163"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SELECT<sp/>id,<sp/>name,<sp/>staff,<sp/>admin_id,<sp/>owner_id,<sp/>&apos;RadiologyCenter&apos;<sp/>AS<sp/>type</highlight></codeline>
+<codeline lineno="164"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FROM<sp/>radiologycenters</highlight></codeline>
+<codeline lineno="165" refid="classProvider_1a999e58bf1dc6fcbf2cb09f37d10aa1c1" refkind="member"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>UNION<sp/>ALL</highlight></codeline>
+<codeline lineno="166"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SELECT<sp/>id,<sp/>name,<sp/>staff,<sp/>admin_id,<sp/>owner_id,<sp/>&apos;Laboratory&apos;<sp/>AS<sp/>type</highlight></codeline>
+<codeline lineno="167"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FROM<sp/>laboratories</highlight></codeline>
+<codeline lineno="168"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>AS<sp/>combined</highlight></codeline>
+<codeline lineno="169"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>JOIN<sp/>vars<sp/>ON<sp/>jsonb_path_exists(combined.staff,<sp/>&apos;$.**<sp/>?<sp/>(@<sp/>==<sp/>$v)&apos;::jsonpath,<sp/>jsonb_build_object(&apos;v&apos;,<sp/>$2::text))</highlight></codeline>
+<codeline lineno="170"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OR<sp/>combined.admin_id<sp/>=<sp/>vars.id</highlight></codeline>
+<codeline lineno="171"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>the<sp/>caller.</highlight></codeline>
+<codeline lineno="172"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Wrong<sp/>payload<sp/>type<sp/>or<sp/>a<sp/>formatting<sp/>problem.</highlight></codeline>
+<codeline lineno="173"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OR<sp/>combined.owner_id<sp/>=<sp/>vars.id;</highlight></codeline>
+<codeline lineno="174"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)&quot;);<sp/><sp/></highlight><highlight class="comment">//<sp/>Wrap<sp/>the<sp/>raw<sp/>SQL<sp/>literal<sp/>in<sp/>a<sp/>std::string<sp/>for</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" kindref="member">Message::ErrorMessage</ref>(</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>create<sp/>query<sp/>for<sp/>GetServicesStatement<sp/>{}.&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>));<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>the<sp/>table.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" kindref="member">Message::CriticalMessage</ref>(e.what());<sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Signal<sp/>failure.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="185"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="186"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Database<sp/>table<sp/>holding<sp/>providers.</highlight></codeline>
+<codeline lineno="187"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classProvider_1a999e58bf1dc6fcbf2cb09f37d10aa1c1" kindref="member">TABLENAME</ref><sp/>=</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;providers&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>exact<sp/>table<sp/>this<sp/>entity<sp/>targets.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal">};</highlight></codeline>
     </programlisting>
     <location file="src/entities/people/provider.hpp"/>
   </compounddef>

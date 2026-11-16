@@ -78,7 +78,8 @@
     </briefdescription>
     <detaileddescription>
 <para>This file contains no functions. It only gives real storage to the three static variables that <ref refid="store_8hpp" kindref="compound">store.hpp</ref> declares: a map from a C++ type to its one shared object, a mutex protecting that map, and a counter used to refresh per-thread caches. The counter starts at 1 so that a brand-new thread, whose remembered value starts at 0, always performs a lookup the first time it asks for an object.</para>
-<para>WHY THIS FILE MATTERS IN THE SERVER: These few definitions are the physical storage behind the service locator. Every call to <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject()</ref>, <ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject()</ref> or <ref refid="classStore_1a2a4bfc0b18f2999216eda3067988cf57" kindref="member">Store::replaceObject()</ref> reads or changes these variables. Without this file the header would only declare names and the linker would report &quot;undefined reference&quot; errors. Tests also depend on the counter starting at 1, so a freshly installed fake is noticed on the very first cached lookup.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: These few definitions are the physical storage behind the service locator. Every call to <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject()</ref>, <ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject()</ref> or <ref refid="classStore_1a2a4bfc0b18f2999216eda3067988cf57" kindref="member">Store::replaceObject()</ref> reads or changes these variables. Without this file the header would only declare names and the linker would report &quot;undefined
+reference&quot; errors. Tests also depend on the counter starting at 1, so a freshly installed fake is noticed on the very first cached lookup.</para>
 <para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
 <listitem><para>None difficult here; this file only provides real storage (a &quot;definition&quot;) for names declared in the header.</para>
 </listitem></itemizedlist>
@@ -92,47 +93,59 @@
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
 <codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>store.cpp</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Defines<sp/>the<sp/>Store&apos;s<sp/>single<sp/>shared<sp/>registry,<sp/>lock<sp/>and<sp/>generation<sp/>counter.</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>file<sp/>contains<sp/>no<sp/>functions.<sp/>It<sp/>only<sp/>gives<sp/>real<sp/>storage<sp/>to<sp/>the<sp/>three<sp/>static<sp/>variables<sp/>that<sp/>store.hpp</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>declares:<sp/>a<sp/>map<sp/>from<sp/>a<sp/>C++<sp/>type<sp/>to<sp/>its<sp/>one<sp/>shared<sp/>object,<sp/>a<sp/>mutex<sp/>protecting<sp/>that<sp/>map,<sp/>and<sp/>a<sp/>counter<sp/>used<sp/>to</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>refresh<sp/>per-thread<sp/>caches.<sp/>The<sp/>counter<sp/>starts<sp/>at<sp/>1<sp/>so<sp/>that<sp/>a<sp/>brand-new<sp/>thread,<sp/>whose<sp/>remembered<sp/>value<sp/>starts</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>at<sp/>0,<sp/>always<sp/>performs<sp/>a<sp/>lookup<sp/>the<sp/>first<sp/>time<sp/>it<sp/>asks<sp/>for<sp/>an<sp/>object.</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>These<sp/>few<sp/>definitions<sp/>are<sp/>the<sp/>physical<sp/>storage<sp/>behind<sp/>the<sp/>service<sp/>locator.<sp/>Every<sp/>call<sp/>to<sp/>Store::getObject(),</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>Store::cachedObject()<sp/>or<sp/>Store::replaceObject()<sp/>reads<sp/>or<sp/>changes<sp/>these<sp/>variables.<sp/>Without<sp/>this<sp/>file<sp/>the<sp/>header<sp/>would</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>only<sp/>declare<sp/>names<sp/>and<sp/>the<sp/>linker<sp/>would<sp/>report<sp/>&quot;undefined<sp/>reference&quot;<sp/>errors.<sp/>Tests<sp/>also<sp/>depend<sp/>on<sp/>the<sp/>counter</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>starting<sp/>at<sp/>1,<sp/>so<sp/>a<sp/>freshly<sp/>installed<sp/>fake<sp/>is<sp/>noticed<sp/>on<sp/>the<sp/>very<sp/>first<sp/>cached<sp/>lookup.</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>-<sp/>None<sp/>difficult<sp/>here;<sp/>this<sp/>file<sp/>only<sp/>provides<sp/>real<sp/>storage<sp/>(a<sp/>&quot;definition&quot;)<sp/>for<sp/>names<sp/>declared<sp/>in<sp/>the<sp/>header.</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="store_8hpp" kindref="compound">store.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>class<sp/>declaration<sp/>whose<sp/>static<sp/>members<sp/>are<sp/>defined<sp/>below</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;atomic&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::atomic:<sp/>the<sp/>generation<sp/>counter&apos;s<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::uint64_t:<sp/>the<sp/>counter&apos;s<sp/>fixed-width<sp/>integer<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::shared_ptr:<sp/>the<sp/>map<sp/>stores<sp/>objects<sp/>through<sp/>shared<sp/>ownership.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::mutex:<sp/>the<sp/>type<sp/>of<sp/>the<sp/>registry<sp/>lock.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;typeindex&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::type_index:<sp/>the<sp/>type<sp/>used<sp/>as<sp/>the<sp/>map<sp/>key.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::unordered_map:<sp/>the<sp/>type<sp/>of<sp/>the<sp/>registry<sp/>map.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Defines<sp/>the<sp/>Store&apos;s<sp/>single<sp/>shared<sp/>registry,<sp/>lock<sp/>and<sp/>generation</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>counter.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>file<sp/>contains<sp/>no<sp/>functions.<sp/>It<sp/>only<sp/>gives<sp/>real<sp/>storage<sp/>to<sp/>the</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>three<sp/>static<sp/>variables<sp/>that<sp/>store.hpp<sp/>declares:<sp/>a<sp/>map<sp/>from<sp/>a<sp/>C++<sp/>type<sp/>to<sp/>its</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>one<sp/>shared<sp/>object,<sp/>a<sp/>mutex<sp/>protecting<sp/>that<sp/>map,<sp/>and<sp/>a<sp/>counter<sp/>used<sp/>to<sp/>refresh</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>per-thread<sp/>caches.<sp/>The<sp/>counter<sp/>starts<sp/>at<sp/>1<sp/>so<sp/>that<sp/>a<sp/>brand-new<sp/>thread,<sp/>whose</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>remembered<sp/>value<sp/>starts<sp/>at<sp/>0,<sp/>always<sp/>performs<sp/>a<sp/>lookup<sp/>the<sp/>first<sp/>time<sp/>it<sp/>asks</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>for<sp/>an<sp/>object.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>These<sp/>few<sp/>definitions<sp/>are<sp/>the<sp/>physical<sp/>storage<sp/>behind<sp/>the<sp/>service<sp/>locator.</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>Every<sp/>call<sp/>to<sp/>Store::getObject(),<sp/>Store::cachedObject()<sp/>or</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>Store::replaceObject()<sp/>reads<sp/>or<sp/>changes<sp/>these<sp/>variables.<sp/>Without<sp/>this<sp/>file</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>the<sp/>header<sp/>would<sp/>only<sp/>declare<sp/>names<sp/>and<sp/>the<sp/>linker<sp/>would<sp/>report<sp/>&quot;undefined</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>reference&quot;<sp/>errors.<sp/>Tests<sp/>also<sp/>depend<sp/>on<sp/>the<sp/>counter<sp/>starting<sp/>at<sp/>1,<sp/>so<sp/>a</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>freshly<sp/>installed<sp/>fake<sp/>is<sp/>noticed<sp/>on<sp/>the<sp/>very<sp/>first<sp/>cached<sp/>lookup.</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>None<sp/>difficult<sp/>here;<sp/>this<sp/>file<sp/>only<sp/>provides<sp/>real<sp/>storage<sp/>(a<sp/>&quot;definition&quot;)</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>for<sp/>names<sp/>declared<sp/>in<sp/>the<sp/>header.</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>class<sp/>declaration<sp/>whose<sp/>static<sp/>members<sp/>are<sp/>defined<sp/>below</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="store_8hpp" kindref="compound">store.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Static<sp/>member<sp/>definitions</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="32"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>Type-keyed<sp/>singleton<sp/>registry<sp/>shared<sp/>by<sp/>every<sp/>translation<sp/>unit.</highlight></codeline>
-<codeline lineno="34"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal">std::unordered_map&lt;std::type_index,<sp/>std::shared_ptr&lt;void&gt;&gt;<sp/><ref refid="classStore_1a27825898458fa79d1665a31030fdcd77" kindref="member">Store::inventory</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>empty<sp/>at<sp/>start;<sp/>entries<sp/>are<sp/>added<sp/>on<sp/>first<sp/>use</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="36"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>Serialises<sp/>access<sp/>to<sp/>the<sp/>registry.</highlight></codeline>
-<codeline lineno="38"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal">std::mutex<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStore_1a76db2e16906c8ffed79259a532795255" kindref="member">Store::inventoryMutex</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>only<sp/>one<sp/>thread<sp/>may<sp/>read<sp/>or<sp/>edit<sp/>inventory<sp/>at<sp/>a<sp/>time</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;atomic&gt;</highlight><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::atomic:<sp/>the<sp/>generation<sp/>counter&apos;s<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::uint64_t:<sp/>the<sp/>counter&apos;s<sp/>fixed-width<sp/>integer<sp/>type.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>std::shared_ptr:<sp/>the<sp/>map<sp/>stores<sp/>objects<sp/>through<sp/>shared<sp/>ownership.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::mutex:<sp/>the<sp/>type<sp/>of<sp/>the<sp/>registry<sp/>lock.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;typeindex&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::type_index:<sp/>the<sp/>type<sp/>used<sp/>as<sp/>the<sp/>map<sp/>key.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::unordered_map:<sp/>the<sp/>type<sp/>of<sp/>the<sp/>registry<sp/>map.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Static<sp/>member<sp/>definitions</highlight><highlight class="comment"></highlight></codeline>
 <codeline lineno="40"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>Starts<sp/>at<sp/>1<sp/>so<sp/>a<sp/>fresh<sp/>thread&apos;s<sp/>cached<sp/>&quot;seen&quot;<sp/>value<sp/>of<sp/>0<sp/>is<sp/>always<sp/>stale<sp/>on<sp/>its<sp/>first<sp/>cachedObject()<sp/>call.</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>Type-keyed<sp/>singleton<sp/>registry<sp/>shared<sp/>by<sp/>every<sp/>translation<sp/>unit.</highlight></codeline>
 <codeline lineno="42"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal">std::atomic&lt;uint64_t&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStore_1ad9ed1336388988b3382f9e95229262ce" kindref="member">Store::generation</ref>{1};<sp/><sp/></highlight><highlight class="comment">//<sp/>bumped<sp/>by<sp/>replaceObject()<sp/>to<sp/>invalidate<sp/>thread-local<sp/>caches</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">std::unordered_map&lt;std::type_index,<sp/>std::shared_ptr&lt;void&gt;&gt;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStore_1a27825898458fa79d1665a31030fdcd77" kindref="member">Store::inventory</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>empty<sp/>at<sp/>start;<sp/>entries<sp/>are<sp/>added<sp/>on<sp/>first<sp/>use</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="45"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>Serialises<sp/>access<sp/>to<sp/>the<sp/>registry.</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal">std::mutex<sp/><ref refid="classStore_1a76db2e16906c8ffed79259a532795255" kindref="member">Store::inventoryMutex</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>only<sp/>one<sp/>thread<sp/>may<sp/>read<sp/>or<sp/>edit<sp/>inventory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>at<sp/>a<sp/>time</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="50"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>Starts<sp/>at<sp/>1<sp/>so<sp/>a<sp/>fresh<sp/>thread&apos;s<sp/>cached<sp/>&quot;seen&quot;<sp/>value<sp/>of<sp/>0<sp/>is<sp/>always<sp/>stale<sp/>on</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>its<sp/>first<sp/>cachedObject()<sp/>call.</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal">std::atomic&lt;uint64_t&gt;<sp/><ref refid="classStore_1ad9ed1336388988b3382f9e95229262ce" kindref="member">Store::generation</ref>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>1};<sp/><sp/></highlight><highlight class="comment">//<sp/>bumped<sp/>by<sp/>replaceObject()<sp/>to<sp/>invalidate<sp/>thread-local<sp/>caches</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/store/store.cpp"/>
   </compounddef>

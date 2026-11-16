@@ -2,7 +2,7 @@ var classBasicPermissionCache =
 [
     [ "Entry", "structBasicPermissionCache_1_1Entry.html", "structBasicPermissionCache_1_1Entry" ],
     [ "Clock", "classBasicPermissionCache.html#a3e99cd08033671e7ac34d935c0abc383", null ],
-    [ "TimePoint", "classBasicPermissionCache.html#abf8817b8abb9f4b29023135bec1916e9", null ],
+    [ "TimePoint", "classBasicPermissionCache.html#a38b5bd729bd632f83084ea88809e34fd", null ],
     [ "BasicPermissionCache", "classBasicPermissionCache.html#a3fc019a15afdf799e9ff844805f5cf5c", null ],
     [ "enabled", "classBasicPermissionCache.html#a8bc94b095c9e39dcdc328b79671cb768", null ],
     [ "generation", "classBasicPermissionCache.html#a96ddf9f59ee4f1f686cab167c68effbb", null ],

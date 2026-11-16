@@ -22,9 +22,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="105" column="39" bodyfile="src/entities/base/types.hpp" bodystart="105" bodyend="-1"/>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1Entity__t_1a0c213adf1cb6c15c88517893f7e142fa" compoundref="entities_2base_2types_8hpp" startline="84" endline="84">api::v2::Types::Entity_t&lt; S &gt;::Entity_t</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1Entity__t_1a958bb81c9a5076dd3b0c2c8eddbdaaf2" compoundref="entities_2base_2types_8hpp" startline="94" endline="94">api::v2::Types::Entity_t&lt; S &gt;::get_data</referencedby>
+        <location file="src/entities/base/types.hpp" line="139" column="13" bodyfile="src/entities/base/types.hpp" bodystart="139" bodyend="-1"/>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1Entity__t_1a0c213adf1cb6c15c88517893f7e142fa" compoundref="entities_2base_2types_8hpp" startline="106" endline="108">api::v2::Types::Entity_t&lt; S &gt;::Entity_t</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1Entity__t_1a958bb81c9a5076dd3b0c2c8eddbdaaf2" compoundref="entities_2base_2types_8hpp" startline="123" endline="125">api::v2::Types::Entity_t&lt; S &gt;::get_data</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structapi_1_1v2_1_1Types_1_1Entity__t_1a3f6b26fd557472e72e86dca32f9be9e3" prot="private" static="no" mutable="no">
         <type>const std::optional&lt; uint64_t &gt;</type>
@@ -39,9 +39,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="110" column="29" bodyfile="src/entities/base/types.hpp" bodystart="110" bodyend="-1"/>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1Entity__t_1a0c213adf1cb6c15c88517893f7e142fa" compoundref="entities_2base_2types_8hpp" startline="84" endline="84">api::v2::Types::Entity_t&lt; S &gt;::Entity_t</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1Entity__t_1afcffcc20c0af09243571d1a51567307c" compoundref="entities_2base_2types_8hpp" startline="89" endline="89">api::v2::Types::Entity_t&lt; S &gt;::get_id</referencedby>
+        <location file="src/entities/base/types.hpp" line="146" column="9" bodyfile="src/entities/base/types.hpp" bodystart="146" bodyend="-1"/>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1Entity__t_1a0c213adf1cb6c15c88517893f7e142fa" compoundref="entities_2base_2types_8hpp" startline="106" endline="108">api::v2::Types::Entity_t&lt; S &gt;::Entity_t</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1Entity__t_1afcffcc20c0af09243571d1a51567307c" compoundref="entities_2base_2types_8hpp" startline="115" endline="117">api::v2::Types::Entity_t&lt; S &gt;::get_id</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -84,9 +84,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="84" column="9" bodyfile="src/entities/base/types.hpp" bodystart="84" bodyend="84"/>
-        <references refid="structapi_1_1v2_1_1Types_1_1Entity__t_1af6259e1730f09af9bb584e5ee908b1a8" compoundref="entities_2base_2types_8hpp" startline="105">api::v2::Types::Entity_t&lt; S &gt;::data</references>
-        <references refid="structapi_1_1v2_1_1Types_1_1Entity__t_1a3f6b26fd557472e72e86dca32f9be9e3" compoundref="entities_2base_2types_8hpp" startline="110">api::v2::Types::Entity_t&lt; S &gt;::id</references>
+        <location file="src/entities/base/types.hpp" line="106" column="5" bodyfile="src/entities/base/types.hpp" bodystart="106" bodyend="108"/>
+        <references refid="structapi_1_1v2_1_1Types_1_1Entity__t_1af6259e1730f09af9bb584e5ee908b1a8" compoundref="entities_2base_2types_8hpp" startline="139">api::v2::Types::Entity_t&lt; S &gt;::data</references>
+        <references refid="structapi_1_1v2_1_1Types_1_1Entity__t_1a3f6b26fd557472e72e86dca32f9be9e3" compoundref="entities_2base_2types_8hpp" startline="146">api::v2::Types::Entity_t&lt; S &gt;::id</references>
       </memberdef>
       <memberdef kind="function" id="structapi_1_1v2_1_1Types_1_1Entity__t_1afcffcc20c0af09243571d1a51567307c" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; uint64_t &gt;</type>
@@ -101,8 +101,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="89" column="24" bodyfile="src/entities/base/types.hpp" bodystart="89" bodyend="89"/>
-        <references refid="structapi_1_1v2_1_1Types_1_1Entity__t_1a3f6b26fd557472e72e86dca32f9be9e3" compoundref="entities_2base_2types_8hpp" startline="110">api::v2::Types::Entity_t&lt; S &gt;::id</references>
+        <location file="src/entities/base/types.hpp" line="115" column="20" bodyfile="src/entities/base/types.hpp" bodystart="115" bodyend="117"/>
+        <references refid="structapi_1_1v2_1_1Types_1_1Entity__t_1a3f6b26fd557472e72e86dca32f9be9e3" compoundref="entities_2base_2types_8hpp" startline="146">api::v2::Types::Entity_t&lt; S &gt;::id</references>
       </memberdef>
       <memberdef kind="function" id="structapi_1_1v2_1_1Types_1_1Entity__t_1a958bb81c9a5076dd3b0c2c8eddbdaaf2" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const S &amp;</type>
@@ -117,8 +117,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="94" column="33" bodyfile="src/entities/base/types.hpp" bodystart="94" bodyend="94"/>
-        <references refid="structapi_1_1v2_1_1Types_1_1Entity__t_1af6259e1730f09af9bb584e5ee908b1a8" compoundref="entities_2base_2types_8hpp" startline="105">api::v2::Types::Entity_t&lt; S &gt;::data</references>
+        <location file="src/entities/base/types.hpp" line="123" column="14" bodyfile="src/entities/base/types.hpp" bodystart="123" bodyend="125"/>
+        <references refid="structapi_1_1v2_1_1Types_1_1Entity__t_1af6259e1730f09af9bb584e5ee908b1a8" compoundref="entities_2base_2types_8hpp" startline="139">api::v2::Types::Entity_t&lt; S &gt;::data</references>
       </memberdef>
       <memberdef kind="function" id="structapi_1_1v2_1_1Types_1_1Entity__t_1aba8fbeb8f0b00fa9295555252f0cfe60" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -133,7 +133,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="99" column="17"/>
+        <location file="src/entities/base/types.hpp" line="131" column="13"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -153,7 +153,7 @@
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="src/entities/base/types.hpp" line="71" column="5" bodyfile="src/entities/base/types.hpp" bodystart="72" bodyend="111"/>
+    <location file="src/entities/base/types.hpp" line="93" column="3" bodyfile="src/entities/base/types.hpp" bodystart="93" bodyend="148"/>
     <listofallmembers>
       <member refid="structapi_1_1v2_1_1Types_1_1Entity__t_1af6259e1730f09af9bb584e5ee908b1a8" prot="private" virt="non-virtual"><scope>api::v2::Types::Entity_t</scope><name>data</name></member>
       <member refid="structapi_1_1v2_1_1Types_1_1Entity__t_1a0c213adf1cb6c15c88517893f7e142fa" prot="public" virt="non-virtual"><scope>api::v2::Types::Entity_t</scope><name>Entity_t</name></member>

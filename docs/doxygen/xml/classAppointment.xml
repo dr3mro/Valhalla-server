@@ -63,16 +63,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/base/appointment.hpp" line="60" column="14" bodyfile="src/entities/appointments/base/appointment.hpp" bodystart="60" bodyend="62"/>
+        <location file="src/entities/appointments/base/appointment.hpp" line="73" column="12" bodyfile="src/entities/appointments/base/appointment.hpp" bodystart="73" bodyend="77"/>
         <references refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93">Entity::Entity</references>
         <referencedby refid="classAppointment_1a4933d1414001449b5643b04a99b16d27">Appointment</referencedby>
         <referencedby refid="classAppointment_1a452e32e34b2b149ac5062ae45be25697">Appointment</referencedby>
-        <referencedby refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" compoundref="clinic_8hpp" startline="60" endline="62">ClinicAppointment::ClinicAppointment</referencedby>
-        <referencedby refid="classLaboratoryAppointment_1aaa503b4863b86d76d0b995f0b46db965" compoundref="laboratory_8hpp" startline="60" endline="62">LaboratoryAppointment::LaboratoryAppointment</referencedby>
+        <referencedby refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" compoundref="clinic_8hpp" startline="76" endline="80">ClinicAppointment::ClinicAppointment</referencedby>
+        <referencedby refid="classLaboratoryAppointment_1aaa503b4863b86d76d0b995f0b46db965" compoundref="laboratory_8hpp" startline="75" endline="79">LaboratoryAppointment::LaboratoryAppointment</referencedby>
         <referencedby refid="classAppointment_1a5ec6f22f0a1858a098ef1a21562a0316">operator=</referencedby>
         <referencedby refid="classAppointment_1a18c009147f21dc02135fa06a428c438d">operator=</referencedby>
-        <referencedby refid="classPharmacyAppointment_1ad009e1ea5ef9d5752566bf16c28e5cb8" compoundref="pharmacy_8hpp" startline="59" endline="61">PharmacyAppointment::PharmacyAppointment</referencedby>
-        <referencedby refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f" compoundref="radiologycenter_8hpp" startline="60" endline="62">RadiologyCenterAppointment::RadiologyCenterAppointment</referencedby>
+        <referencedby refid="classPharmacyAppointment_1ad009e1ea5ef9d5752566bf16c28e5cb8" compoundref="pharmacy_8hpp" startline="75" endline="79">PharmacyAppointment::PharmacyAppointment</referencedby>
+        <referencedby refid="classRadiologyCenterAppointment_1ab12d7c92610aa6e4db6f302e1453629f" compoundref="radiologycenter_8hpp" startline="77" endline="81">RadiologyCenterAppointment::RadiologyCenterAppointment</referencedby>
       </memberdef>
       <memberdef kind="function" id="classAppointment_1a452e32e34b2b149ac5062ae45be25697" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -90,8 +90,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/base/appointment.hpp" line="67" column="5"/>
-        <references refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" compoundref="appointment_8hpp" startline="60" endline="62">Appointment</references>
+        <location file="src/entities/appointments/base/appointment.hpp" line="83" column="3"/>
+        <references refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" compoundref="appointment_8hpp" startline="73" endline="77">Appointment</references>
       </memberdef>
       <memberdef kind="function" id="classAppointment_1a4933d1414001449b5643b04a99b16d27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -108,8 +108,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/base/appointment.hpp" line="68" column="5"/>
-        <references refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" compoundref="appointment_8hpp" startline="60" endline="62">Appointment</references>
+        <location file="src/entities/appointments/base/appointment.hpp" line="84" column="3"/>
+        <references refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" compoundref="appointment_8hpp" startline="73" endline="77">Appointment</references>
       </memberdef>
       <memberdef kind="function" id="classAppointment_1a18c009147f21dc02135fa06a428c438d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classAppointment" kindref="compound">Appointment</ref> &amp;</type>
@@ -126,8 +126,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/base/appointment.hpp" line="69" column="17"/>
-        <references refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" compoundref="appointment_8hpp" startline="60" endline="62">Appointment</references>
+        <location file="src/entities/appointments/base/appointment.hpp" line="85" column="15"/>
+        <references refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" compoundref="appointment_8hpp" startline="73" endline="77">Appointment</references>
       </memberdef>
       <memberdef kind="function" id="classAppointment_1a5ec6f22f0a1858a098ef1a21562a0316" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classAppointment" kindref="compound">Appointment</ref> &amp;</type>
@@ -144,8 +144,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/base/appointment.hpp" line="70" column="17"/>
-        <references refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" compoundref="appointment_8hpp" startline="60" endline="62">Appointment</references>
+        <location file="src/entities/appointments/base/appointment.hpp" line="86" column="15"/>
+        <references refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" compoundref="appointment_8hpp" startline="73" endline="77">Appointment</references>
       </memberdef>
       <memberdef kind="function" id="classAppointment_1a1d8c60973bebe598bf7716023257191c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -160,7 +160,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/base/appointment.hpp" line="75" column="5"/>
+        <location file="src/entities/appointments/base/appointment.hpp" line="91" column="3"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-static-func">
@@ -205,11 +205,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/base/appointment.hpp" line="84" column="26" bodyfile="src/entities/appointments/base/appointment.hpp" bodystart="84" bodyend="91"/>
-        <referencedby refid="classClinicAppointment_1a9f696e30cf864a0cd2159202ff2bea16" compoundref="clinic_8hpp" startline="98" endline="101">ClinicAppointment::getServicePermissionsQuery</referencedby>
-        <referencedby refid="classLaboratoryAppointment_1a368ccccd84c7a292536042fbc4fc7f7f" compoundref="laboratory_8hpp" startline="93" endline="96">LaboratoryAppointment::getServicePermissionsQuery</referencedby>
-        <referencedby refid="classPharmacyAppointment_1a54aab05547e5db0a9014f81c2edaf972" compoundref="pharmacy_8hpp" startline="91" endline="94">PharmacyAppointment::getServicePermissionsQuery</referencedby>
-        <referencedby refid="classRadiologyCenterAppointment_1a18feeb99c9350f3f52342b33e2fb8644" compoundref="radiologycenter_8hpp" startline="93" endline="96">RadiologyCenterAppointment::getServicePermissionsQuery</referencedby>
+        <location file="src/entities/appointments/base/appointment.hpp" line="102" column="24" bodyfile="src/entities/appointments/base/appointment.hpp" bodystart="102" bodyend="112"/>
+        <referencedby refid="classClinicAppointment_1a9f696e30cf864a0cd2159202ff2bea16" compoundref="clinic_8hpp" startline="126" endline="132">ClinicAppointment::getServicePermissionsQuery</referencedby>
+        <referencedby refid="classLaboratoryAppointment_1a368ccccd84c7a292536042fbc4fc7f7f" compoundref="laboratory_8hpp" startline="120" endline="126">LaboratoryAppointment::getServicePermissionsQuery</referencedby>
+        <referencedby refid="classPharmacyAppointment_1a54aab05547e5db0a9014f81c2edaf972" compoundref="pharmacy_8hpp" startline="118" endline="124">PharmacyAppointment::getServicePermissionsQuery</referencedby>
+        <referencedby refid="classRadiologyCenterAppointment_1a18feeb99c9350f3f52342b33e2fb8644" compoundref="radiologycenter_8hpp" startline="123" endline="129">RadiologyCenterAppointment::getServicePermissionsQuery</referencedby>
       </memberdef>
       <memberdef kind="function" id="classAppointment_1ad8f4b942704f5aad7dab3b4469199fd0" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -264,22 +264,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/base/appointment.hpp" line="102" column="26" bodyfile="src/entities/appointments/base/appointment.hpp" bodystart="102" bodyend="112"/>
-        <references refid="classAppointment_1ad8f4b942704f5aad7dab3b4469199fd0" compoundref="appointment_8hpp" startline="102" endline="112">getPermissionsQueryForReadImpl</references>
-        <referencedby refid="classClinicAppointment_1a271e6f972aa44fbdf85f5ee72299877a" compoundref="clinic_8hpp" startline="108" endline="111">ClinicAppointment::getPermissionsQueryForRead</referencedby>
-        <referencedby refid="classLaboratoryAppointment_1a595757aaaa3f41e2f6fd744a2fcdb5fe" compoundref="laboratory_8hpp" startline="103" endline="106">LaboratoryAppointment::getPermissionsQueryForRead</referencedby>
-        <referencedby refid="classPharmacyAppointment_1aaafef44e1e8889d2f67d0846da8b9b03" compoundref="pharmacy_8hpp" startline="101" endline="104">PharmacyAppointment::getPermissionsQueryForRead</referencedby>
-        <referencedby refid="classRadiologyCenterAppointment_1a875b5ef628661ebc4be5b7b10446be2d" compoundref="radiologycenter_8hpp" startline="103" endline="106">RadiologyCenterAppointment::getPermissionsQueryForRead</referencedby>
-        <referencedby refid="classAppointment_1ad8f4b942704f5aad7dab3b4469199fd0" compoundref="appointment_8hpp" startline="102" endline="112">getPermissionsQueryForReadImpl</referencedby>
+        <location file="src/entities/appointments/base/appointment.hpp" line="129" column="24" bodyfile="src/entities/appointments/base/appointment.hpp" bodystart="129" bodyend="152"/>
+        <references refid="classAppointment_1ad8f4b942704f5aad7dab3b4469199fd0" compoundref="appointment_8hpp" startline="129" endline="152">getPermissionsQueryForReadImpl</references>
+        <referencedby refid="classClinicAppointment_1a271e6f972aa44fbdf85f5ee72299877a" compoundref="clinic_8hpp" startline="142" endline="151">ClinicAppointment::getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classLaboratoryAppointment_1a595757aaaa3f41e2f6fd744a2fcdb5fe" compoundref="laboratory_8hpp" startline="135" endline="144">LaboratoryAppointment::getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classPharmacyAppointment_1aaafef44e1e8889d2f67d0846da8b9b03" compoundref="pharmacy_8hpp" startline="133" endline="142">PharmacyAppointment::getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classRadiologyCenterAppointment_1a875b5ef628661ebc4be5b7b10446be2d" compoundref="radiologycenter_8hpp" startline="138" endline="147">RadiologyCenterAppointment::getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classAppointment_1ad8f4b942704f5aad7dab3b4469199fd0" compoundref="appointment_8hpp" startline="129" endline="152">getPermissionsQueryForReadImpl</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
 <para><ref refid="classBase" kindref="compound">Base</ref> entity for appointment tables shared by the service-specific appointment classes. </para>
     </briefdescription>
     <detaileddescription>
-<para>Extends <ref refid="classEntity" kindref="compound">Entity</ref> with static permission-query builders: one fetches the owner/admin/staff of a service, the other resolves the owning service from an appointment id by joining the appointment table to its organisation table. Concrete classes fix the table and organisation names and expose these helpers to <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref>. <simplesect kind="note"><para>These queries interpolate names and ids into the SQL text via fmt::format and take no pqxx::params; they are called with internal, trusted values and the text doubles as a cache key. </para>
+<para>Extends <ref refid="classEntity" kindref="compound">Entity</ref> with static permission-query builders: one fetches the owner/admin/staff of a service, the other resolves the owning service from an appointment id by joining the appointment table to its organisation table. Concrete classes fix the table and organisation names and expose these helpers to <ref refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21" kindref="member">PermissionManager</ref>. <simplesect kind="note"><para>These queries interpolate names and ids into the SQL text via fmt::format and take no pqxx::params; they are called with internal, trusted values and the text doubles as a cache key. </para>
 </simplesect>
-<simplesect kind="see"><para><ref refid="classEntity" kindref="compound">Entity</ref>, <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref> </para>
+<simplesect kind="see"><para><ref refid="classEntity" kindref="compound">Entity</ref>, <ref refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21" kindref="member">PermissionManager</ref> </para>
 </simplesect>
 </para>
     </detaileddescription>
@@ -345,7 +345,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/entities/appointments/base/appointment.hpp" line="50" column="1" bodyfile="src/entities/appointments/base/appointment.hpp" bodystart="51" bodyend="130"/>
+    <location file="src/entities/appointments/base/appointment.hpp" line="64" column="1" bodyfile="src/entities/appointments/base/appointment.hpp" bodystart="64" bodyend="170"/>
     <listofallmembers>
       <member refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" prot="public" virt="non-virtual"><scope>Appointment</scope><name>Appointment</name></member>
       <member refid="classAppointment_1a452e32e34b2b149ac5062ae45be25697" prot="public" virt="non-virtual"><scope>Appointment</scope><name>Appointment</name></member>

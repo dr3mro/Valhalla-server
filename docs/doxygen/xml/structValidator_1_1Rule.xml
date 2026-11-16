@@ -18,7 +18,8 @@
         </enumvalue>
         <enumvalue id="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7acf64a80b49ebda9168c3d7a2b6f95f15" prot="public">
           <name>IGNORE_IF_MISSING_FROM_SCHEMA</name>
-          <initializer>= 1U &lt;&lt; 0U</initializer>
+          <initializer>= 1U
+          &lt;&lt; 0U</initializer>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
@@ -26,7 +27,8 @@
         </enumvalue>
         <enumvalue id="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a61500db96634a6ab0be12a77a8460481" prot="public">
           <name>IGNORE_IF_NOT_NULLABLE_IN_SCHEMA</name>
-          <initializer>= 1U &lt;&lt; 1U</initializer>
+          <initializer>= 1U
+          &lt;&lt; 1U</initializer>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
@@ -56,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="87" column="9" bodyfile="src/validator/validator.hpp" bodystart="88" bodyend="94"/>
+        <location file="src/validator/validator.hpp" line="105" column="5" bodyfile="src/validator/validator.hpp" bodystart="105" bodyend="114"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-attrib">
@@ -73,10 +75,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="97" column="69" bodyfile="src/validator/validator.hpp" bodystart="97" bodyend="-1"/>
-        <referencedby refid="structValidator_1_1Rule_1abb98001b4c39f55d78d27243042972c1" compoundref="validator_8hpp" startline="168" endline="168">hasMatch</referencedby>
-        <referencedby refid="structValidator_1_1Rule_1ad0e918d645764b151477dd4f5519fd60" compoundref="validator_8hpp" startline="163" endline="163">operator bool</referencedby>
-        <referencedby refid="structValidator_1_1Rule_1a0b659fda5a4ea8eadb780baeb147eaff" compoundref="validator_8hpp" startline="122" endline="122">Rule</referencedby>
+        <location file="src/validator/validator.hpp" line="117" column="12" bodyfile="src/validator/validator.hpp" bodystart="117" bodyend="-1"/>
+        <referencedby refid="structValidator_1_1Rule_1abb98001b4c39f55d78d27243042972c1" compoundref="validator_8hpp" startline="210" endline="212">hasMatch</referencedby>
+        <referencedby refid="structValidator_1_1Rule_1ad0e918d645764b151477dd4f5519fd60" compoundref="validator_8hpp" startline="203" endline="205">operator bool</referencedby>
+        <referencedby refid="structValidator_1_1Rule_1a0b659fda5a4ea8eadb780baeb147eaff" compoundref="validator_8hpp" startline="151" endline="154">Rule</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structValidator_1_1Rule_1aa033a4043c5bba70b2baf132b33525cf" prot="public" static="no" mutable="no">
         <type>std::unordered_map&lt; <ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref>, std::unordered_set&lt; std::string &gt; &gt;</type>
@@ -91,7 +93,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="99" column="28" bodyfile="src/validator/validator.hpp" bodystart="99" bodyend="-1"/>
+        <location file="src/validator/validator.hpp" line="122" column="9" bodyfile="src/validator/validator.hpp" bodystart="122" bodyend="-1"/>
+        <referencedby refid="structValidator_1_1Rule_1aed3b6d1fbcece769c7a8fe3e735117aa" compoundref="validator_8hpp" startline="221" endline="232">hasKey</referencedby>
+        <referencedby refid="structValidator_1_1Rule_1a0b659fda5a4ea8eadb780baeb147eaff" compoundref="validator_8hpp" startline="151" endline="154">Rule</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -136,17 +140,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="108" column="14" bodyfile="src/validator/validator.hpp" bodystart="108" bodyend="113"/>
-        <references refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="108" endline="113">check</references>
-        <references refid="structValidator_1_1Rule_1aed3b6d1fbcece769c7a8fe3e735117aa" compoundref="validator_8hpp" startline="174" endline="178">hasKey</references>
-        <references refid="structValidator_1_1Rule_1abb98001b4c39f55d78d27243042972c1" compoundref="validator_8hpp" startline="168" endline="168">hasMatch</references>
-        <referencedby refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="108" endline="113">check</referencedby>
-        <referencedby refid="classValidator_1a639d1408b7c8bf36a3b6ac6b0f780c5a" compoundref="validator_8cpp" startline="374" endline="402">Validator::checkColumns</referencedby>
-        <referencedby refid="classValidator_1ab88bc5524278ed0edfb0827572ea02e3" compoundref="validator_8cpp" startline="409" endline="448">Validator::ensureAllKeysExist</referencedby>
-        <referencedby refid="structValidator_1_1Rule_1aed3b6d1fbcece769c7a8fe3e735117aa" compoundref="validator_8hpp" startline="174" endline="178">hasKey</referencedby>
-        <referencedby refid="structValidator_1_1Rule_1abb98001b4c39f55d78d27243042972c1" compoundref="validator_8hpp" startline="168" endline="168">hasMatch</referencedby>
-        <referencedby refid="structValidator_1_1Rule_1abc50cce20918ad158ec32e1b4ab6af7a" compoundref="validator_8hpp" startline="170" endline="170">hasMatch</referencedby>
-        <referencedby refid="classValidator_1a950c1350bd04c695d0add09b31db3974" compoundref="validator_8cpp" startline="162" endline="198">Validator::validateDatabaseReadSchema</referencedby>
+        <location file="src/validator/validator.hpp" line="132" column="10" bodyfile="src/validator/validator.hpp" bodystart="132" bodyend="140"/>
+        <references refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="132" endline="140">check</references>
+        <references refid="structValidator_1_1Rule_1aed3b6d1fbcece769c7a8fe3e735117aa" compoundref="validator_8hpp" startline="221" endline="232">hasKey</references>
+        <references refid="structValidator_1_1Rule_1abb98001b4c39f55d78d27243042972c1" compoundref="validator_8hpp" startline="210" endline="212">hasMatch</references>
+        <referencedby refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="132" endline="140">check</referencedby>
+        <referencedby refid="classValidator_1a639d1408b7c8bf36a3b6ac6b0f780c5a" compoundref="validator_8cpp" startline="511" endline="556">Validator::checkColumns</referencedby>
+        <referencedby refid="classValidator_1ab88bc5524278ed0edfb0827572ea02e3" compoundref="validator_8cpp" startline="564" endline="622">Validator::ensureAllKeysExist</referencedby>
+        <referencedby refid="structValidator_1_1Rule_1aed3b6d1fbcece769c7a8fe3e735117aa" compoundref="validator_8hpp" startline="221" endline="232">hasKey</referencedby>
+        <referencedby refid="structValidator_1_1Rule_1abb98001b4c39f55d78d27243042972c1" compoundref="validator_8hpp" startline="210" endline="212">hasMatch</referencedby>
+        <referencedby refid="structValidator_1_1Rule_1abc50cce20918ad158ec32e1b4ab6af7a" compoundref="validator_8hpp" startline="214" endline="216">hasMatch</referencedby>
+        <referencedby refid="classValidator_1a950c1350bd04c695d0add09b31db3974" compoundref="validator_8cpp" startline="211" endline="267">Validator::validateDatabaseReadSchema</referencedby>
       </memberdef>
       <memberdef kind="function" id="structValidator_1_1Rule_1a0b659fda5a4ea8eadb780baeb147eaff" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
@@ -189,8 +193,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="122" column="18" bodyfile="src/validator/validator.hpp" bodystart="122" bodyend="122"/>
-        <references refid="structValidator_1_1Rule_1ae4e62d78091b24b8d55c84d62a8988d4" compoundref="validator_8hpp" startline="97">action</references>
+        <location file="src/validator/validator.hpp" line="151" column="14" bodyfile="src/validator/validator.hpp" bodystart="151" bodyend="154"/>
+        <references refid="structValidator_1_1Rule_1ae4e62d78091b24b8d55c84d62a8988d4" compoundref="validator_8hpp" startline="117">action</references>
+        <references refid="structValidator_1_1Rule_1aa033a4043c5bba70b2baf132b33525cf" compoundref="validator_8hpp" startline="122">keys</references>
       </memberdef>
       <memberdef kind="function" id="structValidator_1_1Rule_1a1dcb78b216655d3195ff18d50f6fc245" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -205,7 +210,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="125" column="9"/>
+        <location file="src/validator/validator.hpp" line="157" column="5"/>
       </memberdef>
       <memberdef kind="function" id="structValidator_1_1Rule_1ad0e918d645764b151477dd4f5519fd60" prot="public" static="no" const="yes" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
@@ -220,8 +225,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="163" column="18" bodyfile="src/validator/validator.hpp" bodystart="163" bodyend="163"/>
-        <references refid="structValidator_1_1Rule_1ae4e62d78091b24b8d55c84d62a8988d4" compoundref="validator_8hpp" startline="97">action</references>
+        <location file="src/validator/validator.hpp" line="203" column="14" bodyfile="src/validator/validator.hpp" bodystart="203" bodyend="205"/>
+        <references refid="structValidator_1_1Rule_1ae4e62d78091b24b8d55c84d62a8988d4" compoundref="validator_8hpp" startline="117">action</references>
       </memberdef>
     </sectiondef>
     <sectiondef kind="friend">
@@ -246,7 +251,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="129" column="23" bodyfile="src/validator/validator.hpp" bodystart="129" bodyend="132"/>
+        <location file="src/validator/validator.hpp" line="161" column="19" bodyfile="src/validator/validator.hpp" bodystart="161" bodyend="166"/>
       </memberdef>
       <memberdef kind="friend" id="structValidator_1_1Rule_1a8861cacb5e743238ed064d91c103af07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref></type>
@@ -269,7 +274,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="136" column="23" bodyfile="src/validator/validator.hpp" bodystart="136" bodyend="139"/>
+        <location file="src/validator/validator.hpp" line="170" column="19" bodyfile="src/validator/validator.hpp" bodystart="170" bodyend="175"/>
       </memberdef>
       <memberdef kind="friend" id="structValidator_1_1Rule_1a421109c96cbcc011372312e788137d89" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref> &amp;</type>
@@ -292,7 +297,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="143" column="23" bodyfile="src/validator/validator.hpp" bodystart="143" bodyend="147"/>
+        <location file="src/validator/validator.hpp" line="179" column="19" bodyfile="src/validator/validator.hpp" bodystart="179" bodyend="183"/>
       </memberdef>
       <memberdef kind="friend" id="structValidator_1_1Rule_1a95db5cb0d45ec71786cbc79606332669" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref> &amp;</type>
@@ -315,7 +320,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="151" column="23" bodyfile="src/validator/validator.hpp" bodystart="151" bodyend="155"/>
+        <location file="src/validator/validator.hpp" line="187" column="19" bodyfile="src/validator/validator.hpp" bodystart="187" bodyend="191"/>
       </memberdef>
       <memberdef kind="friend" id="structValidator_1_1Rule_1a519d13c51d7028498f52c879e6f9ee0b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" kindref="member">Action</ref></type>
@@ -334,7 +339,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="159" column="23" bodyfile="src/validator/validator.hpp" bodystart="159" bodyend="159"/>
+        <location file="src/validator/validator.hpp" line="196" column="19" bodyfile="src/validator/validator.hpp" bodystart="196" bodyend="198"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -355,12 +360,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="168" column="14" bodyfile="src/validator/validator.hpp" bodystart="168" bodyend="168"/>
-        <references refid="structValidator_1_1Rule_1ae4e62d78091b24b8d55c84d62a8988d4" compoundref="validator_8hpp" startline="97">action</references>
-        <references refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="108" endline="113">check</references>
-        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a0753c9c32b6bf47d97d8b16158906388" compoundref="validator_8hpp" startline="89">NONE</references>
-        <referencedby refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="108" endline="113">check</referencedby>
-        <referencedby refid="structValidator_1_1Rule_1aed3b6d1fbcece769c7a8fe3e735117aa" compoundref="validator_8hpp" startline="174" endline="178">hasKey</referencedby>
+        <location file="src/validator/validator.hpp" line="210" column="10" bodyfile="src/validator/validator.hpp" bodystart="210" bodyend="212"/>
+        <references refid="structValidator_1_1Rule_1ae4e62d78091b24b8d55c84d62a8988d4" compoundref="validator_8hpp" startline="117">action</references>
+        <references refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="132" endline="140">check</references>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a0753c9c32b6bf47d97d8b16158906388" compoundref="validator_8hpp" startline="106">NONE</references>
+        <referencedby refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="132" endline="140">check</referencedby>
+        <referencedby refid="structValidator_1_1Rule_1aed3b6d1fbcece769c7a8fe3e735117aa" compoundref="validator_8hpp" startline="221" endline="232">hasKey</referencedby>
       </memberdef>
       <memberdef kind="function" id="structValidator_1_1Rule_1abc50cce20918ad158ec32e1b4ab6af7a" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -383,9 +388,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="170" column="14" bodyfile="src/validator/validator.hpp" bodystart="170" bodyend="170"/>
-        <references refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="108" endline="113">check</references>
-        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a0753c9c32b6bf47d97d8b16158906388" compoundref="validator_8hpp" startline="89">NONE</references>
+        <location file="src/validator/validator.hpp" line="214" column="10" bodyfile="src/validator/validator.hpp" bodystart="214" bodyend="216"/>
+        <references refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="132" endline="140">check</references>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a0753c9c32b6bf47d97d8b16158906388" compoundref="validator_8hpp" startline="106">NONE</references>
       </memberdef>
       <memberdef kind="function" id="structValidator_1_1Rule_1aed3b6d1fbcece769c7a8fe3e735117aa" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -408,10 +413,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="174" column="14" bodyfile="src/validator/validator.hpp" bodystart="174" bodyend="178"/>
-        <references refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="108" endline="113">check</references>
-        <references refid="structValidator_1_1Rule_1abb98001b4c39f55d78d27243042972c1" compoundref="validator_8hpp" startline="168" endline="168">hasMatch</references>
-        <referencedby refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="108" endline="113">check</referencedby>
+        <location file="src/validator/validator.hpp" line="221" column="10" bodyfile="src/validator/validator.hpp" bodystart="221" bodyend="232"/>
+        <references refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="132" endline="140">check</references>
+        <references refid="structValidator_1_1Rule_1abb98001b4c39f55d78d27243042972c1" compoundref="validator_8hpp" startline="210" endline="212">hasMatch</references>
+        <references refid="structValidator_1_1Rule_1aa033a4043c5bba70b2baf132b33525cf" compoundref="validator_8hpp" startline="122">keys</references>
+        <referencedby refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="132" endline="140">check</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -422,7 +428,7 @@
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="src/validator/validator.hpp" line="81" column="5" bodyfile="src/validator/validator.hpp" bodystart="82" bodyend="179"/>
+    <location file="src/validator/validator.hpp" line="99" column="3" bodyfile="src/validator/validator.hpp" bodystart="99" bodyend="233"/>
     <listofallmembers>
       <member refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7" prot="public" virt="non-virtual"><scope>Validator::Rule</scope><name>Action</name></member>
       <member refid="structValidator_1_1Rule_1ae4e62d78091b24b8d55c84d62a8988d4" prot="public" virt="non-virtual"><scope>Validator::Rule</scope><name>action</name></member>

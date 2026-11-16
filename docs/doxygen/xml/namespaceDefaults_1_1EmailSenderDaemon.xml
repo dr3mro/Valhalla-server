@@ -9,7 +9,8 @@
         <argsstring></argsstring>
         <name>HOST_</name>
         <qualifiedname>Defaults::EmailSenderDaemon::HOST_</qualifiedname>
-        <initializer>= &quot;http://172.20.0.6&quot;</initializer>
+        <initializer>                    =
+&quot;http://172.20.0.6&quot;</initializer>
         <briefdescription>
 <para>Default daemon base URL. </para>
         </briefdescription>
@@ -17,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="175" column="27" bodyfile="src/configurator/defaults.hpp" bodystart="175" bodyend="-1"/>
+        <location file="src/configurator/defaults.hpp" line="253" column="23" bodyfile="src/configurator/defaults.hpp" bodystart="253" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1EmailSenderDaemon_1a6d7e3bdbf9e255b7f8fb4c4fcea32066" prot="public" static="no" mutable="no">
         <type>const uint16_t</type>
@@ -33,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="177" column="27" bodyfile="src/configurator/defaults.hpp" bodystart="177" bodyend="-1"/>
+        <location file="src/configurator/defaults.hpp" line="257" column="20" bodyfile="src/configurator/defaults.hpp" bodystart="257" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceDefaults_1_1EmailSenderDaemon_1aa7e2fa2cb5d49696f5642a85d5f01f89" prot="public" static="no" mutable="no">
         <type>const std::string</type>
@@ -41,7 +42,8 @@
         <argsstring></argsstring>
         <name>QUEUE_PATH_</name>
         <qualifiedname>Defaults::EmailSenderDaemon::QUEUE_PATH_</qualifiedname>
-        <initializer>= &quot;/enqueue&quot;</initializer>
+        <initializer>                          =
+&quot;/enqueue&quot;</initializer>
         <briefdescription>
 <para>Default HTTP path used to enqueue messages. </para>
         </briefdescription>
@@ -49,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/configurator/defaults.hpp" line="179" column="27" bodyfile="src/configurator/defaults.hpp" bodystart="179" bodyend="-1"/>
+        <location file="src/configurator/defaults.hpp" line="259" column="23" bodyfile="src/configurator/defaults.hpp" bodystart="259" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -57,6 +59,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/configurator/defaults.hpp" line="169" column="1"/>
+    <location file="src/configurator/defaults.hpp" line="246" column="1"/>
   </compounddef>
 </doxygen>

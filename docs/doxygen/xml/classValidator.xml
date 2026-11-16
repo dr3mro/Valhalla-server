@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="59" column="5"/>
+        <location file="src/validator/validator.hpp" line="74" column="3"/>
         <referencedby refid="classValidator_1a3d6ec6318595db77bb443c201b6b1bd5">operator=</referencedby>
         <referencedby refid="classValidator_1a6c340aaaaf8745fadced39d7adf93fa2">operator=</referencedby>
         <referencedby refid="classValidator_1a578956cdf9a226f5b0673477c3a0907d">Validator</referencedby>
@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="61" column="13"/>
+        <location file="src/validator/validator.hpp" line="76" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classValidator_1a578956cdf9a226f5b0673477c3a0907d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="63" column="5"/>
+        <location file="src/validator/validator.hpp" line="78" column="3"/>
         <references refid="classValidator_1a97c32b0357798462ff87ae6f3859ba23">Validator</references>
       </memberdef>
       <memberdef kind="function" id="classValidator_1a3d6ec6318595db77bb443c201b6b1bd5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="65" column="15"/>
+        <location file="src/validator/validator.hpp" line="80" column="13"/>
         <references refid="classValidator_1a97c32b0357798462ff87ae6f3859ba23">Validator</references>
       </memberdef>
       <memberdef kind="function" id="classValidator_1a75fb844520b281adae51b55c54d3ea77" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
@@ -96,7 +96,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="67" column="5"/>
+        <location file="src/validator/validator.hpp" line="82" column="3"/>
         <references refid="classValidator_1a97c32b0357798462ff87ae6f3859ba23">Validator</references>
       </memberdef>
       <memberdef kind="function" id="classValidator_1a6c340aaaaf8745fadced39d7adf93fa2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
@@ -116,7 +116,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="69" column="15"/>
+        <location file="src/validator/validator.hpp" line="84" column="13"/>
         <references refid="classValidator_1a97c32b0357798462ff87ae6f3859ba23">Validator</references>
       </memberdef>
     </sectiondef>
@@ -136,7 +136,7 @@
           <declname>data</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">api::v2::Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <param>
@@ -188,16 +188,16 @@ See <ref refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" kindref="memb
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="195" column="17" bodyfile="src/validator/validator.cpp" bodystart="52" bodyend="104"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="classValidator_1a639d1408b7c8bf36a3b6ac6b0f780c5a" compoundref="validator_8cpp" startline="374" endline="402">checkColumns</references>
-        <references refid="classValidator_1ab88bc5524278ed0edfb0827572ea02e3" compoundref="validator_8cpp" startline="409" endline="448">ensureAllKeysExist</references>
-        <references refid="classValidator_1a3827a99ba8a6d471ad08ae9b6455108f" compoundref="validator_8cpp" startline="316" endline="331">getDatabaseSchemaForTable</references>
-        <references refid="classValidator_1ac4c157ed48ccadad45abcf3176d96075" compoundref="validator_8cpp" startline="299" endline="308">nullCheck</references>
-        <referencedby refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" compoundref="entitycontroller_8cpp" startline="57" endline="112">EntityController&lt; T &gt;::Create</referencedby>
-        <referencedby refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" compoundref="entitycontroller_8cpp" startline="290" endline="343">EntityController&lt; T &gt;::CreateAsync</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1CreateClient__t_1a33df7cd784299784f24b76d4343bd4dc" compoundref="entities_2base_2types_8hpp" startline="475" endline="505">api::v2::Types::CreateClient_t::CreateClient_t</referencedby>
-        <referencedby refid="classClinicController_1af9be5b8c32bde11f7907d8ad6c031c92" compoundref="cliniccontroller_8cpp" startline="29" endline="106">ClinicController&lt; T &gt;::CreateImpl</referencedby>
+        <location file="src/validator/validator.hpp" line="251" column="15" bodyfile="src/validator/validator.cpp" bodystart="66" bodyend="139"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="classValidator_1a639d1408b7c8bf36a3b6ac6b0f780c5a" compoundref="validator_8cpp" startline="511" endline="556">checkColumns</references>
+        <references refid="classValidator_1ab88bc5524278ed0edfb0827572ea02e3" compoundref="validator_8cpp" startline="564" endline="622">ensureAllKeysExist</references>
+        <references refid="classValidator_1a3827a99ba8a6d471ad08ae9b6455108f" compoundref="validator_8cpp" startline="441" endline="462">getDatabaseSchemaForTable</references>
+        <references refid="classValidator_1ac4c157ed48ccadad45abcf3176d96075" compoundref="validator_8cpp" startline="422" endline="432">nullCheck</references>
+        <referencedby refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" compoundref="entitycontroller_8cpp" startline="76" endline="150">EntityController&lt; T &gt;::Create</referencedby>
+        <referencedby refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" compoundref="entitycontroller_8cpp" startline="370" endline="442">EntityController&lt; T &gt;::CreateAsync</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1CreateClient__t_1a33df7cd784299784f24b76d4343bd4dc" compoundref="entities_2base_2types_8hpp" startline="638" endline="686">api::v2::Types::CreateClient_t::CreateClient_t</referencedby>
+        <referencedby refid="classClinicController_1af9be5b8c32bde11f7907d8ad6c031c92" compoundref="cliniccontroller_8cpp" startline="40" endline="129">ClinicController&lt; T &gt;::CreateImpl</referencedby>
       </memberdef>
       <memberdef kind="function" id="classValidator_1a879e2b4d767389023f5537ceb9ad6a63" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -214,7 +214,7 @@ See <ref refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" kindref="memb
           <declname>data</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">api::v2::Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <param>
@@ -265,14 +265,14 @@ Checks null/empty input and key-level constraints; unlike the create path it doe
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="207" column="17" bodyfile="src/validator/validator.cpp" bodystart="112" bodyend="154"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="classValidator_1ab88bc5524278ed0edfb0827572ea02e3" compoundref="validator_8cpp" startline="409" endline="448">ensureAllKeysExist</references>
-        <references refid="classValidator_1a3827a99ba8a6d471ad08ae9b6455108f" compoundref="validator_8cpp" startline="316" endline="331">getDatabaseSchemaForTable</references>
-        <references refid="classValidator_1ac4c157ed48ccadad45abcf3176d96075" compoundref="validator_8cpp" startline="299" endline="308">nullCheck</references>
-        <referencedby refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" compoundref="entitycontroller_8cpp" startline="162" endline="221">EntityController&lt; T &gt;::Update</referencedby>
-        <referencedby refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" compoundref="entitycontroller_8cpp" startline="392" endline="450">EntityController&lt; T &gt;::UpdateAsync</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t_1ae44d3b57fc3fc6e35d58b83da0f8ef8d" compoundref="entities_2base_2types_8hpp" startline="532" endline="561">api::v2::Types::UpdateClient_t::UpdateClient_t</referencedby>
+        <location file="src/validator/validator.hpp" line="270" column="15" bodyfile="src/validator/validator.cpp" bodystart="148" bodyend="202"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="classValidator_1ab88bc5524278ed0edfb0827572ea02e3" compoundref="validator_8cpp" startline="564" endline="622">ensureAllKeysExist</references>
+        <references refid="classValidator_1a3827a99ba8a6d471ad08ae9b6455108f" compoundref="validator_8cpp" startline="441" endline="462">getDatabaseSchemaForTable</references>
+        <references refid="classValidator_1ac4c157ed48ccadad45abcf3176d96075" compoundref="validator_8cpp" startline="422" endline="432">nullCheck</references>
+        <referencedby refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" compoundref="entitycontroller_8cpp" startline="221" endline="294">EntityController&lt; T &gt;::Update</referencedby>
+        <referencedby refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" compoundref="entitycontroller_8cpp" startline="512" endline="588">EntityController&lt; T &gt;::UpdateAsync</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t_1ae44d3b57fc3fc6e35d58b83da0f8ef8d" compoundref="entities_2base_2types_8hpp" startline="723" endline="770">api::v2::Types::UpdateClient_t::UpdateClient_t</referencedby>
       </memberdef>
       <memberdef kind="function" id="classValidator_1a950c1350bd04c695d0add09b31db3974" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -289,7 +289,7 @@ Checks null/empty input and key-level constraints; unlike the create path it doe
           <declname>table_name</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">api::v2::Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <param>
@@ -339,15 +339,14 @@ See <ref refid="classValidator_1a950c1350bd04c695d0add09b31db3974" kindref="memb
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="217" column="17" bodyfile="src/validator/validator.cpp" bodystart="162" bodyend="198"/>
-        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006" compoundref="validator_8hpp" startline="93">Validator::Rule::ASSERT_NOT_PRESENT</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="108" endline="113">Validator::Rule::check</references>
-        <references refid="classValidator_1a3827a99ba8a6d471ad08ae9b6455108f" compoundref="validator_8cpp" startline="316" endline="331">getDatabaseSchemaForTable</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa28c17a490f8c2005ea27ae8621e02b" compoundref="http_8hpp" startline="86">api::v2::Http::NOT_FOUND</references>
-        <referencedby refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" compoundref="entitycontroller_8cpp" startline="115" endline="160">EntityController&lt; T &gt;::Read</referencedby>
-        <referencedby refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" compoundref="entitycontroller_8cpp" startline="345" endline="390">EntityController&lt; T &gt;::ReadAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1ae5420af7a0b9609ca0536d2d9643679e" compoundref="clients_8hpp" startline="594" endline="705">api::v2::Clients::readAsyncImpl</referencedby>
+        <location file="src/validator/validator.hpp" line="286" column="15" bodyfile="src/validator/validator.cpp" bodystart="211" bodyend="267"/>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006" compoundref="validator_8hpp" startline="113">Validator::Rule::ASSERT_NOT_PRESENT</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="132" endline="140">Validator::Rule::check</references>
+        <references refid="classValidator_1a3827a99ba8a6d471ad08ae9b6455108f" compoundref="validator_8cpp" startline="441" endline="462">getDatabaseSchemaForTable</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa28c17a490f8c2005ea27ae8621e02b" compoundref="http_8hpp" startline="107">api::v2::Http::NOT_FOUND</references>
+        <referencedby refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" compoundref="entitycontroller_8cpp" startline="153" endline="219">EntityController&lt; T &gt;::Read</referencedby>
+        <referencedby refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" compoundref="entitycontroller_8cpp" startline="444" endline="510">EntityController&lt; T &gt;::ReadAsync</referencedby>
       </memberdef>
       <memberdef kind="function" id="classValidator_1adf618a4a20efe4f1bd832993affd8b7a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -360,7 +359,7 @@ See <ref refid="classValidator_1a950c1350bd04c695d0add09b31db3974" kindref="memb
           <declname>data</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">api::v2::Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <param>
@@ -404,10 +403,10 @@ See <ref refid="classValidator_1adf618a4a20efe4f1bd832993affd8b7a" kindref="memb
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="234" column="17" bodyfile="src/validator/validator.cpp" bodystart="205" bodyend="272"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1CreateClient__t_1a33df7cd784299784f24b76d4343bd4dc" compoundref="entities_2base_2types_8hpp" startline="475" endline="505">api::v2::Types::CreateClient_t::CreateClient_t</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t_1ae44d3b57fc3fc6e35d58b83da0f8ef8d" compoundref="entities_2base_2types_8hpp" startline="532" endline="561">api::v2::Types::UpdateClient_t::UpdateClient_t</referencedby>
+        <location file="src/validator/validator.hpp" line="309" column="15" bodyfile="src/validator/validator.cpp" bodystart="275" bodyend="390"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1CreateClient__t_1a33df7cd784299784f24b76d4343bd4dc" compoundref="entities_2base_2types_8hpp" startline="638" endline="686">api::v2::Types::CreateClient_t::CreateClient_t</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t_1ae44d3b57fc3fc6e35d58b83da0f8ef8d" compoundref="entities_2base_2types_8hpp" startline="723" endline="770">api::v2::Types::UpdateClient_t::UpdateClient_t</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-static-func">
@@ -422,7 +421,7 @@ See <ref refid="classValidator_1adf618a4a20efe4f1bd832993affd8b7a" kindref="memb
           <declname>data</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">api::v2::Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -452,13 +451,13 @@ See <ref refid="classValidator_1ac4c157ed48ccadad45abcf3176d96075" kindref="memb
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="244" column="52" bodyfile="src/validator/validator.cpp" bodystart="299" bodyend="308"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <referencedby refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" compoundref="validator_8cpp" startline="52" endline="104">validateDatabaseCreateSchema</referencedby>
-        <referencedby refid="classValidator_1a879e2b4d767389023f5537ceb9ad6a63" compoundref="validator_8cpp" startline="112" endline="154">validateDatabaseUpdateSchema</referencedby>
+        <location file="src/validator/validator.hpp" line="321" column="15" bodyfile="src/validator/validator.cpp" bodystart="422" bodyend="432"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <referencedby refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" compoundref="validator_8cpp" startline="66" endline="139">validateDatabaseCreateSchema</referencedby>
+        <referencedby refid="classValidator_1a879e2b4d767389023f5537ceb9ad6a63" compoundref="validator_8cpp" startline="148" endline="202">validateDatabaseUpdateSchema</referencedby>
       </memberdef>
       <memberdef kind="function" id="classValidator_1a3827a99ba8a6d471ad08ae9b6455108f" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::unordered_set&lt; <ref refid="namespaceapi_1_1v2_1a629023e05b2c9802c14aaca4634f4ab3" kindref="member">api::v2::ColumnInfo</ref> &gt;</type>
+        <type>std::unordered_set&lt; <ref refid="namespaceapi_1_1v2_1aaed92c04eb1e44678c97ae468bd8a42b" kindref="member">api::v2::ColumnInfo</ref> &gt;</type>
         <definition>std::unordered_set&lt; api::v2::ColumnInfo &gt; Validator::getDatabaseSchemaForTable</definition>
         <argsstring>(const std::string &amp;tablename, api::v2::Http::Error &amp;error, bool &amp;found)</argsstring>
         <name>getDatabaseSchemaForTable</name>
@@ -468,7 +467,7 @@ See <ref refid="classValidator_1ac4c157ed48ccadad45abcf3176d96075" kindref="memb
           <declname>tablename</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">api::v2::Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <param>
@@ -512,13 +511,13 @@ See <ref refid="classValidator_1a3827a99ba8a6d471ad08ae9b6455108f" kindref="memb
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="253" column="31" bodyfile="src/validator/validator.cpp" bodystart="316" bodyend="331"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="classDatabaseSchema_1aa32c7db2e9b88c2cfec1f09a2de9d7dd" compoundref="databaseschema_8cpp" startline="88" endline="88">DatabaseSchema::getDatabaseSchema</references>
-        <references refid="databaseschema_8hpp_1aea29cf503a423c2163e5b08142700952" compoundref="databaseschema_8hpp" startline="33">SCHEMA_t</references>
-        <referencedby refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" compoundref="validator_8cpp" startline="52" endline="104">validateDatabaseCreateSchema</referencedby>
-        <referencedby refid="classValidator_1a950c1350bd04c695d0add09b31db3974" compoundref="validator_8cpp" startline="162" endline="198">validateDatabaseReadSchema</referencedby>
-        <referencedby refid="classValidator_1a879e2b4d767389023f5537ceb9ad6a63" compoundref="validator_8cpp" startline="112" endline="154">validateDatabaseUpdateSchema</referencedby>
+        <location file="src/validator/validator.hpp" line="334" column="29" bodyfile="src/validator/validator.cpp" bodystart="441" bodyend="462"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="classDatabaseSchema_1aa32c7db2e9b88c2cfec1f09a2de9d7dd" compoundref="databaseschema_8cpp" startline="119" endline="121">DatabaseSchema::getDatabaseSchema</references>
+        <references refid="databaseschema_8hpp_1aea29cf503a423c2163e5b08142700952" compoundref="databaseschema_8hpp" startline="39" endline="42">SCHEMA_t</references>
+        <referencedby refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" compoundref="validator_8cpp" startline="66" endline="139">validateDatabaseCreateSchema</referencedby>
+        <referencedby refid="classValidator_1a950c1350bd04c695d0add09b31db3974" compoundref="validator_8cpp" startline="211" endline="267">validateDatabaseReadSchema</referencedby>
+        <referencedby refid="classValidator_1a879e2b4d767389023f5537ceb9ad6a63" compoundref="validator_8cpp" startline="148" endline="202">validateDatabaseUpdateSchema</referencedby>
       </memberdef>
       <memberdef kind="function" id="classValidator_1ac00e885c42aee13d9c7f62d591718638" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -561,8 +560,8 @@ See <ref refid="classValidator_1ac00e885c42aee13d9c7f62d591718638" kindref="memb
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="262" column="52" bodyfile="src/validator/validator.cpp" bodystart="338" bodyend="365"/>
-        <referencedby refid="classValidator_1a639d1408b7c8bf36a3b6ac6b0f780c5a" compoundref="validator_8cpp" startline="374" endline="402">checkColumns</referencedby>
+        <location file="src/validator/validator.hpp" line="344" column="15" bodyfile="src/validator/validator.cpp" bodystart="470" bodyend="502"/>
+        <referencedby refid="classValidator_1a639d1408b7c8bf36a3b6ac6b0f780c5a" compoundref="validator_8cpp" startline="511" endline="556">checkColumns</referencedby>
       </memberdef>
       <memberdef kind="function" id="classValidator_1a639d1408b7c8bf36a3b6ac6b0f780c5a" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -575,11 +574,11 @@ See <ref refid="classValidator_1ac00e885c42aee13d9c7f62d591718638" kindref="memb
           <declname>data</declname>
         </param>
         <param>
-          <type>const std::unordered_set&lt; <ref refid="namespaceapi_1_1v2_1a629023e05b2c9802c14aaca4634f4ab3" kindref="member">api::v2::ColumnInfo</ref> &gt; &amp;</type>
+          <type>const std::unordered_set&lt; <ref refid="namespaceapi_1_1v2_1aaed92c04eb1e44678c97ae468bd8a42b" kindref="member">api::v2::ColumnInfo</ref> &gt; &amp;</type>
           <declname>table_schema</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">api::v2::Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <param>
@@ -629,12 +628,12 @@ See <ref refid="classValidator_1a639d1408b7c8bf36a3b6ac6b0f780c5a" kindref="memb
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="271" column="52" bodyfile="src/validator/validator.cpp" bodystart="374" bodyend="402"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="108" endline="113">Validator::Rule::check</references>
-        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a61500db96634a6ab0be12a77a8460481" compoundref="validator_8hpp" startline="91">Validator::Rule::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA</references>
-        <references refid="classValidator_1ac00e885c42aee13d9c7f62d591718638" compoundref="validator_8cpp" startline="338" endline="365">validateType</references>
-        <referencedby refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" compoundref="validator_8cpp" startline="52" endline="104">validateDatabaseCreateSchema</referencedby>
+        <location file="src/validator/validator.hpp" line="355" column="15" bodyfile="src/validator/validator.cpp" bodystart="511" bodyend="556"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="132" endline="140">Validator::Rule::check</references>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7a61500db96634a6ab0be12a77a8460481" compoundref="validator_8hpp" startline="110">Validator::Rule::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA</references>
+        <references refid="classValidator_1ac00e885c42aee13d9c7f62d591718638" compoundref="validator_8cpp" startline="470" endline="502">validateType</references>
+        <referencedby refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" compoundref="validator_8cpp" startline="66" endline="139">validateDatabaseCreateSchema</referencedby>
       </memberdef>
       <memberdef kind="function" id="classValidator_1ab88bc5524278ed0edfb0827572ea02e3" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -647,11 +646,11 @@ See <ref refid="classValidator_1a639d1408b7c8bf36a3b6ac6b0f780c5a" kindref="memb
           <declname>data</declname>
         </param>
         <param>
-          <type>const std::unordered_set&lt; <ref refid="namespaceapi_1_1v2_1a629023e05b2c9802c14aaca4634f4ab3" kindref="member">api::v2::ColumnInfo</ref> &gt; &amp;</type>
+          <type>const std::unordered_set&lt; <ref refid="namespaceapi_1_1v2_1aaed92c04eb1e44678c97ae468bd8a42b" kindref="member">api::v2::ColumnInfo</ref> &gt; &amp;</type>
           <declname>table_schema</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">api::v2::Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <param>
@@ -703,14 +702,14 @@ See <ref refid="classValidator_1ab88bc5524278ed0edfb0827572ea02e3" kindref="memb
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="284" column="17" bodyfile="src/validator/validator.cpp" bodystart="409" bodyend="448"/>
-        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ad45728414bb4b722bdff45f0f70692c7" compoundref="validator_8hpp" startline="92">Validator::Rule::ASSERT_IMMUTABLE</references>
-        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006" compoundref="validator_8hpp" startline="93">Validator::Rule::ASSERT_NOT_PRESENT</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="108" endline="113">Validator::Rule::check</references>
-        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7acf64a80b49ebda9168c3d7a2b6f95f15" compoundref="validator_8hpp" startline="90">Validator::Rule::IGNORE_IF_MISSING_FROM_SCHEMA</references>
-        <referencedby refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" compoundref="validator_8cpp" startline="52" endline="104">validateDatabaseCreateSchema</referencedby>
-        <referencedby refid="classValidator_1a879e2b4d767389023f5537ceb9ad6a63" compoundref="validator_8cpp" startline="112" endline="154">validateDatabaseUpdateSchema</referencedby>
+        <location file="src/validator/validator.hpp" line="373" column="15" bodyfile="src/validator/validator.cpp" bodystart="564" bodyend="622"/>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ad45728414bb4b722bdff45f0f70692c7" compoundref="validator_8hpp" startline="112">Validator::Rule::ASSERT_IMMUTABLE</references>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006" compoundref="validator_8hpp" startline="113">Validator::Rule::ASSERT_NOT_PRESENT</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="structValidator_1_1Rule_1af9355d6d111e576f2b5b3ec9e8c41f1e" compoundref="validator_8hpp" startline="132" endline="140">Validator::Rule::check</references>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7acf64a80b49ebda9168c3d7a2b6f95f15" compoundref="validator_8hpp" startline="108">Validator::Rule::IGNORE_IF_MISSING_FROM_SCHEMA</references>
+        <referencedby refid="classValidator_1a87eacc35a05b576d7c8f9c1b5cecd47c" compoundref="validator_8cpp" startline="66" endline="139">validateDatabaseCreateSchema</referencedby>
+        <referencedby refid="classValidator_1a879e2b4d767389023f5537ceb9ad6a63" compoundref="validator_8cpp" startline="148" endline="202">validateDatabaseUpdateSchema</referencedby>
       </memberdef>
       <memberdef kind="function" id="classValidator_1a54290b0ebd088be63c3ac68b3b85a3e0" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -723,7 +722,7 @@ See <ref refid="classValidator_1ab88bc5524278ed0edfb0827572ea02e3" kindref="memb
           <declname>data</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">api::v2::Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -755,24 +754,24 @@ See <ref refid="classValidator_1a54290b0ebd088be63c3ac68b3b85a3e0" kindref="memb
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/validator/validator.hpp" line="294" column="17" bodyfile="src/validator/validator.cpp" bodystart="280" bodyend="294"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <location file="src/validator/validator.hpp" line="387" column="15" bodyfile="src/validator/validator.cpp" bodystart="399" bodyend="417"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
 <para>Stateless collection of checks applied to client JSON before it reaches the database. </para>
     </briefdescription>
     <detaileddescription>
-<para><ref refid="classEntity" kindref="compound">Entity</ref> controllers call these helpers with the parsed request body, the target table name and a <ref refid="structValidator_1_1Rule" kindref="compound">Rule</ref> describing per-key exceptions. Validation is performed against a cached snapshot of the database schema (<ref refid="classDatabaseSchema" kindref="compound">DatabaseSchema</ref>), not against a live query, so the helpers are cheap enough for the request path. Every entry point is static and reports failures by filling an <ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> (code + message) and returning false rather than throwing; exceptions from the JSON layer are caught and converted to 400 responses.</para>
+<para><ref refid="classEntity" kindref="compound">Entity</ref> controllers call these helpers with the parsed request body, the target table name and a <ref refid="structValidator_1_1Rule" kindref="compound">Rule</ref> describing per-key exceptions. Validation is performed against a cached snapshot of the database schema (<ref refid="classDatabaseSchema" kindref="compound">DatabaseSchema</ref>), not against a live query, so the helpers are cheap enough for the request path. Every entry point is static and reports failures by filling an <ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">api::v2::Http::Error</ref> (code + message) and returning false rather than throwing; exceptions from the JSON layer are caught and converted to 400 responses.</para>
 <para><simplesect kind="note"><para>All members are static; <ref refid="classValidator" kindref="compound">Validator</ref> carries no state and needs no lifetime management. </para>
 </simplesect>
 <simplesect kind="warning"><para>The cached schema must have been populated before these helpers are used, otherwise table lookups fail and the validators return false. </para>
 </simplesect>
-<simplesect kind="see"><para><ref refid="structValidator_1_1Rule" kindref="compound">Rule</ref>, <ref refid="classDatabaseSchema" kindref="compound">DatabaseSchema</ref>, <ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> </para>
+<simplesect kind="see"><para><ref refid="structValidator_1_1Rule" kindref="compound">Rule</ref>, <ref refid="classDatabaseSchema" kindref="compound">DatabaseSchema</ref>, <ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">api::v2::Http::Error</ref> </para>
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="src/validator/validator.hpp" line="55" column="1" bodyfile="src/validator/validator.hpp" bodystart="56" bodyend="295"/>
+    <location file="src/validator/validator.hpp" line="71" column="1" bodyfile="src/validator/validator.hpp" bodystart="71" bodyend="389"/>
     <listofallmembers>
       <member refid="classValidator_1a639d1408b7c8bf36a3b6ac6b0f780c5a" prot="private" virt="non-virtual"><scope>Validator</scope><name>checkColumns</name></member>
       <member refid="classValidator_1adf618a4a20efe4f1bd832993affd8b7a" prot="public" virt="non-virtual"><scope>Validator</scope><name>clientRegexValidation</name></member>

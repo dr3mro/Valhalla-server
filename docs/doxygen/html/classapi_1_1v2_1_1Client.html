@@ -229,7 +229,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Replaces <a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a>'s generic JSON-based create/update builders with versions that consume the validated (column, value) pairs held by CreateClient_t/UpdateClient_t. Read, delete and search remain inherited from <a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a>. It also builds the active-flag toggle used to suspend/activate a client and can test whether a username is already taken. Concrete tables (<a class="el" href="classUser.html" title="Client entity for the users table with an id lookup query.">User</a>, <a class="el" href="classProvider.html" title="Client entity for the providers table with a get-services query.">Provider</a>) derive from this class and supply the table name. </p><dl class="section note"><dt>Note</dt><dd>All values in generated statements are bound through <a class="el" href="structBase_1_1Binder.html" title="Appends values to a pqxx::params and hands back the matching SQL placeholders.">Binder</a>; column names come from the validated data_set. The id used by updates/suspends is cached in client_id. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a>, <a class="el" href="structapi_1_1v2_1_1Types_1_1CreateClient__t.html" title="ClientData_t for creating a client: validates a create schema and hashes any password.">Types::CreateClient_t</a>, <a class="el" href="structapi_1_1v2_1_1Types_1_1UpdateClient__t.html" title="ClientData_t for updating a client: validates an update schema with a caller-supplied rule.">Types::UpdateClient_t</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00081">81</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00109">109</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a787dc26f0c3eda19fab0dd719f0e35c4" name="a787dc26f0c3eda19fab0dd719f0e35c4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a787dc26f0c3eda19fab0dd719f0e35c4">&#9670;&#160;</a></span>Client() <span class="overload">[1/3]</span></h2>
@@ -258,7 +258,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="#a787dc26f0c3eda19fab0dd719f0e35c4">Client()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="#a4a696821cfa017364381a2d8c1c29092">Client()</a>, <a class="el" href="#a787dc26f0c3eda19fab0dd719f0e35c4">Client()</a>, <a class="el" href="#a61a23014a196e90f69294973b8832fe4">operator=()</a>, <a class="el" href="#aa78be4dbfee70e80930f5bbdb8c357b6">operator=()</a>, <a class="el" href="provider_8hpp_source.html#l00075">Provider::Provider()</a>, and <a class="el" href="people_2user_8hpp_source.html#l00071">User::User()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#a4a696821cfa017364381a2d8c1c29092">Client()</a>, <a class="el" href="#a787dc26f0c3eda19fab0dd719f0e35c4">Client()</a>, <a class="el" href="#a61a23014a196e90f69294973b8832fe4">operator=()</a>, <a class="el" href="#aa78be4dbfee70e80930f5bbdb8c357b6">operator=()</a>, <a class="el" href="provider_8hpp_source.html#l00091">Provider::Provider()</a>, and <a class="el" href="people_2user_8hpp_source.html#l00085">User::User()</a>.</p>
 
 </div>
 </div>
@@ -321,7 +321,7 @@ template&lt;typename T&gt; </div>
 <p>Stores the client payload and table name in the base <a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a>. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">T</td><td>A <a class="el" href="conceptapi_1_1v2_1_1ClientData__t.html" title="Constrains Client helpers to the payload types that carry client data or a client id.">ClientData_t</a> payload (<a class="el" href="clientcontroller_8cpp.html#a664c209b78ddc22b11631338f3759859">CreateClient_t</a>, <a class="el" href="clientcontroller_8cpp.html#a51d1a4a57120d8a5220851ce8416f926">UpdateClient_t</a>, <a class="el" href="clientcontroller_8cpp.html#aafc15234bd165371dccecc0545e68ddf">SuspendData</a> or <a class="el" href="classData__t.html" title="Entity_t carrying only a client id, used for id-only lookups (for example get-services).">Data_t</a>). </td></tr>
+    <tr><td class="paramname">T</td><td>A <a class="el" href="conceptapi_1_1v2_1_1ClientData__t.html" title="Constrains Client helpers to the payload types that carry client data or a client id.">ClientData_t</a> payload (<a class="el" href="clientcontroller_8cpp.html#af3be12d85abf03f08c24f20bc2e06c14">CreateClient_t</a>, <a class="el" href="clientcontroller_8cpp.html#a183872c176505dd851df420a00926d74">UpdateClient_t</a>, <a class="el" href="clientcontroller_8cpp.html#a6077dd2da3713e139a37b02ece1f6aaf">SuspendData</a> or <a class="el" href="classData__t.html" title="Entity_t carrying only a client id, used for id-only lookups (for example get-services).">Data_t</a>). </td></tr>
   </table>
   </dd>
 </dl>
@@ -333,9 +333,9 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00100">100</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00131">131</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00393">Entity::data</a>, <a class="el" href="classEntity.html#a936dfd4b5db17a339819ae5800c33a93">Entity::Entity()</a>, and <a class="el" href="entity_8hpp_source.html#l00381">Entity::tablename</a>.</p>
+<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00596">Entity::data</a>, <a class="el" href="classEntity.html#a936dfd4b5db17a339819ae5800c33a93">Entity::Entity()</a>, and <a class="el" href="entity_8hpp_source.html#l00573">Entity::tablename</a>.</p>
 
 </div>
 </div>
@@ -405,13 +405,13 @@ template&lt;typename <a class="el" href="structBase_1_1Binder.html">Binder</a>&g
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>INSERT ... RETURNING id, or std::nullopt if the payload is not <a class="el" href="clientcontroller_8cpp.html#a664c209b78ddc22b11631338f3759859">CreateClient_t</a> or another exception occurs. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>INSERT ... RETURNING id, or std::nullopt if the payload is not <a class="el" href="clientcontroller_8cpp.html#af3be12d85abf03f08c24f20bc2e06c14">CreateClient_t</a> or another exception occurs. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00214">214</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00311">311</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="base_8hpp_source.html#l00136">Base::Binder::bind()</a>, <a class="el" href="message_8cpp_source.html#l00042">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00041">Message::ErrorMessage()</a>, <a class="el" href="entity_8hpp_source.html#l00163">Entity::getData()</a>, and <a class="el" href="entity_8hpp_source.html#l00381">Entity::tablename</a>.</p>
+<p class="reference">References <a class="el" href="base_8hpp_source.html#l00178">Base::Binder::bind()</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, <a class="el" href="entity_8hpp_source.html#l00220">Entity::getData()</a>, and <a class="el" href="entity_8hpp_source.html#l00573">Entity::tablename</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="client_8hpp_source.html#l00109">getSqlCreateStatement()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="client_8hpp_source.html#l00144">getSqlCreateStatement()</a>.</p>
 
 </div>
 </div>
@@ -453,13 +453,13 @@ template&lt;typename <a class="el" href="structBase_1_1Binder.html">Binder</a>&g
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>UPDATE ... RETURNING id, or std::nullopt if the id is missing, the payload is not <a class="el" href="clientcontroller_8cpp.html#a51d1a4a57120d8a5220851ce8416f926">UpdateClient_t</a>, or another exception occurs. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>UPDATE ... RETURNING id, or std::nullopt if the id is missing, the payload is not <a class="el" href="clientcontroller_8cpp.html#a183872c176505dd851df420a00926d74">UpdateClient_t</a>, or another exception occurs. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00249">249</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00365">365</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="base_8hpp_source.html#l00136">Base::Binder::bind()</a>, <a class="el" href="client_8hpp_source.html#l00280">client_id</a>, <a class="el" href="message_8cpp_source.html#l00042">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00041">Message::ErrorMessage()</a>, <a class="el" href="entity_8hpp_source.html#l00163">Entity::getData()</a>, and <a class="el" href="entity_8hpp_source.html#l00381">Entity::tablename</a>.</p>
+<p class="reference">References <a class="el" href="base_8hpp_source.html#l00178">Base::Binder::bind()</a>, <a class="el" href="client_8hpp_source.html#l00415">client_id</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, <a class="el" href="entity_8hpp_source.html#l00220">Entity::getData()</a>, and <a class="el" href="entity_8hpp_source.html#l00573">Entity::tablename</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="client_8hpp_source.html#l00120">getSqlUpdateStatement()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="client_8hpp_source.html#l00161">getSqlUpdateStatement()</a>.</p>
 
 </div>
 </div>
@@ -491,7 +491,7 @@ template&lt;typename T&gt; </div>
 <p>Checks the database for a client with the username in the validated payload. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">T</td><td>A payload type exposing get_data_set() (<a class="el" href="clientcontroller_8cpp.html#a664c209b78ddc22b11631338f3759859">CreateClient_t</a> or <a class="el" href="clientcontroller_8cpp.html#a51d1a4a57120d8a5220851ce8416f926">UpdateClient_t</a>). </td></tr>
+    <tr><td class="paramname">T</td><td>A payload type exposing get_data_set() (<a class="el" href="clientcontroller_8cpp.html#af3be12d85abf03f08c24f20bc2e06c14">CreateClient_t</a> or <a class="el" href="clientcontroller_8cpp.html#a183872c176505dd851df420a00926d74">UpdateClient_t</a>). </td></tr>
   </table>
   </dd>
 </dl>
@@ -504,9 +504,9 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00184">184</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00262">262</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00387">Entity::databaseController()</a>, <a class="el" href="entity_8hpp_source.html#l00163">Entity::getData()</a>, <a class="el" href="entity_8hpp_source.html#l00381">Entity::tablename</a>, and <a class="el" href="client_8hpp_source.html#l00054">USERNAME</a>.</p>
+<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00585">Entity::databaseController()</a>, <a class="el" href="entity_8hpp_source.html#l00220">Entity::getData()</a>, <a class="el" href="entity_8hpp_source.html#l00573">Entity::tablename</a>, and <a class="el" href="client_8hpp_source.html#l00066">USERNAME</a>.</p>
 
 </div>
 </div>
@@ -536,9 +536,9 @@ template&lt;typename T&gt; </div>
 <p>Returns the client id cached by the last update or suspend builder call. </p>
 <dl class="section return"><dt>Returns</dt><dd>The cached id, or nullopt if no builder has set it yet. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00173">173</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00244">244</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="client_8hpp_source.html#l00280">client_id</a>.</p>
+<p class="reference">References <a class="el" href="client_8hpp_source.html#l00415">client_id</a>.</p>
 
 </div>
 </div>
@@ -574,9 +574,9 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The activate UPDATE, or std::nullopt on failure. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00167">167</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00235">235</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="client_8hpp_source.html#l00135">getSqlToggleSuspendStatement()</a>.</p>
+<p class="reference">References <a class="el" href="client_8hpp_source.html#l00184">getSqlToggleSuspendStatement()</a>.</p>
 
 </div>
 </div>
@@ -614,9 +614,9 @@ template&lt;typename T&gt; </div>
 
 <p>Implements <a class="el" href="classBase.html#a370479ee58fedd41365acea55b47de9b">Base</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00109">109</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00144">144</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="client_8hpp_source.html#l00214">buildClientCreateStatement()</a>.</p>
+<p class="reference">References <a class="el" href="client_8hpp_source.html#l00311">buildClientCreateStatement()</a>.</p>
 
 </div>
 </div>
@@ -652,9 +652,9 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The suspend UPDATE, or std::nullopt on failure. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00160">160</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00224">224</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="client_8hpp_source.html#l00135">getSqlToggleSuspendStatement()</a>.</p>
+<p class="reference">References <a class="el" href="client_8hpp_source.html#l00184">getSqlToggleSuspendStatement()</a>.</p>
 
 </div>
 </div>
@@ -686,20 +686,20 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p>Builds the statement that sets the client's active flag to state. </p>
-<p>Reads the client id from the <a class="el" href="clientcontroller_8cpp.html#aafc15234bd165371dccecc0545e68ddf">SuspendData</a> payload into client_id, then binds the state and id in a fixed order before formatting the UPDATE. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Reads the client id from the <a class="el" href="clientcontroller_8cpp.html#a6077dd2da3713e139a37b02ece1f6aaf">SuspendData</a> payload into client_id, then binds the state and id in a fixed order before formatting the UPDATE. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">state</td><td>Desired active value: false suspends, true activates. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">params</td><td>Cleared and filled with the bound state and id. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>UPDATE ... RETURNING id,active, or std::nullopt if the payload is not <a class="el" href="clientcontroller_8cpp.html#aafc15234bd165371dccecc0545e68ddf">SuspendData</a> or another exception occurs. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>UPDATE ... RETURNING id,active, or std::nullopt if the payload is not <a class="el" href="clientcontroller_8cpp.html#a6077dd2da3713e139a37b02ece1f6aaf">SuspendData</a> or another exception occurs. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00135">135</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00184">184</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="base_8hpp_source.html#l00136">Base::Binder::bind()</a>, <a class="el" href="client_8hpp_source.html#l00280">client_id</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00577">api::v2::Types::SuspendData::client_id</a>, <a class="el" href="message_8cpp_source.html#l00042">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00041">Message::ErrorMessage()</a>, <a class="el" href="entity_8hpp_source.html#l00163">Entity::getData()</a>, and <a class="el" href="entity_8hpp_source.html#l00381">Entity::tablename</a>.</p>
+<p class="reference">References <a class="el" href="base_8hpp_source.html#l00178">Base::Binder::bind()</a>, <a class="el" href="client_8hpp_source.html#l00415">client_id</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00790">api::v2::Types::SuspendData::client_id</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, <a class="el" href="entity_8hpp_source.html#l00220">Entity::getData()</a>, and <a class="el" href="entity_8hpp_source.html#l00573">Entity::tablename</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="client_8hpp_source.html#l00167">getSqlActivateStatement()</a>, and <a class="el" href="client_8hpp_source.html#l00160">getSqlSuspendStatement()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="client_8hpp_source.html#l00235">getSqlActivateStatement()</a>, and <a class="el" href="client_8hpp_source.html#l00224">getSqlSuspendStatement()</a>.</p>
 
 </div>
 </div>
@@ -737,9 +737,9 @@ template&lt;typename T&gt; </div>
 
 <p>Implements <a class="el" href="classBase.html#a48122a0f0bd77d2aadcbe10b3e0863fd">Base</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00120">120</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00161">161</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="client_8hpp_source.html#l00249">buildClientUpdateStatement()</a>.</p>
+<p class="reference">References <a class="el" href="client_8hpp_source.html#l00365">buildClientUpdateStatement()</a>.</p>
 
 </div>
 </div>
@@ -820,9 +820,9 @@ template&lt;typename T&gt; </div>
 
 <p>Id extracted by the most recent update or suspend builder call. </p>
 
-<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00280">280</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="client_8hpp_source.html#l00415">415</a> of file <a class="el" href="client_8hpp_source.html">client.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="client_8hpp_source.html#l00249">buildClientUpdateStatement()</a>, <a class="el" href="client_8hpp_source.html#l00173">getClientId()</a>, <a class="el" href="provider_8hpp_source.html#l00099">Provider::getSqlGetServicesStatement()</a>, <a class="el" href="people_2user_8hpp_source.html#l00092">User::getSqlGetServicesStatement()</a>, and <a class="el" href="client_8hpp_source.html#l00135">getSqlToggleSuspendStatement()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="client_8hpp_source.html#l00365">buildClientUpdateStatement()</a>, <a class="el" href="client_8hpp_source.html#l00244">getClientId()</a>, <a class="el" href="provider_8hpp_source.html#l00126">Provider::getSqlGetServicesStatement()</a>, <a class="el" href="people_2user_8hpp_source.html#l00112">User::getSqlGetServicesStatement()</a>, and <a class="el" href="client_8hpp_source.html#l00184">getSqlToggleSuspendStatement()</a>.</p>
 
 </div>
 </div>

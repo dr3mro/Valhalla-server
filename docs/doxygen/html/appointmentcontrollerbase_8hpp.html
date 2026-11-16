@@ -123,8 +123,8 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('appointmentcon
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;optional&gt;</code><br />
 <code>#include &lt;string_view&gt;</code><br />
-<code>#include &quot;<a class="el" href="callback_8hpp_source.html">utils/global/callback.hpp</a>&quot;</code><br />
 <code>#include &quot;drogon/utils/coroutine.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="callback_8hpp_source.html">utils/global/callback.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="requester_8hpp_source.html">utils/global/requester.hpp</a>&quot;</code><br />
 </div>
 <p><a href="appointmentcontrollerbase_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -136,7 +136,7 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a94dc636f3cc68d7c4ea35ba32b0dd8d1" id="r_a94dc636f3cc68d7c4ea35ba32b0dd8d1"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a94dc636f3cc68d7c4ea35ba32b0dd8d1">Requester</a> = <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">api::v2::Requester</a></td></tr>
+<tr class="memitem:a8aac836dbb3d1b4bc56b33de7ad245a4" id="r_a8aac836dbb3d1b4bc56b33de7ad245a4"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a8aac836dbb3d1b4bc56b33de7ad245a4">Requester</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Type-erased interface for appointment-entity CRUD+S operations. </p>
@@ -152,19 +152,22 @@ Typedefs</h2></td></tr>
 
 <p class="definition">Definition in file <a class="el" href="appointmentcontrollerbase_8hpp_source.html">appointmentcontrollerbase.hpp</a>.</p>
 </div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Typedef Documentation</h2>
-<a id="a94dc636f3cc68d7c4ea35ba32b0dd8d1" name="a94dc636f3cc68d7c4ea35ba32b0dd8d1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94dc636f3cc68d7c4ea35ba32b0dd8d1">&#9670;&#160;</a></span>Requester</h2>
+<a id="a8aac836dbb3d1b4bc56b33de7ad245a4" name="a8aac836dbb3d1b4bc56b33de7ad245a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8aac836dbb3d1b4bc56b33de7ad245a4">&#9670;&#160;</a></span>Requester</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using Requester = <a class="el" href="namespaceapi_1_1v2.html#a50108365df6d48cda6522b0ff7c31bf7">api::v2::Requester</a></td>
+          <td class="memname">using Requester</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="appointmentcontrollerbase_8hpp_source.html#l00039">39</a> of file <a class="el" href="appointmentcontrollerbase_8hpp_source.html">appointmentcontrollerbase.hpp</a>.</p>
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line"><a class="code hl_typedef" href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">api::v2::Requester</a></div>
+<div class="ttc" id="anamespaceapi_1_1v2_html_a2aa4b28a0f84b10d45249bd67ead503c"><div class="ttname"><a href="namespaceapi_1_1v2.html#a2aa4b28a0f84b10d45249bd67ead503c">api::v2::Requester</a></div><div class="ttdeci">struct Requester { private: uint64_t id; std::string group; public: enum class GroupId :uint8_t { Users, Providers, Owners, Admin, Super, Staff }; explicit Requester(uint64_t _id, std::string _group) :id(_id), group(std::move(_group)) { } Requester()=delete; Requester(const Requester &amp;)= default; Requester(Requester &amp;&amp;)= default; Requester &amp;operator=(const Requester &amp;)= default; Requester &amp;operator=(Requester &amp;&amp;)= default; virtual ~Requester()=default;[[nodiscard]] uint64_t getId() const { return id; }[[nodiscard]] const std::string &amp;getGroup() const { return group; }[[nodiscard]] bool isAdmin() const { return groupMatch(&quot;admins&quot;); }[[nodiscard]] bool isUser() const { return groupMatch(&quot;users&quot;); }[[nodiscard]] bool isProvider() const { return groupMatch(&quot;providers&quot;); }[[nodiscard]] bool isStaff() const { return groupMatch(&quot;staff&quot;); }[[nodiscard]] bool isOwner() const { return groupMatch(&quot;owners&quot;); }[[nodiscard]] bool isSuper() const { return groupMatch(&quot;Super&quot;); }[[nodiscard]] bool groupMatch(const std::string &amp;_group) const { return this-&gt;group==_group; }[[nodiscard]] bool idMatch(uint64_t _id) const { return this-&gt;id==_id; } void setId(uint64_t _id) { this-&gt;id=_id; } void setGroup(const std::string &amp;group) { this-&gt;group=group; } } Requester</div><div class="ttdef"><b>Definition</b> <a href="requester_8hpp_source.html#l00053">requester.hpp:53</a></div></div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="appointmentcontrollerbase_8hpp_source.html#l00056">56</a> of file <a class="el" href="appointmentcontrollerbase_8hpp_source.html">appointmentcontrollerbase.hpp</a>.</p>
 
 </div>
 </div>

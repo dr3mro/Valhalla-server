@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/tokenmanager/tokenmanager.hpp" line="50" column="13"/>
+        <location file="src/gatekeeper/tokenmanager/tokenmanager.hpp" line="56" column="7"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1TokenManager_1a1776a30879fdb359d4cdcd6451835e81" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -32,10 +32,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/tokenmanager/tokenmanager.hpp" line="51" column="21"/>
-        <references refid="classapi_1_1v2_1_1TokenManager_1ae35221cdefeaad8255a896481af08403" compoundref="tokenmanager_8cpp" startline="36" endline="66">generateToken</references>
-        <references refid="classapi_1_1v2_1_1TokenManager_1ad59c01322c709811a7f499f4e1d3fa95" compoundref="tokenmanager_8cpp" startline="71" endline="91">isTokenValid</references>
-        <references refid="classapi_1_1v2_1_1TokenManager_1ae2353b4f71d0b7f35474f8d7bba4e6b5" compoundref="tokenmanager_8cpp" startline="94" endline="118">isTokenValidCoro</references>
+        <location file="src/gatekeeper/tokenmanager/tokenmanager.hpp" line="58" column="15"/>
+        <references refid="classapi_1_1v2_1_1TokenManager_1ae35221cdefeaad8255a896481af08403" compoundref="tokenmanager_8cpp" startline="43" endline="124">generateToken</references>
+        <references refid="classapi_1_1v2_1_1TokenManager_1ad59c01322c709811a7f499f4e1d3fa95" compoundref="tokenmanager_8cpp" startline="131" endline="162">isTokenValid</references>
+        <references refid="classapi_1_1v2_1_1TokenManager_1ae2353b4f71d0b7f35474f8d7bba4e6b5" compoundref="tokenmanager_8cpp" startline="167" endline="206">isTokenValidCoro</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1TokenManager_1ae35221cdefeaad8255a896481af08403" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -44,7 +44,7 @@
         <name>generateToken</name>
         <qualifiedname>api::v2::TokenManager::generateToken</qualifiedname>
         <param>
-          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1af609f0aaf134643edde3ad81ab5ebf7f" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
           <declname>clientLoginData</declname>
         </param>
         <briefdescription>
@@ -75,9 +75,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/tokenmanager/tokenmanager.hpp" line="62" column="18" bodyfile="src/gatekeeper/tokenmanager/tokenmanager.cpp" bodystart="36" bodyend="66"/>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classapi_1_1v2_1_1KeeprBase_1a769b4981f124c8bc48570a2ec0aaa01d" compoundref="keeprbase_8hpp" startline="198" endline="198">api::v2::KeeprBase::getTokenManagerParameters</references>
+        <location file="src/gatekeeper/tokenmanager/tokenmanager.hpp" line="73" column="12" bodyfile="src/gatekeeper/tokenmanager/tokenmanager.cpp" bodystart="43" bodyend="124"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a769b4981f124c8bc48570a2ec0aaa01d" compoundref="keeprbase_8hpp" startline="300" endline="302">api::v2::KeeprBase::getTokenManagerParameters</references>
         <referencedby refid="classapi_1_1v2_1_1TokenManager_1a1776a30879fdb359d4cdcd6451835e81">~TokenManager</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1TokenManager_1ad59c01322c709811a7f499f4e1d3fa95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -87,7 +87,7 @@
         <name>isTokenValid</name>
         <qualifiedname>api::v2::TokenManager::isTokenValid</qualifiedname>
         <param>
-          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1af609f0aaf134643edde3ad81ab5ebf7f" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
           <declname>clientLoginData</declname>
         </param>
         <param>
@@ -121,10 +121,10 @@ Decodes the token, then validates it with <ref refid="classapi_1_1v2_1_1KeeprBas
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/tokenmanager/tokenmanager.hpp" line="70" column="18" bodyfile="src/gatekeeper/tokenmanager/tokenmanager.cpp" bodystart="71" bodyend="91"/>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classapi_1_1v2_1_1KeeprBase_1aa5bb3aa3442744a56f97c06d8c43a37d" compoundref="keeprbase_8cpp" startline="299" endline="337">api::v2::KeeprBase::decodeToken</references>
-        <references refid="classapi_1_1v2_1_1KeeprBase_1a42038514e4e95779bf05a6f5d1ecad44" compoundref="keeprbase_8cpp" startline="349" endline="393">api::v2::KeeprBase::validateToken</references>
+        <location file="src/gatekeeper/tokenmanager/tokenmanager.hpp" line="87" column="12" bodyfile="src/gatekeeper/tokenmanager/tokenmanager.cpp" bodystart="131" bodyend="162"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1aa5bb3aa3442744a56f97c06d8c43a37d" compoundref="keeprbase_8cpp" startline="376" endline="427">api::v2::KeeprBase::decodeToken</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1a42038514e4e95779bf05a6f5d1ecad44" compoundref="keeprbase_8cpp" startline="438" endline="498">api::v2::KeeprBase::validateToken</references>
         <referencedby refid="classapi_1_1v2_1_1TokenManager_1a1776a30879fdb359d4cdcd6451835e81">~TokenManager</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1TokenManager_1ae2353b4f71d0b7f35474f8d7bba4e6b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -134,7 +134,7 @@ Decodes the token, then validates it with <ref refid="classapi_1_1v2_1_1KeeprBas
         <name>isTokenValidCoro</name>
         <qualifiedname>api::v2::TokenManager::isTokenValidCoro</qualifiedname>
         <param>
-          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1adbcc5e1a10a9ff9600c0741ca2e33368" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
+          <type>std::optional&lt; <ref refid="namespaceapi_1_1v2_1_1Types_1af609f0aaf134643edde3ad81ab5ebf7f" kindref="member">Types::ClientLoginData</ref> &gt; &amp;</type>
           <declname>clientLoginData</declname>
         </param>
         <param>
@@ -178,10 +178,10 @@ Decodes the token, then validates it with <ref refid="classapi_1_1v2_1_1KeeprBas
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/tokenmanager/tokenmanager.hpp" line="79" column="26" bodyfile="src/gatekeeper/tokenmanager/tokenmanager.cpp" bodystart="94" bodyend="118"/>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classapi_1_1v2_1_1KeeprBase_1aa5bb3aa3442744a56f97c06d8c43a37d" compoundref="keeprbase_8cpp" startline="299" endline="337">api::v2::KeeprBase::decodeToken</references>
-        <references refid="classapi_1_1v2_1_1KeeprBase_1adc936836bc32e25fd2348e738289c83a" compoundref="keeprbase_8cpp" startline="455" endline="499">api::v2::KeeprBase::validateTokenCoro</references>
+        <location file="src/gatekeeper/tokenmanager/tokenmanager.hpp" line="101" column="20" bodyfile="src/gatekeeper/tokenmanager/tokenmanager.cpp" bodystart="167" bodyend="206"/>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1aa5bb3aa3442744a56f97c06d8c43a37d" compoundref="keeprbase_8cpp" startline="376" endline="427">api::v2::KeeprBase::decodeToken</references>
+        <references refid="classapi_1_1v2_1_1KeeprBase_1adc936836bc32e25fd2348e738289c83a" compoundref="keeprbase_8cpp" startline="570" endline="625">api::v2::KeeprBase::validateTokenCoro</references>
         <referencedby refid="classapi_1_1v2_1_1TokenManager_1a1776a30879fdb359d4cdcd6451835e81">~TokenManager</referencedby>
       </memberdef>
     </sectiondef>
@@ -224,7 +224,7 @@ Decodes the token, then validates it with <ref refid="classapi_1_1v2_1_1KeeprBas
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/gatekeeper/tokenmanager/tokenmanager.hpp" line="46" column="9" bodyfile="src/gatekeeper/tokenmanager/tokenmanager.hpp" bodystart="47" bodyend="80"/>
+    <location file="src/gatekeeper/tokenmanager/tokenmanager.hpp" line="52" column="5" bodyfile="src/gatekeeper/tokenmanager/tokenmanager.hpp" bodystart="52" bodyend="105"/>
     <listofallmembers>
       <member refid="classapi_1_1v2_1_1KeeprBase_1a3b36fc37ac1fa5d0b98ca85a33513d43" prot="private" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>configurator_</name></member>
       <member refid="classapi_1_1v2_1_1KeeprBase_1aaf8aa6b3f37ca047d975238a41fe8285" prot="protected" virt="non-virtual"><scope>api::v2::TokenManager</scope><name>createTokenVerifier</name></member>

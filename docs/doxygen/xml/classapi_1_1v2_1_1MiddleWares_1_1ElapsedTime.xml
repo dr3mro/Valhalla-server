@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/middlewares/elapsedtime.hpp" line="58" column="9"/>
+        <location file="src/api/v2/middlewares/elapsedtime.hpp" line="72" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1MiddleWares_1_1ElapsedTime_1ac1c141fd55634453fade2848128cb706" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -70,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/middlewares/elapsedtime.hpp" line="69" column="14" bodyfile="src/api/v2/middlewares/elapsedtime.hpp" bodystart="69" bodyend="89"/>
+        <location file="src/api/v2/middlewares/elapsedtime.hpp" line="89" column="10" bodyfile="src/api/v2/middlewares/elapsedtime.hpp" bodystart="89" bodyend="135"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -101,7 +101,7 @@
         <label>drogon::HttpMiddleware&lt; ElapsedTime &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="src/api/v2/middlewares/elapsedtime.hpp" line="55" column="5" bodyfile="src/api/v2/middlewares/elapsedtime.hpp" bodystart="56" bodyend="90"/>
+    <location file="src/api/v2/middlewares/elapsedtime.hpp" line="70" column="3" bodyfile="src/api/v2/middlewares/elapsedtime.hpp" bodystart="70" bodyend="136"/>
     <listofallmembers>
       <member refid="classapi_1_1v2_1_1MiddleWares_1_1ElapsedTime_1a1e14e432f06cd74f76c257205eb92986" prot="public" virt="non-virtual"><scope>api::v2::MiddleWares::ElapsedTime</scope><name>ElapsedTime</name></member>
       <member refid="classapi_1_1v2_1_1MiddleWares_1_1ElapsedTime_1ac1c141fd55634453fade2848128cb706" prot="public" virt="non-virtual"><scope>api::v2::MiddleWares::ElapsedTime</scope><name>invoke</name></member>

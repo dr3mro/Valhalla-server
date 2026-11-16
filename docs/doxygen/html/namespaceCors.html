@@ -179,11 +179,11 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cors_8hpp_source.html#l00104">104</a> of file <a class="el" href="cors_8hpp_source.html">cors.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cors_8hpp_source.html#l00146">146</a> of file <a class="el" href="cors_8hpp_source.html">cors.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cors_8hpp_source.html#l00104">addToVary()</a>.</p>
+<p class="reference">References <a class="el" href="cors_8hpp_source.html#l00146">addToVary()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cors_8hpp_source.html#l00104">addToVary()</a>, and <a class="el" href="cors_8hpp_source.html#l00157">apply()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cors_8hpp_source.html#l00146">addToVary()</a>, and <a class="el" href="cors_8hpp_source.html#l00222">apply()</a>.</p>
 
 </div>
 </div>
@@ -214,11 +214,11 @@ Functions</h2></td></tr>
 <p>Short alias so call sites can use detail:: for the Drogon-free token helpers. </p><dl class="section note"><dt>Note</dt><dd>PATCH is advertised here but <a class="el" href="classServer.html#a5bc93a8ab4205adcfc43ee9d8f4aaa83" title="Reports whether an HTTP method is one this server accepts.">Server::isConventionalMethod()</a> rejects it with 405. </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>A process-lifetime constant string, returned by reference to avoid a copy per response. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cors_8hpp_source.html#l00060">60</a> of file <a class="el" href="cors_8hpp_source.html">cors.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cors_8hpp_source.html#l00085">85</a> of file <a class="el" href="cors_8hpp_source.html">cors.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cors_8hpp_source.html#l00060">allowedMethods()</a>.</p>
+<p class="reference">References <a class="el" href="cors_8hpp_source.html#l00085">allowedMethods()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cors_8hpp_source.html#l00060">allowedMethods()</a>, <a class="el" href="cors_8hpp_source.html#l00157">apply()</a>, and <a class="el" href="server_8cpp_source.html#l00092">Server::run()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cors_8hpp_source.html#l00085">allowedMethods()</a>, <a class="el" href="cors_8hpp_source.html#l00222">apply()</a>, and <a class="el" href="server_8cpp_source.html#l00156">Server::run()</a>.</p>
 
 </div>
 </div>
@@ -260,11 +260,11 @@ Functions</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>No shared mutable state is modified here; the configuration is read through <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a>'s thread-local cache. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="namespaceCorsTokens.html#ab923849059179cf6c8fb446aa5cb5e5d" title="Filters a client-supplied Access-Control-Request-Headers value down to syntactically valid tokens.">CorsTokens::sanitizeRequestedHeaders()</a>, <a class="el" href="namespaceCorsTokens.html#a0868524c04d18e34760e18676a1ff72f" title="Merges a token into an existing Vary header value, avoiding duplicates.">CorsTokens::mergeVary()</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cors_8hpp_source.html#l00157">157</a> of file <a class="el" href="cors_8hpp_source.html">cors.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cors_8hpp_source.html#l00222">222</a> of file <a class="el" href="cors_8hpp_source.html">cors.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cors_8hpp_source.html#l00104">addToVary()</a>, <a class="el" href="cors_8hpp_source.html#l00060">allowedMethods()</a>, <a class="el" href="cors_8hpp_source.html#l00157">apply()</a>, <a class="el" href="store_8hpp_source.html#l00189">Store::cachedObject()</a>, <a class="el" href="cors_8hpp_source.html#l00070">defaultAllowedHeaders()</a>, <a class="el" href="cors_8hpp_source.html#l00080">exposedHeaders()</a>, <a class="el" href="cors_8hpp_source.html#l00090">preflightMaxAge()</a>, and <a class="el" href="cors_8hpp_source.html#l00122">splitOrigins()</a>.</p>
+<p class="reference">References <a class="el" href="cors_8hpp_source.html#l00146">addToVary()</a>, <a class="el" href="cors_8hpp_source.html#l00085">allowedMethods()</a>, <a class="el" href="cors_8hpp_source.html#l00222">apply()</a>, <a class="el" href="store_8hpp_source.html#l00260">Store::cachedObject()</a>, <a class="el" href="cors_8hpp_source.html#l00101">defaultAllowedHeaders()</a>, <a class="el" href="cors_8hpp_source.html#l00115">exposedHeaders()</a>, <a class="el" href="cors_8hpp_source.html#l00129">preflightMaxAge()</a>, and <a class="el" href="cors_8hpp_source.html#l00174">splitOrigins()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cors_8hpp_source.html#l00157">apply()</a>, and <a class="el" href="server_8cpp_source.html#l00092">Server::run()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cors_8hpp_source.html#l00222">apply()</a>, and <a class="el" href="server_8cpp_source.html#l00156">Server::run()</a>.</p>
 
 </div>
 </div>
@@ -294,11 +294,11 @@ Functions</h2></td></tr>
 <p>The fallback Access-Control-Allow-Headers list used on non-preflight responses. </p>
 <dl class="section return"><dt>Returns</dt><dd>A process-lifetime constant string, returned by reference to avoid a copy per response. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cors_8hpp_source.html#l00070">70</a> of file <a class="el" href="cors_8hpp_source.html">cors.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cors_8hpp_source.html#l00101">101</a> of file <a class="el" href="cors_8hpp_source.html">cors.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cors_8hpp_source.html#l00070">defaultAllowedHeaders()</a>.</p>
+<p class="reference">References <a class="el" href="cors_8hpp_source.html#l00101">defaultAllowedHeaders()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cors_8hpp_source.html#l00157">apply()</a>, and <a class="el" href="cors_8hpp_source.html#l00070">defaultAllowedHeaders()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cors_8hpp_source.html#l00222">apply()</a>, and <a class="el" href="cors_8hpp_source.html#l00101">defaultAllowedHeaders()</a>.</p>
 
 </div>
 </div>
@@ -328,11 +328,11 @@ Functions</h2></td></tr>
 <p>Headers browsers are allowed to expose to page scripts. </p>
 <dl class="section return"><dt>Returns</dt><dd>A process-lifetime constant string, returned by reference to avoid a copy per response. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cors_8hpp_source.html#l00080">80</a> of file <a class="el" href="cors_8hpp_source.html">cors.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cors_8hpp_source.html#l00115">115</a> of file <a class="el" href="cors_8hpp_source.html">cors.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cors_8hpp_source.html#l00080">exposedHeaders()</a>.</p>
+<p class="reference">References <a class="el" href="cors_8hpp_source.html#l00115">exposedHeaders()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cors_8hpp_source.html#l00157">apply()</a>, and <a class="el" href="cors_8hpp_source.html#l00080">exposedHeaders()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cors_8hpp_source.html#l00222">apply()</a>, and <a class="el" href="cors_8hpp_source.html#l00115">exposedHeaders()</a>.</p>
 
 </div>
 </div>
@@ -362,11 +362,11 @@ Functions</h2></td></tr>
 <p>The Access-Control-Max-Age value (seconds) emitted on preflight responses. </p>
 <dl class="section return"><dt>Returns</dt><dd>A process-lifetime constant string; 7200 matches the browser cap. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cors_8hpp_source.html#l00090">90</a> of file <a class="el" href="cors_8hpp_source.html">cors.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cors_8hpp_source.html#l00129">129</a> of file <a class="el" href="cors_8hpp_source.html">cors.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cors_8hpp_source.html#l00090">preflightMaxAge()</a>.</p>
+<p class="reference">References <a class="el" href="cors_8hpp_source.html#l00129">preflightMaxAge()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cors_8hpp_source.html#l00157">apply()</a>, and <a class="el" href="cors_8hpp_source.html#l00090">preflightMaxAge()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cors_8hpp_source.html#l00222">apply()</a>, and <a class="el" href="cors_8hpp_source.html#l00129">preflightMaxAge()</a>.</p>
 
 </div>
 </div>
@@ -402,11 +402,11 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Origins in configuration order. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cors_8hpp_source.html#l00122">122</a> of file <a class="el" href="cors_8hpp_source.html">cors.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cors_8hpp_source.html#l00174">174</a> of file <a class="el" href="cors_8hpp_source.html">cors.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cors_8hpp_source.html#l00122">splitOrigins()</a>.</p>
+<p class="reference">References <a class="el" href="cors_8hpp_source.html#l00174">splitOrigins()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cors_8hpp_source.html#l00157">apply()</a>, and <a class="el" href="cors_8hpp_source.html#l00122">splitOrigins()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cors_8hpp_source.html#l00222">apply()</a>, and <a class="el" href="cors_8hpp_source.html#l00174">splitOrigins()</a>.</p>
 
 </div>
 </div>

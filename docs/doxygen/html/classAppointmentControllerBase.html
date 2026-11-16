@@ -138,39 +138,41 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a2810286950caafd54a805ee51b8174c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy assignment is allowed.  <br /></td></tr>
 <tr class="memitem:aac2dc02319f959dd2e7427de1db0ac63" id="r_aac2dc02319f959dd2e7427de1db0ac63"><td class="memItemLeft">virtual&#160;</td><td class="memItemRight"><a class="el" href="#aac2dc02319f959dd2e7427de1db0ac63">~AppointmentControllerBase</a> ()=default</td></tr>
 <tr class="memdesc:aac2dc02319f959dd2e7427de1db0ac63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor so derived controllers can be released through this interface.  <br /></td></tr>
-<tr class="memitem:ab647aad281f3e7b378ce3a80f6f2d812" id="r_ab647aad281f3e7b378ce3a80f6f2d812"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#ab647aad281f3e7b378ce3a80f6f2d812">Create</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="appointmentcontrollerbase_8hpp.html#a94dc636f3cc68d7c4ea35ba32b0dd8d1">Requester</a> &amp;&amp;requester, std::string_view data)=0</td></tr>
+<tr class="memitem:ab647aad281f3e7b378ce3a80f6f2d812" id="r_ab647aad281f3e7b378ce3a80f6f2d812"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#ab647aad281f3e7b378ce3a80f6f2d812">Create</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="appointmentcontrollerbase_8hpp.html#a8aac836dbb3d1b4bc56b33de7ad245a4">Requester</a> &amp;&amp;requester, std::string_view data)=0</td></tr>
 <tr class="memdesc:ab647aad281f3e7b378ce3a80f6f2d812"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an appointment entity from a JSON request body.  <br /></td></tr>
-<tr class="memitem:aa38e2ee7e8e67fc65efa2ae579b8b292" id="r_aa38e2ee7e8e67fc65efa2ae579b8b292"><td class="memItemLeft">virtual drogon::Task&lt; void &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aa38e2ee7e8e67fc65efa2ae579b8b292">CreateAsync</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="appointmentcontrollerbase_8hpp.html#a94dc636f3cc68d7c4ea35ba32b0dd8d1">Requester</a> &amp;&amp;requester, std::string_view data)=0</td></tr>
+<tr class="memitem:aa38e2ee7e8e67fc65efa2ae579b8b292" id="r_aa38e2ee7e8e67fc65efa2ae579b8b292"><td class="memItemLeft">virtual drogon::Task&lt; void &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aa38e2ee7e8e67fc65efa2ae579b8b292">CreateAsync</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="appointmentcontrollerbase_8hpp.html#a8aac836dbb3d1b4bc56b33de7ad245a4">Requester</a> &amp;&amp;requester, std::string_view data)=0</td></tr>
 <tr class="memdesc:aa38e2ee7e8e67fc65efa2ae579b8b292"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#ab647aad281f3e7b378ce3a80f6f2d812" title="Create">Create</a>.  <br /></td></tr>
-<tr class="memitem:ac74bf3e7c5e5ce53b463fc56ce84c1f7" id="r_ac74bf3e7c5e5ce53b463fc56ce84c1f7"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#ac74bf3e7c5e5ce53b463fc56ce84c1f7">Read</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="appointmentcontrollerbase_8hpp.html#a94dc636f3cc68d7c4ea35ba32b0dd8d1">Requester</a> &amp;&amp;requester, std::string_view data)=0</td></tr>
+<tr class="memitem:ac74bf3e7c5e5ce53b463fc56ce84c1f7" id="r_ac74bf3e7c5e5ce53b463fc56ce84c1f7"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#ac74bf3e7c5e5ce53b463fc56ce84c1f7">Read</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="appointmentcontrollerbase_8hpp.html#a8aac836dbb3d1b4bc56b33de7ad245a4">Requester</a> &amp;&amp;requester, std::string_view data)=0</td></tr>
 <tr class="memdesc:ac74bf3e7c5e5ce53b463fc56ce84c1f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads one appointment entity identified by an <span class="tt">id</span>/<span class="tt">schema</span> JSON request.  <br /></td></tr>
-<tr class="memitem:acd60a9aa9a593fa82c7407008ba6cc3d" id="r_acd60a9aa9a593fa82c7407008ba6cc3d"><td class="memItemLeft">virtual drogon::Task&lt; void &gt;&#160;</td><td class="memItemRight"><a class="el" href="#acd60a9aa9a593fa82c7407008ba6cc3d">ReadAsync</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="appointmentcontrollerbase_8hpp.html#a94dc636f3cc68d7c4ea35ba32b0dd8d1">Requester</a> &amp;&amp;requester, std::string_view data)=0</td></tr>
+<tr class="memitem:acd60a9aa9a593fa82c7407008ba6cc3d" id="r_acd60a9aa9a593fa82c7407008ba6cc3d"><td class="memItemLeft">virtual drogon::Task&lt; void &gt;&#160;</td><td class="memItemRight"><a class="el" href="#acd60a9aa9a593fa82c7407008ba6cc3d">ReadAsync</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="appointmentcontrollerbase_8hpp.html#a8aac836dbb3d1b4bc56b33de7ad245a4">Requester</a> &amp;&amp;requester, std::string_view data)=0</td></tr>
 <tr class="memdesc:acd60a9aa9a593fa82c7407008ba6cc3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#ac74bf3e7c5e5ce53b463fc56ce84c1f7" title="Read">Read</a>.  <br /></td></tr>
-<tr class="memitem:a8a91b4e32b1afb820d5b1b7af83469a9" id="r_a8a91b4e32b1afb820d5b1b7af83469a9"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a8a91b4e32b1afb820d5b1b7af83469a9">Update</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="appointmentcontrollerbase_8hpp.html#a94dc636f3cc68d7c4ea35ba32b0dd8d1">Requester</a> &amp;&amp;requester, std::string_view data, std::optional&lt; uint64_t &gt; _id)=0</td></tr>
+<tr class="memitem:a8a91b4e32b1afb820d5b1b7af83469a9" id="r_a8a91b4e32b1afb820d5b1b7af83469a9"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a8a91b4e32b1afb820d5b1b7af83469a9">Update</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="appointmentcontrollerbase_8hpp.html#a8aac836dbb3d1b4bc56b33de7ad245a4">Requester</a> &amp;&amp;requester, std::string_view data, std::optional&lt; uint64_t &gt; _id)=0</td></tr>
 <tr class="memdesc:a8a91b4e32b1afb820d5b1b7af83469a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the appointment entity identified by <code class="param">_id</code> from a JSON request body.  <br /></td></tr>
-<tr class="memitem:a4b35caba8ea117928f1f0a13855d5e94" id="r_a4b35caba8ea117928f1f0a13855d5e94"><td class="memItemLeft">virtual drogon::Task&lt; void &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a4b35caba8ea117928f1f0a13855d5e94">UpdateAsync</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="appointmentcontrollerbase_8hpp.html#a94dc636f3cc68d7c4ea35ba32b0dd8d1">Requester</a> &amp;&amp;requester, std::string_view data, std::optional&lt; uint64_t &gt; _id)=0</td></tr>
+<tr class="memitem:a4b35caba8ea117928f1f0a13855d5e94" id="r_a4b35caba8ea117928f1f0a13855d5e94"><td class="memItemLeft">virtual drogon::Task&lt; void &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a4b35caba8ea117928f1f0a13855d5e94">UpdateAsync</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="appointmentcontrollerbase_8hpp.html#a8aac836dbb3d1b4bc56b33de7ad245a4">Requester</a> &amp;&amp;requester, std::string_view data, std::optional&lt; uint64_t &gt; _id)=0</td></tr>
 <tr class="memdesc:a4b35caba8ea117928f1f0a13855d5e94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#a8a91b4e32b1afb820d5b1b7af83469a9" title="Update">Update</a>.  <br /></td></tr>
-<tr class="memitem:a1677d9a8337072581bc9e2e658b5c9ec" id="r_a1677d9a8337072581bc9e2e658b5c9ec"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a1677d9a8337072581bc9e2e658b5c9ec">Delete</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="appointmentcontrollerbase_8hpp.html#a94dc636f3cc68d7c4ea35ba32b0dd8d1">Requester</a> &amp;&amp;requester, std::optional&lt; uint64_t &gt; _id)=0</td></tr>
+<tr class="memitem:a1677d9a8337072581bc9e2e658b5c9ec" id="r_a1677d9a8337072581bc9e2e658b5c9ec"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a1677d9a8337072581bc9e2e658b5c9ec">Delete</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="appointmentcontrollerbase_8hpp.html#a8aac836dbb3d1b4bc56b33de7ad245a4">Requester</a> &amp;&amp;requester, std::optional&lt; uint64_t &gt; _id)=0</td></tr>
 <tr class="memdesc:a1677d9a8337072581bc9e2e658b5c9ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes the appointment entity identified by <code class="param">_id</code>.  <br /></td></tr>
-<tr class="memitem:a1d3056a1551d3ab67042f274db3c86a7" id="r_a1d3056a1551d3ab67042f274db3c86a7"><td class="memItemLeft">virtual drogon::Task&lt; void &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a1d3056a1551d3ab67042f274db3c86a7">DeleteAsync</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="appointmentcontrollerbase_8hpp.html#a94dc636f3cc68d7c4ea35ba32b0dd8d1">Requester</a> &amp;&amp;requester, std::optional&lt; uint64_t &gt; _id)=0</td></tr>
+<tr class="memitem:a1d3056a1551d3ab67042f274db3c86a7" id="r_a1d3056a1551d3ab67042f274db3c86a7"><td class="memItemLeft">virtual drogon::Task&lt; void &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a1d3056a1551d3ab67042f274db3c86a7">DeleteAsync</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="appointmentcontrollerbase_8hpp.html#a8aac836dbb3d1b4bc56b33de7ad245a4">Requester</a> &amp;&amp;requester, std::optional&lt; uint64_t &gt; _id)=0</td></tr>
 <tr class="memdesc:a1d3056a1551d3ab67042f274db3c86a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coroutine form of <a class="el" href="#a1677d9a8337072581bc9e2e658b5c9ec" title="Delete">Delete</a>.  <br /></td></tr>
-<tr class="memitem:aa79a4ad4a10da6c9d6b791df603fc907" id="r_aa79a4ad4a10da6c9d6b791df603fc907"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#aa79a4ad4a10da6c9d6b791df603fc907">Search</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="appointmentcontrollerbase_8hpp.html#a94dc636f3cc68d7c4ea35ba32b0dd8d1">Requester</a> &amp;&amp;requester, std::string_view data)=0</td></tr>
+<tr class="memitem:aa79a4ad4a10da6c9d6b791df603fc907" id="r_aa79a4ad4a10da6c9d6b791df603fc907"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#aa79a4ad4a10da6c9d6b791df603fc907">Search</a> (<a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3">CALLBACK_</a> &amp;&amp;callback, const <a class="el" href="appointmentcontrollerbase_8hpp.html#a8aac836dbb3d1b4bc56b33de7ad245a4">Requester</a> &amp;&amp;requester, std::string_view data)=0</td></tr>
 <tr class="memdesc:aa79a4ad4a10da6c9d6b791df603fc907"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs a paginated search over appointment entities.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Type-erased interface for appointment-entity CRUD+S operations. </p>
-<p>Declares a synchronous callback form and a coroutine (<span class="tt">drogon::Task&lt;void&gt;</span>) form of every operation. The appointments route registry reaches concrete controllers through this base via a <span class="tt">std::variant</span>, so its virtual functions are the dispatch point used by a single route handler for all appointment entity types.</p>
-<p>In plain words: "synchronous" means the answer arrives through a callback function, while the coroutine (<span class="tt">drogon::Task&lt;void&gt;</span>) versions can be paused with co_await so the server can do other work meanwhile. "Virtual functions" mean a call made through this base runs the real object's version. A <span class="tt">std::variant</span> is a box that can hold one of several controller types.</p>
-<p>Invocation contract shared by every method:</p><ul>
-<li><span class="tt">callback</span> is <span class="tt">std::function&lt;void(int, const std::string&amp;)&gt;</span>, it is moved through the call chain and, by contract, invoked once on each completion path, including failures. Its first argument is an <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a6199aeb84d745378b1befef28d78892f" title="api::v2::Http::Status">api::v2::Http::Status</a> code, its second a response body.</li>
+<p>Declares a synchronous callback form and a coroutine (<span class="tt">drogon::Task&lt;void&gt;</span>) form of every operation. The appointments route registry reaches concrete controllers through this base via a <span class="tt">std::variant</span>, so its virtual functions are the dispatch point used by a single route handler for all appointment entity types. </p><pre class="fragment">     In plain words: "synchronous" means the answer arrives through a
+</pre><p> callback function, while the coroutine (<span class="tt">drogon::Task&lt;void&gt;</span>) versions can be paused with co_await so the server can do other work meanwhile. "Virtual
+functions" mean a call made through this base runs the real object's version. A <span class="tt">std::variant</span> is a box that can hold one of several controller types. </p><pre class="fragment">     Invocation contract shared by every method:
+     - `callback` is `std::function&lt;void(int, const std::string&amp;)&gt;`, it
+</pre><p> is moved through the call chain and, by contract, invoked once on each completion path, including failures. Its first argument is an <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a6199aeb84d745378b1befef28d78892f" title="api::v2::Http::Status">api::v2::Http::Status</a> code, its second a response body.</p><ul>
 <li><span class="tt">requester</span> is the authenticated caller identity consulted for authorisation.</li>
 <li><span class="tt">data</span> is a non-owning view of the raw JSON request body, valid only for the call.</li>
-<li><span class="tt">_id</span> is the optional target id; absence is handled by the concrete implementation.</li>
-</ul>
-<p>The <span class="tt">*Async</span> methods must be co_awaited; the HTTP layer wraps them in <span class="tt">drogon::async_run</span> and turns the callback result into a reply. </p><dl class="section note"><dt>Note</dt><dd>The interface itself is stateless; behaviour lives in <a class="el" href="classAppointmentController.html" title="AppointmentController">AppointmentController</a>. </dd></dl>
+<li><span class="tt">_id</span> is the optional target id; absence is handled by the concrete implementation. <pre class="fragment">     The `*Async` methods must be co_awaited; the HTTP layer wraps them
+</pre> in <span class="tt">drogon::async_run</span> and turns the callback result into a reply. <dl class="section note"><dt>Note</dt><dd>The interface itself is stateless; behaviour lives in <a class="el" href="classAppointmentController.html" title="AppointmentController">AppointmentController</a>. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classAppointmentController.html" title="Appointment-entity controller that adapts EntityController to AppointmentControllerBase.">AppointmentController</a>, <a class="el" href="classEntityControllerBase.html" title="Abstract contract for the request-facing CRUDS handlers exposed for every entity type.">EntityControllerBase</a>, <a class="el" href="classController.html" title="Reusable persistence engine for the API&#39;s CRUDS (Create/Read/Update/Delete/Search) operations.">Controller</a> </dd></dl>
+</li>
+</ul>
 
-<p class="definition">Definition at line <a class="el" href="appointmentcontrollerbase_8hpp_source.html#l00068">68</a> of file <a class="el" href="appointmentcontrollerbase_8hpp_source.html">appointmentcontrollerbase.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="appointmentcontrollerbase_8hpp_source.html#l00093">93</a> of file <a class="el" href="appointmentcontrollerbase_8hpp_source.html">appointmentcontrollerbase.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2f3fcbc7122031d97061db180c747fac" name="a2f3fcbc7122031d97061db180c747fac"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2f3fcbc7122031d97061db180c747fac">&#9670;&#160;</a></span>AppointmentControllerBase() <span class="overload">[1/3]</span></h2>
@@ -304,7 +306,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="appointmentcontrollerbase_8hpp.html#a94dc636f3cc68d7c4ea35ba32b0dd8d1">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="appointmentcontrollerbase_8hpp.html#a8aac836dbb3d1b4bc56b33de7ad245a4">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -329,9 +331,9 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="appointments_8hpp_source.html#l00083">api::v2::Appointments::Create()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="appointments_8hpp_source.html#l00112">api::v2::Appointments::Create()</a>.</p>
 
 </div>
 </div>
@@ -352,7 +354,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="appointmentcontrollerbase_8hpp.html#a94dc636f3cc68d7c4ea35ba32b0dd8d1">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="appointmentcontrollerbase_8hpp.html#a8aac836dbb3d1b4bc56b33de7ad245a4">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -377,7 +379,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
 </div>
 </div>
@@ -398,7 +400,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="appointmentcontrollerbase_8hpp.html#a94dc636f3cc68d7c4ea35ba32b0dd8d1">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="appointmentcontrollerbase_8hpp.html#a8aac836dbb3d1b4bc56b33de7ad245a4">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -423,9 +425,9 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="appointments_8hpp_source.html#l00270">api::v2::Appointments::Delete()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="appointments_8hpp_source.html#l00435">api::v2::Appointments::Delete()</a>.</p>
 
 </div>
 </div>
@@ -446,7 +448,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="appointmentcontrollerbase_8hpp.html#a94dc636f3cc68d7c4ea35ba32b0dd8d1">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="appointmentcontrollerbase_8hpp.html#a8aac836dbb3d1b4bc56b33de7ad245a4">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -471,7 +473,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
 </div>
 </div>
@@ -550,7 +552,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="appointmentcontrollerbase_8hpp.html#a94dc636f3cc68d7c4ea35ba32b0dd8d1">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="appointmentcontrollerbase_8hpp.html#a8aac836dbb3d1b4bc56b33de7ad245a4">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -575,9 +577,9 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="appointments_8hpp_source.html#l00143">api::v2::Appointments::Read()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="appointments_8hpp_source.html#l00228">api::v2::Appointments::Read()</a>.</p>
 
 </div>
 </div>
@@ -598,7 +600,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="appointmentcontrollerbase_8hpp.html#a94dc636f3cc68d7c4ea35ba32b0dd8d1">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="appointmentcontrollerbase_8hpp.html#a8aac836dbb3d1b4bc56b33de7ad245a4">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -623,7 +625,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
 </div>
 </div>
@@ -644,7 +646,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="appointmentcontrollerbase_8hpp.html#a94dc636f3cc68d7c4ea35ba32b0dd8d1">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="appointmentcontrollerbase_8hpp.html#a8aac836dbb3d1b4bc56b33de7ad245a4">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -669,9 +671,9 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="appointments_8hpp_source.html#l00334">api::v2::Appointments::Search()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="appointments_8hpp_source.html#l00539">api::v2::Appointments::Search()</a>.</p>
 
 </div>
 </div>
@@ -692,7 +694,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="appointmentcontrollerbase_8hpp.html#a94dc636f3cc68d7c4ea35ba32b0dd8d1">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="appointmentcontrollerbase_8hpp.html#a8aac836dbb3d1b4bc56b33de7ad245a4">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -723,9 +725,9 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="appointments_8hpp_source.html#l00205">api::v2::Appointments::Update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="appointments_8hpp_source.html#l00331">api::v2::Appointments::Update()</a>.</p>
 
 </div>
 </div>
@@ -746,7 +748,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="appointmentcontrollerbase_8hpp.html#a94dc636f3cc68d7c4ea35ba32b0dd8d1">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="appointmentcontrollerbase_8hpp.html#a8aac836dbb3d1b4bc56b33de7ad245a4">Requester</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -777,7 +779,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
 </div>
 </div>

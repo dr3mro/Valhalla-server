@@ -150,8 +150,8 @@ Static Private Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:aa84ff16ac0dff01780bb1f1fbc6b3d0f" id="r_aa84ff16ac0dff01780bb1f1fbc6b3d0f"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classLogger.html">Logger</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aa84ff16ac0dff01780bb1f1fbc6b3d0f">logger_</a></td></tr>
 <tr class="memitem:adb978249d96530b9b06c6a88d73fd097" id="r_adb978249d96530b9b06c6a88d73fd097"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classConfigurator.html">Configurator</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#adb978249d96530b9b06c6a88d73fd097">configurator_</a></td></tr>
-<tr class="memitem:a9187a361704ab4a8649b189969582ad8" id="r_a9187a361704ab4a8649b189969582ad8"><td class="memItemLeft"><a class="el" href="classConfigurator.html#aec113448232bb2cde090d19e8b2b716e">Configurator::ServerConfig</a>&#160;</td><td class="memItemRight"><a class="el" href="#a9187a361704ab4a8649b189969582ad8">config_</a></td></tr>
-<tr class="memitem:add9a2053fd3293d3ea32f90174f31362" id="r_add9a2053fd3293d3ea32f90174f31362"><td class="memItemLeft"><a class="el" href="classConfigurator.html#afdc97f6e9bd19c0197759b8860ed9a49">Configurator::DatabaseConfig</a>&#160;</td><td class="memItemRight"><a class="el" href="#add9a2053fd3293d3ea32f90174f31362">db_config_</a></td></tr>
+<tr class="memitem:a9187a361704ab4a8649b189969582ad8" id="r_a9187a361704ab4a8649b189969582ad8"><td class="memItemLeft"><a class="el" href="classConfigurator.html#a927a53596c80ae2c5f02c21f85af9d83">Configurator::ServerConfig</a>&#160;</td><td class="memItemRight"><a class="el" href="#a9187a361704ab4a8649b189969582ad8">config_</a></td></tr>
+<tr class="memitem:add9a2053fd3293d3ea32f90174f31362" id="r_add9a2053fd3293d3ea32f90174f31362"><td class="memItemLeft"><a class="el" href="classConfigurator.html#a78caa68d4554c8ab0d0c1753ce8edbe2">Configurator::DatabaseConfig</a>&#160;</td><td class="memItemRight"><a class="el" href="#add9a2053fd3293d3ea32f90174f31362">db_config_</a></td></tr>
 <tr class="memitem:a4b5af6fbc728adfb0315088430f9c059" id="r_a4b5af6fbc728adfb0315088430f9c059"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classDatabaseSchema.html">DatabaseSchema</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a4b5af6fbc728adfb0315088430f9c059">databaseSchema_</a></td></tr>
 <tr class="memitem:aaaa0c607dbdbdf1fe064a1b247cc33f1" id="r_aaaa0c607dbdbdf1fe064a1b247cc33f1"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classapi_1_1v2_1_1Filters_1_1Auth.html">api::v2::Filters::Auth</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aaaa0c607dbdbdf1fe064a1b247cc33f1">auth_filter_</a></td></tr>
 <tr class="memitem:ad1d6edc7edb17417bfd77dd21c3414ea" id="r_ad1d6edc7edb17417bfd77dd21c3414ea"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classapi_1_1v2_1_1MiddleWares_1_1ElapsedTime.html">api::v2::MiddleWares::ElapsedTime</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ad1d6edc7edb17417bfd77dd21c3414ea">elapsed_time_</a></td></tr>
@@ -162,7 +162,7 @@ Private Attributes</h2></td></tr>
 <p>The constructor resolves long-lived singletons from the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a> and copies the server and database configuration by value, so later changes to the <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a> are not seen through those copies. <a class="el" href="#a30362b937b125d27916cf595bfc4c1a7" title="Prints the banner, configures and runs Drogon, then drains the worker pools.">run()</a> configures and starts the Drogon application, installs the pre-routing and pre-sending advice (method filtering and CORS), and blocks until the event loops stop. Only then does it shut the worker pools down, while the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a> singletons they depend on are still alive. The filter and middleware members are created eagerly so one instance is reused. Registration of the included Drogon components (including the route headers brought in by <a class="el" href="all__routes_8hpp.html" title="Single inclusion point that registers every API v2 Drogon controller.">all_routes.hpp</a>) is handled by Drogon itself, outside this class. </p><dl class="section note"><dt>Note</dt><dd>Not copyable. Move construction is defaulted; move assignment is deleted. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="namespaceCors.html" title="Writes the CORS response headers onto every outgoing response.">Cors</a>, <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a>, <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="server_8hpp_source.html#l00055">55</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="server_8hpp_source.html#l00080">80</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad5ec9462b520e59f7ea831e157ee5e59" name="ad5ec9462b520e59f7ea831e157ee5e59"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad5ec9462b520e59f7ea831e157ee5e59">&#9670;&#160;</a></span>Server() <span class="overload">[1/3]</span></h2>
@@ -184,9 +184,9 @@ Private Attributes</h2></td></tr>
 <p>Objects come from <a class="el" href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c" title="Returns the singleton for T, constructing it on first use.">Store::getObject</a>, so a later registration through <a class="el" href="classStore.html#a2a4bfc0b18f2999216eda3067988cf57" title="Overwrites the singleton registered for T and invalidates every thread-local cache.">Store::replaceObject</a> will not replace the instances held here. The filter and middleware instances are constructed here and owned by the <a class="el" href="classServer.html" title="Owns application startup: configuration, banner, Drogon wiring, and post-run executor shutdown.">Server</a> for its entire lifetime.</p>
 <p>Objects fetched here are shared_ptrs, so they remain valid for the lifetime of the <a class="el" href="classServer.html" title="Owns application startup: configuration, banner, Drogon wiring, and post-run executor shutdown.">Server</a>. The two <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a> structs are copied by value; configuration changes made after construction are not observed. </p>
 
-<p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00068">68</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00103">103</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="server_8hpp_source.html#l00145">auth_filter_</a>, <a class="el" href="server_8hpp_source.html#l00132">config_</a>, <a class="el" href="server_8hpp_source.html#l00128">configurator_</a>, <a class="el" href="server_8hpp_source.html#l00140">databaseSchema_</a>, <a class="el" href="server_8hpp_source.html#l00136">db_config_</a>, <a class="el" href="server_8hpp_source.html#l00149">elapsed_time_</a>, <a class="el" href="server_8hpp_source.html#l00124">logger_</a>, and <a class="el" href="server_8hpp_source.html#l00153">rate_limit_</a>.</p>
+<p class="reference">References <a class="el" href="server_8hpp_source.html#l00211">auth_filter_</a>, <a class="el" href="server_8hpp_source.html#l00189">config_</a>, <a class="el" href="server_8hpp_source.html#l00182">configurator_</a>, <a class="el" href="server_8hpp_source.html#l00203">databaseSchema_</a>, <a class="el" href="server_8hpp_source.html#l00196">db_config_</a>, <a class="el" href="server_8hpp_source.html#l00218">elapsed_time_</a>, <a class="el" href="server_8hpp_source.html#l00176">logger_</a>, and <a class="el" href="server_8hpp_source.html#l00225">rate_limit_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a22297d8b4e114c67bebdeb5e2e2f3a4a">operator=()</a>, <a class="el" href="#a435f402a0d4257a4ef578cb28fa19025">operator=()</a>, <a class="el" href="#aaf5176747aba430a307fd4ca82dd8c01">Server()</a>, and <a class="el" href="#ae46436838354634d7929a223aacd998d">Server()</a>.</p>
 
@@ -242,7 +242,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Copy construction is not supported. </p>
 
-<p class="reference">References <a class="el" href="server_8cpp_source.html#l00068">Server()</a>.</p>
+<p class="reference">References <a class="el" href="server_8cpp_source.html#l00103">Server()</a>.</p>
 
 </div>
 </div>
@@ -270,7 +270,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Move construction is defaulted. </p>
 
-<p class="reference">References <a class="el" href="server_8cpp_source.html#l00068">Server()</a>.</p>
+<p class="reference">References <a class="el" href="server_8cpp_source.html#l00103">Server()</a>.</p>
 
 </div>
 </div>
@@ -309,9 +309,9 @@ Private Attributes</h2></td></tr>
 <p><a class="el" href="classReports.html" title="Case entity for the patients_reports table (a patient&#39;s report record).">Reports</a> whether a method should be routed rather than rejected in pre-routing.</p>
 <p>method: Method of the incoming request. Returns true for GET, POST, PUT, DELETE, OPTIONS and HEAD; false for all others, notably PATCH. Note: PATCH is advertised by <a class="el" href="namespaceCors.html#a1e735c23d92eb7d39a494adbe6fe035d" title="The method list advertised in Allow and Access-Control-Allow-Methods.">Cors::allowedMethods()</a> but is not accepted here; the two lists differ in the current implementation. </p>
 
-<p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00185">185</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00364">364</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="#a435f402a0d4257a4ef578cb28fa19025">operator=()</a>, and <a class="el" href="server_8cpp_source.html#l00092">run()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#a435f402a0d4257a4ef578cb28fa19025">operator=()</a>, and <a class="el" href="server_8cpp_source.html#l00156">run()</a>.</p>
 
 </div>
 </div>
@@ -339,7 +339,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Copy assignment is not supported. </p>
 
-<p class="reference">References <a class="el" href="server_8cpp_source.html#l00068">Server()</a>.</p>
+<p class="reference">References <a class="el" href="server_8cpp_source.html#l00103">Server()</a>.</p>
 
 </div>
 </div>
@@ -367,7 +367,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Move assignment is not supported. </p>
 
-<p class="reference">References <a class="el" href="server_8cpp_source.html#l00185">isConventionalMethod()</a>, <a class="el" href="server_8cpp_source.html#l00155">print_banner()</a>, <a class="el" href="server_8cpp_source.html#l00092">run()</a>, and <a class="el" href="server_8cpp_source.html#l00068">Server()</a>.</p>
+<p class="reference">References <a class="el" href="server_8cpp_source.html#l00364">isConventionalMethod()</a>, <a class="el" href="server_8cpp_source.html#l00305">print_banner()</a>, <a class="el" href="server_8cpp_source.html#l00156">run()</a>, and <a class="el" href="server_8cpp_source.html#l00103">Server()</a>.</p>
 
 </div>
 </div>
@@ -399,11 +399,11 @@ Private Attributes</h2></td></tr>
 <p>The configuration dump is produced by <a class="el" href="classConfigurator.html#aa1007b1c4fab1119faf6c4398d8e1f71" title="Logs the values of the nine non-test configuration sections.">Configurator::printValues()</a> and is followed by version, port, thread count, database connection count, and documentation URL. stdout is explicitly flushed so the banner is visible before the Drogon loggers take over the console.</p>
 <p>Writes to stdout and explicitly flushes it so the banner appears before framework logging begins. The displayed version comes from the build-time VALHALLA_GIT_TAG, not from the <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a> snapshot. </p>
 
-<p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00155">155</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00305">305</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="server_8hpp_source.html#l00132">config_</a>, <a class="el" href="server_8hpp_source.html#l00128">configurator_</a>, <a class="el" href="server_8hpp_source.html#l00136">db_config_</a>, <a class="el" href="banner_8hpp_source.html#l00059">Banner::get_random_color()</a>, <a class="el" href="banner_8hpp_source.html#l00110">Banner::print()</a>, <a class="el" href="banner_8hpp_source.html#l00123">Banner::print_line()</a>, and <a class="el" href="banner_8hpp_source.html#l00145">Banner::print_logo()</a>.</p>
+<p class="reference">References <a class="el" href="server_8hpp_source.html#l00189">config_</a>, <a class="el" href="server_8hpp_source.html#l00182">configurator_</a>, <a class="el" href="server_8hpp_source.html#l00196">db_config_</a>, <a class="el" href="banner_8hpp_source.html#l00078">Banner::get_random_color()</a>, <a class="el" href="banner_8hpp_source.html#l00259">Banner::print()</a>, <a class="el" href="banner_8hpp_source.html#l00288">Banner::print_line()</a>, and <a class="el" href="banner_8hpp_source.html#l00316">Banner::print_logo()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="#a435f402a0d4257a4ef578cb28fa19025">operator=()</a>, and <a class="el" href="server_8cpp_source.html#l00092">run()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#a435f402a0d4257a4ef578cb28fa19025">operator=()</a>, and <a class="el" href="server_8cpp_source.html#l00156">run()</a>.</p>
 
 </div>
 </div>
@@ -431,9 +431,9 @@ Private Attributes</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>The post-run shutdown order is deliberate: <a class="el" href="classDbExecutor.html" title="BoundedExecutor configured for the synchronous database path.">DbExecutor</a> is drained before <a class="el" href="classPasswordWorker.html" title="The pool for deliberately slow password work (hashing and verification), so it never runs on a Drogon...">PasswordWorker</a> because database tasks may enqueue password work. Both happen here, while the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a> singletons still exist, rather than in static destructors. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#a419137d4cb2f6fdeee5e3982da4fd1d7" title="Prints the effective configuration and the ASCII logo to stdout.">print_banner()</a>, <a class="el" href="namespaceCors.html#a8bdb2553f14222ee4cacfb5628907590" title="Decorates a response with CORS headers; invoked once per response from the pre-sending advice.">Cors::apply()</a>, <a class="el" href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c" title="Returns the singleton for T, constructing it on first use.">Store::getObject()</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00092">92</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="server_8cpp_source.html#l00156">156</a> of file <a class="el" href="server_8cpp_source.html">server.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cors_8hpp_source.html#l00060">Cors::allowedMethods()</a>, <a class="el" href="cors_8hpp_source.html#l00157">Cors::apply()</a>, <a class="el" href="server_8hpp_source.html#l00132">config_</a>, <a class="el" href="asyncdbclient_8cpp_source.html#l00050">AsyncDbClient::createClient()</a>, <a class="el" href="message_8cpp_source.html#l00042">Message::CriticalMessage()</a>, <a class="el" href="server_8hpp_source.html#l00136">db_config_</a>, <a class="el" href="message_8cpp_source.html#l00041">Message::ErrorMessage()</a>, <a class="el" href="store_8hpp_source.html#l00139">Store::getObject()</a>, <a class="el" href="server_8cpp_source.html#l00185">isConventionalMethod()</a>, <a class="el" href="jsonhelper_8cpp_source.html#l00027">api::v2::JsonHelper::jsonify()</a>, <a class="el" href="server_8cpp_source.html#l00155">print_banner()</a>, and <a class="el" href="store_8hpp_source.html#l00103">Store::registerObject()</a>.</p>
+<p class="reference">References <a class="el" href="cors_8hpp_source.html#l00085">Cors::allowedMethods()</a>, <a class="el" href="cors_8hpp_source.html#l00222">Cors::apply()</a>, <a class="el" href="server_8hpp_source.html#l00189">config_</a>, <a class="el" href="asyncdbclient_8cpp_source.html#l00071">AsyncDbClient::createClient()</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="server_8hpp_source.html#l00196">db_config_</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, <a class="el" href="store_8hpp_source.html#l00190">Store::getObject()</a>, <a class="el" href="server_8cpp_source.html#l00364">isConventionalMethod()</a>, <a class="el" href="jsonhelper_8cpp_source.html#l00032">api::v2::JsonHelper::jsonify()</a>, <a class="el" href="server_8cpp_source.html#l00305">print_banner()</a>, and <a class="el" href="store_8hpp_source.html#l00137">Store::registerObject()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a435f402a0d4257a4ef578cb28fa19025">operator=()</a>.</p>
 
@@ -461,9 +461,9 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Authentication filter instance. Constructed here but unused: Drogon resolves filters by class name from the route macros and instantiates its own singleton via reflection. </p>
 
-<p class="definition">Definition at line <a class="el" href="server_8hpp_source.html#l00145">145</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="server_8hpp_source.html#l00211">211</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="server_8cpp_source.html#l00068">Server()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="server_8cpp_source.html#l00103">Server()</a>.</p>
 
 </div>
 </div>
@@ -477,7 +477,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classConfigurator.html#aec113448232bb2cde090d19e8b2b716e">Configurator::ServerConfig</a> Server::config_</td>
+          <td class="memname"><a class="el" href="classConfigurator.html#a927a53596c80ae2c5f02c21f85af9d83">Configurator::ServerConfig</a> Server::config_</td>
         </tr>
       </table>
   </td>
@@ -488,9 +488,9 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Snapshot of the server settings used to configure the listener and to print the banner. </p>
 
-<p class="definition">Definition at line <a class="el" href="server_8hpp_source.html#l00132">132</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="server_8hpp_source.html#l00189">189</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="server_8cpp_source.html#l00155">print_banner()</a>, <a class="el" href="server_8cpp_source.html#l00092">run()</a>, and <a class="el" href="server_8cpp_source.html#l00068">Server()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="server_8cpp_source.html#l00305">print_banner()</a>, <a class="el" href="server_8cpp_source.html#l00156">run()</a>, and <a class="el" href="server_8cpp_source.html#l00103">Server()</a>.</p>
 
 </div>
 </div>
@@ -515,9 +515,9 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Source of the configuration values copied into config_ and db_config_. </p>
 
-<p class="definition">Definition at line <a class="el" href="server_8hpp_source.html#l00128">128</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="server_8hpp_source.html#l00182">182</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="server_8cpp_source.html#l00155">print_banner()</a>, and <a class="el" href="server_8cpp_source.html#l00068">Server()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="server_8cpp_source.html#l00305">print_banner()</a>, and <a class="el" href="server_8cpp_source.html#l00103">Server()</a>.</p>
 
 </div>
 </div>
@@ -542,9 +542,9 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Shared database-schema validator, kept alive for the lifetime of the process. </p>
 
-<p class="definition">Definition at line <a class="el" href="server_8hpp_source.html#l00140">140</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="server_8hpp_source.html#l00203">203</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="server_8cpp_source.html#l00068">Server()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="server_8cpp_source.html#l00103">Server()</a>.</p>
 
 </div>
 </div>
@@ -558,7 +558,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classConfigurator.html#afdc97f6e9bd19c0197759b8860ed9a49">Configurator::DatabaseConfig</a> Server::db_config_</td>
+          <td class="memname"><a class="el" href="classConfigurator.html#a78caa68d4554c8ab0d0c1753ce8edbe2">Configurator::DatabaseConfig</a> Server::db_config_</td>
         </tr>
       </table>
   </td>
@@ -569,9 +569,9 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Snapshot of the database settings; its async flag selects the asynchronous DB client at startup. </p>
 
-<p class="definition">Definition at line <a class="el" href="server_8hpp_source.html#l00136">136</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="server_8hpp_source.html#l00196">196</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="server_8cpp_source.html#l00155">print_banner()</a>, <a class="el" href="server_8cpp_source.html#l00092">run()</a>, and <a class="el" href="server_8cpp_source.html#l00068">Server()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="server_8cpp_source.html#l00305">print_banner()</a>, <a class="el" href="server_8cpp_source.html#l00156">run()</a>, and <a class="el" href="server_8cpp_source.html#l00103">Server()</a>.</p>
 
 </div>
 </div>
@@ -596,9 +596,9 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Request-timing middleware instance. Constructed here but unused for the same reason as auth_filter_. </p>
 
-<p class="definition">Definition at line <a class="el" href="server_8hpp_source.html#l00149">149</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="server_8hpp_source.html#l00218">218</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="server_8cpp_source.html#l00068">Server()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="server_8cpp_source.html#l00103">Server()</a>.</p>
 
 </div>
 </div>
@@ -623,9 +623,9 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Shared <a class="el" href="classLogger.html" title="Routes Drogon/Trantor log records through an asynchronous spdlog logger.">Logger</a> instance used by the application; held here for the lifetime of the <a class="el" href="classServer.html" title="Owns application startup: configuration, banner, Drogon wiring, and post-run executor shutdown.">Server</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="server_8hpp_source.html#l00124">124</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="server_8hpp_source.html#l00176">176</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="server_8cpp_source.html#l00068">Server()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="server_8cpp_source.html#l00103">Server()</a>.</p>
 
 </div>
 </div>
@@ -650,9 +650,9 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Rate-limit / DoS-protection filter instance. Constructed here but unused for the same reason. </p>
 
-<p class="definition">Definition at line <a class="el" href="server_8hpp_source.html#l00153">153</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="server_8hpp_source.html#l00225">225</a> of file <a class="el" href="server_8hpp_source.html">server.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="server_8cpp_source.html#l00068">Server()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="server_8cpp_source.html#l00103">Server()</a>.</p>
 
 </div>
 </div>

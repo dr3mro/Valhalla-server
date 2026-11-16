@@ -26,33 +26,33 @@
     <includedby refid="gatekeeper_8cpp" local="yes">src/gatekeeper/gatekeeper.cpp</includedby>
     <includedby refid="permissionmanager_8cpp" local="yes">src/gatekeeper/permissionmanager/permissionmanager.cpp</includedby>
     <incdepgraph>
-      <node id="24">
+      <node id="23">
         <label>configurator/configurator.hpp</label>
         <link refid="configurator_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="32">
+      <node id="31">
         <label>defaults.hpp</label>
         <link refid="defaults_8hpp"/>
         <childnode refid="3" relation="include">
@@ -60,23 +60,23 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="28">
+      <node id="27">
         <label>configurator/envloader/envloader.hpp</label>
         <link refid="envloader_8hpp"/>
-        <childnode refid="26" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
       </node>
-      <node id="29">
+      <node id="28">
         <label>envvars/envvars.hpp</label>
         <link refid="envvars_8hpp"/>
         <childnode refid="4" relation="include">
@@ -87,43 +87,41 @@
       <node id="14">
         <label>controllers/databasecontroller/databasecontroller.hpp</label>
         <link refid="databasecontroller_8hpp"/>
-        <childnode refid="15" relation="include">
-        </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="39" relation="include">
         </childnode>
@@ -131,72 +129,74 @@
         </childnode>
         <childnode refid="42" relation="include">
         </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
         <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="35">
+      <node id="32">
         <label>database/asyncdbclient.hpp</label>
         <link refid="asyncdbclient_8hpp"/>
-        <childnode refid="36" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="37">
+      <node id="34">
         <label>database/asyncresultmapper.hpp</label>
         <link refid="asyncresultmapper_8hpp"/>
-        <childnode refid="38" relation="include">
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="39">
+      <node id="36">
         <label>database/asyncsqlbinder.hpp</label>
         <link refid="asyncsqlbinder_8hpp"/>
-        <childnode refid="36" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="33">
+      <node id="39">
         <label>database/databasebusy.hpp</label>
         <link refid="databasebusy_8hpp"/>
-        <childnode refid="34" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="42">
+      <node id="41">
         <label>database/databasehandler.hpp</label>
         <link refid="databasehandler_8hpp"/>
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="15">
+      <node id="42">
         <label>database/dbprobe.hpp</label>
         <link refid="dbprobe_8hpp"/>
       </node>
@@ -255,7 +255,7 @@
         <link refid="radiologycenter_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -267,13 +267,13 @@
       <node id="47">
         <label>entities/base/base.hpp</label>
         <link refid="base_8hpp"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -309,7 +309,7 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
@@ -317,7 +317,7 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
@@ -325,11 +325,11 @@
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="63" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
       <node id="8">
@@ -359,13 +359,13 @@
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="43" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
       <node id="67">
@@ -377,7 +377,7 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -387,7 +387,7 @@
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
       <node id="49">
@@ -395,7 +395,7 @@
         <link refid="entities_2base_2types_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="50" relation="include">
         </childnode>
@@ -409,27 +409,27 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="53" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="54" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>
@@ -437,7 +437,7 @@
         </childnode>
         <childnode refid="56" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="57" relation="include">
         </childnode>
@@ -459,7 +459,7 @@
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
       <node id="65">
@@ -477,7 +477,7 @@
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
       <node id="66">
@@ -489,7 +489,7 @@
       <node id="68">
         <label>entities/services/clinics/patient/health.hpp</label>
         <link refid="health_8hpp"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="69" relation="include">
         </childnode>
@@ -503,9 +503,9 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -519,7 +519,7 @@
       <node id="71">
         <label>entities/services/clinics/patient/patientdrugs.hpp</label>
         <link refid="patientdrugs_8hpp"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="69" relation="include">
         </childnode>
@@ -527,7 +527,7 @@
       <node id="72">
         <label>entities/services/clinics/patient/reports.hpp</label>
         <link refid="reports_8hpp"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="69" relation="include">
         </childnode>
@@ -535,7 +535,7 @@
       <node id="73">
         <label>entities/services/clinics/visits/paidservices.hpp</label>
         <link refid="paidservices_8hpp"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="69" relation="include">
         </childnode>
@@ -543,7 +543,7 @@
       <node id="74">
         <label>entities/services/clinics/visits/prescriptions.hpp</label>
         <link refid="prescriptions_8hpp"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="69" relation="include">
         </childnode>
@@ -551,7 +551,7 @@
       <node id="75">
         <label>entities/services/clinics/visits/requests.hpp</label>
         <link refid="requests_8hpp"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="69" relation="include">
         </childnode>
@@ -559,7 +559,7 @@
       <node id="76">
         <label>entities/services/clinics/visits/visitdrugs.hpp</label>
         <link refid="visitdrugs_8hpp"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="69" relation="include">
         </childnode>
@@ -567,7 +567,7 @@
       <node id="77">
         <label>entities/services/clinics/visits/visits.hpp</label>
         <link refid="visits_8hpp"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="69" relation="include">
         </childnode>
@@ -575,7 +575,7 @@
       <node id="78">
         <label>entities/services/laboratories.hpp</label>
         <link refid="laboratories_8hpp"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="67" relation="include">
         </childnode>
@@ -583,7 +583,7 @@
       <node id="79">
         <label>entities/services/pharmacies.hpp</label>
         <link refid="pharmacies_8hpp"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="67" relation="include">
         </childnode>
@@ -591,7 +591,7 @@
       <node id="80">
         <label>entities/services/radiologycenters.hpp</label>
         <link refid="radiologycenters_8hpp"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="67" relation="include">
         </childnode>
@@ -649,15 +649,15 @@
       <node id="43">
         <label>store/store.hpp</label>
         <link refid="store_8hpp"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -671,7 +671,7 @@
         <link refid="errorstatus_8hpp"/>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="56" relation="include">
         </childnode>
@@ -696,10 +696,10 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="29">
         <label>utils/message/message.hpp</label>
         <link refid="message_8hpp"/>
-        <childnode refid="31" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -711,15 +711,15 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="56" relation="include">
         </childnode>
@@ -729,13 +729,13 @@
       <node id="50">
         <label>algorithm</label>
       </node>
-      <node id="17">
+      <node id="16">
         <label>atomic</label>
       </node>
       <node id="51">
         <label>cctype</label>
       </node>
-      <node id="26">
+      <node id="25">
         <label>chrono</label>
       </node>
       <node id="52">
@@ -747,16 +747,16 @@
       <node id="3">
         <label>cstdint</label>
       </node>
-      <node id="36">
+      <node id="33">
         <label>drogon/orm/DbClient.h</label>
       </node>
-      <node id="38">
+      <node id="35">
         <label>drogon/orm/Result.h</label>
       </node>
-      <node id="40">
+      <node id="37">
         <label>drogon/orm/SqlBinder.h</label>
       </node>
-      <node id="41">
+      <node id="38">
         <label>drogon/utils/coroutine.h</label>
       </node>
       <node id="10">
@@ -765,34 +765,34 @@
       <node id="7">
         <label>fmt/core.h</label>
       </node>
-      <node id="16">
+      <node id="15">
         <label>fmt/format.h</label>
       </node>
-      <node id="25">
+      <node id="24">
         <label>fmt/ranges.h</label>
       </node>
       <node id="11">
         <label>iterator</label>
       </node>
-      <node id="18">
+      <node id="17">
         <label>jsoncons/basic_json.hpp</label>
       </node>
-      <node id="19">
+      <node id="18">
         <label>jsoncons/json.hpp</label>
       </node>
       <node id="12">
         <label>memory</label>
       </node>
-      <node id="20">
+      <node id="19">
         <label>mutex</label>
       </node>
       <node id="4">
         <label>optional</label>
       </node>
-      <node id="21">
+      <node id="20">
         <label>pqxx/pqxx</label>
       </node>
-      <node id="34">
+      <node id="40">
         <label>stdexcept</label>
       </node>
       <node id="5">
@@ -804,10 +804,10 @@
       <node id="9">
         <label>sys/types.h</label>
       </node>
-      <node id="31">
+      <node id="30">
         <label>trantor/utils/Logger.h</label>
       </node>
-      <node id="27">
+      <node id="26">
         <label>type_traits</label>
       </node>
       <node id="44">
@@ -816,10 +816,10 @@
       <node id="45">
         <label>unordered_map</label>
       </node>
-      <node id="22">
+      <node id="21">
         <label>unordered_set</label>
       </node>
-      <node id="23">
+      <node id="22">
         <label>utility</label>
       </node>
       <node id="54">
@@ -860,11 +860,11 @@
       </node>
     </invincdepgraph>
     <briefdescription>
-<para>Umbrella header that makes every authorizable entity type complete for <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> template instantiations. </para>
+<para>Umbrella header that makes every authorizable entity type complete for <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref> template instantiations. </para>
     </briefdescription>
     <detaileddescription>
-<para><ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref>&apos;s permission-check helpers are templates, which means the compiler must see the full definition of each entity type before it can generate the right code. This header gathers all those entity definitions in one place. The IWYU pragmas on each line tell the &quot;include-what-you-use&quot; cleanup tool that these includes are intentional (they are needed by <ref refid="gatekeeper_8cpp" kindref="compound">gatekeeper.cpp</ref>, even though this file does not mention the types itself). No functions or data live here; it is purely a list of headers so that call sites and the implementation file do not each repeat the whole entity graph.</para>
-<para>WHY THIS FILE MATTERS IN THE SERVER: This file supports the security layer. <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> offers permission helpers like canRead&lt;T&gt;() and canDelete&lt;T&gt;() that work for many entity types (users, clinics, visits, appointments, and so on). In <ref refid="gatekeeper_8cpp" kindref="compound">gatekeeper.cpp</ref> those helpers are explicitly instantiated once per supported type, which requires every type to be &quot;complete&quot; (fully defined) at that point. This header provides exactly that, so a new entity can be supported by adding one line here plus one instantiation in <ref refid="gatekeeper_8cpp" kindref="compound">gatekeeper.cpp</ref>. Without it, <ref refid="gatekeeper_8cpp" kindref="compound">gatekeeper.cpp</ref> would have to include twenty headers itself, and forgetting one would cause a confusing template compile error.</para>
+<para><ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref>&apos;s permission-check helpers are templates, which means the compiler must see the full definition of each entity type before it can generate the right code. This header gathers all those entity definitions in one place. The IWYU pragmas on each line tell the &quot;include-what-you-use&quot; cleanup tool that these includes are intentional (they are needed by <ref refid="gatekeeper_8cpp" kindref="compound">gatekeeper.cpp</ref>, even though this file does not mention the types itself). No functions or data live here; it is purely a list of headers so that call sites and the implementation file do not each repeat the whole entity graph.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: This file supports the security layer. <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref> offers permission helpers like canRead&lt;T&gt;() and canDelete&lt;T&gt;() that work for many entity types (users, clinics, visits, appointments, and so on). In <ref refid="gatekeeper_8cpp" kindref="compound">gatekeeper.cpp</ref> those helpers are explicitly instantiated once per supported type, which requires every type to be &quot;complete&quot; (fully defined) at that point. This header provides exactly that, so a new entity can be supported by adding one line here plus one instantiation in <ref refid="gatekeeper_8cpp" kindref="compound">gatekeeper.cpp</ref>. Without it, <ref refid="gatekeeper_8cpp" kindref="compound">gatekeeper.cpp</ref> would have to include twenty headers itself, and forgetting one would cause a confusing template compile error.</para>
 <para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
 <listitem><para>Header / umbrella header: <ulink url="https://en.wikipedia.org/wiki/Include_guard">https://en.wikipedia.org/wiki/Include_guard</ulink></para>
 </listitem><listitem><para>Template (compile-time generics): <ulink url="https://en.cppreference.com/w/cpp/language/templates">https://en.cppreference.com/w/cpp/language/templates</ulink></para>
@@ -884,62 +884,97 @@
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
 <codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>includes.hpp</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Umbrella<sp/>header<sp/>that<sp/>makes<sp/>every<sp/>authorizable<sp/>entity<sp/>type<sp/>complete<sp/>for<sp/>GateKeeper<sp/>template<sp/>instantiations.</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>GateKeeper&apos;s<sp/>permission-check<sp/>helpers<sp/>are<sp/>templates,<sp/>which<sp/>means<sp/>the<sp/>compiler<sp/>must</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>see<sp/>the<sp/>full<sp/>definition<sp/>of<sp/>each<sp/>entity<sp/>type<sp/>before<sp/>it<sp/>can<sp/>generate<sp/>the<sp/>right<sp/>code.</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>This<sp/>header<sp/>gathers<sp/>all<sp/>those<sp/>entity<sp/>definitions<sp/>in<sp/>one<sp/>place.<sp/>The<sp/>IWYU<sp/>pragmas<sp/>on</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>each<sp/>line<sp/>tell<sp/>the<sp/>&quot;include-what-you-use&quot;<sp/>cleanup<sp/>tool<sp/>that<sp/>these<sp/>includes<sp/>are</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>intentional<sp/>(they<sp/>are<sp/>needed<sp/>by<sp/>gatekeeper.cpp,<sp/>even<sp/>though<sp/>this<sp/>file<sp/>does<sp/>not</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mention<sp/>the<sp/>types<sp/>itself).<sp/>No<sp/>functions<sp/>or<sp/>data<sp/>live<sp/>here;<sp/>it<sp/>is<sp/>purely<sp/>a<sp/>list<sp/>of</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>headers<sp/>so<sp/>that<sp/>call<sp/>sites<sp/>and<sp/>the<sp/>implementation<sp/>file<sp/>do<sp/>not<sp/>each<sp/>repeat<sp/>the</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>whole<sp/>entity<sp/>graph.</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>This<sp/>file<sp/>supports<sp/>the<sp/>security<sp/>layer.<sp/>GateKeeper<sp/>offers<sp/>permission<sp/>helpers<sp/>like</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>canRead&lt;T&gt;()<sp/>and<sp/>canDelete&lt;T&gt;()<sp/>that<sp/>work<sp/>for<sp/>many<sp/>entity<sp/>types<sp/>(users,<sp/>clinics,<sp/>visits,</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>appointments,<sp/>and<sp/>so<sp/>on).<sp/>In<sp/>gatekeeper.cpp<sp/>those<sp/>helpers<sp/>are<sp/>explicitly<sp/>instantiated<sp/>once</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>per<sp/>supported<sp/>type,<sp/>which<sp/>requires<sp/>every<sp/>type<sp/>to<sp/>be<sp/>&quot;complete&quot;<sp/>(fully<sp/>defined)<sp/>at<sp/>that</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>point.<sp/>This<sp/>header<sp/>provides<sp/>exactly<sp/>that,<sp/>so<sp/>a<sp/>new<sp/>entity<sp/>can<sp/>be<sp/>supported<sp/>by<sp/>adding<sp/>one</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>line<sp/>here<sp/>plus<sp/>one<sp/>instantiation<sp/>in<sp/>gatekeeper.cpp.<sp/>Without<sp/>it,<sp/>gatekeeper.cpp<sp/>would<sp/>have</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>to<sp/>include<sp/>twenty<sp/>headers<sp/>itself,<sp/>and<sp/>forgetting<sp/>one<sp/>would<sp/>cause<sp/>a<sp/>confusing<sp/>template</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>compile<sp/>error.</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>-<sp/>Header<sp/>/<sp/>umbrella<sp/>header:<sp/>https://en.wikipedia.org/wiki/Include_guard</highlight></codeline>
-<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>-<sp/>Template<sp/>(compile-time<sp/>generics):<sp/>https://en.cppreference.com/w/cpp/language/templates</highlight></codeline>
-<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>-<sp/>Explicit<sp/>instantiation:<sp/>https://en.cppreference.com/w/cpp/language/templates</highlight></codeline>
-<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>-<sp/>Complete<sp/>type<sp/>(why<sp/>the<sp/>full<sp/>definition<sp/>is<sp/>needed):<sp/>https://en.cppreference.com/w/cpp/language/classes</highlight></codeline>
-<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>-<sp/>Include-what-you-use<sp/>tool:<sp/>https://github.com/include-what-you-use/include-what-you-use</highlight></codeline>
-<codeline lineno="29"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>@note<sp/>No<sp/>runtime<sp/>code<sp/>lives<sp/>here;<sp/>this<sp/>file<sp/>exists<sp/>solely<sp/>for<sp/>template<sp/>visibility.</highlight></codeline>
-<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
-<codeline lineno="33"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>compiler<sp/>includes<sp/>this<sp/>file<sp/>at<sp/>most<sp/>once<sp/>per<sp/>translation<sp/>unit,<sp/>avoiding<sp/>duplicate<sp/>definitions.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Each<sp/>line<sp/>below<sp/>pulls<sp/>in<sp/>the<sp/>full<sp/>definition<sp/>of<sp/>one<sp/>entity<sp/>type.<sp/>The<sp/>trailing</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&quot;IWYU<sp/>pragma:<sp/>keep&quot;<sp/>marks<sp/>the<sp/>include<sp/>as<sp/>deliberate<sp/>so<sp/>automatic<sp/>cleanup<sp/>tools</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>do<sp/>not<sp/>delete<sp/>it<sp/>just<sp/>because<sp/>this<sp/>header<sp/>does<sp/>not<sp/>name<sp/>the<sp/>type<sp/>directly.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="clinic_8hpp" kindref="compound">entities/appointments/clinic.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>ClinicAppointment,<sp/>a<sp/>clinic<sp/>booking<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="laboratory_8hpp" kindref="compound">entities/appointments/laboratory.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>LaboratoryAppointment,<sp/>a<sp/>lab<sp/>booking<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="pharmacy_8hpp" kindref="compound">entities/appointments/pharmacy.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>PharmacyAppointment,<sp/>a<sp/>pharmacy<sp/>booking<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="radiologycenter_8hpp" kindref="compound">entities/appointments/radiologycenter.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>RadiologyCenterAppointment,<sp/>an<sp/>imaging<sp/>booking<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="provider_8hpp" kindref="compound">entities/people/provider.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>Provider,<sp/>a<sp/>staff/client<sp/>who<sp/>can<sp/>be<sp/>authorized<sp/>(a<sp/>Client<sp/>type).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="people_2user_8hpp" kindref="compound">entities/people/user.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>User,<sp/>a<sp/>normal<sp/>client<sp/>who<sp/>can<sp/>be<sp/>authorized<sp/>(a<sp/>Client<sp/>type).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="entities_2services_2clinics_2clinics_8hpp" kindref="compound">entities/services/clinics/clinics.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>Clinics,<sp/>a<sp/>service<sp/>that<sp/>can<sp/>have<sp/>staff<sp/>managed.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="health_8hpp" kindref="compound">entities/services/clinics/patient/health.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>Health,<sp/>a<sp/>patient<sp/>health<sp/>record<sp/>with<sp/>CRUD<sp/>checks.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="patient_8hpp" kindref="compound">entities/services/clinics/patient/patient.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>Patient,<sp/>a<sp/>patient<sp/>record<sp/>with<sp/>CRUD<sp/>checks.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="patientdrugs_8hpp" kindref="compound">entities/services/clinics/patient/patientdrugs.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>PatientDrugs,<sp/>drugs<sp/>tied<sp/>to<sp/>a<sp/>patient.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="reports_8hpp" kindref="compound">entities/services/clinics/patient/reports.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>Reports,<sp/>medical<sp/>reports<sp/>for<sp/>a<sp/>patient.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="paidservices_8hpp" kindref="compound">entities/services/clinics/visits/paidservices.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>PaidServices,<sp/>services<sp/>paid<sp/>for<sp/>during<sp/>a<sp/>visit.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="prescriptions_8hpp" kindref="compound">entities/services/clinics/visits/prescriptions.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>Prescriptions<sp/>issued<sp/>during<sp/>a<sp/>visit.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="requests_8hpp" kindref="compound">entities/services/clinics/visits/requests.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>Requests<sp/>made<sp/>during<sp/>a<sp/>visit.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="visitdrugs_8hpp" kindref="compound">entities/services/clinics/visits/visitdrugs.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>VisitDrugs,<sp/>drugs<sp/>given<sp/>during<sp/>a<sp/>visit.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="visits_8hpp" kindref="compound">entities/services/clinics/visits/visits.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>Visits,<sp/>a<sp/>patient<sp/>visit<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="laboratories_8hpp" kindref="compound">entities/services/laboratories.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>Laboratories,<sp/>a<sp/>service<sp/>that<sp/>can<sp/>have<sp/>staff<sp/>managed.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="pharmacies_8hpp" kindref="compound">entities/services/pharmacies.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>Pharmacies,<sp/>a<sp/>service<sp/>that<sp/>can<sp/>have<sp/>staff<sp/>managed.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="radiologycenters_8hpp" kindref="compound">entities/services/radiologycenters.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>RadiologyCenters,<sp/>a<sp/>service<sp/>that<sp/>can<sp/>have<sp/>staff<sp/>managed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Umbrella<sp/>header<sp/>that<sp/>makes<sp/>every<sp/>authorizable<sp/>entity<sp/>type<sp/>complete<sp/>for</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>GateKeeper<sp/>template<sp/>instantiations.</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details<sp/>GateKeeper&apos;s<sp/>permission-check<sp/>helpers<sp/>are<sp/>templates,<sp/>which<sp/>means<sp/>the</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>compiler<sp/>must<sp/>see<sp/>the<sp/>full<sp/>definition<sp/>of<sp/>each<sp/>entity<sp/>type<sp/>before<sp/>it<sp/>can</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>generate<sp/>the<sp/>right<sp/>code.<sp/>This<sp/>header<sp/>gathers<sp/>all<sp/>those<sp/>entity<sp/>definitions<sp/>in</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>one<sp/>place.<sp/>The<sp/>IWYU<sp/>pragmas<sp/>on<sp/>each<sp/>line<sp/>tell<sp/>the<sp/>&quot;include-what-you-use&quot;</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>cleanup<sp/>tool<sp/>that<sp/>these<sp/>includes<sp/>are<sp/>intentional<sp/>(they<sp/>are<sp/>needed<sp/>by</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>gatekeeper.cpp,<sp/>even<sp/>though<sp/>this<sp/>file<sp/>does<sp/>not<sp/>mention<sp/>the<sp/>types<sp/>itself).<sp/>No</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>functions<sp/>or<sp/>data<sp/>live<sp/>here;<sp/>it<sp/>is<sp/>purely<sp/>a<sp/>list<sp/>of<sp/>headers<sp/>so<sp/>that<sp/>call</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>sites<sp/>and<sp/>the<sp/>implementation<sp/>file<sp/>do<sp/>not<sp/>each<sp/>repeat<sp/>the<sp/>whole<sp/>entity<sp/>graph.</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>This<sp/>file<sp/>supports<sp/>the<sp/>security<sp/>layer.<sp/>GateKeeper<sp/>offers<sp/>permission<sp/>helpers</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>like<sp/>canRead&lt;T&gt;()<sp/>and<sp/>canDelete&lt;T&gt;()<sp/>that<sp/>work<sp/>for<sp/>many<sp/>entity<sp/>types<sp/>(users,</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>clinics,<sp/>visits,<sp/>appointments,<sp/>and<sp/>so<sp/>on).<sp/>In<sp/>gatekeeper.cpp<sp/>those<sp/>helpers</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>are<sp/>explicitly<sp/>instantiated<sp/>once<sp/>per<sp/>supported<sp/>type,<sp/>which<sp/>requires<sp/>every</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>type<sp/>to<sp/>be<sp/>&quot;complete&quot;<sp/>(fully<sp/>defined)<sp/>at<sp/>that<sp/>point.<sp/>This<sp/>header<sp/>provides</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>exactly<sp/>that,<sp/>so<sp/>a<sp/>new<sp/>entity<sp/>can<sp/>be<sp/>supported<sp/>by<sp/>adding<sp/>one<sp/>line<sp/>here<sp/>plus</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>one<sp/>instantiation<sp/>in<sp/>gatekeeper.cpp.<sp/>Without<sp/>it,<sp/>gatekeeper.cpp<sp/>would<sp/>have<sp/>to</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>include<sp/>twenty<sp/>headers<sp/>itself,<sp/>and<sp/>forgetting<sp/>one<sp/>would<sp/>cause<sp/>a<sp/>confusing</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>template<sp/>compile<sp/>error.</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>-<sp/>Header<sp/>/<sp/>umbrella<sp/>header:<sp/>https://en.wikipedia.org/wiki/Include_guard</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>-<sp/>Template<sp/>(compile-time<sp/>generics):</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/language/templates</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/>-<sp/>Explicit<sp/>instantiation:</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/language/templates</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>-<sp/>Complete<sp/>type<sp/>(why<sp/>the<sp/>full<sp/>definition<sp/>is<sp/>needed):</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/language/classes</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>-<sp/>Include-what-you-use<sp/>tool:</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>https://github.com/include-what-you-use/include-what-you-use</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>@note<sp/>No<sp/>runtime<sp/>code<sp/>lives<sp/>here;<sp/>this<sp/>file<sp/>exists<sp/>solely<sp/>for<sp/>template</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>visibility.</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>compiler<sp/>includes<sp/>this<sp/>file<sp/>at<sp/>most<sp/>once<sp/>per<sp/>translation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>unit,<sp/>avoiding<sp/>duplicate<sp/>definitions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Each<sp/>line<sp/>below<sp/>pulls<sp/>in<sp/>the<sp/>full<sp/>definition<sp/>of<sp/>one<sp/>entity<sp/>type.<sp/>The<sp/>trailing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>&quot;IWYU<sp/>pragma:<sp/>keep&quot;<sp/>marks<sp/>the<sp/>include<sp/>as<sp/>deliberate<sp/>so<sp/>automatic<sp/>cleanup</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>tools<sp/>do<sp/>not<sp/>delete<sp/>it<sp/>just<sp/>because<sp/>this<sp/>header<sp/>does<sp/>not<sp/>name<sp/>the<sp/>type</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>directly.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>ClinicAppointment,<sp/>a<sp/>clinic<sp/>booking<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="clinic_8hpp" kindref="compound">entities/appointments/clinic.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>LaboratoryAppointment,<sp/>a<sp/>lab<sp/>booking<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="laboratory_8hpp" kindref="compound">entities/appointments/laboratory.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>PharmacyAppointment,<sp/>a<sp/>pharmacy<sp/>booking<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="pharmacy_8hpp" kindref="compound">entities/appointments/pharmacy.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>RadiologyCenterAppointment,<sp/>an<sp/>imaging<sp/>booking</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="radiologycenter_8hpp" kindref="compound">entities/appointments/radiologycenter.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>Provider,<sp/>a<sp/>staff/client<sp/>who<sp/>can<sp/>be<sp/>authorized</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>(a<sp/>Client<sp/>type).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="provider_8hpp" kindref="compound">entities/people/provider.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>User,<sp/>a<sp/>normal<sp/>client<sp/>who<sp/>can<sp/>be<sp/>authorized<sp/>(a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Client<sp/>type).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="people_2user_8hpp" kindref="compound">entities/people/user.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>Clinics,<sp/>a<sp/>service<sp/>that<sp/>can<sp/>have<sp/>staff<sp/>managed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="entities_2services_2clinics_2clinics_8hpp" kindref="compound">entities/services/clinics/clinics.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>Health,<sp/>a<sp/>patient<sp/>health<sp/>record<sp/>with<sp/>CRUD</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/>checks.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="health_8hpp" kindref="compound">entities/services/clinics/patient/health.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>Patient,<sp/>a<sp/>patient<sp/>record<sp/>with<sp/>CRUD<sp/>checks.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="patient_8hpp" kindref="compound">entities/services/clinics/patient/patient.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>PatientDrugs,<sp/>drugs<sp/>tied<sp/>to<sp/>a<sp/>patient.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="patientdrugs_8hpp" kindref="compound">entities/services/clinics/patient/patientdrugs.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>Reports,<sp/>medical<sp/>reports<sp/>for<sp/>a<sp/>patient.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="reports_8hpp" kindref="compound">entities/services/clinics/patient/reports.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>PaidServices,<sp/>services<sp/>paid<sp/>for<sp/>during<sp/>a<sp/>visit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="paidservices_8hpp" kindref="compound">entities/services/clinics/visits/paidservices.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>Prescriptions<sp/>issued<sp/>during<sp/>a<sp/>visit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="prescriptions_8hpp" kindref="compound">entities/services/clinics/visits/prescriptions.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>Requests<sp/>made<sp/>during<sp/>a<sp/>visit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="requests_8hpp" kindref="compound">entities/services/clinics/visits/requests.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>VisitDrugs,<sp/>drugs<sp/>given<sp/>during<sp/>a<sp/>visit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="visitdrugs_8hpp" kindref="compound">entities/services/clinics/visits/visitdrugs.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>Visits,<sp/>a<sp/>patient<sp/>visit<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="visits_8hpp" kindref="compound">entities/services/clinics/visits/visits.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>Laboratories,<sp/>a<sp/>service<sp/>that<sp/>can<sp/>have<sp/>staff</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment">//<sp/>managed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="laboratories_8hpp" kindref="compound">entities/services/laboratories.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>Pharmacies,<sp/>a<sp/>service<sp/>that<sp/>can<sp/>have<sp/>staff</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment">//<sp/>managed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="pharmacies_8hpp" kindref="compound">entities/services/pharmacies.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment">//<sp/>IWYU<sp/>pragma:<sp/>keep<sp/><sp/>//<sp/>Defines<sp/>RadiologyCenters,<sp/>a<sp/>service<sp/>that<sp/>can<sp/>have<sp/>staff</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment">//<sp/>managed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="radiologycenters_8hpp" kindref="compound">entities/services/radiologycenters.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/gatekeeper/includes.hpp"/>
   </compounddef>

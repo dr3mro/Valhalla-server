@@ -12,7 +12,8 @@
         <argsstring></argsstring>
         <name>TABLENAME</name>
         <qualifiedname>ClinicAppointment::TABLENAME</qualifiedname>
-        <initializer>= &quot;clinics_appointments&quot;</initializer>
+        <initializer>                            =
+&quot;clinics_appointments&quot;</initializer>
         <briefdescription>
 <para><ref refid="classDatabase" kindref="compound">Database</ref> table holding clinic appointments. </para>
         </briefdescription>
@@ -20,10 +21,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/clinic.hpp" line="46" column="27" bodyfile="src/entities/appointments/clinic.hpp" bodystart="46" bodyend="-1"/>
-        <referencedby refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" compoundref="clinic_8hpp" startline="60" endline="62">ClinicAppointment</referencedby>
-        <referencedby refid="classClinicAppointment_1a271e6f972aa44fbdf85f5ee72299877a" compoundref="clinic_8hpp" startline="108" endline="111">getPermissionsQueryForRead</referencedby>
-        <referencedby refid="classClinicAppointment_1a152526d304bed176515509bd5f950144" compoundref="clinic_8hpp" startline="80" endline="80">getTableName</referencedby>
+        <location file="src/entities/appointments/clinic.hpp" line="58" column="25" bodyfile="src/entities/appointments/clinic.hpp" bodystart="58" bodyend="-1"/>
+        <referencedby refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" compoundref="clinic_8hpp" startline="76" endline="80">ClinicAppointment</referencedby>
+        <referencedby refid="classClinicAppointment_1a271e6f972aa44fbdf85f5ee72299877a" compoundref="clinic_8hpp" startline="142" endline="151">getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classClinicAppointment_1a152526d304bed176515509bd5f950144" compoundref="clinic_8hpp" startline="102" endline="104">getTableName</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classClinicAppointment_1acfca8961c6e9f2ccd550c9f0f8237f9b" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>auto</type>
@@ -39,9 +40,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/clinic.hpp" line="51" column="27" bodyfile="src/entities/appointments/clinic.hpp" bodystart="51" bodyend="-1"/>
-        <referencedby refid="classClinicAppointment_1a63a89ea0269a0e0b778e66779b11a525" compoundref="clinic_8hpp" startline="85" endline="85">getOrgName</referencedby>
-        <referencedby refid="classClinicAppointment_1a271e6f972aa44fbdf85f5ee72299877a" compoundref="clinic_8hpp" startline="108" endline="111">getPermissionsQueryForRead</referencedby>
+        <location file="src/entities/appointments/clinic.hpp" line="65" column="25" bodyfile="src/entities/appointments/clinic.hpp" bodystart="65" bodyend="-1"/>
+        <referencedby refid="classClinicAppointment_1a63a89ea0269a0e0b778e66779b11a525" compoundref="clinic_8hpp" startline="109" endline="111">getOrgName</referencedby>
+        <referencedby refid="classClinicAppointment_1a271e6f972aa44fbdf85f5ee72299877a" compoundref="clinic_8hpp" startline="142" endline="151">getPermissionsQueryForRead</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -86,9 +87,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/clinic.hpp" line="60" column="14" bodyfile="src/entities/appointments/clinic.hpp" bodystart="60" bodyend="62"/>
-        <references refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" compoundref="appointment_8hpp" startline="60" endline="62">Appointment::Appointment</references>
-        <references refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69" compoundref="clinic_8hpp" startline="46">TABLENAME</references>
+        <location file="src/entities/appointments/clinic.hpp" line="76" column="12" bodyfile="src/entities/appointments/clinic.hpp" bodystart="76" bodyend="80"/>
+        <references refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" compoundref="appointment_8hpp" startline="73" endline="77">Appointment::Appointment</references>
+        <references refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69" compoundref="clinic_8hpp" startline="58">TABLENAME</references>
         <referencedby refid="classClinicAppointment_1a6f23042843785fdf6184609a570f75ca">ClinicAppointment</referencedby>
         <referencedby refid="classClinicAppointment_1a3357977125025b54a7d12a88de9bc4cc">ClinicAppointment</referencedby>
         <referencedby refid="classClinicAppointment_1a2884f35bddf960135583cafc3a9bf6ce">operator=</referencedby>
@@ -107,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/clinic.hpp" line="67" column="5"/>
+        <location file="src/entities/appointments/clinic.hpp" line="85" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classClinicAppointment_1a3357977125025b54a7d12a88de9bc4cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -125,8 +126,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/clinic.hpp" line="72" column="5"/>
-        <references refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" compoundref="clinic_8hpp" startline="60" endline="62">ClinicAppointment</references>
+        <location file="src/entities/appointments/clinic.hpp" line="92" column="3"/>
+        <references refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" compoundref="clinic_8hpp" startline="76" endline="80">ClinicAppointment</references>
       </memberdef>
       <memberdef kind="function" id="classClinicAppointment_1a6f23042843785fdf6184609a570f75ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -143,8 +144,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/clinic.hpp" line="73" column="5"/>
-        <references refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" compoundref="clinic_8hpp" startline="60" endline="62">ClinicAppointment</references>
+        <location file="src/entities/appointments/clinic.hpp" line="93" column="3"/>
+        <references refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" compoundref="clinic_8hpp" startline="76" endline="80">ClinicAppointment</references>
       </memberdef>
       <memberdef kind="function" id="classClinicAppointment_1a2884f35bddf960135583cafc3a9bf6ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classClinicAppointment" kindref="compound">ClinicAppointment</ref> &amp;</type>
@@ -161,8 +162,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/clinic.hpp" line="74" column="23"/>
-        <references refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" compoundref="clinic_8hpp" startline="60" endline="62">ClinicAppointment</references>
+        <location file="src/entities/appointments/clinic.hpp" line="94" column="21"/>
+        <references refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" compoundref="clinic_8hpp" startline="76" endline="80">ClinicAppointment</references>
       </memberdef>
       <memberdef kind="function" id="classClinicAppointment_1a27717d22eec5dd4dbab1c959bdd516c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classClinicAppointment" kindref="compound">ClinicAppointment</ref> &amp;</type>
@@ -179,8 +180,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/clinic.hpp" line="75" column="23"/>
-        <references refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" compoundref="clinic_8hpp" startline="60" endline="62">ClinicAppointment</references>
+        <location file="src/entities/appointments/clinic.hpp" line="96" column="21"/>
+        <references refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" compoundref="clinic_8hpp" startline="76" endline="80">ClinicAppointment</references>
       </memberdef>
       <memberdef kind="function" id="classClinicAppointment_1a97bf9248ddfd1900b070ebe454b7c663" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -195,7 +196,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/clinic.hpp" line="90" column="5"/>
+        <location file="src/entities/appointments/clinic.hpp" line="116" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -238,9 +239,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/user.hpp" line="55" column="14" bodyfile="src/entities/appointments/user.hpp" bodystart="55" bodyend="57"/>
-        <references refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" compoundref="appointment_8hpp" startline="60" endline="62">Appointment::Appointment</references>
-        <references refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69" compoundref="clinic_8hpp" startline="46">TABLENAME</references>
+        <location file="src/entities/appointments/user.hpp" line="68" column="12" bodyfile="src/entities/appointments/user.hpp" bodystart="68" bodyend="72"/>
+        <references refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" compoundref="appointment_8hpp" startline="73" endline="77">Appointment::Appointment</references>
+        <references refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69" compoundref="clinic_8hpp" startline="58">TABLENAME</references>
       </memberdef>
       <memberdef kind="function" id="classClinicAppointment_1a3357977125025b54a7d12a88de9bc4cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -258,8 +259,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/user.hpp" line="62" column="5"/>
-        <references refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" compoundref="clinic_8hpp" startline="60" endline="62">ClinicAppointment</references>
+        <location file="src/entities/appointments/user.hpp" line="78" column="3"/>
+        <references refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" compoundref="clinic_8hpp" startline="76" endline="80">ClinicAppointment</references>
       </memberdef>
       <memberdef kind="function" id="classClinicAppointment_1a6f23042843785fdf6184609a570f75ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -276,8 +277,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/user.hpp" line="63" column="5"/>
-        <references refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" compoundref="clinic_8hpp" startline="60" endline="62">ClinicAppointment</references>
+        <location file="src/entities/appointments/user.hpp" line="79" column="3"/>
+        <references refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" compoundref="clinic_8hpp" startline="76" endline="80">ClinicAppointment</references>
       </memberdef>
       <memberdef kind="function" id="classClinicAppointment_1a27717d22eec5dd4dbab1c959bdd516c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classClinicAppointment" kindref="compound">ClinicAppointment</ref> &amp;</type>
@@ -294,8 +295,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/user.hpp" line="64" column="23"/>
-        <references refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" compoundref="clinic_8hpp" startline="60" endline="62">ClinicAppointment</references>
+        <location file="src/entities/appointments/user.hpp" line="80" column="21"/>
+        <references refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" compoundref="clinic_8hpp" startline="76" endline="80">ClinicAppointment</references>
       </memberdef>
       <memberdef kind="function" id="classClinicAppointment_1a2884f35bddf960135583cafc3a9bf6ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classClinicAppointment" kindref="compound">ClinicAppointment</ref> &amp;</type>
@@ -312,8 +313,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/user.hpp" line="65" column="23"/>
-        <references refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" compoundref="clinic_8hpp" startline="60" endline="62">ClinicAppointment</references>
+        <location file="src/entities/appointments/user.hpp" line="82" column="21"/>
+        <references refid="classClinicAppointment_1a34c4608b074896a1b5443980a9681cbd" compoundref="clinic_8hpp" startline="76" endline="80">ClinicAppointment</references>
       </memberdef>
       <memberdef kind="function" id="classClinicAppointment_1a97bf9248ddfd1900b070ebe454b7c663" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -328,7 +329,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/user.hpp" line="74" column="5"/>
+        <location file="src/entities/appointments/user.hpp" line="94" column="3"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -345,8 +346,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/clinic.hpp" line="80" column="27" bodyfile="src/entities/appointments/clinic.hpp" bodystart="80" bodyend="80"/>
-        <references refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69" compoundref="clinic_8hpp" startline="46">TABLENAME</references>
+        <location file="src/entities/appointments/clinic.hpp" line="102" column="25" bodyfile="src/entities/appointments/clinic.hpp" bodystart="102" bodyend="104"/>
+        <references refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69" compoundref="clinic_8hpp" startline="58">TABLENAME</references>
       </memberdef>
       <memberdef kind="function" id="classClinicAppointment_1a63a89ea0269a0e0b778e66779b11a525" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>auto</type>
@@ -361,8 +362,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/clinic.hpp" line="85" column="27" bodyfile="src/entities/appointments/clinic.hpp" bodystart="85" bodyend="85"/>
-        <references refid="classClinicAppointment_1acfca8961c6e9f2ccd550c9f0f8237f9b" compoundref="clinic_8hpp" startline="51">ORGNAME</references>
+        <location file="src/entities/appointments/clinic.hpp" line="109" column="25" bodyfile="src/entities/appointments/clinic.hpp" bodystart="109" bodyend="111"/>
+        <references refid="classClinicAppointment_1acfca8961c6e9f2ccd550c9f0f8237f9b" compoundref="clinic_8hpp" startline="65">ORGNAME</references>
       </memberdef>
       <memberdef kind="function" id="classClinicAppointment_1a9f696e30cf864a0cd2159202ff2bea16" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -405,8 +406,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/clinic.hpp" line="98" column="26" bodyfile="src/entities/appointments/clinic.hpp" bodystart="98" bodyend="101"/>
-        <references refid="classAppointment_1a26159d8e97aa5b0e286e9bb22d1e923e" compoundref="appointment_8hpp" startline="84" endline="91">Appointment::getServicePermissionsQueryImpl</references>
+        <location file="src/entities/appointments/clinic.hpp" line="126" column="24" bodyfile="src/entities/appointments/clinic.hpp" bodystart="126" bodyend="132"/>
+        <references refid="classAppointment_1a26159d8e97aa5b0e286e9bb22d1e923e" compoundref="appointment_8hpp" startline="102" endline="112">Appointment::getServicePermissionsQueryImpl</references>
       </memberdef>
       <memberdef kind="function" id="classClinicAppointment_1a271e6f972aa44fbdf85f5ee72299877a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -437,10 +438,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/clinic.hpp" line="108" column="26" bodyfile="src/entities/appointments/clinic.hpp" bodystart="108" bodyend="111"/>
-        <references refid="classAppointment_1ad8f4b942704f5aad7dab3b4469199fd0" compoundref="appointment_8hpp" startline="102" endline="112">Appointment::getPermissionsQueryForReadImpl</references>
-        <references refid="classClinicAppointment_1acfca8961c6e9f2ccd550c9f0f8237f9b" compoundref="clinic_8hpp" startline="51">ORGNAME</references>
-        <references refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69" compoundref="clinic_8hpp" startline="46">TABLENAME</references>
+        <location file="src/entities/appointments/clinic.hpp" line="142" column="24" bodyfile="src/entities/appointments/clinic.hpp" bodystart="142" bodyend="151"/>
+        <references refid="classAppointment_1ad8f4b942704f5aad7dab3b4469199fd0" compoundref="appointment_8hpp" startline="129" endline="152">Appointment::getPermissionsQueryForReadImpl</references>
+        <references refid="classClinicAppointment_1acfca8961c6e9f2ccd550c9f0f8237f9b" compoundref="clinic_8hpp" startline="65">ORGNAME</references>
+        <references refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69" compoundref="clinic_8hpp" startline="58">TABLENAME</references>
       </memberdef>
       <memberdef kind="function" id="classClinicAppointment_1a152526d304bed176515509bd5f950144" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>auto</type>
@@ -455,8 +456,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/appointments/user.hpp" line="70" column="27" bodyfile="src/entities/appointments/user.hpp" bodystart="70" bodyend="70"/>
-        <references refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69" compoundref="clinic_8hpp" startline="46">TABLENAME</references>
+        <location file="src/entities/appointments/user.hpp" line="88" column="25" bodyfile="src/entities/appointments/user.hpp" bodystart="88" bodyend="90"/>
+        <references refid="classClinicAppointment_1ae89de94a52c827cf358650e5ad82cb69" compoundref="clinic_8hpp" startline="58">TABLENAME</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -524,7 +525,7 @@ A minimal <ref refid="classAppointment" kindref="compound">Appointment</ref> spe
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/entities/appointments/clinic.hpp" line="40" column="1" bodyfile="src/entities/appointments/clinic.hpp" bodystart="41" bodyend="112"/>
+    <location file="src/entities/appointments/clinic.hpp" line="50" column="1" bodyfile="src/entities/appointments/clinic.hpp" bodystart="53" bodyend="152"/>
     <listofallmembers>
       <member refid="classAppointment_1acfb6db2bcc47290e54d5654d670d20d9" prot="public" virt="non-virtual"><scope>ClinicAppointment</scope><name>Appointment</name></member>
       <member refid="classAppointment_1a452e32e34b2b149ac5062ae45be25697" prot="public" virt="non-virtual"><scope>ClinicAppointment</scope><name>Appointment</name></member>

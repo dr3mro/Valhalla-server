@@ -18,9 +18,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/filters/ratelimit.hpp" line="109" column="27" bodyfile="src/api/v2/filters/ratelimit.hpp" bodystart="109" bodyend="-1"/>
-        <referencedby refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1af6d0c420c949e4381f61b346af205917" compoundref="ratelimit_8hpp" startline="72" endline="106">doFilter</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1a31471fae98a1bb47ec6a99255a95ff4f" compoundref="ratelimit_8hpp" startline="59" endline="62">RateLimit</referencedby>
+        <location file="src/api/v2/filters/ratelimit.hpp" line="168" column="9" bodyfile="src/api/v2/filters/ratelimit.hpp" bodystart="168" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1af6d0c420c949e4381f61b346af205917" compoundref="ratelimit_8hpp" startline="104" endline="164">doFilter</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1a31471fae98a1bb47ec6a99255a95ff4f" compoundref="ratelimit_8hpp" startline="81" endline="87">RateLimit</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classapi_1_1v2_1_1Filters_1_1RateLimit_1a027e71944b33da19f85d3653eb64a27d" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classDOSDetector" kindref="compound">DOSDetector</ref> &gt;</type>
@@ -35,8 +35,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/filters/ratelimit.hpp" line="110" column="26" bodyfile="src/api/v2/filters/ratelimit.hpp" bodystart="110" bodyend="-1"/>
-        <referencedby refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1a31471fae98a1bb47ec6a99255a95ff4f" compoundref="ratelimit_8hpp" startline="59" endline="62">RateLimit</referencedby>
+        <location file="src/api/v2/filters/ratelimit.hpp" line="170" column="9" bodyfile="src/api/v2/filters/ratelimit.hpp" bodystart="170" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1a31471fae98a1bb47ec6a99255a95ff4f" compoundref="ratelimit_8hpp" startline="81" endline="87">RateLimit</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -53,9 +53,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/filters/ratelimit.hpp" line="59" column="9" bodyfile="src/api/v2/filters/ratelimit.hpp" bodystart="59" bodyend="62"/>
-        <references refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1a027e71944b33da19f85d3653eb64a27d" compoundref="ratelimit_8hpp" startline="110">dos_detector</references>
-        <references refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1a04c0409dcf0f5115e54ca1b8d55988d4" compoundref="ratelimit_8hpp" startline="109">gateKeeper</references>
+        <location file="src/api/v2/filters/ratelimit.hpp" line="81" column="5" bodyfile="src/api/v2/filters/ratelimit.hpp" bodystart="81" bodyend="87"/>
+        <references refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1a027e71944b33da19f85d3653eb64a27d" compoundref="ratelimit_8hpp" startline="170">dos_detector</references>
+        <references refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1a04c0409dcf0f5115e54ca1b8d55988d4" compoundref="ratelimit_8hpp" startline="168">gateKeeper</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Filters_1_1RateLimit_1af6d0c420c949e4381f61b346af205917" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -108,16 +108,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/filters/ratelimit.hpp" line="72" column="14" bodyfile="src/api/v2/filters/ratelimit.hpp" bodystart="72" bodyend="106"/>
-        <references refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56ae4f0885433f4027329da7e965b38a756" compoundref="dosdetector_8hpp" startline="83">DOSDetector::ALLOWED</references>
-        <references refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56a33b4862a96740947705cdde04e1f8eed" compoundref="dosdetector_8hpp" startline="87">DOSDetector::BANNED</references>
-        <references refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56a003cd69fd87a565b2a745493daba101a" compoundref="dosdetector_8hpp" startline="85">DOSDetector::BLACKLISTED</references>
-        <references refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56abb230e74fde1ec798a86be9890e48949" compoundref="dosdetector_8hpp" startline="88">DOSDetector::ERROR</references>
-        <references refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1a04c0409dcf0f5115e54ca1b8d55988d4" compoundref="ratelimit_8hpp" startline="109">gateKeeper</references>
-        <references refid="classDOSDetector_1ad551f3ddefb9c8f6a4cfc23cfd7fbefc" compoundref="dosdetector_8hpp" startline="113" endline="121">DOSDetector::hashHeaders</references>
-        <references refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56a82c037da5fe6323a8669bb68fbadb7bf" compoundref="dosdetector_8hpp" startline="86">DOSDetector::RATELIMITED</references>
-        <references refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1a5ae1c5a86a71fa273fc6d5082c343a06" compoundref="ratelimit_8hpp" startline="117" endline="123">reply</references>
-        <references refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56a7cd7955250b12853bd245c9ed76a5ba7" compoundref="dosdetector_8hpp" startline="84">DOSDetector::WHITELISTED</references>
+        <location file="src/api/v2/filters/ratelimit.hpp" line="104" column="10" bodyfile="src/api/v2/filters/ratelimit.hpp" bodystart="104" bodyend="164"/>
+        <references refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56ae4f0885433f4027329da7e965b38a756" compoundref="dosdetector_8hpp" startline="107">DOSDetector::ALLOWED</references>
+        <references refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56a33b4862a96740947705cdde04e1f8eed" compoundref="dosdetector_8hpp" startline="112">DOSDetector::BANNED</references>
+        <references refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56a003cd69fd87a565b2a745493daba101a" compoundref="dosdetector_8hpp" startline="109">DOSDetector::BLACKLISTED</references>
+        <references refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56abb230e74fde1ec798a86be9890e48949" compoundref="dosdetector_8hpp" startline="113">DOSDetector::ERROR</references>
+        <references refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1a04c0409dcf0f5115e54ca1b8d55988d4" compoundref="ratelimit_8hpp" startline="168">gateKeeper</references>
+        <references refid="classDOSDetector_1ad551f3ddefb9c8f6a4cfc23cfd7fbefc" compoundref="dosdetector_8hpp" startline="152" endline="162">DOSDetector::hashHeaders</references>
+        <references refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56a82c037da5fe6323a8669bb68fbadb7bf" compoundref="dosdetector_8hpp" startline="110">DOSDetector::RATELIMITED</references>
+        <references refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1a5ae1c5a86a71fa273fc6d5082c343a06" compoundref="ratelimit_8hpp" startline="180" endline="191">reply</references>
+        <references refid="classDOSDetector_1acf5c41607da4d0e603dbe116fb4a5f56a7cd7955250b12853bd245c9ed76a5ba7" compoundref="dosdetector_8hpp" startline="108">DOSDetector::WHITELISTED</references>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -172,15 +172,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/filters/ratelimit.hpp" line="117" column="38" bodyfile="src/api/v2/filters/ratelimit.hpp" bodystart="117" bodyend="123"/>
-        <referencedby refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1af6d0c420c949e4381f61b346af205917" compoundref="ratelimit_8hpp" startline="72" endline="106">doFilter</referencedby>
+        <location file="src/api/v2/filters/ratelimit.hpp" line="180" column="10" bodyfile="src/api/v2/filters/ratelimit.hpp" bodystart="180" bodyend="191"/>
+        <referencedby refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1af6d0c420c949e4381f61b346af205917" compoundref="ratelimit_8hpp" startline="104" endline="164">doFilter</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
 <para>Drogon filter that screens requests for DoS/rate-limit violations before authentication. </para>
     </briefdescription>
     <detaileddescription>
-<para>First element of both the INSECURE and SECURE chains. It builds a <ref refid="classDOSDetector_1a362a948824acc3cf457cb47e8d095cb5" kindref="member">DOSDetector::Request</ref> from the peer IP, method, path, hashed headers and body, and asks <ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">GateKeeper</ref> for a verdict. ALLOWED/WHITELISTED continue the chain; blacklist, rate limit, ban and internal error short-circuit with a corresponding HTTP status. The <ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">GateKeeper</ref> and <ref refid="classDOSDetector" kindref="compound">DOSDetector</ref> are shared service-locator objects held for the filter&apos;s lifetime. <simplesect kind="note"><para>Unknown verdicts fall through to continuing the chain (default branch). </para>
+<para>First element of both the INSECURE and SECURE chains. It builds a <ref refid="classDOSDetector_1a43f9aacef13939c478b0b533aaf7d6ca" kindref="member">DOSDetector::Request</ref> from the peer IP, method, path, hashed headers and body, and asks <ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">GateKeeper</ref> for a verdict. ALLOWED/WHITELISTED continue the chain; blacklist, rate limit, ban and internal error short-circuit with a corresponding HTTP status. The <ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">GateKeeper</ref> and <ref refid="classDOSDetector" kindref="compound">DOSDetector</ref> are shared service-locator objects held for the filter&apos;s lifetime. <simplesect kind="note"><para>Unknown verdicts fall through to continuing the chain (default branch). </para>
 </simplesect>
 </para>
     </detaileddescription>
@@ -206,7 +206,7 @@
         <label>drogon::HttpFilter&lt; RateLimit &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="src/api/v2/filters/ratelimit.hpp" line="55" column="5" bodyfile="src/api/v2/filters/ratelimit.hpp" bodystart="56" bodyend="124"/>
+    <location file="src/api/v2/filters/ratelimit.hpp" line="73" column="3" bodyfile="src/api/v2/filters/ratelimit.hpp" bodystart="77" bodyend="192"/>
     <listofallmembers>
       <member refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1af6d0c420c949e4381f61b346af205917" prot="public" virt="non-virtual"><scope>api::v2::Filters::RateLimit</scope><name>doFilter</name></member>
       <member refid="classapi_1_1v2_1_1Filters_1_1RateLimit_1a027e71944b33da19f85d3653eb64a27d" prot="private" virt="non-virtual"><scope>api::v2::Filters::RateLimit</scope><name>dos_detector</name></member>

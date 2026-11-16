@@ -11,7 +11,7 @@ var classapi_1_1v2_1_1PermissionManagerPrivate =
     [ "hasPermission", "classapi_1_1v2_1_1PermissionManagerPrivate.html#a6a68b225b7b685e9ed7293606870fafc", null ],
     [ "isAdminOfService", "classapi_1_1v2_1_1PermissionManagerPrivate.html#a9242aea2edde8ca7163099b20049595f", null ],
     [ "isOwnerOfService", "classapi_1_1v2_1_1PermissionManagerPrivate.html#a261f7f649b795efc1d1dd8955510f9ea", null ],
-    [ "isOwnerOrAdmin", "classapi_1_1v2_1_1PermissionManagerPrivate.html#abf032243785557f4e3f6c636a926a8ac", null ],
+    [ "isOwnerOrAdmin", "classapi_1_1v2_1_1PermissionManagerPrivate.html#a64b26a6beda50b382d489eb1459f907e", null ],
     [ "isOwnerOrAdminOrHasPermission", "classapi_1_1v2_1_1PermissionManagerPrivate.html#a2ca7a0ee58dc0ceb4dfc2ef1374471dc", null ],
     [ "isStaffOfService", "classapi_1_1v2_1_1PermissionManagerPrivate.html#a95781764a2c4cf1be79c2b58fa742348", null ],
     [ "operator=", "classapi_1_1v2_1_1PermissionManagerPrivate.html#a2f2b1ad9fadb824a62df52bfe07f80fd", null ],

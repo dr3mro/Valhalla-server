@@ -124,17 +124,17 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('classMemCache_
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aeec9fa9d402130295a30b4e424841199" id="r_aeec9fa9d402130295a30b4e424841199"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#aeec9fa9d402130295a30b4e424841199">CacheEntry</a> (std::string _key, const T &amp;_value, <a class="el" href="classMemCache.html#ab226fd602502da7daecc5b303eaf5910">TimePoint</a> _exp)</td></tr>
+<tr class="memitem:aeec9fa9d402130295a30b4e424841199" id="r_aeec9fa9d402130295a30b4e424841199"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#aeec9fa9d402130295a30b4e424841199">CacheEntry</a> (std::string _key, const T &amp;_value, <a class="el" href="classMemCache.html#ae2921b17188672eabd81d40c51c8d10f">TimePoint</a> _exp)</td></tr>
 <tr class="memdesc:aeec9fa9d402130295a30b4e424841199"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an entry with a key, value and expiration.  <br /></td></tr>
 <tr class="memitem:a50d686608b75519ab04dce8eaa1bfde8" id="r_a50d686608b75519ab04dce8eaa1bfde8"><td class="memItemLeft">std::string&#160;</td><td class="memItemRight"><a class="el" href="#a50d686608b75519ab04dce8eaa1bfde8">getKey</a> () const</td></tr>
 <tr class="memdesc:a50d686608b75519ab04dce8eaa1bfde8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a copy of the key.  <br /></td></tr>
 <tr class="memitem:a6b6f225708d33cfae329577215a92b8c" id="r_a6b6f225708d33cfae329577215a92b8c"><td class="memItemLeft">T&#160;</td><td class="memItemRight"><a class="el" href="#a6b6f225708d33cfae329577215a92b8c">getValue</a> () const</td></tr>
 <tr class="memdesc:a6b6f225708d33cfae329577215a92b8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a copy of the cached value.  <br /></td></tr>
-<tr class="memitem:a68c9e2d26b029931fab02a73280856e5" id="r_a68c9e2d26b029931fab02a73280856e5"><td class="memItemLeft"><a class="el" href="classMemCache.html#ab226fd602502da7daecc5b303eaf5910">TimePoint</a>&#160;</td><td class="memItemRight"><a class="el" href="#a68c9e2d26b029931fab02a73280856e5">getExpiration</a> () const</td></tr>
+<tr class="memitem:a68c9e2d26b029931fab02a73280856e5" id="r_a68c9e2d26b029931fab02a73280856e5"><td class="memItemLeft"><a class="el" href="classMemCache.html#ae2921b17188672eabd81d40c51c8d10f">TimePoint</a>&#160;</td><td class="memItemRight"><a class="el" href="#a68c9e2d26b029931fab02a73280856e5">getExpiration</a> () const</td></tr>
 <tr class="memdesc:a68c9e2d26b029931fab02a73280856e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the expiration time point.  <br /></td></tr>
 <tr class="memitem:a97e8a249bed83fa3250626bb0a4117cc" id="r_a97e8a249bed83fa3250626bb0a4117cc"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a97e8a249bed83fa3250626bb0a4117cc">setValue</a> (const T &amp;_value)</td></tr>
 <tr class="memdesc:a97e8a249bed83fa3250626bb0a4117cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replaces the cached value.  <br /></td></tr>
-<tr class="memitem:a40950e8fea591f3cd784cd43ad2bd5bb" id="r_a40950e8fea591f3cd784cd43ad2bd5bb"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a40950e8fea591f3cd784cd43ad2bd5bb">setExpiration</a> (const <a class="el" href="classMemCache.html#ab226fd602502da7daecc5b303eaf5910">TimePoint</a> &amp;_exp)</td></tr>
+<tr class="memitem:a40950e8fea591f3cd784cd43ad2bd5bb" id="r_a40950e8fea591f3cd784cd43ad2bd5bb"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a40950e8fea591f3cd784cd43ad2bd5bb">setExpiration</a> (const <a class="el" href="classMemCache.html#ae2921b17188672eabd81d40c51c8d10f">TimePoint</a> &amp;_exp)</td></tr>
 <tr class="memdesc:a40950e8fea591f3cd784cd43ad2bd5bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replaces the expiration time point.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -143,14 +143,14 @@ Private Attributes</h2></td></tr>
 <tr class="memdesc:ad20f7970764f778950f643497352428e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lookup key, also used to erase the map entry during cleaning.  <br /></td></tr>
 <tr class="memitem:ac1fa09aff91d5fecfbd559bcc7927727" id="r_ac1fa09aff91d5fecfbd559bcc7927727"><td class="memItemLeft">T&#160;</td><td class="memItemRight"><a class="el" href="#ac1fa09aff91d5fecfbd559bcc7927727">value</a></td></tr>
 <tr class="memdesc:ac1fa09aff91d5fecfbd559bcc7927727"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cached value.  <br /></td></tr>
-<tr class="memitem:ae3095555b91a01daa99bc76f82164aa2" id="r_ae3095555b91a01daa99bc76f82164aa2"><td class="memItemLeft"><a class="el" href="classMemCache.html#ab226fd602502da7daecc5b303eaf5910">TimePoint</a>&#160;</td><td class="memItemRight"><a class="el" href="#ae3095555b91a01daa99bc76f82164aa2">expiration</a></td></tr>
+<tr class="memitem:ae3095555b91a01daa99bc76f82164aa2" id="r_ae3095555b91a01daa99bc76f82164aa2"><td class="memItemLeft"><a class="el" href="classMemCache.html#ae2921b17188672eabd81d40c51c8d10f">TimePoint</a>&#160;</td><td class="memItemRight"><a class="el" href="#ae3095555b91a01daa99bc76f82164aa2">expiration</a></td></tr>
 <tr class="memdesc:ae3095555b91a01daa99bc76f82164aa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time after which the entry is considered expired.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt;<br />
 class MemCache&lt; T, ClockT &gt;::CacheEntry</div><p>One cache record: key, value and expiration time point. </p>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00262">262</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00342">342</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aeec9fa9d402130295a30b4e424841199" name="aeec9fa9d402130295a30b4e424841199"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aeec9fa9d402130295a30b4e424841199">&#9670;&#160;</a></span>CacheEntry()</h2>
@@ -176,7 +176,7 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classMemCache.html#ab226fd602502da7daecc5b303eaf5910">TimePoint</a></td>          <td class="paramname"><span class="paramname"><em>_exp</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classMemCache.html#ae2921b17188672eabd81d40c51c8d10f">TimePoint</a></td>          <td class="paramname"><span class="paramname"><em>_exp</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -196,9 +196,9 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00285">285</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00366">366</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00276">expiration</a>, <a class="el" href="memcache_8hpp_source.html#l00268">key</a>, and <a class="el" href="memcache_8hpp_source.html#l00272">value</a>.</p>
+<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00357">expiration</a>, <a class="el" href="memcache_8hpp_source.html#l00347">key</a>, and <a class="el" href="memcache_8hpp_source.html#l00352">value</a>.</p>
 
 </div>
 </div>
@@ -215,7 +215,7 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classMemCache.html#ab226fd602502da7daecc5b303eaf5910">TimePoint</a> <a class="el" href="classMemCache.html">MemCache</a>&lt; T, ClockT &gt;::CacheEntry::getExpiration </td>
+          <td class="memname"><a class="el" href="classMemCache.html#ae2921b17188672eabd81d40c51c8d10f">TimePoint</a> <a class="el" href="classMemCache.html">MemCache</a>&lt; T, ClockT &gt;::CacheEntry::getExpiration </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -230,9 +230,9 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 
 <p>Returns the expiration time point. </p>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00297">297</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00384">384</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00276">expiration</a>.</p>
+<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00357">expiration</a>.</p>
 
 </div>
 </div>
@@ -263,9 +263,9 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 
 <p>Returns a copy of the key. </p>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00289">289</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00372">372</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00268">key</a>.</p>
+<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00347">key</a>.</p>
 
 </div>
 </div>
@@ -296,9 +296,9 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 
 <p>Returns a copy of the cached value. </p>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00293">293</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00378">378</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00272">value</a>.</p>
+<p class="reference">References <a class="el" href="memcache_8hpp_source.html#l00352">value</a>.</p>
 
 </div>
 </div>
@@ -316,7 +316,7 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classMemCache.html">MemCache</a>&lt; T, ClockT &gt;::CacheEntry::setExpiration </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classMemCache.html#ab226fd602502da7daecc5b303eaf5910">TimePoint</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>_exp</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="classMemCache.html#ae2921b17188672eabd81d40c51c8d10f">TimePoint</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>_exp</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -335,7 +335,7 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00307">307</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00398">398</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
 </div>
 </div>
@@ -372,7 +372,7 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00302">302</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00391">391</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
 </div>
 </div>
@@ -389,7 +389,7 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classMemCache.html#ab226fd602502da7daecc5b303eaf5910">TimePoint</a> <a class="el" href="classMemCache.html">MemCache</a>&lt; T, ClockT &gt;::CacheEntry::expiration</td>
+          <td class="memname"><a class="el" href="classMemCache.html#ae2921b17188672eabd81d40c51c8d10f">TimePoint</a> <a class="el" href="classMemCache.html">MemCache</a>&lt; T, ClockT &gt;::CacheEntry::expiration</td>
         </tr>
       </table>
   </td>
@@ -401,9 +401,9 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 
 <p>Time after which the entry is considered expired. </p>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00276">276</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00357">357</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00285">CacheEntry()</a>, and <a class="el" href="memcache_8hpp_source.html#l00297">getExpiration()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00366">CacheEntry()</a>, and <a class="el" href="memcache_8hpp_source.html#l00384">getExpiration()</a>.</p>
 
 </div>
 </div>
@@ -431,9 +431,9 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 
 <p>Lookup key, also used to erase the map entry during cleaning. </p>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00268">268</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00347">347</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00285">CacheEntry()</a>, and <a class="el" href="memcache_8hpp_source.html#l00289">getKey()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00366">CacheEntry()</a>, and <a class="el" href="memcache_8hpp_source.html#l00372">getKey()</a>.</p>
 
 </div>
 </div>
@@ -461,9 +461,9 @@ template&lt;typename T, typename ClockT = std::chrono::steady_clock&gt; </div>
 
 <p>Cached value. </p>
 
-<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00272">272</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memcache_8hpp_source.html#l00352">352</a> of file <a class="el" href="memcache_8hpp_source.html">memcache.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00285">CacheEntry()</a>, and <a class="el" href="memcache_8hpp_source.html#l00293">getValue()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="memcache_8hpp_source.html#l00366">CacheEntry()</a>, and <a class="el" href="memcache_8hpp_source.html#l00378">getValue()</a>.</p>
 
 </div>
 </div>

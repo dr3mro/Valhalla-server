@@ -239,9 +239,9 @@ requires std::is_same&lt;T, <a class="el" href="classPatient.html">Patient</a>&g
 Private Attributes</h2></td></tr>
 <tr class="memitem:a3f42581637f6b2711eac8ada82ad135a" id="r_a3f42581637f6b2711eac8ada82ad135a"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="classConfigurator.html">Configurator</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a3f42581637f6b2711eac8ada82ad135a">cfg_</a></td></tr>
 <tr class="memdesc:a3f42581637f6b2711eac8ada82ad135a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retained <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a> service handle obtained at construction.  <br /></td></tr>
-<tr class="memitem:aab325c701b76d68ee35fb4202a1c4693" id="r_aab325c701b76d68ee35fb4202a1c4693"><td class="memItemLeft"><a class="el" href="classConfigurator.html#ab635e7d33896fb372c42ee982c579e53">Configurator::EmailSenderConfig</a>&#160;</td><td class="memItemRight"><a class="el" href="#aab325c701b76d68ee35fb4202a1c4693">email_sender_daemon_config_</a></td></tr>
+<tr class="memitem:aab325c701b76d68ee35fb4202a1c4693" id="r_aab325c701b76d68ee35fb4202a1c4693"><td class="memItemLeft"><a class="el" href="classConfigurator.html#ae7a8c53bf3a5ab860650fbc02354b222">Configurator::EmailSenderConfig</a>&#160;</td><td class="memItemRight"><a class="el" href="#aab325c701b76d68ee35fb4202a1c4693">email_sender_daemon_config_</a></td></tr>
 <tr class="memdesc:aab325c701b76d68ee35fb4202a1c4693"><td class="mdescLeft">&#160;</td><td class="mdescRight">Snapshot of the email-daemon endpoint/queue used to POST invites.  <br /></td></tr>
-<tr class="memitem:af25ca143465f16659a086bd6ffeebb04" id="r_af25ca143465f16659a086bd6ffeebb04"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3">GateKeeper</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#af25ca143465f16659a086bd6ffeebb04">gateKeeper</a></td></tr>
+<tr class="memitem:af25ca143465f16659a086bd6ffeebb04" id="r_af25ca143465f16659a086bd6ffeebb04"><td class="memItemLeft">std::shared_ptr&lt; <a class="el" href="controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1">GateKeeper</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#af25ca143465f16659a086bd6ffeebb04">gateKeeper</a></td></tr>
 <tr class="memdesc:af25ca143465f16659a086bd6ffeebb04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shared authorisation service consulted on every staff-management request.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-inherited" class="groupheader"><a id="inherited" name="inherited"></a>
@@ -275,12 +275,12 @@ class StaffController&lt; T &gt;</div><p>Implements staff management for one ser
   </table>
   </dd>
 </dl>
-<p>Unlike <a class="el" href="classServiceController.html" title="ServiceController">ServiceController</a> this is not an <span class="tt"><a class="el" href="classEntityController.html" title="Generic request-facing CRUDS handler: validates and authorizes a request, then delegates persistence ...">EntityController</a></span>: it inherits <a class="el" href="classController.html" title="Controller">Controller</a> for the low-level add/remove-staff SQL helpers and implements the domain operations of <a class="el" href="classStaffControllerBase.html" title="StaffControllerBase">StaffControllerBase</a> directly. Each operation parses the request body, obtains a <span class="tt"><a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3" title="Convenience alias for the authorisation service.">GateKeeper</a></span> staff-management decision, and only then performs a side effect (an SQL statement, or an HTTP POST to the email-sender daemon for invites).</p>
-<p>Plain-language version: <span class="tt">T</span> is the concrete entity (say <span class="tt"><a class="el" href="classClinics.html" title="Service entity bound to the clinics table; the organisation root for clinic cases.">Clinics</a></span>). The class relies on <span class="tt">T</span> being constructible from staff data and on <span class="tt">T</span> providing the add/remove staff SQL statements; those are compile-time expectations rather than an enforced concept. The three jobs here do real work (parse, check permission, act), unlike the pure forwarding service controllers.</p>
-<p>Explicit instantiations exist for <span class="tt"><a class="el" href="classClinics.html" title="Service entity bound to the clinics table; the organisation root for clinic cases.">Clinics</a></span>, <span class="tt"><a class="el" href="classPharmacies.html" title="Service entity bound to the pharmacies table (a pharmacy service provider).">Pharmacies</a></span>, <span class="tt"><a class="el" href="classLaboratories.html" title="Service entity bound to the laboratories table (a laboratory service provider).">Laboratories</a></span> and <span class="tt"><a class="el" href="classRadiologyCenters.html" title="Service entity bound to the radiologycenters table (a radiology centre).">RadiologyCenters</a></span>; the staff route registry stores instances as shared pointers and selects one by service name. </p><dl class="section note"><dt>Note</dt><dd>Instances are shared across Drogon workers; the cached dependencies below are populated in the constructor and are not mutated by the operations. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classStaffControllerBase.html" title="Type-erased interface for service-staff management operations.">StaffControllerBase</a>, <a class="el" href="classController.html" title="Reusable persistence engine for the API&#39;s CRUDS (Create/Read/Update/Delete/Search) operations.">Controller</a>, <a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3" title="Convenience alias for the authorisation service.">GateKeeper</a>, <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a> </dd></dl>
+<p>Unlike <a class="el" href="classServiceController.html" title="ServiceController">ServiceController</a> this is not an <span class="tt"><a class="el" href="classEntityController.html" title="Generic request-facing CRUDS handler: validates and authorizes a request, then delegates persistence ...">EntityController</a></span>: it inherits <a class="el" href="classController.html" title="Controller">Controller</a> for the low-level add/remove-staff SQL helpers and implements the domain operations of <a class="el" href="classStaffControllerBase.html" title="StaffControllerBase">StaffControllerBase</a> directly. Each operation parses the request body, obtains a <span class="tt"><a class="el" href="controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1" title="Convenience alias for the authorisation service.">GateKeeper</a></span> staff-management decision, and only then performs a side effect (an SQL statement, or an HTTP POST to the email-sender daemon for invites). </p><pre class="fragment">     Plain-language version: `T` is the concrete entity (say `Clinics`).
+</pre><p> The class relies on <span class="tt">T</span> being constructible from staff data and on <span class="tt">T</span> providing the add/remove staff SQL statements; those are compile-time expectations rather than an enforced concept. The three jobs here do real work (parse, check permission, act), unlike the pure forwarding service controllers. </p><pre class="fragment">     Explicit instantiations exist for `Clinics`, `Pharmacies`,
+</pre><p> <span class="tt"><a class="el" href="classLaboratories.html" title="Service entity bound to the laboratories table (a laboratory service provider).">Laboratories</a></span> and <span class="tt"><a class="el" href="classRadiologyCenters.html" title="Service entity bound to the radiologycenters table (a radiology centre).">RadiologyCenters</a></span>; the staff route registry stores instances as shared pointers and selects one by service name. </p><dl class="section note"><dt>Note</dt><dd>Instances are shared across Drogon workers; the cached dependencies below are populated in the constructor and are not mutated by the operations. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classStaffControllerBase.html" title="Type-erased interface for service-staff management operations.">StaffControllerBase</a>, <a class="el" href="classController.html" title="Reusable persistence engine for the API&#39;s CRUDS (Create/Read/Update/Delete/Search) operations.">Controller</a>, <a class="el" href="controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1" title="Convenience alias for the authorisation service.">GateKeeper</a>, <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="staffcontroller_8hpp_source.html#l00076">76</a> of file <a class="el" href="staffcontroller_8hpp_source.html">staffcontroller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="staffcontroller_8hpp_source.html#l00104">104</a> of file <a class="el" href="staffcontroller_8hpp_source.html">staffcontroller.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a647b206d73ca8ac25b3669834e80e840" name="a647b206d73ca8ac25b3669834e80e840"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a647b206d73ca8ac25b3669834e80e840">&#9670;&#160;</a></span>StaffController() <span class="overload">[1/3]</span></h2>
@@ -301,12 +301,12 @@ template&lt;typename T&gt; </div>
 
 <p>Resolves shared dependencies from the global service locator and snapshots config. </p>
 <p>Resolves shared services from the global <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a> and snapshots the email-daemon config.</p>
-<p>Reads the registered <a class="el" href="classConfigurator.html" title="Configurator">Configurator</a> and <a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3" title="GateKeeper">GateKeeper</a> instances through <span class="tt"><a class="el" href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c" title="Returns the singleton for T, constructing it on first use.">Store::getObject</a></span>, then copies <span class="tt"><a class="el" href="structEmailSenderConfig.html" title="Endpoint and queue path of the external email-sender daemon.">EmailSenderConfig</a></span> out of the <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a> so the invite path does not have to query configuration per request. </p><dl class="section note"><dt>Note</dt><dd>Failure behaviour when a service is absent from the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a> is that of <span class="tt"><a class="el" href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c" title="Returns the singleton for T, constructing it on first use.">Store::getObject</a></span>.</dd></dl>
+<p>Reads the registered <a class="el" href="classConfigurator.html" title="Configurator">Configurator</a> and <a class="el" href="controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1" title="GateKeeper">GateKeeper</a> instances through <span class="tt"><a class="el" href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c" title="Returns the singleton for T, constructing it on first use.">Store::getObject</a></span>, then copies <span class="tt"><a class="el" href="structEmailSenderConfig.html" title="Endpoint and queue path of the external email-sender daemon.">EmailSenderConfig</a></span> out of the <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a> so the invite path does not have to query configuration per request. </p><dl class="section note"><dt>Note</dt><dd>Failure behaviour when a service is absent from the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a> is that of <span class="tt"><a class="el" href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c" title="Returns the singleton for T, constructing it on first use.">Store::getObject</a></span>.</dd></dl>
 <p><span class="tt"><a class="el" href="#a3f42581637f6b2711eac8ada82ad135a" title="Retained Configurator service handle obtained at construction.">cfg_</a></span> and <span class="tt"><a class="el" href="#af25ca143465f16659a086bd6ffeebb04" title="Shared authorisation service consulted on every staff-management request.">gateKeeper</a></span> are service-locator handles; the <span class="tt"><a class="el" href="structEmailSenderConfig.html" title="Endpoint and queue path of the external email-sender daemon.">EmailSenderConfig</a></span> value is copied out once so the invite path does not re-read configuration per request. </p><dl class="section note"><dt>Note</dt><dd>Failure behaviour when a service is absent from the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a> is that of <span class="tt"><a class="el" href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c" title="Returns the singleton for T, constructing it on first use.">Store::getObject</a></span>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="staffcontroller_8cpp_source.html#l00071">71</a> of file <a class="el" href="staffcontroller_8cpp_source.html">staffcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="staffcontroller_8cpp_source.html#l00116">116</a> of file <a class="el" href="staffcontroller_8cpp_source.html">staffcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="staffcontroller_8hpp_source.html#l00155">cfg_</a>, <a class="el" href="staffcontroller_8hpp_source.html#l00157">email_sender_daemon_config_</a>, and <a class="el" href="staffcontroller_8hpp_source.html#l00159">gateKeeper</a>.</p>
+<p class="reference">References <a class="el" href="staffcontroller_8hpp_source.html#l00241">cfg_</a>, <a class="el" href="staffcontroller_8hpp_source.html#l00246">email_sender_daemon_config_</a>, and <a class="el" href="staffcontroller_8hpp_source.html#l00252">gateKeeper</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a8b0067a20c16696da7f15899b0804985">operator=()</a>, <a class="el" href="#a6c1f92044026b4fc6703b3f513fd915a">operator=()</a>, <a class="el" href="#af44e90b3c1914495477d4046fc71c151">StaffController()</a>, and <a class="el" href="#aa6585747b8fafe5c7a3b7080968f6b9d">StaffController()</a>.</p>
 
@@ -339,7 +339,7 @@ template&lt;typename T&gt; </div>
 
 <p>Copy construction is disabled so each registered controller has a single identity. </p>
 
-<p class="reference">References <a class="el" href="staffcontroller_8cpp_source.html#l00071">StaffController()</a>.</p>
+<p class="reference">References <a class="el" href="staffcontroller_8cpp_source.html#l00116">StaffController()</a>.</p>
 
 </div>
 </div>
@@ -370,7 +370,7 @@ template&lt;typename T&gt; </div>
 
 <p>Move construction is disabled. </p>
 
-<p class="reference">References <a class="el" href="staffcontroller_8cpp_source.html#l00071">StaffController()</a>.</p>
+<p class="reference">References <a class="el" href="staffcontroller_8cpp_source.html#l00116">StaffController()</a>.</p>
 
 </div>
 </div>
@@ -401,7 +401,7 @@ template&lt;typename T&gt; </div>
 
 <p>Defaulted destructor; shared dependencies are released through their shared pointers. </p>
 
-<p class="reference">References <a class="el" href="staffcontroller_8cpp_source.html#l00092">AddStaffToEntity()</a>, <a class="el" href="staffcontroller_8cpp_source.html#l00227">AddStaffToEntityAsync()</a>, <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="staffcontroller_8cpp_source.html#l00169">InviteStaffToEntity()</a>, <a class="el" href="staffcontroller_8cpp_source.html#l00299">InviteStaffToEntityAsync()</a>, <a class="el" href="staffcontroller_8cpp_source.html#l00132">RemoveStaffFromEntity()</a>, and <a class="el" href="staffcontroller_8cpp_source.html#l00265">RemoveStaffFromEntityAsync()</a>.</p>
+<p class="reference">References <a class="el" href="staffcontroller_8cpp_source.html#l00149">AddStaffToEntity()</a>, <a class="el" href="staffcontroller_8cpp_source.html#l00353">AddStaffToEntityAsync()</a>, <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="staffcontroller_8cpp_source.html#l00263">InviteStaffToEntity()</a>, <a class="el" href="staffcontroller_8cpp_source.html#l00445">InviteStaffToEntityAsync()</a>, <a class="el" href="staffcontroller_8cpp_source.html#l00211">RemoveStaffFromEntity()</a>, and <a class="el" href="staffcontroller_8cpp_source.html#l00400">RemoveStaffFromEntityAsync()</a>.</p>
 
 </div>
 </div>
@@ -441,7 +441,7 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p>Adds a staff member described by <code class="param">data</code> to the service entity identified in that body. </p>
-<p>Parses <span class="tt">payload</span>/<span class="tt">id</span>, constructs <a class="el" href="structapi_1_1v2_1_1Types_1_1StaffData.html" title="api::v2::Types::StaffData">api::v2::Types::StaffData</a> and <span class="tt">T</span>, checks <span class="tt">canManageStaff</span>, then delegates to <span class="tt"><a class="el" href="classController.html#a29dac549946db2810cb4435323502c75" title="Adds a staff member via the entity&#39;s getSqlAddStaffStatement, using the write executor.">Controller::addStaff</a></span>. A parse failure is an exceptional 500 path; an authorisation failure returns the <a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3" title="Convenience alias for the authorisation service.">GateKeeper</a> error code. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Parses <span class="tt">payload</span>/<span class="tt">id</span>, constructs <a class="el" href="structapi_1_1v2_1_1Types_1_1StaffData.html" title="api::v2::Types::StaffData">api::v2::Types::StaffData</a> and <span class="tt">T</span>, checks <span class="tt">canManageStaff</span>, then delegates to <span class="tt"><a class="el" href="classController.html#a29dac549946db2810cb4435323502c75" title="Adds a staff member via the entity&#39;s getSqlAddStaffStatement, using the write executor.">Controller::addStaff</a></span>. A parse failure is an exceptional 500 path; an authorisation failure returns the <a class="el" href="controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1" title="Convenience alias for the authorisation service.">GateKeeper</a> error code. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">callback</td><td>Completion handler, invoked once with (status, body). </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">requester</td><td>Authenticated caller used for the staff-management permission check. </td></tr>
@@ -449,13 +449,13 @@ template&lt;typename T&gt; </div>
   </table>
   </dd>
 </dl>
-<p>Adds a staff member described by <code class="param">data</code> to the service entity it names. Parses a JSON body with <span class="tt">payload</span> and <span class="tt">id</span>, builds <a class="el" href="staffcontroller_8cpp.html#acd40880d4e5e43f97e8ead3d0efe3666" title="StaffData">StaffData</a> and <span class="tt">T</span>, checks staff-management permission against the id, and finally delegates the SQL work to <span class="tt"><a class="el" href="classController.html#a29dac549946db2810cb4435323502c75" title="Adds a staff member via the entity&#39;s getSqlAddStaffStatement, using the write executor.">Controller::addStaff</a></span>. On denial the <a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3" title="Convenience alias for the authorisation service.">GateKeeper</a>'s code and message are returned verbatim; any thrown exception is mapped by <span class="tt"><a class="el" href="global_8hpp.html#aea2ec294709dc731c2a2c67739e52a90" title="Logs a critical error and replies to the caller through callback.">CRITICALMESSAGERESPONSE</a></span> (500, or 503 for a busy database). Note: There is no pre-parse guard: malformed JSON or a missing key is an exceptional 500 path here, unlike the 400 responses of <a class="el" href="classEntityController.html" title="EntityController">EntityController</a>. callback: Completion handler invoked once with (status, body). requester: Authenticated caller used for the staff-management permission check. data: Raw JSON body containing <span class="tt">id</span> and <span class="tt">payload</span>; must outlive the call. </p>
+<p>Adds a staff member described by <code class="param">data</code> to the service entity it names. Parses a JSON body with <span class="tt">payload</span> and <span class="tt">id</span>, builds <a class="el" href="staffcontroller_8cpp.html#a05f271479525f9aae1900f939d81a7f9" title="StaffData">StaffData</a> and <span class="tt">T</span>, checks staff-management permission against the id, and finally delegates the SQL work to <span class="tt"><a class="el" href="classController.html#a29dac549946db2810cb4435323502c75" title="Adds a staff member via the entity&#39;s getSqlAddStaffStatement, using the write executor.">Controller::addStaff</a></span>. On denial the <a class="el" href="controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1" title="Convenience alias for the authorisation service.">GateKeeper</a>'s code and message are returned verbatim; any thrown exception is mapped by <span class="tt"><a class="el" href="global_8hpp.html#aea2ec294709dc731c2a2c67739e52a90" title="Logs a critical error and replies to the caller through callback.">CRITICALMESSAGERESPONSE</a></span> (500, or 503 for a busy database). Note: There is no pre-parse guard: malformed JSON or a missing key is an exceptional 500 path here, unlike the 400 responses of <a class="el" href="classEntityController.html" title="EntityController">EntityController</a>. callback: Completion handler invoked once with (status, body). requester: Authenticated caller used for the staff-management permission check. data: Raw JSON body containing <span class="tt">id</span> and <span class="tt">payload</span>; must outlive the call. </p>
 
 <p>Implements <a class="el" href="classStaffControllerBase.html#a968ab96cf0d0caaa4c86d4a8330c9393">StaffControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="staffcontroller_8cpp_source.html#l00092">92</a> of file <a class="el" href="staffcontroller_8cpp_source.html">staffcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="staffcontroller_8cpp_source.html#l00149">149</a> of file <a class="el" href="staffcontroller_8cpp_source.html">staffcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="controller_8hpp_source.html#l00707">Controller::addStaff()</a>, <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00066">CRITICALMESSAGERESPONSE</a>, and <a class="el" href="staffcontroller_8hpp_source.html#l00159">gateKeeper</a>.</p>
+<p class="reference">References <a class="el" href="controller_8hpp_source.html#l00974">Controller::addStaff()</a>, <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00073">CRITICALMESSAGERESPONSE</a>, and <a class="el" href="staffcontroller_8hpp_source.html#l00252">gateKeeper</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a0e4a65120d9fea6f89fa8ed411fe536a">~StaffController()</a>.</p>
 
@@ -508,9 +508,9 @@ template&lt;typename T&gt; </div>
 
 <p>Implements <a class="el" href="classStaffControllerBase.html#a86d35c8d93f08daf0223aec4ed35b9df">StaffControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="staffcontroller_8cpp_source.html#l00227">227</a> of file <a class="el" href="staffcontroller_8cpp_source.html">staffcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="staffcontroller_8cpp_source.html#l00353">353</a> of file <a class="el" href="staffcontroller_8cpp_source.html">staffcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="controller_8hpp_source.html#l00735">Controller::addStaffAsync()</a>, <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00066">CRITICALMESSAGERESPONSE</a>, and <a class="el" href="staffcontroller_8hpp_source.html#l00159">gateKeeper</a>.</p>
+<p class="reference">References <a class="el" href="controller_8hpp_source.html#l01009">Controller::addStaffAsync()</a>, <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00073">CRITICALMESSAGERESPONSE</a>, and <a class="el" href="staffcontroller_8hpp_source.html#l00252">gateKeeper</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a0e4a65120d9fea6f89fa8ed411fe536a">~StaffController()</a>.</p>
 
@@ -559,13 +559,13 @@ template&lt;typename T&gt; </div>
   </table>
   </dd>
 </dl>
-<p>Invites a staff member by handing an invite message to the email-sender daemon. Parses <span class="tt">nominee_id</span> and the <a class="el" href="staffcontroller_8cpp.html#acd40880d4e5e43f97e8ead3d0efe3666" title="StaffData">StaffData</a> fields from the whole body, checks staff-management permission, and — if the fields parsed and the invite JSON could be built — POSTs that JSON to the configured email daemon. The daemon's body is relayed with 200 on success; 400 is returned when invite construction or delivery fails. Note: <span class="tt">nominee_id</span> is the value passed to <span class="tt">canManageStaff</span> as the permission-check target; note also that the email request is a synchronous cURL call. callback: Completion handler invoked once with (status, body). requester: Authenticated caller used for the staff-management permission check. data: Raw JSON body containing <span class="tt">nominee_id</span> and the invite fields. </p>
+<p>Invites a staff member by handing an invite message to the email-sender daemon. Parses <span class="tt">nominee_id</span> and the <a class="el" href="staffcontroller_8cpp.html#a05f271479525f9aae1900f939d81a7f9" title="StaffData">StaffData</a> fields from the whole body, checks staff-management permission, and — if the fields parsed and the invite JSON could be built — POSTs that JSON to the configured email daemon. The daemon's body is relayed with 200 on success; 400 is returned when invite construction or delivery fails. Note: <span class="tt">nominee_id</span> is the value passed to <span class="tt">canManageStaff</span> as the permission-check target; note also that the email request is a synchronous cURL call. callback: Completion handler invoked once with (status, body). requester: Authenticated caller used for the staff-management permission check. data: Raw JSON body containing <span class="tt">nominee_id</span> and the invite fields. </p>
 
 <p>Implements <a class="el" href="classStaffControllerBase.html#a55203753a4995d370037401bfc5f66bd">StaffControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="staffcontroller_8cpp_source.html#l00169">169</a> of file <a class="el" href="staffcontroller_8cpp_source.html">staffcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="staffcontroller_8cpp_source.html#l00263">263</a> of file <a class="el" href="staffcontroller_8cpp_source.html">staffcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="http_8hpp_source.html#l00082">api::v2::Http::BAD_REQUEST</a>, <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00066">CRITICALMESSAGERESPONSE</a>, <a class="el" href="staffcontroller_8hpp_source.html#l00157">email_sender_daemon_config_</a>, <a class="el" href="staffcontroller_8hpp_source.html#l00159">gateKeeper</a>, <a class="el" href="http_8hpp_source.html#l00064">api::v2::Http::OK</a>, and <a class="el" href="communicate_8cpp_source.html#l00038">Communicate::sendRequest()</a>.</p>
+<p class="reference">References <a class="el" href="http_8hpp_source.html#l00103">api::v2::Http::BAD_REQUEST</a>, <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00073">CRITICALMESSAGERESPONSE</a>, <a class="el" href="staffcontroller_8hpp_source.html#l00246">email_sender_daemon_config_</a>, <a class="el" href="staffcontroller_8hpp_source.html#l00252">gateKeeper</a>, <a class="el" href="http_8hpp_source.html#l00077">api::v2::Http::OK</a>, and <a class="el" href="communicate_8cpp_source.html#l00047">Communicate::sendRequest()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a0e4a65120d9fea6f89fa8ed411fe536a">~StaffController()</a>.</p>
 
@@ -619,9 +619,9 @@ template&lt;typename T&gt; </div>
 
 <p>Implements <a class="el" href="classStaffControllerBase.html#a0e80ed9010fd73626ae3890c4d4ca118">StaffControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="staffcontroller_8cpp_source.html#l00299">299</a> of file <a class="el" href="staffcontroller_8cpp_source.html">staffcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="staffcontroller_8cpp_source.html#l00445">445</a> of file <a class="el" href="staffcontroller_8cpp_source.html">staffcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="http_8hpp_source.html#l00082">api::v2::Http::BAD_REQUEST</a>, <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00066">CRITICALMESSAGERESPONSE</a>, <a class="el" href="staffcontroller_8hpp_source.html#l00157">email_sender_daemon_config_</a>, <a class="el" href="staffcontroller_8hpp_source.html#l00159">gateKeeper</a>, <a class="el" href="http_8hpp_source.html#l00064">api::v2::Http::OK</a>, and <a class="el" href="communicate_8cpp_source.html#l00038">Communicate::sendRequest()</a>.</p>
+<p class="reference">References <a class="el" href="http_8hpp_source.html#l00103">api::v2::Http::BAD_REQUEST</a>, <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00073">CRITICALMESSAGERESPONSE</a>, <a class="el" href="staffcontroller_8hpp_source.html#l00246">email_sender_daemon_config_</a>, <a class="el" href="staffcontroller_8hpp_source.html#l00252">gateKeeper</a>, <a class="el" href="http_8hpp_source.html#l00077">api::v2::Http::OK</a>, and <a class="el" href="communicate_8cpp_source.html#l00047">Communicate::sendRequest()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a0e4a65120d9fea6f89fa8ed411fe536a">~StaffController()</a>.</p>
 
@@ -654,7 +654,7 @@ template&lt;typename T&gt; </div>
 
 <p>Copy assignment is disabled. </p>
 
-<p class="reference">References <a class="el" href="staffcontroller_8cpp_source.html#l00071">StaffController()</a>.</p>
+<p class="reference">References <a class="el" href="staffcontroller_8cpp_source.html#l00116">StaffController()</a>.</p>
 
 </div>
 </div>
@@ -685,7 +685,7 @@ template&lt;typename T&gt; </div>
 
 <p>Move assignment is disabled. </p>
 
-<p class="reference">References <a class="el" href="staffcontroller_8cpp_source.html#l00071">StaffController()</a>.</p>
+<p class="reference">References <a class="el" href="staffcontroller_8cpp_source.html#l00116">StaffController()</a>.</p>
 
 </div>
 </div>
@@ -732,13 +732,13 @@ template&lt;typename T&gt; </div>
   </table>
   </dd>
 </dl>
-<p>Removes a staff member from the service entity named in <code class="param">data</code>. Same request shape and authorisation contract as <a class="el" href="#a454ac6b5d362f6b9be674eac131f4da7" title="AddStaffToEntity">AddStaffToEntity</a>, but delegates to <span class="tt"><a class="el" href="classController.html#ae33c97548e0d8cdd3f2289573d1a0dba" title="Removes a staff member via the entity&#39;s getSqlRemoveStaffStatement, using the write executor.">Controller::removeStaff</a></span>. Malformed input is an exceptional 500 path; a failed permission check returns the <a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3" title="Convenience alias for the authorisation service.">GateKeeper</a> error unchanged. callback: Completion handler invoked once with (status, body). requester: Authenticated caller used for the staff-management permission check. data: Raw JSON body containing <span class="tt">id</span> (the service) and <span class="tt">payload</span> (the staff member). </p>
+<p>Removes a staff member from the service entity named in <code class="param">data</code>. Same request shape and authorisation contract as <a class="el" href="#a454ac6b5d362f6b9be674eac131f4da7" title="AddStaffToEntity">AddStaffToEntity</a>, but delegates to <span class="tt"><a class="el" href="classController.html#ae33c97548e0d8cdd3f2289573d1a0dba" title="Removes a staff member via the entity&#39;s getSqlRemoveStaffStatement, using the write executor.">Controller::removeStaff</a></span>. Malformed input is an exceptional 500 path; a failed permission check returns the <a class="el" href="controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1" title="Convenience alias for the authorisation service.">GateKeeper</a> error unchanged. callback: Completion handler invoked once with (status, body). requester: Authenticated caller used for the staff-management permission check. data: Raw JSON body containing <span class="tt">id</span> (the service) and <span class="tt">payload</span> (the staff member). </p>
 
 <p>Implements <a class="el" href="classStaffControllerBase.html#a5d310e956312329648957207868ed549">StaffControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="staffcontroller_8cpp_source.html#l00132">132</a> of file <a class="el" href="staffcontroller_8cpp_source.html">staffcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="staffcontroller_8cpp_source.html#l00211">211</a> of file <a class="el" href="staffcontroller_8cpp_source.html">staffcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00066">CRITICALMESSAGERESPONSE</a>, <a class="el" href="staffcontroller_8hpp_source.html#l00159">gateKeeper</a>, and <a class="el" href="controller_8hpp_source.html#l00721">Controller::removeStaff()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00073">CRITICALMESSAGERESPONSE</a>, <a class="el" href="staffcontroller_8hpp_source.html#l00252">gateKeeper</a>, and <a class="el" href="controller_8hpp_source.html#l00991">Controller::removeStaff()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a0e4a65120d9fea6f89fa8ed411fe536a">~StaffController()</a>.</p>
 
@@ -791,9 +791,9 @@ template&lt;typename T&gt; </div>
 
 <p>Implements <a class="el" href="classStaffControllerBase.html#aadc6db473bceee230a86cf64bdbb97ae">StaffControllerBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="staffcontroller_8cpp_source.html#l00265">265</a> of file <a class="el" href="staffcontroller_8cpp_source.html">staffcontroller.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="staffcontroller_8cpp_source.html#l00400">400</a> of file <a class="el" href="staffcontroller_8cpp_source.html">staffcontroller.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00066">CRITICALMESSAGERESPONSE</a>, <a class="el" href="staffcontroller_8hpp_source.html#l00159">gateKeeper</a>, and <a class="el" href="controller_8hpp_source.html#l00749">Controller::removeStaffAsync()</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>, <a class="el" href="global_8hpp_source.html#l00073">CRITICALMESSAGERESPONSE</a>, <a class="el" href="staffcontroller_8hpp_source.html#l00252">gateKeeper</a>, and <a class="el" href="controller_8hpp_source.html#l01030">Controller::removeStaffAsync()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a0e4a65120d9fea6f89fa8ed411fe536a">~StaffController()</a>.</p>
 
@@ -824,9 +824,9 @@ template&lt;typename T&gt; </div>
 
 <p>Retained <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a> service handle obtained at construction. </p>
 
-<p class="definition">Definition at line <a class="el" href="staffcontroller_8hpp_source.html#l00155">155</a> of file <a class="el" href="staffcontroller_8hpp_source.html">staffcontroller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="staffcontroller_8hpp_source.html#l00241">241</a> of file <a class="el" href="staffcontroller_8hpp_source.html">staffcontroller.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="staffcontroller_8cpp_source.html#l00071">StaffController()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="staffcontroller_8cpp_source.html#l00116">StaffController()</a>.</p>
 
 </div>
 </div>
@@ -842,7 +842,7 @@ template&lt;typename T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classConfigurator.html#ab635e7d33896fb372c42ee982c579e53">Configurator::EmailSenderConfig</a> <a class="el" href="classStaffController.html">StaffController</a>&lt; T &gt;::email_sender_daemon_config_</td>
+          <td class="memname"><a class="el" href="classConfigurator.html#ae7a8c53bf3a5ab860650fbc02354b222">Configurator::EmailSenderConfig</a> <a class="el" href="classStaffController.html">StaffController</a>&lt; T &gt;::email_sender_daemon_config_</td>
         </tr>
       </table>
   </td>
@@ -854,9 +854,9 @@ template&lt;typename T&gt; </div>
 
 <p>Snapshot of the email-daemon endpoint/queue used to POST invites. </p>
 
-<p class="definition">Definition at line <a class="el" href="staffcontroller_8hpp_source.html#l00157">157</a> of file <a class="el" href="staffcontroller_8hpp_source.html">staffcontroller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="staffcontroller_8hpp_source.html#l00246">246</a> of file <a class="el" href="staffcontroller_8hpp_source.html">staffcontroller.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="staffcontroller_8cpp_source.html#l00169">InviteStaffToEntity()</a>, <a class="el" href="staffcontroller_8cpp_source.html#l00299">InviteStaffToEntityAsync()</a>, and <a class="el" href="staffcontroller_8cpp_source.html#l00071">StaffController()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="staffcontroller_8cpp_source.html#l00263">InviteStaffToEntity()</a>, <a class="el" href="staffcontroller_8cpp_source.html#l00445">InviteStaffToEntityAsync()</a>, and <a class="el" href="staffcontroller_8cpp_source.html#l00116">StaffController()</a>.</p>
 
 </div>
 </div>
@@ -872,7 +872,7 @@ template&lt;typename T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3">GateKeeper</a>&gt; <a class="el" href="classStaffController.html">StaffController</a>&lt; T &gt;::gateKeeper</td>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1">GateKeeper</a>&gt; <a class="el" href="classStaffController.html">StaffController</a>&lt; T &gt;::gateKeeper</td>
         </tr>
       </table>
   </td>
@@ -884,9 +884,9 @@ template&lt;typename T&gt; </div>
 
 <p>Shared authorisation service consulted on every staff-management request. </p>
 
-<p class="definition">Definition at line <a class="el" href="staffcontroller_8hpp_source.html#l00159">159</a> of file <a class="el" href="staffcontroller_8hpp_source.html">staffcontroller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="staffcontroller_8hpp_source.html#l00252">252</a> of file <a class="el" href="staffcontroller_8hpp_source.html">staffcontroller.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="staffcontroller_8cpp_source.html#l00092">AddStaffToEntity()</a>, <a class="el" href="staffcontroller_8cpp_source.html#l00227">AddStaffToEntityAsync()</a>, <a class="el" href="staffcontroller_8cpp_source.html#l00169">InviteStaffToEntity()</a>, <a class="el" href="staffcontroller_8cpp_source.html#l00299">InviteStaffToEntityAsync()</a>, <a class="el" href="staffcontroller_8cpp_source.html#l00132">RemoveStaffFromEntity()</a>, <a class="el" href="staffcontroller_8cpp_source.html#l00265">RemoveStaffFromEntityAsync()</a>, and <a class="el" href="staffcontroller_8cpp_source.html#l00071">StaffController()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="staffcontroller_8cpp_source.html#l00149">AddStaffToEntity()</a>, <a class="el" href="staffcontroller_8cpp_source.html#l00353">AddStaffToEntityAsync()</a>, <a class="el" href="staffcontroller_8cpp_source.html#l00263">InviteStaffToEntity()</a>, <a class="el" href="staffcontroller_8cpp_source.html#l00445">InviteStaffToEntityAsync()</a>, <a class="el" href="staffcontroller_8cpp_source.html#l00211">RemoveStaffFromEntity()</a>, <a class="el" href="staffcontroller_8cpp_source.html#l00400">RemoveStaffFromEntityAsync()</a>, and <a class="el" href="staffcontroller_8cpp_source.html#l00116">StaffController()</a>.</p>
 
 </div>
 </div>

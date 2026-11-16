@@ -11,7 +11,8 @@
         <argsstring></argsstring>
         <name>TABLENAME</name>
         <qualifiedname>Laboratories::TABLENAME</qualifiedname>
-        <initializer>= &quot;laboratories&quot;</initializer>
+        <initializer>                            =
+&quot;laboratories&quot;</initializer>
         <briefdescription>
 <para>Table bound to this entity; also used as the service name in staff permission queries. </para>
         </briefdescription>
@@ -19,9 +20,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/laboratories.hpp" line="54" column="27" bodyfile="src/entities/services/laboratories.hpp" bodystart="54" bodyend="-1"/>
-        <referencedby refid="classLaboratories_1ab791359ddebb664cfd543a60d262b6a8" compoundref="laboratories_8hpp" startline="75" endline="75">getTableName</referencedby>
-        <referencedby refid="classLaboratories_1a196b3a30731960f60b4d463bb73868d3" compoundref="laboratories_8hpp" startline="68" endline="70">Laboratories</referencedby>
+        <location file="src/entities/services/laboratories.hpp" line="73" column="25" bodyfile="src/entities/services/laboratories.hpp" bodystart="73" bodyend="-1"/>
+        <referencedby refid="classLaboratories_1ab791359ddebb664cfd543a60d262b6a8" compoundref="laboratories_8hpp" startline="105" endline="107">getTableName</referencedby>
+        <referencedby refid="classLaboratories_1a196b3a30731960f60b4d463bb73868d3" compoundref="laboratories_8hpp" startline="96" endline="100">Laboratories</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -49,7 +50,7 @@
 <parametername>T</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>A type accepted by <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref>, e.g. <ref refid="namespaceapi_1_1v2_1_1Types_1ac9a246b12a16bc018eec47370d2d6a20" kindref="member">api::v2::Types::Create_t</ref> or <ref refid="classRead__t" kindref="compound">Read_t</ref>. </para>
+<para>A type accepted by <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref>, e.g. <ref refid="namespaceapi_1_1v2_1_1Types_1a3c62a5c40f89f4df780a0aa64a374461" kindref="member">api::v2::Types::Create_t</ref> or <ref refid="classRead__t" kindref="compound">Read_t</ref>. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -66,9 +67,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/laboratories.hpp" line="68" column="5" bodyfile="src/entities/services/laboratories.hpp" bodystart="68" bodyend="70"/>
+        <location file="src/entities/services/laboratories.hpp" line="96" column="3" bodyfile="src/entities/services/laboratories.hpp" bodystart="96" bodyend="100"/>
         <references refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166">Service::Service</references>
-        <references refid="classLaboratories_1a8c175343a741a015e275a074fc1c410a" compoundref="laboratories_8hpp" startline="54">TABLENAME</references>
+        <references refid="classLaboratories_1a8c175343a741a015e275a074fc1c410a" compoundref="laboratories_8hpp" startline="73">TABLENAME</references>
       </memberdef>
       <memberdef kind="function" id="classLaboratories_1a648e882a9b1dc55d467dcdd179aee4c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -83,7 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/laboratories.hpp" line="79" column="5"/>
+        <location file="src/entities/services/laboratories.hpp" line="113" column="3"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -103,17 +104,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/laboratories.hpp" line="75" column="27" bodyfile="src/entities/services/laboratories.hpp" bodystart="75" bodyend="75"/>
-        <references refid="classLaboratories_1a8c175343a741a015e275a074fc1c410a" compoundref="laboratories_8hpp" startline="54">TABLENAME</references>
+        <location file="src/entities/services/laboratories.hpp" line="105" column="25" bodyfile="src/entities/services/laboratories.hpp" bodystart="105" bodyend="107"/>
+        <references refid="classLaboratories_1a8c175343a741a015e275a074fc1c410a" compoundref="laboratories_8hpp" startline="73">TABLENAME</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
 <para><ref refid="classService" kindref="compound">Service</ref> entity bound to the <computeroutput>laboratories</computeroutput> table (a laboratory service provider). </para>
     </briefdescription>
     <detaileddescription>
-<para>A thin value type that binds the generic Service/Entity SQL machinery to one database table. CRUD/search statement generation and staff management are entirely inherited; this class only fixes the table name and exposes it to the permission layer. Instances are built from one of the <ref refid="namespaceapi_1_1v2_1_1Types" kindref="compound">api::v2::Types</ref> data wrappers (for example <ref refid="classCreate__t" kindref="compound">Create_t</ref> or <ref refid="classRead__t" kindref="compound">Read_t</ref>), which <ref refid="classEntity" kindref="compound">Entity</ref> stores as an <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref> variant. The type satisfies the api::v2::Service_t concept and is selected through the <computeroutput>laboratories</computeroutput> entries of the services and staff route registries (<ref refid="classServiceController" kindref="compound">ServiceController&lt;Laboratories&gt;</ref>, <ref refid="classStaffController" kindref="compound">StaffController&lt;Laboratories&gt;</ref>). Ownership: the wrapper is copied into the base and is const thereafter; no other resources are owned. Instances have no mutable state and do no locking of their own; <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref> uses the inherited <ref refid="classService_1ac5c73e3e8d87d1a87af5c12dcee32013" kindref="member">Service::getServicePermissionsQuery</ref> together with <ref refid="classLaboratories_1ab791359ddebb664cfd543a60d262b6a8" kindref="member">getTableName()</ref> to authorise staff changes. Copy and move are deleted by <ref refid="classService" kindref="compound">Service</ref>: construct a fresh instance per operation. <simplesect kind="note"><para>No default constructor: <ref refid="classEntity" kindref="compound">Entity</ref> needs a data wrapper to build statements from. </para>
+<para>A thin value type that binds the generic Service/Entity SQL machinery to one database table. CRUD/search statement generation and staff management are entirely inherited; this class only fixes the table name and exposes it to the permission layer. Instances are built from one of the <ref refid="namespaceapi_1_1v2_1_1Types" kindref="compound">api::v2::Types</ref> data wrappers (for example <ref refid="classCreate__t" kindref="compound">Create_t</ref> or <ref refid="classRead__t" kindref="compound">Read_t</ref>), which <ref refid="classEntity" kindref="compound">Entity</ref> stores as an <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref> variant. The type satisfies the api::v2::Service_t concept and is selected through the <computeroutput>laboratories</computeroutput> entries of the services and staff route registries (<ref refid="classServiceController" kindref="compound">ServiceController&lt;Laboratories&gt;</ref>, <ref refid="classStaffController" kindref="compound">StaffController&lt;Laboratories&gt;</ref>). Ownership: the wrapper is copied into the base and is const thereafter; no other resources are owned. Instances have no mutable state and do no locking of their own; <ref refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21" kindref="member">PermissionManager</ref> uses the inherited <ref refid="classService_1ac5c73e3e8d87d1a87af5c12dcee32013" kindref="member">Service::getServicePermissionsQuery</ref> together with <ref refid="classLaboratories_1ab791359ddebb664cfd543a60d262b6a8" kindref="member">getTableName()</ref> to authorise staff changes. Copy and move are deleted by <ref refid="classService" kindref="compound">Service</ref>: construct a fresh instance per operation. <simplesect kind="note"><para>No default constructor: <ref refid="classEntity" kindref="compound">Entity</ref> needs a data wrapper to build statements from. </para>
 </simplesect>
-<simplesect kind="see"><para><ref refid="classService" kindref="compound">Service</ref>, <ref refid="classEntity" kindref="compound">Entity</ref>, <ref refid="classServiceController" kindref="compound">ServiceController</ref>, <ref refid="classStaffController" kindref="compound">StaffController</ref>, <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref> </para>
+<simplesect kind="see"><para><ref refid="classService" kindref="compound">Service</ref>, <ref refid="classEntity" kindref="compound">Entity</ref>, <ref refid="classServiceController" kindref="compound">ServiceController</ref>, <ref refid="classStaffController" kindref="compound">StaffController</ref>, <ref refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21" kindref="member">PermissionManager</ref> </para>
 </simplesect>
 </para>
     </detaileddescription>
@@ -165,7 +166,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/entities/services/laboratories.hpp" line="50" column="1" bodyfile="src/entities/services/laboratories.hpp" bodystart="51" bodyend="80"/>
+    <location file="src/entities/services/laboratories.hpp" line="69" column="1" bodyfile="src/entities/services/laboratories.hpp" bodystart="69" bodyend="116"/>
     <listofallmembers>
       <member refid="classBase_1a58887755525abd3f340963e2bbdcc972" prot="public" virt="non-virtual"><scope>Laboratories</scope><name>Base</name></member>
       <member refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" prot="protected" virt="non-virtual"><scope>Laboratories</scope><name>buildCreateStatement</name></member>

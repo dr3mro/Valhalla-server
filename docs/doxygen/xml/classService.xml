@@ -25,14 +25,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/service.hpp" line="63" column="5"/>
+        <location file="src/entities/base/service.hpp" line="78" column="3"/>
         <references refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166">Service</references>
-        <referencedby refid="classClinics_1a6624fff19faf226f56d1cbd2d28f56a1" compoundref="entities_2services_2clinics_2clinics_8hpp" startline="64" endline="66">Clinics::Clinics</referencedby>
-        <referencedby refid="classLaboratories_1a196b3a30731960f60b4d463bb73868d3" compoundref="laboratories_8hpp" startline="68" endline="70">Laboratories::Laboratories</referencedby>
+        <referencedby refid="classClinics_1a6624fff19faf226f56d1cbd2d28f56a1" compoundref="entities_2services_2clinics_2clinics_8hpp" startline="85" endline="89">Clinics::Clinics</referencedby>
+        <referencedby refid="classLaboratories_1a196b3a30731960f60b4d463bb73868d3" compoundref="laboratories_8hpp" startline="96" endline="100">Laboratories::Laboratories</referencedby>
         <referencedby refid="classService_1acd58b3d98fbebda840c84e7f4b6a95c4">operator=</referencedby>
         <referencedby refid="classService_1a272111f072b71c01c2b2f3bc680f782d">operator=</referencedby>
-        <referencedby refid="classPharmacies_1a27f27caa71c3d1a5cbd43b92b7105278" compoundref="pharmacies_8hpp" startline="68" endline="70">Pharmacies::Pharmacies</referencedby>
-        <referencedby refid="classRadiologyCenters_1a84b441e73a6049c800b41fc728054435" compoundref="radiologycenters_8hpp" startline="71" endline="73">RadiologyCenters::RadiologyCenters</referencedby>
+        <referencedby refid="classPharmacies_1a27f27caa71c3d1a5cbd43b92b7105278" compoundref="pharmacies_8hpp" startline="95" endline="99">Pharmacies::Pharmacies</referencedby>
+        <referencedby refid="classRadiologyCenters_1a84b441e73a6049c800b41fc728054435" compoundref="radiologycenters_8hpp" startline="101" endline="105">RadiologyCenters::RadiologyCenters</referencedby>
         <referencedby refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166">Service</referencedby>
         <referencedby refid="classService_1a0b54b15cd18155406cdd605c2fe6d46f">Service</referencedby>
       </memberdef>
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/service.hpp" line="64" column="5"/>
+        <location file="src/entities/base/service.hpp" line="80" column="3"/>
         <references refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166">Service</references>
       </memberdef>
       <memberdef kind="function" id="classService_1acd58b3d98fbebda840c84e7f4b6a95c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -69,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/service.hpp" line="65" column="13"/>
+        <location file="src/entities/base/service.hpp" line="81" column="11"/>
         <references refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166">Service</references>
       </memberdef>
       <memberdef kind="function" id="classService_1a272111f072b71c01c2b2f3bc680f782d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -87,7 +87,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/service.hpp" line="66" column="13"/>
+        <location file="src/entities/base/service.hpp" line="82" column="11"/>
         <references refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166">Service</references>
       </memberdef>
       <memberdef kind="function" id="classService_1a8349b8181f9d015c6d7577f7194e86dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -118,7 +118,7 @@
 <parametername>T</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Payload type held by <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref> (<ref refid="staffcontroller_8cpp_1acd40880d4e5e43f97e8ead3d0efe3666" kindref="member">StaffData</ref> for the staff builders). </para>
+<para>Payload type held by <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref> (<ref refid="staffcontroller_8cpp_1a05f271479525f9aae1900f939d81a7f9" kindref="member">StaffData</ref> for the staff builders). </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -143,10 +143,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/service.hpp" line="75" column="5" bodyfile="src/entities/base/service.hpp" bodystart="75" bodyend="77"/>
-        <references refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" compoundref="entity_8hpp" startline="393">Entity::data</references>
+        <location file="src/entities/base/service.hpp" line="92" column="3" bodyfile="src/entities/base/service.hpp" bodystart="92" bodyend="95"/>
+        <references refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" compoundref="entity_8hpp" startline="596">Entity::data</references>
         <references refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93">Entity::Entity</references>
-        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="381">Entity::tablename</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="573">Entity::tablename</references>
       </memberdef>
       <memberdef kind="function" id="classService_1aba3604115a58b69b2c46a84fd9833131" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -161,7 +161,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/service.hpp" line="82" column="5"/>
+        <location file="src/entities/base/service.hpp" line="100" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classService_1a1a762691efab98926ce3c34988ccc51a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -186,18 +186,18 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>UPDATE ... RETURNING id, or std::nullopt if the payload is not <ref refid="staffcontroller_8cpp_1acd40880d4e5e43f97e8ead3d0efe3666" kindref="member">StaffData</ref> or an exception occurs. </para>
+<simplesect kind="return"><para>UPDATE ... RETURNING id, or std::nullopt if the payload is not <ref refid="staffcontroller_8cpp_1a05f271479525f9aae1900f939d81a7f9" kindref="member">StaffData</ref> or an exception occurs. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/service.hpp" line="92" column="19" bodyfile="src/entities/base/service.hpp" bodystart="92" bodyend="115"/>
-        <references refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" compoundref="base_8hpp" startline="136" endline="140">Base::Binder::bind</references>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
-        <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="163" endline="163">Entity::getData</references>
-        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="381">Entity::tablename</references>
+        <location file="src/entities/base/service.hpp" line="114" column="17" bodyfile="src/entities/base/service.hpp" bodystart="114" bodyend="151"/>
+        <references refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" compoundref="base_8hpp" startline="178" endline="184">Base::Binder::bind</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
+        <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="220" endline="222">Entity::getData</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="573">Entity::tablename</references>
       </memberdef>
       <memberdef kind="function" id="classService_1a6b8a06b26521f411f8c21104031ab5fe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -222,18 +222,18 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>UPDATE ... RETURNING id, or std::nullopt if the payload is not <ref refid="staffcontroller_8cpp_1acd40880d4e5e43f97e8ead3d0efe3666" kindref="member">StaffData</ref> or an exception occurs. </para>
+<simplesect kind="return"><para>UPDATE ... RETURNING id, or std::nullopt if the payload is not <ref refid="staffcontroller_8cpp_1a05f271479525f9aae1900f939d81a7f9" kindref="member">StaffData</ref> or an exception occurs. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/service.hpp" line="125" column="19" bodyfile="src/entities/base/service.hpp" bodystart="125" bodyend="149"/>
-        <references refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" compoundref="base_8hpp" startline="136" endline="140">Base::Binder::bind</references>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
-        <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="163" endline="163">Entity::getData</references>
-        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="381">Entity::tablename</references>
+        <location file="src/entities/base/service.hpp" line="165" column="17" bodyfile="src/entities/base/service.hpp" bodystart="165" bodyend="200"/>
+        <references refid="structBase_1_1Binder_1a8fb0871ea4d994dfad3360aac44d8c56" compoundref="base_8hpp" startline="178" endline="184">Base::Binder::bind</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
+        <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="220" endline="222">Entity::getData</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="573">Entity::tablename</references>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -255,7 +255,7 @@
 <para>Builds the permission lookup for a service row by id. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the owner/admin/staff columns used by <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref> to authorise service-level actions. The table name and id are formatted into the query text rather than bound; the resulting text also serves as the permission cache key. <parameterlist kind="param"><parameteritem>
+<para>Returns the owner/admin/staff columns used by <ref refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21" kindref="member">PermissionManager</ref> to authorise service-level actions. The table name and id are formatted into the query text rather than bound; the resulting text also serves as the permission cache key. <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">service_name</parametername>
 </parameternamelist>
@@ -278,14 +278,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/service.hpp" line="159" column="26" bodyfile="src/entities/base/service.hpp" bodystart="159" bodyend="162"/>
+        <location file="src/entities/base/service.hpp" line="213" column="24" bodyfile="src/entities/base/service.hpp" bodystart="213" bodyend="220"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
 <para><ref refid="classEntity" kindref="compound">Entity</ref> for service/organisation tables (clinics, pharmacies, laboratories, ...). </para>
     </briefdescription>
     <detaileddescription>
-<para>Adds builders that mutate the JSONB &quot;staff&quot; array of a service row to add or remove a nominee, plus a static query used by <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref> to read a service&apos;s owner/admin/staff. CRUD statements remain inherited from <ref refid="classEntity" kindref="compound">Entity</ref>. <simplesect kind="note"><para>The staff builders bind the nominee and entity ids through <ref refid="structBase_1_1Binder" kindref="compound">Binder</ref>; the static permission query interpolates the service name and id into its text and is used as a permission cache key. </para>
+<para>Adds builders that mutate the JSONB &quot;staff&quot; array of a service row to add or remove a nominee, plus a static query used by <ref refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21" kindref="member">PermissionManager</ref> to read a service&apos;s owner/admin/staff. CRUD statements remain inherited from <ref refid="classEntity" kindref="compound">Entity</ref>. <simplesect kind="note"><para>The staff builders bind the nominee and entity ids through <ref refid="structBase_1_1Binder" kindref="compound">Binder</ref>; the static permission query interpolates the service name and id into its text and is used as a permission cache key. </para>
 </simplesect>
 <simplesect kind="see"><para><ref refid="classEntity" kindref="compound">Entity</ref>, <ref refid="structapi_1_1v2_1_1Types_1_1StaffData" kindref="compound">api::v2::Types::StaffData</ref> </para>
 </simplesect>
@@ -351,7 +351,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/entities/base/service.hpp" line="57" column="1" bodyfile="src/entities/base/service.hpp" bodystart="58" bodyend="165"/>
+    <location file="src/entities/base/service.hpp" line="72" column="1" bodyfile="src/entities/base/service.hpp" bodystart="72" bodyend="224"/>
     <listofallmembers>
       <member refid="classBase_1a58887755525abd3f340963e2bbdcc972" prot="public" virt="non-virtual"><scope>Service</scope><name>Base</name></member>
       <member refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" prot="protected" virt="non-virtual"><scope>Service</scope><name>buildCreateStatement</name></member>

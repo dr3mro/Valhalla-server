@@ -154,14 +154,14 @@ Static Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-static-attribs" class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:a31bece8e19e92c5c7d7dfe681acf17ad" id="r_a31bece8e19e92c5c7d7dfe681acf17ad"><td class="memItemLeft">static constexpr const char *&#160;</td><td class="memItemRight"><a class="el" href="#a31bece8e19e92c5c7d7dfe681acf17ad">FAILURE</a> = &quot;Failure&quot;</td></tr>
-<tr class="memitem:a9633fc9b2cf52a1fec90c3241c0da359" id="r_a9633fc9b2cf52a1fec90c3241c0da359"><td class="memItemLeft">static constexpr const char *&#160;</td><td class="memItemRight"><a class="el" href="#a9633fc9b2cf52a1fec90c3241c0da359">ERROR</a> = &quot;Error&quot;</td></tr>
+<tr class="memitem:a31bece8e19e92c5c7d7dfe681acf17ad" id="r_a31bece8e19e92c5c7d7dfe681acf17ad"><td class="memItemLeft">static constexpr const char *&#160;</td><td class="memItemRight"><a class="el" href="#a31bece8e19e92c5c7d7dfe681acf17ad">FAILURE</a></td></tr>
+<tr class="memitem:a9633fc9b2cf52a1fec90c3241c0da359" id="r_a9633fc9b2cf52a1fec90c3241c0da359"><td class="memItemLeft">static constexpr const char *&#160;</td><td class="memItemRight"><a class="el" href="#a9633fc9b2cf52a1fec90c3241c0da359">ERROR</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Factory for the standard JSON HTTP responses used by the <a class="el" href="namespaceapi_1_1v2.html">v2</a> controllers and filters. </p>
 <p>All members are static; the class is a namespace-like utility with no state. The response callbacks are consumed (moved from) exactly once to deliver the reply. failure/error responses wrap the message in a JSON object with a "Status" field, while success responses pass the message through as-is. Every reply is JSON with a 503 response additionally carrying Retry-After: 1. </p><dl class="section note"><dt>Note</dt><dd>Copyable but non-movable; construction is unrestricted but meaningless since there is no instance state. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="helper_8hpp_source.html#l00051">51</a> of file <a class="el" href="helper_8hpp_source.html">helper.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="helper_8hpp_source.html#l00064">64</a> of file <a class="el" href="helper_8hpp_source.html">helper.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8628cae20d07c86b011fd649b77d7de6" name="a8628cae20d07c86b011fd649b77d7de6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8628cae20d07c86b011fd649b77d7de6">&#9670;&#160;</a></span>Helper() <span class="overload">[1/3]</span></h2>
@@ -267,7 +267,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="helper_8cpp_source.html#l00053">errorResponse()</a>, <a class="el" href="helper_8cpp_source.html#l00044">failureResponse()</a>, <a class="el" href="helper_8cpp_source.html#l00088">prepare()</a>, <a class="el" href="helper_8cpp_source.html#l00071">reply()</a>, and <a class="el" href="helper_8cpp_source.html#l00062">successResponse()</a>.</p>
+<p class="reference">References <a class="el" href="helper_8cpp_source.html#l00071">errorResponse()</a>, <a class="el" href="helper_8cpp_source.html#l00056">failureResponse()</a>, <a class="el" href="helper_8cpp_source.html#l00128">prepare()</a>, <a class="el" href="helper_8cpp_source.html#l00102">reply()</a>, and <a class="el" href="helper_8cpp_source.html#l00088">successResponse()</a>.</p>
 
 </div>
 </div>
@@ -316,11 +316,11 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#ab53ee95984f6ba11a1025e1dbbd198f2" title="Send a response with an arbitrary status and an &quot;Error&quot;-tagged JSON body.">Helper::errorResponse</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="helper_8cpp_source.html#l00053">53</a> of file <a class="el" href="helper_8cpp_source.html">helper.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="helper_8cpp_source.html#l00071">71</a> of file <a class="el" href="helper_8cpp_source.html">helper.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="helper_8hpp_source.html#l00113">ERROR</a>, <a class="el" href="helper_8cpp_source.html#l00088">prepare()</a>, and <a class="el" href="helper_8cpp_source.html#l00071">reply()</a>.</p>
+<p class="reference">References <a class="el" href="helper_8hpp_source.html#l00154">ERROR</a>, <a class="el" href="helper_8cpp_source.html#l00128">prepare()</a>, and <a class="el" href="helper_8cpp_source.html#l00102">reply()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="clients_8hpp_source.html#l00238">api::v2::Clients::activate()</a>, <a class="el" href="staff_8hpp_source.html#l00146">api::v2::Staff::Add()</a>, <a class="el" href="appointments_8hpp_source.html#l00083">api::v2::Appointments::Create()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00086">api::v2::Clinic::Create()</a>, <a class="el" href="services_8hpp_source.html#l00079">api::v2::Services::Create()</a>, <a class="el" href="appointments_8hpp_source.html#l00270">api::v2::Appointments::Delete()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00270">api::v2::Clinic::Delete()</a>, <a class="el" href="services_8hpp_source.html#l00263">api::v2::Services::Delete()</a>, <a class="el" href="clients_8hpp_source.html#l00352">api::v2::Clients::delete_()</a>, <a class="el" href="common_8hpp_source.html#l00129">api::v2::executeControllerMethod()</a>, <a class="el" href="clients_8hpp_source.html#l00475">api::v2::Clients::getservices()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00392">api::v2::Clinic::GetVisits()</a>, <a class="el" href="staff_8hpp_source.html#l00085">api::v2::Staff::Invite()</a>, <a class="el" href="clients_8hpp_source.html#l00101">api::v2::Clients::login()</a>, <a class="el" href="common_8hpp_source.html#l00087">api::v2::parseIdParam()</a>, <a class="el" href="appointments_8hpp_source.html#l00143">api::v2::Appointments::Read()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00146">api::v2::Clinic::Read()</a>, <a class="el" href="services_8hpp_source.html#l00139">api::v2::Services::Read()</a>, <a class="el" href="clients_8hpp_source.html#l00594">api::v2::Clients::readAsyncImpl()</a>, <a class="el" href="staff_8hpp_source.html#l00207">api::v2::Staff::Remove()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00333">api::v2::Clinic::Search()</a>, <a class="el" href="services_8hpp_source.html#l00327">api::v2::Services::Search()</a>, <a class="el" href="clients_8hpp_source.html#l00416">api::v2::Clients::search()</a>, <a class="el" href="clients_8hpp_source.html#l00173">api::v2::Clients::suspend()</a>, <a class="el" href="appointments_8hpp_source.html#l00205">api::v2::Appointments::Update()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00206">api::v2::Clinic::Update()</a>, <a class="el" href="services_8hpp_source.html#l00199">api::v2::Services::Update()</a>, and <a class="el" href="#a3a328cc315cb0e5359cbdea710254da4">~Helper()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="clients_8hpp_source.html#l00362">api::v2::Clients::activate()</a>, <a class="el" href="staff_8hpp_source.html#l00210">api::v2::Staff::Add()</a>, <a class="el" href="appointments_8hpp_source.html#l00112">api::v2::Appointments::Create()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00119">api::v2::Clinic::Create()</a>, <a class="el" href="services_8hpp_source.html#l00104">api::v2::Services::Create()</a>, <a class="el" href="appointments_8hpp_source.html#l00435">api::v2::Appointments::Delete()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00418">api::v2::Clinic::Delete()</a>, <a class="el" href="services_8hpp_source.html#l00407">api::v2::Services::Delete()</a>, <a class="el" href="clients_8hpp_source.html#l00551">api::v2::Clients::delete_()</a>, <a class="el" href="common_8hpp_source.html#l00188">api::v2::executeControllerMethod()</a>, <a class="el" href="clients_8hpp_source.html#l00747">api::v2::Clients::getservices()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00612">api::v2::Clinic::GetVisits()</a>, <a class="el" href="staff_8hpp_source.html#l00108">api::v2::Staff::Invite()</a>, <a class="el" href="clients_8hpp_source.html#l00139">api::v2::Clients::login()</a>, <a class="el" href="common_8hpp_source.html#l00121">api::v2::parseIdParam()</a>, <a class="el" href="appointments_8hpp_source.html#l00228">api::v2::Appointments::Read()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00218">api::v2::Clinic::Read()</a>, <a class="el" href="services_8hpp_source.html#l00205">api::v2::Services::Read()</a>, <a class="el" href="clients_8hpp_source.html#l00964">api::v2::Clients::readAsyncImpl()</a>, <a class="el" href="staff_8hpp_source.html#l00310">api::v2::Staff::Remove()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00516">api::v2::Clinic::Search()</a>, <a class="el" href="services_8hpp_source.html#l00508">api::v2::Services::Search()</a>, <a class="el" href="clients_8hpp_source.html#l00651">api::v2::Clients::search()</a>, <a class="el" href="clients_8hpp_source.html#l00261">api::v2::Clients::suspend()</a>, <a class="el" href="appointments_8hpp_source.html#l00331">api::v2::Appointments::Update()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00315">api::v2::Clinic::Update()</a>, <a class="el" href="services_8hpp_source.html#l00302">api::v2::Services::Update()</a>, and <a class="el" href="#a3a328cc315cb0e5359cbdea710254da4">~Helper()</a>.</p>
 
 </div>
 </div>
@@ -362,11 +362,11 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#a2f7ce46c3bd345d373af2c3793387fea" title="Send a 500 response with a &quot;Failure&quot;-tagged JSON body.">Helper::failureResponse</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="helper_8cpp_source.html#l00044">44</a> of file <a class="el" href="helper_8cpp_source.html">helper.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="helper_8cpp_source.html#l00056">56</a> of file <a class="el" href="helper_8cpp_source.html">helper.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="helper_8hpp_source.html#l00109">FAILURE</a>, <a class="el" href="helper_8cpp_source.html#l00088">prepare()</a>, and <a class="el" href="helper_8cpp_source.html#l00071">reply()</a>.</p>
+<p class="reference">References <a class="el" href="helper_8hpp_source.html#l00149">FAILURE</a>, <a class="el" href="helper_8cpp_source.html#l00128">prepare()</a>, and <a class="el" href="helper_8cpp_source.html#l00102">reply()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="clients_8hpp_source.html#l00238">api::v2::Clients::activate()</a>, <a class="el" href="staff_8hpp_source.html#l00146">api::v2::Staff::Add()</a>, <a class="el" href="appointments_8hpp_source.html#l00083">api::v2::Appointments::Create()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00086">api::v2::Clinic::Create()</a>, <a class="el" href="services_8hpp_source.html#l00079">api::v2::Services::Create()</a>, <a class="el" href="appointments_8hpp_source.html#l00270">api::v2::Appointments::Delete()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00270">api::v2::Clinic::Delete()</a>, <a class="el" href="services_8hpp_source.html#l00263">api::v2::Services::Delete()</a>, <a class="el" href="clients_8hpp_source.html#l00352">api::v2::Clients::delete_()</a>, <a class="el" href="common_8hpp_source.html#l00129">api::v2::executeControllerMethod()</a>, <a class="el" href="clients_8hpp_source.html#l00475">api::v2::Clients::getservices()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00392">api::v2::Clinic::GetVisits()</a>, <a class="el" href="staff_8hpp_source.html#l00085">api::v2::Staff::Invite()</a>, <a class="el" href="clients_8hpp_source.html#l00101">api::v2::Clients::login()</a>, <a class="el" href="appointments_8hpp_source.html#l00143">api::v2::Appointments::Read()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00146">api::v2::Clinic::Read()</a>, <a class="el" href="services_8hpp_source.html#l00139">api::v2::Services::Read()</a>, <a class="el" href="clients_8hpp_source.html#l00594">api::v2::Clients::readAsyncImpl()</a>, <a class="el" href="staff_8hpp_source.html#l00207">api::v2::Staff::Remove()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00333">api::v2::Clinic::Search()</a>, <a class="el" href="services_8hpp_source.html#l00327">api::v2::Services::Search()</a>, <a class="el" href="clients_8hpp_source.html#l00416">api::v2::Clients::search()</a>, <a class="el" href="clients_8hpp_source.html#l00173">api::v2::Clients::suspend()</a>, <a class="el" href="appointments_8hpp_source.html#l00205">api::v2::Appointments::Update()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00206">api::v2::Clinic::Update()</a>, <a class="el" href="services_8hpp_source.html#l00199">api::v2::Services::Update()</a>, and <a class="el" href="#a3a328cc315cb0e5359cbdea710254da4">~Helper()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="clients_8hpp_source.html#l00362">api::v2::Clients::activate()</a>, <a class="el" href="staff_8hpp_source.html#l00210">api::v2::Staff::Add()</a>, <a class="el" href="appointments_8hpp_source.html#l00112">api::v2::Appointments::Create()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00119">api::v2::Clinic::Create()</a>, <a class="el" href="services_8hpp_source.html#l00104">api::v2::Services::Create()</a>, <a class="el" href="appointments_8hpp_source.html#l00435">api::v2::Appointments::Delete()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00418">api::v2::Clinic::Delete()</a>, <a class="el" href="services_8hpp_source.html#l00407">api::v2::Services::Delete()</a>, <a class="el" href="clients_8hpp_source.html#l00551">api::v2::Clients::delete_()</a>, <a class="el" href="common_8hpp_source.html#l00188">api::v2::executeControllerMethod()</a>, <a class="el" href="clients_8hpp_source.html#l00747">api::v2::Clients::getservices()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00612">api::v2::Clinic::GetVisits()</a>, <a class="el" href="staff_8hpp_source.html#l00108">api::v2::Staff::Invite()</a>, <a class="el" href="clients_8hpp_source.html#l00139">api::v2::Clients::login()</a>, <a class="el" href="appointments_8hpp_source.html#l00228">api::v2::Appointments::Read()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00218">api::v2::Clinic::Read()</a>, <a class="el" href="services_8hpp_source.html#l00205">api::v2::Services::Read()</a>, <a class="el" href="clients_8hpp_source.html#l00964">api::v2::Clients::readAsyncImpl()</a>, <a class="el" href="staff_8hpp_source.html#l00310">api::v2::Staff::Remove()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00516">api::v2::Clinic::Search()</a>, <a class="el" href="services_8hpp_source.html#l00508">api::v2::Services::Search()</a>, <a class="el" href="clients_8hpp_source.html#l00651">api::v2::Clients::search()</a>, <a class="el" href="clients_8hpp_source.html#l00261">api::v2::Clients::suspend()</a>, <a class="el" href="appointments_8hpp_source.html#l00331">api::v2::Appointments::Update()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00315">api::v2::Clinic::Update()</a>, <a class="el" href="services_8hpp_source.html#l00302">api::v2::Services::Update()</a>, and <a class="el" href="#a3a328cc315cb0e5359cbdea710254da4">~Helper()</a>.</p>
 
 </div>
 </div>
@@ -463,11 +463,11 @@ Static Private Attributes</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Pretty-printed JSON string.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#a0e93abbeb3346f2d972a1894c31cb245" title="Wrap a message in a JSON object with a &quot;Status&quot; field.">Helper::prepare</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="helper_8cpp_source.html#l00088">88</a> of file <a class="el" href="helper_8cpp_source.html">helper.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="helper_8cpp_source.html#l00128">128</a> of file <a class="el" href="helper_8cpp_source.html">helper.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="jsonhelper_8cpp_source.html#l00027">api::v2::JsonHelper::jsonify()</a>.</p>
+<p class="reference">References <a class="el" href="jsonhelper_8cpp_source.html#l00032">api::v2::JsonHelper::jsonify()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="helper_8cpp_source.html#l00053">errorResponse()</a>, <a class="el" href="helper_8cpp_source.html#l00044">failureResponse()</a>, and <a class="el" href="#a3a328cc315cb0e5359cbdea710254da4">~Helper()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="helper_8cpp_source.html#l00071">errorResponse()</a>, <a class="el" href="helper_8cpp_source.html#l00056">failureResponse()</a>, and <a class="el" href="#a3a328cc315cb0e5359cbdea710254da4">~Helper()</a>.</p>
 
 </div>
 </div>
@@ -515,9 +515,9 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#ac64aa8b347960cbc8cf263633241a633" title="Build and dispatch a JSON response; adds Retry-After on 503.">Helper::reply</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="helper_8cpp_source.html#l00071">71</a> of file <a class="el" href="helper_8cpp_source.html">helper.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="helper_8cpp_source.html#l00102">102</a> of file <a class="el" href="helper_8cpp_source.html">helper.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="helper_8cpp_source.html#l00053">errorResponse()</a>, <a class="el" href="helper_8cpp_source.html#l00044">failureResponse()</a>, <a class="el" href="helper_8cpp_source.html#l00062">successResponse()</a>, and <a class="el" href="#a3a328cc315cb0e5359cbdea710254da4">~Helper()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="helper_8cpp_source.html#l00071">errorResponse()</a>, <a class="el" href="helper_8cpp_source.html#l00056">failureResponse()</a>, <a class="el" href="helper_8cpp_source.html#l00088">successResponse()</a>, and <a class="el" href="#a3a328cc315cb0e5359cbdea710254da4">~Helper()</a>.</p>
 
 </div>
 </div>
@@ -559,11 +559,11 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#a2226fe42358a5845f16e715fd21b24c9" title="Send a 200 response whose body is the message verbatim (already JSON).">Helper::successResponse</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="helper_8cpp_source.html#l00062">62</a> of file <a class="el" href="helper_8cpp_source.html">helper.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="helper_8cpp_source.html#l00088">88</a> of file <a class="el" href="helper_8cpp_source.html">helper.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="helper_8cpp_source.html#l00071">reply()</a>.</p>
+<p class="reference">References <a class="el" href="helper_8cpp_source.html#l00102">reply()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="clients_8hpp_source.html#l00238">api::v2::Clients::activate()</a>, <a class="el" href="staff_8hpp_source.html#l00146">api::v2::Staff::Add()</a>, <a class="el" href="appointments_8hpp_source.html#l00083">api::v2::Appointments::Create()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00086">api::v2::Clinic::Create()</a>, <a class="el" href="services_8hpp_source.html#l00079">api::v2::Services::Create()</a>, <a class="el" href="appointments_8hpp_source.html#l00270">api::v2::Appointments::Delete()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00270">api::v2::Clinic::Delete()</a>, <a class="el" href="services_8hpp_source.html#l00263">api::v2::Services::Delete()</a>, <a class="el" href="clients_8hpp_source.html#l00352">api::v2::Clients::delete_()</a>, <a class="el" href="common_8hpp_source.html#l00129">api::v2::executeControllerMethod()</a>, <a class="el" href="clients_8hpp_source.html#l00475">api::v2::Clients::getservices()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00392">api::v2::Clinic::GetVisits()</a>, <a class="el" href="staff_8hpp_source.html#l00085">api::v2::Staff::Invite()</a>, <a class="el" href="clients_8hpp_source.html#l00101">api::v2::Clients::login()</a>, <a class="el" href="appointments_8hpp_source.html#l00143">api::v2::Appointments::Read()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00146">api::v2::Clinic::Read()</a>, <a class="el" href="services_8hpp_source.html#l00139">api::v2::Services::Read()</a>, <a class="el" href="clients_8hpp_source.html#l00594">api::v2::Clients::readAsyncImpl()</a>, <a class="el" href="staff_8hpp_source.html#l00207">api::v2::Staff::Remove()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00333">api::v2::Clinic::Search()</a>, <a class="el" href="services_8hpp_source.html#l00327">api::v2::Services::Search()</a>, <a class="el" href="clients_8hpp_source.html#l00416">api::v2::Clients::search()</a>, <a class="el" href="clients_8hpp_source.html#l00173">api::v2::Clients::suspend()</a>, <a class="el" href="appointments_8hpp_source.html#l00205">api::v2::Appointments::Update()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00206">api::v2::Clinic::Update()</a>, <a class="el" href="services_8hpp_source.html#l00199">api::v2::Services::Update()</a>, and <a class="el" href="#a3a328cc315cb0e5359cbdea710254da4">~Helper()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="clients_8hpp_source.html#l00362">api::v2::Clients::activate()</a>, <a class="el" href="staff_8hpp_source.html#l00210">api::v2::Staff::Add()</a>, <a class="el" href="appointments_8hpp_source.html#l00112">api::v2::Appointments::Create()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00119">api::v2::Clinic::Create()</a>, <a class="el" href="services_8hpp_source.html#l00104">api::v2::Services::Create()</a>, <a class="el" href="appointments_8hpp_source.html#l00435">api::v2::Appointments::Delete()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00418">api::v2::Clinic::Delete()</a>, <a class="el" href="services_8hpp_source.html#l00407">api::v2::Services::Delete()</a>, <a class="el" href="clients_8hpp_source.html#l00551">api::v2::Clients::delete_()</a>, <a class="el" href="common_8hpp_source.html#l00188">api::v2::executeControllerMethod()</a>, <a class="el" href="clients_8hpp_source.html#l00747">api::v2::Clients::getservices()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00612">api::v2::Clinic::GetVisits()</a>, <a class="el" href="staff_8hpp_source.html#l00108">api::v2::Staff::Invite()</a>, <a class="el" href="clients_8hpp_source.html#l00139">api::v2::Clients::login()</a>, <a class="el" href="appointments_8hpp_source.html#l00228">api::v2::Appointments::Read()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00218">api::v2::Clinic::Read()</a>, <a class="el" href="services_8hpp_source.html#l00205">api::v2::Services::Read()</a>, <a class="el" href="clients_8hpp_source.html#l00964">api::v2::Clients::readAsyncImpl()</a>, <a class="el" href="staff_8hpp_source.html#l00310">api::v2::Staff::Remove()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00516">api::v2::Clinic::Search()</a>, <a class="el" href="services_8hpp_source.html#l00508">api::v2::Services::Search()</a>, <a class="el" href="clients_8hpp_source.html#l00651">api::v2::Clients::search()</a>, <a class="el" href="clients_8hpp_source.html#l00261">api::v2::Clients::suspend()</a>, <a class="el" href="appointments_8hpp_source.html#l00331">api::v2::Appointments::Update()</a>, <a class="el" href="api_2v2_2routes_2clinics_8hpp_source.html#l00315">api::v2::Clinic::Update()</a>, <a class="el" href="services_8hpp_source.html#l00302">api::v2::Services::Update()</a>, and <a class="el" href="#a3a328cc315cb0e5359cbdea710254da4">~Helper()</a>.</p>
 
 </div>
 </div>
@@ -578,7 +578,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const char* api::v2::Helper::ERROR = &quot;Error&quot;</td>
+          <td class="memname">const char* api::v2::Helper::ERROR</td>
         </tr>
       </table>
   </td>
@@ -587,11 +587,13 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Status tag used by errorResponse. </p>
+<b>Initial value:</b><div class="fragment"><div class="line">                              =</div>
+<div class="line"><span class="stringliteral">&quot;Error&quot;</span></div>
+</div><!-- fragment --><p>Status tag used by errorResponse. </p>
 
-<p class="definition">Definition at line <a class="el" href="helper_8hpp_source.html#l00113">113</a> of file <a class="el" href="helper_8hpp_source.html">helper.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="helper_8hpp_source.html#l00154">154</a> of file <a class="el" href="helper_8hpp_source.html">helper.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="helper_8cpp_source.html#l00053">errorResponse()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="helper_8cpp_source.html#l00071">errorResponse()</a>.</p>
 
 </div>
 </div>
@@ -605,7 +607,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const char* api::v2::Helper::FAILURE = &quot;Failure&quot;</td>
+          <td class="memname">const char* api::v2::Helper::FAILURE</td>
         </tr>
       </table>
   </td>
@@ -614,11 +616,13 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Status tag used by failureResponse. </p>
+<b>Initial value:</b><div class="fragment"><div class="line">                                =</div>
+<div class="line"><span class="stringliteral">&quot;Failure&quot;</span></div>
+</div><!-- fragment --><p>Status tag used by failureResponse. </p>
 
-<p class="definition">Definition at line <a class="el" href="helper_8hpp_source.html#l00109">109</a> of file <a class="el" href="helper_8hpp_source.html">helper.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="helper_8hpp_source.html#l00149">149</a> of file <a class="el" href="helper_8hpp_source.html">helper.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="helper_8cpp_source.html#l00044">failureResponse()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="helper_8cpp_source.html#l00056">failureResponse()</a>.</p>
 
 </div>
 </div>

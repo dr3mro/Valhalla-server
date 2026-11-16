@@ -206,10 +206,10 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a> for service/organisation tables (clinics, pharmacies, laboratories, ...). </p>
-<p>Adds builders that mutate the JSONB "staff" array of a service row to add or remove a nominee, plus a static query used by <a class="el" href="gatekeeper_8cpp.html#a2391c0b165c65deb4ad3ad19ca6dd2aa">PermissionManager</a> to read a service's owner/admin/staff. CRUD statements remain inherited from <a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a>. </p><dl class="section note"><dt>Note</dt><dd>The staff builders bind the nominee and entity ids through <a class="el" href="structBase_1_1Binder.html" title="Appends values to a pqxx::params and hands back the matching SQL placeholders.">Binder</a>; the static permission query interpolates the service name and id into its text and is used as a permission cache key. </dd></dl>
+<p>Adds builders that mutate the JSONB "staff" array of a service row to add or remove a nominee, plus a static query used by <a class="el" href="gatekeeper_8cpp.html#ae17e951f1dc80a8e4920571ebe9f3c21">PermissionManager</a> to read a service's owner/admin/staff. CRUD statements remain inherited from <a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a>. </p><dl class="section note"><dt>Note</dt><dd>The staff builders bind the nominee and entity ids through <a class="el" href="structBase_1_1Binder.html" title="Appends values to a pqxx::params and hands back the matching SQL placeholders.">Binder</a>; the static permission query interpolates the service name and id into its text and is used as a permission cache key. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a>, <a class="el" href="structapi_1_1v2_1_1Types_1_1StaffData.html" title="Parsed staff-invitation data and rendering of the invitation link payload.">api::v2::Types::StaffData</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="service_8hpp_source.html#l00057">57</a> of file <a class="el" href="service_8hpp_source.html">service.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="service_8hpp_source.html#l00072">72</a> of file <a class="el" href="service_8hpp_source.html">service.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af1e2a6e3a3d0dc6daad5f7ce21992166" name="af1e2a6e3a3d0dc6daad5f7ce21992166"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af1e2a6e3a3d0dc6daad5f7ce21992166">&#9670;&#160;</a></span>Service() <span class="overload">[1/3]</span></h2>
@@ -238,7 +238,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="#af1e2a6e3a3d0dc6daad5f7ce21992166">Service()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entities_2services_2clinics_2clinics_8hpp_source.html#l00064">Clinics::Clinics()</a>, <a class="el" href="laboratories_8hpp_source.html#l00068">Laboratories::Laboratories()</a>, <a class="el" href="#acd58b3d98fbebda840c84e7f4b6a95c4">operator=()</a>, <a class="el" href="#a272111f072b71c01c2b2f3bc680f782d">operator=()</a>, <a class="el" href="pharmacies_8hpp_source.html#l00068">Pharmacies::Pharmacies()</a>, <a class="el" href="radiologycenters_8hpp_source.html#l00071">RadiologyCenters::RadiologyCenters()</a>, <a class="el" href="#af1e2a6e3a3d0dc6daad5f7ce21992166">Service()</a>, and <a class="el" href="#a0b54b15cd18155406cdd605c2fe6d46f">Service()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entities_2services_2clinics_2clinics_8hpp_source.html#l00085">Clinics::Clinics()</a>, <a class="el" href="laboratories_8hpp_source.html#l00096">Laboratories::Laboratories()</a>, <a class="el" href="#acd58b3d98fbebda840c84e7f4b6a95c4">operator=()</a>, <a class="el" href="#a272111f072b71c01c2b2f3bc680f782d">operator=()</a>, <a class="el" href="pharmacies_8hpp_source.html#l00095">Pharmacies::Pharmacies()</a>, <a class="el" href="radiologycenters_8hpp_source.html#l00101">RadiologyCenters::RadiologyCenters()</a>, <a class="el" href="#af1e2a6e3a3d0dc6daad5f7ce21992166">Service()</a>, and <a class="el" href="#a0b54b15cd18155406cdd605c2fe6d46f">Service()</a>.</p>
 
 </div>
 </div>
@@ -301,7 +301,7 @@ template&lt;typename T&gt; </div>
 <p>Stores the payload and the service table name in the base <a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a>. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">T</td><td>Payload type held by <a class="el" href="entity_8hpp.html#aa7ee46136fb273d4151dc647393adcdd" title="Short names for the CRUD value types and the variant they live in (see api::v2::Types).">EntityType</a> (<a class="el" href="staffcontroller_8cpp.html#acd40880d4e5e43f97e8ead3d0efe3666" title="Convenience alias for the invite/staff fields parsed from a request body.">StaffData</a> for the staff builders). </td></tr>
+    <tr><td class="paramname">T</td><td>Payload type held by <a class="el" href="entity_8hpp.html#aa7ee46136fb273d4151dc647393adcdd" title="Short names for the CRUD value types and the variant they live in (see api::v2::Types).">EntityType</a> (<a class="el" href="staffcontroller_8cpp.html#a05f271479525f9aae1900f939d81a7f9" title="Convenience alias for the invite/staff fields parsed from a request body.">StaffData</a> for the staff builders). </td></tr>
   </table>
   </dd>
 </dl>
@@ -313,9 +313,9 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="service_8hpp_source.html#l00075">75</a> of file <a class="el" href="service_8hpp_source.html">service.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="service_8hpp_source.html#l00092">92</a> of file <a class="el" href="service_8hpp_source.html">service.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00393">Entity::data</a>, <a class="el" href="classEntity.html#a936dfd4b5db17a339819ae5800c33a93">Entity::Entity()</a>, and <a class="el" href="entity_8hpp_source.html#l00381">Entity::tablename</a>.</p>
+<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00596">Entity::data</a>, <a class="el" href="classEntity.html#a936dfd4b5db17a339819ae5800c33a93">Entity::Entity()</a>, and <a class="el" href="entity_8hpp_source.html#l00573">Entity::tablename</a>.</p>
 
 </div>
 </div>
@@ -375,7 +375,7 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p>Builds the permission lookup for a service row by id. </p>
-<p>Returns the owner/admin/staff columns used by <a class="el" href="gatekeeper_8cpp.html#a2391c0b165c65deb4ad3ad19ca6dd2aa">PermissionManager</a> to authorise service-level actions. The table name and id are formatted into the query text rather than bound; the resulting text also serves as the permission cache key. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Returns the owner/admin/staff columns used by <a class="el" href="gatekeeper_8cpp.html#ae17e951f1dc80a8e4920571ebe9f3c21">PermissionManager</a> to authorise service-level actions. The table name and id are formatted into the query text rather than bound; the resulting text also serves as the permission cache key. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">service_name</td><td>Name of the service/organisation table. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">service_id</td><td>Primary key of the service row. </td></tr>
@@ -384,7 +384,7 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A SELECT statement (always produced by this implementation). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="service_8hpp_source.html#l00159">159</a> of file <a class="el" href="service_8hpp_source.html">service.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="service_8hpp_source.html#l00213">213</a> of file <a class="el" href="service_8hpp_source.html">service.hpp</a>.</p>
 
 </div>
 </div>
@@ -418,11 +418,11 @@ template&lt;typename T&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>UPDATE ... RETURNING id, or std::nullopt if the payload is not <a class="el" href="staffcontroller_8cpp.html#acd40880d4e5e43f97e8ead3d0efe3666" title="Convenience alias for the invite/staff fields parsed from a request body.">StaffData</a> or an exception occurs. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>UPDATE ... RETURNING id, or std::nullopt if the payload is not <a class="el" href="staffcontroller_8cpp.html#a05f271479525f9aae1900f939d81a7f9" title="Convenience alias for the invite/staff fields parsed from a request body.">StaffData</a> or an exception occurs. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="service_8hpp_source.html#l00092">92</a> of file <a class="el" href="service_8hpp_source.html">service.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="service_8hpp_source.html#l00114">114</a> of file <a class="el" href="service_8hpp_source.html">service.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="base_8hpp_source.html#l00136">Base::Binder::bind()</a>, <a class="el" href="message_8cpp_source.html#l00042">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00041">Message::ErrorMessage()</a>, <a class="el" href="entity_8hpp_source.html#l00163">Entity::getData()</a>, and <a class="el" href="entity_8hpp_source.html#l00381">Entity::tablename</a>.</p>
+<p class="reference">References <a class="el" href="base_8hpp_source.html#l00178">Base::Binder::bind()</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, <a class="el" href="entity_8hpp_source.html#l00220">Entity::getData()</a>, and <a class="el" href="entity_8hpp_source.html#l00573">Entity::tablename</a>.</p>
 
 </div>
 </div>
@@ -456,11 +456,11 @@ template&lt;typename T&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>UPDATE ... RETURNING id, or std::nullopt if the payload is not <a class="el" href="staffcontroller_8cpp.html#acd40880d4e5e43f97e8ead3d0efe3666" title="Convenience alias for the invite/staff fields parsed from a request body.">StaffData</a> or an exception occurs. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>UPDATE ... RETURNING id, or std::nullopt if the payload is not <a class="el" href="staffcontroller_8cpp.html#a05f271479525f9aae1900f939d81a7f9" title="Convenience alias for the invite/staff fields parsed from a request body.">StaffData</a> or an exception occurs. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="service_8hpp_source.html#l00125">125</a> of file <a class="el" href="service_8hpp_source.html">service.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="service_8hpp_source.html#l00165">165</a> of file <a class="el" href="service_8hpp_source.html">service.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="base_8hpp_source.html#l00136">Base::Binder::bind()</a>, <a class="el" href="message_8cpp_source.html#l00042">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00041">Message::ErrorMessage()</a>, <a class="el" href="entity_8hpp_source.html#l00163">Entity::getData()</a>, and <a class="el" href="entity_8hpp_source.html#l00381">Entity::tablename</a>.</p>
+<p class="reference">References <a class="el" href="base_8hpp_source.html#l00178">Base::Binder::bind()</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, <a class="el" href="entity_8hpp_source.html#l00220">Entity::getData()</a>, and <a class="el" href="entity_8hpp_source.html#l00573">Entity::tablename</a>.</p>
 
 </div>
 </div>

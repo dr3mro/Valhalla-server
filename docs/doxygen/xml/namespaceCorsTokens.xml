@@ -9,7 +9,8 @@
         <argsstring></argsstring>
         <name>tokenPunctuation</name>
         <qualifiedname>CorsTokens::tokenPunctuation</qualifiedname>
-        <initializer>= &quot;!#$%&amp;&apos;*+-.^_`|~&quot;</initializer>
+        <initializer>                                        =
+&quot;!#$%&amp;&apos;*+-.^_`|~&quot;</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -17,8 +18,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/server/cors_tokens.hpp" line="44" column="32" bodyfile="src/server/cors_tokens.hpp" bodystart="44" bodyend="-1"/>
-        <referencedby refid="namespaceCorsTokens_1a0435f635d81611e18d7999358f7f71f3" compoundref="cors__tokens_8hpp" startline="54" endline="57">isTokenChar</referencedby>
+        <location file="src/server/cors_tokens.hpp" line="57" column="30" bodyfile="src/server/cors_tokens.hpp" bodystart="57" bodyend="-1"/>
+        <referencedby refid="namespaceCorsTokens_1a0435f635d81611e18d7999358f7f71f3" compoundref="cors__tokens_8hpp" startline="71" endline="75">isTokenChar</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -33,29 +34,24 @@
           <declname>c</declname>
         </param>
         <briefdescription>
-<para><ref refid="classReports" kindref="compound">Reports</ref> whether a character is valid inside an HTTP token. </para>
         </briefdescription>
         <detaileddescription>
-<para>Alphabetic, digit and the RFC token punctuation characters are accepted; whitespace, comma, quote, colon and control characters are not. This rejects values that could inject extra headers. <parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername direction="in">c</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Character to classify. </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>true when c may appear in a token. </para>
-</simplesect>
-</para>
+<para><verbatim> @brief Reports whether a character is valid inside an HTTP token.
+
+ @details Alphabetic, digit and the RFC token punctuation characters are
+ accepted; whitespace, comma, quote, colon and control characters are not.
+ This rejects values that could inject extra headers.
+ @param[in] c Character to classify.
+ @return true when c may appear in a token.
+</verbatim> Decide whether one character is legal inside an HTTP header token. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/server/cors_tokens.hpp" line="54" column="20" bodyfile="src/server/cors_tokens.hpp" bodystart="54" bodyend="57"/>
-        <references refid="namespaceCorsTokens_1a0435f635d81611e18d7999358f7f71f3" compoundref="cors__tokens_8hpp" startline="54" endline="57">isTokenChar</references>
-        <references refid="namespaceCorsTokens_1a6d06cb55654db9c60bbbbbd0ee486ae3" compoundref="cors__tokens_8hpp" startline="44">tokenPunctuation</references>
-        <referencedby refid="namespaceCorsTokens_1a0435f635d81611e18d7999358f7f71f3" compoundref="cors__tokens_8hpp" startline="54" endline="57">isTokenChar</referencedby>
-        <referencedby refid="namespaceCorsTokens_1ab923849059179cf6c8fb446aa5cb5e5d" compoundref="cors__tokens_8hpp" startline="127" endline="148">sanitizeRequestedHeaders</referencedby>
+        <location file="src/server/cors_tokens.hpp" line="71" column="18" bodyfile="src/server/cors_tokens.hpp" bodystart="71" bodyend="75"/>
+        <references refid="namespaceCorsTokens_1a0435f635d81611e18d7999358f7f71f3" compoundref="cors__tokens_8hpp" startline="71" endline="75">isTokenChar</references>
+        <references refid="namespaceCorsTokens_1a6d06cb55654db9c60bbbbbd0ee486ae3" compoundref="cors__tokens_8hpp" startline="57">tokenPunctuation</references>
+        <referencedby refid="namespaceCorsTokens_1a0435f635d81611e18d7999358f7f71f3" compoundref="cors__tokens_8hpp" startline="71" endline="75">isTokenChar</referencedby>
+        <referencedby refid="namespaceCorsTokens_1ab923849059179cf6c8fb446aa5cb5e5d" compoundref="cors__tokens_8hpp" startline="183" endline="210">sanitizeRequestedHeaders</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceCorsTokens_1a7a178dc1be0dd0b0753320d19435ff96" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string_view</type>
@@ -86,10 +82,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/server/cors_tokens.hpp" line="65" column="29" bodyfile="src/server/cors_tokens.hpp" bodystart="65" bodyend="74"/>
-        <references refid="namespaceCorsTokens_1a7a178dc1be0dd0b0753320d19435ff96" compoundref="cors__tokens_8hpp" startline="65" endline="74">trim</references>
-        <referencedby refid="namespaceCorsTokens_1acb6a20ed23869f424e6ee2061f600001" compoundref="cors__tokens_8hpp" startline="85" endline="100">tokens</referencedby>
-        <referencedby refid="namespaceCorsTokens_1a7a178dc1be0dd0b0753320d19435ff96" compoundref="cors__tokens_8hpp" startline="65" endline="74">trim</referencedby>
+        <location file="src/server/cors_tokens.hpp" line="87" column="27" bodyfile="src/server/cors_tokens.hpp" bodystart="87" bodyend="101"/>
+        <references refid="namespaceCorsTokens_1a7a178dc1be0dd0b0753320d19435ff96" compoundref="cors__tokens_8hpp" startline="87" endline="101">trim</references>
+        <referencedby refid="namespaceCorsTokens_1acb6a20ed23869f424e6ee2061f600001" compoundref="cors__tokens_8hpp" startline="116" endline="143">tokens</referencedby>
+        <referencedby refid="namespaceCorsTokens_1a7a178dc1be0dd0b0753320d19435ff96" compoundref="cors__tokens_8hpp" startline="87" endline="101">trim</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceCorsTokens_1acb6a20ed23869f424e6ee2061f600001" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>auto</type>
@@ -120,12 +116,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/server/cors_tokens.hpp" line="85" column="17" bodyfile="src/server/cors_tokens.hpp" bodystart="85" bodyend="100"/>
-        <references refid="namespaceCorsTokens_1acb6a20ed23869f424e6ee2061f600001" compoundref="cors__tokens_8hpp" startline="85" endline="100">tokens</references>
-        <references refid="namespaceCorsTokens_1a7a178dc1be0dd0b0753320d19435ff96" compoundref="cors__tokens_8hpp" startline="65" endline="74">trim</references>
-        <referencedby refid="namespaceCorsTokens_1a0868524c04d18e34760e18676a1ff72f" compoundref="cors__tokens_8hpp" startline="161" endline="193">mergeVary</referencedby>
-        <referencedby refid="namespaceCorsTokens_1ab923849059179cf6c8fb446aa5cb5e5d" compoundref="cors__tokens_8hpp" startline="127" endline="148">sanitizeRequestedHeaders</referencedby>
-        <referencedby refid="namespaceCorsTokens_1acb6a20ed23869f424e6ee2061f600001" compoundref="cors__tokens_8hpp" startline="85" endline="100">tokens</referencedby>
+        <location file="src/server/cors_tokens.hpp" line="116" column="15" bodyfile="src/server/cors_tokens.hpp" bodystart="116" bodyend="143"/>
+        <references refid="namespaceCorsTokens_1acb6a20ed23869f424e6ee2061f600001" compoundref="cors__tokens_8hpp" startline="116" endline="143">tokens</references>
+        <references refid="namespaceCorsTokens_1a7a178dc1be0dd0b0753320d19435ff96" compoundref="cors__tokens_8hpp" startline="87" endline="101">trim</references>
+        <referencedby refid="namespaceCorsTokens_1a0868524c04d18e34760e18676a1ff72f" compoundref="cors__tokens_8hpp" startline="226" endline="267">mergeVary</referencedby>
+        <referencedby refid="namespaceCorsTokens_1ab923849059179cf6c8fb446aa5cb5e5d" compoundref="cors__tokens_8hpp" startline="183" endline="210">sanitizeRequestedHeaders</referencedby>
+        <referencedby refid="namespaceCorsTokens_1acb6a20ed23869f424e6ee2061f600001" compoundref="cors__tokens_8hpp" startline="116" endline="143">tokens</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceCorsTokens_1af7fe702e663ce37f7012a3bf8af3a8c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -168,10 +164,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/server/cors_tokens.hpp" line="111" column="17" bodyfile="src/server/cors_tokens.hpp" bodystart="111" bodyend="115"/>
-        <references refid="namespaceCorsTokens_1af7fe702e663ce37f7012a3bf8af3a8c8" compoundref="cors__tokens_8hpp" startline="111" endline="115">iequals</references>
-        <referencedby refid="namespaceCorsTokens_1af7fe702e663ce37f7012a3bf8af3a8c8" compoundref="cors__tokens_8hpp" startline="111" endline="115">iequals</referencedby>
-        <referencedby refid="namespaceCorsTokens_1a0868524c04d18e34760e18676a1ff72f" compoundref="cors__tokens_8hpp" startline="161" endline="193">mergeVary</referencedby>
+        <location file="src/server/cors_tokens.hpp" line="157" column="15" bodyfile="src/server/cors_tokens.hpp" bodystart="157" bodyend="165"/>
+        <references refid="namespaceCorsTokens_1af7fe702e663ce37f7012a3bf8af3a8c8" compoundref="cors__tokens_8hpp" startline="157" endline="165">iequals</references>
+        <referencedby refid="namespaceCorsTokens_1af7fe702e663ce37f7012a3bf8af3a8c8" compoundref="cors__tokens_8hpp" startline="157" endline="165">iequals</referencedby>
+        <referencedby refid="namespaceCorsTokens_1a0868524c04d18e34760e18676a1ff72f" compoundref="cors__tokens_8hpp" startline="226" endline="267">mergeVary</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceCorsTokens_1ab923849059179cf6c8fb446aa5cb5e5d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -202,11 +198,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/server/cors_tokens.hpp" line="127" column="24" bodyfile="src/server/cors_tokens.hpp" bodystart="127" bodyend="148"/>
-        <references refid="namespaceCorsTokens_1a0435f635d81611e18d7999358f7f71f3" compoundref="cors__tokens_8hpp" startline="54" endline="57">isTokenChar</references>
-        <references refid="namespaceCorsTokens_1ab923849059179cf6c8fb446aa5cb5e5d" compoundref="cors__tokens_8hpp" startline="127" endline="148">sanitizeRequestedHeaders</references>
-        <references refid="namespaceCorsTokens_1acb6a20ed23869f424e6ee2061f600001" compoundref="cors__tokens_8hpp" startline="85" endline="100">tokens</references>
-        <referencedby refid="namespaceCorsTokens_1ab923849059179cf6c8fb446aa5cb5e5d" compoundref="cors__tokens_8hpp" startline="127" endline="148">sanitizeRequestedHeaders</referencedby>
+        <location file="src/server/cors_tokens.hpp" line="183" column="22" bodyfile="src/server/cors_tokens.hpp" bodystart="183" bodyend="210"/>
+        <references refid="namespaceCorsTokens_1a0435f635d81611e18d7999358f7f71f3" compoundref="cors__tokens_8hpp" startline="71" endline="75">isTokenChar</references>
+        <references refid="namespaceCorsTokens_1ab923849059179cf6c8fb446aa5cb5e5d" compoundref="cors__tokens_8hpp" startline="183" endline="210">sanitizeRequestedHeaders</references>
+        <references refid="namespaceCorsTokens_1acb6a20ed23869f424e6ee2061f600001" compoundref="cors__tokens_8hpp" startline="116" endline="143">tokens</references>
+        <referencedby refid="namespaceCorsTokens_1ab923849059179cf6c8fb446aa5cb5e5d" compoundref="cors__tokens_8hpp" startline="183" endline="210">sanitizeRequestedHeaders</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceCorsTokens_1a0868524c04d18e34760e18676a1ff72f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -249,11 +245,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/server/cors_tokens.hpp" line="161" column="24" bodyfile="src/server/cors_tokens.hpp" bodystart="161" bodyend="193"/>
-        <references refid="namespaceCorsTokens_1af7fe702e663ce37f7012a3bf8af3a8c8" compoundref="cors__tokens_8hpp" startline="111" endline="115">iequals</references>
-        <references refid="namespaceCorsTokens_1a0868524c04d18e34760e18676a1ff72f" compoundref="cors__tokens_8hpp" startline="161" endline="193">mergeVary</references>
-        <references refid="namespaceCorsTokens_1acb6a20ed23869f424e6ee2061f600001" compoundref="cors__tokens_8hpp" startline="85" endline="100">tokens</references>
-        <referencedby refid="namespaceCorsTokens_1a0868524c04d18e34760e18676a1ff72f" compoundref="cors__tokens_8hpp" startline="161" endline="193">mergeVary</referencedby>
+        <location file="src/server/cors_tokens.hpp" line="226" column="22" bodyfile="src/server/cors_tokens.hpp" bodystart="226" bodyend="267"/>
+        <references refid="namespaceCorsTokens_1af7fe702e663ce37f7012a3bf8af3a8c8" compoundref="cors__tokens_8hpp" startline="157" endline="165">iequals</references>
+        <references refid="namespaceCorsTokens_1a0868524c04d18e34760e18676a1ff72f" compoundref="cors__tokens_8hpp" startline="226" endline="267">mergeVary</references>
+        <references refid="namespaceCorsTokens_1acb6a20ed23869f424e6ee2061f600001" compoundref="cors__tokens_8hpp" startline="116" endline="143">tokens</references>
+        <referencedby refid="namespaceCorsTokens_1a0868524c04d18e34760e18676a1ff72f" compoundref="cors__tokens_8hpp" startline="226" endline="267">mergeVary</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -262,6 +258,6 @@
     <detaileddescription>
 <para>Kept independent of the HTTP framework so token parsing can be reasoned about, and tested, on its own. </para>
     </detaileddescription>
-    <location file="src/server/cors_tokens.hpp" line="34" column="1"/>
+    <location file="src/server/cors_tokens.hpp" line="44" column="1"/>
   </compounddef>
 </doxygen>

@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="48" column="9"/>
+        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="57" column="5"/>
         <referencedby refid="classapi_1_1v2_1_1JsonHelper_1a5052f5e2e89fd6a559696da47b1fd207">JsonHelper</referencedby>
         <referencedby refid="classapi_1_1v2_1_1JsonHelper_1a78798871d18d003644e4907fa4459db2">JsonHelper</referencedby>
         <referencedby refid="classapi_1_1v2_1_1JsonHelper_1a260ef7e1999f9d532d74694dbcfc515b">operator=</referencedby>
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="52" column="17"/>
+        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="62" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1JsonHelper_1a78798871d18d003644e4907fa4459db2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="57" column="9"/>
+        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="69" column="5"/>
         <references refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec">JsonHelper</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1JsonHelper_1a5052f5e2e89fd6a559696da47b1fd207" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="61" column="9"/>
+        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="75" column="5"/>
         <references refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec">JsonHelper</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1JsonHelper_1adc89873d3846af98352e52714f07ed48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="66" column="20"/>
+        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="81" column="16"/>
         <references refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec">JsonHelper</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1JsonHelper_1a260ef7e1999f9d532d74694dbcfc515b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -111,10 +111,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="70" column="20"/>
+        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="86" column="16"/>
         <references refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec">JsonHelper</references>
-        <references refid="classapi_1_1v2_1_1JsonHelper_1a641560db2243ef5bca5bb763e98b3b43" compoundref="jsonhelper_8cpp" startline="27" endline="33">jsonify</references>
-        <references refid="classapi_1_1v2_1_1JsonHelper_1a1b5317049b9d7659fea55b9f6c96c379" compoundref="jsonhelper_8cpp" startline="41" endline="41">stringify</references>
+        <references refid="classapi_1_1v2_1_1JsonHelper_1a641560db2243ef5bca5bb763e98b3b43" compoundref="jsonhelper_8cpp" startline="32" endline="40">jsonify</references>
+        <references refid="classapi_1_1v2_1_1JsonHelper_1a1b5317049b9d7659fea55b9f6c96c379" compoundref="jsonhelper_8cpp" startline="50" endline="52">stringify</references>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -147,13 +147,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="77" column="28" bodyfile="src/utils/jsonhelper/jsonhelper.cpp" bodystart="27" bodyend="33"/>
-        <referencedby refid="classapi_1_1v2_1_1Filters_1_1Auth_1a3b6912ca8535567fb2c00dc07e0cc1ce" compoundref="auth_8hpp" startline="81" endline="189">api::v2::Filters::Auth::doFilter</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Hello_1a6f92ff78f4fcb20b3a26ac4cf12e3e79" compoundref="hello_8hpp" startline="52" endline="59">api::v2::Hello::hello</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="224" endline="289">api::v2::SessionManager::logout</referencedby>
+        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="95" column="24" bodyfile="src/utils/jsonhelper/jsonhelper.cpp" bodystart="32" bodyend="40"/>
+        <referencedby refid="classapi_1_1v2_1_1Filters_1_1Auth_1a3b6912ca8535567fb2c00dc07e0cc1ce" compoundref="auth_8hpp" startline="115" endline="338">api::v2::Filters::Auth::doFilter</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Hello_1a6f92ff78f4fcb20b3a26ac4cf12e3e79" compoundref="hello_8hpp" startline="64" endline="82">api::v2::Hello::hello</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="343" endline="458">api::v2::SessionManager::logout</referencedby>
         <referencedby refid="classapi_1_1v2_1_1JsonHelper_1a260ef7e1999f9d532d74694dbcfc515b">operator=</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Helper_1a0e93abbeb3346f2d972a1894c31cb245" compoundref="helper_8cpp" startline="88" endline="93">api::v2::Helper::prepare</referencedby>
-        <referencedby refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" compoundref="server_8cpp" startline="92" endline="148">Server::run</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Helper_1a0e93abbeb3346f2d972a1894c31cb245" compoundref="helper_8cpp" startline="128" endline="137">api::v2::Helper::prepare</referencedby>
+        <referencedby refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" compoundref="server_8cpp" startline="156" endline="295">Server::run</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1JsonHelper_1a1b5317049b9d7659fea55b9f6c96c379" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -184,13 +184,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="84" column="28" bodyfile="src/utils/jsonhelper/jsonhelper.cpp" bodystart="41" bodyend="41"/>
-        <referencedby refid="classapi_1_1v2_1_1Filters_1_1Auth_1a3b6912ca8535567fb2c00dc07e0cc1ce" compoundref="auth_8hpp" startline="81" endline="189">api::v2::Filters::Auth::doFilter</referencedby>
-        <referencedby refid="classController_1ad8517f93d94b2584124d06d0904c8c28" compoundref="controller_8hpp" startline="443" endline="470">Controller::GetServices</referencedby>
-        <referencedby refid="classController_1a2573416082a8360340c3f55c12b0c0b5" compoundref="controller_8hpp" startline="483" endline="511">Controller::GetServicesAsync</referencedby>
-        <referencedby refid="classController_1acd1d7cb00688b69469719ff7789f3cd9" compoundref="controller_8hpp" startline="523" endline="545">Controller::GetVisits</referencedby>
-        <referencedby refid="classController_1a2af2297a7b4fcce1f987510786aaa5d7" compoundref="controller_8hpp" startline="557" endline="580">Controller::GetVisitsAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="224" endline="289">api::v2::SessionManager::logout</referencedby>
+        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="104" column="24" bodyfile="src/utils/jsonhelper/jsonhelper.cpp" bodystart="50" bodyend="52"/>
+        <referencedby refid="classapi_1_1v2_1_1Filters_1_1Auth_1a3b6912ca8535567fb2c00dc07e0cc1ce" compoundref="auth_8hpp" startline="115" endline="338">api::v2::Filters::Auth::doFilter</referencedby>
+        <referencedby refid="classController_1ad8517f93d94b2584124d06d0904c8c28" compoundref="controller_8hpp" startline="626" endline="659">Controller::GetServices</referencedby>
+        <referencedby refid="classController_1a2573416082a8360340c3f55c12b0c0b5" compoundref="controller_8hpp" startline="674" endline="712">Controller::GetServicesAsync</referencedby>
+        <referencedby refid="classController_1acd1d7cb00688b69469719ff7789f3cd9" compoundref="controller_8hpp" startline="729" endline="755">Controller::GetVisits</referencedby>
+        <referencedby refid="classController_1a2af2297a7b4fcce1f987510786aaa5d7" compoundref="controller_8hpp" startline="769" endline="800">Controller::GetVisitsAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="343" endline="458">api::v2::SessionManager::logout</referencedby>
         <referencedby refid="classapi_1_1v2_1_1JsonHelper_1a260ef7e1999f9d532d74694dbcfc515b">operator=</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1JsonHelper_1ade4746bc7ad2022dcd1caae268066f20" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -222,7 +222,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="91" column="28" bodyfile="src/utils/jsonhelper/jsonhelper.cpp" bodystart="34" bodyend="40"/>
+        <location file="src/utils/jsonhelper/jsonhelper.hpp" line="113" column="24" bodyfile="src/utils/jsonhelper/jsonhelper.cpp" bodystart="42" bodyend="49"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -233,7 +233,7 @@
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="src/utils/jsonhelper/jsonhelper.hpp" line="42" column="5" bodyfile="src/utils/jsonhelper/jsonhelper.hpp" bodystart="43" bodyend="92"/>
+    <location file="src/utils/jsonhelper/jsonhelper.hpp" line="52" column="3" bodyfile="src/utils/jsonhelper/jsonhelper.hpp" bodystart="52" bodyend="116"/>
     <listofallmembers>
       <member refid="classapi_1_1v2_1_1JsonHelper_1a3998887caa76f04a3cd81dc9f66de5ec" prot="public" virt="non-virtual"><scope>api::v2::JsonHelper</scope><name>JsonHelper</name></member>
       <member refid="classapi_1_1v2_1_1JsonHelper_1a78798871d18d003644e4907fa4459db2" prot="public" virt="non-virtual"><scope>api::v2::JsonHelper</scope><name>JsonHelper</name></member>

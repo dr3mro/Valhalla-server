@@ -5,10 +5,16 @@
     <basecompoundref prot="public" virt="non-virtual">drogon::HttpController&lt; Staff &gt;</basecompoundref>
     <includes refid="staff_8hpp" local="no">staff.hpp</includes>
     <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="classapi_1_1v2_1_1Staff_1a73ce9b89d16e2da392efca541714cf55" prot="private" static="no">
+      <memberdef kind="typedef" id="classapi_1_1v2_1_1Staff_1ae4172ea31830e79b8b2b28aa4770f549" prot="private" static="no">
         <type>std::variant&lt; std::shared_ptr&lt; <ref refid="classStaffController" kindref="compound">StaffController</ref>&lt; <ref refid="classClinics" kindref="compound">Clinics</ref> &gt; &gt;, std::shared_ptr&lt; <ref refid="classStaffController" kindref="compound">StaffController</ref>&lt; <ref refid="classPharmacies" kindref="compound">Pharmacies</ref> &gt; &gt;, std::shared_ptr&lt; <ref refid="classStaffController" kindref="compound">StaffController</ref>&lt; <ref refid="classLaboratories" kindref="compound">Laboratories</ref> &gt; &gt;, std::shared_ptr&lt; <ref refid="classStaffController" kindref="compound">StaffController</ref>&lt; <ref refid="classRadiologyCenters" kindref="compound">RadiologyCenters</ref> &gt; &gt; &gt;</type>
-        <definition>using api::v2::Staff::StaffVariant = std::variant&lt;std::shared_ptr&lt;StaffController&lt;Clinics&gt;&gt;, std::shared_ptr&lt;StaffController&lt;Pharmacies&gt;&gt;,  
-           std::shared_ptr&lt;StaffController&lt;Laboratories&gt;&gt;, std::shared_ptr&lt;StaffController&lt;RadiologyCenters&gt;&gt;&gt;</definition>
+        <definition>using api::v2::Staff::StaffVariant = std::variant&lt;
+       std::shared_ptr&lt;StaffController&lt;Clinics&gt;&gt;,
+       std::shared_ptr&lt;StaffController&lt;Pharmacies&gt;&gt;,  
+                                                      
+                                                      
+       std::shared_ptr&lt;StaffController&lt;Laboratories&gt;&gt;,
+       std::shared_ptr&lt;StaffController&lt;
+           RadiologyCenters&gt;&gt;&gt;</definition>
         <argsstring></argsstring>
         <name>StaffVariant</name>
         <qualifiedname>api::v2::Staff::StaffVariant</qualifiedname>
@@ -19,7 +25,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/staff.hpp" line="276" column="9" bodyfile="src/api/v2/routes/staff.hpp" bodystart="276" bodyend="-1"/>
+        <location file="src/api/v2/routes/staff.hpp" line="431" column="5" bodyfile="src/api/v2/routes/staff.hpp" bodystart="431" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -29,7 +35,8 @@
         <argsstring></argsstring>
         <name>dbExecutor</name>
         <qualifiedname>api::v2::Staff::dbExecutor</qualifiedname>
-        <initializer>= <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classDbExecutor" kindref="compound">DbExecutor</ref>&gt;()</initializer>
+        <initializer>       =
+<ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classDbExecutor" kindref="compound">DbExecutor</ref>&gt;()</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -37,10 +44,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/staff.hpp" line="268" column="25" bodyfile="src/api/v2/routes/staff.hpp" bodystart="268" bodyend="-1"/>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1a409d7e9e2260c9a82ed370c9fa33a6cb" compoundref="staff_8hpp" startline="146" endline="196">Add</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1a073bef1425950fe6acd2a9287ed6e9a9" compoundref="staff_8hpp" startline="85" endline="135">Invite</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1acffe2bacadd52880b9302de943c11a3f" compoundref="staff_8hpp" startline="207" endline="257">Remove</referencedby>
+        <location file="src/api/v2/routes/staff.hpp" line="417" column="12" bodyfile="src/api/v2/routes/staff.hpp" bodystart="417" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1a409d7e9e2260c9a82ed370c9fa33a6cb" compoundref="staff_8hpp" startline="210" endline="295">Add</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1a073bef1425950fe6acd2a9287ed6e9a9" compoundref="staff_8hpp" startline="108" endline="195">Invite</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1acffe2bacadd52880b9302de943c11a3f" compoundref="staff_8hpp" startline="310" endline="395">Remove</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classapi_1_1v2_1_1Staff_1ac960e64876612282c2b27ae12936b097" prot="private" static="no" mutable="no">
         <type>const bool</type>
@@ -48,7 +55,9 @@
         <argsstring></argsstring>
         <name>asyncDb_</name>
         <qualifiedname>api::v2::Staff::asyncDb_</qualifiedname>
-        <initializer>= <ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject</ref>&lt;<ref refid="classConfigurator" kindref="compound">Configurator</ref>&gt;()-&gt;get&lt;<ref refid="classConfigurator_1afdc97f6e9bd19c0197759b8860ed9a49" kindref="member">Configurator::DatabaseConfig</ref>&gt;().async</initializer>
+        <initializer>= <ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject</ref>&lt;<ref refid="classConfigurator" kindref="compound">Configurator</ref>&gt;()
+      -&gt;get&lt;<ref refid="classConfigurator_1a78caa68d4554c8ab0d0c1753ce8edbe2" kindref="member">Configurator::DatabaseConfig</ref>&gt;()
+      .async</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -56,20 +65,30 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/staff.hpp" line="272" column="20" bodyfile="src/api/v2/routes/staff.hpp" bodystart="272" bodyend="-1"/>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1a409d7e9e2260c9a82ed370c9fa33a6cb" compoundref="staff_8hpp" startline="146" endline="196">Add</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1a073bef1425950fe6acd2a9287ed6e9a9" compoundref="staff_8hpp" startline="85" endline="135">Invite</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1acffe2bacadd52880b9302de943c11a3f" compoundref="staff_8hpp" startline="207" endline="257">Remove</referencedby>
+        <location file="src/api/v2/routes/staff.hpp" line="424" column="16" bodyfile="src/api/v2/routes/staff.hpp" bodystart="424" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1a409d7e9e2260c9a82ed370c9fa33a6cb" compoundref="staff_8hpp" startline="210" endline="295">Add</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1a073bef1425950fe6acd2a9287ed6e9a9" compoundref="staff_8hpp" startline="108" endline="195">Invite</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1acffe2bacadd52880b9302de943c11a3f" compoundref="staff_8hpp" startline="310" endline="395">Remove</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classapi_1_1v2_1_1Staff_1ab8fb15b6ca094d5e2fca8fe9e675fdba" prot="private" static="no" mutable="no">
-        <type>std::unordered_map&lt; std::string_view, <ref refid="classapi_1_1v2_1_1Staff_1a73ce9b89d16e2da392efca541714cf55" kindref="member">StaffVariant</ref> &gt;</type>
+        <type>std::unordered_map&lt; std::string_view, <ref refid="classapi_1_1v2_1_1Staff_1ae4172ea31830e79b8b2b28aa4770f549" kindref="member">StaffVariant</ref> &gt;</type>
         <definition>std::unordered_map&lt;std::string_view, StaffVariant&gt; api::v2::Staff::staffRegistry</definition>
         <argsstring></argsstring>
         <name>staffRegistry</name>
         <qualifiedname>api::v2::Staff::staffRegistry</qualifiedname>
-        <initializer>                             = {{&quot;clinics&quot;, <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classStaffController" kindref="compound">StaffController</ref>&lt;<ref refid="classClinics" kindref="compound">Clinics</ref>&gt;&gt;()},  
-{&quot;pharmacies&quot;, <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classStaffController" kindref="compound">StaffController</ref>&lt;<ref refid="classPharmacies" kindref="compound">Pharmacies</ref>&gt;&gt;()}, {&quot;laboratories&quot;, <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classStaffController" kindref="compound">StaffController</ref>&lt;<ref refid="classLaboratories" kindref="compound">Laboratories</ref>&gt;&gt;()},  
-{&quot;radiologycenters&quot;, <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classStaffController" kindref="compound">StaffController</ref>&lt;<ref refid="classRadiologyCenters" kindref="compound">RadiologyCenters</ref>&gt;&gt;()}}</initializer>
+        <initializer>                             =
+{{&quot;clinics&quot;,
+  <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classStaffController" kindref="compound">StaffController</ref>&lt;<ref refid="classClinics" kindref="compound">Clinics</ref>&gt;&gt;()},  
+                                                  
+                                                  
+ {&quot;pharmacies&quot;, <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classStaffController" kindref="compound">StaffController</ref>&lt;<ref refid="classPharmacies" kindref="compound">Pharmacies</ref>&gt;&gt;()},
+ {&quot;laboratories&quot;,
+  <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classStaffController" kindref="compound">StaffController</ref>&lt;<ref refid="classLaboratories" kindref="compound">Laboratories</ref>&gt;&gt;()},  
+                                                       
+                                                       
+ {&quot;radiologycenters&quot;,
+  <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;
+      <ref refid="classStaffController" kindref="compound">StaffController</ref>&lt;<ref refid="classRadiologyCenters" kindref="compound">RadiologyCenters</ref>&gt;&gt;()}}</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -77,10 +96,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/staff.hpp" line="282" column="28" bodyfile="src/api/v2/routes/staff.hpp" bodystart="282" bodyend="284"/>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1a409d7e9e2260c9a82ed370c9fa33a6cb" compoundref="staff_8hpp" startline="146" endline="196">Add</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1a073bef1425950fe6acd2a9287ed6e9a9" compoundref="staff_8hpp" startline="85" endline="135">Invite</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1acffe2bacadd52880b9302de943c11a3f" compoundref="staff_8hpp" startline="207" endline="257">Remove</referencedby>
+        <location file="src/api/v2/routes/staff.hpp" line="444" column="24" bodyfile="src/api/v2/routes/staff.hpp" bodystart="444" bodyend="456"/>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1a409d7e9e2260c9a82ed370c9fa33a6cb" compoundref="staff_8hpp" startline="210" endline="295">Add</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1a073bef1425950fe6acd2a9287ed6e9a9" compoundref="staff_8hpp" startline="108" endline="195">Invite</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1acffe2bacadd52880b9302de943c11a3f" compoundref="staff_8hpp" startline="310" endline="395">Remove</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -135,18 +154,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/staff.hpp" line="85" column="14" bodyfile="src/api/v2/routes/staff.hpp" bodystart="85" bodyend="135"/>
-        <references refid="classapi_1_1v2_1_1Staff_1ac960e64876612282c2b27ae12936b097" compoundref="staff_8hpp" startline="272">asyncDb_</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classapi_1_1v2_1_1Staff_1a35cf895303ed9308c4beaa5a516c7270" compoundref="staff_8hpp" startline="268">dbExecutor</references>
-        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="53" endline="56">api::v2::Helper::errorResponse</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="44" endline="47">api::v2::Helper::failureResponse</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">api::v2::Http::INTERNAL_SERVER_ERROR</references>
+        <location file="src/api/v2/routes/staff.hpp" line="108" column="10" bodyfile="src/api/v2/routes/staff.hpp" bodystart="108" bodyend="195"/>
+        <references refid="classapi_1_1v2_1_1Staff_1ac960e64876612282c2b27ae12936b097" compoundref="staff_8hpp" startline="424">asyncDb_</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classapi_1_1v2_1_1Staff_1a35cf895303ed9308c4beaa5a516c7270" compoundref="staff_8hpp" startline="417">dbExecutor</references>
+        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="71" endline="80">api::v2::Helper::errorResponse</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="56" endline="64">api::v2::Helper::failureResponse</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="123">api::v2::Http::INTERNAL_SERVER_ERROR</references>
         <references refid="classStaffControllerBase_1a55203753a4995d370037401bfc5f66bd">StaffControllerBase::InviteStaffToEntity</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
-        <references refid="classapi_1_1v2_1_1Staff_1ab8fb15b6ca094d5e2fca8fe9e675fdba" compoundref="staff_8hpp" startline="282" endline="284">staffRegistry</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="62" endline="65">api::v2::Helper::successResponse</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
+        <references refid="classapi_1_1v2_1_1Staff_1ab8fb15b6ca094d5e2fca8fe9e675fdba" compoundref="staff_8hpp" startline="444" endline="456">staffRegistry</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="88" endline="94">api::v2::Helper::successResponse</references>
         <referencedby refid="classapi_1_1v2_1_1Staff_1a199823ae982588edbe8eafbe7ab4f6f0">METHOD_ADD</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Staff_1a409d7e9e2260c9a82ed370c9fa33a6cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -200,18 +219,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/staff.hpp" line="146" column="14" bodyfile="src/api/v2/routes/staff.hpp" bodystart="146" bodyend="196"/>
+        <location file="src/api/v2/routes/staff.hpp" line="210" column="10" bodyfile="src/api/v2/routes/staff.hpp" bodystart="210" bodyend="295"/>
         <references refid="classStaffControllerBase_1a968ab96cf0d0caaa4c86d4a8330c9393">StaffControllerBase::AddStaffToEntity</references>
-        <references refid="classapi_1_1v2_1_1Staff_1ac960e64876612282c2b27ae12936b097" compoundref="staff_8hpp" startline="272">asyncDb_</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classapi_1_1v2_1_1Staff_1a35cf895303ed9308c4beaa5a516c7270" compoundref="staff_8hpp" startline="268">dbExecutor</references>
-        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="53" endline="56">api::v2::Helper::errorResponse</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="44" endline="47">api::v2::Helper::failureResponse</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">api::v2::Http::INTERNAL_SERVER_ERROR</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
-        <references refid="classapi_1_1v2_1_1Staff_1ab8fb15b6ca094d5e2fca8fe9e675fdba" compoundref="staff_8hpp" startline="282" endline="284">staffRegistry</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="62" endline="65">api::v2::Helper::successResponse</references>
+        <references refid="classapi_1_1v2_1_1Staff_1ac960e64876612282c2b27ae12936b097" compoundref="staff_8hpp" startline="424">asyncDb_</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classapi_1_1v2_1_1Staff_1a35cf895303ed9308c4beaa5a516c7270" compoundref="staff_8hpp" startline="417">dbExecutor</references>
+        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="71" endline="80">api::v2::Helper::errorResponse</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="56" endline="64">api::v2::Helper::failureResponse</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="123">api::v2::Http::INTERNAL_SERVER_ERROR</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
+        <references refid="classapi_1_1v2_1_1Staff_1ab8fb15b6ca094d5e2fca8fe9e675fdba" compoundref="staff_8hpp" startline="444" endline="456">staffRegistry</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="88" endline="94">api::v2::Helper::successResponse</references>
         <referencedby refid="classapi_1_1v2_1_1Staff_1a473143499c845634a1916623d459d2cd">METHOD_ADD</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Staff_1acffe2bacadd52880b9302de943c11a3f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -265,18 +284,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/staff.hpp" line="207" column="14" bodyfile="src/api/v2/routes/staff.hpp" bodystart="207" bodyend="257"/>
-        <references refid="classapi_1_1v2_1_1Staff_1ac960e64876612282c2b27ae12936b097" compoundref="staff_8hpp" startline="272">asyncDb_</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classapi_1_1v2_1_1Staff_1a35cf895303ed9308c4beaa5a516c7270" compoundref="staff_8hpp" startline="268">dbExecutor</references>
-        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="53" endline="56">api::v2::Helper::errorResponse</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="44" endline="47">api::v2::Helper::failureResponse</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">api::v2::Http::INTERNAL_SERVER_ERROR</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
+        <location file="src/api/v2/routes/staff.hpp" line="310" column="10" bodyfile="src/api/v2/routes/staff.hpp" bodystart="310" bodyend="395"/>
+        <references refid="classapi_1_1v2_1_1Staff_1ac960e64876612282c2b27ae12936b097" compoundref="staff_8hpp" startline="424">asyncDb_</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classapi_1_1v2_1_1Staff_1a35cf895303ed9308c4beaa5a516c7270" compoundref="staff_8hpp" startline="417">dbExecutor</references>
+        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="71" endline="80">api::v2::Helper::errorResponse</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="56" endline="64">api::v2::Helper::failureResponse</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="123">api::v2::Http::INTERNAL_SERVER_ERROR</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
         <references refid="classStaffControllerBase_1a5d310e956312329648957207868ed549">StaffControllerBase::RemoveStaffFromEntity</references>
-        <references refid="classapi_1_1v2_1_1Staff_1ab8fb15b6ca094d5e2fca8fe9e675fdba" compoundref="staff_8hpp" startline="282" endline="284">staffRegistry</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="62" endline="65">api::v2::Helper::successResponse</references>
+        <references refid="classapi_1_1v2_1_1Staff_1ab8fb15b6ca094d5e2fca8fe9e675fdba" compoundref="staff_8hpp" startline="444" endline="456">staffRegistry</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="88" endline="94">api::v2::Helper::successResponse</references>
         <referencedby refid="classapi_1_1v2_1_1Staff_1a7f95d282f63253e7efb965ac89ba8bdb">METHOD_ADD</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Staff_1a199823ae982588edbe8eafbe7ab4f6f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -303,9 +322,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/staff.hpp" line="261" column="9"/>
-        <references refid="classapi_1_1v2_1_1Staff_1a073bef1425950fe6acd2a9287ed6e9a9" compoundref="staff_8hpp" startline="85" endline="135">Invite</references>
-        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="68">SECURE</references>
+        <location file="src/api/v2/routes/staff.hpp" line="399" column="9"/>
+        <references refid="classapi_1_1v2_1_1Staff_1a073bef1425950fe6acd2a9287ed6e9a9" compoundref="staff_8hpp" startline="108" endline="195">Invite</references>
+        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="92">SECURE</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Staff_1a473143499c845634a1916623d459d2cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -331,9 +350,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/staff.hpp" line="262" column="9"/>
-        <references refid="classapi_1_1v2_1_1Staff_1a409d7e9e2260c9a82ed370c9fa33a6cb" compoundref="staff_8hpp" startline="146" endline="196">Add</references>
-        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="68">SECURE</references>
+        <location file="src/api/v2/routes/staff.hpp" line="403" column="5"/>
+        <references refid="classapi_1_1v2_1_1Staff_1a409d7e9e2260c9a82ed370c9fa33a6cb" compoundref="staff_8hpp" startline="210" endline="295">Add</references>
+        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="92">SECURE</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Staff_1a7f95d282f63253e7efb965ac89ba8bdb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -359,9 +378,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/staff.hpp" line="263" column="9"/>
-        <references refid="classapi_1_1v2_1_1Staff_1acffe2bacadd52880b9302de943c11a3f" compoundref="staff_8hpp" startline="207" endline="257">Remove</references>
-        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="68">SECURE</references>
+        <location file="src/api/v2/routes/staff.hpp" line="407" column="5"/>
+        <references refid="classapi_1_1v2_1_1Staff_1acffe2bacadd52880b9302de943c11a3f" compoundref="staff_8hpp" startline="310" endline="395">Remove</references>
+        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="92">SECURE</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -394,7 +413,7 @@
         <label>drogon::HttpController&lt; Staff &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="src/api/v2/routes/staff.hpp" line="73" column="5" bodyfile="src/api/v2/routes/staff.hpp" bodystart="74" bodyend="285"/>
+    <location file="src/api/v2/routes/staff.hpp" line="89" column="3" bodyfile="src/api/v2/routes/staff.hpp" bodystart="93" bodyend="458"/>
     <listofallmembers>
       <member refid="classapi_1_1v2_1_1Staff_1a409d7e9e2260c9a82ed370c9fa33a6cb" prot="public" virt="non-virtual"><scope>api::v2::Staff</scope><name>Add</name></member>
       <member refid="classapi_1_1v2_1_1Staff_1ac960e64876612282c2b27ae12936b097" prot="private" virt="non-virtual"><scope>api::v2::Staff</scope><name>asyncDb_</name></member>
@@ -405,7 +424,7 @@
       <member refid="classapi_1_1v2_1_1Staff_1a7f95d282f63253e7efb965ac89ba8bdb" prot="public" virt="non-virtual"><scope>api::v2::Staff</scope><name>METHOD_ADD</name></member>
       <member refid="classapi_1_1v2_1_1Staff_1acffe2bacadd52880b9302de943c11a3f" prot="public" virt="non-virtual"><scope>api::v2::Staff</scope><name>Remove</name></member>
       <member refid="classapi_1_1v2_1_1Staff_1ab8fb15b6ca094d5e2fca8fe9e675fdba" prot="private" virt="non-virtual"><scope>api::v2::Staff</scope><name>staffRegistry</name></member>
-      <member refid="classapi_1_1v2_1_1Staff_1a73ce9b89d16e2da392efca541714cf55" prot="private" virt="non-virtual"><scope>api::v2::Staff</scope><name>StaffVariant</name></member>
+      <member refid="classapi_1_1v2_1_1Staff_1ae4172ea31830e79b8b2b28aa4770f549" prot="private" virt="non-virtual"><scope>api::v2::Staff</scope><name>StaffVariant</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

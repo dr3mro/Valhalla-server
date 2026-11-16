@@ -33,17 +33,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/databasebusy.hpp" line="50" column="14" bodyfile="src/database/databasebusy.hpp" bodystart="50" bodyend="50"/>
-        <referencedby refid="classDatabaseController_1a757e16ca56537bd8eed3d9abe9768954" compoundref="databasecontroller_8cpp" startline="247" endline="274">DatabaseController::checkItemExistsCoro</referencedby>
-        <referencedby refid="classDatabaseController_1ac586f1fc3a54b3bbf1ff5369e403ed20" compoundref="databasecontroller_8cpp" startline="219" endline="245">DatabaseController::doReadQueryCoro</referencedby>
-        <referencedby refid="classDatabaseController_1a5874c6f56191991a88da60758f2200fa" compoundref="databasecontroller_8cpp" startline="144" endline="171">DatabaseController::executeQueryCoro</referencedby>
-        <referencedby refid="classDatabaseController_1aa3de6b2217aa0ba75ec4eb5286d36799" compoundref="databasecontroller_8cpp" startline="173" endline="194">DatabaseController::executeReadQueryCoro</referencedby>
-        <referencedby refid="classDatabaseController_1a7b2bb5792bc55ec851dcd7ae997c58a4" compoundref="databasecontroller_8cpp" startline="196" endline="217">DatabaseController::executeSearchQueryCoro</referencedby>
-        <referencedby refid="classDatabaseConnectionPool_1a39716826b3e5be2f15603d8cf809446b" compoundref="databaseconnectionpool_8cpp" startline="162" endline="189">DatabaseConnectionPool::get_connection</referencedby>
-        <referencedby refid="classDatabaseController_1abb1622b85d3e413bcb1dee3521a9d24f" compoundref="databasecontroller_8cpp" startline="323" endline="350">DatabaseController::getAllTablesCoro</referencedby>
-        <referencedby refid="classDatabaseController_1a2a0585031d4e0a5e8dfdeb7d77041563" compoundref="databasecontroller_8cpp" startline="352" endline="373">DatabaseController::getPermissionsCoro</referencedby>
-        <referencedby refid="classDatabaseController_1ab6502e9c51e8657b16ffe4795949ebe7" compoundref="databasecontroller_8cpp" startline="287" endline="321">DatabaseController::getTableSchemaCoro</referencedby>
-        <referencedby refid="namespaceasyncdb_1a7c8890804d39f7a13dac84b992a8c77b" compoundref="asyncdberror_8cpp" startline="61" endline="68">asyncdb::throwIfBusy</referencedby>
+        <location file="src/database/databasebusy.hpp" line="63" column="12" bodyfile="src/database/databasebusy.hpp" bodystart="63" bodyend="66"/>
+        <referencedby refid="classDatabaseController_1a757e16ca56537bd8eed3d9abe9768954" compoundref="databasecontroller_8cpp" startline="351" endline="391">DatabaseController::checkItemExistsCoro</referencedby>
+        <referencedby refid="classDatabaseController_1ac586f1fc3a54b3bbf1ff5369e403ed20" compoundref="databasecontroller_8cpp" startline="313" endline="349">DatabaseController::doReadQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1a5874c6f56191991a88da60758f2200fa" compoundref="databasecontroller_8cpp" startline="205" endline="246">DatabaseController::executeQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1aa3de6b2217aa0ba75ec4eb5286d36799" compoundref="databasecontroller_8cpp" startline="249" endline="278">DatabaseController::executeReadQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1a7b2bb5792bc55ec851dcd7ae997c58a4" compoundref="databasecontroller_8cpp" startline="281" endline="311">DatabaseController::executeSearchQueryCoro</referencedby>
+        <referencedby refid="classDatabaseConnectionPool_1a39716826b3e5be2f15603d8cf809446b" compoundref="databaseconnectionpool_8cpp" startline="269" endline="323">DatabaseConnectionPool::get_connection</referencedby>
+        <referencedby refid="classDatabaseController_1abb1622b85d3e413bcb1dee3521a9d24f" compoundref="databasecontroller_8cpp" startline="474" endline="509">DatabaseController::getAllTablesCoro</referencedby>
+        <referencedby refid="classDatabaseController_1a2a0585031d4e0a5e8dfdeb7d77041563" compoundref="databasecontroller_8cpp" startline="512" endline="538">DatabaseController::getPermissionsCoro</referencedby>
+        <referencedby refid="classDatabaseController_1ab6502e9c51e8657b16ffe4795949ebe7" compoundref="databasecontroller_8cpp" startline="415" endline="471">DatabaseController::getTableSchemaCoro</referencedby>
+        <referencedby refid="namespaceasyncdb_1a7c8890804d39f7a13dac84b992a8c77b" compoundref="asyncdberror_8cpp" startline="92" endline="102">asyncdb::throwIfBusy</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -76,7 +76,7 @@
         <label>std::runtime_error</label>
       </node>
     </collaborationgraph>
-    <location file="src/database/databasebusy.hpp" line="43" column="1" bodyfile="src/database/databasebusy.hpp" bodystart="44" bodyend="51"/>
+    <location file="src/database/databasebusy.hpp" line="54" column="1" bodyfile="src/database/databasebusy.hpp" bodystart="57" bodyend="68"/>
     <listofallmembers>
       <member refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" prot="public" virt="non-virtual"><scope>DatabaseBusy</scope><name>DatabaseBusy</name></member>
     </listofallmembers>

@@ -119,13 +119,14 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('permissionmana
 </div><!--header-->
 <div class="contents">
 
-<p>The single place that answers "may this person do this thing to this record?". (Originally: "Central authorization facade: answers "may this requester perform this operation on this entity?".").  
+<p>The single place that answers "may this person do this thing to this
+record?". (Originally: "Central authorization facade: answers "may this requester perform this operation on this entity?".").  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstdint&gt;</code><br />
 <code>#include &lt;jsoncons/basic_json.hpp&gt;</code><br />
 <code>#include &lt;optional&gt;</code><br />
-<code>#include &quot;<a class="el" href="concepts_8hpp_source.html">utils/global/concepts.hpp</a>&quot;</code><br />
 <code>#include &quot;drogon/utils/coroutine.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="concepts_8hpp_source.html">utils/global/concepts.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="http_8hpp_source.html">utils/global/http.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="requester_8hpp_source.html">utils/global/requester.hpp</a>&quot;</code><br />
 </div>
@@ -134,7 +135,8 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('permissionmana
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:api_3A_3Av2_3A_3APermissionManager" id="r_api_3A_3Av2_3A_3APermissionManager"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classapi_1_1v2_1_1PermissionManager.html">api::v2::PermissionManager</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Central authorization facade: answers "may this requester perform this operation on this entity?".  <a href="classapi_1_1v2_1_1PermissionManager.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Central authorization facade: answers "may this requester perform
+this operation on this entity?".  <a href="classapi_1_1v2_1_1PermissionManager.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -142,8 +144,9 @@ Namespaces</h2></td></tr>
 <tr class="memitem:api_3A_3Av2" id="r_api_3A_3Av2"><td class="memItemLeft">namespace &#160;</td><td class="memItemRight"><a class="el" href="namespaceapi_1_1v2.html">api::v2</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The single place that answers "may this person do this thing to this record?". (Originally: "Central authorization facade: answers "may this requester perform this operation on this entity?"."). </p>
-<p>This header declares <a class="el" href="gatekeeper_8cpp.html#a2391c0b165c65deb4ad3ad19ca6dd2aa">PermissionManager</a>, a class full of <span class="tt">canCreate</span>, <span class="tt">canRead</span>, <span class="tt">canUpdate</span> and <span class="tt">canDelete</span> checks. Each check is written once as a template and works for several entity types. Every check also has an <span class="tt">Async</span> coroutine twin used by the non-blocking routes.</p>
+<div class="textblock"><p>The single place that answers "may this person do this thing to this
+record?". (Originally: "Central authorization facade: answers "may this requester perform this operation on this entity?"."). </p>
+<p>This header declares <a class="el" href="gatekeeper_8cpp.html#ae17e951f1dc80a8e4920571ebe9f3c21">PermissionManager</a>, a class full of <span class="tt">canCreate</span>, <span class="tt">canRead</span>, <span class="tt">canUpdate</span> and <span class="tt">canDelete</span> checks. Each check is written once as a template and works for several entity types. Every check also has an <span class="tt">Async</span> coroutine twin used by the non-blocking routes.</p>
 <p>WHY THIS FILE MATTERS IN THE SERVER: Controllers call these checks before changing or returning data, so this is the gate that stops one client reading another client's records. It decides who may manage staff, view services, and edit cases or appointments. Without it, authorization rules would be scattered and easy to get wrong.</p>
 <p>CONCEPTS TO LEARN (for beginners):</p><ul>
 <li>Authorization vs authentication: <a href="https://en.wikipedia.org/wiki/Authorization">https://en.wikipedia.org/wiki/Authorization</a></li>

@@ -159,18 +159,19 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Type-erased interface for service-entity (clinic, pharmacy, laboratory, radiology center) CRUD+S operations. </p>
-<p>Declares both a synchronous, callback-driven form of every operation and a coroutine (<span class="tt">drogon::Task&lt;void&gt;</span>) form. The HTTP layer reaches concrete controllers through this base via a <span class="tt">std::variant</span> in the services route registry, so virtual dispatch here is what makes one route handler serve all service entity types.</p>
-<p>In plain words: "synchronous" means the caller gets the answer through a callback function; "coroutine" (<span class="tt">drogon::Task&lt;void&gt;</span>) means the caller can pause the operation with co_await and let the server do other work meanwhile. "Virtual dispatch" means that when the route code calls <span class="tt"><a class="el" href="#aef2ec41694023c184286b38ab52e7727" title="Creates a service entity from a JSON request body.">Create</a></span> through this base type, C++ automatically runs the version belonging to the real object (for example the clinic controller). A <span class="tt">std::variant</span> is a variable that can hold one of several different types — here it holds whichever concrete service controller was selected.</p>
-<p>Invocation contract shared by every method:</p><ul>
-<li><span class="tt">callback</span> is <span class="tt">std::function&lt;void(int, const std::string&amp;)&gt;</span>, moved by the caller and forwarded down the call chain. By contract it is invoked once on each completion path, including failures; the first argument is an <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a6199aeb84d745378b1befef28d78892f" title="api::v2::Http::Status">api::v2::Http::Status</a> code, the second a response body (serialized row(s) on success, diagnostic text on failure).</li>
+<p>Declares both a synchronous, callback-driven form of every operation and a coroutine (<span class="tt">drogon::Task&lt;void&gt;</span>) form. The HTTP layer reaches concrete controllers through this base via a <span class="tt">std::variant</span> in the services route registry, so virtual dispatch here is what makes one route handler serve all service entity types. </p><pre class="fragment">     In plain words: "synchronous" means the caller gets the answer
+</pre><p> through a callback function; "coroutine" (<span class="tt">drogon::Task&lt;void&gt;</span>) means the caller can pause the operation with co_await and let the server do other work meanwhile. "Virtual dispatch" means that when the route code calls <span class="tt"><a class="el" href="#aef2ec41694023c184286b38ab52e7727" title="Creates a service entity from a JSON request body.">Create</a></span> through this base type, C++ automatically runs the version belonging to the real object (for example the clinic controller). A <span class="tt">std::variant</span> is a variable that can hold one of several different types — here it holds whichever concrete service controller was selected. </p><pre class="fragment">     Invocation contract shared by every method:
+     - `callback` is `std::function&lt;void(int, const std::string&amp;)&gt;`,
+</pre><p> moved by the caller and forwarded down the call chain. By contract it is invoked once on each completion path, including failures; the first argument is an <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a6199aeb84d745378b1befef28d78892f" title="api::v2::Http::Status">api::v2::Http::Status</a> code, the second a response body (serialized row(s) on success, diagnostic text on failure).</p><ul>
 <li><span class="tt">requester</span> is the authenticated caller identity, used by implementations for the permission decision before any database work is done.</li>
 <li><span class="tt">data</span> is a non-owning view of the raw JSON request body; it must outlive the call.</li>
-<li><span class="tt">_id</span>, where present, is the optional target entity id; a missing value is rejected by the concrete implementation rather than by this interface.</li>
-</ul>
-<p>The <span class="tt">*Async</span> methods perform the same operation but must be co_awaited; the route layer wraps them in <span class="tt">drogon::async_run</span> and converts the callback result into an HTTP reply. </p><dl class="section note"><dt>Note</dt><dd>Implementations here are supplied by <a class="el" href="classServiceController.html" title="ServiceController">ServiceController</a>; the interface itself adds no state. </dd></dl>
+<li><span class="tt">_id</span>, where present, is the optional target entity id; a missing value is rejected by the concrete implementation rather than by this interface. <pre class="fragment">     The `*Async` methods perform the same operation but must be
+</pre> co_awaited; the route layer wraps them in <span class="tt">drogon::async_run</span> and converts the callback result into an HTTP reply. <dl class="section note"><dt>Note</dt><dd>Implementations here are supplied by <a class="el" href="classServiceController.html" title="ServiceController">ServiceController</a>; the interface itself adds no state. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classServiceController.html" title="Service-entity controller that adapts EntityController to ServiceControllerBase.">ServiceController</a>, <a class="el" href="classEntityControllerBase.html" title="Abstract contract for the request-facing CRUDS handlers exposed for every entity type.">EntityControllerBase</a>, <a class="el" href="classController.html" title="Reusable persistence engine for the API&#39;s CRUDS (Create/Read/Update/Delete/Search) operations.">Controller</a> </dd></dl>
+</li>
+</ul>
 
-<p class="definition">Definition at line <a class="el" href="servicecontrollerbase_8hpp_source.html#l00075">75</a> of file <a class="el" href="servicecontrollerbase_8hpp_source.html">servicecontrollerbase.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="servicecontrollerbase_8hpp_source.html#l00109">109</a> of file <a class="el" href="servicecontrollerbase_8hpp_source.html">servicecontrollerbase.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0ccc53492a5a91f8d3fc0803ab917adc" name="a0ccc53492a5a91f8d3fc0803ab917adc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0ccc53492a5a91f8d3fc0803ab917adc">&#9670;&#160;</a></span>ServiceControllerBase() <span class="overload">[1/3]</span></h2>
@@ -333,9 +334,9 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classServiceController.html#a138db9b26dcc863d6895ccb1f01a7123">ServiceController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="services_8hpp_source.html#l00079">api::v2::Services::Create()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="services_8hpp_source.html#l00104">api::v2::Services::Create()</a>.</p>
 
 </div>
 </div>
@@ -383,7 +384,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classServiceController.html#a5cdd73e0b08ae45f2d808070e5680025">ServiceController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
 </div>
 </div>
@@ -431,9 +432,9 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classServiceController.html#adc89e37530112d08d7ee85aae48d8d3c">ServiceController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="services_8hpp_source.html#l00263">api::v2::Services::Delete()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="services_8hpp_source.html#l00407">api::v2::Services::Delete()</a>.</p>
 
 </div>
 </div>
@@ -481,7 +482,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classServiceController.html#a69e19ca4bc442fd85af8df06ed98b5dc">ServiceController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
 </div>
 </div>
@@ -587,9 +588,9 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classServiceController.html#a92157307a0c39b6623d7a5cb75a0e7bf">ServiceController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="services_8hpp_source.html#l00139">api::v2::Services::Read()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="services_8hpp_source.html#l00205">api::v2::Services::Read()</a>.</p>
 
 </div>
 </div>
@@ -637,7 +638,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classServiceController.html#ab279214d55b6c2fa43ad6ee069413c97">ServiceController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
 </div>
 </div>
@@ -685,9 +686,9 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classServiceController.html#af655c40238892ccf0103ebf85ac4d438">ServiceController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="services_8hpp_source.html#l00327">api::v2::Services::Search()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="services_8hpp_source.html#l00508">api::v2::Services::Search()</a>.</p>
 
 </div>
 </div>
@@ -741,9 +742,9 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classServiceController.html#a0bdcfc6e76c7864d0c84acd7be675ce4">ServiceController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="services_8hpp_source.html#l00199">api::v2::Services::Update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="services_8hpp_source.html#l00302">api::v2::Services::Update()</a>.</p>
 
 </div>
 </div>
@@ -797,7 +798,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classServiceController.html#abbe959a26ec829cc66e5e1cfd8175577">ServiceController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
 </div>
 </div>

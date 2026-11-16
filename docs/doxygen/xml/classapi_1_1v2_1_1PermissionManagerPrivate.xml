@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="62" column="9"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="74" column="5"/>
         <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a2f2b1ad9fadb824a62df52bfe07f80fd">operator=</referencedby>
         <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a885d7b03354ce85c0937e7c42c2216c2">operator=</referencedby>
         <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a3067393d17904c3c949b387bf23b1b0b">PermissionManagerPrivate</referencedby>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="63" column="17"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="76" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a3067393d17904c3c949b387bf23b1b0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="64" column="9"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="78" column="5"/>
         <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1aa31f67bcd25e9e17e0e4650edd10d6e5">PermissionManagerPrivate</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a2f2b1ad9fadb824a62df52bfe07f80fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -71,7 +71,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="65" column="34"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="80" column="30"/>
         <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1aa31f67bcd25e9e17e0e4650edd10d6e5">PermissionManagerPrivate</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1ab4f0b85347800fd1d04031ad37b3f631" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
@@ -90,7 +90,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="66" column="9"/>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="82" column="5"/>
         <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1aa31f67bcd25e9e17e0e4650edd10d6e5">PermissionManagerPrivate</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a885d7b03354ce85c0937e7c42c2216c2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
@@ -109,16 +109,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="67" column="34"/>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="153" endline="163">assert_group_id_match</references>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a6a68b225b7b685e9ed7293606870fafc" compoundref="permissionmanager__private_8cpp" startline="50" endline="63">hasPermission</references>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a9242aea2edde8ca7163099b20049595f" compoundref="permissionmanager__private_8cpp" startline="85" endline="102">isAdminOfService</references>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a261f7f649b795efc1d1dd8955510f9ea" compoundref="permissionmanager__private_8cpp" startline="65" endline="82">isOwnerOfService</references>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1abf032243785557f4e3f6c636a926a8ac" compoundref="permissionmanager__private_8cpp" startline="235" endline="239">isOwnerOrAdmin</references>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a2ca7a0ee58dc0ceb4dfc2ef1374471dc" compoundref="permissionmanager__private_8cpp" startline="214" endline="229">isOwnerOrAdminOrHasPermission</references>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a95781764a2c4cf1be79c2b58fa742348" compoundref="permissionmanager__private_8cpp" startline="108" endline="150">isStaffOfService</references>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="84" column="30"/>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" compoundref="permissionmanager__private_8cpp" startline="265" endline="283">assert_group_id_match</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a6a68b225b7b685e9ed7293606870fafc" compoundref="permissionmanager__private_8cpp" startline="68" endline="95">hasPermission</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a9242aea2edde8ca7163099b20049595f" compoundref="permissionmanager__private_8cpp" startline="137" endline="164">isAdminOfService</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a261f7f649b795efc1d1dd8955510f9ea" compoundref="permissionmanager__private_8cpp" startline="102" endline="129">isOwnerOfService</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a2ca7a0ee58dc0ceb4dfc2ef1374471dc" compoundref="permissionmanager__private_8cpp" startline="356" endline="385">isOwnerOrAdminOrHasPermission</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a95781764a2c4cf1be79c2b58fa742348" compoundref="permissionmanager__private_8cpp" startline="177" endline="260">isStaffOfService</references>
         <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1aa31f67bcd25e9e17e0e4650edd10d6e5">PermissionManagerPrivate</references>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a7e6031ab93f769c852bb999b4f2bdc7b" compoundref="permissionmanager__private_8cpp" startline="168" endline="207">preServiceCreateChecks</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a7e6031ab93f769c852bb999b4f2bdc7b" compoundref="permissionmanager__private_8cpp" startline="289" endline="349">preServiceCreateChecks</references>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -129,7 +128,7 @@
         <name>hasPermission</name>
         <qualifiedname>api::v2::PermissionManagerPrivate::hasPermission</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -145,7 +144,7 @@
           <declname>service_name</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -199,10 +198,10 @@ Requires staff membership plus the <computeroutput>powerlevel</computeroutput> c
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="78" column="21" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="50" bodyend="63"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" compoundref="http_8hpp" startline="85">api::v2::Http::FORBIDDEN</references>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a95781764a2c4cf1be79c2b58fa742348" compoundref="permissionmanager__private_8cpp" startline="108" endline="150">isStaffOfService</references>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a2ca7a0ee58dc0ceb4dfc2ef1374471dc" compoundref="permissionmanager__private_8cpp" startline="214" endline="229">isOwnerOrAdminOrHasPermission</referencedby>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="98" column="17" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="68" bodyend="95"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" compoundref="http_8hpp" startline="106">api::v2::Http::FORBIDDEN</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a95781764a2c4cf1be79c2b58fa742348" compoundref="permissionmanager__private_8cpp" startline="177" endline="260">isStaffOfService</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a2ca7a0ee58dc0ceb4dfc2ef1374471dc" compoundref="permissionmanager__private_8cpp" startline="356" endline="385">isOwnerOrAdminOrHasPermission</referencedby>
         <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a885d7b03354ce85c0937e7c42c2216c2">operator=</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a261f7f649b795efc1d1dd8955510f9ea" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -212,7 +211,7 @@ Requires staff membership plus the <computeroutput>powerlevel</computeroutput> c
         <name>isOwnerOfService</name>
         <qualifiedname>api::v2::PermissionManagerPrivate::isOwnerOfService</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -224,7 +223,7 @@ Requires staff membership plus the <computeroutput>powerlevel</computeroutput> c
           <declname>service_name</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -271,10 +270,9 @@ Requires staff membership plus the <computeroutput>powerlevel</computeroutput> c
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="89" column="21" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="65" bodyend="82"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" compoundref="http_8hpp" startline="85">api::v2::Http::FORBIDDEN</references>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1abf032243785557f4e3f6c636a926a8ac" compoundref="permissionmanager__private_8cpp" startline="235" endline="239">isOwnerOrAdmin</referencedby>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="117" column="17" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="102" bodyend="129"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" compoundref="http_8hpp" startline="106">api::v2::Http::FORBIDDEN</references>
         <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a885d7b03354ce85c0937e7c42c2216c2">operator=</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a9242aea2edde8ca7163099b20049595f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -284,7 +282,7 @@ Requires staff membership plus the <computeroutput>powerlevel</computeroutput> c
         <name>isAdminOfService</name>
         <qualifiedname>api::v2::PermissionManagerPrivate::isAdminOfService</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -296,7 +294,7 @@ Requires staff membership plus the <computeroutput>powerlevel</computeroutput> c
           <declname>service_name</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -343,20 +341,19 @@ Requires staff membership plus the <computeroutput>powerlevel</computeroutput> c
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="100" column="21" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="85" bodyend="102"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" compoundref="http_8hpp" startline="85">api::v2::Http::FORBIDDEN</references>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1abf032243785557f4e3f6c636a926a8ac" compoundref="permissionmanager__private_8cpp" startline="235" endline="239">isOwnerOrAdmin</referencedby>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="134" column="17" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="137" bodyend="164"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" compoundref="http_8hpp" startline="106">api::v2::Http::FORBIDDEN</references>
         <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a885d7b03354ce85c0937e7c42c2216c2">operator=</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a95781764a2c4cf1be79c2b58fa742348" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::optional&lt; <ref refid="structPermissions_1a9617e1834ef40047fc77ac4898e51eb5" kindref="member">Permissions::StaffPermission</ref> &gt;</type>
+        <type>std::optional&lt; <ref refid="structPermissions_1a26a1c9adb722c5389044eb29c0db4e1e" kindref="member">Permissions::StaffPermission</ref> &gt;</type>
         <definition>std::optional&lt; Permissions::StaffPermission &gt; PermissionManagerPrivate::isStaffOfService</definition>
         <argsstring>(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const std::string &amp;service_name, Http::Error &amp;error)</argsstring>
         <name>isStaffOfService</name>
         <qualifiedname>api::v2::PermissionManagerPrivate::isStaffOfService</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -368,7 +365,7 @@ Requires staff membership plus the <computeroutput>powerlevel</computeroutput> c
           <declname>service_name</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -416,10 +413,10 @@ Malformed numeric entries throw and are reported as FORBIDDEN; a non-match also 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="113" column="30" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="108" bodyend="150"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" compoundref="http_8hpp" startline="85">api::v2::Http::FORBIDDEN</references>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a6a68b225b7b685e9ed7293606870fafc" compoundref="permissionmanager__private_8cpp" startline="50" endline="63">hasPermission</referencedby>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="155" column="5" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="177" bodyend="260"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" compoundref="http_8hpp" startline="106">api::v2::Http::FORBIDDEN</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a6a68b225b7b685e9ed7293606870fafc" compoundref="permissionmanager__private_8cpp" startline="68" endline="95">hasPermission</referencedby>
         <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a885d7b03354ce85c0937e7c42c2216c2">operator=</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -429,7 +426,7 @@ Malformed numeric entries throw and are reported as FORBIDDEN; a non-match also 
         <name>assert_group_id_match</name>
         <qualifiedname>api::v2::PermissionManagerPrivate::assert_group_id_match</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -441,7 +438,7 @@ Malformed numeric entries throw and are reported as FORBIDDEN; a non-match also 
           <declname>client_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -488,18 +485,18 @@ Malformed numeric entries throw and are reported as FORBIDDEN; a non-match also 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="124" column="21" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="153" bodyend="163"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" compoundref="http_8hpp" startline="85">api::v2::Http::FORBIDDEN</references>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a71258d4ae15f18d8a002c192c0fb6e2a" compoundref="permissionmanager_8cpp" startline="67" endline="70">api::v2::PermissionManager::canDelete</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a0adc8dfb1a38a0e3953a4032f3673980" compoundref="permissionmanager_8cpp" startline="253" endline="256">api::v2::PermissionManager::canDeleteAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a3fdd025d52c5c4b4140c3ff6790921fd" compoundref="permissionmanager_8cpp" startline="81" endline="84">api::v2::PermissionManager::canGetServices</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a30126a03fc03c2870325aa6df4543518" compoundref="permissionmanager_8cpp" startline="267" endline="270">api::v2::PermissionManager::canGetServicesAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1aff6b99de61b84feb36a534319778195b" compoundref="permissionmanager_8cpp" startline="55" endline="58">api::v2::PermissionManager::canRead</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1aed948cb4da3d53102be81025ef98bda2" compoundref="permissionmanager_8cpp" startline="241" endline="244">api::v2::PermissionManager::canReadAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a30eb01bee43eade86f66faa01e47fc91" compoundref="permissionmanager_8cpp" startline="74" endline="77">api::v2::PermissionManager::canToggleActive</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afa8aa5d58764cb40be9d226283f5197a" compoundref="permissionmanager_8cpp" startline="260" endline="263">api::v2::PermissionManager::canToggleActiveAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a96e35dad77cb2e1dbd0ffffa7c648fdc" compoundref="permissionmanager_8cpp" startline="61" endline="64">api::v2::PermissionManager::canUpdate</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afded6faae3268475fa32898c00b5476e" compoundref="permissionmanager_8cpp" startline="247" endline="250">api::v2::PermissionManager::canUpdateAsync</referencedby>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="172" column="17" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="265" bodyend="283"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" compoundref="http_8hpp" startline="106">api::v2::Http::FORBIDDEN</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a71258d4ae15f18d8a002c192c0fb6e2a" compoundref="permissionmanager_8cpp" startline="106" endline="115">api::v2::PermissionManager::canDelete</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a0adc8dfb1a38a0e3953a4032f3673980" compoundref="permissionmanager_8cpp" startline="551" endline="559">api::v2::PermissionManager::canDeleteAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a3fdd025d52c5c4b4140c3ff6790921fd" compoundref="permissionmanager_8cpp" startline="138" endline="147">api::v2::PermissionManager::canGetServices</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a30126a03fc03c2870325aa6df4543518" compoundref="permissionmanager_8cpp" startline="580" endline="587">api::v2::PermissionManager::canGetServicesAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1aff6b99de61b84feb36a534319778195b" compoundref="permissionmanager_8cpp" startline="76" endline="85">api::v2::PermissionManager::canRead</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1aed948cb4da3d53102be81025ef98bda2" compoundref="permissionmanager_8cpp" startline="525" endline="533">api::v2::PermissionManager::canReadAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a30eb01bee43eade86f66faa01e47fc91" compoundref="permissionmanager_8cpp" startline="122" endline="131">api::v2::PermissionManager::canToggleActive</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afa8aa5d58764cb40be9d226283f5197a" compoundref="permissionmanager_8cpp" startline="566" endline="573">api::v2::PermissionManager::canToggleActiveAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a96e35dad77cb2e1dbd0ffffa7c648fdc" compoundref="permissionmanager_8cpp" startline="91" endline="100">api::v2::PermissionManager::canUpdate</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1afded6faae3268475fa32898c00b5476e" compoundref="permissionmanager_8cpp" startline="538" endline="546">api::v2::PermissionManager::canUpdateAsync</referencedby>
         <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a885d7b03354ce85c0937e7c42c2216c2">operator=</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a7e6031ab93f769c852bb999b4f2bdc7b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -509,7 +506,7 @@ Malformed numeric entries throw and are reported as FORBIDDEN; a non-match also 
         <name>preServiceCreateChecks</name>
         <qualifiedname>api::v2::PermissionManagerPrivate::preServiceCreateChecks</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -517,7 +514,7 @@ Malformed numeric entries throw and are reported as FORBIDDEN; a non-match also 
           <declname>service_j</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -555,8 +552,8 @@ Validates service creation: payload present, ids extractable, caller is the prov
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="133" column="21" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="168" bodyend="207"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="187" column="17" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="289" bodyend="349"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
         <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a885d7b03354ce85c0937e7c42c2216c2">operator=</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a2ca7a0ee58dc0ceb4dfc2ef1374471dc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -566,7 +563,7 @@ Validates service creation: payload present, ids extractable, caller is the prov
         <name>isOwnerOrAdminOrHasPermission</name>
         <qualifiedname>api::v2::PermissionManagerPrivate::isOwnerOrAdminOrHasPermission</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -578,7 +575,7 @@ Validates service creation: payload present, ids extractable, caller is the prov
           <declname>service_name</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <param>
@@ -596,20 +593,20 @@ Validates service creation: payload present, ids extractable, caller is the prov
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="142" column="21" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="214" bodyend="229"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" compoundref="http_8hpp" startline="85">api::v2::Http::FORBIDDEN</references>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a6a68b225b7b685e9ed7293606870fafc" compoundref="permissionmanager__private_8cpp" startline="50" endline="63">hasPermission</references>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1abf032243785557f4e3f6c636a926a8ac" compoundref="permissionmanager__private_8cpp" startline="235" endline="239">isOwnerOrAdmin</references>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="203" column="17" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="356" bodyend="385"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" compoundref="http_8hpp" startline="106">api::v2::Http::FORBIDDEN</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a6a68b225b7b685e9ed7293606870fafc" compoundref="permissionmanager__private_8cpp" startline="68" endline="95">hasPermission</references>
+        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a64b26a6beda50b382d489eb1459f907e">isOwnerOrAdmin</references>
         <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a885d7b03354ce85c0937e7c42c2216c2">operator=</referencedby>
       </memberdef>
-      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1abf032243785557f4e3f6c636a926a8ac" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a64b26a6beda50b382d489eb1459f907e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
-        <definition>bool api::v2::PermissionManagerPrivate::isOwnerOrAdmin</definition>
+        <definition>static bool api::v2::PermissionManagerPrivate::isOwnerOrAdmin</definition>
         <argsstring>(const Requester &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const std::string &amp;service_name, Http::Error &amp;error)</argsstring>
         <name>isOwnerOrAdmin</name>
         <qualifiedname>api::v2::PermissionManagerPrivate::isOwnerOrAdmin</qualifiedname>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -621,7 +618,7 @@ Validates service creation: payload present, ids extractable, caller is the prov
           <declname>service_name</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -661,19 +658,16 @@ Validates service creation: payload present, ids extractable, caller is the prov
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>True when either identity check succeeds.</para>
+<simplesect kind="return"><para>True when either identity check succeeds. </para>
 </simplesect>
-Allows either the owner or the admin (short-circuits on owner success). error: May still hold a message from a failed first check when the second succeeds. </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="153" column="21" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.cpp" bodystart="235" bodyend="239"/>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a9242aea2edde8ca7163099b20049595f" compoundref="permissionmanager__private_8cpp" startline="85" endline="102">isAdminOfService</references>
-        <references refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a261f7f649b795efc1d1dd8955510f9ea" compoundref="permissionmanager__private_8cpp" startline="65" endline="82">isOwnerOfService</references>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a850868371bb029e826761eff3b329c5c" compoundref="permissionmanager_8cpp" startline="128" endline="135">api::v2::PermissionManager::canManageStaff</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1af314003136240877cbf15fe24c288a05" compoundref="permissionmanager_8cpp" startline="311" endline="317">api::v2::PermissionManager::canManageStaffAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a2ca7a0ee58dc0ceb4dfc2ef1374471dc" compoundref="permissionmanager__private_8cpp" startline="214" endline="229">isOwnerOrAdminOrHasPermission</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a885d7b03354ce85c0937e7c42c2216c2">operator=</referencedby>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="221" column="17"/>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a850868371bb029e826761eff3b329c5c" compoundref="permissionmanager_8cpp" startline="251" endline="269">api::v2::PermissionManager::canManageStaff</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1af314003136240877cbf15fe24c288a05" compoundref="permissionmanager_8cpp" startline="691" endline="708">api::v2::PermissionManager::canManageStaffAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a2ca7a0ee58dc0ceb4dfc2ef1374471dc" compoundref="permissionmanager__private_8cpp" startline="356" endline="385">isOwnerOrAdminOrHasPermission</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a8243a8ac1bf2b9855448e67fa959c6fc" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -699,7 +693,7 @@ Allows either the owner or the admin (short-circuits on owner success). error: M
           <declname>service_name</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <briefdescription>
@@ -754,8 +748,8 @@ Allows either the owner or the admin (short-circuits on owner success). error: M
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="168" column="30" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" bodystart="168" bodyend="190"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="242" column="26" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" bodystart="242" bodyend="281"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a3e7c77aa55023f9d5ccc345e7b68f2ab" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -827,10 +821,10 @@ Allows either the owner or the admin (short-circuits on owner success). error: M
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="206" column="30" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" bodystart="206" bodyend="232"/>
-        <references refid="classStore_1aaf81da54b109478891030b7e04653bad" compoundref="store_8hpp" startline="189" endline="200">Store::cachedObject</references>
-        <references refid="classBasicPermissionCache_1a6282dd3b2250a617863292fa8e42701f" compoundref="permissioncache_8hpp" startline="161" endline="165">BasicPermissionCache&lt; ClockT &gt;::instance</references>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a850868371bb029e826761eff3b329c5c" compoundref="permissionmanager_8cpp" startline="128" endline="135">api::v2::PermissionManager::canManageStaff</referencedby>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="306" column="26" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" bodystart="306" bodyend="357"/>
+        <references refid="classStore_1aaf81da54b109478891030b7e04653bad" compoundref="store_8hpp" startline="260" endline="278">Store::cachedObject</references>
+        <references refid="classBasicPermissionCache_1a6282dd3b2250a617863292fa8e42701f" compoundref="permissioncache_8hpp" startline="213" endline="220">BasicPermissionCache&lt; ClockT &gt;::instance</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1a850868371bb029e826761eff3b329c5c" compoundref="permissionmanager_8cpp" startline="251" endline="269">api::v2::PermissionManager::canManageStaff</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1PermissionManagerPrivate_1a070d79b55b8f3262de2b815a636defd7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -902,21 +896,21 @@ Allows either the owner or the admin (short-circuits on owner success). error: M
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="246" column="29" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" bodystart="246" bodyend="272"/>
-        <references refid="classStore_1aaf81da54b109478891030b7e04653bad" compoundref="store_8hpp" startline="189" endline="200">Store::cachedObject</references>
-        <references refid="classBasicPermissionCache_1a6282dd3b2250a617863292fa8e42701f" compoundref="permissioncache_8hpp" startline="161" endline="165">BasicPermissionCache&lt; ClockT &gt;::instance</references>
-        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1af314003136240877cbf15fe24c288a05" compoundref="permissionmanager_8cpp" startline="311" endline="317">api::v2::PermissionManager::canManageStaffAsync</referencedby>
+        <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="382" column="5" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" bodystart="382" bodyend="430"/>
+        <references refid="classStore_1aaf81da54b109478891030b7e04653bad" compoundref="store_8hpp" startline="260" endline="278">Store::cachedObject</references>
+        <references refid="classBasicPermissionCache_1a6282dd3b2250a617863292fa8e42701f" compoundref="permissioncache_8hpp" startline="213" endline="220">BasicPermissionCache&lt; ClockT &gt;::instance</references>
+        <referencedby refid="classapi_1_1v2_1_1PermissionManager_1af314003136240877cbf15fe24c288a05" compoundref="permissionmanager_8cpp" startline="691" endline="708">api::v2::PermissionManager::canManageStaffAsync</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
 <para>Implementation helpers shared by the <ref refid="classapi_1_1v2_1_1PermissionManager" kindref="compound">PermissionManager</ref> authorization overloads. </para>
     </briefdescription>
     <detaileddescription>
-<para>Pure static utilities: they interpret the permission JSON returned by the database (owner/admin ids, staff capability strings), enforce group/id checks and create preconditions, and fetch/cache entity permissions through <ref refid="permissioncache_8hpp_1a07017f9d2fac77a264ee3c9aad001918" kindref="member">PermissionCache</ref>. Sync helpers use <ref refid="classDatabaseController_1ae11a73cc6347582351411b8c5ef7341d" kindref="member">DatabaseController::getPermissions</ref>; the <computeroutput>*Coro</computeroutput> variant awaits getPermissionsCoro. All denial/error details are written to the caller-provided <ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Http::Error</ref>. <simplesect kind="note"><para>The class holds no state; all members are static. In everyday words: this is a toolbox, not a machine. You never make one; you call its named tools with the facts and get a yes/no back. </para>
+<para>Pure static utilities: they interpret the permission JSON returned by the database (owner/admin ids, staff capability strings), enforce group/id checks and create preconditions, and fetch/cache entity permissions through <ref refid="permissioncache_8hpp_1af89da15e5a12d8824c558d44b4452c26" kindref="member">PermissionCache</ref>. Sync helpers use <ref refid="classDatabaseController_1ae11a73cc6347582351411b8c5ef7341d" kindref="member">DatabaseController::getPermissions</ref>; the <computeroutput>*Coro</computeroutput> variant awaits getPermissionsCoro. All denial/error details are written to the caller-provided <ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Http::Error</ref>. <simplesect kind="note"><para>The class holds no state; all members are static. In everyday words: this is a toolbox, not a machine. You never make one; you call its named tools with the facts and get a yes/no back. </para>
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="59" column="5" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" bodystart="60" bodyend="275"/>
+    <location file="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" line="72" column="3" bodyfile="src/gatekeeper/permissionmanager/permissionmanager_private.hpp" bodystart="72" bodyend="433"/>
     <listofallmembers>
       <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1acc3187ff8d1189d0e1b02d23908847c9" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>assert_group_id_match</name></member>
       <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a8243a8ac1bf2b9855448e67fa959c6fc" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>extract_json_value_safely</name></member>
@@ -925,7 +919,7 @@ Allows either the owner or the admin (short-circuits on owner success). error: M
       <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a6a68b225b7b685e9ed7293606870fafc" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>hasPermission</name></member>
       <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a9242aea2edde8ca7163099b20049595f" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>isAdminOfService</name></member>
       <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a261f7f649b795efc1d1dd8955510f9ea" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>isOwnerOfService</name></member>
-      <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1abf032243785557f4e3f6c636a926a8ac" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>isOwnerOrAdmin</name></member>
+      <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a64b26a6beda50b382d489eb1459f907e" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>isOwnerOrAdmin</name></member>
       <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a2ca7a0ee58dc0ceb4dfc2ef1374471dc" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>isOwnerOrAdminOrHasPermission</name></member>
       <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a95781764a2c4cf1be79c2b58fa742348" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>isStaffOfService</name></member>
       <member refid="classapi_1_1v2_1_1PermissionManagerPrivate_1a2f2b1ad9fadb824a62df52bfe07f80fd" prot="public" virt="non-virtual"><scope>api::v2::PermissionManagerPrivate</scope><name>operator=</name></member>

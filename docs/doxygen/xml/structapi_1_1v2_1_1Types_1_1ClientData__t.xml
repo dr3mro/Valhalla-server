@@ -19,12 +19,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="415" column="28" bodyfile="src/entities/base/types.hpp" bodystart="415" bodyend="-1"/>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1CreateClient__t_1a33df7cd784299784f24b76d4343bd4dc" compoundref="entities_2base_2types_8hpp" startline="475" endline="505">api::v2::Types::CreateClient_t::CreateClient_t</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1CreateClient__t_1ad1e51108cd8b45962846d1cad89e2650" compoundref="entities_2base_2types_8hpp" startline="509" endline="509">api::v2::Types::CreateClient_t::get_data_set</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t_1afaaa1292f016390f27db939c7eb9da51" compoundref="entities_2base_2types_8hpp" startline="565" endline="565">api::v2::Types::UpdateClient_t::get_data_set</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a7f7e2dd8e7b65786c7d988cee10628fa" compoundref="entities_2base_2types_8hpp" startline="434" endline="450">hashPassword</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t_1ae44d3b57fc3fc6e35d58b83da0f8ef8d" compoundref="entities_2base_2types_8hpp" startline="532" endline="561">api::v2::Types::UpdateClient_t::UpdateClient_t</referencedby>
+        <location file="src/entities/base/types.hpp" line="557" column="9" bodyfile="src/entities/base/types.hpp" bodystart="557" bodyend="-1"/>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1CreateClient__t_1a33df7cd784299784f24b76d4343bd4dc" compoundref="entities_2base_2types_8hpp" startline="638" endline="686">api::v2::Types::CreateClient_t::CreateClient_t</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1CreateClient__t_1ad1e51108cd8b45962846d1cad89e2650" compoundref="entities_2base_2types_8hpp" startline="692" endline="694">api::v2::Types::CreateClient_t::get_data_set</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t_1afaaa1292f016390f27db939c7eb9da51" compoundref="entities_2base_2types_8hpp" startline="776" endline="778">api::v2::Types::UpdateClient_t::get_data_set</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a7f7e2dd8e7b65786c7d988cee10628fa" compoundref="entities_2base_2types_8hpp" startline="581" endline="606">hashPassword</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t_1ae44d3b57fc3fc6e35d58b83da0f8ef8d" compoundref="entities_2base_2types_8hpp" startline="723" endline="770">api::v2::Types::UpdateClient_t::UpdateClient_t</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structapi_1_1v2_1_1Types_1_1ClientData__t_1adc52add57f54dc3d0d39360a71e1ff22" prot="protected" static="no" mutable="no">
         <type>std::optional&lt; jsoncons::json &gt;</type>
@@ -39,11 +39,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="420" column="49" bodyfile="src/entities/base/types.hpp" bodystart="420" bodyend="-1"/>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a6c90d78e4dd68ae25af5e18582fb3910" compoundref="entities_2base_2types_8hpp" startline="377" endline="399">ClientData_t</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1CreateClient__t_1a33df7cd784299784f24b76d4343bd4dc" compoundref="entities_2base_2types_8hpp" startline="475" endline="505">api::v2::Types::CreateClient_t::CreateClient_t</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a1ae1de4ae01c497a90e0820734c7fcd0" compoundref="entities_2base_2types_8hpp" startline="404" endline="404">get_data_json</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t_1ae44d3b57fc3fc6e35d58b83da0f8ef8d" compoundref="entities_2base_2types_8hpp" startline="532" endline="561">api::v2::Types::UpdateClient_t::UpdateClient_t</referencedby>
+        <location file="src/entities/base/types.hpp" line="563" column="19" bodyfile="src/entities/base/types.hpp" bodystart="563" bodyend="-1"/>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a6c90d78e4dd68ae25af5e18582fb3910" compoundref="entities_2base_2types_8hpp" startline="497" endline="534">ClientData_t</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1CreateClient__t_1a33df7cd784299784f24b76d4343bd4dc" compoundref="entities_2base_2types_8hpp" startline="638" endline="686">api::v2::Types::CreateClient_t::CreateClient_t</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a1ae1de4ae01c497a90e0820734c7fcd0" compoundref="entities_2base_2types_8hpp" startline="539" endline="541">get_data_json</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t_1ae44d3b57fc3fc6e35d58b83da0f8ef8d" compoundref="entities_2base_2types_8hpp" startline="723" endline="770">api::v2::Types::UpdateClient_t::UpdateClient_t</referencedby>
       </memberdef>
       <memberdef kind="variable" id="structapi_1_1v2_1_1Types_1_1ClientData__t_1a4caf1579ffb2a759b0cfd74e92050c8d" prot="protected" static="no" mutable="no">
         <type>std::optional&lt; uint64_t &gt;</type>
@@ -58,9 +58,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="425" column="55" bodyfile="src/entities/base/types.hpp" bodystart="425" bodyend="-1"/>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a6c90d78e4dd68ae25af5e18582fb3910" compoundref="entities_2base_2types_8hpp" startline="377" endline="399">ClientData_t</referencedby>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1af4bf043de33241e71b98b72885190d3d" compoundref="entities_2base_2types_8hpp" startline="409" endline="409">get_id</referencedby>
+        <location file="src/entities/base/types.hpp" line="568" column="19" bodyfile="src/entities/base/types.hpp" bodystart="568" bodyend="-1"/>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a6c90d78e4dd68ae25af5e18582fb3910" compoundref="entities_2base_2types_8hpp" startline="497" endline="534">ClientData_t</referencedby>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1af4bf043de33241e71b98b72885190d3d" compoundref="entities_2base_2types_8hpp" startline="547" endline="549">get_id</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -70,7 +70,8 @@
         <argsstring></argsstring>
         <name>passwordCrypt</name>
         <qualifiedname>api::v2::Types::ClientData_t::passwordCrypt</qualifiedname>
-        <initializer>= <ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject</ref>&lt;<ref refid="classPasswordCrypt" kindref="compound">PasswordCrypt</ref>&gt;()</initializer>
+        <initializer>                          =
+<ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject</ref>&lt;<ref refid="classPasswordCrypt" kindref="compound">PasswordCrypt</ref>&gt;()</initializer>
         <briefdescription>
 <para>Shared password hasher obtained from the global object store. </para>
         </briefdescription>
@@ -78,8 +79,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="456" column="25" bodyfile="src/entities/base/types.hpp" bodystart="456" bodyend="-1"/>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a7f7e2dd8e7b65786c7d988cee10628fa" compoundref="entities_2base_2types_8hpp" startline="434" endline="450">hashPassword</referencedby>
+        <location file="src/entities/base/types.hpp" line="612" column="21" bodyfile="src/entities/base/types.hpp" bodystart="612" bodyend="-1"/>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a7f7e2dd8e7b65786c7d988cee10628fa" compoundref="entities_2base_2types_8hpp" startline="581" endline="606">hashPassword</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -98,7 +99,7 @@
           <declname>_id</declname>
         </param>
         <param>
-          <type><ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">api::v2::Http::Error</ref> &amp;</type>
+          <type><ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">api::v2::Http::Error</ref> &amp;</type>
           <declname>error</declname>
         </param>
         <param>
@@ -146,13 +147,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="377" column="9" bodyfile="src/entities/base/types.hpp" bodystart="377" bodyend="399"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1adc52add57f54dc3d0d39360a71e1ff22" compoundref="entities_2base_2types_8hpp" startline="420">data_j</references>
-        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
-        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a4caf1579ffb2a759b0cfd74e92050c8d" compoundref="entities_2base_2types_8hpp" startline="425">id</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">api::v2::Http::INTERNAL_SERVER_ERROR</references>
+        <location file="src/entities/base/types.hpp" line="497" column="5" bodyfile="src/entities/base/types.hpp" bodystart="497" bodyend="534"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1adc52add57f54dc3d0d39360a71e1ff22" compoundref="entities_2base_2types_8hpp" startline="563">data_j</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
+        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a4caf1579ffb2a759b0cfd74e92050c8d" compoundref="entities_2base_2types_8hpp" startline="568">id</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="123">api::v2::Http::INTERNAL_SERVER_ERROR</references>
       </memberdef>
       <memberdef kind="function" id="structapi_1_1v2_1_1Types_1_1ClientData__t_1a1ae1de4ae01c497a90e0820734c7fcd0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::optional&lt; jsoncons::json &gt; &amp;</type>
@@ -167,9 +168,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="404" column="29" bodyfile="src/entities/base/types.hpp" bodystart="404" bodyend="404"/>
-        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1adc52add57f54dc3d0d39360a71e1ff22" compoundref="entities_2base_2types_8hpp" startline="420">data_j</references>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t_1ae44d3b57fc3fc6e35d58b83da0f8ef8d" compoundref="entities_2base_2types_8hpp" startline="532" endline="561">api::v2::Types::UpdateClient_t::UpdateClient_t</referencedby>
+        <location file="src/entities/base/types.hpp" line="539" column="25" bodyfile="src/entities/base/types.hpp" bodystart="539" bodyend="541"/>
+        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1adc52add57f54dc3d0d39360a71e1ff22" compoundref="entities_2base_2types_8hpp" startline="563">data_j</references>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1UpdateClient__t_1ae44d3b57fc3fc6e35d58b83da0f8ef8d" compoundref="entities_2base_2types_8hpp" startline="723" endline="770">api::v2::Types::UpdateClient_t::UpdateClient_t</referencedby>
       </memberdef>
       <memberdef kind="function" id="structapi_1_1v2_1_1Types_1_1ClientData__t_1af4bf043de33241e71b98b72885190d3d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; uint64_t &gt;</type>
@@ -184,8 +185,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="409" column="36" bodyfile="src/entities/base/types.hpp" bodystart="409" bodyend="409"/>
-        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a4caf1579ffb2a759b0cfd74e92050c8d" compoundref="entities_2base_2types_8hpp" startline="425">id</references>
+        <location file="src/entities/base/types.hpp" line="547" column="19" bodyfile="src/entities/base/types.hpp" bodystart="547" bodyend="549"/>
+        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a4caf1579ffb2a759b0cfd74e92050c8d" compoundref="entities_2base_2types_8hpp" startline="568">id</references>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-func">
@@ -207,10 +208,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/base/types.hpp" line="434" column="14" bodyfile="src/entities/base/types.hpp" bodystart="434" bodyend="450"/>
-        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1ad6c132aa0d6b24951d7933dfffa81260" compoundref="entities_2base_2types_8hpp" startline="415">data_set</references>
-        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a435ffa1290f2593eaacd1835a2c90632" compoundref="entities_2base_2types_8hpp" startline="456">passwordCrypt</references>
-        <referencedby refid="structapi_1_1v2_1_1Types_1_1CreateClient__t_1a33df7cd784299784f24b76d4343bd4dc" compoundref="entities_2base_2types_8hpp" startline="475" endline="505">api::v2::Types::CreateClient_t::CreateClient_t</referencedby>
+        <location file="src/entities/base/types.hpp" line="581" column="10" bodyfile="src/entities/base/types.hpp" bodystart="581" bodyend="606"/>
+        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1ad6c132aa0d6b24951d7933dfffa81260" compoundref="entities_2base_2types_8hpp" startline="557">data_set</references>
+        <references refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a435ffa1290f2593eaacd1835a2c90632" compoundref="entities_2base_2types_8hpp" startline="612">passwordCrypt</references>
+        <referencedby refid="structapi_1_1v2_1_1Types_1_1CreateClient__t_1a33df7cd784299784f24b76d4343bd4dc" compoundref="entities_2base_2types_8hpp" startline="638" endline="686">api::v2::Types::CreateClient_t::CreateClient_t</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -239,7 +240,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="src/entities/base/types.hpp" line="366" column="5" bodyfile="src/entities/base/types.hpp" bodystart="367" bodyend="457"/>
+    <location file="src/entities/base/types.hpp" line="485" column="3" bodyfile="src/entities/base/types.hpp" bodystart="485" bodyend="616"/>
     <listofallmembers>
       <member refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1a6c90d78e4dd68ae25af5e18582fb3910" prot="public" virt="non-virtual"><scope>api::v2::Types::ClientData_t</scope><name>ClientData_t</name></member>
       <member refid="structapi_1_1v2_1_1Types_1_1ClientData__t_1adc52add57f54dc3d0d39360a71e1ff22" prot="protected" virt="non-virtual"><scope>api::v2::Types::ClientData_t</scope><name>data_j</name></member>

@@ -113,7 +113,9 @@ class BoundedExecutor {
    * values below 1 become 1.
    * @param[in] name Label used in log messages and statistics output.
    */
-  BoundedExecutor(std::size_t workers, std::size_t queue_max, std::string name);
+  BoundedExecutor(std::size_t workers,
+                  std::size_t queue_max,
+                  std::string name);
   /**
    * Copy construction is disabled; an executor owns live threads that cannot
    * be duplicated.

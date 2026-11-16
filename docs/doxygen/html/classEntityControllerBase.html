@@ -156,11 +156,11 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Abstract contract for the request-facing CRUDS handlers exposed for every entity type. </p>
-<p>Declares five operations (Create, Read, Update, Delete, Search), each in a synchronous callback form and in a <span class="tt">drogon::Task</span> coroutine form. Implementations (see <a class="el" href="classEntityController.html" title="Generic request-facing CRUDS handler: validates and authorizes a request, then delegates persistence ...">EntityController</a>) are expected to parse and validate <code class="param">data</code>, authorize the action with <code class="param">requester</code>, construct the entity and delegate persistence to the lower-level <a class="el" href="classController.html" title="Reusable persistence engine for the API&#39;s CRUDS (Create/Read/Update/Delete/Search) operations.">Controller</a>. The callback is <span class="tt"><a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3" title="Completion callback used throughout the request pipeline.">CALLBACK_</a></span> = <span class="tt">std::function&lt;void(int, const std::string&amp;)&gt;</span>: implementations invoke it once with an HTTP status code and a response body, including on error paths.</p>
-<p>The interface itself does not own or store any state; derived controllers supply the collaborators. The lifetime of <code class="param">callback</code>, <code class="param">requester</code> and <code class="param">data</code> (and of the owning controller) must extend until the coroutine variants complete, because they are borrowed by the coroutine frame. </p><dl class="section note"><dt>Note</dt><dd>The <span class="tt">const <a class="el" href="structRequester.html" title="Value object describing who issued a request.">Requester</a>&amp;&amp;</span> parameter is passed by rvalue reference by the existing callers; treat it as a borrowed, immutable principal rather than assuming ownership is transferred. </dd></dl>
+<p>Declares five operations (Create, Read, Update, Delete, Search), each in a synchronous callback form and in a <span class="tt">drogon::Task</span> coroutine form. Implementations (see <a class="el" href="classEntityController.html" title="Generic request-facing CRUDS handler: validates and authorizes a request, then delegates persistence ...">EntityController</a>) are expected to parse and validate <code class="param">data</code>, authorize the action with <code class="param">requester</code>, construct the entity and delegate persistence to the lower-level <a class="el" href="classController.html" title="Reusable persistence engine for the API&#39;s CRUDS (Create/Read/Update/Delete/Search) operations.">Controller</a>. The callback is <span class="tt"><a class="el" href="callback_8hpp.html#a46d97763fde9c175df21fc9b8f73b1d3" title="Completion callback used throughout the request pipeline.">CALLBACK_</a></span> = <span class="tt">std::function&lt;void(int, const std::string&amp;)&gt;</span>: implementations invoke it once with an HTTP status code and a response body, including on error paths. </p><pre class="fragment">     The interface itself does not own or store any state; derived
+</pre><p> controllers supply the collaborators. The lifetime of <code class="param">callback</code>, <code class="param">requester</code> and <code class="param">data</code> (and of the owning controller) must extend until the coroutine variants complete, because they are borrowed by the coroutine frame. </p><dl class="section note"><dt>Note</dt><dd>The <span class="tt">const <a class="el" href="structRequester.html" title="Value object describing who issued a request.">Requester</a>&amp;&amp;</span> parameter is passed by rvalue reference by the existing callers; treat it as a borrowed, immutable principal rather than assuming ownership is transferred. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classEntityController.html" title="Generic request-facing CRUDS handler: validates and authorizes a request, then delegates persistence ...">EntityController</a>, <a class="el" href="classController.html" title="Reusable persistence engine for the API&#39;s CRUDS (Create/Read/Update/Delete/Search) operations.">Controller</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="entitycontrollerbase_8hpp_source.html#l00055">55</a> of file <a class="el" href="entitycontrollerbase_8hpp_source.html">entitycontrollerbase.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entitycontrollerbase_8hpp_source.html#l00078">78</a> of file <a class="el" href="entitycontrollerbase_8hpp_source.html">entitycontrollerbase.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a945e355f1db0eb3e3775f4b39ff5cc58" name="a945e355f1db0eb3e3775f4b39ff5cc58"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a945e355f1db0eb3e3775f4b39ff5cc58">&#9670;&#160;</a></span>EntityControllerBase() <span class="overload">[1/3]</span></h2>
@@ -315,7 +315,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classAppointmentController.html#a07a0c78a16d4f88cf921a96d6a72858c">AppointmentController&lt; T &gt;</a>, <a class="el" href="classClientController.html#a7b3e95c9052e2b4646f014ca9af39140">ClientController&lt; T &gt;</a>, <a class="el" href="classEntityController.html#a449401c7840a8159d6e3b64c30f72e4d">EntityController&lt; T &gt;</a>, and <a class="el" href="classServiceController.html#a138db9b26dcc863d6895ccb1f01a7123">ServiceController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
 </div>
 </div>
@@ -363,7 +363,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classAppointmentController.html#a5ae310b608a81f19c3e4a5d0bbb57666">AppointmentController&lt; T &gt;</a>, <a class="el" href="classClientController.html#a52b4114b1e619b6526ee861696eff6da">ClientController&lt; T &gt;</a>, <a class="el" href="classEntityController.html#a0de2c6044f1460f85750e4d18635997b">EntityController&lt; T &gt;</a>, and <a class="el" href="classServiceController.html#a5cdd73e0b08ae45f2d808070e5680025">ServiceController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
 </div>
 </div>
@@ -411,7 +411,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classAppointmentController.html#aae035bd4dac4df5e559e0e117534e260">AppointmentController&lt; T &gt;</a>, <a class="el" href="classClientController.html#a57d1a8ba8f83b70242fcc29b7f8f70cb">ClientController&lt; T &gt;</a>, <a class="el" href="classEntityController.html#ae5a0d4d7a4e9dd670f22655a831f8215">EntityController&lt; T &gt;</a>, and <a class="el" href="classServiceController.html#adc89e37530112d08d7ee85aae48d8d3c">ServiceController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
 </div>
 </div>
@@ -459,7 +459,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classAppointmentController.html#a7c0fa66b965e56315970b935e1bb2ad0">AppointmentController&lt; T &gt;</a>, <a class="el" href="classClientController.html#addb2c711f70f69b197b67da384b80c2d">ClientController&lt; T &gt;</a>, <a class="el" href="classEntityController.html#ac2793aa8599a89a46fe157473d16a89e">EntityController&lt; T &gt;</a>, and <a class="el" href="classServiceController.html#a69e19ca4bc442fd85af8df06ed98b5dc">ServiceController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
 </div>
 </div>
@@ -561,7 +561,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classAppointmentController.html#a304bdc460cdd955f0d08a7e5bc3611dc">AppointmentController&lt; T &gt;</a>, <a class="el" href="classClientController.html#a33f69fd2b79bc13817aa0574333266bf">ClientController&lt; T &gt;</a>, <a class="el" href="classEntityController.html#afa8269ceee3631d7e20cbce2444a00aa">EntityController&lt; T &gt;</a>, and <a class="el" href="classServiceController.html#a92157307a0c39b6623d7a5cb75a0e7bf">ServiceController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
 </div>
 </div>
@@ -609,7 +609,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classAppointmentController.html#a96bc67b390c572327b9cbee839ab97dd">AppointmentController&lt; T &gt;</a>, <a class="el" href="classClientController.html#a2a260581d3133c68635516102d87bbdb">ClientController&lt; T &gt;</a>, <a class="el" href="classEntityController.html#a9707869a9f99e7a5df537c9468ea0a4e">EntityController&lt; T &gt;</a>, and <a class="el" href="classServiceController.html#ab279214d55b6c2fa43ad6ee069413c97">ServiceController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
 </div>
 </div>
@@ -657,7 +657,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classAppointmentController.html#a9052acc829edcd321478db51124386d4">AppointmentController&lt; T &gt;</a>, <a class="el" href="classClientController.html#a36c5c10efab0dcfdf020f6702a6ff9bb">ClientController&lt; T &gt;</a>, <a class="el" href="classEntityController.html#a888ea97ce413d880bcca6f7e9cf6b896">EntityController&lt; T &gt;</a>, and <a class="el" href="classServiceController.html#af655c40238892ccf0103ebf85ac4d438">ServiceController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
 </div>
 </div>
@@ -705,7 +705,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classClientController.html#ab7c4ffff79c0e56214abb463ae375925">ClientController&lt; T &gt;</a>, and <a class="el" href="classEntityController.html#a430903208b20b59481d07c88b66ac4f6">EntityController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
 </div>
 </div>
@@ -759,7 +759,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classAppointmentController.html#a8193e8f08b8afcc80abbaf8ffa9991e9">AppointmentController&lt; T &gt;</a>, <a class="el" href="classClientController.html#a671dfda3ad96e247286fe44d22a1b478">ClientController&lt; T &gt;</a>, <a class="el" href="classEntityController.html#a351b900503468ac17e930c42fdf23bdf">EntityController&lt; T &gt;</a>, and <a class="el" href="classServiceController.html#a0bdcfc6e76c7864d0c84acd7be675ce4">ServiceController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
 </div>
 </div>
@@ -813,7 +813,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classAppointmentController.html#ac6ec86b8497afe05196a67967e6063c2">AppointmentController&lt; T &gt;</a>, <a class="el" href="classClientController.html#ad218f6587a3135d5b5466401aac514e9">ClientController&lt; T &gt;</a>, <a class="el" href="classEntityController.html#a89d8cf3d79aae4e8b462c667c70fdce4">EntityController&lt; T &gt;</a>, and <a class="el" href="classServiceController.html#abbe959a26ec829cc66e5e1cfd8175577">ServiceController&lt; T &gt;</a>.</p>
 
-<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00044">CALLBACK_</a>.</p>
+<p class="reference">References <a class="el" href="callback_8hpp_source.html#l00047">CALLBACK_</a>.</p>
 
 </div>
 </div>

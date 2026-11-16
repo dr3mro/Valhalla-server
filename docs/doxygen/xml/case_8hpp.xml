@@ -18,33 +18,33 @@
     <includedby refid="visitdrugs_8hpp" local="yes">src/entities/services/clinics/visits/visitdrugs.hpp</includedby>
     <includedby refid="visits_8hpp" local="yes">src/entities/services/clinics/visits/visits.hpp</includedby>
     <incdepgraph>
-      <node id="22">
+      <node id="21">
         <label>configurator/configurator.hpp</label>
         <link refid="configurator_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="29">
         <label>defaults.hpp</label>
         <link refid="defaults_8hpp"/>
         <childnode refid="3" relation="include">
@@ -52,23 +52,23 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="25">
         <label>configurator/envloader/envloader.hpp</label>
         <link refid="envloader_8hpp"/>
-        <childnode refid="24" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
       </node>
-      <node id="27">
+      <node id="26">
         <label>envvars/envvars.hpp</label>
         <link refid="envvars_8hpp"/>
         <childnode refid="4" relation="include">
@@ -79,43 +79,41 @@
       <node id="12">
         <label>controllers/databasecontroller/databasecontroller.hpp</label>
         <link refid="databasecontroller_8hpp"/>
-        <childnode refid="13" relation="include">
-        </childnode>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="37" relation="include">
         </childnode>
@@ -123,85 +121,87 @@
         </childnode>
         <childnode refid="40" relation="include">
         </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
         <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="33">
+      <node id="30">
         <label>database/asyncdbclient.hpp</label>
         <link refid="asyncdbclient_8hpp"/>
-        <childnode refid="34" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="35">
+      <node id="32">
         <label>database/asyncresultmapper.hpp</label>
         <link refid="asyncresultmapper_8hpp"/>
-        <childnode refid="36" relation="include">
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="37">
+      <node id="34">
         <label>database/asyncsqlbinder.hpp</label>
         <link refid="asyncsqlbinder_8hpp"/>
-        <childnode refid="34" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="31">
+      <node id="37">
         <label>database/databasebusy.hpp</label>
         <link refid="databasebusy_8hpp"/>
-        <childnode refid="32" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="40">
+      <node id="39">
         <label>database/databasehandler.hpp</label>
         <link refid="databasehandler_8hpp"/>
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="13">
+      <node id="40">
         <label>database/dbprobe.hpp</label>
         <link refid="dbprobe_8hpp"/>
       </node>
       <node id="45">
         <label>entities/base/base.hpp</label>
         <link refid="base_8hpp"/>
-        <childnode refid="14" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -249,13 +249,13 @@
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="47">
@@ -263,7 +263,7 @@
         <link refid="entities_2base_2types_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
@@ -277,27 +277,27 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="51" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="52" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="53" relation="include">
         </childnode>
@@ -305,7 +305,7 @@
         </childnode>
         <childnode refid="54" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>
@@ -321,15 +321,15 @@
       <node id="41">
         <label>store/store.hpp</label>
         <link refid="store_8hpp"/>
-        <childnode refid="15" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -343,7 +343,7 @@
         <link refid="errorstatus_8hpp"/>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="54" relation="include">
         </childnode>
@@ -368,10 +368,10 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="28">
+      <node id="27">
         <label>utils/message/message.hpp</label>
         <link refid="message_8hpp"/>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -383,15 +383,15 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="43" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="54" relation="include">
         </childnode>
@@ -401,13 +401,13 @@
       <node id="48">
         <label>algorithm</label>
       </node>
-      <node id="15">
+      <node id="14">
         <label>atomic</label>
       </node>
       <node id="49">
         <label>cctype</label>
       </node>
-      <node id="24">
+      <node id="23">
         <label>chrono</label>
       </node>
       <node id="50">
@@ -419,16 +419,16 @@
       <node id="3">
         <label>cstdint</label>
       </node>
-      <node id="34">
+      <node id="31">
         <label>drogon/orm/DbClient.h</label>
       </node>
-      <node id="36">
+      <node id="33">
         <label>drogon/orm/Result.h</label>
       </node>
-      <node id="38">
+      <node id="35">
         <label>drogon/orm/SqlBinder.h</label>
       </node>
-      <node id="39">
+      <node id="36">
         <label>drogon/utils/coroutine.h</label>
       </node>
       <node id="8">
@@ -437,34 +437,34 @@
       <node id="2">
         <label>fmt/core.h</label>
       </node>
-      <node id="14">
+      <node id="13">
         <label>fmt/format.h</label>
       </node>
-      <node id="23">
+      <node id="22">
         <label>fmt/ranges.h</label>
       </node>
       <node id="9">
         <label>iterator</label>
       </node>
-      <node id="16">
+      <node id="15">
         <label>jsoncons/basic_json.hpp</label>
       </node>
-      <node id="17">
+      <node id="16">
         <label>jsoncons/json.hpp</label>
       </node>
       <node id="10">
         <label>memory</label>
       </node>
-      <node id="18">
+      <node id="17">
         <label>mutex</label>
       </node>
       <node id="4">
         <label>optional</label>
       </node>
-      <node id="19">
+      <node id="18">
         <label>pqxx/pqxx</label>
       </node>
-      <node id="32">
+      <node id="38">
         <label>stdexcept</label>
       </node>
       <node id="5">
@@ -476,10 +476,10 @@
       <node id="7">
         <label>sys/types.h</label>
       </node>
-      <node id="29">
+      <node id="28">
         <label>trantor/utils/Logger.h</label>
       </node>
-      <node id="25">
+      <node id="24">
         <label>type_traits</label>
       </node>
       <node id="42">
@@ -488,10 +488,10 @@
       <node id="43">
         <label>unordered_map</label>
       </node>
-      <node id="20">
+      <node id="19">
         <label>unordered_set</label>
       </node>
-      <node id="21">
+      <node id="20">
         <label>utility</label>
       </node>
       <node id="52">
@@ -774,8 +774,8 @@
 <para><ref refid="classBase" kindref="compound">Base</ref> entity for clinic-owned clinical records (patients, visits, reports, ...). </para>
     </briefdescription>
     <detaileddescription>
-<para><ref refid="classCase" kindref="compound">Case</ref> extends the generic <ref refid="classEntity" kindref="compound">Entity</ref> with a fixed organisation name (&quot;clinics&quot;) and a family of static permission-query builders. Each builder writes a SELECT that finds out who owns, administers or works at the clinic responsible for a record, so <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref> can decide whether a requester may create, read, update or delete that record. Concrete record entities inherit from <ref refid="classCase" kindref="compound">Case</ref> and expose these builders.</para>
-<para>WHY THIS FILE MATTERS IN THE SERVER: Clinical records are owned by clinics, not by individual users, so ordinary table-level permissions are not enough. <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref> calls the queries produced here to discover the owning clinic&apos;s owner_id, admin_id and staff list before authorising an action. Without <ref refid="classCase" kindref="compound">Case</ref>, every clinical entity would have to duplicate this ownership lookup and the server could not enforce &quot;only clinic staff may see this patient&apos;s data&quot;.</para>
+<para><ref refid="classCase" kindref="compound">Case</ref> extends the generic <ref refid="classEntity" kindref="compound">Entity</ref> with a fixed organisation name (&quot;clinics&quot;) and a family of static permission-query builders. Each builder writes a SELECT that finds out who owns, administers or works at the clinic responsible for a record, so <ref refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21" kindref="member">PermissionManager</ref> can decide whether a requester may create, read, update or delete that record. Concrete record entities inherit from <ref refid="classCase" kindref="compound">Case</ref> and expose these builders.</para>
+<para>WHY THIS FILE MATTERS IN THE SERVER: Clinical records are owned by clinics, not by individual users, so ordinary table-level permissions are not enough. <ref refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21" kindref="member">PermissionManager</ref> calls the queries produced here to discover the owning clinic&apos;s owner_id, admin_id and staff list before authorising an action. Without <ref refid="classCase" kindref="compound">Case</ref>, every clinical entity would have to duplicate this ownership lookup and the server could not enforce &quot;only clinic staff may see this patient&apos;s data&quot;.</para>
 <para>CONCEPTS TO LEARN (for beginners):<itemizedlist>
 <listitem><para>std::optional: <ulink url="https://en.cppreference.com/w/cpp/utility/optional">https://en.cppreference.com/w/cpp/utility/optional</ulink></para>
 </listitem><listitem><para>Static member function: a function that belongs to the class, not to an object, so it can be called as Class::function() without constructing anything.</para>
@@ -792,238 +792,299 @@
     <programlisting>
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
 <codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>case.hpp</highlight></codeline>
-<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Base<sp/>entity<sp/>for<sp/>clinic-owned<sp/>clinical<sp/>records<sp/>(patients,<sp/>visits,<sp/>reports,<sp/>...).</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>Case<sp/>extends<sp/>the<sp/>generic<sp/>Entity<sp/>with<sp/>a<sp/>fixed<sp/>organisation<sp/>name<sp/>(&quot;clinics&quot;)<sp/>and<sp/>a<sp/>family</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>of<sp/>static<sp/>permission-query<sp/>builders.<sp/>Each<sp/>builder<sp/>writes<sp/>a<sp/>SELECT<sp/>that<sp/>finds<sp/>out<sp/>who<sp/>owns,</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>administers<sp/>or<sp/>works<sp/>at<sp/>the<sp/>clinic<sp/>responsible<sp/>for<sp/>a<sp/>record,<sp/>so<sp/>PermissionManager<sp/>can<sp/>decide</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>whether<sp/>a<sp/>requester<sp/>may<sp/>create,<sp/>read,<sp/>update<sp/>or<sp/>delete<sp/>that<sp/>record.<sp/>Concrete<sp/>record<sp/>entities</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>inherit<sp/>from<sp/>Case<sp/>and<sp/>expose<sp/>these<sp/>builders.</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>Clinical<sp/>records<sp/>are<sp/>owned<sp/>by<sp/>clinics,<sp/>not<sp/>by<sp/>individual<sp/>users,<sp/>so<sp/>ordinary<sp/>table-level</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>permissions<sp/>are<sp/>not<sp/>enough.<sp/>PermissionManager<sp/>calls<sp/>the<sp/>queries<sp/>produced<sp/>here<sp/>to<sp/>discover<sp/>the</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>owning<sp/>clinic&apos;s<sp/>owner_id,<sp/>admin_id<sp/>and<sp/>staff<sp/>list<sp/>before<sp/>authorising<sp/>an<sp/>action.<sp/>Without<sp/>Case,</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>every<sp/>clinical<sp/>entity<sp/>would<sp/>have<sp/>to<sp/>duplicate<sp/>this<sp/>ownership<sp/>lookup<sp/>and<sp/>the<sp/>server<sp/>could<sp/>not</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>enforce<sp/>&quot;only<sp/>clinic<sp/>staff<sp/>may<sp/>see<sp/>this<sp/>patient&apos;s<sp/>data&quot;.</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>std::optional:<sp/>https://en.cppreference.com/w/cpp/utility/optional</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>Static<sp/>member<sp/>function:<sp/>a<sp/>function<sp/>that<sp/>belongs<sp/>to<sp/>the<sp/>class,<sp/>not<sp/>to<sp/>an<sp/>object,<sp/>so<sp/>it<sp/>can<sp/>be</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp/>*<sp/><sp/><sp/>called<sp/>as<sp/>Class::function()<sp/>without<sp/>constructing<sp/>anything.</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>SQL<sp/>JOIN:<sp/>combines<sp/>rows<sp/>from<sp/>two<sp/>tables<sp/>using<sp/>a<sp/>related<sp/>column<sp/>(here<sp/>clinic<sp/>id);<sp/>a<sp/>LEFT<sp/>JOIN</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*<sp/><sp/><sp/>keeps<sp/>rows<sp/>from<sp/>the<sp/>first<sp/>table<sp/>even<sp/>if<sp/>no<sp/>match<sp/>exists<sp/>in<sp/>the<sp/>second.</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>-<sp/>SQL<sp/>parameter<sp/>binding:<sp/>put<sp/>$1,<sp/>$2,<sp/>...<sp/>markers<sp/>in<sp/>the<sp/>SQL<sp/>and<sp/>pass<sp/>the<sp/>real<sp/>values<sp/>separately;</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp/>*<sp/><sp/><sp/>see<sp/>https://en.cppreference.com/w/cpp<sp/>or<sp/>the<sp/>libpqxx<sp/>documentation.<sp/>(These<sp/>particular<sp/>queries</highlight></codeline>
-<codeline lineno="25"><highlight class="comment"><sp/>*<sp/><sp/><sp/>are<sp/>the<sp/>exception:<sp/>they<sp/>use<sp/>only<sp/>internal,<sp/>trusted<sp/>ids<sp/>and<sp/>table<sp/>names.)</highlight></codeline>
-<codeline lineno="26"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
-<codeline lineno="29"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>header<sp/>at<sp/>most<sp/>once<sp/>per<sp/>source<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/core.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>fmt::format<sp/>is<sp/>used<sp/>to<sp/>fill<sp/>ids<sp/>and<sp/>table<sp/>names<sp/>into<sp/>the<sp/>permission<sp/>queries.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>uint64_t,<sp/>the<sp/>type<sp/>used<sp/>for<sp/>record<sp/>and<sp/>clinic<sp/>ids.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>The<sp/>builders<sp/>return<sp/>std::optional&lt;std::string&gt;.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>holds<sp/>the<sp/>generated<sp/>SQL.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Base<sp/>entity<sp/>for<sp/>clinic-owned<sp/>clinical<sp/>records<sp/>(patients,<sp/>visits,</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>reports,<sp/>...).</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>@details<sp/>Case<sp/>extends<sp/>the<sp/>generic<sp/>Entity<sp/>with<sp/>a<sp/>fixed<sp/>organisation<sp/>name</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>(&quot;clinics&quot;)<sp/>and<sp/>a<sp/>family<sp/>of<sp/>static<sp/>permission-query<sp/>builders.<sp/>Each<sp/>builder</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>writes<sp/>a<sp/>SELECT<sp/>that<sp/>finds<sp/>out<sp/>who<sp/>owns,<sp/>administers<sp/>or<sp/>works<sp/>at<sp/>the<sp/>clinic</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>responsible<sp/>for<sp/>a<sp/>record,<sp/>so<sp/>PermissionManager<sp/>can<sp/>decide<sp/>whether<sp/>a<sp/>requester</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>may<sp/>create,<sp/>read,<sp/>update<sp/>or<sp/>delete<sp/>that<sp/>record.<sp/>Concrete<sp/>record<sp/>entities</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>inherit<sp/>from<sp/>Case<sp/>and<sp/>expose<sp/>these<sp/>builders.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>Clinical<sp/>records<sp/>are<sp/>owned<sp/>by<sp/>clinics,<sp/>not<sp/>by<sp/>individual<sp/>users,<sp/>so<sp/>ordinary</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>table-level<sp/>permissions<sp/>are<sp/>not<sp/>enough.<sp/>PermissionManager<sp/>calls<sp/>the<sp/>queries</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>produced<sp/>here<sp/>to<sp/>discover<sp/>the<sp/>owning<sp/>clinic&apos;s<sp/>owner_id,<sp/>admin_id<sp/>and<sp/>staff</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>list<sp/>before<sp/>authorising<sp/>an<sp/>action.<sp/>Without<sp/>Case,<sp/>every<sp/>clinical<sp/>entity<sp/>would</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>have<sp/>to<sp/>duplicate<sp/>this<sp/>ownership<sp/>lookup<sp/>and<sp/>the<sp/>server<sp/>could<sp/>not<sp/>enforce</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>&quot;only<sp/>clinic<sp/>staff<sp/>may<sp/>see<sp/>this<sp/>patient&apos;s<sp/>data&quot;.</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>-<sp/>std::optional:<sp/>https://en.cppreference.com/w/cpp/utility/optional</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>Static<sp/>member<sp/>function:<sp/>a<sp/>function<sp/>that<sp/>belongs<sp/>to<sp/>the<sp/>class,<sp/>not<sp/>to<sp/>an</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>object,<sp/>so<sp/>it<sp/>can<sp/>be<sp/>called<sp/>as<sp/>Class::function()<sp/>without<sp/>constructing</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>anything.</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>-<sp/>SQL<sp/>JOIN:<sp/>combines<sp/>rows<sp/>from<sp/>two<sp/>tables<sp/>using<sp/>a<sp/>related<sp/>column<sp/>(here<sp/>clinic</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>id);<sp/>a<sp/>LEFT<sp/>JOIN<sp/>keeps<sp/>rows<sp/>from<sp/>the<sp/>first<sp/>table<sp/>even<sp/>if<sp/>no<sp/>match<sp/>exists<sp/>in</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>the<sp/>second.</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>-<sp/>SQL<sp/>parameter<sp/>binding:<sp/>put<sp/>$1,<sp/>$2,<sp/>...<sp/>markers<sp/>in<sp/>the<sp/>SQL<sp/>and<sp/>pass<sp/>the<sp/>real</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/>values<sp/>separately;<sp/>see<sp/>https://en.cppreference.com/w/cpp<sp/>or<sp/>the<sp/>libpqxx</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>documentation.<sp/>(These<sp/>particular<sp/>queries<sp/>are<sp/>the<sp/>exception:<sp/>they<sp/>use<sp/>only</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>internal,<sp/>trusted<sp/>ids<sp/>and<sp/>table<sp/>names.)</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>this<sp/>header<sp/>at<sp/>most<sp/>once<sp/>per<sp/>source<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="entity_8hpp" kindref="compound">entities/base/entity.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Entity,<sp/>the<sp/>base<sp/>class<sp/>that<sp/>supplies<sp/>CRUD<sp/>statement<sp/>builders.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="global_8hpp" kindref="compound">utils/global/global.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Global<sp/>helpers<sp/>used<sp/>by<sp/>derived<sp/>code<sp/>(kept<sp/>available<sp/>for<sp/>this<sp/>hierarchy).</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="41"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>@class<sp/>Case</highlight></codeline>
-<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Base<sp/>entity<sp/>for<sp/>clinic-owned<sp/>clinical<sp/>records<sp/>(patients,<sp/>visits,<sp/>reports,<sp/>...).</highlight></codeline>
-<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>@details<sp/>Extends<sp/>Entity<sp/>with<sp/>a<sp/>fixed<sp/>organisation<sp/>name<sp/>(&quot;clinics&quot;)<sp/>and<sp/>a<sp/>family<sp/>of<sp/>static</highlight></codeline>
-<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>permission-query<sp/>builders.<sp/>Concrete<sp/>service<sp/>entities<sp/>derive<sp/>from<sp/>Case<sp/>and<sp/>expose<sp/>those<sp/>builders</highlight></codeline>
-<codeline lineno="46"><highlight class="comment"><sp/>*<sp/>to<sp/>PermissionManager,<sp/>which<sp/>executes<sp/>the<sp/>returned<sp/>query<sp/>to<sp/>decide<sp/>whether<sp/>a<sp/>requester<sp/>may</highlight></codeline>
-<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>create/read/update/delete<sp/>a<sp/>record.<sp/>The<sp/>builders<sp/>select<sp/>the<sp/>owner,<sp/>admin<sp/>and<sp/>staff<sp/>columns<sp/>of</highlight></codeline>
-<codeline lineno="48"><highlight class="comment"><sp/>*<sp/>the<sp/>owning<sp/>clinic<sp/>(joined<sp/>to<sp/>the<sp/>record<sp/>table<sp/>where<sp/>needed).</highlight></codeline>
-<codeline lineno="49"><highlight class="comment"><sp/>*<sp/>@note<sp/>Unlike<sp/>the<sp/>CRUD<sp/>builders<sp/>in<sp/>Entity,<sp/>these<sp/>queries<sp/>interpolate<sp/>the<sp/>id<sp/>and<sp/>table<sp/>names<sp/>into</highlight></codeline>
-<codeline lineno="50"><highlight class="comment"><sp/>*<sp/>the<sp/>SQL<sp/>text<sp/>via<sp/>fmt::format<sp/>and<sp/>take<sp/>no<sp/>pqxx::params;<sp/>they<sp/>are<sp/>called<sp/>with<sp/>internal,<sp/>trusted</highlight></codeline>
-<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>values<sp/>and<sp/>the<sp/>resulting<sp/>text<sp/>is<sp/>also<sp/>used<sp/>as<sp/>a<sp/>cache<sp/>key<sp/>by<sp/>PermissionManager.</highlight></codeline>
-<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>@see<sp/>Entity,<sp/>PermissionManager</highlight></codeline>
-<codeline lineno="53"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="54" refid="classCase" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911" kindref="member">Case</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93" kindref="member">Entity</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>Inherits<sp/>the<sp/>full<sp/>CRUD<sp/>interface,<sp/>then<sp/>adds<sp/>permission-query<sp/>helpers.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="57"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="58"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Organisation<sp/>this<sp/>case<sp/>belongs<sp/>to;<sp/>used<sp/>as<sp/>the<sp/>permission<sp/>service<sp/>name.</highlight></codeline>
-<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="60" refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" kindref="member">ORGNAME</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;clinics&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>compile-time<sp/>constant:<sp/>every<sp/>clinical<sp/>record<sp/>belongs<sp/>to<sp/>the<sp/>&quot;clinics&quot;<sp/>organisation.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="62"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="63"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Non-copyable<sp/>and<sp/>non-movable;<sp/>construct<sp/>in<sp/>place<sp/>for<sp/>the<sp/>request<sp/>that<sp/>uses<sp/>it.</highlight></codeline>
-<codeline lineno="64"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="65" refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911" kindref="member">Case</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911" kindref="member">Case</ref>&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copy:<sp/>the<sp/>entity<sp/>is<sp/>tied<sp/>to<sp/>one<sp/>request.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="66" refid="classCase_1a7b23df81d29fee57dd61a99a86b8261c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classCase_1a7b23df81d29fee57dd61a99a86b8261c" kindref="member">Case</ref>(<ref refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911" kindref="member">Case</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>move:<sp/>keep<sp/>the<sp/>object<sp/>where<sp/>it<sp/>was<sp/>built.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="67" refid="classCase_1aa0c0269d0a4f48681b880b9621004bcf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911" kindref="member">Case</ref>&amp;<sp/><ref refid="classCase_1aa0c0269d0a4f48681b880b9621004bcf" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911" kindref="member">Case</ref>&amp;)<sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copy<sp/>assignment.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68" refid="classCase_1aa384eaca0046ba0bba80dfdcfe199711" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911" kindref="member">Case</ref>&amp;<sp/><ref refid="classCase_1aa384eaca0046ba0bba80dfdcfe199711" kindref="member">operator=</ref>(<ref refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911" kindref="member">Case</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>move<sp/>assignment.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Forwards<sp/>a<sp/>payload<sp/>and<sp/>table<sp/>name<sp/>to<sp/>Entity.</highlight></codeline>
-<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@tparam<sp/>Data<sp/>Payload<sp/>type<sp/>accepted<sp/>by<sp/>EntityType.</highlight></codeline>
-<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Operation<sp/>payload.</highlight></codeline>
-<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>tablename<sp/>Table<sp/>name,<sp/>also<sp/>used<sp/>as<sp/>the<sp/>permission<sp/>group<sp/>name.</highlight></codeline>
-<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Data&gt;</highlight></codeline>
-<codeline lineno="77" refid="classCase_1a0d15370d666834e72bbcc00b419238de" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classCase_1a0d15370d666834e72bbcc00b419238de" kindref="member">Case</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Data&amp;<sp/><ref refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" kindref="member">data</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>)<sp/>:<sp/><ref refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93" kindref="member">Entity</ref>(<ref refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" kindref="member">data</ref>,<sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>Just<sp/>pass<sp/>both<sp/>arguments<sp/>up<sp/>to<sp/>the<sp/>base;<sp/>Case<sp/>itself<sp/>adds<sp/>no<sp/>state.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="82"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>owning<sp/>organisation<sp/>name<sp/>(&quot;clinics&quot;).</highlight></codeline>
-<codeline lineno="83"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="84" refid="classCase_1a21c9d085ff35036397c09fbf1882343b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classCase_1a21c9d085ff35036397c09fbf1882343b" kindref="member">getOrgName</ref>()<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" kindref="member">ORGNAME</ref>;<sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Static<sp/>accessor<sp/>so<sp/>callers<sp/>can<sp/>ask<sp/>for<sp/>the<sp/>organisation<sp/>without<sp/>an<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Default<sp/>destructor;<sp/>Case<sp/>owns<sp/>no<sp/>resources<sp/>of<sp/>its<sp/>own.</highlight></codeline>
-<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="89" refid="classCase_1afc12c279a9ecdde1f571dee7ddd185a8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classCase_1afc12c279a9ecdde1f571dee7ddd185a8" kindref="member">~Case</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>base<sp/>destructor<sp/>handles<sp/>everything;<sp/>&quot;override&quot;<sp/>confirms<sp/>the<sp/>signature<sp/>matches.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"></highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="93"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>permission<sp/>query<sp/>for<sp/>creating<sp/>a<sp/>patient<sp/>row.</highlight></codeline>
-<codeline lineno="94"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Reads<sp/>the<sp/>owner/admin/staff<sp/>columns<sp/>of<sp/>the<sp/>clinic<sp/>identified<sp/>by<sp/>id.</highlight></codeline>
-<codeline lineno="95"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>id<sp/>Primary<sp/>key<sp/>of<sp/>the<sp/>clinic.</highlight></codeline>
-<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>SELECT<sp/>statement,<sp/>or<sp/>std::nullopt<sp/>if<sp/>it<sp/>cannot<sp/>be<sp/>built<sp/>(currently<sp/>it<sp/>always</highlight></codeline>
-<codeline lineno="97"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>returns<sp/>the<sp/>formatted<sp/>text).</highlight></codeline>
-<codeline lineno="98"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="99" refid="classCase_1a885de6b0ca89e3462529a9b9c388b9d2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classCase_1a885de6b0ca89e3462529a9b9c388b9d2" kindref="member">getPermissionsQueryForCreatePatientImpl</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/><sp/></highlight><highlight class="comment">//<sp/>Used<sp/>when<sp/>creating<sp/>the<sp/>patient<sp/>itself,<sp/>where<sp/>the<sp/>clinic<sp/>id<sp/>is<sp/>known<sp/>directly.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>SQL<sp/>below<sp/>selects<sp/>owner_id,<sp/>admin_id<sp/>and<sp/>staff<sp/>from<sp/>the<sp/>clinics<sp/>table<sp/>for<sp/>one<sp/>clinic</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>(WHERE<sp/>id<sp/>=<sp/>&lt;the<sp/>clinic<sp/>id&gt;).<sp/>Those<sp/>three<sp/>columns<sp/>tell<sp/>PermissionManager<sp/>who<sp/>is<sp/>allowed</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>to<sp/>act<sp/>on<sp/>a<sp/>patient<sp/>in<sp/>that<sp/>clinic.<sp/>Ids<sp/>and<sp/>the<sp/>table<sp/>name<sp/>are<sp/>internal,<sp/>trusted<sp/>values,</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>so<sp/>they<sp/>are<sp/>formatted<sp/>into<sp/>the<sp/>text<sp/>rather<sp/>than<sp/>bound;<sp/>the<sp/>text<sp/>is<sp/>also<sp/>a<sp/>cache<sp/>key.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>query<sp/>=<sp/>fmt::format(R</highlight><highlight class="stringliteral">&quot;(</highlight></codeline>
-<codeline lineno="106"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SELECT</highlight></codeline>
-<codeline lineno="107"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>owner_id,</highlight></codeline>
-<codeline lineno="108"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>admin_id,</highlight></codeline>
-<codeline lineno="109"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>staff</highlight></codeline>
-<codeline lineno="110"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FROM</highlight></codeline>
-<codeline lineno="111"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{}</highlight></codeline>
-<codeline lineno="112"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WHERE</highlight></codeline>
-<codeline lineno="113"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>id<sp/>=<sp/>{};)&quot;,</highlight></codeline>
-<codeline lineno="114"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" kindref="member">ORGNAME</ref>,<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>{}<sp/>is<sp/>replaced<sp/>by<sp/>the<sp/>&quot;clinics&quot;<sp/>table<sp/>name<sp/>and<sp/>the<sp/>clinic<sp/>id.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout<sp/>&lt;&lt;<sp/>query<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>query;<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>the<sp/>finished<sp/>statement<sp/>to<sp/>the<sp/>caller<sp/>(wrapped<sp/>in<sp/>optional).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="119" refid="classCase_1a5617a4962ddeaabd3094fae406c860f6" refkind="member"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>permission<sp/>query<sp/>for<sp/>creating<sp/>a<sp/>record<sp/>linked<sp/>to<sp/>a<sp/>patient.</highlight></codeline>
-<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>Joins<sp/>the<sp/>clinic<sp/>table<sp/>with<sp/>the<sp/>record<sp/>table<sp/>on<sp/>clinic_id<sp/>and<sp/>filters<sp/>by<sp/>the</highlight></codeline>
-<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>record<sp/>id,<sp/>returning<sp/>the<sp/>clinic&apos;s<sp/>owner/admin/staff<sp/>plus<sp/>patient_id<sp/>and<sp/>clinic_id.</highlight></codeline>
-<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>id<sp/>Primary<sp/>key<sp/>of<sp/>the<sp/>record<sp/>(for<sp/>example<sp/>a<sp/>patient<sp/>id).</highlight></codeline>
-<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>tablename<sp/>Table<sp/>holding<sp/>the<sp/>record&apos;s<sp/>clinic_id<sp/>foreign<sp/>key.</highlight></codeline>
-<codeline lineno="125"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>SELECT<sp/>statement<sp/>(always<sp/>produced<sp/>by<sp/>this<sp/>implementation).</highlight></codeline>
-<codeline lineno="126"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classCase_1a5617a4962ddeaabd3094fae406c860f6" kindref="member">getPermissionsQueryForCreateImpl</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>Used<sp/>when<sp/>the<sp/>record<sp/>points<sp/>at<sp/>a<sp/>patient,<sp/>so<sp/>the<sp/>owning<sp/>clinic<sp/>must<sp/>be<sp/>found<sp/>via<sp/>a<sp/>join.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>and<sp/>return<sp/>the<sp/>query</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>SQL<sp/>joins<sp/>clinics<sp/>(alias<sp/>c)<sp/>to<sp/>the<sp/>record<sp/>table<sp/>(alias<sp/>p)<sp/>on<sp/>c.id<sp/>=<sp/>p.clinic_id,</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>then<sp/>filters<sp/>to<sp/>the<sp/>one<sp/>record<sp/>id.<sp/>It<sp/>returns<sp/>the<sp/>clinic&apos;s<sp/>owner/admin/staff<sp/>plus</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>patient_id<sp/>and<sp/>clinic_id,<sp/>giving<sp/>the<sp/>permission<sp/>layer<sp/>both<sp/>who<sp/>is<sp/>allowed<sp/>and<sp/>which</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>patient/clinic<sp/>is<sp/>involved.<sp/>LEFT<sp/>JOIN<sp/>keeps<sp/>the<sp/>clinic<sp/>row<sp/>even<sp/>if<sp/>the<sp/>match<sp/>is<sp/>missing.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>query<sp/>=<sp/>fmt::format(R</highlight><highlight class="stringliteral">&quot;(</highlight></codeline>
-<codeline lineno="135"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SELECT</highlight></codeline>
-<codeline lineno="136"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.owner_id,</highlight></codeline>
-<codeline lineno="137"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.admin_id,</highlight></codeline>
-<codeline lineno="138" refid="classCase_1a549bb017161d692a03db738d940b9b2f" refkind="member"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.staff,</highlight></codeline>
-<codeline lineno="139"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.id<sp/>AS<sp/>patient_id,</highlight></codeline>
-<codeline lineno="140"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.clinic_id<sp/>AS<sp/>clinic_id</highlight></codeline>
-<codeline lineno="141"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FROM</highlight></codeline>
-<codeline lineno="142"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{}<sp/>c</highlight></codeline>
-<codeline lineno="143"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LEFT<sp/>JOIN<sp/>{}<sp/>p<sp/>ON<sp/>c.id<sp/>=<sp/>p.clinic_id</highlight></codeline>
-<codeline lineno="144"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WHERE</highlight></codeline>
-<codeline lineno="145"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.id<sp/>=<sp/>{};)&quot;,</highlight></codeline>
-<codeline lineno="146"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" kindref="member">ORGNAME</ref>,<sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>,<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Fill<sp/>in<sp/>the<sp/>clinics<sp/>table,<sp/>the<sp/>record<sp/>table<sp/>and<sp/>the<sp/>record<sp/>id.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout<sp/>&lt;&lt;<sp/>query<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>query;<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>statement<sp/>to<sp/>PermissionManager.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="151"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="152"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>permission<sp/>query<sp/>for<sp/>reading<sp/>a<sp/>record<sp/>linked<sp/>to<sp/>a<sp/>patient.</highlight></codeline>
-<codeline lineno="153"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>id<sp/>Primary<sp/>key<sp/>of<sp/>the<sp/>record.</highlight></codeline>
-<codeline lineno="154"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>tablename<sp/>Table<sp/>holding<sp/>the<sp/>record&apos;s<sp/>clinic_id<sp/>foreign<sp/>key.</highlight></codeline>
-<codeline lineno="155" refid="classCase_1acfa6a0504f8706a2d5acceb6cf2d1edf" refkind="member"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>SELECT<sp/>statement<sp/>identifying<sp/>the<sp/>owning<sp/>clinic&apos;s<sp/>owner/admin/staff.</highlight></codeline>
-<codeline lineno="156"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classCase_1a549bb017161d692a03db738d940b9b2f" kindref="member">getPermissionsQueryForReadImp</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>Same<sp/>shape<sp/>as<sp/>create,<sp/>used<sp/>for<sp/>read<sp/>authorisation.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>and<sp/>return<sp/>the<sp/>query</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Joins<sp/>clinics<sp/>to<sp/>the<sp/>record<sp/>table<sp/>on<sp/>clinic_id<sp/>and<sp/>filters<sp/>by<sp/>this<sp/>record<sp/>id,<sp/>returning</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>clinic&apos;s<sp/>owner/admin/staff<sp/>so<sp/>read<sp/>access<sp/>can<sp/>be<sp/>checked<sp/>against<sp/>clinic<sp/>membership.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>query<sp/>=<sp/>fmt::format(R</highlight><highlight class="stringliteral">&quot;(</highlight></codeline>
-<codeline lineno="163"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SELECT</highlight></codeline>
-<codeline lineno="164"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.owner_id,</highlight></codeline>
-<codeline lineno="165"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.admin_id,</highlight></codeline>
-<codeline lineno="166"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.staff,</highlight></codeline>
-<codeline lineno="167"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.id<sp/>AS<sp/>patient_id,</highlight></codeline>
-<codeline lineno="168"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.clinic_id<sp/>AS<sp/>clinic_id</highlight></codeline>
-<codeline lineno="169"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FROM</highlight></codeline>
-<codeline lineno="170"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{}<sp/>c</highlight></codeline>
-<codeline lineno="171"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LEFT<sp/>JOIN<sp/>{}<sp/>p<sp/>ON<sp/>c.id<sp/>=<sp/>p.clinic_id</highlight></codeline>
-<codeline lineno="172" refid="classCase_1a1dd10871e1bd41f7d55b2b6f54da4fff" refkind="member"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WHERE</highlight></codeline>
-<codeline lineno="173"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.id<sp/>=<sp/>{};)&quot;,</highlight></codeline>
-<codeline lineno="174"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" kindref="member">ORGNAME</ref>,<sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>,<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Fill<sp/>in<sp/>clinics<sp/>table,<sp/>record<sp/>table<sp/>and<sp/>record<sp/>id.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout<sp/>&lt;&lt;<sp/>query<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>query;<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>statement.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="179"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="180"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>permission<sp/>query<sp/>for<sp/>updating<sp/>a<sp/>record<sp/>linked<sp/>to<sp/>a<sp/>patient.</highlight></codeline>
-<codeline lineno="181"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>id<sp/>Primary<sp/>key<sp/>of<sp/>the<sp/>record.</highlight></codeline>
-<codeline lineno="182"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>tablename<sp/>Table<sp/>holding<sp/>the<sp/>record&apos;s<sp/>clinic_id<sp/>foreign<sp/>key.</highlight></codeline>
-<codeline lineno="183"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>SELECT<sp/>statement<sp/>identifying<sp/>the<sp/>owning<sp/>clinic&apos;s<sp/>owner/admin/staff.</highlight></codeline>
-<codeline lineno="184"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classCase_1acfa6a0504f8706a2d5acceb6cf2d1edf" kindref="member">getPermissionsQueryForUpdateImpl</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>Same<sp/>shape,<sp/>used<sp/>for<sp/>update<sp/>authorisation.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>and<sp/>return<sp/>the<sp/>query</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Joins<sp/>clinics<sp/>to<sp/>the<sp/>record<sp/>table<sp/>on<sp/>clinic_id<sp/>and<sp/>filters<sp/>by<sp/>this<sp/>record<sp/>id,<sp/>returning</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>clinic&apos;s<sp/>owner/admin/staff<sp/>so<sp/>write<sp/>access<sp/>can<sp/>be<sp/>checked<sp/>against<sp/>clinic<sp/>membership.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>query<sp/>=<sp/>fmt::format(R</highlight><highlight class="stringliteral">&quot;(</highlight></codeline>
-<codeline lineno="191"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SELECT</highlight></codeline>
-<codeline lineno="192"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.owner_id,</highlight></codeline>
-<codeline lineno="193"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.admin_id,</highlight></codeline>
-<codeline lineno="194"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.staff,</highlight></codeline>
-<codeline lineno="195"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.id<sp/>AS<sp/>patient_id,</highlight></codeline>
-<codeline lineno="196"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.clinic_id<sp/>AS<sp/>clinic_id</highlight></codeline>
-<codeline lineno="197"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FROM</highlight></codeline>
-<codeline lineno="198"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{}<sp/>c</highlight></codeline>
-<codeline lineno="199"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LEFT<sp/>JOIN<sp/>{}<sp/>p<sp/>ON<sp/>c.id<sp/>=<sp/>p.clinic_id</highlight></codeline>
-<codeline lineno="200"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WHERE</highlight></codeline>
-<codeline lineno="201"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.id<sp/>=<sp/>{};)&quot;,</highlight></codeline>
-<codeline lineno="202"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" kindref="member">ORGNAME</ref>,<sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>,<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Fill<sp/>in<sp/>clinics<sp/>table,<sp/>record<sp/>table<sp/>and<sp/>record<sp/>id.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout<sp/>&lt;&lt;<sp/>query<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>query;<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>statement.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="206"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="207"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="208"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>permission<sp/>query<sp/>for<sp/>deleting<sp/>a<sp/>record<sp/>linked<sp/>to<sp/>a<sp/>patient.</highlight></codeline>
-<codeline lineno="209"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>id<sp/>Primary<sp/>key<sp/>of<sp/>the<sp/>record.</highlight></codeline>
-<codeline lineno="210"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in]<sp/>tablename<sp/>Table<sp/>holding<sp/>the<sp/>record&apos;s<sp/>clinic_id<sp/>foreign<sp/>key.</highlight></codeline>
-<codeline lineno="211"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>SELECT<sp/>statement<sp/>identifying<sp/>the<sp/>owning<sp/>clinic&apos;s<sp/>owner/admin/staff.</highlight></codeline>
-<codeline lineno="212"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classCase_1a1dd10871e1bd41f7d55b2b6f54da4fff" kindref="member">getPermissionsQueryForDeleteImp</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>)<sp/><sp/></highlight><highlight class="comment">//<sp/>Same<sp/>shape,<sp/>used<sp/>for<sp/>delete<sp/>authorisation.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>and<sp/>return<sp/>the<sp/>query</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Joins<sp/>clinics<sp/>to<sp/>the<sp/>record<sp/>table<sp/>on<sp/>clinic_id<sp/>and<sp/>filters<sp/>by<sp/>this<sp/>record<sp/>id,<sp/>returning</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>clinic&apos;s<sp/>owner/admin/staff<sp/>so<sp/>delete<sp/>access<sp/>can<sp/>be<sp/>checked<sp/>against<sp/>clinic<sp/>membership.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>query<sp/>=<sp/>fmt::format(R</highlight><highlight class="stringliteral">&quot;(</highlight></codeline>
-<codeline lineno="219"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SELECT</highlight></codeline>
-<codeline lineno="220"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.owner_id,</highlight></codeline>
-<codeline lineno="221"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.admin_id,</highlight></codeline>
-<codeline lineno="222"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.staff,</highlight></codeline>
-<codeline lineno="223"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.id<sp/>AS<sp/>patient_id,</highlight></codeline>
-<codeline lineno="224"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.clinic_id<sp/>AS<sp/>clinic_id</highlight></codeline>
-<codeline lineno="225"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FROM</highlight></codeline>
-<codeline lineno="226"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{}<sp/>c</highlight></codeline>
-<codeline lineno="227"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LEFT<sp/>JOIN<sp/>{}<sp/>p<sp/>ON<sp/>c.id<sp/>=<sp/>p.clinic_id</highlight></codeline>
-<codeline lineno="228"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WHERE</highlight></codeline>
-<codeline lineno="229"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.id<sp/>=<sp/>{};)&quot;,</highlight></codeline>
-<codeline lineno="230"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" kindref="member">ORGNAME</ref>,<sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>,<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Fill<sp/>in<sp/>clinics<sp/>table,<sp/>record<sp/>table<sp/>and<sp/>record<sp/>id.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout<sp/>&lt;&lt;<sp/>query<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>query;<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>statement<sp/>to<sp/>PermissionManager.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="234"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>fmt::format<sp/>is<sp/>used<sp/>to<sp/>fill<sp/>ids<sp/>and<sp/>table<sp/>names<sp/>into<sp/>the<sp/>permission<sp/>queries.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/core.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>uint64_t,<sp/>the<sp/>type<sp/>used<sp/>for<sp/>record<sp/>and<sp/>clinic<sp/>ids.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>builders<sp/>return<sp/>std::optional&lt;std::string&gt;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>holds<sp/>the<sp/>generated<sp/>SQL.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Entity,<sp/>the<sp/>base<sp/>class<sp/>that<sp/>supplies<sp/>CRUD<sp/>statement<sp/>builders.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="entity_8hpp" kindref="compound">entities/base/entity.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Global<sp/>helpers<sp/>used<sp/>by<sp/>derived<sp/>code<sp/>(kept<sp/>available<sp/>for<sp/>this<sp/>hierarchy).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="global_8hpp" kindref="compound">utils/global/global.hpp</ref>&quot;</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="50"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"><sp/>*<sp/>@class<sp/>Case</highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Base<sp/>entity<sp/>for<sp/>clinic-owned<sp/>clinical<sp/>records<sp/>(patients,<sp/>visits,</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/>*<sp/>reports,<sp/>...).</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/>*<sp/>@details<sp/>Extends<sp/>Entity<sp/>with<sp/>a<sp/>fixed<sp/>organisation<sp/>name<sp/>(&quot;clinics&quot;)<sp/>and<sp/>a</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/>*<sp/>family<sp/>of<sp/>static<sp/>permission-query<sp/>builders.<sp/>Concrete<sp/>service<sp/>entities<sp/>derive</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/>*<sp/>from<sp/>Case<sp/>and<sp/>expose<sp/>those<sp/>builders<sp/>to<sp/>PermissionManager,<sp/>which<sp/>executes<sp/>the</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/>*<sp/>returned<sp/>query<sp/>to<sp/>decide<sp/>whether<sp/>a<sp/>requester<sp/>may<sp/>create/read/update/delete<sp/>a</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/>*<sp/>record.<sp/>The<sp/>builders<sp/>select<sp/>the<sp/>owner,<sp/>admin<sp/>and<sp/>staff<sp/>columns<sp/>of<sp/>the<sp/>owning</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/>*<sp/>clinic<sp/>(joined<sp/>to<sp/>the<sp/>record<sp/>table<sp/>where<sp/>needed).</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/>*<sp/>@note<sp/>Unlike<sp/>the<sp/>CRUD<sp/>builders<sp/>in<sp/>Entity,<sp/>these<sp/>queries<sp/>interpolate<sp/>the<sp/>id</highlight></codeline>
+<codeline lineno="61"><highlight class="comment"><sp/>*<sp/>and<sp/>table<sp/>names<sp/>into<sp/>the<sp/>SQL<sp/>text<sp/>via<sp/>fmt::format<sp/>and<sp/>take<sp/>no<sp/>pqxx::params;</highlight></codeline>
+<codeline lineno="62"><highlight class="comment"><sp/>*<sp/>they<sp/>are<sp/>called<sp/>with<sp/>internal,<sp/>trusted<sp/>values<sp/>and<sp/>the<sp/>resulting<sp/>text<sp/>is<sp/>also</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"><sp/>*<sp/>used<sp/>as<sp/>a<sp/>cache<sp/>key<sp/>by<sp/>PermissionManager.</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"><sp/>*<sp/>@see<sp/>Entity,<sp/>PermissionManager</highlight></codeline>
+<codeline lineno="65"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Inherits<sp/>the<sp/>full<sp/>CRUD<sp/>interface,<sp/>then<sp/>adds</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/>permission-query<sp/>helpers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classCase" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911" kindref="member">Case</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93" kindref="member">Entity</ref><sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Organisation<sp/>this<sp/>case<sp/>belongs<sp/>to;<sp/>used<sp/>as<sp/>the<sp/>permission<sp/>service</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/>*<sp/>name.</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" kindref="member">ORGNAME</ref><sp/>=</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;clinics&quot;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>compile-time<sp/>constant:<sp/>every<sp/>clinical<sp/>record<sp/>belongs<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>&quot;clinics&quot;<sp/>organisation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="78"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="79"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Non-copyable<sp/>and<sp/>non-movable;<sp/>construct<sp/>in<sp/>place<sp/>for<sp/>the<sp/>request</highlight></codeline>
+<codeline lineno="80"><highlight class="comment"><sp/><sp/><sp/>*<sp/>that<sp/>uses<sp/>it.</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911" kindref="member">Case</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911" kindref="member">Case</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copy:<sp/>the<sp/>entity<sp/>is<sp/>tied<sp/>to<sp/>one<sp/>request.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="classCase_1a7b23df81d29fee57dd61a99a86b8261c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classCase_1a7b23df81d29fee57dd61a99a86b8261c" kindref="member">Case</ref>(<ref refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911" kindref="member">Case</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>move:<sp/>keep<sp/>the<sp/>object<sp/>where<sp/>it<sp/>was<sp/>built.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="classCase_1aa0c0269d0a4f48681b880b9621004bcf" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911" kindref="member">Case</ref>&amp;<sp/><ref refid="classCase_1aa0c0269d0a4f48681b880b9621004bcf" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911" kindref="member">Case</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copy<sp/>assignment.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="classCase_1aa384eaca0046ba0bba80dfdcfe199711" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911" kindref="member">Case</ref>&amp;<sp/><ref refid="classCase_1aa384eaca0046ba0bba80dfdcfe199711" kindref="member">operator=</ref>(<ref refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911" kindref="member">Case</ref>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>move<sp/>assignment.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Forwards<sp/>a<sp/>payload<sp/>and<sp/>table<sp/>name<sp/>to<sp/>Entity.</highlight></codeline>
+<codeline lineno="89"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@tparam<sp/>Data<sp/>Payload<sp/>type<sp/>accepted<sp/>by<sp/>EntityType.</highlight></codeline>
+<codeline lineno="90"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>data<sp/>Operation<sp/>payload.</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>tablename<sp/>Table<sp/>name,<sp/>also<sp/>used<sp/>as<sp/>the<sp/>permission<sp/>group<sp/>name.</highlight></codeline>
+<codeline lineno="92"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Data&gt;</highlight></codeline>
+<codeline lineno="94" refid="classCase_1a0d15370d666834e72bbcc00b419238de" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classCase_1a0d15370d666834e72bbcc00b419238de" kindref="member">Case</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Data&amp;<sp/><ref refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" kindref="member">data</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>)</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Just<sp/>pass<sp/>both<sp/>arguments<sp/>up<sp/>to<sp/>the<sp/>base;<sp/>Case</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>itself<sp/>adds<sp/>no<sp/>state.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classEntity_1a936dfd4b5db17a339819ae5800c33a93" kindref="member">Entity</ref>(<ref refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" kindref="member">data</ref>,<sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="100"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="101"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>owning<sp/>organisation<sp/>name<sp/>(&quot;clinics&quot;).</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="classCase_1a21c9d085ff35036397c09fbf1882343b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classCase_1a21c9d085ff35036397c09fbf1882343b" kindref="member">getOrgName</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" kindref="member">ORGNAME</ref>;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/>}<sp/><sp/></highlight><highlight class="comment">//<sp/>Static<sp/>accessor<sp/>so<sp/>callers<sp/>can<sp/>ask<sp/>for<sp/>the<sp/>organisation<sp/>without<sp/>an</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Default<sp/>destructor;<sp/>Case<sp/>owns<sp/>no<sp/>resources<sp/>of<sp/>its<sp/>own.</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="classCase_1afc12c279a9ecdde1f571dee7ddd185a8" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classCase_1afc12c279a9ecdde1f571dee7ddd185a8" kindref="member">~Case</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>base<sp/>destructor<sp/>handles<sp/>everything;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&quot;override&quot;<sp/>confirms<sp/>the<sp/>signature<sp/>matches.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>permission<sp/>query<sp/>for<sp/>creating<sp/>a<sp/>patient<sp/>row.</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Reads<sp/>the<sp/>owner/admin/staff<sp/>columns<sp/>of<sp/>the<sp/>clinic<sp/>identified<sp/>by</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/>*<sp/>id.</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>id<sp/>Primary<sp/>key<sp/>of<sp/>the<sp/>clinic.</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>SELECT<sp/>statement,<sp/>or<sp/>std::nullopt<sp/>if<sp/>it<sp/>cannot<sp/>be<sp/>built</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/>*<sp/>(currently<sp/>it<sp/>always<sp/>returns<sp/>the<sp/>formatted<sp/>text).</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Used<sp/>when<sp/>creating<sp/>the<sp/>patient<sp/>itself,<sp/>where<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>clinic<sp/>id<sp/>is<sp/>known<sp/>directly.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="classCase_1a885de6b0ca89e3462529a9b9c388b9d2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classCase_1a885de6b0ca89e3462529a9b9c388b9d2" kindref="member">getPermissionsQueryForCreatePatientImpl</ref>(</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>SQL<sp/>below<sp/>selects<sp/>owner_id,<sp/>admin_id<sp/>and<sp/>staff<sp/>from<sp/>the<sp/>clinics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>table<sp/>for<sp/>one<sp/>clinic<sp/>(WHERE<sp/>id<sp/>=<sp/>&lt;the<sp/>clinic<sp/>id&gt;).<sp/>Those<sp/>three</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>columns<sp/>tell<sp/>PermissionManager<sp/>who<sp/>is<sp/>allowed<sp/>to<sp/>act<sp/>on<sp/>a<sp/>patient<sp/>in</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>that<sp/>clinic.<sp/>Ids<sp/>and<sp/>the<sp/>table<sp/>name<sp/>are<sp/>internal,<sp/>trusted<sp/>values,<sp/>so</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>they<sp/>are<sp/>formatted<sp/>into<sp/>the<sp/>text<sp/>rather<sp/>than<sp/>bound;<sp/>the<sp/>text<sp/>is<sp/>also</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>a<sp/>cache<sp/>key.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>query<sp/>=<sp/>fmt::format(R</highlight><highlight class="stringliteral">&quot;(</highlight></codeline>
+<codeline lineno="134"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SELECT</highlight></codeline>
+<codeline lineno="135"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>owner_id,</highlight></codeline>
+<codeline lineno="136"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>admin_id,</highlight></codeline>
+<codeline lineno="137"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>staff</highlight></codeline>
+<codeline lineno="138"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FROM</highlight></codeline>
+<codeline lineno="139"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{}</highlight></codeline>
+<codeline lineno="140"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WHERE</highlight></codeline>
+<codeline lineno="141"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>id<sp/>=<sp/>{};)&quot;,</highlight></codeline>
+<codeline lineno="142"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" kindref="member">ORGNAME</ref>,</highlight></codeline>
+<codeline lineno="143"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>{}<sp/>is<sp/>replaced<sp/>by<sp/>the<sp/>&quot;clinics&quot;<sp/>table<sp/>name</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>the<sp/>clinic<sp/>id.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout<sp/>&lt;&lt;<sp/>query<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>query;<sp/><sp/></highlight><highlight class="comment">//<sp/>Hand<sp/>the<sp/>finished<sp/>statement<sp/>to<sp/>the<sp/>caller<sp/>(wrapped<sp/>in</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>optional).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="150"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="151"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>permission<sp/>query<sp/>for<sp/>creating<sp/>a<sp/>record<sp/>linked<sp/>to<sp/>a</highlight></codeline>
+<codeline lineno="152"><highlight class="comment"><sp/><sp/><sp/>*<sp/>patient.</highlight></codeline>
+<codeline lineno="153"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>Joins<sp/>the<sp/>clinic<sp/>table<sp/>with<sp/>the<sp/>record<sp/>table<sp/>on<sp/>clinic_id<sp/>and</highlight></codeline>
+<codeline lineno="154" refid="classCase_1a5617a4962ddeaabd3094fae406c860f6" refkind="member"><highlight class="comment"><sp/><sp/><sp/>*<sp/>filters<sp/>by<sp/>the<sp/>record<sp/>id,<sp/>returning<sp/>the<sp/>clinic&apos;s<sp/>owner/admin/staff<sp/>plus</highlight></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/><sp/><sp/>*<sp/>patient_id<sp/>and<sp/>clinic_id.</highlight></codeline>
+<codeline lineno="156"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>id<sp/>Primary<sp/>key<sp/>of<sp/>the<sp/>record<sp/>(for<sp/>example<sp/>a<sp/>patient<sp/>id).</highlight></codeline>
+<codeline lineno="157"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>tablename<sp/>Table<sp/>holding<sp/>the<sp/>record&apos;s<sp/>clinic_id<sp/>foreign<sp/>key.</highlight></codeline>
+<codeline lineno="158"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>SELECT<sp/>statement<sp/>(always<sp/>produced<sp/>by<sp/>this<sp/>implementation).</highlight></codeline>
+<codeline lineno="159"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Used<sp/>when<sp/>the<sp/>record<sp/>points<sp/>at<sp/>a<sp/>patient,<sp/>so<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>owning<sp/>clinic<sp/>must<sp/>be<sp/>found<sp/>via<sp/>a<sp/>join.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classCase_1a5617a4962ddeaabd3094fae406c860f6" kindref="member">getPermissionsQueryForCreateImpl</ref>(</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>and<sp/>return<sp/>the<sp/>query</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>SQL<sp/>joins<sp/>clinics<sp/>(alias<sp/>c)<sp/>to<sp/>the<sp/>record<sp/>table<sp/>(alias<sp/>p)<sp/>on<sp/>c.id</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>=<sp/>p.clinic_id,<sp/>then<sp/>filters<sp/>to<sp/>the<sp/>one<sp/>record<sp/>id.<sp/>It<sp/>returns<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>clinic&apos;s<sp/>owner/admin/staff<sp/>plus<sp/>patient_id<sp/>and<sp/>clinic_id,<sp/>giving<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>permission<sp/>layer<sp/>both<sp/>who<sp/>is<sp/>allowed<sp/>and<sp/>which<sp/>patient/clinic<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>involved.<sp/>LEFT<sp/>JOIN<sp/>keeps<sp/>the<sp/>clinic<sp/>row<sp/>even<sp/>if<sp/>the<sp/>match<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>missing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>query<sp/>=<sp/>fmt::format(R</highlight><highlight class="stringliteral">&quot;(</highlight></codeline>
+<codeline lineno="172"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SELECT</highlight></codeline>
+<codeline lineno="173"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.owner_id,</highlight></codeline>
+<codeline lineno="174"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.admin_id,</highlight></codeline>
+<codeline lineno="175"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.staff,</highlight></codeline>
+<codeline lineno="176"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.id<sp/>AS<sp/>patient_id,</highlight></codeline>
+<codeline lineno="177"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.clinic_id<sp/>AS<sp/>clinic_id</highlight></codeline>
+<codeline lineno="178"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FROM</highlight></codeline>
+<codeline lineno="179"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{}<sp/>c</highlight></codeline>
+<codeline lineno="180"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LEFT<sp/>JOIN<sp/>{}<sp/>p<sp/>ON<sp/>c.id<sp/>=<sp/>p.clinic_id</highlight></codeline>
+<codeline lineno="181" refid="classCase_1a549bb017161d692a03db738d940b9b2f" refkind="member"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WHERE</highlight></codeline>
+<codeline lineno="182"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.id<sp/>=<sp/>{};)&quot;,</highlight></codeline>
+<codeline lineno="183"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" kindref="member">ORGNAME</ref>,</highlight></codeline>
+<codeline lineno="184"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>,</highlight></codeline>
+<codeline lineno="185"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Fill<sp/>in<sp/>the<sp/>clinics<sp/>table,<sp/>the<sp/>record</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>table<sp/>and<sp/>the<sp/>record<sp/>id.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout<sp/>&lt;&lt;<sp/>query<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>query;<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>statement<sp/>to<sp/>PermissionManager.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="191"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="192"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>permission<sp/>query<sp/>for<sp/>reading<sp/>a<sp/>record<sp/>linked<sp/>to<sp/>a</highlight></codeline>
+<codeline lineno="193"><highlight class="comment"><sp/><sp/><sp/>*<sp/>patient.</highlight></codeline>
+<codeline lineno="194"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>id<sp/>Primary<sp/>key<sp/>of<sp/>the<sp/>record.</highlight></codeline>
+<codeline lineno="195"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>tablename<sp/>Table<sp/>holding<sp/>the<sp/>record&apos;s<sp/>clinic_id<sp/>foreign<sp/>key.</highlight></codeline>
+<codeline lineno="196"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>SELECT<sp/>statement<sp/>identifying<sp/>the<sp/>owning<sp/>clinic&apos;s</highlight></codeline>
+<codeline lineno="197"><highlight class="comment"><sp/><sp/><sp/>*<sp/>owner/admin/staff.</highlight></codeline>
+<codeline lineno="198"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Same<sp/>shape<sp/>as<sp/>create,<sp/>used<sp/>for<sp/>read<sp/>authorisation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classCase_1a549bb017161d692a03db738d940b9b2f" kindref="member">getPermissionsQueryForReadImp</ref>(</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>and<sp/>return<sp/>the<sp/>query</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Joins<sp/>clinics<sp/>to<sp/>the<sp/>record<sp/>table<sp/>on<sp/>clinic_id<sp/>and<sp/>filters<sp/>by<sp/>this</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>record<sp/>id,<sp/>returning<sp/>the<sp/>clinic&apos;s<sp/>owner/admin/staff<sp/>so<sp/>read<sp/>access</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205" refid="classCase_1acfa6a0504f8706a2d5acceb6cf2d1edf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>can<sp/>be<sp/>checked<sp/>against<sp/>clinic<sp/>membership.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>query<sp/>=</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::format(R</highlight><highlight class="stringliteral">&quot;(</highlight></codeline>
+<codeline lineno="208"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SELECT</highlight></codeline>
+<codeline lineno="209"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.owner_id,</highlight></codeline>
+<codeline lineno="210"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.admin_id,</highlight></codeline>
+<codeline lineno="211"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.staff,</highlight></codeline>
+<codeline lineno="212"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.id<sp/>AS<sp/>patient_id,</highlight></codeline>
+<codeline lineno="213"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.clinic_id<sp/>AS<sp/>clinic_id</highlight></codeline>
+<codeline lineno="214"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FROM</highlight></codeline>
+<codeline lineno="215"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{}<sp/>c</highlight></codeline>
+<codeline lineno="216"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LEFT<sp/>JOIN<sp/>{}<sp/>p<sp/>ON<sp/>c.id<sp/>=<sp/>p.clinic_id</highlight></codeline>
+<codeline lineno="217"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WHERE</highlight></codeline>
+<codeline lineno="218"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.id<sp/>=<sp/>{};)&quot;,</highlight></codeline>
+<codeline lineno="219"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" kindref="member">ORGNAME</ref>,</highlight></codeline>
+<codeline lineno="220"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>,</highlight></codeline>
+<codeline lineno="221"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Fill<sp/>in<sp/>clinics<sp/>table,<sp/>record<sp/>table<sp/>and<sp/>record<sp/>id.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout<sp/>&lt;&lt;<sp/>query<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>query;<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>statement.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="226"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="227"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>permission<sp/>query<sp/>for<sp/>updating<sp/>a<sp/>record<sp/>linked<sp/>to<sp/>a</highlight></codeline>
+<codeline lineno="228"><highlight class="comment"><sp/><sp/><sp/>*<sp/>patient.</highlight></codeline>
+<codeline lineno="229" refid="classCase_1a1dd10871e1bd41f7d55b2b6f54da4fff" refkind="member"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>id<sp/>Primary<sp/>key<sp/>of<sp/>the<sp/>record.</highlight></codeline>
+<codeline lineno="230"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>tablename<sp/>Table<sp/>holding<sp/>the<sp/>record&apos;s<sp/>clinic_id<sp/>foreign<sp/>key.</highlight></codeline>
+<codeline lineno="231"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>SELECT<sp/>statement<sp/>identifying<sp/>the<sp/>owning<sp/>clinic&apos;s</highlight></codeline>
+<codeline lineno="232"><highlight class="comment"><sp/><sp/><sp/>*<sp/>owner/admin/staff.</highlight></codeline>
+<codeline lineno="233"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Same<sp/>shape,<sp/>used<sp/>for<sp/>update<sp/>authorisation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classCase_1acfa6a0504f8706a2d5acceb6cf2d1edf" kindref="member">getPermissionsQueryForUpdateImpl</ref>(</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>and<sp/>return<sp/>the<sp/>query</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Joins<sp/>clinics<sp/>to<sp/>the<sp/>record<sp/>table<sp/>on<sp/>clinic_id<sp/>and<sp/>filters<sp/>by<sp/>this</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>record<sp/>id,<sp/>returning<sp/>the<sp/>clinic&apos;s<sp/>owner/admin/staff<sp/>so<sp/>write<sp/>access</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>can<sp/>be<sp/>checked<sp/>against<sp/>clinic<sp/>membership.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>query<sp/>=</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::format(R</highlight><highlight class="stringliteral">&quot;(</highlight></codeline>
+<codeline lineno="243"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SELECT</highlight></codeline>
+<codeline lineno="244"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.owner_id,</highlight></codeline>
+<codeline lineno="245"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.admin_id,</highlight></codeline>
+<codeline lineno="246"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.staff,</highlight></codeline>
+<codeline lineno="247"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.id<sp/>AS<sp/>patient_id,</highlight></codeline>
+<codeline lineno="248"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.clinic_id<sp/>AS<sp/>clinic_id</highlight></codeline>
+<codeline lineno="249"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FROM</highlight></codeline>
+<codeline lineno="250"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{}<sp/>c</highlight></codeline>
+<codeline lineno="251"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LEFT<sp/>JOIN<sp/>{}<sp/>p<sp/>ON<sp/>c.id<sp/>=<sp/>p.clinic_id</highlight></codeline>
+<codeline lineno="252"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WHERE</highlight></codeline>
+<codeline lineno="253"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.id<sp/>=<sp/>{};)&quot;,</highlight></codeline>
+<codeline lineno="254"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" kindref="member">ORGNAME</ref>,</highlight></codeline>
+<codeline lineno="255"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>,</highlight></codeline>
+<codeline lineno="256"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Fill<sp/>in<sp/>clinics<sp/>table,<sp/>record<sp/>table<sp/>and<sp/>record<sp/>id.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout<sp/>&lt;&lt;<sp/>query<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>query;<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>statement.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="261"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="262"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Builds<sp/>the<sp/>permission<sp/>query<sp/>for<sp/>deleting<sp/>a<sp/>record<sp/>linked<sp/>to<sp/>a</highlight></codeline>
+<codeline lineno="263"><highlight class="comment"><sp/><sp/><sp/>*<sp/>patient.</highlight></codeline>
+<codeline lineno="264"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>id<sp/>Primary<sp/>key<sp/>of<sp/>the<sp/>record.</highlight></codeline>
+<codeline lineno="265"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@param[in]<sp/>tablename<sp/>Table<sp/>holding<sp/>the<sp/>record&apos;s<sp/>clinic_id<sp/>foreign<sp/>key.</highlight></codeline>
+<codeline lineno="266"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@return<sp/>SELECT<sp/>statement<sp/>identifying<sp/>the<sp/>owning<sp/>clinic&apos;s</highlight></codeline>
+<codeline lineno="267"><highlight class="comment"><sp/><sp/><sp/>*<sp/>owner/admin/staff.</highlight></codeline>
+<codeline lineno="268"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Same<sp/>shape,<sp/>used<sp/>for<sp/>delete<sp/>authorisation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classCase_1a1dd10871e1bd41f7d55b2b6f54da4fff" kindref="member">getPermissionsQueryForDeleteImp</ref>(</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint64_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>and<sp/>return<sp/>the<sp/>query</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Joins<sp/>clinics<sp/>to<sp/>the<sp/>record<sp/>table<sp/>on<sp/>clinic_id<sp/>and<sp/>filters<sp/>by<sp/>this</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>record<sp/>id,<sp/>returning<sp/>the<sp/>clinic&apos;s<sp/>owner/admin/staff<sp/>so<sp/>delete<sp/>access</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>can<sp/>be<sp/>checked<sp/>against<sp/>clinic<sp/>membership.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>query<sp/>=</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fmt::format(R</highlight><highlight class="stringliteral">&quot;(</highlight></codeline>
+<codeline lineno="278"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SELECT</highlight></codeline>
+<codeline lineno="279"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.owner_id,</highlight></codeline>
+<codeline lineno="280"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.admin_id,</highlight></codeline>
+<codeline lineno="281"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c.staff,</highlight></codeline>
+<codeline lineno="282"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.id<sp/>AS<sp/>patient_id,</highlight></codeline>
+<codeline lineno="283"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.clinic_id<sp/>AS<sp/>clinic_id</highlight></codeline>
+<codeline lineno="284"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>FROM</highlight></codeline>
+<codeline lineno="285"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{}<sp/>c</highlight></codeline>
+<codeline lineno="286"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LEFT<sp/>JOIN<sp/>{}<sp/>p<sp/>ON<sp/>c.id<sp/>=<sp/>p.clinic_id</highlight></codeline>
+<codeline lineno="287"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WHERE</highlight></codeline>
+<codeline lineno="288"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.id<sp/>=<sp/>{};)&quot;,</highlight></codeline>
+<codeline lineno="289"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classCase_1a7845d0ed5ca20c2a1de1adeadae345ae" kindref="member">ORGNAME</ref>,</highlight></codeline>
+<codeline lineno="290"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" kindref="member">tablename</ref>,</highlight></codeline>
+<codeline lineno="291"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>Fill<sp/>in<sp/>clinics<sp/>table,<sp/>record<sp/>table<sp/>and<sp/>record<sp/>id.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>std::cout<sp/>&lt;&lt;<sp/>query<sp/>&lt;&lt;<sp/>std::endl;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>query;<sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>statement<sp/>to<sp/>PermissionManager.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="295"><highlight class="normal">};</highlight></codeline>
     </programlisting>
     <location file="src/entities/base/case.hpp"/>
   </compounddef>

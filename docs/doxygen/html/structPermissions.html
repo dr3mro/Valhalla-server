@@ -141,8 +141,8 @@ Public Types</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="memdesc:a1dc2e37dd1ca56eb9dc57829a512e092"><td class="mdescLeft">&#160;</td><td class="mdescRight">Individual authorization bits. Values are powers of two and may be OR-ed together.  <a href="#a1dc2e37dd1ca56eb9dc57829a512e092">More...</a><br /></td></tr>
-<tr class="memitem:a9617e1834ef40047fc77ac4898e51eb5" id="r_a9617e1834ef40047fc77ac4898e51eb5"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a9617e1834ef40047fc77ac4898e51eb5">StaffPermission</a></td></tr>
-<tr class="memdesc:a9617e1834ef40047fc77ac4898e51eb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">A staff member's decoded permission entry for a service.  <br /></td></tr>
+<tr class="memitem:a26a1c9adb722c5389044eb29c0db4e1e" id="r_a26a1c9adb722c5389044eb29c0db4e1e"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a26a1c9adb722c5389044eb29c0db4e1e">StaffPermission</a></td></tr>
+<tr class="memdesc:a26a1c9adb722c5389044eb29c0db4e1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">A staff member's decoded permission entry for a service.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -183,35 +183,34 @@ Friends</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Holds a bitmask of authorization bits and the helpers to combine/test them. </p>
-<p>Powers are single-bit flags stored in a uint8_t. Two groups of bits are distinguished by convention: identity bits (USER, PROVIDER, IS_ADMIN, IS_OWNER, IS_SUPER) and capability bits (CAN_READ, CAN_WRITE, CAN_DELETE). A value is a bitwise combination, so a single mask can express roles plus capabilities. </p><dl class="section note"><dt>Note</dt><dd>All the test helpers (<a class="el" href="#ac96d5536a15d787a3baf4854926a996c" title="Tests whether any bit in check is present in this rule&#39;s mask.">hasPower()</a>, <a class="el" href="#afd7453a69128f00dcd4e27c3522e31ef" title="Tests whether permission and check share any bit.">hasMatch()</a>, operator&amp;) answer "any bit in
-      common", not "all requested bits present".</dd></dl>
+<p>Powers are single-bit flags stored in a uint8_t. Two groups of bits are distinguished by convention: identity bits (USER, PROVIDER, IS_ADMIN, IS_OWNER, IS_SUPER) and capability bits (CAN_READ, CAN_WRITE, CAN_DELETE). A value is a bitwise combination, so a single mask can express roles plus capabilities. </p><dl class="section note"><dt>Note</dt><dd>All the test helpers (<a class="el" href="#ac96d5536a15d787a3baf4854926a996c" title="Tests whether any bit in check is present in this rule&#39;s mask.">hasPower()</a>, <a class="el" href="#afd7453a69128f00dcd4e27c3522e31ef" title="Tests whether permission and check share any bit.">hasMatch()</a>, operator&amp;) answer "any
+bit in common", not "all requested bits present".</dd></dl>
 <p>In everyday words: imagine an 8-switch control panel, one switch per right. Each switch is a power of two (1, 2, 4, 8, ...). Turning on several switches and adding the numbers produces a single value that remembers exactly which switches are on. <a class="el" href="structTesting.html" title="Switches used only by the test harness.">Testing</a> "is any of these switches on?" is a fast bitwise AND. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00046">46</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00056">56</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
 </div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
-<a id="a9617e1834ef40047fc77ac4898e51eb5" name="a9617e1834ef40047fc77ac4898e51eb5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9617e1834ef40047fc77ac4898e51eb5">&#9670;&#160;</a></span>StaffPermission</h2>
+<a id="a26a1c9adb722c5389044eb29c0db4e1e" name="a26a1c9adb722c5389044eb29c0db4e1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26a1c9adb722c5389044eb29c0db4e1e">&#9670;&#160;</a></span>StaffPermission</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#a9617e1834ef40047fc77ac4898e51eb5">Permissions::StaffPermission</a></td>
+          <td class="memname">using <a class="el" href="#a26a1c9adb722c5389044eb29c0db4e1e">Permissions::StaffPermission</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line"><span class="keyword">struct </span>staffPermission  </div>
-<div class="line">   {</div>
-<div class="line">       uint64_t   staff_id = 0;             </div>
-<div class="line">       <a class="code hl_enumeration" href="#a1dc2e37dd1ca56eb9dc57829a512e092">PowerLevel</a> power    = PowerLevel::NONE;  </div>
-<div class="line">       <span class="keywordtype">bool</span>       isMember = <span class="keyword">false</span>;         </div>
-<div class="line">   }</div>
-<div class="ttc" id="astructPermissions_html_a1dc2e37dd1ca56eb9dc57829a512e092"><div class="ttname"><a href="#a1dc2e37dd1ca56eb9dc57829a512e092">Permissions::PowerLevel</a></div><div class="ttdeci">PowerLevel</div><div class="ttdoc">Individual authorization bits. Values are powers of two and may be OR-ed together.</div><div class="ttdef"><b>Definition</b> <a href="permissions_8hpp_source.html#l00054">permissions.hpp:55</a></div></div>
+<b>Initial value:</b><div class="fragment"><div class="line"><span class="keyword">struct </span>staffPermission {</div>
+<div class="line">   uint64_t staff_id = 0; </div>
+<div class="line">   <a class="code hl_enumeration" href="#a1dc2e37dd1ca56eb9dc57829a512e092">PowerLevel</a> power = PowerLevel::NONE; </div>
+<div class="line">   <span class="keywordtype">bool</span> isMember = <span class="keyword">false</span>; </div>
+<div class="line"> }</div>
+<div class="ttc" id="astructPermissions_html_a1dc2e37dd1ca56eb9dc57829a512e092"><div class="ttname"><a href="#a1dc2e37dd1ca56eb9dc57829a512e092">Permissions::PowerLevel</a></div><div class="ttdeci">PowerLevel</div><div class="ttdoc">Individual authorization bits. Values are powers of two and may be OR-ed together.</div><div class="ttdef"><b>Definition</b> <a href="permissions_8hpp_source.html#l00067">permissions.hpp:67</a></div></div>
 </div><!-- fragment -->
 <p>A staff member's decoded permission entry for a service. </p>
 <p><span class="tt">staff_id</span>/<span class="tt">power</span> are parsed from an <span class="tt">"&lt;id&gt;:&lt;mask&gt;"</span> string; <span class="tt">isMember</span> marks a successful parse. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00127">127</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00168">168</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
 
 </div>
 </div>
@@ -259,7 +258,7 @@ Friends</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00054">54</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00067">67</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
 
 </div>
 </div>
@@ -289,9 +288,9 @@ Friends</h2></td></tr>
 
 <p>Constructs a rule wrapping a single (possibly combined) <a class="el" href="#a1dc2e37dd1ca56eb9dc57829a512e092" title="Individual authorization bits. Values are powers of two and may be OR-ed together.">PowerLevel</a> mask. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00069">69</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00083">83</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissions_8hpp_source.html#l00135">powerLevel</a>.</p>
+<p class="reference">References <a class="el" href="permissions_8hpp_source.html#l00179">powerLevel</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a5045fe7c0a625dc6f5b81515336eb3a5">operator=()</a>, <a class="el" href="#a0c912ae21ea01916744be3ce748462da">operator=()</a>, <a class="el" href="#a3caac56a9804e68ec7f2162673b76007">Permissions()</a>, and <a class="el" href="#a7dcc9bc0247dd973124e74283054d978">Permissions()</a>.</p>
 
@@ -370,7 +369,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="permissions_8hpp_source.html#l00069">Permissions()</a>.</p>
+<p class="reference">References <a class="el" href="permissions_8hpp_source.html#l00083">Permissions()</a>.</p>
 
 </div>
 </div>
@@ -397,7 +396,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="permissions_8hpp_source.html#l00069">Permissions()</a>.</p>
+<p class="reference">References <a class="el" href="permissions_8hpp_source.html#l00083">Permissions()</a>.</p>
 
 </div>
 </div>
@@ -431,7 +430,7 @@ Friends</h2></td></tr>
 
 <p>Tests whether <code class="param">permission</code> and <code class="param">check</code> share any bit. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00138">138</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00183">183</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
 
 </div>
 </div>
@@ -467,9 +466,9 @@ Friends</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><span class="tt">true</span> if at least one checked bit is set. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00082">82</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00103">103</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissions_8hpp_source.html#l00135">powerLevel</a>.</p>
+<p class="reference">References <a class="el" href="permissions_8hpp_source.html#l00179">powerLevel</a>.</p>
 
 </div>
 </div>
@@ -498,9 +497,9 @@ Friends</h2></td></tr>
 
 <p>Converts to <span class="tt">true</span> when at least one power bit is set. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00120">120</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00156">156</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissions_8hpp_source.html#l00135">powerLevel</a>.</p>
+<p class="reference">References <a class="el" href="permissions_8hpp_source.html#l00179">powerLevel</a>.</p>
 
 </div>
 </div>
@@ -527,7 +526,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="permissions_8hpp_source.html#l00069">Permissions()</a>.</p>
+<p class="reference">References <a class="el" href="permissions_8hpp_source.html#l00083">Permissions()</a>.</p>
 
 </div>
 </div>
@@ -554,7 +553,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="permissions_8hpp_source.html#l00069">Permissions()</a>.</p>
+<p class="reference">References <a class="el" href="permissions_8hpp_source.html#l00083">Permissions()</a>.</p>
 
 </div>
 </div>
@@ -588,7 +587,7 @@ Friends</h2></td></tr>
 
 <p>Returns the bitwise AND of two masks (non-zero means a shared bit). </p>
 
-<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00093">93</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00121">121</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
 
 </div>
 </div>
@@ -622,7 +621,7 @@ Friends</h2></td></tr>
 <p>Keeps only the bits shared by <code class="param">first</code> and <code class="param">second</code>. </p>
 <dl class="section return"><dt>Returns</dt><dd>Reference to <code class="param">first</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00108">108</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00143">143</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
 
 </div>
 </div>
@@ -655,7 +654,7 @@ Friends</h2></td></tr>
 
 <p>Returns the bitwise OR of two masks. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00086">86</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00111">111</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
 
 </div>
 </div>
@@ -689,7 +688,7 @@ Friends</h2></td></tr>
 <p>Adds the bits of <code class="param">second</code> to <code class="param">first</code> in place. </p>
 <dl class="section return"><dt>Returns</dt><dd>Reference to <code class="param">first</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00100">100</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00135">135</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
 
 </div>
 </div>
@@ -718,7 +717,7 @@ Friends</h2></td></tr>
 
 <p>Returns the one's-complement of the 8-bit mask. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00116">116</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00150">150</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
 
 </div>
 </div>
@@ -744,9 +743,9 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <p>The combined authorization bits, kept private so it can only be changed through the constructor/operators. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00135">135</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissions_8hpp_source.html#l00179">179</a> of file <a class="el" href="permissions_8hpp_source.html">permissions.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="permissions_8hpp_source.html#l00082">hasPower()</a>, <a class="el" href="permissions_8hpp_source.html#l00120">operator bool()</a>, and <a class="el" href="permissions_8hpp_source.html#l00069">Permissions()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="permissions_8hpp_source.html#l00103">hasPower()</a>, <a class="el" href="permissions_8hpp_source.html#l00156">operator bool()</a>, and <a class="el" href="permissions_8hpp_source.html#l00083">Permissions()</a>.</p>
 
 </div>
 </div>

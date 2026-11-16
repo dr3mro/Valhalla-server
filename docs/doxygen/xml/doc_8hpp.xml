@@ -54,13 +54,13 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
       </node>
       <node id="20">
@@ -100,41 +100,7 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-      </node>
-      <node id="27">
-        <label>concurrency/boundedexecutor.hpp</label>
-        <link refid="boundedexecutor_8hpp"/>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
         <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
         </childnode>
       </node>
       <node id="23">
@@ -154,28 +120,28 @@
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
-      <node id="38">
+      <node id="29">
         <label>database/dbprobe.hpp</label>
         <link refid="dbprobe_8hpp"/>
       </node>
-      <node id="35">
+      <node id="28">
         <label>utils/global/callback.hpp</label>
         <link refid="callback_8hpp"/>
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="36">
+      <node id="30">
         <label>utils/global/http.hpp</label>
         <link refid="http_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
       </node>
-      <node id="39">
+      <node id="32">
         <label>utils/global/requester.hpp</label>
         <link refid="requester_8hpp"/>
         <childnode refid="13" relation="include">
@@ -185,26 +151,17 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="40">
+      <node id="33">
         <label>api_html.hpp</label>
       </node>
-      <node id="28">
-        <label>atomic</label>
-      </node>
-      <node id="29">
-        <label>chrono</label>
-      </node>
-      <node id="30">
-        <label>condition_variable</label>
+      <node id="27">
+        <label>concurrency/boundedexecutor.hpp</label>
       </node>
       <node id="26">
         <label>cstddef</label>
       </node>
       <node id="13">
         <label>cstdint</label>
-      </node>
-      <node id="31">
-        <label>deque</label>
       </node>
       <node id="2">
         <label>drogon/HttpController.h</label>
@@ -242,9 +199,6 @@
       <node id="15">
         <label>memory</label>
       </node>
-      <node id="32">
-        <label>mutex</label>
-      </node>
       <node id="16">
         <label>optional</label>
       </node>
@@ -257,23 +211,17 @@
       <node id="17">
         <label>string_view</label>
       </node>
-      <node id="33">
-        <label>thread</label>
-      </node>
       <node id="18">
         <label>tuple</label>
       </node>
       <node id="19">
         <label>type_traits</label>
       </node>
-      <node id="37">
+      <node id="31">
         <label>unordered_map</label>
       </node>
       <node id="8">
         <label>utility</label>
-      </node>
-      <node id="34">
-        <label>vector</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
@@ -319,75 +267,108 @@
 <codeline lineno="1"><highlight class="comment">/**</highlight></codeline>
 <codeline lineno="2"><highlight class="comment"><sp/>*<sp/>@file<sp/>doc.hpp</highlight></codeline>
 <codeline lineno="3"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Serves<sp/>the<sp/>Swagger<sp/>UI<sp/>page<sp/>that<sp/>documents<sp/>the<sp/>API.</highlight></codeline>
-<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>file<sp/>defines<sp/>the<sp/>Doc<sp/>controller<sp/>with<sp/>a<sp/>single<sp/>endpoint.<sp/>That<sp/>endpoint<sp/>returns<sp/>an<sp/>HTML</highlight></codeline>
-<codeline lineno="5"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>page<sp/>containing<sp/>the<sp/>Swagger<sp/>UI,<sp/>an<sp/>interactive<sp/>documentation<sp/>viewer<sp/>for<sp/>the<sp/>REST<sp/>API.<sp/>The</highlight></codeline>
-<codeline lineno="6"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HTML<sp/>is<sp/>embedded<sp/>into<sp/>the<sp/>program<sp/>at<sp/>build<sp/>time<sp/>from<sp/>docs/api.html,<sp/>so<sp/>the<sp/>running<sp/>server</highlight></codeline>
-<codeline lineno="7"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>does<sp/>not<sp/>need<sp/>to<sp/>read<sp/>any<sp/>file<sp/>from<sp/>disk.<sp/>The<sp/>handler<sp/>simply<sp/>builds<sp/>a<sp/>200<sp/>HTML<sp/>response<sp/>and</highlight></codeline>
-<codeline lineno="8"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hands<sp/>it<sp/>to<sp/>the<sp/>callback;<sp/>there<sp/>is<sp/>no<sp/>per-request<sp/>state<sp/>or<sp/>authentication.</highlight></codeline>
-<codeline lineno="9"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
-<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>the<sp/>human-facing<sp/>documentation<sp/>endpoint<sp/>of<sp/>the<sp/>API.<sp/>Developers<sp/>and<sp/>testers<sp/>open<sp/>it<sp/>in<sp/>a</highlight></codeline>
-<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>browser<sp/>to<sp/>see<sp/>every<sp/>available<sp/>route,<sp/>its<sp/>parameters<sp/>and<sp/>its<sp/>response<sp/>format.<sp/>Drogon<sp/>calls<sp/>it<sp/>at</highlight></codeline>
-<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>the<sp/>/api/v2/doc<sp/>URL;<sp/>it<sp/>uses<sp/>no<sp/>database<sp/>and<sp/>no<sp/>controllers.<sp/>Because<sp/>it<sp/>goes<sp/>through<sp/>the<sp/>INSECURE</highlight></codeline>
-<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>chain<sp/>it<sp/>is<sp/>rate-limited<sp/>and<sp/>timed<sp/>but<sp/>needs<sp/>no<sp/>token,<sp/>so<sp/>anyone<sp/>can<sp/>read<sp/>the<sp/>public<sp/>docs.</highlight></codeline>
-<codeline lineno="15"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
-<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>-<sp/>Swagger<sp/>/<sp/>OpenAPI:<sp/>a<sp/>standard<sp/>way<sp/>to<sp/>describe<sp/>REST<sp/>APIs<sp/>(https://swagger.io/).</highlight></codeline>
-<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>-<sp/>HTTP<sp/>GET<sp/>and<sp/>status<sp/>200:<sp/>https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods</highlight></codeline>
-<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>-<sp/>CORS:<sp/>https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</highlight></codeline>
-<codeline lineno="20"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Only<sp/>process<sp/>this<sp/>header<sp/>once<sp/>per<sp/>source<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Drogon<sp/>controller<sp/>base<sp/>and<sp/>the<sp/>request/response/status<sp/>types<sp/>the<sp/>handler<sp/>uses.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpController.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Base<sp/>class<sp/>drogon::HttpController<sp/>used<sp/>by<sp/>Doc.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpRequest.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Request<sp/>type<sp/>(unused<sp/>here<sp/>but<sp/>required<sp/>by<sp/>the<sp/>handler<sp/>signature).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpResponse.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Response<sp/>type<sp/>built<sp/>by<sp/>the<sp/>handler.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpTypes.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Status<sp/>and<sp/>content-type<sp/>constants.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::function<sp/>is<sp/>the<sp/>type<sp/>of<sp/>the<sp/>response<sp/>callback.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::string<sp/>converts<sp/>the<sp/>embedded<sp/>HTML<sp/>into<sp/>a<sp/>response<sp/>body.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::move<sp/>for<sp/>consuming<sp/>the<sp/>callback.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8hpp" kindref="compound">api/v2/basic/common.hpp</ref>&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Brings<sp/>in<sp/>the<sp/>INSECURE/SECURE<sp/>filter<sp/>macros<sp/>used<sp/>by<sp/>METHOD_ADD.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;api_html.hpp&quot;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>generated<sp/>at<sp/>configure<sp/>time<sp/>from<sp/>docs/api.html<sp/>(see<sp/>tools/cmake/embed_html.cmake)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceapi_1_1v2" kindref="compound">api::v2</ref><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>v2<sp/>API<sp/>controllers<sp/>live<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal">{</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="40"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="41"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@class<sp/>Doc</highlight></codeline>
-<codeline lineno="42"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Serves<sp/>the<sp/>Swagger<sp/>UI<sp/>page<sp/>that<sp/>documents<sp/>the<sp/>API.</highlight></codeline>
-<codeline lineno="43"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@details<sp/>GET<sp/>/api/v2/doc<sp/>(INSECURE).<sp/>The<sp/>HTML<sp/>is<sp/>compiled<sp/>into<sp/>the<sp/>binary<sp/>from<sp/>docs/api.html<sp/>at</highlight></codeline>
-<codeline lineno="44"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>configure<sp/>time,<sp/>so<sp/>no<sp/>runtime<sp/>file<sp/>is<sp/>required.<sp/>The<sp/>handler<sp/>only<sp/>constructs<sp/>the<sp/>response;</highlight></codeline>
-<codeline lineno="45"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>there<sp/>is<sp/>no<sp/>request-dependent<sp/>state.</highlight></codeline>
-<codeline lineno="46"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@see<sp/>api_html.hpp<sp/>(generated<sp/>header<sp/>containing<sp/>docs::kApiHtml)</highlight></codeline>
-<codeline lineno="47"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>GET<sp/>/api/v2/doc<sp/><sp/>-&gt;<sp/><sp/>the<sp/>Swagger<sp/>UI<sp/>page<sp/>describing<sp/>the<sp/>API.<sp/>The<sp/>page<sp/>is<sp/>compiled<sp/>into<sp/>the<sp/>binary.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="49" refid="classapi_1_1v2_1_1Doc" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classapi_1_1v2_1_1Doc" kindref="compound">Doc</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>drogon::HttpController&lt;Doc&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>Inherit<sp/>Drogon&apos;s<sp/>controller<sp/>template<sp/>so<sp/>Drogon<sp/>registers<sp/>its<sp/>routes.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="52"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>/**</highlight></codeline>
-<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Respond<sp/>with<sp/>the<sp/>embedded<sp/>Swagger<sp/>UI<sp/>HTML<sp/>document.</highlight></codeline>
-<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Response<sp/>callback,<sp/>consumed<sp/>exactly<sp/>once.</highlight></codeline>
-<codeline lineno="55"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56" refid="classapi_1_1v2_1_1Doc_1a5d3c3cb4d934ad3a6cb4fbeffb455e54" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1Doc_1a5d3c3cb4d934ad3a6cb4fbeffb455e54" kindref="member">doc</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::HttpRequestPtr&amp;<sp/></highlight><highlight class="comment">/*req*/</highlight><highlight class="normal">,<sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::HttpResponsePtr&amp;)&gt;&amp;&amp;<sp/>callback)<sp/><sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::HttpResponsePtr<sp/>response<sp/>=<sp/>drogon::HttpResponse::newHttpResponse();<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>an<sp/>empty<sp/>HTTP<sp/>reply<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>response-&gt;setBody(std::string(docs::kApiHtml));<sp/><sp/></highlight><highlight class="comment">//<sp/>Put<sp/>the<sp/>compile-time<sp/>embedded<sp/>Swagger<sp/>HTML<sp/>into<sp/>the<sp/>body.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>response-&gt;setStatusCode(drogon::k200OK);<sp/><sp/></highlight><highlight class="comment">//<sp/>200<sp/>means<sp/>the<sp/>page<sp/>was<sp/>found<sp/>and<sp/>is<sp/>being<sp/>returned.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>response-&gt;setContentTypeCode(drogon::CT_TEXT_HTML);<sp/><sp/></highlight><highlight class="comment">//<sp/>Mark<sp/>the<sp/>body<sp/>as<sp/>HTML<sp/>so<sp/>the<sp/>browser<sp/>renders<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::move(callback)(response);<sp/><sp/></highlight><highlight class="comment">//<sp/>Send<sp/>the<sp/>response<sp/>to<sp/>the<sp/>client<sp/>and<sp/>finish.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Public<sp/>documentation<sp/>endpoint:<sp/>timing<sp/>+<sp/>rate<sp/>limiting<sp/>only,<sp/>no<sp/>authentication.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>METHOD_LIST_BEGIN<sp/><sp/></highlight><highlight class="comment">//<sp/>Start<sp/>the<sp/>block<sp/>where<sp/>Drogon<sp/>route<sp/>registrations<sp/>are<sp/>declared.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68" refid="classapi_1_1v2_1_1Doc_1a13ad7f2d87dae64edb53abfd91914656" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1Doc_1a13ad7f2d87dae64edb53abfd91914656" kindref="member">METHOD_ADD</ref>(<ref refid="classapi_1_1v2_1_1Doc_1a5d3c3cb4d934ad3a6cb4fbeffb455e54" kindref="member">Doc::doc</ref>,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,<sp/>drogon::Get,<sp/><ref refid="common_8hpp_1ad21df8408a63deff2676218cfd5ebb1f" kindref="member">INSECURE</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>Bind<sp/>GET<sp/>of<sp/>the<sp/>controller<sp/>path<sp/>to<sp/>doc()<sp/>with<sp/>the<sp/>INSECURE<sp/>filter<sp/>chain.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>METHOD_LIST_END<sp/><sp/></highlight><highlight class="comment">//<sp/>End<sp/>the<sp/>route<sp/>registration<sp/>block.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>api::v2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>@details<sp/>This<sp/>file<sp/>defines<sp/>the<sp/>Doc<sp/>controller<sp/>with<sp/>a<sp/>single<sp/>endpoint.<sp/>That</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*<sp/>endpoint<sp/>returns<sp/>an<sp/>HTML<sp/>page<sp/>containing<sp/>the<sp/>Swagger<sp/>UI,<sp/>an<sp/>interactive</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>documentation<sp/>viewer<sp/>for<sp/>the<sp/>REST<sp/>API.<sp/>The<sp/>HTML<sp/>is<sp/>embedded<sp/>into<sp/>the<sp/>program</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*<sp/>at<sp/>build<sp/>time<sp/>from<sp/>docs/api.html,<sp/>so<sp/>the<sp/>running<sp/>server<sp/>does<sp/>not<sp/>need<sp/>to<sp/>read</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>any<sp/>file<sp/>from<sp/>disk.<sp/>The<sp/>handler<sp/>simply<sp/>builds<sp/>a<sp/>200<sp/>HTML<sp/>response<sp/>and<sp/>hands</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>it<sp/>to<sp/>the<sp/>callback;<sp/>there<sp/>is<sp/>no<sp/>per-request<sp/>state<sp/>or<sp/>authentication.</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>WHY<sp/>THIS<sp/>FILE<sp/>MATTERS<sp/>IN<sp/>THE<sp/>SERVER:</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*<sp/>This<sp/>is<sp/>the<sp/>human-facing<sp/>documentation<sp/>endpoint<sp/>of<sp/>the<sp/>API.<sp/>Developers<sp/>and</highlight></codeline>
+<codeline lineno="13"><highlight class="comment"><sp/>*<sp/>testers<sp/>open<sp/>it<sp/>in<sp/>a<sp/>browser<sp/>to<sp/>see<sp/>every<sp/>available<sp/>route,<sp/>its<sp/>parameters<sp/>and</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"><sp/>*<sp/>its<sp/>response<sp/>format.<sp/>Drogon<sp/>calls<sp/>it<sp/>at<sp/>the<sp/>/api/v2/doc<sp/>URL;<sp/>it<sp/>uses<sp/>no</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>database<sp/>and<sp/>no<sp/>controllers.<sp/>Because<sp/>it<sp/>goes<sp/>through<sp/>the<sp/>INSECURE<sp/>chain<sp/>it<sp/>is</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>rate-limited<sp/>and<sp/>timed<sp/>but<sp/>needs<sp/>no<sp/>token,<sp/>so<sp/>anyone<sp/>can<sp/>read<sp/>the<sp/>public</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>docs.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>-<sp/>Swagger<sp/>/<sp/>OpenAPI:<sp/>a<sp/>standard<sp/>way<sp/>to<sp/>describe<sp/>REST<sp/>APIs</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>(https://swagger.io/).</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>HTTP<sp/>GET<sp/>and<sp/>status<sp/>200:</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>-<sp/>CORS:<sp/>https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Only<sp/>process<sp/>this<sp/>header<sp/>once<sp/>per<sp/>source<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Drogon<sp/>controller<sp/>base<sp/>and<sp/>the<sp/>request/response/status<sp/>types<sp/>the<sp/>handler</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>uses.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Base<sp/>class<sp/>drogon::HttpController<sp/>used<sp/>by<sp/>Doc.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpController.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Request<sp/>type<sp/>(unused<sp/>here<sp/>but<sp/>required<sp/>by<sp/>the<sp/>handler<sp/>signature).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpRequest.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpResponse.h&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Response<sp/>type<sp/>built<sp/>by<sp/>the<sp/>handler.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;drogon/HttpTypes.h&gt;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Status<sp/>and<sp/>content-type<sp/>constants.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::function<sp/>is<sp/>the<sp/>type<sp/>of<sp/>the<sp/>response<sp/>callback.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/>std::string<sp/>converts<sp/>the<sp/>embedded<sp/>HTML<sp/>into<sp/>a<sp/>response<sp/>body.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>std::move<sp/>for<sp/>consuming<sp/>the<sp/>callback.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Brings<sp/>in<sp/>the<sp/>INSECURE/SECURE<sp/>filter<sp/>macros<sp/>used<sp/>by<sp/>METHOD_ADD.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8hpp" kindref="compound">api/v2/basic/common.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>generated<sp/>at<sp/>configure<sp/>time<sp/>from<sp/>docs/api.html<sp/>(see</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>tools/cmake/embed_html.cmake)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;api_html.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>v2<sp/>API<sp/>controllers<sp/>live<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceapi_1_1v2" kindref="compound">api::v2</ref><sp/>{</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="52"><highlight class="comment"><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="53"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@class<sp/>Doc</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@brief<sp/>Serves<sp/>the<sp/>Swagger<sp/>UI<sp/>page<sp/>that<sp/>documents<sp/>the<sp/>API.</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@details<sp/>GET<sp/>/api/v2/doc<sp/>(INSECURE).<sp/>The<sp/>HTML<sp/>is<sp/>compiled<sp/>into<sp/>the<sp/>binary</highlight></codeline>
+<codeline lineno="56"><highlight class="comment"><sp/><sp/><sp/>*<sp/>from<sp/>docs/api.html<sp/>at<sp/>configure<sp/>time,<sp/>so<sp/>no<sp/>runtime<sp/>file<sp/>is<sp/>required.<sp/>The</highlight></codeline>
+<codeline lineno="57"><highlight class="comment"><sp/><sp/><sp/>*<sp/>handler<sp/>only<sp/>constructs<sp/>the<sp/>response;<sp/>there<sp/>is<sp/>no<sp/>request-dependent</highlight></codeline>
+<codeline lineno="58"><highlight class="comment"><sp/><sp/><sp/>*<sp/>state.</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"><sp/><sp/><sp/>*<sp/>@see<sp/>api_html.hpp<sp/>(generated<sp/>header<sp/>containing<sp/>docs::kApiHtml)</highlight></codeline>
+<codeline lineno="60"><highlight class="comment"><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>GET<sp/>/api/v2/doc<sp/><sp/>-&gt;<sp/><sp/>the<sp/>Swagger<sp/>UI<sp/>page<sp/>describing<sp/>the<sp/>API.<sp/>The<sp/>page<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>compiled<sp/>into<sp/>the<sp/>binary.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Inherit<sp/>Drogon&apos;s<sp/>controller</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>template<sp/>so<sp/>Drogon</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>registers<sp/>its<sp/>routes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="classapi_1_1v2_1_1Doc" refkind="compound"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classapi_1_1v2_1_1Doc" kindref="compound">Doc</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>drogon::HttpController&lt;Doc&gt;<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="68"><highlight class="comment"><sp/><sp/><sp/><sp/>/**</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Respond<sp/>with<sp/>the<sp/>embedded<sp/>Swagger<sp/>UI<sp/>HTML<sp/>document.</highlight></codeline>
+<codeline lineno="70"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>@param[in,out]<sp/>callback<sp/>Response<sp/>callback,<sp/>consumed<sp/>exactly<sp/>once.</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="classapi_1_1v2_1_1Doc_1a5d3c3cb4d934ad3a6cb4fbeffb455e54" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classapi_1_1v2_1_1Doc_1a5d3c3cb4d934ad3a6cb4fbeffb455e54" kindref="member">doc</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::HttpRequestPtr&amp;<sp/></highlight><highlight class="comment">/*req*/</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>drogon::HttpResponsePtr&amp;)&gt;&amp;&amp;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>callback)<sp/><sp/></highlight><highlight class="comment">//<sp/>NOLINT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>drogon::HttpResponsePtr<sp/>response<sp/>=</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::HttpResponse::newHttpResponse();<sp/><sp/></highlight><highlight class="comment">//<sp/>Build<sp/>an<sp/>empty<sp/>HTTP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>reply<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>response-&gt;setBody(</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string(docs::kApiHtml));<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Put<sp/>the<sp/>compile-time<sp/>embedded</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Swagger<sp/>HTML<sp/>into<sp/>the<sp/>body.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>response-&gt;setStatusCode(drogon::k200OK);<sp/><sp/></highlight><highlight class="comment">//<sp/>200<sp/>means<sp/>the<sp/>page<sp/>was<sp/>found</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>is<sp/>being<sp/>returned.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>response-&gt;setContentTypeCode(</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::CT_TEXT_HTML);<sp/><sp/></highlight><highlight class="comment">//<sp/>Mark<sp/>the<sp/>body<sp/>as<sp/>HTML<sp/>so<sp/>the<sp/>browser</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>renders<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::move(callback)(</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>response);<sp/><sp/></highlight><highlight class="comment">//<sp/>Send<sp/>the<sp/>response<sp/>to<sp/>the<sp/>client<sp/>and<sp/>finish.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Public<sp/>documentation<sp/>endpoint:<sp/>timing<sp/>+<sp/>rate<sp/>limiting<sp/>only,<sp/>no</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>authentication.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>METHOD_LIST_BEGIN<sp/><sp/></highlight><highlight class="comment">//<sp/>Start<sp/>the<sp/>block<sp/>where<sp/>Drogon<sp/>route<sp/>registrations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>are<sp/>declared.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="classapi_1_1v2_1_1Doc_1a13ad7f2d87dae64edb53abfd91914656" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classapi_1_1v2_1_1Doc_1a13ad7f2d87dae64edb53abfd91914656" kindref="member">METHOD_ADD</ref>(<ref refid="classapi_1_1v2_1_1Doc_1a5d3c3cb4d934ad3a6cb4fbeffb455e54" kindref="member">Doc::doc</ref>,</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>drogon::Get,</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="common_8hpp_1ad21df8408a63deff2676218cfd5ebb1f" kindref="member">INSECURE</ref>);<sp/><sp/></highlight><highlight class="comment">//<sp/>Bind<sp/>GET<sp/>of<sp/>the<sp/>controller</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>path<sp/>to<sp/>doc()<sp/>with<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>INSECURE<sp/>filter<sp/>chain.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>METHOD_LIST_END<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>End<sp/>the<sp/>route<sp/>registration<sp/>block.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>api::v2</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/api/v2/routes/doc.hpp"/>
   </compounddef>

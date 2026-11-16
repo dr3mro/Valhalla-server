@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="58" column="14"/>
+        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="80" column="12"/>
         <referencedby refid="classEntityControllerBase_1abfefd98b04bb8f2a2676107b1a33171d">EntityControllerBase</referencedby>
         <referencedby refid="classEntityControllerBase_1a22613f90bc73fa078b391978d3bfc53a">EntityControllerBase</referencedby>
         <referencedby refid="classEntityControllerBase_1a03a2497cb1b96cce5ac25a6fa56baaa3">operator=</referencedby>
@@ -38,7 +38,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="59" column="5"/>
+        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="82" column="3"/>
         <references refid="classEntityControllerBase_1a945e355f1db0eb3e3775f4b39ff5cc58">EntityControllerBase</references>
       </memberdef>
       <memberdef kind="function" id="classEntityControllerBase_1a22613f90bc73fa078b391978d3bfc53a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="60" column="5"/>
+        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="84" column="3"/>
         <references refid="classEntityControllerBase_1a945e355f1db0eb3e3775f4b39ff5cc58">EntityControllerBase</references>
       </memberdef>
       <memberdef kind="function" id="classEntityControllerBase_1a03a2497cb1b96cce5ac25a6fa56baaa3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -74,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="61" column="26"/>
+        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="86" column="24"/>
         <references refid="classEntityControllerBase_1a945e355f1db0eb3e3775f4b39ff5cc58">EntityControllerBase</references>
       </memberdef>
       <memberdef kind="function" id="classEntityControllerBase_1a9eebe753fa710a323d5ad30f0df721da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="62" column="26"/>
+        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="88" column="24"/>
         <references refid="classEntityControllerBase_1a945e355f1db0eb3e3775f4b39ff5cc58">EntityControllerBase</references>
       </memberdef>
       <memberdef kind="function" id="classEntityControllerBase_1a202b4e0e30ec88fcd87fdeb96ac1c22b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -108,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="67" column="13"/>
+        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="95" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classEntityControllerBase_1a1094cb5fe08aaaba8cd5ec5c57784cf0" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -165,8 +165,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="76" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="108" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classEntityControllerBase_1a7d18b72b305783a247f3d70c64ad391b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -223,8 +223,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="84" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="120" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classEntityControllerBase_1a8a392d8c3fd918f13c644079d727effa" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -281,8 +281,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="91" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="132" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classEntityControllerBase_1a023b63c4973ca2d03539b11cb9693453" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -339,8 +339,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="98" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="142" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classEntityControllerBase_1ae5d92e66680e04f297ac7449f1a8d9f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -409,8 +409,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="106" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="155" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classEntityControllerBase_1a65cfe323fc4255e1b8a06d5864be2616" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -479,8 +479,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="114" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="168" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classEntityControllerBase_1ad7023964ed22d27aa3adc12dd5ac3d93" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -537,8 +537,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="121" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="182" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classEntityControllerBase_1a0edce522edd2a4970d7853b433adbb7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -595,8 +595,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="128" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="193" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classEntityControllerBase_1ace1793314727472edb5aeb5e03cdf622" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -653,8 +653,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="135" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="208" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classEntityControllerBase_1a3ed2dd3c8c29b82c86ace136191b6c30" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -709,16 +709,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="142" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="220" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
 <para>Abstract contract for the request-facing CRUDS handlers exposed for every entity type. </para>
     </briefdescription>
     <detaileddescription>
-<para>Declares five operations (Create, Read, Update, Delete, Search), each in a synchronous callback form and in a <computeroutput>drogon::Task</computeroutput> coroutine form. Implementations (see <ref refid="classEntityController" kindref="compound">EntityController</ref>) are expected to parse and validate <computeroutput>data</computeroutput>, authorize the action with <computeroutput>requester</computeroutput>, construct the entity and delegate persistence to the lower-level <ref refid="classController" kindref="compound">Controller</ref>. The callback is <computeroutput><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref></computeroutput> = <computeroutput>std::function&lt;void(int, const std::string&amp;)&gt;</computeroutput>: implementations invoke it once with an HTTP status code and a response body, including on error paths.</para>
-<para>The interface itself does not own or store any state; derived controllers supply the collaborators. The lifetime of <computeroutput>callback</computeroutput>, <computeroutput>requester</computeroutput> and <computeroutput>data</computeroutput> (and of the owning controller) must extend until the coroutine variants complete, because they are borrowed by the coroutine frame. <simplesect kind="note"><para>The <computeroutput>const <ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;</computeroutput> parameter is passed by rvalue reference by the existing callers; treat it as a borrowed, immutable principal rather than assuming ownership is transferred. </para>
+<para>Declares five operations (Create, Read, Update, Delete, Search), each in a synchronous callback form and in a <computeroutput>drogon::Task</computeroutput> coroutine form. Implementations (see <ref refid="classEntityController" kindref="compound">EntityController</ref>) are expected to parse and validate <computeroutput>data</computeroutput>, authorize the action with <computeroutput>requester</computeroutput>, construct the entity and delegate persistence to the lower-level <ref refid="classController" kindref="compound">Controller</ref>. The callback is <computeroutput><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref></computeroutput> = <computeroutput>std::function&lt;void(int, const std::string&amp;)&gt;</computeroutput>: implementations invoke it once with an HTTP status code and a response body, including on error paths. <verbatim>     The interface itself does not own or store any state; derived
+</verbatim> controllers supply the collaborators. The lifetime of <computeroutput>callback</computeroutput>, <computeroutput>requester</computeroutput> and <computeroutput>data</computeroutput> (and of the owning controller) must extend until the coroutine variants complete, because they are borrowed by the coroutine frame. <simplesect kind="note"><para>The <computeroutput>const <ref refid="structRequester" kindref="compound">Requester</ref>&amp;&amp;</computeroutput> parameter is passed by rvalue reference by the existing callers; treat it as a borrowed, immutable principal rather than assuming ownership is transferred. </para>
 </simplesect>
 <simplesect kind="see"><para><ref refid="classEntityController" kindref="compound">EntityController</ref>, <ref refid="classController" kindref="compound">Controller</ref> </para>
 </simplesect>
@@ -760,7 +760,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="55" column="1" bodyfile="src/controllers/entitycontroller/entitycontrollerbase.hpp" bodystart="56" bodyend="143"/>
+    <location file="src/controllers/entitycontroller/entitycontrollerbase.hpp" line="78" column="1" bodyfile="src/controllers/entitycontroller/entitycontrollerbase.hpp" bodystart="78" bodyend="224"/>
     <listofallmembers>
       <member refid="classEntityControllerBase_1a1094cb5fe08aaaba8cd5ec5c57784cf0" prot="public" virt="pure-virtual"><scope>EntityControllerBase</scope><name>Create</name></member>
       <member refid="classEntityControllerBase_1a7d18b72b305783a247f3d70c64ad391b" prot="public" virt="pure-virtual"><scope>EntityControllerBase</scope><name>CreateAsync</name></member>

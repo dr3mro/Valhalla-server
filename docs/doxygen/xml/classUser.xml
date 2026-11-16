@@ -11,7 +11,8 @@
         <argsstring></argsstring>
         <name>TABLENAME</name>
         <qualifiedname>User::TABLENAME</qualifiedname>
-        <initializer>= &quot;users&quot;</initializer>
+        <initializer>                            =
+&quot;users&quot;</initializer>
         <briefdescription>
 <para><ref refid="classDatabase" kindref="compound">Database</ref> table holding users. </para>
         </briefdescription>
@@ -19,9 +20,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/people/user.hpp" line="113" column="27" bodyfile="src/entities/people/user.hpp" bodystart="113" bodyend="-1"/>
-        <referencedby refid="classUser_1a4929e8a6bf5fceec26860af7dfb0cd37" compoundref="people_2user_8hpp" startline="83" endline="83">getTableName</referencedby>
-        <referencedby refid="classUser_1a166538549bcb7bf1f3d4aea0b777f7cb" compoundref="people_2user_8hpp" startline="71" endline="73">User</referencedby>
+        <location file="src/entities/people/user.hpp" line="138" column="25" bodyfile="src/entities/people/user.hpp" bodystart="138" bodyend="-1"/>
+        <referencedby refid="classUser_1a4929e8a6bf5fceec26860af7dfb0cd37" compoundref="people_2user_8hpp" startline="99" endline="101">getTableName</referencedby>
+        <referencedby refid="classUser_1a166538549bcb7bf1f3d4aea0b777f7cb" compoundref="people_2user_8hpp" startline="85" endline="89">User</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -41,7 +42,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/people/user.hpp" line="60" column="5"/>
+        <location file="src/entities/people/user.hpp" line="73" column="3"/>
         <references refid="classUser_1a9fcbb3edfb188d1f085bca80d45d9408">User</references>
         <referencedby refid="classUser_1a4d6f43343b26f2df413865c4bbc52305">operator=</referencedby>
         <referencedby refid="classUser_1a155fb9743b4bd38c652b27e23509deb1">operator=</referencedby>
@@ -63,7 +64,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/people/user.hpp" line="61" column="5"/>
+        <location file="src/entities/people/user.hpp" line="74" column="3"/>
         <references refid="classUser_1a9fcbb3edfb188d1f085bca80d45d9408">User</references>
       </memberdef>
       <memberdef kind="function" id="classUser_1a4d6f43343b26f2df413865c4bbc52305" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -81,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/people/user.hpp" line="62" column="10"/>
+        <location file="src/entities/people/user.hpp" line="75" column="8"/>
         <references refid="classUser_1a9fcbb3edfb188d1f085bca80d45d9408">User</references>
       </memberdef>
       <memberdef kind="function" id="classUser_1a155fb9743b4bd38c652b27e23509deb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -99,7 +100,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/people/user.hpp" line="63" column="10"/>
+        <location file="src/entities/people/user.hpp" line="76" column="8"/>
         <references refid="classUser_1a9fcbb3edfb188d1f085bca80d45d9408">User</references>
       </memberdef>
       <memberdef kind="function" id="classUser_1a166538549bcb7bf1f3d4aea0b777f7cb" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
@@ -143,10 +144,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/people/user.hpp" line="71" column="14" bodyfile="src/entities/people/user.hpp" bodystart="71" bodyend="73"/>
+        <location file="src/entities/people/user.hpp" line="85" column="12" bodyfile="src/entities/people/user.hpp" bodystart="85" bodyend="89"/>
         <references refid="classapi_1_1v2_1_1Client_1a787dc26f0c3eda19fab0dd719f0e35c4">api::v2::Client::Client</references>
-        <references refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" compoundref="entity_8hpp" startline="393">Entity::data</references>
-        <references refid="classUser_1a4d6aa5dcd6ce0ca6110cfa3d90828d3a" compoundref="people_2user_8hpp" startline="113">TABLENAME</references>
+        <references refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" compoundref="entity_8hpp" startline="596">Entity::data</references>
+        <references refid="classUser_1a4d6aa5dcd6ce0ca6110cfa3d90828d3a" compoundref="people_2user_8hpp" startline="138">TABLENAME</references>
       </memberdef>
       <memberdef kind="function" id="classUser_1a2aca5ee0046f477a5acb084653dcc801" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -161,7 +162,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/people/user.hpp" line="78" column="5"/>
+        <location file="src/entities/people/user.hpp" line="94" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classUser_1ae5d3ed1b19bf6392730008203374e5b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -192,12 +193,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/people/user.hpp" line="92" column="19" bodyfile="src/entities/people/user.hpp" bodystart="92" bodyend="107"/>
-        <references refid="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" compoundref="client_8hpp" startline="280">api::v2::Client::client_id</references>
-        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="42" endline="42">Message::CriticalMessage</references>
-        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
-        <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="163" endline="163">Entity::getData</references>
-        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="381">Entity::tablename</references>
+        <location file="src/entities/people/user.hpp" line="112" column="17" bodyfile="src/entities/people/user.hpp" bodystart="112" bodyend="132"/>
+        <references refid="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" compoundref="client_8hpp" startline="415">api::v2::Client::client_id</references>
+        <references refid="classMessage_1aa085f3b7f644c7c1075eac59e3c2f7a9" compoundref="message_8cpp" startline="57" endline="59">Message::CriticalMessage</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
+        <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="220" endline="222">Entity::getData</references>
+        <references refid="classEntity_1aea7ecd402f4646349ee7c50db6bf5bd2" compoundref="entity_8hpp" startline="573">Entity::tablename</references>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -214,8 +215,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/people/user.hpp" line="83" column="32" bodyfile="src/entities/people/user.hpp" bodystart="83" bodyend="83"/>
-        <references refid="classUser_1a4d6aa5dcd6ce0ca6110cfa3d90828d3a" compoundref="people_2user_8hpp" startline="113">TABLENAME</references>
+        <location file="src/entities/people/user.hpp" line="99" column="25" bodyfile="src/entities/people/user.hpp" bodystart="99" bodyend="101"/>
+        <references refid="classUser_1a4d6aa5dcd6ce0ca6110cfa3d90828d3a" compoundref="people_2user_8hpp" startline="138">TABLENAME</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -274,7 +275,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/entities/people/user.hpp" line="54" column="1" bodyfile="src/entities/people/user.hpp" bodystart="55" bodyend="114"/>
+    <location file="src/entities/people/user.hpp" line="67" column="1" bodyfile="src/entities/people/user.hpp" bodystart="67" bodyend="140"/>
     <listofallmembers>
       <member refid="classBase_1a58887755525abd3f340963e2bbdcc972" prot="public" virt="non-virtual"><scope>User</scope><name>Base</name></member>
       <member refid="classapi_1_1v2_1_1Client_1a9d8ec7236a309400e90639c194bb7017" prot="protected" virt="non-virtual"><scope>User</scope><name>buildClientCreateStatement</name></member>

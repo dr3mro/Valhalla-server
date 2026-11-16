@@ -11,7 +11,8 @@
         <argsstring></argsstring>
         <name>TABLENAME</name>
         <qualifiedname>RadiologyCenters::TABLENAME</qualifiedname>
-        <initializer>= &quot;radiologycenters&quot;</initializer>
+        <initializer>                            =
+&quot;radiologycenters&quot;</initializer>
         <briefdescription>
 <para>Table bound to this entity; also used as the service name in staff permission queries. </para>
         </briefdescription>
@@ -19,9 +20,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/radiologycenters.hpp" line="57" column="27" bodyfile="src/entities/services/radiologycenters.hpp" bodystart="57" bodyend="-1"/>
-        <referencedby refid="classRadiologyCenters_1a8ad2ba02754e53c2a353c9bf952cfe1b" compoundref="radiologycenters_8hpp" startline="78" endline="78">getTableName</referencedby>
-        <referencedby refid="classRadiologyCenters_1a84b441e73a6049c800b41fc728054435" compoundref="radiologycenters_8hpp" startline="71" endline="73">RadiologyCenters</referencedby>
+        <location file="src/entities/services/radiologycenters.hpp" line="78" column="25" bodyfile="src/entities/services/radiologycenters.hpp" bodystart="78" bodyend="-1"/>
+        <referencedby refid="classRadiologyCenters_1a8ad2ba02754e53c2a353c9bf952cfe1b" compoundref="radiologycenters_8hpp" startline="110" endline="112">getTableName</referencedby>
+        <referencedby refid="classRadiologyCenters_1a84b441e73a6049c800b41fc728054435" compoundref="radiologycenters_8hpp" startline="101" endline="105">RadiologyCenters</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -49,7 +50,7 @@
 <parametername>T</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>A type accepted by <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref>, e.g. <ref refid="namespaceapi_1_1v2_1_1Types_1ac9a246b12a16bc018eec47370d2d6a20" kindref="member">api::v2::Types::Create_t</ref> or <ref refid="classRead__t" kindref="compound">Read_t</ref>. </para>
+<para>A type accepted by <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref>, e.g. <ref refid="namespaceapi_1_1v2_1_1Types_1a3c62a5c40f89f4df780a0aa64a374461" kindref="member">api::v2::Types::Create_t</ref> or <ref refid="classRead__t" kindref="compound">Read_t</ref>. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -66,9 +67,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/radiologycenters.hpp" line="71" column="5" bodyfile="src/entities/services/radiologycenters.hpp" bodystart="71" bodyend="73"/>
+        <location file="src/entities/services/radiologycenters.hpp" line="101" column="3" bodyfile="src/entities/services/radiologycenters.hpp" bodystart="101" bodyend="105"/>
         <references refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166">Service::Service</references>
-        <references refid="classRadiologyCenters_1a85518a0e06fd6420d1725c35e247cb50" compoundref="radiologycenters_8hpp" startline="57">TABLENAME</references>
+        <references refid="classRadiologyCenters_1a85518a0e06fd6420d1725c35e247cb50" compoundref="radiologycenters_8hpp" startline="78">TABLENAME</references>
       </memberdef>
       <memberdef kind="function" id="classRadiologyCenters_1ab967ab6b5d83f2de944e5800207c1dcd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -83,7 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/radiologycenters.hpp" line="82" column="5"/>
+        <location file="src/entities/services/radiologycenters.hpp" line="118" column="3"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -103,17 +104,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/radiologycenters.hpp" line="78" column="27" bodyfile="src/entities/services/radiologycenters.hpp" bodystart="78" bodyend="78"/>
-        <references refid="classRadiologyCenters_1a85518a0e06fd6420d1725c35e247cb50" compoundref="radiologycenters_8hpp" startline="57">TABLENAME</references>
+        <location file="src/entities/services/radiologycenters.hpp" line="110" column="25" bodyfile="src/entities/services/radiologycenters.hpp" bodystart="110" bodyend="112"/>
+        <references refid="classRadiologyCenters_1a85518a0e06fd6420d1725c35e247cb50" compoundref="radiologycenters_8hpp" startline="78">TABLENAME</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
 <para><ref refid="classService" kindref="compound">Service</ref> entity bound to the <computeroutput>radiologycenters</computeroutput> table (a radiology centre). </para>
     </briefdescription>
     <detaileddescription>
-<para>A thin value type that binds the generic Service/Entity SQL machinery to one database table. CRUD/search statement generation and staff management are entirely inherited; this class only fixes the table name and exposes it to the permission layer. Instances are built from one of the <ref refid="namespaceapi_1_1v2_1_1Types" kindref="compound">api::v2::Types</ref> data wrappers (for example <ref refid="classCreate__t" kindref="compound">Create_t</ref> or <ref refid="classRead__t" kindref="compound">Read_t</ref>), which <ref refid="classEntity" kindref="compound">Entity</ref> stores as an <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref> variant. The type satisfies the api::v2::Service_t concept and is selected through the <computeroutput>radiologycenters</computeroutput> entries of the services and staff route registries (<ref refid="classServiceController" kindref="compound">ServiceController&lt;RadiologyCenters&gt;</ref>, <ref refid="classStaffController" kindref="compound">StaffController&lt;RadiologyCenters&gt;</ref>). Ownership: the wrapper is copied into the base and is const thereafter; no other resources are owned. Instances have no mutable state and do no locking of their own; <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref> uses the inherited <ref refid="classService_1ac5c73e3e8d87d1a87af5c12dcee32013" kindref="member">Service::getServicePermissionsQuery</ref> together with <ref refid="classRadiologyCenters_1a8ad2ba02754e53c2a353c9bf952cfe1b" kindref="member">getTableName()</ref> to authorise staff changes. Copy and move are deleted by <ref refid="classService" kindref="compound">Service</ref>: construct a fresh instance per operation. <simplesect kind="note"><para>No default constructor: <ref refid="classEntity" kindref="compound">Entity</ref> needs a data wrapper to build statements from. </para>
+<para>A thin value type that binds the generic Service/Entity SQL machinery to one database table. CRUD/search statement generation and staff management are entirely inherited; this class only fixes the table name and exposes it to the permission layer. Instances are built from one of the <ref refid="namespaceapi_1_1v2_1_1Types" kindref="compound">api::v2::Types</ref> data wrappers (for example <ref refid="classCreate__t" kindref="compound">Create_t</ref> or <ref refid="classRead__t" kindref="compound">Read_t</ref>), which <ref refid="classEntity" kindref="compound">Entity</ref> stores as an <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref> variant. The type satisfies the api::v2::Service_t concept and is selected through the <computeroutput>radiologycenters</computeroutput> entries of the services and staff route registries (<ref refid="classServiceController" kindref="compound">ServiceController&lt;RadiologyCenters&gt;</ref>, <ref refid="classStaffController" kindref="compound">StaffController&lt;RadiologyCenters&gt;</ref>). Ownership: the wrapper is copied into the base and is const thereafter; no other resources are owned. Instances have no mutable state and do no locking of their own; <ref refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21" kindref="member">PermissionManager</ref> uses the inherited <ref refid="classService_1ac5c73e3e8d87d1a87af5c12dcee32013" kindref="member">Service::getServicePermissionsQuery</ref> together with <ref refid="classRadiologyCenters_1a8ad2ba02754e53c2a353c9bf952cfe1b" kindref="member">getTableName()</ref> to authorise staff changes. Copy and move are deleted by <ref refid="classService" kindref="compound">Service</ref>: construct a fresh instance per operation. <simplesect kind="note"><para>No default constructor: <ref refid="classEntity" kindref="compound">Entity</ref> needs a data wrapper to build statements from. </para>
 </simplesect>
-<simplesect kind="see"><para><ref refid="classService" kindref="compound">Service</ref>, <ref refid="classEntity" kindref="compound">Entity</ref>, <ref refid="classServiceController" kindref="compound">ServiceController</ref>, <ref refid="classStaffController" kindref="compound">StaffController</ref>, <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref> </para>
+<simplesect kind="see"><para><ref refid="classService" kindref="compound">Service</ref>, <ref refid="classEntity" kindref="compound">Entity</ref>, <ref refid="classServiceController" kindref="compound">ServiceController</ref>, <ref refid="classStaffController" kindref="compound">StaffController</ref>, <ref refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21" kindref="member">PermissionManager</ref> </para>
 </simplesect>
 </para>
     </detaileddescription>
@@ -165,7 +166,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/entities/services/radiologycenters.hpp" line="52" column="1" bodyfile="src/entities/services/radiologycenters.hpp" bodystart="53" bodyend="83"/>
+    <location file="src/entities/services/radiologycenters.hpp" line="69" column="1" bodyfile="src/entities/services/radiologycenters.hpp" bodystart="72" bodyend="121"/>
     <listofallmembers>
       <member refid="classBase_1a58887755525abd3f340963e2bbdcc972" prot="public" virt="non-virtual"><scope>RadiologyCenters</scope><name>Base</name></member>
       <member refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" prot="protected" virt="non-virtual"><scope>RadiologyCenters</scope><name>buildCreateStatement</name></member>

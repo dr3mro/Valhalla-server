@@ -139,30 +139,29 @@ Functions</h2></td></tr>
 <tr class="memitem:ab211333eccb1603a4e5176a4da380a1d" id="r_ab211333eccb1603a4e5176a4da380a1d"><td class="memItemLeft">std::vector&lt; std::optional&lt; std::string &gt; &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ab211333eccb1603a4e5176a4da380a1d">toTextParams</a> (const pqxx::params &amp;params)</td></tr>
 <tr class="memdesc:ab211333eccb1603a4e5176a4da380a1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies each parameter's bytes into a string, or records a null when pqxx reports no value.  <br /></td></tr>
 <tr class="memitem:abe62892990453a6ed96ff720960a71e4" id="r_abe62892990453a6ed96ff720960a71e4"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#abe62892990453a6ed96ff720960a71e4">bindParams</a> (drogon::orm::internal::SqlBinder &amp;binder, const pqxx::params &amp;params)</td></tr>
-<tr class="memdesc:abe62892990453a6ed96ff720960a71e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emits one bind operation per parameter: NULL, binary (<span class="tt">format == 1</span>) or text.  <br /></td></tr>
+<tr class="memdesc:abe62892990453a6ed96ff720960a71e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emits one bind operation per parameter: NULL, binary (<span class="tt">format ==
+1</span>) or text.  <br /></td></tr>
 <tr class="memitem:abf4af65046571ee330dc2320277a57f7" id="r_abf4af65046571ee330dc2320277a57f7"><td class="memItemLeft">drogon::orm::internal::SqlAwaiter&#160;</td><td class="memItemRight"><a class="el" href="#abf4af65046571ee330dc2320277a57f7">execSqlCoro</a> (drogon::orm::DbClient &amp;client, const std::string &amp;sql, const pqxx::params &amp;params)</td></tr>
 <tr class="memdesc:abf4af65046571ee330dc2320277a57f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds and binds the statement, then transfers the binder into an awaiter.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ade92f0b4ffac85bcef1da0cbef295459" id="r_ade92f0b4ffac85bcef1da0cbef295459"><td class="memItemLeft">static constexpr unsigned int&#160;</td><td class="memItemRight"><a class="el" href="#ade92f0b4ffac85bcef1da0cbef295459">PG_TEXT_OID</a> = 1043</td></tr>
+<tr class="memitem:ade92f0b4ffac85bcef1da0cbef295459" id="r_ade92f0b4ffac85bcef1da0cbef295459"><td class="memItemLeft">static constexpr unsigned int&#160;</td><td class="memItemRight"><a class="el" href="#ade92f0b4ffac85bcef1da0cbef295459">PG_TEXT_OID</a></td></tr>
 <tr class="memdesc:ade92f0b4ffac85bcef1da0cbef295459"><td class="mdescLeft">&#160;</td><td class="mdescRight">varchar type OID.  <br /></td></tr>
-<tr class="memitem:a81dc3e1182d098b17eb6423d5d277ef3" id="r_a81dc3e1182d098b17eb6423d5d277ef3"><td class="memItemLeft">static constexpr unsigned int&#160;</td><td class="memItemRight"><a class="el" href="#a81dc3e1182d098b17eb6423d5d277ef3">PG_INTEGER_OID</a> = 23</td></tr>
+<tr class="memitem:a81dc3e1182d098b17eb6423d5d277ef3" id="r_a81dc3e1182d098b17eb6423d5d277ef3"><td class="memItemLeft">static constexpr unsigned int&#160;</td><td class="memItemRight"><a class="el" href="#a81dc3e1182d098b17eb6423d5d277ef3">PG_INTEGER_OID</a></td></tr>
 <tr class="memdesc:a81dc3e1182d098b17eb6423d5d277ef3"><td class="mdescLeft">&#160;</td><td class="mdescRight">int4 (INTEGER) OID.  <br /></td></tr>
-<tr class="memitem:a9aa0704ab8fafbc58c39b2375759f07e" id="r_a9aa0704ab8fafbc58c39b2375759f07e"><td class="memItemLeft">static constexpr unsigned int&#160;</td><td class="memItemRight"><a class="el" href="#a9aa0704ab8fafbc58c39b2375759f07e">PG_BOOLEAN_OID</a> = 16</td></tr>
+<tr class="memitem:a9aa0704ab8fafbc58c39b2375759f07e" id="r_a9aa0704ab8fafbc58c39b2375759f07e"><td class="memItemLeft">static constexpr unsigned int&#160;</td><td class="memItemRight"><a class="el" href="#a9aa0704ab8fafbc58c39b2375759f07e">PG_BOOLEAN_OID</a></td></tr>
 <tr class="memdesc:a9aa0704ab8fafbc58c39b2375759f07e"><td class="mdescLeft">&#160;</td><td class="mdescRight">bool (BOOLEAN) OID.  <br /></td></tr>
-<tr class="memitem:a986292ed36794c911af5fc2750e7c17b" id="r_a986292ed36794c911af5fc2750e7c17b"><td class="memItemLeft">static constexpr unsigned int&#160;</td><td class="memItemRight"><a class="el" href="#a986292ed36794c911af5fc2750e7c17b">PG_JSON_OID</a> = 114</td></tr>
+<tr class="memitem:a986292ed36794c911af5fc2750e7c17b" id="r_a986292ed36794c911af5fc2750e7c17b"><td class="memItemLeft">static constexpr unsigned int&#160;</td><td class="memItemRight"><a class="el" href="#a986292ed36794c911af5fc2750e7c17b">PG_JSON_OID</a></td></tr>
 <tr class="memdesc:a986292ed36794c911af5fc2750e7c17b"><td class="mdescLeft">&#160;</td><td class="mdescRight">json OID.  <br /></td></tr>
-<tr class="memitem:acf96d60fdc724a317fdcb2642c7a41b1" id="r_acf96d60fdc724a317fdcb2642c7a41b1"><td class="memItemLeft">static constexpr unsigned int&#160;</td><td class="memItemRight"><a class="el" href="#acf96d60fdc724a317fdcb2642c7a41b1">PG_JSONB_OID</a> = 3802</td></tr>
+<tr class="memitem:acf96d60fdc724a317fdcb2642c7a41b1" id="r_acf96d60fdc724a317fdcb2642c7a41b1"><td class="memItemLeft">static constexpr unsigned int&#160;</td><td class="memItemRight"><a class="el" href="#acf96d60fdc724a317fdcb2642c7a41b1">PG_JSONB_OID</a></td></tr>
 <tr class="memdesc:acf96d60fdc724a317fdcb2642c7a41b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">jsonb OID.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Maps exceptions from the Drogon async database path to the HTTP statuses of the synchronous path. </p>
 <p>Adapter between the pqxx::params produced by entity SQL builders and Drogon's incremental SQL binder.</p>
 <p>Maps Drogon PostgreSQL result sets to jsoncons values with the outcomes of the synchronous path in mind.</p>
-<p>An exhausted pool or timeout is "busy" and maps to 503, matching <span class="tt"><a class="el" href="classDatabaseBusy.html" title="Exception signalling that the connection pool could not lease a connection in time.">DatabaseBusy</a></span>; every other failure maps to</p><ol type="1">
-<li>The helpers take <span class="tt">std::exception</span> because coroutine awaits surface their failures through that base type.</li>
-</ol>
+<p>An exhausted pool or timeout is "busy" and maps to 503, matching <span class="tt"><a class="el" href="classDatabaseBusy.html" title="Exception signalling that the connection pool could not lease a connection in time.">DatabaseBusy</a></span>; every other failure maps to 500. The helpers take <span class="tt">std::exception</span> because coroutine awaits surface their failures through that base type.</p>
 <p>SQL nulls become JSON null; the <span class="tt">active</span> flag becomes a boolean; identifier-like columns become numbers when their text parses as an integer; JSON-looking values are parsed; anything else stays a string. The mapping is based on column names and value text rather than on PostgreSQL type OIDs — see mapRow. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classDatabase.html#a31f82e76631ee18c6314141ecb35e89e" title="Executes a parameterised query and converts the result rows to JSON.">Database::executeQuery</a>, <a class="el" href="#a73f41139990a981a8d5df6603107a6bb" title="Converts one row into a JSON object using name- and value-based type inference.">mapRow</a></dd></dl>
 <p><a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a> builders keep constructing <span class="tt">pqxx::params</span>; this module turns that list into the bind calls Drogon needs, so no entity code changes for the async path. Parameter order is always the order in which the builder appended values, and parameters are transported as text unless pqxx reports a binary format. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="#abf4af65046571ee330dc2320277a57f7" title="Builds and binds the statement, then transfers the binder into an awaiter.">execSqlCoro</a>, <a class="el" href="#abe62892990453a6ed96ff720960a71e4" title="Emits one bind operation per parameter: NULL, binary (format == 1) or text.">bindParams</a>, <a class="el" href="#ab211333eccb1603a4e5176a4da380a1d" title="Copies each parameter&#39;s bytes into a string, or records a null when pqxx reports no value.">toTextParams</a> </dd></dl>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
@@ -185,7 +184,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Emits one bind operation per parameter: NULL, binary (<span class="tt">format == 1</span>) or text. </p>
+<p>Emits one bind operation per parameter: NULL, binary (<span class="tt">format ==
+1</span>) or text. </p>
 <p>Binds a pqxx parameter list into an already-created Drogon SQL binder.</p>
 <p>Binary values are copied into a shared, heap-owned buffer and passed as a RawParameter, so the bytes remain valid for the lifetime of the binder rather than for this stack frame. Text values are copied into a string.</p>
 <p>Nulls are bound as SQL NULL; binary-format parameters are bound as a <span class="tt">RawParameter</span> whose bytes are held in a <span class="tt">shared_ptr</span>-owned buffer so they stay valid after this call; everything else is bound as a text string. Values are bound in append order. </p><dl class="params"><dt>Parameters</dt><dd>
@@ -197,11 +197,11 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section pre"><dt>Precondition</dt><dd>The number and order of parameters match the placeholders in <span class="tt">binder</span>'s statement; this function does not check. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="asyncsqlbinder_8cpp_source.html#l00072">72</a> of file <a class="el" href="asyncsqlbinder_8cpp_source.html">asyncsqlbinder.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="asyncsqlbinder_8cpp_source.html#l00107">107</a> of file <a class="el" href="asyncsqlbinder_8cpp_source.html">asyncsqlbinder.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="asyncsqlbinder_8cpp_source.html#l00072">bindParams()</a>.</p>
+<p class="reference">References <a class="el" href="asyncsqlbinder_8cpp_source.html#l00107">bindParams()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="asyncsqlbinder_8cpp_source.html#l00072">bindParams()</a>, and <a class="el" href="asyncsqlbinder_8cpp_source.html#l00098">execSqlCoro()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="asyncsqlbinder_8cpp_source.html#l00107">bindParams()</a>, and <a class="el" href="asyncsqlbinder_8cpp_source.html#l00157">execSqlCoro()</a>.</p>
 
 </div>
 </div>
@@ -251,11 +251,11 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Awaiter that performs the statement when awaited. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Calling this function alone does not execute SQL; the return value must be co_awaited. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="asyncsqlbinder_8cpp_source.html#l00098">98</a> of file <a class="el" href="asyncsqlbinder_8cpp_source.html">asyncsqlbinder.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="asyncsqlbinder_8cpp_source.html#l00157">157</a> of file <a class="el" href="asyncsqlbinder_8cpp_source.html">asyncsqlbinder.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="asyncsqlbinder_8cpp_source.html#l00072">bindParams()</a>, and <a class="el" href="asyncsqlbinder_8cpp_source.html#l00098">execSqlCoro()</a>.</p>
+<p class="reference">References <a class="el" href="asyncsqlbinder_8cpp_source.html#l00107">bindParams()</a>, and <a class="el" href="asyncsqlbinder_8cpp_source.html#l00157">execSqlCoro()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="databasecontroller_8cpp_source.html#l00247">DatabaseController::checkItemExistsCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00219">DatabaseController::doReadQueryCoro()</a>, <a class="el" href="asyncsqlbinder_8cpp_source.html#l00098">execSqlCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00144">DatabaseController::executeQueryCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00173">DatabaseController::executeReadQueryCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00196">DatabaseController::executeSearchQueryCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00323">DatabaseController::getAllTablesCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00352">DatabaseController::getPermissionsCoro()</a>, and <a class="el" href="databasecontroller_8cpp_source.html#l00287">DatabaseController::getTableSchemaCoro()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="databasecontroller_8cpp_source.html#l00351">DatabaseController::checkItemExistsCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00313">DatabaseController::doReadQueryCoro()</a>, <a class="el" href="asyncsqlbinder_8cpp_source.html#l00157">execSqlCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00205">DatabaseController::executeQueryCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00249">DatabaseController::executeReadQueryCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00281">DatabaseController::executeSearchQueryCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00474">DatabaseController::getAllTablesCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00512">DatabaseController::getPermissionsCoro()</a>, and <a class="el" href="databasecontroller_8cpp_source.html#l00415">DatabaseController::getTableSchemaCoro()</a>.</p>
 
 </div>
 </div>
@@ -292,11 +292,11 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>True if the exception looks like a busy/timeout condition. </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>"connection" is a broad match: an unrelated error whose message mentions a connection is classified as busy. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="asyncdberror_8cpp_source.html#l00035">35</a> of file <a class="el" href="asyncdberror_8cpp_source.html">asyncdberror.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="asyncdberror_8cpp_source.html#l00045">45</a> of file <a class="el" href="asyncdberror_8cpp_source.html">asyncdberror.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="asyncdberror_8cpp_source.html#l00035">isBusy()</a>.</p>
+<p class="reference">References <a class="el" href="asyncdberror_8cpp_source.html#l00045">isBusy()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="databasecontroller_8cpp_source.html#l00247">DatabaseController::checkItemExistsCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00219">DatabaseController::doReadQueryCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00144">DatabaseController::executeQueryCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00173">DatabaseController::executeReadQueryCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00196">DatabaseController::executeSearchQueryCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00323">DatabaseController::getAllTablesCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00352">DatabaseController::getPermissionsCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00287">DatabaseController::getTableSchemaCoro()</a>, <a class="el" href="asyncdberror_8cpp_source.html#l00035">isBusy()</a>, <a class="el" href="asyncdberror_8cpp_source.html#l00061">throwIfBusy()</a>, and <a class="el" href="asyncdberror_8cpp_source.html#l00051">toHttpStatus()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="databasecontroller_8cpp_source.html#l00351">DatabaseController::checkItemExistsCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00313">DatabaseController::doReadQueryCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00205">DatabaseController::executeQueryCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00249">DatabaseController::executeReadQueryCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00281">DatabaseController::executeSearchQueryCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00474">DatabaseController::getAllTablesCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00512">DatabaseController::getPermissionsCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00415">DatabaseController::getTableSchemaCoro()</a>, <a class="el" href="asyncdberror_8cpp_source.html#l00045">isBusy()</a>, <a class="el" href="asyncdberror_8cpp_source.html#l00092">throwIfBusy()</a>, and <a class="el" href="asyncdberror_8cpp_source.html#l00076">toHttpStatus()</a>.</p>
 
 </div>
 </div>
@@ -333,11 +333,11 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Array with one JSON object per row; empty when the result set is empty. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="asyncresultmapper_8cpp_source.html#l00121">121</a> of file <a class="el" href="asyncresultmapper_8cpp_source.html">asyncresultmapper.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="asyncresultmapper_8cpp_source.html#l00179">179</a> of file <a class="el" href="asyncresultmapper_8cpp_source.html">asyncresultmapper.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="asyncresultmapper_8cpp_source.html#l00121">mapResultToArray()</a>, and <a class="el" href="asyncresultmapper_8cpp_source.html#l00048">mapRow()</a>.</p>
+<p class="reference">References <a class="el" href="asyncresultmapper_8cpp_source.html#l00179">mapResultToArray()</a>, and <a class="el" href="asyncresultmapper_8cpp_source.html#l00066">mapRow()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="databasecontroller_8cpp_source.html#l00196">DatabaseController::executeSearchQueryCoro()</a>, and <a class="el" href="asyncresultmapper_8cpp_source.html#l00121">mapResultToArray()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="databasecontroller_8cpp_source.html#l00281">DatabaseController::executeSearchQueryCoro()</a>, and <a class="el" href="asyncresultmapper_8cpp_source.html#l00179">mapResultToArray()</a>.</p>
 
 </div>
 </div>
@@ -376,11 +376,11 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd><span class="tt">mapRow(result, 0)</span> when non-empty; a default-constructed (null) JSON value when empty. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>This mirrors the single-object outcome of <span class="tt"><a class="el" href="classDatabase.html#a31f82e76631ee18c6314141ecb35e89e" title="Executes a parameterised query and converts the result rows to JSON.">Database::executeQuery</a></span> for a query with no rows. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="asyncresultmapper_8cpp_source.html#l00109">109</a> of file <a class="el" href="asyncresultmapper_8cpp_source.html">asyncresultmapper.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="asyncresultmapper_8cpp_source.html#l00162">162</a> of file <a class="el" href="asyncresultmapper_8cpp_source.html">asyncresultmapper.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="asyncresultmapper_8cpp_source.html#l00109">mapResultToObject()</a>, and <a class="el" href="asyncresultmapper_8cpp_source.html#l00048">mapRow()</a>.</p>
+<p class="reference">References <a class="el" href="asyncresultmapper_8cpp_source.html#l00162">mapResultToObject()</a>, and <a class="el" href="asyncresultmapper_8cpp_source.html#l00066">mapRow()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="databasecontroller_8cpp_source.html#l00144">DatabaseController::executeQueryCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00173">DatabaseController::executeReadQueryCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00352">DatabaseController::getPermissionsCoro()</a>, and <a class="el" href="asyncresultmapper_8cpp_source.html#l00109">mapResultToObject()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="databasecontroller_8cpp_source.html#l00205">DatabaseController::executeQueryCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00249">DatabaseController::executeReadQueryCoro()</a>, <a class="el" href="databasecontroller_8cpp_source.html#l00512">DatabaseController::getPermissionsCoro()</a>, and <a class="el" href="asyncresultmapper_8cpp_source.html#l00162">mapResultToObject()</a>.</p>
 
 </div>
 </div>
@@ -424,11 +424,11 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>JSON object with one entry per column, in column order. </dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd><span class="tt">row</span> is a valid index into <span class="tt">result</span>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="asyncresultmapper_8cpp_source.html#l00048">48</a> of file <a class="el" href="asyncresultmapper_8cpp_source.html">asyncresultmapper.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="asyncresultmapper_8cpp_source.html#l00066">66</a> of file <a class="el" href="asyncresultmapper_8cpp_source.html">asyncresultmapper.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="asyncresultmapper_8cpp_source.html#l00048">mapRow()</a>.</p>
+<p class="reference">References <a class="el" href="asyncresultmapper_8cpp_source.html#l00066">mapRow()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="asyncresultmapper_8cpp_source.html#l00121">mapResultToArray()</a>, <a class="el" href="asyncresultmapper_8cpp_source.html#l00109">mapResultToObject()</a>, and <a class="el" href="asyncresultmapper_8cpp_source.html#l00048">mapRow()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="asyncresultmapper_8cpp_source.html#l00179">mapResultToArray()</a>, <a class="el" href="asyncresultmapper_8cpp_source.html#l00162">mapResultToObject()</a>, and <a class="el" href="asyncresultmapper_8cpp_source.html#l00066">mapRow()</a>.</p>
 
 </div>
 </div>
@@ -462,11 +462,11 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>The original exception is not chained; callers rely on the resulting <span class="tt"><a class="el" href="classDatabaseBusy.html" title="Exception signalling that the connection pool could not lease a connection in time.">DatabaseBusy</a></span> producing a 503 with Retry-After in the HTTP layer. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="asyncdberror_8cpp_source.html#l00061">61</a> of file <a class="el" href="asyncdberror_8cpp_source.html">asyncdberror.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="asyncdberror_8cpp_source.html#l00092">92</a> of file <a class="el" href="asyncdberror_8cpp_source.html">asyncdberror.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="databasebusy_8hpp_source.html#l00050">DatabaseBusy::DatabaseBusy()</a>, <a class="el" href="asyncdberror_8cpp_source.html#l00035">isBusy()</a>, and <a class="el" href="asyncdberror_8cpp_source.html#l00061">throwIfBusy()</a>.</p>
+<p class="reference">References <a class="el" href="databasebusy_8hpp_source.html#l00063">DatabaseBusy::DatabaseBusy()</a>, <a class="el" href="asyncdberror_8cpp_source.html#l00045">isBusy()</a>, and <a class="el" href="asyncdberror_8cpp_source.html#l00092">throwIfBusy()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="asyncdberror_8cpp_source.html#l00061">throwIfBusy()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="asyncdberror_8cpp_source.html#l00092">throwIfBusy()</a>.</p>
 
 </div>
 </div>
@@ -502,11 +502,11 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><span class="tt">k503ServiceUnavailable</span> when <span class="tt">isBusy(error)</span> is true, otherwise <span class="tt">k500InternalServerError</span>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="asyncdberror_8cpp_source.html#l00051">51</a> of file <a class="el" href="asyncdberror_8cpp_source.html">asyncdberror.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="asyncdberror_8cpp_source.html#l00076">76</a> of file <a class="el" href="asyncdberror_8cpp_source.html">asyncdberror.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="asyncdberror_8cpp_source.html#l00035">isBusy()</a>, and <a class="el" href="asyncdberror_8cpp_source.html#l00051">toHttpStatus()</a>.</p>
+<p class="reference">References <a class="el" href="asyncdberror_8cpp_source.html#l00045">isBusy()</a>, and <a class="el" href="asyncdberror_8cpp_source.html#l00076">toHttpStatus()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="asyncdberror_8cpp_source.html#l00051">toHttpStatus()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="asyncdberror_8cpp_source.html#l00076">toHttpStatus()</a>.</p>
 
 </div>
 </div>
@@ -544,11 +544,11 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>One entry per parameter, in append order; empty for an empty parameter list. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="asyncsqlbinder_8cpp_source.html#l00047">47</a> of file <a class="el" href="asyncsqlbinder_8cpp_source.html">asyncsqlbinder.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="asyncsqlbinder_8cpp_source.html#l00061">61</a> of file <a class="el" href="asyncsqlbinder_8cpp_source.html">asyncsqlbinder.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="asyncsqlbinder_8cpp_source.html#l00047">toTextParams()</a>.</p>
+<p class="reference">References <a class="el" href="asyncsqlbinder_8cpp_source.html#l00061">toTextParams()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="asyncsqlbinder_8cpp_source.html#l00047">toTextParams()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="asyncsqlbinder_8cpp_source.html#l00061">toTextParams()</a>.</p>
 
 </div>
 </div>
@@ -563,7 +563,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int asyncdb::PG_BOOLEAN_OID = 16</td>
+          <td class="memname">unsigned int asyncdb::PG_BOOLEAN_OID</td>
         </tr>
       </table>
   </td>
@@ -572,10 +572,12 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<b>Initial value:</b><div class="fragment"><div class="line">                                         =</div>
+<div class="line">16</div>
+</div><!-- fragment -->
 <p>bool (BOOLEAN) OID. </p>
 
-<p class="definition">Definition at line <a class="el" href="asyncresultmapper_8hpp_source.html#l00056">56</a> of file <a class="el" href="asyncresultmapper_8hpp_source.html">asyncresultmapper.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="asyncresultmapper_8hpp_source.html#l00078">78</a> of file <a class="el" href="asyncresultmapper_8hpp_source.html">asyncresultmapper.hpp</a>.</p>
 
 </div>
 </div>
@@ -589,7 +591,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int asyncdb::PG_INTEGER_OID = 23</td>
+          <td class="memname">unsigned int asyncdb::PG_INTEGER_OID</td>
         </tr>
       </table>
   </td>
@@ -598,10 +600,12 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<b>Initial value:</b><div class="fragment"><div class="line">                                         =</div>
+<div class="line">23</div>
+</div><!-- fragment -->
 <p>int4 (INTEGER) OID. </p>
 
-<p class="definition">Definition at line <a class="el" href="asyncresultmapper_8hpp_source.html#l00054">54</a> of file <a class="el" href="asyncresultmapper_8hpp_source.html">asyncresultmapper.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="asyncresultmapper_8hpp_source.html#l00075">75</a> of file <a class="el" href="asyncresultmapper_8hpp_source.html">asyncresultmapper.hpp</a>.</p>
 
 </div>
 </div>
@@ -615,7 +619,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int asyncdb::PG_JSON_OID = 114</td>
+          <td class="memname">unsigned int asyncdb::PG_JSON_OID</td>
         </tr>
       </table>
   </td>
@@ -624,10 +628,12 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<b>Initial value:</b><div class="fragment"><div class="line">                                      =</div>
+<div class="line">114</div>
+</div><!-- fragment -->
 <p>json OID. </p>
 
-<p class="definition">Definition at line <a class="el" href="asyncresultmapper_8hpp_source.html#l00058">58</a> of file <a class="el" href="asyncresultmapper_8hpp_source.html">asyncresultmapper.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="asyncresultmapper_8hpp_source.html#l00081">81</a> of file <a class="el" href="asyncresultmapper_8hpp_source.html">asyncresultmapper.hpp</a>.</p>
 
 </div>
 </div>
@@ -641,7 +647,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int asyncdb::PG_JSONB_OID = 3802</td>
+          <td class="memname">unsigned int asyncdb::PG_JSONB_OID</td>
         </tr>
       </table>
   </td>
@@ -650,10 +656,12 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<b>Initial value:</b><div class="fragment"><div class="line">                                       =</div>
+<div class="line">3802</div>
+</div><!-- fragment -->
 <p>jsonb OID. </p>
 
-<p class="definition">Definition at line <a class="el" href="asyncresultmapper_8hpp_source.html#l00060">60</a> of file <a class="el" href="asyncresultmapper_8hpp_source.html">asyncresultmapper.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="asyncresultmapper_8hpp_source.html#l00084">84</a> of file <a class="el" href="asyncresultmapper_8hpp_source.html">asyncresultmapper.hpp</a>.</p>
 
 </div>
 </div>
@@ -667,7 +675,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int asyncdb::PG_TEXT_OID = 1043</td>
+          <td class="memname">unsigned int asyncdb::PG_TEXT_OID</td>
         </tr>
       </table>
   </td>
@@ -676,10 +684,12 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
+<b>Initial value:</b><div class="fragment"><div class="line">                                      =</div>
+<div class="line">1043</div>
+</div><!-- fragment -->
 <p>varchar type OID. </p>
 
-<p class="definition">Definition at line <a class="el" href="asyncresultmapper_8hpp_source.html#l00052">52</a> of file <a class="el" href="asyncresultmapper_8hpp_source.html">asyncresultmapper.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="asyncresultmapper_8hpp_source.html#l00071">71</a> of file <a class="el" href="asyncresultmapper_8hpp_source.html">asyncresultmapper.hpp</a>.</p>
 
 </div>
 </div>

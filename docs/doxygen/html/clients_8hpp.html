@@ -133,20 +133,20 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('clients_8hpp.h
 <code>#include &lt;utility&gt;</code><br />
 <code>#include &lt;variant&gt;</code><br />
 <code>#include &quot;<a class="el" href="common_8hpp_source.html">api/v2/basic/common.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="configurator_8hpp_source.html">configurator/configurator.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="clientcontroller_8hpp_source.html">controllers/clientcontroller/clientcontroller.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="clientcontrollerbase_8hpp_source.html">controllers/clientcontroller/clientcontrollerbase.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="provider_8hpp_source.html">entities/people/provider.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="people_2user_8hpp_source.html">entities/people/user.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="dbexecutor_8hpp_source.html">database/dbexecutor.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="http_8hpp_source.html">utils/global/http.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="validator_8hpp_source.html">validator/validator.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="gatekeeper_8hpp_source.html">gatekeeper/gatekeeper.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="databasebusy_8hpp_source.html">database/databasebusy.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="configurator_8hpp_source.html">configurator/configurator.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="databasecontroller_8hpp_source.html">controllers/databasecontroller/databasecontroller.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="asyncdbclient_8hpp_source.html">database/asyncdbclient.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="databasebusy_8hpp_source.html">database/databasebusy.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="dbexecutor_8hpp_source.html">database/dbexecutor.hpp</a>&quot;</code><br />
 <code>#include &quot;drogon/utils/coroutine.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="provider_8hpp_source.html">entities/people/provider.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="people_2user_8hpp_source.html">entities/people/user.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="gatekeeper_8hpp_source.html">gatekeeper/gatekeeper.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="store_8hpp_source.html">store/store.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="http_8hpp_source.html">utils/global/http.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="validator_8hpp_source.html">validator/validator.hpp</a>&quot;</code><br />
 </div>
 <p><a href="clients_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -163,7 +163,7 @@ Namespaces</h2></td></tr>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>REST controller for client accounts (users and providers). </p>
 <p>This file defines the Clients controller, which manages user and provider accounts. Its endpoints cover account creation, login and logout, suspend/activate, read, update, delete, search and listing a client's services. A {clientType} part of the URL (users or providers) selects one concrete <a class="el" href="classClientController.html" title="Client-specific handler that layers password hashing, sessions and account state over the generic CRU...">ClientController</a> from a std::variant registry. Create and login are INSECURE (no token needed); the rest are SECURE and use the identity attributes set by Auth. Most handlers either await async controller coroutines or use executeControllerMethod; read also has a prototype asynchronous implementation for users and providers.</p>
-<p>WHY THIS FILE MATTERS IN THE SERVER: This controller is the HTTP front door for client accounts. Drogon routes the /api/v2 clients URLs here, and its handlers call the shared dispatcher, the <a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3" title="Convenience alias for the authorisation service.">GateKeeper</a>, the <a class="el" href="classValidator.html" title="Stateless collection of checks applied to client JSON before it reaches the database.">Validator</a> and a <a class="el" href="classDatabaseController.html" title="Single gateway through which controllers execute SQL, in both blocking and coroutine form.">DatabaseController</a> to reach the database. It is the only place that issues and invalidates login tokens (through the login/logout controllers), so it underpins authentication for the whole API. Without it clients could not register, sign in or manage their accounts.</p>
+<p>WHY THIS FILE MATTERS IN THE SERVER: This controller is the HTTP front door for client accounts. Drogon routes the /api/v2 clients URLs here, and its handlers call the shared dispatcher, the <a class="el" href="controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1" title="Convenience alias for the authorisation service.">GateKeeper</a>, the <a class="el" href="classValidator.html" title="Stateless collection of checks applied to client JSON before it reaches the database.">Validator</a> and a <a class="el" href="classDatabaseController.html" title="Single gateway through which controllers execute SQL, in both blocking and coroutine form.">DatabaseController</a> to reach the database. It is the only place that issues and invalidates login tokens (through the login/logout controllers), so it underpins authentication for the whole API. Without it clients could not register, sign in or manage their accounts.</p>
 <p>CONCEPTS TO LEARN (for beginners):</p><ul>
 <li>REST create/read/update/delete (CRUD) routes: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods">https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods</a></li>
 <li>Bearer tokens and the Authorization header: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization</a></li>

@@ -126,12 +126,12 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('structapi_1_1v
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae44d3b57fc3fc6e35d58b83da0f8ef8d" id="r_ae44d3b57fc3fc6e35d58b83da0f8ef8d"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#ae44d3b57fc3fc6e35d58b83da0f8ef8d">UpdateClient_t</a> (std::string_view _data, const std::optional&lt; uint64_t &gt; _id, const std::string &amp;tablename, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">api::v2::Http::Error</a> &amp;error, bool &amp;success, const <a class="el" href="structValidator_1_1Rule.html">Validator::Rule</a> &amp;rule)</td></tr>
+<tr class="memitem:ae44d3b57fc3fc6e35d58b83da0f8ef8d" id="r_ae44d3b57fc3fc6e35d58b83da0f8ef8d"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#ae44d3b57fc3fc6e35d58b83da0f8ef8d">UpdateClient_t</a> (std::string_view _data, const std::optional&lt; uint64_t &gt; _id, const std::string &amp;tablename, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">api::v2::Http::Error</a> &amp;error, bool &amp;success, const <a class="el" href="structValidator_1_1Rule.html">Validator::Rule</a> &amp;rule)</td></tr>
 <tr class="memdesc:ae44d3b57fc3fc6e35d58b83da0f8ef8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses and validates a client-update body, populating data_set.  <br /></td></tr>
 <tr class="memitem:afaaa1292f016390f27db939c7eb9da51" id="r_afaaa1292f016390f27db939c7eb9da51"><td class="memItemLeft">const std::unordered_set&lt; std::pair&lt; std::string, std::string &gt; &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#afaaa1292f016390f27db939c7eb9da51">get_data_set</a> () const</td></tr>
 <tr class="memdesc:afaaa1292f016390f27db939c7eb9da51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the validated column/value pairs for the UPDATE SET clause.  <br /></td></tr>
 <tr class="inherit_header pub_methods_structapi_1_1v2_1_1Types_1_1ClientData__t"><td colspan="2">Public Member Functions inherited from <a class="el" href="structapi_1_1v2_1_1Types_1_1ClientData__t.html">api::v2::Types::ClientData_t</a></td></tr>
-<tr class="memitem:a6c90d78e4dd68ae25af5e18582fb3910 pub_methods_structapi_1_1v2_1_1Types_1_1ClientData__t" id="r_a6c90d78e4dd68ae25af5e18582fb3910"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="structapi_1_1v2_1_1Types_1_1ClientData__t.html#a6c90d78e4dd68ae25af5e18582fb3910">ClientData_t</a> (std::string_view _data, const std::optional&lt; uint64_t &gt; _id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">api::v2::Http::Error</a> &amp;error, bool &amp;success)</td></tr>
+<tr class="memitem:a6c90d78e4dd68ae25af5e18582fb3910 pub_methods_structapi_1_1v2_1_1Types_1_1ClientData__t" id="r_a6c90d78e4dd68ae25af5e18582fb3910"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="structapi_1_1v2_1_1Types_1_1ClientData__t.html#a6c90d78e4dd68ae25af5e18582fb3910">ClientData_t</a> (std::string_view _data, const std::optional&lt; uint64_t &gt; _id, <a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">api::v2::Http::Error</a> &amp;error, bool &amp;success)</td></tr>
 <tr class="memdesc:a6c90d78e4dd68ae25af5e18582fb3910 pub_methods_structapi_1_1v2_1_1Types_1_1ClientData__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the raw request body into data_j and reports status via error/success.  <br /></td></tr>
 <tr class="memitem:a1ae1de4ae01c497a90e0820734c7fcd0 pub_methods_structapi_1_1v2_1_1Types_1_1ClientData__t" id="r_a1ae1de4ae01c497a90e0820734c7fcd0"><td class="memItemLeft">const std::optional&lt; jsoncons::json &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="structapi_1_1v2_1_1Types_1_1ClientData__t.html#a1ae1de4ae01c497a90e0820734c7fcd0">get_data_json</a> () const</td></tr>
 <tr class="memdesc:a1ae1de4ae01c497a90e0820734c7fcd0 pub_methods_structapi_1_1v2_1_1Types_1_1ClientData__t"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the parsed body, if parsing succeeded.  <br /></td></tr>
@@ -155,7 +155,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p><a class="el" href="structapi_1_1v2_1_1Types_1_1ClientData__t.html" title="Common parsing and field extraction for client-style create/update payloads.">ClientData_t</a> for updating a client: validates an update schema with a caller-supplied rule. </p>
 <p>Unlike <a class="el" href="structapi_1_1v2_1_1Types_1_1CreateClient__t.html" title="ClientData_t for creating a client: validates a create schema and hashes any password.">CreateClient_t</a> it does not hash passwords; the validation rule is provided by the caller because different update endpoints permit different field sets. </p>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00518">518</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00705">705</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae44d3b57fc3fc6e35d58b83da0f8ef8d" name="ae44d3b57fc3fc6e35d58b83da0f8ef8d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae44d3b57fc3fc6e35d58b83da0f8ef8d">&#9670;&#160;</a></span>UpdateClient_t()</h2>
@@ -184,7 +184,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#a47db5a3c431c29e2a693549aab65beb3">api::v2::Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>, </td>
+          <td class="paramtype"><a class="el" href="namespaceapi_1_1v2_1_1Http.html#abe54a513da8236be4d5e32f641ed5ba5">api::v2::Http::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -218,9 +218,9 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>Unlike <a class="el" href="structapi_1_1v2_1_1Types_1_1CreateClient__t.html" title="ClientData_t for creating a client: validates a create schema and hashes any password.">CreateClient_t</a> this type does not re-hash the password: the generic Update path marks <span class="tt">password</span> as ASSERT_IMMUTABLE, so no new password can arrive here. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00532">532</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00723">723</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="validator_8cpp_source.html#l00205">Validator::clientRegexValidation()</a>, <a class="el" href="message_8cpp_source.html#l00042">Message::CriticalMessage()</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00420">api::v2::Types::ClientData_t::data_j</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00415">api::v2::Types::ClientData_t::data_set</a>, <a class="el" href="message_8cpp_source.html#l00041">Message::ErrorMessage()</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00404">api::v2::Types::ClientData_t::get_data_json()</a>, <a class="el" href="http_8hpp_source.html#l00097">api::v2::Http::INTERNAL_SERVER_ERROR</a>, and <a class="el" href="validator_8cpp_source.html#l00112">Validator::validateDatabaseUpdateSchema()</a>.</p>
+<p class="reference">References <a class="el" href="validator_8cpp_source.html#l00275">Validator::clientRegexValidation()</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00563">api::v2::Types::ClientData_t::data_j</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00557">api::v2::Types::ClientData_t::data_set</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, <a class="el" href="entities_2base_2types_8hpp_source.html#l00539">api::v2::Types::ClientData_t::get_data_json()</a>, <a class="el" href="http_8hpp_source.html#l00123">api::v2::Http::INTERNAL_SERVER_ERROR</a>, and <a class="el" href="validator_8cpp_source.html#l00148">Validator::validateDatabaseUpdateSchema()</a>.</p>
 
 </div>
 </div>
@@ -250,9 +250,9 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Returns the validated column/value pairs for the UPDATE SET clause. </p>
 
-<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00565">565</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entities_2base_2types_8hpp_source.html#l00776">776</a> of file <a class="el" href="entities_2base_2types_8hpp_source.html">types.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="entities_2base_2types_8hpp_source.html#l00415">api::v2::Types::ClientData_t::data_set</a>.</p>
+<p class="reference">References <a class="el" href="entities_2base_2types_8hpp_source.html#l00557">api::v2::Types::ClientData_t::data_set</a>.</p>
 
 </div>
 </div>

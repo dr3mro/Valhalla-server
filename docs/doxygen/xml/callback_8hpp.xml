@@ -4,7 +4,6 @@
     <compoundname>callback.hpp</compoundname>
     <includes local="no">functional</includes>
     <includedby refid="common_8hpp" local="yes">src/api/v2/basic/common.hpp</includedby>
-    <includedby refid="boundedexecutor_8hpp" local="yes">src/concurrency/boundedexecutor.hpp</includedby>
     <includedby refid="appointmentcontroller_8cpp" local="yes">src/controllers/appointmentcontroller/appointmentcontroller.cpp</includedby>
     <includedby refid="appointmentcontroller_8hpp" local="yes">src/controllers/appointmentcontroller/appointmentcontroller.hpp</includedby>
     <includedby refid="appointmentcontrollerbase_8hpp" local="yes">src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp</includedby>
@@ -64,16 +63,16 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="21">
+      <node id="36">
         <label>src/api/v2/filters/auth.hpp</label>
         <link refid="auth_8hpp"/>
-        <childnode refid="22" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
       </node>
-      <node id="24">
+      <node id="39">
         <label>src/api/v2/filters/ratelimit.hpp</label>
         <link refid="ratelimit_8hpp"/>
-        <childnode refid="22" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -118,193 +117,179 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="13">
-        <label>src/concurrency/boundedexecutor.cpp</label>
-        <link refid="boundedexecutor_8cpp"/>
-      </node>
       <node id="12">
-        <label>src/concurrency/boundedexecutor.hpp</label>
-        <link refid="boundedexecutor_8hpp"/>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="28">
         <label>src/controllers/appointmentcontroller/appointmentcontroller.cpp</label>
         <link refid="appointmentcontroller_8cpp"/>
       </node>
-      <node id="29">
+      <node id="13">
         <label>src/controllers/appointmentcontroller/appointmentcontroller.hpp</label>
         <link refid="appointmentcontroller_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="38">
+      <node id="14">
         <label>src/controllers/appointmentcontroller/appointmentcontrollerbase.hpp</label>
         <link refid="appointmentcontrollerbase_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="18">
         <label>src/controllers/base/controller/controller.hpp</label>
         <link refid="controller_8hpp"/>
-        <childnode refid="18" relation="include">
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
       </node>
-      <node id="18">
+      <node id="19">
         <label>src/controllers/clientcontroller/clientcontroller.cpp</label>
         <link refid="clientcontroller_8cpp"/>
       </node>
-      <node id="17">
+      <node id="22">
         <label>src/controllers/clientcontroller/clientcontroller.hpp</label>
         <link refid="clientcontroller_8hpp"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
-      <node id="40">
+      <node id="28">
         <label>src/controllers/clientcontroller/clientcontrollerbase.hpp</label>
         <link refid="clientcontrollerbase_8hpp"/>
         <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>src/controllers/cliniccontroller/cliniccontroller.cpp</label>
+        <link refid="cliniccontroller_8cpp"/>
+      </node>
+      <node id="24">
+        <label>src/controllers/cliniccontroller/cliniccontroller.hpp</label>
+        <link refid="cliniccontroller_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>src/controllers/cliniccontroller/cliniccontrollerbase.hpp</label>
+        <link refid="cliniccontrollerbase_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>src/controllers/entitycontroller/entitycontroller.cpp</label>
+        <link refid="entitycontroller_8cpp"/>
+      </node>
+      <node id="21">
+        <label>src/controllers/entitycontroller/entitycontroller.hpp</label>
+        <link refid="entitycontroller_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
       </node>
       <node id="30">
-        <label>src/controllers/cliniccontroller/cliniccontroller.cpp</label>
-        <link refid="cliniccontroller_8cpp"/>
-      </node>
-      <node id="31">
-        <label>src/controllers/cliniccontroller/cliniccontroller.hpp</label>
-        <link refid="cliniccontroller_8hpp"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-      </node>
-      <node id="41">
-        <label>src/controllers/cliniccontroller/cliniccontrollerbase.hpp</label>
-        <link refid="cliniccontrollerbase_8hpp"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-      </node>
-      <node id="26">
-        <label>src/controllers/entitycontroller/entitycontroller.cpp</label>
-        <link refid="entitycontroller_8cpp"/>
-      </node>
-      <node id="27">
-        <label>src/controllers/entitycontroller/entitycontroller.hpp</label>
-        <link refid="entitycontroller_8hpp"/>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-      </node>
-      <node id="42">
         <label>src/controllers/entitycontroller/entitycontrollerbase.hpp</label>
         <link refid="entitycontrollerbase_8hpp"/>
-        <childnode refid="18" relation="include">
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
       </node>
-      <node id="32">
+      <node id="15">
         <label>src/controllers/servicecontroller/servicecontroller.cpp</label>
         <link refid="servicecontroller_8cpp"/>
       </node>
-      <node id="33">
+      <node id="17">
         <label>src/controllers/servicecontroller/servicecontroller.hpp</label>
         <link refid="servicecontroller_8hpp"/>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="39">
+      <node id="16">
         <label>src/controllers/servicecontroller/servicecontrollerbase.hpp</label>
         <link refid="servicecontrollerbase_8hpp"/>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="34">
+      <node id="25">
         <label>src/controllers/staffcontroller/staffcontroller.cpp</label>
         <link refid="staffcontroller_8cpp"/>
       </node>
-      <node id="35">
+      <node id="26">
         <label>src/controllers/staffcontroller/staffcontroller.hpp</label>
         <link refid="staffcontroller_8hpp"/>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
       </node>
-      <node id="43">
+      <node id="31">
         <label>src/controllers/staffcontroller/staffcontrollerBase.hpp</label>
         <link refid="staffcontrollerBase_8hpp"/>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
-      <node id="36">
+      <node id="27">
         <label>src/database/database.cpp</label>
         <link refid="database_8cpp"/>
       </node>
-      <node id="15">
+      <node id="33">
         <label>src/database/dbexecutor.cpp</label>
         <link refid="dbexecutor_8cpp"/>
       </node>
-      <node id="14">
+      <node id="32">
         <label>src/database/dbexecutor.hpp</label>
         <link refid="dbexecutor_8hpp"/>
         <childnode refid="2" relation="include">
@@ -319,68 +304,68 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="19">
+      <node id="34">
         <label>src/gatekeeper/gatekeeper.cpp</label>
         <link refid="gatekeeper_8cpp"/>
       </node>
-      <node id="20">
+      <node id="35">
         <label>src/gatekeeper/gatekeeper.hpp</label>
         <link refid="gatekeeper_8hpp"/>
-        <childnode refid="21" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
         <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
       </node>
-      <node id="37">
+      <node id="41">
         <label>src/gatekeeper/passwordcrypt/passwordworker.cpp</label>
         <link refid="passwordworker_8cpp"/>
       </node>
-      <node id="16">
+      <node id="40">
         <label>src/gatekeeper/passwordcrypt/passwordworker.hpp</label>
         <link refid="passwordworker_8hpp"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="44">
+      <node id="42">
         <label>src/gatekeeper/sessionmanager/sessionmanager.cpp</label>
         <link refid="sessionmanager_8cpp"/>
       </node>
-      <node id="45">
+      <node id="43">
         <label>src/gatekeeper/sessionmanager/sessionmanager.hpp</label>
         <link refid="sessionmanager_8hpp"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
       </node>
-      <node id="23">
+      <node id="38">
         <label>src/main.cpp</label>
         <link refid="main_8cpp"/>
       </node>
@@ -388,10 +373,10 @@
         <label>src/server/server.cpp</label>
         <link refid="server_8cpp"/>
       </node>
-      <node id="22">
+      <node id="37">
         <label>src/server/server.hpp</label>
         <link refid="server_8hpp"/>
-        <childnode refid="23" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -403,58 +388,57 @@
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
         <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="26" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
         <childnode refid="43" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="44" relation="include">
-        </childnode>
-        <childnode refid="45" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
     <sectiondef kind="define">
       <memberdef kind="define" id="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" prot="public" static="no">
         <name>CALLBACK_</name>
-        <initializer>std::function&lt;void(int, const std::string&amp;)&gt;</initializer>
+        <initializer>std::function&lt;void(int, \
+                   const std::string&amp;)&gt;</initializer>
         <briefdescription>
 <para>Completion callback used throughout the request pipeline. </para>
         </briefdescription>
@@ -465,202 +449,201 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/global/callback.hpp" line="44" column="9" bodyfile="src/utils/global/callback.hpp" bodystart="44" bodyend="-1"/>
-        <referencedby refid="classClientController_1a42c57adab458feeb209485ce13c48b0f" compoundref="clientcontroller_8cpp" startline="279" endline="308">ClientController&lt; T &gt;::Activate</referencedby>
+        <location file="src/utils/global/callback.hpp" line="47" column="9" bodyfile="src/utils/global/callback.hpp" bodystart="47" bodyend="49"/>
+        <referencedby refid="classClientController_1a42c57adab458feeb209485ce13c48b0f" compoundref="clientcontroller_8cpp" startline="376" endline="407">ClientController&lt; T &gt;::Activate</referencedby>
         <referencedby refid="classClientControllerBase_1ae6ddf114a8b76d43a70e8097a688aa37">ClientControllerBase::Activate</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a7f99d20b39e5bdd6ea695c622b613167" compoundref="clients_8hpp" startline="238" endline="293">api::v2::Clients::activate</referencedby>
-        <referencedby refid="classClientController_1af7b6b7c90918fc3068478538f2e1b37d" compoundref="clientcontroller_8cpp" startline="311" endline="340">ClientController&lt; T &gt;::ActivateAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a7f99d20b39e5bdd6ea695c622b613167" compoundref="clients_8hpp" startline="362" endline="452">api::v2::Clients::activate</referencedby>
+        <referencedby refid="classClientController_1af7b6b7c90918fc3068478538f2e1b37d" compoundref="clientcontroller_8cpp" startline="410" endline="442">ClientController&lt; T &gt;::ActivateAsync</referencedby>
         <referencedby refid="classClientControllerBase_1a9d1d1653cfcd791bc46fceb6b6ff3983">ClientControllerBase::ActivateAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1a409d7e9e2260c9a82ed370c9fa33a6cb" compoundref="staff_8hpp" startline="146" endline="196">api::v2::Staff::Add</referencedby>
-        <referencedby refid="classController_1a29dac549946db2810cb4435323502c75" compoundref="controller_8hpp" startline="707" endline="711">Controller::addStaff</referencedby>
-        <referencedby refid="classController_1a1bb3245ec82d14644a2359cd546ea218" compoundref="controller_8hpp" startline="735" endline="739">Controller::addStaffAsync</referencedby>
-        <referencedby refid="classStaffController_1a454ac6b5d362f6b9be674eac131f4da7" compoundref="staffcontroller_8cpp" startline="92" endline="121">StaffController&lt; T &gt;::AddStaffToEntity</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1a409d7e9e2260c9a82ed370c9fa33a6cb" compoundref="staff_8hpp" startline="210" endline="295">api::v2::Staff::Add</referencedby>
+        <referencedby refid="classController_1a29dac549946db2810cb4435323502c75" compoundref="controller_8hpp" startline="974" endline="979">Controller::addStaff</referencedby>
+        <referencedby refid="classController_1a1bb3245ec82d14644a2359cd546ea218" compoundref="controller_8hpp" startline="1009" endline="1017">Controller::addStaffAsync</referencedby>
+        <referencedby refid="classStaffController_1a454ac6b5d362f6b9be674eac131f4da7" compoundref="staffcontroller_8cpp" startline="149" endline="199">StaffController&lt; T &gt;::AddStaffToEntity</referencedby>
         <referencedby refid="classStaffControllerBase_1a968ab96cf0d0caaa4c86d4a8330c9393">StaffControllerBase::AddStaffToEntity</referencedby>
-        <referencedby refid="classStaffController_1a53a028cf301c7a9765b3633a06275546" compoundref="staffcontroller_8cpp" startline="227" endline="255">StaffController&lt; T &gt;::AddStaffToEntityAsync</referencedby>
+        <referencedby refid="classStaffController_1a53a028cf301c7a9765b3633a06275546" compoundref="staffcontroller_8cpp" startline="353" endline="389">StaffController&lt; T &gt;::AddStaffToEntityAsync</referencedby>
         <referencedby refid="classStaffControllerBase_1a86d35c8d93f08daf0223aec4ed35b9df">StaffControllerBase::AddStaffToEntityAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Appointments_1a75506c18ee76ac6bf38b0c54cbbb53db" compoundref="appointments_8hpp" startline="83" endline="133">api::v2::Appointments::Create</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1a732361aa386238582d08d4165eb4b864" compoundref="api_2v2_2routes_2clinics_8hpp" startline="86" endline="136">api::v2::Clinic::Create</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Services_1a7a1d4a2a443909b8a43856e72288c36a" compoundref="services_8hpp" startline="79" endline="129">api::v2::Services::Create</referencedby>
-        <referencedby refid="classAppointmentController_1a07a0c78a16d4f88cf921a96d6a72858c" compoundref="appointmentcontroller_8cpp" startline="56" endline="59">AppointmentController&lt; T &gt;::Create</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1a75506c18ee76ac6bf38b0c54cbbb53db" compoundref="appointments_8hpp" startline="112" endline="215">api::v2::Appointments::Create</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a732361aa386238582d08d4165eb4b864" compoundref="api_2v2_2routes_2clinics_8hpp" startline="119" endline="204">api::v2::Clinic::Create</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a7a1d4a2a443909b8a43856e72288c36a" compoundref="services_8hpp" startline="104" endline="191">api::v2::Services::Create</referencedby>
+        <referencedby refid="classAppointmentController_1a07a0c78a16d4f88cf921a96d6a72858c" compoundref="appointmentcontroller_8cpp" startline="84" endline="92">AppointmentController&lt; T &gt;::Create</referencedby>
         <referencedby refid="classAppointmentControllerBase_1ab647aad281f3e7b378ce3a80f6f2d812">AppointmentControllerBase::Create</referencedby>
-        <referencedby refid="classClientController_1a7b3e95c9052e2b4646f014ca9af39140" compoundref="clientcontroller_8cpp" startline="58" endline="64">ClientController&lt; T &gt;::Create</referencedby>
+        <referencedby refid="classClientController_1a7b3e95c9052e2b4646f014ca9af39140" compoundref="clientcontroller_8cpp" startline="79" endline="93">ClientController&lt; T &gt;::Create</referencedby>
         <referencedby refid="classClientControllerBase_1ac42570557775dc71a68a685ed2114265">ClientControllerBase::Create</referencedby>
-        <referencedby refid="classClinicController_1a4dee307e46cd9d8a3cc2b76e603e9b24" compoundref="cliniccontroller_8cpp" startline="308" endline="311">ClinicController&lt; T &gt;::Create</referencedby>
+        <referencedby refid="classClinicController_1a4dee307e46cd9d8a3cc2b76e603e9b24" compoundref="cliniccontroller_8cpp" startline="393" endline="399">ClinicController&lt; T &gt;::Create</referencedby>
         <referencedby refid="classClinicControllerBase_1a572b7956fa1d19e1c688458f4108dca0">ClinicControllerBase::Create</referencedby>
-        <referencedby refid="classController_1a092b50bf54ca1d6d6f706a5a052992b1" compoundref="controller_8hpp" startline="135" endline="139">Controller::Create</referencedby>
-        <referencedby refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" compoundref="entitycontroller_8cpp" startline="57" endline="112">EntityController&lt; T &gt;::Create</referencedby>
+        <referencedby refid="classController_1a092b50bf54ca1d6d6f706a5a052992b1" compoundref="controller_8hpp" startline="187" endline="196">Controller::Create</referencedby>
+        <referencedby refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" compoundref="entitycontroller_8cpp" startline="76" endline="150">EntityController&lt; T &gt;::Create</referencedby>
         <referencedby refid="classEntityControllerBase_1a1094cb5fe08aaaba8cd5ec5c57784cf0">EntityControllerBase::Create</referencedby>
-        <referencedby refid="classServiceController_1a138db9b26dcc863d6895ccb1f01a7123" compoundref="servicecontroller_8cpp" startline="57" endline="60">ServiceController&lt; T &gt;::Create</referencedby>
+        <referencedby refid="classServiceController_1a138db9b26dcc863d6895ccb1f01a7123" compoundref="servicecontroller_8cpp" startline="84" endline="92">ServiceController&lt; T &gt;::Create</referencedby>
         <referencedby refid="classServiceControllerBase_1aef2ec41694023c184286b38ab52e7727">ServiceControllerBase::Create</referencedby>
-        <referencedby refid="classAppointmentController_1a5ae310b608a81f19c3e4a5d0bbb57666" compoundref="appointmentcontroller_8cpp" startline="68" endline="71">AppointmentController&lt; T &gt;::CreateAsync</referencedby>
+        <referencedby refid="classAppointmentController_1a5ae310b608a81f19c3e4a5d0bbb57666" compoundref="appointmentcontroller_8cpp" startline="102" endline="109">AppointmentController&lt; T &gt;::CreateAsync</referencedby>
         <referencedby refid="classAppointmentControllerBase_1aa38e2ee7e8e67fc65efa2ae579b8b292">AppointmentControllerBase::CreateAsync</referencedby>
-        <referencedby refid="classClientController_1a52b4114b1e619b6526ee861696eff6da" compoundref="clientcontroller_8cpp" startline="414" endline="417">ClientController&lt; T &gt;::CreateAsync</referencedby>
+        <referencedby refid="classClientController_1a52b4114b1e619b6526ee861696eff6da" compoundref="clientcontroller_8cpp" startline="530" endline="537">ClientController&lt; T &gt;::CreateAsync</referencedby>
         <referencedby refid="classClientControllerBase_1a44832e389a940272db5c22f0d75cdce3">ClientControllerBase::CreateAsync</referencedby>
-        <referencedby refid="classClinicController_1a223487282b083a736ff5ad040a9b79af" compoundref="cliniccontroller_8cpp" startline="314" endline="317">ClinicController&lt; T &gt;::CreateAsync</referencedby>
+        <referencedby refid="classClinicController_1a223487282b083a736ff5ad040a9b79af" compoundref="cliniccontroller_8cpp" startline="402" endline="408">ClinicController&lt; T &gt;::CreateAsync</referencedby>
         <referencedby refid="classClinicControllerBase_1a69c52c140626bbe5abb2cc9bfcc3d1b8">ClinicControllerBase::CreateAsync</referencedby>
-        <referencedby refid="classController_1a020c9869a16a1ac31bc2b2ce128cf51b" compoundref="controller_8hpp" startline="151" endline="155">Controller::CreateAsync</referencedby>
-        <referencedby refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" compoundref="entitycontroller_8cpp" startline="290" endline="343">EntityController&lt; T &gt;::CreateAsync</referencedby>
+        <referencedby refid="classController_1a020c9869a16a1ac31bc2b2ce128cf51b" compoundref="controller_8hpp" startline="211" endline="220">Controller::CreateAsync</referencedby>
+        <referencedby refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" compoundref="entitycontroller_8cpp" startline="370" endline="442">EntityController&lt; T &gt;::CreateAsync</referencedby>
         <referencedby refid="classEntityControllerBase_1a7d18b72b305783a247f3d70c64ad391b">EntityControllerBase::CreateAsync</referencedby>
-        <referencedby refid="classServiceController_1a5cdd73e0b08ae45f2d808070e5680025" compoundref="servicecontroller_8cpp" startline="71" endline="74">ServiceController&lt; T &gt;::CreateAsync</referencedby>
+        <referencedby refid="classServiceController_1a5cdd73e0b08ae45f2d808070e5680025" compoundref="servicecontroller_8cpp" startline="104" endline="111">ServiceController&lt; T &gt;::CreateAsync</referencedby>
         <referencedby refid="classServiceControllerBase_1a02a5f680d56ad264edb004229d80c996">ServiceControllerBase::CreateAsync</referencedby>
-        <referencedby refid="classClinicController_1a6cc12150aba468806260399172fcd9ce" compoundref="cliniccontroller_8cpp" startline="119" endline="124">ClinicController&lt; T &gt;::CreateAsyncImpl</referencedby>
-        <referencedby refid="classClinicController_1af9be5b8c32bde11f7907d8ad6c031c92" compoundref="cliniccontroller_8cpp" startline="29" endline="106">ClinicController&lt; T &gt;::CreateImpl</referencedby>
-        <referencedby refid="classClientController_1a0373ac4a58de1a4105939a0db1c64699" compoundref="clientcontroller_8cpp" startline="67" endline="117">ClientController&lt; T &gt;::createNow</referencedby>
-        <referencedby refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="613" endline="648">Controller::cruds</referencedby>
-        <referencedby refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="664" endline="697">Controller::crudsAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Appointments_1a515ae728e10e637a657f1c912ccf9e7a" compoundref="appointments_8hpp" startline="270" endline="325">api::v2::Appointments::Delete</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1a0041b3b3e1be2e86ea5b2aef2544d8fd" compoundref="api_2v2_2routes_2clinics_8hpp" startline="270" endline="325">api::v2::Clinic::Delete</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Services_1a6c1616c95dc9edf3ffaf52612b94bc29" compoundref="services_8hpp" startline="263" endline="318">api::v2::Services::Delete</referencedby>
-        <referencedby refid="classAppointmentController_1aae035bd4dac4df5e559e0e117534e260" compoundref="appointmentcontroller_8cpp" startline="133" endline="136">AppointmentController&lt; T &gt;::Delete</referencedby>
+        <referencedby refid="classClinicController_1a6cc12150aba468806260399172fcd9ce" compoundref="cliniccontroller_8cpp" startline="148" endline="157">ClinicController&lt; T &gt;::CreateAsyncImpl</referencedby>
+        <referencedby refid="classClinicController_1af9be5b8c32bde11f7907d8ad6c031c92" compoundref="cliniccontroller_8cpp" startline="40" endline="129">ClinicController&lt; T &gt;::CreateImpl</referencedby>
+        <referencedby refid="classClientController_1a0373ac4a58de1a4105939a0db1c64699" compoundref="clientcontroller_8cpp" startline="96" endline="155">ClientController&lt; T &gt;::createNow</referencedby>
+        <referencedby refid="classController_1a9572f3d51ae972102f3335d7a87d610a" compoundref="controller_8hpp" startline="847" endline="894">Controller::cruds</referencedby>
+        <referencedby refid="classController_1a5ae88e721040afcd58e0bbc23f22a72e" compoundref="controller_8hpp" startline="915" endline="962">Controller::crudsAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1a515ae728e10e637a657f1c912ccf9e7a" compoundref="appointments_8hpp" startline="435" endline="525">api::v2::Appointments::Delete</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a0041b3b3e1be2e86ea5b2aef2544d8fd" compoundref="api_2v2_2routes_2clinics_8hpp" startline="418" endline="504">api::v2::Clinic::Delete</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a6c1616c95dc9edf3ffaf52612b94bc29" compoundref="services_8hpp" startline="407" endline="495">api::v2::Services::Delete</referencedby>
+        <referencedby refid="classAppointmentController_1aae035bd4dac4df5e559e0e117534e260" compoundref="appointmentcontroller_8cpp" startline="200" endline="207">AppointmentController&lt; T &gt;::Delete</referencedby>
         <referencedby refid="classAppointmentControllerBase_1a1677d9a8337072581bc9e2e658b5c9ec">AppointmentControllerBase::Delete</referencedby>
-        <referencedby refid="classClientController_1a57d1a8ba8f83b70242fcc29b7f8f70cb" compoundref="clientcontroller_8cpp" startline="169" endline="182">ClientController&lt; T &gt;::Delete</referencedby>
+        <referencedby refid="classClientController_1a57d1a8ba8f83b70242fcc29b7f8f70cb" compoundref="clientcontroller_8cpp" startline="228" endline="250">ClientController&lt; T &gt;::Delete</referencedby>
         <referencedby refid="classClientControllerBase_1a6909aac7912d8a88f7845eaa0a074f80">ClientControllerBase::Delete</referencedby>
-        <referencedby refid="classClinicController_1af4377661c51a748d9df8056f70ad2a03" compoundref="cliniccontroller_8cpp" startline="344" endline="347">ClinicController&lt; T &gt;::Delete</referencedby>
+        <referencedby refid="classClinicController_1af4377661c51a748d9df8056f70ad2a03" compoundref="cliniccontroller_8cpp" startline="452" endline="458">ClinicController&lt; T &gt;::Delete</referencedby>
         <referencedby refid="classClinicControllerBase_1ab1d608f74cb516ca9d1663d6f86358a5">ClinicControllerBase::Delete</referencedby>
-        <referencedby refid="classController_1a1aee6ba4e59315c76893a2221808d719" compoundref="controller_8hpp" startline="226" endline="230">Controller::Delete</referencedby>
-        <referencedby refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" compoundref="entitycontroller_8cpp" startline="224" endline="252">EntityController&lt; T &gt;::Delete</referencedby>
+        <referencedby refid="classController_1a1aee6ba4e59315c76893a2221808d719" compoundref="controller_8hpp" startline="321" endline="329">Controller::Delete</referencedby>
+        <referencedby refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" compoundref="entitycontroller_8cpp" startline="297" endline="328">EntityController&lt; T &gt;::Delete</referencedby>
         <referencedby refid="classEntityControllerBase_1ad7023964ed22d27aa3adc12dd5ac3d93">EntityControllerBase::Delete</referencedby>
-        <referencedby refid="classServiceController_1adc89e37530112d08d7ee85aae48d8d3c" compoundref="servicecontroller_8cpp" startline="136" endline="139">ServiceController&lt; T &gt;::Delete</referencedby>
+        <referencedby refid="classServiceController_1adc89e37530112d08d7ee85aae48d8d3c" compoundref="servicecontroller_8cpp" startline="201" endline="208">ServiceController&lt; T &gt;::Delete</referencedby>
         <referencedby refid="classServiceControllerBase_1aed2131f8be6e44fdca0ac4bb17cb6dfb">ServiceControllerBase::Delete</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a1c64163fcea38e48979cbe03e86bb65d" compoundref="clients_8hpp" startline="352" endline="407">api::v2::Clients::delete_</referencedby>
-        <referencedby refid="classAppointmentController_1a7c0fa66b965e56315970b935e1bb2ad0" compoundref="appointmentcontroller_8cpp" startline="145" endline="148">AppointmentController&lt; T &gt;::DeleteAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a1c64163fcea38e48979cbe03e86bb65d" compoundref="clients_8hpp" startline="551" endline="639">api::v2::Clients::delete_</referencedby>
+        <referencedby refid="classAppointmentController_1a7c0fa66b965e56315970b935e1bb2ad0" compoundref="appointmentcontroller_8cpp" startline="217" endline="225">AppointmentController&lt; T &gt;::DeleteAsync</referencedby>
         <referencedby refid="classAppointmentControllerBase_1a1d3056a1551d3ab67042f274db3c86a7">AppointmentControllerBase::DeleteAsync</referencedby>
-        <referencedby refid="classClientController_1addb2c711f70f69b197b67da384b80c2d" compoundref="clientcontroller_8cpp" startline="432" endline="444">ClientController&lt; T &gt;::DeleteAsync</referencedby>
+        <referencedby refid="classClientController_1addb2c711f70f69b197b67da384b80c2d" compoundref="clientcontroller_8cpp" startline="563" endline="585">ClientController&lt; T &gt;::DeleteAsync</referencedby>
         <referencedby refid="classClientControllerBase_1a889f63f5215973988659ccd5f2d01e86">ClientControllerBase::DeleteAsync</referencedby>
-        <referencedby refid="classClinicController_1a046bf1ade561188314d73665933e5aec" compoundref="cliniccontroller_8cpp" startline="350" endline="353">ClinicController&lt; T &gt;::DeleteAsync</referencedby>
+        <referencedby refid="classClinicController_1a046bf1ade561188314d73665933e5aec" compoundref="cliniccontroller_8cpp" startline="461" endline="468">ClinicController&lt; T &gt;::DeleteAsync</referencedby>
         <referencedby refid="classClinicControllerBase_1a3c0dca8c5c1ba3d19a2c53ee4775653b">ClinicControllerBase::DeleteAsync</referencedby>
-        <referencedby refid="classController_1a7a0500b8cc369da32375933abd6e1fb1" compoundref="controller_8hpp" startline="241" endline="245">Controller::DeleteAsync</referencedby>
-        <referencedby refid="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" compoundref="entitycontroller_8cpp" startline="452" endline="480">EntityController&lt; T &gt;::DeleteAsync</referencedby>
+        <referencedby refid="classController_1a7a0500b8cc369da32375933abd6e1fb1" compoundref="controller_8hpp" startline="343" endline="351">Controller::DeleteAsync</referencedby>
+        <referencedby refid="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" compoundref="entitycontroller_8cpp" startline="590" endline="624">EntityController&lt; T &gt;::DeleteAsync</referencedby>
         <referencedby refid="classEntityControllerBase_1a0edce522edd2a4970d7853b433adbb7d">EntityControllerBase::DeleteAsync</referencedby>
-        <referencedby refid="classServiceController_1a69e19ca4bc442fd85af8df06ed98b5dc" compoundref="servicecontroller_8cpp" startline="148" endline="151">ServiceController&lt; T &gt;::DeleteAsync</referencedby>
+        <referencedby refid="classServiceController_1a69e19ca4bc442fd85af8df06ed98b5dc" compoundref="servicecontroller_8cpp" startline="218" endline="226">ServiceController&lt; T &gt;::DeleteAsync</referencedby>
         <referencedby refid="classServiceControllerBase_1a2ed4587b95b68015369aa23e31bb5962">ServiceControllerBase::DeleteAsync</referencedby>
-        <referencedby refid="classClinicController_1ae70f0975a505349680600bf924538c7a" compoundref="cliniccontroller_8cpp" startline="230" endline="234">ClinicController&lt; T &gt;::DeleteAsyncImpl</referencedby>
-        <referencedby refid="classClinicController_1aca363c98cad2d51f279275f84b8be1ce" compoundref="cliniccontroller_8cpp" startline="212" endline="216">ClinicController&lt; T &gt;::DeleteImpl</referencedby>
-        <referencedby refid="namespaceapi_1_1v2_1aa679c4967ecfe1f25818539f137414d3" compoundref="common_8hpp" startline="129" endline="216">api::v2::executeControllerMethod</referencedby>
-        <referencedby refid="classClientController_1abdee410951d9aa19b082955197f53162" compoundref="clientcontroller_8cpp" startline="351" endline="378">ClientController&lt; T &gt;::GetServices</referencedby>
+        <referencedby refid="classClinicController_1ae70f0975a505349680600bf924538c7a" compoundref="cliniccontroller_8cpp" startline="285" endline="295">ClinicController&lt; T &gt;::DeleteAsyncImpl</referencedby>
+        <referencedby refid="classClinicController_1aca363c98cad2d51f279275f84b8be1ce" compoundref="cliniccontroller_8cpp" startline="257" endline="265">ClinicController&lt; T &gt;::DeleteImpl</referencedby>
+        <referencedby refid="namespaceapi_1_1v2_1aa679c4967ecfe1f25818539f137414d3" compoundref="common_8hpp" startline="188" endline="371">api::v2::executeControllerMethod</referencedby>
+        <referencedby refid="classClientController_1abdee410951d9aa19b082955197f53162" compoundref="clientcontroller_8cpp" startline="457" endline="487">ClientController&lt; T &gt;::GetServices</referencedby>
         <referencedby refid="classClientControllerBase_1af9f1272d9d14a2a2d1b4ba8117728cf8">ClientControllerBase::GetServices</referencedby>
-        <referencedby refid="classController_1ad8517f93d94b2584124d06d0904c8c28" compoundref="controller_8hpp" startline="443" endline="470">Controller::GetServices</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1aa3d6c4f043f6ba5e024f51d1a642a8e7" compoundref="clients_8hpp" startline="475" endline="530">api::v2::Clients::getservices</referencedby>
-        <referencedby refid="classClientController_1aebd0c741055d14e284ea633eee9bd18d" compoundref="clientcontroller_8cpp" startline="381" endline="408">ClientController&lt; T &gt;::GetServicesAsync</referencedby>
+        <referencedby refid="classController_1ad8517f93d94b2584124d06d0904c8c28" compoundref="controller_8hpp" startline="626" endline="659">Controller::GetServices</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1aa3d6c4f043f6ba5e024f51d1a642a8e7" compoundref="clients_8hpp" startline="747" endline="838">api::v2::Clients::getservices</referencedby>
+        <referencedby refid="classClientController_1aebd0c741055d14e284ea633eee9bd18d" compoundref="clientcontroller_8cpp" startline="490" endline="524">ClientController&lt; T &gt;::GetServicesAsync</referencedby>
         <referencedby refid="classClientControllerBase_1aa2bc82cd6f33a4c24caa63536a0f5917">ClientControllerBase::GetServicesAsync</referencedby>
-        <referencedby refid="classController_1a2573416082a8360340c3f55c12b0c0b5" compoundref="controller_8hpp" startline="483" endline="511">Controller::GetServicesAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1ad05abb43349c46b4bc7fc67fab45ed11" compoundref="api_2v2_2routes_2clinics_8hpp" startline="392" endline="447">api::v2::Clinic::GetVisits</referencedby>
-        <referencedby refid="classClinicController_1ac39bb42de6ca02ad70eb6ed1064a1d61" compoundref="cliniccontroller_8cpp" startline="362" endline="365">ClinicController&lt; T &gt;::GetVisits</referencedby>
+        <referencedby refid="classController_1a2573416082a8360340c3f55c12b0c0b5" compoundref="controller_8hpp" startline="674" endline="712">Controller::GetServicesAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1ad05abb43349c46b4bc7fc67fab45ed11" compoundref="api_2v2_2routes_2clinics_8hpp" startline="612" endline="706">api::v2::Clinic::GetVisits</referencedby>
+        <referencedby refid="classClinicController_1ac39bb42de6ca02ad70eb6ed1064a1d61" compoundref="cliniccontroller_8cpp" startline="480" endline="486">ClinicController&lt; T &gt;::GetVisits</referencedby>
         <referencedby refid="classClinicControllerBase_1a14f6857ba85561fd62cb5280a94e8eb1">ClinicControllerBase::GetVisits</referencedby>
-        <referencedby refid="classController_1acd1d7cb00688b69469719ff7789f3cd9" compoundref="controller_8hpp" startline="523" endline="545">Controller::GetVisits</referencedby>
-        <referencedby refid="classClinicController_1a8ed0fcaa92bbfb7e6d1d2c4c7b6dbea9" compoundref="cliniccontroller_8cpp" startline="411" endline="414">ClinicController&lt; T &gt;::GetVisitsAsync</referencedby>
+        <referencedby refid="classController_1acd1d7cb00688b69469719ff7789f3cd9" compoundref="controller_8hpp" startline="729" endline="755">Controller::GetVisits</referencedby>
+        <referencedby refid="classClinicController_1a8ed0fcaa92bbfb7e6d1d2c4c7b6dbea9" compoundref="cliniccontroller_8cpp" startline="542" endline="549">ClinicController&lt; T &gt;::GetVisitsAsync</referencedby>
         <referencedby refid="classClinicControllerBase_1a80c5adbbef552507ede8c823171d15b0">ClinicControllerBase::GetVisitsAsync</referencedby>
-        <referencedby refid="classController_1a2af2297a7b4fcce1f987510786aaa5d7" compoundref="controller_8hpp" startline="557" endline="580">Controller::GetVisitsAsync</referencedby>
-        <referencedby refid="classClinicController_1ada8df541cb356fd8a275832960e9eb99" compoundref="cliniccontroller_8cpp" startline="369" endline="397">ClinicController&lt; T &gt;::GetVisitsAsyncImpl</referencedby>
-        <referencedby refid="classClinicController_1a49ca9ae245f2ca94ee937754a5d433ea" compoundref="cliniccontroller_8cpp" startline="266" endline="293">ClinicController&lt; T &gt;::GetVisitsImpl</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1a073bef1425950fe6acd2a9287ed6e9a9" compoundref="staff_8hpp" startline="85" endline="135">api::v2::Staff::Invite</referencedby>
-        <referencedby refid="classStaffController_1aca79920a9fdd6da89333627992bf6287" compoundref="staffcontroller_8cpp" startline="169" endline="214">StaffController&lt; T &gt;::InviteStaffToEntity</referencedby>
+        <referencedby refid="classController_1a2af2297a7b4fcce1f987510786aaa5d7" compoundref="controller_8hpp" startline="769" endline="800">Controller::GetVisitsAsync</referencedby>
+        <referencedby refid="classClinicController_1ada8df541cb356fd8a275832960e9eb99" compoundref="cliniccontroller_8cpp" startline="490" endline="524">ClinicController&lt; T &gt;::GetVisitsAsyncImpl</referencedby>
+        <referencedby refid="classClinicController_1a49ca9ae245f2ca94ee937754a5d433ea" compoundref="cliniccontroller_8cpp" startline="344" endline="373">ClinicController&lt; T &gt;::GetVisitsImpl</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1a073bef1425950fe6acd2a9287ed6e9a9" compoundref="staff_8hpp" startline="108" endline="195">api::v2::Staff::Invite</referencedby>
+        <referencedby refid="classStaffController_1aca79920a9fdd6da89333627992bf6287" compoundref="staffcontroller_8cpp" startline="263" endline="339">StaffController&lt; T &gt;::InviteStaffToEntity</referencedby>
         <referencedby refid="classStaffControllerBase_1a55203753a4995d370037401bfc5f66bd">StaffControllerBase::InviteStaffToEntity</referencedby>
-        <referencedby refid="classStaffController_1a7bfaae0026f9082bb42968cf04b421d5" compoundref="staffcontroller_8cpp" startline="299" endline="345">StaffController&lt; T &gt;::InviteStaffToEntityAsync</referencedby>
+        <referencedby refid="classStaffController_1a7bfaae0026f9082bb42968cf04b421d5" compoundref="staffcontroller_8cpp" startline="445" endline="514">StaffController&lt; T &gt;::InviteStaffToEntityAsync</referencedby>
         <referencedby refid="classStaffControllerBase_1a0e80ed9010fd73626ae3890c4d4ca118">StaffControllerBase::InviteStaffToEntityAsync</referencedby>
-        <referencedby refid="classClientController_1aa76ccf7c49744669ef28827b606216d9" compoundref="clientcontroller_8cpp" startline="191" endline="195">ClientController&lt; T &gt;::Login</referencedby>
+        <referencedby refid="classClientController_1aa76ccf7c49744669ef28827b606216d9" compoundref="clientcontroller_8cpp" startline="262" endline="273">ClientController&lt; T &gt;::Login</referencedby>
         <referencedby refid="classClientControllerBase_1a5a5df5eb70313c7005af72f0a49f6cb7">ClientControllerBase::Login</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a8b82b6424d114860f571b240a2b20d97" compoundref="clients_8hpp" startline="101" endline="150">api::v2::Clients::login</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a3ba9a5d63c120692afc6d8d765826544" compoundref="gatekeeper_8cpp" startline="78" endline="149">api::v2::GateKeeper::login</referencedby>
-        <referencedby refid="classClientController_1ab41c86cac7c0746d1b05f254e43b4591" compoundref="clientcontroller_8cpp" startline="198" endline="202">ClientController&lt; T &gt;::LoginAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a8b82b6424d114860f571b240a2b20d97" compoundref="clients_8hpp" startline="139" endline="222">api::v2::Clients::login</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1a3ba9a5d63c120692afc6d8d765826544" compoundref="gatekeeper_8cpp" startline="116" endline="241">api::v2::GateKeeper::login</referencedby>
+        <referencedby refid="classClientController_1ab41c86cac7c0746d1b05f254e43b4591" compoundref="clientcontroller_8cpp" startline="276" endline="287">ClientController&lt; T &gt;::LoginAsync</referencedby>
         <referencedby refid="classClientControllerBase_1a1f079a107f086ce7fd8d643aaf485de5">ClientControllerBase::LoginAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1ac767969b80539df0339a6d1e36996867" compoundref="gatekeeper_8cpp" startline="151" endline="220">api::v2::GateKeeper::loginAsync</referencedby>
-        <referencedby refid="classClientController_1aefe031b81d6d282292bafd65d191c8cd" compoundref="clientcontroller_8cpp" startline="205" endline="210">ClientController&lt; T &gt;::Logout</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1ac767969b80539df0339a6d1e36996867" compoundref="gatekeeper_8cpp" startline="243" endline="355">api::v2::GateKeeper::loginAsync</referencedby>
+        <referencedby refid="classClientController_1aefe031b81d6d282292bafd65d191c8cd" compoundref="clientcontroller_8cpp" startline="290" endline="299">ClientController&lt; T &gt;::Logout</referencedby>
         <referencedby refid="classClientControllerBase_1aa9e86fbbf9bce91d15b371c18dababea">ClientControllerBase::Logout</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1aa229540ef1e83bef737798d28697b61b" compoundref="gatekeeper_8cpp" startline="222" endline="237">api::v2::GateKeeper::logout</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="224" endline="289">api::v2::SessionManager::logout</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Appointments_1af9fa78f8cd4bbf7f4b7f5073055effb1" compoundref="appointments_8hpp" startline="143" endline="193">api::v2::Appointments::Read</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1a55c8928811105908bdcd77a1f8e8fefb" compoundref="api_2v2_2routes_2clinics_8hpp" startline="146" endline="196">api::v2::Clinic::Read</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Services_1add4126a239d7f9a96356da45f888ff67" compoundref="services_8hpp" startline="139" endline="189">api::v2::Services::Read</referencedby>
-        <referencedby refid="classAppointmentController_1a304bdc460cdd955f0d08a7e5bc3611dc" compoundref="appointmentcontroller_8cpp" startline="81" endline="84">AppointmentController&lt; T &gt;::Read</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1GateKeeper_1aa229540ef1e83bef737798d28697b61b" compoundref="gatekeeper_8cpp" startline="357" endline="378">api::v2::GateKeeper::logout</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="343" endline="458">api::v2::SessionManager::logout</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1af9fa78f8cd4bbf7f4b7f5073055effb1" compoundref="appointments_8hpp" startline="228" endline="315">api::v2::Appointments::Read</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a55c8928811105908bdcd77a1f8e8fefb" compoundref="api_2v2_2routes_2clinics_8hpp" startline="218" endline="301">api::v2::Clinic::Read</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1add4126a239d7f9a96356da45f888ff67" compoundref="services_8hpp" startline="205" endline="288">api::v2::Services::Read</referencedby>
+        <referencedby refid="classAppointmentController_1a304bdc460cdd955f0d08a7e5bc3611dc" compoundref="appointmentcontroller_8cpp" startline="121" endline="128">AppointmentController&lt; T &gt;::Read</referencedby>
         <referencedby refid="classAppointmentControllerBase_1ac74bf3e7c5e5ce53b463fc56ce84c1f7">AppointmentControllerBase::Read</referencedby>
-        <referencedby refid="classClientController_1a33f69fd2b79bc13817aa0574333266bf" compoundref="clientcontroller_8cpp" startline="120" endline="123">ClientController&lt; T &gt;::Read</referencedby>
+        <referencedby refid="classClientController_1a33f69fd2b79bc13817aa0574333266bf" compoundref="clientcontroller_8cpp" startline="158" endline="164">ClientController&lt; T &gt;::Read</referencedby>
         <referencedby refid="classClientControllerBase_1a335901d9fb13af79560b866138a48af9">ClientControllerBase::Read</referencedby>
-        <referencedby refid="classClinicController_1a0f109a3105237cccf7b29263ad6ff4ea" compoundref="cliniccontroller_8cpp" startline="320" endline="323">ClinicController&lt; T &gt;::Read</referencedby>
+        <referencedby refid="classClinicController_1a0f109a3105237cccf7b29263ad6ff4ea" compoundref="cliniccontroller_8cpp" startline="411" endline="417">ClinicController&lt; T &gt;::Read</referencedby>
         <referencedby refid="classClinicControllerBase_1abd99fedc56554304ebf14698b28cdb7c">ClinicControllerBase::Read</referencedby>
-        <referencedby refid="classController_1a99ba169c6f8163fd44cf966510c2730c" compoundref="controller_8hpp" startline="166" endline="170">Controller::Read</referencedby>
-        <referencedby refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" compoundref="entitycontroller_8cpp" startline="115" endline="160">EntityController&lt; T &gt;::Read</referencedby>
+        <referencedby refid="classController_1a99ba169c6f8163fd44cf966510c2730c" compoundref="controller_8hpp" startline="234" endline="242">Controller::Read</referencedby>
+        <referencedby refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" compoundref="entitycontroller_8cpp" startline="153" endline="219">EntityController&lt; T &gt;::Read</referencedby>
         <referencedby refid="classEntityControllerBase_1a8a392d8c3fd918f13c644079d727effa">EntityControllerBase::Read</referencedby>
-        <referencedby refid="classServiceController_1a92157307a0c39b6623d7a5cb75a0e7bf" compoundref="servicecontroller_8cpp" startline="84" endline="87">ServiceController&lt; T &gt;::Read</referencedby>
+        <referencedby refid="classServiceController_1a92157307a0c39b6623d7a5cb75a0e7bf" compoundref="servicecontroller_8cpp" startline="122" endline="129">ServiceController&lt; T &gt;::Read</referencedby>
         <referencedby refid="classServiceControllerBase_1a5bfaadfc6a791e0035dabc436e32ebcd">ServiceControllerBase::Read</referencedby>
-        <referencedby refid="classAppointmentController_1a96bc67b390c572327b9cbee839ab97dd" compoundref="appointmentcontroller_8cpp" startline="93" endline="96">AppointmentController&lt; T &gt;::ReadAsync</referencedby>
+        <referencedby refid="classAppointmentController_1a96bc67b390c572327b9cbee839ab97dd" compoundref="appointmentcontroller_8cpp" startline="138" endline="145">AppointmentController&lt; T &gt;::ReadAsync</referencedby>
         <referencedby refid="classAppointmentControllerBase_1acd60a9aa9a593fa82c7407008ba6cc3d">AppointmentControllerBase::ReadAsync</referencedby>
-        <referencedby refid="classClientController_1a2a260581d3133c68635516102d87bbdb" compoundref="clientcontroller_8cpp" startline="420" endline="423">ClientController&lt; T &gt;::ReadAsync</referencedby>
+        <referencedby refid="classClientController_1a2a260581d3133c68635516102d87bbdb" compoundref="clientcontroller_8cpp" startline="540" endline="547">ClientController&lt; T &gt;::ReadAsync</referencedby>
         <referencedby refid="classClientControllerBase_1ac2b421697b171b2c7800843eba059186">ClientControllerBase::ReadAsync</referencedby>
-        <referencedby refid="classClinicController_1a00e426195a2f2a48140a94d7e258bf94" compoundref="cliniccontroller_8cpp" startline="326" endline="329">ClinicController&lt; T &gt;::ReadAsync</referencedby>
+        <referencedby refid="classClinicController_1a00e426195a2f2a48140a94d7e258bf94" compoundref="cliniccontroller_8cpp" startline="420" endline="426">ClinicController&lt; T &gt;::ReadAsync</referencedby>
         <referencedby refid="classClinicControllerBase_1a37d9bbe872aad4f871c285c5af09d24b">ClinicControllerBase::ReadAsync</referencedby>
-        <referencedby refid="classController_1a055ea60472dc93fbb1c8af3d9f9d9091" compoundref="controller_8hpp" startline="181" endline="185">Controller::ReadAsync</referencedby>
-        <referencedby refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" compoundref="entitycontroller_8cpp" startline="345" endline="390">EntityController&lt; T &gt;::ReadAsync</referencedby>
+        <referencedby refid="classController_1a055ea60472dc93fbb1c8af3d9f9d9091" compoundref="controller_8hpp" startline="256" endline="264">Controller::ReadAsync</referencedby>
+        <referencedby refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" compoundref="entitycontroller_8cpp" startline="444" endline="510">EntityController&lt; T &gt;::ReadAsync</referencedby>
         <referencedby refid="classEntityControllerBase_1a023b63c4973ca2d03539b11cb9693453">EntityControllerBase::ReadAsync</referencedby>
-        <referencedby refid="classServiceController_1ab279214d55b6c2fa43ad6ee069413c97" compoundref="servicecontroller_8cpp" startline="96" endline="99">ServiceController&lt; T &gt;::ReadAsync</referencedby>
+        <referencedby refid="classServiceController_1ab279214d55b6c2fa43ad6ee069413c97" compoundref="servicecontroller_8cpp" startline="139" endline="147">ServiceController&lt; T &gt;::ReadAsync</referencedby>
         <referencedby refid="classServiceControllerBase_1aa418b013aa53894745ca9595e40b62ca">ServiceControllerBase::ReadAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1ae5420af7a0b9609ca0536d2d9643679e" compoundref="clients_8hpp" startline="594" endline="705">api::v2::Clients::readAsyncImpl</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1acffe2bacadd52880b9302de943c11a3f" compoundref="staff_8hpp" startline="207" endline="257">api::v2::Staff::Remove</referencedby>
-        <referencedby refid="classController_1ae33c97548e0d8cdd3f2289573d1a0dba" compoundref="controller_8hpp" startline="721" endline="725">Controller::removeStaff</referencedby>
-        <referencedby refid="classController_1a417810c27071d4c1fae298b518d7819f" compoundref="controller_8hpp" startline="749" endline="753">Controller::removeStaffAsync</referencedby>
-        <referencedby refid="classStaffController_1aefd020493c2178716433285aca94ae50" compoundref="staffcontroller_8cpp" startline="132" endline="155">StaffController&lt; T &gt;::RemoveStaffFromEntity</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1ae5420af7a0b9609ca0536d2d9643679e" compoundref="clients_8hpp" startline="964" endline="1146">api::v2::Clients::readAsyncImpl</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1acffe2bacadd52880b9302de943c11a3f" compoundref="staff_8hpp" startline="310" endline="395">api::v2::Staff::Remove</referencedby>
+        <referencedby refid="classController_1ae33c97548e0d8cdd3f2289573d1a0dba" compoundref="controller_8hpp" startline="991" endline="996">Controller::removeStaff</referencedby>
+        <referencedby refid="classController_1a417810c27071d4c1fae298b518d7819f" compoundref="controller_8hpp" startline="1030" endline="1038">Controller::removeStaffAsync</referencedby>
+        <referencedby refid="classStaffController_1aefd020493c2178716433285aca94ae50" compoundref="staffcontroller_8cpp" startline="211" endline="248">StaffController&lt; T &gt;::RemoveStaffFromEntity</referencedby>
         <referencedby refid="classStaffControllerBase_1a5d310e956312329648957207868ed549">StaffControllerBase::RemoveStaffFromEntity</referencedby>
-        <referencedby refid="classStaffController_1ac220308be6bf24122bfe037ea8c75e9c" compoundref="staffcontroller_8cpp" startline="265" endline="289">StaffController&lt; T &gt;::RemoveStaffFromEntityAsync</referencedby>
+        <referencedby refid="classStaffController_1ac220308be6bf24122bfe037ea8c75e9c" compoundref="staffcontroller_8cpp" startline="400" endline="433">StaffController&lt; T &gt;::RemoveStaffFromEntityAsync</referencedby>
         <referencedby refid="classStaffControllerBase_1aadc6db473bceee230a86cf64bdbb97ae">StaffControllerBase::RemoveStaffFromEntityAsync</referencedby>
-        <referencedby refid="classClientController_1a98c472a091deb653605efb4049936c9e" compoundref="clientcontroller_8cpp" startline="343" endline="348">ClientController&lt; T &gt;::ResetPassword</referencedby>
+        <referencedby refid="classClientController_1a98c472a091deb653605efb4049936c9e" compoundref="clientcontroller_8cpp" startline="445" endline="454">ClientController&lt; T &gt;::ResetPassword</referencedby>
         <referencedby refid="classClientControllerBase_1abf2e638366a36499d889c626eefcc82c">ClientControllerBase::ResetPassword</referencedby>
-        <referencedby refid="dbexecutor_8hpp_1a936968e57939fceaf59b5600a46630aa" compoundref="dbexecutor_8hpp" startline="93" endline="96">runOnDbExecutor</referencedby>
-        <referencedby refid="boundedexecutor_8hpp_1af76f5db524067c26a058b1fee7e90e82" compoundref="boundedexecutor_8hpp" startline="295" endline="302">runOnExecutor</referencedby>
-        <referencedby refid="passwordworker_8hpp_1a11301e300507b2f5ba81930e709a5de6" compoundref="passwordworker_8hpp" startline="71" endline="75">runOnPasswordWorker</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1a5f03d36ebe2fec6696c005bc1e190605" compoundref="api_2v2_2routes_2clinics_8hpp" startline="333" endline="383">api::v2::Clinic::Search</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Services_1a9aaef4e8359c44c2f0d8f79e96497868" compoundref="services_8hpp" startline="327" endline="377">api::v2::Services::Search</referencedby>
-        <referencedby refid="classAppointmentController_1a9052acc829edcd321478db51124386d4" compoundref="appointmentcontroller_8cpp" startline="159" endline="162">AppointmentController&lt; T &gt;::Search</referencedby>
+        <referencedby refid="dbexecutor_8hpp_1a936968e57939fceaf59b5600a46630aa" compoundref="dbexecutor_8hpp" startline="125" endline="133">runOnDbExecutor</referencedby>
+        <referencedby refid="passwordworker_8hpp_1a11301e300507b2f5ba81930e709a5de6" compoundref="passwordworker_8hpp" startline="88" endline="98">runOnPasswordWorker</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a5f03d36ebe2fec6696c005bc1e190605" compoundref="api_2v2_2routes_2clinics_8hpp" startline="516" endline="599">api::v2::Clinic::Search</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a9aaef4e8359c44c2f0d8f79e96497868" compoundref="services_8hpp" startline="508" endline="591">api::v2::Services::Search</referencedby>
+        <referencedby refid="classAppointmentController_1a9052acc829edcd321478db51124386d4" compoundref="appointmentcontroller_8cpp" startline="238" endline="246">AppointmentController&lt; T &gt;::Search</referencedby>
         <referencedby refid="classAppointmentControllerBase_1aa79a4ad4a10da6c9d6b791df603fc907">AppointmentControllerBase::Search</referencedby>
-        <referencedby refid="classClientController_1a36c5c10efab0dcfdf020f6702a6ff9bb" compoundref="clientcontroller_8cpp" startline="185" endline="188">ClientController&lt; T &gt;::Search</referencedby>
+        <referencedby refid="classClientController_1a36c5c10efab0dcfdf020f6702a6ff9bb" compoundref="clientcontroller_8cpp" startline="253" endline="259">ClientController&lt; T &gt;::Search</referencedby>
         <referencedby refid="classClientControllerBase_1a560976768576af7af11239fde7e634f6">ClientControllerBase::Search</referencedby>
-        <referencedby refid="classClinicController_1ad3d21099d98ec1e52ab290ca38389c98" compoundref="cliniccontroller_8cpp" startline="356" endline="359">ClinicController&lt; T &gt;::Search</referencedby>
+        <referencedby refid="classClinicController_1ad3d21099d98ec1e52ab290ca38389c98" compoundref="cliniccontroller_8cpp" startline="471" endline="477">ClinicController&lt; T &gt;::Search</referencedby>
         <referencedby refid="classClinicControllerBase_1a021464e215ff55abfa11f3b684117934">ClinicControllerBase::Search</referencedby>
-        <referencedby refid="classController_1aaa9930fa3fdd7c91a56392f3e1440736" compoundref="controller_8hpp" startline="261" endline="309">Controller::Search</referencedby>
-        <referencedby refid="classEntityController_1a888ea97ce413d880bcca6f7e9cf6b896" compoundref="entitycontroller_8cpp" startline="255" endline="287">EntityController&lt; T &gt;::Search</referencedby>
+        <referencedby refid="classController_1aaa9930fa3fdd7c91a56392f3e1440736" compoundref="controller_8hpp" startline="374" endline="443">Controller::Search</referencedby>
+        <referencedby refid="classEntityController_1a888ea97ce413d880bcca6f7e9cf6b896" compoundref="entitycontroller_8cpp" startline="331" endline="367">EntityController&lt; T &gt;::Search</referencedby>
         <referencedby refid="classEntityControllerBase_1ace1793314727472edb5aeb5e03cdf622">EntityControllerBase::Search</referencedby>
-        <referencedby refid="classServiceController_1af655c40238892ccf0103ebf85ac4d438" compoundref="servicecontroller_8cpp" startline="162" endline="165">ServiceController&lt; T &gt;::Search</referencedby>
+        <referencedby refid="classServiceController_1af655c40238892ccf0103ebf85ac4d438" compoundref="servicecontroller_8cpp" startline="239" endline="247">ServiceController&lt; T &gt;::Search</referencedby>
         <referencedby refid="classServiceControllerBase_1af9b5bf091f00982abb00edfca5f3a110">ServiceControllerBase::Search</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a6ed35f998ca78524ee42c7ba30cce0e9" compoundref="clients_8hpp" startline="416" endline="466">api::v2::Clients::search</referencedby>
-        <referencedby refid="classClientController_1ab7c4ffff79c0e56214abb463ae375925" compoundref="clientcontroller_8cpp" startline="447" endline="450">ClientController&lt; T &gt;::SearchAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a6ed35f998ca78524ee42c7ba30cce0e9" compoundref="clients_8hpp" startline="651" endline="734">api::v2::Clients::search</referencedby>
+        <referencedby refid="classClientController_1ab7c4ffff79c0e56214abb463ae375925" compoundref="clientcontroller_8cpp" startline="588" endline="595">ClientController&lt; T &gt;::SearchAsync</referencedby>
         <referencedby refid="classClientControllerBase_1a2f72684ebb458b74a3c9a8c8b2647ac4">ClientControllerBase::SearchAsync</referencedby>
-        <referencedby refid="classController_1ae3f0e461a7a50529945f6e70ba5572be" compoundref="controller_8hpp" startline="321" endline="366">Controller::SearchAsync</referencedby>
-        <referencedby refid="classEntityController_1a430903208b20b59481d07c88b66ac4f6" compoundref="entitycontroller_8cpp" startline="482" endline="514">EntityController&lt; T &gt;::SearchAsync</referencedby>
+        <referencedby refid="classController_1ae3f0e461a7a50529945f6e70ba5572be" compoundref="controller_8hpp" startline="458" endline="522">Controller::SearchAsync</referencedby>
+        <referencedby refid="classEntityController_1a430903208b20b59481d07c88b66ac4f6" compoundref="entitycontroller_8cpp" startline="626" endline="662">EntityController&lt; T &gt;::SearchAsync</referencedby>
         <referencedby refid="classEntityControllerBase_1a3ed2dd3c8c29b82c86ace136191b6c30">EntityControllerBase::SearchAsync</referencedby>
-        <referencedby refid="classClinicController_1a1f5a5a8c1ec63ea2d5e3e7ac89be22ad" compoundref="cliniccontroller_8cpp" startline="249" endline="253">ClinicController&lt; T &gt;::SearchImpl</referencedby>
-        <referencedby refid="classClientController_1ac9f28aab768cb85f02f2ca84b694f149" compoundref="clientcontroller_8cpp" startline="213" endline="243">ClientController&lt; T &gt;::Suspend</referencedby>
+        <referencedby refid="classClinicController_1a1f5a5a8c1ec63ea2d5e3e7ac89be22ad" compoundref="cliniccontroller_8cpp" startline="317" endline="325">ClinicController&lt; T &gt;::SearchImpl</referencedby>
+        <referencedby refid="classClientController_1ac9f28aab768cb85f02f2ca84b694f149" compoundref="clientcontroller_8cpp" startline="302" endline="335">ClientController&lt; T &gt;::Suspend</referencedby>
         <referencedby refid="classClientControllerBase_1a6a58bc8fd2e226e47f00d74de0e47f65">ClientControllerBase::Suspend</referencedby>
-        <referencedby refid="classController_1acf60ad2a21b8d7c3c7a81d9412b6cd3c" compoundref="controller_8hpp" startline="376" endline="381">Controller::Suspend</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a4226d0e35525e0d197941e93fe0ee1d7" compoundref="clients_8hpp" startline="173" endline="228">api::v2::Clients::suspend</referencedby>
-        <referencedby refid="classClientController_1a77e043006883f4a959679df477d0ad39" compoundref="clientcontroller_8cpp" startline="246" endline="276">ClientController&lt; T &gt;::SuspendAsync</referencedby>
+        <referencedby refid="classController_1acf60ad2a21b8d7c3c7a81d9412b6cd3c" compoundref="controller_8hpp" startline="536" endline="543">Controller::Suspend</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a4226d0e35525e0d197941e93fe0ee1d7" compoundref="clients_8hpp" startline="261" endline="349">api::v2::Clients::suspend</referencedby>
+        <referencedby refid="classClientController_1a77e043006883f4a959679df477d0ad39" compoundref="clientcontroller_8cpp" startline="338" endline="373">ClientController&lt; T &gt;::SuspendAsync</referencedby>
         <referencedby refid="classClientControllerBase_1ab604c168d7eb829127b21b5d7f4de43d">ClientControllerBase::SuspendAsync</referencedby>
-        <referencedby refid="classController_1a82399a341c86ed94ac1ade56ced71dc7" compoundref="controller_8hpp" startline="408" endline="413">Controller::SuspendAsync</referencedby>
-        <referencedby refid="classController_1a9b6e3fd0227fcb95b0831aef3b4e5f08" compoundref="controller_8hpp" startline="392" endline="397">Controller::Unsuspend</referencedby>
-        <referencedby refid="classController_1a0044a385830517e3a97e0b250dce4748" compoundref="controller_8hpp" startline="424" endline="429">Controller::UnsuspendAsync</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Appointments_1ab7c172b45fbfbc8580bf0a69505e111b" compoundref="appointments_8hpp" startline="205" endline="260">api::v2::Appointments::Update</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1ab966bc6c2f287a66e363365398ebacd7" compoundref="api_2v2_2routes_2clinics_8hpp" startline="206" endline="261">api::v2::Clinic::Update</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Services_1aca116f0dbc91a0743085f121c253cf17" compoundref="services_8hpp" startline="199" endline="254">api::v2::Services::Update</referencedby>
-        <referencedby refid="classAppointmentController_1a8193e8f08b8afcc80abbaf8ffa9991e9" compoundref="appointmentcontroller_8cpp" startline="107" endline="110">AppointmentController&lt; T &gt;::Update</referencedby>
+        <referencedby refid="classController_1a82399a341c86ed94ac1ade56ced71dc7" compoundref="controller_8hpp" startline="576" endline="586">Controller::SuspendAsync</referencedby>
+        <referencedby refid="classController_1a9b6e3fd0227fcb95b0831aef3b4e5f08" compoundref="controller_8hpp" startline="556" endline="563">Controller::Unsuspend</referencedby>
+        <referencedby refid="classController_1a0044a385830517e3a97e0b250dce4748" compoundref="controller_8hpp" startline="599" endline="609">Controller::UnsuspendAsync</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1ab7c172b45fbfbc8580bf0a69505e111b" compoundref="appointments_8hpp" startline="331" endline="423">api::v2::Appointments::Update</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1ab966bc6c2f287a66e363365398ebacd7" compoundref="api_2v2_2routes_2clinics_8hpp" startline="315" endline="405">api::v2::Clinic::Update</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1aca116f0dbc91a0743085f121c253cf17" compoundref="services_8hpp" startline="302" endline="394">api::v2::Services::Update</referencedby>
+        <referencedby refid="classAppointmentController_1a8193e8f08b8afcc80abbaf8ffa9991e9" compoundref="appointmentcontroller_8cpp" startline="158" endline="167">AppointmentController&lt; T &gt;::Update</referencedby>
         <referencedby refid="classAppointmentControllerBase_1a8a91b4e32b1afb820d5b1b7af83469a9">AppointmentControllerBase::Update</referencedby>
-        <referencedby refid="classClientController_1a671dfda3ad96e247286fe44d22a1b478" compoundref="clientcontroller_8cpp" startline="126" endline="131">ClientController&lt; T &gt;::Update</referencedby>
+        <referencedby refid="classClientController_1a671dfda3ad96e247286fe44d22a1b478" compoundref="clientcontroller_8cpp" startline="167" endline="182">ClientController&lt; T &gt;::Update</referencedby>
         <referencedby refid="classClientControllerBase_1a19ad4f57a4d721aa57723a6ca379abaf">ClientControllerBase::Update</referencedby>
-        <referencedby refid="classClinicController_1ac9602c4667f7e5dadd4be920a9258d48" compoundref="cliniccontroller_8cpp" startline="332" endline="335">ClinicController&lt; T &gt;::Update</referencedby>
+        <referencedby refid="classClinicController_1ac9602c4667f7e5dadd4be920a9258d48" compoundref="cliniccontroller_8cpp" startline="429" endline="437">ClinicController&lt; T &gt;::Update</referencedby>
         <referencedby refid="classClinicControllerBase_1a75870953c9e268b975a0433484ffaf76">ClinicControllerBase::Update</referencedby>
-        <referencedby refid="classController_1a19c2ebed1725708ab253bc0ba1d9b2c5" compoundref="controller_8hpp" startline="196" endline="200">Controller::Update</referencedby>
-        <referencedby refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" compoundref="entitycontroller_8cpp" startline="162" endline="221">EntityController&lt; T &gt;::Update</referencedby>
+        <referencedby refid="classController_1a19c2ebed1725708ab253bc0ba1d9b2c5" compoundref="controller_8hpp" startline="278" endline="286">Controller::Update</referencedby>
+        <referencedby refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" compoundref="entitycontroller_8cpp" startline="221" endline="294">EntityController&lt; T &gt;::Update</referencedby>
         <referencedby refid="classEntityControllerBase_1ae5d92e66680e04f297ac7449f1a8d9f4">EntityControllerBase::Update</referencedby>
-        <referencedby refid="classServiceController_1a0bdcfc6e76c7864d0c84acd7be675ce4" compoundref="servicecontroller_8cpp" startline="110" endline="113">ServiceController&lt; T &gt;::Update</referencedby>
+        <referencedby refid="classServiceController_1a0bdcfc6e76c7864d0c84acd7be675ce4" compoundref="servicecontroller_8cpp" startline="159" endline="169">ServiceController&lt; T &gt;::Update</referencedby>
         <referencedby refid="classServiceControllerBase_1aefe0e5804f4eed5e0ac73a32317950d3">ServiceControllerBase::Update</referencedby>
-        <referencedby refid="classAppointmentController_1ac6ec86b8497afe05196a67967e6063c2" compoundref="appointmentcontroller_8cpp" startline="120" endline="123">AppointmentController&lt; T &gt;::UpdateAsync</referencedby>
+        <referencedby refid="classAppointmentController_1ac6ec86b8497afe05196a67967e6063c2" compoundref="appointmentcontroller_8cpp" startline="178" endline="188">AppointmentController&lt; T &gt;::UpdateAsync</referencedby>
         <referencedby refid="classAppointmentControllerBase_1a4b35caba8ea117928f1f0a13855d5e94">AppointmentControllerBase::UpdateAsync</referencedby>
-        <referencedby refid="classClientController_1ad218f6587a3135d5b5466401aac514e9" compoundref="clientcontroller_8cpp" startline="426" endline="429">ClientController&lt; T &gt;::UpdateAsync</referencedby>
+        <referencedby refid="classClientController_1ad218f6587a3135d5b5466401aac514e9" compoundref="clientcontroller_8cpp" startline="550" endline="560">ClientController&lt; T &gt;::UpdateAsync</referencedby>
         <referencedby refid="classClientControllerBase_1a7500d9081800672565b50021165aaefc">ClientControllerBase::UpdateAsync</referencedby>
-        <referencedby refid="classClinicController_1ae01eb0d9ae50dc1e58a118201030b89f" compoundref="cliniccontroller_8cpp" startline="338" endline="341">ClinicController&lt; T &gt;::UpdateAsync</referencedby>
-        <referencedby refid="classController_1a146f10399fc24f1052079827e6248b2a" compoundref="controller_8hpp" startline="211" endline="215">Controller::UpdateAsync</referencedby>
-        <referencedby refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" compoundref="entitycontroller_8cpp" startline="392" endline="450">EntityController&lt; T &gt;::UpdateAsync</referencedby>
+        <referencedby refid="classClinicController_1ae01eb0d9ae50dc1e58a118201030b89f" compoundref="cliniccontroller_8cpp" startline="440" endline="449">ClinicController&lt; T &gt;::UpdateAsync</referencedby>
+        <referencedby refid="classController_1a146f10399fc24f1052079827e6248b2a" compoundref="controller_8hpp" startline="300" endline="308">Controller::UpdateAsync</referencedby>
+        <referencedby refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" compoundref="entitycontroller_8cpp" startline="512" endline="588">EntityController&lt; T &gt;::UpdateAsync</referencedby>
         <referencedby refid="classEntityControllerBase_1a65cfe323fc4255e1b8a06d5864be2616">EntityControllerBase::UpdateAsync</referencedby>
-        <referencedby refid="classServiceController_1abbe959a26ec829cc66e5e1cfd8175577" compoundref="servicecontroller_8cpp" startline="123" endline="126">ServiceController&lt; T &gt;::UpdateAsync</referencedby>
+        <referencedby refid="classServiceController_1abbe959a26ec829cc66e5e1cfd8175577" compoundref="servicecontroller_8cpp" startline="180" endline="190">ServiceController&lt; T &gt;::UpdateAsync</referencedby>
         <referencedby refid="classServiceControllerBase_1a737ec8801a6bb9ce6ceb53c2fb8ccc7f">ServiceControllerBase::UpdateAsync</referencedby>
-        <referencedby refid="classClientController_1a8f17ab1fcb71e5c9d8e03f6cfe69559b" compoundref="clientcontroller_8cpp" startline="134" endline="166">ClientController&lt; T &gt;::updateNow</referencedby>
+        <referencedby refid="classClientController_1a8f17ab1fcb71e5c9d8e03f6cfe69559b" compoundref="clientcontroller_8cpp" startline="185" endline="225">ClientController&lt; T &gt;::updateNow</referencedby>
         <referencedby refid="classAppointmentController_1a3dd8744b972f582bbeb760faff94d47d">AppointmentController&lt; T &gt;::~AppointmentController</referencedby>
         <referencedby refid="classClientController_1afc26f65a35933d0e8025c42d9101ce85">ClientController&lt; T &gt;::~ClientController</referencedby>
         <referencedby refid="classClinicController_1ab4ea1446f6f1ea33292478ed00cbcf8d">ClinicController&lt; T &gt;::~ClinicController</referencedby>
@@ -711,29 +694,36 @@
 <codeline lineno="19"><highlight class="comment"><sp/>*<sp/>across<sp/>the<sp/>API<sp/>layer.</highlight></codeline>
 <codeline lineno="20"><highlight class="comment"><sp/>*</highlight></codeline>
 <codeline lineno="21"><highlight class="comment"><sp/>*<sp/>CONCEPTS<sp/>TO<sp/>LEARN<sp/>(for<sp/>beginners):</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>std::function:<sp/>https://en.cppreference.com/w/cpp/utility/functional/function</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>-<sp/>Lambda<sp/>expressions:<sp/>https://en.cppreference.com/w/cpp/language/lambda</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>-<sp/>Preprocessor<sp/>macros:<sp/>https://en.cppreference.com/w/cpp/preprocessor/replace</highlight></codeline>
-<codeline lineno="25"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
-<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
-<codeline lineno="28"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>include<sp/>is<sp/>kept<sp/>for<sp/>the<sp/>std::function<sp/>used<sp/>inside<sp/>the<sp/>CALLBACK_<sp/>macro.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//IWYU<sp/>pragma:<sp/>keep</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Tells<sp/>the<sp/>compiler<sp/>to<sp/>include<sp/>this<sp/>file<sp/>at<sp/>most<sp/>once<sp/>per<sp/>translation<sp/>unit<sp/>(cheaper<sp/>than<sp/>an<sp/>include<sp/>guard).</highlight><highlight class="comment"></highlight></codeline>
-<codeline lineno="33"><highlight class="comment">/**</highlight></codeline>
-<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>@def<sp/>CALLBACK_</highlight></codeline>
-<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Completion<sp/>callback<sp/>used<sp/>throughout<sp/>the<sp/>request<sp/>pipeline.</highlight></codeline>
-<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>@details<sp/>Expands<sp/>to<sp/>`std::function&lt;void(int,<sp/>const<sp/>std::string&amp;)&gt;`:<sp/>the<sp/>first</highlight></codeline>
-<codeline lineno="37"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>argument<sp/>is<sp/>an<sp/>HTTP-style<sp/>status<sp/>code<sp/>(see<sp/>api::v2::Http::Status),</highlight></codeline>
-<codeline lineno="38"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>second<sp/>is<sp/>the<sp/>response<sp/>body,<sp/>normally<sp/>JSON<sp/>text.<sp/>Callers<sp/>copy<sp/>or</highlight></codeline>
-<codeline lineno="39"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>move<sp/>callbacks<sp/>into<sp/>lambdas<sp/>queued<sp/>on<sp/>executors,<sp/>so<sp/>the<sp/>callable<sp/>and</highlight></codeline>
-<codeline lineno="40"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>anything<sp/>it<sp/>captures<sp/>must<sp/>remain<sp/>valid<sp/>after<sp/>the<sp/>initiating<sp/>call<sp/>returns.</highlight></codeline>
-<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>@note<sp/>A<sp/>macro<sp/>keeps<sp/>the<sp/>signature<sp/>identical<sp/>across<sp/>translation<sp/>units;</highlight></codeline>
-<codeline lineno="42"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>`&lt;functional&gt;`<sp/>is<sp/>included<sp/>here<sp/>for<sp/>the<sp/>expansion.</highlight></codeline>
-<codeline lineno="43"><highlight class="comment"><sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44" refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CALLBACK_<sp/>std::function&lt;void(int,<sp/>const<sp/>std::string&amp;)&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>one<sp/>shared<sp/>&quot;report<sp/>your<sp/>result&quot;<sp/>signature:<sp/>(status<sp/>code,<sp/>response<sp/>text)<sp/>-&gt;<sp/>void.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>-<sp/>std::function:</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>https://en.cppreference.com/w/cpp/utility/functional/function</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>-<sp/>Lambda<sp/>expressions:<sp/>https://en.cppreference.com/w/cpp/language/lambda</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>-<sp/>Preprocessor<sp/>macros:<sp/>https://en.cppreference.com/w/cpp/preprocessor/replace</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>@author<sp/>Amr<sp/>Osman<sp/>&lt;dr3mro@gmail.com&gt;</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>@date<sp/>2026-11-16</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>include<sp/>is<sp/>kept<sp/>for<sp/>the<sp/>std::function<sp/>used<sp/>inside<sp/>the<sp/>CALLBACK_<sp/>macro.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//IWYU<sp/>pragma:<sp/>keep</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once<sp/><sp/></highlight><highlight class="comment">//<sp/>Tells<sp/>the<sp/>compiler<sp/>to<sp/>include<sp/>this<sp/>file<sp/>at<sp/>most<sp/>once<sp/>per</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>translation<sp/>unit<sp/>(cheaper<sp/>than<sp/>an<sp/>include<sp/>guard).</highlight><highlight class="comment"></highlight></codeline>
+<codeline lineno="35"><highlight class="comment">/**</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>@def<sp/>CALLBACK_</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>@brief<sp/>Completion<sp/>callback<sp/>used<sp/>throughout<sp/>the<sp/>request<sp/>pipeline.</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>@details<sp/>Expands<sp/>to<sp/>`std::function&lt;void(int,<sp/>const<sp/>std::string&amp;)&gt;`:<sp/>the<sp/>first</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>argument<sp/>is<sp/>an<sp/>HTTP-style<sp/>status<sp/>code<sp/>(see<sp/>api::v2::Http::Status),</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>second<sp/>is<sp/>the<sp/>response<sp/>body,<sp/>normally<sp/>JSON<sp/>text.<sp/>Callers<sp/>copy<sp/>or</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>move<sp/>callbacks<sp/>into<sp/>lambdas<sp/>queued<sp/>on<sp/>executors,<sp/>so<sp/>the<sp/>callable<sp/>and</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>anything<sp/>it<sp/>captures<sp/>must<sp/>remain<sp/>valid<sp/>after<sp/>the<sp/>initiating<sp/>call</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*<sp/>returns.</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>@note<sp/>A<sp/>macro<sp/>keeps<sp/>the<sp/>signature<sp/>identical<sp/>across<sp/>translation<sp/>units;</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>`&lt;functional&gt;`<sp/>is<sp/>included<sp/>here<sp/>for<sp/>the<sp/>expansion.</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CALLBACK_<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"><sp/><sp/>std::function&lt;void(int,<sp/>\</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/>std::string&amp;)&gt;<sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>one<sp/>shared<sp/>&quot;report<sp/>your</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>result&quot;<sp/>signature:<sp/>(status<sp/>code,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>response<sp/>text)<sp/>-&gt;<sp/>void.</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/utils/global/callback.hpp"/>
   </compounddef>

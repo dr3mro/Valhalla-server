@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="50" column="14"/>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="64" column="12"/>
       </memberdef>
       <memberdef kind="function" id="classClinicControllerBase_1a14929608e87a3507194222c27cb602ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="52" column="13"/>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="67" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classClinicControllerBase_1a572b7956fa1d19e1c688458f4108dca0" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -45,7 +45,7 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;&amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;&amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -85,9 +85,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="62" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1a732361aa386238582d08d4165eb4b864" compoundref="api_2v2_2routes_2clinics_8hpp" startline="86" endline="136">api::v2::Clinic::Create</referencedby>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="80" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a732361aa386238582d08d4165eb4b864" compoundref="api_2v2_2routes_2clinics_8hpp" startline="119" endline="204">api::v2::Clinic::Create</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClinicControllerBase_1a69c52c140626bbe5abb2cc9bfcc3d1b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -101,7 +101,7 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;&amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;&amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -141,8 +141,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="69" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="90" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classClinicControllerBase_1abd99fedc56554304ebf14698b28cdb7c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -156,7 +156,7 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;&amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;&amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -196,9 +196,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="76" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1a55c8928811105908bdcd77a1f8e8fefb" compoundref="api_2v2_2routes_2clinics_8hpp" startline="146" endline="196">api::v2::Clinic::Read</referencedby>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="102" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a55c8928811105908bdcd77a1f8e8fefb" compoundref="api_2v2_2routes_2clinics_8hpp" startline="218" endline="301">api::v2::Clinic::Read</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClinicControllerBase_1a37d9bbe872aad4f871c285c5af09d24b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -212,7 +212,7 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;&amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;&amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -252,8 +252,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="83" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="113" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classClinicControllerBase_1a75870953c9e268b975a0433484ffaf76" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -267,7 +267,7 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;&amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;&amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -319,9 +319,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="91" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1ab966bc6c2f287a66e363365398ebacd7" compoundref="api_2v2_2routes_2clinics_8hpp" startline="206" endline="261">api::v2::Clinic::Update</referencedby>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="125" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1ab966bc6c2f287a66e363365398ebacd7" compoundref="api_2v2_2routes_2clinics_8hpp" startline="315" endline="405">api::v2::Clinic::Update</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClinicControllerBase_1ab1d608f74cb516ca9d1663d6f86358a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -335,7 +335,7 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;&amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;&amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -375,9 +375,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="98" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1a0041b3b3e1be2e86ea5b2aef2544d8fd" compoundref="api_2v2_2routes_2clinics_8hpp" startline="270" endline="325">api::v2::Clinic::Delete</referencedby>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="138" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a0041b3b3e1be2e86ea5b2aef2544d8fd" compoundref="api_2v2_2routes_2clinics_8hpp" startline="418" endline="504">api::v2::Clinic::Delete</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClinicControllerBase_1a3c0dca8c5c1ba3d19a2c53ee4775653b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -391,7 +391,7 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;&amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;&amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -431,8 +431,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="105" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="149" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classClinicControllerBase_1a021464e215ff55abfa11f3b684117934" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -446,7 +446,7 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;&amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;&amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -486,9 +486,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="112" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1a5f03d36ebe2fec6696c005bc1e190605" compoundref="api_2v2_2routes_2clinics_8hpp" startline="333" endline="383">api::v2::Clinic::Search</referencedby>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="161" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a5f03d36ebe2fec6696c005bc1e190605" compoundref="api_2v2_2routes_2clinics_8hpp" startline="516" endline="599">api::v2::Clinic::Search</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClinicControllerBase_1a14f6857ba85561fd62cb5280a94e8eb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -502,7 +502,7 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;&amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;&amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -542,9 +542,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="119" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1ad05abb43349c46b4bc7fc67fab45ed11" compoundref="api_2v2_2routes_2clinics_8hpp" startline="392" endline="447">api::v2::Clinic::GetVisits</referencedby>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="174" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1ad05abb43349c46b4bc7fc67fab45ed11" compoundref="api_2v2_2routes_2clinics_8hpp" startline="612" endline="706">api::v2::Clinic::GetVisits</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClinicControllerBase_1a80c5adbbef552507ede8c823171d15b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -558,7 +558,7 @@
           <declname>callback</declname>
         </param>
         <param>
-          <type>const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;&amp;</type>
+          <type>const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;&amp;</type>
           <declname>requester</declname>
         </param>
         <param>
@@ -598,8 +598,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="126" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="186" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -624,7 +624,7 @@
         <link refid="classClinicControllerBase"/>
       </node>
     </inheritancegraph>
-    <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="47" column="1" bodyfile="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" bodystart="48" bodyend="127"/>
+    <location file="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" line="62" column="1" bodyfile="src/controllers/cliniccontroller/cliniccontrollerbase.hpp" bodystart="62" bodyend="191"/>
     <listofallmembers>
       <member refid="classClinicControllerBase_1a3e8f2c567afba1c174e17be60de26351" prot="public" virt="non-virtual"><scope>ClinicControllerBase</scope><name>ClinicControllerBase</name></member>
       <member refid="classClinicControllerBase_1a572b7956fa1d19e1c688458f4108dca0" prot="public" virt="pure-virtual"><scope>ClinicControllerBase</scope><name>Create</name></member>

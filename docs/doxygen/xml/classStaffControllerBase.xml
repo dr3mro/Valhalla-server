@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="72" column="14"/>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="90" column="12"/>
         <referencedby refid="classStaffControllerBase_1aa7705dec2c86e2e4c1a6c451c5d47510">operator=</referencedby>
         <referencedby refid="classStaffControllerBase_1a2e414f74e581716704730427bdecce8b">operator=</referencedby>
         <referencedby refid="classStaffControllerBase_1ab5e32d9e3f0bd773d45ff02450ae52c7">StaffControllerBase</referencedby>
@@ -40,7 +40,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="74" column="5"/>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="94" column="3"/>
         <references refid="classStaffControllerBase_1ab27e98c5f575dbb305535ea637cb7525">StaffControllerBase</references>
       </memberdef>
       <memberdef kind="function" id="classStaffControllerBase_1a66ce135a4f3b50c831729fffc1afea72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="76" column="5"/>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="99" column="3"/>
         <references refid="classStaffControllerBase_1ab27e98c5f575dbb305535ea637cb7525">StaffControllerBase</references>
       </memberdef>
       <memberdef kind="function" id="classStaffControllerBase_1aa7705dec2c86e2e4c1a6c451c5d47510" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -78,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="78" column="25"/>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="103" column="23"/>
         <references refid="classStaffControllerBase_1ab27e98c5f575dbb305535ea637cb7525">StaffControllerBase</references>
       </memberdef>
       <memberdef kind="function" id="classStaffControllerBase_1a2e414f74e581716704730427bdecce8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -97,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="80" column="25"/>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="107" column="23"/>
         <references refid="classStaffControllerBase_1ab27e98c5f575dbb305535ea637cb7525">StaffControllerBase</references>
       </memberdef>
       <memberdef kind="function" id="classStaffControllerBase_1a32ade04e59750d16c0f40768a3c1ec4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -113,7 +113,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="82" column="13"/>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="112" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classStaffControllerBase_1a968ab96cf0d0caaa4c86d4a8330c9393" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -167,9 +167,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="94" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1a409d7e9e2260c9a82ed370c9fa33a6cb" compoundref="staff_8hpp" startline="146" endline="196">api::v2::Staff::Add</referencedby>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="130" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1a409d7e9e2260c9a82ed370c9fa33a6cb" compoundref="staff_8hpp" startline="210" endline="295">api::v2::Staff::Add</referencedby>
       </memberdef>
       <memberdef kind="function" id="classStaffControllerBase_1a5d310e956312329648957207868ed549" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -223,9 +223,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="102" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1acffe2bacadd52880b9302de943c11a3f" compoundref="staff_8hpp" startline="207" endline="257">api::v2::Staff::Remove</referencedby>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="146" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1acffe2bacadd52880b9302de943c11a3f" compoundref="staff_8hpp" startline="310" endline="395">api::v2::Staff::Remove</referencedby>
       </memberdef>
       <memberdef kind="function" id="classStaffControllerBase_1a55203753a4995d370037401bfc5f66bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -279,9 +279,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="112" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Staff_1a073bef1425950fe6acd2a9287ed6e9a9" compoundref="staff_8hpp" startline="85" endline="135">api::v2::Staff::Invite</referencedby>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="166" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Staff_1a073bef1425950fe6acd2a9287ed6e9a9" compoundref="staff_8hpp" startline="108" endline="195">api::v2::Staff::Invite</referencedby>
       </memberdef>
       <memberdef kind="function" id="classStaffControllerBase_1a86d35c8d93f08daf0223aec4ed35b9df" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -335,8 +335,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="119" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="180" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classStaffControllerBase_1aadc6db473bceee230a86cf64bdbb97ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -390,8 +390,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="126" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="194" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classStaffControllerBase_1a0e80ed9010fd73626ae3890c4d4ca118" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -447,26 +447,26 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="134" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="209" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
 <para>Type-erased interface for service-staff management operations. </para>
     </briefdescription>
     <detaileddescription>
-<para>Exposes three domain operations — add, remove and invite — each in a synchronous callback form and a coroutine (<computeroutput>drogon::Task&lt;void&gt;</computeroutput>) form. The staff route registry holds concrete controllers behind this base and dispatches to them via a <computeroutput>std::variant</computeroutput> over the service entity type.</para>
-<para>In plain words: &quot;synchronous&quot; means the caller gets the answer through a callback function, while the coroutine (<computeroutput>drogon::Task&lt;void&gt;</computeroutput>) versions can be paused with co_await so the server can do other work meanwhile. &quot;Virtual dispatch&quot; means a call made through this base automatically runs the real object&apos;s version. A <computeroutput>std::variant</computeroutput> is like a box that can hold one of several different controller types at a time.</para>
-<para>Invocation contract shared by every method:<itemizedlist>
-<listitem><para><computeroutput>callback</computeroutput> is <computeroutput>std::function&lt;void(int, const std::string&amp;)&gt;</computeroutput>, it is moved through the call chain and, by contract, invoked once on each completion path, including failures. Its first argument is an <ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892f" kindref="member">api::v2::Http::Status</ref> code, the second a response body.</para>
-</listitem><listitem><para><computeroutput>requester</computeroutput> is the authenticated caller; implementations require permission to manage staff of the target service before performing any side effect.</para>
-</listitem><listitem><para><computeroutput>data</computeroutput> is a non-owning view of the raw JSON request body, valid only for the call; it must carry the target service id (<computeroutput>id</computeroutput> or <computeroutput>nominee_id</computeroutput>) used for authorisation.</para>
-</listitem></itemizedlist>
+<para>Exposes three domain operations — add, remove and invite — each in a synchronous callback form and a coroutine (<computeroutput>drogon::Task&lt;void&gt;</computeroutput>) form. The staff route registry holds concrete controllers behind this base and dispatches to them via a <computeroutput>std::variant</computeroutput> over the service entity type. <verbatim>     In plain words: &quot;synchronous&quot; means the caller gets the answer
+</verbatim> through a callback function, while the coroutine (<computeroutput>drogon::Task&lt;void&gt;</computeroutput>) versions can be paused with co_await so the server can do other work meanwhile. &quot;Virtual dispatch&quot; means a call made through this base automatically runs the real object&apos;s version. A <computeroutput>std::variant</computeroutput> is like a box that can hold one of several different controller types at a time. <verbatim>     Invocation contract shared by every method:
+     - `callback` is `std::function&lt;void(int, const std::string&amp;)&gt;`, it
+</verbatim> is moved through the call chain and, by contract, invoked once on each completion path, including failures. Its first argument is an <ref refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892f" kindref="member">api::v2::Http::Status</ref> code, the second a response body.<itemizedlist>
+<listitem><para><computeroutput>requester</computeroutput> is the authenticated caller; implementations require permission to manage staff of the target service before performing any side effect.</para>
+</listitem><listitem><para><computeroutput>data</computeroutput> is a non-owning view of the raw JSON request body, valid only for the call; it must carry the target service id (<computeroutput>id</computeroutput> or <computeroutput>nominee_id</computeroutput>) used for authorisation. <verbatim>     The `*Async` methods must be co_awaited; the HTTP layer wraps them
+</verbatim> in <computeroutput>drogon::async_run</computeroutput> and builds the reply from the callback result. <simplesect kind="note"><para>The interface itself is stateless; behaviour lives in <ref refid="classStaffController" kindref="compound">StaffController</ref>. </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classStaffController" kindref="compound">StaffController</ref>, <ref refid="classController" kindref="compound">Controller</ref>, <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref> </para>
+</simplesect>
 </para>
-<para>The <computeroutput>*Async</computeroutput> methods must be co_awaited; the HTTP layer wraps them in <computeroutput>drogon::async_run</computeroutput> and builds the reply from the callback result. <simplesect kind="note"><para>The interface itself is stateless; behaviour lives in <ref refid="classStaffController" kindref="compound">StaffController</ref>. </para>
-</simplesect>
-<simplesect kind="see"><para><ref refid="classStaffController" kindref="compound">StaffController</ref>, <ref refid="classController" kindref="compound">Controller</ref>, <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> </para>
-</simplesect>
+</listitem></itemizedlist>
 </para>
     </detaileddescription>
     <inheritancegraph>
@@ -481,7 +481,7 @@
         <link refid="classStaffControllerBase"/>
       </node>
     </inheritancegraph>
-    <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="68" column="1" bodyfile="src/controllers/staffcontroller/staffcontrollerBase.hpp" bodystart="69" bodyend="135"/>
+    <location file="src/controllers/staffcontroller/staffcontrollerBase.hpp" line="87" column="1" bodyfile="src/controllers/staffcontroller/staffcontrollerBase.hpp" bodystart="87" bodyend="214"/>
     <listofallmembers>
       <member refid="classStaffControllerBase_1a968ab96cf0d0caaa4c86d4a8330c9393" prot="public" virt="pure-virtual"><scope>StaffControllerBase</scope><name>AddStaffToEntity</name></member>
       <member refid="classStaffControllerBase_1a86d35c8d93f08daf0223aec4ed35b9df" prot="public" virt="pure-virtual"><scope>StaffControllerBase</scope><name>AddStaffToEntityAsync</name></member>

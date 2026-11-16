@@ -24,71 +24,110 @@
     <innernamespace refid="namespaceapi_1_1v2_1_1MiddleWares">api::v2::MiddleWares</innernamespace>
     <innernamespace refid="namespaceapi_1_1v2_1_1Types">api::v2::Types</innernamespace>
     <sectiondef kind="typedef">
-      <memberdef kind="typedef" id="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" prot="public" static="no">
-        <type>struct <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> { private: uint64_t id; std::string group; public: enum class GroupId :uint8_t { Users, Providers, Owners, Admin, Super, <ref refid="classapi_1_1v2_1_1Staff" kindref="compound">Staff</ref> }; explicit <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>(uint64_t _id, std::string _group) :id(_id), group(std::move(_group)) {} <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>()=delete; <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>(const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;)=default; <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>(<ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;&amp;)=default; <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;operator=(const <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;)=default; <ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;operator=(<ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref> &amp;&amp;)=default; virtual ~<ref refid="namespaceapi_1_1v2_1a50108365df6d48cda6522b0ff7c31bf7" kindref="member">Requester</ref>()=default;[[nodiscard]] uint64_t getId() const { return id;}[[nodiscard]] const std::string &amp;getGroup() const { return group;}[[nodiscard]] bool isAdmin() const { return groupMatch(&quot;admins&quot;);}[[nodiscard]] bool isUser() const { return groupMatch(&quot;users&quot;);}[[nodiscard]] bool isProvider() const { return groupMatch(&quot;providers&quot;);}[[nodiscard]] bool isStaff() const { return groupMatch(&quot;staff&quot;);}[[nodiscard]] bool isOwner() const { return groupMatch(&quot;owners&quot;);}[[nodiscard]] bool isSuper() const { return groupMatch(&quot;Super&quot;);}[[nodiscard]] bool groupMatch(const std::string &amp;_group) const { return this-&gt;group==_group;}[[nodiscard]] bool idMatch(uint64_t _id) const { return this-&gt;id==_id;} void setId(uint64_t _id) { this-&gt;id=_id;} void setGroup(const std::string &amp;group) { this-&gt;group=group;} }</type>
-        <definition>using api::v2::Requester = struct Requester  
-   {
-      private:
-       
-       uint64_t    id;     
-       
-       std::string group;  
+      <memberdef kind="typedef" id="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" prot="public" static="no">
+        <type>struct <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> { private: uint64_t id; std::string group; public: enum class GroupId :uint8_t { Users, Providers, Owners, Admin, Super, <ref refid="classapi_1_1v2_1_1Staff" kindref="compound">Staff</ref> }; explicit <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref>(uint64_t _id, std::string _group) :id(_id), group(std::move(_group)) { } <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref>()=delete; <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref>(const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;)= default; <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref>(<ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;&amp;)= default; <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;operator=(const <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;)= default; <ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;operator=(<ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref> &amp;&amp;)= default; virtual ~<ref refid="namespaceapi_1_1v2_1a2aa4b28a0f84b10d45249bd67ead503c" kindref="member">Requester</ref>()=default;[[nodiscard]] uint64_t getId() const { return id; }[[nodiscard]] const std::string &amp;getGroup() const { return group; }[[nodiscard]] bool isAdmin() const { return groupMatch(&quot;admins&quot;); }[[nodiscard]] bool isUser() const { return groupMatch(&quot;users&quot;); }[[nodiscard]] bool isProvider() const { return groupMatch(&quot;providers&quot;); }[[nodiscard]] bool isStaff() const { return groupMatch(&quot;staff&quot;); }[[nodiscard]] bool isOwner() const { return groupMatch(&quot;owners&quot;); }[[nodiscard]] bool isSuper() const { return groupMatch(&quot;Super&quot;); }[[nodiscard]] bool groupMatch(const std::string &amp;_group) const { return this-&gt;group==_group; }[[nodiscard]] bool idMatch(uint64_t _id) const { return this-&gt;id==_id; } void setId(uint64_t _id) { this-&gt;id=_id; } void setGroup(const std::string &amp;group) { this-&gt;group=group; } }</type>
+        <definition>using api::v2::Requester = struct Requester {
+  private:
+   
+   uint64_t id;  
+                 
+   
+   std::string group;  
+                       
 
-      public:
-       
-       enum class GroupId : uint8_t  
-       {
-           Users,      
-           Providers,  
-           Owners,     
-           Admin,      
-           Super,      
-           Staff       
-       };
+  public:
+   
+   
+   
+   
+   enum class GroupId : uint8_t {
+     Users,      
+     Providers,  
+     Owners,     
+     Admin,      
+     Super,      
+                 
+     Staff       
+   };
 
-       
-       explicit Requester(uint64_t _id, std::string _group) : id(_id), group(std::move(_group)) {}  
-       
-       Requester() = delete;  
+   
+   explicit Requester(uint64_t _id, std::string _group)
+       : id(_id), group(std::move(_group)) {
+   }  
+      
+   
+   Requester() = delete;  
+                          
 
-       
-       Requester(const Requester&amp;) = default;  
-       
-       Requester(Requester&amp;&amp;)      = default;  
+   
+   Requester(const Requester&amp;) =
+       default;  
+   
+   Requester(Requester&amp;&amp;) =
+       default;  
 
-       
-       Requester&amp; operator=(const Requester&amp;) = default;  
-       
-       Requester&amp; operator=(Requester&amp;&amp;)      = default;  
+   
+   Requester&amp; operator=(const Requester&amp;) =
+       default;  
+   
+   Requester&amp; operator=(Requester&amp;&amp;) =
+       default;  
+                 
 
-       
-       virtual ~Requester() = default;  
+   
+   virtual ~Requester() = default;  
+                                    
 
-       
-       [[nodiscard]] uint64_t           getId() const { return id; }  
-       
-       [[nodiscard]] const std::string&amp; getGroup() const { return group; }  
-       
-       [[nodiscard]] bool               isAdmin() const { return groupMatch(&quot;admins&quot;); }  
-       
-       [[nodiscard]] bool               isUser() const { return groupMatch(&quot;users&quot;); }  
-       
-       [[nodiscard]] bool               isProvider() const { return groupMatch(&quot;providers&quot;); }  
-       
-       [[nodiscard]] bool               isStaff() const { return groupMatch(&quot;staff&quot;); }  
-       
-       [[nodiscard]] bool               isOwner() const { return groupMatch(&quot;owners&quot;); }  
-       
-       [[nodiscard]] bool               isSuper() const { return groupMatch(&quot;Super&quot;); }  
-       
-       [[nodiscard]] bool               groupMatch(const std::string&amp; _group) const { return this-&gt;group == _group; }  
-       
-       [[nodiscard]] bool               idMatch(uint64_t _id) const { return this-&gt;id == _id; }  
-       
-       void                             setId(uint64_t _id) { this-&gt;id = _id; }  
-       
-       void                             setGroup(const std::string&amp; group) { this-&gt;group = group; }  
-   }</definition>
+   
+   [[nodiscard]] uint64_t getId() const {
+     return id;
+   }  
+      
+   
+   [[nodiscard]] const std::string&amp; getGroup() const {
+     return group;
+   }  
+   
+   [[nodiscard]] bool isAdmin() const {
+     return groupMatch(&quot;admins&quot;);
+   }  
+   
+   [[nodiscard]] bool isUser() const {
+     return groupMatch(&quot;users&quot;);
+   }  
+   
+   [[nodiscard]] bool isProvider() const {
+     return groupMatch(&quot;providers&quot;);
+   }  
+   
+   [[nodiscard]] bool isStaff() const {
+     return groupMatch(&quot;staff&quot;);
+   }  
+   
+   [[nodiscard]] bool isOwner() const {
+     return groupMatch(&quot;owners&quot;);
+   }  
+   
+   [[nodiscard]] bool isSuper() const {
+     return groupMatch(&quot;Super&quot;);
+   }  
+   
+   [[nodiscard]] bool groupMatch(const std::string&amp; _group) const {
+     return this-&gt;group == _group;
+   }  
+   
+   [[nodiscard]] bool idMatch(uint64_t _id) const {
+     return this-&gt;id == _id;
+   }  
+   
+   void setId(uint64_t _id) {
+     this-&gt;id = _id;
+   }  
+   
+   void setGroup(const std::string&amp; group) {
+     this-&gt;group = group;
+   }  
+ }</definition>
         <argsstring></argsstring>
         <name>Requester</name>
         <qualifiedname>api::v2::Requester</qualifiedname>
@@ -98,24 +137,32 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/global/requester.hpp" line="45" column="5" bodyfile="src/utils/global/requester.hpp" bodystart="45" bodyend="164"/>
+        <location file="src/utils/global/requester.hpp" line="53" column="3" bodyfile="src/utils/global/requester.hpp" bodystart="53" bodyend="213"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespaceapi_1_1v2_1a629023e05b2c9802c14aaca4634f4ab3" prot="public" static="no">
-        <type>struct <ref refid="namespaceapi_1_1v2_1a629023e05b2c9802c14aaca4634f4ab3" kindref="member">ColumnInfo</ref> { std::string Name; std::string DataType; std::string Constraint; bool isNullable; bool operator==(const <ref refid="namespaceapi_1_1v2_1a629023e05b2c9802c14aaca4634f4ab3" kindref="member">ColumnInfo</ref> &amp;other) const { return Name==other.Name &amp;&amp;DataType==other.DataType &amp;&amp;isNullable==other.isNullable;} }</type>
-        <definition>using api::v2::ColumnInfo = struct ColumnInfo  
-       {
-           
-           std::string Name;       
-           
-           std::string DataType;   
-           
-           std::string Constraint; 
-           
-           bool        isNullable; 
+      <memberdef kind="typedef" id="namespaceapi_1_1v2_1aaed92c04eb1e44678c97ae468bd8a42b" prot="public" static="no">
+        <type>struct <ref refid="namespaceapi_1_1v2_1aaed92c04eb1e44678c97ae468bd8a42b" kindref="member">ColumnInfo</ref> { std::string Name; std::string DataType; std::string Constraint; bool isNullable; bool operator==(const <ref refid="namespaceapi_1_1v2_1aaed92c04eb1e44678c97ae468bd8a42b" kindref="member">ColumnInfo</ref> &amp;other) const { return Name==other.Name &amp;&amp;DataType==other.DataType &amp;&amp; isNullable==other.isNullable; } }</type>
+        <definition>using api::v2::ColumnInfo = struct ColumnInfo {
+     
+     std::string Name;  
+                        
+     
+     std::string DataType;  
+                            
+     
+     std::string Constraint;  
+                              
+     
+     bool isNullable;  
+                       
 
-           
-           bool operator==(const ColumnInfo&amp; other) const { return Name == other.Name &amp;&amp; DataType == other.DataType &amp;&amp; isNullable == other.isNullable; }  
-       }</definition>
+     
+     bool operator==(const ColumnInfo&amp; other) const {
+       return Name == other.Name &amp;&amp; DataType == other.DataType &amp;&amp;
+              isNullable == other.isNullable;
+     }  
+        
+        
+   }</definition>
         <argsstring></argsstring>
         <name>ColumnInfo</name>
         <qualifiedname>api::v2::ColumnInfo</qualifiedname>
@@ -125,7 +172,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/global/types.hpp" line="40" column="9" bodyfile="src/utils/global/types.hpp" bodystart="40" bodyend="65"/>
+        <location file="src/utils/global/types.hpp" line="46" column="5" bodyfile="src/utils/global/types.hpp" bodystart="46" bodyend="81"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -184,22 +231,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/basic/common.hpp" line="87" column="26" bodyfile="src/api/v2/basic/common.hpp" bodystart="87" bodyend="100"/>
-        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="53" endline="56">api::v2::Helper::errorResponse</references>
-        <references refid="namespaceapi_1_1v2_1aa69205bcc60e13d43ab454e4ac275e60" compoundref="common_8hpp" startline="87" endline="100">parseIdParam</references>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a7f99d20b39e5bdd6ea695c622b613167" compoundref="clients_8hpp" startline="238" endline="293">api::v2::Clients::activate</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Appointments_1a515ae728e10e637a657f1c912ccf9e7a" compoundref="appointments_8hpp" startline="270" endline="325">api::v2::Appointments::Delete</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1a0041b3b3e1be2e86ea5b2aef2544d8fd" compoundref="api_2v2_2routes_2clinics_8hpp" startline="270" endline="325">api::v2::Clinic::Delete</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Services_1a6c1616c95dc9edf3ffaf52612b94bc29" compoundref="services_8hpp" startline="263" endline="318">api::v2::Services::Delete</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a1c64163fcea38e48979cbe03e86bb65d" compoundref="clients_8hpp" startline="352" endline="407">api::v2::Clients::delete_</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1aa3d6c4f043f6ba5e024f51d1a642a8e7" compoundref="clients_8hpp" startline="475" endline="530">api::v2::Clients::getservices</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1ad05abb43349c46b4bc7fc67fab45ed11" compoundref="api_2v2_2routes_2clinics_8hpp" startline="392" endline="447">api::v2::Clinic::GetVisits</referencedby>
-        <referencedby refid="namespaceapi_1_1v2_1aa69205bcc60e13d43ab454e4ac275e60" compoundref="common_8hpp" startline="87" endline="100">parseIdParam</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a4226d0e35525e0d197941e93fe0ee1d7" compoundref="clients_8hpp" startline="173" endline="228">api::v2::Clients::suspend</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Appointments_1ab7c172b45fbfbc8580bf0a69505e111b" compoundref="appointments_8hpp" startline="205" endline="260">api::v2::Appointments::Update</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clinic_1ab966bc6c2f287a66e363365398ebacd7" compoundref="api_2v2_2routes_2clinics_8hpp" startline="206" endline="261">api::v2::Clinic::Update</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Services_1aca116f0dbc91a0743085f121c253cf17" compoundref="services_8hpp" startline="199" endline="254">api::v2::Services::Update</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1ac501011b576591aa6f307819775ac804" compoundref="clients_8hpp" startline="336" endline="343">api::v2::Clients::update</referencedby>
+        <location file="src/api/v2/basic/common.hpp" line="121" column="24" bodyfile="src/api/v2/basic/common.hpp" bodystart="121" bodyend="144"/>
+        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="71" endline="80">api::v2::Helper::errorResponse</references>
+        <references refid="namespaceapi_1_1v2_1aa69205bcc60e13d43ab454e4ac275e60" compoundref="common_8hpp" startline="121" endline="144">parseIdParam</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a7f99d20b39e5bdd6ea695c622b613167" compoundref="clients_8hpp" startline="362" endline="452">api::v2::Clients::activate</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1a515ae728e10e637a657f1c912ccf9e7a" compoundref="appointments_8hpp" startline="435" endline="525">api::v2::Appointments::Delete</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1a0041b3b3e1be2e86ea5b2aef2544d8fd" compoundref="api_2v2_2routes_2clinics_8hpp" startline="418" endline="504">api::v2::Clinic::Delete</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1a6c1616c95dc9edf3ffaf52612b94bc29" compoundref="services_8hpp" startline="407" endline="495">api::v2::Services::Delete</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a1c64163fcea38e48979cbe03e86bb65d" compoundref="clients_8hpp" startline="551" endline="639">api::v2::Clients::delete_</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1aa3d6c4f043f6ba5e024f51d1a642a8e7" compoundref="clients_8hpp" startline="747" endline="838">api::v2::Clients::getservices</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1ad05abb43349c46b4bc7fc67fab45ed11" compoundref="api_2v2_2routes_2clinics_8hpp" startline="612" endline="706">api::v2::Clinic::GetVisits</referencedby>
+        <referencedby refid="namespaceapi_1_1v2_1aa69205bcc60e13d43ab454e4ac275e60" compoundref="common_8hpp" startline="121" endline="144">parseIdParam</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a4226d0e35525e0d197941e93fe0ee1d7" compoundref="clients_8hpp" startline="261" endline="349">api::v2::Clients::suspend</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Appointments_1ab7c172b45fbfbc8580bf0a69505e111b" compoundref="appointments_8hpp" startline="331" endline="423">api::v2::Appointments::Update</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clinic_1ab966bc6c2f287a66e363365398ebacd7" compoundref="api_2v2_2routes_2clinics_8hpp" startline="315" endline="405">api::v2::Clinic::Update</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Services_1aca116f0dbc91a0743085f121c253cf17" compoundref="services_8hpp" startline="302" endline="394">api::v2::Services::Update</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1ac501011b576591aa6f307819775ac804" compoundref="clients_8hpp" startline="521" endline="538">api::v2::Clients::update</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceapi_1_1v2_1aa679c4967ecfe1f25818539f137414d3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -338,23 +385,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/basic/common.hpp" line="129" column="17" bodyfile="src/api/v2/basic/common.hpp" bodystart="129" bodyend="216"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="53" endline="56">api::v2::Helper::errorResponse</references>
-        <references refid="namespaceapi_1_1v2_1aa679c4967ecfe1f25818539f137414d3" compoundref="common_8hpp" startline="129" endline="216">executeControllerMethod</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="44" endline="47">api::v2::Helper::failureResponse</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">api::v2::Http::INTERNAL_SERVER_ERROR</references>
-        <references refid="classDbExecutor_1a5d6abf2368cd71250974124d570b7f2b" compoundref="dbexecutor_8hpp" startline="71" endline="71">DbExecutor::ioFastPath</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
-        <references refid="dbexecutor_8hpp_1a936968e57939fceaf59b5600a46630aa" compoundref="dbexecutor_8hpp" startline="93" endline="96">runOnDbExecutor</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="62" endline="65">api::v2::Helper::successResponse</references>
-        <referencedby refid="namespaceapi_1_1v2_1aa679c4967ecfe1f25818539f137414d3" compoundref="common_8hpp" startline="129" endline="216">executeControllerMethod</referencedby>
+        <location file="src/api/v2/basic/common.hpp" line="188" column="15" bodyfile="src/api/v2/basic/common.hpp" bodystart="188" bodyend="371"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="71" endline="80">api::v2::Helper::errorResponse</references>
+        <references refid="namespaceapi_1_1v2_1aa679c4967ecfe1f25818539f137414d3" compoundref="common_8hpp" startline="188" endline="371">executeControllerMethod</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="56" endline="64">api::v2::Helper::failureResponse</references>
+        <references refid="classDbExecutor_1a5d6abf2368cd71250974124d570b7f2b" compoundref="dbexecutor_8hpp" startline="94" endline="96">DbExecutor::ioFastPath</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
+        <references refid="dbexecutor_8hpp_1a936968e57939fceaf59b5600a46630aa" compoundref="dbexecutor_8hpp" startline="125" endline="133">runOnDbExecutor</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="88" endline="94">api::v2::Helper::successResponse</references>
+        <referencedby refid="namespaceapi_1_1v2_1aa679c4967ecfe1f25818539f137414d3" compoundref="common_8hpp" startline="188" endline="371">executeControllerMethod</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/api/v2/basic/common.hpp" line="70" column="1"/>
+    <location file="src/api/v2/basic/common.hpp" line="96" column="1"/>
   </compounddef>
 </doxygen>

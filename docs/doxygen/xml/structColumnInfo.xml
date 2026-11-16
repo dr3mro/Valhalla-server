@@ -9,7 +9,7 @@
     <detaileddescription>
 <para>Used as a key in unordered sets of table schemas. Equality and hashing deliberately ignore Constraint so that the same column is recognised regardless of its default/constraint expression. </para>
     </detaileddescription>
-    <location file="src/utils/global/types.hpp" line="34" column="1"/>
+    <location file="src/utils/global/types.hpp" line="38" column="1"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

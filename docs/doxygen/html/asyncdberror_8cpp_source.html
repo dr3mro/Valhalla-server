@@ -121,87 +121,121 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('asyncdberror_8
 <a href="asyncdberror_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file asyncdberror.cpp</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief Implementation for asyncdberror.</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * @details This file implements the three error-classification helpers. isBusy() first recognises our own</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *          DatabaseBusy exception and then looks for a few telling words in the error text (such as &quot;timeout&quot; or</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *          &quot;pool&quot;). toHttpStatus() turns that answer into an HTTP code, and throwIfBusy() re-raises the project&#39;s</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *          DatabaseBusy type so the shared HTTP error handler can produce a 503 response.</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * WHY THIS FILE MATTERS IN THE SERVER:</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> * Every coroutine-based database method in DatabaseController catches a plain std::exception when a query fails.</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * This file is what lets those methods tell a temporary overload apart from a real bug. Because both the old</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * synchronous pool and the new async path end up producing the same DatabaseBusy exception, the HTTP layer needs</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> * only one rule for answering 503 with Retry-After. Without this file, async database failures would all look</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> * alike and temporary outages would be reported as permanent server errors.</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> * CONCEPTS TO LEARN (for beginners):</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> * - Exceptions and catching by base class: https://en.cppreference.com/w/cpp/error/exception</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> * - dynamic_cast (runtime type check): https://en.cppreference.com/w/cpp/language/dynamic_cast</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * - std::string::find and npos: https://en.cppreference.com/w/cpp/string/basic_string/find</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> * - HTTP 503 status: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * - Drogon DbClient: https://drogon.docsforge.com/master/database/</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> * @author Amr Osman &lt;dr3mro@gmail.com&gt;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> * @date 2026-11-16</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;<a class="code" href="asyncdberror_8hpp.html">database/asyncdberror.hpp</a>&quot;</span>  <span class="comment">// Our own declarations, so the compiler checks they match these definitions.</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &lt;drogon/orm/Exception.h&gt;</span>  <span class="comment">// Drogon&#39;s exception messages are what we search for busy/timeout wording.</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &lt;string&gt;</span>  <span class="comment">// std::string and its find() method, used to scan the error message.</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="foldopen" id="foldopen00033" data-start="{" data-end="}">
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="namespaceasyncdb.html">   33</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceasyncdb.html">asyncdb</a></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>{</div>
-<div class="foldopen" id="foldopen00035" data-start="{" data-end="}">
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="namespaceasyncdb.html#a5ea870347984db806f792faac55d4071">   35</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceasyncdb.html#a5ea870347984db806f792faac55d4071">isBusy</a>(<span class="keyword">const</span> std::exception&amp; error)</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    {</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="comment">// A DatabaseBusy thrown by our own code is authoritative; Drogon failures are recognised by message text.</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="comment">// &quot;Authoritative&quot; means: if our own code raised it, we trust the type and do not need to guess from words.</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordflow">if</span> (<span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span><a class="code hl_class" href="classDatabaseBusy.html">DatabaseBusy</a>*<span class="keyword">&gt;</span>(&amp;error) != <span class="keyword">nullptr</span>)  <span class="comment">// dynamic_cast returns a real pointer only when the object actually is a DatabaseBusy.</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        {</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;  <span class="comment">// Our own busy exception is definitive: no further checks are needed.</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        }</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * @details This file implements the three error-classification helpers.</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * isBusy() first recognises our own DatabaseBusy exception and then looks for a</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * few telling words in the error text (such as &quot;timeout&quot; or &quot;pool&quot;).</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * toHttpStatus() turns that answer into an HTTP code, and throwIfBusy()</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * re-raises the project&#39;s DatabaseBusy type so the shared HTTP error handler</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * can produce a 503 response.</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * WHY THIS FILE MATTERS IN THE SERVER:</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * Every coroutine-based database method in DatabaseController catches a plain</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> * std::exception when a query fails. This file is what lets those methods tell</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> * a temporary overload apart from a real bug. Because both the old synchronous</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> * pool and the new async path end up producing the same DatabaseBusy exception,</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> * the HTTP layer needs only one rule for answering 503 with Retry-After.</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> * Without this file, async database failures would all look alike and temporary</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> * outages would be reported as permanent server errors.</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> * CONCEPTS TO LEARN (for beginners):</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * - Exceptions and catching by base class:</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> * https://en.cppreference.com/w/cpp/error/exception</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> * - dynamic_cast (runtime type check):</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> * https://en.cppreference.com/w/cpp/language/dynamic_cast</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> * - std::string::find and npos:</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"> * https://en.cppreference.com/w/cpp/string/basic_string/find</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"> * - HTTP 503 status:</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment"> * https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment"> * - Drogon DbClient: https://drogon.docsforge.com/master/database/</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment"> * @author Amr Osman &lt;dr3mro@gmail.com&gt;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment"> * @date 2026-11-16</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">// Our own declarations, so the compiler checks they match these definitions.</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &quot;<a class="code" href="asyncdberror_8hpp.html">database/asyncdberror.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">// Drogon&#39;s exception messages are what we search for busy/timeout wording.</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &lt;drogon/orm/Exception.h&gt;</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">// std::string and its find() method, used to scan the error message.</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keyword">const</span> std::string message = error.what();  <span class="comment">// Copy the human-readable message into a string so we can search it safely; what() comes from std::exception.</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="comment">// The substrings cover pool-acquisition timeouts and the common PostgreSQL &quot;too many clients&quot; error.</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="comment">// The search is case-sensitive, so the words must appear exactly as written here.</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordflow">return</span> message.find(<span class="stringliteral">&quot;timeout&quot;</span>) != std::string::npos || message.find(<span class="stringliteral">&quot;pool&quot;</span>) != std::string::npos ||  <span class="comment">// npos means &quot;not found&quot;; finding any one word is enough to call the error busy.</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>               message.find(<span class="stringliteral">&quot;too many clients&quot;</span>) != std::string::npos || message.find(<span class="stringliteral">&quot;connection&quot;</span>) != std::string::npos;  <span class="comment">// The last two catch PostgreSQL errors and generic connection failures; &quot;connection&quot; is deliberately broad.</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
+<div class="foldopen" id="foldopen00044" data-start="{" data-end="}">
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="namespaceasyncdb.html">   44</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceasyncdb.html">asyncdb</a> {</div>
+<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="namespaceasyncdb.html#a5ea870347984db806f792faac55d4071">   45</a></span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceasyncdb.html#a5ea870347984db806f792faac55d4071">isBusy</a>(<span class="keyword">const</span> std::exception&amp; error) {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="comment">// A DatabaseBusy thrown by our own code is authoritative; Drogon</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="comment">// failures are recognised by message text. &quot;Authoritative&quot; means: if</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="comment">// our own code raised it, we trust the type and do not need to guess</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="comment">// from words.</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">// dynamic_cast returns a real pointer only when the</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">// object actually is a DatabaseBusy.</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordflow">if</span> (<span class="keyword">dynamic_cast&lt;</span><span class="keyword">const </span><a class="code hl_class" href="classDatabaseBusy.html">DatabaseBusy</a>*<span class="keyword">&gt;</span>(&amp;error) != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>      <span class="keywordflow">return</span> <span class="keyword">true</span>;  <span class="comment">// Our own busy exception is definitive: no further</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                    <span class="comment">// checks are needed.</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">const</span> std::string message =</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        error.what();  <span class="comment">// Copy the human-readable message into a string so</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                       <span class="comment">// we can search it safely; what() comes from</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                       <span class="comment">// std::exception.</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">// The substrings cover pool-acquisition timeouts and the common</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="comment">// PostgreSQL &quot;too many clients&quot; error. The search is case-sensitive, so</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">// the words must appear exactly as written here.</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordflow">return</span> message.find(<span class="stringliteral">&quot;timeout&quot;</span>) != std::string::npos ||</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>           message.find(<span class="stringliteral">&quot;pool&quot;</span>) !=</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>               std::string::npos ||  <span class="comment">// npos means &quot;not found&quot;; finding any</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                                     <span class="comment">// one word is enough to call the error</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                                     <span class="comment">// busy.</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>           message.find(<span class="stringliteral">&quot;too many clients&quot;</span>) != std::string::npos ||</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>           message.find(<span class="stringliteral">&quot;connection&quot;</span>) !=</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>               std::string::npos;  <span class="comment">// The last two catch PostgreSQL errors</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                                   <span class="comment">// and generic connection failures;</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                                   <span class="comment">// &quot;connection&quot; is deliberately broad.</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>  }</div>
 </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="foldopen" id="foldopen00051" data-start="{" data-end="}">
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="namespaceasyncdb.html#aa8c2770011cc45a2089c9b8d1c9ef6ba">   51</a></span>    drogon::HttpStatusCode <a class="code hl_function" href="namespaceasyncdb.html#aa8c2770011cc45a2089c9b8d1c9ef6ba">toHttpStatus</a>(<span class="keyword">const</span> std::exception&amp; error)</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    {</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="comment">// Busy is a retryable condition, so it is the only case answered with 503.</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceasyncdb.html#a5ea870347984db806f792faac55d4071">isBusy</a>(error))  <span class="comment">// Ask the shared classifier instead of repeating the string checks here.</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        {</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="keywordflow">return</span> drogon::k503ServiceUnavailable;  <span class="comment">// 503 tells the caller &quot;service temporarily unavailable, try again later&quot;.</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        }</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordflow">return</span> drogon::k500InternalServerError;  <span class="comment">// Anything else is treated as an unexpected internal failure (500).</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    }</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="foldopen" id="foldopen00076" data-start="{" data-end="}">
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="namespaceasyncdb.html#aa8c2770011cc45a2089c9b8d1c9ef6ba">   76</a></span>  drogon::HttpStatusCode <a class="code hl_function" href="namespaceasyncdb.html#aa8c2770011cc45a2089c9b8d1c9ef6ba">toHttpStatus</a>(<span class="keyword">const</span> std::exception&amp; error) {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="comment">// Busy is a retryable condition, so it is the only case answered with</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="comment">// 503.</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="comment">// Ask the shared classifier instead of repeating</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="comment">// the string checks here.</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceasyncdb.html#a5ea870347984db806f792faac55d4071">isBusy</a>(error)) {</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>      <span class="keywordflow">return</span> drogon::k503ServiceUnavailable;  <span class="comment">// 503 tells the caller</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                                              <span class="comment">// &quot;service temporarily</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                                              <span class="comment">// unavailable, try again</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                                              <span class="comment">// later&quot;.</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    }</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordflow">return</span> drogon::k500InternalServerError;  <span class="comment">// Anything else is treated as</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                                             <span class="comment">// an unexpected internal</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                                             <span class="comment">// failure (500).</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  }</div>
 </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="foldopen" id="foldopen00061" data-start="{" data-end="}">
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="namespaceasyncdb.html#a7c8890804d39f7a13dac84b992a8c77b">   61</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceasyncdb.html#a7c8890804d39f7a13dac84b992a8c77b">throwIfBusy</a>(<span class="keyword">const</span> std::exception&amp; error)</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    {</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="comment">// Re-classify at the boundary so the HTTP layer can keep its single DatabaseBusy handling path.</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceasyncdb.html#a5ea870347984db806f792faac55d4071">isBusy</a>(error))  <span class="comment">// Only busy errors are re-thrown; other failures are left for the caller to handle.</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        {</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            <span class="keywordflow">throw</span> <a class="code hl_function" href="classDatabaseBusy.html#aef701e85f52767f40478dce9a42181a6">DatabaseBusy</a>();  <span class="comment">// Throwing unwinds the coroutine so the existing 503 + Retry-After handler takes over.</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        }</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    }</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="foldopen" id="foldopen00092" data-start="{" data-end="}">
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="namespaceasyncdb.html#a7c8890804d39f7a13dac84b992a8c77b">   92</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceasyncdb.html#a7c8890804d39f7a13dac84b992a8c77b">throwIfBusy</a>(<span class="keyword">const</span> std::exception&amp; error) {</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="comment">// Re-classify at the boundary so the HTTP layer can keep its single</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="comment">// DatabaseBusy handling path.</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="comment">// Only busy errors are re-thrown; other failures</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="comment">// are left for the caller to handle.</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceasyncdb.html#a5ea870347984db806f792faac55d4071">isBusy</a>(error)) {</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>      <span class="keywordflow">throw</span> <a class="code hl_function" href="classDatabaseBusy.html#aef701e85f52767f40478dce9a42181a6">DatabaseBusy</a>();  <span class="comment">// Throwing unwinds the coroutine so the</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>                             <span class="comment">// existing 503 + Retry-After handler takes</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>                             <span class="comment">// over.</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    }</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>  }</div>
 </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>}  <span class="comment">// namespace asyncdb</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>}  <span class="comment">// namespace asyncdb</span></div>
 </div>
 <div class="ttc" id="aasyncdberror_8hpp_html"><div class="ttname"><a href="asyncdberror_8hpp.html">asyncdberror.hpp</a></div><div class="ttdoc">Maps exceptions from the Drogon async database path to the HTTP statuses of the synchronous path.</div></div>
-<div class="ttc" id="aclassDatabaseBusy_html"><div class="ttname"><a href="classDatabaseBusy.html">DatabaseBusy</a></div><div class="ttdoc">Exception signalling that the connection pool could not lease a connection in time.</div><div class="ttdef"><b>Definition</b> <a href="databasebusy_8hpp_source.html#l00043">databasebusy.hpp:44</a></div></div>
-<div class="ttc" id="aclassDatabaseBusy_html_aef701e85f52767f40478dce9a42181a6"><div class="ttname"><a href="classDatabaseBusy.html#aef701e85f52767f40478dce9a42181a6">DatabaseBusy::DatabaseBusy</a></div><div class="ttdeci">DatabaseBusy(const std::string &amp;what=&quot;Database is busy, no connection available&quot;)</div><div class="ttdoc">Constructs the exception with a default or custom message.</div><div class="ttdef"><b>Definition</b> <a href="databasebusy_8hpp_source.html#l00050">databasebusy.hpp:50</a></div></div>
-<div class="ttc" id="anamespaceasyncdb_html"><div class="ttname"><a href="namespaceasyncdb.html">asyncdb</a></div><div class="ttdoc">Maps exceptions from the Drogon async database path to the HTTP statuses of the synchronous path.</div><div class="ttdef"><b>Definition</b> <a href="#l00033">asyncdberror.cpp:34</a></div></div>
-<div class="ttc" id="anamespaceasyncdb_html_a5ea870347984db806f792faac55d4071"><div class="ttname"><a href="namespaceasyncdb.html#a5ea870347984db806f792faac55d4071">asyncdb::isBusy</a></div><div class="ttdeci">bool isBusy(const std::exception &amp;error)</div><div class="ttdoc">Tests whether an exception represents a busy database (pool exhaustion or timeout).</div><div class="ttdef"><b>Definition</b> <a href="#l00035">asyncdberror.cpp:35</a></div></div>
-<div class="ttc" id="anamespaceasyncdb_html_a7c8890804d39f7a13dac84b992a8c77b"><div class="ttname"><a href="namespaceasyncdb.html#a7c8890804d39f7a13dac84b992a8c77b">asyncdb::throwIfBusy</a></div><div class="ttdeci">void throwIfBusy(const std::exception &amp;error)</div><div class="ttdoc">Raises DatabaseBusy when the exception represents an exhausted pool or timeout.</div><div class="ttdef"><b>Definition</b> <a href="#l00061">asyncdberror.cpp:61</a></div></div>
-<div class="ttc" id="anamespaceasyncdb_html_aa8c2770011cc45a2089c9b8d1c9ef6ba"><div class="ttname"><a href="namespaceasyncdb.html#aa8c2770011cc45a2089c9b8d1c9ef6ba">asyncdb::toHttpStatus</a></div><div class="ttdeci">drogon::HttpStatusCode toHttpStatus(const std::exception &amp;error)</div><div class="ttdoc">Converts an exception to the HTTP status the synchronous database path would produce.</div><div class="ttdef"><b>Definition</b> <a href="#l00051">asyncdberror.cpp:51</a></div></div>
+<div class="ttc" id="aclassDatabaseBusy_html"><div class="ttname"><a href="classDatabaseBusy.html">DatabaseBusy</a></div><div class="ttdoc">Exception signalling that the connection pool could not lease a connection in time.</div><div class="ttdef"><b>Definition</b> <a href="databasebusy_8hpp_source.html#l00054">databasebusy.hpp:57</a></div></div>
+<div class="ttc" id="aclassDatabaseBusy_html_aef701e85f52767f40478dce9a42181a6"><div class="ttname"><a href="classDatabaseBusy.html#aef701e85f52767f40478dce9a42181a6">DatabaseBusy::DatabaseBusy</a></div><div class="ttdeci">DatabaseBusy(const std::string &amp;what=&quot;Database is busy, no connection available&quot;)</div><div class="ttdoc">Constructs the exception with a default or custom message.</div><div class="ttdef"><b>Definition</b> <a href="databasebusy_8hpp_source.html#l00063">databasebusy.hpp:63</a></div></div>
+<div class="ttc" id="anamespaceasyncdb_html"><div class="ttname"><a href="namespaceasyncdb.html">asyncdb</a></div><div class="ttdoc">Maps exceptions from the Drogon async database path to the HTTP statuses of the synchronous path.</div><div class="ttdef"><b>Definition</b> <a href="#l00044">asyncdberror.cpp:44</a></div></div>
+<div class="ttc" id="anamespaceasyncdb_html_a5ea870347984db806f792faac55d4071"><div class="ttname"><a href="namespaceasyncdb.html#a5ea870347984db806f792faac55d4071">asyncdb::isBusy</a></div><div class="ttdeci">bool isBusy(const std::exception &amp;error)</div><div class="ttdoc">Tests whether an exception represents a busy database (pool exhaustion or timeout).</div><div class="ttdef"><b>Definition</b> <a href="#l00045">asyncdberror.cpp:45</a></div></div>
+<div class="ttc" id="anamespaceasyncdb_html_a7c8890804d39f7a13dac84b992a8c77b"><div class="ttname"><a href="namespaceasyncdb.html#a7c8890804d39f7a13dac84b992a8c77b">asyncdb::throwIfBusy</a></div><div class="ttdeci">void throwIfBusy(const std::exception &amp;error)</div><div class="ttdoc">Raises DatabaseBusy when the exception represents an exhausted pool or timeout.</div><div class="ttdef"><b>Definition</b> <a href="#l00092">asyncdberror.cpp:92</a></div></div>
+<div class="ttc" id="anamespaceasyncdb_html_aa8c2770011cc45a2089c9b8d1c9ef6ba"><div class="ttname"><a href="namespaceasyncdb.html#aa8c2770011cc45a2089c9b8d1c9ef6ba">asyncdb::toHttpStatus</a></div><div class="ttdeci">drogon::HttpStatusCode toHttpStatus(const std::exception &amp;error)</div><div class="ttdoc">Converts an exception to the HTTP status the synchronous database path would produce.</div><div class="ttdef"><b>Definition</b> <a href="#l00076">asyncdberror.cpp:76</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

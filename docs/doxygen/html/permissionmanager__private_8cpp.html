@@ -119,7 +119,8 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('permissionmana
 </div><!--header-->
 <div class="contents">
 
-<p>The helper functions that turn permission JSON into allow/deny answers. (Originally: "Implementation for permissionmanager_private: Requires staff membership plus the @p powerlevel capability bit.").  
+<p>The helper functions that turn permission JSON into allow/deny answers. (Originally: "Implementation for permissionmanager_private: Requires
+staff membership plus the @p powerlevel capability bit.").  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="permissionmanager__private_8hpp_source.html">gatekeeper/permissionmanager/permissionmanager_private.hpp</a>&quot;</code><br />
 <code>#include &lt;fmt/core.h&gt;</code><br />
@@ -139,14 +140,19 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('permissionmana
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a69fdf8e30d39a5bacfc839feb01dd616" id="r_a69fdf8e30d39a5bacfc839feb01dd616"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a69fdf8e30d39a5bacfc839feb01dd616">PermissionManagerPrivate</a> = <a class="el" href="classapi_1_1v2_1_1PermissionManagerPrivate.html">api::v2::PermissionManagerPrivate</a></td></tr>
+<tr class="memitem:a4b3594f285e47314250d2927a3b7cc87" id="r_a4b3594f285e47314250d2927a3b7cc87"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a4b3594f285e47314250d2927a3b7cc87">PermissionManagerPrivate</a></td></tr>
 <tr class="memitem:a005141ff44605d200344a1f530cde902" id="r_a005141ff44605d200344a1f530cde902"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a005141ff44605d200344a1f530cde902">PowerLevel</a> = <a class="el" href="structPermissions.html#a1dc2e37dd1ca56eb9dc57829a512e092">Permissions::PowerLevel</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a91913285fead3500b8474b1f798fbf14" id="r_a91913285fead3500b8474b1f798fbf14"><td class="memItemLeft">bool api::v2::PermissionManagerPrivate::&#160;</td><td class="memItemRight"><a class="el" href="#a91913285fead3500b8474b1f798fbf14">isOwnerOrAdmin</a> (const <a class="el" href="structRequester.html">Requester</a> &amp;requester, const std::optional&lt; jsoncons::json &gt; &amp;permissions_j, const std::string &amp;service_name, Http::Error &amp;error)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The helper functions that turn permission JSON into allow/deny answers. (Originally: "Implementation for permissionmanager_private: Requires staff membership plus the @p powerlevel capability bit."). </p>
-<p>These functions look up the requester in a service's owner/admin/staff fields, decode the numeric permission mask, validate creation payloads, and combine the basic checks into rules like "owner, admin, or staff
-         with CAN_READ". Every denial is explained through an Http::Error.</p>
-<p>WHY THIS FILE MATTERS IN THE SERVER: It is the engine behind <a class="el" href="gatekeeper_8cpp.html#a2391c0b165c65deb4ad3ad19ca6dd2aa">PermissionManager</a>. Keeping the detailed JSON parsing and identity comparisons here means every entity family gets identical rules. Without it, the public manager would have no way to interpret the database's permission document.</p>
+<div class="textblock"><p>The helper functions that turn permission JSON into allow/deny answers. (Originally: "Implementation for permissionmanager_private: Requires
+staff membership plus the @p powerlevel capability bit."). </p>
+<p>These functions look up the requester in a service's owner/admin/staff fields, decode the numeric permission mask, validate creation payloads, and combine the basic checks into rules like "owner,
+admin, or staff with CAN_READ". Every denial is explained through an Http::Error.</p>
+<p>WHY THIS FILE MATTERS IN THE SERVER: It is the engine behind <a class="el" href="gatekeeper_8cpp.html#ae17e951f1dc80a8e4920571ebe9f3c21">PermissionManager</a>. Keeping the detailed JSON parsing and identity comparisons here means every entity family gets identical rules. Without it, the public manager would have no way to interpret the database's permission document.</p>
 <p>CONCEPTS TO LEARN (for beginners):</p><ul>
 <li>JSON objects and arrays: <a href="https://www.json.org/json-en.html">https://www.json.org/json-en.html</a></li>
 <li>Structured bindings (auto [a, b]): <a href="https://en.cppreference.com/w/cpp/language/structured_binding">https://en.cppreference.com/w/cpp/language/structured_binding</a></li>
@@ -158,19 +164,22 @@ Typedefs</h2></td></tr>
 
 <p class="definition">Definition in file <a class="el" href="permissionmanager__private_8cpp_source.html">permissionmanager_private.cpp</a>.</p>
 </div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Typedef Documentation</h2>
-<a id="a69fdf8e30d39a5bacfc839feb01dd616" name="a69fdf8e30d39a5bacfc839feb01dd616"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69fdf8e30d39a5bacfc839feb01dd616">&#9670;&#160;</a></span>PermissionManagerPrivate</h2>
+<a id="a4b3594f285e47314250d2927a3b7cc87" name="a4b3594f285e47314250d2927a3b7cc87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b3594f285e47314250d2927a3b7cc87">&#9670;&#160;</a></span>PermissionManagerPrivate</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#a69fdf8e30d39a5bacfc839feb01dd616">PermissionManagerPrivate</a> = <a class="el" href="classapi_1_1v2_1_1PermissionManagerPrivate.html">api::v2::PermissionManagerPrivate</a></td>
+          <td class="memname">using <a class="el" href="#a4b3594f285e47314250d2927a3b7cc87">PermissionManagerPrivate</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8cpp_source.html#l00043">43</a> of file <a class="el" href="permissionmanager__private_8cpp_source.html">permissionmanager_private.cpp</a>.</p>
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line"><a class="code hl_class" href="classapi_1_1v2_1_1PermissionManagerPrivate.html">api::v2::PermissionManagerPrivate</a></div>
+<div class="ttc" id="aclassapi_1_1v2_1_1PermissionManagerPrivate_html"><div class="ttname"><a href="classapi_1_1v2_1_1PermissionManagerPrivate.html">api::v2::PermissionManagerPrivate</a></div><div class="ttdoc">Implementation helpers shared by the PermissionManager authorization overloads.</div><div class="ttdef"><b>Definition</b> <a href="permissionmanager__private_8hpp_source.html#l00072">permissionmanager_private.hpp:72</a></div></div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8cpp_source.html#l00054">54</a> of file <a class="el" href="permissionmanager__private_8cpp_source.html">permissionmanager_private.cpp</a>.</p>
 
 </div>
 </div>
@@ -186,7 +195,46 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8cpp_source.html#l00044">44</a> of file <a class="el" href="permissionmanager__private_8cpp_source.html">permissionmanager_private.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8cpp_source.html#l00057">57</a> of file <a class="el" href="permissionmanager__private_8cpp_source.html">permissionmanager_private.cpp</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+<a id="a91913285fead3500b8474b1f798fbf14" name="a91913285fead3500b8474b1f798fbf14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91913285fead3500b8474b1f798fbf14">&#9670;&#160;</a></span>isOwnerOrAdmin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool api::v2::PermissionManagerPrivate:: isOwnerOrAdmin </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structRequester.html">Requester</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>requester</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::optional&lt; jsoncons::json &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>permissions_j</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>service_name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Http::Error &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Allows either the owner or the admin (short-circuits on owner success). error: May still hold a message from a failed first check when the second succeeds. </p>
+
+<p class="definition">Definition at line <a class="el" href="permissionmanager__private_8cpp_source.html#l00397">397</a> of file <a class="el" href="permissionmanager__private_8cpp_source.html">permissionmanager_private.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="permissionmanager__private_8cpp_source.html#l00397">isOwnerOrAdmin()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="permissionmanager__private_8cpp_source.html#l00397">isOwnerOrAdmin()</a>.</p>
 
 </div>
 </div>

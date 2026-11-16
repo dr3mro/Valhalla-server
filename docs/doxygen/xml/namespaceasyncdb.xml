@@ -9,7 +9,8 @@
         <argsstring></argsstring>
         <name>PG_TEXT_OID</name>
         <qualifiedname>asyncdb::PG_TEXT_OID</qualifiedname>
-        <initializer>= 1043</initializer>
+        <initializer>                                      =
+1043</initializer>
         <briefdescription>
 <para>varchar type OID. </para>
         </briefdescription>
@@ -17,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncresultmapper.hpp" line="52" column="35" bodyfile="src/database/asyncresultmapper.hpp" bodystart="52" bodyend="-1"/>
+        <location file="src/database/asyncresultmapper.hpp" line="71" column="33" bodyfile="src/database/asyncresultmapper.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceasyncdb_1a81dc3e1182d098b17eb6423d5d277ef3" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>unsigned int</type>
@@ -25,7 +26,8 @@
         <argsstring></argsstring>
         <name>PG_INTEGER_OID</name>
         <qualifiedname>asyncdb::PG_INTEGER_OID</qualifiedname>
-        <initializer>= 23</initializer>
+        <initializer>                                         =
+23</initializer>
         <briefdescription>
 <para>int4 (INTEGER) OID. </para>
         </briefdescription>
@@ -33,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncresultmapper.hpp" line="54" column="35" bodyfile="src/database/asyncresultmapper.hpp" bodystart="54" bodyend="-1"/>
+        <location file="src/database/asyncresultmapper.hpp" line="75" column="33" bodyfile="src/database/asyncresultmapper.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceasyncdb_1a9aa0704ab8fafbc58c39b2375759f07e" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>unsigned int</type>
@@ -41,7 +43,8 @@
         <argsstring></argsstring>
         <name>PG_BOOLEAN_OID</name>
         <qualifiedname>asyncdb::PG_BOOLEAN_OID</qualifiedname>
-        <initializer>= 16</initializer>
+        <initializer>                                         =
+16</initializer>
         <briefdescription>
 <para>bool (BOOLEAN) OID. </para>
         </briefdescription>
@@ -49,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncresultmapper.hpp" line="56" column="35" bodyfile="src/database/asyncresultmapper.hpp" bodystart="56" bodyend="-1"/>
+        <location file="src/database/asyncresultmapper.hpp" line="78" column="33" bodyfile="src/database/asyncresultmapper.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceasyncdb_1a986292ed36794c911af5fc2750e7c17b" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>unsigned int</type>
@@ -57,7 +60,8 @@
         <argsstring></argsstring>
         <name>PG_JSON_OID</name>
         <qualifiedname>asyncdb::PG_JSON_OID</qualifiedname>
-        <initializer>= 114</initializer>
+        <initializer>                                      =
+114</initializer>
         <briefdescription>
 <para>json OID. </para>
         </briefdescription>
@@ -65,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncresultmapper.hpp" line="58" column="35" bodyfile="src/database/asyncresultmapper.hpp" bodystart="58" bodyend="-1"/>
+        <location file="src/database/asyncresultmapper.hpp" line="81" column="33" bodyfile="src/database/asyncresultmapper.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespaceasyncdb_1acf96d60fdc724a317fdcb2642c7a41b1" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>unsigned int</type>
@@ -73,7 +77,8 @@
         <argsstring></argsstring>
         <name>PG_JSONB_OID</name>
         <qualifiedname>asyncdb::PG_JSONB_OID</qualifiedname>
-        <initializer>= 3802</initializer>
+        <initializer>                                       =
+3802</initializer>
         <briefdescription>
 <para>jsonb OID. </para>
         </briefdescription>
@@ -81,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncresultmapper.hpp" line="60" column="35" bodyfile="src/database/asyncresultmapper.hpp" bodystart="60" bodyend="-1"/>
+        <location file="src/database/asyncresultmapper.hpp" line="84" column="33" bodyfile="src/database/asyncresultmapper.hpp" bodystart="84" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -116,19 +121,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncdberror.cpp" line="35" column="10" bodyfile="src/database/asyncdberror.cpp" bodystart="35" bodyend="49" declfile="src/database/asyncdberror.hpp" declline="54" declcolumn="11"/>
-        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="35" endline="49">isBusy</references>
-        <referencedby refid="classDatabaseController_1a757e16ca56537bd8eed3d9abe9768954" compoundref="databasecontroller_8cpp" startline="247" endline="274">DatabaseController::checkItemExistsCoro</referencedby>
-        <referencedby refid="classDatabaseController_1ac586f1fc3a54b3bbf1ff5369e403ed20" compoundref="databasecontroller_8cpp" startline="219" endline="245">DatabaseController::doReadQueryCoro</referencedby>
-        <referencedby refid="classDatabaseController_1a5874c6f56191991a88da60758f2200fa" compoundref="databasecontroller_8cpp" startline="144" endline="171">DatabaseController::executeQueryCoro</referencedby>
-        <referencedby refid="classDatabaseController_1aa3de6b2217aa0ba75ec4eb5286d36799" compoundref="databasecontroller_8cpp" startline="173" endline="194">DatabaseController::executeReadQueryCoro</referencedby>
-        <referencedby refid="classDatabaseController_1a7b2bb5792bc55ec851dcd7ae997c58a4" compoundref="databasecontroller_8cpp" startline="196" endline="217">DatabaseController::executeSearchQueryCoro</referencedby>
-        <referencedby refid="classDatabaseController_1abb1622b85d3e413bcb1dee3521a9d24f" compoundref="databasecontroller_8cpp" startline="323" endline="350">DatabaseController::getAllTablesCoro</referencedby>
-        <referencedby refid="classDatabaseController_1a2a0585031d4e0a5e8dfdeb7d77041563" compoundref="databasecontroller_8cpp" startline="352" endline="373">DatabaseController::getPermissionsCoro</referencedby>
-        <referencedby refid="classDatabaseController_1ab6502e9c51e8657b16ffe4795949ebe7" compoundref="databasecontroller_8cpp" startline="287" endline="321">DatabaseController::getTableSchemaCoro</referencedby>
-        <referencedby refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="35" endline="49">isBusy</referencedby>
-        <referencedby refid="namespaceasyncdb_1a7c8890804d39f7a13dac84b992a8c77b" compoundref="asyncdberror_8cpp" startline="61" endline="68">throwIfBusy</referencedby>
-        <referencedby refid="namespaceasyncdb_1aa8c2770011cc45a2089c9b8d1c9ef6ba" compoundref="asyncdberror_8cpp" startline="51" endline="59">toHttpStatus</referencedby>
+        <location file="src/database/asyncdberror.cpp" line="45" column="8" bodyfile="src/database/asyncdberror.cpp" bodystart="45" bodyend="74" declfile="src/database/asyncdberror.hpp" declline="73" declcolumn="9"/>
+        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="45" endline="74">isBusy</references>
+        <referencedby refid="classDatabaseController_1a757e16ca56537bd8eed3d9abe9768954" compoundref="databasecontroller_8cpp" startline="351" endline="391">DatabaseController::checkItemExistsCoro</referencedby>
+        <referencedby refid="classDatabaseController_1ac586f1fc3a54b3bbf1ff5369e403ed20" compoundref="databasecontroller_8cpp" startline="313" endline="349">DatabaseController::doReadQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1a5874c6f56191991a88da60758f2200fa" compoundref="databasecontroller_8cpp" startline="205" endline="246">DatabaseController::executeQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1aa3de6b2217aa0ba75ec4eb5286d36799" compoundref="databasecontroller_8cpp" startline="249" endline="278">DatabaseController::executeReadQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1a7b2bb5792bc55ec851dcd7ae997c58a4" compoundref="databasecontroller_8cpp" startline="281" endline="311">DatabaseController::executeSearchQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1abb1622b85d3e413bcb1dee3521a9d24f" compoundref="databasecontroller_8cpp" startline="474" endline="509">DatabaseController::getAllTablesCoro</referencedby>
+        <referencedby refid="classDatabaseController_1a2a0585031d4e0a5e8dfdeb7d77041563" compoundref="databasecontroller_8cpp" startline="512" endline="538">DatabaseController::getPermissionsCoro</referencedby>
+        <referencedby refid="classDatabaseController_1ab6502e9c51e8657b16ffe4795949ebe7" compoundref="databasecontroller_8cpp" startline="415" endline="471">DatabaseController::getTableSchemaCoro</referencedby>
+        <referencedby refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="45" endline="74">isBusy</referencedby>
+        <referencedby refid="namespaceasyncdb_1a7c8890804d39f7a13dac84b992a8c77b" compoundref="asyncdberror_8cpp" startline="92" endline="102">throwIfBusy</referencedby>
+        <referencedby refid="namespaceasyncdb_1aa8c2770011cc45a2089c9b8d1c9ef6ba" compoundref="asyncdberror_8cpp" startline="76" endline="90">toHttpStatus</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceasyncdb_1aa8c2770011cc45a2089c9b8d1c9ef6ba" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>drogon::HttpStatusCode</type>
@@ -159,10 +164,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncdberror.cpp" line="51" column="28" bodyfile="src/database/asyncdberror.cpp" bodystart="51" bodyend="59" declfile="src/database/asyncdberror.hpp" declline="61" declcolumn="29"/>
-        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="35" endline="49">isBusy</references>
-        <references refid="namespaceasyncdb_1aa8c2770011cc45a2089c9b8d1c9ef6ba" compoundref="asyncdberror_8cpp" startline="51" endline="59">toHttpStatus</references>
-        <referencedby refid="namespaceasyncdb_1aa8c2770011cc45a2089c9b8d1c9ef6ba" compoundref="asyncdberror_8cpp" startline="51" endline="59">toHttpStatus</referencedby>
+        <location file="src/database/asyncdberror.cpp" line="76" column="26" bodyfile="src/database/asyncdberror.cpp" bodystart="76" bodyend="90" declfile="src/database/asyncdberror.hpp" declline="85" declcolumn="27"/>
+        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="45" endline="74">isBusy</references>
+        <references refid="namespaceasyncdb_1aa8c2770011cc45a2089c9b8d1c9ef6ba" compoundref="asyncdberror_8cpp" startline="76" endline="90">toHttpStatus</references>
+        <referencedby refid="namespaceasyncdb_1aa8c2770011cc45a2089c9b8d1c9ef6ba" compoundref="asyncdberror_8cpp" startline="76" endline="90">toHttpStatus</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceasyncdb_1a7c8890804d39f7a13dac84b992a8c77b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -202,11 +207,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncdberror.cpp" line="61" column="10" bodyfile="src/database/asyncdberror.cpp" bodystart="61" bodyend="68" declfile="src/database/asyncdberror.hpp" declline="70" declcolumn="10"/>
-        <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="50" endline="50">DatabaseBusy::DatabaseBusy</references>
-        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="35" endline="49">isBusy</references>
-        <references refid="namespaceasyncdb_1a7c8890804d39f7a13dac84b992a8c77b" compoundref="asyncdberror_8cpp" startline="61" endline="68">throwIfBusy</references>
-        <referencedby refid="namespaceasyncdb_1a7c8890804d39f7a13dac84b992a8c77b" compoundref="asyncdberror_8cpp" startline="61" endline="68">throwIfBusy</referencedby>
+        <location file="src/database/asyncdberror.cpp" line="92" column="8" bodyfile="src/database/asyncdberror.cpp" bodystart="92" bodyend="102" declfile="src/database/asyncdberror.hpp" declline="100" declcolumn="8"/>
+        <references refid="classDatabaseBusy_1aef701e85f52767f40478dce9a42181a6" compoundref="databasebusy_8hpp" startline="63" endline="66">DatabaseBusy::DatabaseBusy</references>
+        <references refid="namespaceasyncdb_1a5ea870347984db806f792faac55d4071" compoundref="asyncdberror_8cpp" startline="45" endline="74">isBusy</references>
+        <references refid="namespaceasyncdb_1a7c8890804d39f7a13dac84b992a8c77b" compoundref="asyncdberror_8cpp" startline="92" endline="102">throwIfBusy</references>
+        <referencedby refid="namespaceasyncdb_1a7c8890804d39f7a13dac84b992a8c77b" compoundref="asyncdberror_8cpp" startline="92" endline="102">throwIfBusy</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>jsoncons::json</type>
@@ -253,11 +258,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncresultmapper.cpp" line="48" column="20" bodyfile="src/database/asyncresultmapper.cpp" bodystart="48" bodyend="103" declfile="src/database/asyncresultmapper.hpp" declline="74" declcolumn="21"/>
-        <references refid="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb" compoundref="asyncresultmapper_8cpp" startline="48" endline="103">mapRow</references>
-        <referencedby refid="namespaceasyncdb_1a0c9b2304653f373d0ec4ac262d7cf2bf" compoundref="asyncresultmapper_8cpp" startline="121" endline="130">mapResultToArray</referencedby>
-        <referencedby refid="namespaceasyncdb_1a4cf3b925d86a0c5232a9573b8cf300b8" compoundref="asyncresultmapper_8cpp" startline="109" endline="116">mapResultToObject</referencedby>
-        <referencedby refid="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb" compoundref="asyncresultmapper_8cpp" startline="48" endline="103">mapRow</referencedby>
+        <location file="src/database/asyncresultmapper.cpp" line="66" column="18" bodyfile="src/database/asyncresultmapper.cpp" bodystart="66" bodyend="154" declfile="src/database/asyncresultmapper.hpp" declline="102" declcolumn="19"/>
+        <references refid="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb" compoundref="asyncresultmapper_8cpp" startline="66" endline="154">mapRow</references>
+        <referencedby refid="namespaceasyncdb_1a0c9b2304653f373d0ec4ac262d7cf2bf" compoundref="asyncresultmapper_8cpp" startline="179" endline="193">mapResultToArray</referencedby>
+        <referencedby refid="namespaceasyncdb_1a4cf3b925d86a0c5232a9573b8cf300b8" compoundref="asyncresultmapper_8cpp" startline="162" endline="173">mapResultToObject</referencedby>
+        <referencedby refid="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb" compoundref="asyncresultmapper_8cpp" startline="66" endline="154">mapRow</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceasyncdb_1a4cf3b925d86a0c5232a9573b8cf300b8" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>jsoncons::json</type>
@@ -292,13 +297,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncresultmapper.cpp" line="109" column="20" bodyfile="src/database/asyncresultmapper.cpp" bodystart="109" bodyend="116" declfile="src/database/asyncresultmapper.hpp" declline="82" declcolumn="21"/>
-        <references refid="namespaceasyncdb_1a4cf3b925d86a0c5232a9573b8cf300b8" compoundref="asyncresultmapper_8cpp" startline="109" endline="116">mapResultToObject</references>
-        <references refid="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb" compoundref="asyncresultmapper_8cpp" startline="48" endline="103">mapRow</references>
-        <referencedby refid="classDatabaseController_1a5874c6f56191991a88da60758f2200fa" compoundref="databasecontroller_8cpp" startline="144" endline="171">DatabaseController::executeQueryCoro</referencedby>
-        <referencedby refid="classDatabaseController_1aa3de6b2217aa0ba75ec4eb5286d36799" compoundref="databasecontroller_8cpp" startline="173" endline="194">DatabaseController::executeReadQueryCoro</referencedby>
-        <referencedby refid="classDatabaseController_1a2a0585031d4e0a5e8dfdeb7d77041563" compoundref="databasecontroller_8cpp" startline="352" endline="373">DatabaseController::getPermissionsCoro</referencedby>
-        <referencedby refid="namespaceasyncdb_1a4cf3b925d86a0c5232a9573b8cf300b8" compoundref="asyncresultmapper_8cpp" startline="109" endline="116">mapResultToObject</referencedby>
+        <location file="src/database/asyncresultmapper.cpp" line="162" column="18" bodyfile="src/database/asyncresultmapper.cpp" bodystart="162" bodyend="173" declfile="src/database/asyncresultmapper.hpp" declline="116" declcolumn="19"/>
+        <references refid="namespaceasyncdb_1a4cf3b925d86a0c5232a9573b8cf300b8" compoundref="asyncresultmapper_8cpp" startline="162" endline="173">mapResultToObject</references>
+        <references refid="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb" compoundref="asyncresultmapper_8cpp" startline="66" endline="154">mapRow</references>
+        <referencedby refid="classDatabaseController_1a5874c6f56191991a88da60758f2200fa" compoundref="databasecontroller_8cpp" startline="205" endline="246">DatabaseController::executeQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1aa3de6b2217aa0ba75ec4eb5286d36799" compoundref="databasecontroller_8cpp" startline="249" endline="278">DatabaseController::executeReadQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1a2a0585031d4e0a5e8dfdeb7d77041563" compoundref="databasecontroller_8cpp" startline="512" endline="538">DatabaseController::getPermissionsCoro</referencedby>
+        <referencedby refid="namespaceasyncdb_1a4cf3b925d86a0c5232a9573b8cf300b8" compoundref="asyncresultmapper_8cpp" startline="162" endline="173">mapResultToObject</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceasyncdb_1a0c9b2304653f373d0ec4ac262d7cf2bf" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>jsoncons::json::array</type>
@@ -330,11 +335,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncresultmapper.cpp" line="121" column="27" bodyfile="src/database/asyncresultmapper.cpp" bodystart="121" bodyend="130" declfile="src/database/asyncresultmapper.hpp" declline="89" declcolumn="28"/>
-        <references refid="namespaceasyncdb_1a0c9b2304653f373d0ec4ac262d7cf2bf" compoundref="asyncresultmapper_8cpp" startline="121" endline="130">mapResultToArray</references>
-        <references refid="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb" compoundref="asyncresultmapper_8cpp" startline="48" endline="103">mapRow</references>
-        <referencedby refid="classDatabaseController_1a7b2bb5792bc55ec851dcd7ae997c58a4" compoundref="databasecontroller_8cpp" startline="196" endline="217">DatabaseController::executeSearchQueryCoro</referencedby>
-        <referencedby refid="namespaceasyncdb_1a0c9b2304653f373d0ec4ac262d7cf2bf" compoundref="asyncresultmapper_8cpp" startline="121" endline="130">mapResultToArray</referencedby>
+        <location file="src/database/asyncresultmapper.cpp" line="179" column="25" bodyfile="src/database/asyncresultmapper.cpp" bodystart="179" bodyend="193" declfile="src/database/asyncresultmapper.hpp" declline="127" declcolumn="26"/>
+        <references refid="namespaceasyncdb_1a0c9b2304653f373d0ec4ac262d7cf2bf" compoundref="asyncresultmapper_8cpp" startline="179" endline="193">mapResultToArray</references>
+        <references refid="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb" compoundref="asyncresultmapper_8cpp" startline="66" endline="154">mapRow</references>
+        <referencedby refid="classDatabaseController_1a7b2bb5792bc55ec851dcd7ae997c58a4" compoundref="databasecontroller_8cpp" startline="281" endline="311">DatabaseController::executeSearchQueryCoro</referencedby>
+        <referencedby refid="namespaceasyncdb_1a0c9b2304653f373d0ec4ac262d7cf2bf" compoundref="asyncresultmapper_8cpp" startline="179" endline="193">mapResultToArray</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceasyncdb_1ab211333eccb1603a4e5176a4da380a1d" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::optional&lt; std::string &gt; &gt;</type>
@@ -367,9 +372,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncsqlbinder.cpp" line="47" column="17" bodyfile="src/database/asyncsqlbinder.cpp" bodystart="47" bodyend="65" declfile="src/database/asyncsqlbinder.hpp" declline="56" declcolumn="18"/>
-        <references refid="namespaceasyncdb_1ab211333eccb1603a4e5176a4da380a1d" compoundref="asyncsqlbinder_8cpp" startline="47" endline="65">toTextParams</references>
-        <referencedby refid="namespaceasyncdb_1ab211333eccb1603a4e5176a4da380a1d" compoundref="asyncsqlbinder_8cpp" startline="47" endline="65">toTextParams</referencedby>
+        <location file="src/database/asyncsqlbinder.cpp" line="61" column="15" bodyfile="src/database/asyncsqlbinder.cpp" bodystart="61" bodyend="97" declfile="src/database/asyncsqlbinder.hpp" declline="78" declcolumn="16"/>
+        <references refid="namespaceasyncdb_1ab211333eccb1603a4e5176a4da380a1d" compoundref="asyncsqlbinder_8cpp" startline="61" endline="97">toTextParams</references>
+        <referencedby refid="namespaceasyncdb_1ab211333eccb1603a4e5176a4da380a1d" compoundref="asyncsqlbinder_8cpp" startline="61" endline="97">toTextParams</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceasyncdb_1abe62892990453a6ed96ff720960a71e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -414,10 +419,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncsqlbinder.cpp" line="72" column="10" bodyfile="src/database/asyncsqlbinder.cpp" bodystart="72" bodyend="92" declfile="src/database/asyncsqlbinder.hpp" declline="67" declcolumn="10"/>
-        <references refid="namespaceasyncdb_1abe62892990453a6ed96ff720960a71e4" compoundref="asyncsqlbinder_8cpp" startline="72" endline="92">bindParams</references>
-        <referencedby refid="namespaceasyncdb_1abe62892990453a6ed96ff720960a71e4" compoundref="asyncsqlbinder_8cpp" startline="72" endline="92">bindParams</referencedby>
-        <referencedby refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="98" endline="103">execSqlCoro</referencedby>
+        <location file="src/database/asyncsqlbinder.cpp" line="107" column="8" bodyfile="src/database/asyncsqlbinder.cpp" bodystart="107" bodyend="149" declfile="src/database/asyncsqlbinder.hpp" declline="94" declcolumn="8"/>
+        <references refid="namespaceasyncdb_1abe62892990453a6ed96ff720960a71e4" compoundref="asyncsqlbinder_8cpp" startline="107" endline="149">bindParams</references>
+        <referencedby refid="namespaceasyncdb_1abe62892990453a6ed96ff720960a71e4" compoundref="asyncsqlbinder_8cpp" startline="107" endline="149">bindParams</referencedby>
+        <referencedby refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="157" endline="169">execSqlCoro</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>drogon::orm::internal::SqlAwaiter</type>
@@ -476,18 +481,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/database/asyncsqlbinder.cpp" line="98" column="39" bodyfile="src/database/asyncsqlbinder.cpp" bodystart="98" bodyend="103" declfile="src/database/asyncsqlbinder.hpp" declline="80" declcolumn="40"/>
-        <references refid="namespaceasyncdb_1abe62892990453a6ed96ff720960a71e4" compoundref="asyncsqlbinder_8cpp" startline="72" endline="92">bindParams</references>
-        <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="98" endline="103">execSqlCoro</references>
-        <referencedby refid="classDatabaseController_1a757e16ca56537bd8eed3d9abe9768954" compoundref="databasecontroller_8cpp" startline="247" endline="274">DatabaseController::checkItemExistsCoro</referencedby>
-        <referencedby refid="classDatabaseController_1ac586f1fc3a54b3bbf1ff5369e403ed20" compoundref="databasecontroller_8cpp" startline="219" endline="245">DatabaseController::doReadQueryCoro</referencedby>
-        <referencedby refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="98" endline="103">execSqlCoro</referencedby>
-        <referencedby refid="classDatabaseController_1a5874c6f56191991a88da60758f2200fa" compoundref="databasecontroller_8cpp" startline="144" endline="171">DatabaseController::executeQueryCoro</referencedby>
-        <referencedby refid="classDatabaseController_1aa3de6b2217aa0ba75ec4eb5286d36799" compoundref="databasecontroller_8cpp" startline="173" endline="194">DatabaseController::executeReadQueryCoro</referencedby>
-        <referencedby refid="classDatabaseController_1a7b2bb5792bc55ec851dcd7ae997c58a4" compoundref="databasecontroller_8cpp" startline="196" endline="217">DatabaseController::executeSearchQueryCoro</referencedby>
-        <referencedby refid="classDatabaseController_1abb1622b85d3e413bcb1dee3521a9d24f" compoundref="databasecontroller_8cpp" startline="323" endline="350">DatabaseController::getAllTablesCoro</referencedby>
-        <referencedby refid="classDatabaseController_1a2a0585031d4e0a5e8dfdeb7d77041563" compoundref="databasecontroller_8cpp" startline="352" endline="373">DatabaseController::getPermissionsCoro</referencedby>
-        <referencedby refid="classDatabaseController_1ab6502e9c51e8657b16ffe4795949ebe7" compoundref="databasecontroller_8cpp" startline="287" endline="321">DatabaseController::getTableSchemaCoro</referencedby>
+        <location file="src/database/asyncsqlbinder.cpp" line="157" column="37" bodyfile="src/database/asyncsqlbinder.cpp" bodystart="157" bodyend="169" declfile="src/database/asyncsqlbinder.hpp" declline="113" declcolumn="38"/>
+        <references refid="namespaceasyncdb_1abe62892990453a6ed96ff720960a71e4" compoundref="asyncsqlbinder_8cpp" startline="107" endline="149">bindParams</references>
+        <references refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="157" endline="169">execSqlCoro</references>
+        <referencedby refid="classDatabaseController_1a757e16ca56537bd8eed3d9abe9768954" compoundref="databasecontroller_8cpp" startline="351" endline="391">DatabaseController::checkItemExistsCoro</referencedby>
+        <referencedby refid="classDatabaseController_1ac586f1fc3a54b3bbf1ff5369e403ed20" compoundref="databasecontroller_8cpp" startline="313" endline="349">DatabaseController::doReadQueryCoro</referencedby>
+        <referencedby refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" compoundref="asyncsqlbinder_8cpp" startline="157" endline="169">execSqlCoro</referencedby>
+        <referencedby refid="classDatabaseController_1a5874c6f56191991a88da60758f2200fa" compoundref="databasecontroller_8cpp" startline="205" endline="246">DatabaseController::executeQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1aa3de6b2217aa0ba75ec4eb5286d36799" compoundref="databasecontroller_8cpp" startline="249" endline="278">DatabaseController::executeReadQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1a7b2bb5792bc55ec851dcd7ae997c58a4" compoundref="databasecontroller_8cpp" startline="281" endline="311">DatabaseController::executeSearchQueryCoro</referencedby>
+        <referencedby refid="classDatabaseController_1abb1622b85d3e413bcb1dee3521a9d24f" compoundref="databasecontroller_8cpp" startline="474" endline="509">DatabaseController::getAllTablesCoro</referencedby>
+        <referencedby refid="classDatabaseController_1a2a0585031d4e0a5e8dfdeb7d77041563" compoundref="databasecontroller_8cpp" startline="512" endline="538">DatabaseController::getPermissionsCoro</referencedby>
+        <referencedby refid="classDatabaseController_1ab6502e9c51e8657b16ffe4795949ebe7" compoundref="databasecontroller_8cpp" startline="415" endline="471">DatabaseController::getTableSchemaCoro</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -496,16 +501,13 @@
     <detaileddescription>
 <para>Adapter between the pqxx::params produced by entity SQL builders and Drogon&apos;s incremental SQL binder.</para>
 <para>Maps Drogon PostgreSQL result sets to jsoncons values with the outcomes of the synchronous path in mind.</para>
-<para>An exhausted pool or timeout is &quot;busy&quot; and maps to 503, matching <computeroutput><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></computeroutput>; every other failure maps to<orderedlist>
-<listitem><para>The helpers take <computeroutput>std::exception</computeroutput> because coroutine awaits surface their failures through that base type.</para>
-</listitem></orderedlist>
-</para>
+<para>An exhausted pool or timeout is &quot;busy&quot; and maps to 503, matching <computeroutput><ref refid="classDatabaseBusy" kindref="compound">DatabaseBusy</ref></computeroutput>; every other failure maps to 500. The helpers take <computeroutput>std::exception</computeroutput> because coroutine awaits surface their failures through that base type.</para>
 <para>SQL nulls become JSON null; the <computeroutput>active</computeroutput> flag becomes a boolean; identifier-like columns become numbers when their text parses as an integer; JSON-looking values are parsed; anything else stays a string. The mapping is based on column names and value text rather than on PostgreSQL type OIDs — see mapRow. <simplesect kind="see"><para><ref refid="classDatabase_1a31f82e76631ee18c6314141ecb35e89e" kindref="member">Database::executeQuery</ref>, <ref refid="namespaceasyncdb_1a73f41139990a981a8d5df6603107a6bb" kindref="member">mapRow</ref></para>
 </simplesect>
 <ref refid="classEntity" kindref="compound">Entity</ref> builders keep constructing <computeroutput>pqxx::params</computeroutput>; this module turns that list into the bind calls Drogon needs, so no entity code changes for the async path. Parameter order is always the order in which the builder appended values, and parameters are transported as text unless pqxx reports a binary format. <simplesect kind="see"><para><ref refid="namespaceasyncdb_1abf4af65046571ee330dc2320277a57f7" kindref="member">execSqlCoro</ref>, <ref refid="namespaceasyncdb_1abe62892990453a6ed96ff720960a71e4" kindref="member">bindParams</ref>, <ref refid="namespaceasyncdb_1ab211333eccb1603a4e5176a4da380a1d" kindref="member">toTextParams</ref> </para>
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="src/database/asyncdberror.cpp" line="33" column="1"/>
+    <location file="src/database/asyncdberror.cpp" line="44" column="1"/>
   </compounddef>
 </doxygen>

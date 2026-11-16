@@ -142,7 +142,7 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ac0396c3d59602cf860e6fef52c98a736" id="r_ac0396c3d59602cf860e6fef52c98a736"><td class="memItemLeft">static std::shared_ptr&lt; drogon::orm::DbClient &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ac0396c3d59602cf860e6fef52c98a736">createClient</a> ()</td></tr>
 <tr class="memdesc:ac0396c3d59602cf860e6fef52c98a736"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds a Drogon PostgreSQL client from the configuration held in the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a>.  <br /></td></tr>
-<tr class="memitem:a060a2df97483204c119b2d3322de7455" id="r_a060a2df97483204c119b2d3322de7455"><td class="memItemLeft">static std::string&#160;</td><td class="memItemRight"><a class="el" href="#a060a2df97483204c119b2d3322de7455">connectionString</a> (const <a class="el" href="classConfigurator.html#afdc97f6e9bd19c0197759b8860ed9a49">Configurator::DatabaseConfig</a> &amp;config)</td></tr>
+<tr class="memitem:a060a2df97483204c119b2d3322de7455" id="r_a060a2df97483204c119b2d3322de7455"><td class="memItemLeft">static std::string&#160;</td><td class="memItemRight"><a class="el" href="#a060a2df97483204c119b2d3322de7455">connectionString</a> (const <a class="el" href="classConfigurator.html#a78caa68d4554c8ab0d0c1753ce8edbe2">Configurator::DatabaseConfig</a> &amp;config)</td></tr>
 <tr class="memdesc:a060a2df97483204c119b2d3322de7455"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders a libpq keyword/value connection string from a database configuration.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -153,7 +153,7 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><p>Store-registered holder for the Drogon PostgreSQL client used when DB_ASYNC=true. </p>
 <p>The wrapper holds a <span class="tt">shared_ptr&lt;drogon::orm::DbClient&gt;</span>; production instances are created from the DB_* settings. <span class="tt"><a class="el" href="classServer.html#a30362b937b125d27916cf595bfc4c1a7" title="Prints the banner, configures and runs Drogon, then drains the worker pools.">Server::run()</a></span> registers it in the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a> only while <span class="tt">DatabaseConfig::async</span> is enabled; the synchronous pool stays in use while the flag is off. Callers fetch it with <span class="tt"><a class="el" href="classStore.html#a0607fb3b583c06ca910ed6c9881e790c" title="Returns the singleton for T, constructing it on first use.">Store::getObject</a>&lt;<a class="el" href="classAsyncDbClient.html" title="Store-registered holder for the Drogon PostgreSQL client used when DB_ASYNC=true.">AsyncDbClient</a>&gt;(nullptr)</span> and hand the underlying client to <span class="tt"><a class="el" href="namespaceasyncdb.html#abf4af65046571ee330dc2320277a57f7" title="Builds and binds the statement, then transfers the binder into an awaiter.">asyncdb::execSqlCoro</a></span>. Tests replace the registered instance through <span class="tt"><a class="el" href="classStore.html#a2a4bfc0b18f2999216eda3067988cf57" title="Overwrites the singleton registered for T and invalidates every thread-local cache.">Store::replaceObject</a></span>; a null client is a valid state meaning "async path unavailable", which the controller treats as <span class="tt">std::nullopt</span>. The wrapper itself is non-copyable and non-movable so there is a single long-lived Store-owned instance. It adds no locking of its own; any thread-safety comes from the underlying Drogon DbClient. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="#ac0396c3d59602cf860e6fef52c98a736" title="Builds a Drogon PostgreSQL client from the configuration held in the Store.">createClient</a>, <a class="el" href="namespaceasyncdb.html#abf4af65046571ee330dc2320277a57f7" title="Builds and binds the statement, then transfers the binder into an awaiter.">asyncdb::execSqlCoro</a>, <a class="el" href="classDatabaseController.html#a5874c6f56191991a88da60758f2200fa" title="Async counterpart of executeQuery(); begins a transaction, executes and commits on success.">DatabaseController::executeQueryCoro</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="asyncdbclient_8hpp_source.html#l00051">51</a> of file <a class="el" href="asyncdbclient_8hpp_source.html">asyncdbclient.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="asyncdbclient_8hpp_source.html#l00070">70</a> of file <a class="el" href="asyncdbclient_8hpp_source.html">asyncdbclient.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a213710d5066ee9045340071a669ebf45" name="a213710d5066ee9045340071a669ebf45"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a213710d5066ee9045340071a669ebf45">&#9670;&#160;</a></span>AsyncDbClient() <span class="overload">[1/3]</span></h2>
@@ -189,9 +189,9 @@ Private Attributes</h2></td></tr>
 <dl class="section post"><dt>Postcondition</dt><dd><span class="tt"><a class="el" href="#a6df3848ed2c5239948f7274454e6f937" title="Returns the owned client, which may be null.">client()</a></span> returns the same pointer that was passed in.</dd></dl>
 <p>No validation or configuration happens here; a null client is accepted for tests and the disabled state. </p>
 
-<p class="definition">Definition at line <a class="el" href="asyncdbclient_8cpp_source.html#l00043">43</a> of file <a class="el" href="asyncdbclient_8cpp_source.html">asyncdbclient.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="asyncdbclient_8cpp_source.html#l00060">60</a> of file <a class="el" href="asyncdbclient_8cpp_source.html">asyncdbclient.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="asyncdbclient_8hpp_source.html#l00099">client()</a>, and <a class="el" href="asyncdbclient_8hpp_source.html#l00105">client_</a>.</p>
+<p class="reference">References <a class="el" href="asyncdbclient_8hpp_source.html#l00147">client()</a>, and <a class="el" href="asyncdbclient_8hpp_source.html#l00158">client_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a00eaa6a9016ba3d36f6598345b3b64de">AsyncDbClient()</a>, <a class="el" href="#a4c8f093334062996bd575498bfcb40c2">AsyncDbClient()</a>, <a class="el" href="#a73fa2d950fcdf6a7b3468b6da94a0b19">operator=()</a>, and <a class="el" href="#a6a9c60e4054389f20640fb633d38dd42">operator=()</a>.</p>
 
@@ -223,7 +223,7 @@ Private Attributes</h2></td></tr>
 <p>Copy and move operations are disabled. </p>
 <p>The wrapper is a single Store-owned object; tests swap the whole <span class="tt">shared_ptr</span> via <span class="tt"><a class="el" href="classStore.html#a2a4bfc0b18f2999216eda3067988cf57" title="Overwrites the singleton registered for T and invalidates every thread-local cache.">Store::replaceObject</a></span> rather than copying or moving the wrapper. </p>
 
-<p class="reference">References <a class="el" href="asyncdbclient_8cpp_source.html#l00043">AsyncDbClient()</a>.</p>
+<p class="reference">References <a class="el" href="asyncdbclient_8cpp_source.html#l00060">AsyncDbClient()</a>.</p>
 
 </div>
 </div>
@@ -250,7 +250,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="asyncdbclient_8cpp_source.html#l00043">AsyncDbClient()</a>.</p>
+<p class="reference">References <a class="el" href="asyncdbclient_8cpp_source.html#l00060">AsyncDbClient()</a>.</p>
 
 </div>
 </div>
@@ -280,7 +280,7 @@ Private Attributes</h2></td></tr>
 <p>Defaulted virtual destructor; connection cleanup is delegated to the owned Drogon client. </p>
 <dl class="section note"><dt>Note</dt><dd>Virtual per the project-wide convention (commit 217a477); no class derives from this type. </dd></dl>
 
-<p class="reference">References <a class="el" href="asyncdbclient_8cpp_source.html#l00067">connectionString()</a>, and <a class="el" href="asyncdbclient_8cpp_source.html#l00050">createClient()</a>.</p>
+<p class="reference">References <a class="el" href="asyncdbclient_8cpp_source.html#l00105">connectionString()</a>, and <a class="el" href="asyncdbclient_8cpp_source.html#l00071">createClient()</a>.</p>
 
 </div>
 </div>
@@ -311,11 +311,11 @@ Private Attributes</h2></td></tr>
 <p>Returns the owned client, which may be null. </p>
 <dl class="section return"><dt>Returns</dt><dd>Const reference to the stored <span class="tt">shared_ptr</span>; it remains valid for the lifetime of this wrapper. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="asyncdbclient_8hpp_source.html#l00099">99</a> of file <a class="el" href="asyncdbclient_8hpp_source.html">asyncdbclient.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="asyncdbclient_8hpp_source.html#l00147">147</a> of file <a class="el" href="asyncdbclient_8hpp_source.html">asyncdbclient.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="asyncdbclient_8hpp_source.html#l00105">client_</a>.</p>
+<p class="reference">References <a class="el" href="asyncdbclient_8hpp_source.html#l00158">client_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="asyncdbclient_8cpp_source.html#l00043">AsyncDbClient()</a>, and <a class="el" href="asyncdbclient_8cpp_source.html#l00050">createClient()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="asyncdbclient_8cpp_source.html#l00060">AsyncDbClient()</a>, and <a class="el" href="asyncdbclient_8cpp_source.html#l00071">createClient()</a>.</p>
 
 </div>
 </div>
@@ -331,7 +331,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">std::string AsyncDbClient::connectionString </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classConfigurator.html#afdc97f6e9bd19c0197759b8860ed9a49">Configurator::DatabaseConfig</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>config</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="classConfigurator.html#a78caa68d4554c8ab0d0c1753ce8edbe2">Configurator::DatabaseConfig</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>config</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -350,13 +350,14 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><span class="tt">host=... port=... dbname=... user=... password=... connect_timeout=2 sslmode=require|disable</span>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><span class="tt">host=... port=... dbname=... user=... password=...
+connect_timeout=2 sslmode=require|disable</span>. </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>The returned string contains the database password in clear text; it must not be logged. <span class="tt">printValues()</span> on the configuration deliberately redacts the same field.</dd></dl>
 <p><span class="tt">connect_timeout</span> is a fixed two seconds, independent of DB_* tuning; host and SSL settings may be overridden by the container image but still arrive through this one configuration object. </p>
 
-<p class="definition">Definition at line <a class="el" href="asyncdbclient_8cpp_source.html#l00067">67</a> of file <a class="el" href="asyncdbclient_8cpp_source.html">asyncdbclient.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="asyncdbclient_8cpp_source.html#l00105">105</a> of file <a class="el" href="asyncdbclient_8cpp_source.html">asyncdbclient.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="asyncdbclient_8cpp_source.html#l00050">createClient()</a>, and <a class="el" href="#a9695856e6d84ef0220f89c0b2d614ead">~AsyncDbClient()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="asyncdbclient_8cpp_source.html#l00071">createClient()</a>, and <a class="el" href="#a9695856e6d84ef0220f89c0b2d614ead">~AsyncDbClient()</a>.</p>
 
 </div>
 </div>
@@ -385,15 +386,15 @@ Private Attributes</h2></td></tr>
 
 <p>Builds a Drogon PostgreSQL client from the configuration held in the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a>. </p>
 <p>Creates the Drogon Pg client from the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a>'s database configuration.</p>
-<p>Reads <span class="tt"><a class="el" href="classConfigurator.html#afdc97f6e9bd19c0197759b8860ed9a49">Configurator::DatabaseConfig</a></span> from the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a>, builds the connection string with <span class="tt"><a class="el" href="#a060a2df97483204c119b2d3322de7455" title="Renders a libpq keyword/value connection string from a database configuration.">connectionString</a></span>, requests <span class="tt">DB_MAX_CONN</span> connections and applies the acquire timeout, converting milliseconds to the seconds Drogon expects. </p><dl class="section return"><dt>Returns</dt><dd>A newly created client, ready to be wrapped and registered with <span class="tt"><a class="el" href="classStore.html#a1e12f060c02095975351db8f5d63cb76" title="Explicitly creates and registers a singleton, rejecting a type that is already registered.">Store::registerObject</a>&lt;<a class="el" href="classAsyncDbClient.html" title="Store-registered holder for the Drogon PostgreSQL client used when DB_ASYNC=true.">AsyncDbClient</a>&gt;</span>. </dd></dl>
+<p>Reads <span class="tt"><a class="el" href="classConfigurator.html#a78caa68d4554c8ab0d0c1753ce8edbe2">Configurator::DatabaseConfig</a></span> from the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a>, builds the connection string with <span class="tt"><a class="el" href="#a060a2df97483204c119b2d3322de7455" title="Renders a libpq keyword/value connection string from a database configuration.">connectionString</a></span>, requests <span class="tt">DB_MAX_CONN</span> connections and applies the acquire timeout, converting milliseconds to the seconds Drogon expects. </p><dl class="section return"><dt>Returns</dt><dd>A newly created client, ready to be wrapped and registered with <span class="tt"><a class="el" href="classStore.html#a1e12f060c02095975351db8f5d63cb76" title="Explicitly creates and registers a singleton, rejecting a type that is already registered.">Store::registerObject</a>&lt;<a class="el" href="classAsyncDbClient.html" title="Store-registered holder for the Drogon PostgreSQL client used when DB_ASYNC=true.">AsyncDbClient</a>&gt;</span>. </dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd>A <span class="tt"><a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a></span> object is registered in the <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a>.</dd></dl>
 <p><span class="tt">newPgClient</span> receives the generated connection string and <span class="tt">DB_MAX_CONN</span>; the timeout is then set from <span class="tt">DB_ACQUIRE_TIMEOUT_MS</span>. Any connection-establishment work is left to Drogon. </p>
 
-<p class="definition">Definition at line <a class="el" href="asyncdbclient_8cpp_source.html#l00050">50</a> of file <a class="el" href="asyncdbclient_8cpp_source.html">asyncdbclient.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="asyncdbclient_8cpp_source.html#l00071">71</a> of file <a class="el" href="asyncdbclient_8cpp_source.html">asyncdbclient.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="asyncdbclient_8hpp_source.html#l00099">client()</a>, <a class="el" href="asyncdbclient_8cpp_source.html#l00067">connectionString()</a>, and <a class="el" href="store_8hpp_source.html#l00139">Store::getObject()</a>.</p>
+<p class="reference">References <a class="el" href="asyncdbclient_8hpp_source.html#l00147">client()</a>, <a class="el" href="asyncdbclient_8cpp_source.html#l00105">connectionString()</a>, and <a class="el" href="store_8hpp_source.html#l00190">Store::getObject()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="server_8cpp_source.html#l00092">Server::run()</a>, and <a class="el" href="#a9695856e6d84ef0220f89c0b2d614ead">~AsyncDbClient()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="server_8cpp_source.html#l00156">Server::run()</a>, and <a class="el" href="#a9695856e6d84ef0220f89c0b2d614ead">~AsyncDbClient()</a>.</p>
 
 </div>
 </div>
@@ -420,7 +421,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="asyncdbclient_8cpp_source.html#l00043">AsyncDbClient()</a>.</p>
+<p class="reference">References <a class="el" href="asyncdbclient_8cpp_source.html#l00060">AsyncDbClient()</a>.</p>
 
 </div>
 </div>
@@ -447,7 +448,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="asyncdbclient_8cpp_source.html#l00043">AsyncDbClient()</a>.</p>
+<p class="reference">References <a class="el" href="asyncdbclient_8cpp_source.html#l00060">AsyncDbClient()</a>.</p>
 
 </div>
 </div>
@@ -473,9 +474,9 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Shared ownership of the Drogon client; null in test fakes and the disabled state. </p>
 
-<p class="definition">Definition at line <a class="el" href="asyncdbclient_8hpp_source.html#l00105">105</a> of file <a class="el" href="asyncdbclient_8hpp_source.html">asyncdbclient.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="asyncdbclient_8hpp_source.html#l00158">158</a> of file <a class="el" href="asyncdbclient_8hpp_source.html">asyncdbclient.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="asyncdbclient_8cpp_source.html#l00043">AsyncDbClient()</a>, and <a class="el" href="asyncdbclient_8hpp_source.html#l00099">client()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="asyncdbclient_8cpp_source.html#l00060">AsyncDbClient()</a>, and <a class="el" href="asyncdbclient_8hpp_source.html#l00147">client()</a>.</p>
 
 </div>
 </div>

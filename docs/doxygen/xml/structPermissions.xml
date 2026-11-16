@@ -99,16 +99,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="54" column="5" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="55" bodyend="65"/>
+        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="67" column="3" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="67" bodyend="77"/>
       </memberdef>
-      <memberdef kind="typedef" id="structPermissions_1a9617e1834ef40047fc77ac4898e51eb5" prot="public" static="no">
+      <memberdef kind="typedef" id="structPermissions_1a26a1c9adb722c5389044eb29c0db4e1e" prot="public" static="no">
         <type>struct staffPermission { uint64_t staff_id=0; <ref refid="structPermissions_1a1dc2e37dd1ca56eb9dc57829a512e092" kindref="member">PowerLevel</ref> power=PowerLevel::NONE; bool isMember=false; }</type>
-        <definition>using Permissions::StaffPermission = struct staffPermission  
-   {
-       uint64_t   staff_id = 0;             
-       PowerLevel power    = PowerLevel::NONE;  
-       bool       isMember = false;         
-   }</definition>
+        <definition>using Permissions::StaffPermission = struct staffPermission {
+   uint64_t staff_id = 0; 
+   PowerLevel power = PowerLevel::NONE; 
+   bool isMember = false; 
+ }</definition>
         <argsstring></argsstring>
         <name>StaffPermission</name>
         <qualifiedname>Permissions::StaffPermission</qualifiedname>
@@ -120,7 +119,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="127" column="5" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="127" bodyend="132"/>
+        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="168" column="3" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="168" bodyend="175"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -137,10 +136,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="135" column="16" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="135" bodyend="-1"/>
-        <referencedby refid="structPermissions_1ac96d5536a15d787a3baf4854926a996c" compoundref="permissions_8hpp" startline="82" endline="82">hasPower</referencedby>
-        <referencedby refid="structPermissions_1ac19733fcd6890838c7092cc8fb238798" compoundref="permissions_8hpp" startline="120" endline="120">operator bool</referencedby>
-        <referencedby refid="structPermissions_1ac32d6b8b10e947a16605278d2a0f16ac" compoundref="permissions_8hpp" startline="69" endline="69">Permissions</referencedby>
+        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="179" column="7" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="179" bodyend="-1"/>
+        <referencedby refid="structPermissions_1ac96d5536a15d787a3baf4854926a996c" compoundref="permissions_8hpp" startline="103" endline="105">hasPower</referencedby>
+        <referencedby refid="structPermissions_1ac19733fcd6890838c7092cc8fb238798" compoundref="permissions_8hpp" startline="156" endline="158">operator bool</referencedby>
+        <referencedby refid="structPermissions_1ac32d6b8b10e947a16605278d2a0f16ac" compoundref="permissions_8hpp" startline="83" endline="84">Permissions</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -161,8 +160,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="69" column="14" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="69" bodyend="69"/>
-        <references refid="structPermissions_1a2e676be865e0b582dc6cc2fd78dac50c" compoundref="permissions_8hpp" startline="135">powerLevel</references>
+        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="83" column="12" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="83" bodyend="84"/>
+        <references refid="structPermissions_1a2e676be865e0b582dc6cc2fd78dac50c" compoundref="permissions_8hpp" startline="179">powerLevel</references>
         <referencedby refid="structPermissions_1a5045fe7c0a625dc6f5b81515336eb3a5">operator=</referencedby>
         <referencedby refid="structPermissions_1a0c912ae21ea01916744be3ce748462da">operator=</referencedby>
         <referencedby refid="structPermissions_1a3caac56a9804e68ec7f2162673b76007">Permissions</referencedby>
@@ -180,7 +179,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="70" column="13"/>
+        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="86" column="11"/>
       </memberdef>
       <memberdef kind="function" id="structPermissions_1ac1db8af30ebf101435200e5d494c4db7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -194,7 +193,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="71" column="5"/>
+        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="88" column="3"/>
       </memberdef>
       <memberdef kind="function" id="structPermissions_1a3caac56a9804e68ec7f2162673b76007" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -211,8 +210,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="72" column="5"/>
-        <references refid="structPermissions_1ac32d6b8b10e947a16605278d2a0f16ac" compoundref="permissions_8hpp" startline="69" endline="69">Permissions</references>
+        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="89" column="3"/>
+        <references refid="structPermissions_1ac32d6b8b10e947a16605278d2a0f16ac" compoundref="permissions_8hpp" startline="83" endline="84">Permissions</references>
       </memberdef>
       <memberdef kind="function" id="structPermissions_1a5045fe7c0a625dc6f5b81515336eb3a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structPermissions" kindref="compound">Permissions</ref> &amp;</type>
@@ -229,8 +228,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="73" column="17"/>
-        <references refid="structPermissions_1ac32d6b8b10e947a16605278d2a0f16ac" compoundref="permissions_8hpp" startline="69" endline="69">Permissions</references>
+        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="91" column="15"/>
+        <references refid="structPermissions_1ac32d6b8b10e947a16605278d2a0f16ac" compoundref="permissions_8hpp" startline="83" endline="84">Permissions</references>
       </memberdef>
       <memberdef kind="function" id="structPermissions_1a7dcc9bc0247dd973124e74283054d978" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -247,8 +246,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="74" column="5"/>
-        <references refid="structPermissions_1ac32d6b8b10e947a16605278d2a0f16ac" compoundref="permissions_8hpp" startline="69" endline="69">Permissions</references>
+        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="93" column="3"/>
+        <references refid="structPermissions_1ac32d6b8b10e947a16605278d2a0f16ac" compoundref="permissions_8hpp" startline="83" endline="84">Permissions</references>
       </memberdef>
       <memberdef kind="function" id="structPermissions_1a0c912ae21ea01916744be3ce748462da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structPermissions" kindref="compound">Permissions</ref> &amp;</type>
@@ -265,8 +264,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="75" column="17"/>
-        <references refid="structPermissions_1ac32d6b8b10e947a16605278d2a0f16ac" compoundref="permissions_8hpp" startline="69" endline="69">Permissions</references>
+        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="95" column="15"/>
+        <references refid="structPermissions_1ac32d6b8b10e947a16605278d2a0f16ac" compoundref="permissions_8hpp" startline="83" endline="84">Permissions</references>
       </memberdef>
       <memberdef kind="function" id="structPermissions_1ac96d5536a15d787a3baf4854926a996c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -297,8 +296,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="82" column="10" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="82" bodyend="82"/>
-        <references refid="structPermissions_1a2e676be865e0b582dc6cc2fd78dac50c" compoundref="permissions_8hpp" startline="135">powerLevel</references>
+        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="103" column="8" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="103" bodyend="105"/>
+        <references refid="structPermissions_1a2e676be865e0b582dc6cc2fd78dac50c" compoundref="permissions_8hpp" startline="179">powerLevel</references>
       </memberdef>
       <memberdef kind="function" id="structPermissions_1ac19733fcd6890838c7092cc8fb238798" prot="public" static="no" const="yes" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
@@ -313,8 +312,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="120" column="14" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="120" bodyend="120"/>
-        <references refid="structPermissions_1a2e676be865e0b582dc6cc2fd78dac50c" compoundref="permissions_8hpp" startline="135">powerLevel</references>
+        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="156" column="12" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="156" bodyend="158"/>
+        <references refid="structPermissions_1a2e676be865e0b582dc6cc2fd78dac50c" compoundref="permissions_8hpp" startline="179">powerLevel</references>
       </memberdef>
     </sectiondef>
     <sectiondef kind="friend">
@@ -339,7 +338,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="86" column="23" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="86" bodyend="89"/>
+        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="111" column="21" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="111" bodyend="116"/>
       </memberdef>
       <memberdef kind="friend" id="structPermissions_1afcc1b424cc39b27da72bfe8b8cce6ea2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="structPermissions_1a1dc2e37dd1ca56eb9dc57829a512e092" kindref="member">PowerLevel</ref></type>
@@ -362,7 +361,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="93" column="23" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="93" bodyend="96"/>
+        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="121" column="21" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="121" bodyend="130"/>
       </memberdef>
       <memberdef kind="friend" id="structPermissions_1ab4b872e6c851c1862ae23a4aee2f0477" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="structPermissions_1a1dc2e37dd1ca56eb9dc57829a512e092" kindref="member">PowerLevel</ref> &amp;</type>
@@ -388,7 +387,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="100" column="23" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="100" bodyend="104"/>
+        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="135" column="21" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="135" bodyend="138"/>
       </memberdef>
       <memberdef kind="friend" id="structPermissions_1ab082ced7cc4c8d69514298f48d0145d1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="structPermissions_1a1dc2e37dd1ca56eb9dc57829a512e092" kindref="member">PowerLevel</ref> &amp;</type>
@@ -414,7 +413,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="108" column="23" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="108" bodyend="112"/>
+        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="143" column="21" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="143" bodyend="146"/>
       </memberdef>
       <memberdef kind="friend" id="structPermissions_1a89cb9b915088e26abc0786c352220d74" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="structPermissions_1a1dc2e37dd1ca56eb9dc57829a512e092" kindref="member">PowerLevel</ref></type>
@@ -433,7 +432,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="116" column="23" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="116" bodyend="116"/>
+        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="150" column="21" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="150" bodyend="152"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-static-func">
@@ -458,19 +457,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="138" column="18" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="138" bodyend="138"/>
+        <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="183" column="16" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="183" bodyend="186"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
 <para>Holds a bitmask of authorization bits and the helpers to combine/test them. </para>
     </briefdescription>
     <detaileddescription>
-<para>Powers are single-bit flags stored in a uint8_t. Two groups of bits are distinguished by convention: identity bits (USER, PROVIDER, IS_ADMIN, IS_OWNER, IS_SUPER) and capability bits (CAN_READ, CAN_WRITE, CAN_DELETE). A value is a bitwise combination, so a single mask can express roles plus capabilities. <simplesect kind="note"><para>All the test helpers (<ref refid="structPermissions_1ac96d5536a15d787a3baf4854926a996c" kindref="member">hasPower()</ref>, <ref refid="structPermissions_1afd7453a69128f00dcd4e27c3522e31ef" kindref="member">hasMatch()</ref>, operator&amp;) answer &quot;any bit in
-      common&quot;, not &quot;all requested bits present&quot;.</para>
+<para>Powers are single-bit flags stored in a uint8_t. Two groups of bits are distinguished by convention: identity bits (USER, PROVIDER, IS_ADMIN, IS_OWNER, IS_SUPER) and capability bits (CAN_READ, CAN_WRITE, CAN_DELETE). A value is a bitwise combination, so a single mask can express roles plus capabilities. <simplesect kind="note"><para>All the test helpers (<ref refid="structPermissions_1ac96d5536a15d787a3baf4854926a996c" kindref="member">hasPower()</ref>, <ref refid="structPermissions_1afd7453a69128f00dcd4e27c3522e31ef" kindref="member">hasMatch()</ref>, operator&amp;) answer &quot;any
+bit in common&quot;, not &quot;all requested bits present&quot;.</para>
 </simplesect>
 In everyday words: imagine an 8-switch control panel, one switch per right. Each switch is a power of two (1, 2, 4, 8, ...). Turning on several switches and adding the numbers produces a single value that remembers exactly which switches are on. <ref refid="structTesting" kindref="compound">Testing</ref> &quot;is any of these switches on?&quot; is a fast bitwise AND. </para>
     </detaileddescription>
-    <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="46" column="1" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="47" bodyend="139"/>
+    <location file="src/gatekeeper/permissionmanager/permissions.hpp" line="56" column="1" bodyfile="src/gatekeeper/permissionmanager/permissions.hpp" bodystart="56" bodyend="188"/>
     <listofallmembers>
       <member refid="structPermissions_1afd7453a69128f00dcd4e27c3522e31ef" prot="private" virt="non-virtual"><scope>Permissions</scope><name>hasMatch</name></member>
       <member refid="structPermissions_1ac96d5536a15d787a3baf4854926a996c" prot="public" virt="non-virtual"><scope>Permissions</scope><name>hasPower</name></member>
@@ -488,7 +487,7 @@ In everyday words: imagine an 8-switch control panel, one switch per right. Each
       <member refid="structPermissions_1a7dcc9bc0247dd973124e74283054d978" prot="public" virt="non-virtual"><scope>Permissions</scope><name>Permissions</name></member>
       <member refid="structPermissions_1a1dc2e37dd1ca56eb9dc57829a512e092" prot="public" virt="non-virtual"><scope>Permissions</scope><name>PowerLevel</name></member>
       <member refid="structPermissions_1a2e676be865e0b582dc6cc2fd78dac50c" prot="private" virt="non-virtual"><scope>Permissions</scope><name>powerLevel</name></member>
-      <member refid="structPermissions_1a9617e1834ef40047fc77ac4898e51eb5" prot="public" virt="non-virtual"><scope>Permissions</scope><name>StaffPermission</name></member>
+      <member refid="structPermissions_1a26a1c9adb722c5389044eb29c0db4e1e" prot="public" virt="non-virtual"><scope>Permissions</scope><name>StaffPermission</name></member>
       <member refid="structPermissions_1a287cad3f47efdc82da6449f8d1455f6c" prot="public" virt="virtual"><scope>Permissions</scope><name>~Permissions</name></member>
     </listofallmembers>
   </compounddef>

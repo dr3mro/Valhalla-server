@@ -8,6 +8,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/api/v2/filters/auth.hpp" line="50" column="1"/>
+    <location file="src/api/v2/filters/auth.hpp" line="70" column="1"/>
   </compounddef>
 </doxygen>

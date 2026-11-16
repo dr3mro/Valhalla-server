@@ -21,11 +21,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/server/cors.hpp" line="60" column="30" bodyfile="src/server/cors.hpp" bodystart="60" bodyend="64"/>
-        <references refid="namespaceCors_1a1e735c23d92eb7d39a494adbe6fe035d" compoundref="cors_8hpp" startline="60" endline="64">allowedMethods</references>
-        <referencedby refid="namespaceCors_1a1e735c23d92eb7d39a494adbe6fe035d" compoundref="cors_8hpp" startline="60" endline="64">allowedMethods</referencedby>
-        <referencedby refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="157" endline="217">apply</referencedby>
-        <referencedby refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" compoundref="server_8cpp" startline="92" endline="148">Server::run</referencedby>
+        <location file="src/server/cors.hpp" line="85" column="28" bodyfile="src/server/cors.hpp" bodystart="85" bodyend="91"/>
+        <references refid="namespaceCors_1a1e735c23d92eb7d39a494adbe6fe035d" compoundref="cors_8hpp" startline="85" endline="91">allowedMethods</references>
+        <referencedby refid="namespaceCors_1a1e735c23d92eb7d39a494adbe6fe035d" compoundref="cors_8hpp" startline="85" endline="91">allowedMethods</referencedby>
+        <referencedby refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="222" endline="328">apply</referencedby>
+        <referencedby refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" compoundref="server_8cpp" startline="156" endline="295">Server::run</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceCors_1af54c7b1b495f97a9cef25ac756aec7d5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -43,10 +43,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/server/cors.hpp" line="70" column="30" bodyfile="src/server/cors.hpp" bodystart="70" bodyend="74"/>
-        <references refid="namespaceCors_1af54c7b1b495f97a9cef25ac756aec7d5" compoundref="cors_8hpp" startline="70" endline="74">defaultAllowedHeaders</references>
-        <referencedby refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="157" endline="217">apply</referencedby>
-        <referencedby refid="namespaceCors_1af54c7b1b495f97a9cef25ac756aec7d5" compoundref="cors_8hpp" startline="70" endline="74">defaultAllowedHeaders</referencedby>
+        <location file="src/server/cors.hpp" line="101" column="28" bodyfile="src/server/cors.hpp" bodystart="101" bodyend="106"/>
+        <references refid="namespaceCors_1af54c7b1b495f97a9cef25ac756aec7d5" compoundref="cors_8hpp" startline="101" endline="106">defaultAllowedHeaders</references>
+        <referencedby refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="222" endline="328">apply</referencedby>
+        <referencedby refid="namespaceCors_1af54c7b1b495f97a9cef25ac756aec7d5" compoundref="cors_8hpp" startline="101" endline="106">defaultAllowedHeaders</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceCors_1ab2139d17f81f7754423b94b0dfdc53bc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -64,10 +64,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/server/cors.hpp" line="80" column="30" bodyfile="src/server/cors.hpp" bodystart="80" bodyend="84"/>
-        <references refid="namespaceCors_1ab2139d17f81f7754423b94b0dfdc53bc" compoundref="cors_8hpp" startline="80" endline="84">exposedHeaders</references>
-        <referencedby refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="157" endline="217">apply</referencedby>
-        <referencedby refid="namespaceCors_1ab2139d17f81f7754423b94b0dfdc53bc" compoundref="cors_8hpp" startline="80" endline="84">exposedHeaders</referencedby>
+        <location file="src/server/cors.hpp" line="115" column="28" bodyfile="src/server/cors.hpp" bodystart="115" bodyend="120"/>
+        <references refid="namespaceCors_1ab2139d17f81f7754423b94b0dfdc53bc" compoundref="cors_8hpp" startline="115" endline="120">exposedHeaders</references>
+        <referencedby refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="222" endline="328">apply</referencedby>
+        <referencedby refid="namespaceCors_1ab2139d17f81f7754423b94b0dfdc53bc" compoundref="cors_8hpp" startline="115" endline="120">exposedHeaders</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceCors_1a67bce05e328fb07dd233d14e40bac82c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -85,10 +85,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/server/cors.hpp" line="90" column="30" bodyfile="src/server/cors.hpp" bodystart="90" bodyend="94"/>
-        <references refid="namespaceCors_1a67bce05e328fb07dd233d14e40bac82c" compoundref="cors_8hpp" startline="90" endline="94">preflightMaxAge</references>
-        <referencedby refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="157" endline="217">apply</referencedby>
-        <referencedby refid="namespaceCors_1a67bce05e328fb07dd233d14e40bac82c" compoundref="cors_8hpp" startline="90" endline="94">preflightMaxAge</referencedby>
+        <location file="src/server/cors.hpp" line="129" column="28" bodyfile="src/server/cors.hpp" bodystart="129" bodyend="133"/>
+        <references refid="namespaceCors_1a67bce05e328fb07dd233d14e40bac82c" compoundref="cors_8hpp" startline="129" endline="133">preflightMaxAge</references>
+        <referencedby refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="222" endline="328">apply</referencedby>
+        <referencedby refid="namespaceCors_1a67bce05e328fb07dd233d14e40bac82c" compoundref="cors_8hpp" startline="129" endline="133">preflightMaxAge</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceCors_1a183f8c59d0e3f8136c11f88df8f40bfb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -129,10 +129,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/server/cors.hpp" line="104" column="17" bodyfile="src/server/cors.hpp" bodystart="104" bodyend="112"/>
-        <references refid="namespaceCors_1a183f8c59d0e3f8136c11f88df8f40bfb" compoundref="cors_8hpp" startline="104" endline="112">addToVary</references>
-        <referencedby refid="namespaceCors_1a183f8c59d0e3f8136c11f88df8f40bfb" compoundref="cors_8hpp" startline="104" endline="112">addToVary</referencedby>
-        <referencedby refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="157" endline="217">apply</referencedby>
+        <location file="src/server/cors.hpp" line="146" column="15" bodyfile="src/server/cors.hpp" bodystart="146" bodyend="161"/>
+        <references refid="namespaceCors_1a183f8c59d0e3f8136c11f88df8f40bfb" compoundref="cors_8hpp" startline="146" endline="161">addToVary</references>
+        <referencedby refid="namespaceCors_1a183f8c59d0e3f8136c11f88df8f40bfb" compoundref="cors_8hpp" startline="146" endline="161">addToVary</referencedby>
+        <referencedby refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="222" endline="328">apply</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceCors_1a91b925e2a3993e560726033702df8818" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -163,10 +163,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/server/cors.hpp" line="122" column="24" bodyfile="src/server/cors.hpp" bodystart="122" bodyend="140"/>
-        <references refid="namespaceCors_1a91b925e2a3993e560726033702df8818" compoundref="cors_8hpp" startline="122" endline="140">splitOrigins</references>
-        <referencedby refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="157" endline="217">apply</referencedby>
-        <referencedby refid="namespaceCors_1a91b925e2a3993e560726033702df8818" compoundref="cors_8hpp" startline="122" endline="140">splitOrigins</referencedby>
+        <location file="src/server/cors.hpp" line="174" column="22" bodyfile="src/server/cors.hpp" bodystart="174" bodyend="198"/>
+        <references refid="namespaceCors_1a91b925e2a3993e560726033702df8818" compoundref="cors_8hpp" startline="174" endline="198">splitOrigins</references>
+        <referencedby refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="222" endline="328">apply</referencedby>
+        <referencedby refid="namespaceCors_1a91b925e2a3993e560726033702df8818" compoundref="cors_8hpp" startline="174" endline="198">splitOrigins</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -211,17 +211,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/server/cors.hpp" line="157" column="17" bodyfile="src/server/cors.hpp" bodystart="157" bodyend="217"/>
-        <references refid="namespaceCors_1a183f8c59d0e3f8136c11f88df8f40bfb" compoundref="cors_8hpp" startline="104" endline="112">addToVary</references>
-        <references refid="namespaceCors_1a1e735c23d92eb7d39a494adbe6fe035d" compoundref="cors_8hpp" startline="60" endline="64">allowedMethods</references>
-        <references refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="157" endline="217">apply</references>
-        <references refid="classStore_1aaf81da54b109478891030b7e04653bad" compoundref="store_8hpp" startline="189" endline="200">Store::cachedObject</references>
-        <references refid="namespaceCors_1af54c7b1b495f97a9cef25ac756aec7d5" compoundref="cors_8hpp" startline="70" endline="74">defaultAllowedHeaders</references>
-        <references refid="namespaceCors_1ab2139d17f81f7754423b94b0dfdc53bc" compoundref="cors_8hpp" startline="80" endline="84">exposedHeaders</references>
-        <references refid="namespaceCors_1a67bce05e328fb07dd233d14e40bac82c" compoundref="cors_8hpp" startline="90" endline="94">preflightMaxAge</references>
-        <references refid="namespaceCors_1a91b925e2a3993e560726033702df8818" compoundref="cors_8hpp" startline="122" endline="140">splitOrigins</references>
-        <referencedby refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="157" endline="217">apply</referencedby>
-        <referencedby refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" compoundref="server_8cpp" startline="92" endline="148">Server::run</referencedby>
+        <location file="src/server/cors.hpp" line="222" column="15" bodyfile="src/server/cors.hpp" bodystart="222" bodyend="328"/>
+        <references refid="namespaceCors_1a183f8c59d0e3f8136c11f88df8f40bfb" compoundref="cors_8hpp" startline="146" endline="161">addToVary</references>
+        <references refid="namespaceCors_1a1e735c23d92eb7d39a494adbe6fe035d" compoundref="cors_8hpp" startline="85" endline="91">allowedMethods</references>
+        <references refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="222" endline="328">apply</references>
+        <references refid="classStore_1aaf81da54b109478891030b7e04653bad" compoundref="store_8hpp" startline="260" endline="278">Store::cachedObject</references>
+        <references refid="namespaceCors_1af54c7b1b495f97a9cef25ac756aec7d5" compoundref="cors_8hpp" startline="101" endline="106">defaultAllowedHeaders</references>
+        <references refid="namespaceCors_1ab2139d17f81f7754423b94b0dfdc53bc" compoundref="cors_8hpp" startline="115" endline="120">exposedHeaders</references>
+        <references refid="namespaceCors_1a67bce05e328fb07dd233d14e40bac82c" compoundref="cors_8hpp" startline="129" endline="133">preflightMaxAge</references>
+        <references refid="namespaceCors_1a91b925e2a3993e560726033702df8818" compoundref="cors_8hpp" startline="174" endline="198">splitOrigins</references>
+        <referencedby refid="namespaceCors_1a8bdb2553f14222ee4cacfb5628907590" compoundref="cors_8hpp" startline="222" endline="328">apply</referencedby>
+        <referencedby refid="classServer_1a30362b937b125d27916cf595bfc4c1a7" compoundref="server_8cpp" startline="156" endline="295">Server::run</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -230,6 +230,6 @@
     <detaileddescription>
 <para>CORS response headers, written in exactly one place (the pre-sending advice in <ref refid="server_8cpp" kindref="compound">server.cpp</ref>). Drogon stores headers in a map keyed by the lower-cased name, and addHeader replaces an existing value (HttpResponseImpl.h:194-210), so a header can never appear twice. </para>
     </detaileddescription>
-    <location file="src/server/cors.hpp" line="41" column="1"/>
+    <location file="src/server/cors.hpp" line="57" column="1"/>
   </compounddef>
 </doxygen>

@@ -125,7 +125,6 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('namespaceCorsT
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a0435f635d81611e18d7999358f7f71f3" id="r_a0435f635d81611e18d7999358f7f71f3"><td class="memItemLeft">constexpr bool&#160;</td><td class="memItemRight"><a class="el" href="#a0435f635d81611e18d7999358f7f71f3">isTokenChar</a> (char c)</td></tr>
-<tr class="memdesc:a0435f635d81611e18d7999358f7f71f3"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classReports.html" title="Case entity for the patients_reports table (a patient&#39;s report record).">Reports</a> whether a character is valid inside an HTTP token.  <br /></td></tr>
 <tr class="memitem:a7a178dc1be0dd0b0753320d19435ff96" id="r_a7a178dc1be0dd0b0753320d19435ff96"><td class="memItemLeft">std::string_view&#160;</td><td class="memItemRight"><a class="el" href="#a7a178dc1be0dd0b0753320d19435ff96">trim</a> (std::string_view value)</td></tr>
 <tr class="memdesc:a7a178dc1be0dd0b0753320d19435ff96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes optional whitespace (spaces and tabs) from both ends of a header token.  <br /></td></tr>
 <tr class="memitem:acb6a20ed23869f424e6ee2061f600001" id="r_acb6a20ed23869f424e6ee2061f600001"><td class="memItemLeft">auto&#160;</td><td class="memItemRight"><a class="el" href="#acb6a20ed23869f424e6ee2061f600001">tokens</a> (std::string_view value)</td></tr>
@@ -139,7 +138,7 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a6d06cb55654db9c60bbbbbd0ee486ae3" id="r_a6d06cb55654db9c60bbbbbd0ee486ae3"><td class="memItemLeft">constexpr std::string_view&#160;</td><td class="memItemRight"><a class="el" href="#a6d06cb55654db9c60bbbbbd0ee486ae3">tokenPunctuation</a> = &quot;!#$%&amp;'*+-.^_`|~&quot;</td></tr>
+<tr class="memitem:a6d06cb55654db9c60bbbbbd0ee486ae3" id="r_a6d06cb55654db9c60bbbbbd0ee486ae3"><td class="memItemLeft">constexpr std::string_view&#160;</td><td class="memItemRight"><a class="el" href="#a6d06cb55654db9c60bbbbbd0ee486ae3">tokenPunctuation</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Drogon-free helpers for parsing and merging CORS header token lists. </p>
@@ -182,11 +181,11 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true when the strings have equal length and match after ASCII lowercasing. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cors__tokens_8hpp_source.html#l00111">111</a> of file <a class="el" href="cors__tokens_8hpp_source.html">cors_tokens.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cors__tokens_8hpp_source.html#l00157">157</a> of file <a class="el" href="cors__tokens_8hpp_source.html">cors_tokens.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cors__tokens_8hpp_source.html#l00111">iequals()</a>.</p>
+<p class="reference">References <a class="el" href="cors__tokens_8hpp_source.html#l00157">iequals()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cors__tokens_8hpp_source.html#l00111">iequals()</a>, and <a class="el" href="cors__tokens_8hpp_source.html#l00161">mergeVary()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cors__tokens_8hpp_source.html#l00157">iequals()</a>, and <a class="el" href="cors__tokens_8hpp_source.html#l00226">mergeVary()</a>.</p>
 
 </div>
 </div>
@@ -212,21 +211,20 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<pre class="fragment"> @brief Reports whether a character is valid inside an HTTP token.
 
-<p><a class="el" href="classReports.html" title="Case entity for the patients_reports table (a patient&#39;s report record).">Reports</a> whether a character is valid inside an HTTP token. </p>
-<p>Alphabetic, digit and the RFC token punctuation characters are accepted; whitespace, comma, quote, colon and control characters are not. This rejects values that could inject extra headers. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">c</td><td>Character to classify. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true when c may appear in a token. </dd></dl>
+ @details Alphabetic, digit and the RFC token punctuation characters are
+ accepted; whitespace, comma, quote, colon and control characters are not.
+ This rejects values that could inject extra headers.
+ @param[in] c Character to classify.
+ @return true when c may appear in a token.
+</pre><p> Decide whether one character is legal inside an HTTP header token. </p>
 
-<p class="definition">Definition at line <a class="el" href="cors__tokens_8hpp_source.html#l00054">54</a> of file <a class="el" href="cors__tokens_8hpp_source.html">cors_tokens.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cors__tokens_8hpp_source.html#l00071">71</a> of file <a class="el" href="cors__tokens_8hpp_source.html">cors_tokens.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cors__tokens_8hpp_source.html#l00054">isTokenChar()</a>, and <a class="el" href="cors__tokens_8hpp_source.html#l00044">tokenPunctuation</a>.</p>
+<p class="reference">References <a class="el" href="cors__tokens_8hpp_source.html#l00071">isTokenChar()</a>, and <a class="el" href="cors__tokens_8hpp_source.html#l00057">tokenPunctuation</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cors__tokens_8hpp_source.html#l00054">isTokenChar()</a>, and <a class="el" href="cors__tokens_8hpp_source.html#l00127">sanitizeRequestedHeaders()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cors__tokens_8hpp_source.html#l00071">isTokenChar()</a>, and <a class="el" href="cors__tokens_8hpp_source.html#l00183">sanitizeRequestedHeaders()</a>.</p>
 
 </div>
 </div>
@@ -267,11 +265,11 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The merged Vary value. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cors__tokens_8hpp_source.html#l00161">161</a> of file <a class="el" href="cors__tokens_8hpp_source.html">cors_tokens.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cors__tokens_8hpp_source.html#l00226">226</a> of file <a class="el" href="cors__tokens_8hpp_source.html">cors_tokens.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cors__tokens_8hpp_source.html#l00111">iequals()</a>, <a class="el" href="cors__tokens_8hpp_source.html#l00161">mergeVary()</a>, and <a class="el" href="cors__tokens_8hpp_source.html#l00085">tokens()</a>.</p>
+<p class="reference">References <a class="el" href="cors__tokens_8hpp_source.html#l00157">iequals()</a>, <a class="el" href="cors__tokens_8hpp_source.html#l00226">mergeVary()</a>, and <a class="el" href="cors__tokens_8hpp_source.html#l00116">tokens()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cors__tokens_8hpp_source.html#l00161">mergeVary()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cors__tokens_8hpp_source.html#l00226">mergeVary()</a>.</p>
 
 </div>
 </div>
@@ -307,11 +305,11 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A comma-and-space separated list of safe tokens, or an empty string when nothing is acceptable. An empty result tells <a class="el" href="namespaceCors.html#a8bdb2553f14222ee4cacfb5628907590" title="Decorates a response with CORS headers; invoked once per response from the pre-sending advice.">Cors::apply()</a> to fall back to the default header list. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cors__tokens_8hpp_source.html#l00127">127</a> of file <a class="el" href="cors__tokens_8hpp_source.html">cors_tokens.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cors__tokens_8hpp_source.html#l00183">183</a> of file <a class="el" href="cors__tokens_8hpp_source.html">cors_tokens.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cors__tokens_8hpp_source.html#l00054">isTokenChar()</a>, <a class="el" href="cors__tokens_8hpp_source.html#l00127">sanitizeRequestedHeaders()</a>, and <a class="el" href="cors__tokens_8hpp_source.html#l00085">tokens()</a>.</p>
+<p class="reference">References <a class="el" href="cors__tokens_8hpp_source.html#l00071">isTokenChar()</a>, <a class="el" href="cors__tokens_8hpp_source.html#l00183">sanitizeRequestedHeaders()</a>, and <a class="el" href="cors__tokens_8hpp_source.html#l00116">tokens()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cors__tokens_8hpp_source.html#l00127">sanitizeRequestedHeaders()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cors__tokens_8hpp_source.html#l00183">sanitizeRequestedHeaders()</a>.</p>
 
 </div>
 </div>
@@ -347,11 +345,11 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A lazy range of std::string_view tokens. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cors__tokens_8hpp_source.html#l00085">85</a> of file <a class="el" href="cors__tokens_8hpp_source.html">cors_tokens.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cors__tokens_8hpp_source.html#l00116">116</a> of file <a class="el" href="cors__tokens_8hpp_source.html">cors_tokens.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cors__tokens_8hpp_source.html#l00085">tokens()</a>, and <a class="el" href="cors__tokens_8hpp_source.html#l00065">trim()</a>.</p>
+<p class="reference">References <a class="el" href="cors__tokens_8hpp_source.html#l00116">tokens()</a>, and <a class="el" href="cors__tokens_8hpp_source.html#l00087">trim()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cors__tokens_8hpp_source.html#l00161">mergeVary()</a>, <a class="el" href="cors__tokens_8hpp_source.html#l00127">sanitizeRequestedHeaders()</a>, and <a class="el" href="cors__tokens_8hpp_source.html#l00085">tokens()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cors__tokens_8hpp_source.html#l00226">mergeVary()</a>, <a class="el" href="cors__tokens_8hpp_source.html#l00183">sanitizeRequestedHeaders()</a>, and <a class="el" href="cors__tokens_8hpp_source.html#l00116">tokens()</a>.</p>
 
 </div>
 </div>
@@ -387,11 +385,11 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A subview of value with leading/trailing whitespace removed, or an empty view if value is all whitespace. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cors__tokens_8hpp_source.html#l00065">65</a> of file <a class="el" href="cors__tokens_8hpp_source.html">cors_tokens.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cors__tokens_8hpp_source.html#l00087">87</a> of file <a class="el" href="cors__tokens_8hpp_source.html">cors_tokens.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="cors__tokens_8hpp_source.html#l00065">trim()</a>.</p>
+<p class="reference">References <a class="el" href="cors__tokens_8hpp_source.html#l00087">trim()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cors__tokens_8hpp_source.html#l00085">tokens()</a>, and <a class="el" href="cors__tokens_8hpp_source.html#l00065">trim()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cors__tokens_8hpp_source.html#l00116">tokens()</a>, and <a class="el" href="cors__tokens_8hpp_source.html#l00087">trim()</a>.</p>
 
 </div>
 </div>
@@ -406,7 +404,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string_view CorsTokens::tokenPunctuation = &quot;!#$%&amp;'*+-.^_`|~&quot;</td>
+          <td class="memname">std::string_view CorsTokens::tokenPunctuation</td>
         </tr>
       </table>
   </td>
@@ -415,11 +413,13 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Punctuation permitted in an HTTP token, per the token grammar used by the header parsers below. </p>
+<b>Initial value:</b><div class="fragment"><div class="line">                                        =</div>
+<div class="line"><span class="stringliteral">&quot;!#$%&amp;&#39;*+-.^_`|~&quot;</span></div>
+</div><!-- fragment --><p>Punctuation permitted in an HTTP token, per the token grammar used by the header parsers below. </p>
 
-<p class="definition">Definition at line <a class="el" href="cors__tokens_8hpp_source.html#l00044">44</a> of file <a class="el" href="cors__tokens_8hpp_source.html">cors_tokens.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cors__tokens_8hpp_source.html#l00057">57</a> of file <a class="el" href="cors__tokens_8hpp_source.html">cors_tokens.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="cors__tokens_8hpp_source.html#l00054">isTokenChar()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="cors__tokens_8hpp_source.html#l00071">isTokenChar()</a>.</p>
 
 </div>
 </div>

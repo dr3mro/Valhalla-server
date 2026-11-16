@@ -9,7 +9,7 @@
     <detaileddescription>
 <para>An empty column set means &quot;all columns&quot;. The id is mandatory at build time. </para>
     </detaileddescription>
-    <location file="src/entities/base/types.hpp" line="147" column="1"/>
+    <location file="src/entities/base/types.hpp" line="196" column="1"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

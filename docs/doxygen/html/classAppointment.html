@@ -204,10 +204,10 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classBase.html">Base</a> entity for appointment tables shared by the service-specific appointment classes. </p>
-<p>Extends <a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a> with static permission-query builders: one fetches the owner/admin/staff of a service, the other resolves the owning service from an appointment id by joining the appointment table to its organisation table. Concrete classes fix the table and organisation names and expose these helpers to <a class="el" href="gatekeeper_8cpp.html#a2391c0b165c65deb4ad3ad19ca6dd2aa">PermissionManager</a>. </p><dl class="section note"><dt>Note</dt><dd>These queries interpolate names and ids into the SQL text via fmt::format and take no pqxx::params; they are called with internal, trusted values and the text doubles as a cache key. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a>, <a class="el" href="gatekeeper_8cpp.html#a2391c0b165c65deb4ad3ad19ca6dd2aa">PermissionManager</a> </dd></dl>
+<p>Extends <a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a> with static permission-query builders: one fetches the owner/admin/staff of a service, the other resolves the owning service from an appointment id by joining the appointment table to its organisation table. Concrete classes fix the table and organisation names and expose these helpers to <a class="el" href="gatekeeper_8cpp.html#ae17e951f1dc80a8e4920571ebe9f3c21">PermissionManager</a>. </p><dl class="section note"><dt>Note</dt><dd>These queries interpolate names and ids into the SQL text via fmt::format and take no pqxx::params; they are called with internal, trusted values and the text doubles as a cache key. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a>, <a class="el" href="gatekeeper_8cpp.html#ae17e951f1dc80a8e4920571ebe9f3c21">PermissionManager</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="appointment_8hpp_source.html#l00050">50</a> of file <a class="el" href="appointment_8hpp_source.html">appointment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="appointment_8hpp_source.html#l00064">64</a> of file <a class="el" href="appointment_8hpp_source.html">appointment.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="acfb6db2bcc47290e54d5654d670d20d9" name="acfb6db2bcc47290e54d5654d670d20d9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acfb6db2bcc47290e54d5654d670d20d9">&#9670;&#160;</a></span>Appointment() <span class="overload">[1/3]</span></h2>
@@ -253,11 +253,11 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="appointment_8hpp_source.html#l00060">60</a> of file <a class="el" href="appointment_8hpp_source.html">appointment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="appointment_8hpp_source.html#l00073">73</a> of file <a class="el" href="appointment_8hpp_source.html">appointment.hpp</a>.</p>
 
 <p class="reference">References <a class="el" href="classEntity.html#a936dfd4b5db17a339819ae5800c33a93">Entity::Entity()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="#a4933d1414001449b5643b04a99b16d27">Appointment()</a>, <a class="el" href="#a452e32e34b2b149ac5062ae45be25697">Appointment()</a>, <a class="el" href="clinic_8hpp_source.html#l00060">ClinicAppointment::ClinicAppointment()</a>, <a class="el" href="laboratory_8hpp_source.html#l00060">LaboratoryAppointment::LaboratoryAppointment()</a>, <a class="el" href="#a5ec6f22f0a1858a098ef1a21562a0316">operator=()</a>, <a class="el" href="#a18c009147f21dc02135fa06a428c438d">operator=()</a>, <a class="el" href="pharmacy_8hpp_source.html#l00059">PharmacyAppointment::PharmacyAppointment()</a>, and <a class="el" href="radiologycenter_8hpp_source.html#l00060">RadiologyCenterAppointment::RadiologyCenterAppointment()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="#a4933d1414001449b5643b04a99b16d27">Appointment()</a>, <a class="el" href="#a452e32e34b2b149ac5062ae45be25697">Appointment()</a>, <a class="el" href="clinic_8hpp_source.html#l00076">ClinicAppointment::ClinicAppointment()</a>, <a class="el" href="laboratory_8hpp_source.html#l00075">LaboratoryAppointment::LaboratoryAppointment()</a>, <a class="el" href="#a5ec6f22f0a1858a098ef1a21562a0316">operator=()</a>, <a class="el" href="#a18c009147f21dc02135fa06a428c438d">operator=()</a>, <a class="el" href="pharmacy_8hpp_source.html#l00075">PharmacyAppointment::PharmacyAppointment()</a>, and <a class="el" href="radiologycenter_8hpp_source.html#l00077">RadiologyCenterAppointment::RadiologyCenterAppointment()</a>.</p>
 
 </div>
 </div>
@@ -286,7 +286,7 @@ template&lt;typename T&gt; </div>
 
 <p>Non-copyable and non-movable; construct in place for the request that uses it. </p>
 
-<p class="reference">References <a class="el" href="appointment_8hpp_source.html#l00060">Appointment()</a>.</p>
+<p class="reference">References <a class="el" href="appointment_8hpp_source.html#l00073">Appointment()</a>.</p>
 
 </div>
 </div>
@@ -313,7 +313,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="appointment_8hpp_source.html#l00060">Appointment()</a>.</p>
+<p class="reference">References <a class="el" href="appointment_8hpp_source.html#l00073">Appointment()</a>.</p>
 
 </div>
 </div>
@@ -388,11 +388,11 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>SELECT statement identifying the owning service's permission fields. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="appointment_8hpp_source.html#l00102">102</a> of file <a class="el" href="appointment_8hpp_source.html">appointment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="appointment_8hpp_source.html#l00129">129</a> of file <a class="el" href="appointment_8hpp_source.html">appointment.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="appointment_8hpp_source.html#l00102">getPermissionsQueryForReadImpl()</a>.</p>
+<p class="reference">References <a class="el" href="appointment_8hpp_source.html#l00129">getPermissionsQueryForReadImpl()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="clinic_8hpp_source.html#l00108">ClinicAppointment::getPermissionsQueryForRead()</a>, <a class="el" href="laboratory_8hpp_source.html#l00103">LaboratoryAppointment::getPermissionsQueryForRead()</a>, <a class="el" href="pharmacy_8hpp_source.html#l00101">PharmacyAppointment::getPermissionsQueryForRead()</a>, <a class="el" href="radiologycenter_8hpp_source.html#l00103">RadiologyCenterAppointment::getPermissionsQueryForRead()</a>, and <a class="el" href="appointment_8hpp_source.html#l00102">getPermissionsQueryForReadImpl()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="clinic_8hpp_source.html#l00142">ClinicAppointment::getPermissionsQueryForRead()</a>, <a class="el" href="laboratory_8hpp_source.html#l00135">LaboratoryAppointment::getPermissionsQueryForRead()</a>, <a class="el" href="pharmacy_8hpp_source.html#l00133">PharmacyAppointment::getPermissionsQueryForRead()</a>, <a class="el" href="radiologycenter_8hpp_source.html#l00138">RadiologyCenterAppointment::getPermissionsQueryForRead()</a>, and <a class="el" href="appointment_8hpp_source.html#l00129">getPermissionsQueryForReadImpl()</a>.</p>
 
 </div>
 </div>
@@ -433,9 +433,9 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>SELECT of owner_id, admin_id and staff for the given service. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="appointment_8hpp_source.html#l00084">84</a> of file <a class="el" href="appointment_8hpp_source.html">appointment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="appointment_8hpp_source.html#l00102">102</a> of file <a class="el" href="appointment_8hpp_source.html">appointment.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="clinic_8hpp_source.html#l00098">ClinicAppointment::getServicePermissionsQuery()</a>, <a class="el" href="laboratory_8hpp_source.html#l00093">LaboratoryAppointment::getServicePermissionsQuery()</a>, <a class="el" href="pharmacy_8hpp_source.html#l00091">PharmacyAppointment::getServicePermissionsQuery()</a>, and <a class="el" href="radiologycenter_8hpp_source.html#l00093">RadiologyCenterAppointment::getServicePermissionsQuery()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="clinic_8hpp_source.html#l00126">ClinicAppointment::getServicePermissionsQuery()</a>, <a class="el" href="laboratory_8hpp_source.html#l00120">LaboratoryAppointment::getServicePermissionsQuery()</a>, <a class="el" href="pharmacy_8hpp_source.html#l00118">PharmacyAppointment::getServicePermissionsQuery()</a>, and <a class="el" href="radiologycenter_8hpp_source.html#l00123">RadiologyCenterAppointment::getServicePermissionsQuery()</a>.</p>
 
 </div>
 </div>
@@ -462,7 +462,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="appointment_8hpp_source.html#l00060">Appointment()</a>.</p>
+<p class="reference">References <a class="el" href="appointment_8hpp_source.html#l00073">Appointment()</a>.</p>
 
 </div>
 </div>
@@ -489,7 +489,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="appointment_8hpp_source.html#l00060">Appointment()</a>.</p>
+<p class="reference">References <a class="el" href="appointment_8hpp_source.html#l00073">Appointment()</a>.</p>
 
 </div>
 </div>

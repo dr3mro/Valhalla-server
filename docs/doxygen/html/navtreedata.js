@@ -96,15 +96,15 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "all__routes_8hpp.html",
-"classClientControllerBase.html#af9f1272d9d14a2a2d1b4ba8117728cf8",
-"classDatabaseController.html#acece421c53c0fef3b2965878f2422d5e",
-"classPatient.html#aee1fdb32c0ed7cfbc54abc38dc2bf2d3",
-"classVisitDrugs.html#aab3c3b5977e832eb69266c2302ac0e55",
-"classapi_1_1v2_1_1GateKeeper.html#a9d5d84f7e5666b5e707aaa781b1eb1ea",
-"classapi_1_1v2_1_1PermissionManagerPrivate.html#aa31f67bcd25e9e17e0e4650edd10d6e5",
-"dir_a9b232e6071a9275e4eb5006f74c22b6.html",
-"md_docs_2CONTRIBUTING.html#autotoc_md61",
-"sessionmanager_8hpp.html"
+"classClinicController.html#a49ca9ae245f2ca94ee937754a5d433ea",
+"classDbProbe.html",
+"classPrescriptions.html",
+"classapi_1_1v2_1_1Appointments.html#a3f94fa04d6ce713f5c0d6896ad848655",
+"classapi_1_1v2_1_1Helper.html#a0e93abbeb3346f2d972a1894c31cb245",
+"classapi_1_1v2_1_1Services.html#add4126a239d7f9a96356da45f888ff67",
+"entity_8hpp.html",
+"namespaceDefaults_1_1Database.html#a7e4ef467bcf44500097539bd2a0b3e5d",
+"structPermissions.html#a0c912ae21ea01916744be3ce748462da"
 ];
 
 const SYNCONMSG = 'click to disable panel synchronization';

@@ -26,7 +26,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="69" column="14"/>
+        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="102" column="12"/>
         <referencedby refid="classAppointmentController_1af9f216dcb43f1ad88ef706b9c497b34a">AppointmentController&lt; T &gt;::AppointmentController</referencedby>
         <referencedby refid="classAppointmentController_1a5530ffd0a03fac91ebb49b4a63abf1bb">AppointmentController&lt; T &gt;::AppointmentController</referencedby>
         <referencedby refid="classAppointmentController_1a2a5dc7013cb0c2212c72b527e402e22d">AppointmentController&lt; T &gt;::operator=</referencedby>
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="71" column="5"/>
+        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="106" column="3"/>
         <references refid="classAppointmentController_1a75321c9004b76d3faf972e0ea0cc38e1">AppointmentController&lt; T &gt;::AppointmentController</references>
       </memberdef>
       <memberdef kind="function" id="classAppointmentController_1a5530ffd0a03fac91ebb49b4a63abf1bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="73" column="5"/>
+        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="109" column="3"/>
         <references refid="classAppointmentController_1a75321c9004b76d3faf972e0ea0cc38e1">AppointmentController&lt; T &gt;::AppointmentController</references>
       </memberdef>
       <memberdef kind="function" id="classAppointmentController_1a2a5dc7013cb0c2212c72b527e402e22d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -86,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="75" column="27"/>
+        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="113" column="25"/>
         <references refid="classAppointmentController_1a75321c9004b76d3faf972e0ea0cc38e1">AppointmentController&lt; T &gt;::AppointmentController</references>
       </memberdef>
       <memberdef kind="function" id="classAppointmentController_1ab00942fa204b5f72a1f693af0a34d931" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -105,7 +105,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="77" column="27"/>
+        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="116" column="25"/>
         <references refid="classAppointmentController_1a75321c9004b76d3faf972e0ea0cc38e1">AppointmentController&lt; T &gt;::AppointmentController</references>
       </memberdef>
       <memberdef kind="function" id="classAppointmentController_1a3dd8744b972f582bbeb760faff94d47d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -121,17 +121,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="79" column="5"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classAppointmentController_1a07a0c78a16d4f88cf921a96d6a72858c" compoundref="appointmentcontroller_8cpp" startline="56" endline="59">AppointmentController&lt; T &gt;::Create</references>
-        <references refid="classAppointmentController_1a5ae310b608a81f19c3e4a5d0bbb57666" compoundref="appointmentcontroller_8cpp" startline="68" endline="71">AppointmentController&lt; T &gt;::CreateAsync</references>
-        <references refid="classAppointmentController_1aae035bd4dac4df5e559e0e117534e260" compoundref="appointmentcontroller_8cpp" startline="133" endline="136">AppointmentController&lt; T &gt;::Delete</references>
-        <references refid="classAppointmentController_1a7c0fa66b965e56315970b935e1bb2ad0" compoundref="appointmentcontroller_8cpp" startline="145" endline="148">AppointmentController&lt; T &gt;::DeleteAsync</references>
-        <references refid="classAppointmentController_1a304bdc460cdd955f0d08a7e5bc3611dc" compoundref="appointmentcontroller_8cpp" startline="81" endline="84">AppointmentController&lt; T &gt;::Read</references>
-        <references refid="classAppointmentController_1a96bc67b390c572327b9cbee839ab97dd" compoundref="appointmentcontroller_8cpp" startline="93" endline="96">AppointmentController&lt; T &gt;::ReadAsync</references>
-        <references refid="classAppointmentController_1a9052acc829edcd321478db51124386d4" compoundref="appointmentcontroller_8cpp" startline="159" endline="162">AppointmentController&lt; T &gt;::Search</references>
-        <references refid="classAppointmentController_1a8193e8f08b8afcc80abbaf8ffa9991e9" compoundref="appointmentcontroller_8cpp" startline="107" endline="110">AppointmentController&lt; T &gt;::Update</references>
-        <references refid="classAppointmentController_1ac6ec86b8497afe05196a67967e6063c2" compoundref="appointmentcontroller_8cpp" startline="120" endline="123">AppointmentController&lt; T &gt;::UpdateAsync</references>
+        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="119" column="3"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classAppointmentController_1a07a0c78a16d4f88cf921a96d6a72858c" compoundref="appointmentcontroller_8cpp" startline="84" endline="92">AppointmentController&lt; T &gt;::Create</references>
+        <references refid="classAppointmentController_1a5ae310b608a81f19c3e4a5d0bbb57666" compoundref="appointmentcontroller_8cpp" startline="102" endline="109">AppointmentController&lt; T &gt;::CreateAsync</references>
+        <references refid="classAppointmentController_1aae035bd4dac4df5e559e0e117534e260" compoundref="appointmentcontroller_8cpp" startline="200" endline="207">AppointmentController&lt; T &gt;::Delete</references>
+        <references refid="classAppointmentController_1a7c0fa66b965e56315970b935e1bb2ad0" compoundref="appointmentcontroller_8cpp" startline="217" endline="225">AppointmentController&lt; T &gt;::DeleteAsync</references>
+        <references refid="classAppointmentController_1a304bdc460cdd955f0d08a7e5bc3611dc" compoundref="appointmentcontroller_8cpp" startline="121" endline="128">AppointmentController&lt; T &gt;::Read</references>
+        <references refid="classAppointmentController_1a96bc67b390c572327b9cbee839ab97dd" compoundref="appointmentcontroller_8cpp" startline="138" endline="145">AppointmentController&lt; T &gt;::ReadAsync</references>
+        <references refid="classAppointmentController_1a9052acc829edcd321478db51124386d4" compoundref="appointmentcontroller_8cpp" startline="238" endline="246">AppointmentController&lt; T &gt;::Search</references>
+        <references refid="classAppointmentController_1a8193e8f08b8afcc80abbaf8ffa9991e9" compoundref="appointmentcontroller_8cpp" startline="158" endline="167">AppointmentController&lt; T &gt;::Update</references>
+        <references refid="classAppointmentController_1ac6ec86b8497afe05196a67967e6063c2" compoundref="appointmentcontroller_8cpp" startline="178" endline="188">AppointmentController&lt; T &gt;::UpdateAsync</references>
       </memberdef>
       <memberdef kind="function" id="classAppointmentController_1a07a0c78a16d4f88cf921a96d6a72858c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
@@ -186,9 +186,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="83" column="10" bodyfile="src/controllers/appointmentcontroller/appointmentcontroller.cpp" bodystart="56" bodyend="59"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" compoundref="entitycontroller_8cpp" startline="57" endline="112">EntityController&lt; T &gt;::Create</references>
+        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="127" column="8" bodyfile="src/controllers/appointmentcontroller/appointmentcontroller.cpp" bodystart="84" bodyend="92"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1a449401c7840a8159d6e3b64c30f72e4d" compoundref="entitycontroller_8cpp" startline="76" endline="150">EntityController&lt; T &gt;::Create</references>
         <referencedby refid="classAppointmentController_1a3dd8744b972f582bbeb760faff94d47d">AppointmentController&lt; T &gt;::~AppointmentController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classAppointmentController_1a5ae310b608a81f19c3e4a5d0bbb57666" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -243,9 +243,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="85" column="18" bodyfile="src/controllers/appointmentcontroller/appointmentcontroller.cpp" bodystart="68" bodyend="71"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" compoundref="entitycontroller_8cpp" startline="290" endline="343">EntityController&lt; T &gt;::CreateAsync</references>
+        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="134" column="16" bodyfile="src/controllers/appointmentcontroller/appointmentcontroller.cpp" bodystart="102" bodyend="109"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1a0de2c6044f1460f85750e4d18635997b" compoundref="entitycontroller_8cpp" startline="370" endline="442">EntityController&lt; T &gt;::CreateAsync</references>
         <referencedby refid="classAppointmentController_1a3dd8744b972f582bbeb760faff94d47d">AppointmentController&lt; T &gt;::~AppointmentController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classAppointmentController_1a304bdc460cdd955f0d08a7e5bc3611dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -301,9 +301,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="87" column="10" bodyfile="src/controllers/appointmentcontroller/appointmentcontroller.cpp" bodystart="81" bodyend="84"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" compoundref="entitycontroller_8cpp" startline="115" endline="160">EntityController&lt; T &gt;::Read</references>
+        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="141" column="8" bodyfile="src/controllers/appointmentcontroller/appointmentcontroller.cpp" bodystart="121" bodyend="128"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1afa8269ceee3631d7e20cbce2444a00aa" compoundref="entitycontroller_8cpp" startline="153" endline="219">EntityController&lt; T &gt;::Read</references>
         <referencedby refid="classAppointmentController_1a3dd8744b972f582bbeb760faff94d47d">AppointmentController&lt; T &gt;::~AppointmentController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classAppointmentController_1a96bc67b390c572327b9cbee839ab97dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -358,9 +358,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="89" column="18" bodyfile="src/controllers/appointmentcontroller/appointmentcontroller.cpp" bodystart="93" bodyend="96"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" compoundref="entitycontroller_8cpp" startline="345" endline="390">EntityController&lt; T &gt;::ReadAsync</references>
+        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="147" column="16" bodyfile="src/controllers/appointmentcontroller/appointmentcontroller.cpp" bodystart="138" bodyend="145"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1a9707869a9f99e7a5df537c9468ea0a4e" compoundref="entitycontroller_8cpp" startline="444" endline="510">EntityController&lt; T &gt;::ReadAsync</references>
         <referencedby refid="classAppointmentController_1a3dd8744b972f582bbeb760faff94d47d">AppointmentController&lt; T &gt;::~AppointmentController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classAppointmentController_1a8193e8f08b8afcc80abbaf8ffa9991e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -428,9 +428,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="91" column="10" bodyfile="src/controllers/appointmentcontroller/appointmentcontroller.cpp" bodystart="107" bodyend="110"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" compoundref="entitycontroller_8cpp" startline="162" endline="221">EntityController&lt; T &gt;::Update</references>
+        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="153" column="8" bodyfile="src/controllers/appointmentcontroller/appointmentcontroller.cpp" bodystart="158" bodyend="167"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1a351b900503468ac17e930c42fdf23bdf" compoundref="entitycontroller_8cpp" startline="221" endline="294">EntityController&lt; T &gt;::Update</references>
         <referencedby refid="classAppointmentController_1a3dd8744b972f582bbeb760faff94d47d">AppointmentController&lt; T &gt;::~AppointmentController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classAppointmentController_1ac6ec86b8497afe05196a67967e6063c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -497,9 +497,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="93" column="18" bodyfile="src/controllers/appointmentcontroller/appointmentcontroller.cpp" bodystart="120" bodyend="123"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" compoundref="entitycontroller_8cpp" startline="392" endline="450">EntityController&lt; T &gt;::UpdateAsync</references>
+        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="161" column="16" bodyfile="src/controllers/appointmentcontroller/appointmentcontroller.cpp" bodystart="178" bodyend="188"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1a89d8cf3d79aae4e8b462c667c70fdce4" compoundref="entitycontroller_8cpp" startline="512" endline="588">EntityController&lt; T &gt;::UpdateAsync</references>
         <referencedby refid="classAppointmentController_1a3dd8744b972f582bbeb760faff94d47d">AppointmentController&lt; T &gt;::~AppointmentController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classAppointmentController_1aae035bd4dac4df5e559e0e117534e260" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -555,9 +555,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="95" column="10" bodyfile="src/controllers/appointmentcontroller/appointmentcontroller.cpp" bodystart="133" bodyend="136"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" compoundref="entitycontroller_8cpp" startline="224" endline="252">EntityController&lt; T &gt;::Delete</references>
+        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="168" column="8" bodyfile="src/controllers/appointmentcontroller/appointmentcontroller.cpp" bodystart="200" bodyend="207"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1ae5a0d4d7a4e9dd670f22655a831f8215" compoundref="entitycontroller_8cpp" startline="297" endline="328">EntityController&lt; T &gt;::Delete</references>
         <referencedby refid="classAppointmentController_1a3dd8744b972f582bbeb760faff94d47d">AppointmentController&lt; T &gt;::~AppointmentController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classAppointmentController_1a7c0fa66b965e56315970b935e1bb2ad0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -612,9 +612,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="97" column="18" bodyfile="src/controllers/appointmentcontroller/appointmentcontroller.cpp" bodystart="145" bodyend="148"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" compoundref="entitycontroller_8cpp" startline="452" endline="480">EntityController&lt; T &gt;::DeleteAsync</references>
+        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="174" column="16" bodyfile="src/controllers/appointmentcontroller/appointmentcontroller.cpp" bodystart="217" bodyend="225"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1ac2793aa8599a89a46fe157473d16a89e" compoundref="entitycontroller_8cpp" startline="590" endline="624">EntityController&lt; T &gt;::DeleteAsync</references>
         <referencedby refid="classAppointmentController_1a3dd8744b972f582bbeb760faff94d47d">AppointmentController&lt; T &gt;::~AppointmentController</referencedby>
       </memberdef>
       <memberdef kind="function" id="classAppointmentController_1a9052acc829edcd321478db51124386d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -670,9 +670,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="99" column="10" bodyfile="src/controllers/appointmentcontroller/appointmentcontroller.cpp" bodystart="159" bodyend="162"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classEntityController_1a888ea97ce413d880bcca6f7e9cf6b896" compoundref="entitycontroller_8cpp" startline="255" endline="287">EntityController&lt; T &gt;::Search</references>
+        <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="180" column="8" bodyfile="src/controllers/appointmentcontroller/appointmentcontroller.cpp" bodystart="238" bodyend="246"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classEntityController_1a888ea97ce413d880bcca6f7e9cf6b896" compoundref="entitycontroller_8cpp" startline="331" endline="367">EntityController&lt; T &gt;::Search</references>
         <referencedby refid="classAppointmentController_1a3dd8744b972f582bbeb760faff94d47d">AppointmentController&lt; T &gt;::~AppointmentController</referencedby>
       </memberdef>
     </sectiondef>
@@ -689,9 +689,9 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-A thin, stateless adapter: each CRUD+S entry point forwards to the same-named method of <computeroutput><ref refid="classEntityController" kindref="compound">EntityController</ref>&lt;T&gt;</computeroutput>. Schema validation, permission checks, entity construction, SQL execution, JSON marshalling and error→HTTP mapping are therefore inherited rather than reimplemented here; <computeroutput>T</computeroutput> supplies the table name, SQL statements and permission queries. The distinct base interface lets the appointments route registry select appointment controllers independently of service controllers.</para>
-<para>Plain-language version: <computeroutput>T</computeroutput> is whichever appointment class we are handling (say <computeroutput><ref refid="classClinicAppointment" kindref="compound">ClinicAppointment</ref></computeroutput>). The <computeroutput><ref refid="conceptAppointment__t" kindref="compound">Appointment_t</ref></computeroutput> after <computeroutput>template</computeroutput> is a &quot;concept&quot; — a compile-time check that refuses to build this class unless <computeroutput>T</computeroutput> is really an appointment type. Because this class stores no data (&quot;stateless&quot;), its only job is to hand the arguments to <computeroutput><ref refid="classEntityController" kindref="compound">EntityController</ref>&lt;T&gt;</computeroutput> and let that base do everything.</para>
-<para>Explicit instantiations exist for <computeroutput><ref refid="classClinicAppointment" kindref="compound">ClinicAppointment</ref></computeroutput>, <computeroutput><ref refid="classPharmacyAppointment" kindref="compound">PharmacyAppointment</ref></computeroutput>, <computeroutput><ref refid="classLaboratoryAppointment" kindref="compound">LaboratoryAppointment</ref></computeroutput> and <computeroutput><ref refid="classRadiologyCenterAppointment" kindref="compound">RadiologyCenterAppointment</ref></computeroutput>. <simplesect kind="note"><para>Copy and move are permitted, matching the value semantics of <ref refid="classEntityController" kindref="compound">EntityController</ref>; the route registry nonetheless holds controllers as shared pointers. </para>
+A thin, stateless adapter: each CRUD+S entry point forwards to the same-named method of <computeroutput><ref refid="classEntityController" kindref="compound">EntityController</ref>&lt;T&gt;</computeroutput>. Schema validation, permission checks, entity construction, SQL execution, JSON marshalling and error→HTTP mapping are therefore inherited rather than reimplemented here; <computeroutput>T</computeroutput> supplies the table name, SQL statements and permission queries. The distinct base interface lets the appointments route registry select appointment controllers independently of service controllers. <verbatim>     Plain-language version: `T` is whichever appointment class we are
+</verbatim> handling (say <computeroutput><ref refid="classClinicAppointment" kindref="compound">ClinicAppointment</ref></computeroutput>). The <computeroutput><ref refid="conceptAppointment__t" kindref="compound">Appointment_t</ref></computeroutput> after <computeroutput>template</computeroutput> is a &quot;concept&quot; — a compile-time check that refuses to build this class unless <computeroutput>T</computeroutput> is really an appointment type. Because this class stores no data (&quot;stateless&quot;), its only job is to hand the arguments to <computeroutput><ref refid="classEntityController" kindref="compound">EntityController</ref>&lt;T&gt;</computeroutput> and let that base do everything. <verbatim>     Explicit instantiations exist for `ClinicAppointment`,
+</verbatim> <computeroutput><ref refid="classPharmacyAppointment" kindref="compound">PharmacyAppointment</ref></computeroutput>, <computeroutput><ref refid="classLaboratoryAppointment" kindref="compound">LaboratoryAppointment</ref></computeroutput> and <computeroutput><ref refid="classRadiologyCenterAppointment" kindref="compound">RadiologyCenterAppointment</ref></computeroutput>. <simplesect kind="note"><para>Copy and move are permitted, matching the value semantics of <ref refid="classEntityController" kindref="compound">EntityController</ref>; the route registry nonetheless holds controllers as shared pointers. </para>
 </simplesect>
 <simplesect kind="see"><para><ref refid="classEntityController" kindref="compound">EntityController</ref>, <ref refid="classAppointmentControllerBase" kindref="compound">AppointmentControllerBase</ref>, <ref refid="conceptAppointment__t" kindref="compound">Appointment_t</ref> </para>
 </simplesect>
@@ -757,7 +757,7 @@ A thin, stateless adapter: each CRUD+S entry point forwards to the same-named me
         <link refid="classEntityControllerBase"/>
       </node>
     </collaborationgraph>
-    <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="65" column="1" bodyfile="src/controllers/appointmentcontroller/appointmentcontroller.hpp" bodystart="66" bodyend="100"/>
+    <location file="src/controllers/appointmentcontroller/appointmentcontroller.hpp" line="92" column="1" bodyfile="src/controllers/appointmentcontroller/appointmentcontroller.hpp" bodystart="98" bodyend="184"/>
     <listofallmembers>
       <member refid="classController_1a29dac549946db2810cb4435323502c75" prot="protected" virt="non-virtual"><scope>AppointmentController</scope><name>addStaff</name></member>
       <member refid="classController_1a1bb3245ec82d14644a2359cd546ea218" prot="protected" virt="non-virtual"><scope>AppointmentController</scope><name>addStaffAsync</name></member>

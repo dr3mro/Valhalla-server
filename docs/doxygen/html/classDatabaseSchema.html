@@ -160,7 +160,7 @@ Static Private Attributes</h2></td></tr>
 <dl class="section warning"><dt>Warning</dt><dd>Construction terminates the process (or throws) when no tables/columns can be read, so a reachable database is a startup prerequisite. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classValidator.html" title="Stateless collection of checks applied to client JSON before it reaches the database.">Validator</a>, <a class="el" href="classDatabaseController.html" title="Single gateway through which controllers execute SQL, in both blocking and coroutine form.">DatabaseController</a>, <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a>, <a class="el" href="databaseschema_8hpp.html#aea29cf503a423c2163e5b08142700952" title="Schema snapshot type: maps a table name to the set of its column descriptions.">SCHEMA_t</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="databaseschema_8hpp_source.html#l00050">50</a> of file <a class="el" href="databaseschema_8hpp_source.html">databaseschema.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databaseschema_8hpp_source.html#l00062">62</a> of file <a class="el" href="databaseschema_8hpp_source.html">databaseschema.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af897695ff6dd58e10ef7eee9e71af82c" name="af897695ff6dd58e10ef7eee9e71af82c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af897695ff6dd58e10ef7eee9e71af82c">&#9670;&#160;</a></span>DatabaseSchema() <span class="overload">[1/3]</span></h2>
@@ -187,9 +187,9 @@ Static Private Attributes</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>There is no lazy fallback: a successful construction implies a populated cache.</dd></dl>
 <p>See <a class="el" href="#af897695ff6dd58e10ef7eee9e71af82c" title="Eagerly loads the schema for every table reported by DatabaseController.">DatabaseSchema::DatabaseSchema</a>. Retrieves <a class="el" href="classDatabaseController.html" title="Single gateway through which controllers execute SQL, in both blocking and coroutine form.">DatabaseController</a> from <a class="el" href="classStore.html" title="Process-wide service locator that maps a type to one shared instance.">Store</a>, asks it for all table names, and calls <a class="el" href="#a801e1391c1907e56401a867210b8c25d" title="Loads (or refreshes) the column set for one table into the cache.">populateSchema()</a> for each. A missing or empty table list is a fatal startup condition. Note: The exit(EXIT_FAILURE) / "Exiting..." statements after the throw are unreachable; the throw is the active error path. </p>
 
-<p class="definition">Definition at line <a class="el" href="databaseschema_8cpp_source.html#l00044">44</a> of file <a class="el" href="databaseschema_8cpp_source.html">databaseschema.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databaseschema_8cpp_source.html#l00056">56</a> of file <a class="el" href="databaseschema_8cpp_source.html">databaseschema.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="message_8cpp_source.html#l00041">Message::ErrorMessage()</a>, <a class="el" href="store_8hpp_source.html#l00139">Store::getObject()</a>, and <a class="el" href="databaseschema_8cpp_source.html#l00069">populateSchema()</a>.</p>
+<p class="reference">References <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, <a class="el" href="store_8hpp_source.html#l00190">Store::getObject()</a>, and <a class="el" href="databaseschema_8cpp_source.html#l00092">populateSchema()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#adc76072bec45e25694e7c9cb032ec8c2">DatabaseSchema()</a>, <a class="el" href="#ad79c4f44f0be999ac2b6b4105f7e8f1a">DatabaseSchema()</a>, <a class="el" href="#a7362b5c73b9b41c0a30d8f10c72c676d">operator=()</a>, and <a class="el" href="#a8136008c88832535639afc43afb7474d">operator=()</a>.</p>
 
@@ -220,7 +220,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Copy constructor; shares the static schema map with other instances. </p>
 
-<p class="reference">References <a class="el" href="databaseschema_8cpp_source.html#l00044">DatabaseSchema()</a>.</p>
+<p class="reference">References <a class="el" href="databaseschema_8cpp_source.html#l00056">DatabaseSchema()</a>.</p>
 
 </div>
 </div>
@@ -249,7 +249,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Moving is disabled because the meaningful state is static. </p>
 
-<p class="reference">References <a class="el" href="databaseschema_8cpp_source.html#l00044">DatabaseSchema()</a>.</p>
+<p class="reference">References <a class="el" href="databaseschema_8cpp_source.html#l00056">DatabaseSchema()</a>.</p>
 
 </div>
 </div>
@@ -278,7 +278,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Virtual destructor; the schema snapshot has no per-instance resources. </p>
 
-<p class="reference">References <a class="el" href="databaseschema_8cpp_source.html#l00088">getDatabaseSchema()</a>, <a class="el" href="databaseschema_8cpp_source.html#l00069">populateSchema()</a>, <a class="el" href="databaseschema_8cpp_source.html#l00095">printSchema()</a>, and <a class="el" href="databaseschema_8hpp_source.html#l00033">SCHEMA_t</a>.</p>
+<p class="reference">References <a class="el" href="databaseschema_8cpp_source.html#l00119">getDatabaseSchema()</a>, <a class="el" href="databaseschema_8cpp_source.html#l00092">populateSchema()</a>, <a class="el" href="databaseschema_8cpp_source.html#l00128">printSchema()</a>, and <a class="el" href="databaseschema_8hpp_source.html#l00039">SCHEMA_t</a>.</p>
 
 </div>
 </div>
@@ -311,11 +311,11 @@ Static Private Attributes</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>Valid only after construction; the reference remains valid for the process lifetime.</dd></dl>
 <p>See <a class="el" href="#aa32c7db2e9b88c2cfec1f09a2de9d7dd" title="Returns the cached schema snapshot.">DatabaseSchema::getDatabaseSchema</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="databaseschema_8cpp_source.html#l00088">88</a> of file <a class="el" href="databaseschema_8cpp_source.html">databaseschema.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databaseschema_8cpp_source.html#l00119">119</a> of file <a class="el" href="databaseschema_8cpp_source.html">databaseschema.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="databaseschema_8hpp_source.html#l00088">databaseSchema</a>, and <a class="el" href="databaseschema_8hpp_source.html#l00033">SCHEMA_t</a>.</p>
+<p class="reference">References <a class="el" href="databaseschema_8hpp_source.html#l00109">databaseSchema</a>, and <a class="el" href="databaseschema_8hpp_source.html#l00039">SCHEMA_t</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="validator_8cpp_source.html#l00316">Validator::getDatabaseSchemaForTable()</a>, and <a class="el" href="#acfaf80023a95a35c0b38bc3594e18cf7">~DatabaseSchema()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="validator_8cpp_source.html#l00441">Validator::getDatabaseSchemaForTable()</a>, and <a class="el" href="#acfaf80023a95a35c0b38bc3594e18cf7">~DatabaseSchema()</a>.</p>
 
 </div>
 </div>
@@ -344,7 +344,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Copy assignment; shares the static schema map with other instances. </p>
 
-<p class="reference">References <a class="el" href="databaseschema_8cpp_source.html#l00044">DatabaseSchema()</a>.</p>
+<p class="reference">References <a class="el" href="databaseschema_8cpp_source.html#l00056">DatabaseSchema()</a>.</p>
 
 </div>
 </div>
@@ -373,7 +373,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Move assignment is disabled because the meaningful state is static. </p>
 
-<p class="reference">References <a class="el" href="databaseschema_8cpp_source.html#l00044">DatabaseSchema()</a>.</p>
+<p class="reference">References <a class="el" href="databaseschema_8cpp_source.html#l00056">DatabaseSchema()</a>.</p>
 
 </div>
 </div>
@@ -410,11 +410,11 @@ Static Private Attributes</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>On a missing/empty schema a warning and error are logged and the process exits; there is no recoverable error return.</dd></dl>
 <p>See <a class="el" href="#a801e1391c1907e56401a867210b8c25d" title="Loads (or refreshes) the column set for one table into the cache.">DatabaseSchema::populateSchema</a>. Fetches the column descriptions through <a class="el" href="classDatabaseController.html" title="Single gateway through which controllers execute SQL, in both blocking and coroutine form.">DatabaseController</a> and stores them under <code class="param">tableName</code> in the static map. Failure is treated as fatal: an error is logged and exit(EXIT_FAILURE) is called rather than leaving a partially populated cache. </p>
 
-<p class="definition">Definition at line <a class="el" href="databaseschema_8cpp_source.html#l00069">69</a> of file <a class="el" href="databaseschema_8cpp_source.html">databaseschema.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databaseschema_8cpp_source.html#l00092">92</a> of file <a class="el" href="databaseschema_8cpp_source.html">databaseschema.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="databaseschema_8hpp_source.html#l00088">databaseSchema</a>, <a class="el" href="message_8cpp_source.html#l00041">Message::ErrorMessage()</a>, <a class="el" href="store_8hpp_source.html#l00139">Store::getObject()</a>, and <a class="el" href="message_8cpp_source.html#l00040">Message::WarningMessage()</a>.</p>
+<p class="reference">References <a class="el" href="databaseschema_8hpp_source.html#l00109">databaseSchema</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, <a class="el" href="store_8hpp_source.html#l00190">Store::getObject()</a>, and <a class="el" href="message_8cpp_source.html#l00051">Message::WarningMessage()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="databaseschema_8cpp_source.html#l00044">DatabaseSchema()</a>, and <a class="el" href="#acfaf80023a95a35c0b38bc3594e18cf7">~DatabaseSchema()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="databaseschema_8cpp_source.html#l00056">DatabaseSchema()</a>, and <a class="el" href="#acfaf80023a95a35c0b38bc3594e18cf7">~DatabaseSchema()</a>.</p>
 
 </div>
 </div>
@@ -444,9 +444,9 @@ Static Private Attributes</h2></td></tr>
 <p>Logs every cached table/column tuple at info level (diagnostic helper). </p>
 <p>See <a class="el" href="#a6a5d958e7d5a760bcd929c88b1d93fa7" title="Logs every cached table/column tuple at info level (diagnostic helper).">DatabaseSchema::printSchema</a>. Emits one info-level line per column, including table name, column name, data type, constraint and nullability. Read-only diagnostic helper. </p>
 
-<p class="definition">Definition at line <a class="el" href="databaseschema_8cpp_source.html#l00095">95</a> of file <a class="el" href="databaseschema_8cpp_source.html">databaseschema.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databaseschema_8cpp_source.html#l00128">128</a> of file <a class="el" href="databaseschema_8cpp_source.html">databaseschema.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="databaseschema_8hpp_source.html#l00088">databaseSchema</a>, and <a class="el" href="message_8cpp_source.html#l00039">Message::InfoMessage()</a>.</p>
+<p class="reference">References <a class="el" href="databaseschema_8hpp_source.html#l00109">databaseSchema</a>, and <a class="el" href="message_8cpp_source.html#l00048">Message::InfoMessage()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#acfaf80023a95a35c0b38bc3594e18cf7">~DatabaseSchema()</a>.</p>
 
@@ -475,9 +475,9 @@ Static Private Attributes</h2></td></tr>
 
 <p>Shared schema snapshot; defined and populated once in <a class="el" href="databaseschema_8cpp.html" title="Implementation of the process-wide database schema cache declared in databaseschema....">databaseschema.cpp</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="databaseschema_8hpp_source.html#l00088">88</a> of file <a class="el" href="databaseschema_8hpp_source.html">databaseschema.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databaseschema_8hpp_source.html#l00109">109</a> of file <a class="el" href="databaseschema_8hpp_source.html">databaseschema.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="databaseschema_8cpp_source.html#l00088">getDatabaseSchema()</a>, <a class="el" href="databaseschema_8cpp_source.html#l00069">populateSchema()</a>, and <a class="el" href="databaseschema_8cpp_source.html#l00095">printSchema()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="databaseschema_8cpp_source.html#l00119">getDatabaseSchema()</a>, <a class="el" href="databaseschema_8cpp_source.html#l00092">populateSchema()</a>, and <a class="el" href="databaseschema_8cpp_source.html#l00128">printSchema()</a>.</p>
 
 </div>
 </div>

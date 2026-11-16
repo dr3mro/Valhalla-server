@@ -11,7 +11,8 @@
         <argsstring></argsstring>
         <name>TABLENAME</name>
         <qualifiedname>Clinics::TABLENAME</qualifiedname>
-        <initializer>= &quot;clinics&quot;</initializer>
+        <initializer>                            =
+&quot;clinics&quot;</initializer>
         <briefdescription>
 <para>Table bound to this entity; also the organisation table used by <ref refid="classCase" kindref="compound">Case</ref> permission queries. </para>
         </briefdescription>
@@ -19,9 +20,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/clinics.hpp" line="52" column="27" bodyfile="src/entities/services/clinics/clinics.hpp" bodystart="52" bodyend="-1"/>
-        <referencedby refid="classClinics_1a6624fff19faf226f56d1cbd2d28f56a1" compoundref="entities_2services_2clinics_2clinics_8hpp" startline="64" endline="66">Clinics</referencedby>
-        <referencedby refid="classClinics_1a8329e8d5c801efdc09654a36555986ec" compoundref="entities_2services_2clinics_2clinics_8hpp" startline="72" endline="72">getTableName</referencedby>
+        <location file="src/entities/services/clinics/clinics.hpp" line="67" column="25" bodyfile="src/entities/services/clinics/clinics.hpp" bodystart="67" bodyend="-1"/>
+        <referencedby refid="classClinics_1a6624fff19faf226f56d1cbd2d28f56a1" compoundref="entities_2services_2clinics_2clinics_8hpp" startline="85" endline="89">Clinics</referencedby>
+        <referencedby refid="classClinics_1a8329e8d5c801efdc09654a36555986ec" compoundref="entities_2services_2clinics_2clinics_8hpp" startline="95" endline="97">getTableName</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -49,7 +50,7 @@
 <parametername>T</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>A type accepted by <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref>, e.g. <ref refid="namespaceapi_1_1v2_1_1Types_1ac9a246b12a16bc018eec47370d2d6a20" kindref="member">api::v2::Types::Create_t</ref> or <ref refid="classRead__t" kindref="compound">Read_t</ref>. </para>
+<para>A type accepted by <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref>, e.g. <ref refid="namespaceapi_1_1v2_1_1Types_1a3c62a5c40f89f4df780a0aa64a374461" kindref="member">api::v2::Types::Create_t</ref> or <ref refid="classRead__t" kindref="compound">Read_t</ref>. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -66,9 +67,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/clinics.hpp" line="64" column="5" bodyfile="src/entities/services/clinics/clinics.hpp" bodystart="64" bodyend="66"/>
+        <location file="src/entities/services/clinics/clinics.hpp" line="85" column="3" bodyfile="src/entities/services/clinics/clinics.hpp" bodystart="85" bodyend="89"/>
         <references refid="classService_1af1e2a6e3a3d0dc6daad5f7ce21992166">Service::Service</references>
-        <references refid="classClinics_1ae3def213048c0f9b227f197b50a99794" compoundref="entities_2services_2clinics_2clinics_8hpp" startline="52">TABLENAME</references>
+        <references refid="classClinics_1ae3def213048c0f9b227f197b50a99794" compoundref="entities_2services_2clinics_2clinics_8hpp" startline="67">TABLENAME</references>
       </memberdef>
       <memberdef kind="function" id="classClinics_1a13791256501e67e23b4e2f7dce605efa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -83,7 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/clinics.hpp" line="77" column="5"/>
+        <location file="src/entities/services/clinics/clinics.hpp" line="104" column="3"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -103,8 +104,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/clinics.hpp" line="72" column="27" bodyfile="src/entities/services/clinics/clinics.hpp" bodystart="72" bodyend="72"/>
-        <references refid="classClinics_1ae3def213048c0f9b227f197b50a99794" compoundref="entities_2services_2clinics_2clinics_8hpp" startline="52">TABLENAME</references>
+        <location file="src/entities/services/clinics/clinics.hpp" line="95" column="25" bodyfile="src/entities/services/clinics/clinics.hpp" bodystart="95" bodyend="97"/>
+        <references refid="classClinics_1ae3def213048c0f9b227f197b50a99794" compoundref="entities_2services_2clinics_2clinics_8hpp" startline="67">TABLENAME</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -165,7 +166,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/entities/services/clinics/clinics.hpp" line="48" column="1" bodyfile="src/entities/services/clinics/clinics.hpp" bodystart="49" bodyend="78"/>
+    <location file="src/entities/services/clinics/clinics.hpp" line="63" column="1" bodyfile="src/entities/services/clinics/clinics.hpp" bodystart="63" bodyend="107"/>
     <listofallmembers>
       <member refid="classBase_1a58887755525abd3f340963e2bbdcc972" prot="public" virt="non-virtual"><scope>Clinics</scope><name>Base</name></member>
       <member refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" prot="protected" virt="non-virtual"><scope>Clinics</scope><name>buildCreateStatement</name></member>

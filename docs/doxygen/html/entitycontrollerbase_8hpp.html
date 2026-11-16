@@ -124,8 +124,8 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('entitycontroll
 <div class="textblock"><code>#include &lt;cstdint&gt;</code><br />
 <code>#include &lt;optional&gt;</code><br />
 <code>#include &lt;string_view&gt;</code><br />
-<code>#include &quot;<a class="el" href="callback_8hpp_source.html">utils/global/callback.hpp</a>&quot;</code><br />
 <code>#include &quot;drogon/utils/coroutine.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="callback_8hpp_source.html">utils/global/callback.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="requester_8hpp_source.html">utils/global/requester.hpp</a>&quot;</code><br />
 </div>
 <p><a href="entitycontrollerbase_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -137,7 +137,8 @@ Classes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Abstract contract for the request-facing CRUDS handlers exposed for every entity type. </p>
-<p>This header declares <span class="tt"><a class="el" href="classEntityControllerBase.html" title="Abstract contract for the request-facing CRUDS handlers exposed for every entity type.">EntityControllerBase</a></span>, a pure interface: it lists the ten operations (Create/Read/ Update/Delete/Search and their Async twins) that every ordinary entity handler must provide. It contains no implementation at all - each method ends in <span class="tt">= 0</span>, meaning "derived classes must fill this in".</p>
+<p>This header declares <span class="tt"><a class="el" href="classEntityControllerBase.html" title="Abstract contract for the request-facing CRUDS handlers exposed for every entity type.">EntityControllerBase</a></span>, a pure interface: it lists the ten operations (Create/Read/ Update/Delete/Search and their Async twins) that every ordinary entity handler must provide. It contains no implementation at all - each method ends in <span class="tt">= 0</span>, meaning "derived classes
+must fill this in".</p>
 <p>WHY THIS FILE MATTERS IN THE SERVER: It is the contract between the HTTP routing layer and the concrete <a class="el" href="classEntityController.html" title="Generic request-facing CRUDS handler: validates and authorizes a request, then delegates persistence ...">EntityController&lt;T&gt;</a>. Drogon handlers program against this base type, so they can treat a <a class="el" href="classUser.html" title="Client entity for the users table with an id lookup query.">User</a>, a <a class="el" href="classPatient.html" title="Case entity for the patients table; the patient record owned by a clinic.">Patient</a> or a Report uniformly. Without this interface the router would have to know every entity type, and there would be no single place guaranteeing that all entities expose the same CRUDS operations. The real work is done by <a class="el" href="classEntityController.html" title="Generic request-facing CRUDS handler: validates and authorizes a request, then delegates persistence ...">EntityController</a> (see <a class="el" href="entitycontroller_8hpp.html" title="Generic request-facing CRUDS handler: validates and authorizes a request, then delegates persistence ...">entitycontroller.hpp</a>), which implements everything declared here.</p>
 <p>CONCEPTS TO LEARN (for beginners):</p><ul>
 <li>Virtual functions / polymorphism: <a href="https://en.cppreference.com/w/cpp/language/virtual">https://en.cppreference.com/w/cpp/language/virtual</a></li>

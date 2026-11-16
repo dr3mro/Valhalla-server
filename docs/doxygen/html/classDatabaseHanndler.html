@@ -151,7 +151,7 @@ Private Attributes</h2></td></tr>
 <p>The constructor leases a connection from a <a class="el" href="classDatabaseConnectionPool.html" title="Owns the fixed set of synchronous Database connections and leases them to callers.">DatabaseConnectionPool</a> (waiting up to the acquire timeout and possibly throwing <a class="el" href="classDatabaseBusy.html" title="Exception signalling that the connection pool could not lease a connection in time.">DatabaseBusy</a>); the destructor returns it, so a thrown query exception cannot leak the connection. Intended as a short-lived, stack-allocated helper (the watchdog and controllers create one per check/query). Non-copyable and non-movable: one lease, one connection. </p><dl class="section note"><dt>Note</dt><dd>The class name is spelled <span class="tt"><a class="el" href="classDatabaseHanndler.html" title="RAII lease of a single pooled Database connection.">DatabaseHanndler</a></span> as used throughout the codebase. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classDatabaseConnectionPool.html" title="Owns the fixed set of synchronous Database connections and leases them to callers.">DatabaseConnectionPool</a>, <a class="el" href="classDatabaseBusy.html" title="Exception signalling that the connection pool could not lease a connection in time.">DatabaseBusy</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="databasehandler_8hpp_source.html#l00046">46</a> of file <a class="el" href="databasehandler_8hpp_source.html">databasehandler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databasehandler_8hpp_source.html#l00060">60</a> of file <a class="el" href="databasehandler_8hpp_source.html">databasehandler.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a43b2f603f6330897f5bcca99605cb433" name="a43b2f603f6330897f5bcca99605cb433"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a43b2f603f6330897f5bcca99605cb433">&#9670;&#160;</a></span>DatabaseHanndler() <span class="overload">[1/4]</span></h2>
@@ -177,11 +177,11 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="databasehandler_8cpp_source.html#l00038">38</a> of file <a class="el" href="databasehandler_8cpp_source.html">databasehandler.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databasehandler_8cpp_source.html#l00048">48</a> of file <a class="el" href="databasehandler_8cpp_source.html">databasehandler.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="databasehandler_8cpp_source.html#l00038">DatabaseHanndler()</a>.</p>
+<p class="reference">References <a class="el" href="databasehandler_8cpp_source.html#l00048">DatabaseHanndler()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="databasehandler_8cpp_source.html#l00038">DatabaseHanndler()</a>, <a class="el" href="#aa76584f3e4cf8d74f1cda195bb2c8f02">DatabaseHanndler()</a>, <a class="el" href="#aac5a8bac18e671b3d26bcd6f111707ad">DatabaseHanndler()</a>, <a class="el" href="#a490884ddfc7503673789a42784911bd6">operator=()</a>, and <a class="el" href="#add233bfb40803aa1ddee44b1a5bcefb4">operator=()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="databasehandler_8cpp_source.html#l00048">DatabaseHanndler()</a>, <a class="el" href="#aa76584f3e4cf8d74f1cda195bb2c8f02">DatabaseHanndler()</a>, <a class="el" href="#aac5a8bac18e671b3d26bcd6f111707ad">DatabaseHanndler()</a>, <a class="el" href="#a490884ddfc7503673789a42784911bd6">operator=()</a>, and <a class="el" href="#add233bfb40803aa1ddee44b1a5bcefb4">operator=()</a>.</p>
 
 </div>
 </div>
@@ -223,9 +223,9 @@ Private Attributes</h2></td></tr>
 </dl>
 <p>Leases one connection immediately so the handler always owns a valid lease. pool: Pool to lease from; stored so the destructor can return the connection. Throws <a class="el" href="classDatabaseBusy.html" title="Exception signalling that the connection pool could not lease a connection in time.">DatabaseBusy</a>: If the pool's acquire timeout expires. </p>
 
-<p class="definition">Definition at line <a class="el" href="databasehandler_8cpp_source.html#l00045">45</a> of file <a class="el" href="databasehandler_8cpp_source.html">databasehandler.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databasehandler_8cpp_source.html#l00058">58</a> of file <a class="el" href="databasehandler_8cpp_source.html">databasehandler.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="databasehandler_8hpp_source.html#l00089">databaseConnectionPool</a>, and <a class="el" href="databasehandler_8hpp_source.html#l00094">db_ptr</a>.</p>
+<p class="reference">References <a class="el" href="databasehandler_8hpp_source.html#l00122">databaseConnectionPool</a>, and <a class="el" href="databasehandler_8hpp_source.html#l00130">db_ptr</a>.</p>
 
 </div>
 </div>
@@ -252,7 +252,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="databasehandler_8cpp_source.html#l00038">DatabaseHanndler()</a>.</p>
+<p class="reference">References <a class="el" href="databasehandler_8cpp_source.html#l00048">DatabaseHanndler()</a>.</p>
 
 </div>
 </div>
@@ -279,7 +279,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="databasehandler_8cpp_source.html#l00038">DatabaseHanndler()</a>.</p>
+<p class="reference">References <a class="el" href="databasehandler_8cpp_source.html#l00048">DatabaseHanndler()</a>.</p>
 
 </div>
 </div>
@@ -310,9 +310,9 @@ Private Attributes</h2></td></tr>
 <p>Returns the leased connection to the pool, if any is still held.</p>
 <p>The null check makes destruction safe even after a connection was moved out. </p>
 
-<p class="definition">Definition at line <a class="el" href="databasehandler_8cpp_source.html#l00051">51</a> of file <a class="el" href="databasehandler_8cpp_source.html">databasehandler.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databasehandler_8cpp_source.html#l00069">69</a> of file <a class="el" href="databasehandler_8cpp_source.html">databasehandler.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="databasehandler_8hpp_source.html#l00089">databaseConnectionPool</a>, and <a class="el" href="databasehandler_8hpp_source.html#l00094">db_ptr</a>.</p>
+<p class="reference">References <a class="el" href="databasehandler_8hpp_source.html#l00122">databaseConnectionPool</a>, and <a class="el" href="databasehandler_8hpp_source.html#l00130">db_ptr</a>.</p>
 
 </div>
 </div>
@@ -338,9 +338,9 @@ Private Attributes</h2></td></tr>
 <dd>
 The connection leased in the constructor. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="databasehandler_8cpp_source.html#l00063">63</a> of file <a class="el" href="databasehandler_8cpp_source.html">databasehandler.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databasehandler_8cpp_source.html#l00083">83</a> of file <a class="el" href="databasehandler_8cpp_source.html">databasehandler.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="databasehandler_8hpp_source.html#l00094">db_ptr</a>.</p>
+<p class="reference">References <a class="el" href="databasehandler_8hpp_source.html#l00130">db_ptr</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#add233bfb40803aa1ddee44b1a5bcefb4">operator=()</a>.</p>
 
@@ -369,7 +369,7 @@ The connection leased in the constructor. </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="databasehandler_8cpp_source.html#l00038">DatabaseHanndler()</a>.</p>
+<p class="reference">References <a class="el" href="databasehandler_8cpp_source.html#l00048">DatabaseHanndler()</a>.</p>
 
 </div>
 </div>
@@ -396,7 +396,7 @@ The connection leased in the constructor. </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="databasehandler_8cpp_source.html#l00038">DatabaseHanndler()</a>, <a class="el" href="databasehandler_8cpp_source.html#l00063">get_connection()</a>, and <a class="el" href="databasehandler_8cpp_source.html#l00068">reconnect_all()</a>.</p>
+<p class="reference">References <a class="el" href="databasehandler_8cpp_source.html#l00048">DatabaseHanndler()</a>, <a class="el" href="databasehandler_8cpp_source.html#l00083">get_connection()</a>, and <a class="el" href="databasehandler_8cpp_source.html#l00091">reconnect_all()</a>.</p>
 
 </div>
 </div>
@@ -419,9 +419,9 @@ The connection leased in the constructor. </dd></dl>
 <p>Forwards the reconnect request to the owning pool.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classDatabaseConnectionPool.html#a51134b38454f5146921c081fbf2ad5f3" title="Reconnects every idle connection in parallel.">DatabaseConnectionPool::reconnect_all</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="databasehandler_8cpp_source.html#l00068">68</a> of file <a class="el" href="databasehandler_8cpp_source.html">databasehandler.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databasehandler_8cpp_source.html#l00091">91</a> of file <a class="el" href="databasehandler_8cpp_source.html">databasehandler.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="databasehandler_8hpp_source.html#l00089">databaseConnectionPool</a>.</p>
+<p class="reference">References <a class="el" href="databasehandler_8hpp_source.html#l00122">databaseConnectionPool</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#add233bfb40803aa1ddee44b1a5bcefb4">operator=()</a>.</p>
 
@@ -449,9 +449,9 @@ The connection leased in the constructor. </dd></dl>
 </div><div class="memdoc">
 <p>Pool that owns the leased connection; kept alive for the lifetime of the lease. </p>
 
-<p class="definition">Definition at line <a class="el" href="databasehandler_8hpp_source.html#l00089">89</a> of file <a class="el" href="databasehandler_8hpp_source.html">databasehandler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databasehandler_8hpp_source.html#l00122">122</a> of file <a class="el" href="databasehandler_8hpp_source.html">databasehandler.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="databasehandler_8cpp_source.html#l00045">DatabaseHanndler()</a>, <a class="el" href="databasehandler_8cpp_source.html#l00068">reconnect_all()</a>, and <a class="el" href="databasehandler_8cpp_source.html#l00051">~DatabaseHanndler()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="databasehandler_8cpp_source.html#l00058">DatabaseHanndler()</a>, <a class="el" href="databasehandler_8cpp_source.html#l00091">reconnect_all()</a>, and <a class="el" href="databasehandler_8cpp_source.html#l00069">~DatabaseHanndler()</a>.</p>
 
 </div>
 </div>
@@ -476,9 +476,9 @@ The connection leased in the constructor. </dd></dl>
 </div><div class="memdoc">
 <p>The single connection leased in the constructor and returned in the destructor. </p>
 
-<p class="definition">Definition at line <a class="el" href="databasehandler_8hpp_source.html#l00094">94</a> of file <a class="el" href="databasehandler_8hpp_source.html">databasehandler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="databasehandler_8hpp_source.html#l00130">130</a> of file <a class="el" href="databasehandler_8hpp_source.html">databasehandler.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="databasehandler_8cpp_source.html#l00045">DatabaseHanndler()</a>, <a class="el" href="databasehandler_8cpp_source.html#l00063">get_connection()</a>, and <a class="el" href="databasehandler_8cpp_source.html#l00051">~DatabaseHanndler()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="databasehandler_8cpp_source.html#l00058">DatabaseHanndler()</a>, <a class="el" href="databasehandler_8cpp_source.html#l00083">get_connection()</a>, and <a class="el" href="databasehandler_8cpp_source.html#l00069">~DatabaseHanndler()</a>.</p>
 
 </div>
 </div>

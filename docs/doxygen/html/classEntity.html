@@ -194,11 +194,11 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Concrete <a class="el" href="classBase.html">Base</a> implementation that turns a CRUD value type into SQL statements. </p>
-<p>An <a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a> pairs one <a class="el" href="namespaceapi_1_1v2_1_1Types.html#a660879cfcb0c87bea3713b41e8120c21" title="The set of operation payloads an Entity may hold; the active alternative selects the builder.">api::v2::Types::EntityType</a> alternative with the database table (also used as the permission "group") it belongs to. The five <a class="el" href="classBase.html">Base</a> builders are thin adapters that create a fresh <a class="el" href="structBase_1_1Binder.html" title="Appends values to a pqxx::params and hands back the matching SQL placeholders.">Binder</a> and delegate to the build* helpers below; each helper owns the details of one statement shape. Instances are created for each request and are immutable after construction (both the variant and the table name are const), except for the id cached by <a class="el" href="#ac1d661555222fabdf77fc5750da50b19" title="Asks the database whether the id carried by the payload already exists in this table.">check_id_exists()</a>. All parameter values go through Binder::bind, so they never appear in the SQL text. </p><dl class="section note"><dt>Note</dt><dd>Neither copy nor move is allowed; construct the entity in place for the request that uses it. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classBase.html">Base</a>, <a class="el" href="namespaceapi_1_1v2_1_1Types.html#a660879cfcb0c87bea3713b41e8120c21" title="The set of operation payloads an Entity may hold; the active alternative selects the builder.">api::v2::Types::EntityType</a> </dd></dl>
+<p>An <a class="el" href="classEntity.html" title="Concrete Base implementation that turns a CRUD value type into SQL statements.">Entity</a> pairs one <a class="el" href="namespaceapi_1_1v2_1_1Types.html#a017c2dae50a37a2e161f30329c692680" title="The set of operation payloads an Entity may hold; the active alternative selects the builder.">api::v2::Types::EntityType</a> alternative with the database table (also used as the permission "group") it belongs to. The five <a class="el" href="classBase.html">Base</a> builders are thin adapters that create a fresh <a class="el" href="structBase_1_1Binder.html" title="Appends values to a pqxx::params and hands back the matching SQL placeholders.">Binder</a> and delegate to the build* helpers below; each helper owns the details of one statement shape. Instances are created for each request and are immutable after construction (both the variant and the table name are const), except for the id cached by <a class="el" href="#ac1d661555222fabdf77fc5750da50b19" title="Asks the database whether the id carried by the payload already exists in this table.">check_id_exists()</a>. All parameter values go through Binder::bind, so they never appear in the SQL text. </p><dl class="section note"><dt>Note</dt><dd>Neither copy nor move is allowed; construct the entity in place for the request that uses it. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classBase.html">Base</a>, <a class="el" href="namespaceapi_1_1v2_1_1Types.html#a017c2dae50a37a2e161f30329c692680" title="The set of operation payloads an Entity may hold; the active alternative selects the builder.">api::v2::Types::EntityType</a> </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>For a beginner: the five getSql*Statement functions are the public "adapters"; each makes a <a class="el" href="structBase_1_1Binder.html" title="Appends values to a pqxx::params and hands back the matching SQL placeholders.">Binder</a> and calls one private-ish build* helper. Splitting them this way keeps the public API small while letting each SQL shape be written and read on its own. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00075">75</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00104">104</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a936dfd4b5db17a339819ae5800c33a93" name="a936dfd4b5db17a339819ae5800c33a93"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a936dfd4b5db17a339819ae5800c33a93">&#9670;&#160;</a></span>Entity() <span class="overload">[1/3]</span></h2>
@@ -227,7 +227,7 @@ Private Attributes</h2></td></tr>
 
 <p class="reference">References <a class="el" href="#a936dfd4b5db17a339819ae5800c33a93">Entity()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="appointment_8hpp_source.html#l00060">Appointment::Appointment()</a>, <a class="el" href="case_8hpp_source.html#l00077">Case::Case()</a>, <a class="el" href="client_8hpp_source.html#l00100">api::v2::Client::Client()</a>, <a class="el" href="#a936dfd4b5db17a339819ae5800c33a93">Entity()</a>, <a class="el" href="#ad3455dba49aa870a3f298f490771600c">Entity()</a>, <a class="el" href="#a1f6d7e8353984497c45053a421a35b53">operator=()</a>, <a class="el" href="#adb86b6ab4d1b39b00c2472af16840fe5">operator=()</a>, and <a class="el" href="service_8hpp_source.html#l00075">Service::Service()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="appointment_8hpp_source.html#l00073">Appointment::Appointment()</a>, <a class="el" href="case_8hpp_source.html#l00094">Case::Case()</a>, <a class="el" href="client_8hpp_source.html#l00131">api::v2::Client::Client()</a>, <a class="el" href="#a936dfd4b5db17a339819ae5800c33a93">Entity()</a>, <a class="el" href="#ad3455dba49aa870a3f298f490771600c">Entity()</a>, <a class="el" href="#a1f6d7e8353984497c45053a421a35b53">operator=()</a>, <a class="el" href="#adb86b6ab4d1b39b00c2472af16840fe5">operator=()</a>, and <a class="el" href="service_8hpp_source.html#l00092">Service::Service()</a>.</p>
 
 </div>
 </div>
@@ -290,7 +290,7 @@ template&lt;typename T&gt; </div>
 <p>Stores _data in the <a class="el" href="entity_8hpp.html#aa7ee46136fb273d4151dc647393adcdd" title="Short names for the CRUD value types and the variant they live in (see api::v2::Types).">EntityType</a> variant and remembers the target table name. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">T</td><td>One of the alternatives <a class="el" href="namespaceapi_1_1v2_1_1Types.html#a660879cfcb0c87bea3713b41e8120c21" title="The set of operation payloads an Entity may hold; the active alternative selects the builder.">api::v2::Types::EntityType</a> can hold. </td></tr>
+    <tr><td class="paramname">T</td><td>One of the alternatives <a class="el" href="namespaceapi_1_1v2_1_1Types.html#a017c2dae50a37a2e161f30329c692680" title="The set of operation payloads an Entity may hold; the active alternative selects the builder.">api::v2::Types::EntityType</a> can hold. </td></tr>
   </table>
   </dd>
 </dl>
@@ -303,9 +303,9 @@ template&lt;typename T&gt; </div>
 </dl>
 <dl class="section pre"><dt>Precondition</dt><dd>T must be an alternative of <a class="el" href="entity_8hpp.html#aa7ee46136fb273d4151dc647393adcdd" title="Short names for the CRUD value types and the variant they live in (see api::v2::Types).">EntityType</a>; otherwise the variant construction fails. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00095">95</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00131">131</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00393">data</a>, and <a class="el" href="entity_8hpp_source.html#l00381">tablename</a>.</p>
+<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00596">data</a>, and <a class="el" href="entity_8hpp_source.html#l00573">tablename</a>.</p>
 
 </div>
 </div>
@@ -377,11 +377,11 @@ template&lt;typename <a class="el" href="structBase_1_1Binder.html">Binder</a>&g
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>INSERT ... RETURNING *, or std::nullopt if an exception occurs. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00207">207</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00295">295</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="base_8hpp_source.html#l00136">Base::Binder::bind()</a>, <a class="el" href="message_8cpp_source.html#l00042">Message::CriticalMessage()</a>, <a class="el" href="entity_8hpp_source.html#l00393">data</a>, <a class="el" href="message_8cpp_source.html#l00041">Message::ErrorMessage()</a>, and <a class="el" href="entity_8hpp_source.html#l00381">tablename</a>.</p>
+<p class="reference">References <a class="el" href="base_8hpp_source.html#l00178">Base::Binder::bind()</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="entity_8hpp_source.html#l00596">data</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, and <a class="el" href="entity_8hpp_source.html#l00573">tablename</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entity_8hpp_source.html#l00109">getSqlCreateStatement()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entity_8hpp_source.html#l00151">getSqlCreateStatement()</a>.</p>
 
 </div>
 </div>
@@ -425,11 +425,11 @@ template&lt;typename <a class="el" href="structBase_1_1Binder.html">Binder</a>&g
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>DELETE ... RETURNING id, or std::nullopt when no id is available or an exception occurs. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00323">323</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00490">490</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="base_8hpp_source.html#l00136">Base::Binder::bind()</a>, <a class="el" href="message_8cpp_source.html#l00042">Message::CriticalMessage()</a>, <a class="el" href="entity_8hpp_source.html#l00393">data</a>, <a class="el" href="message_8cpp_source.html#l00041">Message::ErrorMessage()</a>, and <a class="el" href="entity_8hpp_source.html#l00381">tablename</a>.</p>
+<p class="reference">References <a class="el" href="base_8hpp_source.html#l00178">Base::Binder::bind()</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="entity_8hpp_source.html#l00596">data</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, and <a class="el" href="entity_8hpp_source.html#l00573">tablename</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entity_8hpp_source.html#l00142">getSqlDeleteStatement()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entity_8hpp_source.html#l00191">getSqlDeleteStatement()</a>.</p>
 
 </div>
 </div>
@@ -473,11 +473,11 @@ template&lt;typename <a class="el" href="structBase_1_1Binder.html">Binder</a>&g
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>SELECT ... LIMIT 1, or std::nullopt when no id is available or an exception occurs. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00251">251</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00368">368</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="base_8hpp_source.html#l00136">Base::Binder::bind()</a>, <a class="el" href="message_8cpp_source.html#l00042">Message::CriticalMessage()</a>, <a class="el" href="entity_8hpp_source.html#l00393">data</a>, <a class="el" href="message_8cpp_source.html#l00041">Message::ErrorMessage()</a>, and <a class="el" href="entity_8hpp_source.html#l00381">tablename</a>.</p>
+<p class="reference">References <a class="el" href="base_8hpp_source.html#l00178">Base::Binder::bind()</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="entity_8hpp_source.html#l00596">data</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, and <a class="el" href="entity_8hpp_source.html#l00573">tablename</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entity_8hpp_source.html#l00120">getSqlReadStatement()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entity_8hpp_source.html#l00165">getSqlReadStatement()</a>.</p>
 
 </div>
 </div>
@@ -522,11 +522,11 @@ template&lt;typename <a class="el" href="structBase_1_1Binder.html">Binder</a>&g
 <dl class="section return"><dt>Returns</dt><dd>The SELECT text, or std::nullopt if an exception occurs. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Bindings are made into named locals first because argument evaluation order is unspecified; the placeholder numbering must follow a fixed order. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00356">356</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00533">533</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="base_8hpp_source.html#l00136">Base::Binder::bind()</a>, <a class="el" href="message_8cpp_source.html#l00042">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00041">Message::ErrorMessage()</a>, <a class="el" href="entity_8hpp_source.html#l00163">getData()</a>, and <a class="el" href="entity_8hpp_source.html#l00381">tablename</a>.</p>
+<p class="reference">References <a class="el" href="base_8hpp_source.html#l00178">Base::Binder::bind()</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, <a class="el" href="entity_8hpp_source.html#l00220">getData()</a>, and <a class="el" href="entity_8hpp_source.html#l00573">tablename</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entity_8hpp_source.html#l00153">getSqlSearchStatement()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entity_8hpp_source.html#l00205">getSqlSearchStatement()</a>.</p>
 
 </div>
 </div>
@@ -570,11 +570,11 @@ template&lt;typename <a class="el" href="structBase_1_1Binder.html">Binder</a>&g
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>UPDATE ... RETURNING *, or std::nullopt when no id is available or an exception occurs. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00284">284</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00425">425</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="base_8hpp_source.html#l00136">Base::Binder::bind()</a>, <a class="el" href="message_8cpp_source.html#l00042">Message::CriticalMessage()</a>, <a class="el" href="entity_8hpp_source.html#l00393">data</a>, <a class="el" href="message_8cpp_source.html#l00041">Message::ErrorMessage()</a>, and <a class="el" href="entity_8hpp_source.html#l00381">tablename</a>.</p>
+<p class="reference">References <a class="el" href="base_8hpp_source.html#l00178">Base::Binder::bind()</a>, <a class="el" href="message_8cpp_source.html#l00057">Message::CriticalMessage()</a>, <a class="el" href="entity_8hpp_source.html#l00596">data</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, and <a class="el" href="entity_8hpp_source.html#l00573">tablename</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entity_8hpp_source.html#l00131">getSqlUpdateStatement()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entity_8hpp_source.html#l00178">getSqlUpdateStatement()</a>.</p>
 
 </div>
 </div>
@@ -619,9 +619,9 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00183">183</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00253">253</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00387">databaseController()</a>, <a class="el" href="message_8cpp_source.html#l00041">Message::ErrorMessage()</a>, <a class="el" href="entity_8hpp_source.html#l00163">getData()</a>, and <a class="el" href="entity_8hpp_source.html#l00381">tablename</a>.</p>
+<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00585">databaseController()</a>, <a class="el" href="message_8cpp_source.html#l00054">Message::ErrorMessage()</a>, <a class="el" href="entity_8hpp_source.html#l00220">getData()</a>, and <a class="el" href="entity_8hpp_source.html#l00573">tablename</a>.</p>
 
 </div>
 </div>
@@ -651,11 +651,11 @@ template&lt;typename T&gt; </div>
 <p>Returns the process-wide <a class="el" href="classDatabaseController.html" title="Single gateway through which controllers execute SQL, in both blocking and coroutine form.">DatabaseController</a> from the global object store. </p>
 <dl class="section return"><dt>Returns</dt><dd>Shared pointer to the cached controller; entities do not own a per-instance handle. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00387">387</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00585">585</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="store_8hpp_source.html#l00189">Store::cachedObject()</a>.</p>
+<p class="reference">References <a class="el" href="store_8hpp_source.html#l00260">Store::cachedObject()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entity_8hpp_source.html#l00183">check_id_exists()</a>, and <a class="el" href="client_8hpp_source.html#l00184">api::v2::Client::exists()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entity_8hpp_source.html#l00253">check_id_exists()</a>, and <a class="el" href="client_8hpp_source.html#l00262">api::v2::Client::exists()</a>.</p>
 
 </div>
 </div>
@@ -685,11 +685,11 @@ template&lt;typename T&gt; </div>
 <p>Exposes the operation-specific payload held in the variant. </p>
 <dl class="section return"><dt>Returns</dt><dd>Const reference to the <a class="el" href="entity_8hpp.html#aa7ee46136fb273d4151dc647393adcdd" title="Short names for the CRUD value types and the variant they live in (see api::v2::Types).">EntityType</a> variant; valid for the entity's lifetime. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00163">163</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00220">220</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00393">data</a>.</p>
+<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00596">data</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="client_8hpp_source.html#l00214">api::v2::Client::buildClientCreateStatement()</a>, <a class="el" href="client_8hpp_source.html#l00249">api::v2::Client::buildClientUpdateStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00356">buildSearchStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00183">check_id_exists()</a>, <a class="el" href="client_8hpp_source.html#l00184">api::v2::Client::exists()</a>, <a class="el" href="service_8hpp_source.html#l00092">Service::getSqlAddStaffStatement()</a>, <a class="el" href="provider_8hpp_source.html#l00099">Provider::getSqlGetServicesStatement()</a>, <a class="el" href="people_2user_8hpp_source.html#l00092">User::getSqlGetServicesStatement()</a>, <a class="el" href="patient_8hpp_source.html#l00119">Patient::getSqlGetVisitsStatement()</a>, <a class="el" href="service_8hpp_source.html#l00125">Service::getSqlRemoveStaffStatement()</a>, and <a class="el" href="client_8hpp_source.html#l00135">api::v2::Client::getSqlToggleSuspendStatement()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="client_8hpp_source.html#l00311">api::v2::Client::buildClientCreateStatement()</a>, <a class="el" href="client_8hpp_source.html#l00365">api::v2::Client::buildClientUpdateStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00533">buildSearchStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00253">check_id_exists()</a>, <a class="el" href="client_8hpp_source.html#l00262">api::v2::Client::exists()</a>, <a class="el" href="service_8hpp_source.html#l00114">Service::getSqlAddStaffStatement()</a>, <a class="el" href="provider_8hpp_source.html#l00126">Provider::getSqlGetServicesStatement()</a>, <a class="el" href="people_2user_8hpp_source.html#l00112">User::getSqlGetServicesStatement()</a>, <a class="el" href="patient_8hpp_source.html#l00177">Patient::getSqlGetVisitsStatement()</a>, <a class="el" href="service_8hpp_source.html#l00165">Service::getSqlRemoveStaffStatement()</a>, and <a class="el" href="client_8hpp_source.html#l00184">api::v2::Client::getSqlToggleSuspendStatement()</a>.</p>
 
 </div>
 </div>
@@ -719,9 +719,9 @@ template&lt;typename T&gt; </div>
 <p>Returns the table name, which doubles as the entity's permission group name. </p>
 <dl class="section return"><dt>Returns</dt><dd>The table name supplied at construction. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00169">169</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00233">233</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00381">tablename</a>.</p>
+<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00573">tablename</a>.</p>
 
 </div>
 </div>
@@ -759,9 +759,9 @@ template&lt;typename T&gt; </div>
 
 <p>Implements <a class="el" href="classBase.html#a370479ee58fedd41365acea55b47de9b">Base</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00109">109</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00151">151</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00207">buildCreateStatement()</a>.</p>
+<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00295">buildCreateStatement()</a>.</p>
 
 </div>
 </div>
@@ -799,9 +799,9 @@ template&lt;typename T&gt; </div>
 
 <p>Implements <a class="el" href="classBase.html#a35f7a42b849a9eaf439715a4b280a8f4">Base</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00142">142</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00191">191</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00323">buildDeleteStatement()</a>.</p>
+<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00490">buildDeleteStatement()</a>.</p>
 
 </div>
 </div>
@@ -839,9 +839,9 @@ template&lt;typename T&gt; </div>
 
 <p>Implements <a class="el" href="classBase.html#ad1d05549ca23bf4602c86fb3f6575d30">Base</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00120">120</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00165">165</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00251">buildReadStatement()</a>.</p>
+<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00368">buildReadStatement()</a>.</p>
 
 </div>
 </div>
@@ -879,9 +879,9 @@ template&lt;typename T&gt; </div>
 
 <p>Implements <a class="el" href="classBase.html#a3b86dc196e03d75434ff98e8e04fe303">Base</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00153">153</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00205">205</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00356">buildSearchStatement()</a>.</p>
+<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00533">buildSearchStatement()</a>.</p>
 
 </div>
 </div>
@@ -919,9 +919,9 @@ template&lt;typename T&gt; </div>
 
 <p>Implements <a class="el" href="classBase.html#a48122a0f0bd77d2aadcbe10b3e0863fd">Base</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00131">131</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00178">178</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00284">buildUpdateStatement()</a>.</p>
+<p class="reference">References <a class="el" href="entity_8hpp_source.html#l00425">buildUpdateStatement()</a>.</p>
 
 </div>
 </div>
@@ -1002,9 +1002,9 @@ template&lt;typename T&gt; </div>
 
 <p>The operation-specific payload; its active alternative selects which builder is valid. </p>
 
-<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00393">393</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00596">596</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="entity_8hpp_source.html#l00207">buildCreateStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00323">buildDeleteStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00251">buildReadStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00284">buildUpdateStatement()</a>, <a class="el" href="case_8hpp_source.html#l00077">Case::Case()</a>, <a class="el" href="client_8hpp_source.html#l00100">api::v2::Client::Client()</a>, <a class="el" href="entity_8hpp_source.html#l00095">Entity()</a>, <a class="el" href="entity_8hpp_source.html#l00163">getData()</a>, <a class="el" href="provider_8hpp_source.html#l00075">Provider::Provider()</a>, <a class="el" href="service_8hpp_source.html#l00075">Service::Service()</a>, and <a class="el" href="people_2user_8hpp_source.html#l00071">User::User()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="entity_8hpp_source.html#l00295">buildCreateStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00490">buildDeleteStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00368">buildReadStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00425">buildUpdateStatement()</a>, <a class="el" href="case_8hpp_source.html#l00094">Case::Case()</a>, <a class="el" href="client_8hpp_source.html#l00131">api::v2::Client::Client()</a>, <a class="el" href="entity_8hpp_source.html#l00131">Entity()</a>, <a class="el" href="entity_8hpp_source.html#l00220">getData()</a>, <a class="el" href="provider_8hpp_source.html#l00091">Provider::Provider()</a>, <a class="el" href="service_8hpp_source.html#l00092">Service::Service()</a>, and <a class="el" href="people_2user_8hpp_source.html#l00085">User::User()</a>.</p>
 
 </div>
 </div>
@@ -1030,9 +1030,9 @@ template&lt;typename T&gt; </div>
 
 <p>Table this entity targets; also the group name used by permission checks. </p>
 
-<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00381">381</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00573">573</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="client_8hpp_source.html#l00214">api::v2::Client::buildClientCreateStatement()</a>, <a class="el" href="client_8hpp_source.html#l00249">api::v2::Client::buildClientUpdateStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00207">buildCreateStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00323">buildDeleteStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00251">buildReadStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00356">buildSearchStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00284">buildUpdateStatement()</a>, <a class="el" href="case_8hpp_source.html#l00077">Case::Case()</a>, <a class="el" href="entity_8hpp_source.html#l00183">check_id_exists()</a>, <a class="el" href="client_8hpp_source.html#l00100">api::v2::Client::Client()</a>, <a class="el" href="entity_8hpp_source.html#l00095">Entity()</a>, <a class="el" href="client_8hpp_source.html#l00184">api::v2::Client::exists()</a>, <a class="el" href="entity_8hpp_source.html#l00169">getGroupName()</a>, <a class="el" href="case_8hpp_source.html#l00119">Case::getPermissionsQueryForCreateImpl()</a>, <a class="el" href="case_8hpp_source.html#l00172">Case::getPermissionsQueryForDeleteImp()</a>, <a class="el" href="case_8hpp_source.html#l00138">Case::getPermissionsQueryForReadImp()</a>, <a class="el" href="case_8hpp_source.html#l00155">Case::getPermissionsQueryForUpdateImpl()</a>, <a class="el" href="service_8hpp_source.html#l00092">Service::getSqlAddStaffStatement()</a>, <a class="el" href="people_2user_8hpp_source.html#l00092">User::getSqlGetServicesStatement()</a>, <a class="el" href="service_8hpp_source.html#l00125">Service::getSqlRemoveStaffStatement()</a>, <a class="el" href="client_8hpp_source.html#l00135">api::v2::Client::getSqlToggleSuspendStatement()</a>, and <a class="el" href="service_8hpp_source.html#l00075">Service::Service()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="client_8hpp_source.html#l00311">api::v2::Client::buildClientCreateStatement()</a>, <a class="el" href="client_8hpp_source.html#l00365">api::v2::Client::buildClientUpdateStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00295">buildCreateStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00490">buildDeleteStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00368">buildReadStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00533">buildSearchStatement()</a>, <a class="el" href="entity_8hpp_source.html#l00425">buildUpdateStatement()</a>, <a class="el" href="case_8hpp_source.html#l00094">Case::Case()</a>, <a class="el" href="entity_8hpp_source.html#l00253">check_id_exists()</a>, <a class="el" href="client_8hpp_source.html#l00131">api::v2::Client::Client()</a>, <a class="el" href="entity_8hpp_source.html#l00131">Entity()</a>, <a class="el" href="client_8hpp_source.html#l00262">api::v2::Client::exists()</a>, <a class="el" href="entity_8hpp_source.html#l00233">getGroupName()</a>, <a class="el" href="case_8hpp_source.html#l00154">Case::getPermissionsQueryForCreateImpl()</a>, <a class="el" href="case_8hpp_source.html#l00229">Case::getPermissionsQueryForDeleteImp()</a>, <a class="el" href="case_8hpp_source.html#l00181">Case::getPermissionsQueryForReadImp()</a>, <a class="el" href="case_8hpp_source.html#l00205">Case::getPermissionsQueryForUpdateImpl()</a>, <a class="el" href="service_8hpp_source.html#l00114">Service::getSqlAddStaffStatement()</a>, <a class="el" href="people_2user_8hpp_source.html#l00112">User::getSqlGetServicesStatement()</a>, <a class="el" href="service_8hpp_source.html#l00165">Service::getSqlRemoveStaffStatement()</a>, <a class="el" href="client_8hpp_source.html#l00184">api::v2::Client::getSqlToggleSuspendStatement()</a>, and <a class="el" href="service_8hpp_source.html#l00092">Service::Service()</a>.</p>
 
 </div>
 </div>

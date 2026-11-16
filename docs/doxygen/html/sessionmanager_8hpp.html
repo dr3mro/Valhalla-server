@@ -119,14 +119,15 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('sessionmanager
 </div><!--header-->
 <div class="contents">
 
-<p>The login/logout flow and the in-memory store of active sessions. (Originally: "Owns the client login flow and the in-memory session cache.").  
+<p>The login/logout flow and the in-memory store of active sessions. (Originally: "Owns the client login flow and the in-memory session
+cache.").  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;chrono&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;optional&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
-<code>#include &quot;<a class="el" href="keeprbase_8hpp_source.html">gatekeeper/keeprbase/keeprbase.hpp</a>&quot;</code><br />
 <code>#include &quot;drogon/utils/coroutine.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="keeprbase_8hpp_source.html">gatekeeper/keeprbase/keeprbase.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="passwordcrypt_8hpp_source.html">gatekeeper/passwordcrypt/passwordcrypt.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="gatekeeper_2types_8hpp_source.html">gatekeeper/types.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="store_8hpp_source.html">store/store.hpp</a>&quot;</code><br />
@@ -146,9 +147,10 @@ Namespaces</h2></td></tr>
 <tr class="memitem:api_3A_3Av2" id="r_api_3A_3Av2"><td class="memItemLeft">namespace &#160;</td><td class="memItemRight"><a class="el" href="namespaceapi_1_1v2.html">api::v2</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The login/logout flow and the in-memory store of active sessions. (Originally: "Owns the client login flow and the in-memory session cache."). </p>
-<p>This header declares <a class="el" href="sessionmanager_8cpp.html#a8256b008f0e6c1884c2b7aca9d53fec2">SessionManager</a>. It splits logging in into two steps so the slow password check can run on a worker thread, and it keeps active sessions in a shared in-memory cache. Sessions are identified by a "&lt;group&gt;_&lt;id&gt;" key and carry an expiry time.</p>
-<p>WHY THIS FILE MATTERS IN THE SERVER: <a class="el" href="controller_8hpp.html#aa21c1eb0e46bd1813cc4cba55771c0a3" title="Convenience alias for the authorisation service.">GateKeeper</a> calls this class on every login and logout request. It is the bridge between credentials (username/password) and a valid session/token. Without it, the server could neither prove who a user is nor remember that they are already logged in.</p>
+<div class="textblock"><p>The login/logout flow and the in-memory store of active sessions. (Originally: "Owns the client login flow and the in-memory session
+cache."). </p>
+<p>This header declares <a class="el" href="sessionmanager_8cpp.html#aa7df7e3b388a985439e1eb11eba04a0f">SessionManager</a>. It splits logging in into two steps so the slow password check can run on a worker thread, and it keeps active sessions in a shared in-memory cache. Sessions are identified by a "&lt;group&gt;_&lt;id&gt;" key and carry an expiry time.</p>
+<p>WHY THIS FILE MATTERS IN THE SERVER: <a class="el" href="controller_8hpp.html#a3100d7dd64f64ce2844ac60863afbaa1" title="Convenience alias for the authorisation service.">GateKeeper</a> calls this class on every login and logout request. It is the bridge between credentials (username/password) and a valid session/token. Without it, the server could neither prove who a user is nor remember that they are already logged in.</p>
 <p>CONCEPTS TO LEARN (for beginners):</p><ul>
 <li>Sessions vs tokens: <a href="https://en.wikipedia.org/wiki/Session_(computer_science)">https://en.wikipedia.org/wiki/Session_(computer_science)</a></li>
 <li>Timing attacks (why token comparison is constant-time): <a href="https://en.wikipedia.org/wiki/Timing_attack">https://en.wikipedia.org/wiki/Timing_attack</a></li>

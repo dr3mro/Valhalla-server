@@ -121,93 +121,119 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('watchdog_8hpp_
 <a href="watchdog_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/**</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * @file watchdog.hpp</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * @brief Background health monitor for the pooled database connections.</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * @details This header declares WatchDog, a small class that owns a background thread. The</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *          thread wakes once per interval, leases one pooled connection through a</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *          DatabaseHanndler, checks whether the link is alive, and reconnects it (and the rest</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> *          of the idle pool) when it is not. An atomic flag lets the destructor signal shutdown</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *          and then join the thread cleanly.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * @details This header declares WatchDog, a small class that owns a background</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * thread. The thread wakes once per interval, leases one pooled connection</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * through a DatabaseHanndler, checks whether the link is alive, and reconnects</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * it (and the rest of the idle pool) when it is not. An atomic flag lets the</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * destructor signal shutdown and then join the thread cleanly.</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> * WHY THIS FILE MATTERS IN THE SERVER:</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * Databases restart and network links drop; without monitoring, a stalled connection would</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * keep failing requests until somebody manually restarted the server. The watchdog runs in the</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> * background at startup and silently repairs connections, cooperating with</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> * DatabaseConnectionPool::reconnect_all(). It is the self-healing part of the synchronous</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> * database path: controllers do not need to know that a link died and came back.</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> * CONCEPTS TO LEARN (for beginners):</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> * - std::thread (a real background thread of execution): https://en.cppreference.com/w/cpp/thread/thread</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * - std::atomic (a flag readable/writable from two threads without races): https://en.cppreference.com/w/cpp/atomic/atomic</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> * - join() (wait for a thread to finish before destroying its owner): https://en.cppreference.com/w/cpp/thread/thread/join</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * - RAII (the destructor stops and joins the thread): https://en.cppreference.com/w/cpp/language/raii</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> * - std::chrono::seconds (a time duration): https://en.cppreference.com/w/cpp/chrono/duration</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> * @author Amr Osman &lt;dr3mro@gmail.com&gt;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> * @date 2026-11-16</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#pragma once  </span><span class="comment">// Include guard: define this class at most once per translation unit.</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &lt;atomic&gt;</span>  <span class="comment">// std::atomic&lt;bool&gt; is the shutdown flag shared with the monitor thread.</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &lt;chrono&gt;</span>  <span class="comment">// std::chrono::seconds holds the check interval.</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &lt;pqxx/pqxx&gt;</span>  <span class="comment">// libpqxx declarations used indirectly by the connection checks the thread performs.</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &lt;thread&gt;</span>  <span class="comment">// std::thread is the monitor thread itself.</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment"></span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">/**</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"> * @class WatchDog</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment"> * @brief Background health monitor for the pooled database connections.</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment"> * @details On construction it starts a background work thread that periodically</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment"> *          leases one connection, checks it, and reconnects it if the link is lost (also</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment"> *          triggering a reconnect of all idle connections through the pool). The monitor</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment"> *          flag is atomic so the destructor can signal shutdown and then join the thread.</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment"> *          Non-copyable and non-movable.</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment"> * @note The destructor may block for up to one check interval while the thread wakes up.</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment"> * @see DatabaseHanndler, DatabaseConnectionPool::reconnect_all</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment"> */</span></div>
-<div class="foldopen" id="foldopen00046" data-start="{" data-end="};">
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classWatchDog.html">   46</a></span><span class="keyword">class </span><a class="code hl_function" href="classWatchDog.html#ac51438cc38b263b050633f99b4e45747">WatchDog</a>  <span class="comment">// Owns one long-lived thread that keeps checking and repairing database links.</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>{</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>   <span class="keyword">public</span>:<span class="comment"></span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">     * @brief Starts the monitoring thread.</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">     * @throws std::logic_error If a monitor thread appears already joinable (a fresh</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">     *         object has none, so this guard is effectively inactive on construction).</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <a class="code hl_function" href="classWatchDog.html#ac51438cc38b263b050633f99b4e45747">WatchDog</a>();  <span class="comment">// Sets up the loop and launches the background thread before returning.</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classWatchDog.html#a26378fc6e5fb99263282c1ab7424da94">   55</a></span>    <a class="code hl_function" href="classWatchDog.html#a26378fc6e5fb99263282c1ab7424da94">WatchDog</a>(<span class="keyword">const</span> <a class="code hl_function" href="classWatchDog.html#ac51438cc38b263b050633f99b4e45747">WatchDog</a>&amp;)            = <span class="keyword">delete</span>;  <span class="comment">// Copying would create two owners of the same thread.</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classWatchDog.html#a508c7d705cee312d781d6637d5b0fbeb">   56</a></span>    <a class="code hl_function" href="classWatchDog.html#a508c7d705cee312d781d6637d5b0fbeb">WatchDog</a>(<a class="code hl_function" href="classWatchDog.html#ac51438cc38b263b050633f99b4e45747">WatchDog</a>&amp;&amp;)                 = <span class="keyword">delete</span>;  <span class="comment">// Moving a live thread&#39;s owner is unsafe.</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classWatchDog.html#a4d8d5ca9267f3bceb4e579aaa877a3a6">   57</a></span>    <a class="code hl_function" href="classWatchDog.html#ac51438cc38b263b050633f99b4e45747">WatchDog</a>&amp; <a class="code hl_function" href="classWatchDog.html#a4d8d5ca9267f3bceb4e579aaa877a3a6">operator=</a>(<span class="keyword">const</span> <a class="code hl_function" href="classWatchDog.html#ac51438cc38b263b050633f99b4e45747">WatchDog</a>&amp;) = <span class="keyword">delete</span>;  <span class="comment">// Copy-assignment would duplicate thread ownership.</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classWatchDog.html#a957bca000c5227fb1d95352b5ee2e2db">   58</a></span>    <a class="code hl_function" href="classWatchDog.html#ac51438cc38b263b050633f99b4e45747">WatchDog</a>&amp; <a class="code hl_function" href="classWatchDog.html#a957bca000c5227fb1d95352b5ee2e2db">operator=</a>(<a class="code hl_function" href="classWatchDog.html#ac51438cc38b263b050633f99b4e45747">WatchDog</a>&amp;&amp;)      = <span class="keyword">delete</span>;  <span class="comment">// Move-assignment would duplicate thread ownership.</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment"></span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">     * @brief Signals the monitor thread to stop and joins it before returning.</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keyword">virtual</span> <a class="code hl_function" href="classWatchDog.html#ac51438cc38b263b050633f99b4e45747">~WatchDog</a>();  <span class="comment">// Clears the atomic flag and waits for the thread, so it never touches a destroyed object.</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>   <span class="keyword">private</span>:<span class="comment"></span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">     * Atomic stop flag read by the monitor loop and set by the destructor.</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classWatchDog.html#a16372b8cab4cdd8c7b6e591d44cf6d30">   69</a></span>    std::atomic&lt;bool&gt;    <a class="code hl_variable" href="classWatchDog.html#a16372b8cab4cdd8c7b6e591d44cf6d30">should_monitor</a>{<span class="keyword">true</span>};  <span class="comment">// Starts true; the loop reads it each iteration and the destructor makes it false.</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment"></span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">     * Sleep between health checks (also bounds destructor join latency).</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classWatchDog.html#afb7703d71422aa4eb2163ee9550227c3">   74</a></span>    std::chrono::seconds <a class="code hl_variable" href="classWatchDog.html#afb7703d71422aa4eb2163ee9550227c3">check_interval</a>{1};  <span class="comment">// One second keeps checks frequent without hammering the database.</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment"></span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">    /**</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">     * The thread running the monitoring loop; joined by the destructor.</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classWatchDog.html#a98e4f26093742829ffff056ccdda85e8">   79</a></span>    std::thread          <a class="code hl_variable" href="classWatchDog.html#a98e4f26093742829ffff056ccdda85e8">monitor_thread</a>;  <span class="comment">// The actual background worker; joinable after construction.</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>};</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * Databases restart and network links drop; without monitoring, a stalled</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * connection would keep failing requests until somebody manually restarted the</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> * server. The watchdog runs in the background at startup and silently repairs</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> * connections, cooperating with DatabaseConnectionPool::reconnect_all(). It is</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> * the self-healing part of the synchronous database path: controllers do not</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> * need to know that a link died and came back.</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> * CONCEPTS TO LEARN (for beginners):</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> * - std::thread (a real background thread of execution):</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> * https://en.cppreference.com/w/cpp/thread/thread</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * - std::atomic (a flag readable/writable from two threads without races):</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> * https://en.cppreference.com/w/cpp/atomic/atomic</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> * - join() (wait for a thread to finish before destroying its owner):</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> * https://en.cppreference.com/w/cpp/thread/thread/join</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> * - RAII (the destructor stops and joins the thread):</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"> * https://en.cppreference.com/w/cpp/language/raii</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"> * - std::chrono::seconds (a time duration):</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment"> * https://en.cppreference.com/w/cpp/chrono/duration</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment"> * @author Amr Osman &lt;dr3mro@gmail.com&gt;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment"> * @date 2026-11-16</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#pragma once  </span><span class="comment">// Include guard: define this class at most once per translation</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>              <span class="comment">// unit.</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">// std::atomic&lt;bool&gt; is the shutdown flag shared with the monitor thread.</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#include &lt;atomic&gt;</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &lt;chrono&gt;</span>  <span class="comment">// std::chrono::seconds holds the check interval.</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">// libpqxx declarations used indirectly by the connection checks the thread</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">// performs.</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#include &lt;pqxx/pqxx&gt;</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#include &lt;thread&gt;</span>  <span class="comment">// std::thread is the monitor thread itself.</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment"></span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">/**</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment"> * @class WatchDog</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment"> * @brief Background health monitor for the pooled database connections.</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment"> * @details On construction it starts a background work thread that periodically</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment"> *          leases one connection, checks it, and reconnects it if the link is</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment"> * lost (also triggering a reconnect of all idle connections through the pool).</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment"> * The monitor flag is atomic so the destructor can signal shutdown and then</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment"> * join the thread. Non-copyable and non-movable.</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment"> * @note The destructor may block for up to one check interval while the thread</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment"> * wakes up.</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment"> * @see DatabaseHanndler, DatabaseConnectionPool::reconnect_all</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">// Owns one long-lived thread that keeps checking and repairing</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">// database links.</span></div>
+<div class="foldopen" id="foldopen00059" data-start="{" data-end="};">
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classWatchDog.html">   59</a></span><span class="keyword">class </span><a class="code hl_function" href="classWatchDog.html#ac51438cc38b263b050633f99b4e45747">WatchDog</a> {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> <span class="keyword">public</span>:<span class="comment"></span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">   * @brief Starts the monitoring thread.</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">   * @throws std::logic_error If a monitor thread appears already joinable (a</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">   * fresh object has none, so this guard is effectively inactive on</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">   * construction).</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">   */</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  <a class="code hl_function" href="classWatchDog.html#ac51438cc38b263b050633f99b4e45747">WatchDog</a>();  <span class="comment">// Sets up the loop and launches the background thread before</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>               <span class="comment">// returning.</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classWatchDog.html#a26378fc6e5fb99263282c1ab7424da94">   69</a></span>  <a class="code hl_function" href="classWatchDog.html#a26378fc6e5fb99263282c1ab7424da94">WatchDog</a>(<span class="keyword">const</span> <a class="code hl_function" href="classWatchDog.html#ac51438cc38b263b050633f99b4e45747">WatchDog</a>&amp;) =</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>      <span class="keyword">delete</span>;  <span class="comment">// Copying would create two owners of the same thread.</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classWatchDog.html#a508c7d705cee312d781d6637d5b0fbeb">   71</a></span>  <a class="code hl_function" href="classWatchDog.html#a508c7d705cee312d781d6637d5b0fbeb">WatchDog</a>(<a class="code hl_function" href="classWatchDog.html#ac51438cc38b263b050633f99b4e45747">WatchDog</a>&amp;&amp;) = <span class="keyword">delete</span>;  <span class="comment">// Moving a live thread&#39;s owner is unsafe.</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classWatchDog.html#a4d8d5ca9267f3bceb4e579aaa877a3a6">   72</a></span>  <a class="code hl_function" href="classWatchDog.html#ac51438cc38b263b050633f99b4e45747">WatchDog</a>&amp; <a class="code hl_function" href="classWatchDog.html#a4d8d5ca9267f3bceb4e579aaa877a3a6">operator=</a>(<span class="keyword">const</span> <a class="code hl_function" href="classWatchDog.html#ac51438cc38b263b050633f99b4e45747">WatchDog</a>&amp;) =</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>      <span class="keyword">delete</span>;  <span class="comment">// Copy-assignment would duplicate thread ownership.</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classWatchDog.html#a957bca000c5227fb1d95352b5ee2e2db">   74</a></span>  <a class="code hl_function" href="classWatchDog.html#ac51438cc38b263b050633f99b4e45747">WatchDog</a>&amp; <a class="code hl_function" href="classWatchDog.html#a957bca000c5227fb1d95352b5ee2e2db">operator=</a>(<a class="code hl_function" href="classWatchDog.html#ac51438cc38b263b050633f99b4e45747">WatchDog</a>&amp;&amp;) =</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>      <span class="keyword">delete</span>;  <span class="comment">// Move-assignment would duplicate thread ownership.</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment"></span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">   * @brief Signals the monitor thread to stop and joins it before returning.</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">   */</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  <span class="keyword">virtual</span> <a class="code hl_function" href="classWatchDog.html#ac51438cc38b263b050633f99b4e45747">~WatchDog</a>();  <span class="comment">// Clears the atomic flag and waits for the thread, so</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                        <span class="comment">// it never touches a destroyed object.</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> <span class="keyword">private</span>:<span class="comment"></span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment">   * Atomic stop flag read by the monitor loop and set by the destructor.</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">   */</span></div>
+<div class="foldopen" id="foldopen00087" data-start="{" data-end="};">
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classWatchDog.html#a16372b8cab4cdd8c7b6e591d44cf6d30">   87</a></span>  std::atomic&lt;bool&gt; <a class="code hl_variable" href="classWatchDog.html#a16372b8cab4cdd8c7b6e591d44cf6d30">should_monitor</a>{</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>      <span class="keyword">true</span>};  <span class="comment">// Starts true; the loop reads it each iteration and the</span></div>
 </div>
-<div class="ttc" id="aclassWatchDog_html_a16372b8cab4cdd8c7b6e591d44cf6d30"><div class="ttname"><a href="classWatchDog.html#a16372b8cab4cdd8c7b6e591d44cf6d30">WatchDog::should_monitor</a></div><div class="ttdeci">std::atomic&lt; bool &gt; should_monitor</div><div class="ttdef"><b>Definition</b> <a href="#l00069">watchdog.hpp:69</a></div></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>              <span class="comment">// destructor makes it false.</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment"></span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">   * Sleep between health checks (also bounds destructor join latency).</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">   */</span></div>
+<div class="foldopen" id="foldopen00094" data-start="{" data-end="};">
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="classWatchDog.html#afb7703d71422aa4eb2163ee9550227c3">   94</a></span>  std::chrono::seconds <a class="code hl_variable" href="classWatchDog.html#afb7703d71422aa4eb2163ee9550227c3">check_interval</a>{</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>      1};  <span class="comment">// One second keeps checks frequent without hammering the database.</span></div>
+</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment"></span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">  /**</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment">   * The thread running the monitoring loop; joined by the destructor.</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment">   */</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="classWatchDog.html#a98e4f26093742829ffff056ccdda85e8">  100</a></span>  std::thread <a class="code hl_variable" href="classWatchDog.html#a98e4f26093742829ffff056ccdda85e8">monitor_thread</a>;  <span class="comment">// The actual background worker; joinable after</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                               <span class="comment">// construction.</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>};</div>
+</div>
+<div class="ttc" id="aclassWatchDog_html_a16372b8cab4cdd8c7b6e591d44cf6d30"><div class="ttname"><a href="classWatchDog.html#a16372b8cab4cdd8c7b6e591d44cf6d30">WatchDog::should_monitor</a></div><div class="ttdeci">std::atomic&lt; bool &gt; should_monitor</div><div class="ttdef"><b>Definition</b> <a href="#l00087">watchdog.hpp:87</a></div></div>
 <div class="ttc" id="aclassWatchDog_html_a26378fc6e5fb99263282c1ab7424da94"><div class="ttname"><a href="classWatchDog.html#a26378fc6e5fb99263282c1ab7424da94">WatchDog::WatchDog</a></div><div class="ttdeci">WatchDog(const WatchDog &amp;)=delete</div></div>
 <div class="ttc" id="aclassWatchDog_html_a4d8d5ca9267f3bceb4e579aaa877a3a6"><div class="ttname"><a href="classWatchDog.html#a4d8d5ca9267f3bceb4e579aaa877a3a6">WatchDog::operator=</a></div><div class="ttdeci">WatchDog &amp; operator=(const WatchDog &amp;)=delete</div></div>
 <div class="ttc" id="aclassWatchDog_html_a508c7d705cee312d781d6637d5b0fbeb"><div class="ttname"><a href="classWatchDog.html#a508c7d705cee312d781d6637d5b0fbeb">WatchDog::WatchDog</a></div><div class="ttdeci">WatchDog(WatchDog &amp;&amp;)=delete</div></div>
 <div class="ttc" id="aclassWatchDog_html_a957bca000c5227fb1d95352b5ee2e2db"><div class="ttname"><a href="classWatchDog.html#a957bca000c5227fb1d95352b5ee2e2db">WatchDog::operator=</a></div><div class="ttdeci">WatchDog &amp; operator=(WatchDog &amp;&amp;)=delete</div></div>
-<div class="ttc" id="aclassWatchDog_html_a98e4f26093742829ffff056ccdda85e8"><div class="ttname"><a href="classWatchDog.html#a98e4f26093742829ffff056ccdda85e8">WatchDog::monitor_thread</a></div><div class="ttdeci">std::thread monitor_thread</div><div class="ttdef"><b>Definition</b> <a href="#l00079">watchdog.hpp:79</a></div></div>
-<div class="ttc" id="aclassWatchDog_html_ac51438cc38b263b050633f99b4e45747"><div class="ttname"><a href="classWatchDog.html#ac51438cc38b263b050633f99b4e45747">WatchDog::WatchDog</a></div><div class="ttdeci">WatchDog()</div><div class="ttdoc">Starts the monitoring thread.</div><div class="ttdef"><b>Definition</b> <a href="watchdog_8cpp_source.html#l00053">watchdog.cpp:53</a></div></div>
-<div class="ttc" id="aclassWatchDog_html_afb7703d71422aa4eb2163ee9550227c3"><div class="ttname"><a href="classWatchDog.html#afb7703d71422aa4eb2163ee9550227c3">WatchDog::check_interval</a></div><div class="ttdeci">std::chrono::seconds check_interval</div><div class="ttdef"><b>Definition</b> <a href="#l00074">watchdog.hpp:74</a></div></div>
+<div class="ttc" id="aclassWatchDog_html_a98e4f26093742829ffff056ccdda85e8"><div class="ttname"><a href="classWatchDog.html#a98e4f26093742829ffff056ccdda85e8">WatchDog::monitor_thread</a></div><div class="ttdeci">std::thread monitor_thread</div><div class="ttdef"><b>Definition</b> <a href="#l00100">watchdog.hpp:100</a></div></div>
+<div class="ttc" id="aclassWatchDog_html_ac51438cc38b263b050633f99b4e45747"><div class="ttname"><a href="classWatchDog.html#ac51438cc38b263b050633f99b4e45747">WatchDog::WatchDog</a></div><div class="ttdeci">WatchDog()</div><div class="ttdoc">Starts the monitoring thread.</div><div class="ttdef"><b>Definition</b> <a href="watchdog_8cpp_source.html#l00071">watchdog.cpp:71</a></div></div>
+<div class="ttc" id="aclassWatchDog_html_afb7703d71422aa4eb2163ee9550227c3"><div class="ttname"><a href="classWatchDog.html#afb7703d71422aa4eb2163ee9550227c3">WatchDog::check_interval</a></div><div class="ttdeci">std::chrono::seconds check_interval</div><div class="ttdef"><b>Definition</b> <a href="#l00094">watchdog.hpp:94</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

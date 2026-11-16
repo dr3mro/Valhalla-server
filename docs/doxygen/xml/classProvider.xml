@@ -11,7 +11,8 @@
         <argsstring></argsstring>
         <name>TABLENAME</name>
         <qualifiedname>Provider::TABLENAME</qualifiedname>
-        <initializer>= &quot;providers&quot;</initializer>
+        <initializer>                            =
+&quot;providers&quot;</initializer>
         <briefdescription>
 <para><ref refid="classDatabase" kindref="compound">Database</ref> table holding providers. </para>
         </briefdescription>
@@ -19,9 +20,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/people/provider.hpp" line="131" column="27" bodyfile="src/entities/people/provider.hpp" bodystart="131" bodyend="-1"/>
-        <referencedby refid="classProvider_1aaa88add3f2765173dc916334d4dc611e" compoundref="provider_8hpp" startline="87" endline="87">getTableName</referencedby>
-        <referencedby refid="classProvider_1a8cee1947342e8204d0be826e21ea9c8a" compoundref="provider_8hpp" startline="75" endline="77">Provider</referencedby>
+        <location file="src/entities/people/provider.hpp" line="165" column="25" bodyfile="src/entities/people/provider.hpp" bodystart="165" bodyend="-1"/>
+        <referencedby refid="classProvider_1aaa88add3f2765173dc916334d4dc611e" compoundref="provider_8hpp" startline="105" endline="107">getTableName</referencedby>
+        <referencedby refid="classProvider_1a8cee1947342e8204d0be826e21ea9c8a" compoundref="provider_8hpp" startline="91" endline="95">Provider</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -41,7 +42,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/people/provider.hpp" line="64" column="5"/>
+        <location file="src/entities/people/provider.hpp" line="79" column="3"/>
         <references refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1">Provider</references>
         <referencedby refid="classProvider_1a4c6419755f12de8b1122f3a21c1bc2d9">operator=</referencedby>
         <referencedby refid="classProvider_1a1c64dbd493fa3b50b43676ce2b0198a6">operator=</referencedby>
@@ -63,7 +64,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/people/provider.hpp" line="65" column="5"/>
+        <location file="src/entities/people/provider.hpp" line="80" column="3"/>
         <references refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1">Provider</references>
       </memberdef>
       <memberdef kind="function" id="classProvider_1a4c6419755f12de8b1122f3a21c1bc2d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -81,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/people/provider.hpp" line="66" column="14"/>
+        <location file="src/entities/people/provider.hpp" line="81" column="12"/>
         <references refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1">Provider</references>
       </memberdef>
       <memberdef kind="function" id="classProvider_1a1c64dbd493fa3b50b43676ce2b0198a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -99,7 +100,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/people/provider.hpp" line="67" column="14"/>
+        <location file="src/entities/people/provider.hpp" line="82" column="12"/>
         <references refid="classProvider_1ae6cc92cf7356840d426d40520ae260a1">Provider</references>
       </memberdef>
       <memberdef kind="function" id="classProvider_1a8cee1947342e8204d0be826e21ea9c8a" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
@@ -143,10 +144,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/people/provider.hpp" line="75" column="14" bodyfile="src/entities/people/provider.hpp" bodystart="75" bodyend="77"/>
+        <location file="src/entities/people/provider.hpp" line="91" column="12" bodyfile="src/entities/people/provider.hpp" bodystart="91" bodyend="95"/>
         <references refid="classapi_1_1v2_1_1Client_1a787dc26f0c3eda19fab0dd719f0e35c4">api::v2::Client::Client</references>
-        <references refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" compoundref="entity_8hpp" startline="393">Entity::data</references>
-        <references refid="classProvider_1a999e58bf1dc6fcbf2cb09f37d10aa1c1" compoundref="provider_8hpp" startline="131">TABLENAME</references>
+        <references refid="classEntity_1a1f9ce2f3f4fe04e2d4c2579e7501def8" compoundref="entity_8hpp" startline="596">Entity::data</references>
+        <references refid="classProvider_1a999e58bf1dc6fcbf2cb09f37d10aa1c1" compoundref="provider_8hpp" startline="165">TABLENAME</references>
       </memberdef>
       <memberdef kind="function" id="classProvider_1ad527a9774dbfbc0a55b9c7eadf4bbb6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -161,7 +162,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/people/provider.hpp" line="82" column="5"/>
+        <location file="src/entities/people/provider.hpp" line="100" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classProvider_1ac2c776b47dc13f0277c0fe628f9e138d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -194,10 +195,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/people/provider.hpp" line="99" column="19" bodyfile="src/entities/people/provider.hpp" bodystart="99" bodyend="125"/>
-        <references refid="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" compoundref="client_8hpp" startline="280">api::v2::Client::client_id</references>
-        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="41" endline="41">Message::ErrorMessage</references>
-        <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="163" endline="163">Entity::getData</references>
+        <location file="src/entities/people/provider.hpp" line="126" column="17" bodyfile="src/entities/people/provider.hpp" bodystart="126" bodyend="159"/>
+        <references refid="classapi_1_1v2_1_1Client_1a194b1c0ca11637ad7d94110ce23e7861" compoundref="client_8hpp" startline="415">api::v2::Client::client_id</references>
+        <references refid="classMessage_1a1fd9a043b58e6adceb8d111bc891feba" compoundref="message_8cpp" startline="54" endline="56">Message::ErrorMessage</references>
+        <references refid="classEntity_1a52f785ba4aa480f4ed03f2b9b07db81b" compoundref="entity_8hpp" startline="220" endline="222">Entity::getData</references>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -214,8 +215,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/people/provider.hpp" line="87" column="32" bodyfile="src/entities/people/provider.hpp" bodystart="87" bodyend="87"/>
-        <references refid="classProvider_1a999e58bf1dc6fcbf2cb09f37d10aa1c1" compoundref="provider_8hpp" startline="131">TABLENAME</references>
+        <location file="src/entities/people/provider.hpp" line="105" column="25" bodyfile="src/entities/people/provider.hpp" bodystart="105" bodyend="107"/>
+        <references refid="classProvider_1a999e58bf1dc6fcbf2cb09f37d10aa1c1" compoundref="provider_8hpp" startline="165">TABLENAME</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -274,7 +275,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/entities/people/provider.hpp" line="58" column="1" bodyfile="src/entities/people/provider.hpp" bodystart="59" bodyend="153"/>
+    <location file="src/entities/people/provider.hpp" line="73" column="1" bodyfile="src/entities/people/provider.hpp" bodystart="73" bodyend="190"/>
     <listofallmembers>
       <member refid="classBase_1a58887755525abd3f340963e2bbdcc972" prot="public" virt="non-virtual"><scope>Provider</scope><name>Base</name></member>
       <member refid="classapi_1_1v2_1_1Client_1a9d8ec7236a309400e90639c194bb7017" prot="protected" virt="non-virtual"><scope>Provider</scope><name>buildClientCreateStatement</name></member>

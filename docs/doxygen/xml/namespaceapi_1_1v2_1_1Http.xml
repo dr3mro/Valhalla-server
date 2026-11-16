@@ -57,7 +57,8 @@
         </enumvalue>
         <enumvalue id="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa4f53059b02ddece5199c6d29b60dc73b" prot="public">
           <name>NON_AUTHORITATIVE_INFORMATION</name>
-          <initializer>= 203</initializer>
+          <initializer>=
+        203</initializer>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
@@ -185,7 +186,8 @@
         </enumvalue>
         <enumvalue id="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9aba05019a8a11f10bca39e486dd3377" prot="public">
           <name>METHOD_NOT_ALLOWED</name>
-          <initializer>= 405</initializer>
+          <initializer>=
+        405</initializer>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
@@ -225,7 +227,8 @@
         </enumvalue>
         <enumvalue id="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa8e6db76d29b393e63df6d7b54ee430d4" prot="public">
           <name>PRECONDITION_FAILED</name>
-          <initializer>= 412</initializer>
+          <initializer>=
+        412</initializer>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
@@ -233,7 +236,8 @@
         </enumvalue>
         <enumvalue id="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fad22ec215730e987eb8d193ac329e50bd" prot="public">
           <name>PAYLOAD_TOO_LARGE</name>
-          <initializer>= 413</initializer>
+          <initializer>=
+        413</initializer>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
@@ -241,7 +245,8 @@
         </enumvalue>
         <enumvalue id="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9945623b649aaccc6308ef99ed7f256c" prot="public">
           <name>UNSUPPORTED_MEDIA_TYPE</name>
-          <initializer>= 415</initializer>
+          <initializer>=
+        415</initializer>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
@@ -249,7 +254,8 @@
         </enumvalue>
         <enumvalue id="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" prot="public">
           <name>INTERNAL_SERVER_ERROR</name>
-          <initializer>= 500</initializer>
+          <initializer>=
+        500</initializer>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
@@ -257,7 +263,8 @@
         </enumvalue>
         <enumvalue id="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1a6cd23a439556988904d3b93ca3ae31" prot="public">
           <name>NOT_IMPLEMENTED</name>
-          <initializer>= 501</initializer>
+          <initializer>=
+        501</initializer>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
@@ -289,7 +296,8 @@
         </enumvalue>
         <enumvalue id="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac7da099c2cbe9f3b620829632dcfc89f" prot="public">
           <name>HTTP_VERSION_NOT_SUPPORTED</name>
-          <initializer>= 505</initializer>
+          <initializer>=
+        505</initializer>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
@@ -305,17 +313,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/global/http.hpp" line="56" column="5" bodyfile="src/utils/global/http.hpp" bodystart="57" bodyend="103"/>
+        <location file="src/utils/global/http.hpp" line="67" column="3" bodyfile="src/utils/global/http.hpp" bodystart="67" bodyend="133"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="typedef">
-      <memberdef kind="typedef" id="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" prot="public" static="no">
-        <type>struct <ref refid="namespaceapi_1_1v2_1_1Http_1a47db5a3c431c29e2a693549aab65beb3" kindref="member">Error</ref> { int code; std::string message; }</type>
-        <definition>using api::v2::Http::Error = struct Error  
-   {
-       int         code;      
-       std::string message;   
-   }</definition>
+      <memberdef kind="typedef" id="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" prot="public" static="no">
+        <type>struct <ref refid="namespaceapi_1_1v2_1_1Http_1abe54a513da8236be4d5e32f641ed5ba5" kindref="member">Error</ref> { int code; std::string message; }</type>
+        <definition>using api::v2::Http::Error = struct Error {
+   int code;  
+              
+   std::string message;  
+                         
+ }</definition>
         <argsstring></argsstring>
         <name>Error</name>
         <qualifiedname>api::v2::Http::Error</qualifiedname>
@@ -327,7 +336,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/global/http.hpp" line="40" column="5" bodyfile="src/utils/global/http.hpp" bodystart="40" bodyend="44"/>
+        <location file="src/utils/global/http.hpp" line="48" column="3" bodyfile="src/utils/global/http.hpp" bodystart="48" bodyend="53"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -362,12 +371,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/global/errorstatus.hpp" line="49" column="19" bodyfile="src/utils/global/errorstatus.hpp" bodystart="49" bodyend="53"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">INTERNAL_SERVER_ERROR</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa8f68ec2a12ee4e1b4766e3fe760220" compoundref="http_8hpp" startline="100">SERVICE_UNAVAILABLE</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1aaddeb034a51d7050d6cc65cc2b46fdcf" compoundref="errorstatus_8hpp" startline="49" endline="53">statusForException</references>
-        <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="224" endline="289">api::v2::SessionManager::logout</referencedby>
-        <referencedby refid="namespaceapi_1_1v2_1_1Http_1aaddeb034a51d7050d6cc65cc2b46fdcf" compoundref="errorstatus_8hpp" startline="49" endline="53">statusForException</referencedby>
+        <location file="src/utils/global/errorstatus.hpp" line="56" column="17" bodyfile="src/utils/global/errorstatus.hpp" bodystart="56" bodyend="65"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="123">INTERNAL_SERVER_ERROR</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa8f68ec2a12ee4e1b4766e3fe760220" compoundref="http_8hpp" startline="128">SERVICE_UNAVAILABLE</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1aaddeb034a51d7050d6cc65cc2b46fdcf" compoundref="errorstatus_8hpp" startline="56" endline="65">statusForException</references>
+        <referencedby refid="classapi_1_1v2_1_1SessionManager_1aa81f2f467d2ae6e4121344642b501c36" compoundref="sessionmanager_8cpp" startline="343" endline="458">api::v2::SessionManager::logout</referencedby>
+        <referencedby refid="namespaceapi_1_1v2_1_1Http_1aaddeb034a51d7050d6cc65cc2b46fdcf" compoundref="errorstatus_8hpp" startline="56" endline="65">statusForException</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespaceapi_1_1v2_1_1Http_1a68b4596379894631fc1835e4443727d8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -400,51 +409,51 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/utils/global/http.hpp" line="114" column="24" bodyfile="src/utils/global/http.hpp" bodystart="114" bodyend="135"/>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa682cb787be5c2998541538bcd9bb0f90" compoundref="http_8hpp" startline="66">ACCEPTED</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafbd7b839bd08636059d9ba88be1822ef" compoundref="http_8hpp" startline="99">BAD_GATEWAY</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">BAD_REQUEST</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa3c71b3c24152de804ac03bd896fb4856" compoundref="http_8hpp" startline="89">CONFLICT</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa5f85285014b155daa0edef79c879c07f" compoundref="http_8hpp" startline="59">CONTINUE</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa934a30b367a0ce98b11dece63e5fcd0c" compoundref="http_8hpp" startline="65">CREATED</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" compoundref="http_8hpp" startline="85">FORBIDDEN</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9237a79ccd5829f8d66a4f1c55ddcc29" compoundref="http_8hpp" startline="75">FOUND</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa89ecf07ab072eb7a54787f00dadcbcfc" compoundref="http_8hpp" startline="101">GATEWAY_TIMEOUT</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a68b4596379894631fc1835e4443727d8" compoundref="http_8hpp" startline="114" endline="135">getDescription</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa479247cdf01057ab6d6b8623f90b6013" compoundref="http_8hpp" startline="90">GONE</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac7da099c2cbe9f3b620829632dcfc89f" compoundref="http_8hpp" startline="102">HTTP_VERSION_NOT_SUPPORTED</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">INTERNAL_SERVER_ERROR</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faa570b9e297feed34a77ad69fed0af9f5" compoundref="http_8hpp" startline="91">LENGTH_REQUIRED</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9aba05019a8a11f10bca39e486dd3377" compoundref="http_8hpp" startline="87">METHOD_NOT_ALLOWED</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa29a0c1c47528d67a78030d95fb2819c8" compoundref="http_8hpp" startline="74">MOVED_PERMANENTLY</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1706bb98d8efb484dd329a71c5c626cf" compoundref="http_8hpp" startline="73">MULTIPLE_CHOICES</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab28caed6556eda42f01f06c4e9620b85" compoundref="http_8hpp" startline="68">NO_CONTENT</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa4f53059b02ddece5199c6d29b60dc73b" compoundref="http_8hpp" startline="67">NON_AUTHORITATIVE_INFORMATION</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="88">NOT_ACCEPTABLE</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa28c17a490f8c2005ea27ae8621e02b" compoundref="http_8hpp" startline="86">NOT_FOUND</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1a6cd23a439556988904d3b93ca3ae31" compoundref="http_8hpp" startline="98">NOT_IMPLEMENTED</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf2c756ddd31cbcd9a04877d805a6abbb" compoundref="http_8hpp" startline="77">NOT_MODIFIED</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">OK</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8e81edfc4ccdfd97b0f02ab1f73f3d6" compoundref="http_8hpp" startline="70">PARTIAL_CONTENT</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fad22ec215730e987eb8d193ac329e50bd" compoundref="http_8hpp" startline="93">PAYLOAD_TOO_LARGE</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa72888dfce08120c3472f09c3b197287e" compoundref="http_8hpp" startline="84">PAYMENT_REQUIRED</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa421e17e7a5f34f32cfb89b7f50f410e4" compoundref="http_8hpp" startline="79">PERMANENT_REDIRECT</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa8e6db76d29b393e63df6d7b54ee430d4" compoundref="http_8hpp" startline="92">PRECONDITION_FAILED</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac1cb872fc9eb5c2dbf2f0061564a2e78" compoundref="http_8hpp" startline="61">PROCESSING</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa83859d17214e237409cd0a835ae21237" compoundref="http_8hpp" startline="69">RESET_CONTENT</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa09b0409eeefbc2bc0a0a518372becca2" compoundref="http_8hpp" startline="76">SEE_OTHER</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa8f68ec2a12ee4e1b4766e3fe760220" compoundref="http_8hpp" startline="100">SERVICE_UNAVAILABLE</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa66ad9fd1e124ac246d846e3300e33bec" compoundref="http_8hpp" startline="60">SWITCHING_PROTOCOLS</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1417fdee2518bb6255392365ec6516af" compoundref="http_8hpp" startline="78">TEMPORARY_REDIRECT</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa521335676ea4815ed98bb811fb2d1fea" compoundref="http_8hpp" startline="83">UNAUTHORIZED</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9945623b649aaccc6308ef99ed7f256c" compoundref="http_8hpp" startline="94">UNSUPPORTED_MEDIA_TYPE</references>
-        <referencedby refid="namespaceapi_1_1v2_1_1Http_1a68b4596379894631fc1835e4443727d8" compoundref="http_8hpp" startline="114" endline="135">getDescription</referencedby>
+        <location file="src/utils/global/http.hpp" line="146" column="22" bodyfile="src/utils/global/http.hpp" bodystart="146" bodyend="200"/>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa682cb787be5c2998541538bcd9bb0f90" compoundref="http_8hpp" startline="79">ACCEPTED</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafbd7b839bd08636059d9ba88be1822ef" compoundref="http_8hpp" startline="127">BAD_GATEWAY</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">BAD_REQUEST</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa3c71b3c24152de804ac03bd896fb4856" compoundref="http_8hpp" startline="112">CONFLICT</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa5f85285014b155daa0edef79c879c07f" compoundref="http_8hpp" startline="69">CONTINUE</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa934a30b367a0ce98b11dece63e5fcd0c" compoundref="http_8hpp" startline="78">CREATED</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab5f0f251c1ef45a59ed7d3d3fba15626" compoundref="http_8hpp" startline="106">FORBIDDEN</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9237a79ccd5829f8d66a4f1c55ddcc29" compoundref="http_8hpp" startline="93">FOUND</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa89ecf07ab072eb7a54787f00dadcbcfc" compoundref="http_8hpp" startline="130">GATEWAY_TIMEOUT</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a68b4596379894631fc1835e4443727d8" compoundref="http_8hpp" startline="146" endline="200">getDescription</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa479247cdf01057ab6d6b8623f90b6013" compoundref="http_8hpp" startline="113">GONE</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac7da099c2cbe9f3b620829632dcfc89f" compoundref="http_8hpp" startline="131">HTTP_VERSION_NOT_SUPPORTED</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="123">INTERNAL_SERVER_ERROR</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faa570b9e297feed34a77ad69fed0af9f5" compoundref="http_8hpp" startline="114">LENGTH_REQUIRED</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9aba05019a8a11f10bca39e486dd3377" compoundref="http_8hpp" startline="108">METHOD_NOT_ALLOWED</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa29a0c1c47528d67a78030d95fb2819c8" compoundref="http_8hpp" startline="92">MOVED_PERMANENTLY</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1706bb98d8efb484dd329a71c5c626cf" compoundref="http_8hpp" startline="90">MULTIPLE_CHOICES</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab28caed6556eda42f01f06c4e9620b85" compoundref="http_8hpp" startline="83">NO_CONTENT</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa4f53059b02ddece5199c6d29b60dc73b" compoundref="http_8hpp" startline="81">NON_AUTHORITATIVE_INFORMATION</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fafcbf800c60d9a42f8a1a81cacef6dc95" compoundref="http_8hpp" startline="110">NOT_ACCEPTABLE</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa28c17a490f8c2005ea27ae8621e02b" compoundref="http_8hpp" startline="107">NOT_FOUND</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1a6cd23a439556988904d3b93ca3ae31" compoundref="http_8hpp" startline="125">NOT_IMPLEMENTED</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf2c756ddd31cbcd9a04877d805a6abbb" compoundref="http_8hpp" startline="95">NOT_MODIFIED</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">OK</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8e81edfc4ccdfd97b0f02ab1f73f3d6" compoundref="http_8hpp" startline="86">PARTIAL_CONTENT</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fad22ec215730e987eb8d193ac329e50bd" compoundref="http_8hpp" startline="117">PAYLOAD_TOO_LARGE</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa72888dfce08120c3472f09c3b197287e" compoundref="http_8hpp" startline="105">PAYMENT_REQUIRED</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa421e17e7a5f34f32cfb89b7f50f410e4" compoundref="http_8hpp" startline="99">PERMANENT_REDIRECT</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa8e6db76d29b393e63df6d7b54ee430d4" compoundref="http_8hpp" startline="115">PRECONDITION_FAILED</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac1cb872fc9eb5c2dbf2f0061564a2e78" compoundref="http_8hpp" startline="73">PROCESSING</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa83859d17214e237409cd0a835ae21237" compoundref="http_8hpp" startline="84">RESET_CONTENT</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa09b0409eeefbc2bc0a0a518372becca2" compoundref="http_8hpp" startline="94">SEE_OTHER</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faaa8f68ec2a12ee4e1b4766e3fe760220" compoundref="http_8hpp" startline="128">SERVICE_UNAVAILABLE</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa66ad9fd1e124ac246d846e3300e33bec" compoundref="http_8hpp" startline="71">SWITCHING_PROTOCOLS</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa1417fdee2518bb6255392365ec6516af" compoundref="http_8hpp" startline="97">TEMPORARY_REDIRECT</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa521335676ea4815ed98bb811fb2d1fea" compoundref="http_8hpp" startline="104">UNAUTHORIZED</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fa9945623b649aaccc6308ef99ed7f256c" compoundref="http_8hpp" startline="119">UNSUPPORTED_MEDIA_TYPE</references>
+        <referencedby refid="namespaceapi_1_1v2_1_1Http_1a68b4596379894631fc1835e4443727d8" compoundref="http_8hpp" startline="146" endline="200">getDescription</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="src/utils/global/errorstatus.hpp" line="35" column="1"/>
+    <location file="src/utils/global/errorstatus.hpp" line="40" column="1"/>
   </compounddef>
 </doxygen>

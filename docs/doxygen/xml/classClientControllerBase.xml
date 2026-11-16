@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="56" column="5"/>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="72" column="3"/>
         <referencedby refid="classClientControllerBase_1aad141601388d1794e77c397200b79926">ClientControllerBase</referencedby>
         <referencedby refid="classClientControllerBase_1a650798ccce4494aa0e2c46228f622ca7">ClientControllerBase</referencedby>
         <referencedby refid="classClientControllerBase_1ab396e8114fcb3c3a6f621edf7f69d767">operator=</referencedby>
@@ -38,7 +38,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="58" column="5"/>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="74" column="3"/>
         <references refid="classClientControllerBase_1a3cb01ab5f64999f02d79a5c0bbe87745">ClientControllerBase</references>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1aad141601388d1794e77c397200b79926" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="59" column="5"/>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="76" column="3"/>
         <references refid="classClientControllerBase_1a3cb01ab5f64999f02d79a5c0bbe87745">ClientControllerBase</references>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1a95c1c5428f8348c333499a29122c1f33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -74,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="60" column="26"/>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="78" column="24"/>
         <references refid="classClientControllerBase_1a3cb01ab5f64999f02d79a5c0bbe87745">ClientControllerBase</references>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1ab396e8114fcb3c3a6f621edf7f69d767" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="61" column="26"/>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="80" column="24"/>
         <references refid="classClientControllerBase_1a3cb01ab5f64999f02d79a5c0bbe87745">ClientControllerBase</references>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1a148ca604aa1d99615a61dec294086786" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="62" column="13"/>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="82" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1ac42570557775dc71a68a685ed2114265" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -161,9 +161,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="71" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a1f733add7f937880b9050bd889be6e51" compoundref="clients_8hpp" startline="87" endline="90">api::v2::Clients::create</referencedby>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="94" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a1f733add7f937880b9050bd889be6e51" compoundref="clients_8hpp" startline="113" endline="125">api::v2::Clients::create</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1a44832e389a940272db5c22f0d75cdce3" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -217,8 +217,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="78" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="104" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1a335901d9fb13af79560b866138a48af9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -272,9 +272,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="85" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a1e86620ea68cbcd781a959ca4dd5e226" compoundref="clients_8hpp" startline="304" endline="326">api::v2::Clients::read</referencedby>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="115" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a1e86620ea68cbcd781a959ca4dd5e226" compoundref="clients_8hpp" startline="467" endline="508">api::v2::Clients::read</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1ac2b421697b171b2c7800843eba059186" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -328,8 +328,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="92" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="125" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1a19ad4f57a4d721aa57723a6ca379abaf" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -395,9 +395,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="100" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1ac501011b576591aa6f307819775ac804" compoundref="clients_8hpp" startline="336" endline="343">api::v2::Clients::update</referencedby>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="138" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1ac501011b576591aa6f307819775ac804" compoundref="clients_8hpp" startline="521" endline="538">api::v2::Clients::update</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1a7500d9081800672565b50021165aaefc" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -463,8 +463,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="108" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="150" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1a6909aac7912d8a88f7845eaa0a074f80" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -518,9 +518,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="115" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a1c64163fcea38e48979cbe03e86bb65d" compoundref="clients_8hpp" startline="352" endline="407">api::v2::Clients::delete_</referencedby>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="163" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a1c64163fcea38e48979cbe03e86bb65d" compoundref="clients_8hpp" startline="551" endline="639">api::v2::Clients::delete_</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1a889f63f5215973988659ccd5f2d01e86" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -574,8 +574,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="122" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="174" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1a560976768576af7af11239fde7e634f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -629,9 +629,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="129" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a6ed35f998ca78524ee42c7ba30cce0e9" compoundref="clients_8hpp" startline="416" endline="466">api::v2::Clients::search</referencedby>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="185" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a6ed35f998ca78524ee42c7ba30cce0e9" compoundref="clients_8hpp" startline="651" endline="734">api::v2::Clients::search</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1a2f72684ebb458b74a3c9a8c8b2647ac4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -685,8 +685,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="136" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="195" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1a5a5df5eb70313c7005af72f0a49f6cb7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -712,7 +712,7 @@
           <declname>ip_address</declname>
         </param>
         <briefdescription>
-<para>Authenticates a client and establishes a session through <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref>. </para>
+<para>Authenticates a client and establishes a session through <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref>. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -752,9 +752,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="144" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a8b82b6424d114860f571b240a2b20d97" compoundref="clients_8hpp" startline="101" endline="150">api::v2::Clients::login</referencedby>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="209" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a8b82b6424d114860f571b240a2b20d97" compoundref="clients_8hpp" startline="139" endline="222">api::v2::Clients::login</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1a1f079a107f086ce7fd8d643aaf485de5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -820,8 +820,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="152" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="223" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1aa9e86fbbf9bce91d15b371c18dababea" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -847,7 +847,7 @@
           <declname>ip_address</declname>
         </param>
         <briefdescription>
-<para>Invalidates the session identified by <computeroutput>token</computeroutput> through <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref>. </para>
+<para>Invalidates the session identified by <computeroutput>token</computeroutput> through <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref>. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -871,7 +871,7 @@
 <parametername direction="in">token</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Session token to invalidate; a missing value lets <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> decide how to respond. </para>
+<para>Session token to invalidate; a missing value lets <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref> decide how to respond. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -887,9 +887,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="160" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1abba6cc7cc5d089cf1c8e642fb8867b65" compoundref="clients_8hpp" startline="159" endline="163">api::v2::Clients::logout</referencedby>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="237" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1abba6cc7cc5d089cf1c8e642fb8867b65" compoundref="clients_8hpp" startline="235" endline="248">api::v2::Clients::logout</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1a6a58bc8fd2e226e47f00d74de0e47f65" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -943,9 +943,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="167" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a4226d0e35525e0d197941e93fe0ee1d7" compoundref="clients_8hpp" startline="173" endline="228">api::v2::Clients::suspend</referencedby>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="251" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a4226d0e35525e0d197941e93fe0ee1d7" compoundref="clients_8hpp" startline="261" endline="349">api::v2::Clients::suspend</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1ab604c168d7eb829127b21b5d7f4de43d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -999,8 +999,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="174" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="262" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1ae6ddf114a8b76d43a70e8097a688aa37" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -1054,9 +1054,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="181" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a7f99d20b39e5bdd6ea695c622b613167" compoundref="clients_8hpp" startline="238" endline="293">api::v2::Clients::activate</referencedby>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="274" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a7f99d20b39e5bdd6ea695c622b613167" compoundref="clients_8hpp" startline="362" endline="452">api::v2::Clients::activate</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1a9d1d1653cfcd791bc46fceb6b6ff3983" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -1110,8 +1110,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="188" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="285" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1abf2e638366a36499d889c626eefcc82c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -1165,8 +1165,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="195" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="297" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1af9f1272d9d14a2a2d1b4ba8117728cf8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -1220,9 +1220,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="202" column="18"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1aa3d6c4f043f6ba5e024f51d1a642a8e7" compoundref="clients_8hpp" startline="475" endline="530">api::v2::Clients::getservices</referencedby>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="308" column="16"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1aa3d6c4f043f6ba5e024f51d1a642a8e7" compoundref="clients_8hpp" startline="747" endline="838">api::v2::Clients::getservices</referencedby>
       </memberdef>
       <memberdef kind="function" id="classClientControllerBase_1aa2bc82cd6f33a4c24caa63536a0f5917" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>drogon::Task&lt; void &gt;</type>
@@ -1276,15 +1276,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="209" column="26"/>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
+        <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="319" column="24"/>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
 <para>Abstract contract for client (User/Provider) handlers: CRUDS plus session and account-state operations. </para>
     </briefdescription>
     <detaileddescription>
-<para>Extends the entity-style CRUDS surface with authentication (Login/Logout), account suspension state (Suspend/Activate), password reset and service lookup. Implementations (<ref refid="classClientController" kindref="compound">ClientController</ref>) authorize via <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> and, for Create/Update, move the expensive password hashing to a dedicated worker pool. <computeroutput><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref></computeroutput> is <computeroutput>std::function&lt;void(int, const std::string&amp;)&gt;</computeroutput>; implementations answer exactly once with an HTTP status code and body on every path that completes. Coroutine variants borrow their arguments and must be awaited while those arguments and the controller are alive. <simplesect kind="note"><para>Not every operation has a coroutine variant: Logout and ResetPassword are synchronous only in this contract. The <computeroutput>ip_address</computeroutput> argument is used by <ref refid="controller_8hpp_1aa21c1eb0e46bd1813cc4cba55771c0a3" kindref="member">GateKeeper</ref> for login/logout bookkeeping. </para>
+<para>Extends the entity-style CRUDS surface with authentication (Login/Logout), account suspension state (Suspend/Activate), password reset and service lookup. Implementations (<ref refid="classClientController" kindref="compound">ClientController</ref>) authorize via <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref> and, for Create/Update, move the expensive password hashing to a dedicated worker pool. <computeroutput><ref refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" kindref="member">CALLBACK_</ref></computeroutput> is <computeroutput>std::function&lt;void(int, const std::string&amp;)&gt;</computeroutput>; implementations answer exactly once with an HTTP status code and body on every path that completes. Coroutine variants borrow their arguments and must be awaited while those arguments and the controller are alive. <simplesect kind="note"><para>Not every operation has a coroutine variant: Logout and ResetPassword are synchronous only in this contract. The <computeroutput>ip_address</computeroutput> argument is used by <ref refid="controller_8hpp_1a3100d7dd64f64ce2844ac60863afbaa1" kindref="member">GateKeeper</ref> for login/logout bookkeeping. </para>
 </simplesect>
 <simplesect kind="see"><para><ref refid="classClientController" kindref="compound">ClientController</ref>, <ref refid="classEntityControllerBase" kindref="compound">EntityControllerBase</ref> </para>
 </simplesect>
@@ -1302,7 +1302,7 @@
         <link refid="classClientControllerBase"/>
       </node>
     </inheritancegraph>
-    <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="53" column="1" bodyfile="src/controllers/clientcontroller/clientcontrollerbase.hpp" bodystart="54" bodyend="210"/>
+    <location file="src/controllers/clientcontroller/clientcontrollerbase.hpp" line="70" column="1" bodyfile="src/controllers/clientcontroller/clientcontrollerbase.hpp" bodystart="70" bodyend="324"/>
     <listofallmembers>
       <member refid="classClientControllerBase_1ae6ddf114a8b76d43a70e8097a688aa37" prot="public" virt="pure-virtual"><scope>ClientControllerBase</scope><name>Activate</name></member>
       <member refid="classClientControllerBase_1a9d1d1653cfcd791bc46fceb6b6ff3983" prot="public" virt="pure-virtual"><scope>ClientControllerBase</scope><name>ActivateAsync</name></member>

@@ -11,7 +11,8 @@
         <argsstring></argsstring>
         <name>TABLENAME</name>
         <qualifiedname>PaidServices::TABLENAME</qualifiedname>
-        <initializer>= &quot;clinics_paidservices&quot;</initializer>
+        <initializer>                            =
+&quot;clinics_paidservices&quot;</initializer>
         <briefdescription>
 <para>Table bound to this entity; used by CRUD builders and the read/update/delete permission joins. </para>
         </briefdescription>
@@ -19,12 +20,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/visits/paidservices.hpp" line="54" column="27" bodyfile="src/entities/services/clinics/visits/paidservices.hpp" bodystart="54" bodyend="-1"/>
-        <referencedby refid="classPaidServices_1a2170417b8fab478a0b4cc3493fb9008f" compoundref="paidservices_8hpp" startline="135" endline="135">getPermissionsQueryForDelete</referencedby>
-        <referencedby refid="classPaidServices_1a47913b71949e337709093c73ab3112c8" compoundref="paidservices_8hpp" startline="123" endline="123">getPermissionsQueryForRead</referencedby>
-        <referencedby refid="classPaidServices_1a4ce072d333dbd0975f9f0296f85eaf7c" compoundref="paidservices_8hpp" startline="129" endline="129">getPermissionsQueryForUpdate</referencedby>
-        <referencedby refid="classPaidServices_1a5977670ca02d1f563e1f6a26486db6ef" compoundref="paidservices_8hpp" startline="79" endline="79">getTableName</referencedby>
-        <referencedby refid="classPaidServices_1a5a89ca95432f5de4e7174a7e5941b19a" compoundref="paidservices_8hpp" startline="71" endline="73">PaidServices</referencedby>
+        <location file="src/entities/services/clinics/visits/paidservices.hpp" line="73" column="25" bodyfile="src/entities/services/clinics/visits/paidservices.hpp" bodystart="73" bodyend="-1"/>
+        <referencedby refid="classPaidServices_1a2170417b8fab478a0b4cc3493fb9008f" compoundref="paidservices_8hpp" startline="213" endline="216">getPermissionsQueryForDelete</referencedby>
+        <referencedby refid="classPaidServices_1a47913b71949e337709093c73ab3112c8" compoundref="paidservices_8hpp" startline="191" endline="194">getPermissionsQueryForRead</referencedby>
+        <referencedby refid="classPaidServices_1a4ce072d333dbd0975f9f0296f85eaf7c" compoundref="paidservices_8hpp" startline="202" endline="205">getPermissionsQueryForUpdate</referencedby>
+        <referencedby refid="classPaidServices_1a5977670ca02d1f563e1f6a26486db6ef" compoundref="paidservices_8hpp" startline="114" endline="116">getTableName</referencedby>
+        <referencedby refid="classPaidServices_1a5a89ca95432f5de4e7174a7e5941b19a" compoundref="paidservices_8hpp" startline="104" endline="108">PaidServices</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classPaidServices_1abd9535d4acba63098136c4880e38e60a" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>auto</type>
@@ -32,7 +33,8 @@
         <argsstring></argsstring>
         <name>KEYREFTABLENAME</name>
         <qualifiedname>PaidServices::KEYREFTABLENAME</qualifiedname>
-        <initializer>= &quot;clinics_visits&quot;</initializer>
+        <initializer>                                  =
+&quot;clinics_visits&quot;</initializer>
         <briefdescription>
 <para>Table whose <computeroutput>id</computeroutput> is the create-payload key and whose <computeroutput>clinic_id</computeroutput> identifies the owning clinic. </para>
         </briefdescription>
@@ -40,8 +42,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/visits/paidservices.hpp" line="56" column="27" bodyfile="src/entities/services/clinics/visits/paidservices.hpp" bodystart="56" bodyend="-1"/>
-        <referencedby refid="classPaidServices_1abde5fe3fd3d0658ea4853bc11b53671e" compoundref="paidservices_8hpp" startline="102" endline="116">getPermissionsQueryForCreate</referencedby>
+        <location file="src/entities/services/clinics/visits/paidservices.hpp" line="79" column="25" bodyfile="src/entities/services/clinics/visits/paidservices.hpp" bodystart="79" bodyend="-1"/>
+        <referencedby refid="classPaidServices_1abde5fe3fd3d0658ea4853bc11b53671e" compoundref="paidservices_8hpp" startline="150" endline="181">getPermissionsQueryForCreate</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classPaidServices_1ac071e51fc326b90ccc7e6edca088b27a" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>auto</type>
@@ -49,7 +51,8 @@
         <argsstring></argsstring>
         <name>CREATE_KEY</name>
         <qualifiedname>PaidServices::CREATE_KEY</qualifiedname>
-        <initializer>= &quot;id&quot;</initializer>
+        <initializer>                             =
+&quot;id&quot;</initializer>
         <briefdescription>
 <para>Create-payload key holding the visit id used to resolve clinic ownership. </para>
         </briefdescription>
@@ -57,9 +60,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/visits/paidservices.hpp" line="58" column="27" bodyfile="src/entities/services/clinics/visits/paidservices.hpp" bodystart="58" bodyend="-1"/>
-        <referencedby refid="classPaidServices_1ab6512516d1682f2a292b8d40f18958cf" compoundref="paidservices_8hpp" startline="84" endline="84">getCreateKey</referencedby>
-        <referencedby refid="classPaidServices_1abde5fe3fd3d0658ea4853bc11b53671e" compoundref="paidservices_8hpp" startline="102" endline="116">getPermissionsQueryForCreate</referencedby>
+        <location file="src/entities/services/clinics/visits/paidservices.hpp" line="84" column="25" bodyfile="src/entities/services/clinics/visits/paidservices.hpp" bodystart="84" bodyend="-1"/>
+        <referencedby refid="classPaidServices_1ab6512516d1682f2a292b8d40f18958cf" compoundref="paidservices_8hpp" startline="121" endline="123">getCreateKey</referencedby>
+        <referencedby refid="classPaidServices_1abde5fe3fd3d0658ea4853bc11b53671e" compoundref="paidservices_8hpp" startline="150" endline="181">getPermissionsQueryForCreate</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -87,7 +90,7 @@
 <parametername>T</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>A type accepted by <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref>, e.g. <ref refid="namespaceapi_1_1v2_1_1Types_1ac9a246b12a16bc018eec47370d2d6a20" kindref="member">api::v2::Types::Create_t</ref> or <ref refid="classRead__t" kindref="compound">Read_t</ref>. </para>
+<para>A type accepted by <ref refid="entity_8hpp_1aa7ee46136fb273d4151dc647393adcdd" kindref="member">EntityType</ref>, e.g. <ref refid="namespaceapi_1_1v2_1_1Types_1a3c62a5c40f89f4df780a0aa64a374461" kindref="member">api::v2::Types::Create_t</ref> or <ref refid="classRead__t" kindref="compound">Read_t</ref>. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -104,9 +107,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/visits/paidservices.hpp" line="71" column="5" bodyfile="src/entities/services/clinics/visits/paidservices.hpp" bodystart="71" bodyend="73"/>
+        <location file="src/entities/services/clinics/visits/paidservices.hpp" line="104" column="3" bodyfile="src/entities/services/clinics/visits/paidservices.hpp" bodystart="104" bodyend="108"/>
         <references refid="classCase_1a9994142d5b90bc1a5dbca54fc2526911">Case::Case</references>
-        <references refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41" compoundref="paidservices_8hpp" startline="54">TABLENAME</references>
+        <references refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41" compoundref="paidservices_8hpp" startline="73">TABLENAME</references>
       </memberdef>
       <memberdef kind="function" id="classPaidServices_1ac08715110953c52fc0d91ba6cda62a70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -121,7 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/visits/paidservices.hpp" line="89" column="5"/>
+        <location file="src/entities/services/clinics/visits/paidservices.hpp" line="130" column="3"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -141,8 +144,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/visits/paidservices.hpp" line="79" column="27" bodyfile="src/entities/services/clinics/visits/paidservices.hpp" bodystart="79" bodyend="79"/>
-        <references refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41" compoundref="paidservices_8hpp" startline="54">TABLENAME</references>
+        <location file="src/entities/services/clinics/visits/paidservices.hpp" line="114" column="25" bodyfile="src/entities/services/clinics/visits/paidservices.hpp" bodystart="114" bodyend="116"/>
+        <references refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41" compoundref="paidservices_8hpp" startline="73">TABLENAME</references>
       </memberdef>
       <memberdef kind="function" id="classPaidServices_1ab6512516d1682f2a292b8d40f18958cf" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>auto</type>
@@ -160,8 +163,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/visits/paidservices.hpp" line="84" column="27" bodyfile="src/entities/services/clinics/visits/paidservices.hpp" bodystart="84" bodyend="84"/>
-        <references refid="classPaidServices_1ac071e51fc326b90ccc7e6edca088b27a" compoundref="paidservices_8hpp" startline="58">CREATE_KEY</references>
+        <location file="src/entities/services/clinics/visits/paidservices.hpp" line="121" column="25" bodyfile="src/entities/services/clinics/visits/paidservices.hpp" bodystart="121" bodyend="123"/>
+        <references refid="classPaidServices_1ac071e51fc326b90ccc7e6edca088b27a" compoundref="paidservices_8hpp" startline="84">CREATE_KEY</references>
       </memberdef>
       <memberdef kind="function" id="classPaidServices_1abde5fe3fd3d0658ea4853bc11b53671e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -177,7 +180,7 @@
 <para>Builds the SQL that resolves the owning clinic for a create request. </para>
         </briefdescription>
         <detaileddescription>
-<para>Reads the visit id from <computeroutput>data_j</computeroutput> using CREATE_KEY and delegates to the <ref refid="classCase" kindref="compound">Case</ref> base, which joins <computeroutput>clinics</computeroutput> with <computeroutput>clinics_visits</computeroutput> on clinic_id. <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref> runs the returned SELECT before the insert; no insert occurs here. <parameterlist kind="param"><parameteritem>
+<para>Reads the visit id from <computeroutput>data_j</computeroutput> using CREATE_KEY and delegates to the <ref refid="classCase" kindref="compound">Case</ref> base, which joins <computeroutput>clinics</computeroutput> with <computeroutput>clinics_visits</computeroutput> on clinic_id. <ref refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21" kindref="member">PermissionManager</ref> runs the returned SELECT before the insert; no insert occurs here. <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">data_j</parametername>
 </parameternamelist>
@@ -194,11 +197,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/visits/paidservices.hpp" line="102" column="26" bodyfile="src/entities/services/clinics/visits/paidservices.hpp" bodystart="102" bodyend="116"/>
-        <references refid="classPaidServices_1ac071e51fc326b90ccc7e6edca088b27a" compoundref="paidservices_8hpp" startline="58">CREATE_KEY</references>
-        <references refid="global_8hpp_1a68447123f2c27bb7bcdbbaec4091dab7" compoundref="global_8hpp" startline="46" endline="48">CRITICALMESSAGE</references>
-        <references refid="classCase_1a5617a4962ddeaabd3094fae406c860f6" compoundref="case_8hpp" startline="119" endline="130">Case::getPermissionsQueryForCreateImpl</references>
-        <references refid="classPaidServices_1abd9535d4acba63098136c4880e38e60a" compoundref="paidservices_8hpp" startline="56">KEYREFTABLENAME</references>
+        <location file="src/entities/services/clinics/visits/paidservices.hpp" line="150" column="24" bodyfile="src/entities/services/clinics/visits/paidservices.hpp" bodystart="150" bodyend="181"/>
+        <references refid="classPaidServices_1ac071e51fc326b90ccc7e6edca088b27a" compoundref="paidservices_8hpp" startline="84">CREATE_KEY</references>
+        <references refid="global_8hpp_1a68447123f2c27bb7bcdbbaec4091dab7" compoundref="global_8hpp" startline="48" endline="54">CRITICALMESSAGE</references>
+        <references refid="classCase_1a5617a4962ddeaabd3094fae406c860f6" compoundref="case_8hpp" startline="154" endline="170">Case::getPermissionsQueryForCreateImpl</references>
+        <references refid="classPaidServices_1abd9535d4acba63098136c4880e38e60a" compoundref="paidservices_8hpp" startline="79">KEYREFTABLENAME</references>
       </memberdef>
       <memberdef kind="function" id="classPaidServices_1a47913b71949e337709093c73ab3112c8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -229,9 +232,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/visits/paidservices.hpp" line="123" column="26" bodyfile="src/entities/services/clinics/visits/paidservices.hpp" bodystart="123" bodyend="123"/>
-        <references refid="classCase_1a549bb017161d692a03db738d940b9b2f" compoundref="case_8hpp" startline="138" endline="147">Case::getPermissionsQueryForReadImp</references>
-        <references refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41" compoundref="paidservices_8hpp" startline="54">TABLENAME</references>
+        <location file="src/entities/services/clinics/visits/paidservices.hpp" line="191" column="24" bodyfile="src/entities/services/clinics/visits/paidservices.hpp" bodystart="191" bodyend="194"/>
+        <references refid="classCase_1a549bb017161d692a03db738d940b9b2f" compoundref="case_8hpp" startline="181" endline="194">Case::getPermissionsQueryForReadImp</references>
+        <references refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41" compoundref="paidservices_8hpp" startline="73">TABLENAME</references>
       </memberdef>
       <memberdef kind="function" id="classPaidServices_1a4ce072d333dbd0975f9f0296f85eaf7c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -262,9 +265,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/visits/paidservices.hpp" line="129" column="26" bodyfile="src/entities/services/clinics/visits/paidservices.hpp" bodystart="129" bodyend="129"/>
-        <references refid="classCase_1acfa6a0504f8706a2d5acceb6cf2d1edf" compoundref="case_8hpp" startline="155" endline="164">Case::getPermissionsQueryForUpdateImpl</references>
-        <references refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41" compoundref="paidservices_8hpp" startline="54">TABLENAME</references>
+        <location file="src/entities/services/clinics/visits/paidservices.hpp" line="202" column="24" bodyfile="src/entities/services/clinics/visits/paidservices.hpp" bodystart="202" bodyend="205"/>
+        <references refid="classCase_1acfa6a0504f8706a2d5acceb6cf2d1edf" compoundref="case_8hpp" startline="205" endline="218">Case::getPermissionsQueryForUpdateImpl</references>
+        <references refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41" compoundref="paidservices_8hpp" startline="73">TABLENAME</references>
       </memberdef>
       <memberdef kind="function" id="classPaidServices_1a2170417b8fab478a0b4cc3493fb9008f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -295,9 +298,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/entities/services/clinics/visits/paidservices.hpp" line="135" column="26" bodyfile="src/entities/services/clinics/visits/paidservices.hpp" bodystart="135" bodyend="135"/>
-        <references refid="classCase_1a1dd10871e1bd41f7d55b2b6f54da4fff" compoundref="case_8hpp" startline="172" endline="181">Case::getPermissionsQueryForDeleteImp</references>
-        <references refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41" compoundref="paidservices_8hpp" startline="54">TABLENAME</references>
+        <location file="src/entities/services/clinics/visits/paidservices.hpp" line="213" column="24" bodyfile="src/entities/services/clinics/visits/paidservices.hpp" bodystart="213" bodyend="216"/>
+        <references refid="classCase_1a1dd10871e1bd41f7d55b2b6f54da4fff" compoundref="case_8hpp" startline="229" endline="242">Case::getPermissionsQueryForDeleteImp</references>
+        <references refid="classPaidServices_1abaa4f6c65de97362379cb91521277c41" compoundref="paidservices_8hpp" startline="73">TABLENAME</references>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -306,7 +309,7 @@
     <detaileddescription>
 <para>A thin value type that binds the generic Case/Entity CRUD machinery to one table. The table&apos;s primary key is the visit id (a foreign key to <computeroutput>clinics_visits</computeroutput> with ON DELETE CASCADE), so there is at most one paid-services record per visit. SQL generation is inherited; this class fixes the table name and the visit table used to resolve the owning clinic during create-authorisation. The static getPermissionsQueryFor* helpers are taken as function pointers by <ref refid="classapi_1_1v2_1_1PermissionManager_1a7ca637c16b64d7ebc2e29acc0f366cf0" kindref="member">PermissionManager::canCreate</ref>/canRead/canUpdate/ canDelete for api::v2::Case_t T. Registered as <ref refid="classClinicController" kindref="compound">ClinicController&lt;PaidServices&gt;</ref> under the <computeroutput>paidservices</computeroutput> serviceType. Ownership: the data wrapper is copied into <ref refid="classEntity" kindref="compound">Entity</ref> and is const thereafter; no mutable state and no locking of its own. Copy and move are deleted by <ref refid="classCase" kindref="compound">Case</ref>. <simplesect kind="note"><para>No default constructor: <ref refid="classEntity" kindref="compound">Entity</ref> needs a data wrapper to build statements from. </para>
 </simplesect>
-<simplesect kind="see"><para><ref refid="classCase" kindref="compound">Case</ref>, <ref refid="classEntity" kindref="compound">Entity</ref>, <ref refid="gatekeeper_8cpp_1a2391c0b165c65deb4ad3ad19ca6dd2aa" kindref="member">PermissionManager</ref>, <ref refid="classClinicController" kindref="compound">ClinicController</ref> </para>
+<simplesect kind="see"><para><ref refid="classCase" kindref="compound">Case</ref>, <ref refid="classEntity" kindref="compound">Entity</ref>, <ref refid="gatekeeper_8cpp_1ae17e951f1dc80a8e4920571ebe9f3c21" kindref="member">PermissionManager</ref>, <ref refid="classClinicController" kindref="compound">ClinicController</ref> </para>
 </simplesect>
 </para>
     </detaileddescription>
@@ -358,7 +361,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="src/entities/services/clinics/visits/paidservices.hpp" line="50" column="1" bodyfile="src/entities/services/clinics/visits/paidservices.hpp" bodystart="51" bodyend="136"/>
+    <location file="src/entities/services/clinics/visits/paidservices.hpp" line="69" column="1" bodyfile="src/entities/services/clinics/visits/paidservices.hpp" bodystart="69" bodyend="217"/>
     <listofallmembers>
       <member refid="classBase_1a58887755525abd3f340963e2bbdcc972" prot="public" virt="non-virtual"><scope>PaidServices</scope><name>Base</name></member>
       <member refid="classEntity_1ad32e6480f1780dc4b3c6466edc214f34" prot="protected" virt="non-virtual"><scope>PaidServices</scope><name>buildCreateStatement</name></member>

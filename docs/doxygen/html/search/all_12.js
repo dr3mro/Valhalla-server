@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['keeprbase_0',['KeeprBase',['../classapi_1_1v2_1_1KeeprBase.html',1,'api::v2::KeeprBase'],['../classapi_1_1v2_1_1KeeprBase.html#ab09740b221922b51de0a8c45c54daa85',1,'api::v2::KeeprBase::KeeprBase()'],['../classapi_1_1v2_1_1KeeprBase.html#add3bdbaa73fd820198bd4e19122e02dd',1,'api::v2::KeeprBase::KeeprBase(const KeeprBase &amp;other)=default'],['../classapi_1_1v2_1_1KeeprBase.html#af1965f91dfd57bbf65a4f286551a5627',1,'api::v2::KeeprBase::KeeprBase(KeeprBase &amp;&amp;other) noexcept=default'],['../keeprbase_8cpp.html#a40ca499cbee8072a0cf80889f3510f85',1,'KeeprBase:&#160;keeprbase.cpp']]],
+  ['keeprbase_0',['KeeprBase',['../classapi_1_1v2_1_1KeeprBase.html',1,'api::v2::KeeprBase'],['../classapi_1_1v2_1_1KeeprBase.html#ab09740b221922b51de0a8c45c54daa85',1,'api::v2::KeeprBase::KeeprBase()'],['../classapi_1_1v2_1_1KeeprBase.html#add3bdbaa73fd820198bd4e19122e02dd',1,'api::v2::KeeprBase::KeeprBase(const KeeprBase &amp;other)=default'],['../classapi_1_1v2_1_1KeeprBase.html#af1965f91dfd57bbf65a4f286551a5627',1,'api::v2::KeeprBase::KeeprBase(KeeprBase &amp;&amp;other) noexcept=default'],['../keeprbase_8cpp.html#a62ac81c874d900289fbf508f81a219c0',1,'KeeprBase:&#160;keeprbase.cpp']]],
   ['keeprbase_2ecpp_1',['keeprbase.cpp',['../keeprbase_8cpp.html',1,'']]],
   ['keeprbase_2ehpp_2',['keeprbase.hpp',['../keeprbase_8hpp.html',1,'']]],
   ['key_3',['key',['../classMemCache_1_1CacheEntry.html#ad20f7970764f778950f643497352428e',1,'MemCache::CacheEntry']]],

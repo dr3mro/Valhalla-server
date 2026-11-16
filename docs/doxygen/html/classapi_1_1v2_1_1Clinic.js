@@ -1,6 +1,6 @@
 var classapi_1_1v2_1_1Clinic =
 [
-    [ "ClinicVariant", "classapi_1_1v2_1_1Clinic.html#a13a7dd4fda6b27c46d103a85753442f4", null ],
+    [ "ClinicVariant", "classapi_1_1v2_1_1Clinic.html#a2f896faa5da191e463e1c575a7387ee7", null ],
     [ "Create", "classapi_1_1v2_1_1Clinic.html#a732361aa386238582d08d4165eb4b864", null ],
     [ "Delete", "classapi_1_1v2_1_1Clinic.html#a0041b3b3e1be2e86ea5b2aef2544d8fd", null ],
     [ "GetVisits", "classapi_1_1v2_1_1Clinic.html#ad05abb43349c46b4bc7fc67fab45ed11", null ],

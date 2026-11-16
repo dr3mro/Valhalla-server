@@ -138,14 +138,14 @@ Static Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-static-attribs" class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:a86209915d051bd2999972e9e448d00c2" id="r_a86209915d051bd2999972e9e448d00c2"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a86209915d051bd2999972e9e448d00c2">active_</a> = false</td></tr>
+<tr class="memitem:a86209915d051bd2999972e9e448d00c2" id="r_a86209915d051bd2999972e9e448d00c2"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a86209915d051bd2999972e9e448d00c2">active_</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>RAII marker that puts the current thread in "probe" mode. </p>
 <p>While an instance is alive, <a class="el" href="#af3b9ebe61addb4dd1885a3d117221a1f" title="Guards a database-access point against running on an IO thread.">DbProbe::check()</a> throws <a class="el" href="structWouldBlock.html" title="Control-flow signal that a request needs the database and must move off the IO thread.">WouldBlock</a> on that thread, preventing any database access from running on a Drogon IO thread. The active flag is <span class="tt">thread_local</span>, so only the constructing thread is affected. Instances are stack-allocated within a try block in the request wrapper and must not be shared across threads. Non-copyable and non-assignable. </p><dl class="section note"><dt>Note</dt><dd>The destructor unconditionally clears the flag; nested probes on the same thread would clear it early, so usage assumes a single probe per thread at a time. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="structWouldBlock.html" title="Control-flow signal that a request needs the database and must move off the IO thread.">WouldBlock</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="dbprobe_8hpp_source.html#l00063">63</a> of file <a class="el" href="dbprobe_8hpp_source.html">dbprobe.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dbprobe_8hpp_source.html#l00081">81</a> of file <a class="el" href="dbprobe_8hpp_source.html">dbprobe.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a05c72d2e76a859f168c039bb0a13b802" name="a05c72d2e76a859f168c039bb0a13b802"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a05c72d2e76a859f168c039bb0a13b802">&#9670;&#160;</a></span>DbProbe() <span class="overload">[1/2]</span></h2>
@@ -171,9 +171,9 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Marks the current thread as probing for the lifetime of this object. </p>
 
-<p class="definition">Definition at line <a class="el" href="dbprobe_8hpp_source.html#l00069">69</a> of file <a class="el" href="dbprobe_8hpp_source.html">dbprobe.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dbprobe_8hpp_source.html#l00086">86</a> of file <a class="el" href="dbprobe_8hpp_source.html">dbprobe.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="dbprobe_8hpp_source.html#l00095">active_</a>.</p>
+<p class="reference">References <a class="el" href="dbprobe_8hpp_source.html#l00122">active_</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a383566e1d3d5ad2481f7e33a786af2a0">DbProbe()</a>, and <a class="el" href="#ae73173ba3c220d2c072d0246276f6534">operator=()</a>.</p>
 
@@ -203,9 +203,9 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Clears the probe flag for the current thread. </p>
 
-<p class="definition">Definition at line <a class="el" href="dbprobe_8hpp_source.html#l00074">74</a> of file <a class="el" href="dbprobe_8hpp_source.html">dbprobe.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dbprobe_8hpp_source.html#l00094">94</a> of file <a class="el" href="dbprobe_8hpp_source.html">dbprobe.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="dbprobe_8hpp_source.html#l00095">active_</a>.</p>
+<p class="reference">References <a class="el" href="dbprobe_8hpp_source.html#l00122">active_</a>.</p>
 
 </div>
 </div>
@@ -232,7 +232,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="dbprobe_8hpp_source.html#l00069">DbProbe()</a>.</p>
+<p class="reference">References <a class="el" href="dbprobe_8hpp_source.html#l00086">DbProbe()</a>.</p>
 
 </div>
 </div>
@@ -269,11 +269,11 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <p><a class="el" href="classDatabase.html" title="Owns one synchronous PostgreSQL connection used by the synchronous database path.">Database</a> helpers call this first; in probe mode it throws before any connection is leased, allowing the request to be re-run from the start on a DB worker where no probe is active. </p>
 
-<p class="definition">Definition at line <a class="el" href="dbprobe_8hpp_source.html#l00086">86</a> of file <a class="el" href="dbprobe_8hpp_source.html">dbprobe.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dbprobe_8hpp_source.html#l00113">113</a> of file <a class="el" href="dbprobe_8hpp_source.html">dbprobe.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="dbprobe_8hpp_source.html#l00095">active_</a>.</p>
+<p class="reference">References <a class="el" href="dbprobe_8hpp_source.html#l00122">active_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="databasecontroller_8hpp_source.html#l00283">DatabaseController::executer()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="databasecontroller_8hpp_source.html#l00403">DatabaseController::executer()</a>.</p>
 
 </div>
 </div>
@@ -300,7 +300,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="dbprobe_8hpp_source.html#l00069">DbProbe()</a>.</p>
+<p class="reference">References <a class="el" href="dbprobe_8hpp_source.html#l00086">DbProbe()</a>.</p>
 
 </div>
 </div>
@@ -315,7 +315,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool DbProbe::active_ = false</td>
+          <td class="memname">bool DbProbe::active_</td>
         </tr>
       </table>
   </td>
@@ -324,10 +324,12 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">                                    =</div>
+<div class="line"><span class="keyword">false</span></div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="dbprobe_8hpp_source.html#l00122">122</a> of file <a class="el" href="dbprobe_8hpp_source.html">dbprobe.hpp</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="dbprobe_8hpp_source.html#l00095">95</a> of file <a class="el" href="dbprobe_8hpp_source.html">dbprobe.hpp</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="dbprobe_8hpp_source.html#l00086">check()</a>, <a class="el" href="dbprobe_8hpp_source.html#l00069">DbProbe()</a>, and <a class="el" href="dbprobe_8hpp_source.html#l00074">~DbProbe()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="dbprobe_8hpp_source.html#l00113">check()</a>, <a class="el" href="dbprobe_8hpp_source.html#l00086">DbProbe()</a>, and <a class="el" href="dbprobe_8hpp_source.html#l00094">~DbProbe()</a>.</p>
 
 </div>
 </div>

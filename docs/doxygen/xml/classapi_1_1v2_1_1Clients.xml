@@ -5,9 +5,11 @@
     <basecompoundref prot="public" virt="non-virtual">drogon::HttpController&lt; Clients &gt;</basecompoundref>
     <includes refid="clients_8hpp" local="no">clients.hpp</includes>
     <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="classapi_1_1v2_1_1Clients_1a0a5429a3aad1cb859fd3b1748db31866" prot="private" static="no">
+      <memberdef kind="typedef" id="classapi_1_1v2_1_1Clients_1adc3d9fd325d47cafbcda107428f822f4" prot="private" static="no">
         <type>std::variant&lt; std::shared_ptr&lt; <ref refid="classClientController" kindref="compound">ClientController</ref>&lt; <ref refid="classUser" kindref="compound">User</ref> &gt; &gt;, std::shared_ptr&lt; <ref refid="classClientController" kindref="compound">ClientController</ref>&lt; <ref refid="classProvider" kindref="compound">Provider</ref> &gt; &gt; &gt;</type>
-        <definition>using api::v2::Clients::ClientVariant = std::variant&lt;std::shared_ptr&lt;ClientController&lt;User&gt;&gt;, std::shared_ptr&lt;ClientController&lt;Provider&gt;&gt;&gt;</definition>
+        <definition>using api::v2::Clients::ClientVariant = std::variant&lt;
+       std::shared_ptr&lt;ClientController&lt;User&gt;&gt;,
+       std::shared_ptr&lt;ClientController&lt;Provider&gt;&gt;&gt;</definition>
         <argsstring></argsstring>
         <name>ClientVariant</name>
         <qualifiedname>api::v2::Clients::ClientVariant</qualifiedname>
@@ -18,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="579" column="9" bodyfile="src/api/v2/routes/clients.hpp" bodystart="579" bodyend="-1"/>
+        <location file="src/api/v2/routes/clients.hpp" line="939" column="5" bodyfile="src/api/v2/routes/clients.hpp" bodystart="939" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -28,7 +30,8 @@
         <argsstring></argsstring>
         <name>dbExecutor</name>
         <qualifiedname>api::v2::Clients::dbExecutor</qualifiedname>
-        <initializer>= <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classDbExecutor" kindref="compound">DbExecutor</ref>&gt;()</initializer>
+        <initializer>       =
+<ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classDbExecutor" kindref="compound">DbExecutor</ref>&gt;()</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -36,17 +39,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="548" column="25" bodyfile="src/api/v2/routes/clients.hpp" bodystart="548" bodyend="-1"/>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a7f99d20b39e5bdd6ea695c622b613167" compoundref="clients_8hpp" startline="238" endline="293">activate</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a1f733add7f937880b9050bd889be6e51" compoundref="clients_8hpp" startline="87" endline="90">create</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a1c64163fcea38e48979cbe03e86bb65d" compoundref="clients_8hpp" startline="352" endline="407">delete_</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1aa3d6c4f043f6ba5e024f51d1a642a8e7" compoundref="clients_8hpp" startline="475" endline="530">getservices</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a8b82b6424d114860f571b240a2b20d97" compoundref="clients_8hpp" startline="101" endline="150">login</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1abba6cc7cc5d089cf1c8e642fb8867b65" compoundref="clients_8hpp" startline="159" endline="163">logout</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a1e86620ea68cbcd781a959ca4dd5e226" compoundref="clients_8hpp" startline="304" endline="326">read</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a6ed35f998ca78524ee42c7ba30cce0e9" compoundref="clients_8hpp" startline="416" endline="466">search</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a4226d0e35525e0d197941e93fe0ee1d7" compoundref="clients_8hpp" startline="173" endline="228">suspend</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1ac501011b576591aa6f307819775ac804" compoundref="clients_8hpp" startline="336" endline="343">update</referencedby>
+        <location file="src/api/v2/routes/clients.hpp" line="889" column="12" bodyfile="src/api/v2/routes/clients.hpp" bodystart="889" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a7f99d20b39e5bdd6ea695c622b613167" compoundref="clients_8hpp" startline="362" endline="452">activate</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a1f733add7f937880b9050bd889be6e51" compoundref="clients_8hpp" startline="113" endline="125">create</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a1c64163fcea38e48979cbe03e86bb65d" compoundref="clients_8hpp" startline="551" endline="639">delete_</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1aa3d6c4f043f6ba5e024f51d1a642a8e7" compoundref="clients_8hpp" startline="747" endline="838">getservices</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a8b82b6424d114860f571b240a2b20d97" compoundref="clients_8hpp" startline="139" endline="222">login</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1abba6cc7cc5d089cf1c8e642fb8867b65" compoundref="clients_8hpp" startline="235" endline="248">logout</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a1e86620ea68cbcd781a959ca4dd5e226" compoundref="clients_8hpp" startline="467" endline="508">read</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a6ed35f998ca78524ee42c7ba30cce0e9" compoundref="clients_8hpp" startline="651" endline="734">search</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a4226d0e35525e0d197941e93fe0ee1d7" compoundref="clients_8hpp" startline="261" endline="349">suspend</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1ac501011b576591aa6f307819775ac804" compoundref="clients_8hpp" startline="521" endline="538">update</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classapi_1_1v2_1_1Clients_1ac316ec46204e5013d6f3675f57dec853" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">GateKeeper</ref> &gt;</type>
@@ -54,7 +57,8 @@
         <argsstring></argsstring>
         <name>gateKeeper_</name>
         <qualifiedname>api::v2::Clients::gateKeeper_</qualifiedname>
-        <initializer>= <ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject</ref>&lt;<ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">GateKeeper</ref>&gt;()</initializer>
+        <initializer>                        =
+<ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject</ref>&lt;<ref refid="classapi_1_1v2_1_1GateKeeper" kindref="compound">GateKeeper</ref>&gt;()</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -62,8 +66,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="567" column="25" bodyfile="src/api/v2/routes/clients.hpp" bodystart="567" bodyend="-1"/>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1ae5420af7a0b9609ca0536d2d9643679e" compoundref="clients_8hpp" startline="594" endline="705">readAsyncImpl</referencedby>
+        <location file="src/api/v2/routes/clients.hpp" line="918" column="21" bodyfile="src/api/v2/routes/clients.hpp" bodystart="918" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1ae5420af7a0b9609ca0536d2d9643679e" compoundref="clients_8hpp" startline="964" endline="1146">readAsyncImpl</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classapi_1_1v2_1_1Clients_1a5aaa7bf1173d69e8bd61bb5670c40c7d" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classDatabaseController" kindref="compound">DatabaseController</ref> &gt;</type>
@@ -71,7 +75,8 @@
         <argsstring></argsstring>
         <name>dbController_</name>
         <qualifiedname>api::v2::Clients::dbController_</qualifiedname>
-        <initializer>= <ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject</ref>&lt;<ref refid="classDatabaseController" kindref="compound">DatabaseController</ref>&gt;()</initializer>
+        <initializer>                          =
+<ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject</ref>&lt;<ref refid="classDatabaseController" kindref="compound">DatabaseController</ref>&gt;()</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -79,8 +84,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="571" column="25" bodyfile="src/api/v2/routes/clients.hpp" bodystart="571" bodyend="-1"/>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1ae5420af7a0b9609ca0536d2d9643679e" compoundref="clients_8hpp" startline="594" endline="705">readAsyncImpl</referencedby>
+        <location file="src/api/v2/routes/clients.hpp" line="925" column="21" bodyfile="src/api/v2/routes/clients.hpp" bodystart="925" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1ae5420af7a0b9609ca0536d2d9643679e" compoundref="clients_8hpp" startline="964" endline="1146">readAsyncImpl</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classapi_1_1v2_1_1Clients_1a53eb06993cd3949464e7b237c4aec083" prot="private" static="no" mutable="no">
         <type>const bool</type>
@@ -88,7 +93,9 @@
         <argsstring></argsstring>
         <name>asyncDb_</name>
         <qualifiedname>api::v2::Clients::asyncDb_</qualifiedname>
-        <initializer>= <ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject</ref>&lt;<ref refid="classConfigurator" kindref="compound">Configurator</ref>&gt;()-&gt;get&lt;<ref refid="classConfigurator_1afdc97f6e9bd19c0197759b8860ed9a49" kindref="member">Configurator::DatabaseConfig</ref>&gt;().async</initializer>
+        <initializer>= <ref refid="classStore_1aaf81da54b109478891030b7e04653bad" kindref="member">Store::cachedObject</ref>&lt;<ref refid="classConfigurator" kindref="compound">Configurator</ref>&gt;()
+      -&gt;get&lt;<ref refid="classConfigurator_1a78caa68d4554c8ab0d0c1753ce8edbe2" kindref="member">Configurator::DatabaseConfig</ref>&gt;()
+      .async</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -96,23 +103,26 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="575" column="20" bodyfile="src/api/v2/routes/clients.hpp" bodystart="575" bodyend="-1"/>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a7f99d20b39e5bdd6ea695c622b613167" compoundref="clients_8hpp" startline="238" endline="293">activate</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a1c64163fcea38e48979cbe03e86bb65d" compoundref="clients_8hpp" startline="352" endline="407">delete_</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1aa3d6c4f043f6ba5e024f51d1a642a8e7" compoundref="clients_8hpp" startline="475" endline="530">getservices</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a8b82b6424d114860f571b240a2b20d97" compoundref="clients_8hpp" startline="101" endline="150">login</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a1e86620ea68cbcd781a959ca4dd5e226" compoundref="clients_8hpp" startline="304" endline="326">read</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a6ed35f998ca78524ee42c7ba30cce0e9" compoundref="clients_8hpp" startline="416" endline="466">search</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a4226d0e35525e0d197941e93fe0ee1d7" compoundref="clients_8hpp" startline="173" endline="228">suspend</referencedby>
+        <location file="src/api/v2/routes/clients.hpp" line="932" column="16" bodyfile="src/api/v2/routes/clients.hpp" bodystart="932" bodyend="-1"/>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a7f99d20b39e5bdd6ea695c622b613167" compoundref="clients_8hpp" startline="362" endline="452">activate</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a1c64163fcea38e48979cbe03e86bb65d" compoundref="clients_8hpp" startline="551" endline="639">delete_</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1aa3d6c4f043f6ba5e024f51d1a642a8e7" compoundref="clients_8hpp" startline="747" endline="838">getservices</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a8b82b6424d114860f571b240a2b20d97" compoundref="clients_8hpp" startline="139" endline="222">login</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a1e86620ea68cbcd781a959ca4dd5e226" compoundref="clients_8hpp" startline="467" endline="508">read</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a6ed35f998ca78524ee42c7ba30cce0e9" compoundref="clients_8hpp" startline="651" endline="734">search</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a4226d0e35525e0d197941e93fe0ee1d7" compoundref="clients_8hpp" startline="261" endline="349">suspend</referencedby>
       </memberdef>
       <memberdef kind="variable" id="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" prot="private" static="no" mutable="no">
-        <type>std::unordered_map&lt; std::string_view, <ref refid="classapi_1_1v2_1_1Clients_1a0a5429a3aad1cb859fd3b1748db31866" kindref="member">ClientVariant</ref> &gt;</type>
+        <type>std::unordered_map&lt; std::string_view, <ref refid="classapi_1_1v2_1_1Clients_1adc3d9fd325d47cafbcda107428f822f4" kindref="member">ClientVariant</ref> &gt;</type>
         <definition>std::unordered_map&lt;std::string_view, ClientVariant&gt; api::v2::Clients::clientRegistry</definition>
         <argsstring></argsstring>
         <name>clientRegistry</name>
         <qualifiedname>api::v2::Clients::clientRegistry</qualifiedname>
-        <initializer>                              = {  
-{&quot;users&quot;, <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classClientController" kindref="compound">ClientController</ref>&lt;<ref refid="classUser" kindref="compound">User</ref>&gt;&gt;()}, {&quot;providers&quot;, <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classClientController" kindref="compound">ClientController</ref>&lt;<ref refid="classProvider" kindref="compound">Provider</ref>&gt;&gt;()}}</initializer>
+        <initializer>                              =
+{
+ {&quot;users&quot;, <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classClientController" kindref="compound">ClientController</ref>&lt;<ref refid="classUser" kindref="compound">User</ref>&gt;&gt;()},
+ {&quot;providers&quot;,
+  <ref refid="classStore_1a0607fb3b583c06ca910ed6c9881e790c" kindref="member">Store::getObject</ref>&lt;<ref refid="classClientController" kindref="compound">ClientController</ref>&lt;<ref refid="classProvider" kindref="compound">Provider</ref>&gt;&gt;()}}</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -120,18 +130,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="584" column="28" bodyfile="src/api/v2/routes/clients.hpp" bodystart="584" bodyend="585"/>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a7f99d20b39e5bdd6ea695c622b613167" compoundref="clients_8hpp" startline="238" endline="293">activate</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a1f733add7f937880b9050bd889be6e51" compoundref="clients_8hpp" startline="87" endline="90">create</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a1c64163fcea38e48979cbe03e86bb65d" compoundref="clients_8hpp" startline="352" endline="407">delete_</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1aa3d6c4f043f6ba5e024f51d1a642a8e7" compoundref="clients_8hpp" startline="475" endline="530">getservices</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a8b82b6424d114860f571b240a2b20d97" compoundref="clients_8hpp" startline="101" endline="150">login</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1abba6cc7cc5d089cf1c8e642fb8867b65" compoundref="clients_8hpp" startline="159" endline="163">logout</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a1e86620ea68cbcd781a959ca4dd5e226" compoundref="clients_8hpp" startline="304" endline="326">read</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1ae5420af7a0b9609ca0536d2d9643679e" compoundref="clients_8hpp" startline="594" endline="705">readAsyncImpl</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a6ed35f998ca78524ee42c7ba30cce0e9" compoundref="clients_8hpp" startline="416" endline="466">search</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a4226d0e35525e0d197941e93fe0ee1d7" compoundref="clients_8hpp" startline="173" endline="228">suspend</referencedby>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1ac501011b576591aa6f307819775ac804" compoundref="clients_8hpp" startline="336" endline="343">update</referencedby>
+        <location file="src/api/v2/routes/clients.hpp" line="948" column="24" bodyfile="src/api/v2/routes/clients.hpp" bodystart="948" bodyend="952"/>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a7f99d20b39e5bdd6ea695c622b613167" compoundref="clients_8hpp" startline="362" endline="452">activate</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a1f733add7f937880b9050bd889be6e51" compoundref="clients_8hpp" startline="113" endline="125">create</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a1c64163fcea38e48979cbe03e86bb65d" compoundref="clients_8hpp" startline="551" endline="639">delete_</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1aa3d6c4f043f6ba5e024f51d1a642a8e7" compoundref="clients_8hpp" startline="747" endline="838">getservices</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a8b82b6424d114860f571b240a2b20d97" compoundref="clients_8hpp" startline="139" endline="222">login</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1abba6cc7cc5d089cf1c8e642fb8867b65" compoundref="clients_8hpp" startline="235" endline="248">logout</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a1e86620ea68cbcd781a959ca4dd5e226" compoundref="clients_8hpp" startline="467" endline="508">read</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1ae5420af7a0b9609ca0536d2d9643679e" compoundref="clients_8hpp" startline="964" endline="1146">readAsyncImpl</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a6ed35f998ca78524ee42c7ba30cce0e9" compoundref="clients_8hpp" startline="651" endline="734">search</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a4226d0e35525e0d197941e93fe0ee1d7" compoundref="clients_8hpp" startline="261" endline="349">suspend</referencedby>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1ac501011b576591aa6f307819775ac804" compoundref="clients_8hpp" startline="521" endline="538">update</referencedby>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -186,10 +196,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="87" column="14" bodyfile="src/api/v2/routes/clients.hpp" bodystart="87" bodyend="90"/>
-        <references refid="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" compoundref="clients_8hpp" startline="584" endline="585">clientRegistry</references>
+        <location file="src/api/v2/routes/clients.hpp" line="113" column="10" bodyfile="src/api/v2/routes/clients.hpp" bodystart="113" bodyend="125"/>
+        <references refid="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" compoundref="clients_8hpp" startline="948" endline="952">clientRegistry</references>
         <references refid="classClientControllerBase_1ac42570557775dc71a68a685ed2114265">ClientControllerBase::Create</references>
-        <references refid="classapi_1_1v2_1_1Clients_1a1f047b25e41c288a8c10434bcc738d61" compoundref="clients_8hpp" startline="548">dbExecutor</references>
+        <references refid="classapi_1_1v2_1_1Clients_1a1f047b25e41c288a8c10434bcc738d61" compoundref="clients_8hpp" startline="889">dbExecutor</references>
         <referencedby refid="classapi_1_1v2_1_1Clients_1ac58ef211b314a7924bff7d16401066ba">METHOD_ADD</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Clients_1a8b82b6424d114860f571b240a2b20d97" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -243,18 +253,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="101" column="14" bodyfile="src/api/v2/routes/clients.hpp" bodystart="101" bodyend="150"/>
-        <references refid="classapi_1_1v2_1_1Clients_1a53eb06993cd3949464e7b237c4aec083" compoundref="clients_8hpp" startline="575">asyncDb_</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" compoundref="clients_8hpp" startline="584" endline="585">clientRegistry</references>
-        <references refid="classapi_1_1v2_1_1Clients_1a1f047b25e41c288a8c10434bcc738d61" compoundref="clients_8hpp" startline="548">dbExecutor</references>
-        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="53" endline="56">api::v2::Helper::errorResponse</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="44" endline="47">api::v2::Helper::failureResponse</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">api::v2::Http::INTERNAL_SERVER_ERROR</references>
+        <location file="src/api/v2/routes/clients.hpp" line="139" column="10" bodyfile="src/api/v2/routes/clients.hpp" bodystart="139" bodyend="222"/>
+        <references refid="classapi_1_1v2_1_1Clients_1a53eb06993cd3949464e7b237c4aec083" compoundref="clients_8hpp" startline="932">asyncDb_</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" compoundref="clients_8hpp" startline="948" endline="952">clientRegistry</references>
+        <references refid="classapi_1_1v2_1_1Clients_1a1f047b25e41c288a8c10434bcc738d61" compoundref="clients_8hpp" startline="889">dbExecutor</references>
+        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="71" endline="80">api::v2::Helper::errorResponse</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="56" endline="64">api::v2::Helper::failureResponse</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="123">api::v2::Http::INTERNAL_SERVER_ERROR</references>
         <references refid="classClientControllerBase_1a5a5df5eb70313c7005af72f0a49f6cb7">ClientControllerBase::Login</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="62" endline="65">api::v2::Helper::successResponse</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="88" endline="94">api::v2::Helper::successResponse</references>
         <referencedby refid="classapi_1_1v2_1_1Clients_1a617e71727efea1f4ca358c616874fa84">METHOD_ADD</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Clients_1abba6cc7cc5d089cf1c8e642fb8867b65" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -308,9 +318,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="159" column="14" bodyfile="src/api/v2/routes/clients.hpp" bodystart="159" bodyend="163"/>
-        <references refid="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" compoundref="clients_8hpp" startline="584" endline="585">clientRegistry</references>
-        <references refid="classapi_1_1v2_1_1Clients_1a1f047b25e41c288a8c10434bcc738d61" compoundref="clients_8hpp" startline="548">dbExecutor</references>
+        <location file="src/api/v2/routes/clients.hpp" line="235" column="10" bodyfile="src/api/v2/routes/clients.hpp" bodystart="235" bodyend="248"/>
+        <references refid="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" compoundref="clients_8hpp" startline="948" endline="952">clientRegistry</references>
+        <references refid="classapi_1_1v2_1_1Clients_1a1f047b25e41c288a8c10434bcc738d61" compoundref="clients_8hpp" startline="889">dbExecutor</references>
         <references refid="classClientControllerBase_1aa9e86fbbf9bce91d15b371c18dababea">ClientControllerBase::Logout</references>
         <referencedby refid="classapi_1_1v2_1_1Clients_1a5ee70e780cdc0dceefdf179ebe3ee30d">METHOD_ADD</referencedby>
       </memberdef>
@@ -365,18 +375,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="173" column="14" bodyfile="src/api/v2/routes/clients.hpp" bodystart="173" bodyend="228"/>
-        <references refid="classapi_1_1v2_1_1Clients_1a53eb06993cd3949464e7b237c4aec083" compoundref="clients_8hpp" startline="575">asyncDb_</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" compoundref="clients_8hpp" startline="584" endline="585">clientRegistry</references>
-        <references refid="classapi_1_1v2_1_1Clients_1a1f047b25e41c288a8c10434bcc738d61" compoundref="clients_8hpp" startline="548">dbExecutor</references>
-        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="53" endline="56">api::v2::Helper::errorResponse</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="44" endline="47">api::v2::Helper::failureResponse</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">api::v2::Http::INTERNAL_SERVER_ERROR</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
-        <references refid="namespaceapi_1_1v2_1aa69205bcc60e13d43ab454e4ac275e60" compoundref="common_8hpp" startline="87" endline="100">api::v2::parseIdParam</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="62" endline="65">api::v2::Helper::successResponse</references>
+        <location file="src/api/v2/routes/clients.hpp" line="261" column="10" bodyfile="src/api/v2/routes/clients.hpp" bodystart="261" bodyend="349"/>
+        <references refid="classapi_1_1v2_1_1Clients_1a53eb06993cd3949464e7b237c4aec083" compoundref="clients_8hpp" startline="932">asyncDb_</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" compoundref="clients_8hpp" startline="948" endline="952">clientRegistry</references>
+        <references refid="classapi_1_1v2_1_1Clients_1a1f047b25e41c288a8c10434bcc738d61" compoundref="clients_8hpp" startline="889">dbExecutor</references>
+        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="71" endline="80">api::v2::Helper::errorResponse</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="56" endline="64">api::v2::Helper::failureResponse</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="123">api::v2::Http::INTERNAL_SERVER_ERROR</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
+        <references refid="namespaceapi_1_1v2_1aa69205bcc60e13d43ab454e4ac275e60" compoundref="common_8hpp" startline="121" endline="144">api::v2::parseIdParam</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="88" endline="94">api::v2::Helper::successResponse</references>
         <references refid="classClientControllerBase_1a6a58bc8fd2e226e47f00d74de0e47f65">ClientControllerBase::Suspend</references>
         <referencedby refid="classapi_1_1v2_1_1Clients_1a0141a7df6beaa941230feacac1b8c028">METHOD_ADD</referencedby>
       </memberdef>
@@ -431,19 +441,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="238" column="14" bodyfile="src/api/v2/routes/clients.hpp" bodystart="238" bodyend="293"/>
+        <location file="src/api/v2/routes/clients.hpp" line="362" column="10" bodyfile="src/api/v2/routes/clients.hpp" bodystart="362" bodyend="452"/>
         <references refid="classClientControllerBase_1ae6ddf114a8b76d43a70e8097a688aa37">ClientControllerBase::Activate</references>
-        <references refid="classapi_1_1v2_1_1Clients_1a53eb06993cd3949464e7b237c4aec083" compoundref="clients_8hpp" startline="575">asyncDb_</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" compoundref="clients_8hpp" startline="584" endline="585">clientRegistry</references>
-        <references refid="classapi_1_1v2_1_1Clients_1a1f047b25e41c288a8c10434bcc738d61" compoundref="clients_8hpp" startline="548">dbExecutor</references>
-        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="53" endline="56">api::v2::Helper::errorResponse</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="44" endline="47">api::v2::Helper::failureResponse</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">api::v2::Http::INTERNAL_SERVER_ERROR</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
-        <references refid="namespaceapi_1_1v2_1aa69205bcc60e13d43ab454e4ac275e60" compoundref="common_8hpp" startline="87" endline="100">api::v2::parseIdParam</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="62" endline="65">api::v2::Helper::successResponse</references>
+        <references refid="classapi_1_1v2_1_1Clients_1a53eb06993cd3949464e7b237c4aec083" compoundref="clients_8hpp" startline="932">asyncDb_</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" compoundref="clients_8hpp" startline="948" endline="952">clientRegistry</references>
+        <references refid="classapi_1_1v2_1_1Clients_1a1f047b25e41c288a8c10434bcc738d61" compoundref="clients_8hpp" startline="889">dbExecutor</references>
+        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="71" endline="80">api::v2::Helper::errorResponse</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="56" endline="64">api::v2::Helper::failureResponse</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="123">api::v2::Http::INTERNAL_SERVER_ERROR</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
+        <references refid="namespaceapi_1_1v2_1aa69205bcc60e13d43ab454e4ac275e60" compoundref="common_8hpp" startline="121" endline="144">api::v2::parseIdParam</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="88" endline="94">api::v2::Helper::successResponse</references>
         <referencedby refid="classapi_1_1v2_1_1Clients_1a1ec383fefb9e9145f844210ca3075a82">METHOD_ADD</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Clients_1a1e86620ea68cbcd781a959ca4dd5e226" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -497,12 +507,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="304" column="14" bodyfile="src/api/v2/routes/clients.hpp" bodystart="304" bodyend="326"/>
-        <references refid="classapi_1_1v2_1_1Clients_1a53eb06993cd3949464e7b237c4aec083" compoundref="clients_8hpp" startline="575">asyncDb_</references>
-        <references refid="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" compoundref="clients_8hpp" startline="584" endline="585">clientRegistry</references>
-        <references refid="classapi_1_1v2_1_1Clients_1a1f047b25e41c288a8c10434bcc738d61" compoundref="clients_8hpp" startline="548">dbExecutor</references>
+        <location file="src/api/v2/routes/clients.hpp" line="467" column="10" bodyfile="src/api/v2/routes/clients.hpp" bodystart="467" bodyend="508"/>
+        <references refid="classapi_1_1v2_1_1Clients_1a53eb06993cd3949464e7b237c4aec083" compoundref="clients_8hpp" startline="932">asyncDb_</references>
+        <references refid="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" compoundref="clients_8hpp" startline="948" endline="952">clientRegistry</references>
+        <references refid="classapi_1_1v2_1_1Clients_1a1f047b25e41c288a8c10434bcc738d61" compoundref="clients_8hpp" startline="889">dbExecutor</references>
         <references refid="classClientControllerBase_1a335901d9fb13af79560b866138a48af9">ClientControllerBase::Read</references>
-        <references refid="classapi_1_1v2_1_1Clients_1ae5420af7a0b9609ca0536d2d9643679e" compoundref="clients_8hpp" startline="594" endline="705">readAsyncImpl</references>
+        <references refid="classapi_1_1v2_1_1Clients_1ae5420af7a0b9609ca0536d2d9643679e" compoundref="clients_8hpp" startline="964" endline="1146">readAsyncImpl</references>
         <referencedby refid="classapi_1_1v2_1_1Clients_1a3be332bb46af116565f4d4c2542cbab6">METHOD_ADD</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Clients_1ac501011b576591aa6f307819775ac804" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -556,10 +566,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="336" column="14" bodyfile="src/api/v2/routes/clients.hpp" bodystart="336" bodyend="343"/>
-        <references refid="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" compoundref="clients_8hpp" startline="584" endline="585">clientRegistry</references>
-        <references refid="classapi_1_1v2_1_1Clients_1a1f047b25e41c288a8c10434bcc738d61" compoundref="clients_8hpp" startline="548">dbExecutor</references>
-        <references refid="namespaceapi_1_1v2_1aa69205bcc60e13d43ab454e4ac275e60" compoundref="common_8hpp" startline="87" endline="100">api::v2::parseIdParam</references>
+        <location file="src/api/v2/routes/clients.hpp" line="521" column="10" bodyfile="src/api/v2/routes/clients.hpp" bodystart="521" bodyend="538"/>
+        <references refid="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" compoundref="clients_8hpp" startline="948" endline="952">clientRegistry</references>
+        <references refid="classapi_1_1v2_1_1Clients_1a1f047b25e41c288a8c10434bcc738d61" compoundref="clients_8hpp" startline="889">dbExecutor</references>
+        <references refid="namespaceapi_1_1v2_1aa69205bcc60e13d43ab454e4ac275e60" compoundref="common_8hpp" startline="121" endline="144">api::v2::parseIdParam</references>
         <references refid="classClientControllerBase_1a19ad4f57a4d721aa57723a6ca379abaf">ClientControllerBase::Update</references>
         <referencedby refid="classapi_1_1v2_1_1Clients_1aa31ea373f88c3a7f1f914950f98d4589">METHOD_ADD</referencedby>
       </memberdef>
@@ -614,19 +624,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="352" column="14" bodyfile="src/api/v2/routes/clients.hpp" bodystart="352" bodyend="407"/>
-        <references refid="classapi_1_1v2_1_1Clients_1a53eb06993cd3949464e7b237c4aec083" compoundref="clients_8hpp" startline="575">asyncDb_</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" compoundref="clients_8hpp" startline="584" endline="585">clientRegistry</references>
-        <references refid="classapi_1_1v2_1_1Clients_1a1f047b25e41c288a8c10434bcc738d61" compoundref="clients_8hpp" startline="548">dbExecutor</references>
+        <location file="src/api/v2/routes/clients.hpp" line="551" column="10" bodyfile="src/api/v2/routes/clients.hpp" bodystart="551" bodyend="639"/>
+        <references refid="classapi_1_1v2_1_1Clients_1a53eb06993cd3949464e7b237c4aec083" compoundref="clients_8hpp" startline="932">asyncDb_</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" compoundref="clients_8hpp" startline="948" endline="952">clientRegistry</references>
+        <references refid="classapi_1_1v2_1_1Clients_1a1f047b25e41c288a8c10434bcc738d61" compoundref="clients_8hpp" startline="889">dbExecutor</references>
         <references refid="classClientControllerBase_1a6909aac7912d8a88f7845eaa0a074f80">ClientControllerBase::Delete</references>
-        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="53" endline="56">api::v2::Helper::errorResponse</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="44" endline="47">api::v2::Helper::failureResponse</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">api::v2::Http::INTERNAL_SERVER_ERROR</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
-        <references refid="namespaceapi_1_1v2_1aa69205bcc60e13d43ab454e4ac275e60" compoundref="common_8hpp" startline="87" endline="100">api::v2::parseIdParam</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="62" endline="65">api::v2::Helper::successResponse</references>
+        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="71" endline="80">api::v2::Helper::errorResponse</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="56" endline="64">api::v2::Helper::failureResponse</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="123">api::v2::Http::INTERNAL_SERVER_ERROR</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
+        <references refid="namespaceapi_1_1v2_1aa69205bcc60e13d43ab454e4ac275e60" compoundref="common_8hpp" startline="121" endline="144">api::v2::parseIdParam</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="88" endline="94">api::v2::Helper::successResponse</references>
         <referencedby refid="classapi_1_1v2_1_1Clients_1ad48dc980e14a73c64d3a646017a614fb">METHOD_ADD</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Clients_1a6ed35f998ca78524ee42c7ba30cce0e9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -680,18 +690,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="416" column="14" bodyfile="src/api/v2/routes/clients.hpp" bodystart="416" bodyend="466"/>
-        <references refid="classapi_1_1v2_1_1Clients_1a53eb06993cd3949464e7b237c4aec083" compoundref="clients_8hpp" startline="575">asyncDb_</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" compoundref="clients_8hpp" startline="584" endline="585">clientRegistry</references>
-        <references refid="classapi_1_1v2_1_1Clients_1a1f047b25e41c288a8c10434bcc738d61" compoundref="clients_8hpp" startline="548">dbExecutor</references>
-        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="53" endline="56">api::v2::Helper::errorResponse</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="44" endline="47">api::v2::Helper::failureResponse</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">api::v2::Http::INTERNAL_SERVER_ERROR</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
+        <location file="src/api/v2/routes/clients.hpp" line="651" column="10" bodyfile="src/api/v2/routes/clients.hpp" bodystart="651" bodyend="734"/>
+        <references refid="classapi_1_1v2_1_1Clients_1a53eb06993cd3949464e7b237c4aec083" compoundref="clients_8hpp" startline="932">asyncDb_</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" compoundref="clients_8hpp" startline="948" endline="952">clientRegistry</references>
+        <references refid="classapi_1_1v2_1_1Clients_1a1f047b25e41c288a8c10434bcc738d61" compoundref="clients_8hpp" startline="889">dbExecutor</references>
+        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="71" endline="80">api::v2::Helper::errorResponse</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="56" endline="64">api::v2::Helper::failureResponse</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="123">api::v2::Http::INTERNAL_SERVER_ERROR</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
         <references refid="classClientControllerBase_1a560976768576af7af11239fde7e634f6">ClientControllerBase::Search</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="62" endline="65">api::v2::Helper::successResponse</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="88" endline="94">api::v2::Helper::successResponse</references>
         <referencedby refid="classapi_1_1v2_1_1Clients_1a879739048d6e07a62a88ddfec3d58893">METHOD_ADD</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Clients_1aa3d6c4f043f6ba5e024f51d1a642a8e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -745,19 +755,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="475" column="14" bodyfile="src/api/v2/routes/clients.hpp" bodystart="475" bodyend="530"/>
-        <references refid="classapi_1_1v2_1_1Clients_1a53eb06993cd3949464e7b237c4aec083" compoundref="clients_8hpp" startline="575">asyncDb_</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" compoundref="clients_8hpp" startline="584" endline="585">clientRegistry</references>
-        <references refid="classapi_1_1v2_1_1Clients_1a1f047b25e41c288a8c10434bcc738d61" compoundref="clients_8hpp" startline="548">dbExecutor</references>
-        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="53" endline="56">api::v2::Helper::errorResponse</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="44" endline="47">api::v2::Helper::failureResponse</references>
+        <location file="src/api/v2/routes/clients.hpp" line="747" column="10" bodyfile="src/api/v2/routes/clients.hpp" bodystart="747" bodyend="838"/>
+        <references refid="classapi_1_1v2_1_1Clients_1a53eb06993cd3949464e7b237c4aec083" compoundref="clients_8hpp" startline="932">asyncDb_</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" compoundref="clients_8hpp" startline="948" endline="952">clientRegistry</references>
+        <references refid="classapi_1_1v2_1_1Clients_1a1f047b25e41c288a8c10434bcc738d61" compoundref="clients_8hpp" startline="889">dbExecutor</references>
+        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="71" endline="80">api::v2::Helper::errorResponse</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="56" endline="64">api::v2::Helper::failureResponse</references>
         <references refid="classClientControllerBase_1af9f1272d9d14a2a2d1b4ba8117728cf8">ClientControllerBase::GetServices</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">api::v2::Http::INTERNAL_SERVER_ERROR</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
-        <references refid="namespaceapi_1_1v2_1aa69205bcc60e13d43ab454e4ac275e60" compoundref="common_8hpp" startline="87" endline="100">api::v2::parseIdParam</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="62" endline="65">api::v2::Helper::successResponse</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="123">api::v2::Http::INTERNAL_SERVER_ERROR</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
+        <references refid="namespaceapi_1_1v2_1aa69205bcc60e13d43ab454e4ac275e60" compoundref="common_8hpp" startline="121" endline="144">api::v2::parseIdParam</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="88" endline="94">api::v2::Helper::successResponse</references>
         <referencedby refid="classapi_1_1v2_1_1Clients_1a4fbe27eadcfb26e6b6bfe9963c23847d">METHOD_ADD</referencedby>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Clients_1ac58ef211b314a7924bff7d16401066ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -784,9 +794,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="534" column="9"/>
-        <references refid="classapi_1_1v2_1_1Clients_1a1f733add7f937880b9050bd889be6e51" compoundref="clients_8hpp" startline="87" endline="90">create</references>
-        <references refid="common_8hpp_1ad21df8408a63deff2676218cfd5ebb1f" compoundref="common_8hpp" startline="67">INSECURE</references>
+        <location file="src/api/v2/routes/clients.hpp" line="843" column="9"/>
+        <references refid="classapi_1_1v2_1_1Clients_1a1f733add7f937880b9050bd889be6e51" compoundref="clients_8hpp" startline="113" endline="125">create</references>
+        <references refid="common_8hpp_1ad21df8408a63deff2676218cfd5ebb1f" compoundref="common_8hpp" startline="90" endline="91">INSECURE</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Clients_1a617e71727efea1f4ca358c616874fa84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -812,9 +822,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="535" column="9"/>
-        <references refid="common_8hpp_1ad21df8408a63deff2676218cfd5ebb1f" compoundref="common_8hpp" startline="67">INSECURE</references>
-        <references refid="classapi_1_1v2_1_1Clients_1a8b82b6424d114860f571b240a2b20d97" compoundref="clients_8hpp" startline="101" endline="150">login</references>
+        <location file="src/api/v2/routes/clients.hpp" line="847" column="5"/>
+        <references refid="common_8hpp_1ad21df8408a63deff2676218cfd5ebb1f" compoundref="common_8hpp" startline="90" endline="91">INSECURE</references>
+        <references refid="classapi_1_1v2_1_1Clients_1a8b82b6424d114860f571b240a2b20d97" compoundref="clients_8hpp" startline="139" endline="222">login</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Clients_1a5ee70e780cdc0dceefdf179ebe3ee30d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -840,9 +850,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="536" column="9"/>
-        <references refid="classapi_1_1v2_1_1Clients_1abba6cc7cc5d089cf1c8e642fb8867b65" compoundref="clients_8hpp" startline="159" endline="163">logout</references>
-        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="68">SECURE</references>
+        <location file="src/api/v2/routes/clients.hpp" line="851" column="5"/>
+        <references refid="classapi_1_1v2_1_1Clients_1abba6cc7cc5d089cf1c8e642fb8867b65" compoundref="clients_8hpp" startline="235" endline="248">logout</references>
+        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="92">SECURE</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Clients_1a0141a7df6beaa941230feacac1b8c028" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -868,9 +878,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="537" column="9"/>
-        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="68">SECURE</references>
-        <references refid="classapi_1_1v2_1_1Clients_1a4226d0e35525e0d197941e93fe0ee1d7" compoundref="clients_8hpp" startline="173" endline="228">suspend</references>
+        <location file="src/api/v2/routes/clients.hpp" line="855" column="5"/>
+        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="92">SECURE</references>
+        <references refid="classapi_1_1v2_1_1Clients_1a4226d0e35525e0d197941e93fe0ee1d7" compoundref="clients_8hpp" startline="261" endline="349">suspend</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Clients_1a1ec383fefb9e9145f844210ca3075a82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -896,9 +906,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="538" column="9"/>
-        <references refid="classapi_1_1v2_1_1Clients_1a7f99d20b39e5bdd6ea695c622b613167" compoundref="clients_8hpp" startline="238" endline="293">activate</references>
-        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="68">SECURE</references>
+        <location file="src/api/v2/routes/clients.hpp" line="859" column="5"/>
+        <references refid="classapi_1_1v2_1_1Clients_1a7f99d20b39e5bdd6ea695c622b613167" compoundref="clients_8hpp" startline="362" endline="452">activate</references>
+        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="92">SECURE</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Clients_1a3be332bb46af116565f4d4c2542cbab6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -924,9 +934,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="539" column="9"/>
-        <references refid="classapi_1_1v2_1_1Clients_1a1e86620ea68cbcd781a959ca4dd5e226" compoundref="clients_8hpp" startline="304" endline="326">read</references>
-        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="68">SECURE</references>
+        <location file="src/api/v2/routes/clients.hpp" line="863" column="5"/>
+        <references refid="classapi_1_1v2_1_1Clients_1a1e86620ea68cbcd781a959ca4dd5e226" compoundref="clients_8hpp" startline="467" endline="508">read</references>
+        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="92">SECURE</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Clients_1aa31ea373f88c3a7f1f914950f98d4589" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -952,9 +962,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="540" column="9"/>
-        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="68">SECURE</references>
-        <references refid="classapi_1_1v2_1_1Clients_1ac501011b576591aa6f307819775ac804" compoundref="clients_8hpp" startline="336" endline="343">update</references>
+        <location file="src/api/v2/routes/clients.hpp" line="867" column="5"/>
+        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="92">SECURE</references>
+        <references refid="classapi_1_1v2_1_1Clients_1ac501011b576591aa6f307819775ac804" compoundref="clients_8hpp" startline="521" endline="538">update</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Clients_1ad48dc980e14a73c64d3a646017a614fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -980,9 +990,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="541" column="9"/>
-        <references refid="classapi_1_1v2_1_1Clients_1a1c64163fcea38e48979cbe03e86bb65d" compoundref="clients_8hpp" startline="352" endline="407">delete_</references>
-        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="68">SECURE</references>
+        <location file="src/api/v2/routes/clients.hpp" line="871" column="5"/>
+        <references refid="classapi_1_1v2_1_1Clients_1a1c64163fcea38e48979cbe03e86bb65d" compoundref="clients_8hpp" startline="551" endline="639">delete_</references>
+        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="92">SECURE</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Clients_1a879739048d6e07a62a88ddfec3d58893" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -1008,9 +1018,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="542" column="9"/>
-        <references refid="classapi_1_1v2_1_1Clients_1a6ed35f998ca78524ee42c7ba30cce0e9" compoundref="clients_8hpp" startline="416" endline="466">search</references>
-        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="68">SECURE</references>
+        <location file="src/api/v2/routes/clients.hpp" line="875" column="5"/>
+        <references refid="classapi_1_1v2_1_1Clients_1a6ed35f998ca78524ee42c7ba30cce0e9" compoundref="clients_8hpp" startline="651" endline="734">search</references>
+        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="92">SECURE</references>
       </memberdef>
       <memberdef kind="function" id="classapi_1_1v2_1_1Clients_1a4fbe27eadcfb26e6b6bfe9963c23847d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -1036,9 +1046,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="543" column="9"/>
-        <references refid="classapi_1_1v2_1_1Clients_1aa3d6c4f043f6ba5e024f51d1a642a8e7" compoundref="clients_8hpp" startline="475" endline="530">getservices</references>
-        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="68">SECURE</references>
+        <location file="src/api/v2/routes/clients.hpp" line="879" column="5"/>
+        <references refid="classapi_1_1v2_1_1Clients_1aa3d6c4f043f6ba5e024f51d1a642a8e7" compoundref="clients_8hpp" startline="747" endline="838">getservices</references>
+        <references refid="common_8hpp_1aff0ca0337402eb888baf747ce2469641" compoundref="common_8hpp" startline="92">SECURE</references>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -1110,20 +1120,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/api/v2/routes/clients.hpp" line="562" column="18" bodyfile="src/api/v2/routes/clients.hpp" bodystart="594" bodyend="705"/>
-        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006" compoundref="validator_8hpp" startline="93">Validator::Rule::ASSERT_NOT_PRESENT</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="82">api::v2::Http::BAD_REQUEST</references>
-        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="44">CALLBACK_</references>
-        <references refid="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" compoundref="clients_8hpp" startline="584" endline="585">clientRegistry</references>
-        <references refid="classapi_1_1v2_1_1Clients_1a5aaa7bf1173d69e8bd61bb5670c40c7d" compoundref="clients_8hpp" startline="571">dbController_</references>
-        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="53" endline="56">api::v2::Helper::errorResponse</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="44" endline="47">api::v2::Helper::failureResponse</references>
-        <references refid="classapi_1_1v2_1_1Clients_1ac316ec46204e5013d6f3675f57dec853" compoundref="clients_8hpp" startline="567">gateKeeper_</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="97">api::v2::Http::INTERNAL_SERVER_ERROR</references>
-        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="64">api::v2::Http::OK</references>
-        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="62" endline="65">api::v2::Helper::successResponse</references>
-        <references refid="classValidator_1a950c1350bd04c695d0add09b31db3974" compoundref="validator_8cpp" startline="162" endline="198">Validator::validateDatabaseReadSchema</references>
-        <referencedby refid="classapi_1_1v2_1_1Clients_1a1e86620ea68cbcd781a959ca4dd5e226" compoundref="clients_8hpp" startline="304" endline="326">read</referencedby>
+        <location file="src/api/v2/routes/clients.hpp" line="909" column="18" bodyfile="src/api/v2/routes/clients.hpp" bodystart="964" bodyend="1146"/>
+        <references refid="structValidator_1_1Rule_1ac2209fa7790b33a3c0b8d2e331c533a7ab8e9bcc4f0ba5bdfe9af527dbde91006" compoundref="validator_8hpp" startline="113">Validator::Rule::ASSERT_NOT_PRESENT</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892faf671dabfec814a8ff9078f6196460adc" compoundref="http_8hpp" startline="103">api::v2::Http::BAD_REQUEST</references>
+        <references refid="callback_8hpp_1a46d97763fde9c175df21fc9b8f73b1d3" compoundref="callback_8hpp" startline="47" endline="49">CALLBACK_</references>
+        <references refid="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" compoundref="clients_8hpp" startline="948" endline="952">clientRegistry</references>
+        <references refid="classapi_1_1v2_1_1Clients_1a5aaa7bf1173d69e8bd61bb5670c40c7d" compoundref="clients_8hpp" startline="925">dbController_</references>
+        <references refid="classapi_1_1v2_1_1Helper_1ab53ee95984f6ba11a1025e1dbbd198f2" compoundref="helper_8cpp" startline="71" endline="80">api::v2::Helper::errorResponse</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2f7ce46c3bd345d373af2c3793387fea" compoundref="helper_8cpp" startline="56" endline="64">api::v2::Helper::failureResponse</references>
+        <references refid="classapi_1_1v2_1_1Clients_1ac316ec46204e5013d6f3675f57dec853" compoundref="clients_8hpp" startline="918">gateKeeper_</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fac8c2d75c3c4886183816956f75b32501" compoundref="http_8hpp" startline="123">api::v2::Http::INTERNAL_SERVER_ERROR</references>
+        <references refid="namespaceapi_1_1v2_1_1Http_1a6199aeb84d745378b1befef28d78892fab1fb133a34c3d5ec3f90280cdfd4d4ec" compoundref="http_8hpp" startline="77">api::v2::Http::OK</references>
+        <references refid="classapi_1_1v2_1_1Helper_1a2226fe42358a5845f16e715fd21b24c9" compoundref="helper_8cpp" startline="88" endline="94">api::v2::Helper::successResponse</references>
+        <referencedby refid="classapi_1_1v2_1_1Clients_1a1e86620ea68cbcd781a959ca4dd5e226" compoundref="clients_8hpp" startline="467" endline="508">read</referencedby>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1154,12 +1163,12 @@
         <label>drogon::HttpController&lt; Clients &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="src/api/v2/routes/clients.hpp" line="75" column="5" bodyfile="src/api/v2/routes/clients.hpp" bodystart="76" bodyend="586"/>
+    <location file="src/api/v2/routes/clients.hpp" line="96" column="3" bodyfile="src/api/v2/routes/clients.hpp" bodystart="100" bodyend="955"/>
     <listofallmembers>
       <member refid="classapi_1_1v2_1_1Clients_1a7f99d20b39e5bdd6ea695c622b613167" prot="public" virt="non-virtual"><scope>api::v2::Clients</scope><name>activate</name></member>
       <member refid="classapi_1_1v2_1_1Clients_1a53eb06993cd3949464e7b237c4aec083" prot="private" virt="non-virtual"><scope>api::v2::Clients</scope><name>asyncDb_</name></member>
       <member refid="classapi_1_1v2_1_1Clients_1a926284cf6fb2360be1d18ff94e8ad285" prot="private" virt="non-virtual"><scope>api::v2::Clients</scope><name>clientRegistry</name></member>
-      <member refid="classapi_1_1v2_1_1Clients_1a0a5429a3aad1cb859fd3b1748db31866" prot="private" virt="non-virtual"><scope>api::v2::Clients</scope><name>ClientVariant</name></member>
+      <member refid="classapi_1_1v2_1_1Clients_1adc3d9fd325d47cafbcda107428f822f4" prot="private" virt="non-virtual"><scope>api::v2::Clients</scope><name>ClientVariant</name></member>
       <member refid="classapi_1_1v2_1_1Clients_1a1f733add7f937880b9050bd889be6e51" prot="public" virt="non-virtual"><scope>api::v2::Clients</scope><name>create</name></member>
       <member refid="classapi_1_1v2_1_1Clients_1a5aaa7bf1173d69e8bd61bb5670c40c7d" prot="private" virt="non-virtual"><scope>api::v2::Clients</scope><name>dbController_</name></member>
       <member refid="classapi_1_1v2_1_1Clients_1a1f047b25e41c288a8c10434bcc738d61" prot="private" virt="non-virtual"><scope>api::v2::Clients</scope><name>dbExecutor</name></member>

@@ -132,7 +132,7 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:a3e99cd08033671e7ac34d935c0abc383" id="r_a3e99cd08033671e7ac34d935c0abc383"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a3e99cd08033671e7ac34d935c0abc383">Clock</a> = ClockT</td></tr>
-<tr class="memitem:abf8817b8abb9f4b29023135bec1916e9" id="r_abf8817b8abb9f4b29023135bec1916e9"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#abf8817b8abb9f4b29023135bec1916e9">TimePoint</a> = typename Clock::time_point</td></tr>
+<tr class="memitem:a38b5bd729bd632f83084ea88809e34fd" id="r_a38b5bd729bd632f83084ea88809e34fd"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#a38b5bd729bd632f83084ea88809e34fd">TimePoint</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -165,23 +165,23 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a7397539f51c35baf3a6e189d5ef93d5e" id="r_a7397539f51c35baf3a6e189d5ef93d5e"><td class="memItemLeft">std::chrono::seconds&#160;</td><td class="memItemRight"><a class="el" href="#a7397539f51c35baf3a6e189d5ef93d5e">ttl_</a></td></tr>
 <tr class="memitem:afdda5e1b17df93c281620fb1cda65529" id="r_afdda5e1b17df93c281620fb1cda65529"><td class="memItemLeft">size_t&#160;</td><td class="memItemRight"><a class="el" href="#afdda5e1b17df93c281620fb1cda65529">max_entries_</a></td></tr>
 <tr class="memitem:a13952a8fdccc5be5adde16315caf68c6" id="r_a13952a8fdccc5be5adde16315caf68c6"><td class="memItemLeft">std::mutex&#160;</td><td class="memItemRight"><a class="el" href="#a13952a8fdccc5be5adde16315caf68c6">mutex_</a></td></tr>
-<tr class="memitem:ac46e90790cb55a68825ada64c3924ee3" id="r_ac46e90790cb55a68825ada64c3924ee3"><td class="memItemLeft">std::atomic&lt; uint64_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ac46e90790cb55a68825ada64c3924ee3">generation_</a> {0}</td></tr>
+<tr class="memitem:ac46e90790cb55a68825ada64c3924ee3" id="r_ac46e90790cb55a68825ada64c3924ee3"><td class="memItemLeft">std::atomic&lt; uint64_t &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ac46e90790cb55a68825ada64c3924ee3">generation_</a></td></tr>
 <tr class="memitem:aa2dac46e2647fe5cc919e03476d8f642" id="r_aa2dac46e2647fe5cc919e03476d8f642"><td class="memItemLeft">std::unordered_map&lt; std::string, <a class="el" href="structBasicPermissionCache_1_1Entry.html">Entry</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aa2dac46e2647fe5cc919e03476d8f642">map_</a></td></tr>
-<tr class="memitem:ad1eb0a45f99a5ef044d6a371c12aa01e" id="r_ad1eb0a45f99a5ef044d6a371c12aa01e"><td class="memItemLeft"><a class="el" href="#abf8817b8abb9f4b29023135bec1916e9">TimePoint</a>&#160;</td><td class="memItemRight"><a class="el" href="#ad1eb0a45f99a5ef044d6a371c12aa01e">next_sweep_</a> {}</td></tr>
+<tr class="memitem:ad1eb0a45f99a5ef044d6a371c12aa01e" id="r_ad1eb0a45f99a5ef044d6a371c12aa01e"><td class="memItemLeft"><a class="el" href="#a38b5bd729bd632f83084ea88809e34fd">TimePoint</a>&#160;</td><td class="memItemRight"><a class="el" href="#ad1eb0a45f99a5ef044d6a371c12aa01e">next_sweep_</a> {}</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;typename ClockT = std::chrono::steady_clock&gt;<br />
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename ClockT = std::chrono::        steady_clock&gt;<br />
 class BasicPermissionCache&lt; ClockT &gt;</div><p>Idle-expiry cache for permission lookups, keyed by the generated permission query (which embeds the entity table and id). </p>
-<p>Each hit renews the entry's lifetime; an entry that is not used for the TTL is removed. The TTL comes from <a class="el" href="classConfigurator.html#ac21afc0ed845df874c67205e63ee2372">Configurator::PermissionCacheConfig</a> (PERMISSION_CACHE_TTL, default 300 seconds); 0 disables the cache.</p>
-<p>Security trade-off: there is no invalidation on writes, so a revoked permission can keep being served while its entry stays in use. <a class="el" href="#ad3230e761d0a35d3b772d299d8d72b09" title="Flushes all entries and bumps the generation so any pending stale put() is dropped.">invalidateAll()</a> is available for callers that need an explicit flush.</p>
-<p>All public operations are thread-safe via mutex_; generation_ is atomic so readers can take a token without locking and have a racing <a class="el" href="#abc720e1381076a0f4954ba9f6b39adfc" title="Stores value under key if the cache is still in the same generation.">put()</a> rejected. Think of it as a notepad: look up a question, and if the answer is still fresh use it; otherwise ask the database and jot the new answer down. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+<p>Each hit renews the entry's lifetime; an entry that is not used for the TTL is removed. The TTL comes from <a class="el" href="classConfigurator.html#a32f2368e1e72e5bd29909e000c0c9e4c">Configurator::PermissionCacheConfig</a> (PERMISSION_CACHE_TTL, default 300 seconds); 0 disables the cache.</p>
+<p>Security trade-off: there is no invalidation on writes, so a revoked permission can keep being served while its entry stays in use. <a class="el" href="#ad3230e761d0a35d3b772d299d8d72b09" title="Flushes all entries and bumps the generation so any pending stale put() is dropped.">invalidateAll()</a> is available for callers that need an explicit flush. </p><pre class="fragment">     All public operations are thread-safe via mutex_; generation_ is
+</pre><p> atomic so readers can take a token without locking and have a racing <a class="el" href="#abc720e1381076a0f4954ba9f6b39adfc" title="Stores value under key if the cache is still in the same generation.">put()</a> rejected. Think of it as a notepad: look up a question, and if the answer is still fresh use it; otherwise ask the database and jot the new answer down. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">ClockT</td><td><a class="el" href="#a3e99cd08033671e7ac34d935c0abc383">Clock</a> used for idle expiry; defaults to std::chrono::steady_clock. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00059">59</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00077">77</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
 </div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Member Typedef Documentation</h2>
 <a id="a3e99cd08033671e7ac34d935c0abc383" name="a3e99cd08033671e7ac34d935c0abc383"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3e99cd08033671e7ac34d935c0abc383">&#9670;&#160;</a></span>Clock</h2>
@@ -189,7 +189,7 @@ class BasicPermissionCache&lt; ClockT &gt;</div><p>Idle-expiry cache for permiss
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
+template&lt;typename ClockT = std::chrono::        steady_clock&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">using <a class="el" href="classBasicPermissionCache.html">BasicPermissionCache</a>&lt; ClockT &gt;::Clock = ClockT</td>
@@ -198,26 +198,28 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 </div><div class="memdoc">
 <p><a class="el" href="#a3e99cd08033671e7ac34d935c0abc383">Clock</a> type used for expiry timestamps; a local nickname for readability. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00062">62</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00079">79</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
 
 </div>
 </div>
-<a id="abf8817b8abb9f4b29023135bec1916e9" name="abf8817b8abb9f4b29023135bec1916e9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abf8817b8abb9f4b29023135bec1916e9">&#9670;&#160;</a></span>TimePoint</h2>
+<a id="a38b5bd729bd632f83084ea88809e34fd" name="a38b5bd729bd632f83084ea88809e34fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38b5bd729bd632f83084ea88809e34fd">&#9670;&#160;</a></span>TimePoint</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
+template&lt;typename ClockT = std::chrono::        steady_clock&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classBasicPermissionCache.html">BasicPermissionCache</a>&lt; ClockT &gt;::TimePoint = typename Clock::time_point</td>
+          <td class="memname">using <a class="el" href="classBasicPermissionCache.html">BasicPermissionCache</a>&lt; ClockT &gt;::TimePoint</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Timestamp type produced by <a class="el" href="#a3e99cd08033671e7ac34d935c0abc383">Clock</a>; a local nickname used for deadlines. </p>
+<b>Initial value:</b><div class="fragment"><div class="line"> </div>
+<div class="line"><span class="keyword">typename</span> Clock::time_point</div>
+</div><!-- fragment --><p>Timestamp type produced by <a class="el" href="#a3e99cd08033671e7ac34d935c0abc383">Clock</a>; a local nickname used for deadlines. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00063">63</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00081">81</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
 
 </div>
 </div>
@@ -228,7 +230,7 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
+template&lt;typename ClockT = std::chrono::        steady_clock&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -260,11 +262,11 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00070">70</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00092">92</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissioncache_8hpp_source.html#l00197">max_entries_</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00196">ttl_</a>.</p>
+<p class="reference">References <a class="el" href="permissioncache_8hpp_source.html#l00264">max_entries_</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00261">ttl_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="permissioncache_8hpp_source.html#l00161">instance()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="permissioncache_8hpp_source.html#l00213">instance()</a>.</p>
 
 </div>
 </div>
@@ -275,7 +277,7 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
+template&lt;typename ClockT = std::chrono::        steady_clock&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -296,11 +298,11 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 
 <p>Whether caching is active (i.e. the TTL is positive). </p>
 
-<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00073">73</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00099">99</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissioncache_8hpp_source.html#l00196">ttl_</a>.</p>
+<p class="reference">References <a class="el" href="permissioncache_8hpp_source.html#l00261">ttl_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="permissioncache_8hpp_source.html#l00087">get()</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00117">put()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="permissioncache_8hpp_source.html#l00118">get()</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00154">put()</a>.</p>
 
 </div>
 </div>
@@ -310,7 +312,7 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
+template&lt;typename ClockT = std::chrono::        steady_clock&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -330,9 +332,9 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 </div><div class="memdoc">
 <p>Token to pass to <a class="el" href="#abc720e1381076a0f4954ba9f6b39adfc" title="Stores value under key if the cache is still in the same generation.">put()</a>; a put with a stale token is dropped, so a read that raced with a write cannot store pre-write data. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00079">79</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00107">107</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissioncache_8hpp_source.html#l00199">generation_</a>.</p>
+<p class="reference">References <a class="el" href="permissioncache_8hpp_source.html#l00267">generation_</a>.</p>
 
 </div>
 </div>
@@ -342,7 +344,7 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
+template&lt;typename ClockT = std::chrono::        steady_clock&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -370,11 +372,11 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The cached JSON on a live hit; <span class="tt">std::nullopt</span> when disabled, absent, or expired (expired entries are erased). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00087">87</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00118">118</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissioncache_8hpp_source.html#l00073">enabled()</a>, <a class="el" href="permissioncache_8hpp_source.html#l00200">map_</a>, <a class="el" href="permissioncache_8hpp_source.html#l00198">mutex_</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00196">ttl_</a>.</p>
+<p class="reference">References <a class="el" href="permissioncache_8hpp_source.html#l00099">enabled()</a>, <a class="el" href="permissioncache_8hpp_source.html#l00271">map_</a>, <a class="el" href="permissioncache_8hpp_source.html#l00265">mutex_</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00261">ttl_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="permissioncache_8hpp_source.html#l00161">instance()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="permissioncache_8hpp_source.html#l00213">instance()</a>.</p>
 
 </div>
 </div>
@@ -384,7 +386,7 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
+template&lt;typename ClockT = std::chrono::        steady_clock&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -404,13 +406,13 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 </div><div class="memdoc">
 
 <p>Returns the process-wide singleton, configured from <a class="el" href="classConfigurator.html" title="Owning aggregate of all runtime configuration sections.">Configurator</a>. </p>
-<p>The singleton's TTL is fixed at first use from <a class="el" href="classConfigurator.html#ac21afc0ed845df874c67205e63ee2372">Configurator::PermissionCacheConfig</a>; thread-safe initialization is guaranteed by the function-local static. </p>
+<p>The singleton's TTL is fixed at first use from <a class="el" href="classConfigurator.html#a32f2368e1e72e5bd29909e000c0c9e4c">Configurator::PermissionCacheConfig</a>; thread-safe initialization is guaranteed by the function-local static. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00161">161</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00213">213</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissioncache_8hpp_source.html#l00070">BasicPermissionCache()</a>, <a class="el" href="permissioncache_8hpp_source.html#l00087">get()</a>, and <a class="el" href="store_8hpp_source.html#l00139">Store::getObject()</a>.</p>
+<p class="reference">References <a class="el" href="permissioncache_8hpp_source.html#l00092">BasicPermissionCache()</a>, <a class="el" href="permissioncache_8hpp_source.html#l00118">get()</a>, and <a class="el" href="store_8hpp_source.html#l00190">Store::getObject()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="permissionmanager__private_8hpp_source.html#l00206">api::v2::PermissionManagerPrivate::getPermissionsOfEntity()</a>, and <a class="el" href="permissionmanager__private_8hpp_source.html#l00246">api::v2::PermissionManagerPrivate::getPermissionsOfEntityCoro()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="permissionmanager__private_8hpp_source.html#l00306">api::v2::PermissionManagerPrivate::getPermissionsOfEntity()</a>, and <a class="el" href="permissionmanager__private_8hpp_source.html#l00382">api::v2::PermissionManagerPrivate::getPermissionsOfEntityCoro()</a>.</p>
 
 </div>
 </div>
@@ -420,7 +422,7 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
+template&lt;typename ClockT = std::chrono::        steady_clock&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -442,9 +444,9 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 <p>Flushes all entries and bumps the generation so any pending stale <a class="el" href="#abc720e1381076a0f4954ba9f6b39adfc" title="Stores value under key if the cache is still in the same generation.">put()</a> is dropped. </p>
 <p>Callers can use this for an explicit invalidation (e.g. after a permission write), since the cache otherwise has no write-triggered invalidation. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00141">141</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00187">187</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissioncache_8hpp_source.html#l00199">generation_</a>, <a class="el" href="permissioncache_8hpp_source.html#l00200">map_</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00198">mutex_</a>.</p>
+<p class="reference">References <a class="el" href="permissioncache_8hpp_source.html#l00267">generation_</a>, <a class="el" href="permissioncache_8hpp_source.html#l00271">map_</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00265">mutex_</a>.</p>
 
 </div>
 </div>
@@ -454,7 +456,7 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
+template&lt;typename ClockT = std::chrono::        steady_clock&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -492,9 +494,9 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00117">117</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00154">154</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissioncache_8hpp_source.html#l00073">enabled()</a>, <a class="el" href="permissioncache_8hpp_source.html#l00199">generation_</a>, <a class="el" href="permissioncache_8hpp_source.html#l00200">map_</a>, <a class="el" href="permissioncache_8hpp_source.html#l00197">max_entries_</a>, <a class="el" href="permissioncache_8hpp_source.html#l00198">mutex_</a>, <a class="el" href="permissioncache_8hpp_source.html#l00175">sweepExpired()</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00196">ttl_</a>.</p>
+<p class="reference">References <a class="el" href="permissioncache_8hpp_source.html#l00099">enabled()</a>, <a class="el" href="permissioncache_8hpp_source.html#l00267">generation_</a>, <a class="el" href="permissioncache_8hpp_source.html#l00271">map_</a>, <a class="el" href="permissioncache_8hpp_source.html#l00264">max_entries_</a>, <a class="el" href="permissioncache_8hpp_source.html#l00265">mutex_</a>, <a class="el" href="permissioncache_8hpp_source.html#l00231">sweepExpired()</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00261">ttl_</a>.</p>
 
 </div>
 </div>
@@ -504,7 +506,7 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
+template&lt;typename ClockT = std::chrono::        steady_clock&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -525,9 +527,9 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 
 <p>Number of entries currently held (including any not yet swept). </p>
 
-<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00149">149</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00200">200</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissioncache_8hpp_source.html#l00200">map_</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00198">mutex_</a>.</p>
+<p class="reference">References <a class="el" href="permissioncache_8hpp_source.html#l00271">map_</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00265">mutex_</a>.</p>
 
 </div>
 </div>
@@ -537,7 +539,7 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
+template&lt;typename ClockT = std::chrono::        steady_clock&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -559,11 +561,11 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 <p>Erases entries idle past the TTL, at most once per minute. </p>
 <p>Rate-limited via next_sweep_ to avoid a full scan on every <a class="el" href="#abc720e1381076a0f4954ba9f6b39adfc" title="Stores value under key if the cache is still in the same generation.">put()</a>; expired entries that are looked up are still erased immediately by <a class="el" href="#a617931f09a54fec0b8fc808ca00930db" title="Looks up key, renewing the entry&#39;s idle timer on a hit.">get()</a>. </p><dl class="section pre"><dt>Precondition</dt><dd>Caller holds mutex_. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00175">175</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00231">231</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="permissioncache_8hpp_source.html#l00200">map_</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00201">next_sweep_</a>.</p>
+<p class="reference">References <a class="el" href="permissioncache_8hpp_source.html#l00271">map_</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00273">next_sweep_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="permissioncache_8hpp_source.html#l00117">put()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="permissioncache_8hpp_source.html#l00154">put()</a>.</p>
 
 </div>
 </div>
@@ -574,13 +576,13 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
+template&lt;typename ClockT = std::chrono::        steady_clock&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::atomic&lt;uint64_t&gt; <a class="el" href="classBasicPermissionCache.html">BasicPermissionCache</a>&lt; ClockT &gt;::generation_ {0}</td>
+          <td class="memname">std::atomic&lt;uint64_t&gt; <a class="el" href="classBasicPermissionCache.html">BasicPermissionCache</a>&lt; ClockT &gt;::generation_</td>
         </tr>
       </table>
   </td>
@@ -589,11 +591,13 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Bumped on <a class="el" href="#ad3230e761d0a35d3b772d299d8d72b09" title="Flushes all entries and bumps the generation so any pending stale put() is dropped.">invalidateAll()</a> to reject stale puts; atomic so readers need no lock. </p>
+<b>Initial value:</b><div class="fragment"><div class="line">{</div>
+<div class="line">      0}</div>
+</div><!-- fragment --><p>Bumped on <a class="el" href="#ad3230e761d0a35d3b772d299d8d72b09" title="Flushes all entries and bumps the generation so any pending stale put() is dropped.">invalidateAll()</a> to reject stale puts; atomic so readers need no lock. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00199">199</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00267">267</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="permissioncache_8hpp_source.html#l00079">generation()</a>, <a class="el" href="permissioncache_8hpp_source.html#l00141">invalidateAll()</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00117">put()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="permissioncache_8hpp_source.html#l00107">generation()</a>, <a class="el" href="permissioncache_8hpp_source.html#l00187">invalidateAll()</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00154">put()</a>.</p>
 
 </div>
 </div>
@@ -603,7 +607,7 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
+template&lt;typename ClockT = std::chrono::        steady_clock&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -620,9 +624,9 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 </div><div class="memdoc">
 <p>Cache contents keyed by query string, the actual hash table. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00200">200</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00271">271</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="permissioncache_8hpp_source.html#l00087">get()</a>, <a class="el" href="permissioncache_8hpp_source.html#l00141">invalidateAll()</a>, <a class="el" href="permissioncache_8hpp_source.html#l00117">put()</a>, <a class="el" href="permissioncache_8hpp_source.html#l00149">size()</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00175">sweepExpired()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="permissioncache_8hpp_source.html#l00118">get()</a>, <a class="el" href="permissioncache_8hpp_source.html#l00187">invalidateAll()</a>, <a class="el" href="permissioncache_8hpp_source.html#l00154">put()</a>, <a class="el" href="permissioncache_8hpp_source.html#l00200">size()</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00231">sweepExpired()</a>.</p>
 
 </div>
 </div>
@@ -632,7 +636,7 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
+template&lt;typename ClockT = std::chrono::        steady_clock&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -649,9 +653,9 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 </div><div class="memdoc">
 <p>Capacity before a full clear; bounds memory usage. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00197">197</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00264">264</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="permissioncache_8hpp_source.html#l00070">BasicPermissionCache()</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00117">put()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="permissioncache_8hpp_source.html#l00092">BasicPermissionCache()</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00154">put()</a>.</p>
 
 </div>
 </div>
@@ -661,7 +665,7 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
+template&lt;typename ClockT = std::chrono::        steady_clock&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -678,9 +682,9 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 </div><div class="memdoc">
 <p>Guards map_ and next_sweep_ so threads cannot corrupt them. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00198">198</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00265">265</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="permissioncache_8hpp_source.html#l00087">get()</a>, <a class="el" href="permissioncache_8hpp_source.html#l00141">invalidateAll()</a>, <a class="el" href="permissioncache_8hpp_source.html#l00117">put()</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00149">size()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="permissioncache_8hpp_source.html#l00118">get()</a>, <a class="el" href="permissioncache_8hpp_source.html#l00187">invalidateAll()</a>, <a class="el" href="permissioncache_8hpp_source.html#l00154">put()</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00200">size()</a>.</p>
 
 </div>
 </div>
@@ -690,13 +694,13 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
+template&lt;typename ClockT = std::chrono::        steady_clock&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="#abf8817b8abb9f4b29023135bec1916e9">TimePoint</a> <a class="el" href="classBasicPermissionCache.html">BasicPermissionCache</a>&lt; ClockT &gt;::next_sweep_ {}</td>
+          <td class="memname"><a class="el" href="#a38b5bd729bd632f83084ea88809e34fd">TimePoint</a> <a class="el" href="classBasicPermissionCache.html">BasicPermissionCache</a>&lt; ClockT &gt;::next_sweep_ {}</td>
         </tr>
       </table>
   </td>
@@ -707,9 +711,9 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 </div><div class="memdoc">
 <p>Earliest time of the next <a class="el" href="#a7191cb562feddfcea0c6172b11df74eb" title="Erases entries idle past the TTL, at most once per minute.">sweepExpired()</a> scan; default-constructed to the clock's epoch. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00201">201</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00273">273</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="permissioncache_8hpp_source.html#l00175">sweepExpired()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="permissioncache_8hpp_source.html#l00231">sweepExpired()</a>.</p>
 
 </div>
 </div>
@@ -719,7 +723,7 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
+template&lt;typename ClockT = std::chrono::        steady_clock&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -736,9 +740,9 @@ template&lt;typename ClockT = std::chrono::steady_clock&gt; </div>
 </div><div class="memdoc">
 <p>Idle lifetime; zero disables caching. Set once in the constructor. </p>
 
-<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00196">196</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="permissioncache_8hpp_source.html#l00261">261</a> of file <a class="el" href="permissioncache_8hpp_source.html">permissioncache.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="permissioncache_8hpp_source.html#l00070">BasicPermissionCache()</a>, <a class="el" href="permissioncache_8hpp_source.html#l00073">enabled()</a>, <a class="el" href="permissioncache_8hpp_source.html#l00087">get()</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00117">put()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="permissioncache_8hpp_source.html#l00092">BasicPermissionCache()</a>, <a class="el" href="permissioncache_8hpp_source.html#l00099">enabled()</a>, <a class="el" href="permissioncache_8hpp_source.html#l00118">get()</a>, and <a class="el" href="permissioncache_8hpp_source.html#l00154">put()</a>.</p>
 
 </div>
 </div>
