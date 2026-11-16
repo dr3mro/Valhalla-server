@@ -10,15 +10,10 @@ else
     C_R=""; C_G=""; C_Y=""; C_B=""; C_M=""; C_C=""; C_DIM=""; C_BOLD=""; C_N=""
 fi
 
-if [[ ( -t 1 || "${FORCE_EMOJI:-0}" == "1" ) && "${VALHALLA_NO_EMOJI:-0}" != "1" ]]; then
-    E_ROCKET="⚔️"; E_TEST="🧪"; E_LINT="🧹"; E_BUILD="🔨"; E_DB="🗃️"
-    E_SERVER="🌐"; E_STOP="⏹️"; E_OK="✅"; E_FAIL="❌"; E_WARN="⚠️"
-    E_INFO="ℹ️"; E_RUN=" (▶️)"
-else
-    E_ROCKET=""; E_TEST=""; E_LINT=""; E_BUILD=""; E_DB=""
-    E_SERVER=""; E_STOP=""; E_OK=""; E_FAIL=""; E_WARN=""
-    E_INFO=""; E_RUN=""
-fi
+# Emojis disabled; keep color-only output.
+E_ROCKET=""; E_TEST=""; E_LINT=""; E_BUILD=""; E_DB=""
+E_SERVER=""; E_STOP=""; E_OK=""; E_FAIL=""; E_WARN=""
+E_INFO=""; E_RUN=""
 
 info()  { printf '%s%s%s %s\n' "$C_B" "$E_INFO" "$C_N" "$*"; }
 ok()    { printf '%s%s%s %s\n' "$C_G" "$E_OK" "$C_N" "$*"; }
