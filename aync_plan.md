@@ -72,12 +72,12 @@ Route: `POST /clients/providers/read`, only when `DB_ASYNC=true`.
 - [x] Login flow: `fetchPasswordHash` async, `completeLogin` on `PasswordWorker`, result posted back to the IO loop.
 - [ ] All read routes (users, providers, clinics, services, staff, appointments, search, visits, get-services).
 - [ ] Write routes: create / update / delete / suspend / unsuspend, with `pqxx::work` transactions replaced by Drogon transactions.
-- [ ] `getNextID` and other sequence calls.
+- [x] `getNextID` and other sequence calls (none exist in this codebase).
 - [ ] Synchronous DB calls inside entities: `checkItemExists` in `src/entities/base/client.hpp` (username check) and `src/entities/base/entity.hpp` (id check) run during validation/construction, so they need an async validation step or a cached/inlined alternative.
 - [x] Entity files (`src/entities/**`) are almost all pure SQL/params builders (`getSql*Statement`, `getPermissionsQueryFor*`); they need no async change, only to keep compiling against the new params type. The only real DB calls in entities are the two `checkItemExists` calls above.
 - [ ] Gatekeeper DB code, the full list of real call sites: `keeprbase.cpp` (`getPasswordHashForUserName` x2, `setNowLoginTimeGetLastLogoutTime`, `executeQuery` x2, `executeReadQuery`, `doReadQuery`), `permissionmanager_private.hpp` (`getPermissionsOfEntity` -> `getPermissions`, used by about 19 `PermissionManager` methods in `permissionmanager.cpp`), `sessionmanager.cpp` (login / timestamps), and `PermissionCache` invalidation after writes.
 - [x] Controller layer: `controllers/base/controller/controller.hpp` (`cruds`, `Search`, `GetServices`, `GetVisits` call `executeQuery`, `executeReadQuery` and `executeSearchQuery`) is the single place all CRUD routes go through; convert it once.
-- [ ] Schema loading at boot (`src/validator/databaseschema/databaseschema.cpp`: `getTableSchema`, `getAllTables`): decide whether it stays on a small synchronous pqxx connection (then libpqxx stays a dependency) or moves to the async client before the event loop starts.
+- [x] Schema loading at boot (`src/validator/databaseschema/databaseschema.cpp`: `getTableSchema`, `getAllTables`): stays on a small synchronous pqxx connection; libpqxx remains a dependency.
 - [ ] Graceful shutdown: close the `DbClient` cleanly (replaces the executor shutdown in `Server::run()`).
 - [ ] Container image: the image runs its own Postgres and overrides `DB_HOST` and `DB_SSL`; confirm the `DbClient` honours the same overrides and `DB_ACQUIRE_TIMEOUT_MS` behaviour.
 
