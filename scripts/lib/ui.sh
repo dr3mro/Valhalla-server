@@ -2,8 +2,9 @@
 # Shared styling helpers for scripts.
 # shellcheck disable=SC2034
 if [[ ( -t 1 || "${FORCE_COLOR:-0}" == "1" ) && "${VALHALLA_NO_COLOR:-0}" != "1" && -z "${NO_COLOR:-}" ]]; then
-    C_R=$'\033[31m'; C_G=$'\033[32m'; C_Y=$'\033[33m'; C_B=$'\033[34m'
-    C_M=$'\033[35m'; C_C=$'\033[36m'; C_DIM=$'\033[2m'; C_BOLD=$'\033[1m'
+    # Pastel theme (256-color)
+    C_R=$'\033[38;5;210m'; C_G=$'\033[38;5;150m'; C_Y=$'\033[38;5;222m'; C_B=$'\033[38;5;153m'
+    C_M=$'\033[38;5;218m'; C_C=$'\033[38;5;159m'; C_DIM=$'\033[38;5;245m'; C_BOLD=$'\033[1m'
     C_N=$'\033[0m'
 else
     C_R=""; C_G=""; C_Y=""; C_B=""; C_M=""; C_C=""; C_DIM=""; C_BOLD=""; C_N=""
