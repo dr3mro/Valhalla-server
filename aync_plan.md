@@ -69,7 +69,7 @@ Route: `POST /clients/providers/read`, only when `DB_ASYNC=true`.
 ## Phase 4: gatekeeper and remaining routes
 
 - [ ] Session and token validation (`SessionManager`, `GateKeeper::isAuthenticationValid`) and the auth filter (`src/api/v2/filters/auth.hpp`).
-- [ ] Login flow: `fetchPasswordHash` async, `completeLogin` on `PasswordWorker`, result posted back to the IO loop.
+- [x] Login flow: `fetchPasswordHash` async, `completeLogin` on `PasswordWorker`, result posted back to the IO loop.
 - [ ] All read routes (users, providers, clinics, services, staff, appointments, search, visits, get-services).
 - [ ] Write routes: create / update / delete / suspend / unsuspend, with `pqxx::work` transactions replaced by Drogon transactions.
 - [ ] `getNextID` and other sequence calls.
