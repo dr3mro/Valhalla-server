@@ -972,6 +972,26 @@ test_api.sh             # End-to-end API test suite against a running server
 fuzz_auth.sh, sqlmap_test.sh, schemathesis_test.sh  # Security and fuzz testing helpers
 ```
 
+## Front-end development (CORS and Docker)
+
+The API listens on `http://localhost:8080`. CORS is open: `Access-Control-Allow-Origin: *`, no credentials, methods `GET, POST, PUT, DELETE, HEAD, OPTIONS`, request headers `Content-Type, Authorization, Accept, X-Requested-With` (a preflight echoes `Access-Control-Request-Headers`), and exposed response headers `Retry-After, Content-Length`. Preflight responses are cached for 7200 seconds.
+
+In Docker bridge mode every request arrives from the bridge gateway IP, so the rate limiter keys all front-end traffic as one client. Find the real gateway with `docker network inspect bridge` (use its `Gateway` value) instead of assuming `172.17.0.1`.
+
+Whitelist entries are unanchored regular expressions, so an entry such as `172.17.0.1` also matches `172.17.0.10` through `172.17.0.199`. To whitelist only the gateway, anchor the pattern, for example:
+
+```
+WHITELIST="^172\\.17\\.0\\.1$"
+```
+
+Raise the dev rate limits as well (`MAX_REQUESTS`, `MAX_FPS`) if React StrictMode double requests trip the limiter. A commented example for a dev `.env` (no secrets):
+
+```
+# WHITELIST="^172.17.0.1$"
+# MAX_REQUESTS=1000000
+# MAX_FPS=1000000
+```
+
 ## Development
 
 ### Known limitation: malformed requests (HTTP 400)
