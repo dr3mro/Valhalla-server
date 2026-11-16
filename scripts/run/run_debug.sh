@@ -6,7 +6,12 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$ROOT"
 
-ENV_FILE="${ENV_FILE:-$ROOT/.env}"
+if [[ -z ${ENV_FILE:-} ]]; then
+  if [[ -f $ROOT/config ]]; then ENV_FILE="$ROOT/config"
+  elif [[ -f $ROOT/.env ]]; then ENV_FILE="$ROOT/.env"
+  else ENV_FILE="$ROOT/config"
+  fi
+fi
 BIN="$ROOT/build/Debug/server"
 
 # Reuse run_release's env loader by sourcing its function? Instead duplicate minimal loader.

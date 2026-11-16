@@ -170,8 +170,8 @@ fetch_tree() {
   [ -n "$FILE_SHA" ] || FILE_SHA="$SHA"
 
   payloads="$(api "https://api.github.com/repos/$REPO/git/trees/$SHA?recursive=1" |
-    grep -o '"path": *"api_tests/payloads/[^"]*\.json"' |
-    sed 's/.*"\(api_tests[^"]*\)"/\1/')" ||
+    grep -o '"path": *"tests/api_tests/payloads/[^"]*\.json"' |
+    sed 's/.*"\(tests/api_tests[^"]*\)"/\1/')" ||
     die "couldn't list the repository files (API rate limit? set GITHUB_TOKEN)"
 
   count=0
@@ -195,7 +195,8 @@ copy_tree() {
     cp "$SOURCE/$f" "$stage/$f"
   done
   mkdir -p "$stage/api_tests"
-  cp -R "$SOURCE/api_tests/payloads" "$stage/api_tests/payloads"
+  mkdir -p "$stage/tests/api_tests"
+  cp -R "$SOURCE/tests/api_tests/payloads" "$stage/api_tests/payloads"
   VERSION_TEXT="local $SOURCE $(git -C "$SOURCE" rev-parse HEAD 2>/dev/null || echo unknown)"
 }
 
@@ -335,6 +336,12 @@ place_files() {
   mv "$stage/scripts/test/test_api.sh" "$stage/test_api"
   mv "$stage/scripts/test/schemathesis_test.sh" "$stage/schemathesis_test"
   mv "$stage/install.sh" "$stage/installer"
+  # Flatten the payload tree to the installed layout (api_tests/payloads).
+  if [ -d "$stage/tests/api_tests/payloads" ]; then
+    mkdir -p "$stage/api_tests"
+    cp -R "$stage/tests/api_tests/payloads" "$stage/api_tests/payloads"
+    rm -rf "$stage/tests"
+  fi
   (cd "$stage" && tar -cf - .) | (cd "$DIR" && tar -xf -)
   # Downloads arrive as plain files (curl doesn't keep the executable bit).
   chmod 755 "$DIR/vdt" "$DIR/test_api" "$DIR/schemathesis_test" "$DIR/installer"

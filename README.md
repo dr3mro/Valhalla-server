@@ -269,10 +269,10 @@ PGPASSWORD=postgres ./scripts/run/db_init.sh                                    
 
 ### Run the server
 
-Create a `.env` file in the project root. It is read by `run_release.sh` and ignored by Git, so local secrets stay out of commits. See [Configuration](#configuration) for every variable:
+Create a `config` file in the project root. It is read by `run_release.sh` and ignored by Git, so local secrets stay out of commits. See [Configuration](#configuration) for every variable:
 
 ```bash
-cat > .env <<'EOF'
+cat > config <<'EOF'
 SERVER_HOST=0.0.0.0
 SERVER_PORT=8080
 DB_HOST=127.0.0.1
@@ -870,7 +870,7 @@ tools/docs/build.sh        # regenerates docs/api.html, openapi.json and the Pos
 ./scripts/run/run_release.sh --build   # re-embed the page and restart
 ```
 
-To include real response samples in the docs, run `SAMPLES_OUT=api_tests/samples.jsonl ./scripts/test/test_api.sh` against a running server before `tools/docs/build.sh`.
+To include real response samples in the docs, run `SAMPLES_OUT=tests/api_tests/samples.jsonl ./scripts/test/test_api.sh` against a running server before `tools/docs/build.sh`.
 
 ### Clients — `/clients/{clientType}/...` (`clientType` ∈ `users`, `providers`)
 
@@ -965,7 +965,7 @@ tools/
 ├── cmake/              # CMake helpers (HTML embedding, docs generation)
 ├── conan/              # Conan helper variables, lockfile update script
 └── docs/               # API docs generator (build.sh, build_docs.py, Swagger UI assets)
-api_tests/              # Request payloads and samples used by test_api.sh
+tests/api_tests/         # Request payloads and samples used by test_api.sh
 docker/                 # All-in-one Alpine image (Dockerfile + entrypoint)
 .github/                # Release workflow and Dependabot config
 conan.lock              # Pinned dependency versions (all platforms)

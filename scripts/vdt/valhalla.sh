@@ -275,10 +275,10 @@ if [[ -n ${VALHALLA_ENV_FILE:-} ]]; then
   ENV_FILE="$VALHALLA_ENV_FILE"
 else
   ENV_FILE=""
-  for f in "$PWD/.env" "$ROOT/.env" "$DATA_DIR/config"; do
+  for f in "$PWD/config" "$PWD/.env" "$ROOT/config" "$ROOT/.env" "$DATA_DIR/config"; do
     [[ -f $f ]] && { ENV_FILE="$f"; break; }
   done
-  [[ -n $ENV_FILE ]] || ENV_FILE="$PWD/.env"
+  [[ -n $ENV_FILE ]] || ENV_FILE="$PWD/config"
 fi
 ENV_FILE_EXPLICIT="${VALHALLA_ENV_FILE:+1}"
 DRY_RUN=0
@@ -2742,7 +2742,10 @@ cmd_test() {
 # payload_dir: where the payload files are (checkout first, installed copy
 # second); fails when neither has them.
 payload_dir() {
-  if [[ -d $ROOT/api_tests/payloads ]]; then
+  if [[ -d $ROOT/tests/api_tests/payloads ]]; then
+    echo "$ROOT/tests/api_tests/payloads"
+    return 0
+  elif [[ -d $ROOT/api_tests/payloads ]]; then
     echo "$ROOT/api_tests/payloads"
     return 0
   fi

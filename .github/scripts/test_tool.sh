@@ -110,7 +110,7 @@ cp "$HOME/.bashrc" "$WORK/bashrc.orig"
 check "install" install_sh
 check "files installed and executable" test -x "$D/vdt" -a -x "$D/test_api" -a -x "$D/schemathesis_test" -a -x "$D/installer"
 check "no .sh leftovers" test ! -e "$D/valhalla.sh" -a ! -e "$D/test_api.sh"
-check "payloads and openapi.json" test -f "$D/api_tests/payloads/auth/login.json" -a -f "$D/docs/openapi.json"
+check "payloads and openapi.json" test -f "$D/tests/api_tests/payloads/auth/login.json" -a -f "$D/docs/openapi.json"
 outputs "VERSION names the source" "^local $REPO " cat "$D/VERSION"
 check "command link" test "$(readlink "$V")" = "$D/vdt"
 check "one rc block in .bashrc" test "$(grep -c '>>> vdt >>>' "$HOME/.bashrc")" = 1
@@ -157,7 +157,7 @@ if [[ $OS == Darwin ]]; then
 fi
 check "edited config kept" test -f "$D/config"
 check "dumps/ kept" test -f "$D/dumps/keep.sql"
-check "tool files removed" test ! -e "$D/vdt" -a ! -e "$D/api_tests" -a ! -e "$D/docs"
+check "tool files removed" test ! -e "$D/vdt" -a ! -e "$D/tests/api_tests" -a ! -e "$D/docs"
 outputs "uninstall again is harmless" "Removed the tool|Nothing installed" "$POSIX_SH" "$REPO/install.sh" --uninstall
 
 section "Installer: zsh user, custom dirs, --no-rc"
@@ -212,14 +212,14 @@ outputs "list all groups (piped)" "providers \\(4 payloads\\)" vdt payload
 outputs "list a group" "create" vdt payload clinics
 outputs "show one" "Placeholders" vdt payload clinics create
 outputs "group/name form" "Placeholders" vdt payload clinics/create.json
-check "--raw is the file as-is" sh -c "\"\$0\" '$V' payload clinics create --raw | cmp -s - '$D/api_tests/payloads/clinics/create.json'" "$TOOL_BASH"
+check "--raw is the file as-is" sh -c "\"\$0\" '$V' payload clinics create --raw | cmp -s - '$D/tests/api_tests/payloads/clinics/create.json'" "$TOOL_BASH"
 all_filled=1
 while IFS= read -r f; do
-  rel="${f#"$D/api_tests/payloads/"}"
+  rel="${f#"$D/tests/api_tests/payloads/"}"
   if ! out="$(vdt payload "${rel%.json}" --filled 2>/dev/null | jq -e . 2>&1)"; then
     all_filled=0; bad "--filled $rel is valid JSON" "$out"
   fi
-done < <(find "$D/api_tests/payloads" -name '*.json' | sort)
+done < <(find "$D/tests/api_tests/payloads" -name '*.json' | sort)
 [[ $all_filled == 1 ]] && ok "--filled gives valid JSON for every payload"
 fails "unknown group" "no payload group 'nope'" vdt payload nope
 fails "unknown name" "no payload clinics/nope.json" vdt payload clinics nope

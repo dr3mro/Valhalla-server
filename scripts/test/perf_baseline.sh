@@ -100,7 +100,14 @@ if [[ $START == 1 && $MODE == native ]]; then
 	[[ -x $BIN ]] || { echo "error: $BIN not found; run ./build.sh or use --rebuild" >&2; exit 1; }
 	log "Starting native server $BIN on port $PORT"
 	# Load KEY=VALUE lines from the env file (never sourced, same parser idea as run_release.sh).
-	EF="${ENV_FILE:-$ROOT/.env}"
+	if [[ -z ${ENV_FILE:-} ]]; then
+		if [[ -f $ROOT/config ]]; then EF="$ROOT/config"
+		elif [[ -f $ROOT/.env ]]; then EF="$ROOT/.env"
+		else EF="$ROOT/config"
+		fi
+	else
+		EF="$ENV_FILE"
+	fi
 	if [[ -f $EF ]]; then
 		while IFS= read -r line || [[ -n $line ]]; do
 			line=${line%$'\r'}

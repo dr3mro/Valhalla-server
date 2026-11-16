@@ -7,7 +7,12 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$ROOT"
 
-ENV_FILE="${ENV_FILE:-$ROOT/.env}"
+if [[ -z ${ENV_FILE:-} ]]; then
+  if [[ -f $ROOT/config ]]; then ENV_FILE="$ROOT/config"
+  elif [[ -f $ROOT/.env ]]; then ENV_FILE="$ROOT/.env"
+  else ENV_FILE="$ROOT/config"
+  fi
+fi
 BIN="$ROOT/build/Release/server"
 
 # Parse KEY=VALUE lines (tolerates spaces around '=', quotes, CRLF, comments).

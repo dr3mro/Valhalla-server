@@ -13,14 +13,14 @@ on:
     paths:
       - "scripts/**/*.sh"
       - "*.sh"
-      - api_tests/payloads/**
+      - tests/api_tests/payloads/**
       - .github/scripts/**
       - .github/workflows/scripts.yml
   pull_request:
     paths:
       - "scripts/**/*.sh"
       - "*.sh"
-      - api_tests/payloads/**
+      - tests/api_tests/payloads/**
       - .github/scripts/**
       - .github/workflows/scripts.yml
   workflow_dispatch:

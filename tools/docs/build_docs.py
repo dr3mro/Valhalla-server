@@ -18,10 +18,10 @@ def write_if_changed(path, text):
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 PROJECT = sys.argv[1] if len(sys.argv) > 1 else os.path.abspath(os.path.join(HERE, "..", ".."))
-PAYLOADS = os.path.join(PROJECT, "api_tests", "payloads")
+PAYLOADS = os.path.join(PROJECT, "tests", "api_tests", "payloads")
 OUT = sys.argv[2] if len(sys.argv) > 2 else os.path.join(PROJECT, "docs")
 UI = os.path.join(HERE, "node_modules", "swagger-ui-dist")
-SAMPLES = os.path.join(PROJECT, "api_tests", "samples.jsonl")  # optional: written by SAMPLES_OUT=... ./test_api.sh
+SAMPLES = os.path.join(PROJECT, "tests", "api_tests", "samples.jsonl")  # optional: written by SAMPLES_OUT=... ./test_api.sh
 
 SAMPLE = {  # values substituted into the {{PLACEHOLDER}}s of the payload templates
     "RUN": "1001", "PROVIDER_USERNAME": "dr_amr", "PROVIDER_PASSWORD": "1234@Abc!", "USER_USERNAME": "user1",
