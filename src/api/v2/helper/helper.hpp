@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file helper.hpp
  * @brief Factory for the standard JSON HTTP responses used by the v2
  * controllers and filters.

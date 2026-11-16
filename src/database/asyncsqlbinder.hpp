@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file asyncsqlbinder.hpp
  * @brief Adapter between the pqxx::params produced by entity SQL builders and
  * Drogon's incremental SQL binder.

@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file temp_dir.hpp
  * @brief A small RAII helper that creates a unique temporary directory and
  * deletes it when finished.

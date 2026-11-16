@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file database.cpp
  * @brief Implementation for database: Takes ownership of a connection,
  * validates it and caches its connection string.

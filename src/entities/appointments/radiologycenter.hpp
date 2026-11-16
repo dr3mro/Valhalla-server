@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file radiologycenter.hpp
  * @brief Appointment entity bound to the radiologycenters organisation and its
  * appointment table.

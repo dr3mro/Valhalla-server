@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file cors.hpp
  * @brief CORS header helpers applied to every response by the pre-sending
  * advice in server.cpp.

@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file servicecontrollerbase.hpp
  * @brief Type-erased interface for service-entity (clinic, pharmacy,
  * laboratory, radiology center) CRUD+S operations.

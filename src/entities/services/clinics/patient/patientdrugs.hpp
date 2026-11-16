@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file patientdrugs.hpp
  * @brief Case entity for the `patients_drugs` table (a patient's drug record).
  * @details This header declares the PatientDrugs class, a small C++ type that

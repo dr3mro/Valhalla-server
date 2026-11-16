@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_memcache.cpp
  * @brief Catch2 unit tests for MemCache, the thread-safe expiring LRU cache.
  * @details MemCache stores values by key, evicts the least recently used entry

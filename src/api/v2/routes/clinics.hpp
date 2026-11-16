@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file clinics.hpp
  * @brief REST controller for clinic-related services (patients, visits and
  * visit documents).

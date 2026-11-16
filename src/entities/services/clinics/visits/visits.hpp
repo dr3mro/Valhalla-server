@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file visits.hpp
  * @brief Case entity for the `clinics_visits` table (a patient's visit to a
  * clinic).

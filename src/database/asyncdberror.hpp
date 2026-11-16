@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file asyncdberror.hpp
  * @brief Maps exceptions from the Drogon async database path to the HTTP
  * statuses of the synchronous path.

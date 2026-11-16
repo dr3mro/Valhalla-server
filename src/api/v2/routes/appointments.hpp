@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file appointments.hpp
  * @brief REST controller for appointment records of the appointment-providing
  * entities.

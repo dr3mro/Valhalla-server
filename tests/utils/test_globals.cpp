@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_globals.cpp
  * @brief Catch2 unit tests for the shared globals: entity concepts, Requester
  * and HTTP status types.

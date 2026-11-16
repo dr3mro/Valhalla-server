@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file types.hpp
  * @brief CRUD operation payload types and the EntityType variant used by entity
  * builders.

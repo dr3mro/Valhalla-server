@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file env_guard.hpp
  * @brief A small RAII helper that changes an environment variable for one test
  * and restores it afterwards.

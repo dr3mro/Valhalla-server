@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file cors_tokens.hpp
  * @brief Drogon-free helpers for parsing and merging CORS header token lists.
  *

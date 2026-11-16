@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file tokenmanager.hpp
  * @brief Creates and checks the signed tokens used to authenticate clients.
  *        (Originally: "Issues and validates the HS256 JWTs that authenticate

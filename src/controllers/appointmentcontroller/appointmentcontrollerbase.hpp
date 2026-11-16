@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file appointmentcontrollerbase.hpp
  * @brief Type-erased interface for appointment-entity CRUD+S operations.
  * @details In plain words, this file lists the jobs every "appointment entity"

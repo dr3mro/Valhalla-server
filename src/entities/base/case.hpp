@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file case.hpp
  * @brief Base entity for clinic-owned clinical records (patients, visits,
  * reports, ...).

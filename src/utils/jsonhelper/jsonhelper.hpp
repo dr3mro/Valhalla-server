@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file jsonhelper.hpp
  * @brief Conversions between JsonCpp, jsoncons and response strings.
  * @details Declares the JsonHelper class, a stateless toolbox with three static

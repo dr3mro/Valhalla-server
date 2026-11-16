@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file banner.hpp
  * @brief Header-only helpers for printing the startup banner, configuration and
  * ASCII logo.

@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_gatekeeper.cpp
  * @brief Catch2 unit tests and fixtures for gatekeeper. Checks that GateKeeper
  * forwards DoS and authentication checks to its process-wide singletons.

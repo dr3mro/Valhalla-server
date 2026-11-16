@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file http.hpp
  * @brief HTTP status codes and error payloads shared by the API layer.
  * @details Defines the Error struct (a numeric code plus a message) and the

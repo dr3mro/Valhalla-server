@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file permissionmanager.cpp
  * @brief The implementations of all the permission-check methods.
  *        (Originally: "Implementation for permissionmanager: Client creation is

@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file databaseconnectionpool.cpp
  * @brief Implementation for databaseconnectionpool: Opens one pqxx connection
  * using the configured credentials and a connect timeout.

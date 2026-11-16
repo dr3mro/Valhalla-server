@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file databasecontroller.hpp
  * @brief Single gateway through which controllers execute SQL, in both blocking
  * and coroutine form.

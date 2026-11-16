@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file envloader.hpp
  * @brief Base for configuration sections that read typed values from the
  * process environment.

@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file services.hpp
  * @brief REST controller for service-directory entities (clinics, pharmacies,
  * laboratories, centers).

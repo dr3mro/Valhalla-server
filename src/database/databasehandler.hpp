@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file databasehandler.hpp
  * @brief RAII lease of a single pooled Database connection.
  * @details This header declares DatabaseHanndler (spelled exactly that way in

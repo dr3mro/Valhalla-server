@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_auth_async_uaf.cpp
  * @brief Checks that the asynchronous authentication filter still calls the
  * next handler in the chain.

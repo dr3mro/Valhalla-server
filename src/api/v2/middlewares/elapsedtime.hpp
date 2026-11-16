@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file elapsedtime.hpp
  * @brief Timing middleware that logs how long a request took to produce its
  * response.

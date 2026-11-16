@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_execute_controller_method.cpp
  * @brief Checks executeControllerMethod: where controller calls run, how
  * responses are produced, and how load is shed.

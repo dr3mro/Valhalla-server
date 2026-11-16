@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file databaseconnectionpool.hpp
  * @brief Owns the fixed set of synchronous Database connections and leases them
  * to callers.

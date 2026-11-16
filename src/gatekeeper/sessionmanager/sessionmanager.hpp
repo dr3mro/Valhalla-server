@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file sessionmanager.hpp
  * @brief The login/logout flow and the in-memory store of active sessions.
  *        (Originally: "Owns the client login flow and the in-memory session

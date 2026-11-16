@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file requests.hpp
  * @brief Case entity for the `clinics_requests` table (a visit's requests).
  * @details This header declares the Requests class, a small C++ type that

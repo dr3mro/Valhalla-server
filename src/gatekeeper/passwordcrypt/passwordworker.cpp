@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file passwordworker.cpp
  * @brief Builds the password thread pool using settings from the Configurator.
  *        (Originally: "Implementation for passwordworker: Fetches the

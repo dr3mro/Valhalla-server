@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file visitdrugs.hpp
  * @brief Case entity for the `patients_visitdrugs` table (drugs recorded for a
  * visit).

@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_store_cached.cpp
  * @brief Checks that Store's per-thread cache returns the current object after
  * replacements, even from other threads.

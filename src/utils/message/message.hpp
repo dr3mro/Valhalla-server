@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file message.hpp
  * @brief Static helpers for coloured console/status logging.
  * @details Declares the Message class: a stateless facade with functions to log

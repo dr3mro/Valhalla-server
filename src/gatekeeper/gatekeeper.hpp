@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file gatekeeper.hpp
  * @brief Facade over authentication, authorization and per-IP abuse detection.
  * @details GateKeeper is the single "front desk" the rest of the server talks

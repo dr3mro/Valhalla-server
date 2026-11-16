@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file cliniccontroller.cpp
  * @brief Definitions and explicit instantiations for ClinicController<T> over
  * clinic-service entity types.

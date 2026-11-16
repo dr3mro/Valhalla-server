@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file databasebusy.hpp
  * @brief Exception signalling that the connection pool could not lease a
  * connection in time.

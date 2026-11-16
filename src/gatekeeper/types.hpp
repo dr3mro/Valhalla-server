@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file types.hpp
  * @brief Login, credential and identity data types used by the gatekeeper
  * subsystem.

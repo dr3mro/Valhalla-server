@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file concepts.hpp
  * @brief Compile-time constraints tying generic API code to domain types.
  * @details Declares four C++20 "concepts" — named conditions that a type must

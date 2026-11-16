@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_asyncdbclient.cpp
  * @brief Catch2 unit tests and fixtures for asyncdbclient. Checks the injected
  * Drogon client holder and the generated PostgreSQL connection string.

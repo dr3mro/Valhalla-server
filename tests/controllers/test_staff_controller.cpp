@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_staff_controller.cpp
  * @brief Catch2 unit tests and fixtures for staff controller.
  * @details These tests cover StaffController<Clinics> for its three operations:

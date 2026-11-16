@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_benchmarks.cpp
  * @brief Opt-in performance benchmarks for the thread-safe queue, the cache and
  * CORS header building.

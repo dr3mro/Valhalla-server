@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file tokenmanager.cpp
  * @brief Creates and validates the signed authentication tokens.
  *        (Originally: "Implementation for tokenmanager: Signs a JWT from the

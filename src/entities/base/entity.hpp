@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file entity.hpp
  * @brief Short names for the CRUD value types and the variant they live in (see
  * api::v2::Types).

@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_client_controller.cpp
  * @brief Catch2 unit tests for the pre-database behaviour of ClientController.
  * @details These tests cover ClientController<User> and

@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file permissionmanager.hpp
  * @brief The single place that answers "may this person do this thing to this
  * record?". (Originally: "Central authorization facade: answers "may this

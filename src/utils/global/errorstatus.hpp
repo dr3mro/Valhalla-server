@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file errorstatus.hpp
  * @brief Maps caught exceptions to the HTTP status reported to API clients.
  * @details Provides one small helper, statusForException, that looks at an

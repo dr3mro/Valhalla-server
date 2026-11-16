@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_store.cpp
  * @brief Catch2 unit tests for Store, the process-wide service locator keyed by
  * C++ type.

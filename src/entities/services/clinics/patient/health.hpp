@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file health.hpp
  * @brief Case entity for the `patients_health` table (a patient's health
  * record).

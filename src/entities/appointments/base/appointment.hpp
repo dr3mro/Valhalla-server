@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file appointment.hpp
  * @brief Base entity for appointment tables shared by the service-specific
  * appointment classes.

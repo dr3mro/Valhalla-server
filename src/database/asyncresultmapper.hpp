@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file asyncresultmapper.hpp
  * @brief Maps Drogon PostgreSQL result sets to jsoncons values with the
  * outcomes of the synchronous path in mind.

@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file blockingpool.hpp
  * @brief Thread-safe bounded pool of reusable resources with idle iteration.
  * @details This header defines BlockingPool<T>, a header-only container that

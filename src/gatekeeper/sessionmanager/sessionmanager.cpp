@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file sessionmanager.cpp
  * @brief The implementation of login, logout and session bookkeeping.
  *        (Originally: "Implementation for sessionmanager: Reads the stored

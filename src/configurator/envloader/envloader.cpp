@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file envloader.cpp
  * @brief Typed environment-variable parsing helpers used by configuration
  * sections.

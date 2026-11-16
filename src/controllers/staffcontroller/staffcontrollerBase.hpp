@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file staffcontrollerBase.hpp
  * @brief Type-erased interface for service-staff management operations.
  * @details In plain words, this file lists the three jobs that deal with the

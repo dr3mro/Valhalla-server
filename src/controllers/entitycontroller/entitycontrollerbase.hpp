@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file entitycontrollerbase.hpp
  * @brief Abstract contract for the request-facing CRUDS handlers exposed for
  * every entity type.

@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file dosdetector.hpp
  * @brief Per-IP abuse detector combining static lists with sliding-window
  * request counting.

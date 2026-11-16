@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file gatekeeper.cpp
  * @brief Implementation for gatekeeper.
  * @details This file turns the GateKeeper declarations into working code. Login

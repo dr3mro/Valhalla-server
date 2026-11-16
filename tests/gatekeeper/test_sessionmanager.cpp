@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_sessionmanager.cpp
  * @brief Catch2 unit tests and fixtures for sessionmanager. Checks session
  * storage/lookup/removal, logout handling, and the login flow against a fake

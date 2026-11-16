@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file databaseschema.cpp
  * @brief Implementation of the process-wide database schema cache declared in
  * databaseschema.hpp.

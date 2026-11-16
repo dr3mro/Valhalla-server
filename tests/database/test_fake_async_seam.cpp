@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_fake_async_seam.cpp
  * @brief Catch2 unit tests and fixtures for fake async seam. Checks the fake DB
  * controller's coroutine path without a real database or Drogon app.

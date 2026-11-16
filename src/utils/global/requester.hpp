@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file requester.hpp
  * @brief Caller identity used by the permission layer.
  * @details Defines the Requester value object, which carries two pieces of

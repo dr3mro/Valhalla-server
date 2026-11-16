@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file builders.hpp
  * @brief Small helpers that build test data: login records, caller identity,
  * and signed JWT tokens.

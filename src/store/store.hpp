@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file store.hpp
  * @brief Process-wide service locator keyed by C++ type.
  * @details This file declares Store, the one place in the server that keeps a

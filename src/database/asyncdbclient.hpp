@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file asyncdbclient.hpp
  * @brief Store-registered holder for the Drogon PostgreSQL client used when
  * DB_ASYNC=true.

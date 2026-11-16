@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file controller.hpp
  * @brief Reusable persistence engine for the API's CRUDS
  * (Create/Read/Update/Delete/Search) operations.

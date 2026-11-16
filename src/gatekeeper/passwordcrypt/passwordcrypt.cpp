@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file passwordcrypt.cpp
  * @brief The implementation of the password hashing and checking wrapper.
  *        (Originally: "Implementation for passwordcrypt: Ensures libsodium is

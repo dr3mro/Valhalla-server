@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file callback.hpp
  * @brief Shared completion-callback type for the API and its workers.
  * @details Defines one macro, CALLBACK_, that names a single function-signature

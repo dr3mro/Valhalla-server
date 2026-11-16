@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file appointmentcontroller.hpp
  * @brief Appointment-entity controller that adapts @ref EntityController to
  * @ref AppointmentControllerBase.

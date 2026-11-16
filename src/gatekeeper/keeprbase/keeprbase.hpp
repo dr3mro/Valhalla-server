@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file keeprbase.hpp
  * @brief Shared base for session/token managers offering session-table and JWT
  * helpers.

@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file boundedexecutor.hpp
  * @brief A fixed-size worker pool with a bounded queue, plus the
  * callback-adapting helper built on it.

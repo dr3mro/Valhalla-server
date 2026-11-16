@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_database_busy.cpp
  * @brief Catch2 unit tests and fixtures for database busy.
  * @details These tests check how a busy database (a connection pool with no

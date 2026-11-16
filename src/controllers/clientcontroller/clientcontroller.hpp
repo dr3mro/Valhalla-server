@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file clientcontroller.hpp
  * @brief Client-specific handler that layers password hashing, sessions and
  * account state over the generic CRUDS flow.

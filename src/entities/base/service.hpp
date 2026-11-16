@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file service.hpp
  * @brief Convenience alias for the staff-invitation payload consumed by Service
  * builders.

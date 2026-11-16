@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file hello.hpp
  * @brief Minimal welcome endpoint used to confirm the API is reachable.
  * @details This file defines the Hello controller with one tiny endpoint. When

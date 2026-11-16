@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file logger.cpp
  * @brief Implementation for logger.
  * @details Implements Logger. The constructor reads the server configuration,

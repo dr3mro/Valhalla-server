@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file global_env.cpp
  * @brief Sets process-wide environment variables once, before any test runs, to
  * give the suite deterministic configuration.

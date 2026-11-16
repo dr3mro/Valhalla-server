@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_dosdetector.cpp
  * @brief Catch2 unit tests and fixtures for dosdetector. Checks how the
  * detector classifies requests as allowed, whitelisted, blacklisted,

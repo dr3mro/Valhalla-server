@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_validator.cpp
  * @brief Checks rule flags, input regex validation, search-request parsing and
  * schema validation.

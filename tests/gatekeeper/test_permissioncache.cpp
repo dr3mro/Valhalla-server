@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_permissioncache.cpp
  * @brief Catch2 unit tests and fixtures for permissioncache. Checks the
  * TTL-based cache of permission JSON with generation-based invalidation.

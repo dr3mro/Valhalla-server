@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_keeprbase_validatetoken.cpp
  * @brief Catch2 unit tests and fixtures for keeprbase validatetoken. Checks
  * KeeprBase::validateToken against a fake database.

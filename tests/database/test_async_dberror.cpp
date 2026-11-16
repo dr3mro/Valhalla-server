@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_async_dberror.cpp
  * @brief Catch2 unit tests and fixtures for async dberror. Checks how database
  * failures are translated into HTTP status codes.

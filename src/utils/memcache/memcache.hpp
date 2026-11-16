@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file memcache.hpp
  * @brief Thread-safe in-memory LRU cache with TTL expiry and a cleaner thread.
  * @details Defines a template MemCache<T, ClockT> that stores values by key in

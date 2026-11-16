@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file servicecontroller.cpp
  * @brief Definitions for @ref ServiceController and its explicit template
  * instantiations.

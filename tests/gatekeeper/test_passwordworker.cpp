@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_passwordworker.cpp
  * @brief Catch2 unit tests and fixtures for passwordworker. Checks the bounded
  * worker pool that runs expensive password hashing off the request thread.

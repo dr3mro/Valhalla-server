@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file watchdog.hpp
  * @brief Background health monitor for the pooled database connections.
  * @details This header declares WatchDog, a small class that owns a background

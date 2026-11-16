@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file cliniccontroller.hpp
  * @brief Clinic-entity handler that specializes generic CRUDS behaviour per
  * entity type via constrained helpers.

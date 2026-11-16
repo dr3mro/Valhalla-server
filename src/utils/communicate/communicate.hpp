@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file communicate.hpp
  * @brief Synchronous HTTP helper for service-to-service requests.
  * @details Declares the Communicate class, a static-only wrapper around libcurl

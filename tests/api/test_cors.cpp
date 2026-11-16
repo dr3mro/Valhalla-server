@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_cors.cpp
  * @brief Checks the exact CORS headers the server adds to HTTP responses,
  * including preflight handling.

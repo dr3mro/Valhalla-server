@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_jsonhelper.cpp
  * @brief Catch2 unit tests for JsonHelper, the bridge between the two JSON
  * libraries.

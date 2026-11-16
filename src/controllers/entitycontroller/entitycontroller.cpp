@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file entitycontroller.cpp
  * @brief Out-of-line definitions and explicit template instantiations for
  * EntityController<T>.

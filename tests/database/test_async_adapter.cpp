@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_async_adapter.cpp
  * @brief Catch2 unit tests and fixtures for async adapter. Checks that pqxx
  * query parameters become ordered text values for Drogon.

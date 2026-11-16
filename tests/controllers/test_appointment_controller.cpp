@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_appointment_controller.cpp
  * @brief Catch2 unit tests and fixtures for appointment controller.
  * @details These tests check that AppointmentController forwards every

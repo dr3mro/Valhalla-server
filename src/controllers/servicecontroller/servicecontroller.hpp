@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file servicecontroller.hpp
  * @brief Service-entity controller that adapts @ref EntityController to @ref
  * ServiceControllerBase.

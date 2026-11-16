@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file envvars.hpp
  * @brief Thin protected wrapper around the process environment (getenv/setenv).
  * @details This small header declares two helper functions that read and write

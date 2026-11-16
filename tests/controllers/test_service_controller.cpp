@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_service_controller.cpp
  * @brief Catch2 unit tests and fixtures for service controller.
  * @details These tests check ServiceController<Clinics> across all five

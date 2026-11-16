@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_client_controller_db.cpp
  * @brief Catch2 unit tests and fixtures for client controller db.
  * @details These tests drive ClientController<User> down to its database calls

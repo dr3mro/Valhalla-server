@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file all_routes.hpp
  * @brief Single inclusion point that registers every API v2 Drogon controller.
  * @details Drogon discovers controllers through the static registration

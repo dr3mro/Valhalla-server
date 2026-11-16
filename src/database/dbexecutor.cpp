@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file dbexecutor.cpp
  * @brief Implementation for dbexecutor: Builds the executor from configuration,
  * naming it "DB executor" for diagnostics.

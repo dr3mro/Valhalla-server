@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file laboratory.hpp
  * @brief Appointment entity bound to the laboratories organisation and its
  * appointment table.

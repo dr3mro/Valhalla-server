@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_permissions.cpp
  * @brief Catch2 unit tests and fixtures for permissions. Checks the power
  * bitmask and the helpers that decide who may read, create or change a client

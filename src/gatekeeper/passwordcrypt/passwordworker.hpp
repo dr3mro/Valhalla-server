@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file passwordworker.hpp
  * @brief A dedicated thread pool for the slow work of hashing and checking
  * passwords. (Originally: "The pool for deliberately slow password work

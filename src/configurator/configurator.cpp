@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file configurator.cpp
  * @brief Explicit Configurator::get<T>() specializations that expose each
  * configuration section.

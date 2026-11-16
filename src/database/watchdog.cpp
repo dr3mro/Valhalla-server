@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file watchdog.cpp
  * @brief Implementation for watchdog: Starts the monitoring thread that
  * periodically checks a pooled connection.

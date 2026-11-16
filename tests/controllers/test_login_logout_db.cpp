@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_login_logout_db.cpp
  * @brief Catch2 unit tests and fixtures for login logout db.
  * @details These tests drive the Login and Logout database paths of

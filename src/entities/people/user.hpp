@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file user.hpp
  * @brief Convenience alias for the id-only payload used by get-services
  * lookups.

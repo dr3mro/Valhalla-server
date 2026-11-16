@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file clientcontrollerbase.hpp
  * @brief Abstract contract for client (User/Provider) handlers: CRUDS plus
  * session and account-state operations.

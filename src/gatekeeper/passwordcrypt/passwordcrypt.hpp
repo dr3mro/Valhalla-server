@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file passwordcrypt.hpp
  * @brief A small wrapper around libsodium's password-hashing functions.
  *        (Originally: "Thin wrapper around libsodium's password-hashing

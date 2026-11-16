@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file pharmacy.hpp
  * @brief Appointment entity bound to the pharmacies organisation and its
  * appointment table.

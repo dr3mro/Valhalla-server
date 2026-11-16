@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_clinic_controller.cpp
  * @brief Catch2 unit tests for ClinicController's special dispatch rules.
  * @details ClinicController is not a plain wrapper: for some entity types it

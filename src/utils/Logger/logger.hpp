@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file logger.hpp
  * @brief Drogon/Trantor logging bridged to an asynchronous spdlog logger.
  * @details Declares the Logger class, which owns one asynchronous spdlog logger

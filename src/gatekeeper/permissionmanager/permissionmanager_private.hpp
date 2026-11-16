@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file permissionmanager_private.hpp
  * @brief The behind-the-scenes helper functions used by PermissionManager.
  *        (Originally: "Implementation helpers shared by the PermissionManager

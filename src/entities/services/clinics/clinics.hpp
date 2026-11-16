@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file clinics.hpp
  * @brief Service entity bound to the `clinics` table; the organisation root for
  * clinic cases.

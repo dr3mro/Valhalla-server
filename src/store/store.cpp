@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file store.cpp
  * @brief Defines the Store's single shared registry, lock and generation
  * counter.

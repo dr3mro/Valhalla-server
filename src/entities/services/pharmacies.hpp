@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file pharmacies.hpp
  * @brief Service entity bound to the `pharmacies` table (a pharmacy service
  * provider).

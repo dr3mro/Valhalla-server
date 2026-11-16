@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file asyncdbclient.cpp
  * @brief Implementation for asyncdbclient: Stores the supplied client, sharing
  * ownership with the caller.

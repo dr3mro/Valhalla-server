@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file reports.hpp
  * @brief Case entity for the `patients_reports` table (a patient's report
  * record).

@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file keeprbase.cpp
  * @brief Implementation for keeprbase: Maps a client group to its session table
  * via a fixed allowlist.

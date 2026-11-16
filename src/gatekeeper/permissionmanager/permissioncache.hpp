@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file permissioncache.hpp
  * @brief A short-lived, thread-safe cache of permission data read from the
  * database. (Originally: "Idle-expiry cache for permission lookups, keyed by

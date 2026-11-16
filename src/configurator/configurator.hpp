@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file configurator.hpp
  * @brief Environment-driven configuration sections and typed accessors for the
  * server.

@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file types.hpp
  * @brief Shared value types and their hash specialisations.
  * @details Defines the ColumnInfo struct, which describes one database column,

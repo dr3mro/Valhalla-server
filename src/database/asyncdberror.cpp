@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file asyncdberror.cpp
  * @brief Implementation for asyncdberror.
  * @details This file implements the three error-classification helpers.

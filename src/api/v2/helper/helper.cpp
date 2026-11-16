@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file helper.cpp
  * @brief Implementations of the shared v2 JSON response helpers.
  * @details This file contains the bodies of the Helper class functions declared

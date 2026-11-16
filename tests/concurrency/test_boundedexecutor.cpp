@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_boundedexecutor.cpp
  * @brief Checks the bounded worker pool: inline mode, worker identity, queue
  * limits, work stealing and shutdown.

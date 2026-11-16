@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_cors_tokens.cpp
  * @brief Checks the low-level string helpers used to build safe CORS header
  * values.

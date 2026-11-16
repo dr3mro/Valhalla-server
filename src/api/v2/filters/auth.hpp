@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file auth.hpp
  * @brief Drogon filter that validates the Bearer token and identifies the
  * requester.

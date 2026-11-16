@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file staffcontroller.cpp
  * @brief Definitions for @ref StaffController and its explicit template
  * instantiations.

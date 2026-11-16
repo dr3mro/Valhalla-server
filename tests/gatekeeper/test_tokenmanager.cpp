@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_tokenmanager.cpp
  * @brief Catch2 unit tests and fixtures for tokenmanager. Checks JWT issuance,
  * claim contents, signature verification and token validation.

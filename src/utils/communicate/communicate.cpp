@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file communicate.cpp
  * @brief Implementation for communicate.
  * @details Implements Communicate::sendRequest, which allocates a cURL handle

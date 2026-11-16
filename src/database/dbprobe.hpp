@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file dbprobe.hpp
  * @brief Control-flow signal that a request needs the database and must move
  * off the IO thread.

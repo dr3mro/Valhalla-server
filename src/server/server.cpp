@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file server.cpp
  * @brief Implementation of Server: Drogon configuration, request hooks, and
  * shutdown sequencing.

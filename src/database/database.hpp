@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file database.hpp
  * @brief Owns one synchronous PostgreSQL connection used by the synchronous
  * database path.

@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file asyncresultmapper.cpp
  * @brief Implementation for asyncresultmapper: Converts one row into a JSON
  * object using name- and value-based type inference.

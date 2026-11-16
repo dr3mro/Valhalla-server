@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file clients.hpp
  * @brief REST controller for client accounts (users and providers).
  * @details This file defines the Clients controller, which manages user and

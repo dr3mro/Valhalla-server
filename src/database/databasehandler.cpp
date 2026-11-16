@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file databasehandler.cpp
  * @brief Implementation for databasehandler: Delegates to the pool-taking
  * constructor after resolving the pool from the Store.

@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file asyncsqlbinder.cpp
  * @brief Implementation for asyncsqlbinder: Copies each parameter's bytes into
  * a string, or records a null when pqxx reports no value.

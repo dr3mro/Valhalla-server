@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_filters.cpp
  * @brief Checks that the authentication filter rejects requests that have no
  * usable Bearer token.

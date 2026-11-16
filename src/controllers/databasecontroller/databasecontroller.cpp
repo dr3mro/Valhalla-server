@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file databasecontroller.cpp
  * @brief Blocking (pqxx pool) and coroutine (AsyncDbClient/Drogon)
  * implementations of DatabaseController.

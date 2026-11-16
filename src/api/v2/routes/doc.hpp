@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file doc.hpp
  * @brief Serves the Swagger UI page that documents the API.
  * @details This file defines the Doc controller with a single endpoint. That

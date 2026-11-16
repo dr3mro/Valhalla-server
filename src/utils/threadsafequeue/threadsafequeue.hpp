@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file threadsafequeue.hpp
  * @brief Mutex-protected FIFO queue with non-blocking accessors.
  * @details Defines a template ThreadSafeQueue<T> that wraps std::queue with a

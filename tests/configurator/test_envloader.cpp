@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_envloader.cpp
  * @brief Checks how configuration values are read from environment variables,
  * parsed, and defaulted.

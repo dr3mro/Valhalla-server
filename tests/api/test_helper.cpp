@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_helper.cpp
  * @brief Checks the small response-building helpers that produce the server's
  * standard JSON replies.

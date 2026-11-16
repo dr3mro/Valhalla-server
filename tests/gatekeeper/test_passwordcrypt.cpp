@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_passwordcrypt.cpp
  * @brief Catch2 unit tests and fixtures for passwordcrypt. Checks hashing,
  * verification, salting, boundary inputs and backward compatibility with legacy

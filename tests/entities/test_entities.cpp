@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_entities.cpp
  * @brief Checks the SQL statements and bound parameters produced by the entity
  * and service builders.

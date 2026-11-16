@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file entitycontroller.hpp
  * @brief Generic request-facing CRUDS handler: validates and authorizes a
  * request, then delegates persistence to Controller.

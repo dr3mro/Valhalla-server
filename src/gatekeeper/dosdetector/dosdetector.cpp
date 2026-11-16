@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file dosdetector.cpp
  * @brief Implementation for dosdetector: Production constructor: compiles
  * configured matchers and starts the cleanup thread.

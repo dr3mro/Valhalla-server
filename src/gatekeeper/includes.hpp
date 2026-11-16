@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file includes.hpp
  * @brief Umbrella header that makes every authorizable entity type complete for
  * GateKeeper template instantiations.

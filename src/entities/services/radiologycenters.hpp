@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file radiologycenters.hpp
  * @brief Service entity bound to the `radiologycenters` table (a radiology
  * centre).

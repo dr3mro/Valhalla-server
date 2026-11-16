@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file clientcontroller.cpp
  * @brief Definitions and explicit instantiations for ClientController<User> and
  * ClientController<Provider>.

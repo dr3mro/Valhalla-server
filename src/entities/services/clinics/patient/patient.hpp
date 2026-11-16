@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file patient.hpp
  * @brief Case entity for the `patients` table; the patient record owned by a
  * clinic.

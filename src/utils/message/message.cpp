@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file message.cpp
  * @brief Implementation for message.
  * @details Implements the Message facade. The five severity helpers forward to

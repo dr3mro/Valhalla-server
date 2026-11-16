@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file staff.hpp
  * @brief REST controller for managing staff membership of service entities.
  * @details This file defines the Staff controller, which invites, adds and

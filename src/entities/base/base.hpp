@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file base.hpp
  * @brief Default construction; the interface itself carries no state.
  * @details Base is the shared blueprint (an "abstract base class") for every

@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file envvars.cpp
  * @brief Process-environment get/set wrappers used by configuration sections.
  * @details This file contains the two small functions declared in envvars.hpp.

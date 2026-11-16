@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file cliniccontrollerbase.hpp
  * @brief Abstract contract for clinic-service entity handlers (patients,
  * visits, reports, prescriptions, ...).

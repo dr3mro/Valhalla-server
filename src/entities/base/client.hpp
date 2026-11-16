@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file client.hpp
  * @brief Username column name used by Client::exists() and the client
  * validation layer.

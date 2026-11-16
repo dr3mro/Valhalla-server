@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file main.cpp
  * @brief Process entry point: build the Server and translate uncaught
  * exceptions into a failure exit status.

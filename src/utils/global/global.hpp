@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file global.hpp
  * @brief Macros for uniform critical-error logging and response generation.
  * @details Defines two preprocessor macros. CRITICALMESSAGE builds a detailed

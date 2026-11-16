@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file ratelimit.hpp
  * @brief Drogon filter that screens requests for DoS/rate-limit violations
  * before authentication.

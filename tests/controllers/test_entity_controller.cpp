@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_entity_controller.cpp
  * @brief Catch2 unit tests and fixtures for entity controller.
  * @details These tests exercise all five EntityController<User> operations

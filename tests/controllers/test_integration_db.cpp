@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_integration_db.cpp
  * @brief Catch2 unit tests and fixtures for integration db.
  * @details This file holds the opt-in tests that need a real PostgreSQL server.

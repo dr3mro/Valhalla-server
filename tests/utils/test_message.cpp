@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_message.cpp
  * @brief Catch2 unit tests for Message, the server's logging facade.
  * @details Message offers static functions that log at several severities and

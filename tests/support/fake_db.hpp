@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file fake_db.hpp
  * @brief A fake database controller plus a guard that installs it, so unit
  * tests need no real database.

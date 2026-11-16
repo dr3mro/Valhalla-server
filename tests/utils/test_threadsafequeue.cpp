@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_threadsafequeue.cpp
  * @brief Catch2 unit tests for ThreadSafeQueue, a mutex-protected FIFO
  * container.

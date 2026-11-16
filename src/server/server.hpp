@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file server.hpp
  * @brief Declaration of Server, the application-level owner of Drogon setup and
  * startup/shutdown sequencing.

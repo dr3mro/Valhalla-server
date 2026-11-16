@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file validator.cpp
  * @brief Implementation of the Validator checks declared in validator.hpp.
  * @details This file defines every function the header announces: the create,

@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file permissionmanager_private.cpp
  * @brief The helper functions that turn permission JSON into allow/deny
  * answers. (Originally: "Implementation for permissionmanager_private: Requires

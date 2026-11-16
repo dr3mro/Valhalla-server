@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file laboratories.hpp
  * @brief Service entity bound to the `laboratories` table (a laboratory service
  * provider).

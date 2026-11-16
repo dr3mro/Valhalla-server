@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file defaults.hpp
  * @brief Default values for every environment-driven configuration option.
  * @details This header declares a set of compile-time constants, grouped by

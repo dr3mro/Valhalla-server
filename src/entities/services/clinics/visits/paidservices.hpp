@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file paidservices.hpp
  * @brief Case entity for the `clinics_paidservices` table (a visit's paid
  * services).

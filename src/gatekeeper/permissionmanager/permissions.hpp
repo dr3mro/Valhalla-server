@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file permissions.hpp
  * @brief A small type that stores permissions as on/off bits in one byte.
  *        (Originally: "Holds a bitmask of authorization bits and the helpers to

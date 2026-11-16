@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_blockingpool.cpp
  * @brief Catch2 unit tests and fixtures for blockingpool. Checks the bounded,
  * timeout-based item pool used by the synchronous DB path.

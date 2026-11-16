@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file clinic.hpp
  * @brief Appointment entity bound to the clinics organisation and its
  * appointment table.

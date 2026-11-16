@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file staffcontroller.hpp
  * @brief Implements staff management for one service entity type.
  * @details In plain words, this file defines the class that actually carries

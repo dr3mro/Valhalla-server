@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file databaseschema.hpp
  * @brief Process-wide cache of the database schema used by the validators.
  * @details This header declares the DatabaseSchema class, which owns a single

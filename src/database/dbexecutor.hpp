@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file dbexecutor.hpp
  * @brief BoundedExecutor configured for the synchronous database path.
  * @details This header declares DbExecutor, a thin subclass of BoundedExecutor

@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file validator.hpp
  * @brief Stateless collection of checks applied to client JSON before it
  * reaches the database.

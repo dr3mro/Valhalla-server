@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file jsonhelper.cpp
  * @brief Implementation for jsonhelper.
  * @details Implements the three static helpers declared in jsonhelper.hpp:

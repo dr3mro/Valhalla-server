@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file boundedexecutor.cpp
  * @brief Implementation of BoundedExecutor: per-worker queues, work stealing
  * and shutdown.
@@ -67,8 +62,8 @@ namespace
   // onWorkerThread() answer without a lookup table. thread_local gives each
   // thread its own marker; nullptr means "this thread is not running an
   // executor task".
-  thread_local const BoundedExecutor* currentExecutor =
-      nullptr;  // NOLINT(cppcoreguidelines-avoid-non-const-global-variables)
+  thread_local const BoundedExecutor* currentExecutor =  // NOLINT
+      nullptr;
 }  // namespace
 
 /**
@@ -83,7 +78,7 @@ namespace
  * gives inline mode. queue_max: Shared queue capacity, clamped to at least 1.
  * name: Log label for this pool.
  */
-BoundedExecutor::BoundedExecutor(std::size_t workers,
+BoundedExecutor::BoundedExecutor(std::size_t workers,  // NOLINT
                                  std::size_t queue_max,
                                  std::string name)
     : queue_max_(std::max<std::size_t>(queue_max, 1)), name_(std::move(name))

@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file fake_clock.hpp
  * @brief Fake clock objects that let tests control "now" instead of waiting for
  * real time to pass.

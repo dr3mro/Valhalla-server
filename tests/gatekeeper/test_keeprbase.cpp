@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file test_keeprbase.cpp
  * @brief Catch2 unit tests and fixtures for keeprbase. Checks the shared base
  * class behind the keepers: time formatting, verifier creation, claim decoding

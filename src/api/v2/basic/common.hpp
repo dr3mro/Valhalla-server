@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file common.hpp
  * @brief Safely parse a numeric id query parameter, replying 400 on failure.
  * @details This header holds the small pieces of code that almost every v2

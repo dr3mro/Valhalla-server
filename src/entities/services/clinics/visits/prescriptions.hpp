@@ -1,9 +1,4 @@
 /**
- * Author: Amr Osman
- * Email: dr3mro@gmail.com
- */
-
-/**
  * @file prescriptions.hpp
  * @brief Case entity for the `clinics_prescriptions` table (a visit's
  * prescriptions).
