@@ -28,7 +28,6 @@ class Server
 
    private:
     void        print_banner();
-    static void addCorsHeaders(const drogon::HttpResponsePtr& response);
     static bool isConventionalMethod(drogon::HttpMethod method);
 
     std::shared_ptr<Logger>                            logger_;
