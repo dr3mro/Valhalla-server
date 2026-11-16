@@ -38,6 +38,7 @@ ${C_BOLD}${C_Y}${E_BUILD}Build & run:${C_N}
   ${C_C}build${C_N}            ${C_DIM}Build Debug + Release${C_N}
   ${C_C}build release${C_N}    ${C_DIM}Build Release only${C_N}
   ${C_C}build debug${C_N}      ${C_DIM}Build Debug only${C_N}
+  ${C_C}build openapi${C_N}    ${C_DIM}Regenerate OpenAPI docs${C_N}
   ${C_C}release${C_N}          ${C_DIM}Run Release server (./scripts/run/run_release.sh)${C_N}
   ${C_C}debug${C_N}            ${C_DIM}Run Debug server (./scripts/run/run_debug.sh)${C_N}
   ${C_C}openapi${C_N}          ${C_DIM}Regenerate OpenAPI docs${C_N}
