@@ -15,10 +15,10 @@
 /// map, so a header can never appear twice.
 namespace Cors
 {
-    inline const std::string ALLOWED_METHODS         = "GET, POST, PUT, DELETE, HEAD, OPTIONS";
-    inline const std::string DEFAULT_ALLOWED_HEADERS = "Content-Type, Authorization, Accept, X-Requested-With";
-    inline const std::string EXPOSED_HEADERS         = "Retry-After, Content-Length";
-    inline const std::string PREFLIGHT_MAX_AGE       = "7200";  // browsers cap this at 2 hours anyway
+    inline const std::string ALLOWED_METHODS         = "GET, POST, PUT, DELETE, HEAD, OPTIONS";  // NOLINT(bugprone-throwing-static-initialization)
+    inline const std::string DEFAULT_ALLOWED_HEADERS = "Content-Type, Authorization, Accept, X-Requested-With";  // NOLINT(bugprone-throwing-static-initialization)
+    inline const std::string EXPOSED_HEADERS         = "Retry-After, Content-Length";  // NOLINT(bugprone-throwing-static-initialization)
+    inline const std::string PREFLIGHT_MAX_AGE       = "7200";  // browsers cap this at 2 hours anyway  // NOLINT(bugprone-throwing-static-initialization)
 
     inline void set(const drogon::HttpResponsePtr& resp, const std::string& key, const std::string& value)
     {
@@ -33,8 +33,7 @@ namespace Cors
 
         constexpr bool isTokenChar(char c)
         {
-            return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') ||
-                   tokenPunctuation.find(c) != std::string_view::npos;
+            return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || tokenPunctuation.find(c) != std::string_view::npos;
         }
 
         inline bool asciiLowerEqual(char a, char b)
@@ -43,10 +42,7 @@ namespace Cors
             return lower(a) == lower(b);
         }
 
-        inline bool iequals(std::string_view a, std::string_view b)
-        {
-            return a.size() == b.size() && std::ranges::equal(a, b, asciiLowerEqual);
-        }
+        inline bool iequals(std::string_view a, std::string_view b) { return a.size() == b.size() && std::ranges::equal(a, b, asciiLowerEqual); }
 
         inline std::vector<std::string_view> splitTokens(std::string_view value)
         {
@@ -89,15 +85,7 @@ namespace Cors
             std::string combined;
             if (it != headers.end())
             {
-                bool present = false;
-                for (std::string_view token : splitTokens(it->second))
-                {
-                    if (iequals(token, value))
-                    {
-                        present = true;
-                        break;
-                    }
-                }
+                const bool present = std::ranges::any_of(splitTokens(it->second), [&](std::string_view token) { return iequals(token, value); });
                 if (present)
                 {
                     return;
@@ -124,7 +112,7 @@ namespace Cors
     inline void apply(const drogon::HttpRequestPtr& req, const drogon::HttpResponsePtr& resp)
     {
         const auto& existingHeaders = resp->headers();
-        const auto  originIt        = std::ranges::find_if(existingHeaders, [](const auto& kv) { return detail::iequals(kv.first, "access-control-allow-origin"); });
+        const auto  originIt = std::ranges::find_if(existingHeaders, [](const auto& kv) { return detail::iequals(kv.first, "access-control-allow-origin"); });
         if (originIt != existingHeaders.end() && originIt->second == "*")
         {
             return;
