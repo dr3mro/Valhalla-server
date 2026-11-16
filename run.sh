@@ -174,12 +174,16 @@ server_status() {
 run_all() {
     local profile="release"
     local keep=0
+    local do_unit=1 do_api=1 do_fuzz=1
     for arg in "$@"; do
         case "$arg" in
             --debug) profile="debug" ;;
             --release) profile="release" ;;
             --keep-server) keep=1 ;;
             --no-build) NO_BUILD=1 ;;
+            --no-unit) do_unit=0 ;;
+            --no-api) do_api=0 ;;
+            --no-fuzz) do_fuzz=0 ;;
         esac
     done
     export NO_BUILD="${NO_BUILD:-0}"
@@ -204,16 +208,22 @@ run_all() {
     local -a SUITES=() RESULTS=()
     record() { SUITES+=("$1"); if [[ $2 -eq 0 ]]; then RESULTS+=("${C_G}PASS${C_N}"); else RESULTS+=("${C_R}FAIL${C_N}"); failures=$((failures+1)); fi; }
 
-    step "Unit tests"
-    ctest --test-dir "$ROOT/build/Debug" --output-on-failure >/tmp/run_unit.log 2>&1
-    unit_rc=$?
-    if [[ $unit_rc -eq 0 ]]; then record "unit tests" 0; else record "unit tests" 1; tail -20 /tmp/run_unit.log; fi
+    if [[ $do_unit -eq 1 ]]; then
+        step "Unit tests"
+        ctest --test-dir "$ROOT/build/Debug" --output-on-failure >/tmp/run_unit.log 2>&1
+        unit_rc=$?
+        if [[ $unit_rc -eq 0 ]]; then record "unit tests" 0; else record "unit tests" 1; tail -20 /tmp/run_unit.log; fi
+    fi
 
-    step "API tests"
-    if BASE_URL="http://127.0.0.1:8080/api/v2" "$ROOT/scripts/test/test_api.sh" >/tmp/run_api.log 2>&1; then record "api tests" 0; else record "api tests" 1; fi
+    if [[ $do_api -eq 1 ]]; then
+        step "API tests"
+        if BASE_URL="http://127.0.0.1:8080/api/v2" "$ROOT/scripts/test/test_api.sh" >/tmp/run_api.log 2>&1; then record "api tests" 0; else record "api tests" 1; fi
+    fi
 
-    step "Fuzz tests"
-    if BASE_URL="http://127.0.0.1:8080/api/v2" "$ROOT/scripts/test/fuzz_auth.sh" >/tmp/run_fuzz.log 2>&1; then record "fuzz tests" 0; else record "fuzz tests" 1; fi
+    if [[ $do_fuzz -eq 1 ]]; then
+        step "Fuzz tests"
+        if BASE_URL="http://127.0.0.1:8080/api/v2" "$ROOT/scripts/test/fuzz_auth.sh" >/tmp/run_fuzz.log 2>&1; then record "fuzz tests" 0; else record "fuzz tests" 1; fi
+    fi
 
     if [[ $keep -eq 0 ]]; then
         server_stop
