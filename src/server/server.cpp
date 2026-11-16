@@ -23,13 +23,13 @@
 #include "configurator/configurator.hpp"
 #include "database/dbexecutor.hpp"
 #include "gatekeeper/passwordcrypt/passwordworker.hpp"
+#include "server/cors.hpp"
 #include "server/extras/banner.hpp"
 #include "store/store.hpp"
 #include "utils/Logger/logger.hpp"
 #include "utils/jsonhelper/jsonhelper.hpp"
 #include "utils/message/message.hpp"
 #include "validator/databaseschema/databaseschema.hpp"
-extern const char* const VALHALLA_GIT_TAG;
 
 Server::Server()
     : logger_(Store::getObject<Logger>()),
@@ -60,15 +60,13 @@ int Server::run()
                     {
                         auto resp = drogon::HttpResponse::newHttpResponse();
                         resp->setStatusCode(drogon::k204NoContent);
-                        addCorsHeaders(resp);
                         std::move(callback)(resp);
                     }
                     else if (!isConventionalMethod(req->method()))
                     {
                         auto resp = drogon::HttpResponse::newHttpResponse();
                         resp->setStatusCode(drogon::k405MethodNotAllowed);
-                        addCorsHeaders(resp);
-                        resp->addHeader("Allow", "GET, POST, PUT, DELETE, OPTIONS");
+                        resp->addHeader("Allow", Cors::allowedMethods());
                         std::move(callback)(resp);
                     }
                     else
@@ -76,7 +74,8 @@ int Server::run()
                         std::move(chainedcallback)();
                     }
                 })
-            .registerHttpResponseCreationAdvice([](const drogon::HttpResponsePtr& resp) { addCorsHeaders(resp); })
+            // The only place CORS headers are written: runs once per response, after every filter and pre-routing reply.
+            .registerPreSendingAdvice([](const drogon::HttpRequestPtr& req, const drogon::HttpResponsePtr& resp) { Cors::apply(req, resp); })
             .setCustom404Page(drogon::HttpResponse::newHttpJsonResponse(api::v2::JsonHelper::jsonify("Endpoint not found.")))
             .run();
 
@@ -114,16 +113,6 @@ void Server::print_banner()
     Banner::print_line();
 
     std::flush(std::cout);
-}
-
-void Server::addCorsHeaders(const drogon::HttpResponsePtr& response)
-{
-    response->addHeader("Access-Control-Allow-Origin", "*");
-    response->addHeader("Allow", "GET, POST, PUT, DELETE, HEAD, OPTIONS");
-    response->addHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    // response->addHeader("Access-Control-Allow-Credentials", "true");
-    response->addHeader("Access-Control-Max-Age", "86400");
-    response->addHeader("X-Powered-By", "Valhalla-Team");
 }
 
 bool Server::isConventionalMethod(drogon::HttpMethod method)

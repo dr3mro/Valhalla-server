@@ -972,7 +972,82 @@ test_api.sh             # End-to-end API test suite against a running server
 fuzz_auth.sh, sqlmap_test.sh, schemathesis_test.sh  # Security and fuzz testing helpers
 ```
 
+## Front-end development (CORS and Docker)
+
+The API listens on `http://localhost:8080`. CORS is open: `Access-Control-Allow-Origin: *`, no credentials, methods `GET, POST, PUT, DELETE, HEAD, OPTIONS`, request headers `Content-Type, Authorization, Accept, X-Requested-With` (a preflight echoes `Access-Control-Request-Headers`), and exposed response headers `Retry-After, Content-Length`. Preflight responses are cached for 7200 seconds.
+
+In Docker bridge mode every request arrives from one gateway IP, so the rate limiter treats all front-end traffic as a single client. On native Linux Docker that address is often `172.17.0.1`, but on Docker Desktop for macOS or Windows it is usually different. There is no existing log line that prints the peer IP. Without code changes, use one of these instead: on native Linux, `docker network inspect bridge` and its `Gateway`; run `docker exec <container> sh -c 'ss -tn'` or read `/proc/net/tcp` inside the container while a host `curl` is in flight to see the peer address; or use `docker logs <container>` after a request. On Docker Desktop for macOS or Windows the address is usually not the bridge gateway. (Docker is not installed on the development machine used for this change, so these steps are unverified here.) Keep the proposal for a `Message::DebugMessage` in the `RateLimit` filter as a PLAN.md item; do not add a debug endpoint or new logging in this change.
+
+Whitelist entries are unanchored regular expressions, so `172.17.0.1` also matches `172.17.0.10` through `172.17.0.199`. To whitelist only the gateway, anchor the pattern. In a shell or `--env-file` value the backslashes stay literal:
+
+```
+WHITELIST='^172\.17\.0\.1$'
+```
+
+In a dotenv or compose file the same value is written without extra escaping:
+
+```
+WHITELIST=^172\.17\.0\.1$
+```
+
+Raise the dev rate limits as well (`MAX_REQUESTS`, `MAX_FPS`) if React StrictMode double requests trip the limiter. A commented example for a dev `.env` (no secrets):
+
+```
+# WHITELIST=^172\.17\.0\.1$
+# MAX_REQUESTS=1000000
+# MAX_FPS=1000000
+```
+
+Put these settings where the container or server actually reads them: a project `.env` for the native binary, `--env-file FILE` / `VALHALLA_ENV_FILE` for `valhalla.sh`, or `-e` / `--env-file` for `docker run`. `docker/entrypoint.sh` reads them from the process environment.
+
+`WHITELIST` disables DoS checks for matching IPs, so it is for development only. Never whitelist a broad pattern in production.
+
+### Browser simulation
+`./cors_react_check.sh` simulates what a browser does before and after cross-origin calls from a React dev server. It runs on macOS's default bash 3.2 (arrays and `read -a` are supported there) and uses only POSIX-ish `sed`, `awk`, `tr` and `grep` calls.
+
+```
+./cors_react_check.sh http://localhost:8080
+./cors_react_check.sh --credentials http://localhost:8080   # expected to fail: wildcard Allow-Origin is rejected with credentials
+cd tools/cors && python3 -m http.server 3000
+# then open http://localhost:3000/browser_check.html (or use port 5173)
+```
+
+Headless Chromium against the page reported all 7 calls as PASS (HTTP 400/401/200, nothing blocked by the browser). The `--credentials` variant is expected to fail with the wildcard-origin message; that is the documented limitation, not a regression.
+
+To run `./cors_test.sh --strict` against cases that need low DoS thresholds, start separate server instances on different ports (a banned IP stays banned, so 429 and 503 cannot both be provoked on the same instance):
+
+```
+# 403 case
+ENV_FILE=none MAX_REQUESTS=1000000 MAX_FPS=1000000 RL_DURATION=1 BAN_DURATION=1 \
+  BLACKLIST='^127\.0\.0\.1$' WHITELIST='' SERVER_PORT=8099 ./run_release.sh
+
+# 429 case
+ENV_FILE=none MAX_REQUESTS=1000000 MAX_FPS=5 RL_DURATION=5 BAN_DURATION=5 \
+  WHITELIST='' BLACKLIST='' SERVER_PORT=8100 ./run_release.sh
+
+# 503 case
+ENV_FILE=none MAX_REQUESTS=5 MAX_FPS=1000000 RL_DURATION=5 BAN_DURATION=5 \
+  WHITELIST='' BLACKLIST='' SERVER_PORT=8101 ./run_release.sh
+```
+
+`run_release.sh` loads `ENV_FILE` and exports every value from it, so settings in the file override the shell environment. Set `ENV_FILE=none` to use the command-line variables, or create one file per instance with a heredoc in a temporary directory (`tmpdir=$(mktemp -d)`).
+
+Then run the matching case against each instance:
+
+```
+./cors_test.sh --case 403 --strict http://localhost:8099
+./cors_test.sh --case 429 --strict http://localhost:8100
+./cors_test.sh --case 503 --strict http://localhost:8101
+./cors_test.sh --case basic --strict http://localhost:8080
+```
+
+Each instance proves its targeted case. The other cases are skipped there by design.
+
 ## Development
+
+### Known limitation: malformed requests (HTTP 400)
+
+Drogon 1.9.14 writes the response for a malformed request line (for example `GET /bad http/1.1`) directly to the connection during parsing. That path bypasses both the custom error handler and the pre-sending advice, so these 400 responses contain no CORS headers. No supported hook adds headers there in this Drogon version, so front-end code that triggers such an error will still see a browser CORS failure.
 
 - **Code style:** enforced via `.clang-format`; static analysis configured through `.clang-tidy` and `cppcheck.supp`.
 - **Editor support:** `.clangd` provides LSP configuration; `.vscode/` and `.zed/` settings are included. `CMAKE_EXPORT_COMPILE_COMMANDS` is on, so `compile_commands.json` is generated for tooling.
