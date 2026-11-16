@@ -1800,9 +1800,10 @@ create_container() {
   local server_port server_host
   server_port="$(env_get SERVER_PORT || echo 8080)"
   server_host="$(env_get SERVER_HOST || echo 0.0.0.0)"
-  # By default, publish the container on the same port the server listens on.
+  # By default, publish the container on VALHALLA_PORT from the env file (if set),
+  # otherwise on the same port the server listens on.
   if [[ "${PORT_EXPLICIT:-0}" != "1" ]]; then
-    PORT="$server_port"
+    PORT="$(env_get VALHALLA_PORT || echo "$server_port")"
   fi
   case "$server_host" in
     127.* | localhost | ::1)
