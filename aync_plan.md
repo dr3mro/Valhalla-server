@@ -33,8 +33,8 @@ Status legend: `[ ]` to do, `[x]` done. Items marked **(manual)** are done by th
 
 - [x] Enable `drogon/*:with_postgres=True` in `conanfile.txt` (keep `with_boost=False`) and confirm a clean build.
 - [x] Add `DB_ASYNC` (default `false`) to `src/configurator/configurator.hpp` and `defaults.hpp`; document it in the `valhalla.sh` variable list.
-- [ ] Create a `drogon::orm::DbClient` (PostgreSQL) from the existing `DB_*` settings, behind `DB_ASYNC`, sized from `DB_MAX_CONN`.
-- [ ] Decide how the client is registered in `Store` and how it is replaced in tests (fake client).
+- [x] Create a `drogon::orm::DbClient` (PostgreSQL) from the existing `DB_*` settings, behind `DB_ASYNC`, sized from `DB_MAX_CONN`.
+- [x] Decide how the client is registered in `Store` and how it is replaced in tests (fake client).
 
 ## Phase 2: building blocks (no route changes yet)
 
