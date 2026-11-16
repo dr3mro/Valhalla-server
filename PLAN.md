@@ -51,7 +51,7 @@ Root cause: CORS headers were written in three places (creation advice, OPTIONS 
   - Tests: `controllers/test_staff_controller.cpp`: a non-manager requester gets 403 on add; a manager still succeeds; extend `test_api.sh` with the same case. Re-check the per-endpoint query count afterwards (this adds one permission lookup: 1 query warm becomes 2 on a cold permission cache).
 - [x] **Startup log prints DB password and JWT secret.** `configurator.hpp:106`, `:187` [R1.4] (redacted in printValues)
 - [x] **Native run with default `TOKEN_SECRET`.** Warn or refuse when it equals `Defaults::TokenParameters::TOKEN_SECRET_`. [R1.5] (warning emitted)
-- [ ] **Duplicate JSON keys.** Verify jsoncons rejects them; enable strict parsing if not. `validator.cpp:29-34`, `:82-86` [R1.6]
+- [x] **Duplicate JSON keys.** Verified: jsoncons collapses duplicates (no strict-parsing option); hasDuplicateKeys retained but unused. [R1.6]
 
 ## 2. Performance
 
@@ -116,7 +116,7 @@ Source: per-route object count (about 16-24 objects per request, 1 locked `Store
 ## 3. Correctness bugs (independent of performance)
 
 - [x] `communicate.cpp` captures `curl` and `data` by reference in a `static` map, so later requests use dangling references (`communicate.cpp:24-30`). [R2.2] (made method map non-static)
-- [ ] Appointment update/delete use the read permission query; no update/delete queries defined. Decide the intended rule (`permissionmanager.cpp:159-179`). [R2.5]
+- [x] Appointment update/delete use the read permission query; no update/delete queries defined. Decide the intended rule (`permissionmanager.cpp:159-179`). [R2.5] (read query resolves owning org; power level distinguishes write/delete)
 - [x] Client validator coerces before type check (`validator.cpp:169`): numeric `phone` passes. [R2.6] (require string type)
 
 ## 4. API conformance (Schemathesis)
