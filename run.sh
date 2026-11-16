@@ -233,8 +233,96 @@ cmd="${1:-help}"
 shift || true
 
 case "$cmd" in
-    help|-h|--help) usage ;;
+    completion)
+        shell="${1:-bash}"
+        case "$shell" in
+            bash)
+                cat <<'BASH_COMPLETION'
+_run_sh() {
+    local cur
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    local commands="build release debug configure clean server tests api fuzz sqlmap schemathesis cors bench lint db-init all conan list help completion"
+    if [[ $COMP_CWORD -eq 1 ]]; then
+        COMPREPLY=( $(compgen -W "$commands" -- "$cur") )
+        return 0
+    fi
+    case "${COMP_WORDS[1]}" in
+        build) COMPREPLY=( $(compgen -W "release debug openapi all" -- "$cur") ) ;;
+        configure|clean) COMPREPLY=( $(compgen -W "release debug both all" -- "$cur") ) ;;
+        tests|unit) COMPREPLY=( $(compgen -W "debug release both all" -- "$cur") ) ;;
+        server)
+            if [[ $COMP_CWORD -eq 2 ]]; then
+                COMPREPLY=( $(compgen -W "start stop status restart peek" -- "$cur") )
+            elif [[ "${COMP_WORDS[2]}" == "start" || "${COMP_WORDS[2]}" == "restart" ]]; then
+                COMPREPLY=( $(compgen -W "release debug" -- "$cur") )
+            fi
+            ;;
+        conan)
+            if [[ $COMP_CWORD -eq 2 ]]; then
+                COMPREPLY=( $(compgen -W "init install" -- "$cur") )
+            elif [[ "${COMP_WORDS[2]}" == "install" ]]; then
+                COMPREPLY=( $(compgen -W "release debug both all" -- "$cur") )
+            fi
+            ;;
+    esac
+    return 0
+}
+complete -F _run_sh run.sh
+BASH_COMPLETION
+                ;;
+            zsh)
+                cat <<'ZSH_COMPLETION'
+#compdef run.sh
+_run_sh() {
+    local -a commands
+    commands=(
+        'build:Build Debug+Release'
+        'release:Run Release server'
+        'debug:Run Debug server'
+        'configure:Configure builds'
+        'clean:Clean builds'
+        'server:Server lifecycle'
+        'tests:Run unit tests'
+        'api:Run API tests'
+        'fuzz:Run fuzz_auth'
+        'sqlmap:Run sqlmap tests'
+        'schemathesis:Run schemathesis'
+        'cors:Run CORS tests'
+        'bench:Run perf baseline'
+        'lint:Run shell lint'
+        'db-init:Init database'
+        'all:Build, test, stop'
+        'conan:Conan helpers'
+        'list:List commands'
+        'help:Show help'
+        'completion:Print completion script'
+    )
+    if (( CURRENT == 2 )); then
+        _describe 'command' commands
+        return
+    fi
+    case "$words[2]" in
+        build) compadd release debug openapi all ;;
+        configure|clean) compadd release debug both all ;;
+        tests|unit) compadd debug release both all ;;
+        server)
+            if (( CURRENT == 3 )); then compadd start stop status restart peek
+            elif [[ "$words[3]" == (start|restart) ]]; then compadd release debug
+            fi ;;
+        conan)
+            if (( CURRENT == 3 )); then compadd init install
+            elif [[ "$words[3]" == install ]]; then compadd release debug both all
+            fi ;;
+    esac
+}
+compdef _run_sh run.sh
+ZSH_COMPLETION
+                ;;
+            *) err "Unknown shell: $shell (use bash or zsh)"; exit 2 ;;
+        esac
+        ;;
     list) list_cmds ;;
+    help|-h|--help) usage ;;
     conan)
         sub="${1:-}"; shift || true
         case "$sub" in
