@@ -11,9 +11,9 @@ else
 fi
 
 if [[ ( -t 1 || "${FORCE_EMOJI:-0}" == "1" ) && "${VALHALLA_NO_EMOJI:-0}" != "1" ]]; then
-    E_ROCKET="⚡"; E_TEST="🔬"; E_LINT="🧽"; E_BUILD="🛠️"; E_DB="🗃️"
-    E_SERVER="📡"; E_STOP="⏹️"; E_OK="🟢"; E_FAIL="🔴"; E_WARN="🟡"
-    E_INFO="🔵"; E_RUN=" (▶️)"
+    E_ROCKET="🎯"; E_TEST="🧩"; E_LINT="🧼"; E_BUILD="🔧"; E_DB="📂"
+    E_SERVER="🛰️"; E_STOP="⏹️"; E_OK="✔️"; E_FAIL="✖️"; E_WARN="⚡"
+    E_INFO="📌"; E_RUN=" (▶️)"
 else
     E_ROCKET=""; E_TEST=""; E_LINT=""; E_BUILD=""; E_DB=""
     E_SERVER=""; E_STOP=""; E_OK=""; E_FAIL=""; E_WARN=""
