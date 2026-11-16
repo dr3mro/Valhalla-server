@@ -77,10 +77,10 @@ Route: `POST /clients/providers/read`, only when `DB_ASYNC=true`.
 
 ## Phase 5: cleanup
 
-- [ ] Make `DB_ASYNC=true` the default; keep `false` available for one release.
-- [ ] Remove the DB side of `BoundedExecutor` (`DbExecutor`), `DbProbe`, `WouldBlock`, `DB_WORKERS`, `DB_QUEUE_MAX`, `DB_IO_FASTPATH`. Keep `PasswordWorker`.
-- [ ] Remove the sync `DatabaseController` / `Database` / `DatabaseConnectionPool` / `WatchDog` paths that are no longer used, and the libpqxx dependency if nothing else needs it.
-- [ ] Update `README.md`, `PLAN.md`, `docs/` and `valhalla.sh` (variables, defaults, help text).
+- [x] Make `DB_ASYNC=true` the default; keep `false` available for one release. Maintainer decision: the sync fallback (DB executor + pool) stays untouched for this release; the removal items below are deferred to the next release.
+- [ ] Remove the DB side of `BoundedExecutor` (`DbExecutor`), `DbProbe`, `WouldBlock`, `DB_WORKERS`, `DB_QUEUE_MAX`, `DB_IO_FASTPATH`. Keep `PasswordWorker`. (Deferred to the next release with the maintainer's approval: removing it would degrade the retained `DB_ASYNC=false` fallback to inline blocking.)
+- [ ] Remove the sync `DatabaseController` / `Database` / `DatabaseConnectionPool` / `WatchDog` paths that are no longer used, and the libpqxx dependency if nothing else needs it. (Deferred with the fallback; libpqxx also still serves the boot-time schema loader.)
+- [x] Update `README.md`, `PLAN.md`, `docs/` and `valhalla.sh` (variables, defaults, help text).
 
 ## Phase 6: verification and release
 
