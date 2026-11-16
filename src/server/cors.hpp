@@ -6,8 +6,11 @@
 
 #include <string>
 #include <string_view>
+#include <vector>
 
+#include "configurator/configurator.hpp"
 #include "server/cors_tokens.hpp"
+#include "store/store.hpp"
 
 /// CORS response headers, written in exactly one place (the pre-sending advice in server.cpp).
 /// Drogon stores headers in a map keyed by the lower-cased name, and addHeader replaces an
@@ -50,6 +53,26 @@ namespace Cors
         }
     }
 
+    inline std::vector<std::string> splitOrigins(const std::string& value)
+    {
+        std::vector<std::string> out;
+        std::string              cur;
+        for (char c : value)
+        {
+            if (c == ',')
+            {
+                if (!cur.empty()) out.push_back(cur);
+                cur.clear();
+            }
+            else if (c != ' ')
+            {
+                cur.push_back(c);
+            }
+        }
+        if (!cur.empty()) out.push_back(cur);
+        return out;
+    }
+
     inline void apply(const drogon::HttpRequestPtr& req, const drogon::HttpResponsePtr& resp)
     {
         static const std::string originKey = "access-control-allow-origin";
@@ -60,7 +83,38 @@ namespace Cors
             return;
         }
 
-        resp->addHeader("Access-Control-Allow-Origin", "*");
+        const std::string allowed = Store::cachedObject<Configurator>()->get<Configurator::FrontEndConfig>().cors_allowed_origins;
+        const std::string requestOrigin = req->getHeader("Origin");
+
+        bool useCredentials = false;
+        std::string allowOrigin = "*";
+        if (allowed != "*")
+        {
+            auto origins = splitOrigins(allowed);
+            for (const auto& o : origins)
+            {
+                if (!requestOrigin.empty() && o == requestOrigin)
+                {
+                    allowOrigin = requestOrigin;
+                    useCredentials = true;
+                    break;
+                }
+            }
+            if (allowOrigin == "*" && !origins.empty())
+            {
+                allowOrigin = origins.front();
+            }
+        }
+
+        if (originIt == headers.end() || originIt->second != allowOrigin)
+        {
+            resp->addHeader("Access-Control-Allow-Origin", allowOrigin);
+        }
+        if (useCredentials)
+        {
+            resp->addHeader("Access-Control-Allow-Credentials", "true");
+            addToVary(resp, "Origin");
+        }
         resp->addHeader("Access-Control-Allow-Methods", allowedMethods());
         resp->addHeader("Access-Control-Expose-Headers", exposedHeaders());
 

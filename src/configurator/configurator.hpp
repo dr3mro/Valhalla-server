@@ -206,11 +206,13 @@ class Configurator
         uint16_t    port;
         std::string host;
         std::string invite_path;
+        std::string cors_allowed_origins;
 
         FrontEndConfig()
             : port(getEnvironmentVariable("FRONTEND_PORT", Defaults::FrontEnd::PORT_)),
               host(getEnvironmentVariable("FRONTEND_HOST", Defaults::FrontEnd::HOST_)),
-              invite_path(getEnvironmentVariable("FRONTEND_INVITE_PATH", Defaults::FrontEnd::INVITE_PATH_))
+              invite_path(getEnvironmentVariable("FRONTEND_INVITE_PATH", Defaults::FrontEnd::INVITE_PATH_)),
+              cors_allowed_origins(getEnvironmentVariable("CORS_ALLOWED_ORIGINS", std::string("*")))
         {
         }
 
@@ -222,6 +224,7 @@ class Configurator
             Message::ConfMessage(fmt::format("Frontend host: {}", host));
             Message::ConfMessage(fmt::format("Frontend port: {}", port));
             Message::ConfMessage(fmt::format("Frontend invite path: {}", invite_path));
+            Message::ConfMessage(fmt::format("CORS allowed origins: {}", cors_allowed_origins));
         }
     };
 
