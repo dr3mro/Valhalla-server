@@ -174,7 +174,7 @@ server_status() {
 run_all() {
     local profile="release"
     local keep=0
-    local do_unit=1 do_api=1 do_fuzz=1
+    local do_unit=1 do_api=1 do_fuzz=1 do_cors=1
     for arg in "$@"; do
         case "$arg" in
             --debug) profile="debug" ;;
@@ -184,6 +184,7 @@ run_all() {
             --no-unit) do_unit=0 ;;
             --no-api) do_api=0 ;;
             --no-fuzz) do_fuzz=0 ;;
+            --no-cors) do_cors=0 ;;
         esac
     done
     export NO_BUILD="${NO_BUILD:-0}"
@@ -217,12 +218,20 @@ run_all() {
 
     if [[ $do_api -eq 1 ]]; then
         step "API tests"
-        if BASE_URL="http://127.0.0.1:8080/api/v2" "$ROOT/scripts/test/test_api.sh" >/tmp/run_api.log 2>&1; then record "api tests" 0; else record "api tests" 1; fi
+        BASE_URL="http://127.0.0.1:8080/api/v2" "$ROOT/scripts/test/test_api.sh" 2>&1 | tee /tmp/run_api.log
+        if [[ ${PIPESTATUS[0]} -eq 0 ]]; then record "api tests" 0; else record "api tests" 1; fi
     fi
 
     if [[ $do_fuzz -eq 1 ]]; then
         step "Fuzz tests"
-        if BASE_URL="http://127.0.0.1:8080/api/v2" "$ROOT/scripts/test/fuzz_auth.sh" >/tmp/run_fuzz.log 2>&1; then record "fuzz tests" 0; else record "fuzz tests" 1; fi
+        BASE_URL="http://127.0.0.1:8080/api/v2" "$ROOT/scripts/test/fuzz_auth.sh" 2>&1 | tee /tmp/run_fuzz.log
+        if [[ ${PIPESTATUS[0]} -eq 0 ]]; then record "fuzz tests" 0; else record "fuzz tests" 1; fi
+    fi
+
+    if [[ $do_cors -eq 1 ]]; then
+        step "CORS tests"
+        "$ROOT/scripts/test/cors_test.sh" "http://localhost:8080" 2>&1 | tee /tmp/run_cors.log
+        if [[ ${PIPESTATUS[0]} -eq 0 ]]; then record "cors tests" 0; else record "cors tests" 1; fi
     fi
 
     if [[ $keep -eq 0 ]]; then
