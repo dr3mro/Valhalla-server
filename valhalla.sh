@@ -251,7 +251,7 @@ esac
 IMAGE_REPO="${VALHALLA_IMAGE:-docker.io/dr3mro/valhalla-server-run}"
 LOCAL_REPO="valhalla-server-run"
 NAME="${VALHALLA_NAME:-valhalla}"
-PORT="${VALHALLA_PORT:-8080}"
+PORT="${VALHALLA_PORT:-VALHALLA_PORT}"
 PORT_EXPLICIT="${VALHALLA_PORT:+1}" # set: --port / VALHALLA_PORT wins over the container's port
 CPUS="${VALHALLA_CPUS:-4}"
 MEMORY_GB="${VALHALLA_MEMORY:-1}"
