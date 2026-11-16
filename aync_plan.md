@@ -58,35 +58,35 @@ Route: `POST /clients/providers/read`, only when `DB_ASYNC=true`.
 - [x] Permission check (`PermissionManager` / `PermissionCache` miss path) as a coroutine.
 - [x] The read itself as a coroutine; send the response from the IO loop with no hand-off.
 - [x] Keep `PasswordWorker` for hashing and make sure its completion is posted back to the IO loop.
-- [x] `api_tests` payloads give byte-identical bodies and status codes for sync and async.
+- [ ] `api_tests` payloads give byte-identical bodies and status codes for sync and async.
 
 ## Phase 4: gatekeeper and remaining routes
 
-- [x] Session and token validation (`SessionManager`, `GateKeeper::isAuthenticationValid`) and the auth filter (`src/api/v2/filters/auth.hpp`).
+- [ ] Session and token validation (`SessionManager`, `GateKeeper::isAuthenticationValid`) and the auth filter (`src/api/v2/filters/auth.hpp`).
 - [x] Login flow: `fetchPasswordHash` async, `completeLogin` on `PasswordWorker`, result posted back to the IO loop.
-- [x] All read routes (users, providers, clinics, services, staff, appointments, search, visits, get-services).
-- [x] Write routes: create / update / delete / suspend / unsuspend, with `pqxx::work` transactions replaced by Drogon transactions.
+- [ ] All read routes (users, providers, clinics, services, staff, appointments, search, visits, get-services).
+- [ ] Write routes: create / update / delete / suspend / unsuspend, with `pqxx::work` transactions replaced by Drogon transactions.
 - [x] `getNextID` and other sequence calls (none exist in this codebase).
-- [x] Synchronous DB calls inside entities: `checkItemExists` in `src/entities/base/client.hpp` (username check) and `src/entities/base/entity.hpp` (id check) run during validation/construction, so they need an async validation step or a cached/inlined alternative.
+- [ ] Synchronous DB calls inside entities: `checkItemExists` in `src/entities/base/client.hpp` (username check) and `src/entities/base/entity.hpp` (id check) run during validation/construction, so they need an async validation step or a cached/inlined alternative.
 - [x] Entity files (`src/entities/**`) are almost all pure SQL/params builders (`getSql*Statement`, `getPermissionsQueryFor*`); they need no async change, only to keep compiling against the new params type. The only real DB calls in entities are the two `checkItemExists` calls above.
-- [x] Gatekeeper DB code, the full list of real call sites: `keeprbase.cpp` (`getPasswordHashForUserName` x2, `setNowLoginTimeGetLastLogoutTime`, `executeQuery` x2, `executeReadQuery`, `doReadQuery`), `permissionmanager_private.hpp` (`getPermissionsOfEntity` -> `getPermissions`, used by about 19 `PermissionManager` methods in `permissionmanager.cpp`), `sessionmanager.cpp` (login / timestamps), and `PermissionCache` invalidation after writes.
+- [ ] Gatekeeper DB code, the full list of real call sites: `keeprbase.cpp` (`getPasswordHashForUserName` x2, `setNowLoginTimeGetLastLogoutTime`, `executeQuery` x2, `executeReadQuery`, `doReadQuery`), `permissionmanager_private.hpp` (`getPermissionsOfEntity` -> `getPermissions`, used by about 19 `PermissionManager` methods in `permissionmanager.cpp`), `sessionmanager.cpp` (login / timestamps), and `PermissionCache` invalidation after writes.
 - [x] Controller layer: `controllers/base/controller/controller.hpp` (`cruds`, `Search`, `GetServices`, `GetVisits` call `executeQuery`, `executeReadQuery` and `executeSearchQuery`) is the single place all CRUD routes go through; convert it once.
 - [x] Schema loading at boot (`src/validator/databaseschema/databaseschema.cpp`: `getTableSchema`, `getAllTables`): stays on a small synchronous pqxx connection; libpqxx remains a dependency.
-- [x] Graceful shutdown: close the `DbClient` cleanly (replaces the executor shutdown in `Server::run()`).
-- [x] Container image: the image runs its own Postgres and overrides `DB_HOST` and `DB_SSL`; confirm the `DbClient` honours the same overrides and `DB_ACQUIRE_TIMEOUT_MS` behaviour.
+- [ ] Graceful shutdown: close the `DbClient` cleanly (replaces the executor shutdown in `Server::run()`).
+- [ ] Container image: the image runs its own Postgres and overrides `DB_HOST` and `DB_SSL`; confirm the `DbClient` honours the same overrides and `DB_ACQUIRE_TIMEOUT_MS` behaviour.
 
 ## Phase 5: cleanup
 
-- [x] Make `DB_ASYNC=true` the default; keep `false` available for one release.
-- [x] Remove the DB side of `BoundedExecutor` (`DbExecutor`), `DbProbe`, `WouldBlock`, `DB_WORKERS`, `DB_QUEUE_MAX`, `DB_IO_FASTPATH`. Keep `PasswordWorker`.
-- [x] Remove the sync `DatabaseController` / `Database` / `DatabaseConnectionPool` / `WatchDog` paths that are no longer used, and the libpqxx dependency if nothing else needs it.
-- [x] Update `README.md`, `PLAN.md`, `docs/` and `valhalla.sh` (variables, defaults, help text).
+- [ ] Make `DB_ASYNC=true` the default; keep `false` available for one release.
+- [ ] Remove the DB side of `BoundedExecutor` (`DbExecutor`), `DbProbe`, `WouldBlock`, `DB_WORKERS`, `DB_QUEUE_MAX`, `DB_IO_FASTPATH`. Keep `PasswordWorker`.
+- [ ] Remove the sync `DatabaseController` / `Database` / `DatabaseConnectionPool` / `WatchDog` paths that are no longer used, and the libpqxx dependency if nothing else needs it.
+- [ ] Update `README.md`, `PLAN.md`, `docs/` and `valhalla.sh` (variables, defaults, help text).
 
 ## Phase 6: verification and release
 
-- [x] Redesign the test seam: `tests/support/fake_db.hpp` currently fakes the sync `DatabaseController` virtuals; add a fake for the async client.
-- [x] Catch2 suite passes; `api_tests` pass; `schemathesis_test.sh`, `sqlmap_test.sh`, `fuzz_auth.sh`, `cors_test.sh` pass.
-- [x] Lint and format pass (`tools/lint_sh.sh`, clang-format, clang-tidy, cppcheck).
+- [ ] Redesign the test seam: `tests/support/fake_db.hpp` currently fakes the sync `DatabaseController` virtuals; add a fake for the async client.
+- [ ] Catch2 suite passes; `api_tests` pass; `schemathesis_test.sh`, `sqlmap_test.sh`, `fuzz_auth.sh`, `cors_test.sh` pass.
+- [ ] Lint and format pass (`tools/lint_sh.sh`, clang-format, clang-tidy, cppcheck).
 
 ## Risks
 
