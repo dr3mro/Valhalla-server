@@ -39,3 +39,15 @@ TEST_CASE("AsyncDbClient connection string carries the DB_* settings", "[databas
     CHECK(text.find("user=app") != std::string::npos);
     CHECK(text.find("password=secret") != std::string::npos);
 }
+
+TEST_CASE("AsyncDbClient connection string honours DB_SSL", "[database][asyncdb]")
+{
+    Configurator::DatabaseConfig config;
+    config.host = "db.example";
+    config.ssl  = true;
+
+    CHECK(AsyncDbClient::connectionString(config).find("sslmode=require") != std::string::npos);
+
+    config.ssl = false;
+    CHECK(AsyncDbClient::connectionString(config).find("sslmode=disable") != std::string::npos);
+}
