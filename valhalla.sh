@@ -251,8 +251,9 @@ esac
 IMAGE_REPO="${VALHALLA_IMAGE:-docker.io/dr3mro/valhalla-server-run}"
 LOCAL_REPO="valhalla-server-run"
 NAME="${VALHALLA_NAME:-valhalla}"
-PORT="${VALHALLA_PORT:-8080}"
-PORT_EXPLICIT="${VALHALLA_PORT:+1}" # set: --port / VALHALLA_PORT wins over the container's port
+PORT="${CONTAINER_PORT:-${VALHALLA_PORT:-8080}}"
+PORT_EXPLICIT="${CONTAINER_PORT:+1}" # set: --port / CONTAINER_PORT wins over the container's port
+[[ -z "$PORT_EXPLICIT" ]] && PORT_EXPLICIT="${VALHALLA_PORT:+1}"
 CPUS="${VALHALLA_CPUS:-4}"
 MEMORY_GB="${VALHALLA_MEMORY:-1}"
 # One place for dumps, whether this runs from a checkout or the installed
@@ -1803,7 +1804,7 @@ create_container() {
   # By default, publish the container on VALHALLA_PORT from the env file (if set),
   # otherwise on the same port the server listens on.
   if [[ "${PORT_EXPLICIT:-0}" != "1" ]]; then
-    PORT="$(env_get VALHALLA_PORT || echo "$server_port")"
+    PORT="$(env_get CONTAINER_PORT || env_get VALHALLA_PORT || echo "$server_port")"
   fi
   case "$server_host" in
     127.* | localhost | ::1)
