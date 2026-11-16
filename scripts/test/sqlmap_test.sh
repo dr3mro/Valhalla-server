@@ -50,7 +50,7 @@ set -uo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BASE_URL="${BASE_URL:-http://127.0.0.1:8080/api/v2}"
 PAYLOAD_DIR="${PAYLOAD_DIR:-$ROOT/tests/api_tests/payloads}"
-OUT_DIR="${OUT_DIR:-$ROOT/sqlmap-results}"
+OUT_DIR="${OUT_DIR:-$ROOT/build/testing/sqlmap-results}"
 LEVEL="${LEVEL:-1}"
 RISK="${RISK:-1}"
 SQLMAP_BIN="${SQLMAP_BIN:-sqlmap}"

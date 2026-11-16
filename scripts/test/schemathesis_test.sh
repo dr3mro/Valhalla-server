@@ -25,7 +25,7 @@ set -uo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 BASE_URL="${BASE_URL:-http://127.0.0.1:8080/api/v2}"
 SPEC="${SPEC:-$ROOT/docs/openapi.json}"
-OUT_DIR="${OUT_DIR:-$ROOT/schemathesis-results}"
+OUT_DIR="${OUT_DIR:-$ROOT/build/testing/schemathesis-results}"
 MAX_EXAMPLES="${MAX_EXAMPLES:-50}"
 MAX_TIME="${MAX_TIME:-300}"
 CHECKS="${CHECKS:-all}"
@@ -45,6 +45,8 @@ EXTRA_ARGS="${EXTRA_ARGS:-}"
 EXCLUDE_PATH_REGEX="${EXCLUDE_PATH_REGEX:-/logout$}"
 
 export PATH="$HOME/.local/bin:$PATH"
+export HYPOTHESIS_STORAGE_DIRECTORY="${HYPOTHESIS_STORAGE_DIRECTORY:-$ROOT/build/testing/.hypothesis}"
+mkdir -p "$HYPOTHESIS_STORAGE_DIRECTORY"
 
 if [[ -t 1 ]]; then G=$'\033[32m'; R=$'\033[31m'; Y=$'\033[33m'; B=$'\033[1m'; N=$'\033[0m'; else G=""; R=""; Y=""; B=""; N=""; fi
 say()  { printf '%s\n' "$*"; }
