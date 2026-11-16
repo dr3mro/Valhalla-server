@@ -1,5 +1,15 @@
 # Async database plan (1.0.3)
 
+## Project rules for everything you write or change
+
+- Logging: never write to stdout or stderr directly in C++ (no std::cout, std::cerr, printf, fmt::print, puts). Use the project logging API in src/utils/message/message.hpp (Message::DebugMessage, InfoMessage, WarningMessage, ErrorMessage, CriticalMessage). Do not add logging on the per-request hot path unless it is at Debug level and guarded.
+- Configuration: never call getenv, std::getenv or setenv outside src/configurator/envloader. New settings go through a Configurator struct (see src/configurator/configurator.hpp and defaults.hpp).
+- Shared objects: do not look objects up with Store::getObject on a per-request path; hold them as members resolved at construction, or use Store::cachedObject.
+- No new dependencies. Prefer the C++20 standard library, then Drogon utilities that already exist in the pinned version, then project code.
+- Follow .clang-format, .clang-tidy and cppcheck.supp. Every file ends with a trailing newline. Do not reformat lines you did not change.
+- In the final report, include the result of this grep over everything you changed (it must show no new matches):
+  git diff <base>..HEAD -- src tests | grep '^+' | grep -n "cout\|cerr\|printf\|fmt::print\|getenv\|Store::"
+
 Goal: make database access asynchronous so a Drogon IO thread never blocks on PostgreSQL. No worker pool, no thread hand-off, and reads stay fast even when queries are slow.
 
 Status legend: `[ ]` to do, `[x]` done. Items marked **(manual)** are done by the maintainer, not by the coding agent.
@@ -50,7 +60,7 @@ Route: `POST /clients/providers/read`, only when `DB_ASYNC=true`.
 - [x] Async `DatabaseController` entry point returning a coroutine (`drogon::Task<...>`), next to the sync one.
 - [x] Permission check (`PermissionManager` / `PermissionCache` miss path) as a coroutine.
 - [x] The read itself as a coroutine; send the response from the IO loop with no hand-off.
-- [ ] Keep `PasswordWorker` for hashing and make sure its completion is posted back to the IO loop.
+- [x] Keep `PasswordWorker` for hashing and make sure its completion is posted back to the IO loop.
 - [ ] `api_tests` payloads give byte-identical bodies and status codes for sync and async.
 - [ ] **(manual)** Benchmark sweep: target is the `DB_WORKERS=0` level (about 19.6k req/s and 0.4 ms median at 8 VUs).
 - [ ] **(manual)** Stuck-query case (12 or more stuck requests): read p99 stays within 2x of reads-alone.
@@ -64,9 +74,9 @@ Route: `POST /clients/providers/read`, only when `DB_ASYNC=true`.
 - [ ] Write routes: create / update / delete / suspend / unsuspend, with `pqxx::work` transactions replaced by Drogon transactions.
 - [ ] `getNextID` and other sequence calls.
 - [ ] Synchronous DB calls inside entities: `checkItemExists` in `src/entities/base/client.hpp` (username check) and `src/entities/base/entity.hpp` (id check) run during validation/construction, so they need an async validation step or a cached/inlined alternative.
-- [ ] Entity files (`src/entities/**`) are almost all pure SQL/params builders (`getSql*Statement`, `getPermissionsQueryFor*`); they need no async change, only to keep compiling against the new params type. The only real DB calls in entities are the two `checkItemExists` calls above.
+- [x] Entity files (`src/entities/**`) are almost all pure SQL/params builders (`getSql*Statement`, `getPermissionsQueryFor*`); they need no async change, only to keep compiling against the new params type. The only real DB calls in entities are the two `checkItemExists` calls above.
 - [ ] Gatekeeper DB code, the full list of real call sites: `keeprbase.cpp` (`getPasswordHashForUserName` x2, `setNowLoginTimeGetLastLogoutTime`, `executeQuery` x2, `executeReadQuery`, `doReadQuery`), `permissionmanager_private.hpp` (`getPermissionsOfEntity` -> `getPermissions`, used by about 19 `PermissionManager` methods in `permissionmanager.cpp`), `sessionmanager.cpp` (login / timestamps), and `PermissionCache` invalidation after writes.
-- [ ] Controller layer: `controllers/base/controller/controller.hpp` (`cruds`, `Search`, `GetServices`, `GetVisits` call `executeQuery`, `executeReadQuery` and `executeSearchQuery`) is the single place all CRUD routes go through; convert it once.
+- [x] Controller layer: `controllers/base/controller/controller.hpp` (`cruds`, `Search`, `GetServices`, `GetVisits` call `executeQuery`, `executeReadQuery` and `executeSearchQuery`) is the single place all CRUD routes go through; convert it once.
 - [ ] Schema loading at boot (`src/validator/databaseschema/databaseschema.cpp`: `getTableSchema`, `getAllTables`): decide whether it stays on a small synchronous pqxx connection (then libpqxx stays a dependency) or moves to the async client before the event loop starts.
 - [ ] Graceful shutdown: close the `DbClient` cleanly (replaces the executor shutdown in `Server::run()`).
 - [ ] Container image: the image runs its own Postgres and overrides `DB_HOST` and `DB_SSL`; confirm the `DbClient` honours the same overrides and `DB_ACQUIRE_TIMEOUT_MS` behaviour.
