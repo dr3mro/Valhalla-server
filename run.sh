@@ -29,12 +29,12 @@ mkdir -p "$STATE_DIR"
 usage() {
     cat <<EOF
 ${C_BOLD}${C_M}╔══════════════════════════════════════╗${C_N}
-${C_BOLD}${C_M}║${C_N}  ${E_ROCKET}  ${C_BOLD}${C_Y}Valhalla Run Tool${C_N}               ${C_BOLD}${C_M}║${C_N}
+${C_BOLD}${C_M}║${C_N} ${E_ROCKET} ${C_BOLD}${C_Y}Valhalla Run Tool${C_N}                ${C_BOLD}${C_M}║${C_N}
 ${C_BOLD}${C_M}╚══════════════════════════════════════╝${C_N}
 
 ${C_BOLD}Usage:${C_N} ./run.sh <command> [args...]
 
-${C_BOLD}${C_Y}${E_BUILD}  Build & run:${C_N}
+${C_BOLD}${C_Y}${E_BUILD} Build & run:${C_N}
   ${C_C}build${C_N}            ${C_DIM}Build Debug + Release${C_N}
   ${C_C}build release${C_N}    ${C_DIM}Build Release only${C_N}
   ${C_C}build debug${C_N}      ${C_DIM}Build Debug only${C_N}
@@ -42,14 +42,14 @@ ${C_BOLD}${C_Y}${E_BUILD}  Build & run:${C_N}
   ${C_C}debug${C_N}            ${C_DIM}Run Debug server (./scripts/run/run_debug.sh)${C_N}
   ${C_C}openapi${C_N}          ${C_DIM}Regenerate OpenAPI docs${C_N}
 
-${C_BOLD}${C_Y}${E_SERVER}  Server lifecycle:${C_N}
+${C_BOLD}${C_Y}${E_SERVER} Server lifecycle:${C_N}
   server start release|debug [--background]
   server stop
   server status
   server restart release|debug
   ${C_C}server peek${C_N}                 ${C_DIM}Tail the background server log (Ctrl+C to stop; server keeps running)${C_N}
 
-${C_BOLD}${C_Y}${E_TEST}  Tests:${C_N}
+${C_BOLD}${C_Y}${E_TEST} Tests:${C_N}
   ${C_C}tests | unit${C_N}     ${C_DIM}Run Catch2 unit tests (Debug + Release)${C_N}
   ${C_C}api${C_N}              ${C_DIM}Run API tests (scripts/test/test_api.sh)${C_N}
   ${C_C}fuzz${C_N}             ${C_DIM}Run fuzz_auth${C_N}
@@ -61,7 +61,7 @@ ${C_BOLD}${C_Y}${E_TEST}  Tests:${C_N}
   ${C_C}db-init${C_N}          ${C_DIM}Initialize database${C_N}
   ${C_C}all${C_N}              ${C_DIM}Build, init DB, start server, run all tests, stop server${C_N}
 
-${C_BOLD}${C_Y}${E_INFO}  Other:${C_N}
+${C_BOLD}${C_Y}${E_INFO} Other:${C_N}
   ${C_C}list${C_N}             ${C_DIM}List commands${C_N}
   ${C_C}help${C_N}             ${C_DIM}Show this help${C_N}
 
