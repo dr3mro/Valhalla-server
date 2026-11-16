@@ -78,7 +78,7 @@
 #
 # Options (before or after the command):
 #   --name NAME          container name     (env VALHALLA_NAME, default valhalla)
-#   --port PORT          host port          (env VALHALLA_PORT, default 8080;
+#   --port PORT          host port          (env CONTAINER_PORT or VALHALLA_PORT, default 8080;
 #                        for an existing container, the port it was created with)
 #   --runtime RT         docker | container (env VALHALLA_RUNTIME)
 #   --env-file FILE      settings file, or "none" (env VALHALLA_ENV_FILE)
