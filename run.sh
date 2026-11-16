@@ -29,7 +29,7 @@ mkdir -p "$STATE_DIR"
 usage() {
     cat <<EOF
 ${C_BOLD}${C_M}╔══════════════════════════════════════╗${C_N}
-${C_BOLD}${C_M}║${C_N}  ${E_ROCKET}  ${C_BOLD}${C_Y}Valhalla Run Tool${C_N}              ${C_BOLD}${C_M}║${C_N}
+${C_BOLD}${C_M}║${C_N}  ${E_ROCKET}  ${C_BOLD}${C_Y}Valhalla Run Tool${C_N}                ${C_BOLD}${C_M}║${C_N}
 ${C_BOLD}${C_M}╚══════════════════════════════════════╝${C_N}
 
 ${C_BOLD}Usage:${C_N} ./run.sh <command> [args...]
