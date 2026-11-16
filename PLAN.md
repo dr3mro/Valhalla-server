@@ -149,7 +149,7 @@ Linux is solid and macOS mostly fine; only the items below are worth doing.
 **High impact** (file : problem : affects)
 
 - [x] **H6** `schemathesis_test.sh:47, 58-62`: `pip3 install --user` fails under PEP 668 (Debian 12+, Ubuntu 23.04+, Fedora, **Homebrew Python on macOS**). Use the venv approach already in `tools/docs/build.sh:22-27`. **macOS, newer Linux. Blocks the conformance re-run in section 4 on your Mac.**
-- [ ] **H7** `python3` hard requirement in `fuzz_auth.sh:13`, `sqlmap_test.sh:62`, `schemathesis_test.sh:55`, `tools/docs/build.sh:20`, `valhalla.sh:1086,1092,1108`. Stock macOS ships only the Xcode shim. Add one shared "find python" helper.
+- [x] **H7** `python3` hard requirement ... Add one shared "find python" helper. (`tools/find_python.sh`)
 - [x] **H11** `db_init.sh:1`: no shebang, no `set -e`, resolves `init.sql` from the current directory. Fails with Exec format error when run directly. All platforms.
 - [x] **H12** `valhalla.sh:1092`: `outdated` hard-requires `python3`, but only the optional Hub-tag lookup at 1947 uses it (`registry_digest` does not). All platforms.
 
