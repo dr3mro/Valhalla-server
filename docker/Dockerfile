@@ -108,7 +108,7 @@ RUN apk add --no-cache postgresql17 postgresql17-client su-exec tini libstdc++ l
 WORKDIR /app
 
 COPY --from=builder /src/build/Release/server /app/server
-COPY init.sql /app/init.sql
+COPY scripts/db/init.sql /app/init.sql
 COPY --chmod=755 docker/entrypoint.sh /entrypoint.sh
 
 ENV SERVER_PORT=8080

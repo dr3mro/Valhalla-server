@@ -265,7 +265,7 @@ sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"   # choose a
 PGPASSWORD=postgres ./scripts/run/db_init.sh                                      # runs init.sql against 127.0.0.1
 ```
 
-`db_init.sh` connects as `postgres` to the `postgres` database on `127.0.0.1`. To use another database or user, run `psql -h <host> -U <user> -d <db> -f init.sql` yourself.
+`db_init.sh` connects as `postgres` to the `postgres` database on `127.0.0.1`. To use another database or user, run `psql -h <host> -U <user> -d <db> -f scripts/db/init.sql` yourself.
 
 ### Run the server
 

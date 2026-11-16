@@ -117,7 +117,7 @@ if [[ $START == 1 && $MODE == native ]]; then
 	if [[ $RESET_DB == 1 ]]; then
 		command -v psql >/dev/null || { echo "error: --reset-db needs psql" >&2; exit 1; }
 		log "Resetting database ${DB_NAME:-postgres} on ${DB_HOST:-127.0.0.1}:${DB_PORT:-5432} (init.sql, drops all data)"
-		PGPASSWORD="${DB_PASS:-}" psql -q -v ON_ERROR_STOP=1 -h "${DB_HOST:-127.0.0.1}" -p "${DB_PORT:-5432}" -U "${DB_USER:-postgres}" -d "${DB_NAME:-postgres}" -f "$ROOT/init.sql" >/dev/null \
+		PGPASSWORD="${DB_PASS:-}" psql -q -v ON_ERROR_STOP=1 -h "${DB_HOST:-127.0.0.1}" -p "${DB_PORT:-5432}" -U "${DB_USER:-postgres}" -d "${DB_NAME:-postgres}" -f "$ROOT/scripts/db/init.sql" >/dev/null \
 			|| { echo "error: init.sql failed" >&2; exit 1; }
 	fi
 	# Perf-run overrides: our port, no rate-limit bans, quiet console (the log goes to $SERVER_LOG).
