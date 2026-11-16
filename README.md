@@ -976,21 +976,31 @@ fuzz_auth.sh, sqlmap_test.sh, schemathesis_test.sh  # Security and fuzz testing 
 
 The API listens on `http://localhost:8080`. CORS is open: `Access-Control-Allow-Origin: *`, no credentials, methods `GET, POST, PUT, DELETE, HEAD, OPTIONS`, request headers `Content-Type, Authorization, Accept, X-Requested-With` (a preflight echoes `Access-Control-Request-Headers`), and exposed response headers `Retry-After, Content-Length`. Preflight responses are cached for 7200 seconds.
 
-In Docker bridge mode every request arrives from the bridge gateway IP, so the rate limiter keys all front-end traffic as one client. Find the real gateway with `docker network inspect bridge` (use its `Gateway` value) instead of assuming `172.17.0.1`.
+In Docker bridge mode every request arrives from one gateway IP, so the rate limiter treats all front-end traffic as a single client. On native Linux Docker that address is often `172.17.0.1`, but on Docker Desktop for macOS or Windows it is usually different. There is no existing log line that prints the peer IP, so the reliable way to learn it is to run a container with `WHITELIST=".*"` once and inspect the rate-limit rejection, or to propose (not implemented here) a `Message::DebugMessage` in the `RateLimit` filter. Do not add a debug endpoint or new logging in this change.
 
-Whitelist entries are unanchored regular expressions, so an entry such as `172.17.0.1` also matches `172.17.0.10` through `172.17.0.199`. To whitelist only the gateway, anchor the pattern, for example:
+Whitelist entries are unanchored regular expressions, so `172.17.0.1` also matches `172.17.0.10` through `172.17.0.199`. To whitelist only the gateway, anchor the pattern. In a shell or `--env-file` value the backslashes stay literal:
 
 ```
-WHITELIST="^172\\.17\\.0\\.1$"
+WHITELIST='^172\.17\.0\.1$'
+```
+
+In a dotenv or compose file the same value is written without extra escaping:
+
+```
+WHITELIST=^172\.17\.0\.1$
 ```
 
 Raise the dev rate limits as well (`MAX_REQUESTS`, `MAX_FPS`) if React StrictMode double requests trip the limiter. A commented example for a dev `.env` (no secrets):
 
 ```
-# WHITELIST="^172.17.0.1$"
+# WHITELIST=^172\.17\.0\.1$
 # MAX_REQUESTS=1000000
 # MAX_FPS=1000000
 ```
+
+Put these settings where the container or server actually reads them: a project `.env` for the native binary, `--env-file FILE` / `VALHALLA_ENV_FILE` for `valhalla.sh`, or `-e` / `--env-file` for `docker run`. `docker/entrypoint.sh` reads them from the process environment.
+
+`WHITELIST` disables DoS checks for matching IPs, so it is for development only. Never whitelist a broad pattern in production.
 
 ## Development
 
