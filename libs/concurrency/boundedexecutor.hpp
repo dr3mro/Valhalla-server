@@ -32,8 +32,7 @@
  * @date 2026-11-16
  */
 
-#pragma once  // Compiler-enforced header guard: include at most once per
-              // translation unit.
+#pragma once
 
 // std::atomic: counters that several threads can safely update.
 #include <atomic>
@@ -73,21 +72,21 @@
  * IO thread. submit() never blocks: it returns false when the queue is full,
  * and the caller answers 503.
  *
- *          Every worker has its own queue and its own lock, so submitters and
+ * Every worker has its own queue and its own lock, so submitters and
  * workers do not all contend on one mutex. submit() picks an idle worker if
  * there is one (so a task never waits behind a slow one while another worker
  * sleeps), otherwise the worker with the shortest queue, so the queues stay the
  * same length and waiting time stays fair (plain round-robin left some queues
- *          long and some short, and the tasks in the long ones waited 20 times
+ * long and some short, and the tasks in the long ones waited 20 times
  * longer). Only an idle worker is woken (a busy one needs no wake-up, it looks
  * at its queue when it finishes). A worker that has run out of work takes tasks
  * from the other workers' queues before it sleeps. The queue limit is shared:
  * at most queue_max tasks wait across all workers.
  *
- *          With zero workers every task runs inline, on the submitting thread.
+ * With zero workers every task runs inline, on the submitting thread.
  * Unit tests use that so they stay synchronous.
  *
- *          In plain words: imagine a fixed number of chefs (worker threads)
+ * In plain words: imagine a fixed number of chefs (worker threads)
  * each with their own order ticket rack (queue). New orders go to a free chef,
  * or to the shortest rack if nobody is free. A chef with no tickets peek at
  * other racks and helps out before going to sleep ("work stealing"). There is
@@ -145,6 +144,7 @@ class BoundedExecutor {
   // Finishes the queued tasks, then joins the threads. Later submit() calls
   // return false. Safe to call more than once. Call it before the things the
   // tasks use (connection pool, Drogon) are torn down.
+
   /**
    * @brief Drains queued tasks, joins the workers and reports accumulated
    * statistics once.
@@ -216,6 +216,7 @@ class BoundedExecutor {
 
   // Counters for tuning the pool size; they only count tasks that went
   // through the queue (not inline mode).
+
   /**
    * @struct Stats
    * @brief Snapshot of tuning counters for tasks that passed through the

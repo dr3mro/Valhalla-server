@@ -216,25 +216,25 @@ BoundedExecutor::Stats BoundedExecutor::stats() const {
  * queued; false if it was rejected.
  */
 bool BoundedExecutor::submit(std::function<void()> task) {
-  // no workers: run on the calling thread instead of
-  // queueing
+  // no workers: run on the calling thread instead of queueing
   if (inlineMode()) {
     task();       // do the work right now
     return true;  // inline execution always counts as accepted
   }
+
   // the pool is shutting down
   if (stopping_.load(std::memory_order_acquire)) {
-    rejected_.fetch_add(1, std::memory_order_relaxed);  // count the refusal for
-                                                        // diagnostics
-    return false;  // caller should answer 503
+    // count the refusal for diagnostics
+    rejected_.fetch_add(1, std::memory_order_relaxed);
+    // caller should answer 503 (Service Unavailable)
+    return false;
   }
 
   // Reserve a place in the shared limit first; give it back if the pool turns
   // out to be stopping.
-  const std::size_t depth =
-      queued_.fetch_add(1, std::memory_order_acq_rel) +
-      1;  // atomically claim one slot and read the new total
-  // we are over the shared limit
+  const std::size_t depth =  // atomically claim one slot and read the new total
+      queued_.fetch_add(1, std::memory_order_acq_rel) + 1;
+  // are we over the shared limit
   if (depth > queue_max_) {
     queued_.fetch_sub(1,
                       std::memory_order_acq_rel);  // give the unused slot back
@@ -244,22 +244,28 @@ bool BoundedExecutor::submit(std::function<void()> task) {
 
   // From a round-robin start: the first idle worker; with none idle, the one
   // with the shortest queue (the start worker wins ties).
-  const std::size_t n      = workers_.size();  // how many workers exist
-  const std::size_t start  = next_.fetch_add(1, std::memory_order_relaxed) %
-                             n;      // rotate the starting point on each call
-  std::size_t       target = start;  // default pick if nobody is idle
-  std::size_t       shortest =
-      std::numeric_limits<std::size_t>::max();  // "infinity", so the first
-                                                // real depth wins
+  const std::size_t numWorkers =  // how many workers exist
+      workers_.size();
+
+  const std::size_t start =  // rotate the starting point on each call
+      next_.fetch_add(1, std::memory_order_relaxed) % numWorkers;
+
+  std::size_t target = start;  // default pick if nobody is idle
+
+  // "infinity", so the first real depth wins
+  std::size_t shortest = std::numeric_limits<std::size_t>::max();
+
   // scan every worker once
-  for (std::size_t i = 0; i < n; ++i) {
-    const std::size_t candidate = (start + i) % n;  // wrap around the list
+  for (std::size_t i = 0; i < numWorkers; ++i) {
+    const std::size_t candidate =
+        (start + i) % numWorkers;  // wrap around the list
     // found a sleeping worker
-    if (workers_[candidate]->idle.load(std::memory_order_acquire)) {
+    if (workers_.at(candidate)->idle.load(std::memory_order_acquire)) {
       target = candidate;  // give it the job
       break;               // stop scanning
     }
-    const std::size_t depth = workers_[candidate]->depth.load(
+
+    const std::size_t depth = workers_.at(candidate)->depth.load(
         std::memory_order_relaxed);  // otherwise read its queue length
     // shortest queue seen so far
     if (depth < shortest) {
@@ -268,25 +274,25 @@ bool BoundedExecutor::submit(std::function<void()> task) {
     }
   }
 
-  Worker& worker = *workers_[target];  // the chosen worker
+  Worker& worker = *workers_.at(target);  // the chosen worker
   // whether a wake-up signal is needed
   bool wake = false;
   {
-    std::lock_guard<std::mutex> lock(
+    std::scoped_lock lock(
         worker.mutex);  // protect the queue while we add to it
-    // checked under the lock:
-    // the worker's exit check
-    // is under it too
+    // checked under the lock: the worker's exit check is under it too
+
     if (stopping_.load(std::memory_order_acquire)) {
       queued_.fetch_sub(1, std::memory_order_acq_rel);  // undo our earlier
                                                         // reservation
       rejected_.fetch_add(1, std::memory_order_relaxed);
       return false;
     }
-    worker.queue.push_back(
-        {std::move(task),
-         std::chrono::steady_clock::now()});  // store the job together with
-                                              // its arrival time
+    worker.queue.push_back({
+        .task      = std::move(task),
+        .queued_at = std::chrono::steady_clock::now(),
+    });  // store the job together
+         // with its arrival time
     worker.depth.store(worker.queue.size(),
                        std::memory_order_relaxed);  // keep the lock-free length
                                                     // estimate current
@@ -324,45 +330,48 @@ bool BoundedExecutor::onWorkerThread() const {
 
 /**
  * Takes a task from this worker's queue, or steals one from a peer if
- * necessary.
- *
- * Tries the worker's own queue under its mutex first. On a miss it scans peers
- * using try_lock, so it never waits for a peer that may be busy with a slow
- * task. Each successful take decrements the shared queued_ counter with acq_rel
- * semantics. self: Index of the calling worker. item: Receives the task and its
- * queueing timestamp. Returns true if a task was taken; false if all queues
- * were empty or locked.
+ * necessary. Tries the worker's own queue under its mutex first. On a miss it
+ * scans peers using try_lock, so it never waits for a peer that may be busy
+ * with a slow task. Each successful take decrements the shared queued_ counter
+ * with acq_rel semantics. self: Index of the calling worker. item: Receives the
+ * task and its queueing timestamp. Returns true if a task was taken; false if
+ * all queues were empty or locked.
  */
 bool BoundedExecutor::take(std::size_t self,
                            Item&       item) {
-  {
-    Worker&                     own = *workers_[self];  // our own worker record
-    std::lock_guard<std::mutex> lock(
-        own.mutex);  // protect our queue while we look at it
-    // we have work of our own
-    if (!own.queue.empty()) {
-      item = std::move(own.queue.front());  // take the oldest task
-      own.queue.pop_front();                // remove it from the queue
-      own.depth
-          .store(own.queue.size(),
-                 std::memory_order_relaxed);  // update the lock-free estimate
-      queued_.fetch_sub(1,
-                        std::memory_order_acq_rel);  // one fewer task waiting
-                                                     // in total
-      return true;                                   // success
-    }
+  Worker& own =  // our own worker record
+      *workers_.at(self);
+
+  std::scoped_lock lock(  // protect our queue while we look at it
+      own.mutex);         // we have work of our own
+
+  if (!own.queue.empty()) {
+    item = std::move(own.queue.front());  // take the oldest task
+    own.queue.pop_front();                // remove it from the queue
+    own.depth
+        .store(own.queue.size(),
+               std::memory_order_relaxed);  // update the lock-free estimate
+    queued_.fetch_sub(1,
+                      std::memory_order_acq_rel);  // one fewer task waiting
+                                                   // in total
+    return true;                                   // success
   }
+
   // Nothing of our own: help a worker that is stuck on a slow task. try_lock
   // keeps this from ever waiting on someone.
-  const std::size_t n = workers_.size();  // total number of workers
-  for (std::size_t i = 1; i < n;
-       // start at 1 so we do not bother re-checking ourselves
-       ++i) {
-    Worker& other = *workers_[(self + i) % n];  // next worker in a ring
+
+  const std::size_t numWorkers = workers_.size();  // total number of workers
+  for (std::size_t i = 1; i < numWorkers; ++i) {
+    // start at 1 so we do not bother re-checking ourselves
+
+    Worker& other =
+        *workers_.at((self + i) % numWorkers);  // next worker in a ring
+
     std::unique_lock<std::mutex>
         lock(other.mutex,
              std::try_to_lock);  // never block; skip this peer if it is busy
     // we got the lock and it has work
+
     if (lock.owns_lock() && !other.queue.empty()) {
       item = std::move(other.queue.front());  // steal its oldest task
       other.queue.pop_front();                // remove it from that queue
@@ -383,8 +392,7 @@ bool BoundedExecutor::take(std::size_t self,
  * elapsed time. item: Task whose queued_at timestamp is subtracted from now.
  */
 void BoundedExecutor::account(const Item& item) {
-  // Add "now minus queued time" (converted to nanoseconds) to the running
-  // total.
+  // Add "now minus queued time" (converted to nano sec) to the running total.
   wait_ns_.fetch_add(static_cast<std::uint64_t>(
                          std::chrono::duration_cast<std::chrono::nanoseconds>(
                              std::chrono::steady_clock::now() - item.queued_at)
@@ -409,8 +417,8 @@ void BoundedExecutor::account(const Item& item) {
  * worker.
  */
 void BoundedExecutor::run(std::size_t self) {
-  currentExecutor = this;             // mark this thread as one of our workers
-  Worker& own     = *workers_[self];  // our own worker record
+  currentExecutor = this;  // mark this thread as one of our workers
+  Worker& own     = *workers_.at(self);  // our own worker record
   // keep running until a return inside the loop
   for (;;) {
     Item item;  // empty slot to receive the next task
@@ -421,8 +429,7 @@ void BoundedExecutor::run(std::size_t self) {
           own.mutex);  // hold our lock while deciding whether to sleep
       // double-check after the steal attempt
       if (own.queue.empty()) {
-        // shutting down and no
-        // work left
+        // shutting down and no work left
         if (stopping_.load(std::memory_order_acquire)) {
           return;  // stopping, and nothing is left in our queue (no
                    // submit can add one any more)
