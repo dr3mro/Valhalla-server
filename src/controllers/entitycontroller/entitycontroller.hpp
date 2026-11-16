@@ -9,6 +9,7 @@
 #include <string_view>
 
 #include "controllers/base/controller/controller.hpp"
+#include "drogon/utils/coroutine.h"
 #include "controllers/entitycontroller/entitycontrollerbase.hpp"
 #include "gatekeeper/gatekeeper.hpp"
 #include "store/store.hpp"
@@ -29,7 +30,9 @@ class EntityController : public Controller, public EntityControllerBase
     // CRUDS
 
     void Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
+    drogon::Task<void> CreateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
     void Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
+    drogon::Task<void> ReadAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;
     void Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> _id) override;
     void Delete(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> _id) override;
     void Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data) override;

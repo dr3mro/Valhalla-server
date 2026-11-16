@@ -13,6 +13,7 @@
 #include <utility>
 
 #include "controllers/base/controller/controller.hpp"
+#include "drogon/utils/coroutine.h"
 #include "controllers/entitycontroller/entitycontrollerbase.hpp"
 #include "entities/base/types.hpp"
 #include "utils/global/callback.hpp"
@@ -244,12 +245,109 @@ inline void __attribute((always_inline)) EntityController<T>::Search(CALLBACK_&&
     }
 }
 
+template <typename T>
+inline drogon::Task<void> __attribute((always_inline)) EntityController<T>::CreateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+{
+    try
+    {
+        bool            success = false;
+        HttpError       error;
+        Validator::Rule rule((Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA | Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA), {"id"});
+
+        std::optional<jsoncons::json> request_j;
+        try
+        {
+            request_j = jsoncons::json::parse(data);
+        }
+        catch (const std::exception&)
+        {
+            std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Invalid request body: malformed JSON.");
+            co_return;
+        }
+
+        if (!request_j.has_value())
+        {
+            std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Invalid request body.");
+            co_return;
+        }
+
+        success = Validator::validateDatabaseCreateSchema(T::getTableName(), request_j, error, rule);
+
+        if (!success)
+        {
+            std::move(callback)(error.code, fmt::format("Failed to validate request body, {}.", error.message));
+            co_return;
+        }
+
+        if (!gateKeeper->canCreate<T>(requester, request_j, error))
+        {
+            std::move(callback)(error.code, error.message);
+            co_return;
+        }
+
+        Create_t entity_data = Create_t(request_j.value());
+
+        T entity(entity_data);
+
+        co_await Controller::CreateAsync(entity, std::move(callback));
+    }
+    catch (const std::exception& e)
+    {
+        CRITICALMESSAGERESPONSE
+    }
+}
+template <typename T>
+inline drogon::Task<void> __attribute((always_inline)) EntityController<T>::ReadAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+{
+    try
+    {
+        jsoncons::json                  request_j;
+        uint64_t                        _id;
+        std::unordered_set<std::string> schema;
+        try
+        {
+            request_j = jsoncons::json::parse(data);
+            _id       = request_j.at("id").as<uint64_t>();
+            schema    = request_j.at("schema").as<std::unordered_set<std::string>>();
+        }
+        catch (const std::exception&)
+        {
+            std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "Invalid request body: malformed JSON or missing/invalid 'id'/'schema'.");
+            co_return;
+        }
+        HttpError error;
+
+        if (!gateKeeper->canRead<T>(requester, _id, error))
+        {
+            std::move(callback)(error.code, error.message);
+            co_return;
+        }
+
+        Validator::Rule rule(Validator::Rule::Action::ASSERT_NOT_PRESENT, {"id", "username", "password", "created_at", "updated_at"});
+
+        if (!Validator::validateDatabaseReadSchema(schema, std::format("{}_safe", T::getTableName()), error, rule))
+        {
+            std::move(callback)(error.code, fmt::format("Failed to validate request body, {}.", error.message));
+            co_return;
+        }
+
+        T entity((Read_t(schema, _id)));
+
+        co_await Controller::ReadAsync(entity, std::move(callback));
+    }
+    catch (const std::exception& e)
+    {
+        CRITICALMESSAGERESPONSE
+    }
+}
 #define INSTANTIATE_ENTITY_CONTROLLER(TYPE) /*NOLINT*/                                                                                                  \
     template void EntityController<TYPE>::Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                             \
     template void EntityController<TYPE>::Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                               \
     template void EntityController<TYPE>::Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> id); \
     template void EntityController<TYPE>::Delete(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> id);                        \
-    template void EntityController<TYPE>::Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data);
+    template void EntityController<TYPE>::Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data); \
+    template drogon::Task<void> EntityController<TYPE>::CreateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data);         \
+    template drogon::Task<void> EntityController<TYPE>::ReadAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data);
 
 #include "gatekeeper/includes.hpp"  // IWYU pragma: keep
 // Instantiate for all entity types
