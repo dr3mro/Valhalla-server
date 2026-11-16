@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Shared styling helpers for scripts.
 # shellcheck disable=SC2034
-if [[ -t 1 && "${VALHALLA_NO_COLOR:-0}" != "1" ]]; then
+if [[ ( -t 1 || "${FORCE_COLOR:-0}" == "1" ) && "${VALHALLA_NO_COLOR:-0}" != "1" && -z "${NO_COLOR:-}" ]]; then
     C_R=$'\033[31m'; C_G=$'\033[32m'; C_Y=$'\033[33m'; C_B=$'\033[34m'
     C_M=$'\033[35m'; C_C=$'\033[36m'; C_DIM=$'\033[2m'; C_BOLD=$'\033[1m'
     C_N=$'\033[0m'
@@ -9,7 +9,7 @@ else
     C_R=""; C_G=""; C_Y=""; C_B=""; C_M=""; C_C=""; C_DIM=""; C_BOLD=""; C_N=""
 fi
 
-if [[ "${VALHALLA_NO_EMOJI:-0}" != "1" ]]; then
+if [[ ( -t 1 || "${FORCE_EMOJI:-0}" == "1" ) && "${VALHALLA_NO_EMOJI:-0}" != "1" ]]; then
     E_ROCKET="🚀"; E_TEST="🧪"; E_LINT="🧹"; E_BUILD="🔨"; E_DB="🗄️"
     E_SERVER="🖥️"; E_STOP="🛑"; E_OK="✅"; E_FAIL="❌"; E_WARN="⚠️"
     E_INFO="ℹ️"; E_RUN="▶️"

@@ -6,6 +6,12 @@ set -uo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$ROOT" || exit 1
 
+# Color/emoji by default (unless --no-color or NO_COLOR).
+if [[ " $* " != *" --no-color "* && -z "${NO_COLOR:-}" ]]; then
+    export FORCE_COLOR=1
+    export FORCE_EMOJI=1
+fi
+
 # shellcheck disable=SC1091
 source "$ROOT/scripts/lib/ui.sh"
 
@@ -33,6 +39,7 @@ ${C_BOLD}Server lifecycle:${C_N}
   server stop
   server status
   server restart release|debug
+  server peek                 Tail the background server log (Ctrl+C to stop; server keeps running)
 
 ${C_BOLD}Tests:${C_N}
   tests | unit     Run Catch2 unit tests (Debug + Release)
@@ -244,12 +251,14 @@ case "$cmd" in
     lint) "$ROOT/scripts/qa/lint_sh.sh" "$@" ;;
     db-init) "$ROOT/scripts/run/db_init.sh" "$@" ;;
     openapi) "$ROOT/tools/docs/build.sh" "$@" ;;
+    peek) tail -f "$LOG_FILE" ;;
     server)
         sub="${1:-status}"; shift || true
         case "$sub" in
             start) server_start "$@" ;;
             stop) server_stop ;;
             status) server_status ;;
+            peek) tail -f "$LOG_FILE" ;;
             restart) profile="${1:-release}"; shift || true; server_stop; server_start "$profile" "$@" ;;
             *) err "Unknown server command: $sub"; usage; exit 2 ;;
         esac
