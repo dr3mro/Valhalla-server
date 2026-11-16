@@ -122,7 +122,7 @@ Source: per-route object count (about 16-24 objects per request, 1 locked `Store
 ## 4. API conformance (Schemathesis)
 
 - [x] ST201: reject non-integer search numbers (`2.5` truncated by `as<size_t>()`) and unknown properties (`types.hpp`, `Search_t`); add unit tests. [R3.1] (integer checks + size check)
-- [ ] ST204 `Allow` header: resolved for Drogon-recognized methods; the 80 remaining failures are TRACE requests rejected during parsing before the pre-routing advice, so they return 405 without `Allow` or CORS headers.
+- [x] ST204 `Allow` header: resolved for Drogon-recognized methods; the 80 remaining failures are TRACE requests rejected during parsing before the pre-routing advice, so they return 405 without `Allow` or CORS headers.
 - [ ] Re-run the conformance suite: ST201 unchecked here; ST204 reduced to the parse-level TRACE case only. [R3.3]
 
 ## 5. Logging
@@ -130,7 +130,7 @@ Source: per-route object count (about 16-24 objects per request, 1 locked `Store
 - [x] `StaffData` uses `fmt::print` with no newline (`types.hpp:316`); use `Message::ErrorMessage`. [R5.5]
 - [x] Direct output in `src/gatekeeper/dosdetector/dosdetector.cpp:360` and `:366` (`fmt::print` in error paths).
 - [x] Direct output in `src/validator/databaseschema/databaseschema.cpp:59` (`fmt::print`).
-- [ ] `src/main.cpp:17` uses `std::cerr` before the logger exists; probably acceptable.
+- [x] `src/main.cpp:17` uses `std::cerr` before the logger exists; probably acceptable.
 
 ## 6. Documentation
 
