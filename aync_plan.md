@@ -38,10 +38,10 @@ Status legend: `[ ]` to do, `[x]` done. Items marked **(manual)** are done by th
 
 ## Phase 2: building blocks (no route changes yet)
 
-- [ ] Adapter from `pqxx::params` to Drogon's incremental SQL binder, so the entity `getSql*Statement(pqxx::params&)` builders stay unchanged.
-- [ ] Result-to-JSON mapper equivalent to the pqxx `field.type()` mapping in `Database::executeQuery` (`src/database/database.cpp`), same output including nulls and types.
-- [ ] Error mapping: pool exhausted / timeout -> HTTP 503 (as `DatabaseBusy` does today); SQL errors -> the existing error responses.
-- [ ] Unit tests for the adapter, the mapper and the error mapping.
+- [x] Adapter from `pqxx::params` to Drogon's incremental SQL binder, so the entity `getSql*Statement(pqxx::params&)` builders stay unchanged.
+- [x] Result-to-JSON mapper equivalent to the pqxx `field.type()` mapping in `Database::executeQuery` (`src/database/database.cpp`), same output including nulls and types.
+- [x] Error mapping: pool exhausted / timeout -> HTTP 503 (as `DatabaseBusy` does today); SQL errors -> the existing error responses.
+- [x] Unit tests for the adapter, the mapper and the error mapping.
 
 ## Phase 3: prototype on one route
 
