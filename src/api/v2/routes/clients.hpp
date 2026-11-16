@@ -69,10 +69,10 @@ namespace api::v2
         {
             // Prototype async path (DB_ASYNC=true, providers only): the read runs as a coroutine on the IO loop.
             const bool async = Store::getObject<Configurator>()->get<Configurator::DatabaseConfig>().async;
-            if (async && clientType == "providers")
+            if (async && (clientType == "users" || clientType == "providers"))
             {
                 auto cb = std::move(callback);
-                auto handler = [this, req, cb, clientType]() mutable -> drogon::AsyncTask
+                auto handler = [this, req, cb, clientType]<typename T>() mutable -> drogon::AsyncTask
                 {
                     CALLBACK_ mcb = [cb](int code, const std::string& content)
                     {
@@ -129,7 +129,7 @@ namespace api::v2
                         {
                             if (gateKeeper)
                             {
-                                co_return gateKeeper->canRead<Provider>(requester, _id, error);
+                                co_return gateKeeper->canRead<T>(requester, _id, error);
                             }
                             co_return true;
                         };
@@ -141,13 +141,13 @@ namespace api::v2
                         }
 
                         Validator::Rule rule(Validator::Rule::Action::ASSERT_NOT_PRESENT, {"id", "username", "password", "created_at", "updated_at"});
-                        if (!Validator::validateDatabaseReadSchema(schema, std::format("{}_safe", Provider::getTableName()), error, rule))
+                        if (!Validator::validateDatabaseReadSchema(schema, std::format("{}_safe", T::getTableName()), error, rule))
                         {
                             std::move(mcb)(api::v2::Http::Status::BAD_REQUEST, fmt::format("Failed to validate request body, {}.", error.message));
                             co_return;
                         }
 
-                        Provider entity((Read_t(schema, _id)));
+                        T entity((Read_t(schema, _id)));
 
                         // Build SQL
                         pqxx::params params;
@@ -162,7 +162,7 @@ namespace api::v2
                         auto result = co_await dbController->executeReadQueryCoro(query.value(), params);
                         if (result.has_value() && !result->empty())
                         {
-                            std::move(mcb)(api::v2::Http::Status::OK, result.value().as<std::string>());
+                            std::move(mcb)(api::v2::Http::Status::OK, result.value().template as<std::string>());
                             co_return;
                         }
                         if (result.has_value())
@@ -181,7 +181,14 @@ namespace api::v2
                         Helper::failureResponse(e.what(), std::move(cb));
                     }
                 };
-                handler();
+                if (clientType == "users")
+                {
+                    handler.template operator()<User>();
+                }
+                else
+                {
+                    handler.template operator()<Provider>();
+                }
                 return;
             }
 
