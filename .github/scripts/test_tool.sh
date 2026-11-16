@@ -302,7 +302,7 @@ outputs "get_tag.sh: from git" '^-DGIT_TAG=".*"$' sh -c "cd '$REPO' && \"\$0\" .
 RR="$WORK/rr"
 mkdir -p "$RR/build/Release" "$RR/scripts/run"
 cp "$REPO/scripts/run/run_release.sh" "$RR/scripts/run/"
-fails "run_release.sh: no binary" "not found. Run scripts/build/build.sh" "$TOOL_BASH" "$REPO/scripts/run/run_release.sh"
+fails "run_release.sh: no binary" "not found. Run scripts/build/build.sh" "$TOOL_BASH" "$RR/scripts/run/run_release.sh"
 printf '#!/bin/sh\necho "args=$*"; env | grep -E "^(A|B|C|D|E|F)=" | sort\n' >"$RR/build/Release/server"
 chmod +x "$RR/build/Release/server"
 printf '# comment\nA=1\n  B = two words  \nexport C="quoted # not a comment"\nD='"'"'single'"'"'\r\n\nE=$(echo injected)\nbad line\n' >"$RR/.env"

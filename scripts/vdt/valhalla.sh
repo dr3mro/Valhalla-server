@@ -2083,7 +2083,7 @@ tool_installed_sha() {
 # so unrelated commits do not trigger an update.
 latest_tool_sha() {
   curl -fsSL -m 8 "https://api.github.com/repos/$REPO_SLUG/commits?path=scripts/vdt/valhalla.sh&per_page=1" 2>/dev/null |
-    sed -n 's/.*"sha": *"\([0-9a-f]\{40\}\)".*//p' | head -n1
+    sed -n 's/.*"sha": *"\([0-9a-f]\{40\}\)".*/\1/p' | head -n1
 }
 
 # update_refresh: the background check. Writes UPDATE_STATE atomically.
