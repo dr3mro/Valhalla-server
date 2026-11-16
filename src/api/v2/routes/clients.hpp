@@ -45,7 +45,7 @@ namespace api::v2
             if (async)
             {
                 auto cb = std::move(callback);
-                auto handler = [this, req, cb, clientType]() mutable -> drogon::AsyncTask
+                drogon::async_run([this, req, cb, clientType]() mutable -> drogon::Task<void>
                 {
                     CALLBACK_ mcb = [cb](int code, const std::string& content)
                     {
@@ -83,8 +83,7 @@ namespace api::v2
                     {
                         Helper::failureResponse(e.what(), std::move(cb));
                     }
-                };
-                handler();
+                });
                 return;
             }
 
@@ -106,7 +105,7 @@ namespace api::v2
             if (async)
             {
                 auto cb = std::move(callback);
-                auto handler = [this, req, cb, clientType, id]() mutable -> drogon::AsyncTask
+                drogon::async_run([this, req, cb, clientType, id]() mutable -> drogon::Task<void>
                 {
                     CALLBACK_ mcb = [cb](int code, const std::string& content)
                     {
@@ -144,8 +143,8 @@ namespace api::v2
                     {
                         Helper::failureResponse(e.what(), std::move(cb));
                     }
-                };
-                handler();
+                });
+                
                 return;
             }
 
@@ -162,7 +161,7 @@ namespace api::v2
             if (async)
             {
                 auto cb = std::move(callback);
-                auto handler = [this, req, cb, clientType, id]() mutable -> drogon::AsyncTask
+                drogon::async_run([this, req, cb, clientType, id]() mutable -> drogon::Task<void>
                 {
                     CALLBACK_ mcb = [cb](int code, const std::string& content)
                     {
@@ -200,8 +199,8 @@ namespace api::v2
                     {
                         Helper::failureResponse(e.what(), std::move(cb));
                     }
-                };
-                handler();
+                });
+                
                 return;
             }
 
@@ -215,8 +214,224 @@ namespace api::v2
             if (async && (clientType == "users" || clientType == "providers"))
             {
                 auto cb = std::move(callback);
-                auto handler = [this, req, cb, clientType]<typename T>() mutable -> drogon::AsyncTask
+                if (clientType == "users")
                 {
+                    drogon::async_run([this, req, cb]() mutable -> drogon::Task<void> {
+                        co_await readAsyncImpl<User>(req, std::move(cb), "users");
+                    });
+                }
+                else
+                {
+                    drogon::async_run([this, req, cb]() mutable -> drogon::Task<void> {
+                        co_await readAsyncImpl<Provider>(req, std::move(cb), "providers");
+                    });
+                }
+                return;
+            }
+            executeControllerMethod(*dbExecutor, clientRegistry, clientType, &ClientControllerBase::Read, req, std::move(callback), req->body());
+        }
+
+        void update(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& clientType)
+        {
+            auto id = parseIdParam(req, "id", callback);
+            if (!id)
+                return;
+            executeControllerMethod(*dbExecutor, clientRegistry, clientType, &ClientControllerBase::Update, req, std::move(callback), req->body(), *id);
+        }
+        void delete_(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& clientType)
+        {
+            auto id = parseIdParam(req, "id", callback);
+            if (!id)
+                return;
+
+            const bool async = asyncDb_;
+            if (async)
+            {
+                auto cb = std::move(callback);
+                drogon::async_run([this, req, cb, clientType, id]() mutable -> drogon::Task<void>
+                {
+                    CALLBACK_ mcb = [cb](int code, const std::string& content)
+                    {
+                        using Reply = std::function<void(const drogon::HttpResponsePtr&)>;
+                        switch (code)
+                        {
+                            case api::v2::Http::Status::OK:
+                                Helper::successResponse(content, Reply(cb));
+                                break;
+                            case api::v2::Http::Status::INTERNAL_SERVER_ERROR:
+                                Helper::failureResponse(content, Reply(cb));
+                                break;
+                            default:
+                                Helper::errorResponse(static_cast<drogon::HttpStatusCode>(code), content, Reply(cb));
+                                break;
+                        }
+                    };
+
+                    Requester requester(req->getAttributes()->get<uint64_t>("clientID"), req->getAttributes()->get<std::string>("clientGroup"));
+
+                    auto ctlIt = clientRegistry.find(clientType);
+                    if (ctlIt == clientRegistry.end())
+                    {
+                        std::move(mcb)(api::v2::Http::Status::BAD_REQUEST, fmt::format("Type mapping not found for: {}", clientType));
+                        co_return;
+                    }
+
+                    try
+                    {
+                        co_await std::visit([&](auto& controller) -> drogon::Task<void> {
+                            co_await controller->DeleteAsync(std::move(mcb), std::move(requester), id);
+                        }, ctlIt->second);
+                    }
+                    catch (const std::exception& e)
+                    {
+                        Helper::failureResponse(e.what(), std::move(cb));
+                    }
+                });
+                
+                return;
+            }
+
+            executeControllerMethod(*dbExecutor, clientRegistry, clientType, &ClientControllerBase::Delete, req, std::move(callback), *id);
+        }
+        void search(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& clientType)
+        {
+            const bool async = asyncDb_;
+            if (async)
+            {
+                auto cb = std::move(callback);
+                drogon::async_run([this, req, cb, clientType]() mutable -> drogon::Task<void>
+                {
+                    CALLBACK_ mcb = [cb](int code, const std::string& content)
+                    {
+                        using Reply = std::function<void(const drogon::HttpResponsePtr&)>;
+                        switch (code)
+                        {
+                            case api::v2::Http::Status::OK:
+                                Helper::successResponse(content, Reply(cb));
+                                break;
+                            case api::v2::Http::Status::INTERNAL_SERVER_ERROR:
+                                Helper::failureResponse(content, Reply(cb));
+                                break;
+                            default:
+                                Helper::errorResponse(static_cast<drogon::HttpStatusCode>(code), content, Reply(cb));
+                                break;
+                        }
+                    };
+
+                    Requester requester(req->getAttributes()->get<uint64_t>("clientID"), req->getAttributes()->get<std::string>("clientGroup"));
+
+                    auto ctlIt = clientRegistry.find(clientType);
+                    if (ctlIt == clientRegistry.end())
+                    {
+                        std::move(mcb)(api::v2::Http::Status::BAD_REQUEST, fmt::format("Type mapping not found for: {}", clientType));
+                        co_return;
+                    }
+
+                    try
+                    {
+                        co_await std::visit([&](auto& controller) -> drogon::Task<void> {
+                            co_await controller->SearchAsync(std::move(mcb), std::move(requester), req->body());
+                        }, ctlIt->second);
+                    }
+                    catch (const std::exception& e)
+                    {
+                        Helper::failureResponse(e.what(), std::move(cb));
+                    }
+                });
+                
+                return;
+            }
+
+            executeControllerMethod(*dbExecutor, clientRegistry, clientType, &ClientControllerBase::Search, req, std::move(callback), req->body());
+        }
+        void getservices(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& clientType)
+        {
+            auto id = parseIdParam(req, "id", callback);
+            if (!id)
+                return;
+
+            const bool async = asyncDb_;
+            if (async)
+            {
+                auto cb = std::move(callback);
+                drogon::async_run([this, req, cb, clientType, id]() mutable -> drogon::Task<void>
+                {
+                    CALLBACK_ mcb = [cb](int code, const std::string& content)
+                    {
+                        using Reply = std::function<void(const drogon::HttpResponsePtr&)>;
+                        switch (code)
+                        {
+                            case api::v2::Http::Status::OK:
+                                Helper::successResponse(content, Reply(cb));
+                                break;
+                            case api::v2::Http::Status::INTERNAL_SERVER_ERROR:
+                                Helper::failureResponse(content, Reply(cb));
+                                break;
+                            default:
+                                Helper::errorResponse(static_cast<drogon::HttpStatusCode>(code), content, Reply(cb));
+                                break;
+                        }
+                    };
+
+                    Requester requester(req->getAttributes()->get<uint64_t>("clientID"), req->getAttributes()->get<std::string>("clientGroup"));
+
+                    auto ctlIt = clientRegistry.find(clientType);
+                    if (ctlIt == clientRegistry.end())
+                    {
+                        std::move(mcb)(api::v2::Http::Status::BAD_REQUEST, fmt::format("Type mapping not found for: {}", clientType));
+                        co_return;
+                    }
+
+                    try
+                    {
+                        co_await std::visit([&](auto& controller) -> drogon::Task<void> {
+                            co_await controller->GetServicesAsync(std::move(mcb), std::move(requester), id);
+                        }, ctlIt->second);
+                    }
+                    catch (const std::exception& e)
+                    {
+                        Helper::failureResponse(e.what(), std::move(cb));
+                    }
+                });
+                
+                return;
+            }
+
+            executeControllerMethod(*dbExecutor, clientRegistry, clientType, &ClientControllerBase::GetServices, req, std::move(callback), *id);
+        }
+
+        METHOD_LIST_BEGIN
+        METHOD_ADD(Clients::create, "/{clientType}/create", drogon::Post, INSECURE);
+        METHOD_ADD(Clients::login, "/{clientType}/login", drogon::Post, INSECURE);
+        METHOD_ADD(Clients::logout, "/{clientType}/logout", drogon::Post, SECURE);
+        METHOD_ADD(Clients::suspend, "/{clientType}/suspend", drogon::Post, SECURE);
+        METHOD_ADD(Clients::activate, "/{clientType}/activate", drogon::Post, SECURE);
+        METHOD_ADD(Clients::read, "/{clientType}/read", drogon::Post, SECURE);
+        METHOD_ADD(Clients::update, "/{clientType}/update", drogon::Put, SECURE);
+        METHOD_ADD(Clients::delete_, "/{clientType}/delete", drogon::Delete, SECURE);
+        METHOD_ADD(Clients::search, "/{clientType}/search", drogon::Post, SECURE);
+        METHOD_ADD(Clients::getservices, "/{clientType}/services", drogon::Get, SECURE);
+        METHOD_LIST_END
+
+       private:
+        std::shared_ptr<DbExecutor> dbExecutor = Store::getObject<DbExecutor>();  // runs the blocking database work, shared with every route
+    template <typename T>
+    drogon::Task<void> readAsyncImpl(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& cb, const std::string& clientType);
+
+        std::shared_ptr<GateKeeper> gateKeeper_ = Store::cachedObject<GateKeeper>();
+        std::shared_ptr<DatabaseController> dbController_ = Store::cachedObject<DatabaseController>();
+        const bool asyncDb_ = Store::cachedObject<Configurator>()->get<Configurator::DatabaseConfig>().async;
+        using ClientVariant = std::variant<std::shared_ptr<ClientController<User>>, std::shared_ptr<ClientController<Provider>>>;
+
+        std::unordered_map<std::string_view, ClientVariant> clientRegistry = {
+            {"users", Store::getObject<ClientController<User>>()}, {"providers", Store::getObject<ClientController<Provider>>()}};
+    };
+
+
+template <typename T>
+drogon::Task<void> Clients::readAsyncImpl(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& cb, const std::string& clientType)
+{
+
                     CALLBACK_ mcb = [cb](int code, const std::string& content)
                     {
                         using Reply = std::function<void(const drogon::HttpResponsePtr&)>;
@@ -323,212 +538,8 @@ namespace api::v2
                     {
                         Helper::failureResponse(e.what(), std::move(cb));
                     }
-                };
-                if (clientType == "users")
-                {
-                    handler.template operator()<User>();
-                }
-                else
-                {
-                    handler.template operator()<Provider>();
-                }
-                return;
-            }
 
-            executeControllerMethod(*dbExecutor, clientRegistry, clientType, &ClientControllerBase::Read, req, std::move(callback), req->body());
-        }
-
-        void update(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& clientType)
-        {
-            auto id = parseIdParam(req, "id", callback);
-            if (!id)
-                return;
-            executeControllerMethod(*dbExecutor, clientRegistry, clientType, &ClientControllerBase::Update, req, std::move(callback), req->body(), *id);
-        }
-        void delete_(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& clientType)
-        {
-            auto id = parseIdParam(req, "id", callback);
-            if (!id)
-                return;
-
-            const bool async = asyncDb_;
-            if (async)
-            {
-                auto cb = std::move(callback);
-                auto handler = [this, req, cb, clientType, id]() mutable -> drogon::AsyncTask
-                {
-                    CALLBACK_ mcb = [cb](int code, const std::string& content)
-                    {
-                        using Reply = std::function<void(const drogon::HttpResponsePtr&)>;
-                        switch (code)
-                        {
-                            case api::v2::Http::Status::OK:
-                                Helper::successResponse(content, Reply(cb));
-                                break;
-                            case api::v2::Http::Status::INTERNAL_SERVER_ERROR:
-                                Helper::failureResponse(content, Reply(cb));
-                                break;
-                            default:
-                                Helper::errorResponse(static_cast<drogon::HttpStatusCode>(code), content, Reply(cb));
-                                break;
-                        }
-                    };
-
-                    Requester requester(req->getAttributes()->get<uint64_t>("clientID"), req->getAttributes()->get<std::string>("clientGroup"));
-
-                    auto ctlIt = clientRegistry.find(clientType);
-                    if (ctlIt == clientRegistry.end())
-                    {
-                        std::move(mcb)(api::v2::Http::Status::BAD_REQUEST, fmt::format("Type mapping not found for: {}", clientType));
-                        co_return;
-                    }
-
-                    try
-                    {
-                        co_await std::visit([&](auto& controller) -> drogon::Task<void> {
-                            co_await controller->DeleteAsync(std::move(mcb), std::move(requester), id);
-                        }, ctlIt->second);
-                    }
-                    catch (const std::exception& e)
-                    {
-                        Helper::failureResponse(e.what(), std::move(cb));
-                    }
-                };
-                handler();
-                return;
-            }
-
-            executeControllerMethod(*dbExecutor, clientRegistry, clientType, &ClientControllerBase::Delete, req, std::move(callback), *id);
-        }
-        void search(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& clientType)
-        {
-            const bool async = asyncDb_;
-            if (async)
-            {
-                auto cb = std::move(callback);
-                auto handler = [this, req, cb, clientType]() mutable -> drogon::AsyncTask
-                {
-                    CALLBACK_ mcb = [cb](int code, const std::string& content)
-                    {
-                        using Reply = std::function<void(const drogon::HttpResponsePtr&)>;
-                        switch (code)
-                        {
-                            case api::v2::Http::Status::OK:
-                                Helper::successResponse(content, Reply(cb));
-                                break;
-                            case api::v2::Http::Status::INTERNAL_SERVER_ERROR:
-                                Helper::failureResponse(content, Reply(cb));
-                                break;
-                            default:
-                                Helper::errorResponse(static_cast<drogon::HttpStatusCode>(code), content, Reply(cb));
-                                break;
-                        }
-                    };
-
-                    Requester requester(req->getAttributes()->get<uint64_t>("clientID"), req->getAttributes()->get<std::string>("clientGroup"));
-
-                    auto ctlIt = clientRegistry.find(clientType);
-                    if (ctlIt == clientRegistry.end())
-                    {
-                        std::move(mcb)(api::v2::Http::Status::BAD_REQUEST, fmt::format("Type mapping not found for: {}", clientType));
-                        co_return;
-                    }
-
-                    try
-                    {
-                        co_await std::visit([&](auto& controller) -> drogon::Task<void> {
-                            co_await controller->SearchAsync(std::move(mcb), std::move(requester), req->body());
-                        }, ctlIt->second);
-                    }
-                    catch (const std::exception& e)
-                    {
-                        Helper::failureResponse(e.what(), std::move(cb));
-                    }
-                };
-                handler();
-                return;
-            }
-
-            executeControllerMethod(*dbExecutor, clientRegistry, clientType, &ClientControllerBase::Search, req, std::move(callback), req->body());
-        }
-        void getservices(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& clientType)
-        {
-            auto id = parseIdParam(req, "id", callback);
-            if (!id)
-                return;
-
-            const bool async = asyncDb_;
-            if (async)
-            {
-                auto cb = std::move(callback);
-                auto handler = [this, req, cb, clientType, id]() mutable -> drogon::AsyncTask
-                {
-                    CALLBACK_ mcb = [cb](int code, const std::string& content)
-                    {
-                        using Reply = std::function<void(const drogon::HttpResponsePtr&)>;
-                        switch (code)
-                        {
-                            case api::v2::Http::Status::OK:
-                                Helper::successResponse(content, Reply(cb));
-                                break;
-                            case api::v2::Http::Status::INTERNAL_SERVER_ERROR:
-                                Helper::failureResponse(content, Reply(cb));
-                                break;
-                            default:
-                                Helper::errorResponse(static_cast<drogon::HttpStatusCode>(code), content, Reply(cb));
-                                break;
-                        }
-                    };
-
-                    Requester requester(req->getAttributes()->get<uint64_t>("clientID"), req->getAttributes()->get<std::string>("clientGroup"));
-
-                    auto ctlIt = clientRegistry.find(clientType);
-                    if (ctlIt == clientRegistry.end())
-                    {
-                        std::move(mcb)(api::v2::Http::Status::BAD_REQUEST, fmt::format("Type mapping not found for: {}", clientType));
-                        co_return;
-                    }
-
-                    try
-                    {
-                        co_await std::visit([&](auto& controller) -> drogon::Task<void> {
-                            co_await controller->GetServicesAsync(std::move(mcb), std::move(requester), id);
-                        }, ctlIt->second);
-                    }
-                    catch (const std::exception& e)
-                    {
-                        Helper::failureResponse(e.what(), std::move(cb));
-                    }
-                };
-                handler();
-                return;
-            }
-
-            executeControllerMethod(*dbExecutor, clientRegistry, clientType, &ClientControllerBase::GetServices, req, std::move(callback), *id);
-        }
-
-        METHOD_LIST_BEGIN
-        METHOD_ADD(Clients::create, "/{clientType}/create", drogon::Post, INSECURE);
-        METHOD_ADD(Clients::login, "/{clientType}/login", drogon::Post, INSECURE);
-        METHOD_ADD(Clients::logout, "/{clientType}/logout", drogon::Post, SECURE);
-        METHOD_ADD(Clients::suspend, "/{clientType}/suspend", drogon::Post, SECURE);
-        METHOD_ADD(Clients::activate, "/{clientType}/activate", drogon::Post, SECURE);
-        METHOD_ADD(Clients::read, "/{clientType}/read", drogon::Post, SECURE);
-        METHOD_ADD(Clients::update, "/{clientType}/update", drogon::Put, SECURE);
-        METHOD_ADD(Clients::delete_, "/{clientType}/delete", drogon::Delete, SECURE);
-        METHOD_ADD(Clients::search, "/{clientType}/search", drogon::Post, SECURE);
-        METHOD_ADD(Clients::getservices, "/{clientType}/services", drogon::Get, SECURE);
-        METHOD_LIST_END
-
-       private:
-        std::shared_ptr<DbExecutor> dbExecutor = Store::getObject<DbExecutor>();  // runs the blocking database work, shared with every route
-        std::shared_ptr<GateKeeper> gateKeeper_ = Store::cachedObject<GateKeeper>();
-        std::shared_ptr<DatabaseController> dbController_ = Store::cachedObject<DatabaseController>();
-        const bool asyncDb_ = Store::cachedObject<Configurator>()->get<Configurator::DatabaseConfig>().async;
-        using ClientVariant = std::variant<std::shared_ptr<ClientController<User>>, std::shared_ptr<ClientController<Provider>>>;
-
-        std::unordered_map<std::string_view, ClientVariant> clientRegistry = {
-            {"users", Store::getObject<ClientController<User>>()}, {"providers", Store::getObject<ClientController<Provider>>()}};
-    };
+    co_return;
+}
 
 }  // namespace api::v2

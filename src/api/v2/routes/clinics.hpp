@@ -41,7 +41,7 @@ namespace api::v2
             if (async)
             {
                 auto cb = std::move(callback);
-                auto handler = [this, req, cb, serviceType]() mutable -> drogon::AsyncTask
+                drogon::async_run([this, req, cb, serviceType]() mutable -> drogon::Task<void>
                 {
                     CALLBACK_ mcb = [cb](int code, const std::string& content)
                     {
@@ -79,8 +79,8 @@ namespace api::v2
                     {
                         Helper::failureResponse(e.what(), std::move(cb));
                     }
-                };
-                handler();
+                });
+                
                 return;
             }
 
@@ -93,7 +93,7 @@ namespace api::v2
             if (async)
             {
                 auto cb = std::move(callback);
-                auto handler = [this, req, cb, serviceType]() mutable -> drogon::AsyncTask
+                drogon::async_run([this, req, cb, serviceType]() mutable -> drogon::Task<void>
                 {
                     CALLBACK_ mcb = [cb](int code, const std::string& content)
                     {
@@ -131,8 +131,8 @@ namespace api::v2
                     {
                         Helper::failureResponse(e.what(), std::move(cb));
                     }
-                };
-                handler();
+                });
+                
                 return;
             }
 
@@ -149,7 +149,7 @@ namespace api::v2
             if (async)
             {
                 auto cb = std::move(callback);
-                auto handler = [this, req, cb, serviceType, id]() mutable -> drogon::AsyncTask
+                drogon::async_run([this, req, cb, serviceType, id]() mutable -> drogon::Task<void>
                 {
                     CALLBACK_ mcb = [cb](int code, const std::string& content)
                     {
@@ -187,8 +187,8 @@ namespace api::v2
                     {
                         Helper::failureResponse(e.what(), std::move(cb));
                     }
-                };
-                handler();
+                });
+                
                 return;
             }
 
@@ -204,7 +204,7 @@ namespace api::v2
             if (async)
             {
                 auto cb = std::move(callback);
-                auto handler = [this, req, cb, serviceType, id]() mutable -> drogon::AsyncTask
+                drogon::async_run([this, req, cb, serviceType, id]() mutable -> drogon::Task<void>
                 {
                     CALLBACK_ mcb = [cb](int code, const std::string& content)
                     {
@@ -242,8 +242,8 @@ namespace api::v2
                     {
                         Helper::failureResponse(e.what(), std::move(cb));
                     }
-                };
-                handler();
+                });
+                
                 return;
             }
 
@@ -255,7 +255,7 @@ namespace api::v2
             if (async)
             {
                 auto cb = std::move(callback);
-                auto handler = [this, req, cb]() mutable -> drogon::AsyncTask
+                drogon::async_run([this, req, cb]() mutable -> drogon::Task<void>
                 {
                     CALLBACK_ mcb = [cb](int code, const std::string& content)
                     {
@@ -293,8 +293,8 @@ namespace api::v2
                     {
                         Helper::failureResponse(e.what(), std::move(cb));
                     }
-                };
-                handler();
+                });
+                
                 return;
             }
 
@@ -311,7 +311,7 @@ namespace api::v2
             {
                 auto cb = std::move(callback);
                 const uint64_t pid = *patient_id;
-                auto handler = [this, req, cb, pid]() mutable -> drogon::AsyncTask
+                drogon::async_run([this, req, cb, pid]() mutable -> drogon::Task<void>
                 {
                     CALLBACK_ mcb = [cb](int code, const std::string& content)
                     {
@@ -349,8 +349,8 @@ namespace api::v2
                     {
                         Helper::failureResponse(e.what(), std::move(cb));
                     }
-                };
-                handler();
+                });
+                
                 return;
             }
 
