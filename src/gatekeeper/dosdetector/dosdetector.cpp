@@ -198,17 +198,17 @@ inline std::optional<std::string> __attribute((always_inline)) DOSDetector::gene
 {
     try
     {
-        std::string data;
-        data.reserve(REQUEST_BUFFER_SIZE);
+        std::uint64_t header_hash = req.header_hash;
 
-        for (const auto& header : req.headers)
+        XXH3_state_t* state = XXH3_createState();
+        XXH3_64bits_reset(state);
+        XXH3_64bits_update(state, &header_hash, sizeof(header_hash));
+        if (!req.body.empty())
         {
-            data.append(header.second);
+            XXH3_64bits_update(state, req.body.data(), req.body.size());
         }
-
-        data.append(req.body);
-
-        XXH64_hash_t hashed_key = XXH3_64bits(data.c_str(), data.size());
+        XXH64_hash_t hashed_key = XXH3_64bits_digest(state);
+        XXH3_freeState(state);
 
         return fmt::format("{}", hashed_key);
     }

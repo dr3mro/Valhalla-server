@@ -33,7 +33,7 @@ inline void __attribute((always_inline)) EntityController<T>::Create(CALLBACK_&&
     {
         bool            success = false;
         HttpError       error;
-        Validator::Rule rule((Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA | Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA), {"id"});
+        static const Validator::Rule rule((Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA | Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA), {"id"});
 
         std::optional<jsoncons::json> request_j;
         try
@@ -107,9 +107,9 @@ inline void __attribute((always_inline)) EntityController<T>::Read(CALLBACK_&& c
             return;
         }
 
-        Validator::Rule rule(Validator::Rule::Action::ASSERT_NOT_PRESENT, {"id", "username", "password", "created_at", "updated_at"});
+        static const Validator::Rule rule(Validator::Rule::Action::ASSERT_NOT_PRESENT, {"id", "username", "password", "created_at", "updated_at"});
 
-        if (!Validator::validateDatabaseReadSchema(schema, std::format("{}_safe", T::getTableName()), error, rule))
+        if (!Validator::validateDatabaseReadSchema(schema, [](){ static const std::string cached = std::format("{}_safe", T::getTableName()); return cached; }(), error, rule))
         {
             std::move(callback)(error.code, fmt::format("Failed to validate request body, {}.", error.message));
             return;
@@ -156,7 +156,7 @@ inline void __attribute((always_inline)) EntityController<T>::Update(
             return;
         }
 
-        Validator::Rule rule(Validator::Rule::Action::NONE, {});
+        static const Validator::Rule rule(Validator::Rule::Action::NONE, {});
         success = Validator::validateDatabaseUpdateSchema(T::getTableName(), request_json, error, rule);
 
         if (!success)
@@ -252,7 +252,7 @@ drogon::Task<void> EntityController<T>::CreateAsync(CALLBACK_&& callback, const 
     {
         bool            success = false;
         HttpError       error;
-        Validator::Rule rule((Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA | Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA), {"id"});
+        static const Validator::Rule rule((Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA | Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA), {"id"});
 
         std::optional<jsoncons::json> request_j;
         try
@@ -323,9 +323,9 @@ drogon::Task<void> EntityController<T>::ReadAsync(CALLBACK_&& callback, const Re
             co_return;
         }
 
-        Validator::Rule rule(Validator::Rule::Action::ASSERT_NOT_PRESENT, {"id", "username", "password", "created_at", "updated_at"});
+        static const Validator::Rule rule(Validator::Rule::Action::ASSERT_NOT_PRESENT, {"id", "username", "password", "created_at", "updated_at"});
 
-        if (!Validator::validateDatabaseReadSchema(schema, std::format("{}_safe", T::getTableName()), error, rule))
+        if (!Validator::validateDatabaseReadSchema(schema, [](){ static const std::string cached = std::format("{}_safe", T::getTableName()); return cached; }(), error, rule))
         {
             std::move(callback)(error.code, fmt::format("Failed to validate request body, {}.", error.message));
             co_return;
@@ -371,7 +371,7 @@ drogon::Task<void> EntityController<T>::UpdateAsync(CALLBACK_&& callback, const 
             co_return;
         }
 
-        Validator::Rule rule(Validator::Rule::Action::NONE, {});
+        static const Validator::Rule rule(Validator::Rule::Action::NONE, {});
         success = Validator::validateDatabaseUpdateSchema(T::getTableName(), request_json, error, rule);
 
         if (!success)

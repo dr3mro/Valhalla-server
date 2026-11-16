@@ -14,11 +14,11 @@ TEST_CASE("GateKeeper::isDosAttack allows a fresh request", "[gatekeeper][dos]")
 {
     GateKeeper                 gk;
     const DOSDetector::Request req{
-        .ip      = "10.99.88.77",
-        .method  = "GET",
-        .path    = "/api/v2/users/read",
-        .headers = {},
-        .body    = "fresh-request-body",
+        .ip          = "10.99.88.77",
+        .method      = "GET",
+        .path        = "/api/v2/users/read",
+        .header_hash = 0,
+        .body        = "fresh-request-body",
     };
     CHECK(gk.isDosAttack(req) == DOSDetector::Status::ALLOWED);
 }
@@ -30,11 +30,11 @@ TEST_CASE("GateKeeper::isDosAttack returns a valid status for every request", "[
     // threshold logic is exhaustively tested in test_dosdetector.cpp.
     GateKeeper                 gk;
     const DOSDetector::Request req{
-        .ip      = "10.202.33.44",
-        .method  = "POST",
-        .path    = "/api/v2/test",
-        .headers = {},
-        .body    = "repeated-gatekeeper-body",
+        .ip          = "10.202.33.44",
+        .method      = "POST",
+        .path        = "/api/v2/test",
+        .header_hash = 0,
+        .body        = "repeated-gatekeeper-body",
     };
 
     const auto status = gk.isDosAttack(req);

@@ -12,6 +12,8 @@
 #include <optional>
 #include <string>
 #include <string_view>
+
+#include <xxhash.h>
 #include <unordered_map>
 #include <unordered_set>
 
@@ -32,12 +34,23 @@ class DOSDetector
     };
     using Request = struct Request
     {
-        std::string                                  ip;
-        std::string                                  method;
-        std::string                                  path;
-        std::unordered_map<std::string, std::string> headers;
-        std::string_view                             body;
+        std::string       ip;
+        std::string_view  method;
+        std::string_view  path;
+        std::uint64_t     header_hash;
+        std::string_view  body;
     };
+
+    template <typename Range>
+    static std::uint64_t hashHeaders(const Range& headers)
+    {
+        std::uint64_t h = 0;
+        for (const auto& kv : headers)
+        {
+            h ^= XXH3_64bits(kv.second.data(), kv.second.size());
+        }
+        return h;
+    }
 
     /// Injectable clock (test seam). Returns a steady_clock time point.
     using ClockFn = std::function<std::chrono::time_point<std::chrono::steady_clock>()>;

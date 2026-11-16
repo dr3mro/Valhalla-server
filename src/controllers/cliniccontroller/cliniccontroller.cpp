@@ -19,7 +19,7 @@ void ClinicController<T>::CreateImpl(CALLBACK_&& callback, const Requester&& req
     }
     bool success = false;
 
-    Validator::Rule rule((Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA | Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA), {"id"});
+    static const Validator::Rule rule((Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA | Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA), {"id"});
 
     api::v2::Http::Error error;
     try
@@ -112,7 +112,7 @@ drogon::Task<void> ClinicController<T>::CreateAsyncImpl(CALLBACK_&& callback, co
     }
     bool success = false;
 
-    Validator::Rule rule((Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA | Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA), {"id"});
+    static const Validator::Rule rule((Validator::Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA | Validator::Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA), {"id"});
 
     api::v2::Http::Error error;
     try

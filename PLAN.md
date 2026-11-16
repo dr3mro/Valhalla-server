@@ -110,7 +110,7 @@ Source: per-route object count (about 16-24 objects per request, 1 locked `Store
 - [ ] Single-statement writes use `pqxx::nontransaction` (no `BEGIN`/`COMMIT`). **Partly done:** some `Database` paths already do; the `executeQuery<json, pqxx::work>` path used by `databasecontroller.cpp:67` does not. [P9.2]
 - [ ] Replace `checkItemExists` before insert with `INSERT ... ON CONFLICT DO NOTHING RETURNING id`. [P9.3]
 - [ ] Prepared statements for login, permission and by-id queries, re-prepared after `reconnect`. [P9.4]
-- [ ] **Related bug to fix in the same pass** (same code): `ClientController::Delete` calls `removeSession` after `EntityController::Delete` whatever the outcome (`clientcontroller.cpp:133-138`). `Suspend` (`:181`) does the same, which is fine for suspend but means a suspended client's session _is_ removed; that answers half of the `is_active` question in section 1 (re-check only matters for paths that don't go through `Suspend`). [R2.3]
+- [x] **Related bug to fix in the same pass** (same code): `ClientController::Delete` now removes the session only when delete succeeds (sync and async); `Suspend` unchanged. [R2.3]
 - Done when: round-trip counts are recorded in `docs/perf/` and no endpoint wraps a single statement in a transaction.
 
 ## 3. Correctness bugs (independent of performance)

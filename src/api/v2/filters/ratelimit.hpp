@@ -19,18 +19,19 @@ namespace api::v2::Filters
     class RateLimit : public drogon::HttpFilter<RateLimit>
     {
        public:
-        RateLimit() = default;
+        RateLimit()
+            : gateKeeper(Store::getObject<GateKeeper>()), dos_detector(Store::getObject<DOSDetector>())
+        {
+        }
         void doFilter(const drogon::HttpRequestPtr& req, drogon::FilterCallback&& fcb, drogon::FilterChainCallback&& fccb) override
         {
-            std::shared_ptr<GateKeeper> gatekeeper = Store::getObject<GateKeeper>();
+            DOSDetector::Request request = {.ip          = req->peerAddr().toIp(),
+                .method     = req->methodString(),
+                .path       = req->path(),
+                .header_hash = DOSDetector::hashHeaders(req->getHeaders()),
+                .body       = req->body()};
 
-            DOSDetector::Request request = {.ip = req->peerAddr().toIp(),
-                .method                         = req->methodString(),
-                .path                           = req->path(),
-                .headers = std::unordered_map<std::string, std::string, std::hash<std::string>>(req->getHeaders().begin(), req->getHeaders().end()),
-                .body    = req->body()};
-
-            DOSDetector::Status status = gatekeeper->isDosAttack(request);
+            DOSDetector::Status status = gateKeeper->isDosAttack(request);
 
             switch (status)
             {
@@ -42,7 +43,7 @@ namespace api::v2::Filters
                     reply("IP is blacklisted.", drogon::k403Forbidden, std::move(fcb));
                     break;
                 case DOSDetector::Status::RATELIMITED:
-                    reply("IP is blacklisted.", drogon::k429TooManyRequests, std::move(fcb));
+                    reply("Too many requests.", drogon::k429TooManyRequests, std::move(fcb));
                     break;
                 case DOSDetector::Status::BANNED:
                     reply("IP is banned.", drogon::k503ServiceUnavailable, std::move(fcb));
@@ -57,7 +58,8 @@ namespace api::v2::Filters
         }
 
        private:
-        std::shared_ptr<DOSDetector> dos_detector = Store::getObject<DOSDetector>();
+        std::shared_ptr<GateKeeper>   gateKeeper;
+        std::shared_ptr<DOSDetector>  dos_detector;
         void                         reply(const std::string&& msg, drogon::HttpStatusCode code, const drogon::FilterCallback&& cb)
         {
             auto resp = drogon::HttpResponse::newHttpResponse();

@@ -38,7 +38,7 @@ namespace
 
     DOSDetector::Request makeRequest(const std::string& ip, const std::string& body, const std::unordered_map<std::string, std::string> headers = {})
     {
-        return DOSDetector::Request{.ip = ip, .method = "GET", .path = "/users/read", .headers = headers, .body = body};
+        return DOSDetector::Request{.ip = ip, .method = "GET", .path = "/users/read", .header_hash = DOSDetector::hashHeaders(headers), .body = body};
     }
 
     /// Detector + fake clock pair. The clock starts "now" and is advanced by

@@ -104,7 +104,7 @@ void ClientController<T>::updateNow(CALLBACK_&& callback, const Requester& reque
     try
     {
         bool            success = false;
-        Validator::Rule rule(Validator::Rule::Action::ASSERT_IMMUTABLE, {"username", "password"});
+        static const Validator::Rule rule(Validator::Rule::Action::ASSERT_IMMUTABLE, {"username", "password"});
 
         HttpError      error;
         UpdateClient_t client_data(data, _id, T::getTableName(), error, success, rule);
