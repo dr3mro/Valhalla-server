@@ -194,6 +194,9 @@ run_all() {
     step "Database init"
     "$ROOT/scripts/run/db_init.sh" || warn "db_init failed"
 
+    if server_running; then
+        server_stop
+    fi
     step "Start server ($profile)"
     server_start "$profile" --background || { err "Server start failed"; return 1; }
 
