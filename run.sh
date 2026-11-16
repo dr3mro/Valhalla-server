@@ -39,9 +39,9 @@ ${C_BOLD}${C_Y}${E_BUILD}Build & run:${C_N}
   ${C_C}build release${C_N}    ${C_DIM}Build Release only${C_N}
   ${C_C}build debug${C_N}      ${C_DIM}Build Debug only${C_N}
   ${C_C}build openapi${C_N}    ${C_DIM}Regenerate OpenAPI docs${C_N}
+  ${C_C}configure${C_N}         ${C_DIM}Configure both builds (default)${C_N}
   ${C_C}configure release${C_N} ${C_DIM}Configure Release build${C_N}
   ${C_C}configure debug${C_N}  ${C_DIM}Configure Debug build${C_N}
-  ${C_C}configure both${C_N}   ${C_DIM}Configure both builds${C_N}
   ${C_C}clean${C_N}            ${C_DIM}Clean Debug + Release${C_N}
   ${C_C}clean release${C_N}    ${C_DIM}Clean Release only${C_N}
   ${C_C}clean debug${C_N}      ${C_DIM}Clean Debug only${C_N}
