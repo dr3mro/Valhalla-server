@@ -7,7 +7,12 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$ROOT" || exit 1
 
 # Color/emoji by default (unless --no-color or NO_COLOR).
-if [[ " $* " != *" --no-color "* && -z "${NO_COLOR:-}" ]]; then
+# Force color/emoji unless the user explicitly asks to disable them.
+if [[ " $* " == *" --no-color "* ]]; then
+    export VALHALLA_NO_COLOR=1
+    export VALHALLA_NO_EMOJI=1
+else
+    unset NO_COLOR VALHALLA_NO_COLOR VALHALLA_NO_EMOJI
     export FORCE_COLOR=1
     export FORCE_EMOJI=1
 fi
