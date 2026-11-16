@@ -1240,7 +1240,7 @@ check_deps() {
 
   case "$cmd" in
     run | update | build | restart | status | doc) need curl ;;
-    outdated) need curl python3 ;;
+    outdated) need curl; want python3 "optional Hub-tag lookup" ;;
   esac
 
   case "$cmd" in
