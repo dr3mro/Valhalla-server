@@ -35,42 +35,38 @@ ${C_BOLD}${C_M}╚════════════════════�
 ${C_BOLD}Usage:${C_N} ./run.sh <command> [args...]
 
 ${C_BOLD}${C_Y}${E_BUILD}Build & run:${C_N}
-  ${C_C}build${C_N}            ${C_DIM}Build Debug + Release${C_N}
-  ${C_C}build release${C_N}    ${C_DIM}Build Release only${C_N}
-  ${C_C}build debug${C_N}      ${C_DIM}Build Debug only${C_N}
-  ${C_C}build openapi${C_N}    ${C_DIM}Regenerate OpenAPI docs${C_N}
-  ${C_C}configure${C_N}         ${C_DIM}Configure both builds (default)${C_N}
-  ${C_C}configure release${C_N} ${C_DIM}Configure Release build${C_N}
-  ${C_C}configure debug${C_N}  ${C_DIM}Configure Debug build${C_N}
-  ${C_C}clean${C_N}            ${C_DIM}Clean Debug + Release${C_N}
-  ${C_C}clean release${C_N}    ${C_DIM}Clean Release only${C_N}
-  ${C_C}clean debug${C_N}      ${C_DIM}Clean Debug only${C_N}
-  ${C_C}release${C_N}          ${C_DIM}Run Release server (./scripts/run/run_release.sh)${C_N}
-  ${C_C}debug${C_N}            ${C_DIM}Run Debug server (./scripts/run/run_debug.sh)${C_N}
-
+  ${C_C}build${C_N}                   ${C_DIM}Build Debug + Release${C_N}
+  ${C_C}build release${C_N}           ${C_DIM}Build Release only${C_N}
+  ${C_C}build debug${C_N}             ${C_DIM}Build Debug only${C_N}
+  ${C_C}build openapi${C_N}           ${C_DIM}Regenerate OpenAPI docs${C_N}
+  ${C_C}configure${C_N}               ${C_DIM}Configure both builds (default)${C_N}
+  ${C_C}configure release${C_N}       ${C_DIM}Configure Release build${C_N}
+  ${C_C}configure debug${C_N}         ${C_DIM}Configure Debug build${C_N}
+  ${C_C}clean${C_N}                   ${C_DIM}Clean Debug + Release${C_N}
+  ${C_C}clean release${C_N}           ${C_DIM}Clean Release only${C_N}
+  ${C_C}clean debug${C_N}             ${C_DIM}Clean Debug only${C_N}
+  ${C_C}release${C_N}                 ${C_DIM}Run Release server (./scripts/run/run_release.sh)${C_N}
+  ${C_C}debug${C_N}                   ${C_DIM}Run Debug server (./scripts/run/run_debug.sh)${C_N}
 ${C_BOLD}${C_Y}${E_SERVER}Server lifecycle:${C_N}
-  ${C_C}server start release|debug [--background]${C_N}  ${C_DIM}Start server${C_N}
-  ${C_C}server stop${C_N}                            ${C_DIM}Stop server${C_N}
-  ${C_C}server status${C_N}                          ${C_DIM}Server status${C_N}
-  ${C_C}server restart release|debug${C_N}            ${C_DIM}Restart server${C_N}
-  ${C_C}server peek${C_N}                            ${C_DIM}Tail server log${C_N}
-
+  ${C_C}server start release|debug [--background]${C_N}    ${C_DIM}Start server${C_N}
+  ${C_C}server stop${C_N}                                 ${C_DIM}Stop server${C_N}
+  ${C_C}server status${C_N}                               ${C_DIM}Server status${C_N}
+  ${C_C}server restart release|debug${C_N}                ${C_DIM}Restart server${C_N}
+  ${C_C}server peek${C_N}                                 ${C_DIM}Tail server log${C_N}
 ${C_BOLD}${C_Y}${E_TEST}Tests:${C_N}
-  ${C_C}tests | unit${C_N}     ${C_DIM}Run Catch2 unit tests (Debug + Release)${C_N}
-  ${C_C}api${C_N}              ${C_DIM}Run API tests (scripts/test/test_api.sh)${C_N}
-  ${C_C}fuzz${C_N}             ${C_DIM}Run fuzz_auth${C_N}
-  ${C_C}sqlmap${C_N}           ${C_DIM}Run sqlmap tests${C_N}
-  ${C_C}schemathesis${C_N}     ${C_DIM}Run schemathesis tests${C_N}
-  ${C_C}cors${C_N}             ${C_DIM}Run CORS tests${C_N}
-  ${C_C}bench${C_N}            ${C_DIM}Run performance baseline${C_N}
-  ${C_C}lint${C_N}             ${C_DIM}Run shell lint${C_N}
-  ${C_C}db-init${C_N}          ${C_DIM}Initialize database${C_N}
-  ${C_C}all${C_N}              ${C_DIM}Build, init DB, start server, run all tests, stop server${C_N}
-
+  ${C_C}tests | unit${C_N}            ${C_DIM}Run Catch2 unit tests (Debug + Release)${C_N}
+  ${C_C}api${C_N}                     ${C_DIM}Run API tests (scripts/test/test_api.sh)${C_N}
+  ${C_C}fuzz${C_N}                    ${C_DIM}Run fuzz_auth${C_N}
+  ${C_C}sqlmap${C_N}                  ${C_DIM}Run sqlmap tests${C_N}
+  ${C_C}schemathesis${C_N}            ${C_DIM}Run schemathesis tests${C_N}
+  ${C_C}cors${C_N}                    ${C_DIM}Run CORS tests${C_N}
+  ${C_C}bench${C_N}                   ${C_DIM}Run performance baseline${C_N}
+  ${C_C}lint${C_N}                    ${C_DIM}Run shell lint${C_N}
+  ${C_C}db-init${C_N}                 ${C_DIM}Initialize database${C_N}
+  ${C_C}all${C_N}                     ${C_DIM}Build, init DB, start server, run all tests, stop server${C_N}
 ${C_BOLD}${C_Y}${E_INFO}Other:${C_N}
-  ${C_C}list${C_N}             ${C_DIM}List commands${C_N}
-  ${C_C}help${C_N}             ${C_DIM}Show this help${C_N}
-
+  ${C_C}list${C_N}                    ${C_DIM}List commands${C_N}
+  ${C_C}help${C_N}                    ${C_DIM}Show this help${C_N}
 ${C_BOLD}${C_Y}Examples:${C_N}
   ./run.sh release --build
   ./run.sh all --debug
