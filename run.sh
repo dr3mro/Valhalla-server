@@ -226,7 +226,15 @@ case "$cmd" in
         ;;
     release) "$ROOT/scripts/run/run_release.sh" "$@" ;;
     debug) "$ROOT/scripts/run/run_debug.sh" "$@" ;;
-    tests|unit) ctest --test-dir "$ROOT/build/Debug" --output-on-failure "$@" && ctest --test-dir "$ROOT/build/Release" --output-on-failure "$@" ;;
+    tests|unit)
+        profile="${1:-both}"; shift || true
+        case "$profile" in
+            debug) ctest --test-dir "$ROOT/build/Debug" --output-on-failure "$@" ;;
+            release) ctest --test-dir "$ROOT/build/Release" --output-on-failure "$@" ;;
+            both|all|"") ctest --test-dir "$ROOT/build/Debug" --output-on-failure "$@" && ctest --test-dir "$ROOT/build/Release" --output-on-failure "$@" ;;
+            *) err "Unknown test profile: $profile"; exit 2 ;;
+        esac
+        ;;
     api) BASE_URL="${BASE_URL:-http://127.0.0.1:8080/api/v2}" "$ROOT/scripts/test/test_api.sh" "$@" ;;
     fuzz) BASE_URL="${BASE_URL:-http://127.0.0.1:8080/api/v2}" "$ROOT/scripts/test/fuzz_auth.sh" "$@" ;;
     sqlmap) "$ROOT/scripts/test/sqlmap_test.sh" "$@" ;;
