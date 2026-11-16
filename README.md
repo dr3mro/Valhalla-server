@@ -1002,6 +1002,18 @@ Put these settings where the container or server actually reads them: a project 
 
 `WHITELIST` disables DoS checks for matching IPs, so it is for development only. Never whitelist a broad pattern in production.
 
+### Browser simulation
+`./cors_react_check.sh` simulates what a browser does before and after cross-origin calls from a React dev server. It runs on macOS's default bash 3.2 (arrays and `read -a` are supported there) and uses only POSIX-ish `sed`, `awk`, `tr` and `grep` calls.
+
+```
+./cors_react_check.sh http://localhost:8080
+./cors_react_check.sh --credentials http://localhost:8080   # expected to fail: wildcard Allow-Origin is rejected with credentials
+cd tools/cors && python3 -m http.server 3000
+# then open http://localhost:3000/browser_check.html (or use port 5173)
+```
+
+Headless Chromium against the page reported all 7 calls as PASS (HTTP 400/401/200, nothing blocked by the browser). The `--credentials` variant is expected to fail with the wildcard-origin message; that is the documented limitation, not a regression.
+
 To run `./cors_test.sh --strict` against cases that need low DoS thresholds, start separate server instances on different ports (a banned IP stays banned, so 429 and 503 cannot both be provoked on the same instance):
 
 ```

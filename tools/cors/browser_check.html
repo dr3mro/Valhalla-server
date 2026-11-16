@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Valhalla CORS browser check</title>
+<style>
+  body { font: 15px/1.4 system-ui, sans-serif; max-width: 52rem; margin: 2rem auto; padding: 0 1rem; }
+  table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
+  th, td { border: 1px solid #ccc; padding: .4rem .6rem; text-align: left; vertical-align: top; }
+  .pass { color: #0a7a2f; font-weight: 600; } .fail { color: #b00020; font-weight: 600; }
+  code { background: #f2f2f2; padding: 0 .25rem; } label { margin-right: 1rem; }
+</style>
+</head>
+<body>
+<h1>Valhalla CORS browser check</h1>
+<p>Runs real cross-origin <code>fetch</code> calls from this page, so the browser itself performs the preflight and applies its CORS rules.
+A request <b>passes</b> when <code>fetch</code> resolves: any HTTP status counts (a fake token gives 401 on purpose, nothing is changed).
+It <b>fails</b> when the browser blocks it (<code>TypeError: Failed to fetch</code>); open DevTools &rarr; Console for the exact CORS reason.</p>
+<p>Serve this folder from the origin your React app uses, for example <code>cd tools/cors &amp;&amp; python3 -m http.server 3000</code>, then open <code>http://localhost:3000/browser_check.html</code>.</p>
+<p>
+  <label>API base <input id="base" size="28" value="http://localhost:8080"></label>
+  <label><input type="checkbox" id="creds"> send credentials (<code>credentials: "include"</code>)</label>
+  <button id="run">Run checks</button>
+</p>
+<p id="origin"></p>
+<table id="out"><thead><tr><th>Call</th><th>Result</th><th>Detail</th></tr></thead><tbody></tbody></table>
+<script>
+const FAKE = { Authorization: "Bearer cors.check.invalid" };
+const JSON_H = { "Content-Type": "application/json" };
+const CALLS = [
+  ["login: POST JSON",             "POST",   "/api/v2/clients/users/login",    JSON_H,                  "{}"],
+  ["read: POST JSON + bearer",     "POST",   "/api/v2/clients/users/read",     { ...JSON_H, ...FAKE },  "{}"],
+  ["update: PUT JSON + bearer",    "PUT",    "/api/v2/clients/users/update",   { ...JSON_H, ...FAKE },  "{}"],
+  ["delete: DELETE JSON + bearer", "DELETE", "/api/v2/clients/users/delete",   { ...JSON_H, ...FAKE },  "{}"],
+  ["services: GET + bearer",       "GET",    "/api/v2/clients/users/services", FAKE,                    undefined],
+  ["custom header x-request-id",   "POST",   "/api/v2/clients/users/login",    { ...JSON_H, "X-Request-Id": "abc" }, "{}"],
+  ["hello: plain GET",             "GET",    "/api/v2/hello",                  {},                      undefined],
+];
+const tbody = document.querySelector("#out tbody");
+document.getElementById("origin").textContent = "This page's origin: " + location.origin;
+function row(name, ok, detail) {
+  const tr = document.createElement("tr");
+  for (const [text, cls] of [[name], [ok ? "PASS" : "FAIL", ok ? "pass" : "fail"], [detail]]) {
+    const td = document.createElement("td"); td.textContent = text; if (cls) td.className = cls; tr.appendChild(td);
+  }
+  tbody.appendChild(tr);
+}
+async function run() {
+  tbody.replaceChildren();
+  const base = document.getElementById("base").value.replace(/\/$/, "");
+  const credentials = document.getElementById("creds").checked ? "include" : "omit";
+  let failed = 0;
+  for (const [name, method, path, headers, body] of CALLS) {
+    try {
+      const r = await fetch(base + path, { method, headers, body, mode: "cors", credentials });
+      let detail = "HTTP " + r.status;
+      const retry = r.headers.get("Retry-After");
+      if (retry !== null) detail += ", Retry-After readable: " + retry;
+      row(name, true, detail);
+    } catch (e) {
+      failed++;
+      row(name, false, e.name + ": " + e.message + " (blocked by the browser, see the Console for the CORS reason)");
+    }
+  }
+  const total = document.createElement("p");
+  total.innerHTML = failed === 0 ? '<span class="pass">All calls were accepted by the browser.</span>'
+                                 : '<span class="fail">' + failed + " call(s) blocked.</span>";
+  tbody.parentElement.after(total);
+  document.querySelectorAll("p.__total").forEach(p => p.remove()); total.className = "__total";
+}
+document.getElementById("run").addEventListener("click", () => { document.querySelectorAll("p.__total").forEach(p => p.remove()); run(); });
+</script>
+</body>
+</html>
