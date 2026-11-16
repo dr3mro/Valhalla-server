@@ -151,6 +151,12 @@ void ClientController<T>::Login(CALLBACK_&& callback, [[maybe_unused]] const Req
 }
 
 template <Client_t T>
+drogon::Task<void> ClientController<T>::LoginAsync(CALLBACK_&& callback, [[maybe_unused]] const Requester&& requester, std::string_view data, const std::string& ip_address)
+{
+    co_await gateKeeper->loginAsync(std::move(callback), data, ip_address, T::getTableName());
+}
+
+template <Client_t T>
 void ClientController<T>::Logout(
     CALLBACK_&& callback, [[maybe_unused]] const Requester&& requester, const std::optional<std::string>& token, const std::string& ip_address)
 {
@@ -381,6 +387,7 @@ drogon::Task<void> ClientController<T>::SearchAsync(CALLBACK_&& callback, const 
     template drogon::Task<void> ClientController<TYPE>::DeleteAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id); \
     template drogon::Task<void> ClientController<TYPE>::SearchAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data); \
     template void ClientController<TYPE>::Login(CALLBACK_&& callback, const Requester&& requester, std::string_view data, const std::string& ip_address); \
+    template drogon::Task<void> ClientController<TYPE>::LoginAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data, const std::string& ip_address); \
     template void ClientController<TYPE>::Logout(                                                                                                         \
         CALLBACK_&& callback, const Requester&& requester, const std::optional<std::string>& token, const std::string& ip_address);                       \
     template void ClientController<TYPE>::Suspend(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id);                  \

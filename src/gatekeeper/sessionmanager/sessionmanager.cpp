@@ -1,4 +1,5 @@
 #include "gatekeeper/sessionmanager/sessionmanager.hpp"
+#include "drogon/utils/coroutine.h"
 
 #include <fmt/core.h>
 #include <fmt/format.h>
@@ -78,6 +79,58 @@ std::optional<std::string> SessionManager::fetchPasswordHash(
         message += fmt::format("Error: {}", e.what());
     }
     return std::nullopt;
+}
+
+drogon::Task<std::optional<std::string>> SessionManager::fetchPasswordHashCoro(
+    const std::optional<Types::Credentials>& credentials, std::optional<Types::ClientLoginData>& clientLoginData, std::string& message)
+{
+    try
+    {
+        auto client_object = co_await getPasswordHashForUserNameCoro(credentials->username, clientLoginData->group.value());
+
+        if (!client_object.has_value() || client_object.value().empty())
+        {
+            message = fmt::format("Failure: username {} does not exist, please try again.", credentials->username);
+            co_return std::nullopt;
+        }
+
+        jsoncons::json& client_j = client_object.value();
+
+        clientLoginData->clientId = client_j.at("id").as<uint64_t>();
+
+        if (!clientLoginData->clientId.has_value())
+        {
+            message += "Failed to find client id from database, please try again";
+            co_return std::nullopt;
+        }
+
+        clientLoginData->username  = credentials->username;
+        clientLoginData->is_active = client_j.at("active").as<bool>();
+
+        if (!clientLoginData->is_active)
+        {
+            message += fmt::format("username: [{}] is suspended, please contact the administrator", credentials->username);
+            co_return std::nullopt;
+        }
+
+        std::optional<std::string> password_hash = client_j.at("password").as_string();
+
+        if (!password_hash.has_value())
+        {
+            message += "Failed to find password hash from database, please try again";
+            co_return std::nullopt;
+        }
+        co_return password_hash;
+    }
+    catch (const DatabaseBusy&)
+    {
+        throw;
+    }
+    catch (const std::exception& e)
+    {
+        message += fmt::format("Error: {}", e.what());
+    }
+    co_return std::nullopt;
 }
 
 bool SessionManager::completeLogin(const std::optional<Types::Credentials>& credentials, const std::string& password_hash,

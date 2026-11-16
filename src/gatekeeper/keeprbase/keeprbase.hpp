@@ -11,6 +11,7 @@
 #include "configurator/configurator.hpp"
 #include "controllers/databasecontroller/databasecontroller.hpp"
 #include "gatekeeper/types.hpp"
+#include "drogon/utils/coroutine.h"
 #include "store/store.hpp"
 
 namespace api::v2
@@ -32,6 +33,7 @@ namespace api::v2
         void                          setNowLogoutTime(uint64_t _id, const std::string& _group);
         std::optional<std::string>    getLastLoginTime(uint64_t _id, const std::string& _group);
         std::optional<jsoncons::json> getPasswordHashForUserName(const std::string& username, const std::string& _group);
+        drogon::Task<std::optional<jsoncons::json>> getPasswordHashForUserNameCoro(const std::string& username, const std::string& _group);
         static bool                   decodeToken(
             std::optional<Types::ClientLoginData>& clientLoginData, std::string& message, jwt::decoded_jwt<jwt::traits::kazuho_picojson>& decoedToken);
         bool validateToken(

@@ -1,4 +1,6 @@
 #include "database/asyncresultmapper.hpp"
+#include "utils/message/message.hpp"
+#include <fmt/core.h>
 
 #include <drogon/orm/Field.h>
 #include <drogon/orm/Result.h>
@@ -28,23 +30,40 @@ namespace asyncdb
                 continue;
             }
 
-            const std::string type_name = result.getNativeTypeName(i);
+            const auto sql_type = field.sqlType();
 
-            if (type_name == "int4")
+            const std::string name(field_name);
+            const std::string value(field.c_str());
+
+            if (name == "active")
             {
-                object[std::string(field_name)] = field.as<int>();
+                object[name] = (value == "t" || value == "true" || value == "1");
             }
-            else if (type_name == "bool")
+            else if (name == "id" || name.ends_with("_id") || name == "appointment_duration" || name == "appointment_payment_amount")
             {
-                object[std::string(field_name)] = field.as<bool>();
+                try
+                {
+                    object[name] = std::stoi(value);
+                }
+                catch (...)
+                {
+                    object[name] = value;
+                }
             }
-            else if (type_name == "json" || type_name == "jsonb")
+            else if (!value.empty() && (value.front() == '{' || value.front() == '['))
             {
-                object[std::string(field_name)] = jsoncons::json::parse(field.as<std::string>());
+                try
+                {
+                    object[name] = jsoncons::json::parse(value);
+                }
+                catch (...)
+                {
+                    object[name] = value;
+                }
             }
             else
             {
-                object[std::string(field_name)] = std::string(field.c_str());
+                object[name] = value;
             }
         }
 

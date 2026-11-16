@@ -41,6 +41,53 @@ namespace api::v2
 
         void login(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& clientType)
         {
+            const bool async = asyncDb_;
+            if (async)
+            {
+                auto cb = std::move(callback);
+                auto handler = [this, req, cb, clientType]() mutable -> drogon::AsyncTask
+                {
+                    CALLBACK_ mcb = [cb](int code, const std::string& content)
+                    {
+                        using Reply = std::function<void(const drogon::HttpResponsePtr&)>;
+                        switch (code)
+                        {
+                            case api::v2::Http::Status::OK:
+                                Helper::successResponse(content, Reply(cb));
+                                break;
+                            case api::v2::Http::Status::INTERNAL_SERVER_ERROR:
+                                Helper::failureResponse(content, Reply(cb));
+                                break;
+                            default:
+                                Helper::errorResponse(static_cast<drogon::HttpStatusCode>(code), content, Reply(cb));
+                                break;
+                        }
+                    };
+
+                    Requester requester(0, ""); // login has no authenticated requester
+
+                    auto ctlIt = clientRegistry.find(clientType);
+                    if (ctlIt == clientRegistry.end())
+                    {
+                        std::move(mcb)(api::v2::Http::Status::BAD_REQUEST, fmt::format("Type mapping not found for: {}", clientType));
+                        co_return;
+                    }
+
+                    try
+                    {
+                        co_await std::visit([&](auto& controller) -> drogon::Task<void> {
+                            co_await controller->LoginAsync(std::move(mcb), std::move(requester), req->body(), req->peerAddr().toIp());
+                        }, ctlIt->second);
+                    }
+                    catch (const std::exception& e)
+                    {
+                        Helper::failureResponse(e.what(), std::move(cb));
+                    }
+                };
+                handler();
+                return;
+            }
+
             executeControllerMethod(*dbExecutor, clientRegistry, clientType, &ClientControllerBase::Login, req, std::move(callback), req->body(), req->peerAddr().toIp());
         }
         void logout(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& clientType)

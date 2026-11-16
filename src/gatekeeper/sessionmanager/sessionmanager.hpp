@@ -6,6 +6,7 @@
 #include <string>
 
 #include "gatekeeper/keeprbase/keeprbase.hpp"
+#include "drogon/utils/coroutine.h"
 #include "gatekeeper/passwordcrypt/passwordcrypt.hpp"
 #include "gatekeeper/types.hpp"
 #include "store/store.hpp"
@@ -29,6 +30,8 @@ namespace api::v2
         // can run on the password worker; a wrong password never updates the login time.
         bool login(const std::optional<Types::Credentials>& credentials, std::optional<Types::ClientLoginData>& clientLoginData, std::string& message);
         std::optional<std::string> fetchPasswordHash(
+            const std::optional<Types::Credentials>& credentials, std::optional<Types::ClientLoginData>& clientLoginData, std::string& message);
+        drogon::Task<std::optional<std::string>> fetchPasswordHashCoro(
             const std::optional<Types::Credentials>& credentials, std::optional<Types::ClientLoginData>& clientLoginData, std::string& message);
         bool completeLogin(const std::optional<Types::Credentials>& credentials, const std::string& password_hash,
             std::optional<Types::ClientLoginData>& clientLoginData, std::string& message);

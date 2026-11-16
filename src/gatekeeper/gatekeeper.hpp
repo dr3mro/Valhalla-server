@@ -15,6 +15,7 @@
 #include "gatekeeper/sessionmanager/sessionmanager.hpp"
 #include "gatekeeper/tokenmanager/tokenmanager.hpp"
 #include "gatekeeper/types.hpp"
+#include "drogon/utils/coroutine.h"
 #include "utils/global/callback.hpp"
 #include "utils/global/concepts.hpp"
 #include "utils/global/http.hpp"
@@ -33,6 +34,7 @@ namespace api::v2
         virtual ~GateKeeper()                              = default;
 
         void login(CALLBACK_&& callback, std::string_view data, const std::string& ip_address, std::string_view group);
+        drogon::Task<void> loginAsync(CALLBACK_&& callback, std::string_view data, const std::string& ip_address, std::string_view group);
         void logout(CALLBACK_&& callback, const std::optional<std::string>& token, const std::string& ip_address, const std::string& group);
 
         bool isAuthenticationValid(std::optional<Types::ClientLoginData>& clientLoginData, std::string& message);

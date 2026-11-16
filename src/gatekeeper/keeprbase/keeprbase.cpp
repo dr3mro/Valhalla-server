@@ -309,3 +309,9 @@ std::optional<jsoncons::json> api::v2::KeeprBase::getPasswordHashForUserName(con
 {
     return databaseController()->getPasswordHashForUserName(username, _group);
 }
+
+drogon::Task<std::optional<jsoncons::json>> api::v2::KeeprBase::getPasswordHashForUserNameCoro(const std::string& username, const std::string& _group)
+{
+    auto asyncClient = Store::getObject<AsyncDbClient>(nullptr); // unused; delegate
+    co_return co_await databaseController()->getPasswordHashForUserNameCoro(username, _group);
+}

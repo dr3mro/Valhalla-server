@@ -18,6 +18,7 @@
 #include "gatekeeper/sessionmanager/sessionmanager.hpp"
 #include "gatekeeper/tokenmanager/tokenmanager.hpp"
 #include "gatekeeper/types.hpp"
+#include "drogon/utils/coroutine.h"
 #include "store/store.hpp"
 #include "utils/global/callback.hpp"
 #include "utils/global/concepts.hpp"
@@ -101,6 +102,71 @@ void GateKeeper::login(CALLBACK_&& callback, std::string_view data, const std::s
     {
         CRITICALMESSAGERESPONSE
     }
+}
+
+drogon::Task<void> GateKeeper::loginAsync(CALLBACK_&& callback, std::string_view data, const std::string& ip_address, std::string_view group)
+{
+    try
+    {
+        bool                              success = false;
+        std::string                       message;
+        std::optional<Types::Credentials> credentials = parse_credentials(data, message, success);
+
+        if (!success || !credentials.has_value())
+        {
+            std::move(callback)(HttpStatus::BAD_REQUEST, "credentials parse error : " + message);
+            co_return;
+        }
+
+        std::optional<Types::ClientLoginData> clientLoginData = Types::ClientLoginData{};
+        clientLoginData->group                                = group;
+        clientLoginData->ip_address                           = ip_address;
+
+        std::optional<std::string> password_hash = co_await sessionManager_->fetchPasswordHashCoro(credentials, clientLoginData, message);
+        if (!password_hash.has_value())
+        {
+            std::move(callback)(Http::Status::UNAUTHORIZED, "Login failure: " + message);
+            co_return;
+        }
+
+        runOnPasswordWorker(*passwordWorker_, std::move(callback),
+            [sessionManager = sessionManager_, tokenManager = tokenManager_, credentials = std::move(credentials), password_hash = std::move(password_hash).value(),
+                clientLoginData = std::move(clientLoginData), message = std::move(message)](CALLBACK_&& callback) mutable
+            {
+                try
+                {
+                    if (!sessionManager->completeLogin(credentials, password_hash, clientLoginData, message) || !clientLoginData.has_value())
+                    {
+                        callback(Http::Status::UNAUTHORIZED, "Login failure: " + message);
+                        return;
+                    }
+
+                    if (!tokenManager->generateToken(clientLoginData))
+                    {
+                        callback(Http::Status::INTERNAL_SERVER_ERROR, "failed to generate token");
+                        return;
+                    }
+
+                    jsoncons::json token_object;
+                    token_object["token"]     = clientLoginData->token;
+                    token_object["username"]  = clientLoginData->username;
+                    token_object["client_id"] = clientLoginData->clientId;
+                    token_object["group"]     = clientLoginData->group;
+                    token_object["ipAddress"] = clientLoginData->ip_address;
+
+                    callback(Http::Status::OK, token_object.as<std::string>());
+                }
+                catch (const std::exception& e)
+                {
+                    CRITICALMESSAGERESPONSE
+                }
+            });
+    }
+    catch (const std::exception& e)
+    {
+        CRITICALMESSAGERESPONSE
+    }
+    co_return;
 }
 
 void GateKeeper::logout(CALLBACK_&& callback, const std::optional<std::string>& token, const std::string& ip_address, const std::string& group)

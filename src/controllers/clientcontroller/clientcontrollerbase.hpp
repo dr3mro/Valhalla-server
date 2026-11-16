@@ -34,6 +34,7 @@ class ClientControllerBase
     virtual void Search(CALLBACK_&& callback, const Requester&& requester, std::string_view data)                                                  = 0;
     virtual drogon::Task<void> SearchAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data) = 0;
     virtual void Login(CALLBACK_&& callback, const Requester&& requester, std::string_view data, const std::string& ip_address)                    = 0;
+    virtual drogon::Task<void> LoginAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data, const std::string& ip_address) = 0;
     virtual void Logout(CALLBACK_&& callback, const Requester&& requester, const std::optional<std::string>& token, const std::string& ip_address) = 0;
     virtual void Suspend(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id)                                     = 0;
     virtual drogon::Task<void> SuspendAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id) = 0;
