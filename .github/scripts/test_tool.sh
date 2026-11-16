@@ -294,14 +294,14 @@ check "...removed the tool" test ! -e "$D/vdt" -a ! -L "$V"
 
 # ── helper scripts ─────────────────────────────────────────────────────────
 section "Helper scripts"
-outputs "get_tag.sh: VALHALLA_VERSION" '^-DGIT_TAG="9.9.9"$' env VALHALLA_VERSION=9.9.9 "$TOOL_BASH" "$REPO/get_tag.sh"
-outputs "get_tag.sh: from git" '^-DGIT_TAG=".*"$' sh -c "cd '$REPO' && \"\$0\" ./get_tag.sh" "$TOOL_BASH"
+outputs "get_tag.sh: VALHALLA_VERSION" '^-DGIT_TAG="9.9.9"$' env VALHALLA_VERSION=9.9.9 "$TOOL_BASH" "$REPO/scripts/build/get_tag.sh"
+outputs "get_tag.sh: from git" '^-DGIT_TAG=".*"$' sh -c "cd '$REPO' && \"\$0\" ./scripts/build/get_tag.sh" "$TOOL_BASH"
 
 # run_release.sh: a fake build/Release/server that prints its env, in a copy
 # of the script so the checkout isn't touched.
 RR="$WORK/rr"
 mkdir -p "$RR/build/Release"
-cp "$REPO/run_release.sh" "$RR/"
+cp "$REPO/scripts/run/run_release.sh" "$RR/"
 fails "run_release.sh: no binary" "not found. Run scripts/build/build.sh" "$TOOL_BASH" "$REPO/scripts/run/run_release.sh"
 printf '#!/bin/sh\necho "args=$*"; env | grep -E "^(A|B|C|D|E|F)=" | sort\n' >"$RR/build/Release/server"
 chmod +x "$RR/build/Release/server"

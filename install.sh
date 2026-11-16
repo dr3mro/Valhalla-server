@@ -257,9 +257,11 @@ write_default_env() {
       printf '\n# JWT signing secret, generated at install (keep it private; changing it\n# logs everyone out)\nTOKEN_SECRET = "%s"\n' "$(new_secret)" >>"$DIR/config"
       say "🔑  Added a generated TOKEN_SECRET to $DIR/config"
     fi
+    chmod 600 "$DIR/config"
     return 0
   fi
   (umask 077 && { default_env; printf 'TOKEN_SECRET = "%s"\n' "$(new_secret)"; } >"$DIR/config")
+  chmod 600 "$DIR/config"
   say "📄  Created $DIR/config with default settings and a generated TOKEN_SECRET"
 }
 
@@ -302,7 +304,7 @@ remove_files() {
   # macOS Finder drops .DS_Store files into folders it shows; they'd keep
   # the folders from being removed.
   rm -f "$target/.DS_Store" "$target/api_tests/.DS_Store" "$target/docs/.DS_Store"
-  rmdir "$target/api_tests" "$target/docs" 2>/dev/null || true
+  rmdir "$target/tests/api_tests" "$target/tests" "$target/api_tests" "$target/docs" 2>/dev/null || true
   if rmdir "$target" 2>/dev/null; then
     say "🗑   Removed $target"
   else
@@ -338,6 +340,8 @@ do_replace() {
 place_files() {
   # Replace the managed files only; config, dumps/ and anything else stay.
   mkdir -p "$DIR"
+  config_preexisting=0
+  [ -e "$DIR/config" ] && config_preexisting=1
   for f in $MANAGED; do rm -rf "${DIR:?}/$f"; done
   # Installed without the .sh extension, under the tool's name.
   mv "$stage/scripts/vdt/valhalla.sh" "$stage/vdt"
@@ -345,6 +349,8 @@ place_files() {
   mv "$stage/scripts/test/schemathesis_test.sh" "$stage/schemathesis_test"
   mv "$stage/install.sh" "$stage/installer"
   (cd "$stage" && tar -cf - .) | (cd "$DIR" && tar -xf -)
+  # The staged config is a bundled default, not the user's config.
+  [ "$config_preexisting" = 1 ] || rm -f "$DIR/config"
   # Downloads arrive as plain files (curl doesn't keep the executable bit).
   chmod 755 "$DIR/vdt" "$DIR/test_api" "$DIR/schemathesis_test" "$DIR/installer"
   printf '%s\n' "$VERSION_TEXT" >"$DIR/VERSION"
@@ -371,6 +377,7 @@ place_files() {
       (umask 077 && { default_env; printf 'TOKEN_SECRET = "%s"\n' "$(new_secret)"; } >"$DIR/config")
       say "📄  Created $DIR/config with default settings and a generated TOKEN_SECRET"
     fi
+    chmod 600 "$DIR/config"
     file_hash "$DIR/config" >"$DIR/.config.default"
   elif [ -f "$DIR/.config.default" ] && [ "$(file_hash "$DIR/config")" = "$(cat "$DIR/.config.default")" ]; then
     # Unmodified default: refresh from the new bundle, preserving the user's secret.
@@ -393,6 +400,7 @@ place_files() {
   else
     say "⚙️  Keeping your existing $DIR/config (user-modified)"
   fi
+  chmod 600 "$DIR/config"
 
   link_command
 
