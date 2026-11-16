@@ -5,17 +5,17 @@
 Root cause: CORS headers were written in three places (creation advice, OPTIONS branch, 405 branch) and `Allow` in two, and `Access-Control-Allow-Methods` was never sent, so PUT/DELETE preflights fail.
 
 - [x] One writer: `Cors::apply(req, resp)` in `src/server/cors.hpp`, called only from `registerPreSendingAdvice` in `server.cpp`. It removes each header before setting it, so applying it twice cannot duplicate anything. The creation advice and the `addCorsHeaders` calls are gone.
-- [x] Headers: `Allow-Origin: *`, `Allow-Methods: GET, POST, PUT, DELETE, HEAD, OPTIONS`, `Expose-Headers: Retry-After, Content-Length`, `Allow-Headers` default `Content-Type, Authorization, Accept, X-Requested-With` (on a preflight, echo `Access-Control-Request-Headers`), `Max-Age: 7200` on preflight only. `Allow` now appears only on the 405 reply (this also fixes ST204). `X-Powered-By` was removed.
-- [x] **Build and run (verified):** `HttpResponse::removeHeader`, `headers()`, `HttpRequest::getHeader` and `registerPreSendingAdvice(const HttpRequestPtr&, const HttpResponsePtr&)` all exist in Drogon 1.9.14 (conan.lock); the project builds (Debug + Release) and all 350 unit tests pass, including `tests/api/test_cors.cpp` (21 assertions, 5 cases).
+- [x] Headers: `Allow-Origin: *`, `Allow-Methods: GET, POST, PUT, DELETE, HEAD, OPTIONS`, `Expose-Headers: Retry-After, Content-Length`, `Allow-Headers` default `Content-Type, Authorization, Accept, X-Requested-With` (on a preflight, echo `Access-Control-Request-Headers`), `Max-Age: 7200` on preflight only. `Allow` now appears only on the 405 reply for Drogon-recognized methods; parse-level TRACE 405s (80 ST204 failures) still lack `Allow` and CORS headers because Drogon rejects them before the pre-routing advice. `X-Powered-By` was removed.
+- [x] **Build and run (verified):** `HttpResponse::removeHeader`, `headers()`, `HttpRequest::getHeader` and `registerPreSendingAdvice(const HttpRequestPtr&, const HttpResponsePtr&)` all exist in Drogon 1.9.14 (conan.lock); the project builds (Debug + Release) and all 353 unit tests pass, including `tests/api/test_cors.cpp` (23 assertions, 6 cases).
 - [x] Run `./cors_test.sh` against a running server: each CORS header appears exactly once for GET, 404, 401, PUT/DELETE preflight and 405 (all checks print "ok"). `tests/api/test_cors.cpp` passes. `test_api.sh` also passes (89 passed, 0 failed). No response carries `Allow` except 405 replies; `X-Powered-By` is gone.
 - [x] Checked whether pre-sending advice covers parse-error 400s generated inside Drogon: it does **not**. A malformed request line (e.g. `GET /bad http/1.1` or `GARBAGE`) makes Drogon return `HTTP/1.1 400 Bad Request` with only `Connection: close` and no CORS headers, because the response is produced during parsing before the pre-sending advice runs. Not worked around, per task rules; front ends hitting such errors will still see a CORS failure. Recorded in README.md "Known limitation".
 - [x] Follow-up task 1 (Vary): `Cors::apply` now appends to an existing `Vary` header instead of clobbering it; unit tests cover preserve/append and no-duplicate (21 assertions total).
 - [x] Follow-up task 2 (wire script): `cors_test.sh` is ordered (non-provoking, 403, 503, 429), supports `--strict`/`STRICT=1`, verifies status codes, prints a summary and a trailing warning. Raw 429: `HTTP/1.1 429 Too Many Requests` with each CORS header once. Raw 503: `HTTP/1.1 503 Service Unavailable` with each CORS header once. 403 was provoked separately with `WHITELIST="" BLACKLIST="127.0.0.1"`: `HTTP/1.1 403 Forbidden` with each CORS header once.
 - [x] Follow-up task 3 (Docker docs): README "Front-end development (CORS and Docker)" documents origin/methods/headers, bridge IP, anchored `WHITELIST`, and dev settings location. `tests/gatekeeper/test_dosdetector.cpp` covers the anchored pattern.
 - [x] Follow-up task 4 (housekeeping): clang-format and clang-tidy run on changed files; cppcheck is not installed in this environment. Schemathasis re-run: ST204 still 80 failures (TRACE/other methods handled internally by Drogon without `Allow`); no new failure categories versus the previous run.
-- [x] Follow-up task 5 (hot-path cost): 3 smoke runs each. main mixed throughput mean 6234 req/s (6362, 6199, 6140), p99 0.27-0.28 ms. cors-fix mean 5312 req/s (5649, 4949, 5336), p99 0.35-0.39 ms. Difference ~15% throughput / ~30% p99, at the edge of the 10-15% run-to-run noise (cors-fix spread ~12%); no cheaper design implemented, numbers recorded.
+- [x] Follow-up task 5 (hot-path cost): 5 interleaved smoke runs each after removing the redundant `removeHeader` calls. main mixed throughput 6056/5729/5673/5153/4370 req/s (min 4370, max 6056), p99 0.30/0.31/0.35/0.37/0.45 ms. cors-fix 6555/6284/6013/5508/5054 req/s (min 5054, max 6555), p99 0.27/0.28/0.28/0.32/0.39 ms. The ranges overlap in both throughput and p99, so the remaining difference is run-to-run noise; no further change.
 - [ ] Only if the front end needs cookies or `withCredentials`: add a `CORS_ALLOWED_ORIGINS` env setting (comma-separated, default `*`), echo the matching `Origin` with `Vary: Origin` and `Allow-Credentials: true`; never combine `*` with credentials.
-- [ ] Docker: the front end's requests all arrive from the bridge gateway IP (about `172.17.0.1`). Whitelist it in the dev `WHITELIST`, or raise the dev rate limits, so React StrictMode double requests don't trigger a fingerprint ban.
+- [ ] Docker: the front end's requests arrive from one gateway IP; the README now documents how to discover it (native Linux `docker network inspect bridge`, `docker exec ... ss`, `/proc/net/tcp`, or `docker logs`) and gives an anchored `WHITELIST` example. Docker was not available on the development machine, so this was not verified against a container.
 
 ## 1. Security (do first: it also unblocks the fast-path work)
 
@@ -58,7 +58,7 @@ Root cause: CORS headers were written in three places (creation advice, OPTIONS 
 ### Step 8: Per-request cost on IO threads (profile first: 30 s at 32 VUs of `providers/read`)
 
 - [ ] Session/permission caches write on every read: `MemCache::get` moves entries to front under a lock; `BasicPermissionCache::get` renews the timer and deep-copies JSON. Options: renew timer after half the TTL, return `shared_ptr<const json>`, shard by key hash. **Do together with the `MemCache` expiry bug:** it only expires from the back of the list (`memcache.hpp:205-207`), which a move-to-front design makes worse. [P8.4, R4.2]
-- [ ] Response path: cache CORS header strings, compact JSON error bodies. **Do together with ST204:** stop sending `Allow` on normal responses and make the `405` list and `addCorsHeaders` consistent (`server.cpp:69-71`, `:115`). That removes a per-response header and fixes the conformance failure in one change. [P8.5, R3.2]
+- [ ] Response path: cache CORS header strings, compact JSON error bodies. `Allow` is now only sent by the 405 branch and `Cors::apply` is the single CORS writer; ST204 is resolved for Drogon-recognized methods, while parse-level TRACE 405s still lack `Allow`/CORS (see section 0). [P8.5, R3.2]
 - [ ] `Store` race (`store.hpp:24-56`, separate locks in `getObject`/`registerObject`): fix with `Store::cachedObject` and stop calling `getObject` in constructors and methods. [R4.1, P8.7, R5 style item]
 - Done when: no filter or middleware function above ~3% in the profile, and mixed throughput above Stage 4 on the current script.
 
@@ -106,8 +106,8 @@ Source: per-route object count (about 16-24 objects per request, 1 locked `Store
 ## 4. API conformance (Schemathesis)
 
 - [ ] ST201: reject non-integer search numbers (`2.5` truncated by `as<size_t>()`) and unknown properties (`types.hpp`, `Search_t`); add unit tests. [R3.1]
-- [ ] ST204 `Allow` header: handled in Step 8 (response path).
-- [ ] Re-run the conformance suite: zero ST201 and ST204 failures. [R3.3]
+- [ ] ST204 `Allow` header: resolved for Drogon-recognized methods; the 80 remaining failures are TRACE requests rejected during parsing before the pre-routing advice, so they return 405 without `Allow` or CORS headers.
+- [ ] Re-run the conformance suite: ST201 unchecked here; ST204 reduced to the parse-level TRACE case only. [R3.3]
 
 ## 5. Logging
 
