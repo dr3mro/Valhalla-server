@@ -251,6 +251,34 @@ void ClientController<T>::GetServices(CALLBACK_&& callback, const Requester&& re
     }
 }
 
+template <Client_t T>
+drogon::Task<void> ClientController<T>::GetServicesAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id)
+{
+    try
+    {
+        if (!client_id.has_value())
+        {
+            std::move(callback)(api::v2::Http::Status::BAD_REQUEST, "client_id extraction failed");
+            co_return;
+        }
+
+        T client(Data_t(client_id.value()));
+
+        HttpError error;
+        if (!gateKeeper->canGetServices<T>(requester, client_id.value(), error))
+        {
+            std::move(callback)(error.code, error.message);
+            co_return;
+        }
+
+        co_await Controller::GetServicesAsync(client, std::move(callback));
+    }
+    catch (const std::exception& e)
+    {
+        CRITICALMESSAGERESPONSE
+    }
+}
+
 
 template <Client_t T>
 drogon::Task<void> ClientController<T>::CreateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data)
@@ -298,7 +326,8 @@ drogon::Task<void> ClientController<T>::SearchAsync(CALLBACK_&& callback, const 
     template void ClientController<TYPE>::Suspend(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id);                  \
     template void ClientController<TYPE>::Activate(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id);                 \
     template void ClientController<TYPE>::ResetPassword(CALLBACK_&& callback, const Requester&& requester, std::string_view data);                        \
-    template void ClientController<TYPE>::GetServices(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id);
+    template void ClientController<TYPE>::GetServices(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id); \
+    template drogon::Task<void> ClientController<TYPE>::GetServicesAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id); \
 
 INSTANTIATE_CLIENT_CONTROLLER(User)
 INSTANTIATE_CLIENT_CONTROLLER(Provider)

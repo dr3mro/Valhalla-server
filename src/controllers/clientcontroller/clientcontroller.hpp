@@ -47,6 +47,7 @@ class ClientController : public EntityController<T>, public ClientControllerBase
     void Activate(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id) final;
     void ResetPassword(CALLBACK_&& callback, const Requester&& requester, std::string_view data) final;
     void GetServices(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id) final;
+    drogon::Task<void> GetServicesAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id) final;
 
    private:
     // The real work of Create and Update. Both hash the password, so the public methods run them on the

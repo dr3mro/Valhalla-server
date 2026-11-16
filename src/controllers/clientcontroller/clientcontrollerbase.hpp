@@ -39,4 +39,5 @@ class ClientControllerBase
     virtual void Activate(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id)                                    = 0;
     virtual void ResetPassword(CALLBACK_&& callback, const Requester&& requester, std::string_view data)                                           = 0;
     virtual void GetServices(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id)                                 = 0;
+    virtual drogon::Task<void> GetServicesAsync(CALLBACK_&& callback, const Requester&& requester, std::optional<uint64_t> client_id) = 0;
 };
