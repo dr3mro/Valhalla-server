@@ -3,139 +3,80 @@
 #include <drogon/HttpRequest.h>
 #include <drogon/HttpResponse.h>
 #include <drogon/HttpTypes.h>
-#include <drogon/utils/Utilities.h>
 
-#include <algorithm>
-#include <ranges>
 #include <string>
 #include <string_view>
 
+#include "server/cors_tokens.hpp"
+
 /// CORS response headers, written in exactly one place (the pre-sending advice in server.cpp).
-/// Every header is set with addHeader, which replaces any existing value in Drogon's header
-/// map, so a header can never appear twice.
+/// Drogon stores headers in a map keyed by the lower-cased name, and addHeader replaces an
+/// existing value (HttpResponseImpl.h:194-210), so a header can never appear twice.
 namespace Cors
 {
-    inline const std::string ALLOWED_METHODS         = "GET, POST, PUT, DELETE, HEAD, OPTIONS";  // NOLINT(bugprone-throwing-static-initialization)
-    inline const std::string DEFAULT_ALLOWED_HEADERS = "Content-Type, Authorization, Accept, X-Requested-With";  // NOLINT(bugprone-throwing-static-initialization)
-    inline const std::string EXPOSED_HEADERS         = "Retry-After, Content-Length";  // NOLINT(bugprone-throwing-static-initialization)
-    inline const std::string PREFLIGHT_MAX_AGE       = "7200";  // browsers cap this at 2 hours anyway  // NOLINT(bugprone-throwing-static-initialization)
+    namespace detail = CorsTokens;
 
-    inline void set(const drogon::HttpResponsePtr& resp, const std::string& key, const std::string& value)
+    inline const std::string& allowedMethods()
     {
-        // Drogon stores headers in a map keyed by the lower-cased name, so addHeader
-        // replaces any existing value instead of appending a second one.
-        resp->addHeader(key, value);
+        static const std::string value = "GET, POST, PUT, DELETE, HEAD, OPTIONS";
+        return value;
     }
 
-    namespace detail
+    inline const std::string& defaultAllowedHeaders()
     {
-        constexpr std::string_view tokenPunctuation = "!#$%&'*+-.^_`|~";
+        static const std::string value = "Content-Type, Authorization, Accept, X-Requested-With";
+        return value;
+    }
 
-        constexpr bool isTokenChar(char c)
+    inline const std::string& exposedHeaders()
+    {
+        static const std::string value = "Retry-After, Content-Length";
+        return value;
+    }
+
+    inline const std::string& preflightMaxAge()
+    {
+        static const std::string value = "7200";  // browsers cap this at 2 hours anyway
+        return value;
+    }
+
+    inline void addToVary(const drogon::HttpResponsePtr& resp, std::string_view value)
+    {
+        const std::string& existing = resp->getHeader("vary");
+        const std::string merged = detail::mergeVary(existing, value);
+        if (merged != existing)
         {
-            return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || tokenPunctuation.find(c) != std::string_view::npos;
+            resp->addHeader("Vary", merged);
         }
-
-        inline bool asciiLowerEqual(char a, char b)
-        {
-            auto lower = [](char c) { return (c >= 'A' && c <= 'Z') ? static_cast<char>(c + ('a' - 'A')) : c; };
-            return lower(a) == lower(b);
-        }
-
-        inline bool iequals(std::string_view a, std::string_view b) { return a.size() == b.size() && std::ranges::equal(a, b, asciiLowerEqual); }
-
-        inline std::vector<std::string_view> splitTokens(std::string_view value)
-        {
-            return drogon::utils::splitStringView(value, ",", /*trimValues=*/true, /*acceptEmptyString=*/false);
-        }
-
-        // Validate and normalise an Access-Control-Request-Headers value.
-        // Returns an empty string when nothing valid remains (or the input is
-        // too large), so the caller can fall back to DEFAULT_ALLOWED_HEADERS.
-        inline std::string sanitizeRequestedHeaders(std::string_view requested)
-        {
-            if (requested.empty() || requested.size() > 1024)
-            {
-                return {};
-            }
-
-            std::string result;
-            for (std::string_view token : splitTokens(requested))
-            {
-                if (!std::ranges::all_of(token, isTokenChar))
-                {
-                    continue;
-                }
-                if (!result.empty())
-                {
-                    result += ", ";
-                }
-                result.append(token);
-            }
-            return result;
-        }
-
-        // Append `value` to the Vary response header without duplicating an
-        // existing (case-insensitive) token. Other code may have set Vary first.
-        inline void addToVary(const drogon::HttpResponsePtr& resp, std::string_view value)
-        {
-            const auto& headers = resp->headers();
-            const auto  it      = std::ranges::find_if(headers, [](const auto& kv) { return iequals(kv.first, "Vary"); });
-
-            std::string combined;
-            if (it != headers.end())
-            {
-                const bool present = std::ranges::any_of(splitTokens(it->second), [&](std::string_view token) { return iequals(token, value); });
-                if (present)
-                {
-                    return;
-                }
-                for (std::string_view token : splitTokens(it->second))
-                {
-                    if (!combined.empty())
-                    {
-                        combined += ", ";
-                    }
-                    combined.append(token);
-                }
-            }
-
-            if (!combined.empty())
-            {
-                combined += ", ";
-            }
-            combined.append(value);
-            resp->addHeader("Vary", combined);
-        }
-    }  // namespace detail
+    }
 
     inline void apply(const drogon::HttpRequestPtr& req, const drogon::HttpResponsePtr& resp)
     {
-        const auto& existingHeaders = resp->headers();
-        const auto  originIt = std::ranges::find_if(existingHeaders, [](const auto& kv) { return detail::iequals(kv.first, "access-control-allow-origin"); });
-        if (originIt != existingHeaders.end() && originIt->second == "*")
+        static const std::string originKey = "access-control-allow-origin";
+        const auto& headers = resp->headers();
+        const auto originIt = headers.find(originKey);
+        if (originIt != headers.end() && originIt->second == "*")
         {
             return;
         }
 
-        set(resp, "Access-Control-Allow-Origin", "*");
-        set(resp, "Access-Control-Allow-Methods", ALLOWED_METHODS);
-        set(resp, "Access-Control-Expose-Headers", EXPOSED_HEADERS);
+        resp->addHeader("Access-Control-Allow-Origin", "*");
+        resp->addHeader("Access-Control-Allow-Methods", allowedMethods());
+        resp->addHeader("Access-Control-Expose-Headers", exposedHeaders());
 
-        std::string allowedHeaders = DEFAULT_ALLOWED_HEADERS;
+        const std::string& requested = req->getHeader("Access-Control-Request-Headers");
+        std::string echoed;
+        const std::string& allowedHeaders = (req->method() == drogon::Options && !(echoed = detail::sanitizeRequestedHeaders(requested)).empty()) ? echoed : defaultAllowedHeaders();
+
         if (req->method() == drogon::Options)
         {
-            // Preflight only: allow whatever the browser says it is about to send,
-            // after validating the token list and bounding its size.
-            const std::string requested = req->getHeader("Access-Control-Request-Headers");
-            const std::string echoed    = detail::sanitizeRequestedHeaders(requested);
-            if (!echoed.empty())
+            resp->addHeader("Access-Control-Max-Age", preflightMaxAge());
+            const std::string merged = detail::mergeVary(resp->getHeader("vary"), "Access-Control-Request-Headers");
+            if (merged != resp->getHeader("vary"))
             {
-                allowedHeaders = echoed;
+                resp->addHeader("Vary", merged);
             }
-            set(resp, "Access-Control-Max-Age", PREFLIGHT_MAX_AGE);
-            detail::addToVary(resp, "Access-Control-Request-Headers");
         }
-        set(resp, "Access-Control-Allow-Headers", allowedHeaders);
+        resp->addHeader("Access-Control-Allow-Headers", allowedHeaders);
     }
 }  // namespace Cors

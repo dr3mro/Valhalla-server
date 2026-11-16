@@ -29,7 +29,7 @@ TEST_CASE("Cors::apply sets the full header set on a normal response", "[api][co
     CHECK(response->getHeader("Access-Control-Allow-Origin") == "*");
     CHECK(response->getHeader("Access-Control-Allow-Methods").find("PUT") != std::string::npos);
     CHECK(response->getHeader("Access-Control-Allow-Methods").find("DELETE") != std::string::npos);
-    CHECK(response->getHeader("Access-Control-Allow-Headers") == Cors::DEFAULT_ALLOWED_HEADERS);
+    CHECK(response->getHeader("Access-Control-Allow-Headers") == Cors::defaultAllowedHeaders());
     CHECK(response->getHeader("Access-Control-Expose-Headers").find("Retry-After") != std::string::npos);
     CHECK(response->getHeader("Access-Control-Max-Age").empty());  // preflight only
     CHECK(response->getHeader("Allow").empty());                   // not a CORS header
@@ -54,7 +54,7 @@ TEST_CASE("Cors::detail addToVary is case-insensitive", "[api][cors]")
     auto response = drogon::HttpResponse::newHttpResponse();
     response->addHeader("Vary", "Accept-Encoding, access-control-request-headers");
 
-    Cors::detail::addToVary(response, "Access-Control-Request-Headers");
+    Cors::addToVary(response, "Access-Control-Request-Headers");
 
     CHECK(response->getHeader("Vary") == "Accept-Encoding, access-control-request-headers");
 }
@@ -82,6 +82,40 @@ TEST_CASE("Cors::apply is idempotent: applying it twice changes nothing", "[api]
     Cors::apply(request, response);
     CHECK(response->getHeader("Access-Control-Allow-Origin") == once);
     CHECK(response->headers().size() == size);
+}
+
+TEST_CASE("Cors::apply Vary edge cases", "[api][cors]")
+{
+    auto response = drogon::HttpResponse::newHttpResponse();
+
+    SECTION("Vary: * stays unchanged")
+    {
+        response->addHeader("Vary", "*");
+        Cors::apply(makeRequest(drogon::Options, "content-type"), response);
+        CHECK(response->getHeader("Vary") == "*");
+    }
+
+    SECTION("a Vary token in a different case is not duplicated")
+    {
+        response->addHeader("Vary", "accept-encoding, ACCESS-CONTROL-REQUEST-HEADERS");
+        Cors::apply(makeRequest(drogon::Options, "content-type"), response);
+        CHECK(response->getHeader("Vary") == "accept-encoding, ACCESS-CONTROL-REQUEST-HEADERS");
+    }
+
+    SECTION("a non-preflight response gets no Max-Age or Vary")
+    {
+        Cors::apply(makeRequest(drogon::Get), response);
+        CHECK(response->getHeader("Access-Control-Max-Age").empty());
+        CHECK(response->getHeader("Vary").empty());
+    }
+
+    SECTION("apply twice yields identical headers")
+    {
+        Cors::apply(makeRequest(drogon::Get), response);
+        const auto first = response->headers();
+        Cors::apply(makeRequest(drogon::Get), response);
+        CHECK(response->headers() == first);
+    }
 }
 
 TEST_CASE("Cors::apply preserves and appends Vary", "[api][cors]")
@@ -117,17 +151,17 @@ TEST_CASE("Cors::apply hardens the preflight echo", "[api][cors]")
     {
         const std::string huge(1025, 'a');
         Cors::apply(makeRequest(drogon::Options, huge), response);
-        CHECK(response->getHeader("Access-Control-Allow-Headers") == Cors::DEFAULT_ALLOWED_HEADERS);
+        CHECK(response->getHeader("Access-Control-Allow-Headers") == Cors::defaultAllowedHeaders());
     }
 
     SECTION("a value with a space or control character is rejected")
     {
         Cors::apply(makeRequest(drogon::Options, "x bad"), response);
-        CHECK(response->getHeader("Access-Control-Allow-Headers") == Cors::DEFAULT_ALLOWED_HEADERS);
+        CHECK(response->getHeader("Access-Control-Allow-Headers") == Cors::defaultAllowedHeaders());
 
         const std::string withControl = std::string("\x01authorization");
         Cors::apply(makeRequest(drogon::Options, withControl), response);
-        CHECK(response->getHeader("Access-Control-Allow-Headers") == Cors::DEFAULT_ALLOWED_HEADERS);
+        CHECK(response->getHeader("Access-Control-Allow-Headers") == Cors::defaultAllowedHeaders());
     }
 
     SECTION("mixed valid and invalid tokens keeps only the valid ones")
@@ -139,7 +173,7 @@ TEST_CASE("Cors::apply hardens the preflight echo", "[api][cors]")
     SECTION("empty value falls back to the default")
     {
         Cors::apply(makeRequest(drogon::Options, ""), response);
-        CHECK(response->getHeader("Access-Control-Allow-Headers") == Cors::DEFAULT_ALLOWED_HEADERS);
+        CHECK(response->getHeader("Access-Control-Allow-Headers") == Cors::defaultAllowedHeaders());
     }
 
     SECTION("preflight sets Vary")
@@ -157,13 +191,13 @@ TEST_CASE("Cors::apply echoes the requested headers on a preflight only", "[api]
         Cors::apply(makeRequest(drogon::Options, "content-type, x-custom"), response);
 
         CHECK(response->getHeader("Access-Control-Allow-Headers") == "content-type, x-custom");
-        CHECK(response->getHeader("Access-Control-Max-Age") == Cors::PREFLIGHT_MAX_AGE);
+        CHECK(response->getHeader("Access-Control-Max-Age") == Cors::preflightMaxAge());
     }
     SECTION("a normal request never echoes request headers")
     {
         auto response = drogon::HttpResponse::newHttpResponse();
         Cors::apply(makeRequest(drogon::Get, "x-evil"), response);
 
-        CHECK(response->getHeader("Access-Control-Allow-Headers") == Cors::DEFAULT_ALLOWED_HEADERS);
+        CHECK(response->getHeader("Access-Control-Allow-Headers") == Cors::defaultAllowedHeaders());
     }
 }
