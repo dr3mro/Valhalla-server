@@ -64,7 +64,7 @@ void DatabaseController::ensureBackends()
 
 std::optional<jsoncons::json> DatabaseController::executeQuery(const std::string& query, const pqxx::params& params)
 {
-    return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::work>, query, params);
+    return executer<jsoncons::json>(&Database::executeQuery<jsoncons::json, pqxx::nontransaction>, query, params);
 }
 
 std::optional<jsoncons::json> DatabaseController::executeReadQuery(const std::string& query, const pqxx::params& params)
