@@ -52,7 +52,8 @@ FROM ${DEPS_IMAGE} AS compile
 WORKDIR /src
 
 COPY conanfile.txt conan.lock ./
-COPY CMakeLists.txt get_tag.sh ./
+COPY CMakeLists.txt ./
+COPY scripts/build/get_tag.sh scripts/build/get_tag.sh
 COPY tools/cmake tools/cmake
 COPY tools/conan tools/conan
 COPY docs/api.html docs/api.html
