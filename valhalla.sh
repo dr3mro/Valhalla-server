@@ -2055,20 +2055,25 @@ state_get() { [[ -f $UPDATE_STATE ]] && sed -n "s/^$1=//p" "$UPDATE_STATE" | hea
 # instead of showing what was just installed.
 forget_update_state() { rm -f "$UPDATE_STATE"; }
 
-# tool_installed_sha: the commit this installed copy came from; empty for a
+# tool_installed_sha: content hash of the installed valhalla.sh; empty for a
 # checkout or a copy installed from a local checkout (nothing to compare).
+# Comparing file content (not the main commit SHA) means an update is offered
+# only when valhalla.sh itself changes, not on every unrelated commit to main.
 tool_installed_sha() {
   [[ -f $ROOT/VERSION ]] || return 0
   local v
   v="$(cat "$ROOT/VERSION")"
   [[ $v == local* ]] && return 0
-  echo "${v##* }"
+  [[ -f $ROOT/valhalla.sh ]] || return 0
+  git hash-object "$ROOT/valhalla.sh" 2>/dev/null || true
 }
 
-# latest_tool_sha: the commit main is at on GitHub; empty when unreachable.
+# latest_tool_sha: content hash of valhalla.sh on GitHub's main; empty when
+# unreachable. Only valhalla.sh is compared, so unrelated commits do not
+# trigger an update.
 latest_tool_sha() {
-  curl -fsSL -m 8 -H "Accept: application/vnd.github.sha" \
-    "https://api.github.com/repos/$REPO_SLUG/commits/main" 2>/dev/null || true
+  curl -fsSL -m 8 "https://raw.githubusercontent.com/$REPO_SLUG/main/valhalla.sh" 2>/dev/null |
+    git hash-object --stdin 2>/dev/null || true
 }
 
 # update_refresh: the background check. Writes UPDATE_STATE atomically.
