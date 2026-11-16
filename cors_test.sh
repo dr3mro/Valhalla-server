@@ -6,12 +6,15 @@
 set -uo pipefail
 
 STRICT="${STRICT:-0}"
+CASE="${CASE:-all}"
 BASE="http://localhost:8080"
 for arg in "$@"; do
     case "$arg" in
         --strict) STRICT=1 ;;
+        --case) shift; CASE="${1:-all}" ;;
+        --case=*) CASE="${arg#*=}" ;;
         -h|--help)
-            sed -n '2,8p' "$0"
+            sed -n '2,10p' "$0"
             exit 0
             ;;
         *) BASE="$arg" ;;
@@ -68,82 +71,90 @@ check() { # check <label> <expected_status> <curl args...>
     record_pass "$label"
 }
 
-check "GET /"               404 "$BASE/"
-check "GET unknown (404)"   404 "$BASE/api/v2/does-not-exist"
-check "POST no auth (401)"  401 -X POST -H 'Content-Type: application/json' -d '{}' "$BASE/api/v2/clients/users/read"
-check "preflight PUT"       204 -X OPTIONS -H 'Origin: http://localhost:3000' -H 'Access-Control-Request-Method: PUT' -H 'Access-Control-Request-Headers: content-type,authorization' "$BASE/api/v2/clients/users/update"
-check "preflight DELETE"    204 -X OPTIONS -H 'Origin: http://localhost:3000' -H 'Access-Control-Request-Method: DELETE' "$BASE/api/v2/clients/users/delete"
-check "unsupported method"  405 -X PATCH "$BASE/"
-check "HEAD /"              200 -I "$BASE/api/v2/hello"
-check "GET with Origin"     200 -H 'Origin: http://localhost:3000' "$BASE/api/v2/hello"
+if [[ $CASE == "basic" || $CASE == "all" ]]; then
+    check "GET /"               404 "$BASE/"
+    check "GET unknown (404)"   404 "$BASE/api/v2/does-not-exist"
+    check "POST no auth (401)"  401 -X POST -H 'Content-Type: application/json' -d '{}' "$BASE/api/v2/clients/users/read"
+    check "preflight PUT"       204 -X OPTIONS -H 'Origin: http://localhost:3000' -H 'Access-Control-Request-Method: PUT' -H 'Access-Control-Request-Headers: content-type,authorization' "$BASE/api/v2/clients/users/update"
+    check "preflight DELETE"    204 -X OPTIONS -H 'Origin: http://localhost:3000' -H 'Access-Control-Request-Method: DELETE' "$BASE/api/v2/clients/users/delete"
+    check "unsupported method"  405 -X PATCH "$BASE/"
+    check "HEAD /"              200 -I "$BASE/api/v2/hello"
+    check "GET with Origin"     200 -H 'Origin: http://localhost:3000' "$BASE/api/v2/hello"
 
-# Allow-Methods check
-headers=""
-status=""
-fetch headers status -X OPTIONS -H 'Access-Control-Request-Method: PUT' "$BASE/api/v2/clients/users/update" || true
-methods="$(printf '%s\n' "$headers" | grep -i '^access-control-allow-methods:' || true)"
-if [[ $methods == *PUT* && $methods == *DELETE* ]]; then
-    record_pass "preflight Allow-Methods contains PUT and DELETE"
-else
-    record_fail "preflight Allow-Methods missing PUT/DELETE"
+    # Allow-Methods check
+    headers=""
+    status=""
+    fetch headers status -X OPTIONS -H 'Access-Control-Request-Method: PUT' "$BASE/api/v2/clients/users/update" || true
+    methods="$(printf '%s\n' "$headers" | grep -i '^access-control-allow-methods:' || true)"
+    if [[ $methods == *PUT* && $methods == *DELETE* ]]; then
+        record_pass "preflight Allow-Methods contains PUT and DELETE"
+    else
+        record_fail "preflight Allow-Methods missing PUT/DELETE"
+    fi
 fi
 
-# Blacklisted (403): only meaningful if the server blacklists this client IP.
-headers=""
-status=""
-fetch headers status "$BASE/api/v2/hello" || true
-if [[ $status == "403" ]]; then
-    bad=0
-    for h in access-control-allow-origin access-control-allow-methods access-control-allow-headers access-control-expose-headers; do
-        n="$(count "$headers" "$h")"
-        if [[ $n -ne 1 ]]; then record_fail "blacklisted (403) ($h appears $n times)"; bad=1; break; fi
-    done
-    [[ $bad -eq 0 ]] && record_pass "blacklisted (403)"
-else
-    record_skip "blacklisted (403): server not blacklisting this client (last status ${status:-unknown}); set BLACKLIST to include the client IP to test"
+if [[ $CASE == "403" || $CASE == "all" ]]; then
+    # Blacklisted (403): only meaningful if the server blacklists this client IP.
+    headers=""
+    status=""
+    fetch headers status "$BASE/api/v2/hello" || true
+    if [[ $status == "403" ]]; then
+        bad=0
+        for h in access-control-allow-origin access-control-allow-methods access-control-allow-headers access-control-expose-headers; do
+            n="$(count "$headers" "$h")"
+            if [[ $n -ne 1 ]]; then record_fail "blacklisted (403) ($h appears $n times)"; bad=1; break; fi
+        done
+        [[ $bad -eq 0 ]] && record_pass "blacklisted (403)"
+    else
+        record_skip "blacklisted (403): server not blacklisting this client (last status ${status:-unknown}); set BLACKLIST to include the client IP to test"
+    fi
 fi
 
-# Banned (503): many identical requests from one IP.
-BAN_COUNT="${BAN_COUNT:-0}"
-if [[ $BAN_COUNT -le 0 ]]; then
-    record_skip "banned (503): set BAN_COUNT=10001 (or higher) to provoke"
-else
+if [[ $CASE == "503" || $CASE == "all" ]]; then
+    # Banned (503): many identical requests from one IP.
+    BAN_COUNT="${BAN_COUNT:-0}"
+    if [[ $BAN_COUNT -le 0 ]]; then
+        record_skip "banned (503): set BAN_COUNT=10001 (or higher) to provoke"
+    else
+        code=""
+        last_headers=""
+        for i in $(seq 1 "$BAN_COUNT"); do
+            fetch last_headers code "$BASE/api/v2/hello" || true
+            if [[ $code == "503" ]]; then break; fi
+        done
+        if [[ $code != "503" ]]; then
+            record_skip "banned (503): not provoked after $BAN_COUNT requests (last status ${code:-unknown})"
+        else
+            bad=0
+            for h in access-control-allow-origin access-control-allow-methods access-control-allow-headers access-control-expose-headers; do
+                n="$(count "$last_headers" "$h")"
+                if [[ $n -ne 1 ]]; then record_fail "banned (503) ($h appears $n times)"; bad=1; break; fi
+            done
+            [[ $bad -eq 0 ]] && record_pass "banned (503)"
+        fi
+    fi
+fi
+
+if [[ $CASE == "429" || $CASE == "all" ]]; then
+    # Rate limited (429): many distinct requests from one IP.
+    COUNT="${COUNT:-120}"
+    echo "note: 429 case assumes the default MAX_FPS=100 (defaults.hpp); COUNT=$COUNT; .env may override these thresholds"
     code=""
     last_headers=""
-    for i in $(seq 1 "$BAN_COUNT"); do
-        fetch last_headers code "$BASE/api/v2/hello" || true
-        if [[ $code == "503" ]]; then break; fi
+    for i in $(seq 1 "$COUNT"); do
+        fetch last_headers code -H "X-Test-Id: $i" "$BASE/api/v2/hello" || true
+        if [[ $code == "429" ]]; then break; fi
     done
-    if [[ $code != "503" ]]; then
-        record_skip "banned (503): not provoked after $BAN_COUNT requests (last status ${code:-unknown})"
+    if [[ $code != "429" ]]; then
+        record_skip "rate limited (429): not provoked after $COUNT requests (last status ${code:-unknown})"
     else
         bad=0
         for h in access-control-allow-origin access-control-allow-methods access-control-allow-headers access-control-expose-headers; do
             n="$(count "$last_headers" "$h")"
-            if [[ $n -ne 1 ]]; then record_fail "banned (503) ($h appears $n times)"; bad=1; break; fi
+            if [[ $n -ne 1 ]]; then record_fail "rate limited (429) ($h appears $n times)"; bad=1; break; fi
         done
-        [[ $bad -eq 0 ]] && record_pass "banned (503)"
+        [[ $bad -eq 0 ]] && record_pass "rate limited (429)"
     fi
-fi
-
-# Rate limited (429): many distinct requests from one IP.
-COUNT="${COUNT:-120}"
-echo "note: 429 case assumes the default MAX_FPS=100 (defaults.hpp); COUNT=$COUNT; .env may override these thresholds"
-code=""
-last_headers=""
-for i in $(seq 1 "$COUNT"); do
-    fetch last_headers code -H "X-Test-Id: $i" "$BASE/api/v2/hello" || true
-    if [[ $code == "429" ]]; then break; fi
-done
-if [[ $code != "429" ]]; then
-    record_skip "rate limited (429): not provoked after $COUNT requests (last status ${code:-unknown})"
-else
-    bad=0
-    for h in access-control-allow-origin access-control-allow-methods access-control-allow-headers access-control-expose-headers; do
-        n="$(count "$last_headers" "$h")"
-        if [[ $n -ne 1 ]]; then record_fail "rate limited (429) ($h appears $n times)"; bad=1; break; fi
-    done
-    [[ $bad -eq 0 ]] && record_pass "rate limited (429)"
 fi
 
 printf '\n%d passed, %d failed, %d skipped\n' "$passed" "$fail" "$skipped"
@@ -153,3 +164,4 @@ if [[ $fail -gt 0 ]]; then
     exit 1
 fi
 exit 0
+

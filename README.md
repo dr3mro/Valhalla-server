@@ -1006,22 +1006,30 @@ To run `./cors_test.sh --strict` against cases that need low DoS thresholds, sta
 
 ```
 # 403 case
-MAX_REQUESTS=1000000 MAX_FPS=1000000 RL_DURATION=1 BAN_DURATION=1 \
-  BLACKLIST='^127\.0\.0\.1$' WHITELIST='' SERVER_PORT=8099 \
-  ENV_FILE=/tmp/scratchpad/low.env ./run_release.sh
+ENV_FILE=none MAX_REQUESTS=1000000 MAX_FPS=1000000 RL_DURATION=1 BAN_DURATION=1 \
+  BLACKLIST='^127\.0\.0\.1$' WHITELIST='' SERVER_PORT=8099 ./run_release.sh
 
 # 429 case
-MAX_REQUESTS=1000000 MAX_FPS=5 RL_DURATION=5 BAN_DURATION=5 \
-  WHITELIST='' BLACKLIST='' SERVER_PORT=8100 \
-  ENV_FILE=/tmp/scratchpad/low.env ./run_release.sh
+ENV_FILE=none MAX_REQUESTS=1000000 MAX_FPS=5 RL_DURATION=5 BAN_DURATION=5 \
+  WHITELIST='' BLACKLIST='' SERVER_PORT=8100 ./run_release.sh
 
 # 503 case
-MAX_REQUESTS=5 MAX_FPS=1000000 RL_DURATION=5 BAN_DURATION=5 \
-  WHITELIST='' BLACKLIST='' SERVER_PORT=8101 \
-  ENV_FILE=/tmp/scratchpad/low.env ./run_release.sh
+ENV_FILE=none MAX_REQUESTS=5 MAX_FPS=1000000 RL_DURATION=5 BAN_DURATION=5 \
+  WHITELIST='' BLACKLIST='' SERVER_PORT=8101 ./run_release.sh
 ```
 
-Then run `./cors_test.sh --strict http://localhost:8099` (and the other two URLs). Each instance proves its targeted case; skips for cases it is not configured for are expected.
+`run_release.sh` loads `ENV_FILE` and exports every value from it, so settings in the file override the shell environment. Set `ENV_FILE=none` to use the command-line variables, or create one file per instance with a heredoc in a temporary directory (`tmpdir=$(mktemp -d)`).
+
+Then run the matching case against each instance:
+
+```
+./cors_test.sh --case 403 --strict http://localhost:8099
+./cors_test.sh --case 429 --strict http://localhost:8100
+./cors_test.sh --case 503 --strict http://localhost:8101
+./cors_test.sh --case basic --strict http://localhost:8080
+```
+
+Each instance proves its targeted case. The other cases are skipped there by design.
 
 ## Development
 
