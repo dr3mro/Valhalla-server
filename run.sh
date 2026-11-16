@@ -210,8 +210,8 @@ run_all() {
     server_start "$profile" --background || { err "Server start failed"; return 1; }
 
     local failures=0
-    local -a SUITES=() RESULTS=()
-    record() { SUITES+=("$1"); if [[ $2 -eq 0 ]]; then RESULTS+=("${C_G}PASS${C_N}"); else RESULTS+=("${C_R}FAIL${C_N}"); failures=$((failures+1)); fi; }
+    local -a SUITES=() RESULTS=() PLAIN=()
+    record() { SUITES+=("$1"); if [[ $2 -eq 0 ]]; then RESULTS+=("${C_G}PASS${C_N}"); PLAIN+=("PASS"); else RESULTS+=("${C_R}FAIL${C_N}"); PLAIN+=("FAIL"); failures=$((failures+1)); fi; }
 
     if [[ $do_unit -eq 1 ]]; then
         step "Unit tests"
@@ -268,11 +268,21 @@ run_all() {
         printf '%-20s %b\n' "${SUITES[$i]}" "${RESULTS[$i]}"
     done
     echo
+    # Write a summary report file.
+    {
+        echo "Valhalla test summary - $(date)"
+        echo "failures: $failures"
+        for i in "${!SUITES[@]}"; do
+            printf '%-20s %s\n' "${SUITES[$i]}" "${PLAIN[$i]}"
+        done
+    } > "$STATE_DIR/test-summary.txt" 2>/dev/null || true
+
     if [[ $failures -eq 0 ]]; then
         ok "All tests passed"
     else
         err "$failures test suite(s) failed"
     fi
+    info "Summary written to $STATE_DIR/test-summary.txt"
     return $failures
 }
 
