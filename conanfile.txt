@@ -28,5 +28,6 @@ cmake_layout
 trantor/*:with_spdlog=True
 drogon/*:with_spdlog=True
 drogon/*:with_boost=False
+drogon/*:with_postgres=True
 spdlog/*:header_only=True
 c-ares/*:tools=False
