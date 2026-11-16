@@ -281,7 +281,7 @@ TEST_CASE("Configurator exposes the configured singleton through Store", "[confi
         CHECK(config.user == Defaults::Database::DB_USER_);
         CHECK(config.pass == Defaults::Database::DB_PASS_);
         CHECK_FALSE(config.ssl);
-        CHECK_FALSE(config.async);
+        CHECK(config.async);  // DB_ASYNC defaults to true since the async plan (aync_plan.md, phase 5)
         CHECK(config.max_conn == Defaults::Database::DB_MAX_CONN_);
         CHECK(config.acquire_timeout_ms == Defaults::Database::DB_ACQUIRE_TIMEOUT_MS_);
         CHECK(config.acquire_timeout_ms == 3000);

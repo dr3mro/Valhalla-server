@@ -8,6 +8,7 @@
 #include <unordered_set>
 
 #include "controllers/databasecontroller/databasecontroller.hpp"
+#include "drogon/utils/coroutine.h"
 #include "database/databasebusy.hpp"
 #include "store/store.hpp"
 #include "utils/global/types.hpp"
@@ -82,6 +83,61 @@ class FakeDatabaseController : public DatabaseController
     {
         throwIfBusy();
         return permissions_result;
+    }
+
+    // ---- Asynchronous (coroutine) seam for DB_ASYNC=true paths ----
+    // The coroutine overrides answer from the same fields as their synchronous
+    // counterparts, so one fake drives both paths hermetically.
+    int coro_calls = 0;  // how many async queries ran, to check a path used the async seam
+
+    drogon::Task<std::optional<jsoncons::json>> executeQueryCoro(const std::string&, const pqxx::params& = {}) override
+    {
+        throwIfBusy();
+        ++query_calls;
+        ++coro_calls;
+        co_return query_result;
+    }
+
+    drogon::Task<std::optional<jsoncons::json>> executeReadQueryCoro(const std::string&, const pqxx::params& = {}) override
+    {
+        throwIfBusy();
+        ++coro_calls;
+        co_return read_result;
+    }
+
+    drogon::Task<std::optional<jsoncons::json::array>> executeSearchQueryCoro(const std::string&, const pqxx::params& = {}) override
+    {
+        throwIfBusy();
+        ++coro_calls;
+        co_return search_result;
+    }
+
+    drogon::Task<std::optional<std::string>> doReadQueryCoro(const std::string&, const pqxx::params& = {}) override
+    {
+        throwIfBusy();
+        ++coro_calls;
+        co_return do_read_result;
+    }
+
+    drogon::Task<std::optional<bool>> checkItemExistsCoro(const std::string&, const std::string&, const std::string&) override
+    {
+        throwIfBusy();
+        ++coro_calls;
+        co_return exists_result;
+    }
+
+    drogon::Task<std::optional<jsoncons::json>> getPasswordHashForUserNameCoro(const std::string&, const std::string&) override
+    {
+        throwIfBusy();
+        ++coro_calls;
+        co_return password_result;
+    }
+
+    drogon::Task<std::optional<jsoncons::json>> getPermissionsCoro(const std::string&) override
+    {
+        throwIfBusy();
+        ++coro_calls;
+        co_return permissions_result;
     }
 
    private:
