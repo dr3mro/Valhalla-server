@@ -25,6 +25,7 @@ class ServiceControllerBase
 
     // CRUDS
     virtual void Create(CALLBACK_&& callback, const Requester&& requester, std::string_view data)                              = 0;
+    virtual drogon::Task<void> CreateAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data) = 0;
     virtual void Read(CALLBACK_&& callback, const Requester&& requester, std::string_view data)                                = 0;
     virtual drogon::Task<void> ReadAsync(CALLBACK_&& callback, const Requester&& requester, std::string_view data) = 0;
     virtual void Update(CALLBACK_&& callback, const Requester&& requester, std::string_view data, std::optional<uint64_t> _id) = 0;

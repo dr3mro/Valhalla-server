@@ -31,6 +31,53 @@ namespace api::v2
        public:
         void Create(const drogon::HttpRequestPtr& req, std::function<void(const drogon::HttpResponsePtr&)>&& callback, const std::string& serviceType)
         {
+            const bool async = Store::getObject<Configurator>()->get<Configurator::DatabaseConfig>().async;
+            if (async)
+            {
+                auto cb = std::move(callback);
+                auto handler = [this, req, cb, serviceType]() mutable -> drogon::AsyncTask
+                {
+                    CALLBACK_ mcb = [cb](int code, const std::string& content)
+                    {
+                        using Reply = std::function<void(const drogon::HttpResponsePtr&)>;
+                        switch (code)
+                        {
+                            case api::v2::Http::Status::OK:
+                                Helper::successResponse(content, Reply(cb));
+                                break;
+                            case api::v2::Http::Status::INTERNAL_SERVER_ERROR:
+                                Helper::failureResponse(content, Reply(cb));
+                                break;
+                            default:
+                                Helper::errorResponse(static_cast<drogon::HttpStatusCode>(code), content, Reply(cb));
+                                break;
+                        }
+                    };
+
+                    Requester requester(req->getAttributes()->get<uint64_t>("clientID"), req->getAttributes()->get<std::string>("clientGroup"));
+
+                    auto ctlIt = serviceRegistry.find(serviceType);
+                    if (ctlIt == serviceRegistry.end())
+                    {
+                        std::move(mcb)(api::v2::Http::Status::BAD_REQUEST, fmt::format("Type mapping not found for: {}", serviceType));
+                        co_return;
+                    }
+
+                    try
+                    {
+                        co_await std::visit([&](auto& controller) -> drogon::Task<void> {
+                            co_await controller->CreateAsync(std::move(mcb), std::move(requester), req->body());
+                        }, ctlIt->second);
+                    }
+                    catch (const std::exception& e)
+                    {
+                        Helper::failureResponse(e.what(), std::move(cb));
+                    }
+                };
+                handler();
+                return;
+            }
+
             executeControllerMethod(*dbExecutor, serviceRegistry, serviceType, &ServiceControllerBase::Create, req, std::move(callback), req->body());
         }
 
