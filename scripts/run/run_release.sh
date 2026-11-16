@@ -38,7 +38,7 @@ load_env() {
 
 if [[ ${1:-} == "--build" ]]; then
 	shift
-	cmake --build build/Release
+	cmake --build "$ROOT/build/Release"
 fi
 
 [[ -x $BIN ]] || { echo "error: $BIN not found. Run scripts/build/build.sh or use --build" >&2; exit 1; }

@@ -8,7 +8,7 @@
 # Inputs: SOURCE_DIR, BINARY_DIR. get_tag.sh uses $VALHALLA_VERSION if set
 # (Docker builds have no .git), otherwise git describe.
 execute_process(
-  COMMAND "${SOURCE_DIR}/get_tag.sh"
+  COMMAND "${SOURCE_DIR}/scripts/build/get_tag.sh"
   WORKING_DIRECTORY "${SOURCE_DIR}"
   OUTPUT_VARIABLE _valhalla_tag_macro
   OUTPUT_STRIP_TRAILING_WHITESPACE)
