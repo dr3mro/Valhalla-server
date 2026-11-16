@@ -251,7 +251,7 @@ esac
 IMAGE_REPO="${VALHALLA_IMAGE:-docker.io/dr3mro/valhalla-server-run}"
 LOCAL_REPO="valhalla-server-run"
 NAME="${VALHALLA_NAME:-valhalla}"
-PORT="${VALHALLA_PORT:-VALHALLA_PORT}"
+PORT="${VALHALLA_PORT:-8080}"
 PORT_EXPLICIT="${VALHALLA_PORT:+1}" # set: --port / VALHALLA_PORT wins over the container's port
 CPUS="${VALHALLA_CPUS:-4}"
 MEMORY_GB="${VALHALLA_MEMORY:-1}"
@@ -1800,6 +1800,10 @@ create_container() {
   local server_port server_host
   server_port="$(env_get SERVER_PORT || echo 8080)"
   server_host="$(env_get SERVER_HOST || echo 0.0.0.0)"
+  # By default, publish the container on the same port the server listens on.
+  if [[ "${PORT_EXPLICIT:-0}" != "1" ]]; then
+    PORT="$server_port"
+  fi
   case "$server_host" in
     127.* | localhost | ::1)
       warn "SERVER_HOST=$server_host only listens inside the container; the published port won't reach it. Use 0.0.0.0." ;;
