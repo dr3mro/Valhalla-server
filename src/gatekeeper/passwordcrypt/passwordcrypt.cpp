@@ -93,7 +93,8 @@ PasswordCrypt::PasswordCrypt()
  * `std::nullopt` if libsodium could not allocate memory. See also:
  * PasswordCrypt::hashPassword
  */
-std::optional<std::string> PasswordCrypt::hashPassword(const std::string&
+std::optional<std::string> PasswordCrypt::hashPassword(
+    const std::string&
         password)  // NOLINT  Takes the password, returns a hash or nothing.
 {
   char hashed_password[crypto_pwhash_STRBYTES];  // NOLINT  A fixed-size char
@@ -103,9 +104,11 @@ std::optional<std::string> PasswordCrypt::hashPassword(const std::string&
   // The result is a self-describing string: algorithm, cost, random salt and
   // hash.
   if (crypto_pwhash_str_alg(static_cast<char*>(hashed_password),
-          password.c_str(), password.length(), ARGON2ID_OPSLIMIT,
-          ARGON2ID_MEMLIMIT,
-          crypto_pwhash_ALG_ARGON2ID13) !=
+                            password.c_str(),
+                            password.length(),
+                            ARGON2ID_OPSLIMIT,
+                            ARGON2ID_MEMLIMIT,
+                            crypto_pwhash_ALG_ARGON2ID13) !=
       0)  // NOLINT  Zero means success; anything else means failure.
   {
     // out of memory: the required RAM could not be reserved.
@@ -130,7 +133,8 @@ std::optional<std::string> PasswordCrypt::hashPassword(const std::string&
  * Returns `true` on a match, `false` otherwise (including unknown prefixes).
  * See also: PasswordCrypt::verifyPassword
  */
-bool PasswordCrypt::verifyPassword(const std::string& password,
+bool PasswordCrypt::verifyPassword(
+    const std::string& password,
     const std::string&
         hash)  // NOLINT  Returns whether the password is correct.
 {
@@ -138,15 +142,18 @@ bool PasswordCrypt::verifyPassword(const std::string& password,
   // the switch to Argon2id keep working.
   if (hash.starts_with(ARGON2_PREFIX))  // Label says this is an Argon2 hash.
   {
-    return crypto_pwhash_str_verify(hash.c_str(), password.c_str(),
-               password.length()) == 0;  // Zero from libsodium means a match.
+    return crypto_pwhash_str_verify(hash.c_str(),
+                                    password.c_str(),
+                                    password.length()) ==
+           0;  // Zero from libsodium means a match.
   }
   if (hash.starts_with(
           SCRYPT_PREFIX))  // Label says this is an older scrypt hash.
   {
     return crypto_pwhash_scryptsalsa208sha256_str_verify(hash.c_str(),
-               password.c_str(),
-               password.length()) == 0;  // Same idea for scrypt.
+                                                         password.c_str(),
+                                                         password.length()) ==
+           0;  // Same idea for scrypt.
   }
   return false;  // Unknown/foreign format: fail closed (deny) rather than
                  // guessing.

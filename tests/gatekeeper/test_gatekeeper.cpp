@@ -58,15 +58,15 @@ using GateKeeper =
 // ── isDosAttack (uses singleton DOSDetector from Store) ─────────────────────
 
 TEST_CASE("GateKeeper::isDosAttack allows a fresh request",
-    "[gatekeeper][dos]")  // Registers the test that a never-seen request passes
-                          // the DoS check.
+          "[gatekeeper][dos]")  // Registers the test that a never-seen request
+                                // passes the DoS check.
 {
   GateKeeper gk;  // The facade; it finds its dependencies from process-wide
                   // singletons.
   const DOSDetector::Request req{
       // Build a request with designated initializers so each fingerprint
       // field is explicit.
-      .ip     = "10.99.88.77",  // Client address; a documentation-style IP that
+      .ip = "10.99.88.77",  // Client address; a documentation-style IP that
       // should not be on any list.
       .method = "GET",  // HTTP method, part of the request fingerprint.
       .path   = "/api/v2/users/read",  // Route being requested; also part of
@@ -82,8 +82,8 @@ TEST_CASE("GateKeeper::isDosAttack allows a fresh request",
 }
 
 TEST_CASE("GateKeeper::isDosAttack returns a valid status for every request",
-    "[gatekeeper][dos]")  // Registers the test that the facade only ever
-                          // returns known verdicts.
+          "[gatekeeper][dos]")  // Registers the test that the facade only ever
+                                // returns known verdicts.
 {
   // The singleton DOSDetector uses whatever threshold is in the environment.
   // We only verify the return type is one of the known Status values — the
@@ -95,8 +95,8 @@ TEST_CASE("GateKeeper::isDosAttack returns a valid status for every request",
       .ip = "10.202.33.44",  // Different client address from the other test.
       .method = "POST",  // Different method exercises a different fingerprint
       // shape.
-      .path   = "/api/v2/test",  // Test route, not tied to any real resource.
-      .header_hash = 0,          // Header hash left at zero for simplicity.
+      .path = "/api/v2/test",  // Test route, not tied to any real resource.
+      .header_hash = 0,        // Header hash left at zero for simplicity.
       .body        = "repeated-gatekeeper-body",  // Distinct body from the
                                                   // fresh-request test.
   };
@@ -116,16 +116,18 @@ TEST_CASE("GateKeeper::isDosAttack returns a valid status for every request",
 // ── isAuthenticationValid (Store singletons, no DB) ─────────────────────────
 
 TEST_CASE("GateKeeper::isAuthenticationValid rejects an empty ClientLoginData",
-    "[gatekeeper][auth]")  // Registers the test for the "no login info at all"
-                           // case.
+          "[gatekeeper][auth]")  // Registers the test for the "no login info at
+                                 // all" case.
 {
   GateKeeper gk;  // The facade under test.
   std::optional<api::v2::Types::ClientLoginData>
               empty;  // An empty optional: there is no login data to validate.
   std::string message;  // Receives a human-readable reason for rejection.
-  CHECK_FALSE(gk.isAuthenticationValid(empty,
-      message));  // Prove missing login data is rejected rather than crashing
-                  // or being accepted.
+  CHECK_FALSE(
+      gk.isAuthenticationValid(empty,
+                               message));  // Prove missing login data is
+                                           // rejected rather than crashing or
+                                           // being accepted.
 }
 
 TEST_CASE(
@@ -139,18 +141,28 @@ TEST_CASE(
       "2026-01-01 00:00:00 +0000";  // Fixed last-logout time so the token is
                                     // otherwise valid.
   std::optional<api::v2::Types::ClientLoginData> data =
-      valhalla_test::makeLoginData(700, "users",
-          "127.0.0.1");           // Build consistent login data for client 700.
+      valhalla_test::makeLoginData(700,
+                                   "users",
+                                   "127.0.0.1");  // Build consistent login data
+                                                  // for client 700.
   data->username       = "user";  // Username that matches the token's subject.
   data->lastLogoutTime = llodt;   // Same last-logout time the token will carry.
   // Sign with the WRONG secret — verification must fail.
-  data->token = valhalla_test::makeToken("wrong-secret", "wrong-issuer", "JWS",
-      "user", 700, "users", "127.0.0.1",
-      llodt);  // Deliberately sign with a different secret and issuer so
-               // signature verification cannot succeed.
+  data->token =
+      valhalla_test::makeToken("wrong-secret",
+                               "wrong-issuer",
+                               "JWS",
+                               "user",
+                               700,
+                               "users",
+                               "127.0.0.1",
+                               llodt);  // Deliberately sign with a different
+                                        // secret and issuer so signature
+                                        // verification cannot succeed.
 
   std::string message;  // Receives the failure reason.
   CHECK_FALSE(gk.isAuthenticationValid(data,
-      message));  // Prove a bad signature is rejected even though every other
-                  // field is correct.
+                                       message));  // Prove a bad signature is
+                                                   // rejected even though every
+                                                   // other field is correct.
 }

@@ -139,7 +139,8 @@ namespace api::v2  // API version 2 namespace.
      * @throws DatabaseBusy Propagated so callers can apply their
      * retry/back-pressure policy.
      */
-    bool setNowLoginTimeGetLastLogoutTime(std::optional<Types::ClientLoginData>&
+    bool setNowLoginTimeGetLastLogoutTime(
+        std::optional<Types::ClientLoginData>&
             clientLoginData);  // An "upsert" inserts a new row or updates
                                // the existing one.
     /**
@@ -152,7 +153,8 @@ namespace api::v2  // API version 2 namespace.
      * @return True when a session row was found.
      * @throws DatabaseBusy Propagated to callers.
      */
-    bool getLastLogoutTimeIfActive(std::optional<Types::ClientLoginData>&
+    bool getLastLogoutTimeIfActive(
+        std::optional<Types::ClientLoginData>&
             clientLoginData);  // Used before trusting a token, to check for
                                // a later logout/suspension.
     /**
@@ -173,9 +175,10 @@ namespace api::v2  // API version 2 namespace.
      * caller.
      * @throws DatabaseBusy Propagated to callers.
      */
-    void                          setNowLogoutTime(uint64_t _id,
+    void setNowLogoutTime(
+        uint64_t           _id,
         const std::string& _group);  // Writing this time invalidates tokens
-                                                              // issued before the logout.
+                                     // issued before the logout.
     /**
      * @brief Reads the stored `last_login` timestamp for a client.
      * @param[in] _id Client id.
@@ -183,7 +186,8 @@ namespace api::v2  // API version 2 namespace.
      * @return The timestamp, or std::nullopt for an unknown group or
      * missing row.
      */
-    std::optional<std::string>    getLastLoginTime(uint64_t _id,
+    std::optional<std::string> getLastLoginTime(
+        uint64_t _id,
         const std::string&
             _group);  // Optional because there may be no session row.
     /**
@@ -241,10 +245,10 @@ namespace api::v2  // API version 2 namespace.
      * @throws DatabaseBusy Propagated to callers.
      */
     bool validateToken(std::optional<Types::ClientLoginData>& clientLoginData,
-        std::string&                                          message,
-        jwt::decoded_jwt<jwt::traits::kazuho_picojson>&
-            decodedToken);  // Full verification: logout state, active flag,
-                            // signature.
+                       std::string&                           message,
+                       jwt::decoded_jwt<jwt::traits::kazuho_picojson>&
+                           decodedToken);  // Full verification: logout state,
+                                           // active flag, signature.
     /**
      * @brief Coroutine form of getLastLogoutTimeIfActive().
      * @param[in,out] clientLoginData Supplies group/clientId; receives
@@ -288,7 +292,7 @@ namespace api::v2  // API version 2 namespace.
      * presence check.
      */
     [[nodiscard]] jwt::verifier<jwt::default_clock,
-        jwt::traits::kazuho_picojson>
+                                jwt::traits::kazuho_picojson>
     createTokenVerifier(
         const std::optional<Types::ClientLoginData>& clientLoginData)
         const;  // nodiscard: ignoring the verifier would mean no check is

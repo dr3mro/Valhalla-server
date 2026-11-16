@@ -100,8 +100,10 @@ namespace CorsTokens  // Group the token helpers, keeping them independent of
     }
     const std::size_t last = value.find_last_not_of(
         " \t");  // Find the last non-whitespace character.
-    return value.substr(first,
-        last - first + 1);  // Return the subview from first to last, inclusive.
+    return value
+        .substr(first,
+                last - first +
+                    1);  // Return the subview from first to last, inclusive.
   }
 
   /**
@@ -136,9 +138,12 @@ namespace CorsTokens  // Group the token helpers, keeping them independent of
                  // std::ranges::distance returns a signed ptrdiff_t; the
                  // range is non-empty here, so converting it to
                  // string_view's unsigned length is safe.
-                 return trim(std::string_view(&*range.begin(),
-                     static_cast<std::size_t>(std::ranges::distance(
-                         range))));  // Trim this piece's whitespace.
+                 return trim(
+                     std::string_view(&*range.begin(),
+                                      static_cast<std::size_t>(
+                                          std::ranges::distance(
+                                              range))));  // Trim this piece's
+                                                          // whitespace.
                }) |
            std::views::filter(
                [](std::string_view token)
@@ -158,16 +163,20 @@ namespace CorsTokens  // Group the token helpers, keeping them independent of
    * lowercasing.
    */
   inline bool iequals(std::string_view a,
-      std::string_view
-          b)  // Compare two strings ignoring the case of ASCII letters.
+                      std::string_view b)  // Compare two strings ignoring the
+                                           // case of ASCII letters.
   {
     auto lower = [](char c)
     {
       return (c >= 'A' && c <= 'Z') ? static_cast<char>(c + ('a' - 'A')) : c;
     };  // Fold A-Z to a-z; other bytes unchanged.
     return a.size() == b.size() &&
-           std::ranges::equal(a, b, [lower](char x, char y)
-               { return lower(x) == lower(y); });  // Same length and content.
+           std::ranges::equal(a,
+                              b,
+                              [lower](char x, char y)
+                              {
+                                return lower(x) == lower(y);
+                              });  // Same length and content.
   }
 
   /**
@@ -198,11 +207,12 @@ namespace CorsTokens  // Group the token helpers, keeping them independent of
 
     std::string result;  // Accumulates the safe tokens, separated by ", ".
     for (std::string_view token :
-        tokens(requested))  // Iterate the lazily split and trimmed tokens.
+         tokens(requested))  // Iterate the lazily split and trimmed tokens.
     {
       if (!std::ranges::all_of(token,
-              isTokenChar))  // Drop any token containing invalid
-                             // characters such as CRLF or quotes.
+                               isTokenChar))  // Drop any token containing
+                                              // invalid characters such as CRLF
+                                              // or quotes.
       {
         continue;  // Skip this token and move on to the next one.
       }
@@ -230,7 +240,8 @@ namespace CorsTokens  // Group the token helpers, keeping them independent of
    * @param[in] value Token to add.
    * @return The merged Vary value.
    */
-  inline std::string mergeVary(std::string_view existing,
+  inline std::string mergeVary(
+      std::string_view existing,
       std::string_view value)  // Append a token to Vary unless it is redundant.
   {
     std::string combined;  // Rebuilds the header list with tokens separated
@@ -240,15 +251,15 @@ namespace CorsTokens  // Group the token helpers, keeping them independent of
     bool        present =
         false;  // True if the requested token is already in the list.
     for (std::string_view token :
-        tokens(existing))  // Walk each token of the existing header value.
+         tokens(existing))  // Walk each token of the existing header value.
     {
       if (token == "*")  // A wildcard means every response is already variable.
       {
         hasWildcard = true;  // Remember that no change is needed.
       }
       if (iequals(token,
-              value))  // Compare case-insensitively, as header names are
-                       // case-insensitive.
+                  value))  // Compare case-insensitively, as header names are
+                           // case-insensitive.
       {
         present = true;  // Remember that the token is already present.
       }

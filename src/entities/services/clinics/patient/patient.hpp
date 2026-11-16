@@ -111,15 +111,15 @@ class Patient : public Case  // Inherits the CRUD builders and adds
   Patient(const Patient&) = delete;  // Copying is forbidden because the stored
                                      // wrapper should not be duplicated.
   /** @brief See the deleted copy constructor. */
-  Patient(Patient&&)      = delete;  // Moving is also forbidden; build a fresh
-                                     // instance for each request instead.
+  Patient(Patient&&) = delete;  // Moving is also forbidden; build a fresh
+                                // instance for each request instead.
   /** @brief See the deleted copy constructor. */
-  Patient& operator=(
-      const Patient&) = delete;  // Copy assignment is forbidden for the same
-                                 // reason as copy construction.
+  Patient& operator=(const Patient&) =
+      delete;  // Copy assignment is forbidden for the same
+               // reason as copy construction.
   /** @brief See the deleted copy constructor. */
-  Patient& operator=(
-      Patient&&) = delete;  // Move assignment is forbidden as well.
+  Patient& operator=(Patient&&) =
+      delete;  // Move assignment is forbidden as well.
 
   /**
    * @brief Constructs a patient entity bound to `patients`.
@@ -134,8 +134,8 @@ class Patient : public Case  // Inherits the CRUD builders and adds
                          // argument.
   explicit Patient(const T& _data)
       : Case(_data,
-            TABLENAME)  // `explicit` prevents accidental implicit conversion;
-                        // data and table name go up to Case.
+             TABLENAME)  // `explicit` prevents accidental implicit conversion;
+                         // data and table name go up to Case.
   {
   }
   /**
@@ -186,7 +186,8 @@ class Patient : public Case  // Inherits the CRUD builders and adds
   {
     params = {};  // Reset the parameter list so no value from an earlier
                   // call leaks into this query.
-    params.append(std::get<Data_t>(getData())
+    params.append(
+        std::get<Data_t>(getData())
             .get_id()
             .value());  // Pull the Data_t wrapper from Entity, take its id,
                         // and bind it as the first query parameter ($1).

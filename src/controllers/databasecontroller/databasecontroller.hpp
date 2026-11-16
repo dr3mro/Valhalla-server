@@ -124,8 +124,8 @@ class DatabaseController
       delete;  // Moving is disabled for the same reason.
   DatabaseController& operator=(const DatabaseController&) =
       delete;  // No copy assignment on a singleton.
-  DatabaseController& operator=(
-      DatabaseController&&) = delete;  // No move assignment on a singleton.
+  DatabaseController& operator=(DatabaseController&&) =
+      delete;  // No move assignment on a singleton.
   virtual ~DatabaseController() =
       default;  // Virtual for fake injection; default cleanup.
 
@@ -138,8 +138,9 @@ class DatabaseController
    * @throws DatabaseBusy if no connection became available within the
    * configured timeout.
    */
-  virtual std::optional<jsoncons::json> executeQuery(const std::string& query,
-      const pqxx::params&                                               params =
+  virtual std::optional<jsoncons::json> executeQuery(
+      const std::string&  query,
+      const pqxx::params& params =
           {});  // Blocking write/statement returning one JSON object.
   /**
    * @brief Executes a read query and maps one JSON object result.
@@ -178,8 +179,9 @@ class DatabaseController
    * failure.
    * @throws DatabaseBusy if the pool is exhausted.
    */
-  virtual std::optional<std::string> doReadQuery(const std::string& query,
-      const pqxx::params&                                           params =
+  virtual std::optional<std::string> doReadQuery(
+      const std::string&  query,
+      const pqxx::params& params =
           {});  // Blocking query returning a single raw string.
   /**
    * @brief Checks existence with `Database::checkExists`.
@@ -190,8 +192,9 @@ class DatabaseController
    * DB/query failure.
    * @throws DatabaseBusy if the pool is exhausted.
    */
-  virtual std::optional<bool>        checkItemExists(const std::string& table,
-      const std::string&                                         column,
+  virtual std::optional<bool> checkItemExists(
+      const std::string& table,
+      const std::string& column,
       const std::string&
           value);  // Blocking EXISTS check; value is bound, names trusted.
   /**
@@ -236,7 +239,8 @@ class DatabaseController
    * failure.
    * @throws DatabaseBusy if the pool is exhausted.
    */
-  virtual std::optional<jsoncons::json> getPermissions(const std::string&
+  virtual std::optional<jsoncons::json> getPermissions(
+      const std::string&
           query);  // Runs an authorization query from GateKeeper.
 
   // Asynchronous (coroutine) entry points used when DB_ASYNC=true. They run
@@ -278,7 +282,8 @@ class DatabaseController
    * @throws DatabaseBusy when the database reports busy.
    */
   virtual drogon::Task<std::optional<jsoncons::json::array>>
-  executeSearchQueryCoro(const std::string& query,
+  executeSearchQueryCoro(
+      const std::string&  query,
       const pqxx::params& params = {});  // Async search returning a JSON array.
   /**
    * @brief Async counterpart of doReadQuery(); returns the first cell as a
@@ -305,7 +310,8 @@ class DatabaseController
    * @throws DatabaseBusy when the database reports busy.
    */
   virtual drogon::Task<std::optional<bool>> checkItemExistsCoro(
-      const std::string& table, const std::string& column,
+      const std::string& table,
+      const std::string& column,
       const std::string& value);  // Async EXISTS check.
   /**
    * @brief Async counterpart of getPasswordHashForUserName(); same
@@ -316,7 +322,8 @@ class DatabaseController
    * @throws DatabaseBusy when the database reports busy.
    */
   virtual drogon::Task<std::optional<jsoncons::json>>
-  getPasswordHashForUserNameCoro(const std::string& username,
+  getPasswordHashForUserNameCoro(
+      const std::string& username,
       const std::string& tablename);  // Async login credential lookup.
   /**
    * @brief Async counterpart of getTableSchema(); maps information_schema
@@ -441,8 +448,9 @@ class DatabaseController
     }
     catch (const std::exception& e)
     {
-      Message::CriticalMessage(fmt::format(
-          "Exception occurred during query execution: {}", e.what()));
+      Message::CriticalMessage(
+          fmt::format("Exception occurred during query execution: {}",
+                      e.what()));
       return std::nullopt;
     }
     catch (...)

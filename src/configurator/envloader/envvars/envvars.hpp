@@ -87,7 +87,8 @@ class EnvVars  // Provides only protected static helpers meant for configuration
    * @note The only caller in this repository is a test that derives a helper
    * to expose this protected method; production configuration is read-only.
    */
-  static void set(const std::string& key,
+  static void set(
+      const std::string& key,
       const std::string& value);  // Stores value under key; used by tests to
                                   // fake settings, not on the request path.
 };

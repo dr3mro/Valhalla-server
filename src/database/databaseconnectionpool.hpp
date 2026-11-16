@@ -130,7 +130,8 @@ class DatabaseConnectionPool  // A fixed-size, thread-safe library of database
    * @param[in,out] db_ptr Connection to return; a null pointer is ignored by
    * the pool.
    */
-  void return_connection(std::shared_ptr<Database>&&
+  void return_connection(
+      std::shared_ptr<Database>&&
           db_ptr);  // An rvalue reference avoids a shared_ptr copy when
                     // handing the lease back.
 

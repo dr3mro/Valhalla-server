@@ -107,9 +107,9 @@ class FakeClock
       std::chrono::steady_clock>;  // Use the steady clock's time-point type
                                    // as a stand-in.
 
-  FakeClock()
-      : now_(std::chrono::steady_clock::now())
-  {}  // Start at the real current time so values look realistic.
+  FakeClock() : now_(std::chrono::steady_clock::now())
+  {
+  }  // Start at the real current time so values look realistic.
 
   void advance(const std::chrono::seconds seconds)
   {

@@ -66,18 +66,22 @@ using PowerLevel = Permissions::PowerLevel;  // Short alias for the bit-mask
  * Requires staff membership plus the @p powerlevel capability bit.
  * error: FORBIDDEN with a reason when the requester is not staff.
  */
-bool PermissionManagerPrivate::hasPermission(const Requester& requester,
+bool PermissionManagerPrivate::hasPermission(
+    const Requester& requester,
     const std::optional<jsoncons::json>&
         permissions_j,  // Definition of the staff-capability check (signature
                         // continues next line).
-    const Permissions::PowerLevel& powerlevel, const std::string& service_name,
+    const Permissions::PowerLevel& powerlevel,
+    const std::string&             service_name,
     Http::Error& error)  // Rest of hasPermission's signature: the required bit,
                          // a name for messages, and the error output.
 {
   auto entityStaffPermissions =
-      isStaffOfService(requester, permissions_j, service_name,
-          error);  // First find the caller's staff entry; it also fills in
-                   // error on failure.
+      isStaffOfService(requester,
+                       permissions_j,
+                       service_name,
+                       error);  // First find the caller's staff entry; it also
+                                // fills in error on failure.
 
   if (!entityStaffPermissions.has_value())  // No staff entry means the caller
                                             // is not on this service's team.
@@ -117,8 +121,8 @@ bool PermissionManagerPrivate::isOwnerOfService(  // Definition of the owner-id
   }
 
   if (!requester.idMatch(permissions_j.value()["owner_id"]
-              .as<uint64_t>()))  // Compare the caller's id with the stored
-                                 // owner_id.
+                             .as<uint64_t>()))  // Compare the caller's id with
+                                                // the stored owner_id.
   {
     error.code = Http::Status::FORBIDDEN;  // 403 Forbidden: wrong identity
                                            // for this operation.
@@ -153,8 +157,8 @@ bool PermissionManagerPrivate::isAdminOfService(  // Definition of the admin-id
   }
 
   if (!requester.idMatch(permissions_j.value()["admin_id"]
-              .as<uint64_t>()))  // Compare the caller's id with the stored
-                                 // admin_id.
+                             .as<uint64_t>()))  // Compare the caller's id with
+                                                // the stored admin_id.
   {
     error.code = Http::Status::FORBIDDEN;  // 403 Forbidden: wrong identity
                                            // for this operation.
@@ -201,12 +205,12 @@ PermissionManagerPrivate::isStaffOfService(  // Definition of the staff lookup
                                          // permission document.
 
     for (const auto& [role, members] :
-        staff.object_range())  // Walk every role; structured binding gives
-                               // the role name and its member list.
+         staff.object_range())  // Walk every role; structured binding gives
+                                // the role name and its member list.
     {
       for (const auto& member :
-          members.array_range())  // Walk each member string inside that
-                                  // role's list.
+           members.array_range())  // Walk each member string inside that
+                                   // role's list.
       {
         if (!member.as<std::string>().empty())  // Skip blank entries so they
                                                 // cannot cause parse errors.
@@ -216,9 +220,10 @@ PermissionManagerPrivate::isStaffOfService(  // Definition of the staff lookup
                                            // in the form '<id>:<mask>'.
           size_t pos = raw_str.find(':');  // Locate the colon that separates
                                            // the id from the mask.
-          std::string left = raw_str.substr(0,
-              pos);  // Everything before the colon is the staff id as
-                     // text.
+          std::string left =
+              raw_str.substr(0,
+                             pos);  // Everything before the colon is the staff
+                                    // id as text.
           std::string right =
               raw_str.substr(pos + 1);  // Everything after the colon is the
                                         // permission mask as text.
@@ -227,14 +232,18 @@ PermissionManagerPrivate::isStaffOfService(  // Definition of the staff lookup
                                                // Compare the id strings.
           {
             return std::optional<Permissions::StaffPermission>(
-                Permissions::StaffPermission{
-                    // Found a match: build the result object
-                    // describing this staff member.
-                    .staff_id = static_cast<uint64_t>(std::stoull(left)),
-                    .power    = static_cast<PowerLevel>(std::stoi(right)),
-                    .isMember = true});  // Convert id and mask strings to
-                                         // numbers, and flag this as a real
-                                         // match.
+                Permissions::StaffPermission{// Found a match: build the result
+                                             // object
+                                             // describing this staff member.
+                                             .staff_id = static_cast<uint64_t>(
+                                                 std::stoull(left)),
+                                             .power = static_cast<PowerLevel>(
+                                                 std::stoi(right)),
+                                             .isMember =
+                                                 true});  // Convert id and mask
+                                                          // strings to
+            // numbers, and flag this as a real
+            // match.
           }
         }
       }
@@ -261,8 +270,10 @@ PermissionManagerPrivate::isStaffOfService(  // Definition of the staff lookup
 
 /** @brief Allows access only when both the requester's group and id match the
  * target. */
-bool PermissionManagerPrivate::assert_group_id_match(const Requester& requester,
-    const std::string& groupname, uint64_t client_id,
+bool PermissionManagerPrivate::assert_group_id_match(
+    const Requester&   requester,
+    const std::string& groupname,
+    uint64_t           client_id,
     Http::Error& error)  // Definition of the group+id check for client records.
 {
   if (!requester.groupMatch(groupname) ||
@@ -286,7 +297,8 @@ bool PermissionManagerPrivate::assert_group_id_match(const Requester& requester,
  * provider. error: BAD_REQUEST with a reason on failure.
  */
 bool api::v2::PermissionManagerPrivate::preServiceCreateChecks(
-    const Requester& requester, const std::optional<jsoncons::json>& service_j,
+    const Requester&                     requester,
+    const std::optional<jsoncons::json>& service_j,
     Http::Error& error)  // Definition of the service-creation validation.
 {
   if (!service_j.has_value())  // A creation request without a body cannot be
@@ -337,7 +349,7 @@ bool api::v2::PermissionManagerPrivate::preServiceCreateChecks(
   }
 
   if (!requester
-          .isProvider())  // Only providers are allowed to create a service.
+           .isProvider())  // Only providers are allowed to create a service.
   {
     error.code = Http::Status::BAD_REQUEST;  // 400 Bad Request: the payload
                                              // or id was missing/invalid.
@@ -360,28 +372,35 @@ bool api::v2::PermissionManagerPrivate::isOwnerOrAdminOrHasPermission(
     const std::optional<jsoncons::json>&
         permissions_j,  // Definition of the combined rule (signature continues
                         // next line).
-    const std::string& service_name, Http::Error& error,
+    const std::string& service_name,
+    Http::Error&       error,
     Permissions::PowerLevel
         required)  // Rest of the signature: service name, error output and the
                    // required capability bit.
 {
-  if (isOwnerOrAdmin(requester, permissions_j, service_name,
-          error))  // First door: owner or admin passes immediately.
+  if (isOwnerOrAdmin(requester,
+                     permissions_j,
+                     service_name,
+                     error))  // First door: owner or admin passes immediately.
   {
     return true;  // First door succeeded, so allow.
   }
 
-  if (!hasPermission(requester, permissions_j, required, service_name,
-          error))  // Second door: staff must have the required capability
-                   // bit.
+  if (!hasPermission(requester,
+                     permissions_j,
+                     required,
+                     service_name,
+                     error))  // Second door: staff must have the required
+                              // capability bit.
   {
-    error.code    = Http::Status::FORBIDDEN;  // 403 Forbidden: malformed data
-                                              // is treated as a denial.
-    error.message = fmt::format(
-        "You don't have the permission to manage  {} {}", service_name,
-        error.message);  // Add the service name and the detailed reason to
-                         // the message.
-    return false;        // Deny the request.
+    error.code = Http::Status::FORBIDDEN;  // 403 Forbidden: malformed data
+                                           // is treated as a denial.
+    error.message =
+        fmt::format("You don't have the permission to manage  {} {}",
+                    service_name,
+                    error.message);  // Add the service name and the detailed
+                                     // reason to the message.
+    return false;                    // Deny the request.
   }
   return true;  // First door succeeded, so allow.
 }
@@ -401,7 +420,9 @@ bool api::v2::PermissionManagerPrivate::
                              // document, service name and error output.
 {
   return (isOwnerOfService(requester, permissions_j, service_name, error) ||
-          isAdminOfService(requester, permissions_j, service_name,
-              error));  // OR means the owner check short-circuits the admin
-                        // check on success.
+          isAdminOfService(requester,
+                           permissions_j,
+                           service_name,
+                           error));  // OR means the owner check short-circuits
+                                     // the admin check on success.
 }

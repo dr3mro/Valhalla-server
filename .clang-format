@@ -1,70 +1,103 @@
-# .clang-format
+# Optimized C++ formatting configuration
+# Baseline: Google style, with deliberate project-specific overrides.
+# Recommended: clang-format 18 or newer.
+
+---
+Language: Cpp
 BasedOnStyle: Google
-ColumnLimit: 80 # QA style: Google's 80-column limit; comments are wrapped to stay below it.
-BinPackArguments: true
-PenaltyBreakBeforeFirstCallParameter: 2000
-AlignAfterOpenBracket: DontAlign
+
+# -----------------------------------------------------------------------------
+# General layout
+# -----------------------------------------------------------------------------
+ColumnLimit: 80
 IndentWidth: 2
 TabWidth: 2
-
 UseTab: Never
+ContinuationIndentWidth: 4
+
+# Keep braces on their own lines (Allman style).
 BreakBeforeBraces: Allman
-AlignConsecutiveAssignments: AcrossEmptyLinesAndComments
-AlignConsecutiveDeclarations: AcrossEmptyLinesAndComments
-AlignConsecutiveBitFields: AcrossEmptyLinesAndComments
-AlignTrailingComments:
-  Kind: Always
-SpacesBeforeTrailingComments: 2
-ReflowComments: Always
-NamespaceIndentation: All # Options: None, Inner, All
 
-IndentPPDirectives: AfterHash
+# Prefer readable multi-line argument and parameter lists over dense packing.
+BinPackArguments: false
+BinPackParameters: false
+AllowAllArgumentsOnNextLine: true
+AllowAllParametersOfDeclarationOnNextLine: true
+AlignAfterOpenBracket: Align
+PenaltyBreakBeforeFirstCallParameter: 2000
 
-# --- Google style: spacing / pointer style ---
+# -----------------------------------------------------------------------------
+# Alignment and whitespace
+# -----------------------------------------------------------------------------
 PointerAlignment: Left
 ReferenceAlignment: Pointer
 DerivePointerAlignment: false
+
 SpaceBeforeParens: ControlStatements
 SpaceBeforeAssignmentOperators: true
 SpacesInAngles: Never
 SpacesInContainerLiterals: true
 SpaceAfterTemplateKeyword: true
+
+# Align only adjacent code; do not let comments or blank lines create
+# unexpectedly large alignment groups.
+AlignConsecutiveAssignments: Consecutive
+AlignConsecutiveDeclarations: Consecutive
+AlignConsecutiveBitFields: Consecutive
+AlignTrailingComments:
+  Kind: Always
+SpacesBeforeTrailingComments: 2
+
+# -----------------------------------------------------------------------------
+# C++ constructs
+# -----------------------------------------------------------------------------
 IndentCaseLabels: true
 AccessModifierOffset: -1
-ContinuationIndentWidth: 4
 ConstructorInitializerIndentWidth: 4
-BitFieldColonSpacing: Both
-
-# --- Google style: line breaking ---
-BreakBeforeTernaryOperators: true
 BreakConstructorInitializers: BeforeColon
 BreakInheritanceList: BeforeColon
 BreakTemplateDeclarations: Yes
-AllowShortFunctionsOnASingleLine: All
-AllowShortIfStatementsOnASingleLine: WithoutElse
-AllowShortLambdasOnASingleLine: All
-AllowShortLoopsOnASingleLine: true
+BitFieldColonSpacing: Both
+
+# Keep short constructs expanded for easier review, debugging, and diffs.
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLambdasOnASingleLine: None
+AllowShortLoopsOnASingleLine: false
+
+BreakBeforeTernaryOperators: true
 AlwaysBreakBeforeMultilineStrings: true
 BreakStringLiterals: true
 
-# --- Google style: includes ---
+# -----------------------------------------------------------------------------
+# Includes and using declarations
+# -----------------------------------------------------------------------------
 IncludeBlocks: Regroup
 IncludeCategories:
-  - Regex: '^<ext/.*\.h>'
-    Priority: 2
-  - Regex: '^<.*\.h>'
+  # Project/vendor headers under ext/ are kept in their own group.
+  - Regex: "^<ext/.*>"
     Priority: 1
-  - Regex: "^<.*"
+  # Angle-bracket headers ending in .h (commonly system/C headers).
+  - Regex: '^<.*\.h>'
     Priority: 2
-  - Regex: ".*"
+  # Other angle-bracket headers (standard library and third-party headers).
+  - Regex: "^<.*>"
     Priority: 3
+  # Quoted project headers.
+  - Regex: '".*"'
+    Priority: 4
 
 SortUsingDeclarations: LexicographicNumeric
 
-# --- Google style: comments / misc ---
+# -----------------------------------------------------------------------------
+# Comments, preprocessor directives, and file hygiene
+# -----------------------------------------------------------------------------
 CommentPragmas: "^ IWYU pragma:"
+ReflowComments: true
+NamespaceIndentation: All
 FixNamespaceComments: true
+IndentPPDirectives: AfterHash
 MaxEmptyLinesToKeep: 1
 Standard: Auto
 InsertNewlineAtEOF: true
-LineEnding: DeriveLF
+LineEnding: LF

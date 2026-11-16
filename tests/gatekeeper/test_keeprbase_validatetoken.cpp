@@ -78,7 +78,9 @@ namespace
    * Builds a JSON row that getLastLogoutTimeIfActive() expects:
    * { "id": <id>, "last_logout": <llodt>, "active": <active> }
    */
-  jsoncons::json        makeSessionRow(uint64_t id, const std::string& llodt,
+  jsoncons::json makeSessionRow(
+      uint64_t           id,
+      const std::string& llodt,
       bool active)  // Builds one fake DB row describing a session.
   {
     jsoncons::json row =
@@ -100,7 +102,7 @@ TEST_CASE(
 {
   auto fake =
       std::make_shared<FakeDatabaseController>();  // Create the fake DB.
-  FakeDbGuard       guard(fake);  // Inject it before any keeper is built.
+  FakeDbGuard guard(fake);  // Inject it before any keeper is built.
 
   const std::string tokenLlodt =
       "2026-01-01 00:00:00 +0000";  // Last-logout time embedded in the token.
@@ -109,59 +111,82 @@ TEST_CASE(
                                     // the database.
 
   std::optional<api::v2::Types::ClientLoginData> data =
-      valhalla_test::makeLoginData(
-          700, "users", "127.0.0.1");  // Login data for client 700.
-  data->username       = "user";       // Subject matching the token.
-  data->lastLogoutTime = tokenLlodt;   // Caller's claim, matching the token.
-  data->token = valhalla_test::makeToken(kSecret, kIssuer, kType, "user", 700,
-      "users", "127.0.0.1",
-      tokenLlodt);  // Sign the token with the older timestamp.
+      valhalla_test::makeLoginData(700,
+                                   "users",
+                                   "127.0.0.1");  // Login data for client 700.
+  data->username       = "user";                  // Subject matching the token.
+  data->lastLogoutTime = tokenLlodt;  // Caller's claim, matching the token.
+  data->token = valhalla_test::makeToken(kSecret,
+                                         kIssuer,
+                                         kType,
+                                         "user",
+                                         700,
+                                         "users",
+                                         "127.0.0.1",
+                                         tokenLlodt);  // Sign the token with
+                                                       // the older timestamp.
 
   // DB returns a different llodt → validation must fail.
-  fake->read_result = makeSessionRow(700, dbLlodt,
-      true);  // Fake reports a newer logout, so this token is stale.
+  fake->read_result = makeSessionRow(700,
+                                     dbLlodt,
+                                     true);  // Fake reports a newer logout, so
+                                             // this token is stale.
 
   TestKeeprValidate k;  // Instance used to reach the protected function.
   auto              decoded = jwt::decode<jwt::traits::kazuho_picojson>(
       data->token.value());  // Decode the token to its claims.
   std::string message;       // Receives the rejection reason.
-  CHECK_FALSE(k.validateToken(
-      data, message, decoded));  // Prove the stale token is rejected.
+  CHECK_FALSE(k.validateToken(data,
+                              message,
+                              decoded));  // Prove the stale token is rejected.
   CHECK(message.find("logged out") !=
         std::string::npos);  // Prove the reason mentions logout, which is the
                              // actual cause.
 }
 
-TEST_CASE("KeeprBase::validateToken returns false when account is inactive",
+TEST_CASE(
+    "KeeprBase::validateToken returns false when account is inactive",
     "[gatekeeper][keeprbase][validatetoken]")  // Registers the test that a
                                                // suspended account is blocked.
 {
   auto fake =
       std::make_shared<FakeDatabaseController>();  // Create the fake DB.
-  FakeDbGuard       guard(fake);  // Inject it before the keeper is built.
+  FakeDbGuard guard(fake);  // Inject it before the keeper is built.
 
   const std::string llodt =
       "2026-01-01 00:00:00 +0000";  // Timestamp that will match on both
                                     // sides.
 
   std::optional<api::v2::Types::ClientLoginData> data =
-      valhalla_test::makeLoginData(
-          701, "users", "127.0.0.1");  // Login data for client 701.
-  data->username       = "user";       // Subject matching the token.
-  data->lastLogoutTime = llodt;        // Matching last-logout claim.
-  data->token = valhalla_test::makeToken(kSecret, kIssuer, kType, "user", 701,
-      "users", "127.0.0.1", llodt);  // Sign a valid token.
+      valhalla_test::makeLoginData(701,
+                                   "users",
+                                   "127.0.0.1");  // Login data for client 701.
+  data->username       = "user";                  // Subject matching the token.
+  data->lastLogoutTime = llodt;                   // Matching last-logout claim.
+  data->token = valhalla_test::makeToken(kSecret,
+                                         kIssuer,
+                                         kType,
+                                         "user",
+                                         701,
+                                         "users",
+                                         "127.0.0.1",
+                                         llodt);  // Sign a valid token.
 
   // llodt matches but account is suspended.
-  fake->read_result = makeSessionRow(701, llodt, /*active=*/
-      false);  // Same timestamp but active=false, so access should be denied.
+  fake->read_result =
+      makeSessionRow(701,
+                     llodt,   /*active=*/
+                     false);  // Same timestamp but active=false, so access
+                              // should be denied.
 
   TestKeeprValidate k;  // Instance used to reach the protected function.
   auto              decoded = jwt::decode<jwt::traits::kazuho_picojson>(
       data->token.value());  // Decode the token.
   std::string message;       // Receives the rejection reason.
-  CHECK_FALSE(k.validateToken(
-      data, message, decoded));  // Prove the inactive account is rejected.
+  CHECK_FALSE(
+      k.validateToken(data,
+                      message,
+                      decoded));  // Prove the inactive account is rejected.
   CHECK(message.find("suspend") !=
         std::string::npos);  // Prove the reason points at the suspension.
 }
@@ -180,21 +205,28 @@ TEST_CASE(
   // automatic rejection.
   auto fake =
       std::make_shared<FakeDatabaseController>();  // Create the fake DB.
-  FakeDbGuard       guard(fake);  // Inject it before the keeper is built.
+  FakeDbGuard guard(fake);  // Inject it before the keeper is built.
 
   const std::string llodt =
       "2026-01-01 00:00:00 +0000";  // Timestamp used for both token and
                                     // caller data.
 
   std::optional<api::v2::Types::ClientLoginData> data =
-      valhalla_test::makeLoginData(
-          702, "users", "127.0.0.1");  // Login data for client 702.
-  data->username       = "user";       // Subject matching the token.
-  data->lastLogoutTime = llodt;        // Caller-supplied last-logout time.
-  data->is_active      = true;  // Caller-supplied active flag; with no DB row
-                                // these decide the outcome.
-  data->token = valhalla_test::makeToken(kSecret, kIssuer, kType, "user", 702,
-      "users", "127.0.0.1", llodt);  // Sign the token.
+      valhalla_test::makeLoginData(702,
+                                   "users",
+                                   "127.0.0.1");  // Login data for client 702.
+  data->username       = "user";                  // Subject matching the token.
+  data->lastLogoutTime = llodt;  // Caller-supplied last-logout time.
+  data->is_active      = true;   // Caller-supplied active flag; with no DB row
+                                 // these decide the outcome.
+  data->token          = valhalla_test::makeToken(kSecret,
+                                                  kIssuer,
+                                                  kType,
+                                                  "user",
+                                                  702,
+                                                  "users",
+                                                  "127.0.0.1",
+                                                  llodt);  // Sign the token.
 
   // DB returns nothing.
   fake->read_result = std::nullopt;  // Simulate a missing session row.
@@ -204,9 +236,10 @@ TEST_CASE(
       data->token.value());  // Decode the token.
   std::string message;       // Receives any error text.
   // Should succeed because pre-set llodt matches token and is_active == true.
-  CHECK(k.validateToken(data, message,
-      decoded));  // Prove the missing row does not cause an automatic
-                  // rejection.
+  CHECK(k.validateToken(data,
+                        message,
+                        decoded));  // Prove the missing row does not cause an
+                                    // automatic rejection.
 }
 
 TEST_CASE(
@@ -217,25 +250,35 @@ TEST_CASE(
 {
   auto fake =
       std::make_shared<FakeDatabaseController>();  // Create the fake DB.
-  FakeDbGuard       guard(fake);  // Inject it before the keeper is built.
+  FakeDbGuard guard(fake);  // Inject it before the keeper is built.
 
   const std::string llodt =
       "2026-01-01 00:00:00 +0000";  // Timestamp used in the good token.
 
   std::optional<api::v2::Types::ClientLoginData> data =
-      valhalla_test::makeLoginData(
-          703, "users", "127.0.0.1");  // Login data for client 703.
-  data->username       = "user";       // Subject matching the token.
-  data->lastLogoutTime = llodt;        // Matching last-logout time.
+      valhalla_test::makeLoginData(703,
+                                   "users",
+                                   "127.0.0.1");  // Login data for client 703.
+  data->username       = "user";                  // Subject matching the token.
+  data->lastLogoutTime = llodt;                   // Matching last-logout time.
 
   // A token with a tampered signature.
-  std::string good = valhalla_test::makeToken(kSecret, kIssuer, kType, "user",
-      703, "users", "127.0.0.1", llodt);  // First create a genuine token.
-  data->token      = valhalla_test::makeTamperedToken(
+  std::string good =
+      valhalla_test::makeToken(kSecret,
+                               kIssuer,
+                               kType,
+                               "user",
+                               703,
+                               "users",
+                               "127.0.0.1",
+                               llodt);  // First create a genuine token.
+  data->token = valhalla_test::makeTamperedToken(
       good);  // Corrupt it so signature verification should fail.
 
-  fake->read_result = makeSessionRow(
-      703, llodt, true);  // The DB side is otherwise perfectly valid.
+  fake->read_result =
+      makeSessionRow(703,
+                     llodt,
+                     true);  // The DB side is otherwise perfectly valid.
 
   TestKeeprValidate k;  // Instance used to reach the protected function.
   // jwt::decode on a tampered token may throw or produce a decodable token
@@ -245,9 +288,10 @@ TEST_CASE(
     auto decoded = jwt::decode<jwt::traits::kazuho_picojson>(
         data->token.value());  // Try to decode the tampered text.
     std::string message;       // Receives any error text.
-    CHECK_FALSE(k.validateToken(data, message,
-        decoded));  // If decoding worked, prove validation still rejects
-                    // it.
+    CHECK_FALSE(k.validateToken(data,
+                                message,
+                                decoded));  // If decoding worked, prove
+                                            // validation still rejects it.
   }
   catch (...)
   {
@@ -259,35 +303,46 @@ TEST_CASE(
   }
 }
 
-TEST_CASE("KeeprBase::validateToken returns true for a valid active token",
+TEST_CASE(
+    "KeeprBase::validateToken returns true for a valid active token",
     "[gatekeeper][keeprbase][validatetoken]")  // Registers the positive case
                                                // for a healthy session.
 {
   auto fake =
       std::make_shared<FakeDatabaseController>();  // Create the fake DB.
-  FakeDbGuard       guard(fake);  // Inject it before the keeper is built.
+  FakeDbGuard guard(fake);  // Inject it before the keeper is built.
 
   const std::string llodt =
       "2026-01-01 00:00:00 +0000";  // Timestamp used on both sides.
 
   std::optional<api::v2::Types::ClientLoginData> data =
-      valhalla_test::makeLoginData(
-          704, "users", "127.0.0.1");  // Login data for client 704.
-  data->username       = "user";       // Subject matching the token.
-  data->lastLogoutTime = llodt;        // Matching last-logout claim.
-  data->token = valhalla_test::makeToken(kSecret, kIssuer, kType, "user", 704,
-      "users", "127.0.0.1", llodt);  // Sign a valid token.
+      valhalla_test::makeLoginData(704,
+                                   "users",
+                                   "127.0.0.1");  // Login data for client 704.
+  data->username       = "user";                  // Subject matching the token.
+  data->lastLogoutTime = llodt;                   // Matching last-logout claim.
+  data->token = valhalla_test::makeToken(kSecret,
+                                         kIssuer,
+                                         kType,
+                                         "user",
+                                         704,
+                                         "users",
+                                         "127.0.0.1",
+                                         llodt);  // Sign a valid token.
 
   // llodt matches, account is active.
-  fake->read_result = makeSessionRow(
-      704, llodt, true);  // Fake reports a matching, active session.
+  fake->read_result =
+      makeSessionRow(704,
+                     llodt,
+                     true);  // Fake reports a matching, active session.
 
   TestKeeprValidate k;  // Instance used to reach the protected function.
   auto              decoded = jwt::decode<jwt::traits::kazuho_picojson>(
       data->token.value());  // Decode the token.
   std::string message;       // Receives any error text.
-  CHECK(k.validateToken(
-      data, message, decoded));  // Prove a fully valid token is accepted.
+  CHECK(k.validateToken(data,
+                        message,
+                        decoded));  // Prove a fully valid token is accepted.
   CHECK(message.empty());  // Prove no misleading error message was produced
                            // on success.
 }

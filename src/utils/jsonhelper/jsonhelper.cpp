@@ -44,7 +44,8 @@ Json::Value api::v2::JsonHelper::jsonify(
   return object;  // Returns the object by value for the caller to use as a
                   // response body.
 }
-std::string api::v2::JsonHelper::stringify(const jsoncons::json&
+std::string api::v2::JsonHelper::stringify(
+    const jsoncons::json&
         json)  // Overload for the jsoncons type used by validation.
 {
   // dump_pretty writes into the supplied string; used for validation results.

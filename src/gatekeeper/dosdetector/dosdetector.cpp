@@ -94,8 +94,9 @@ DOSDetector::DOSDetector()
     for (const auto& p : config_.blacklist)
       blacklist_.push_back(compileMatcher(p));  // Same for the blacklist.
     async_task_clean_ =
-        std::async(std::launch::async, &DOSDetector::cleanUpTask,
-            this);  // Start the background pruning loop on a new thread.
+        std::async(std::launch::async,
+                   &DOSDetector::cleanUpTask,
+                   this);  // Start the background pruning loop on a new thread.
   }
   catch (
       const std::exception& e)  // Pattern compilation or thread start failed.
@@ -127,8 +128,9 @@ DOSDetector::DOSDetector(Configurator::DOSDetectorConfig config, ClockFn clock)
     for (const auto& p : config_.blacklist)
       blacklist_.push_back(compileMatcher(p));  // Compile blacklist patterns.
     async_task_clean_ =
-        std::async(std::launch::async, &DOSDetector::cleanUpTask,
-            this);  // Start cleanup with the injected clock.
+        std::async(std::launch::async,
+                   &DOSDetector::cleanUpTask,
+                   this);  // Start cleanup with the injected clock.
   }
   catch (const std::exception& e)
   {
@@ -248,18 +250,18 @@ inline void __attribute((always_inline)) DOSDetector::clean_requests(
                                       // queue for this IP.
 
     for (auto it = requests.begin(); it != requests.end();
-        /* no increment here */)  // Manual iterator walk: erase() changes
-                                  // the iterator, so we advance it
-                                  // ourselves below.
+         /* no increment here */)  // Manual iterator walk: erase() changes
+                                   // the iterator, so we advance it
+                                   // ourselves below.
     {
       auto& times =
           it->second;  // The queue of arrival times for this fingerprint.
 
       // Timestamps are appended in time order, so only the front needs
       // checking.
-      while (
-          !times.empty() &&
-          times.front() < window)  // Pop all timestamps older than the cutoff.
+      while (!times.empty() &&
+             times.front() <
+                 window)  // Pop all timestamps older than the cutoff.
       {
         times.pop_front();  // Remove the oldest timestamp.
       }
@@ -289,7 +291,7 @@ inline void __attribute((always_inline)) DOSDetector::clean_ratelimited_ips(
   std::lock_guard<std::mutex> block_lock(
       ratelimit_mutex_);  // Protect the rate-limit map.
   for (auto it = ratelimited_ips_.begin(); it != ratelimited_ips_.end();
-      /* no increment here */)  // Manual walk so erase() can be used safely.
+       /* no increment here */)  // Manual walk so erase() can be used safely.
   {
     if (now >= it->second)  // The stored unblock time has passed.
     {
@@ -313,7 +315,7 @@ inline void __attribute((always_inline)) DOSDetector::clean_banned_ips(
 {
   std::lock_guard<std::mutex> ban_lock(ban_mutex_);  // Protect the ban map.
   for (auto it = banned_ips_.begin(); it != banned_ips_.end();
-      /* no increment here */)  // Manual walk so erase() can be used safely.
+       /* no increment here */)  // Manual walk so erase() can be used safely.
   {
     if (now >= it->second)  // The unban time has passed.
     {
@@ -339,7 +341,7 @@ void DOSDetector::cleanUpTask()
     // Atomic stop flag is read outside the mutex; the destructor sets it
     // under clean_mutex_.
     while (running_clean_
-            .load())  // Keep sweeping until the destructor signals stop.
+               .load())  // Keep sweeping until the destructor signals stop.
     {
       auto now = clock_();  // Current time from the (possibly injected) clock.
       auto window = now - config_.period;  // Anything older than this is
@@ -358,12 +360,14 @@ void DOSDetector::cleanUpTask()
       std::unique_lock<std::mutex> lock(
           clean_mutex_);  // Lock required by
                           // condition_variable::wait_for.
-      clean_cv_.wait_for(lock, std::chrono::seconds(config_.clean_freq),
-          [this]
-          {
-            return !running_clean_.load();
-          });  // Sleep up to clean_freq seconds, or wake early when
-               // stopping; the predicate guards against spurious wakeups.
+      clean_cv_.wait_for(lock,
+                         std::chrono::seconds(config_.clean_freq),
+                         [this]
+                         {
+                           return !running_clean_.load();
+                         });  // Sleep up to clean_freq seconds, or wake early
+                              // when stopping; the predicate guards against
+                              // spurious wakeups.
     }
   }
   catch (const std::exception& e)
@@ -395,20 +399,22 @@ DOSDetector::generateRequestFingerprint(const DOSDetector::Request& req)
     XXH3_state_t* state =
         XXH3_createState();    // Allocate a streaming hash state.
     XXH3_64bits_reset(state);  // Initialize it for a new digest.
-    XXH3_64bits_update(state, &header_hash,
-        sizeof(header_hash));  // Feed in the header hash bytes.
-    if (!req.body.empty())     // Only feed the body if there is one.
+    XXH3_64bits_update(state,
+                       &header_hash,
+                       sizeof(header_hash));  // Feed in the header hash bytes.
+    if (!req.body.empty())  // Only feed the body if there is one.
     {
-      XXH3_64bits_update(state, req.body.data(),
-          req.body.size());  // Add the body bytes to the digest.
+      XXH3_64bits_update(state,
+                         req.body.data(),
+                         req.body.size());  // Add the body bytes to the digest.
     }
     XXH64_hash_t hashed_key = XXH3_64bits_digest(
         state);             // Finish the digest and get the 64-bit result.
     XXH3_freeState(state);  // Release the hash state (no leak).
 
     return fmt::format("{}",
-        hashed_key);  // Turn the number into a string so it can be a map
-                      // key.
+                       hashed_key);  // Turn the number into a string so it can
+                                     // be a map key.
   }
   catch (const std::exception& e)
   {
@@ -448,9 +454,11 @@ DOSDetector::Matcher DOSDetector::compileMatcher(
       std::string::npos)  // A slash means CIDR notation (network/prefix).
   {
     // CIDR
-    std::string net = pattern.substr(
-        0, pattern.find('/'));  // The IP/network part before the slash.
-    int          prefix = std::stoi(pattern.substr(
+    std::string net =
+        pattern.substr(0,
+                       pattern.find(
+                           '/'));  // The IP/network part before the slash.
+    int prefix = std::stoi(pattern.substr(
         pattern.find('/') + 1));  // The numeric prefix length after the slash.
     // parse IPv4
     unsigned int a, b, c, d;  // Four octets of an IPv4 address.
@@ -477,7 +485,9 @@ DOSDetector::Matcher DOSDetector::compileMatcher(
       };
     }
     return [](const std::string&)
-    { return false; };  // Malformed CIDR -> matcher that never matches.
+    {
+      return false;
+    };  // Malformed CIDR -> matcher that never matches.
   }
   // Wildcard form matches dot-separated segments; '*' accepts any one
   // segment.
@@ -530,7 +540,9 @@ DOSDetector::Matcher DOSDetector::compileMatcher(
   std::string exact =
       pattern;  // Copy so the lambda owns the string it compares against.
   return [exact](const std::string& ip)
-  { return ip == exact; };  // Exact string match.
+  {
+    return ip == exact;
+  };  // Exact string match.
 }
 
 /**
@@ -590,9 +602,10 @@ inline bool __attribute((always_inline)) DOSDetector::isBanned(
 {
   try
   {
-    return checkStatus(remote_ip, banned_ips_,
-        ban_mutex_);  // Ask the shared helper with the ban map and its
-                      // lock.
+    return checkStatus(remote_ip,
+                       banned_ips_,
+                       ban_mutex_);  // Ask the shared helper with the ban map
+                                     // and its lock.
   }
   catch (const std::exception& e)
   {
@@ -612,9 +625,10 @@ inline bool __attribute((always_inline)) DOSDetector::isRateLimited(
 {
   try
   {
-    return checkStatus(remote_ip, ratelimited_ips_,
-        ratelimit_mutex_);  // Use the shared helper with the rate-limit map
-                            // and lock.
+    return checkStatus(remote_ip,
+                       ratelimited_ips_,
+                       ratelimit_mutex_);  // Use the shared helper with the
+                                           // rate-limit map and lock.
   }
   catch (const std::exception& e)
   {

@@ -49,7 +49,7 @@
 // Trimming tabs/spaces is what lets header values with incidental whitespace
 // compare and validate correctly.
 TEST_CASE("CorsTokens::trim removes tabs and spaces",
-    "[server][cors]")  // Whitespace-only and padded inputs.
+          "[server][cors]")  // Whitespace-only and padded inputs.
 {
   using CorsTokens::trim;  // Shorthand for the function under test.
   CHECK(trim("\t content-type ") ==
@@ -59,14 +59,15 @@ TEST_CASE("CorsTokens::trim removes tabs and spaces",
 
 // Consecutive commas must not produce empty tokens in the reflected list.
 TEST_CASE("CorsTokens::tokens drops empty entries",
-    "[server][cors]")  // Splitting behaviour.
+          "[server][cors]")  // Splitting behaviour.
 {
   std::vector<std::string_view>
        values;  // Holds the tokens copied out of the lazy view.
   auto toks = CorsTokens::tokens("a,,b");  // Get a view that splits on commas.
-  std::ranges::copy(toks.begin(), toks.end(),
-      std::back_inserter(
-          values));  // Copy the view into the vector so we can index it.
+  std::ranges::copy(toks.begin(),
+                    toks.end(),
+                    std::back_inserter(values));  // Copy the view into the
+                                                  // vector so we can index it.
   REQUIRE(values.size() ==
           2);  // The empty slot from ",," was dropped, leaving two tokens.
   CHECK(values[0] == "a");  // First token is preserved.
@@ -76,7 +77,7 @@ TEST_CASE("CorsTokens::tokens drops empty entries",
 // Reject non-ASCII and over-limit (1025-byte) header lists while allowing the
 // boundary case at 1024, to keep the preflight echo bounded and safe.
 TEST_CASE("CorsTokens::sanitizeRequestedHeaders validates tokens",
-    "[server][cors]")  // Validation limits.
+          "[server][cors]")  // Validation limits.
 {
   using CorsTokens::sanitizeRequestedHeaders;  // Shorthand for the function
                                                // under test.
@@ -96,11 +97,11 @@ TEST_CASE("CorsTokens::sanitizeRequestedHeaders validates tokens",
 // Merging a token into an existing Vary must be case-insensitive, preserve a
 // wildcard, tolerate empty/odd input, and append exactly once.
 TEST_CASE("CorsTokens::mergeVary is case-insensitive",
-    "[server][cors]")  // Vary merge rules.
+          "[server][cors]")  // Vary merge rules.
 {
   using CorsTokens::mergeVary;  // Shorthand for the function under test.
   CHECK(mergeVary("Accept-Encoding, access-control-request-headers",
-            "Access-Control-Request-Headers") ==
+                  "Access-Control-Request-Headers") ==
         // Token already there (different case) is not duplicated.
         "Accept-Encoding, access-control-request-headers");
   CHECK(mergeVary("*", "Access-Control-Request-Headers") ==

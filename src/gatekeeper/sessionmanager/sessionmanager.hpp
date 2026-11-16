@@ -77,9 +77,9 @@ namespace api::v2  // All version-2 API code lives here.
                                  // handles its own state.
     SessionManager(const SessionManager&) =
         default;  // Copying shared pointers is harmless.
-    SessionManager(
-        SessionManager&&) = delete;  // Moving is disabled; this object shares
-                                     // state that should not be transferred.
+    SessionManager(SessionManager&&) =
+        delete;  // Moving is disabled; this object shares
+                 // state that should not be transferred.
     SessionManager& operator=(const SessionManager&) =
         delete;  // Assignment is disabled along with moving.
     SessionManager& operator=(SessionManager&&) =
@@ -103,9 +103,9 @@ namespace api::v2  // All version-2 API code lives here.
      * recorded.
      */
     bool login(const std::optional<Types::Credentials>& credentials,
-        std::optional<Types::ClientLoginData>&          clientLoginData,
-        std::string& message);  // Runs both login steps on the calling
-                                // thread; true on success.
+               std::optional<Types::ClientLoginData>&   clientLoginData,
+               std::string& message);  // Runs both login steps on the calling
+                                       // thread; true on success.
 
     /**
      * @brief Reads the stored password hash and checks that the account is
@@ -135,12 +135,12 @@ namespace api::v2  // All version-2 API code lives here.
      * @throws DatabaseBusy Re-thrown from the coroutine when awaited.
      */
     drogon::Task<std::optional<std::string>>
-         fetchPasswordHashCoro(  // Coroutine form of step 1 (declaration
-                                 // continues next line).
-             const std::optional<Types::Credentials>& credentials,
-             std::optional<Types::ClientLoginData>&   clientLoginData,
-             std::string& message);  // Credentials go in; client data and a
-                                     // failure message come out.
+    fetchPasswordHashCoro(  // Coroutine form of step 1 (declaration
+                            // continues next line).
+        const std::optional<Types::Credentials>& credentials,
+        std::optional<Types::ClientLoginData>&   clientLoginData,
+        std::string& message);  // Credentials go in; client data and a
+                                // failure message come out.
 
     /**
      * @brief Verifies @p password_hash and, only on success, records the
@@ -154,7 +154,8 @@ namespace api::v2  // All version-2 API code lives here.
      * succeeded.
      * @throws DatabaseBusy Re-thrown so callers can retry/back off.
      */
-    bool completeLogin(const std::optional<Types::Credentials>& credentials,
+    bool completeLogin(
+        const std::optional<Types::Credentials>& credentials,
         const std::string&
             password_hash,  // Step 2: verify the password, then record
                             // login (signature continues next line).
@@ -173,9 +174,9 @@ namespace api::v2  // All version-2 API code lives here.
      * @param[in,out] clientLoginData Client identity including the token.
      */
     void logout(CALLBACK_&& callback,
-        std::optional<Types::ClientLoginData>&
-            clientLoginData);  // Ends the session and reports the result
-                               // through the callback.
+                std::optional<Types::ClientLoginData>&
+                    clientLoginData);  // Ends the session and reports the
+                                       // result through the callback.
 
     /**
      * @brief Checks a session against the cache and verifies the token's
@@ -207,7 +208,8 @@ namespace api::v2  // All version-2 API code lives here.
      * the effective cache lifetime is that absolute value rather than a
      * short time-until-expiry.
      */
-    bool storeSession(std::optional<Types::ClientLoginData>& clientLoginData,
+    bool storeSession(
+        std::optional<Types::ClientLoginData>& clientLoginData,
         std::string& message);  // Adds the session to the in-memory cache.
 
     /**
@@ -216,7 +218,8 @@ namespace api::v2  // All version-2 API code lives here.
      * @return True on removal; false when the data/id/group are missing or
      * an error occurs.
      */
-    bool removeSession(std::optional<Types::ClientLoginData>&
+    bool removeSession(
+        std::optional<Types::ClientLoginData>&
             clientLoginData);  // Deletes the session from the cache.
 
    private:  // Implementation details; callers use the public methods above.
@@ -231,8 +234,11 @@ namespace api::v2  // All version-2 API code lives here.
                                               reused rather than recreated
                                               per login. */
     std::shared_ptr<MemCache<Types::ClientLoginData>> clientsSessionsList =
-        Store::getObject<MemCache<Types::ClientLoginData>>(SESSION_MAX,
-            SESSION_TIMEOUT); /**< Shared session store, holding
-                                 ClientLoginData by "<group>_<id>" key. */
+        Store::getObject<MemCache<
+            Types::ClientLoginData>>(SESSION_MAX,
+                                     SESSION_TIMEOUT); /**< Shared session
+                                                          store, holding
+                                                          ClientLoginData by
+                                                          "<group>_<id>" key. */
   };
 }  // namespace api::v2

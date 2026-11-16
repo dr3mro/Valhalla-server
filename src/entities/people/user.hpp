@@ -89,8 +89,8 @@ class User : public Client  // Inherits validated account behaviour; adds the id
   template <typename ClientData_t>
   explicit User(const ClientData_t& data)
       : Client(data,
-            TABLENAME)  // "explicit" prevents implicit conversions; TABLENAME
-                        // fixes the target table.
+               TABLENAME)  // "explicit" prevents implicit conversions;
+                           // TABLENAME fixes the target table.
   {
   }
   // User() : Client(std::string(TABLENAME)) {}
@@ -135,7 +135,7 @@ class User : public Client  // Inherits validated account behaviour; adds the id
     {
       Message::ErrorMessage(
           fmt::format("Failed to create query for GetServicesStatement {}.",
-              tablename));                 // Log the table.
+                      tablename));         // Log the table.
       Message::CriticalMessage(e.what());  // Log details.
       return std::nullopt;                 // Signal failure.
     }

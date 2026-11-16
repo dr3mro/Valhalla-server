@@ -80,12 +80,14 @@ namespace
 }  // namespace
 
 TEST_CASE("TokenManager issues a token for valid login data",
-    "[gatekeeper][token]")  // Registers the basic token-generation test.
+          "[gatekeeper][token]")  // Registers the basic token-generation test.
 {
-  TokenManager                   manager;  // The class under test.
+  TokenManager manager;  // The class under test.
 
-  std::optional<ClientLoginData> loginData = makeLoginData(
-      42, "users", "10.1.2.3");  // Build complete login data for client 42.
+  std::optional<ClientLoginData> loginData =
+      makeLoginData(42,
+                    "users",
+                    "10.1.2.3");  // Build complete login data for client 42.
   loginData->username = "doctor.who";  // Subject to embed in the token.
   loginData->lastLogoutTime =
       "2026-01-01 00:00:00 +0000";  // Last-logout claim to embed.
@@ -96,14 +98,14 @@ TEST_CASE("TokenManager issues a token for valid login data",
   REQUIRE(loginData->token.has_value());  // Prove a token was actually
                                           // written into the login data.
   REQUIRE_FALSE(loginData->token
-          ->empty());  // Prove the token is a real non-empty string.
+                    ->empty());  // Prove the token is a real non-empty string.
 }
 
 TEST_CASE("TokenManager token contains the expected claims",
-    "[gatekeeper][token]")  // Registers the test that every required claim is
-                            // present and correct.
+          "[gatekeeper][token]")  // Registers the test that every required
+                                  // claim is present and correct.
 {
-  TokenManager                   manager;  // The class under test.
+  TokenManager manager;  // The class under test.
 
   std::optional<ClientLoginData> loginData =
       makeLoginData(42, "users", "10.1.2.3");  // Complete login data.
@@ -147,10 +149,10 @@ TEST_CASE("TokenManager token contains the expected claims",
 }
 
 TEST_CASE("TokenManager token signature round-trips with the configured secret",
-    "[gatekeeper][token]")  // Registers the test that only the correct secret
-                            // verifies the signature.
+          "[gatekeeper][token]")  // Registers the test that only the correct
+                                  // secret verifies the signature.
 {
-  TokenManager                   manager;  // The class under test.
+  TokenManager manager;  // The class under test.
 
   std::optional<ClientLoginData> loginData =
       makeLoginData();                      // Build default login data.
@@ -177,14 +179,15 @@ TEST_CASE("TokenManager token signature round-trips with the configured secret",
           jwt::algorithm::hs256{
               "wrong-secret"});  // Same algorithm but a different key.
   REQUIRE_THROWS_AS(wrongVerifier.verify(decoded),
-      std::exception);  // Prove a wrong secret is rejected, which is what
-                        // makes the signature meaningful.
+                    std::exception);  // Prove a wrong secret is rejected, which
+                                      // is what makes the signature meaningful.
 }
 
-TEST_CASE("TokenManager fails cleanly when login data is incomplete",
+TEST_CASE(
+    "TokenManager fails cleanly when login data is incomplete",
     "[gatekeeper][token]")  // Registers the test for a missing required field.
 {
-  TokenManager                   manager;  // The class under test.
+  TokenManager manager;  // The class under test.
 
   std::optional<ClientLoginData> loginData =
       makeLoginData();          // Build otherwise-valid login data.
@@ -209,92 +212,121 @@ TEST_CASE(
   // database the caller-provided fields decide the outcome (documented in
   // tests/README.md). The token check itself (signature, issuer, type,
   // subject, id, ip, group) is exercised here.
-  const auto token = valhalla_test::makeToken(kSecret, kIssuer, kType, "alice",
-      7, "users", "127.0.0.1",
-      "2026-01-01 00:00:00 +0000");  // Sign a token with the test secret and
-                                     // fully matching claims.
-  auto       loginData = std::optional<ClientLoginData>(makeLoginData(
-      7, "users", "127.0.0.1"));   // Login data for the same client and IP.
-  loginData->token     = token;    // Attach the token.
-  loginData->username  = "alice";  // Matching subject.
+  const auto token = valhalla_test::
+      makeToken(kSecret,
+                kIssuer,
+                kType,
+                "alice",
+                7,
+                "users",
+                "127.0.0.1",
+                "2026-01-01 00:00:00 +0000");  // Sign a token with the test
+                                               // secret and fully matching
+                                               // claims.
+  auto loginData = std::optional<ClientLoginData>(
+      makeLoginData(7,
+                    "users",
+                    "127.0.0.1"));  // Login data for the same client and IP.
+  loginData->token    = token;      // Attach the token.
+  loginData->username = "alice";    // Matching subject.
   loginData->lastLogoutTime =
       "2026-01-01 00:00:00 +0000";  // Matching last-logout time.
 
   std::string message;  // Receives any error text.
   CHECK(manager.isTokenValid(loginData,
-      message));  // Prove a consistent, correctly signed token is accepted.
+                             message));  // Prove a consistent, correctly signed
+                                         // token is accepted.
   CHECK(message.empty());  // Prove no error message was produced on success.
 }
 
 TEST_CASE("TokenManager rejects a token signed with the wrong secret",
-    "[gatekeeper][token]")  // Registers the test that a foreign signature is
-                            // refused.
+          "[gatekeeper][token]")  // Registers the test that a foreign signature
+                                  // is refused.
 {
   TokenManager manager;  // The class under test.
 
-  auto         loginData = std::optional<ClientLoginData>(
+  auto loginData = std::optional<ClientLoginData>(
       makeLoginData(7, "users", "127.0.0.1"));  // Login data for client 7.
-  loginData->token = valhalla_test::makeToken("intruder-secret", kIssuer, kType,
-      "alice", 7, "users", "127.0.0.1",
-      "llodt");                   // Token signed with a different key.
+  loginData->token =
+      valhalla_test::makeToken("intruder-secret",
+                               kIssuer,
+                               kType,
+                               "alice",
+                               7,
+                               "users",
+                               "127.0.0.1",
+                               "llodt");  // Token signed with a different key.
   loginData->username = "alice";  // Other fields are consistent, so only the
                                   // signature is wrong.
   loginData->lastLogoutTime = "llodt";  // Matching last-logout claim.
 
   std::string message;  // Receives the error text.
-  REQUIRE_FALSE(manager.isTokenValid(
-      loginData, message));      // Prove the wrong-secret token is rejected.
+  REQUIRE_FALSE(
+      manager
+          .isTokenValid(loginData,
+                        message));  // Prove the wrong-secret token is rejected.
   CHECK_FALSE(message.empty());  // Prove a reason is given for the rejection.
 }
 
 TEST_CASE("TokenManager rejects a tampered token",
-    "[gatekeeper][token]")  // Registers the test that altered content is
-                            // detected.
+          "[gatekeeper][token]")  // Registers the test that altered content is
+                                  // detected.
 {
   TokenManager manager;  // The class under test.
 
-  auto         loginData = std::optional<ClientLoginData>(
+  auto loginData = std::optional<ClientLoginData>(
       makeLoginData(7, "users", "127.0.0.1"));  // Login data for client 7.
-  const auto goodToken = valhalla_test::makeToken(kSecret, kIssuer, kType,
-      "alice", 7, "users", "127.0.0.1", "llodt");  // Start with a valid token.
-  loginData->token     = valhalla_test::makeTamperedToken(
+  const auto goodToken =
+      valhalla_test::makeToken(kSecret,
+                               kIssuer,
+                               kType,
+                               "alice",
+                               7,
+                               "users",
+                               "127.0.0.1",
+                               "llodt");  // Start with a valid token.
+  loginData->token = valhalla_test::makeTamperedToken(
       goodToken);  // Alter it so the signature no longer matches the content.
   loginData->username       = "alice";  // Other fields stay consistent.
   loginData->lastLogoutTime = "llodt";  // Matching last-logout claim.
 
   std::string message;  // Receives the error text.
-  REQUIRE_FALSE(manager.isTokenValid(
-      loginData, message));      // Prove tampering is rejected.
-  CHECK_FALSE(message.empty());  // Prove a reason is given.
+  REQUIRE_FALSE(manager.isTokenValid(loginData,
+                                     message));  // Prove tampering is rejected.
+  CHECK_FALSE(message.empty());                  // Prove a reason is given.
 }
 
 TEST_CASE("TokenManager rejects a malformed token without crashing",
-    "[gatekeeper][token]")  // Registers the robustness test for unparseable
-                            // token strings.
+          "[gatekeeper][token]")  // Registers the robustness test for
+                                  // unparseable token strings.
 {
   TokenManager manager;  // The class under test.
 
-  const auto&  malformed = GENERATE(std::string(""), std::string("not-a-token"),
-      std::string("a.b"), std::string("..."),
-      std::string(
-          // Run once per broken string: empty, junk, too few segments, only
-          // dots, and bad base64.
-          "eyJhbGciOiJIUzI1NiJ9.e30.!!!invalid-base64!!!"));
+  const auto& malformed =
+      GENERATE(std::string(""),
+               std::string("not-a-token"),
+               std::string("a.b"),
+               std::string("..."),
+               std::string(
+                   // Run once per broken string: empty, junk, too few segments,
+                   // only dots, and bad base64.
+                   "eyJhbGciOiJIUzI1NiJ9.e30.!!!invalid-base64!!!"));
 
-  auto         loginData = std::optional<ClientLoginData>(
+  auto loginData = std::optional<ClientLoginData>(
       makeLoginData());          // Fresh login data for each run.
   loginData->token = malformed;  // Install the malformed token.
   std::string message;           // Receives the error text.
 
   CAPTURE(malformed);  // Print the offending string if an assertion fails.
-  REQUIRE_FALSE(manager.isTokenValid(loginData,
-      message));  // Prove every malformed token is rejected rather than
-                  // crashing.
-  CHECK_FALSE(message.empty());  // Prove a reason is given.
+  REQUIRE_FALSE(
+      manager.isTokenValid(loginData,
+                           message));  // Prove every malformed token is
+                                       // rejected rather than crashing.
+  CHECK_FALSE(message.empty());        // Prove a reason is given.
 }
 TEST_CASE("TokenManager generateToken fails cleanly for each missing field",
-    "[gatekeeper][token]")  // Registers the tests that each required claim is
-                            // genuinely required.
+          "[gatekeeper][token]")  // Registers the tests that each required
+                                  // claim is genuinely required.
 {
   TokenManager manager;  // The class under test.
 
@@ -352,18 +384,26 @@ TEST_CASE("TokenManager generateToken fails cleanly for each missing field",
 }
 
 TEST_CASE("TokenManager rejects an already-expired token",
-    "[gatekeeper][token]")  // Registers the test that expiry is checked during
-                            // validation.
+          "[gatekeeper][token]")  // Registers the test that expiry is checked
+                                  // during validation.
 {
   TokenManager manager;  // The class under test.
 
   // Build a token that expired 1 minute ago.
-  const auto token = valhalla_test::makeToken(kSecret, kIssuer, kType, "alice",
-      7, "users", "127.0.0.1", "llodt",
-      std::chrono::minutes{
-          -1});  // Negative validity puts the expiry in the past.
+  const auto token =
+      valhalla_test::makeToken(kSecret,
+                               kIssuer,
+                               kType,
+                               "alice",
+                               7,
+                               "users",
+                               "127.0.0.1",
+                               "llodt",
+                               std::chrono::minutes{
+                                   -1});  // Negative validity puts the expiry
+                                          // in the past.
 
-  auto       loginData = std::optional<ClientLoginData>(
+  auto loginData = std::optional<ClientLoginData>(
       makeLoginData(7, "users", "127.0.0.1"));  // Login data for client 7.
   loginData->token = token;                     // Attach the expired token.
   loginData->username =
@@ -371,7 +411,8 @@ TEST_CASE("TokenManager rejects an already-expired token",
   loginData->lastLogoutTime = "llodt";  // Matching last-logout claim.
 
   std::string message;  // Receives the error text.
-  REQUIRE_FALSE(manager.isTokenValid(
-      loginData, message));      // Prove the expired token is rejected.
+  REQUIRE_FALSE(
+      manager.isTokenValid(loginData,
+                           message));  // Prove the expired token is rejected.
   CHECK_FALSE(message.empty());  // Prove the reason is reported to the caller.
 }

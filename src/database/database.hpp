@@ -116,8 +116,8 @@ class Database
    * caller).
    */
   explicit Database(std::shared_ptr<pqxx::connection>&&
-          conn);  // `explicit` prevents an accidental implicit conversion
-                  // from a bare pointer.
+                        conn);  // `explicit` prevents an accidental implicit
+                                // conversion from a bare pointer.
 
   /**
    * @brief Destroys the wrapper, logging that the connection is being
@@ -140,7 +140,9 @@ class Database
    * @note A query error is indistinguishable from "not found" here (both
    * return `false`); use check_connection() when that distinction matters.
    */
-  bool checkExists(const std::string& table, const std::string& column,
+  bool checkExists(
+      const std::string& table,
+      const std::string& column,
       const std::string& value);  // Returns true only when at least one
                                   // matching row was found.
 
@@ -182,10 +184,12 @@ class Database
    * @return The converted value, or `std::nullopt` if any exception was
    * caught.
    */
-  template <typename jsonType,
+  template <
+      typename jsonType,
       typename TransactionType>  // One template serves both "first row" and
                                  // "all rows" and both transaction kinds.
-  std::optional<jsonType> executeQuery(const std::string& query,
+  std::optional<jsonType> executeQuery(
+      const std::string&  query,
       const pqxx::params& params = {});  // The empty default lets
                                          // callers run queries with no
                                          // parameters.
@@ -203,7 +207,8 @@ class Database
    */
   template <typename T>  // T is the C++ type to convert the single returned
                          // column into.
-  std::optional<T> doSimpleQuery(const std::string& query,
+  std::optional<T> doSimpleQuery(
+      const std::string&  query,
       const pqxx::params& params = {});  // Used for simple one-value lookups
                                          // such as a count or an id.
 

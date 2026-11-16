@@ -106,21 +106,22 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
      * permitted.
      */
     void doFilter(const drogon::HttpRequestPtr& req,
-        drogon::FilterCallback&&                fcb,
-        drogon::FilterChainCallback&&           fccb)
+                  drogon::FilterCallback&&      fcb,
+                  drogon::FilterChainCallback&& fccb)
         override  // Drogon calls this on every request passing through this
                   // filter.
     {
-      DOSDetector::Request request = {
-          .ip = req->peerAddr().toIp(),   // Designated initializers fill each
+      DOSDetector::Request request =
+          {.ip = req->peerAddr().toIp(),  // Designated initializers fill each
                                           // field by name: caller IP address.
-          .method = req->methodString(),  // HTTP verb as text (GET, POST, ...).
-          .path   = req->path(),          // URL path being requested.
-          .header_hash = DOSDetector::hashHeaders(
-              req->getHeaders()),  // Condense all headers into one number
-                                   // to spot repeated patterns cheaply.
-          .body = req->body()};    // Raw request body, used by the
-                                   // detector's heuristics.
+           .method =
+               req->methodString(),     // HTTP verb as text (GET, POST, ...).
+           .path        = req->path(),  // URL path being requested.
+           .header_hash = DOSDetector::hashHeaders(
+               req->getHeaders()),  // Condense all headers into one number
+                                    // to spot repeated patterns cheaply.
+           .body = req->body()};    // Raw request body, used by the
+                                    // detector's heuristics.
 
       // Ask the gatekeeper for a verdict; the detector details are
       // encapsulated there.
@@ -141,27 +142,31 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
           break;   // Leave the switch.
         case DOSDetector::Status::BLACKLISTED:  // Caller is on the deny
                                                 // list.
-          reply("IP is blacklisted.", drogon::k403Forbidden,
-              std::move(fcb));                  // Send 403 Forbidden.
+          reply("IP is blacklisted.",
+                drogon::k403Forbidden,
+                std::move(fcb));                // Send 403 Forbidden.
           break;                                // Leave the switch.
         case DOSDetector::Status::RATELIMITED:  // Caller sent too many
                                                 // requests.
-          reply("Too many requests.", drogon::k429TooManyRequests,
-              std::move(fcb));             // Send 429 with a short message.
+          reply("Too many requests.",
+                drogon::k429TooManyRequests,
+                std::move(fcb));           // Send 429 with a short message.
           break;                           // Leave the switch.
         case DOSDetector::Status::BANNED:  // Caller is temporarily
                                            // banned.
-          reply("IP is banned.", drogon::k503ServiceUnavailable,
-              std::move(fcb));            // Send 503 Service Unavailable.
+          reply("IP is banned.",
+                drogon::k503ServiceUnavailable,
+                std::move(fcb));          // Send 503 Service Unavailable.
           break;                          // Leave the switch.
         case DOSDetector::Status::ERROR:  // The detector itself failed.
-          reply("Server error.", drogon::k500InternalServerError,
-              std::move(fcb));  // Send 500 Internal Server Error.
-          break;                // Leave the switch.
-        default:                // Any future/unknown verdict.
-          fccb();               // Be permissive by default so new codes do not
-                                // break all traffic.
-          break;                // Leave the switch.
+          reply("Server error.",
+                drogon::k500InternalServerError,
+                std::move(fcb));  // Send 500 Internal Server Error.
+          break;                  // Leave the switch.
+        default:                  // Any future/unknown verdict.
+          fccb();  // Be permissive by default so new codes do not
+                   // break all traffic.
+          break;   // Leave the switch.
       }
     }
 
@@ -169,8 +174,8 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
     std::shared_ptr<GateKeeper>
         gateKeeper; /**< Used by doFilter via isDosAttack(). */
     std::shared_ptr<DOSDetector>
-         dos_detector; /**< Held for its lifetime only; doFilter never
-                          dereferences it. */
+        dos_detector; /**< Held for its lifetime only; doFilter never
+                         dereferences it. */
     /**
      * @brief Send a small plain-text rejection response with the given
      * status.
@@ -178,7 +183,9 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
      * @param[in] code HTTP status code to set.
      * @param[in] cb Filter callback invoked with the response.
      */
-    void reply(const std::string&& msg, drogon::HttpStatusCode code,
+    void reply(
+        const std::string&&    msg,
+        drogon::HttpStatusCode code,
         const drogon::FilterCallback&&
             cb)  // Small helper to avoid repeating response-building code.
     {

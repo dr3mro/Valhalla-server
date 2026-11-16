@@ -49,7 +49,9 @@
 std::optional<std::string>
 Communicate::sendRequest(  // Returns the response body, or nothing on any
                            // failure.
-    const std::string& server, const int port, const std::string& path,
+    const std::string&        server,
+    const int                 port,
+    const std::string&        path,
     const drogon::HttpMethod& method,
     const std::string& data)  // Address, verb and body of the request to send.
 {
@@ -59,9 +61,11 @@ Communicate::sendRequest(  // Returns the response body, or nothing on any
                          // tell whether it was created.
   struct curl_slist* headers =
       nullptr;  // Linked list of custom HTTP headers; starts empty.
-  headers = curl_slist_append(headers,
-      "Content-Type: application/json");  // Adds one header saying the body
-                                          // is JSON.
+  headers =
+      curl_slist_append(headers,
+                        "Content-Type: application/json");  // Adds one header
+                                                            // saying the body
+                                                            // is JSON.
   std::string response;  // Will hold the body received from the server.
   std::string url;       // Will hold the assembled "server:port/path" address.
 
@@ -79,32 +83,40 @@ Communicate::sendRequest(  // Returns the response body, or nothing on any
     }
 
     // Using fmt::format to construct the URL string
-    url = fmt::format("{}:{}{}", server, port,
-        path);  // Joins server, port and path into a URL like
-                // "host:8080/api".
-    curl_easy_setopt(curl, CURLOPT_URL,
-        url.c_str());  // Tells cURL which URL to request; c_str gives the
-                       // C-style string it needs.
-    curl_easy_setopt(curl, CURLOPT_HTTPHEADER,
-        headers);  // Attaches the JSON content-type header to the request.
+    url = fmt::format("{}:{}{}",
+                      server,
+                      port,
+                      path);  // Joins server, port and path into a URL like
+                              // "host:8080/api".
+    curl_easy_setopt(curl,
+                     CURLOPT_URL,
+                     url.c_str());  // Tells cURL which URL to request; c_str
+                                    // gives the C-style string it needs.
+    curl_easy_setopt(curl,
+                     CURLOPT_HTTPHEADER,
+                     headers);  // Attaches the JSON content-type header to the
+                                // request.
 
     // Map of methods to their respective cURL options
-    const std::map<drogon::HttpMethod, std::function<void()>> methodMap = {
-        {drogon::HttpMethod::Post,
-            [&curl,
-                &data]()  // Lambda for POST: captures curl and data by
-                          // reference so it can configure them.
-            {
-              curl_easy_setopt(curl, CURLOPT_POST,
-                  1L);  // Mark this as a POST request.
-              curl_easy_setopt(curl, CURLOPT_POSTFIELDS,
-                  data.c_str());  // Attach the request body; data must
-                                  // outlive the call.
-            }},
-        {drogon::HttpMethod::Get, [&curl]()
-            {
-              curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L);
-            }}};  // Lambda for GET: mark it as a GET request (no body).
+    const std::map<drogon::HttpMethod, std::function<void()>> methodMap =
+        {{drogon::HttpMethod::Post,
+          [&curl,
+           &data]()  // Lambda for POST: captures curl and data by
+                     // reference so it can configure them.
+          {
+            curl_easy_setopt(curl,
+                             CURLOPT_POST,
+                             1L);  // Mark this as a POST request.
+            curl_easy_setopt(curl,
+                             CURLOPT_POSTFIELDS,
+                             data.c_str());  // Attach the request body; data
+                                             // must outlive the call.
+          }},
+         {drogon::HttpMethod::Get,
+          [&curl]()
+          {
+            curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L);
+          }}};  // Lambda for GET: mark it as a GET request (no body).
 
     auto method_opt =
         methodMap.find(method);  // Look up the requested verb in the map.
@@ -144,8 +156,8 @@ Communicate::sendRequest(  // Returns the response body, or nothing on any
   catch (const std::exception& e)  // Catches every exception thrown above,
                                    // including from handleResponse's callers.
   {
-    Message::ErrorMessage(fmt::format(
-        "Failed to send request to {}.", url));  // Log which URL failed.
+    Message::ErrorMessage(fmt::format("Failed to send request to {}.",
+                                      url));  // Log which URL failed.
     Message::CriticalMessage(
         e.what());  // Log the underlying error text at critical level.
 
@@ -159,19 +171,22 @@ Communicate::sendRequest(  // Returns the response body, or nothing on any
 
   return response;  // Success: hand the response body back to the caller.
 }
-std::optional<std::string> Communicate::handleResponse(CURL*
+std::optional<std::string> Communicate::handleResponse(
+    CURL*
         curl)  // Performs the transfer configured on curl and returns the body.
 {
   std::string response;  // Accumulates the bytes received from the server.
 
   try
   {
-    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION,
-        WriteCallback);  // Register the function libcurl should call with
-                         // incoming data.
-    curl_easy_setopt(curl, CURLOPT_WRITEDATA,
-        &response);  // Pass our string as the user data given to that
-                     // callback.
+    curl_easy_setopt(curl,
+                     CURLOPT_WRITEFUNCTION,
+                     WriteCallback);  // Register the function libcurl should
+                                      // call with incoming data.
+    curl_easy_setopt(curl,
+                     CURLOPT_WRITEDATA,
+                     &response);  // Pass our string as the user data given to
+                                  // that callback.
 
     CURLcode res = curl_easy_perform(
         curl);  // Actually send the request; this blocks until it finishes.
@@ -184,7 +199,7 @@ std::optional<std::string> Communicate::handleResponse(CURL*
     }
   }
   catch (const std::exception&
-          e)  // Catches transfer errors so callers never see an exception.
+             e)  // Catches transfer errors so callers never see an exception.
   {
     Message::ErrorMessage(fmt::format(
         "Failed to handle request."));   // Log a generic failure notice.
@@ -195,7 +210,9 @@ std::optional<std::string> Communicate::handleResponse(CURL*
   return response;  // Returns the body (possibly emptied by the catch block).
 }
 
-std::optional<size_t> Communicate::WriteCallback(void* contents, size_t size,
+std::optional<size_t> Communicate::WriteCallback(
+    void*  contents,
+    size_t size,
     size_t nmemb,
     std::string*
         response)  // Called by libcurl for each chunk of received data.
@@ -203,7 +220,7 @@ std::optional<size_t> Communicate::WriteCallback(void* contents, size_t size,
   size_t totalSize = size * nmemb;  // libcurl passes item size and count;
                                     // their product is the byte count.
   response->append(static_cast<char*>(contents),
-      totalSize);    // Append those bytes to the receiving string.
+                   totalSize);  // Append those bytes to the receiving string.
   return totalSize;  // Report how many bytes were handled; libcurl expects
                      // this exact count.
 }

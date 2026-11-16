@@ -79,8 +79,8 @@ class PharmacyAppointment
   template <typename T>
   explicit PharmacyAppointment(const T& _data)
       : Appointment(_data,
-            TABLENAME)  // "explicit" requires a direct call; TABLENAME fixes
-                        // the target table.
+                    TABLENAME)  // "explicit" requires a direct call; TABLENAME
+                                // fixes the target table.
   {
   }
   /**
@@ -90,10 +90,10 @@ class PharmacyAppointment
   // No copy.
   PharmacyAppointment(const PharmacyAppointment&) = delete;
   PharmacyAppointment(PharmacyAppointment&&)      = delete;  // No move.
-  PharmacyAppointment& operator=(
-      const PharmacyAppointment&) = delete;  // No copy assignment.
-  PharmacyAppointment& operator=(
-      PharmacyAppointment&&) = delete;  // No move assignment.
+  PharmacyAppointment& operator=(const PharmacyAppointment&) =
+      delete;  // No copy assignment.
+  PharmacyAppointment& operator=(PharmacyAppointment&&) =
+      delete;  // No move assignment.
 
   /**
    * @brief Returns the pharmacy appointment table name.
@@ -127,7 +127,9 @@ class PharmacyAppointment
       std::uint64_t      service_id)  // Public wrapper with the expected name.
   {
     return getServicePermissionsQueryImpl(service_name,
-        service_id);  // Delegate to the shared base implementation.
+                                          service_id);  // Delegate to the
+                                                        // shared base
+                                                        // implementation.
   }
 
   /**
@@ -139,8 +141,12 @@ class PharmacyAppointment
   static std::optional<std::string> getPermissionsQueryForRead(
       std::uint64_t appointment_id)  // Public wrapper for the owner lookup.
   {
-    return getPermissionsQueryForReadImpl(ORGNAME, TABLENAME,
-        appointment_id);  // Supply this class's organisation and table
-                          // names to the base.
+    return getPermissionsQueryForReadImpl(ORGNAME,
+                                          TABLENAME,
+                                          appointment_id);  // Supply this
+                                                            // class's
+                                                            // organisation and
+                                                            // table names to
+                                                            // the base.
   }
 };

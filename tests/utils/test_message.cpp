@@ -51,7 +51,7 @@
 
 // Every severity helper must accept a plain message without throwing.
 TEST_CASE("Message logging levels accept messages without throwing",
-    "[utils][message]")
+          "[utils][message]")
 {
   CHECK_NOTHROW(Message::DebugMessage(
       "debug"));  // Verbose developer detail must be accepted.
@@ -78,15 +78,16 @@ TEST_CASE("Message logging is tolerant of awkward strings", "[utils][message]")
   CHECK_NOTHROW(Message::InfoMessage(
       "line1\nline2\twith\ttabs"));  // Newlines and tabs get flattened; no
                                      // throw.
-  CHECK_NOTHROW(Message::InfoMessage(std::string(2000,
-      'x')));  // std::string(2000,'x') makes 2000 copies of x; long input
-               // must not throw.
+  CHECK_NOTHROW(Message::InfoMessage(
+      std::string(2000,
+                  'x')));  // std::string(2000,'x') makes 2000 copies of x; long
+                           // input must not throw.
 }
 
 // get_color must return a non-empty ANSI colour string for each level it
 // supports.
 TEST_CASE("Message::get_color returns a colour for every log level",
-    "[utils][message]")
+          "[utils][message]")
 {
   const std::vector<trantor::Logger::LogLevel> levels = {
       // List every severity from the lowest to the highest.

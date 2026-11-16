@@ -83,9 +83,11 @@ std::shared_ptr<drogon::orm::DbClient> AsyncDbClient::createClient()
                                                   // Store and read just the
                                                   // DB section; `const&`
                                                   // avoids copying it.
-  auto client = drogon::orm::DbClient::newPgClient(connectionString(config),
-      config.max_conn);  // Drogon builds the PostgreSQL pool: connection text
-                         // first, maximum number of connections second.
+  auto client = drogon::orm::DbClient::
+      newPgClient(connectionString(config),
+                  config.max_conn);  // Drogon builds the PostgreSQL pool:
+                                     // connection text first, maximum number of
+                                     // connections second.
   // Drogon's DbClient::setTimeout is an SQL execution timeout: it cancels a
   // running command. It is not a pool-acquire timeout, despite the
   // DB_ACQUIRE_TIMEOUT_MS name; Drogon takes seconds. The setting still comes
@@ -116,7 +118,9 @@ std::string AsyncDbClient::connectionString(
   return fmt::format(
       "host={} port={} dbname={} user={} password={} connect_timeout=2 "
       "sslmode={}",
-      config.host, config.port, config.name,
+      config.host,
+      config.port,
+      config.name,
       config.user,  // Each `{}` is replaced by the next argument, producing
                     // one libpq keyword/value string; note the password is
                     // included in clear text, so

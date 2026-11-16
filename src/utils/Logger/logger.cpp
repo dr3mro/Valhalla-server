@@ -59,38 +59,51 @@ Logger::Logger()  // Constructor performs all logger setup and registration.
                                                   // including log options.
     // The sink receives a full path assembled from two independent config
     // keys.
-    auto file_path = fmt::format("{}{}", server_config.log_dir,
-        server_config.log_file);  // Join directory and filename into one path.
+    auto file_path =
+        fmt::format("{}{}",
+                    server_config.log_dir,
+                    server_config.log_file);  // Join directory and filename
+                                              // into one path.
 
     // Initialize thread pool for async logging
     spdlog::init_thread_pool(THREADPOOL,
-        THREADS);  // Create the shared queue and worker threads used by
-                   // async loggers.
+                             THREADS);  // Create the shared queue and worker
+                                        // threads used by async loggers.
 
     // Console sink setup with custom pattern
     auto console_sink = std::make_shared<
         spdlog::sinks::stdout_color_sink_mt>();  // A thread-safe coloured
                                                  // console sink (the _mt
                                                  // means multi-threaded).
-    console_sink->set_pattern(fmt::format(
-        "{}[%Y-%m-%d %H:%M:%S]{} {}[Project Valhalla]{} %^[%l]%$ %v",
-        get_color(Color::Magenta), get_color(Color::Reset),
-        get_color(Color::Red),
-        get_color(Color::Reset)));  // Sets the line format: timestamp, name,
-                                    // severity (coloured) and message.
+    console_sink->set_pattern(
+        fmt::
+            format("{}[%Y-%m-%d %H:%M:%S]{} {}[Project Valhalla]{} %^[%l]%$ %v",
+                   get_color(Color::Magenta),
+                   get_color(Color::Reset),
+                   get_color(Color::Red),
+                   get_color(Color::Reset)));  // Sets the line format:
+                                               // timestamp, name, severity
+                                               // (coloured) and message.
 
     // File sink setup
-    auto file_sink = std::make_shared<spdlog::sinks::rotating_file_sink_mt>(
-        fmt::format("{}", file_path), MAX_LOG_SIZE,
-        MAX_LOG_FILES);  // A thread-safe sink that rotates the log file at
-                         // MAX_LOG_SIZE, keeping MAX_LOG_FILES files.
+    auto file_sink = std::make_shared<
+        spdlog::sinks::
+            rotating_file_sink_mt>(fmt::format("{}", file_path),
+                                   MAX_LOG_SIZE,
+                                   MAX_LOG_FILES);  // A thread-safe sink that
+                                                    // rotates the log file at
+                                                    // MAX_LOG_SIZE, keeping
+                                                    // MAX_LOG_FILES files.
 
-    file_sink->set_pattern(fmt::format(
-        "{}[%Y-%m-%d %H:%M:%S]{} {}[Project Valhalla]{} %^[%l]%$ %v",
-        get_color(Color::Magenta), get_color(Color::Reset),
-        get_color(Color::Red),
-        get_color(Color::Reset)));  // Give the file the same layout as the
-                                    // console for consistency.
+    file_sink->set_pattern(
+        fmt::
+            format("{}[%Y-%m-%d %H:%M:%S]{} {}[Project Valhalla]{} %^[%l]%$ %v",
+                   get_color(Color::Magenta),
+                   get_color(Color::Reset),
+                   get_color(Color::Red),
+                   get_color(
+                       Color::Reset)));  // Give the file the same layout as the
+                                         // console for consistency.
     std::vector<std::shared_ptr<spdlog::sinks::sink>>
         sinks;  // Holds the sinks that are actually enabled by
                 // configuration.
@@ -112,11 +125,15 @@ Logger::Logger()  // Constructor performs all logger setup and registration.
     // overrun_oldest keeps logging non-blocking under load: if the queue is
     // full, the oldest queued message is dropped rather than stalling the
     // calling thread.
-    logger_ = std::make_shared<spdlog::async_logger>("Project Valhalla",
-        sinks.begin(), sinks.end(), spdlog::thread_pool(),
-        spdlog::async_overflow_policy::
-            overrun_oldest);  // Builds the named async logger over the
-                              // chosen sinks and shared pool.
+    logger_ = std::make_shared<
+        spdlog::async_logger>("Project Valhalla",
+                              sinks.begin(),
+                              sinks.end(),
+                              spdlog::thread_pool(),
+                              spdlog::async_overflow_policy::
+                                  overrun_oldest);  // Builds the named async
+                                                    // logger over the chosen
+                                                    // sinks and shared pool.
 
     // Register logger
     spdlog::register_logger(logger_);  // Adds the logger to spdlog's global
@@ -133,14 +150,14 @@ Logger::Logger()  // Constructor performs all logger setup and registration.
     // Report via stdout, not the logger being constructed, to avoid
     // depending on the very object whose initialisation failed.
     fmt::print("SPDLog initialization failed: {}",
-        e.what());  // Print the error directly because the logger is not
-                    // usable yet.
+               e.what());  // Print the error directly because the logger is not
+                           // usable yet.
   }
 }
 // Receives Trantor log records and forwards them to the spdlog backend.
-void Logger::log(const std::string& message,
-    trantor::Logger::LogLevel
-        level)  // Called for each Trantor record that needs logging.
+void Logger::log(const std::string&        message,
+                 trantor::Logger::LogLevel level)  // Called for each Trantor
+                                                   // record that needs logging.
 {
   // Unknown or out-of-range levels fall through the default branch and are
   // dropped.
@@ -176,13 +193,13 @@ std::string Logger::get_color(
       {Logger::Color::Green, "\033[1;92m"},   // Bright Green for success
       {Logger::Color::Yellow, "\033[1;93m"},  // Bright Yellow for warnings
       {Logger::Color::Blue,
-          "\033[1;34m"},  // Bold Blue for informational messages
+       "\033[1;34m"},  // Bold Blue for informational messages
       {Logger::Color::Magenta,
-          "\033[38;5;140m"},  // Soft Purple for debug messages
+       "\033[38;5;140m"},  // Soft Purple for debug messages
       {Logger::Color::White,
-          "\033[1;97m"},  // Bright White for general or unspecified messages
+       "\033[1;97m"},  // Bright White for general or unspecified messages
       {Logger::Color::Cyan,
-          "\033[1;96m"},  // Bold Cyan for optional info or context
+       "\033[1;96m"},  // Bold Cyan for optional info or context
       {Logger::Color::Reset, "\033[0m"}  // Reset
   };
   return color_map.at(color);  // .at returns the code and throws

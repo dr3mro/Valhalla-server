@@ -100,12 +100,14 @@ namespace api::v2                     // Same namespace as the public manager.
      * @param[out] error Receives FORBIDDEN when the requester is not staff.
      * @return True when the staff entry's mask contains @p powerlevel.
      */
-    static bool hasPermission(const Requester& requester,
-        const std::optional<jsoncons::json>&   permissions_j,
+    static bool hasPermission(
+        const Requester&                     requester,
+        const std::optional<jsoncons::json>& permissions_j,
         const Permissions::PowerLevel&
             powerlevel,  // Requires staff membership plus this capability
                          // bit; returns false otherwise.
-        const std::string& service_name, Http::Error& error);
+        const std::string& service_name,
+        Http::Error&       error);
 
     /**
      * @brief Checks that the requester is the service owner, comparing
@@ -121,7 +123,8 @@ namespace api::v2                     // Same namespace as the public manager.
                                    // stored owner_id.
         const Requester&                     requester,
         const std::optional<jsoncons::json>& permissions_j,
-        const std::string& service_name, Http::Error& error);
+        const std::string&                   service_name,
+        Http::Error&                         error);
 
     /**
      * @brief Checks that the requester is the service admin, comparing
@@ -137,7 +140,8 @@ namespace api::v2                     // Same namespace as the public manager.
                                    // stored admin_id.
         const Requester&                     requester,
         const std::optional<jsoncons::json>& permissions_j,
-        const std::string& service_name, Http::Error& error);
+        const std::string&                   service_name,
+        Http::Error&                         error);
 
     /**
      * @brief Finds the requester in the service's `staff` map and decodes
@@ -157,7 +161,8 @@ namespace api::v2                     // Same namespace as the public manager.
                        // the JSON.
         const Requester&                     requester,
         const std::optional<jsoncons::json>& permissions_j,
-        const std::string& service_name, Http::Error& error);
+        const std::string&                   service_name,
+        Http::Error&                         error);
 
     /**
      * @brief Requires both the requester's group and id to match the target
@@ -169,8 +174,10 @@ namespace api::v2                     // Same namespace as the public manager.
      * @param[out] error Receives FORBIDDEN on mismatch.
      * @return True when both match.
      */
-    static bool assert_group_id_match(const Requester& requester,
-        const std::string& groupname, uint64_t client_id,
+    static bool assert_group_id_match(
+        const Requester&   requester,
+        const std::string& groupname,
+        uint64_t           client_id,
         Http::Error& error);  // Requires both the group and the id to match
                               // the target client.
 
@@ -182,8 +189,9 @@ namespace api::v2                     // Same namespace as the public manager.
      * @param[out] error Receives BAD_REQUEST with a reason on failure.
      * @return True when all preconditions hold.
      */
-    static bool preServiceCreateChecks(const Requester& requester,
-        const std::optional<jsoncons::json>&            service_j,
+    static bool preServiceCreateChecks(
+        const Requester&                     requester,
+        const std::optional<jsoncons::json>& service_j,
         Http::Error& error);  // Validates the payload and caller before a
                               // service is created.
 
@@ -197,11 +205,13 @@ namespace api::v2                     // Same namespace as the public manager.
     // Owner and admin always pass; other staff need the `required` bit
     // (CAN_READ for reads, CAN_WRITE for create/update, CAN_DELETE for
     // deletes).
-    static bool isOwnerOrAdminOrHasPermission(const Requester& requester,
+    static bool isOwnerOrAdminOrHasPermission(
+        const Requester& requester,
         const std::optional<jsoncons::json>&
             permissions_j,  // Allows owner/admin, or staff with the
                             // required capability bit.
-        const std::string& service_name, Http::Error& error,
+        const std::string&      service_name,
+        Http::Error&            error,
         Permissions::PowerLevel required = Permissions::PowerLevel::CAN_DELETE);
 
     /**
@@ -216,7 +226,8 @@ namespace api::v2                     // Same namespace as the public manager.
     static bool isOwnerOrAdmin(  // Allows only the owner or the admin.
         const Requester&                     requester,
         const std::optional<jsoncons::json>& permissions_j,
-        const std::string& service_name, Http::Error& error);
+        const std::string&                   service_name,
+        Http::Error&                         error);
 
     /**
      * @brief Extracts and converts @p key from a JSON payload, reporting
@@ -231,15 +242,16 @@ namespace api::v2                     // Same namespace as the public manager.
      * @param[out] error Receives BAD_REQUEST and a reason on failure.
      * @return The extracted value, or `std::nullopt` on failure.
      */
-    template <
-        typename T>  // Generic helper; T is the value type to extract from
-                     // the JSON.
-    static std::optional<T>
-    extract_json_value_safely(  // Reads a key from JSON as
-                                // T, reporting BAD_REQUEST
-                                // instead of throwing.
-        const std::optional<jsoncons::json>& service_j, const std::string& key,
-        const std::string& service_name, Http::Error& error)
+    template <typename T>  // Generic helper; T is the value type to extract
+                           // from the JSON.
+    static std::optional<T> extract_json_value_safely(  // Reads a key from JSON
+                                                        // as T, reporting
+                                                        // BAD_REQUEST instead
+                                                        // of throwing.
+        const std::optional<jsoncons::json>& service_j,
+        const std::string&                   key,
+        const std::string&                   service_name,
+        Http::Error&                         error)
     {
       if (!service_j.has_value() ||
           service_j->empty())  // Reject a missing or empty payload before
@@ -263,7 +275,7 @@ namespace api::v2                     // Same namespace as the public manager.
                                              // it to the requested type T.
       }
       catch (const std::exception&
-              e)  // Runs when the key is missing or cannot be converted.
+                 e)  // Runs when the key is missing or cannot be converted.
       {
         error.message = "Failed to extract " +
                         key;  // Tell the client which key could not be read.
@@ -294,17 +306,20 @@ namespace api::v2                     // Same namespace as the public manager.
      * @see BasicPermissionCache::generation
      */
     template <typename Func,
-        typename... Args>  // Generic helper; Func builds the query and Args
-                           // are its inputs.
-    static std::optional<jsoncons::json> getPermissionsOfEntity(Func&& func,
-        Args&... args)  // Fetches permissions (cache
-                        // first, database on a
-                        // miss).
+              typename... Args>  // Generic helper; Func builds the query and
+                                 // Args are its inputs.
+    static std::optional<jsoncons::json> getPermissionsOfEntity(
+        Func&& func,
+        Args&... args)  // Fetches permissions
+                        // (cache first, database
+                        // on a miss).
     {
-      std::optional<std::string> query = std::invoke(std::forward<Func>(func),
-          std::forward<Args>(
-              args)...);  // Build the query/key string by calling the
-                          // supplied generator with its arguments.
+      std::optional<std::string> query =
+          std::invoke(std::forward<Func>(func),
+                      std::forward<Args>(
+                          args)...);  // Build the query/key string by calling
+                                      // the supplied generator with its
+                                      // arguments.
 
       if (!query.has_value() ||
           query->empty())  // No query means there is nothing to look up;
@@ -344,11 +359,12 @@ namespace api::v2                     // Same namespace as the public manager.
                               // as failure.
       }
 
-      cache.put(query.value(), permissions_j.value(),
-          generation);       // Store the fresh result, but only if no flush
-                             // happened in the meantime.
-      return permissions_j;  // Return the freshly read permissions to the
-                             // caller.
+      cache.put(query.value(),
+                permissions_j.value(),
+                generation);  // Store the fresh result, but only if no flush
+                              // happened in the meantime.
+      return permissions_j;   // Return the freshly read permissions to the
+                              // caller.
     }
 
     /**
@@ -367,19 +383,22 @@ namespace api::v2                     // Same namespace as the public manager.
      * @note The caller must drive the returned task; the query string must
      * outlive the awaited read.
      */
-    template <typename Func,
+    template <
+        typename Func,
         typename... Args>  // Generic helper; Func builds the query and Args
                            // are its inputs.
     static drogon::Task<std::optional<jsoncons::json>>
     getPermissionsOfEntityCoro(Func&& func,
-        Args&... args)  // Coroutine version of the
-                        // fetch; awaits the async
-                        // database read.
+                               Args&... args)  // Coroutine version of the
+                                               // fetch; awaits the async
+                                               // database read.
     {
-      std::optional<std::string> query = std::invoke(std::forward<Func>(func),
-          std::forward<Args>(
-              args)...);  // Build the query/key string by calling the
-                          // supplied generator with its arguments.
+      std::optional<std::string> query =
+          std::invoke(std::forward<Func>(func),
+                      std::forward<Args>(
+                          args)...);  // Build the query/key string by calling
+                                      // the supplied generator with its
+                                      // arguments.
 
       if (!query.has_value() ||
           query->empty())  // No query means there is nothing to look up;
@@ -417,8 +436,9 @@ namespace api::v2                     // Same namespace as the public manager.
                                  // there is nothing usable.
       }
 
-      cache.put(query.value(), permissions_j.value(),
-          generation);          // Store the fresh result, but only if no flush
+      cache.put(query.value(),
+                permissions_j.value(),
+                generation);    // Store the fresh result, but only if no flush
                                 // happened in the meantime.
       co_return permissions_j;  // Coroutine return of the freshly read
                                 // answer.

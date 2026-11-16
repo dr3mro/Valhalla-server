@@ -80,8 +80,8 @@ namespace asyncdb
         c.values.size());  // Allocate space once up front, so adding
                            // entries cannot reallocate the vector midway.
     for (std::size_t i = 0; i < c.values.size();
-        ++i)  // Walk the values in append order; stop when every parameter
-              // has been copied.
+         ++i)  // Walk the values in append order; stop when every parameter
+               // has been copied.
     {
       if (c.values[i] == nullptr)  // A null pointer in the C view is pqxx's way
                                    // of saying "this parameter is SQL NULL".
@@ -92,10 +92,12 @@ namespace asyncdb
       }
       else
       {
-        result.emplace_back(std::string(c.values[i],
-            static_cast<std::size_t>(
-                c.lengths[i])));  // Copy exactly the reported number of
-                                  // bytes; the cast makes the length
+        result.emplace_back(
+            std::string(c.values[i],
+                        static_cast<std::size_t>(
+                            c.lengths[i])));  // Copy exactly the reported
+                                              // number of bytes; the cast makes
+                                              // the length
         // unsigned, so embedded zero bytes are preserved.
       }
     }
@@ -111,8 +113,8 @@ namespace asyncdb
    * the binder rather than for this stack frame. Text values are copied into
    * a string.
    */
-  void bindParams(
-      drogon::orm::internal::SqlBinder& binder, const pqxx::params& params)
+  void bindParams(drogon::orm::internal::SqlBinder& binder,
+                  const pqxx::params&               params)
   {
     const auto c = params.make_c_params(
         std::source_location::current());  // Get the same low-level view as
@@ -120,8 +122,8 @@ namespace asyncdb
                                            // call site for diagnostics.
 
     for (std::size_t i = 0; i < c.values.size();
-        ++i)  // Bind parameters one by one, in the order the builder
-              // appended them.
+         ++i)  // Bind parameters one by one, in the order the builder
+               // appended them.
     {
       if (c.values[i] ==
           nullptr)  // NULL values need their own bind form; binding an
@@ -133,25 +135,28 @@ namespace asyncdb
       else if (c.formats[i] == 1)  // In the PostgreSQL protocol, format 1
                                    // means binary data rather than text.
       {
-        auto buffer = std::make_shared<std::vector<char>>(c.values[i],
-            c.values[i] +
-                c.lengths[i]);  // Copy the raw bytes into a heap buffer
-                                // shared through a shared_ptr, so they
-                                // outlive this function's stack frame.
-        binder << drogon::orm::RawParameter{buffer, buffer->data(),
-            static_cast<int>(buffer->size()),
-            1};  // Pass pointer, length and binary format; the
-                 // shared_ptr travels with the parameter, and the cast
-                 // suits Drogon's int-based API.
+        auto buffer = std::make_shared<std::vector<
+            char>>(c.values[i],
+                   c.values[i] +
+                       c.lengths[i]);  // Copy the raw bytes into a heap buffer
+                                       // shared through a shared_ptr, so they
+                                       // outlive this function's stack frame.
+        binder << drogon::orm::
+                RawParameter{buffer,
+                             buffer->data(),
+                             static_cast<int>(buffer->size()),
+                             1};  // Pass pointer, length and binary format; the
+                                  // shared_ptr travels with the parameter, and
+                                  // the cast suits Drogon's int-based API.
       }
       else
       {
         binder << std::string(c.values[i],
-            static_cast<std::size_t>(
-                c.lengths[i]));  // Ordinary text is copied into a
-                                 // string and bound by value; Drogon
-                                 // keeps that copy until the query
-                                 // runs.
+                              static_cast<std::size_t>(
+                                  c.lengths[i]));  // Ordinary text is copied
+                                                   // into a string and bound by
+                                                   // value; Drogon keeps that
+                                                   // copy until the query runs.
       }
     }
   }
@@ -163,13 +168,14 @@ namespace asyncdb
    * caller co_awaits the returned object.
    */
   drogon::orm::internal::SqlAwaiter execSqlCoro(drogon::orm::DbClient& client,
-      const std::string& sql, const pqxx::params& params)
+                                                const std::string&     sql,
+                                                const pqxx::params&    params)
   {
     auto binder = client << sql;  // Drogon's operator<< on a client creates a
                                   // binder already holding the statement text.
     bindParams(binder,
-        params);  // Attach the values to that binder in placeholder order;
-                  // this performs no network I/O.
+               params);  // Attach the values to that binder in placeholder
+                         // order; this performs no network I/O.
     return drogon::orm::internal::SqlAwaiter(
         std::move(binder));  // Move ownership into an awaiter: nothing
                              // executes until the caller co_awaits it, and

@@ -105,9 +105,9 @@ class DbProbe  // Sets a per-thread flag so database access points can detect
 
   DbProbe(const DbProbe&) =
       delete;  // Copying would make it unclear which object clears the flag.
-  DbProbe& operator=(
-      const DbProbe&) = delete;  // Assignment would have the same ambiguity
-                                 // about flag ownership.
+  DbProbe& operator=(const DbProbe&) =
+      delete;  // Assignment would have the same ambiguity
+               // about flag ownership.
 
   /**
    * @brief Guards a database-access point against running on an IO thread.

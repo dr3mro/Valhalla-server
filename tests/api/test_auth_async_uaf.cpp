@@ -91,7 +91,7 @@ namespace  // Anonymous namespace keeps the fake private to this file.
 }  // namespace
 
 TEST_CASE("Auth filter async path invokes the chain callback",
-    "[api][auth][async]")  // Tags let CI select this test by area.
+          "[api][auth][async]")  // Tags let CI select this test by area.
 {
   auto fake = std::make_shared<FakeGateKeeper>();  // The fake gatekeeper, kept
                                                    // alive for the whole test.
@@ -105,8 +105,8 @@ TEST_CASE("Auth filter async path invokes the chain callback",
       drogon::HttpRequest::newHttpRequest();  // Create a fresh request to
                                               // feed the filter.
   request->addHeader("Authorization",
-      "Bearer sometoken");  // Add the header that makes the filter try to
-                            // authenticate.
+                     "Bearer sometoken");  // Add the header that makes the
+                                           // filter try to authenticate.
 
   AuthFilter        filter;              // The filter instance under test.
   std::atomic<bool> chainCalled{false};  // Thread-safe flag: set true when
@@ -117,7 +117,9 @@ TEST_CASE("Auth filter async path invokes the chain callback",
                     // coroutine.
       request,      // The request being authenticated.
       [&cbCount](const drogon::HttpResponsePtr&)
-      { ++cbCount; },  // Rejection callback: just count the call.
+      {
+        ++cbCount;
+      },  // Rejection callback: just count the call.
       [&chainCalled]
       {
         chainCalled = true;
@@ -127,8 +129,8 @@ TEST_CASE("Auth filter async path invokes the chain callback",
   // after doFilter returns. Poll briefly with atomics instead of sleeping a
   // fixed amount; the 1 ms x 100 bound keeps a regression from hanging.
   for (int i = 0; i < 100 && !chainCalled.load() && cbCount.load() == 0;
-      ++i)  // Stop as soon as a callback fires, otherwise cap the wait at
-            // ~100 ms.
+       ++i)  // Stop as soon as a callback fires, otherwise cap the wait at
+             // ~100 ms.
   {
     std::this_thread::sleep_for(std::chrono::milliseconds(
         1));  // Give the coroutine a millisecond to make progress.

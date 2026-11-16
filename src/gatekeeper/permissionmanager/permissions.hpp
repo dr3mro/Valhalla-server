@@ -85,20 +85,21 @@ struct Permissions  // A value type; it simply groups the bit helpers together.
   /** @brief Constructs a rule wrapping a single (possibly combined)
    * PowerLevel mask. */
   // constructor for rule
-  explicit Permissions(PowerLevel _powerLevel)
-      : powerLevel(_powerLevel) {}  // Stores the supplied mask; "explicit"
-                                    // prevents accidental implicit conversions.
+  explicit Permissions(PowerLevel _powerLevel) : powerLevel(_powerLevel)
+  {
+  }  // Stores the supplied mask; "explicit"
+     // prevents accidental implicit conversions.
   virtual ~Permissions() =
       default;  // Virtual destructor allows safe use through a base pointer.
   Permissions() = delete;  // No default: a rule is meaningless without a mask.
-  Permissions(
-      const Permissions&) = default;  // Copy is fine; the value is just a byte.
+  Permissions(const Permissions&) =
+      default;  // Copy is fine; the value is just a byte.
   Permissions& operator=(const Permissions&) =
       default;  // Copy assignment is fine for the same reason.
-  Permissions(
-      Permissions&&) = default;  // Move is fine; there is nothing to transfer.
-  Permissions& operator=(
-      Permissions&&) = default;  // Move assignment is fine for the same reason.
+  Permissions(Permissions&&) =
+      default;  // Move is fine; there is nothing to transfer.
+  Permissions& operator=(Permissions&&) =
+      default;  // Move assignment is fine for the same reason.
 
   /**
    * @brief Tests whether any bit in @p check is present in this rule's mask.
@@ -112,7 +113,8 @@ struct Permissions  // A value type; it simply groups the bit helpers together.
 
   /** @brief Returns the bitwise OR of two masks. */
   // Overload | operator
-  friend PowerLevel operator|(PowerLevel first,
+  friend PowerLevel operator|(
+      PowerLevel first,
       PowerLevel second)  // Combines two masks so the result holds every bit
                           // from both.
   {
@@ -125,7 +127,8 @@ struct Permissions  // A value type; it simply groups the bit helpers together.
   /** @brief Returns the bitwise AND of two masks (non-zero means a shared
    * bit). */
   // Overload & operator
-  friend PowerLevel operator&(PowerLevel first,
+  friend PowerLevel operator&(
+      PowerLevel first,
       PowerLevel
           second)  // Keeps only the bits present in both masks (the overlap).
   {
@@ -177,10 +180,10 @@ struct Permissions  // A value type; it simply groups the bit helpers together.
       struct staffPermission  // An alias for the small struct below,
                               // describing one staff member's rights.
   {
-    uint64_t   staff_id = 0; /**< Numeric staff/client id parsed from the
-                                entry; uint64_t matches database ids. */
-    PowerLevel power    = PowerLevel::NONE; /**< Permission mask parsed from the
-                                               entry; starts with no rights. */
+    uint64_t staff_id = 0; /**< Numeric staff/client id parsed from the
+                              entry; uint64_t matches database ids. */
+    PowerLevel power = PowerLevel::NONE; /**< Permission mask parsed from the
+                                            entry; starts with no rights. */
     bool isMember = false; /**< True when the entry identified the requester;
                               tells a real match from a failed parse. */
   };
@@ -191,8 +194,8 @@ struct Permissions  // A value type; it simply groups the bit helpers together.
                      only be changed through the constructor/operators. */
   /** @brief Tests whether @p permission and @p check share any bit. */
   // check if rule is set
-  [[nodiscard]] static bool hasMatch(
-      const PowerLevel& permission, const PowerLevel& check)
+  [[nodiscard]] static bool hasMatch(const PowerLevel& permission,
+                                     const PowerLevel& check)
   {
     return static_cast<int>(permission & check) != 0;
   }  // Private "any shared bit?" test; [[nodiscard]] warns if the result is

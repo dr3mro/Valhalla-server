@@ -89,10 +89,12 @@ namespace  // An anonymous namespace keeps these helpers private to this test
                                             // safe default.
     };
 
-    return {getenv_str("TEST_DB_HOST"), getenv_str("TEST_DB_PORT"),
-        getenv_str("TEST_DB_NAME"), getenv_str("TEST_DB_USER"),
-        getenv_str("TEST_DB_PASS")};  // Build and return the fully
-                                      // populated DbEnv in field order.
+    return {getenv_str("TEST_DB_HOST"),
+            getenv_str("TEST_DB_PORT"),
+            getenv_str("TEST_DB_NAME"),
+            getenv_str("TEST_DB_USER"),
+            getenv_str("TEST_DB_PASS")};  // Build and return the fully
+                                          // populated DbEnv in field order.
   }
 }  // namespace
 
@@ -129,7 +131,7 @@ TEST_CASE("DB round-trip: connect to test database", "[.integration][db]")
 // A placeholder for a full login/logout round-trip against a provisioned
 // database.
 TEST_CASE("DB round-trip: login-logout cycle updates session timestamps",
-    "[.integration][db][auth]")
+          "[.integration][db][auth]")
 {
   const auto env = loadDbEnv();  // Read the settings so this test obeys the
                                  // same opt-in rule.
@@ -157,7 +159,7 @@ TEST_CASE("DB round-trip: login-logout cycle updates session timestamps",
 // A placeholder for checking that two queries can run at the same time against
 // the real pool.
 TEST_CASE("DB pool: two concurrent queries succeed",
-    "[.integration][db][concurrency]")
+          "[.integration][db][concurrency]")
 {
   const auto env =
       loadDbEnv();   // Read the settings so this test obeys the opt-in rule.
@@ -176,7 +178,7 @@ TEST_CASE("DB pool: two concurrent queries succeed",
 // A placeholder for validating a freshly issued token against the live session
 // table.
 TEST_CASE("validateToken succeeds for a just-issued token (live DB)",
-    "[.integration][db][auth]")
+          "[.integration][db][auth]")
 {
   const auto env =
       loadDbEnv();   // Read the settings so this test obeys the opt-in rule.

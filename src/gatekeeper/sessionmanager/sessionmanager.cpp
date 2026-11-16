@@ -94,9 +94,12 @@ SessionManager::fetchPasswordHash(  // Step 1 definition: fetch hash and check
   try  // Database and JSON operations can throw, so they run inside a guarded
        // block.
   {
-    auto client_object = getPasswordHashForUserName(credentials->username,
-        clientLoginData->group.value());  // Look up the account row by username
-                                          // and client group (blocking read).
+    auto client_object =
+        getPasswordHashForUserName(credentials->username,
+                                   clientLoginData->group
+                                       .value());  // Look up the account row by
+                                                   // username and client group
+                                                   // (blocking read).
 
     if (!client_object.has_value() ||
         client_object.value()
@@ -117,7 +120,7 @@ SessionManager::fetchPasswordHash(  // Step 1 definition: fetch hash and check
                                            // the row into the caller's data.
 
     if (!clientLoginData->clientId
-            .has_value())  // Without an id there is no cache key to build.
+             .has_value())  // Without an id there is no cache key to build.
     {
       message +=
           // Append the reason for the failure.
@@ -132,7 +135,7 @@ SessionManager::fetchPasswordHash(  // Step 1 definition: fetch hash and check
             .as<bool>();  // Copy the account's active/suspended flag.
 
     if (!clientLoginData
-            ->is_active)  // A suspended account is not allowed to log in.
+             ->is_active)  // A suspended account is not allowed to log in.
     {
       message += fmt::format(
           "username: [{}] is suspended, please contact the administrator",
@@ -145,7 +148,7 @@ SessionManager::fetchPasswordHash(  // Step 1 definition: fetch hash and check
                                               // as a string (may be absent).
 
     if (!password_hash
-            .has_value())  // Step 1 failed, so there is nothing to verify.
+             .has_value())  // Step 1 failed, so there is nothing to verify.
     {
       message +=
           // Explain the missing hash.
@@ -161,10 +164,11 @@ SessionManager::fetchPasswordHash(  // Step 1 definition: fetch hash and check
     throw;  // Re-throw unchanged so callers can retry or back off.
   }
   catch (const std::exception&
-          e)  // Any other error is reported through the message string.
+             e)  // Any other error is reported through the message string.
   {
     message += fmt::format("Error: {}",
-        e.what());  // Append the exception's text to the failure message.
+                           e.what());  // Append the exception's text to the
+                                       // failure message.
   }
   return std::nullopt;  // No hash to return; login cannot continue.
 }
@@ -183,8 +187,12 @@ SessionManager::fetchPasswordHashCoro(  // Coroutine step 1 definition
   {
     auto client_object =
         co_await getPasswordHashForUserNameCoro(credentials->username,
-            clientLoginData->group.value());  // Await the same lookup without
-                                              // blocking an IO thread.
+                                                clientLoginData->group
+                                                    .value());  // Await the
+                                                                // same lookup
+                                                                // without
+                                                                // blocking an
+                                                                // IO thread.
 
     if (!client_object.has_value() ||
         client_object.value()
@@ -206,7 +214,7 @@ SessionManager::fetchPasswordHashCoro(  // Coroutine step 1 definition
                                            // the row into the caller's data.
 
     if (!clientLoginData->clientId
-            .has_value())  // Without an id there is no cache key to build.
+             .has_value())  // Without an id there is no cache key to build.
     {
       message +=
           // Append the reason for the failure.
@@ -222,7 +230,7 @@ SessionManager::fetchPasswordHashCoro(  // Coroutine step 1 definition
             .as<bool>();  // Copy the account's active/suspended flag.
 
     if (!clientLoginData
-            ->is_active)  // A suspended account is not allowed to log in.
+             ->is_active)  // A suspended account is not allowed to log in.
     {
       message += fmt::format(
           "username: [{}] is suspended, please contact the administrator",
@@ -236,7 +244,7 @@ SessionManager::fetchPasswordHashCoro(  // Coroutine step 1 definition
                                               // as a string (may be absent).
 
     if (!password_hash
-            .has_value())  // Step 1 failed, so there is nothing to verify.
+             .has_value())  // Step 1 failed, so there is nothing to verify.
     {
       message +=
           // Explain the missing hash.
@@ -252,10 +260,11 @@ SessionManager::fetchPasswordHashCoro(  // Coroutine step 1 definition
     throw;  // Re-throw unchanged so callers can retry or back off.
   }
   catch (const std::exception&
-          e)  // Any other error is reported through the message string.
+             e)  // Any other error is reported through the message string.
   {
     message += fmt::format("Error: {}",
-        e.what());  // Append the exception's text to the failure message.
+                           e.what());  // Append the exception's text to the
+                                       // failure message.
   }
   co_return std::nullopt;  // Coroutine return of no hash; login cannot
                            // continue.
@@ -280,9 +289,11 @@ bool SessionManager::completeLogin(
   {
     // Check the password first: a failed login must not touch the session
     // row.
-    if (!passwordCrypt->verifyPassword(credentials->password,
-            password_hash))  // Check the password first; a wrong password
-                             // must not touch the session row.
+    if (!passwordCrypt
+             ->verifyPassword(credentials->password,
+                              password_hash))  // Check the password first; a
+                                               // wrong password must not touch
+                                               // the session row.
     {
       message +=
           // Deliberately vague so an attacker cannot learn which part was
@@ -309,32 +320,39 @@ bool SessionManager::completeLogin(
     throw;  // Re-throw unchanged so callers can retry or back off.
   }
   catch (const std::exception&
-          e)  // Any other error is reported through the message string.
+             e)  // Any other error is reported through the message string.
   {
     message += fmt::format("Error: {}",
-        e.what());  // Append the exception's text to the failure message.
-    return false;   // Login failed.
+                           e.what());  // Append the exception's text to the
+                                       // failure message.
+    return false;                      // Login failed.
   }
   return true;  // Login succeeded.
 }
 
 /** @brief Runs fetchPasswordHash() then completeLogin() on the calling thread.
  */
-bool SessionManager::login(const std::optional<Types::Credentials>& credentials,
-    std::optional<Types::ClientLoginData>& clientLoginData,
+bool SessionManager::login(
+    const std::optional<Types::Credentials>& credentials,
+    std::optional<Types::ClientLoginData>&   clientLoginData,
     std::string&
         message)  // Runs both steps on the calling thread; true on success.
 {
   const std::optional<std::string> password_hash =
-      fetchPasswordHash(credentials, clientLoginData,
-          message);  // Step 1: read the hash and validate the account.
+      fetchPasswordHash(credentials,
+                        clientLoginData,
+                        message);  // Step 1: read the hash and validate the
+                                   // account.
   if (!password_hash
-          .has_value())  // Step 1 failed, so there is nothing to verify.
+           .has_value())  // Step 1 failed, so there is nothing to verify.
   {
     return false;  // Login failed.
   }
-  return completeLogin(credentials, password_hash.value(), clientLoginData,
-      message);  // Step 2: verify the password and record the login.
+  return completeLogin(credentials,
+                       password_hash.value(),
+                       clientLoginData,
+                       message);  // Step 2: verify the password and record the
+                                  // login.
 }
 
 /**
@@ -343,7 +361,8 @@ bool SessionManager::login(const std::optional<Types::Credentials>& credentials,
  * constant time, records the logout time and removes the session. Every path
  * invokes the callback.
  */
-void SessionManager::logout(CALLBACK_&& callback,
+void SessionManager::logout(
+    CALLBACK_&& callback,
     std::optional<Types::ClientLoginData>&
         clientLoginData)  // Ends the session and answers through the callback.
 {
@@ -352,13 +371,14 @@ void SessionManager::logout(CALLBACK_&& callback,
   {
     if (!clientLoginData.has_value() ||
         !clientLoginData->token
-            .has_value())  // Without a token there is nothing to log out.
+             .has_value())  // Without a token there is nothing to log out.
     {
       std::move(callback)(Http::Status::UNAUTHORIZED,
-          JsonHelper::stringify(JsonHelper::jsonify(
-              "Missing token.")));  // Answer 401 with a JSON body; the
-                                    // callback is moved exactly once.
-      return;                       // Stop here; no further work is meaningful.
+                          JsonHelper::stringify(JsonHelper::jsonify(
+                              "Missing token.")));  // Answer 401 with a JSON
+                                                    // body; the callback is
+                                                    // moved exactly once.
+      return;  // Stop here; no further work is meaningful.
     }
 
     std::optional<jwt::decoded_jwt<jwt::traits::kazuho_picojson>>
@@ -368,35 +388,40 @@ void SessionManager::logout(CALLBACK_&& callback,
     try  // Database and JSON operations can throw, so they run inside a
          // guarded block.
     {
-      decodedToken = jwt::decode<jwt::traits::kazuho_picojson>(clientLoginData
-              ->token.value());  // Turn the token string into a structured
-                                 // object (without verifying yet).
+      decodedToken = jwt::decode<jwt::traits::kazuho_picojson>(
+          clientLoginData->token
+              .value());  // Turn the token string into a structured
+                          // object (without verifying yet).
     }
     catch (const std::exception&)  // A malformed token cannot be decoded.
     {
       std::move(callback)(Http::Status::UNAUTHORIZED,
-          JsonHelper::stringify(JsonHelper::jsonify(
-              "Invalid token.")));  // Answer 401 because the token string
-                                    // is invalid.
-      return;                       // Stop here; no further work is meaningful.
+                          JsonHelper::stringify(JsonHelper::jsonify(
+                              "Invalid token.")));  // Answer 401 because the
+                                                    // token string is invalid.
+      return;  // Stop here; no further work is meaningful.
     }
 
-    if (!decodeToken(clientLoginData, message,
-            decodedToken.value()))  // Extract and check the token's
-                                    // identity claims.
+    if (!decodeToken(clientLoginData,
+                     message,
+                     decodedToken.value()))  // Extract and check the token's
+                                             // identity claims.
     {
-      std::move(callback)(Http::Status::UNAUTHORIZED,
-          JsonHelper::stringify(JsonHelper::jsonify(
-              message)));  // Answer 401 with the specific reason.
-      return;              // Stop here; no further work is meaningful.
+      std::move(
+          callback)(Http::Status::UNAUTHORIZED,
+                    JsonHelper::stringify(JsonHelper::jsonify(
+                        message)));  // Answer 401 with the specific reason.
+      return;  // Stop here; no further work is meaningful.
     }
 
     // If a session is stored for this (group, client), the supplied token
     // must match it (constant time) to prevent a forged JWT from logging a
     // victim out.
-    std::string key     = fmt::format("{}_{}", clientLoginData->group.value(),
-        clientLoginData->clientId
-            .value());  // Build the cache key from group and client id.
+    std::string key = fmt::format("{}_{}",
+                                  clientLoginData->group.value(),
+                                  clientLoginData->clientId
+                                      .value());  // Build the cache key from
+                                                  // group and client id.
     auto        session = clientsSessionsList->get(
         key);                 // Look up any stored session for this client.
     if (session.has_value())  // Only compare tokens when a session actually
@@ -411,16 +436,17 @@ void SessionManager::logout(CALLBACK_&& callback,
               supplied_token.size())  // Empty or different-length strings
                                       // cannot match.
       {
-        std::move(callback)(Http::Status::UNAUTHORIZED,
-            JsonHelper::stringify(JsonHelper::jsonify(
-                "Invalid token.")));  // Answer 401 because the token
-                                      // string is invalid.
+        std::move(
+            callback)(Http::Status::UNAUTHORIZED,
+                      JsonHelper::stringify(JsonHelper::jsonify(
+                          "Invalid token.")));  // Answer 401 because the token
+                                                // string is invalid.
         return;  // Stop here; no further work is meaningful.
       }
       bool tokens_equal = true;  // Assume a match, then prove otherwise
                                  // one character at a time.
       for (size_t i = 0; i < stored_token.size();
-          ++i)  // Walk every character of the tokens.
+           ++i)  // Walk every character of the tokens.
       {
         if (stored_token[i] !=
             supplied_token[i])  // Any differing character proves they
@@ -432,29 +458,32 @@ void SessionManager::logout(CALLBACK_&& callback,
       if (!tokens_equal)  // A mismatch means this token is not the one
                           // stored for the session.
       {
-        std::move(callback)(Http::Status::UNAUTHORIZED,
-            JsonHelper::stringify(JsonHelper::jsonify(
-                "Invalid token.")));  // Answer 401 because the token
-                                      // string is invalid.
+        std::move(
+            callback)(Http::Status::UNAUTHORIZED,
+                      JsonHelper::stringify(JsonHelper::jsonify(
+                          "Invalid token.")));  // Answer 401 because the token
+                                                // string is invalid.
         return;  // Stop here; no further work is meaningful.
       }
     }
 
     setNowLogoutTime(clientLoginData->clientId.value(),
-        clientLoginData->group
-            .value());  // Record the logout time in the database.
+                     clientLoginData->group
+                         .value());  // Record the logout time in the database.
     removeSession(
         clientLoginData);  // Delete the session from the in-memory cache.
-    std::move(callback)(api::v2::Http::Status::OK,
-        api::v2::JsonHelper::stringify(api::v2::JsonHelper::jsonify(
-            "Logout success.")));  // Answer 200 with a success message.
+    std::move(
+        callback)(api::v2::Http::Status::OK,
+                  api::v2::JsonHelper::stringify(api::v2::JsonHelper::jsonify(
+                      "Logout success.")));  // Answer 200 with a success
+                                             // message.
   }
   catch (const std::exception&
-          e)  // Any other error is reported through the message string.
+             e)  // Any other error is reported through the message string.
   {
     std::move(callback)(api::v2::Http::statusForException(e),
-        e.what());   // Answer with a status derived from the exception and
-                     // its message.
+                        e.what());  // Answer with a status derived from the
+                                    // exception and its message.
     CRITICALMESSAGE  // Log a critical error so operators notice the
                      // failure.
   }
@@ -474,24 +503,28 @@ bool SessionManager::clientHasValidSession(
   try  // Database and JSON operations can throw, so they run inside a guarded
        // block.
   {
-    auto decodedToken =
-        jwt::decode<jwt::traits::kazuho_picojson>(clientLoginData->token
-                .value());  // Parse the token string into a structured object.
+    auto decodedToken = jwt::decode<jwt::traits::kazuho_picojson>(
+        clientLoginData->token
+            .value());  // Parse the token string into a structured object.
 
-    if (!decodeToken(clientLoginData, message,
-            decodedToken))  // Validate the token's claims and fill
-                            // clientLoginData.
+    if (!decodeToken(clientLoginData,
+                     message,
+                     decodedToken))  // Validate the token's claims and fill
+                                     // clientLoginData.
     {
-      message = fmt::format("Token is not valid: {}",
-          message);  // Prefix the underlying reason with context.
-      return false;  // Login failed.
+      message =
+          fmt::format("Token is not valid: {}",
+                      message);  // Prefix the underlying reason with context.
+      return false;              // Login failed.
     }
 
-    std::string key     = fmt::format("{}_{}", clientLoginData->group.value(),
-        clientLoginData->clientId
-            .value());  // Build the cache key from group and client id.
+    std::string key = fmt::format("{}_{}",
+                                  clientLoginData->group.value(),
+                                  clientLoginData->clientId
+                                      .value());  // Build the cache key from
+                                                  // group and client id.
 
-    auto        session = clientsSessionsList->get(
+    auto session = clientsSessionsList->get(
         key);                 // Fetch the cached session for this client.
     if (session.has_value())  // Only compare tokens when a session actually
                               // exists.
@@ -513,7 +546,7 @@ bool SessionManager::clientHasValidSession(
       bool tokens_equal = true;  // Assume a match, then prove otherwise
                                  // one character at a time.
       for (size_t i = 0; i < stored_token.size();
-          ++i)  // Walk every character of the tokens.
+           ++i)  // Walk every character of the tokens.
       {
         if (stored_token[i] !=
             supplied_token[i])  // Any differing character proves they
@@ -541,10 +574,10 @@ bool SessionManager::clientHasValidSession(
     throw;  // Re-throw unchanged so callers can retry or back off.
   }
   catch (const std::exception&
-          e)  // Any other error is reported through the message string.
+             e)  // Any other error is reported through the message string.
   {
     message = fmt::format("Error storing session:{}",
-        e.what());                      // Build an error message for logging.
+                          e.what());    // Build an error message for logging.
     Message::CriticalMessage(message);  // Log the error as critical.
   }
   return false;  // Login failed.
@@ -570,15 +603,20 @@ bool SessionManager::storeSession(
       message = "clientLoginData is empty";  // Explain why storage failed.
       return false;                          // Login failed.
     }
-    std::string key = fmt::format("{}_{}", clientLoginData->group.value(),
-        clientLoginData->clientId
-            .value());  // Build the cache key from group and client id.
-    clientsSessionsList->insert(key, clientLoginData.value(),
-        std::chrono::duration_cast<std::chrono::seconds>(
-            clientLoginData->expireTime));  // Store the session under the key
-                                            // with a TTL (see the header note
-                                            // about expireTime).
-    return true;                            // Login succeeded.
+    std::string key = fmt::format("{}_{}",
+                                  clientLoginData->group.value(),
+                                  clientLoginData->clientId
+                                      .value());  // Build the cache key from
+                                                  // group and client id.
+    clientsSessionsList
+        ->insert(key,
+                 clientLoginData.value(),
+                 std::chrono::duration_cast<std::chrono::seconds>(
+                     clientLoginData
+                         ->expireTime));  // Store the session under the key
+                                          // with a TTL (see the header note
+                                          // about expireTime).
+    return true;                          // Login succeeded.
   }
   catch (const DatabaseBusy&)  // A busy database is a special case handled by
                                // the caller.
@@ -586,10 +624,10 @@ bool SessionManager::storeSession(
     throw;  // Re-throw unchanged so callers can retry or back off.
   }
   catch (const std::exception&
-          e)  // Any other error is reported through the message string.
+             e)  // Any other error is reported through the message string.
   {
     message = fmt::format("Error storing session:{}",
-        e.what());                      // Build an error message for logging.
+                          e.what());    // Build an error message for logging.
     Message::CriticalMessage(message);  // Log the error as critical.
   }
   return false;  // Login failed.
@@ -600,7 +638,8 @@ bool SessionManager::storeSession(
  * @return True when a session key could be built and the removal was attempted.
  * @throws DatabaseBusy Propagated to the caller for retry/back-off.
  */
-bool SessionManager::removeSession(std::optional<Types::ClientLoginData>&
+bool SessionManager::removeSession(
+    std::optional<Types::ClientLoginData>&
         clientLoginData)  // Remove the cached session identified by group and
                           // id.
 {
@@ -615,7 +654,7 @@ bool SessionManager::removeSession(std::optional<Types::ClientLoginData>&
       return false;                          // Login failed.
     }
     if (!clientLoginData->clientId
-            .has_value())  // Without an id there is no cache key to build.
+             .has_value())  // Without an id there is no cache key to build.
     {
       message = "clientId has no value";  // Explain the missing id.
       return false;                       // Login failed.
@@ -627,9 +666,11 @@ bool SessionManager::removeSession(std::optional<Types::ClientLoginData>&
       return false;                    // Login failed.
     }
 
-    std::string key = fmt::format("{}_{}", clientLoginData->group.value(),
-        clientLoginData->clientId
-            .value());  // Build the cache key from group and client id.
+    std::string key = fmt::format("{}_{}",
+                                  clientLoginData->group.value(),
+                                  clientLoginData->clientId
+                                      .value());  // Build the cache key from
+                                                  // group and client id.
     clientsSessionsList->remove(
         key);     // Delete the entry from the in-memory cache.
     return true;  // Login succeeded.
@@ -640,10 +681,10 @@ bool SessionManager::removeSession(std::optional<Types::ClientLoginData>&
     throw;  // Re-throw unchanged so callers can retry or back off.
   }
   catch (const std::exception&
-          e)  // Any other error is reported through the message string.
+             e)  // Any other error is reported through the message string.
   {
     message = fmt::format("Error storing session:{}",
-        e.what());                      // Build an error message for logging.
+                          e.what());    // Build an error message for logging.
     Message::CriticalMessage(message);  // Log the error as critical.
   }
   return false;  // Login failed.

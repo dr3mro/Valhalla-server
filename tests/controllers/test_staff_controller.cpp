@@ -125,8 +125,9 @@ TEST_CASE(
   auto                     r = capture(
       [&](auto cb)
       {
-        ctrl.AddStaffToEntity(
-            std::move(cb), Requester(1, "owners"), R"({"no_payload":1})");
+        ctrl.AddStaffToEntity(std::move(cb),
+                              Requester(1, "owners"),
+                              R"({"no_payload":1})");
       });  // Parsable JSON, but the expected key is absent.
   // at("payload") throws → CRITICALMESSAGERESPONSE
   CHECK(r.status ==
@@ -144,10 +145,12 @@ TEST_CASE(
 {
   StaffController<Clinics> ctrl;  // A fresh Clinics controller.
   // Minimal valid payload for StaffData
-  auto                     r = capture(
+  auto r = capture(
       [&](auto cb)
       {
-        ctrl.AddStaffToEntity(std::move(cb), Requester(1, "owners"),
+        ctrl.AddStaffToEntity(
+            std::move(cb),
+            Requester(1, "owners"),
             R"({"id":1,"payload":{"staff_id":10,"role":"nurse"}})");
       });  // Both the entity id and the nested staff data are present.
   // Passes JSON parse; reaches DB (unavailable) or returns a response — must
@@ -167,8 +170,9 @@ TEST_CASE(
   auto                     r = capture(
       [&](auto cb)
       {
-        ctrl.RemoveStaffFromEntity(
-            std::move(cb), Requester(1, "owners"), "bad{");
+        ctrl.RemoveStaffFromEntity(std::move(cb),
+                                   Requester(1, "owners"),
+                                   "bad{");
       });  // Invalid JSON body.
   CHECK(r.status == api::v2::Http::Status::
                         INTERNAL_SERVER_ERROR);  // Proves the 500-on-bad-JSON
@@ -184,8 +188,9 @@ TEST_CASE(
   auto                     r = capture(
       [&](auto cb)
       {
-        ctrl.RemoveStaffFromEntity(std::move(cb), Requester(1, "owners"),
-            R"({"payload":{"staff_id":10}})");
+        ctrl.RemoveStaffFromEntity(std::move(cb),
+                                   Requester(1, "owners"),
+                                   R"({"payload":{"staff_id":10}})");
       });  // The payload exists but the top-level id does not.
   // at("id") throws → 500
   CHECK(r.status ==
@@ -204,10 +209,12 @@ TEST_CASE(
   StaffController<Clinics> ctrl;  // A fresh Clinics controller.
   // requester id=99, service id=1 → canManageStaff fails; DB unavailable →
   // 400
-  auto                     r = capture(
+  auto r = capture(
       [&](auto cb)
       {
-        ctrl.RemoveStaffFromEntity(std::move(cb), Requester(99, "users"),
+        ctrl.RemoveStaffFromEntity(
+            std::move(cb),
+            Requester(99, "users"),
             R"({"id":1,"payload":{"staff_id":10,"role":"nurse"}})");
       });  // Caller 99 tries to modify clinic 1; the permission check should
            // stop it.
@@ -248,8 +255,9 @@ TEST_CASE(
   auto                     r = capture(
       [&](auto cb)
       {
-        ctrl.InviteStaffToEntity(
-            std::move(cb), Requester(1, "owners"), R"({"no_nominee":1})");
+        ctrl.InviteStaffToEntity(std::move(cb),
+                                 Requester(1, "owners"),
+                                 R"({"no_nominee":1})");
       });  // Parsable JSON without the required nominee id.
   CHECK(r.status ==
         api::v2::Http::Status::INTERNAL_SERVER_ERROR);  // Proves the missing
@@ -272,7 +280,8 @@ TEST_CASE(
       {
         ctrl.InviteStaffToEntity(  // Call InviteStaffToEntity with the full
                                    // invite JSON.
-            std::move(cb), Requester(99, "users"),
+            std::move(cb),
+            Requester(99, "users"),
             // Caller 99 is not nominee 5, so the check should fail before
             // any email is sent.
             R"({"nominee_id":5,"staff_id":5,"role":"nurse","service_id":1,"service_name":"clinics"})");
@@ -312,8 +321,9 @@ TEST_CASE(
   auto r = capture(
       [&](auto cb)
       {
-        ctrl.RemoveStaffFromEntity(
-            std::move(cb), Requester(1, "owners"), "bad{");
+        ctrl.RemoveStaffFromEntity(std::move(cb),
+                                   Requester(1, "owners"),
+                                   "bad{");
       });  // Bad-JSON Remove on this type.
   CHECK(r.status ==
         api::v2::Http::Status::INTERNAL_SERVER_ERROR);  // Proves Laboratories

@@ -83,8 +83,8 @@ class DatabaseHanndler  // A short-lived guard that owns exactly one connection
    * timeout.
    */
   explicit DatabaseHanndler(std::shared_ptr<DatabaseConnectionPool>
-          pool);  // hot path: the caller already holds the pool, no Store
-                  // lookup
+                                pool);  // hot path: the caller already holds
+                                        // the pool, no Store lookup
   DatabaseHanndler(const DatabaseHanndler&) =
       delete;  // Copying would double-return the same lease to the pool.
   DatabaseHanndler(DatabaseHanndler&&) =
@@ -107,8 +107,8 @@ class DatabaseHanndler  // A short-lived guard that owns exactly one connection
    * is destroyed.
    */
   std::shared_ptr<Database>
-       get_connection();  // Gives read-only-style access to the borrowed
-                          // connection without transferring ownership.
+  get_connection();  // Gives read-only-style access to the borrowed
+                     // connection without transferring ownership.
 
   /**
    * @brief Forwards a reconnect request to the owning pool (reconnects idle

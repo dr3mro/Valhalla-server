@@ -163,13 +163,13 @@ class Controller
    * Copy/move operations are defaulted; the `DatabaseController` is shared,
    * not duplicated.
    */
-  Controller& operator=(
-      const Controller&) = default;  // Copying just copies the shared_ptr,
-                                     // not the database connection.
+  Controller& operator=(const Controller&) =
+      default;  // Copying just copies the shared_ptr,
+                // not the database connection.
   Controller(const Controller&) =
       default;  // Copies are cheap: the DB service is shared, not duplicated.
-  Controller& operator=(
-      Controller&&) = default;  // Move assignment transfers the shared handle.
+  Controller& operator=(Controller&&) =
+      default;  // Move assignment transfers the shared handle.
   Controller(Controller&&) =
       default;  // Move construction transfers the shared handle.
 
@@ -200,8 +200,10 @@ class Controller
         &T::getSqlCreateStatement;  // Pointer to the INSERT builder; may
                                     // return no statement if data is
                                     // invalid.
-    cruds(entity, sqlstatement, dbexec,
-        std::forward<CALLBACK_>(std::move(callback)));
+    cruds(entity,
+          sqlstatement,
+          dbexec,
+          std::forward<CALLBACK_>(std::move(callback)));
   }
 
   /**
@@ -223,9 +225,10 @@ class Controller
         &T::getSqlCreateStatement;  // Pointer to the INSERT builder; may
                                     // return no statement if data is
                                     // invalid.
-    co_await crudsAsync(entity, sqlstatement,
-        &DatabaseController::executeQueryCoro,
-        std::forward<CALLBACK_>(std::move(callback)));
+    co_await crudsAsync(entity,
+                        sqlstatement,
+                        &DatabaseController::executeQueryCoro,
+                        std::forward<CALLBACK_>(std::move(callback)));
   }
 
   /**
@@ -245,8 +248,10 @@ class Controller
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlReadStatement;  // Pointer to the SELECT builder for
                                   // reading selected columns.
-    cruds(entity, sqlstatement, dbrexec,
-        std::forward<CALLBACK_>(std::move(callback)));
+    cruds(entity,
+          sqlstatement,
+          dbrexec,
+          std::forward<CALLBACK_>(std::move(callback)));
   }
   /**
    * @brief Coroutine counterpart of Read().
@@ -266,9 +271,10 @@ class Controller
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlReadStatement;  // Pointer to the SELECT builder for
                                   // reading selected columns.
-    co_await crudsAsync(entity, sqlstatement,
-        &DatabaseController::executeReadQueryCoro,
-        std::forward<CALLBACK_>(std::move(callback)));
+    co_await crudsAsync(entity,
+                        sqlstatement,
+                        &DatabaseController::executeReadQueryCoro,
+                        std::forward<CALLBACK_>(std::move(callback)));
   }
 
   /**
@@ -288,8 +294,10 @@ class Controller
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlUpdateStatement;  // Pointer to the UPDATE builder for the
                                     // target row.
-    cruds(entity, sqlstatement, dbexec,
-        std::forward<CALLBACK_>(std::move(callback)));
+    cruds(entity,
+          sqlstatement,
+          dbexec,
+          std::forward<CALLBACK_>(std::move(callback)));
   }
 
   /**
@@ -309,9 +317,10 @@ class Controller
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlUpdateStatement;  // Pointer to the UPDATE builder for the
                                     // target row.
-    co_await crudsAsync(entity, sqlstatement,
-        &DatabaseController::executeQueryCoro,
-        std::forward<CALLBACK_>(std::move(callback)));
+    co_await crudsAsync(entity,
+                        sqlstatement,
+                        &DatabaseController::executeQueryCoro,
+                        std::forward<CALLBACK_>(std::move(callback)));
   }
 
   /**
@@ -330,8 +339,10 @@ class Controller
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlDeleteStatement;  // Pointer to the DELETE builder for the
                                     // target id.
-    cruds(entity, sqlstatement, dbexec,
-        std::forward<CALLBACK_>(std::move(callback)));
+    cruds(entity,
+          sqlstatement,
+          dbexec,
+          std::forward<CALLBACK_>(std::move(callback)));
   }
 
   /**
@@ -351,9 +362,10 @@ class Controller
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlDeleteStatement;  // Pointer to the DELETE builder for the
                                     // target id.
-    co_await crudsAsync(entity, sqlstatement,
-        &DatabaseController::executeQueryCoro,
-        std::forward<CALLBACK_>(std::move(callback)));
+    co_await crudsAsync(entity,
+                        sqlstatement,
+                        &DatabaseController::executeQueryCoro,
+                        std::forward<CALLBACK_>(std::move(callback)));
   }
 
   /**
@@ -404,9 +416,10 @@ class Controller
       if (query.has_value())
       {
         query_results_json_array =
-            databaseController->executeSearchQuery(query.value(),
-                params);  // Blocking search that maps rows to a JSON
-                          // array.
+            databaseController
+                ->executeSearchQuery(query.value(),
+                                     params);  // Blocking search that maps rows
+                                               // to a JSON array.
 
         if (query_results_json_array.has_value() &&
             !query_results_json_array->empty())
@@ -447,8 +460,8 @@ class Controller
       }
 
       // Marshal the envelope and answer once.
-      std::move(callback)(
-          api::v2::Http::Status::OK, response_json.as<std::string>());
+      std::move(callback)(api::v2::Http::Status::OK,
+                          response_json.as<std::string>());
     }
     catch (const std::exception& e)
     {
@@ -495,9 +508,11 @@ class Controller
       if (query.has_value())
       {
         query_results_json_array =
-            co_await databaseController->executeSearchQueryCoro(query.value(),
-                params);  // Await the async search without blocking the
-                          // IO loop.
+            co_await databaseController
+                ->executeSearchQueryCoro(query.value(),
+                                         params);  // Await the async search
+                                                   // without blocking the IO
+                                                   // loop.
 
         if (query_results_json_array.has_value() &&
             !query_results_json_array->empty())
@@ -533,8 +548,8 @@ class Controller
                                       // was found.
       }
 
-      std::move(callback)(
-          api::v2::Http::Status::OK, response_json.as<std::string>());
+      std::move(callback)(api::v2::Http::Status::OK,
+                          response_json.as<std::string>());
     }
     catch (const std::exception& e)
     {
@@ -602,8 +617,10 @@ class Controller
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlSuspendStatement;  // Pointer to the builder that flips a
                                      // client to inactive.
-    co_await crudsAsync(entity, sqlstatement,
-        &DatabaseController::executeQueryCoro, std::move(callback));
+    co_await crudsAsync(entity,
+                        sqlstatement,
+                        &DatabaseController::executeQueryCoro,
+                        std::move(callback));
   }
 
   /**
@@ -623,8 +640,10 @@ class Controller
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlActivateStatement;  // Pointer to the builder that flips a
                                       // client back to active.
-    co_await crudsAsync(entity, sqlstatement,
-        &DatabaseController::executeQueryCoro, std::move(callback));
+    co_await crudsAsync(entity,
+                        sqlstatement,
+                        &DatabaseController::executeQueryCoro,
+                        std::move(callback));
   }
 
   /**
@@ -659,18 +678,20 @@ class Controller
 
       if (query.has_value())
       {
-        services = databaseController->executeSearchQuery(query.value(),
-            params);  // Blocking lookup of the service rows.
+        services = databaseController
+                       ->executeSearchQuery(query.value(),
+                                            params);  // Blocking lookup of the
+                                                      // service rows.
 
         if (services.has_value())
         {
           std::move(callback)(api::v2::Http::Status::OK,
-              api::v2::JsonHelper::stringify(services.value()));
+                              api::v2::JsonHelper::stringify(services.value()));
           return;
         }
         std::move(callback)(api::v2::Http::Status::OK,
-            "[]");  // No services found still yields a valid empty JSON
-                    // array.
+                            "[]");  // No services found still yields a valid
+                                    // empty JSON array.
       }
     }
     catch (const std::exception& e)
@@ -715,18 +736,20 @@ class Controller
                                                         // handle: cheap
                                                         // per-request lookup
                                                         // for coroutines.
-        services = co_await db->executeSearchQueryCoro(
-            query.value(), params);  // Await the async service lookup.
+        services =
+            co_await db->executeSearchQueryCoro(query.value(),
+                                                params);  // Await the async
+                                                          // service lookup.
 
         if (services.has_value())
         {
           std::move(callback)(api::v2::Http::Status::OK,
-              api::v2::JsonHelper::stringify(services.value()));
+                              api::v2::JsonHelper::stringify(services.value()));
           co_return;
         }
         std::move(callback)(api::v2::Http::Status::OK,
-            "[]");  // No services found still yields a valid empty JSON
-                    // array.
+                            "[]");  // No services found still yields a valid
+                                    // empty JSON array.
       }
     }
     catch (const std::exception& e)
@@ -767,12 +790,14 @@ class Controller
 
       if (query.has_value())
       {
-        visits = databaseController->executeSearchQuery(
-            query.value(), params);  // Blocking lookup of visit rows.
+        visits =
+            databaseController
+                ->executeSearchQuery(query.value(),
+                                     params);  // Blocking lookup of visit rows.
       }
 
-      std::move(callback)(
-          api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(visits));
+      std::move(callback)(api::v2::Http::Status::OK,
+                          api::v2::JsonHelper::stringify(visits));
     }
     catch (const std::exception& e)
     {
@@ -814,12 +839,14 @@ class Controller
                                                         // handle: cheap
                                                         // per-request lookup
                                                         // for coroutines.
-        visits = co_await db->executeSearchQueryCoro(
-            query.value(), params);  // Await the async visit lookup.
+        visits =
+            co_await db->executeSearchQueryCoro(query.value(),
+                                                params);  // Await the async
+                                                          // visit lookup.
       }
 
-      std::move(callback)(
-          api::v2::Http::Status::OK, api::v2::JsonHelper::stringify(visits));
+      std::move(callback)(api::v2::Http::Status::OK,
+                          api::v2::JsonHelper::stringify(visits));
     }
     catch (const std::exception& e)
     {
@@ -873,10 +900,11 @@ class Controller
    * @note Shared implementation for every synchronous CRUDS helper.
    */
   template <typename S, typename T>
-  void cruds(T& entity, S& sqlstatement,
-      std::optional<jsoncons::json> (DatabaseController::*func)(
-          const std::string&, const pqxx::params&),
-      CALLBACK_&& callback)
+  void cruds(T& entity,
+             S& sqlstatement,
+             std::optional<jsoncons::json> (DatabaseController::*func)(
+                 const std::string&, const pqxx::params&),
+             CALLBACK_&& callback)
   {
     std::optional<jsoncons::json>
         results_j;  // Will hold the single result object returned by the DB
@@ -892,32 +920,34 @@ class Controller
       if (!query.has_value())
       {
         std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
-            fmt::format(
-                "Failed to get SQL statement for {}.", entity.getTableName()));
+                            fmt::format("Failed to get SQL statement for {}.",
+                                        entity.getTableName()));
         return;
       }
 
       // Dispatch through the selected executor; params are bound
       // placeholders, not string-interpolated values.
-      results_j = (*databaseController.*func)(query.value(),
-          params);  // Run SQL through the chosen read/write executor.
+      results_j =
+          (*databaseController.*
+           func)(query.value(),
+                 params);  // Run SQL through the chosen read/write executor.
       if (results_j.has_value())
       {
         if (!results_j->empty())
         {
-          std::move(callback)(
-              api::v2::Http::Status::OK, results_j.value().as<std::string>());
+          std::move(callback)(api::v2::Http::Status::OK,
+                              results_j.value().as<std::string>());
           return;
         }
 
         std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
-            "Query returned empty result, please recheck your "
-            "parameters.");
+                            "Query returned empty result, please recheck your "
+                            "parameters.");
         return;
       }
 
-      std::move(callback)(
-          api::v2::Http::Status::BAD_REQUEST, "Failed to create sql query");
+      std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
+                          "Failed to create sql query");
     }
     catch (const std::exception& e)
     {
@@ -945,7 +975,9 @@ class Controller
    * @see cruds
    */
   template <typename S, typename T>
-  drogon::Task<void> crudsAsync(T& entity, S& sqlstatement,
+  drogon::Task<void> crudsAsync(
+      T& entity,
+      S& sqlstatement,
       drogon::Task<std::optional<jsoncons::json>> (DatabaseController::*func)(
           const std::string&, const pqxx::params&),
       CALLBACK_&& callback)
@@ -962,32 +994,35 @@ class Controller
       if (!query.has_value())
       {
         std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
-            fmt::format(
-                "Failed to get SQL statement for {}.", entity.getTableName()));
+                            fmt::format("Failed to get SQL statement for {}.",
+                                        entity.getTableName()));
         co_return;
       }
 
-      auto db   = Store::cachedObject<DatabaseController>();
-      results_j = co_await std::invoke(func, db.get(), query.value(),
-          params);  // Invoke the async executor member on the cached DB
-                    // object.
+      auto db = Store::cachedObject<DatabaseController>();
+      results_j =
+          co_await std::invoke(func,
+                               db.get(),
+                               query.value(),
+                               params);  // Invoke the async executor member on
+                                         // the cached DB object.
       if (results_j.has_value())
       {
         if (!results_j->empty())
         {
-          std::move(callback)(
-              api::v2::Http::Status::OK, results_j.value().as<std::string>());
+          std::move(callback)(api::v2::Http::Status::OK,
+                              results_j.value().as<std::string>());
           co_return;
         }
 
         std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
-            "Query returned empty result, please recheck your "
-            "parameters.");
+                            "Query returned empty result, please recheck your "
+                            "parameters.");
         co_return;
       }
 
-      std::move(callback)(
-          api::v2::Http::Status::BAD_REQUEST, "Failed to create sql query");
+      std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
+                          "Failed to create sql query");
     }
     catch (const std::exception& e)
     {
@@ -1048,8 +1083,10 @@ class Controller
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlAddStaffStatement;  // Pointer to the builder that links a
                                       // staff member.
-    co_await crudsAsync(entity, sqlstatement,
-        &DatabaseController::executeQueryCoro, std::move(callback));
+    co_await crudsAsync(entity,
+                        sqlstatement,
+                        &DatabaseController::executeQueryCoro,
+                        std::move(callback));
   }
 
   /**
@@ -1068,7 +1105,9 @@ class Controller
     std::optional<std::string> (T::*sqlstatement)(pqxx::params&) =
         &T::getSqlRemoveStaffStatement;  // Pointer to the builder that
                                          // unlinks a staff member.
-    co_await crudsAsync(entity, sqlstatement,
-        &DatabaseController::executeQueryCoro, std::move(callback));
+    co_await crudsAsync(entity,
+                        sqlstatement,
+                        &DatabaseController::executeQueryCoro,
+                        std::move(callback));
   }
 };

@@ -99,12 +99,13 @@ namespace
 }  // namespace
 
 TEST_CASE("PasswordWorker with zero workers runs the task inline",
-    "[gatekeeper][passwordworker]")  // Registers the test for the no-thread
-                                     // fallback mode.
+          "[gatekeeper][passwordworker]")  // Registers the test for the
+                                           // no-thread fallback mode.
 {
-  PasswordWorker worker(0,
-      4);  // Construct with zero workers, which selects inline mode; queue
-           // size is irrelevant but still supplied.
+  PasswordWorker
+      worker(0,
+             4);  // Construct with zero workers, which selects inline mode;
+                  // queue size is irrelevant but still supplied.
   CHECK(worker.inlineMode());  // Prove the zero-worker configuration really
                                // enables inline mode.
 
@@ -121,8 +122,8 @@ TEST_CASE("PasswordWorker with zero workers runs the task inline",
 }
 
 TEST_CASE("PasswordWorker runs tasks on its own threads",
-    "[gatekeeper][passwordworker]")  // Registers the test for normal threaded
-                                     // mode.
+          "[gatekeeper][passwordworker]")  // Registers the test for normal
+                                           // threaded mode.
 {
   PasswordWorker worker(2, 8);       // Two worker threads, queue of eight.
   CHECK_FALSE(worker.inlineMode());  // Prove we are NOT in inline mode when
@@ -148,8 +149,8 @@ TEST_CASE("PasswordWorker runs tasks on its own threads",
 }
 
 TEST_CASE("PasswordWorker refuses work when the queue is full",
-    "[gatekeeper][passwordworker]")  // Registers the test for bounded-queue
-                                     // backpressure.
+          "[gatekeeper][passwordworker]")  // Registers the test for
+                                           // bounded-queue backpressure.
 {
   std::promise<void>
       started_promise;  // Signalled when the first task actually begins.
@@ -165,8 +166,8 @@ TEST_CASE("PasswordWorker refuses work when the queue is full",
 
   {
     PasswordWorker worker(1,
-        1);  // One worker and a queue of exactly one, so we can fill it
-             // deterministically.
+                          1);  // One worker and a queue of exactly one, so we
+                               // can fill it deterministically.
     ReleaseOnExit  gate{
         release_promise};  // RAII guard that will release the blocked task
                            // even if an assertion throws.
@@ -184,14 +185,20 @@ TEST_CASE("PasswordWorker refuses work when the queue is full",
     started.wait();  // Wait until we know the worker is busy; this makes
                      // the queue state predictable.
 
-    REQUIRE(
-        worker.submit([&] { ++ran; }));  // waits in the queue (1 of 1) -- the
-                                         // single queue slot is still free.
+    REQUIRE(worker.submit(
+        [&]
+        {
+          ++ran;
+        }));  // waits in the queue (1 of 1) -- the
+              // single queue slot is still free.
     CHECK(worker.pending() ==
           1);  // Prove exactly one task is queued behind the busy worker.
     CHECK_FALSE(worker.submit(
-        [&] { ++ran; }));  // queue full -- a third task must be refused
-                           // rather than silently dropped or queued.
+        [&]
+        {
+          ++ran;
+        }));  // queue full -- a third task must be refused
+              // rather than silently dropped or queued.
 
     gate.now();  // Release the blocked task so it and the queued one can
                  // finish.
@@ -203,13 +210,13 @@ TEST_CASE("PasswordWorker refuses work when the queue is full",
 }
 
 TEST_CASE("PasswordWorker never runs more tasks at once than it has workers",
-    "[gatekeeper][passwordworker]")  // Registers the test that the concurrency
-                                     // cap is honoured.
+          "[gatekeeper][passwordworker]")  // Registers the test that the
+                                           // concurrency cap is honoured.
 {
   constexpr int WORKERS =
       2;  // Maximum number of tasks that should ever run at the same time.
-  constexpr int    TASKS = 12;  // Many more tasks than workers, so they must
-                                // queue and run in batches.
+  constexpr int TASKS = 12;  // Many more tasks than workers, so they must
+                             // queue and run in batches.
 
   std::atomic<int> running{0};  // How many tasks are executing right now.
   std::atomic<int> peak{
@@ -217,8 +224,8 @@ TEST_CASE("PasswordWorker never runs more tasks at once than it has workers",
   std::atomic<int> done{0};  // How many tasks have finished.
   {
     PasswordWorker worker(WORKERS,
-        TASKS);  // Pool with the two workers and a queue big enough for all
-                 // tasks.
+                          TASKS);  // Pool with the two workers and a queue big
+                                   // enough for all tasks.
     for (int i = 0; i < TASKS; ++i)  // Submit every task.
     {
       REQUIRE(worker.submit(
@@ -248,8 +255,8 @@ TEST_CASE("PasswordWorker never runs more tasks at once than it has workers",
 }
 
 TEST_CASE("A throwing task does not stop the worker",
-    "[gatekeeper][passwordworker]")  // Registers the test that one bad task
-                                     // cannot kill the pool.
+          "[gatekeeper][passwordworker]")  // Registers the test that one bad
+                                           // task cannot kill the pool.
 {
   std::atomic<int> ran{0};  // Counts how many subsequent tasks completed.
   {
@@ -261,21 +268,24 @@ TEST_CASE("A throwing task does not stop the worker",
         }));  // Submit a task that throws; the pool must contain the
               // exception.
     REQUIRE(worker.submit(
-        [&] { ++ran; }));  // Submit a normal task after the failing one; it
-                           // must still be accepted.
+        [&]
+        {
+          ++ran;
+        }));  // Submit a normal task after the failing one; it
+              // must still be accepted.
   }  // Destructor joins the worker, waiting for both tasks.
   CHECK(ran == 1);  // Prove the worker survived the exception and executed
                     // the following task.
 }
 
 TEST_CASE("runOnPasswordWorker hands the callback to the task",
-    "[gatekeeper][passwordworker]")  // Registers the test for the adapter that
-                                     // bridges worker submission and the HTTP
-                                     // callback.
+          "[gatekeeper][passwordworker]")  // Registers the test for the adapter
+                                           // that bridges worker submission and
+                                           // the HTTP callback.
 {
   PasswordWorker worker(0,
-      4);         // Inline mode makes this test deterministic: the task runs
-                  // immediately on this thread.
+                        4);  // Inline mode makes this test deterministic: the
+                             // task runs immediately on this thread.
   int code = -1;  // Receives the status passed to the callback; -1 means "not
                   // called yet".
   std::string body;  // Receives the response body passed to the callback.
@@ -317,8 +327,9 @@ TEST_CASE(
   bool body_ran =
       false;  // Set true if the task body is (incorrectly) executed.
   {
-    PasswordWorker worker(
-        1, 1);  // One worker and a one-slot queue, so both can be filled.
+    PasswordWorker
+        worker(1,
+               1);  // One worker and a one-slot queue, so both can be filled.
     ReleaseOnExit gate{release_promise};  // RAII guard to release the blocked
                                           // task even if an assertion fails.
     REQUIRE(worker.submit(
@@ -330,12 +341,21 @@ TEST_CASE(
         }));
     started.wait();  // Wait until we know the single worker is busy.
     REQUIRE(worker.submit(
-        [] {}));  // fills the queue -- occupy the only queue slot.
+        []
+        {
+        }));  // fills the queue -- occupy the only queue slot.
 
     runOnPasswordWorker(
-        worker, [&](int c, const std::string&) { code = c; }, [&](CALLBACK_&&)
-        { body_ran = true; });  // Try to submit through the adapter while
-                                // both worker and queue are full.
+        worker,
+        [&](int c, const std::string&)
+        {
+          code = c;
+        },
+        [&](CALLBACK_&&)
+        {
+          body_ran = true;
+        });  // Try to submit through the adapter while
+             // both worker and queue are full.
 
     CHECK(code ==
           api::v2::Http::Status::

@@ -76,7 +76,8 @@ namespace asyncdb
    * @warning "connection" is a broad match: an unrelated error whose message
    * mentions a connection is classified as busy.
    */
-  [[nodiscard]] bool                   isBusy(const std::exception&
+  [[nodiscard]] bool isBusy(
+      const std::exception&
           error);  // `[[nodiscard]]` forces callers to use the answer;
                    // `const&` inspects without copying.
 
@@ -87,7 +88,8 @@ namespace asyncdb
    * @return `k503ServiceUnavailable` when `isBusy(error)` is true, otherwise
    * `k500InternalServerError`.
    */
-  [[nodiscard]] drogon::HttpStatusCode toHttpStatus(const std::exception&
+  [[nodiscard]] drogon::HttpStatusCode toHttpStatus(
+      const std::exception&
           error);  // Returns a Drogon status constant the HTTP layer can send
                    // directly to the client.
 
@@ -101,7 +103,7 @@ namespace asyncdb
    * resulting `DatabaseBusy` producing a 503 with Retry-After in the HTTP
    * layer.
    */
-  void                                 throwIfBusy(
+  void throwIfBusy(
       const std::exception& error);  // Re-throws as the project's own type so
                                      // existing error handlers need no changes.
 }  // namespace asyncdb

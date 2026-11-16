@@ -124,12 +124,12 @@ class BoundedExecutor
    * Copy construction is disabled; an executor owns live threads that cannot
    * be duplicated.
    */
-  BoundedExecutor(const BoundedExecutor&)            = delete;
+  BoundedExecutor(const BoundedExecutor&) = delete;
   /**
    * Move construction is disabled; workers capture the address of the
    * executor, which a move would invalidate.
    */
-  BoundedExecutor(BoundedExecutor&&)                 = delete;
+  BoundedExecutor(BoundedExecutor&&) = delete;
   /**
    * Copy assignment is disabled; see the copy constructor.
    */
@@ -137,7 +137,7 @@ class BoundedExecutor
   /**
    * Move assignment is disabled; see the move constructor.
    */
-  BoundedExecutor& operator=(BoundedExecutor&&)      = delete;
+  BoundedExecutor& operator=(BoundedExecutor&&) = delete;
   /**
    * @brief Destructor; calls shutdown().
    * @details Any still-queued tasks are drained and the worker threads joined
@@ -162,7 +162,7 @@ class BoundedExecutor
    * are destroyed.
    * @see ~BoundedExecutor()
    */
-  void                      shutdown();
+  void shutdown();
 
   // True when the task was accepted (or ran inline). False when the queue is
   // full or the pool is stopping.
@@ -180,7 +180,7 @@ class BoundedExecutor
    * rejected.
    * @see runOnExecutor()
    */
-  [[nodiscard]] bool        submit(std::function<void()> task);
+  [[nodiscard]] bool submit(std::function<void()> task);
 
   /**
    * Number of tasks currently waiting across all queues; relaxed because it
@@ -194,7 +194,10 @@ class BoundedExecutor
    * True when no worker threads exist and tasks run on the submitting thread.
    */
   // No workers at all means every task runs inline on the submitting thread.
-  [[nodiscard]] bool        inlineMode() const { return workers_.empty(); }
+  [[nodiscard]] bool inlineMode() const
+  {
+    return workers_.empty();
+  }
   /**
    * Number of worker threads; zero in inline mode.
    */
@@ -310,7 +313,7 @@ class BoundedExecutor
    * @return true if a task was taken, false if no queue had work.
    */
   bool take(std::size_t self,
-      Item&             item);  // own queue first, then the others' queues
+            Item&       item);  // own queue first, then the others' queues
   /**
    * @brief Accumulates how long a task waited between queueing and being
    * taken.
@@ -403,8 +406,10 @@ class BoundedExecutor
  * @see BoundedExecutor::submit(), runOnDbExecutor(), runOnPasswordWorker()
  */
 template <typename Body>
-void runOnExecutor(BoundedExecutor& executor, CALLBACK_&& callback,
-    const char* busy_message, Body&& body)
+void runOnExecutor(BoundedExecutor& executor,
+                   CALLBACK_&&      callback,
+                   const char*      busy_message,
+                   Body&&           body)
 {
   auto shared_callback = std::make_shared<CALLBACK_>(
       std::move(callback));  // store it once so both paths can use it
@@ -415,6 +420,7 @@ void runOnExecutor(BoundedExecutor& executor, CALLBACK_&& callback,
           }))  // false means the pool is full
   {
     (*shared_callback)(api::v2::Http::Status::SERVICE_UNAVAILABLE,
-        busy_message);  // rejected: answer 503 here and never run body
+                       busy_message);  // rejected: answer 503 here and never
+                                       // run body
   }
 }

@@ -110,11 +110,11 @@ Database::Database(std::shared_ptr<pqxx::connection>&& conn)
     }
   }
   catch (const std::exception&
-          e)  // A broken link is reported, but construction still succeeds.
+             e)  // A broken link is reported, but construction still succeeds.
   {
     Message::CriticalMessage(
         fmt::format("Exception caught during database connection: {}",
-            e.what()));  // Log the exact driver error for diagnosis.
+                    e.what()));  // Log the exact driver error for diagnosis.
   }
 }
 
@@ -125,7 +125,7 @@ Database::~Database()
 {
   Message::InfoMessage(
       fmt::format("Database connection {} is now exterminated.",
-          static_cast<const void*>(this)));
+                  static_cast<const void*>(this)));
 }  // Logging the address makes each connection's lifetime traceable.
 
 /**
@@ -138,28 +138,31 @@ Database::~Database()
  * threw. Note: Query failures are swallowed and reported as `false` (see the
  * header note).
  */
-bool Database::checkExists(const std::string& table, const std::string& column,
-    const std::string& value)
+bool Database::checkExists(const std::string& table,
+                           const std::string& column,
+                           const std::string& value)
 {
   try  // Any SQL error is converted into a false return below instead of
        // escaping the function.
   {
     std::string query =
         fmt::format("SELECT EXISTS (SELECT 1 FROM {} WHERE {} = $1);",
-            connection->quote_name(table),
-            connection->quote_name(
-                column));  // quote_name escapes identifiers (which cannot be
-                           // bound as parameters); only the value uses $1.
-    pqxx::result result;   // Empty result holder, kept alive after the
-                           // transaction object is destroyed.
+                    connection->quote_name(table),
+                    connection->quote_name(
+                        column));  // quote_name escapes identifiers (which
+                                   // cannot be bound as parameters); only the
+                                   // value uses $1.
+    pqxx::result result;           // Empty result holder, kept alive after the
+                                   // transaction object is destroyed.
     {
       pqxx::nontransaction txn(
           *connection);  // A short-lived, non-transactional execution
                          // context.
 
-      result = txn.exec(pqxx::zview(query),
-          pqxx::params{value});  // Send the SQL with the value bound
-                                 // separately, avoiding SQL injection.
+      result =
+          txn.exec(pqxx::zview(query),
+                   pqxx::params{value});  // Send the SQL with the value bound
+                                          // separately, avoiding SQL injection.
     }
     return result[0][0].as<bool>();  // EXISTS always returns one
                                      // row/column: read it as a boolean.
@@ -167,10 +170,12 @@ bool Database::checkExists(const std::string& table, const std::string& column,
   catch (const std::exception& e)  // A query failure is indistinguishable
                                    // from "not found" for callers.
   {
-    Message::CriticalMessage(fmt::format("Error executing query: {}",
-        e.what()));  // Still log it so the failure is visible in the logs.
-    return false;    // Report "not found" on error; use check_connection() to
-                     // tell the cases apart.
+    Message::CriticalMessage(
+        fmt::format("Error executing query: {}",
+                    e.what()));  // Still log it so the failure is visible in
+                                 // the logs.
+    return false;  // Report "not found" on error; use check_connection() to
+                   // tell the cases apart.
   }
 }
 
@@ -228,11 +233,13 @@ bool Database::reconnect()
                                 // passes a real probe.
   }
   catch (const std::exception&
-          e)  // A failure leaves the old pointer in place; report it.
+             e)  // A failure leaves the old pointer in place; report it.
   {
-    Message::CriticalMessage(fmt::format("Failed to reconnect to database,{}",
-        e.what()));  // Log the driver's reason for the reconnect failure.
-    return false;    // Tell the caller the reconnect did not work.
+    Message::CriticalMessage(
+        fmt::format("Failed to reconnect to database,{}",
+                    e.what()));  // Log the driver's reason for the reconnect
+                                 // failure.
+    return false;                // Tell the caller the reconnect did not work.
   }
 }
 
@@ -255,16 +262,18 @@ std::optional<std::unordered_set<api::v2::ColumnInfo>> Database::getTableSchema(
     {
       pqxx::nontransaction ntxn(
           *connection);  // A read-only statement needs no transaction.
-      result = ntxn.exec(
-          pqxx::zview("SELECT column_name, data_type, column_default, "
-                      "is_nullable FROM "
-                      "information_schema.columns WHERE table_name = $1 AND "
-                      "column_name != 'id';"),  // information_schema is
-                                                // PostgreSQL's built-in catalog
-                                                // of
-          // table/column metadata; the id column is filtered out.
-          pqxx::params{tableName});  // The table name is bound as a value, not
-                                     // spliced into the SQL text.
+      result =
+          ntxn.exec(pqxx::zview(
+                        "SELECT column_name, data_type, column_default, "
+                        "is_nullable FROM "
+                        "information_schema.columns WHERE table_name = $1 AND "
+                        "column_name != 'id';"),  // information_schema is
+                                                  // PostgreSQL's built-in
+                                                  // catalog of
+                    // table/column metadata; the id column is filtered out.
+                    pqxx::params{
+                        tableName});  // The table name is bound as a value, not
+                                      // spliced into the SQL text.
     }
 
     std::unordered_set<api::v2::ColumnInfo>
@@ -272,7 +281,7 @@ std::optional<std::unordered_set<api::v2::ColumnInfo>> Database::getTableSchema(
                  // automatically.
 
     for (const auto& row :
-        result)  // One iteration per column found in the catalog.
+         result)  // One iteration per column found in the catalog.
     {
       api::v2::ColumnInfo
           column;  // Fill a value object from the four selected fields.
@@ -296,10 +305,11 @@ std::optional<std::unordered_set<api::v2::ColumnInfo>> Database::getTableSchema(
   }
   catch (const std::exception& e)  // A failed query must not crash the caller.
   {
-    Message::CriticalMessage(fmt::format("Error executing query: {}",
-        e.what()));       // Log the failure with the driver's message.
-    return std::nullopt;  // Use the empty optional to signal "schema
-                          // unavailable".
+    Message::CriticalMessage(
+        fmt::format("Error executing query: {}",
+                    e.what()));  // Log the failure with the driver's message.
+    return std::nullopt;         // Use the empty optional to signal "schema
+                                 // unavailable".
   }
 }
 
@@ -336,8 +346,8 @@ std::optional<std::unordered_set<std::string>> Database::getAllTables()
   }
   catch (const std::exception& e)  // A failed query must not crash the caller.
   {
-    Message::CriticalMessage(fmt::format(
-        "Error executing query: {}", e.what()));  // Log the failure.
+    Message::CriticalMessage(fmt::format("Error executing query: {}",
+                                         e.what()));  // Log the failure.
     return std::nullopt;  // Signal that the table list could not be read.
   }
 }
@@ -357,14 +367,15 @@ std::optional<std::unordered_set<std::string>> Database::getAllTables()
  * `std::nullopt` (only exceptions produce `std::nullopt`).
  */
 template <typename jsonType, typename TransactionType>
-std::optional<jsonType> Database::executeQuery(
-    const std::string& query, const pqxx::params& params)
+std::optional<jsonType> Database::executeQuery(const std::string&  query,
+                                               const pqxx::params& params)
 {
   static_assert(std::is_same_v<jsonType, jsoncons::json> ||
                     std::is_same_v<jsonType, jsoncons::json::array>,
-      "Unsupported jsonType specialization");  // Fail at compile time if a
-                                               // caller passes an unsupported
-                                               // JSON shape.
+                "Unsupported jsonType specialization");  // Fail at compile time
+                                                         // if a caller passes
+                                                         // an unsupported JSON
+                                                         // shape.
 
   try  // Any conversion or SQL error becomes an empty optional below.
   {
@@ -377,12 +388,14 @@ std::optional<jsonType> Database::executeQuery(
                          // by the template argument.
 
       results = txn.exec(pqxx::zview(query),
-          params);  // Run the SQL with the parameters bound separately.
+                         params);  // Run the SQL with the parameters bound
+                                   // separately.
 
       if constexpr (std::is_same_v<TransactionType,
-                        pqxx::work>)  // Only a real transaction needs an
-                                      // explicit commit; this check
-                                      // happens at compile time.
+                                   pqxx::work>)  // Only a real transaction
+                                                 // needs an explicit commit;
+                                                 // this check happens at
+                                                 // compile time.
       {
         txn.commit();  // Make the writes permanent for work
                        // transactions.
@@ -460,9 +473,10 @@ std::optional<jsonType> Database::executeQuery(
         }
       }
       if constexpr (std::is_same_v<jsonType,
-                        jsoncons::json::array>)  // For the array shape,
-                                                 // accumulate every row
-                                                 // at compile time.
+                                   jsoncons::json::array>)  // For the array
+                                                            // shape, accumulate
+                                                            // every row at
+                                                            // compile time.
       {
         reply.push_back(
             std::move(object));  // Transfer this row's object into the
@@ -478,7 +492,7 @@ std::optional<jsonType> Database::executeQuery(
                    // the loop.
   }
   catch (const std::exception&
-          e)  // A SQL or conversion error must not propagate to the caller.
+             e)  // A SQL or conversion error must not propagate to the caller.
   {
     Message::ErrorMessage(
         "Error executing query:");  // Print a short marker first.
@@ -499,8 +513,8 @@ std::optional<jsonType> Database::executeQuery(
  * value, or `std::nullopt` on empty result or any caught exception.
  */
 template <typename T>
-std::optional<T> Database::doSimpleQuery(
-    const std::string& query, const pqxx::params& params)
+std::optional<T> Database::doSimpleQuery(const std::string&  query,
+                                         const pqxx::params& params)
 {
   try  // Guard against SQL and conversion errors.
   {
@@ -511,7 +525,7 @@ std::optional<T> Database::doSimpleQuery(
           *connection);  // A simple lookup needs no transaction.
 
       result = txn.exec(pqxx::zview(query),
-          params);  // Run the query with bound parameters.
+                        params);  // Run the query with bound parameters.
     }
 
     return result.empty()

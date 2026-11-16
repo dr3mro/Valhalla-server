@@ -126,7 +126,7 @@ static Result capture(auto fn)  // Converts a callback-style call into a return
 
 // A broken body is rejected during parsing on the non-Patient Create path.
 TEST_CASE("ClinicController<Health>::Create rejects malformed JSON",
-    "[controllers][clinic]")
+          "[controllers][clinic]")
 {
   ClinicController<Health>
        ctrl;  // A controller instantiated for the Health clinic type.
@@ -151,7 +151,7 @@ TEST_CASE("ClinicController<Health>::Create rejects malformed JSON",
 // Reports is another non-Patient type; its Create must reject bad JSON the same
 // way.
 TEST_CASE("ClinicController<Reports>::Create rejects malformed JSON",
-    "[controllers][clinic]")
+          "[controllers][clinic]")
 {
   ClinicController<Reports> ctrl;  // A controller instantiated for Reports.
   auto                      r = capture(
@@ -205,14 +205,15 @@ TEST_CASE(
 // Health does not support Delete; the controller says so with 400 and a clear
 // message.
 TEST_CASE("ClinicController<Health>::Delete returns 400 not-implemented",
-    "[controllers][clinic]")
+          "[controllers][clinic]")
 {
   ClinicController<Health> ctrl;  // A controller instantiated for Health.
   auto                     r = capture(
       [&](auto cb)
       {
-        ctrl.Delete(std::move(cb), Requester(1, "providers"),
-            std::optional<uint64_t>{5});
+        ctrl.Delete(std::move(cb),
+                    Requester(1, "providers"),
+                    std::optional<uint64_t>{5});
       });  // A real-looking id; the type, not the id, decides the answer.
   CHECK(r.status == api::v2::Http::Status::BAD_REQUEST);  // Proves unsupported
                                                           // Delete returns 400.
@@ -223,14 +224,15 @@ TEST_CASE("ClinicController<Health>::Delete returns 400 not-implemented",
 
 // Reports likewise refuses Delete.
 TEST_CASE("ClinicController<Reports>::Delete returns 400 not-implemented",
-    "[controllers][clinic]")
+          "[controllers][clinic]")
 {
   ClinicController<Reports> ctrl;  // A controller instantiated for Reports.
   auto                      r = capture(
       [&](auto cb)
       {
-        ctrl.Delete(std::move(cb), Requester(1, "providers"),
-            std::optional<uint64_t>{5});
+        ctrl.Delete(std::move(cb),
+                    Requester(1, "providers"),
+                    std::optional<uint64_t>{5});
       });  // Attempt a delete.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves Reports follows the
@@ -239,15 +241,16 @@ TEST_CASE("ClinicController<Reports>::Delete returns 400 not-implemented",
 
 // Prescriptions likewise refuses Delete.
 TEST_CASE("ClinicController<Prescriptions>::Delete returns 400 not-implemented",
-    "[controllers][clinic]")
+          "[controllers][clinic]")
 {
   ClinicController<Prescriptions>
        ctrl;  // A controller instantiated for Prescriptions.
   auto r = capture(
       [&](auto cb)
       {
-        ctrl.Delete(std::move(cb), Requester(1, "providers"),
-            std::optional<uint64_t>{1});
+        ctrl.Delete(std::move(cb),
+                    Requester(1, "providers"),
+                    std::optional<uint64_t>{1});
       });  // Attempt a delete.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves this clinic type also
@@ -258,7 +261,7 @@ TEST_CASE("ClinicController<Prescriptions>::Delete returns 400 not-implemented",
 
 // Patient Delete delegates; with no id the shared guard still returns 406.
 TEST_CASE("ClinicController<Patient>::Delete with no id → 406 (entity path)",
-    "[controllers][clinic]")
+          "[controllers][clinic]")
 {
   ClinicController<Patient> ctrl;  // A controller instantiated for Patient.
   auto                      r = capture(
@@ -273,7 +276,7 @@ TEST_CASE("ClinicController<Patient>::Delete with no id → 406 (entity path)",
 
 // Visits Delete delegates the same way.
 TEST_CASE("ClinicController<Visits>::Delete with no id → 406 (entity path)",
-    "[controllers][clinic]")
+          "[controllers][clinic]")
 {
   ClinicController<Visits> ctrl;  // A controller instantiated for Visits.
   auto                     r = capture(
@@ -291,14 +294,15 @@ TEST_CASE("ClinicController<Visits>::Delete with no id → 406 (entity path)",
 // Health does not support Search; even a well-formed query is refused with a
 // message.
 TEST_CASE("ClinicController<Health>::Search returns 400 not-implemented",
-    "[controllers][clinic]")
+          "[controllers][clinic]")
 {
   ClinicController<Health> ctrl;  // A controller instantiated for Health.
   auto                     r = capture(
       [&](auto cb)
       {
-        ctrl.Search(
-            std::move(cb), Requester(1, "providers"), R"({"keyword":"flu"})");
+        ctrl.Search(std::move(cb),
+                    Requester(1, "providers"),
+                    R"({"keyword":"flu"})");
       });  // Parsable JSON, but the operation is unsupported for this type.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves Search is refused on
@@ -310,14 +314,15 @@ TEST_CASE("ClinicController<Health>::Search returns 400 not-implemented",
 
 // Visits also refuses Search on the non-Patient branch.
 TEST_CASE("ClinicController<Visits>::Search returns 400 not-implemented",
-    "[controllers][clinic]")
+          "[controllers][clinic]")
 {
   ClinicController<Visits> ctrl;  // A controller instantiated for Visits.
   auto                     r = capture(
       [&](auto cb)
       {
-        ctrl.Search(
-            std::move(cb), Requester(1, "providers"), R"({"keyword":"visit"})");
+        ctrl.Search(std::move(cb),
+                    Requester(1, "providers"),
+                    R"({"keyword":"visit"})");
       });  // Attempt a search.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves the not-implemented
@@ -328,7 +333,7 @@ TEST_CASE("ClinicController<Visits>::Search returns 400 not-implemented",
 
 // Patient Search delegates, so malformed JSON is still rejected.
 TEST_CASE("ClinicController<Patient>::Search rejects malformed JSON",
-    "[controllers][clinic]")
+          "[controllers][clinic]")
 {
   ClinicController<Patient> ctrl;  // A controller instantiated for Patient.
   auto                      r = capture(
@@ -343,7 +348,7 @@ TEST_CASE("ClinicController<Patient>::Search rejects malformed JSON",
 
 // Patient Search also rejects JSON that parses but lacks search fields.
 TEST_CASE("ClinicController<Patient>::Search with missing fields → 406",
-    "[controllers][clinic]")
+          "[controllers][clinic]")
 {
   ClinicController<Patient> ctrl;  // A controller instantiated for Patient.
   auto                      r = capture(
@@ -360,32 +365,34 @@ TEST_CASE("ClinicController<Patient>::Search with missing fields → 406",
 
 // Health does not support GetVisits; it answers 400 with an explanation.
 TEST_CASE("ClinicController<Health>::GetVisits returns 400 not-implemented",
-    "[controllers][clinic]")
+          "[controllers][clinic]")
 {
   ClinicController<Health> ctrl;  // A controller instantiated for Health.
   auto                     r = capture(
       [&](auto cb)
       {
-        ctrl.GetVisits(std::move(cb), Requester(1, "providers"),
-            std::optional<uint64_t>{5});
+        ctrl.GetVisits(std::move(cb),
+                       Requester(1, "providers"),
+                       std::optional<uint64_t>{5});
       });  // A patient id, but the type is unsupported.
-  CHECK(
-      r.status == api::v2::Http::Status::BAD_REQUEST);  // Proves GetVisits is
-                                                        // refused on this type.
+  CHECK(r.status ==
+        api::v2::Http::Status::BAD_REQUEST);  // Proves GetVisits is
+                                              // refused on this type.
   CHECK(r.body.find("NOT implemented") !=
         std::string::npos);  // Proves the body says why.
 }
 
 // Visits likewise refuses GetVisits.
 TEST_CASE("ClinicController<Visits>::GetVisits returns 400 not-implemented",
-    "[controllers][clinic]")
+          "[controllers][clinic]")
 {
   ClinicController<Visits> ctrl;  // A controller instantiated for Visits.
   auto                     r = capture(
       [&](auto cb)
       {
-        ctrl.GetVisits(std::move(cb), Requester(1, "providers"),
-            std::optional<uint64_t>{5});
+        ctrl.GetVisits(std::move(cb),
+                       Requester(1, "providers"),
+                       std::optional<uint64_t>{5});
       });  // Attempt GetVisits.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves the not-implemented
@@ -397,7 +404,7 @@ TEST_CASE("ClinicController<Visits>::GetVisits returns 400 not-implemented",
 // Patient GetVisits needs a patient id; with none it fails before any
 // permission check.
 TEST_CASE("ClinicController<Patient>::GetVisits with no id → 400",
-    "[controllers][clinic]")
+          "[controllers][clinic]")
 {
   ClinicController<Patient> ctrl;  // A controller instantiated for Patient.
   auto                      r = capture(
@@ -418,11 +425,12 @@ TEST_CASE(
 {
   ClinicController<Patient> ctrl;  // A controller instantiated for Patient.
   // requester id=99 ≠ patient_id=5 → canRead fails (group/id mismatch)
-  auto                      r = capture(
+  auto r = capture(
       [&](auto cb)
       {
-        ctrl.GetVisits(
-            std::move(cb), Requester(99, "users"), std::optional<uint64_t>{5});
+        ctrl.GetVisits(std::move(cb),
+                       Requester(99, "users"),
+                       std::optional<uint64_t>{5});
       });  // Caller 99 tries to read patient 5's visits.
   CHECK(r.status ==
         api::v2::Http::Status::FORBIDDEN);  // Proves the read-permission
@@ -433,7 +441,7 @@ TEST_CASE(
 
 // Read is inherited from EntityController; bad JSON is refused.
 TEST_CASE("ClinicController<Health>::Read rejects malformed JSON",
-    "[controllers][clinic]")
+          "[controllers][clinic]")
 {
   ClinicController<Health> ctrl;  // A controller instantiated for Health.
   auto                     r = capture(
@@ -441,21 +449,23 @@ TEST_CASE("ClinicController<Health>::Read rejects malformed JSON",
       {
         ctrl.Read(std::move(cb), Requester(1, "providers"), "bad{");
       });  // Invalid JSON body.
-  CHECK(
-      r.status == api::v2::Http::Status::BAD_REQUEST);  // Proves the delegated
-                                                        // Read still validates.
+  CHECK(r.status ==
+        api::v2::Http::Status::BAD_REQUEST);  // Proves the delegated
+                                              // Read still validates.
 }
 
 // Update needs an id; without one it fails even for a fully supported type.
 TEST_CASE("ClinicController<Patient>::Update with no id → 400",
-    "[controllers][clinic]")
+          "[controllers][clinic]")
 {
   ClinicController<Patient> ctrl;  // A controller instantiated for Patient.
   auto                      r = capture(
       [&](auto cb)
       {
-        ctrl.Update(std::move(cb), Requester(1, "providers"), R"({"name":"x"})",
-            std::nullopt);
+        ctrl.Update(std::move(cb),
+                    Requester(1, "providers"),
+                    R"({"name":"x"})",
+                    std::nullopt);
       });  // Valid JSON but no id argument.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves the missing-id guard

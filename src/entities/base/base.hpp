@@ -187,8 +187,8 @@ class Base
       params.append(value);  // Store the real value separately from the
                              // SQL text (safe binding).
       return fmt::format("${}",
-          ++index);  // Bump the counter first, then return $1,
-                     // $2, ... in that order.
+                         ++index);  // Bump the counter first, then return $1,
+                                    // $2, ... in that order.
     }
 
    private:

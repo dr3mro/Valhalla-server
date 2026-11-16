@@ -163,8 +163,8 @@ class DOSDetector
     for (const auto& kv : headers)  // Visit every header in the collection.
     {
       h ^= XXH3_64bits(kv.second.data(),
-          kv.second.size());  // Hash only the value (kv.second) and fold
-                              // it in with XOR.
+                       kv.second.size());  // Hash only the value (kv.second)
+                                           // and fold it in with XOR.
     }
     return h;  // The combined fingerprint (zero if there were no headers).
   }
@@ -255,9 +255,10 @@ class DOSDetector
 
   //                     // IP                       // Hash of Request //
   //                     times of requests
-  std::unordered_map<std::string,
+  std::unordered_map<
+      std::string,
       std::unordered_map<std::string,
-          std::deque<std::chrono::steady_clock::time_point>>>
+                         std::deque<std::chrono::steady_clock::time_point>>>
       requests_; /**< Per-IP, per-fingerprint arrival timestamps. Nested: IP
                     -> fingerprint -> queue of arrival times. */
   std::unordered_map<std::string, std::chrono::steady_clock::time_point>
@@ -279,8 +280,8 @@ class DOSDetector
   std::mutex request_mutex_; /**< Guards requests_. Request threads must lock
                                 this before touching the timestamp maps. */
   std::mutex
-             ratelimit_mutex_; /**< Guards ratelimited_ips_. Separate lock so
-                                  checking bans need not wait on request counting. */
+      ratelimit_mutex_;  /**< Guards ratelimited_ips_. Separate lock so
+                            checking bans need not wait on request counting. */
   std::mutex ban_mutex_; /**< Guards banned_ips_. Separate lock for the same
                             reason. */
   // (no mutexes: matchers are compiled once at construction and then
@@ -306,7 +307,8 @@ class DOSDetector
    * @return Hex digest string, or std::nullopt if hashing throws.
    */
   inline std::optional<std::string> __attribute((always_inline))
-  generateRequestFingerprint(const DOSDetector::Request&
+  generateRequestFingerprint(
+      const DOSDetector::Request&
           request);  // A string lets the fingerprint be used as a map key.
   /** @brief True if any whitelist matcher matches @p remote_ip. */
   inline bool __attribute((always_inline)) isWhitelisted(
@@ -335,7 +337,8 @@ class DOSDetector
    */
   template <typename Map, typename Mutex>
   inline bool __attribute((always_inline)) checkStatus(
-      const std::string& remote_ip, Map& ip_map,
+      const std::string& remote_ip,
+      Map&               ip_map,
       Mutex& mtx);  // Works for both ban and rate-limit maps; the mutex type
                     // is a template parameter.
 

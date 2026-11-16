@@ -97,17 +97,18 @@ namespace api::v2  // All API version-2 code lives in this namespace.
     // their own record.
     template <
         Client_t T>  // Restricts this overload to client types (User/Provider).
-    bool canCreate(const Requester&          requester,
-        const std::optional<jsoncons::json>& data_j,
-        Http::Error& error);  // Synchronous create check; true when the
-                              // action is allowed.
+    bool canCreate(const Requester&                     requester,
+                   const std::optional<jsoncons::json>& data_j,
+                   Http::Error& error);  // Synchronous create check; true when
+                                         // the action is allowed.
 
     /** @brief Coroutine form of canCreate() for clients; always returns
      * `true`. */
     template <
         Client_t T>  // Restricts this overload to client types (User/Provider).
-    drogon::Task<bool> canCreateAsync(const Requester& requester,
-        const std::optional<jsoncons::json>&           data_j,
+    drogon::Task<bool> canCreateAsync(
+        const Requester&                     requester,
+        const std::optional<jsoncons::json>& data_j,
         Http::Error& error);  // Coroutine create check; co_await it from an
                               // async route.
 
@@ -122,15 +123,18 @@ namespace api::v2  // All API version-2 code lives in this namespace.
      */
     template <
         Client_t T>  // Restricts this overload to client types (User/Provider).
-    bool canRead(const Requester& requester, uint64_t client_id,
-        Http::Error& error);  // Synchronous read check for a client record.
+    bool canRead(
+        const Requester& requester,
+        uint64_t         client_id,
+        Http::Error&     error);  // Synchronous read check for a client record.
 
     /** @brief Coroutine form of canRead() for clients. */
     template <
         Client_t T>  // Restricts this overload to client types (User/Provider).
-    drogon::Task<bool> canReadAsync(const Requester& requester,
-        uint64_t                                     client_id,
-        Http::Error& error);  // Coroutine read check for a client record.
+    drogon::Task<bool> canReadAsync(
+        const Requester& requester,
+        uint64_t         client_id,
+        Http::Error&     error);  // Coroutine read check for a client record.
 
     /**
      * @brief Allows updating a client only if requester group and id match
@@ -143,15 +147,18 @@ namespace api::v2  // All API version-2 code lives in this namespace.
      */
     template <
         Client_t T>  // Restricts this overload to client types (User/Provider).
-    bool canUpdate(const Requester& requester, uint64_t client_id,
+    bool canUpdate(
+        const Requester& requester,
+        uint64_t         client_id,
         Http::Error& error);  // Synchronous update check for a client record.
 
     /** @brief Coroutine form of canUpdate() for clients. */
     template <
         Client_t T>  // Restricts this overload to client types (User/Provider).
-    drogon::Task<bool> canUpdateAsync(const Requester& requester,
-        uint64_t                                       client_id,
-        Http::Error& error);  // Coroutine update check for a client record.
+    drogon::Task<bool> canUpdateAsync(
+        const Requester& requester,
+        uint64_t         client_id,
+        Http::Error&     error);  // Coroutine update check for a client record.
 
     /**
      * @brief Allows deleting a client only if requester group and id match
@@ -164,15 +171,18 @@ namespace api::v2  // All API version-2 code lives in this namespace.
      */
     template <
         Client_t T>  // Restricts this overload to client types (User/Provider).
-    bool canDelete(const Requester& requester, uint64_t client_id,
+    bool canDelete(
+        const Requester& requester,
+        uint64_t         client_id,
         Http::Error& error);  // Synchronous delete check for a client record.
 
     /** @brief Coroutine form of canDelete() for clients. */
     template <
         Client_t T>  // Restricts this overload to client types (User/Provider).
-    drogon::Task<bool> canDeleteAsync(const Requester& requester,
-        uint64_t                                       client_id,
-        Http::Error& error);  // Coroutine delete check for a client record.
+    drogon::Task<bool> canDeleteAsync(
+        const Requester& requester,
+        uint64_t         client_id,
+        Http::Error&     error);  // Coroutine delete check for a client record.
 
     /**
      * @brief Allows toggling a client's active flag only on a matching
@@ -185,15 +195,17 @@ namespace api::v2  // All API version-2 code lives in this namespace.
      */
     template <
         Client_t T>  // Restricts this overload to client types (User/Provider).
-    bool canToggleActive(const Requester& requester, uint64_t client_id,
-        Http::Error& error);  // Synchronous check for changing a client's
-                              // active flag.
+    bool canToggleActive(const Requester& requester,
+                         uint64_t         client_id,
+                         Http::Error& error);  // Synchronous check for changing
+                                               // a client's active flag.
 
     /** @brief Coroutine form of canToggleActive() for clients. */
     template <
         Client_t T>  // Restricts this overload to client types (User/Provider).
-    drogon::Task<bool> canToggleActiveAsync(const Requester& requester,
-        uint64_t                                             client_id,
+    drogon::Task<bool> canToggleActiveAsync(
+        const Requester& requester,
+        uint64_t         client_id,
         Http::Error&
             error);  // Coroutine check for changing a client's active flag.
 
@@ -208,15 +220,17 @@ namespace api::v2  // All API version-2 code lives in this namespace.
      */
     template <
         Client_t T>  // Restricts this overload to client types (User/Provider).
-    bool canGetServices(const Requester& requester, uint64_t client_id,
-        Http::Error&
-            error);  // Synchronous check for listing a client's services.
+    bool canGetServices(const Requester& requester,
+                        uint64_t         client_id,
+                        Http::Error& error);  // Synchronous check for listing a
+                                              // client's services.
 
     /** @brief Coroutine form of canGetServices() for clients. */
     template <
         Client_t T>  // Restricts this overload to client types (User/Provider).
-    drogon::Task<bool> canGetServicesAsync(const Requester& requester,
-        uint64_t                                            client_id,
+    drogon::Task<bool> canGetServicesAsync(
+        const Requester& requester,
+        uint64_t         client_id,
         Http::Error&
             error);  // Coroutine check for listing a client's services.
 
@@ -235,17 +249,18 @@ namespace api::v2  // All API version-2 code lives in this namespace.
      */
     template <Service_t T>  // Restricts this overload to service types
                             // (clinic/pharmacy/lab/radiology).
-    bool canCreate(const Requester&          requester,
-        const std::optional<jsoncons::json>& service_j,
-        Http::Error& error);  // Synchronous create check;
-                              // the payload identifies
-                              // the target service.
+    bool canCreate(const Requester&                     requester,
+                   const std::optional<jsoncons::json>& service_j,
+                   Http::Error& error);  // Synchronous create check;
+                                         // the payload identifies
+                                         // the target service.
 
     /** @brief Coroutine form of canCreate() for services. */
     template <Service_t T>  // Restricts this overload to service types
                             // (clinic/pharmacy/lab/radiology).
-    drogon::Task<bool> canCreateAsync(const Requester& requester,
-        const std::optional<jsoncons::json>&           service_j,
+    drogon::Task<bool> canCreateAsync(
+        const Requester&                     requester,
+        const std::optional<jsoncons::json>& service_j,
         Http::Error& error);  // Coroutine create check using
                               // the service payload.
 
@@ -260,17 +275,19 @@ namespace api::v2  // All API version-2 code lives in this namespace.
      */
     template <Service_t T>  // Restricts this overload to service types
                             // (clinic/pharmacy/lab/radiology).
-    bool canRead(const Requester& requester, uint64_t service_id,
-        Http::Error& error);  // Synchronous read check for a
-                              // service or appointment.
+    bool canRead(const Requester& requester,
+                 uint64_t         service_id,
+                 Http::Error&     error);  // Synchronous read check for a
+                                           // service or appointment.
 
     /** @brief Coroutine form of canRead() for services. */
     template <Service_t T>  // Restricts this overload to service types
                             // (clinic/pharmacy/lab/radiology).
-    drogon::Task<bool> canReadAsync(const Requester& requester,
-        uint64_t                                     service_id,
-        Http::Error& error);  // Coroutine read check for a
-                              // service or appointment.
+    drogon::Task<bool> canReadAsync(
+        const Requester& requester,
+        uint64_t         service_id,
+        Http::Error&     error);  // Coroutine read check for a
+                                  // service or appointment.
 
     /**
      * @brief Allows service updates for the owner, admin, or staff with the
@@ -283,17 +300,19 @@ namespace api::v2  // All API version-2 code lives in this namespace.
      */
     template <Service_t T>  // Restricts this overload to service types
                             // (clinic/pharmacy/lab/radiology).
-    bool canUpdate(const Requester& requester, uint64_t service_id,
-        Http::Error& error);  // Synchronous update check for
-                              // a service or appointment.
+    bool canUpdate(const Requester& requester,
+                   uint64_t         service_id,
+                   Http::Error&     error);  // Synchronous update check for
+                                             // a service or appointment.
 
     /** @brief Coroutine form of canUpdate() for services. */
     template <Service_t T>  // Restricts this overload to service types
                             // (clinic/pharmacy/lab/radiology).
-    drogon::Task<bool> canUpdateAsync(const Requester& requester,
-        uint64_t                                       service_id,
-        Http::Error& error);  // Coroutine update check for a
-                              // service or appointment.
+    drogon::Task<bool> canUpdateAsync(
+        const Requester& requester,
+        uint64_t         service_id,
+        Http::Error&     error);  // Coroutine update check for a
+                                  // service or appointment.
 
     /**
      * @brief Allows service deletion for the owner only.
@@ -305,17 +324,19 @@ namespace api::v2  // All API version-2 code lives in this namespace.
      */
     template <Service_t T>  // Restricts this overload to service types
                             // (clinic/pharmacy/lab/radiology).
-    bool canDelete(const Requester& requester, uint64_t service_id,
-        Http::Error& error);  // Synchronous delete check for
-                              // a service.
+    bool canDelete(const Requester& requester,
+                   uint64_t         service_id,
+                   Http::Error&     error);  // Synchronous delete check for
+                                             // a service.
 
     /** @brief Coroutine form of canDelete() for services. */
     template <Service_t T>  // Restricts this overload to service types
                             // (clinic/pharmacy/lab/radiology).
-    drogon::Task<bool> canDeleteAsync(const Requester& requester,
-        uint64_t                                       service_id,
-        Http::Error& error);  // Coroutine delete check for a
-                              // service.
+    drogon::Task<bool> canDeleteAsync(
+        const Requester& requester,
+        uint64_t         service_id,
+        Http::Error&     error);  // Coroutine delete check for a
+                                  // service.
 
     /**
      * @brief Allows staff management for the service owner or admin only.
@@ -328,17 +349,19 @@ namespace api::v2  // All API version-2 code lives in this namespace.
      */
     template <typename T>  // Generic overload; T must provide the
                            // table/query helpers used inside.
-    bool canManageStaff(const Requester& requester, uint64_t service_id,
-        Http::Error& error);  // Synchronous check; only
-                              // owner/admin may manage staff.
+    bool canManageStaff(const Requester& requester,
+                        uint64_t         service_id,
+                        Http::Error& error);  // Synchronous check; only
+                                              // owner/admin may manage staff.
 
     /** @brief Coroutine form of canManageStaff(). */
     template <typename T>  // Generic overload; T must provide the
                            // table/query helpers used inside.
-    drogon::Task<bool> canManageStaffAsync(const Requester& requester,
-        uint64_t                                            service_id,
-        Http::Error& error);  // Coroutine form of the
-                              // staff-management check.
+    drogon::Task<bool> canManageStaffAsync(
+        const Requester& requester,
+        uint64_t         service_id,
+        Http::Error&     error);  // Coroutine form of the
+                                  // staff-management check.
 
     // case is a data set inside clinic workflow: permission comes from the
     // parent service.
@@ -355,15 +378,16 @@ namespace api::v2  // All API version-2 code lives in this namespace.
      * @return True when the requester holds sufficient permission.
      */
     template <Case_t T>  // Restricts this overload to case data types.
-    bool canCreate(const Requester&          requester,
-        const std::optional<jsoncons::json>& data_j,
-        Http::Error& error);  // Synchronous create check; true when the
-                              // action is allowed.
+    bool canCreate(const Requester&                     requester,
+                   const std::optional<jsoncons::json>& data_j,
+                   Http::Error& error);  // Synchronous create check; true when
+                                         // the action is allowed.
 
     /** @brief Coroutine form of canCreate() for cases. */
     template <Case_t T>  // Restricts this overload to case data types.
-    drogon::Task<bool> canCreateAsync(const Requester& requester,
-        const std::optional<jsoncons::json>&           data_j,
+    drogon::Task<bool> canCreateAsync(
+        const Requester&                     requester,
+        const std::optional<jsoncons::json>& data_j,
         Http::Error& error);  // Coroutine create check; co_await it from an
                               // async route.
 
@@ -377,14 +401,16 @@ namespace api::v2  // All API version-2 code lives in this namespace.
      * @return True when the requester holds sufficient permission.
      */
     template <Case_t T>  // Restricts this overload to case data types.
-    bool canRead(const Requester& requester, uint64_t case_id,
-        Http::Error& error);  // Synchronous read check for a case.
+    bool canRead(const Requester& requester,
+                 uint64_t         case_id,
+                 Http::Error&     error);  // Synchronous read check for a case.
 
     /** @brief Coroutine form of canRead() for cases. */
     template <Case_t T>  // Restricts this overload to case data types.
-    drogon::Task<bool> canReadAsync(const Requester& requester,
-        uint64_t                                     case_id,
-        Http::Error& error);  // Coroutine read check for a case.
+    drogon::Task<bool> canReadAsync(
+        const Requester& requester,
+        uint64_t         case_id,
+        Http::Error&     error);  // Coroutine read check for a case.
 
     /**
      * @brief Allows updating a case for owner/admin or staff with the
@@ -396,14 +422,16 @@ namespace api::v2  // All API version-2 code lives in this namespace.
      * @return True when the requester holds sufficient permission.
      */
     template <Case_t T>  // Restricts this overload to case data types.
-    bool canUpdate(const Requester& requester, uint64_t case_id,
-        Http::Error& error);  // Synchronous update check for a case.
+    bool canUpdate(const Requester& requester,
+                   uint64_t         case_id,
+                   Http::Error& error);  // Synchronous update check for a case.
 
     /** @brief Coroutine form of canUpdate() for cases. */
     template <Case_t T>  // Restricts this overload to case data types.
-    drogon::Task<bool> canUpdateAsync(const Requester& requester,
-        uint64_t                                       case_id,
-        Http::Error& error);  // Coroutine update check for a case.
+    drogon::Task<bool> canUpdateAsync(
+        const Requester& requester,
+        uint64_t         case_id,
+        Http::Error&     error);  // Coroutine update check for a case.
 
     /**
      * @brief Allows deleting a case for owner/admin or staff with the
@@ -415,13 +443,16 @@ namespace api::v2  // All API version-2 code lives in this namespace.
      * @return True when the requester holds sufficient permission.
      */
     template <Case_t T>  // Restricts this overload to case data types.
-    bool canDelete(const Requester& requester, uint64_t _id,
-        Http::Error& error);  // Synchronous delete check; _id is the target
-                              // entity id.
+    bool canDelete(const Requester& requester,
+                   uint64_t         _id,
+                   Http::Error& error);  // Synchronous delete check; _id is the
+                                         // target entity id.
 
     /** @brief Coroutine form of canDelete() for cases. */
     template <Case_t T>  // Restricts this overload to case data types.
-    drogon::Task<bool> canDeleteAsync(const Requester& requester, uint64_t _id,
+    drogon::Task<bool> canDeleteAsync(
+        const Requester& requester,
+        uint64_t         _id,
         Http::Error&
             error);  // Coroutine delete check; _id is the target entity id.
 
@@ -441,15 +472,17 @@ namespace api::v2  // All API version-2 code lives in this namespace.
      * @return True when the requester holds sufficient permission.
      */
     template <Appointment_t T>  // Restricts this overload to appointment types.
-    bool canCreate(const Requester&          requester,
+    bool canCreate(
+        const Requester&                     requester,
         const std::optional<jsoncons::json>& service_j,
         Http::Error& error);  // Synchronous create check; the payload
                               // identifies the target service.
 
     /** @brief Coroutine form of canCreate() for appointments. */
     template <Appointment_t T>  // Restricts this overload to appointment types.
-    drogon::Task<bool> canCreateAsync(const Requester& requester,
-        const std::optional<jsoncons::json>&           service_j,
+    drogon::Task<bool> canCreateAsync(
+        const Requester&                     requester,
+        const std::optional<jsoncons::json>& service_j,
         Http::Error&
             error);  // Coroutine create check using the service payload.
 
@@ -463,14 +496,16 @@ namespace api::v2  // All API version-2 code lives in this namespace.
      * @return True when the requester holds sufficient permission.
      */
     template <Appointment_t T>  // Restricts this overload to appointment types.
-    bool canRead(const Requester& requester, uint64_t service_id,
-        Http::Error&
-            error);  // Synchronous read check for a service or appointment.
+    bool canRead(const Requester& requester,
+                 uint64_t         service_id,
+                 Http::Error& error);  // Synchronous read check for a service
+                                       // or appointment.
 
     /** @brief Coroutine form of canRead() for appointments. */
     template <Appointment_t T>  // Restricts this overload to appointment types.
-    drogon::Task<bool> canReadAsync(const Requester& requester,
-        uint64_t                                     service_id,
+    drogon::Task<bool> canReadAsync(
+        const Requester& requester,
+        uint64_t         service_id,
         Http::Error&
             error);  // Coroutine read check for a service or appointment.
 
@@ -484,14 +519,16 @@ namespace api::v2  // All API version-2 code lives in this namespace.
      * @return True when the requester holds sufficient permission.
      */
     template <Appointment_t T>  // Restricts this overload to appointment types.
-    bool canUpdate(const Requester& requester, uint64_t service_id,
-        Http::Error& error);  // Synchronous update check for a service or
-                              // appointment.
+    bool canUpdate(const Requester& requester,
+                   uint64_t         service_id,
+                   Http::Error&     error);  // Synchronous update check for a
+                                             // service or appointment.
 
     /** @brief Coroutine form of canUpdate() for appointments. */
     template <Appointment_t T>  // Restricts this overload to appointment types.
-    drogon::Task<bool> canUpdateAsync(const Requester& requester,
-        uint64_t                                       service_id,
+    drogon::Task<bool> canUpdateAsync(
+        const Requester& requester,
+        uint64_t         service_id,
         Http::Error&
             error);  // Coroutine update check for a service or appointment.
 
@@ -505,13 +542,16 @@ namespace api::v2  // All API version-2 code lives in this namespace.
      * @return True when the requester holds sufficient permission.
      */
     template <Appointment_t T>  // Restricts this overload to appointment types.
-    bool canDelete(const Requester& requester, uint64_t _id,
-        Http::Error& error);  // Synchronous delete check; _id is the target
-                              // entity id.
+    bool canDelete(const Requester& requester,
+                   uint64_t         _id,
+                   Http::Error& error);  // Synchronous delete check; _id is the
+                                         // target entity id.
 
     /** @brief Coroutine form of canDelete() for appointments. */
     template <Appointment_t T>  // Restricts this overload to appointment types.
-    drogon::Task<bool> canDeleteAsync(const Requester& requester, uint64_t _id,
+    drogon::Task<bool> canDeleteAsync(
+        const Requester& requester,
+        uint64_t         _id,
         Http::Error&
             error);  // Coroutine delete check; _id is the target entity id.
 

@@ -76,8 +76,8 @@ namespace Defaults  // Groups all fallback constants so callers write
         10000;  // 32-bit unsigned count is ample and cannot be negative;
                 // raised if the env var MAX_REQUESTS is set.
     /** @brief Length (seconds) of the request counting window. */
-    const uint32_t PERIOD_  = 30;  // How many seconds of history are counted
-                                   // toward MAX_REQUESTS_.
+    const uint32_t PERIOD_ = 30;  // How many seconds of history are counted
+                                  // toward MAX_REQUESTS_.
     /** @brief Maximum distinct client fingerprints retained. */
     const uint32_t MAX_FPS_ = 100;  // FPS = fingerprints; caps memory used
                                     // to track unique clients.
@@ -103,12 +103,12 @@ namespace Defaults  // Groups all fallback constants so callers write
      * Default values for Database configuration.
      */
     /** @brief SSL is off by default for local development. */
-    const bool    DB_SSL_   = false;  // bool because SSL is simply on/off;
-                                      // enable it for production traffic.
+    const bool DB_SSL_ = false;  // bool because SSL is simply on/off;
+                                 // enable it for production traffic.
     // Asynchronous database access on the IO loops (Drogon DbClient); false
     // keeps the synchronous pool path.
-    const bool    DB_ASYNC_ = true;  // true means queries run without blocking
-                                     // the server's IO threads.
+    const bool DB_ASYNC_ = true;  // true means queries run without blocking
+                                  // the server's IO threads.
     /** @brief Pool size; zero (when set by an env var) triggers CPU-based
      * auto-sizing. */
     const uint8_t DB_MAX_CONN_ =

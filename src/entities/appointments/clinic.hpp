@@ -80,8 +80,8 @@ class ClinicAppointment
   template <typename T>
   explicit ClinicAppointment(const T& _data)
       : Appointment(_data,
-            TABLENAME)  // "explicit" prevents accidental conversions;
-                        // TABLENAME fixes the table for this class.
+                    TABLENAME)  // "explicit" prevents accidental conversions;
+                                // TABLENAME fixes the table for this class.
   {
   }
 
@@ -97,10 +97,10 @@ class ClinicAppointment
    */
   ClinicAppointment(const ClinicAppointment&) = delete;  // No copy.
   ClinicAppointment(ClinicAppointment&&)      = delete;  // No move.
-  ClinicAppointment& operator=(
-      ClinicAppointment&&) = delete;  // No move assignment.
-  ClinicAppointment& operator=(
-      const ClinicAppointment&) = delete;  // No copy assignment.
+  ClinicAppointment& operator=(ClinicAppointment&&) =
+      delete;  // No move assignment.
+  ClinicAppointment& operator=(const ClinicAppointment&) =
+      delete;  // No copy assignment.
 
   /**
    * @brief Returns the clinic appointment table name.
@@ -135,8 +135,9 @@ class ClinicAppointment
                                       // PermissionManager expects.
   {
     return getServicePermissionsQueryImpl(service_name,
-        service_id);  // Delegate all the work to the shared base
-                      // implementation.
+                                          service_id);  // Delegate all the work
+                                                        // to the shared base
+                                                        // implementation.
   }
 
   /**
@@ -149,8 +150,12 @@ class ClinicAppointment
       std::uint64_t appointment_id)  // Public wrapper for the "find owner of
                                      // this appointment" query.
   {
-    return getPermissionsQueryForReadImpl(ORGNAME, TABLENAME,
-        appointment_id);  // Supply this class's clinic organisation and
-                          // table names to the base.
+    return getPermissionsQueryForReadImpl(ORGNAME,
+                                          TABLENAME,
+                                          appointment_id);  // Supply this
+                                                            // class's clinic
+                                                            // organisation and
+                                                            // table names to
+                                                            // the base.
   }
 };

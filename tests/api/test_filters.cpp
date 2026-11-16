@@ -87,7 +87,9 @@ namespace  // Anonymous namespace keeps the helper private to this file.
     filter.doFilter(    // Run the filter with two callbacks.
         request,        // The prepared request.
         [&rejected](const drogon::HttpResponsePtr& response)
-        { rejected = response; },
+        {
+          rejected = response;
+        },
         [&chainCalled]
         {
           chainCalled = true;
@@ -106,12 +108,13 @@ namespace  // Anonymous namespace keeps the helper private to this file.
 // A missing Authorization header must be rejected before the chain runs, so
 // unauthenticated requests cannot reach protected handlers.
 TEST_CASE("Auth filter rejects a request without an Authorization header",
-    "[api][auth]")  // No header at all.
+          "[api][auth]")  // No header at all.
 {
   bool chainCalled =
       false;  // Tracks whether the filter let the request through.
   const auto response = runFilter(nullptr,
-      chainCalled);  // Run with no preparation, so the header is missing.
+                                  chainCalled);  // Run with no preparation, so
+                                                 // the header is missing.
 
   REQUIRE(response !=
           nullptr);  // A rejection response must exist before we inspect it.
@@ -127,12 +130,15 @@ TEST_CASE("Auth filter rejects a request without an Authorization header",
 // Only Bearer credentials are accepted; other schemes are rejected outright so
 // they can never be mistaken for a valid token.
 TEST_CASE("Auth filter rejects a non-bearer Authorization header",
-    "[api][auth]")  // Uses Basic instead of Bearer.
+          "[api][auth]")  // Uses Basic instead of Bearer.
 {
   bool chainCalled =
       false;  // Tracks whether the filter let the request through.
-  const auto response = runFilter([](const drogon::HttpRequestPtr& request)
-      { request->addHeader("Authorization", "Basic dXNlcjpwYXNz"); },
+  const auto response = runFilter(
+      [](const drogon::HttpRequestPtr& request)
+      {
+        request->addHeader("Authorization", "Basic dXNlcjpwYXNz");
+      },
       chainCalled);  // Add a Basic-auth header.
 
   REQUIRE(response != nullptr);  // A rejection response must exist.
@@ -145,13 +151,16 @@ TEST_CASE("Auth filter rejects a non-bearer Authorization header",
 }
 
 TEST_CASE("Auth filter rejects a bare 'Bearer' prefix without the token",
-    "[api][auth]")  // Header has the scheme but no token.
+          "[api][auth]")  // Header has the scheme but no token.
 {
   // "Bearer" alone is size <= bearerMagic (7) and cannot carry a token.
   bool chainCalled =
       false;  // Tracks whether the filter let the request through.
-  const auto response = runFilter([](const drogon::HttpRequestPtr& request)
-      { request->addHeader("Authorization", "Bearer"); },
+  const auto response = runFilter(
+      [](const drogon::HttpRequestPtr& request)
+      {
+        request->addHeader("Authorization", "Bearer");
+      },
       chainCalled);  // Add only the word "Bearer".
 
   REQUIRE(response != nullptr);  // A rejection response must exist.
@@ -164,12 +173,15 @@ TEST_CASE("Auth filter rejects a bare 'Bearer' prefix without the token",
 // A syntactically Bearer-prefixed but invalid token must still be rejected;
 // presence of the scheme alone is not proof of authentication.
 TEST_CASE("Auth filter rejects a Bearer token that does not verify",
-    "[api][auth]")  // Uses a fake, unverifiable token.
+          "[api][auth]")  // Uses a fake, unverifiable token.
 {
   bool chainCalled =
       false;  // Tracks whether the filter let the request through.
-  const auto response = runFilter([](const drogon::HttpRequestPtr& request)
-      { request->addHeader("Authorization", "Bearer not-a-real-token"); },
+  const auto response = runFilter(
+      [](const drogon::HttpRequestPtr& request)
+      {
+        request->addHeader("Authorization", "Bearer not-a-real-token");
+      },
       chainCalled);  // Add a Bearer token that cannot be validated.
 
   REQUIRE(response != nullptr);  // A rejection response must exist.

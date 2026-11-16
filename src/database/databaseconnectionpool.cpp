@@ -98,7 +98,11 @@ std::shared_ptr<Database> DatabaseConnectionPool::createDatabaseConnection(
                                                      // a libpq-style
                                                      // keyword/value string.
         fmt::format("host={} dbname={} user={} password={} connect_timeout={}",
-            config_.host, config_.name, config_.user, config_.pass, TIMEOUT)
+                    config_.host,
+                    config_.name,
+                    config_.user,
+                    config_.pass,
+                    TIMEOUT)
             .c_str());  // connect_timeout stops a dead server from blocking
                         // a worker forever.
 
@@ -116,11 +120,11 @@ std::shared_ptr<Database> DatabaseConnectionPool::createDatabaseConnection(
                                                  // but not open.
   }
   catch (const std::exception&
-          e)  // Turn any driver exception into a log entry plus nullptr.
+             e)  // Turn any driver exception into a log entry plus nullptr.
   {
     Message::CriticalMessage(
         fmt::format("Failed to create a Database connection: {}",
-            e.what()));  // Include the driver's reason.
+                    e.what()));  // Include the driver's reason.
   }
   return nullptr;  // Signal failure so the caller can retry this slot.
 }
@@ -142,11 +146,11 @@ DatabaseConnectionPool::DatabaseConnectionPool()
   try  // Any setup failure is fatal, so it is funnelled into the exit path
        // below.
   {
-    const Configurator::DatabaseConfig& config =
-        configurator_->get<Configurator::
-                DatabaseConfig>();  // Read the
-                                    // DB_MAX_CONN/acquire-timeout/credential
-                                    // settings once.
+    const Configurator::DatabaseConfig& config = configurator_->get<
+        Configurator::
+            DatabaseConfig>();  // Read the
+                                // DB_MAX_CONN/acquire-timeout/credential
+                                // settings once.
     acquireTimeout_ = std::chrono::milliseconds(
         config.acquire_timeout_ms);  // Cache the timeout so get_connection()
                                      // need not touch configuration later.
@@ -162,12 +166,14 @@ DatabaseConnectionPool::DatabaseConnectionPool()
         server_threads + 1U)  // Need one slot per thread plus one spare for
                               // the watchdog's health checks.
     {
-      Message::WarningMessage(fmt::format(
-          "DB_MAX_CONN ({}) is below SERVER_THREADS + 1 ({}): requests "
-          "may queue for a connection.",
-          config.max_conn,
-          server_threads + 1U));  // Warn early so an operator can raise
-                                  // the pool size before users see 503s.
+      Message::WarningMessage(
+          fmt::format("DB_MAX_CONN ({}) is below SERVER_THREADS + 1 ({}): "
+                      "requests "
+                      "may queue for a connection.",
+                      config.max_conn,
+                      server_threads +
+                          1U));  // Warn early so an operator can raise
+                                 // the pool size before users see 503s.
     }
 
     std::vector<std::future<std::shared_ptr<Database>>>
@@ -177,43 +183,48 @@ DatabaseConnectionPool::DatabaseConnectionPool()
     futures.reserve(config.max_conn);  // Reserve once so push_back does not
                                        // reallocate while tasks are launched.
     for (uint16_t i = 0; i < config.max_conn;
-        ++i)  // One iteration per configured pool slot.
+         ++i)  // One iteration per configured pool slot.
     {
-      futures.push_back(std::async(
-          std::launch::async,  // Start each connection attempt on its own
-                               // thread so all slots open in parallel.
-          [this, config]()
-              -> std::shared_ptr<Database>  // Capture the pool and config
-                                            // by value; the task outlives
-                                            // this loop iteration.
-          {
-            unsigned int retryCount = 0;  // Counts failed attempts for the
-                                          // backoff and the warning message.
-            while (retryCount < MAX_RETRIES)  // Stop after the configured
-                                              // number of attempts.
-            {
-              auto conn =
-                  createDatabaseConnection(config);  // Try once to open and
-                                                     // validate a connection.
-              if (conn)  // A non-null pointer means the slot is
-                         // ready.
-              {
-                return conn;  // Hand the finished connection back
-                              // to the constructor.
-              }
-              std::this_thread::sleep_for(std::chrono::seconds(
-                  1U << retryCount));  // Exponential backoff: 1s, 2s,
-                                       // 4s... gives the DB time to
-                                       // become ready.
-              Message::WarningMessage(
-                  fmt::format("Failed to create a database connection. Attempt "
-                              "{}/{}...",
-                      ++retryCount,
-                      MAX_RETRIES));  // Log the attempt number, then
-                                      // loop.
-            }
-            return nullptr;  // All attempts failed for this slot.
-          }));
+      futures.push_back(
+          std::async(std::launch::async,  // Start each connection attempt on
+                                          // its own thread so all slots open in
+                                          // parallel.
+                     [this, config]()
+                         -> std::shared_ptr<Database>  // Capture the pool and
+                                                       // config by value; the
+                                                       // task outlives this
+                                                       // loop iteration.
+                     {
+                       unsigned int retryCount =
+                           0;  // Counts failed attempts for the
+                               // backoff and the warning message.
+                       while (retryCount <
+                              MAX_RETRIES)  // Stop after the configured
+                                            // number of attempts.
+                       {
+                         auto conn = createDatabaseConnection(
+                             config);  // Try once to open and
+                                       // validate a connection.
+                         if (conn)     // A non-null pointer means the slot is
+                                       // ready.
+                         {
+                           return conn;  // Hand the finished connection back
+                                         // to the constructor.
+                         }
+                         std::this_thread::sleep_for(std::chrono::seconds(
+                             1U << retryCount));  // Exponential backoff: 1s,
+                                                  // 2s, 4s... gives the DB time
+                                                  // to become ready.
+                         Message::WarningMessage(
+                             fmt::format("Failed to create a database "
+                                         "connection. Attempt "
+                                         "{}/{}...",
+                                         ++retryCount,
+                                         MAX_RETRIES));  // Log the attempt
+                                                         // number, then loop.
+                       }
+                       return nullptr;  // All attempts failed for this slot.
+                     }));
     }
 
     // Wait for all futures
@@ -226,9 +237,10 @@ DatabaseConnectionPool::DatabaseConnectionPool()
         pool_.release(conn);  // Put the new connection into the idle
                               // set so it can be leased at once.
         Message::InitMessage(
-            fmt::format("Connection {}/{} created successfully.", pool_.idle(),
-                config.max_conn));  // Report progress using the number now
-                                    // idle.
+            fmt::format("Connection {}/{} created successfully.",
+                        pool_.idle(),
+                        config.max_conn));  // Report progress using the number
+                                            // now idle.
       }
       else
       {
@@ -242,13 +254,13 @@ DatabaseConnectionPool::DatabaseConnectionPool()
     }
   }
   catch (const std::exception&
-          e)  // Catch the runtime_error above (or any other setup failure).
+             e)  // Catch the runtime_error above (or any other setup failure).
   {
     std::string what = e.what();  // Copy the error text so it can be
                                   // formatted into the log messages.
     Message::CriticalMessage(
         fmt::format("Failed to initialize database connection pool: {}",
-            what));  // Log the detailed reason.
+                    what));  // Log the detailed reason.
     Message::ErrorMessage(
         "Fatal Error!\nExiting...");  // Tell the operator this is not
                                       // recoverable.
@@ -281,7 +293,7 @@ std::shared_ptr<Database> DatabaseConnectionPool::get_connection()
       timeout);  // Block until a connection is free or the timeout elapses.
 
   const auto waited_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
-      std::chrono::steady_clock::now() - started)
+                             std::chrono::steady_clock::now() - started)
                              .count();  // Convert the elapsed time to
                                         // milliseconds for logging/comparison.
 
@@ -289,9 +301,9 @@ std::shared_ptr<Database> DatabaseConnectionPool::get_connection()
   {
     Message::CriticalMessage(
         fmt::format("Timeout ({} ms) while waiting for a database connection",
-            timeout.count()));  // Log how long callers waited.
-    throw DatabaseBusy();       // The HTTP layer maps this exception to a
-                                // retryable 503.
+                    timeout.count()));  // Log how long callers waited.
+    throw DatabaseBusy();  // The HTTP layer maps this exception to a
+                           // retryable 503.
   }
 
   if (waited_ms >= SLOW_WAIT_WARNING_MS)  // Anything slower than the threshold
@@ -307,15 +319,19 @@ std::shared_ptr<Database> DatabaseConnectionPool::get_connection()
     std::int64_t last = lastSlowWaitWarningMs_
                             .load();  // Read the last warning time atomically.
     if (now_ms - last >= 1000 &&
-        lastSlowWaitWarningMs_.compare_exchange_strong(last,
-            now_ms))  // Only the thread that successfully updates the
-                      // timestamp logs, at most once per second.
+        lastSlowWaitWarningMs_
+            .compare_exchange_strong(last,
+                                     now_ms))  // Only the thread that
+                                               // successfully updates the
+                                               // timestamp logs, at most once
+                                               // per second.
     {
-      Message::WarningMessage(fmt::format(
-          "Waited {} ms for a database connection: the pool is saturated "
-          "(see DB_MAX_CONN).",
-          waited_ms));  // Point operators at the setting that likely
-                        // needs raising.
+      Message::WarningMessage(
+          fmt::format("Waited {} ms for a database connection: the pool is "
+                      "saturated "
+                      "(see DB_MAX_CONN).",
+                      waited_ms));  // Point operators at the setting that
+                                    // likely needs raising.
     }
   }
 
@@ -358,8 +374,8 @@ void DatabaseConnectionPool::reconnect_all()
   pool_.forEachIdle(  // Holds the pool lock across both callbacks: nothing
                       // idle is leased during the repair.
       [&futures](std::shared_ptr<Database>&
-              connection)  // Called once for each idle connection still in
-                           // the pool.
+                     connection)  // Called once for each idle connection still
+                                  // in the pool.
       {
         futures.push_back(std::async(
             std::launch::async,  // Start each reconnect on its own thread
@@ -377,28 +393,31 @@ void DatabaseConnectionPool::reconnect_all()
                   Message::InfoMessage(
                       fmt::format("Database connection {} is re-established "
                                   "successfully",
-                          static_cast<void*>(
-                              connection.get())));  // Log success with
-                                                    // the object address
-                                                    // for tracing.
+                                  static_cast<void*>(
+                                      connection
+                                          .get())));  // Log success with
+                                                      // the object address
+                                                      // for tracing.
                 }
                 else
                 {
                   Message::ErrorMessage(
                       fmt::format("Database connection {} failed to be "
                                   "re-established",
-                          static_cast<void*>(
-                              connection.get())));  // Log a non-throwing
-                                                    // reconnect failure.
+                                  static_cast<void*>(
+                                      connection
+                                          .get())));  // Log a non-throwing
+                                                      // reconnect failure.
                 }
               }
               catch (
                   const std::exception& e)  // Catch unexpected driver
                                             // exceptions so the loop continues.
               {
-                Message::CriticalMessage(fmt::format("Reconnect exception: {}",
-                    e.what()));  // Record the exception text for
-                                 // diagnosis.
+                Message::CriticalMessage(
+                    fmt::format("Reconnect exception: {}",
+                                e.what()));  // Record the exception text for
+                                             // diagnosis.
               }
             }));
       },

@@ -79,12 +79,12 @@ class ClientControllerBase
 
   ClientControllerBase(const ClientControllerBase&) =
       default;  // Copyable: no state to duplicate.
-  ClientControllerBase(
-      ClientControllerBase&&) = default;  // Movable for the same reason.
-  ClientControllerBase& operator=(
-      const ClientControllerBase&) = default;  // Copy assignment is a no-op.
-  ClientControllerBase& operator=(
-      ClientControllerBase&&) = default;  // Move assignment is a no-op.
+  ClientControllerBase(ClientControllerBase&&) =
+      default;  // Movable for the same reason.
+  ClientControllerBase& operator=(const ClientControllerBase&) =
+      default;  // Copy assignment is a no-op.
+  ClientControllerBase& operator=(ClientControllerBase&&) =
+      default;  // Move assignment is a no-op.
   virtual ~ClientControllerBase() =
       default;  // Virtual so deletion through this base is safe.
 
@@ -97,17 +97,20 @@ class ClientControllerBase
    * @param[in] requester Principal used to authorize creation.
    * @param[in] data JSON body describing the new client.
    */
-  virtual void Create(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data) = 0;  // Pure virtual: create a client account.
+  virtual void Create(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) = 0;  // Pure virtual: create a client account.
   /**
    * @brief Coroutine form of Create(); must be awaited.
    * @param[in,out] callback Invoked once on completion.
    * @param[in] requester Principal used to authorize creation.
    * @param[in] data JSON body; must outlive the coroutine.
    */
-  virtual drogon::Task<void> CreateAsync(CALLBACK_&& callback,
-      const Requester&&                              requester,
-      std::string_view data) = 0;  // Pure virtual coroutine create.
+  virtual drogon::Task<void> CreateAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) = 0;  // Pure virtual coroutine create.
   /**
    * @brief Reads selected columns of a client identified in @p data.
    * @param[in,out] callback Invoked once with the resulting HTTP status and
@@ -115,18 +118,20 @@ class ClientControllerBase
    * @param[in] requester Principal used to authorize the read.
    * @param[in] data JSON body containing `id` and `schema`.
    */
-  virtual void Read(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view
-          data) = 0;  // Pure virtual: read selected client columns.
+  virtual void Read(CALLBACK_&&       callback,
+                    const Requester&& requester,
+                    std::string_view  data) = 0;  // Pure virtual: read selected
+                                                  // client columns.
   /**
    * @brief Coroutine form of Read(); must be awaited.
    * @param[in,out] callback Invoked once on completion.
    * @param[in] requester Principal used to authorize the read.
    * @param[in] data JSON body containing `id` and `schema`.
    */
-  virtual drogon::Task<void> ReadAsync(CALLBACK_&& callback,
-      const Requester&&                            requester,
-      std::string_view data) = 0;  // Pure virtual coroutine read.
+  virtual drogon::Task<void> ReadAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) = 0;  // Pure virtual coroutine read.
   /**
    * @brief Updates a client account (@p _id), re-hashing immutable-checked
    * fields in the implementation.
@@ -136,10 +141,11 @@ class ClientControllerBase
    * @param[in] data JSON body holding the fields to change.
    * @param[in] _id Target client id.
    */
-  virtual void Update(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data,
-      std::optional<uint64_t>
-          _id)               = 0;  // Pure virtual: update a client account.
+  virtual void Update(CALLBACK_&&       callback,
+                      const Requester&& requester,
+                      std::string_view  data,
+                      std::optional<uint64_t>
+                          _id) = 0;  // Pure virtual: update a client account.
   /**
    * @brief Coroutine form of Update(); must be awaited.
    * @param[in,out] callback Invoked once on completion.
@@ -147,8 +153,10 @@ class ClientControllerBase
    * @param[in] data JSON body holding the fields to change.
    * @param[in] _id Target client id.
    */
-  virtual drogon::Task<void> UpdateAsync(CALLBACK_&& callback,
-      const Requester&& requester, std::string_view data,
+  virtual drogon::Task<void> UpdateAsync(
+      CALLBACK_&&             callback,
+      const Requester&&       requester,
+      std::string_view        data,
       std::optional<uint64_t> _id) = 0;  // Pure virtual coroutine update.
   /**
    * @brief Deletes a client and invalidates its session in the
@@ -158,7 +166,9 @@ class ClientControllerBase
    * @param[in] requester Principal used to authorize the deletion.
    * @param[in] client_id Target client id.
    */
-  virtual void Delete(CALLBACK_&& callback, const Requester&& requester,
+  virtual void Delete(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
       std::optional<uint64_t>
           client_id) = 0;  // Pure virtual: delete a client account.
   /**
@@ -167,8 +177,9 @@ class ClientControllerBase
    * @param[in] requester Principal used to authorize the deletion.
    * @param[in] client_id Target client id.
    */
-  virtual drogon::Task<void> DeleteAsync(CALLBACK_&& callback,
-      const Requester&&                              requester,
+  virtual drogon::Task<void> DeleteAsync(
+      CALLBACK_&&             callback,
+      const Requester&&       requester,
       std::optional<uint64_t> client_id) = 0;  // Pure virtual coroutine delete.
   /**
    * @brief Searches clients according to criteria in @p data.
@@ -177,17 +188,20 @@ class ClientControllerBase
    * @param[in] requester Principal supplied by the caller.
    * @param[in] data JSON body containing criteria, limit and offset.
    */
-  virtual void Search(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data)             = 0;  // Pure virtual: search clients.
+  virtual void Search(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) = 0;  // Pure virtual: search clients.
   /**
    * @brief Coroutine form of Search(); must be awaited.
    * @param[in,out] callback Invoked once on completion.
    * @param[in] requester Principal supplied by the caller.
    * @param[in] data JSON body containing criteria, limit and offset.
    */
-  virtual drogon::Task<void> SearchAsync(CALLBACK_&& callback,
-      const Requester&&                              requester,
-      std::string_view data)             = 0;  // Pure virtual coroutine search.
+  virtual drogon::Task<void> SearchAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) = 0;  // Pure virtual coroutine search.
   /**
    * @brief Authenticates a client and establishes a session through
    * GateKeeper.
@@ -198,8 +212,10 @@ class ClientControllerBase
    * @param[in] data JSON body containing credentials.
    * @param[in] ip_address Client IP used for session bookkeeping.
    */
-  virtual void Login(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data,
+  virtual void Login(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data,
       const std::string&
           ip_address) = 0;  // Pure virtual: authenticate and open a session.
   /**
@@ -210,8 +226,10 @@ class ClientControllerBase
    * @param[in] data JSON body containing credentials.
    * @param[in] ip_address Client IP used for session bookkeeping.
    */
-  virtual drogon::Task<void> LoginAsync(CALLBACK_&& callback,
-      const Requester&& requester, std::string_view data,
+  virtual drogon::Task<void> LoginAsync(
+      CALLBACK_&&        callback,
+      const Requester&&  requester,
+      std::string_view   data,
       const std::string& ip_address) = 0;  // Pure virtual coroutine login.
   /**
    * @brief Invalidates the session identified by @p token through GateKeeper.
@@ -222,10 +240,12 @@ class ClientControllerBase
    * GateKeeper decide how to respond.
    * @param[in] ip_address Client IP used for session bookkeeping.
    */
-  virtual void Logout(CALLBACK_&& callback, const Requester&& requester,
+  virtual void Logout(
+      CALLBACK_&&                       callback,
+      const Requester&&                 requester,
       const std::optional<std::string>& token,
       const std::string&
-          ip_address)        = 0;  // Pure virtual: invalidate a session.
+          ip_address) = 0;  // Pure virtual: invalidate a session.
   /**
    * @brief Suspends a client account and removes its active sessions in the
    * implementation.
@@ -234,19 +254,22 @@ class ClientControllerBase
    * @param[in] requester Principal whose toggle-active permission is checked.
    * @param[in] client_id Target client id; a missing value is rejected.
    */
-  virtual void Suspend(CALLBACK_&& callback, const Requester&& requester,
+  virtual void Suspend(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
       std::optional<uint64_t>
-          client_id)         = 0;  // Pure virtual: deactivate a client account.
+          client_id) = 0;  // Pure virtual: deactivate a client account.
   /**
    * @brief Coroutine form of Suspend(); must be awaited.
    * @param[in,out] callback Invoked once on completion.
    * @param[in] requester Principal whose toggle-active permission is checked.
    * @param[in] client_id Target client id; a missing value is rejected.
    */
-  virtual drogon::Task<void> SuspendAsync(CALLBACK_&& callback,
-      const Requester&&                               requester,
+  virtual drogon::Task<void> SuspendAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
       std::optional<uint64_t>
-          client_id)         = 0;  // Pure virtual coroutine suspend.
+          client_id) = 0;  // Pure virtual coroutine suspend.
   /**
    * @brief Reactivates a previously suspended client account.
    * @param[in,out] callback Invoked once with the resulting HTTP status and
@@ -254,19 +277,22 @@ class ClientControllerBase
    * @param[in] requester Principal whose toggle-active permission is checked.
    * @param[in] client_id Target client id; a missing value is rejected.
    */
-  virtual void Activate(CALLBACK_&& callback, const Requester&& requester,
+  virtual void Activate(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
       std::optional<uint64_t>
-          client_id)         = 0;  // Pure virtual: reactivate a client account.
+          client_id) = 0;  // Pure virtual: reactivate a client account.
   /**
    * @brief Coroutine form of Activate(); must be awaited.
    * @param[in,out] callback Invoked once on completion.
    * @param[in] requester Principal whose toggle-active permission is checked.
    * @param[in] client_id Target client id; a missing value is rejected.
    */
-  virtual drogon::Task<void> ActivateAsync(CALLBACK_&& callback,
-      const Requester&&                                requester,
+  virtual drogon::Task<void> ActivateAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
       std::optional<uint64_t>
-          client_id)         = 0;  // Pure virtual coroutine activate.
+          client_id) = 0;  // Pure virtual coroutine activate.
   /**
    * @brief Resets a client's password from @p data.
    * @param[in,out] callback Invoked once with the resulting HTTP status and
@@ -274,8 +300,10 @@ class ClientControllerBase
    * @param[in] requester Principal supplied by the caller.
    * @param[in] data JSON body containing the credential material.
    */
-  virtual void ResetPassword(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data) = 0;  // Pure virtual: password reset hook.
+  virtual void ResetPassword(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) = 0;  // Pure virtual: password reset hook.
   /**
    * @brief Lists the services associated with a client.
    * @param[in,out] callback Invoked once with 200 and a JSON array (or an
@@ -283,17 +311,20 @@ class ClientControllerBase
    * @param[in] requester Principal whose services permission is checked.
    * @param[in] client_id Target client id; a missing value is rejected.
    */
-  virtual void GetServices(CALLBACK_&& callback, const Requester&& requester,
+  virtual void GetServices(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
       std::optional<uint64_t>
-          client_id)         = 0;  // Pure virtual: list a client's services.
+          client_id) = 0;  // Pure virtual: list a client's services.
   /**
    * @brief Coroutine form of GetServices(); must be awaited.
    * @param[in,out] callback Invoked once on completion.
    * @param[in] requester Principal whose services permission is checked.
    * @param[in] client_id Target client id; a missing value is rejected.
    */
-  virtual drogon::Task<void> GetServicesAsync(CALLBACK_&& callback,
-      const Requester&&                                   requester,
+  virtual drogon::Task<void> GetServicesAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
       std::optional<uint64_t>
-          client_id)         = 0;  // Pure virtual coroutine service lookup.
+          client_id) = 0;  // Pure virtual coroutine service lookup.
 };

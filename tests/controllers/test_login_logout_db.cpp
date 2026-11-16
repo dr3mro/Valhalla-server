@@ -83,9 +83,9 @@ namespace  // An anonymous namespace keeps these helpers private to this test
   CALLBACK_ cap(
       CR& r)  // Returns a "call me later" function that writes into r.
   {
-    return [&r](int               c,
-               const std::string& b)  // The lambda captures r by reference so
-                                      // the result is visible to the caller.
+    return [&r](int                c,
+                const std::string& b)  // The lambda captures r by reference so
+                                       // the result is visible to the caller.
     {
       r.code = c;  // Store the status the controller reported.
       r.body = b;  // Store the body the controller reported.
@@ -102,8 +102,10 @@ namespace  // An anonymous namespace keeps these helpers private to this test
 
   /** @brief Builds the password_result fixture with id, hash and active flag.
    */
-  jsoncons::json makePasswordResult(uint64_t id, const std::string& hash,
-      bool active =
+  jsoncons::json makePasswordResult(
+      uint64_t           id,
+      const std::string& hash,
+      bool               active =
           true)  // Shapes the row the fake returns from the password lookup.
   {
     jsoncons::json j =
@@ -155,7 +157,7 @@ namespace  // An anonymous namespace keeps these helpers private to this test
 
 // An unknown username yields no password row and must not authenticate.
 TEST_CASE("ClientController::Login returns UNAUTHORIZED when user not in DB",
-    "[controller][client][login][db]")
+          "[controller][client][login][db]")
 {
   // A shared fake for this case.
   auto fake             = std::make_shared<FakeDatabaseController>();
@@ -164,10 +166,11 @@ TEST_CASE("ClientController::Login returns UNAUTHORIZED when user not in DB",
   FakeDbGuard guard(fake);      // Install the fake before the controller.
   ClientController<User> ctrl;  // Controller captures it from the Store.
   CR                     r;     // Holds the answer.
-  ctrl.Login(cap(r), anonRequester(),
-      R"({"username":"alice","password":"secret"})",
-      "127.0.0.1");  // Attempt login with a valid-shaped body for a user the
-                     // fake says does not exist.
+  ctrl.Login(cap(r),
+             anonRequester(),
+             R"({"username":"alice","password":"secret"})",
+             "127.0.0.1");  // Attempt login with a valid-shaped body for a user
+                            // the fake says does not exist.
   CHECK(r.code == Http::Status::UNAUTHORIZED);  // Proves an unknown user is
                                                 // refused with 401.
 }
@@ -176,22 +179,26 @@ TEST_CASE("ClientController::Login returns UNAUTHORIZED when user not in DB",
 
 // A correct password is still refused when the account is marked inactive.
 TEST_CASE("ClientController::Login returns UNAUTHORIZED when user is suspended",
-    "[controller][client][login][db]")
+          "[controller][client][login][db]")
 {
   auto hash =
       hashKnownPassword("secret");  // Hash the real password for the fake row.
   // A shared fake.
-  auto fake             = std::make_shared<FakeDatabaseController>();
-  fake->password_result = makePasswordResult(42, hash,
-      /*active=*/false);  // Correct hash, but the account is suspended.
+  auto fake = std::make_shared<FakeDatabaseController>();
+  fake->password_result =
+      makePasswordResult(42,
+                         hash,
+                         /*active=*/false);  // Correct hash, but the account is
+                                             // suspended.
 
   FakeDbGuard            guard(fake);  // Install the fake first.
   ClientController<User> ctrl;         // Controller captures it.
   CR                     r;            // Holds the answer.
-  ctrl.Login(cap(r), anonRequester(),
-      R"({"username":"alice","password":"secret"})",
-      "127.0.0.1");  // The password matches, so only the active flag can
-                     // reject.
+  ctrl.Login(cap(r),
+             anonRequester(),
+             R"({"username":"alice","password":"secret"})",
+             "127.0.0.1");  // The password matches, so only the active flag can
+                            // reject.
   CHECK(r.code == Http::Status::UNAUTHORIZED);  // Proves suspended accounts
                                                 // cannot log in.
   CHECK(r.body.find("suspended") !=
@@ -210,17 +217,20 @@ TEST_CASE(
   auto hash = hashKnownPassword("secret");  // A valid password hash.
   // A shared fake.
   auto fake = std::make_shared<FakeDatabaseController>();
-  fake->password_result = makePasswordResult(
-      42, hash, /*active=*/true);     // Active user with the right hash.
+  fake->password_result =
+      makePasswordResult(42,
+                         hash,
+                         /*active=*/true);  // Active user with the right hash.
   fake->query_result = std::nullopt;  // setNowLoginTimeGetLastLogoutTime fails
 
   FakeDbGuard            guard(fake);  // Install the fake first.
   ClientController<User> ctrl;         // Controller captures it.
   CR                     r;            // Holds the answer.
-  ctrl.Login(cap(r), anonRequester(),
-      R"({"username":"alice","password":"secret"})",
-      "127.0.0.1");  // Credentials are fine; the session write is the failing
-                     // step.
+  ctrl.Login(cap(r),
+             anonRequester(),
+             R"({"username":"alice","password":"secret"})",
+             "127.0.0.1");  // Credentials are fine; the session write is the
+                            // failing step.
   CHECK(r.code == Http::Status::UNAUTHORIZED);  // Proves a failed session write
                                                 // prevents a half-open login.
 }
@@ -230,23 +240,27 @@ TEST_CASE(
 
 // A wrong password must fail verification and leave the session row untouched.
 TEST_CASE("ClientController::Login returns UNAUTHORIZED for wrong password",
-    "[controller][client][login][db]")
+          "[controller][client][login][db]")
 {
   auto hash = hashKnownPassword(
       "correct_password");  // The stored hash is for a DIFFERENT password.
   // A shared fake.
-  auto fake             = std::make_shared<FakeDatabaseController>();
-  fake->password_result = makePasswordResult(
-      42, hash, /*active=*/true);  // Active user with that other hash.
+  auto fake = std::make_shared<FakeDatabaseController>();
+  fake->password_result =
+      makePasswordResult(42,
+                         hash,
+                         /*active=*/true);  // Active user with that other hash.
   fake->query_result = makeSessionResult();  // A session row is available,
                                              // but should not be written.
 
   FakeDbGuard            guard(fake);  // Install the fake first.
   ClientController<User> ctrl;         // Controller captures it.
   CR                     r;            // Holds the answer.
-  ctrl.Login(cap(r), anonRequester(),
-      R"({"username":"alice","password":"wrong_password"})",
-      "127.0.0.1");  // Supply the wrong password; verification should fail.
+  ctrl.Login(cap(r),
+             anonRequester(),
+             R"({"username":"alice","password":"wrong_password"})",
+             "127.0.0.1");  // Supply the wrong password; verification should
+                            // fail.
   CHECK(r.code ==
         Http::Status::UNAUTHORIZED);  // Proves the wrong password is rejected.
   // A wrong password must not touch the session row (the login time is
@@ -270,18 +284,21 @@ TEST_CASE(
   auto hash = hashKnownPassword(
       "secret");  // The stored hash matches the supplied password.
   // A shared fake.
-  auto fake             = std::make_shared<FakeDatabaseController>();
-  fake->password_result = makePasswordResult(
-      42, hash, /*active=*/true);  // Active user, correct hash.
+  auto fake = std::make_shared<FakeDatabaseController>();
+  fake->password_result =
+      makePasswordResult(42,
+                         hash,
+                         /*active=*/true);  // Active user, correct hash.
   fake->query_result =
       makeSessionResult();  // Arrange a successful session write.
 
   FakeDbGuard            guard(fake);  // Install the fake first.
   ClientController<User> ctrl;         // Controller captures it.
   CR                     r;            // Holds the answer.
-  ctrl.Login(cap(r), anonRequester(),
-      R"({"username":"alice","password":"secret"})",
-      "127.0.0.1");                   // The happy-path login.
+  ctrl.Login(cap(r),
+             anonRequester(),
+             R"({"username":"alice","password":"secret"})",
+             "127.0.0.1");            // The happy-path login.
   CHECK(r.code == Http::Status::OK);  // Proves valid credentials are accepted.
   CHECK(r.body.find("token") !=
         std::string::npos);  // Proves the response carries a session token.
@@ -301,8 +318,10 @@ TEST_CASE(
   ClientController<User> ctrl;  // A fresh controller; no fake needed because
                                 // parsing fails first.
   CR                     r;     // Holds the answer.
-  ctrl.Login(cap(r), anonRequester(), "not-json",
-      "127.0.0.1");  // Plain text instead of a JSON object.
+  ctrl.Login(cap(r),
+             anonRequester(),
+             "not-json",
+             "127.0.0.1");  // Plain text instead of a JSON object.
   CHECK(r.code ==
         Http::Status::BAD_REQUEST);  // Proves malformed credentials yield 400.
 }
@@ -324,10 +343,11 @@ TEST_CASE(
   FakeDbGuard            guard(fake);  // Install the fake first.
   ClientController<User> ctrl;         // Controller captures it.
   CR                     r;            // Holds the answer.
-  ctrl.Login(cap(r), anonRequester(),
-      R"({"username":"' OR 1=1 --","password":"x"})",
-      "127.0.0.1");  // A classic injection payload used as the username
-                     // value.
+  ctrl.Login(cap(r),
+             anonRequester(),
+             R"({"username":"' OR 1=1 --","password":"x"})",
+             "127.0.0.1");  // A classic injection payload used as the username
+                            // value.
   // The username is only ever a bound parameter, so it is simply an unknown
   // user.
   CHECK(r.code == Http::Status::UNAUTHORIZED);  // Proves the payload could
@@ -339,7 +359,7 @@ TEST_CASE(
 // When the pool is exhausted, login must report a retryable 503, not a failed
 // login.
 TEST_CASE("ClientController::Login returns 503 when the database is busy",
-    "[controller][client][login][db][busy]")
+          "[controller][client][login][db][busy]")
 {
   // A shared fake.
   auto fake  = std::make_shared<FakeDatabaseController>();
@@ -348,9 +368,10 @@ TEST_CASE("ClientController::Login returns 503 when the database is busy",
   FakeDbGuard            guard(fake);  // Install the fake first.
   ClientController<User> ctrl;         // Controller captures it.
   CR                     r;            // Holds the answer.
-  ctrl.Login(cap(r), anonRequester(),
-      R"({"username":"alice","password":"secret"})",
-      "127.0.0.1");  // Otherwise-valid credentials hit the busy fake.
+  ctrl.Login(cap(r),
+             anonRequester(),
+             R"({"username":"alice","password":"secret"})",
+             "127.0.0.1");  // Otherwise-valid credentials hit the busy fake.
   CHECK(r.code ==
         Http::Status::SERVICE_UNAVAILABLE);  // Proves overload is surfaced as
                                              // 503 for the client to retry.
@@ -362,7 +383,7 @@ TEST_CASE("ClientController::Login returns 503 when the database is busy",
 // A correctly signed token is decoded and accepted; the logout-time write
 // result is ignored.
 TEST_CASE("ClientController::Logout returns 200 for a valid token",
-    "[controller][client][logout][db]")
+          "[controller][client][logout][db]")
 {
   // Build a token signed with the test fixture key/issuer, not production
   // credentials. The session manager decodes it and calls setNowLogoutTime
@@ -377,35 +398,35 @@ TEST_CASE("ClientController::Logout returns 200 for a valid token",
       "2026-01-01 00:00:00 +0000";  // The "last login date/time" payload
                                     // claim.
 
-  auto token = jwt::create<
-      jwt::traits::kazuho_picojson>()  // Start building a JWT with the picojson
-                                       // backend.
-                   .set_issuer(issuer)    // Identify the trusted issuer.
-                   .set_type(type)        // Set the token type.
-                   .set_subject("alice")  // Subject is the username.
-                   .set_id("42")          // Id is the user id.
-                   // Issue it at the current time.
-                   .set_issued_at(std::chrono::system_clock::now())
-                   .set_expires_at(
-                       std::chrono::system_clock::now() +
-                       std::chrono::hours{1})  // Make it expire in one
-                                               // hour so it is valid now.
-                   .set_payload_claim("ip_address",
-                       jwt::basic_claim<jwt::traits::kazuho_picojson>(
-                           std::string("127.0.0.1")))  // Carry the
-                                                       // client IP.
-                   .set_payload_claim("llodt",
-                       jwt::basic_claim<jwt::traits::kazuho_picojson>(
-                           llodt))  // Carry the last-login
-                                    // time.
-                   .set_payload_claim("group",
-                       jwt::basic_claim<jwt::traits::kazuho_picojson>(
-                           std::string("users")))  // Carry the user's
-                                                   // group.
-                   .sign(
-                       jwt::algorithm::hs256{secret});  // Sign with HMAC-SHA256
-                                                        // so the session
-                                                        // manager trusts it.
+  auto token =
+      jwt::create<
+          jwt::traits::
+              kazuho_picojson>()  // Start building a JWT with the picojson
+                                  // backend.
+          .set_issuer(issuer)     // Identify the trusted issuer.
+          .set_type(type)         // Set the token type.
+          .set_subject("alice")   // Subject is the username.
+          .set_id("42")           // Id is the user id.
+          // Issue it at the current time.
+          .set_issued_at(std::chrono::system_clock::now())
+          .set_expires_at(std::chrono::system_clock::now() +
+                          std::chrono::hours{1})  // Make it expire in one
+                                                  // hour so it is valid now.
+          .set_payload_claim("ip_address",
+                             jwt::basic_claim<jwt::traits::kazuho_picojson>(
+                                 std::string("127.0.0.1")))  // Carry the
+                                                             // client IP.
+          .set_payload_claim("llodt",
+                             jwt::basic_claim<jwt::traits::kazuho_picojson>(
+                                 llodt))  // Carry the last-login
+                                          // time.
+          .set_payload_claim("group",
+                             jwt::basic_claim<jwt::traits::kazuho_picojson>(
+                                 std::string("users")))  // Carry the user's
+                                                         // group.
+          .sign(jwt::algorithm::hs256{secret});  // Sign with HMAC-SHA256
+                                                 // so the session
+                                                 // manager trusts it.
 
   // A shared fake. setNowLogoutTime calls executeQuery; result is ignored, so
   // nullopt is fine.
@@ -416,8 +437,10 @@ TEST_CASE("ClientController::Logout returns 200 for a valid token",
   FakeDbGuard            guard(fake);  // Install the fake first.
   ClientController<User> ctrl;         // Controller captures it.
   CR                     r;            // Holds the answer.
-  ctrl.Logout(cap(r), anonRequester(), token,
-      "127.0.0.1");                   // Log out using the signed token.
+  ctrl.Logout(cap(r),
+              anonRequester(),
+              token,
+              "127.0.0.1");           // Log out using the signed token.
   CHECK(r.code == Http::Status::OK);  // Proves a valid token is accepted.
   CHECK(r.body.find("success") !=
         std::string::npos);  // Proves the body confirms the logout to the
@@ -430,12 +453,14 @@ TEST_CASE("ClientController::Logout returns 200 for a valid token",
 // Logout with no token must not crash, whatever response it ultimately
 // produces.
 TEST_CASE("ClientController::Logout handles empty token gracefully",
-    "[controller][client][logout][db]")
+          "[controller][client][logout][db]")
 {
   ClientController<User> ctrl;  // A fresh controller.
   CR                     r;     // Holds the answer.
-  ctrl.Logout(cap(r), anonRequester(), std::nullopt,
-      "127.0.0.1");  // std::nullopt means "no token supplied".
+  ctrl.Logout(cap(r),
+              anonRequester(),
+              std::nullopt,
+              "127.0.0.1");  // std::nullopt means "no token supplied".
   // Should not crash; returns some error or OK with failure message.
   CHECK(r.code != -1);  // Proves the callback fired (the controller answered)
                         // rather than silently dying.

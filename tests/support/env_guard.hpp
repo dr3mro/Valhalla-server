@@ -67,9 +67,10 @@ class EnvGuard
       previous_    = previous;  // Copy the value; the pointer from getenv
                                 // may go away.
     }
-    setenv(key.c_str(), value.c_str(),
-        1);  // Set the new value; the 1 means "overwrite any existing
-             // value".
+    setenv(key.c_str(),
+           value.c_str(),
+           1);  // Set the new value; the 1 means "overwrite any existing
+                // value".
   }
 
   /**
@@ -92,8 +93,8 @@ class EnvGuard
 
   EnvGuard(const EnvGuard&) =
       delete;  // No copying: two guards for one key would restore twice.
-  EnvGuard& operator=(
-      const EnvGuard&) = delete;  // No copy assignment, for the same reason.
+  EnvGuard& operator=(const EnvGuard&) =
+      delete;  // No copy assignment, for the same reason.
   EnvGuard(EnvGuard&&) =
       delete;  // No moving: the destructor must stay tied to one object.
   EnvGuard& operator=(EnvGuard&&) =
@@ -105,8 +106,9 @@ class EnvGuard
     if (hadPrevious_)  // The variable existed before, so restore its
                        // original value.
     {
-      setenv(key_.c_str(), previous_.c_str(),
-          1);  // Put the saved value back (overwrite).
+      setenv(key_.c_str(),
+             previous_.c_str(),
+             1);  // Put the saved value back (overwrite).
     }
     else  // The variable did not exist before.
     {

@@ -83,17 +83,20 @@ class ClinicControllerBase
    * @param[in] requester Principal used to authorize creation.
    * @param[in] data JSON body describing the new entity.
    */
-  virtual void Create(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data)      = 0;  // Pure virtual: create a clinic entity.
+  virtual void Create(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) = 0;  // Pure virtual: create a clinic entity.
   /**
    * @brief Coroutine form of Create(); must be awaited.
    * @param[in,out] callback Invoked once on completion.
    * @param[in] requester Principal used to authorize creation.
    * @param[in] data JSON body; must outlive the coroutine.
    */
-  virtual drogon::Task<void> CreateAsync(CALLBACK_&& callback,
-      const Requester&&                              requester,
-      std::string_view data)      = 0;  // Pure virtual coroutine create.
+  virtual drogon::Task<void> CreateAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) = 0;  // Pure virtual coroutine create.
   /**
    * @brief Reads selected columns of a clinic-service entity identified in @p
    * data.
@@ -102,8 +105,10 @@ class ClinicControllerBase
    * @param[in] requester Principal used to authorize the read.
    * @param[in] data JSON body containing `id` and `schema`.
    */
-  virtual void Read(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data)      = 0;  // Pure virtual: read selected columns.
+  virtual void Read(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) = 0;  // Pure virtual: read selected columns.
   /**
    * @brief Coroutine form of Read(); must be awaited.
    * @param[in,out] callback Invoked once on completion.
@@ -111,9 +116,10 @@ class ClinicControllerBase
    * @param[in] data JSON body containing `id` and `schema`; must outlive the
    * coroutine.
    */
-  virtual drogon::Task<void> ReadAsync(CALLBACK_&& callback,
-      const Requester&&                            requester,
-      std::string_view data)      = 0;  // Pure virtual coroutine read.
+  virtual drogon::Task<void> ReadAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) = 0;  // Pure virtual coroutine read.
   /**
    * @brief Updates a clinic-service entity identified by @p id.
    * @param[in,out] callback Invoked once with the resulting HTTP status and
@@ -122,7 +128,9 @@ class ClinicControllerBase
    * @param[in] data JSON body holding the fields to change.
    * @param[in] id Target entity id.
    */
-  virtual void Update(CALLBACK_&& callback, const Requester&& requester,
+  virtual void Update(
+      CALLBACK_&&             callback,
+      const Requester&&       requester,
       std::string_view        data,
       std::optional<uint64_t> id) = 0;  // Pure virtual: update an entity by id.
   /**
@@ -133,7 +141,9 @@ class ClinicControllerBase
    * @param[in] requester Principal used to authorize the deletion.
    * @param[in] id Target entity id.
    */
-  virtual void Delete(CALLBACK_&& callback, const Requester&& requester,
+  virtual void Delete(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
       std::optional<uint64_t>
           id) = 0;  // Pure virtual: delete (many clinic types reject this).
   /**
@@ -142,8 +152,9 @@ class ClinicControllerBase
    * @param[in] requester Principal used to authorize the deletion.
    * @param[in] id Target entity id.
    */
-  virtual drogon::Task<void> DeleteAsync(CALLBACK_&& callback,
-      const Requester&&                              requester,
+  virtual drogon::Task<void> DeleteAsync(
+      CALLBACK_&&             callback,
+      const Requester&&       requester,
       std::optional<uint64_t> id) = 0;  // Pure virtual coroutine delete.
   /**
    * @brief Searches clinic-service entities; only supported for Patient by
@@ -153,9 +164,10 @@ class ClinicControllerBase
    * @param[in] requester Principal supplied by the caller.
    * @param[in] data JSON body containing criteria, limit and offset.
    */
-  virtual void Search(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view
-          data)       = 0;  // Pure virtual: search (only Patient supports it).
+  virtual void Search(CALLBACK_&&       callback,
+                      const Requester&& requester,
+                      std::string_view data) = 0;  // Pure virtual: search (only
+                                                   // Patient supports it).
   /**
    * @brief Retrieves the visit history of a patient; unsupported for other
    * entity types.
@@ -165,7 +177,9 @@ class ClinicControllerBase
    * @param[in] patient_id Target patient id; a missing value is rejected with
    * 400.
    */
-  virtual void GetVisits(CALLBACK_&& callback, const Requester&& requester,
+  virtual void GetVisits(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
       std::optional<uint64_t>
           patient_id) = 0;  // Pure virtual: fetch a patient's visits.
   /**
@@ -175,8 +189,9 @@ class ClinicControllerBase
    * @param[in] patient_id Target patient id; a missing value is rejected with
    * 400.
    */
-  virtual drogon::Task<void> GetVisitsAsync(CALLBACK_&& callback,
-      const Requester&&                                 requester,
+  virtual drogon::Task<void> GetVisitsAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
       std::optional<uint64_t>
           patient_id) = 0;  // Pure virtual coroutine visit lookup.
 };

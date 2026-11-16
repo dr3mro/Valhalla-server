@@ -43,7 +43,8 @@ using TokenManager = api::v2::TokenManager;  // Short alias so definitions can
  * message).
  * @see TokenManager::generateToken
  */
-bool TokenManager::generateToken(std::optional<Types::ClientLoginData>&
+bool TokenManager::generateToken(
+    std::optional<Types::ClientLoginData>&
         clientLoginData)  // Signs a new token and stores it in clientLoginData;
                           // true on success.
 {
@@ -56,7 +57,8 @@ bool TokenManager::generateToken(std::optional<Types::ClientLoginData>&
     // Create JWT token with payload
     std::optional<std::string>
         token =  // Will hold the signed token if creation succeeds.
-        jwt::create<jwt::traits::
+        jwt::create<
+            jwt::traits::
                 kazuho_picojson>()  // Start building a JWT using the chosen
                                     // JSON traits.
             .set_issuer(
@@ -88,20 +90,22 @@ bool TokenManager::generateToken(std::optional<Types::ClientLoginData>&
             // from
             // now.
             .set_payload_claim("ip_address",
-                jwt::basic_claim<jwt::traits::kazuho_picojson>(
-                    // Embed the client's IP address as a custom claim.
-                    clientLoginData->ip_address.value()))
-            .set_payload_claim(
-                "llodt", jwt::basic_claim<jwt::traits::kazuho_picojson>(
-                             // Embed the last logout time so a later logout
-                             // can be detected.
-                             clientLoginData->lastLogoutTime.value()))
+                               jwt::basic_claim<jwt::traits::kazuho_picojson>(
+                                   // Embed the client's IP address as a custom
+                                   // claim.
+                                   clientLoginData->ip_address.value()))
+            .set_payload_claim("llodt",
+                               jwt::basic_claim<jwt::traits::kazuho_picojson>(
+                                   // Embed the last logout time so a later
+                                   // logout can be detected.
+                                   clientLoginData->lastLogoutTime.value()))
             .set_payload_claim("group",
-                jwt::basic_claim<jwt::traits::kazuho_picojson>(
-                    clientLoginData->group.value()))  // Embed the
-                                                      // client's
-                                                      // group
-                                                      // (user or
+                               jwt::basic_claim<jwt::traits::kazuho_picojson>(
+                                   clientLoginData->group
+                                       .value()))  // Embed the
+                                                   // client's
+                                                   // group
+                                                   // (user or
             // provider).
             .sign(jwt::algorithm::hs256{
                 // Sign with the shared secret using HS256 so the token
@@ -117,10 +121,11 @@ bool TokenManager::generateToken(std::optional<Types::ClientLoginData>&
     }
   }
   catch (const std::exception&
-          e)  // Runs when a claim is missing or signing fails.
+             e)  // Runs when a claim is missing or signing fails.
   {
-    Message::CriticalMessage(fmt::format("Error generating token:{}",
-        e.what()));  // Log a serious error with the exception text.
+    Message::CriticalMessage(
+        fmt::format("Error generating token:{}",
+                    e.what()));  // Log a serious error with the exception text.
   }
   return false;  // Token generation failed.
 }
@@ -139,25 +144,30 @@ bool TokenManager::isTokenValid(
         jwt::decode<jwt::traits::kazuho_picojson>(
             clientLoginData->token.value());  // Parse the token string into
                                               // a structured object.
-    if (!decodeToken(clientLoginData, message,
-            decodedToken))  // First check that the claims can be read and
-                            // copied into clientLoginData.
+    if (!decodeToken(clientLoginData,
+                     message,
+                     decodedToken))  // First check that the claims can be read
+                                     // and copied into clientLoginData.
     {
-      message = fmt::format("Token is not valid: {}",
-          message);  // Add context to the decode failure reason.
-      return false;  // Token generation failed.
+      message =
+          fmt::format("Token is not valid: {}",
+                      message);  // Add context to the decode failure reason.
+      return false;              // Token generation failed.
     }
 
     // Token is valid
-    return validateToken(clientLoginData, message,
-        decodedToken);  // Then verify the signature and account state (the
-                        // real validity check).
+    return validateToken(clientLoginData,
+                         message,
+                         decodedToken);  // Then verify the signature and
+                                         // account state (the real validity
+                                         // check).
   }
   catch (const std::exception&
-          e)  // Runs when a claim is missing or signing fails.
+             e)  // Runs when a claim is missing or signing fails.
   {
-    message = fmt::format("Error validating Token:{}",
-        e.what());  // Build an error message from the exception.
+    message =
+        fmt::format("Error validating Token:{}",
+                    e.what());  // Build an error message from the exception.
     Message::CriticalMessage(message);  // Log the validation error as critical.
   }
   return false;  // Token generation failed.
@@ -176,19 +186,24 @@ drogon::Task<bool> TokenManager::isTokenValidCoro(
         jwt::decode<jwt::traits::kazuho_picojson>(
             clientLoginData->token.value());  // Parse the token string into
                                               // a structured object.
-    if (!decodeToken(clientLoginData, message,
-            decodedToken))  // First check that the claims can be read and
-                            // copied into clientLoginData.
+    if (!decodeToken(clientLoginData,
+                     message,
+                     decodedToken))  // First check that the claims can be read
+                                     // and copied into clientLoginData.
     {
-      message = fmt::format("Token is not valid: {}",
-          message);     // Add context to the decode failure reason.
-      co_return false;  // Coroutine return: the token is invalid.
+      message =
+          fmt::format("Token is not valid: {}",
+                      message);  // Add context to the decode failure reason.
+      co_return false;           // Coroutine return: the token is invalid.
     }
 
     // Token is valid
-    co_return co_await validateTokenCoro(clientLoginData, message,
-        decodedToken);  // Await the async validation without blocking, then
-                        // return its result.
+    co_return co_await validateTokenCoro(clientLoginData,
+                                         message,
+                                         decodedToken);  // Await the async
+                                                         // validation without
+                                                         // blocking, then
+                                                         // return its result.
   }
   catch (const DatabaseBusy&)  // A busy database is re-thrown so the caller
                                // can retry.
@@ -196,10 +211,11 @@ drogon::Task<bool> TokenManager::isTokenValidCoro(
     throw;  // Re-throw the busy error so the caller can retry later.
   }
   catch (const std::exception&
-          e)  // Runs when a claim is missing or signing fails.
+             e)  // Runs when a claim is missing or signing fails.
   {
-    message = fmt::format("Error validating Token:{}",
-        e.what());  // Build an error message from the exception.
+    message =
+        fmt::format("Error validating Token:{}",
+                    e.what());  // Build an error message from the exception.
     Message::CriticalMessage(message);  // Log the validation error as critical.
   }
   co_return false;  // Coroutine return: the token is invalid.

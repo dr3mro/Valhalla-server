@@ -167,8 +167,9 @@ TEST_CASE(
   auto r = capture(
       [&](auto cb)
       {
-        ctrl.Read(
-            std::move(cb), Requester(1, "users"), R"({"schema":["date"]})");
+        ctrl.Read(std::move(cb),
+                  Requester(1, "users"),
+                  R"({"schema":["date"]})");
       });  // Valid JSON with a schema but no id; R"(...)" is a raw string so
            // the quotes need no escaping.
   CHECK(r.status ==
@@ -179,15 +180,17 @@ TEST_CASE(
 // Update needs an id supplied as a separate argument; with none, it must fail
 // early.
 TEST_CASE("AppointmentController<ClinicAppointment>::Update with no id → 400",
-    "[controllers][appointment]")
+          "[controllers][appointment]")
 {
   AppointmentController<ClinicAppointment>
        ctrl;  // A fresh clinic-appointment controller.
   auto r = capture(
       [&](auto cb)
       {
-        ctrl.Update(std::move(cb), Requester(1, "users"),
-            R"({"date":"2026-01-01"})", std::nullopt);
+        ctrl.Update(std::move(cb),
+                    Requester(1, "users"),
+                    R"({"date":"2026-01-01"})",
+                    std::nullopt);
       });  // std::nullopt means "no id"; the valid JSON body is irrelevant
            // because the id check fails first.
   CHECK(r.status ==
@@ -199,7 +202,7 @@ TEST_CASE("AppointmentController<ClinicAppointment>::Update with no id → 400",
 // Delete is the one operation that signals a missing id with 406 (Not
 // Acceptable) rather than 400.
 TEST_CASE("AppointmentController<ClinicAppointment>::Delete with no id → 406",
-    "[controllers][appointment]")
+          "[controllers][appointment]")
 {
   AppointmentController<ClinicAppointment>
        ctrl;  // A fresh clinic-appointment controller.

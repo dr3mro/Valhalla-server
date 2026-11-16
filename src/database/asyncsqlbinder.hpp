@@ -98,8 +98,8 @@ namespace asyncdb
    * `binder`'s statement; this function does not check.
    */
   void bindParams(drogon::orm::internal::SqlBinder& binder,
-      const pqxx::params&
-          params);  // `binder` is changed in place; `params` is only read.
+                  const pqxx::params& params);  // `binder` is changed in place;
+                                                // `params` is only read.
 
   /**
    * @brief Prepares a parameterised statement on a Drogon client and returns

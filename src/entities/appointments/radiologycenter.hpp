@@ -81,8 +81,8 @@ class RadiologyCenterAppointment
   template <typename T>
   explicit RadiologyCenterAppointment(const T& _data)
       : Appointment(_data,
-            TABLENAME)  // "explicit" requires a direct call; TABLENAME fixes
-                        // the target table.
+                    TABLENAME)  // "explicit" requires a direct call; TABLENAME
+                                // fixes the target table.
   {
   }
 
@@ -90,14 +90,14 @@ class RadiologyCenterAppointment
    * @brief Non-copyable and non-movable; construct in place for the request
    * that uses it.
    */
-  RadiologyCenterAppointment(
-      const RadiologyCenterAppointment&) = delete;  // No copy.
-  RadiologyCenterAppointment(
-      RadiologyCenterAppointment&&) = delete;  // No move.
-  RadiologyCenterAppointment& operator=(
-      const RadiologyCenterAppointment&) = delete;  // No copy assignment.
-  RadiologyCenterAppointment& operator=(
-      RadiologyCenterAppointment&&) = delete;  // No move assignment.
+  RadiologyCenterAppointment(const RadiologyCenterAppointment&) =
+      delete;  // No copy.
+  RadiologyCenterAppointment(RadiologyCenterAppointment&&) =
+      delete;  // No move.
+  RadiologyCenterAppointment& operator=(const RadiologyCenterAppointment&) =
+      delete;  // No copy assignment.
+  RadiologyCenterAppointment& operator=(RadiologyCenterAppointment&&) =
+      delete;  // No move assignment.
 
   /**
    * @brief Returns the radiology centre appointment table name.
@@ -132,7 +132,9 @@ class RadiologyCenterAppointment
       std::uint64_t      service_id)  // Public wrapper with the expected name.
   {
     return getServicePermissionsQueryImpl(service_name,
-        service_id);  // Delegate to the shared base implementation.
+                                          service_id);  // Delegate to the
+                                                        // shared base
+                                                        // implementation.
   }
 
   /**
@@ -144,8 +146,12 @@ class RadiologyCenterAppointment
   static std::optional<std::string> getPermissionsQueryForRead(
       std::uint64_t appointment_id)  // Public wrapper for the owner lookup.
   {
-    return getPermissionsQueryForReadImpl(ORGNAME, TABLENAME,
-        appointment_id);  // Supply this class's organisation and table
-                          // names to the base.
+    return getPermissionsQueryForReadImpl(ORGNAME,
+                                          TABLENAME,
+                                          appointment_id);  // Supply this
+                                                            // class's
+                                                            // organisation and
+                                                            // table names to
+                                                            // the base.
   }
 };

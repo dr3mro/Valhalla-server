@@ -99,7 +99,8 @@ namespace
     std::optional<ClientLoginData>
         loginData;  // Consistent login data whose claims match its token.
 
-    SessionFixture(const std::string& group = "users",
+    SessionFixture(
+        const std::string& group = "users",
         const std::string& ip = "127.0.0.1")  // Builds data for a given group
                                               // and IP, with sensible defaults.
     {
@@ -111,68 +112,89 @@ namespace
           nextClientId.fetch_add(1);  // Take a fresh id and increment for next
                                       // time, guaranteeing uniqueness.
 
-      loginData = makeLoginData(clientId, group,
-          ip);  // Build the base login data with that unique id.
+      loginData =
+          makeLoginData(clientId,
+                        group,
+                        ip);  // Build the base login data with that unique id.
       loginData->username =
           "sessionuser";  // Set the subject used both in data and token.
       loginData->lastLogoutTime =
           "2026-01-02 03:04:05 +0000";  // Fixed last-logout time,
                                         // embedded in the token too.
-      loginData->token = makeToken(kSecret, kIssuer, kType, "sessionuser",
-          clientId, group, ip,
-          *loginData->lastLogoutTime);  // Sign a token whose claims agree with
-                                        // the data, so decoding succeeds.
+      loginData->token =
+          makeToken(kSecret,
+                    kIssuer,
+                    kType,
+                    "sessionuser",
+                    clientId,
+                    group,
+                    ip,
+                    *loginData->lastLogoutTime);  // Sign a token whose claims
+                                                  // agree with the data, so
+                                                  // decoding succeeds.
     }
   };
 }  // namespace
 
-TEST_CASE("SessionManager stores and finds a session",
+TEST_CASE(
+    "SessionManager stores and finds a session",
     "[gatekeeper][session]")  // Registers the basic store-then-lookup test.
 {
   SessionFixture fixture;  // Fresh manager and unique login data.
 
-  std::string    message;  // Receives any status message.
-  REQUIRE(fixture.manager.storeSession(
-      fixture.loginData, message));  // Prove the session can be stored.
+  std::string message;  // Receives any status message.
+  REQUIRE(fixture.manager
+              .storeSession(fixture.loginData,
+                            message));  // Prove the session can be stored.
   CHECK(message.empty());  // Prove no error message was produced on success.
-  CHECK(fixture.manager.clientHasValidSession(fixture.loginData,
-      message));  // Prove the stored session is found and considered valid.
+  CHECK(fixture.manager
+            .clientHasValidSession(fixture.loginData,
+                                   message));  // Prove the stored session is
+                                               // found and considered valid.
 }
 
 TEST_CASE("SessionManager reports an unknown session as invalid",
-    "[gatekeeper][session]")  // Registers the test for a client with no stored
-                              // session.
+          "[gatekeeper][session]")  // Registers the test for a client with no
+                                    // stored session.
 {
   SessionFixture fixture;  // never stored -- the fixture only builds data; it
                            // does not call storeSession.
 
-  std::string    message;  // Receives any status message.
-  REQUIRE_FALSE(fixture.manager.clientHasValidSession(fixture.loginData,
-      message));  // Prove an unstored client is reported as having no valid
-                  // session.
+  std::string message;  // Receives any status message.
+  REQUIRE_FALSE(
+      fixture.manager
+          .clientHasValidSession(fixture.loginData,
+                                 message));  // Prove an unstored client is
+                                             // reported as having no valid
+                                             // session.
 }
 
 TEST_CASE("SessionManager invalidates a session on logout (remove)",
-    "[gatekeeper][session]")  // Registers the test that removal invalidates a
-                              // session.
+          "[gatekeeper][session]")  // Registers the test that removal
+                                    // invalidates a session.
 {
   SessionFixture fixture;  // Fresh manager and data.
 
-  std::string    message;  // Receives status messages.
-  REQUIRE(fixture.manager.storeSession(
-      fixture.loginData, message));  // Store the session first.
-  REQUIRE(fixture.manager.clientHasValidSession(
-      fixture.loginData, message));  // Confirm it is valid before removal.
+  std::string message;  // Receives status messages.
+  REQUIRE(fixture.manager.storeSession(fixture.loginData,
+                                       message));  // Store the session first.
+  REQUIRE(
+      fixture.manager.clientHasValidSession(fixture.loginData,
+                                            message));  // Confirm it is valid
+                                                        // before removal.
 
   REQUIRE(fixture.manager.removeSession(
       fixture.loginData));  // Remove it (the logout path).
-  REQUIRE_FALSE(fixture.manager.clientHasValidSession(fixture.loginData,
-      message));  // Prove the session is no longer valid after removal.
+  REQUIRE_FALSE(
+      fixture.manager
+          .clientHasValidSession(fixture.loginData,
+                                 message));  // Prove the session is no longer
+                                             // valid after removal.
 }
 
 TEST_CASE("SessionManager removeSession is idempotent",
-    "[gatekeeper][session]")  // Registers the test that removing a missing
-                              // session is still safe.
+          "[gatekeeper][session]")  // Registers the test that removing a
+                                    // missing session is still safe.
 {
   SessionFixture fixture;  // No session was ever stored for this unique id.
 
@@ -185,8 +207,8 @@ TEST_CASE("SessionManager removeSession is idempotent",
 }
 
 TEST_CASE("SessionManager rejects empty inputs",
-    "[gatekeeper][session]")  // Registers the defensive tests for malformed
-                              // arguments.
+          "[gatekeeper][session]")  // Registers the defensive tests for
+                                    // malformed arguments.
 {
   SessionFixture fixture;  // Fresh manager and data.
   std::string    message;  // Receives status messages.
@@ -194,8 +216,10 @@ TEST_CASE("SessionManager rejects empty inputs",
   SECTION("storeSession with empty login data")
   {
     std::optional<ClientLoginData> empty;  // No login data supplied.
-    REQUIRE_FALSE(fixture.manager.storeSession(
-        empty, message));  // Prove storing nothing is refused.
+    REQUIRE_FALSE(
+        fixture.manager
+            .storeSession(empty,
+                          message));  // Prove storing nothing is refused.
     CHECK(message ==
           "clientLoginData is empty");  // Prove the caller gets a specific,
                                         // useful error message.
@@ -223,8 +247,8 @@ TEST_CASE("SessionManager rejects empty inputs",
 }
 
 TEST_CASE("SessionManager logout with a bad token answers without a database",
-    "[gatekeeper][session]")  // Registers the tests for logout failures that
-                              // are detected before any DB access.
+          "[gatekeeper][session]")  // Registers the tests for logout failures
+                                    // that are detected before any DB access.
 {
   SessionFixture fixture;  // Fresh manager and data.
 
@@ -274,12 +298,14 @@ TEST_CASE("SessionManager logout with a bad token answers without a database",
 }
 
 TEST_CASE("SessionManager logout with a valid token removes the session",
-    "[gatekeeper][session]")  // Registers the positive logout test.
+          "[gatekeeper][session]")  // Registers the positive logout test.
 {
   SessionFixture fixture;  // Fresh manager and data.
   std::string    message;  // Receives status messages.
-  REQUIRE(fixture.manager.storeSession(fixture.loginData,
-      message));  // Store a session so there is something to log out of.
+  REQUIRE(
+      fixture.manager.storeSession(fixture.loginData,
+                                   message));  // Store a session so there is
+                                               // something to log out of.
 
   int         statusCode = -1;  // Receives the status from the callback.
   std::string body;             // Receives the response body.
@@ -296,12 +322,16 @@ TEST_CASE("SessionManager logout with a valid token removes the session",
   CHECK(body.find("Logout success") !=
         std::string::npos);  // Prove the body confirms the logout.
   // The session is gone.
-  CHECK_FALSE(fixture.manager.clientHasValidSession(fixture.loginData,
-      message));  // Prove the session was actually removed, not just reported
-                  // as logged out.
+  CHECK_FALSE(
+      fixture.manager
+          .clientHasValidSession(fixture.loginData,
+                                 message));  // Prove the session was actually
+                                             // removed, not just reported as
+                                             // logged out.
 }
 
-TEST_CASE("SessionManager handles concurrent store and lookup",
+TEST_CASE(
+    "SessionManager handles concurrent store and lookup",
     "[gatekeeper][session][concurrency]")  // Registers the multithreaded test
                                            // for the shared session cache.
 {
@@ -310,8 +340,8 @@ TEST_CASE("SessionManager handles concurrent store and lookup",
   std::string    message;  // Shared message string; only truth of operations is
                            // checked, not its text.
 
-  constexpr int  kThreads = 4;  // Number of concurrent workers.
-  constexpr int  kPerThread =
+  constexpr int kThreads = 4;  // Number of concurrent workers.
+  constexpr int kPerThread =
       25;  // Sessions each worker creates, for 100 total.
   std::atomic<int> storedFailures{0};  // Counts failed stores across threads.
   std::atomic<int> lookupFailures{0};  // Counts failed lookups across threads.
@@ -323,7 +353,7 @@ TEST_CASE("SessionManager handles concurrent store and lookup",
         [&fixture, &storedFailures, &lookupFailures, &message, t]()
         {
           for (int i = 0; i < kPerThread;
-              ++i)  // Each worker creates and checks its own sessions.
+               ++i)  // Each worker creates and checks its own sessions.
           {
             // A distinct high id range: the session cache is a
             // process-wide singleton, so these must not collide with
@@ -334,17 +364,26 @@ TEST_CASE("SessionManager handles concurrent store and lookup",
             data->username = "user";           // Subject for the token.
             data->group    = "users";  // Group for the token and cache key.
             data->lastLogoutTime = "llodt";  // Last-logout claim.
-            data->token          = makeToken(kSecret, kIssuer, kType, "user",
-                data->clientId.value(), "users", "127.0.0.1",
-                "llodt");  // Sign a token with matching claims.
+            data->token =
+                makeToken(kSecret,
+                          kIssuer,
+                          kType,
+                          "user",
+                          data->clientId.value(),
+                          "users",
+                          "127.0.0.1",
+                          "llodt");  // Sign a token with matching claims.
 
             if (!fixture.manager.storeSession(data,
-                    message))  // Try to store this worker's session.
+                                              message))  // Try to store this
+                                                         // worker's session.
             {
               ++storedFailures;  // Record a failure atomically.
             }
-            if (!fixture.manager.clientHasValidSession(data,
-                    message))  // Immediately try to find it again.
+            if (!fixture.manager
+                     .clientHasValidSession(data,
+                                            message))  // Immediately try to
+                                                       // find it again.
             {
               ++lookupFailures;  // Record a failure atomically.
             }
@@ -370,7 +409,9 @@ namespace
   /**
    * JSON row that getPasswordHashForUserName() returns on success.
    */
-  jsoncons::json makePasswordRow(uint64_t id, const std::string& hash,
+  jsoncons::json makePasswordRow(
+      uint64_t           id,
+      const std::string& hash,
       bool active)  // Builds the fake DB row returned when looking up a
                     // password.
   {
@@ -412,26 +453,33 @@ TEST_CASE(
                                          // from the password lookup.
 
   SessionManager sm;  // Constructed after the guard, so it uses the fake.
-  std::optional<ClientLoginData> cld = makeLoginData(2000, "users",
-      "127.0.0.1");  // Login data to be filled by a successful login.
-  api::v2::Types::Credentials    creds{
-      "testuser", "somepassword"};  // The username/password being attempted.
+  std::optional<ClientLoginData> cld =
+      makeLoginData(2000,
+                    "users",
+                    "127.0.0.1");  // Login data to be filled by a successful
+                                   // login.
+  api::v2::Types::Credentials
+      creds{"testuser",
+            "somepassword"};  // The username/password being attempted.
 
   std::string message;  // Receives the error text.
-  CHECK_FALSE(sm.login(std::optional{creds}, cld,
-      message));  // Prove login fails when no password row exists.
+  CHECK_FALSE(
+      sm.login(std::optional{creds},
+               cld,
+               message));  // Prove login fails when no password row exists.
   CHECK(message.find("does not exist") !=
         std::string::npos);  // Prove the message tells the caller the user
                              // does not exist.
 }
 
-TEST_CASE("SessionManager::login returns false for a wrong password",
+TEST_CASE(
+    "SessionManager::login returns false for a wrong password",
     "[gatekeeper][session][login]")  // Registers the test that a bad password
                                      // is rejected without side effects.
 {
   auto fake =
       std::make_shared<FakeDatabaseController>();  // Create the fake DB.
-  FakeDbGuard   guard(fake);  // Inject it before the manager is built.
+  FakeDbGuard guard(fake);  // Inject it before the manager is built.
 
   // Hash for a different password ("correct_password").
   PasswordCrypt pc;  // The hasher used to make a real hash.
@@ -440,22 +488,30 @@ TEST_CASE("SessionManager::login returns false for a wrong password",
   REQUIRE(hash_opt.has_value());  // Prove hashing succeeded.
   const std::string correct_hash = hash_opt.value();  // Keep that hash.
 
-  fake->password_result          = makePasswordRow(2001, correct_hash,
-      true);  // DB returns a row for an active account with that hash.
+  fake->password_result =
+      makePasswordRow(2001,
+                      correct_hash,
+                      true);  // DB returns a row for an active account with
+                              // that hash.
   // setNowLoginTimeGetLastLogoutTime() calls executeQuery(); supply a row.
-  fake->query_result             = makeLoginTimeRow(
+  fake->query_result = makeLoginTimeRow(
       "2026-01-01 00:00:00 +0000");  // Provide a row in case the code tries
                                      // the login-time write.
 
   SessionManager                 sm;  // Manager bound to the fake.
-  std::optional<ClientLoginData> cld = makeLoginData(2001, "users",
-      "127.0.0.1");  // Login data for the same client id as the row.
-  api::v2::Types::Credentials    creds{"testuser",
-      "wrong_password"};  // Deliberately supply a different password.
+  std::optional<ClientLoginData> cld =
+      makeLoginData(2001,
+                    "users",
+                    "127.0.0.1");  // Login data for the same client id as the
+                                   // row.
+  api::v2::Types::Credentials
+      creds{"testuser",
+            "wrong_password"};  // Deliberately supply a different password.
 
-  std::string                    message;  // Receives the error text.
-  CHECK_FALSE(sm.login(std::optional{creds}, cld,
-      message));  // Prove the wrong password is rejected.
+  std::string message;  // Receives the error text.
+  CHECK_FALSE(sm.login(std::optional{creds},
+                       cld,
+                       message));  // Prove the wrong password is rejected.
   CHECK(message.find("Invalid") !=
         std::string::npos);  // Prove the reason is reported as an invalid
                              // credential.
@@ -470,7 +526,7 @@ TEST_CASE(
 {
   auto fake =
       std::make_shared<FakeDatabaseController>();  // Create the fake DB.
-  FakeDbGuard       guard(fake);  // Inject it before the manager is built.
+  FakeDbGuard guard(fake);  // Inject it before the manager is built.
 
   PasswordCrypt     pc;  // The hasher.
   const std::string password =
@@ -479,44 +535,53 @@ TEST_CASE(
   REQUIRE(hash_opt.has_value());              // Prove hashing succeeded.
   const std::string correct_hash = hash_opt.value();  // Keep the hash.
 
-  fake->password_result          = makePasswordRow(2002, correct_hash,
-      true);  // DB returns the matching hash for an active account.
-  fake->query_result             = makeLoginTimeRow(
+  fake->password_result = makePasswordRow(2002,
+                                          correct_hash,
+                                          true);  // DB returns the matching
+                                                  // hash for an active account.
+  fake->query_result    = makeLoginTimeRow(
       "2026-01-01 00:00:00 +0000");  // Supply the login-time row the final
                                      // write will read.
 
   SessionManager                 sm;  // Manager bound to the fake.
-  std::optional<ClientLoginData> cld = makeLoginData(
-      2002, "users", "127.0.0.1");  // Login data for the matching client id.
-  api::v2::Types::Credentials creds{
-      "testuser", password};  // Correct credentials.
+  std::optional<ClientLoginData> cld =
+      makeLoginData(2002,
+                    "users",
+                    "127.0.0.1");  // Login data for the matching client id.
+  api::v2::Types::Credentials creds{"testuser",
+                                    password};  // Correct credentials.
 
   std::string message;  // Receives any error text.
-  CHECK(sm.login(std::optional{creds}, cld,
-      message));  // Prove a correct, active login succeeds.
+  CHECK(sm.login(std::optional{creds},
+                 cld,
+                 message));  // Prove a correct, active login succeeds.
 }
 
 TEST_CASE("SessionManager::fetchPasswordHash reads without writing",
-    "[gatekeeper][session][login]")  // Registers the test that the
-                                     // password-lookup step is read-only.
+          "[gatekeeper][session][login]")  // Registers the test that the
+                                           // password-lookup step is read-only.
 {
   auto fake =
       std::make_shared<FakeDatabaseController>();  // Create the fake DB.
   FakeDbGuard guard(fake);  // Inject it before the manager is built.
 
-  fake->password_result = makePasswordRow(2003, "stored-hash",
-      true);  // DB returns a fixed hash for an active account.
+  fake->password_result =
+      makePasswordRow(2003,
+                      "stored-hash",
+                      true);  // DB returns a fixed hash for an active account.
 
   SessionManager                 sm;  // Manager bound to the fake.
   std::optional<ClientLoginData> cld =
       makeLoginData(2003, "users", "127.0.0.1");  // Login data to be populated.
-  api::v2::Types::Credentials creds{
-      "testuser", "whatever"};  // Credentials whose password is irrelevant
-                                // for this read-only step.
+  api::v2::Types::Credentials
+      creds{"testuser", "whatever"};  // Credentials whose password is
+                                      // irrelevant for this read-only step.
 
   std::string message;  // Receives any error text.
-  const auto  hash = sm.fetchPasswordHash(
-      std::optional{creds}, cld, message);  // Ask only for the stored hash.
+  const auto  hash =
+      sm.fetchPasswordHash(std::optional{creds},
+                           cld,
+                           message);  // Ask only for the stored hash.
   REQUIRE(hash.has_value());  // Prove a hash was returned before reading it.
   CHECK(*hash ==
         "stored-hash");  // Prove it is the exact string the fake supplied.
@@ -526,7 +591,8 @@ TEST_CASE("SessionManager::fetchPasswordHash reads without writing",
         0);  // Prove no write-capable query ran during this read-only step.
 }
 
-TEST_CASE("SessionManager::fetchPasswordHash refuses a suspended account",
+TEST_CASE(
+    "SessionManager::fetchPasswordHash refuses a suspended account",
     "[gatekeeper][session][login]")  // Registers the test that disabled
                                      // accounts cannot even fetch their hash.
 {
@@ -534,19 +600,23 @@ TEST_CASE("SessionManager::fetchPasswordHash refuses a suspended account",
       std::make_shared<FakeDatabaseController>();  // Create the fake DB.
   FakeDbGuard guard(fake);  // Inject it before the manager is built.
 
-  fake->password_result = makePasswordRow(
-      2004, "stored-hash", false);  // Same hash but active=false.
+  fake->password_result =
+      makePasswordRow(2004,
+                      "stored-hash",
+                      false);  // Same hash but active=false.
 
   SessionManager                 sm;  // Manager bound to the fake.
-  std::optional<ClientLoginData> cld = makeLoginData(
-      2004, "users", "127.0.0.1");  // Login data for the matching client.
+  std::optional<ClientLoginData> cld =
+      makeLoginData(2004,
+                    "users",
+                    "127.0.0.1");  // Login data for the matching client.
   // Credentials.
   api::v2::Types::Credentials creds{"testuser", "whatever"};
 
-  std::string                 message;  // Receives the error text.
+  std::string message;  // Receives the error text.
   CHECK_FALSE(sm.fetchPasswordHash(std::optional{creds}, cld, message)
-          .has_value());  // Prove no hash is returned for a suspended
-                          // account.
+                  .has_value());  // Prove no hash is returned for a suspended
+                                  // account.
   CHECK(message.find("suspended") !=
         std::string::npos);  // Prove the reason explicitly mentions suspension.
 }
@@ -559,7 +629,7 @@ TEST_CASE(
 {
   auto fake =
       std::make_shared<FakeDatabaseController>();  // Create the fake DB.
-  FakeDbGuard   guard(fake);  // Inject it before the manager is built.
+  FakeDbGuard guard(fake);  // Inject it before the manager is built.
 
   PasswordCrypt pc;  // The hasher.
   auto          hash_opt = pc.hashPassword(
@@ -575,15 +645,19 @@ TEST_CASE(
       makeLoginData(2005, "users", "127.0.0.1");  // Login data to complete.
   std::string message;                            // Receives status messages.
 
-  CHECK_FALSE(sm.completeLogin(
-      std::optional{api::v2::Types::Credentials{"u", "bad"}}, *hash_opt, cld,
-      message));  // A wrong password must fail verification.
+  CHECK_FALSE(
+      sm.completeLogin(std::optional{api::v2::Types::Credentials{"u", "bad"}},
+                       *hash_opt,
+                       cld,
+                       message));  // A wrong password must fail verification.
   CHECK(fake->query_calls ==
         0);  // Prove the failing attempt did NOT write the login time.
 
-  CHECK(sm.completeLogin(
-      std::optional{api::v2::Types::Credentials{"u", "GoodPass123!"}},
-      *hash_opt, cld, message));  // The correct password succeeds.
-  CHECK(fake->query_calls == 1);  // Prove exactly one write happened, only
-                                  // after successful verification.
+  CHECK(sm.completeLogin(std::optional{api::v2::Types::
+                                           Credentials{"u", "GoodPass123!"}},
+                         *hash_opt,
+                         cld,
+                         message));  // The correct password succeeds.
+  CHECK(fake->query_calls == 1);     // Prove exactly one write happened, only
+                                     // after successful verification.
 }

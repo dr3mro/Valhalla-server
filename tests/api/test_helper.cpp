@@ -54,19 +54,23 @@ namespace  // Anonymous namespace keeps the helper private to this file.
    * Runs `call` with a callback that captures the response Helper produced.
    * @brief Invokes a helper and returns the response it created.
    */
-  drogon::HttpResponsePtr captureResponse(const std::function<void(
-          std::function<void(const drogon::HttpResponsePtr&)>)>& call)
+  drogon::HttpResponsePtr captureResponse(
+      const std::function<
+          void(std::function<void(const drogon::HttpResponsePtr&)>)>& call)
   {
     drogon::HttpResponsePtr
         captured;  // Will hold the response handed to the callback.
-    call([&captured](const drogon::HttpResponsePtr& response)
-        { captured = response; });  // Callback stores the response for us.
+    call(
+        [&captured](const drogon::HttpResponsePtr& response)
+        {
+          captured = response;
+        });           // Callback stores the response for us.
     return captured;  // Give the captured response back to the test.
   }
 }  // namespace
 
 TEST_CASE("Helper::failureResponse answers with 500 and a failure payload",
-    "[api][helper]")  // Generic failure path.
+          "[api][helper]")  // Generic failure path.
 {
   const auto response = captureResponse(
       [](auto&& callback)
@@ -87,13 +91,14 @@ TEST_CASE("Helper::failureResponse answers with 500 and a failure payload",
 }
 
 TEST_CASE("Helper::errorResponse answers with the requested code",
-    "[api][helper]")  // Caller chooses the status code.
+          "[api][helper]")  // Caller chooses the status code.
 {
   const auto response = captureResponse(
       [](auto&& callback)
       {
         Helper::errorResponse(drogon::HttpStatusCode::k401Unauthorized,
-            "unauthorized", std::move(callback));
+                              "unauthorized",
+                              std::move(callback));
       });  // Ask for a 401 with a message.
 
   REQUIRE(response != nullptr);  // A response must exist.
@@ -105,7 +110,7 @@ TEST_CASE("Helper::errorResponse answers with the requested code",
 }
 
 TEST_CASE("Helper::successResponse answers with 200 and a plain message",
-    "[api][helper]")  // Success path.
+          "[api][helper]")  // Success path.
 {
   const auto response = captureResponse(
       [](auto&& callback)
@@ -121,10 +126,11 @@ TEST_CASE("Helper::successResponse answers with 200 and a plain message",
 }
 
 TEST_CASE("Helper::prepare renders the status and message payload",
-    "[api][helper]")  // Low-level text builder.
+          "[api][helper]")  // Low-level text builder.
 {
-  const auto text = Helper::prepare(
-      "Failure", "something went wrong");  // Render the JSON text directly.
+  const auto text =
+      Helper::prepare("Failure", "something went wrong");  // Render the JSON
+                                                           // text directly.
 
   CHECK(text.find("\"Message\" : \"something went wrong\"") !=
         std::string::npos);  // The Message field has the given text.

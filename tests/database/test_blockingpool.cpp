@@ -100,7 +100,8 @@ namespace
 }  // namespace
 
 // Two releases give two distinct items; acquiring both empties the idle count.
-TEST_CASE("BlockingPool hands out each item once",
+TEST_CASE(
+    "BlockingPool hands out each item once",
     "[database][pool]")  // Registers the test that checks exclusive hand-out.
 {
   BlockingPool<int>
@@ -127,16 +128,17 @@ TEST_CASE("BlockingPool hands out each item once",
 
 // The elapsed-time check proves acquire really waits for the timeout instead
 // of returning nullptr immediately.
-TEST_CASE("BlockingPool::acquire returns nullptr after the timeout",
+TEST_CASE(
+    "BlockingPool::acquire returns nullptr after the timeout",
     "[database][pool]")  // Registers the test for wait-then-give-up behaviour.
 {
   BlockingPool<int> pool;  // An empty pool, so no item can ever be acquired.
   const auto        started =
       std::chrono::steady_clock::now();  // Record the start on a monotonic
                                          // clock that never jumps backwards.
-  CHECK(
-      pool.acquire(50ms) == nullptr);  // Prove an empty pool returns "no item"
-                                       // once the 50 ms budget is exhausted.
+  CHECK(pool.acquire(50ms) ==
+        nullptr);  // Prove an empty pool returns "no item"
+                   // once the 50 ms budget is exhausted.
   CHECK(std::chrono::steady_clock::now() - started >=
         50ms);  // Prove it really waited at least 50 ms, rather than failing
                 // instantly.
@@ -144,7 +146,8 @@ TEST_CASE("BlockingPool::acquire returns nullptr after the timeout",
 
 // A waiter blocked in acquire must be woken by a later release, not wait out
 // its two-second timeout.
-TEST_CASE("BlockingPool::release wakes a waiting acquirer",
+TEST_CASE(
+    "BlockingPool::release wakes a waiting acquirer",
     "[database][pool]")  // Registers the test for notify-on-release behaviour.
 {
   BlockingPool<int>    pool;  // An empty pool to begin with.
@@ -169,7 +172,8 @@ TEST_CASE("BlockingPool::release wakes a waiting acquirer",
 }
 
 // A null release is a no-op; it must not inflate the idle count.
-TEST_CASE("BlockingPool ignores a null release",
+TEST_CASE(
+    "BlockingPool ignores a null release",
     "[database][pool]")  // Registers the defensive test for a bad release call.
 {
   BlockingPool<int> pool;   // An empty pool.
@@ -181,7 +185,7 @@ TEST_CASE("BlockingPool ignores a null release",
 
 // The Lease fixture's destructor returns the item even when the body throws.
 TEST_CASE("BlockingPool gets the item back when the user throws",
-    "[database][pool]")  // Registers the exception-safety test.
+          "[database][pool]")  // Registers the exception-safety test.
 {
   BlockingPool<int> pool;                  // Pool with a single item to lend.
   pool.release(std::make_shared<int>(1));  // Put one item in the idle list.
@@ -189,15 +193,15 @@ TEST_CASE("BlockingPool gets the item back when the user throws",
   auto use = [&]
   {
     Lease lease(pool,
-        10ms);  // Acquire through the RAII helper; its destructor will
-                // release even if we throw.
+                10ms);  // Acquire through the RAII helper; its destructor will
+                        // release even if we throw.
     REQUIRE(lease.item != nullptr);  // Prove the lease really obtained an item.
     throw std::runtime_error("query failed");  // Simulate a database query
                                                // failing part-way through.
   };
   CHECK_THROWS_AS(use(),
-      std::runtime_error);  // Prove the simulated exception really escaped
-                            // the lambda.
+                  std::runtime_error);  // Prove the simulated exception really
+                                        // escaped the lambda.
   CHECK(pool.idle() == 1);  // Prove the destructor returned the item, so the
                             // pool did not leak it.
 }
@@ -217,7 +221,11 @@ TEST_CASE(
   int  visited = 0;  // Counter for how many idle items the callback sees.
   bool finished =
       false;  // Flag set by the finish callback, used to check its timing.
-  pool.forEachIdle([&](std::shared_ptr<int>&) { ++visited; },
+  pool.forEachIdle(
+      [&](std::shared_ptr<int>&)
+      {
+        ++visited;
+      },
       [&]
       {
         finished = (visited == 1);
@@ -231,7 +239,8 @@ TEST_CASE(
 
 // More threads than items: nobody times out, never more than ITEMS are in use
 // at once, and every item is back in the pool once all threads finish.
-TEST_CASE("BlockingPool survives many threads sharing few items",
+TEST_CASE(
+    "BlockingPool survives many threads sharing few items",
     "[database][pool][stress]")  // Registers the multithreaded stress test.
 {
   constexpr int THREADS = 16;  // Number of competing worker threads,

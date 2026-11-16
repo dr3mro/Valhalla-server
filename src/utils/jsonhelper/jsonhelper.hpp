@@ -97,7 +97,8 @@ namespace api::v2  // Groups this utility with the version-2 API code.
      * status string.
      * @return A JsonCpp value suitable for a Drogon response body.
      */
-    static Json::Value jsonify(const std::string&
+    static Json::Value jsonify(
+        const std::string&
             message);  // Builds { "Message": <text> } for simple replies.
 
     /**

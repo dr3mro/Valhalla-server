@@ -77,15 +77,15 @@ class Validator
 {
  public:
   /** @brief Default constructor; the class is stateless. */
-  Validator()                                      = default;
+  Validator() = default;
   /** @brief Virtual destructor. */
-  virtual ~Validator()                             = default;
+  virtual ~Validator() = default;
   /** @brief Copy constructor; no state to copy. */
-  Validator(const Validator& other)                = default;
+  Validator(const Validator& other) = default;
   /** @brief Copy assignment; no state to assign. */
-  Validator& operator=(const Validator& other)     = default;
+  Validator& operator=(const Validator& other) = default;
   /** @brief Move constructor; no state to move. */
-  Validator(Validator&& other) noexcept            = default;
+  Validator(Validator&& other) noexcept = default;
   /** @brief Move assignment; no state to move. */
   Validator& operator=(Validator&& other) noexcept = default;
 
@@ -127,7 +127,7 @@ class Validator
     /** @brief Maps an action flag (or group of flags) to the keys it
      * applies to. */
     std::unordered_map<Action, std::unordered_set<std::string>>
-         keys;  // NOLINT - each flag group owns the keys it relaxes.
+        keys;  // NOLINT - each flag group owns the keys it relaxes.
 
     /**
      * @brief Tests whether a given action applies to a given key.
@@ -141,8 +141,9 @@ class Validator
     {
       bool isMatch = hasMatch(check);  // True when this rule's flags
                                        // include the flag we are testing.
-      bool isKey   = hasKey(check,
-          key);  // True when the key sits in a matching flag group.
+      bool isKey =
+          hasKey(check,
+                 key);  // True when the key sits in a matching flag group.
       return isMatch && isKey;  // Both must hold, so return their logical
                                 // AND to the caller.
     }
@@ -214,7 +215,10 @@ class Validator
     // Check if any flag is set
     /** @brief Convenience conversion: true when at least one action flag is
      * set. */
-    explicit operator bool() const { return static_cast<int>(action) != 0; }
+    explicit operator bool() const
+    {
+      return static_cast<int>(action) != 0;
+    }
 
    private:
     // check if rule is set
@@ -234,14 +238,15 @@ class Validator
      * intersect @p check. */
     bool hasKey(
         // NOLINT
-        const Action& check, const std::string& element) const
+        const Action&      check,
+        const std::string& element) const
     {
       return std::ranges::find_if(this->keys,
-                 [&](const auto& key)
-                 {
-                   return (hasMatch(key.first, check)) &&
-                          (key.second.contains(element));
-                 }) !=
+                                  [&](const auto& key)
+                                  {
+                                    return (hasMatch(key.first, check)) &&
+                                           (key.second.contains(element));
+                                  }) !=
              this->keys.end();  // Found a matching group means the key is
                                 // allowed; reaching end() means it is not.
     }
@@ -263,9 +268,10 @@ class Validator
    * client errors rather than server faults.
    * @see validateDatabaseUpdateSchema, checkColumns, ensureAllKeysExist
    */
-  static bool validateDatabaseCreateSchema(const std::string& tablename,
-      const jsoncons::json& data, api::v2::Http::Error& error,
-      const Rule& rule);
+  static bool validateDatabaseCreateSchema(const std::string&    tablename,
+                                           const jsoncons::json& data,
+                                           api::v2::Http::Error& error,
+                                           const Rule&           rule);
   /**
    * @brief Validates an update (PATCH/PUT) request body against a table's
    * schema.
@@ -281,9 +287,10 @@ class Validator
    * Exceptions are translated to 400 for the same reasons as in
    * validateDatabaseCreateSchema.
    */
-  static bool validateDatabaseUpdateSchema(const std::string& tablename,
-      const jsoncons::json& data, api::v2::Http::Error& error,
-      const Rule& rule);
+  static bool validateDatabaseUpdateSchema(const std::string&    tablename,
+                                           const jsoncons::json& data,
+                                           api::v2::Http::Error& error,
+                                           const Rule&           rule);
   /**
    * @brief Validates the projected columns of a read (SELECT) request.
    * @param[in] keys Column names requested by the client.
@@ -298,8 +305,9 @@ class Validator
    */
   static bool validateDatabaseReadSchema(
       const std::unordered_set<std::string>& keys,
-      const std::string& table_name, api::v2::Http::Error& error,
-      const Rule& rule);
+      const std::string&                     table_name,
+      api::v2::Http::Error&                  error,
+      const Rule&                            rule);
   /**
    * @brief Applies field-specific regex rules to client-supplied entity data.
    * @param[in] data JSON object whose fields are validated by name (username,
@@ -318,7 +326,8 @@ class Validator
    * @note Entries already present in @p db_data are preserved; results are
    * inserted, not assigned.
    */
-  static bool clientRegexValidation(const jsoncons::json&      data,
+  static bool clientRegexValidation(
+      const jsoncons::json&                                    data,
       api::v2::Http::Error&                                    error,
       std::unordered_set<std::pair<std::string, std::string>>& db_data);
 
@@ -329,8 +338,8 @@ class Validator
    * @param[out] error Set to 400 / "Data is empty" when the check fails.
    * @return True when @p data is null or empty (i.e. validation should stop).
    */
-  static bool nullCheck(
-      const jsoncons::json& data, api::v2::Http::Error& error);
+  static bool nullCheck(const jsoncons::json& data,
+                        api::v2::Http::Error& error);
   /**
    * @brief Looks up a table's cached column set.
    * @param[in] tablename Table to look up.
@@ -352,8 +361,8 @@ class Validator
    * @return True when the JSON value's kind matches the schema type; false
    * otherwise or for unrecognised type strings.
    */
-  static bool validateType(
-      const jsoncons::json& value, const std::string& expectedType);
+  static bool validateType(const jsoncons::json& value,
+                           const std::string&    expectedType);
   /**
    * @brief Checks each schema column against the body (create path).
    * @param[in] data JSON object under validation.
@@ -363,9 +372,11 @@ class Validator
    * @param[in] rule Relaxations, notably IGNORE_IF_NOT_NULLABLE_IN_SCHEMA.
    * @return True when every column constraint is satisfied.
    */
-  static bool checkColumns(const jsoncons::json&     data,
+  static bool checkColumns(
+      const jsoncons::json&                          data,
       const std::unordered_set<api::v2::ColumnInfo>& table_schema,
-      api::v2::Http::Error& error, const Rule& rule);
+      api::v2::Http::Error&                          error,
+      const Rule&                                    rule);
   /**
    * @brief Checks that every key in the body is permitted and known to the
    * schema.
@@ -379,9 +390,11 @@ class Validator
    * @note This checks keys in the data, not that all schema columns are
    * present; the latter is enforced by checkColumns on the create path.
    */
-  static bool ensureAllKeysExist(const jsoncons::json& data,
-      const std::unordered_set<api::v2::ColumnInfo>&   table_schema,
-      api::v2::Http::Error& error, const Rule& rule);
+  static bool ensureAllKeysExist(
+      const jsoncons::json&                          data,
+      const std::unordered_set<api::v2::ColumnInfo>& table_schema,
+      api::v2::Http::Error&                          error,
+      const Rule&                                    rule);
   /**
    * @brief Detects duplicate keys in a JSON object.
    * @param[in] data Object to scan.
@@ -391,6 +404,6 @@ class Validator
    * @note Currently unused by the create/update validators: the jsoncons
    * parser already rejects duplicate keys before these helpers run.
    */
-  static bool hasDuplicateKeys(
-      const jsoncons::json& data, api::v2::Http::Error& error);
+  static bool hasDuplicateKeys(const jsoncons::json& data,
+                               api::v2::Http::Error& error);
 };

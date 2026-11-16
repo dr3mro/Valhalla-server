@@ -69,18 +69,18 @@ namespace asyncdb
    * integer or JSON value. Field values are read through their C-string text
    * form.
    */
-  jsoncons::json mapRow(
-      const drogon::orm::Result& result, drogon::orm::Result::SizeType row)
+  jsoncons::json mapRow(const drogon::orm::Result&    result,
+                        drogon::orm::Result::SizeType row)
   {
     jsoncons::json object;  // A fresh, empty JSON object for this row;
                             // nothing from another row can leak into it.
 
-    const auto     column_count =
+    const auto column_count =
         result.columns();  // How many columns this result has, so we know
                            // how far to walk.
     for (drogon::orm::Result::RowSizeType i = 0; i < column_count;
-        ++i)  // Visit each column exactly once, from left to right; stop
-              // after the last column.
+         ++i)  // Visit each column exactly once, from left to right; stop
+               // after the last column.
     {
       const std::string_view field_name =
           result.columnName(i);  // A non-owning view of the column's name, used
@@ -112,8 +112,8 @@ namespace asyncdb
         // spellings too.
         object[name] =
             (value == "t" || value == "true" ||
-                value == "1");  // The comparison produces a C++ bool, which
-                                // jsoncons stores as JSON true or false.
+             value == "1");  // The comparison produces a C++ bool, which
+                             // jsoncons stores as JSON true or false.
       }
       else if (name == "id" || name.ends_with("_id") ||
                name == "appointment_duration" ||
@@ -139,9 +139,9 @@ namespace asyncdb
       }
       else if (!value.empty() &&
                (value.front() == '{' ||
-                   value.front() ==
-                       '['))  // A value starting with a brace or bracket
-                              // is probably a JSON object or array.
+                value.front() ==
+                    '['))  // A value starting with a brace or bracket
+                           // is probably a JSON object or array.
       {
         // json/jsonb arrive as text; a failed parse degrades to a plain
         // string.
@@ -184,8 +184,8 @@ namespace asyncdb
                                 // path.
     }
     return mapRow(result,
-        0);  // Row indexes start at zero, so this converts the first (and
-             // possibly only) row.
+                  0);  // Row indexes start at zero, so this converts the first
+                       // (and possibly only) row.
   }
 
   /**
@@ -198,12 +198,12 @@ namespace asyncdb
         reply;  // Empty array that will hold one JSON object per row.
 
     for (drogon::orm::Result::SizeType row = 0; row < result.size();
-        ++row)  // Walk rows from first to last; stop when every row has
-                // been converted.
+         ++row)  // Walk rows from first to last; stop when every row has
+                 // been converted.
     {
       reply.push_back(mapRow(result,
-          row));  // Convert the row and append it, keeping the database's
-                  // order intact.
+                             row));  // Convert the row and append it, keeping
+                                     // the database's order intact.
     }
     return reply;  // An empty result simply produces an empty array, which
                    // is what list endpoints return.

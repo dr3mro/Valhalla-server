@@ -67,13 +67,14 @@ namespace api::v2  // The v2 API controllers live here.
      * @param[in,out] callback Response callback, consumed exactly once.
      */
     void hello(const drogon::HttpRequestPtr& /*req*/,
-        std::function<void(const drogon::HttpResponsePtr&)>&&
-            callback)  // NOLINT
+               std::function<void(const drogon::HttpResponsePtr&)>&&
+                   callback)  // NOLINT
     {
       drogon::HttpResponsePtr response =
           drogon::HttpResponse::newHttpResponse();  // Build an empty HTTP
                                                     // reply object.
-      response->setBody(JsonHelper::jsonify("Welcome to the API!")
+      response->setBody(
+          JsonHelper::jsonify("Welcome to the API!")
               .toStyledString());  // Turn the greeting text into a JSON
                                    // string and use it as the body.
       response->setStatusCode(
@@ -89,11 +90,13 @@ namespace api::v2  // The v2 API controllers live here.
     // authentication.
     METHOD_LIST_BEGIN  // Start the block where Drogon route registrations
                        // are declared.
-        METHOD_ADD(Hello::hello, "", drogon::Get,
-            INSECURE);  // Bind GET of the controller
-                        // path to hello() with the
-                        // INSECURE filter chain.
-    METHOD_LIST_END     // End the route registration block.
+        METHOD_ADD(Hello::hello,
+                   "",
+                   drogon::Get,
+                   INSECURE);  // Bind GET of the controller
+                               // path to hello() with the
+                               // INSECURE filter chain.
+    METHOD_LIST_END            // End the route registration block.
   };
 
 }  // namespace api::v2

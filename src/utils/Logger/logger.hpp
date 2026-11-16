@@ -99,8 +99,8 @@ class Logger  // Owns the process-wide spdlog logger; create only one instance.
    * @note Unrecognised levels are silently ignored.
    */
   void log(const std::string& message,
-      trantor::Logger::LogLevel
-          level);  // Maps a Trantor level to the matching spdlog call.
+           trantor::Logger::LogLevel
+               level);  // Maps a Trantor level to the matching spdlog call.
 
  private:
   /**

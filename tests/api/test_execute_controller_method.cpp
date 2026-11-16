@@ -86,8 +86,9 @@ namespace  // Anonymous namespace keeps all test helpers private to this file.
     bool            throw_busy = false;  // When true, Do() throws DatabaseBusy.
     bool            ran        = false;  // Whether Do() was called at all.
 
-    void            Do(CALLBACK_&&  callback, const Requester&& /*requester*/,
-        std::string_view body)  // Stand-in for a real controller method.
+    void Do(CALLBACK_&& callback,
+            const Requester&& /*requester*/,
+            std::string_view body)  // Stand-in for a real controller method.
     {
       ran       = true;                        // Mark that this controller ran.
       ran_on    = std::this_thread::get_id();  // Remember the thread we are on.
@@ -99,8 +100,9 @@ namespace  // Anonymous namespace keeps all test helpers private to this file.
         throw DatabaseBusy();  // Simulate a controller that could not
                                // reach the database.
       }
-      std::move(callback)(api::v2::Http::Status::OK,
-          "{\"ok\":true}");  // Answer with 200 and a small JSON body.
+      std::move(
+          callback)(api::v2::Http::Status::OK,
+                    "{\"ok\":true}");  // Answer with 200 and a small JSON body.
     }
   };
 
@@ -113,7 +115,9 @@ namespace  // Anonymous namespace keeps all test helpers private to this file.
     int             runs =
         0;  // How many times Do() was called (fast path may run it twice).
 
-    void Do(CALLBACK_&& callback, const Requester&& /*requester*/,
+    void Do(
+        CALLBACK_&& callback,
+        const Requester&& /*requester*/,
         bool in_memory)  // `in_memory` decides whether a database is needed.
     {
       ++runs;                               // Count each invocation.
@@ -122,36 +126,43 @@ namespace  // Anonymous namespace keeps all test helpers private to this file.
       if (in_memory)  // True means no database is required.
       {
         std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
-            "refused without a query");  // Answer immediately with 400.
-        return;                          // Stop here; no database probe needed.
+                            "refused without a query");  // Answer immediately
+                                                         // with 400.
+        return;  // Stop here; no database probe needed.
       }
       DbProbe::check();  // Ask the probe: this call needs the database,
                          // so fail the fast path.
       std::move(callback)(api::v2::Http::Status::OK,
-          "{\"ok\":true}");  // Answer with 200 if the probe allowed it.
+                          "{\"ok\":true}");  // Answer with 200 if the probe
+                                             // allowed it.
     }
   };
 
-  using FastRegistry = std::unordered_map<std::string_view,
-      // Registry type for fast-path controllers.
-      std::variant<std::shared_ptr<FastPathController>>>;
-  using Registry     = std::unordered_map<std::string_view,
-      std::variant<std::shared_ptr<ProbeController>>>;      // Registry type for
-                                                            // probe controllers.
+  using FastRegistry =
+      std::unordered_map<std::string_view,
+                         // Registry type for fast-path controllers.
+                         std::variant<std::shared_ptr<FastPathController>>>;
+  using Registry = std::unordered_map<
+      std::string_view,
+      std::variant<std::shared_ptr<ProbeController>>>;  // Registry type for
+                                                        // probe controllers.
 
   /** @brief Builds a request carrying the body plus the clientID/clientGroup
    * attributes that executeControllerMethod expects on every request. */
-  drogon::HttpRequestPtr makeRequest(const std::string&
+  drogon::HttpRequestPtr makeRequest(
+      const std::string&
           body)  // Helper that fills in the fields the dispatcher reads.
   {
     auto req =
         drogon::HttpRequest::newHttpRequest();  // Create a fresh request.
     req->setBody(body);                         // Put the given body in it.
-    req->attributes()->insert(
-        "clientID", static_cast<uint64_t>(7));  // Attach a known client id.
+    req->attributes()->insert("clientID",
+                              static_cast<uint64_t>(
+                                  7));  // Attach a known client id.
     req->attributes()->insert("clientGroup",
-        std::string("users"));  // Attach a known client group.
-    return req;                 // Hand the prepared request back.
+                              std::string(
+                                  "users"));  // Attach a known client group.
+    return req;                               // Hand the prepared request back.
   }
 
   // Lets a blocked worker task go when the test scope ends, even if a REQUIRE
@@ -185,20 +196,28 @@ namespace  // Anonymous namespace keeps all test helpers private to this file.
   };
 }  // namespace
 
-TEST_CASE("executeControllerMethod answers 200 through an inline executor",
+TEST_CASE(
+    "executeControllerMethod answers 200 through an inline executor",
     "[api][executor]")  // Zero workers: everything runs on the calling thread.
 {
   auto controller =
       std::make_shared<ProbeController>();  // The fake controller.
   Registry registry = {
-      {"probe", controller}};              // Register it under the key "probe".
-  DbExecutor              executor(0, 4);  // 0 workers means inline mode.
+      {"probe", controller}};  // Register it under the key "probe".
+  DbExecutor executor(0, 4);   // 0 workers means inline mode.
 
   drogon::HttpResponsePtr response;  // Will hold the dispatcher's response.
   auto req = makeRequest("hello");   // Build a request with body "hello".
   api::v2::executeControllerMethod(
-      executor, registry, "probe", &ProbeController::Do, req,
-      [&response](const drogon::HttpResponsePtr& r) { response = r; },
+      executor,
+      registry,
+      "probe",
+      &ProbeController::Do,
+      req,
+      [&response](const drogon::HttpResponsePtr& r)
+      {
+        response = r;
+      },
       req->body());  // Dispatch the call and capture the response.
 
   REQUIRE(response != nullptr);  // A response must have been produced.
@@ -226,8 +245,15 @@ TEST_CASE(
         makeRequest("payload that must outlive the handler");  // Request scoped
                                                                // to this block.
     api::v2::executeControllerMethod(
-        executor, registry, "probe", &ProbeController::Do, req,
-        [&done](const drogon::HttpResponsePtr& r) { done.set_value(r); },
+        executor,
+        registry,
+        "probe",
+        &ProbeController::Do,
+        req,
+        [&done](const drogon::HttpResponsePtr& r)
+        {
+          done.set_value(r);
+        },
         req->body());  // Dispatch; the task keeps its own copy of the data.
   }  // the handler's own reference to the request is gone; the task holds its
      // own
@@ -262,10 +288,12 @@ TEST_CASE(
        started_promise;  // Signalled when the blocking task starts.
   auto started = started_promise.get_future();  // Future for that signal.
   std::promise<void> release_promise;  // Used to let the blocking task finish.
-  auto          release = release_promise.get_future()
-                              .share();  // Shared so the task can wait on it.
-  ReleaseOnExit gate{release_promise, false,
-      &executor};  // Guard that always releases the task at scope exit.
+  auto release = release_promise.get_future()
+                     .share();  // Shared so the task can wait on it.
+  ReleaseOnExit
+      gate{release_promise,
+           false,
+           &executor};  // Guard that always releases the task at scope exit.
 
   REQUIRE(executor.submit(  // Occupy the only worker with a task that waits.
       [&]
@@ -276,13 +304,23 @@ TEST_CASE(
   REQUIRE(started.wait_for(5s) ==
           std::future_status::ready);  // Wait until the worker is definitely
                                        // busy.
-  REQUIRE(executor.submit([] {}));     // the queue (size 1) is full now
+  REQUIRE(executor.submit(
+      []
+      {
+      }));  // the queue (size 1) is full now
 
   drogon::HttpResponsePtr response;  // Will hold the dispatcher's response.
   auto                    req = makeRequest("x");  // A minimal request.
   api::v2::executeControllerMethod(
-      executor, registry, "probe", &ProbeController::Do, req,
-      [&response](const drogon::HttpResponsePtr& r) { response = r; },
+      executor,
+      registry,
+      "probe",
+      &ProbeController::Do,
+      req,
+      [&response](const drogon::HttpResponsePtr& r)
+      {
+        response = r;
+      },
       req->body());  // Try to dispatch while saturated.
 
   REQUIRE(response != nullptr);  // A response must exist.
@@ -301,15 +339,22 @@ TEST_CASE(
 {
   auto controller =
       std::make_shared<ProbeController>();  // The fake controller.
-  controller->throw_busy           = true;  // Make it throw DatabaseBusy.
-  Registry                registry = {{"probe", controller}};  // Register it.
-  DbExecutor              executor(0, 4);  // Inline executor.
+  controller->throw_busy = true;            // Make it throw DatabaseBusy.
+  Registry   registry    = {{"probe", controller}};  // Register it.
+  DbExecutor executor(0, 4);                         // Inline executor.
 
   drogon::HttpResponsePtr response;  // Will hold the dispatcher's response.
   auto                    req = makeRequest("x");  // A minimal request.
   api::v2::executeControllerMethod(
-      executor, registry, "probe", &ProbeController::Do, req,
-      [&response](const drogon::HttpResponsePtr& r) { response = r; },
+      executor,
+      registry,
+      "probe",
+      &ProbeController::Do,
+      req,
+      [&response](const drogon::HttpResponsePtr& r)
+      {
+        response = r;
+      },
       req->body());  // Dispatch the call.
 
   REQUIRE(response != nullptr);  // A response must exist.
@@ -318,16 +363,23 @@ TEST_CASE(
 }
 
 TEST_CASE("executeControllerMethod answers 400 for an unknown type",
-    "[api][executor]")  // Unknown controller key.
+          "[api][executor]")  // Unknown controller key.
 {
-  Registry                registry;        // Deliberately empty registry.
-  DbExecutor              executor(0, 4);  // Inline executor.
+  Registry   registry;        // Deliberately empty registry.
+  DbExecutor executor(0, 4);  // Inline executor.
 
   drogon::HttpResponsePtr response;  // Will hold the dispatcher's response.
   auto                    req = makeRequest("x");  // A minimal request.
   api::v2::executeControllerMethod(
-      executor, registry, "nope", &ProbeController::Do, req,
-      [&response](const drogon::HttpResponsePtr& r) { response = r; },
+      executor,
+      registry,
+      "nope",
+      &ProbeController::Do,
+      req,
+      [&response](const drogon::HttpResponsePtr& r)
+      {
+        response = r;
+      },
       req->body());  // Ask for a key that is not registered.
 
   REQUIRE(response != nullptr);  // A response must exist.
@@ -344,15 +396,21 @@ TEST_CASE(
   std::atomic<int> ran{0};          // Thread-safe count of completed tasks.
   for (int i = 0; i < 5; ++i)       // Submit five small tasks.
   {
-    REQUIRE(
-        executor.submit([&] { ++ran; }));  // Each submission must be accepted.
+    REQUIRE(executor.submit(
+        [&]
+        {
+          ++ran;
+        }));  // Each submission must be accepted.
   }
   executor.shutdown();  // Drain the queue and stop accepting work.
   CHECK(ran == 5);      // All five tasks finished before shutdown returned.
-  CHECK_FALSE(
-      executor.submit([&] { ++ran; }));  // New work is refused after shutdown.
-  executor.shutdown();                   // second call is harmless
-  CHECK(ran == 5);  // No task ran from the refused submissions.
+  CHECK_FALSE(executor.submit(
+      [&]
+      {
+        ++ran;
+      }));              // New work is refused after shutdown.
+  executor.shutdown();  // second call is harmless
+  CHECK(ran == 5);      // No task ran from the refused submissions.
 }
 
 // The I/O fast path handles requests that need no database entirely on the
@@ -370,8 +428,15 @@ TEST_CASE(
   drogon::HttpResponsePtr response;  // Will hold the dispatcher's response.
   auto                    req = makeRequest("x");  // A minimal request.
   api::v2::executeControllerMethod(
-      executor, registry, "fast", &FastPathController::Do, req,
-      [&response](const drogon::HttpResponsePtr& r) { response = r; },
+      executor,
+      registry,
+      "fast",
+      &FastPathController::Do,
+      req,
+      [&response](const drogon::HttpResponsePtr& r)
+      {
+        response = r;
+      },
       true);  // `true` tells the controller no database is needed.
 
   REQUIRE(response != nullptr);  // A response must exist.
@@ -403,8 +468,15 @@ TEST_CASE(
   auto future = done.get_future();  // Future the test waits on.
   auto req    = makeRequest("x");   // Request kept alive across the call.
   api::v2::executeControllerMethod(
-      executor, registry, "fast", &FastPathController::Do, req,
-      [&done](const drogon::HttpResponsePtr& r) { done.set_value(r); },
+      executor,
+      registry,
+      "fast",
+      &FastPathController::Do,
+      req,
+      [&done](const drogon::HttpResponsePtr& r)
+      {
+        done.set_value(r);
+      },
       false);  // `false` means a database IS needed.
 
   REQUIRE(future.wait_for(5s) ==
@@ -419,7 +491,7 @@ TEST_CASE(
 }
 
 TEST_CASE("fast path is off without workers",
-    "[api][executor]")  // Fast path requires at least one worker.
+          "[api][executor]")  // Fast path requires at least one worker.
 {
   DbExecutor executor(0, 4, true);     // Fast path requested, but zero workers.
   CHECK_FALSE(executor.ioFastPath());  // It is disabled because there is no

@@ -77,10 +77,10 @@ namespace api::v2  // The v2 API helpers live here.
     Helper() = default;  // Default constructor is fine; there is nothing to
                          // initialise.
     Helper(const Helper&) = default;  // Copying an empty object is harmless.
-    Helper(
-        Helper&&) = delete;  // Moving is disabled so the type stays copy-only.
-    Helper& operator=(
-        const Helper&)          = default;  // Copy assignment is also harmless.
+    Helper(Helper&&) =
+        delete;  // Moving is disabled so the type stays copy-only.
+    Helper& operator=(const Helper&) =
+        default;                           // Copy assignment is also harmless.
     Helper& operator=(Helper&&) = delete;  // Move assignment disabled, matching
                                            // the deleted move constructor.
     virtual ~Helper() = default;           // Virtual destructor kept for
@@ -94,7 +94,8 @@ namespace api::v2  // The v2 API helpers live here.
      * @param[in] message Human-readable failure detail.
      * @param[in,out] callback Response callback, consumed exactly once.
      */
-    static void failureResponse(const std::string& message,
+    static void failureResponse(
+        const std::string& message,
         std::function<void(const drogon::HttpResponsePtr&)>&&
             callback);  // Used for unexpected internal errors.
     /**
@@ -106,7 +107,8 @@ namespace api::v2  // The v2 API helpers live here.
      */
     static void
     errorResponse(  // Used for expected errors such as 400, 403, 503.
-        const drogon::HttpStatusCode& code, const std::string& message,
+        const drogon::HttpStatusCode& code,
+        const std::string&            message,
         std::function<void(const drogon::HttpResponsePtr&)>&&
             callback);  // code becomes the HTTP status; message is the body
                         // text.
@@ -116,10 +118,11 @@ namespace api::v2  // The v2 API helpers live here.
      * @param[in] message JSON body text to send unchanged.
      * @param[in,out] callback Response callback, consumed exactly once.
      */
-    static void        successResponse(const std::string& message,
+    static void successResponse(
+        const std::string& message,
         std::function<void(const drogon::HttpResponsePtr&)>&&
             callback);  // Success bodies come straight from controllers as
-                               // JSON.
+                        // JSON.
     /**
      * @brief Wrap a message in a JSON object with a "Status" field.
      * @param[in] status Value for the "Status" field (e.g. "Failure" or
@@ -127,7 +130,8 @@ namespace api::v2  // The v2 API helpers live here.
      * @param[in] message Message to store under the message key.
      * @return Pretty-printed JSON string.
      */
-    static std::string prepare(const std::string& status,
+    static std::string prepare(
+        const std::string& status,
         const std::string& message);  // Builds the tagged error body used
                                       // by failureResponse/errorResponse.
 

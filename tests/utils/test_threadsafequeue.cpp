@@ -91,8 +91,8 @@ TEST_CASE("ThreadSafeQueue front peeks without consuming", "[utils][queue]")
 
   queue.push(7);                                  // Add one item.
   CHECK(queue.front() == std::optional<int>(7));  // The peek sees 7.
-  CHECK(
-      queue.size() == 1);  // peek did not consume  — the item is still counted.
+  CHECK(queue.size() ==
+        1);  // peek did not consume  — the item is still counted.
   CHECK(queue.pop() ==
         std::optional<int>(7));  // A later pop still gets that same item.
 }
@@ -103,7 +103,7 @@ TEST_CASE("ThreadSafeQueue clear empties the queue", "[utils][queue]")
   ThreadSafeQueue<int> queue;  // An empty integer queue.
 
   for (int i = 0; i < 5;
-      ++i)  // Add five items; the loop stops once i reaches 5.
+       ++i)  // Add five items; the loop stops once i reaches 5.
   {
     queue.push(i);  // Insert the current value.
   }
@@ -144,13 +144,13 @@ TEST_CASE("ThreadSafeQueue emplace constructs in place", "[utils][queue]")
 // Several producers push while one consumer pops; no item may be lost or
 // duplicated.
 TEST_CASE("ThreadSafeQueue handles concurrent producers and consumers",
-    "[utils][queue]")
+          "[utils][queue]")
 {
   constexpr int kProducers = 4;  // Number of producer threads.
   constexpr int kItemsPerThread =
       250;  // Items each producer pushes; 4 x 250 = 1000 total.
 
-  ThreadSafeQueue<int>     queue;  // The shared queue all threads use.
+  ThreadSafeQueue<int> queue;  // The shared queue all threads use.
 
   std::vector<std::thread> producers;   // Holds the producer threads.
   for (int t = 0; t < kProducers; ++t)  // Launch each producer.
@@ -159,7 +159,7 @@ TEST_CASE("ThreadSafeQueue handles concurrent producers and consumers",
         [&queue, t]          // Capture the queue by reference and t by value.
         {
           for (int i = 0; i < kItemsPerThread;
-              ++i)  // Each producer pushes its share.
+               ++i)  // Each producer pushes its share.
           {
             queue.push(t * kItemsPerThread +
                        i);  // Unique value per item: 0..249, 250..499, etc.
@@ -203,20 +203,21 @@ TEST_CASE("ThreadSafeQueue handles concurrent producers and consumers",
   std::vector<int> expected;  // Will hold the values we should have received.
   expected.reserve(consumed.size());  // Match the size to avoid reallocations.
   for (int t = 0; t < kProducers;
-      ++t)  // Rebuild the same value ranges the producers generated.
+       ++t)  // Rebuild the same value ranges the producers generated.
   {
     for (int i = 0; i < kItemsPerThread;
-        ++i)  // Same inner range as the producer side.
+         ++i)  // Same inner range as the producer side.
     {
       expected.push_back(t * kItemsPerThread +
                          i);  // Identical formula produces the identical value.
     }
   }
   std::sort(expected.begin(),
-      expected.end());  // Sort both lists so arrival order does not matter.
+            expected
+                .end());  // Sort both lists so arrival order does not matter.
   std::sort(consumed.begin(),
-      consumed.end());  // Now a direct element-by-element comparison is
-                        // meaningful.
+            consumed.end());  // Now a direct element-by-element comparison is
+                              // meaningful.
 
   REQUIRE(consumed.size() ==
           expected.size());     // No items lost (fewer) or duplicated (more).
@@ -240,8 +241,8 @@ TEST_CASE("ThreadSafeQueue push rvalue moves the object in", "[utils][queue]")
 }
 
 // size() and empty() must stay in sync with pushes, pops and clears.
-TEST_CASE(
-    "ThreadSafeQueue size tracks insertions and removals", "[utils][queue]")
+TEST_CASE("ThreadSafeQueue size tracks insertions and removals",
+          "[utils][queue]")
 {
   ThreadSafeQueue<int> queue;  // An empty integer queue.
 

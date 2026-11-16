@@ -51,5 +51,6 @@
  */
 #define CALLBACK_         \
   std::function<void(int, \
-      const std::string&)>  // The one shared "report your result" signature:
-                            // (status code, response text) -> void.
+                     const std::string&)>  // The one shared "report your
+                                           // result" signature: (status code,
+                                           // response text) -> void.

@@ -115,12 +115,12 @@ class Entity : public Base
    */
   Entity(const Entity&) =
       delete;  // No copy: an entity belongs to exactly one request.
-  Entity(
-      Entity&&) = delete;  // No move: keep the object where it was constructed.
-  Entity& operator=(
-      const Entity&) = delete;  // No copy assignment, for the same reason.
-  Entity& operator=(
-      Entity&&) = delete;  // No move assignment, for the same reason.
+  Entity(Entity&&) =
+      delete;  // No move: keep the object where it was constructed.
+  Entity& operator=(const Entity&) =
+      delete;  // No copy assignment, for the same reason.
+  Entity& operator=(Entity&&) =
+      delete;  // No move assignment, for the same reason.
 
   template <typename T>
 
@@ -268,16 +268,21 @@ class Entity : public Base
     {
       Message::ErrorMessage(
           fmt::format("Failed to create Sql search statement for table {}.",
-              tablename));  // Log why the check is abandoned.
-      return false;         // Report "does not exist" so callers can take the
-                            // normal failure path.
+                      tablename));  // Log why the check is abandoned.
+      return false;  // Report "does not exist" so callers can take the
+                     // normal failure path.
     }
-    auto result = databaseController()->checkItemExists(tablename, "id",
-        std::to_string(_id.value()));  // Ask the shared controller if this
-                                       // id is present; convert the id to
-                                       // text for the helper.
-    return result.value_or(false);     // value_or turns a missing/failed result
-                                       // into false rather than throwing.
+    auto result =
+        databaseController()
+            ->checkItemExists(tablename,
+                              "id",
+                              std::to_string(
+                                  _id.value()));  // Ask the shared controller
+                                                  // if this id is present;
+                                                  // convert the id to text for
+                                                  // the helper.
+    return result.value_or(false);  // value_or turns a missing/failed result
+                                    // into false rather than throwing.
   }
 
  protected:
@@ -306,7 +311,7 @@ class Entity : public Base
       std::vector<std::string> values_arr;  // Matching placeholders ($1,
                                             // $2, ...) in the same order.
 
-      jsoncons::json           data_json =
+      jsoncons::json data_json =
           std::get<Create_t>(data)
               .get_data();  // Take a copy of the payload so we can edit
                             // it without changing the entity.
@@ -329,30 +334,32 @@ class Entity : public Base
       }
 
       for (auto& iterator :
-          data_json.object_range())  // Walk each JSON member; object_range
-                                     // may not preserve order, so keys and
-                                     // values are collected in lockstep.
+           data_json.object_range())  // Walk each JSON member; object_range
+                                      // may not preserve order, so keys and
+                                      // values are collected in lockstep.
       {
         keys_arr.push_back(
             iterator.key());  // The JSON key becomes a column name.
-        values_arr.push_back(binder.bind(iterator.value()
+        values_arr.push_back(binder.bind(
+            iterator.value()
                 .template as<std::string>()));  // Bind the value as
                                                 // text and store the
                                                 // returned placeholder.
       }
 
       return fmt::format("INSERT INTO {} ({}) VALUES ({}) RETURNING *;",
-          tablename, fmt::join(keys_arr, ","),
-          fmt::join(values_arr,
-              ","));  // RETURNING * gives all new columns back to the
-                      // caller.
+                         tablename,
+                         fmt::join(keys_arr, ","),
+                         fmt::join(values_arr,
+                                   ","));  // RETURNING * gives all new columns
+                                           // back to the caller.
     }
     catch (const std::exception&
-            e)  // Catch any error from JSON access or formatting.
+               e)  // Catch any error from JSON access or formatting.
     {
       Message::ErrorMessage(
           fmt::format("Failed to create Sql create statement for table {}.",
-              tablename));  // Log which table failed.
+                      tablename));  // Log which table failed.
       Message::CriticalMessage(
           e.what());        // Log the low-level reason for debugging.
       return std::nullopt;  // Signal failure instead of returning
@@ -385,7 +392,8 @@ class Entity : public Base
       std::string columns =
           schema.empty()
               ? "*"
-              : fmt::format("{}", fmt::join(schema,
+              : fmt::format("{}",
+                            fmt::join(schema,
                                       ", "));  // No requested columns means
                                                // "all columns"; otherwise
                                                // join the names with commas.
@@ -395,21 +403,24 @@ class Entity : public Base
       {
         Message::ErrorMessage(
             fmt::format("Failed to read data from table {}. No id provided.",
-                tablename));  // Log the caller mistake.
-        return std::nullopt;  // No statement: the caller turns this
-                              // into an error response.
+                        tablename));  // Log the caller mistake.
+        return std::nullopt;          // No statement: the caller turns this
+                                      // into an error response.
       }
-      return fmt::format("SELECT {} FROM {}_safe WHERE id={} LIMIT 1;", columns,
-          tablename,
-          binder.bind(user_id.value()));  // Read from the "_safe" view (a
-                                          // filtered view), bind the id, and
-                                          // LIMIT 1 because ids are unique.
+      return fmt::format("SELECT {} FROM {}_safe WHERE id={} LIMIT 1;",
+                         columns,
+                         tablename,
+                         binder.bind(
+                             user_id.value()));  // Read from the "_safe" view
+                                                 // (a filtered view), bind the
+                                                 // id, and LIMIT 1 because ids
+                                                 // are unique.
     }
     catch (const std::exception& e)
     {
       Message::ErrorMessage(
           fmt::format("Failed to create Sql read statement for table {}.",
-              tablename));                 // Log the failing table.
+                      tablename));         // Log the failing table.
       Message::CriticalMessage(e.what());  // Log the exception details.
       return std::nullopt;  // Report failure without throwing at the
                             // caller.
@@ -445,36 +456,42 @@ class Entity : public Base
       {
         Message::ErrorMessage(
             fmt::format("Failed to update data from table {}. No id provided.",
-                tablename));  // Log the missing id.
-        return std::nullopt;  // No statement is safer than an unscoped
-                              // UPDATE.
+                        tablename));  // Log the missing id.
+        return std::nullopt;          // No statement is safer than an unscoped
+                                      // UPDATE.
       }
 
       std::vector<std::string>
           set_clauses;  // One "column = $n" string per field to change.
 
       for (auto it = payload.object_range().begin();
-          it != payload.object_range().end();
-          ++it)  // Walk every JSON member to build its SET clause.
+           it != payload.object_range().end();
+           ++it)  // Walk every JSON member to build its SET clause.
       {
-        set_clauses.push_back(fmt::format("{} = {}", it->key(),
-            binder.bind(it->value()
-                    .template as<std::string>())));  // Column name is text from
-                                                     // the validated payload;
-                                                     // the value is bound
-                                                     // safely.
+        set_clauses.push_back(
+            fmt::format("{} = {}",
+                        it->key(),
+                        binder.bind(
+                            it->value()
+                                .template as<
+                                    std::string>())));  // Column name is text
+                                                        // from the validated
+                                                        // payload; the value is
+                                                        // bound safely.
       }
 
-      return fmt::format("UPDATE {} SET {} WHERE id={} RETURNING *;", tablename,
-          fmt::join(set_clauses, ", "),
-          binder.bind(_id.value()));  // Bind the id LAST so its placeholder
-                                      // number follows the SET values.
+      return fmt::format("UPDATE {} SET {} WHERE id={} RETURNING *;",
+                         tablename,
+                         fmt::join(set_clauses, ", "),
+                         binder.bind(_id.value()));  // Bind the id LAST so its
+                                                     // placeholder number
+                                                     // follows the SET values.
     }
     catch (const std::exception& e)
     {
       Message::ErrorMessage(
           fmt::format("Failed to create Sql update statement for table {}.",
-              tablename));                 // Log the failing table.
+                      tablename));         // Log the failing table.
       Message::CriticalMessage(e.what());  // Log details.
       return std::nullopt;                 // Signal failure.
     }
@@ -503,18 +520,19 @@ class Entity : public Base
       {
         Message::ErrorMessage(
             fmt::format("Failed to delete data from table {}. No id provided.",
-                tablename));  // Log the mistake.
-        return std::nullopt;  // No statement returned.
+                        tablename));  // Log the mistake.
+        return std::nullopt;          // No statement returned.
       }
-      return fmt::format("DELETE FROM {} WHERE id={} RETURNING id;", tablename,
-          binder.bind(_id.value()));  // RETURNING id confirms which row
-                                      // was removed.
+      return fmt::format("DELETE FROM {} WHERE id={} RETURNING id;",
+                         tablename,
+                         binder.bind(_id.value()));  // RETURNING id confirms
+                                                     // which row was removed.
     }
     catch (const std::exception& e)
     {
       Message::ErrorMessage(
           fmt::format("Failed to create Sql delete statement for table {}.",
-              tablename));                 // Log the failing table.
+                      tablename));         // Log the failing table.
       Message::CriticalMessage(e.what());  // Log details.
       return std::nullopt;                 // Signal failure.
     }
@@ -546,9 +564,10 @@ class Entity : public Base
           getData());  // The parsed and validated search parameters.
       // Bound in a fixed order (argument evaluation order is
       // unspecified).
-      const std::string keyword_ph = binder.bind(fmt::format("%{}%",
-          searchdata.keyword));  // Wrap the keyword in % so ILIKE matches
-                                 // anywhere; bind it as $1.
+      const std::string keyword_ph = binder.bind(
+          fmt::format("%{}%",
+                      searchdata.keyword));  // Wrap the keyword in % so ILIKE
+                                             // matches anywhere; bind it as $1.
       const std::string limit_ph =
           binder.bind(searchdata.limit + 1);  // Ask for one extra row to detect
                                               // another page; bound as $2.
@@ -557,8 +576,12 @@ class Entity : public Base
       return fmt::format(
           "SELECT * FROM {}_safe WHERE {}::text ILIKE {} ORDER BY {} {} "
           "LIMIT {} OFFSET {};",
-          tablename, searchdata.filter, keyword_ph, searchdata.order_by,
-          searchdata.direction, limit_ph,
+          tablename,
+          searchdata.filter,
+          keyword_ph,
+          searchdata.order_by,
+          searchdata.direction,
+          limit_ph,
           offset_ph);  // filter/order_by/direction are pre-validated
                        // identifiers written into the text; values use $n
                        // placeholders.
@@ -567,7 +590,7 @@ class Entity : public Base
     {
       Message::ErrorMessage(
           fmt::format("Failed to create Sql search statement for table {}.",
-              tablename));                 // Log the failing table.
+                      tablename));         // Log the failing table.
       Message::CriticalMessage(e.what());  // Log details.
       return std::nullopt;                 // Signal failure.
     }
@@ -577,7 +600,7 @@ class Entity : public Base
    * @brief Table this entity targets; also the group name used by permission
    * checks.
    */
-  const std::string                          tablename;
+  const std::string tablename;
   /*NOLINT*/  // The table name is fixed at construction, which is why it is
               // const; the lint marker suppresses a style warning about
               // member naming.

@@ -138,11 +138,15 @@ bool KeeprBase::getLastLogoutTimeIfActive(
             .value());    // Fill the two {} placeholders with the safe table
                           // names; $1 stays a bound parameter.
     pqxx::params params;  // Holds values for the $1 placeholder.
-    params.append(clientLoginData->clientId
+    params.append(
+        clientLoginData->clientId
             .value());  // Bind the client id as a value, not as SQL text.
 
-    auto results = databaseController()->executeReadQuery(param_query,
-        params);  // Run the read query through the shared controller.
+    auto results =
+        databaseController()
+            ->executeReadQuery(param_query,
+                               params);  // Run the read query through the
+                                         // shared controller.
 
     if (results.has_value())  // Did the query return a result set at all?
     {
@@ -193,7 +197,7 @@ bool KeeprBase::setNowLoginTimeGetLastLogoutTime(
 
     if (!clientLoginData->group.has_value() ||
         !clientLoginData->clientId
-            .has_value())  // Both are needed to build the row.
+             .has_value())  // Both are needed to build the row.
     {
       Message::ErrorMessage(
           "group or client id is empty");  // Log the missing input.
@@ -216,11 +220,12 @@ bool KeeprBase::setNowLoginTimeGetLastLogoutTime(
     pqxx::params params;    // Parameter container.
     params.append(clientLoginData->clientId.value());  // $1: the client id.
     params.append(clientLoginData->nowLoginTime
-            .value());  // $2: the new login time (also used for last_logout
-                        // on insert).
+                      .value());  // $2: the new login time (also used for
+                                  // last_logout on insert).
 
-    auto result = databaseController()->executeQuery(
-        param_query, params);  // Run the write query.
+    auto result =
+        databaseController()->executeQuery(param_query,
+                                           params);  // Run the write query.
 
     if (!result.has_value())  // Query failed to return a result.
     {
@@ -281,8 +286,8 @@ void KeeprBase::setNowLogoutTime(uint64_t _id, const std::string& _group)
     params.append(_id);          // $1: client id.
     params.append(logout_time);  // $2: the logout timestamp.
 
-    auto result = databaseController()->executeQuery(
-        param_query, params);  // Run the write.
+    auto result = databaseController()->executeQuery(param_query,
+                                                     params);  // Run the write.
 
     if (!result.has_value())  // No result returned.
     {
@@ -321,12 +326,14 @@ std::optional<std::string> KeeprBase::getLastLoginTime(
   }
   const std::string param_query =
       fmt::format("SELECT last_login FROM {} WHERE id = $1;",
-          sessions.value());  // Safe table name, bound id value.
-  pqxx::params params;        // Parameter container.
-  params.append(_id);         // Bind the client id as $1.
+                  sessions.value());  // Safe table name, bound id value.
+  pqxx::params params;                // Parameter container.
+  params.append(_id);                 // Bind the client id as $1.
 
-  return databaseController()->doReadQuery(param_query,
-      params);  // Return the controller's optional result directly.
+  return databaseController()
+      ->doReadQuery(param_query,
+                    params);  // Return the controller's optional result
+                              // directly.
 }
 
 /**
@@ -360,11 +367,15 @@ std::string KeeprBase::current_time_to_utc_string()
   }
 
   // Format the time using fmt::format
-  std::string formatted_time = fmt::format(
-      "{:04}-{:02}-{:02} {:02}:{:02}:{:02} +0000", mtime.tm_year + YEAR_OFFSET,
-      mtime.tm_mon + 1, mtime.tm_mday, mtime.tm_hour, mtime.tm_min,
-      mtime.tm_sec);  // Zero-padded, fixed-width UTC with +0000 offset;
-                      // tm_mon is 0-based so add 1.
+  std::string formatted_time =
+      fmt::format("{:04}-{:02}-{:02} {:02}:{:02}:{:02} +0000",
+                  mtime.tm_year + YEAR_OFFSET,
+                  mtime.tm_mon + 1,
+                  mtime.tm_mday,
+                  mtime.tm_hour,
+                  mtime.tm_min,
+                  mtime.tm_sec);  // Zero-padded, fixed-width UTC with +0000
+                                  // offset; tm_mon is 0-based so add 1.
 
   return formatted_time;  // Hand back the text.
 }
@@ -431,7 +442,7 @@ bool KeeprBase::decodeToken(
       const std::exception& e)  // Missing/malformed claim or conversion error.
   {
     message = fmt::format("Error storing session:{}",
-        e.what());                      // Build a diagnostic message.
+                          e.what());    // Build a diagnostic message.
     Message::CriticalMessage(message);  // Log it.
   }
   return false;  // Reject on error.
@@ -489,7 +500,7 @@ bool KeeprBase::validateToken(
     return true;  // All checks passed.
   }
   catch (const jwt::error::token_verification_exception&
-          e)  // Signature or claim verification failed.
+             e)  // Signature or claim verification failed.
   {
     message =
         // Explain.
@@ -545,8 +556,10 @@ drogon::Task<bool> KeeprBase::getLastLogoutTimeIfActiveCoro(
     params.append(clientLoginData->clientId.value());  // Bind the client id.
 
     auto results =
-        co_await databaseController()->executeReadQueryCoro(param_query,
-            params);  // Await the DB read without blocking the thread.
+        co_await databaseController()
+            ->executeReadQueryCoro(param_query,
+                                   params);  // Await the DB read without
+                                             // blocking the thread.
 
     if (results.has_value())  // Got a result set.
     {
@@ -620,7 +633,7 @@ drogon::Task<bool> KeeprBase::validateTokenCoro(
     co_return true;  // All checks passed.
   }
   catch (const jwt::error::token_verification_exception&
-          e)  // Verification failed.
+             e)  // Verification failed.
   {
     message =
         // Explain.
@@ -667,28 +680,35 @@ KeeprBase::createTokenVerifier(
                                        // build a verifier.
   }
 
-  return jwt::verify<jwt::traits::
-          kazuho_picojson>()  // Start a verifier using picojson traits.
-      .allow_algorithm(jwt::algorithm::hs256{std::string(tokenManagerParameters_
+  return jwt::verify<
+             jwt::traits::
+                 kazuho_picojson>()  // Start a verifier using picojson traits.
+      .allow_algorithm(jwt::algorithm::hs256{std::string(
+          tokenManagerParameters_
               .secret)})  // Accept HS256 signed with the configured secret.
-      .with_issuer(std::string(tokenManagerParameters_
-              .issuer))  // Require the configured issuer claim.
+      .with_issuer(
+          std::string(tokenManagerParameters_
+                          .issuer))  // Require the configured issuer claim.
       .with_type(std::string(
           tokenManagerParameters_.type))  // Require the configured type claim.
       .with_subject(clientLoginData->username
-              .value())  // Require the username to match the subject.
-      .with_id(std::to_string(clientLoginData->clientId
+                        .value())  // Require the username to match the subject.
+      .with_id(std::to_string(
+          clientLoginData->clientId
               .value()))  // Require the client id to match the token id.
       .with_claim("ip_address",
-          jwt::basic_claim<jwt::traits::kazuho_picojson>(clientLoginData
-                  ->ip_address.value()))  // Require the IP claim to match.
+                  jwt::basic_claim<jwt::traits::kazuho_picojson>(
+                      clientLoginData->ip_address
+                          .value()))  // Require the IP claim to match.
       .with_claim("group",
-          jwt::basic_claim<jwt::traits::kazuho_picojson>(clientLoginData->group
-                  .value()))  // Require the group claim to match.
+                  jwt::basic_claim<jwt::traits::kazuho_picojson>(
+                      clientLoginData->group
+                          .value()))  // Require the group claim to match.
       .with_claim("llodt",
-          jwt::basic_claim<jwt::traits::kazuho_picojson>(
-              clientLoginData->lastLogoutTime
-                  .value()));  // Require the logout-time claim to match.
+                  jwt::basic_claim<jwt::traits::kazuho_picojson>(
+                      clientLoginData->lastLogoutTime
+                          .value()));  // Require the logout-time claim to
+                                       // match.
 }
 
 /**
@@ -700,8 +720,9 @@ KeeprBase::createTokenVerifier(
 std::optional<jsoncons::json> api::v2::KeeprBase::getPasswordHashForUserName(
     const std::string& username, const std::string& _group)
 {
-  return databaseController()->getPasswordHashForUserName(
-      username, _group);  // Pure forwarder to the database controller.
+  return databaseController()
+      ->getPasswordHashForUserName(username, _group);  // Pure forwarder to the
+                                                       // database controller.
 }
 
 /**
@@ -713,9 +734,11 @@ std::optional<jsoncons::json> api::v2::KeeprBase::getPasswordHashForUserName(
  * awaited query.
  */
 drogon::Task<std::optional<jsoncons::json>>
-api::v2::KeeprBase::getPasswordHashForUserNameCoro(
-    const std::string& username, const std::string& _group)
+api::v2::KeeprBase::getPasswordHashForUserNameCoro(const std::string& username,
+                                                   const std::string& _group)
 {
-  co_return co_await databaseController()->getPasswordHashForUserNameCoro(
-      username, _group);  // Await the DB controller and return its result.
+  co_return co_await databaseController()
+      ->getPasswordHashForUserNameCoro(username,
+                                       _group);  // Await the DB controller and
+                                                 // return its result.
 }

@@ -147,10 +147,11 @@ StaffController<T>::StaffController()
  */
 template <typename T>  // Works for whichever entity type T this controller was
                        // instantiated with.
-void StaffController<T>::AddStaffToEntity(CALLBACK_&& callback,
-    const Requester&&                                 requester,
-    std::string_view data)  // Synchronous add: parse,
-                            // authorize, then run SQL.
+void StaffController<T>::AddStaffToEntity(
+    CALLBACK_&&       callback,
+    const Requester&& requester,
+    std::string_view  data)  // Synchronous add: parse,
+                             // authorize, then run SQL.
 {
   jsoncons::json
       staff_j;  // Will hold the parsed JSON request body; jsoncons::json can
@@ -179,24 +180,27 @@ void StaffController<T>::AddStaffToEntity(CALLBACK_&& callback,
 
     // Permission decides before any database side effect; denial is
     // reported as-is.
-    if (!gateKeeper->canManageStaff<T>(requester, _id,
-            error))  // The "!" means "if NOT allowed": stop when permission
-                     // is denied.
+    if (!gateKeeper
+             ->canManageStaff<T>(requester,
+                                 _id,
+                                 error))  // The "!" means "if NOT allowed":
+                                          // stop when permission is denied.
     {
       std::move(callback)(error.code,
-          error.message);  // Report the GateKeeper's error straight back
-                           // to the caller.
-      return;              // Stop here — no SQL should run when permission was
-                           // denied.
+                          error.message);  // Report the GateKeeper's error
+                                           // straight back to the caller.
+      return;  // Stop here — no SQL should run when permission was
+               // denied.
     }
 
     // Controller builds and runs the entity's add-staff SQL statement.
     Controller::addStaff(staff,
-        std::move(callback));  // Hand off the SQL work; std::move transfers
-                               // the callback so no copy is made.
+                         std::move(callback));  // Hand off the SQL work;
+                                                // std::move transfers the
+                                                // callback so no copy is made.
   }
   catch (const std::exception&
-          e)  // Runs only if something above threw an exception.
+             e)  // Runs only if something above threw an exception.
   {
     CRITICALMESSAGERESPONSE  // Macro: build an HTTP 500 (or 503 if the DB
                              // is busy) error reply and return it.
@@ -213,8 +217,9 @@ void StaffController<T>::AddStaffToEntity(CALLBACK_&& callback,
  * staff member).
  */
 template <typename T>
-void StaffController<T>::RemoveStaffFromEntity(CALLBACK_&& callback,
-    const Requester&&                                      requester,
+void StaffController<T>::RemoveStaffFromEntity(
+    CALLBACK_&&       callback,
+    const Requester&& requester,
     std::string_view
         data)  // Synchronous remove: parse, authorize, then run SQL.
 {
@@ -233,19 +238,23 @@ void StaffController<T>::RemoveStaffFromEntity(CALLBACK_&& callback,
         payload);  // Convert the payload JSON into a typed struct.
 
     T staff(staffData);  // Build the concrete entity from the staff data.
-    if (!gateKeeper->canManageStaff<T>(requester, _id,
-            error))  // If NOT allowed to manage this service's staff...
+    if (!gateKeeper->canManageStaff<T>(requester,
+                                       _id,
+                                       error))  // If NOT allowed to manage this
+                                                // service's staff...
     {
-      std::move(callback)(error.code,
-          error.message);  // Send back the permission error as-is.
-      return;              // Stop before touching the database.
+      std::move(
+          callback)(error.code,
+                    error.message);  // Send back the permission error as-is.
+      return;                        // Stop before touching the database.
     }
     Controller::removeStaff(staff,
-        std::move(callback));  // Allowed: delegate the remove-staff SQL to
-                               // the base.
+                            std::move(
+                                callback));  // Allowed: delegate the
+                                             // remove-staff SQL to the base.
   }
   catch (const std::exception&
-          e)  // Any thrown exception is turned into an error response.
+             e)  // Any thrown exception is turned into an error response.
   {
     CRITICALMESSAGERESPONSE  // Macro: reply with 500 (or 503 for a busy
                              // database).
@@ -265,8 +274,9 @@ void StaffController<T>::RemoveStaffFromEntity(CALLBACK_&& callback,
  * `nominee_id` and the invite fields.
  */
 template <typename T>
-void StaffController<T>::InviteStaffToEntity(CALLBACK_&& callback,
-    const Requester&&                                    requester,
+void StaffController<T>::InviteStaffToEntity(
+    CALLBACK_&&       callback,
+    const Requester&& requester,
     std::string_view
         data)  // Synchronous invite: parse, authorize, then POST an email.
 {
@@ -285,12 +295,15 @@ void StaffController<T>::InviteStaffToEntity(CALLBACK_&& callback,
                                           // empty means delivery failed.
     T staff(staffData);  // Build the concrete entity from the invite data.
 
-    if (!gateKeeper->canManageStaff<T>(requester, _id,
-            error))  // If NOT allowed to invite for this service...
+    if (!gateKeeper->canManageStaff<T>(requester,
+                                       _id,
+                                       error))  // If NOT allowed to invite for
+                                                // this service...
     {
-      std::move(callback)(error.code,
-          error.message);  // Report the permission error unchanged.
-      return;              // Stop; do not send any email.
+      std::move(
+          callback)(error.code,
+                    error.message);  // Report the permission error unchanged.
+      return;                        // Stop; do not send any email.
     }
 
     // parse_status records whether StaffData found all required fields;
@@ -302,39 +315,44 @@ void StaffController<T>::InviteStaffToEntity(CALLBACK_&& callback,
     {
       // Synchronous cURL POST; an empty optional denotes delivery
       // failure.
-      response = Communicate::sendRequest(email_sender_daemon_config_.host,
-          email_sender_daemon_config_
-              .port,  // Send the invite to the configured email daemon
-                      // (host + port).
-          email_sender_daemon_config_.message_queue_path,
-          drogon::HttpMethod::Post,
-          staff_j.to_string());  // Use the configured queue path, an HTTP
-                                 // POST, and the JSON as the body.
+      response = Communicate::
+          sendRequest(email_sender_daemon_config_.host,
+                      email_sender_daemon_config_
+                          .port,  // Send the invite to the configured email
+                                  // daemon (host + port).
+                      email_sender_daemon_config_.message_queue_path,
+                      drogon::HttpMethod::Post,
+                      staff_j.to_string());  // Use the configured queue path,
+                                             // an HTTP POST, and the JSON as
+                                             // the body.
 
       if (response.has_value())  // A value means the daemon replied
                                  // successfully.
       {
         // Relay the daemon's response body to the HTTP client.
-        std::move(callback)(api::v2::Http::Status::OK,
-            response.value());  // Reply 200 with the daemon's body;
-                                // .value() unwraps the optional.
+        std::move(
+            callback)(api::v2::Http::Status::OK,
+                      response.value());  // Reply 200 with the daemon's body;
+                                          // .value() unwraps the optional.
       }
       else  // No value means the send failed.
       {
         std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
-            "Failed to send invite.");  // Reply 400 with a diagnostic
-                                        // message.
+                            "Failed to send invite.");  // Reply 400 with a
+                                                        // diagnostic message.
       }
     }
     else  // Parsing or invite-JSON construction failed.
     {
-      std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
-          "Failed to create invite json.");  // Reply 400 explaining the
-                                             // invite could not be built.
+      std::move(
+          callback)(api::v2::Http::Status::BAD_REQUEST,
+                    "Failed to create invite json.");  // Reply 400 explaining
+                                                       // the invite could not
+                                                       // be built.
     }
   }
   catch (const std::exception&
-          e)  // Any unexpected exception is turned into an error response.
+             e)  // Any unexpected exception is turned into an error response.
   {
     CRITICALMESSAGERESPONSE  // Macro: reply with 500 (or 503 for a busy
                              // database).
@@ -353,8 +371,9 @@ void StaffController<T>::InviteStaffToEntity(CALLBACK_&& callback,
  */
 template <typename T>
 drogon::Task<void> StaffController<T>::AddStaffToEntityAsync(
-    CALLBACK_&& callback, const Requester&& requester,
-    std::string_view data)  // Async add: returns a pausable task.
+    CALLBACK_&&       callback,
+    const Requester&& requester,
+    std::string_view  data)  // Async add: returns a pausable task.
 {
   jsoncons::json staff_j;  // Will hold the parsed JSON body.
   HttpError      error;    // Filled if permission is denied.
@@ -365,25 +384,29 @@ drogon::Task<void> StaffController<T>::AddStaffToEntityAsync(
         staff_j.at("payload");     // Extract the new staff member's fields.
     StaffData staffData(payload);  // Convert them into a typed struct.
 
-    T         staff(staffData);  // Build the concrete entity.
+    T staff(staffData);  // Build the concrete entity.
 
-    uint64_t  _id =
+    uint64_t _id =
         staff_j.at("id")
             .as<uint64_t>();  // Target service id for the permission check.
 
-    if (!co_await gateKeeper->canManageStaffAsync<T>(requester, _id,
-            error))  // co_await pauses until the async permission answer
-                     // arrives.
+    if (!co_await gateKeeper->canManageStaffAsync<
+            T>(requester,
+               _id,
+               error))  // co_await pauses until the async permission answer
+                        // arrives.
     {
       std::move(callback)(error.code,
-          error.message);  // Denied: report the error through the
-                           // callback.
+                          error.message);  // Denied: report the error through
+                                           // the callback.
       // Denial ends the coroutine here; no staff SQL is submitted.
       co_return;  // End this coroutine early without running SQL.
     }
 
     co_await Controller::addStaffAsync(staff,
-        std::move(callback));  // Pause until the async SQL add finishes.
+                                       std::move(
+                                           callback));  // Pause until the async
+                                                        // SQL add finishes.
   }
   catch (
       const std::exception& e)  // Exceptions are turned into an error response.
@@ -403,8 +426,9 @@ drogon::Task<void> StaffController<T>::AddStaffToEntityAsync(
  */
 template <typename T>
 drogon::Task<void> StaffController<T>::RemoveStaffFromEntityAsync(
-    CALLBACK_&& callback, const Requester&& requester,
-    std::string_view data)  // Async remove: returns a pausable task.
+    CALLBACK_&&       callback,
+    const Requester&& requester,
+    std::string_view  data)  // Async remove: returns a pausable task.
 {
   try  // Guard against parse errors and exceptions.
   {
@@ -419,21 +443,25 @@ drogon::Task<void> StaffController<T>::RemoveStaffFromEntityAsync(
         staff_j.at("id").as<uint64_t>();  // The service id used for permission.
     StaffData staffData(payload);  // Convert payload into a typed struct.
 
-    T         staff(staffData);  // Build the concrete entity.
-    if (!co_await gateKeeper->canManageStaffAsync<T>(requester, _id,
-            error))  // Pause until the permission answer arrives; "!" means
-                     // denied.
+    T staff(staffData);  // Build the concrete entity.
+    if (!co_await gateKeeper->canManageStaffAsync<
+            T>(requester,
+               _id,
+               error))  // Pause until the permission answer arrives; "!" means
+                        // denied.
     {
-      std::move(callback)(
-          error.code, error.message);  // Report the permission error.
-      co_return;                       // Stop the coroutine; skip the SQL.
+      std::move(callback)(error.code,
+                          error.message);  // Report the permission error.
+      co_return;                           // Stop the coroutine; skip the SQL.
     }
     co_await Controller::removeStaffAsync(staff,
-        std::move(
-            callback));  // Pause until the async remove-staff SQL finishes.
+                                          std::move(
+                                              callback));  // Pause until the
+                                                           // async remove-staff
+                                                           // SQL finishes.
   }
   catch (const std::exception&
-          e)  // Any exception is turned into an error response.
+             e)  // Any exception is turned into an error response.
   {
     CRITICALMESSAGERESPONSE  // Macro: reply with 500 (or 503 for a busy
                              // database).
@@ -451,8 +479,9 @@ drogon::Task<void> StaffController<T>::RemoveStaffFromEntityAsync(
  */
 template <typename T>
 drogon::Task<void> StaffController<T>::InviteStaffToEntityAsync(
-    CALLBACK_&& callback, const Requester&& requester,
-    std::string_view data)  // Async invite: returns a pausable task.
+    CALLBACK_&&       callback,
+    const Requester&& requester,
+    std::string_view  data)  // Async invite: returns a pausable task.
 {
   try  // Guard against parse errors and network problems.
   {
@@ -469,12 +498,14 @@ drogon::Task<void> StaffController<T>::InviteStaffToEntityAsync(
         response;          // Holds the daemon's reply; empty means failure.
     T   staff(staffData);  // Build the concrete entity.
 
-    if (!co_await gateKeeper->canManageStaffAsync<T>(requester, _id,
-            error))  // Pause until the async permission answer; "!" means
-                     // denied.
+    if (!co_await gateKeeper->canManageStaffAsync<
+            T>(requester,
+               _id,
+               error))  // Pause until the async permission answer; "!" means
+                        // denied.
     {
-      std::move(callback)(
-          error.code, error.message);  // Report the permission error.
+      std::move(callback)(error.code,
+                          error.message);  // Report the permission error.
       co_return;  // Stop the coroutine; do not send an email.
     }
 
@@ -487,34 +518,42 @@ drogon::Task<void> StaffController<T>::InviteStaffToEntityAsync(
     {
       // Synchronous cURL POST; an empty optional denotes delivery
       // failure.
-      response = Communicate::sendRequest(email_sender_daemon_config_.host,
-          email_sender_daemon_config_
-              .port,  // POST the invite to the configured email daemon.
-          email_sender_daemon_config_.message_queue_path,
-          drogon::HttpMethod::Post,
-          staff_j.to_string());  // Queue path, HTTP POST method, JSON body.
+      response =
+          Communicate::sendRequest(email_sender_daemon_config_.host,
+                                   email_sender_daemon_config_
+                                       .port,  // POST the invite to the
+                                               // configured email daemon.
+                                   email_sender_daemon_config_
+                                       .message_queue_path,
+                                   drogon::HttpMethod::Post,
+                                   staff_j
+                                       .to_string());  // Queue path, HTTP POST
+                                                       // method, JSON body.
 
       if (response.has_value())  // A value means the daemon replied.
       {
         // Relay the daemon's response body to the HTTP client.
-        std::move(callback)(api::v2::Http::Status::OK,
-            response.value());  // Reply 200 with the daemon's body.
+        std::move(
+            callback)(api::v2::Http::Status::OK,
+                      response.value());  // Reply 200 with the daemon's body.
       }
       else  // No value means delivery failed.
       {
         std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
-            "Failed to send invite.");  // Reply 400 with a diagnostic.
+                            "Failed to send invite.");  // Reply 400 with a
+                                                        // diagnostic.
       }
     }
     else  // Could not build a valid invite.
     {
-      std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
-          "Failed to create invite json.");  // Reply 400 explaining the
-                                             // failure.
+      std::move(
+          callback)(api::v2::Http::Status::BAD_REQUEST,
+                    "Failed to create invite json.");  // Reply 400 explaining
+                                                       // the failure.
     }
   }
   catch (const std::exception&
-          e)  // Any unexpected exception becomes an error response.
+             e)  // Any unexpected exception becomes an error response.
   {
     CRITICALMESSAGERESPONSE  // Macro: reply with 500 (or 503 for a busy
                              // database).
@@ -540,23 +579,30 @@ drogon::Task<void> StaffController<T>::InviteStaffToEntityAsync(
  */
 #define INSTANTIATE_STAFF_CONTROLLER(TYPE) /*NOLINT*/                          \
   template StaffController<TYPE>::StaffController();                           \
-  template void StaffController<TYPE>::AddStaffToEntity(CALLBACK_&& callback,  \
-      const Requester&& requester, std::string_view data);                     \
-  template void StaffController<TYPE>::RemoveStaffFromEntity(                  \
-      CALLBACK_&& callback, const Requester&& requester,                       \
-      std::string_view data);                                                  \
-  template void StaffController<TYPE>::InviteStaffToEntity(                    \
-      CALLBACK_&& callback, const Requester&& requester,                       \
-      std::string_view data);                                                  \
-  template drogon::Task<void> StaffController<TYPE>::AddStaffToEntityAsync(    \
-      CALLBACK_&& callback, const Requester&& requester,                       \
-      std::string_view data);                                                  \
+  template void                                                                \
+  StaffController<TYPE>::AddStaffToEntity(CALLBACK_&&       callback,          \
+                                          const Requester&& requester,         \
+                                          std::string_view  data);             \
+  template void                                                                \
+  StaffController<TYPE>::RemoveStaffFromEntity(CALLBACK_&&       callback,     \
+                                               const Requester&& requester,    \
+                                               std::string_view  data);        \
+  template void                                                                \
+  StaffController<TYPE>::InviteStaffToEntity(CALLBACK_&&       callback,       \
+                                             const Requester&& requester,      \
+                                             std::string_view  data);          \
   template drogon::Task<void>                                                  \
-  StaffController<TYPE>::RemoveStaffFromEntityAsync(CALLBACK_&& callback,      \
-      const Requester&& requester, std::string_view data);                     \
-  template drogon::Task<void> StaffController<TYPE>::InviteStaffToEntityAsync( \
-      CALLBACK_&& callback, const Requester&& requester,                       \
-      std::string_view data);
+  StaffController<TYPE>::AddStaffToEntityAsync(CALLBACK_&&       callback,     \
+                                               const Requester&& requester,    \
+                                               std::string_view  data);        \
+  template drogon::Task<void> StaffController<                                 \
+      TYPE>::RemoveStaffFromEntityAsync(CALLBACK_&&       callback,            \
+                                        const Requester&& requester,           \
+                                        std::string_view  data);               \
+  template drogon::Task<void>                                                  \
+  StaffController<TYPE>::InviteStaffToEntityAsync(CALLBACK_&&       callback,  \
+                                                  const Requester&& requester, \
+                                                  std::string_view  data);
 
 // Instantiate for all entity types — each line builds one concrete staff
 // controller.

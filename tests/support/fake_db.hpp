@@ -92,7 +92,7 @@ class FakeDatabaseController : public DatabaseController
   std::optional<std::unordered_set<std::string>>
       tables_result;  // Table names returned by getAllTables.
   std::optional<jsoncons::json>
-       permissions_result;  // Permissions returned by getPermissions.
+      permissions_result;  // Permissions returned by getPermissions.
 
   /**
    * When true, the row/permission query methods throw DatabaseBusy (like a
@@ -107,11 +107,11 @@ class FakeDatabaseController : public DatabaseController
    * How many times a write-capable query (executeQuery) ran, to check that a
    * path did not write.
    */
-  int  query_calls =
+  int query_calls =
       0;  // Counter used to prove whether a code path performed a write.
 
-  std::optional<jsoncons::json> executeQuery(
-      const std::string&, const pqxx::params& = {})
+  std::optional<jsoncons::json> executeQuery(const std::string&,
+                                             const pqxx::params& = {})
       override  // Write query: may throw if busy, then counts the call and
                 // returns query_result.
   {
@@ -121,7 +121,8 @@ class FakeDatabaseController : public DatabaseController
     return query_result;  // Hand back whatever the test configured.
   }
 
-  std::optional<jsoncons::json> executeReadQuery(const std::string&,
+  std::optional<jsoncons::json> executeReadQuery(
+      const std::string&,
       const pqxx::params& = {}) override  // Read query: may throw if busy,
                                           // otherwise returns read_result.
   {
@@ -137,23 +138,25 @@ class FakeDatabaseController : public DatabaseController
     return search_result;  // Return the configured list of rows.
   }
 
-  std::optional<std::string> doReadQuery(
-      const std::string&, const pqxx::params& = {})
+  std::optional<std::string> doReadQuery(const std::string&,
+                                         const pqxx::params& = {})
       override  // Raw read: returns plain text rather than JSON.
   {
     throwIfBusy();          // Same busy simulation.
     return do_read_result;  // Return the configured text answer.
   }
 
-  std::optional<bool> checkItemExists(
-      const std::string&, const std::string&, const std::string&)
+  std::optional<bool> checkItemExists(const std::string&,
+                                      const std::string&,
+                                      const std::string&)
       override  // Existence check: answers yes/no from a field.
   {
     throwIfBusy();         // Same busy simulation.
     return exists_result;  // Return the configured yes/no answer.
   }
 
-  std::optional<jsoncons::json> getPasswordHashForUserName(const std::string&,
+  std::optional<jsoncons::json> getPasswordHashForUserName(
+      const std::string&,
       const std::string&) override  // Looks up a stored password hash.
   {
     throwIfBusy();           // Same busy simulation.
@@ -214,7 +217,8 @@ class FakeDatabaseController : public DatabaseController
     co_return search_result;  // Return the configured list of rows.
   }
 
-  drogon::Task<std::optional<std::string>> doReadQueryCoro(const std::string&,
+  drogon::Task<std::optional<std::string>> doReadQueryCoro(
+      const std::string&,
       const pqxx::params& = {}) override  // Async raw-text read.
   {
     throwIfBusy();             // Same busy simulation.
@@ -222,7 +226,8 @@ class FakeDatabaseController : public DatabaseController
     co_return do_read_result;  // Return the configured text answer.
   }
 
-  drogon::Task<std::optional<bool>> checkItemExistsCoro(const std::string&,
+  drogon::Task<std::optional<bool>> checkItemExistsCoro(
+      const std::string&,
       const std::string&,
       const std::string&) override  // Async existence check.
   {
@@ -273,7 +278,8 @@ struct FakeDbGuard
   std::shared_ptr<DatabaseController>
       original;  // Keeps the real object so it can be restored later.
 
-  explicit FakeDbGuard(std::shared_ptr<FakeDatabaseController>
+  explicit FakeDbGuard(
+      std::shared_ptr<FakeDatabaseController>
           fake)  // `explicit` prevents accidental implicit conversion.
   {
     original =
@@ -288,9 +294,9 @@ struct FakeDbGuard
     Store::replaceObject<DatabaseController>(original);
   }  // Put the original object back at scope exit.
 
-  FakeDbGuard(
-      const FakeDbGuard&) = delete;  // No copying: there must be a single
-                                     // owner of the restore action.
-  FakeDbGuard& operator=(
-      const FakeDbGuard&) = delete;  // No copy assignment, for the same reason.
+  FakeDbGuard(const FakeDbGuard&) =
+      delete;  // No copying: there must be a single
+               // owner of the restore action.
+  FakeDbGuard& operator=(const FakeDbGuard&) =
+      delete;  // No copy assignment, for the same reason.
 };

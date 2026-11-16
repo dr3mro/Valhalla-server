@@ -122,7 +122,8 @@ namespace api::v2  // Everything in the v2 API lives in this namespace to avoid
   inline std::optional<int64_t>
   parseIdParam(  // "inline" lets this live in a header without
                  // duplicate-definition errors.
-      const drogon::HttpRequestPtr& req, const std::string& name,
+      const drogon::HttpRequestPtr& req,
+      const std::string&            name,
       std::function<void(const drogon::HttpResponsePtr&)>&
           callback)  // req supplies the parameter; callback is answered on
                      // error.
@@ -139,11 +140,12 @@ namespace api::v2  // Everything in the v2 API lives in this namespace to avoid
                                    // number) and out_of_range (too big).
     {
       Helper::errorResponse(drogon::k400BadRequest,
-          fmt::format("Missing or invalid '{}' parameter.", name),
-          std::move(callback));  // Send a friendly JSON 400 and consume
-                                 // the callback.
-      return std::nullopt;       // Signal failure so the caller returns early
-                                 // (the response is already sent).
+                            fmt::format("Missing or invalid '{}' parameter.",
+                                        name),
+                            std::move(callback));  // Send a friendly JSON 400
+                                                   // and consume the callback.
+      return std::nullopt;  // Signal failure so the caller returns early
+                            // (the response is already sent).
     }
   }
 
@@ -183,11 +185,15 @@ namespace api::v2  // Everything in the v2 API lives in this namespace to avoid
    * @param[in] args Extra arguments forwarded to the controller (e.g. body,
    * parsed id).
    */
-  template <typename Func, typename Registry,
-      typename... Args>  // Generic over the method, the map and any extra
-                         // arguments.
-  static void executeControllerMethod(DbExecutor& executor,
-      const Registry& registry, const std::string_view key, Func method,
+  template <typename Func,
+            typename Registry,
+            typename... Args>  // Generic over the method, the map and any extra
+                               // arguments.
+  static void executeControllerMethod(
+      DbExecutor&                                           executor,
+      const Registry&                                       registry,
+      const std::string_view                                key,
+      Func                                                  method,
       const drogon::HttpRequestPtr&                         req,
       std::function<void(const drogon::HttpResponsePtr&)>&& callback,
       Args&&... args)  // "static" at namespace scope
@@ -199,9 +205,10 @@ namespace api::v2  // Everything in the v2 API lives in this namespace to avoid
     if (ctl == registry.end())      // An unknown type key cannot be dispatched.
     {
       Helper::errorResponse(drogon::k400BadRequest,
-          fmt::format("Type mapping not found for: {}", key),
-          std::move(callback));  // Tell the client the type is unknown
-                                 // (400) and finish.
+                            fmt::format("Type mapping not found for: {}", key),
+                            std::move(
+                                callback));  // Tell the client the type is
+                                             // unknown (400) and finish.
       return;  // Nothing else to do; the callback was already answered.
     }
 
@@ -215,10 +222,11 @@ namespace api::v2  // Everything in the v2 API lives in this namespace to avoid
           {
             // Adapts the controller's numeric status callback to an
             // HTTP response.
-            CALLBACK_ mcb = [callback](int code,
-                                const std::string&
-                                    content)  // The controller replies with an
-                                              // int code and a JSON string.
+            CALLBACK_ mcb =
+                [callback](int code,
+                           const std::string&
+                               content)  // The controller replies with an
+                                         // int code and a JSON string.
             {
               using Reply = std::function<void(
                   const drogon::HttpResponsePtr&)>;  // Short alias for the
@@ -230,37 +238,41 @@ namespace api::v2  // Everything in the v2 API lives in this namespace to avoid
                 // Controller succeeded.
                 case api::v2::Http::Status::OK:
                   Helper::successResponse(content,
-                      Reply(callback));  // Send 200 with the body
-                                         // as-is.
-                  break;                 // Leave the switch.
+                                          Reply(callback));  // Send 200 with
+                                                             // the body as-is.
+                  break;  // Leave the switch.
                 case api::v2::Http::Status::
                     INTERNAL_SERVER_ERROR:  // Controller hit an
                                             // internal error.
                   Helper::failureResponse(content,
-                      Reply(callback));  // Send a tagged 500
-                                         // failure body.
-                  break;                 // Leave the switch.
-                default:                 // Any other code is a specific error
-                                         // (e.g. 400, 403, 503).
-                  Helper::errorResponse(
-                      static_cast<drogon::HttpStatusCode>(code), content,
-                      Reply(callback));  // Reuse that number as
-                                         // the HTTP status.
-                  break;                 // Leave the switch.
+                                          Reply(
+                                              callback));  // Send a tagged 500
+                                                           // failure body.
+                  break;                                   // Leave the switch.
+                default:  // Any other code is a specific error
+                          // (e.g. 400, 403, 503).
+                  Helper::errorResponse(static_cast<drogon::HttpStatusCode>(
+                                            code),
+                                        content,
+                                        Reply(
+                                            callback));  // Reuse that number as
+                                                         // the HTTP status.
+                  break;                                 // Leave the switch.
               }
             };
 
             // Read what the handler needs from the request now; the
             // rest runs on a worker.
-            Requester requester(req->getAttributes()->get<uint64_t>("clientID"),
-                req->getAttributes()->get<std::string>(
-                    "clientGroup"));  // Auth filter stored these; build
-                                      // the identity used for
-                                      // permission checks.
+            Requester
+                requester(req->getAttributes()->get<uint64_t>("clientID"),
+                          req->getAttributes()->get<std::string>(
+                              "clientGroup"));  // Auth filter stored these;
+                                                // build the identity used for
+                                                // permission checks.
 
-            auto      packed = std::make_tuple(std::decay_t<Args>(
-                args)...);       // Bundle the extra arguments so we can
-                                 // store/copy them for async work.
+            auto packed = std::make_tuple(std::decay_t<Args>(
+                args)...);  // Bundle the extra arguments so we can
+                            // store/copy them for async work.
 
             // Fast path: run the call here first. A request that is
             // answered from memory (bad body, refused by the permission
@@ -281,8 +293,11 @@ namespace api::v2  // Everything in the v2 API lives in this namespace to avoid
                 std::apply(
                     [&](auto&... unpacked)
                     {
-                      std::invoke(method, controller.get(), std::move(probe_cb),
-                          std::move(requester), unpacked...);
+                      std::invoke(method,
+                                  controller.get(),
+                                  std::move(probe_cb),
+                                  std::move(requester),
+                                  unpacked...);
                     },
                     packed);  // Try the controller right here on
                               // the IO thread.
@@ -298,21 +313,26 @@ namespace api::v2  // Everything in the v2 API lives in this namespace to avoid
                                                // the fast path.
               {
                 Helper::failureResponse(e.what(),
-                    std::move(callback));  // Reply 500 with the
-                                           // exception text.
-                return;                    // Done; do not also queue the call.
+                                        std::move(
+                                            callback));  // Reply 500 with the
+                                                         // exception text.
+                return;  // Done; do not also queue the call.
               }
             }
 
             // Queue the call on the DB workers when the fast path was
             // disabled or gave up; runOnDbExecutor answers 503 itself
             // if the bounded queue is full.
-            runOnDbExecutor(executor,
+            runOnDbExecutor(
+                executor,
                 std::move(mcb),  // Hand the response adapter to the
                                  // executor wrapper.
-                [method, target = controller.get(), req, callback,
-                    requester = std::move(requester),
-                    packed    = std::move(packed)](
+                [method,
+                 target = controller.get(),
+                 req,
+                 callback,
+                 requester = std::move(requester),
+                 packed    = std::move(packed)](
                     CALLBACK_&& cb) mutable  // Capture everything by
                                              // value: this runs later
                                              // on another thread.
@@ -322,27 +342,32 @@ namespace api::v2  // Everything in the v2 API lives in this namespace to avoid
                     std::apply(
                         [&](auto&... unpacked)
                         {
-                          std::invoke(method, target, std::move(cb),
-                              std::move(requester), unpacked...);
+                          std::invoke(method,
+                                      target,
+                                      std::move(cb),
+                                      std::move(requester),
+                                      unpacked...);
                         },
                         packed);  // Run the real controller method
                                   // now that DB access is allowed.
                   }
                   catch (const DatabaseBusy&
-                          e)  // The connection pool is exhausted.
+                             e)  // The connection pool is exhausted.
                   {
                     // Exhausted connection pool -> retryable 503
                     // (Helper adds Retry-After).
                     Helper::errorResponse(drogon::k503ServiceUnavailable,
-                        e.what(),
-                        std::move(callback));  // Tell the client to
-                                               // try again shortly.
+                                          e.what(),
+                                          std::move(
+                                              callback));  // Tell the client to
+                                                           // try again shortly.
                   }
                   catch (const std::exception& e)  // Any other failure.
                   {
                     Helper::failureResponse(e.what(),
-                        std::move(callback));  // Reply 500 with the
-                                               // error text.
+                                            std::move(
+                                                callback));  // Reply 500 with
+                                                             // the error text.
                   }
                 });
           },
@@ -350,10 +375,11 @@ namespace api::v2  // Everything in the v2 API lives in this namespace to avoid
                          // std::visit.
     }
     catch (const std::exception&
-            e)  // Backstop for errors while setting up the visit.
+               e)  // Backstop for errors while setting up the visit.
     {
-      Helper::failureResponse(
-          e.what(), std::move(callback));  // Always answer exactly once.
+      Helper::failureResponse(e.what(),
+                              std::move(
+                                  callback));  // Always answer exactly once.
     }
   }
 }  // namespace api::v2

@@ -46,8 +46,8 @@
 // message text, but these cases cover the typed DatabaseBusy and a generic one.
 
 TEST_CASE("error mapping maps DatabaseBusy to 503",
-    "[database][async][error]")  // Registers the test for the one retryable DB
-                                 // failure.
+          "[database][async][error]")  // Registers the test for the one
+                                       // retryable DB failure.
 {
   DatabaseBusy busy;  // Construct the specific exception thrown when the
                       // connection pool has no free connection.
@@ -59,8 +59,8 @@ TEST_CASE("error mapping maps DatabaseBusy to 503",
 }
 
 TEST_CASE("error mapping maps generic errors to 500",
-    "[database][async][error]")  // Registers the test for every other,
-                                 // non-retryable DB error.
+          "[database][async][error]")  // Registers the test for every other,
+                                       // non-retryable DB error.
 {
   std::runtime_error generic(
       "boom");  // A plain exception with no special meaning, standing in for

@@ -66,9 +66,10 @@ namespace
   struct StoreA
   {
     int val = 0;  // A single integer payload, default-initialised to zero.
-    explicit StoreA(int v = 0)
-        : val(v) {}  // Stores the supplied value; "explicit" prevents
-                     // accidental conversion.
+    explicit StoreA(int v = 0) : val(v)
+    {
+    }  // Stores the supplied value; "explicit" prevents
+       // accidental conversion.
   };
 
   /**
@@ -77,9 +78,9 @@ namespace
   struct StoreB
   {
     std::string name;  // A text payload to show constructor arguments are kept.
-    explicit StoreB(std::string n = "")
-        : name(std::move(n))
-    {}  // Moves the argument into the member to avoid a copy.
+    explicit StoreB(std::string n = "") : name(std::move(n))
+    {
+    }  // Moves the argument into the member to avoid a copy.
   };
 
   /**
@@ -108,15 +109,16 @@ namespace
   struct StoreRace
   {
     int created = 0;  // Counts the constructor argument, defaulting to zero.
-    explicit StoreRace(int v = 1)
-        : created(v) {}  // Records the value it was given.
+    explicit StoreRace(int v = 1) : created(v)
+    {
+    }  // Records the value it was given.
   };
 }  // namespace
 
 // First call for a type must construct the object with the given arguments and
 // return it.
 TEST_CASE("Store::getObject creates and returns an object on first call",
-    "[utils][store]")
+          "[utils][store]")
 {
   auto obj = Store::getObject<StoreA>(
       7);  // Ask for a StoreA built with constructor argument 7.
@@ -130,7 +132,7 @@ TEST_CASE("Store::getObject creates and returns an object on first call",
 // Once a type is registered, later calls must return the very same object and
 // ignore new arguments.
 TEST_CASE("Store::getObject returns the same instance on repeated calls",
-    "[utils][store]")
+          "[utils][store]")
 {
   auto first = Store::getObject<StoreB>(
       "hello");  // First call constructs StoreB with "hello".
@@ -147,8 +149,8 @@ TEST_CASE("Store::getObject returns the same instance on repeated calls",
 
 // replaceObject must swap in a new instance, and later lookups must see the
 // replacement.
-TEST_CASE(
-    "Store::replaceObject swaps the registered instance", "[utils][store]")
+TEST_CASE("Store::replaceObject swaps the registered instance",
+          "[utils][store]")
 {
   auto original = Store::getObject<StoreC>();  // Get the current singleton.
   original->x   = 3.14;                        // Give it a recognisable value.
@@ -160,9 +162,9 @@ TEST_CASE(
       replacement);  // Publish it as the new singleton for StoreC.
 
   auto fetched = Store::getObject<StoreC>();  // Ask for the type again.
-  CHECK(
-      fetched.get() == replacement.get());  // The lookup must return our
-                                            // replacement, not the old object.
+  CHECK(fetched.get() ==
+        replacement.get());   // The lookup must return our
+                              // replacement, not the old object.
   CHECK(fetched->x == 2.72);  // ...carrying the replacement's data.
 
   // Restore original so other tests that might use StoreC are unaffected.
@@ -172,8 +174,8 @@ TEST_CASE(
 
 // registerObject is explicit and must refuse a type that is already in the
 // inventory.
-TEST_CASE(
-    "Store::registerObject throws on double registration", "[utils][store]")
+TEST_CASE("Store::registerObject throws on double registration",
+          "[utils][store]")
 {
   // StoreD has never been registered; first call succeeds.
   auto obj = Store::getObject<StoreD>();  // This lazily registers StoreD.
@@ -183,8 +185,8 @@ TEST_CASE(
 
   // A second explicit registerObject call must throw.
   CHECK_THROWS_AS(Store::registerObject<StoreD>(),
-      std::runtime_error);  // Passes only if that exact exception type is
-                            // thrown.
+                  std::runtime_error);  // Passes only if that exact exception
+                                        // type is thrown.
 }
 
 // Bug 11 (historical; fixed in commit bfb375e): getObject used separate find
@@ -193,7 +195,7 @@ TEST_CASE(
 // re-checks under it, so this hidden test now passes. See tests/README.md
 // §Bug 11.
 TEST_CASE("Store concurrent first-access does not race",
-    "[.known-bug][utils][store][concurrency]")
+          "[.known-bug][utils][store][concurrency]")
 {
   // All 8 threads race to call getObject<StoreRace>(); only one must win the
   // construction; they all must receive the same pointer.

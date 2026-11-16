@@ -160,8 +160,8 @@ TEST_CASE(
 // A busy fake throws DatabaseBusy out of co_await, so callers on the async path
 // see the same retryable error as on the synchronous path.
 TEST_CASE("FakeDatabaseController coroutines propagate DatabaseBusy when busy",
-    "[database][asyncdb][fake]")  // Registers the test for async error
-                                  // propagation.
+          "[database][asyncdb][fake]")  // Registers the test for async error
+                                        // propagation.
 {
   auto fake  = std::make_shared<FakeDatabaseController>();  // Create the fake
                                                             // controller with

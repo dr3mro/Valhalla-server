@@ -93,7 +93,7 @@ namespace  // Anonymous namespace keeps the helper private to this file.
 }  // namespace
 
 TEST_CASE("BoundedExecutor with zero workers runs the task inline",
-    "[concurrency][executor]")  // Inline mode.
+          "[concurrency][executor]")  // Inline mode.
 {
   BoundedExecutor executor(0, 4, "test");  // Zero workers, queue size four.
   CHECK(executor.inlineMode());            // Report inline mode.
@@ -155,7 +155,7 @@ TEST_CASE(
 }
 
 TEST_CASE("BoundedExecutor refuses work when the queue is full",
-    "[concurrency][executor]")  // Queue limit enforcement.
+          "[concurrency][executor]")  // Queue limit enforcement.
 {
   std::promise<void>
        started_promise;  // Signalled when the blocking task starts.
@@ -167,8 +167,10 @@ TEST_CASE("BoundedExecutor refuses work when the queue is full",
 
   {
     BoundedExecutor executor(1, 1, "test");  // One worker, queue size one.
-    ReleaseOnExit   gate{release_promise, false,
-        &executor};  // Guard that always releases and shuts down.
+    ReleaseOnExit
+        gate{release_promise,
+             false,
+             &executor};  // Guard that always releases and shuts down.
 
     REQUIRE(executor.submit(  // Occupy the only worker with a blocking task.
         [&]
@@ -180,10 +182,18 @@ TEST_CASE("BoundedExecutor refuses work when the queue is full",
     REQUIRE(started.wait_for(5s) ==
             std::future_status::ready);  // the only worker is busy now
 
-    CHECK(executor.submit([&] { ++ran; }));        // fills the queue (size 1)
-    CHECK_FALSE(executor.submit([&] { ++ran; }));  // refused
-    CHECK(
-        executor.pending() == 1);  // Exactly one task is waiting in the queue.
+    CHECK(executor.submit(
+        [&]
+        {
+          ++ran;
+        }));  // fills the queue (size 1)
+    CHECK_FALSE(executor.submit(
+        [&]
+        {
+          ++ran;
+        }));  // refused
+    CHECK(executor.pending() ==
+          1);  // Exactly one task is waiting in the queue.
 
     gate.now();  // Release the blocked task.
   }  // the destructor finishes the queued task and joins
@@ -193,16 +203,22 @@ TEST_CASE("BoundedExecutor refuses work when the queue is full",
 // A throwing task must not kill the worker: the pool stays usable for work
 // submitted afterwards.
 TEST_CASE("BoundedExecutor survives a task that throws",
-    "[concurrency][executor]")  // Exception resilience.
+          "[concurrency][executor]")  // Exception resilience.
 {
   BoundedExecutor executor(1, 4, "test");  // One worker.
   REQUIRE(executor.submit(
-      [] { throw std::runtime_error("boom"); }));  // Submit a task that throws.
+      []
+      {
+        throw std::runtime_error("boom");
+      }));  // Submit a task that throws.
 
   std::promise<void> done;  // Signalled by the follow-up task.
   auto               future = done.get_future();  // Future the test waits on.
-  REQUIRE(executor.submit([&]
-      { done.set_value(); }));  // Submit a normal task after the throwing one.
+  REQUIRE(executor.submit(
+      [&]
+      {
+        done.set_value();
+      }));  // Submit a normal task after the throwing one.
   CHECK(future.wait_for(5s) ==
         std::future_status::ready);  // It still ran: the worker survived.
 }
@@ -220,8 +236,9 @@ TEST_CASE(
       release_promise.get_future().share();  // Shared future the task waits on.
 
   DbExecutor    executor(1, 1);  // One worker, queue size one.
-  ReleaseOnExit gate{release_promise, false,
-      &executor};  // Guard that releases and shuts down.
+  ReleaseOnExit gate{release_promise,
+                     false,
+                     &executor};  // Guard that releases and shuts down.
 
   REQUIRE(executor.submit(  // Occupy the only worker.
       [&]
@@ -231,7 +248,10 @@ TEST_CASE(
       }));
   REQUIRE(started.wait_for(5s) ==
           std::future_status::ready);  // Wait for the worker to be busy.
-  REQUIRE(executor.submit([] {}));     // fills the queue
+  REQUIRE(executor.submit(
+      []
+      {
+      }));  // fills the queue
 
   int         code = 0;          // Will hold the response status code.
   std::string text;              // Will hold the response message.
@@ -258,15 +278,17 @@ TEST_CASE(
 }
 
 TEST_CASE("runOnDbExecutor hands the callback to the body when it is accepted",
-    "[concurrency][executor]")  // Accepted work path.
+          "[concurrency][executor]")  // Accepted work path.
 {
   DbExecutor executor(0, 4);  // inline
 
-  int        code = 0;  // Will hold the status code reported by the body.
+  int code = 0;  // Will hold the status code reported by the body.
   runOnDbExecutor(
       executor,  // Ask the helper to run our body.
       [&](int c, const std::string&)
-      { code = c; },  // Save just the status code.
+      {
+        code = c;
+      },  // Save just the status code.
       [](CALLBACK_&& cb)
       {
         std::move(cb)(api::v2::Http::Status::OK, "ok");
@@ -283,7 +305,7 @@ TEST_CASE(
     "worker is free",
     "[concurrency][executor]")  // Work stealing.
 {
-  BoundedExecutor    executor(2, 64, "test");  // Two workers, generous queue.
+  BoundedExecutor executor(2, 64, "test");  // Two workers, generous queue.
 
   std::atomic<int>   done{0};          // Counts tasks that finished.
   std::promise<void> started_promise;  // Signalled by the blocking task.
@@ -291,8 +313,9 @@ TEST_CASE(
   std::promise<void> release_promise;           // Used to unblock the task.
   auto               release =
       release_promise.get_future().share();  // Shared future the task waits on.
-  ReleaseOnExit gate{release_promise, false,
-      &executor};  // Guard that releases and shuts down.
+  ReleaseOnExit gate{release_promise,
+                     false,
+                     &executor};  // Guard that releases and shuts down.
 
   REQUIRE(executor.submit(  // Pin the first worker.
       [&]
@@ -308,10 +331,13 @@ TEST_CASE(
   for (int i = 0; i < 20; ++i)  // Fan out twenty tasks.
   {
     REQUIRE(executor.submit(
-        [&] { ++done; }));  // Each task increments the completion count.
+        [&]
+        {
+          ++done;
+        }));  // Each task increments the completion count.
   }
   for (int waited = 0; waited < 500 && done < 20;
-      ++waited)  // Poll until all finish, with a bounded wait.
+       ++waited)  // Poll until all finish, with a bounded wait.
   {
     std::this_thread::sleep_for(
         10ms);  // Give the workers a little time between checks.
@@ -327,16 +353,18 @@ TEST_CASE(
     "runs once",
     "[concurrency][executor]")  // Shared limit and shutdown drain.
 {
-  BoundedExecutor executor(
-      4, 8, "test");  // Four workers, shared queue of eight.
+  BoundedExecutor executor(4,
+                           8,
+                           "test");  // Four workers, shared queue of eight.
 
   std::atomic<int>   started{0};       // Counts tasks that have begun.
   std::atomic<int>   ran{0};           // Counts tasks that have completed.
   std::promise<void> release_promise;  // Used to unblock the pinned tasks.
   auto               release =
       release_promise.get_future().share();  // Shared future they wait on.
-  ReleaseOnExit gate{release_promise, false,
-      &executor};  // Guard that releases and shuts down.
+  ReleaseOnExit gate{release_promise,
+                     false,
+                     &executor};  // Guard that releases and shuts down.
 
   for (int i = 0; i < 4; ++i)  // keep every worker busy
   {
@@ -349,7 +377,7 @@ TEST_CASE(
         }));
   }
   for (int waited = 0; waited < 500 && started < 4;
-      ++waited)  // Poll until all four workers are busy.
+       ++waited)  // Poll until all four workers are busy.
   {
     std::this_thread::sleep_for(10ms);  // Small pause between checks.
   }
@@ -359,7 +387,11 @@ TEST_CASE(
   int accepted = 0;             // Counts how many extra tasks are accepted.
   for (int i = 0; i < 20; ++i)  // Try to submit twenty more tasks.
   {
-    if (executor.submit([&] { ++ran; }))  // If it was accepted...
+    if (executor.submit(
+            [&]
+            {
+              ++ran;
+            }))  // If it was accepted...
     {
       ++accepted;  // ...count it.
     }
@@ -380,13 +412,14 @@ TEST_CASE(
   // Regression: a worker whose wake-up found its queue already emptied by a
   // thief went back to sleep without being marked idle, so later tasks queued
   // behind it and waited until something else woke it.
-  BoundedExecutor executor(
-      4, 256, "test");  // Four workers, large shared queue.
+  BoundedExecutor executor(4,
+                           256,
+                           "test");  // Four workers, large shared queue.
 
   constexpr int clients =
       16;  // Number of client threads simulating concurrent callers.
-  constexpr int            rounds = 1500;  // Requests per client.
-  std::atomic<int>         finished{0};    // Counts requests that completed.
+  constexpr int    rounds = 1500;  // Requests per client.
+  std::atomic<int> finished{0};    // Counts requests that completed.
 
   std::vector<std::thread> threads;  // Holds all client threads.
   for (int c = 0; c < clients; ++c)  // Launch each client.
@@ -399,8 +432,11 @@ TEST_CASE(
             std::promise<void>
                  done;  // Signalled when this request's task runs.
             auto future = done.get_future();  // Future the client waits on.
-            if (!executor.submit([&done]
-                    { done.set_value(); }))  // Submit the task; if refused...
+            if (!executor.submit(
+                    [&done]
+                    {
+                      done.set_value();
+                    }))  // Submit the task; if refused...
             {
               continue;  // ...skip it and try the next round (queue
                          // momentarily full).

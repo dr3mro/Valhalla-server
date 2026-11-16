@@ -106,7 +106,7 @@ namespace api::v2::Types  // Groups these types under the "api version 2 /
                            logouts. Stored as text because that is how it is
                            kept in the database. */
     std::optional<std::string>
-         nowLoginTime;  /**< Timestamp of the login currently being processed,
+        nowLoginTime;   /**< Timestamp of the login currently being processed,
                            written to the session row. Optional until the
                            login helper generates the current UTC time. */
     bool is_active;     /**< Account active flag read from the client table;
@@ -148,7 +148,7 @@ namespace api::v2::Types  // Groups these types under the "api version 2 /
   using Credentials = struct Credentials
   {
     std::string
-                username; /**< The user's username. Plain string because it is
+        username;         /**< The user's username. Plain string because it is
                              required; used to look up the stored password hash. */
     std::string password; /**< The user's password. Plain string because it is
                              required; compared against the stored hash on the

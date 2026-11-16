@@ -83,12 +83,13 @@ namespace  // Anonymous namespace keeps the helper private to this file.
 // Column names come from the payload but each value must be a placeholder, in
 // jsoncons' alphabetical key order, terminated by a semicolon.
 TEST_CASE("Entity create statement lists every column with placeholders",
-    "[entities][sql]")  // INSERT with all fields bound.
+          "[entities][sql]")  // INSERT with all fields bound.
 {
-  const jsoncons::json  payload = makeJsonObject({{"name", "clinic"},
-      {"description", "general"}});  // Two fields to insert.
-  const Types::Create_t create(
-      payload, 5);  // Wrap them as a create request with id 5.
+  const jsoncons::json payload =
+      makeJsonObject({{"name", "clinic"},
+                      {"description", "general"}});  // Two fields to insert.
+  const Types::Create_t create(payload,
+                               5);  // Wrap them as a create request with id 5.
 
   Entity entity(create, "clinics");  // Build an Entity for the clinics table.
   pqxx::params params;               // Will collect the bound values.
@@ -108,7 +109,7 @@ TEST_CASE("Entity create statement lists every column with placeholders",
 }
 
 TEST_CASE("Entity create statement without an id leaves the id to the database",
-    "[entities][sql]")  // Client-supplied id is ignored.
+          "[entities][sql]")  // Client-supplied id is ignored.
 {
   // A client-supplied "id" must be dropped so it can never choose its own
   // primary key.
@@ -136,15 +137,15 @@ TEST_CASE("Entity create statement without an id leaves the id to the database",
 // Reads go through the *_safe view and bind the id rather than embedding it,
 // so a caller-supplied id can never alter the query structure.
 TEST_CASE("Entity read statement targets the _safe view and binds the id",
-    "[entities][sql]")  // SELECT from the safe view.
+          "[entities][sql]")  // SELECT from the safe view.
 {
-  const std::unordered_set<std::string> schema = {
-      "name", "dob"};                   // The columns to select.
+  const std::unordered_set<std::string> schema =
+      {"name", "dob"};                  // The columns to select.
   const Types::Read_t read(schema, 9);  // Read request for id 9.
 
-  Entity              entity(read, "users");  // Build the Entity.
-  pqxx::params        params;                 // Will collect bound values.
-  const auto          statement =
+  Entity       entity(read, "users");  // Build the Entity.
+  pqxx::params params;                 // Will collect bound values.
+  const auto   statement =
       entity.getSqlReadStatement(params);  // Generate the SELECT.
 
   REQUIRE(statement.has_value());          // A statement must exist.
@@ -161,13 +162,13 @@ TEST_CASE("Entity read statement targets the _safe view and binds the id",
 }
 
 TEST_CASE("Entity read statement with an empty schema selects all columns",
-    "[entities][sql]")  // Empty schema means SELECT *.
+          "[entities][sql]")  // Empty schema means SELECT *.
 {
   const Types::Read_t read({}, 3);  // No columns specified.
 
-  Entity              entity(read, "users");  // Build the Entity.
-  pqxx::params        params;                 // Will collect bound values.
-  const auto          statement =
+  Entity       entity(read, "users");  // Build the Entity.
+  pqxx::params params;                 // Will collect bound values.
+  const auto   statement =
       entity.getSqlReadStatement(params);  // Generate the SELECT.
 
   REQUIRE(statement.has_value());  // A statement must exist.
@@ -176,20 +177,20 @@ TEST_CASE("Entity read statement with an empty schema selects all columns",
 }
 
 TEST_CASE("Entity update statement builds a SET clause with parameters",
-    "[entities][sql]")  // UPDATE with bound values.
+          "[entities][sql]")  // UPDATE with bound values.
 {
   const jsoncons::json payload =
       makeJsonObject({{"name", "renamed"}});  // One field to change.
   const Types::Update_t update(payload, 12);  // Update request for id 12.
 
-  Entity                entity(update, "users");  // Build the Entity.
-  pqxx::params          params;                   // Will collect bound values.
-  const auto            statement =
+  Entity       entity(update, "users");  // Build the Entity.
+  pqxx::params params;                   // Will collect bound values.
+  const auto   statement =
       entity.getSqlUpdateStatement(params);  // Generate the UPDATE.
 
   REQUIRE(statement.has_value());  // A statement must exist.
-  CHECK(
-      statement->find("UPDATE users SET") == 0);  // It targets the users table.
+  CHECK(statement->find("UPDATE users SET") ==
+        0);  // It targets the users table.
   CHECK(statement->find("name = $1") !=
         std::string::npos);  // The new value is a placeholder.
   CHECK(statement->find("WHERE id=$2 RETURNING *;") !=
@@ -200,13 +201,13 @@ TEST_CASE("Entity update statement builds a SET clause with parameters",
 }
 
 TEST_CASE("Entity delete statement removes by a bound id",
-    "[entities][sql]")  // DELETE with a bound id.
+          "[entities][sql]")  // DELETE with a bound id.
 {
   const Types::Delete_t del(21);  // Delete request for id 21.
 
-  Entity                entity(del, "clinics");  // Build the Entity.
-  pqxx::params          params;                  // Will collect bound values.
-  const auto            statement =
+  Entity       entity(del, "clinics");  // Build the Entity.
+  pqxx::params params;                  // Will collect bound values.
+  const auto   statement =
       entity.getSqlDeleteStatement(params);  // Generate the DELETE.
 
   REQUIRE(statement.has_value());  // A statement must exist.
@@ -252,7 +253,7 @@ TEST_CASE(
 }
 
 TEST_CASE("Entity exposes its group name and data variant",
-    "[entities][sql]")  // Accessors on Entity.
+          "[entities][sql]")  // Accessors on Entity.
 {
   const Types::Delete_t del(1);                // Some data to construct with.
   const Entity          entity(del, "users");  // Build the Entity.
@@ -264,13 +265,13 @@ TEST_CASE("Entity exposes its group name and data variant",
 }
 
 TEST_CASE("Client suspend and activate statements bind the state and the id",
-    "[entities][sql][params]")  // User state changes.
+          "[entities][sql][params]")  // User state changes.
 {
   const Types::SuspendData suspendData(55);    // Suspend request for client 55.
   User                     user(suspendData);  // Build the User helper.
   pqxx::params             params;             // Will collect bound values.
 
-  const auto               suspend =
+  const auto suspend =
       user.getSqlSuspendStatement(params);  // Generate the suspend UPDATE.
   REQUIRE(suspend.has_value());             // A statement must exist.
   CHECK(*suspend ==
@@ -291,13 +292,13 @@ TEST_CASE("Client suspend and activate statements bind the state and the id",
 }
 
 TEST_CASE("Get-services statements bind the client id",
-    "[entities][sql][params]")  // Service lookup for users and providers.
+          "[entities][sql][params]")  // Service lookup for users and providers.
 {
   const Types::Data_t data(33);     // Request for client 33.
   pqxx::params        user_params;  // Bound values for the user query.
 
-  User                user(data);  // Build the User helper.
-  const auto          user_stmt =
+  User       user(data);  // Build the User helper.
+  const auto user_stmt =
       user.getSqlGetServicesStatement(user_params);  // Generate its statement.
   REQUIRE(user_stmt.has_value());                    // A statement must exist.
   CHECK(*user_stmt ==
@@ -319,7 +320,7 @@ TEST_CASE("Get-services statements bind the client id",
 }
 
 TEST_CASE("Staff statements bind the nominee id and the entity id",
-    "[entities][sql][params]")  // Staff add/remove SQL.
+          "[entities][sql][params]")  // Staff add/remove SQL.
 {
   jsoncons::json staff_j;                   // Build a complete staff payload.
   staff_j["nominee_id"]    = uint64_t{10};  // Who is being added.
@@ -331,8 +332,8 @@ TEST_CASE("Staff statements bind the nominee id and the entity id",
   const Types::StaffData sd(staff_j);            // Wrap it as StaffData.
   Clinics                clinic(sd);             // Build the Clinics helper.
 
-  pqxx::params           params;  // Bound values for the add statement.
-  const auto             add =
+  pqxx::params params;  // Bound values for the add statement.
+  const auto   add =
       clinic.getSqlAddStaffStatement(params);  // Generate the add UPDATE.
   REQUIRE(add.has_value());                    // A statement must exist.
   CHECK(params.size() == 2);                   // Two bound values.
@@ -355,14 +356,14 @@ TEST_CASE("Staff statements bind the nominee id and the entity id",
 }
 
 TEST_CASE("SuspendData stores the client id",
-    "[entities][types]")  // Data wrapper accessors.
+          "[entities][types]")  // Data wrapper accessors.
 {
   const Types::SuspendData sd(42);  // Construct with id 42.
   CHECK(sd.client_id == 42);        // The id is stored.
 }
 
 TEST_CASE("StaffData parses a complete JSON object",
-    "[entities][types]")  // All required fields present.
+          "[entities][types]")  // All required fields present.
 {
   jsoncons::json staff_j;                        // Build a full payload.
   staff_j["nominee_id"]    = uint64_t{10};       // Nominee id.
@@ -385,7 +386,7 @@ TEST_CASE("StaffData parses a complete JSON object",
 }
 
 TEST_CASE("StaffData sets parse_status=false on a missing key",
-    "[entities][types]")  // Missing required field.
+          "[entities][types]")  // Missing required field.
 {
   jsoncons::json staff_j;                // Build an incomplete payload.
   staff_j["nominee_id"] = uint64_t{10};  // Only one field is present.
@@ -396,7 +397,7 @@ TEST_CASE("StaffData sets parse_status=false on a missing key",
 }
 
 TEST_CASE("StaffData::toInviteJson adds the required invite fields",
-    "[entities][types]")  // Invite payload builder.
+          "[entities][types]")  // Invite payload builder.
 {
   jsoncons::json staff_j;                          // Build a full payload.
   staff_j["nominee_id"]    = uint64_t{1};          // Nominee id.
@@ -425,15 +426,15 @@ TEST_CASE("StaffData::toInviteJson adds the required invite fields",
 }
 
 TEST_CASE("Entity read statement keeps the requested columns",
-    "[entities][sql]")  // Selective column read.
+          "[entities][sql]")  // Selective column read.
 {
   const std::unordered_set<std::string> schema = {
       "name"};                           // Only one column requested.
   const Types::Read_t read(schema, 15);  // Read request for id 15.
 
-  Entity              entity(read, "clinics");  // Build the Entity.
-  pqxx::params        params;                   // Bound values.
-  const auto          statement =
+  Entity       entity(read, "clinics");  // Build the Entity.
+  pqxx::params params;                   // Bound values.
+  const auto   statement =
       entity.getSqlReadStatement(params);  // Generate the SELECT.
 
   REQUIRE(statement.has_value());  // A statement must exist.
@@ -444,14 +445,14 @@ TEST_CASE("Entity read statement keeps the requested columns",
 }
 
 TEST_CASE("Entity delete statement is rebuilt cleanly on every call",
-    "[entities][sql]")  // No state leaks between calls.
+          "[entities][sql]")  // No state leaks between calls.
 {
   const Types::Delete_t del(99);  // Delete request for id 99.
   Entity                entity(del, "appointments");  // Build the Entity.
   pqxx::params          first;  // Params for a first call.
   REQUIRE(entity.getSqlDeleteStatement(first)
-          .has_value());  // First generation succeeds.
-  pqxx::params params;    // Fresh params for a second call.
+              .has_value());  // First generation succeeds.
+  pqxx::params params;        // Fresh params for a second call.
   const auto   statement =
       entity.getSqlDeleteStatement(params);  // Generate again.
 
@@ -472,9 +473,10 @@ namespace  // Anonymous namespace keeps the helper private to this file.
    *
    * All required keys are present so parse_status is true and the builders
    * under test are the only thing being varied. */
-  Types::StaffData makeStaffData(uint64_t nominee_id = 42,
-      uint64_t                            entity_id  = 7,
-      const std::string&                  nominee_group =
+  Types::StaffData makeStaffData(
+      uint64_t           nominee_id = 42,
+      uint64_t           entity_id  = 7,
+      const std::string& nominee_group =
           "providers")  // Helper with sensible defaults.
   {
     jsoncons::json j;                        // Build the payload.
@@ -533,8 +535,10 @@ TEST_CASE(
     "service and id",
     "[entities][sql][service]")  // Permissions query.
 {
-  const auto stmt = Service::getServicePermissionsQuery(
-      "clinics", 13);  // Ask for clinics permissions for id 13.
+  const auto stmt =
+      Service::getServicePermissionsQuery("clinics",
+                                          13);  // Ask for clinics permissions
+                                                // for id 13.
 
   REQUIRE(stmt.has_value());  // A statement must exist.
   CHECK(stmt->find("SELECT owner_id,admin_id,staff FROM clinics") ==
@@ -555,12 +559,12 @@ TEST_CASE(
   // nullopt.
   const jsoncons::json payload =
       makeJsonObject({{"name", "test"}});  // A create-style payload.
-  const Types::Create_t create(
-      payload, 1);                 // Wrapped as Create_t, not StaffData.
-  Service svc(create, "clinics");  // Build a Service with the wrong data type.
-  pqxx::params params;             // Bound values.
+  const Types::Create_t create(payload,
+                               1);  // Wrapped as Create_t, not StaffData.
+  Service svc(create, "clinics");   // Build a Service with the wrong data type.
+  pqxx::params params;              // Bound values.
   CHECK_FALSE(svc.getSqlAddStaffStatement(params)
-          .has_value());  // No statement is produced.
+                  .has_value());  // No statement is produced.
 }
 
 TEST_CASE(
@@ -572,13 +576,13 @@ TEST_CASE(
   Service               svc(del, "pharmacies");  // Build a Service with it.
   pqxx::params          params;                  // Bound values.
   CHECK_FALSE(svc.getSqlRemoveStaffStatement(params)
-          .has_value());  // No statement is produced.
+                  .has_value());  // No statement is produced.
 }
 
 // ── Types direct construction ───────────────────────────────────────────────
 
 TEST_CASE("Types::Create_t stores the payload and id",
-    "[entities][types]")  // Create_t accessors.
+          "[entities][types]")  // Create_t accessors.
 {
   const jsoncons::json payload =
       makeJsonObject({{"field", "value"}});   // A simple payload.
@@ -590,11 +594,12 @@ TEST_CASE("Types::Create_t stores the payload and id",
 }
 
 TEST_CASE("Types::Read_t stores the schema set and id",
-    "[entities][types]")  // Read_t accessors.
+          "[entities][types]")  // Read_t accessors.
 {
-  const std::unordered_set<std::string> schema = {
-      "name", "dob", "email"};           // Columns to read.
-  const Types::Read_t read(schema, 55);  // Wrap with id 55.
+  const std::unordered_set<std::string> schema = {"name",
+                                                  "dob",
+                                                  "email"};  // Columns to read.
+  const Types::Read_t                   read(schema, 55);    // Wrap with id 55.
 
   REQUIRE(read.get_id().has_value());          // An id is stored.
   CHECK(read.get_id().value() == 55);          // It is 55.
@@ -603,7 +608,7 @@ TEST_CASE("Types::Read_t stores the schema set and id",
 }
 
 TEST_CASE("Types::Update_t stores the payload and id",
-    "[entities][types]")  // Update_t accessors.
+          "[entities][types]")  // Update_t accessors.
 {
   const jsoncons::json payload =
       makeJsonObject({{"status", "active"}});  // A simple payload.
@@ -616,15 +621,15 @@ TEST_CASE("Types::Update_t stores the payload and id",
 }
 
 TEST_CASE("Types::Delete_t stores the id",
-    "[entities][types]")  // Delete_t accessors.
+          "[entities][types]")  // Delete_t accessors.
 {
   const Types::Delete_t del(999);      // Wrap id 999.
   REQUIRE(del.get_id().has_value());   // An id is stored.
   CHECK(del.get_id().value() == 999);  // It is 999.
 }
 
-TEST_CASE(
-    "Types::Data_t stores the id", "[entities][types]")  // Data_t accessors.
+TEST_CASE("Types::Data_t stores the id",
+          "[entities][types]")  // Data_t accessors.
 {
   const Types::Data_t data(123);        // Wrap id 123.
   REQUIRE(data.get_id().has_value());   // An id is stored.

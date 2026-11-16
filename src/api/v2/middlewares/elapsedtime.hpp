@@ -91,9 +91,9 @@ namespace api::v2::MiddleWares  // Middleware for the v2 API lives here (note
      * @param[in,out] mcb Middleware callback that receives the final
      * response.
      */
-    void invoke(const drogon::HttpRequestPtr& req,
-        drogon::MiddlewareNextCallback&&      nextCb,
-        drogon::MiddlewareCallback&&          mcb)
+    void invoke(const drogon::HttpRequestPtr&    req,
+                drogon::MiddlewareNextCallback&& nextCb,
+                drogon::MiddlewareCallback&&     mcb)
         override  // Drogon calls invoke to run this middleware.
     {
       // Store the start time for this request
@@ -105,7 +105,8 @@ namespace api::v2::MiddleWares  // Middleware for the v2 API lives here (note
       // will run while getting out from this middleware
       std::move(nextCb)(  // Continue down the chain, giving it our
                           // measuring callback to call on the way back.
-          [mcb = std::move(mcb), start_time, req](const drogon::HttpResponsePtr&
+          [mcb = std::move(mcb), start_time, req](
+              const drogon::HttpResponsePtr&
                   resp)  // Capture the final callback, the start time and
                          // the request for later.
           {
@@ -120,22 +121,26 @@ namespace api::v2::MiddleWares  // Middleware for the v2 API lives here (note
                     .count();  // Difference converted to whole
                                // milliseconds for the log.
             // Log the elapsed time
-            LOG_INFO << fmt::format(": {}{}{}{}{}",
+            LOG_INFO << fmt::format(
+                ": {}{}{}{}{}",
                 fmt::styled(fmt::format("[{} ms] ", elapsed_ms),
-                    fmt::fg(fmt::color::orange)),  // Build one line:
-                                                   // elapsed time in
-                                                   // orange.
+                            fmt::fg(fmt::color::orange)),  // Build one line:
+                                                           // elapsed time in
+                                                           // orange.
                 fmt::styled(fmt::format("[{}]", req->getPeerAddr().toIp()),
-                    fmt::fg(fmt::color::yellow)),  // Client IP in yellow.
+                            fmt::fg(
+                                fmt::color::yellow)),  // Client IP in yellow.
                 fmt::styled(fmt::format("[{}]", req->getMethodString()),
-                    fmt::fg(fmt::color::red)),  // HTTP method in red.
+                            fmt::fg(fmt::color::red)),  // HTTP method in red.
                 fmt::styled(fmt::format("[{}]",
-                                static_cast<int>(resp->getStatusCode())),
-                    fmt::fg(fmt::color::magenta)),  // Response status
-                                                    // in magenta.
+                                        static_cast<int>(
+                                            resp->getStatusCode())),
+                            fmt::fg(fmt::color::magenta)),  // Response status
+                                                            // in magenta.
                 fmt::styled(fmt::format("[{}]", req->path()),
-                    fmt::fg(fmt::color::cyan)));  // Request path in cyan,
-                                                  // then write to the log.
+                            fmt::fg(
+                                fmt::color::cyan)));  // Request path in cyan,
+                                                      // then write to the log.
             std::move(mcb)(resp);  // Forward the unchanged response to
                                    // the previous middleware/route.
           });

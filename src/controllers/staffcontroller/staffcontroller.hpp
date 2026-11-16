@@ -132,8 +132,8 @@ class StaffController : public StaffControllerBase,
   StaffController& operator=(const StaffController&) =
       delete;  // Assigning a copy is blocked for the same reason.
   /** @brief Move assignment is disabled. */
-  StaffController& operator=(
-      StaffController&&) = delete;  // Move-assignment is blocked as well.
+  StaffController& operator=(StaffController&&) =
+      delete;  // Move-assignment is blocked as well.
   /** @brief Defaulted destructor; shared dependencies are released through
    * their shared pointers. */
   ~StaffController() override =
@@ -155,8 +155,9 @@ class StaffController : public StaffControllerBase,
    * permission check.
    * @param[in] data Raw JSON body containing `id` and `payload`.
    */
-  void AddStaffToEntity(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data)
+  void AddStaffToEntity(CALLBACK_&&       callback,
+                        const Requester&& requester,
+                        std::string_view  data)
       override;  // "override" means this implements the pure virtual job from
                  // StaffControllerBase.
   /**
@@ -169,8 +170,9 @@ class StaffController : public StaffControllerBase,
    * permission check.
    * @param[in] data Raw JSON body containing `id` and `payload`.
    */
-  void RemoveStaffFromEntity(
-      CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+  void RemoveStaffFromEntity(CALLBACK_&&       callback,
+                             const Requester&& requester,
+                             std::string_view  data)
       override;  // Same rules as Add, but calls the remove-staff SQL helper.
   /**
    * @brief Invites a staff member by handing an invite message to the
@@ -186,8 +188,9 @@ class StaffController : public StaffControllerBase,
    * @param[in] data Raw JSON body containing `nominee_id` and the invite
    * fields.
    */
-  void InviteStaffToEntity(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data)
+  void InviteStaffToEntity(CALLBACK_&&       callback,
+                           const Requester&& requester,
+                           std::string_view  data)
       override;  // The invite job sends an email instead of running SQL.
   /**
    * @brief Coroutine form of @ref AddStaffToEntity.
@@ -200,9 +203,9 @@ class StaffController : public StaffControllerBase,
    * @param[in] data Raw JSON body; must remain valid until the task
    * completes.
    */
-  drogon::Task<void> AddStaffToEntityAsync(CALLBACK_&& callback,
-      const Requester&&                                requester,
-      std::string_view                                 data)
+  drogon::Task<void> AddStaffToEntityAsync(CALLBACK_&&       callback,
+                                           const Requester&& requester,
+                                           std::string_view  data)
       override;  // Pausable version of Add; returns a task instead of
                  // finishing immediately.
   /**
@@ -216,9 +219,10 @@ class StaffController : public StaffControllerBase,
    * @param[in] data Raw JSON body; must remain valid until the task
    * completes.
    */
-  drogon::Task<void> RemoveStaffFromEntityAsync(CALLBACK_&& callback,
-      const Requester&&                                     requester,
-      std::string_view data) override;  // Pausable version of Remove.
+  drogon::Task<void> RemoveStaffFromEntityAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) override;  // Pausable version of Remove.
   /**
    * @brief Coroutine form of @ref InviteStaffToEntity.
    * @note The email-daemon POST is a synchronous cURL call in this variant
@@ -230,10 +234,11 @@ class StaffController : public StaffControllerBase,
    * @param[in] data Raw JSON body; must remain valid until the task
    * completes.
    */
-  drogon::Task<void> InviteStaffToEntityAsync(CALLBACK_&& callback,
-      const Requester&&                                   requester,
-      std::string_view data) override;  // Pausable version of Invite; the
-                                        // email send itself still blocks.
+  drogon::Task<void> InviteStaffToEntityAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) override;  // Pausable version of Invite; the
+                                         // email send itself still blocks.
 
  private:
   /** @brief Retained Configurator service handle obtained at construction. */

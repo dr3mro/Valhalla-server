@@ -102,17 +102,17 @@ class StaffControllerBase
                 // data.
   /** @brief Move construction is disabled; the interface is used through
    * pointers/references. */
-  StaffControllerBase(
-      StaffControllerBase&&) = delete;  // "= delete" makes any attempt to move
-                                        // this interface a compile-time error.
+  StaffControllerBase(StaffControllerBase&&) =
+      delete;  // "= delete" makes any attempt to move
+               // this interface a compile-time error.
   /** @brief Copy assignment is allowed. */
   StaffControllerBase& operator=(const StaffControllerBase&) =
       default;  // Copy-assignment is fine for the same "no state" reason.
   /** @brief Move assignment is disabled, mirroring the deleted move
    * constructor. */
-  StaffControllerBase& operator=(
-      StaffControllerBase&&) = delete;  // Move-assignment is blocked to match
-                                        // the deleted move constructor.
+  StaffControllerBase& operator=(StaffControllerBase&&) =
+      delete;  // Move-assignment is blocked to match
+               // the deleted move constructor.
   /** @brief Virtual destructor so derived controllers can be released through
    * this interface. */
   virtual ~StaffControllerBase() =
@@ -133,11 +133,12 @@ class StaffControllerBase
    * permission check.
    * @param[in] data Raw JSON body with `id` and `payload`.
    */
-  virtual void               AddStaffToEntity(CALLBACK_&& callback,
-      const Requester&&                     requester,
+  virtual void AddStaffToEntity(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
       std::string_view
           data) = 0;  // "= 0" = pure virtual: derived classes MUST implement
-                                    // this; "virtual" enables base-pointer dispatch.
+                      // this; "virtual" enables base-pointer dispatch.
   /**
    * @brief Removes a staff member from a service entity.
    * @details Same request shape and authorisation contract as @ref
@@ -148,11 +149,12 @@ class StaffControllerBase
    * permission check.
    * @param[in] data Raw JSON body with `id` and `payload`.
    */
-  virtual void               RemoveStaffFromEntity(CALLBACK_&& callback,
-      const Requester&&                          requester,
+  virtual void RemoveStaffFromEntity(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
       std::string_view
           data) = 0;  // Pure virtual remove job; same callback/permission
-                                    // rules as AddStaffToEntity.
+                      // rules as AddStaffToEntity.
   /**
    * @brief Invites a staff member to a service entity by delegating delivery
    * to the email daemon.
@@ -167,10 +169,11 @@ class StaffControllerBase
    * @param[in] data Raw JSON body with `nominee_id` and the @ref
    * api::v2::Types::StaffData fields.
    */
-  virtual void               InviteStaffToEntity(CALLBACK_&& callback,
-      const Requester&&                        requester,
+  virtual void InviteStaffToEntity(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
       std::string_view data) = 0;  // Pure virtual invite job; unlike the others
-                                                 // it sends an email rather than running SQL.
+                                   // it sends an email rather than running SQL.
   /**
    * @brief Coroutine form of @ref AddStaffToEntity.
    * @param[in,out] callback Completion handler, invoked once with (status,
@@ -180,10 +183,11 @@ class StaffControllerBase
    * @param[in] data Raw JSON body; must remain valid until the task
    * completes.
    */
-  virtual drogon::Task<void> AddStaffToEntityAsync(CALLBACK_&& callback,
-      const Requester&&                                        requester,
-      std::string_view data) = 0;  // Same job as AddStaffToEntity, but as a
-                                   // pausable task to be used with co_await.
+  virtual drogon::Task<void> AddStaffToEntityAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) = 0;  // Same job as AddStaffToEntity, but as a
+                                    // pausable task to be used with co_await.
   /**
    * @brief Coroutine form of @ref RemoveStaffFromEntity.
    * @param[in,out] callback Completion handler, invoked once with (status,
@@ -193,8 +197,9 @@ class StaffControllerBase
    * @param[in] data Raw JSON body; must remain valid until the task
    * completes.
    */
-  virtual drogon::Task<void> RemoveStaffFromEntityAsync(CALLBACK_&& callback,
-      const Requester&&                                             requester,
+  virtual drogon::Task<void> RemoveStaffFromEntityAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
       std::string_view data) = 0;  // Pausable version of RemoveStaffFromEntity.
   /**
    * @brief Coroutine form of @ref InviteStaffToEntity.
@@ -207,8 +212,9 @@ class StaffControllerBase
    * @param[in] data Raw JSON body; must remain valid until the task
    * completes.
    */
-  virtual drogon::Task<void> InviteStaffToEntityAsync(CALLBACK_&& callback,
-      const Requester&&                                           requester,
-      std::string_view data) = 0;  // Pausable version of Invite; the email
-                                   // send itself still blocks even here.
+  virtual drogon::Task<void> InviteStaffToEntityAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) = 0;  // Pausable version of Invite; the email
+                                    // send itself still blocks even here.
 };

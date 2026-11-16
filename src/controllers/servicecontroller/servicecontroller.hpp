@@ -114,15 +114,15 @@ class ServiceController
                // clear identity.
   /** @brief Move construction is disabled; controllers are shared, not moved.
    */
-  ServiceController(
-      ServiceController&&) = delete;  // Moving is also forbidden for the same
-                                      // single-identity reason.
+  ServiceController(ServiceController&&) =
+      delete;  // Moving is also forbidden for the same
+               // single-identity reason.
   /** @brief Copy assignment is disabled. */
-  ServiceController& operator=(
-      const ServiceController&) = delete;  // Assigning a copy is blocked too.
+  ServiceController& operator=(const ServiceController&) =
+      delete;  // Assigning a copy is blocked too.
   /** @brief Move assignment is disabled. */
-  ServiceController& operator=(
-      ServiceController&&) = delete;  // Move-assignment is blocked as well.
+  ServiceController& operator=(ServiceController&&) =
+      delete;  // Move-assignment is blocked as well.
   /** @brief Defaulted destructor; no resources are owned directly. */
   ~ServiceController() override =
       default;  // "override" confirms this matches the base's virtual
@@ -132,50 +132,63 @@ class ServiceController
   // forwarded below.
   /** @brief Forwards to `EntityController<T>::Create`; see that method for
    * validation and error codes. */
-  void               Create(CALLBACK_&& callback, const Requester&& requester,
+  void Create(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
       std::string_view data) override;  // "override" means this implements the
-                                                      // base interface's pure virtual Create.
+                                        // base interface's pure virtual Create.
   /** @brief Coroutine form of @ref Create; co_awaits
    * `EntityController<T>::CreateAsync`. */
-  drogon::Task<void> CreateAsync(CALLBACK_&& callback,
-      const Requester&&                      requester,
-      std::string_view data) override;  // Returns a pausable task; the real
-                                        // async work is in the base.
+  drogon::Task<void> CreateAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) override;  // Returns a pausable task; the real
+                                         // async work is in the base.
   /** @brief Forwards to `EntityController<T>::Read`; `data` must contain `id`
    * and `schema`. */
-  void               Read(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data) override;  // Just a passthrough; see the base
-                                                      // for what happens to `data`.
+  void Read(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) override;  // Just a passthrough; see the base
+                                         // for what happens to `data`.
   /** @brief Coroutine form of @ref Read; co_awaits
    * `EntityController<T>::ReadAsync`. */
-  drogon::Task<void> ReadAsync(CALLBACK_&& callback,
-      const Requester&&                    requester,
-      std::string_view data) override;  // Pausable version of Read.
+  drogon::Task<void> ReadAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) override;  // Pausable version of Read.
   /** @brief Forwards to `EntityController<T>::Update`; a missing @p _id is
    * rejected there. */
-  void               Update(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view        data,
-      std::optional<uint64_t> _id)
+  void Update(CALLBACK_&&             callback,
+              const Requester&&       requester,
+              std::string_view        data,
+              std::optional<uint64_t> _id)
       override;  // `_id` might hold "no value"; the base decides if that is
                  // an error.
   /** @brief Coroutine form of @ref Update; co_awaits
    * `EntityController<T>::UpdateAsync`. */
-  drogon::Task<void> UpdateAsync(CALLBACK_&& callback,
-      const Requester&& requester, std::string_view data,
+  drogon::Task<void> UpdateAsync(
+      CALLBACK_&&             callback,
+      const Requester&&       requester,
+      std::string_view        data,
       std::optional<uint64_t> _id) override;  // Pausable version of Update.
   /** @brief Forwards to `EntityController<T>::Delete`; a missing @p _id is
    * rejected there. */
-  void               Delete(CALLBACK_&& callback, const Requester&& requester,
-      std::optional<uint64_t> _id)
+  void Delete(CALLBACK_&&             callback,
+              const Requester&&       requester,
+              std::optional<uint64_t> _id)
       override;  // Delete needs only the target id, not a JSON body.
   /** @brief Coroutine form of @ref Delete; co_awaits
    * `EntityController<T>::DeleteAsync`. */
-  drogon::Task<void> DeleteAsync(CALLBACK_&& callback,
-      const Requester&&                      requester,
+  drogon::Task<void> DeleteAsync(
+      CALLBACK_&&             callback,
+      const Requester&&       requester,
       std::optional<uint64_t> _id) override;  // Pausable version of Delete.
   /** @brief Forwards to `EntityController<T>::Search`; no separate coroutine
    * override is provided. */
-  void               Search(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data) override;  // Search is synchronous only; there
-                                                      // is no SearchAsync in this family.
+  void Search(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) override;  // Search is synchronous only; there
+                                         // is no SearchAsync in this family.
 };

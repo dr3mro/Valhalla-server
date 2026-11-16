@@ -170,8 +170,10 @@ namespace api::v2  // All public API v2 code lives in this namespace.
      * once with a status code and a body when the answer is ready, which
      * may be later on another thread.
      */
-    void               login(CALLBACK_&& callback, std::string_view data,
-        const std::string& ip_address, std::string_view group);
+    void login(CALLBACK_&&        callback,
+               std::string_view   data,
+               const std::string& ip_address,
+               std::string_view   group);
     /**
      * @brief Coroutine form of login() for use on Drogon executor threads.
      * @details Mirrors login() but awaits the stored-hash lookup
@@ -188,8 +190,10 @@ namespace api::v2  // All public API v2 code lives in this namespace.
      * database read completes; callers must co_await (or otherwise drive)
      * the returned task.
      */
-    drogon::Task<void> loginAsync(CALLBACK_&& callback, std::string_view data,
-        const std::string& ip_address, std::string_view group);
+    drogon::Task<void> loginAsync(CALLBACK_&&        callback,
+                                  std::string_view   data,
+                                  const std::string& ip_address,
+                                  std::string_view   group);
     /**
      * @brief Ends a client session, recording the logout time.
      * @details Delegates to SessionManager::logout. The supplied token is
@@ -202,8 +206,10 @@ namespace api::v2  // All public API v2 code lives in this namespace.
      * @param[in] ip_address Client IP recorded in the logout data.
      * @param[in] group Client group selecting the session table.
      */
-    void logout(CALLBACK_&& callback, const std::optional<std::string>& token,
-        const std::string& ip_address, const std::string& group);
+    void logout(CALLBACK_&&                       callback,
+                const std::optional<std::string>& token,
+                const std::string&                ip_address,
+                const std::string&                group);
 
     /**
      * @brief Checks whether the supplied client is authenticated.
@@ -247,8 +253,8 @@ namespace api::v2  // All public API v2 code lives in this namespace.
      * be dropped.
      * @param[in] group Client group selecting the session table.
      */
-    void removeSession(
-        std::optional<uint64_t> client_id, const std::string& group);
+    void removeSession(std::optional<uint64_t> client_id,
+                       const std::string&      group);
 
     /**
      * @brief Checks whether @p requester may create a @p T resource.
@@ -263,8 +269,9 @@ namespace api::v2  // All public API v2 code lives in this namespace.
      * @return True if the operation is permitted.
      */
     template <typename T>
-    bool canCreate(const Requester&          requester,
-        const std::optional<jsoncons::json>& data_j, Http::Error& error);
+    bool canCreate(const Requester&                     requester,
+                   const std::optional<jsoncons::json>& data_j,
+                   Http::Error&                         error);
 
     /**
      * @brief Coroutine form of canCreate().
@@ -277,8 +284,10 @@ namespace api::v2  // All public API v2 code lives in this namespace.
      * the awaited checks.
      */
     template <typename T>
-    drogon::Task<bool> canCreateAsync(const Requester& requester,
-        const std::optional<jsoncons::json>& data_j, Http::Error& error);
+    drogon::Task<bool> canCreateAsync(
+        const Requester&                     requester,
+        const std::optional<jsoncons::json>& data_j,
+        Http::Error&                         error);
 
     /**
      * @brief Checks read permission on the entity @p entity_id.
@@ -289,8 +298,9 @@ namespace api::v2  // All public API v2 code lives in this namespace.
      * @return True if the operation is permitted.
      */
     template <typename T>
-    bool canRead(
-        const Requester& requester, uint64_t entity_id, Http::Error& error);
+    bool canRead(const Requester& requester,
+                 uint64_t         entity_id,
+                 Http::Error&     error);
 
     /**
      * @brief Coroutine form of canRead().
@@ -302,8 +312,9 @@ namespace api::v2  // All public API v2 code lives in this namespace.
      * @note Callers must drive the returned task.
      */
     template <typename T>
-    drogon::Task<bool> canReadAsync(
-        const Requester& requester, uint64_t entity_id, Http::Error& error);
+    drogon::Task<bool> canReadAsync(const Requester& requester,
+                                    uint64_t         entity_id,
+                                    Http::Error&     error);
 
     /**
      * @brief Checks update permission on the entity @p entity_id.
@@ -314,8 +325,9 @@ namespace api::v2  // All public API v2 code lives in this namespace.
      * @return True if the operation is permitted.
      */
     template <typename T>
-    bool canUpdate(
-        const Requester& requester, uint64_t entity_id, Http::Error& error);
+    bool canUpdate(const Requester& requester,
+                   uint64_t         entity_id,
+                   Http::Error&     error);
 
     /**
      * @brief Coroutine form of canUpdate().
@@ -327,8 +339,9 @@ namespace api::v2  // All public API v2 code lives in this namespace.
      * @note Callers must drive the returned task.
      */
     template <typename T>
-    drogon::Task<bool> canUpdateAsync(
-        const Requester& requester, uint64_t entity_id, Http::Error& error);
+    drogon::Task<bool> canUpdateAsync(const Requester& requester,
+                                      uint64_t         entity_id,
+                                      Http::Error&     error);
 
     /**
      * @brief Checks delete permission on the entity @p entity_id.
@@ -339,8 +352,9 @@ namespace api::v2  // All public API v2 code lives in this namespace.
      * @return True if the operation is permitted.
      */
     template <typename T>
-    bool canDelete(
-        const Requester& requester, uint64_t entity_id, Http::Error& error);
+    bool canDelete(const Requester& requester,
+                   uint64_t         entity_id,
+                   Http::Error&     error);
 
     /**
      * @brief Coroutine form of canDelete().
@@ -352,8 +366,9 @@ namespace api::v2  // All public API v2 code lives in this namespace.
      * @note Callers must drive the returned task.
      */
     template <typename T>
-    drogon::Task<bool> canDeleteAsync(
-        const Requester& requester, uint64_t entity_id, Http::Error& error);
+    drogon::Task<bool> canDeleteAsync(const Requester& requester,
+                                      uint64_t         entity_id,
+                                      Http::Error&     error);
 
     /**
      * @brief Checks whether @p requester may manage staff of the service @p
@@ -365,8 +380,9 @@ namespace api::v2  // All public API v2 code lives in this namespace.
      * @return True if the operation is permitted.
      */
     template <typename T>
-    bool canManageStaff(
-        const Requester& requester, uint64_t _id, Http::Error& error);
+    bool canManageStaff(const Requester& requester,
+                        uint64_t         _id,
+                        Http::Error&     error);
 
     /**
      * @brief Coroutine form of canManageStaff().
@@ -378,8 +394,9 @@ namespace api::v2  // All public API v2 code lives in this namespace.
      * @note Callers must drive the returned task.
      */
     template <typename T>
-    drogon::Task<bool> canManageStaffAsync(
-        const Requester& requester, uint64_t _id, Http::Error& error);
+    drogon::Task<bool> canManageStaffAsync(const Requester& requester,
+                                           uint64_t         _id,
+                                           Http::Error&     error);
 
     /**
      * @brief Checks whether @p requester may toggle the active flag of
@@ -391,8 +408,9 @@ namespace api::v2  // All public API v2 code lives in this namespace.
      * @return True if the operation is permitted.
      */
     template <Client_t T>
-    bool canToggleActive(
-        const Requester& requester, uint64_t _id, Http::Error& error);
+    bool canToggleActive(const Requester& requester,
+                         uint64_t         _id,
+                         Http::Error&     error);
 
     /**
      * @brief Coroutine form of canToggleActive().
@@ -404,8 +422,9 @@ namespace api::v2  // All public API v2 code lives in this namespace.
      * @note Callers must drive the returned task.
      */
     template <Client_t T>
-    drogon::Task<bool> canToggleActiveAsync(
-        const Requester& requester, uint64_t _id, Http::Error& error);
+    drogon::Task<bool> canToggleActiveAsync(const Requester& requester,
+                                            uint64_t         _id,
+                                            Http::Error&     error);
 
     /**
      * @brief Checks whether @p requester may list the services of client @p
@@ -417,8 +436,9 @@ namespace api::v2  // All public API v2 code lives in this namespace.
      * @return True if the operation is permitted.
      */
     template <Client_t T>
-    bool canGetServices(
-        const Requester& requester, uint64_t _id, Http::Error& error);
+    bool canGetServices(const Requester& requester,
+                        uint64_t         _id,
+                        Http::Error&     error);
 
     /**
      * @brief Coroutine form of canGetServices().
@@ -430,8 +450,9 @@ namespace api::v2  // All public API v2 code lives in this namespace.
      * @note Callers must drive the returned task.
      */
     template <Client_t T>
-    drogon::Task<bool> canGetServicesAsync(
-        const Requester& requester, uint64_t _id, Http::Error& error);
+    drogon::Task<bool> canGetServicesAsync(const Requester& requester,
+                                           uint64_t         _id,
+                                           Http::Error&     error);
 
     /**
      * @brief Classifies a request for abuse (whitelist/blacklist/rate/ban)
@@ -455,8 +476,9 @@ namespace api::v2  // All public API v2 code lives in this namespace.
      * @param[out] success Set true only when parsing succeeded.
      * @return Parsed JSON, or std::nullopt on failure.
      */
-    std::optional<jsoncons::json> parse_data(
-        std::string_view data, std::string& message, bool& success);
+    std::optional<jsoncons::json> parse_data(std::string_view data,
+                                             std::string&     message,
+                                             bool&            success);
     /**
      * @brief Extracts username/password from a JSON login body.
      * @details Calls parse_data(), then reads the "username" and "password"
@@ -467,8 +489,9 @@ namespace api::v2  // All public API v2 code lives in this namespace.
      * @param[out] success Set true only when both fields were extracted.
      * @return Parsed credentials, or std::nullopt on failure.
      */
-    std::optional<Types::Credentials> parse_credentials(
-        std::string_view data, std::string& message, bool& success);
+    std::optional<Types::Credentials> parse_credentials(std::string_view data,
+                                                        std::string& message,
+                                                        bool&        success);
 
     // These are shared handles, not owned copies: the Store keeps the real
     // objects alive and many request threads use them at once. GateKeeper

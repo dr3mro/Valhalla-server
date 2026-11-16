@@ -86,7 +86,7 @@ TEST_CASE(
 // The cache invalidation must be cross-thread, not just local: a replacement
 // made on another thread has to be seen by this thread's cached lookup.
 TEST_CASE("Store::cachedObject notices a replace made by another thread",
-    "[store][cache]")  // Cross-thread cache coherence.
+          "[store][cache]")  // Cross-thread cache coherence.
 {
   auto original =
       Store::getObject<CachedProbe>();  // The object this thread will cache.

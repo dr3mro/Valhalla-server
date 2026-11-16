@@ -89,12 +89,12 @@ class EntityController : public Controller, public EntityControllerBase
   EntityController() = default;  // Uses the base GateKeeper initializer.
   EntityController(const EntityController&) =
       default;  // Copying shares the GateKeeper handle.
-  EntityController(
-      EntityController&&) = default;  // Moving transfers the GateKeeper handle.
-  EntityController& operator=(
-      const EntityController&) = default;  // Copy assignment shares the handle.
-  EntityController& operator=(
-      EntityController&&) = default;  // Move assignment transfers the handle.
+  EntityController(EntityController&&) =
+      default;  // Moving transfers the GateKeeper handle.
+  EntityController& operator=(const EntityController&) =
+      default;  // Copy assignment shares the handle.
+  EntityController& operator=(EntityController&&) =
+      default;  // Move assignment transfers the handle.
   ~EntityController() override =
       default;  // Virtual via both bases; no explicit cleanup needed.
   // CRUDS
@@ -110,8 +110,9 @@ class EntityController : public Controller, public EntityControllerBase
    * GateKeeper.
    * @param[in] data JSON body describing the new entity.
    */
-  void               Create(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data) override;
+  void Create(CALLBACK_&&       callback,
+              const Requester&& requester,
+              std::string_view  data) override;
   /**
    * @brief Coroutine form of Create(); awaits the asynchronous gate and
    * persistence checks.
@@ -120,8 +121,9 @@ class EntityController : public Controller, public EntityControllerBase
    * @param[in] data JSON body describing the new entity; must outlive the
    * coroutine.
    */
-  drogon::Task<void> CreateAsync(CALLBACK_&& callback,
-      const Requester&& requester, std::string_view data) override;
+  drogon::Task<void> CreateAsync(CALLBACK_&&       callback,
+                                 const Requester&& requester,
+                                 std::string_view  data) override;
   /**
    * @brief Validates and authorizes a read request, then reads the selected
    * columns of an entity.
@@ -132,8 +134,9 @@ class EntityController : public Controller, public EntityControllerBase
    * @param[in] requester Principal whose read permission is checked.
    * @param[in] data JSON body containing `id` and `schema`.
    */
-  void               Read(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data) override;
+  void Read(CALLBACK_&&       callback,
+            const Requester&& requester,
+            std::string_view  data) override;
   /**
    * @brief Coroutine form of Read(); must be awaited.
    * @param[in,out] callback Invoked exactly once on completion.
@@ -141,8 +144,9 @@ class EntityController : public Controller, public EntityControllerBase
    * @param[in] data JSON body containing `id` and `schema`; must outlive the
    * coroutine.
    */
-  drogon::Task<void> ReadAsync(CALLBACK_&& callback,
-      const Requester&& requester, std::string_view data) override;
+  drogon::Task<void> ReadAsync(CALLBACK_&&       callback,
+                               const Requester&& requester,
+                               std::string_view  data) override;
   /**
    * @brief Validates and authorizes an update request, then updates the
    * entity.
@@ -152,8 +156,10 @@ class EntityController : public Controller, public EntityControllerBase
    * @param[in] data JSON body holding the fields to change.
    * @param[in] _id Target entity id; a missing value is rejected with 400.
    */
-  void               Update(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data, std::optional<uint64_t> _id) override;
+  void Update(CALLBACK_&&             callback,
+              const Requester&&       requester,
+              std::string_view        data,
+              std::optional<uint64_t> _id) override;
   /**
    * @brief Coroutine form of Update(); must be awaited.
    * @param[in,out] callback Invoked exactly once on completion.
@@ -162,9 +168,10 @@ class EntityController : public Controller, public EntityControllerBase
    * coroutine.
    * @param[in] _id Target entity id; a missing value is rejected with 400.
    */
-  drogon::Task<void> UpdateAsync(CALLBACK_&& callback,
-      const Requester&& requester, std::string_view data,
-      std::optional<uint64_t> _id) override;
+  drogon::Task<void> UpdateAsync(CALLBACK_&&             callback,
+                                 const Requester&&       requester,
+                                 std::string_view        data,
+                                 std::optional<uint64_t> _id) override;
   /**
    * @brief Authorizes and performs a delete; a missing id is rejected with
    * 406.
@@ -173,16 +180,18 @@ class EntityController : public Controller, public EntityControllerBase
    * @param[in] requester Principal whose delete permission is checked.
    * @param[in] _id Target entity id.
    */
-  void               Delete(CALLBACK_&& callback, const Requester&& requester,
-      std::optional<uint64_t> _id) override;
+  void Delete(CALLBACK_&&             callback,
+              const Requester&&       requester,
+              std::optional<uint64_t> _id) override;
   /**
    * @brief Coroutine form of Delete(); must be awaited.
    * @param[in,out] callback Invoked exactly once on completion.
    * @param[in] requester Principal whose delete permission is checked.
    * @param[in] _id Target entity id.
    */
-  drogon::Task<void> DeleteAsync(CALLBACK_&& callback,
-      const Requester&& requester, std::optional<uint64_t> _id) override;
+  drogon::Task<void> DeleteAsync(CALLBACK_&&             callback,
+                                 const Requester&&       requester,
+                                 std::optional<uint64_t> _id) override;
   /**
    * @brief Parses search criteria into a Search_t and runs the paginated
    * search.
@@ -193,8 +202,9 @@ class EntityController : public Controller, public EntityControllerBase
    * @param[in] requester Unused principal.
    * @param[in] data JSON body containing criteria, limit and offset.
    */
-  void               Search(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data) override;
+  void Search(CALLBACK_&&       callback,
+              const Requester&& requester,
+              std::string_view  data) override;
   /**
    * @brief Coroutine form of Search(); must be awaited.
    * @param[in,out] callback Invoked exactly once on completion.
@@ -202,8 +212,9 @@ class EntityController : public Controller, public EntityControllerBase
    * @param[in] data JSON body containing criteria, limit and offset; must
    * outlive the coroutine.
    */
-  drogon::Task<void> SearchAsync(CALLBACK_&& callback,
-      const Requester&& requester, std::string_view data) override;
+  drogon::Task<void> SearchAsync(CALLBACK_&&       callback,
+                                 const Requester&& requester,
+                                 std::string_view  data) override;
 
  private:
   /**

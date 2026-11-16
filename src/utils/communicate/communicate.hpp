@@ -73,7 +73,9 @@ class Communicate  // A class used only through static functions; it has no
   static std::optional<std::string>
   sendRequest(  // The one public entry point: an optional string that is
                 // empty on failure.
-      const std::string& server, int port, const std::string& path,
+      const std::string&        server,
+      int                       port,
+      const std::string&        path,
       const drogon::HttpMethod& method,
       const std::string& data);  // Arguments describe where to send, which
                                  // verb to use and what body to send.
@@ -101,7 +103,9 @@ class Communicate  // A class used only through static functions; it has no
    * @return Number of bytes consumed, which must equal `size * nmemb` or
    *         libcurl reports a write error.
    */
-  static std::optional<size_t> WriteCallback(void* contents, size_t size,
+  static std::optional<size_t> WriteCallback(
+      void*        contents,
+      size_t       size,
       size_t       nmemb,
       std::string* response);  // libcurl calls this repeatedly with chunks of
                                // the response; it appends them to the string.

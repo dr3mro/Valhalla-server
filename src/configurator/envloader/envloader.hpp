@@ -114,9 +114,9 @@ class EnvLoader
   template <typename T>  // T is filled in from the type of defaultValue at
                          // each call site (e.g. uint32_t or uint16_t).
   T getEnvironmentVariable(const std::string& key,
-      T defaultValue)  // Returns the parsed number or
-                       // defaultValue if the variable
-                       // is missing or invalid.
+                           T defaultValue)  // Returns the parsed number or
+                                            // defaultValue if the variable
+                                            // is missing or invalid.
   {
     auto value = get(key);  // Fetch the raw text via the inherited helper;
                             // an empty optional means "not set".
@@ -152,9 +152,10 @@ class EnvLoader
    * @return The variable's exact string value, or @p defaultValue when
    * absent.
    */
-  std::string                     getEnvironmentVariable(const std::string& key,
+  std::string getEnvironmentVariable(
+      const std::string& key,
       const std::string& defaultValue);  // Returns the text unchanged, or the
-                                                             // fallback when the name is absent.
+                                         // fallback when the name is absent.
   /**
    * @brief Reads a boolean environment variable.
    * @param[in] key Environment-variable name.
@@ -165,9 +166,10 @@ class EnvLoader
    * @note Matching is case-sensitive; "True", "1" and "TRUE" all evaluate to
    * false.
    */
-  bool                            getEnvironmentVariable(const std::string& key,
+  bool getEnvironmentVariable(
+      const std::string& key,
       bool defaultValue);  // True only for the exact word "true"; the default
-                                                      // applies only when unset.
+                           // applies only when unset.
   /**
    * @brief Reads a duration environment variable expressed as a whole number
    * of seconds.
@@ -178,10 +180,11 @@ class EnvLoader
    * @note A negative count is rejected (with an error log) and the default is
    * kept, since durations are stored as unsigned seconds.
    */
-  std::chrono::seconds            getEnvironmentVariable(const std::string& key,
+  std::chrono::seconds getEnvironmentVariable(
+      const std::string& key,
       const std::chrono::seconds&
           defaultValue);  // Interprets the value as whole seconds, rejecting
-                                     // negatives and bad text.
+                          // negatives and bad text.
   /**
    * @brief Reads a comma-separated environment variable into a set of
    * strings.
@@ -211,7 +214,8 @@ class EnvLoader
    * @param[in] factor Multiplier applied to the CPU count.
    * @note A hardware_concurrency() of zero is treated as one CPU.
    */
-  void                            optimize_performance(uint16_t& parameter,
+  void optimize_performance(
+      uint16_t& parameter,
       uint8_t factor);  // Replaces a zero "auto" value with CPUs times factor.
   /**
    * @brief Splits a comma-separated string into a trimmed set of non-empty

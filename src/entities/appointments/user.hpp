@@ -72,8 +72,8 @@ class ClinicAppointment : public Appointment  // Public inheritance keeps the
   template <typename T>
   explicit ClinicAppointment(const T& _data)
       : Appointment(_data,
-            TABLENAME)  // "explicit" requires a direct call; TABLENAME fixes
-                        // the target table.
+                    TABLENAME)  // "explicit" requires a direct call; TABLENAME
+                                // fixes the target table.
   {
   }
 
@@ -83,10 +83,10 @@ class ClinicAppointment : public Appointment  // Public inheritance keeps the
    */
   ClinicAppointment(const ClinicAppointment&) = delete;  // No copy.
   ClinicAppointment(ClinicAppointment&&)      = delete;  // No move.
-  ClinicAppointment& operator=(
-      const ClinicAppointment&) = delete;  // No copy assignment.
-  ClinicAppointment& operator=(
-      ClinicAppointment&&) = delete;  // No move assignment.
+  ClinicAppointment& operator=(const ClinicAppointment&) =
+      delete;  // No copy assignment.
+  ClinicAppointment& operator=(ClinicAppointment&&) =
+      delete;  // No move assignment.
 
   /**
    * @brief Returns the clinic appointment table name.

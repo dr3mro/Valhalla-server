@@ -100,8 +100,8 @@ class Laboratories : public Service  // Inherits every CRUD/search/staff method;
                          // so many wrapper types fit this one constructor.
   Laboratories(const T& _data)
       : Service(_data,
-            TABLENAME)  // Hand the data and table name to Service, which
-                        // copies them into Entity.
+                TABLENAME)  // Hand the data and table name to Service, which
+                            // copies them into Entity.
   {
   }
   /**

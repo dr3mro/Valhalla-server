@@ -119,10 +119,10 @@ namespace api::v2  // The v2 API controllers live here.
      * @param[in,out] callback Response callback, consumed exactly once.
      * @param[in] serviceType Registry key taken from the path.
      */
-    void Create(const drogon::HttpRequestPtr&                 req,
-        std::function<void(const drogon::HttpResponsePtr&)>&& callback,
-        const std::string&
-            serviceType)  // HTTP handler creating a clinic-service entity.
+    void Create(const drogon::HttpRequestPtr&                         req,
+                std::function<void(const drogon::HttpResponsePtr&)>&& callback,
+                const std::string& serviceType)  // HTTP handler creating a
+                                                 // clinic-service entity.
     {
       const bool async =
           asyncDb_;  // Copy cached flag selecting the database mode.
@@ -134,10 +134,10 @@ namespace api::v2  // The v2 API controllers live here.
                 -> drogon::Task<void>  // Start coroutine capturing its
                                        // state by value.
             {
-              CALLBACK_ mcb =
-                  [cb](int               code,
-                      const std::string& content)  // Adapter: controller status
-                                                   // -> HTTP response.
+              CALLBACK_ mcb = [cb](int code,
+                                   const std::string&
+                                       content)  // Adapter: controller status
+                                                 // -> HTTP response.
               {
                 using Reply = std::function<void(
                     // Response callback alias.
@@ -147,35 +147,38 @@ namespace api::v2  // The v2 API controllers live here.
                   // Success.
                   case api::v2::Http::Status::OK:
                     Helper::successResponse(content,
-                        Reply(cb));  // Send 200 with the body.
-                    break;           // Leave the switch.
+                                            Reply(cb));  // Send 200 with the
+                                                         // body.
+                    break;                               // Leave the switch.
                   case api::v2::Http::Status::
                       INTERNAL_SERVER_ERROR:  // Failure.
                     Helper::failureResponse(content,
-                        Reply(cb));  // Send tagged 500.
-                    break;           // Leave the switch.
-                  default:           // Other error.
-                    Helper::errorResponse(
-                        static_cast<drogon::HttpStatusCode>(code), content,
-                        Reply(cb));  // Reuse the numeric status.
-                    break;           // Leave the switch.
+                                            Reply(cb));  // Send tagged 500.
+                    break;                               // Leave the switch.
+                  default:                               // Other error.
+                    Helper::errorResponse(static_cast<drogon::HttpStatusCode>(
+                                              code),
+                                          content,
+                                          Reply(cb));  // Reuse the numeric
+                                                       // status.
+                    break;                             // Leave the switch.
                 }
               };
 
-              Requester requester(
-                  req->getAttributes()->get<uint64_t>("clientID"),
-                  req->getAttributes()->get<std::string>(
-                      "clientGroup"));  // Build caller identity for
-                                        // permission checks.
+              Requester
+                  requester(req->getAttributes()->get<uint64_t>("clientID"),
+                            req->getAttributes()->get<std::string>(
+                                "clientGroup"));  // Build caller identity for
+                                                  // permission checks.
 
               auto ctlIt = clinicRegistry.find(
                   serviceType);  // Find controller for this URL type.
               if (ctlIt == clinicRegistry.end())  // Unknown type.
               {
                 std::move(mcb)(api::v2::Http::Status::BAD_REQUEST,
-                    fmt::format("Type mapping not found for: {}",
-                        serviceType));  // Reply 400.
-                co_return;              // End coroutine.
+                               fmt::format("Type mapping not found for: {}",
+                                           serviceType));  // Reply 400.
+                co_return;                                 // End coroutine.
               }
 
               try  // Guard the controller call.
@@ -183,10 +186,11 @@ namespace api::v2  // The v2 API controllers live here.
                 co_await std::visit(
                     [&](auto& controller) -> drogon::Task<void>
                     {  // Dispatch to the correct controller type.
-                      co_await controller->CreateAsync(std::move(mcb),
-                          std::move(requester),
-                          req->body());  // Create asynchronously
-                                         // from the body.
+                      co_await controller
+                          ->CreateAsync(std::move(mcb),
+                                        std::move(requester),
+                                        req->body());  // Create asynchronously
+                                                       // from the body.
                     },
                     ctlIt->second);  // The selected variant.
               }
@@ -199,9 +203,14 @@ namespace api::v2  // The v2 API controllers live here.
         return;  // Coroutine owns the rest.
       }
 
-      executeControllerMethod(*dbExecutor, clinicRegistry, serviceType,
-          &ClinicControllerBase::Create, req, std::move(callback),
-          req->body());  // Blocking mode: dispatch Create with body.
+      executeControllerMethod(*dbExecutor,
+                              clinicRegistry,
+                              serviceType,
+                              &ClinicControllerBase::Create,
+                              req,
+                              std::move(callback),
+                              req->body());  // Blocking mode: dispatch Create
+                                             // with body.
     }
 
     /**
@@ -215,10 +224,10 @@ namespace api::v2  // The v2 API controllers live here.
      * @param[in,out] callback Response callback, consumed exactly once.
      * @param[in] serviceType Registry key taken from the path.
      */
-    void Read(const drogon::HttpRequestPtr&                   req,
-        std::function<void(const drogon::HttpResponsePtr&)>&& callback,
-        const std::string&
-            serviceType)  // HTTP handler for reading clinic services.
+    void Read(const drogon::HttpRequestPtr&                         req,
+              std::function<void(const drogon::HttpResponsePtr&)>&& callback,
+              const std::string&
+                  serviceType)  // HTTP handler for reading clinic services.
     {
       const bool async = asyncDb_;  // Which database mode is configured.
       if (async)                    // Async coroutine path.
@@ -230,8 +239,8 @@ namespace api::v2  // The v2 API controllers live here.
                                        // state.
             {
               CALLBACK_ mcb =
-                  [cb](int               code,
-                      const std::string& content)  // Adapt status to HTTP.
+                  [cb](int                code,
+                       const std::string& content)  // Adapt status to HTTP.
               {
                 using Reply = std::function<void(
                     // Response callback alias.
@@ -242,35 +251,37 @@ namespace api::v2  // The v2 API controllers live here.
                   case api::v2::Http::Status::OK:
                     Helper::successResponse(
                         // Send 200.
-                        content, Reply(cb));
+                        content,
+                        Reply(cb));
                     break;  // Leave the switch.
                   case api::v2::Http::Status::
                       INTERNAL_SERVER_ERROR:  // Failure.
                     Helper::failureResponse(content,
-                        Reply(cb));  // Send tagged 500.
-                    break;           // Leave the switch.
-                  default:           // Other error.
-                    Helper::errorResponse(
-                        static_cast<drogon::HttpStatusCode>(code), content,
-                        Reply(cb));  // Reuse numeric status.
-                    break;           // Leave the switch.
+                                            Reply(cb));  // Send tagged 500.
+                    break;                               // Leave the switch.
+                  default:                               // Other error.
+                    Helper::errorResponse(static_cast<drogon::HttpStatusCode>(
+                                              code),
+                                          content,
+                                          Reply(cb));  // Reuse numeric status.
+                    break;                             // Leave the switch.
                 }
               };
 
-              Requester requester(
-                  req->getAttributes()->get<uint64_t>("clientID"),
-                  req->getAttributes()->get<std::string>(
-                      "clientGroup"));  // Caller identity for
-                                        // permissions.
+              Requester requester(req->getAttributes()->get<uint64_t>(
+                                      "clientID"),
+                                  req->getAttributes()->get<std::string>(
+                                      "clientGroup"));  // Caller identity for
+                                                        // permissions.
 
               auto ctlIt = clinicRegistry.find(
                   serviceType);  // Look up controller for type.
               if (ctlIt == clinicRegistry.end())  // Unknown type.
               {
                 std::move(mcb)(api::v2::Http::Status::BAD_REQUEST,
-                    fmt::format("Type mapping not found for: {}",
-                        serviceType));  // Reply 400.
-                co_return;              // Stop.
+                               fmt::format("Type mapping not found for: {}",
+                                           serviceType));  // Reply 400.
+                co_return;                                 // Stop.
               }
 
               try  // Guard the call.
@@ -278,10 +289,11 @@ namespace api::v2  // The v2 API controllers live here.
                 co_await std::visit(
                     [&](auto& controller) -> drogon::Task<void>
                     {  // Dispatch to right controller.
-                      co_await controller->ReadAsync(std::move(mcb),
-                          std::move(requester),
-                          req->body());  // Read asynchronously
-                                         // with criteria in body.
+                      co_await controller
+                          ->ReadAsync(std::move(mcb),
+                                      std::move(requester),
+                                      req->body());  // Read asynchronously
+                                                     // with criteria in body.
                     },
                     ctlIt->second);  // Chosen variant.
               }
@@ -294,9 +306,14 @@ namespace api::v2  // The v2 API controllers live here.
         return;  // Coroutine handles rest.
       }
 
-      executeControllerMethod(*dbExecutor, clinicRegistry, serviceType,
-          &ClinicControllerBase::Read, req, std::move(callback),
-          req->body());  // Blocking mode: dispatch Read with body.
+      executeControllerMethod(*dbExecutor,
+                              clinicRegistry,
+                              serviceType,
+                              &ClinicControllerBase::Read,
+                              req,
+                              std::move(callback),
+                              req->body());  // Blocking mode: dispatch Read
+                                             // with body.
     }
 
     /**
@@ -310,10 +327,10 @@ namespace api::v2  // The v2 API controllers live here.
      * @param[in,out] callback Response callback, consumed exactly once.
      * @param[in] serviceType Registry key taken from the path.
      */
-    void Update(const drogon::HttpRequestPtr&                 req,
-        std::function<void(const drogon::HttpResponsePtr&)>&& callback,
-        const std::string&
-            serviceType)  // HTTP handler for updating a clinic service.
+    void Update(const drogon::HttpRequestPtr&                         req,
+                std::function<void(const drogon::HttpResponsePtr&)>&& callback,
+                const std::string&
+                    serviceType)  // HTTP handler for updating a clinic service.
     {
       // Reject a bad id with 400 before scheduling the async coroutine.
       auto id =
@@ -326,12 +343,15 @@ namespace api::v2  // The v2 API controllers live here.
       {
         auto cb = std::move(callback);  // Move callback into coroutine.
         drogon::async_run(
-            [this, req, cb, serviceType,
-                id]() mutable -> drogon::Task<void>  // Capture parsed id too.
+            [this,
+             req,
+             cb,
+             serviceType,
+             id]() mutable -> drogon::Task<void>  // Capture parsed id too.
             {
               CALLBACK_ mcb =
-                  [cb](int               code,
-                      const std::string& content)  // Adapt status to HTTP.
+                  [cb](int                code,
+                       const std::string& content)  // Adapt status to HTTP.
               {
                 using Reply = std::function<void(
                     // Response callback alias.
@@ -342,35 +362,37 @@ namespace api::v2  // The v2 API controllers live here.
                   case api::v2::Http::Status::OK:
                     Helper::successResponse(
                         // Send 200.
-                        content, Reply(cb));
+                        content,
+                        Reply(cb));
                     break;  // Leave the switch.
                   case api::v2::Http::Status::
                       INTERNAL_SERVER_ERROR:  // Failure.
                     Helper::failureResponse(content,
-                        Reply(cb));  // Send tagged 500.
-                    break;           // Leave the switch.
-                  default:           // Other error.
-                    Helper::errorResponse(
-                        static_cast<drogon::HttpStatusCode>(code), content,
-                        Reply(cb));  // Reuse numeric status.
-                    break;           // Leave the switch.
+                                            Reply(cb));  // Send tagged 500.
+                    break;                               // Leave the switch.
+                  default:                               // Other error.
+                    Helper::errorResponse(static_cast<drogon::HttpStatusCode>(
+                                              code),
+                                          content,
+                                          Reply(cb));  // Reuse numeric status.
+                    break;                             // Leave the switch.
                 }
               };
 
-              Requester requester(
-                  req->getAttributes()->get<uint64_t>("clientID"),
-                  req->getAttributes()->get<std::string>(
-                      "clientGroup"));  // Caller identity for
-                                        // permissions.
+              Requester requester(req->getAttributes()->get<uint64_t>(
+                                      "clientID"),
+                                  req->getAttributes()->get<std::string>(
+                                      "clientGroup"));  // Caller identity for
+                                                        // permissions.
 
               auto ctlIt = clinicRegistry.find(
                   serviceType);  // Look up controller for type.
               if (ctlIt == clinicRegistry.end())  // Unknown type.
               {
                 std::move(mcb)(api::v2::Http::Status::BAD_REQUEST,
-                    fmt::format("Type mapping not found for: {}",
-                        serviceType));  // Reply 400.
-                co_return;              // Stop.
+                               fmt::format("Type mapping not found for: {}",
+                                           serviceType));  // Reply 400.
+                co_return;                                 // Stop.
               }
 
               try  // Guard the call.
@@ -378,10 +400,12 @@ namespace api::v2  // The v2 API controllers live here.
                 co_await std::visit(
                     [&](auto& controller) -> drogon::Task<void>
                     {  // Dispatch to right controller.
-                      co_await controller->UpdateAsync(std::move(mcb),
-                          std::move(requester), req->body(),
-                          id);  // Update asynchronously with body
-                                // and id.
+                      co_await controller
+                          ->UpdateAsync(std::move(mcb),
+                                        std::move(requester),
+                                        req->body(),
+                                        id);  // Update asynchronously with body
+                                              // and id.
                     },
                     ctlIt->second);  // Chosen variant.
               }
@@ -394,9 +418,15 @@ namespace api::v2  // The v2 API controllers live here.
         return;  // Coroutine handles rest.
       }
 
-      executeControllerMethod(*dbExecutor, clinicRegistry, serviceType,
-          &ClinicControllerBase::Update, req, std::move(callback), req->body(),
-          *id);  // Blocking mode: dispatch Update with body and id.
+      executeControllerMethod(*dbExecutor,
+                              clinicRegistry,
+                              serviceType,
+                              &ClinicControllerBase::Update,
+                              req,
+                              std::move(callback),
+                              req->body(),
+                              *id);  // Blocking mode: dispatch Update with body
+                                     // and id.
     }
     /**
      * @brief Delete the clinic-service entity identified by the "id" query
@@ -409,10 +439,10 @@ namespace api::v2  // The v2 API controllers live here.
      * @param[in,out] callback Response callback, consumed exactly once.
      * @param[in] serviceType Registry key taken from the path.
      */
-    void Delete(const drogon::HttpRequestPtr&                 req,
-        std::function<void(const drogon::HttpResponsePtr&)>&& callback,
-        const std::string&
-            serviceType)  // HTTP handler for deleting a clinic service.
+    void Delete(const drogon::HttpRequestPtr&                         req,
+                std::function<void(const drogon::HttpResponsePtr&)>&& callback,
+                const std::string&
+                    serviceType)  // HTTP handler for deleting a clinic service.
     {
       // Reject a bad id with 400 before scheduling the async coroutine.
       auto id =
@@ -425,12 +455,15 @@ namespace api::v2  // The v2 API controllers live here.
       {
         auto cb = std::move(callback);  // Move callback into coroutine.
         drogon::async_run(
-            [this, req, cb, serviceType,
-                id]() mutable -> drogon::Task<void>  // Capture parsed id.
+            [this,
+             req,
+             cb,
+             serviceType,
+             id]() mutable -> drogon::Task<void>  // Capture parsed id.
             {
               CALLBACK_ mcb =
-                  [cb](int               code,
-                      const std::string& content)  // Adapt status to HTTP.
+                  [cb](int                code,
+                       const std::string& content)  // Adapt status to HTTP.
               {
                 using Reply = std::function<void(
                     // Response callback alias.
@@ -441,35 +474,37 @@ namespace api::v2  // The v2 API controllers live here.
                   case api::v2::Http::Status::OK:
                     Helper::successResponse(
                         // Send 200.
-                        content, Reply(cb));
+                        content,
+                        Reply(cb));
                     break;  // Leave the switch.
                   case api::v2::Http::Status::
                       INTERNAL_SERVER_ERROR:  // Failure.
                     Helper::failureResponse(content,
-                        Reply(cb));  // Send tagged 500.
-                    break;           // Leave the switch.
-                  default:           // Other error.
-                    Helper::errorResponse(
-                        static_cast<drogon::HttpStatusCode>(code), content,
-                        Reply(cb));  // Reuse numeric status.
-                    break;           // Leave the switch.
+                                            Reply(cb));  // Send tagged 500.
+                    break;                               // Leave the switch.
+                  default:                               // Other error.
+                    Helper::errorResponse(static_cast<drogon::HttpStatusCode>(
+                                              code),
+                                          content,
+                                          Reply(cb));  // Reuse numeric status.
+                    break;                             // Leave the switch.
                 }
               };
 
-              Requester requester(
-                  req->getAttributes()->get<uint64_t>("clientID"),
-                  req->getAttributes()->get<std::string>(
-                      "clientGroup"));  // Caller identity for
-                                        // permissions.
+              Requester requester(req->getAttributes()->get<uint64_t>(
+                                      "clientID"),
+                                  req->getAttributes()->get<std::string>(
+                                      "clientGroup"));  // Caller identity for
+                                                        // permissions.
 
               auto ctlIt = clinicRegistry.find(
                   serviceType);  // Look up controller for type.
               if (ctlIt == clinicRegistry.end())  // Unknown type.
               {
                 std::move(mcb)(api::v2::Http::Status::BAD_REQUEST,
-                    fmt::format("Type mapping not found for: {}",
-                        serviceType));  // Reply 400.
-                co_return;              // Stop.
+                               fmt::format("Type mapping not found for: {}",
+                                           serviceType));  // Reply 400.
+                co_return;                                 // Stop.
               }
 
               try  // Guard the call.
@@ -477,9 +512,10 @@ namespace api::v2  // The v2 API controllers live here.
                 co_await std::visit(
                     [&](auto& controller) -> drogon::Task<void>
                     {  // Dispatch to right controller.
-                      co_await controller->DeleteAsync(std::move(mcb),
-                          std::move(requester),
-                          id);  // Delete asynchronously by id.
+                      co_await controller
+                          ->DeleteAsync(std::move(mcb),
+                                        std::move(requester),
+                                        id);  // Delete asynchronously by id.
                     },
                     ctlIt->second);  // Chosen variant.
               }
@@ -492,9 +528,13 @@ namespace api::v2  // The v2 API controllers live here.
         return;  // Coroutine handles rest.
       }
 
-      executeControllerMethod(*dbExecutor, clinicRegistry, serviceType,
-          &ClinicControllerBase::Delete, req, std::move(callback),
-          *id);  // Blocking mode: dispatch Delete by id.
+      executeControllerMethod(*dbExecutor,
+                              clinicRegistry,
+                              serviceType,
+                              &ClinicControllerBase::Delete,
+                              req,
+                              std::move(callback),
+                              *id);  // Blocking mode: dispatch Delete by id.
     }
     /**
      * @brief Search patients using the criteria in the JSON request body.
@@ -506,22 +546,23 @@ namespace api::v2  // The v2 API controllers live here.
      * @param[in,out] callback Response callback, consumed exactly once.
      */
     void Search(const drogon::HttpRequestPtr& req,
-        std::function<void(const drogon::HttpResponsePtr&)>&&
-            callback)  // HTTP handler; no serviceType parameter because it
-                       // always searches patients.
+                std::function<void(const drogon::HttpResponsePtr&)>&&
+                    callback)  // HTTP handler; no serviceType parameter because
+                               // it always searches patients.
     {
       const bool async = asyncDb_;  // Which database mode is configured.
       if (async)                    // Async coroutine path.
       {
         auto cb = std::move(callback);  // Move callback into coroutine.
         drogon::async_run(
-            [this, req,
-                cb]() mutable -> drogon::Task<void>  // Launch coroutine with
-                                                     // captured state.
+            [this,
+             req,
+             cb]() mutable -> drogon::Task<void>  // Launch coroutine with
+                                                  // captured state.
             {
               CALLBACK_ mcb =
-                  [cb](int               code,
-                      const std::string& content)  // Adapt status to HTTP.
+                  [cb](int                code,
+                       const std::string& content)  // Adapt status to HTTP.
               {
                 using Reply = std::function<void(
                     // Response callback alias.
@@ -532,26 +573,28 @@ namespace api::v2  // The v2 API controllers live here.
                   case api::v2::Http::Status::OK:
                     Helper::successResponse(
                         // Send 200.
-                        content, Reply(cb));
+                        content,
+                        Reply(cb));
                     break;  // Leave the switch.
                   case api::v2::Http::Status::
                       INTERNAL_SERVER_ERROR:  // Failure.
                     Helper::failureResponse(content,
-                        Reply(cb));  // Send tagged 500.
-                    break;           // Leave the switch.
-                  default:           // Other error.
-                    Helper::errorResponse(
-                        static_cast<drogon::HttpStatusCode>(code), content,
-                        Reply(cb));  // Reuse numeric status.
-                    break;           // Leave the switch.
+                                            Reply(cb));  // Send tagged 500.
+                    break;                               // Leave the switch.
+                  default:                               // Other error.
+                    Helper::errorResponse(static_cast<drogon::HttpStatusCode>(
+                                              code),
+                                          content,
+                                          Reply(cb));  // Reuse numeric status.
+                    break;                             // Leave the switch.
                 }
               };
 
-              Requester requester(
-                  req->getAttributes()->get<uint64_t>("clientID"),
-                  req->getAttributes()->get<std::string>(
-                      "clientGroup"));  // Caller identity for
-                                        // permissions.
+              Requester requester(req->getAttributes()->get<uint64_t>(
+                                      "clientID"),
+                                  req->getAttributes()->get<std::string>(
+                                      "clientGroup"));  // Caller identity for
+                                                        // permissions.
 
               auto ctlIt =
                   clinicRegistry.find("patients");  // Search is fixed to the
@@ -560,8 +603,8 @@ namespace api::v2  // The v2 API controllers live here.
                   clinicRegistry.end())  // Should not happen, but guard anyway.
               {
                 std::move(mcb)(api::v2::Http::Status::BAD_REQUEST,
-                    // Reply 400 with fixed message.
-                    "Type mapping not found for: patients");
+                               // Reply 400 with fixed message.
+                               "Type mapping not found for: patients");
                 co_return;  // Stop.
               }
 
@@ -570,10 +613,11 @@ namespace api::v2  // The v2 API controllers live here.
                 co_await std::visit(
                     [&](auto& controller) -> drogon::Task<void>
                     {  // Dispatch to the patients controller.
-                      co_await controller->SearchAsync(std::move(mcb),
-                          std::move(requester),
-                          req->body());  // Search asynchronously
-                                         // with criteria in body.
+                      co_await controller
+                          ->SearchAsync(std::move(mcb),
+                                        std::move(requester),
+                                        req->body());  // Search asynchronously
+                                                       // with criteria in body.
                     },
                     ctlIt->second);  // Chosen variant.
               }
@@ -586,10 +630,14 @@ namespace api::v2  // The v2 API controllers live here.
         return;  // Coroutine handles rest.
       }
 
-      executeControllerMethod(*dbExecutor, clinicRegistry, "patients",
-          &ClinicControllerBase::Search, req, std::move(callback),
-          req->body());  // Blocking mode: Search fixed to "patients" with
-                         // body.
+      executeControllerMethod(*dbExecutor,
+                              clinicRegistry,
+                              "patients",
+                              &ClinicControllerBase::Search,
+                              req,
+                              std::move(callback),
+                              req->body());  // Blocking mode: Search fixed to
+                                             // "patients" with body.
     }
 
     /**
@@ -603,15 +651,17 @@ namespace api::v2  // The v2 API controllers live here.
      * @param[in,out] callback Response callback, consumed exactly once.
      */
     void GetVisits(const drogon::HttpRequestPtr& req,
-        std::function<void(const drogon::HttpResponsePtr&)>&&
-            callback)  // HTTP handler listing a patient's visits.
+                   std::function<void(const drogon::HttpResponsePtr&)>&&
+                       callback)  // HTTP handler listing a patient's visits.
     {
       // Reject a bad patient_id with 400 before scheduling the async
       // coroutine.
-      auto patient_id = parseIdParam(req, "patient_id",
-          callback);    // Parse the patient id safely; 400 on failure.
-      if (!patient_id)  // No id means response was sent.
-        return;         // Leave early.
+      auto patient_id = parseIdParam(req,
+                                     "patient_id",
+                                     callback);  // Parse the patient id safely;
+                                                 // 400 on failure.
+      if (!patient_id)              // No id means response was sent.
+        return;                     // Leave early.
       const bool async = asyncDb_;  // Which database mode is configured.
       if (async)                    // Async coroutine path.
       {
@@ -620,13 +670,15 @@ namespace api::v2  // The v2 API controllers live here.
             *patient_id;  // Copy the id out of the optional into a
                           // plain 64-bit integer for capture.
         drogon::async_run(
-            [this, req, cb,
-                pid]() mutable -> drogon::Task<void>  // Launch coroutine
-                                                      // capturing the plain id.
+            [this,
+             req,
+             cb,
+             pid]() mutable -> drogon::Task<void>  // Launch coroutine
+                                                   // capturing the plain id.
             {
               CALLBACK_ mcb =
-                  [cb](int               code,
-                      const std::string& content)  // Adapt status to HTTP.
+                  [cb](int                code,
+                       const std::string& content)  // Adapt status to HTTP.
               {
                 using Reply = std::function<void(
                     // Response callback alias.
@@ -637,26 +689,28 @@ namespace api::v2  // The v2 API controllers live here.
                   case api::v2::Http::Status::OK:
                     Helper::successResponse(
                         // Send 200.
-                        content, Reply(cb));
+                        content,
+                        Reply(cb));
                     break;  // Leave the switch.
                   case api::v2::Http::Status::
                       INTERNAL_SERVER_ERROR:  // Failure.
                     Helper::failureResponse(content,
-                        Reply(cb));  // Send tagged 500.
-                    break;           // Leave the switch.
-                  default:           // Other error.
-                    Helper::errorResponse(
-                        static_cast<drogon::HttpStatusCode>(code), content,
-                        Reply(cb));  // Reuse numeric status.
-                    break;           // Leave the switch.
+                                            Reply(cb));  // Send tagged 500.
+                    break;                               // Leave the switch.
+                  default:                               // Other error.
+                    Helper::errorResponse(static_cast<drogon::HttpStatusCode>(
+                                              code),
+                                          content,
+                                          Reply(cb));  // Reuse numeric status.
+                    break;                             // Leave the switch.
                 }
               };
 
-              Requester requester(
-                  req->getAttributes()->get<uint64_t>("clientID"),
-                  req->getAttributes()->get<std::string>(
-                      "clientGroup"));  // Caller identity for
-                                        // permissions.
+              Requester requester(req->getAttributes()->get<uint64_t>(
+                                      "clientID"),
+                                  req->getAttributes()->get<std::string>(
+                                      "clientGroup"));  // Caller identity for
+                                                        // permissions.
 
               auto ctlIt =
                   clinicRegistry.find("patients");  // GetVisits is fixed to the
@@ -665,8 +719,8 @@ namespace api::v2  // The v2 API controllers live here.
                   clinicRegistry.end())  // Should not happen; guard anyway.
               {
                 std::move(mcb)(api::v2::Http::Status::BAD_REQUEST,
-                    // Reply 400.
-                    "Type mapping not found for: patients");
+                               // Reply 400.
+                               "Type mapping not found for: patients");
                 co_return;  // Stop.
               }
 
@@ -675,10 +729,11 @@ namespace api::v2  // The v2 API controllers live here.
                 co_await std::visit(
                     [&](auto& controller) -> drogon::Task<void>
                     {  // Dispatch to the patients controller.
-                      co_await controller->GetVisitsAsync(std::move(mcb),
-                          std::move(requester),
-                          pid);  // List visits asynchronously by
-                                 // patient id.
+                      co_await controller
+                          ->GetVisitsAsync(std::move(mcb),
+                                           std::move(requester),
+                                           pid);  // List visits asynchronously
+                                                  // by patient id.
                     },
                     ctlIt->second);  // Chosen variant.
               }
@@ -691,37 +746,53 @@ namespace api::v2  // The v2 API controllers live here.
         return;  // Coroutine handles rest.
       }
 
-      executeControllerMethod(*dbExecutor, clinicRegistry, "patients",
-          &ClinicControllerBase::GetVisits, req, std::move(callback),
-          *patient_id);  // Blocking mode: GetVisits on "patients" with
-                         // patient id.
+      executeControllerMethod(*dbExecutor,
+                              clinicRegistry,
+                              "patients",
+                              &ClinicControllerBase::GetVisits,
+                              req,
+                              std::move(callback),
+                              *patient_id);  // Blocking mode: GetVisits on
+                                             // "patients" with patient id.
     }
 
     // All routes are SECURE; Search and GetVisits are bound to the
     // "patients" controller.
     METHOD_LIST_BEGIN  // Start the Drogon route-registration block.
-        METHOD_ADD(Clinic::Create, "/{serviceType}/create", drogon::Post,
-            SECURE);  // POST create for a {serviceType}.
-    METHOD_ADD(Clinic::Read, "/{serviceType}/read", drogon::Post,
-        SECURE);  // POST read for a {serviceType}.
-    METHOD_ADD(Clinic::Update, "/{serviceType}/update", drogon::Put,
-        SECURE);  // PUT update for a {serviceType}.
-    METHOD_ADD(Clinic::Delete, "/{serviceType}/delete", drogon::Delete,
-        SECURE);  // DELETE for a {serviceType}.
-    METHOD_ADD(Clinic::Search, "/patients/search", drogon::HttpMethod::Post,
-        SECURE);  // POST search fixed to patients.
-    METHOD_ADD(Clinic::GetVisits, "/patients/getvisits", drogon::Get,
-        SECURE);    // GET a patient's visits.
-   METHOD_LIST_END  // End the route-registration block.
+        METHOD_ADD(Clinic::Create,
+                   "/{serviceType}/create",
+                   drogon::Post,
+                   SECURE);  // POST create for a {serviceType}.
+    METHOD_ADD(Clinic::Read,
+               "/{serviceType}/read",
+               drogon::Post,
+               SECURE);  // POST read for a {serviceType}.
+    METHOD_ADD(Clinic::Update,
+               "/{serviceType}/update",
+               drogon::Put,
+               SECURE);  // PUT update for a {serviceType}.
+    METHOD_ADD(Clinic::Delete,
+               "/{serviceType}/delete",
+               drogon::Delete,
+               SECURE);  // DELETE for a {serviceType}.
+    METHOD_ADD(Clinic::Search,
+               "/patients/search",
+               drogon::HttpMethod::Post,
+               SECURE);  // POST search fixed to patients.
+    METHOD_ADD(Clinic::GetVisits,
+               "/patients/getvisits",
+               drogon::Get,
+               SECURE);  // GET a patient's visits.
+   METHOD_LIST_END       // End the route-registration block.
 
        private :
        /** Shared pool that runs blocking database work (shared with every
           route). */
        std::shared_ptr<DbExecutor>
-               dbExecutor =
-                   Store::getObject<DbExecutor>();  // runs the blocking
-                                                    // database work, shared
-                                                    // with every route
+           dbExecutor =
+               Store::getObject<DbExecutor>();  // runs the blocking
+                                                // database work, shared
+                                                // with every route
     /**
      * Whether the configured DB mode uses async controller coroutines.
      */
@@ -734,7 +805,8 @@ namespace api::v2  // The v2 API controllers live here.
      */
     using ClinicVariant =  // Holds one of nine shared clinic controller
                            // pointers.
-        std::variant<std::shared_ptr<ClinicController<Patient>>,
+        std::variant<
+            std::shared_ptr<ClinicController<Patient>>,
             std::shared_ptr<ClinicController<Visits>>,
             // patient, visits and visitDrugs controllers.
             std::shared_ptr<ClinicController<VisitDrugs>>,
@@ -752,25 +824,30 @@ namespace api::v2  // The v2 API controllers live here.
     /**
      * Maps a serviceType path key to its controller variant.
      */
-    std::unordered_map<std::string_view, ClinicVariant> clinicRegistry = {
-        {"patients", Store::getObject<ClinicController<
-                         Patient>>()},  // Map URL keys to their
-                                        // controllers; "patients" first.
-        {"visits", Store::getObject<ClinicController<Visits>>()},
-        {"visitDrugs", Store::getObject<ClinicController<
-                           VisitDrugs>>()},  // visits and visitDrugs entries.
-        {"requests", Store::getObject<ClinicController<Requests>>()},
-        {"prescriptions",
-            Store::getObject<ClinicController<
-                Prescriptions>>()},  // requests and prescriptions entries.
-        {"paidservices", Store::getObject<ClinicController<PaidServices>>()},
-        {"reports",
-            Store::getObject<ClinicController<Reports>>()},  // paidservices and
-                                                             // reports entries.
-        {"patientdrugs", Store::getObject<ClinicController<PatientDrugs>>()},
-        {"health",
-            Store::getObject<ClinicController<Health>>()}};  // patientdrugs and
-                                                             // health entries
-                                                             // close the map.
+    std::unordered_map<std::string_view, ClinicVariant> clinicRegistry =
+        {{"patients",
+          Store::getObject<ClinicController<Patient>>()},  // Map URL keys to
+                                                           // their controllers;
+                                                           // "patients" first.
+         {"visits", Store::getObject<ClinicController<Visits>>()},
+         {"visitDrugs",
+          Store::getObject<ClinicController<VisitDrugs>>()},  // visits and
+                                                              // visitDrugs
+                                                              // entries.
+         {"requests", Store::getObject<ClinicController<Requests>>()},
+         {"prescriptions",
+          Store::getObject<
+              ClinicController<Prescriptions>>()},  // requests and
+                                                    // prescriptions
+                                                    // entries.
+         {"paidservices", Store::getObject<ClinicController<PaidServices>>()},
+         {"reports",
+          Store::getObject<ClinicController<Reports>>()},  // paidservices and
+                                                           // reports entries.
+         {"patientdrugs", Store::getObject<ClinicController<PatientDrugs>>()},
+         {"health",
+          Store::getObject<ClinicController<Health>>()}};  // patientdrugs and
+                                                           // health entries
+                                                           // close the map.
   };
 }  // namespace api::v2

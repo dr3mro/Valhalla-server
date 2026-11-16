@@ -160,10 +160,12 @@ class ServiceControllerBase
    * @see EntityController::Create for the shipped validation/permission/error
    * mapping.
    */
-  virtual void Create(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data) = 0;  // "= 0" makes this pure virtual: a derived
-                                   // class MUST implement it, and "virtual"
-                                   // lets a base pointer call it.
+  virtual void Create(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) = 0;  // "= 0" makes this pure virtual: a derived
+                                    // class MUST implement it, and "virtual"
+                                    // lets a base pointer call it.
   /**
    * @brief Coroutine form of @ref Create.
    * @details Must be co_awaited; the callback fires when the awaited work
@@ -175,8 +177,9 @@ class ServiceControllerBase
    * @param[in] data Raw JSON request body; must remain valid until the task
    * completes.
    */
-  virtual drogon::Task<void> CreateAsync(CALLBACK_&& callback,
-      const Requester&&                              requester,
+  virtual drogon::Task<void> CreateAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
       std::string_view data) = 0;  // Same job as Create, but returns a pausable
                                    // task instead of finishing immediately.
   /**
@@ -189,9 +192,11 @@ class ServiceControllerBase
    * @param[in] data Raw JSON request body containing `id` and requested
    * `schema`.
    */
-  virtual void Read(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data) = 0;  // Pure virtual read job: the real code
-                                   // lives in the derived controller.
+  virtual void Read(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) = 0;  // Pure virtual read job: the real code
+                                    // lives in the derived controller.
   /**
    * @brief Coroutine form of @ref Read.
    * @param[in,out] callback Completion handler, invoked once with (status,
@@ -201,8 +206,9 @@ class ServiceControllerBase
    * @param[in] data Raw JSON request body; must remain valid until the task
    * completes.
    */
-  virtual drogon::Task<void> ReadAsync(CALLBACK_&& callback,
-      const Requester&&                            requester,
+  virtual drogon::Task<void> ReadAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
       std::string_view
           data) = 0;  // Read as a pausable task, to be used with co_await.
   /**
@@ -216,11 +222,12 @@ class ServiceControllerBase
    * @param[in] _id Target entity id; a disengaged optional is rejected by the
    * implementation.
    */
-  virtual void Update(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data,
-      std::optional<uint64_t>
-          _id)  = 0;  // "_id" may be "no value"; the derived class decides
-                      // whether that is an error.
+  virtual void Update(CALLBACK_&&       callback,
+                      const Requester&& requester,
+                      std::string_view  data,
+                      std::optional<uint64_t>
+                          _id) = 0;  // "_id" may be "no value"; the derived
+                                     // class decides whether that is an error.
   /**
    * @brief Coroutine form of @ref Update.
    * @param[in,out] callback Completion handler, invoked once with (status,
@@ -232,8 +239,10 @@ class ServiceControllerBase
    * @param[in] _id Target entity id; a disengaged optional is rejected by the
    * implementation.
    */
-  virtual drogon::Task<void> UpdateAsync(CALLBACK_&& callback,
-      const Requester&& requester, std::string_view data,
+  virtual drogon::Task<void> UpdateAsync(
+      CALLBACK_&&             callback,
+      const Requester&&       requester,
+      std::string_view        data,
       std::optional<uint64_t> _id) = 0;  // Pausable form of Update.
   /**
    * @brief Deletes the service entity identified by @p _id.
@@ -244,10 +253,11 @@ class ServiceControllerBase
    * @param[in] _id Target entity id; a disengaged optional is rejected by the
    * implementation.
    */
-  virtual void Delete(CALLBACK_&& callback, const Requester&& requester,
-      std::optional<uint64_t>
-          _id) = 0;  // Pure virtual delete job; note it needs no JSON body,
-                     // only the target id.
+  virtual void Delete(CALLBACK_&&       callback,
+                      const Requester&& requester,
+                      std::optional<uint64_t>
+                          _id) = 0;  // Pure virtual delete job; note it needs
+                                     // no JSON body, only the target id.
   /**
    * @brief Coroutine form of @ref Delete.
    * @param[in,out] callback Completion handler, invoked once with (status,
@@ -257,8 +267,9 @@ class ServiceControllerBase
    * @param[in] _id Target entity id; a disengaged optional is rejected by the
    * implementation.
    */
-  virtual drogon::Task<void> DeleteAsync(CALLBACK_&& callback,
-      const Requester&&                              requester,
+  virtual drogon::Task<void> DeleteAsync(
+      CALLBACK_&&             callback,
+      const Requester&&       requester,
       std::optional<uint64_t> _id) = 0;  // Pausable form of Delete.
   /**
    * @brief Runs a paginated search over service entities.
@@ -271,7 +282,9 @@ class ServiceControllerBase
    * implementation).
    * @param[in] data Raw JSON search criteria.
    */
-  virtual void Search(CALLBACK_&& callback, const Requester&& requester,
+  virtual void Search(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
       std::string_view
           data) = 0;  // Pure virtual search job; "paginated" means results
                       // come back in pages using the offset.

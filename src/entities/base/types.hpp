@@ -280,9 +280,10 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * @brief Constructs a delete operation for the given id.
      * @param[in] _id Primary key of the row to delete.
      */
-    explicit Delete_t(const uint64_t _id)
-        : Entity_t('\0', _id) {}  // '\0' is a throwaway placeholder because
-                                  // Entity_t still requires some payload type.
+    explicit Delete_t(const uint64_t _id) : Entity_t('\0', _id)
+    {
+    }  // '\0' is a throwaway placeholder because
+       // Entity_t still requires some payload type.
 
     /**
      * @brief Destroys the delete operation.
@@ -308,9 +309,10 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * @brief Constructs an id-only lookup operation.
      * @param[in] _id Client id to look up.
      */
-    explicit Data_t(const uint64_t _id)
-        : Entity_t('\0', _id) {}  // Same sentinel trick as Delete_t; only
-                                  // the id matters for the lookup.
+    explicit Data_t(const uint64_t _id) : Entity_t('\0', _id)
+    {
+    }  // Same sentinel trick as Delete_t; only
+       // the id matters for the lookup.
 
     /**
      * @brief Destroys the id-only lookup operation.
@@ -362,13 +364,13 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * @brief Maximum number of rows requested (the builder binds limit + 1
      * for next-page detection).
      */
-    size_t      limit;  // A count, so an unsigned size_t is natural; the extra
-                        // row indicates more results.
+    size_t limit;  // A count, so an unsigned size_t is natural; the extra
+                   // row indicates more results.
 
     /**
      * @brief Number of rows to skip.
      */
-    size_t      offset;  // Pagination skip count; also bound as a value.
+    size_t offset;  // Pagination skip count; also bound as a value.
 
     /**
      * @brief Parses a search JSON body and reports whether it can be used.
@@ -380,8 +382,8 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * the remaining fields must not be used.
      */
     Search_t(const jsoncons::json& search_j,
-        bool& success)  // The bool is an output parameter: parsing never
-                        // throws at the caller for a bad body.
+             bool& success)  // The bool is an output parameter: parsing never
+                             // throws at the caller for a bad body.
     {
       // A missing/malformed field here (e.g. an empty "{}" body) is a
       // client error, not a server error. success=false tells the caller
@@ -461,10 +463,14 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
         return false;  // Unsafe name.
       }
       return std::ranges::all_of(name,
-          [](char c)
-          {
-            return std::isalnum(static_cast<unsigned char>(c)) != 0 || c == '_';
-          });  // Every character must be a letter, digit or underscore.
+                                 [](char c)
+                                 {
+                                   return std::isalnum(
+                                              static_cast<unsigned char>(c)) !=
+                                              0 ||
+                                          c == '_';
+                                 });  // Every character must be a letter, digit
+                                      // or underscore.
     }
 
     /**
@@ -478,12 +484,19 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
         const jsoncons::json& search_j)  // Non-static because it reads the
                                          // already-parsed member fields.
     {
-      static const std::unordered_set<std::string> keys = {"keyword", "filter",
-          "order_by", "direction", "limit",
-          "offset"};  // The complete allowed key set, built once.
+      static const std::unordered_set<std::string> keys =
+          {"keyword",
+           "filter",
+           "order_by",
+           "direction",
+           "limit",
+           "offset"};  // The complete allowed key set, built once.
       return search_j.size() == keys.size() &&
-             std::ranges::all_of(keys, [&search_j](const std::string& key)
-                 { return search_j.find(key).has_value(); }) &&
+             std::ranges::all_of(keys,
+                                 [&search_j](const std::string& key)
+                                 {
+                                   return search_j.find(key).has_value();
+                                 }) &&
              isPlainIdentifier(filter) &&
              isPlainIdentifier(
                  order_by);  // No extra or missing keys, and both
@@ -514,8 +527,10 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * message.
      * @param[out] success Set true only when parsing produced a JSON value.
      */
-    ClientData_t(std::string_view _data, const std::optional<uint64_t> _id,
-        api::v2::Http::Error& error, bool& success)
+    ClientData_t(std::string_view              _data,
+                 const std::optional<uint64_t> _id,
+                 api::v2::Http::Error&         error,
+                 bool&                         success)
         : id(_id)  // string_view avoids copying the body; only the id is
                    // stored here initially.
     {
@@ -527,9 +542,10 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
                                   // not valid JSON.
         {
           error = {.code = api::v2::Http::Status::BAD_REQUEST,
-              .message   = "Failed to parse body."};  // A bad body is the
-                                                      // client's fault (400).
-          Message::ErrorMessage(error.message);       // Log it for operators.
+                   .message =
+                       "Failed to parse body."};  // A bad body is the
+                                                  // client's fault (400).
+          Message::ErrorMessage(error.message);   // Log it for operators.
           success = false;  // Tell the caller not to proceed.
           return;           // Stop before the success = true at the end.
         }
@@ -537,10 +553,12 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
       catch (const std::exception& e)  // An unexpected exception while
                                        // parsing is a server-side problem.
       {
-        error   = {.code = api::v2::Http::Status::INTERNAL_SERVER_ERROR,
-            .message   = fmt::format("Failed while parsing client data: {}.",
-                e.what())};  // Report 500 with the exception text.
-        success = false;     // Mark failure.
+        error =
+            {.code = api::v2::Http::Status::INTERNAL_SERVER_ERROR,
+             .message =
+                 fmt::format("Failed while parsing client data: {}.",
+                             e.what())};  // Report 500 with the exception text.
+        success = false;                  // Mark failure.
         Message::CriticalMessage(error.message);  // Log at critical level.
         return;                                   // Stop early.
       }
@@ -598,10 +616,11 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
                          // hash (creates do, updates do not).
     {
       auto passwd_itr = std::ranges::find_if(data_set,
-          [&](const auto& item)
-          {
-            return item.first == "password";
-          });  // Look for a column named "password" in the flat set.
+                                             [&](const auto& item)
+                                             {
+                                               return item.first == "password";
+                                             });  // Look for a column named
+                                                  // "password" in the flat set.
       if (passwd_itr != data_set.end())  // Only act if such an entry exists.
       {
         std::string password_raw =
@@ -617,8 +636,9 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
         }
         data_set.erase(passwd_itr);  // Remove the plaintext pair.
         data_set.emplace("password",
-            hashed_password.value());  // Insert the hashed pair in its place.
-        return true;                   // Report success.
+                         hashed_password
+                             .value());  // Insert the hashed pair in its place.
+        return true;                     // Report success.
       }
       return false;  // No password field existed; nothing to do.
     }
@@ -654,30 +674,40 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * @param[out] success Set true only after schema and regex validation
      * succeed.
      */
-    CreateClient_t(std::string_view _data, const std::string& tablename,
-        api::v2::Http::Error& error, bool& success)
-        : ClientData_t(_data, std::nullopt, error,
-              success)  // Creates have no id yet, so pass nullopt to the
-                        // base.
+    CreateClient_t(std::string_view      _data,
+                   const std::string&    tablename,
+                   api::v2::Http::Error& error,
+                   bool&                 success)
+        : ClientData_t(_data,
+                       std::nullopt,
+                       error,
+                       success)  // Creates have no id yet, so pass nullopt to
+                                 // the base.
     {
       try
       {
         Validator::Rule rule(Validator::Rule::Action::ASSERT_NOT_PRESENT,
-            {"id"});  // Build a rule saying "id must not be in the
-                      // body".
-        success =
-            Validator::validateDatabaseCreateSchema(tablename, data_j, error,
-                rule);  // Check the body against the table's create schema.
-        if (!success)   // Schema validation failed.
+                             {"id"});  // Build a rule saying "id must not be in
+                                       // the body".
+        success = Validator::
+            validateDatabaseCreateSchema(tablename,
+                                         data_j,
+                                         error,
+                                         rule);  // Check the body against the
+                                                 // table's create schema.
+        if (!success)                            // Schema validation failed.
         {
           Message::ErrorMessage(error.message);  // Log the validation error.
           return;  // Leave success false and stop.
         }
 
-        success = Validator::clientRegexValidation(data_j, error,
-            data_set);  // Regex-validate fields and fill the (column,
-                        // value) set.
-        if (!success)   // Regex validation failed.
+        success =
+            Validator::clientRegexValidation(data_j,
+                                             error,
+                                             data_set);  // Regex-validate
+                                                         // fields and fill the
+                                                         // (column, value) set.
+        if (!success)  // Regex validation failed.
         {
           Message::ErrorMessage(error.message);  // Log it.
           return;                                // Stop with success false.
@@ -687,12 +717,12 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
       }
       catch (const std::exception& e)  // Unexpected error during validation.
       {
-        error   = {.code = api::v2::Http::Status::INTERNAL_SERVER_ERROR,
-            .message   = fmt::format("Failed while parsing client data: {}.",
-                e.what())};                       // Report 500.
-        success = false;                          // Mark failure.
-        Message::CriticalMessage(error.message);  // Log details.
-        return;                                   // Stop.
+        error = {.code    = api::v2::Http::Status::INTERNAL_SERVER_ERROR,
+                 .message = fmt::format("Failed while parsing client data: {}.",
+                                        e.what())};  // Report 500.
+        success = false;                             // Mark failure.
+        Message::CriticalMessage(error.message);     // Log details.
+        return;                                      // Stop.
       }
 
       success = true;  // Everything passed.
@@ -735,32 +765,41 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
      * the generic Update path marks `password` as ASSERT_IMMUTABLE, so no
      * new password can arrive here.
      */
-    UpdateClient_t(std::string_view _data, const std::optional<uint64_t> _id,
-        const std::string& tablename, api::v2::Http::Error& error,
-        bool& success,
-        const Validator::Rule&
-            rule)  // The extra rule parameter lets each endpoint decide
-                   // which fields are allowed.
-        : ClientData_t(_data, _id, error,
-              success)  // Pass the id through to the base for later use by
-                        // the UPDATE builder.
+    UpdateClient_t(std::string_view              _data,
+                   const std::optional<uint64_t> _id,
+                   const std::string&            tablename,
+                   api::v2::Http::Error&         error,
+                   bool&                         success,
+                   const Validator::Rule&
+                       rule)  // The extra rule parameter lets each endpoint
+                              // decide which fields are allowed.
+        : ClientData_t(_data,
+                       _id,
+                       error,
+                       success)  // Pass the id through to the base for later
+                                 // use by the UPDATE builder.
     {
       try
       {
-        success = Validator::validateDatabaseUpdateSchema(tablename,
-            get_data_json(), error,
-            rule);     // Validate against the table's update schema and
-                       // the supplied rule.
-        if (!success)  // Validation failed.
+        success = Validator::
+            validateDatabaseUpdateSchema(tablename,
+                                         get_data_json(),
+                                         error,
+                                         rule);  // Validate against the table's
+                                                 // update schema and the
+                                                 // supplied rule.
+        if (!success)                            // Validation failed.
         {
           Message::ErrorMessage(error.message);  // Log it.
           return;                                // Stop.
         }
 
-        success = Validator::clientRegexValidation(data_j, error,
-            data_set);  // Build the flat set with regex checks, like
-                        // the create path.
-        if (!success)   // Regex validation failed.
+        success = Validator::
+            clientRegexValidation(data_j,
+                                  error,
+                                  data_set);  // Build the flat set with regex
+                                              // checks, like the create path.
+        if (!success)                         // Regex validation failed.
         {
           Message::ErrorMessage(error.message);  // Log it.
           return;                                // Stop.
@@ -768,12 +807,12 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
       }
       catch (const std::exception& e)  // Unexpected validation error.
       {
-        error   = {.code = api::v2::Http::Status::INTERNAL_SERVER_ERROR,
-            .message   = fmt::format("Failed while parsing client data: {}.",
-                e.what())};                       // Report 500.
-        success = false;                          // Mark failure.
-        Message::CriticalMessage(error.message);  // Log details.
-        return;                                   // Stop.
+        error = {.code    = api::v2::Http::Status::INTERNAL_SERVER_ERROR,
+                 .message = fmt::format("Failed while parsing client data: {}.",
+                                        e.what())};  // Report 500.
+        success = false;                             // Mark failure.
+        Message::CriticalMessage(error.message);     // Log details.
+        return;                                      // Stop.
       }
 
       success = true;  // Everything passed.
@@ -834,14 +873,14 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
     /**
      * @brief Id of the staff member being nominated.
      */
-    uint64_t    nominee_id;  // Set from JSON; bound into the staff-array SQL
-                             // statement.
+    uint64_t nominee_id;  // Set from JSON; bound into the staff-array SQL
+                          // statement.
 
     /**
      * @brief Id of the entity (service/organisation) the staff member is
      * added to or removed from.
      */
-    uint64_t    entity_id;  // The row whose JSONB staff array is updated.
+    uint64_t entity_id;  // The row whose JSONB staff array is updated.
 
     /**
      * @brief Role assigned to the nominee (for example "Doctor").
@@ -887,8 +926,8 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
                          .as<uint64_t>();  // .at throws if the key is missing;
                                            // as<> converts the value.
         entity_id =
-            json.at("entity_id").as<uint64_t>();    // Same for the entity id.
-        role  = json.at("role").as<std::string>();  // Role name as text.
+            json.at("entity_id").as<uint64_t>();   // Same for the entity id.
+        role = json.at("role").as<std::string>();  // Role name as text.
         // Email as text.
         email = json.at("email").as<std::string>();
         nominee_group =
@@ -929,16 +968,20 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
         std::string encoded_invite_data = cppcodec::base64_rfc4648::encode(
             invite_json.to_string());  // Base64 makes the JSON safe
                                        // to place in a URL token.
-        invite_json["subject"] = fmt::format("Invite to {}",
-            project_name);  // Email subject built from the configured
-                            // project name.
+        invite_json["subject"] =
+            fmt::format("Invite to {}",
+                        project_name);  // Email subject built from the
+                                        // configured project name.
         invite_json["template"] =
             "invite_staff_to_entity.txt";  // Names the mail template
                                            // file to use.
-        invite_json["link"] = fmt::format("{}:{}/{}/{}", frontendcfg_.host,
-            frontendcfg_.port, frontendcfg_.invite_path,
-            encoded_invite_data);  // Frontend URL carrying the
-                                   // encoded token.
+        invite_json["link"] =
+            fmt::format("{}:{}/{}/{}",
+                        frontendcfg_.host,
+                        frontendcfg_.port,
+                        frontendcfg_.invite_path,
+                        encoded_invite_data);  // Frontend URL carrying the
+                                               // encoded token.
         invite_json["project_name"] =
             project_name;  // Pass the project name to the template.
         invite_json["generate_body"] =
@@ -993,8 +1036,17 @@ namespace api::v2::Types  // Nested namespace; names here are referenced as
    * @details Besides the CRUD types it includes client/staff/suspend payloads
    * consumed by the specialised Client and Service builders.
    */
-  using EntityType = std::variant<Create_t, Read_t, Update_t, Delete_t, Data_t,
-      Search_t, CreateClient_t, UpdateClient_t, SuspendData,
-      StaffData>;  // One variant lists every payload an entity can carry;
-                   // std::variant remembers which type is currently stored.
+  using EntityType =
+      std::variant<Create_t,
+                   Read_t,
+                   Update_t,
+                   Delete_t,
+                   Data_t,
+                   Search_t,
+                   CreateClient_t,
+                   UpdateClient_t,
+                   SuspendData,
+                   StaffData>;  // One variant lists every payload an entity can
+                                // carry; std::variant remembers which type is
+                                // currently stored.
 }  // namespace api::v2::Types

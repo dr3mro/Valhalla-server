@@ -86,12 +86,15 @@
  */
 template <Appointment_t T>  // One definition works for any type T satisfying
                             // the Appointment_t concept.
-void AppointmentController<T>::Create(
-    CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+void AppointmentController<T>::Create(CALLBACK_&&       callback,
+                                      const Requester&& requester,
+                                      std::string_view  data)
 {
-  EntityController<T>::Create(std::move(callback), std::move(requester),
-      data);  // Hand everything to the base; std::move transfers the values
-              // so they are not copied.
+  EntityController<T>::Create(std::move(callback),
+                              std::move(requester),
+                              data);  // Hand everything to the base; std::move
+                                      // transfers the values so they are not
+                                      // copied.
 }
 
 /**
@@ -106,9 +109,10 @@ drogon::Task<void> AppointmentController<T>::CreateAsync(
     CALLBACK_&& callback, const Requester&& requester, std::string_view data)
 {
   co_await EntityController<T>::CreateAsync(std::move(callback),
-      std::move(requester),
-      data);  // Pause until the base's async create finishes; then this task
-              // completes.
+                                            std::move(requester),
+                                            data);  // Pause until the base's
+                                                    // async create finishes;
+                                                    // then this task completes.
 }
 
 /**
@@ -121,12 +125,14 @@ drogon::Task<void> AppointmentController<T>::CreateAsync(
  * call.
  */
 template <Appointment_t T>
-void AppointmentController<T>::Read(
-    CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+void AppointmentController<T>::Read(CALLBACK_&&       callback,
+                                    const Requester&& requester,
+                                    std::string_view  data)
 {
-  EntityController<T>::Read(std::move(callback), std::move(requester),
-      data);  // Pass straight through to the base's Read; no extra checks
-              // here.
+  EntityController<T>::Read(std::move(callback),
+                            std::move(requester),
+                            data);  // Pass straight through to the base's Read;
+                                    // no extra checks here.
 }
 
 /**
@@ -141,9 +147,10 @@ drogon::Task<void> AppointmentController<T>::ReadAsync(
     CALLBACK_&& callback, const Requester&& requester, std::string_view data)
 {
   co_await EntityController<T>::ReadAsync(std::move(callback),
-      std::move(requester),
-      data);  // Suspends until the base's async read is done, then resumes
-              // and returns.
+                                          std::move(requester),
+                                          data);  // Suspends until the base's
+                                                  // async read is done, then
+                                                  // resumes and returns.
 }
 
 /**
@@ -157,13 +164,16 @@ drogon::Task<void> AppointmentController<T>::ReadAsync(
  * @param[in] _id Target entity id.
  */
 template <Appointment_t T>
-void AppointmentController<T>::Update(CALLBACK_&& callback,
-    const Requester&& requester, std::string_view data,
-    const std::optional<uint64_t> _id)
+void AppointmentController<T>::Update(CALLBACK_&&                   callback,
+                                      const Requester&&             requester,
+                                      std::string_view              data,
+                                      const std::optional<uint64_t> _id)
 {
-  EntityController<T>::Update(std::move(callback), std::move(requester), data,
-      _id);  // Forward the new fields and target id; the base validates the
-             // id.
+  EntityController<T>::Update(std::move(callback),
+                              std::move(requester),
+                              data,
+                              _id);  // Forward the new fields and target id;
+                                     // the base validates the id.
 }
 
 /**
@@ -175,13 +185,17 @@ void AppointmentController<T>::Update(CALLBACK_&& callback,
  * @param[in] _id Target entity id.
  */
 template <Appointment_t T>
-drogon::Task<void> AppointmentController<T>::UpdateAsync(CALLBACK_&& callback,
-    const Requester&& requester, std::string_view data,
+drogon::Task<void> AppointmentController<T>::UpdateAsync(
+    CALLBACK_&&                   callback,
+    const Requester&&             requester,
+    std::string_view              data,
     const std::optional<uint64_t> _id)
 {
   co_await EntityController<T>::UpdateAsync(std::move(callback),
-      std::move(requester), data,
-      _id);  // Pause until the base finishes the async update.
+                                            std::move(requester),
+                                            data,
+                                            _id);  // Pause until the base
+                                                   // finishes the async update.
 }
 
 /**
@@ -194,12 +208,14 @@ drogon::Task<void> AppointmentController<T>::UpdateAsync(CALLBACK_&& callback,
  * @param[in] _id Target entity id.
  */
 template <Appointment_t T>
-void AppointmentController<T>::Delete(CALLBACK_&& callback,
-    const Requester&& requester, const std::optional<uint64_t> _id)
+void AppointmentController<T>::Delete(CALLBACK_&&                   callback,
+                                      const Requester&&             requester,
+                                      const std::optional<uint64_t> _id)
 {
-  EntityController<T>::Delete(std::move(callback), std::move(requester),
-      _id);  // Forward only the target id; no JSON body is needed for a
-             // delete.
+  EntityController<T>::Delete(std::move(callback),
+                              std::move(requester),
+                              _id);  // Forward only the target id; no JSON body
+                                     // is needed for a delete.
 }
 
 /**
@@ -210,12 +226,15 @@ void AppointmentController<T>::Delete(CALLBACK_&& callback,
  * @param[in] _id Target entity id.
  */
 template <Appointment_t T>
-drogon::Task<void> AppointmentController<T>::DeleteAsync(CALLBACK_&& callback,
-    const Requester&& requester, const std::optional<uint64_t> _id)
+drogon::Task<void> AppointmentController<T>::DeleteAsync(
+    CALLBACK_&&                   callback,
+    const Requester&&             requester,
+    const std::optional<uint64_t> _id)
 {
   co_await EntityController<T>::DeleteAsync(std::move(callback),
-      std::move(requester),
-      _id);  // Pause until the base finishes the async delete.
+                                            std::move(requester),
+                                            _id);  // Pause until the base
+                                                   // finishes the async delete.
 }
 
 /**
@@ -229,12 +248,15 @@ drogon::Task<void> AppointmentController<T>::DeleteAsync(CALLBACK_&& callback,
  * of the call.
  */
 template <Appointment_t T>
-void AppointmentController<T>::Search(
-    CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+void AppointmentController<T>::Search(CALLBACK_&&       callback,
+                                      const Requester&& requester,
+                                      std::string_view  data)
 {
-  EntityController<T>::Search(std::move(callback), std::move(requester),
-      data);  // Forward the criteria; the base returns results/more/offset
-              // through the callback.
+  EntityController<T>::Search(std::move(callback),
+                              std::move(requester),
+                              data);  // Forward the criteria; the base returns
+                                      // results/more/offset through the
+                                      // callback.
 }
 
 /**
@@ -246,31 +268,45 @@ void AppointmentController<T>::Search(
  * plus everything it includes after preprocessing.
  * @param TYPE Concrete appointment entity class to instantiate.
  */
-#define INSTANTIATE_APPOINTMENT_CONTROLLER(                               \
-    TYPE) /* NOLINT ( -readability-macro-expansion) */                    \
-  template void AppointmentController<TYPE>::Create(CALLBACK_&& callback, \
-      const Requester&& requester, std::string_view data);                \
-  template drogon::Task<void> AppointmentController<TYPE>::CreateAsync(   \
-      CALLBACK_&& callback, const Requester&& requester,                  \
-      std::string_view data);                                             \
-  template void AppointmentController<TYPE>::Read(CALLBACK_&& callback,   \
-      const Requester&& requester, std::string_view data);                \
-  template drogon::Task<void> AppointmentController<TYPE>::ReadAsync(     \
-      CALLBACK_&& callback, const Requester&& requester,                  \
-      std::string_view data);                                             \
-  template void AppointmentController<TYPE>::Update(CALLBACK_&& callback, \
-      const Requester&& requester, std::string_view data,                 \
-      std::optional<uint64_t> _id);                                       \
-  template drogon::Task<void> AppointmentController<TYPE>::UpdateAsync(   \
-      CALLBACK_&& callback, const Requester&& requester,                  \
-      std::string_view data, std::optional<uint64_t> _id);                \
-  template void AppointmentController<TYPE>::Delete(CALLBACK_&& callback, \
-      const Requester&& requester, std::optional<uint64_t> _id);          \
-  template drogon::Task<void> AppointmentController<TYPE>::DeleteAsync(   \
-      CALLBACK_&& callback, const Requester&& requester,                  \
-      std::optional<uint64_t> _id);                                       \
-  template void AppointmentController<TYPE>::Search(CALLBACK_&& callback, \
-      const Requester&& requester, std::string_view data);
+#define INSTANTIATE_APPOINTMENT_CONTROLLER(                                    \
+    TYPE) /* NOLINT ( -readability-macro-expansion) */                         \
+  template void                                                                \
+  AppointmentController<TYPE>::Create(CALLBACK_&&       callback,              \
+                                      const Requester&& requester,             \
+                                      std::string_view  data);                 \
+  template drogon::Task<void>                                                  \
+  AppointmentController<TYPE>::CreateAsync(CALLBACK_&&       callback,         \
+                                           const Requester&& requester,        \
+                                           std::string_view  data);            \
+  template void AppointmentController<TYPE>::Read(CALLBACK_&&       callback,  \
+                                                  const Requester&& requester, \
+                                                  std::string_view  data);     \
+  template drogon::Task<void>                                                  \
+  AppointmentController<TYPE>::ReadAsync(CALLBACK_&&       callback,           \
+                                         const Requester&& requester,          \
+                                         std::string_view  data);              \
+  template void                                                                \
+  AppointmentController<TYPE>::Update(CALLBACK_&&             callback,        \
+                                      const Requester&&       requester,       \
+                                      std::string_view        data,            \
+                                      std::optional<uint64_t> _id);            \
+  template drogon::Task<void>                                                  \
+  AppointmentController<TYPE>::UpdateAsync(CALLBACK_&&             callback,   \
+                                           const Requester&&       requester,  \
+                                           std::string_view        data,       \
+                                           std::optional<uint64_t> _id);       \
+  template void                                                                \
+  AppointmentController<TYPE>::Delete(CALLBACK_&&             callback,        \
+                                      const Requester&&       requester,       \
+                                      std::optional<uint64_t> _id);            \
+  template drogon::Task<void>                                                  \
+  AppointmentController<TYPE>::DeleteAsync(CALLBACK_&&             callback,   \
+                                           const Requester&&       requester,  \
+                                           std::optional<uint64_t> _id);       \
+  template void                                                                \
+  AppointmentController<TYPE>::Search(CALLBACK_&&       callback,              \
+                                      const Requester&& requester,             \
+                                      std::string_view  data);
 
 INSTANTIATE_APPOINTMENT_CONTROLLER(
     ClinicAppointment)  // Build the clinic-appointment controller's code so the

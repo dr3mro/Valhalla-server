@@ -151,19 +151,22 @@ namespace Cors  // Group the CORS helper functions together without needing an
    * @param[in,out] resp Response whose Vary header may be updated.
    * @param[in] value Header name to add, for example "Origin".
    */
-  inline void addToVary(const drogon::HttpResponsePtr& resp,
+  inline void addToVary(
+      const drogon::HttpResponsePtr& resp,
       std::string_view value)  // Add one token to Vary only when it is missing.
   {
     const std::string& existing =
         resp->getHeader("vary");  // Read the current Vary header (empty
                                   // string when absent).
-    const std::string merged = detail::mergeVary(existing,
-        value);  // Reuse the helper that appends without duplicates.
-    if (merged != existing)  // Only touch the response if the merge
-                             // actually changed the list.
+    const std::string merged =
+        detail::mergeVary(existing,
+                          value);  // Reuse the helper that appends without
+                                   // duplicates.
+    if (merged != existing)        // Only touch the response if the merge
+                                   // actually changed the list.
     {
       resp->addHeader("Vary",
-          merged);  // Store the updated list back on the response.
+                      merged);  // Store the updated list back on the response.
     }
   }
 
@@ -177,7 +180,8 @@ namespace Cors  // Group the CORS helper functions together without needing an
    * @param[in] value Raw configuration value.
    * @return Origins in configuration order.
    */
-  inline std::vector<std::string> splitOrigins(const std::string&
+  inline std::vector<std::string> splitOrigins(
+      const std::string&
           value)  // Split the configured comma-separated string into origins.
   {
     std::vector<std::string> out;  // Accumulates the origins found, keeping
@@ -226,7 +230,8 @@ namespace Cors  // Group the CORS helper functions together without needing an
    * through Store's thread-local cache.
    * @see CorsTokens::sanitizeRequestedHeaders(), CorsTokens::mergeVary()
    */
-  inline void apply(const drogon::HttpRequestPtr& req,
+  inline void apply(
+      const drogon::HttpRequestPtr& req,
       const drogon::HttpResponsePtr&
           resp)  // Write the correct CORS headers onto this response.
   {
@@ -289,23 +294,24 @@ namespace Cors  // Group the CORS helper functions together without needing an
             allowOrigin)  // Write the header only if missing or different.
     {
       resp->addHeader("Access-Control-Allow-Origin",
-          allowOrigin);  // Tell the browser which origin may read this
-                         // response.
+                      allowOrigin);  // Tell the browser which origin may read
+                                     // this response.
     }
     if (useCredentials)  // Add the credentials flag only for an exact
                          // origin match.
     {
       resp->addHeader("Access-Control-Allow-Credentials",
-          "true");  // Allow cookies/auth to be sent cross-origin.
+                      "true");  // Allow cookies/auth to be sent cross-origin.
       addToVary(resp,
-          "Origin");  // Vary on Origin so caches keep separate copies per
-                      // origin.
+                "Origin");  // Vary on Origin so caches keep separate copies per
+                            // origin.
     }
     resp->addHeader("Access-Control-Allow-Methods",
-        allowedMethods());  // Advertise the HTTP methods permitted
-                            // cross-origin.
+                    allowedMethods());  // Advertise the HTTP methods permitted
+                                        // cross-origin.
     resp->addHeader("Access-Control-Expose-Headers",
-        exposedHeaders());  // List the response headers scripts may read.
+                    exposedHeaders());  // List the response headers scripts may
+                                        // read.
 
     const std::string& requested = req->getHeader(
         "Access-Control-Request-Headers");  // Preflight field naming the
@@ -329,15 +335,15 @@ namespace Cors  // Group the CORS helper functions together without needing an
                                    // of the default one.
       }
       resp->addHeader("Access-Control-Max-Age",
-          preflightMaxAge());  // Tell the browser how long it may cache
-                               // this preflight.
+                      preflightMaxAge());  // Tell the browser how long it may
+                                           // cache this preflight.
       addToVary(resp,
-          "Access-Control-Request-Headers");  // Vary on requested headers
-                                              // so caches do not mix them
-                                              // up.
+                "Access-Control-Request-Headers");  // Vary on requested headers
+                                                    // so caches do not mix them
+                                                    // up.
     }
     resp->addHeader("Access-Control-Allow-Headers",
-        *allowedHeaders);  // Write the final list: default or sanitized
-                           // echo.
+                    *allowedHeaders);  // Write the final list: default or
+                                       // sanitized echo.
   }
 }  // namespace Cors

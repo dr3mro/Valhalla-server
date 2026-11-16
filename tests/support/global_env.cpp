@@ -60,24 +60,29 @@ namespace  // Anonymous namespace keeps this setup object private to this file.
     TestEnvironmentSetup()  // Runs automatically before main() because a
                             // static instance is defined below.
     {
-      setenv("TOKEN_SECRET", "valhalla-unit-test-secret-key",
-          1);  // Fixed secret so token tests know what to sign with.
-      setenv("TOKEN_ISSUER", "valhalla-unit-test-issuer",
-          1);                          // Fixed issuer claimed by test tokens.
+      setenv("TOKEN_SECRET",
+             "valhalla-unit-test-secret-key",
+             1);  // Fixed secret so token tests know what to sign with.
+      setenv("TOKEN_ISSUER",
+             "valhalla-unit-test-issuer",
+             1);                       // Fixed issuer claimed by test tokens.
       setenv("TOKEN_TYPE", "JWS", 1);  // Fixed token type string.
       setenv("TOKEN_VALIDITY", "60", 1);  // Tokens last 60 minutes in tests.
       setenv("CLN_FRQ", "1",
-          1);  // Short cleanup cadence so shutdown is quick.
+             1);  // Short cleanup cadence so shutdown is quick.
       // 0 workers: password hashing/verification runs inline, so tests
       // stay synchronous.
-      setenv("PASSWORD_WORKERS", "0",
-          1);  // No background password threads; work happens on the
-               // calling thread.
-      setenv("DB_WORKERS", "0",
-          1);  // No background database threads; work happens inline.
-      setenv("VALHALLA_TEST_NO_DB", "true",
-          1);  // Flag that stops any real PostgreSQL connection from
-               // being opened.
+      setenv("PASSWORD_WORKERS",
+             "0",
+             1);  // No background password threads; work happens on the
+                  // calling thread.
+      setenv("DB_WORKERS",
+             "0",
+             1);  // No background database threads; work happens inline.
+      setenv("VALHALLA_TEST_NO_DB",
+             "true",
+             1);  // Flag that stops any real PostgreSQL connection from
+                  // being opened.
 
       // Make sure nothing leaks in from the developer's shell.
       unsetenv("WHITELIST");    // Remove any whitelist that could change

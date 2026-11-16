@@ -87,8 +87,8 @@ class EntityControllerBase
       default;  // Nothing to initialize; the interface holds no state.
   EntityControllerBase(const EntityControllerBase&) =
       default;  // Copyable because there is no state to duplicate.
-  EntityControllerBase(
-      EntityControllerBase&&) = default;  // Movable for the same reason.
+  EntityControllerBase(EntityControllerBase&&) =
+      default;  // Movable for the same reason.
   EntityControllerBase& operator=(const EntityControllerBase&) =
       default;  // Assignment is a no-op copy of no state.
   EntityControllerBase& operator=(EntityControllerBase&&) =
@@ -111,9 +111,10 @@ class EntityControllerBase
    * @param[in] data JSON request body; must be parseable by the entity's
    * create schema.
    */
-  virtual void Create(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view
-          data) = 0;  // Pure virtual: every entity must implement creation.
+  virtual void Create(CALLBACK_&&       callback,
+                      const Requester&& requester,
+                      std::string_view data) = 0;  // Pure virtual: every entity
+                                                   // must implement creation.
   /**
    * @brief Coroutine form of Create(); must be awaited.
    * @details Borrows all arguments, so they must remain valid until the
@@ -122,9 +123,10 @@ class EntityControllerBase
    * @param[in] requester Principal used to authorize the create.
    * @param[in] data JSON request body.
    */
-  virtual drogon::Task<void> CreateAsync(CALLBACK_&& callback,
-      const Requester&&                              requester,
-      std::string_view data) = 0;  // Pure virtual coroutine form of Create.
+  virtual drogon::Task<void> CreateAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) = 0;  // Pure virtual coroutine form of Create.
   /**
    * @brief Reads an entity identified in the JSON request body (id plus
    * requested column set).
@@ -133,18 +135,20 @@ class EntityControllerBase
    * @param[in] requester Principal used to authorize the read.
    * @param[in] data JSON request body containing `id` and `schema`.
    */
-  virtual void Read(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view
-          data) = 0;  // Pure virtual: every entity must implement reading.
+  virtual void Read(CALLBACK_&&       callback,
+                    const Requester&& requester,
+                    std::string_view  data) = 0;  // Pure virtual: every entity
+                                                  // must implement reading.
   /**
    * @brief Coroutine form of Read(); must be awaited.
    * @param[in,out] callback Invoked exactly once on completion.
    * @param[in] requester Principal used to authorize the read.
    * @param[in] data JSON request body containing `id` and `schema`.
    */
-  virtual drogon::Task<void> ReadAsync(CALLBACK_&& callback,
-      const Requester&&                            requester,
-      std::string_view data) = 0;  // Pure virtual coroutine form of Read.
+  virtual drogon::Task<void> ReadAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) = 0;  // Pure virtual coroutine form of Read.
   /**
    * @brief Updates the entity identified by @p _id using fields from @p data.
    * @param[in,out] callback Invoked exactly once with the resulting HTTP
@@ -154,10 +158,11 @@ class EntityControllerBase
    * @param[in] _id Target entity id; a missing value is rejected by
    * implementations (400).
    */
-  virtual void Update(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data,
-      std::optional<uint64_t>
-          _id)               = 0;  // Pure virtual: update needs a target id.
+  virtual void Update(CALLBACK_&&       callback,
+                      const Requester&& requester,
+                      std::string_view  data,
+                      std::optional<uint64_t>
+                          _id) = 0;  // Pure virtual: update needs a target id.
   /**
    * @brief Coroutine form of Update(); must be awaited.
    * @param[in,out] callback Invoked exactly once on completion.
@@ -166,10 +171,12 @@ class EntityControllerBase
    * @param[in] _id Target entity id; a missing value is rejected by
    * implementations (400).
    */
-  virtual drogon::Task<void> UpdateAsync(CALLBACK_&& callback,
-      const Requester&& requester, std::string_view data,
+  virtual drogon::Task<void> UpdateAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data,
       std::optional<uint64_t>
-          _id)               = 0;  // Pure virtual coroutine form of Update.
+          _id) = 0;  // Pure virtual coroutine form of Update.
   /**
    * @brief Deletes the entity identified by @p _id.
    * @param[in,out] callback Invoked exactly once with the resulting HTTP
@@ -178,9 +185,10 @@ class EntityControllerBase
    * @param[in] _id Target entity id; a missing value is rejected by
    * implementations (406).
    */
-  virtual void Delete(CALLBACK_&& callback, const Requester&& requester,
-      std::optional<uint64_t>
-          _id)               = 0;  // Pure virtual: delete acts on a single id.
+  virtual void Delete(CALLBACK_&&             callback,
+                      const Requester&&       requester,
+                      std::optional<uint64_t> _id) = 0;  // Pure virtual: delete
+                                                         // acts on a single id.
   /**
    * @brief Coroutine form of Delete(); must be awaited.
    * @param[in,out] callback Invoked exactly once on completion.
@@ -188,10 +196,11 @@ class EntityControllerBase
    * @param[in] _id Target entity id; a missing value is rejected by
    * implementations (406).
    */
-  virtual drogon::Task<void> DeleteAsync(CALLBACK_&& callback,
-      const Requester&&                              requester,
+  virtual drogon::Task<void> DeleteAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
       std::optional<uint64_t>
-          _id)               = 0;  // Pure virtual coroutine form of Delete.
+          _id) = 0;  // Pure virtual coroutine form of Delete.
   /**
    * @brief Searches entities according to criteria in @p data and returns a
    * paginated JSON envelope.
@@ -202,9 +211,10 @@ class EntityControllerBase
    * @param[in] data JSON request body containing search criteria, limit and
    * offset.
    */
-  virtual void Search(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view
-          data) = 0;  // Pure virtual: paginated search over criteria.
+  virtual void Search(CALLBACK_&&       callback,
+                      const Requester&& requester,
+                      std::string_view  data) = 0;  // Pure virtual: paginated
+                                                    // search over criteria.
   /**
    * @brief Coroutine form of Search(); must be awaited.
    * @param[in,out] callback Invoked exactly once on completion.
@@ -213,7 +223,8 @@ class EntityControllerBase
    * @param[in] data JSON request body containing search criteria, limit and
    * offset.
    */
-  virtual drogon::Task<void> SearchAsync(CALLBACK_&& callback,
-      const Requester&&                              requester,
-      std::string_view data) = 0;  // Pure virtual coroutine form of Search.
+  virtual drogon::Task<void> SearchAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) = 0;  // Pure virtual coroutine form of Search.
 };

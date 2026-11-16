@@ -81,7 +81,8 @@ class AsyncDbClient
    * tests and the unavailable state).
    * @post `client()` returns the same pointer that was passed in.
    */
-  explicit AsyncDbClient(std::shared_ptr<drogon::orm::DbClient>
+  explicit AsyncDbClient(
+      std::shared_ptr<drogon::orm::DbClient>
           client);  // `explicit` prevents accidental implicit conversion from
                     // a bare pointer.
 
@@ -94,15 +95,15 @@ class AsyncDbClient
   AsyncDbClient(const AsyncDbClient&) =
       delete;  // No second wrapper may be made by copying: that would blur
                // "one registered client".
-  AsyncDbClient(
-      AsyncDbClient&&) = delete;  // No move construction either: the Store
-                                  // owns the object at a fixed address.
+  AsyncDbClient(AsyncDbClient&&) =
+      delete;  // No move construction either: the Store
+               // owns the object at a fixed address.
   AsyncDbClient& operator=(const AsyncDbClient&) =
       delete;  // No copy assignment: replacing the client is done through the
                // Store, not here.
-  AsyncDbClient& operator=(
-      AsyncDbClient&&) = delete;  // No move assignment: keeps the wrapper's
-                                  // identity stable for its whole lifetime.
+  AsyncDbClient& operator=(AsyncDbClient&&) =
+      delete;  // No move assignment: keeps the wrapper's
+               // identity stable for its whole lifetime.
 
   /** @brief Defaulted virtual destructor; connection cleanup is delegated to
    * the owned Drogon client.
@@ -139,7 +140,8 @@ class AsyncDbClient
    * text; it must not be logged. `printValues()` on the configuration
    * deliberately redacts the same field.
    */
-  static std::string connectionString(const Configurator::DatabaseConfig&
+  static std::string connectionString(
+      const Configurator::DatabaseConfig&
           config);  // Pure formatting: no connection is opened, only text is
                     // produced.
 

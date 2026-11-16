@@ -80,9 +80,9 @@ class Service : public Entity  // Inherits all CRUD builders; adds
    * @brief Non-copyable and non-movable; construct in place for the request
    * that uses it.
    */
-  Service(
-      const Service&) = delete;  // No copy: the entity belongs to one request.
-  Service(Service&&)  = delete;  // No move.
+  Service(const Service&) =
+      delete;  // No copy: the entity belongs to one request.
+  Service(Service&&)                 = delete;  // No move.
   Service& operator=(const Service&) = delete;  // No copy assignment.
   Service& operator=(Service&&)      = delete;  // No move assignment.
 
@@ -123,7 +123,7 @@ class Service : public Entity  // Inherits all CRUD builders; adds
       auto idata =
           std::get<StaffData>(getData());  // The payload must be StaffData;
                                            // std::get throws otherwise.
-      Binder            binder(params);  // Fresh binder for the two parameters.
+      Binder binder(params);  // Fresh binder for the two parameters.
       // Bound in a fixed order (argument evaluation order is
       // unspecified).
       const std::string nominee_ph = binder.bind(std::to_string(
@@ -141,7 +141,8 @@ class Service : public Entity  // Inherits all CRUD builders; adds
           "'{{payload,providers,Doctors}}', "
           "((mjson->'payload'->'providers'->'Doctors') || "
           "to_jsonb({}::text))) WHERE id={} RETURNING id;",
-          tablename, nominee_ph,
+          tablename,
+          nominee_ph,
           entity_ph);  // Two adjacent string literals form one SQL
                        // string; the placeholders are filled in order.
     }
@@ -174,7 +175,7 @@ class Service : public Entity  // Inherits all CRUD builders; adds
     {
       auto idata =
           std::get<StaffData>(getData());  // Must be a StaffData payload.
-      Binder            binder(params);  // Fresh binder for the two parameters.
+      Binder binder(params);  // Fresh binder for the two parameters.
       // Bound in a fixed order (argument evaluation order is
       // unspecified).
       const std::string nominee_ph = binder.bind(
@@ -192,7 +193,8 @@ class Service : public Entity  // Inherits all CRUD builders; adds
           "jsonb_array_elements(mjson->'payload'->'providers'->'Doctors')"
           " AS elem "
           "WHERE elem <> to_jsonb({}::text))) WHERE id={} RETURNING id;",
-          tablename, nominee_ph,
+          tablename,
+          nominee_ph,
           entity_ph);  // Placeholders fill the nominee comparison and the
                        // row id.
     }

@@ -62,8 +62,8 @@
 // A null client is accepted deliberately: the disabled/test state needs no
 // validation and no connection.
 TEST_CASE("AsyncDbClient keeps the client it is given",
-    "[database][asyncdb]")  // Registers the test for storing the injected
-                            // client.
+          "[database][asyncdb]")  // Registers the test for storing the injected
+                                  // client.
 {
   AsyncDbClient empty(
       nullptr);  // Construct with a null client; this represents "no DB
@@ -76,8 +76,8 @@ TEST_CASE("AsyncDbClient keeps the client it is given",
 // Store replacement is the injection seam; the original is restored so the
 // test does not leak a null client into other cases.
 TEST_CASE("AsyncDbClient replaces the registered singleton in tests",
-    "[database][asyncdb]")  // Registers the test for swapping the Store's
-                            // singleton.
+          "[database][asyncdb]")  // Registers the test for swapping the Store's
+                                  // singleton.
 {
   auto original = Store::getObject<AsyncDbClient>(
       nullptr);  // Remember the current object so we can put it back; nullptr
@@ -97,8 +97,8 @@ TEST_CASE("AsyncDbClient replaces the registered singleton in tests",
 
 // Each configured field must appear in the generated libpq connection string.
 TEST_CASE("AsyncDbClient connection string carries the DB_* settings",
-    "[database][asyncdb]")  // Registers the test that checks every config value
-                            // is rendered.
+          "[database][asyncdb]")  // Registers the test that checks every config
+                                  // value is rendered.
 {
   Configurator::DatabaseConfig
       config;  // A fresh, empty settings object to fill in by hand.
@@ -129,7 +129,7 @@ TEST_CASE("AsyncDbClient connection string carries the DB_* settings",
 
 // ssl selects sslmode=require; clearing it selects sslmode=disable.
 TEST_CASE("AsyncDbClient connection string honours DB_SSL",
-    "[database][asyncdb]")  // Registers the test for the SSL toggle.
+          "[database][asyncdb]")  // Registers the test for the SSL toggle.
 {
   Configurator::DatabaseConfig
       config;  // A fresh settings object; only the SSL field matters here.

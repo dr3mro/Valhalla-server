@@ -76,13 +76,13 @@ namespace  // An anonymous namespace keeps these helpers private to this test
   };
 
   /** @brief Builds a callback that records its code/body into @p out. */
-  CALLBACK_ capture(CallResult&
-          out)  // Returns a "call me later" function that writes into out.
+  CALLBACK_ capture(CallResult& out)  // Returns a "call me later" function that
+                                      // writes into out.
   {
-    return
-        [&out](int             code,
-            const std::string& body)  // The lambda captures out by reference so
-                                      // the result is visible to the caller.
+    return [&out](int code,
+                  const std::string&
+                      body)  // The lambda captures out by reference so
+                             // the result is visible to the caller.
     {
       out.code = code;  // Store the status the controller reported.
       out.body = body;  // Store the body the controller reported.
@@ -116,14 +116,15 @@ namespace  // An anonymous namespace keeps these helpers private to this test
 // A broken Create body is rejected before any schema check or SQL, so no fake
 // is needed here.
 TEST_CASE("ClientController::Create rejects malformed JSON",
-    "[controller][client][create]")
+          "[controller][client][create]")
 {
   ClientController<User> ctrl;  // A fresh User-client controller; no DB fake
                                 // needed because parsing fails first.
   CallResult result;  // The envelope that will hold the callback's answer.
-  ctrl.Create(capture(result), userRequester(),
-      "not json {{{");  // Call Create with invalid JSON; the requester is the
-                        // owner id=42.
+  ctrl.Create(capture(result),
+              userRequester(),
+              "not json {{{");  // Call Create with invalid JSON; the requester
+                                // is the owner id=42.
   CHECK(result.code ==
         Http::Status::BAD_REQUEST);  // Proves bad JSON is refused with 400
                                      // before any DB work.
@@ -142,20 +143,21 @@ TEST_CASE("ClientController::Create rejects malformed JSON",
 
 // No id means there is nothing to suspend; the request is refused immediately.
 TEST_CASE("ClientController::Suspend rejects nullopt id",
-    "[controller][client][suspend]")
+          "[controller][client][suspend]")
 {
   ClientController<User> ctrl;    // A fresh User-client controller.
   CallResult             result;  // Holds the answer.
-  ctrl.Suspend(
-      capture(result), userRequester(), std::nullopt);  // Pass no target id.
-  CHECK(result.code == Http::Status::NOT_ACCEPTABLE);   // Proves the missing-id
-                                                        // guard returns 406.
+  ctrl.Suspend(capture(result),
+               userRequester(),
+               std::nullopt);                          // Pass no target id.
+  CHECK(result.code == Http::Status::NOT_ACCEPTABLE);  // Proves the missing-id
+                                                       // guard returns 406.
 }
 
 // With the fake returning no row, the shared CRUD helper reports a failed
 // update as 400.
 TEST_CASE("ClientController::Suspend returns 400 when DB returns nullopt",
-    "[controller][client][suspend]")
+          "[controller][client][suspend]")
 {
   auto fake =
       std::make_shared<FakeDatabaseController>();  // Make a shared fake so
@@ -170,8 +172,9 @@ TEST_CASE("ClientController::Suspend returns 400 when DB returns nullopt",
                                   // Store at construction time.
   CallResult             result;  // Holds the answer.
 
-  ctrl.Suspend(capture(result), Requester(42, "users"),
-      42u);  // Owner (42) suspends user 42; 42u is an unsigned id.
+  ctrl.Suspend(capture(result),
+               Requester(42, "users"),
+               42u);  // Owner (42) suspends user 42; 42u is an unsigned id.
   // No result from DB → 400
   CHECK(result.code ==
         Http::Status::BAD_REQUEST);  // Proves a failed DB write is surfaced
@@ -180,7 +183,7 @@ TEST_CASE("ClientController::Suspend returns 400 when DB returns nullopt",
 
 // When the fake returns a row, the same call is a success (200).
 TEST_CASE("ClientController::Suspend returns 200 when DB succeeds",
-    "[controller][client][suspend]")
+          "[controller][client][suspend]")
 {
   // A fresh fake for this case.
   auto fake = std::make_shared<FakeDatabaseController>();
@@ -191,8 +194,9 @@ TEST_CASE("ClientController::Suspend returns 200 when DB succeeds",
   ClientController<User> ctrl;  // Controller captures the fake from the Store.
   CallResult             result;  // Holds the answer.
 
-  ctrl.Suspend(
-      capture(result), Requester(42, "users"), 42u);  // Perform the suspend.
+  ctrl.Suspend(capture(result),
+               Requester(42, "users"),
+               42u);  // Perform the suspend.
   CHECK(result.code ==
         Http::Status::OK);  // Proves a successful DB write is reported as 200.
 }
@@ -201,19 +205,20 @@ TEST_CASE("ClientController::Suspend returns 200 when DB succeeds",
 
 // Activate mirrors Suspend: a missing id is refused with 406.
 TEST_CASE("ClientController::Activate rejects nullopt id",
-    "[controller][client][activate]")
+          "[controller][client][activate]")
 {
   ClientController<User> ctrl;    // A fresh User-client controller.
   CallResult             result;  // Holds the answer.
-  ctrl.Activate(
-      capture(result), userRequester(), std::nullopt);  // No target id.
-  CHECK(result.code == Http::Status::NOT_ACCEPTABLE);   // Proves the missing-id
-                                                        // guard returns 406.
+  ctrl.Activate(capture(result),
+                userRequester(),
+                std::nullopt);                         // No target id.
+  CHECK(result.code == Http::Status::NOT_ACCEPTABLE);  // Proves the missing-id
+                                                       // guard returns 406.
 }
 
 // A DB that returns no row makes Activate report 400.
 TEST_CASE("ClientController::Activate returns 400 when DB returns nullopt",
-    "[controller][client][activate]")
+          "[controller][client][activate]")
 {
   // A fresh fake.
   auto fake          = std::make_shared<FakeDatabaseController>();
@@ -223,15 +228,16 @@ TEST_CASE("ClientController::Activate returns 400 when DB returns nullopt",
   ClientController<User> ctrl;         // Controller captures it.
   CallResult             result;       // Holds the answer.
 
-  ctrl.Activate(
-      capture(result), Requester(42, "users"), 42u);  // Perform the activate.
+  ctrl.Activate(capture(result),
+                Requester(42, "users"),
+                42u);  // Perform the activate.
   CHECK(result.code ==
         Http::Status::BAD_REQUEST);  // Proves a nullopt DB result becomes 400.
 }
 
 // A DB row makes Activate report 200.
 TEST_CASE("ClientController::Activate returns 200 when DB succeeds",
-    "[controller][client][activate]")
+          "[controller][client][activate]")
 {
   // A fresh fake.
   auto fake          = std::make_shared<FakeDatabaseController>();
@@ -241,10 +247,11 @@ TEST_CASE("ClientController::Activate returns 200 when DB succeeds",
   ClientController<User> ctrl;         // Controller captures it.
   CallResult             result;       // Holds the answer.
 
-  ctrl.Activate(
-      capture(result), Requester(42, "users"), 42u);  // Perform the activate.
-  CHECK(
-      result.code == Http::Status::OK);  // Proves the success path returns 200.
+  ctrl.Activate(capture(result),
+                Requester(42, "users"),
+                42u);  // Perform the activate.
+  CHECK(result.code ==
+        Http::Status::OK);  // Proves the success path returns 200.
 }
 
 // GetServices uses the search path: an empty array is still a 200 with "[]",
@@ -254,12 +261,13 @@ TEST_CASE("ClientController::Activate returns 200 when DB succeeds",
 
 // A missing id is rejected before any permission check or query.
 TEST_CASE("ClientController::GetServices rejects nullopt id",
-    "[controller][client][services]")
+          "[controller][client][services]")
 {
   ClientController<User> ctrl;    // A fresh User-client controller.
   CallResult             result;  // Holds the answer.
-  ctrl.GetServices(capture(result), userRequester(),
-      std::nullopt);  // No client id supplied.
+  ctrl.GetServices(capture(result),
+                   userRequester(),
+                   std::nullopt);  // No client id supplied.
   CHECK(result.code ==
         Http::Status::BAD_REQUEST);  // Proves a missing id is refused with
                                      // 400 on this path.
@@ -279,8 +287,9 @@ TEST_CASE(
   ClientController<User> ctrl;    // Controller captures it.
   CallResult             result;  // Holds the answer.
 
-  ctrl.GetServices(capture(result), Requester(42, "users"),
-      42u);                                // Ask for this client's services.
+  ctrl.GetServices(capture(result),
+                   Requester(42, "users"),
+                   42u);                   // Ask for this client's services.
   CHECK(result.code == Http::Status::OK);  // Proves "no services" is still a
                                            // successful request.
   CHECK(result.body == "[]");  // Proves the body is exactly an empty JSON
@@ -289,7 +298,7 @@ TEST_CASE(
 
 // Real service rows from the DB are serialised into the response body.
 TEST_CASE("ClientController::GetServices returns service array from DB",
-    "[controller][client][services]")
+          "[controller][client][services]")
 {
   jsoncons::json::array services;  // The list of rows the fake will return.
   jsoncons::json        svc = jsoncons::json::object();  // One service object.
@@ -307,8 +316,9 @@ TEST_CASE("ClientController::GetServices returns service array from DB",
   ClientController<User> ctrl;         // Controller captures it.
   CallResult             result;       // Holds the answer.
 
-  ctrl.GetServices(
-      capture(result), Requester(42, "users"), 42u);  // Ask for the services.
+  ctrl.GetServices(capture(result),
+                   Requester(42, "users"),
+                   42u);                   // Ask for the services.
   CHECK(result.code == Http::Status::OK);  // Proves the request succeeded.
   CHECK(result.body.find("City Clinic") !=
         std::string::npos);  // Proves the DB data actually reached the
@@ -319,12 +329,13 @@ TEST_CASE("ClientController::GetServices returns service array from DB",
 
 // Delete refuses a missing id before doing anything else.
 TEST_CASE("ClientController::Delete rejects nullopt id",
-    "[controller][client][delete]")
+          "[controller][client][delete]")
 {
   ClientController<User> ctrl;    // A fresh User-client controller.
   CallResult             result;  // Holds the answer.
-  ctrl.Delete(
-      capture(result), userRequester(), std::nullopt);  // No id to delete.
+  ctrl.Delete(capture(result),
+              userRequester(),
+              std::nullopt);  // No id to delete.
   CHECK(result.code ==
         Http::Status::NOT_ACCEPTABLE);  // Proves the 406 missing-id rule
                                         // applies here too.
@@ -332,20 +343,21 @@ TEST_CASE("ClientController::Delete rejects nullopt id",
 
 // A caller from the wrong group must not delete a user.
 TEST_CASE("ClientController::Delete rejects mismatched requester group",
-    "[controller][client][delete]")
+          "[controller][client][delete]")
 {
   // requester is in "providers" but entity is a User ("users")
   ClientController<User> ctrl;    // A fresh User-client controller.
   CallResult             result;  // Holds the answer.
-  ctrl.Delete(capture(result), Requester(42, "providers"),
-      42u);  // Id matches but the group does not.
+  ctrl.Delete(capture(result),
+              Requester(42, "providers"),
+              42u);  // Id matches but the group does not.
   CHECK(result.code == Http::Status::FORBIDDEN);  // Proves authorisation blocks
                                                   // the delete with 403.
 }
 
 // A failed delete at the DB layer is reported as 400.
 TEST_CASE("ClientController::Delete returns 400 when DB returns nullopt",
-    "[controller][client][delete]")
+          "[controller][client][delete]")
 {
   // A fresh fake.
   auto fake          = std::make_shared<FakeDatabaseController>();
@@ -355,15 +367,16 @@ TEST_CASE("ClientController::Delete returns 400 when DB returns nullopt",
   ClientController<User> ctrl;         // Controller captures it.
   CallResult             result;       // Holds the answer.
 
-  ctrl.Delete(
-      capture(result), Requester(42, "users"), 42u);  // Perform the delete.
+  ctrl.Delete(capture(result),
+              Requester(42, "users"),
+              42u);  // Perform the delete.
   CHECK(result.code ==
         Http::Status::BAD_REQUEST);  // Proves a nullopt DB result becomes 400.
 }
 
 // A successful delete at the DB layer is reported as 200.
 TEST_CASE("ClientController::Delete returns 200 when DB succeeds",
-    "[controller][client][delete]")
+          "[controller][client][delete]")
 {
   // A fresh fake.
   auto fake          = std::make_shared<FakeDatabaseController>();
@@ -373,10 +386,11 @@ TEST_CASE("ClientController::Delete returns 200 when DB succeeds",
   ClientController<User> ctrl;         // Controller captures it.
   CallResult             result;       // Holds the answer.
 
-  ctrl.Delete(
-      capture(result), Requester(42, "users"), 42u);  // Perform the delete.
-  CHECK(
-      result.code == Http::Status::OK);  // Proves the success path returns 200.
+  ctrl.Delete(capture(result),
+              Requester(42, "users"),
+              42u);  // Perform the delete.
+  CHECK(result.code ==
+        Http::Status::OK);  // Proves the success path returns 200.
 }
 
 // Search has three outcomes: bad JSON → 400, incomplete params → 406, otherwise
@@ -387,12 +401,13 @@ TEST_CASE("ClientController::Delete returns 200 when DB succeeds",
 
 // A non-JSON body is rejected before any query is built.
 TEST_CASE("ClientController::Search rejects malformed JSON",
-    "[controller][client][search]")
+          "[controller][client][search]")
 {
   ClientController<User> ctrl;    // A fresh User-client controller.
   CallResult             result;  // Holds the answer.
-  ctrl.Search(capture(result), userRequester(),
-      "bad json");  // Plain text instead of JSON.
+  ctrl.Search(capture(result),
+              userRequester(),
+              "bad json");  // Plain text instead of JSON.
   CHECK(result.code ==
         Http::Status::BAD_REQUEST);  // Proves Search refuses unparsable input.
 }
@@ -400,7 +415,7 @@ TEST_CASE("ClientController::Search rejects malformed JSON",
 // Search needs all its fields; leaving out "offset" makes the request
 // unacceptable.
 TEST_CASE("ClientController::Search rejects incomplete search params",
-    "[controller][client][search]")
+          "[controller][client][search]")
 {
   // Missing "offset" field
   constexpr const char* incomplete =
@@ -409,17 +424,18 @@ TEST_CASE("ClientController::Search rejects incomplete search params",
       R"({"keyword":"x","filter":"name","order_by":"id","direction":0,"limit":10})";
   ClientController<User> ctrl;    // A fresh User-client controller.
   CallResult             result;  // Holds the answer.
-  ctrl.Search(capture(result), userRequester(),
-      incomplete);  // Search with the incomplete JSON.
-  CHECK(
-      result.code == Http::Status::NOT_ACCEPTABLE);  // Proves the missing field
-                                                     // is caught with 406.
+  ctrl.Search(capture(result),
+              userRequester(),
+              incomplete);  // Search with the incomplete JSON.
+  CHECK(result.code ==
+        Http::Status::NOT_ACCEPTABLE);  // Proves the missing field
+                                        // is caught with 406.
 }
 
 // Returned rows are serialised into the body; the extra row also exercises
 // paging logic.
 TEST_CASE("ClientController::Search returns results from DB",
-    "[controller][client][search]")
+          "[controller][client][search]")
 {
   jsoncons::json::array rows;  // The list of rows the fake will return.
   jsoncons::json row = jsoncons::json::object();  // One reusable row object.
@@ -439,7 +455,7 @@ TEST_CASE("ClientController::Search returns results from DB",
   ClientController<User> ctrl;         // Controller captures it.
   CallResult             result;       // Holds the answer.
 
-  constexpr const char*  search =
+  constexpr const char* search =
       // A complete search request asking for one row from offset zero.
       R"({"keyword":"alice","filter":"username","order_by":"id","direction":0,"limit":1,"offset":0})";
   ctrl.Search(capture(result), userRequester(), search);  // Run the search.
@@ -453,7 +469,7 @@ TEST_CASE("ClientController::Search returns results from DB",
 // Even with no rows, a valid search succeeds (200) and answers with an empty
 // result set.
 TEST_CASE("ClientController::Search returns empty results when DB has no rows",
-    "[controller][client][search]")
+          "[controller][client][search]")
 {
   // A fresh fake.
   auto fake           = std::make_shared<FakeDatabaseController>();
@@ -463,7 +479,7 @@ TEST_CASE("ClientController::Search returns empty results when DB has no rows",
   ClientController<User> ctrl;         // Controller captures it.
   CallResult             result;       // Holds the answer.
 
-  constexpr const char*  search =
+  constexpr const char* search =
       // A complete search that will match nothing.
       R"({"keyword":"nobody","filter":"username","order_by":"id","direction":0,"limit":10,"offset":0})";
   ctrl.Search(capture(result), userRequester(), search);  // Run the search.

@@ -105,7 +105,8 @@ namespace asyncdb
    * @return JSON object with one entry per column, in column order.
    * @pre `row` is a valid index into `result`.
    */
-  [[nodiscard]] jsoncons::json mapRow(const drogon::orm::Result& result,
+  [[nodiscard]] jsoncons::json mapRow(
+      const drogon::orm::Result& result,
       drogon::orm::Result::SizeType
           row);  // `[[nodiscard]]` reminds callers that ignoring the returned
                  // object is a mistake.
@@ -118,7 +119,8 @@ namespace asyncdb
    * @note This mirrors the single-object outcome of `Database::executeQuery`
    * for a query with no rows.
    */
-  [[nodiscard]] jsoncons::json mapResultToObject(const drogon::orm::Result&
+  [[nodiscard]] jsoncons::json mapResultToObject(
+      const drogon::orm::Result&
           result);  // Used when a query is expected to return at most one
                     // row, such as a lookup by id.
 

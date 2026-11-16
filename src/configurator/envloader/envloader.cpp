@@ -51,7 +51,8 @@
 
 // Reads a string variable: return the stored text verbatim, or the default when
 // it is absent.
-std::string EnvLoader::getEnvironmentVariable(const std::string& key,
+std::string EnvLoader::getEnvironmentVariable(
+    const std::string& key,
     const std::string& defaultValue)  // Returns the raw text or the fallback
                                       // when the name is missing.
 {
@@ -63,7 +64,8 @@ std::string EnvLoader::getEnvironmentVariable(const std::string& key,
 }
 
 // Reads a boolean variable: only the exact word "true" counts as true.
-bool EnvLoader::getEnvironmentVariable(const std::string& key,
+bool EnvLoader::getEnvironmentVariable(
+    const std::string& key,
     bool defaultValue)  // True for "true", false for any other present value,
                         // default when unset.
 {
@@ -77,7 +79,8 @@ bool EnvLoader::getEnvironmentVariable(const std::string& key,
 }
 
 // Reads a duration in whole seconds, rejecting negative or invalid numbers.
-std::chrono::seconds EnvLoader::getEnvironmentVariable(const std::string& key,
+std::chrono::seconds EnvLoader::getEnvironmentVariable(
+    const std::string& key,
     const std::chrono::seconds&
         defaultValue)  // Interprets the value as seconds, or keeps the default
                        // on bad input.
@@ -144,18 +147,19 @@ std::unordered_set<std::string> EnvLoader::parseSet(
   std::stringstream ss(str);  // Wrap the text so getline can pull out
                               // comma-delimited pieces one at a time.
   std::string       item;     // Temporary holder for each piece as it is read.
-  while (std::getline(ss, item,
-      ','))  // Keep reading until no more comma-separated pieces remain; each
-             // pass handles one token.
+  while (std::getline(ss,
+                      item,
+                      ','))  // Keep reading until no more comma-separated
+                             // pieces remain; each pass handles one token.
   {
     // Trim any leading or trailing whitespace
     item.erase(item.find_last_not_of(" \n\r\t") +
                1);  // Cut off trailing spaces/newlines by erasing from just
                     // after the last non-space character.
     item.erase(0,
-        item.find_first_not_of(
-            " \n\r\t"));  // Cut off leading spaces/newlines by erasing up
-                          // to the first non-space character.
+               item.find_first_not_of(
+                   " \n\r\t"));  // Cut off leading spaces/newlines by erasing
+                                 // up to the first non-space character.
     // Drop empty tokens so "a,,b" and a string of only whitespace yield no
     // empty member.
     if (!item.empty())  // Skip pieces that are empty after trimming (the
@@ -168,7 +172,8 @@ std::unordered_set<std::string> EnvLoader::parseSet(
 }
 
 // Replaces a zero "auto" count with a multiple of the machine's CPU count.
-void EnvLoader::optimize_performance(uint16_t& parameter,
+void EnvLoader::optimize_performance(
+    uint16_t&     parameter,
     const uint8_t factor)  // Grows a zero value to CPUs times factor, leaving
                            // explicit values alone.
 {

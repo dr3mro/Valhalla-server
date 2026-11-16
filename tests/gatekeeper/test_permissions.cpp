@@ -95,12 +95,12 @@ namespace valhalla_test
   {
     json staff;  // Will become the "staff" object holding roles.
     for (const auto& [role, members] :
-        roles)  // Loop over each role; structured bindings unpack the pair.
+         roles)  // Loop over each role; structured bindings unpack the pair.
     {
       json membersJson = json::array();  // Build a JSON array for this
                                          // role's member strings.
       for (const auto& member :
-          members)  // Loop over each "id:power" string in the role.
+           members)  // Loop over each "id:power" string in the role.
       {
         membersJson.push_back(
             member);  // Append the member string to the role's array.
@@ -130,8 +130,8 @@ namespace valhalla_test
 }  // namespace valhalla_test
 
 TEST_CASE("Permissions bitmask hasPower semantics",
-    "[gatekeeper][permissions]")  // Registers the test for the power bitmask
-                                  // type itself.
+          "[gatekeeper][permissions]")  // Registers the test for the power
+                                        // bitmask type itself.
 {
   // NOTE: Permissions::hasPower() is not const-qualified, so objects cannot
   // be const (a const-correctness wart, not worth a refactor for tests).
@@ -187,58 +187,80 @@ TEST_CASE(
     "[gatekeeper][permissions]")  // Registers the test that staff get exactly
                                   // the power listed for them.
 {
-  const auto requester = valhalla_test::makeRequester(
-      7, "providers");  // A provider with client id 7.
-  const auto permissions_j = valhalla_test::staffPermissions({{"Doctors",
-      {"7:4"}}});  // 4 = CAN_READ -- list id 7 with only read power.
+  const auto requester =
+      valhalla_test::makeRequester(7, "providers");  // A provider with client
+                                                     // id 7.
+  const auto permissions_j = valhalla_test::staffPermissions(
+      {{"Doctors",
+        {"7:4"}}});  // 4 = CAN_READ -- list id 7 with only read power.
   SECTION("CAN_READ is granted")
   {
     HttpError error;  // Receives an error description on denial; should
                       // stay unused here.
-    CHECK(PermissionManagerPrivate::hasPermission(requester, permissions_j,
-        PowerLevel::CAN_READ, "clinics",
-        error));  // Prove the configured read power is granted.
+    CHECK(PermissionManagerPrivate::hasPermission(requester,
+                                                  permissions_j,
+                                                  PowerLevel::CAN_READ,
+                                                  "clinics",
+                                                  error));  // Prove the
+                                                            // configured read
+                                                            // power is granted.
   }
 
   SECTION("CAN_WRITE and CAN_DELETE are denied")
   {
     HttpError error;  // Receives the denial reason for the write attempt.
-    CHECK_FALSE(PermissionManagerPrivate::hasPermission(requester,
-        permissions_j, PowerLevel::CAN_WRITE, "clinics",
-        error));  // Prove write is refused even though the member exists.
+    CHECK_FALSE(
+        PermissionManagerPrivate::hasPermission(requester,
+                                                permissions_j,
+                                                PowerLevel::CAN_WRITE,
+                                                "clinics",
+                                                error));  // Prove write is
+                                                          // refused even though
+                                                          // the member exists.
 
     HttpError deleteError;  // Separate error object so the two checks do
                             // not interfere.
-    CHECK_FALSE(PermissionManagerPrivate::hasPermission(requester,
-        permissions_j, PowerLevel::CAN_DELETE, "clinics",
-        deleteError));  // Prove delete is refused too.
+    CHECK_FALSE(
+        PermissionManagerPrivate::
+            hasPermission(requester,
+                          permissions_j,
+                          PowerLevel::CAN_DELETE,
+                          "clinics",
+                          deleteError));  // Prove delete is refused too.
   }
 }
 
-TEST_CASE("PermissionManagerPrivate denies non-staff members",
+TEST_CASE(
+    "PermissionManagerPrivate denies non-staff members",
     "[gatekeeper][permissions]")  // Registers the test that someone absent from
                                   // the staff list is rejected.
 {
-  const auto requester = valhalla_test::makeRequester(
-      99, "users");  // Client 99, not present in any role.
+  const auto requester =
+      valhalla_test::makeRequester(99, "users");  // Client 99, not present in
+                                                  // any role.
   const auto permissions_j = valhalla_test::staffPermissions(
       {{"Doctors", {"7:4"}}});  // Only staff id 7 is listed.
 
   HttpError error;  // Receives the denial reason.
-  CHECK_FALSE(PermissionManagerPrivate::hasPermission(requester, permissions_j,
-      PowerLevel::CAN_READ, "clinics",
-      error));  // Prove a non-member cannot read.
+  CHECK_FALSE(
+      PermissionManagerPrivate::hasPermission(requester,
+                                              permissions_j,
+                                              PowerLevel::CAN_READ,
+                                              "clinics",
+                                              error));  // Prove a non-member
+                                                        // cannot read.
   CHECK(error.code ==
         api::v2::Http::Status::FORBIDDEN);  // Prove the denial is reported as
                                             // HTTP 403 Forbidden.
 }
 
 TEST_CASE("PermissionManagerPrivate isStaffOfService parses the role string",
-    "[gatekeeper][permissions]")  // Registers the test for parsing "id:power"
-                                  // strings and error cases.
+          "[gatekeeper][permissions]")  // Registers the test for parsing
+                                        // "id:power" strings and error cases.
 {
-  const auto requester = valhalla_test::makeRequester(
-      7, "users");  // Client id 7 will be looked up.
+  const auto requester =
+      valhalla_test::makeRequester(7,
+                                   "users");  // Client id 7 will be looked up.
   auto permissions_j = valhalla_test::staffPermissions(
       {{"Nurses", {"3:12", "7:32"}}});  // 32 = IS_ADMIN (0x20) -- two members
                                         // with different powers.
@@ -246,8 +268,12 @@ TEST_CASE("PermissionManagerPrivate isStaffOfService parses the role string",
   SECTION("matching member")
   {
     HttpError  error;  // Receives any parse error.
-    const auto staff = PermissionManagerPrivate::isStaffOfService(requester,
-        permissions_j, "clinics", error);  // Look up client 7 among the nurses.
+    const auto staff =
+        PermissionManagerPrivate::isStaffOfService(requester,
+                                                   permissions_j,
+                                                   "clinics",
+                                                   error);  // Look up client 7
+                                                            // among the nurses.
     REQUIRE(staff.has_value());   // Prove a matching member record was found
                                   // before reading it.
     CHECK(staff->staff_id == 7);  // Prove the id was parsed correctly.
@@ -260,12 +286,17 @@ TEST_CASE("PermissionManagerPrivate isStaffOfService parses the role string",
 
   SECTION("member with a malformed power value is rejected")
   {
-    permissions_j = valhalla_test::staffPermissions({{"Nurses",
-        {"7:notanumber"}}});  // Replace with an unparseable power string.
-    HttpError  error;         // Receives the error.
-    const auto staff = PermissionManagerPrivate::isStaffOfService(requester,
-        permissions_j, "clinics", error);  // Try to parse the bad entry.
-    REQUIRE_FALSE(staff.has_value());      // Prove no staff record is produced.
+    permissions_j = valhalla_test::staffPermissions(
+        {{"Nurses",
+          {"7:notanumber"}}});  // Replace with an unparseable power string.
+    HttpError  error;           // Receives the error.
+    const auto staff =
+        PermissionManagerPrivate::isStaffOfService(requester,
+                                                   permissions_j,
+                                                   "clinics",
+                                                   error);  // Try to parse the
+                                                            // bad entry.
+    REQUIRE_FALSE(staff.has_value());  // Prove no staff record is produced.
     CHECK(error.code ==
           api::v2::Http::Status::FORBIDDEN);  // Prove bad data is treated
                                               // as a denial, not a crash.
@@ -274,9 +305,11 @@ TEST_CASE("PermissionManagerPrivate isStaffOfService parses the role string",
   SECTION("missing permissions payload is rejected")
   {
     HttpError  error;  // Receives the error.
-    const auto staff =
-        PermissionManagerPrivate::isStaffOfService(requester, std::nullopt,
-            "clinics", error);  // Call with no permissions document at all.
+    const auto staff = PermissionManagerPrivate::
+        isStaffOfService(requester,
+                         std::nullopt,
+                         "clinics",
+                         error);  // Call with no permissions document at all.
     REQUIRE_FALSE(staff.has_value());  // Prove no record is produced.
     CHECK(error.code ==
           api::v2::Http::Status::BAD_REQUEST);  // Prove missing data is
@@ -286,30 +319,48 @@ TEST_CASE("PermissionManagerPrivate isStaffOfService parses the role string",
 }
 
 TEST_CASE("PermissionManagerPrivate checks owner and admin of a service",
-    "[gatekeeper][permissions]")  // Registers the test for the owner/admin id
-                                  // checks.
+          "[gatekeeper][permissions]")  // Registers the test for the
+                                        // owner/admin id checks.
 {
   const auto owner =
       valhalla_test::makeRequester(1, "providers");  // Client 1 is the owner.
   const auto admin =
       valhalla_test::makeRequester(2, "providers");  // Client 2 is the admin.
-  const auto nobody = valhalla_test::makeRequester(
-      3, "providers");  // Client 3 holds neither role.
-  const auto permissions_j = valhalla_test::staffPermissions({}, 1,
-      2);  // Document with owner_id=1 and admin_id=2 but no staff roles.
+  const auto nobody =
+      valhalla_test::makeRequester(3, "providers");  // Client 3 holds neither
+                                                     // role.
+  const auto permissions_j =
+      valhalla_test::staffPermissions({},
+                                      1,
+                                      2);  // Document with owner_id=1 and
+                                           // admin_id=2 but no staff roles.
 
-  HttpError  error;  // Receives an error on denial.
-  CHECK(PermissionManagerPrivate::isOwnerOfService(owner, permissions_j,
-      "laboratories", error));  // Prove the owner is recognised.
-  CHECK_FALSE(PermissionManagerPrivate::isOwnerOfService(nobody, permissions_j,
-      "laboratories",
-      error));  // Prove a third party is not treated as owner.
+  HttpError error;  // Receives an error on denial.
+  CHECK(PermissionManagerPrivate::isOwnerOfService(owner,
+                                                   permissions_j,
+                                                   "laboratories",
+                                                   error));  // Prove the owner
+                                                             // is recognised.
+  CHECK_FALSE(
+      PermissionManagerPrivate::isOwnerOfService(nobody,
+                                                 permissions_j,
+                                                 "laboratories",
+                                                 error));  // Prove a third
+                                                           // party is not
+                                                           // treated as owner.
 
-  CHECK(PermissionManagerPrivate::isAdminOfService(admin, permissions_j,
-      "laboratories", error));  // Prove the admin is recognised.
-  CHECK_FALSE(PermissionManagerPrivate::isAdminOfService(owner, permissions_j,
-      "laboratories",
-      error));  // Prove being owner does not also make one the admin.
+  CHECK(PermissionManagerPrivate::isAdminOfService(admin,
+                                                   permissions_j,
+                                                   "laboratories",
+                                                   error));  // Prove the admin
+                                                             // is recognised.
+  CHECK_FALSE(
+      PermissionManagerPrivate::isAdminOfService(owner,
+                                                 permissions_j,
+                                                 "laboratories",
+                                                 error));  // Prove being owner
+                                                           // does not also make
+                                                           // one the admin.
 }
 
 TEST_CASE(
@@ -319,32 +370,48 @@ TEST_CASE(
                                   // check and its documented quirks.
 {
   const auto permissions_j =
-      valhalla_test::staffPermissions({{"Doctors", {"5:16"}}}, 1,
-          2);  // 16 = CAN_DELETE -- staff 5 may delete, owner 1, admin 2.
+      valhalla_test::staffPermissions({{"Doctors", {"5:16"}}},
+                                      1,
+                                      2);  // 16 = CAN_DELETE -- staff 5 may
+                                           // delete, owner 1, admin 2.
 
   SECTION("owner is allowed")
   {
     HttpError error;  // Receives any error.
-    CHECK(PermissionManagerPrivate::isOwnerOrAdminOrHasPermission(
-        valhalla_test::makeRequester(1, "providers"), permissions_j, "clinics",
-        error));  // Prove the owner passes regardless of staff powers.
+    CHECK(PermissionManagerPrivate::
+              isOwnerOrAdminOrHasPermission(valhalla_test::
+                                                makeRequester(1, "providers"),
+                                            permissions_j,
+                                            "clinics",
+                                            error));  // Prove the owner passes
+                                                      // regardless of staff
+                                                      // powers.
   }
 
   SECTION("admin is allowed")
   {
     HttpError error;  // Receives any error.
-    CHECK(PermissionManagerPrivate::isOwnerOrAdminOrHasPermission(
-        valhalla_test::makeRequester(2, "providers"), permissions_j, "clinics",
-        error));  // Prove the admin passes too.
+    CHECK(PermissionManagerPrivate::
+              isOwnerOrAdminOrHasPermission(valhalla_test::
+                                                makeRequester(2, "providers"),
+                                            permissions_j,
+                                            "clinics",
+                                            error));  // Prove the admin passes
+                                                      // too.
   }
 
   SECTION("staff with CAN_DELETE is allowed")
   {
     HttpError error;  // Receives any error.
-    CHECK(PermissionManagerPrivate::isOwnerOrAdminOrHasPermission(
-        valhalla_test::makeRequester(5, "users"), permissions_j, "clinics",
-        error));  // Prove a listed staff member with the right power
-                  // passes.
+    CHECK(
+        PermissionManagerPrivate::
+            isOwnerOrAdminOrHasPermission(valhalla_test::makeRequester(5,
+                                                                       "users"),
+                                          permissions_j,
+                                          "clinics",
+                                          error));  // Prove a listed staff
+                                                    // member with the right
+                                                    // power passes.
   }
 
   SECTION("staff without CAN_DELETE is denied")
@@ -357,13 +424,21 @@ TEST_CASE(
     // With an owner/admin present, a CAN_READ-only member is
     // denied cleanly instead.
     const auto ownerOnly =
-        valhalla_test::staffPermissions({{"Doctors", {"5:4"}}}, 1,
-            2);  // Staff 5 has only read power; owner/admin keys are present.
-    HttpError error;  // Receives the denial reason.
-    CHECK_FALSE(PermissionManagerPrivate::isOwnerOrAdminOrHasPermission(
-        valhalla_test::makeRequester(5, "users"), ownerOnly, "clinics",
-        error));  // Prove a read-only member is denied without an exception
-                  // when keys exist.
+        valhalla_test::staffPermissions({{"Doctors", {"5:4"}}},
+                                        1,
+                                        2);  // Staff 5 has only read power;
+                                             // owner/admin keys are present.
+    HttpError error;                         // Receives the denial reason.
+    CHECK_FALSE(
+        PermissionManagerPrivate::
+            isOwnerOrAdminOrHasPermission(valhalla_test::makeRequester(5,
+                                                                       "users"),
+                                          ownerOnly,
+                                          "clinics",
+                                          error));  // Prove a read-only member
+                                                    // is denied without an
+                                                    // exception when keys
+                                                    // exist.
   }
 
   SECTION(
@@ -379,38 +454,52 @@ TEST_CASE(
     HttpError error;  // Its code is intentionally left uninitialised in
                       // this path.
     REQUIRE_THROWS_AS(PermissionManagerPrivate::isOwnerOrAdminOrHasPermission(
-                          valhalla_test::makeRequester(5, "users"), staffOnly,
-                          "clinics", error),
-        std::exception);  // Prove the known quirk: an exception escapes
-                          // rather than a clean denial.
+                          valhalla_test::makeRequester(5, "users"),
+                          staffOnly,
+                          "clinics",
+                          error),
+                      std::exception);  // Prove the known quirk: an exception
+                                        // escapes rather than a clean denial.
   }
 
   SECTION("no permissions at all is denied")
   {
     HttpError error;  // Receives the denial reason.
-    CHECK_FALSE(PermissionManagerPrivate::isOwnerOrAdminOrHasPermission(
-        valhalla_test::makeRequester(5, "users"), std::nullopt, "clinics",
-        error));  // Prove a missing permissions document is denied cleanly.
+    CHECK_FALSE(
+        PermissionManagerPrivate::
+            isOwnerOrAdminOrHasPermission(valhalla_test::makeRequester(5,
+                                                                       "users"),
+                                          std::nullopt,
+                                          "clinics",
+                                          error));  // Prove a missing
+                                                    // permissions document is
+                                                    // denied cleanly.
   }
 }
 
 TEST_CASE("PermissionManagerPrivate isOwnerOrAdmin requires either role",
-    "[gatekeeper][permissions]")  // Registers the test for the simpler
-                                  // either-role check.
+          "[gatekeeper][permissions]")  // Registers the test for the simpler
+                                        // either-role check.
 {
   const auto permissions_j =
       valhalla_test::staffPermissions({}, 1, 2);  // Owner 1, admin 2, no staff.
   HttpError error;                                // Receives any error.
 
-  CHECK(PermissionManagerPrivate::isOwnerOrAdmin(
-      valhalla_test::makeRequester(1, "providers"), permissions_j, "clinics",
-      error));  // Owner qualifies.
-  CHECK(PermissionManagerPrivate::isOwnerOrAdmin(
-      valhalla_test::makeRequester(2, "providers"), permissions_j, "clinics",
-      error));  // Admin qualifies.
-  CHECK_FALSE(PermissionManagerPrivate::isOwnerOrAdmin(
-      valhalla_test::makeRequester(3, "providers"), permissions_j, "clinics",
-      error));  // A third party does not qualify.
+  CHECK(PermissionManagerPrivate::
+            isOwnerOrAdmin(valhalla_test::makeRequester(1, "providers"),
+                           permissions_j,
+                           "clinics",
+                           error));  // Owner qualifies.
+  CHECK(PermissionManagerPrivate::
+            isOwnerOrAdmin(valhalla_test::makeRequester(2, "providers"),
+                           permissions_j,
+                           "clinics",
+                           error));  // Admin qualifies.
+  CHECK_FALSE(PermissionManagerPrivate::
+                  isOwnerOrAdmin(valhalla_test::makeRequester(3, "providers"),
+                                 permissions_j,
+                                 "clinics",
+                                 error));  // A third party does not qualify.
 }
 
 TEST_CASE(
@@ -418,33 +507,44 @@ TEST_CASE(
     "[gatekeeper][permissions]")  // Registers the test that client self-access
                                   // requires matching group and id.
 {
-  const auto requester = valhalla_test::makeRequester(
-      11, "users");  // A client with id 11 in the "users" group.
-  HttpError error;   // Receives the denial reason.
+  const auto requester =
+      valhalla_test::makeRequester(11, "users");  // A client with id 11 in the
+                                                  // "users" group.
+  HttpError error;                                // Receives the denial reason.
 
-  CHECK(PermissionManagerPrivate::assert_group_id_match(requester, "users", 11,
-      error));  // Prove matching group and id is accepted.
+  CHECK(PermissionManagerPrivate::
+            assert_group_id_match(requester,
+                                  "users",
+                                  11,
+                                  error));  // Prove matching group and id is
+                                            // accepted.
 
   SECTION("group mismatch")
   {
-    CHECK_FALSE(PermissionManagerPrivate::assert_group_id_match(requester,
-        "providers", 11,
-        error));  // Prove a different group is refused even with the right
-                  // id.
-    CHECK(
-        error.code == api::v2::Http::Status::FORBIDDEN);  // Prove the refusal
-                                                          // is reported as 403.
+    CHECK_FALSE(
+        PermissionManagerPrivate::
+            assert_group_id_match(requester,
+                                  "providers",
+                                  11,
+                                  error));  // Prove a different group is
+                                            // refused even with the right id.
+    CHECK(error.code ==
+          api::v2::Http::Status::FORBIDDEN);  // Prove the refusal
+                                              // is reported as 403.
   }
 
   SECTION("id mismatch")
   {
     CHECK_FALSE(
-        PermissionManagerPrivate::assert_group_id_match(requester, "users", 12,
-            error));  // Prove a different id is refused even in the right
-                      // group.
-    CHECK(
-        error.code == api::v2::Http::Status::FORBIDDEN);  // Prove the refusal
-                                                          // is reported as 403.
+        PermissionManagerPrivate::
+            assert_group_id_match(requester,
+                                  "users",
+                                  12,
+                                  error));  // Prove a different id is refused
+                                            // even in the right group.
+    CHECK(error.code ==
+          api::v2::Http::Status::FORBIDDEN);  // Prove the refusal
+                                              // is reported as 403.
   }
 }
 
@@ -455,11 +555,10 @@ TEST_CASE(
 {
   using valhalla_test::json;  // Local alias for the JSON type.
 
-  const auto makeService =
-      [](jsoncons::optional<uint64_t> owner,
-          jsoncons::optional<uint64_t>
-              admin)  // Helper that builds a service payload with only the
-                      // supplied ids.
+  const auto makeService = [](jsoncons::optional<uint64_t> owner,
+                              jsoncons::optional<uint64_t>
+                                  admin)  // Helper that builds a service
+                                          // payload with only the supplied ids.
   {
     json service;           // Start with an empty service object.
     if (owner.has_value())  // Add the owner id only when supplied.
@@ -479,22 +578,30 @@ TEST_CASE(
   {
     const auto requester =
         valhalla_test::makeRequester(4, "providers");  // A provider client.
-    auto service_j = makeService(
-        4, 4);        // Service owned and administered by that same client.
-    HttpError error;  // Receives any error.
-    CHECK(PermissionManagerPrivate::preServiceCreateChecks(requester, service_j,
-        error));  // Prove a provider can create their own service.
+    auto service_j =
+        makeService(4,
+                    4);  // Service owned and administered by that same client.
+    HttpError error;     // Receives any error.
+    CHECK(PermissionManagerPrivate::
+              preServiceCreateChecks(requester,
+                                     service_j,
+                                     error));  // Prove a provider can create
+                                               // their own service.
   }
 
   SECTION("non-provider is rejected")
   {
-    const auto requester = valhalla_test::makeRequester(
-        4, "users");  // A regular client, not a provider.
+    const auto requester =
+        valhalla_test::makeRequester(4, "users");  // A regular client, not a
+                                                   // provider.
     auto service_j =
         makeService(4, 4);  // Even if ids match, the group is wrong.
     HttpError error;        // Receives the error.
-    CHECK_FALSE(PermissionManagerPrivate::preServiceCreateChecks(requester,
-        service_j, error));  // Prove non-providers cannot create services.
+    CHECK_FALSE(PermissionManagerPrivate::
+                    preServiceCreateChecks(requester,
+                                           service_j,
+                                           error));  // Prove non-providers
+                                                     // cannot create services.
     CHECK(error.code ==
           api::v2::Http::Status::BAD_REQUEST);  // Prove the reason is
                                                 // reported as 400.
@@ -507,27 +614,37 @@ TEST_CASE(
     auto service_j =
         makeService(9, 4);  // Owner id 9 does not match the requester.
     HttpError error;        // Receives the error.
-    CHECK_FALSE(PermissionManagerPrivate::preServiceCreateChecks(requester,
-        service_j, error));  // Prove a mismatched owner id is rejected.
+    CHECK_FALSE(PermissionManagerPrivate::
+                    preServiceCreateChecks(requester,
+                                           service_j,
+                                           error));  // Prove a mismatched owner
+                                                     // id is rejected.
   }
 
   SECTION("missing ids are rejected")
   {
     const auto requester =
         valhalla_test::makeRequester(4, "providers");  // Provider 4.
-    auto      service_j = makeService(std::nullopt,
-        std::nullopt);  // Neither owner nor admin id supplied.
-    HttpError error;    // Receives the error.
-    CHECK_FALSE(PermissionManagerPrivate::preServiceCreateChecks(requester,
-        service_j, error));  // Prove incomplete service data is rejected.
+    auto service_j =
+        makeService(std::nullopt,
+                    std::nullopt);  // Neither owner nor admin id supplied.
+    HttpError error;                // Receives the error.
+    CHECK_FALSE(PermissionManagerPrivate::
+                    preServiceCreateChecks(requester,
+                                           service_j,
+                                           error));  // Prove incomplete service
+                                                     // data is rejected.
   }
 
   SECTION("no payload at all is rejected")
   {
     HttpError error;  // Receives the error.
-    CHECK_FALSE(PermissionManagerPrivate::preServiceCreateChecks(
-        valhalla_test::makeRequester(4, "providers"), std::nullopt,
-        error));  // Prove a missing service document is rejected.
+    CHECK_FALSE(
+        PermissionManagerPrivate::
+            preServiceCreateChecks(valhalla_test::makeRequester(4, "providers"),
+                                   std::nullopt,
+                                   error));  // Prove a missing service document
+                                             // is rejected.
   }
 }
 
@@ -547,32 +664,36 @@ TEST_CASE(
 
   SECTION("present key")
   {
-    const auto value =
-        PermissionManagerPrivate::extract_json_value_safely<uint64_t>(service_j,
-            "clinic_id", "clinic",
-            error);  // Extract an unsigned integer; the template argument
-                     // says what type to expect.
+    const auto value = PermissionManagerPrivate::extract_json_value_safely<
+        uint64_t>(service_j,
+                  "clinic_id",
+                  "clinic",
+                  error);  // Extract an unsigned integer; the template argument
+                           // says what type to expect.
     REQUIRE(value.has_value());  // Prove extraction succeeded before reading.
     CHECK(value.value() == 3);   // Prove the correct value came back.
   }
 
   SECTION("missing key")
   {
-    CHECK_FALSE(PermissionManagerPrivate::extract_json_value_safely<uint64_t>(
-        service_j, "lab_id", "clinic", error)
+    CHECK_FALSE(
+        PermissionManagerPrivate::extract_json_value_safely<uint64_t>(service_j,
+                                                                      "lab_id",
+                                                                      "clinic",
+                                                                      error)
             .has_value());  // Prove a missing key yields no value rather
                             // than throwing.
-    CHECK(
-        error.code == api::v2::Http::Status::BAD_REQUEST);  // Prove it is
-                                                            // reported as 400.
+    CHECK(error.code ==
+          api::v2::Http::Status::BAD_REQUEST);  // Prove it is
+                                                // reported as 400.
   }
 
   SECTION("empty payload")
   {
-    CHECK_FALSE(PermissionManagerPrivate::extract_json_value_safely<uint64_t>(
-        std::nullopt, "clinic_id", "clinic", error)
-            .has_value());  // Prove a missing document also yields no
-                            // value.
+    CHECK_FALSE(PermissionManagerPrivate::extract_json_value_safely<
+                    uint64_t>(std::nullopt, "clinic_id", "clinic", error)
+                    .has_value());  // Prove a missing document also yields no
+                                    // value.
   }
 
   SECTION("wrong type")
@@ -582,44 +703,50 @@ TEST_CASE(
         "three";  // Put a string where a number is expected.
     std::optional<json> wrongType(
         std::move(wrongJson));  // Wrap it for the helper.
-    CHECK_FALSE(PermissionManagerPrivate::extract_json_value_safely<uint64_t>(
-        wrongType, "clinic_id", "clinic", error)
-            .has_value());  // Prove a type mismatch is rejected instead of
-                            // throwing or coercing.
+    CHECK_FALSE(PermissionManagerPrivate::extract_json_value_safely<
+                    uint64_t>(wrongType, "clinic_id", "clinic", error)
+                    .has_value());  // Prove a type mismatch is rejected instead
+                                    // of throwing or coercing.
   }
 }
 
 TEST_CASE("PermissionManager always allows creation for clients",
-    "[gatekeeper][permissions]")  // Registers the test that ordinary clients
-                                  // may create their own records.
+          "[gatekeeper][permissions]")  // Registers the test that ordinary
+                                        // clients may create their own records.
 {
   const auto requester =
       valhalla_test::makeRequester(1, "users");  // A regular client.
   HttpError error;                               // Receives any error.
-  CHECK(PermissionManager{}.canCreate<User>(requester, std::nullopt,
-      error));  // Prove creation is allowed even with no payload; a temporary
-                // facade is constructed inline.
+  CHECK(PermissionManager{}
+            .canCreate<User>(requester,
+                             std::nullopt,
+                             error));  // Prove creation is allowed even with no
+                                       // payload; a temporary facade is
+                                       // constructed inline.
 }
 
 TEST_CASE("PermissionManager client paths require matching group and id",
-    "[gatekeeper][permissions]")  // Registers the test that self-access is
-                                  // enforced per entity type.
+          "[gatekeeper][permissions]")  // Registers the test that self-access
+                                        // is enforced per entity type.
 {
   PermissionManager manager;  // The public facade.
 
   SECTION("user reading own record")
   {
     HttpError error;  // Receives any error.
-    CHECK(manager.canRead<User>(valhalla_test::makeRequester(5, "users"), 5,
-        error));  // Prove a user can read their own id.
+    CHECK(manager.canRead<User>(valhalla_test::makeRequester(5, "users"),
+                                5,
+                                error));  // Prove a user can read their own id.
   }
 
   SECTION("user reading another user's record")
   {
     HttpError error;  // Receives the denial reason.
     CHECK_FALSE(
-        manager.canRead<User>(valhalla_test::makeRequester(5, "users"), 6,
-            error));  // Prove a user cannot read a different id.
+        manager
+            .canRead<User>(valhalla_test::makeRequester(5, "users"),
+                           6,
+                           error));  // Prove a user cannot read a different id.
     CHECK(error.code ==
           api::v2::Http::Status::FORBIDDEN);  // Prove the denial is 403.
   }
@@ -627,59 +754,75 @@ TEST_CASE("PermissionManager client paths require matching group and id",
   SECTION("provider reading a provider record")
   {
     HttpError error;  // Receives any error.
-    CHECK(manager.canRead<Provider>(
-        valhalla_test::makeRequester(9, "providers"), 9,
-        error));  // Prove the provider path also allows self-access.
+    CHECK(
+        manager.canRead<Provider>(valhalla_test::makeRequester(9, "providers"),
+                                  9,
+                                  error));  // Prove the provider path also
+                                            // allows self-access.
   }
 
   SECTION("provider denied on another provider's id")
   {
     HttpError error;  // Receives the denial reason.
-    CHECK_FALSE(manager.canRead<Provider>(
-        valhalla_test::makeRequester(9, "providers"), 10,
-        error));  // Prove providers cannot read each other's records.
+    CHECK_FALSE(
+        manager.canRead<Provider>(valhalla_test::makeRequester(9, "providers"),
+                                  10,
+                                  error));  // Prove providers cannot read each
+                                            // other's records.
     CHECK(error.code ==
           api::v2::Http::Status::FORBIDDEN);  // Prove the denial is 403.
   }
 }
 
-TEST_CASE("PermissionManager client paths agree across the whole CRUD matrix",
+TEST_CASE(
+    "PermissionManager client paths agree across the whole CRUD matrix",
     "[gatekeeper][permissions]")  // Registers the test that all client
                                   // operations follow the same self-only rule.
 {
   PermissionManager manager;  // The public facade.
-  const auto        requester = valhalla_test::makeRequester(
-      3, "users");  // One client reused for every operation.
+  const auto        requester =
+      valhalla_test::makeRequester(3, "users");  // One client reused for every
+                                                 // operation.
 
   SECTION(
       "canRead/canUpdate/canDelete/canToggleActive/canGetServices for own id")
   {
     HttpError error;  // Receives any errors.
-    CHECK(manager.canRead<User>(
-        requester, 3, error));  // Reading own record is allowed.
-    CHECK(manager.canUpdate<User>(
-        requester, 3, error));  // Updating own record is allowed.
-    CHECK(manager.canDelete<User>(
-        requester, 3, error));  // Deleting own record is allowed.
-    CHECK(manager.canToggleActive<User>(
-        requester, 3, error));  // Toggling own active flag is allowed.
-    CHECK(manager.canGetServices<User>(
-        requester, 3, error));  // Listing own services is allowed.
+    CHECK(manager.canRead<User>(requester,
+                                3,
+                                error));  // Reading own record is allowed.
+    CHECK(manager.canUpdate<User>(requester,
+                                  3,
+                                  error));  // Updating own record is allowed.
+    CHECK(manager.canDelete<User>(requester,
+                                  3,
+                                  error));  // Deleting own record is allowed.
+    CHECK(manager.canToggleActive<
+          User>(requester, 3, error));  // Toggling own active flag is allowed.
+    CHECK(manager.canGetServices<
+          User>(requester, 3, error));  // Listing own services is allowed.
   }
 
   SECTION("all denied for another id")
   {
     HttpError error;  // Receives the denial reason.
-    CHECK_FALSE(manager.canRead<User>(
-        requester, 4, error));  // Reading another id is denied.
-    CHECK_FALSE(manager.canUpdate<User>(
-        requester, 4, error));  // Updating another id is denied.
-    CHECK_FALSE(manager.canDelete<User>(
-        requester, 4, error));  // Deleting another id is denied.
-    CHECK_FALSE(manager.canToggleActive<User>(
-        requester, 4, error));  // Toggling another id is denied.
-    CHECK_FALSE(manager.canGetServices<User>(
-        requester, 4, error));  // Listing another id's services is denied.
+    CHECK_FALSE(manager.canRead<User>(requester,
+                                      4,
+                                      error));  // Reading another id is denied.
+    CHECK_FALSE(
+        manager.canUpdate<User>(requester,
+                                4,
+                                error));  // Updating another id is denied.
+    CHECK_FALSE(
+        manager.canDelete<User>(requester,
+                                4,
+                                error));  // Deleting another id is denied.
+    CHECK_FALSE(manager.canToggleActive<
+                User>(requester, 4, error));  // Toggling another id is denied.
+    CHECK_FALSE(manager.canGetServices<User>(requester,
+                                             4,
+                                             error));  // Listing another id's
+                                                       // services is denied.
   }
 }
 
@@ -691,10 +834,14 @@ TEST_CASE(
                                   // checked.
 {
   // 4 = CAN_READ, 12 = CAN_READ|CAN_WRITE, 28 = CAN_READ|CAN_WRITE|CAN_DELETE
-  const auto permissions_j = valhalla_test::staffPermissions(
-      {{"Readers", {"5:4"}}, {"Writers", {"6:12"}}, {"Deleters", {"7:28"}}}, 1,
-      2);  // Three staff with progressively more power, plus owner 1 and
-           // admin 2.
+  const auto permissions_j =
+      valhalla_test::staffPermissions({{"Readers", {"5:4"}},
+                                       {"Writers", {"6:12"}},
+                                       {"Deleters", {"7:28"}}},
+                                      1,
+                                      2);  // Three staff with progressively
+                                           // more power, plus owner 1 and
+                                           // admin 2.
 
   const auto allowed =
       [&](const uint64_t   id,
@@ -702,20 +849,26 @@ TEST_CASE(
                                       // do the operation needing this bit?".
   {
     HttpError error;  // Receives any error.
-    return PermissionManagerPrivate::isOwnerOrAdminOrHasPermission(
-        valhalla_test::makeRequester(id, "providers"), permissions_j, "clinics",
-        error,
-        required);  // Pass the required bit explicitly, which is the new
-                    // overload under test.
+    return PermissionManagerPrivate::
+        isOwnerOrAdminOrHasPermission(valhalla_test::makeRequester(id,
+                                                                   "providers"),
+                                      permissions_j,
+                                      "clinics",
+                                      error,
+                                      required);  // Pass the required bit
+                                                  // explicitly, which is the
+                                                  // new overload under test.
   };
 
   SECTION("a read-only member can read but not write or delete")
   {
     CHECK(allowed(5, PowerLevel::CAN_READ));  // Client 5 has only the read bit.
-    CHECK_FALSE(allowed(
-        5, PowerLevel::CAN_WRITE));  // Prove the same member cannot write.
+    CHECK_FALSE(
+        allowed(5,
+                PowerLevel::CAN_WRITE));  // Prove the same member cannot write.
     CHECK_FALSE(allowed(5,
-        PowerLevel::CAN_DELETE));  // Prove the same member cannot delete.
+                        PowerLevel::CAN_DELETE));  // Prove the same member
+                                                   // cannot delete.
   }
 
   SECTION("a read/write member cannot delete")
@@ -723,8 +876,8 @@ TEST_CASE(
     CHECK(allowed(6, PowerLevel::CAN_READ));   // Client 6 can read.
     CHECK(allowed(6, PowerLevel::CAN_WRITE));  // Client 6 can also write.
     CHECK_FALSE(allowed(6,
-        PowerLevel::CAN_DELETE));  // Prove the missing delete bit is still
-                                   // enforced.
+                        PowerLevel::CAN_DELETE));  // Prove the missing delete
+                                                   // bit is still enforced.
   }
 
   SECTION("a member with all three bits can do everything")
@@ -732,8 +885,8 @@ TEST_CASE(
     CHECK(allowed(7, PowerLevel::CAN_READ));   // Client 7 can read.
     CHECK(allowed(7, PowerLevel::CAN_WRITE));  // Client 7 can write.
     CHECK(allowed(7,
-        PowerLevel::CAN_DELETE));  // Client 7 can delete, having all three
-                                   // bits.
+                  PowerLevel::CAN_DELETE));  // Client 7 can delete, having all
+                                             // three bits.
   }
 
   SECTION("owner and admin pass whatever bit is required")
@@ -758,10 +911,10 @@ TEST_CASE(
   using valhalla_test::json;  // Local alias for the JSON type.
   PermissionManager manager;  // The public facade.
 
-  const auto        makeService =
-      [](uint64_t  owner,
-          uint64_t admin)  // Helper that builds a service payload with both
-                           // ids always present.
+  const auto makeService =
+      [](uint64_t owner,
+         uint64_t admin)  // Helper that builds a service payload with both
+                          // ids always present.
   {
     json j;                         // Start with an empty object.
     j["owner_id"] = owner;          // Set the owner id.
@@ -772,18 +925,22 @@ TEST_CASE(
   SECTION("provider owning and administering the service is allowed")
   {
     HttpError error;  // Receives any error.
-    CHECK(manager.canCreate<Laboratories>(
-        valhalla_test::makeRequester(4, "providers"), makeService(4, 4),
-        error));  // Prove the facade allows a provider to create their own
-                  // service.
+    CHECK(manager.canCreate<
+          Laboratories>(valhalla_test::makeRequester(4, "providers"),
+                        makeService(4, 4),
+                        error));  // Prove the facade allows a provider to
+                                  // create their own service.
   }
 
   SECTION("non-provider is rejected")
   {
     HttpError error;  // Receives the error.
-    CHECK_FALSE(manager.canCreate<Laboratories>(
-        valhalla_test::makeRequester(4, "users"), makeService(4, 4),
-        error));  // Prove a regular client cannot create a service.
+    CHECK_FALSE(
+        manager.canCreate<Laboratories>(valhalla_test::makeRequester(4,
+                                                                     "users"),
+                                        makeService(4, 4),
+                                        error));  // Prove a regular client
+                                                  // cannot create a service.
     CHECK(error.code ==
           api::v2::Http::Status::BAD_REQUEST);  // Prove the reason is 400.
   }
@@ -791,17 +948,19 @@ TEST_CASE(
   SECTION("owner id mismatch is rejected")
   {
     HttpError error;  // Receives the error.
-    CHECK_FALSE(manager.canCreate<Laboratories>(
-        valhalla_test::makeRequester(4, "providers"), makeService(99, 4),
-        error));  // Prove a mismatched owner id is rejected through the
-                  // facade too.
+    CHECK_FALSE(manager.canCreate<
+                Laboratories>(valhalla_test::makeRequester(4, "providers"),
+                              makeService(99, 4),
+                              error));  // Prove a mismatched owner id is
+                                        // rejected through the facade too.
   }
 
   SECTION("no data is rejected")
   {
     HttpError error;  // Receives the error.
-    CHECK_FALSE(manager.canCreate<Laboratories>(
-        valhalla_test::makeRequester(4, "providers"), std::nullopt,
-        error));  // Prove a missing payload is rejected.
+    CHECK_FALSE(manager.canCreate<
+                Laboratories>(valhalla_test::makeRequester(4, "providers"),
+                              std::nullopt,
+                              error));  // Prove a missing payload is rejected.
   }
 }

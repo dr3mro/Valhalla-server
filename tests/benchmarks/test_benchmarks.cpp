@@ -80,9 +80,11 @@ namespace  // Anonymous namespace keeps the helpers private to this file.
             std::memory_order_relaxed))  // Count only when a benchmark
                                          // enabled counting.
     {
-      g_allocationCount.fetch_add(1,
-          std::memory_order_relaxed);  // Add one to the count without
-                                       // heavy ordering guarantees.
+      g_allocationCount
+          .fetch_add(1,
+                     std::memory_order_relaxed);  // Add one to the count
+                                                  // without heavy ordering
+                                                  // guarantees.
     }
     if (void* ptr = std::malloc(size))  // Do the actual allocation with malloc.
     {
@@ -96,8 +98,8 @@ namespace  // Anonymous namespace keeps the helpers private to this file.
    * Used by the manual (non-Catch2) throughput benchmarks below. */
   template <typename Callable>
   long long measure(Callable&& callable,
-      const int iterations)  // Runs a callable many times and returns elapsed
-                             // milliseconds.
+                    const int  iterations)  // Runs a callable many times and
+                                            // returns elapsed milliseconds.
   {
     const auto start = std::chrono::steady_clock::now();  // Record the start on
                                                           // a monotonic clock.
@@ -107,7 +109,7 @@ namespace  // Anonymous namespace keeps the helpers private to this file.
       callable(i);  // Pass the index so callers can vary each iteration.
     }
     return std::chrono::duration_cast<std::chrono::milliseconds>(
-        std::chrono::steady_clock::now() - start)
+               std::chrono::steady_clock::now() - start)
         .count();  // Return elapsed whole milliseconds.
   }
 }  // namespace
@@ -124,8 +126,8 @@ void* operator new(std::size_t size, std::align_val_t)
   return countedAllocate(size);
 }  // Aligned single-object new; alignment is handled by malloc.
 void* operator new(std::size_t size,
-    const std::nothrow_t&) noexcept  // Non-throwing new: return null instead of
-                                     // throwing.
+                   const std::nothrow_t&) noexcept  // Non-throwing new: return
+                                                    // null instead of throwing.
 {
   try
   {
@@ -137,8 +139,9 @@ void* operator new(std::size_t size,
                      // exception.
   }
 }
-void* operator new(std::size_t size, std::align_val_t,
-    const std::nothrow_t&) noexcept  // Non-throwing aligned new.
+void* operator new(std::size_t size,
+                   std::align_val_t,
+                   const std::nothrow_t&) noexcept  // Non-throwing aligned new.
 {
   try
   {
@@ -193,7 +196,7 @@ void operator delete[](void* ptr, std::size_t, std::align_val_t) noexcept
 
 // Throughput of the lock-based queue: push N items, then drain them.
 TEST_CASE("Benchmark: ThreadSafeQueue push/pop round trips",
-    "[.benchmark]")  // Hidden by the leading dot in the tag.
+          "[.benchmark]")  // Hidden by the leading dot in the tag.
 {
   if (!benchmarksRequested())  // Check the opt-in gate.
   {
@@ -201,8 +204,12 @@ TEST_CASE("Benchmark: ThreadSafeQueue push/pop round trips",
   }
 
   ThreadSafeQueue<int> queue;  // The queue under test.
-  const auto           milliseconds =
-      measure([&](int i) { queue.push(i); }, 100000);  // Time 100000 pushes.
+  const auto           milliseconds = measure(
+      [&](int i)
+      {
+        queue.push(i);
+      },
+      100000);  // Time 100000 pushes.
 
   long long popMs = 0;  // Will hold the drain time.
   {
@@ -213,7 +220,7 @@ TEST_CASE("Benchmark: ThreadSafeQueue push/pop round trips",
     {
     }
     popMs = std::chrono::duration_cast<std::chrono::milliseconds>(
-        std::chrono::steady_clock::now() - start)
+                std::chrono::steady_clock::now() - start)
                 .count();  // Convert elapsed time to milliseconds.
   }
 
@@ -224,24 +231,31 @@ TEST_CASE("Benchmark: ThreadSafeQueue push/pop round trips",
 
 // Throughput of the expiring cache's insert and get paths.
 TEST_CASE("Benchmark: MemCache insert/get round trips",
-    "[.benchmark]")  // Cache throughput.
+          "[.benchmark]")  // Cache throughput.
 {
   if (!benchmarksRequested())  // Opt-in gate.
   {
     SKIP();  // Skip unless explicitly requested.
   }
 
-  MemCache<std::string> cache(100000,
-      std::chrono::seconds{
-          60});  // Cache with a large capacity and a 60-second lifetime.
+  MemCache<std::string>
+      cache(100000,
+            std::chrono::seconds{
+                60});  // Cache with a large capacity and a 60-second lifetime.
 
-  const auto            insertMs = measure([&](int i)
-      { cache.insert("k" + std::to_string(i), "v" + std::to_string(i)); },
+  const auto insertMs = measure(
+      [&](int i)
+      {
+        cache.insert("k" + std::to_string(i), "v" + std::to_string(i));
+      },
       50000);  // Time 50000 inserts.
 
-  const auto            getMs =
-      measure([&](int i) { (void)cache.get("k" + std::to_string(i % 50000)); },
-          50000);  // Time 50000 gets over the inserted keys.
+  const auto getMs = measure(
+      [&](int i)
+      {
+        (void)cache.get("k" + std::to_string(i % 50000));
+      },
+      50000);  // Time 50000 gets over the inserted keys.
 
   INFO("insert 50000: " << insertMs << " ms; get 50000: " << getMs
                         << " ms");  // Report the timings.
@@ -253,7 +267,7 @@ TEST_CASE("Benchmark: MemCache insert/get round trips",
 // approach and bare response creation, and counts allocations per call to
 // verify the header-setting path does not regress.
 TEST_CASE("Benchmark: Cors::apply",
-    "[.benchmark]")  // CORS timing and allocation comparison.
+          "[.benchmark]")  // CORS timing and allocation comparison.
 {
   if (!benchmarksRequested())  // Opt-in gate.
   {
@@ -269,8 +283,9 @@ TEST_CASE("Benchmark: Cors::apply",
       drogon::HttpRequest::newHttpRequest();  // A preflight request.
   requestPreflight->setMethod(
       drogon::Options);  // OPTIONS marks it as preflight.
-  requestPreflight->addHeader("Access-Control-Request-Headers",
-      "content-type, x-custom");  // Supply headers to be echoed.
+  requestPreflight
+      ->addHeader("Access-Control-Request-Headers",
+                  "content-type, x-custom");  // Supply headers to be echoed.
 
   BENCHMARK("Cors::apply GET")  // Catch2-measured normal-path benchmark.
   {
@@ -291,19 +306,20 @@ TEST_CASE("Benchmark: Cors::apply",
                                                     // manual approach.
   {
     auto response = drogon::HttpResponse::newHttpResponse();  // Fresh response.
-    response->addHeader(
-        "Access-Control-Allow-Origin", "*");  // Baseline header 1.
+    response->addHeader("Access-Control-Allow-Origin",
+                        "*");  // Baseline header 1.
     response->addHeader("Access-Control-Allow-Methods",
-        // Baseline header 2.
-        "GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS");
+                        // Baseline header 2.
+                        "GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS");
     response->addHeader("Access-Control-Expose-Headers",
-        "Retry-After, Content-Length");  // Baseline header 3.
-    response->addHeader("Access-Control-Allow-Headers",
-        // Baseline header 4.
-        "Content-Type, Authorization, Accept, X-Requested-With");
-    response->addHeader(
-        "Access-Control-Max-Age", "7200");  // Baseline header 5.
-    return response;                        // Return the response.
+                        "Retry-After, Content-Length");  // Baseline header 3.
+    response
+        ->addHeader("Access-Control-Allow-Headers",
+                    // Baseline header 4.
+                    "Content-Type, Authorization, Accept, X-Requested-With");
+    response->addHeader("Access-Control-Max-Age",
+                        "7200");  // Baseline header 5.
+    return response;              // Return the response.
   };
 
   BENCHMARK("response creation only")
@@ -314,17 +330,17 @@ TEST_CASE("Benchmark: Cors::apply",
   auto countAllocations =
       [&](auto&& fn)  // Helper: counts average allocations per call of `fn`.
   {
-    g_allocationCount.store(
-        0, std::memory_order_relaxed);  // Reset the allocation counter.
-    g_countAllocations.store(
-        true, std::memory_order_relaxed);  // Turn counting on.
+    g_allocationCount
+        .store(0, std::memory_order_relaxed);  // Reset the allocation counter.
+    g_countAllocations.store(true,
+                             std::memory_order_relaxed);  // Turn counting on.
     for (int i = 0; i < 10000;
-        ++i)  // Repeat enough times to get a stable average.
+         ++i)  // Repeat enough times to get a stable average.
     {
       fn();  // Run the measured operation.
     }
-    g_countAllocations.store(
-        false, std::memory_order_relaxed);  // Turn counting off again.
+    g_countAllocations
+        .store(false, std::memory_order_relaxed);  // Turn counting off again.
     return g_allocationCount.load(std::memory_order_relaxed) /
            10000;  // Return allocations per single call.
   };
@@ -345,30 +361,33 @@ TEST_CASE("Benchmark: Cors::apply",
                 auto response =
                     drogon::HttpResponse::newHttpResponse();  // Fresh response
                                                               // per iteration.
-                Cors::apply(
-                    requestPreflight, response);  // Add preflight headers.
+                Cors::apply(requestPreflight,
+                            response);  // Add preflight headers.
               }));
-  WARN("old behaviour, five addHeader calls allocations/call: "
-       << countAllocations(  // Allocation baseline of the old approach.
-              [&]()
-              {
-                auto response =
-                    drogon::HttpResponse::newHttpResponse();  // Fresh response
-                                                              // per iteration.
-                response->addHeader(
-                    // Header 1.
-                    "Access-Control-Allow-Origin", "*");
-                response->addHeader("Access-Control-Allow-Methods",
-                    // Header 2.
-                    "GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS");
-                response->addHeader("Access-Control-Expose-Headers",
-                    "Retry-After, Content-Length");  // Header 3.
-                response->addHeader("Access-Control-Allow-Headers",
-                    "Content-Type, Authorization, Accept, "
-                    "X-Requested-With");  // Header 4.
-                response->addHeader(
-                    "Access-Control-Max-Age", "7200");  // Header 5.
-              }));
+  WARN(
+      "old behaviour, five addHeader calls allocations/call: "
+      << countAllocations(  // Allocation baseline of the old approach.
+             [&]()
+             {
+               auto response =
+                   drogon::HttpResponse::newHttpResponse();  // Fresh response
+                                                             // per iteration.
+               response->addHeader(
+                   // Header 1.
+                   "Access-Control-Allow-Origin",
+                   "*");
+               response
+                   ->addHeader("Access-Control-Allow-Methods",
+                               // Header 2.
+                               "GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS");
+               response->addHeader("Access-Control-Expose-Headers",
+                                   "Retry-After, Content-Length");  // Header 3.
+               response->addHeader("Access-Control-Allow-Headers",
+                                   "Content-Type, Authorization, Accept, "
+                                   "X-Requested-With");  // Header 4.
+               response->addHeader("Access-Control-Max-Age",
+                                   "7200");  // Header 5.
+             }));
   WARN("response creation only allocations/call: " << countAllocations(
            [&]()
            {

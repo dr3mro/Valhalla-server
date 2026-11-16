@@ -78,8 +78,8 @@ class PasswordCrypt
                     // call.
   PasswordCrypt(const PasswordCrypt&) =
       default;  // Copying is fine; there is no owned resource to duplicate.
-  PasswordCrypt(
-      PasswordCrypt&&) = default;  // Moving is fine for the same reason.
+  PasswordCrypt(PasswordCrypt&&) =
+      default;  // Moving is fine for the same reason.
   PasswordCrypt& operator=(const PasswordCrypt&) =
       default;  // Copy assignment is fine; no per-instance state to manage.
   PasswordCrypt& operator=(PasswordCrypt&&) =
@@ -121,7 +121,8 @@ class PasswordCrypt
    * @return `true` only if the password matches the hash; `false` on
    * mismatch, unknown algorithm, or malformed hash.
    */
-  [[nodiscard]] bool verifyPassword(const std::string& password,
+  [[nodiscard]] bool verifyPassword(
+      const std::string& password,
       const std::string& hash);  // [[nodiscard]] makes the compiler warn if a
                                  // caller ignores this true/false answer.
 };

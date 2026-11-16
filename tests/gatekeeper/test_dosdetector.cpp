@@ -68,8 +68,9 @@ namespace
    * Builds a DOSDetectorConfig with explicit, test-controlled values
    * (overrides whatever the environment produced in the constructor).
    */
-  Configurator::DOSDetectorConfig makeConfig(const uint32_t maxRequests = 10,
-      const uint32_t                                        maxFingerprints =
+  Configurator::DOSDetectorConfig makeConfig(
+      const uint32_t maxRequests = 10,
+      const uint32_t maxFingerprints =
           10,  // Thresholds: repeats of one fingerprint, then number of
                // distinct fingerprints.
       const std::chrono::seconds period = std::chrono::seconds{60},
@@ -113,19 +114,22 @@ namespace
    * Method and path are fixed; only the fields that influence a fingerprint
    * (ip, body and the hashed headers) vary between cases.
    */
-  DOSDetector::Request makeRequest(const std::string&    ip,
+  DOSDetector::Request makeRequest(
+      const std::string&                                 ip,
       const std::string&                                 body,
       const std::unordered_map<std::string, std::string> headers =
           {})  // Builds a request with a fixed method/path and
                // caller-supplied IP, body and headers.
   {
-    return DOSDetector::Request{.ip = ip,
-        .method                     = "GET",
-        .path                       = "/users/read",
-        .header_hash                = DOSDetector::hashHeaders(headers),
-        .body = body};  // Designated initializers make it obvious which
-                        // fingerprint field is which; headers are hashed
-                        // into one number.
+    return DOSDetector::Request{.ip     = ip,
+                                .method = "GET",
+                                .path   = "/users/read",
+                                .header_hash =
+                                    DOSDetector::hashHeaders(headers),
+                                .body = body};  // Designated initializers make
+                                                // it obvious which fingerprint
+                                                // field is which; headers are
+                                                // hashed into one number.
   }
 
   /**
@@ -142,33 +146,40 @@ namespace
                                       // store views into these strings.
 
     explicit DetectorFixture(Configurator::DOSDetectorConfig config)
-        : detector(std::make_unique<DOSDetector>(
-              std::move(config), clock.callable()))
+        : detector(std::make_unique<DOSDetector>(std::move(config),
+                                                 clock.callable()))
     {
     }  // Build the detector with the fake clock's callable; 'explicit'
        // prevents an accidental implicit conversion from config.
 
-    DOSDetector::Status send(const std::string& ip,
+    DOSDetector::Status send(
+        const std::string& ip,
         const std::string& body)  // Sends a request with no extra headers
                                   // and returns the detector's verdict.
     {
       bodies.push_back(body);  // body is captured as string_view -- keep
                                // the string alive in the vector.
-      return detector->is_dos_attack(makeRequest(ip,
-          bodies.back()));  // Pass the request to the detector and return
-                            // ALLOWED / RATELIMITED / BANNED / etc.
+      return detector->is_dos_attack(
+          makeRequest(ip,
+                      bodies.back()));  // Pass the request to the detector and
+                                        // return ALLOWED / RATELIMITED / BANNED
+                                        // / etc.
     }
 
-    DOSDetector::Status send(const std::string& ip, const std::string& body,
+    DOSDetector::Status send(
+        const std::string& ip,
+        const std::string& body,
         const std::unordered_map<std::string, std::string>&
             headers)  // Overload that also varies the headers, which change
                       // the fingerprint.
     {
       bodies.push_back(body);  // body is captured as string_view -- keep
                                // the string alive in the vector.
-      return detector->is_dos_attack(makeRequest(ip, bodies.back(),
-          headers));  // Same as above but with a header hash in the
-                      // fingerprint.
+      return detector->is_dos_attack(
+          makeRequest(ip,
+                      bodies.back(),
+                      headers));  // Same as above but with a header hash in the
+                                  // fingerprint.
     }
   };
 
@@ -179,14 +190,18 @@ namespace
 }  // namespace
 
 TEST_CASE("DoSDetector anchored whitelist patterns do not over-match",
-    "[gatekeeper][dos]")  // Registers the test that a whitelist entry must
-                          // match exactly, not as a broad prefix.
+          "[gatekeeper][dos]")  // Registers the test that a whitelist entry
+                                // must match exactly, not as a broad prefix.
 {
-  DetectorFixture fixture(makeConfig(/*maxRequests*/ 10,
-      /*maxFingerprints*/ 100, std::chrono::seconds{60},
-      std::chrono::seconds{30}, std::chrono::seconds{3600}, /*whitelist*/
-      {"172.17.0.1"}));  // Configure one whitelisted IP with generous
-                         // thresholds so nothing else can trigger a ban.
+  DetectorFixture fixture(
+      makeConfig(/*maxRequests*/ 10,
+                 /*maxFingerprints*/ 100,
+                 std::chrono::seconds{60},
+                 std::chrono::seconds{30},
+                 std::chrono::seconds{3600}, /*whitelist*/
+                 {"172.17.0.1"}));  // Configure one whitelisted IP with
+                                    // generous thresholds so nothing else can
+                                    // trigger a ban.
 
   REQUIRE(fixture.send("172.17.0.1", "body") ==
           DOSDetector::Status::WHITELISTED);  // Prove the exact IP in the
@@ -199,12 +214,13 @@ TEST_CASE("DoSDetector anchored whitelist patterns do not over-match",
 }
 
 TEST_CASE("DoSDetector allows requests under the repeat limit",
-    "[gatekeeper][dos]")  // Registers the test for the normal, below-threshold
-                          // case.
+          "[gatekeeper][dos]")  // Registers the test for the normal,
+                                // below-threshold case.
 {
-  DetectorFixture fixture(makeConfig(/*maxRequests*/ 5, /*maxFingerprints*/
-      100));  // A ban needs more than 5 repeats; the other threshold is high
-              // enough not to interfere.
+  DetectorFixture fixture(
+      makeConfig(/*maxRequests*/ 5, /*maxFingerprints*/
+                 100));  // A ban needs more than 5 repeats; the other threshold
+                         // is high enough not to interfere.
 
   for (int i = 1; i <= 5; ++i)  // Send exactly the allowed number of repeats;
                                 // the loop stops after the 5th.
@@ -222,9 +238,12 @@ TEST_CASE(
     "MAX_REQUESTS times",
     "[gatekeeper][dos]")  // Registers the test for the repeat-count ban.
 {
-  DetectorFixture fixture(makeConfig(/*maxRequests*/ 5, /*maxFingerprints*/ 100,
-      std::chrono::seconds{60}, std::chrono::seconds{30},
-      std::chrono::seconds{30}));  // Ban lasts 30 s; window is 60 s.
+  DetectorFixture fixture(
+      makeConfig(/*maxRequests*/ 5,
+                 /*maxFingerprints*/ 100,
+                 std::chrono::seconds{60},
+                 std::chrono::seconds{30},
+                 std::chrono::seconds{30}));  // Ban lasts 30 s; window is 60 s.
 
   for (int i = 0; i < 5; ++i)  // Send the five requests that are still allowed;
                                // stop before the threshold is crossed.
@@ -245,22 +264,24 @@ TEST_CASE(
 }
 
 TEST_CASE("DoSDetector ban expires after BAN_DURATION",
-    "[gatekeeper][dos]")  // Registers the test for ban expiry, using two
-                          // sections for different elapsed times.
+          "[gatekeeper][dos]")  // Registers the test for ban expiry, using two
+                                // sections for different elapsed times.
 {
-  DetectorFixture fixture(makeConfig(/*maxRequests*/ 2,
-      /*maxFingerprints*/ 100, std::chrono::seconds{60},
-      std::chrono::seconds{30},
-      /*banDuration*/
-      std::chrono::seconds{
-          30}));  // A short 30 s ban makes the two time choices meaningful.
+  DetectorFixture fixture(
+      makeConfig(/*maxRequests*/ 2,
+                 /*maxFingerprints*/ 100,
+                 std::chrono::seconds{60},
+                 std::chrono::seconds{30},
+                 /*banDuration*/
+                 std::chrono::seconds{30}));  // A short 30 s ban makes the two
+                                              // time choices meaningful.
 
   // Trigger a ban (3 identical requests > MAX_REQUESTS=2).
   (void)fixture.send(IP,
-      "body");  // First request; the cast discards the status because only
-                // the final one matters here.
-  (void)fixture.send(
-      IP, "body");  // Second request, still building up the repeat count.
+                     "body");  // First request; the cast discards the status
+                               // because only the final one matters here.
+  (void)fixture
+      .send(IP, "body");  // Second request, still building up the repeat count.
   REQUIRE(fixture.send(IP, "body") ==
           DOSDetector::Status::BANNED);  // Third identical request crosses
                                          // the limit and bans the IP.
@@ -294,10 +315,13 @@ TEST_CASE(
     "[gatekeeper][dos]")  // Registers the test for the distinct-fingerprint
                           // (rate-limit) rule.
 {
-  DetectorFixture fixture(makeConfig(/*maxRequests*/ 100, /*maxFingerprints*/ 2,
-      std::chrono::seconds{60}, std::chrono::seconds{30},
-      std::chrono::seconds{
-          3600}));  // A high repeat limit isolates the fingerprint rule.
+  DetectorFixture fixture(
+      makeConfig(/*maxRequests*/ 100,
+                 /*maxFingerprints*/ 2,
+                 std::chrono::seconds{60},
+                 std::chrono::seconds{30},
+                 std::chrono::seconds{3600}));  // A high repeat limit isolates
+                                                // the fingerprint rule.
 
   REQUIRE(fixture.send(IP, "body-a") ==
           DOSDetector::Status::ALLOWED);  // First distinct fingerprint is fine.
@@ -321,9 +345,10 @@ TEST_CASE(
     "[gatekeeper][dos]")  // Registers the test showing which request fields
                           // form a fingerprint.
 {
-  DetectorFixture fixture(makeConfig(/*maxRequests*/ 100, /*maxFingerprints*/
-      4));  // Four distinct fingerprints allowed, so none of these four
-            // should trip the limit.
+  DetectorFixture fixture(
+      makeConfig(/*maxRequests*/ 100, /*maxFingerprints*/
+                 4));  // Four distinct fingerprints allowed, so none of these
+                       // four should trip the limit.
 
   REQUIRE(fixture.send(IP, "body-a") ==
           DOSDetector::Status::ALLOWED);  // Body a contributes one fingerprint.
@@ -346,16 +371,19 @@ TEST_CASE(
                           // between the rate-limit timer and the sliding
                           // window.
 {
-  DetectorFixture fixture(makeConfig(/*maxRequests*/ 100,
-      /*maxFingerprints*/ 2, std::chrono::seconds{60},
-      /*rlDuration*/ std::chrono::seconds{10},
-      std::chrono::seconds{3600}));  // 2 fingerprints allowed, rate limit
-                                     // lasts 10 s, window is 60 s.
+  DetectorFixture fixture(
+      makeConfig(/*maxRequests*/ 100,
+                 /*maxFingerprints*/ 2,
+                 std::chrono::seconds{60},
+                 /*rlDuration*/ std::chrono::seconds{10},
+                 std::chrono::seconds{
+                     3600}));  // 2 fingerprints allowed, rate limit
+                               // lasts 10 s, window is 60 s.
 
-  (void)fixture.send(
-      IP, "a");  // First distinct fingerprint; result unimportant here.
-  (void)fixture.send(
-      IP, "b");  // Second distinct fingerprint fills the allowance.
+  (void)fixture
+      .send(IP, "a");  // First distinct fingerprint; result unimportant here.
+  (void)fixture.send(IP,
+                     "b");  // Second distinct fingerprint fills the allowance.
   REQUIRE(
       fixture.send(IP, "c") ==
       DOSDetector::Status::RATELIMITED);  // A third distinct body crosses
@@ -388,14 +416,17 @@ TEST_CASE(
 {
   SECTION("while the ban is still active, the IP stays banned")
   {
-    DetectorFixture fixture(makeConfig(/*maxRequests*/ 3,
-        /*maxFingerprints*/ 100,
-        /*period*/ std::chrono::seconds{30}, std::chrono::seconds{30},
-        /*banDuration*/
-        std::chrono::seconds{3600}));  // A 30 s window but a long 1-hour ban.
+    DetectorFixture fixture(
+        makeConfig(/*maxRequests*/ 3,
+                   /*maxFingerprints*/ 100,
+                   /*period*/ std::chrono::seconds{30},
+                   std::chrono::seconds{30},
+                   /*banDuration*/
+                   std::chrono::seconds{
+                       3600}));  // A 30 s window but a long 1-hour ban.
 
     for (int i = 0; i < 3;
-        ++i)  // Build up exactly the allowed number of repeats.
+         ++i)  // Build up exactly the allowed number of repeats.
     {
       REQUIRE(fixture.send(IP, "same-body") ==
               DOSDetector::Status::ALLOWED);  // Each of the first three
@@ -417,18 +448,20 @@ TEST_CASE(
   SECTION("after both ban and window expired the request is allowed again")
   {
     DetectorFixture fixture(
-        makeConfig(/*maxRequests*/ 3, /*maxFingerprints*/ 100,
-            /*period*/ std::chrono::seconds{30}, std::chrono::seconds{30},
-            /*banDuration*/
-            std::chrono::seconds{
-                30}));  // Here both the window and the ban last 30 s.
+        makeConfig(/*maxRequests*/ 3,
+                   /*maxFingerprints*/ 100,
+                   /*period*/ std::chrono::seconds{30},
+                   std::chrono::seconds{30},
+                   /*banDuration*/
+                   std::chrono::seconds{
+                       30}));  // Here both the window and the ban last 30 s.
 
     for (int i = 0; i < 3;
-        ++i)  // Build up the repeat count without checking each step.
+         ++i)  // Build up the repeat count without checking each step.
     {
       (void)fixture.send(IP,
-          "same-body");  // Send a repeat; the ban check below is the one
-                         // that matters.
+                         "same-body");  // Send a repeat; the ban check below is
+                                        // the one that matters.
     }
     REQUIRE(fixture.send(IP, "same-body") ==
             DOSDetector::Status::BANNED);  // Fourth repeat bans the IP.
@@ -444,13 +477,14 @@ TEST_CASE(
 }
 
 TEST_CASE("DoSDetector whitelists IPs by exact match and regex",
-    "[gatekeeper][dos]")  // Registers the test for the two whitelist forms:
-                          // literal and regular-expression.
+          "[gatekeeper][dos]")  // Registers the test for the two whitelist
+                                // forms: literal and regular-expression.
 {
-  auto config      = makeConfig();  // Start from default thresholds.
-  config.whitelist = {"192.168.1.5",
-      "re:^10\\.0\\..*"};  // One exact IP and one regex (the "re:" prefix
-                           // marks a regex pattern).
+  auto config = makeConfig();  // Start from default thresholds.
+  config
+      .whitelist = {"192.168.1.5",
+                    "re:^10\\.0\\..*"};  // One exact IP and one regex (the
+                                         // "re:" prefix marks a regex pattern).
   DetectorFixture fixture(std::move(
       config));  // Build the detector; moving avoids copying the config.
 
@@ -470,7 +504,7 @@ TEST_CASE("DoSDetector whitelists IPs by exact match and regex",
 }
 
 TEST_CASE("DoSDetector blacklists IPs before processing",
-    "[gatekeeper][dos]")  // Registers the test for outright blocking.
+          "[gatekeeper][dos]")  // Registers the test for outright blocking.
 {
   auto config      = makeConfig();      // Start from default thresholds.
   config.blacklist = {"203.0.113.99"};  // Put one dummy IP on the blacklist.
@@ -488,8 +522,8 @@ TEST_CASE("DoSDetector blacklists IPs before processing",
 }
 
 TEST_CASE("DoSDetector whitelist wins over blacklist",
-    "[gatekeeper][dos]")  // Registers the test for precedence when an IP is on
-                          // both lists.
+          "[gatekeeper][dos]")  // Registers the test for precedence when an IP
+                                // is on both lists.
 {
   auto config      = makeConfig();      // Start from default thresholds.
   config.whitelist = {"203.0.113.50"};  // Add the IP to the allow list...
@@ -508,9 +542,10 @@ TEST_CASE(
     "[gatekeeper][dos]")  // Registers the robustness test for bad
                           // configuration.
 {
-  auto config      = makeConfig();  // Start from default thresholds.
-  config.whitelist = {"[invalid-regex",
-      "203.0.113.70"};  // One malformed regex and one valid literal entry.
+  auto config = makeConfig();  // Start from default thresholds.
+  config.whitelist =
+      {"[invalid-regex",
+       "203.0.113.70"};  // One malformed regex and one valid literal entry.
   DetectorFixture fixture(std::move(
       config));  // Building the detector must survive the bad pattern.
 
@@ -523,17 +558,18 @@ TEST_CASE(
 }
 
 TEST_CASE("DoSDetector handles concurrent callers without deadlock",
-    "[gatekeeper][dos][concurrency]")  // Registers the test that the detector
-                                       // is safe when many threads call it at
-                                       // once.
+          "[gatekeeper][dos][concurrency]")  // Registers the test that the
+                                             // detector is safe when many
+                                             // threads call it at once.
 {
-  DetectorFixture fixture(makeConfig(/*maxRequests*/ 100000,
-      /*maxFingerprints*/
-      100000));  // Very high limits so nothing is ever blocked; we are
-                 // probing for races and deadlocks, not policy.
+  DetectorFixture fixture(
+      makeConfig(/*maxRequests*/ 100000,
+                 /*maxFingerprints*/
+                 100000));  // Very high limits so nothing is ever blocked; we
+                            // are probing for races and deadlocks, not policy.
 
-  constexpr int   kThreads = 4;  // Number of simultaneous callers.
-  constexpr int   kRequests =
+  constexpr int kThreads = 4;  // Number of simultaneous callers.
+  constexpr int kRequests =
       25;  // Requests each caller sends, giving a total of 100.
 
   // Pre-populate all request bodies before spawning threads;
@@ -543,7 +579,7 @@ TEST_CASE("DoSDetector handles concurrent callers without deadlock",
       kThreads);  // One private list of strings per thread, so no shared
                   // writes while threads run.
   for (int t = 0; t < kThreads;
-      ++t)  // Loop over threads, building each thread's strings in advance.
+       ++t)  // Loop over threads, building each thread's strings in advance.
     for (int i = 0; i < kRequests; ++i)
       threadBodies[t].push_back(
           "body-" + std::to_string(t) + "-" +
@@ -558,17 +594,18 @@ TEST_CASE("DoSDetector handles concurrent callers without deadlock",
                                         // a status we did not expect.
 
   for (int t = 0; t < kThreads;
-      ++t)  // Start one worker thread per entry in threadBodies.
+       ++t)  // Start one worker thread per entry in threadBodies.
   {
     workers.emplace_back(
         [&fixture, &allowedCount, &unexpected, &threadBodies, t]()
         {
           for (int i = 0; i < kRequests;
-              ++i)  // Each worker sends its own pre-built requests.
+               ++i)  // Each worker sends its own pre-built requests.
           {
-            const auto req    = makeRequest("203.0.113.77",
-                threadBodies[t][i]);     // Build a request from this
-                                         // thread's own string.
+            const auto req =
+                makeRequest("203.0.113.77",
+                            threadBodies[t][i]);  // Build a request from this
+                                                  // thread's own string.
             const auto status = fixture.detector->is_dos_attack(
                 req);  // Call the detector concurrently; this must not
                        // crash or deadlock.
@@ -602,20 +639,23 @@ TEST_CASE("DoSDetector handles concurrent callers without deadlock",
 }
 
 TEST_CASE("DoSDetector keeps working after the configured cleanup never fires",
-    "[gatekeeper][dos]")  // Registers the test that lazy expiry works without
-                          // the background cleaner.
+          "[gatekeeper][dos]")  // Registers the test that lazy expiry works
+                                // without the background cleaner.
 {
   // clean_freq is 3600s (real time) in these fixtures: the background
   // cleaner does not run during a test, which must not affect correctness
   // of the per-request paths (they trim windows and expire blocks lazily).
-  DetectorFixture fixture(makeConfig(/*maxRequests*/ 2, /*maxFingerprints*/ 2,
-      std::chrono::seconds{60}, std::chrono::seconds{30},
-      std::chrono::seconds{
-          3600}));  // 2 fingerprints allowed, 60 s window, 30 s rate limit.
+  DetectorFixture fixture(
+      makeConfig(/*maxRequests*/ 2,
+                 /*maxFingerprints*/ 2,
+                 std::chrono::seconds{60},
+                 std::chrono::seconds{30},
+                 std::chrono::seconds{3600}));  // 2 fingerprints allowed, 60 s
+                                                // window, 30 s rate limit.
 
   (void)fixture.send(IP, "a");  // First distinct fingerprint.
-  (void)fixture.send(
-      IP, "b");  // Second distinct fingerprint fills the allowance.
+  (void)fixture.send(IP,
+                     "b");  // Second distinct fingerprint fills the allowance.
   REQUIRE(fixture.send(IP, "c") ==
           DOSDetector::Status::RATELIMITED);  // Third distinct body triggers
                                               // the rate limit.
@@ -639,11 +679,14 @@ TEST_CASE(
 {
   // "MAX_REQUESTS=2 bans after 3 identical requests" — rate-limit would be
   // the documented expectation; ban is the actual result.
-  DetectorFixture fixture(makeConfig(/*maxRequests*/ 2,
-      /*maxFingerprints*/ 100, std::chrono::seconds{60},
-      std::chrono::seconds{30},
-      std::chrono::seconds{
-          3600}));  // High fingerprint limit isolates the repeat-count rule.
+  DetectorFixture fixture(
+      makeConfig(/*maxRequests*/ 2,
+                 /*maxFingerprints*/ 100,
+                 std::chrono::seconds{60},
+                 std::chrono::seconds{30},
+                 std::chrono::seconds{
+                     3600}));  // High fingerprint limit isolates the
+                               // repeat-count rule.
 
   REQUIRE(fixture.send(IP, "same-body") ==
           DOSDetector::Status::ALLOWED);  // First identical request is allowed.

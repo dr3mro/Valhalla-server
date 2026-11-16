@@ -71,18 +71,18 @@ class Message  // A class used only through static functions; instances hold no
   /**
    * @brief Move construction; the type is stateless.
    */
-  Message(
-      Message&& other) = default;  // Moving an object with no data is harmless.
+  Message(Message&& other) =
+      default;  // Moving an object with no data is harmless.
   /**
    * @brief Copy assignment; the type is stateless.
    */
-  Message& operator=(
-      const Message& other) = default;  // Assignment copies nothing.
+  Message& operator=(const Message& other) =
+      default;  // Assignment copies nothing.
   /**
    * @brief Move assignment; the type is stateless.
    */
-  Message& operator=(
-      Message&& other) = default;  // Move assignment moves nothing.
+  Message& operator=(Message&& other) =
+      default;  // Move assignment moves nothing.
 
   /**
    * @brief Logs a message at debug severity.
@@ -100,7 +100,8 @@ class Message  // A class used only through static functions; instances hold no
    * @brief Logs a message at warning severity.
    * @param[in] status_message Text to log.
    */
-  static void WarningMessage(const std::string&
+  static void WarningMessage(
+      const std::string&
           status_message);  // Something unexpected but not fatal.
   /**
    * @brief Logs a message at error severity.
@@ -112,7 +113,8 @@ class Message  // A class used only through static functions; instances hold no
    * @brief Logs a message at fatal severity (used for critical errors).
    * @param[in] status_message Text to log.
    */
-  static void CriticalMessage(const std::string&
+  static void CriticalMessage(
+      const std::string&
           status_message);  // The most severe level, for critical failures.
   /**
    * @brief Prints a configuration notice directly to stdout.
@@ -142,7 +144,8 @@ class Message  // A class used only through static functions; instances hold no
    * @param[in] _status_message Text to log, with newlines flattened.
    * @param[in] _level Severity of the record.
    */
-  static void        MessageImpl(const std::string& _status_message,
+  static void MessageImpl(
+      const std::string& _status_message,
       trantor::Logger::LogLevel
           _level);  // Shared implementation for the five severity helpers.
   /**
@@ -150,7 +153,8 @@ class Message  // A class used only through static functions; instances hold no
    * @param[in] _status_message Text to print, with newlines flattened.
    * @param[in] _type Tag shown in brackets (e.g. "config", "init").
    */
-  static void        MessageImpl(const std::string& _status_message,
+  static void MessageImpl(
+      const std::string& _status_message,
       const std::string&
           _type);  // Shared implementation for the two startup notices.
   /**

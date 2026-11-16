@@ -75,7 +75,8 @@
  * @note get() treats an expired entry as a miss but does not erase it; physical
  *       removal is left to the cleaner. remove() does not check expiry.
  */
-template <typename T,
+template <
+    typename T,
     typename ClockT =
         std::chrono::steady_clock>  // T is the stored value type; ClockT can be
                                     // swapped in tests to control time.
@@ -107,9 +108,10 @@ class MemCache                      // A thread-safe, expiring,
         stopCleaner_(false)  // Initialises the limits and the "keep running"
                              // flag; the list/map start empty.
   {
-    cleanerThread_ = std::thread(&MemCache::cleanExpiredEntries,
-        this);  // Start the background cleaner, passing this object so it
-                // can reach the state.
+    cleanerThread_ =
+        std::thread(&MemCache::cleanExpiredEntries,
+                    this);  // Start the background cleaner, passing this object
+                            // so it can reach the state.
   }
   MemCache() = delete;  // No default cache: capacity and TTL must be provided
                         // explicitly.
@@ -160,8 +162,9 @@ class MemCache                      // A thread-safe, expiring,
           std::move(other.cacheList_);  // Move the entry list into this object.
     }
 
-    cleanerThread_ = std::thread(&MemCache::cleanExpiredEntries,
-        this);  // Start a fresh cleaner bound to the new object.
+    cleanerThread_ =
+        std::thread(&MemCache::cleanExpiredEntries,
+                    this);  // Start a fresh cleaner bound to the new object.
   }
 
   /**
@@ -220,8 +223,9 @@ class MemCache                      // A thread-safe, expiring,
                                // will run here.
       }
 
-      cleanerThread_ = std::thread(&MemCache::cleanExpiredEntries,
-          this);  // Start a fresh cleaner for this object.
+      cleanerThread_ =
+          std::thread(&MemCache::cleanExpiredEntries,
+                      this);  // Start a fresh cleaner for this object.
     }
     return *this;  // Return this object so assignments can be chained.
   }
@@ -256,16 +260,18 @@ class MemCache                      // A thread-safe, expiring,
    *          capacity is already reached the least recently used entry is
    *          evicted first. Safe to call concurrently with other operations.
    */
-  void insert(const std::string& key, const T& value,
+  void insert(
+      const std::string&   key,
+      const T&             value,
       std::chrono::seconds ttl =
           std::chrono::seconds::zero())  // Adds or refreshes an entry; a zero
                                          // ttl means "use the default".
   {
     TimePoint expiration =
         Clock::now() + (ttl == std::chrono::seconds::zero()
-                               ? defaultTTL_
-                               : ttl);  // Compute when the entry dies: now
-                                        // plus the chosen TTL.
+                            ? defaultTTL_
+                            : ttl);  // Compute when the entry dies: now
+                                     // plus the chosen TTL.
     std::lock_guard<std::mutex> lock(
         mutex_);  // Lock for the whole operation so state stays consistent.
 
@@ -288,9 +294,10 @@ class MemCache                      // A thread-safe, expiring,
         evictOldest();  // Remove the least recently used entry.
       }
 
-      cacheList_.emplace_front(key, value,
-          expiration);  // Create the new entry at the front (most recent)
-                        // of the list.
+      cacheList_.emplace_front(key,
+                               value,
+                               expiration);  // Create the new entry at the
+                                             // front (most recent) of the list.
       auto begin_it  = cacheList_.begin();  // This is the correct iterator type
       cacheMap_[key] = begin_it;  // Assign the iterator, not the entry itself
     }
@@ -331,8 +338,8 @@ class MemCache                      // A thread-safe, expiring,
    * @note Expiry is not checked here: an expired entry not yet cleaned is
    * still removed and reported as present.
    */
-  bool remove(const std::string&
-          key)  // Deletes an entry by key, reporting whether it existed.
+  bool remove(const std::string& key)  // Deletes an entry by key, reporting
+                                       // whether it existed.
   {
     std::lock_guard<std::mutex> lock(
         mutex_);                      // Lock for the lookup and both erases.
@@ -452,7 +459,7 @@ class MemCache                      // A thread-safe, expiring,
    * @brief Wakes the cleaner early on shutdown or move.
    */
   std::condition_variable
-       cleanerCv_;  // Lets the cleaner sleep until woken or a timeout passes.
+      cleanerCv_;  // Lets the cleaner sleep until woken or a timeout passes.
   /**
    * @brief Set under mutex_ to request cleaner termination.
    */
@@ -467,7 +474,7 @@ class MemCache                      // A thread-safe, expiring,
    * @brief Moves an entry to the most-recently-used end of the list.
    * @param[in,out] item Iterator to the entry; the caller must hold mutex_.
    */
-  void        moveToFront(typename std::list<CacheEntry>::iterator& item)
+  void moveToFront(typename std::list<CacheEntry>::iterator& item)
   {
     cacheList_.splice(cacheList_.begin(), cacheList_, item);
   }  // splice relinks the node without copying; the caller holds the lock.
@@ -500,12 +507,13 @@ class MemCache                      // A thread-safe, expiring,
         std::unique_lock<std::mutex> lock(
             mutex_);  // Lock with a unique_lock, which the condition
                       // variable can release while waiting.
-        cleanerCv_.wait_for(lock, std::chrono::seconds(1),
-            [this]
-            {
-              return stopCleaner_;
-            });  // Sleep up to one second, waking early if notified and
-                 // the predicate is true.
+        cleanerCv_.wait_for(lock,
+                            std::chrono::seconds(1),
+                            [this]
+                            {
+                              return stopCleaner_;
+                            });  // Sleep up to one second, waking early if
+                                 // notified and the predicate is true.
 
         if (stopCleaner_)  // Check whether shutdown was requested.
         {

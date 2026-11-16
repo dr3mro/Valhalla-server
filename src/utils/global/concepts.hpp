@@ -57,8 +57,9 @@ class Appointment;  // Forward declaration of the Appointment domain class (a
  * @see Client
  */
 template <typename T>  // T is the type being checked when a template is used.
-concept Client_t = std::is_base_of_v<api::v2::Client,
-    T>;  // True only if T is Client or inherits from it.
+concept Client_t =
+    std::is_base_of_v<api::v2::Client,
+                      T>;  // True only if T is Client or inherits from it.
 
 /**
  * @concept Service_t
@@ -67,8 +68,9 @@ concept Client_t = std::is_base_of_v<api::v2::Client,
  * @see Service
  */
 template <typename T>  // T is the type being checked.
-concept Service_t = std::is_base_of_v<Service,
-    T>;  // True only if T is Service or a subclass of it.
+concept Service_t =
+    std::is_base_of_v<Service,
+                      T>;  // True only if T is Service or a subclass of it.
 
 /**
  * @concept Case_t
@@ -87,5 +89,6 @@ concept Case_t =
  * @see Appointment
  */
 template <typename T>  // T is the type being checked.
-concept Appointment_t = std::is_base_of_v<Appointment,
-    T>;  // True only if T is Appointment or a subclass of it.
+concept Appointment_t =
+    std::is_base_of_v<Appointment,
+                      T>;  // True only if T is Appointment or a subclass of it.

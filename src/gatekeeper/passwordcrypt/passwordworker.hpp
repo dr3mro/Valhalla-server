@@ -69,7 +69,8 @@ class PasswordWorker
    * @param[in] workers Number of worker threads; zero enables inline mode.
    * @param[in] queue_max Maximum number of queued tasks across all workers.
    */
-  PasswordWorker(std::size_t workers,
+  PasswordWorker(
+      std::size_t workers,
       std::size_t queue_max);  // Explicit sizes, mainly used by tests.
 };
 
@@ -88,12 +89,15 @@ class PasswordWorker
  * @param[in,out] body Work to run on the password worker.
  */
 template <typename Body>
-void runOnPasswordWorker(PasswordWorker& worker, CALLBACK_&& callback,
-    Body&& body)  // Submits a password job to the pool.
+void runOnPasswordWorker(PasswordWorker& worker,
+                         CALLBACK_&&     callback,
+                         Body&& body)  // Submits a password job to the pool.
 {
   // Hand off to the generic helper with a password-specific "busy" message.
   // std::forward keeps the job's value category intact.
-  runOnExecutor(worker, std::move(callback),
-      "Too many password operations in progress, try again shortly.",
-      std::forward<Body>(body));  // The real work of queueing and replying.
+  runOnExecutor(worker,
+                std::move(callback),
+                "Too many password operations in progress, try again shortly.",
+                std::forward<Body>(
+                    body));  // The real work of queueing and replying.
 }

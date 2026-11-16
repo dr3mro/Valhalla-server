@@ -77,8 +77,8 @@ class Appointment : public Entity  // Inherits CRUD; adds permission helpers
   template <typename T>
   explicit Appointment(const T& _data, const std::string& _tablename)
       : Entity(_data,
-            _tablename)  // "explicit" requires an exact call, avoiding
-                         // accidental implicit conversions.
+               _tablename)  // "explicit" requires an exact call, avoiding
+                            // accidental implicit conversions.
   {
   }
 
@@ -121,9 +121,9 @@ class Appointment : public Entity  // Inherits CRUD; adds permission helpers
         {}
         WHERE
         id = {};)",
-        service_name,
-        service_id);  // Fill in the organisation table name and the service
-                      // id.
+                       service_name,
+                       service_id);  // Fill in the organisation table name and
+                                     // the service id.
   }
 
   /**
@@ -140,7 +140,8 @@ class Appointment : public Entity  // Inherits CRUD; adds permission helpers
    * fields.
    */
   static std::optional<std::string> getPermissionsQueryForReadImpl(
-      const std::string& org_name, const std::string& appointments_table,
+      const std::string& org_name,
+      const std::string& appointments_table,
       std::uint64_t appointment_id)  // Finds which service owns an appointment,
                                      // then its permission fields.
   {
@@ -166,8 +167,11 @@ class Appointment : public Entity  // Inherits CRUD; adds permission helpers
         JOIN {} a ON a.{} = s.id
         WHERE
         a.id = {};)",
-        org_name, appointments_table, fk_col,
-        appointment_id);  // Fill in the organisation table, appointment
-                          // table, foreign-key column and appointment id.
+                       org_name,
+                       appointments_table,
+                       fk_col,
+                       appointment_id);  // Fill in the organisation table,
+                                         // appointment table, foreign-key
+                                         // column and appointment id.
   }
 };

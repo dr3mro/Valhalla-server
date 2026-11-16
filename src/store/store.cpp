@@ -46,7 +46,7 @@
  * Type-keyed singleton registry shared by every translation unit.
  */
 std::unordered_map<std::type_index, std::shared_ptr<void>>
-           Store::inventory;  // empty at start; entries are added on first use
+    Store::inventory;  // empty at start; entries are added on first use
 /**
  * Serialises access to the registry.
  */

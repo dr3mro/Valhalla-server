@@ -102,8 +102,8 @@ class ThreadSafeQueue  // A reusable wrapper that adds
    * @brief Reports whether the queue currently has no elements.
    */
   // Check if the queue is empty
-  bool   empty() const;  // Returns a snapshot of whether the queue has no
-                         // elements right now.
+  bool empty() const;  // Returns a snapshot of whether the queue has no
+                       // elements right now.
 
   /**
    * @brief Returns the current number of elements.
@@ -115,8 +115,8 @@ class ThreadSafeQueue  // A reusable wrapper that adds
    * @brief Discards all elements currently in the queue.
    */
   // Clear the queue
-  void   clear();  // Removes every element that is in the queue at the moment
-                   // of the call.
+  void clear();  // Removes every element that is in the queue at the moment
+                 // of the call.
 
   /**
    * @brief Constructs an element in place at the back of the queue.
@@ -124,12 +124,12 @@ class ThreadSafeQueue  // A reusable wrapper that adds
    * @param[in,out] args Arguments forwarded to T's constructor.
    */
   // emplace to the queue
-  template <typename... Args>  // A variadic template accepts any number and
-                               // types of constructor arguments.
-  void             emplace(Args&&... args);  // Builds the element
-                                             // directly in the queue,
-                                             // avoiding an extra copy
-                                             // or move.
+  template <typename... Args>    // A variadic template accepts any number and
+                                 // types of constructor arguments.
+  void emplace(Args&&... args);  // Builds the element
+                                 // directly in the queue,
+                                 // avoiding an extra copy
+                                 // or move.
 
   /**
    * @brief Returns a copy of the front element without removing it.
@@ -149,8 +149,8 @@ class ThreadSafeQueue  // A reusable wrapper that adds
   /**
    * @brief The underlying FIFO container.
    */
-  std::queue<T>      queue_;  // The actual first-in-first-out container holding
-                              // the elements.
+  std::queue<T> queue_;  // The actual first-in-first-out container holding
+                         // the elements.
 };
 
 template <typename T>  // Definition of the copy-push overload for the template.
@@ -219,8 +219,8 @@ void ThreadSafeQueue<T>::clear()  // Removes all stored elements.
   // Swapping with a fresh queue destroys all elements after the swap.
   std::queue<T> empty;  // A brand-new empty queue used as the swap partner.
   std::swap(queue_,
-      empty);  // Exchange contents; when empty goes out of scope it destroys
-               // the old elements.
+            empty);  // Exchange contents; when empty goes out of scope it
+                     // destroys the old elements.
 }
 
 template <

@@ -75,7 +75,8 @@ namespace api  // Top-level API namespace.
        * @note Failure paths (missing claims, signing exception) are
        * covered by tests/gatekeeper/test_tokenmanager.cpp.
        */
-      bool generateToken(std::optional<Types::ClientLoginData>&
+      bool generateToken(
+          std::optional<Types::ClientLoginData>&
               clientLoginData);  // Signs a new token and stores it in
                                  // clientLoginData; true on success.
 
@@ -88,7 +89,8 @@ namespace api  // Top-level API namespace.
        * @return True only for a decodable, cryptographically valid,
        * current token.
        */
-      bool isTokenValid(std::optional<Types::ClientLoginData>& clientLoginData,
+      bool isTokenValid(
+          std::optional<Types::ClientLoginData>& clientLoginData,
           std::string& message);  // Decodes and fully validates a token; true
                                   // only when it is current and genuine.
 

@@ -94,7 +94,7 @@ static Result capture(auto fn)  // Converts a callback-style controller call
 
 // Create refuses a body it cannot parse before building or storing a service.
 TEST_CASE("ServiceController<Clinics>::Create rejects malformed JSON",
-    "[controllers][service]")
+          "[controllers][service]")
 {
   ServiceController<Clinics>
        ctrl;  // A fresh controller for Clinics; it holds no per-call state.
@@ -111,7 +111,7 @@ TEST_CASE("ServiceController<Clinics>::Create rejects malformed JSON",
 
 // Read rejects an unparsable body before any lookup.
 TEST_CASE("ServiceController<Clinics>::Read rejects malformed JSON",
-    "[controllers][service]")
+          "[controllers][service]")
 {
   ServiceController<Clinics> ctrl;  // A fresh Clinics controller.
   auto                       r = capture(
@@ -119,21 +119,22 @@ TEST_CASE("ServiceController<Clinics>::Read rejects malformed JSON",
       {
         ctrl.Read(std::move(cb), Requester(1, "owners"), "{{");
       });  // Invalid JSON body.
-  CHECK(
-      r.status == api::v2::Http::Status::BAD_REQUEST);  // Proves Read validates
-                                                        // JSON first.
+  CHECK(r.status ==
+        api::v2::Http::Status::BAD_REQUEST);  // Proves Read validates
+                                              // JSON first.
 }
 
 // A valid object without an id cannot identify which service to read.
 TEST_CASE("ServiceController<Clinics>::Read with missing id → 400",
-    "[controllers][service]")
+          "[controllers][service]")
 {
   ServiceController<Clinics> ctrl;  // A fresh Clinics controller.
   auto                       r = capture(
       [&](auto cb)
       {
-        ctrl.Read(
-            std::move(cb), Requester(1, "owners"), R"({"schema":["name"]})");
+        ctrl.Read(std::move(cb),
+                  Requester(1, "owners"),
+                  R"({"schema":["name"]})");
       });  // A schema is present but no id.
   CHECK(r.status == api::v2::Http::Status::BAD_REQUEST);  // Proves the missing
                                                           // id is caught.
@@ -143,30 +144,34 @@ TEST_CASE("ServiceController<Clinics>::Read with missing id → 400",
 
 // Update needs a target id; none means 400.
 TEST_CASE("ServiceController<Clinics>::Update with no id → 400",
-    "[controllers][service]")
+          "[controllers][service]")
 {
   ServiceController<Clinics> ctrl;  // A fresh Clinics controller.
   auto                       r = capture(
       [&](auto cb)
       {
-        ctrl.Update(std::move(cb), Requester(1, "owners"), R"({"name":"x"})",
-            std::nullopt);
+        ctrl.Update(std::move(cb),
+                    Requester(1, "owners"),
+                    R"({"name":"x"})",
+                    std::nullopt);
       });  // Valid JSON but no id argument.
-  CHECK(
-      r.status == api::v2::Http::Status::BAD_REQUEST);  // Pins down Update's
-                                                        // 400 for a missing id.
+  CHECK(r.status ==
+        api::v2::Http::Status::BAD_REQUEST);  // Pins down Update's
+                                              // 400 for a missing id.
 }
 
 // Even with an id, Update still validates that the body is JSON.
 TEST_CASE("ServiceController<Clinics>::Update with malformed JSON → 400",
-    "[controllers][service]")
+          "[controllers][service]")
 {
   ServiceController<Clinics> ctrl;  // A fresh Clinics controller.
   auto                       r = capture(
       [&](auto cb)
       {
-        ctrl.Update(std::move(cb), Requester(1, "owners"), "bad{",
-            std::optional<uint64_t>{1});
+        ctrl.Update(std::move(cb),
+                    Requester(1, "owners"),
+                    "bad{",
+                    std::optional<uint64_t>{1});
       });  // Id 1 supplied, but the body is not JSON.
   CHECK(r.status ==
         api::v2::Http::Status::BAD_REQUEST);  // Proves body validation is not
@@ -177,7 +182,7 @@ TEST_CASE("ServiceController<Clinics>::Update with malformed JSON → 400",
 
 // Delete keeps its distinct 406 answer for a missing id.
 TEST_CASE("ServiceController<Clinics>::Delete with no id → 406",
-    "[controllers][service]")
+          "[controllers][service]")
 {
   ServiceController<Clinics> ctrl;  // A fresh Clinics controller.
   auto                       r = capture(
@@ -194,7 +199,7 @@ TEST_CASE("ServiceController<Clinics>::Delete with no id → 406",
 
 // Search refuses a body that is not JSON.
 TEST_CASE("ServiceController<Clinics>::Search with malformed JSON → 400",
-    "[controllers][service]")
+          "[controllers][service]")
 {
   ServiceController<Clinics> ctrl;  // A fresh Clinics controller.
   auto                       r = capture(
@@ -209,7 +214,7 @@ TEST_CASE("ServiceController<Clinics>::Search with malformed JSON → 400",
 
 // Search also refuses JSON that parses but lacks the fields it needs.
 TEST_CASE("ServiceController<Clinics>::Search with incomplete data → 406",
-    "[controllers][service]")
+          "[controllers][service]")
 {
   ServiceController<Clinics> ctrl;  // A fresh Clinics controller.
   auto                       r = capture(
@@ -227,7 +232,7 @@ TEST_CASE("ServiceController<Clinics>::Search with incomplete data → 406",
 // One case per remaining service type proves the shared templated behaviour is
 // compiled and works.
 TEST_CASE("ServiceController<Pharmacies>::Create rejects malformed JSON",
-    "[controllers][service]")
+          "[controllers][service]")
 {
   ServiceController<Pharmacies>
        ctrl;  // A controller instantiated for Pharmacies.
@@ -242,7 +247,7 @@ TEST_CASE("ServiceController<Pharmacies>::Create rejects malformed JSON",
 }
 
 TEST_CASE("ServiceController<Laboratories>::Delete with no id → 406",
-    "[controllers][service]")
+          "[controllers][service]")
 {
   ServiceController<Laboratories>
        ctrl;  // A controller instantiated for Laboratories.

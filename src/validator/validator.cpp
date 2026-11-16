@@ -68,15 +68,17 @@
  * rules. The duplicated-key check is intentionally disabled because jsoncons
  * parsing already rejects duplicate keys upstream.
  */
-bool Validator::validateDatabaseCreateSchema(const std::string& tablename,
-    const jsoncons::json& data, api::v2::Http::Error& error, const Rule& rule)
+bool Validator::validateDatabaseCreateSchema(const std::string&    tablename,
+                                             const jsoncons::json& data,
+                                             api::v2::Http::Error& error,
+                                             const Rule&           rule)
 {
   try  // Guard the whole body because JSON access can throw on a badly shaped
        // body.
   {
     if (nullCheck(data,
-            error))  // Stop early when the client sent null or an empty
-                     // object.
+                  error))  // Stop early when the client sent null or an empty
+                           // object.
     {
       return false;  // nullCheck already filled the error, so just report
                      // failure.
@@ -89,10 +91,13 @@ bool Validator::validateDatabaseCreateSchema(const std::string& tablename,
     // }
 
     // Get the schema for the table
-    bool found        = false;  // Set by the lookup helper to say whether the
-                                // table's schema exists.
-    auto table_schema = getDatabaseSchemaForTable(tablename, error,
-        found);  // Fetch the cached columns and update found/error.
+    bool found = false;  // Set by the lookup helper to say whether the
+                         // table's schema exists.
+    auto table_schema =
+        getDatabaseSchemaForTable(tablename,
+                                  error,
+                                  found);  // Fetch the cached columns and
+                                           // update found/error.
 
     if (!found)  // The table has no usable cached schema, so there is
                  // nothing to validate against.
@@ -104,15 +109,20 @@ bool Validator::validateDatabaseCreateSchema(const std::string& tablename,
     // now lets go through the data and check if the keys are in the schema
     // check for type and nullable
 
-    if (!checkColumns(data, table_schema, error,
-            rule))  // Check every column's type and required-ness.
+    if (!checkColumns(data,
+                      table_schema,
+                      error,
+                      rule))  // Check every column's type and required-ness.
     {
       return false;  // A column failed, so stop before doing more work.
     }
 
     // Ensure all keys in the schema are present in the data
-    if (!ensureAllKeysExist(data, table_schema, error,
-            rule))  // Check every supplied key is allowed and known.
+    if (!ensureAllKeysExist(data,
+                            table_schema,
+                            error,
+                            rule))  // Check every supplied key is allowed and
+                                    // known.
     {
       return false;  // A key was prohibited or unknown; error is already
                      // filled.
@@ -148,14 +158,16 @@ bool Validator::validateDatabaseCreateSchema(const std::string& tablename,
  * updates are legal). Immutable/prohibited keys are still rejected through the
  * rule in ensureAllKeysExist.
  */
-bool Validator::validateDatabaseUpdateSchema(const std::string& tablename,
-    const jsoncons::json& data, api::v2::Http::Error& error, const Rule& rule)
+bool Validator::validateDatabaseUpdateSchema(const std::string&    tablename,
+                                             const jsoncons::json& data,
+                                             api::v2::Http::Error& error,
+                                             const Rule&           rule)
 {
   try  // JSON access may throw, so wrap the body just like the create path.
   {
     if (nullCheck(data,
-            error))  // Reject a null or empty body before doing anything
-                     // else.
+                  error))  // Reject a null or empty body before doing anything
+                           // else.
     {
       return false;  // nullCheck already set the error message and code.
     }
@@ -168,8 +180,10 @@ bool Validator::validateDatabaseUpdateSchema(const std::string& tablename,
 
     // Get the schema for the table
     bool found = false;  // Whether the cached schema for this table was found.
-    auto table_schema = getDatabaseSchemaForTable(
-        tablename, error, found);  // Look up the cached columns.
+    auto table_schema =
+        getDatabaseSchemaForTable(tablename,
+                                  error,
+                                  found);  // Look up the cached columns.
 
     if (!found)  // No schema means we cannot tell which keys are legal.
     {
@@ -177,9 +191,11 @@ bool Validator::validateDatabaseUpdateSchema(const std::string& tablename,
     }
     // Ensure all keys in the schema are present in the data
     // in case of update we dont need to check for all keys
-    if (!ensureAllKeysExist(data, table_schema, error,
-            rule))  // Only check that supplied keys are allowed; missing
-                    // ones are fine.
+    if (!ensureAllKeysExist(data,
+                            table_schema,
+                            error,
+                            rule))  // Only check that supplied keys are
+                                    // allowed; missing ones are fine.
     {
       return false;  // A key was invalid, so abort with the error already
                      // set.
@@ -211,15 +227,19 @@ bool Validator::validateDatabaseUpdateSchema(const std::string& tablename,
  * than 400.
  */
 bool Validator::validateDatabaseReadSchema(
-    const std::unordered_set<std::string>& keys, const std::string& table_name,
-    api::v2::Http::Error& error, const Rule& rule)
+    const std::unordered_set<std::string>& keys,
+    const std::string&                     table_name,
+    api::v2::Http::Error&                  error,
+    const Rule&                            rule)
 {
   bool found =
       false;  // Set by the schema lookup to indicate success or failure.
 
   // Retrieve the schema for the given table
-  auto columns = getDatabaseSchemaForTable(
-      table_name, error, found);  // Get the cached columns for this table.
+  auto columns = getDatabaseSchemaForTable(table_name,
+                                           error,
+                                           found);  // Get the cached columns
+                                                    // for this table.
   if (!found)  // The table has no cached schema, so requested columns cannot
                // be checked.
   {
@@ -233,10 +253,10 @@ bool Validator::validateDatabaseReadSchema(
 
   // Check if all keys exist in the schema
   for (const auto& key :
-      keys)  // Walk each column name the client asked to read.
+       keys)  // Walk each column name the client asked to read.
   {
     if (rule.check(Rule::Action::ASSERT_NOT_PRESENT,
-            key))  // The rule forbids this key from being requested.
+                   key))  // The rule forbids this key from being requested.
     {
       error.message =
           "Key not allowed: " + key;  // Name the prohibited key in the message.
@@ -247,10 +267,11 @@ bool Validator::validateDatabaseReadSchema(
     // Use std::ranges::find_if to check if a column with the given name
     // exists
     auto col = std::ranges::find_if(columns,
-        [&](const api::v2::ColumnInfo& column)
-        {
-          return column.Name == key;
-        });  // Find a column whose name matches the requested key.
+                                    [&](const api::v2::ColumnInfo& column)
+                                    {
+                                      return column.Name == key;
+                                    });  // Find a column whose name matches the
+                                         // requested key.
 
     if (col == columns.end())  // No matching column was found in the schema.
     {
@@ -272,7 +293,8 @@ bool Validator::validateDatabaseReadSchema(
  * The first offending field stops processing and fills @p error. Accepted pairs
  * are inserted into @p db_data.
  */
-bool Validator::clientRegexValidation(const jsoncons::json&  data,
+bool Validator::clientRegexValidation(
+    const jsoncons::json&                                    data,
     api::v2::Http::Error&                                    error,
     std::unordered_set<std::pair<std::string, std::string>>& db_data)
 {
@@ -280,22 +302,22 @@ bool Validator::clientRegexValidation(const jsoncons::json&  data,
       regex_client_validators = {
           // Map field names to regex text; static so it is built only once.
           {"username",
-              "^[a-z][a-z0-9_]*$"},  // Starts with a lowercase letter, then
-                                     // letters/digits/underscores.
+           "^[a-z][a-z0-9_]*$"},  // Starts with a lowercase letter, then
+                                  // letters/digits/underscores.
           {"password",
-              "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$"
-              "%^&*"
-              "]{"
-              "8,}$"},  // At least 8 chars with a lowercase, uppercase, digit
+           "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$"
+           "%^&*"
+           "]{"
+           "8,}$"},  // At least 8 chars with a lowercase, uppercase, digit
           // and special character.
           {"phone",
-              // Optional country code and separators around a phone number.
-              R"(^\+?(\d{1,3})?[-.\s]?(\(?\d{3}\)?)?[-.\s]?\d{3}[-.\s]?\d{4}$)"},
+           // Optional country code and separators around a phone number.
+           R"(^\+?(\d{1,3})?[-.\s]?(\(?\d{3}\)?)?[-.\s]?\d{3}[-.\s]?\d{4}$)"},
           // Something@something.something style address.
           {"email", R"((\w+)(\.\w+)*@(\w+)(\.\w+)+)"},
           {"dob",
-              // Date in DD-MM-YYYY form.
-              R"(^(0[1-9]|[12]\d|3[01])-(0[1-9]|1[0-2])-\d{4}$)"},
+           // Date in DD-MM-YYYY form.
+           R"(^(0[1-9]|[12]\d|3[01])-(0[1-9]|1[0-2])-\d{4}$)"},
           {"gender", "^(Male|Female)$"},  // Exactly "Male" or "Female".
   };
 
@@ -307,12 +329,13 @@ bool Validator::clientRegexValidation(const jsoncons::json&  data,
     std::unordered_map<std::string, std::regex>
         compiled;  // Empty map that will hold field name -> compiled regex.
     for (const auto& [name, pattern] :
-        regex_client_validators)  // Visit every (field name, pattern text)
-                                  // pair above.
+         regex_client_validators)  // Visit every (field name, pattern text)
+                                   // pair above.
     {
       compiled.emplace(name,
-          std::regex(pattern));  // Compile the text into a regex and
-                                 // store it under the field name.
+                       std::regex(
+                           pattern));  // Compile the text into a regex and
+                                       // store it under the field name.
     }
     return compiled;  // Hand the finished map back to initialise
                       // compiled_validators.
@@ -365,14 +388,17 @@ bool Validator::clientRegexValidation(const jsoncons::json&  data,
         !value->empty())  // Only non-empty strings can be pattern matched.
     {
       if (!std::regex_match(value.value(),
-              pattern_item->second))  // The whole value must match the
-                                      // compiled pattern.
+                            pattern_item
+                                ->second))  // The whole value must match the
+                                            // compiled pattern.
       {
-        error = {.code = api::v2::Http::Status::BAD_REQUEST,
-            .message   = fmt::format("Key ({}) value is invalid.",
-                item.key())};  // Fill code and message in one go.
-        return false;          // Stop at the first field that fails its
-                               // pattern.
+        error =
+            {.code = api::v2::Http::Status::BAD_REQUEST,
+             .message =
+                 fmt::format("Key ({}) value is invalid.",
+                             item.key())};  // Fill code and message in one go.
+        return false;  // Stop at the first field that fails its
+                       // pattern.
       }
       db_data.insert(
           {item.key(), value.value()});  // The value passed, so store it
@@ -397,18 +423,18 @@ bool Validator::clientRegexValidation(const jsoncons::json&  data,
  * returns true. Kept for defensive use even though the JSON parser rejects
  * duplicates first.
  */
-bool Validator::hasDuplicateKeys(
-    const jsoncons::json& data, api::v2::Http::Error& error)
+bool Validator::hasDuplicateKeys(const jsoncons::json& data,
+                                 api::v2::Http::Error& error)
 {
   std::unordered_set<std::string> keys;  // Remember key names we have already
                                          // seen; a set keeps them unique.
 
   for (const auto& item :
-      data.object_range())  // Look at each key/value pair in the object.
+       data.object_range())  // Look at each key/value pair in the object.
   {
     if (!keys.insert(item.key())
-            .second)  // insert returns second=false when the key was
-                      // already present (a duplicate).
+             .second)  // insert returns second=false when the key was
+                       // already present (a duplicate).
     {
       error.message = item.key();  // Report the name of the duplicated key.
       error.code = api::v2::Http::Status::BAD_REQUEST;  // Duplicate keys are a
@@ -422,8 +448,8 @@ bool Validator::hasDuplicateKeys(
 /**
  * See Validator::nullCheck.
  */
-bool Validator::nullCheck(
-    const jsoncons::json& data, api::v2::Http::Error& error)
+bool Validator::nullCheck(const jsoncons::json& data,
+                          api::v2::Http::Error& error)
 {
   if (data.is_null() ||
       data.empty())  // Reject both a JSON null and an empty object/array.
@@ -475,8 +501,8 @@ std::unordered_set<api::v2::ColumnInfo> Validator::getDatabaseSchemaForTable(
  * type-checked. Unknown schema type strings return false, which surfaces as a
  * type mismatch to the caller.
  */
-bool Validator::validateType(
-    const jsoncons::json& value, const std::string& expectedType)
+bool Validator::validateType(const jsoncons::json& value,
+                             const std::string&    expectedType)
 {
   if (expectedType == "integer")  // The schema expects a whole number.
   {
@@ -519,9 +545,11 @@ bool Validator::validateType(
  * IGNORE_IF_NOT_NULLABLE_IN_SCHEMA; a present column must match the schema's
  * type according to validateType. The first violation aborts with HTTP 400.
  */
-bool Validator::checkColumns(const jsoncons::json& data,
+bool Validator::checkColumns(
+    const jsoncons::json&                          data,
     const std::unordered_set<api::v2::ColumnInfo>& table_schema,
-    api::v2::Http::Error& error, const Rule& rule)
+    api::v2::Http::Error&                          error,
+    const Rule&                                    rule)
 {
   for (const auto& column : table_schema)  // Walk the schema's columns, which
                                            // are the source of truth.
@@ -532,7 +560,8 @@ bool Validator::checkColumns(const jsoncons::json& data,
     // Check for missing non-nullable columns
     if (!column_exists && !column.isNullable &&
         !rule.check(Rule::Action::IGNORE_IF_NOT_NULLABLE_IN_SCHEMA,
-            column.Name))  // Missing, required, and not excused by the rule.
+                    column.Name))  // Missing, required, and not excused by the
+                                   // rule.
     {
       error.message = "Non-nullable column missing in data: " +
                       column.Name;  // Name the missing required column.
@@ -549,12 +578,13 @@ bool Validator::checkColumns(const jsoncons::json& data,
       const auto& value = data.at(column.Name);  // Fetch the value for this
                                                  // column from the JSON body.
       if (!validateType(value,
-              column.DataType))  // Compare the value's JSON kind to the
-                                 // schema's declared type.
+                        column.DataType))  // Compare the value's JSON kind to
+                                           // the schema's declared type.
       {
-        error.message = fmt::format(
-            "Data type mismatch for column: {} ,expected: {} ", column.Name,
-            column.DataType);  // Build a helpful mismatch message.
+        error.message =
+            fmt::format("Data type mismatch for column: {} ,expected: {} ",
+                        column.Name,
+                        column.DataType);  // Build a helpful mismatch message.
         error.code = api::v2::Http::Status::BAD_REQUEST;  // A wrong type is a
                                                           // client error.
         return false;  // Stop at the first type mismatch.
@@ -570,16 +600,18 @@ bool Validator::checkColumns(const jsoncons::json& data,
  * prohibited/immutable keys are reported specifically; unknown keys are allowed
  * only under IGNORE_IF_MISSING_FROM_SCHEMA.
  */
-bool Validator::ensureAllKeysExist(const jsoncons::json& data,
-    const std::unordered_set<api::v2::ColumnInfo>&       table_schema,
-    api::v2::Http::Error& error, const Rule& rule)
+bool Validator::ensureAllKeysExist(
+    const jsoncons::json&                          data,
+    const std::unordered_set<api::v2::ColumnInfo>& table_schema,
+    api::v2::Http::Error&                          error,
+    const Rule&                                    rule)
 {
   // Create a set of column names for fast key lookup
   std::unordered_set<std::string>
       schema_columns;  // Will hold just the names, for quick membership
                        // checks.
   for (const auto& column :
-      table_schema)  // Walk the schema's column descriptions once.
+       table_schema)  // Walk the schema's column descriptions once.
   {
     schema_columns.insert(
         column.Name);  // Add each column name to the fast-lookup set.
@@ -587,23 +619,23 @@ bool Validator::ensureAllKeysExist(const jsoncons::json& data,
 
   // Ensure all keys in `data` exist in the schema
   for (const auto& entry :
-      data.object_range())  // Visit every key the client actually supplied.
+       data.object_range())  // Visit every key the client actually supplied.
   {
     const auto& key = entry.key();  // The current field name being checked.
 
     // Check for missing not allowed keys
     if (rule.check(Rule::Action::ASSERT_NOT_PRESENT,
-            key))  // The rule says this key must never appear.
+                   key))  // The rule says this key must never appear.
     {
       error.message = "A prohibited key was found: [" + key +
                       "]";  // Name the forbidden key.
       // Including it is a client error.
-      error.code    = api::v2::Http::Status::BAD_REQUEST;
+      error.code = api::v2::Http::Status::BAD_REQUEST;
       return false;  // Stop at the first prohibited key.
     }
     // check if the key is in the exclude list
     if (rule.check(Rule::Action::ASSERT_IMMUTABLE,
-            key))  // The rule says this key cannot be changed.
+                   key))  // The rule says this key cannot be changed.
     {
       error.message = "Key: [" + key +
                       "] is not allowed to be changed";  // Explain that the key
@@ -615,7 +647,8 @@ bool Validator::ensureAllKeysExist(const jsoncons::json& data,
 
     bool ignore_if_missing_from_database_schema =
         rule.check(Rule::Action::IGNORE_IF_MISSING_FROM_SCHEMA,
-            key);  // Whether the rule excuses keys absent from the schema.
+                   key);  // Whether the rule excuses keys absent from the
+                          // schema.
     if (schema_columns.find(key) == schema_columns.end() &&
         !ignore_if_missing_from_database_schema)  // Key not in schema
     {

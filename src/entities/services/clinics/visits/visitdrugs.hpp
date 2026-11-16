@@ -113,8 +113,8 @@ class VisitDrugs : public Case  // Inherits the CRUD builders and adds
                          // so several wrapper types work here.
   VisitDrugs(const T& _data)
       : Case(_data,
-            TABLENAME)  // Pass the data and table name up to Case, which
-                        // stores them in Entity.
+             TABLENAME)  // Pass the data and table name up to Case, which
+                         // stores them in Entity.
   {
   }
 
@@ -183,9 +183,15 @@ class VisitDrugs : public Case  // Inherits the CRUD builders and adds
                                 // caller.
     }
 
-    return getPermissionsQueryForCreateImpl(id,
-        KEYREFTABLENAME);  // Hand the id and `clinics_visits` table to
-                           // Case, which writes the join SQL that finds the
+    return getPermissionsQueryForCreateImpl(
+        id,
+        KEYREFTABLENAME);  // Hand the id
+                           // and
+                           // `clinics_visits`
+                           // table to Case,
+                           // which writes
+                           // the join SQL
+                           // that finds the
                            // owning clinic.
   }
 

@@ -60,28 +60,28 @@ class TempDir
                                        // name unique within the process.
     path_ = fs::temp_directory_path() /
             ("valhalla_tests_" + std::to_string(::getpid()) + "_" +
-                std::to_string(++counter));  // Build a path like
-                                             // /tmp/valhalla_tests_1234_1.
+             std::to_string(++counter));  // Build a path like
+                                          // /tmp/valhalla_tests_1234_1.
     fs::create_directories(
         path_);  // Actually create the directory (and any missing parents).
   }
 
   TempDir(const TempDir&) = delete;  // No copying: two objects would try to
                                      // delete the same directory.
-  TempDir& operator=(
-      const TempDir&) = delete;  // No copy assignment, for the same reason.
-  TempDir(
-      TempDir&&) = delete;  // No moving: ownership must stay with one object.
-  TempDir& operator=(
-      TempDir&&) = delete;  // No move assignment, to keep cleanup unambiguous.
+  TempDir& operator=(const TempDir&) =
+      delete;  // No copy assignment, for the same reason.
+  TempDir(TempDir&&) =
+      delete;  // No moving: ownership must stay with one object.
+  TempDir& operator=(TempDir&&) =
+      delete;  // No move assignment, to keep cleanup unambiguous.
 
   ~TempDir()  // Runs at scope exit to remove the directory and its contents.
   {
     std::error_code
         ec;  // Error-code overload avoids throwing from a destructor.
     fs::remove_all(path_,
-        ec);  // Delete the directory recursively; any error is stored in
-              // `ec` and ignored.
+                   ec);  // Delete the directory recursively; any error is
+                         // stored in `ec` and ignored.
   }
 
   [[nodiscard]] const fs::path& path() const

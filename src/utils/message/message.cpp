@@ -81,50 +81,60 @@ std::string Message::get_color(
                                       // matching ANSI escape sequence.
 {
   static const std::unordered_map<trantor::Logger::LogLevel, std::string>
-      color_map = {
-          // A read-only map built once, pairing each level with its colour.
-          {trantor::Logger::LogLevel::kTrace,
-              "\033[38;5;140m"},  // Soft Purple (for subtle debug messages)
-          {trantor::Logger::LogLevel::kDebug,
-              "\033[38;5;140m"},  // Soft Purple (for subtle debug messages)
-          {trantor::Logger::LogLevel::kInfo,
-              "\033[1;34m"},  // Bold Blue (clear and calm for info)
-          {trantor::Logger::LogLevel::kWarn,
-              "\033[1;93m"},  // Bright Yellow (attention-grabbing for
-                              // warnings)
-          {trantor::Logger::LogLevel::kError,
-              "\033[1;91m"},  // Bright Red (strong and clear for errors)
-          // messages)
-          {trantor::Logger::LogLevel::kFatal, "\033[38;5;196m"}};
+      color_map =
+          {// A read-only map built once, pairing each level with its colour.
+           {trantor::Logger::LogLevel::kTrace,
+            "\033[38;5;140m"},  // Soft Purple (for subtle debug messages)
+           {trantor::Logger::LogLevel::kDebug,
+            "\033[38;5;140m"},  // Soft Purple (for subtle debug messages)
+           {trantor::Logger::LogLevel::kInfo,
+            "\033[1;34m"},  // Bold Blue (clear and calm for info)
+           {trantor::Logger::LogLevel::kWarn,
+            "\033[1;93m"},  // Bright Yellow (attention-grabbing for
+                            // warnings)
+           {trantor::Logger::LogLevel::kError,
+            "\033[1;91m"},  // Bright Red (strong and clear for errors)
+                            // messages)
+           {trantor::Logger::LogLevel::kFatal, "\033[38;5;196m"}};
   return color_map.at(level);  // .at looks up the level and throws
                                // std::out_of_range if it is somehow missing.
 }
 
-void Message::MessageImpl(const std::string& _status_message,
+void Message::MessageImpl(
+    const std::string& _status_message,
     trantor::Logger::LogLevel
         _level)  // Implementation shared by the severity helpers.
 {
   // Route through Trantor so these records reach the configured spdlog sinks.
-  trantor::Logger(_level).stream() << fmt::format("{}{}{}", get_color(_level),
-      removeNewLine(_status_message),
-      "\033[0m");  // Builds "colour + cleaned text + reset" and streams it
-                   // into the trantor log at the chosen level.
+  trantor::Logger(_level).stream()
+      << fmt::format("{}{}{}",
+                     get_color(_level),
+                     removeNewLine(_status_message),
+                     "\033[0m");  // Builds "colour + cleaned text + reset" and
+                                  // streams it into the trantor log at the
+                                  // chosen level.
 }
-void Message::MessageImpl(const std::string& _status_message,
+void Message::MessageImpl(
+    const std::string& _status_message,
     const std::string&
         _type) /*NOLINT */  // Implementation shared by the two startup notices.
 {
   // Startup notices bypass the logger and go straight to stdout with a fixed
   // prefix.
-  fmt::print(
-      "{}{}{}{}{}\n",  // Prints five coloured pieces followed by a newline.
-      fmt::format(fg(fmt::color::indian_red),  // Start the first piece in red.
-          "[Project Valhalla]"),               // The server name in red
-      fmt::format(fg(fmt::color::white), " ["),  // the left square bracket
-      fmt::format("{}", fmt::format(fg(fmt::color::green), "{}",
-                            _type)),             // The message type in green
-      fmt::format(fg(fmt::color::white), "] "),  // the right square bracket
-      removeNewLine(_status_message));           // The message
+  fmt::print("{}{}{}{}{}\n",  // Prints five coloured pieces followed by a
+                              // newline.
+             fmt::format(fg(fmt::color::indian_red),  // Start the first piece
+                                                      // in red.
+                         "[Project Valhalla]"),       // The server name in red
+             fmt::format(fg(fmt::color::white),
+                         " ["),  // the left square bracket
+             fmt::format("{}",
+                         fmt::format(fg(fmt::color::green),
+                                     "{}",
+                                     _type)),  // The message type in green
+             fmt::format(fg(fmt::color::white),
+                         "] "),                // the right square bracket
+             removeNewLine(_status_message));  // The message
 }
 
 std::string Message::removeNewLine(
@@ -133,9 +143,10 @@ std::string Message::removeNewLine(
   // Keep each record on a single line so log prefixes stay meaningful.
   std::string status_message =
       _str;  // Work on a copy so the caller's original string is untouched.
-  std::ranges::replace(status_message, '\n',
-      ' ');  // Replace every newline with a space to flatten multi-line
-             // messages.
-  return status_message;  // Returns the single-line version for
-                          // logging/printing.
+  std::ranges::replace(status_message,
+                       '\n',
+                       ' ');  // Replace every newline with a space to flatten
+                              // multi-line messages.
+  return status_message;      // Returns the single-line version for
+                              // logging/printing.
 }

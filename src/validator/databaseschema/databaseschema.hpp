@@ -41,8 +41,9 @@
 
 /** @brief Schema snapshot type: maps a table name to the set of its column
  * descriptions. */
-#define SCHEMA_t                  \
-  std::unordered_map<std::string, \
+#define SCHEMA_t      \
+  std::unordered_map< \
+      std::string,    \
       std::unordered_set<api::v2::ColumnInfo>>  // A readable alias for the
                                                 // whole cached schema.
 /**
@@ -76,18 +77,18 @@ class DatabaseSchema
   DatabaseSchema();
   /** @brief Copy constructor; shares the static schema map with other
    * instances. */
-  DatabaseSchema(const DatabaseSchema&)            = default;
+  DatabaseSchema(const DatabaseSchema&) = default;
   /** @brief Moving is disabled because the meaningful state is static. */
-  DatabaseSchema(DatabaseSchema&&)                 = delete;
+  DatabaseSchema(DatabaseSchema&&) = delete;
   /** @brief Copy assignment; shares the static schema map with other
    * instances. */
   DatabaseSchema& operator=(const DatabaseSchema&) = default;
   /** @brief Move assignment is disabled because the meaningful state is
    * static. */
-  DatabaseSchema& operator=(DatabaseSchema&&)      = delete;
+  DatabaseSchema& operator=(DatabaseSchema&&) = delete;
   /** @brief Virtual destructor; the schema snapshot has no per-instance
    * resources. */
-  virtual ~DatabaseSchema()                        = default;
+  virtual ~DatabaseSchema() = default;
 
   /**
    * @brief Loads (or refreshes) the column set for one table into the cache.
@@ -96,7 +97,7 @@ class DatabaseSchema
    * @note On a missing/empty schema a warning and error are logged and the
    * process exits; there is no recoverable error return.
    */
-  static void            populateSchema(const std::string& tableName);
+  static void populateSchema(const std::string& tableName);
   /**
    * @brief Returns the cached schema snapshot.
    * @return Const reference to the static map of table names to column sets.
@@ -106,7 +107,7 @@ class DatabaseSchema
   static const SCHEMA_t& getDatabaseSchema();
   /** @brief Logs every cached table/column tuple at info level (diagnostic
    * helper). */
-  static void            printSchema();
+  static void printSchema();
 
  private:
   /** @brief Shared schema snapshot; defined and populated once in

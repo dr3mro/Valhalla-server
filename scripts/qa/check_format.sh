@@ -72,11 +72,16 @@ else
 fi
 
 if [[ -n $diff_tool ]]; then
-    # clang-format-diff.py cannot judge hunks that start at old line 0 (@@ -0,0
-    # or @@ -0,0 -> new content). It asks clang-format for -lines=0:N, which
-    # exits with "start line should be at least 1". Such files are checked as
-    # whole files with --dry-run --Werror instead; all other hunks go through
-    # clang-format-diff so only changed lines are judged.
+    # clang-format-diff.py reads the new-file line number from '@@ ... +N' with
+    # a greedy regex, so two edge cases make it request an invalid
+    # '--lines=0:N' (clang-format then reports "start line should be at least
+    # 1"):
+    #   1. Hunks starting at old line 0 (new files): git prints '@@ -0,0 +1,N'.
+    #   2. A hunk heading whose trailing section text contains '+<digits>',
+    #      such as a TEST_CASE name ending in '+0000'.
+    # Case 1 is handled per file below by falling back to a whole-file check.
+    # Case 2 is handled by stripping that trailing heading text from every hunk
+    # header before the diff reaches clang-format-diff.py.
     changed_files=()  # C/C++ files changed relative to the comparison base.
     while IFS= read -r -d '' f; do changed_files+=("$f"); done < <("${diff_base[@]}" --name-only -z --diff-filter=ACM -- "${paths[@]}")
 
@@ -96,7 +101,11 @@ if [[ -n $diff_tool ]]; then
         done
     fi
     if [[ -n $diff_for_tool ]]; then  # Only invoke clang-format-diff when there is a valid diff.
-        tool_output="$(printf '%s\n' "$diff_for_tool" | "$diff_tool" -p1 "${diff_style_args[@]}" 2>&1)"  # -p1 strips a/ b/ prefixes; style args force .clang-format.
+        # Keep only the numeric part of each hunk header (through the second
+        # '@@'); git's trailing section heading can contain '+<digits>' that
+        # clang-format-diff.py would misread as the new-file line number.
+        sanitized_diff="$(printf '%s\n' "$diff_for_tool" | sed -E 's/^(@@ -[0-9]+(,[0-9]+)? \+[0-9]+(,[0-9]+)? @@).*/\1/')"
+        tool_output="$(printf '%s\n' "$sanitized_diff" | "$diff_tool" -p1 "${diff_style_args[@]}" 2>&1)"  # -p1 strips a/ b/ prefixes; style args force .clang-format.
         [[ -n $tool_output ]] && result+="$tool_output"$'\n'  # Any output is a patch of lines needing formatting.
     fi
     if [[ -n $result ]]; then  # Any output is a patch of lines that still need formatting.

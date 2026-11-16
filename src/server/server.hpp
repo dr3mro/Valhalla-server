@@ -106,9 +106,9 @@ class Server  // The one object that drives startup and an orderly shutdown of
   /**
    * Copy construction is not supported.
    */
-  Server(
-      const Server&) = delete;  // Copies are forbidden: two Servers would both
-                                // try to control the single global framework.
+  Server(const Server&) =
+      delete;  // Copies are forbidden: two Servers would both
+               // try to control the single global framework.
   /**
    * Copy assignment is not supported.
    */
@@ -122,9 +122,9 @@ class Server  // The one object that drives startup and an orderly shutdown of
   /**
    * Move assignment is not supported.
    */
-  Server& operator=(
-      Server&&) = delete;  // Move assignment is disabled to keep the object's
-                           // lifetime simple and predictable.
+  Server& operator=(Server&&) =
+      delete;  // Move assignment is disabled to keep the object's
+               // lifetime simple and predictable.
 
   /**
    * @brief Prints the banner, configures and runs Drogon, then drains the

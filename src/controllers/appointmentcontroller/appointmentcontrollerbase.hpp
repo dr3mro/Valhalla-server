@@ -130,7 +130,9 @@ class AppointmentControllerBase
    * check.
    * @param[in] data Raw JSON request body.
    */
-  virtual void Create(CALLBACK_&& callback, const Requester&& requester,
+  virtual void Create(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
       std::string_view
           data) = 0;  // "= 0" = pure virtual: derived classes MUST implement
                       // this; "virtual" enables base-pointer dispatch.
@@ -143,8 +145,9 @@ class AppointmentControllerBase
    * @param[in] data Raw JSON request body; must remain valid until the task
    * completes.
    */
-  virtual drogon::Task<void> CreateAsync(CALLBACK_&& callback,
-      const Requester&&                              requester,
+  virtual drogon::Task<void> CreateAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
       std::string_view
           data) = 0;  // Same job as Create, but returns a pausable task.
   /**
@@ -157,9 +160,11 @@ class AppointmentControllerBase
    * @param[in] data Raw JSON request body containing `id` and requested
    * `schema`.
    */
-  virtual void Read(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data) = 0;  // Pure virtual read job; the real code
-                                   // lives in the derived controller.
+  virtual void Read(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) = 0;  // Pure virtual read job; the real code
+                                    // lives in the derived controller.
   /**
    * @brief Coroutine form of @ref Read.
    * @param[in,out] callback Completion handler, invoked once with (status,
@@ -169,9 +174,10 @@ class AppointmentControllerBase
    * @param[in] data Raw JSON request body; must remain valid until the task
    * completes.
    */
-  virtual drogon::Task<void> ReadAsync(CALLBACK_&& callback,
-      const Requester&&                            requester,
-      std::string_view data) = 0;  // Pausable version of Read.
+  virtual drogon::Task<void> ReadAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) = 0;  // Pausable version of Read.
   /**
    * @brief Updates the appointment entity identified by @p _id from a JSON
    * request body.
@@ -183,11 +189,12 @@ class AppointmentControllerBase
    * @param[in] _id Target entity id; a disengaged optional is rejected by the
    * implementation.
    */
-  virtual void Update(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data,
-      std::optional<uint64_t>
-          _id) = 0;  // "_id" may hold "no value"; the derived class decides
-                     // if that is an error.
+  virtual void Update(CALLBACK_&&       callback,
+                      const Requester&& requester,
+                      std::string_view  data,
+                      std::optional<uint64_t>
+                          _id) = 0;  // "_id" may hold "no value"; the derived
+                                     // class decides if that is an error.
   /**
    * @brief Coroutine form of @ref Update.
    * @param[in,out] callback Completion handler, invoked once with (status,
@@ -199,8 +206,10 @@ class AppointmentControllerBase
    * @param[in] _id Target entity id; a disengaged optional is rejected by the
    * implementation.
    */
-  virtual drogon::Task<void> UpdateAsync(CALLBACK_&& callback,
-      const Requester&& requester, std::string_view data,
+  virtual drogon::Task<void> UpdateAsync(
+      CALLBACK_&&             callback,
+      const Requester&&       requester,
+      std::string_view        data,
       std::optional<uint64_t> _id) = 0;  // Pausable form of Update.
   /**
    * @brief Deletes the appointment entity identified by @p _id.
@@ -211,7 +220,9 @@ class AppointmentControllerBase
    * @param[in] _id Target entity id; a disengaged optional is rejected by the
    * implementation.
    */
-  virtual void Delete(CALLBACK_&& callback, const Requester&& requester,
+  virtual void Delete(
+      CALLBACK_&&             callback,
+      const Requester&&       requester,
       std::optional<uint64_t> _id) = 0;  // Pure virtual delete job; needs only
                                          // the target id, not a JSON body.
   /**
@@ -223,8 +234,9 @@ class AppointmentControllerBase
    * @param[in] _id Target entity id; a disengaged optional is rejected by the
    * implementation.
    */
-  virtual drogon::Task<void> DeleteAsync(CALLBACK_&& callback,
-      const Requester&&                              requester,
+  virtual drogon::Task<void> DeleteAsync(
+      CALLBACK_&&             callback,
+      const Requester&&       requester,
       std::optional<uint64_t> _id) = 0;  // Pausable form of Delete.
   /**
    * @brief Runs a paginated search over appointment entities.
@@ -237,7 +249,9 @@ class AppointmentControllerBase
    * implementation).
    * @param[in] data Raw JSON search criteria.
    */
-  virtual void Search(CALLBACK_&& callback, const Requester&& requester,
+  virtual void Search(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
       std::string_view data) = 0;  // Pure virtual search job; "paginated" means
                                    // results come back in pages via the offset.
 };

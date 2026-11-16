@@ -84,9 +84,10 @@ class DbExecutor
    * @param[in] io_fast_path Whether to try requests on the IO thread before
    * queuing.
    */
-  DbExecutor(std::size_t workers, std::size_t queue_max,
-      bool io_fast_path = false);  // The default keeps the fast path off
-                                   // unless explicitly requested.
+  DbExecutor(std::size_t workers,
+             std::size_t queue_max,
+             bool io_fast_path = false);  // The default keeps the fast path off
+                                          // unless explicitly requested.
 
   // True when requests are first tried on the IO thread (see
   // database/dbprobe.hpp) and only queued if they need the database.
@@ -129,9 +130,11 @@ class DbExecutor
 template <typename Body>
 void runOnDbExecutor(DbExecutor& executor, CALLBACK_&& callback, Body&& body)
 {
-  runOnExecutor(executor, std::move(callback),
-      "The server is busy, try again shortly.",
-      std::forward<Body>(
-          body));  // Reuse the generic helper; the busy message here tells
-                   // clients to retry when the DB queue is full.
+  runOnExecutor(executor,
+                std::move(callback),
+                "The server is busy, try again shortly.",
+                std::forward<Body>(
+                    body));  // Reuse the generic helper; the busy message here
+                             // tells clients to retry when the DB queue is
+                             // full.
 }

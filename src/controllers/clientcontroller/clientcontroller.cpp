@@ -81,22 +81,28 @@ using Data_t =
     api::v2::Types::Data_t;  // Minimal id carrier used by service lookups.
 
 template <Client_t T>
-void ClientController<T>::Create(
-    CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+void ClientController<T>::Create(CALLBACK_&&       callback,
+                                 const Requester&& requester,
+                                 std::string_view  data)
 {
   // Copy the principal and body into the job: the queued lambda outlives this
   // request thread. A full queue makes runOnPasswordWorker answer 503 without
   // ever invoking createNow().
   runOnPasswordWorker(*passwordWorker,
-      std::move(callback),  // Queue the job; a full queue answers 503 itself.
-      [this, requester = Requester(requester), body = std::string(data)](
-          CALLBACK_&& cb) mutable
-      { createNow(std::move(cb), requester, body); });
+                      std::move(callback),  // Queue the job; a full queue
+                                            // answers 503 itself.
+                      [this,
+                       requester = Requester(requester),
+                       body      = std::string(data)](CALLBACK_&& cb) mutable
+                      {
+                        createNow(std::move(cb), requester, body);
+                      });
 }
 
 template <Client_t T>
-void ClientController<T>::createNow(
-    CALLBACK_&& callback, const Requester& requester, std::string_view data)
+void ClientController<T>::createNow(CALLBACK_&&      callback,
+                                    const Requester& requester,
+                                    std::string_view data)
 {
   try
   {
@@ -116,14 +122,17 @@ void ClientController<T>::createNow(
     catch (const std::exception&)
     {
       callback(api::v2::Http::Status::BAD_REQUEST,
-          "Invalid request body: malformed JSON.");
+               "Invalid request body: malformed JSON.");
       return;
     }
 
     // Parses and validates the client-specific payload; `success` reports
     // whether the body was usable.
-    CreateClient_t client_data(data, T::getTableName(), error,
-        success);  // Client-specific parse and validation.
+    CreateClient_t
+        client_data(data,
+                    T::getTableName(),
+                    error,
+                    success);  // Client-specific parse and validation.
 
     if (success)
     {
@@ -133,8 +142,8 @@ void ClientController<T>::createNow(
       if (client.template exists<CreateClient_t>())
       {
         callback(api::v2::Http::Status::CONFLICT,
-            "Client already exists");  // Duplicate id/username is a
-                                       // client error.
+                 "Client already exists");  // Duplicate id/username is a
+                                            // client error.
         return;
       }
 
@@ -147,13 +156,13 @@ void ClientController<T>::createNow(
       }
 
       Controller::Create(client,
-          std::move(callback));  // Delegate the INSERT to the persistence
-                                 // engine.
+                         std::move(callback));  // Delegate the INSERT to the
+                                                // persistence engine.
     }
     else
     {
       callback(error.code,
-          fmt::format("ClientData parsing error: {}.", error.message));
+               fmt::format("ClientData parsing error: {}.", error.message));
       return;
     }
   }
@@ -165,31 +174,40 @@ void ClientController<T>::createNow(
 }
 
 template <Client_t T>
-void ClientController<T>::Read(
-    CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+void ClientController<T>::Read(CALLBACK_&&       callback,
+                               const Requester&& requester,
+                               std::string_view  data)
 {
-  EntityController<T>::Read(std::move(callback), std::move(requester),
-      data);  // Read needs no client-specific work.
+  EntityController<T>::Read(std::move(callback),
+                            std::move(requester),
+                            data);  // Read needs no client-specific work.
 }
 
 template <Client_t T>
-void ClientController<T>::Update(CALLBACK_&& callback,
-    const Requester&& requester, std::string_view data,
-    const std::optional<uint64_t> _id)
+void ClientController<T>::Update(CALLBACK_&&                   callback,
+                                 const Requester&&             requester,
+                                 std::string_view              data,
+                                 const std::optional<uint64_t> _id)
 {
   // As with Create, the job owns copies of the principal, body and id so it
   // can run after the request thread returns.
   runOnPasswordWorker(*passwordWorker,
-      std::move(callback),  // Queue the job; a full queue answers 503 itself.
-      [this, requester = Requester(requester), body = std::string(data), _id](
-          CALLBACK_&& cb) mutable
-      { updateNow(std::move(cb), requester, body, _id); });
+                      std::move(callback),  // Queue the job; a full queue
+                                            // answers 503 itself.
+                      [this,
+                       requester = Requester(requester),
+                       body      = std::string(data),
+                       _id](CALLBACK_&& cb) mutable
+                      {
+                        updateNow(std::move(cb), requester, body, _id);
+                      });
 }
 
 template <Client_t T>
-void ClientController<T>::updateNow(CALLBACK_&& callback,
-    const Requester& requester, std::string_view data,
-    const std::optional<uint64_t> _id)
+void ClientController<T>::updateNow(CALLBACK_&&                   callback,
+                                    const Requester&              requester,
+                                    std::string_view              data,
+                                    const std::optional<uint64_t> _id)
 {
   try
   {
@@ -197,13 +215,17 @@ void ClientController<T>::updateNow(CALLBACK_&& callback,
         false;  // Validation flips this true only for a usable payload.
     // A client may not change its identity or password through the generic
     // update route.
-    static const Validator::Rule rule(
-        Validator::Rule::Action::ASSERT_IMMUTABLE, {"username", "password"});
+    static const Validator::Rule rule(Validator::Rule::Action::ASSERT_IMMUTABLE,
+                                      {"username", "password"});
 
     HttpError      error;  // Receives a code/message on validation or
                            // authorization failure.
-    UpdateClient_t client_data(
-        data, _id, T::getTableName(), error, success, rule);
+    UpdateClient_t client_data(data,
+                               _id,
+                               T::getTableName(),
+                               error,
+                               success,
+                               rule);
 
     if (success)
     {
@@ -215,13 +237,13 @@ void ClientController<T>::updateNow(CALLBACK_&& callback,
         return;
       }
       Controller::Update(client,
-          std::move(callback));  // Delegate the UPDATE to the persistence
-                                 // engine.
+                         std::move(callback));  // Delegate the UPDATE to the
+                                                // persistence engine.
     }
     else
     {
       callback(error.code,
-          fmt::format("ClientData parsing error: {}.", error.message));
+               fmt::format("ClientData parsing error: {}.", error.message));
       return;
     }
   }
@@ -233,73 +255,89 @@ void ClientController<T>::updateNow(CALLBACK_&& callback,
 }
 
 template <Client_t T>
-void ClientController<T>::Delete(CALLBACK_&& callback,
-    const Requester&& requester, const std::optional<uint64_t> client_id)
+void ClientController<T>::Delete(CALLBACK_&&                   callback,
+                                 const Requester&&             requester,
+                                 const std::optional<uint64_t> client_id)
 {
   auto cb = std::move(callback);  // Take ownership so it can be captured into
                                   // the wrapper lambda.
   // Intercept the result so sessions are dropped only when the delete
   // actually succeeded; then forward unchanged.
-  CALLBACK_ wrapped = [this, client_id, cb = std::move(cb)](
-                          int code, const std::string& body) mutable
+  CALLBACK_ wrapped =
+      [this, client_id, cb = std::move(cb)](int                code,
+                                            const std::string& body) mutable
   {
     if (code == static_cast<int>(api::v2::Http::Status::OK) &&
         client_id.has_value())
     {
       gateKeeper->removeSession(client_id,
-          T::getTableName());  // A suspended client must not keep a live
-                               // session.
+                                T::getTableName());  // A suspended client must
+                                                     // not keep a live session.
     }
     std::move(cb)(code, body);
   };
-  EntityController<T>::Delete(
-      std::move(wrapped), std::move(requester), client_id);
+  EntityController<T>::Delete(std::move(wrapped),
+                              std::move(requester),
+                              client_id);
 }
 
 template <Client_t T>
-void ClientController<T>::Search(
-    CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+void ClientController<T>::Search(CALLBACK_&&       callback,
+                                 const Requester&& requester,
+                                 std::string_view  data)
 {
-  EntityController<T>::Search(std::move(callback), std::move(requester),
-      data);  // Search needs no client-specific work.
+  EntityController<T>::Search(std::move(callback),
+                              std::move(requester),
+                              data);  // Search needs no client-specific work.
 }
 
 template <Client_t T>
-void ClientController<T>::Login(CALLBACK_&& callback,
-    [[maybe_unused]] const Requester&& requester, std::string_view data,
-    const std::string& ip_address)
+void ClientController<T>::Login(CALLBACK_&&                        callback,
+                                [[maybe_unused]] const Requester&& requester,
+                                std::string_view                   data,
+                                const std::string&                 ip_address)
 {
   // Authentication and session creation are entirely GateKeeper's
   // responsibility; requester is unused.
-  gateKeeper->login(std::move(callback), data, ip_address,
-      T::getTableName());  // GateKeeper owns authentication and session
-                           // state.
+  gateKeeper->login(std::move(callback),
+                    data,
+                    ip_address,
+                    T::getTableName());  // GateKeeper owns authentication and
+                                         // session state.
 }
 
 template <Client_t T>
-drogon::Task<void> ClientController<T>::LoginAsync(CALLBACK_&& callback,
-    [[maybe_unused]] const Requester&& requester, std::string_view data,
-    const std::string& ip_address)
+drogon::Task<void> ClientController<T>::LoginAsync(
+    CALLBACK_&&                        callback,
+    [[maybe_unused]] const Requester&& requester,
+    std::string_view                   data,
+    const std::string&                 ip_address)
 {
   // Await the gate's async login; the token/session state lives in
   // GateKeeper, not in this controller.
-  co_await gateKeeper->loginAsync(std::move(callback), data, ip_address,
-      T::getTableName());  // Await the async login.
+  co_await gateKeeper->loginAsync(std::move(callback),
+                                  data,
+                                  ip_address,
+                                  T::getTableName());  // Await the async login.
 }
 
 template <Client_t T>
-void ClientController<T>::Logout(CALLBACK_&& callback,
-    [[maybe_unused]] const Requester&&       requester,
-    const std::optional<std::string>& token, const std::string& ip_address)
+void ClientController<T>::Logout(CALLBACK_&&                        callback,
+                                 [[maybe_unused]] const Requester&& requester,
+                                 const std::optional<std::string>&  token,
+                                 const std::string&                 ip_address)
 {
   // Session invalidation is delegated to GateKeeper; requester is unused.
-  gateKeeper->logout(std::move(callback), token, ip_address,
-      T::getTableName());  // GateKeeper invalidates the session.
+  gateKeeper->logout(std::move(callback),
+                     token,
+                     ip_address,
+                     T::getTableName());  // GateKeeper invalidates the session.
 }
 
 template <Client_t T>
-void ClientController<T>::Suspend(CALLBACK_&& callback,
-    const Requester&& requester, const std::optional<uint64_t> client_id)
+void ClientController<T>::Suspend(CALLBACK_&&                   callback,
+                                  const Requester&&             requester,
+                                  const std::optional<uint64_t> client_id)
 {
   try
   {
@@ -323,13 +361,13 @@ void ClientController<T>::Suspend(CALLBACK_&& callback,
       return;
     }
 
-    Controller::Suspend(
-        client, std::move(callback));  // Issue the deactivation update.
+    Controller::Suspend(client,
+                        std::move(callback));  // Issue the deactivation update.
     // A suspended client must not keep a usable session; drop it after the
     // state change is issued.
     gateKeeper->removeSession(client_id,
-        T::getTableName());  // A suspended client must not keep a live
-                             // session.
+                              T::getTableName());  // A suspended client must
+                                                   // not keep a live session.
   }
   catch (const std::exception& e)
   {
@@ -339,8 +377,10 @@ void ClientController<T>::Suspend(CALLBACK_&& callback,
 }
 
 template <Client_t T>
-drogon::Task<void> ClientController<T>::SuspendAsync(CALLBACK_&& callback,
-    const Requester&& requester, const std::optional<uint64_t> client_id)
+drogon::Task<void> ClientController<T>::SuspendAsync(
+    CALLBACK_&&                   callback,
+    const Requester&&             requester,
+    const std::optional<uint64_t> client_id)
 {
   try
   {
@@ -348,8 +388,8 @@ drogon::Task<void> ClientController<T>::SuspendAsync(CALLBACK_&& callback,
     // authorization or DB work.
     if (!client_id.has_value())
     {
-      std::move(callback)(
-          api::v2::Http::Status::NOT_ACCEPTABLE, "Invalid id provided");
+      std::move(callback)(api::v2::Http::Status::NOT_ACCEPTABLE,
+                          "Invalid id provided");
       co_return;
     }
 
@@ -359,8 +399,9 @@ drogon::Task<void> ClientController<T>::SuspendAsync(CALLBACK_&& callback,
 
     // Suspend and Activate share the toggle-active permission; awaited on
     // the IO loop.
-    if (!co_await gateKeeper->canToggleActiveAsync<T>(
-            requester, client_id.value(), error))
+    if (!co_await gateKeeper->canToggleActiveAsync<T>(requester,
+                                                      client_id.value(),
+                                                      error))
     {
       std::move(callback)(error.code, error.message);
       co_return;
@@ -369,8 +410,8 @@ drogon::Task<void> ClientController<T>::SuspendAsync(CALLBACK_&& callback,
     co_await Controller::SuspendAsync(client, std::move(callback));
     // Invalidate sessions once the suspension has been applied.
     gateKeeper->removeSession(client_id,
-        T::getTableName());  // A suspended client must not keep a live
-                             // session.
+                              T::getTableName());  // A suspended client must
+                                                   // not keep a live session.
   }
   catch (const std::exception& e)
   {
@@ -380,8 +421,9 @@ drogon::Task<void> ClientController<T>::SuspendAsync(CALLBACK_&& callback,
 }
 
 template <Client_t T>
-void ClientController<T>::Activate(CALLBACK_&& callback,
-    const Requester&& requester, const std::optional<uint64_t> client_id)
+void ClientController<T>::Activate(CALLBACK_&&                   callback,
+                                   const Requester&&             requester,
+                                   const std::optional<uint64_t> client_id)
 {
   try
   {
@@ -394,9 +436,9 @@ void ClientController<T>::Activate(CALLBACK_&& callback,
     }
     SuspendData suspendData(client_id.value());
 
-    T           client(suspendData);
+    T client(suspendData);
 
-    HttpError   error;
+    HttpError error;
     // Suspend and Activate share the toggle-active permission; denial
     // short-circuits with the gate's status.
     if (!gateKeeper->canToggleActive<T>(requester, client_id.value(), error))
@@ -408,7 +450,8 @@ void ClientController<T>::Activate(CALLBACK_&& callback,
     // Reactivation only flips the active flag; unlike Suspend, this path
     // does not touch sessions.
     Controller::Unsuspend(client,
-        std::move(callback));  // Reactivation only flips the active flag.
+                          std::move(callback));  // Reactivation only flips the
+                                                 // active flag.
   }
   catch (const std::exception& e)
   {
@@ -418,8 +461,10 @@ void ClientController<T>::Activate(CALLBACK_&& callback,
 }
 
 template <Client_t T>
-drogon::Task<void> ClientController<T>::ActivateAsync(CALLBACK_&& callback,
-    const Requester&& requester, const std::optional<uint64_t> client_id)
+drogon::Task<void> ClientController<T>::ActivateAsync(
+    CALLBACK_&&                   callback,
+    const Requester&&             requester,
+    const std::optional<uint64_t> client_id)
 {
   try
   {
@@ -427,19 +472,20 @@ drogon::Task<void> ClientController<T>::ActivateAsync(CALLBACK_&& callback,
     // authorization or DB work.
     if (!client_id.has_value())
     {
-      std::move(callback)(
-          api::v2::Http::Status::NOT_ACCEPTABLE, "Invalid id provided");
+      std::move(callback)(api::v2::Http::Status::NOT_ACCEPTABLE,
+                          "Invalid id provided");
       co_return;
     }
     SuspendData suspendData(client_id.value());
 
-    T           client(suspendData);
+    T client(suspendData);
 
-    HttpError   error;
+    HttpError error;
     // Suspend and Activate share the toggle-active permission; awaited on
     // the IO loop.
-    if (!co_await gateKeeper->canToggleActiveAsync<T>(
-            requester, client_id.value(), error))
+    if (!co_await gateKeeper->canToggleActiveAsync<T>(requester,
+                                                      client_id.value(),
+                                                      error))
     {
       std::move(callback)(error.code, error.message);
       co_return;
@@ -456,8 +502,10 @@ drogon::Task<void> ClientController<T>::ActivateAsync(CALLBACK_&& callback,
 }
 
 template <Client_t T>
-void ClientController<T>::ResetPassword(CALLBACK_&& callback,
-    [[maybe_unused]] const Requester&& requester, std::string_view data)
+void ClientController<T>::ResetPassword(
+    CALLBACK_&&                        callback,
+    [[maybe_unused]] const Requester&& requester,
+    std::string_view                   data)
 {
   // Not implemented: both arguments are discarded, so the callback is never
   // invoked by this method.
@@ -467,8 +515,9 @@ void ClientController<T>::ResetPassword(CALLBACK_&& callback,
 }
 
 template <Client_t T>
-void ClientController<T>::GetServices(CALLBACK_&& callback,
-    const Requester&& requester, std::optional<uint64_t> client_id)
+void ClientController<T>::GetServices(CALLBACK_&&             callback,
+                                      const Requester&&       requester,
+                                      std::optional<uint64_t> client_id)
 {
   try
   {
@@ -476,8 +525,8 @@ void ClientController<T>::GetServices(CALLBACK_&& callback,
     // authorization.
     if (!client_id.has_value())
     {
-      callback(
-          api::v2::Http::Status::BAD_REQUEST, "client_id extraction failed");
+      callback(api::v2::Http::Status::BAD_REQUEST,
+               "client_id extraction failed");
       return;
     }
 
@@ -493,8 +542,9 @@ void ClientController<T>::GetServices(CALLBACK_&& callback,
       return;
     }
 
-    Controller::GetServices(
-        client, std::move(callback));  // Delegate the service lookup query.
+    Controller::GetServices(client,
+                            std::move(callback));  // Delegate the service
+                                                   // lookup query.
   }
   catch (const std::exception& e)
   {
@@ -504,8 +554,10 @@ void ClientController<T>::GetServices(CALLBACK_&& callback,
 }
 
 template <Client_t T>
-drogon::Task<void> ClientController<T>::GetServicesAsync(CALLBACK_&& callback,
-    const Requester&& requester, std::optional<uint64_t> client_id)
+drogon::Task<void> ClientController<T>::GetServicesAsync(
+    CALLBACK_&&             callback,
+    const Requester&&       requester,
+    std::optional<uint64_t> client_id)
 {
   try
   {
@@ -513,8 +565,8 @@ drogon::Task<void> ClientController<T>::GetServicesAsync(CALLBACK_&& callback,
     // authorization.
     if (!client_id.has_value())
     {
-      std::move(callback)(
-          api::v2::Http::Status::BAD_REQUEST, "client_id extraction failed");
+      std::move(callback)(api::v2::Http::Status::BAD_REQUEST,
+                          "client_id extraction failed");
       co_return;
     }
 
@@ -524,15 +576,18 @@ drogon::Task<void> ClientController<T>::GetServicesAsync(CALLBACK_&& callback,
     HttpError error;
     // Async entitlement check; a denial short-circuits with the gate's
     // status.
-    if (!co_await gateKeeper->canGetServicesAsync<T>(
-            requester, client_id.value(), error))
+    if (!co_await gateKeeper->canGetServicesAsync<T>(requester,
+                                                     client_id.value(),
+                                                     error))
     {
       std::move(callback)(error.code, error.message);
       co_return;
     }
 
-    co_await Controller::GetServicesAsync(
-        client, std::move(callback));  // Await the async service lookup.
+    co_await Controller::GetServicesAsync(client,
+                                          std::move(
+                                              callback));  // Await the async
+                                                           // service lookup.
   }
   catch (const std::exception& e)
   {
@@ -545,62 +600,77 @@ drogon::Task<void> ClientController<T>::GetServicesAsync(CALLBACK_&& callback,
 // implementations. DeleteAsync wraps the callback first so the session cleanup
 // on success matches the synchronous Delete().
 template <Client_t T>
-drogon::Task<void> ClientController<T>::CreateAsync(
-    CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+drogon::Task<void> ClientController<T>::CreateAsync(CALLBACK_&&       callback,
+                                                    const Requester&& requester,
+                                                    std::string_view  data)
 {
   co_await EntityController<T>::CreateAsync(std::move(callback),
-      std::move(requester),
-      data);  // Async create reuses the generic pipeline.
+                                            std::move(requester),
+                                            data);  // Async create reuses the
+                                                    // generic pipeline.
 }
 
 template <Client_t T>
-drogon::Task<void> ClientController<T>::ReadAsync(
-    CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+drogon::Task<void> ClientController<T>::ReadAsync(CALLBACK_&&       callback,
+                                                  const Requester&& requester,
+                                                  std::string_view  data)
 {
   co_await EntityController<T>::ReadAsync(std::move(callback),
-      std::move(requester), data);  // Async read reuses the generic pipeline.
+                                          std::move(requester),
+                                          data);  // Async read reuses the
+                                                  // generic pipeline.
 }
 
 template <Client_t T>
-drogon::Task<void> ClientController<T>::UpdateAsync(CALLBACK_&& callback,
-    const Requester&& requester, std::string_view data,
+drogon::Task<void> ClientController<T>::UpdateAsync(
+    CALLBACK_&&                   callback,
+    const Requester&&             requester,
+    std::string_view              data,
     const std::optional<uint64_t> _id)
 {
   co_await EntityController<T>::UpdateAsync(std::move(callback),
-      std::move(requester), data,
-      _id);  // Async update reuses the generic pipeline.
+                                            std::move(requester),
+                                            data,
+                                            _id);  // Async update reuses the
+                                                   // generic pipeline.
 }
 
 template <Client_t T>
-drogon::Task<void> ClientController<T>::DeleteAsync(CALLBACK_&& callback,
-    const Requester&& requester, const std::optional<uint64_t> client_id)
+drogon::Task<void> ClientController<T>::DeleteAsync(
+    CALLBACK_&&                   callback,
+    const Requester&&             requester,
+    const std::optional<uint64_t> client_id)
 {
   auto cb = std::move(callback);  // Take ownership so it can be captured into
                                   // the wrapper lambda.
-  CALLBACK_ wrapped = [this, client_id, cb = std::move(cb)](
-                          int code, const std::string& body) mutable
+  CALLBACK_ wrapped =
+      [this, client_id, cb = std::move(cb)](int                code,
+                                            const std::string& body) mutable
   {
     if (code == static_cast<int>(api::v2::Http::Status::OK) &&
         client_id.has_value())
     {
       gateKeeper->removeSession(client_id,
-          T::getTableName());  // A suspended client must not keep a live
-                               // session.
+                                T::getTableName());  // A suspended client must
+                                                     // not keep a live session.
     }
     std::move(cb)(code, body);
   };
-  co_await EntityController<T>::DeleteAsync(std::move(wrapped),
-      std::move(requester),
-      client_id);  // Wrapper drops sessions on a successful delete.
+  co_await EntityController<T>::
+      DeleteAsync(std::move(wrapped),
+                  std::move(requester),
+                  client_id);  // Wrapper drops sessions on a successful delete.
 }
 
 template <Client_t T>
-drogon::Task<void> ClientController<T>::SearchAsync(
-    CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+drogon::Task<void> ClientController<T>::SearchAsync(CALLBACK_&&       callback,
+                                                    const Requester&& requester,
+                                                    std::string_view  data)
 {
   co_await EntityController<T>::SearchAsync(std::move(callback),
-      std::move(requester),
-      data);  // Async search reuses the generic pipeline.
+                                            std::move(requester),
+                                            data);  // Async search reuses the
+                                                    // generic pipeline.
 }
 /**
  * @def INSTANTIATE_CLIENT_CONTROLLER(TYPE)
@@ -610,60 +680,88 @@ drogon::Task<void> ClientController<T>::SearchAsync(
  * including only the header must be able to link. User and Provider are the
  * supported client types.
  */
-#define INSTANTIATE_CLIENT_CONTROLLER(                                      \
-    TYPE) /* NOLINT(cppcoreguidelines-macro-usage)*/                        \
-  template void ClientController<TYPE>::Create(CALLBACK_&& callback,        \
-      const Requester&& requester, std::string_view data);                  \
-  template void ClientController<TYPE>::Read(CALLBACK_&& callback,          \
-      const Requester&& requester, std::string_view data);                  \
-  template void ClientController<TYPE>::Update(CALLBACK_&& callback,        \
-      const Requester&& requester, std::string_view data,                   \
-      std::optional<uint64_t> id);                                          \
-  template void ClientController<TYPE>::Delete(CALLBACK_&& callback,        \
-      const Requester&& requester, std::optional<uint64_t> client_id);      \
-  template void ClientController<TYPE>::Search(CALLBACK_&& callback,        \
-      const Requester&& requester, std::string_view data);                  \
-  template drogon::Task<void> ClientController<TYPE>::CreateAsync(          \
-      CALLBACK_&& callback, const Requester&& requester,                    \
-      std::string_view data);                                               \
-  template drogon::Task<void> ClientController<TYPE>::ReadAsync(            \
-      CALLBACK_&& callback, const Requester&& requester,                    \
-      std::string_view data);                                               \
-  template drogon::Task<void> ClientController<TYPE>::UpdateAsync(          \
-      CALLBACK_&& callback, const Requester&& requester,                    \
-      std::string_view data, std::optional<uint64_t> id);                   \
-  template drogon::Task<void> ClientController<TYPE>::DeleteAsync(          \
-      CALLBACK_&& callback, const Requester&& requester,                    \
-      std::optional<uint64_t> client_id);                                   \
-  template drogon::Task<void> ClientController<TYPE>::SearchAsync(          \
-      CALLBACK_&& callback, const Requester&& requester,                    \
-      std::string_view data);                                               \
-  template void ClientController<TYPE>::Login(CALLBACK_&& callback,         \
-      const Requester&& requester, std::string_view data,                   \
-      const std::string& ip_address);                                       \
-  template drogon::Task<void> ClientController<TYPE>::LoginAsync(           \
-      CALLBACK_&& callback, const Requester&& requester,                    \
-      std::string_view data, const std::string& ip_address);                \
-  template void ClientController<TYPE>::Logout(CALLBACK_&& callback,        \
-      const Requester&& requester, const std::optional<std::string>& token, \
-      const std::string& ip_address);                                       \
-  template void ClientController<TYPE>::Suspend(CALLBACK_&& callback,       \
-      const Requester&& requester, std::optional<uint64_t> client_id);      \
-  template void ClientController<TYPE>::Activate(CALLBACK_&& callback,      \
-      const Requester&& requester, std::optional<uint64_t> client_id);      \
-  template void ClientController<TYPE>::ResetPassword(CALLBACK_&& callback, \
-      const Requester&& requester, std::string_view data);                  \
-  template drogon::Task<void> ClientController<TYPE>::SuspendAsync(         \
-      CALLBACK_&& callback, const Requester&& requester,                    \
-      std::optional<uint64_t> client_id);                                   \
-  template drogon::Task<void> ClientController<TYPE>::ActivateAsync(        \
-      CALLBACK_&& callback, const Requester&& requester,                    \
-      std::optional<uint64_t> client_id);                                   \
-  template void ClientController<TYPE>::GetServices(CALLBACK_&& callback,   \
-      const Requester&& requester, std::optional<uint64_t> client_id);      \
-  template drogon::Task<void> ClientController<TYPE>::GetServicesAsync(     \
-      CALLBACK_&& callback, const Requester&& requester,                    \
-      std::optional<uint64_t> client_id);
+#define INSTANTIATE_CLIENT_CONTROLLER(                                           \
+    TYPE) /* NOLINT(cppcoreguidelines-macro-usage)*/                             \
+  template void ClientController<TYPE>::Create(CALLBACK_&&       callback,       \
+                                               const Requester&& requester,      \
+                                               std::string_view  data);          \
+  template void ClientController<TYPE>::Read(CALLBACK_&&       callback,         \
+                                             const Requester&& requester,        \
+                                             std::string_view  data);            \
+  template void ClientController<TYPE>::Update(CALLBACK_&&       callback,       \
+                                               const Requester&& requester,      \
+                                               std::string_view  data,           \
+                                               std::optional<uint64_t> id);      \
+  template void                                                                  \
+  ClientController<TYPE>::Delete(CALLBACK_&&             callback,               \
+                                 const Requester&&       requester,              \
+                                 std::optional<uint64_t> client_id);             \
+  template void ClientController<TYPE>::Search(CALLBACK_&&       callback,       \
+                                               const Requester&& requester,      \
+                                               std::string_view  data);          \
+  template drogon::Task<void>                                                    \
+  ClientController<TYPE>::CreateAsync(CALLBACK_&&       callback,                \
+                                      const Requester&& requester,               \
+                                      std::string_view  data);                   \
+  template drogon::Task<void>                                                    \
+  ClientController<TYPE>::ReadAsync(CALLBACK_&&       callback,                  \
+                                    const Requester&& requester,                 \
+                                    std::string_view  data);                     \
+  template drogon::Task<void>                                                    \
+  ClientController<TYPE>::UpdateAsync(CALLBACK_&&             callback,          \
+                                      const Requester&&       requester,         \
+                                      std::string_view        data,              \
+                                      std::optional<uint64_t> id);               \
+  template drogon::Task<void>                                                    \
+  ClientController<TYPE>::DeleteAsync(CALLBACK_&&             callback,          \
+                                      const Requester&&       requester,         \
+                                      std::optional<uint64_t> client_id);        \
+  template drogon::Task<void>                                                    \
+                ClientController<TYPE>::SearchAsync(CALLBACK_&&       callback,  \
+                                                    const Requester&& requester, \
+                                                    std::string_view  data);     \
+  template void ClientController<TYPE>::Login(CALLBACK_&&        callback,       \
+                                              const Requester&&  requester,      \
+                                              std::string_view   data,           \
+                                              const std::string& ip_address);    \
+  template drogon::Task<void>                                                    \
+  ClientController<TYPE>::LoginAsync(CALLBACK_&&        callback,                \
+                                     const Requester&&  requester,               \
+                                     std::string_view   data,                    \
+                                     const std::string& ip_address);             \
+  template void                                                                  \
+  ClientController<TYPE>::Logout(CALLBACK_&&                       callback,     \
+                                 const Requester&&                 requester,    \
+                                 const std::optional<std::string>& token,        \
+                                 const std::string&                ip_address);  \
+  template void                                                                  \
+  ClientController<TYPE>::Suspend(CALLBACK_&&             callback,              \
+                                  const Requester&&       requester,             \
+                                  std::optional<uint64_t> client_id);            \
+  template void                                                                  \
+  ClientController<TYPE>::Activate(CALLBACK_&&             callback,             \
+                                   const Requester&&       requester,            \
+                                   std::optional<uint64_t> client_id);           \
+  template void                                                                  \
+  ClientController<TYPE>::ResetPassword(CALLBACK_&&       callback,              \
+                                        const Requester&& requester,             \
+                                        std::string_view  data);                 \
+  template drogon::Task<void>                                                    \
+  ClientController<TYPE>::SuspendAsync(CALLBACK_&&             callback,         \
+                                       const Requester&&       requester,        \
+                                       std::optional<uint64_t> client_id);       \
+  template drogon::Task<void>                                                    \
+  ClientController<TYPE>::ActivateAsync(CALLBACK_&&             callback,        \
+                                        const Requester&&       requester,       \
+                                        std::optional<uint64_t> client_id);      \
+  template void                                                                  \
+  ClientController<TYPE>::GetServices(CALLBACK_&&             callback,          \
+                                      const Requester&&       requester,         \
+                                      std::optional<uint64_t> client_id);        \
+  template drogon::Task<void>                                                    \
+  ClientController<TYPE>::GetServicesAsync(CALLBACK_&&             callback,     \
+                                           const Requester&&       requester,    \
+                                           std::optional<uint64_t> client_id);
 
 INSTANTIATE_CLIENT_CONTROLLER(User)      // User client type.
 INSTANTIATE_CLIENT_CONTROLLER(Provider)  // Provider client type.

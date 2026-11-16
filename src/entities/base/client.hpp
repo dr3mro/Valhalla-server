@@ -89,8 +89,9 @@ namespace api  // Outer namespace for the whole API.
         std::is_same<T, Types::UpdateClient_t>::value ||
         std::is_same<T, Types::SuspendData>::value ||
         std::is_same<T,
-            Types::Data_t>::value;  // A compile-time whitelist: only these four
-                                    // payloads make sense for Client helpers.
+                     Types::Data_t>::value;  // A compile-time whitelist: only
+                                             // these four payloads make sense
+                                             // for Client helpers.
 
     /**
      * @class Client
@@ -134,8 +135,8 @@ namespace api  // Outer namespace for the whole API.
       template <typename T>
       Client(const T& data, const std::string& tablename)
           : Entity(data,
-                tablename)  // Forward both to the base; the table will be
-                            // "users" or "providers".
+                   tablename)  // Forward both to the base; the table will be
+                               // "users" or "providers".
       {
       }
 
@@ -184,7 +185,8 @@ namespace api  // Outer namespace for the whole API.
        * @return UPDATE ... RETURNING id,active, or std::nullopt if the
        * payload is not SuspendData or another exception occurs.
        */
-      std::optional<std::string> getSqlToggleSuspendStatement(bool state,
+      std::optional<std::string> getSqlToggleSuspendStatement(
+          bool          state,
           pqxx::params& params)  // One shared builder for both suspend
                                  // and activate.
       {
@@ -205,15 +207,17 @@ namespace api  // Outer namespace for the whole API.
           return fmt::format(
               "UPDATE {} SET active={} WHERE id={} RETURNING "
               "id,active;",
-              tablename, state_ph,
+              tablename,
+              state_ph,
               id_ph);  // RETURNING confirms the new state.
         }
         catch (const std::exception&
-                e)  // Wrong payload type or a formatting problem.
+                   e)  // Wrong payload type or a formatting problem.
         {
-          Message::ErrorMessage(fmt::format(
-              "Failed to create Sql suspend statement for table {}.",
-              tablename));                     // Log the table.
+          Message::ErrorMessage(
+              fmt::
+                  format("Failed to create Sql suspend statement for table {}.",
+                         tablename));          // Log the table.
           Message::CriticalMessage(e.what());  // Log details.
           return std::nullopt;                 // Signal failure.
         }
@@ -271,11 +275,12 @@ namespace api  // Outer namespace for the whole API.
         auto client_data = std::get<T>(getData())
                                .get_data_set();  // The validated column/value
                                                  // pairs from the payload.
-        auto iterator    = std::ranges::find_if(client_data,
-            [&](const auto& item)
-            {
-              return item.first == USERNAME;
-            });  // Find the pair whose column is "username".
+        auto iterator = std::ranges::find_if(client_data,
+                                             [&](const auto& item)
+                                             {
+                                               return item.first == USERNAME;
+                                             });  // Find the pair whose column
+                                                  // is "username".
 
         if (iterator != client_data.end())  // Only check when the payload
                                             // actually contains a username.
@@ -283,9 +288,11 @@ namespace api  // Outer namespace for the whole API.
           std::string username =
               iterator->second;  // The value part of the pair.
           auto result =
-              databaseController()->checkItemExists(tablename, USERNAME,
-                  username);  // Ask the database whether that username
-                              // already exists.
+              databaseController()
+                  ->checkItemExists(tablename,
+                                    USERNAME,
+                                    username);  // Ask the database whether that
+                                                // username already exists.
           return result.value_or(false);  // A failed/unset lookup counts as
                                           // "does not exist".
         }
@@ -328,8 +335,8 @@ namespace api  // Outer namespace for the whole API.
               values_arr;  // Matching placeholders in the same order.
 
           for (const auto& item :
-              clientdata.get_data_set())  // Walk each validated
-                                          // (column, value) pair.
+               clientdata.get_data_set())  // Walk each validated
+                                           // (column, value) pair.
           {
             keys_arr.push_back(item.first);  // The column name is trusted
                                              // because it came from validation.
@@ -339,17 +346,18 @@ namespace api  // Outer namespace for the whole API.
           }
 
           return fmt::format("INSERT INTO {} ({}) VALUES ({}) RETURNING id;",
-              tablename, fmt::join(keys_arr, ","),
-              fmt::join(values_arr,
-                  ","));  // RETURNING id gives back the new account
-                          // id.
+                             tablename,
+                             fmt::join(keys_arr, ","),
+                             fmt::join(values_arr,
+                                       ","));  // RETURNING id gives back the
+                                               // new account id.
         }
         catch (
             const std::exception& e)  // Wrong payload type or formatting error.
         {
           Message::ErrorMessage(
               fmt::format("Failed to create Sql create statement for table {}.",
-                  tablename));                 // Log the table.
+                          tablename));         // Log the table.
           Message::CriticalMessage(e.what());  // Log details.
           return std::nullopt;                 // Signal failure.
         }
@@ -392,25 +400,31 @@ namespace api  // Outer namespace for the whole API.
           std::vector<std::string>
               set_clauses;  // One "column = $n" string per field.
           for (auto it = clientdata.begin(); it != clientdata.end();
-              ++it)  // Walk every validated pair.
+               ++it)  // Walk every validated pair.
           {
-            set_clauses.push_back(fmt::format("{} = {}", it->first,
-                binder.bind(it->second)));  // Column name is trusted; value
-                                            // is bound.
+            set_clauses.push_back(
+                fmt::format("{} = {}",
+                            it->first,
+                            binder.bind(
+                                it->second)));  // Column name is trusted; value
+                                                // is bound.
           }
 
           return fmt::format("UPDATE {} SET {} WHERE id={} RETURNING id;",
-              tablename, fmt::join(set_clauses, ", "),
-              binder.bind(client_id.value()));  // Bind the id last so its
-                                                // placeholder follows the SET
-                                                // values.
+                             tablename,
+                             fmt::join(set_clauses, ", "),
+                             binder.bind(
+                                 client_id
+                                     .value()));  // Bind the id last so its
+                                                  // placeholder follows the SET
+                                                  // values.
         }
         catch (
             const std::exception& e)  // Wrong payload type or formatting error.
         {
           Message::ErrorMessage(
               fmt::format("Failed to create Sql update statement for table {}.",
-                  tablename));                 // Log the table.
+                          tablename));         // Log the table.
           Message::CriticalMessage(e.what());  // Log details.
           return std::nullopt;                 // Signal failure.
         }

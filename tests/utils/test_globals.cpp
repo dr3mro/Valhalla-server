@@ -75,7 +75,7 @@ namespace
 // These checks happen during compilation: an accepted type lets a generic
 // controller instantiate, a rejected one does not.
 TEST_CASE("Entity concepts classify the entity hierarchy at compile time",
-    "[utils][concepts]")
+          "[utils][concepts]")
 {
   STATIC_REQUIRE(
       Client_t<User>);  // Compile-time assert: User satisfies Client_t, so
@@ -98,9 +98,10 @@ TEST_CASE("Entity concepts classify the entity hierarchy at compile time",
 // permission rules.
 TEST_CASE("Requester exposes id and group with matchers", "[utils][requester]")
 {
-  const api::v2::Requester requester(42,
-      "providers");  // Make an immutable caller with numeric id 42 in the
-                     // "providers" group.
+  const api::v2::Requester
+      requester(42,
+                "providers");  // Make an immutable caller with numeric id 42 in
+                               // the "providers" group.
 
   CHECK(requester.getId() ==
         42);  // The getter must return exactly the id given to the constructor.
@@ -116,7 +117,8 @@ TEST_CASE("Requester exposes id and group with matchers", "[utils][requester]")
 
   CHECK(requester.isProvider());  // The "providers" convenience helper must
                                   // agree with groupMatch.
-  CHECK_FALSE(requester
+  CHECK_FALSE(
+      requester
           .isUser());  // The other role helpers must say no for this caller.
   CHECK_FALSE(requester.isAdmin());  // "providers" is not "admins".
   CHECK_FALSE(requester.isStaff());  // "providers" is not "staff".
@@ -129,19 +131,19 @@ TEST_CASE("Requester exposes id and group with matchers", "[utils][requester]")
 // only the original.
 TEST_CASE("Requester can be copied and mutated", "[utils][requester]")
 {
-  api::v2::Requester original(
-      1, "users");             // A mutable caller object we will change later.
+  api::v2::Requester
+      original(1, "users");    // A mutable caller object we will change later.
   const auto copy = original;  // Take a snapshot; changing original must not
                                // change this copy.
   CHECK(copy.getId() == 1);    // The copy starts with the same id.
-  CHECK(
-      copy.getGroup() == "users");  // The copy starts with the same group text.
+  CHECK(copy.getGroup() ==
+        "users");  // The copy starts with the same group text.
 
   original.setId(2);  // Change the id to prove the setter really writes.
   original.setGroup("admins");   // Change the group to a new role.
   CHECK(original.getId() == 2);  // The new id is visible through the getter.
   CHECK(original
-          .isAdmin());  // The role helper now recognises the new group name.
+            .isAdmin());  // The role helper now recognises the new group name.
 }
 
 // The Status enum mirrors standard HTTP numbers; clients depend on those exact
@@ -166,8 +168,8 @@ TEST_CASE("Http::Status uses the expected status codes", "[utils][http]")
 
 // Each known code maps to its standard reason phrase; unknown codes fall back
 // safely instead of crashing.
-TEST_CASE(
-    "Http::getDescription maps codes to their reason phrases", "[utils][http]")
+TEST_CASE("Http::getDescription maps codes to their reason phrases",
+          "[utils][http]")
 {
   CHECK(api::v2::Http::getDescription(api::v2::Http::Status::OK) ==
         "OK");  // 200 -> "OK".
@@ -208,8 +210,8 @@ TEST_CASE("Http::Error is a plain aggregate", "[utils][http]")
 
 // A broader sweep: every status family the server actually returns must have
 // the right phrase.
-TEST_CASE(
-    "Http::getDescription covers all defined status codes", "[utils][http]")
+TEST_CASE("Http::getDescription covers all defined status codes",
+          "[utils][http]")
 {
   using api::v2::Http::getDescription;  // Shorthand so the checks below read
                                         // plainly.
@@ -251,21 +253,21 @@ TEST_CASE(
 // The isX helpers compare hard-coded strings, so exact spelling (and capital S
 // for Super) matters.
 TEST_CASE("Requester isAdmin/isStaff/isOwner/isSuper use the right group names",
-    "[utils][requester]")
+          "[utils][requester]")
 {
   CHECK(api::v2::Requester(1, "admins")
-          .isAdmin());  // The literal "admins" is what unlocks isAdmin.
+            .isAdmin());  // The literal "admins" is what unlocks isAdmin.
   CHECK(api::v2::Requester(1, "staff")
-          .isStaff());  // The literal "staff" unlocks isStaff.
+            .isStaff());  // The literal "staff" unlocks isStaff.
   CHECK(api::v2::Requester(1, "owners")
-          .isOwner());  // The literal "owners" unlocks isOwner.
+            .isOwner());  // The literal "owners" unlocks isOwner.
   CHECK(api::v2::Requester(1, "Super")
-          .isSuper());  // Only the capitalised "Super" unlocks isSuper.
+            .isSuper());  // Only the capitalised "Super" unlocks isSuper.
 
   CHECK_FALSE(api::v2::Requester(1, "users")
-          .isAdmin());  // A normal user is not an admin.
+                  .isAdmin());  // A normal user is not an admin.
   CHECK_FALSE(api::v2::Requester(1, "admins")
-          .isUser());  // An admin is not in the "users" group.
+                  .isUser());  // An admin is not in the "users" group.
   CHECK_FALSE(api::v2::Requester(1, "admins")
-          .isProvider());  // An admin is not a provider either.
+                  .isProvider());  // An admin is not a provider either.
 }

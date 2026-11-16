@@ -94,10 +94,11 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
    * `id`.
    */
   template <typename U = T>
-  void CreateImpl(
-      CALLBACK_&& callback, const Requester&& requester, std::string_view data)
-    requires(
-        !std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value);
+  void CreateImpl(CALLBACK_&&       callback,
+                  const Requester&& requester,
+                  std::string_view  data)
+    requires(!std::is_same<U, Patient>::value &&
+             !std::is_same<U, Visits>::value);
 
   /**
    * @brief Patient/Visits create specialization: uses the generic
@@ -109,8 +110,9 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
    * @param[in] data JSON body describing the new entity.
    */
   template <typename U = T>
-  void CreateImpl(
-      CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+  void CreateImpl(CALLBACK_&&       callback,
+                  const Requester&& requester,
+                  std::string_view  data)
     requires(std::is_same<U, Patient>::value || std::is_same<U, Visits>::value);
 
   /**
@@ -124,10 +126,11 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
    * `id`.
    */
   template <typename U = T>
-  drogon::Task<void> CreateAsyncImpl(
-      CALLBACK_&& callback, const Requester&& requester, std::string_view data)
-    requires(
-        !std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value);
+  drogon::Task<void> CreateAsyncImpl(CALLBACK_&&       callback,
+                                     const Requester&& requester,
+                                     std::string_view  data)
+    requires(!std::is_same<U, Patient>::value &&
+             !std::is_same<U, Visits>::value);
 
   /**
    * @brief Coroutine form of the Patient/Visits create specialization.
@@ -138,8 +141,9 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
    * @param[in] data JSON body describing the new entity.
    */
   template <typename U = T>
-  drogon::Task<void> CreateAsyncImpl(
-      CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+  drogon::Task<void> CreateAsyncImpl(CALLBACK_&&       callback,
+                                     const Requester&& requester,
+                                     std::string_view  data)
     requires(std::is_same<U, Patient>::value || std::is_same<U, Visits>::value);
 
   /**
@@ -152,8 +156,9 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
    * @param[in] id Target entity id.
    */
   template <typename U = T>
-  void DeleteImpl(CALLBACK_&& callback, const Requester&& requester,
-      std::optional<uint64_t> id)
+  void DeleteImpl(CALLBACK_&&             callback,
+                  const Requester&&       requester,
+                  std::optional<uint64_t> id)
     requires(std::is_same<U, Patient>::value || std::is_same<U, Visits>::value);
 
   /**
@@ -167,10 +172,11 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
    * @param[in] id Unused target id.
    */
   template <typename U = T>
-  void DeleteImpl(CALLBACK_&&            callback,
-      [[maybe_unused]] const Requester&& requester, std::optional<uint64_t> id)
-    requires(
-        !std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value);
+  void DeleteImpl(CALLBACK_&&                        callback,
+                  [[maybe_unused]] const Requester&& requester,
+                  std::optional<uint64_t>            id)
+    requires(!std::is_same<U, Patient>::value &&
+             !std::is_same<U, Visits>::value);
 
   /**
    * @brief Coroutine form of the Patient/Visits delete specialization.
@@ -180,8 +186,9 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
    * @param[in] id Target entity id.
    */
   template <typename U = T>
-  drogon::Task<void> DeleteAsyncImpl(CALLBACK_&& callback,
-      const Requester&& requester, std::optional<uint64_t> id)
+  drogon::Task<void> DeleteAsyncImpl(CALLBACK_&&             callback,
+                                     const Requester&&       requester,
+                                     std::optional<uint64_t> id)
     requires(std::is_same<U, Patient>::value || std::is_same<U, Visits>::value);
 
   /**
@@ -195,10 +202,12 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
    * @param[in] id Unused target id.
    */
   template <typename U = T>
-  drogon::Task<void> DeleteAsyncImpl(CALLBACK_&& callback,
-      [[maybe_unused]] const Requester&& requester, std::optional<uint64_t> id)
-    requires(
-        !std::is_same<U, Patient>::value && !std::is_same<U, Visits>::value);
+  drogon::Task<void> DeleteAsyncImpl(
+      CALLBACK_&&                        callback,
+      [[maybe_unused]] const Requester&& requester,
+      std::optional<uint64_t>            id)
+    requires(!std::is_same<U, Patient>::value &&
+             !std::is_same<U, Visits>::value);
 
   /**
    * @brief Search specialization for non-Patient types: always answers 400
@@ -210,8 +219,9 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
    * @param[in] data Unused search criteria.
    */
   template <typename U = T>
-  void SearchImpl(
-      CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+  void SearchImpl(CALLBACK_&&       callback,
+                  const Requester&& requester,
+                  std::string_view  data)
     requires(!std::is_same<U, Patient>::value);
 
   /**
@@ -224,8 +234,9 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
    * @param[in] data JSON body containing criteria, limit and offset.
    */
   template <typename U = T>
-  void SearchImpl(
-      CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+  void SearchImpl(CALLBACK_&&       callback,
+                  const Requester&& requester,
+                  std::string_view  data)
     requires(std::is_same<U, Patient>::value);
 
   /**
@@ -239,8 +250,9 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
    * 400.
    */
   template <typename U = T>
-  void GetVisitsImpl(CALLBACK_&& callback, const Requester&& requester,
-      std::optional<uint64_t> patient_id)
+  void GetVisitsImpl(CALLBACK_&&             callback,
+                     const Requester&&       requester,
+                     std::optional<uint64_t> patient_id)
     requires(std::is_same<U, Patient>::value);
 
   /**
@@ -253,8 +265,9 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
    * @param[in] patient_id Unused patient id.
    */
   template <typename U = T>
-  void GetVisitsImpl(CALLBACK_&& callback, const Requester&& requester,
-      std::optional<uint64_t> patient_id)
+  void GetVisitsImpl(CALLBACK_&&             callback,
+                     const Requester&&       requester,
+                     std::optional<uint64_t> patient_id)
     requires(!std::is_same<U, Patient>::value);
 
   /**
@@ -267,8 +280,9 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
    * 400.
    */
   template <typename U = T>
-  drogon::Task<void> GetVisitsAsyncImpl(CALLBACK_&& callback,
-      const Requester&& requester, std::optional<uint64_t> patient_id)
+  drogon::Task<void> GetVisitsAsyncImpl(CALLBACK_&&             callback,
+                                        const Requester&&       requester,
+                                        std::optional<uint64_t> patient_id)
     requires(std::is_same<U, Patient>::value);
 
   /**
@@ -281,9 +295,10 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
    * @param[in] patient_id Unused patient id.
    */
   template <typename U = T>
-  drogon::Task<void> GetVisitsAsyncImpl(CALLBACK_&& callback,
-      [[maybe_unused]] const Requester&&            requester,
-      [[maybe_unused]] std::optional<uint64_t>      patient_id)
+  drogon::Task<void> GetVisitsAsyncImpl(
+      CALLBACK_&&                              callback,
+      [[maybe_unused]] const Requester&&       requester,
+      [[maybe_unused]] std::optional<uint64_t> patient_id)
     requires(!std::is_same<U, Patient>::value);
 
  public:
@@ -294,53 +309,67 @@ class ClinicController : public EntityController<T>, public ClinicControllerBase
 
   /** @brief Creates a clinic entity; forwards to the type-selected
    * CreateImpl(). */
-  void Create(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data)
+  void Create(CALLBACK_&&       callback,
+              const Requester&& requester,
+              std::string_view  data)
       final;  // Forwards to the type-selected CreateImpl.
   /** @brief Coroutine form of Create(); forwards to CreateAsyncImpl(). */
-  drogon::Task<void> CreateAsync(CALLBACK_&& callback,
-      const Requester&&                      requester,
-      std::string_view data) final;  // Coroutine create forwarder.
+  drogon::Task<void> CreateAsync(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) final;  // Coroutine create forwarder.
   /** @brief Reads a clinic entity; delegates to EntityController::Read(). */
-  void               Read(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data) final;  // Delegates to EntityController::Read.
+  void Read(
+      CALLBACK_&&       callback,
+      const Requester&& requester,
+      std::string_view  data) final;  // Delegates to EntityController::Read.
   /** @brief Coroutine form of Read(); delegates to
    * EntityController::ReadAsync(). */
-  drogon::Task<void> ReadAsync(
-      CALLBACK_&& callback, const Requester&& requester, std::string_view data)
+  drogon::Task<void> ReadAsync(CALLBACK_&&       callback,
+                               const Requester&& requester,
+                               std::string_view  data)
       final;  // Delegates to EntityController::ReadAsync.
   /** @brief Updates a clinic entity; delegates to EntityController::Update().
    */
-  void Update(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data, std::optional<uint64_t> id)
+  void Update(CALLBACK_&&             callback,
+              const Requester&&       requester,
+              std::string_view        data,
+              std::optional<uint64_t> id)
       final;  // Delegates to EntityController::Update.
   /** @brief Coroutine form of Update(); delegates to
    * EntityController::UpdateAsync(). */
-  drogon::Task<void> UpdateAsync(CALLBACK_&& callback,
-      const Requester&& requester, std::string_view data,
-      std::optional<uint64_t> id)
+  drogon::Task<void> UpdateAsync(CALLBACK_&&             callback,
+                                 const Requester&&       requester,
+                                 std::string_view        data,
+                                 std::optional<uint64_t> id)
       final;  // Delegates to EntityController::UpdateAsync.
   /** @brief Deletes a clinic entity; forwards to the type-selected
    * DeleteImpl(). */
-  void Delete(CALLBACK_&& callback, const Requester&& requester,
-      std::optional<uint64_t> id)
+  void Delete(CALLBACK_&&             callback,
+              const Requester&&       requester,
+              std::optional<uint64_t> id)
       final;  // Forwards to the type-selected DeleteImpl.
   /** @brief Coroutine form of Delete(); forwards to DeleteAsyncImpl(). */
-  drogon::Task<void> DeleteAsync(CALLBACK_&& callback,
-      const Requester&&                      requester,
+  drogon::Task<void> DeleteAsync(
+      CALLBACK_&&             callback,
+      const Requester&&       requester,
       std::optional<uint64_t> id) final;  // Coroutine delete forwarder.
   /** @brief Searches clinic entities; forwards to the type-selected
    * SearchImpl(). */
-  void               Search(CALLBACK_&& callback, const Requester&& requester,
-      std::string_view data)
+  void Search(CALLBACK_&&       callback,
+              const Requester&& requester,
+              std::string_view  data)
       final;  // Forwards to the type-selected SearchImpl.
   /** @brief Retrieves a patient's visits; forwards to the type-selected
    * GetVisitsImpl(). */
-  void GetVisits(CALLBACK_&& callback, const Requester&& requester,
+  void GetVisits(
+      CALLBACK_&&             callback,
+      const Requester&&       requester,
       std::optional<uint64_t> patient_id) final;  // Forwards to GetVisitsImpl.
   /** @brief Coroutine form of GetVisits(); forwards to GetVisitsAsyncImpl().
    */
-  drogon::Task<void> GetVisitsAsync(CALLBACK_&& callback,
-      const Requester&& requester, std::optional<uint64_t> patient_id)
+  drogon::Task<void> GetVisitsAsync(CALLBACK_&&             callback,
+                                    const Requester&&       requester,
+                                    std::optional<uint64_t> patient_id)
       final;  // Coroutine visit-lookup forwarder.
 };

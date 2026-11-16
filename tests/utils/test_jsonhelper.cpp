@@ -67,8 +67,8 @@ TEST_CASE("JsonHelper::jsonify wraps a message", "[utils][jsonhelper]")
 
 // stringify must emit JsonCpp's styled text with the exact spacing clients may
 // depend on.
-TEST_CASE(
-    "JsonHelper::stringify serialises a JsonCpp value", "[utils][jsonhelper]")
+TEST_CASE("JsonHelper::stringify serialises a JsonCpp value",
+          "[utils][jsonhelper]")
 {
   Json::Value value =
       JsonHelper::jsonify("the message");  // Start from a wrapper so the
@@ -90,14 +90,14 @@ TEST_CASE(
 
 // The jsoncons overload must also produce readable text containing every key
 // and value.
-TEST_CASE(
-    "JsonHelper::stringify serialises a jsoncons value", "[utils][jsonhelper]")
+TEST_CASE("JsonHelper::stringify serialises a jsoncons value",
+          "[utils][jsonhelper]")
 {
   jsoncons::json object =
       jsoncons::json::object();  // Create an empty JSON object (as opposed to
                                  // an array or null).
-  object["key"]          = "value";  // Add a member whose value is a string.
-  object["answer"]       = 42;       // Add a member whose value is a number.
+  object["key"]    = "value";    // Add a member whose value is a string.
+  object["answer"] = 42;         // Add a member whose value is a number.
 
   const std::string text = JsonHelper::stringify(
       object);  // Serialise through the jsoncons dump_pretty overload.
@@ -113,7 +113,7 @@ TEST_CASE(
 // What stringify writes, jsoncons::parse must read back - a classic round-trip
 // check.
 TEST_CASE("JsonHelper::stringify round-trips through jsoncons parse",
-    "[utils][jsonhelper]")
+          "[utils][jsonhelper]")
 {
   jsoncons::json object =
       jsoncons::json::object();  // Build a small object with one member.
@@ -129,7 +129,7 @@ TEST_CASE("JsonHelper::stringify round-trips through jsoncons parse",
 // An empty message is still a valid message: the key must exist with an empty
 // string value.
 TEST_CASE("JsonHelper::jsonify handles an empty string message",
-    "[utils][jsonhelper]")
+          "[utils][jsonhelper]")
 {
   const Json::Value wrapped = JsonHelper::jsonify("");  // Wrap an empty string.
 
@@ -141,7 +141,7 @@ TEST_CASE("JsonHelper::jsonify handles an empty string message",
 // Serialising an object with no members must not fail or produce an empty
 // buffer.
 TEST_CASE("JsonHelper::stringify handles an empty jsoncons object",
-    "[utils][jsonhelper]")
+          "[utils][jsonhelper]")
 {
   const jsoncons::json empty =
       jsoncons::json::object();  // A valid but member-less JSON object.
@@ -151,8 +151,8 @@ TEST_CASE("JsonHelper::stringify handles an empty jsoncons object",
 }
 
 // JSON null is a legitimate value; serialising it must not throw.
-TEST_CASE(
-    "JsonHelper::stringify handles a jsoncons null", "[utils][jsonhelper]")
+TEST_CASE("JsonHelper::stringify handles a jsoncons null",
+          "[utils][jsonhelper]")
 {
   const jsoncons::json null_j =
       jsoncons::json::null();  // Build a JSON null (not an object or an
@@ -164,7 +164,7 @@ TEST_CASE(
 // A default-constructed Json::Value is JsonCpp's "null" state; stringify must
 // handle that too.
 TEST_CASE("JsonHelper::stringify handles an empty JsonCpp value",
-    "[utils][jsonhelper]")
+          "[utils][jsonhelper]")
 {
   const Json::Value empty;  // Default construction gives the null value.
   CHECK_NOTHROW(JsonHelper::stringify(empty));  // No exception may escape.

@@ -79,17 +79,17 @@ namespace api::v2::Http  // Groups HTTP-related types with the version-2 API
                        // response yet.
 
     // Successful responses
-    OK         = 200,  // The general "it worked" answer.
-    CREATED    = 201,  // The request worked and a new resource was created.
-    ACCEPTED   = 202,  // Request accepted for processing, but the work is not
-                       // finished yet.
+    OK       = 200,  // The general "it worked" answer.
+    CREATED  = 201,  // The request worked and a new resource was created.
+    ACCEPTED = 202,  // Request accepted for processing, but the work is not
+                     // finished yet.
     NON_AUTHORITATIVE_INFORMATION =
         203,  // Returned information may differ from the original source.
-    NO_CONTENT        = 204,  // Success, but there is no body to send back.
-    RESET_CONTENT     = 205,  // Success; the client should reset whatever view
-                              // it is showing.
-    PARTIAL_CONTENT   = 206,  // Only part of the resource is returned (used
-                              // for ranged downloads).
+    NO_CONTENT      = 204,  // Success, but there is no body to send back.
+    RESET_CONTENT   = 205,  // Success; the client should reset whatever view
+                            // it is showing.
+    PARTIAL_CONTENT = 206,  // Only part of the resource is returned (used
+                            // for ranged downloads).
 
     // Redirection messages
     MULTIPLE_CHOICES  = 300,  // There are several possible responses; the
@@ -105,11 +105,11 @@ namespace api::v2::Http  // Groups HTTP-related types with the version-2 API
                                // method at the new address.
 
     // Client error responses
-    BAD_REQUEST        = 400,  // The server could not understand the request.
-    UNAUTHORIZED       = 401,  // The client must log in / authenticate first.
-    PAYMENT_REQUIRED   = 402,  // Reserved for future use (digital payments).
-    FORBIDDEN          = 403,  // The server understood but refuses to allow it.
-    NOT_FOUND          = 404,  // The requested resource does not exist.
+    BAD_REQUEST      = 400,  // The server could not understand the request.
+    UNAUTHORIZED     = 401,  // The client must log in / authenticate first.
+    PAYMENT_REQUIRED = 402,  // Reserved for future use (digital payments).
+    FORBIDDEN        = 403,  // The server understood but refuses to allow it.
+    NOT_FOUND        = 404,  // The requested resource does not exist.
     METHOD_NOT_ALLOWED =
         405,               // That HTTP method is not allowed for this resource.
     NOT_ACCEPTABLE = 406,  // The server cannot produce a response the
@@ -151,36 +151,47 @@ namespace api::v2::Http  // Groups HTTP-related types with the version-2 API
                     // the code by value.
   {
     // Utility: Map status codes to their descriptions
-    static const std::unordered_map<Status, std::string> StatusDescriptions = {
-        {CONTINUE, "Continue"},
-        {SWITCHING_PROTOCOLS,
-            "Switching Protocols"},  // A read-only table built once,
-                                     // pairing each code with its
-                                     // standard reason phrase (the rows
-                                     // continue below).
-        {PROCESSING, "Processing"}, {OK, "OK"}, {CREATED, "Created"},
-        {ACCEPTED, "Accepted"},
-        {NON_AUTHORITATIVE_INFORMATION, "Non-Authoritative Information"},
-        {NO_CONTENT, "No Content"}, {RESET_CONTENT, "Reset Content"},
-        {PARTIAL_CONTENT, "Partial Content"},
-        {MULTIPLE_CHOICES, "Multiple Choices"},
-        {MOVED_PERMANENTLY, "Moved Permanently"}, {FOUND, "Found"},
-        {SEE_OTHER, "See Other"}, {NOT_MODIFIED, "Not Modified"},
-        {TEMPORARY_REDIRECT, "Temporary Redirect"},
-        {PERMANENT_REDIRECT, "Permanent Redirect"},
-        {BAD_REQUEST, "Bad Request"}, {UNAUTHORIZED, "Unauthorized"},
-        {PAYMENT_REQUIRED, "Payment Required"}, {FORBIDDEN, "Forbidden"},
-        {NOT_FOUND, "Not Found"}, {METHOD_NOT_ALLOWED, "Method Not Allowed"},
-        {NOT_ACCEPTABLE, "Not Acceptable"}, {CONFLICT, "Conflict"},
-        {GONE, "Gone"}, {LENGTH_REQUIRED, "Length Required"},
-        {PRECONDITION_FAILED, "Precondition Failed"},
-        {PAYLOAD_TOO_LARGE, "Payload Too Large"},
-        {UNSUPPORTED_MEDIA_TYPE, "Unsupported Media Type"},
-        {INTERNAL_SERVER_ERROR, "Internal Server Error"},
-        {NOT_IMPLEMENTED, "Not Implemented"}, {BAD_GATEWAY, "Bad Gateway"},
-        {SERVICE_UNAVAILABLE, "Service Unavailable"},
-        {GATEWAY_TIMEOUT, "Gateway Timeout"},
-        {HTTP_VERSION_NOT_SUPPORTED, "HTTP Version Not Supported"}};
+    static const std::unordered_map<Status, std::string> StatusDescriptions =
+        {{CONTINUE, "Continue"},
+         {SWITCHING_PROTOCOLS,
+          "Switching Protocols"},  // A read-only table built once,
+                                   // pairing each code with its
+                                   // standard reason phrase (the rows
+                                   // continue below).
+         {PROCESSING, "Processing"},
+         {OK, "OK"},
+         {CREATED, "Created"},
+         {ACCEPTED, "Accepted"},
+         {NON_AUTHORITATIVE_INFORMATION, "Non-Authoritative Information"},
+         {NO_CONTENT, "No Content"},
+         {RESET_CONTENT, "Reset Content"},
+         {PARTIAL_CONTENT, "Partial Content"},
+         {MULTIPLE_CHOICES, "Multiple Choices"},
+         {MOVED_PERMANENTLY, "Moved Permanently"},
+         {FOUND, "Found"},
+         {SEE_OTHER, "See Other"},
+         {NOT_MODIFIED, "Not Modified"},
+         {TEMPORARY_REDIRECT, "Temporary Redirect"},
+         {PERMANENT_REDIRECT, "Permanent Redirect"},
+         {BAD_REQUEST, "Bad Request"},
+         {UNAUTHORIZED, "Unauthorized"},
+         {PAYMENT_REQUIRED, "Payment Required"},
+         {FORBIDDEN, "Forbidden"},
+         {NOT_FOUND, "Not Found"},
+         {METHOD_NOT_ALLOWED, "Method Not Allowed"},
+         {NOT_ACCEPTABLE, "Not Acceptable"},
+         {CONFLICT, "Conflict"},
+         {GONE, "Gone"},
+         {LENGTH_REQUIRED, "Length Required"},
+         {PRECONDITION_FAILED, "Precondition Failed"},
+         {PAYLOAD_TOO_LARGE, "Payload Too Large"},
+         {UNSUPPORTED_MEDIA_TYPE, "Unsupported Media Type"},
+         {INTERNAL_SERVER_ERROR, "Internal Server Error"},
+         {NOT_IMPLEMENTED, "Not Implemented"},
+         {BAD_GATEWAY, "Bad Gateway"},
+         {SERVICE_UNAVAILABLE, "Service Unavailable"},
+         {GATEWAY_TIMEOUT, "Gateway Timeout"},
+         {HTTP_VERSION_NOT_SUPPORTED, "HTTP Version Not Supported"}};
 
     auto description =
         StatusDescriptions.find(code);  // Look up the code; find returns an

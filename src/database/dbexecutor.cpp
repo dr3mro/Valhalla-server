@@ -76,8 +76,9 @@ DbExecutor::DbExecutor()
  * queue_max: Maximum queued tasks across all workers.
  * io_fast_path: Whether the IO-thread probe path is enabled.
  */
-DbExecutor::DbExecutor(
-    std::size_t workers, std::size_t queue_max, bool io_fast_path)
+DbExecutor::DbExecutor(std::size_t workers,
+                       std::size_t queue_max,
+                       bool        io_fast_path)
     : BoundedExecutor(workers, queue_max, "DB executor"),
       io_fast_path_(io_fast_path)
 {

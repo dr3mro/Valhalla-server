@@ -93,8 +93,8 @@ class BasicPermissionCache   // "Basic" because a
    * @param[in] max_entries Capacity; when reached on put(), the whole map is
    * cleared.
    */
-  explicit BasicPermissionCache(
-      std::chrono::seconds ttl, size_t max_entries = 10000)
+  explicit BasicPermissionCache(std::chrono::seconds ttl,
+                                size_t               max_entries = 10000)
       : ttl_(ttl), max_entries_(max_entries)
   {
   }  // Stores the idle lifetime and capacity; "explicit" prevents accidental
@@ -160,8 +160,9 @@ class BasicPermissionCache   // "Basic" because a
    * @param[in] generation_at_read Token from generation() taken before the
    * read.
    */
-  void put(const std::string& key, const jsoncons::json& value,
-      uint64_t generation_at_read)
+  void put(const std::string&    key,
+           const jsoncons::json& value,
+           uint64_t              generation_at_read)
   {
     if (!enabled())  // Nothing to store when caching is off.
     {
@@ -184,7 +185,8 @@ class BasicPermissionCache   // "Basic" because a
                      // memory use.
     }
     map_[key] = Entry{value,
-        Clock::now() + ttl_};  // Store the value with a fresh idle deadline.
+                      Clock::now() +
+                          ttl_};  // Store the value with a fresh idle deadline.
   }
 
   /**
@@ -198,11 +200,12 @@ class BasicPermissionCache   // "Basic" because a
   {
     std::lock_guard<std::mutex> lock(
         mutex_);  // Serialize the flush with reads and writes.
-    generation_.fetch_add(1,
-        std::memory_order_acq_rel);  // Bump the epoch so any in-flight
-                                     // put() with the old token is
-                                     // rejected.
-    map_.clear();                    // Remove every cached entry.
+    generation_
+        .fetch_add(1,
+                   std::memory_order_acq_rel);  // Bump the epoch so any
+                                                // in-flight put() with the old
+                                                // token is rejected.
+    map_.clear();                               // Remove every cached entry.
   }
 
   /** @brief Number of entries currently held (including any not yet swept).
@@ -223,7 +226,8 @@ class BasicPermissionCache   // "Basic" because a
    */
   static BasicPermissionCache& instance()
   {
-    static BasicPermissionCache cache(Store::getObject<Configurator>()
+    static BasicPermissionCache cache(
+        Store::getObject<Configurator>()
             ->get<Configurator::PermissionCacheConfig>()
             .ttl);  // Created once on first use; C++ guarantees thread-safe
                     // initialization of a function-local static.
@@ -251,8 +255,8 @@ class BasicPermissionCache   // "Basic" because a
     next_sweep_ =
         now + std::chrono::seconds{60};  // Schedule the next allowed sweep.
     for (auto it = map_.begin();
-        it != map_.end();)  // Walk every entry; note there is no ++it in
-                            // the header.
+         it != map_.end();)  // Walk every entry; note there is no ++it in
+                             // the header.
     {
       it = (now >= it->second.expires)
                ? map_.erase(it)
@@ -265,10 +269,10 @@ class BasicPermissionCache   // "Basic" because a
    * deadline. */
   struct Entry
   {
-    jsoncons::json value;   /**< Cached permissions JSON, the actual answer we
-                               are storing. */
-    TimePoint      expires; /**< Idle deadline; renewed on every hit so busy
-                               entries never expire. */
+    jsoncons::json value; /**< Cached permissions JSON, the actual answer we
+                             are storing. */
+    TimePoint expires;    /**< Idle deadline; renewed on every hit so busy
+                             entries never expire. */
   };
 
   std::chrono::seconds ttl_; /**< Idle lifetime; zero disables caching. Set

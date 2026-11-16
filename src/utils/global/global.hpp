@@ -50,9 +50,12 @@
 // the macro onto the next line, so a trailing // comment there would break it.
 // The expansion first builds "Failure: <what> : <function> : <file> : <line>"
 // and then sends that string to Message::CriticalMessage for logging.
-#define CRITICALMESSAGE                                                      \
-  std::string critical_error = fmt::format(                                  \
-      "Failure: {} : {} : {} : {}", e.what(), __func__, __FILE__, __LINE__); \
+#define CRITICALMESSAGE                                                  \
+  std::string critical_error = fmt::format("Failure: {} : {} : {} : {}", \
+                                           e.what(),                     \
+                                           __func__,                     \
+                                           __FILE__,                     \
+                                           __LINE__);                    \
   Message::CriticalMessage(critical_error);
 
 // Answers 503 (with a short message) when the database is busy, 500 otherwise.
@@ -72,10 +75,10 @@
 // line. It logs via CRITICALMESSAGE, then calls callback(status, body), where
 // the body is the raw error text for 503 but the safer formatted string for
 // 500.
-#define CRITICALMESSAGERESPONSE                          \
-  CRITICALMESSAGE                                        \
-  callback(api::v2::Http::statusForException(e),         \
-      api::v2::Http::statusForException(e) ==            \
-              api::v2::Http::Status::SERVICE_UNAVAILABLE \
-          ? std::string(e.what())                        \
-          : critical_error);
+#define CRITICALMESSAGERESPONSE                               \
+  CRITICALMESSAGE                                             \
+  callback(api::v2::Http::statusForException(e),              \
+           api::v2::Http::statusForException(e) ==            \
+                   api::v2::Http::Status::SERVICE_UNAVAILABLE \
+               ? std::string(e.what())                        \
+               : critical_error);

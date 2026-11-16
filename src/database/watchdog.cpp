@@ -136,10 +136,10 @@ WatchDog::WatchDog()
                                     // of the repair attempt.
               Message::CriticalMessage(
                   fmt::format("Database connection {} link is lost.",
-                      static_cast<const void*>(
-                          db_ptr.get())));  // Include the
-                                            // connection address
-                                            // for tracing.
+                              static_cast<const void*>(
+                                  db_ptr.get())));  // Include the
+                                                    // connection address
+                                                    // for tracing.
               try  // Reconnecting can throw, so isolate it
                    // from the outer loop handler.
               {
@@ -152,11 +152,11 @@ WatchDog::WatchDog()
                       fmt::format("Database connection "
                                   "{} is re-established "
                                   "successfully",
-                          static_cast<void*>(
-                              // Log the repaired link. Also
-                              // refresh the rest of the idle pool
-                              // after this link recovered.
-                              db_ptr.get())));
+                                  static_cast<void*>(
+                                      // Log the repaired link. Also
+                                      // refresh the rest of the idle pool
+                                      // after this link recovered.
+                                      db_ptr.get())));
                   // Ask the pool to refresh all other idle
                   // connections too.
                   dbHandler->reconnect_all();
@@ -175,9 +175,10 @@ WatchDog::WatchDog()
                                                // during reconnect should
                                                // not stop monitoring.
               {
-                Message::CriticalMessage(fmt::format("Reconnect exception: {}",
-                    e.what()));  // Record the exception
-                                 // text.
+                Message::CriticalMessage(
+                    fmt::format("Reconnect exception: {}",
+                                e.what()));  // Record the exception
+                                             // text.
               }
             }
 
@@ -204,9 +205,10 @@ WatchDog::WatchDog()
           catch (const std::exception& e)  // Any other error is logged
                                            // but never ends the thread.
           {
-            Message::CriticalMessage(fmt::format("Monitoring exception: {}",
-                e.what()));  // Include the exception text
-                             // for diagnosis.
+            Message::CriticalMessage(
+                fmt::format("Monitoring exception: {}",
+                            e.what()));  // Include the exception text
+                                         // for diagnosis.
             std::this_thread::sleep_for(
                 check_interval);  // Sleep so a persistent error
                                   // cannot hot-loop.

@@ -98,8 +98,8 @@ class Case : public Entity  // Inherits the full CRUD interface, then adds
   template <typename Data>
   Case(const Data& data, const std::string& tablename)
       : Entity(data,
-            tablename)  // Just pass both arguments up to the base; Case
-                        // itself adds no state.
+               tablename)  // Just pass both arguments up to the base; Case
+                           // itself adds no state.
   {
   }
 
@@ -146,9 +146,9 @@ class Case : public Entity  // Inherits the full CRUD interface, then adds
         {}
         WHERE
         id = {};)",
-        ORGNAME,
-        id);  // {} is replaced by the "clinics" table name
-              // and the clinic id.
+                             ORGNAME,
+                             id);  // {} is replaced by the "clinics" table name
+                                   // and the clinic id.
     // std::cout << query << std::endl;
     return query;  // Hand the finished statement to the caller (wrapped in
                    // optional).
@@ -189,9 +189,10 @@ class Case : public Entity  // Inherits the full CRUD interface, then adds
         LEFT JOIN {} p ON c.id = p.clinic_id
         WHERE
         p.id = {};)",
-        ORGNAME, tablename,
-        id);  // Fill in the clinics table, the record table
-              // and the record id.
+                             ORGNAME,
+                             tablename,
+                             id);  // Fill in the clinics table, the record
+                                   // table and the record id.
     // std::cout << query << std::endl;
     return query;  // Return the statement to PermissionManager.
   }
@@ -213,7 +214,8 @@ class Case : public Entity  // Inherits the full CRUD interface, then adds
     // Joins clinics to the record table on clinic_id and filters by this
     // record id, returning the clinic's owner/admin/staff so read access
     // can be checked against clinic membership.
-    auto query = fmt::format(R"(
+    auto query =
+        fmt::format(R"(
         SELECT
         c.owner_id,
         c.admin_id,
@@ -225,8 +227,9 @@ class Case : public Entity  // Inherits the full CRUD interface, then adds
         LEFT JOIN {} p ON c.id = p.clinic_id
         WHERE
         p.id = {};)",
-        ORGNAME, tablename,
-        id);  // Fill in clinics table, record table and record id.
+                    ORGNAME,
+                    tablename,
+                    id);  // Fill in clinics table, record table and record id.
     // std::cout << query << std::endl;
     return query;  // Return the statement.
   }
@@ -248,7 +251,8 @@ class Case : public Entity  // Inherits the full CRUD interface, then adds
     // Joins clinics to the record table on clinic_id and filters by this
     // record id, returning the clinic's owner/admin/staff so write access
     // can be checked against clinic membership.
-    auto query = fmt::format(R"(
+    auto query =
+        fmt::format(R"(
         SELECT
         c.owner_id,
         c.admin_id,
@@ -260,8 +264,9 @@ class Case : public Entity  // Inherits the full CRUD interface, then adds
         LEFT JOIN {} p ON c.id = p.clinic_id
         WHERE
         p.id = {};)",
-        ORGNAME, tablename,
-        id);  // Fill in clinics table, record table and record id.
+                    ORGNAME,
+                    tablename,
+                    id);  // Fill in clinics table, record table and record id.
     // std::cout << query << std::endl;
     return query;  // Return the statement.
   }
@@ -283,7 +288,8 @@ class Case : public Entity  // Inherits the full CRUD interface, then adds
     // Joins clinics to the record table on clinic_id and filters by this
     // record id, returning the clinic's owner/admin/staff so delete access
     // can be checked against clinic membership.
-    auto query = fmt::format(R"(
+    auto query =
+        fmt::format(R"(
         SELECT
         c.owner_id,
         c.admin_id,
@@ -295,8 +301,9 @@ class Case : public Entity  // Inherits the full CRUD interface, then adds
         LEFT JOIN {} p ON c.id = p.clinic_id
         WHERE
         p.id = {};)",
-        ORGNAME, tablename,
-        id);  // Fill in clinics table, record table and record id.
+                    ORGNAME,
+                    tablename,
+                    id);  // Fill in clinics table, record table and record id.
     // std::cout << query << std::endl;
     return query;  // Return the statement to PermissionManager.
   }

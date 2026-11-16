@@ -63,9 +63,9 @@
  * @see Server::run()
  */
 int main([[maybe_unused]] int argc,
-    [[maybe_unused]] char**
-        argv)  // Program entry point; argc/argv are kept only because the C++
-               // standard requires this shape.
+         [[maybe_unused]] char**
+             argv)  // Program entry point; argc/argv are kept only because the
+                    // C++ standard requires this shape.
 {
   try  // Guard the entire startup and shutdown so a thrown exception cannot
        // crash the process silently.

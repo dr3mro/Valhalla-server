@@ -81,7 +81,7 @@ DatabaseSchema::DatabaseSchema()
   }
 
   for (const auto& table :
-      tables.value())  // Visit each table name that was returned.
+       tables.value())  // Visit each table name that was returned.
   {
     populateSchema(table);  // Load that table's columns into the shared map.
   }
@@ -112,8 +112,9 @@ void DatabaseSchema::populateSchema(const std::string& tableName)
   }
   else  // The table's schema could not be read.
   {
-    Message::WarningMessage(fmt::format("Table not found.\n",
-        tableName));  // Log a warning naming the problem.
+    Message::WarningMessage(
+        fmt::format("Table not found.\n",
+                    tableName));  // Log a warning naming the problem.
     Message::ErrorMessage(
         "Exiting...");  // Log that startup is being abandoned.
     exit(EXIT_FAILURE);
@@ -137,15 +138,20 @@ const SCHEMA_t& DatabaseSchema::getDatabaseSchema()
 void DatabaseSchema::printSchema()
 {
   for (const auto& [tableName, columns] :
-      databaseSchema)  // Walk every (table name, column set) pair in the
-                       // cache.
+       databaseSchema)  // Walk every (table name, column set) pair in the
+                        // cache.
   {
     for (const auto& column :
-        columns)  // Walk every column description inside that table.
+         columns)  // Walk every column description inside that table.
     {
-      Message::InfoMessage(fmt::format("{} : {} - {} - {} - {} \n", tableName,
-          column.Name, column.DataType, column.Constraint,
-          column.isNullable));  // Log one line describing the column.
+      Message::InfoMessage(
+          fmt::format("{} : {} - {} - {} - {} \n",
+                      tableName,
+                      column.Name,
+                      column.DataType,
+                      column.Constraint,
+                      column
+                          .isNullable));  // Log one line describing the column.
     }
   }
 }

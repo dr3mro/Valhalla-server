@@ -99,10 +99,13 @@ TEST_CASE("A 503 response carries Retry-After", "[database][busy]")
 {
   drogon::HttpResponsePtr response;  // Starts empty; the helper will fill it
                                      // via the callback below.
-  api::v2::Helper::errorResponse(drogon::k503ServiceUnavailable, "busy",
-      [&response](const drogon::HttpResponsePtr& r)
-      { response = r; });  // Build a 503 with message "busy" and capture the
-                           // produced response object.
+  api::v2::Helper::errorResponse(drogon::k503ServiceUnavailable,
+                                 "busy",
+                                 [&response](const drogon::HttpResponsePtr& r)
+                                 {
+                                   response = r;
+                                 });  // Build a 503 with message "busy" and
+                                      // capture the produced response object.
 
   REQUIRE(response !=
           nullptr);  // Abort here if no response was produced; the following
@@ -121,25 +124,26 @@ TEST_CASE("Other error responses carry no Retry-After", "[database][busy]")
   drogon::HttpResponsePtr
       response;  // Starts empty; filled by the callback below.
   api::v2::Helper::failureResponse("boom",
-      [&response](const drogon::HttpResponsePtr& r)
-      {
-        response = r;
-      });  // Build a generic failure response with message "boom".
+                                   [&response](const drogon::HttpResponsePtr& r)
+                                   {
+                                     response = r;
+                                   });  // Build a generic failure response with
+                                        // message "boom".
 
-  REQUIRE(
-      response != nullptr);  // Ensure a response exists before inspecting it.
+  REQUIRE(response !=
+          nullptr);  // Ensure a response exists before inspecting it.
   CHECK(response->statusCode() ==
         drogon::k500InternalServerError);  // Proves a generic failure maps to
                                            // 500.
   CHECK(response->getHeader("Retry-After")
-          .empty());  // Proves no retry hint is attached to a 500.
+            .empty());  // Proves no retry hint is attached to a 500.
 }
 
 // fake->busy makes every FakeDatabaseController method throw DatabaseBusy; the
 // controller's generic exception handler must surface that as 503 with the
 // exception text in the body.
 TEST_CASE("A controller answers 503 when the database is busy",
-    "[controller][client][busy]")
+          "[controller][client][busy]")
 {
   auto fake =
       std::make_shared<FakeDatabaseController>();  // A shared fake so the
@@ -167,10 +171,10 @@ TEST_CASE("A controller answers 503 when the database is busy",
       42u);  // Caller 42 activates user 42; the busy fake will throw during
              // the query.
 
-  CHECK(
-      code == Http::Status::SERVICE_UNAVAILABLE);  // Proves the controller
-                                                   // preserves the 503
-                                                   // classification end to end.
+  CHECK(code ==
+        Http::Status::SERVICE_UNAVAILABLE);  // Proves the controller
+                                             // preserves the 503
+                                             // classification end to end.
   CHECK(body.find("busy") !=
         std::string::npos);  // Proves the exception text reaches the client
                              // so the cause is visible.
@@ -179,7 +183,7 @@ TEST_CASE("A controller answers 503 when the database is busy",
 // With busy=false, a nullopt DB result is the ordinary cruds failure (400).
 // This case guards against over-broad classification of any DB failure as busy.
 TEST_CASE("A non-busy database failure is still a 400/500, never 503",
-    "[controller][client][busy]")
+          "[controller][client][busy]")
 {
   auto fake = std::make_shared<FakeDatabaseController>();  // A fresh fake, not
                                                            // in busy mode.
@@ -190,7 +194,11 @@ TEST_CASE("A non-busy database failure is still a 400/500, never 503",
   ClientController<User> ctrl;         // Controller captures it.
   int code = -1;  // The captured status; -1 means no callback fired.
 
-  ctrl.Activate([&](int c, const std::string&) { code = c; },
+  ctrl.Activate(
+      [&](int c, const std::string&)
+      {
+        code = c;
+      },
       Requester(42, "users"),
       42u);  // Same call as above, but the fake returns nothing instead of
              // throwing; the body is ignored here.

@@ -68,9 +68,10 @@ namespace valhalla_test  // A dedicated namespace keeps test helpers from
    * @param ip Caller's IP address; defaults to the local loopback address.
    * @return A ready-to-use login record for authentication tests.
    */
-  inline ClientLoginData makeLoginData(const uint64_t clientId = 1,
-      const std::string&                              group    = "users",
-      const std::string&                              ip =
+  inline ClientLoginData makeLoginData(
+      const uint64_t     clientId = 1,
+      const std::string& group    = "users",
+      const std::string& ip =
           "127.0.0.1")  // Defaults describe a typical "normal user" caller.
   {
     ClientLoginData
@@ -97,8 +98,8 @@ namespace valhalla_test  // A dedicated namespace keeps test helpers from
    * can supply a known caller identity without constructing it inline.
    * @brief Wraps the constructor for Requester in a named helper.
    */
-  inline api::v2::Requester makeRequester(
-      const uint64_t id, const std::string& group)
+  inline api::v2::Requester makeRequester(const uint64_t     id,
+                                          const std::string& group)
   {
     return api::v2::Requester(id, group);
   }  // Returns the caller id and group bundled into one value.
@@ -110,22 +111,28 @@ namespace valhalla_test  // A dedicated namespace keeps test helpers from
    * @details Each claim is a piece of identity data written into the token so
    * that the server can read it back after verifying the signature.
    */
-  inline std::string makeToken(const std::string& secret,
-      const std::string& issuer, const std::string& type,
-      const std::string& username, uint64_t clientId, const std::string& group,
-      const std::string& ip, const std::string& lastLogoutTime,
+  inline std::string makeToken(
+      const std::string&         secret,
+      const std::string&         issuer,
+      const std::string&         type,
+      const std::string&         username,
+      uint64_t                   clientId,
+      const std::string&         group,
+      const std::string&         ip,
+      const std::string&         lastLogoutTime,
       const std::chrono::minutes validity = std::chrono::minutes{
           60})  // `validity` defaults to one hour, matching normal tokens.
   {
     return jwt::create<
-        jwt::traits::kazuho_picojson>()  // Start a new token using the picojson
-                                         // backend.
-        .set_issuer(issuer)              // Record who issued the
-                                         // token.
-        .set_type(type)                  // Record the token
-                                         // type (e.g. "JWS").
-        .set_subject(username)           // Store the username the
-                                         // token is about.
+               jwt::traits::
+                   kazuho_picojson>()  // Start a new token using the picojson
+                                       // backend.
+        .set_issuer(issuer)            // Record who issued the
+                                       // token.
+        .set_type(type)                // Record the token
+                                       // type (e.g. "JWS").
+        .set_subject(username)         // Store the username the
+                                       // token is about.
         .set_id(std::to_string(clientId))  // Store the numeric
                                            // client id as text.
         .set_issued_at(
@@ -135,21 +142,21 @@ namespace valhalla_test  // A dedicated namespace keeps test helpers from
                         validity)  // Set expiry so old
                                    // tokens are rejected.
         .set_payload_claim("ip_address",
-            jwt::basic_claim<jwt::traits::kazuho_picojson>(
-                ip))  // Extra claim: the
-                      // caller's IP.
+                           jwt::basic_claim<jwt::traits::kazuho_picojson>(
+                               ip))  // Extra claim: the
+                                     // caller's IP.
         .set_payload_claim("llodt",
-            jwt::basic_claim<jwt::traits::kazuho_picojson>(
-                lastLogoutTime))  // Extra
-                                  // claim: last
-                                  // logout
-                                  // time, used
-                                  // to
-                                  // invalidate
-                                  // old tokens.
+                           jwt::basic_claim<jwt::traits::kazuho_picojson>(
+                               lastLogoutTime))  // Extra
+                                                 // claim: last
+                                                 // logout
+                                                 // time, used
+                                                 // to
+                                                 // invalidate
+                                                 // old tokens.
         .set_payload_claim("group",
-            jwt::basic_claim<jwt::traits::kazuho_picojson>(
-                group))                        // Extra claim: the
+                           jwt::basic_claim<jwt::traits::kazuho_picojson>(
+                               group))         // Extra claim: the
                                                // caller's permission
                                                // group.
         .sign(jwt::algorithm::hs256{secret});  // Sign with HS256 and

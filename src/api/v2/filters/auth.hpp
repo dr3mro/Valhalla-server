@@ -116,8 +116,8 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
      * filter/handler.
      */
     void doFilter(const drogon::HttpRequestPtr& req,
-        drogon::FilterCallback&&                fcb,
-        drogon::FilterChainCallback&&           fccb)
+                  drogon::FilterCallback&&      fcb,
+                  drogon::FilterChainCallback&& fccb)
         override  // Drogon calls this for every request on the filter
                   // chain.
     {
@@ -175,7 +175,7 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
       clientLoginData->ip_address =
           req->getPeerAddr().toIp();  // The caller's IP is needed for
                                       // IP-bound validation.
-      std::string       message;      // Filled with a human-readable reason if
+      std::string message;            // Filled with a human-readable reason if
                                       // validation fails.
       // Validate token. The DB mode is fixed for the process lifetime, so
       // read it once.
@@ -196,8 +196,11 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
         // async_run moves the factory (and its captures) into the
         // coroutine, so they outlive every suspension.
         drogon::async_run(
-            [req, bearerMagicLocal, gateKeeperLocal, fcb = std::move(fcb),
-                fccb = std::move(fccb)]() mutable
+            [req,
+             bearerMagicLocal,
+             gateKeeperLocal,
+             fcb  = std::move(fcb),
+             fccb = std::move(fccb)]() mutable
                 -> drogon::Task<void>  // Capture everything by value;
                                        // mutable lets us move the
                                        // callbacks out later.
@@ -224,11 +227,15 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
               try                   // Validation may throw when the database is
                                     // overloaded.
               {
-                valid = co_await gateKeeperLocal->isAuthenticationValidAsync(
-                    clientLoginData,
-                    message);  // Suspend until the async
-                               // check finishes; fill valid
-                               // and message.
+                valid =
+                    co_await gateKeeperLocal
+                        ->isAuthenticationValidAsync(clientLoginData,
+                                                     message);  // Suspend until
+                                                                // the async
+                                                                // check
+                                                                // finishes;
+                                                                // fill valid
+                                                                // and message.
               }
               catch (const DatabaseBusy& e)  // Too many DB requests in flight.
               {
@@ -236,14 +243,14 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
                     drogon::HttpResponse::newHttpResponse();  // Build the retry
                                                               // response.
                 resp->setStatusCode(drogon::HttpStatusCode::
-                        // 503 tells the client the server is
-                        // temporarily unavailable.
-                    k503ServiceUnavailable);
+                                        // 503 tells the client the server is
+                                        // temporarily unavailable.
+                                    k503ServiceUnavailable);
                 resp->setContentTypeCode(
                     // Body is JSON.
                     drogon::CT_APPLICATION_JSON);
                 resp->addHeader("Retry-After",
-                    "1");  // Ask the client to retry in one second.
+                                "1");  // Ask the client to retry in one second.
                 resp->setBody(JsonHelper::stringify(
                     JsonHelper::jsonify(e.what())));  // Send the exception text
                                                       // as JSON.
@@ -258,8 +265,8 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
                                                               // unauthorized
                                                               // response.
                 resp->setStatusCode(drogon::HttpStatusCode::
-                        k401Unauthorized);  // 401 = not
-                                            // authenticated.
+                                        k401Unauthorized);  // 401 = not
+                                                            // authenticated.
                 resp->setContentTypeCode(
                     // Body is JSON.
                     drogon::CT_APPLICATION_JSON);
@@ -272,14 +279,16 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
 
               // Populate the identity attributes consumed by
               // controllers' permission checks.
-              req->attributes()->insert("clientID",
-                  clientLoginData->clientId
-                      .value());  // Store the authenticated client id
-                                  // on the request.
-              req->attributes()->insert("clientGroup",
-                  clientLoginData->group
-                      .value());  // Store the client's group used for
-                                  // permission checks.
+              req->attributes()
+                  ->insert("clientID",
+                           clientLoginData->clientId
+                               .value());  // Store the authenticated client id
+                                           // on the request.
+              req->attributes()
+                  ->insert("clientGroup",
+                           clientLoginData->group
+                               .value());  // Store the client's group used for
+                                           // permission checks.
 
               // Token is valid, pass control to the next
               // filter/handler
@@ -292,8 +301,10 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
       bool valid = false;  // Blocking-mode result of the validation call.
       try                  // Guard against a busy database.
       {
-        valid = gateKeeper->isAuthenticationValid(clientLoginData,
-            message);  // Blocking check; fills valid and message.
+        valid = gateKeeper
+                    ->isAuthenticationValid(clientLoginData,
+                                            message);  // Blocking check; fills
+                                                       // valid and message.
       }
       catch (const DatabaseBusy& e)  // Connection pool exhausted.
       {
@@ -304,8 +315,8 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
             drogon::HttpStatusCode::k503ServiceUnavailable);  // 503 = try again
                                                               // soon.
         resp->setContentTypeCode(drogon::CT_APPLICATION_JSON);  // Body is JSON.
-        resp->addHeader(
-            "Retry-After", "1");  // Suggest retrying after one second.
+        resp->addHeader("Retry-After",
+                        "1");  // Suggest retrying after one second.
         resp->setBody(JsonHelper::stringify(
             JsonHelper::jsonify(e.what())));  // Send the error text as JSON.
         std::move(fcb)(resp);                 // Deliver the 503.
@@ -327,11 +338,13 @@ namespace api::v2::Filters  // Filters for the v2 API live here.
       }
 
       req->attributes()->insert("clientID",
-          clientLoginData->clientId.value());  // Store the authenticated client
-                                               // id for controllers.
-      req->attributes()->insert("clientGroup",
-          clientLoginData->group.value());  // Store the client's group
-                                            // for permission checks.
+                                clientLoginData->clientId
+                                    .value());  // Store the authenticated
+                                                // client id for controllers.
+      req->attributes()
+          ->insert("clientGroup",
+                   clientLoginData->group.value());  // Store the client's group
+                                                     // for permission checks.
 
       // Token is valid, pass control to the next filter/handler
       std::move(fccb)();  // Continue the chain so the route handler runs.

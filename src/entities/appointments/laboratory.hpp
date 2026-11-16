@@ -79,8 +79,8 @@ class LaboratoryAppointment
   template <typename T>
   explicit LaboratoryAppointment(const T& _data)
       : Appointment(_data,
-            TABLENAME)  // "explicit" requires a direct call; TABLENAME fixes
-                        // the target table.
+                    TABLENAME)  // "explicit" requires a direct call; TABLENAME
+                                // fixes the target table.
   {
   }
 
@@ -91,11 +91,11 @@ class LaboratoryAppointment
   // No copy.
   LaboratoryAppointment(const LaboratoryAppointment&) = delete;
   // No move.
-  LaboratoryAppointment(LaboratoryAppointment&&)      = delete;
-  LaboratoryAppointment& operator=(
-      const LaboratoryAppointment&) = delete;  // No copy assignment.
-  LaboratoryAppointment& operator=(
-      LaboratoryAppointment&&) = delete;  // No move assignment.
+  LaboratoryAppointment(LaboratoryAppointment&&) = delete;
+  LaboratoryAppointment& operator=(const LaboratoryAppointment&) =
+      delete;  // No copy assignment.
+  LaboratoryAppointment& operator=(LaboratoryAppointment&&) =
+      delete;  // No move assignment.
 
   /**
    * @brief Returns the laboratory appointment table name.
@@ -129,7 +129,9 @@ class LaboratoryAppointment
       std::uint64_t      service_id)  // Public wrapper with the expected name.
   {
     return getServicePermissionsQueryImpl(service_name,
-        service_id);  // Delegate to the shared base implementation.
+                                          service_id);  // Delegate to the
+                                                        // shared base
+                                                        // implementation.
   }
 
   /**
@@ -141,8 +143,12 @@ class LaboratoryAppointment
   static std::optional<std::string> getPermissionsQueryForRead(
       std::uint64_t appointment_id)  // Public wrapper for the owner lookup.
   {
-    return getPermissionsQueryForReadImpl(ORGNAME, TABLENAME,
-        appointment_id);  // Supply this class's organisation and table
-                          // names to the base.
+    return getPermissionsQueryForReadImpl(ORGNAME,
+                                          TABLENAME,
+                                          appointment_id);  // Supply this
+                                                            // class's
+                                                            // organisation and
+                                                            // table names to
+                                                            // the base.
   }
 };

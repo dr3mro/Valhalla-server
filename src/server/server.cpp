@@ -113,27 +113,32 @@ Server::Server()  // Initialise every member: fetch shared singletons from the
           Store::getObject<Configurator>()),  // Fetch the shared settings
                                               // object, also used later for
                                               // printValues() and CORS.
-      config_(configurator_->get<
-          Configurator::ServerConfig>()),  // Copy the server settings so later
-                                           // changes cannot alter this run.
+      config_(
+          configurator_
+              ->get<Configurator::ServerConfig>()),  // Copy the server settings
+                                                     // so later changes cannot
+                                                     // alter this run.
       db_config_(configurator_->get<
-          Configurator::DatabaseConfig>()),  // Copy the DB settings, including
-                                             // the flag that selects async
-                                             // mode.
+                 Configurator::DatabaseConfig>()),  // Copy the DB settings,
+                                                    // including the flag that
+                                                    // selects async mode.
       databaseSchema_(
           Store::getObject<DatabaseSchema>()),  // Fetch the shared schema
                                                 // validator used by request
                                                 // handling.
-      auth_filter_(std::make_shared<
-          api::v2::Filters::Auth>()),  // Create one authentication filter
-                                       // instance owned by this Server.
-      elapsed_time_(std::make_shared<
-          api::v2::MiddleWares::ElapsedTime>()),  // Create one request-timing
-                                                  // middleware instance.
+      auth_filter_(
+          std::make_shared<
+              api::v2::Filters::Auth>()),  // Create one authentication filter
+                                           // instance owned by this Server.
+      elapsed_time_(
+          std::make_shared<
+              api::v2::MiddleWares::ElapsedTime>()),  // Create one
+                                                      // request-timing
+                                                      // middleware instance.
       rate_limit_(std::make_shared<
-          api::v2::Filters::RateLimit>())  // Create one rate-limit filter
-                                           // instance (last, so no trailing
-                                           // comma).
+                  api::v2::Filters::RateLimit>())  // Create one rate-limit
+                                                   // filter instance (last, so
+                                                   // no trailing comma).
 {
 }
 /**
@@ -173,7 +178,7 @@ int Server::run()  // Configure Drogon, serve requests, then drain the worker
     drogon::app()  // Get the single global Drogon application; the chain below
                    // configures it before run() is called.
         .addListener(std::string(config_.host),
-            config_.port)                   // Listen on the configured host
+                     config_.port)          // Listen on the configured host
                                             // address and TCP port.
         .setThreadNum(config_.threads)      // Use the configured number of
                                             // I/O worker threads.
@@ -192,9 +197,9 @@ int Server::run()  // Configure Drogon, serve requests, then drain the worker
                                     // preflights and reject odd
                                     // methods.
             [](const drogon::HttpRequestPtr& req,
-                drogon::AdviceCallback&&     callback,
-                drogon::AdviceChainCallback&&
-                    chainedcallback)  // Request + callbacks.
+               drogon::AdviceCallback&&      callback,
+               drogon::AdviceChainCallback&&
+                   chainedcallback)  // Request + callbacks.
             {
               // CORS preflights are answered once, here, with
               // 204 and no body; they never reach a
@@ -235,13 +240,13 @@ int Server::run()  // Configure Drogon, serve requests, then drain the worker
                     // allowed.
                     drogon::k405MethodNotAllowed);
                 resp->addHeader("Allow",
-                    Cors::allowedMethods());  // Advertise
-                                              // which
-                                              // methods the
-                                              // server does
-                                              // accept.
-                std::move(callback)(resp);    // Respond now; the request never
-                                              // reaches a controller.
+                                Cors::allowedMethods());  // Advertise
+                                                          // which
+                                                          // methods the
+                                                          // server does
+                                                          // accept.
+                std::move(callback)(resp);  // Respond now; the request never
+                                            // reaches a controller.
               }
               else  // The method is acceptable, so let normal
                     // routing continue.
@@ -254,9 +259,12 @@ int Server::run()  // Configure Drogon, serve requests, then drain the worker
             })
         // The only place CORS headers are written: runs once per
         // response, after every filter and pre-routing reply.
-        .registerPreSendingAdvice([](const drogon::HttpRequestPtr&   req,
-                                      const drogon::HttpResponsePtr& resp)
-            { Cors::apply(req, resp); })  // CORS headers.
+        .registerPreSendingAdvice(
+            [](const drogon::HttpRequestPtr&  req,
+               const drogon::HttpResponsePtr& resp)
+            {
+              Cors::apply(req, resp);
+            })  // CORS headers.
         .setCustom404Page(drogon::HttpResponse::newHttpJsonResponse(
             api::v2::JsonHelper::jsonify(
                 "Endpoint not found.")))  // JSON body for
@@ -281,8 +289,9 @@ int Server::run()  // Configure Drogon, serve requests, then drain the worker
                                    // above threw an exception.
   {
     Message::ErrorMessage(
-        fmt::format("Failed to start server on {}:{}.", config_.host,
-            config_.port));  // Report which address failed to start.
+        fmt::format("Failed to start server on {}:{}.",
+                    config_.host,
+                    config_.port));  // Report which address failed to start.
     Message::CriticalMessage(e.what());  // Include the exception's own
                                          // description as a critical message.
     return EXIT_FAILURE;  // Signal failure to main(), and from there to the
@@ -303,10 +312,12 @@ void Server::print_banner()  // Print the configuration summary and the ASCII
   // Print Config
   Banner::print_line();  // Draw a separator line before the configuration
                          // block.
-  Banner::print("Configuration:", config_.desc, fmt::color::light_blue,
-      fmt::color::yellow);  // Print the section title with coloured label and
-                            // value.
-  Banner::print_line();     // Draw a separator after the title.
+  Banner::print("Configuration:",
+                config_.desc,
+                fmt::color::light_blue,
+                fmt::color::yellow);  // Print the section title with coloured
+                                      // label and value.
+  Banner::print_line();               // Draw a separator after the title.
   configurator_->printValues();  // Dump every effective configuration value
                                  // from the source object.
 
@@ -315,18 +326,30 @@ void Server::print_banner()  // Print the configuration summary and the ASCII
   Banner::print_logo(Banner::get_random_color());  // Print the logo in a
                                                    // randomly chosen colour.
   Banner::print_line();  // Draw a separator after the logo.
-  Banner::print(" - Version", VALHALLA_GIT_TAG, fmt::color::light_green,
-      fmt::color::yellow);  // Show the build-time Git tag as the version.
-  Banner::print(" - Port", config_.port, fmt::color::light_green,
-      fmt::color::yellow);  // Show which TCP port the server listens on.
-  Banner::print(" - Threads", config_.threads, fmt::color::light_green,
-      fmt::color::yellow);  // Show how many worker threads were configured.
+  Banner::print(" - Version",
+                VALHALLA_GIT_TAG,
+                fmt::color::light_green,
+                fmt::color::yellow);  // Show the build-time Git tag as the
+                                      // version.
+  Banner::print(" - Port",
+                config_.port,
+                fmt::color::light_green,
+                fmt::color::yellow);  // Show which TCP port the server listens
+                                      // on.
+  Banner::print(" - Threads",
+                config_.threads,
+                fmt::color::light_green,
+                fmt::color::yellow);  // Show how many worker threads were
+                                      // configured.
   Banner::print(" - Database",
-      fmt::format("{} {}", db_config_.max_conn, "connections"),
-      fmt::color::light_green, fmt::color::yellow);  // Max DB connections.
+                fmt::format("{} {}", db_config_.max_conn, "connections"),
+                fmt::color::light_green,
+                fmt::color::yellow);  // Max DB connections.
   Banner::print(" - Doc",
-      "http://localhost:" + std::to_string(config_.port) + "/api/v2/doc",
-      fmt::color::light_green, fmt::color::yellow);  // Docs URL.
+                "http://localhost:" + std::to_string(config_.port) +
+                    "/api/v2/doc",
+                fmt::color::light_green,
+                fmt::color::yellow);  // Docs URL.
   Banner::print_line();  // Close the banner with a final separator line.
 
   std::flush(std::cout);  // Force the banner out before Drogon's loggers

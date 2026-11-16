@@ -59,8 +59,8 @@ namespace api::v2  // Groups this type with the version-2 API code.
     /**
      * @brief Opaque identity of the requester, compared by idMatch.
      */
-    uint64_t    id;  // The caller's numeric identity; a fixed 64-bit unsigned
-                     // type gives a wide, portable range.
+    uint64_t id;  // The caller's numeric identity; a fixed 64-bit unsigned
+                  // type gives a wide, portable range.
     /**
      * @brief Group name, compared literally by groupMatch and the isX
      * helpers.
@@ -125,9 +125,9 @@ namespace api::v2  // Groups this type with the version-2 API code.
     /**
      * @brief Move assignment; Requester is a cheap value type.
      */
-    Requester& operator=(
-        Requester&&)     = default;  // Default move assignment moves the string
-                                     // instead of copying it.
+    Requester& operator=(Requester&&) =
+        default;  // Default move assignment moves the string
+                  // instead of copying it.
 
     /**
      * @brief Virtual destructor; the owned group string is freed normally.

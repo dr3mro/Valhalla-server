@@ -70,7 +70,8 @@ std::optional<std::string> EnvVars::get(
                         // returning an empty string.
 }
 
-void EnvVars::set(const std::string& key,
+void EnvVars::set(
+    const std::string& key,
     const std::string& value)  // Stores value under key; used by tests to fake
                                // settings, not on the request path.
 {
@@ -80,8 +81,9 @@ void EnvVars::set(const std::string& key,
       0)  // The OS returns 0 on success; any other result means the write
           // failed (bad name, no memory, etc.).
   {
-    Message::ErrorMessage(fmt::format("Failed to set environment variable {}.",
-        key));  // Log the failure with the variable name; do not throw
-                // so callers keep running.
+    Message::ErrorMessage(
+        fmt::format("Failed to set environment variable {}.",
+                    key));  // Log the failure with the variable name; do not
+                            // throw so callers keep running.
   }
 }

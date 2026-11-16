@@ -94,19 +94,19 @@ class Store
    * Default construction; all state is static, so a Store object holds
    * nothing of its own.
    */
-  Store()                        = default;
+  Store() = default;
   /**
    * Virtual destructor; no owned resources to release (virtual so derived
    * classes clean up correctly).
    */
-  virtual ~Store()               = default;
+  virtual ~Store() = default;
 
   // Delete copy constructor and copy assignment operator
   /**
    * Copy construction is disabled; Store is a pure namespace-like facade over
    * static state.
    */
-  Store(const Store&)            = delete;
+  Store(const Store&) = delete;
   /**
    * Copy assignment is disabled; copying would not copy any state anyway.
    */
@@ -116,11 +116,11 @@ class Store
   /**
    * Move construction is defaulted; there is no data to move.
    */
-  Store(Store&&)                 = default;
+  Store(Store&&) = default;
   /**
    * Move assignment is defaulted; there is no data to move.
    */
-  Store& operator=(Store&&)      = default;
+  Store& operator=(Store&&) = default;
 
   /**
    * @brief Explicitly creates and registers a singleton, rejecting a type
@@ -313,10 +313,12 @@ class Store
                                             // the registry at a time
     inventory[typeid(T)] =
         obj;  // overwrite, or insert if there was no entry before
-    generation.fetch_add(1,
-        std::memory_order_release);  // makes every thread's
-                                     // cachedObject<T>() look again;
-                                     // release publishes the new pointer
+    generation
+        .fetch_add(1,
+                   std::memory_order_release);  // makes every thread's
+                                                // cachedObject<T>() look again;
+                                                // release publishes the new
+                                                // pointer
   }
 
  private:

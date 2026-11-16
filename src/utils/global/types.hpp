@@ -69,8 +69,8 @@ namespace api  // Outer namespace for all API code.
       /**
        * @brief Whether the column permits NULL values.
        */
-      bool        isNullable;  // True if the column may hold NULL; a simple
-                               // yes/no flag needs only a bool.
+      bool isNullable;  // True if the column may hold NULL; a simple
+                        // yes/no flag needs only a bool.
 
       /**
        * @brief Compares name, data type and nullability only.
@@ -78,7 +78,7 @@ namespace api  // Outer namespace for all API code.
        * @return True when the three keyed fields match; Constraint is
        * ignored.
        */
-      bool        operator==(const ColumnInfo& other) const
+      bool operator==(const ColumnInfo& other) const
       {
         return Name == other.Name && DataType == other.DataType &&
                isNullable == other.isNullable;
@@ -126,8 +126,8 @@ namespace std  // We are allowed to specialise std::hash for our own types by
   template <>  // Another explicit specialisation, this time for a pair of
                // strings.
   struct hash<std::pair<std::string,
-      std::string>>  // Lets a (string, string) pair be used as a
-                     // key in unordered containers.
+                        std::string>>  // Lets a (string, string) pair be used
+                                       // as a key in unordered containers.
   {
     /** @brief Hashes a string pair by combining its two members' hashes. */
     size_t operator()(const std::pair<std::string, std::string>& pair)

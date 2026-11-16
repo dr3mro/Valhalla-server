@@ -90,9 +90,10 @@ extern const char* const
  */
 template <typename T>  // T is the type being checked; "concept" means a
                        // compile-time rule a type must satisfy.
-concept Config = std::is_base_of_v<EnvLoader,
-    T>;  // The rule: T must inherit from EnvLoader, so
-         // only real config sections are accepted.
+concept Config =
+    std::is_base_of_v<EnvLoader,
+                      T>;  // The rule: T must inherit from EnvLoader, so
+                           // only real config sections are accepted.
 /**
  * @class Configurator
  * @brief Owning aggregate of all runtime configuration sections.
@@ -213,30 +214,44 @@ class Configurator  // The single owner of every settings section; built once,
      */
     DOSDetectorConfig()  // Initialises every field by reading its variable,
                          // with a Defaults fallback.
-        : max_requests(getEnvironmentVariable("MAX_REQUESTS",
-              Defaults::DosDetector::MAX_REQUESTS_)),  // MAX_REQUESTS
-                                                       // overrides the
-                                                       // request cap.
-          clean_freq(getEnvironmentVariable("CLN_FRQ",
-              Defaults::DosDetector::CLN_FRQ_)),  // CLN_FRQ = cleanup
-                                                  // frequency in seconds.
-          max_fingerprints(getEnvironmentVariable("MAX_FPS",
-              Defaults::DosDetector::MAX_FPS_)),  // MAX_FPS caps tracked
-                                                  // client fingerprints.
-          period(getEnvironmentVariable("PERIOD",
-              std::chrono::seconds(
-                  Defaults::DosDetector::PERIOD_))),  // PERIOD is wrapped as
-                                                      // seconds so it matches
-                                                      // the field type.
-          ratelimit_duration(getEnvironmentVariable("RL_DURATION",
-              std::chrono::seconds(
-                  Defaults::DosDetector::RL_DURATION_))),  // RL_DURATION =
-                                                           // rate-limit length
-                                                           // in seconds.
-          ban_duration(getEnvironmentVariable(
-              "BAN_DURATION", std::chrono::seconds(
-                                  // BAN_DURATION = ban length in seconds.
-                                  Defaults::DosDetector::BAN_DURATION_))),
+        : max_requests(
+              getEnvironmentVariable("MAX_REQUESTS",
+                                     Defaults::DosDetector::
+                                         MAX_REQUESTS_)),  // MAX_REQUESTS
+                                                           // overrides the
+                                                           // request cap.
+          clean_freq(
+              getEnvironmentVariable("CLN_FRQ",
+                                     Defaults::DosDetector::
+                                         CLN_FRQ_)),  // CLN_FRQ = cleanup
+                                                      // frequency in seconds.
+          max_fingerprints(
+              getEnvironmentVariable("MAX_FPS",
+                                     Defaults::DosDetector::
+                                         MAX_FPS_)),  // MAX_FPS caps tracked
+                                                      // client fingerprints.
+          period(
+              getEnvironmentVariable("PERIOD",
+                                     std::chrono::seconds(
+                                         Defaults::DosDetector::
+                                             PERIOD_))),  // PERIOD is wrapped
+                                                          // as seconds so it
+                                                          // matches the field
+                                                          // type.
+          ratelimit_duration(
+              getEnvironmentVariable("RL_DURATION",
+                                     std::chrono::seconds(
+                                         Defaults::DosDetector::
+                                             RL_DURATION_))),  // RL_DURATION =
+                                                               // rate-limit
+                                                               // length in
+                                                               // seconds.
+          ban_duration(getEnvironmentVariable("BAN_DURATION",
+                                              std::chrono::seconds(
+                                                  // BAN_DURATION = ban length
+                                                  // in seconds.
+                                                  Defaults::DosDetector::
+                                                      BAN_DURATION_))),
           whitelist(getEnvironmentVariable(
               "WHITELIST")),  // Comma-separated list of exempt
                               // fingerprints; no default means an empty
@@ -260,25 +275,35 @@ class Configurator  // The single owner of every settings section; built once,
       Message::ConfMessage(
           // Decorative separator line.
           "------------------------------------------------");
-      Message::ConfMessage(fmt::format("Max Requests: {}",
-          max_requests));  // Show the per-window request cap.
-      Message::ConfMessage(fmt::format("Period: {} seconds",
-          period.count()));  // .count() returns the raw number of seconds
-                             // for printing.
-      Message::ConfMessage(fmt::format("Max FPS: {}",
-          max_fingerprints));  // Show the fingerprint-tracking limit.
-      Message::ConfMessage(fmt::format("Rate Limit Duration: {} seconds",
-          ratelimit_duration.count()));  // Show how long rate limiting lasts.
-      Message::ConfMessage(fmt::format("Ban Duration: {} seconds",
-          ban_duration.count()));  // Show how long a ban lasts.
+      Message::ConfMessage(
+          fmt::format("Max Requests: {}",
+                      max_requests));  // Show the per-window request cap.
+      Message::ConfMessage(
+          fmt::format("Period: {} seconds",
+                      period.count()));  // .count() returns the raw number of
+                                         // seconds for printing.
+      Message::ConfMessage(
+          fmt::format("Max FPS: {}",
+                      max_fingerprints));  // Show the fingerprint-tracking
+                                           // limit.
+      Message::ConfMessage(
+          fmt::format("Rate Limit Duration: {} seconds",
+                      ratelimit_duration
+                          .count()));  // Show how long rate limiting lasts.
+      Message::ConfMessage(
+          fmt::format("Ban Duration: {} seconds",
+                      ban_duration.count()));  // Show how long a ban lasts.
       Message::ConfMessage(fmt::format("Cleanup Frequency: {} seconds",
-          clean_freq));  // Show how often expired entries are swept.
-      Message::ConfMessage(fmt::format(
-          "Whitelist: {}", fmt::join(whitelist,
-                               ", ")));  // fmt::join prints the whole set
-                                         // as one comma-separated string.
-      Message::ConfMessage(fmt::format("Blacklist: {}",
-          fmt::join(blacklist, ", ")));  // Same for the blacklist.
+                                       clean_freq));  // Show how often expired
+                                                      // entries are swept.
+      Message::ConfMessage(
+          fmt::format("Whitelist: {}",
+                      fmt::join(whitelist,
+                                ", ")));  // fmt::join prints the whole set
+                                          // as one comma-separated string.
+      Message::ConfMessage(
+          fmt::format("Blacklist: {}",
+                      fmt::join(blacklist, ", ")));  // Same for the blacklist.
     }
   };
 
@@ -298,10 +323,10 @@ class Configurator  // The single owner of every settings section; built once,
                           // the env helpers.
   {
     /** @brief Whether the PostgreSQL connection uses SSL. */
-    bool     ssl;    // true means encrypt the connection; bool because it is a
-                     // simple on/off choice.
-    bool     async;  // DB_ASYNC: asynchronous database access (Drogon DbClient)
-                     // instead of the synchronous pool
+    bool ssl;    // true means encrypt the connection; bool because it is a
+                 // simple on/off choice.
+    bool async;  // DB_ASYNC: asynchronous database access (Drogon DbClient)
+                 // instead of the synchronous pool
     /** @brief Maximum pooled connections; zero means auto-size from the CPU
      * count. */
     uint16_t max_conn;  // Size of the connection pool; 16-bit unsigned is
@@ -335,39 +360,52 @@ class Configurator  // The single owner of every settings section; built once,
     DatabaseConfig()  // Reads all DB_* variables then applies CPU-based
                       // pool sizing.
         : ssl(getEnvironmentVariable("DB_SSL",
-              Defaults::Database::DB_SSL_)),  // DB_SSL toggles encrypted
-                                              // connections.
-          async(getEnvironmentVariable("DB_ASYNC",
-              Defaults::Database::DB_ASYNC_)),  // DB_ASYNC selects async
-                                                // queries over the
-                                                // synchronous pool.
-          max_conn(getEnvironmentVariable("DB_MAX_CONN",
-              Defaults::Database::DB_MAX_CONN_)),  // DB_MAX_CONN sets the
-                                                   // pool size, zero means
-                                                   // auto.
-          acquire_timeout_ms(getEnvironmentVariable("DB_ACQUIRE_TIMEOUT_MS",
-              Defaults::Database::DB_ACQUIRE_TIMEOUT_MS_)),  // Timeout when no
-                                                             // connection is
-                                                             // free.
+                                     Defaults::Database::
+                                         DB_SSL_)),  // DB_SSL toggles encrypted
+                                                     // connections.
+          async(
+              getEnvironmentVariable("DB_ASYNC",
+                                     Defaults::Database::
+                                         DB_ASYNC_)),  // DB_ASYNC selects async
+                                                       // queries over the
+                                                       // synchronous pool.
+          max_conn(
+              getEnvironmentVariable("DB_MAX_CONN",
+                                     Defaults::Database::
+                                         DB_MAX_CONN_)),  // DB_MAX_CONN sets
+                                                          // the pool size, zero
+                                                          // means auto.
+          acquire_timeout_ms(getEnvironmentVariable(
+              "DB_ACQUIRE_TIMEOUT_MS",
+              Defaults::Database::DB_ACQUIRE_TIMEOUT_MS_)),  // Timeout
+                                                             // when no
+                                                             // connection
+                                                             // is free.
           port(getEnvironmentVariable("DB_PORT",
-              Defaults::Database::DB_PORT_)),  // DB_PORT overrides
-                                               // PostgreSQL's default port.
+                                      Defaults::Database::
+                                          DB_PORT_)),  // DB_PORT overrides
+                                                       // PostgreSQL's default
+                                                       // port.
           name(getEnvironmentVariable("DB_NAME",
-              Defaults::Database::DB_NAME_)),  // DB_NAME selects the
-                                               // database.
+                                      Defaults::Database::
+                                          DB_NAME_)),  // DB_NAME selects the
+                                                       // database.
           user(getEnvironmentVariable("DB_USER",
-              Defaults::Database::DB_USER_)),  // DB_USER selects the login
-                                               // role.
+                                      Defaults::Database::
+                                          DB_USER_)),  // DB_USER selects the
+                                                       // login role.
           pass(getEnvironmentVariable("DB_PASS",
-              Defaults::Database::DB_PASS_)),  // DB_PASS supplies the
-                                               // secret, never logged.
+                                      Defaults::Database::
+                                          DB_PASS_)),  // DB_PASS supplies the
+                                                       // secret, never logged.
           host(getEnvironmentVariable("DB_HOST",
-              Defaults::Database::DB_HOST_))  // DB_HOST selects the server
-                                              // address.
+                                      Defaults::Database::
+                                          DB_HOST_))  // DB_HOST selects the
+                                                      // server address.
     {
       optimize_performance(max_conn,
-          5);  // Turn a zero pool size into roughly five connections per
-               // CPU core.
+                           5);  // Turn a zero pool size into roughly five
+                                // connections per CPU core.
     }
 
     /** @brief Logs connection settings; the password is shown as
@@ -393,14 +431,19 @@ class Configurator  // The single owner of every settings section; built once,
           fmt::format("User: {}", user));        // Show the login user.
       Message::ConfMessage("Pass: [redacted]");  // Deliberately hide the secret
                                                  // instead of printing it.
-      Message::ConfMessage(fmt::format(
-          "SSL: {}", ssl));  // Show whether connections are encrypted.
+      Message::ConfMessage(
+          fmt::format("SSL: {}",
+                      ssl));  // Show whether connections are encrypted.
       Message::ConfMessage(fmt::format("Async: {}",
-          async));  // Show whether async database access is enabled.
-      Message::ConfMessage(fmt::format("Max Connections: {}",
-          max_conn));  // Show the effective pool size.
-      Message::ConfMessage(fmt::format("Connection Wait Timeout: {} ms",
-          acquire_timeout_ms));  // Show the wait timeout with its unit.
+                                       async));  // Show whether async database
+                                                 // access is enabled.
+      Message::ConfMessage(
+          fmt::format("Max Connections: {}",
+                      max_conn));  // Show the effective pool size.
+      Message::ConfMessage(
+          fmt::format("Connection Wait Timeout: {} ms",
+                      acquire_timeout_ms));  // Show the wait timeout with its
+                                             // unit.
     }
   };
 
@@ -429,13 +472,13 @@ class Configurator  // The single owner of every settings section; built once,
     std::string desc;  // Short description of the service; text because it
                        // is prose.
     /** @brief HTTP listening port. */
-    uint16_t    port;  // Port clients connect to; 16-bit unsigned covers the
-                       // valid port range.
+    uint16_t port;  // Port clients connect to; 16-bit unsigned covers the
+                    // valid port range.
     /** @brief Number of IO threads; zero means auto-size from the CPU
      * count. */
-    uint16_t    threads;  // Count of threads serving network events; zero is
-                          // the "auto" sentinel.
-    uint8_t     debug_level;  // 0 Debug 1 info 2 warning 3 error 4 critical
+    uint16_t threads;      // Count of threads serving network events; zero is
+                           // the "auto" sentinel.
+    uint8_t  debug_level;  // 0 Debug 1 info 2 warning 3 error 4 critical
     /** @brief Whether log messages are written to the console. */
     bool log_to_console;  // true prints logs to the terminal; bool because
                           // it is on/off.
@@ -461,49 +504,72 @@ class Configurator  // The single owner of every settings section; built once,
      */
     ServerConfig()  // Reads all SERVER_* variables then applies CPU-based
                     // thread sizing.
-        : host(getEnvironmentVariable("SERVER_HOST",
-              Defaults::Server::SERVER_HOST_)),  // SERVER_HOST selects the
-                                                 // bind interface.
+        : host(
+              getEnvironmentVariable("SERVER_HOST",
+                                     Defaults::Server::
+                                         SERVER_HOST_)),  // SERVER_HOST selects
+                                                          // the bind interface.
           name(getEnvironmentVariable("SERVER_NAME",
-              Defaults::Server::SERVER_NAME_)),  // SERVER_NAME sets the
-                                                 // advertised name.
+                                      Defaults::Server::
+                                          SERVER_NAME_)),  // SERVER_NAME sets
+                                                           // the advertised
+                                                           // name.
           ver(getEnvironmentVariable(VALHALLA_GIT_TAG,
-              Defaults::Server::SERVER_VER_)),  // The git tag is the
-                                                // env-var NAME, so a build
-                                                // can override its version.
+                                     Defaults::Server::
+                                         SERVER_VER_)),  // The git tag is the
+                                                         // env-var NAME, so a
+                                                         // build can override
+                                                         // its version.
           desc(getEnvironmentVariable("SERVER_DESCRIPTION",
-              Defaults::Server::SERVER_DESC_)),  // SERVER_DESCRIPTION sets
-                                                 // the readable
-                                                 // description.
-          port(getEnvironmentVariable("SERVER_PORT",
-              Defaults::Server::SERVER_PORT_)),  // SERVER_PORT selects the
-                                                 // HTTP port.
-          threads(getEnvironmentVariable("SERVER_THREADS",
-              Defaults::Server::SERVER_THREADS_)),  // SERVER_THREADS sets
-                                                    // the IO thread count,
-                                                    // zero means auto.
-          debug_level(getEnvironmentVariable("SERVER_DEBUG_LEVEL",
-              // SERVER_DEBUG_LEVEL sets log verbosity.
-              Defaults::Server::SERVER_DEBUG_LEVEL_)),
-          log_to_console(getEnvironmentVariable("SERVER_LOG_TO_CONSOLE",
-              // Toggles logging to the terminal.
-              Defaults::Server::SERVER_LOG_TO_CONSOLE_)),
-          log_to_file(getEnvironmentVariable("SERVER_LOG_TO_FILE",
-              Defaults::Server::SERVER_LOG_TO_FILE_)),  // Toggles logging
-                                                        // to disk.
+                                      Defaults::Server::
+                                          SERVER_DESC_)),  // SERVER_DESCRIPTION
+                                                           // sets the readable
+                                                           // description.
+          port(
+              getEnvironmentVariable("SERVER_PORT",
+                                     Defaults::Server::
+                                         SERVER_PORT_)),  // SERVER_PORT selects
+                                                          // the HTTP port.
+          threads(
+              getEnvironmentVariable("SERVER_THREADS",
+                                     Defaults::Server::
+                                         SERVER_THREADS_)),  // SERVER_THREADS
+                                                             // sets the IO
+                                                             // thread count,
+                                                             // zero means auto.
+          debug_level(
+              getEnvironmentVariable("SERVER_DEBUG_LEVEL",
+                                     // SERVER_DEBUG_LEVEL sets log verbosity.
+                                     Defaults::Server::SERVER_DEBUG_LEVEL_)),
+          log_to_console(
+              getEnvironmentVariable("SERVER_LOG_TO_CONSOLE",
+                                     // Toggles logging to the terminal.
+                                     Defaults::Server::SERVER_LOG_TO_CONSOLE_)),
+          log_to_file(
+              getEnvironmentVariable("SERVER_LOG_TO_FILE",
+                                     Defaults::Server::
+                                         SERVER_LOG_TO_FILE_)),  // Toggles
+                                                                 // logging to
+                                                                 // disk.
           log_dir(getEnvironmentVariable("SERVER_LOG_DIR",
-              Defaults::Server::SERVER_LOG_DIR_)),  // Sets the log
-                                                    // directory.
-          log_file(getEnvironmentVariable("SERVER_LOG_FILE",
-              Defaults::Server::SERVER_LOG_FILE_)),  // Sets the log file
-                                                     // name.
-          upload_dir(getEnvironmentVariable("SERVER_UPLOAD_DIR",
-              Defaults::Server::SERVER_UPLOAD_DIR_))  // Sets where uploads
-                                                      // are stored.
+                                         Defaults::Server::
+                                             SERVER_LOG_DIR_)),  // Sets the log
+                                                                 // directory.
+          log_file(
+              getEnvironmentVariable("SERVER_LOG_FILE",
+                                     Defaults::Server::
+                                         SERVER_LOG_FILE_)),  // Sets the log
+                                                              // file name.
+          upload_dir(
+              getEnvironmentVariable("SERVER_UPLOAD_DIR",
+                                     Defaults::Server::
+                                         SERVER_UPLOAD_DIR_))  // Sets where
+                                                               // uploads are
+                                                               // stored.
     {
       optimize_performance(threads,
-          4);  // Turn a zero thread count into roughly four IO threads
-               // per CPU core.
+                           4);  // Turn a zero thread count into roughly four IO
+                                // threads per CPU core.
     }
 
     /** @brief Logs server identity, networking, threading and logging
@@ -532,18 +598,21 @@ class Configurator  // The single owner of every settings section; built once,
           fmt::format("Description: {}", desc));  // Show the description.
       Message::ConfMessage(
           fmt::format("Threads: {}", threads));  // Show the IO thread count.
-      Message::ConfMessage(fmt::format("Debug Level: {}",
-          debug_level));  // Show the log verbosity level.
-      Message::ConfMessage(fmt::format("Log to console: {}",
-          log_to_console));  // Show console logging state.
-      Message::ConfMessage(fmt::format(
-          "Log to file: {}", log_to_file));  // Show file logging state.
+      Message::ConfMessage(
+          fmt::format("Debug Level: {}",
+                      debug_level));  // Show the log verbosity level.
+      Message::ConfMessage(
+          fmt::format("Log to console: {}",
+                      log_to_console));  // Show console logging state.
+      Message::ConfMessage(
+          fmt::format("Log to file: {}",
+                      log_to_file));  // Show file logging state.
       Message::ConfMessage(
           fmt::format("Log directory: {}", log_dir));  // Show the log folder.
       Message::ConfMessage(
           fmt::format("Log file: {}", log_file));  // Show the log filename.
       Message::ConfMessage(fmt::format("Upload directory: {}",
-          upload_dir));  // Show the upload folder.
+                                       upload_dir));  // Show the upload folder.
     }
   };
 
@@ -561,8 +630,8 @@ class Configurator  // The single owner of every settings section; built once,
                           // tokens.
   {
     /** @brief Token lifetime in minutes. */
-    uint64_t    validity;  // How long a token stays valid, in minutes; 64-bit
-                           // because the default is large.
+    uint64_t validity;  // How long a token stays valid, in minutes; 64-bit
+                        // because the default is large.
     /** @brief Issuer claim embedded in issued tokens. */
     std::string issuer;  // The "issued by" label inside tokens; text
                          // because it is an identifier.
@@ -577,20 +646,28 @@ class Configurator  // The single owner of every settings section; built once,
      * on absence. */
     TokenManagerParameters()  // Reads all TOKEN_* variables with the
                               // Defaults fallbacks.
-        : validity(getEnvironmentVariable("TOKEN_VALIDITY",
-              Defaults::TokenParameters::
-                  TOKEN_VALIDITY_)),  // TOKEN_VALIDITY sets token lifetime
-                                      // in minutes.
-          issuer(getEnvironmentVariable("TOKEN_ISSUER",
-              Defaults::TokenParameters::TOKEN_ISSUER_)),  // TOKEN_ISSUER sets
+        : validity(
+              getEnvironmentVariable("TOKEN_VALIDITY",
+                                     Defaults::TokenParameters::
+                                         TOKEN_VALIDITY_)),  // TOKEN_VALIDITY
+                                                             // sets token
+                                                             // lifetime in
+                                                             // minutes.
+          issuer(
+              getEnvironmentVariable("TOKEN_ISSUER",
+                                     Defaults::TokenParameters::
+                                         TOKEN_ISSUER_)),  // TOKEN_ISSUER sets
                                                            // the issuer label.
           type(getEnvironmentVariable("TOKEN_TYPE",
-              Defaults::TokenParameters::TOKEN_TYPE_)),  // TOKEN_TYPE sets the
-                                                         // type identifier.
+                                      Defaults::TokenParameters::
+                                          TOKEN_TYPE_)),  // TOKEN_TYPE sets the
+                                                          // type identifier.
           secret(getEnvironmentVariable("TOKEN_SECRET",
-              Defaults::TokenParameters::
-                  TOKEN_SECRET_))  // TOKEN_SECRET supplies the signing key,
-                                   // never logged.
+                                        Defaults::TokenParameters::
+                                            TOKEN_SECRET_))  // TOKEN_SECRET
+                                                             // supplies the
+                                                             // signing key,
+                                                             // never logged.
     {
     }
 
@@ -617,8 +694,9 @@ class Configurator  // The single owner of every settings section; built once,
           fmt::format("Issuer: {}", issuer));  // Show the issuer label.
       Message::ConfMessage(
           fmt::format("Type: {}", type));  // Show the token type.
-      Message::ConfMessage(fmt::format("Validity: {} minutes",
-          validity));  // Show lifetime with its unit.
+      Message::ConfMessage(
+          fmt::format("Validity: {} minutes",
+                      validity));  // Show lifetime with its unit.
       Message::ConfMessage("Secret: [redacted]");  // Hide the secret instead of
                                                    // printing it.
       if (secret ==
@@ -663,19 +741,25 @@ class Configurator  // The single owner of every settings section; built once,
      * Defaults::FrontEnd fallbacks. */
     FrontEndConfig()  // Reads frontend settings and the CORS origin value.
         : port(getEnvironmentVariable("FRONTEND_PORT",
-              Defaults::FrontEnd::PORT_)),  // FRONTEND_PORT sets the
-                                            // frontend port.
+                                      Defaults::FrontEnd::
+                                          PORT_)),  // FRONTEND_PORT sets the
+                                                    // frontend port.
           host(getEnvironmentVariable("FRONTEND_HOST",
-              Defaults::FrontEnd::HOST_)),  // FRONTEND_HOST sets the
-                                            // frontend base URL.
-          invite_path(getEnvironmentVariable("FRONTEND_INVITE_PATH",
+                                      Defaults::FrontEnd::
+                                          HOST_)),  // FRONTEND_HOST sets the
+                                                    // frontend base URL.
+          invite_path(getEnvironmentVariable(
+              "FRONTEND_INVITE_PATH",
               Defaults::FrontEnd::INVITE_PATH_)),  // FRONTEND_INVITE_PATH
                                                    // sets the invite link
                                                    // path.
-          cors_allowed_origins(getEnvironmentVariable("CORS_ALLOWED_ORIGINS",
-              std::string(
-                  "*")))  // Defaults to "*" (allow all origins); wrap the
-                          // literal in std::string to match the field type.
+          cors_allowed_origins(
+              getEnvironmentVariable("CORS_ALLOWED_ORIGINS",
+                                     std::string(
+                                         "*")))  // Defaults to "*" (allow all
+                                                 // origins); wrap the literal
+                                                 // in std::string to match the
+                                                 // field type.
     {
     }
 
@@ -698,10 +782,11 @@ class Configurator  // The single owner of every settings section; built once,
       Message::ConfMessage(
           fmt::format("Frontend port: {}", port));  // Show the frontend port.
       Message::ConfMessage(fmt::format("Frontend invite path: {}",
-          invite_path));  // Show the invite path.
-      Message::ConfMessage(fmt::format("CORS allowed origins: {}",
-          cors_allowed_origins));  // Show which origins browsers may
-                                   // allow.
+                                       invite_path));  // Show the invite path.
+      Message::ConfMessage(
+          fmt::format("CORS allowed origins: {}",
+                      cors_allowed_origins));  // Show which origins browsers
+                                               // may allow.
     }
   };
 
@@ -716,8 +801,8 @@ class Configurator  // The single owner of every settings section; built once,
                           // email-delivery service.
   {
     /** @brief Email-sender daemon port. */
-    uint16_t    port;  // Port of the email daemon; 16-bit unsigned fits a port
-                       // number.
+    uint16_t port;  // Port of the email daemon; 16-bit unsigned fits a port
+                    // number.
     /** @brief Email-sender daemon host/URL. */
     std::string host;  // Address of the email daemon; text because it is a URL.
     /** @brief HTTP path used to enqueue outgoing messages. */
@@ -729,14 +814,18 @@ class Configurator  // The single owner of every settings section; built once,
     EmailSenderConfig()  // Reads all EMAIL_SENDER_* variables with Defaults
                          // fallbacks.
         : port(getEnvironmentVariable("EMAIL_SENDER_PORT",
-              Defaults::EmailSenderDaemon::PORT_)),  // EMAIL_SENDER_PORT sets
-                                                     // the daemon port.
+                                      Defaults::EmailSenderDaemon::
+                                          PORT_)),  // EMAIL_SENDER_PORT sets
+                                                    // the daemon port.
           host(getEnvironmentVariable("EMAIL_SENDER_HOST",
-              Defaults::EmailSenderDaemon::HOST_)),  // EMAIL_SENDER_HOST sets
-                                                     // the daemon address.
-          message_queue_path(getEnvironmentVariable("EMAIL_SENDER_QUEUE_PATH",
-              // EMAIL_SENDER_QUEUE_PATH sets the enqueue path.
-              Defaults::EmailSenderDaemon::QUEUE_PATH_))
+                                      Defaults::EmailSenderDaemon::
+                                          HOST_)),  // EMAIL_SENDER_HOST sets
+                                                    // the daemon address.
+          message_queue_path(
+              getEnvironmentVariable("EMAIL_SENDER_QUEUE_PATH",
+                                     // EMAIL_SENDER_QUEUE_PATH sets the enqueue
+                                     // path.
+                                     Defaults::EmailSenderDaemon::QUEUE_PATH_))
     {
     }
 
@@ -753,12 +842,13 @@ class Configurator  // The single owner of every settings section; built once,
       Message::ConfMessage(
           // Decorative separator line.
           "------------------------------------------------");
-      Message::ConfMessage(fmt::format(
-          "EmailSender host: {}", host));  // Show the daemon address.
+      Message::ConfMessage(fmt::format("EmailSender host: {}",
+                                       host));  // Show the daemon address.
       Message::ConfMessage(
           fmt::format("EmailSender port: {}", port));  // Show the daemon port.
-      Message::ConfMessage(fmt::format("EmailSender queue path: {}",
-          message_queue_path));  // Show the enqueue path.
+      Message::ConfMessage(
+          fmt::format("EmailSender queue path: {}",
+                      message_queue_path));  // Show the enqueue path.
     }
   };
 
@@ -780,7 +870,8 @@ class Configurator  // The single owner of every settings section; built once,
      * Defaults::PermissionCache. */
     PermissionCacheConfig()
         : ttl(getEnvironmentVariable("PERMISSION_CACHE_TTL",
-              std::chrono::seconds(Defaults::PermissionCache::TTL_)))
+                                     std::chrono::seconds(
+                                         Defaults::PermissionCache::TTL_)))
     {
     }  // Reads the TTL as seconds and wraps the default in the same
        // duration type.
@@ -797,7 +888,8 @@ class Configurator  // The single owner of every settings section; built once,
           // Decorative separator line.
           "------------------------------------------------");
       Message::ConfMessage(fmt::format("Permission cache TTL: {} seconds",
-          ttl.count()));  // .count() gives the raw seconds for printing.
+                                       ttl.count()));  // .count() gives the raw
+                                                       // seconds for printing.
     }
   };
 
@@ -820,14 +912,19 @@ class Configurator  // The single owner of every settings section; built once,
     /** @brief Reads PASSWORD_WORKERS and PASSWORD_QUEUE_MAX with Defaults
      * fallbacks. */
     PasswordWorkerConfig()  // Reads the worker count and queue capacity.
-        : workers(getEnvironmentVariable("PASSWORD_WORKERS",
-              Defaults::PasswordWorker::WORKERS_)),  // PASSWORD_WORKERS sets
-                                                     // the thread count; 0
-                                                     // means run inline.
-          queue_max(getEnvironmentVariable("PASSWORD_QUEUE_MAX",
-              Defaults::PasswordWorker::
-                  QUEUE_MAX_))  // PASSWORD_QUEUE_MAX bounds queued work
-                                // before rejecting with 503.
+        : workers(
+              getEnvironmentVariable("PASSWORD_WORKERS",
+                                     Defaults::PasswordWorker::
+                                         WORKERS_)),  // PASSWORD_WORKERS sets
+                                                      // the thread count; 0
+                                                      // means run inline.
+          queue_max(
+              getEnvironmentVariable("PASSWORD_QUEUE_MAX",
+                                     Defaults::PasswordWorker::
+                                         QUEUE_MAX_))  // PASSWORD_QUEUE_MAX
+                                                       // bounds queued work
+                                                       // before rejecting with
+                                                       // 503.
     {
     }
 
@@ -844,10 +941,11 @@ class Configurator  // The single owner of every settings section; built once,
       Message::ConfMessage(
           // Decorative separator line.
           "------------------------------------------------");
-      Message::ConfMessage(fmt::format("Password workers: {}",
-          workers));  // Show how many hashing threads exist.
+      Message::ConfMessage(
+          fmt::format("Password workers: {}",
+                      workers));  // Show how many hashing threads exist.
       Message::ConfMessage(fmt::format("Password queue max: {}",
-          queue_max));  // Show the queue capacity.
+                                       queue_max));  // Show the queue capacity.
     }
   };
 
@@ -882,18 +980,25 @@ class Configurator  // The single owner of every settings section; built once,
                         // an explicit override.
         : workers(defaultWorkers()),  // Use the helper so worker count tracks
                                       // the connection pool by default.
-          queue_max(getEnvironmentVariable("DB_QUEUE_MAX",
-              Defaults::DbExecutor::QUEUE_MAX_)),  // DB_QUEUE_MAX bounds queued
-                                                   // database work before
-                                                   // rejecting with 503.
-          io_fast_path(getEnvironmentVariable("DB_IO_FASTPATH",
-              Defaults::DbExecutor::IO_FAST_PATH_))  // DB_IO_FASTPATH
-                                                     // toggles the
-                                                     // IO-thread shortcut.
+          queue_max(
+              getEnvironmentVariable("DB_QUEUE_MAX",
+                                     Defaults::DbExecutor::
+                                         QUEUE_MAX_)),  // DB_QUEUE_MAX bounds
+                                                        // queued database work
+                                                        // before rejecting with
+                                                        // 503.
+          io_fast_path(
+              getEnvironmentVariable("DB_IO_FASTPATH",
+                                     Defaults::DbExecutor::
+                                         IO_FAST_PATH_))  // DB_IO_FASTPATH
+                                                          // toggles the
+                                                          // IO-thread shortcut.
     {
-      workers = getEnvironmentVariable("DB_WORKERS",
-          workers);  // DB_WORKERS, if set, replaces the derived default
-                     // with an explicit count.
+      workers =
+          getEnvironmentVariable("DB_WORKERS",
+                                 workers);  // DB_WORKERS, if set, replaces the
+                                            // derived default with an explicit
+                                            // count.
     }
 
     /** @brief Logs worker count, queue capacity and fast-path setting. */
@@ -909,12 +1014,15 @@ class Configurator  // The single owner of every settings section; built once,
       Message::ConfMessage(
           // Decorative separator line.
           "------------------------------------------------");
-      Message::ConfMessage(fmt::format("DB workers: {}",
-          workers));  // Show how many database workers exist.
-      Message::ConfMessage(fmt::format(
-          "DB queue max: {}", queue_max));  // Show the queue capacity.
-      Message::ConfMessage(fmt::format("DB IO fast path: {}",
-          io_fast_path));  // Show whether the IO-thread shortcut is on.
+      Message::ConfMessage(
+          fmt::format("DB workers: {}",
+                      workers));  // Show how many database workers exist.
+      Message::ConfMessage(fmt::format("DB queue max: {}",
+                                       queue_max));  // Show the queue capacity.
+      Message::ConfMessage(
+          fmt::format("DB IO fast path: {}",
+                      io_fast_path));  // Show whether the IO-thread shortcut is
+                                       // on.
     }
 
    private:  // The helper below is internal to this section; outside
@@ -924,17 +1032,20 @@ class Configurator  // The single owner of every settings section; built once,
     uint16_t defaultWorkers()  // Computes a worker count that matches the
                                // connection pool size.
     {
-      auto pool = static_cast<uint16_t>(getEnvironmentVariable("DB_MAX_CONN",
-          static_cast<uint16_t>(
-              Defaults::Database::DB_MAX_CONN_)));  // Read DB_MAX_CONN,
-                                                    // convert to a 16-bit
-                                                    // count, and wrap for
-                                                    // the generic getter.
+      auto pool = static_cast<uint16_t>(
+          getEnvironmentVariable("DB_MAX_CONN",
+                                 static_cast<uint16_t>(
+                                     Defaults::Database::
+                                         DB_MAX_CONN_)));  // Read DB_MAX_CONN,
+                                                           // convert to a
+                                                           // 16-bit count, and
+                                                           // wrap for the
+                                                           // generic getter.
       optimize_performance(pool,
-          5);       // Apply the same zero-to-CPU-times-five sizing used for
-                    // the real connection pool.
-      return pool;  // Hand back the derived count so workers and
-                    // connections stay balanced.
+                           5);  // Apply the same zero-to-CPU-times-five sizing
+                                // used for the real connection pool.
+      return pool;              // Hand back the derived count so workers and
+                                // connections stay balanced.
     }
   };
 
@@ -960,8 +1071,8 @@ class Configurator  // The single owner of every settings section; built once,
     /** @brief Reads VALHALLA_TEST_NO_DB with @ref Defaults::Testing
      * fallback. */
     Testing()
-        : no_db(getEnvironmentVariable(
-              "VALHALLA_TEST_NO_DB", Defaults::Testing::VALHALLA_TEST_NO_DB_))
+        : no_db(getEnvironmentVariable("VALHALLA_TEST_NO_DB",
+                                       Defaults::Testing::VALHALLA_TEST_NO_DB_))
     {
     }  // Reads the opt-out switch, defaulting to false so tests use the
        // real database.
@@ -978,8 +1089,9 @@ class Configurator  // The single owner of every settings section; built once,
       Message::ConfMessage(
           // Decorative separator line.
           "------------------------------------------------");
-      Message::ConfMessage(fmt::format("Testing no_db: {}",
-          no_db));  // Show whether the database is being skipped.
+      Message::ConfMessage(
+          fmt::format("Testing no_db: {}",
+                      no_db));  // Show whether the database is being skipped.
     }
   };
 
