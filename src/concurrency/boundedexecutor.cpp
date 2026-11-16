@@ -34,6 +34,15 @@ BoundedExecutor::BoundedExecutor(std::size_t workers, std::size_t queue_max, std
     {
         workers_[i]->thread = std::thread([this, i] { run(i); });
     }
+    // Wait until every worker is ready (idle) before returning, so callers that submit
+    // immediately after construction do not race with thread startup and trigger stealing.
+    for (std::size_t i = 0; i < workers; ++i)
+    {
+        while (!workers_[i]->idle.load(std::memory_order_acquire))
+        {
+            std::this_thread::yield();
+        }
+    }
 }
 
 BoundedExecutor::~BoundedExecutor() { shutdown(); }
