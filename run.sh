@@ -235,6 +235,36 @@ shift || true
 case "$cmd" in
     completion)
         shell="${1:-bash}"
+        if [[ $shell == "setup" ]]; then
+            shell="${2:-}"
+            if [[ -z $shell ]]; then
+                case "${SHELL:-}" in
+                    *zsh*) shell="zsh" ;;
+                    *bash*) shell="bash" ;;
+                    *) err "Could not detect shell; use: ./run.sh completion setup bash|zsh"; exit 2 ;;
+                esac
+            fi
+            case "$shell" in
+                bash)
+                    rc="$HOME/.bashrc"
+                    [[ -f $HOME/.bash_profile ]] && rc="$HOME/.bash_profile"
+                    ;;
+                zsh) rc="$HOME/.zshrc" ;;
+                *) err "Unknown shell: $shell"; exit 2 ;;
+            esac
+            marker="# run.sh completion (auto-added)"
+            if grep -qF "$marker" "$rc" 2>/dev/null; then
+                ok "Completion already configured in $rc"
+                exit 0
+            fi
+            {
+                echo ""
+                echo "$marker"
+                echo "eval \"\$($ROOT/run.sh completion $shell)\""
+            } >> "$rc"
+            ok "Added completion to $rc (restart your shell or run: source $rc)"
+            exit 0
+        fi
         case "$shell" in
             bash)
                 cat <<'BASH_COMPLETION'
