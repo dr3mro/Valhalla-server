@@ -1002,6 +1002,27 @@ Put these settings where the container or server actually reads them: a project 
 
 `WHITELIST` disables DoS checks for matching IPs, so it is for development only. Never whitelist a broad pattern in production.
 
+To run `./cors_test.sh --strict` against cases that need low DoS thresholds, start separate server instances on different ports (a banned IP stays banned, so 429 and 503 cannot both be provoked on the same instance):
+
+```
+# 403 case
+MAX_REQUESTS=1000000 MAX_FPS=1000000 RL_DURATION=1 BAN_DURATION=1 \
+  BLACKLIST='^127\.0\.0\.1$' WHITELIST='' SERVER_PORT=8099 \
+  ENV_FILE=/tmp/scratchpad/low.env ./run_release.sh
+
+# 429 case
+MAX_REQUESTS=1000000 MAX_FPS=5 RL_DURATION=5 BAN_DURATION=5 \
+  WHITELIST='' BLACKLIST='' SERVER_PORT=8100 \
+  ENV_FILE=/tmp/scratchpad/low.env ./run_release.sh
+
+# 503 case
+MAX_REQUESTS=5 MAX_FPS=1000000 RL_DURATION=5 BAN_DURATION=5 \
+  WHITELIST='' BLACKLIST='' SERVER_PORT=8101 \
+  ENV_FILE=/tmp/scratchpad/low.env ./run_release.sh
+```
+
+Then run `./cors_test.sh --strict http://localhost:8099` (and the other two URLs). Each instance proves its targeted case; skips for cases it is not configured for are expected.
+
 ## Development
 
 ### Known limitation: malformed requests (HTTP 400)
