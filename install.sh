@@ -84,7 +84,7 @@ BIN_DIR="$(absolute "$BIN_DIR")"
 
 # Files managed by this installer (relative to DIR). The leftover .sh names
 # from earlier installs are removed on update.
-MANAGED="vdt test_api schemathesis_test installer tests/api_tests/payloads api_tests/payloads docs/openapi.json VERSION .config.default update-state update-state.lock test_api.sh schemathesis_test.sh"
+MANAGED="vdt test_api schemathesis_test installer tests/api_tests/payloads api_tests/payloads docs/openapi.json VERSION update-state update-state.lock test_api.sh schemathesis_test.sh"
 
 # ── rc files ───────────────────────────────────────────────────────────────
 # rc_files: the rc files to manage: each of ~/.zshrc / ~/.bashrc that exists,
@@ -296,11 +296,16 @@ remove_files() {
   # (ignoring the TOKEN_SECRET line the installer generated). Not on
   # --replace: the config and its secret carry over to the new install.
   if [ "$ACTION" != replace ] && [ -f "$target/config" ]; then
-    cmp_tmp="$(mktemp)"
-    grep -vE '^TOKEN_SECRET = "[0-9a-f]{64}"$' "$target/config" >"$cmp_tmp" || true
-    if default_env | cmp -s - "$cmp_tmp"; then rm -f "$target/config"; fi
-    rm -f "$cmp_tmp"
+    if [ -f "$target/.config.default" ] && [ "$(file_hash "$target/config")" = "$(cat "$target/.config.default")" ]; then
+      rm -f "$target/config"
+    else
+      cmp_tmp="$(mktemp)"
+      grep -vE '^TOKEN_SECRET = "[0-9a-f]{64}"$' "$target/config" >"$cmp_tmp" || true
+      if default_env | cmp -s - "$cmp_tmp"; then rm -f "$target/config"; fi
+      rm -f "$cmp_tmp"
+    fi
   fi
+  [ "$ACTION" = replace ] || rm -f "$target/.config.default"
   # macOS Finder drops .DS_Store files into folders it shows; they'd keep
   # the folders from being removed.
   rm -f "$target/.DS_Store" "$target/api_tests/.DS_Store" "$target/docs/.DS_Store"
@@ -348,6 +353,7 @@ place_files() {
   mv "$stage/scripts/test/test_api.sh" "$stage/test_api"
   mv "$stage/scripts/test/schemathesis_test.sh" "$stage/schemathesis_test"
   mv "$stage/install.sh" "$stage/installer"
+  rm -rf "$stage/scripts"
   [ "$config_preexisting" = 1 ] && rm -f "$stage/config"
   (cd "$stage" && tar -cf - .) | (cd "$DIR" && tar -xf -)
   # The staged config is a bundled default, not the user's config.

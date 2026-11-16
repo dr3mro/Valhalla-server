@@ -300,13 +300,13 @@ outputs "get_tag.sh: from git" '^-DGIT_TAG=".*"$' sh -c "cd '$REPO' && \"\$0\" .
 # run_release.sh: a fake build/Release/server that prints its env, in a copy
 # of the script so the checkout isn't touched.
 RR="$WORK/rr"
-mkdir -p "$RR/build/Release"
-cp "$REPO/scripts/run/run_release.sh" "$RR/"
+mkdir -p "$RR/build/Release" "$RR/scripts/run"
+cp "$REPO/scripts/run/run_release.sh" "$RR/scripts/run/"
 fails "run_release.sh: no binary" "not found. Run scripts/build/build.sh" "$TOOL_BASH" "$REPO/scripts/run/run_release.sh"
 printf '#!/bin/sh\necho "args=$*"; env | grep -E "^(A|B|C|D|E|F)=" | sort\n' >"$RR/build/Release/server"
 chmod +x "$RR/build/Release/server"
 printf '# comment\nA=1\n  B = two words  \nexport C="quoted # not a comment"\nD='"'"'single'"'"'\r\n\nE=$(echo injected)\nbad line\n' >"$RR/.env"
-out="$("$TOOL_BASH" "$RR/run_release.sh" --flag 2>&1)"
+out="$("$TOOL_BASH" "$RR/scripts/run/run_release.sh" --flag 2>&1)"
 expect="$(printf 'args=--flag\nA=1\nB=two words\nC=quoted # not a comment\nD=single\nE=$(echo injected)')"
 if [[ $out == "$expect" ]]; then ok "run_release.sh: parses .env without running it"; else bad "run_release.sh: parses .env without running it" "$out"; fi
 
