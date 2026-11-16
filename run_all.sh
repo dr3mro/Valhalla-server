@@ -120,14 +120,30 @@ fi
 if [[ $DO_UNIT -eq 1 ]]; then
     echo "===== unit tests (Debug) ====="
     if [[ -d "$ROOT/build/Debug" ]]; then
-        if ctest --test-dir "$ROOT/build/Debug" --output-on-failure; then record "unit tests (Debug)" 0; else record "unit tests (Debug)" 1; fi
+        LOG="$(mktemp)"
+        ctest --test-dir "$ROOT/build/Debug" --progress --output-on-failure 2>&1 | tee "$LOG" | perl -ne 'if (/Start\s+(\d+):\s*(.*)/) { printf "\r[%s] %s", $1, $2; $| = 1; } END { print "\n" }'
+        status=${PIPESTATUS[0]}
+        if [[ $status -ne 0 ]]; then
+            echo "---- failing test output (Debug) ----" >&2
+            tail -60 "$LOG" >&2
+        fi
+        rm -f "$LOG"
+        if [[ $status -eq 0 ]]; then record "unit tests (Debug)" 0; else record "unit tests (Debug)" 1; fi
     else
         echo "build/Debug missing; skipping" >&2
         record "unit tests (Debug)" 1
     fi
     echo "===== unit tests (Release) ====="
     if [[ -d "$ROOT/build/Release" ]]; then
-        if ctest --test-dir "$ROOT/build/Release" --output-on-failure; then record "unit tests (Release)" 0; else record "unit tests (Release)" 1; fi
+        LOG="$(mktemp)"
+        ctest --test-dir "$ROOT/build/Release" --progress --output-on-failure 2>&1 | tee "$LOG" | perl -ne 'if (/Start\s+(\d+):\s*(.*)/) { printf "\r[%s] %s", $1, $2; $| = 1; } END { print "\n" }'
+        status=${PIPESTATUS[0]}
+        if [[ $status -ne 0 ]]; then
+            echo "---- failing test output (Release) ----" >&2
+            tail -60 "$LOG" >&2
+        fi
+        rm -f "$LOG"
+        if [[ $status -eq 0 ]]; then record "unit tests (Release)" 0; else record "unit tests (Release)" 1; fi
     else
         echo "build/Release missing; skipping" >&2
         record "unit tests (Release)" 1
