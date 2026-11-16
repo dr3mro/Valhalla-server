@@ -175,7 +175,7 @@ fetch_tree() {
     die "couldn't list the repository files (API rate limit? set GITHUB_TOKEN)"
 
   count=0
-  for f in scripts/vdt/valhalla.sh scripts/test/test_api.sh scripts/test/schemathesis_test.sh install.sh docs/openapi.json $payloads; do
+  for f in scripts/vdt/valhalla.sh scripts/test/test_api.sh scripts/test/schemathesis_test.sh install.sh docs/openapi.json config $payloads; do
     mkdir -p "$stage/$(dirname "$f")"
     curl -fsSL "https://raw.githubusercontent.com/$REPO/$SHA/$f" -o "$stage/$f" ||
       die "download failed: $f (does $REF contain it?)"
@@ -190,7 +190,7 @@ copy_tree() {
   stage="$1"
   [ -f "$SOURCE/valhalla.sh" ] || die "VALHALLA_SOURCE has no valhalla.sh: $SOURCE"
   say "📋  Copying from $SOURCE"
-  for f in scripts/vdt/valhalla.sh scripts/test/test_api.sh scripts/test/schemathesis_test.sh install.sh docs/openapi.json; do
+  for f in scripts/vdt/valhalla.sh scripts/test/test_api.sh scripts/test/schemathesis_test.sh install.sh docs/openapi.json config; do
     mkdir -p "$stage/$(dirname "$f")"
     cp "$SOURCE/$f" "$stage/$f"
   done
@@ -237,6 +237,15 @@ new_secret() {
 
 # has_secret FILE: does FILE set TOKEN_SECRET?
 has_secret() { grep -qE '^[[:space:]]*(export[[:space:]]+)?TOKEN_SECRET[[:space:]]*=' "$1"; }
+file_hash() {
+  if command -v sha256sum >/dev/null 2>&1; then
+    sha256sum "$1" | cut -d' ' -f1
+  elif command -v shasum >/dev/null 2>&1; then
+    shasum -a 256 "$1" | cut -d' ' -f1
+  else
+    cksum "$1" | cut -d' ' -f1
+  fi
+}
 
 write_default_env() {
   # Earlier versions kept the settings in .env; rename it.
@@ -347,7 +356,51 @@ place_files() {
   chmod 755 "$DIR/vdt" "$DIR/test_api" "$DIR/schemathesis_test" "$DIR/installer"
   printf '%s\n' "$VERSION_TEXT" >"$DIR/VERSION"
   say "📦  Installed into $DIR"
-  write_default_env
+
+  # Migrate an old .env to config.
+  if [ -f "$DIR/.env" ] && [ ! -e "$DIR/config" ]; then
+    mv "$DIR/.env" "$DIR/config"
+    say "💾  Renamed $DIR/.env to $DIR/config"
+  fi
+
+  # Config: copy from the bundled default if missing or unmodified by the user.
+  if [ ! -e "$DIR/config" ]; then
+    if [ -f "$stage/config" ]; then
+      cp "$stage/config" "$DIR/config"
+      # strip any bundled secret and generate a unique one
+      if grep -qE '^[[:space:]]*(export[[:space:]]+)?TOKEN_SECRET[[:space:]]*=' "$DIR/config"; then
+        grep -v -E '^[[:space:]]*(export[[:space:]]+)?TOKEN_SECRET[[:space:]]*=' "$DIR/config" >"$DIR/config.tmp" || true
+        mv "$DIR/config.tmp" "$DIR/config"
+      fi
+      printf '\n# JWT signing secret, generated at install (keep it private; changing it\n# logs everyone out)\nTOKEN_SECRET = "%s"\n' "$(new_secret)" >>"$DIR/config"
+      say "📄  Created $DIR/config from the bundled default with a generated TOKEN_SECRET"
+    else
+      (umask 077 && { default_env; printf 'TOKEN_SECRET = "%s"\n' "$(new_secret)"; } >"$DIR/config")
+      say "📄  Created $DIR/config with default settings and a generated TOKEN_SECRET"
+    fi
+    file_hash "$DIR/config" >"$DIR/.config.default"
+  elif [ -f "$DIR/.config.default" ] && [ "$(file_hash "$DIR/config")" = "$(cat "$DIR/.config.default")" ]; then
+    # Unmodified default: refresh from the new bundle, preserving the user's secret.
+    old_secret=""
+    if grep -qE '^[[:space:]]*(export[[:space:]]+)?TOKEN_SECRET[[:space:]]*=' "$DIR/config"; then
+      old_secret="$(grep -E '^[[:space:]]*(export[[:space:]]+)?TOKEN_SECRET[[:space:]]*=' "$DIR/config" | head -n1)"
+    fi
+    if [ -f "$stage/config" ]; then
+      cp "$stage/config" "$DIR/config"
+      if [ -n "$old_secret" ]; then
+        grep -v -E '^[[:space:]]*(export[[:space:]]+)?TOKEN_SECRET[[:space:]]*=' "$DIR/config" >"$DIR/config.tmp" || true
+        printf '%s\n' "$old_secret" >>"$DIR/config.tmp"
+        mv "$DIR/config.tmp" "$DIR/config"
+      elif ! has_secret "$DIR/config"; then
+        printf '\nTOKEN_SECRET = "%s"\n' "$(new_secret)" >>"$DIR/config"
+      fi
+      file_hash "$DIR/config" >"$DIR/.config.default"
+      say "🔄  Refreshed the unmodified default config from the new bundle"
+    fi
+  else
+    say "⚙️  Keeping your existing $DIR/config (user-modified)"
+  fi
+
   link_command
 
   if [ "$EDIT_RC" = 1 ]; then

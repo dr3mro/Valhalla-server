@@ -9,7 +9,7 @@ cd "$ROOT" || exit 1
 # shellcheck disable=SC1091
 source "$ROOT/scripts/lib/ui.sh"
 
-STATE_DIR="$ROOT/.run"
+STATE_DIR="$ROOT/build/run"
 PID_FILE="$STATE_DIR/server.pid"
 LOG_FILE="$STATE_DIR/server.log"
 mkdir -p "$STATE_DIR"
