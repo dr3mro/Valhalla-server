@@ -1,16 +1,15 @@
-#include <catch2/catch_test_macros.hpp>
-#include <catch2/benchmark/catch_benchmark.hpp>
+#include <drogon/HttpRequest.h>
+#include <drogon/HttpResponse.h>
+#include <drogon/HttpTypes.h>
 
 #include <atomic>
+#include <catch2/benchmark/catch_benchmark.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include <chrono>
 #include <cstdlib>
 #include <new>
 #include <string>
 #include <vector>
-
-#include <drogon/HttpRequest.h>
-#include <drogon/HttpResponse.h>
-#include <drogon/HttpTypes.h>
 
 #include "server/cors.hpp"
 #include "utils/memcache/memcache.hpp"
@@ -50,8 +49,28 @@ namespace
 
 void* operator new(std::size_t size) { return countedAllocate(size); }
 void* operator new(std::size_t size, std::align_val_t) { return countedAllocate(size); }
-void* operator new(std::size_t size, const std::nothrow_t&) noexcept { try { return countedAllocate(size); } catch (...) { return nullptr; } }
-void* operator new(std::size_t size, std::align_val_t, const std::nothrow_t&) noexcept { try { return countedAllocate(size); } catch (...) { return nullptr; } }
+void* operator new(std::size_t size, const std::nothrow_t&) noexcept
+{
+    try
+    {
+        return countedAllocate(size);
+    }
+    catch (...)
+    {
+        return nullptr;
+    }
+}
+void* operator new(std::size_t size, std::align_val_t, const std::nothrow_t&) noexcept
+{
+    try
+    {
+        return countedAllocate(size);
+    }
+    catch (...)
+    {
+        return nullptr;
+    }
+}
 void* operator new[](std::size_t size) { return countedAllocate(size); }
 void* operator new[](std::size_t size, std::align_val_t) { return countedAllocate(size); }
 
@@ -144,10 +163,7 @@ TEST_CASE("Benchmark: Cors::apply", "[.benchmark]")
         return response;
     };
 
-    BENCHMARK("response creation only")
-    {
-        return drogon::HttpResponse::newHttpResponse();
-    };
+    BENCHMARK("response creation only") { return drogon::HttpResponse::newHttpResponse(); };
 
     auto countAllocations = [&](auto&& fn)
     {
@@ -161,21 +177,27 @@ TEST_CASE("Benchmark: Cors::apply", "[.benchmark]")
         return g_allocationCount.load(std::memory_order_relaxed) / 10000;
     };
 
-    WARN("Cors::apply GET allocations/call: " << countAllocations([&]() {
-        auto response = drogon::HttpResponse::newHttpResponse();
-        Cors::apply(requestGet, response);
-    }));
-    WARN("Cors::apply preflight allocations/call: " << countAllocations([&]() {
-        auto response = drogon::HttpResponse::newHttpResponse();
-        Cors::apply(requestPreflight, response);
-    }));
-    WARN("old behaviour, five addHeader calls allocations/call: " << countAllocations([&]() {
-        auto response = drogon::HttpResponse::newHttpResponse();
-        response->addHeader("Access-Control-Allow-Origin", "*");
-        response->addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, HEAD, OPTIONS");
-        response->addHeader("Access-Control-Expose-Headers", "Retry-After, Content-Length");
-        response->addHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, Accept, X-Requested-With");
-        response->addHeader("Access-Control-Max-Age", "7200");
-    }));
+    WARN("Cors::apply GET allocations/call: " << countAllocations(
+             [&]()
+             {
+                 auto response = drogon::HttpResponse::newHttpResponse();
+                 Cors::apply(requestGet, response);
+             }));
+    WARN("Cors::apply preflight allocations/call: " << countAllocations(
+             [&]()
+             {
+                 auto response = drogon::HttpResponse::newHttpResponse();
+                 Cors::apply(requestPreflight, response);
+             }));
+    WARN("old behaviour, five addHeader calls allocations/call: " << countAllocations(
+             [&]()
+             {
+                 auto response = drogon::HttpResponse::newHttpResponse();
+                 response->addHeader("Access-Control-Allow-Origin", "*");
+                 response->addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, HEAD, OPTIONS");
+                 response->addHeader("Access-Control-Expose-Headers", "Retry-After, Content-Length");
+                 response->addHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, Accept, X-Requested-With");
+                 response->addHeader("Access-Control-Max-Age", "7200");
+             }));
     WARN("response creation only allocations/call: " << countAllocations([&]() { (void)drogon::HttpResponse::newHttpResponse(); }));
 }

@@ -28,13 +28,16 @@ namespace CorsTokens
 
     inline auto tokens(std::string_view value)
     {
-        return value | std::views::split(',') | std::views::transform([](auto range) {
-                   if (range.begin() == range.end())
+        return value | std::views::split(',') |
+               std::views::transform(
+                   [](auto range)
                    {
-                       return std::string_view{};
-                   }
-                   return trim(std::string_view(&*range.begin(), std::ranges::distance(range)));
-               }) |
+                       if (range.begin() == range.end())
+                       {
+                           return std::string_view{};
+                       }
+                       return trim(std::string_view(&*range.begin(), std::ranges::distance(range)));
+                   }) |
                std::views::filter([](std::string_view token) { return !token.empty(); });
     }
 

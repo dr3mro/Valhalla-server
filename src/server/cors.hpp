@@ -43,7 +43,7 @@ namespace Cors
     inline void addToVary(const drogon::HttpResponsePtr& resp, std::string_view value)
     {
         const std::string& existing = resp->getHeader("vary");
-        const std::string merged = detail::mergeVary(existing, value);
+        const std::string  merged   = detail::mergeVary(existing, value);
         if (merged != existing)
         {
             resp->addHeader("Vary", merged);
@@ -53,8 +53,8 @@ namespace Cors
     inline void apply(const drogon::HttpRequestPtr& req, const drogon::HttpResponsePtr& resp)
     {
         static const std::string originKey = "access-control-allow-origin";
-        const auto& headers = resp->headers();
-        const auto originIt = headers.find(originKey);
+        const auto&              headers   = resp->headers();
+        const auto               originIt  = headers.find(originKey);
         if (originIt != headers.end() && originIt->second == "*")
         {
             return;
@@ -65,8 +65,9 @@ namespace Cors
         resp->addHeader("Access-Control-Expose-Headers", exposedHeaders());
 
         const std::string& requested = req->getHeader("Access-Control-Request-Headers");
-        std::string echoed;
-        const std::string& allowedHeaders = (req->method() == drogon::Options && !(echoed = detail::sanitizeRequestedHeaders(requested)).empty()) ? echoed : defaultAllowedHeaders();
+        std::string        echoed;
+        const std::string& allowedHeaders =
+            (req->method() == drogon::Options && !(echoed = detail::sanitizeRequestedHeaders(requested)).empty()) ? echoed : defaultAllowedHeaders();
 
         if (req->method() == drogon::Options)
         {

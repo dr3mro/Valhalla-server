@@ -44,7 +44,7 @@ TEST_CASE("Cors::detail helpers are ASCII-only and trim tokens", "[api][cors]")
     // empty tokens between commas are dropped
     CHECK(sanitizeRequestedHeaders("content-type,,x-custom") == "content-type, x-custom");
     // a non-ASCII byte makes the whole token invalid
-    CHECK(sanitizeRequestedHeaders(std::string("x-c\xc3\xbustom")) == "");
+    CHECK(sanitizeRequestedHeaders("x-c\xc3\xbustom") == "");
     // a normal ASCII token still validates
     CHECK(sanitizeRequestedHeaders("X-Token_1.2") == "X-Token_1.2");
 }

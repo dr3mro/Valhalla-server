@@ -30,7 +30,6 @@
 #include "utils/jsonhelper/jsonhelper.hpp"
 #include "utils/message/message.hpp"
 #include "validator/databaseschema/databaseschema.hpp"
-extern const char* const VALHALLA_GIT_TAG;
 
 Server::Server()
     : logger_(Store::getObject<Logger>()),
@@ -67,7 +66,7 @@ int Server::run()
                     {
                         auto resp = drogon::HttpResponse::newHttpResponse();
                         resp->setStatusCode(drogon::k405MethodNotAllowed);
-                        resp->addHeader("Allow", Cors::ALLOWED_METHODS);
+                        resp->addHeader("Allow", Cors::allowedMethods());
                         std::move(callback)(resp);
                     }
                     else

@@ -1,6 +1,10 @@
 #include <catch2/catch_test_macros.hpp>
 
+#include <algorithm>
+#include <iterator>
+#include <ranges>
 #include <string>
+#include <vector>
 
 #include "server/cors_tokens.hpp"
 
@@ -13,11 +17,9 @@ TEST_CASE("CorsTokens::trim removes tabs and spaces", "[server][cors]")
 
 TEST_CASE("CorsTokens::tokens drops empty entries", "[server][cors]")
 {
-    std::vector<std::string> values;
-    for (std::string_view token : CorsTokens::tokens("a,,b"))
-    {
-        values.emplace_back(token);
-    }
+    std::vector<std::string_view> values;
+    auto toks = CorsTokens::tokens("a,,b");
+    std::copy(toks.begin(), toks.end(), std::back_inserter(values));
     REQUIRE(values.size() == 2);
     CHECK(values[0] == "a");
     CHECK(values[1] == "b");
@@ -28,7 +30,7 @@ TEST_CASE("CorsTokens::sanitizeRequestedHeaders validates tokens", "[server][cor
     using CorsTokens::sanitizeRequestedHeaders;
     CHECK(sanitizeRequestedHeaders("\t content-type ,  x-custom  ") == "content-type, x-custom");
     CHECK(sanitizeRequestedHeaders("content-type,,x-custom") == "content-type, x-custom");
-    CHECK(sanitizeRequestedHeaders(std::string("x-c\xc3\xbustom")) == "");
+    CHECK(sanitizeRequestedHeaders("x-c\xc3\xbustom") == "");
     CHECK(sanitizeRequestedHeaders(std::string(1024, 'a')) != "");
     CHECK(sanitizeRequestedHeaders(std::string(1025, 'a')) == "");
 }
