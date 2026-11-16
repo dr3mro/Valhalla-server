@@ -194,7 +194,7 @@ if [[ $SKIP_SERVER -eq 0 ]]; then
     record "server start" 0
 fi
 
-# shellcheck disable=SC2329
+# shellcheck disable=SC2329,SC2317
 cleanup() {
     if [[ $SKIP_SERVER -eq 0 && $KEEP_SERVER -eq 0 && -n $SRV_PID ]]; then
         echo "===== stopping server ====="
