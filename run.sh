@@ -22,6 +22,8 @@ ${C_BOLD}Usage:${C_N} ./run.sh <command> [args...]
 
 ${C_BOLD}Build & run:${C_N}
   build            Build Debug + Release
+  build release    Build Release only
+  build debug      Build Debug only
   release          Run Release server (./scripts/run/run_release.sh)
   debug            Run Debug server (./scripts/run/run_debug.sh)
   openapi          Regenerate OpenAPI docs
@@ -212,7 +214,16 @@ shift || true
 case "$cmd" in
     help|-h|--help) usage ;;
     list) list_cmds ;;
-    build) "$ROOT/scripts/build/build.sh" "$@" ;;
+    build)
+        profile="${1:-all}"; shift || true
+        "$ROOT/tools/docs/build.sh" >/dev/null 2>&1 || true
+        case "$profile" in
+            release) cmake --build "$ROOT/build/Release" "$@" ;;
+            debug) cmake --build "$ROOT/build/Debug" "$@" ;;
+            all|"") "$ROOT/scripts/build/build.sh" "$@" ;;
+            *) err "Unknown build profile: $profile"; exit 2 ;;
+        esac
+        ;;
     release) "$ROOT/scripts/run/run_release.sh" "$@" ;;
     debug) "$ROOT/scripts/run/run_debug.sh" "$@" ;;
     tests|unit) ctest --test-dir "$ROOT/build/Debug" --output-on-failure "$@" && ctest --test-dir "$ROOT/build/Release" --output-on-failure "$@" ;;
