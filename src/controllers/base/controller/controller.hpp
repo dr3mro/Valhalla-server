@@ -279,7 +279,7 @@ class Controller
 
             if (query.has_value())
             {
-                auto db = Store::getObject<DatabaseController>();
+                auto db = Store::cachedObject<DatabaseController>();
                 services = co_await db->executeSearchQueryCoro(query.value(), params);
 
                 if (services.has_value())
@@ -335,7 +335,7 @@ class Controller
 
             if (query.has_value())
             {
-                auto db = Store::getObject<DatabaseController>();
+                auto db = Store::cachedObject<DatabaseController>();
                 visits = co_await db->executeSearchQueryCoro(query.value(), params);
             }
 
@@ -405,7 +405,7 @@ class Controller
                 co_return;
             }
 
-            auto db = Store::getObject<DatabaseController>();
+            auto db = Store::cachedObject<DatabaseController>();
             results_j = co_await std::invoke(func, db.get(), query.value(), params);
             if (results_j.has_value())
             {
