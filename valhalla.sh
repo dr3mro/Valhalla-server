@@ -78,7 +78,7 @@
 #
 # Options (before or after the command):
 #   --name NAME          container name     (env VALHALLA_NAME, default valhalla)
-#   --port PORT          host port          (env CONTAINER_PORT or VALHALLA_PORT, default 8080;
+#   --port PORT          host port          (env CONTAINER_PORT or CONTAINER_PORT, default 8080;
 #                        for an existing container, the port it was created with)
 #   --runtime RT         docker | container (env VALHALLA_RUNTIME)
 #   --env-file FILE      settings file, or "none" (env VALHALLA_ENV_FILE)
@@ -251,9 +251,8 @@ esac
 IMAGE_REPO="${VALHALLA_IMAGE:-docker.io/dr3mro/valhalla-server-run}"
 LOCAL_REPO="valhalla-server-run"
 NAME="${VALHALLA_NAME:-valhalla}"
-PORT="${CONTAINER_PORT:-${VALHALLA_PORT:-8080}}"
+PORT="${CONTAINER_PORT:-8080}"
 PORT_EXPLICIT="${CONTAINER_PORT:+1}" # set: --port / CONTAINER_PORT wins over the container's port
-[[ -z "$PORT_EXPLICIT" ]] && PORT_EXPLICIT="${VALHALLA_PORT:+1}"
 CPUS="${VALHALLA_CPUS:-4}"
 MEMORY_GB="${VALHALLA_MEMORY:-1}"
 # One place for dumps, whether this runs from a checkout or the installed
@@ -1375,7 +1374,7 @@ container_port() {
   fi
 }
 
-# adopt_container_port: unless --port/VALHALLA_PORT was given, talk to the
+# adopt_container_port: unless --port/CONTAINER_PORT was given, talk to the
 # port the container was created with.
 adopt_container_port() {
   [[ -n $PORT_EXPLICIT ]] && return 0
@@ -1801,10 +1800,10 @@ create_container() {
   local server_port server_host
   server_port="$(env_get SERVER_PORT || echo 8080)"
   server_host="$(env_get SERVER_HOST || echo 0.0.0.0)"
-  # By default, publish the container on VALHALLA_PORT from the env file (if set),
+  # By default, publish the container on CONTAINER_PORT from the env file (if set),
   # otherwise on the same port the server listens on.
   if [[ "${PORT_EXPLICIT:-0}" != "1" ]]; then
-    PORT="$(env_get CONTAINER_PORT || env_get VALHALLA_PORT || echo "$server_port")"
+    PORT="$(env_get CONTAINER_PORT || echo "$server_port")"
   fi
   case "$server_host" in
     127.* | localhost | ::1)
