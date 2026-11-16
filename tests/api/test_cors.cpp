@@ -35,6 +35,30 @@ TEST_CASE("Cors::apply sets the full header set on a normal response", "[api][co
     CHECK(response->getHeader("Allow").empty());                   // not a CORS header
 }
 
+TEST_CASE("Cors::detail helpers are ASCII-only and trim tokens", "[api][cors]")
+{
+    using Cors::detail::sanitizeRequestedHeaders;
+
+    // tabs and spaces around tokens are trimmed
+    CHECK(sanitizeRequestedHeaders("\t content-type ,  x-custom  ") == "content-type, x-custom");
+    // empty tokens between commas are dropped
+    CHECK(sanitizeRequestedHeaders("content-type,,x-custom") == "content-type, x-custom");
+    // a non-ASCII byte makes the whole token invalid
+    CHECK(sanitizeRequestedHeaders(std::string("x-c\xc3\xbustom")) == "");
+    // a normal ASCII token still validates
+    CHECK(sanitizeRequestedHeaders("X-Token_1.2") == "X-Token_1.2");
+}
+
+TEST_CASE("Cors::detail addToVary is case-insensitive", "[api][cors]")
+{
+    auto response = drogon::HttpResponse::newHttpResponse();
+    response->addHeader("Vary", "Accept-Encoding, access-control-request-headers");
+
+    Cors::detail::addToVary(response, "Access-Control-Request-Headers");
+
+    CHECK(response->getHeader("Vary") == "Accept-Encoding, access-control-request-headers");
+}
+
 TEST_CASE("Cors::apply does not duplicate a pre-existing Allow-Origin", "[api][cors]")
 {
     auto response = drogon::HttpResponse::newHttpResponse();

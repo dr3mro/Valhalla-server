@@ -3,15 +3,16 @@
 #include <drogon/HttpRequest.h>
 #include <drogon/HttpResponse.h>
 #include <drogon/HttpTypes.h>
+#include <drogon/utils/Utilities.h>
 
 #include <algorithm>
-#include <cctype>
+#include <ranges>
 #include <string>
-#include <vector>
+#include <string_view>
 
 /// CORS response headers, written in exactly one place (the pre-sending advice in server.cpp).
-/// Every header is removed before it is set, so applying this twice to one response is harmless
-/// and a header can never appear twice.
+/// Every header is set with addHeader, which replaces any existing value in Drogon's header
+/// map, so a header can never appear twice.
 namespace Cors
 {
     inline const std::string ALLOWED_METHODS         = "GET, POST, PUT, DELETE, HEAD, OPTIONS";
@@ -19,116 +20,43 @@ namespace Cors
     inline const std::string EXPOSED_HEADERS         = "Retry-After, Content-Length";
     inline const std::string PREFLIGHT_MAX_AGE       = "7200";  // browsers cap this at 2 hours anyway
 
-    // Drogon stores headers in a map keyed by the lower-cased name, so addHeader
-    // replaces any existing value instead of appending a second one. Removing
-    // first is therefore unnecessary; this saves one map operation per header.
     inline void set(const drogon::HttpResponsePtr& resp, const std::string& key, const std::string& value)
     {
+        // Drogon stores headers in a map keyed by the lower-cased name, so addHeader
+        // replaces any existing value instead of appending a second one.
         resp->addHeader(key, value);
     }
 
     namespace detail
     {
-        inline bool isTokenChar(char c)
+        constexpr std::string_view tokenPunctuation = "!#$%&'*+-.^_`|~";
+
+        constexpr bool isTokenChar(char c)
         {
-            const unsigned char uc = static_cast<unsigned char>(c);
-            if (std::isalnum(uc) != 0)
-            {
-                return true;
-            }
-            switch (uc)
-            {
-                case '!':
-                case '#':
-                case '$':
-                case '%':
-                case '&':
-                case '\'':
-                case '*':
-                case '+':
-                case '-':
-                case '.':
-                case '^':
-                case '_':
-                case '`':
-                case '|':
-                case '~':
-                    return true;
-                default:
-                    return false;
-            }
+            return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') ||
+                   tokenPunctuation.find(c) != std::string_view::npos;
         }
 
-        inline bool iequals(const std::string& a, const std::string& b)
+        inline bool asciiLowerEqual(char a, char b)
         {
-            if (a.size() != b.size())
-            {
-                return false;
-            }
-            return std::equal(a.begin(), a.end(), b.begin(),
-                [](char x, char y) { return std::tolower(static_cast<unsigned char>(x)) == std::tolower(static_cast<unsigned char>(y)); });
+            auto lower = [](char c) { return (c >= 'A' && c <= 'Z') ? static_cast<char>(c + ('a' - 'A')) : c; };
+            return lower(a) == lower(b);
         }
 
-        // Append `value` to the Vary response header without duplicating an
-        // existing (case-insensitive) token. Other code may have set Vary first.
-        inline void addToVary(const drogon::HttpResponsePtr& resp, const std::string& value)
+        inline bool iequals(std::string_view a, std::string_view b)
         {
-            std::string existing;
-            bool        found = false;
-            for (const auto& kv : resp->headers())
-            {
-                if (iequals(kv.first, "Vary"))
-                {
-                    existing = kv.second;
-                    found    = true;
-                    break;
-                }
-            }
+            return a.size() == b.size() && std::ranges::equal(a, b, asciiLowerEqual);
+        }
 
-            auto contains = [&value](const std::string& headerValue)
-            {
-                std::string token;
-                for (char c : headerValue + ",")
-                {
-                    if (c == ',')
-                    {
-                        const std::string::size_type first = token.find_first_not_of(" \t");
-                        if (first != std::string::npos)
-                        {
-                            const std::string::size_type last = token.find_last_not_of(" \t");
-                            if (iequals(token.substr(first, last - first + 1), value))
-                            {
-                                return true;
-                            }
-                        }
-                        token.clear();
-                    }
-                    else
-                    {
-                        token.push_back(c);
-                    }
-                }
-                return false;
-            };
-
-            if (found && contains(existing))
-            {
-                return;
-            }
-            if (found && !existing.empty())
-            {
-                resp->addHeader("Vary", existing + ", " + value);
-            }
-            else
-            {
-                resp->addHeader("Vary", value);
-            }
+        inline std::vector<std::string_view> splitTokens(std::string_view value)
+        {
+            return drogon::utils::splitStringView(value, ",", /*trimValues=*/true, /*acceptEmptyString=*/false);
         }
 
         // Validate and normalise an Access-Control-Request-Headers value.
         // Returns an empty string when nothing valid remains (or the input is
         // too large), so the caller can fall back to DEFAULT_ALLOWED_HEADERS.
-        inline std::string sanitizeRequestedHeaders(const std::string& requested)
+        inline std::string sanitizeRequestedHeaders(std::string_view requested)
         {
             if (requested.empty() || requested.size() > 1024)
             {
@@ -136,56 +64,67 @@ namespace Cors
             }
 
             std::string result;
-            std::string token;
-            auto flush = [&]
+            for (std::string_view token : splitTokens(requested))
             {
-                const std::string::size_type first = token.find_first_not_of(" \t");
-                if (first == std::string::npos)
+                if (!std::ranges::all_of(token, isTokenChar))
                 {
-                    token.clear();
-                    return;
-                }
-                const std::string::size_type last    = token.find_last_not_of(" \t");
-                const std::string            trimmed = token.substr(first, last - first + 1);
-                token.clear();
-
-                if (trimmed.empty())
-                {
-                    return;
-                }
-                if (!std::ranges::all_of(trimmed, isTokenChar))
-                {
-                    return;
+                    continue;
                 }
                 if (!result.empty())
                 {
                     result += ", ";
                 }
-                result += trimmed;
-            };
+                result.append(token);
+            }
+            return result;
+        }
 
-            for (char c : requested)
+        // Append `value` to the Vary response header without duplicating an
+        // existing (case-insensitive) token. Other code may have set Vary first.
+        inline void addToVary(const drogon::HttpResponsePtr& resp, std::string_view value)
+        {
+            const auto& headers = resp->headers();
+            const auto  it      = std::ranges::find_if(headers, [](const auto& kv) { return iequals(kv.first, "Vary"); });
+
+            std::string combined;
+            if (it != headers.end())
             {
-                if (c == ',')
+                bool present = false;
+                for (std::string_view token : splitTokens(it->second))
                 {
-                    flush();
+                    if (iequals(token, value))
+                    {
+                        present = true;
+                        break;
+                    }
                 }
-                else
+                if (present)
                 {
-                    token.push_back(c);
+                    return;
+                }
+                for (std::string_view token : splitTokens(it->second))
+                {
+                    if (!combined.empty())
+                    {
+                        combined += ", ";
+                    }
+                    combined.append(token);
                 }
             }
-            flush();
-            return result;
+
+            if (!combined.empty())
+            {
+                combined += ", ";
+            }
+            combined.append(value);
+            resp->addHeader("Vary", combined);
         }
     }  // namespace detail
 
     inline void apply(const drogon::HttpRequestPtr& req, const drogon::HttpResponsePtr& resp)
     {
-        // Cors::apply is the only writer; once its marker header is present the
-        // response is already complete, so there is nothing more to do.
         const auto& existingHeaders = resp->headers();
-        const auto  originIt        = existingHeaders.find("access-control-allow-origin");
+        const auto  originIt        = std::ranges::find_if(existingHeaders, [](const auto& kv) { return detail::iequals(kv.first, "access-control-allow-origin"); });
         if (originIt != existingHeaders.end() && originIt->second == "*")
         {
             return;
