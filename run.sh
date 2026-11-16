@@ -92,7 +92,9 @@ list_cmds() {
 }
 
 server_pid() {
-    [[ -f $PID_FILE ]] && cat "$PID_FILE" 2>/dev/null || true
+    if [[ -f $PID_FILE ]]; then
+        cat "$PID_FILE" 2>/dev/null || true
+    fi
 }
 
 server_running() {

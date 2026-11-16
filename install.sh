@@ -27,7 +27,7 @@
 # local checkout instead of downloading; for testing).
 #
 # Installs: vdt (valhalla.sh), test_api, schemathesis_test, installer
-# (a copy of this script, used by `vdt uninstall`), api_tests/payloads/,
+# (a copy of this script, used by `vdt uninstall`), tests/api_tests/payloads/,
 # docs/openapi.json, and a default `config` (settings passed to the server)
 # if there isn't one. Your config and dumps/ in the install directory are never
 # touched.
@@ -84,7 +84,7 @@ BIN_DIR="$(absolute "$BIN_DIR")"
 
 # Files managed by this installer (relative to DIR). The leftover .sh names
 # from earlier installs are removed on update.
-MANAGED="vdt test_api schemathesis_test installer api_tests/payloads docs/openapi.json VERSION update-state update-state.lock test_api.sh schemathesis_test.sh"
+MANAGED="vdt test_api schemathesis_test installer tests/api_tests/payloads api_tests/payloads docs/openapi.json VERSION update-state update-state.lock test_api.sh schemathesis_test.sh"
 
 # ── rc files ───────────────────────────────────────────────────────────────
 # rc_files: the rc files to manage: each of ~/.zshrc / ~/.bashrc that exists,
@@ -169,9 +169,9 @@ fetch_tree() {
     sed -n 's/.*"sha": *"\([0-9a-f]\{40\}\)".*/\1/p' | head -n1)"
   [ -n "$FILE_SHA" ] || FILE_SHA="$SHA"
 
-  payloads="$(api "https://api.github.com/repos/$REPO/git/trees/$SHA?recursive=1" |
+payloads="$(api "https://api.github.com/repos/$REPO/git/trees/$SHA?recursive=1" |
     grep -o '"path": *"tests/api_tests/payloads/[^"]*\.json"' |
-    sed 's/.*"\(tests/api_tests[^"]*\)"/\1/')" ||
+    cut -d '"' -f 4)" ||
     die "couldn't list the repository files (API rate limit? set GITHUB_TOKEN)"
 
   count=0
@@ -188,15 +188,14 @@ fetch_tree() {
 # copy_tree STAGE: copies the same files from a local checkout ($SOURCE).
 copy_tree() {
   stage="$1"
-  [ -f "$SOURCE/valhalla.sh" ] || die "VALHALLA_SOURCE has no valhalla.sh: $SOURCE"
+  [ -f "$SOURCE/scripts/vdt/valhalla.sh" ] || die "VALHALLA_SOURCE has no valhalla.sh: $SOURCE"
   say "📋  Copying from $SOURCE"
   for f in scripts/vdt/valhalla.sh scripts/test/test_api.sh scripts/test/schemathesis_test.sh install.sh docs/openapi.json config; do
     mkdir -p "$stage/$(dirname "$f")"
     cp "$SOURCE/$f" "$stage/$f"
   done
-  mkdir -p "$stage/api_tests"
   mkdir -p "$stage/tests/api_tests"
-  cp -R "$SOURCE/tests/api_tests/payloads" "$stage/api_tests/payloads"
+  cp -R "$SOURCE/tests/api_tests/payloads" "$stage/tests/api_tests/payloads"
   VERSION_TEXT="local $SOURCE $(git -C "$SOURCE" rev-parse HEAD 2>/dev/null || echo unknown)"
 }
 
@@ -345,12 +344,6 @@ place_files() {
   mv "$stage/scripts/test/test_api.sh" "$stage/test_api"
   mv "$stage/scripts/test/schemathesis_test.sh" "$stage/schemathesis_test"
   mv "$stage/install.sh" "$stage/installer"
-  # Flatten the payload tree to the installed layout (api_tests/payloads).
-  if [ -d "$stage/tests/api_tests/payloads" ]; then
-    mkdir -p "$stage/api_tests"
-    cp -R "$stage/tests/api_tests/payloads" "$stage/api_tests/payloads"
-    rm -rf "$stage/tests"
-  fi
   (cd "$stage" && tar -cf - .) | (cd "$DIR" && tar -xf -)
   # Downloads arrive as plain files (curl doesn't keep the executable bit).
   chmod 755 "$DIR/vdt" "$DIR/test_api" "$DIR/schemathesis_test" "$DIR/installer"

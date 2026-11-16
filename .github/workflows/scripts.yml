@@ -103,7 +103,7 @@ jobs:
         run: |
           set -eux
           export HOME="$RUNNER_TEMP/home"; mkdir -p "$HOME"
-          V="./valhalla.sh --runtime docker --name ci --port 18080"   # split on purpose
+          V="./scripts/vdt/valhalla.sh --runtime docker --name ci --port 18080"   # split on purpose
           sql() { echo "$1" | $V psql | sed -n 3p | tr -d ' '; }
 
           # Dry runs change nothing
@@ -114,9 +114,9 @@ jobs:
           # Inspect
           $V status | grep -q 'Health:    answering'
           $V logs 20 | grep -q .
-          rc=0; timeout 5 ./valhalla.sh --runtime docker --name ci show >"$RUNNER_TEMP/show.log" 2>&1 || rc=$?
+          rc=0; timeout 5 ./scripts/vdt/valhalla.sh --runtime docker --name ci show >"$RUNNER_TEMP/show.log" 2>&1 || rc=$?
           [ "$rc" = 124 ] && test -s "$RUNNER_TEMP/show.log"
-          rc=0; timeout -k 2 5 ./valhalla.sh --runtime docker --name ci stats >"$RUNNER_TEMP/stats.log" 2>&1 || rc=$?
+          rc=0; timeout -k 2 5 ./scripts/vdt/valhalla.sh --runtime docker --name ci stats >"$RUNNER_TEMP/stats.log" 2>&1 || rc=$?
           { [ "$rc" = 124 ] || [ "$rc" = 137 ]; } && grep -q ci "$RUNNER_TEMP/stats.log"
           $V env | grep -q '^TOKEN_SECRET=<hidden>$'
           $V outdated | grep -qE 'Up to date|Update available'
