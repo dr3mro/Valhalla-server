@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Validate the commit message subject.
+set -uo pipefail
+
+msg_file="${1:-}"
+if [[ -z $msg_file || ! -f $msg_file ]]; then
+    echo "commit-msg: missing message file" >&2
+    exit 1
+fi
+
+# First non-comment, non-empty line is the subject.
+subject="$(grep -v '^[[:space:]]*#' "$msg_file" | sed '/^[[:space:]]*$/d' | head -n 1)"
+# Trim leading/trailing whitespace.
+subject="${subject#"${subject%%[![:space:]]*}"}"
+subject="${subject%"${subject##*[![:space:]]}"}"
+
+if [[ -z $subject ]]; then
+    echo "commit-msg: empty commit message" >&2
+    exit 1
+fi
+
+if [[ ${#subject} -lt 10 ]]; then
+    echo "commit-msg: subject too short (min 10 chars): $subject" >&2
+    exit 1
+fi
+
+if [[ $subject == *. ]]; then
+    echo "commit-msg: subject should not end with a period" >&2
+    exit 1
+fi
+
+exit 0

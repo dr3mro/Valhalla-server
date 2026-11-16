@@ -1,4 +1,13 @@
 #!/usr/bin/env bash
-# Blocks a commit when a staged shell script would fail the CI shellcheck job.
-# Enable once per clone: git config core.hooksPath .githooks
-exec "$(git rev-parse --show-toplevel)/tools/lint_sh.sh" --staged
+# Pre-commit checks: shell lint, C++ formatting, project rules, hygiene.
+set -uo pipefail
+
+root="$(git rev-parse --show-toplevel)"
+
+status=0
+"$root/tools/lint_sh.sh" --staged || status=1
+"$root/tools/check_format.sh" --staged || status=1
+"$root/tools/check_project_rules.sh" --staged || status=1
+"$root/tools/check_hygiene.sh" --staged || status=1
+
+exit "$status"
